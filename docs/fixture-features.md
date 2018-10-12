@@ -23,10 +23,10 @@ module.exports = [{
 
   /**
    * Required. Checks if the given fixture uses this feature.
-   * @param {!Fixture} fixture The Fixture instance, see fixture-model.md
-   * @returns {!boolean} true if the fixture uses the feature
+   * @param {Fixture} fixture The Fixture instance, see fixture-model.md
+   * @returns {boolean} true if the fixture uses the feature
    */
-  hasFeature: fixture => fixture.availableChannels.some(
+  hasFeature: fixture => fixture.coarseChannels.some(
     channel => channel.fineChannelAliases.length === 1
   )
 }];

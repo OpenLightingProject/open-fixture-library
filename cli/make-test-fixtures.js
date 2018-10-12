@@ -126,7 +126,7 @@ fs.writeFile(markdownFile, getMarkdownCode(), `utf8`, error => {
 
 /**
  * Generates a markdown table presenting the test fixtures and all fix features.
- * @returns {!string} The markdown code to be used in a markdown file.
+ * @returns {string} The markdown code to be used in a markdown file.
  */
 function getMarkdownCode() {
   const mdLines = [];

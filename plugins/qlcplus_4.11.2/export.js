@@ -5,13 +5,11 @@ const sanitize = require(`sanitize-filename`);
 const {
   AbstractChannel,
   Capability,
-  Channel,
+  CoarseChannel,
   FineChannel,
   Fixture,
   Manufacturer,
   Matrix,
-  MatrixChannel,
-  MatrixChannelReference,
   Meta,
   Mode,
   NullChannel,
@@ -26,11 +24,11 @@ module.exports.name = `QLC+ 4.11.2`;
 module.exports.version = `0.5.0`;
 
 /**
- * @param {!Array.<Fixture>} fixtures An array of Fixture objects.
- * @param {!object} options Global options, including:
- * @param {!string} options.baseDir Absolute path to OFL's root directory.
- * @param {?Date} options.date The current time.
- * @returns {!Promise.<!Array.<object>, !Error>} The generated files.
+ * @param {array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {object} options Global options, including:
+ * @param {string} options.baseDir Absolute path to OFL's root directory.
+ * @param {Date|null} options.date The current time.
+ * @returns {Promise.<array.<object>, Error>} The generated files.
 */
 module.exports.export = function exportQlcPlus(fixtures, options) {
   const outFiles = fixtures.map(fixture => {
@@ -74,14 +72,10 @@ module.exports.export = function exportQlcPlus(fixtures, options) {
 };
 
 /**
- * @param {!object} xml The xmlbuilder <FixtureDefinition> object.
- * @param {!Channel} channel The OFL channel object.
+ * @param {object} xml The xmlbuilder <FixtureDefinition> object.
+ * @param {CoarseChannel} channel The OFL channel object.
  */
 function addChannel(xml, channel) {
-  if (channel instanceof MatrixChannel) {
-    channel = channel.wrappedChannel;
-  }
-
   const xmlChannel = xml.element({
     Channel: {
       '@Name': channel.uniqueName
@@ -91,10 +85,6 @@ function addChannel(xml, channel) {
   // use default channel's data
   if (channel instanceof SwitchingChannel) {
     channel = channel.defaultChannel;
-
-    if (channel instanceof MatrixChannel) {
-      channel = channel.wrappedChannel;
-    }
   }
 
   const xmlGroup = xmlChannel.element({
@@ -104,7 +94,7 @@ function addChannel(xml, channel) {
   let capabilities;
   if (channel instanceof FineChannel) {
     let capabilityName;
-    if (channel.resolution > Channel.RESOLUTION_16BIT) {
+    if (channel.resolution > CoarseChannel.RESOLUTION_16BIT) {
       xmlGroup.attribute(`Byte`, 0); // not a QLC+ fine channel
       capabilityName = `Fine^${channel.resolution - 1} adjustment for ${channel.coarseChannel.uniqueName}`;
     }
@@ -119,7 +109,7 @@ function addChannel(xml, channel) {
         dmxRange: [0, 255],
         type: `Generic`,
         comment: capabilityName
-      }, Channel.RESOLUTION_8BIT, channel)
+      }, CoarseChannel.RESOLUTION_8BIT, channel)
     ];
   }
   else {
@@ -142,11 +132,11 @@ function addChannel(xml, channel) {
 }
 
 /**
- * @param {!object} xmlChannel The xmlbuilder <Channel> object.
- * @param {!Capability} cap The OFL capability object.
+ * @param {object} xmlChannel The xmlbuilder <Channel> object.
+ * @param {Capability} cap The OFL capability object.
  */
 function addCapability(xmlChannel, cap) {
-  const dmxRange = cap.getDmxRangeWithResolution(Channel.RESOLUTION_8BIT);
+  const dmxRange = cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
 
   const xmlCapability = xmlChannel.element({
     Capability: {
@@ -171,8 +161,8 @@ function addCapability(xmlChannel, cap) {
 }
 
 /**
- * @param {!object} xml The xmlbuilder <FixtureDefinition> object.
- * @param {!Mode} mode The OFL mode object.
+ * @param {object} xml The xmlbuilder <FixtureDefinition> object.
+ * @param {Mode} mode The OFL mode object.
  */
 function addMode(xml, mode) {
   const xmlMode = xml.element({
@@ -187,7 +177,7 @@ function addMode(xml, mode) {
     xmlMode.element({
       Channel: {
         '@Number': index,
-        '#text': channel.uniqueName || channel.wrappedChannel.uniqueName
+        '#text': channel.uniqueName
       }
     });
   });
@@ -198,8 +188,8 @@ function addMode(xml, mode) {
 }
 
 /**
- * @param {!object} xmlMode The xmlbuilder <Mode> object.
- * @param {!Physical} physical The OFL physical object.
+ * @param {object} xmlMode The xmlbuilder <Mode> object.
+ * @param {Physical} physical The OFL physical object.
  */
 function addPhysical(xmlMode, physical) {
   const xmlPhysical = xmlMode.element({
@@ -238,8 +228,8 @@ function addPhysical(xmlMode, physical) {
   }
 
   /**
-   * @param {?number} panTiltMax A physical's panMax or tiltMax
-   * @returns {!number} The rounded maximum; 9999 for infinite and 0 as default.
+   * @param {number|null} panTiltMax A physical's panMax or tiltMax
+   * @returns {number} The rounded maximum; 9999 for infinite and 0 as default.
    */
   function getPanTiltMax(panTiltMax) {
     if (panTiltMax === Number.POSITIVE_INFINITY) {
@@ -256,12 +246,12 @@ function addPhysical(xmlMode, physical) {
 
 /**
  * Adds Head tags for all used pixels in the given mode, ordered by XYZ direction (pixel groups by appearence in JSON).
- * @param {!XMLElement} xmlMode The Mode tag to which the Head tags should be added
- * @param {!Mode} mode The fixture's mode whose pixels should be determined.
+ * @param {XMLElement} xmlMode The Mode tag to which the Head tags should be added
+ * @param {Mode} mode The fixture's mode whose pixels should be determined.
  */
 function addHeads(xmlMode, mode) {
   const hasMatrixChannels = mode.channels.some(
-    ch => ch instanceof MatrixChannel || (ch instanceof SwitchingChannel && ch.defaultChannel instanceof MatrixChannel)
+    ch => ch.pixelKey !== null || (ch instanceof SwitchingChannel && ch.defaultChannel.pixelKey !== null)
   );
 
   if (hasMatrixChannels) {
@@ -279,16 +269,16 @@ function addHeads(xmlMode, mode) {
   }
 
   /**
-   * @param {AbstractChannel|MatrixChannel} channel A channel from a mode's channel list.
-   * @param {!string} pixelKey The pixel to check for.
+   * @param {AbstractChannel} channel A channel from a mode's channel list.
+   * @param {string} pixelKey The pixel to check for.
    * @returns {boolean} Whether the given channel controls the given pixel key, either directly or as part of a pixel group.
    */
   function controlsPixelKey(channel, pixelKey) {
     if (channel instanceof SwitchingChannel) {
-      return controlsPixelKey(channel.defaultChannel, pixelKey);
+      channel = channel.defaultChannel;
     }
 
-    if (channel instanceof MatrixChannel) {
+    if (channel.pixelKey !== null) {
       if (mode.fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)) {
         return mode.fixture.matrix.pixelGroups[channel.pixelKey].includes(pixelKey);
       }
@@ -302,8 +292,8 @@ function addHeads(xmlMode, mode) {
 
 /**
  * Determines the QLC+ fixture type out of the fixture's categories.
- * @param {!Fixture} fixture The Fixture instance whose QLC+ type has to be determined.
- * @returns {!string} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
+ * @param {Fixture} fixture The Fixture instance whose QLC+ type has to be determined.
+ * @returns {string} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
  */
 function getFixtureType(fixture) {
   const ignoredCats = [`Blinder`, `Matrix`, `Pixel Bar`, `Stand`];
@@ -313,8 +303,8 @@ function getFixtureType(fixture) {
 
 /**
  * Converts a channel's type into a valid QLC+ channel type.
- * @param {!string} type Our own OFL channel type.
- * @returns {!string} The corresponding QLC+ channel type.
+ * @param {string} type Our own OFL channel type.
+ * @returns {string} The corresponding QLC+ channel type.
  */
 function getChannelType(type) {
   const qlcplusChannelTypes = {

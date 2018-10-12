@@ -498,7 +498,7 @@ Use zero-based numbering (e.g. `0` for open, `1` for *Color/Gobo 1*). If the cap
 * Add new properties to the model (in `Capability.mjs`)
 * If it's a start/end entity, add its name to `Capability.START_END_ENTITIES`
 * Add new types to capability name generation (in `Capability.mjs`)
-* Add new types to channel type generation (in `Channel.mjs`)
+* Add new types to channel type generation (in `CoarseChannel.mjs`)
 * Update editor:
   * Create new component in `ui/components/editor-capabilities`. Make sure it has a `defaultData` object as component data.
   * Import the new component in the [capability component](../ui/components/editor-capability.vue) and register it in its `components` section.

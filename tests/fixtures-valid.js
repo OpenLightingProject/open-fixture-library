@@ -45,8 +45,8 @@ for (const manKey of fs.readdirSync(fixturePath)) {
 
 /**
  * Checks (asynchronously) the given fixture by adding a Promise to the promises array that resolves with a result object.
- * @param {!string} manKey The manufacturer key.
- * @param {!string} fixKey The fixture key.
+ * @param {string} manKey The manufacturer key.
+ * @param {string} fixKey The fixture key.
  */
 function handleFixtureFile(manKey, fixKey) {
   const filename = `${manKey}/${fixKey}.json`;

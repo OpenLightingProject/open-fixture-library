@@ -118,7 +118,7 @@ module.exports = async function testChannelNumbers(exportFile) {
           errors.push(`Channel ${channel.name} (#${index + 1}) of type NoFunction should be omitted.`);
         }
         else {
-          const mergedRanges = Range.mergeRanges(usedChannelRanges[index]);
+          const mergedRanges = Range.getMergedRanges(usedChannelRanges[index]);
 
           if (!areRangesComplete(mergedRanges)) {
             errors.push(`Channel ${channel.name} (#${index + 1}) is missing capabilities. Used ranges: ${mergedRanges.join(`, `)}`);

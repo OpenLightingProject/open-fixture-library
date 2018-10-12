@@ -86,9 +86,9 @@ export default {
 
 /**
  * Returns the contents of the provided SVG file as an inline SVG.
- * @param {!string} svgBasename Name of the file (withoug extension).
- * @param {!Array.<string>} classNames List of class names the <svg> tag should have.
- * @returns {!string} The inline <svg> tag or an empty string if the file was not found.
+ * @param {string} svgBasename Name of the file (withoug extension).
+ * @param {array.<string>} classNames List of class names the <svg> tag should have.
+ * @returns {string} The inline <svg> tag or an empty string if the file was not found.
  */
 function getSvg(svgBasename, classNames = []) {
   let svg = svgBasename in icons ? icons[svgBasename].replace(/\s+$/, ``) : ``;
@@ -103,9 +103,9 @@ function getSvg(svgBasename, classNames = []) {
 
 /**
  * Get an icon for the provided category.
- * @param {!string} categoryName Name of the category.
- * @param {!Array.<string>} classNames List of class names the <svg> tag should have.
- * @returns {!string} The inline <svg> tag or an empty string if the file was not found.
+ * @param {string} categoryName Name of the category.
+ * @param {array.<string>} classNames List of class names the <svg> tag should have.
+ * @returns {string} The inline <svg> tag or an empty string if the file was not found.
  */
 function getCategoryIcon(categoryName, classNames = []) {
   const sanitzedCategoryName = categoryName.toLowerCase().replace(/[^\w]+/g, `-`);
@@ -118,9 +118,9 @@ function getCategoryIcon(categoryName, classNames = []) {
 
 /**
  * Get an icon for the provided channel type.
- * @param {!string} channelType Channel type to find the icon for.
- * @param {!Array.<string>} classNames List of class names the <svg> tag should have.
- * @returns {!string} The inline <svg> tag or an empty string if the file was not found.
+ * @param {string} channelType Channel type to find the icon for.
+ * @param {array.<string>} classNames List of class names the <svg> tag should have.
+ * @returns {string} The inline <svg> tag or an empty string if the file was not found.
  */
 function getChannelTypeIcon(channelType, classNames = []) {
   const sanitzedChannelType = channelType.toLowerCase().replace(/[^\w]+/g, `-`);
@@ -133,9 +133,9 @@ function getChannelTypeIcon(channelType, classNames = []) {
 
 /**
  * Get inline SVG for a color circle (like a pie chart with equally-sized pies).
- * @param {!Array.<string>} colors Array of color strings to display.
- * @param {?string} [title] Text for the title tag. If this parameter is not given, no title tag will be added.
- * @returns {!string} The HTML for displaying the color circle.
+ * @param {array.<string>} colors Array of color strings to display.
+ * @param {string|null} [title] Text for the title tag. If this parameter is not given, no title tag will be added.
+ * @returns {string} The HTML for displaying the color circle.
  */
 function getColorCircle(colors, title) {
   // viewBox customized to have the (0,0) coordinate in the center
@@ -180,9 +180,9 @@ function getColorCircle(colors, title) {
 
 /**
  * Get x and y coordinates of the point that is `percent` percent of the way around a circle. Note that 37.5% are added to start at a 135deg angle.
- * @param {!number} percent Percent of the whole circle.
- * @param {!number} radius Radius of the circle.
- * @returns {Array.<number>} Array with x and y coordinate.
+ * @param {number} percent Percent of the whole circle.
+ * @param {number} radius Radius of the circle.
+ * @returns {array.<number>} Array with x and y coordinate.
  */
 function getCoordinatesForPercent(percent, radius) {
   percent += 0.375;

@@ -1,0 +1,4332 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Alpha Spot QWO 800",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2018-05-15",
+    "lastModifyDate": "2018-08-30",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2018-09-11",
+      "comment": "GDTF fixture type ID: 00 1B 21 63 BA 95 00 00 8E 2D C1 C7 3A F9 7D 46"
+    }
+  },
+  "comment": "The ST version has a 6000K lamp.",
+  "links": {
+    "manual": [
+      "https://www.claypaky.it/media/documents/HR_AlphaSpotQWO800_and_ST_Manual_04.2016_EN.pdf"
+    ],
+    "productPage": [
+      "https://www.claypaky.it/en/products/alpha-spot-qwo"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=yNq1_7DnGjQ",
+      "https://www.youtube.com/watch?v=539x-P1G4Bo",
+      "https://www.youtube.com/watch?v=GHIqWbGhKKA"
+    ]
+  },
+  "physical": {
+    "dimensions": [385, 405, 650],
+    "weight": 30,
+    "power": 1200,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "MSR Platinum 35 discharge lamp",
+      "colorTemperature": 7750,
+      "lumens": 54500
+    },
+    "lens": {
+      "degreesMinMax": [11, 55]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 250
+    }
+  },
+  "availableChannels": {
+    "Cyan": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "CTO": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "default",
+        "colorTemperatureEnd": "CTO"
+      }
+    },
+    "Color Wheel": {
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "colors": ["#ffffff"],
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [1, 14],
+          "type": "ColorWheelIndex",
+          "indexStart": 0,
+          "indexEnd": 1,
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#ee262d"],
+          "comment": "Split White … Red"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "ColorWheelIndex",
+          "index": 1,
+          "colors": ["#ee262d"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [16, 29],
+          "type": "ColorWheelIndex",
+          "indexStart": 1,
+          "indexEnd": 2,
+          "colorsStart": ["#ee262d"],
+          "colorsEnd": ["#f1c136"],
+          "comment": "Split Red … CTO 2600"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "ColorWheelIndex",
+          "index": 2,
+          "colors": ["#f1c136"],
+          "comment": "CTO 2600"
+        },
+        {
+          "dmxRange": [31, 44],
+          "type": "ColorWheelIndex",
+          "indexStart": 2,
+          "indexEnd": 3,
+          "colorsStart": ["#f1c136"],
+          "colorsEnd": ["#08954d"],
+          "comment": "Split CTO 2600 … Green"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "ColorWheelIndex",
+          "index": 3,
+          "colors": ["#08954d"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [46, 59],
+          "type": "ColorWheelIndex",
+          "indexStart": 3,
+          "indexEnd": 4,
+          "colorsStart": ["#08954d"],
+          "colorsEnd": ["#87cf34"],
+          "comment": "Split Green … Light Green"
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "ColorWheelIndex",
+          "index": 4,
+          "colors": ["#87cf34"],
+          "comment": "Light Green"
+        },
+        {
+          "dmxRange": [61, 74],
+          "type": "ColorWheelIndex",
+          "indexStart": 4,
+          "indexEnd": 5,
+          "colorsStart": ["#87cf34"],
+          "colorsEnd": ["#8566ba"],
+          "comment": "Split Light Green … Lavender"
+        },
+        {
+          "dmxRange": [75, 75],
+          "type": "ColorWheelIndex",
+          "index": 5,
+          "colors": ["#8566ba"],
+          "comment": "Lavender"
+        },
+        {
+          "dmxRange": [76, 89],
+          "type": "ColorWheelIndex",
+          "indexStart": 5,
+          "indexEnd": 6,
+          "colorsStart": ["#8566ba"],
+          "colorsEnd": ["#69c981"],
+          "comment": "Split Lavender … Aquamarine"
+        },
+        {
+          "dmxRange": [90, 90],
+          "type": "ColorWheelIndex",
+          "index": 6,
+          "colors": ["#69c981"],
+          "comment": "Aquamarine"
+        },
+        {
+          "dmxRange": [91, 104],
+          "type": "ColorWheelIndex",
+          "indexStart": 6,
+          "indexEnd": 7,
+          "colorsStart": ["#69c981"],
+          "colorsEnd": ["#f47327"],
+          "comment": "Split Aquamarine … Orange"
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "ColorWheelIndex",
+          "index": 7,
+          "colors": ["#f47327"],
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [106, 119],
+          "type": "ColorWheelIndex",
+          "indexStart": 7,
+          "indexEnd": 8,
+          "colorsStart": ["#f47327"],
+          "colorsEnd": ["#2e52ab"],
+          "comment": "Split Orange … Blue"
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "ColorWheelIndex",
+          "index": 8,
+          "colors": ["#2e52ab"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [121, 127],
+          "type": "ColorWheelIndex",
+          "indexStart": 8,
+          "indexEnd": 8.5,
+          "colorsStart": ["#2e52ab"],
+          "colorsEnd": ["#2e52ab", "#ffffff"],
+          "comment": "Split Blue … White"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "ColorWheelRotation",
+          "speedStart": "-5rpm",
+          "speedEnd": "0rpm",
+          "helpWanted": "Can the color wheel rotate in both directions? The manual only mentions slow to fast rotation in the DMX range 128…255. The capabilities here were imported from the GDTF file and manually edited instead."
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "ColorWheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "ColorWheelRotation",
+          "speedStart": "5rpm",
+          "speedEnd": "0rpm"
+        }
+      ]
+    },
+    "Color Macros": {
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "ColorPreset",
+          "comment": "Random Macro Color (only for Macro Effects)"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "ColorPreset",
+          "colors": ["#e6b0ab"],
+          "comment": "Med Bastard Amber"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "ColorPreset",
+          "colors": ["#e0dc00"],
+          "comment": "Med Yellow"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "ColorPreset",
+          "colors": ["#b40000"],
+          "comment": "Bright Red"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "ColorPreset",
+          "colors": ["#6c1cbe"],
+          "comment": "Lavender"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "ColorPreset",
+          "colors": ["#8eb4dd"],
+          "comment": "Pale Blue"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "ColorPreset",
+          "colors": ["#0060cd"],
+          "comment": "Sky Blue"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Tokyo Blue"
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "ColorPreset",
+          "colors": ["#002cbd"],
+          "comment": "Just Blue"
+        },
+        {
+          "dmxRange": [18, 19],
+          "type": "ColorPreset",
+          "colors": ["#9ed64d"],
+          "comment": "Lime Green"
+        },
+        {
+          "dmxRange": [20, 21],
+          "type": "ColorPreset",
+          "colors": ["#006d21"],
+          "comment": "Dark Yellow Green"
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "ColorPreset",
+          "colors": ["#d6dc2d"],
+          "comment": "Spring Yellow"
+        },
+        {
+          "dmxRange": [24, 25],
+          "type": "ColorPreset",
+          "colors": ["#e8d100"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [26, 27],
+          "type": "ColorPreset",
+          "colors": ["#f1c45b"],
+          "comment": "Light Amber"
+        },
+        {
+          "dmxRange": [28, 29],
+          "type": "ColorPreset",
+          "colors": ["#d7d1b9"],
+          "comment": "Straw"
+        },
+        {
+          "dmxRange": [30, 31],
+          "type": "ColorPreset",
+          "colors": ["#f7af00"],
+          "comment": "Deep Amber"
+        },
+        {
+          "dmxRange": [32, 33],
+          "type": "ColorPreset",
+          "colors": ["#ef7f00"],
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [34, 35],
+          "type": "ColorPreset",
+          "colors": ["#b70000"],
+          "comment": "Primary Red"
+        },
+        {
+          "dmxRange": [36, 37],
+          "type": "ColorPreset",
+          "colors": ["#f980a9"],
+          "comment": "Light Rose"
+        },
+        {
+          "dmxRange": [38, 39],
+          "type": "ColorPreset",
+          "colors": ["#eda18e"],
+          "comment": "English Rose"
+        },
+        {
+          "dmxRange": [40, 41],
+          "type": "ColorPreset",
+          "colors": ["#f892b1"],
+          "comment": "Light Salmon"
+        },
+        {
+          "dmxRange": [42, 43],
+          "type": "ColorPreset",
+          "colors": ["#ec47b6"],
+          "comment": "Dark Pink"
+        },
+        {
+          "dmxRange": [44, 45],
+          "type": "ColorPreset",
+          "colors": ["#00afbe"],
+          "comment": "Peacock Blue"
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "ColorPreset",
+          "colors": ["#008192"],
+          "comment": "Medium Blue Green"
+        },
+        {
+          "dmxRange": [48, 49],
+          "type": "ColorPreset",
+          "colors": ["#53bddf"],
+          "comment": "Steel Blue"
+        },
+        {
+          "dmxRange": [50, 51],
+          "type": "ColorPreset",
+          "colors": ["#003987"],
+          "comment": "Light Blue"
+        },
+        {
+          "dmxRange": [52, 53],
+          "type": "ColorPreset",
+          "colors": ["#0000a8"],
+          "comment": "Dark Blue"
+        },
+        {
+          "dmxRange": [54, 55],
+          "type": "ColorPreset",
+          "colors": ["#100092"],
+          "comment": "Deep Blue"
+        },
+        {
+          "dmxRange": [56, 57],
+          "type": "ColorPreset",
+          "colors": ["#53d655"],
+          "comment": "Leaf Green"
+        },
+        {
+          "dmxRange": [58, 59],
+          "type": "ColorPreset",
+          "colors": ["#00cb60"],
+          "comment": "Fern Green"
+        },
+        {
+          "dmxRange": [60, 61],
+          "type": "ColorPreset",
+          "colors": ["#7e008f"],
+          "comment": "Mauve"
+        },
+        {
+          "dmxRange": [62, 63],
+          "type": "ColorPreset",
+          "colors": ["#cc009e"],
+          "comment": "Bright Pink"
+        },
+        {
+          "dmxRange": [64, 65],
+          "type": "ColorPreset",
+          "colors": ["#00b0bd"],
+          "comment": "Marine Blue"
+        },
+        {
+          "dmxRange": [66, 67],
+          "type": "ColorPreset",
+          "colors": ["#004eb6"],
+          "comment": "Medium Blue"
+        },
+        {
+          "dmxRange": [68, 69],
+          "type": "ColorPreset",
+          "colors": ["#e57852"],
+          "comment": "Golden Amber"
+        },
+        {
+          "dmxRange": [70, 71],
+          "type": "ColorPreset",
+          "colors": ["#e30000"],
+          "comment": "Deep Golden Amber"
+        },
+        {
+          "dmxRange": [72, 73],
+          "type": "ColorPreset",
+          "colors": ["#af95cb"],
+          "comment": "Pale Lavender"
+        },
+        {
+          "dmxRange": [74, 75],
+          "type": "ColorPreset",
+          "colors": ["#8472db"],
+          "comment": "Special Lavender"
+        },
+        {
+          "dmxRange": [76, 77],
+          "type": "ColorPreset",
+          "colors": ["#afdc8f"],
+          "comment": "Pale Green"
+        },
+        {
+          "dmxRange": [78, 79],
+          "type": "ColorPreset",
+          "colors": ["#53d655"],
+          "comment": "Light Green"
+        },
+        {
+          "dmxRange": [80, 81],
+          "type": "ColorPreset",
+          "colors": ["#007100"],
+          "comment": "Primary Green"
+        },
+        {
+          "dmxRange": [82, 83],
+          "type": "ColorPreset",
+          "colors": ["#007ad1"],
+          "comment": "Bright Blue"
+        },
+        {
+          "dmxRange": [84, 85],
+          "type": "ColorPreset",
+          "colors": ["#eb9b6f"],
+          "comment": "Apricot"
+        },
+        {
+          "dmxRange": [86, 87],
+          "type": "ColorPreset",
+          "colors": ["#bd006b"],
+          "comment": "Bright Rose"
+        },
+        {
+          "dmxRange": [88, 89],
+          "type": "ColorPreset",
+          "colors": ["#f2b6b4"],
+          "comment": "Pale Gold"
+        },
+        {
+          "dmxRange": [90, 91],
+          "type": "ColorPreset",
+          "colors": ["#f2b6b4"],
+          "comment": "Pale Rose"
+        },
+        {
+          "dmxRange": [92, 93],
+          "type": "ColorPreset",
+          "colors": ["#f95891"],
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [94, 95],
+          "type": "ColorPreset",
+          "colors": ["#df6300"],
+          "comment": "Deep Orange"
+        },
+        {
+          "dmxRange": [96, 97],
+          "type": "ColorPreset",
+          "colors": ["#edc3c4"],
+          "comment": "Bastard Amber"
+        },
+        {
+          "dmxRange": [98, 99],
+          "type": "ColorPreset",
+          "colors": ["#e2001f"],
+          "comment": "Flame Red"
+        },
+        {
+          "dmxRange": [100, 101],
+          "type": "ColorPreset",
+          "colors": ["#0077d8"],
+          "comment": "Daylight Blue"
+        },
+        {
+          "dmxRange": [102, 103],
+          "type": "ColorPreset",
+          "colors": ["#beb1d6"],
+          "comment": "Lilac Tint"
+        },
+        {
+          "dmxRange": [104, 105],
+          "type": "ColorPreset",
+          "colors": ["#996ebb"],
+          "comment": "Deep Lavender"
+        },
+        {
+          "dmxRange": [106, 107],
+          "type": "ColorPreset",
+          "colors": ["#0092c8"],
+          "comment": "Lagoon Blue"
+        },
+        {
+          "dmxRange": [108, 109],
+          "type": "ColorPreset",
+          "colors": ["#f09e00"],
+          "comment": "Chrome Orange"
+        },
+        {
+          "dmxRange": [110, 111],
+          "type": "ColorPreset",
+          "colors": ["#6000c5"],
+          "comment": "Dark Lavender"
+        },
+        {
+          "dmxRange": [112, 113],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Congo Blue"
+        },
+        {
+          "dmxRange": [114, 115],
+          "type": "ColorPreset",
+          "colors": ["#004fbf"],
+          "comment": "Alice Blue"
+        },
+        {
+          "dmxRange": [116, 117],
+          "type": "ColorPreset",
+          "colors": ["#6a92cd"],
+          "comment": "Full CTB"
+        },
+        {
+          "dmxRange": [118, 119],
+          "type": "ColorPreset",
+          "colors": ["#99b2db"],
+          "comment": "1/2 CTB"
+        },
+        {
+          "dmxRange": [120, 121],
+          "type": "ColorPreset",
+          "colors": ["#bac3de"],
+          "comment": "1/4 CTB"
+        },
+        {
+          "dmxRange": [122, 123],
+          "type": "ColorPreset",
+          "colors": ["#e7a36d"],
+          "comment": "Full CTO (Full CT Orange)"
+        },
+        {
+          "dmxRange": [124, 125],
+          "type": "ColorPreset",
+          "colors": ["#e5bda0"],
+          "comment": "1/2 CTO"
+        },
+        {
+          "dmxRange": [126, 127],
+          "type": "ColorPreset",
+          "colors": ["#e6c8bf"],
+          "comment": "1/4 CTO"
+        },
+        {
+          "dmxRange": [128, 129],
+          "type": "ColorPreset",
+          "colors": ["#d8a5ce"],
+          "comment": "Minus Green"
+        },
+        {
+          "dmxRange": [130, 131],
+          "type": "ColorPreset",
+          "colors": ["#dcbdd8"],
+          "comment": "Half Minus Green"
+        },
+        {
+          "dmxRange": [132, 133],
+          "type": "ColorPreset",
+          "colors": ["#79a7d7"],
+          "comment": "3/4 CTB"
+        },
+        {
+          "dmxRange": [134, 135],
+          "type": "ColorPreset",
+          "colors": ["#deb182"],
+          "comment": "3/4 CTO"
+        },
+        {
+          "dmxRange": [136, 137],
+          "type": "ColorPreset",
+          "colors": ["#00a796"],
+          "comment": "Jade"
+        },
+        {
+          "dmxRange": [138, 139],
+          "type": "ColorPreset",
+          "colors": ["#53d655"],
+          "comment": "Mallard Green"
+        },
+        {
+          "dmxRange": [140, 141],
+          "type": "ColorPreset",
+          "colors": ["#854bb8"],
+          "comment": "Fuchsia Pink"
+        },
+        {
+          "dmxRange": [142, 143],
+          "type": "ColorPreset",
+          "colors": ["#0083cf"],
+          "comment": "Glacier BLue (Glacier Blue)"
+        },
+        {
+          "dmxRange": [144, 145],
+          "type": "ColorPreset",
+          "colors": ["#00aadc"],
+          "comment": "Lighter Blue"
+        },
+        {
+          "dmxRange": [146, 147],
+          "type": "ColorPreset",
+          "colors": ["#ddc29a"],
+          "comment": "Half CT Straw"
+        },
+        {
+          "dmxRange": [148, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 104,
+      "highlightValue": 104,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "12Hz"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0.1Hz",
+          "speedEnd": "10Hz"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [213, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.1Hz",
+          "speedEnd": "10Hz",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "highlightValue": 65535,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Iris": {
+      "defaultValue": 128,
+      "highlightValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 131],
+          "type": "Iris",
+          "openPercentStart": "closed",
+          "openPercentEnd": "open"
+        },
+        {
+          "dmxRange": [132, 171],
+          "type": "IrisEffect",
+          "effectName": "Strobe",
+          "speedStart": "0.1Hz",
+          "speedEnd": "10Hz"
+        },
+        {
+          "dmxRange": [172, 211],
+          "type": "IrisEffect",
+          "effectName": "RampDown",
+          "speedStart": "0.1Hz",
+          "speedEnd": "10Hz"
+        },
+        {
+          "dmxRange": [212, 251],
+          "type": "IrisEffect",
+          "effectName": "RampUp",
+          "speedStart": "0.1Hz",
+          "speedEnd": "10Hz"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Iris",
+          "openPercent": "open"
+        }
+      ]
+    },
+    "Static Gobo Wheel": {
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "GoboIndex",
+          "index": 1
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "GoboIndex",
+          "index": 2
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "GoboIndex",
+          "index": 3
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "GoboIndex",
+          "index": 4
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "GoboIndex",
+          "index": 5
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "GoboIndex",
+          "index": 6
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "GoboIndex",
+          "index": 7
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "GoboIndex",
+          "index": 8
+        },
+        {
+          "dmxRange": [72, 113],
+          "type": "GoboWheelRotation",
+          "speedStart": "-100rpm",
+          "speedEnd": "-5rpm"
+        },
+        {
+          "dmxRange": [114, 117],
+          "type": "GoboWheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [118, 159],
+          "type": "GoboWheelRotation",
+          "speedStart": "5rpm",
+          "speedEnd": "100rpm"
+        },
+        {
+          "dmxRange": [160, 171],
+          "type": "GoboIndex",
+          "index": 1,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [172, 183],
+          "type": "GoboIndex",
+          "index": 2,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [184, 195],
+          "type": "GoboIndex",
+          "index": 3,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [196, 207],
+          "type": "GoboIndex",
+          "index": 4,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [208, 219],
+          "type": "GoboIndex",
+          "index": 5,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [220, 231],
+          "type": "GoboIndex",
+          "index": 6,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [232, 243],
+          "type": "GoboIndex",
+          "index": 7,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [244, 255],
+          "type": "GoboIndex",
+          "index": 8,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        }
+      ]
+    },
+    "Rotating Gobo Wheel": {
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 16],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [17, 32],
+          "type": "GoboIndex",
+          "index": 1
+        },
+        {
+          "dmxRange": [33, 48],
+          "type": "GoboIndex",
+          "index": 2
+        },
+        {
+          "dmxRange": [49, 64],
+          "type": "GoboIndex",
+          "index": 3
+        },
+        {
+          "dmxRange": [65, 81],
+          "type": "GoboIndex",
+          "index": 4
+        },
+        {
+          "dmxRange": [82, 97],
+          "type": "GoboIndex",
+          "index": 5
+        },
+        {
+          "dmxRange": [98, 113],
+          "type": "GoboIndex",
+          "index": 6
+        },
+        {
+          "dmxRange": [114, 129],
+          "type": "GoboIndex",
+          "index": 7
+        },
+        {
+          "dmxRange": [130, 147],
+          "type": "GoboIndex",
+          "index": 1,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [148, 165],
+          "type": "GoboIndex",
+          "index": 2,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [166, 183],
+          "type": "GoboIndex",
+          "index": 3,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [184, 201],
+          "type": "GoboIndex",
+          "index": 4,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [202, 219],
+          "type": "GoboIndex",
+          "index": 5,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [220, 237],
+          "type": "GoboIndex",
+          "index": 6,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [238, 255],
+          "type": "GoboIndex",
+          "index": 7,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        }
+      ]
+    },
+    "Gobo Rotation": {
+      "fineChannelAliases": ["Gobo Rotation fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "GoboStencilRotation",
+          "angle": "0deg"
+        },
+        {
+          "dmxRange": [1, 20],
+          "type": "GoboStencilRotation",
+          "angleStart": "0deg",
+          "angleEnd": "90deg"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "GoboStencilRotation",
+          "angle": "90deg"
+        },
+        {
+          "dmxRange": [22, 41],
+          "type": "GoboStencilRotation",
+          "angleStart": "90deg",
+          "angleEnd": "180deg"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "GoboStencilRotation",
+          "angle": "180deg"
+        },
+        {
+          "dmxRange": [43, 62],
+          "type": "GoboStencilRotation",
+          "angleStart": "180deg",
+          "angleEnd": "270deg"
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "GoboStencilRotation",
+          "angle": "270deg"
+        },
+        {
+          "dmxRange": [64, 83],
+          "type": "GoboStencilRotation",
+          "angleStart": "270deg",
+          "angleEnd": "360deg"
+        },
+        {
+          "dmxRange": [84, 84],
+          "type": "GoboStencilRotation",
+          "angle": "360deg"
+        },
+        {
+          "dmxRange": [85, 104],
+          "type": "GoboStencilRotation",
+          "angleStart": "360deg",
+          "angleEnd": "450deg"
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "GoboStencilRotation",
+          "angle": "450deg"
+        },
+        {
+          "dmxRange": [106, 126],
+          "type": "GoboStencilRotation",
+          "angleStart": "450deg",
+          "angleEnd": "540deg"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "GoboStencilRotation",
+          "angle": "540deg"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "GoboStencilRotation",
+          "speedStart": "180rpm",
+          "speedEnd": "0.0367rpm"
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "GoboStencilRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "GoboStencilRotation",
+          "speedStart": "-0.0367rpm",
+          "speedEnd": "-180rpm"
+        }
+      ]
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Prism",
+          "comment": "3 facet"
+        }
+      ]
+    },
+    "Prism Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "PrismRotation",
+          "angle": "0deg"
+        },
+        {
+          "dmxRange": [1, 20],
+          "type": "PrismRotation",
+          "angleStart": "0deg",
+          "angleEnd": "90deg"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "PrismRotation",
+          "angle": "90deg"
+        },
+        {
+          "dmxRange": [22, 41],
+          "type": "PrismRotation",
+          "angleStart": "90deg",
+          "angleEnd": "180deg"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "PrismRotation",
+          "angle": "180deg"
+        },
+        {
+          "dmxRange": [43, 62],
+          "type": "PrismRotation",
+          "angleStart": "180deg",
+          "angleEnd": "270deg"
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "PrismRotation",
+          "angle": "270deg"
+        },
+        {
+          "dmxRange": [64, 83],
+          "type": "PrismRotation",
+          "angleStart": "2700deg",
+          "angleEnd": "360deg"
+        },
+        {
+          "dmxRange": [84, 84],
+          "type": "PrismRotation",
+          "angle": "360deg"
+        },
+        {
+          "dmxRange": [85, 104],
+          "type": "PrismRotation",
+          "angleStart": "360deg",
+          "angleEnd": "450deg"
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "PrismRotation",
+          "angle": "450deg"
+        },
+        {
+          "dmxRange": [106, 126],
+          "type": "PrismRotation",
+          "angleStart": "450deg",
+          "angleEnd": "540deg"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "PrismRotation",
+          "angle": "540deg"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "PrismRotation",
+          "speedStart": "-120rpm",
+          "speedEnd": "-0.05rpm"
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "PrismRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "PrismRotation",
+          "speedStart": "0.05rpm",
+          "speedEnd": "120rpm"
+        }
+      ]
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "0%",
+        "frostIntensityEnd": "100%"
+      }
+    },
+    "Animation Disk": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Animation Disk insertion",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
+    },
+    "Animation Disk Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 124],
+          "type": "Rotation",
+          "speedStart": "-120rpm",
+          "speedEnd": "-0.0733rpm"
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [126, 255],
+          "type": "Rotation",
+          "speedStart": "0.0733rpm",
+          "speedEnd": "120rpm"
+        }
+      ]
+    },
+    "Focus": {
+      "fineChannelAliases": ["Focus fine"],
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "far",
+        "distanceEnd": "near"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "11deg",
+        "angleEnd": "55deg",
+        "helpWanted": "The manual specifies this capability as wide…narrow, the GDTF as narrow…wide (with the given angles). Which one is correct?"
+      }
+    },
+    "Autofocus Distance": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 6],
+          "type": "NoFunction",
+          "comment": "Autofocus off"
+        },
+        {
+          "dmxRange": [7, 9],
+          "type": "Focus",
+          "distance": "3m"
+        },
+        {
+          "dmxRange": [10, 12],
+          "type": "Focus",
+          "distance": "4m"
+        },
+        {
+          "dmxRange": [13, 14],
+          "type": "Focus",
+          "distance": "5m"
+        },
+        {
+          "dmxRange": [15, 17],
+          "type": "Focus",
+          "distance": "6m"
+        },
+        {
+          "dmxRange": [18, 19],
+          "type": "Focus",
+          "distance": "7m"
+        },
+        {
+          "dmxRange": [20, 22],
+          "type": "Focus",
+          "distance": "8m"
+        },
+        {
+          "dmxRange": [23, 25],
+          "type": "Focus",
+          "distance": "9m"
+        },
+        {
+          "dmxRange": [26, 27],
+          "type": "Focus",
+          "distance": "10m"
+        },
+        {
+          "dmxRange": [28, 255],
+          "type": "Focus",
+          "distanceStart": "10m",
+          "distanceEnd": "100m"
+        }
+      ]
+    },
+    "Autofocus Adjust": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Focus",
+          "distanceStart": "-100%",
+          "distanceEnd": "0%"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Focus",
+          "distance": "0%"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Focus",
+          "distanceStart": "0%",
+          "distanceEnd": "100%"
+        }
+      ]
+    },
+    "Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "comment": "Macro off"
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "Effect",
+          "effectName": "Stand by"
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "Effect",
+          "effectName": "Stand by black"
+        },
+        {
+          "dmxRange": [16, 27],
+          "type": "Effect",
+          "effectName": "Macro 1"
+        },
+        {
+          "dmxRange": [28, 39],
+          "type": "Effect",
+          "effectName": "Macro 2"
+        },
+        {
+          "dmxRange": [40, 51],
+          "type": "Effect",
+          "effectName": "Macro 3"
+        },
+        {
+          "dmxRange": [52, 63],
+          "type": "Effect",
+          "effectName": "Macro 4"
+        },
+        {
+          "dmxRange": [64, 75],
+          "type": "Effect",
+          "effectName": "Macro 5"
+        },
+        {
+          "dmxRange": [76, 87],
+          "type": "Effect",
+          "effectName": "Macro 6"
+        },
+        {
+          "dmxRange": [88, 99],
+          "type": "Effect",
+          "effectName": "Macro 7"
+        },
+        {
+          "dmxRange": [100, 111],
+          "type": "Effect",
+          "effectName": "Macro 8"
+        },
+        {
+          "dmxRange": [112, 135],
+          "type": "Effect",
+          "effectName": "Stand by black"
+        },
+        {
+          "dmxRange": [136, 147],
+          "type": "Effect",
+          "effectName": "Random Macro 1"
+        },
+        {
+          "dmxRange": [148, 159],
+          "type": "Effect",
+          "effectName": "Random Macro 2"
+        },
+        {
+          "dmxRange": [160, 171],
+          "type": "Effect",
+          "effectName": "Random Macro 3"
+        },
+        {
+          "dmxRange": [172, 183],
+          "type": "Effect",
+          "effectName": "Random Macro 4"
+        },
+        {
+          "dmxRange": [184, 195],
+          "type": "Effect",
+          "effectName": "Random Macro 5"
+        },
+        {
+          "dmxRange": [196, 207],
+          "type": "Effect",
+          "effectName": "Random Macro 6"
+        },
+        {
+          "dmxRange": [208, 219],
+          "type": "Effect",
+          "effectName": "Random Macro 7"
+        },
+        {
+          "dmxRange": [220, 231],
+          "type": "Effect",
+          "effectName": "Random Macro 8"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "Effect",
+          "effectName": "Stand by black"
+        }
+      ]
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "250deg"
+      }
+    },
+    "Function": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [12, 24],
+          "type": "Maintenance",
+          "comment": "Pan Tilt Fast"
+        },
+        {
+          "dmxRange": [25, 37],
+          "type": "Maintenance",
+          "comment": "Pan Tilt Normal"
+        },
+        {
+          "dmxRange": [38, 50],
+          "type": "Maintenance",
+          "comment": "Dimmer Curve Conventional"
+        },
+        {
+          "dmxRange": [51, 62],
+          "type": "Maintenance",
+          "comment": "Dimmer Curve Linear"
+        },
+        {
+          "dmxRange": [63, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [26, 76],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Effects Reset"
+        },
+        {
+          "dmxRange": [77, 127],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Pan/Tilt Reset"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Complete Reset"
+        }
+      ]
+    },
+    "Lamp Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [26, 100],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Lamp Off"
+        },
+        {
+          "dmxRange": [101, 179],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [180, 255],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Lamp On"
+        }
+      ]
+    },
+    "Pan/Tilt Time": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "PanTiltSpeed",
+          "duration": "0s"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "PanTiltSpeed",
+          "duration": "0.2s"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "PanTiltSpeed",
+          "duration": "0.4s"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "PanTiltSpeed",
+          "duration": "0.6s"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "PanTiltSpeed",
+          "duration": "0.8s"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "PanTiltSpeed",
+          "duration": "1s"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "PanTiltSpeed",
+          "duration": "1.2s"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "PanTiltSpeed",
+          "duration": "1.4s"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "PanTiltSpeed",
+          "duration": "1.6s"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "PanTiltSpeed",
+          "duration": "1.8s"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "PanTiltSpeed",
+          "duration": "2s"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "PanTiltSpeed",
+          "duration": "2.2s"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "PanTiltSpeed",
+          "duration": "2.4s"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "PanTiltSpeed",
+          "duration": "2.6s"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "PanTiltSpeed",
+          "duration": "2.8s"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "PanTiltSpeed",
+          "duration": "3s"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "PanTiltSpeed",
+          "duration": "3.2s"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "PanTiltSpeed",
+          "duration": "3.4s"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "PanTiltSpeed",
+          "duration": "3.6s"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "PanTiltSpeed",
+          "duration": "3.8s"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "PanTiltSpeed",
+          "duration": "4s"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "PanTiltSpeed",
+          "duration": "4.2s"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "PanTiltSpeed",
+          "duration": "4.4s"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "PanTiltSpeed",
+          "duration": "4.6s"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "PanTiltSpeed",
+          "duration": "4.8s"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "PanTiltSpeed",
+          "duration": "5s"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "PanTiltSpeed",
+          "duration": "5.2s"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "PanTiltSpeed",
+          "duration": "5.4s"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "PanTiltSpeed",
+          "duration": "5.6s"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "PanTiltSpeed",
+          "duration": "5.8s"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "PanTiltSpeed",
+          "duration": "6s"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "PanTiltSpeed",
+          "duration": "6.2s"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "PanTiltSpeed",
+          "duration": "6.4s"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "PanTiltSpeed",
+          "duration": "6.6s"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "PanTiltSpeed",
+          "duration": "6.8s"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "PanTiltSpeed",
+          "duration": "7s"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "PanTiltSpeed",
+          "duration": "7.2s"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "PanTiltSpeed",
+          "duration": "7.4s"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "PanTiltSpeed",
+          "duration": "7.6s"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "PanTiltSpeed",
+          "duration": "7.8s"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "PanTiltSpeed",
+          "duration": "8s"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "PanTiltSpeed",
+          "duration": "8.2s"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "PanTiltSpeed",
+          "duration": "8.4s"
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "PanTiltSpeed",
+          "duration": "8.6s"
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "PanTiltSpeed",
+          "duration": "8.8s"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "PanTiltSpeed",
+          "duration": "9s"
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "PanTiltSpeed",
+          "duration": "9.2s"
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "PanTiltSpeed",
+          "duration": "9.4s"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "PanTiltSpeed",
+          "duration": "9.6s"
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "PanTiltSpeed",
+          "duration": "9.8s"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "PanTiltSpeed",
+          "duration": "10s"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "PanTiltSpeed",
+          "duration": "10.2s"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "PanTiltSpeed",
+          "duration": "10.4s"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "PanTiltSpeed",
+          "duration": "10.6s"
+        },
+        {
+          "dmxRange": [54, 55],
+          "type": "PanTiltSpeed",
+          "duration": "11s"
+        },
+        {
+          "dmxRange": [56, 57],
+          "type": "PanTiltSpeed",
+          "duration": "12s"
+        },
+        {
+          "dmxRange": [58, 59],
+          "type": "PanTiltSpeed",
+          "duration": "13s"
+        },
+        {
+          "dmxRange": [60, 62],
+          "type": "PanTiltSpeed",
+          "duration": "14s"
+        },
+        {
+          "dmxRange": [63, 64],
+          "type": "PanTiltSpeed",
+          "duration": "15s"
+        },
+        {
+          "dmxRange": [65, 67],
+          "type": "PanTiltSpeed",
+          "duration": "16s"
+        },
+        {
+          "dmxRange": [68, 69],
+          "type": "PanTiltSpeed",
+          "duration": "17s"
+        },
+        {
+          "dmxRange": [70, 72],
+          "type": "PanTiltSpeed",
+          "duration": "18s"
+        },
+        {
+          "dmxRange": [73, 74],
+          "type": "PanTiltSpeed",
+          "duration": "19s"
+        },
+        {
+          "dmxRange": [75, 77],
+          "type": "PanTiltSpeed",
+          "duration": "20s"
+        },
+        {
+          "dmxRange": [78, 80],
+          "type": "PanTiltSpeed",
+          "duration": "21s"
+        },
+        {
+          "dmxRange": [81, 82],
+          "type": "PanTiltSpeed",
+          "duration": "22s"
+        },
+        {
+          "dmxRange": [83, 85],
+          "type": "PanTiltSpeed",
+          "duration": "23s"
+        },
+        {
+          "dmxRange": [86, 87],
+          "type": "PanTiltSpeed",
+          "duration": "24s"
+        },
+        {
+          "dmxRange": [88, 90],
+          "type": "PanTiltSpeed",
+          "duration": "25s"
+        },
+        {
+          "dmxRange": [91, 92],
+          "type": "PanTiltSpeed",
+          "duration": "26s"
+        },
+        {
+          "dmxRange": [93, 95],
+          "type": "PanTiltSpeed",
+          "duration": "27s"
+        },
+        {
+          "dmxRange": [96, 97],
+          "type": "PanTiltSpeed",
+          "duration": "28s"
+        },
+        {
+          "dmxRange": [98, 100],
+          "type": "PanTiltSpeed",
+          "duration": "29s"
+        },
+        {
+          "dmxRange": [101, 103],
+          "type": "PanTiltSpeed",
+          "duration": "30s"
+        },
+        {
+          "dmxRange": [104, 105],
+          "type": "PanTiltSpeed",
+          "duration": "31s"
+        },
+        {
+          "dmxRange": [106, 108],
+          "type": "PanTiltSpeed",
+          "duration": "32s"
+        },
+        {
+          "dmxRange": [109, 110],
+          "type": "PanTiltSpeed",
+          "duration": "33s"
+        },
+        {
+          "dmxRange": [111, 113],
+          "type": "PanTiltSpeed",
+          "duration": "34s"
+        },
+        {
+          "dmxRange": [114, 115],
+          "type": "PanTiltSpeed",
+          "duration": "35s"
+        },
+        {
+          "dmxRange": [116, 118],
+          "type": "PanTiltSpeed",
+          "duration": "36s"
+        },
+        {
+          "dmxRange": [119, 120],
+          "type": "PanTiltSpeed",
+          "duration": "37s"
+        },
+        {
+          "dmxRange": [121, 123],
+          "type": "PanTiltSpeed",
+          "duration": "38s"
+        },
+        {
+          "dmxRange": [124, 126],
+          "type": "PanTiltSpeed",
+          "duration": "39s"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "PanTiltSpeed",
+          "duration": "40s"
+        },
+        {
+          "dmxRange": [129, 131],
+          "type": "PanTiltSpeed",
+          "duration": "41s"
+        },
+        {
+          "dmxRange": [132, 133],
+          "type": "PanTiltSpeed",
+          "duration": "42s"
+        },
+        {
+          "dmxRange": [134, 136],
+          "type": "PanTiltSpeed",
+          "duration": "43s"
+        },
+        {
+          "dmxRange": [137, 138],
+          "type": "PanTiltSpeed",
+          "duration": "44s"
+        },
+        {
+          "dmxRange": [139, 141],
+          "type": "PanTiltSpeed",
+          "duration": "45s"
+        },
+        {
+          "dmxRange": [142, 143],
+          "type": "PanTiltSpeed",
+          "duration": "46s"
+        },
+        {
+          "dmxRange": [144, 146],
+          "type": "PanTiltSpeed",
+          "duration": "47s"
+        },
+        {
+          "dmxRange": [147, 148],
+          "type": "PanTiltSpeed",
+          "duration": "48s"
+        },
+        {
+          "dmxRange": [149, 151],
+          "type": "PanTiltSpeed",
+          "duration": "49s"
+        },
+        {
+          "dmxRange": [152, 154],
+          "type": "PanTiltSpeed",
+          "duration": "50s"
+        },
+        {
+          "dmxRange": [155, 156],
+          "type": "PanTiltSpeed",
+          "duration": "51s"
+        },
+        {
+          "dmxRange": [157, 159],
+          "type": "PanTiltSpeed",
+          "duration": "52s"
+        },
+        {
+          "dmxRange": [160, 161],
+          "type": "PanTiltSpeed",
+          "duration": "53s"
+        },
+        {
+          "dmxRange": [162, 164],
+          "type": "PanTiltSpeed",
+          "duration": "54s"
+        },
+        {
+          "dmxRange": [165, 166],
+          "type": "PanTiltSpeed",
+          "duration": "55s"
+        },
+        {
+          "dmxRange": [167, 169],
+          "type": "PanTiltSpeed",
+          "duration": "56s"
+        },
+        {
+          "dmxRange": [170, 171],
+          "type": "PanTiltSpeed",
+          "duration": "57s"
+        },
+        {
+          "dmxRange": [172, 174],
+          "type": "PanTiltSpeed",
+          "duration": "58s"
+        },
+        {
+          "dmxRange": [175, 177],
+          "type": "PanTiltSpeed",
+          "duration": "59s"
+        },
+        {
+          "dmxRange": [178, 179],
+          "type": "PanTiltSpeed",
+          "duration": "60s"
+        },
+        {
+          "dmxRange": [180, 182],
+          "type": "PanTiltSpeed",
+          "duration": "65s"
+        },
+        {
+          "dmxRange": [183, 184],
+          "type": "PanTiltSpeed",
+          "duration": "70s"
+        },
+        {
+          "dmxRange": [185, 187],
+          "type": "PanTiltSpeed",
+          "duration": "75s"
+        },
+        {
+          "dmxRange": [188, 189],
+          "type": "PanTiltSpeed",
+          "duration": "80s"
+        },
+        {
+          "dmxRange": [190, 192],
+          "type": "PanTiltSpeed",
+          "duration": "85s"
+        },
+        {
+          "dmxRange": [193, 194],
+          "type": "PanTiltSpeed",
+          "duration": "90s"
+        },
+        {
+          "dmxRange": [195, 197],
+          "type": "PanTiltSpeed",
+          "duration": "95s"
+        },
+        {
+          "dmxRange": [198, 199],
+          "type": "PanTiltSpeed",
+          "duration": "100s"
+        },
+        {
+          "dmxRange": [200, 202],
+          "type": "PanTiltSpeed",
+          "duration": "110s"
+        },
+        {
+          "dmxRange": [203, 205],
+          "type": "PanTiltSpeed",
+          "duration": "120s"
+        },
+        {
+          "dmxRange": [206, 207],
+          "type": "PanTiltSpeed",
+          "duration": "130s"
+        },
+        {
+          "dmxRange": [208, 210],
+          "type": "PanTiltSpeed",
+          "duration": "140s"
+        },
+        {
+          "dmxRange": [211, 212],
+          "type": "PanTiltSpeed",
+          "duration": "150s"
+        },
+        {
+          "dmxRange": [213, 215],
+          "type": "PanTiltSpeed",
+          "duration": "160s"
+        },
+        {
+          "dmxRange": [216, 217],
+          "type": "PanTiltSpeed",
+          "duration": "170s"
+        },
+        {
+          "dmxRange": [218, 220],
+          "type": "PanTiltSpeed",
+          "duration": "180s"
+        },
+        {
+          "dmxRange": [221, 222],
+          "type": "PanTiltSpeed",
+          "duration": "190s"
+        },
+        {
+          "dmxRange": [223, 225],
+          "type": "PanTiltSpeed",
+          "duration": "200s"
+        },
+        {
+          "dmxRange": [226, 228],
+          "type": "PanTiltSpeed",
+          "duration": "210s"
+        },
+        {
+          "dmxRange": [229, 230],
+          "type": "PanTiltSpeed",
+          "duration": "220s"
+        },
+        {
+          "dmxRange": [231, 233],
+          "type": "PanTiltSpeed",
+          "duration": "230s"
+        },
+        {
+          "dmxRange": [234, 235],
+          "type": "PanTiltSpeed",
+          "duration": "240s"
+        },
+        {
+          "dmxRange": [236, 238],
+          "type": "PanTiltSpeed",
+          "duration": "250s"
+        },
+        {
+          "dmxRange": [239, 240],
+          "type": "PanTiltSpeed",
+          "duration": "260s"
+        },
+        {
+          "dmxRange": [241, 243],
+          "type": "PanTiltSpeed",
+          "duration": "270s"
+        },
+        {
+          "dmxRange": [244, 245],
+          "type": "PanTiltSpeed",
+          "duration": "280s"
+        },
+        {
+          "dmxRange": [246, 248],
+          "type": "PanTiltSpeed",
+          "duration": "290s"
+        },
+        {
+          "dmxRange": [249, 250],
+          "type": "PanTiltSpeed",
+          "duration": "300s"
+        },
+        {
+          "dmxRange": [251, 254],
+          "type": "PanTiltSpeed",
+          "duration": "310s"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "comment": "Follow cue Data"
+        }
+      ]
+    },
+    "Color Time": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Time",
+          "time": "0s"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Time",
+          "time": "0.2s"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "Time",
+          "time": "0.4s"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "Time",
+          "time": "0.6s"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Time",
+          "time": "0.8s"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Time",
+          "time": "1s"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Time",
+          "time": "1.2s"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "Time",
+          "time": "1.4s"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Time",
+          "time": "1.6s"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Time",
+          "time": "1.8s"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Time",
+          "time": "2s"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Time",
+          "time": "2.2s"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Time",
+          "time": "2.4s"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Time",
+          "time": "2.6s"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Time",
+          "time": "2.8s"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Time",
+          "time": "3s"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Time",
+          "time": "3.2s"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Time",
+          "time": "3.4s"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Time",
+          "time": "3.6s"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Time",
+          "time": "3.8s"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Time",
+          "time": "4s"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Time",
+          "time": "4.2s"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Time",
+          "time": "4.4s"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Time",
+          "time": "4.6s"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Time",
+          "time": "4.8s"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Time",
+          "time": "5s"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Time",
+          "time": "5.2s"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Time",
+          "time": "5.4s"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Time",
+          "time": "5.6s"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Time",
+          "time": "5.8s"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Time",
+          "time": "6s"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Time",
+          "time": "6.2s"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Time",
+          "time": "6.4s"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Time",
+          "time": "6.6s"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Time",
+          "time": "6.8s"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Time",
+          "time": "7s"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Time",
+          "time": "7.2s"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Time",
+          "time": "7.4s"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Time",
+          "time": "7.6s"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "Time",
+          "time": "7.8s"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Time",
+          "time": "8s"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Time",
+          "time": "8.2s"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "Time",
+          "time": "8.4s"
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "Time",
+          "time": "8.6s"
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "Time",
+          "time": "8.8s"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "Time",
+          "time": "9s"
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "Time",
+          "time": "9.2s"
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "Time",
+          "time": "9.4s"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "Time",
+          "time": "9.6s"
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "Time",
+          "time": "9.8s"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "Time",
+          "time": "10s"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Time",
+          "time": "10.2s"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Time",
+          "time": "10.4s"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Time",
+          "time": "10.6s"
+        },
+        {
+          "dmxRange": [54, 55],
+          "type": "Time",
+          "time": "11s"
+        },
+        {
+          "dmxRange": [56, 57],
+          "type": "Time",
+          "time": "12s"
+        },
+        {
+          "dmxRange": [58, 59],
+          "type": "Time",
+          "time": "13s"
+        },
+        {
+          "dmxRange": [60, 62],
+          "type": "Time",
+          "time": "14s"
+        },
+        {
+          "dmxRange": [63, 64],
+          "type": "Time",
+          "time": "15s"
+        },
+        {
+          "dmxRange": [65, 67],
+          "type": "Time",
+          "time": "16s"
+        },
+        {
+          "dmxRange": [68, 69],
+          "type": "Time",
+          "time": "17s"
+        },
+        {
+          "dmxRange": [70, 72],
+          "type": "Time",
+          "time": "18s"
+        },
+        {
+          "dmxRange": [73, 74],
+          "type": "Time",
+          "time": "19s"
+        },
+        {
+          "dmxRange": [75, 77],
+          "type": "Time",
+          "time": "20s"
+        },
+        {
+          "dmxRange": [78, 80],
+          "type": "Time",
+          "time": "21s"
+        },
+        {
+          "dmxRange": [81, 82],
+          "type": "Time",
+          "time": "22s"
+        },
+        {
+          "dmxRange": [83, 85],
+          "type": "Time",
+          "time": "23s"
+        },
+        {
+          "dmxRange": [86, 87],
+          "type": "Time",
+          "time": "24s"
+        },
+        {
+          "dmxRange": [88, 90],
+          "type": "Time",
+          "time": "25s"
+        },
+        {
+          "dmxRange": [91, 92],
+          "type": "Time",
+          "time": "26s"
+        },
+        {
+          "dmxRange": [93, 95],
+          "type": "Time",
+          "time": "27s"
+        },
+        {
+          "dmxRange": [96, 97],
+          "type": "Time",
+          "time": "28s"
+        },
+        {
+          "dmxRange": [98, 100],
+          "type": "Time",
+          "time": "29s"
+        },
+        {
+          "dmxRange": [101, 103],
+          "type": "Time",
+          "time": "30s"
+        },
+        {
+          "dmxRange": [104, 105],
+          "type": "Time",
+          "time": "31s"
+        },
+        {
+          "dmxRange": [106, 108],
+          "type": "Time",
+          "time": "32s"
+        },
+        {
+          "dmxRange": [109, 110],
+          "type": "Time",
+          "time": "33s"
+        },
+        {
+          "dmxRange": [111, 113],
+          "type": "Time",
+          "time": "34s"
+        },
+        {
+          "dmxRange": [114, 115],
+          "type": "Time",
+          "time": "35s"
+        },
+        {
+          "dmxRange": [116, 118],
+          "type": "Time",
+          "time": "36s"
+        },
+        {
+          "dmxRange": [119, 120],
+          "type": "Time",
+          "time": "37s"
+        },
+        {
+          "dmxRange": [121, 123],
+          "type": "Time",
+          "time": "38s"
+        },
+        {
+          "dmxRange": [124, 126],
+          "type": "Time",
+          "time": "39s"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "Time",
+          "time": "40s"
+        },
+        {
+          "dmxRange": [129, 131],
+          "type": "Time",
+          "time": "41s"
+        },
+        {
+          "dmxRange": [132, 133],
+          "type": "Time",
+          "time": "42s"
+        },
+        {
+          "dmxRange": [134, 136],
+          "type": "Time",
+          "time": "43s"
+        },
+        {
+          "dmxRange": [137, 138],
+          "type": "Time",
+          "time": "44s"
+        },
+        {
+          "dmxRange": [139, 141],
+          "type": "Time",
+          "time": "45s"
+        },
+        {
+          "dmxRange": [142, 143],
+          "type": "Time",
+          "time": "46s"
+        },
+        {
+          "dmxRange": [144, 146],
+          "type": "Time",
+          "time": "47s"
+        },
+        {
+          "dmxRange": [147, 148],
+          "type": "Time",
+          "time": "48s"
+        },
+        {
+          "dmxRange": [149, 151],
+          "type": "Time",
+          "time": "49s"
+        },
+        {
+          "dmxRange": [152, 154],
+          "type": "Time",
+          "time": "50s"
+        },
+        {
+          "dmxRange": [155, 156],
+          "type": "Time",
+          "time": "51s"
+        },
+        {
+          "dmxRange": [157, 159],
+          "type": "Time",
+          "time": "52s"
+        },
+        {
+          "dmxRange": [160, 161],
+          "type": "Time",
+          "time": "53s"
+        },
+        {
+          "dmxRange": [162, 164],
+          "type": "Time",
+          "time": "54s"
+        },
+        {
+          "dmxRange": [165, 166],
+          "type": "Time",
+          "time": "55s"
+        },
+        {
+          "dmxRange": [167, 169],
+          "type": "Time",
+          "time": "56s"
+        },
+        {
+          "dmxRange": [170, 171],
+          "type": "Time",
+          "time": "57s"
+        },
+        {
+          "dmxRange": [172, 174],
+          "type": "Time",
+          "time": "58s"
+        },
+        {
+          "dmxRange": [175, 177],
+          "type": "Time",
+          "time": "59s"
+        },
+        {
+          "dmxRange": [178, 179],
+          "type": "Time",
+          "time": "60s"
+        },
+        {
+          "dmxRange": [180, 182],
+          "type": "Time",
+          "time": "65s"
+        },
+        {
+          "dmxRange": [183, 184],
+          "type": "Time",
+          "time": "70s"
+        },
+        {
+          "dmxRange": [185, 187],
+          "type": "Time",
+          "time": "75s"
+        },
+        {
+          "dmxRange": [188, 189],
+          "type": "Time",
+          "time": "80s"
+        },
+        {
+          "dmxRange": [190, 192],
+          "type": "Time",
+          "time": "85s"
+        },
+        {
+          "dmxRange": [193, 194],
+          "type": "Time",
+          "time": "90s"
+        },
+        {
+          "dmxRange": [195, 197],
+          "type": "Time",
+          "time": "95s"
+        },
+        {
+          "dmxRange": [198, 199],
+          "type": "Time",
+          "time": "100s"
+        },
+        {
+          "dmxRange": [200, 202],
+          "type": "Time",
+          "time": "110s"
+        },
+        {
+          "dmxRange": [203, 205],
+          "type": "Time",
+          "time": "120s"
+        },
+        {
+          "dmxRange": [206, 207],
+          "type": "Time",
+          "time": "130s"
+        },
+        {
+          "dmxRange": [208, 210],
+          "type": "Time",
+          "time": "140s"
+        },
+        {
+          "dmxRange": [211, 212],
+          "type": "Time",
+          "time": "150s"
+        },
+        {
+          "dmxRange": [213, 215],
+          "type": "Time",
+          "time": "160s"
+        },
+        {
+          "dmxRange": [216, 217],
+          "type": "Time",
+          "time": "170s"
+        },
+        {
+          "dmxRange": [218, 220],
+          "type": "Time",
+          "time": "180s"
+        },
+        {
+          "dmxRange": [221, 222],
+          "type": "Time",
+          "time": "190s"
+        },
+        {
+          "dmxRange": [223, 225],
+          "type": "Time",
+          "time": "200s"
+        },
+        {
+          "dmxRange": [226, 228],
+          "type": "Time",
+          "time": "210s"
+        },
+        {
+          "dmxRange": [229, 230],
+          "type": "Time",
+          "time": "220s"
+        },
+        {
+          "dmxRange": [231, 233],
+          "type": "Time",
+          "time": "230s"
+        },
+        {
+          "dmxRange": [234, 235],
+          "type": "Time",
+          "time": "240s"
+        },
+        {
+          "dmxRange": [236, 238],
+          "type": "Time",
+          "time": "250s"
+        },
+        {
+          "dmxRange": [239, 240],
+          "type": "Time",
+          "time": "260s"
+        },
+        {
+          "dmxRange": [241, 243],
+          "type": "Time",
+          "time": "270s"
+        },
+        {
+          "dmxRange": [244, 245],
+          "type": "Time",
+          "time": "280s"
+        },
+        {
+          "dmxRange": [246, 248],
+          "type": "Time",
+          "time": "290s"
+        },
+        {
+          "dmxRange": [249, 250],
+          "type": "Time",
+          "time": "300s"
+        },
+        {
+          "dmxRange": [251, 254],
+          "type": "Time",
+          "time": "310s"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "comment": "Follow cue Data"
+        }
+      ]
+    },
+    "Beam Time": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Time",
+          "time": "0s"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Time",
+          "time": "0.2s"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "Time",
+          "time": "0.4s"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "Time",
+          "time": "0.6s"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Time",
+          "time": "0.8s"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Time",
+          "time": "1s"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Time",
+          "time": "1.2s"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "Time",
+          "time": "1.4s"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Time",
+          "time": "1.6s"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Time",
+          "time": "1.8s"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Time",
+          "time": "2s"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Time",
+          "time": "2.2s"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Time",
+          "time": "2.4s"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Time",
+          "time": "2.6s"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Time",
+          "time": "2.8s"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Time",
+          "time": "3s"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Time",
+          "time": "3.2s"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Time",
+          "time": "3.4s"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Time",
+          "time": "3.6s"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Time",
+          "time": "3.8s"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Time",
+          "time": "4s"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Time",
+          "time": "4.2s"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Time",
+          "time": "4.4s"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Time",
+          "time": "4.6s"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Time",
+          "time": "4.8s"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Time",
+          "time": "5s"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Time",
+          "time": "5.2s"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Time",
+          "time": "5.4s"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Time",
+          "time": "5.6s"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Time",
+          "time": "5.8s"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Time",
+          "time": "6s"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Time",
+          "time": "6.2s"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Time",
+          "time": "6.4s"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Time",
+          "time": "6.6s"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Time",
+          "time": "6.8s"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Time",
+          "time": "7s"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Time",
+          "time": "7.2s"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Time",
+          "time": "7.4s"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Time",
+          "time": "7.6s"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "Time",
+          "time": "7.8s"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Time",
+          "time": "8s"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Time",
+          "time": "8.2s"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "Time",
+          "time": "8.4s"
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "Time",
+          "time": "8.6s"
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "Time",
+          "time": "8.8s"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "Time",
+          "time": "9s"
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "Time",
+          "time": "9.2s"
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "Time",
+          "time": "9.4s"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "Time",
+          "time": "9.6s"
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "Time",
+          "time": "9.8s"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "Time",
+          "time": "10s"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Time",
+          "time": "10.2s"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Time",
+          "time": "10.4s"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Time",
+          "time": "10.6s"
+        },
+        {
+          "dmxRange": [54, 55],
+          "type": "Time",
+          "time": "11s"
+        },
+        {
+          "dmxRange": [56, 57],
+          "type": "Time",
+          "time": "12s"
+        },
+        {
+          "dmxRange": [58, 59],
+          "type": "Time",
+          "time": "13s"
+        },
+        {
+          "dmxRange": [60, 62],
+          "type": "Time",
+          "time": "14s"
+        },
+        {
+          "dmxRange": [63, 64],
+          "type": "Time",
+          "time": "15s"
+        },
+        {
+          "dmxRange": [65, 67],
+          "type": "Time",
+          "time": "16s"
+        },
+        {
+          "dmxRange": [68, 69],
+          "type": "Time",
+          "time": "17s"
+        },
+        {
+          "dmxRange": [70, 72],
+          "type": "Time",
+          "time": "18s"
+        },
+        {
+          "dmxRange": [73, 74],
+          "type": "Time",
+          "time": "19s"
+        },
+        {
+          "dmxRange": [75, 77],
+          "type": "Time",
+          "time": "20s"
+        },
+        {
+          "dmxRange": [78, 80],
+          "type": "Time",
+          "time": "21s"
+        },
+        {
+          "dmxRange": [81, 82],
+          "type": "Time",
+          "time": "22s"
+        },
+        {
+          "dmxRange": [83, 85],
+          "type": "Time",
+          "time": "23s"
+        },
+        {
+          "dmxRange": [86, 87],
+          "type": "Time",
+          "time": "24s"
+        },
+        {
+          "dmxRange": [88, 90],
+          "type": "Time",
+          "time": "25s"
+        },
+        {
+          "dmxRange": [91, 92],
+          "type": "Time",
+          "time": "26s"
+        },
+        {
+          "dmxRange": [93, 95],
+          "type": "Time",
+          "time": "27s"
+        },
+        {
+          "dmxRange": [96, 97],
+          "type": "Time",
+          "time": "28s"
+        },
+        {
+          "dmxRange": [98, 100],
+          "type": "Time",
+          "time": "29s"
+        },
+        {
+          "dmxRange": [101, 103],
+          "type": "Time",
+          "time": "30s"
+        },
+        {
+          "dmxRange": [104, 105],
+          "type": "Time",
+          "time": "31s"
+        },
+        {
+          "dmxRange": [106, 108],
+          "type": "Time",
+          "time": "32s"
+        },
+        {
+          "dmxRange": [109, 110],
+          "type": "Time",
+          "time": "33s"
+        },
+        {
+          "dmxRange": [111, 113],
+          "type": "Time",
+          "time": "34s"
+        },
+        {
+          "dmxRange": [114, 115],
+          "type": "Time",
+          "time": "35s"
+        },
+        {
+          "dmxRange": [116, 118],
+          "type": "Time",
+          "time": "36s"
+        },
+        {
+          "dmxRange": [119, 120],
+          "type": "Time",
+          "time": "37s"
+        },
+        {
+          "dmxRange": [121, 123],
+          "type": "Time",
+          "time": "38s"
+        },
+        {
+          "dmxRange": [124, 126],
+          "type": "Time",
+          "time": "39s"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "Time",
+          "time": "40s"
+        },
+        {
+          "dmxRange": [129, 131],
+          "type": "Time",
+          "time": "41s"
+        },
+        {
+          "dmxRange": [132, 133],
+          "type": "Time",
+          "time": "42s"
+        },
+        {
+          "dmxRange": [134, 136],
+          "type": "Time",
+          "time": "43s"
+        },
+        {
+          "dmxRange": [137, 138],
+          "type": "Time",
+          "time": "44s"
+        },
+        {
+          "dmxRange": [139, 141],
+          "type": "Time",
+          "time": "45s"
+        },
+        {
+          "dmxRange": [142, 143],
+          "type": "Time",
+          "time": "46s"
+        },
+        {
+          "dmxRange": [144, 146],
+          "type": "Time",
+          "time": "47s"
+        },
+        {
+          "dmxRange": [147, 148],
+          "type": "Time",
+          "time": "48s"
+        },
+        {
+          "dmxRange": [149, 151],
+          "type": "Time",
+          "time": "49s"
+        },
+        {
+          "dmxRange": [152, 154],
+          "type": "Time",
+          "time": "50s"
+        },
+        {
+          "dmxRange": [155, 156],
+          "type": "Time",
+          "time": "51s"
+        },
+        {
+          "dmxRange": [157, 159],
+          "type": "Time",
+          "time": "52s"
+        },
+        {
+          "dmxRange": [160, 161],
+          "type": "Time",
+          "time": "53s"
+        },
+        {
+          "dmxRange": [162, 164],
+          "type": "Time",
+          "time": "54s"
+        },
+        {
+          "dmxRange": [165, 166],
+          "type": "Time",
+          "time": "55s"
+        },
+        {
+          "dmxRange": [167, 169],
+          "type": "Time",
+          "time": "56s"
+        },
+        {
+          "dmxRange": [170, 171],
+          "type": "Time",
+          "time": "57s"
+        },
+        {
+          "dmxRange": [172, 174],
+          "type": "Time",
+          "time": "58s"
+        },
+        {
+          "dmxRange": [175, 177],
+          "type": "Time",
+          "time": "59s"
+        },
+        {
+          "dmxRange": [178, 179],
+          "type": "Time",
+          "time": "60s"
+        },
+        {
+          "dmxRange": [180, 182],
+          "type": "Time",
+          "time": "65s"
+        },
+        {
+          "dmxRange": [183, 184],
+          "type": "Time",
+          "time": "70s"
+        },
+        {
+          "dmxRange": [185, 187],
+          "type": "Time",
+          "time": "75s"
+        },
+        {
+          "dmxRange": [188, 189],
+          "type": "Time",
+          "time": "80s"
+        },
+        {
+          "dmxRange": [190, 192],
+          "type": "Time",
+          "time": "85s"
+        },
+        {
+          "dmxRange": [193, 194],
+          "type": "Time",
+          "time": "90s"
+        },
+        {
+          "dmxRange": [195, 197],
+          "type": "Time",
+          "time": "95s"
+        },
+        {
+          "dmxRange": [198, 199],
+          "type": "Time",
+          "time": "100s"
+        },
+        {
+          "dmxRange": [200, 202],
+          "type": "Time",
+          "time": "110s"
+        },
+        {
+          "dmxRange": [203, 205],
+          "type": "Time",
+          "time": "120s"
+        },
+        {
+          "dmxRange": [206, 207],
+          "type": "Time",
+          "time": "130s"
+        },
+        {
+          "dmxRange": [208, 210],
+          "type": "Time",
+          "time": "140s"
+        },
+        {
+          "dmxRange": [211, 212],
+          "type": "Time",
+          "time": "150s"
+        },
+        {
+          "dmxRange": [213, 215],
+          "type": "Time",
+          "time": "160s"
+        },
+        {
+          "dmxRange": [216, 217],
+          "type": "Time",
+          "time": "170s"
+        },
+        {
+          "dmxRange": [218, 220],
+          "type": "Time",
+          "time": "180s"
+        },
+        {
+          "dmxRange": [221, 222],
+          "type": "Time",
+          "time": "190s"
+        },
+        {
+          "dmxRange": [223, 225],
+          "type": "Time",
+          "time": "200s"
+        },
+        {
+          "dmxRange": [226, 228],
+          "type": "Time",
+          "time": "210s"
+        },
+        {
+          "dmxRange": [229, 230],
+          "type": "Time",
+          "time": "220s"
+        },
+        {
+          "dmxRange": [231, 233],
+          "type": "Time",
+          "time": "230s"
+        },
+        {
+          "dmxRange": [234, 235],
+          "type": "Time",
+          "time": "240s"
+        },
+        {
+          "dmxRange": [236, 238],
+          "type": "Time",
+          "time": "250s"
+        },
+        {
+          "dmxRange": [239, 240],
+          "type": "Time",
+          "time": "260s"
+        },
+        {
+          "dmxRange": [241, 243],
+          "type": "Time",
+          "time": "270s"
+        },
+        {
+          "dmxRange": [244, 245],
+          "type": "Time",
+          "time": "280s"
+        },
+        {
+          "dmxRange": [246, 248],
+          "type": "Time",
+          "time": "290s"
+        },
+        {
+          "dmxRange": [249, 250],
+          "type": "Time",
+          "time": "300s"
+        },
+        {
+          "dmxRange": [251, 254],
+          "type": "Time",
+          "time": "310s"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "comment": "Follow cue Data"
+        }
+      ]
+    },
+    "Gobo Time": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Time",
+          "time": "0s"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Time",
+          "time": "0.2s"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "Time",
+          "time": "0.4s"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "Time",
+          "time": "0.6s"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Time",
+          "time": "0.8s"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Time",
+          "time": "1s"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Time",
+          "time": "1.2s"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "Time",
+          "time": "1.4s"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Time",
+          "time": "1.6s"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Time",
+          "time": "1.8s"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Time",
+          "time": "2s"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Time",
+          "time": "2.2s"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Time",
+          "time": "2.4s"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Time",
+          "time": "2.6s"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Time",
+          "time": "2.8s"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Time",
+          "time": "3s"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Time",
+          "time": "3.2s"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Time",
+          "time": "3.4s"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Time",
+          "time": "3.6s"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Time",
+          "time": "3.8s"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Time",
+          "time": "4s"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Time",
+          "time": "4.2s"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Time",
+          "time": "4.4s"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Time",
+          "time": "4.6s"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Time",
+          "time": "4.8s"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Time",
+          "time": "5s"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Time",
+          "time": "5.2s"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Time",
+          "time": "5.4s"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Time",
+          "time": "5.6s"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Time",
+          "time": "5.8s"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Time",
+          "time": "6s"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Time",
+          "time": "6.2s"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Time",
+          "time": "6.4s"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Time",
+          "time": "6.6s"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Time",
+          "time": "6.8s"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Time",
+          "time": "7s"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Time",
+          "time": "7.2s"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Time",
+          "time": "7.4s"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Time",
+          "time": "7.6s"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "Time",
+          "time": "7.8s"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Time",
+          "time": "8s"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Time",
+          "time": "8.2s"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "Time",
+          "time": "8.4s"
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "Time",
+          "time": "8.6s"
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "Time",
+          "time": "8.8s"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "Time",
+          "time": "9s"
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "Time",
+          "time": "9.2s"
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "Time",
+          "time": "9.4s"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "Time",
+          "time": "9.6s"
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "Time",
+          "time": "9.8s"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "Time",
+          "time": "10s"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Time",
+          "time": "10.2s"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Time",
+          "time": "10.4s"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Time",
+          "time": "10.6s"
+        },
+        {
+          "dmxRange": [54, 55],
+          "type": "Time",
+          "time": "11s"
+        },
+        {
+          "dmxRange": [56, 57],
+          "type": "Time",
+          "time": "12s"
+        },
+        {
+          "dmxRange": [58, 59],
+          "type": "Time",
+          "time": "13s"
+        },
+        {
+          "dmxRange": [60, 62],
+          "type": "Time",
+          "time": "14s"
+        },
+        {
+          "dmxRange": [63, 64],
+          "type": "Time",
+          "time": "15s"
+        },
+        {
+          "dmxRange": [65, 67],
+          "type": "Time",
+          "time": "16s"
+        },
+        {
+          "dmxRange": [68, 69],
+          "type": "Time",
+          "time": "17s"
+        },
+        {
+          "dmxRange": [70, 72],
+          "type": "Time",
+          "time": "18s"
+        },
+        {
+          "dmxRange": [73, 74],
+          "type": "Time",
+          "time": "19s"
+        },
+        {
+          "dmxRange": [75, 77],
+          "type": "Time",
+          "time": "20s"
+        },
+        {
+          "dmxRange": [78, 80],
+          "type": "Time",
+          "time": "21s"
+        },
+        {
+          "dmxRange": [81, 82],
+          "type": "Time",
+          "time": "22s"
+        },
+        {
+          "dmxRange": [83, 85],
+          "type": "Time",
+          "time": "23s"
+        },
+        {
+          "dmxRange": [86, 87],
+          "type": "Time",
+          "time": "24s"
+        },
+        {
+          "dmxRange": [88, 90],
+          "type": "Time",
+          "time": "25s"
+        },
+        {
+          "dmxRange": [91, 92],
+          "type": "Time",
+          "time": "26s"
+        },
+        {
+          "dmxRange": [93, 95],
+          "type": "Time",
+          "time": "27s"
+        },
+        {
+          "dmxRange": [96, 97],
+          "type": "Time",
+          "time": "28s"
+        },
+        {
+          "dmxRange": [98, 100],
+          "type": "Time",
+          "time": "29s"
+        },
+        {
+          "dmxRange": [101, 103],
+          "type": "Time",
+          "time": "30s"
+        },
+        {
+          "dmxRange": [104, 105],
+          "type": "Time",
+          "time": "31s"
+        },
+        {
+          "dmxRange": [106, 108],
+          "type": "Time",
+          "time": "32s"
+        },
+        {
+          "dmxRange": [109, 110],
+          "type": "Time",
+          "time": "33s"
+        },
+        {
+          "dmxRange": [111, 113],
+          "type": "Time",
+          "time": "34s"
+        },
+        {
+          "dmxRange": [114, 115],
+          "type": "Time",
+          "time": "35s"
+        },
+        {
+          "dmxRange": [116, 118],
+          "type": "Time",
+          "time": "36s"
+        },
+        {
+          "dmxRange": [119, 120],
+          "type": "Time",
+          "time": "37s"
+        },
+        {
+          "dmxRange": [121, 123],
+          "type": "Time",
+          "time": "38s"
+        },
+        {
+          "dmxRange": [124, 126],
+          "type": "Time",
+          "time": "39s"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "Time",
+          "time": "40s"
+        },
+        {
+          "dmxRange": [129, 131],
+          "type": "Time",
+          "time": "41s"
+        },
+        {
+          "dmxRange": [132, 133],
+          "type": "Time",
+          "time": "42s"
+        },
+        {
+          "dmxRange": [134, 136],
+          "type": "Time",
+          "time": "43s"
+        },
+        {
+          "dmxRange": [137, 138],
+          "type": "Time",
+          "time": "44s"
+        },
+        {
+          "dmxRange": [139, 141],
+          "type": "Time",
+          "time": "45s"
+        },
+        {
+          "dmxRange": [142, 143],
+          "type": "Time",
+          "time": "46s"
+        },
+        {
+          "dmxRange": [144, 146],
+          "type": "Time",
+          "time": "47s"
+        },
+        {
+          "dmxRange": [147, 148],
+          "type": "Time",
+          "time": "48s"
+        },
+        {
+          "dmxRange": [149, 151],
+          "type": "Time",
+          "time": "49s"
+        },
+        {
+          "dmxRange": [152, 154],
+          "type": "Time",
+          "time": "50s"
+        },
+        {
+          "dmxRange": [155, 156],
+          "type": "Time",
+          "time": "51s"
+        },
+        {
+          "dmxRange": [157, 159],
+          "type": "Time",
+          "time": "52s"
+        },
+        {
+          "dmxRange": [160, 161],
+          "type": "Time",
+          "time": "53s"
+        },
+        {
+          "dmxRange": [162, 164],
+          "type": "Time",
+          "time": "54s"
+        },
+        {
+          "dmxRange": [165, 166],
+          "type": "Time",
+          "time": "55s"
+        },
+        {
+          "dmxRange": [167, 169],
+          "type": "Time",
+          "time": "56s"
+        },
+        {
+          "dmxRange": [170, 171],
+          "type": "Time",
+          "time": "57s"
+        },
+        {
+          "dmxRange": [172, 174],
+          "type": "Time",
+          "time": "58s"
+        },
+        {
+          "dmxRange": [175, 177],
+          "type": "Time",
+          "time": "59s"
+        },
+        {
+          "dmxRange": [178, 179],
+          "type": "Time",
+          "time": "60s"
+        },
+        {
+          "dmxRange": [180, 182],
+          "type": "Time",
+          "time": "65s"
+        },
+        {
+          "dmxRange": [183, 184],
+          "type": "Time",
+          "time": "70s"
+        },
+        {
+          "dmxRange": [185, 187],
+          "type": "Time",
+          "time": "75s"
+        },
+        {
+          "dmxRange": [188, 189],
+          "type": "Time",
+          "time": "80s"
+        },
+        {
+          "dmxRange": [190, 192],
+          "type": "Time",
+          "time": "85s"
+        },
+        {
+          "dmxRange": [193, 194],
+          "type": "Time",
+          "time": "90s"
+        },
+        {
+          "dmxRange": [195, 197],
+          "type": "Time",
+          "time": "95s"
+        },
+        {
+          "dmxRange": [198, 199],
+          "type": "Time",
+          "time": "100s"
+        },
+        {
+          "dmxRange": [200, 202],
+          "type": "Time",
+          "time": "110s"
+        },
+        {
+          "dmxRange": [203, 205],
+          "type": "Time",
+          "time": "120s"
+        },
+        {
+          "dmxRange": [206, 207],
+          "type": "Time",
+          "time": "130s"
+        },
+        {
+          "dmxRange": [208, 210],
+          "type": "Time",
+          "time": "140s"
+        },
+        {
+          "dmxRange": [211, 212],
+          "type": "Time",
+          "time": "150s"
+        },
+        {
+          "dmxRange": [213, 215],
+          "type": "Time",
+          "time": "160s"
+        },
+        {
+          "dmxRange": [216, 217],
+          "type": "Time",
+          "time": "170s"
+        },
+        {
+          "dmxRange": [218, 220],
+          "type": "Time",
+          "time": "180s"
+        },
+        {
+          "dmxRange": [221, 222],
+          "type": "Time",
+          "time": "190s"
+        },
+        {
+          "dmxRange": [223, 225],
+          "type": "Time",
+          "time": "200s"
+        },
+        {
+          "dmxRange": [226, 228],
+          "type": "Time",
+          "time": "210s"
+        },
+        {
+          "dmxRange": [229, 230],
+          "type": "Time",
+          "time": "220s"
+        },
+        {
+          "dmxRange": [231, 233],
+          "type": "Time",
+          "time": "230s"
+        },
+        {
+          "dmxRange": [234, 235],
+          "type": "Time",
+          "time": "240s"
+        },
+        {
+          "dmxRange": [236, 238],
+          "type": "Time",
+          "time": "250s"
+        },
+        {
+          "dmxRange": [239, 240],
+          "type": "Time",
+          "time": "260s"
+        },
+        {
+          "dmxRange": [241, 243],
+          "type": "Time",
+          "time": "270s"
+        },
+        {
+          "dmxRange": [244, 245],
+          "type": "Time",
+          "time": "280s"
+        },
+        {
+          "dmxRange": [246, 248],
+          "type": "Time",
+          "time": "290s"
+        },
+        {
+          "dmxRange": [249, 250],
+          "type": "Time",
+          "time": "300s"
+        },
+        {
+          "dmxRange": [251, 254],
+          "type": "Time",
+          "time": "310s"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "comment": "Follow cue Data"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard 32-channel",
+      "shortName": "32ch",
+      "channels": [
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTO",
+        "Color Wheel",
+        "Color Macros",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Iris",
+        "Static Gobo Wheel",
+        "Rotating Gobo Wheel",
+        "Gobo Rotation",
+        "Gobo Rotation fine",
+        "Prism",
+        "Prism Rotation",
+        "Frost",
+        "Animation Disk",
+        "Animation Disk Rotation",
+        "Focus",
+        "Focus fine",
+        "Zoom",
+        "Autofocus Distance",
+        "Autofocus Adjust",
+        "Effects",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Function",
+        "Reset",
+        "Lamp Control"
+      ]
+    },
+    {
+      "name": "Vector 32-channel",
+      "shortName": "36ch",
+      "channels": [
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTO",
+        "Color Wheel",
+        "Color Macros",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Iris",
+        "Static Gobo Wheel",
+        "Rotating Gobo Wheel",
+        "Gobo Rotation",
+        "Gobo Rotation fine",
+        "Prism",
+        "Prism Rotation",
+        "Frost",
+        "Animation Disk",
+        "Animation Disk Rotation",
+        "Focus",
+        "Focus fine",
+        "Zoom",
+        "Autofocus Distance",
+        "Autofocus Adjust",
+        "Effects",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Function",
+        "Reset",
+        "Lamp Control",
+        "Pan/Tilt Time",
+        "Color Time",
+        "Beam Time",
+        "Gobo Time"
+      ]
+    }
+  ]
+}

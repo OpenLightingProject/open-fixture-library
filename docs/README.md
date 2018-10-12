@@ -9,7 +9,7 @@ This is the developer documentation for the *Open Fixture Library*. Please follo
 * `fixtures/` – Repository of our [fixture definitions](fixture-format.md)
 * `lib/` – Reusable modules used in the project
   - `fixture-features/` – [Fixture features](fixture-features.md), special fixture characteristics used to determine a set of test fixtures
-  - `model/` – Classes of the [fixture model](fixture-model.md) that help ease processing fixture data
+  - `model/` – Classes of the [fixture model](fixture-model.md) that help ease processing fixture data (see the [model API reference](model-api.md))
 * `plugins/` – [Plugins](plugins.md) for export / import to / from other software's fixture formats
 * `schemas/` – Schemas for the [fixture definitions](fixture-format.md#schema)
 * `server/` – Load balancer config and auto-deploy script for everyone interested

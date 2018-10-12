@@ -274,8 +274,8 @@ export default {
 };
 
 /**
- * @param {!string} unitString The unit string, as required by the schema.
- * @returns {!string} The unitString if it is not empty, `number` otherwise.
+ * @param {string} unitString The unit string, as required by the schema.
+ * @returns {string} The unitString if it is not empty, `number` otherwise.
  */
 function getUnitDisplayString(unitString) {
   if (unitString === ``) {
@@ -286,11 +286,11 @@ function getUnitDisplayString(unitString) {
 }
 
 /**
- * @param {?string|number} value The value to get the unit from.
- * @param {!Array.<!string>} enumValues List of allowed keywords.
- * @param {!Array.<!string>} unitNames List of names of allowed units.
- * @param {!Object.<string, !Object>} units Unit data by unit name.
- * @returns {!string} The name of value's unit.
+ * @param {string|number|null} value The value to get the unit from.
+ * @param {array.<string>} enumValues List of allowed keywords.
+ * @param {array.<string>} unitNames List of names of allowed units.
+ * @param {object.<string, object>} units Unit data by unit name.
+ * @returns {string} The name of value's unit.
  */
 function getSelectedUnit(value, enumValues, unitNames, units) {
   if (enumValues.includes(value) || value === ``) {
@@ -308,9 +308,9 @@ function getSelectedUnit(value, enumValues, unitNames, units) {
 }
 
 /**
- * @param {!string} unitName A unit name or keyword.
- * @param {!Array.<!string>} enumValues List of allowed keywords.
- * @returns {!boolean} True if unitName indicates that a number is required.
+ * @param {string} unitName A unit name or keyword.
+ * @param {array.<string>} enumValues List of allowed keywords.
+ * @returns {boolean} True if unitName indicates that a number is required.
  */
 function hasNumber(unitName, enumValues) {
   return unitName !== `` && !enumValues.includes(unitName);

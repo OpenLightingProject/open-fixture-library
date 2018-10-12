@@ -107,12 +107,16 @@ app.get(`/sitemap.xml`, (request, response) => {
   }));
 });
 
-app.post(`/ajax/submit-editor`, (request, response) => {
-  require(`./ui/ajax/submit-editor.js`)(request, response);
+app.post(`/ajax/import-fixture-file`, (request, response) => {
+  require(`./ui/ajax/import-fixture-file.js`)(request, response);
 });
 
 app.post(`/ajax/get-search-results`, (request, response) => {
   require(`./ui/ajax/get-search-results.js`)(request, response);
+});
+
+app.post(`/ajax/submit-editor`, (request, response) => {
+  require(`./ui/ajax/submit-editor.js`)(request, response);
 });
 
 
@@ -152,17 +156,17 @@ function listen() {
 /**
  * @typedef ExportFile
  * @type object
- * @property {!string} name filename.ext
- * @property {!string} content file content
- * @property {!string} mimetype e.g. 'text/plain'
+ * @property {string} name filename.ext
+ * @property {string} content file content
+ * @property {string} mimetype e.g. 'text/plain'
  */
 
 /**
  * Instruct Express to initiate a download of one / multiple exported files.
- * @param {!express.Response} response Express Response object
- * @param {!Array.<!ExportFile>} files Array of exported files. If more than one is provided, the files are zipped automatically.
- * @param {!string} zipName Name of the zip file (if any).
- * @returns {!Promise} A Promise that is resolved when the response is sent.
+ * @param {express.Response} response Express Response object
+ * @param {array.<ExportFile>} files Array of exported files. If more than one is provided, the files are zipped automatically.
+ * @param {string} zipName Name of the zip file (if any).
+ * @returns {Promise} A Promise that is resolved when the response is sent.
  */
 function downloadFiles(response, files, zipName) {
   if (files.length === 1) {

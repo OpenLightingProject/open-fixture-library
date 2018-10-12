@@ -11,11 +11,12 @@ for (const hex of Object.keys(colorNames)) {
 }
 
 /**
- * @param {!Buffer} buffer The imported file.
- * @param {!string} filename The imported file's name.
- * @returns {!Promise.<!object, !Error>} A Promise resolving to an out object
+ * @param {Buffer} buffer The imported file.
+ * @param {string} filename The imported file's name.
+ * @param {string} authorName The importer's name.
+ * @returns {Promise.<object, Error>} A Promise resolving to an out object
 **/
-module.exports.import = function importECue(buffer, filename) {
+module.exports.import = function importECue(buffer, filename, authorName) {
   const parser = new xml2js.Parser();
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
@@ -60,8 +61,8 @@ module.exports.import = function importECue(buffer, filename) {
 
   /**
    * Parses the e:cue fixture and add it to out.fixtures.
-   * @param {!object} ecueFixture The e:cue fixture object.
-   * @param {!string} manKey The manufacturer key of the fixture.
+   * @param {object} ecueFixture The e:cue fixture object.
+   * @param {string} manKey The manufacturer key of the fixture.
    */
   function addFixture(ecueFixture, manKey) {
     const fixture = {
@@ -86,7 +87,7 @@ module.exports.import = function importECue(buffer, filename) {
     out.warnings[fixKey].push(`Please specify categories.`);
 
     fixture.meta = {
-      authors: [],
+      authors: [authorName],
       createDate: ecueFixture.$._CreationDate.replace(/#.*/, ``),
       lastModifyDate: ecueFixture.$._ModifiedDate.replace(/#.*/, ``),
       importPlugin: {
@@ -94,7 +95,6 @@ module.exports.import = function importECue(buffer, filename) {
         date: timestamp
       }
     };
-    out.warnings[fixKey].push(`Please specify your name in meta.authors.`);
 
     if (ecueFixture.$.Comment !== ``) {
       fixture.comment = ecueFixture.$.Comment;
@@ -123,8 +123,8 @@ module.exports.import = function importECue(buffer, filename) {
 };
 
 /**
- * @param {!object} ecueFixture The e:cue fixture object.
- * @returns {!object} The OFL fixture's physical object.
+ * @param {object} ecueFixture The e:cue fixture object.
+ * @returns {object} The OFL fixture's physical object.
  */
 function getPhysical(ecueFixture) {
   const physical = {};
@@ -145,8 +145,8 @@ function getPhysical(ecueFixture) {
 }
 
 /**
- * @param {!object} ecueFixture The e:cue fixture object.
- * @returns {!Array.<!object>} An array of all ecue channel objects.
+ * @param {object} ecueFixture The e:cue fixture object.
+ * @returns {array.<object>} An array of all ecue channel objects.
  */
 function getCombinedEcueChannels(ecueFixture) {
   let channels = [];
@@ -176,9 +176,9 @@ function getCombinedEcueChannels(ecueFixture) {
 
 /**
  * Parses the e:cue channel and adds it to OFL fixture's availableChannels and the first mode.
- * @param {!object} ecueChannel The e:cue channel object.
- * @param {!object} fixture The OFL fixture object.
- * @param {!Array.<!string>} warningsArray This fixture's warnings array in the `out` object.
+ * @param {object} ecueChannel The e:cue channel object.
+ * @param {object} fixture The OFL fixture object.
+ * @param {array.<string>} warningsArray This fixture's warnings array in the `out` object.
  */
 function addChannelToFixture(ecueChannel, fixture, warningsArray) {
   const channel = {};
@@ -251,7 +251,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
    *
    * @param {*} ecueRange The e:cue range object.
    * @param {*} index The index of the capability / range.
-   * @returns {!object} The OFL capability object.
+   * @returns {object} The OFL capability object.
    */
   function getCapability(ecueRange, index) {
     const cap = {
@@ -363,7 +363,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
 
     /**
-     * @returns {!Array.<!number>} The DMX range of this capability.
+     * @returns {array.<number>} The DMX range of this capability.
      */
     function getDmxRange() {
       const dmxRangeStart = parseInt(ecueRange.$.Start);
@@ -377,7 +377,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
     }
 
     /**
-     * @returns {!string} The parsed capability type.
+     * @returns {string} The parsed capability type.
      */
     function getCapabilityType() {
       // capability parsers can rely on the channel type as a first distinctive feature
@@ -479,7 +479,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
     /**
      * Try to guess speedStart / speedEnd from the capabilityName. May set cap.type to Rotation.
-     * @returns {!string} The rest of the capabilityName.
+     * @returns {string} The rest of the capabilityName.
      */
     function getSpeedGuessedComment() {
       return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|C?CW)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i, (match, direction, start, end) => {
@@ -510,8 +510,8 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 }
 
 /**
- * @param {!string} str The string to slugify.
- * @returns {!string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
+ * @param {string} str The string to slugify.
+ * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(str) {
   return str.toLowerCase().replace(/[^a-z0-9-]+/g, ` `).trim().replace(/\s+/g, `-`);

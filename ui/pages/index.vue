@@ -103,7 +103,7 @@ export default {
           key: fixtureKey,
           name: getFixtureName(fixtureKey),
           action: register.filesystem[fixtureKey].lastAction,
-          date: new Date(register.filesystem[fixtureKey].lastModifyDate)
+          date: new Date(register.filesystem[fixtureKey].lastActionDate)
         })
       ),
       topContributors: Object.keys(register.contributors).slice(0, 5).map(
@@ -146,8 +146,8 @@ export default {
 };
 
 /**
- * @param {!string} fixtureKey The combined manufacturer / fixture key.
- * @returns {!string} The manufacturer and fixture names, separated by a space.
+ * @param {string} fixtureKey The combined manufacturer / fixture key.
+ * @returns {string} The manufacturer and fixture names, separated by a space.
  */
 function getFixtureName(fixtureKey) {
   const manKey = fixtureKey.split(`/`)[0];
@@ -158,8 +158,8 @@ function getFixtureName(fixtureKey) {
 }
 
 /**
- * @param {!string} contributor The contributor name.
- * @returns {!string} The combined key of the latest fixture contributed to by this contributor.
+ * @param {string} contributor The contributor name.
+ * @returns {string} The combined key of the latest fixture contributed to by this contributor.
  */
 function getLatestFixtureKey(contributor) {
   return register.lastUpdated.find(

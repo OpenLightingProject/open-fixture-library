@@ -1,0 +1,193 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EVE P-100 WW",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2018-09-14",
+    "lastModifyDate": "2018-09-14"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2018/07/EVE_P-100_WW_UM_Rev2_WO.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/eve-p-100-ww/"
+    ]
+  },
+  "physical": {
+    "dimensions": [245, 305, 220],
+    "weight": 3.5,
+    "power": 122,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "100WCOB LED",
+      "colorTemperature": 3500,
+      "lumens": 5048
+    },
+    "lens": {
+      "degreesMinMax": [25, 45]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "off"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Auto Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [32, 95],
+          "type": "Effect",
+          "effectName": "0–100%",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [96, 159],
+          "type": "Effect",
+          "effectName": "100–0%",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [160, 223],
+          "type": "Effect",
+          "effectName": "100–0–100%",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [224, 240],
+          "type": "Effect",
+          "effectName": "Sound-active program 1",
+          "soundControlled": true,
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Sound Sensitivity"
+          }
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectName": "Sound-active program 2",
+          "soundControlled": true,
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Dimmer Speed Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction",
+          "comment": "Dimmer speed set from display"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Maintenance",
+          "parameter": "off",
+          "comment": "Dimmer speed"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Maintenance",
+          "parameter": "fast",
+          "comment": "Dimmer speed"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Maintenance",
+          "parameter": "50%",
+          "comment": "Dimmer speed"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Maintenance",
+          "parameter": "slow",
+          "comment": "Dimmer speed"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Strobe / Speed / Sensitivity",
+        "Auto Programs",
+        "Dimmer Speed Mode"
+      ]
+    }
+  ]
+}

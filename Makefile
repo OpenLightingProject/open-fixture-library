@@ -8,11 +8,11 @@ dereferenced-schema-files := $(schema-files:schemas/%=schemas/dereferenced/%)
 
 ### PHONY rules, see https://stackoverflow.com/a/2145605/451391
 
-.PHONY: all no-nuxt register plugin-data test-fixtures schemas nuxt-build clean
+.PHONY: all no-nuxt register plugin-data test-fixtures schemas model-docs nuxt-build clean
 
-all: register plugin-data test-fixtures schemas nuxt-build
+no-nuxt: register plugin-data test-fixtures schemas model-docs
 
-no-nuxt: register plugin-data test-fixtures schemas
+all: register plugin-data test-fixtures schemas model-docs nuxt-build
 
 register: fixtures/register.json
 
@@ -21,6 +21,8 @@ plugin-data: plugins/plugins.json
 test-fixtures: tests/test-fixtures.json tests/test-fixtures.md
 
 schemas: $(dereferenced-schema-files)
+
+model-docs: docs/model-api.md
 
 nuxt-build:
 	$$(npm bin)/nuxt build
@@ -62,4 +64,14 @@ $(schema-files) \
 cli/make-dereferenced-schemas.js
 	@mkdir -p schemas/dereferenced
 	node cli/make-dereferenced-schemas.js "$*.json"
+	@echo ""
+
+
+jsdoc2md := $(shell echo $$(npm bin)/jsdoc2md)
+jsdoc2md-cmd := $(jsdoc2md) --configure jsdoc-config.json --private --files lib/model/*.mjs > docs/model-api.md
+
+docs/model-api.md: \
+lib/model/*.mjs \
+jsdoc-config.json
+	@test -f $(jsdoc2md) && (echo "$(jsdoc2md-cmd)" && $(jsdoc2md-cmd)) || echo "$(jsdoc2md) not available"
 	@echo ""
