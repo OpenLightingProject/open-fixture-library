@@ -5,7 +5,7 @@ const sanitize = require(`sanitize-filename`);
 const {
   AbstractChannel,
   Capability,
-  Channel,
+  CoarseChannel,
   FineChannel,
   Fixture,
   Manufacturer,
@@ -26,9 +26,9 @@ module.exports.name = `DMXControl 3 (DDF3)`;
 module.exports.version = `0.1.0`;
 
 /**
- * @param {!Array.<Fixture>} fixtures The fixtures to convert into DMXControl device definitions
- * @param {!options} options Some global options
- * @returns {!Promise.<!Array.<object>, !Error>} The generated files
+ * @param {array.<Fixture>} fixtures The fixtures to convert into DMXControl device definitions
+ * @param {options} options Some global options
+ * @returns {Promise.<array.<object>, Error>} The generated files
  */
 module.exports.export = async function exportDMXControl3(fixtures, options) {
   const deviceDefinitions = [];
@@ -68,8 +68,8 @@ module.exports.export = async function exportDMXControl3(fixtures, options) {
 
 /**
  * Adds the information block to the specified xml file.
- * @param {!XMLDocument} xml The device definition to add the information to
- * @param {!Mode} mode The definition's mode
+ * @param {XMLDocument} xml The device definition to add the information to
+ * @param {Mode} mode The definition's mode
  */
 function addInformation(xml, mode) {
   const xmlInfo = xml.element(`information`);
@@ -84,13 +84,13 @@ function addInformation(xml, mode) {
 }
 
 /**
- * @typedef {Map.<(string|null), Array.<Channel>>} ChannelsPerPixel
+ * @typedef {Map.<(string|null), Array.<CoarseChannel>>} ChannelsPerPixel
  */
 
 /**
  * Adds the dmx channels as functions to the specified xml file.
- * @param {!XMLDocument} xml The device definition to add the functions to.
- * @param {!Mode} mode The definition's mode.
+ * @param {XMLDocument} xml The device definition to add the functions to.
+ * @param {Mode} mode The definition's mode.
  */
 function addFunctions(xml, mode) {
   const channelsPerPixel = getChannelsPerPixel();
@@ -119,7 +119,7 @@ function addFunctions(xml, mode) {
   }
 
   /**
-   * @returns {!ChannelsPerPixel} Each pixel key pointing to its unwrapped matrix channels. null points to all non-matrix channels.
+   * @returns {ChannelsPerPixel} Each pixel key pointing to its unwrapped matrix channels. null points to all non-matrix channels.
    */
   function getChannelsPerPixel() {
     const channelsPerPixel = new Map();
@@ -132,46 +132,21 @@ function addFunctions(xml, mode) {
       pixelKeys.forEach(key => channelsPerPixel.set(key, []));
     }
 
-    for (const channel of getUsableChannels()) {
-      if (channel instanceof MatrixChannel) {
-        channelsPerPixel.get(channel.pixelKey).push(channel.wrappedChannel);
-      }
-      else {
-        channelsPerPixel.get(null).push(channel);
-      }
+    const channels = mode.fixture.allChannels.map(
+      ch => (ch instanceof SwitchingChannel ? ch.defaultChannel : ch)
+    ).filter(
+      ch => !(ch instanceof FineChannel || ch instanceof NullChannel)
+    );
+    for (const channel of channels) {
+      channelsPerPixel.get(channel.pixelKey).push(channel);
     }
 
     return channelsPerPixel;
   }
 
   /**
-   * @returns {!Array.<Channel, MatrixChannel>} A list of processable channels; switching channels are mapped to the the default channel, fine and null channels are excluded.
-   */
-  function getUsableChannels() {
-    return mode.channels.map(ch => getUsableChannel(ch)).filter(ch => ch !== null);
-  }
-
-  /**
-   * @param {AbstractChannel|MatrixChannel} channel Some channel of any type.
-   * @returns {?Channel} A channel to be used instead of the given one; may be the same or null (to not include in definition).
-   */
-  function getUsableChannel(channel) {
-    if (channel instanceof MatrixChannel && !(channel.wrappedChannel instanceof Channel)) {
-      return getUsableChannel(channel.wrappedChannel);
-    }
-    if (channel instanceof SwitchingChannel) {
-      return getUsableChannel(channel.defaultChannel);
-    }
-    if (channel instanceof FineChannel || channel instanceof NullChannel) {
-      // fine channels are handled by addDmxchannelAttributes(...), null channels are simply ignored
-      return null;
-    }
-    return channel;
-  }
-
-  /**
-   * @param {!Channel} channel The channel that should be represented as one or more DMXControl functions.
-   * @returns {!Array.<XMLElement>} Functions created by this channel. They are not automatically grouped together.
+   * @param {CoarseChannel} channel The channel that should be represented as one or more DMXControl functions.
+   * @returns {array.<XMLElement>} Functions created by this channel. They are not automatically grouped together.
    */
   function getXmlFunctionsFromChannel(channel) {
     const functionToCapabilities = {};
@@ -342,7 +317,7 @@ const functions = {
 
       // find out which index is activated by which DMX values
       indexCaps.forEach(cap => {
-        const dmxRange = cap.getDmxRangeWithResolution(Channel.RESOLUTION_8BIT);
+        const dmxRange = cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
         const isProportional = cap.index[0].number !== cap.index[1].number;
 
         if (isProportional) {
@@ -395,11 +370,11 @@ const functions = {
 
       /**
        * Add the given range to the given index' data.
-       * @param {!number} index A single index, e.g. 1 or 2.5.
-       * @param {!Range} dmxRange A dmx range in which only the given index is activated.
-       * @param {!string} color The color that correspondends to this index. May be overriden later.
-       * @param {!string} name A color name. May be overriden later.
-       * @param {!boolean} singleRange Whether the original capability generated only this single range.
+       * @param {number} index A single index, e.g. 1 or 2.5.
+       * @param {Range} dmxRange A dmx range in which only the given index is activated.
+       * @param {string} color The color that correspondends to this index. May be overriden later.
+       * @param {string} name A color name. May be overriden later.
+       * @param {boolean} singleRange Whether the original capability generated only this single range.
        */
       function addIndexRange(index, dmxRange, color, name, singleRange = false) {
         const suitableIndexData = wheelIndices.find(indexData => indexData.dmxRange.isAdjacentTo(dmxRange));
@@ -427,9 +402,9 @@ const functions = {
       }
 
       /**
-       * @param {?object} colors A capability's color property.
+       * @param {object|null} colors A capability's color property.
        * @param {('start'|'end')} startOrEnd Whether to access start or end colors.
-       * @returns {!string} A color from the given color data if there's only one start/end color. A generic (and probably unique) grey color instead.
+       * @returns {string} A color from the given color data if there's only one start/end color. A generic (and probably unique) grey color instead.
        */
       function getColor(colors, startOrEnd) {
         if (colors && colors[`${startOrEnd}Colors`].length === 1) {
@@ -590,19 +565,19 @@ const functions = {
 
 /**
  * @typedef {object} NormalizedCapability
- * @property {!Capability} capObject
- * @property {!string} unit
- * @property {!number} startValue
- * @property {!number} endValue
+ * @property {Capability} capObject
+ * @property {string} unit
+ * @property {number} startValue
+ * @property {number} endValue
  */
 
 /**
  * Converts all property values to the proper unit and scales them to fit into the maximum value.
- * @param {!Array.<Capability>} caps Array of capabilities that use the given property.
- * @param {!string} property Name of the property whose values should be normalized.
- * @param {!number} maximumValue The highest possible value in DMXControl, in the given unit.
- * @param {!string} properUnit The unit of the maximum value. Must be a base unit (i. e. no `ms` but `s`) or `%`.
- * @returns {!Array.<NormalizedCapability>} Array of objects wrapping the original capabilities.
+ * @param {array.<Capability>} caps Array of capabilities that use the given property.
+ * @param {string} property Name of the property whose values should be normalized.
+ * @param {number} maximumValue The highest possible value in DMXControl, in the given unit.
+ * @param {string} properUnit The unit of the maximum value. Must be a base unit (i. e. no `ms` but `s`) or `%`.
+ * @returns {array.<NormalizedCapability>} Array of objects wrapping the original capabilities.
  */
 function getNormalizedCapabilities(caps, property, maximumValue, properUnit) {
   const normalizedCaps = caps.map(cap => {
@@ -650,13 +625,13 @@ function getNormalizedCapabilities(caps, property, maximumValue, properUnit) {
 
 /**
  * This function already handles swapping DMX start/end if the given start/end value is inverted (i.e. decreasing).
- * @param {!Capability} cap The capability to use as data source.
- * @param {?number} startValue The start value of an start/end entity, e.g. speedStart. Unit can be freely choosen. Omit if minval/maxval should not be added.
- * @param {*} endValue The end value of an start/end entity, e.g. speedEnd. Unit can be freely choosen. Omit if minval/maxval should not be added.
+ * @param {Capability} cap The capability to use as data source.
+ * @param {number|null} startValue The start value of an start/end entity, e.g. speedStart. Unit can be freely choosen. Omit if minval/maxval should not be added.
+ * @param {*|null} endValue The end value of an start/end entity, e.g. speedEnd. Unit can be freely choosen. Omit if minval/maxval should not be added.
  * @returns {XMLElement} A <step> or <range> with mindmx, maxdmx and, optionally, minval and maxval attributes.
  */
 function getBaseXmlCapability(cap, startValue = null, endValue = null) {
-  const dmxRange = cap.getDmxRangeWithResolution(Channel.RESOLUTION_8BIT);
+  const dmxRange = cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
   let [dmxStart, dmxEnd] = [dmxRange.start, dmxRange.end];
 
   if (startValue !== null && startValue > endValue) {
@@ -679,9 +654,9 @@ function getBaseXmlCapability(cap, startValue = null, endValue = null) {
 
 /**
  * Adds the matrix function to the xml and inserts suitable color mixings from matrix channels.
- * @param {!XMLElement} xmlParent The xml element in which the <matrix> tag should be inserted.
- * @param {!Mode} mode The definition's mode.
- * @param {!ChannelsPerPixel} channelsPerPixel Pixel keys pointing to its channels.
+ * @param {XMLElement} xmlParent The xml element in which the <matrix> tag should be inserted.
+ * @param {Mode} mode The definition's mode.
+ * @param {ChannelsPerPixel} channelsPerPixel Pixel keys pointing to its channels.
  */
 function addMatrix(xmlParent, mode, channelsPerPixel) {
   const matrix = mode.fixture.matrix;
@@ -749,9 +724,9 @@ function addMatrix(xmlParent, mode, channelsPerPixel) {
 /**
  * Finds color channels in the given channel list, adds them to xml (as RGB/CMY function, if possible)
  * and removes them from the given channel list.
- * @param {!XMLElement} xmlParent The xml element in which the <rgb>/<blue>/<amber>/... tags should be inserted.
- * @param {!Mode} mode The definition's mode.
- * @param {!Array.<Channel>} remainingChannels All channels that haven't been processed already.
+ * @param {XMLElement} xmlParent The xml element in which the <rgb>/<blue>/<amber>/... tags should be inserted.
+ * @param {Mode} mode The definition's mode.
+ * @param {array.<CoarseChannel>} remainingChannels All channels that haven't been processed already.
  */
 function addColors(xmlParent, mode, remainingChannels) {
   // search color channels and remove them from color list as we'll handle all of them
@@ -777,9 +752,9 @@ function addColors(xmlParent, mode, remainingChannels) {
 
 /**
  * Adds a color mixing function for the given channels
- * @param {!XMLElement} xmlParent The xml element in which the color mixing (<rgb> or <cmy>) should be inserted.
- * @param {!Mode} mode The definition's mode.
- * @param {!Array.<Channel>} colorChannels The Single Color channels to be added.
+ * @param {XMLElement} xmlParent The xml element in which the color mixing (<rgb> or <cmy>) should be inserted.
+ * @param {Mode} mode The definition's mode.
+ * @param {array.<CoarseChannel>} colorChannels The Single Color channels to be added.
  * @param {('rgb'|'cmy')} colorMixing Which kind of color mixing this is.
  */
 function addColorMixing(xmlParent, mode, colorChannels, colorMixing) {
@@ -792,9 +767,9 @@ function addColorMixing(xmlParent, mode, colorChannels, colorMixing) {
 
 /**
  * Adds a color function for the given channel.
- * @param {!XMLElement} xmlParent The xml element in which the color tag should be inserted, probably <rgb> or <cmy>.
- * @param {!Mode} mode The definition's mode.
- * @param {!Channel} colorChannel The Single Color channel which should be added.
+ * @param {XMLElement} xmlParent The xml element in which the color tag should be inserted, probably <rgb> or <cmy>.
+ * @param {Mode} mode The definition's mode.
+ * @param {CoarseChannel} colorChannel The Single Color channel which should be added.
  */
 function addColor(xmlParent, mode, colorChannel) {
   const xmlColor = xmlParent.element(colorChannel.color.toLowerCase());
@@ -802,7 +777,7 @@ function addColor(xmlParent, mode, colorChannel) {
 }
 
 /**
- * @param {!Array.<Channel>} channels List of channels to search for color channels.
+ * @param {array.<CoarseChannel>} channels List of channels to search for color channels.
  * @returns {Set.<string>} Each used color.
  */
 function getColors(channels) {
@@ -814,8 +789,8 @@ function getColors(channels) {
 }
 
 /**
- * @param {!Set.<string>} colors Used colors in channels.
- * @returns {!boolean} Whether the given colors contain all needed RGB colors.
+ * @param {Set.<string>} colors Used colors in channels.
+ * @returns {boolean} Whether the given colors contain all needed RGB colors.
  */
 function isRGB(colors) {
   const hasRed = colors.has(`Red`);
@@ -825,8 +800,8 @@ function isRGB(colors) {
 }
 
 /**
- * @param {!Set.<string>} colors Used colors in channels.
- * @returns {!boolean} Whether the given colors contain all needed CMY colors.
+ * @param {Set.<string>} colors Used colors in channels.
+ * @returns {boolean} Whether the given colors contain all needed CMY colors.
  */
 function isCMY(colors) {
   const hasCyan = colors.has(`Cyan`);
@@ -838,9 +813,9 @@ function isCMY(colors) {
 /**
  * Finds dimmer channels in the given channel list, adds them to xml
  * and removes them from the given channel list.
- * @param {!XMLElement} xmlParent The xml element in which the <dimmer> tags should be inserted.
- * @param {!Mode} mode The definition's mode.
- * @param {!Array.<Channel>} remainingChannels All channels that haven't been processed already.
+ * @param {XMLElement} xmlParent The xml element in which the <dimmer> tags should be inserted.
+ * @param {Mode} mode The definition's mode.
+ * @param {array.<CoarseChannel>} remainingChannels All channels that haven't been processed already.
  */
 function addDimmer(xmlParent, mode, remainingChannels) {
   const dimmerChannels = remainingChannels.filter(ch => {
@@ -862,9 +837,9 @@ function addDimmer(xmlParent, mode, remainingChannels) {
 /**
  * Finds Pan/Tilt channels in the given channel list, adds them to xml (as Position function, if possible)
  * and removes them from the given channel list.
- * @param {!XMLElement} xmlParent The xml element in which the <position> tag should be inserted.
- * @param {!Mode} mode The definition's mode.
- * @param {!Array.<Channel>} remainingChannels All channels that haven't been processed already.
+ * @param {XMLElement} xmlParent The xml element in which the <position> tag should be inserted.
+ * @param {Mode} mode The definition's mode.
+ * @param {array.<CoarseChannel>} remainingChannels All channels that haven't been processed already.
  */
 function addPosition(xmlParent, mode, remainingChannels) {
   const panChannel = remainingChannels.find(ch => ch.type === `Pan`);
@@ -887,9 +862,9 @@ function addPosition(xmlParent, mode, remainingChannels) {
 
 /**
  * Adds a pan or tilt function for the given Pan or Tilt channel.
- * @param {!XMLElement} xmlParent The xml element in which the <pan>/<titl> tag should be inserted, probably <position>.
- * @param {!Mode} mode The definition's mode.
- * @param {!Channel} channel The channel of type Pan or Tilt to use.
+ * @param {XMLElement} xmlParent The xml element in which the <pan>/<titl> tag should be inserted, probably <position>.
+ * @param {Mode} mode The definition's mode.
+ * @param {Channel} channel The channel of type Pan or Tilt to use.
  */
 function addPanTilt(xmlParent, mode, channel) {
   const isPan = channel.type === `Pan`;
@@ -905,9 +880,9 @@ function addPanTilt(xmlParent, mode, channel) {
 
 /**
  * Adds name attribute, dmxchannel attribute and attributes for fine channels (if used in mode) to the given channel function.
- * @param {!XMLElement} xmlElement The xml element to which the attributes should be added.
- * @param {!Mode} mode The definition's mode.
- * @param {!Channel} channel The channel whose data is used.
+ * @param {XMLElement} xmlElement The xml element to which the attributes should be added.
+ * @param {Mode} mode The definition's mode.
+ * @param {CoarseChannel} channel The channel whose data is used.
  */
 function addChannelAttributes(xmlElement, mode, channel) {
   xmlElement.attribute(`name`, channel.name);
@@ -934,7 +909,7 @@ function addChannelAttributes(xmlElement, mode, channel) {
 
 /**
  * Removes the given item from array using splice and indexOf. Attention: If item is duplicated in array, first occurence is removed!
- * @param {!Array} arr The array from which to remove the item.
+ * @param {array} arr The array from which to remove the item.
  * @param {*} item The item to remove from the array.
  */
 function removeFromArray(arr, item) {
@@ -942,9 +917,9 @@ function removeFromArray(arr, item) {
 }
 
 /**
- * @param {!Set} set1 First Set to compare.
- * @param {!Set} set2 Second Set to compare.
- * @returns {!boolean} Whether both Sets have equal size and their items do strictly equal.
+ * @param {Set} set1 First Set to compare.
+ * @param {Set} set2 Second Set to compare.
+ * @returns {boolean} Whether both Sets have equal size and their items do strictly equal.
  */
 function setsEqual(set1, set2) {
   let equalItems = true;
