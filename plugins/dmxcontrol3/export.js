@@ -312,30 +312,42 @@ const functions = {
       // RGB value for dummy colors. Will be decreased by 1 every time a dummy color is created.
       let greyValue = 0x99;
 
-      const indexCaps = caps.filter(cap => cap.type === `ColorWheelIndex`);
-      const wheelIndices = [];
+      const presetCaps = caps.filter(cap => cap.type === `ColorWheelIndex`);
 
-      // find out which index is activated by which DMX values
-      indexCaps.forEach(cap => {
-        const dmxRange = cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
-        const isProportional = cap.index[0].number !== cap.index[1].number;
+      // split proportional caps so we only have stepped caps
+      for (let i = 0; i < presetCaps.length; i++) {
+        const cap = presetCaps[i];
 
-        if (isProportional) {
-          addIndexRange(cap.index[0].number, new Range([dmxRange.start, dmxRange.start]), getColor(cap.colors, `start`), cap.name);
-          addIndexRange(cap.index[1].number, new Range([dmxRange.end, dmxRange.end]), getColor(cap.colors, `end`), cap.name);
+        if (!cap.isStep) {
+          const [startCap, endCap] = getSplittedCapabilities(cap);
+
+          presetCaps[i] = startCap;
+          presetCaps.splice(i + 1, 0, endCap); // insert at index i + 1
         }
-        else {
-          addIndexRange(cap.index[0].number, dmxRange, getColor(cap.colors, `start`), cap.name, true);
-        }
-      });
+      }
 
-      wheelIndices.forEach(indexData => {
+      // merge adjacent stepped caps
+      for (let i = 0; i < presetCaps.length; i++) {
+        const cap = presetCaps[i];
+
+        if (i + 1 < presetCaps.length) {
+          const nextCap = presetCaps[i + 1];
+          const mergedCapability = getMergedCapability(cap, nextCap);
+
+          if (mergedCapability) {
+            presetCaps.splice(i, 2, mergedCapability);
+            i--; // maybe the merged capability can be merged another time
+          }
+        }
+      }
+
+      presetCaps.forEach(cap => {
         xmlColorWheel.element(`step`, {
           type: `color`,
-          val: indexData.color,
-          mindmx: indexData.dmxRange.start,
-          maxdmx: indexData.dmxRange.end,
-          caption: indexData.name
+          val: getColor(cap),
+          mindmx: cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT).start,
+          maxdmx: cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT).end,
+          caption: cap.name
         });
       });
 
@@ -367,48 +379,97 @@ const functions = {
 
       return xmlColorWheel;
 
-
       /**
-       * Add the given range to the given index' data.
-       * @param {number} index A single index, e.g. 1 or 2.5.
-       * @param {Range} dmxRange A dmx range in which only the given index is activated.
-       * @param {string} color The color that correspondends to this index. May be overriden later.
-       * @param {string} name A color name. May be overriden later.
-       * @param {boolean} singleRange Whether the original capability generated only this single range.
+       * @param {Capability} cap A capability with different start/end values.
+       * @returns {array.<Capability>} One capability representing the start value and one representing the end value.
        */
-      function addIndexRange(index, dmxRange, color, name, singleRange = false) {
-        const suitableIndexData = wheelIndices.find(indexData => indexData.dmxRange.isAdjacentTo(dmxRange));
+      function getSplittedCapabilities(cap) {
+        const startCapJson = {
+          dmxRange: [cap.rawDmxRange.start, cap.rawDmxRange.start],
+          type: cap.type,
+          _splitted: true
+        };
+        const endCapJson = {
+          dmxRange: [cap.rawDmxRange.end, cap.rawDmxRange.end],
+          type: cap.type,
+          _splitted: true
+        };
 
-        // single ranges don't merge with other single ranges
-        if (suitableIndexData && !(singleRange && suitableIndexData.hasSingleRange)) {
-          suitableIndexData.dmxRange = suitableIndexData.dmxRange.getRangeMergedWith(dmxRange);
+        if (cap.index) {
+          startCapJson.index = cap.index[0].number;
+          endCapJson.index = cap.index[1].number;
+        }
+        if (cap.comment) {
+          startCapJson.comment = cap.comment;
+          endCapJson.comment = cap.comment;
+        }
+        if (cap.colors) {
+          startCapJson.colors = cap.colors.startColors;
+          endCapJson.colors = cap.colors.endColors;
+        }
+        if (cap.colorTemperature) {
+          startCapJson.colorTemperature = cap.colorTemperature[0].toString();
+          endCapJson.colorTemperature = cap.colorTemperature[1].toString();
+        }
 
-          // single ranges overwrite index data
-          if (singleRange) {
-            suitableIndexData.color = color;
-            suitableIndexData.name = name;
-            suitableIndexData.hasSingleRange = true;
-          }
-        }
-        else {
-          wheelIndices.push({
-            index,
-            dmxRange,
-            color,
-            name,
-            hasSingleRange: singleRange
-          });
-        }
+        return [
+          new Capability(startCapJson, cap._resolution, cap._channel),
+          new Capability(endCapJson, cap._resolution, cap._channel)
+        ];
       }
 
       /**
-       * @param {object|null} colors A capability's color property.
-       * @param {('start'|'end')} startOrEnd Whether to access start or end colors.
-       * @returns {string} A color from the given color data if there's only one start/end color. A generic (and probably unique) grey color instead.
+       * @param {Capability} cap1 A capability.
+       * @param {Capability} cap2 Another capability.
+       * @returns {Capability|null} A capability that combines the values of both given capabilites. Null if merging was not possible.
        */
-      function getColor(colors, startOrEnd) {
-        if (colors && colors[`${startOrEnd}Colors`].length === 1) {
-          return colors[`${startOrEnd}Colors`][0];
+      function getMergedCapability(cap1, cap2) {
+        if (!cap1.rawDmxRange.isAdjacentTo(cap2.rawDmxRange)) {
+          return null;
+        }
+
+        const dmxRange = cap1.rawDmxRange.getRangeMergedWith(cap2.rawDmxRange);
+        const capJson = {
+          dmxRange: [dmxRange.start, dmxRange.end],
+          type: cap1.type
+        };
+
+        const differentIndex = cap1.jsonObject.index !== cap2.jsonObject.index && !(cap1.jsonObject._splitted && cap2.jsonObject.index === 0);
+        const differentColors = !arraysEqual(cap1.jsonObject.colors, cap2.jsonObject.colors);
+        const differentColorTemeperatures = cap1.jsonObject.colorTemperature !== cap2.jsonObject.colorTemperature;
+        if (differentIndex || differentColors || differentColorTemeperatures) {
+          return null;
+        }
+
+        if (cap1.index) {
+          capJson.index = cap1.jsonObject.index;
+        }
+
+        if (cap1.hasComment && !cap1.jsonObject._splitted) {
+          capJson.comment = cap1.comment;
+        }
+        else if (cap2.hasComment) {
+          capJson.comment = cap2.comment;
+        }
+
+        if (cap1.colors) {
+          capJson.colors = cap1.jsonObject.colors;
+        }
+
+        if (cap1.jsonObject.colorTemperature) {
+          capJson.colorTemperature = cap1.jsonObject.colorTemperature;
+        }
+
+        return new Capability(capJson, cap1._resolution, cap1._channel);
+      }
+
+      /**
+       * @param {Capability} cap A capability.
+       * @returns {string} A color from the given capability's color data if there's only one color. A generic (and probably unique) grey color instead.
+       */
+      function getColor(cap) {
+        if (cap.colors && cap.colors.allColors.length === 1) {
+          return cap.colors.allColors[0];
         }
 
         const hex = (greyValue--).toString(16);
@@ -928,4 +989,23 @@ function setsEqual(set1, set2) {
   }
 
   return set1.size === set2.size && equalItems;
+}
+
+/**
+ * @param {array} arr1 First array to compare.
+ * @param {array} arr2 Second array to compare.
+ * @returns {boolean} Whether both arrays have equal size and their items do strictly equal.
+ */
+function arraysEqual(arr1, arr2) {
+  if (arr1 === arr2) {
+    return true;
+  }
+
+  if (!Array.isArray(arr1) || !Array.isArray(arr2)) {
+    return false;
+  }
+
+  return arr1.length === arr2.length && arr1.every(
+    (item, index) => item === arr2[index]
+  );
 }
