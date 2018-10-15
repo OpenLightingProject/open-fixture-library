@@ -1033,7 +1033,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     );
 
     if (fixture.manufacturer.rdmId === null) {
-      result.errors.push(`Fixture has RDM data, but manufacturer '${fixture.manufacturer.shortName}' has not.`);
+      result.errors.push(`Fixture has RDM data, but manufacturer '${fixture.manufacturer.name}' has not.`);
     }
 
     const rdmPersonalityIndices = new Set();
