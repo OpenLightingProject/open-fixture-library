@@ -1,0 +1,94 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ribalta Beam 8x10w RGBW",
+  "shortName": "ribalta",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["pedro hugo"],
+    "createDate": "2018-10-15",
+    "lastModifyDate": "2018-10-15"
+  },
+  "links": {
+    "manual": [
+      "http://www.skypixlight.com.br/produto.php?produto=SK-RBB01"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Auto": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "ribalta",
+      "channels": [
+        "Pan",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Auto",
+        "Sound Sensitivity",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
