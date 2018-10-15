@@ -5,7 +5,7 @@
 
     <h1>{{ manufacturer.name }} fixtures</h1>
 
-    <div v-if="`website` in manufacturer || `rdmId` in manufacturer" class="grid list">
+    <div v-if="`website` in manufacturer || `rdmId` in manufacturer" class="grid-3 list">
       <a
         v-if="`website` in manufacturer"
         :href="manufacturer.website"
