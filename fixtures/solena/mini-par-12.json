@@ -28,29 +28,6 @@
     }
   },
   "availableChannels": {
-    "Strobe": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "StrobeSpeed",
-        "speed": "0Hz"
-      }
-    },
-    "Strobe 2": {
-      "name": "Strobe",
-      "defaultValue": 0,
-      "capability": {
-        "type": "StrobeSpeed",
-        "speed": "0Hz"
-      }
-    },
-    "Strobe 3": {
-      "name": "Strobe",
-      "defaultValue": 0,
-      "capability": {
-        "type": "StrobeSpeed",
-        "speed": "0Hz"
-      }
-    },
     "Dimmer": {
       "defaultValue": 0,
       "capability": {
@@ -84,20 +61,126 @@
         "type": "ColorIntensity",
         "color": "White"
       }
+    },
+    "Color Change": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Color Select / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [32, 95],
+          "type": "Effect",
+          "effectName": "Static color",
+          "switchChannels": {
+            "Color Select / Program Speed": "Color Select"
+          }
+        },
+        {
+          "dmxRange": [96, 143],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "RGB",
+          "switchChannels": {
+            "Color Select / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [144, 191],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "RGBW",
+          "switchChannels": {
+            "Color Select / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "RGBW",
+          "switchChannels": {
+            "Color Select / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true,
+          "comment": "RGBW",
+          "switchChannels": {
+            "Color Select / Program Speed": "Program Speed"
+          }
+        }
+      ]
+    },
+    "Color Select": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Colors 01…16",
+        "helpWanted": "At which DMX values can which colors be selected?"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        }
+      ]
     }
   },
   "modes": [
     {
-      "name": "8 channels",
+      "name": "5-channel",
+      "shortName": "5ch",
       "channels": [
-        "Strobe",
-        "Strobe 2",
-        "Strobe 3",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
         "Dimmer",
         "Red",
         "Green",
         "Blue",
-        "White"
+        "White",
+        "Color Change",
+        "Color Select / Program Speed",
+        "Strobe"
       ]
     }
   ]
