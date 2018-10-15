@@ -2184,6 +2184,7 @@ The different behaviors are implemented as different [CoarseChannel](#CoarseChan
     * [.defaultChannel](#SwitchingChannel+defaultChannel) ⇒ [<code>AbstractChannel</code>](#AbstractChannel)
     * [.switchToChannelKeys](#SwitchingChannel+switchToChannelKeys) ⇒ <code>array.&lt;string&gt;</code>
     * [.switchToChannels](#SwitchingChannel+switchToChannels) ⇒ [<code>array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
+    * [.isHelpWanted](#SwitchingChannel+isHelpWanted) ⇒ <code>boolean</code>
     * [.key](#AbstractChannel+key) ⇒ <code>string</code>
     * [.name](#AbstractChannel+name) ⇒ <code>string</code>
     * [.uniqueName](#AbstractChannel+uniqueName) ⇒ <code>string</code>
@@ -2244,6 +2245,11 @@ Overrides [`AbstractChannel.fixture`](#AbstractChannel+fixture).
 ### switchingChannel.switchToChannels ⇒ [<code>array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
 **Kind**: instance property of [<code>SwitchingChannel</code>](#SwitchingChannel)  
 **Returns**: [<code>array.&lt;AbstractChannel&gt;</code>](#AbstractChannel) - All channels this channel can be switched to.  
+<a name="SwitchingChannel+isHelpWanted"></a>
+
+### switchingChannel.isHelpWanted ⇒ <code>boolean</code>
+**Kind**: instance property of [<code>SwitchingChannel</code>](#SwitchingChannel)  
+**Returns**: <code>boolean</code> - True if help is needed in one of the switched channels, false otherwise.  
 <a name="AbstractChannel+key"></a>
 
 ### switchingChannel.key ⇒ <code>string</code>
