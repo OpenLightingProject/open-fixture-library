@@ -12,6 +12,21 @@
       "https://www.pssl.com/c/Manuals/MiniPar12.pdf"
     ]
   },
+  "physical": {
+    "dimensions": [137, 115, 153],
+    "weight": 0.3,
+    "power": 12,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12x 1W RGBW LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
   "availableChannels": {
     "Strobe": {
       "defaultValue": 0,
