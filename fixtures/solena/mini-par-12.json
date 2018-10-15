@@ -1,0 +1,193 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini Par 12",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Ranaivo", "Felix Edelmann"],
+    "createDate": "2018-10-12",
+    "lastModifyDate": "2018-10-12"
+  },
+  "links": {
+    "manual": [
+      "https://www.pssl.com/c/Manuals/MiniPar12.pdf"
+    ],
+    "productPage": [
+      "https://www.pssl.com/Solena-Mini-Par-12-DMX-12x-1w-RGBW-LED-Wash-Light-2"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=qX840Po0jrE"
+    ]
+  },
+  "physical": {
+    "dimensions": [137, 115, 153],
+    "weight": 0.3,
+    "power": 12,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12x 1W LEDs (3x red, 3x green, 3x blue, 3x white)"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Change": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Color Select / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [32, 95],
+          "type": "Effect",
+          "effectName": "Static color",
+          "switchChannels": {
+            "Color Select / Program Speed": "Color Select"
+          }
+        },
+        {
+          "dmxRange": [96, 143],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "RGB",
+          "switchChannels": {
+            "Color Select / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [144, 191],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "RGBW",
+          "switchChannels": {
+            "Color Select / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "RGBW",
+          "switchChannels": {
+            "Color Select / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true,
+          "comment": "RGBW",
+          "switchChannels": {
+            "Color Select / Program Speed": "Program Speed"
+          }
+        }
+      ]
+    },
+    "Color Select": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Colors 01…16",
+        "helpWanted": "At which DMX values can which colors be selected?"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Change",
+        "Color Select / Program Speed",
+        "Strobe"
+      ]
+    }
+  ]
+}
