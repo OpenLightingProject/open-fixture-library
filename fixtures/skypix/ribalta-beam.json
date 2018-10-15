@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Ribalta Beam",
-  "categories": ["Pixel Bar", "Moving Head"],
+  "categories": ["Pixel Bar", "Moving Head", "Color Changer"],
   "meta": {
     "authors": ["txukinho"],
     "createDate": "2018-10-15",
@@ -12,15 +12,30 @@
       "http://skypixlight.com.br/produto.php?produto=SK-RBB01"
     ]
   },
+  "helpWanted": "The 38-channel mode, channel data and a link to the manual are missing. Is this fixture the same as the ETEC LED Roto Bar?",
+  "physical": {
+    "bulb": {
+      "type": "8x 10W RGBW LEDs"
+    },
+    "focus": {
+      "type": "Head",
+      "tiltMax": 180
+    }
+  },
+  "matrix": {
+    "pixelCount": [8, 1, 1]
+  },
   "availableChannels": {
-    "Pan": {
+    "Tilt": {
+      "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
         "angleEnd": "180deg"
       }
     },
-    "Pan/Tilt Speed": {
+    "Tilt Speed": {
+      "defaultValue": 0,
       "capability": {
         "type": "PanTiltSpeed",
         "speedStart": "fast",
@@ -28,43 +43,53 @@
       }
     },
     "Dimmer": {
+      "defaultValue": 0,
       "capability": {
         "type": "Intensity"
       }
     },
     "Strobe": {
       "capability": {
-        "type": "NoFunction"
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "helpWanted": "At which DMX value is strobe enabled or the lamp constantly on/off?"
       }
     },
-    "Auto ": {
+    "Auto": {
       "capability": {
-        "type": "NoFunction"
+        "type": "Generic",
+        "helpWanted": "What does this channel?"
       }
     },
-    "NAda": {
+    "Nothing": {
       "capability": {
-        "type": "NoFunction"
+        "type": "NoFunction",
+        "helpWanted": "Is this channel not used / reserved?"
       }
     },
     "Red": {
+      "defaultValue": 0,
       "capability": {
-        "type": "NoFunction"
+        "type": "ColorIntensity",
+        "color": "Red"
       }
     },
     "Green": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blue": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "White": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
@@ -73,14 +98,15 @@
   },
   "modes": [
     {
-      "name": "ribalta 10ch",
+      "name": "10-channel",
+      "shortName": "10ch",
       "channels": [
-        "Pan",
-        "Pan/Tilt Speed",
+        "Tilt",
+        "Tilt Speed",
         "Dimmer",
         "Strobe",
-        "Auto ",
-        "NAda",
+        "Auto",
+        "Nothing",
         "Red",
         "Green",
         "Blue",
