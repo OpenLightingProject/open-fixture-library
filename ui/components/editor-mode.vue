@@ -124,41 +124,41 @@
   </section>
 </template>
 
-<style lang="scss">
-/* not scoped because child components would not be covered then */
-.fixture-mode section {
+<style lang="scss" scoped>
+.fixture-mode /deep/ section {
   flex-direction: column;
 
   & > .label {
     flex-basis: auto;
   }
 }
-</style>
 
-<style lang="scss" scoped>
-ol.mode-channels {
+.mode-channels {
   margin: 0 0 1ex;
   padding-top: 4px;
   padding-bottom: 4px;
-}
-.mode-channels a {
-  opacity: 0;
-  float: right;
-  width: 1.4em;
-  height: 1.4em;
-  padding: 0.3em;
-  transition: opacity 0.1s;
-}
-.mode-channels a .icon {
-  vertical-align: unset;
-}
-.mode-channels > li:hover > a,
-.mode-channels a:focus {
-  opacity: 1;
-}
 
-.mode-channels .drag-handle {
-  cursor: move;
+  & a {
+    opacity: 0;
+    float: right;
+    width: 1.4em;
+    height: 1.4em;
+    padding: 0.3em;
+    transition: opacity 0.1s;
+
+    & .icon {
+      vertical-align: unset;
+    }
+  }
+
+  & > li:hover > a,
+  & a:focus {
+    opacity: 1;
+  }
+
+  & .drag-handle {
+    cursor: move;
+  }
 }
 </style>
 
