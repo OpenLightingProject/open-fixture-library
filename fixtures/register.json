@@ -425,11 +425,6 @@
       "lastActionDate": "2018-09-04",
       "lastAction": "modified"
     },
-    "generic/par-mini-rgb3-3": {
-      "name": "PAR-MINI-RGB3-3",
-      "lastActionDate": "2018-10-12",
-      "lastAction": "created"
-    },
     "generic/rgb-fader": {
       "name": "RGB Fader",
       "lastActionDate": "2018-07-21",
@@ -750,6 +745,11 @@
       "lastActionDate": "2018-08-09",
       "lastAction": "modified"
     },
+    "solena/par-mini-rgb3-3": {
+      "name": "PAR-MINI-RGB3-3",
+      "lastActionDate": "2018-10-12",
+      "lastAction": "created"
+    },
     "stairville/led-flood-panel-150": {
       "name": "LED Flood Panel 150",
       "lastActionDate": "2018-08-09",
@@ -915,7 +915,6 @@
       "drgb-fader",
       "drgbw-fader",
       "pan-tilt",
-      "par-mini-rgb3-3",
       "rgb-fader",
       "rgba-fader",
       "rgbd-fader",
@@ -1028,6 +1027,9 @@
       "sparkular",
       "sparkular-fall"
     ],
+    "solena": [
+      "par-mini-rgb3-3"
+    ],
     "stairville": [
       "led-flood-panel-150",
       "mh-100",
@@ -1129,7 +1131,6 @@
       "generic/cmy-fader",
       "generic/drgb-fader",
       "generic/drgbw-fader",
-      "generic/par-mini-rgb3-3",
       "generic/rgb-fader",
       "generic/rgba-fader",
       "generic/rgbd-fader",
@@ -1184,6 +1185,7 @@
       "showtec/pixel-bar-12-mkii",
       "showtec/sunraise-led",
       "showtec/xs-1-rgbw",
+      "solena/par-mini-rgb3-3",
       "stairville/led-flood-panel-150",
       "stairville/mh-100",
       "stairville/mh-x25",
@@ -1610,7 +1612,7 @@
       "nicols/led-bar-123-fc-ip"
     ],
     "Ranaivo": [
-      "generic/par-mini-rgb3-3"
+      "solena/par-mini-rgb3-3"
     ],
     "RAZAKANIRINA": [
       "ibiza-light/par-mini-rgb3"
@@ -1711,7 +1713,7 @@
     }
   },
   "lastUpdated": [
-    "generic/par-mini-rgb3-3",
+    "solena/par-mini-rgb3-3",
     "lixada/mini-gobo-moving-head-light",
     "ibiza-light/par-mini-rgb3",
     "martin/mac-600",
