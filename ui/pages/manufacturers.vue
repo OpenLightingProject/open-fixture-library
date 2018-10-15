@@ -2,14 +2,14 @@
   <div>
     <h1>Manufacturers</h1>
 
-    <div class="manufacturers grid">
+    <div class="manufacturers grid-4">
       <nuxt-link
         v-for="manufacturer in manufacturers"
         :key="manufacturer.key"
         :to="`/${manufacturer.key}`"
         class="card">
-        <h2>{{ manufacturer.name }}</h2>
-        <div class="fixtures">{{ manufacturer.fixtureCount }} fixture{{ manufacturer.fixtureCount === 1 ? `` : `s` }}</div>
+        <span class="name">{{ manufacturer.name }}</span>
+        <span class="fixtures hint">{{ manufacturer.fixtureCount }} fixture{{ manufacturer.fixtureCount === 1 ? `` : `s` }}</span>
       </nuxt-link>
     </div>
   </div>
