@@ -155,6 +155,10 @@
   }
 }
 
+.comment /deep/ .value {
+  white-space: pre-line;
+}
+
 .fixture-videos {
   text-align: center;
   line-height: 1;
@@ -212,12 +216,6 @@
     background-color: $grey-200; // page background color
     box-shadow: 0 0 3px 5px $grey-200;
   }
-}
-</style>
-
-<style lang="scss">
-.comment > .value {
-  white-space: pre-line;
 }
 </style>
 

@@ -227,10 +227,8 @@
   .existingChannelUuid {
     display: block;
   }
-}
 
-@media (min-width: $phone) {
-  #channel-dialog {
+  @media (min-width: $phone) {
     max-width: 700px;
     width: 80%;
   }
