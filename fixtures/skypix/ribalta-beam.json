@@ -23,7 +23,40 @@
     }
   },
   "matrix": {
-    "pixelCount": [8, 1, 1]
+    "pixelCount": [8, 1, 1],
+    "pixelGroups": {
+      "Master": ["1", "2", "3", "4", "5", "6", "7", "8"]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
   },
   "availableChannels": {
     "Tilt": {
@@ -66,34 +99,6 @@
         "type": "NoFunction",
         "helpWanted": "Is this channel not used / reserved?"
       }
-    },
-    "Red": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
     }
   },
   "modes": [
@@ -107,10 +112,10 @@
         "Strobe",
         "Auto",
         "Nothing",
-        "Red",
-        "Green",
-        "Blue",
-        "White"
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master"
       ]
     }
   ]
