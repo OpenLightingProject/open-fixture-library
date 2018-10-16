@@ -373,8 +373,8 @@
     }
   },
   "dependencies": {
-    "templateChannels": ["matrix"],
-    "matrix": ["templateChannels"]
+    "matrix": ["templateChannels"],
+    "templateChannels": ["matrix"]
   },
   "required": ["$schema", "name", "categories", "meta", "modes"],
   "allOf": [
