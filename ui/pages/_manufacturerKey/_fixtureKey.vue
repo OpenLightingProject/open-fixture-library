@@ -133,7 +133,7 @@
     <section id="contribute">
       <h2>Something wrong with this fixture definition?</h2>
       <p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>
-      <div class="grid list">
+      <div class="grid-3 list">
         <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card"><app-svg name="bug" class="left" /><span>Report issue on GitHub</span></a>
         <a href="/about#contact" class="card"><app-svg name="email" class="left" /><span>Contact</span></a>
       </div>
@@ -153,6 +153,10 @@
     content: ' | ';
     padding: 0 0.7ex;
   }
+}
+
+.comment /deep/ .value {
+  white-space: pre-line;
 }
 
 .fixture-videos {
@@ -212,12 +216,6 @@
     background-color: $grey-200; // page background color
     box-shadow: 0 0 3px 5px $grey-200;
   }
-}
-</style>
-
-<style lang="scss">
-.comment > .value {
-  white-space: pre-line;
 }
 </style>
 

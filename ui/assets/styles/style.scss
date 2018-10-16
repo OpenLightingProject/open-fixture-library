@@ -362,6 +362,93 @@ a.button.secondary:disabled {
     animation-delay: 0.5s;
     animation-fill-mode: backwards;
   }
+
+  .grid-3 > & {
+    @media (min-width: $phone-landscape) {
+      display: inline-block;
+      width: calc(50% - 0.5rem);
+      vertical-align: top;
+
+      & > h2,
+      & > .name {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      &:nth-child(2n+1) {
+        margin-right: 0.5rem;
+      }
+      &:nth-child(2n) {
+        margin-left: 0.5rem;
+      }
+    }
+
+    @media (min-width: $tablet) {
+      width: calc(33.3% - 2rem / 3);
+
+      &:nth-child(3n+1) {
+        margin-left: 0;
+        margin-right: 0;
+      }
+      &:nth-child(3n+2),
+      &:nth-child(3n) {
+        margin-left: 1rem;
+        margin-right: 0;
+      }
+    }
+  }
+
+  .grid-4 > & {
+    @media (min-width: 440px) {
+      display: inline-block;
+      width: calc(50% - 0.5rem);
+      vertical-align: top;
+
+      & > h2,
+      & > .name {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      &:nth-child(2n+1) {
+        margin-right: 0.5rem;
+      }
+      &:nth-child(2n) {
+        margin-left: 0.5rem;
+      }
+    }
+
+    @media (min-width: 650px) {
+      width: calc(33.3% - 2rem / 3);
+
+      &:nth-child(3n+1) {
+        margin-left: 0;
+        margin-right: 0;
+      }
+      &:nth-child(3n+2),
+      &:nth-child(3n) {
+        margin-left: 1rem;
+        margin-right: 0;
+      }
+    }
+
+    @media (min-width: 920px) {
+      width: calc(25% - 3rem / 4);
+
+      &:nth-child(4n+1) {
+        margin-left: 0;
+        margin-right: 0;
+      }
+      &:nth-child(4n+2),
+      &:nth-child(4n+3),
+      &:nth-child(4n) {
+        margin-left: 1rem;
+        margin-right: 0;
+      }
+    }
+  }
 }
 
 @keyframes card-highlight {
@@ -412,7 +499,6 @@ a.button.secondary:disabled {
   .icon {
     width: 32px;
     height: 32px;
-    vertical-align: middle;
 
     &.left {
       margin-right: 1em;
@@ -534,43 +620,6 @@ a.card, .link, .list a {
     }
     &.right {
       margin-left: .6em;
-    }
-  }
-}
-
-@media (min-width: $phone-landscape) {
-  .grid > .card {
-    display: inline-block;
-    width: calc(50% - 0.5rem);
-    vertical-align: top;
-
-    & > h2 {
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-
-    &:nth-child(2n+1) {
-      margin-right: 0.5rem;
-    }
-    &:nth-child(2n) {
-      margin-left: 0.5rem;
-    }
-  }
-}
-
-@media (min-width: $tablet) {
-  .grid > .card {
-    width: calc(33.3% - 2rem / 3);
-
-    &:nth-child(3n+1) {
-      margin-left: 0;
-      margin-right: 0;
-    }
-    &:nth-child(3n+2),
-    &:nth-child(3n) {
-      margin-left: 1rem;
-      margin-right: 0;
     }
   }
 }

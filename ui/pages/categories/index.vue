@@ -2,7 +2,7 @@
   <div>
     <h1>Categories</h1>
 
-    <div class="categories grid">
+    <div class="categories grid-3">
       <nuxt-link
         v-for="category in categories"
         :key="category.name"

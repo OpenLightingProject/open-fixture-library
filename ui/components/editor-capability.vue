@@ -64,6 +64,10 @@
     padding-bottom: 1.5rem;
     margin-bottom: 0.8rem;
   }
+
+  & /deep/ summary {
+    padding: 0.3rem 0.5rem;
+  }
 }
 
 .capability-content {
@@ -89,13 +93,6 @@ a.remove {
   }
 }
 </style>
-
-<style lang="scss">
-.capability summary {
-  padding: 0.3rem 0.5rem;
-}
-</style>
-
 
 <script>
 import schemaProperties from '~~/lib/schema-properties.js';
