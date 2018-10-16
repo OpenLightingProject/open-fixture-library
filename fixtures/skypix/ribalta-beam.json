@@ -3,7 +3,7 @@
   "name": "Ribalta Beam",
   "categories": ["Pixel Bar", "Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["txukinho", "Felix Edelmann"],
+    "authors": ["txukinho", "pedro hugo", "Felix Edelmann"],
     "createDate": "2018-10-15",
     "lastModifyDate": "2018-10-15"
   },
@@ -91,13 +91,15 @@
     "Auto": {
       "capability": {
         "type": "Generic",
-        "helpWanted": "What does this channel?"
+        "helpWanted": "What does this channel do?"
       }
     },
-    "Nothing": {
+    "Sound Sensitivity": {
       "capability": {
-        "type": "NoFunction",
-        "helpWanted": "Is this channel not used / reserved?"
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high",
+        "helpWanted": "Is it low…high or high…low?"
       }
     }
   },
