@@ -305,14 +305,14 @@ const functions = {
     }
   },
   colorWheel: {
-    isCapSuitable: cap => cap.type === `ColorWheelIndex` || (cap.type === `ColorWheelRotation` && cap.speed),
+    isCapSuitable: cap => cap.type === `ColorWheelIndex` || cap.type === `ColorPreset` || (cap.type === `ColorWheelRotation` && cap.speed),
     create: (channel, caps) => {
       const xmlColorWheel = xmlbuilder.create(`colorwheel`);
 
       // RGB value for dummy colors. Will be decreased by 1 every time a dummy color is created.
       let greyValue = 0x99;
 
-      const presetCaps = caps.filter(cap => cap.type === `ColorWheelIndex`);
+      const presetCaps = caps.filter(cap => cap.type === `ColorWheelIndex` || cap.type === `ColorPreset`);
 
       // split proportional caps so we only have stepped caps
       for (let i = 0; i < presetCaps.length; i++) {
@@ -436,8 +436,9 @@ const functions = {
 
         const differentIndex = cap1.jsonObject.index !== cap2.jsonObject.index && !(cap1.jsonObject._splitted && cap2.jsonObject.index === 0);
         const differentColors = !arraysEqual(cap1.jsonObject.colors, cap2.jsonObject.colors);
-        const differentColorTemeperatures = cap1.jsonObject.colorTemperature !== cap2.jsonObject.colorTemperature;
-        if (differentIndex || differentColors || differentColorTemeperatures) {
+        const differentColorTemperatures = cap1.jsonObject.colorTemperature !== cap2.jsonObject.colorTemperature;
+        const isGenericColor = !cap1.index && !cap1.colors && !cap1.colorTemperature;
+        if (differentIndex || differentColors || differentColorTemperatures || isGenericColor) {
           return null;
         }
 
