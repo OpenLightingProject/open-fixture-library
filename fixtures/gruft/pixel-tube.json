@@ -1,0 +1,1228 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Pixel Tube",
+  "categories": ["Pixel Bar", "Color Changer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2018-09-24",
+    "lastModifyDate": "2018-09-24"
+  },
+  "physical": {
+    "dimensions": [1000, 30, 40],
+    "power": 10,
+    "bulb": {
+      "type": "30x WS2812B RGB LEDs"
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "matrix": {
+    "pixelCount": [30, 1, 1]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 29],
+          "type": "ColorTemperature",
+          "colorTemperature": "default"
+        },
+        {
+          "dmxRange": [30, 54],
+          "type": "ColorTemperature",
+          "colorTemperature": "1900K",
+          "comment": "Candle"
+        },
+        {
+          "dmxRange": [55, 79],
+          "type": "ColorTemperature",
+          "colorTemperature": "2600K",
+          "comment": "Tungsten 40W"
+        },
+        {
+          "dmxRange": [80, 104],
+          "type": "ColorTemperature",
+          "colorTemperature": "2850K",
+          "comment": "Tungsten 100W"
+        },
+        {
+          "dmxRange": [105, 129],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K",
+          "comment": "Halogen"
+        },
+        {
+          "dmxRange": [130, 154],
+          "type": "ColorTemperature",
+          "colorTemperature": "5200K",
+          "comment": "Carbon Arc"
+        },
+        {
+          "dmxRange": [155, 179],
+          "type": "ColorTemperature",
+          "colorTemperature": "5400K",
+          "comment": "High Noon Sun"
+        },
+        {
+          "dmxRange": [180, 204],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K",
+          "comment": "Direct Sunlight"
+        },
+        {
+          "dmxRange": [205, 229],
+          "type": "ColorTemperature",
+          "colorTemperature": "7000K",
+          "comment": "Overcast Sky"
+        },
+        {
+          "dmxRange": [230, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "20000K",
+          "comment": "Clear Blue Sky"
+        }
+      ]
+    },
+    "Pixel Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Maintenance",
+          "comment": "RGB (default orientation)"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "comment": "HSV (default orientation)"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "comment": "RGB (reverse orientation)"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "comment": "HSV (reverse orientation)"
+        }
+      ]
+    },
+    "Auto Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Red 1",
+            "Green 1 / Effect Color 1 Green": "Green 1",
+            "Blue 1 / Effect Color 1 Blue": "Blue 1",
+            "Red 2 / Effect Color 2 Red": "Red 2",
+            "Green 2 / Effect Color 2 Green": "Green 2",
+            "Blue 2 / Effect Color 2 Blue": "Blue 2",
+            "Red 3 / Effect Color 3 Red": "Red 3",
+            "Green 3 / Effect Color 3 Green": "Green 3",
+            "Blue 3 / Effect Color 3 Blue": "Blue 3"
+          }
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Effect",
+          "effectName": "Static",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [20, 22],
+          "type": "Effect",
+          "effectName": "Blink",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [23, 25],
+          "type": "Effect",
+          "effectName": "Breath",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [26, 28],
+          "type": "Effect",
+          "effectName": "Color Wipe",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [29, 31],
+          "type": "Effect",
+          "effectName": "Color Wipe Inverse",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [32, 34],
+          "type": "Effect",
+          "effectName": "Color Wipe Reverse",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [35, 37],
+          "type": "Effect",
+          "effectName": "Color Wipe Reverse Inverse",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [38, 40],
+          "type": "Effect",
+          "effectName": "Color Wipe Random",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [41, 43],
+          "type": "Effect",
+          "effectName": "Random Color",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [44, 46],
+          "type": "Effect",
+          "effectName": "Single Dynamic",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [47, 49],
+          "type": "Effect",
+          "effectName": "Multi Dynamic",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [50, 52],
+          "type": "Effect",
+          "effectName": "Rainbow",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [53, 55],
+          "type": "Effect",
+          "effectName": "Rainbow Cycle",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [56, 58],
+          "type": "Effect",
+          "effectName": "Scan",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [59, 61],
+          "type": "Effect",
+          "effectName": "Dual Scan",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [62, 64],
+          "type": "Effect",
+          "effectName": "Fade",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [65, 67],
+          "type": "Effect",
+          "effectName": "Theater Chase",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [68, 70],
+          "type": "Effect",
+          "effectName": "Theater Chase Rainbow",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [71, 73],
+          "type": "Effect",
+          "effectName": "Running Lights",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [74, 76],
+          "type": "Effect",
+          "effectName": "Twinkle",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [77, 79],
+          "type": "Effect",
+          "effectName": "Twinkle Random",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [80, 82],
+          "type": "Effect",
+          "effectName": "Twinkle Fade",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [83, 85],
+          "type": "Effect",
+          "effectName": "Twinkle Fade Random",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [86, 88],
+          "type": "Effect",
+          "effectName": "Sparkle",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [89, 91],
+          "type": "Effect",
+          "effectName": "Flash Sparkle",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [92, 94],
+          "type": "Effect",
+          "effectName": "Hyper Sparkle",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [95, 97],
+          "type": "Effect",
+          "effectName": "Strobe",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [98, 100],
+          "type": "Effect",
+          "effectName": "Strobe Rainbow",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [101, 103],
+          "type": "Effect",
+          "effectName": "Multi Strobe",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [104, 106],
+          "type": "Effect",
+          "effectName": "Blink Rainbow",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [107, 109],
+          "type": "Effect",
+          "effectName": "Chase White",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [110, 112],
+          "type": "Effect",
+          "effectName": "Chase Color",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [113, 115],
+          "type": "Effect",
+          "effectName": "Chase Random",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [116, 118],
+          "type": "Effect",
+          "effectName": "Chase Rainbow",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [119, 121],
+          "type": "Effect",
+          "effectName": "Chase Flash",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [122, 124],
+          "type": "Effect",
+          "effectName": "Chase Flash Random",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [125, 127],
+          "type": "Effect",
+          "effectName": "Chase Rainbow White",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [128, 130],
+          "type": "Effect",
+          "effectName": "Chase Blackout",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [131, 133],
+          "type": "Effect",
+          "effectName": "Chase Blackout Rainbow",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [134, 136],
+          "type": "Effect",
+          "effectName": "Color Sweep Random",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [137, 139],
+          "type": "Effect",
+          "effectName": "Running Color",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [140, 142],
+          "type": "Effect",
+          "effectName": "Running Red Blue",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [143, 145],
+          "type": "Effect",
+          "effectName": "Running Random",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [146, 148],
+          "type": "Effect",
+          "effectName": "Larson Scanner",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [149, 151],
+          "type": "Effect",
+          "effectName": "Comet",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [152, 154],
+          "type": "Effect",
+          "effectName": "Fireworks",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [155, 157],
+          "type": "Effect",
+          "effectName": "Fireworks Random",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [158, 160],
+          "type": "Effect",
+          "effectName": "Merry Christmas",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [161, 163],
+          "type": "Effect",
+          "effectName": "Fire Flicker",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [164, 166],
+          "type": "Effect",
+          "effectName": "Fire Flicker (soft)",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [167, 169],
+          "type": "Effect",
+          "effectName": "Fire Flicker (intense)",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [170, 172],
+          "type": "Effect",
+          "effectName": "Circus Combustus",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [173, 175],
+          "type": "Effect",
+          "effectName": "Halloween",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [176, 178],
+          "type": "Effect",
+          "effectName": "Bicolor Chase",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue"
+          }
+        },
+        {
+          "dmxRange": [179, 181],
+          "type": "Effect",
+          "effectName": "Tricolor Chase",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue"
+          }
+        },
+        {
+          "dmxRange": [182, 184],
+          "type": "Effect",
+          "effectName": "ICU",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        },
+        {
+          "dmxRange": [185, 255],
+          "type": "NoFunction",
+          "comment": "Reserved",
+          "switchChannels": {
+            "Red 1 / Effect Color 1 Red": "Effect Color 1 Red Unused",
+            "Green 1 / Effect Color 1 Green": "Effect Color 1 Green Unused",
+            "Blue 1 / Effect Color 1 Blue": "Effect Color 1 Blue Unused",
+            "Red 2 / Effect Color 2 Red": "Effect Color 2 Red Unused",
+            "Green 2 / Effect Color 2 Green": "Effect Color 2 Green Unused",
+            "Blue 2 / Effect Color 2 Blue": "Effect Color 2 Blue Unused",
+            "Red 3 / Effect Color 3 Red": "Effect Color 3 Red Unused",
+            "Green 3 / Effect Color 3 Green": "Effect Color 3 Green Unused",
+            "Blue 3 / Effect Color 3 Blue": "Effect Color 3 Blue Unused"
+          }
+        }
+      ]
+    },
+    "Program Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Effect Color 1 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Effect Color 1 Red Unused": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Effect Color 1 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Effect Color 1 Green Unused": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Effect Color 1 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Effect Color 1 Blue Unused": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Effect Color 2 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Effect Color 2 Red Unused": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Effect Color 2 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Effect Color 2 Green Unused": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Effect Color 2 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Effect Color 2 Blue Unused": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Effect Color 3 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Effect Color 3 Red Unused": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Effect Color 3 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Effect Color 3 Green Unused": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Effect Color 3 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Effect Color 3 Blue Unused": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "templateChannels": {
+    "Intensity $pixelKey": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Pixel",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Pixel Control",
+        "Auto Programs",
+        "Program Speed",
+        "Intensity 1",
+        "Red 1 / Effect Color 1 Red",
+        "Green 1 / Effect Color 1 Green",
+        "Blue 1 / Effect Color 1 Blue",
+        "Intensity 2",
+        "Red 2 / Effect Color 2 Red",
+        "Green 2 / Effect Color 2 Green",
+        "Blue 2 / Effect Color 2 Blue",
+        "Intensity 3",
+        "Red 3 / Effect Color 3 Red",
+        "Green 3 / Effect Color 3 Green",
+        "Blue 3 / Effect Color 3 Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "4", "5", "6", "7", "8", "9", "10",
+            "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+            "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Intensity $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}
