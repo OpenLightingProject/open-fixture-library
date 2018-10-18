@@ -479,9 +479,30 @@ const functions = {
     }
   },
   colorTemperature: {
-    isCapSuitable: cap => false,
+    isCapSuitable: cap => cap.type === `ColorTemperature`,
     create: (channel, caps) => {
-      return;
+      const xmlColorTemp = xmlbuilder.create(`colortemp`);
+
+      const kelvinCaps = getNormalizedCapabilities(caps.filter(
+        cap => cap.colorTemperature[0].unit === `K`
+      ), `colorTemperature`, 8000, `K`);
+
+      // map -100…100% (warm…cold) to 2500…8000K
+      const percentCaps = getNormalizedCapabilities(caps.filter(
+        cap => cap.colorTemperature[0].unit === `%`
+      ), `colorTemperature`, (8000 - 2500) / 2, `K`);
+      percentCaps.forEach(cap => {
+        cap.startValue += ((8000 - 2500) / 2) + 2500;
+        cap.endValue += ((8000 - 2500) / 2) + 2500;
+      });
+
+      kelvinCaps.concat(percentCaps).forEach(cap => {
+        const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
+        xmlCap.attribute(`type`, `linear`);
+        xmlColorTemp.importDocument(xmlCap);
+      });
+
+      return xmlColorTemp;
     }
   },
   goboWheel: {
