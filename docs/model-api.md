@@ -746,6 +746,7 @@ A physical entity with numerical value and unit information.
         * [.keyword](#Entity+keyword) ⇒ <code>string</code> \| <code>null</code>
         * [.getBaseUnitEntity()](#Entity+getBaseUnitEntity) ⇒ [<code>Entity</code>](#Entity)
         * [.valueOf()](#Entity+valueOf) ⇒ <code>number</code>
+        * [.toString()](#Entity+toString) ⇒ <code>string</code>
         * [.equals(anotherEntity)](#Entity+equals) ⇒ <code>boolean</code>
     * _static_
         * [.createFromEntityString(entityString)](#Entity.createFromEntityString) ⇒ [<code>Entity</code>](#Entity)
@@ -789,6 +790,11 @@ Used to allow comparing like `entity1 < entity2`
 
 **Kind**: instance method of [<code>Entity</code>](#Entity)  
 **Returns**: <code>number</code> - The numerical value of this entity.  
+<a name="Entity+toString"></a>
+
+### entity.toString() ⇒ <code>string</code>
+**Kind**: instance method of [<code>Entity</code>](#Entity)  
+**Returns**: <code>string</code> - The entity string that could be used in the fixture's JSON data.  
 <a name="Entity+equals"></a>
 
 ### entity.equals(anotherEntity) ⇒ <code>boolean</code>
