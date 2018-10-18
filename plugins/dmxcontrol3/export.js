@@ -132,7 +132,7 @@ function addFunctions(xml, mode) {
       pixelKeys.forEach(key => channelsPerPixel.set(key, []));
     }
 
-    const channels = mode.fixture.allChannels.map(
+    const channels = mode.channels.map(
       ch => (ch instanceof SwitchingChannel ? ch.defaultChannel : ch)
     ).filter(
       ch => !(ch instanceof FineChannel || ch instanceof NullChannel)
