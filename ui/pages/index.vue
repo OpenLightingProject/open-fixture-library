@@ -17,7 +17,7 @@
     <p><abbr title="Open Fixture Library">OFL</abbr> collects DMX fixture definitions in a JSON format and automatically exports them to the right format for every supported lighting software. Everybody can <a href="https://github.com/OpenLightingProject/open-fixture-library">contribute</a> and help to improve! Thanks!</p>
 
 
-    <div class="grid centered">
+    <div class="grid-3 centered">
 
       <section class="card list">
         <h2>Recently updated fixtures</h2>
@@ -66,7 +66,7 @@
 
     </div>
 
-    <div class="list grid centered">
+    <div class="list grid-3 centered">
       <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+-label%3Atype-bug" rel="nofollow" class="card">
         <app-svg name="lightbulb-on-outline" class="left" />
         <span>Request feature</span>

@@ -69,14 +69,12 @@
 .search-results {
   margin-top: 2rem;
 }
-</style>
 
-<style lang="scss">
-.search select[multiple] {
+.search /deep/ select[multiple] {
   margin-right: 1ex;
 }
 
-.search details {
+.search /deep/ details {
   margin: 1rem 0;
 }
 </style>
