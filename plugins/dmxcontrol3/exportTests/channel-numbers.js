@@ -88,7 +88,7 @@ module.exports = async function testChannelNumbers(exportFile) {
       errors.push(`Capability ${range} is not inside a channel function.`);
     }
     else if (range.start < 0 || range.end > 255) {
-      errors.push(`Capability ${range} in channel #${channelIndex + 1} is out of the allowed 0…255 range.`);
+      errors.push(`Capability ${range} in channel ${channelIndex + 1} is out of the allowed 0…255 range.`);
     }
     else {
       const existingRanges = usedChannelRanges[channelIndex];
