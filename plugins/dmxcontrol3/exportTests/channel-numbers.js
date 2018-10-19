@@ -115,7 +115,7 @@ module.exports = async function testChannelNumbers(exportFile) {
 
       if (isUsed) {
         if (isNoFunction) {
-          errors.push(`Channel ${channel.name} (#${index + 1}) of type NoFunction should be omitted.`);
+          errors.push(`Channel ${index + 1} "${channel.name}" of type NoFunction should be omitted.`);
         }
         else {
           const mergedRanges = Range.getMergedRanges(usedChannelRanges[index]);
