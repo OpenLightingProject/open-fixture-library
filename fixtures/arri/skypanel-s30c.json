@@ -55,8 +55,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "NoFunction",
-          "comment": "Neutral / no effect"
+          "type": "Generic",
+          "comment": "Neutral"
         },
         {
           "dmxRange": [11, 20],
@@ -66,17 +66,17 @@
         {
           "dmxRange": [21, 119],
           "type": "Generic",
-          "comment": "-99% to -1%"
+          "comment": "-99%…-1%"
         },
         {
           "dmxRange": [120, 145],
           "type": "Generic",
-          "comment": "Neutral / no effect"
+          "comment": "Neutral"
         },
         {
           "dmxRange": [146, 244],
           "type": "Generic",
-          "comment": "1% to 99%"
+          "comment": "1%…99%"
         },
         {
           "dmxRange": [245, 255],
@@ -85,47 +85,39 @@
         }
       ]
     },
-    "Cross fade to color": {
+    "Cross Fade to Color": {
       "defaultValue": 0,
       "capability": {
         "type": "Generic",
-        "comment": "White to RGBw COLOR"
+        "comment": "White … RGBW/HSI color"
       }
     },
     "Red": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Red"
       }
     },
     "Green": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Green"
       }
     },
     "Blue": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Blue"
       }
     },
     "White": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "White"
       }
     },
     "Fan Control": {
@@ -133,41 +125,41 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "Generic",
+          "type": "NoFunction",
           "comment": "Use Fan Mode of Fixture Menu"
         },
         {
           "dmxRange": [10, 57],
-          "type": "Generic",
-          "comment": "Quite, Fan speed fixed"
+          "type": "Maintenance",
+          "comment": "Quiet, Fan speed fixed"
         },
         {
           "dmxRange": [58, 105],
-          "type": "Generic",
-          "comment": "Variable, Fan Speed Variable"
+          "type": "Maintenance",
+          "comment": "Variable, Fan speed variable"
         },
         {
           "dmxRange": [106, 153],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "High Temp, Fan speed fixed"
         },
         {
           "dmxRange": [154, 201],
-          "type": "Generic",
-          "comment": "No Fonction"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [202, 249],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Fan At Full Speed"
         },
         {
           "dmxRange": [250, 250],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "helpWanted": "Is this capability really here? Or is it just a typo in the manual?"
         },
         {
           "dmxRange": [251, 255],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Fan off"
         }
       ]
@@ -177,13 +169,12 @@
       "capabilities": [
         {
           "dmxRange": [0, 11],
-          "type": "NoFunction",
-          "comment": "No effect"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [12, 23],
           "type": "Generic",
-          "comment": "Preset 01 - User Defined "
+          "comment": "Preset 01 - User Defined"
         },
         {
           "dmxRange": [24, 35],
@@ -233,59 +224,59 @@
         {
           "dmxRange": [132, 143],
           "type": "ColorPreset",
-          "comment": "2900 k ",
-          "colorTemperature": "2900K"
+          "colorTemperature": "2900K",
+          "comment": "Preset 01"
         },
         {
           "dmxRange": [144, 155],
           "type": "ColorPreset",
-          "comment": "3200 k",
-          "colorTemperature": "3200K"
+          "colorTemperature": "3200K",
+          "comment": "Preset 02"
         },
         {
           "dmxRange": [156, 167],
           "type": "ColorPreset",
-          "comment": "5600 K",
-          "colorTemperature": "5600K"
+          "colorTemperature": "5600K",
+          "comment": "Preset 03"
         },
         {
           "dmxRange": [168, 179],
           "type": "ColorPreset",
-          "comment": "6500 k",
-          "colorTemperature": "6500K"
+          "colorTemperature": "6500K",
+          "comment": "Preset 04"
         },
         {
           "dmxRange": [180, 191],
           "type": "ColorPreset",
-          "comment": "120° Hue 100% Saturation"
+          "comment": "Preset 05 - 120° Hue, 100% Saturation"
         },
         {
           "dmxRange": [192, 203],
           "type": "ColorPreset",
-          "comment": "240° Hue 100% Saturation"
+          "comment": "Preset 06 - 240° Hue, 100% Saturation"
         },
         {
           "dmxRange": [204, 215],
           "type": "ColorPreset",
-          "comment": "Rosco 3408, 5600 K Base",
+          "comment": "Preset 07 - Rosco 3408",
           "colorTemperature": "5600K"
         },
         {
           "dmxRange": [216, 227],
           "type": "ColorPreset",
-          "comment": "Lee 187 3200 K Base",
+          "comment": "Preset 08 - Lee 187",
           "colorTemperature": "3200K"
         },
         {
           "dmxRange": [228, 239],
           "type": "ColorPreset",
-          "comment": "Rosco 3152 3200 K Base",
+          "comment": "Preset 09 - Rosco 3152",
           "colorTemperature": "3200K"
         },
         {
           "dmxRange": [240, 255],
           "type": "ColorPreset",
-          "comment": "Lee 162 3200 K Base",
+          "comment": "Preset 10 - Lee 162",
           "colorTemperature": "3200K"
         }
       ]
@@ -295,33 +286,32 @@
       "capabilities": [
         {
           "dmxRange": [0, 19],
-          "type": "NoFunction",
-          "comment": "No Effect"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [20, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "25Hz"
         }
       ]
     },
     "Reserved for future use": {
-      "defaultValue": 0,
       "capability": {
-        "type": "NoFunction",
-        "comment": "no function"
+        "type": "NoFunction"
       }
     }
   },
   "modes": [
     {
-      "name": " 1 cct & RGBW  8bits 12ch",
+      "name": "P01: CCT & RGBW 8bit",
+      "shortName": "P01",
       "channels": [
         "Dimmer",
         "Color Temperature",
         "Green-Magenta Point",
-        "Cross fade to color",
+        "Cross Fade to Color",
         "Red",
         "Green",
         "Blue",
