@@ -94,7 +94,7 @@ module.exports = async function testChannelNumbers(exportFile) {
       const existingRanges = usedChannelRanges[channelIndex];
 
       if (range.overlapsWithOneOf(existingRanges)) {
-        errors.push(`Capability ${range} in channel #${channelIndex + 1} overlaps with other capabilities.`);
+        errors.push(`Capability ${range} in channel ${channelIndex + 1} overlaps with other capabilities.`);
       }
       else {
         existingRanges.push(range);
