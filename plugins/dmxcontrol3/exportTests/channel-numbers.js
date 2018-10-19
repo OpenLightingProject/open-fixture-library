@@ -126,7 +126,7 @@ module.exports = async function testChannelNumbers(exportFile) {
         }
       }
       else if (!isNoFunction) {
-        errors.push(`Channel ${channel.name} (#${index + 1}) is missing.`);
+        errors.push(`Channel ${index + 1} "${channel.name}" is missing.`);
       }
     });
   }
