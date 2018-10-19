@@ -37,6 +37,8 @@
   },
   "availableChannels": {
     "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "dmxValueResolution": "8bit",
       "defaultValue": 0,
       "highlightValue": 255,
       "capability": {
@@ -44,13 +46,15 @@
       }
     },
     "Color Temperature": {
+      "fineChannelAliases": ["Color Temperature fine"],
       "capability": {
         "type": "ColorTemperature",
         "colorTemperatureStart": "2800K",
         "colorTemperatureEnd": "10000K"
       }
     },
-    "Green-Magenta Point": {
+    "Green-Magenta Point 8bit": {
+      "name": "Green-Magenta Point",
       "defaultValue": 0,
       "capabilities": [
         {
@@ -85,7 +89,45 @@
         }
       ]
     },
+    "Green-Magenta Point 16bit": {
+      "name": "Green-Magenta Point",
+      "fineChannelAliases": ["Green-Magenta Point 16bit fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4587],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [4588, 9830],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [9831, 30146],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [30147, 39976],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [39977, 60292],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [60293, 65535],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
     "Cross Fade to Color": {
+      "fineChannelAliases": ["Cross Fade to Color fine"],
       "defaultValue": 0,
       "capability": {
         "type": "Generic",
@@ -93,6 +135,7 @@
       }
     },
     "Red": {
+      "fineChannelAliases": ["Red fine"],
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
@@ -100,6 +143,7 @@
       }
     },
     "Green": {
+      "fineChannelAliases": ["Green fine"],
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
@@ -107,6 +151,7 @@
       }
     },
     "Blue": {
+      "fineChannelAliases": ["Blue fine"],
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
@@ -114,10 +159,27 @@
       }
     },
     "White": {
+      "fineChannelAliases": ["White fine"],
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
+      }
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "fineChannelAliases": ["Saturation fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
       }
     },
     "Fan Control": {
@@ -310,12 +372,264 @@
       "channels": [
         "Dimmer",
         "Color Temperature",
-        "Green-Magenta Point",
+        "Green-Magenta Point 8bit",
         "Cross Fade to Color",
         "Red",
         "Green",
         "Blue",
         "White",
+        "Fan Control",
+        "Presets",
+        "Strobe",
+        "Reserved for future use"
+      ]
+    },
+    {
+      "name": "P02: CCT 8bit",
+      "shortName": "P02",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Green-Magenta Point 8bit",
+        "Fan Control",
+        "Presets",
+        "Strobe",
+        "Reserved for future use"
+      ]
+    },
+    {
+      "name": "P03: CCT & HSI 8bit",
+      "shortName": "P03",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Green-Magenta Point 8bit",
+        "Cross Fade to Color",
+        "Hue",
+        "Saturation",
+        "Fan Control",
+        "Presets",
+        "Strobe",
+        "Reserved for future use"
+      ]
+    },
+    {
+      "name": "P04: RGBW 8bit",
+      "shortName": "P04",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Fan Control",
+        "Presets",
+        "Strobe",
+        "Reserved for future use"
+      ]
+    },
+    {
+      "name": "P05: HSI 8bit",
+      "shortName": "P05",
+      "channels": [
+        "Dimmer",
+        "Hue",
+        "Saturation",
+        "Fan Control",
+        "Presets",
+        "Strobe",
+        "Reserved for future use"
+      ]
+    },
+    {
+      "name": "P06: CCT & RGBW 16bit",
+      "shortName": "P06",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Color Temperature",
+        "Color Temperature fine",
+        "Green-Magenta Point 16bit",
+        "Green-Magenta Point 16bit fine",
+        "Cross Fade to Color",
+        "Cross Fade to Color fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Fan Control",
+        "Presets",
+        "Strobe",
+        "Reserved for future use"
+      ]
+    },
+    {
+      "name": "P07: CCT 16bit",
+      "shortName": "P07",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Color Temperature",
+        "Color Temperature fine",
+        "Green-Magenta Point 16bit",
+        "Green-Magenta Point 16bit fine",
+        "Fan Control",
+        "Presets",
+        "Strobe",
+        "Reserved for future use"
+      ]
+    },
+    {
+      "name": "P08: CCT & HSI 16bit",
+      "shortName": "P08",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Color Temperature",
+        "Color Temperature fine",
+        "Green-Magenta Point 16bit",
+        "Green-Magenta Point 16bit fine",
+        "Cross Fade to Color",
+        "Cross Fade to Color fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "Fan Control",
+        "Presets",
+        "Strobe",
+        "Reserved for future use"
+      ]
+    },
+    {
+      "name": "P09: RGBW 16bit",
+      "shortName": "P09",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Fan Control",
+        "Presets",
+        "Strobe",
+        "Reserved for future use"
+      ]
+    },
+    {
+      "name": "P10: HSI 16bit",
+      "shortName": "P10",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "Fan Control",
+        "Presets",
+        "Strobe",
+        "Reserved for future use"
+      ]
+    },
+    {
+      "name": "P11: CCT & RGBW 8/16bit",
+      "shortName": "P11",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Color Temperature",
+        "Color Temperature fine",
+        "Green-Magenta Point 8bit",
+        "Cross Fade to Color",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Fan Control",
+        "Presets",
+        "Strobe",
+        "Reserved for future use"
+      ]
+    },
+    {
+      "name": "P12: CCT 8/16bit",
+      "shortName": "P12",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Color Temperature",
+        "Color Temperature fine",
+        "Green-Magenta Point 8bit",
+        "Fan Control",
+        "Presets",
+        "Strobe",
+        "Reserved for future use"
+      ]
+    },
+    {
+      "name": "P13: CCT & HSI 8/16bit",
+      "shortName": "P13",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Color Temperature",
+        "Color Temperature fine",
+        "Green-Magenta Point 8bit",
+        "Cross Fade to Color",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
+        "Fan Control",
+        "Presets",
+        "Strobe",
+        "Reserved for future use"
+      ]
+    },
+    {
+      "name": "P14: RGBW 8/16bit",
+      "shortName": "P14",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Fan Control",
+        "Presets",
+        "Strobe",
+        "Reserved for future use"
+      ]
+    },
+    {
+      "name": "P15: HSI 8/16bit",
+      "shortName": "P15",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine",
         "Fan Control",
         "Presets",
         "Strobe",
