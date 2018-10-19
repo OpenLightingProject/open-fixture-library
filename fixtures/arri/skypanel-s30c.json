@@ -1,9 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Skypanel s30c",
-  "categories": ["Color Changer", "Dimmer", "Effect", "Strobe"],
+  "name": "Skypanel S30C",
+  "categories": ["Dimmer", "Color Changer", "Strobe"],
   "meta": {
-    "authors": ["Jean- François Losson"],
+    "authors": ["Jean-François Losson"],
     "createDate": "2018-10-17",
     "lastModifyDate": "2018-10-17"
   },
@@ -30,6 +30,10 @@
     "lens": {
       "degreesMinMax": [115, 115]
     }
+  },
+  "rdm": {
+    "modelId": 514,
+    "softwareVersion": "4.1"
   },
   "availableChannels": {
     "Dimmer": {
