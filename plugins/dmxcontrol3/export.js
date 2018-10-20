@@ -488,12 +488,14 @@ const functions = {
       ), `colorTemperature`, 8000, `K`);
 
       // map -100…100% (warm…cold) to 2500…8000K
+      const minKelvin = 2500;
+      const maxKelvin = 8000;
       const percentCaps = getNormalizedCapabilities(caps.filter(
         cap => cap.colorTemperature[0].unit === `%`
-      ), `colorTemperature`, (8000 - 2500) / 2, `K`);
+      ), `colorTemperature`, (maxKelvin - minKelvin) / 2, `K`);
       percentCaps.forEach(cap => {
-        cap.startValue += ((8000 - 2500) / 2) + 2500;
-        cap.endValue += ((8000 - 2500) / 2) + 2500;
+        cap.startValue += ((maxKelvin - minKelvin) / 2) + minKelvin;
+        cap.endValue += ((maxKelvin - minKelvin) / 2) + minKelvin;
       });
 
       kelvinCaps.concat(percentCaps).forEach(cap => {
