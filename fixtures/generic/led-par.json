@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PAR ",
+  "categories": ["Color Changer", "Other"],
+  "meta": {
+    "authors": ["ziopix"],
+    "createDate": "2018-10-22",
+    "lastModifyDate": "2018-10-22"
+  },
+  "comment": "generic led par - similar to Solaris LED PAR 36W",
+  "links": {
+    "manual": [
+      "http://www.kot.co.il/wp-content/uploads/2016/10/SMART36.pdf"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "availableChannels": {
+    "MASTER": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "RED": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "CH1",
+      "shortName": "MASTER",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "MASTER"
+      ]
+    },
+    {
+      "name": "CH2",
+      "shortName": "RED",
+      "rdmPersonalityIndex": 2,
+      "channels": [
+        "RED"
+      ]
+    }
+  ]
+}
