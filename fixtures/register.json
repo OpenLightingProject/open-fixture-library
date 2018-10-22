@@ -420,6 +420,11 @@
       "lastActionDate": "2018-07-21",
       "lastAction": "modified"
     },
+    "generic/led-par": {
+      "name": "LED PAR ",
+      "lastActionDate": "2018-10-22",
+      "lastAction": "created"
+    },
     "generic/pan-tilt": {
       "name": "Pan/Tilt Fader",
       "lastActionDate": "2018-09-04",
@@ -924,6 +929,7 @@
       "desk-channel",
       "drgb-fader",
       "drgbw-fader",
+      "led-par",
       "pan-tilt",
       "rgb-fader",
       "rgba-fader",
@@ -1145,6 +1151,7 @@
       "generic/cmy-fader",
       "generic/drgb-fader",
       "generic/drgbw-fader",
+      "generic/led-par",
       "generic/rgb-fader",
       "generic/rgba-fader",
       "generic/rgbd-fader",
@@ -1337,7 +1344,8 @@
       "stairville/mh-x25"
     ],
     "Other": [
-      "chauvet-dj/corepar-uv-usb"
+      "chauvet-dj/corepar-uv-usb",
+      "generic/led-par"
     ],
     "Pixel Bar": [
       "adb/alc4",
@@ -1659,6 +1667,9 @@
     ],
     "zhefskie": [
       "big-dipper/ls90"
+    ],
+    "ziopix": [
+      "generic/led-par"
     ]
   },
   "rdm": {
@@ -1741,6 +1752,7 @@
     }
   },
   "lastUpdated": [
+    "generic/led-par",
     "skypix/ribalta-beam",
     "solena/mini-par-12",
     "lixada/mini-gobo-moving-head-light",
