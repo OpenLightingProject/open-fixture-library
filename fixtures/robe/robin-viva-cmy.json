@@ -25,6 +25,24 @@
       "https://www.youtube.com/watch?v=2K1CvARI_Wc"
     ]
   },
+  "physical": {
+    "dimensions": [380, 675, 250],
+    "weight": 19,
+    "power": 500,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "350W white",
+      "colorTemperature": 6500
+    },
+    "lens": {
+      "degreesMinMax": [9, 40]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 270
+    }
+  },
   "rdm": {
     "modelId": 203,
     "softwareVersion": "1.0"
