@@ -51,7 +51,8 @@
 
         <tr
           v-if="cap.model.helpWanted !== null"
-          :key="`cap-${index}-helpWanted`">
+          :key="`cap-${index}-helpWanted`"
+          @click="$emit(`update:helpWantedContext`, cap.model)">
           <td colspan="4" />
           <td colspan="2"><div class="help-wanted"><app-svg name="comment-question-outline" title="Help wanted!" />{{ cap.model.helpWanted }}</div></td>
         </tr>

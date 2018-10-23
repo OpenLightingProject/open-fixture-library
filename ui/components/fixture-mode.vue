@@ -28,7 +28,8 @@
         v-for="channel in mode.channels"
         :key="channel.key"
         :channel="channel"
-        :mode="mode" />
+        :mode="mode"
+        @update:helpWantedContext="$emit(`update:helpWantedContext`, $event)" />
     </ol>
 
   </section>

@@ -84,7 +84,7 @@
         </ul>
       </app-labeled-value>
 
-      <section v-if="fixture.isHelpWanted" class="help-wanted">
+      <section v-if="fixture.isHelpWanted" class="help-wanted" @click="helpWantedContext = fixture">
         <app-svg name="comment-question-outline" title="Help wanted!" /><a href="#contribute">You can help to improve this fixture definition!</a>
         {{ fixture.helpWanted !== null ? fixture.helpWanted : `Specific questions are included in the capabilities below.` }}
       </section>
@@ -126,7 +126,8 @@
         v-for="(mode, index) in fixture.modes"
         :key="mode.name"
         :mode="mode"
-        :index="index" />
+        :index="index"
+        @update:helpWantedContext="helpWantedContext = $event" />
       <div class="clearfix" />
     </section>
 
@@ -138,6 +139,10 @@
         <a href="/about#contact" class="card"><app-svg name="email" class="left" /><span>Contact</span></a>
       </div>
     </section>
+
+    <app-fixture-help-wanted-dialog
+      ref="helpWantedDialog"
+      v-model="helpWantedContext" />
   </div>
 </template>
 
@@ -232,6 +237,7 @@ import categoryBadge from '~/components/category-badge.vue';
 import conditionalDetailsVue from '~/components/conditional-details.vue';
 import downloadButtonVue from '~/components/download-button.vue';
 import fixturePhysical from '~/components/fixture-physical.vue';
+import fixtureHelpWantedDialog from '~/components/fixture-help-wanted-dialog.vue';
 import fixtureMatrix from '~/components/fixture-matrix.vue';
 import fixtureMode from '~/components/fixture-mode.vue';
 import labeledValueVue from '~/components/labeled-value.vue';
@@ -247,6 +253,7 @@ export default {
     'app-conditional-details': conditionalDetailsVue,
     'app-download-button': downloadButtonVue,
     'app-fixture-physical': fixturePhysical,
+    'app-fixture-help-wanted-dialog': fixtureHelpWantedDialog,
     'app-fixture-matrix': fixtureMatrix,
     'app-fixture-mode': fixtureMode,
     'app-labeled-value': labeledValueVue
@@ -291,7 +298,8 @@ export default {
   },
   data() {
     return {
-      plugins
+      plugins,
+      helpWantedContext: null
     };
   },
   computed: {
@@ -475,6 +483,7 @@ export default {
       const match = url.match(/^.*?\/\/(?:([^:/?#]*)(?::([0-9]+))?)/);
       return match ? match[1] : url;
     },
+
     /**
      * Format a date to display as a <time> HTML tag.
      * @param {Date} date The Date object to format.
