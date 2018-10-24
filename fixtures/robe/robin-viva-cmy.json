@@ -427,8 +427,8 @@
         {
           "dmxRange": [190, 215],
           "type": "ColorWheelRotation",
-          "speedStart": "0.167rpm",
-          "speedEnd": "0rpm"
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [216, 217],
@@ -438,8 +438,8 @@
         {
           "dmxRange": [218, 243],
           "type": "ColorWheelRotation",
-          "speedStart": "-0rpm",
-          "speedEnd": "-0.16666666666666669rpm"
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         },
         {
           "dmxRange": [244, 249],
