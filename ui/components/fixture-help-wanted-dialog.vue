@@ -74,27 +74,6 @@
   </app-a11y-dialog>
 </template>
 
-<style lang="scss" scoped>
-@import '~assets/styles/vars.scss';
-
-// TODO: outsource this
-textarea[readonly] {
-  line-height: 1.3;
-  font-size: 0.9em;
-  font-family: Inconsolata, monospace;
-  white-space: pre-wrap;
-  background: $grey-100;
-  color: $primary-text-dark;
-  padding: 1em;
-  border: none;
-  width: 100%;
-  height: 15em;
-  overflow: auto;
-  resize: none;
-}
-</style>
-
-
 <script>
 import a11yDialogVue from '~/components/a11y-dialog.vue';
 
