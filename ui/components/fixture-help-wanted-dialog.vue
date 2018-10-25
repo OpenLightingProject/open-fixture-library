@@ -62,7 +62,7 @@
 
       <div class="button-bar right">
         <a href="#" class="button secondary" @click.prevent="hide">Close</a>
-        <a :href="mailtoUrl" class="button primary" target="_blank">Send email</a>
+        <a :href="mailtoUrl" class="button secondary" target="_blank">Send email</a>
         <a href="https://github.com/OpenLightingProject/open-fixture-library/issues/new" class="button primary" target="_blank">Create issue on GitHub</a>
       </div>
     </template>

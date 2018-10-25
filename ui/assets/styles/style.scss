@@ -244,17 +244,16 @@ input::placeholder {
     text-align: right;
 
     & button,
-    & input,
     & .button {
+      margin-right: 0;
       margin-left: 1ex;
     }
   }
 
-  &:not(.right) {
-    & button,
-    & input {
-      margin-right: 1ex;
-    }
+  & button,
+  & .button {
+    margin-top: 1ex;
+    margin-right: 1ex;
   }
 }
 

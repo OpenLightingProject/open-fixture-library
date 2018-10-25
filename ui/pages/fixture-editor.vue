@@ -40,7 +40,7 @@
             </select>
           </app-labeled-input>
 
-          <div class="button-bar">or <a href="#add-new-manufacturer" @click.prevent="switchManufacturer(false)">add a new manufacturer</a></div>
+          <div>or <a href="#add-new-manufacturer" @click.prevent="switchManufacturer(false)">add a new manufacturer</a></div>
         </section>
 
         <div v-else>
@@ -76,7 +76,7 @@
               name="new-manufacturer-rdmId" />
           </app-labeled-input>
 
-          <div class="button-bar">or <a href="#use-existing-manufacturer" @click.prevent="switchManufacturer(true)">choose an existing manufacturer</a></div>
+          <div>or <a href="#use-existing-manufacturer" @click.prevent="switchManufacturer(true)">choose an existing manufacturer</a></div>
         </div>
       </section>
 
