@@ -8,7 +8,7 @@
     <div class="actions">
       <a href="#" class="only-js" @click.prevent="$emit(`helpWantedClicked`, context)"><app-svg name="comment-alert" class="left" /><span>Send information</span></a>
       <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" class="no-js" rel="nofollow"><app-svg name="bug" class="left" /><span>Create issue on GitHub</span></a>
-      <a href="mailto:florian-edelmann@online.de" class="no-js"><app-svg name="email" class="left" /><span>Send mail</span></a>
+      <a :href="mailtoUrl" class="no-js"><app-svg name="email" class="left" /><span>Send email</span></a>
     </div>
   </section>
 </template>
@@ -98,6 +98,40 @@ export default {
       let text = `<strong>You can help to improve this fixture definition!</strong> `;
       text += this.context.helpWanted !== null ? this.context.helpWanted : `Specific questions are included in the capabilities below.`;
       return text;
+    },
+    location() {
+      if (this.context instanceof Capability) {
+        const cap = this.context;
+        const channel = cap._channel;
+        return `Channel "${channel.name}" → Capability "${cap.name}" (${cap.rawDmxRange})`;
+      }
+
+      return null;
+    },
+    fixture() {
+      if (this.context instanceof Fixture) {
+        return this.context;
+      }
+      if (this.context instanceof Capability) {
+        return this.context._channel.fixture;
+      }
+
+      return null;
+    },
+    mailtoUrl() {
+      const subject = `Feedback for fixture '${this.fixture.manufacturer.key}/${this.fixture.key}'`;
+
+      const bodyLines = [];
+      if (this.location) {
+        bodyLines.push(`Problem location: ${this.location}`);
+      }
+      if (this.context.helpWanted) {
+        bodyLines.push(`Problem description: ${this.context.helpWanted}`);
+      }
+
+      const body = bodyLines.join(escape(`\n`));
+
+      return `mailto:florian-edelmann@online.de?subject=${subject}&body=${body}`;
     }
   }
 };

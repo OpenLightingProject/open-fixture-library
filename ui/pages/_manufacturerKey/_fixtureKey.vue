@@ -137,7 +137,7 @@
       <div class="grid-3 list">
         <a href="#" class="card only-js" @click.prevent="helpWantedContext = fixture"><app-svg name="comment-alert" class="left" /><span>Send information</span></a>
         <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card"><app-svg name="bug" class="left" /><span>Create issue on GitHub</span></a>
-        <a href="mailto:florian-edelmann@online.de" class="card"><app-svg name="email" class="left" /><span>Send mail</span></a>
+        <a :href="mailtoUrl" class="card"><app-svg name="email" class="left" /><span>Send email</span></a>
       </div>
     </section>
 
@@ -471,6 +471,10 @@ export default {
       }
 
       return links;
+    },
+    mailtoUrl() {
+      const subject = `Feedback for fixture '${this.manKey}/${this.fixKey}'`;
+      return `mailto:florian-edelmann@online.de?subject=${subject}`;
     }
   },
   head() {

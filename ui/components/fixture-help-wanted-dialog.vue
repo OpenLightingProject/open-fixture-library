@@ -62,7 +62,7 @@
 
       <div class="button-bar right">
         <a href="#" class="button secondary" @click.prevent="hide">Close</a>
-        <a href="mailto:florian-edelmann@online.de" class="button primary" target="_blank">Send mail</a>
+        <a :href="mailtoUrl" class="button primary" target="_blank">Send email</a>
         <a href="https://github.com/OpenLightingProject/open-fixture-library/issues/new" class="button primary" target="_blank">Create issue on GitHub</a>
       </div>
     </template>
@@ -154,6 +154,28 @@ export default {
     },
     errorData() {
       return `${JSON.stringify(this.sendObject, null, 2)}\n\n${this.error}`;
+    },
+    mailtoUrl() {
+      const subject = `Feedback for fixture '${this.sendObject.manKey}/${this.sendObject.fixKey}'`;
+
+      const mailBodyData = {
+        'Problem location': this.location,
+        'Problem description': this.context.helpWanted,
+        'Message': this.message
+      };
+
+      const body = Object.entries(mailBodyData).filter(
+        ([key, value]) => value !== null
+      ).map(
+        ([key, value]) => {
+          if (value.includes(`\n`)) {
+            return `${key}:\n${value}`;
+          }
+          return `${key}: ${value}`;
+        }
+      ).join(`\n`);
+
+      return `mailto:florian-edelmann@online.de?subject=${subject}&body=${body.replace(/\n/g, str => escape(str))}`;
     }
   },
   methods: {
