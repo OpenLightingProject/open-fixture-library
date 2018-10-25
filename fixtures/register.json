@@ -90,6 +90,11 @@
       "lastActionDate": "2018-09-04",
       "lastAction": "modified"
     },
+    "arri/skypanel-s30c": {
+      "name": "Skypanel S30C",
+      "lastActionDate": "2018-10-17",
+      "lastAction": "created"
+    },
     "ayra/tdc-triple-burst": {
       "name": "TDC Triple Burst",
       "lastActionDate": "2018-08-09",
@@ -690,6 +695,11 @@
       "lastActionDate": "2018-08-09",
       "lastAction": "modified"
     },
+    "robe/robin-viva-cmy": {
+      "name": "ROBIN Viva CMY",
+      "lastActionDate": "2018-10-24",
+      "lastAction": "imported"
+    },
     "showtec/dominator": {
       "name": "Dominator",
       "lastActionDate": "2018-08-09",
@@ -827,6 +837,9 @@
       "revo-sweep",
       "vizi-spot-led-pro",
       "xs-400"
+    ],
+    "arri": [
+      "skypanel-s30c"
     ],
     "ayra": [
       "tdc-triple-burst"
@@ -1025,7 +1038,8 @@
       "dj-scan-250-xt",
       "robin-600e-spot",
       "robin-ledbeam-150",
-      "robin-ledwash-600"
+      "robin-ledwash-600",
+      "robin-viva-cmy"
     ],
     "showtec": [
       "dominator",
@@ -1097,6 +1111,7 @@
       "american-dj/revo-sweep",
       "american-dj/vizi-spot-led-pro",
       "american-dj/xs-400",
+      "arri/skypanel-s30c",
       "ayra/tdc-triple-burst",
       "ayrton/magicblade-fx",
       "big-dipper/ls90",
@@ -1198,6 +1213,7 @@
       "robe/robin-600e-spot",
       "robe/robin-ledbeam-150",
       "robe/robin-ledwash-600",
+      "robe/robin-viva-cmy",
       "showtec/dominator",
       "showtec/horizon-8",
       "showtec/kanjo-spot-60",
@@ -1222,6 +1238,7 @@
     "Dimmer": [
       "adb/europe-105",
       "american-dj/flat-par-qa12xs",
+      "arri/skypanel-s30c",
       "cameo/flat-par-can-tri-7x-3w-ir",
       "chauvet-dj/eve-p-100-ww",
       "dts/scena-led-150",
@@ -1336,6 +1353,7 @@
       "robe/robin-600e-spot",
       "robe/robin-ledbeam-150",
       "robe/robin-ledwash-600",
+      "robe/robin-viva-cmy",
       "showtec/kanjo-spot-60",
       "showtec/kanjo-wash-rgb",
       "showtec/phantom-50-led-spot",
@@ -1384,6 +1402,7 @@
       "eurolite/led-kls-801"
     ],
     "Strobe": [
+      "arri/skypanel-s30c",
       "cameo/flash-matrix-250",
       "cameo/flat-par-can-tri-7x-3w-ir",
       "cameo/storm",
@@ -1527,6 +1546,7 @@
       "robe/dj-scan-250-xt",
       "robe/robin-ledbeam-150",
       "robe/robin-ledwash-600",
+      "robe/robin-viva-cmy",
       "showtec/dominator",
       "showtec/kanjo-wash-rgb",
       "showtec/led-light-bar-rgb-v3",
@@ -1631,6 +1651,9 @@
     "George Qualley IV": [
       "eliminator/stealth-beam"
     ],
+    "Jean-François Losson": [
+      "arri/skypanel-s30c"
+    ],
     "Massimo Callegari": [
       "clay-paky/sharpy"
     ],
@@ -1689,6 +1712,12 @@
         "1703": "solaris-flare"
       }
     },
+    "8377": {
+      "key": "arri",
+      "models": {
+        "514": "skypanel-s30c"
+      }
+    },
     "8612": {
       "key": "chauvet-dj",
       "models": {}
@@ -1739,7 +1768,8 @@
       "models": {
         "7": "colorspot-2500e-at",
         "57": "robin-600e-spot",
-        "118": "robin-ledwash-600"
+        "118": "robin-ledwash-600",
+        "203": "robin-viva-cmy"
       }
     },
     "21360": {
@@ -1755,6 +1785,8 @@
   },
   "lastUpdated": [
     "solaris/smart-36",
+    "robe/robin-viva-cmy",
+    "arri/skypanel-s30c",
     "skypix/ribalta-beam",
     "solena/mini-par-12",
     "lixada/mini-gobo-moving-head-light",

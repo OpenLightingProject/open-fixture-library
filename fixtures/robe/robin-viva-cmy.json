@@ -1,0 +1,1820 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ROBIN Viva CMY",
+  "shortName": "VivaCMY",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-10-12",
+    "lastModifyDate": "2018-10-24",
+    "importPlugin": {
+      "plugin": "gdtf",
+      "date": "2018-10-24",
+      "comment": "GDTF fixture type ID: 80 29 d2 62 a7 13 46 0f be dc a7 42 20 8f c5 0d"
+    }
+  },
+  "comment": "Powerfully smooth, Robe’s VIVA CMY combines brightness of exceptionally clear zero-fringing white beam together with continuous color transitions of CMY mixing. ",
+  "links": {
+    "manual": [
+      "https://www.robe.cz/index.php?type=10898&tx_odproducts_f%5baction%5d=downloadFile&tx_odproducts_f%5bfile%5d=robe/downloads/user_manuals/User_manual_Robin_Viva_CMY.pdf"
+    ],
+    "productPage": [
+      "https://www.robe.cz/viva-cmy/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=2K1CvARI_Wc"
+    ]
+  },
+  "physical": {
+    "dimensions": [380, 675, 250],
+    "weight": 19,
+    "power": 500,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "350W white",
+      "colorTemperature": 6500
+    },
+    "lens": {
+      "degreesMinMax": [9, 40]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 270
+    }
+  },
+  "rdm": {
+    "modelId": 203,
+    "softwareVersion": "1.0"
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32896,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32896,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "Standard mode"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "PanTiltSpeed",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [2, 255],
+          "type": "PanTiltSpeed",
+          "durationStart": "0.2s",
+          "durationEnd": "25.5s",
+          "comment": "fast…slow"
+        }
+      ]
+    },
+    "Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX input: Wired DMX"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "DMX input: Wireless DMX"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Graphic display On"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Graphic display Off"
+        },
+        {
+          "dmxRange": [30, 49],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer curve: Square law"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer curve: Linear"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fans mode: Auto"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fans mode: High"
+        },
+        {
+          "dmxRange": [70, 89],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Pan/Tilt speed mode"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Pan/Tilt time mode"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Blackout while pan/tilt moving"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Disabled blackout while pan/tilt moving"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Blackout while colour wheels moving"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Disabled blackout while colour wheels moving"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Pan/Tilt reset"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Colour system reset"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Gobo wheels + iris reset"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Zoom/focus/frost/prism reset"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Total reset"
+        },
+        {
+          "dmxRange": [210, 239],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Disable Quiet mode"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Maintenance",
+          "hold": "3s",
+          "parameterStart": "low",
+          "parameterEnd": "high",
+          "comment": "Quiet mode - fan noise control"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "fineChannelAliases": ["Color Wheel fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "colors": ["#ffffff"],
+          "comment": "Open/white"
+        },
+        {
+          "dmxRange": [1, 17],
+          "type": "ColorWheelIndex",
+          "indexStart": 0,
+          "indexEnd": 1,
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#d0282f"],
+          "comment": "Open/white … Deep red"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "ColorWheelIndex",
+          "index": 1,
+          "colors": ["#d0282f"],
+          "comment": "Deep red"
+        },
+        {
+          "dmxRange": [19, 36],
+          "type": "ColorWheelIndex",
+          "indexStart": 1,
+          "indexEnd": 2,
+          "colorsStart": ["#d0282f"],
+          "colorsEnd": ["#00a650"],
+          "comment": "Deep red … Green"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "ColorWheelIndex",
+          "index": 2,
+          "colors": ["#00a650"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [38, 54],
+          "type": "ColorWheelIndex",
+          "indexStart": 2,
+          "indexEnd": 3,
+          "colorsStart": ["#00a650"],
+          "colorsEnd": ["#f9d1aa"],
+          "comment": "Green … CTO"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "ColorWheelIndex",
+          "index": 3,
+          "colors": ["#f9d1aa"],
+          "colorTemperature": "2700K",
+          "comment": "CTO"
+        },
+        {
+          "dmxRange": [56, 72],
+          "type": "ColorWheelIndex",
+          "indexStart": 3,
+          "indexEnd": 4,
+          "colorsStart": ["#f9d1aa"],
+          "colorsEnd": ["#faa649"],
+          "comment": "CTO … Orange"
+        },
+        {
+          "dmxRange": [73, 73],
+          "type": "ColorWheelIndex",
+          "index": 4,
+          "colors": ["#faa649"],
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [74, 90],
+          "type": "ColorWheelIndex",
+          "indexStart": 4,
+          "indexEnd": 5,
+          "colorsStart": ["#faa649"],
+          "colorsEnd": ["#c6cbe6"],
+          "comment": "Orange … Lavender"
+        },
+        {
+          "dmxRange": [91, 91],
+          "type": "ColorWheelIndex",
+          "index": 5,
+          "colors": ["#c6cbe6"],
+          "comment": "Lavender"
+        },
+        {
+          "dmxRange": [92, 108],
+          "type": "ColorWheelIndex",
+          "indexStart": 5,
+          "indexEnd": 6,
+          "colorsStart": ["#c6cbe6"],
+          "colorsEnd": ["#6863e1"],
+          "comment": "Lavender … Congo blue"
+        },
+        {
+          "dmxRange": [109, 109],
+          "type": "ColorWheelIndex",
+          "index": 6,
+          "colors": ["#6863e1"],
+          "comment": "Congo blue"
+        },
+        {
+          "dmxRange": [110, 127],
+          "type": "ColorWheelIndex",
+          "indexStart": 6,
+          "indexEnd": 7,
+          "colorsStart": ["#6863e1"],
+          "colorsEnd": ["#ffffff"],
+          "comment": "Congo blue … Open/white"
+        },
+        {
+          "dmxRange": [128, 129],
+          "type": "ColorWheelIndex",
+          "index": 7,
+          "colors": ["#ffffff"],
+          "comment": "Open/white"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorWheelIndex",
+          "index": 1,
+          "colors": ["#d0282f"],
+          "comment": "Deep red"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorWheelIndex",
+          "index": 2,
+          "colors": ["#00a650"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorWheelIndex",
+          "index": 3,
+          "colors": ["#f9d1aa"],
+          "colorTemperature": "2700K",
+          "comment": "CTO"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorWheelIndex",
+          "index": 4,
+          "colors": ["#faa649"],
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "ColorWheelIndex",
+          "index": 5,
+          "colors": ["#c6cbe6"],
+          "comment": "Lavender"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ColorWheelIndex",
+          "index": 6,
+          "colors": ["#6863e1"],
+          "comment": "Congo blue"
+        },
+        {
+          "dmxRange": [190, 215],
+          "type": "ColorWheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [216, 217],
+          "type": "ColorWheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [218, 243],
+          "type": "ColorWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [244, 249],
+          "type": "Effect",
+          "effectName": "Random colour selection",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Random colour selection",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
+    },
+    "Cyan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 2],
+          "type": "ColorPreset",
+          "comment": "LEE 4 (Medium Bastard Amber)"
+        },
+        {
+          "dmxRange": [3, 4],
+          "type": "ColorPreset",
+          "comment": "LEE 10 (Medium Yellow)"
+        },
+        {
+          "dmxRange": [5, 6],
+          "type": "ColorPreset",
+          "comment": "LEE 19 (Fire)"
+        },
+        {
+          "dmxRange": [7, 8],
+          "type": "ColorPreset",
+          "comment": "LEE 24 (Scarlet)"
+        },
+        {
+          "dmxRange": [9, 10],
+          "type": "ColorPreset",
+          "comment": "LEE 58 (Lavender)"
+        },
+        {
+          "dmxRange": [11, 12],
+          "type": "ColorPreset",
+          "comment": "LEE 68 (Sky Blue)"
+        },
+        {
+          "dmxRange": [13, 14],
+          "type": "ColorPreset",
+          "comment": "LEE 71 (Tokyo Blue)"
+        },
+        {
+          "dmxRange": [15, 16],
+          "type": "ColorPreset",
+          "comment": "LEE 79 (Just Blue)"
+        },
+        {
+          "dmxRange": [17, 18],
+          "type": "ColorPreset",
+          "comment": "LEE 88 (Lime Green)"
+        },
+        {
+          "dmxRange": [19, 20],
+          "type": "ColorPreset",
+          "comment": "LEE 90 (Dark Yellow Green)"
+        },
+        {
+          "dmxRange": [21, 22],
+          "type": "ColorPreset",
+          "comment": "LEE 100 (Spring Yellow)"
+        },
+        {
+          "dmxRange": [23, 24],
+          "type": "ColorPreset",
+          "comment": "LEE 101 (Yellow)"
+        },
+        {
+          "dmxRange": [25, 26],
+          "type": "ColorPreset",
+          "comment": "LEE 102 (Light Amber)"
+        },
+        {
+          "dmxRange": [27, 28],
+          "type": "ColorPreset",
+          "comment": "LEE 103 (Straw)"
+        },
+        {
+          "dmxRange": [29, 30],
+          "type": "ColorPreset",
+          "comment": "Lee 104 (Deep Amber)"
+        },
+        {
+          "dmxRange": [31, 32],
+          "type": "ColorPreset",
+          "comment": "LEE 105 (Orange)"
+        },
+        {
+          "dmxRange": [33, 34],
+          "type": "ColorPreset",
+          "comment": "LEE 781 (Terry Red)"
+        },
+        {
+          "dmxRange": [35, 36],
+          "type": "ColorPreset",
+          "comment": "LEE 111 (Dark Pink)"
+        },
+        {
+          "dmxRange": [37, 38],
+          "type": "ColorPreset",
+          "comment": "LEE 115 (Peacock Blue)"
+        },
+        {
+          "dmxRange": [39, 40],
+          "type": "ColorPreset",
+          "comment": "LEE 505 (Sally Green)"
+        },
+        {
+          "dmxRange": [41, 42],
+          "type": "ColorPreset",
+          "comment": "LEE 117 (Steel Blue)"
+        },
+        {
+          "dmxRange": [43, 44],
+          "type": "ColorPreset",
+          "comment": "LEE 118 (Light Blue)"
+        },
+        {
+          "dmxRange": [45, 46],
+          "type": "ColorPreset",
+          "comment": "LEE 724 (Ocean Blue)"
+        },
+        {
+          "dmxRange": [47, 48],
+          "type": "ColorPreset",
+          "comment": "LEE 725 (Old Steel Blue"
+        },
+        {
+          "dmxRange": [49, 50],
+          "type": "ColorPreset",
+          "comment": "LEE 121 (LEE Green)"
+        },
+        {
+          "dmxRange": [51, 52],
+          "type": "ColorPreset",
+          "comment": "LEE 128 (Bright Pink)"
+        },
+        {
+          "dmxRange": [53, 54],
+          "type": "ColorPreset",
+          "comment": "LEE 131 (Marine Blue)"
+        },
+        {
+          "dmxRange": [55, 56],
+          "type": "ColorPreset",
+          "comment": "LEE 132 (Medium Blue)"
+        },
+        {
+          "dmxRange": [57, 58],
+          "type": "ColorPreset",
+          "comment": "LEE 134 (Golden Amber)"
+        },
+        {
+          "dmxRange": [59, 60],
+          "type": "ColorPreset",
+          "comment": "LEE 135 (Deep Golden Amber)"
+        },
+        {
+          "dmxRange": [61, 62],
+          "type": "ColorPreset",
+          "comment": "LEE 136 (Pale Lavender)"
+        },
+        {
+          "dmxRange": [63, 64],
+          "type": "ColorPreset",
+          "comment": "LEE 137 (Special Lavender)"
+        },
+        {
+          "dmxRange": [65, 66],
+          "type": "ColorPreset",
+          "comment": "LEE 138 (Pale Green)"
+        },
+        {
+          "dmxRange": [67, 68],
+          "type": "ColorPreset",
+          "comment": "LEE 139 (Primary Green)"
+        },
+        {
+          "dmxRange": [69, 70],
+          "type": "ColorPreset",
+          "comment": "LEE 141 (Bright Blue)"
+        },
+        {
+          "dmxRange": [71, 72],
+          "type": "ColorPreset",
+          "comment": "LEE 147 (Apricot)"
+        },
+        {
+          "dmxRange": [73, 74],
+          "type": "ColorPreset",
+          "comment": "LEE 148 (Bright Rose)"
+        },
+        {
+          "dmxRange": [75, 76],
+          "type": "ColorPreset",
+          "comment": "LEE 152 (Pale Gold)"
+        },
+        {
+          "dmxRange": [77, 78],
+          "type": "ColorPreset",
+          "comment": "LEE 154 (Pale Rose)"
+        },
+        {
+          "dmxRange": [79, 80],
+          "type": "ColorPreset",
+          "comment": "LEE 157 (Pink)"
+        },
+        {
+          "dmxRange": [81, 82],
+          "type": "ColorPreset",
+          "comment": "LEE 158 (Deep Orange)"
+        },
+        {
+          "dmxRange": [83, 84],
+          "type": "ColorPreset",
+          "comment": "LEE 162 (Bastard Amber)"
+        },
+        {
+          "dmxRange": [85, 86],
+          "type": "ColorPreset",
+          "comment": "LEE 164 (Flame Red)"
+        },
+        {
+          "dmxRange": [87, 88],
+          "type": "ColorPreset",
+          "comment": "LEE 165 (Daylight Blue)"
+        },
+        {
+          "dmxRange": [89, 90],
+          "type": "ColorPreset",
+          "comment": "LEE 169 (Lilac Tint)"
+        },
+        {
+          "dmxRange": [91, 92],
+          "type": "ColorPreset",
+          "comment": "LEE 170 (Deep Lavender)"
+        },
+        {
+          "dmxRange": [93, 94],
+          "type": "ColorPreset",
+          "comment": "LEE 172 (Lagoon Blue)"
+        },
+        {
+          "dmxRange": [95, 96],
+          "type": "ColorPreset",
+          "comment": "LEE 179 (Chrome Orange)"
+        },
+        {
+          "dmxRange": [97, 98],
+          "type": "ColorPreset",
+          "comment": "LEE 180 (Dark Lavender)"
+        },
+        {
+          "dmxRange": [99, 100],
+          "type": "ColorPreset",
+          "comment": "LEE 181 (Congo Blue)"
+        },
+        {
+          "dmxRange": [101, 102],
+          "type": "ColorPreset",
+          "comment": "LEE 197 (Alice Blue)"
+        },
+        {
+          "dmxRange": [103, 104],
+          "type": "ColorPreset",
+          "comment": "LEE 201 (Full CT Blue)"
+        },
+        {
+          "dmxRange": [105, 106],
+          "type": "ColorPreset",
+          "comment": "LEE 202 (Half CT Blue)"
+        },
+        {
+          "dmxRange": [107, 108],
+          "type": "ColorPreset",
+          "comment": "LEE 203 (Quarter CT Blue)"
+        },
+        {
+          "dmxRange": [109, 110],
+          "type": "ColorPreset",
+          "comment": "LEE 204 (Full CT Orange)"
+        },
+        {
+          "dmxRange": [111, 112],
+          "type": "ColorPreset",
+          "comment": "LEE 205 (Half CT Orange)"
+        },
+        {
+          "dmxRange": [113, 114],
+          "type": "ColorPreset",
+          "comment": "LEE 206 (Quarter CT Orange)"
+        },
+        {
+          "dmxRange": [115, 116],
+          "type": "ColorPreset",
+          "comment": "LEE 247 (LEE Minus Green)"
+        },
+        {
+          "dmxRange": [117, 118],
+          "type": "ColorPreset",
+          "comment": "LEE 248 (Half Minus Green)"
+        },
+        {
+          "dmxRange": [119, 120],
+          "type": "ColorPreset",
+          "comment": "LEE 281 (Three Quarter CT Blue)"
+        },
+        {
+          "dmxRange": [121, 122],
+          "type": "ColorPreset",
+          "comment": "LEE 285 (Three Quarter CT Orange)"
+        },
+        {
+          "dmxRange": [123, 124],
+          "type": "ColorPreset",
+          "comment": "LEE 352 (Glacier Blue)"
+        },
+        {
+          "dmxRange": [125, 126],
+          "type": "ColorPreset",
+          "comment": "LEE 353 (Lighter Blue)"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "ColorPreset",
+          "comment": "LEE 715 (Cabana Blue)"
+        },
+        {
+          "dmxRange": [129, 130],
+          "type": "ColorPreset",
+          "comment": "LEE 778 (Millennium Gold)"
+        },
+        {
+          "dmxRange": [131, 132],
+          "type": "ColorPreset",
+          "comment": "LEE 328 (Follies Pink)"
+        },
+        {
+          "dmxRange": [133, 255],
+          "type": "ColorPreset",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color Wheel + CMY Time": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Time",
+          "timeStart": "0.1s",
+          "timeEnd": "25.5s"
+        }
+      ]
+    },
+    "Effect Time": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 50],
+          "type": "Time",
+          "timeStart": "0.1s",
+          "timeEnd": "5s",
+          "comment": "Prism, stat. gobo, zoom, focus, iris, frost"
+        },
+        {
+          "dmxRange": [51, 255],
+          "type": "Time",
+          "timeStart": "5s",
+          "timeEnd": "25.5s",
+          "comment": "Stat. gobo, zoom, focus, iris, frost"
+        }
+      ]
+    },
+    "Static Gobo Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [9, 17],
+          "type": "GoboIndex",
+          "index": 1,
+          "comment": "1 (99014836-1)"
+        },
+        {
+          "dmxRange": [18, 26],
+          "type": "GoboIndex",
+          "index": 2,
+          "comment": "2 (99014836-2)"
+        },
+        {
+          "dmxRange": [27, 35],
+          "type": "GoboIndex",
+          "index": 3,
+          "comment": "3 (99014836-3)"
+        },
+        {
+          "dmxRange": [36, 44],
+          "type": "GoboIndex",
+          "index": 4,
+          "comment": "4 (99014836-4)"
+        },
+        {
+          "dmxRange": [45, 53],
+          "type": "GoboIndex",
+          "index": 5,
+          "comment": "5 (99014836-5)"
+        },
+        {
+          "dmxRange": [54, 62],
+          "type": "GoboIndex",
+          "index": 6,
+          "comment": "6 (99014836-6)"
+        },
+        {
+          "dmxRange": [63, 71],
+          "type": "GoboIndex",
+          "index": 7,
+          "comment": "7 (99014836-7)"
+        },
+        {
+          "dmxRange": [72, 80],
+          "type": "GoboIndex",
+          "index": 8,
+          "comment": "8 (99014836-8)"
+        },
+        {
+          "dmxRange": [81, 91],
+          "type": "GoboIndex",
+          "index": 9,
+          "comment": "9 (99014836-9)"
+        },
+        {
+          "dmxRange": [92, 103],
+          "type": "GoboIndex",
+          "index": 1,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [104, 115],
+          "type": "GoboIndex",
+          "index": 2,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [116, 127],
+          "type": "GoboIndex",
+          "index": 3,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [128, 139],
+          "type": "GoboIndex",
+          "index": 4,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [140, 151],
+          "type": "GoboIndex",
+          "index": 5,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [152, 163],
+          "type": "GoboIndex",
+          "index": 6,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [164, 175],
+          "type": "GoboIndex",
+          "index": 7,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [176, 187],
+          "type": "GoboIndex",
+          "index": 8,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [188, 199],
+          "type": "GoboIndex",
+          "index": 9,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [200, 201],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [202, 222],
+          "type": "GoboWheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [223, 243],
+          "type": "GoboWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [244, 249],
+          "type": "Effect",
+          "effectName": "Random gobo",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Random gobo",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
+    },
+    "Rotating Gobo Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Open",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "GoboIndex",
+          "index": 1,
+          "comment": "Ornament (indexing)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Angle",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Angle fine"
+          }
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "GoboIndex",
+          "index": 2,
+          "comment": "Bubble Triangle (indexing)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Angle",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Angle fine"
+          }
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "GoboIndex",
+          "index": 3,
+          "comment": "Whirls (indexing)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Angle",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Angle fine"
+          }
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "GoboIndex",
+          "index": 4,
+          "comment": "Pinwheel (indexing)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Angle",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Angle fine"
+          }
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "GoboIndex",
+          "index": 5,
+          "comment": "Abstract Squares (indexing)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Angle",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Angle fine"
+          }
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "GoboIndex",
+          "index": 6,
+          "comment": "Abstract Lines (indexing)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Angle",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Angle fine"
+          }
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "GoboIndex",
+          "index": 7,
+          "comment": "Lines With Wheels (indexing)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Angle",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Angle fine"
+          }
+        },
+        {
+          "dmxRange": [32, 35],
+          "type": "GoboIndex",
+          "index": 1,
+          "comment": "Ornament (rotating)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [36, 39],
+          "type": "GoboIndex",
+          "index": 2,
+          "comment": "Bubble Triangle (rotating)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [40, 43],
+          "type": "GoboIndex",
+          "index": 3,
+          "comment": "Whirls (rotating)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [44, 47],
+          "type": "GoboIndex",
+          "index": 4,
+          "comment": "Pinwheel (rotating)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [48, 51],
+          "type": "GoboIndex",
+          "index": 5,
+          "comment": "Abstract Squares (rotating)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "GoboIndex",
+          "index": 6,
+          "comment": "Abstract Lines (rotating)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "GoboIndex",
+          "index": 7,
+          "comment": "Lines With Wheels (rotating)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "GoboIndex",
+          "index": 1,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Ornament (indexing)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Angle",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Angle fine"
+          }
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "GoboIndex",
+          "index": 2,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Bubble Triangle (indexing)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Angle",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Angle fine"
+          }
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "GoboIndex",
+          "index": 3,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Whirls (indexing)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Angle",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Angle fine"
+          }
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "GoboIndex",
+          "index": 4,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Pinwheel (indexing)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Angle",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Angle fine"
+          }
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "GoboIndex",
+          "index": 5,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Abstract Squares (indexing)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Angle",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Angle fine"
+          }
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "GoboIndex",
+          "index": 6,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Abstract Lines (indexing)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Angle",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Angle fine"
+          }
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "GoboIndex",
+          "index": 7,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Lines With Wheels (indexing)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Angle",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Angle fine"
+          }
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "GoboIndex",
+          "index": 1,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Ornament (rotating)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "GoboIndex",
+          "index": 2,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Bubble Triangle (rotating)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "GoboIndex",
+          "index": 3,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Whirls (rotating)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "GoboIndex",
+          "index": 4,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Pinwheel (rotating)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "GoboIndex",
+          "index": 5,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Abstract Squares (rotating)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "GoboIndex",
+          "index": 6,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Abstract Lines (rotating)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "GoboIndex",
+          "index": 7,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Lines With Wheels (rotating)",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [200, 201],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Open",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [202, 222],
+          "type": "GoboWheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [223, 243],
+          "type": "GoboWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [244, 249],
+          "type": "Effect",
+          "effectName": "Random gobo",
+          "soundControlled": true,
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Random gobo",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "switchChannels": {
+            "Gobo Stencil Rotation": "Gobo Stencil Rotation Speed",
+            "Gobo Stencil Rotation fine": "Gobo Stencil Rotation Speed fine"
+          }
+        }
+      ]
+    },
+    "Gobo Stencil Rotation Angle": {
+      "fineChannelAliases": ["Gobo Stencil Rotation Angle fine"],
+      "defaultValue": 32896,
+      "capability": {
+        "type": "GoboStencilRotation",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Gobo Stencil Rotation Speed": {
+      "fineChannelAliases": ["Gobo Stencil Rotation Speed fine"],
+      "defaultValue": 32896,
+      "capabilities": [
+        {
+          "dmxRange": [0, 32767],
+          "type": "GoboStencilRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [32768, 32768],
+          "type": "GoboStencilRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [32769, 65535],
+          "type": "GoboStencilRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Prism": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 127],
+          "type": "Prism",
+          "comment": "3-facet rotating"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "Prism",
+          "comment": "Macro 1"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "Prism",
+          "comment": "Macro 2"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "Prism",
+          "comment": "Macro 3"
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "Prism",
+          "comment": "Macro 4"
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "Prism",
+          "comment": "Macro 5"
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "Prism",
+          "comment": "Macro 6"
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "Prism",
+          "comment": "Macro 7"
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "Prism",
+          "comment": "Macro 8"
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "Prism",
+          "comment": "Macro 9"
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "Prism",
+          "comment": "Macro 10"
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "Prism",
+          "comment": "Macro 11"
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "Prism",
+          "comment": "Macro 12"
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "Prism",
+          "comment": "Macro 13"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "Prism",
+          "comment": "Macro 14"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "Prism",
+          "comment": "Macro 15"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Prism",
+          "comment": "Macro 16"
+        }
+      ]
+    },
+    "Prism Rotation": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "PrismRotation",
+          "angle": "0deg"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "PrismRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "PrismRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "PrismRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Frost": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Frost",
+          "frostIntensity": "off"
+        },
+        {
+          "dmxRange": [1, 179],
+          "type": "Frost",
+          "frostIntensityStart": "off",
+          "frostIntensityEnd": "high"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Frost",
+          "frostIntensity": "high"
+        },
+        {
+          "dmxRange": [190, 211],
+          "type": "FrostEffect",
+          "effectName": "Pulse closing",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [212, 233],
+          "type": "FrostEffect",
+          "effectName": "Pulse opening",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [234, 255],
+          "type": "FrostEffect",
+          "effectName": "Ramping",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Iris": {
+      "fineChannelAliases": ["Iris fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Iris",
+          "openPercent": "open"
+        },
+        {
+          "dmxRange": [1, 179],
+          "type": "Iris",
+          "openPercentStart": "open",
+          "openPercentEnd": "closed"
+        },
+        {
+          "dmxRange": [180, 191],
+          "type": "Iris",
+          "openPercent": "closed"
+        },
+        {
+          "dmxRange": [192, 219],
+          "type": "IrisEffect",
+          "effectName": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [220, 247],
+          "type": "IrisEffect",
+          "effectName": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [248, 249],
+          "type": "IrisEffect",
+          "effectName": "Random pulse opening",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [250, 251],
+          "type": "IrisEffect",
+          "effectName": "Random pulse opening",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [252, 253],
+          "type": "IrisEffect",
+          "effectName": "Random pulse closing",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "IrisEffect",
+          "effectName": "Random pulse closing",
+          "speed": "slow"
+        }
+      ]
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "defaultValue": 32896,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "40deg",
+        "angleEnd": "9deg"
+      }
+    },
+    "Focus": {
+      "fineChannelAliases": ["Focus fine"],
+      "defaultValue": 32896,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "far",
+        "distanceEnd": "near"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 32,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.1Hz",
+          "speedEnd": "15Hz"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0.1Hz",
+          "speedEnd": "15Hz"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "0.1Hz",
+          "speedEnd": "15Hz"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.1Hz",
+          "speedEnd": "15Hz",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard 16 bit",
+      "shortName": "std",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Control",
+        "Color Wheel",
+        "Color Wheel fine",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Color Macros",
+        "Effect Speed",
+        "Color Wheel + CMY Time",
+        "Effect Time",
+        "Static Gobo Wheel",
+        "Rotating Gobo Wheel",
+        "Gobo Stencil Rotation",
+        "Gobo Stencil Rotation fine",
+        "Prism",
+        "Prism Rotation",
+        "Frost",
+        "Iris",
+        "Iris fine",
+        "Zoom",
+        "Zoom fine",
+        "Focus",
+        "Focus fine",
+        "Reserved",
+        "Shutter",
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    },
+    {
+      "name": "Reduced 8 bit",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Control",
+        "Color Wheel",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Color Macros",
+        "Effect Speed",
+        "Color Wheel + CMY Time",
+        "Effect Time",
+        "Static Gobo Wheel",
+        "Rotating Gobo Wheel",
+        "Gobo Stencil Rotation",
+        "Prism",
+        "Prism Rotation",
+        "Frost",
+        "Iris",
+        "Zoom",
+        "Focus",
+        "Reserved",
+        "Shutter",
+        "Dimmer"
+      ]
+    }
+  ]
+}
