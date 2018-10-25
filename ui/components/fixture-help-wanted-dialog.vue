@@ -175,7 +175,7 @@ export default {
         }
       ).join(`\n`);
 
-      return `mailto:florian-edelmann@online.de?subject=${subject}&body=${body.replace(/\n/g, str => escape(str))}`;
+      return `mailto:florian-edelmann@online.de?subject=${subject}&body=${encodeURIComponent(body)}`;
     }
   },
   methods: {

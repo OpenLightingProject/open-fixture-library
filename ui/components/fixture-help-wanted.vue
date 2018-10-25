@@ -129,9 +129,9 @@ export default {
         bodyLines.push(`Problem description: ${this.context.helpWanted}`);
       }
 
-      const body = bodyLines.join(escape(`\n`));
+      const body = bodyLines.join(`\n`);
 
-      return `mailto:florian-edelmann@online.de?subject=${subject}&body=${body}`;
+      return `mailto:florian-edelmann@online.de?subject=${subject}&body=${encodeURIComponent(body)}`;
     }
   }
 };
