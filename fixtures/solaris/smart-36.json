@@ -15,9 +15,6 @@
       "https://solarispro.net/entertainment-lighting/par-led/web-smart-36/"
     ]
   },
-  "rdm": {
-    "modelId": 0
-  },
   "availableChannels": {
     "MASTER": {
       "capability": {
@@ -34,7 +31,6 @@
     {
       "name": "CH1",
       "shortName": "MASTER",
-      "rdmPersonalityIndex": 1,
       "channels": [
         "MASTER"
       ]
@@ -42,7 +38,6 @@
     {
       "name": "CH2",
       "shortName": "RED",
-      "rdmPersonalityIndex": 2,
       "channels": [
         "RED"
       ]
