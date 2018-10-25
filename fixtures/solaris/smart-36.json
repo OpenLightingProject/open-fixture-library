@@ -15,6 +15,21 @@
       "https://solarispro.net/entertainment-lighting/par-led/web-smart-36/"
     ]
   },
+  "physical": {
+    "dimensions": [118, 237, 230],
+    "weight": 3,
+    "power": 150,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "36x 3W LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
   "availableChannels": {
     "MASTER": {
       "capability": {
