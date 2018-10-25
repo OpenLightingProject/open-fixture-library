@@ -64,7 +64,7 @@
 
         <div class="button-bar right">
           <a href="#" class="button secondary" @click.prevent="$refs.dialog.$emit(`hide`)">Close</a>
-          <a href="TODO" class="button primary" target="_blank">Send mail</a>
+          <a href="mailto:florian-edelmann@online.de" class="button primary" target="_blank">Send mail</a>
           <a href="https://github.com/OpenLightingProject/open-fixture-library/issues/new" class="button primary" target="_blank">Create issue on GitHub</a>
         </div>
       </template>
