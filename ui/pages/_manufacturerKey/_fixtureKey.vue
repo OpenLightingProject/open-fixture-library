@@ -474,7 +474,7 @@ export default {
     },
     mailtoUrl() {
       const subject = `Feedback for fixture '${this.manKey}/${this.fixKey}'`;
-      return `mailto:florian-edelmann@online.de?subject=${subject}`;
+      return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}`;
     }
   },
   head() {

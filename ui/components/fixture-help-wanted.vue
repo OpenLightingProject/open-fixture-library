@@ -131,7 +131,7 @@ export default {
 
       const body = bodyLines.join(`\n`);
 
-      return `mailto:florian-edelmann@online.de?subject=${subject}&body=${encodeURIComponent(body)}`;
+      return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
   }
 };
