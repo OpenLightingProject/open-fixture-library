@@ -78,6 +78,9 @@ template {
   display: none !important;
 }
 
+#content.js .no-js {
+  display: none;
+}
 #content.no-js .only-js {
   display: none;
 }

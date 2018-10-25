@@ -1,16 +1,14 @@
 <template>
   <section class="help-wanted">
-    <app-svg name="comment-question-outline" title="Help wanted!" />
-    <span class="text" v-html="text" />
+    <div class="information">
+      <app-svg name="comment-question-outline" title="Help wanted!" />
+      <span class="text" v-html="text" />
+    </div>
 
     <div class="actions">
       <a href="#" class="only-js" @click.prevent="$emit(`update:helpWantedContext`, context)"><app-svg name="comment-alert" class="left" /><span>Send information</span></a>
-      <noscript inline-template>
-        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow"><app-svg name="bug" class="left" /><span>Create issue on GitHub</span></a>
-      </noscript>
-      <noscript inline-template>
-        <a href="mailto:florian-edelmann@online.de"><app-svg name="email" class="left" /><span>Send mail</span></a>
-      </noscript>
+      <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" class="no-js" rel="nofollow"><app-svg name="bug" class="left" /><span>Create issue on GitHub</span></a>
+      <a href="mailto:florian-edelmann@online.de" class="no-js"><app-svg name="email" class="left" /><span>Send mail</span></a>
     </div>
   </section>
 </template>
@@ -21,33 +19,45 @@
 .help-wanted {
   position: relative;
   margin: 1ex 0;
-  padding: 0.4em 0.5em 0.4em calc(1.4em + 2*0.5em);
   background: $yellow-300;
   border-radius: 2px;
   min-height: 32px;
+  padding: 0;
+}
+
+.information {
+  display: flex;
+  flex-direction: row;
+  padding: 0.4em 0.5em;
+  border-bottom: 2px solid $yellow-600;
 
   & > .icon {
-    margin-left: calc(-1.4em - 0.5em);
-    margin-right: 0.5em;
+    margin: 0.3em 0.5em 0 0.2em;
   }
 }
 
-.text {
-  margin-right: .6em;
-}
-
 .actions {
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  font-size: 90%;
+
+  a, noscript {
+    flex-grow: 1;
+    flex-basis: 10em;
+  }
 
   a {
     display: inline-block;
-    border: 2px solid $yellow-600;
-    margin: .2em;
-    padding: .1em .4em;
-    border-radius: 3px;
+    padding: 0.4em 0.6em;
     color: $primary-text-dark;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
 
-    &:hover {
+    &:hover,
+    &:focus {
       background: $yellow-600;
       fill: $primary-text-dark;
     }
