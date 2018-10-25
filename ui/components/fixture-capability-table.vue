@@ -56,7 +56,7 @@
           <td colspan="2">
             <app-fixture-help-wanted
               :context="cap.model"
-              @update:helpWantedContext="$emit(`update:helpWantedContext`, $event)" />
+              @helpWantedClicked="$emit(`helpWantedClicked`, $event)" />
           </td>
         </tr>
       </template>

@@ -29,7 +29,7 @@
         :key="channel.key"
         :channel="channel"
         :mode="mode"
-        @update:helpWantedContext="$emit(`update:helpWantedContext`, $event)" />
+        @helpWantedClicked="$emit(`helpWantedClicked`, $event)" />
     </ol>
 
   </section>

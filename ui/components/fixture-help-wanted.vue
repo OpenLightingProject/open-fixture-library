@@ -6,7 +6,7 @@
     </div>
 
     <div class="actions">
-      <a href="#" class="only-js" @click.prevent="$emit(`update:helpWantedContext`, context)"><app-svg name="comment-alert" class="left" /><span>Send information</span></a>
+      <a href="#" class="only-js" @click.prevent="$emit(`helpWantedClicked`, context)"><app-svg name="comment-alert" class="left" /><span>Send information</span></a>
       <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" class="no-js" rel="nofollow"><app-svg name="bug" class="left" /><span>Create issue on GitHub</span></a>
       <a href="mailto:florian-edelmann@online.de" class="no-js"><app-svg name="email" class="left" /><span>Send mail</span></a>
     </div>

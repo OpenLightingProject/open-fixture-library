@@ -87,7 +87,7 @@
       <app-fixture-help-wanted
         v-if="fixture.isHelpWanted"
         :context="fixture"
-        @update:helpWantedContext="helpWantedContext = $event" />
+        @helpWantedClicked="helpWantedContext = $event" />
 
       <app-labeled-value
         v-if="fixture.rdm !== null"
@@ -127,7 +127,7 @@
         :key="mode.name"
         :mode="mode"
         :index="index"
-        @update:helpWantedContext="helpWantedContext = $event" />
+        @helpWantedClicked="helpWantedContext = $event" />
       <div class="clearfix" />
     </section>
 

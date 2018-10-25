@@ -32,7 +32,7 @@
             :channel="fixture.getChannelByKey(switchToChannelKey)"
             :mode="mode"
             :append-to-heading="channel.defaultChannel.key === switchToChannelKey ? `(default)` : null"
-            @update:helpWantedContext="$emit(`update:helpWantedContext`, $event)">
+            @helpWantedClicked="$emit(`helpWantedClicked`, $event)">
             <app-labeled-value
               name="switchingChannel-triggerRanges"
               label="Activated when">
@@ -115,7 +115,7 @@
           :channel="channel"
           :mode="mode"
           :resolution-in-mode="resolutionInMode"
-          @update:helpWantedContext="$emit(`update:helpWantedContext`, $event)" />
+          @helpWantedClicked="$emit(`helpWantedClicked`, $event)" />
       </template>
 
     </app-conditional-details>
