@@ -9,6 +9,7 @@ export default {
   'chevron-double-down': require(`./chevron-double-down.svg`),
   'chevron-double-up': require(`./chevron-double-up.svg`),
   'close': require(`./close.svg`),
+  'comment-alert': require(`./comment-alert.svg`),
   'comment-question-outline': require(`./comment-question-outline.svg`),
   'email': require(`./email.svg`),
   'file-pdf': require(`./file-pdf.svg`),

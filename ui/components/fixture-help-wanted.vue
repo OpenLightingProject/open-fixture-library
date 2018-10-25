@@ -1,7 +1,15 @@
 <template>
-  <section class="help-wanted" @click="$emit(`update:helpWantedContext`, context)">
+  <section class="help-wanted">
     <app-svg name="comment-question-outline" title="Help wanted!" />
-    <span v-html="text" />
+    <span class="text" v-html="text" />
+
+    <div class="actions">
+      <a href="#" class="only-js" @click.prevent="$emit(`update:helpWantedContext`, context)"><app-svg name="comment-alert" class="left" /><span>Send information</span></a>
+      <noscript>
+        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow"><app-svg name="bug" class="left" /><span>Create issue on GitHub</span></a>
+        <a href="mailto:florian-edelmann@online.de"><app-svg name="email" class="left" /><span>Send mail</span></a>
+      </noscript>
+    </div>
   </section>
 </template>
 
@@ -15,11 +23,37 @@
   background: $yellow-300;
   border-radius: 2px;
   min-height: 32px;
-  cursor: pointer;
 
-  .icon {
+  & > .icon {
     margin-left: calc(-1.4em - 0.5em);
     margin-right: 0.5em;
+  }
+}
+
+.text {
+  margin-right: .6em;
+}
+
+.actions {
+  display: inline-block;
+
+  a {
+    display: inline-block;
+    border: 2px solid $yellow-600;
+    margin: .2em;
+    padding: .1em .4em;
+    border-radius: 3px;
+    color: $primary-text-dark;
+
+    &:hover {
+      background: $yellow-600;
+      fill: $primary-text-dark;
+      // background: #ffe057;
+    }
+
+    & > .icon {
+      margin-right: 1ex;
+    }
   }
 }
 </style>
