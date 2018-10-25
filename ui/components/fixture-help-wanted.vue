@@ -23,16 +23,20 @@
   border-radius: 2px;
   min-height: 32px;
   padding: 0;
+  line-height: 1.6;
 }
 
 .information {
-  display: flex;
-  flex-direction: row;
-  padding: 0.4em 0.5em;
+  $icon-width: 1.4em;
+  $text-margin: 0.5em;
+  padding: 0.6em 0.7em 0.6em (0.7em + $icon-width + $text-margin);
   border-bottom: 2px solid $yellow-600;
 
   & > .icon {
-    margin: 0.3em 0.5em 0 0.2em;
+    margin-left: -$icon-width - $text-margin;
+    padding-right: $text-margin;
+    margin-top: 0.2em;
+    float: left;
   }
 }
 
