@@ -387,13 +387,13 @@ a.button.secondary:disabled {
     @media (min-width: $tablet) {
       width: calc(33.3% - 2rem / 3);
 
-      &:nth-child(3n+1) {
+      &:nth-child(3n+1),
+      &:nth-child(3n+2) {
         margin-left: 0;
-        margin-right: 0;
+        margin-right: 1rem;
       }
-      &:nth-child(3n+2),
       &:nth-child(3n) {
-        margin-left: 1rem;
+        margin-left: 0;
         margin-right: 0;
       }
     }

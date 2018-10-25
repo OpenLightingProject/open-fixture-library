@@ -135,8 +135,9 @@
       <h2>Something wrong with this fixture definition?</h2>
       <p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>
       <div class="grid-3 list">
-        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card"><app-svg name="bug" class="left" /><span>Report issue on GitHub</span></a>
-        <a href="/about#contact" class="card"><app-svg name="email" class="left" /><span>Contact</span></a>
+        <a href="#" class="card only-js" @click.prevent="helpWantedContext = fixture"><app-svg name="comment-alert" class="left" /><span>Send information</span></a>
+        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card"><app-svg name="bug" class="left" /><span>Create issue on GitHub</span></a>
+        <a href="mailto:florian-edelmann@online.de" class="card"><app-svg name="email" class="left" /><span>Send mail</span></a>
       </div>
     </section>
 
