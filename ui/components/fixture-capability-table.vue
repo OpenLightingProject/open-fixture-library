@@ -52,7 +52,8 @@
         <tr
           v-if="cap.model.helpWanted !== null"
           :key="`cap-${index}-helpWanted`">
-          <td colspan="6">
+          <td colspan="4" />
+          <td colspan="2">
             <app-fixture-help-wanted
               :context="cap.model"
               @update:helpWantedContext="$emit(`update:helpWantedContext`, $event)" />

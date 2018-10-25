@@ -141,9 +141,7 @@
       </div>
     </section>
 
-    <app-fixture-help-wanted-dialog
-      ref="helpWantedDialog"
-      v-model="helpWantedContext" />
+    <app-fixture-help-wanted-dialog v-model="helpWantedContext" />
   </div>
 </template>
 

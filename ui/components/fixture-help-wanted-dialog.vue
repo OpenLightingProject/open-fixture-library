@@ -178,7 +178,6 @@ export default {
       };
     },
     errorData() {
-      console.log(`compute errorData`);
       return `${JSON.stringify(this.sendObject, null, 2)}\n\n${this.error}`;
     }
   },

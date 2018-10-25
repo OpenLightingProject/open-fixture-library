@@ -59,7 +59,6 @@
 }
 </style>
 
-
 <script>
 import svg from '~/components/svg.vue';
 
