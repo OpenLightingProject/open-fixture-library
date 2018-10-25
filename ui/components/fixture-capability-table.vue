@@ -51,10 +51,13 @@
 
         <tr
           v-if="cap.model.helpWanted !== null"
-          :key="`cap-${index}-helpWanted`"
-          @click="$emit(`update:helpWantedContext`, cap.model)">
+          :key="`cap-${index}-helpWanted`">
           <td colspan="4" />
-          <td colspan="2"><div class="help-wanted"><app-svg name="comment-question-outline" title="Help wanted!" />{{ cap.model.helpWanted }}</div></td>
+          <td colspan="2">
+            <app-fixture-help-wanted
+              :context="cap.model"
+              @update:helpWantedContext="$emit(`update:helpWantedContext`, $event)" />
+          </td>
         </tr>
       </template>
     </tbody>
@@ -115,13 +118,15 @@ td, th {
 
 <script>
 import svg from '~/components/svg.vue';
+import fixtureHelpWanted from '~/components/fixture-help-wanted.vue';
 
 import CoarseChannel from '~~/lib/model/CoarseChannel.mjs';
 import Mode from '~~/lib/model/Mode.mjs';
 
 export default {
   components: {
-    'app-svg': svg
+    'app-svg': svg,
+    'app-fixture-help-wanted': fixtureHelpWanted
   },
   props: {
     channel: {

@@ -84,10 +84,10 @@
         </ul>
       </app-labeled-value>
 
-      <section v-if="fixture.isHelpWanted" class="help-wanted" @click="helpWantedContext = fixture">
-        <app-svg name="comment-question-outline" title="Help wanted!" /><a href="#contribute">You can help to improve this fixture definition!</a>
-        {{ fixture.helpWanted !== null ? fixture.helpWanted : `Specific questions are included in the capabilities below.` }}
-      </section>
+      <app-fixture-help-wanted
+        v-if="fixture.isHelpWanted"
+        :context="fixture"
+        @update:helpWantedContext="helpWantedContext = $event" />
 
       <app-labeled-value
         v-if="fixture.rdm !== null"
@@ -237,6 +237,7 @@ import categoryBadge from '~/components/category-badge.vue';
 import conditionalDetailsVue from '~/components/conditional-details.vue';
 import downloadButtonVue from '~/components/download-button.vue';
 import fixturePhysical from '~/components/fixture-physical.vue';
+import fixtureHelpWanted from '~/components/fixture-help-wanted.vue';
 import fixtureHelpWantedDialog from '~/components/fixture-help-wanted-dialog.vue';
 import fixtureMatrix from '~/components/fixture-matrix.vue';
 import fixtureMode from '~/components/fixture-mode.vue';
@@ -253,6 +254,7 @@ export default {
     'app-conditional-details': conditionalDetailsVue,
     'app-download-button': downloadButtonVue,
     'app-fixture-physical': fixturePhysical,
+    'app-fixture-help-wanted': fixtureHelpWanted,
     'app-fixture-help-wanted-dialog': fixtureHelpWantedDialog,
     'app-fixture-matrix': fixtureMatrix,
     'app-fixture-mode': fixtureMode,
