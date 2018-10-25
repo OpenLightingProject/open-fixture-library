@@ -7,68 +7,64 @@
     :title="title"
     @hide="onHide">
 
-    <template v-if="context !== null">
+    <form v-if="state === `ready` && context !== null" action="#" @submit.prevent="onSubmit">
+      <app-labeled-value
+        v-if="location !== null"
+        :value="location"
+        label="Location" />
 
-      <form v-if="state === `ready`" action="#" @submit.prevent="onSubmit">
-        <app-labeled-value
-          v-if="location !== null"
-          :value="location"
-          label="Location" />
+      <app-labeled-value
+        v-if="context.helpWanted !== null"
+        :value="context.helpWanted"
+        label="Problem description" />
 
-        <app-labeled-value
-          v-if="context.helpWanted !== null"
-          :value="context.helpWanted"
-          label="Problem description" />
+      <app-labeled-input
+        name="message"
+        label="Message">
+        <app-property-input-textarea
+          v-model="message"
+          :schema-property="{}"
+          name="message" />
+      </app-labeled-input>
 
-        <app-labeled-input
-          name="message"
-          label="Message">
-          <app-property-input-textarea
-            v-model="message"
-            :schema-property="{}"
-            name="message" />
-        </app-labeled-input>
+      <app-labeled-input
+        name="github-username"
+        label="GitHub username"
+        hint="If you want to be mentioned in the issue.">
+        <app-property-input-text
+          v-model="githubUsername"
+          :schema-property="{}"
+          name="github-username" />
+      </app-labeled-input>
 
-        <app-labeled-input
-          name="github-username"
-          label="GitHub username"
-          hint="If you want to be mentioned in the issue.">
-          <app-property-input-text
-            v-model="githubUsername"
-            :schema-property="{}"
-            name="github-username" />
-        </app-labeled-input>
+      <div class="button-bar right">
+        <button :disabled="message === ``" type="submit" class="primary">Send information</button>
+      </div>
+    </form>
 
-        <div class="button-bar right">
-          <button :disabled="message === ``" type="submit" class="primary">Send information</button>
-        </div>
-      </form>
+    <template v-else-if="state === `loading`">
+      Uploading…
+    </template>
 
-      <template v-else-if="state === `loading`">
-        Uploading…
-      </template>
+    <template v-else-if="state === `success`">
+      Your information was successfully uploaded to GitHub (see the <a :href="issueUrl" target="_blank">issue</a>). The fixture will be updated as soon as your information has been reviewed. Thank you for your contribution!
 
-      <template v-else-if="state === `success`">
-        Your information was successfully uploaded to GitHub (see the <a :href="issueUrl" target="_blank">issue</a>). The fixture will be updated as soon as your information has been reviewed. Thank you for your contribution!
+      <div class="button-bar right">
+        <a href="#" class="button secondary" @click.prevent="hide">Close</a>
+        <a :href="issueUrl" class="button primary" target="_blank">See issue</a>
+      </div>
+    </template>
 
-        <div class="button-bar right">
-          <a href="#" class="button secondary" @click.prevent="$refs.dialog.$emit(`hide`)">Close</a>
-          <a :href="issueUrl" class="button primary" target="_blank">See issue</a>
-        </div>
-      </template>
+    <template v-else-if="state === `error`">
+      Unfortunately, there was an error while uploading. Please copy the following data and manually submit it.
 
-      <template v-else-if="state === `error`">
-        Unfortunately, there was an error while uploading. Please copy the following data and manually submit it.
+      <textarea :value="errorData" readonly />
 
-        <textarea :value="errorData" readonly />
-
-        <div class="button-bar right">
-          <a href="#" class="button secondary" @click.prevent="$refs.dialog.$emit(`hide`)">Close</a>
-          <a href="mailto:florian-edelmann@online.de" class="button primary" target="_blank">Send mail</a>
-          <a href="https://github.com/OpenLightingProject/open-fixture-library/issues/new" class="button primary" target="_blank">Create issue on GitHub</a>
-        </div>
-      </template>
-
+      <div class="button-bar right">
+        <a href="#" class="button secondary" @click.prevent="hide">Close</a>
+        <a href="mailto:florian-edelmann@online.de" class="button primary" target="_blank">Send mail</a>
+        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues/new" class="button primary" target="_blank">Create issue on GitHub</a>
+      </div>
     </template>
 
   </app-a11y-dialog>
@@ -180,9 +176,10 @@ export default {
         this.state = `error`;
       }
     },
+    hide() {
+      this.$refs.dialog.$emit(`hide`);
+    },
     onHide() {
-      this.$emit(`input`, null);
-
       if (this.state === `success`) {
         this.message = ``;
       }
@@ -190,6 +187,7 @@ export default {
       this.state = `ready`;
       this.issueUrl = null;
       this.error = null;
+      this.$emit(`input`, null);
     }
   }
 };
