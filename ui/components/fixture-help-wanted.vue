@@ -5,8 +5,10 @@
 
     <div class="actions">
       <a href="#" class="only-js" @click.prevent="$emit(`update:helpWantedContext`, context)"><app-svg name="comment-alert" class="left" /><span>Send information</span></a>
-      <noscript>
+      <noscript inline-template>
         <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow"><app-svg name="bug" class="left" /><span>Create issue on GitHub</span></a>
+      </noscript>
+      <noscript inline-template>
         <a href="mailto:florian-edelmann@online.de"><app-svg name="email" class="left" /><span>Send mail</span></a>
       </noscript>
     </div>
@@ -48,7 +50,6 @@
     &:hover {
       background: $yellow-600;
       fill: $primary-text-dark;
-      // background: #ffe057;
     }
 
     & > .icon {
