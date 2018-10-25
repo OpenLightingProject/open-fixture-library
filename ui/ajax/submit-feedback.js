@@ -33,12 +33,7 @@ module.exports = async function createFeedbackIssue(request, response) {
   const lines = Object.entries(issueContentData).filter(
     ([key, value]) => value !== null
   ).map(
-    ([key, value]) => {
-      if (value.includes(`\n`)) {
-        return `**${key}**:\n${value}`;
-      }
-      return `**${key}**: ${value}`;
-    }
+    ([key, value]) => `**${key}**:${value.includes(`\n`) ? `\n` : ` `}${value}`
   );
 
   if (githubUsername) {

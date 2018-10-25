@@ -167,12 +167,7 @@ export default {
       const body = Object.entries(mailBodyData).filter(
         ([key, value]) => value !== null
       ).map(
-        ([key, value]) => {
-          if (value.includes(`\n`)) {
-            return `${key}:\n${value}`;
-          }
-          return `${key}: ${value}`;
-        }
+        ([key, value]) => `${key}:${value.includes(`\n`) ? `\n` : ` `}${value}`
       ).join(`\n`);
 
       return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
