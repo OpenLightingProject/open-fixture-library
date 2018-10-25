@@ -44,14 +44,6 @@ module.exports = async function createFeedbackIssue(request, response) {
   let issueUrl;
   let error;
   try {
-    console.log(`Creating issue`);
-
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
-    if (githubUsername !== `Fxedel`) {
-      throw new Error(`Wrong GitHub username`);
-    }
-
     issueUrl = await createIssue(title, lines.join(`\n`), GITHUB_LABELS);
     console.log(`Created issue at ${issueUrl}`);
   }
