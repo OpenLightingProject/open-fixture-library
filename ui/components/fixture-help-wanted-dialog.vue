@@ -18,23 +18,15 @@
         :value="context.helpWanted"
         label="Problem description" />
 
-      <app-labeled-input
-        name="message"
-        label="Message">
-        <app-property-input-textarea
-          v-model="message"
-          :schema-property="{}"
-          name="message" />
+      <app-labeled-input name="message" label="Message">
+        <textarea v-model="message" name="message" />
       </app-labeled-input>
 
       <app-labeled-input
         name="github-username"
         label="GitHub username"
         hint="If you want to be mentioned in the issue.">
-        <app-property-input-text
-          v-model="githubUsername"
-          :schema-property="{}"
-          name="github-username" />
+        <input v-model="githubUsername" type="text" name="github-username">
       </app-labeled-input>
 
       <div class="button-bar right">
