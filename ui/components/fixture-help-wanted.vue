@@ -2,7 +2,7 @@
   <section class="help-wanted">
     <div class="information">
       <app-svg name="comment-question-outline" title="Help wanted!" />
-      <span class="text" v-html="text" />
+      <strong v-if="(context instanceof Fixture)">You can help to improve this fixture definition!</strong> {{ context.helpWanted !== null ? context.helpWanted : `Specific questions are included in the capabilities below.` }}
     </div>
 
     <div class="actions">
@@ -89,16 +89,12 @@ export default {
       required: true
     }
   },
+  data: () => {
+    return {
+      Fixture
+    };
+  },
   computed: {
-    text() {
-      if (this.context instanceof Capability) {
-        return this.context.helpWanted;
-      }
-
-      let text = `<strong>You can help to improve this fixture definition!</strong> `;
-      text += this.context.helpWanted !== null ? this.context.helpWanted : `Specific questions are included in the capabilities below.`;
-      return text;
-    },
     location() {
       if (this.context instanceof Capability) {
         const cap = this.context;
