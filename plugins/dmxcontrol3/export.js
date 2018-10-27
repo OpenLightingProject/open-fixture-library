@@ -67,7 +67,7 @@ module.exports.export = async function exportDMXControl3(fixtures, options) {
 };
 
 /**
- * Adds the information block to the specified xml file.
+ * Adds the information block to the specified XML file.
  * @param {XMLDocument} xml The device definition to add the information to
  * @param {Mode} mode The definition's mode
  */
@@ -88,7 +88,7 @@ function addInformation(xml, mode) {
  */
 
 /**
- * Adds the dmx channels as functions to the specified xml file.
+ * Adds the DMX channels as functions to the specified XML file.
  * @param {XMLDocument} xml The device definition to add the functions to.
  * @param {Mode} mode The definition's mode.
  */
@@ -421,7 +421,7 @@ const functions = {
       /**
        * @param {Capability} cap1 A capability.
        * @param {Capability} cap2 Another capability.
-       * @returns {Capability|null} A capability that combines the values of both given capabilites. Null if merging was not possible.
+       * @returns {Capability|null} A capability that combines the values of both given capabilities. Null if merging was not possible.
        */
       function getMergedCapability(cap1, cap2) {
         if (!cap1.rawDmxRange.isAdjacentTo(cap2.rawDmxRange)) {
@@ -709,8 +709,8 @@ function getNormalizedCapabilities(caps, property, maximumValue, properUnit) {
 /**
  * This function already handles swapping DMX start/end if the given start/end value is inverted (i.e. decreasing).
  * @param {Capability} cap The capability to use as data source.
- * @param {number|null} startValue The start value of an start/end entity, e.g. speedStart. Unit can be freely choosen. Omit if minval/maxval should not be added.
- * @param {*|null} endValue The end value of an start/end entity, e.g. speedEnd. Unit can be freely choosen. Omit if minval/maxval should not be added.
+ * @param {number|null} startValue The start value of an start/end entity, e.g. speedStart. Unit can be freely chosen. Omit if minval/maxval should not be added.
+ * @param {*|null} endValue The end value of an start/end entity, e.g. speedEnd. Unit can be freely chosen. Omit if minval/maxval should not be added.
  * @returns {XMLElement} A <step> or <range> with mindmx, maxdmx and, optionally, minval and maxval attributes.
  */
 function getBaseXmlCapability(cap, startValue = null, endValue = null) {
@@ -736,8 +736,8 @@ function getBaseXmlCapability(cap, startValue = null, endValue = null) {
 
 
 /**
- * Adds the matrix function to the xml and inserts suitable color mixings from matrix channels.
- * @param {XMLElement} xmlParent The xml element in which the <matrix> tag should be inserted.
+ * Adds the matrix function to the XML and inserts suitable color mixings from matrix channels.
+ * @param {XMLElement} xmlParent The XML element in which the <matrix> tag should be inserted.
  * @param {Mode} mode The definition's mode.
  * @param {ChannelsPerPixel} channelsPerPixel Pixel keys pointing to its channels.
  */
@@ -805,9 +805,9 @@ function addMatrix(xmlParent, mode, channelsPerPixel) {
 }
 
 /**
- * Finds color channels in the given channel list, adds them to xml (as RGB/CMY function, if possible)
+ * Finds color channels in the given channel list, adds them to XML (as RGB/CMY function, if possible)
  * and removes them from the given channel list.
- * @param {XMLElement} xmlParent The xml element in which the <rgb>/<blue>/<amber>/... tags should be inserted.
+ * @param {XMLElement} xmlParent The XML element in which the <rgb>/<blue>/<amber>/... tags should be inserted.
  * @param {Mode} mode The definition's mode.
  * @param {array.<CoarseChannel>} remainingChannels All channels that haven't been processed already.
  */
@@ -835,7 +835,7 @@ function addColors(xmlParent, mode, remainingChannels) {
 
 /**
  * Adds a color mixing function for the given channels
- * @param {XMLElement} xmlParent The xml element in which the color mixing (<rgb> or <cmy>) should be inserted.
+ * @param {XMLElement} xmlParent The XML element in which the color mixing (<rgb> or <cmy>) should be inserted.
  * @param {Mode} mode The definition's mode.
  * @param {array.<CoarseChannel>} colorChannels The Single Color channels to be added.
  * @param {('rgb'|'cmy')} colorMixing Which kind of color mixing this is.
@@ -850,7 +850,7 @@ function addColorMixing(xmlParent, mode, colorChannels, colorMixing) {
 
 /**
  * Adds a color function for the given channel.
- * @param {XMLElement} xmlParent The xml element in which the color tag should be inserted, probably <rgb> or <cmy>.
+ * @param {XMLElement} xmlParent The XML element in which the color tag should be inserted, probably <rgb> or <cmy>.
  * @param {Mode} mode The definition's mode.
  * @param {CoarseChannel} colorChannel The Single Color channel which should be added.
  */
@@ -894,9 +894,9 @@ function isCMY(colors) {
 }
 
 /**
- * Finds dimmer channels in the given channel list, adds them to xml
+ * Finds dimmer channels in the given channel list, adds them to XML
  * and removes them from the given channel list.
- * @param {XMLElement} xmlParent The xml element in which the <dimmer> tags should be inserted.
+ * @param {XMLElement} xmlParent The XML element in which the <dimmer> tags should be inserted.
  * @param {Mode} mode The definition's mode.
  * @param {array.<CoarseChannel>} remainingChannels All channels that haven't been processed already.
  */
@@ -918,9 +918,9 @@ function addDimmer(xmlParent, mode, remainingChannels) {
 }
 
 /**
- * Finds Pan/Tilt channels in the given channel list, adds them to xml (as Position function, if possible)
+ * Finds Pan/Tilt channels in the given channel list, adds them to XML (as Position function, if possible)
  * and removes them from the given channel list.
- * @param {XMLElement} xmlParent The xml element in which the <position> tag should be inserted.
+ * @param {XMLElement} xmlParent The XML element in which the <position> tag should be inserted.
  * @param {Mode} mode The definition's mode.
  * @param {array.<CoarseChannel>} remainingChannels All channels that haven't been processed already.
  */
@@ -945,7 +945,7 @@ function addPosition(xmlParent, mode, remainingChannels) {
 
 /**
  * Adds a pan or tilt function for the given Pan or Tilt channel.
- * @param {XMLElement} xmlParent The xml element in which the <pan>/<titl> tag should be inserted, probably <position>.
+ * @param {XMLElement} xmlParent The XML element in which the <pan>/<tilt> tag should be inserted, probably <position>.
  * @param {Mode} mode The definition's mode.
  * @param {Channel} channel The channel of type Pan or Tilt to use.
  */
@@ -963,7 +963,7 @@ function addPanTilt(xmlParent, mode, channel) {
 
 /**
  * Adds name attribute, dmxchannel attribute and attributes for fine channels (if used in mode) to the given channel function.
- * @param {XMLElement} xmlElement The xml element to which the attributes should be added.
+ * @param {XMLElement} xmlElement The XML element to which the attributes should be added.
  * @param {Mode} mode The definition's mode.
  * @param {CoarseChannel} channel The channel whose data is used.
  */
@@ -991,7 +991,7 @@ function addChannelAttributes(xmlElement, mode, channel) {
 }
 
 /**
- * Removes the given item from array using splice and indexOf. Attention: If item is duplicated in array, first occurence is removed!
+ * Removes the given item from array using splice and indexOf. Attention: If item is duplicated in array, first occurrence is removed!
  * @param {array} arr The array from which to remove the item.
  * @param {*} item The item to remove from the array.
  */
