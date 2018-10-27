@@ -687,30 +687,28 @@ const functions = {
 
         // add ranges for capabilities without rotation speed
         commentGroup.filter(cap => cap.angle !== null).forEach(cap => {
-          xmlStep.element(`range`, {
-            range: cap.angle[1].number - cap.angle[0].number,
-            handler: `prismindex`,
-            mindmx: cap.dmxRange.start,
-            maxdmx: cap.dmxRange.end,
-            minval: cap.angle[0].number,
-            maxval: cap.angle[1].number
-          });
+          const xmlRange = getBaseXmlCapability(cap, cap.angle[0].number, cap.angle[1].number);
+          xmlRange.attribute(`range`, cap.angle[1].number - cap.angle[0].number);
+          xmlRange.attribute(`handler`, `prismindex`);
+          xmlStep.importDocument(xmlRange);
         });
 
         // add ranges/steps for normalized rotation speed capabilities
         const rotationSpeedCaps = commentGroup.filter(cap => cap.speed !== null);
         getNormalizedCapabilities(rotationSpeedCaps, `speed`, 5, `Hz`).forEach(cap => {
-          const xmlRange = xmlStep.element(cap.capObject.isStep ? `step` : `range`, {
-            type: `stop`,
-            handler: `prismrotation`,
-            mindmx: cap.capObject.dmxRange.start,
-            maxdmx: cap.capObject.dmxRange.end
-          });
-
-          if (cap.startValue !== 0 || cap.endValue !== 0) {
+          if (cap.startValue === 0 && cap.endValue === 0) {
+            xmlStep.element(`step`, {
+              mindmx: cap.capObject.dmxRange.start,
+              maxdmx: cap.capObject.dmxRange.end,
+              type: `stop`,
+              handler: `prismrotation`
+            });
+          }
+          else {
+            const xmlRange = getBaseXmlCapability(cap.capObject, Math.abs(cap.startValue), Math.abs(cap.endValue));
             xmlRange.attribute(`type`, cap.startValue > 0 ? `cw` : `ccw`);
-            xmlRange.attribute(`minval`, Math.abs(cap.startValue));
-            xmlRange.attribute(`maxval`, Math.abs(cap.endValue));
+            xmlRange.attribute(`handler`, `prismrotation`);
+            xmlStep.importDocument(xmlRange);
           }
         });
       });
@@ -730,13 +728,24 @@ const functions = {
       const firstCap = caps[0];
       const lastCap = caps[caps.length - 1];
 
-      xmlPrismIndex.element(`range`, {
-        range: rangeMax - rangeMin,
-        mindmx: firstCap.dmxRange.start,
-        maxdmx: lastCap.dmxRange.end,
-        minval: firstCap.angle[0].number,
-        maxval: lastCap.angle[1].number
-      });
+      if (firstCap.angle[0].number < lastCap.angle[1].number) {
+        xmlPrismIndex.element(`range`, {
+          range: rangeMax - rangeMin,
+          mindmx: firstCap.dmxRange.start,
+          maxdmx: lastCap.dmxRange.end,
+          minval: firstCap.angle[0].number,
+          maxval: lastCap.angle[1].number
+        });
+      }
+      else {
+        xmlPrismIndex.element(`range`, {
+          range: rangeMax - rangeMin,
+          mindmx: lastCap.dmxRange.end,
+          maxdmx: firstCap.dmxRange.start,
+          minval: lastCap.angle[1].number,
+          maxval: firstCap.angle[0].number
+        });
+      }
 
       return xmlPrismIndex;
     }
