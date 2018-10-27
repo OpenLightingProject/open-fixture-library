@@ -761,7 +761,7 @@ function addHeads(xmlMode, mode) {
 function getFixtureType(fixture) {
   // see https://github.com/OpenLightingProject/open-fixture-library/issues/581
   if (fixture.categories.includes(`Pixel Bar`)) {
-    return isBeamBar() ? `LEDBarBeams` : `LEDBarPixels`;
+    return isBeamBar() ? `LED Bar (Beams)` : `LED Bar (Pixels)`;
   }
 
   const ignoredCats = [`Blinder`, `Matrix`, `Stand`];
