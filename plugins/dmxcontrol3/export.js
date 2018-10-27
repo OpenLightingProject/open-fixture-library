@@ -49,6 +49,7 @@ module.exports.export = async function exportDMXControl3(fixtures, options) {
 
       addInformation(xml, mode);
       addFunctions(xml, mode);
+      addProcedures(xml, mode);
 
       deviceDefinitions.push({
         name: sanitize(`${fixture.manufacturer.key}-${fixture.key}-${(mode.shortName)}.xml`).replace(/\s+/g, `-`),
@@ -173,6 +174,50 @@ function addFunctions(xml, mode) {
 
     return xmlFunctions;
   }
+}
+
+/**
+ * Adds the Maintenance capabilities as procedures to the specified XML file.
+ * @param {XMLDocument} xml The device definition to add the functions to.
+ * @param {Mode} mode The definition's mode.
+ */
+function addProcedures(xml, mode) {
+  const maintenanceChannels = mode.channels.filter(
+    channel => channel.type === `Maintenance`
+  );
+
+  if (maintenanceChannels.length === 0) {
+    return;
+  }
+
+  const xmlProcedures = xml.element(`procedures`);
+
+  maintenanceChannels.forEach(channel => {
+    const channelIndex = mode.getChannelIndex(channel);
+
+    channel.capabilities.filter(
+      capability => capability.type === `Maintenance` && capability.isStep
+    ).forEach(capability => {
+      const xmlProcedure = xmlProcedures.element(`procedure`, {
+        name: capability.comment
+      });
+
+      xmlProcedure.element(`set`, {
+        dmxchannel: channelIndex,
+        value: capability.dmxRange.start
+      });
+
+      if (capability.hold) {
+        xmlProcedure.element(`hold`, {
+          value: capability.hold.getBaseUnitEntity().number * 1000
+        });
+
+        xmlProcedure.element(`restore`, {
+          dmxchannel: channelIndex
+        });
+      }
+    });
+  });
 }
 
 const functions = {
