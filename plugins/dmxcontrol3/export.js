@@ -814,7 +814,8 @@ const functions = {
  */
 function getNormalizedCapabilities(caps, property, maximumValue, properUnit) {
   const normalizedCaps = caps.map(cap => {
-    const [startEntity, endEntity] = cap[property].map(entity => entity.getBaseUnitEntity());
+    const startEntity = cap[property][0].getBaseUnitEntity();
+    const endEntity = cap[property][1].getBaseUnitEntity();
 
     return {
       capObject: cap,
@@ -839,11 +840,13 @@ function getNormalizedCapabilities(caps, property, maximumValue, properUnit) {
   // they should all be of the same (wrong) unit, as we converted to the base unit above
   const capsWithWrongUnit = normalizedCaps.filter(cap => cap.unit !== properUnit);
   const maxValueWithWrongUnit = Math.max(...(capsWithWrongUnit.map(cap => Math.max(cap.startValue, cap.endValue))));
-  capsWithWrongUnit.forEach(cap => {
-    cap.unit = properUnit;
-    cap.startValue = cap.startValue * maximumValue / maxValueWithWrongUnit;
-    cap.endValue = cap.endValue * maximumValue / maxValueWithWrongUnit;
-  });
+  if (maxValueWithWrongUnit !== 0) {
+    capsWithWrongUnit.forEach(cap => {
+      cap.unit = properUnit;
+      cap.startValue = cap.startValue * maximumValue / maxValueWithWrongUnit;
+      cap.endValue = cap.endValue * maximumValue / maxValueWithWrongUnit;
+    });
+  }
 
   // reapply signs (+ or –)
   normalizedCaps.forEach(cap => {
