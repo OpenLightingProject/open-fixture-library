@@ -65,8 +65,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import '~assets/styles/vars.scss';
-
 .capabilities-table {
   border-collapse: collapse;
   table-layout: fixed;

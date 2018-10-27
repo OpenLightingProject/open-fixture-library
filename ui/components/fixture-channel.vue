@@ -123,8 +123,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import '~assets/styles/vars.scss';
-
 summary, .summary {
   & > .icon {
     margin-right: 1.2ex;

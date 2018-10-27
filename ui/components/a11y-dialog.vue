@@ -33,8 +33,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import '~assets/styles/vars.scss';
-
 .dialog-container[aria-hidden=true],
 [data-a11y-dialog-native] > .dialog-overlay {
   display: none;
