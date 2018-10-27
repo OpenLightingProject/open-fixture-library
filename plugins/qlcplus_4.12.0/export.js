@@ -759,25 +759,8 @@ function addHeads(xmlMode, mode) {
  * @returns {string} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
  */
 function getFixtureType(fixture) {
-  // see https://github.com/OpenLightingProject/open-fixture-library/issues/581
-  if (fixture.categories.includes(`Pixel Bar`)) {
-    return isBeamBar() ? `LED Bar (Beams)` : `LED Bar (Pixels)`;
-  }
-
-  const ignoredCats = [`Blinder`, `Matrix`, `Stand`];
+  const ignoredCats = [`Blinder`, `Matrix`, `Pixel Bar`, `Stand`];
   return fixture.categories.find(cat => !ignoredCats.includes(cat)) || `Other`;
-
-
-  /**
-   * @returns {boolean} True if there are individual beams (or it can not be determined), false if the pixels' colors blend into each other.
-   */
-  function isBeamBar() {
-    if (!fixture.physical || !fixture.physical.matrixPixelsSpacing) {
-      return true;
-    }
-
-    return fixture.physical.matrixPixelsSpacing.some(spacing => spacing !== 0);
-  }
 }
 
 /**
