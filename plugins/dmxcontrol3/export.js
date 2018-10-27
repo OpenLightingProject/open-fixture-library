@@ -742,9 +742,26 @@ const functions = {
     }
   },
   prismRotation: { // rotation speed
-    isCapSuitable: cap => false,
+    isCapSuitable: cap => cap.type === `PrismRotation` && cap.speed !== null,
     create: (channel, caps) => {
-      return;
+      const xmlPrismRotation = xmlbuilder.create(`prismrotation`);
+
+      getNormalizedCapabilities(caps, `speed`, 5, `Hz`).forEach(cap => {
+        if (cap.startValue === 0 && cap.endValue === 0) {
+          xmlPrismRotation.element(`step`, {
+            mindmx: cap.capObject.dmxRange.start,
+            maxdmx: cap.capObject.dmxRange.end,
+            type: `stop`
+          });
+        }
+        else {
+          const xmlRange = getBaseXmlCapability(cap.capObject, Math.abs(cap.startValue), Math.abs(cap.endValue));
+          xmlRange.attribute(`type`, cap.startValue > 0 ? `cw` : `ccw`);
+          xmlPrismRotation.importDocument(xmlRange);
+        }
+      });
+
+      return xmlPrismRotation;
     }
   },
   fog: { // fog output
