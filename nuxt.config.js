@@ -1,7 +1,9 @@
 const path = require(`path`);
 
+const SRC_DIR = `./ui/`;
+
 module.exports = {
-  srcDir: `ui/`,
+  srcDir: SRC_DIR,
   modules: [
     [`@nuxtjs/axios`, {
       browserBaseURL: `/`
@@ -26,6 +28,12 @@ module.exports = {
       `~~/fixtures/manufacturers.json`,
       `~/components/svg.vue`
     ],
+    styleResources: {
+      scss: [
+        `${SRC_DIR}assets/styles/vars.scss`,
+        `${SRC_DIR}assets/styles/mixins.scss`
+      ]
+    },
     babel: {
       plugins: [
         `transform-es2015-modules-commonjs`

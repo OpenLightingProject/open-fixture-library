@@ -152,8 +152,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import '~assets/styles/vars.scss';
-
 .fixture-meta {
   margin: -1.5rem 0 1rem;
   font-size: 0.8rem;

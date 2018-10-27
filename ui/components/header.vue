@@ -63,9 +63,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import '~assets/styles/vars.scss';
-@import '~assets/styles/mixins.scss';
-
 #header {
   position: fixed;
   width: 100%;

@@ -15,8 +15,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import '~assets/styles/vars.scss';
-
 .help-wanted {
   position: relative;
   margin: 1ex 0;

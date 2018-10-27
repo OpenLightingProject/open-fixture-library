@@ -1,6 +1,4 @@
 <style lang="scss" scoped>
-@import '~assets/styles/vars.scss';
-
 .category-badge {
   display: inline-block;
   padding: 4px 1.5ex 4px 1ex;

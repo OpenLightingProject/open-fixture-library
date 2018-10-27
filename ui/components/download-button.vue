@@ -16,8 +16,6 @@
 </template>
 
 <style lang="scss">
-@import '~assets/styles/vars.scss';
-
 .download-button {
   & > .title {
     display: block;
