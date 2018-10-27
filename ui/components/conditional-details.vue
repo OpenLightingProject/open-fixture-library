@@ -22,7 +22,6 @@
 
 
 <style lang="scss" scoped>
-@import '~assets/styles/vars.scss';
 summary {
   display: block;
   cursor: pointer;

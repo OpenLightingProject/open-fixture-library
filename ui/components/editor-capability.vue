@@ -50,8 +50,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import '~assets/styles/vars.scss';
-
 .capability {
   margin: 0 -0.5rem;
   position: relative;

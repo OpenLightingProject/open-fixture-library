@@ -77,8 +77,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import '~assets/styles/vars.scss';
-
 /* TODO: a lot of this stuff is duplicated in fixture-capability-table.vue */
 
 .capabilities-table {
