@@ -720,9 +720,25 @@ const functions = {
     }
   },
   prismIndex: { // rotation angle
-    isCapSuitable: cap => false,
+    isCapSuitable: cap => cap.type === `PrismRotation` && cap.angle !== null,
     create: (channel, caps) => {
-      return;
+      const xmlPrismIndex = xmlbuilder.create(`prismindex`);
+
+      const rangeMin = Math.min(...caps.map(cap => Math.min(cap.angle[0].number, cap.angle[1].number)));
+      const rangeMax = Math.max(...caps.map(cap => Math.max(cap.angle[0].number, cap.angle[1].number)));
+
+      const firstCap = caps[0];
+      const lastCap = caps[caps.length - 1];
+
+      xmlPrismIndex.element(`range`, {
+        range: rangeMax - rangeMin,
+        mindmx: firstCap.dmxRange.start,
+        maxdmx: lastCap.dmxRange.end,
+        minval: firstCap.angle[0].number,
+        maxval: lastCap.angle[1].number
+      });
+
+      return xmlPrismIndex;
     }
   },
   prismRotation: { // rotation speed
