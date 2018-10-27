@@ -136,7 +136,7 @@
       <p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>
       <div class="grid-3 list">
         <a
-          v-if="browser"
+          v-if="isBrowser"
           href="#"
           class="card"
           @click.prevent="helpWantedContext = fixture">
