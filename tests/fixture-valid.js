@@ -187,8 +187,17 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       result.errors.push(`physical.lens.degreesMinMax${modeDescription} is an invalid range.`);
     }
 
-    if (physical.hasMatrixPixels && fixture.matrix === null) {
-      result.errors.push(`physical.matrixPixels is set but fixture.matrix is missing.`);
+    if (physical.hasMatrixPixels) {
+      if (fixture.matrix === null) {
+        result.errors.push(`physical.matrixPixels is set but fixture.matrix is missing.`);
+      }
+      else if (physical.matrixPixelsSpacing !== null) {
+        [`X`, `Y`, `Z`].forEach((axis, index) => {
+          if (physical.matrixPixelsSpacing[index] !== 0 && !fixture.matrix.definedAxes.includes(axis)) {
+            result.errors.push(`physical.matrixPixels.spacing is nonzero for ${axis} axis, but no pixels are defined in that axis.`);
+          }
+        });
+      }
     }
   }
 
