@@ -642,9 +642,81 @@ const functions = {
     }
   },
   prism: {
-    isCapSuitable: cap => false,
+    isCapSuitable: cap => cap.type === `Prism` || (cap.type === `NoFunction` && cap._channel.type === `Prism`),
     create: (channel, caps) => {
-      return;
+      const xmlDimmer = xmlbuilder.create(`prism`);
+
+      const hasRotationAngleCaps = caps.some(cap => cap.angle !== null);
+      const hasRotationSpeedCaps = caps.some(cap => cap.speed !== null);
+
+      if (hasRotationAngleCaps) {
+        xmlDimmer.element(`prismindex`);
+      }
+
+      if (hasRotationSpeedCaps) {
+        xmlDimmer.element(`prismrotation`);
+      }
+
+
+      // group capabilities by comment
+      const capsGroupedByComment = [];
+      caps.forEach(cap => {
+        const length = capsGroupedByComment.length;
+        const lastGroup = length === 0 ? null : capsGroupedByComment[length - 1];
+
+        if (length === 0 || lastGroup[0].comment !== cap.comment) {
+          // push new group
+          capsGroupedByComment.push([cap]);
+        }
+        else {
+          // push to last group
+          lastGroup.push(cap);
+        }
+      });
+
+      capsGroupedByComment.forEach(commentGroup => {
+        const firstCap = commentGroup[0];
+        const lastCap = commentGroup[commentGroup.length - 1];
+
+        const xmlStep = xmlDimmer.element(`step`, {
+          type: firstCap.type === `NoFunction` ? `open` : `prism`,
+          mindmx: firstCap.dmxRange.start,
+          maxdmx: lastCap.dmxRange.end,
+          caption: firstCap.name
+        });
+
+        // add ranges for capabilities without rotation speed
+        commentGroup.filter(cap => cap.angle !== null).forEach(cap => {
+          xmlStep.element(`range`, {
+            range: cap.angle[1].number - cap.angle[0].number,
+            handler: `prismindex`,
+            mindmx: cap.dmxRange.start,
+            maxdmx: cap.dmxRange.end,
+            minval: cap.angle[0].number,
+            maxval: cap.angle[1].number
+          });
+        });
+
+        // add ranges/steps for normalized rotation speed capabilities
+        const rotationSpeedCaps = commentGroup.filter(cap => cap.speed !== null);
+        getNormalizedCapabilities(rotationSpeedCaps, `speed`, 5, `Hz`).forEach(cap => {
+          const xmlRange = xmlStep.element(cap.capObject.isStep ? `step` : `range`, {
+            type: `stop`,
+            handler: `prismrotation`,
+            mindmx: cap.capObject.dmxRange.start,
+            maxdmx: cap.capObject.dmxRange.end
+          });
+
+          if (cap.startValue !== 0 || cap.endValue !== 0) {
+            xmlRange.attribute(`type`, cap.startValue > 0 ? `cw` : `ccw`);
+            xmlRange.attribute(`minval`, Math.abs(cap.startValue));
+            xmlRange.attribute(`maxval`, Math.abs(cap.endValue));
+          }
+        });
+      });
+
+
+      return xmlDimmer;
     }
   },
   prismIndex: { // rotation angle
