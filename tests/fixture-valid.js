@@ -349,21 +349,28 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       );
     });
 
-    if (channel.dmxValueResolution > channel.maxResolution) {
-      result.errors.push(`dmxValueResolution must be less or equal to ${channel.maxResolution * 8}bit in channel '${channel.key}'.`);
-    }
-
     const maxDmxValue = Math.pow(256, channel.dmxValueResolution) - 1;
 
-    if (channel.hasDefaultValue && channel.getDefaultValueWithResolution(channel.dmxValueResolution) > maxDmxValue) {
-      result.errors.push(`defaultValue must be less or equal to ${maxDmxValue} in channel '${channel.key}'.`);
-    }
+    checkChannelDmxValues();
+    checkCapabilities();
 
-    if (channel.hasHighlightValue && channel.getHighlightValueWithResolution(channel.dmxValueResolution) > maxDmxValue) {
-      result.errors.push(`highlightValue must be less or equal to ${maxDmxValue} in channel '${channel.key}'.`);
-    }
 
-    checkCapabilities(channel);
+    /**
+     * Check that DMX values used in the channel are correct.
+     */
+    function checkChannelDmxValues() {
+      if (channel.dmxValueResolution > channel.maxResolution) {
+        result.errors.push(`dmxValueResolution must be less or equal to ${channel.maxResolution * 8}bit in channel '${channel.key}'.`);
+      }
+
+      if (channel.hasDefaultValue && channel.getDefaultValueWithResolution(channel.dmxValueResolution) > maxDmxValue) {
+        result.errors.push(`defaultValue must be less or equal to ${maxDmxValue} in channel '${channel.key}'.`);
+      }
+
+      if (channel.hasHighlightValue && channel.getHighlightValueWithResolution(channel.dmxValueResolution) > maxDmxValue) {
+        result.errors.push(`highlightValue must be less or equal to ${maxDmxValue} in channel '${channel.key}'.`);
+      }
+    }
 
     /**
      * Check that the channel's capabilities are valid.
