@@ -853,9 +853,26 @@ const functions = {
     }
   },
   rotation: { // rotation speed
-    isCapSuitable: cap => false,
+    isCapSuitable: cap => (cap.type === `Rotation` && cap.speed !== null) || cap.type === `PanContinuous` || cap.type === `TiltContinuous`,
     create: (channel, caps) => {
-      return;
+      const xmlRotation = xmlbuilder.create(`rotation`);
+
+      getNormalizedCapabilities(caps, `speed`, 5, `Hz`).forEach(cap => {
+        if (cap.startValue === 0 && cap.endValue === 0) {
+          xmlRotation.element(`step`, {
+            mindmx: cap.capObject.dmxRange.start,
+            maxdmx: cap.capObject.dmxRange.end,
+            type: `stop`
+          });
+        }
+        else {
+          const xmlRange = getBaseXmlCapability(cap.capObject, Math.abs(cap.startValue), Math.abs(cap.endValue));
+          xmlRange.attribute(`type`, cap.startValue > 0 ? `cw` : `ccw`);
+          xmlRotation.importDocument(xmlRange);
+        }
+      });
+
+      return xmlRotation;
     }
   },
   rawStep: { // only steps
