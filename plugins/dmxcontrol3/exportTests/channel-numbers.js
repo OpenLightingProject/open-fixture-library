@@ -1,7 +1,7 @@
 const promisify = require(`util`).promisify;
 const xml2js = require(`xml2js`);
 
-const { Range } = require(`../../../lib/model.js`);
+const { Range, SwitchingChannel } = require(`../../../lib/model.js`);
 
 /**
  * @param {object} exportFile The file returned by the plugins' export module.
@@ -72,15 +72,32 @@ module.exports = async function testChannelNumbers(exportFile) {
 
         addCapability(range, currentChannelIndex);
       }
+      else if (`value` in xmlNode.$) {
+        // xmlNode is a procedure <set> element
+        // one DMX value selects the whole capability, so we try to find out its range
+
+        const mindmx = parseInt(xmlNode.$.value);
+        let channel = mode.channels[currentChannelIndex];
+
+        if (channel instanceof SwitchingChannel) {
+          channel = channel.defaultChannel;
+        }
+
+        const capability = (channel.capabilities || []).find(cap => cap.dmxRange.start === mindmx);
+
+        if (capability) {
+          addCapability(capability.dmxRange, currentChannelIndex);
+        }
+      }
     }
 
-    for (const tagname of Object.keys(xmlNode)) {
+    Object.keys(xmlNode).forEach(tagname => {
       if (tagname !== `$`) {
         for (const child of xmlNode[tagname]) {
           findChannels(child, currentChannelIndex);
         }
       }
-    }
+    });
   }
 
   /**
