@@ -26,7 +26,9 @@ module.exports = async function testChannelNumbers(exportFile) {
   const errors = [];
 
   const xml = await parseString(exportFile.content);
-  xml.device.functions.forEach(xmlFunction => findChannels(xmlFunction, -1));
+  xml.device.functions.concat(xml.device.procedures || []).forEach(
+    xmlFunction => findChannels(xmlFunction, -1)
+  );
 
   checkUsedChannels();
 
