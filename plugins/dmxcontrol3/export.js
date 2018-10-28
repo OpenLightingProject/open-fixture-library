@@ -820,9 +820,36 @@ const functions = {
     }
   },
   index: { // rotation angle
-    isCapSuitable: cap => false,
+    isCapSuitable: cap => (cap.type === `ColorWheelRotation` || cap.type === `Rotation`) && cap.angle,
     create: (channel, caps) => {
-      return;
+      const xmlIndex = xmlbuilder.create(`index`);
+
+      const rangeMin = Math.min(...caps.map(cap => Math.min(cap.angle[0].number, cap.angle[1].number)));
+      const rangeMax = Math.max(...caps.map(cap => Math.max(cap.angle[0].number, cap.angle[1].number)));
+
+      const firstCap = caps[0];
+      const lastCap = caps[caps.length - 1];
+
+      if (firstCap.angle[0].number < lastCap.angle[1].number) {
+        xmlIndex.element(`range`, {
+          range: rangeMax - rangeMin,
+          mindmx: firstCap.dmxRange.start,
+          maxdmx: lastCap.dmxRange.end,
+          minval: firstCap.angle[0].number,
+          maxval: lastCap.angle[1].number
+        });
+      }
+      else {
+        xmlIndex.element(`range`, {
+          range: rangeMax - rangeMin,
+          mindmx: lastCap.dmxRange.end,
+          maxdmx: firstCap.dmxRange.start,
+          minval: lastCap.angle[1].number,
+          maxval: firstCap.angle[0].number
+        });
+      }
+
+      return xmlIndex;
     }
   },
   rotation: { // rotation speed
