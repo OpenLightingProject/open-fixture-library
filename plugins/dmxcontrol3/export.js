@@ -182,41 +182,49 @@ function addFunctions(xml, mode) {
  * @param {Mode} mode The definition's mode.
  */
 function addProcedures(xml, mode) {
-  const maintenanceChannels = mode.channels.filter(
-    channel => channel.type === `Maintenance`
-  );
+  const maintenanceCapabilities = [];
 
-  if (maintenanceChannels.length === 0) {
+  mode.channels.forEach(channel => {
+    if (channel instanceof SwitchingChannel) {
+      channel = channel.defaultChannel;
+    }
+
+    if (channel instanceof FineChannel) {
+      return;
+    }
+
+    maintenanceCapabilities.push(...channel.capabilities.filter(
+      capability => capability.type === `Maintenance` && capability.isStep
+    ));
+  });
+
+  if (maintenanceCapabilities.length === 0) {
     return;
   }
 
   const xmlProcedures = xml.element(`procedures`);
 
-  maintenanceChannels.forEach(channel => {
-    const channelIndex = mode.getChannelIndex(channel);
+  maintenanceCapabilities.forEach(capability => {
+    const channelIndex = mode.getChannelIndex(capability._channel);
 
-    channel.capabilities.filter(
-      capability => capability.type === `Maintenance` && capability.isStep
-    ).forEach(capability => {
-      const xmlProcedure = xmlProcedures.element(`procedure`, {
-        name: capability.comment
-      });
-
-      xmlProcedure.element(`set`, {
-        dmxchannel: channelIndex,
-        value: capability.dmxRange.start
-      });
-
-      if (capability.hold) {
-        xmlProcedure.element(`hold`, {
-          value: capability.hold.getBaseUnitEntity().number * 1000
-        });
-
-        xmlProcedure.element(`restore`, {
-          dmxchannel: channelIndex
-        });
-      }
+    const xmlProcedure = xmlProcedures.element(`procedure`, {
+      name: capability.comment
     });
+
+    xmlProcedure.element(`set`, {
+      dmxchannel: channelIndex,
+      value: capability.dmxRange.start
+    });
+
+    if (capability.hold) {
+      xmlProcedure.element(`hold`, {
+        value: capability.hold.getBaseUnitEntity().number * 1000
+      });
+
+      xmlProcedure.element(`restore`, {
+        dmxchannel: channelIndex
+      });
+    }
   });
 }
 
