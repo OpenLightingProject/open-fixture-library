@@ -12,7 +12,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import '~assets/styles/vars.scss';
 section {
   padding: .5ex 0;
 

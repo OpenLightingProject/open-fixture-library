@@ -53,7 +53,11 @@
           v-if="cap.model.helpWanted !== null"
           :key="`cap-${index}-helpWanted`">
           <td colspan="4" />
-          <td colspan="2"><div class="help-wanted"><app-svg name="comment-question-outline" title="Help wanted!" />{{ cap.model.helpWanted }}</div></td>
+          <td colspan="2">
+            <app-fixture-help-wanted
+              :context="cap.model"
+              @helpWantedClicked="$emit(`helpWantedClicked`, $event)" />
+          </td>
         </tr>
       </template>
     </tbody>
@@ -61,8 +65,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import '~assets/styles/vars.scss';
-
 .capabilities-table {
   border-collapse: collapse;
   table-layout: fixed;
@@ -114,13 +116,15 @@ td, th {
 
 <script>
 import svg from '~/components/svg.vue';
+import fixtureHelpWanted from '~/components/fixture-help-wanted.vue';
 
 import CoarseChannel from '~~/lib/model/CoarseChannel.mjs';
 import Mode from '~~/lib/model/Mode.mjs';
 
 export default {
   components: {
-    'app-svg': svg
+    'app-svg': svg,
+    'app-fixture-help-wanted': fixtureHelpWanted
   },
   props: {
     channel: {

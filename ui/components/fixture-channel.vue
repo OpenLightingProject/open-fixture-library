@@ -31,7 +31,8 @@
             :key="switchToChannelKey"
             :channel="fixture.getChannelByKey(switchToChannelKey)"
             :mode="mode"
-            :append-to-heading="channel.defaultChannel.key === switchToChannelKey ? `(default)` : null">
+            :append-to-heading="channel.defaultChannel.key === switchToChannelKey ? `(default)` : null"
+            @helpWantedClicked="$emit(`helpWantedClicked`, $event)">
             <app-labeled-value
               name="switchingChannel-triggerRanges"
               label="Activated when">
@@ -113,7 +114,8 @@
         <app-fixture-capability-table
           :channel="channel"
           :mode="mode"
-          :resolution-in-mode="resolutionInMode" />
+          :resolution-in-mode="resolutionInMode"
+          @helpWantedClicked="$emit(`helpWantedClicked`, $event)" />
       </template>
 
     </app-conditional-details>
@@ -121,8 +123,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import '~assets/styles/vars.scss';
-
 summary, .summary {
   & > .icon {
     margin-right: 1.2ex;
