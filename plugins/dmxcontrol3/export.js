@@ -773,10 +773,27 @@ const functions = {
       return xmlPrismRotation;
     }
   },
-  fog: { // fog output
-    isCapSuitable: cap => false,
+  fog: {
+    isCapSuitable: cap => cap.type === `Fog` || (cap.type === `NoFunction` && cap._channel.type === `Fog`),
     create: (channel, caps) => {
-      return;
+      const xmlFog = xmlbuilder.create(`fog`);
+
+      if (caps.length > 1) {
+        // generate <step>s with value="true" or value="false"
+        // this is not documented, but used in other fixtures
+
+        caps.forEach(cap => {
+          const isFogOn = cap.type !== `NoFunction` && (cap.fogOutput === null || cap.fogOutput[0].number > 0 || cap.fogOutput[1].number > 0);
+
+          xmlFog.element(`step`, {
+            mindmx: cap.dmxRange.start,
+            maxdmx: cap.dmxRange.end,
+            value: `${isFogOn}`
+          });
+        });
+      }
+
+      return xmlFog;
     }
   },
   index: { // rotation angle
