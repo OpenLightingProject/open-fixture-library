@@ -796,6 +796,29 @@ const functions = {
       return xmlFog;
     }
   },
+  fan: {
+    isCapSuitable: cap => (cap.speed !== null || cap.type === `NoFunction`) && /\bfan\b/i.test(cap._channel.name),
+    create: (channel, caps) => {
+      const xmlFan = xmlbuilder.create(`fan`);
+
+      if (caps.length > 1) {
+        // generate <step>s with value="true" or value="false"
+        // this is not documented, but used in other fixtures
+
+        caps.forEach(cap => {
+          const isFogOn = cap.type !== `NoFunction` && (cap.speed[0].number > 0 || cap.speed[1].number > 0);
+
+          xmlFan.element(`step`, {
+            mindmx: cap.dmxRange.start,
+            maxdmx: cap.dmxRange.end,
+            value: `${isFogOn}`
+          });
+        });
+      }
+
+      return xmlFan;
+    }
+  },
   index: { // rotation angle
     isCapSuitable: cap => false,
     create: (channel, caps) => {
