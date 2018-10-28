@@ -410,7 +410,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
          */
         function checkFirstCapabilityRangeStart() {
           if (capNumber === 0 && cap.rawDmxRange.start !== 0) {
-            result.errors.push(`The first dmxRange has to start at 0 in capability '${cap.name}' in channel '${channel.key}'.`);
+            result.errors.push(`The first dmxRange has to start at 0 in capability '${cap.name}' (${cap.rawDmxRange}) in channel '${channel.key}'.`);
             return false;
           }
 
@@ -422,7 +422,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
          */
         function checkRangeValid() {
           if (cap.rawDmxRange.start > cap.rawDmxRange.end) {
-            result.errors.push(`dmxRange invalid in capability ${capNumber + 1} '${cap.name}' in channel '${channel.key}'.`);
+            result.errors.push(`dmxRange invalid in capability '${cap.name}' (${cap.rawDmxRange}) in channel '${channel.key}'.`);
             return false;
           }
 
@@ -437,7 +437,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
             const prevCap = channel.capabilities[capNumber - 1];
 
             if (cap.rawDmxRange.start !== prevCap.rawDmxRange.end + 1) {
-              result.errors.push(`dmxRanges must be adjacent in capabilities ${capNumber} '${prevCap.name}' and ${capNumber + 1} '${cap.name}' in channel '${channel.key}'.`);
+              result.errors.push(`dmxRanges must be adjacent in capabilities '${prevCap.name}' (${prevCap.rawDmxRange}) and '${cap.name}' (${cap.rawDmxRange}) in channel '${channel.key}'.`);
               return false;
             }
           }
@@ -452,7 +452,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         function checkLastCapabilityRangeEnd() {
           if (capNumber === channel.capabilities.length - 1) {
             if (channel.capabilities[capNumber].rawDmxRange.end !== maxDmxValue) {
-              result.errors.push(`The last dmxRange has to end at ${maxDmxValue} (or another channel.dmxValueResolution must be chosen) in capability ${capNumber + 1} '${cap.name}' in channel '${channel.key}'`);
+              result.errors.push(`The last dmxRange has to end at ${maxDmxValue} (or another channel.dmxValueResolution must be chosen) in capability '${cap.name}' (${cap.rawDmxRange}) in channel '${channel.key}'`);
               return false;
             }
           }
