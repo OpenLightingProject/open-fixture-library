@@ -25,7 +25,9 @@
         <nuxt-link
           v-for="fixture in lastUpdated"
           :key="fixture.key"
-          :to="`/${fixture.key}`">
+          :to="`/${fixture.key}`"
+          :style="{ borderLeftColor: fixture.color }"
+          class="manufacturer-color">
 
           {{ fixture.name }}
           <span class="hint">
@@ -103,7 +105,8 @@ export default {
           key: fixtureKey,
           name: getFixtureName(fixtureKey),
           action: register.filesystem[fixtureKey].lastAction,
-          date: new Date(register.filesystem[fixtureKey].lastActionDate)
+          date: new Date(register.filesystem[fixtureKey].lastActionDate),
+          color: register.colors[fixtureKey.split(`/`)[0]]
         })
       ),
       topContributors: Object.keys(register.contributors).slice(0, 5).map(

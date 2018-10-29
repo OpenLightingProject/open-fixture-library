@@ -32,7 +32,7 @@
       Redirected from <code>{{ redirect.from }}</code>: {{ redirect.reason }}
     </section>
 
-    <section class="fixture-info card">
+    <section :style="{ borderTopColor: manufacturerColor }" class="fixture-info card">
 
       <app-labeled-value
         name="categories"
@@ -161,6 +161,10 @@
     content: ' | ';
     padding: 0 0.7ex;
   }
+}
+
+.fixture-info {
+  border-top: 0.4rem solid transparent;
 }
 
 .comment /deep/ .value {
@@ -296,6 +300,7 @@ export default {
 
     return {
       manKey,
+      manufacturerColor: register.colors[manKey],
       fixKey,
       fixtureJson,
       redirect: redirectObj
