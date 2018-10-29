@@ -278,18 +278,21 @@
           "dmxRange": [21, 136],
           "type": "Prism",
           "speedStart": "fast CW",
-          "speedEnd": "slow CW"
+          "speedEnd": "slow CW",
+          "comment": "3-facet"
         },
         {
           "dmxRange": [137, 139],
           "type": "Prism",
-          "speed": "stop"
+          "speed": "stop",
+          "comment": "3-facet"
         },
         {
           "dmxRange": [140, 255],
           "type": "Prism",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CCW"
+          "speedEnd": "fast CCW",
+          "comment": "3-facet"
         }
       ]
     },
@@ -400,7 +403,7 @@
         }
       ]
     },
-    "Gobo shake amplitute": {
+    "Gobo shake amplitude": {
       "capabilities": [
         {
           "dmxRange": [0, 23],
@@ -804,7 +807,7 @@
         "Prism",
         "Colors",
         "Gobo shake / Blackout effect",
-        "Gobo shake amplitute",
+        "Gobo shake amplitude",
         "Lamp on / Motor reset"
       ]
     },
