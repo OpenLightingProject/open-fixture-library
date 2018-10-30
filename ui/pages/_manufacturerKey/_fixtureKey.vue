@@ -84,10 +84,10 @@
         </ul>
       </app-labeled-value>
 
-      <section v-if="fixture.isHelpWanted" class="help-wanted">
-        <app-svg name="comment-question-outline" title="Help wanted!" /><a href="#contribute">You can help to improve this fixture definition!</a>
-        {{ fixture.helpWanted !== null ? fixture.helpWanted : `Specific questions are included in the capabilities below.` }}
-      </section>
+      <app-fixture-help-wanted
+        v-if="fixture.isHelpWanted"
+        :context="fixture"
+        @helpWantedClicked="helpWantedContext = $event" />
 
       <app-labeled-value
         v-if="fixture.rdm !== null"
@@ -126,7 +126,8 @@
         v-for="(mode, index) in fixture.modes"
         :key="mode.name"
         :mode="mode"
-        :index="index" />
+        :index="index"
+        @helpWantedClicked="helpWantedContext = $event" />
       <div class="clearfix" />
     </section>
 
@@ -134,16 +135,23 @@
       <h2>Something wrong with this fixture definition?</h2>
       <p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>
       <div class="grid-3 list">
-        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card"><app-svg name="bug" class="left" /><span>Report issue on GitHub</span></a>
-        <a href="/about#contact" class="card"><app-svg name="email" class="left" /><span>Contact</span></a>
+        <a
+          v-if="isBrowser"
+          href="#"
+          class="card"
+          @click.prevent="helpWantedContext = fixture">
+          <app-svg name="comment-alert" class="left" /><span>Send information</span>
+        </a>
+        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card"><app-svg name="bug" class="left" /><span>Create issue on GitHub</span></a>
+        <a :href="mailtoUrl" class="card"><app-svg name="email" class="left" /><span>Send email</span></a>
       </div>
     </section>
+
+    <app-fixture-help-wanted-dialog v-model="helpWantedContext" />
   </div>
 </template>
 
 <style lang="scss" scoped>
-@import '~assets/styles/vars.scss';
-
 .fixture-meta {
   margin: -1.5rem 0 1rem;
   font-size: 0.8rem;
@@ -232,6 +240,8 @@ import categoryBadge from '~/components/category-badge.vue';
 import conditionalDetailsVue from '~/components/conditional-details.vue';
 import downloadButtonVue from '~/components/download-button.vue';
 import fixturePhysical from '~/components/fixture-physical.vue';
+import fixtureHelpWanted from '~/components/fixture-help-wanted.vue';
+import fixtureHelpWantedDialog from '~/components/fixture-help-wanted-dialog.vue';
 import fixtureMatrix from '~/components/fixture-matrix.vue';
 import fixtureMode from '~/components/fixture-mode.vue';
 import labeledValueVue from '~/components/labeled-value.vue';
@@ -247,6 +257,8 @@ export default {
     'app-conditional-details': conditionalDetailsVue,
     'app-download-button': downloadButtonVue,
     'app-fixture-physical': fixturePhysical,
+    'app-fixture-help-wanted': fixtureHelpWanted,
+    'app-fixture-help-wanted-dialog': fixtureHelpWantedDialog,
     'app-fixture-matrix': fixtureMatrix,
     'app-fixture-mode': fixtureMode,
     'app-labeled-value': labeledValueVue
@@ -291,7 +303,9 @@ export default {
   },
   data() {
     return {
-      plugins
+      plugins,
+      isBrowser: false,
+      helpWantedContext: null
     };
   },
   computed: {
@@ -462,6 +476,10 @@ export default {
       }
 
       return links;
+    },
+    mailtoUrl() {
+      const subject = `Feedback for fixture '${this.manKey}/${this.fixKey}'`;
+      return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}`;
     }
   },
   head() {
@@ -469,12 +487,18 @@ export default {
       title: `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`
     };
   },
+  mounted() {
+    if (process.browser) {
+      this.isBrowser = true;
+    }
+  },
   methods: {
     getHostname(url) {
       // adapted from https://stackoverflow.com/a/21553982/451391
       const match = url.match(/^.*?\/\/(?:([^:/?#]*)(?::([0-9]+))?)/);
       return match ? match[1] : url;
     },
+
     /**
      * Format a date to display as a <time> HTML tag.
      * @param {Date} date The Date object to format.

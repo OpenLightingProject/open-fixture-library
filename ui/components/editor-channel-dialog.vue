@@ -218,8 +218,6 @@
 </style>
 
 <style lang="scss">
-@import '~assets/styles/vars.scss';
-
 #channel-dialog {
   /* prevent smooth scrolling when triggered from capability insertion etc. */
   scroll-behavior: auto;

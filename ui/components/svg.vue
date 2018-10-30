@@ -3,8 +3,6 @@
 </template>
 
 <style lang="scss">
-@import '~assets/styles/vars.scss';
-
 .icon {
   display: inline-block;
   height: 1.4em;

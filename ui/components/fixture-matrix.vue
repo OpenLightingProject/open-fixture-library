@@ -30,8 +30,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import '~assets/styles/vars.scss';
-
 .z-level {
   border-collapse: collapse;
   border-spacing: 0;

@@ -1079,7 +1079,7 @@ function getIsoDateFromGdtfDate(dateStr) {
 
   try {
     const [, day, month, year] = match;
-    const date = new Date(parseInt(year), parseInt(month) - 1, day);
+    const date = new Date(Date.UTC(parseInt(year), parseInt(month) - 1, day));
 
     return date.toISOString().replace(/T.*/, ``);
   }

@@ -119,6 +119,10 @@ app.post(`/ajax/submit-editor`, (request, response) => {
   require(`./ui/ajax/submit-editor.js`)(request, response);
 });
 
+app.post(`/ajax/submit-feedback`, (request, response) => {
+  require(`./ui/ajax/submit-feedback.js`)(request, response);
+});
+
 
 
 // instantiate nuxt.js with the options
