@@ -52,7 +52,10 @@
         <li
           v-for="fixture in fixtureResults"
           :key="fixture.key">
-          <nuxt-link :to="`/${fixture.key}`">
+          <nuxt-link
+            :to="`/${fixture.key}`"
+            :style="{ borderLeftColor: fixture.color }"
+            class="manufacturer-color">
             <span class="name">{{ fixture.name }}</span>
           </nuxt-link>
         </li>
@@ -129,7 +132,8 @@ export default {
 
         return {
           key,
-          name: `${manufacturers[man].name} ${register.filesystem[key].name}`
+          name: `${manufacturers[man].name} ${register.filesystem[key].name}`,
+          color: register.colors[man]
         };
       });
     }

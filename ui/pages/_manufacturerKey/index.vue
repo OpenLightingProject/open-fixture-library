@@ -27,7 +27,10 @@
 
     <ul :class="[`card`, `list`, `fixtures`]">
       <li v-for="fixture in fixtures" :key="fixture.key">
-        <nuxt-link :to="fixture.link">
+        <nuxt-link
+          :to="fixture.link"
+          :style="{ borderLeftColor: manufacturer.color }"
+          class="manufacturer-color">
           <span class="name">{{ fixture.name }}</span>
           <app-svg
             v-for="cat in fixture.categories"
@@ -92,7 +95,9 @@ export default {
     };
 
     return {
-      manufacturer,
+      manufacturer: Object.assign({}, manufacturer, {
+        color: register.colors[manKey]
+      }),
       fixtures,
       organizationStructuredData,
       itemListStructuredData

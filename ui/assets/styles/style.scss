@@ -456,6 +456,10 @@ a.button.secondary:disabled {
   }
 }
 
+.manufacturer-color {
+  border-left: 0.6rem solid transparent;
+}
+
 @keyframes card-highlight {
   0% {
     background-color: $blue-100;
@@ -477,6 +481,7 @@ a.button.secondary:disabled {
   }
 
   a:not(.big-button) {
+    margin-top: 1px;
     padding: 0.5rem 1rem;
   }
 

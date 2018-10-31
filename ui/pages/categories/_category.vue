@@ -4,7 +4,10 @@
 
     <ul :class="[`card`, `list`, `fixtures`, `category-${categoryClass}`]">
       <li v-for="fixture in fixtures" :key="fixture.key">
-        <nuxt-link :to="fixture.link">
+        <nuxt-link
+          :to="fixture.link"
+          :style="{ borderLeftColor: fixture.color }"
+          class="manufacturer-color">
           <span class="name">{{ fixture.name }}</span>
           <app-svg
             v-for="cat in fixture.categories"
@@ -33,19 +36,23 @@ export default {
   },
   asyncData({ params }) {
     const categoryName = decodeURIComponent(params.category);
+
     return {
       categoryName: categoryName,
       categoryClass: categoryName.toLowerCase().replace(/[^\w]+/g, `-`),
-      fixtures: register.categories[categoryName].map(
-        fixKey => ({
-          key: fixKey,
-          link: `/${fixKey}`,
-          name: getFixtureName(fixKey),
+      fixtures: register.categories[categoryName].map(fixtureKey => {
+        const [manKey, fixKey] = fixtureKey.split(`/`);
+
+        return {
+          key: fixtureKey,
+          link: `/${fixtureKey}`,
+          name: getFixtureName(manKey, fixKey),
           categories: Object.keys(register.categories).filter(
-            cat => register.categories[cat].includes(fixKey)
-          )
-        })
-      )
+            cat => register.categories[cat].includes(fixtureKey)
+          ),
+          color: register.colors[manKey]
+        };
+      })
     };
   },
   head() {
@@ -56,13 +63,13 @@ export default {
 };
 
 /**
- * @param {string} fixtureKey The combined manufacturer / fixture key.
+ * @param {string} manKey The manufacturer key.
+ * @param {string} fixKey The fixture key.
  * @returns {string} The manufacturer and fixture names, separated by a space.
  */
-function getFixtureName(fixtureKey) {
-  const manKey = fixtureKey.split(`/`)[0];
+function getFixtureName(manKey, fixKey) {
   const manufacturerName = manufacturers[manKey].name;
-  const fixtureName = register.filesystem[fixtureKey].name;
+  const fixtureName = register.filesystem[`${manKey}/${fixKey}`].name;
 
   return `${manufacturerName} ${fixtureName}`;
 }
