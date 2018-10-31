@@ -21,7 +21,8 @@
           v-for="manufacturer in letterData.manufacturers"
           :key="manufacturer.key"
           :to="`/${manufacturer.key}`"
-          class="card">
+          :style="{ borderLeftColor: manufacturer.color }"
+          class="card manufacturer-color">
           <span class="name">{{ manufacturer.name }}</span>
           <span class="fixtures hint">{{ manufacturer.fixtureCount }} fixture{{ manufacturer.fixtureCount === 1 ? `` : `s` }}</span>
         </nuxt-link>
@@ -70,7 +71,8 @@ export default {
       letters[letter].manufacturers.push({
         key: manKey,
         name: manufacturers[manKey].name,
-        fixtureCount: register.manufacturers[manKey].length
+        fixtureCount: register.manufacturers[manKey].length,
+        color: register.colors[manKey]
       });
     });
 
