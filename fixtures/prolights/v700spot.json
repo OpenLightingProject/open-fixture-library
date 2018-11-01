@@ -32,7 +32,7 @@
     },
     "lens": {
       "name": "PC",
-      "degreesMinMax": [15, 0]
+      "degreesMinMax": [15, 15]
     },
     "focus": {
       "type": "Head",
@@ -789,7 +789,8 @@
   },
   "modes": [
     {
-      "name": "22 Ch",
+      "name": "22-channel",
+      "shortName": "22ch",
       "channels": [
         "Pan",
         "Tilt",
@@ -816,7 +817,8 @@
       ]
     },
     {
-      "name": "16 Ch",
+      "name": "16-channel",
+      "shortName": "16ch",
       "channels": [
         "Pan",
         "Tilt",
