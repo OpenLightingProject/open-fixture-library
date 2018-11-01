@@ -43,6 +43,7 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -51,6 +52,7 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -70,6 +72,7 @@
       }
     },
     "Shutter / Gobo Shake": {
+      "defaultValue": 255,
       "capabilities": [
         {
           "dmxRange": [0, 7],
