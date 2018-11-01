@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "V700 Spot",
+  "name": "V700SPOT",
   "categories": ["Moving Head"],
   "meta": {
     "authors": ["Lorenzo Andreani"],
@@ -11,6 +11,11 @@
       "date": "2018-11-01",
       "comment": "created by Q Light Controller Plus (version 4.11.2)"
     }
+  },
+  "links": {
+    "productPage": [
+      "https://www.musiclights.it/product/V700SPOT"
+    ]
   },
   "physical": {
     "dimensions": [465, 685, 465],
