@@ -329,7 +329,8 @@
   },
   "modes": [
     {
-      "name": "8 Kanal",
+      "name": "8-Channel",
+      "shortName": "8ch",
       "channels": [
         "Pan",
         "Tilt",
@@ -339,6 +340,25 @@
         "Blue",
         "White",
         "Pan/Tilt Speed"
+      ]
+    },
+    {
+      "name": "13-Channel",
+      "shortName": "13ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Color Speed",
+        "Effects"
       ]
     }
   ]
