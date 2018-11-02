@@ -80,39 +80,57 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Color Selection / Effect Speed": "Color Selection"
+          }
         },
         {
           "dmxRange": [11, 60],
           "type": "Effect",
-          "effectName": "Color Select"
+          "effectName": "Color Select",
+          "switchChannels": {
+            "Color Selection / Effect Speed": "Color Selection"
+          }
         },
         {
           "dmxRange": [61, 110],
           "type": "Effect",
           "effectName": "Color shade",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "switchChannels": {
+            "Color Selection / Effect Speed": "Color Selection"
+          }
         },
         {
           "dmxRange": [111, 160],
           "type": "Effect",
-          "effectName": "Color pulse transform"
+          "effectName": "Color pulse transform",
+          "switchChannels": {
+            "Color Selection / Effect Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [161, 210],
           "type": "Effect",
-          "effectName": "Color transition"
+          "effectName": "Color transition",
+          "switchChannels": {
+            "Color Selection / Effect Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [211, 255],
           "type": "Effect",
           "effectName": "Sound control",
-          "soundControlled": true
+          "soundControlled": true,
+          "switchChannels": {
+            "Color Selection / Effect Speed": "Color Selection"
+          }
         }
       ]
     },
-    "Colors Selection": {
+    "Color Selection": {
       "capability": {
         "type": "ColorPreset"
       }
@@ -136,8 +154,7 @@
         "Blue",
         "Strobe",
         "Effect",
-        "Colors Selection",
-        "Effect Speed"
+        "Color Selection / Effect Speed"
       ]
     }
   ]
