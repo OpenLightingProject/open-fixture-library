@@ -107,6 +107,7 @@
           "dmxRange": [111, 160],
           "type": "Effect",
           "effectName": "Color pulse transform",
+          "helpWanted": "The manual implies speed slow…fast in this capability, but also speed controlled by channel 'Effect Speed'. Which is correct here?",
           "switchChannels": {
             "Color Selection / Effect Speed": "Effect Speed"
           }
@@ -115,6 +116,7 @@
           "dmxRange": [161, 210],
           "type": "Effect",
           "effectName": "Color transition",
+          "helpWanted": "The manual implies speed slow…fast in this capability, but also speed controlled by channel 'Effect Speed'. Which is correct here?",
           "switchChannels": {
             "Color Selection / Effect Speed": "Effect Speed"
           }
@@ -132,7 +134,8 @@
     },
     "Color Selection": {
       "capability": {
-        "type": "ColorPreset"
+        "type": "ColorPreset",
+        "helpWanted": "At which DMX values can which colors be selected?"
       }
     },
     "Effect Speed": {
