@@ -17,15 +17,16 @@
     ]
   },
   "physical": {
+    "dimensions": [225, 270, 225],
     "weight": 4.2,
     "power": 90,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "7x 10W RGBW LEDs"
     },
     "focus": {
-      "type": "Fixed",
-      "panMax": 360,
+      "type": "Head",
+      "panMax": 540,
       "tiltMax": 180
     }
   },
