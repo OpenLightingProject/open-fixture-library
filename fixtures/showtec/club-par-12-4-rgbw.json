@@ -40,35 +40,30 @@
     "Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "Gradual adjustment Red, from 0-100%"
+        "color": "Red"
       }
     },
     "Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "Gradual adjustment Green, from 0-100%"
+        "color": "Green"
       }
     },
     "Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "Gradual adjustment Blue, from 0-100%"
+        "color": "Blue"
       }
     },
     "White": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "comment": "Gradual adjustment White, from 0-100%"
+        "color": "White"
       }
     },
     "Dimmer": {
       "capability": {
-        "type": "Intensity",
-        "comment": "Gradual adjustment, from dark to brightest 0-100%"
+        "type": "Intensity"
       }
     },
     "Strobe": {
@@ -76,16 +71,14 @@
         {
           "dmxRange": [0, 12],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed",
-          "comment": "Closed"
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [13, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "0Hz",
-          "speedEnd": "20Hz",
-          "comment": "Strobe flash frequency, from slow to fast"
+          "speedEnd": "20Hz"
         }
       ]
     },
@@ -93,8 +86,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "NoFunction",
-          "comment": "Not functional"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [10, 19],
@@ -104,9 +96,7 @@
         {
           "dmxRange": [20, 29],
           "type": "Effect",
-          "effectName": "Program 2",
-          "speedStart": "fast",
-          "speedEnd": "slow"
+          "effectName": "Program 2"
         },
         {
           "dmxRange": [30, 39],
@@ -165,10 +155,9 @@
         },
         {
           "dmxRange": [140, 255],
-          "type": "SoundSensitivity",
-          "soundSensitivityStart": "low",
-          "soundSensitivityEnd": "high",
-          "comment": "Sound-controlled"
+          "type": "Effect",
+          "effectName": "Sound-controlled",
+          "soundControlled": true
         }
       ]
     },
@@ -176,16 +165,14 @@
       "capability": {
         "type": "EffectSpeed",
         "speedStart": "slow",
-        "speedEnd": "fast",
-        "comment": "Gradual speed adjustment, from slow to fast. Channel \"Builtin programs\" (7) must be set between 10-139."
+        "speedEnd": "fast"
       }
     },
     "Fade Time": {
       "capability": {
-        "type": "Speed",
-        "speedStart": "slow",
-        "speedEnd": "fast",
-        "comment": "Gradual speed adjustment, from color jump to color fade"
+        "type": "Time",
+        "timeStart": "instant",
+        "timeEnd": "long"
       }
     }
   },
@@ -201,8 +188,8 @@
       ]
     },
     {
-      "name": "RGBWD Strobe & Program",
-      "shortName": "rgbwd-strb-prg",
+      "name": "DRGBW Strobe & Program",
+      "shortName": "drgbw-strb-prg",
       "channels": [
         "Dimmer",
         "Red",
