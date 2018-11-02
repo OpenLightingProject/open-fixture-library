@@ -1,0 +1,164 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Max Par 20",
+  "shortName": "SolMax20",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-11-02",
+    "lastModifyDate": "2018-11-02"
+  },
+  "links": {
+    "manual": [
+      "http://www.pssl.com/c/Manuals/MaxPar20RGB.pdf"
+    ],
+    "productPage": [
+      "http://www.pssl.com/Solena-Max-Par-20-RGB-20w-DMX-LED-Wash-Light-2"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=acCYbTfasMQ"
+    ]
+  },
+  "physical": {
+    "dimensions": [180, 180, 100],
+    "weight": 0.6,
+    "power": 18,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "20W LEDs (54x Red, 54x Green, 54x Blue)"
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Color Selection / Effect Speed": "Color Selection"
+          }
+        },
+        {
+          "dmxRange": [11, 60],
+          "type": "Effect",
+          "effectName": "Color Select",
+          "switchChannels": {
+            "Color Selection / Effect Speed": "Color Selection"
+          }
+        },
+        {
+          "dmxRange": [61, 110],
+          "type": "Effect",
+          "effectName": "Color shade",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "switchChannels": {
+            "Color Selection / Effect Speed": "Color Selection"
+          }
+        },
+        {
+          "dmxRange": [111, 160],
+          "type": "Effect",
+          "effectName": "Color pulse transform",
+          "helpWanted": "The manual implies speed slow…fast in this capability, but also speed controlled by channel 'Effect Speed'. Which is correct here?",
+          "switchChannels": {
+            "Color Selection / Effect Speed": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [161, 210],
+          "type": "Effect",
+          "effectName": "Color transition",
+          "helpWanted": "The manual implies speed slow…fast in this capability, but also speed controlled by channel 'Effect Speed'. Which is correct here?",
+          "switchChannels": {
+            "Color Selection / Effect Speed": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true,
+          "switchChannels": {
+            "Color Selection / Effect Speed": "Color Selection"
+          }
+        }
+      ]
+    },
+    "Color Selection": {
+      "capability": {
+        "type": "ColorPreset",
+        "helpWanted": "At which DMX values can which colors be selected?"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-Channel",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Effect",
+        "Color Selection / Effect Speed"
+      ]
+    }
+  ]
+}
