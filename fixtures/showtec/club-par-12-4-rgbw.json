@@ -26,8 +26,14 @@
     "power": 77,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED",
+      "type": "12x 8W RGBW LEDs",
       "lumens": 3200
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    },
+    "focus": {
+      "type": "Fixed"
     }
   },
   "availableChannels": {
