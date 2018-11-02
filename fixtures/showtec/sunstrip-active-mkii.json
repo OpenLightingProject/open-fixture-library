@@ -33,132 +33,65 @@
       "degreesMinMax": [35, 35]
     }
   },
-  "availableChannels": {
-    "Dimmer": {
-      "capability": {
-        "type": "Intensity",
-        "comment": "Dimmer intensity (All LEDs)"
-      }
-    },
-    "Dimmer 1": {
-      "capability": {
-        "type": "Intensity",
-        "comment": "Gradual adjustment, from dark to brightest 0-100%"
-      }
-    },
-    "Dimmer 2": {
-      "capability": {
-        "type": "Intensity",
-        "comment": "Gradual adjustment, from dark to brightest 0-100%"
-      }
-    },
-    "Dimmer 3": {
-      "capability": {
-        "type": "Intensity",
-        "comment": "Gradual adjustment, from dark to brightest 0-100%"
-      }
-    },
-    "Dimmer 4": {
-      "capability": {
-        "type": "Intensity",
-        "comment": "Gradual adjustment, from dark to brightest 0-100%"
-      }
-    },
-    "Dimmer 5": {
+  "matrix": {
+    "pixelCount": [10, 1, 1],
+    "pixelGroups": {
+      "Master": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+      "1/2": ["1", "2", "3", "4", "5"],
+      "2/2": ["6", "7", "8", "9", "10"],
+      "1/5": ["1", "2"],
+      "2/5": ["3", "4"],
+      "3/5": ["5", "6"],
+      "4/5": ["7", "8"],
+      "5/5": ["9", "10"]
+    }
+  },
+  "templateChannels": {
+    "Dimmer $pixelKey": {
       "capability": {
         "type": "Intensity"
-      }
-    },
-    "Dimmer LED 1": {
-      "capability": {
-        "type": "Intensity",
-        "comment": "Gradual adjustment, from dark to brightest 0-100%"
-      }
-    },
-    "Dimmer LED 2": {
-      "capability": {
-        "type": "Intensity",
-        "comment": "Gradual adjustment, from dark to brightest 0-100%"
-      }
-    },
-    "Dimmer LED 3": {
-      "capability": {
-        "type": "Intensity",
-        "comment": "Gradual adjustment, from dark to brightest 0-100%"
-      }
-    },
-    "Dimmer 6": {
-      "capability": {
-        "type": "Intensity",
-        "comment": "Gradual adjustment, from dark to brightest 0-100%"
-      }
-    },
-    "Dimmer 7": {
-      "capability": {
-        "type": "Intensity",
-        "comment": "Gradual adjustment, from dark to brightest 0-100%"
-      }
-    },
-    "Dimmer 8": {
-      "capability": {
-        "type": "Intensity",
-        "comment": "Gradual adjustment, from dark to brightest 0-100%"
-      }
-    },
-    "Dimmer 9": {
-      "capability": {
-        "type": "Intensity",
-        "comment": "Gradual adjustment, from dark to brightest 0-100%"
-      }
-    },
-    "Dimmer 10": {
-      "capability": {
-        "type": "Intensity",
-        "comment": "Gradual adjustment, from dark to brightest 0-100%"
       }
     }
   },
   "modes": [
     {
-      "name": "All",
+      "name": "Master",
       "shortName": "1x10",
       "channels": [
-        "Dimmer 1"
+        "Dimmer Master"
       ]
     },
     {
-      "name": "2 sections of 5 LEDs",
+      "name": "Halves",
       "shortName": "2x5",
       "channels": [
-        "Dimmer 1",
-        "Dimmer 2"
+        "Dimmer 1/2",
+        "Dimmer 2/2"
       ]
     },
     {
-      "name": "5 sections of 2 LEDs",
+      "name": "Fifths",
       "shortName": "5x2",
       "channels": [
-        "Dimmer 1",
-        "Dimmer 2",
-        "Dimmer 3",
-        "Dimmer 4",
-        "Dimmer 5"
+        "Dimmer 1/5",
+        "Dimmer 2/5",
+        "Dimmer 3/5",
+        "Dimmer 4/5",
+        "Dimmer 5/5"
       ]
     },
     {
       "name": "Individual",
       "shortName": "10x1",
       "channels": [
-        "Dimmer 1",
-        "Dimmer 2",
-        "Dimmer 3",
-        "Dimmer 4",
-        "Dimmer 5",
-        "Dimmer 6",
-        "Dimmer 7",
-        "Dimmer 8",
-        "Dimmer 9",
-        "Dimmer 10"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey"
+          ]
+        }
       ]
     }
   ]
