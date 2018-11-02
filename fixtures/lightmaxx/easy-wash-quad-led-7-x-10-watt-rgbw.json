@@ -1,0 +1,98 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EASY Wash QUAD LED 7 x 10 Watt (RGBW)",
+  "shortName": "LightmaXX EASY Wash",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Paul Maier"],
+    "createDate": "2018-11-02",
+    "lastModifyDate": "2018-11-02"
+  },
+  "links": {
+    "manual": [
+      "http://forum.ma-dot2.com/index.php/Attachment/475-Lightmaxx-EASY-Wash-Quad-Led-7x10W-RGBW-pdf/"
+    ]
+  },
+  "physical": {
+    "weight": 4.2,
+    "power": 90,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "focus": {
+      "type": "Fixed",
+      "panMax": 360,
+      "tiltMax": 180
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "constant": true,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "1%",
+        "angleEnd": "99%"
+      }
+    },
+    "Tilt": {
+      "constant": true,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 Kanal",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Pan/Tilt Speed"
+      ]
+    }
+  ]
+}
