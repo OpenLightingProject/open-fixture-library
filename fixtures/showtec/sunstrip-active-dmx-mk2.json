@@ -1,0 +1,158 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Sunstrip Active DMX Mk2",
+  "shortName": "SunstripActiveDMXMk2",
+  "categories": ["Blinder", "Dimmer"],
+  "meta": {
+    "authors": ["Voyo"],
+    "createDate": "2018-11-02",
+    "lastModifyDate": "2018-11-02"
+  },
+  "comment": "The Sunstrip Active DMX MKII is a powerful device and the successor to the popular Showtec Sunstrip Active. For added flexibility and the option of more application usages, a selection of DMX modes can be chosen from: 1 channel, 2 channels, 5 channels and 10 channels. For stand-alone applications, the Sunstrip Active is equipped with 16 built-in patterns as well as a manual dimmer. With the Neutrik power twist in- and outputs, the Sunstrip is also ideal for more demanding on-the-road purposes. Easy to install, the it is equipped with two wall / floor brackets, as well as several M10 nuts to position the clamp in the desired position.",
+  "links": {
+    "manual": [
+      "https://www.highlite.nl/fr/silver.download/Documents@extern@Manuals/30714_MANUAL_GB_V2.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [1080, 130, 130],
+    "weight": 6.2,
+    "power": 550,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "10 x 240V/50W GU10"
+    },
+    "lens": {
+      "degreesMinMax": [35, 35]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer intensity (All LEDs)"
+      }
+    },
+    "Dimmer 1": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Gradual adjustment, from dark to brightest 0-100%"
+      }
+    },
+    "Dimmer 2": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Gradual adjustment, from dark to brightest 0-100%"
+      }
+    },
+    "Dimmer 3": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Gradual adjustment, from dark to brightest 0-100%"
+      }
+    },
+    "Dimmer 4": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Gradual adjustment, from dark to brightest 0-100%"
+      }
+    },
+    "Dimmer 5": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer LED 1": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Gradual adjustment, from dark to brightest 0-100%"
+      }
+    },
+    "Dimmer LED 2": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Gradual adjustment, from dark to brightest 0-100%"
+      }
+    },
+    "Dimmer LED 3": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Gradual adjustment, from dark to brightest 0-100%"
+      }
+    },
+    "Dimmer 6": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Gradual adjustment, from dark to brightest 0-100%"
+      }
+    },
+    "Dimmer 7": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Gradual adjustment, from dark to brightest 0-100%"
+      }
+    },
+    "Dimmer 8": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Gradual adjustment, from dark to brightest 0-100%"
+      }
+    },
+    "Dimmer 9": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Gradual adjustment, from dark to brightest 0-100%"
+      }
+    },
+    "Dimmer 10": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Gradual adjustment, from dark to brightest 0-100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "All",
+      "shortName": "1x10",
+      "channels": [
+        "Dimmer 1"
+      ]
+    },
+    {
+      "name": "2 sections of 5 LEDs",
+      "shortName": "2x5",
+      "channels": [
+        "Dimmer 1",
+        "Dimmer 2"
+      ]
+    },
+    {
+      "name": "5 sections of 2 LEDs",
+      "shortName": "5x2",
+      "channels": [
+        "Dimmer 1",
+        "Dimmer 2",
+        "Dimmer 3",
+        "Dimmer 4",
+        "Dimmer 5"
+      ]
+    },
+    {
+      "name": "Individual",
+      "shortName": "10x1",
+      "channels": [
+        "Dimmer 1",
+        "Dimmer 2",
+        "Dimmer 3",
+        "Dimmer 4",
+        "Dimmer 5",
+        "Dimmer 6",
+        "Dimmer 7",
+        "Dimmer 8",
+        "Dimmer 9",
+        "Dimmer 10"
+      ]
+    }
+  ]
+}
