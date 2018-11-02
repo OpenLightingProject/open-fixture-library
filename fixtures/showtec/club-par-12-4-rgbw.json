@@ -1,0 +1,206 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Club PAR 12/4 RGBW",
+  "shortName": "ClubPAR12-4rgbw",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Voyo"],
+    "createDate": "2018-11-02",
+    "lastModifyDate": "2018-11-02"
+  },
+  "comment": "The Club Par 12-4 RGBW is an compact light effect with high output and great effects.\nIdeal solution for small clubs and mobile DJs.\nOrdercode: 42650",
+  "links": {
+    "manual": [
+      "https://www.highlite.nl/silver.download/Documents@extern@Manuals/42650_MANUAL_GB_V1.pdf"
+    ],
+    "productPage": [
+      "http://www.highlite.nl/Shop/Products/Entertainment-Lighting/Spots/Spots-Indoor/Club-Par-12_4-RGBW"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=9CTsLX5hNuU"
+    ]
+  },
+  "physical": {
+    "dimensions": [288, 170, 113],
+    "weight": 2.2,
+    "power": 77,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12x 8W RGBW LEDs",
+      "lumens": 3200
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 12],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [13, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Built in programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Effect",
+          "effectName": "Program 1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Effect",
+          "effectName": "Program 2"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Effect",
+          "effectName": "Program 3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Effect",
+          "effectName": "Program 4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Effect",
+          "effectName": "Program 5"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Effect",
+          "effectName": "Program 6"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "effectName": "Program 7"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Program 8"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "effectName": "Program 9"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Effect",
+          "effectName": "Program 10"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Effect",
+          "effectName": "Program 11"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Effect",
+          "effectName": "Program 12"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Effect",
+          "effectName": "Program 13"
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "Effect",
+          "effectName": "Sound-controlled",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Fade Time": {
+      "capability": {
+        "type": "Time",
+        "timeStart": "instant",
+        "timeEnd": "long"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "RGBW",
+      "shortName": "rgbw",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "DRGBW Strobe & Program",
+      "shortName": "drgbw-strb-prg",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Built in programs",
+        "Program Speed",
+        "Fade Time"
+      ]
+    }
+  ]
+}

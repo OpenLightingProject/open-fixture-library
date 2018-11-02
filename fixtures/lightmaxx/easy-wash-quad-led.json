@@ -1,0 +1,368 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Easy Wash Quad LED",
+  "shortName": "LightmaXXEasyWashQuad",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Paul Maier", "Felix Edelmann"],
+    "createDate": "2018-11-02",
+    "lastModifyDate": "2018-11-02"
+  },
+  "links": {
+    "manual": [
+      "http://forum.ma-dot2.com/index.php/Attachment/475-Lightmaxx-EASY-Wash-Quad-Led-7x10W-RGBW-pdf/"
+    ],
+    "productPage": [
+      "https://www.musicstore.de/en_RS/EUR/lightmaXX-Easy-Wash-Quad-LED-Moving-Head/art-LIG0009642-000"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=7gJw-aAvHPg"
+    ]
+  },
+  "physical": {
+    "dimensions": [225, 270, 225],
+    "weight": 4.2,
+    "power": 90,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "7x 10W RGBW LEDs"
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 180
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Shutter / Dimmer": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [8, 134],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [135, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "40Hz"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 21],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White (RGB)"
+        },
+        {
+          "dmxRange": [22, 34],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [35, 49],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [50, 63],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [64, 77],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [78, 91],
+          "type": "ColorPreset",
+          "colors": ["#aad9ff"],
+          "comment": "Light blue"
+        },
+        {
+          "dmxRange": [92, 105],
+          "type": "ColorPreset",
+          "colors": ["#a21a19"],
+          "comment": "Crimson"
+        },
+        {
+          "dmxRange": [106, 119],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [120, 133],
+          "type": "ColorPreset",
+          "colors": ["#982aff"],
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [134, 147],
+          "type": "ColorPreset",
+          "colors": ["#ffaa00"],
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [148, 161],
+          "type": "ColorPreset",
+          "colors": ["#a3ffab"],
+          "comment": "Light green"
+        },
+        {
+          "dmxRange": [162, 175],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [176, 189],
+          "type": "ColorPreset",
+          "colors": ["#ffd0d0"],
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [190, 203],
+          "type": "ColorPreset",
+          "colors": ["#a0ab76"],
+          "comment": "Buff"
+        },
+        {
+          "dmxRange": [204, 217],
+          "type": "ColorPreset",
+          "colors": ["#ffffaa"],
+          "comment": "White (RGW)"
+        },
+        {
+          "dmxRange": [218, 231],
+          "type": "ColorPreset",
+          "colors": ["#7000b1"],
+          "comment": "Dark Purple"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        }
+      ]
+    },
+    "Color Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Or is it fast…slow?"
+      }
+    },
+    "Effects": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 22],
+          "type": "Effect",
+          "effectName": "Auto 1"
+        },
+        {
+          "dmxRange": [23, 37],
+          "type": "Effect",
+          "effectName": "Auto 2"
+        },
+        {
+          "dmxRange": [38, 53],
+          "type": "Effect",
+          "effectName": "Auto 3"
+        },
+        {
+          "dmxRange": [54, 67],
+          "type": "Effect",
+          "effectName": "Auto 4"
+        },
+        {
+          "dmxRange": [68, 82],
+          "type": "Effect",
+          "effectName": "Auto 5"
+        },
+        {
+          "dmxRange": [83, 97],
+          "type": "Effect",
+          "effectName": "Auto 6"
+        },
+        {
+          "dmxRange": [98, 112],
+          "type": "Effect",
+          "effectName": "Auto 7"
+        },
+        {
+          "dmxRange": [113, 127],
+          "type": "Effect",
+          "effectName": "Auto 8"
+        },
+        {
+          "dmxRange": [128, 142],
+          "type": "Effect",
+          "effectName": "Sound 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [143, 157],
+          "type": "Effect",
+          "effectName": "Sound 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [158, 172],
+          "type": "Effect",
+          "effectName": "Sound 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [173, 187],
+          "type": "Effect",
+          "effectName": "Sound 4",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [188, 202],
+          "type": "Effect",
+          "effectName": "Sound 5",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [203, 217],
+          "type": "Effect",
+          "effectName": "Sound 6",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [218, 232],
+          "type": "Effect",
+          "effectName": "Sound 7",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [233, 255],
+          "type": "Effect",
+          "effectName": "Sound 8",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8-Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Shutter / Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Pan/Tilt Speed"
+      ]
+    },
+    {
+      "name": "13-Channel",
+      "shortName": "13ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Shutter / Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Color Speed",
+        "Effects"
+      ]
+    }
+  ]
+}
