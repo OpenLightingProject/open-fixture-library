@@ -1,0 +1,210 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Club PAR 12-4 RGBW",
+  "shortName": "ClubPAR12-4rgbw",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Voyo"],
+    "createDate": "2018-11-02",
+    "lastModifyDate": "2018-11-02"
+  },
+  "comment": "The Club Par 12-4 RGBW is an compact light effect with high output and great effects.\nIdeal solution for small clubs and mobile DJs",
+  "links": {
+    "manual": [
+      "https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=2ahUKEwjiyq7QorbeAhXJAsAKHcc0A_0QFjAAegQIBBAC&url=https%3A%2F%2Fwww.highlite.nl%2Fsilver.download%2FDocuments%40extern%40Manuals%2F42650_MANUAL_GB_V1.pdf&usg=AOvVaw0HplwEipZvnXGTATiO4cuN"
+    ],
+    "video": [
+      "https://video1.thomann.de/vidiot/02591c1c/video_i4395p8_yd59vq5a.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [288, 170, 113],
+    "weight": 2.2,
+    "power": 77,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 3200
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Gradual adjustment Red, from 0-100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Gradual adjustment Green, from 0-100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Gradual adjustment Blue, from 0-100%"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "Gradual adjustment White, from 0-100%"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Gradual adjustment, from dark to brightest 0-100%"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 12],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [13, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz",
+          "comment": "Strobe flash frequency, from slow to fast"
+        }
+      ]
+    },
+    "Built in programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Not functional"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Effect",
+          "effectName": "Program 1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Effect",
+          "effectName": "Program 2",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Effect",
+          "effectName": "Program 3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Effect",
+          "effectName": "Program 4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Effect",
+          "effectName": "Program 5"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Effect",
+          "effectName": "Program 6"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "effectName": "Program 7"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Program 8"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "effectName": "Program 9"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Effect",
+          "effectName": "Program 10"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Effect",
+          "effectName": "Program 11"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Effect",
+          "effectName": "Program 12"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Effect",
+          "effectName": "Program 13"
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound-controlled"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Gradual speed adjustment, from slow to fast. Channel \"Builtin programs\" (7) must be set between 10-139."
+      }
+    },
+    "Fade Time": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Gradual speed adjustment, from color jump to color fade"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "RGBW",
+      "shortName": "rgbw",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "RGBWD Strobe & Program",
+      "shortName": "rgbwd-strb-prg",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Built in programs",
+        "Program Speed",
+        "Fade Time"
+      ]
+    }
+  ]
+}
