@@ -32,6 +32,14 @@
       "tiltMax": 270
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["2", null, "3"],
+        [null, "1", null]
+      ]
+    ]
+  },
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
@@ -778,7 +786,9 @@
           "comment": "Total reset"
         }
       ]
-    },
+    }
+  },
+  "templateChannels": {
     "Red $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
@@ -885,10 +895,17 @@
         "Zoom",
         "Zoom fine",
         "Channel Functions",
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
-        "White $pixelKey"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
       ]
     },
     {
@@ -916,10 +933,17 @@
       "name": "12-channel (Art-Net)",
       "shortName": "12ch",
       "channels": [
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
-        "White $pixelKey"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
       ]
     }
   ]
