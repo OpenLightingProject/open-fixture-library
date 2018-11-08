@@ -413,8 +413,6 @@
         {
           "dmxRange": [128, 255],
           "type": "Prism",
-          "angleStart": "deg",
-          "angleEnd": "deg",
           "comment": "3-facet"
         }
       ]
@@ -424,25 +422,19 @@
         {
           "dmxRange": [0, 63],
           "type": "PrismRotation",
-          "speed": "stop",
-          "angleStart": "deg",
-          "angleEnd": "deg"
+          "speed": "stop"
         },
         {
           "dmxRange": [64, 127],
           "type": "PrismRotation",
           "speedStart": "fast CCW",
-          "speedEnd": "slow CCW",
-          "angleStart": "deg",
-          "angleEnd": "deg"
+          "speedEnd": "slow CCW"
         },
         {
           "dmxRange": [128, 191],
           "type": "PrismRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW",
-          "angleStart": "deg",
-          "angleEnd": "deg"
+          "speedEnd": "fast CW"
         },
         {
           "dmxRange": [192, 255],
