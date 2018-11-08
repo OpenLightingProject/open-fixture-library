@@ -35,7 +35,7 @@ const capabilityHelpers = {
 };
 
 module.exports.name = `QLC+ 4.12.0`;
-module.exports.version = `1.0.0`;
+module.exports.version = `1.0.1`;
 
 /**
  * @param {array.<Fixture>} fixtures An array of Fixture objects.

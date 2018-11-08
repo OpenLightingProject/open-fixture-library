@@ -21,7 +21,7 @@ const {
 /* eslint-enable no-unused-vars */
 
 module.exports.name = `QLC+ 4.11.2`;
-module.exports.version = `0.5.0`;
+module.exports.version = `0.5.1`;
 
 /**
  * @param {array.<Fixture>} fixtures An array of Fixture objects.
