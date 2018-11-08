@@ -9,7 +9,7 @@
   },
   "links": {
     "manual": [
-      "https://media.steinigke.de/download_t/992-MANUAL-1.10-de-en_00110800.pdf"
+      "https://media.steinigke.de/documents_t/992-MANUAL-1.10-de-en_00110800.pdf"
     ],
     "productPage": [
       "https://www.steinigke.de/de/mpn51785992-eurolite-led-tmh-x12-moving-head-spot.html"
@@ -70,7 +70,8 @@
         {
           "dmxRange": [0, 3],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
+          "shutterEffect": "Open",
+          "helpWanted": "The manual says \"Neutral\", so is this capability open or closed?"
         },
         {
           "dmxRange": [4, 109],
@@ -300,8 +301,10 @@
         },
         {
           "dmxRange": [130, 134],
-          "type": "GoboWheelRotation",
-          "speed": "stop"
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Open",
+          "helpWanted": "Is this actually \"Gobo wheel rotation stop\"?"
         },
         {
           "dmxRange": [135, 220],
