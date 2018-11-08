@@ -94,8 +94,8 @@
           "dmxRange": [10, 50],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "fast",
-          "speedEnd": "slow"
+          "speedStart": "20Hz",
+          "speedEnd": "0Hz"
         },
         {
           "dmxRange": [51, 54],
@@ -106,8 +106,8 @@
           "dmxRange": [55, 95],
           "type": "ShutterStrobe",
           "shutterEffect": "RampDown",
-          "speedStart": "fast",
-          "speedEnd": "slow"
+          "speedStart": "20Hz",
+          "speedEnd": "0Hz"
         },
         {
           "dmxRange": [96, 99],
@@ -118,8 +118,8 @@
           "dmxRange": [100, 140],
           "type": "ShutterStrobe",
           "shutterEffect": "RampUp",
-          "speedStart": "fast",
-          "speedEnd": "slow"
+          "speedStart": "20Hz",
+          "speedEnd": "0Hz"
         },
         {
           "dmxRange": [141, 144],
@@ -130,9 +130,10 @@
           "dmxRange": [145, 195],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "randomTiming": true
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz",
+          "randomTiming": true,
+          "helpWanted": "Is this really slow…fast? (All other strobe capabilities are fast…slow.)"
         },
         {
           "dmxRange": [196, 199],
@@ -143,8 +144,8 @@
           "dmxRange": [200, 239],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
-          "speedStart": "fast",
-          "speedEnd": "slow"
+          "speedStart": "20Hz",
+          "speedEnd": "0Hz"
         },
         {
           "dmxRange": [240, 255],
