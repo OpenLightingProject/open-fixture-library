@@ -445,16 +445,15 @@ module.exports = {
       // group capabilities by comment
       const capsGroupedByComment = [];
       caps.forEach(cap => {
-        const length = capsGroupedByComment.length;
-        const lastGroup = length === 0 ? null : capsGroupedByComment[length - 1];
+        const lastGroup = capsGroupedByComment[capsGroupedByComment.length - 1];
 
-        if (length === 0 || lastGroup[0].comment !== cap.comment) {
-          // push new group
-          capsGroupedByComment.push([cap]);
-        }
-        else {
+        if (lastGroup && lastGroup[0].comment === cap.comment) {
           // push to last group
           lastGroup.push(cap);
+        }
+        else {
+          // push new group
+          capsGroupedByComment.push([cap]);
         }
       });
 
