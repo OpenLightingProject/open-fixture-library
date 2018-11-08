@@ -35,7 +35,7 @@ const capabilityHelpers = {
 };
 
 module.exports.name = `QLC+ 4.12.0`;
-module.exports.version = `1.0.0`;
+module.exports.version = `1.0.1`;
 
 /**
  * @param {array.<Fixture>} fixtures An array of Fixture objects.
@@ -667,9 +667,12 @@ function addPhysical(xmlParentNode, physical, mode) {
   });
 
   if (physical.DMXconnector !== null || physical.power !== null) {
+    // add whitespace
+    const connector = physical.DMXconnector === `3.5mm stereo jack` ? `3.5 mm stereo jack` : physical.DMXconnector;
+
     xmlPhysical.element({
       Technical: {
-        '@DmxConnector': physical.DMXconnector || `Other`,
+        '@DmxConnector': connector || `Other`,
         '@PowerConsumption': Math.round(physical.power) || 0
       }
     });
