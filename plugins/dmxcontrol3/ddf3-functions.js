@@ -361,84 +361,84 @@ module.exports = {
   focus: {
     isCapSuitable: cap => cap.type === `Focus`,
     create: (channel, caps) => {
-      const xmlDimmer = xmlbuilder.create(`focus`);
+      const xmlFocus = xmlbuilder.create(`focus`);
 
       const normalizedCaps = getNormalizedCapabilities(caps, `distance`, 100, `%`);
       normalizedCaps.forEach(cap => {
         const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
         xmlCap.attribute(`type`, `linear`);
-        xmlDimmer.importDocument(xmlCap);
+        xmlFocus.importDocument(xmlCap);
       });
 
-      return xmlDimmer;
+      return xmlFocus;
     }
   },
   frost: {
     isCapSuitable: cap => cap.type === `Frost`,
     create: (channel, caps) => {
-      const xmlDimmer = xmlbuilder.create(`frost`);
+      const xmlFrost = xmlbuilder.create(`frost`);
 
       const normalizedCaps = getNormalizedCapabilities(caps, `frostIntensity`, 100, `%`);
       normalizedCaps.forEach(cap => {
         if (cap.startValue === 0 && cap.endValue === 0) {
           const xmlCap = getBaseXmlCapability(cap.capObject);
           xmlCap.attribute(`type`, `open`);
-          xmlDimmer.importDocument(xmlCap);
+          xmlFrost.importDocument(xmlCap);
         }
         else {
           const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
           xmlCap.attribute(`type`, `linear`);
-          xmlDimmer.importDocument(xmlCap);
+          xmlFrost.importDocument(xmlCap);
         }
       });
 
-      return xmlDimmer;
+      return xmlFrost;
     }
   },
   iris: {
     isCapSuitable: cap => cap.type === `Iris`,
     create: (channel, caps) => {
-      const xmlDimmer = xmlbuilder.create(`iris`);
+      const xmlIris = xmlbuilder.create(`iris`);
 
       const normalizedCaps = getNormalizedCapabilities(caps, `openPercent`, 100, `%`);
       normalizedCaps.forEach(cap => {
         const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
         xmlCap.attribute(`type`, `linear`);
-        xmlDimmer.importDocument(xmlCap);
+        xmlIris.importDocument(xmlCap);
       });
 
-      return xmlDimmer;
+      return xmlIris;
     }
   },
   zoom: {
     isCapSuitable: cap => cap.type === `Zoom`,
     create: (channel, caps) => {
-      const xmlDimmer = xmlbuilder.create(`zoom`);
+      const xmlZoom = xmlbuilder.create(`zoom`);
 
       const normalizedCaps = getNormalizedCapabilities(caps, `angle`, 90, `deg`);
       normalizedCaps.forEach(cap => {
         const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
         xmlCap.attribute(`type`, `linear`);
-        xmlDimmer.importDocument(xmlCap);
+        xmlZoom.importDocument(xmlCap);
       });
 
-      return xmlDimmer;
+      return xmlZoom;
     }
   },
   prism: {
     isCapSuitable: cap => cap.type === `Prism` || (cap.type === `NoFunction` && cap._channel.type === `Prism`),
     create: (channel, caps) => {
-      const xmlDimmer = xmlbuilder.create(`prism`);
+      const xmlPrism = xmlbuilder.create(`prism`);
 
       const hasRotationAngleCaps = caps.some(cap => cap.angle !== null);
       const hasRotationSpeedCaps = caps.some(cap => cap.speed !== null);
 
       if (hasRotationAngleCaps) {
-        xmlDimmer.element(`prismindex`);
+        xmlPrism.element(`prismindex`);
       }
 
       if (hasRotationSpeedCaps) {
-        xmlDimmer.element(`prismrotation`);
+        xmlPrism.element(`prismrotation`);
       }
 
 
@@ -462,7 +462,7 @@ module.exports = {
         const firstCap = commentGroup[0];
         const lastCap = commentGroup[commentGroup.length - 1];
 
-        const xmlStep = xmlDimmer.element(`step`, {
+        const xmlStep = xmlPrism.element(`step`, {
           type: firstCap.type === `NoFunction` ? `open` : `prism`,
           mindmx: firstCap.dmxRange.start,
           maxdmx: lastCap.dmxRange.end,
@@ -498,7 +498,7 @@ module.exports = {
       });
 
 
-      return xmlDimmer;
+      return xmlPrism;
     }
   },
   prismIndex: { // rotation angle
