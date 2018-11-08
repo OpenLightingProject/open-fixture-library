@@ -1,0 +1,954 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "iW-340 RDM",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2018-11-07",
+    "lastModifyDate": "2018-11-07"
+  },
+  "links": {
+    "manual": [
+      "https://www.highlite.com/media/attachments/MANUAL/41525_MANUAL_GB_V1.pdf"
+    ],
+    "productPage": [
+      "https://www.infinity-intelligent-light.com/infinity-iw-340-rdm/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=S7FJLurJ6GM"
+    ]
+  },
+  "physical": {
+    "dimensions": [250, 350, 190],
+    "weight": 7.2,
+    "power": 145,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "3x 40W RGBW Osram Ostar LED"
+    },
+    "lens": {
+      "degreesMinMax": [4.5, 36]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 270
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["2", null, "3"],
+        [null, "1", null]
+      ]
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "dmxValueResolution": "8bit",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 50],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "20Hz",
+          "speedEnd": "0Hz"
+        },
+        {
+          "dmxRange": [51, 54],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [55, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "20Hz",
+          "speedEnd": "0Hz"
+        },
+        {
+          "dmxRange": [96, 99],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [100, 140],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "20Hz",
+          "speedEnd": "0Hz"
+        },
+        {
+          "dmxRange": [141, 144],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [145, 195],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz",
+          "randomTiming": true,
+          "helpWanted": "Is this really slow…fast? (All other strobe capabilities are fast…slow.)"
+        },
+        {
+          "dmxRange": [196, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [200, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "20Hz",
+          "speedEnd": "0Hz"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "dmxValueResolution": "8bit",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "dmxValueResolution": "8bit",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "dmxValueResolution": "8bit",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "dmxValueResolution": "8bit",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CTC": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "1900K",
+          "colorTemperatureEnd": "2700K"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 2],
+          "type": "ColorPreset",
+          "colors": ["#ffa757"],
+          "colorTemperature": "2700K"
+        },
+        {
+          "dmxRange": [3, 4],
+          "type": "ColorPreset",
+          "colors": ["#ffb87b"],
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [5, 6],
+          "type": "ColorPreset",
+          "colors": ["#ffd3af"],
+          "colorTemperature": "4200K"
+        },
+        {
+          "dmxRange": [7, 8],
+          "type": "ColorPreset",
+          "colors": ["#ffefe1"],
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [9, 10],
+          "type": "ColorPreset",
+          "colors": ["#dde6ff"],
+          "colorTemperature": "8000K"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [12, 48],
+          "type": "ColorPreset",
+          "comment": "Blue … Cyan",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#00ffff"]
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [50, 86],
+          "type": "ColorPreset",
+          "comment": "Cyan … Green",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#00ff00"]
+        },
+        {
+          "dmxRange": [87, 87],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [88, 124],
+          "type": "ColorPreset",
+          "comment": "Green … Yellow",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#ffff00"]
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [126, 162],
+          "type": "ColorPreset",
+          "comment": "Yellow … Red",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#ff0000"]
+        },
+        {
+          "dmxRange": [163, 163],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [164, 200],
+          "type": "ColorPreset",
+          "comment": "Red … Purple",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [202, 238],
+          "type": "ColorPreset",
+          "comment": "Purple … Blue",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [239, 239],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
+    },
+    "Static Pixel Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [12, 51],
+          "type": "Maintenance",
+          "comment": "LED Pixel 1"
+        },
+        {
+          "dmxRange": [52, 91],
+          "type": "Maintenance",
+          "comment": "LED Pixel 2"
+        },
+        {
+          "dmxRange": [92, 131],
+          "type": "Maintenance",
+          "comment": "LED Pixel 3"
+        },
+        {
+          "dmxRange": [132, 171],
+          "type": "Maintenance",
+          "comment": "LED Pixel 1 & 2"
+        },
+        {
+          "dmxRange": [172, 211],
+          "type": "Maintenance",
+          "comment": "LED Pixel 2 & 3"
+        },
+        {
+          "dmxRange": [212, 251],
+          "type": "Maintenance",
+          "comment": "LED Pixel 1 & 3"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Maintenance",
+          "comment": "All LED Pixels"
+        }
+      ]
+    },
+    "Dynamic LED Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [15, 29],
+          "type": "Effect",
+          "effectName": "Program 1"
+        },
+        {
+          "dmxRange": [30, 44],
+          "type": "Effect",
+          "effectName": "Program 2"
+        },
+        {
+          "dmxRange": [45, 59],
+          "type": "Effect",
+          "effectName": "Program 3"
+        },
+        {
+          "dmxRange": [60, 74],
+          "type": "Effect",
+          "effectName": "Program 4"
+        },
+        {
+          "dmxRange": [75, 89],
+          "type": "Effect",
+          "effectName": "Program 5"
+        },
+        {
+          "dmxRange": [90, 104],
+          "type": "Effect",
+          "effectName": "Program 6"
+        },
+        {
+          "dmxRange": [105, 119],
+          "type": "Effect",
+          "effectName": "Program 7"
+        },
+        {
+          "dmxRange": [120, 134],
+          "type": "Effect",
+          "effectName": "Program 8"
+        },
+        {
+          "dmxRange": [135, 149],
+          "type": "Effect",
+          "effectName": "Program 9 with color flow"
+        },
+        {
+          "dmxRange": [150, 164],
+          "type": "Effect",
+          "effectName": "Program 10 with color flow"
+        },
+        {
+          "dmxRange": [165, 179],
+          "type": "Effect",
+          "effectName": "Program 11 with color flow"
+        },
+        {
+          "dmxRange": [180, 194],
+          "type": "Effect",
+          "effectName": "Program 12 with color flow"
+        },
+        {
+          "dmxRange": [195, 209],
+          "type": "Effect",
+          "effectName": "Program 13 with color flow"
+        },
+        {
+          "dmxRange": [210, 224],
+          "type": "Effect",
+          "effectName": "Program 14 with color flow"
+        },
+        {
+          "dmxRange": [225, 239],
+          "type": "Effect",
+          "effectName": "Program 15 with color flow"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Program 16 with color flow"
+        }
+      ]
+    },
+    "Speed Dynamic LED Control": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Fade Time Dynamic LED Control": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "long",
+        "durationEnd": "short"
+      }
+    },
+    "Background Dimmer": {
+      "fineChannelAliases": ["Background Dimmer fine"],
+      "dmxValueResolution": "8bit",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Background Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 2],
+          "type": "ColorPreset",
+          "colors": ["#ffa757"],
+          "colorTemperature": "2700K"
+        },
+        {
+          "dmxRange": [3, 4],
+          "type": "ColorPreset",
+          "colors": ["#ffb87b"],
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [5, 6],
+          "type": "ColorPreset",
+          "colors": ["#ffd3af"],
+          "colorTemperature": "4200K"
+        },
+        {
+          "dmxRange": [7, 8],
+          "type": "ColorPreset",
+          "colors": ["#ffefe1"],
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [9, 10],
+          "type": "ColorPreset",
+          "colors": ["#dde6ff"],
+          "colorTemperature": "8000K"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [12, 48],
+          "type": "ColorPreset",
+          "comment": "Blue … Cyan",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#00ffff"]
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [50, 86],
+          "type": "ColorPreset",
+          "comment": "Cyan … Green",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#00ff00"]
+        },
+        {
+          "dmxRange": [87, 87],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [88, 124],
+          "type": "ColorPreset",
+          "comment": "Green … Yellow",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#ffff00"]
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [126, 162],
+          "type": "ColorPreset",
+          "comment": "Yellow … Red",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#ff0000"]
+        },
+        {
+          "dmxRange": [163, 163],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [164, 200],
+          "type": "ColorPreset",
+          "comment": "Red … Purple",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [202, 238],
+          "type": "ColorPreset",
+          "comment": "Purple … Blue",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [239, 239],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "dmxValueResolution": "8bit",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "4.5deg",
+        "angleEnd": "36deg"
+      }
+    },
+    "Channel Functions": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Pan/Tilt Blackout activated"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Pan/Tilt Blackout deactivated"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Maintenance",
+          "parameter": "fast",
+          "hold": "5s",
+          "comment": "Pan/Tilt Speed"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Maintenance",
+          "parameter": "slow",
+          "hold": "5s",
+          "comment": "Pan/Tilt Speed"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Dimmer Curve Linear"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Dimmer Curve Square"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Dimmer Curve Inv-Square"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Dimmer Curve S-Curve"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Maintenance",
+          "parameter": "fast",
+          "hold": "5s",
+          "comment": "Dimmer"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Maintenance",
+          "parameter": "slow",
+          "hold": "5s",
+          "comment": "Dimmer"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "CMY color mix"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "RGBW color mix"
+        },
+        {
+          "dmxRange": [130, 149],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "PWM 1200Hz"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "PWM 2000Hz"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "PWM 2400Hz"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "PWM 6000K"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "PWM 25000Hz"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Maintenance",
+          "parameter": "slow",
+          "hold": "5s",
+          "comment": "Fan"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "parameter": "fast",
+          "hold": "5s",
+          "comment": "Fan"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Fan auto"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Auto test"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Pan/Tilt reset"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Zoom reset"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Total reset"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "21-channel",
+      "shortName": "21ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "CTC",
+        "Color Macros",
+        "Static Pixel Control",
+        "Dynamic LED Control",
+        "Speed Dynamic LED Control",
+        "Fade Time Dynamic LED Control",
+        "Background Dimmer",
+        "Background Color Macros",
+        "Zoom",
+        "Channel Functions"
+      ]
+    },
+    {
+      "name": "28-channel",
+      "shortName": "28ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter / Strobe",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "CTC",
+        "Color Macros",
+        "Static Pixel Control",
+        "Dynamic LED Control",
+        "Speed Dynamic LED Control",
+        "Fade Time Dynamic LED Control",
+        "Background Dimmer",
+        "Background Dimmer fine",
+        "Background Color Macros",
+        "Zoom",
+        "Zoom fine",
+        "Channel Functions"
+      ]
+    },
+    {
+      "name": "27-channel",
+      "shortName": "27ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom",
+        "Zoom fine",
+        "Channel Functions",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "15-channel (DMX)",
+      "shortName": "15ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom",
+        "Zoom fine",
+        "Channel Functions"
+      ]
+    },
+    {
+      "name": "12-channel (Art-Net)",
+      "shortName": "12ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}
