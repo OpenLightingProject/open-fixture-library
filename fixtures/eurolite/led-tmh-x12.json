@@ -1,0 +1,566 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED TMH-X12",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2018-11-08",
+    "lastModifyDate": "2018-11-08"
+  },
+  "links": {
+    "manual": [
+      "https://media.steinigke.de/documents_t/992-MANUAL-1.10-de-en_00110800.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/de/mpn51785992-eurolite-led-tmh-x12-moving-head-spot.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=-jWRxuu8q6U",
+      "https://www.youtube.com/watch?v=a-Qhv2GdEXo"
+    ]
+  },
+  "physical": {
+    "dimensions": [320, 400, 330],
+    "weight": 10.5,
+    "power": 170,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "120W white COB LED"
+    },
+    "lens": {
+      "degreesMinMax": [12, 12]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 270
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "helpWanted": "The manual says \"Neutral\", so is this capability open or closed?"
+        },
+        {
+          "dmxRange": [4, 109],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [110, 209],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [210, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "ColorWheelIndex",
+          "index": 0.5,
+          "comment": "Split White / Red",
+          "colors": ["#ffffff", "#ff0000"]
+        },
+        {
+          "dmxRange": [9, 10],
+          "type": "ColorWheelIndex",
+          "index": 1,
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [11, 18],
+          "type": "ColorWheelIndex",
+          "index": 1.5,
+          "comment": "Split Red / Orange",
+          "colors": ["#ff0000", "#ffaa00"]
+        },
+        {
+          "dmxRange": [19, 20],
+          "type": "ColorWheelIndex",
+          "index": 2,
+          "comment": "Orange",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "dmxRange": [21, 28],
+          "type": "ColorWheelIndex",
+          "index": 2.5,
+          "comment": "Split Orange / Green",
+          "colors": ["#ffaa00", "#00ff00"]
+        },
+        {
+          "dmxRange": [29, 30],
+          "type": "ColorWheelIndex",
+          "index": 3,
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [31, 38],
+          "type": "ColorWheelIndex",
+          "index": 3.5,
+          "comment": "Split Green / Light Blue",
+          "colors": ["#00ff00", "#aaccff"]
+        },
+        {
+          "dmxRange": [39, 40],
+          "type": "ColorWheelIndex",
+          "index": 4,
+          "comment": "Light Blue",
+          "colors": ["#aaccff"]
+        },
+        {
+          "dmxRange": [41, 48],
+          "type": "ColorWheelIndex",
+          "index": 4.5,
+          "comment": "Split Light Blue / Purple",
+          "colors": ["#aaccff", "#cc00bb"]
+        },
+        {
+          "dmxRange": [49, 50],
+          "type": "ColorWheelIndex",
+          "index": 5,
+          "comment": "Purple",
+          "colors": ["#cc00bb"]
+        },
+        {
+          "dmxRange": [51, 58],
+          "type": "ColorWheelIndex",
+          "index": 5.5,
+          "comment": "Split Purple / Yellow",
+          "colors": ["#cc00bb", "#ffff00"]
+        },
+        {
+          "dmxRange": [59, 60],
+          "type": "ColorWheelIndex",
+          "index": 6,
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [61, 68],
+          "type": "ColorWheelIndex",
+          "index": 6.5,
+          "comment": "Split Yellow / Blue",
+          "colors": ["#ffff00", "#0000ff"]
+        },
+        {
+          "dmxRange": [69, 70],
+          "type": "ColorWheelIndex",
+          "index": 7,
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [71, 78],
+          "type": "ColorWheelIndex",
+          "index": 7.5,
+          "comment": "Split Blue / Pink",
+          "colors": ["#0000ff", "#ff00ff"]
+        },
+        {
+          "dmxRange": [79, 80],
+          "type": "ColorWheelIndex",
+          "index": 8,
+          "comment": "Pink",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [81, 88],
+          "type": "ColorWheelIndex",
+          "index": 8.5,
+          "comment": "Split Pink / White",
+          "colors": ["#ff00ff", "#ffffff"]
+        },
+        {
+          "dmxRange": [89, 90],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [91, 255],
+          "type": "ColorWheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "GoboIndex",
+          "index": 1,
+          "comment": "Gobo 1"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "GoboIndex",
+          "index": 2,
+          "comment": "Gobo 2"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "GoboIndex",
+          "index": 3,
+          "comment": "Gobo 3"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "GoboIndex",
+          "index": 4,
+          "comment": "Gobo 4"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "GoboIndex",
+          "index": 5,
+          "comment": "Gobo 5"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "GoboIndex",
+          "index": 6,
+          "comment": "Gobo 6"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "GoboIndex",
+          "index": 7,
+          "comment": "Gobo 7"
+        },
+        {
+          "dmxRange": [40, 129],
+          "type": "GoboWheelRotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Open",
+          "helpWanted": "Is this actually \"Gobo wheel rotation stop\"?"
+        },
+        {
+          "dmxRange": [135, 220],
+          "type": "GoboWheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "GoboIndex",
+          "index": 1,
+          "comment": "Gobo 1",
+          "shakeAngle": "wide"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "GoboIndex",
+          "index": 2,
+          "comment": "Gobo 2",
+          "shakeAngle": "wide"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "GoboIndex",
+          "index": 3,
+          "comment": "Gobo 3",
+          "shakeAngle": "wide"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "GoboIndex",
+          "index": 4,
+          "comment": "Gobo 4",
+          "shakeAngle": "wide"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "GoboIndex",
+          "index": 5,
+          "comment": "Gobo 5",
+          "shakeAngle": "wide"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "GoboIndex",
+          "index": 6,
+          "comment": "Gobo 6",
+          "shakeAngle": "wide"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "GoboIndex",
+          "index": 7,
+          "comment": "Gobo 7",
+          "shakeAngle": "wide"
+        }
+      ]
+    },
+    "Gobo Stencil Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [64, 126],
+          "type": "GoboStencilRotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "GoboStencilRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "GoboStencilRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [192, 192],
+          "type": "GoboStencilRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "Effect",
+          "effectName": "Gobo Stencil Shake",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "far",
+        "distanceEnd": "near"
+      }
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Prism",
+          "comment": "3-facet"
+        }
+      ]
+    },
+    "Prism Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "PrismRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "PrismRotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "PrismRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Prism Shake",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Internal Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Maintenance",
+          "comment": "Fade delay off"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "Maintenance",
+          "comment": "Fade delay on"
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 75],
+          "type": "Effect",
+          "effectName": "Internal Program Auto 1"
+        },
+        {
+          "dmxRange": [76, 135],
+          "type": "Effect",
+          "effectName": "Internal Program Auto 2"
+        },
+        {
+          "dmxRange": [136, 195],
+          "type": "Effect",
+          "effectName": "Internal Program Auto 3"
+        },
+        {
+          "dmxRange": [196, 255],
+          "type": "Effect",
+          "effectName": "Internal Program Auto 4"
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [26, 45],
+          "type": "Maintenance",
+          "comment": "Reset others"
+        },
+        {
+          "dmxRange": [46, 103],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [104, 119],
+          "type": "Maintenance",
+          "comment": "Reset Pan/Tilt"
+        },
+        {
+          "dmxRange": [120, 190],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [191, 205],
+          "type": "Maintenance",
+          "comment": "Reset all"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Gobo Stencil Rotation",
+        "Focus",
+        "Prism",
+        "Prism Rotation",
+        "Internal Programs",
+        "Reset"
+      ]
+    },
+    {
+      "name": "15-channel",
+      "shortName": "15ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Gobo Stencil Rotation",
+        "Focus",
+        "Prism",
+        "Prism Rotation",
+        "Internal Programs",
+        "Reset",
+        "Pan fine",
+        "Tilt fine"
+      ]
+    }
+  ]
+}
