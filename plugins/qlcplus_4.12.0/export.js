@@ -667,9 +667,12 @@ function addPhysical(xmlParentNode, physical, mode) {
   });
 
   if (physical.DMXconnector !== null || physical.power !== null) {
+    // add whitespace
+    const connector = physical.DMXconnector === `3.5mm stereo jack` ? `3.5 mm stereo jack` : physical.DMXconnector;
+
     xmlPhysical.element({
       Technical: {
-        '@DmxConnector': physical.DMXconnector || `Other`,
+        '@DmxConnector': connector || `Other`,
         '@PowerConsumption': Math.round(physical.power) || 0
       }
     });
