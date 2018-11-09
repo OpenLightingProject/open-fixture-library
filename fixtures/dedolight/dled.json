@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Dled",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Jean-François LOSSON"],
+    "createDate": "2018-11-09",
+    "lastModifyDate": "2018-11-09"
+  },
+  "links": {
+    "productPage": [
+      "http://www.dedolight.com/dedolight/default.php?la=0&pg=00000400100507&id=DL-DLED4-BI&section=0"
+    ]
+  },
+  "physical": {
+    "dimensions": [109, 200, 100],
+    "weight": 1.3,
+    "power": 40,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [4, 60]
+    },
+    "focus": {
+      "type": "Barrel"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2600K",
+        "colorTemperatureEnd": "6800K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standart",
+      "channels": [
+        "Dimmer",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
