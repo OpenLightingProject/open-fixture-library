@@ -114,7 +114,8 @@
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
-        "angleEnd": "255deg"
+        "angleEnd": "255deg",
+        "helpWanted": "Is the bar at 90° tilt angle for DMX value 180? The manual is unclear here."
       }
     },
     "Left Bar Speed": {
@@ -129,7 +130,8 @@
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
-        "angleEnd": "255deg"
+        "angleEnd": "255deg",
+        "helpWanted": "Is the bar at 90° tilt angle for DMX value 180? The manual is unclear here."
       }
     },
     "Right Bar Speed": {
@@ -148,7 +150,8 @@
       "capability": {
         "type": "EffectSpeed",
         "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "helpWanted": "Is the program speed slow…fast or fast…slow?"
       }
     },
     "Strobe": {
@@ -213,7 +216,7 @@
           "insert": "matrixChannels",
           "repeatFor": "eachPixelABC",
           "channelOrder": "perPixel",
-          "channels": [
+          "templateChannels": [
             "LED $pixelKey Red",
             "LED $pixelKey Green",
             "LED $pixelKey Blue",
@@ -238,7 +241,7 @@
           "insert": "matrixChannels",
           "repeatFor": "eachPixelABC",
           "channelOrder": "perPixel",
-          "channels": [
+          "templateChannels": [
             "LED $pixelKey Red",
             "LED $pixelKey Green",
             "LED $pixelKey Blue",
