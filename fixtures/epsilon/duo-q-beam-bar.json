@@ -35,6 +35,9 @@
       "tiltMax": 180
     }
   },
+  "matrix": {
+    "pixelCount": [8, 1, 1]
+  },
   "availableChannels": {
     "Internal Programs": {
       "capabilities": [
@@ -136,30 +139,6 @@
         "speedEnd": "fast"
       }
     },
-    "LED $pixelKey Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED $pixelKey Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED $pixelKey Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED $pixelKey White": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
     "Master Dimmer": {
       "capability": {
         "type": "Intensity"
@@ -188,6 +167,32 @@
       ]
     }
   },
+  "templateChannels": {
+    "LED $pixelKey Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "LED $pixelKey Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "LED $pixelKey Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "LED $pixelKey White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
   "modes": [
     {
       "name": "1-channel",
@@ -204,10 +209,17 @@
         "Left Bar Speed",
         "Right Bar Tilt",
         "Right Bar Speed",
-        "LED $pixelKey Red",
-        "LED $pixelKey Green",
-        "LED $pixelKey Blue",
-        "LED $pixelKey White"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "channels": [
+            "LED $pixelKey Red",
+            "LED $pixelKey Green",
+            "LED $pixelKey Blue",
+            "LED $pixelKey White"
+          ]
+        }
       ]
     },
     {
@@ -222,10 +234,17 @@
         "Internal Programs",
         "Program Speed",
         "Strobe",
-        "LED $pixelKey Red",
-        "LED $pixelKey Green",
-        "LED $pixelKey Blue",
-        "LED $pixelKey White"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "channels": [
+            "LED $pixelKey Red",
+            "LED $pixelKey Green",
+            "LED $pixelKey Blue",
+            "LED $pixelKey White"
+          ]
+        }
       ]
     }
   ]
