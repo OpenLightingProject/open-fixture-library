@@ -36,7 +36,15 @@
     }
   },
   "matrix": {
-    "pixelCount": [8, 1, 1]
+    "pixelKeys": [
+      [
+        ["1", "2", "3", "4", null, "5", "6", "7", "8"]
+      ]
+    ],
+    "pixelGroups": {
+      "Left Bar": ["1", "2", "3", "4"],
+      "Right Bar": ["5", "6", "7", "8"]
+    }
   },
   "availableChannels": {
     "Internal Programs": {
@@ -109,38 +117,6 @@
         }
       ]
     },
-    "Left Bar Tilt": {
-      "defaultValue": 180,
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "255deg",
-        "helpWanted": "Is the bar at 90° tilt angle for DMX value 180? The manual is unclear here."
-      }
-    },
-    "Left Bar Speed": {
-      "capability": {
-        "type": "PanTiltSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
-      }
-    },
-    "Right Bar Tilt": {
-      "defaultValue": 180,
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "255deg",
-        "helpWanted": "Is the bar at 90° tilt angle for DMX value 180? The manual is unclear here."
-      }
-    },
-    "Right Bar Speed": {
-      "capability": {
-        "type": "PanTiltSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
-      }
-    },
     "Master Dimmer": {
       "capability": {
         "type": "Intensity"
@@ -171,6 +147,22 @@
     }
   },
   "templateChannels": {
+    "$pixelKey Tilt": {
+      "defaultValue": 180,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg",
+        "helpWanted": "Is the bar at 0°/90°/180° tilt angles for DMX values 0/180/255, respectively? The manual is unclear here."
+      }
+    },
+    "$pixelKey Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
     "LED $pixelKey Red": {
       "capability": {
         "type": "ColorIntensity",
