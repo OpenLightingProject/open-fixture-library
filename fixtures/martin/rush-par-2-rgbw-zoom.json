@@ -1,0 +1,209 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RUSH PAR 2 RGBW Zoom",
+  "categories": ["Blinder", "Color Changer", "Dimmer", "Effect", "Strobe"],
+  "meta": {
+    "authors": ["stevebrush"],
+    "createDate": "2018-11-11",
+    "lastModifyDate": "2018-11-11"
+  },
+  "links": {
+    "manual": [
+      "https://www.martin.com/en/products/rush-par-2-rgbw-zoom#downloads"
+    ],
+    "productPage": [
+      "https://www.martin.com/en/products/rush-par-2-rgbw-zoom"
+    ]
+  },
+  "physical": {
+    "dimensions": [287, 329, 266],
+    "weight": 5.5,
+    "power": 151,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Zoom",
+      "degreesMinMax": [10, 60]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter + Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 131],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [132, 167],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "soundControlled": false,
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [168, 203],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [204, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": false,
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [11, 192],
+          "type": "ColorWheelIndex",
+          "indexStart": 1,
+          "indexEnd": 36
+        },
+        {
+          "dmxRange": [193, 214],
+          "type": "ColorWheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [215, 221],
+          "type": "ColorWheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [222, 243],
+          "type": "ColorWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "ColorPreset",
+          "comment": "Random fast"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "ColorPreset",
+          "comment": "Random medium"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ColorPreset",
+          "comment": "Random slow"
+        }
+      ]
+    },
+    "Zoom 2": {
+      "name": "Zoom",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    },
+    "Zoom 3": {
+      "name": "Zoom",
+      "defaultValue": 128,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5 channels",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom 3"
+      ]
+    },
+    {
+      "name": "9 channels",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Shutter + Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Wheel",
+        "Zoom 3"
+      ]
+    }
+  ]
+}
