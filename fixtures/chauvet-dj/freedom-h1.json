@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Freedom H1",
   "shortName": "Freedom",
-  "categories": ["Effect"],
+  "categories": ["Color Changer"],
   "meta": {
     "authors": ["JD"],
     "createDate": "2018-11-11",
@@ -20,9 +20,14 @@
     ]
   },
   "physical": {
-    "DMXconnector": "Wireless",
+    "dimensions": [75, 139, 97],
+    "weight": 0.7,
+    "power": 35,
     "bulb": {
-      "type": "LED"
+      "type": "1× 10W RGBAW+UV LED"
+    },
+    "lens": {
+      "degreesMinMax": [21, 32]
     }
   },
   "availableChannels": {
