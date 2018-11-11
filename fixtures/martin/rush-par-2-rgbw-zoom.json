@@ -85,7 +85,8 @@
         },
         {
           "dmxRange": [16, 131],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
@@ -367,7 +368,8 @@
         },
         {
           "dmxRange": [215, 221],
-          "type": "EffectSpeed",
+          "type": "Effect",
+          "effectPreset": "ColorJump",
           "speed": "stop"
         },
         {
