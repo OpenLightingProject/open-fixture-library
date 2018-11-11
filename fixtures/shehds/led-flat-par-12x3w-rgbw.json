@@ -1,0 +1,121 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Flat Par 12x3W RGBW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Potatoe"],
+    "createDate": "2018-11-11",
+    "lastModifyDate": "2018-11-11"
+  },
+  "links": {
+    "manual": [
+      "https://www.shehds.com/u_file/1809/file/3d1a81c31b.docx"
+    ],
+    "productPage": [
+      "https://www.shehds.com/led-par-12x3w-rgbw-led-stage-light-par-light-with-dmx512-for-disco-dj-party-decoration-stage-lighting-p0087.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [118, 105, 114],
+    "weight": 0.35,
+    "power": 36,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12x3W LEDs (3 red, 3 green, 3 blue, 3 white)"
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "10Hz",
+        "speedEnd": "0Hz",
+        "helpWanted": "At which DMX value is the LED constantly on/off (no strobe)?"
+      }
+    },
+    "Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Color pulse"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Function speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Program",
+        "Function speed"
+      ]
+    }
+  ]
+}
