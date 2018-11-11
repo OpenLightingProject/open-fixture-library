@@ -1,0 +1,246 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Duo Q-Beam Bar",
+  "categories": ["Pixel Bar", "Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2018-11-09",
+    "lastModifyDate": "2018-11-09"
+  },
+  "links": {
+    "manual": [
+      "https://www.dropbox.com/s/xi9w0jebel81c8q/Epsilon%20-%20DUO%20Q-BEAM%20BAR.pdf"
+    ],
+    "productPage": [
+      "http://www.epsilon-pro.com/lights-duo-q-beam-bar.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=NIiO0SIy4qU",
+      "https://www.youtube.com/watch?v=JkoFxqO17JM"
+    ]
+  },
+  "physical": {
+    "dimensions": [1065, 95, 177],
+    "weight": 8.7,
+    "power": 110,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "8 × 10W CREE RGBW LED"
+    },
+    "lens": {
+      "degreesMinMax": [3, 3]
+    },
+    "focus": {
+      "type": "Head",
+      "tiltMax": 180
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["1", "2", "3", "4", null, "5", "6", "7", "8"]
+      ]
+    ],
+    "pixelGroups": {
+      "Left Bar": ["1", "2", "3", "4"],
+      "Right Bar": ["5", "6", "7", "8"]
+    }
+  },
+  "availableChannels": {
+    "Internal Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Effect",
+          "effectName": "Built-in program Show 1"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Effect",
+          "effectName": "Built-in program Show 2"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Effect",
+          "effectName": "Built-in program Show 3"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Effect",
+          "effectName": "Built-in program Show 4"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Effect",
+          "effectName": "Built-in program Show 5"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "effectName": "Built-in program Show 6"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Built-in program Show 7"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "effectName": "Built-in program Show 8"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Effect",
+          "effectName": "Built-in program Show 9"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Effect",
+          "effectName": "Built-in program Show 10"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "Effect",
+          "effectName": "Sound active mode",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Is the program speed slow…fast or fast…slow?"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [15, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "$pixelKey Tilt": {
+      "defaultValue": 180,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg",
+        "helpWanted": "Is the bar at 0°/90°/180° tilt angles for DMX values 0/180/255, respectively? The manual is unclear here."
+      }
+    },
+    "$pixelKey Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "LED $pixelKey Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "LED $pixelKey Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "LED $pixelKey Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "LED $pixelKey White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Internal Programs"
+      ]
+    },
+    {
+      "name": "36-channel",
+      "shortName": "36ch",
+      "channels": [
+        "Left Bar Tilt",
+        "Left Bar Speed",
+        "Right Bar Tilt",
+        "Right Bar Speed",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "LED $pixelKey Red",
+            "LED $pixelKey Green",
+            "LED $pixelKey Blue",
+            "LED $pixelKey White"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "40-channel",
+      "shortName": "40ch",
+      "channels": [
+        "Left Bar Tilt",
+        "Left Bar Speed",
+        "Right Bar Tilt",
+        "Right Bar Speed",
+        "Master Dimmer",
+        "Internal Programs",
+        "Program Speed",
+        "Strobe",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "LED $pixelKey Red",
+            "LED $pixelKey Green",
+            "LED $pixelKey Blue",
+            "LED $pixelKey White"
+          ]
+        }
+      ]
+    }
+  ]
+}
