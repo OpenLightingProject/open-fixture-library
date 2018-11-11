@@ -528,16 +528,16 @@
   },
   "modes": [
     {
-      "name": "2-channel",
-      "shortName": "2ch",
+      "name": "Macros / Dimmer",
+      "shortName": "D2",
       "channels": [
         "Macros",
         "Dimmer / Macro Speed / Mic Sensitivity"
       ]
     },
     {
-      "name": "4-channel",
-      "shortName": "4ch",
+      "name": "RGBD",
+      "shortName": "F4",
       "channels": [
         "Red",
         "Green",
@@ -546,8 +546,8 @@
       ]
     },
     {
-      "name": "5-channel",
-      "shortName": "5ch",
+      "name": "RGBDW",
+      "shortName": "G5",
       "channels": [
         "Red",
         "Green",
@@ -557,8 +557,8 @@
       ]
     },
     {
-      "name": "6-channel",
-      "shortName": "6ch",
+      "name": "RGBWAUV",
+      "shortName": "A6",
       "channels": [
         "Red",
         "Green",
@@ -569,8 +569,8 @@
       ]
     },
     {
-      "name": "7-channel",
-      "shortName": "7ch",
+      "name": "RGBWAUV / Dimmer and Strobe",
+      "shortName": "B7",
       "channels": [
         "Red",
         "Green",
@@ -582,8 +582,8 @@
       ]
     },
     {
-      "name": "8-channel",
-      "shortName": "8ch",
+      "name": "RGBWAUV / Dimmer / Strobe",
+      "shortName": "C8",
       "channels": [
         "Red",
         "Green",
@@ -596,8 +596,8 @@
       ]
     },
     {
-      "name": "9-channel",
-      "shortName": "9ch",
+      "name": "RGBWAUV / Dimmer / Strobe / Macros",
+      "shortName": "E9",
       "channels": [
         "Red",
         "Green",
