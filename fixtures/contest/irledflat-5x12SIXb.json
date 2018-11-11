@@ -15,6 +15,18 @@
       "http://www.contest-lighting.com/en/index.php?code=H10142&cat1=l10000&cat2=l24000&cat3=l12008"
     ]
   },
+  "physical": {
+    "dimensions": [240, 265, 110],
+    "weight": 2.8,
+    "power": 80,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "5x 12W RGBAWUV LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
   "availableChannels": {
     "Red": {
       "capability": {
