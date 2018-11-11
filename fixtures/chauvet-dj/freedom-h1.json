@@ -31,6 +31,11 @@
     }
   },
   "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
     "Red": {
       "defaultValue": "0%",
       "capability": {
@@ -72,6 +77,243 @@
         "type": "ColorIntensity",
         "color": "UV"
       }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "ColorPreset",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffff00"]
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "ColorPreset",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#00ff00"]
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "ColorPreset",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#00ffff"]
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "ColorPreset",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "ColorPreset",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "ColorPreset",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#ff0000"]
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "ColorPreset",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffffff"]
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "ColorPreset",
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [171, 200],
+          "type": "ColorPreset",
+          "comment": "RGBA",
+          "colors": ["#ffdf80"]
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "ColorPreset",
+          "comment": "Color 1",
+          "helpWanted": "What are Colors 1 to 11 (names and hex values)?"
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "ColorPreset",
+          "comment": "Color 2"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "ColorPreset",
+          "comment": "Color 3"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "ColorPreset",
+          "comment": "Color 4"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "ColorPreset",
+          "comment": "Color 5"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "ColorPreset",
+          "comment": "Color 6"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "ColorPreset",
+          "comment": "Color 7"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "ColorPreset",
+          "comment": "Color 8"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorPreset",
+          "comment": "Color 9"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorPreset",
+          "comment": "Color 10"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "Color 11"
+        }
+      ]
+    },
+    "Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [11, 60],
+          "type": "Effect",
+          "effectName": "Auto program 1",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [61, 120],
+          "type": "Effect",
+          "effectName": "Auto program 2",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [121, 180],
+          "type": "Effect",
+          "effectName": "Auto program 3",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [181, 240],
+          "type": "Effect",
+          "effectName": "Auto program 4",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Effect",
+          "effectName": "Sound-active program",
+          "soundControlled": true,
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "off"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Dimmer Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction",
+          "comment": "Preset dimmer speed from display menu"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Maintenance",
+          "comment": "Dimmer speed off"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Maintenance",
+          "comment": "Dimmer speed fast"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Maintenance",
+          "comment": "Dimmer speed medium"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Maintenance",
+          "comment": "Dimmer speed slow"
+        }
+      ]
     }
   },
   "modes": [
