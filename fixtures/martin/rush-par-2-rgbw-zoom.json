@@ -71,7 +71,7 @@
         "type": "Intensity"
       }
     },
-    "Shutter + Strobe": {
+    "Shutter / Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 7],
@@ -87,28 +87,41 @@
           "dmxRange": [16, 131],
           "type": "StrobeSpeed",
           "speedStart": "slow",
-          "speedEnd": "slow"
+          "speedEnd": "fast"
         },
         {
-          "dmxRange": [132, 167],
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [140, 181],
           "type": "ShutterStrobe",
           "shutterEffect": "RampUp",
-          "soundControlled": false,
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
-          "dmxRange": [168, 203],
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [190, 231],
           "type": "ShutterStrobe",
           "shutterEffect": "RampDown",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
-          "dmxRange": [204, 247],
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [240, 247],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "soundControlled": false,
           "randomTiming": true
         },
         {
@@ -185,7 +198,7 @@
       "channels": [
         "Dimmer",
         "Dimmer fine",
-        "Shutter + Strobe",
+        "Shutter / Strobe",
         "Red",
         "Green",
         "Blue",
