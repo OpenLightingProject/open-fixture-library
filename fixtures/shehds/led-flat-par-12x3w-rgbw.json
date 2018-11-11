@@ -15,6 +15,18 @@
       "https://www.shehds.com/led-par-12x3w-rgbw-led-stage-light-par-light-with-dmx512-for-disco-dj-party-decoration-stage-lighting-p0087.html"
     ]
   },
+  "physical": {
+    "dimensions": [118, 105, 114],
+    "weight": 0.35,
+    "power": 36,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12x3W LEDs (3 red, 3 green, 3 blue, 3 white)"
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
   "availableChannels": {
     "Dimmer": {
       "capability": {
