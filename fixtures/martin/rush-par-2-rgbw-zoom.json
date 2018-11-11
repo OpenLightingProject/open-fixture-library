@@ -61,8 +61,8 @@
       "defaultValue": 128,
       "capability": {
         "type": "Zoom",
-        "angleStart": "wide",
-        "angleEnd": "narrow"
+        "angleStart": "60deg",
+        "angleEnd": "10deg"
       }
     },
     "Dimmer": {
@@ -165,23 +165,6 @@
           "comment": "Random slow"
         }
       ]
-    },
-    "Zoom 2": {
-      "name": "Zoom",
-      "capability": {
-        "type": "Zoom",
-        "angleStart": "wide",
-        "angleEnd": "narrow"
-      }
-    },
-    "Zoom 3": {
-      "name": "Zoom",
-      "defaultValue": 128,
-      "capability": {
-        "type": "Zoom",
-        "angleStart": "wide",
-        "angleEnd": "narrow"
-      }
     }
   },
   "modes": [
@@ -192,7 +175,7 @@
         "Green",
         "Blue",
         "White",
-        "Zoom 3"
+        "Zoom"
       ]
     },
     {
@@ -206,7 +189,7 @@
         "Blue",
         "White",
         "Color Wheel",
-        "Zoom 3"
+        "Zoom"
       ]
     }
   ]
