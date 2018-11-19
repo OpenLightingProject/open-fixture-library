@@ -208,7 +208,7 @@ function getChannelPreset(channel) {
   // TODO: try to also detect the `cap => false` presets
   const channelPresets = {
     IntensityMasterDimmer: cap => false,
-    IntensityDimmer: cap => cap.type === `Intensity`,
+    IntensityDimmer: cap => cap.type === `Intensity` && cap.brightness[0].number < cap.brightness[1].number,
     IntensityRed: cap => capabilityHelpers.isColorIntensity(cap, `Red`),
     IntensityGreen: cap => capabilityHelpers.isColorIntensity(cap, `Green`),
     IntensityBlue: cap => capabilityHelpers.isColorIntensity(cap, `Blue`),
