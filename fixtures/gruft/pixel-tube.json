@@ -5,13 +5,16 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2018-09-24",
-    "lastModifyDate": "2018-09-24"
+    "lastModifyDate": "2018-11-19"
   },
   "physical": {
-    "dimensions": [1000, 30, 40],
+    "dimensions": [1000, 30, 36.5],
     "power": 10,
     "bulb": {
       "type": "30x WS2812B RGB LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [270, 270]
     },
     "focus": {
       "type": "Fixed"
@@ -1052,15 +1055,15 @@
     "Program Speed": {
       "capabilities": [
         {
-          "dmxRange": [0, 9],
+          "dmxRange": [0, 245],
           "type": "EffectSpeed",
-          "speed": "stop"
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
-          "dmxRange": [10, 255],
+          "dmxRange": [246, 255],
           "type": "EffectSpeed",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speed": "stop"
         }
       ]
     },
@@ -1166,9 +1169,10 @@
   },
   "templateChannels": {
     "Intensity $pixelKey": {
-      "defaultValue": 255,
       "capability": {
-        "type": "Intensity"
+        "type": "Intensity",
+        "brightnessStart": "bright",
+        "brightnessEnd": "off"
       }
     },
     "Red $pixelKey": {
