@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Chinese led par",
+  "shortName": "ledpar",
+  "categories": ["Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Wout Clarysse"],
+    "createDate": "2018-11-19",
+    "lastModifyDate": "2018-11-19"
+  },
+  "links": {
+    "manual": [
+      "http://help.millumin.com/?page=01_tutorials_basics/light_beginner&keywords=light#pagePart"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "476Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Shutter / Strobe"
+      ]
+    }
+  ]
+}
