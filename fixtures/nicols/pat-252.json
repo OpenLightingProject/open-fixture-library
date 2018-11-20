@@ -1,0 +1,270 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Pat 252",
+  "categories": ["Scanner"],
+  "meta": {
+    "authors": ["MIE", "Mikael"],
+    "createDate": "2018-11-20",
+    "lastModifyDate": "2018-11-20",
+    "importPlugin": {
+      "plugin": "qlcplus_4.11.2",
+      "date": "2018-11-20",
+      "comment": "created by Q Light Controller Plus (version 4.11.2)"
+    }
+  },
+  "physical": {
+    "dimensions": [155, 500, 200],
+    "weight": 11,
+    "power": 350,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "ELC 250W"
+    },
+    "lens": {
+      "name": "Other"
+    },
+    "focus": {
+      "type": "Mirror",
+      "panMax": 180,
+      "tiltMax": 60
+    }
+  },
+  "availableChannels": {
+    "Shutter": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 16],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Stopped"
+        },
+        {
+          "dmxRange": [17, 92],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Gobo flashing"
+        },
+        {
+          "dmxRange": [93, 136],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Color"
+        },
+        {
+          "dmxRange": [137, 196],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Gobo+Color"
+        },
+        {
+          "dmxRange": [197, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Gobo shaking"
+        }
+      ]
+    },
+    "Gobo": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "GoboIndex",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "GoboIndex",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "GoboIndex",
+          "comment": "Gobo 1"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "GoboIndex",
+          "comment": "Gobo 2"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "GoboIndex",
+          "comment": "Gobo 3"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "GoboIndex",
+          "comment": "Gobo 4"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "GoboIndex",
+          "comment": "Gobo 5"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "GoboIndex",
+          "comment": "Gobo 6"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "GoboIndex",
+          "comment": "Gobo 7"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "GoboIndex",
+          "comment": "Gobo 8"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "GoboIndex",
+          "comment": "Gobo 9"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "GoboIndex",
+          "comment": "Gobo 10"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "GoboIndex",
+          "comment": "Gobo 11"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "GoboIndex",
+          "comment": "Gobo 12"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "GoboIndex",
+          "comment": "Gobo 13"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "GoboIndex",
+          "comment": "Gobo 14"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "GoboIndex",
+          "comment": "Slow to fast rotation"
+        }
+      ]
+    },
+    "Color": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [12, 22],
+          "type": "ColorPreset",
+          "colors": ["#58b848"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [23, 33],
+          "type": "ColorPreset",
+          "colors": ["#f46f34"],
+          "comment": "Orange 306"
+        },
+        {
+          "dmxRange": [34, 44],
+          "type": "ColorPreset",
+          "colors": ["#95d8e0"],
+          "comment": "Light blue"
+        },
+        {
+          "dmxRange": [45, 55],
+          "type": "ColorPreset",
+          "colors": ["#e8ea7c"],
+          "comment": "Y52-Yellow"
+        },
+        {
+          "dmxRange": [56, 66],
+          "type": "ColorPreset",
+          "colors": ["#ef332d"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [67, 77],
+          "type": "ColorPreset",
+          "colors": ["#73479a"],
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [78, 88],
+          "type": "ColorPreset",
+          "colors": ["#f097c0"],
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [89, 99],
+          "type": "ColorPreset",
+          "colors": ["#39b773"],
+          "comment": "Light green"
+        },
+        {
+          "dmxRange": [100, 110],
+          "type": "ColorPreset",
+          "colors": ["#1857a7"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [111, 121],
+          "type": "ColorPreset",
+          "colors": ["#e6e74d"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [122, 128],
+          "type": "ColorPreset",
+          "colors": ["#a65a9d"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "ColorPreset",
+          "comment": "Color rotation slow to fast"
+        }
+      ]
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Shutter",
+        "Gobo",
+        "Color",
+        "Pan",
+        "Tilt"
+      ]
+    }
+  ]
+}
