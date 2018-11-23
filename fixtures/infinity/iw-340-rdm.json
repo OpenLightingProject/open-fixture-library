@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2018-11-07",
-    "lastModifyDate": "2018-11-07"
+    "lastModifyDate": "2018-11-23"
   },
   "links": {
     "manual": [
@@ -130,10 +130,9 @@
           "dmxRange": [145, 195],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "0Hz",
-          "speedEnd": "20Hz",
-          "randomTiming": true,
-          "helpWanted": "Is this really slow…fast? (All other strobe capabilities are fast…slow.)"
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [196, 199],
