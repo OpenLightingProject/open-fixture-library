@@ -43,8 +43,7 @@
         {
           "dmxRange": [0, 16],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Stopped"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [17, 92],
@@ -52,7 +51,7 @@
           "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast",
-          "comment": "Gobo flashing"
+          "comment": "Gobo"
         },
         {
           "dmxRange": [93, 136],
@@ -68,13 +67,11 @@
           "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast",
-          "comment": "Gobo+Color"
+          "comment": "Gobo + Color"
         },
         {
           "dmxRange": [197, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Gobo shaking"
+          "type": "GoboShake"
         }
       ]
     },
@@ -82,88 +79,90 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "GoboIndex",
-          "comment": "Blackout"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [8, 15],
           "type": "GoboIndex",
+          "index": 0,
           "comment": "Open"
         },
         {
           "dmxRange": [16, 23],
           "type": "GoboIndex",
-          "comment": "Gobo 1"
+          "index": 1
         },
         {
           "dmxRange": [24, 31],
           "type": "GoboIndex",
-          "comment": "Gobo 2"
+          "index": 2
         },
         {
           "dmxRange": [32, 39],
           "type": "GoboIndex",
-          "comment": "Gobo 3"
+          "index": 3
         },
         {
           "dmxRange": [40, 47],
           "type": "GoboIndex",
-          "comment": "Gobo 4"
+          "index": 4
         },
         {
           "dmxRange": [48, 55],
           "type": "GoboIndex",
-          "comment": "Gobo 5"
+          "index": 5
         },
         {
           "dmxRange": [56, 63],
           "type": "GoboIndex",
-          "comment": "Gobo 6"
+          "index": 6
         },
         {
           "dmxRange": [64, 71],
           "type": "GoboIndex",
-          "comment": "Gobo 7"
+          "index": 7
         },
         {
           "dmxRange": [72, 79],
           "type": "GoboIndex",
-          "comment": "Gobo 8"
+          "index": 8
         },
         {
           "dmxRange": [80, 87],
           "type": "GoboIndex",
-          "comment": "Gobo 9"
+          "index": 9
         },
         {
           "dmxRange": [88, 95],
           "type": "GoboIndex",
-          "comment": "Gobo 10"
+          "index": 10
         },
         {
           "dmxRange": [96, 103],
           "type": "GoboIndex",
-          "comment": "Gobo 11"
+          "index": 11
         },
         {
           "dmxRange": [104, 111],
           "type": "GoboIndex",
-          "comment": "Gobo 12"
+          "index": 12
         },
         {
           "dmxRange": [112, 119],
           "type": "GoboIndex",
-          "comment": "Gobo 13"
+          "index": 13
         },
         {
           "dmxRange": [120, 127],
           "type": "GoboIndex",
-          "comment": "Gobo 14"
+          "index": 14
         },
         {
           "dmxRange": [128, 255],
-          "type": "GoboIndex",
-          "comment": "Slow to fast rotation"
+          "type": "GoboWheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         }
       ]
     },
@@ -171,95 +170,108 @@
       "capabilities": [
         {
           "dmxRange": [0, 11],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 0,
           "colors": ["#ffffff"],
-          "comment": "White"
+          "comment": "Open"
         },
         {
           "dmxRange": [12, 22],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 1,
           "colors": ["#58b848"],
           "comment": "Green"
         },
         {
           "dmxRange": [23, 33],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 2,
           "colors": ["#f46f34"],
           "comment": "Orange 306"
         },
         {
           "dmxRange": [34, 44],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 3,
           "colors": ["#95d8e0"],
           "comment": "Light blue"
         },
         {
           "dmxRange": [45, 55],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 4,
           "colors": ["#e8ea7c"],
           "comment": "Y52-Yellow"
         },
         {
           "dmxRange": [56, 66],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 5,
           "colors": ["#ef332d"],
           "comment": "Red"
         },
         {
           "dmxRange": [67, 77],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 6,
           "colors": ["#73479a"],
           "comment": "Purple"
         },
         {
           "dmxRange": [78, 88],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 7,
           "colors": ["#f097c0"],
           "comment": "Pink"
         },
         {
           "dmxRange": [89, 99],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 8,
           "colors": ["#39b773"],
           "comment": "Light green"
         },
         {
           "dmxRange": [100, 110],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 9,
           "colors": ["#1857a7"],
           "comment": "Blue"
         },
         {
           "dmxRange": [111, 121],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 10,
           "colors": ["#e6e74d"],
           "comment": "Yellow"
         },
         {
           "dmxRange": [122, 128],
-          "type": "ColorPreset",
+          "type": "ColorWheelIndex",
+          "index": 11,
           "colors": ["#a65a9d"],
           "comment": "Magenta"
         },
         {
           "dmxRange": [129, 255],
-          "type": "ColorPreset",
-          "comment": "Color rotation slow to fast"
+          "type": "ColorWheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         }
       ]
     },
     "Pan": {
       "capability": {
         "type": "Pan",
-        "angleStart": "0%",
-        "angleEnd": "100%"
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
       }
     },
     "Tilt": {
       "capability": {
         "type": "Tilt",
-        "angleStart": "0%",
-        "angleEnd": "100%"
+        "angleStart": "0deg",
+        "angleEnd": "60deg"
       }
     }
   },
