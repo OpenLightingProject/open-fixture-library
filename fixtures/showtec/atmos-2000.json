@@ -1,0 +1,48 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Atmos 2000",
+  "shortName": "ShowtecAtm2000",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-11-24",
+    "lastModifyDate": "2018-11-24"
+  },
+  "comment": "Ordercode 60873",
+  "links": {
+    "manual": [
+      "https://www.highlite.nl/silver.download/Documents@extern@Manuals/60873_MANUAL_GB_V1.pdf"
+    ],
+    "video": [
+      "https://youtu.be/0WMvc7GCGFQ"
+    ]
+  },
+  "physical": {
+    "dimensions": [320, 320, 500],
+    "weight": 7.04,
+    "power": 2000,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Fog": {
+      "defaultValue": 0,
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Fog",
+        "fogType": "Fog",
+        "fogOutputStart": "0m\\^3/min",
+        "fogOutputEnd": "1133m\\^3/min",
+        "comment": "0…40000ft³/min"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Fog"
+      ]
+    }
+  ]
+}
