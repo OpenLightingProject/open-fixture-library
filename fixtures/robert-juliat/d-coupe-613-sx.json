@@ -1,0 +1,46 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Découpe 613 sx",
+  "shortName": "613",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["dariovideo"],
+    "createDate": "2018-11-26",
+    "lastModifyDate": "2018-11-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.robertjuliat.com/Product_Specifications/Fiches_FR/Standard/DSFR045_613SX.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [565, 415, 330],
+    "weight": 11,
+    "power": 1000,
+    "bulb": {
+      "type": "halogen",
+      "colorTemperature": 3050,
+      "lumens": 21000
+    },
+    "lens": {
+      "degreesMinMax": [28, 54]
+    }
+  },
+  "availableChannels": {
+    "613sx": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "découpe 613",
+      "shortName": "Robert Juliat 613",
+      "channels": [
+        "613sx"
+      ]
+    }
+  ]
+}
