@@ -47,7 +47,7 @@
     },
     "american-dj/fog-fury-jett-pro": {
       "name": "Fog Fury Jett Pro",
-      "lastActionDate": "2018-08-09",
+      "lastActionDate": "2018-11-26",
       "lastAction": "modified"
     },
     "american-dj/galaxian-3d": {
@@ -412,8 +412,8 @@
     },
     "eurolite/led-tmh-x12": {
       "name": "LED TMH-X12",
-      "lastActionDate": "2018-11-08",
-      "lastAction": "created"
+      "lastActionDate": "2018-11-23",
+      "lastAction": "modified"
     },
     "eurolite/led-tmh-x25": {
       "name": "LED TMH-X25",
@@ -490,6 +490,11 @@
       "lastActionDate": "2018-08-09",
       "lastAction": "modified"
     },
+    "glp/impression-fr1": {
+      "name": "impression FR1",
+      "lastActionDate": "2018-11-26",
+      "lastAction": "created"
+    },
     "glp/impression-laser": {
       "name": "impression Laser",
       "lastActionDate": "2018-08-09",
@@ -527,8 +532,8 @@
     },
     "infinity/iw-340-rdm": {
       "name": "iW-340 RDM",
-      "lastActionDate": "2018-11-07",
-      "lastAction": "created"
+      "lastActionDate": "2018-11-23",
+      "lastAction": "modified"
     },
     "jb-lighting/varyscan-p7": {
       "name": "Varyscan P7",
@@ -689,6 +694,11 @@
       "name": "LED BAR 123 FC IP",
       "lastActionDate": "2018-08-24",
       "lastAction": "modified"
+    },
+    "nicols/pat-252": {
+      "name": "PAT 252",
+      "lastActionDate": "2018-11-23",
+      "lastAction": "created"
     },
     "orion/orcan2": {
       "name": "ORCAN2",
@@ -1040,6 +1050,7 @@
       "ip-spot-bat"
     ],
     "glp": [
+      "impression-fr1",
       "impression-laser",
       "impression-spot-one",
       "impression-x4-bar-10",
@@ -1108,7 +1119,8 @@
       "ivl-carre"
     ],
     "nicols": [
-      "led-bar-123-fc-ip"
+      "led-bar-123-fc-ip",
+      "pat-252"
     ],
     "orion": [
       "orcan2"
@@ -1280,6 +1292,7 @@
       "generic/rgbd-fader",
       "generic/rgbw-fader",
       "ghost/ip-spot-bat",
+      "glp/impression-fr1",
       "glp/impression-laser",
       "glp/impression-spot-one",
       "glp/impression-x4-bar-10",
@@ -1312,6 +1325,7 @@
       "martin/rush-par-2-rgbw-zoom",
       "minuit-une/ivl-carre",
       "nicols/led-bar-123-fc-ip",
+      "nicols/pat-252",
       "orion/orcan2",
       "powerlighting/wash-84w",
       "prolights/diamond19",
@@ -1448,6 +1462,7 @@
       "eurolite/led-tmh-x25",
       "futurelight/dmh-75-i-led-moving-head",
       "generic/pan-tilt",
+      "glp/impression-fr1",
       "glp/impression-laser",
       "glp/impression-spot-one",
       "glp/impression-x4-bar-10",
@@ -1514,6 +1529,7 @@
       "futurelight/sc-250-scanner",
       "lightmaxx/dj-scan-led",
       "martin/roboscan-812",
+      "nicols/pat-252",
       "robe/dj-scan-250-xt"
     ],
     "Smoke": [
@@ -1669,6 +1685,7 @@
       "futurelight/pro-slim-par-7-hcl",
       "futurelight/sc-250-scanner",
       "futurelight/stb-648-led-strobe-smd-5050",
+      "glp/impression-fr1",
       "glp/impression-laser",
       "glp/impression-spot-one",
       "jb-lighting/varyscan-p7",
@@ -1803,6 +1820,12 @@
     ],
     "Massimo Callegari": [
       "clay-paky/sharpy"
+    ],
+    "MIE": [
+      "nicols/pat-252"
+    ],
+    "Mikael": [
+      "nicols/pat-252"
     ],
     "Millumin": [
       "powerlighting/wash-84w"
@@ -2003,6 +2026,11 @@
     "venue": "#78cc33"
   },
   "lastUpdated": [
+    "glp/impression-fr1",
+    "american-dj/fog-fury-jett-pro",
+    "nicols/pat-252",
+    "eurolite/led-tmh-x12",
+    "infinity/iw-340-rdm",
     "gruft/pixel-tube",
     "chauvet-dj/freedom-h1",
     "contest/irledflat-5x12SIXb",
@@ -2011,8 +2039,6 @@
     "shehds/led-flat-par-12x3w-rgbw",
     "epsilon/duo-q-beam-bar",
     "eurolite/led-h2o",
-    "eurolite/led-tmh-x12",
-    "infinity/iw-340-rdm",
     "lightmaxx/easy-wash-quad-led",
     "showtec/club-par-12-4-rgbw",
     "showtec/sunstrip-active-mkii",
@@ -2104,7 +2130,6 @@
     "american-dj/boom-box-fx2",
     "american-dj/dotz-par",
     "american-dj/flat-par-qa12xs",
-    "american-dj/fog-fury-jett-pro",
     "american-dj/galaxian-3d",
     "american-dj/inno-pocket-fusion",
     "american-dj/quad-phase-hp",
