@@ -492,7 +492,7 @@
     },
     "glp/impression-fr1": {
       "name": "impression FR1",
-      "lastActionDate": "2018-11-25",
+      "lastActionDate": "2018-11-26",
       "lastAction": "created"
     },
     "glp/impression-laser": {
@@ -694,6 +694,11 @@
       "name": "LED BAR 123 FC IP",
       "lastActionDate": "2018-08-24",
       "lastAction": "modified"
+    },
+    "nicols/pat-252": {
+      "name": "PAT 252",
+      "lastActionDate": "2018-11-23",
+      "lastAction": "created"
     },
     "orion/orcan2": {
       "name": "ORCAN2",
@@ -1114,7 +1119,8 @@
       "ivl-carre"
     ],
     "nicols": [
-      "led-bar-123-fc-ip"
+      "led-bar-123-fc-ip",
+      "pat-252"
     ],
     "orion": [
       "orcan2"
@@ -1319,6 +1325,7 @@
       "martin/rush-par-2-rgbw-zoom",
       "minuit-une/ivl-carre",
       "nicols/led-bar-123-fc-ip",
+      "nicols/pat-252",
       "orion/orcan2",
       "powerlighting/wash-84w",
       "prolights/diamond19",
@@ -1522,6 +1529,7 @@
       "futurelight/sc-250-scanner",
       "lightmaxx/dj-scan-led",
       "martin/roboscan-812",
+      "nicols/pat-252",
       "robe/dj-scan-250-xt"
     ],
     "Smoke": [
@@ -1813,6 +1821,12 @@
     "Massimo Callegari": [
       "clay-paky/sharpy"
     ],
+    "MIE": [
+      "nicols/pat-252"
+    ],
+    "Mikael": [
+      "nicols/pat-252"
+    ],
     "Millumin": [
       "powerlighting/wash-84w"
     ],
@@ -2013,6 +2027,7 @@
   },
   "lastUpdated": [
     "glp/impression-fr1",
+    "nicols/pat-252",
     "eurolite/led-tmh-x12",
     "infinity/iw-340-rdm",
     "gruft/pixel-tube",
