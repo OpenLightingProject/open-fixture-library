@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Découpe 613 sx",
-  "shortName": "613",
+  "name": "613SX",
+  "shortName": "RJ613SX",
   "categories": ["Dimmer"],
   "meta": {
     "authors": ["dariovideo"],
@@ -14,11 +14,11 @@
     ]
   },
   "physical": {
-    "dimensions": [565, 415, 330],
+    "dimensions": [330, 415, 565],
     "weight": 11,
     "power": 1000,
     "bulb": {
-      "type": "halogen",
+      "type": "Tungsten T19",
       "colorTemperature": 3050,
       "lumens": 21000
     },
@@ -27,19 +27,17 @@
     }
   },
   "availableChannels": {
-    "613sx": {
-      "defaultValue": 1,
+    "Dimmer": {
       "capability": {
-        "type": "NoFunction"
+        "type": "Intensity"
       }
     }
   },
   "modes": [
     {
-      "name": "découpe 613",
-      "shortName": "Robert Juliat 613",
+      "name": "Dimmer",
       "channels": [
-        "613sx"
+        "Dimmer"
       ]
     }
   ]
