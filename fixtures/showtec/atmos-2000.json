@@ -5,13 +5,13 @@
   "categories": ["Smoke"],
   "meta": {
     "authors": ["Felix Edelmann"],
-    "createDate": "2018-11-24",
-    "lastModifyDate": "2018-11-24"
+    "createDate": "2018-11-27",
+    "lastModifyDate": "2018-11-27"
   },
   "comment": "Ordercode 60873",
   "links": {
     "manual": [
-      "https://www.highlite.nl/silver.download/Documents@extern@Manuals/60873_MANUAL_GB_V1.pdf"
+      "https://www.highlite.com/media/attachments/MANUAL/60873_MANUAL_GB_V1.pdf"
     ],
     "video": [
       "https://youtu.be/0WMvc7GCGFQ"
@@ -30,9 +30,8 @@
       "capability": {
         "type": "Fog",
         "fogType": "Fog",
-        "fogOutputStart": "0m\\^3/min",
-        "fogOutputEnd": "1133m\\^3/min",
-        "comment": "0…40000ft³/min"
+        "fogOutputStart": "0m^3/min",
+        "fogOutputEnd": "1133m^3/min"
       }
     }
   },
