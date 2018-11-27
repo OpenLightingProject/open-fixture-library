@@ -151,7 +151,7 @@ export default {
       for (const unitName of this.unitNames) {
         const unitSchema = this.properties.units[unitName];
 
-        const unitStr = `pattern` in unitSchema ? unitSchema.pattern.replace(/^.*\)\??(.*?)\$$/, `$1`) : ``;
+        const unitStr = `pattern` in unitSchema ? unitSchema.pattern.replace(/^.*\)\??(.*?)\$$/, `$1`).replace(`\\`, ``) : ``;
         const numberSchema = `pattern` in unitSchema ? this.properties.units.number : unitSchema;
 
         units[unitName] = {
@@ -282,7 +282,7 @@ function getUnitDisplayString(unitString) {
     return `number`;
   }
 
-  return unitString;
+  return unitString.replace(`^2`, `²`).replace(`^3`, `³`);
 }
 
 /**
