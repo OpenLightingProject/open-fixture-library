@@ -282,7 +282,7 @@ function getUnitDisplayString(unitString) {
     return `number`;
   }
 
-  return unitString;
+  return unitString.replace(`^2`, `²`).replace(`^3`, `³`);
 }
 
 /**
