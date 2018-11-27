@@ -1,0 +1,544 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "impression FR1",
+  "shortName": "GLPFR1",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2018-11-26",
+    "lastModifyDate": "2018-11-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.glp.de/en/products?format=raw&task=download&fid=262"
+    ],
+    "productPage": [
+      "https://www.glp.de/en/products/moving-lights-led/impression-fr1"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=m7rz8ALXmkc",
+      "https://www.youtube.com/watch?v=zP2-DSfA1y4",
+      "https://www.youtube.com/watch?v=OobOrRDEdDo"
+    ]
+  },
+  "physical": {
+    "dimensions": [190, 355, 140],
+    "weight": 4,
+    "power": 80,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "Osram Ostar RGBW LED"
+    },
+    "lens": {
+      "name": "Micro-Fresnel",
+      "degreesMinMax": [3.7, 35]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": "infinite",
+      "tiltMax": 220
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "220deg"
+      }
+    },
+    "Color Presets": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"],
+          "colorTemperature": "warm"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Turquoise",
+          "colors": ["#00ffbb"]
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "comment": "Lavender",
+          "colors": ["#e6e6fa"]
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "comment": "Mauve",
+          "colors": ["#e0b0ff"]
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ffc0cb"]
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "colorTemperature": "CTO"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "colorTemperature": "CTB"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 223],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Random colors",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [16, 47],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [48, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [80, 111],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [112, 143],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [144, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "blackout pause"
+        },
+        {
+          "dmxRange": [200, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "14Hz"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CTC": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "10000K",
+        "colorTemperatureEnd": "2500K"
+      }
+    },
+    "Settings": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 38],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [39, 41],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer curve extra-soft"
+        },
+        {
+          "dmxRange": [42, 44],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer curve soft"
+        },
+        {
+          "dmxRange": [45, 47],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer curve linear"
+        },
+        {
+          "dmxRange": [48, 56],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [57, 59],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Display auto-off"
+        },
+        {
+          "dmxRange": [60, 62],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Display permanently on"
+        },
+        {
+          "dmxRange": [63, 65],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Display invert off"
+        },
+        {
+          "dmxRange": [66, 68],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Display invert on"
+        },
+        {
+          "dmxRange": [69, 71],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [72, 74],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "No DMX: Blackout"
+        },
+        {
+          "dmxRange": [75, 77],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "No DMX: Hold current effect"
+        },
+        {
+          "dmxRange": [78, 86],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [87, 89],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fans temperature-regulated"
+        },
+        {
+          "dmxRange": [90, 92],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fans constant high"
+        },
+        {
+          "dmxRange": [93, 95],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fans constant medium"
+        },
+        {
+          "dmxRange": [96, 98],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fans constant low"
+        },
+        {
+          "dmxRange": [99, 104],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [105, 107],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "P/T position feedback off"
+        },
+        {
+          "dmxRange": [108, 110],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "P/T position feedback on"
+        },
+        {
+          "dmxRange": [111, 116],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [117, 119],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Tilt invert off"
+        },
+        {
+          "dmxRange": [120, 122],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Tilt invert on"
+        },
+        {
+          "dmxRange": [123, 125],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Pan invert off"
+        },
+        {
+          "dmxRange": [126, 128],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Pan invert on"
+        },
+        {
+          "dmxRange": [129, 131],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Zoom invert off"
+        },
+        {
+          "dmxRange": [132, 134],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Zoom invert off"
+        },
+        {
+          "dmxRange": [135, 149],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [150, 186],
+          "type": "Maintenance",
+          "parameterStart": 582,
+          "parameterEnd": 618,
+          "hold": "5s",
+          "comment": "PWM frequency (Hz)"
+        },
+        {
+          "dmxRange": [187, 191],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [192, 194],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "PWM frequency 1200Hz"
+        },
+        {
+          "dmxRange": [195, 197],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "PWM frequency 2400Hz"
+        },
+        {
+          "dmxRange": [198, 200],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "PWM frequency 4800Hz"
+        },
+        {
+          "dmxRange": [201, 203],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "PWM frequency 9600Hz"
+        },
+        {
+          "dmxRange": [204, 251],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Reset entire fixture"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "35deg",
+        "angleEnd": "3.7deg"
+      }
+    },
+    "Pan Continuous": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "PanContinuous",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "PanContinuous",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "PanContinuous",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 254],
+          "type": "PanContinuous",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "PanContinuous",
+          "speed": "stop"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color Presets",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "CTC",
+        "Settings",
+        "Zoom",
+        "Pan Continuous"
+      ]
+    }
+  ]
+}

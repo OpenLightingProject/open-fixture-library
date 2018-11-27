@@ -47,7 +47,7 @@
     },
     "american-dj/fog-fury-jett-pro": {
       "name": "Fog Fury Jett Pro",
-      "lastActionDate": "2018-08-09",
+      "lastActionDate": "2018-11-26",
       "lastAction": "modified"
     },
     "american-dj/galaxian-3d": {
@@ -490,6 +490,11 @@
       "lastActionDate": "2018-08-09",
       "lastAction": "modified"
     },
+    "glp/impression-fr1": {
+      "name": "impression FR1",
+      "lastActionDate": "2018-11-26",
+      "lastAction": "created"
+    },
     "glp/impression-laser": {
       "name": "impression Laser",
       "lastActionDate": "2018-08-09",
@@ -690,6 +695,11 @@
       "lastActionDate": "2018-08-24",
       "lastAction": "modified"
     },
+    "nicols/pat-252": {
+      "name": "PAT 252",
+      "lastActionDate": "2018-11-23",
+      "lastAction": "created"
+    },
     "orion/orcan2": {
       "name": "ORCAN2",
       "lastActionDate": "2018-07-21",
@@ -762,7 +772,7 @@
     },
     "showtec/atmos-2000": {
       "name": "Atmos 2000",
-      "lastActionDate": "2018-11-24",
+      "lastActionDate": "2018-11-27",
       "lastAction": "created"
     },
     "showtec/club-par-12-4-rgbw": {
@@ -1045,6 +1055,7 @@
       "ip-spot-bat"
     ],
     "glp": [
+      "impression-fr1",
       "impression-laser",
       "impression-spot-one",
       "impression-x4-bar-10",
@@ -1113,7 +1124,8 @@
       "ivl-carre"
     ],
     "nicols": [
-      "led-bar-123-fc-ip"
+      "led-bar-123-fc-ip",
+      "pat-252"
     ],
     "orion": [
       "orcan2"
@@ -1286,6 +1298,7 @@
       "generic/rgbd-fader",
       "generic/rgbw-fader",
       "ghost/ip-spot-bat",
+      "glp/impression-fr1",
       "glp/impression-laser",
       "glp/impression-spot-one",
       "glp/impression-x4-bar-10",
@@ -1318,6 +1331,7 @@
       "martin/rush-par-2-rgbw-zoom",
       "minuit-une/ivl-carre",
       "nicols/led-bar-123-fc-ip",
+      "nicols/pat-252",
       "orion/orcan2",
       "powerlighting/wash-84w",
       "prolights/diamond19",
@@ -1454,6 +1468,7 @@
       "eurolite/led-tmh-x25",
       "futurelight/dmh-75-i-led-moving-head",
       "generic/pan-tilt",
+      "glp/impression-fr1",
       "glp/impression-laser",
       "glp/impression-spot-one",
       "glp/impression-x4-bar-10",
@@ -1520,6 +1535,7 @@
       "futurelight/sc-250-scanner",
       "lightmaxx/dj-scan-led",
       "martin/roboscan-812",
+      "nicols/pat-252",
       "robe/dj-scan-250-xt"
     ],
     "Smoke": [
@@ -1676,6 +1692,7 @@
       "futurelight/pro-slim-par-7-hcl",
       "futurelight/sc-250-scanner",
       "futurelight/stb-648-led-strobe-smd-5050",
+      "glp/impression-fr1",
       "glp/impression-laser",
       "glp/impression-spot-one",
       "jb-lighting/varyscan-p7",
@@ -1811,6 +1828,12 @@
     ],
     "Massimo Callegari": [
       "clay-paky/sharpy"
+    ],
+    "MIE": [
+      "nicols/pat-252"
+    ],
+    "Mikael": [
+      "nicols/pat-252"
     ],
     "Millumin": [
       "powerlighting/wash-84w"
@@ -2012,6 +2035,9 @@
   },
   "lastUpdated": [
     "showtec/atmos-2000",
+    "glp/impression-fr1",
+    "american-dj/fog-fury-jett-pro",
+    "nicols/pat-252",
     "eurolite/led-tmh-x12",
     "infinity/iw-340-rdm",
     "gruft/pixel-tube",
@@ -2113,7 +2139,6 @@
     "american-dj/boom-box-fx2",
     "american-dj/dotz-par",
     "american-dj/flat-par-qa12xs",
-    "american-dj/fog-fury-jett-pro",
     "american-dj/galaxian-3d",
     "american-dj/inno-pocket-fusion",
     "american-dj/quad-phase-hp",
