@@ -67,7 +67,7 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
   // fetch changed files in 100er blocks
   const filePromises = [];
   for (let i = 0; i < this.data.changed_files / 100; i++) {
-    filePromises.push(github.pullRequests.getFiles({
+    filePromises.push(github.pullRequests.listFiles({
       owner: repoOwner,
       repo: repoName,
       number: process.env.TRAVIS_PULL_REQUEST,
@@ -184,7 +184,7 @@ module.exports.updateComment = function updateComment(test) {
   const commentPromises = [];
   for (let i = 0; i < module.exports.data.comments / 100; i++) {
     commentPromises.push(
-      github.issues.getComments({
+      github.issues.listComments({
         owner: repoOwner,
         repo: repoName,
         number: process.env.TRAVIS_PULL_REQUEST,
