@@ -199,25 +199,24 @@ module.exports.updateComment = function updateComment(test) {
       let equalFound = false;
       const promises = [];
 
-      for (const block of commentBlocks) {
-        for (const comment of block.data) {
-          // get rid of \r linebreaks
-          comment.body = comment.body.replace(/\r/g, ``);
+      const comments = [].concat(...commentBlocks.map(block => block.data));
+      for (const comment of comments) {
+        // get rid of \r linebreaks
+        comment.body = comment.body.replace(/\r/g, ``);
 
-          // the comment was created by this test script
-          if (lines[0] === comment.body.split(`\n`)[0]) {
-            if (!equalFound && message === comment.body && test.lines.length > 0) {
-              equalFound = true;
-              console.log(`Test comment with same content already exists at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
-            }
-            else {
-              console.log(`Deleting old test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
-              promises.push(github.issues.deleteComment({
-                owner: repoOwner,
-                repo: repoName,
-                id: comment.id
-              }));
-            }
+        // the comment was created by this test script
+        if (lines[0] === comment.body.split(`\n`)[0]) {
+          if (!equalFound && message === comment.body && test.lines.length > 0) {
+            equalFound = true;
+            console.log(`Test comment with same content already exists at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
+          }
+          else {
+            console.log(`Deleting old test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
+            promises.push(github.issues.deleteComment({
+              owner: repoOwner,
+              repo: repoName,
+              'comment_id': comment.id
+            }));
           }
         }
       }
