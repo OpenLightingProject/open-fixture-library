@@ -215,7 +215,7 @@ module.exports.updateComment = function updateComment(test) {
               promises.push(github.issues.deleteComment({
                 owner: repoOwner,
                 repo: repoName,
-                id: comment.id
+                'comment_id': comment.id
               }));
             }
           }
