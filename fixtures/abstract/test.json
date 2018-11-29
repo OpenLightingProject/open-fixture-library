@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "test",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["test"],
+    "createDate": "2018-11-29",
+    "lastModifyDate": "2018-11-29"
+  },
+  "links": {
+    "other": [
+      "https://www.ecosia.org/search?q=pomme&addon=firefox&addonversion=4.0.4"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "availableChannels": {
+    "Tt": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "test",
+      "channels": [
+        "Tt"
+      ]
+    }
+  ]
+}
