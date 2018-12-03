@@ -21,7 +21,7 @@ const {
 /* eslint-enable no-unused-vars */
 
 module.exports.name = `QLC+ 4.11.2`;
-module.exports.version = `0.5.0`;
+module.exports.version = `0.5.1`;
 
 /**
  * @param {array.<Fixture>} fixtures An array of Fixture objects.
@@ -219,9 +219,12 @@ function addPhysical(xmlMode, physical) {
   });
 
   if (physical.DMXconnector !== null || physical.power !== null) {
+    // add whitespace
+    const connector = physical.DMXconnector === `3.5mm stereo jack` ? `3.5 mm stereo jack` : physical.DMXconnector;
+
     xmlPhysical.element({
       Technical: {
-        '@DmxConnector': physical.DMXconnector || `Other`,
+        '@DmxConnector': connector || `Other`,
         '@PowerConsumption': Math.round(physical.power) || 0
       }
     });

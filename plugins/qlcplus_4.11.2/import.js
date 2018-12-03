@@ -2,7 +2,7 @@ const xml2js = require(`xml2js`);
 const promisify = require(`util`).promisify;
 
 module.exports.name = `QLC+ 4.11.2`;
-module.exports.version = `0.4.2`;
+module.exports.version = `0.4.3`;
 
 /**
  * @param {Buffer} buffer The imported file.
@@ -385,7 +385,13 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical) {
       physical.power = power;
     }
 
-    const DMXconnector = qlcPlusPhysical.Technical[0].$.DmxConnector;
+    let DMXconnector = qlcPlusPhysical.Technical[0].$.DmxConnector;
+
+    // remove whitespace
+    if (DMXconnector === `3.5 mm stereo jack`) {
+      DMXconnector = `3.5mm stereo jack`;
+    }
+
     if (DMXconnector !== `` && oflFixPhysical.DMXconnector !== DMXconnector) {
       physical.DMXconnector = DMXconnector;
     }

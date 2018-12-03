@@ -35,7 +35,7 @@ const capabilityHelpers = {
 };
 
 module.exports.name = `QLC+ 4.12.0`;
-module.exports.version = `1.0.0`;
+module.exports.version = `1.0.1`;
 
 /**
  * @param {array.<Fixture>} fixtures An array of Fixture objects.
@@ -208,7 +208,7 @@ function getChannelPreset(channel) {
   // TODO: try to also detect the `cap => false` presets
   const channelPresets = {
     IntensityMasterDimmer: cap => false,
-    IntensityDimmer: cap => cap.type === `Intensity`,
+    IntensityDimmer: cap => cap.type === `Intensity` && cap.brightness[0].number < cap.brightness[1].number,
     IntensityRed: cap => capabilityHelpers.isColorIntensity(cap, `Red`),
     IntensityGreen: cap => capabilityHelpers.isColorIntensity(cap, `Green`),
     IntensityBlue: cap => capabilityHelpers.isColorIntensity(cap, `Blue`),
@@ -667,9 +667,12 @@ function addPhysical(xmlParentNode, physical, mode) {
   });
 
   if (physical.DMXconnector !== null || physical.power !== null) {
+    // add whitespace
+    const connector = physical.DMXconnector === `3.5mm stereo jack` ? `3.5 mm stereo jack` : physical.DMXconnector;
+
     xmlPhysical.element({
       Technical: {
-        '@DmxConnector': physical.DMXconnector || `Other`,
+        '@DmxConnector': connector || `Other`,
         '@PowerConsumption': Math.round(physical.power) || 0
       }
     });
