@@ -253,9 +253,7 @@ import manufacturers from '~~/fixtures/manufacturers.json';
 import schemaProperties from '~~/lib/schema-properties.js';
 
 import labeledInputVue from '~/components/labeled-input.vue';
-import propertyInputBooleanVue from '~/components/property-input-boolean.vue';
 import propertyInputNumberVue from '~/components/property-input-number.vue';
-import propertyInputSelectVue from '~/components/property-input-select.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';
 import propertyInputTextareaVue from '~/components/property-input-textarea.vue';
 import categoryChooserVue from '~/components/category-chooser.vue';
@@ -282,9 +280,7 @@ const storageAvailable = (function() {
 export default {
   components: {
     'app-labeled-input': labeledInputVue,
-    'app-property-input-boolean': propertyInputBooleanVue,
     'app-property-input-number': propertyInputNumberVue,
-    'app-property-input-select': propertyInputSelectVue,
     'app-property-input-text': propertyInputTextVue,
     'app-property-input-textarea': propertyInputTextareaVue,
     'app-category-chooser': categoryChooserVue,

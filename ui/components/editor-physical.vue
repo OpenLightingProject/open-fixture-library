@@ -52,8 +52,8 @@
 
     <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-bulb-type`" label="Bulb type">
       <app-property-input-text
-        :name="`${namePrefix}-physical-bulb-type`"
         v-model="physical.bulb.type"
+        :name="`${namePrefix}-physical-bulb-type`"
         :schema-property="properties.physicalBulb.type"
         hint="e.g. LED" />
     </app-labeled-input>
@@ -77,8 +77,8 @@
 
     <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-lens-name`" label="Lens name">
       <app-property-input-text
-        :name="`${namePrefix}-physical-lens-name`"
         v-model="physical.lens.name"
+        :name="`${namePrefix}-physical-lens-name`"
         :schema-property="properties.physicalLens.name" />
     </app-labeled-input>
 

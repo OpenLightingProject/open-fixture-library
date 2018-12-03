@@ -23,9 +23,9 @@
     </app-labeled-input>
 
     <component
+      :is="`app-editor-capability-${capability.type}`"
       v-if="capability.type !== ``"
       ref="capabilityTypeData"
-      :is="`app-editor-capability-${capability.type}`"
       :capability="capability"
       :formstate="formstate" />
   </div>

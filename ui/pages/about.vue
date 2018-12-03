@@ -12,8 +12,10 @@
     <p>In March 2018, we decided it was time to get our own server and domain – and at the same time were invited to the <a href="https://github.com/OpenLightingProject">Open Lighting Project</a> (see <a href="https://github.com/OpenLightingProject/open-fixture-library/issues/453">issue #453</a> on GitHub), so here we are "under the new flag" at <a href="https://open-fixture-library.org">open-fixture-library.org</a>! Of course there is still more to be improved, so feel free to contribute!</p>
 
     <h2>Used resources</h2>
-    <p>Fonts: <a href="http://www.latofonts.com/">Lato</a> and <a href="http://levien.com/type/myfonts/inconsolata.html" style="font-family: Inconsolata">Inconsolata</a><br>
-      Icons: <a href="https://materialdesignicons.com/">Material Design Icons</a></p>
+    <p>
+      Fonts: <a href="http://www.latofonts.com/">Lato</a> and <a href="http://levien.com/type/myfonts/inconsolata.html" style="font-family: Inconsolata">Inconsolata</a><br>
+      Icons: <a href="https://materialdesignicons.com/">Material Design Icons</a>
+    </p>
 
     <h2>Contribute</h2>
     <p>See the <a href="https://github.com/OpenLightingProject/open-fixture-library#contribute">project page on GitHub</a> to see how you can help.</p>
