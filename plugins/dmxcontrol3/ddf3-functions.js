@@ -9,8 +9,8 @@ module.exports = {
       const xmlDimmer = xmlbuilder.create(`dimmer`);
 
       if (channel.capabilities.length > 1 || caps[0].brightness[0].number !== 0) {
-        const normalizedCaps = getNormalizedCapabilities(caps, `brightness`, 100, `%`);
-        normalizedCaps.forEach(cap => {
+        const dmxControlCaps = getDmxControlCapabilities(caps, `brightness`, `%`);
+        dmxControlCaps.forEach(cap => {
           const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
           xmlCap.attribute(`type`, `linear`);
           xmlDimmer.importDocument(xmlCap);
@@ -79,11 +79,11 @@ module.exports = {
     create: (channel, caps) => {
       const xmlPanTiltSpeed = xmlbuilder.create(`ptspeed`);
 
-      const speedCaps = getNormalizedCapabilities(
-        caps.filter(cap => cap.speed !== null), `speed`, 100, `%`
+      const speedCaps = getDmxControlCapabilities(
+        caps.filter(cap => cap.speed !== null), `speed`, `%`
       );
-      const durationCaps = getNormalizedCapabilities(
-        caps.filter(cap => cap.duration !== null), `duration`, 100, `%`
+      const durationCaps = getDmxControlCapabilities(
+        caps.filter(cap => cap.duration !== null), `duration`, `%`
       );
 
       speedCaps.forEach(cap => {
@@ -119,8 +119,8 @@ module.exports = {
         const xmlColor = xmlbuilder.create(color.toLowerCase());
 
         if (channel.capabilities.length > 1 || colorCaps[0].brightness[0].number !== 0) {
-          const normalizedCaps = getNormalizedCapabilities(colorCaps, `brightness`, 100, `%`);
-          normalizedCaps.forEach(cap => {
+          const dmxControlCaps = getDmxControlCapabilities(colorCaps, `brightness`, `%`);
+          dmxControlCaps.forEach(cap => {
             const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
             xmlCap.attribute(`type`, `linear`);
             xmlColor.importDocument(xmlCap);
@@ -179,8 +179,8 @@ module.exports = {
       });
 
 
-      const rotationCaps = getNormalizedCapabilities(
-        caps.filter(cap => cap.type === `ColorWheelRotation`), `speed`, 15, `Hz`
+      const rotationCaps = getDmxControlCapabilities(
+        caps.filter(cap => cap.type === `ColorWheelRotation`), `speed`, `Hz`, [[0, 0], [100, 15]]
       );
       if (rotationCaps.length > 0) {
         const xmlWheelRotation = xmlColorWheel.element(`wheelrotation`);
@@ -310,22 +310,8 @@ module.exports = {
     create: (channel, caps) => {
       const xmlColorTemp = xmlbuilder.create(`colortemp`);
 
-      const kelvinCaps = getNormalizedCapabilities(caps.filter(
-        cap => cap.colorTemperature[0].unit === `K`
-      ), `colorTemperature`, 8000, `K`);
-
-      // map -100…100% (warm…cold) to 2500…8000K
-      const minKelvin = 2500;
-      const maxKelvin = 8000;
-      const percentCaps = getNormalizedCapabilities(caps.filter(
-        cap => cap.colorTemperature[0].unit === `%`
-      ), `colorTemperature`, (maxKelvin - minKelvin) / 2, `K`);
-      percentCaps.forEach(cap => {
-        cap.startValue += ((maxKelvin - minKelvin) / 2) + minKelvin;
-        cap.endValue += ((maxKelvin - minKelvin) / 2) + minKelvin;
-      });
-
-      kelvinCaps.concat(percentCaps).forEach(cap => {
+      const dmxControlCaps = getDmxControlCapabilities(caps, `colorTemperature`, `K`, [[-100, 2500], [100, 8000]]);
+      dmxControlCaps.forEach(cap => {
         const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
         xmlCap.attribute(`type`, `linear`);
         xmlColorTemp.importDocument(xmlCap);
@@ -363,8 +349,8 @@ module.exports = {
     create: (channel, caps) => {
       const xmlFocus = xmlbuilder.create(`focus`);
 
-      const normalizedCaps = getNormalizedCapabilities(caps, `distance`, 100, `%`);
-      normalizedCaps.forEach(cap => {
+      const dmxControlCaps = getDmxControlCapabilities(caps, `distance`, `%`);
+      dmxControlCaps.forEach(cap => {
         const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
         xmlCap.attribute(`type`, `linear`);
         xmlFocus.importDocument(xmlCap);
@@ -378,8 +364,8 @@ module.exports = {
     create: (channel, caps) => {
       const xmlFrost = xmlbuilder.create(`frost`);
 
-      const normalizedCaps = getNormalizedCapabilities(caps, `frostIntensity`, 100, `%`);
-      normalizedCaps.forEach(cap => {
+      const dmxControlCaps = getDmxControlCapabilities(caps, `frostIntensity`, `%`);
+      dmxControlCaps.forEach(cap => {
         if (cap.startValue === 0 && cap.endValue === 0) {
           const xmlCap = getBaseXmlCapability(cap.capObject);
           xmlCap.attribute(`type`, `open`);
@@ -400,8 +386,8 @@ module.exports = {
     create: (channel, caps) => {
       const xmlIris = xmlbuilder.create(`iris`);
 
-      const normalizedCaps = getNormalizedCapabilities(caps, `openPercent`, 100, `%`);
-      normalizedCaps.forEach(cap => {
+      const dmxControlCaps = getDmxControlCapabilities(caps, `openPercent`, `%`);
+      dmxControlCaps.forEach(cap => {
         const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
         xmlCap.attribute(`type`, `linear`);
         xmlIris.importDocument(xmlCap);
@@ -415,8 +401,8 @@ module.exports = {
     create: (channel, caps) => {
       const xmlZoom = xmlbuilder.create(`zoom`);
 
-      const normalizedCaps = getNormalizedCapabilities(caps, `angle`, 90, `deg`);
-      normalizedCaps.forEach(cap => {
+      const dmxControlCaps = getDmxControlCapabilities(caps, `angle`, `deg`, [[0, 0], [100, 90]]);
+      dmxControlCaps.forEach(cap => {
         const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
         xmlCap.attribute(`type`, `linear`);
         xmlZoom.importDocument(xmlCap);
@@ -476,9 +462,9 @@ module.exports = {
           xmlStep.importDocument(xmlRange);
         });
 
-        // add ranges/steps for normalized rotation speed capabilities
+        // add ranges/steps for rotation speed dmx control capabilities
         const rotationSpeedCaps = commentGroup.filter(cap => cap.speed !== null);
-        getNormalizedCapabilities(rotationSpeedCaps, `speed`, 5, `Hz`).forEach(cap => {
+        getDmxControlCapabilities(rotationSpeedCaps, `speed`, `Hz`, [[0, 0], [100, 5]]).forEach(cap => {
           if (cap.startValue === 0 && cap.endValue === 0) {
             xmlStep.element(`step`, {
               mindmx: cap.capObject.dmxRange.start,
@@ -538,7 +524,7 @@ module.exports = {
     create: (channel, caps) => {
       const xmlPrismRotation = xmlbuilder.create(`prismrotation`);
 
-      getNormalizedCapabilities(caps, `speed`, 5, `Hz`).forEach(cap => {
+      getDmxControlCapabilities(caps, `speed`, `Hz`, [[0, 0], [100, 5]]).forEach(cap => {
         if (cap.startValue === 0 && cap.endValue === 0) {
           xmlPrismRotation.element(`step`, {
             mindmx: cap.capObject.dmxRange.start,
@@ -640,7 +626,7 @@ module.exports = {
     create: (channel, caps) => {
       const xmlRotation = xmlbuilder.create(`rotation`);
 
-      getNormalizedCapabilities(caps, `speed`, 5, `Hz`).forEach(cap => {
+      getDmxControlCapabilities(caps, `speed`, `Hz`, [[0, 0], [100, 5]]).forEach(cap => {
         if (cap.startValue === 0 && cap.endValue === 0) {
           xmlRotation.element(`step`, {
             mindmx: cap.capObject.dmxRange.start,
@@ -673,7 +659,7 @@ module.exports = {
 };
 
 /**
- * @typedef {object} NormalizedCapability
+ * @typedef {object} DmxControlCapability
  * @property {Capability} capObject
  * @property {string} unit
  * @property {number} startValue
@@ -681,58 +667,52 @@ module.exports = {
  */
 
 /**
- * Converts all property values to the proper unit and scales them to fit into the maximum value.
+ * Converts all property values to the allowed unit.
  * @param {array.<Capability>} caps Array of capabilities that use the given property.
  * @param {string} property Name of the property whose values should be normalized.
- * @param {number} maximumValue The highest possible value in DMXControl, in the given unit.
- * @param {string} properUnit The unit of the maximum value. Must be a base unit (i. e. no `ms` but `s`) or `%`.
- * @returns {array.<NormalizedCapability>} Array of objects wrapping the original capabilities.
+ * @param {string} allowedUnit The unit all capabilities should be converted to. Must be a base unit (i. e. no `ms` but `s`) or `%`.
+ * @param {array.<number, number>} percentUnitPairs Two pairs of percent values and its equivalent in the allowed unit. Must be used if allowedUnit is not percent.
+ * @returns {array.<DmxControlCapability>} Array of objects wrapping the original capabilities.
  */
-function getNormalizedCapabilities(caps, property, maximumValue, properUnit) {
-  const normalizedCaps = caps.map(cap => {
+function getDmxControlCapabilities(caps, property, allowedUnit, percentUnitPairs) {
+  const dmxControlCaps = caps.map(cap => {
     const startEntity = cap[property][0].getBaseUnitEntity();
     const endEntity = cap[property][1].getBaseUnitEntity();
 
     return {
       capObject: cap,
       unit: startEntity.unit,
-      startValue: Math.abs(startEntity.number),
-      endValue: Math.abs(endEntity.number),
-      startSign: Math.sign(startEntity.number),
-      endSign: Math.sign(endEntity.number)
+      startValue: startEntity.number,
+      endValue: endEntity.number
     };
   });
 
-  const capsWithProperUnit = normalizedCaps.filter(cap => cap.unit === properUnit);
-  const maxValueWithProperUnit = Math.max(...(capsWithProperUnit.map(cap => Math.max(cap.startValue, cap.endValue))));
-  if (maxValueWithProperUnit > maximumValue) {
-    capsWithProperUnit.forEach(cap => {
-      cap.startValue = cap.startValue * maximumValue / maxValueWithProperUnit;
-      cap.endValue = cap.endValue * maximumValue / maxValueWithProperUnit;
-    });
-  }
-
-
   // they should all be of the same (wrong) unit, as we converted to the base unit above
-  const capsWithWrongUnit = normalizedCaps.filter(cap => cap.unit !== properUnit);
-  const maxValueWithWrongUnit = Math.max(...(capsWithWrongUnit.map(cap => Math.max(cap.startValue, cap.endValue))));
-  if (maxValueWithWrongUnit !== 0) {
+  const capsWithWrongUnit = dmxControlCaps.filter(cap => cap.unit !== allowedUnit);
+  const maxValueWithWrongUnit = Math.max(...(capsWithWrongUnit.map(cap => Math.max(Math.abs(cap.startValue), Math.abs(cap.endValue)))));
+  if (allowedUnit !== `%`) {
+    // we take the conversion from percent to unit as a linear function f(x) = (m*x + t)
+    // where x is the percentage value and f(x) or y is the value in the allowed unit
+    const [[x1, y1], [x2, y2]] = percentUnitPairs;
+    const m = (y2 - y1) / (x2 - x1); // delta y / delta x
+    const t = y1 - (m * x1); // y1 = m * x1 + t => t = y1 - (m * x1)
+    const percentToUnit = (x => (m * x) + t);
+
     capsWithWrongUnit.forEach(cap => {
-      cap.unit = properUnit;
-      cap.startValue = cap.startValue * maximumValue / maxValueWithWrongUnit;
-      cap.endValue = cap.endValue * maximumValue / maxValueWithWrongUnit;
+      cap.unit = allowedUnit;
+      cap.startValue = percentToUnit(cap.startValue);
+      cap.endValue = percentToUnit(cap.endValue);
+    });
+  }
+  else if (maxValueWithWrongUnit !== 0) {
+    capsWithWrongUnit.forEach(cap => {
+      cap.unit = allowedUnit;
+      cap.startValue = cap.startValue / maxValueWithWrongUnit * 100;
+      cap.endValue = cap.endValue / maxValueWithWrongUnit * 100;
     });
   }
 
-  // reapply signs (+ or –)
-  normalizedCaps.forEach(cap => {
-    cap.startValue *= cap.startSign;
-    cap.endValue *= cap.endSign;
-    delete cap.startSign;
-    delete cap.endSign;
-  });
-
-  return normalizedCaps;
+  return dmxControlCaps;
 }
 
 /**
