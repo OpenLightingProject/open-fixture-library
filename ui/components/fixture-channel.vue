@@ -17,7 +17,7 @@
       </div>
 
       <template v-else-if="(channel instanceof SwitchingChannel)">
-        Switches depending on trigger channel's value.
+        <span>Switches depending on trigger channel's value.</span>
 
         <app-labeled-value
           name="switchingChannel-triggerChannel"

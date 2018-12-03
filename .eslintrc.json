@@ -127,9 +127,15 @@
     "promise/no-promise-in-callback": "off",
     "promise/no-return-in-finally": "error",
     "promise/valid-params": "error",
+    "vue/component-name-in-template-casing": ["error", "kebab-case"],
     "vue/max-attributes-per-line": ["error", { "singleline": 3 }],
-    "vue/html-closing-bracket-newline": "error",
+    "vue/html-closing-bracket-newline": ["error", {
+      "singleline": "never",
+      "multiline": "never"
+    }],
     "vue/html-closing-bracket-spacing": "error",
+    "vue/multiline-html-element-content-newline": "off",
+    "vue/singleline-html-element-content-newline": "off",
     "vue/prop-name-casing": "error"
   }
 }

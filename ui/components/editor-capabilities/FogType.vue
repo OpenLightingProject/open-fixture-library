@@ -37,13 +37,11 @@
 <script>
 import schemaProperties from '~~/lib/schema-properties.js';
 
-import editorProportionalCapabilityDataSwitcher from '~/components/editor-proportional-capability-data-switcher.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';
 import labeledInputVue from '~/components/labeled-input.vue';
 
 export default {
   components: {
-    'app-editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
     'app-property-input-text': propertyInputTextVue,
     'app-labeled-input': labeledInputVue
   },

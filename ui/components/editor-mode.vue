@@ -15,8 +15,8 @@
     <app-labeled-input :formstate="formstate" :name="`mode-${index}-name`" label="Name">
       <app-property-input-text
         ref="firstInput"
-        :name="`mode-${index}-name`"
         v-model="mode.name"
+        :name="`mode-${index}-name`"
         :schema-property="properties.definitions.modeNameString.allOf[1]"
         :required="true"
         no-mode-name
@@ -26,8 +26,8 @@
 
     <app-labeled-input :formstate="formstate" :name="`mode-${index}-shortName`" label="Unique short name">
       <app-property-input-text
-        :name="`mode-${index}-shortName`"
         v-model="mode.shortName"
+        :name="`mode-${index}-shortName`"
         :schema-property="properties.definitions.modeNameString.allOf[1]"
         no-mode-name
         hint="e.g. ext; defaults to name"

@@ -18,7 +18,7 @@
     </div>
 
     <div v-else-if="submit.state === `error`">
-      Unfortunately, there was an error while uploading. Please copy the following data and <a href="https://github.com/OpenLightingProject/open-fixture-library/issues/new" target="_blank">manually submit them to GitHub</a>.
+      <span>Unfortunately, there was an error while uploading. Please copy the following data and <a href="https://github.com/OpenLightingProject/open-fixture-library/issues/new" target="_blank">manually submit them to GitHub</a>.</span>
 
       <textarea v-model="submit.rawData" readonly />
 
