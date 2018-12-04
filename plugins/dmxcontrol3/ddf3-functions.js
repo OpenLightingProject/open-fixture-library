@@ -146,10 +146,8 @@ module.exports = {
         const cap = presetCaps[i];
 
         if (!cap.isStep) {
-          const [startCap, endCap] = getSplittedCapabilities(cap);
-
-          presetCaps[i] = startCap;
-          presetCaps.splice(i + 1, 0, endCap); // insert at index i + 1
+          const splittedCaps = getSplittedCapabilities(cap);
+          presetCaps.splice(i, 1, ...splittedCaps);
         }
       }
 
@@ -199,6 +197,11 @@ module.exports = {
           type: cap.type,
           _splitted: true
         };
+        const centerCapJson = {
+          dmxRange: [cap.rawDmxRange.center, cap.rawDmxRange.center],
+          type: cap.type,
+          _splitted: true
+        };
         const endCapJson = {
           dmxRange: [cap.rawDmxRange.end, cap.rawDmxRange.end],
           type: cap.type,
@@ -207,14 +210,17 @@ module.exports = {
 
         if (cap.index) {
           startCapJson.index = cap.index[0].number;
+          centerCapJson.index = (cap.index[0].number + cap.index[1].number) / 2;
           endCapJson.index = cap.index[1].number;
         }
         if (cap.comment) {
           startCapJson.comment = cap.comment;
+          centerCapJson.comment = cap.comment;
           endCapJson.comment = cap.comment;
         }
         if (cap.colors) {
           startCapJson.colors = cap.colors.startColors;
+          centerCapJson.colors = cap.colors.allColors;
           endCapJson.colors = cap.colors.endColors;
         }
         if (cap.colorTemperature) {
@@ -222,10 +228,14 @@ module.exports = {
           endCapJson.colorTemperature = cap.colorTemperature[1].toString();
         }
 
-        return [
-          new Capability(startCapJson, cap._resolution, cap._channel),
-          new Capability(endCapJson, cap._resolution, cap._channel)
-        ];
+        const [startCap, centerCap, endCap] = [startCapJson, centerCapJson, endCapJson].map(
+          capJson => new Capability(capJson, cap._resolution, cap._channel)
+        );
+
+        if (cap.index) {
+          return [startCap, centerCap, endCap];
+        }
+        return [startCap, endCap];
       }
 
       /**
