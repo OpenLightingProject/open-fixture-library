@@ -65,17 +65,18 @@
 **Custom matrix layout** [[56]](#user-content-footnote-56) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌
 **Fine matrix channel** [[57]](#user-content-footnote-57) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **Switching matrix channel** [[58]](#user-content-footnote-58) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Matrix channel used directly** [[59]](#user-content-footnote-59) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
+**Matrix channel overridden** [[59]](#user-content-footnote-59) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Matrix channel used directly** [[60]](#user-content-footnote-60) | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌
 **Multiple categories** | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅
-**Multiple Focuses** [[60]](#user-content-footnote-60) | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Multiple Focuses** [[61]](#user-content-footnote-61) | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
 **No physical** | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**`null` channels** [[61]](#user-content-footnote-61) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**Physical override** [[62]](#user-content-footnote-62) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
-**RDM** [[63]](#user-content-footnote-63) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅
-**Reused channels** [[64]](#user-content-footnote-64) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅
-**Switching channels** [[65]](#user-content-footnote-65) | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅
-**Switches fine channels** [[66]](#user-content-footnote-66) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅
-**Switching channel at different positions** [[67]](#user-content-footnote-67) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅
+**`null` channels** [[62]](#user-content-footnote-62) | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**Physical override** [[63]](#user-content-footnote-63) | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌
+**RDM** [[64]](#user-content-footnote-64) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅
+**Reused channels** [[65]](#user-content-footnote-65) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅
+**Switching channels** [[66]](#user-content-footnote-66) | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅
+**Switches fine channels** [[67]](#user-content-footnote-67) | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅
+**Switching channel at different positions** [[68]](#user-content-footnote-68) | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅
 
 **<a id="user-content-footnote-1">[1]</a>**: Whether the fixture has at least one capability of type 'NoFunction'
 
@@ -193,20 +194,22 @@
 
 **<a id="user-content-footnote-58">[58]</a>**: The fixture repeats switching channels for matrix pixels.
 
-**<a id="user-content-footnote-59">[59]</a>**: If a mode contains a resolved matrix channel key in its raw channel list or if a non-matrix switching channel switches to a matrix channel.
+**<a id="user-content-footnote-59">[59]</a>**: An available channel overrides a specific matrix channel (at a specific pixel).
 
-**<a id="user-content-footnote-60">[60]</a>**: True if multiple Pan / Tilt channels are used in some mode.
+**<a id="user-content-footnote-60">[60]</a>**: If a mode contains a resolved matrix channel key in its raw channel list or if a non-matrix switching channel switches to a matrix channel.
 
-**<a id="user-content-footnote-61">[61]</a>**: Channel list of a mode contains null, so it has an unused channel
+**<a id="user-content-footnote-61">[61]</a>**: True if multiple Pan / Tilt channels are used in some mode.
 
-**<a id="user-content-footnote-62">[62]</a>**: Whether at least one mode uses the 'physical' property
+**<a id="user-content-footnote-62">[62]</a>**: Channel list of a mode contains null, so it has an unused channel
 
-**<a id="user-content-footnote-63">[63]</a>**: Whether an RDM model ID is set
+**<a id="user-content-footnote-63">[63]</a>**: Whether at least one mode uses the 'physical' property
 
-**<a id="user-content-footnote-64">[64]</a>**: Whether there is at least one channel that is used in different modes
+**<a id="user-content-footnote-64">[64]</a>**: Whether an RDM model ID is set
 
-**<a id="user-content-footnote-65">[65]</a>**: Whether at least one channel defines switching channel aliases
+**<a id="user-content-footnote-65">[65]</a>**: Whether there is at least one channel that is used in different modes
 
-**<a id="user-content-footnote-66">[66]</a>**: Whether at least one switching channel switches fine channels
+**<a id="user-content-footnote-66">[66]</a>**: Whether at least one channel defines switching channel aliases
 
-**<a id="user-content-footnote-67">[67]</a>**: Whether there is a switching channel that is used at different positions in different modes
+**<a id="user-content-footnote-67">[67]</a>**: Whether at least one switching channel switches fine channels
+
+**<a id="user-content-footnote-68">[68]</a>**: Whether there is a switching channel that is used at different positions in different modes
