@@ -43,8 +43,8 @@
         {
           "dmxRange": [4, 128],
           "type": "Rotation",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "speedStart": "30rpm",
+          "speedEnd": "750rpm"
         },
         {
           "dmxRange": [129, 132],
@@ -54,8 +54,8 @@
         {
           "dmxRange": [133, 255],
           "type": "Rotation",
-          "speedStart": "slow CCW",
-          "speedEnd": "fast CCW"
+          "speedStart": "-30rpm",
+          "speedEnd": "-750rpm"
         }
       ]
     },
