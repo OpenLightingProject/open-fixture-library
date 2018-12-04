@@ -31,6 +31,21 @@
       "type": "Fixed"
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["T1", "T2", "T3"],
+        ["C1", "C2", "C3"],
+        ["B1", "B2", "B3"]
+      ]
+    ],
+    "pixelGroups": {
+      "Top": ["T1", "T2", "T3"],
+      "Center": ["C1", "C2", "C3"],
+      "Bottom": ["B1", "B2", "B3"],
+      "Master": ["T1", "T2", "T3", "C1", "C2", "C3", "B1", "B2", "B3"]
+    }
+  },
   "availableChannels": {
     "Fan Speed": {
       "defaultValue": 0,
@@ -190,7 +205,9 @@
           "comment": "Reset all functions"
         }
       ]
-    },
+    }
+  },
+  "templateChannels": {
     "Color Presets $pixelKey": {
       "capabilities": [
         {
@@ -337,10 +354,17 @@
         "LED Intensity Master",
         "Shutter",
         "Control",
-        "Color Presets $pixelKey",
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Top", "Center", "Bottom"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Color Presets $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     },
     {
@@ -351,10 +375,10 @@
         "LED Intensity Master",
         "Shutter",
         "Control",
-        "Color Presets $pixelKey",
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey"
+        "Color Presets Master",
+        "Red Master",
+        "Green Master",
+        "Blue Master"
       ]
     },
     {
@@ -364,10 +388,17 @@
         "Fan Speed",
         "LED Intensity Master",
         "Shutter",
-        "Color Presets $pixelKey",
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Top", "Center", "Bottom"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Color Presets $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
         "Control"
       ]
     },
@@ -378,10 +409,10 @@
         "Fan Speed",
         "LED Intensity Master",
         "Shutter",
-        "Color Presets $pixelKey",
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
+        "Color Presets Master",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
         "Control"
       ]
     }
