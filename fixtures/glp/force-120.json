@@ -1,0 +1,389 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Force 120",
+  "shortName": "GLPForce120",
+  "categories": ["Fan", "Color Changer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2018-12-04",
+    "lastModifyDate": "2018-12-04"
+  },
+  "links": {
+    "manual": [
+      "https://www.glp.de/en/products?format=raw&task=download&fid=286"
+    ],
+    "productPage": [
+      "https://www.glp.de/en/products/stage-effects/force-120"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=b2354sK3VaQ"
+    ]
+  },
+  "physical": {
+    "dimensions": [1400, 1400, 400],
+    "weight": 94,
+    "power": 1000,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Fan Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [4, 128],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [129, 132],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [133, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "LED Intensity Master": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [16, 47],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [48, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [80, 111],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [112, 143],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [144, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "with blackout pause"
+        },
+        {
+          "dmxRange": [200, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction",
+          "comment": "Idle"
+        },
+        {
+          "dmxRange": [51, 64],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [65, 99],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [100, 194],
+          "type": "Maintenance",
+          "parameterStart": 582,
+          "parameterEnd": 618,
+          "hold": "3s",
+          "comment": "PWM frequency (Hertz)"
+        },
+        {
+          "dmxRange": [195, 197],
+          "type": "Maintenance",
+          "parameter": 1200,
+          "hold": "3s",
+          "comment": "PWM frequency (Hertz)"
+        },
+        {
+          "dmxRange": [198, 200],
+          "type": "Maintenance",
+          "parameter": 2400,
+          "hold": "3s",
+          "comment": "PWM frequency (Hertz)"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Braking Delay on"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Braking Delay off"
+        },
+        {
+          "dmxRange": [221, 247],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Reset all functions"
+        }
+      ]
+    },
+    "Color Presets $pixelKey": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Warm Yellow",
+          "colors": ["#ffcc00"]
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Turquoise",
+          "colors": ["#00ffcc"]
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "comment": "Lavender",
+          "colors": ["#e6e6fa"]
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "comment": "Mauve",
+          "colors": ["#dd00ff"]
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ff88cc"]
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colorTemperature": "7200K"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 223],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Extended",
+      "shortName": "ext",
+      "channels": [
+        "Fan Speed",
+        "LED Intensity Master",
+        "Shutter",
+        "Control",
+        "Color Presets $pixelKey",
+        "Red $pixelKey",
+        "Green $pixelKey",
+        "Blue $pixelKey"
+      ]
+    },
+    {
+      "name": "Normal",
+      "shortName": "norm",
+      "channels": [
+        "Fan Speed",
+        "LED Intensity Master",
+        "Shutter",
+        "Control",
+        "Color Presets $pixelKey",
+        "Red $pixelKey",
+        "Green $pixelKey",
+        "Blue $pixelKey"
+      ]
+    },
+    {
+      "name": "Extended Legacy",
+      "shortName": "extleg",
+      "channels": [
+        "Fan Speed",
+        "LED Intensity Master",
+        "Shutter",
+        "Color Presets $pixelKey",
+        "Red $pixelKey",
+        "Green $pixelKey",
+        "Blue $pixelKey",
+        "Control"
+      ]
+    },
+    {
+      "name": "Normal Legacy",
+      "shortName": "normleg",
+      "channels": [
+        "Fan Speed",
+        "LED Intensity Master",
+        "Shutter",
+        "Color Presets $pixelKey",
+        "Red $pixelKey",
+        "Green $pixelKey",
+        "Blue $pixelKey",
+        "Control"
+      ]
+    }
+  ]
+}
