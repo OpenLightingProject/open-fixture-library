@@ -184,24 +184,7 @@ module.exports = {
       );
       if (rotationCaps.length > 0) {
         const xmlWheelRotation = xmlColorWheel.element(`wheelrotation`);
-
-        rotationCaps.forEach(cap => {
-          if (cap.startValue === 0 && cap.endValue === 0) {
-            const xmlCap = getBaseXmlCapability(cap.capObject);
-            xmlCap.attribute(`type`, `stop`);
-            xmlWheelRotation.importDocument(xmlCap);
-          }
-          else if (cap.startValue > 0) {
-            const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
-            xmlCap.attribute(`type`, `cw`);
-            xmlWheelRotation.importDocument(xmlCap);
-          }
-          else {
-            const xmlCap = getBaseXmlCapability(cap.capObject, Math.abs(cap.startValue), Math.abs(cap.endValue));
-            xmlCap.attribute(`type`, `ccw`);
-            xmlWheelRotation.importDocument(xmlCap);
-          }
-        });
+        rotationCaps.forEach(cap => xmlWheelRotation.importDocument(getRotationSpeedXmlCapability(cap)));
       }
 
       return xmlColorWheel;
@@ -465,20 +448,9 @@ module.exports = {
         // add ranges/steps for rotation speed dmx control capabilities
         const rotationSpeedCaps = commentGroup.filter(cap => cap.speed !== null);
         getDmxControlCapabilities(rotationSpeedCaps, `speed`, `Hz`, [[0, 0], [100, 5]]).forEach(cap => {
-          if (cap.startValue === 0 && cap.endValue === 0) {
-            xmlStep.element(`step`, {
-              mindmx: cap.capObject.dmxRange.start,
-              maxdmx: cap.capObject.dmxRange.end,
-              type: `stop`,
-              handler: `prismrotation`
-            });
-          }
-          else {
-            const xmlRange = getBaseXmlCapability(cap.capObject, Math.abs(cap.startValue), Math.abs(cap.endValue));
-            xmlRange.attribute(`type`, cap.startValue > 0 ? `cw` : `ccw`);
-            xmlRange.attribute(`handler`, `prismrotation`);
-            xmlStep.importDocument(xmlRange);
-          }
+          const xmlCap = getRotationSpeedXmlCapability(cap);
+          xmlCap.attribute(`handler`, `prismrotation`);
+          xmlStep.importDocument(xmlCap);
         });
       });
 
@@ -525,18 +497,8 @@ module.exports = {
       const xmlPrismRotation = xmlbuilder.create(`prismrotation`);
 
       getDmxControlCapabilities(caps, `speed`, `Hz`, [[0, 0], [100, 5]]).forEach(cap => {
-        if (cap.startValue === 0 && cap.endValue === 0) {
-          xmlPrismRotation.element(`step`, {
-            mindmx: cap.capObject.dmxRange.start,
-            maxdmx: cap.capObject.dmxRange.end,
-            type: `stop`
-          });
-        }
-        else {
-          const xmlRange = getBaseXmlCapability(cap.capObject, Math.abs(cap.startValue), Math.abs(cap.endValue));
-          xmlRange.attribute(`type`, cap.startValue > 0 ? `cw` : `ccw`);
-          xmlPrismRotation.importDocument(xmlRange);
-        }
+        const xmlCap = getRotationSpeedXmlCapability(cap);
+        xmlPrismRotation.importDocument(xmlCap);
       });
 
       return xmlPrismRotation;
@@ -626,20 +588,8 @@ module.exports = {
     create: (channel, caps) => {
       const xmlRotation = xmlbuilder.create(`rotation`);
 
-      getDmxControlCapabilities(caps, `speed`, `Hz`, [[0, 0], [100, 5]]).forEach(cap => {
-        if (cap.startValue === 0 && cap.endValue === 0) {
-          xmlRotation.element(`step`, {
-            mindmx: cap.capObject.dmxRange.start,
-            maxdmx: cap.capObject.dmxRange.end,
-            type: `stop`
-          });
-        }
-        else {
-          const xmlRange = getBaseXmlCapability(cap.capObject, Math.abs(cap.startValue), Math.abs(cap.endValue));
-          xmlRange.attribute(`type`, cap.startValue > 0 ? `cw` : `ccw`);
-          xmlRotation.importDocument(xmlRange);
-        }
-      });
+      const dmxControlCaps = getDmxControlCapabilities(caps, `speed`, `Hz`, [[0, 0], [100, 5]]);
+      dmxControlCaps.forEach(cap => xmlRotation.importDocument(getRotationSpeedXmlCapability(cap)));
 
       return xmlRotation;
     }
@@ -741,6 +691,22 @@ function getBaseXmlCapability(cap, startValue = null, endValue = null) {
   }
 
   return xmlCap;
+}
+
+/**
+ * @param {DmxControlCapability} cap The DMX control capability; i.e. speed is in Hz.
+ * @returns {XMLElement} A capability xml element with the proper stop/cw/ccw type
+ */
+function getRotationSpeedXmlCapability(cap) {
+  if (cap.startValue === 0 && cap.endValue === 0) {
+    const xmlStep = getBaseXmlCapability(cap.capObject);
+    xmlStep.attribute(`type`, `stop`);
+    return xmlStep;
+  }
+
+  const xmlRange = getBaseXmlCapability(cap.capObject, Math.abs(cap.startValue), Math.abs(cap.endValue));
+  xmlRange.attribute(`type`, cap.startValue > 0 ? `cw` : `ccw`);
+  return xmlRange;
 }
 
 /**
