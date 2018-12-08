@@ -8,6 +8,7 @@
     "createDate": "2018-12-07",
     "lastModifyDate": "2018-12-07"
   },
+  "helpWanted": "Missing modes: 7-channel, 9-channel",
   "links": {
     "manual": [
       "https://cdb.s3-us-west-1.amazonaws.com/ItemRelatedFiles/6989/mega_bar_rgba.pdf"
@@ -36,7 +37,16 @@
     }
   },
   "matrix": {
-    "pixelCount": [8, 1, 1]
+    "pixelCount": [8, 1, 1],
+    "pixelGroups": {
+      "Master": ["1", "2", "3", "4", "5", "6", "7", "8"],
+      "1/2": ["1", "2", "3", "4"],
+      "2/2": ["5", "6", "7", "8"],
+      "1/4": ["1", "2"],
+      "2/4": ["3", "4"],
+      "3/4": ["5", "6"],
+      "4/4": ["7", "8"]
+    }
   },
   "templateChannels": {
     "Red $pixelKey": {
@@ -88,7 +98,67 @@
   },
   "modes": [
     {
-      "name": "34 Channel",
+      "name": "RGBA",
+      "shortName": "4ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Amber Master"
+      ]
+    },
+    {
+      "name": "RGBA + Strobe/Dimmer",
+      "shortName": "6ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Amber Master",
+        "Strobe",
+        "Intensity"
+      ]
+    },
+    {
+      "name": "Halves",
+      "shortName": "10ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        },
+        "Strobe",
+        "Intensity"
+      ]
+    },
+    {
+      "name": "Fourths",
+      "shortName": "18ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        },
+        "Strobe",
+        "Intensity"
+      ]
+    },
+    {
+      "name": "Eighths",
       "shortName": "34ch",
       "channels": [
         {
