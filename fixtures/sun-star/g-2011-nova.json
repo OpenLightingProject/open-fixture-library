@@ -19,8 +19,17 @@
     ]
   },
   "physical": {
+    "dimensions": [150, 130, 210],
+    "weight": 8,
+    "power": 30,
+    "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LASER 532nm"
+      "type": "Green laser 532nm"
+    },
+    "focus": {
+      "type": "Fixed",
+      "panMax": 31,
+      "tiltMax": 31
     }
   },
   "availableChannels": {
