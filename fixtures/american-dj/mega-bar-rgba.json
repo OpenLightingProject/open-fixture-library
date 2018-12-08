@@ -19,6 +19,18 @@
       "https://www.youtube.com/watch?v=WXp4BXd6yC8"
     ]
   },
+  "physical": {
+    "dimensions": [1060, 145, 73],
+    "weight": 2.7,
+    "power": 32,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "320x 10mm LEDs (64 red, 96 green, 96 blue, 64 amber)"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
   "availableChannels": {
     "Red 1": {
       "capability": {
