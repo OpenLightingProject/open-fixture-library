@@ -65,12 +65,20 @@
     }
   },
   "availableChannels": {
-    "Shutter / Strobe": {
-      "capability": {
-        "type": "StrobeSpeed",
-        "speedStart": "stop",
-        "speedEnd": "fast"
-      }
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "stop",
+          "speedEnd": "fast"
+        }
+      ]
     },
     "Intensity": {
       "capability": {
@@ -94,7 +102,7 @@
             "Amber $pixelKey"
           ]
         },
-        "Shutter / Strobe",
+        "Strobe",
         "Intensity"
       ]
     }
