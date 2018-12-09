@@ -104,7 +104,7 @@
       </div>
 
       <div v-else-if="error">
-        Unfortunately, there was an error while uploading: {{ error }}
+        <span>Unfortunately, there was an error while uploading: {{ error }}</span>
 
         <div class="button-bar right">
           <nuxt-link to="/" class="button secondary">Back to homepage</nuxt-link>

@@ -48,7 +48,7 @@
     </template>
 
     <template v-else-if="state === `error`">
-      Unfortunately, there was an error while uploading. Please copy the following data and manually submit it.
+      <span>Unfortunately, there was an error while uploading. Please copy the following data and manually submit it.</span>
 
       <textarea :value="errorData" readonly />
 
@@ -70,16 +70,12 @@ import Capability from '~~/lib/model/Capability.mjs';
 
 import labeledInputVue from '~/components/labeled-input.vue';
 import labeledValueVue from '~/components/labeled-value.vue';
-import propertyInputText from '~/components/property-input-text.vue';
-import propertyInputTextarea from '~/components/property-input-textarea.vue';
 
 export default {
   components: {
     'app-a11y-dialog': a11yDialogVue,
     'app-labeled-input': labeledInputVue,
-    'app-labeled-value': labeledValueVue,
-    'app-property-input-text': propertyInputText,
-    'app-property-input-textarea': propertyInputTextarea
+    'app-labeled-value': labeledValueVue
   },
   model: {
     prop: `context`

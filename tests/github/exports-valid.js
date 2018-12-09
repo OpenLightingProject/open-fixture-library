@@ -35,66 +35,77 @@ pullRequest.checkEnv()
   })
   .then(() => pullRequest.init())
   .then(prData => pullRequest.fetchChangedComponents())
-  .then(changedComponents => {
-    /** @type {Array.<Task>} */
-    const tasks = getTasksForModel(changedComponents)
-      .concat(getTasksForPlugins(changedComponents))
-      .concat(getTasksForExportTests(changedComponents))
-      .concat(getTasksForFixtures(changedComponents))
-      .filter((task, index, arr) => {
-        const firstEqualTask = arr.find(otherTask =>
-          task.manKey === otherTask.manKey &&
-          task.fixKey === otherTask.fixKey &&
-          task.pluginKey === otherTask.pluginKey &&
-          task.testKey === otherTask.testKey
-        );
-
-        // remove duplicates
-        return task === firstEqualTask;
-      })
-      .sort((a, b) => {
-        const manCompare = a.manKey.localeCompare(b.manKey);
-        const fixCompare = a.fixKey.localeCompare(b.fixKey);
-        const pluginCompare = a.pluginKey.localeCompare(b.pluginKey);
-        const testCompare = a.testKey.localeCompare(b.testKey);
-
-        if (manCompare !== 0) {
-          return manCompare;
-        }
-
-        if (fixCompare !== 0) {
-          return fixCompare;
-        }
-
-        if (pluginCompare !== 0) {
-          return pluginCompare;
-        }
-
-        return testCompare;
-      });
-
-    return Promise.all(tasks.map(task => getTaskPromise(task)));
-  })
-  .then(taskResults => {
-    let lines = [];
-
-    if (taskResults.some(result => result.length > 0)) {
-      lines.push(
-        `Test the exported files of selected fixtures against the plugins' export tests.`,
-        `You can run a plugin's export tests by executing:`,
-        `\`$ node cli/run-export-test.js -p <plugin name> <fixtures>\``,
-        ``
+  .then(changedComponents => getTasksForModel(changedComponents)
+    .concat(getTasksForPlugins(changedComponents))
+    .concat(getTasksForExportTests(changedComponents))
+    .concat(getTasksForFixtures(changedComponents))
+    .filter((task, index, arr) => {
+      const firstEqualTask = arr.find(otherTask =>
+        task.manKey === otherTask.manKey &&
+        task.fixKey === otherTask.fixKey &&
+        task.pluginKey === otherTask.pluginKey &&
+        task.testKey === otherTask.testKey
       );
 
-      for (const taskResult of taskResults) {
-        lines = lines.concat(taskResult);
+      // remove duplicates
+      return task === firstEqualTask;
+    })
+    .sort((a, b) => {
+      const manCompare = a.manKey.localeCompare(b.manKey);
+      const fixCompare = a.fixKey.localeCompare(b.fixKey);
+      const pluginCompare = a.pluginKey.localeCompare(b.pluginKey);
+      const testCompare = a.testKey.localeCompare(b.testKey);
+
+      if (manCompare !== 0) {
+        return manCompare;
       }
+
+      if (fixCompare !== 0) {
+        return fixCompare;
+      }
+
+      if (pluginCompare !== 0) {
+        return pluginCompare;
+      }
+
+      return testCompare;
+    })
+  )
+  .then(async tasks => {
+    if (tasks.length === 0) {
+      return pullRequest.updateComment({
+        filename: path.relative(path.join(__dirname, `../../`), __filename),
+        name: `Export files validity`,
+        lines: []
+      });
+    }
+
+    const lines = [
+      `Test the exported files of selected fixtures against the plugins' export tests.`,
+      `You can run a plugin's export tests by executing:`,
+      `\`$ node cli/run-export-test.js -p <plugin name> <fixtures>\``,
+      ``
+    ];
+
+    const tooLongMessage = `:warning: The output of the script is too long to fit in this comment, please run it yourself locally!`;
+
+    for (const task of tasks) {
+      const taskResultLines = await getTaskPromise(task);
+
+      // GitHub's official maximum comment length is 2^16=65536, but it's actually 2^18=262144.
+      // We keep 2144 characters extra space as we don't count the comment header (added by our pull request module).
+      if (lines.concat(taskResultLines, tooLongMessage).join(`\r\n`).length > 260000) {
+        lines.push(tooLongMessage);
+        break;
+      }
+
+      lines.push(...taskResultLines);
     }
 
     return pullRequest.updateComment({
       filename: path.relative(path.join(__dirname, `../../`), __filename),
       name: `Export files validity`,
-      lines: lines
+      lines
     });
   })
   .catch(error => {
