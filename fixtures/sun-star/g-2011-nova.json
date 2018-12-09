@@ -1,0 +1,438 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "G-2011 / NOVA",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["Nils Van Zuijlen"],
+    "createDate": "2018-12-08",
+    "lastModifyDate": "2018-12-08"
+  },
+  "links": {
+    "manual": [
+      "https://sunstarprolight.com.ar/manuales/NOVA-3D.pdf"
+    ],
+    "productPage": [
+      "https://sunstarprolight.com.ar/nova-3d"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=FatnsLLsyKA"
+    ]
+  },
+  "physical": {
+    "dimensions": [150, 130, 210],
+    "weight": 8,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Green laser 532nm"
+    },
+    "focus": {
+      "type": "Fixed",
+      "panMax": 31,
+      "tiltMax": 31
+    }
+  },
+  "availableChannels": {
+    "Mode": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "Effect",
+          "effectName": "DMX"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Effect",
+          "effectName": "Audio",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "Effect",
+          "effectName": "Auto"
+        }
+      ]
+    },
+    "Programs": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "Effect",
+          "effectName": "Effect 1",
+          "helpWanted": "Is this actually NoFunction? How to disable programs?"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "Effect",
+          "effectName": "Effect 2"
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "Effect",
+          "effectName": "Effect 3"
+        },
+        {
+          "dmxRange": [12, 15],
+          "type": "Effect",
+          "effectName": "Effect 4"
+        },
+        {
+          "dmxRange": [16, 19],
+          "type": "Effect",
+          "effectName": "Effect 5"
+        },
+        {
+          "dmxRange": [20, 23],
+          "type": "Effect",
+          "effectName": "Effect 6"
+        },
+        {
+          "dmxRange": [24, 27],
+          "type": "Effect",
+          "effectName": "Effect 7"
+        },
+        {
+          "dmxRange": [28, 31],
+          "type": "Effect",
+          "effectName": "Effect 8"
+        },
+        {
+          "dmxRange": [32, 35],
+          "type": "Effect",
+          "effectName": "Effect 9"
+        },
+        {
+          "dmxRange": [36, 39],
+          "type": "Effect",
+          "effectName": "Effect 10"
+        },
+        {
+          "dmxRange": [40, 43],
+          "type": "Effect",
+          "effectName": "Effect 11"
+        },
+        {
+          "dmxRange": [44, 47],
+          "type": "Effect",
+          "effectName": "Effect 12"
+        },
+        {
+          "dmxRange": [48, 51],
+          "type": "Effect",
+          "effectName": "Effect 13"
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "Effect",
+          "effectName": "Effect 14"
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "Effect",
+          "effectName": "Effect 15"
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "Effect",
+          "effectName": "Effect 16"
+        },
+        {
+          "dmxRange": [64, 67],
+          "type": "Effect",
+          "effectName": "Effect 17"
+        },
+        {
+          "dmxRange": [68, 71],
+          "type": "Effect",
+          "effectName": "Effect 18"
+        },
+        {
+          "dmxRange": [72, 75],
+          "type": "Effect",
+          "effectName": "Effect 19"
+        },
+        {
+          "dmxRange": [76, 79],
+          "type": "Effect",
+          "effectName": "Effect 20"
+        },
+        {
+          "dmxRange": [80, 83],
+          "type": "Effect",
+          "effectName": "Effect 21"
+        },
+        {
+          "dmxRange": [84, 87],
+          "type": "Effect",
+          "effectName": "Effect 22"
+        },
+        {
+          "dmxRange": [88, 91],
+          "type": "Effect",
+          "effectName": "Effect 23"
+        },
+        {
+          "dmxRange": [92, 95],
+          "type": "Effect",
+          "effectName": "Effect 24"
+        },
+        {
+          "dmxRange": [96, 99],
+          "type": "Effect",
+          "effectName": "Effect 25"
+        },
+        {
+          "dmxRange": [100, 103],
+          "type": "Effect",
+          "effectName": "Effect 26"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "Effect",
+          "effectName": "Effect 27"
+        },
+        {
+          "dmxRange": [108, 111],
+          "type": "Effect",
+          "effectName": "Effect 28"
+        },
+        {
+          "dmxRange": [112, 115],
+          "type": "Effect",
+          "effectName": "Effect 29"
+        },
+        {
+          "dmxRange": [116, 119],
+          "type": "Effect",
+          "effectName": "Effect 30"
+        },
+        {
+          "dmxRange": [120, 123],
+          "type": "Effect",
+          "effectName": "Effect 31"
+        },
+        {
+          "dmxRange": [124, 127],
+          "type": "Effect",
+          "effectName": "Effect 32"
+        },
+        {
+          "dmxRange": [128, 131],
+          "type": "Effect",
+          "effectName": "Effect 33"
+        },
+        {
+          "dmxRange": [132, 135],
+          "type": "Effect",
+          "effectName": "Effect 34"
+        },
+        {
+          "dmxRange": [136, 139],
+          "type": "Effect",
+          "effectName": "Effect 35"
+        },
+        {
+          "dmxRange": [140, 143],
+          "type": "Effect",
+          "effectName": "Effect 36"
+        },
+        {
+          "dmxRange": [144, 147],
+          "type": "Effect",
+          "effectName": "Effect 37"
+        },
+        {
+          "dmxRange": [148, 151],
+          "type": "Effect",
+          "effectName": "Effect 38"
+        },
+        {
+          "dmxRange": [152, 155],
+          "type": "Effect",
+          "effectName": "Effect 39"
+        },
+        {
+          "dmxRange": [156, 159],
+          "type": "Effect",
+          "effectName": "Effect 40"
+        },
+        {
+          "dmxRange": [160, 163],
+          "type": "Effect",
+          "effectName": "Effect 41"
+        },
+        {
+          "dmxRange": [164, 167],
+          "type": "Effect",
+          "effectName": "Effect 42"
+        },
+        {
+          "dmxRange": [168, 171],
+          "type": "Effect",
+          "effectName": "Effect 43"
+        },
+        {
+          "dmxRange": [172, 175],
+          "type": "Effect",
+          "effectName": "Effect 44"
+        },
+        {
+          "dmxRange": [176, 179],
+          "type": "Effect",
+          "effectName": "Effect 45"
+        },
+        {
+          "dmxRange": [180, 183],
+          "type": "Effect",
+          "effectName": "Effect 46"
+        },
+        {
+          "dmxRange": [184, 187],
+          "type": "Effect",
+          "effectName": "Effect 47"
+        },
+        {
+          "dmxRange": [188, 191],
+          "type": "Effect",
+          "effectName": "Effect 48"
+        },
+        {
+          "dmxRange": [192, 195],
+          "type": "Effect",
+          "effectName": "Effect 49"
+        },
+        {
+          "dmxRange": [196, 199],
+          "type": "Effect",
+          "effectName": "Effect 50"
+        },
+        {
+          "dmxRange": [200, 203],
+          "type": "Effect",
+          "effectName": "Effect 51"
+        },
+        {
+          "dmxRange": [204, 207],
+          "type": "Effect",
+          "effectName": "Effect 52"
+        },
+        {
+          "dmxRange": [208, 211],
+          "type": "Effect",
+          "effectName": "Effect 53"
+        },
+        {
+          "dmxRange": [212, 215],
+          "type": "Effect",
+          "effectName": "Effect 54"
+        },
+        {
+          "dmxRange": [216, 219],
+          "type": "Effect",
+          "effectName": "Effect 55"
+        },
+        {
+          "dmxRange": [220, 223],
+          "type": "Effect",
+          "effectName": "Effect 56"
+        },
+        {
+          "dmxRange": [224, 227],
+          "type": "Effect",
+          "effectName": "Effect 57"
+        },
+        {
+          "dmxRange": [228, 231],
+          "type": "Effect",
+          "effectName": "Effect 58"
+        },
+        {
+          "dmxRange": [232, 235],
+          "type": "Effect",
+          "effectName": "Effect 59"
+        },
+        {
+          "dmxRange": [236, 239],
+          "type": "Effect",
+          "effectName": "Effect 60"
+        },
+        {
+          "dmxRange": [240, 243],
+          "type": "Effect",
+          "effectName": "Effect 61"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "Effect",
+          "effectName": "Effect 62"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "Effect",
+          "effectName": "Effect 63"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "Effect 64"
+        }
+      ]
+    },
+    "Pan": {
+      "defaultValue": "50%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-15.5deg",
+        "angleEnd": "15.5deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": "50%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-15.5deg",
+        "angleEnd": "15.5deg"
+      }
+    },
+    "Effect Speed": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Rotation Speed": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "Rotation",
+        "speedStart": "fast CW",
+        "speedEnd": "slow CW",
+        "helpWanted": "Or is this CCW (counter-clockwise)?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Mode",
+        "Programs",
+        "Pan",
+        "Tilt",
+        "Effect Speed",
+        "Rotation Speed"
+      ]
+    }
+  ]
+}
