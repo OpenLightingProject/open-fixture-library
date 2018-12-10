@@ -725,6 +725,11 @@
       "lastActionDate": "2018-07-21",
       "lastAction": "modified"
     },
+    "plug/parled": {
+      "name": "PARLED",
+      "lastActionDate": "2018-12-10",
+      "lastAction": "created"
+    },
     "powerlighting/wash-84w": {
       "name": "Wash 84W",
       "lastActionDate": "2018-09-04",
@@ -1164,6 +1169,9 @@
     "orion": [
       "orcan2"
     ],
+    "plug": [
+      "parled"
+    ],
     "powerlighting": [
       "wash-84w"
     ],
@@ -1377,6 +1385,7 @@
       "nicols/led-bar-123-fc-ip",
       "nicols/pat-252",
       "orion/orcan2",
+      "plug/parled",
       "powerlighting/wash-84w",
       "prolights/diamond19",
       "prolights/pixpan16",
@@ -1425,6 +1434,7 @@
       "eurolite/led-sls-6-uv-floor",
       "generic/desk-channel",
       "magicfx/smokejet",
+      "plug/parled",
       "robert-juliat/613sx",
       "showtec/club-par-12-4-rgbw",
       "showtec/sunstrip-active-mkii"
@@ -1436,6 +1446,7 @@
       "magicfx/psyco2jet",
       "magicfx/stage-flame",
       "minuit-une/ivl-carre",
+      "plug/parled",
       "showven/sparkular",
       "showven/sparkular-fall",
       "venue/tristrip3z"
@@ -1614,6 +1625,7 @@
       "glp/impression-x4-bar-10",
       "glp/jdc1",
       "martin/atomic-3000",
+      "plug/parled",
       "tmb/solaris-flare"
     ]
   },
@@ -1851,6 +1863,9 @@
       "boomtonedj/crazy-spot-30",
       "ghost/ip-spot-bat"
     ],
+    "BIGU L": [
+      "plug/parled"
+    ],
     "Bram Nauta": [
       "american-dj/vizi-spot-led-pro"
     ],
@@ -1946,6 +1961,12 @@
     ]
   },
   "rdm": {
+    "1": {
+      "key": "plug",
+      "models": {
+        "1": "parled"
+      }
+    },
     "1808": {
       "key": "dts",
       "models": {}
@@ -2076,6 +2097,7 @@
     "minuit-une": "#bf40bd",
     "nicols": "#c266cc",
     "orion": "#79bf40",
+    "plug": "#bf408a",
     "powerlighting": "#d926cd",
     "prolights": "#bf9940",
     "qtx": "#5cd6d4",
@@ -2095,6 +2117,7 @@
   },
   "lastUpdated": [
     "american-dj/mega-bar-rgba",
+    "plug/parled",
     "sun-star/g-2011-nova",
     "glp/force-120",
     "cameo/steam-wizard-1000",
