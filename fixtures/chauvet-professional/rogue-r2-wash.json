@@ -21,7 +21,8 @@
     "power": 339,
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
-      "type": "19× 15W LED"
+      "type": "19× 15W LED",
+      "lumens": 8500
     },
     "lens": {
       "degreesMinMax": [8, 30]
@@ -950,8 +951,8 @@
     "Zoom": {
       "capability": {
         "type": "Zoom",
-        "angleStart": "narrow",
-        "angleEnd": "wide"
+        "angleStart": "12deg",
+        "angleEnd": "49deg"
       }
     },
     "Control": {
