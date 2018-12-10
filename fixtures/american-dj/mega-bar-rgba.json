@@ -48,6 +48,28 @@
       "4/4": ["7", "8"]
     }
   },
+  "availableChannels": {
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "stop",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
   "templateChannels": {
     "Red $pixelKey": {
       "capability": {
@@ -71,28 +93,6 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber"
-      }
-    }
-  },
-  "availableChannels": {
-    "Strobe": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 7],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [8, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "stop",
-          "speedEnd": "fast"
-        }
-      ]
-    },
-    "Intensity": {
-      "capability": {
-        "type": "Intensity"
       }
     }
   },
