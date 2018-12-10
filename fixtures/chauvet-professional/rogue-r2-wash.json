@@ -32,6 +32,35 @@
       "tiltMax": 230
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [null, null, null, "1c", null, "1d", null, null, null],
+        [null, "1b", null, null, null, null, null, "1e", null],
+        [null, null, null, null, "2b", null, null, null, null],
+        ["1a", null, "2a", null, null, null, "2c", null, "1f"],
+        [null, null, null, null,  "3", null, null, null, null],
+        ["5a", null, "4a", null, null, null, "4c", null, "5f"],
+        [null, null, null, null, "4b", null, null, null, null],
+        [null, "5b", null, null, null, null, null, "5e", null],
+        [null, null, null, "5c", null, "5d", null, null, null]
+      ]
+    ],
+    "pixelGroups": {
+      "Zone 1": ["1a", "1b", "1c", "1d", "1e", "1f"],
+      "Zone 2": ["2a", "2b", "2c"],
+      "Zone 3": ["3"],
+      "Zone 4": ["4a", "4b", "4c"],
+      "Zone 5": ["5a", "5b", "5c", "5d", "5e", "5f"],
+      "Master": [
+        "1a", "1b", "1c", "1d", "1e", "1f",
+        "2a", "2b", "2c",
+        "3",
+        "4a", "4b", "4c",
+        "5a", "5b", "5c", "5d", "5e", "5f"
+      ]
+    }
+  },
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
@@ -183,34 +212,6 @@
           "shutterEffect": "Open"
         }
       ]
-    },
-    "Red $pixelKey": {
-      "fineChannelAliases": ["Red $pixelKey fine"],
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green $pixelKey": {
-      "fineChannelAliases": ["Green $pixelKey fine"],
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue $pixelKey": {
-      "fineChannelAliases": ["Blue $pixelKey fine"],
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White $pixelKey": {
-      "fineChannelAliases": ["White $pixelKey fine"],
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
     },
     "Color": {
       "capabilities": [
@@ -1105,6 +1106,36 @@
       ]
     }
   },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "fineChannelAliases": ["Red $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "fineChannelAliases": ["Green $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "fineChannelAliases": ["Blue $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "fineChannelAliases": ["White $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
   "modes": [
     {
       "name": "56-channel",
@@ -1118,14 +1149,21 @@
         "Dimmer",
         "Dimmer fine",
         "Shutter",
-        "Red $pixelKey",
-        "Red $pixelKey fine",
-        "Green $pixelKey",
-        "Green $pixelKey fine",
-        "Blue $pixelKey",
-        "Blue $pixelKey fine",
-        "White $pixelKey",
-        "White $pixelKey fine",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Zone 1", "Zone 2", "Zone 3", "Zone 4", "Zone 5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine",
+            "White $pixelKey",
+            "White $pixelKey fine"
+          ]
+        },
         "Color",
         "Zone Selection",
         "Programs",
@@ -1148,14 +1186,21 @@
         "Dimmer",
         "Dimmer fine",
         "Shutter",
-        "Red $pixelKey",
-        "Red $pixelKey fine",
-        "Green $pixelKey",
-        "Green $pixelKey fine",
-        "Blue $pixelKey",
-        "Blue $pixelKey fine",
-        "White $pixelKey",
-        "White $pixelKey fine",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Zone 1", "Zone 2", "Zone 3", "Zone 4", "Zone 5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine",
+            "White $pixelKey",
+            "White $pixelKey fine"
+          ]
+        },
         "Color",
         "Zone Selection",
         "Programs",
@@ -1182,14 +1227,21 @@
         "Program Speed",
         "Zoom",
         "Control",
-        "Red $pixelKey",
-        "Red $pixelKey fine",
-        "Green $pixelKey",
-        "Green $pixelKey fine",
-        "Blue $pixelKey",
-        "Blue $pixelKey fine",
-        "White $pixelKey",
-        "White $pixelKey fine"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Zone 1", "Zone 2", "Zone 3", "Zone 4", "Zone 5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine",
+            "White $pixelKey",
+            "White $pixelKey fine"
+          ]
+        }
       ]
     },
     {
@@ -1203,10 +1255,17 @@
         "Pan/Tilt Speed",
         "Dimmer",
         "Shutter",
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
-        "White $pixelKey",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Zone 1", "Zone 2", "Zone 3", "Zone 4", "Zone 5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        },
         "Color",
         "Zone Selection",
         "Programs",
@@ -1232,10 +1291,17 @@
         "Program Speed",
         "Zoom",
         "Control",
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
-        "White $pixelKey"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Zone 1", "Zone 2", "Zone 3", "Zone 4", "Zone 5"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
       ]
     },
     {
@@ -1250,14 +1316,14 @@
         "Dimmer",
         "Dimmer fine",
         "Shutter",
-        "Red $pixelKey",
-        "Red $pixelKey fine",
-        "Green $pixelKey",
-        "Green $pixelKey fine",
-        "Blue $pixelKey",
-        "Blue $pixelKey fine",
-        "White $pixelKey",
-        "White $pixelKey fine",
+        "Red Master",
+        "Red Master fine",
+        "Green Master",
+        "Green Master fine",
+        "Blue Master",
+        "Blue Master fine",
+        "White Master",
+        "White Master fine",
         "Color",
         "Zone Selection",
         "Programs",
@@ -1277,10 +1343,10 @@
         "Pan/Tilt Speed",
         "Dimmer",
         "Shutter",
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
-        "White $pixelKey",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
         "Color",
         "Zone Selection",
         "Programs",
@@ -1301,10 +1367,10 @@
         "Dimmer",
         "Dimmer fine",
         "Shutter",
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
-        "White $pixelKey",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
         "Color",
         "Zoom",
         "Control"
