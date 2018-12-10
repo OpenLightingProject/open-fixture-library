@@ -35,7 +35,6 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "dmxValueResolution": "8bit",
       "defaultValue": "50%",
       "capability": {
         "type": "Pan",
@@ -45,7 +44,6 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "dmxValueResolution": "8bit",
       "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
@@ -62,7 +60,6 @@
     },
     "Dimmer": {
       "fineChannelAliases": ["Dimmer fine"],
-      "dmxValueResolution": "8bit",
       "capability": {
         "type": "Intensity"
       }
@@ -189,7 +186,6 @@
     },
     "Red $pixelKey": {
       "fineChannelAliases": ["Red $pixelKey fine"],
-      "dmxValueResolution": "8bit",
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
@@ -197,7 +193,6 @@
     },
     "Green $pixelKey": {
       "fineChannelAliases": ["Green $pixelKey fine"],
-      "dmxValueResolution": "8bit",
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
@@ -205,7 +200,6 @@
     },
     "Blue $pixelKey": {
       "fineChannelAliases": ["Blue $pixelKey fine"],
-      "dmxValueResolution": "8bit",
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
@@ -213,7 +207,6 @@
     },
     "White $pixelKey": {
       "fineChannelAliases": ["White $pixelKey fine"],
-      "dmxValueResolution": "8bit",
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
