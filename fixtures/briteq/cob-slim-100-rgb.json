@@ -29,7 +29,7 @@
     "power": 120,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED",
+      "type": "100W COB RGB LED",
       "colorTemperature": 3200
     },
     "lens": {
@@ -44,8 +44,7 @@
     "Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "Red (0-100%)"
+        "color": "Red"
       }
     },
     "Green": {
@@ -64,32 +63,31 @@
       "capabilities": [
         {
           "dmxRange": [0, 190],
-          "type": "Effect",
-          "effectName": "Master dimmer 0% - 100% (full open)"
+          "type": "Intensity"
         },
         {
           "dmxRange": [191, 200],
           "type": "Effect",
-          "effectName": "Sound Control (7 colors)"
+          "effectName": "Sound Control (7 colors)",
+          "soundControlled": true
         },
         {
           "dmxRange": [201, 247],
-          "type": "Effect",
-          "effectName": "Strobe",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [248, 255],
-          "type": "Effect",
-          "effectName": "Master dimmer full open"
+          "type": "Intensity",
+          "brightness": "bright"
         }
       ]
     },
     "Master dimmer": {
       "capability": {
-        "type": "Intensity",
-        "comment": "Master dimmer (0 - 100%)"
+        "type": "Intensity"
       }
     },
     "Strobe": {
@@ -97,14 +95,13 @@
         {
           "dmxRange": [0, 7],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "No strobe (Open)"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [8, 37],
           "type": "ShutterStrobe",
-          "shutterEffect": "StrobeRandom",
-          "comment": "Random Strobe"
+          "shutterEffect": "Strobe",
+          "randomTiming": true
         },
         {
           "dmxRange": [38, 67],
@@ -121,7 +118,7 @@
         }
       ]
     },
-    "Mode 2": {
+    "Effect": {
       "capabilities": [
         {
           "dmxRange": [0, 7],
@@ -130,21 +127,22 @@
         {
           "dmxRange": [8, 247],
           "type": "Effect",
-          "effectName": "Color fade effect (very",
+          "effectPreset": "ColorFade",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [248, 255],
           "type": "Effect",
-          "effectName": "Sound Chase"
+          "effectName": "Sound Chase",
+          "soundControlled": true
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "3 channel",
+      "name": "RGB",
       "channels": [
         "Red",
         "Green",
@@ -153,6 +151,7 @@
     },
     {
       "name": "4LC channel",
+      "shortName": "4LC",
       "channels": [
         "Red",
         "Green",
@@ -162,6 +161,7 @@
     },
     {
       "name": "4+ channel",
+      "shortName": "4+",
       "channels": [
         "Red",
         "Green",
@@ -171,10 +171,11 @@
     },
     {
       "name": "6 channel",
+      "shortName": "6ch",
       "channels": [
         "Master dimmer",
         "Strobe",
-        "Mode 2",
+        "Effect",
         "Red",
         "Green",
         "Blue"
