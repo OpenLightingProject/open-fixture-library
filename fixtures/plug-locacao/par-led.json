@@ -1,7 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "PARLED",
-  "shortName": "RGBW",
+  "name": "PAR LED",
   "categories": ["Color Changer", "Dimmer", "Effect", "Strobe"],
   "meta": {
     "authors": ["BIGU L"],
@@ -79,8 +78,8 @@
   },
   "modes": [
     {
-      "name": "PLUG",
-      "shortName": "PARLED",
+      "name": "7-channel",
+      "shortName": "7ch",
       "channels": [
         "Intensity",
         "Red",
