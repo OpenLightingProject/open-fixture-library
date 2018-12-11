@@ -1,0 +1,125 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Akku Spot 3x10W RGBW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["DJMaxone.de"],
+    "createDate": "2018-12-11",
+    "lastModifyDate": "2018-12-11",
+    "importPlugin": {
+      "plugin": "qlcplus_4.11.2",
+      "date": "2018-12-11",
+      "comment": "created by Q Light Controller Plus (version 4.11.2)"
+    }
+  },
+  "physical": {
+    "dimensions": [118, 105, 114],
+    "weight": 0.35,
+    "power": 36,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12x3W LEDs (3 red, 3 green, 3 blue, 3 white)"
+    },
+    "lens": {
+      "name": "Other"
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Intensity off…bright"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red off…bright"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green off…bright"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue off…bright"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "White off…bright"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "10Hz",
+        "speedEnd": "0Hz"
+      }
+    },
+    "Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Effect",
+          "effectName": "Strobe"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectName": "Color jump"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectName": "Color Dimmer"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Color Change"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound control"
+        }
+      ]
+    },
+    "Function speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Speed"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-Channel",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Program",
+        "Function speed"
+      ]
+    }
+  ]
+}
