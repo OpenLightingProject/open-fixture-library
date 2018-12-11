@@ -78,124 +78,191 @@
       }
     },
     "Segment Effects": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 11],
           "type": "ColorPreset",
           "comment": "UV",
-          "colors": ["#8800ff"]
+          "colors": ["#8800ff"],
+          "switchChannels": {
+            "Segment Effect Control": "Strobe"
+          }
         },
         {
           "dmxRange": [12, 22],
           "type": "ColorPreset",
           "comment": "Red",
-          "colors": ["#ff0000"]
+          "colors": ["#ff0000"],
+          "switchChannels": {
+            "Segment Effect Control": "Strobe"
+          }
         },
         {
           "dmxRange": [23, 33],
           "type": "ColorPreset",
           "comment": "Green",
-          "colors": ["#00ff00"]
+          "colors": ["#00ff00"],
+          "switchChannels": {
+            "Segment Effect Control": "Strobe"
+          }
         },
         {
           "dmxRange": [34, 44],
           "type": "ColorPreset",
           "comment": "Blue",
-          "colors": ["#0000ff"]
+          "colors": ["#0000ff"],
+          "switchChannels": {
+            "Segment Effect Control": "Strobe"
+          }
         },
         {
           "dmxRange": [45, 55],
           "type": "ColorPreset",
           "comment": "Yellow",
-          "colors": ["#ffff00"]
+          "colors": ["#ffff00"],
+          "switchChannels": {
+            "Segment Effect Control": "Strobe"
+          }
         },
         {
           "dmxRange": [56, 66],
           "type": "ColorPreset",
           "comment": "Cyan",
-          "colors": ["#00ffff"]
+          "colors": ["#00ffff"],
+          "switchChannels": {
+            "Segment Effect Control": "Strobe"
+          }
         },
         {
           "dmxRange": [67, 77],
           "type": "ColorPreset",
           "comment": "Magenta",
-          "colors": ["#ff00ff"]
+          "colors": ["#ff00ff"],
+          "switchChannels": {
+            "Segment Effect Control": "Strobe"
+          }
         },
         {
           "dmxRange": [78, 88],
           "type": "ColorPreset",
           "comment": "White",
-          "colors": ["#ffffff"]
+          "colors": ["#ffffff"],
+          "switchChannels": {
+            "Segment Effect Control": "Strobe"
+          }
         },
         {
           "dmxRange": [89, 99],
           "type": "Effect",
-          "effectName": "CFADE"
+          "effectName": "CFADE",
+          "switchChannels": {
+            "Segment Effect Control": "Effect Speed"
+          }
         },
         {
           "dmxRange": [100, 110],
           "type": "Effect",
-          "effectName": "Meteor"
+          "effectName": "Meteor",
+          "switchChannels": {
+            "Segment Effect Control": "Effect Speed"
+          }
         },
         {
           "dmxRange": [111, 121],
           "type": "Effect",
-          "effectPreset": "ColorFade"
+          "effectPreset": "ColorFade",
+          "switchChannels": {
+            "Segment Effect Control": "Effect Speed"
+          }
         },
         {
           "dmxRange": [122, 132],
           "type": "Effect",
-          "effectPreset": "ColorJump"
+          "effectPreset": "ColorJump",
+          "switchChannels": {
+            "Segment Effect Control": "Effect Speed"
+          }
         },
         {
           "dmxRange": [133, 143],
           "type": "Effect",
-          "effectName": "Flow 1"
+          "effectName": "Flow 1",
+          "switchChannels": {
+            "Segment Effect Control": "Effect Speed"
+          }
         },
         {
           "dmxRange": [144, 154],
           "type": "Effect",
-          "effectName": "Flow 2"
+          "effectName": "Flow 2",
+          "switchChannels": {
+            "Segment Effect Control": "Effect Speed"
+          }
         },
         {
           "dmxRange": [155, 165],
           "type": "Effect",
-          "effectName": "Flow 3"
+          "effectName": "Flow 3",
+          "switchChannels": {
+            "Segment Effect Control": "Effect Speed"
+          }
         },
         {
           "dmxRange": [166, 176],
           "type": "Effect",
-          "effectName": "Flow 4"
+          "effectName": "Flow 4",
+          "switchChannels": {
+            "Segment Effect Control": "Effect Speed"
+          }
         },
         {
           "dmxRange": [177, 187],
           "type": "Effect",
-          "effectName": "Flow 5"
+          "effectName": "Flow 5",
+          "switchChannels": {
+            "Segment Effect Control": "Effect Speed"
+          }
         },
         {
           "dmxRange": [188, 198],
           "type": "Effect",
-          "effectName": "Flow 6"
+          "effectName": "Flow 6",
+          "switchChannels": {
+            "Segment Effect Control": "Effect Speed"
+          }
         },
         {
           "dmxRange": [199, 209],
           "type": "Effect",
-          "effectName": "Flow 7"
+          "effectName": "Flow 7",
+          "switchChannels": {
+            "Segment Effect Control": "Effect Speed"
+          }
         },
         {
           "dmxRange": [210, 220],
           "type": "Effect",
-          "effectName": "Flow 8"
+          "effectName": "Flow 8",
+          "switchChannels": {
+            "Segment Effect Control": "Effect Speed"
+          }
         },
         {
           "dmxRange": [221, 231],
           "type": "Effect",
-          "effectName": "Flow 9"
+          "effectName": "Flow 9",
+          "switchChannels": {
+            "Segment Effect Control": "Effect Speed"
+          }
         },
         {
           "dmxRange": [232, 255],
           "type": "Effect",
-          "effectName": "Random Flow 1…9"
+          "effectName": "Random Flow 1…9",
+          "switchChannels": {
+            "Segment Effect Control": "Effect Speed"
+          }
         }
       ]
     },
@@ -219,11 +286,6 @@
         "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
-      }
-    },
-    "Segment Effect Control": {
-      "capability": {
-        "type": "Generic"
       }
     },
     "Blades": {
