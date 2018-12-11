@@ -9,47 +9,35 @@
   },
   "availableChannels": {
     "Intensity": {
-      "defaultValue": 1,
-      "highlightValue": 1,
       "capability": {
         "type": "Intensity"
       }
     },
     "Red": {
-      "defaultValue": 2,
-      "highlightValue": 2,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Green": {
-      "defaultValue": 3,
-      "highlightValue": 3,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blue": {
-      "defaultValue": 4,
-      "highlightValue": 4,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "White": {
-      "defaultValue": 5,
-      "highlightValue": 5,
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
     "Strobe": {
-      "defaultValue": 6,
-      "highlightValue": 6,
       "capability": {
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
@@ -59,8 +47,6 @@
       }
     },
     "Color Macros": {
-      "defaultValue": 7,
-      "highlightValue": 7,
       "capability": {
         "type": "ColorWheelRotation",
         "speed": "fast CW"
