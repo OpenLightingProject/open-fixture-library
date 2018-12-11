@@ -7,6 +7,7 @@
     "createDate": "2018-12-10",
     "lastModifyDate": "2018-12-10"
   },
+  "helpWanted": "There is no manual, product page or video available to verify this fixture definition. Please provide a link if you know where to find more information.",
   "availableChannels": {
     "Intensity": {
       "capability": {
@@ -41,15 +42,15 @@
       "capability": {
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
-        "soundControlled": false,
         "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX value(s) is Strobe disabled?"
       }
     },
     "Color Macros": {
       "capability": {
-        "type": "ColorWheelRotation",
-        "speed": "fast CW"
+        "type": "ColorPreset",
+        "helpWanted": "Which colors can be selected at which DMX values?"
       }
     }
   },
