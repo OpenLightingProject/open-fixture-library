@@ -1,0 +1,539 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BT-LEDROTOR",
+  "shortName": "LEDROTOR",
+  "categories": ["Fan", "Color Changer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2018-12-11",
+    "lastModifyDate": "2018-12-11"
+  },
+  "links": {
+    "manual": [
+      "https://briteq-lighting.com/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1537956760.pdf"
+    ],
+    "productPage": [
+      "https://briteq-lighting.com/bt-ledrotor"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=eP5CmRNi8KA",
+      "https://www.youtube.com/watch?v=tehBZU4Vp1A"
+    ]
+  },
+  "physical": {
+    "dimensions": [700, 700, 94.5],
+    "weight": 18,
+    "power": 240,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "32× 3W UV LEDs, 720× 0.2W RGB LEDs"
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Segment Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "ColorPreset",
+          "comment": "UV",
+          "colors": ["#8800ff"]
+        },
+        {
+          "dmxRange": [12, 22],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [23, 33],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [34, 44],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [45, 55],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [56, 66],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [67, 77],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [78, 88],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [89, 99],
+          "type": "Effect",
+          "effectName": "CFADE"
+        },
+        {
+          "dmxRange": [100, 110],
+          "type": "Effect",
+          "effectName": "Meteor"
+        },
+        {
+          "dmxRange": [111, 121],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [122, 132],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [133, 143],
+          "type": "Effect",
+          "effectName": "Flow 1"
+        },
+        {
+          "dmxRange": [144, 154],
+          "type": "Effect",
+          "effectName": "Flow 2"
+        },
+        {
+          "dmxRange": [155, 165],
+          "type": "Effect",
+          "effectName": "Flow 3"
+        },
+        {
+          "dmxRange": [166, 176],
+          "type": "Effect",
+          "effectName": "Flow 4"
+        },
+        {
+          "dmxRange": [177, 187],
+          "type": "Effect",
+          "effectName": "Flow 5"
+        },
+        {
+          "dmxRange": [188, 198],
+          "type": "Effect",
+          "effectName": "Flow 6"
+        },
+        {
+          "dmxRange": [199, 209],
+          "type": "Effect",
+          "effectName": "Flow 7"
+        },
+        {
+          "dmxRange": [210, 220],
+          "type": "Effect",
+          "effectName": "Flow 8"
+        },
+        {
+          "dmxRange": [221, 231],
+          "type": "Effect",
+          "effectName": "Flow 9"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "Effect",
+          "effectName": "Random Flow 1…9"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Segment Effect Control": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Blades": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Maintenance",
+          "comment": "All blades switched on"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Maintenance",
+          "comment": "Blade A switched on"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Maintenance",
+          "comment": "Blade B switched on"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Maintenance",
+          "comment": "Blade C switched on"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Maintenance",
+          "comment": "Blade D switched on (TODO helpWanted: Is this capability's DMX range really wider than the others?)"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Maintenance",
+          "comment": "Blade E switched on"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Maintenance",
+          "comment": "Blade F switched on"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "Maintenance",
+          "comment": "Blades A+B switched on"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "Maintenance",
+          "comment": "Blades A+C switched on"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "Maintenance",
+          "comment": "Blades A+D switched on"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "Maintenance",
+          "comment": "Blades A+C+E switched on"
+        },
+        {
+          "dmxRange": [96, 249],
+          "type": "Effect",
+          "effectName": "Random blades switched on/off",
+          "durationStart": "10s",
+          "durationEnd": "0.1s"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "All blades switched on"
+        }
+      ]
+    },
+    "Fan Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "Rotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Red (All segments)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green (All segments)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue (All segments)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "RGB Segment Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 24],
+          "type": "Effect",
+          "effectName": "CFADE"
+        },
+        {
+          "dmxRange": [25, 42],
+          "type": "Effect",
+          "effectName": "Meteor"
+        },
+        {
+          "dmxRange": [43, 60],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [61, 78],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [79, 93],
+          "type": "Effect",
+          "effectName": "Flow 1"
+        },
+        {
+          "dmxRange": [94, 110],
+          "type": "Effect",
+          "effectName": "Flow 2"
+        },
+        {
+          "dmxRange": [111, 127],
+          "type": "Effect",
+          "effectName": "Flow 3"
+        },
+        {
+          "dmxRange": [128, 144],
+          "type": "Effect",
+          "effectName": "Flow 4"
+        },
+        {
+          "dmxRange": [145, 161],
+          "type": "Effect",
+          "effectName": "Flow 5"
+        },
+        {
+          "dmxRange": [162, 178],
+          "type": "Effect",
+          "effectName": "Flow 6"
+        },
+        {
+          "dmxRange": [179, 195],
+          "type": "Effect",
+          "effectName": "Flow 7"
+        },
+        {
+          "dmxRange": [196, 212],
+          "type": "Effect",
+          "effectName": "Flow 8"
+        },
+        {
+          "dmxRange": [213, 229],
+          "type": "Effect",
+          "effectName": "Flow 9"
+        },
+        {
+          "dmxRange": [230, 255],
+          "type": "Effect",
+          "effectName": "Random Flow 1…9"
+        }
+      ]
+    },
+    "RGB Segment Effect Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "UV Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "UV Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 13],
+          "type": "Maintenance",
+          "comment": "Linear dimmer curve"
+        },
+        {
+          "dmxRange": [14, 19],
+          "type": "Maintenance",
+          "comment": "Square dimmer curve"
+        },
+        {
+          "dmxRange": [20, 25],
+          "type": "Maintenance",
+          "comment": "Inverse square dimmer curve"
+        },
+        {
+          "dmxRange": [26, 31],
+          "type": "Maintenance",
+          "comment": "S-curve dimmer curve"
+        },
+        {
+          "dmxRange": [32, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blade $pixelKey Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Blade $pixelKey Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Easy",
+      "shortName": "5ch",
+      "channels": [
+        "Master Dimmer",
+        "Segment Effects",
+        "Segment Effect Control",
+        "Blades",
+        "Fan Rotation"
+      ]
+    },
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe",
+        "Red (All segments)",
+        "Green (All segments)",
+        "Blue (All segments)",
+        "RGB Segment Effects",
+        "RGB Segment Effect Speed",
+        "Blades",
+        "UV Dimmer",
+        "UV Strobe",
+        "Fan Rotation",
+        "Control"
+      ]
+    },
+    {
+      "name": "33-channel",
+      "shortName": "33ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe",
+        "Red $pixelKey",
+        "Green $pixelKey",
+        "Blue $pixelKey",
+        "Blade $pixelKey Dimmer",
+        "Blade $pixelKey Strobe",
+        "UV Dimmer",
+        "UV Strobe",
+        "Fan Rotation",
+        "Control"
+      ]
+    }
+  ]
+}
