@@ -1,0 +1,185 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "COB Slim 100-RGB",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Thierry", "Flo Edelmann"],
+    "createDate": "2018-12-11",
+    "lastModifyDate": "2018-12-11",
+    "importPlugin": {
+      "plugin": "qlcplus_4.11.2",
+      "date": "2018-12-11",
+      "comment": "created by Q Light Controller Plus (version 4.11.2 GIT)"
+    }
+  },
+  "links": {
+    "manual": [
+      "https://briteq-lighting.com/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1496150553.pdf"
+    ],
+    "productPage": [
+      "https://briteq-lighting.com/cob-slim100-rgb"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=wAYsrW8YaZM"
+    ]
+  },
+  "physical": {
+    "dimensions": [245, 280, 140],
+    "weight": 3.46,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "100W COB RGB LED",
+      "colorTemperature": 3200
+    },
+    "lens": {
+      "name": "Other",
+      "degreesMinMax": [15, 70]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 190],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "Effect",
+          "effectName": "Sound Control (7 colors)",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [201, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Intensity",
+          "brightness": "bright"
+        }
+      ]
+    },
+    "Master dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [8, 37],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [38, 67],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Sound Strobe"
+        },
+        {
+          "dmxRange": [68, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 247],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Sound Chase",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "RGB",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4LC channel",
+      "shortName": "4LC",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Mode"
+      ]
+    },
+    {
+      "name": "4+ channel",
+      "shortName": "4+",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Master dimmer"
+      ]
+    },
+    {
+      "name": "6 channel",
+      "shortName": "6ch",
+      "channels": [
+        "Master dimmer",
+        "Strobe",
+        "Effect",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
