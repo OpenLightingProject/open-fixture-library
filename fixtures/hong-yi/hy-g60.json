@@ -54,34 +54,6 @@
         "angleEnd": "180deg"
       }
     },
-    "Pan/Tilt Speed": {
-      "capability": {
-        "type": "PanTiltSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
-      }
-    },
-    "Shutter / Strobe": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [1, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        }
-      ]
-    },
-    "Dimmer": {
-      "capability": {
-        "type": "Intensity",
-        "comment": "Intensity off…bright"
-      }
-    },
     "Color Wheel": {
       "capabilities": [
         {
@@ -302,93 +274,33 @@
         }
       ]
     },
-    "Gobo Stencil Rotation": {
+    "Shutter / Strobe": {
       "capabilities": [
         {
-          "dmxRange": [0, 63],
+          "dmxRange": [0, 0],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [64, 126],
-          "type": "Rotation",
-          "effectName": "Gobo stencil rotation",
-          "speedStart": "fast CCW",
-          "speedEnd": "slow CCW"
-        },
-        {
-          "dmxRange": [127, 127],
-          "type": "Effect",
-          "effectName": "Gobo stencil rotation stop"
-        },
-        {
-          "dmxRange": [128, 191],
-          "type": "Rotation",
-          "effectName": "Gobo stencil rotation",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW"
-        },
-        {
-          "dmxRange": [192, 192],
-          "type": "Effect",
-          "effectName": "Gobo stencil rotation stop"
-        },
-        {
-          "dmxRange": [193, 255],
-          "type": "Effect",
-          "effectName": "Gobo Stencil Shake",
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         }
       ]
     },
-    "Focus": {
+    "Dimmer": {
       "capability": {
-        "type": "Generic",
-        "comment": "Focus far…near"
+        "type": "Intensity",
+        "comment": "Intensity off…bright"
       }
     },
-    "Prism": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 127],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [128, 255],
-          "type": "Prism",
-          "comment": "Prism (3-facet)"
-        }
-      ]
-    },
-    "Prism Rotation": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 63],
-          "type": "Effect",
-          "effectName": "Prism rotation stop"
-        },
-        {
-          "dmxRange": [64, 127],
-          "type": "Rotation",
-          "effectName": "Prism rotation",
-          "speedStart": "fast CCW",
-          "speedEnd": "slow CCW"
-        },
-        {
-          "dmxRange": [128, 191],
-          "type": "Rotation",
-          "effectName": "Prism rotation",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW"
-        },
-        {
-          "dmxRange": [192, 255],
-          "type": "Effect",
-          "effectName": "Prism Shake",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        }
-      ]
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Internal Programs": {
       "capabilities": [
