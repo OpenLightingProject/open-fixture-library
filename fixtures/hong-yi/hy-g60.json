@@ -24,22 +24,20 @@
     ]
   },
   "physical": {
-    "dimensions": [200, 280, 150],
-    "weight": 4,
-    "power": 75,
+    "dimensions": [170, 190, 150],
+    "weight": 4.5,
+    "power": 100,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED",
-      "lumens": 20100
+      "type": "60W white LED"
     },
     "lens": {
-      "name": "Other",
-      "degreesMinMax": [15, 15]
+      "degreesMinMax": [12, 12]
     },
     "focus": {
       "type": "Head",
       "panMax": 540,
-      "tiltMax": 230
+      "tiltMax": 180
     }
   },
   "availableChannels": {
