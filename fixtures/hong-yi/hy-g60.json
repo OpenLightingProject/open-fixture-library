@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "HY-G60",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["DJMaxone.de"],
     "createDate": "2018-12-11",
@@ -337,7 +337,8 @@
   },
   "modes": [
     {
-      "name": "11-Channel",
+      "name": "11-channel",
+      "shortName": "11ch",
       "channels": [
         "Pan",
         "Pan fine",
