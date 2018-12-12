@@ -34,36 +34,31 @@
   "availableChannels": {
     "Dimmer": {
       "capability": {
-        "type": "Intensity",
-        "comment": "Intensity off…bright"
+        "type": "Intensity"
       }
     },
     "Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "Red off…bright"
+        "color": "Red"
       }
     },
     "Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "Green off…bright"
+        "color": "Green"
       }
     },
     "Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "Blue off…bright"
+        "color": "Blue"
       }
     },
     "White": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "comment": "White off…bright"
+        "color": "White"
       }
     },
     "Strobe": {
@@ -71,7 +66,8 @@
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
         "speedStart": "10Hz",
-        "speedEnd": "0Hz"
+        "speedEnd": "0Hz",
+        "helpWanted": "At which DMX values is Strobe disabled?"
       }
     },
     "Program": {
@@ -84,7 +80,7 @@
         {
           "dmxRange": [51, 100],
           "type": "Effect",
-          "effectName": "Color jump"
+          "effectPreset": "ColorJump"
         },
         {
           "dmxRange": [101, 150],
@@ -99,16 +95,16 @@
         {
           "dmxRange": [201, 255],
           "type": "Effect",
-          "effectName": "Sound control"
+          "effectName": "Sound control",
+          "soundControlled": true
         }
       ]
     },
     "Function speed": {
       "capability": {
-        "type": "Speed",
+        "type": "EffectSpeed",
         "speedStart": "slow",
-        "speedEnd": "fast",
-        "comment": "Speed"
+        "speedEnd": "fast"
       }
     }
   },
