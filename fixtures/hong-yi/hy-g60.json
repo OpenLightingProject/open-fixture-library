@@ -1,0 +1,357 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "HY-G60",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["DJMaxone.de"],
+    "createDate": "2018-12-12",
+    "lastModifyDate": "2018-12-12",
+    "importPlugin": {
+      "plugin": "qlcplus_4.11.2",
+      "date": "2018-12-12",
+      "comment": "created by Q Light Controller Plus (version 4.11.2)"
+    }
+  },
+  "helpWanted": "There is no manual for this fixture. Can you provide the link to one?",
+  "links": {
+    "productPage": [
+      "http://www.hongyilights.com/?portfolio=hy-g60"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=M98TE_nUW9U"
+    ]
+  },
+  "physical": {
+    "dimensions": [170, 190, 150],
+    "weight": 4.5,
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "60W white LED"
+    },
+    "lens": {
+      "degreesMinMax": [12, 12]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 180
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ColorWheelIndex",
+          "index": 0,
+          "colors": ["#ffffff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [11, 21],
+          "type": "ColorWheelIndex",
+          "index": 0.5,
+          "colors": ["#ffffff", "#ff0000"],
+          "comment": "Split White / Red"
+        },
+        {
+          "dmxRange": [22, 32],
+          "type": "ColorWheelIndex",
+          "index": 1,
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [33, 43],
+          "type": "ColorWheelIndex",
+          "index": 1.5,
+          "colors": ["#ff0000", "#ffaa00"],
+          "comment": "Split Red / Orange"
+        },
+        {
+          "dmxRange": [44, 54],
+          "type": "ColorWheelIndex",
+          "index": 2,
+          "colors": ["#ffaa00"],
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [55, 65],
+          "type": "ColorWheelIndex",
+          "index": 2.5,
+          "colors": ["#ffaa00", "#ffff00"],
+          "comment": "Split Orange / Yellow"
+        },
+        {
+          "dmxRange": [66, 76],
+          "type": "ColorWheelIndex",
+          "index": 3,
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [77, 87],
+          "type": "ColorWheelIndex",
+          "index": 3.5,
+          "colors": ["#55ff00", "#ffff00"],
+          "comment": "Split Yellow / Green"
+        },
+        {
+          "dmxRange": [88, 98],
+          "type": "ColorWheelIndex",
+          "index": 4,
+          "colors": ["#19ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [99, 109],
+          "type": "ColorWheelIndex",
+          "index": 4.5,
+          "colors": ["#2eff00", "#1500ff"],
+          "comment": "Split Green / Blue"
+        },
+        {
+          "dmxRange": [110, 120],
+          "type": "ColorWheelIndex",
+          "index": 5,
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [121, 131],
+          "type": "ColorWheelIndex",
+          "index": 5.5,
+          "colors": ["#0000ff", "#ff01fb"],
+          "comment": "Split Blue / Purple"
+        },
+        {
+          "dmxRange": [132, 142],
+          "type": "ColorWheelIndex",
+          "index": 6,
+          "colors": ["#ff01fb"],
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [143, 153],
+          "type": "ColorWheelIndex",
+          "index": 6.5,
+          "colors": ["#ff01fb", "#00fbff"],
+          "comment": "Split Purple / Cyan"
+        },
+        {
+          "dmxRange": [154, 159],
+          "type": "ColorWheelIndex",
+          "index": 7,
+          "colors": ["#00fbff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [160, 207],
+          "type": "ColorWheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [208, 255],
+          "type": "ColorWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "GoboIndex",
+          "index": 0,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "GoboIndex",
+          "index": 1
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "GoboIndex",
+          "index": 2
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "GoboIndex",
+          "index": 3
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "GoboIndex",
+          "index": 4
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "GoboIndex",
+          "index": 5
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "GoboIndex",
+          "index": 6
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "GoboIndex",
+          "index": 7
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "GoboIndex",
+          "index": 7,
+          "shakeAngle": "wide"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "GoboIndex",
+          "index": 6,
+          "shakeAngle": "wide"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "GoboIndex",
+          "index": 5,
+          "shakeAngle": "wide"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "GoboIndex",
+          "index": 4,
+          "shakeAngle": "wide"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "GoboIndex",
+          "index": 3,
+          "shakeAngle": "wide"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "GoboIndex",
+          "index": 2,
+          "shakeAngle": "wide"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "GoboIndex",
+          "index": 1,
+          "shakeAngle": "wide"
+        },
+        {
+          "dmxRange": [150, 202],
+          "type": "GoboWheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [203, 255],
+          "type": "GoboWheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Internal Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [51, 151],
+          "type": "Effect",
+          "effectName": "Fast Moving"
+        },
+        {
+          "dmxRange": [152, 255],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 254],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Maintenance",
+          "comment": "Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Internal Programs",
+        "Reset"
+      ]
+    }
+  ]
+}
