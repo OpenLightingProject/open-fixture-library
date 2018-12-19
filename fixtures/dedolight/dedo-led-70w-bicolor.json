@@ -1,0 +1,46 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Dedo Led 70W BiColor",
+  "shortName": "DLED70-BI",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["PY DOUGNAC"],
+    "createDate": "2018-12-19",
+    "lastModifyDate": "2018-12-19"
+  },
+  "comment": "The DLED7-BI-DMX power supply is needed for DMX control",
+  "links": {
+    "productPage": [
+      "http://www.dedolight.com/assets/pdf/DLED4-technical-data.pdf"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "shortName": "Default",
+      "channels": [
+        "Dimmer",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
