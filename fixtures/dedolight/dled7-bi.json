@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DLED7-BI",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["PY DOUGNAC"],
+    "createDate": "2018-12-19",
+    "lastModifyDate": "2018-12-19"
+  },
+  "comment": "The DT7-BI-DMX power supply is needed for DMX control.",
+  "helpWanted": "The Dedolight website does not contain an official product page for this fixture. Can you provide the link to a reliable data sheet / manual / product page?",
+  "links": {
+    "other": [
+      "https://www.teltec.de/dedolight-dled7-bi.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [109, 200, 100],
+    "weight": 1.3,
+    "power": 90,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "Bicolor 90W LED"
+    },
+    "lens": {
+      "degreesMinMax": [4, 60]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6500K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DT7-BI-DMX",
+      "channels": [
+        "Dimmer",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
