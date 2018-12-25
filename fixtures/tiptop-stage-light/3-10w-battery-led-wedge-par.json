@@ -1,0 +1,117 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "3*10W Battery LED WEDGE PAR",
+  "shortName": "TP-G3047-4IN1",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["DJMaxone.de"],
+    "createDate": "2018-12-12",
+    "lastModifyDate": "2018-12-12",
+    "importPlugin": {
+      "plugin": "qlcplus_4.11.2",
+      "date": "2018-12-12",
+      "comment": "created by Q Light Controller Plus (version 4.11.2)"
+    }
+  },
+  "helpWanted": "Can you provide the link to a manual or a YouTube/Vimeo/Facebook video?",
+  "links": {
+    "productPage": [
+      "http://www.tiptopstagelight.com/products/310w-battery-led-wedge-partp-g3047-4in1-2/"
+    ]
+  },
+  "physical": {
+    "dimensions": [118, 105, 114],
+    "weight": 0.35,
+    "power": 36,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "3× 10W RGBW LEDs"
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Effect",
+          "effectName": "Strobe"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectName": "Color Dimmer"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectName": "Color Change"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Function speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Program",
+        "Function speed"
+      ]
+    }
+  ]
+}
