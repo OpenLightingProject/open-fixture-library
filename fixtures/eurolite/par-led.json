@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PAR LED",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2018-12-27",
+    "lastModifyDate": "2018-12-27"
+  },
+  "links": {
+    "manual": [
+      "https://www.thomann.de/es/onlineexpert_topic_focos.html"
+    ]
+  },
+  "availableChannels": {
+    "R": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Extra": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Extra2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Extra3": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Mater": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "par Led",
+      "channels": [
+        "R",
+        "Green",
+        "Blue",
+        "Extra",
+        "Extra2",
+        "Extra3",
+        "Mater"
+      ]
+    }
+  ]
+}
