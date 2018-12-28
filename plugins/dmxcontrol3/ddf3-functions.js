@@ -35,9 +35,64 @@ module.exports = {
     }
   },
   strobe: {
-    isCapSuitable: cap => false,
+    isCapSuitable: cap =>
+      (cap.type === `ShutterStrobe` && ![`Open`, `Closed`].includes(cap.shutterEffect)) ||
+      (cap.type === `NoFunction` && cap._channel.type === `Strobe`),
     create: (channel, caps) => {
-      return;
+      const xmlStrobe = xmlbuilder.create(`strobe`);
+
+      // getDmxControlCapabilities(caps, `duration`, `s`, [[0, 0], [100, 2]])
+      caps.forEach(cap => {
+        let xmlCap;
+
+        if (cap.speed) {
+          const dmxControlCap = getDmxControlCapability(cap, `speed`, `Hz`, [[0, 0], [100, 50]]);
+          xmlCap = getBaseXmlCapability(cap, dmxControlCap.startValue, dmxControlCap.endValue);
+        }
+        else {
+          xmlCap = getBaseXmlCapability(cap);
+        }
+
+        xmlCap.attribute(`type`, getStrobeType(cap));
+        xmlStrobe.importDocument(xmlCap);
+      });
+
+      return xmlStrobe;
+
+      /**
+       * @param {Capability} cap A ShutterStrobe capability, excluding Open and Closed or a NoFunction capability
+       * @returns {string} The strobe type that should be used in the DMXControl capability.
+       */
+      function getStrobeType(cap) {
+        if (cap.type === `NoFunction`) {
+          return `open`;
+        }
+
+        const typePerShutterEffect = {
+          Strobe: cap.randomTiming ? `random` : `linear`,
+          Pulse: `pulse`,
+          RampUp: `ramp up`,
+          RampDown: `ramp down`,
+          RampUpDown: `ramp up/down`,
+          Lightning: `lightning`,
+          Spikes: `spikes`
+        };
+        return typePerShutterEffect[cap.shutterEffect];
+      }
+    }
+  },
+  strobeSpeed: {
+    isCapSuitable: cap => cap.type === `StrobeSpeed`,
+    create: (channel, caps) => {
+      const xmlSpeed = xmlbuilder.create(`strobespeed`);
+
+      const dmxControlCaps = getDmxControlCapabilities(caps, `speed`, `Hz`, [[0, 0], [100, 50]]);
+      dmxControlCaps.forEach(cap => {
+        const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
+        xmlSpeed.importDocument(xmlCap);
+      });
+
+      return xmlSpeed;
     }
   },
   strobeDuration: {
@@ -681,6 +736,18 @@ function getDmxControlCapabilities(caps, property, allowedUnit, percentUnitPairs
   }
 
   return dmxControlCaps;
+}
+
+/**
+ * Shorthand for {@link getDmxControlCapabilities} with just a single capability.
+ * @param {Capability} cap See {@link getDmxControlCapabilities}.
+ * @param {string} property See {@link getDmxControlCapabilities}.
+ * @param {string} allowedUnit See {@link getDmxControlCapabilities}.
+ * @param {array.<number, number>} percentUnitPairs See {@link getDmxControlCapabilities}.
+ * @returns {DmxControlCapability} Object wrapping the original capability.
+ */
+function getDmxControlCapability(cap, property, allowedUnit, percentUnitPairs) {
+  return getDmxControlCapabilities([cap], property, allowedUnit, percentUnitPairs)[0];
 }
 
 /**
