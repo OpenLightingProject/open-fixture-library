@@ -162,7 +162,8 @@
     },
     "Strobe": {
       "capability": {
-        "type": "StrobeSpeed",
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
         "speedStart": "1Hz",
         "speedEnd": "20Hz",
         "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
