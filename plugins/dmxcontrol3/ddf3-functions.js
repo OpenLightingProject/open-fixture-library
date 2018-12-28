@@ -41,9 +41,17 @@ module.exports = {
     }
   },
   strobeDuration: {
-    isCapSuitable: cap => false,
+    isCapSuitable: cap => cap.type === `StrobeDuration`,
     create: (channel, caps) => {
-      return;
+      const xmlDuration = xmlbuilder.create(`duration`);
+
+      getDmxControlCapabilities(caps, `duration`, `s`, [[0, 0], [100, 2]]).forEach(cap => {
+        const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue * 1000, cap.endValue * 1000);
+        xmlCap.attribute(`type`, `linear`);
+        xmlDuration.importDocument(xmlCap);
+      });
+
+      return xmlDuration;
     }
   },
   pan: {
