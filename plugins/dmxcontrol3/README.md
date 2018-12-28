@@ -13,4 +13,4 @@ Fixtures are always located in the `<install-dir>\Kernel\Devices\` directory. Th
 ### Documentation
 
 - [Tutorial on how to create a device definition](https://wiki.dmxcontrol.de/wiki/Lektion_20_Tut3) *(german)*
-- [Device definition specification](https://wiki.dmxcontrol.de/wiki/DDF_DMXC3#Speicherort:_Wo_sind_die_DDFs_zu_finden.3F) *(german)*
+- [Device definition specification](https://wiki.dmxcontrol.de/wiki/DDF_DMXC3) *(german)*
