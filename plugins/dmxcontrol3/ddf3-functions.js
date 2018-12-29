@@ -752,7 +752,7 @@ function getRotationSpeedXmlCapability(cap) {
   }
 
   const xmlRange = getBaseXmlCapability(cap.capObject, Math.abs(cap.startValue), Math.abs(cap.endValue));
-  xmlRange.attribute(`type`, cap.startValue > 0 ? `cw` : `ccw`);
+  xmlRange.attribute(`type`, (cap.startValue >= 0 && cap.endValue >= 0) ? `cw` : `ccw`);
   return xmlRange;
 }
 
