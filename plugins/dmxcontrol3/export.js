@@ -2,6 +2,7 @@ const xmlbuilder = require(`xmlbuilder`);
 const sanitize = require(`sanitize-filename`);
 
 const ddf3Functions = require(`./ddf3-functions.js`);
+const ddf3FunctionGroups = require(`./ddf3-function-groups.js`);
 
 /* eslint-disable no-unused-vars */
 const {
@@ -113,11 +114,10 @@ function addFunctions(xml, mode) {
       xmlFunctionsContainer.comment(pixelKey);
     }
 
-    const xmlFunctions = [];
-    pixelChannels.forEach(ch => xmlFunctions.push(...getXmlFunctionsFromChannel(ch)));
+    const xmlChannelFunctions = [];
+    pixelChannels.forEach(ch => xmlChannelFunctions.push(...getXmlFunctionsFromChannel(ch)));
 
-    // TODO: group xmlFunctions (e.g. rgb, position, goboindex into gobowheel, etc.)
-
+    const xmlFunctions = getGroupedXmlFunctions(xmlChannelFunctions);
     xmlFunctions.forEach(xmlFunction => xmlFunctionsContainer.importDocument(xmlFunction));
   }
 
@@ -173,6 +173,40 @@ function addFunctions(xml, mode) {
       xmlFunctions = xmlFunctions.concat(ddf3Functions[functionKey].create(channel, caps));
     });
     xmlFunctions.forEach(xmlFunc => addChannelAttributes(xmlFunc, mode, channel));
+
+    return xmlFunctions;
+  }
+
+  /**
+   * @param {array.<XMLElement>} xmlChannelFunctions Channel-level XML functions.
+   * @returns {array.<XMLElement>} Top-level XML functions to be directly inserted in the <functions> element.
+   */
+  function getGroupedXmlFunctions(xmlChannelFunctions) {
+    const xmlFunctions = xmlChannelFunctions.slice(0); // shallow clone
+
+    ddf3FunctionGroups.forEach(group => {
+      const foundFunctions = {};
+      group.functions.forEach(functionName => (foundFunctions[functionName] = []));
+
+      for (const xmlFunction of xmlFunctions) {
+        if (xmlFunction.name in foundFunctions) {
+          foundFunctions[xmlFunction.name].push(xmlFunction);
+        }
+      }
+
+      const completeGroups = Math.min(...Object.values(foundFunctions).map(items => items.length));
+      for (let i = 0; i < completeGroups; i++) {
+        // take first function from each function type
+        const groupFunctions = Object.values(foundFunctions).map(items => items.shift());
+        const xmlGroup = group.getXmlGroup(...groupFunctions);
+
+        // insert xml group at the position of the first grouped function
+        xmlFunctions.splice(xmlFunctions.indexOf(groupFunctions[0]), 0, xmlGroup);
+
+        // remove grouped functions from list
+        groupFunctions.forEach(func => xmlFunctions.splice(xmlFunctions.indexOf(func), 1));
+      }
+    });
 
     return xmlFunctions;
   }
