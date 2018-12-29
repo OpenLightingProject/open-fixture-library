@@ -382,16 +382,31 @@ module.exports = {
       return;
     }
   },
-  goboIndex: { // stencil rotation angle
-    isCapSuitable: cap => false,
+  goboIndex: { // gobo stencil rotation angle
+    isCapSuitable: cap => cap.type === `GoboStencilRotation` && cap.angle !== null,
     create: (channel, caps) => {
-      return;
+      const xmlGoboIndex = xmlbuilder.create(`goboindex`);
+
+      getDmxControlCapabilities(caps, `angle`, `deg`, [[0, 0], [100, 360]]).forEach(cap => {
+        const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
+        xmlCap.attribute(`range`, Math.abs(cap.endValue - cap.startValue));
+        xmlGoboIndex.importDocument(xmlCap);
+      });
+
+      return xmlGoboIndex;
     }
   },
-  goboRotation: { // stencil rotation speed
-    isCapSuitable: cap => false,
+  goboRotation: { // gobo stencil rotation speed
+    isCapSuitable: cap => cap.type === `GoboStencilRotation` && cap.speed !== null,
     create: (channel, caps) => {
-      return;
+      const xmlGoboRotation = xmlbuilder.create(`goborotation`);
+
+      getDmxControlCapabilities(caps, `speed`, `Hz`, [[0, 0], [100, 5]]).forEach(cap => {
+        const xmlCap = getRotationSpeedXmlCapability(cap);
+        xmlGoboRotation.importDocument(xmlCap);
+      });
+
+      return xmlGoboRotation;
     }
   },
   goboShake: {
