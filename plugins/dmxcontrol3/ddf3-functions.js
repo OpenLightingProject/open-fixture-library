@@ -377,9 +377,72 @@ module.exports = {
     }
   },
   goboWheel: {
-    isCapSuitable: cap => false,
+    isCapSuitable: cap => cap.type === `GoboIndex` || (cap.type === `GoboWheelRotation` && cap.speed),
     create: (channel, caps) => {
-      return;
+      const xmlGoboWheel = xmlbuilder.create(`gobowheel`);
+
+      const capsPerIndex = {};
+
+      // search for first normal cap and first shaking cap per index
+      // further caps of the same index will be ignored (for now)
+      const indexCaps = caps.filter(cap => cap.type === `GoboIndex`);
+      indexCaps.forEach(cap => {
+        const index = `${cap.index[0]}…${cap.index[1]}`;
+
+        if (!(index in capsPerIndex)) {
+          capsPerIndex[index] = {
+            normalCap: null,
+            shakingCap: null
+          };
+        }
+
+        if (!cap.isShaking && !capsPerIndex[index].normalCap) {
+          capsPerIndex[index].normalCap = cap;
+        }
+        else if (cap.isShaking && !capsPerIndex[index].shakingCap) {
+          capsPerIndex[index].shakingCap = cap;
+        }
+      });
+
+      const usesShake = Object.values(capsPerIndex).some(({ shakingCap }) => shakingCap !== null);
+      if (usesShake) {
+        xmlGoboWheel.element(`goboshake`);
+      }
+
+      Object.values(capsPerIndex).forEach(({ normalCap, shakingCap }) => {
+        if (normalCap) {
+          const xmlCap = getBaseXmlCapability(normalCap);
+          xmlCap.attribute(`type`, normalCap.comment.toLowerCase() === `open` ? `open` : `gobo`);
+          xmlCap.attribute(`caption`, normalCap.name);
+
+          if (shakingCap) {
+            let xmlShakeCap;
+
+            if (shakingCap.shakeSpeed) {
+              const dmxControlCap = getDmxControlCapability(shakingCap, `shakeSpeed`, `Hz`, [[0, 0], [100, 20]]);
+              xmlShakeCap = getBaseXmlCapability(shakingCap, dmxControlCap.startValue, dmxControlCap.endValue);
+            }
+            else {
+              xmlShakeCap = getBaseXmlCapability(shakingCap);
+            }
+
+            xmlShakeCap.attribute(`handler`, `goboshake`);
+            xmlCap.importDocument(xmlShakeCap);
+          }
+
+          xmlGoboWheel.importDocument(xmlCap);
+        }
+      });
+
+      const rotationCaps = getDmxControlCapabilities(
+        caps.filter(cap => cap.type === `GoboWheelRotation`), `speed`, `Hz`, [[0, 0], [100, 15]]
+      );
+      if (rotationCaps.length > 0) {
+        const xmlWheelRotation = xmlGoboWheel.element(`wheelrotation`);
+        rotationCaps.forEach(cap => xmlWheelRotation.importDocument(getRotationSpeedXmlCapability(cap)));
+      }
+
+      return xmlGoboWheel;
     }
   },
   goboIndex: { // gobo stencil rotation angle
