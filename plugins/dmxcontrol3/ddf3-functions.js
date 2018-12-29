@@ -409,10 +409,17 @@ module.exports = {
       return xmlGoboRotation;
     }
   },
-  goboShake: {
-    isCapSuitable: cap => false,
+  goboShake: { // gobo shake speed
+    isCapSuitable: cap => cap.type === `GoboShake` && cap.shakeSpeed !== null,
     create: (channel, caps) => {
-      return;
+      const xmlGoboShake = xmlbuilder.create(`goboshake`);
+
+      getDmxControlCapabilities(caps, `shakeSpeed`, `Hz`, [[0, 0], [100, 20]]).forEach(cap => {
+        const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
+        xmlGoboShake.importDocument(xmlCap);
+      });
+
+      return xmlGoboShake;
     }
   },
   focus: {
