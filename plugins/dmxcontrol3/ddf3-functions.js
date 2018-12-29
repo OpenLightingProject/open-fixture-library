@@ -3,6 +3,14 @@ const xmlbuilder = require(`xmlbuilder`);
 const { Capability, CoarseChannel } = require(`../../lib/model.js`);
 
 module.exports = {
+  const: {
+    isCapSuitable: cap => cap._channel.isConstant,
+    create: (channel, caps) => {
+      const xmlConst = xmlbuilder.create(`const`);
+      xmlConst.attribute(`val`, channel.getDefaultValueWithResolution(CoarseChannel.RESOLUTION_8BIT));
+      return xmlConst;
+    }
+  },
   dimmer: {
     isCapSuitable: cap => cap.type === `Intensity`,
     create: (channel, caps) => {
