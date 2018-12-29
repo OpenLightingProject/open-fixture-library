@@ -26,7 +26,7 @@ module.exports = async function testChannelNumbers(exportFile) {
   const errors = [];
 
   const xml = await parseString(exportFile.content);
-  xml.device.functions.concat(xml.device.procedures || []).filter(
+  xml.device.functions.filter(
     // filter out tags without content
     xmlFunction => typeof xmlFunction === `object`
   ).forEach(
@@ -71,23 +71,6 @@ module.exports = async function testChannelNumbers(exportFile) {
         const range = new Range([Math.min(mindmx, maxdmx), Math.max(mindmx, maxdmx)]);
 
         addCapability(range, currentChannelIndex);
-      }
-      else if (`value` in xmlNode.$) {
-        // xmlNode is a procedure <set> element
-        // one DMX value selects the whole capability, so we try to find out its range
-
-        const mindmx = parseInt(xmlNode.$.value);
-        let channel = mode.channels[currentChannelIndex];
-
-        if (channel instanceof SwitchingChannel) {
-          channel = channel.defaultChannel;
-        }
-
-        const capability = (channel.capabilities || []).find(cap => cap.dmxRange.start === mindmx);
-
-        if (capability) {
-          addCapability(capability.dmxRange, currentChannelIndex);
-        }
       }
     }
 
