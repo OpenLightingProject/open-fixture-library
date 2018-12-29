@@ -116,7 +116,7 @@ module.exports = async function testChannelNumbers(exportFile) {
   function checkUsedChannels() {
     mode.channels.forEach((channel, index) => {
       const isUsed = index in usedChannelRanges;
-      const isNoFunction = channel.type === `NoFunction`;
+      const isNoFunction = isNoFunctionChannel(channel);
 
       if (isUsed) {
         if (isNoFunction) {
@@ -134,6 +134,22 @@ module.exports = async function testChannelNumbers(exportFile) {
         errors.push(`Channel ${index + 1} "${channel.name}" is missing.`);
       }
     });
+
+    /**
+     * @param {AbstractChannel} channel The channel to check.
+     * @returns {boolean} Whether the given channel is of type NoFunction. If it is a switching channel, the default channel is checked.
+     */
+    function isNoFunctionChannel(channel) {
+      if (channel.type === `NoFunction`) {
+        return true;
+      }
+
+      if (channel instanceof SwitchingChannel) {
+        return isNoFunctionChannel(channel.defaultChannel);
+      }
+
+      return false;
+    }
   }
 
   /**
