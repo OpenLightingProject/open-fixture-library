@@ -153,8 +153,8 @@ module.exports = async function testChannelNumbers(exportFile) {
   }
 
   /**
-   * @param {!Array.<Range>} ranges A channel's found ranges.
-   * @returns {!boolean} Whether the ranges span the whole 0…255 range. Also true if the given array is empty.
+   * @param {!Array.<Range>} ranges A channel's found ranges with adjacent ones already merged.
+   * @returns {!boolean} True if there's only one 0…255 range or no range at all.
    */
   function areRangesComplete(ranges) {
     if (ranges.length === 0) {
