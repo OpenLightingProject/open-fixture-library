@@ -484,12 +484,12 @@ module.exports = {
       }
 
 
-      // group capabilities by comment
+      // group adjacent capabilities by comment
       const capsGroupedByComment = [];
       caps.forEach(cap => {
         const lastGroup = capsGroupedByComment[capsGroupedByComment.length - 1];
 
-        if (lastGroup && lastGroup[0].comment === cap.comment) {
+        if (lastGroup && lastGroup[0].type === cap.type && lastGroup[0].comment === cap.comment) {
           // push to last group
           lastGroup.push(cap);
         }
