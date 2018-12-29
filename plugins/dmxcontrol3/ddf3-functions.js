@@ -505,8 +505,8 @@ module.exports = {
 
         const xmlStep = xmlPrism.element(`step`, {
           type: firstCap.type === `NoFunction` ? `open` : `prism`,
-          mindmx: firstCap.dmxRange.start,
-          maxdmx: lastCap.dmxRange.end,
+          mindmx: firstCap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT).start,
+          maxdmx: lastCap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT).end,
           caption: firstCap.name
         });
 
@@ -571,8 +571,8 @@ module.exports = {
           const isFogOn = cap.type !== `NoFunction` && (cap.fogOutput === null || cap.fogOutput[0].number > 0 || cap.fogOutput[1].number > 0);
 
           xmlFog.element(`step`, {
-            mindmx: cap.dmxRange.start,
-            maxdmx: cap.dmxRange.end,
+            mindmx: cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT).start,
+            maxdmx: cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT).end,
             value: `${isFogOn}`
           });
         });
@@ -594,8 +594,8 @@ module.exports = {
           const isFogOn = cap.type !== `NoFunction` && (cap.speed[0].number > 0 || cap.speed[1].number > 0);
 
           xmlFan.element(`step`, {
-            mindmx: cap.dmxRange.start,
-            maxdmx: cap.dmxRange.end,
+            mindmx: cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT).start,
+            maxdmx: cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT).end,
             value: `${isFogOn}`
           });
         });
