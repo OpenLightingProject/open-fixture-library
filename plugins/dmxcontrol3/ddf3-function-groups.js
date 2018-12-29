@@ -52,6 +52,14 @@ module.exports = [
   {
     functions: [`gobowheel`, `goboshake`],
     getXmlGroup: mergeIntoFirst
+  },
+  {
+    functions: [`prism`, `prismindex`],
+    getXmlGroup: mergeIntoFirst
+  },
+  {
+    functions: [`prism`, `prismrotation`],
+    getXmlGroup: mergeIntoFirst
   }
 ];
 
