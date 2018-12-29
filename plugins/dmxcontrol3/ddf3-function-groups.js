@@ -2,6 +2,10 @@ const xmlbuilder = require(`xmlbuilder`);
 
 module.exports = [
   {
+    functions: [`strobe`, `duration`],
+    getXmlGroup: mergeIntoFirst
+  },
+  {
     functions: [`pan`, `tilt`],
     getXmlGroup: mergeIntoNew(`position`)
   },
