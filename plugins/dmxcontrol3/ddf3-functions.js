@@ -536,30 +536,11 @@ module.exports = {
     create: (channel, caps) => {
       const xmlPrismIndex = xmlbuilder.create(`prismindex`);
 
-      const rangeMin = Math.min(...caps.map(cap => Math.min(cap.angle[0].number, cap.angle[1].number)));
-      const rangeMax = Math.max(...caps.map(cap => Math.max(cap.angle[0].number, cap.angle[1].number)));
-
-      const firstCap = caps[0];
-      const lastCap = caps[caps.length - 1];
-
-      if (firstCap.angle[0].number < lastCap.angle[1].number) {
-        xmlPrismIndex.element(`range`, {
-          range: rangeMax - rangeMin,
-          mindmx: firstCap.dmxRange.start,
-          maxdmx: lastCap.dmxRange.end,
-          minval: firstCap.angle[0].number,
-          maxval: lastCap.angle[1].number
-        });
-      }
-      else {
-        xmlPrismIndex.element(`range`, {
-          range: rangeMax - rangeMin,
-          mindmx: lastCap.dmxRange.end,
-          maxdmx: firstCap.dmxRange.start,
-          minval: lastCap.angle[1].number,
-          maxval: firstCap.angle[0].number
-        });
-      }
+      getDmxControlCapabilities(caps, `angle`, `deg`, [[0, 0], [100, 360]]).forEach(cap => {
+        const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
+        xmlCap.attribute(`range`, Math.abs(cap.endValue - cap.startValue));
+        xmlPrismIndex.importDocument(xmlCap);
+      });
 
       return xmlPrismIndex;
     }
@@ -628,30 +609,11 @@ module.exports = {
     create: (channel, caps) => {
       const xmlIndex = xmlbuilder.create(`index`);
 
-      const rangeMin = Math.min(...caps.map(cap => Math.min(cap.angle[0].number, cap.angle[1].number)));
-      const rangeMax = Math.max(...caps.map(cap => Math.max(cap.angle[0].number, cap.angle[1].number)));
-
-      const firstCap = caps[0];
-      const lastCap = caps[caps.length - 1];
-
-      if (firstCap.angle[0].number < lastCap.angle[1].number) {
-        xmlIndex.element(`range`, {
-          range: rangeMax - rangeMin,
-          mindmx: firstCap.dmxRange.start,
-          maxdmx: lastCap.dmxRange.end,
-          minval: firstCap.angle[0].number,
-          maxval: lastCap.angle[1].number
-        });
-      }
-      else {
-        xmlIndex.element(`range`, {
-          range: rangeMax - rangeMin,
-          mindmx: lastCap.dmxRange.end,
-          maxdmx: firstCap.dmxRange.start,
-          minval: lastCap.angle[1].number,
-          maxval: firstCap.angle[0].number
-        });
-      }
+      getDmxControlCapabilities(caps, `angle`, `deg`, [[0, 0], [100, 360]]).forEach(cap => {
+        const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
+        xmlCap.attribute(`range`, Math.abs(cap.endValue - cap.startValue));
+        xmlIndex.importDocument(xmlCap);
+      });
 
       return xmlIndex;
     }
