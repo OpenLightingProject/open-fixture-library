@@ -715,15 +715,33 @@ module.exports = {
     }
   },
   rawStep: { // only steps
-    isCapSuitable: cap => false,
+    isCapSuitable: cap => cap._channel.capabilities.every(cap => cap.isStep) || cap.usedStartEndEntities.length === 0,
     create: (channel, caps) => {
-      return;
+      const xmlRawStep = xmlbuilder.create(`rawstep`);
+
+      caps.forEach(cap => {
+        const xmlCap = getBaseXmlCapability(cap);
+        xmlCap.attribute(`caption`, cap.name);
+        xmlRawStep.importDocument(xmlCap);
+      });
+
+      return xmlRawStep;
     }
   },
   raw: { // steps and ranges
-    isCapSuitable: cap => false,
+    isCapSuitable: cap => cap.usedStartEndEntities.length > 0,
     create: (channel, caps) => {
-      return;
+      const xmlRaw = xmlbuilder.create(`raw`);
+
+      caps.forEach(cap => {
+        const [startEntity, endEntity] = cap[cap.usedStartEndEntities[0]];
+        const xmlCap = getBaseXmlCapability(cap, startEntity.number, endEntity.number);
+        xmlCap.attribute(`caption`, cap.name);
+        xmlCap.attribute(`type`, cap.usedStartEndEntities[0] === `speed` && startEntity.number === endEntity.number ? `stop` : `linear`);
+        xmlRaw.importDocument(xmlCap);
+      });
+
+      return xmlRaw;
     }
   }
 };
