@@ -65,12 +65,7 @@ module.exports = async function testChannelNumbers(exportFile) {
 
       if (`mindmx` in xmlNode.$) {
         // xmlNode is a capability
-
-        const mindmx = parseInt(xmlNode.$.mindmx);
-        const maxdmx = parseInt(xmlNode.$.maxdmx);
-        const range = new Range([Math.min(mindmx, maxdmx), Math.max(mindmx, maxdmx)]);
-
-        addCapability(range, currentChannelIndex);
+        addCapability(xmlNode, currentChannelIndex);
       }
     }
 
@@ -84,11 +79,15 @@ module.exports = async function testChannelNumbers(exportFile) {
   }
 
   /**
-   * Checks the given capability range and adds it to the channel's ranges.
-   * @param {!Range} range A valid Range instance (start <= end).
+   * Checks the given capability xml and adds the DMX range to the channel's ranges.
+   * @param {!XMLElement} xmlNode A <step> or <range> element.
    * @param {!number} channelIndex The index of the channel that contains this capability.
    */
-  function addCapability(range, channelIndex) {
+  function addCapability(xmlNode, channelIndex) {
+    const mindmx = parseInt(xmlNode.$.mindmx);
+    const maxdmx = parseInt(xmlNode.$.maxdmx);
+    const range = new Range([Math.min(mindmx, maxdmx), Math.max(mindmx, maxdmx)]);
+
     if (channelIndex === -1) {
       errors.push(`Capability ${range} is not inside a channel function.`);
     }
@@ -103,6 +102,15 @@ module.exports = async function testChannelNumbers(exportFile) {
       }
       else {
         existingRanges.push(range);
+      }
+    }
+
+    if (`minval` in xmlNode.$) {
+      const minval = parseInt(xmlNode.$.minval);
+      const maxval = parseInt(xmlNode.$.maxval);
+
+      if (minval > maxval) {
+        errors.push(`Capability ${range} in channel ${channelIndex + 1} must not use a greater minval (${minval}) than maxval (${maxval}). Instead, swap mindmx and maxdmx.`);
       }
     }
   }
