@@ -40,6 +40,18 @@ module.exports = [
   {
     functions: [`rgb`, `indigo`],
     getXmlGroup: mergeIntoFirst
+  },
+  {
+    functions: [`gobowheel`, `goboindex`],
+    getXmlGroup: mergeIntoFirst
+  },
+  {
+    functions: [`gobowheel`, `goborotation`],
+    getXmlGroup: mergeIntoFirst
+  },
+  {
+    functions: [`gobowheel`, `goboshake`],
+    getXmlGroup: mergeIntoFirst
   }
 ];
 
