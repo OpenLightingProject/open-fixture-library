@@ -723,7 +723,7 @@ module.exports = {
     }
   },
   rawStep: { // only steps
-    isCapSuitable: cap => cap._channel.capabilities.every(cap => cap.isStep) || cap.usedStartEndEntities.length === 0,
+    isCapSuitable: cap => cap._channel.type !== `NoFunction` && (cap._channel.capabilities.every(cap => cap.isStep) || cap.usedStartEndEntities.length === 0),
     create: (channel, caps) => {
       const xmlRawStep = xmlbuilder.create(`rawstep`);
 
@@ -737,7 +737,7 @@ module.exports = {
     }
   },
   raw: { // steps and ranges
-    isCapSuitable: cap => cap.usedStartEndEntities.length > 0,
+    isCapSuitable: cap => cap._channel.type !== `NoFunction` && cap.usedStartEndEntities.length > 0,
     create: (channel, caps) => {
       const xmlRaw = xmlbuilder.create(`raw`);
 
