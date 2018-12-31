@@ -2,6 +2,40 @@ const xmlbuilder = require(`xmlbuilder`);
 
 module.exports = [
   {
+    functions: [`strobe`, `strobespeed`],
+    getXmlGroup: (strobe, strobespeed) => {
+      const xmlStrobe = xmlbuilder.create(`strobe`);
+      xmlStrobe.attributes = strobespeed.attributes;
+
+      const xmlStrobeType = xmlStrobe.element(`strobetype`);
+      xmlStrobeType.attributes = strobe.attributes;
+
+      strobespeed.children.forEach(speedCap => {
+        const speedAttributes = {
+          mindmx: speedCap.attributes.mindmx.value,
+          maxdmx: speedCap.attributes.maxdmx.value,
+          minval: speedCap.attributes.minval.value,
+          maxval: speedCap.attributes.maxval.value
+        };
+
+        strobe.children.forEach(strobeCap => {
+          if (strobeCap.attributes.type.value !== `open`) {
+            const xmlSpeedRange = xmlStrobe.element(`range`, speedAttributes);
+            xmlSpeedRange.attributes.type = strobeCap.attributes.type;
+
+            xmlSpeedRange.element(`step`, {
+              handler: `strobetype`,
+              mindmx: strobeCap.attributes.mindmx.value,
+              maxdmx: strobeCap.attributes.maxdmx.value
+            });
+          }
+        });
+      });
+
+      return xmlStrobe;
+    }
+  },
+  {
     functions: [`strobe`, `duration`],
     getXmlGroup: mergeIntoFirst
   },
