@@ -46,7 +46,7 @@ module.exports.export = async function exportDMXControl3(fixtures, options) {
             '@type': `DMXDevice`,
             '@dmxaddresscount': mode.channelKeys.length,
             '@dmxcversion': 3,
-            '@ddfversion': fixture.meta.lastModifyDate.toISOString().split(`T`)[0]
+            '@ddfversion': module.exports.version
           }
         });
 
