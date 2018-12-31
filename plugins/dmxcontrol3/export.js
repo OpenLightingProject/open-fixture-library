@@ -301,7 +301,7 @@ function addMatrix(mode, xmlFunctionsPerPixel) {
 
   const xmlMatrix = xmlbuilder.create(`matrix`);
   xmlMatrix.attribute(`rows`, matrix.pixelCountY);
-  xmlMatrix.attribute(`column`, matrix.pixelCountX);
+  xmlMatrix.attribute(`columns`, matrix.pixelCountX);
 
   pixelKeys.forEach(pixelKey => {
     xmlMatrix.importDocument(xmlFunctionsPerPixel.get(pixelKey).shift());
