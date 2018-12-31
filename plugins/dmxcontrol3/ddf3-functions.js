@@ -29,7 +29,12 @@ module.exports = {
     }
   },
   shutter: {
-    isCapSuitable: cap => cap.type === `ShutterStrobe` && [`Open`, `Closed`].includes(cap.shutterEffect),
+    isCapSuitable: cap => {
+      const isShutterCap = cap.type === `ShutterStrobe` && [`Open`, `Closed`].includes(cap.shutterEffect);
+      const channelHasOpen = cap._channel.capabilities.some(cap => cap.shutterEffect === `Open`);
+      const channelHasClosed = cap._channel.capabilities.some(cap => cap.shutterEffect === `Closed`);
+      return isShutterCap && channelHasOpen && channelHasClosed;
+    },
     create: (channel, caps) => {
       const xmlShutter = xmlbuilder.create(`shutter`);
 
