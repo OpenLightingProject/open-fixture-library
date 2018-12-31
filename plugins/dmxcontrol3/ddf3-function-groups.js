@@ -36,6 +36,15 @@ module.exports = [
     }
   },
   {
+    functions: [`strobespeed`],
+    getXmlGroup: strobespeed => {
+      strobespeed.name = `strobe`;
+      strobespeed.children.forEach(child => child.attribute(`type`, `linear`));
+
+      return strobespeed;
+    }
+  },
+  {
     functions: [`strobe`, `duration`],
     getXmlGroup: mergeIntoFirst
   },
