@@ -97,7 +97,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "NoFunction"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
         },
         {
           "dmxRange": [6, 42],
