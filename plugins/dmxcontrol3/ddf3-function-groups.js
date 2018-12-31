@@ -47,6 +47,14 @@ module.exports = [
     getXmlGroup: mergeIntoNew(`position`)
   },
   {
+    functions: [`pan`],
+    getXmlGroup: rename(`index`)
+  },
+  {
+    functions: [`tilt`],
+    getXmlGroup: rename(`index`)
+  },
+  {
     functions: [`red`, `green`, `blue`],
     getXmlGroup: mergeIntoNew(`rgb`)
   },
@@ -87,8 +95,16 @@ module.exports = [
     getXmlGroup: mergeIntoFirst
   },
   {
+    functions: [`goboindex`],
+    getXmlGroup: rename(`index`)
+  },
+  {
     functions: [`gobowheel`, `goborotation`],
     getXmlGroup: mergeIntoFirst
+  },
+  {
+    functions: [`goborotation`],
+    getXmlGroup: rename(`rotation`)
   },
   {
     functions: [`gobowheel`, `goboshake`],
@@ -124,4 +140,15 @@ function mergeIntoNew(tagName) {
 function mergeIntoFirst(firstElement, ...xmlElements) {
   xmlElements.forEach(ele => firstElement.importDocument(ele));
   return firstElement;
+}
+
+/**
+ * @param {string} tagName The new XML tag name.
+ * @returns {function} A function that alters the given XML element's tag name to the specified new name.
+ */
+function rename(tagName) {
+  return xmlElement => {
+    xmlElement.name = tagName;
+    return xmlElement;
+  };
 }
