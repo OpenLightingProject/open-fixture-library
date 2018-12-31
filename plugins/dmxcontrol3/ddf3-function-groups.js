@@ -11,16 +11,10 @@ module.exports = [
       xmlStrobeType.attributes = strobe.attributes;
 
       strobespeed.children.forEach(speedCap => {
-        const speedAttributes = {
-          mindmx: speedCap.attributes.mindmx.value,
-          maxdmx: speedCap.attributes.maxdmx.value,
-          minval: speedCap.attributes.minval.value,
-          maxval: speedCap.attributes.maxval.value
-        };
-
         strobe.children.forEach(strobeCap => {
           if (strobeCap.attributes.type.value !== `open`) {
-            const xmlSpeedRange = xmlStrobe.element(`range`, speedAttributes);
+            const xmlSpeedRange = xmlStrobe.element(`range`);
+            xmlSpeedRange.attributes = Object.assign({}, speedCap.attributes);
             xmlSpeedRange.attributes.type = strobeCap.attributes.type;
 
             xmlSpeedRange.element(`step`, {

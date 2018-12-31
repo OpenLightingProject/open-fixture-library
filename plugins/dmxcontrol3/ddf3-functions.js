@@ -845,8 +845,13 @@ function getBaseXmlCapability(cap, startValue = null, endValue = null) {
   xmlCap.attribute(`maxdmx`, dmxEnd);
 
   if (startValue !== null) {
-    xmlCap.attribute(`minval`, +startValue.toFixed(3));
-    xmlCap.attribute(`maxval`, +endValue.toFixed(3));
+    if (startValue === endValue) {
+      xmlCap.attribute(`val`, +startValue.toFixed(3));
+    }
+    else {
+      xmlCap.attribute(`minval`, +startValue.toFixed(3));
+      xmlCap.attribute(`maxval`, +endValue.toFixed(3));
+    }
   }
 
   return xmlCap;
