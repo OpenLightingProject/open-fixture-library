@@ -277,7 +277,7 @@ function addProcedures(xml, mode) {
  */
 function addMatrix(mode, xmlFunctionsPerPixel) {
   const matrix = mode.fixture.matrix;
-  const hasSuitableCategory = mode.fixture.categories.includes(`Matrix`);
+  const hasSuitableCategory = mode.fixture.categories.includes(`Matrix`) || mode.fixture.categories.includes(`Pixel Bar`);
 
   if (matrix === null || !hasSuitableCategory) {
     return;
