@@ -663,17 +663,23 @@ module.exports = {
       const xmlFog = xmlbuilder.create(`fog`);
 
       if (caps.length > 1) {
-        // generate <step>s with value="true" or value="false"
-        // this is not documented, but used in other fixtures
 
         caps.forEach(cap => {
-          const isFogOn = cap.type !== `NoFunction` && (cap.fogOutput === null || cap.fogOutput[0].number > 0 || cap.fogOutput[1].number > 0);
+          let xmlCap;
 
-          xmlFog.element(`step`, {
-            mindmx: cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT).start,
-            maxdmx: cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT).end,
-            value: `${isFogOn}`
-          });
+          if (cap.fogOutput !== null && cap.fogOutput[0].number !== cap.fogOutput[1].number) {
+            xmlCap = getBaseXmlCapability(cap, cap.fogOutput[0].number, cap.fogOutput[1].number);
+            xmlCap.attribute(`type`, `fog`);
+          }
+          else {
+            // generate <step>s with value="true" or value="false"
+            // this is not documented, but used in other fixtures
+            const isFogOn = cap.type !== `NoFunction` && (cap.fogOutput === null || cap.fogOutput[0].number > 0);
+            xmlCap = getBaseXmlCapability(cap);
+            xmlCap.attribute(`value`, `${isFogOn}`);
+          }
+
+          xmlFog.importDocument(xmlCap);
         });
       }
 
@@ -686,17 +692,23 @@ module.exports = {
       const xmlFan = xmlbuilder.create(`fan`);
 
       if (caps.length > 1) {
-        // generate <step>s with value="true" or value="false"
-        // this is not documented, but used in other fixtures
 
         caps.forEach(cap => {
-          const isFogOn = cap.type !== `NoFunction` && (cap.speed[0].number > 0 || cap.speed[1].number > 0);
+          let xmlCap;
 
-          xmlFan.element(`step`, {
-            mindmx: cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT).start,
-            maxdmx: cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT).end,
-            value: `${isFogOn}`
-          });
+          if (cap.speed !== null && cap.speed[0].number !== cap.speed[1].number) {
+            xmlCap = getBaseXmlCapability(cap, Math.abs(cap.speed[0].number), Math.abs(cap.speed[1].number));
+            xmlCap.attribute(`type`, `fan`);
+          }
+          else {
+            // generate <step>s with value="true" or value="false"
+            // this is not documented, but used in other fixtures
+            const isFanOn = cap.type !== `NoFunction` && (cap.speed[0].number > 0);
+            xmlCap = getBaseXmlCapability(cap);
+            xmlCap.attribute(`value`, `${isFanOn}`);
+          }
+
+          xmlFan.importDocument(xmlCap);
         });
       }
 
