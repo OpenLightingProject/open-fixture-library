@@ -49,7 +49,6 @@ module.exports = {
     create: (channel, caps) => {
       const xmlStrobe = xmlbuilder.create(`strobe`);
 
-      // getDmxControlCapabilities(caps, `duration`, `s`, [[0, 0], [100, 2]])
       caps.forEach(cap => {
         let xmlCap;
 
@@ -174,7 +173,7 @@ module.exports = {
     }
   },
   color: {
-    isCapSuitable: cap => cap.type === `ColorIntensity`,
+    isCapSuitable: cap => cap.type === `ColorIntensity` || (cap.type === `NoFunction` && cap._channel.type === `Single Color`),
     create: (channel, caps) => {
       const capsPerColor = {};
 
@@ -185,11 +184,13 @@ module.exports = {
         capsPerColor[cap.color].push(cap);
       }
 
-      return Object.keys(capsPerColor).map(color => {
+      delete capsPerColor.null; // NoFunction caps will be ignored
+
+      return Object.keys(capsPerColor).map((color, index) => {
         const colorCaps = capsPerColor[color];
         const xmlColor = xmlbuilder.create(color.toLowerCase());
 
-        if (channel.capabilities.length > 1 || colorCaps[0].brightness[0].number !== 0) {
+        if (Object.keys(capsPerColor).length > 1) {
           const dmxControlCaps = getDmxControlCapabilities(colorCaps, `brightness`, `%`);
           dmxControlCaps.forEach(cap => {
             const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
