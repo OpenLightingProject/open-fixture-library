@@ -8,6 +8,7 @@
     "createDate": "2019-01-01",
     "lastModifyDate": "2019-01-01"
   },
+  "helpWanted": "Which LEDs are controlled by the pixels 1, 2, 3 in the RGB 12-channel mode?",
   "links": {
     "manual": [
       "http://cornulights.ch/Dateien/Manual_Archspot_54_RGB_%20eBook.pdf",
@@ -21,6 +22,16 @@
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "18x3WRGB"
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["1", "2", "3"]
+      ]
+    ],
+    "pixelGroups": {
+      "Master": ["1", "2", "3"]
     }
   },
   "availableChannels": {
@@ -50,83 +61,11 @@
         "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
       }
     },
-    "Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
     "Rainbow": {
       "capability": {
         "type": "Effect",
         "effectPreset": "ColorFade",
         "helpWanted": "At which DMX value is this effect disabled?"
-      }
-    },
-    "Red1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
       }
     },
     "White": {
@@ -179,6 +118,26 @@
       ]
     }
   },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
   "modes": [
     {
       "name": "00001 HSV 4-channel",
@@ -194,9 +153,9 @@
       "name": "00002 RGB 6-channel",
       "shortName": "RGB-6ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
         "Strobe",
         "Rainbow",
         "Intensity"
@@ -206,15 +165,15 @@
       "name": "00003 RGB 12-channel",
       "shortName": "RGB-12ch",
       "channels": [
-        "Red1",
-        "Green1",
-        "Blue1",
-        "Red2",
-        "Green2",
-        "Blue2",
-        "Red3",
-        "Green3",
-        "Blue3",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
         "Strobe",
         "Rainbow",
         "Intensity"
@@ -235,18 +194,18 @@
       "name": "00005 RGB 3-channel",
       "shortName": "RGB-3ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue"
+        "Red Master",
+        "Green Master",
+        "Blue Master"
       ]
     },
     {
       "name": "00006 RGB-CTO 7-channel",
       "shortName": "RGB-CTO-7ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
         "Strobe",
         "Rainbow",
         "Intensity",
