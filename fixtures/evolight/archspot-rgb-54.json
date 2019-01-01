@@ -1,0 +1,264 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Archspot RGB 54",
+  "shortName": "RGB",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Michael Stiller"],
+    "createDate": "2019-01-01",
+    "lastModifyDate": "2019-01-01"
+  },
+  "links": {
+    "manual": [
+      "http://www.gemmiluci.it/download/Manuali%20test%20Mobili%20e%20Led/ParLed54%20Evolight.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [260, 220, 230],
+    "weight": 4,
+    "power": 58,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "18x3WRGB"
+    }
+  },
+  "availableChannels": {
+    "Hue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "soundControlled": false
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Rainbow": {
+      "capability": {
+        "type": "ColorWheelRotation",
+        "speed": "0Hz"
+      }
+    },
+    "Red1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CTO": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ColorTemperature",
+          "colorTemperature": "0%",
+          "comment": "Inactive - CTO OFF"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ColorTemperature",
+          "colorTemperature": "2500K",
+          "comment": "2500K"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ColorTemperature",
+          "colorTemperature": "2900K",
+          "comment": "2900K"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K",
+          "comment": "3200K"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ColorTemperature",
+          "colorTemperature": "4500K",
+          "comment": "4500K"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ColorTemperature",
+          "colorTemperature": "5400K",
+          "comment": "5400K"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K",
+          "comment": "6500K"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "7000K",
+          "comment": "7000K"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX Setup 00001",
+      "shortName": "HSV 4CH",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Intensity",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "DMX Setup 00002",
+      "shortName": "RGB 6CH",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Rainbow",
+        "Intensity"
+      ]
+    },
+    {
+      "name": "DMX Setup 00003",
+      "shortName": "12CH",
+      "channels": [
+        "Red1",
+        "Green1",
+        "Blue1",
+        "Red2",
+        "Green2",
+        "Blue2",
+        "Red3",
+        "Green3",
+        "Blue3",
+        "Strobe",
+        "Rainbow",
+        "Intensity"
+      ]
+    },
+    {
+      "name": "DMX Setup 00004",
+      "shortName": "HSV-W 5CH",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Intensity",
+        "Strobe",
+        "White"
+      ]
+    },
+    {
+      "name": "DMX Setup 00005",
+      "shortName": "RGB 3CH",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "DMX Setup 00006",
+      "shortName": "RGB - CTO 7CH",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Rainbow",
+        "Intensity",
+        "CTO"
+      ]
+    }
+  ]
+}
