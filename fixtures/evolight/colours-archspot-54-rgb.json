@@ -10,8 +10,8 @@
   },
   "links": {
     "manual": [
-      "http://www.gemmiluci.it/download/Manuali%20test%20Mobili%20e%20Led/ParLed54%20Evolight.pdf",
-      "http://cornulights.ch/Dateien/Manual_Archspot_54_RGB_%20eBook.pdf"
+      "http://cornulights.ch/Dateien/Manual_Archspot_54_RGB_%20eBook.pdf",
+      "http://www.gemmiluci.it/download/Manuali%20test%20Mobili%20e%20Led/ParLed54%20Evolight.pdf"
     ]
   },
   "physical": {
@@ -27,13 +27,13 @@
     "Hue": {
       "defaultValue": 0,
       "capability": {
-        "type": "Intensity"
+        "type": "Generic"
       }
     },
     "Saturation": {
       "defaultValue": 0,
       "capability": {
-        "type": "Intensity"
+        "type": "Generic"
       }
     },
     "Intensity": {
@@ -47,7 +47,7 @@
       "capability": {
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
-        "soundControlled": false
+        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Red": {
@@ -70,8 +70,9 @@
     },
     "Rainbow": {
       "capability": {
-        "type": "ColorWheelRotation",
-        "speed": "0Hz"
+        "type": "Effect",
+        "effectPreset": "ColorFade",
+        "helpWanted": "At which DMX value is this effect disabled?"
       }
     },
     "Red1": {
@@ -138,51 +139,42 @@
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "ColorTemperature",
-          "colorTemperature": "0%",
-          "comment": "Inactive - CTO OFF"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [32, 63],
           "type": "ColorTemperature",
-          "colorTemperature": "2500K",
-          "comment": "2500K"
+          "colorTemperature": "2500K"
         },
         {
           "dmxRange": [64, 95],
           "type": "ColorTemperature",
-          "colorTemperature": "2900K",
-          "comment": "2900K"
+          "colorTemperature": "2900K"
         },
         {
           "dmxRange": [96, 127],
           "type": "ColorTemperature",
-          "colorTemperature": "3200K",
-          "comment": "3200K"
+          "colorTemperature": "3200K"
         },
         {
           "dmxRange": [128, 159],
           "type": "ColorTemperature",
-          "colorTemperature": "4500K",
-          "comment": "4500K"
+          "colorTemperature": "4500K"
         },
         {
           "dmxRange": [160, 191],
           "type": "ColorTemperature",
-          "colorTemperature": "5400K",
-          "comment": "5400K"
+          "colorTemperature": "5400K"
         },
         {
           "dmxRange": [192, 223],
           "type": "ColorTemperature",
-          "colorTemperature": "6500K",
-          "comment": "6500K"
+          "colorTemperature": "6500K"
         },
         {
           "dmxRange": [224, 255],
           "type": "ColorTemperature",
-          "colorTemperature": "7000K",
-          "comment": "7000K"
+          "colorTemperature": "7000K"
         }
       ]
     }
