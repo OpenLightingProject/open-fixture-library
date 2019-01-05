@@ -520,19 +520,25 @@ module.exports = {
     create: (channel, caps) => {
       const xmlFrost = xmlbuilder.create(`frost`);
 
-      const dmxControlCaps = getSingleUnitCapabilities(caps, `frostIntensity`, `%`);
-      dmxControlCaps.forEach(cap => {
-        if (cap.startValue === 0 && cap.endValue === 0) {
-          const xmlCap = getBaseXmlCapability(cap.capObject);
-          xmlCap.attribute(`type`, `open`);
+      if (caps.length > 1) {
+        caps.forEach(cap => {
+          let xmlCap;
+
+          if (cap.frostIntensity[0].number !== cap.frostIntensity[1].number) {
+            xmlCap = getBaseXmlCapability(cap, cap.frostIntensity[0].number, cap.frostIntensity[1].number);
+            xmlCap.attribute(`type`, `frost`);
+          }
+          else {
+            // generate <step>s with value="true" or value="false"
+            // this is not documented, but used in other fixtures
+            const isFrostOn = cap.frostIntensity[0].number > 0;
+            xmlCap = getBaseXmlCapability(cap);
+            xmlCap.attribute(`value`, `${isFrostOn}`);
+          }
+
           xmlFrost.importDocument(xmlCap);
-        }
-        else {
-          const xmlCap = getBaseXmlCapability(cap.capObject, cap.startValue, cap.endValue);
-          xmlCap.attribute(`type`, `linear`);
-          xmlFrost.importDocument(xmlCap);
-        }
-      });
+        });
+      }
 
       return xmlFrost;
     }
