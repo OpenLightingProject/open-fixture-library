@@ -213,7 +213,7 @@ module.exports = {
     create: (channel, caps) => {
       const xmlColorWheel = xmlbuilder.create(`colorwheel`);
 
-      // RGB value for dummy colors. Will be decreased by 1 every time a dummy color is created.
+      // RGB value for dummy colors. Will be decremented by 1 every time a dummy color is created.
       let greyValue = 0x99;
 
       const presetCaps = caps.filter(cap => cap.type === `ColorWheelIndex` || cap.type === `ColorPreset`);
