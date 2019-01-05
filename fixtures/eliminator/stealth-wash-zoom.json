@@ -23,12 +23,14 @@
   },
   "availableChannels": {
     "Pan": {
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
         "angle": "540deg"
       }
     },
     "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
         "angle": "270deg"
@@ -196,24 +198,6 @@
         "type": "Zoom",
         "angleStart": "narrow",
         "angleEnd": "wide"
-      }
-    },
-    "Pan 2": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 2 fine"],
-      "dmxValueResolution": "8bit",
-      "capability": {
-        "type": "Pan",
-        "angle": "540deg"
-      }
-    },
-    "Tilt 2": {
-      "name": "Tilt",
-      "fineChannelAliases": ["Tilt 2 fine"],
-      "dmxValueResolution": "8bit",
-      "capability": {
-        "type": "Tilt",
-        "angle": "270deg"
       }
     },
     "Red": {
@@ -455,10 +439,10 @@
     {
       "name": "16 ch.",
       "channels": [
-        "Pan 2",
-        "Pan 2 fine",
-        "Tilt 2",
-        "Tilt 2 fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
         "Red",
         "Green",
         "Blue",
