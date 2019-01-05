@@ -8,7 +8,6 @@
     "createDate": "2018-02-13",
     "lastModifyDate": "2018-08-24"
   },
-  "comment": "Look Select capabilities may be inaccurate",
   "links": {
     "manual": ["http://www.chroma-q.com/support/manuals/CQ_ColorForceII_UserManual_1_1a.pdf"],
     "video": [
@@ -80,7 +79,8 @@
         {
           "dmxRange": [1, 8],
           "type": "ColorPreset",
-          "comment": "Look 1"
+          "comment": "Look 1",
+          "helpWanted": "What colors can be selected in this channel?"
         },
         {
           "dmxRange": [9, 16],
