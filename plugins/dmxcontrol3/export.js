@@ -109,8 +109,8 @@ function addFunctions(xml, mode) {
     const xmlChannelFunctions = [];
     pixelChannels.forEach(ch => xmlChannelFunctions.push(...getXmlFunctionsFromChannel(ch)));
 
-    const xmlFunctions = getGroupedXmlFunctions(xmlChannelFunctions);
-    xmlFunctionsPerPixel.set(pixelKey, xmlFunctions);
+    groupXmlFunctions(xmlChannelFunctions);
+    xmlFunctionsPerPixel.set(pixelKey, xmlChannelFunctions);
   }
 
   addMatrix(mode, xmlFunctionsPerPixel);
@@ -184,12 +184,10 @@ function addFunctions(xml, mode) {
   }
 
   /**
-   * @param {array.<XMLElement>} xmlChannelFunctions Channel-level XML functions.
-   * @returns {array.<XMLElement>} Top-level XML functions to be directly inserted in the <functions> element.
+   * Merges and renames the given XML functions. Modifies the array.
+   * @param {array.<XMLElement>} xmlFunctions Channel-level XML functions.
    */
-  function getGroupedXmlFunctions(xmlChannelFunctions) {
-    const xmlFunctions = xmlChannelFunctions.slice(0); // shallow clone
-
+  function groupXmlFunctions(xmlFunctions) {
     ddf3FunctionGroups.forEach(group => {
       const foundFunctions = {};
       group.functions.forEach(functionName => (foundFunctions[functionName] = []));
@@ -202,8 +200,8 @@ function addFunctions(xml, mode) {
 
       const completeGroups = Math.min(...Object.values(foundFunctions).map(items => items.length));
       for (let i = 0; i < completeGroups; i++) {
-        // take first function from each function type
-        const groupFunctions = Object.values(foundFunctions).map(items => items.shift());
+        // take i-th function from each function type
+        const groupFunctions = Object.values(foundFunctions).map(items => items[i]);
         const xmlGroup = group.getXmlGroup(...groupFunctions);
 
         // insert xml group at the position of the first grouped function
@@ -213,8 +211,6 @@ function addFunctions(xml, mode) {
         groupFunctions.forEach(func => xmlFunctions.splice(xmlFunctions.indexOf(func), 1));
       }
     });
-
-    return xmlFunctions;
   }
 }
 
