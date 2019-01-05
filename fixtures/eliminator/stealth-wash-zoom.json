@@ -114,10 +114,10 @@
         },
         {
           "dmxRange": [76, 127],
-          "type": "ColorWheelRotation",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW",
-          "comment": "Color change Slow - Fast"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [128, 133],
@@ -125,14 +125,14 @@
         },
         {
           "dmxRange": [134, 255],
-          "type": "ColorWheelRotation",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW",
-          "comment": "Color fade Slow - Fast"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
-    "Program": {
+    "Internal Programs": {
       "capabilities": [
         {
           "dmxRange": [0, 20],
@@ -238,7 +238,8 @@
         },
         {
           "dmxRange": [10, 245],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
@@ -328,9 +329,10 @@
         },
         {
           "dmxRange": [151, 255],
-          "type": "ColorWheelRotation",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
@@ -349,80 +351,19 @@
         },
         {
           "dmxRange": [11, 255],
-          "type": "ColorWheelRotation",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW",
-          "comment": "Fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Pan/Tilt Speed": {
       "capability": {
-        "type": "Speed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
       }
-    },
-    "Internal Programs": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 20],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [21, 40],
-          "type": "Effect",
-          "effectName": "Program 1"
-        },
-        {
-          "dmxRange": [41, 60],
-          "type": "Effect",
-          "effectName": "Program 2"
-        },
-        {
-          "dmxRange": [61, 80],
-          "type": "Effect",
-          "effectName": "Program 3"
-        },
-        {
-          "dmxRange": [81, 100],
-          "type": "Effect",
-          "effectName": "Program 4"
-        },
-        {
-          "dmxRange": [101, 120],
-          "type": "Effect",
-          "effectName": "Program 5"
-        },
-        {
-          "dmxRange": [121, 140],
-          "type": "Effect",
-          "effectName": "Program 6"
-        },
-        {
-          "dmxRange": [141, 160],
-          "type": "Effect",
-          "effectName": "Program 7"
-        },
-        {
-          "dmxRange": [161, 180],
-          "type": "Effect",
-          "effectName": "Program 8"
-        },
-        {
-          "dmxRange": [181, 200],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [201, 225],
-          "type": "Maintenance",
-          "comment": "Reset"
-        },
-        {
-          "dmxRange": [226, 255],
-          "type": "NoFunction"
-        }
-      ]
     }
   },
   "modes": [
@@ -432,7 +373,7 @@
         "Pan",
         "Tilt",
         "Color Macros",
-        "Program",
+        "Internal Programs",
         "Zoom"
       ]
     },
