@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Stealth Wash Zoom",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["anonymous"],
     "createDate": "2019-01-03",
@@ -10,15 +10,30 @@
   "links": {
     "manual": [
       "http://cdb.s3.amazonaws.com/ItemRelatedFiles/11254/Stealth%20Wash%20Zoom%20User%20Manual%20Revised%20092018.pdf"
+    ],
+    "productPage": [
+      "http://www.eliminatorlighting.com/stealth-wash-zoom"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=M7ALeJ3_jGc",
+      "https://www.youtube.com/watch?v=ubeWU8-BfNI"
     ]
   },
   "physical": {
     "dimensions": [234, 321, 158],
     "weight": 4.5,
-    "power": 85,
+    "power": 95,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "7× 12W RGBW LED"
+    },
+    "lens": {
+      "degreesMinMax": [4, 45]
+    },
+    "focus": {
+      "panMax": 540,
+      "tiltMax": 270,
+      "type": "Head"
     }
   },
   "availableChannels": {
@@ -196,8 +211,8 @@
     "Zoom": {
       "capability": {
         "type": "Zoom",
-        "angleStart": "narrow",
-        "angleEnd": "wide"
+        "angleStart": "4deg",
+        "angleEnd": "45deg"
       }
     },
     "Red": {
