@@ -775,7 +775,6 @@ module.exports = {
 /**
  * @typedef {object} DmxControlCapability
  * @property {Capability} capObject
- * @property {string} unit
  * @property {number} startValue
  * @property {number} endValue
  */
@@ -825,6 +824,10 @@ function getDmxControlCapabilities(caps, property, allowedUnit, percentUnitPairs
       cap.endValue = cap.endValue / maxValueWithWrongUnit * 100;
     });
   }
+
+  dmxControlCaps.forEach(cap => {
+    delete cap.unit;
+  });
 
   return dmxControlCaps;
 }
