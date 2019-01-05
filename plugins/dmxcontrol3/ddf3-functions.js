@@ -866,11 +866,11 @@ function getBaseXmlCapability(cap, startValue = null, endValue = null) {
 
   if (startValue !== null) {
     if (startValue === endValue) {
-      xmlCap.attribute(`val`, +startValue.toFixed(3));
+      xmlCap.attribute(`val`, parseFloat(startValue.toFixed(3)));
     }
     else {
-      xmlCap.attribute(`minval`, +startValue.toFixed(3));
-      xmlCap.attribute(`maxval`, +endValue.toFixed(3));
+      xmlCap.attribute(`minval`, parseFloat(startValue.toFixed(3)));
+      xmlCap.attribute(`maxval`, parseFloat(endValue.toFixed(3)));
     }
   }
 
