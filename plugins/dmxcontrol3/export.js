@@ -190,7 +190,9 @@ function addFunctions(xml, mode) {
   function groupXmlFunctions(xmlFunctions) {
     ddf3FunctionGroups.forEach(group => {
       const foundFunctions = {};
-      group.functions.forEach(functionName => (foundFunctions[functionName] = []));
+      group.functions.forEach(functionName => {
+        foundFunctions[functionName] = [];
+      });
 
       for (const xmlFunction of xmlFunctions) {
         if (xmlFunction.name in foundFunctions) {
