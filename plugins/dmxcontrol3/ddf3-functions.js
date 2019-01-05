@@ -58,7 +58,7 @@ module.exports = {
         let xmlCap;
 
         if (cap.speed) {
-          const dmxControlCap = getDmxControlCapability(cap, `speed`, `Hz`, [[0, 0], [100, 50]]);
+          const dmxControlCap = getDmxControlCapabilities([cap], `speed`, `Hz`, [[0, 0], [100, 50]])[0];
           xmlCap = getBaseXmlCapability(cap, dmxControlCap.startValue, dmxControlCap.endValue);
         }
         else {
@@ -433,7 +433,7 @@ module.exports = {
             let xmlShakeCap;
 
             if (shakingCap.shakeSpeed) {
-              const dmxControlCap = getDmxControlCapability(shakingCap, `shakeSpeed`, `Hz`, [[0, 0], [100, 20]]);
+              const dmxControlCap = getDmxControlCapabilities([shakingCap], `shakeSpeed`, `Hz`, [[0, 0], [100, 20]])[0];
               xmlShakeCap = getBaseXmlCapability(shakingCap, dmxControlCap.startValue, dmxControlCap.endValue);
             }
             else {
@@ -830,18 +830,6 @@ function getDmxControlCapabilities(caps, property, allowedUnit, percentUnitPairs
   });
 
   return dmxControlCaps;
-}
-
-/**
- * Shorthand for {@link getDmxControlCapabilities} with just a single capability.
- * @param {Capability} cap See {@link getDmxControlCapabilities}.
- * @param {string} property See {@link getDmxControlCapabilities}.
- * @param {string} allowedUnit See {@link getDmxControlCapabilities}.
- * @param {array.<number, number>} percentUnitPairs See {@link getDmxControlCapabilities}.
- * @returns {DmxControlCapability} Object wrapping the original capability.
- */
-function getDmxControlCapability(cap, property, allowedUnit, percentUnitPairs) {
-  return getDmxControlCapabilities([cap], property, allowedUnit, percentUnitPairs)[0];
 }
 
 /**
