@@ -1,0 +1,216 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Colours Archspot 54 RGB",
+  "shortName": "Archspot54",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Michael Stiller"],
+    "createDate": "2019-01-05",
+    "lastModifyDate": "2019-01-05"
+  },
+  "helpWanted": "Which LEDs are controlled by the pixels 1, 2, 3 in the RGB 12-channel mode?",
+  "links": {
+    "manual": [
+      "http://cornulights.ch/Dateien/Manual_Archspot_54_RGB_%20eBook.pdf",
+      "http://www.gemmiluci.it/download/Manuali%20test%20Mobili%20e%20Led/ParLed54%20Evolight.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [260, 220, 230],
+    "weight": 4,
+    "power": 58,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "18x3W RGB LEDs"
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["1", "2", "3"]
+      ]
+    ],
+    "pixelGroups": {
+      "Master": ["1", "2", "3"]
+    }
+  },
+  "availableChannels": {
+    "Hue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
+      }
+    },
+    "Rainbow": {
+      "capability": {
+        "type": "Effect",
+        "effectPreset": "ColorFade",
+        "helpWanted": "At which DMX value is this effect disabled?"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CTO": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ColorTemperature",
+          "colorTemperature": "2500K"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ColorTemperature",
+          "colorTemperature": "2900K"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ColorTemperature",
+          "colorTemperature": "4500K"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ColorTemperature",
+          "colorTemperature": "5400K"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "7000K"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "00001 HSV 4-channel",
+      "shortName": "HSV-4ch",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Intensity",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "00002 RGB 6-channel",
+      "shortName": "RGB-6ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Strobe",
+        "Rainbow",
+        "Intensity"
+      ]
+    },
+    {
+      "name": "00003 RGB 12-channel",
+      "shortName": "RGB-12ch",
+      "channels": [
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Strobe",
+        "Rainbow",
+        "Intensity"
+      ]
+    },
+    {
+      "name": "00004 HSV-W 5-channel",
+      "shortName": "HSVW-5ch",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Intensity",
+        "Strobe",
+        "White"
+      ]
+    },
+    {
+      "name": "00005 RGB 3-channel",
+      "shortName": "RGB-3ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "00006 RGB-CTO 7-channel",
+      "shortName": "RGB-CTO-7ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Strobe",
+        "Rainbow",
+        "Intensity",
+        "CTO"
+      ]
+    }
+  ]
+}
