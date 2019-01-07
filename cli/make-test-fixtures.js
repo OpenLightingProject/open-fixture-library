@@ -134,13 +134,13 @@ function getMarkdownCode() {
   // Header
   mdLines[0] = `|`;
   for (const fixture of fixtures) {
-    mdLines[0] += ` | [*${fixture.man}* ${fixture.name}](https://github.com/OpenLightingProject/open-fixture-library/blob/master/fixtures/${fixture.man}/${fixture.key}.json)`;
+    mdLines[0] += ` | <sup><em>${fixture.man}</em> ${fixture.name}</sup> [→](../fixtures/${fixture.man}/${fixture.key}.json)`;
   }
   mdLines[1] = `|-`.repeat(fixtures.length + 1);
 
   // Content
   const footnotes = [];
-  for (const fixFeature of fixFeatures) {
+  fixFeatures.forEach((fixFeature, index) => {
     let line = `**${fixFeature.name}**`;
 
     if (fixFeature.description) {
@@ -154,7 +154,12 @@ function getMarkdownCode() {
     }
 
     mdLines.push(line);
-  }
+
+    // repeat header
+    if ((index + 1) % 15 === 0) {
+      mdLines.push(mdLines[0]);
+    }
+  });
   mdLines.push(``);
 
   // Footnotes
