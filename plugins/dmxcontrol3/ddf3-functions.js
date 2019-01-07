@@ -58,7 +58,7 @@ module.exports = {
         let xmlCap;
 
         if (cap.speed) {
-          const dmxControlCap = getSingleUnitCapabilities([cap], `speed`, `Hz`, 0, 50)[0];
+          const [dmxControlCap] = getSingleUnitCapabilities([cap], `speed`, `Hz`, 0, 50);
           xmlCap = getBaseXmlCapability(cap, dmxControlCap.startValue, dmxControlCap.endValue);
         }
         else {
@@ -434,7 +434,7 @@ module.exports = {
             let xmlShakeCap;
 
             if (shakingCap.shakeSpeed) {
-              const dmxControlCap = getSingleUnitCapabilities([shakingCap], `shakeSpeed`, `Hz`, 0, 20)[0];
+              const [dmxControlCap] = getSingleUnitCapabilities([shakingCap], `shakeSpeed`, `Hz`, 0, 20);
               xmlShakeCap = getBaseXmlCapability(shakingCap, dmxControlCap.startValue, dmxControlCap.endValue);
             }
             else {
