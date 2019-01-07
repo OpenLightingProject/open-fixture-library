@@ -8,7 +8,6 @@
     "createDate": "2018-02-13",
     "lastModifyDate": "2018-08-24"
   },
-  "comment": "Look Select capabilities may be inaccurate",
   "links": {
     "manual": ["http://www.chroma-q.com/support/manuals/CQ_ColorForceII_UserManual_1_1a.pdf"],
     "video": [
@@ -80,157 +79,174 @@
         {
           "dmxRange": [1, 8],
           "type": "ColorPreset",
-          "comment": "Look 1"
+          "colors": ["#ff0000"],
+          "comment": "Look 1 (default Red)",
+          "helpWanted": "Are the capability ranges correct?"
         },
         {
           "dmxRange": [9, 16],
           "type": "ColorPreset",
-          "comment": "Look 2"
+          "colors": ["#ff00ff"],
+          "comment": "Look 2 (default Pink)"
         },
         {
           "dmxRange": [17, 25],
           "type": "ColorPreset",
-          "comment": "Look 3"
+          "colors": ["#ff8800"],
+          "comment": "Look 3 (default Orange)"
         },
         {
           "dmxRange": [26, 33],
           "type": "ColorPreset",
-          "comment": "Look 4"
+          "colors": ["#ffbb00"],
+          "comment": "Look 4 (default Light Orange)"
         },
         {
           "dmxRange": [34, 42],
           "type": "ColorPreset",
-          "comment": "Look 5"
+          "colors": ["#ffff00"],
+          "comment": "Look 5 (default Yellow)"
         },
         {
           "dmxRange": [43, 51],
           "type": "ColorPreset",
-          "comment": "Look 6"
+          "colors": ["#ffff88"],
+          "comment": "Look 6 (default Light Yellow)"
         },
         {
           "dmxRange": [52, 59],
           "type": "ColorPreset",
-          "comment": "Look 7"
+          "colors": ["#00ff00"],
+          "comment": "Look 7 (default Green)"
         },
         {
           "dmxRange": [60, 67],
           "type": "ColorPreset",
-          "comment": "Look 8"
+          "colors": ["#aaffaa"],
+          "comment": "Look 8 (default Light Green)"
         },
         {
           "dmxRange": [68, 75],
           "type": "ColorPreset",
-          "comment": "Look 9"
+          "colors": ["#00ffff"],
+          "comment": "Look 9 (default Cyan)"
         },
         {
           "dmxRange": [76, 84],
           "type": "ColorPreset",
-          "comment": "Look 10"
+          "colors": ["#aaffff"],
+          "comment": "Look 10 (default Light Cyan)"
         },
         {
           "dmxRange": [85, 92],
           "type": "ColorPreset",
-          "comment": "Look 11"
+          "colors": ["#0000ff"],
+          "comment": "Look 11 (default Blue)"
         },
         {
           "dmxRange": [93, 100],
           "type": "ColorPreset",
-          "comment": "Look 12"
+          "colors": ["#88aaff"],
+          "comment": "Look 12 (default Light Blue)"
         },
         {
           "dmxRange": [101, 109],
           "type": "ColorPreset",
-          "comment": "Look 13"
+          "colors": ["#ffaa5f"],
+          "comment": "Look 13 (default 2800K White)"
         },
         {
           "dmxRange": [110, 117],
           "type": "ColorPreset",
-          "comment": "Look 14"
+          "colors": ["#ffb87b"],
+          "comment": "Look 14 (default 3200K White)"
         },
         {
           "dmxRange": [118, 125],
           "type": "ColorPreset",
-          "comment": "Look 15"
+          "colors": ["#ffcea6"],
+          "comment": "Look 15 (default 4000K White)"
         },
         {
           "dmxRange": [126, 133],
           "type": "ColorPreset",
-          "comment": "Look 16"
+          "colors": ["#ffefe1"],
+          "comment": "Look 16 (default 5600K White)"
         },
         {
           "dmxRange": [134, 141],
           "type": "ColorPreset",
-          "comment": "Look 17"
+          "comment": "Look 17 (default empty)"
         },
         {
           "dmxRange": [142, 149],
           "type": "ColorPreset",
-          "comment": "Look 18"
+          "comment": "Look 18 (default empty)"
         },
         {
           "dmxRange": [150, 157],
           "type": "ColorPreset",
-          "comment": "Look 19"
+          "comment": "Look 19 (default empty)"
         },
         {
           "dmxRange": [158, 165],
           "type": "ColorPreset",
-          "comment": "Look 20"
+          "comment": "Look 20 (default empty)"
         },
         {
           "dmxRange": [166, 174],
           "type": "ColorPreset",
-          "comment": "Look 21"
+          "comment": "Look 21 (default empty)"
         },
         {
           "dmxRange": [175, 182],
           "type": "ColorPreset",
-          "comment": "Look 22"
+          "comment": "Look 22 (default empty)"
         },
         {
           "dmxRange": [183, 190],
           "type": "ColorPreset",
-          "comment": "Look 23"
+          "comment": "Look 23 (default empty)"
         },
         {
           "dmxRange": [191, 199],
           "type": "ColorPreset",
-          "comment": "Look 24"
+          "comment": "Look 24 (default empty)"
         },
         {
           "dmxRange": [200, 207],
           "type": "ColorPreset",
-          "comment": "Look 25"
+          "comment": "Look 25 (default empty)"
         },
         {
           "dmxRange": [208, 215],
           "type": "ColorPreset",
-          "comment": "Look 26"
+          "comment": "Look 26 (default empty)"
         },
         {
           "dmxRange": [216, 223],
           "type": "ColorPreset",
-          "comment": "Look 27"
+          "comment": "Look 27 (default empty)"
         },
         {
           "dmxRange": [224, 231],
           "type": "ColorPreset",
-          "comment": "Look 28"
+          "comment": "Look 28 (default empty)"
         },
         {
           "dmxRange": [232, 239],
           "type": "ColorPreset",
-          "comment": "Look 29"
+          "comment": "Look 29 (default empty)"
         },
         {
           "dmxRange": [240, 247],
           "type": "ColorPreset",
-          "comment": "Look 30"
+          "comment": "Look 30 (default empty)"
         },
         {
           "dmxRange": [248, 255],
           "type": "ColorPreset",
-          "comment": "Look 31"
+          "comment": "Look 31 (default empty)"
         }
       ]
     },

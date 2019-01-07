@@ -380,10 +380,55 @@
       "lastActionDate": "2018-09-04",
       "lastAction": "modified"
     },
+    "elation/sixpar-100": {
+      "name": "SIXPAR 100",
+      "lastActionDate": "2019-01-02",
+      "lastAction": "created"
+    },
+    "elation/sixpar-100-ip": {
+      "name": "SIXPAR 100IP",
+      "lastActionDate": "2019-01-02",
+      "lastAction": "created"
+    },
+    "elation/sixpar-200": {
+      "name": "SIXPAR 200",
+      "lastActionDate": "2019-01-02",
+      "lastAction": "created"
+    },
+    "elation/sixpar-200-ip": {
+      "name": "SIXPAR 200 IP",
+      "lastActionDate": "2019-01-02",
+      "lastAction": "created"
+    },
+    "elation/sixpar-200-wmg": {
+      "name": "SIXPAR 200 WMG",
+      "lastActionDate": "2019-01-02",
+      "lastAction": "created"
+    },
+    "elation/sixpar-300": {
+      "name": "SIXPAR 300",
+      "lastActionDate": "2019-01-02",
+      "lastAction": "created"
+    },
+    "elation/sixpar-300-ip": {
+      "name": "SIXPAR 300 IP",
+      "lastActionDate": "2019-01-02",
+      "lastAction": "created"
+    },
+    "elation/sixpar-300-wmg": {
+      "name": "SIXPAR 300 WMG",
+      "lastActionDate": "2019-01-02",
+      "lastAction": "created"
+    },
     "eliminator/stealth-beam": {
       "name": "Stealth Beam",
       "lastActionDate": "2018-09-04",
       "lastAction": "modified"
+    },
+    "eliminator/stealth-wash-zoom": {
+      "name": "Stealth Wash Zoom",
+      "lastActionDate": "2019-01-05",
+      "lastAction": "created"
     },
     "epsilon/duo-q-beam-bar": {
       "name": "Duo Q-Beam Bar",
@@ -454,6 +499,11 @@
       "name": "LED TMH-X25",
       "lastActionDate": "2018-09-04",
       "lastAction": "modified"
+    },
+    "evolight/colours-archspot-54-rgb": {
+      "name": "Colours Archspot 54 RGB",
+      "lastActionDate": "2019-01-05",
+      "lastAction": "created"
     },
     "futurelight/dmh-75-i-led-moving-head": {
       "name": "DMH-75.i LED Moving Head",
@@ -1078,10 +1128,19 @@
       "acl-360-roller",
       "platinum-hfx",
       "platinum-seven",
-      "platinum-spot-15r-pro"
+      "platinum-spot-15r-pro",
+      "sixpar-100",
+      "sixpar-100-ip",
+      "sixpar-200",
+      "sixpar-200-ip",
+      "sixpar-200-wmg",
+      "sixpar-300",
+      "sixpar-300-ip",
+      "sixpar-300-wmg"
     ],
     "eliminator": [
-      "stealth-beam"
+      "stealth-beam",
+      "stealth-wash-zoom"
     ],
     "epsilon": [
       "duo-q-beam-bar"
@@ -1102,6 +1161,9 @@
       "led-tmh-18",
       "led-tmh-x12",
       "led-tmh-x25"
+    ],
+    "evolight": [
+      "colours-archspot-54-rgb"
     ],
     "futurelight": [
       "dmh-75-i-led-moving-head",
@@ -1362,7 +1424,16 @@
       "elation/platinum-hfx",
       "elation/platinum-seven",
       "elation/platinum-spot-15r-pro",
+      "elation/sixpar-100",
+      "elation/sixpar-100-ip",
+      "elation/sixpar-200",
+      "elation/sixpar-200-ip",
+      "elation/sixpar-200-wmg",
+      "elation/sixpar-300",
+      "elation/sixpar-300-ip",
+      "elation/sixpar-300-wmg",
       "eliminator/stealth-beam",
+      "eliminator/stealth-wash-zoom",
       "epsilon/duo-q-beam-bar",
       "equinox/gigabar",
       "eurolite/led-fe-1500",
@@ -1375,6 +1446,7 @@
       "eurolite/led-tmh-18",
       "eurolite/led-tmh-x12",
       "eurolite/led-tmh-x25",
+      "evolight/colours-archspot-54-rgb",
       "futurelight/dmh-75-i-led-moving-head",
       "futurelight/pro-slim-par-7-hcl",
       "futurelight/sc-250-scanner",
@@ -1556,6 +1628,7 @@
       "elation/platinum-seven",
       "elation/platinum-spot-15r-pro",
       "eliminator/stealth-beam",
+      "eliminator/stealth-wash-zoom",
       "epsilon/duo-q-beam-bar",
       "eurolite/led-svf-1",
       "eurolite/led-tmh-7",
@@ -1669,6 +1742,89 @@
     ]
   },
   "contributors": {
+    "Felix Edelmann": [
+      "5star-systems/spica-250m",
+      "abstract/twister-4",
+      "american-dj/auto-spot-150",
+      "american-dj/boom-box-fx2",
+      "american-dj/dotz-par",
+      "american-dj/fog-fury-jett-pro",
+      "american-dj/galaxian-3d",
+      "american-dj/revo-4-ir",
+      "american-dj/revo-sweep",
+      "ayrton/magicblade-fx",
+      "cameo/flash-matrix-250",
+      "cameo/flat-pro-18",
+      "cameo/flat-pro-flood-ip65-tri",
+      "cameo/gobo-scanner-80",
+      "cameo/hydrabeam-100",
+      "cameo/nanospot-120",
+      "cameo/outdoor-par-tri-12",
+      "cameo/steam-wizard-1000",
+      "cameo/steam-wizard-2000",
+      "cameo/storm",
+      "cameo/zenit-w600",
+      "chauvet-dj/corepar-uv-usb",
+      "chauvet-dj/gigbar-2",
+      "chauvet-dj/slimpar-pro-h-usb",
+      "chauvet-dj/slimpar-pro-qz12",
+      "chauvet-dj/slimpar-pro-w",
+      "chauvet-dj/washfx",
+      "chroma-q/color-force-ii-12",
+      "chroma-q/color-force-ii-48",
+      "chroma-q/color-force-ii-72",
+      "clay-paky/spheriscan",
+      "contest/irledflat-5x12SIXb",
+      "elation/acl-360-roller",
+      "elation/platinum-seven",
+      "elation/platinum-spot-15r-pro",
+      "elation/sixpar-100",
+      "elation/sixpar-100-ip",
+      "elation/sixpar-200",
+      "elation/sixpar-200-ip",
+      "elation/sixpar-200-wmg",
+      "elation/sixpar-300",
+      "elation/sixpar-300-ip",
+      "elation/sixpar-300-wmg",
+      "equinox/gigabar",
+      "eurolite/led-fe-1500",
+      "eurolite/led-h2o",
+      "eurolite/led-kls-801",
+      "eurolite/led-par-56-tcl",
+      "eurolite/led-svf-1",
+      "eurolite/led-tmh-18",
+      "eurolite/led-tmh-x25",
+      "futurelight/pro-slim-par-7-hcl",
+      "futurelight/sc-250-scanner",
+      "futurelight/stb-648-led-strobe-smd-5050",
+      "glp/impression-fr1",
+      "glp/impression-laser",
+      "glp/impression-spot-one",
+      "jb-lighting/varyscan-p7",
+      "lightmaxx/easy-wash-quad-led",
+      "lightmaxx/platinum-mini-tri-par",
+      "martin/atomic-3000",
+      "orion/orcan2",
+      "prolights/pixpan16",
+      "robe/dj-scan-250-xt",
+      "robe/robin-ledbeam-150",
+      "robe/robin-ledwash-600",
+      "robe/robin-viva-cmy",
+      "showtec/atmos-2000",
+      "showtec/dominator",
+      "showtec/kanjo-wash-rgb",
+      "showtec/led-light-bar-rgb-v3",
+      "showtec/phantom-50-led-spot",
+      "showtec/phantom-140-led-spot",
+      "showtec/pixel-bar-12-mkii",
+      "showtec/sunraise-led",
+      "skypix/ribalta-beam",
+      "solaris/smart-36",
+      "solena/max-par-20",
+      "solena/mini-par-12",
+      "stairville/led-flood-panel-150",
+      "venue/thintri64"
+    ],
     "Flo Edelmann": [
       "5star-systems/spica-250m",
       "abstract/twister-4",
@@ -1752,81 +1908,6 @@
       "tmb/solaris-flare",
       "venue/tristrip3z"
     ],
-    "Felix Edelmann": [
-      "5star-systems/spica-250m",
-      "abstract/twister-4",
-      "american-dj/auto-spot-150",
-      "american-dj/boom-box-fx2",
-      "american-dj/dotz-par",
-      "american-dj/fog-fury-jett-pro",
-      "american-dj/galaxian-3d",
-      "american-dj/revo-4-ir",
-      "american-dj/revo-sweep",
-      "ayrton/magicblade-fx",
-      "cameo/flash-matrix-250",
-      "cameo/flat-pro-18",
-      "cameo/flat-pro-flood-ip65-tri",
-      "cameo/gobo-scanner-80",
-      "cameo/hydrabeam-100",
-      "cameo/nanospot-120",
-      "cameo/outdoor-par-tri-12",
-      "cameo/steam-wizard-1000",
-      "cameo/steam-wizard-2000",
-      "cameo/storm",
-      "cameo/zenit-w600",
-      "chauvet-dj/corepar-uv-usb",
-      "chauvet-dj/gigbar-2",
-      "chauvet-dj/slimpar-pro-h-usb",
-      "chauvet-dj/slimpar-pro-qz12",
-      "chauvet-dj/slimpar-pro-w",
-      "chauvet-dj/washfx",
-      "chroma-q/color-force-ii-12",
-      "chroma-q/color-force-ii-48",
-      "chroma-q/color-force-ii-72",
-      "clay-paky/spheriscan",
-      "contest/irledflat-5x12SIXb",
-      "elation/acl-360-roller",
-      "elation/platinum-seven",
-      "elation/platinum-spot-15r-pro",
-      "equinox/gigabar",
-      "eurolite/led-fe-1500",
-      "eurolite/led-h2o",
-      "eurolite/led-kls-801",
-      "eurolite/led-par-56-tcl",
-      "eurolite/led-svf-1",
-      "eurolite/led-tmh-18",
-      "eurolite/led-tmh-x25",
-      "futurelight/pro-slim-par-7-hcl",
-      "futurelight/sc-250-scanner",
-      "futurelight/stb-648-led-strobe-smd-5050",
-      "glp/impression-fr1",
-      "glp/impression-laser",
-      "glp/impression-spot-one",
-      "jb-lighting/varyscan-p7",
-      "lightmaxx/easy-wash-quad-led",
-      "lightmaxx/platinum-mini-tri-par",
-      "martin/atomic-3000",
-      "orion/orcan2",
-      "prolights/pixpan16",
-      "robe/dj-scan-250-xt",
-      "robe/robin-ledbeam-150",
-      "robe/robin-ledwash-600",
-      "robe/robin-viva-cmy",
-      "showtec/atmos-2000",
-      "showtec/dominator",
-      "showtec/kanjo-wash-rgb",
-      "showtec/led-light-bar-rgb-v3",
-      "showtec/phantom-50-led-spot",
-      "showtec/phantom-140-led-spot",
-      "showtec/pixel-bar-12-mkii",
-      "showtec/sunraise-led",
-      "skypix/ribalta-beam",
-      "solaris/smart-36",
-      "solena/max-par-20",
-      "solena/mini-par-12",
-      "stairville/led-flood-panel-150",
-      "venue/thintri64"
-    ],
     "novasfronteiras.co": [
       "dts/xr1200-wash",
       "martin/mac-aura",
@@ -1854,6 +1935,11 @@
       "showven/sparkular",
       "showven/sparkular-fall"
     ],
+    "Anonymous": [
+      "american-dj/mega-bar-rgba",
+      "eliminator/stealth-wash-zoom",
+      "stairville/mh-100"
+    ],
     "Justin Hornsby": [
       "chauvet-dj/washfx",
       "equinox/gigabar",
@@ -1868,10 +1954,6 @@
       "american-dj/saber-spot-rgbw",
       "showtec/club-par-12-4-rgbw",
       "showtec/sunstrip-active-mkii"
-    ],
-    "Anonymous": [
-      "american-dj/mega-bar-rgba",
-      "stairville/mh-100"
     ],
     "DJMaxone.de": [
       "hong-yi/hy-g60",
@@ -1947,6 +2029,9 @@
     ],
     "Massimo Callegari": [
       "clay-paky/sharpy"
+    ],
+    "Michael Stiller": [
+      "evolight/colours-archspot-54-rgb"
     ],
     "MIE": [
       "nicols/pat-252"
@@ -2121,6 +2206,7 @@
     "epsilon": "#66cc96",
     "equinox": "#bf40bb",
     "eurolite": "#d65cbc",
+    "evolight": "#d6685c",
     "futurelight": "#d4d65c",
     "generic": "#33bacc",
     "ghost": "#52e092",
@@ -2161,6 +2247,16 @@
     "venue": "#78cc33"
   },
   "lastUpdated": [
+    "eliminator/stealth-wash-zoom",
+    "evolight/colours-archspot-54-rgb",
+    "elation/sixpar-100",
+    "elation/sixpar-100-ip",
+    "elation/sixpar-200",
+    "elation/sixpar-200-ip",
+    "elation/sixpar-200-wmg",
+    "elation/sixpar-300",
+    "elation/sixpar-300-ip",
+    "elation/sixpar-300-wmg",
     "dedolight/dled7-bi",
     "hong-yi/hy-g60",
     "tiptop-stage-light/3-10w-battery-led-wedge-par",
