@@ -30,22 +30,22 @@
       "capabilities": [
         {
           "dmxRange": [0, 63],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Laser Off"
         },
         {
           "dmxRange": [64, 127],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Sound Mode"
         },
         {
           "dmxRange": [128, 191],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Auto Mode"
         },
         {
           "dmxRange": [192, 255],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "DMX Mode"
         }
       ]
