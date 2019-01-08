@@ -1,0 +1,189 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DS-1000RGB",
+  "categories": ["Laser", "Color Changer"],
+  "meta": {
+    "authors": ["finnTE"],
+    "createDate": "2019-01-08",
+    "lastModifyDate": "2019-01-08"
+  },
+  "links": {
+    "manual": [
+      "https://www.laserworld.com/en/support/downloads/download/83-laserworld-diode-series/1765-laserworld-manual-diode-series-ds-1000rgb-2018-04.html"
+    ],
+    "productPage": [
+      "https://www.laserworld.com/shop/laserworld-lasers/diode-series/laserworld-ds-1000rgb-show-laser-light"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=IbVylAJv3_0"
+    ]
+  },
+  "physical": {
+    "dimensions": [200, 110, 140],
+    "weight": 2.8,
+    "power": 40,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Mode Select": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Maintenance",
+          "comment": "Laser Off"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "comment": "Sound Mode"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "comment": "Auto Mode"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "comment": "DMX Mode"
+        }
+      ]
+    },
+    "Pattern Selection": {
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "What are the capabilities of this channel?"
+      }
+    },
+    "Strobe Effect": {
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "What are the capabilities of this channel?"
+      }
+    },
+    "Horizontal Movement": {
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "What are the capabilities of this channel?"
+      }
+    },
+    "Vertical Movement": {
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "What are the capabilities of this channel?"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "What are the capabilities of this channel?"
+      }
+    },
+    "Rotation Y-axis": {
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "What are the capabilities of this channel?"
+      }
+    },
+    "Rotation X-axis": {
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "What are the capabilities of this channel?"
+      }
+    },
+    "Circular Movement": {
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "What are the capabilities of this channel?"
+      }
+    },
+    "Dot Effect": {
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "What are the capabilities of this channel?"
+      }
+    },
+    "Wave Movement": {
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "What are the capabilities of this channel?"
+      }
+    },
+    "Color Selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [140, 248],
+          "type": "Effect",
+          "effectName": "Color Stipple"
+        },
+        {
+          "dmxRange": [249, 255],
+          "type": "Effect",
+          "effectName": "Color Animation"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Mode Select",
+        "Pattern Selection",
+        "Strobe Effect",
+        "Horizontal Movement",
+        "Vertical Movement",
+        "Zoom",
+        "Rotation Y-axis",
+        "Rotation X-axis",
+        "Circular Movement",
+        "Dot Effect",
+        "Wave Movement",
+        "Color Selection"
+      ]
+    }
+  ]
+}
