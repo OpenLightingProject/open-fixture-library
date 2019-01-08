@@ -156,7 +156,7 @@ A capability represents a range of a channel.
         * [.menuClick](#Capability+menuClick) ⇒ <code>&#x27;start&#x27;</code> \| <code>&#x27;center&#x27;</code> \| <code>&#x27;end&#x27;</code> \| <code>&#x27;hidden&#x27;</code>
         * [.menuClickDmxValue](#Capability+menuClickDmxValue) ⇒ <code>number</code>
         * [.switchChannels](#Capability+switchChannels) ⇒ <code>object.&lt;string, string&gt;</code>
-        * [.shutterEffect](#Capability+shutterEffect) ⇒ <code>&#x27;Open&#x27;</code> \| <code>&#x27;Closed&#x27;</code> \| <code>&#x27;Strobe&#x27;</code> \| <code>&#x27;StrobeRandom&#x27;</code> \| <code>&#x27;Pulse&#x27;</code> \| <code>&#x27;PulseRandom&#x27;</code> \| <code>&#x27;RampUp&#x27;</code> \| <code>&#x27;RampUpRandom&#x27;</code> \| <code>&#x27;RampDown&#x27;</code> \| <code>&#x27;RampDownRandom&#x27;</code> \| <code>&#x27;RampUpDown&#x27;</code> \| <code>&#x27;RampUpDownRandom&#x27;</code> \| <code>&#x27;Lightning&#x27;</code> \| <code>null</code>
+        * [.shutterEffect](#Capability+shutterEffect) ⇒ <code>string</code> \| <code>null</code>
         * [.color](#Capability+color) ⇒ <code>&#x27;Red&#x27;</code> \| <code>&#x27;Green&#x27;</code> \| <code>&#x27;Blue&#x27;</code> \| <code>&#x27;Cyan&#x27;</code> \| <code>&#x27;Magenta&#x27;</code> \| <code>&#x27;Yellow&#x27;</code> \| <code>&#x27;Amber&#x27;</code> \| <code>&#x27;White&#x27;</code> \| <code>&#x27;UV&#x27;</code> \| <code>&#x27;Lime&#x27;</code> \| <code>&#x27;Indigo&#x27;</code> \| <code>null</code>
         * [.colors](#Capability+colors) ⇒ <code>object</code> \| <code>null</code>
         * [.effectName](#Capability+effectName) ⇒ <code>string</code> \| <code>null</code>
@@ -282,9 +282,9 @@ Create a new Capability instance.
 **Returns**: <code>object.&lt;string, string&gt;</code> - Switching channel aliases mapped to the channel key to which the switching channel should be set to when this capability is activated.  
 <a name="Capability+shutterEffect"></a>
 
-### capability.shutterEffect ⇒ <code>&#x27;Open&#x27;</code> \| <code>&#x27;Closed&#x27;</code> \| <code>&#x27;Strobe&#x27;</code> \| <code>&#x27;StrobeRandom&#x27;</code> \| <code>&#x27;Pulse&#x27;</code> \| <code>&#x27;PulseRandom&#x27;</code> \| <code>&#x27;RampUp&#x27;</code> \| <code>&#x27;RampUpRandom&#x27;</code> \| <code>&#x27;RampDown&#x27;</code> \| <code>&#x27;RampDownRandom&#x27;</code> \| <code>&#x27;RampUpDown&#x27;</code> \| <code>&#x27;RampUpDownRandom&#x27;</code> \| <code>&#x27;Lightning&#x27;</code> \| <code>null</code>
+### capability.shutterEffect ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: <code>&#x27;Open&#x27;</code> \| <code>&#x27;Closed&#x27;</code> \| <code>&#x27;Strobe&#x27;</code> \| <code>&#x27;StrobeRandom&#x27;</code> \| <code>&#x27;Pulse&#x27;</code> \| <code>&#x27;PulseRandom&#x27;</code> \| <code>&#x27;RampUp&#x27;</code> \| <code>&#x27;RampUpRandom&#x27;</code> \| <code>&#x27;RampDown&#x27;</code> \| <code>&#x27;RampDownRandom&#x27;</code> \| <code>&#x27;RampUpDown&#x27;</code> \| <code>&#x27;RampUpDownRandom&#x27;</code> \| <code>&#x27;Lightning&#x27;</code> \| <code>null</code> - Behavior for the shutter. Defaults to null.  
+**Returns**: <code>string</code> \| <code>null</code> - Behavior for the shutter, for example 'Closed', 'Strobe' or 'Pulse'. Defaults to null.  
 <a name="Capability+color"></a>
 
 ### capability.color ⇒ <code>&#x27;Red&#x27;</code> \| <code>&#x27;Green&#x27;</code> \| <code>&#x27;Blue&#x27;</code> \| <code>&#x27;Cyan&#x27;</code> \| <code>&#x27;Magenta&#x27;</code> \| <code>&#x27;Yellow&#x27;</code> \| <code>&#x27;Amber&#x27;</code> \| <code>&#x27;White&#x27;</code> \| <code>&#x27;UV&#x27;</code> \| <code>&#x27;Lime&#x27;</code> \| <code>&#x27;Indigo&#x27;</code> \| <code>null</code>
@@ -746,6 +746,7 @@ A physical entity with numerical value and unit information.
         * [.keyword](#Entity+keyword) ⇒ <code>string</code> \| <code>null</code>
         * [.getBaseUnitEntity()](#Entity+getBaseUnitEntity) ⇒ [<code>Entity</code>](#Entity)
         * [.valueOf()](#Entity+valueOf) ⇒ <code>number</code>
+        * [.toString()](#Entity+toString) ⇒ <code>string</code>
         * [.equals(anotherEntity)](#Entity+equals) ⇒ <code>boolean</code>
     * _static_
         * [.createFromEntityString(entityString)](#Entity.createFromEntityString) ⇒ [<code>Entity</code>](#Entity)
@@ -789,6 +790,11 @@ Used to allow comparing like `entity1 < entity2`
 
 **Kind**: instance method of [<code>Entity</code>](#Entity)  
 **Returns**: <code>number</code> - The numerical value of this entity.  
+<a name="Entity+toString"></a>
+
+### entity.toString() ⇒ <code>string</code>
+**Kind**: instance method of [<code>Entity</code>](#Entity)  
+**Returns**: <code>string</code> - The entity string that could be used in the fixture's JSON data.  
 <a name="Entity+equals"></a>
 
 ### entity.equals(anotherEntity) ⇒ <code>boolean</code>
