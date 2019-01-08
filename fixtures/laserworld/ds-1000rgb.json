@@ -1,0 +1,123 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DS-1000RGB",
+  "categories": ["Laser", "Color Changer"],
+  "meta": {
+    "authors": ["finnTE"],
+    "createDate": "2019-01-08",
+    "lastModifyDate": "2019-01-08"
+  },
+  "comment": "Channels need fleshing out.",
+  "links": {
+    "manual": [
+      "https://www.laserworld.com/en/support/downloads/download/83-laserworld-diode-series/1765-laserworld-manual-diode-series-ds-1000rgb-2018-04.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [200, 110, 140],
+    "weight": 2.8,
+    "power": 40,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Mode Select": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "Laser Off"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Sound Mode"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Auto Mode"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "DMX Mode"
+        }
+      ]
+    },
+    "Pattern Selection": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Strobe Effect": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Horizontal Movement": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Vertical Movement": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Rotation Y-axis": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Rotation X-axis": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Circular Movement": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Dot Effect": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Wave Movement": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color Selection": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Mode Select",
+        "Pattern Selection",
+        "Strobe Effect",
+        "Horizontal Movement",
+        "Vertical Movement",
+        "Zoom",
+        "Rotation Y-axis",
+        "Rotation X-axis",
+        "Circular Movement",
+        "Dot Effect",
+        "Wave Movement",
+        "Color Selection"
+      ]
+    }
+  ]
+}
