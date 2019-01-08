@@ -101,9 +101,60 @@
       }
     },
     "Color Selection": {
-      "capability": {
-        "type": "ColorPreset"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ColorPreset",
+          "colors": ["#ffffff"],
+          "comment": "White"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "ColorPreset",
+          "colors": ["#00ff00"],
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "ColorPreset",
+          "colors": ["#0000ff"],
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "ColorPreset",
+          "colors": ["#ffff00"],
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "ColorPreset",
+          "colors": ["#ff00ff"],
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "ColorPreset",
+          "colors": ["#00ffff"],
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [140, 248],
+          "type": "Effect",
+          "effectName": "Color Stipple"
+        },
+        {
+          "dmxRange": [249, 255],
+          "type": "Effect",
+          "effectName": "Color Animation"
+        }
+      ]
     }
   },
   "modes": [
