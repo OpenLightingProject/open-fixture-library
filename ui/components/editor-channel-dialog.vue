@@ -521,15 +521,21 @@ export default {
 
     onSubmit() {
       if (this.formstate.$invalid) {
-        const field = document.querySelector(`#channel-dialog .vf-field-invalid`);
-        const scrollContainer = field.closest(`dialog`);
+        const invalidFields = document.querySelectorAll(`#channel-dialog .vf-field-invalid`);
 
-        const enclosingDetails = field.closest(`details`);
-        if (enclosingDetails) {
-          enclosingDetails.open = true;
+        for (let i = 0; i < invalidFields.length; i++) {
+          const enclosingDetails = invalidFields[i].closest(`details:not([open])`);
+
+          if (enclosingDetails) {
+            enclosingDetails.open = true;
+
+            // current field could be enclosed another time, so repeat
+            i--;
+          }
         }
 
-        scrollIntoView(field, {
+        const scrollContainer = invalidFields[0].closest(`dialog`);
+        scrollIntoView(invalidFields[0], {
           time: 300,
           align: {
             top: 0,
@@ -537,7 +543,7 @@ export default {
             topOffset: 100
           },
           isScrollable: target => target === scrollContainer
-        }, () => field.focus());
+        }, () => invalidFields[0].focus());
 
         return;
       }
