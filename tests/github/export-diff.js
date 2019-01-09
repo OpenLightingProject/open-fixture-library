@@ -85,8 +85,7 @@ pullRequest.checkEnv()
     function getTasksForPlugins() {
       let tasks = [];
 
-      const changedPlugins = changedComponents.added.exports.concat(changedComponents.modified.exports);
-
+      const changedPlugins = changedComponents.modified.exports;
       for (const changedPlugin of changedPlugins) {
         tasks = tasks.concat(usableTestFixtures.map(manFix => ({
           manFix,
