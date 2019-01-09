@@ -550,17 +550,15 @@ export default {
 
       this.$refs.capabilities.forEach(capability => capability.cleanCapabilityData());
 
-      if (this.channel.editMode === `create`) {
-        this.saveCreatedChannel();
-      }
-      else if (this.channel.editMode === `edit-all`) {
-        this.saveEditedChannel();
-      }
-      else if (this.channel.editMode === `edit-duplicate`) {
-        this.saveDuplicatedChannel();
-      }
-      else if (this.channel.editMode === `add-existing`) {
-        this.addExistingChannel();
+      const actions = {
+        'create': this.saveCreatedChannel,
+        'edit-all': this.saveEditedChannel,
+        'edit-duplicate': this.saveDuplicatedChannel,
+        'add-existing': this.addExistingChannel
+      };
+
+      if (this.channel.editMode in actions) {
+        actions[this.channel.editMode]();
       }
 
       this.resetChannelForm();
