@@ -1,0 +1,110 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "wash",
+  "shortName": "wash",
+  "categories": ["Dimmer", "Color Changer", "Moving Head"],
+  "meta": {
+    "authors": ["ale"],
+    "createDate": "2019-01-11",
+    "lastModifyDate": "2019-01-11"
+  },
+  "links": {
+    "productPage": [
+      "http://www.mjledlighting.com"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "14 wash": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "Pan",
+          "angle": "1deg"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Tilt",
+          "angle": "1deg"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "PanContinuous",
+          "speed": "slow CW"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "TiltContinuous",
+          "speed": "slow CW"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "PanTiltSpeed",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Zoom",
+          "angle": "narrow"
+        },
+        {
+          "dmxRange": [13, 255],
+          "type": "StrobeSpeed",
+          "speed": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "prova",
+      "channels": [
+        "14 wash"
+      ]
+    }
+  ]
+}
