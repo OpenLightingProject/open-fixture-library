@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "test",
+  "categories": ["Stand"],
+  "meta": {
+    "authors": ["test"],
+    "createDate": "2019-01-11",
+    "lastModifyDate": "2019-01-11"
+  },
+  "links": {
+    "other": [
+      "http://www.test.com"
+    ]
+  },
+  "availableChannels": {
+    "Shutter": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "240deg"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "test",
+      "channels": [
+        "Shutter"
+      ]
+    }
+  ]
+}
