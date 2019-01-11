@@ -44,14 +44,14 @@ You can also create the pull request if you're not done yet to involve the revie
 We always aim to have clear, readable code. So please try to respect these principles:
 
 * Document every new function with [JSDoc](http://usejsdoc.org/about-getting-started.html)
-  - Prefix each type with either `!` (non-null) or `?` (nullable) so the null-case is always annotated
-  - Be careful with arrays: Prefer the `!Array.<string>` syntax over `!string[]`
+  - Primitive types are lowercase: `number`, `string`, `boolean`, `array`, `object`
+  - Be careful with arrays: Prefer the `array.<string>` syntax over `string[]`
 * Use [self-describing variable names](http://wiki.c2.com/?GoodVariableNames) and prefer constant variables over literal values without explanation
 * Prefer code readability over [micro-optimisation](https://softwareengineering.stackexchange.com/questions/99445/is-micro-optimisation-important-when-coding)
 * Use new [ES2015 (ES6)](https://babeljs.io/learn-es2015/) features that improve code readability, for example:
+  - Instead of `var`, use [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) where possible, [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) in all other cases
   - Prefer [Array iteration methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype#Iteration_methods) (like [`map(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), [`filter(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), [`some(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some), [`every(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every), [`find(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)) with arrow functions over loops
   - Always use [template strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) (backticks instead of single or double quotes: ``const str = `My name is ${name}.`;``) as [they are strictly better strings](https://ponyfoo.com/articles/template-literals-strictly-better-strings) and make string concatenation (`const str = 'My name is ' + name + '.';`) more readable
-  - Use [const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) where possible, [let](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) in all other cases
 * Try to make a piece of code not too complex. That is, if a function contains lots of ifs and for-loops, extract some parts into helper functions. (For example, the `checkFixture()` function calls `checkPhysical()` and `checkChannels()`, `checkChannel()` calls `checkCapabilities()`, etc.)
 
 We automatically check code style using [ESLint](https://eslint.org/). Maybe your IDE supports ESLint highlighting (there's a good [extension for VSCode](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)) – this helps spotting bad code style as quickly as possible.
