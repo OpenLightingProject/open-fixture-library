@@ -570,6 +570,11 @@
       "lastActionDate": "2018-07-21",
       "lastAction": "modified"
     },
+    "generic/wash": {
+      "name": "wash",
+      "lastActionDate": "2019-01-11",
+      "lastAction": "created"
+    },
     "ghost/ip-spot-bat": {
       "name": "IP Spot Bat",
       "lastActionDate": "2018-08-09",
@@ -1185,7 +1190,8 @@
       "rgb-fader",
       "rgba-fader",
       "rgbd-fader",
-      "rgbw-fader"
+      "rgbw-fader",
+      "wash"
     ],
     "ghost": [
       "ip-spot-bat"
@@ -1463,6 +1469,7 @@
       "generic/rgba-fader",
       "generic/rgbd-fader",
       "generic/rgbw-fader",
+      "generic/wash",
       "ghost/ip-spot-bat",
       "glp/force-120",
       "glp/impression-fr1",
@@ -1551,6 +1558,7 @@
       "dts/scena-led-150",
       "eurolite/led-sls-6-uv-floor",
       "generic/desk-channel",
+      "generic/wash",
       "magicfx/smokejet",
       "robert-juliat/613sx",
       "showtec/club-par-12-4-rgbw",
@@ -1646,6 +1654,7 @@
       "eurolite/led-tmh-x25",
       "futurelight/dmh-75-i-led-moving-head",
       "generic/pan-tilt",
+      "generic/wash",
       "glp/impression-fr1",
       "glp/impression-laser",
       "glp/impression-spot-one",
@@ -1999,6 +2008,9 @@
       "boomtonedj/crazy-spot-30",
       "ghost/ip-spot-bat"
     ],
+    "ale": [
+      "generic/wash"
+    ],
     "Bram Nauta": [
       "american-dj/vizi-spot-led-pro"
     ],
@@ -2258,6 +2270,7 @@
     "venue": "#78cc33"
   },
   "lastUpdated": [
+    "generic/wash",
     "laserworld/ds-1000rgb",
     "eliminator/stealth-wash-zoom",
     "evolight/colours-archspot-54-rgb",
