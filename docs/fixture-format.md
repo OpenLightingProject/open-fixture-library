@@ -18,6 +18,8 @@ This document gives a high-level overview of the concepts used in the JSON forma
   - [Matrices](#matrices)
     - [Matrix structure](#matrix-structure)
     - [Template channels](#template-channels)
+  - [Wheels](#wheels)
+    - [Using wheels in capabilities](#using-wheels-in-capabilities)
   - [RDM (Remote Device Management) data](#rdm-remote-device-management-data)
 - [Fixture redirects](#fixture-redirects)
 
@@ -212,7 +214,7 @@ The information how these pixels are arranged is stored in the fixture's `matrix
 
 `null` refers to a "hole", i.e. there's no light beam, which allows for non-cubic frames. The above example represents 5 heads arranged like a "+".
 
-Pixels can also be grouped if a fixture allows control in different fine grades, like fourths or halfs of a light bar:
+Pixels can also be grouped if a fixture allows control in different fine grades, like fourths or halves of a light bar:
 
 ```js
 "matrix": {
@@ -266,7 +268,7 @@ To reuse similar channels for each pixel or pixel group (like "Red&nbsp;1", Red&
 }
 ```
 
-Template channels can also introduce fine and switching channels. Specific resolved matrix channels can be overriden by available channels (e.g. if "Speed&nbsp;1" has different capabilities than "Speed&nbsp;2" until "Speed&nbsp;25"). See the [cameo Hydrabeam 300 RGBW](../fixtures/cameo/hydrambeam-300-rgbw.json) that uses these features.
+Template channels can also introduce fine and switching channels. Specific resolved matrix channels can be overridden by available channels (e.g. if "Speed&nbsp;1" has different capabilities than "Speed&nbsp;2" until "Speed&nbsp;25"). See the [cameo Hydrabeam 300 RGBW](../fixtures/cameo/hydrambeam-300-rgbw.json) that uses these features.
 
 Then, either use the resolved channel keys directly in a mode's channel list, or use a matrix channel insert block that repeats a list of template channels for a list of pixels:
 
@@ -299,6 +301,46 @@ Then, either use the resolved channel keys directly in a mode's channel list, or
   - For example, `XYZ` orders the pixels like reading a book (latin script): First left-to-right (`X`, letter by letter), then top-to-bottom (`Y`, line by line), then front-to-back (`Z`, page by page). For a 3-dimensional 2×2×2 matrix, this results in `["(1, 1, 1)", "(2, 1, 1)", "(1, 2, 1)", "(2, 2, 1)", "(1, 1, 2)", "(2, 1, 2)", "(1, 2, 2)", "(2, 2, 2)]"`.
 * `"eachPixelGroup"`: Gets computed into an array of all pixel group keys, ordered by appearance in the JSON file.
   - For the above [matrix structure](#matrix-structure) example, this results in `["Inner ring", "Middle ring", "Outer ring"]`.
+
+
+### Wheels
+
+Fixtures (usually moving heads) can have internal wheels, where you can select the active slot via DMX. In our fixture format, wheels are defined in the fixture's `wheels` object, where the key defines the wheel's name.
+
+The slots in a wheel have types, similar to [capability types](capability-types.md). Depending on the type, different properties can be set on the slot.
+
+* `Open` / `Closed`
+* `Color`
+  - `name` (string)
+  - `colors` (array of hex strings)
+  - `colorTemperature` ([Entity](capability-types.md#possible-entities-and-keywords) *ColorTemperature*)
+* `Gobo`
+  - `name` (string)
+* `Prism`
+  - `name` (string)
+  - `facets` (integer)
+* `Iris`
+  - `openPercent` ([Entity](capability-types.md#possible-entities-and-keywords) *IrisPercent*)
+* `Frost`
+  - `frostIntensity` ([Entity](capability-types.md#possible-entities-and-keywords) *Percent*)
+* `AnimationGoboStart`
+  - `name` (string)
+* `AnimationGoboEnd`
+
+Animation Gobo slots are wider than normal gobos (sometimes they fill the whole wheel); rotating the wheel over these slots creates an animation. To model the wider slots, an `AnimationGoboEnd` slot must be used directly after an `AnimationGoboStart` slot.
+
+#### Using wheels in capabilities
+
+In wheel-related capabilities, the `wheel` property references the wheel by its name. If the `wheel` property is not set, the channel name is used as wheel name.
+
+`WheelSlot` capabilities select a slot from the wheel. If the capability selects the place in between two slots, the `slotNumber` property can be set to a fractional value (or be proportional as `slotNumberStart` / `slotNumberEnd`). See also [footnote *slotNumber* in the capability types documentation](capability-types.md#property-slotnumber).
+
+`WheelShake` capabilities set the shaking (i.e. continuously rotating back and forth) of the whole wheel around the currently selected slot. A slot can also be activated directly by setting the `slotNumber` property like in `WheelSlot` capabilities.  
+By setting the property `isShaking` is to `slot`, one can specify that only the currently selected slot rotates back and forth around its center (sometimes called *Gobo bounce effect*) instead of the whole wheel.
+
+`WheelSlotRotation` capabilities control the rotation of the slot (i.e. Gobo, Prism, etc.). A slot can also be activated directly by setting the `slotNumber` property like in `WheelSlot` capabilities.
+
+`WheelRotation` capabilities rotate the whole wheel, i.e. over all slots.
 
 
 ### RDM (Remote Device Management) data
