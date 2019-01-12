@@ -26,6 +26,10 @@
       "Tilt",
       "TiltContinuous",
       "PanTiltSpeed",
+      "WheelSlot",
+      "WheelShake",
+      "WheelSlotRotation",
+      "WheelRotation",
       "Effect",
       "EffectSpeed",
       "EffectDuration",
@@ -500,6 +504,230 @@
           "speedEnd": ["speedStart"],
           "durationStart": ["durationEnd"],
           "durationEnd": ["durationStart"]
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": { "enum": ["WheelSlot"] }
+        }
+      },
+      "then": {
+        "properties": {
+          "dmxRange": {},
+          "type": {},
+          "wheel": { "$ref": "definitions.json#/nonEmptyString" },
+          "slotNumber": { "$ref": "definitions.json#/entities/slotNumber" },
+          "slotNumberStart": { "$ref": "definitions.json#/entities/slotNumber" },
+          "slotNumberEnd": { "$ref": "definitions.json#/entities/slotNumber" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
+        },
+        "oneOf": [
+          { "required": ["slotNumber"] },
+          { "required": ["slotNumberStart"] }
+        ],
+        "dependencies": {
+          "slotNumberStart": ["slotNumberEnd"],
+          "slotNumberEnd": ["slotNumberStart"]
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": { "enum": ["WheelShake"] }
+        }
+      },
+      "then": {
+        "properties": {
+          "dmxRange": {},
+          "type": {},
+          "wheel": {},
+          "isShaking": {
+            "enum": ["wheel", "slot"]
+          },
+          "slotNumber": { "$ref": "definitions.json#/entities/slotNumber" },
+          "slotNumberStart": { "$ref": "definitions.json#/entities/slotNumber" },
+          "slotNumberEnd": { "$ref": "definitions.json#/entities/slotNumber" },
+          "shakeSpeed": { "$ref": "definitions.json#/entities/speed" },
+          "shakeSpeedStart": { "$ref": "definitions.json#/entities/speed" },
+          "shakeSpeedEnd": { "$ref": "definitions.json#/entities/speed" },
+          "shakeAngle": { "$ref": "definitions.json#/entities/swingAngle" },
+          "shakeAngleStart": { "$ref": "definitions.json#/entities/swingAngle" },
+          "shakeAngleEnd": { "$ref": "definitions.json#/entities/swingAngle" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
+        },
+        "not": {
+          "anyOf": [
+            { "required": ["slotNumber", "slotNumberStart"] },
+            { "required": ["shakeSpeed", "shakeSpeedStart"] },
+            { "required": ["shakeAngle", "shakeAngleStart"] }
+          ]
+        },
+        "dependencies": {
+          "shakeSpeedStart": ["shakeSpeedEnd"],
+          "shakeSpeedEnd": ["shakeSpeedStart"],
+          "shakeAngleStart": ["shakeAngleEnd"],
+          "shakeAngleEnd": ["shakeAngleStart"],
+          "slotNumberStart": ["slotNumberEnd"],
+          "slotNumberEnd": ["slotNumberStart"]
+        },
+        "if": {
+          "$comment": "slotNumber is set",
+          "anyOf": [
+            { "required": ["slotNumber"] },
+            { "required": ["slotNumberStart"] }
+          ]
+        },
+        "then": {
+          "$comment": "wheel must be a single wheel",
+          "properties": {
+            "wheel": { "$ref": "definitions.json#/nonEmptyString" }
+          }
+        },
+        "else": {
+          "$comment": "wheel can be a single wheel or multiple wheels",
+          "properties": {
+            "wheel": {
+              "oneOf": [
+                { "$ref": "definitions.json#/nonEmptyString" },
+                {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "minItems": 2,
+                  "items": { "$ref": "definitions.json#/nonEmptyString" }
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": { "enum": ["WheelSlotRotation"] }
+        }
+      },
+      "then": {
+        "properties": {
+          "dmxRange": {},
+          "type": {},
+          "wheel": {},
+          "slotNumber": { "$ref": "definitions.json#/entities/slotNumber" },
+          "slotNumberStart": { "$ref": "definitions.json#/entities/slotNumber" },
+          "slotNumberEnd": { "$ref": "definitions.json#/entities/slotNumber" },
+          "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
+          "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
+          "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
+        },
+        "oneOf": [
+          { "required": ["speed"] },
+          { "required": ["speedStart"] },
+          { "required": ["angle"] },
+          { "required": ["angleStart"] }
+        ],
+        "not": { "required": ["slotNumber", "slotNumberStart"] },
+        "dependencies": {
+          "slotNumberStart": ["slotNumberEnd"],
+          "slotNumberEnd": ["slotNumberStart"],
+          "speedStart": ["speedEnd"],
+          "speedEnd": ["speedStart"],
+          "angleStart": ["angleEnd"],
+          "angleEnd": ["angleStart"]
+        },
+        "if": {
+          "$comment": "slotNumber is set",
+          "anyOf": [
+            { "required": ["slotNumber"] },
+            { "required": ["slotNumberStart"] }
+          ]
+        },
+        "then": {
+          "$comment": "wheel must be a single wheel",
+          "properties": {
+            "wheel": { "$ref": "definitions.json#/nonEmptyString" }
+          }
+        },
+        "else": {
+          "$comment": "wheel can be a single wheel or multiple wheels",
+          "properties": {
+            "wheel": {
+              "oneOf": [
+                { "$ref": "definitions.json#/nonEmptyString" },
+                {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "minItems": 2,
+                  "items": { "$ref": "definitions.json#/nonEmptyString" }
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": { "enum": ["WheelRotation"] }
+        }
+      },
+      "then": {
+        "properties": {
+          "dmxRange": {},
+          "type": {},
+          "wheel": {
+            "oneOf": [
+              { "$ref": "definitions.json#/nonEmptyString" },
+              {
+                "type": "array",
+                "uniqueItems": true,
+                "minItems": 2,
+                "items": { "$ref": "definitions.json#/nonEmptyString" }
+              }
+            ]
+          },
+          "speed": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "speedStart": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "speedEnd": { "$ref": "definitions.json#/entities/rotationSpeed" },
+          "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
+          "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
+          "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
+        },
+        "oneOf": [
+          { "required": ["speed"] },
+          { "required": ["speedStart"] },
+          { "required": ["angle"] },
+          { "required": ["angleStart"] }
+        ],
+        "dependencies": {
+          "speedStart": ["speedEnd"],
+          "speedEnd": ["speedStart"],
+          "angleStart": ["angleEnd"],
+          "angleEnd": ["angleStart"]
         },
         "additionalProperties": false
       }
