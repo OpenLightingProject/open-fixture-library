@@ -44,6 +44,11 @@
 
     </app-labeled-input>
 
+    <app-editor-wheel-slots
+      :channel="channel"
+      :capability="capability"
+      :formstate="formstate" />
+
     <app-labeled-input
       :formstate="formstate"
       :name="`capability${capability.uuid}-comment`"
@@ -62,17 +67,23 @@
 import schemaProperties from '~~/lib/schema-properties.js';
 
 import editorProportionalCapabilityDataSwitcher from '~/components/editor-proportional-capability-data-switcher.vue';
+import editorWheelSlotsVue from '~/components/editor-wheel-slots.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';
 import labeledInputVue from '~/components/labeled-input.vue';
 
 export default {
   components: {
     'app-editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
+    'app-editor-wheel-slots': editorWheelSlotsVue,
     'app-property-input-text': propertyInputTextVue,
     'app-labeled-input': labeledInputVue
   },
   props: {
     capability: {
+      type: Object,
+      required: true
+    },
+    channel: {
       type: Object,
       required: true
     },
