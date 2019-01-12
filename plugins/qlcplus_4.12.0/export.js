@@ -234,14 +234,14 @@ function getChannelPreset(channel) {
     SpeedTiltFastSlow: cap => cap.type === `TiltContinuous` && capabilityHelpers.isDecreasingSpeed(cap),
     SpeedPanTiltSlowFast: cap => cap.type === `PanTiltSpeed` && (capabilityHelpers.isIncreasingSpeed(cap) || capabilityHelpers.isDecreasingDuration(cap)),
     SpeedPanTiltFastSlow: cap => cap.type === `PanTiltSpeed` && (capabilityHelpers.isDecreasingSpeed(cap) || capabilityHelpers.isIncreasingDuration(cap)),
-    ColorMacro: cap => cap.type === `ColorPreset` || cap.type === `ColorWheelIndex`,
-    ColorWheel: cap => cap.type === `ColorWheelRotation`,
+    ColorMacro: cap => cap.type === `ColorPreset` || (cap.type === `WheelSlot` && cap.wheelSlot.every(slot => slot.type === `Color`)),
+    ColorWheel: cap => cap.type === `WheelRotation` && cap.wheels[0].type === `Color`,
     ColorRGBMixer: cap => false,
     ColorCTOMixer: cap => cap.type === `ColorTemperature` && cap.colorTemperature[0].number === 0 && cap.colorTemperature[1].number < 0,
     ColorCTBMixer: cap => cap.type === `ColorTemperature` && cap.colorTemperature[0].number === 0 && cap.colorTemperature[1].number > 0,
     ColorCTCMixer: cap => cap.type === `ColorTemperature`,
-    GoboWheel: cap => cap.type === `GoboWheelRotation`,
-    GoboIndex: cap => cap.type === `GoboIndex`,
+    GoboWheel: cap => cap.type === `WheelRotation` && cap.wheels[0].type === `Gobo`,
+    GoboIndex: cap => cap.type === `WheelSlotRotation` && cap.wheels[0].type === `Gobo`,
     ShutterStrobeSlowFast: cap => cap.type === `ShutterStrobe` && capabilityHelpers.isIncreasingSpeed(cap),
     ShutterStrobeFastSlow: cap => cap.type === `ShutterStrobe` && capabilityHelpers.isDecreasingSpeed(cap),
     ShutterIrisMinToMax: cap => cap.type === `Iris` && cap.openPercent[0].number < cap.openPercent[1].number,
@@ -288,17 +288,19 @@ function getFineChannelPreset(fineChannel) {
     PositionTiltFine: () => channelPreset === `PositionTilt`,
 
     ColorWheelFine: () => coarseChannel.capabilities.some(
-      cap => [`ColorWheelIndex`, `ColorWheelRotation`].includes(cap.type)
+      cap => [`WheelSlot`, `WheelRotation`].includes(cap.type)
     ) && coarseChannel.capabilities.every(
-      cap => [`ColorWheelIndex`, `ColorWheelRotation`, `Effect`, `NoFunction`].includes(cap.type)
+      cap => [`WheelSlot`, `WheelRotation`, `Effect`, `NoFunction`].includes(cap.type) &&
+        (cap.wheels.length === 0 || cap.wheels[0].type === `Color`)
     ),
     GoboWheelFine: () => coarseChannel.capabilities.some(
-      cap => [`GoboIndex`, `GoboWheelRotation`].includes(cap.type)
+      cap => [`WheelSlot`, `WheelRotation`].includes(cap.type)
     ) && coarseChannel.capabilities.every(
-      cap => [`GoboIndex`, `GoboWheelRotation`, `Effect`, `NoFunction`].includes(cap.type)
+      cap => [`WheelSlot`, `WheelRotation`, `Effect`, `NoFunction`].includes(cap.type) &&
+        (cap.wheels.length === 0 || cap.wheels[0].type === `Gobo`)
     ),
     GoboIndexFine: () => coarseChannel.capabilities.every(
-      cap => cap.type === `GoboStencilRotation`
+      cap => cap.type === `WheelSlotRotation` && cap.wheels[0].type === `Gobo`
     ),
 
     ShutterIrisFine: () => coarseChannel.type === `Iris`,
@@ -469,31 +471,34 @@ function getCapabilityPreset(capability) {
 
     // color capabilities
     ColorMacro: {
-      handler: cap => (cap.type === `ColorPreset` || cap.type === `ColorWheelIndex`) && cap.colors !== null && cap.colors.allColors.length === 1,
+      handler: cap => (cap.type === `ColorPreset` || cap.isSlotType(`Color`)) && cap.colors !== null && cap.colors.allColors.length === 1,
       res1: cap => cap.colors.allColors[0]
     },
     ColorDoubleMacro: {
-      handler: cap => (cap.type === `ColorPreset` || cap.type === `ColorWheelIndex`) && cap.colors !== null && cap.colors.allColors.length === 2,
+      handler: cap => (cap.type === `ColorPreset` || cap.isSlotType(`Color`)) && cap.colors !== null && cap.colors.allColors.length === 2,
       res1: cap => cap.colors.allColors[0],
       res2: cap => cap.colors.allColors[1]
     },
     ColorWheelIndex: {
-      handler: cap => false // seems to be unused in QLC+ for now
+      handler: cap => cap.type === `WheelRotation` && cap.wheels[0].type === `Color` && capabilityHelpers.isRotationAngle(cap)
     },
 
     // gobo capabilities
     // TODO: export a gobo image as res1
     GoboShakeMacro: {
-      handler: cap => cap.type === `GoboIndex` && cap.isShaking
+      handler: cap => cap.type === `WheelShake` && (cap.isSlotType(/Gobo/) || cap.isSlotType(`Open`)),
+      res1: cap => (cap.isSlotType(`Open`) ? `Others/open.svg` : null)
     },
     GoboMacro: {
-      handler: cap => cap.type === `GoboIndex`
+      handler: cap => cap.isSlotType(/Gobo/) || cap.isSlotType(`Open`),
+      res1: cap => (cap.isSlotType(`Open`) ? `Others/open.svg` : null)
     },
 
     // prism capabilities
-    // TODO: export the number of prism faces as res1
+    // TODO: export the number of prism facets as res1 for Prism capabilities
     PrismEffectOn: {
-      handler: cap => cap.type === `Prism`
+      handler: cap => cap.type === `Prism` || (cap.type === `WheelSlot` && cap.wheelSlot.every(slot => slot.type === `Prism`)),
+      res1: cap => (cap.wheelSlot && cap.slotNumber[0].number === cap.slotNumber[1].number && cap.wheelSlot[0].facets)
     },
     PrismEffectOff: {
       handler: cap => cap.type === `NoFunction` && cap._channel.type === `Prism`
