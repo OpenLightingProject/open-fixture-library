@@ -295,104 +295,111 @@
           "type": "ColorWheelIndex",
           "indexStart": 0,
           "indexEnd": 1,
-          "comment": "Open … Color 1"
+          "comment": "Open … Blue 110"
         },
         {
           "dmxRange": [17, 17],
           "type": "ColorWheelIndex",
           "index": 1,
-          "comment": "Color 1 (Blue 110)"
+          "comment": "Blue 110"
         },
         {
           "dmxRange": [18, 33],
           "type": "ColorWheelIndex",
           "indexStart": 1,
-          "indexEnd": 2
+          "indexEnd": 2,
+          "comment": "Blue 110 … Green 206 IAD"
         },
         {
           "dmxRange": [34, 34],
           "type": "ColorWheelIndex",
           "index": 2,
-          "comment": "Color 2 (Green 206 IAD)"
+          "comment": "Green 206 IAD"
         },
         {
           "dmxRange": [35, 50],
           "type": "ColorWheelIndex",
           "indexStart": 2,
-          "indexEnd": 3
+          "indexEnd": 3,
+          "comment": "Green 206 IAD … Pink 312"
         },
         {
           "dmxRange": [51, 51],
           "type": "ColorWheelIndex",
           "index": 3,
-          "comment": "Color 3 (Pink 312)"
+          "comment": "Pink 312"
         },
         {
           "dmxRange": [52, 67],
           "type": "ColorWheelIndex",
           "indexStart": 3,
-          "indexEnd": 4
+          "indexEnd": 4,
+          "comment": "Pink 312 … Orange 306M"
         },
         {
           "dmxRange": [68, 68],
           "type": "ColorWheelIndex",
           "index": 4,
-          "comment": "Color 4 (Orange 306M)"
+          "comment": "Orange 306M"
         },
         {
           "dmxRange": [69, 84],
           "type": "ColorWheelIndex",
           "indexStart": 4,
-          "indexEnd": 5
+          "indexEnd": 5,
+          "comment": "Orange 306M … Half minus green"
         },
         {
           "dmxRange": [85, 85],
           "type": "ColorWheelIndex",
           "index": 5,
-          "comment": "Color 5 (Half minus green)"
+          "comment": "Half minus green"
         },
         {
           "dmxRange": [86, 101],
           "type": "ColorWheelIndex",
           "indexStart": 5,
-          "indexEnd": 6
+          "indexEnd": 6,
+          "comment": "Half minus green … CTO 3200-4100K"
         },
         {
           "dmxRange": [102, 102],
           "type": "ColorWheelIndex",
           "index": 6,
-          "comment": "Color 6 (CTO 3200-4100)"
+          "comment": "CTO 3200-4100K"
         },
         {
           "dmxRange": [103, 118],
           "type": "ColorWheelIndex",
           "indexStart": 6,
-          "indexEnd": 7
+          "indexEnd": 7,
+          "comment": "CTO 3200-4100K … UV"
         },
         {
           "dmxRange": [119, 119],
           "type": "ColorWheelIndex",
           "index": 7,
-          "comment": "Color 7 (UV)"
+          "comment": "UV"
         },
         {
           "dmxRange": [120, 135],
           "type": "ColorWheelIndex",
           "indexStart": 7,
-          "indexEnd": 8
+          "indexEnd": 8,
+          "comment": "UV … Red 308"
         },
         {
           "dmxRange": [136, 136],
           "type": "ColorWheelIndex",
           "index": 8,
-          "comment": "Color 8 (Red 308)"
+          "comment": "Red 308"
         },
         {
           "dmxRange": [137, 152],
           "type": "ColorWheelIndex",
           "indexStart": 8,
           "indexEnd": 9,
-          "comment": "Color 8 … Open"
+          "comment": "Red 308 … Open"
         },
         {
           "dmxRange": [153, 153],
@@ -404,49 +411,49 @@
           "dmxRange": [154, 158],
           "type": "ColorWheelIndex",
           "index": 8,
-          "comment": "Color 8 (Red 308)"
+          "comment": "Red 308"
         },
         {
           "dmxRange": [159, 163],
           "type": "ColorWheelIndex",
           "index": 7,
-          "comment": "Color 7 (UV)"
+          "comment": "UV"
         },
         {
           "dmxRange": [164, 168],
           "type": "ColorWheelIndex",
           "index": 6,
-          "comment": "Color 6 (CTO 3200-4100K)"
+          "comment": "CTO 3200-4100K"
         },
         {
           "dmxRange": [169, 173],
           "type": "ColorWheelIndex",
           "index": 5,
-          "comment": "Color 5 (Half minus green)"
+          "comment": "Half minus green"
         },
         {
           "dmxRange": [174, 178],
           "type": "ColorWheelIndex",
           "index": 4,
-          "comment": "Color 4 (Orange 306M)"
+          "comment": "Orange 306M"
         },
         {
           "dmxRange": [179, 183],
           "type": "ColorWheelIndex",
           "index": 3,
-          "comment": "Color 3 (Pink 312)"
+          "comment": "Pink 312"
         },
         {
           "dmxRange": [184, 188],
           "type": "ColorWheelIndex",
           "index": 2,
-          "comment": "Color 2 (Green 206 IAD)"
+          "comment": "Green 206 IAD"
         },
         {
           "dmxRange": [189, 193],
           "type": "ColorWheelIndex",
           "index": 1,
-          "comment": "Color 1 (Blue 110)"
+          "comment": "Blue 110"
         },
         {
           "dmxRange": [194, 198],
