@@ -51,6 +51,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   /** @type {Set<string>} */
   const possibleMatrixChKeys = new Set(); // and aliases
   /** @type {Set<string>} */
+  const usedWheels = new Set(); // and aliases
+  /** @type {Set<string>} */
   const modeNames = new Set();
   /** @type {Set<string>} */
   const modeShortNames = new Set();
@@ -89,6 +91,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     checkUnusedChannels();
+    checkUnusedWheels();
     checkCategories();
     checkRdm(manKey, uniqueValues);
   }
@@ -570,8 +573,11 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
             wheelNames.forEach(wheelName => {
               const wheel = fixture.wheels.find(wheel => wheel.name === wheelName);
-              if (!wheel) {
-                result.errors.push(`${errorPrefix} references wheel '${wheel}' which is not defined in the fixture.`);
+              if (wheel) {
+                usedWheels.add(wheelName);
+              }
+              else {
+                result.errors.push(`${errorPrefix} references wheel '${wheelName}' which is not defined in the fixture.`);
               }
             });
 
@@ -581,6 +587,9 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           }
           else if (cap.wheels.includes(undefined)) {
             result.errors.push(`${errorPrefix} does not explicitly reference any wheel, but the default wheel '${cap._channel.name}' (through the channel name) does not exist.`);
+          }
+          else {
+            usedWheels.add(cap._channel.name);
           }
 
           if (cap.slotNumber !== null) {
@@ -935,6 +944,19 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
     if (unused.length > 0) {
       result.warnings.push(`Unused channel(s): ${unused.join(`, `)}`);
+    }
+  }
+
+  /**
+   * Add a warning if there are unused wheels.
+   */
+  function checkUnusedWheels() {
+    const unusedWheels = fixture.wheels.filter(
+      wheel => !usedWheels.has(wheel.name)
+    ).map(wheel => wheel.name);
+
+    if (unusedWheels.length > 0) {
+      result.warnings.push(`Unused wheel(s): ${unusedWheels.join(`, `)}`);
     }
   }
 
