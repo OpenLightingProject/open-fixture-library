@@ -271,16 +271,18 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
         cap.comment = capabilityName;
       },
-      ColorWheelIndex() {
-        const color = capabilityName.toLowerCase().replace(/\s/g, ``);
-        if (color in colors) {
-          cap.color = colors[color];
+      WheelSlot() {
+        if (ecueChannel._ecueChannelType === `ChannelColor`) {
+          const color = capabilityName.toLowerCase().replace(/\s/g, ``);
+          if (color in colors) {
+            cap.colors = [colors[color]];
+          }
         }
 
         cap.comment = getSpeedGuessedComment();
 
         if (`speedStart` in cap) {
-          cap.type = `ColorWheelRotation`;
+          cap.type = ecueChannel._ecueChannelType === `ChannelColor` ? `WheelRotation` : `WheelSlotRotation`;
         }
       },
       ColorPreset() {
@@ -392,7 +394,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
           }
 
           if (channelName.match(/wheel\b/i)) {
-            return `ColorWheelIndex`;
+            return `WheelSlot`;
           }
 
           return `ColorPreset`;
@@ -442,10 +444,10 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
             EffectDuration: /\beffect duration\b/,
             Effect: /\beffect\b/,
             SoundSensitivity: /\b(?:sound|mic|microphone) sensitivity\b/,
-            GoboShake: /\bgobo shake\b/,
-            GoboStencilRotation: /\bgobo rot(?:ation)?\b/,
-            GoboWheelRotation: /\bgobo wheel rot(?:ation)?\b/,
-            GoboIndex: /\bgobo\b/,
+            WheelShake: /\bgobo shake\b/,
+            WheelSlotRotation: /\bgobo rot(?:ation)?\b/,
+            WheelRotation: /\bwheel rot(?:ation)?\b/,
+            WheelSlot: /\bgobo\b/,
             Focus: /\bfocus\b/,
             Zoom: /\bzoom\b/,
             IrisEffect: /\biris effect\b/,
