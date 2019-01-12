@@ -609,10 +609,14 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
            * Check that slot indices are used correctly for the specific wheel.
            */
           function checkSlotNumbers() {
-            const min = Math.floor(Math.min(cap.slotNumber[0], cap.slotNumber[1]));
-            const max = Math.ceil(Math.max(cap.slotNumber[0], cap.slotNumber[1]));
-            for (let i = min; i <= max; i++) {
+            const min = Math.min(cap.slotNumber[0], cap.slotNumber[1]);
+            const max = Math.max(cap.slotNumber[0], cap.slotNumber[1]);
+            for (let i = Math.floor(min); i <= Math.ceil(max); i++) {
               usedWheelSlots.add(`${cap.wheels[0].name} (slot ${i})`);
+            }
+
+            if (max - min > 1) {
+              result.warnings.push(`${errorPrefix} references a wheel slot range (${min}…${max}) which is greater than 1.`);
             }
 
             const minSlotNumber = 1;
