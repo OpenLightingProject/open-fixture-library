@@ -71,6 +71,10 @@
           "type": "Color",
           "name": "Pink [Stars]",
           "colors": ["#ff00ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Multicolor [Quadrant]"
         }
       ]
     }
@@ -173,9 +177,8 @@
         },
         {
           "dmxRange": [140, 155],
-          "type": "WheelRotation",
-          "wheel": "Color / Gobo Wheel",
-          "speed": "fast CW"
+          "type": "WheelSlot",
+          "slotNumber": 9
         },
         {
           "dmxRange": [156, 172],

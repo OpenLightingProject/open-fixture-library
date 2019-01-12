@@ -58,8 +58,9 @@
         },
         {
           "type": "Color",
-          "name": "CTO 2600",
-          "colors": ["#f1c136"]
+          "name": "CTO",
+          "colors": ["#f1c136"],
+          "colorTemperature": "2600K"
         },
         {
           "type": "Color",
@@ -295,7 +296,7 @@
           "dmxRange": [121, 127],
           "type": "WheelSlot",
           "slotNumberStart": 9,
-          "slotNumberEnd": 9.5
+          "slotNumberEnd": 10
         },
         {
           "dmxRange": [128, 190],

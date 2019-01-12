@@ -44,9 +44,6 @@
     "Color Wheel": {
       "slots": [
         {
-          "type": "Open"
-        },
-        {
           "type": "Color",
           "name": "Blue",
           "colors": ["#0000ff"]
@@ -80,6 +77,9 @@
           "type": "Color",
           "name": "Orange",
           "colors": ["#ffaa00"]
+        },
+        {
+          "type": "Open"
         }
       ]
     },
@@ -136,7 +136,8 @@
           "type": "WheelSlot",
           "slotNumberStart": 1,
           "slotNumberEnd": 8,
-          "helpWanted": "Which color can be selected at which DMX values?"
+          "comment": "blue/pink/red/pale blue/yellow/green/orange/white",
+          "helpWanted": "Which color can be selected at which DMX values? Is the Color Wheel correct?"
         },
         {
           "dmxRange": [128, 189],
