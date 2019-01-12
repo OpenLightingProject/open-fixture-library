@@ -51,7 +51,10 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   /** @type {Set<string>} */
   const possibleMatrixChKeys = new Set(); // and aliases
   /** @type {Set<string>} */
-  const usedWheels = new Set(); // and aliases
+  const usedWheels = new Set();
+  /** @type {Set<string>} */
+  const usedWheelSlots = new Set();
+
   /** @type {Set<string>} */
   const modeNames = new Set();
   /** @type {Set<string>} */
@@ -92,6 +95,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
     checkUnusedChannels();
     checkUnusedWheels();
+    checkUnusedWheelSlots();
     checkCategories();
     checkRdm(manKey, uniqueValues);
   }
@@ -601,6 +605,12 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
            * Check that slot indices are used correctly for the specific wheel.
            */
           function checkSlotNumbers() {
+            const min = Math.floor(Math.min(cap.slotNumber[0], cap.slotNumber[1]));
+            const max = Math.ceil(Math.max(cap.slotNumber[0], cap.slotNumber[1]));
+            for (let i = min; i <= max; i++) {
+              usedWheelSlots.add(`${cap.wheels[0].name} (slot ${i})`);
+            }
+
             const minSlotNumber = 1;
             const maxSlotNumber = cap.wheels[0].slots.length;
 
@@ -957,6 +967,30 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
     if (unusedWheels.length > 0) {
       result.warnings.push(`Unused wheel(s): ${unusedWheels.join(`, `)}`);
+    }
+  }
+
+  /**
+   * Add a warning if there are unused wheel slots.
+   */
+  function checkUnusedWheelSlots() {
+    const slotsOfUsedWheels = [];
+    [...usedWheels].forEach(wheelName => {
+      const wheel = fixture.wheels.find(wheel => wheel.name === wheelName);
+
+      if (wheel.type !== `AnimationGobo`) {
+        slotsOfUsedWheels.push(...(wheel.slots.map(
+          (slot, slotIndex) => `${wheelName} (slot ${slotIndex + 1})`
+        )));
+      }
+    });
+
+    const unusedWheelSlots = slotsOfUsedWheels.filter(
+      slot => !usedWheelSlots.has(slot)
+    );
+
+    if (unusedWheelSlots.length > 0) {
+      result.warnings.push(`Unused wheel slot(s): ${unusedWheelSlots.join(`, `)}`);
     }
   }
 
