@@ -273,7 +273,7 @@
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#ffffff"],
-          "comment": "White"
+          "comment": "Open"
         },
         {
           "dmxRange": [1, 17],
@@ -282,7 +282,7 @@
           "indexEnd": 1,
           "colorsStart": ["#ffffff"],
           "colorsEnd": ["#dd0000"],
-          "comment": "Split White / Deep Red"
+          "comment": "Open … Deep Red"
         },
         {
           "dmxRange": [18, 18],
@@ -298,7 +298,7 @@
           "indexEnd": 2,
           "colorsStart": ["#dd0000"],
           "colorsEnd": ["#0000dd"],
-          "comment": "Split Deep Red / Deep Blue"
+          "comment": "Deep Red … Deep Blue"
         },
         {
           "dmxRange": [37, 37],
@@ -314,7 +314,7 @@
           "indexEnd": 3,
           "colorsStart": ["#0000dd"],
           "colorsEnd": ["#00ff00"],
-          "comment": "Split Deep Blue / Green"
+          "comment": "Deep Blue … Green"
         },
         {
           "dmxRange": [55, 55],
@@ -330,7 +330,7 @@
           "indexEnd": 4,
           "colorsStart": ["#00ff00"],
           "colorsEnd": ["#ff9900"],
-          "comment": "Split Green / Orange"
+          "comment": "Green … Orange"
         },
         {
           "dmxRange": [73, 73],
@@ -346,7 +346,7 @@
           "indexEnd": 5,
           "colorsStart": ["#ff9900"],
           "colorsEnd": ["#fff6ed"],
-          "comment": "Split Orange / White (6000K)"
+          "comment": "Orange … White (6000K)"
         },
         {
           "dmxRange": [91, 91],
@@ -363,7 +363,7 @@
           "indexEnd": 6,
           "colorsStart": ["#fff6ed"],
           "colorsEnd": ["#8800ff"],
-          "comment": "Split White (6000K) / UV Filter"
+          "comment": "White (6000K) … UV Filter"
         },
         {
           "dmxRange": [110, 110],
@@ -379,14 +379,14 @@
           "indexEnd": 7,
           "colorsStart": ["#8800ff"],
           "colorsEnd": ["#ffffff"],
-          "comment": "Split UV Filter / White"
+          "comment": "UV Filter … Open"
         },
         {
           "dmxRange": [128, 129],
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#ffffff"],
-          "comment": "White"
+          "comment": "Open"
         },
         {
           "dmxRange": [130, 139],
@@ -847,7 +847,7 @@
           "dmxRange": [0, 9],
           "type": "GoboIndex",
           "index": 0,
-          "comment": "open",
+          "comment": "Open",
           "switchChannels": {
             "Gobo 1 indexing/rotation": "Gobo 1 indexing",
             "Gobo 1 indexing/rotation fine": "Gobo 1 indexing fine"
@@ -1212,7 +1212,7 @@
           "dmxRange": [0, 9],
           "type": "GoboIndex",
           "index": 0,
-          "comment": "open",
+          "comment": "Open",
           "switchChannels": {
             "Gobo 2 indexing/rotation": "Gobo 2 indexing",
             "Gobo 2 indexing/rotation fine": "Gobo 2 indexing fine"

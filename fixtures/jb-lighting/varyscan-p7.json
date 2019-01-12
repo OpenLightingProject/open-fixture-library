@@ -571,14 +571,14 @@
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#ffffff"],
-          "comment": "White"
+          "comment": "Open"
         },
         {
           "dmxRange": [2, 3],
           "type": "ColorWheelIndex",
           "index": 0.5,
           "colors": ["#ffffff", "#ff0000"],
-          "comment": "Split White / Red"
+          "comment": "Split Open / Red"
         },
         {
           "dmxRange": [4, 5],
@@ -704,7 +704,7 @@
           "type": "ColorWheelIndex",
           "index": 9.5,
           "colors": ["#ffd2b0", "#ffffff"],
-          "comment": "Split CTO / White"
+          "comment": "Split CTO / Open"
         },
         {
           "dmxRange": [40, 63],
