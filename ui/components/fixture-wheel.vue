@@ -40,7 +40,7 @@
         :transform="`rotate(${slotRotateAngle * index}, 0, 0)`"
         class="slot">
 
-        <title>Slot {{ index + 1 }}: {{ slot.name }}</title>
+        <title>{{ slotTitles[index] }}</title>
 
         <g
           v-if="slot.colors !== null"
@@ -67,7 +67,44 @@
           :r="slotRadius"
           fill="url(#frostGradient)" />
 
-        <template v-else>
+        <template v-else-if="slot.type === `AnimationGoboStart`">
+          <!-- use circle's stroke, see https://css-tricks.com/building-a-donut-chart-with-vue-and-svg/ -->
+          <circle
+            :cx="0"
+            :cy="0"
+            :r="Math.abs(slotRotateRadius)"
+            :stroke-width="2 * slotRadius"
+            :stroke-dasharray="slotCircumference"
+            :stroke-dashoffset="wheelDirectionFactor * (slotCircumference - animationGoboWidth)"
+            :transform="`rotate(${-90 - (wheelDirectionFactor * slotRadius / slotCircumference * 360)}, 0, 0)`"
+            stroke="#fff"
+            fill="none" />
+
+          <text
+            :x="0"
+            :y="slotRotateRadius + slotRadius * 0.35"
+            :transform="`rotate(${-slotRotateAngle * index}, 0, ${slotRotateRadius})`"
+            :font-size="slotRadius"
+            text-anchor="middle"
+            fill="#000">
+            {{ index + 1 }}
+          </text>
+
+          <!-- rotate once more (like it was drawn in next slot) -->
+          <g :transform="`rotate(${slotRotateAngle}, 0, 0)`">
+            <text
+              :x="0"
+              :y="slotRotateRadius + slotRadius * 0.35"
+              :transform="`rotate(${-slotRotateAngle * (index + 1)}, 0, ${slotRotateRadius})`"
+              :font-size="slotRadius"
+              text-anchor="middle"
+              fill="#000">
+              {{ index + 2 }}
+            </text>
+          </g>
+        </template>
+
+        <template v-else-if="slot.type !== `AnimationGoboEnd`">
           <circle
             :cx="0"
             :cy="slotRotateRadius"
@@ -135,6 +172,9 @@ export default {
     }
   },
   computed: {
+    wheelDirectionFactor() {
+      return this.wheel.direction === `CCW` ? -1 : 1;
+    },
     slotRadius() {
       return Math.min(70 / this.wheel.slots.length * 1.25, 18.5);
     },
@@ -142,7 +182,10 @@ export default {
       return -50 + this.slotRadius + 3;
     },
     slotRotateAngle() {
-      return 360 / this.wheel.slots.length * (this.wheel.direction === `CCW` ? -1 : 1);
+      return 360 / this.wheel.slots.length * this.wheelDirectionFactor;
+    },
+    slotCircumference() {
+      return 2 * Math.PI * Math.abs(this.slotRotateRadius);
     },
     slotSvgFragments() {
       return this.wheel.slots.map(slot => {
@@ -151,6 +194,23 @@ export default {
         }
 
         return null;
+      });
+    },
+    animationGoboWidth() {
+      if (this.wheel.slots.length === 2) {
+        // wheel only contains AnimationGoboStart and AnimationGoboEnd
+        return this.slotCircumference;
+      }
+
+      return (2 * this.slotRadius) + (this.slotCircumference * Math.abs(this.slotRotateAngle) / 360);
+    },
+    slotTitles() {
+      return this.wheel.slots.map((slot, index) => {
+        if (slot.type === `AnimationGoboStart`) {
+          return `Slots ${index + 1}…${index + 2}: Animation Gobo`;
+        }
+
+        return `Slot ${index + 1}: ${slot.name}`;
       });
     }
   }
