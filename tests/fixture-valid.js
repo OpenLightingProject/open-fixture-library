@@ -555,6 +555,36 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           else if (cap.wheels.includes(undefined)) {
             result.errors.push(`${errorPrefix} does not explicitly reference any wheel, but the default wheel '${cap._channel.name}' (through the channel name) does not exist.`);
           }
+
+          if (cap.slotNumber !== null) {
+            checkSlotNumbers();
+          }
+
+
+          /**
+           * Check that slot indices are used correctly for the specific wheel.
+           */
+          function checkSlotNumbers() {
+            const minSlotNumber = 1;
+            const maxSlotNumber = cap.wheels[0].slots.length;
+
+            const isInRangeExclusive = (number, start, end) => number > start && number < end;
+            const isInRangeInclusive = (number, start, end) => number >= start && number <= end;
+
+            if (cap.slotNumber[0].equals(cap.slotNumber[1])) {
+              if (!isInRangeExclusive(cap.slotNumber[0].number, minSlotNumber - 1, maxSlotNumber + 1)) {
+                result.errors.push(`${errorPrefix} references wheel slot ${cap.slotNumber[0].number} which is outside the allowed range ${minSlotNumber - 1}…${maxSlotNumber + 1} (exclusive).`);
+              }
+              return;
+            }
+
+            if (!isInRangeInclusive(cap.slotNumber[0].number, minSlotNumber - 1, maxSlotNumber)) {
+              result.errors.push(`${errorPrefix} starts at wheel slot ${cap.slotNumber[0].number} which is outside the allowed range ${minSlotNumber - 1}…${maxSlotNumber} (inclusive).`);
+            }
+            else if (!isInRangeInclusive(cap.slotNumber[1].number, minSlotNumber, maxSlotNumber + 1)) {
+              result.errors.push(`${errorPrefix} ends at wheel slot ${cap.slotNumber[1].number} which is outside the allowed range ${minSlotNumber}…${maxSlotNumber + 1} (inclusive).`);
+            }
+          }
         }
 
         /**
