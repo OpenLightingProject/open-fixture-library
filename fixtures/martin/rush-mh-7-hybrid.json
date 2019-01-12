@@ -472,7 +472,6 @@
         {
           "dmxRange": [0, 11],
           "type": "NoFunction",
-          "comment": "Open",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -482,7 +481,7 @@
           "dmxRange": [12, 23],
           "type": "GoboIndex",
           "index": 0,
-          "comment": "Beamsmoother",
+          "comment": "Open",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
