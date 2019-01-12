@@ -99,12 +99,7 @@ const gdtfAttributes = {
   ActiveZone: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   AnimationIndexRotate: {
     // Controls the animation disk's index or its rotation speed.
-    oflType: `Rotation`,
-    oflProperty: `speed`,
-    defaultPhysicalEntity: `AngularSpeed`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      normalizeAngularSpeedDirection(gdtfCapability);
-    }
+    inheritFrom: `AnimationWheelPosSpin`
   },
   AnimationIndexRotateMode: {
     // Changes control between selecting, indexing, and rotating the animation wheel.
@@ -112,24 +107,44 @@ const gdtfAttributes = {
     oflProperty: `parameter`,
     defaultPhysicalEntity: `Percent`
   },
-  AnimationOffset: undefined, // Controls the animation disk's shaking.
-  AnimationWheel: undefined, // Inserts a gobo disk into the beam. The disk has the ability to continuously index and rotate.
+  AnimationOffset: {
+    // Controls the animation disk's shaking.
+    oflType: `WheelShake`,
+    oflProperty: `shakeAngle`,
+    defaultPhysicalEntity: `Percent`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.wheel = `Animation Disk`;
+    }
+  },
+  AnimationWheel: {
+    // Inserts a gobo disk into the beam. The disk has the ability to continuously index and rotate.
+    oflType: `Effect`,
+    oflProperty: `parameter`,
+    defaultPhysicalEntity: `Percent`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.effectName = `Animation Disk insertion`;
+    }
+  },
   AnimationWheelMacro: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `Effects`
   },
   AnimationWheelPos: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    oflType: `Rotation`,
+    oflType: `WheelRotation`,
     oflProperty: `angle`,
-    defaultPhysicalEntity: `Angle`
+    defaultPhysicalEntity: `Angle`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.wheel = `Animation Disk`;
+    }
   },
   AnimationWheelPosSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    oflType: `Rotation`,
+    oflType: `WheelRotation`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `AngularSpeed`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.wheel = `Animation Disk`;
       normalizeAngularSpeedDirection(gdtfCapability);
     }
   },
@@ -262,26 +277,28 @@ const gdtfAttributes = {
   Blower: undefined, // Fog or hazer‘s blower feature.
   Color1: {
     // Selects colors in the fixture's color wheel 1.
-    oflType: `ColorWheelIndex`,
-    oflProperty: `index`,
+    oflType: `WheelSlot`,
+    oflProperty: `slotNumber`,
     defaultPhysicalEntity: `None`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
-      const gdtfIndex = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
+      const gdtfIndex = parseInt(gdtfCapability.$.WheelSlotIndex);
 
-      let indexStart = gdtfIndex;
-      let indexEnd = gdtfIndex;
+      let slotNumberStart = gdtfIndex;
+      let slotNumberEnd = gdtfIndex;
 
       const physicalFrom = gdtfCapability._physicalFrom;
       const physicalTo = gdtfCapability._physicalTo;
 
       if (physicalFrom !== 0 || physicalTo !== 1) {
-        indexStart += physicalFrom;
-        indexEnd += physicalTo;
+        slotNumberStart += physicalFrom;
+        slotNumberEnd += physicalTo;
       }
 
-      // write back physical values so that they can be assigned to index or indexStart/indexEnd
-      gdtfCapability._physicalFrom = indexStart;
-      gdtfCapability._physicalTo = indexEnd;
+      // write back physical values so that they can be assigned to slotNumber or slotNumberStart/slotNumberEnd
+      gdtfCapability._physicalFrom = slotNumberStart;
+      gdtfCapability._physicalTo = slotNumberEnd;
+
+      capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
     },
     afterPhysicalPropertyHook(capability, gdtfCapability) {
       const gdtfIndex = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
@@ -291,14 +308,9 @@ const gdtfAttributes = {
         const gdtfWheel = followXmlNodeReference(gdtfCapability._fixture.Wheels[0], wheelReference);
         const gdtfSlot = gdtfWheel.Slot[gdtfIndex];
 
-        if (gdtfSlot) {
-          if (gdtfCapability.$.Name !== gdtfSlot.$.Name) {
-            gdtfCapability.$.Name += ` (${gdtfSlot.$.Name})`;
-          }
-
-          if (gdtfSlot.$.Color) {
-            capability.colors = [getRgbColorFromGdtfColor(gdtfSlot.$.Color)];
-          }
+        if (gdtfSlot && gdtfCapability.$.Name === gdtfSlot.$.Name) {
+          // clear comment
+          gdtfCapability.$.Name = ``;
         }
       }
     }
@@ -318,7 +330,12 @@ const gdtfAttributes = {
   },
   Color1Index: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Color1`
+    oflType: `WheelRotation`,
+    oflProperty: `angle`,
+    defaultPhysicalEntity: `Angle`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
+    }
   },
   Color1Mode: {
     // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 1.
@@ -334,10 +351,11 @@ const gdtfAttributes = {
   },
   Color1Spin: {
     // Controls the speed and direction of the fixture's color wheel 1.
-    oflType: `ColorWheelRotation`,
+    oflType: `WheelRotation`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `AngularSpeed`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
       normalizeAngularSpeedDirection(gdtfCapability);
     }
   },
@@ -859,26 +877,28 @@ const gdtfAttributes = {
   },
   Gobo1: {
     // Selects gobos in the fixture's gobo wheel 1.
-    oflType: `GoboIndex`,
-    oflProperty: `index`,
+    oflType: `WheelSlot`,
+    oflProperty: `slotNumber`,
     defaultPhysicalEntity: `None`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
-      const gdtfIndex = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
+      const gdtfIndex = parseInt(gdtfCapability.$.WheelSlotIndex);
 
-      let indexStart = gdtfIndex;
-      let indexEnd = gdtfIndex;
+      let slotNumberStart = gdtfIndex;
+      let slotNumberEnd = gdtfIndex;
 
       const physicalFrom = gdtfCapability._physicalFrom;
       const physicalTo = gdtfCapability._physicalTo;
 
       if (physicalFrom !== 0 || physicalTo !== 1) {
-        indexStart += physicalFrom;
-        indexEnd += physicalTo;
+        slotNumberStart += physicalFrom;
+        slotNumberEnd += physicalTo;
       }
 
-      // write back physical values so that they can be assigned to index or indexStart/indexEnd
-      gdtfCapability._physicalFrom = indexStart;
-      gdtfCapability._physicalTo = indexEnd;
+      // write back physical values so that they can be assigned to slotNumber or slotNumberStart/slotNumberEnd
+      gdtfCapability._physicalFrom = slotNumberStart;
+      gdtfCapability._physicalTo = slotNumberEnd;
+
+      capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
     },
     afterPhysicalPropertyHook(capability, gdtfCapability) {
       const gdtfIndex = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
@@ -888,10 +908,9 @@ const gdtfAttributes = {
         const gdtfWheel = followXmlNodeReference(gdtfCapability._fixture.Wheels[0], wheelReference);
         const gdtfSlot = gdtfWheel.Slot[gdtfIndex];
 
-        if (gdtfSlot) {
-          if (gdtfCapability.$.Name !== gdtfSlot.$.Name) {
-            gdtfCapability.$.Name += ` (${gdtfSlot.$.Name})`;
-          }
+        if (gdtfSlot && gdtfCapability.$.Name === gdtfSlot.$.Name) {
+          // clear comment
+          gdtfCapability.$.Name = ``;
         }
       }
     }
@@ -911,16 +930,20 @@ const gdtfAttributes = {
   },
   Gobo1Pos: {
     // Controls angle of indexed rotation of gobos in gobo wheel 1.
-    oflType: `GoboStencilRotation`,
+    oflType: `WheelSlotRotation`,
     oflProperty: `angle`,
-    defaultPhysicalEntity: `Angle`
+    defaultPhysicalEntity: `Angle`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
+    }
   },
   Gobo1PosRotation: {
     // Controls the speed and direction of continuous rotation of gobos in gobo wheel 1.
-    oflType: `GoboStencilRotation`,
+    oflType: `WheelSlotRotation`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `AngularSpeed`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
       normalizeAngularSpeedDirection(gdtfCapability);
     }
   },
@@ -951,17 +974,19 @@ const gdtfAttributes = {
     oflProperty: `shakeSpeed`,
     defaultPhysicalEntity: `Frequency`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
-      const gdtfIndex = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
+      const gdtfIndex = parseInt(gdtfCapability.$.WheelSlotIndex);
 
-      capability.index = gdtfIndex;
+      capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
+      capability.slotNumber = gdtfIndex;
     }
   },
   Gobo1Spin: {
     // Controls the speed and direction of the continuous rotation of gobo wheel 1.
-    oflType: `GoboWheelRotation`,
+    oflType: `WheelRotation`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `AngularSpeed`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
       normalizeAngularSpeedDirection(gdtfCapability);
     }
   },
@@ -971,8 +996,7 @@ const gdtfAttributes = {
   },
   Gobo1WheelShake: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    oflType: `GoboShake`,
-    oflProperty: `shakeSpeed`
+    inheritFrom: `Gobo1Shake` // there seems to be no differentiation between WheelShake and WheelSlotShake
   },
   Gobo1WheelSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -1006,19 +1030,19 @@ const gdtfAttributes = {
   },
   Gobo2SelectIndex: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo2`
+    inheritFrom: `Gobo1SelectIndex`
   },
   Gobo2SelectShakeIndex: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo2Shake`
+    inheritFrom: `Gobo1SelectShakeIndex`
   },
   Gobo2SelectShakeSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo2Shake`
+    inheritFrom: `Gobo1SelectShakeSpin`
   },
   Gobo2SelectSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo2`
+    inheritFrom: `Gobo1SelectSpin`
   },
   Gobo2Shake: {
     // Control the frequency of the shake of gobo wheel 2.
