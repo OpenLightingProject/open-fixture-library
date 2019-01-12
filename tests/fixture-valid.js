@@ -499,11 +499,14 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
         const capabilityTypeChecks = {
           ShutterStrobe: checkShutterStrobeCapability,
-          ColorWheelIndex: checkColorWheelIndexCapability,
           Pan: checkPanTiltCapability,
           Tilt: checkPanTiltCapability,
           PanContinuous: checkPanTiltContinuousCapability,
           TiltContinuous: checkPanTiltContinuousCapability,
+          WheelSlot: checkWheelCapability,
+          WheelShake: checkWheelCapability,
+          WheelSlotRotation: checkWheelCapability,
+          WheelRotation: checkWheelCapability,
           Effect: checkEffectCapability
         };
 
@@ -532,12 +535,25 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         }
 
         /**
-         * Type-specific checks for ColorWheelIndex capabilities.
+         * Check that referenced wheels exist in the fixture.
          */
-        function checkColorWheelIndexCapability() {
-          if ((cap.index !== null && cap.index[0].number !== cap.index[1].number) &&
-              (cap.colors !== null && cap.colors.isStep)) {
-            result.errors.push(`${errorPrefix}: Must use colorsStart and colorsEnd when index also has start/end values.`);
+        function checkWheelCapability() {
+          if (`wheel` in cap.jsonObject) {
+            const wheelNames = Array.isArray(cap.jsonObject.wheel) ? cap.jsonObject.wheel : [cap.jsonObject.wheel];
+
+            wheelNames.forEach(wheelName => {
+              const wheel = fixture.wheels.find(wheel => wheel.name === wheelName);
+              if (!wheel) {
+                result.errors.push(`${errorPrefix} references wheel '${wheel}' which is not defined in the fixture.`);
+              }
+            });
+
+            if (wheelNames.length === 1 && wheelNames[0] === cap._channel.name) {
+              result.warnings.push(`${errorPrefix} explicitly references wheel '${wheelNames[0]}', which is the default anyway (through the channel name). Please remove the 'wheel' property.`);
+            }
+          }
+          else if (cap.wheels.includes(undefined)) {
+            result.errors.push(`${errorPrefix} does not explicitly reference any wheel, but the default wheel '${cap._channel.name}' (through the channel name) does not exist.`);
           }
         }
 
@@ -872,8 +888,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     const categories = {
       'Color Changer': {
         isSuggested: isColorChanger(),
-        suggestedPhrase: `there are at least one ColorPreset, ColorWheelIndex or two ColorIntensity capabilities`,
-        invalidPhrase: `there are no ColorPreset, ColorWheelIndex and less than two ColorIntensity capabilities`
+        suggestedPhrase: `there are ColorPreset or ColorIntensity capabilities or Color wheel slots`,
+        invalidPhrase: `there are no ColorPreset and less than two ColorIntensity capabilities and no Color wheel slots`
       },
       'Moving Head': {
         isSuggested: isMovingHead(),
@@ -929,7 +945,9 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
      * @returns {boolean} Whether the 'Color Changer' category is suggested.
     */
     function isColorChanger() {
-      return hasCapabilityOfType(`ColorPreset`) || hasCapabilityOfType(`ColorWheelIndex`) || hasCapabilityOfType(`ColorIntensity`, 2);
+      return hasCapabilityOfType(`ColorPreset`) || hasCapabilityOfType(`ColorIntensity`, 2) || fixture.wheels.some(
+        wheel => wheel.slots.some(slot => slot.type === `Color`)
+      );
     }
 
     /**
