@@ -214,9 +214,12 @@
         },
         {
           "dmxRange": [64, 127],
-          "type": "Effect",
-          "effectName": "Gobo Shake",
-          "helpWanted": "This should probably be multiple shaking GoboIndex capabilities using Gobos 1 to 7, maybe plus Gobo Open?"
+          "type": "GoboIndex",
+          "indexStart": 1,
+          "indexEnd": 7,
+          "shakeAngle": "wide",
+          "comment": "Gobo 1 … Gobo 7",
+          "helpWanted": "At which DMX values can which Gobos be selected?"
         },
         {
           "dmxRange": [128, 255],

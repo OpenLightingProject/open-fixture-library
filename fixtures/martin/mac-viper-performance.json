@@ -574,8 +574,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "GoboIndex",
-          "index": 0,
+          "type": "NoFunction",
           "comment": "Open",
           "switchChannels": {
             "Animation Wheel Indexing/Rotation": "Animation Wheel Rotation"
@@ -591,8 +590,7 @@
         },
         {
           "dmxRange": [21, 30],
-          "type": "GoboIndex",
-          "index": 0,
+          "type": "NoFunction",
           "comment": "Open",
           "switchChannels": {
             "Animation Wheel Indexing/Rotation": "Animation Wheel Rotation"
@@ -608,64 +606,70 @@
         },
         {
           "dmxRange": [41, 50],
-          "type": "GoboIndex",
-          "index": 1,
+          "type": "Rotation",
+          "angle": "0deg",
+          "comment": "Position 1",
           "switchChannels": {
             "Animation Wheel Indexing/Rotation": "Animation Wheel Rotation"
           }
         },
         {
           "dmxRange": [51, 60],
-          "type": "GoboIndex",
-          "index": 2,
+          "type": "Rotation",
+          "angle": "-7deg",
+          "comment": "Position 2",
           "switchChannels": {
             "Animation Wheel Indexing/Rotation": "Animation Wheel Rotation"
           }
         },
         {
           "dmxRange": [61, 70],
-          "type": "GoboIndex",
-          "index": 3,
+          "type": "Rotation",
+          "angle": "-14deg",
+          "comment": "Position 3",
           "switchChannels": {
             "Animation Wheel Indexing/Rotation": "Animation Wheel Rotation"
           }
         },
         {
           "dmxRange": [71, 80],
-          "type": "GoboIndex",
-          "index": 4,
+          "type": "Rotation",
+          "angle": "-21deg",
+          "comment": "Position 4",
           "switchChannels": {
             "Animation Wheel Indexing/Rotation": "Animation Wheel Rotation"
           }
         },
         {
           "dmxRange": [81, 90],
-          "type": "GoboIndex",
-          "index": 5,
+          "type": "Rotation",
+          "angle": "-28deg",
+          "comment": "Position 5",
           "switchChannels": {
             "Animation Wheel Indexing/Rotation": "Animation Wheel Rotation"
           }
         },
         {
           "dmxRange": [91, 100],
-          "type": "GoboIndex",
-          "index": 6,
+          "type": "Rotation",
+          "angle": "-35deg",
+          "comment": "Position 6",
           "switchChannels": {
             "Animation Wheel Indexing/Rotation": "Animation Wheel Rotation"
           }
         },
         {
           "dmxRange": [101, 110],
-          "type": "GoboIndex",
-          "index": 7,
+          "type": "Rotation",
+          "angle": "-42deg",
+          "comment": "Position 7",
           "switchChannels": {
             "Animation Wheel Indexing/Rotation": "Animation Wheel Rotation"
           }
         },
         {
           "dmxRange": [111, 255],
-          "type": "GoboIndex",
-          "index": 0,
+          "type": "NoFunction",
           "comment": "Open",
           "switchChannels": {
             "Animation Wheel Indexing/Rotation": "Animation Wheel Rotation"

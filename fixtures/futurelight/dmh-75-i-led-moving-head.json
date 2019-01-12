@@ -242,16 +242,16 @@
         },
         {
           "dmxRange": [32, 47],
-          "type": "Effect",
-          "effectName": "Forwards rainbow effect",
+          "type": "ColorWheelRotation",
+          "speed": "fast CW",
           "switchChannels": {
             "Color wheel": "Color wheel speed CW"
           }
         },
         {
           "dmxRange": [48, 63],
-          "type": "Effect",
-          "effectName": "Backwards rainbow effect",
+          "type": "ColorWheelRotation",
+          "speed": "fast CCW",
           "switchChannels": {
             "Color wheel": "Color wheel speed CCW"
           }

@@ -394,13 +394,13 @@
         },
         {
           "dmxRange": [128, 191],
-          "type": "GoboStencilRotation",
+          "type": "GoboWheelRotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         },
         {
           "dmxRange": [192, 255],
-          "type": "GoboStencilRotation",
+          "type": "GoboWheelRotation",
           "speedStart": "fast CCW",
           "speedEnd": "slow CCW"
         }
