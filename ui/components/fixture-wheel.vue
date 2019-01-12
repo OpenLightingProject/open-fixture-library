@@ -1,6 +1,10 @@
 <template>
   <figure class="wheel">
-    <svg :width="6 * wheelRadius" :height="6 * wheelRadius" :viewBox="`${-wheelRadius} ${-wheelRadius} ${2 * wheelRadius} ${2 * wheelRadius}`">
+    <svg
+      :width="300"
+      :height="300"
+      :viewBox="`${-wheelRadius} ${-wheelRadius} ${2 * wheelRadius} ${2 * wheelRadius}`">
+
       <defs>
         <radialGradient id="frostGradient">
           <stop offset="0" stop-color="#fff" />
@@ -276,8 +280,4 @@ export default {
     }
   }
 };
-
-function degreesToRadians(degrees) {
-  return degrees / 180 * Math.PI;
-}
 </script>
