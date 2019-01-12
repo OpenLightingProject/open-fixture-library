@@ -119,6 +119,13 @@
         </section>
       </template>
 
+      <template v-if="fixture.wheels.length > 0">
+        <h3 class="wheels">Wheels</h3>
+        <section class="wheels">
+          <app-fixture-wheel v-for="wheel in fixture.wheels" :key="wheel.name" :wheel="wheel" />
+        </section>
+      </template>
+
     </section>
 
     <section class="fixture-modes">
@@ -209,6 +216,12 @@
   }
 }
 
+.wheels {
+  white-space: nowrap;
+  overflow: hidden;
+  overflow-x: auto;
+}
+
 #contribute:target {
   animation: contribute-highlight 1.5s ease;
   animation-delay: 0.5s;
@@ -247,6 +260,7 @@ import fixturePhysical from '~/components/fixture-physical.vue';
 import fixtureHelpWanted from '~/components/fixture-help-wanted.vue';
 import fixtureHelpWantedDialog from '~/components/fixture-help-wanted-dialog.vue';
 import fixtureMatrix from '~/components/fixture-matrix.vue';
+import fixtureWheel from '~/components/fixture-wheel.vue';
 import fixtureMode from '~/components/fixture-mode.vue';
 import labeledValueVue from '~/components/labeled-value.vue';
 
@@ -264,6 +278,7 @@ export default {
     'app-fixture-help-wanted': fixtureHelpWanted,
     'app-fixture-help-wanted-dialog': fixtureHelpWantedDialog,
     'app-fixture-matrix': fixtureMatrix,
+    'app-fixture-wheel': fixtureWheel,
     'app-fixture-mode': fixtureMode,
     'app-labeled-value': labeledValueVue
   },
