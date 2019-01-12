@@ -5,6 +5,10 @@
     <div class="wheel-slot-content">
       <app-labeled-input
         :formstate="formstate"
+        :custom-validators="{
+          'animation-gobo-end-without-start': animationGoboEndAfterStart,
+          'must-be-animation-gobo-end': animationGoboEndValid
+        }"
         :name="`wheel-slot${slot.uuid}-type`"
         label="Slot type">
         <select
@@ -107,11 +111,32 @@ export default {
       return this.channel.wheel.slots[this.slotNumber - 1];
     },
     suggestedType() {
+      const prevSlot = this.channel.wheel.slots[this.slotNumber - 2];
+      if (prevSlot && prevSlot.type === `AnimationGoboStart`) {
+        return `AnimationGoboEnd`;
+      }
+
       if (this.slotNumber === 1) {
-        return `Open`;
+        return /\banimation\b/i.test(this.channel.name) ? `AnimationGoboStart` : `Open`;
       }
 
       return this.slotTypes.find(type => this.channel.name.toLowerCase().includes(type.toLowerCase())) || ``;
+    },
+    animationGoboEndAfterStart() {
+      if (this.slot.type !== `AnimationGoboEnd`) {
+        return true;
+      }
+
+      if (this.slotNumber === 1) {
+        return false;
+      }
+
+      const prevSlot = this.channel.wheel.slots[this.slotNumber - 2];
+      return !prevSlot || prevSlot.type === `AnimationGoboStart`;
+    },
+    animationGoboEndValid() {
+      const prevSlot = this.channel.wheel.slots[this.slotNumber - 2];
+      return !prevSlot || prevSlot.type !== `AnimationGoboStart` || this.slot.type === `AnimationGoboEnd`;
     }
   },
   created() {
