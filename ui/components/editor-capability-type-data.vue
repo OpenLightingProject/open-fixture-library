@@ -49,6 +49,10 @@ import editorCapabilityPan from '~/components/editor-capabilities/Pan.vue';
 import editorCapabilityPanContinuous from '~/components/editor-capabilities/PanContinuous.vue';
 import editorCapabilityTilt from '~/components/editor-capabilities/Tilt.vue';
 import editorCapabilityTiltContinuous from '~/components/editor-capabilities/TiltContinuous.vue';
+import editorCapabilityWheelSlot from '~/components/editor-capabilities/WheelSlot.vue';
+import editorCapabilityWheelShake from '~/components/editor-capabilities/WheelShake.vue';
+import editorCapabilityWheelSlotRotation from '~/components/editor-capabilities/WheelSlotRotation.vue';
+import editorCapabilityWheelRotation from '~/components/editor-capabilities/WheelRotation.vue';
 import editorCapabilityPanTiltSpeed from '~/components/editor-capabilities/PanTiltSpeed.vue';
 import editorCapabilityEffect from '~/components/editor-capabilities/Effect.vue';
 import editorCapabilityEffectSpeed from '~/components/editor-capabilities/EffectSpeed.vue';
@@ -92,6 +96,10 @@ export default {
     'app-editor-capability-Tilt': editorCapabilityTilt,
     'app-editor-capability-TiltContinuous': editorCapabilityTiltContinuous,
     'app-editor-capability-PanTiltSpeed': editorCapabilityPanTiltSpeed,
+    'app-editor-capability-WheelSlot': editorCapabilityWheelSlot,
+    'app-editor-capability-WheelShake': editorCapabilityWheelShake,
+    'app-editor-capability-WheelSlotRotation': editorCapabilityWheelSlotRotation,
+    'app-editor-capability-WheelRotation': editorCapabilityWheelRotation,
     'app-editor-capability-Effect': editorCapabilityEffect,
     'app-editor-capability-EffectSpeed': editorCapabilityEffectSpeed,
     'app-editor-capability-EffectDuration': editorCapabilityEffectDuration,
