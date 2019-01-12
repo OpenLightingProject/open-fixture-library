@@ -1,6 +1,14 @@
 <template>
   <figure class="wheel">
     <svg width="300" height="300" viewBox="-50 -50 100 100">
+      <defs>
+        <radialGradient id="frostGradient">
+          <stop offset="0" stop-color="#fff" />
+          <stop offset="0.6" stop-color="#fff" />
+          <stop offset="1" stop-color="#000" />
+        </radialGradient>
+      </defs>
+
       <circle
         cx="0"
         cy="0"
@@ -39,23 +47,43 @@
           :transform="`translate(0, ${slotRotateRadius})`"
           v-html="slotSvgFragments[index]" />
 
+        <template v-else-if="slot.type === `Iris`">
+          <circle
+            :cx="0"
+            :cy="slotRotateRadius"
+            :r="slotRadius"
+            fill="#000" />
+          <circle
+            :cx="0"
+            :cy="slotRotateRadius"
+            :r="slotRadius * (slot.openPercent ? slot.openPercent.number : 100) / 100"
+            fill="#fff" />
+        </template>
+
         <circle
-          v-else
+          v-else-if="slot.type === `Frost`"
           :cx="0"
           :cy="slotRotateRadius"
           :r="slotRadius"
-          fill="#fff" />
+          fill="url(#frostGradient)" />
 
-        <text
-          v-if="!(`colors` in slot)"
-          :x="0"
-          :y="slotRotateRadius + slotRadius * 0.35"
-          :transform="`rotate(${-slotRotateAngle * index}, 0, ${slotRotateRadius})`"
-          :font-size="slotRadius"
-          text-anchor="middle"
-          fill="#000">
-          {{ index + 1 }}
-        </text>
+        <template v-else>
+          <circle
+            :cx="0"
+            :cy="slotRotateRadius"
+            :r="slotRadius"
+            fill="#fff" />
+
+          <text
+            :x="0"
+            :y="slotRotateRadius + slotRadius * 0.35"
+            :transform="`rotate(${-slotRotateAngle * index}, 0, ${slotRotateRadius})`"
+            :font-size="slotRadius"
+            text-anchor="middle"
+            fill="#000">
+            {{ index + 1 }}
+          </text>
+        </template>
       </g>
     </svg>
     <figcaption>{{ wheel.name }}</figcaption>
