@@ -38,7 +38,7 @@
         v-for="(slot, index) in wheel.slots"
         :key="`slot-${index}`"
         :transform="`rotate(${slotRotateAngle * index}, 0, 0)`"
-        class="slot">
+        :class="{ slot: true, dim: highlightedSlot !== null && highlightedSlot !== index }">
 
         <title>{{ slotTitles[index] }}</title>
 
@@ -123,7 +123,23 @@
         </template>
       </g>
     </svg>
-    <figcaption>{{ wheel.name }}</figcaption>
+    <figcaption>
+      <app-conditional-details>
+        <template slot="summary">{{ wheel.name }}</template>
+
+        <table>
+          <tr
+            v-for="(slot, index) in wheel.slots"
+            :key="`slot-${index}`"
+            @mouseover="highlightedSlot = (slot.type === `AnimationGoboEnd` ? index - 1 : index)"
+            @mouseout="highlightedSlot = null">
+            <th scope="row">Slot {{ index + 1 }}</th>
+            <td>{{ slot.name }}</td>
+          </tr>
+        </table>
+
+      </app-conditional-details>
+    </figcaption>
   </figure>
 </template>
 
@@ -135,6 +151,8 @@ figure {
   display: inline-block;
   width: 32%;
   min-width: 18rem;
+  vertical-align: top;
+  white-space: normal;
 }
 
 svg {
@@ -152,11 +170,29 @@ svg {
   &:hover {
     opacity: 0.7;
   }
+
+  &.dim {
+    opacity: 0.3;
+  }
+}
+
+figcaption /deep/ summary {
+  font-weight: bold;
+  text-align: center;
 }
 
 figcaption {
-  font-weight: bold;
-  text-align: center;
+  max-height: 50vh;
+  overflow: auto;
+}
+
+figcaption table {
+  border-spacing: 0;
+
+  & td,
+  & th {
+    padding: 3px;
+  }
 }
 </style>
 
@@ -164,12 +200,22 @@ figcaption {
 const { getColorCircleSvgFragment } = require(`~/components/svg.vue`);
 import Wheel from '~~/lib/model/Wheel.mjs';
 
+import conditionalDetailsVue from '~/components/conditional-details.vue';
+
 export default {
+  components: {
+    'app-conditional-details': conditionalDetailsVue
+  },
   props: {
     wheel: {
       type: Wheel,
       required: true
     }
+  },
+  data() {
+    return {
+      highlightedSlot: null
+    };
   },
   computed: {
     wheelDirectionFactor() {
