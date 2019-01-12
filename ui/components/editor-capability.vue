@@ -42,6 +42,7 @@
       <app-editor-capability-type-data
         ref="capabilityTypeData"
         v-model="capability"
+        :channel="channel"
         :formstate="formstate"
         required />
 
@@ -115,8 +116,8 @@ export default {
     'app-editor-capability-type-data': editorCapabilityTypeData
   },
   props: {
-    capabilities: {
-      type: Array,
+    channel: {
+      type: Object,
       required: true
     },
     capIndex: {
@@ -140,6 +141,9 @@ export default {
     };
   },
   computed: {
+    capabilities() {
+      return this.channel.capabilities;
+    },
     capability() {
       return this.capabilities[this.capIndex];
     },

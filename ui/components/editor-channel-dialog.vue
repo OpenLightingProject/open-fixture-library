@@ -148,7 +148,7 @@
         <app-editor-capability-wizard
           v-if="channel.wizard.show"
           :wizard="channel.wizard"
-          :capabilities="channel.capabilities"
+          :channel="channel"
           :resolution="channel.dmxValueResolution"
           :formstate="formstate"
           @close="onWizardClose" />
@@ -158,7 +158,7 @@
             v-for="(cap, index) in channel.capabilities"
             ref="capabilities"
             :key="cap.uuid"
-            :capabilities="channel.capabilities"
+            :channel="channel"
             :formstate="formstate"
             :cap-index="index"
             :resolution="channel.dmxValueResolution"

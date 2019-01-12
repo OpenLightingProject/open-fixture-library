@@ -27,6 +27,7 @@
       v-if="capability.type !== ``"
       ref="capabilityTypeData"
       :capability="capability"
+      :channel="channel"
       :formstate="formstate" />
   </div>
 </template>
@@ -134,6 +135,10 @@ export default {
   },
   props: {
     capability: {
+      type: Object,
+      required: true
+    },
+    channel: {
       type: Object,
       required: true
     },
