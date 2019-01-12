@@ -102,6 +102,9 @@ function addFixture(fixture) {
         addMode(key, mode);
       }
     }
+    else if (prop === `wheels`) {
+      addWheels(out.fixtures[key], fixture);
+    }
     else if (propExistsIn(prop, fixture)) {
       out.fixtures[key][prop] = fixture[prop];
     }
@@ -198,6 +201,47 @@ function addLinks(fixture, editorLinksArray) {
       fixture.links[linkType] = linksOfType;
     }
   }
+}
+
+/**
+ * Sanitize and save wheels from the editor's channel objects, if there are any.
+ * @param {object} fixture The OFL fixture object to save the wheels to.
+ * @param {object} editorFixture The editor fixture object to get the wheels from.
+ */
+function addWheels(fixture, editorFixture) {
+  const editorWheelChannels = Object.values(editorFixture.availableChannels).filter(
+    editorChannel => editorChannel.wheel.slots.length > 0
+  );
+
+  if (editorWheelChannels.length === 0) {
+    return;
+  }
+
+  fixture.wheels = {};
+
+  editorWheelChannels.forEach(editorChannel => {
+    fixture.wheels[editorChannel.name] = {
+      slots: editorChannel.wheel.slots.map(editorWheelSlot => {
+        if (editorWheelSlot === null || editorWheelSlot.type === ``) {
+          return null;
+        }
+
+        const wheelSlot = {
+          type: editorWheelSlot.type
+        };
+
+        const wheelSlotSchema = schemaProperties.wheelSlotTypes[wheelSlot.type];
+
+        for (const slotProp of Object.keys(wheelSlotSchema.properties)) {
+          if (propExistsIn(slotProp, editorWheelSlot.typeData)) {
+            wheelSlot[slotProp] = editorWheelSlot.typeData[slotProp];
+          }
+        }
+
+        return wheelSlot;
+      })
+    };
+  });
 }
 
 function addAvailableChannel(fixKey, availableChannels, chId) {
