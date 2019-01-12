@@ -80,6 +80,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     checkMeta(fixture.meta);
     checkPhysical(fixture.physical);
     checkMatrix(fixture.matrix);
+    checkWheels(fixture.wheels);
     checkTemplateChannels(fixtureJson);
     checkChannels(fixtureJson);
 
@@ -246,6 +247,32 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           }
           usedMatrixChannels.add(pixelKey);
         }
+      }
+    }
+  }
+
+  /**
+   * Checks if the fixture's wheels are correct.
+   * @param {array.<Wheel>} wheels The fixture's Wheel instances.
+   */
+  function checkWheels(wheels) {
+    for (const wheel of wheels) {
+      const expectedAnimationGoboEndSlots = [];
+      wheel.slots.forEach((slot, index) => {
+        if (slot.type === `AnimationGoboStart`) {
+          expectedAnimationGoboEndSlots.push(index + 1);
+        }
+      });
+
+      const foundAnimationGoboEndSlots = [];
+      wheel.slots.forEach((slot, index) => {
+        if (slot.type === `AnimationGoboEnd`) {
+          foundAnimationGoboEndSlots.push(index);
+        }
+      });
+
+      if (!arraysEqual(expectedAnimationGoboEndSlots, foundAnimationGoboEndSlots)) {
+        result.errors.push(`An 'AnimationGoboEnd' slot must be used after an 'AnimationGoboStart' slot in wheel ${wheel.name}. (${expectedAnimationGoboEndSlots}; ${foundAnimationGoboEndSlots})`);
       }
     }
   }
