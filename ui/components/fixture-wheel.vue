@@ -1,6 +1,6 @@
 <template>
   <figure class="wheel">
-    <svg width="300" height="300" viewBox="-50 -50 100 100">
+    <svg :width="6 * wheelRadius" :height="6 * wheelRadius" :viewBox="`${-wheelRadius} ${-wheelRadius} ${2 * wheelRadius} ${2 * wheelRadius}`">
       <defs>
         <radialGradient id="frostGradient">
           <stop offset="0" stop-color="#fff" />
@@ -12,14 +12,15 @@
       <circle
         cx="0"
         cy="0"
-        r="50"
+        :r="wheelRadius"
         fill="#444"
         class="wheel" />
       <circle
         cx="0"
         cy="0"
         r="3"
-        fill="#fff" />
+        fill="#fff"
+        class="hole" />
 
       <g :transform="`scale(${wheel.direction === `CCW` ? -1 : 1}, 1)`" class="arrow">
         <g transform="rotate(-30)">
@@ -214,7 +215,9 @@ export default {
   },
   data() {
     return {
-      highlightedSlot: null
+      highlightedSlot: null,
+      wheelRadius: 50,
+      wheelPadding: 3
     };
   },
   computed: {
@@ -222,10 +225,22 @@ export default {
       return this.wheel.direction === `CCW` ? -1 : 1;
     },
     slotRadius() {
-      return Math.min(70 / this.wheel.slots.length * 1.25, 18.5);
+      const usableRadius = this.wheelRadius - this.wheelPadding;
+
+      const spacingFactor = 0.85;
+      const anglePerSlot = (2 * Math.PI / this.wheel.slots.length) * spacingFactor; // radians
+
+      const maximumRadius = (usableRadius / 2) - 5; // preserve some space in the middle
+
+      // (I):       slotRotateRadius = slotRadius / sin(anglePerSlot / 2)
+      // (II):      slotRadius + slotRotateRadius = usableRadius
+      // (I in II): slotRadius + slotRadius / sin(anglePerSlot / 2) = usableRadius
+      //            slotRadius * (1 + 1 / sin(anglePerSlot / 2)) = usableRadius
+      //            slotRadius = usableRadius / (1 + 1 / sin(anglePerSlot / 2))
+      return Math.min(usableRadius / (1 + (1 / Math.sin(anglePerSlot / 2))), maximumRadius);
     },
     slotRotateRadius() {
-      return -50 + this.slotRadius + 3;
+      return -this.wheelRadius + this.slotRadius + this.wheelPadding;
     },
     slotRotateAngle() {
       return 360 / this.wheel.slots.length * this.wheelDirectionFactor;
@@ -261,4 +276,8 @@ export default {
     }
   }
 };
+
+function degreesToRadians(degrees) {
+  return degrees / 180 * Math.PI;
+}
 </script>
