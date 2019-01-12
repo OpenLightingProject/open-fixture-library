@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ParLed JD",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Alessandro"],
+    "createDate": "2019-01-12",
+    "lastModifyDate": "2019-01-12"
+  },
+  "links": {
+    "productPage": [
+      "http://www.mjledlighting.com"
+    ]
+  },
+  "availableChannels": {
+    "ParLed JD": {
+      "defaultValue": 1,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [2, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "ParLed",
+      "channels": [
+        "ParLed JD"
+      ]
+    }
+  ]
+}
