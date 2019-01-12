@@ -264,6 +264,10 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    */
   function checkWheels(wheels) {
     for (const wheel of wheels) {
+      if (!/\b(?:wheel|disk)\b/i.test(wheel.name)) {
+        result.warnings.push(`Name of wheel '${wheel.name}' does not contain the word 'wheel' or 'disk', which could lead to confusing capability names.`);
+      }
+
       const expectedAnimationGoboEndSlots = [];
       wheel.slots.forEach((slot, index) => {
         if (slot.type === `AnimationGoboStart`) {
