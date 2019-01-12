@@ -416,7 +416,7 @@
   ],
   "patternProperties": {
     "^\\$schema$": {
-      "enum": ["https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json"]
+      "enum": ["https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json", "../../schemas/fixture.json"]
     }
   },
   "additionalProperties": false
