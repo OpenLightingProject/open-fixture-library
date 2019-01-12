@@ -36,6 +36,47 @@
       "tiltMax": 246
     }
   },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Blue 110"
+        },
+        {
+          "type": "Color",
+          "name": "Green 206 IAD"
+        },
+        {
+          "type": "Color",
+          "name": "Pink 312"
+        },
+        {
+          "type": "Color",
+          "name": "Orange 306M"
+        },
+        {
+          "type": "Color",
+          "name": "Half minus green"
+        },
+        {
+          "type": "Color",
+          "name": "CTO 3200-4100"
+        },
+        {
+          "type": "Color",
+          "name": "UV"
+        },
+        {
+          "type": "Color",
+          "name": "Red 308"
+        }
+      ]
+    }
+  },
   "availableChannels": {
     "Shutter / Strobe": {
       "defaultValue": 0,
@@ -286,183 +327,162 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "ColorWheelIndex",
-          "index": 0,
-          "comment": "Open"
+          "type": "WheelSlot",
+          "slotNumber": 1
         },
         {
           "dmxRange": [1, 16],
-          "type": "ColorWheelIndex",
-          "indexStart": 0,
-          "indexEnd": 1,
-          "comment": "Open … Color 1"
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 2
         },
         {
           "dmxRange": [17, 17],
-          "type": "ColorWheelIndex",
-          "index": 1,
-          "comment": "Color 1 (Blue 110)"
+          "type": "WheelSlot",
+          "slotNumber": 2
         },
         {
           "dmxRange": [18, 33],
-          "type": "ColorWheelIndex",
-          "indexStart": 1,
-          "indexEnd": 2
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 3
         },
         {
           "dmxRange": [34, 34],
-          "type": "ColorWheelIndex",
-          "index": 2,
-          "comment": "Color 2 (Green 206 IAD)"
+          "type": "WheelSlot",
+          "slotNumber": 3
         },
         {
           "dmxRange": [35, 50],
-          "type": "ColorWheelIndex",
-          "indexStart": 2,
-          "indexEnd": 3
+          "type": "WheelSlot",
+          "slotNumberStart": 3,
+          "slotNumberEnd": 4
         },
         {
           "dmxRange": [51, 51],
-          "type": "ColorWheelIndex",
-          "index": 3,
-          "comment": "Color 3 (Pink 312)"
+          "type": "WheelSlot",
+          "slotNumber": 4
         },
         {
           "dmxRange": [52, 67],
-          "type": "ColorWheelIndex",
-          "indexStart": 3,
-          "indexEnd": 4
+          "type": "WheelSlot",
+          "slotNumberStart": 4,
+          "slotNumberEnd": 5
         },
         {
           "dmxRange": [68, 68],
-          "type": "ColorWheelIndex",
-          "index": 4,
-          "comment": "Color 4 (Orange 306M)"
+          "type": "WheelSlot",
+          "slotNumber": 5
         },
         {
           "dmxRange": [69, 84],
-          "type": "ColorWheelIndex",
-          "indexStart": 4,
-          "indexEnd": 5
+          "type": "WheelSlot",
+          "slotNumberStart": 5,
+          "slotNumberEnd": 6
         },
         {
           "dmxRange": [85, 85],
-          "type": "ColorWheelIndex",
-          "index": 5,
-          "comment": "Color 5 (Half minus green)"
+          "type": "WheelSlot",
+          "slotNumber": 6
         },
         {
           "dmxRange": [86, 101],
-          "type": "ColorWheelIndex",
-          "indexStart": 5,
-          "indexEnd": 6
+          "type": "WheelSlot",
+          "slotNumberStart": 6,
+          "slotNumberEnd": 7
         },
         {
           "dmxRange": [102, 102],
-          "type": "ColorWheelIndex",
-          "index": 6,
-          "comment": "Color 6 (CTO 3200-4100)"
+          "type": "WheelSlot",
+          "slotNumber": 7
         },
         {
           "dmxRange": [103, 118],
-          "type": "ColorWheelIndex",
-          "indexStart": 6,
-          "indexEnd": 7
+          "type": "WheelSlot",
+          "slotNumberStart": 7,
+          "slotNumberEnd": 8
         },
         {
           "dmxRange": [119, 119],
-          "type": "ColorWheelIndex",
-          "index": 7,
-          "comment": "Color 7 (UV)"
+          "type": "WheelSlot",
+          "slotNumber": 8
         },
         {
           "dmxRange": [120, 135],
-          "type": "ColorWheelIndex",
-          "indexStart": 7,
-          "indexEnd": 8
+          "type": "WheelSlot",
+          "slotNumberStart": 8,
+          "slotNumberEnd": 9
         },
         {
           "dmxRange": [136, 136],
-          "type": "ColorWheelIndex",
-          "index": 8,
-          "comment": "Color 8 (Red 308)"
+          "type": "WheelSlot",
+          "slotNumber": 9
         },
         {
           "dmxRange": [137, 152],
-          "type": "ColorWheelIndex",
-          "indexStart": 8,
-          "indexEnd": 9,
-          "comment": "Color 8 … Open"
+          "type": "WheelSlot",
+          "slotNumberStart": 9,
+          "slotNumberEnd": 10
         },
         {
           "dmxRange": [153, 153],
-          "type": "ColorWheelIndex",
-          "index": 0,
-          "comment": "Open"
+          "type": "WheelSlot",
+          "slotNumber": 1
         },
         {
           "dmxRange": [154, 158],
-          "type": "ColorWheelIndex",
-          "index": 8,
-          "comment": "Color 8 (Red 308)"
+          "type": "WheelSlot",
+          "slotNumber": 9
         },
         {
           "dmxRange": [159, 163],
-          "type": "ColorWheelIndex",
-          "index": 7,
-          "comment": "Color 7 (UV)"
+          "type": "WheelSlot",
+          "slotNumber": 8
         },
         {
           "dmxRange": [164, 168],
-          "type": "ColorWheelIndex",
-          "index": 6,
-          "comment": "Color 6 (CTO 3200-4100K)"
+          "type": "WheelSlot",
+          "slotNumber": 7
         },
         {
           "dmxRange": [169, 173],
-          "type": "ColorWheelIndex",
-          "index": 5,
-          "comment": "Color 5 (Half minus green)"
+          "type": "WheelSlot",
+          "slotNumber": 6
         },
         {
           "dmxRange": [174, 178],
-          "type": "ColorWheelIndex",
-          "index": 4,
-          "comment": "Color 4 (Orange 306M)"
+          "type": "WheelSlot",
+          "slotNumber": 5
         },
         {
           "dmxRange": [179, 183],
-          "type": "ColorWheelIndex",
-          "index": 3,
-          "comment": "Color 3 (Pink 312)"
+          "type": "WheelSlot",
+          "slotNumber": 4
         },
         {
           "dmxRange": [184, 188],
-          "type": "ColorWheelIndex",
-          "index": 2,
-          "comment": "Color 2 (Green 206 IAD)"
+          "type": "WheelSlot",
+          "slotNumber": 3
         },
         {
           "dmxRange": [189, 193],
-          "type": "ColorWheelIndex",
-          "index": 1,
-          "comment": "Color 1 (Blue 110)"
+          "type": "WheelSlot",
+          "slotNumber": 2
         },
         {
           "dmxRange": [194, 198],
-          "type": "ColorWheelIndex",
-          "index": 0,
-          "comment": "Open"
+          "type": "WheelSlot",
+          "slotNumber": 1
         },
         {
           "dmxRange": [199, 219],
-          "type": "ColorWheelRotation",
+          "type": "WheelRotation",
           "speedStart": "fast CW",
           "speedEnd": "slow CW"
         },
         {
           "dmxRange": [220, 240],
-          "type": "ColorWheelRotation",
+          "type": "WheelRotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         },
