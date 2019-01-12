@@ -117,6 +117,11 @@ function addFixture(fixture) {
   out.errors[key] = checkResult.errors;
 }
 
+/**
+ * If a new manufacturer was entered in the editor, it is also saved here.
+ * @param {object} fixture The editor fixture object.
+ * @returns {string} The manufacturer key.
+ */
 function getManufacturerKey(fixture) {
   if (fixture.useExistingManufacturer) {
     return fixture.manufacturerKey;
@@ -144,6 +149,11 @@ function getManufacturerKey(fixture) {
   return manKey;
 }
 
+/**
+ * @param {object} fixture The editor fixture object.
+ * @param {string} manKey The manufacturer key of the fixture.
+ * @returns {string} The fixture key.
+ */
 function getFixtureKey(fixture, manKey) {
   if (`key` in fixture && fixture.key !== `[new]`) {
     return fixture.key;
@@ -187,6 +197,10 @@ function getPhysical(from) {
   return physical;
 }
 
+/**
+ * @param {object} fixture The OFL fixture object to save the links to.
+ * @param {array.<object>} editorLinksArray The editor link object array.
+ */
 function addLinks(fixture, editorLinksArray) {
   fixture.links = {};
 
