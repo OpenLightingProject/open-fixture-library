@@ -186,7 +186,7 @@ A capability represents a range of a channel.
         * [.time](#Capability+time) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
         * [.brightness](#Capability+brightness) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
         * [.slotNumber](#Capability+slotNumber) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
-        * [.wheelSlot](#Capability+wheelSlot) ⇒ <code>object</code>
+        * [.wheelSlot](#Capability+wheelSlot) ⇒ [<code>array.&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code>
         * [.angle](#Capability+angle) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
         * [.colorTemperature](#Capability+colorTemperature) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
         * [.soundSensitivity](#Capability+soundSensitivity) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
@@ -385,9 +385,9 @@ Use only in `WheelShake` capabilities!
 **Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end slot numbers. Defaults to null.  
 <a name="Capability+wheelSlot"></a>
 
-### capability.wheelSlot ⇒ <code>object</code>
+### capability.wheelSlot ⇒ [<code>array.&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: <code>object</code> - Start and end wheel slot objects this capability is referencing. Defaults to null.  
+**Returns**: [<code>array.&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code> - Start and end wheel slot objects this capability is referencing. Defaults to null.  
 <a name="Capability+angle"></a>
 
 ### capability.angle ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
@@ -2453,7 +2453,7 @@ Creates a new Wheel instance.
 
 ### wheel.type ⇒ <code>string</code>
 **Kind**: instance property of [<code>Wheel</code>](#Wheel)  
-**Returns**: <code>string</code> - The type of the Wheel, i.e. the most frequent slot type.  
+**Returns**: <code>string</code> - The type of the Wheel, i.e. the most frequent slot type (except for animation gobo wheels; the wheel type is AnimationGobo there).  
 <a name="Wheel+slots"></a>
 
 ### wheel.slots ⇒ <code>array.&lt;object&gt;</code>
@@ -2490,13 +2490,13 @@ Information about a single wheel slot (or a split slot).
     * [new WheelSlot(jsonObject, wheel)](#new_WheelSlot_new)
     * [.type](#WheelSlot+type) ⇒ <code>string</code>
     * [.name](#WheelSlot+name) ⇒ <code>string</code>
-    * [.colors](#WheelSlot+colors) ⇒ <code>array.&lt;string&gt;</code>
-    * [.colorTemperature](#WheelSlot+colorTemperature) ⇒ [<code>Entity</code>](#Entity)
-    * [.facets](#WheelSlot+facets) ⇒ <code>number</code>
-    * [.openPercent](#WheelSlot+openPercent) ⇒ [<code>Entity</code>](#Entity)
-    * [.frostIntensity](#WheelSlot+frostIntensity) ⇒ [<code>Entity</code>](#Entity)
-    * [.floorSlot](#WheelSlot+floorSlot) ⇒ [<code>WheelSlot</code>](#WheelSlot)
-    * [.ceilSlot](#WheelSlot+ceilSlot) ⇒ [<code>WheelSlot</code>](#WheelSlot)
+    * [.colors](#WheelSlot+colors) ⇒ <code>array.&lt;string&gt;</code> \| <code>null</code>
+    * [.colorTemperature](#WheelSlot+colorTemperature) ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
+    * [.facets](#WheelSlot+facets) ⇒ <code>number</code> \| <code>null</code>
+    * [.openPercent](#WheelSlot+openPercent) ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
+    * [.frostIntensity](#WheelSlot+frostIntensity) ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
+    * [.floorSlot](#WheelSlot+floorSlot) ⇒ [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code>
+    * [.ceilSlot](#WheelSlot+ceilSlot) ⇒ [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code>
 
 <a name="new_WheelSlot_new"></a>
 
@@ -2521,39 +2521,39 @@ Creates a new WheelSlot instance.
 **Returns**: <code>string</code> - The wheel slot's name.  
 <a name="WheelSlot+colors"></a>
 
-### wheelSlot.colors ⇒ <code>array.&lt;string&gt;</code>
+### wheelSlot.colors ⇒ <code>array.&lt;string&gt;</code> \| <code>null</code>
 **Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
-**Returns**: <code>array.&lt;string&gt;</code> - The colors of this wheel slot, or null if this slot has no colors.  
+**Returns**: <code>array.&lt;string&gt;</code> \| <code>null</code> - The colors of this wheel slot, or null if this slot has no colors.  
 <a name="WheelSlot+colorTemperature"></a>
 
-### wheelSlot.colorTemperature ⇒ [<code>Entity</code>](#Entity)
+### wheelSlot.colorTemperature ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
-**Returns**: [<code>Entity</code>](#Entity) - For Color slots, the slot's color temperature. Null if this slot has no color temperature.  
+**Returns**: [<code>Entity</code>](#Entity) \| <code>null</code> - For Color slots, the slot's color temperature. Null if this slot has no color temperature.  
 <a name="WheelSlot+facets"></a>
 
-### wheelSlot.facets ⇒ <code>number</code>
+### wheelSlot.facets ⇒ <code>number</code> \| <code>null</code>
 **Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
-**Returns**: <code>number</code> - For Prism slots, the number of prism facets. Null if number of facets is not defined.  
+**Returns**: <code>number</code> \| <code>null</code> - For Prism slots, the number of prism facets. Null if number of facets is not defined.  
 <a name="WheelSlot+openPercent"></a>
 
-### wheelSlot.openPercent ⇒ [<code>Entity</code>](#Entity)
+### wheelSlot.openPercent ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
-**Returns**: [<code>Entity</code>](#Entity) - For Iris slots, the slot's openPercent value. Null if this slot has no openPercent value.  
+**Returns**: [<code>Entity</code>](#Entity) \| <code>null</code> - For Iris slots, the slot's openPercent value. Null if this slot has no openPercent value.  
 <a name="WheelSlot+frostIntensity"></a>
 
-### wheelSlot.frostIntensity ⇒ [<code>Entity</code>](#Entity)
+### wheelSlot.frostIntensity ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
-**Returns**: [<code>Entity</code>](#Entity) - For Frost slots, the slot's frost intensity. Null if this slot has no frost intensity.  
+**Returns**: [<code>Entity</code>](#Entity) \| <code>null</code> - For Frost slots, the slot's frost intensity. Null if this slot has no frost intensity.  
 <a name="WheelSlot+floorSlot"></a>
 
-### wheelSlot.floorSlot ⇒ [<code>WheelSlot</code>](#WheelSlot)
+### wheelSlot.floorSlot ⇒ [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code>
 **Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
-**Returns**: [<code>WheelSlot</code>](#WheelSlot) - For split slots, the floor (start) slot. Null for non-split slots.  
+**Returns**: [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code> - For split slots, the floor (start) slot. Null for non-split slots.  
 <a name="WheelSlot+ceilSlot"></a>
 
-### wheelSlot.ceilSlot ⇒ [<code>WheelSlot</code>](#WheelSlot)
+### wheelSlot.ceilSlot ⇒ [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code>
 **Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
-**Returns**: [<code>WheelSlot</code>](#WheelSlot) - For split slots, the ceil (end) slot. Null for non-split slots.  
+**Returns**: [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code> - For split slots, the ceil (end) slot. Null for non-split slots.  
 <a name="getSlotCapabilityName"></a>
 
 ## getSlotCapabilityName(cap) ⇒ <code>string</code>
