@@ -234,7 +234,7 @@ function getChannelPreset(channel) {
     SpeedTiltFastSlow: cap => cap.type === `TiltContinuous` && capabilityHelpers.isDecreasingSpeed(cap),
     SpeedPanTiltSlowFast: cap => cap.type === `PanTiltSpeed` && (capabilityHelpers.isIncreasingSpeed(cap) || capabilityHelpers.isDecreasingDuration(cap)),
     SpeedPanTiltFastSlow: cap => cap.type === `PanTiltSpeed` && (capabilityHelpers.isDecreasingSpeed(cap) || capabilityHelpers.isIncreasingDuration(cap)),
-    ColorMacro: cap => cap.type === `ColorPreset` || (cap.type === `WheelSlot` && cap.wheelSlot.every(slot => slot.type === `Color`)),
+    ColorMacro: cap => cap.type === `ColorPreset` || (cap.type === `WheelSlot` && cap.isSlotType(`Color`)),
     ColorWheel: cap => cap.type === `WheelRotation` && cap.wheels[0].type === `Color`,
     ColorRGBMixer: cap => false,
     ColorCTOMixer: cap => cap.type === `ColorTemperature` && cap.colorTemperature[0].number === 0 && cap.colorTemperature[1].number < 0,
@@ -497,7 +497,7 @@ function getCapabilityPreset(capability) {
     // prism capabilities
     // TODO: export the number of prism facets as res1 for Prism capabilities
     PrismEffectOn: {
-      handler: cap => cap.type === `Prism` || (cap.type === `WheelSlot` && cap.wheelSlot.every(slot => slot.type === `Prism`)),
+      handler: cap => cap.type === `Prism` || (cap.type === `WheelSlot` && cap.isSlotType(`Prism`)),
       res1: cap => (cap.wheelSlot && cap.slotNumber[0].number === cap.slotNumber[1].number && cap.wheelSlot[0].facets)
     },
     PrismEffectOff: {
