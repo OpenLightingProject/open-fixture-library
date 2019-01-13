@@ -48,8 +48,8 @@
         "angleEnd": "270deg"
       }
     },
-    "Color wheel": {
-      "fineChannelAliases": ["Color wheel fine"],
+    "Color Wheel": {
+      "fineChannelAliases": ["Color Wheel fine"],
       "dmxValueResolution": "8bit",
       "capabilities": [
         {
@@ -169,7 +169,7 @@
         }
       ]
     },
-    "Rotating Gobos": {
+    "Rotating Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 11],
@@ -321,8 +321,8 @@
         }
       ]
     },
-    "Static-stamped Gobos (Gobo wheel 2)": {
-      "fineChannelAliases": ["Static-stamped Gobos fine"],
+    "Static Gobo Wheel": {
+      "fineChannelAliases": ["Static Gobo Wheel fine"],
       "dmxValueResolution": "8bit",
       "capabilities": [
         {
@@ -875,13 +875,13 @@
         "Pan fine",
         "Tilt",
         "Tilt fine",
-        "Color wheel",
-        "Color wheel fine",
-        "Rotating Gobos",
+        "Color Wheel",
+        "Color Wheel fine",
+        "Rotating Gobo Wheel",
         "Gobo Stencil Rotation",
         "Gobo Stencil Rotation fine",
-        "Static-stamped Gobos (Gobo wheel 2)",
-        "Static-stamped Gobos fine",
+        "Static Gobo Wheel",
+        "Static Gobo Wheel fine",
         "Prism",
         "Prism Index",
         "Prism Index fine",
@@ -907,10 +907,10 @@
         "Pan fine",
         "Tilt",
         "Tilt fine",
-        "Color wheel",
-        "Rotating Gobos",
+        "Color Wheel",
+        "Rotating Gobo Wheel",
         "Gobo Stencil Rotation",
-        "Static-stamped Gobos (Gobo wheel 2)",
+        "Static Gobo Wheel",
         "Prism",
         "Prism Index",
         "Focus",
@@ -930,10 +930,10 @@
       "channels": [
         "Pan",
         "Tilt",
-        "Color wheel",
-        "Rotating Gobos",
+        "Color Wheel",
+        "Rotating Gobo Wheel",
         "Gobo Stencil Rotation",
-        "Static-stamped Gobos (Gobo wheel 2)",
+        "Static Gobo Wheel",
         "Prism",
         "Prism Index",
         "Focus",

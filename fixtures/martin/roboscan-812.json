@@ -80,7 +80,7 @@
         }
       ]
     },
-    "Color": {
+    "Color Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
@@ -379,7 +379,7 @@
         }
       ]
     },
-    "Gobo": {
+    "Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
@@ -674,8 +674,8 @@
       "shortName": "tracking",
       "channels": [
         "Strobe",
-        "Color",
-        "Gobo",
+        "Color Wheel",
+        "Gobo Wheel",
         "Pan",
         "Tilt"
       ]
@@ -685,8 +685,8 @@
       "shortName": "vector",
       "channels": [
         "Strobe",
-        "Color",
-        "Gobo",
+        "Color Wheel",
+        "Gobo Wheel",
         "Pan",
         "Tilt",
         "Movement Speed",

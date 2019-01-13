@@ -75,7 +75,7 @@
         }
       ]
     },
-    "Gobo": {
+    "Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 7],
@@ -166,7 +166,7 @@
         }
       ]
     },
-    "Color": {
+    "Color Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 11],
@@ -280,8 +280,8 @@
       "name": "Default",
       "channels": [
         "Shutter",
-        "Gobo",
-        "Color",
+        "Gobo Wheel",
+        "Color Wheel",
         "Pan",
         "Tilt"
       ]

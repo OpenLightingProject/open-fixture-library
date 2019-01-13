@@ -129,7 +129,7 @@
         "color": "Yellow"
       }
     },
-    "Rotating Gobo": {
+    "Rotating Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 9],
@@ -262,8 +262,8 @@
         }
       ]
     },
-    "Fixed Gobo": {
-      "fineChannelAliases": ["Fixed Gobo fine"],
+    "Static Gobo Wheel": {
+      "fineChannelAliases": ["Static Gobo Wheel fine"],
       "dmxValueResolution": "8bit",
       "capabilities": [
         {
@@ -1005,9 +1005,9 @@
         "Cyan",
         "Magenta",
         "Yellow",
-        "Rotating Gobo",
+        "Rotating Gobo Wheel",
         "Gobo Stencil Rotation",
-        "Fixed Gobo",
+        "Static Gobo Wheel",
         "Prism/Gobo Macros",
         "Rotating Prism",
         "Focus",
@@ -1033,9 +1033,9 @@
         "Cyan",
         "Magenta",
         "Yellow",
-        "Rotating Gobo",
+        "Rotating Gobo Wheel",
         "Gobo Stencil Rotation",
-        "Fixed Gobo",
+        "Static Gobo Wheel",
         "Prism/Gobo Macros",
         "Rotating Prism",
         "Focus",
@@ -1065,11 +1065,11 @@
         "Magenta fine",
         "Yellow",
         "Yellow fine",
-        "Rotating Gobo",
+        "Rotating Gobo Wheel",
         "Gobo Stencil Rotation",
         "Gobo Stencil Rotation fine",
-        "Fixed Gobo",
-        "Fixed Gobo fine",
+        "Static Gobo Wheel",
+        "Static Gobo Wheel fine",
         "Prism/Gobo Macros",
         "Rotating Prism",
         "Rotating Prism fine",
