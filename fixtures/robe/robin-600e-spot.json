@@ -660,277 +660,234 @@
         "comment": "CMY/CTO or Gobo Selection speed"
       }
     },
-    "Static Gobos": {
-      "fineChannelAliases": ["Static Gobos fine"],
+    "Static Gobo Wheel": {
+      "fineChannelAliases": ["Static Gobo Wheel fine"],
       "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 0],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 1
         },
         {
           "dmxRange": [1, 6],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumberStart": 1,
           "slotNumberEnd": 2
         },
         {
           "dmxRange": [7, 7],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 2
         },
         {
           "dmxRange": [8, 12],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumberStart": 2,
           "slotNumberEnd": 3
         },
         {
           "dmxRange": [13, 13],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 3
         },
         {
           "dmxRange": [14, 18],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumberStart": 3,
           "slotNumberEnd": 4
         },
         {
           "dmxRange": [19, 19],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 4
         },
         {
           "dmxRange": [20, 25],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumberStart": 4,
           "slotNumberEnd": 5
         },
         {
           "dmxRange": [26, 26],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 5
         },
         {
           "dmxRange": [27, 31],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumberStart": 5,
           "slotNumberEnd": 6
         },
         {
           "dmxRange": [32, 32],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 6
         },
         {
           "dmxRange": [33, 38],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumberStart": 6,
           "slotNumberEnd": 7
         },
         {
           "dmxRange": [39, 39],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 7
         },
         {
           "dmxRange": [40, 44],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumberStart": 7,
           "slotNumberEnd": 8
         },
         {
           "dmxRange": [45, 45],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 8
         },
         {
           "dmxRange": [46, 50],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumberStart": 8,
           "slotNumberEnd": 9
         },
         {
           "dmxRange": [51, 51],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 9
         },
         {
           "dmxRange": [52, 57],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumberStart": 9,
           "slotNumberEnd": 10
         },
         {
           "dmxRange": [58, 58],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 10
         },
         {
           "dmxRange": [59, 63],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumberStart": 10,
           "slotNumberEnd": 11
         },
         {
           "dmxRange": [64, 64],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 1
         },
         {
           "dmxRange": [65, 69],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 2
         },
         {
           "dmxRange": [70, 74],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 3
         },
         {
           "dmxRange": [75, 79],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 4
         },
         {
           "dmxRange": [80, 84],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 5
         },
         {
           "dmxRange": [85, 89],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 6
         },
         {
           "dmxRange": [90, 94],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 7
         },
         {
           "dmxRange": [95, 99],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 8
         },
         {
           "dmxRange": [100, 104],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 9
         },
         {
           "dmxRange": [105, 109],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 10
         },
         {
           "dmxRange": [110, 119],
           "type": "WheelShake",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 2
         },
         {
           "dmxRange": [120, 129],
           "type": "WheelShake",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 3
         },
         {
           "dmxRange": [130, 139],
           "type": "WheelShake",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 4
         },
         {
           "dmxRange": [140, 149],
           "type": "WheelShake",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 5
         },
         {
           "dmxRange": [150, 159],
           "type": "WheelShake",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 6
         },
         {
           "dmxRange": [160, 169],
           "type": "WheelShake",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 7
         },
         {
           "dmxRange": [170, 179],
           "type": "WheelShake",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 8
         },
         {
           "dmxRange": [180, 189],
           "type": "WheelShake",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 9
         },
         {
           "dmxRange": [190, 199],
           "type": "WheelShake",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 10
         },
         {
           "dmxRange": [200, 201],
           "type": "WheelSlot",
-          "wheel": "Static Gobo Wheel",
           "slotNumber": 1
         },
         {
           "dmxRange": [202, 221],
           "type": "WheelRotation",
-          "wheel": "Static Gobo Wheel",
           "speedStart": "fast CW",
           "speedEnd": "slow CW"
         },
         {
           "dmxRange": [222, 223],
           "type": "WheelRotation",
-          "wheel": "Static Gobo Wheel",
           "speed": "stop"
         },
         {
           "dmxRange": [224, 243],
           "type": "WheelRotation",
-          "wheel": "Static Gobo Wheel",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         },
@@ -949,13 +906,12 @@
         }
       ]
     },
-    "Rotating Gobos": {
+    "Rotating Gobo Wheel": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 3],
           "type": "WheelSlot",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 1,
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Indexing",
@@ -965,7 +921,6 @@
         {
           "dmxRange": [4, 7],
           "type": "WheelSlot",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 2,
           "comment": "indexing",
           "switchChannels": {
@@ -976,7 +931,6 @@
         {
           "dmxRange": [8, 11],
           "type": "WheelSlot",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 3,
           "comment": "indexing",
           "switchChannels": {
@@ -987,7 +941,6 @@
         {
           "dmxRange": [12, 15],
           "type": "WheelSlot",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 4,
           "comment": "indexing",
           "switchChannels": {
@@ -998,7 +951,6 @@
         {
           "dmxRange": [16, 19],
           "type": "WheelSlot",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 5,
           "comment": "indexing",
           "switchChannels": {
@@ -1009,7 +961,6 @@
         {
           "dmxRange": [20, 23],
           "type": "WheelSlot",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 6,
           "comment": "indexing",
           "switchChannels": {
@@ -1020,7 +971,6 @@
         {
           "dmxRange": [24, 27],
           "type": "WheelSlot",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 7,
           "comment": "indexing",
           "switchChannels": {
@@ -1031,7 +981,6 @@
         {
           "dmxRange": [28, 31],
           "type": "WheelSlot",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 8,
           "comment": "indexing",
           "switchChannels": {
@@ -1042,7 +991,6 @@
         {
           "dmxRange": [32, 35],
           "type": "WheelSlot",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 2,
           "comment": "rotation",
           "switchChannels": {
@@ -1053,7 +1001,6 @@
         {
           "dmxRange": [36, 39],
           "type": "WheelSlot",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 3,
           "comment": "rotation",
           "switchChannels": {
@@ -1064,7 +1011,6 @@
         {
           "dmxRange": [40, 43],
           "type": "WheelSlot",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 4,
           "comment": "rotation",
           "switchChannels": {
@@ -1075,7 +1021,6 @@
         {
           "dmxRange": [44, 47],
           "type": "WheelSlot",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 5,
           "comment": "rotation",
           "switchChannels": {
@@ -1086,7 +1031,6 @@
         {
           "dmxRange": [48, 51],
           "type": "WheelSlot",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 6,
           "comment": "rotation",
           "switchChannels": {
@@ -1097,7 +1041,6 @@
         {
           "dmxRange": [52, 55],
           "type": "WheelSlot",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 7,
           "comment": "rotation",
           "switchChannels": {
@@ -1108,7 +1051,6 @@
         {
           "dmxRange": [56, 59],
           "type": "WheelSlot",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 8,
           "comment": "rotation",
           "switchChannels": {
@@ -1119,7 +1061,6 @@
         {
           "dmxRange": [60, 69],
           "type": "WheelShake",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 2,
           "comment": "indexing",
           "switchChannels": {
@@ -1130,7 +1071,6 @@
         {
           "dmxRange": [70, 79],
           "type": "WheelShake",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 3,
           "comment": "indexing",
           "switchChannels": {
@@ -1141,7 +1081,6 @@
         {
           "dmxRange": [80, 89],
           "type": "WheelShake",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 4,
           "comment": "indexing",
           "switchChannels": {
@@ -1152,7 +1091,6 @@
         {
           "dmxRange": [90, 99],
           "type": "WheelShake",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 5,
           "comment": "indexing",
           "switchChannels": {
@@ -1163,7 +1101,6 @@
         {
           "dmxRange": [100, 109],
           "type": "WheelShake",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 6,
           "comment": "indexing",
           "switchChannels": {
@@ -1174,7 +1111,6 @@
         {
           "dmxRange": [110, 119],
           "type": "WheelShake",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 7,
           "comment": "indexing",
           "switchChannels": {
@@ -1185,7 +1121,6 @@
         {
           "dmxRange": [120, 129],
           "type": "WheelShake",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 8,
           "comment": "indexing",
           "switchChannels": {
@@ -1196,7 +1131,6 @@
         {
           "dmxRange": [130, 139],
           "type": "WheelShake",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 2,
           "comment": "rotation",
           "switchChannels": {
@@ -1207,7 +1141,6 @@
         {
           "dmxRange": [140, 149],
           "type": "WheelShake",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 3,
           "comment": "rotation",
           "switchChannels": {
@@ -1218,7 +1151,6 @@
         {
           "dmxRange": [150, 159],
           "type": "WheelShake",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 4,
           "comment": "rotation",
           "switchChannels": {
@@ -1229,7 +1161,6 @@
         {
           "dmxRange": [160, 169],
           "type": "WheelShake",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 5,
           "comment": "rotation",
           "switchChannels": {
@@ -1240,7 +1171,6 @@
         {
           "dmxRange": [170, 179],
           "type": "WheelShake",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 6,
           "comment": "rotation",
           "switchChannels": {
@@ -1251,7 +1181,6 @@
         {
           "dmxRange": [180, 189],
           "type": "WheelShake",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 7,
           "comment": "rotation",
           "switchChannels": {
@@ -1262,7 +1191,6 @@
         {
           "dmxRange": [190, 199],
           "type": "WheelShake",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 8,
           "comment": "rotation",
           "switchChannels": {
@@ -1273,7 +1201,6 @@
         {
           "dmxRange": [200, 201],
           "type": "WheelSlot",
-          "wheel": "Rotating Gobo Wheel",
           "slotNumber": 1,
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Indexing",
@@ -1283,7 +1210,6 @@
         {
           "dmxRange": [202, 221],
           "type": "WheelRotation",
-          "wheel": "Rotating Gobo Wheel",
           "speedStart": "fast CW",
           "speedEnd": "slow CW",
           "switchChannels": {
@@ -1294,7 +1220,6 @@
         {
           "dmxRange": [222, 223],
           "type": "WheelRotation",
-          "wheel": "Rotating Gobo Wheel",
           "speed": "stop",
           "switchChannels": {
             "Rotating Gobo Control": "Rotating Gobo Indexing",
@@ -1304,7 +1229,6 @@
         {
           "dmxRange": [224, 243],
           "type": "WheelRotation",
-          "wheel": "Rotating Gobo Wheel",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW",
           "switchChannels": {
@@ -1710,9 +1634,9 @@
         "CTO Filter",
         "CMY Macros",
         "Effect Speed",
-        "Static Gobos",
-        "Static Gobos fine",
-        "Rotating Gobos",
+        "Static Gobo Wheel",
+        "Static Gobo Wheel fine",
+        "Rotating Gobo Wheel",
         "Rotating Gobo Control",
         "Rotating Gobo Control fine",
         "Prism",
@@ -1748,8 +1672,8 @@
         "CTO Filter",
         "CMY Macros",
         "Effect Speed",
-        "Static Gobos",
-        "Rotating Gobos",
+        "Static Gobo Wheel",
+        "Rotating Gobo Wheel",
         "Rotating Gobo Control",
         "Prism",
         "Prism Rotation",
@@ -1778,8 +1702,8 @@
         "CTO Filter",
         "CMY Macros",
         "Effect Speed",
-        "Static Gobos",
-        "Rotating Gobos",
+        "Static Gobo Wheel",
+        "Rotating Gobo Wheel",
         "Rotating Gobo Control",
         "Prism",
         "Prism Rotation",

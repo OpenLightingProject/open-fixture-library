@@ -209,60 +209,51 @@
         }
       ]
     },
-    "Gobo": {
+    "Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 7],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 1
         },
         {
           "dmxRange": [8, 15],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 2
         },
         {
           "dmxRange": [16, 23],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 3
         },
         {
           "dmxRange": [24, 31],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 4
         },
         {
           "dmxRange": [32, 39],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 5
         },
         {
           "dmxRange": [40, 47],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 6
         },
         {
           "dmxRange": [48, 55],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 7
         },
         {
           "dmxRange": [56, 63],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 8
         },
         {
           "dmxRange": [64, 127],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel",
           "slotNumberStart": 2,
           "slotNumberEnd": 8,
           "helpWanted": "At which DMX values can which Gobos be selected?"
@@ -270,7 +261,6 @@
         {
           "dmxRange": [128, 255],
           "type": "WheelRotation",
-          "wheel": "Gobo Wheel",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         }
@@ -372,7 +362,7 @@
         "Pan",
         "Tilt",
         "Color Wheel",
-        "Gobo",
+        "Gobo Wheel",
         "Strobe",
         "Dimmer",
         "Horizontal Vertical Run",
@@ -388,7 +378,7 @@
         "Tilt",
         "Tilt fine",
         "Color Wheel",
-        "Gobo",
+        "Gobo Wheel",
         "Strobe",
         "Dimmer",
         "Horizontal Vertical Run",

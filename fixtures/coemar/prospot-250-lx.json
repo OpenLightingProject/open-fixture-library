@@ -375,104 +375,88 @@
         }
       ]
     },
-    "Colors": {
+    "Color Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 4],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
           "slotNumber": 1
         },
         {
           "dmxRange": [5, 9],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
           "slotNumber": 2
         },
         {
           "dmxRange": [10, 14],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
           "slotNumber": 3
         },
         {
           "dmxRange": [15, 19],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
           "slotNumber": 4
         },
         {
           "dmxRange": [20, 24],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
           "slotNumber": 5
         },
         {
           "dmxRange": [25, 29],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
           "slotNumber": 6
         },
         {
           "dmxRange": [30, 34],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
           "slotNumber": 7
         },
         {
           "dmxRange": [35, 39],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
           "slotNumber": 8
         },
         {
           "dmxRange": [40, 44],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
           "slotNumber": 9
         },
         {
           "dmxRange": [45, 49],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
           "slotNumber": 10
         },
         {
           "dmxRange": [50, 54],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
           "slotNumber": 11
         },
         {
           "dmxRange": [55, 59],
           "type": "WheelSlot",
-          "wheel": "Color Wheel",
           "slotNumber": 12
         },
         {
           "dmxRange": [60, 127],
           "type": "WheelRotation",
-          "wheel": "Color Wheel",
           "angleStart": "0deg",
           "angleEnd": "360deg"
         },
         {
           "dmxRange": [128, 190],
           "type": "WheelRotation",
-          "wheel": "Color Wheel",
           "speedStart": "fast CW",
           "speedEnd": "slow CW"
         },
         {
           "dmxRange": [191, 192],
           "type": "WheelRotation",
-          "wheel": "Color Wheel",
           "speed": "stop"
         },
         {
           "dmxRange": [193, 255],
           "type": "WheelRotation",
-          "wheel": "Color Wheel",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         }
@@ -922,7 +906,7 @@
         "Gobo stencil rotation angle",
         "Gobo stencil rotation speed",
         "Prism",
-        "Colors",
+        "Color Wheel",
         "Gobo shake / Blackout effect",
         "Gobo shake amplitude",
         "Lamp on / Motor reset"
@@ -938,7 +922,7 @@
         "Tilt fine",
         "Pan / Tilt Speed (Emulation mode)",
         "Lamp on / Fan speed",
-        "Colors",
+        "Color Wheel",
         null,
         "Effect wheel",
         "3 facet prism rotation",

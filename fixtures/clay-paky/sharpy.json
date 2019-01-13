@@ -416,140 +416,118 @@
         "type": "Intensity"
       }
     },
-    "Static Gobo Change": {
+    "Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 3],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 1
         },
         {
           "dmxRange": [4, 7],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 2
         },
         {
           "dmxRange": [8, 11],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 3
         },
         {
           "dmxRange": [12, 15],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 4
         },
         {
           "dmxRange": [16, 19],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 5
         },
         {
           "dmxRange": [20, 23],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 6
         },
         {
           "dmxRange": [24, 27],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 7
         },
         {
           "dmxRange": [28, 31],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 8
         },
         {
           "dmxRange": [32, 35],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 9
         },
         {
           "dmxRange": [36, 39],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 10
         },
         {
           "dmxRange": [40, 43],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 11
         },
         {
           "dmxRange": [44, 47],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 12
         },
         {
           "dmxRange": [48, 51],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 13
         },
         {
           "dmxRange": [52, 55],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 14
         },
         {
           "dmxRange": [56, 59],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 15
         },
         {
           "dmxRange": [60, 63],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 16
         },
         {
           "dmxRange": [64, 67],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 17
         },
         {
           "dmxRange": [68, 71],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 18
         },
         {
           "dmxRange": [72, 113],
           "type": "WheelRotation",
-          "wheel": "Gobo Wheel",
           "speedStart": "-60rpm",
           "speedEnd": "-5rpm"
         },
         {
           "dmxRange": [114, 117],
           "type": "WheelRotation",
-          "wheel": "Gobo Wheel",
           "speed": "stop"
         },
         {
           "dmxRange": [118, 159],
           "type": "WheelRotation",
-          "wheel": "Gobo Wheel",
           "speedStart": "5rpm",
           "speedEnd": "60rpm"
         },
         {
           "dmxRange": [160, 166],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel",
           "slotNumber": 3,
           "shakeSpeedStart": "24bpm",
           "shakeSpeedEnd": "600bpm"
@@ -557,7 +535,6 @@
         {
           "dmxRange": [167, 172],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel",
           "slotNumber": 4,
           "shakeSpeedStart": "24bpm",
           "shakeSpeedEnd": "600bpm"
@@ -565,7 +542,6 @@
         {
           "dmxRange": [173, 179],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel",
           "slotNumber": 5,
           "shakeSpeedStart": "24bpm",
           "shakeSpeedEnd": "600bpm"
@@ -573,7 +549,6 @@
         {
           "dmxRange": [180, 185],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel",
           "slotNumber": 6,
           "shakeSpeedStart": "24bpm",
           "shakeSpeedEnd": "600bpm"
@@ -581,7 +556,6 @@
         {
           "dmxRange": [186, 191],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel",
           "slotNumber": 7,
           "shakeSpeedStart": "24bpm",
           "shakeSpeedEnd": "600bpm"
@@ -589,7 +563,6 @@
         {
           "dmxRange": [192, 198],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel",
           "slotNumber": 8,
           "shakeSpeedStart": "24bpm",
           "shakeSpeedEnd": "600bpm"
@@ -597,7 +570,6 @@
         {
           "dmxRange": [199, 204],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel",
           "slotNumber": 9,
           "shakeSpeedStart": "24bpm",
           "shakeSpeedEnd": "600bpm"
@@ -605,7 +577,6 @@
         {
           "dmxRange": [205, 211],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel",
           "slotNumber": 10,
           "shakeSpeedStart": "24bpm",
           "shakeSpeedEnd": "600bpm"
@@ -613,7 +584,6 @@
         {
           "dmxRange": [212, 217],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel",
           "slotNumber": 11,
           "shakeSpeedStart": "24bpm",
           "shakeSpeedEnd": "600bpm"
@@ -621,7 +591,6 @@
         {
           "dmxRange": [218, 223],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel",
           "slotNumber": 12,
           "shakeSpeedStart": "24bpm",
           "shakeSpeedEnd": "600bpm"
@@ -629,7 +598,6 @@
         {
           "dmxRange": [224, 230],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel",
           "slotNumber": 13,
           "shakeSpeedStart": "24bpm",
           "shakeSpeedEnd": "600bpm"
@@ -637,7 +605,6 @@
         {
           "dmxRange": [231, 236],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel",
           "slotNumber": 14,
           "shakeSpeedStart": "24bpm",
           "shakeSpeedEnd": "600bpm"
@@ -645,7 +612,6 @@
         {
           "dmxRange": [237, 243],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel",
           "slotNumber": 15,
           "shakeSpeedStart": "24bpm",
           "shakeSpeedEnd": "600bpm"
@@ -653,7 +619,6 @@
         {
           "dmxRange": [244, 249],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel",
           "slotNumber": 16,
           "shakeSpeedStart": "24bpm",
           "shakeSpeedEnd": "600bpm"
@@ -661,7 +626,6 @@
         {
           "dmxRange": [250, 255],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel",
           "slotNumber": 17,
           "shakeSpeedStart": "24bpm",
           "shakeSpeedEnd": "600bpm"
@@ -896,7 +860,7 @@
         "Color Wheel",
         "Shutter / Strobe",
         "Dimmer",
-        "Static Gobo Change",
+        "Gobo Wheel",
         "Prism Insertion",
         "Prism Rotation",
         "Effects Movement",
@@ -917,7 +881,7 @@
         "Color Wheel",
         "Shutter / Strobe",
         "Dimmer",
-        "Static Gobo Change",
+        "Gobo Wheel",
         "Prism Insertion",
         "Prism Rotation",
         "Effects Movement",

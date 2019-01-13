@@ -119,7 +119,7 @@
         }
       ]
     },
-    "Color/Gobo": {
+    "Color / Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 9],
@@ -130,49 +130,41 @@
         {
           "dmxRange": [10, 25],
           "type": "WheelSlot",
-          "wheel": "Color / Gobo Wheel",
           "slotNumber": 1
         },
         {
           "dmxRange": [26, 42],
           "type": "WheelSlot",
-          "wheel": "Color / Gobo Wheel",
           "slotNumber": 2
         },
         {
           "dmxRange": [43, 58],
           "type": "WheelSlot",
-          "wheel": "Color / Gobo Wheel",
           "slotNumber": 3
         },
         {
           "dmxRange": [59, 74],
           "type": "WheelSlot",
-          "wheel": "Color / Gobo Wheel",
           "slotNumber": 4
         },
         {
           "dmxRange": [75, 90],
           "type": "WheelSlot",
-          "wheel": "Color / Gobo Wheel",
           "slotNumber": 5
         },
         {
           "dmxRange": [91, 107],
           "type": "WheelSlot",
-          "wheel": "Color / Gobo Wheel",
           "slotNumber": 6
         },
         {
           "dmxRange": [108, 123],
           "type": "WheelSlot",
-          "wheel": "Color / Gobo Wheel",
           "slotNumber": 7
         },
         {
           "dmxRange": [124, 139],
           "type": "WheelSlot",
-          "wheel": "Color / Gobo Wheel",
           "slotNumber": 8
         },
         {
@@ -183,25 +175,21 @@
         {
           "dmxRange": [156, 172],
           "type": "WheelSlot",
-          "wheel": "Color / Gobo Wheel",
           "slotNumber": 7
         },
         {
           "dmxRange": [173, 188],
           "type": "WheelSlot",
-          "wheel": "Color / Gobo Wheel",
           "slotNumber": 6
         },
         {
           "dmxRange": [189, 220],
           "type": "WheelSlot",
-          "wheel": "Color / Gobo Wheel",
           "slotNumber": 5
         },
         {
           "dmxRange": [221, 237],
           "type": "WheelSlot",
-          "wheel": "Color / Gobo Wheel",
           "slotNumber": 3
         },
         {
@@ -248,7 +236,7 @@
       "shortName": "1CE-2ch",
       "channels": [
         "Rotation",
-        "Color/Gobo"
+        "Color / Gobo Wheel"
       ]
     },
     {
@@ -256,7 +244,7 @@
       "shortName": "HP-3ch",
       "channels": [
         "Rotation",
-        "Color/Gobo",
+        "Color / Gobo Wheel",
         "Shutter"
       ]
     }

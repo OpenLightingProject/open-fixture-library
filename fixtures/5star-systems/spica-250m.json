@@ -391,48 +391,41 @@
         }
       ]
     },
-    "Gobo": {
+    "Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 31],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 1
         },
         {
           "dmxRange": [32, 63],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 2
         },
         {
           "dmxRange": [64, 95],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 3
         },
         {
           "dmxRange": [96, 127],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 4
         },
         {
           "dmxRange": [128, 159],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 5
         },
         {
           "dmxRange": [160, 223],
           "type": "WheelSlot",
-          "wheel": "Gobo Wheel",
           "slotNumber": 6
         },
         {
           "dmxRange": [224, 255],
           "type": "WheelRotation",
-          "wheel": "Gobo Wheel",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         }
@@ -547,7 +540,7 @@
         null,
         "Prism",
         "Prism rotation",
-        "Gobo",
+        "Gobo Wheel",
         "Gobo rotation",
         null,
         "Focus",
@@ -566,7 +559,7 @@
         null,
         "Prism",
         "Prism rotation",
-        "Gobo",
+        "Gobo Wheel",
         "Gobo rotation",
         null,
         "Focus",

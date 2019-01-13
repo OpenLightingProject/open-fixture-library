@@ -78,7 +78,7 @@
         }
       ]
     },
-    "Glass Gobos": {
+    "Glass Gobo Wheel": {
       "slots": [
         {
           "type": "Open"
@@ -103,7 +103,7 @@
         }
       ]
     },
-    "Metal Gobos": {
+    "Metal Gobo Wheel": {
       "slots": [
         {
           "type": "Open"
@@ -263,54 +263,46 @@
         }
       ]
     },
-    "Glass Gobo": {
+    "Glass Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 35],
           "type": "WheelSlot",
-          "wheel": "Glass Gobos",
           "slotNumber": 1
         },
         {
           "dmxRange": [36, 71],
           "type": "WheelSlot",
-          "wheel": "Glass Gobos",
           "slotNumber": 2
         },
         {
           "dmxRange": [72, 107],
           "type": "WheelSlot",
-          "wheel": "Glass Gobos",
           "slotNumber": 3
         },
         {
           "dmxRange": [108, 143],
           "type": "WheelSlot",
-          "wheel": "Glass Gobos",
           "slotNumber": 4
         },
         {
           "dmxRange": [144, 179],
           "type": "WheelSlot",
-          "wheel": "Glass Gobos",
           "slotNumber": 5
         },
         {
           "dmxRange": [180, 215],
           "type": "WheelSlot",
-          "wheel": "Glass Gobos",
           "slotNumber": 6
         },
         {
           "dmxRange": [216, 219],
           "type": "WheelSlot",
-          "wheel": "Glass Gobos",
           "slotNumber": 7
         },
         {
           "dmxRange": [220, 255],
           "type": "WheelRotation",
-          "wheel": "Glass Gobos",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         }
@@ -321,7 +313,7 @@
         {
           "dmxRange": [0, 89],
           "type": "WheelSlotRotation",
-          "wheel": "Glass Gobos",
+          "wheel": "Glass Gobo Wheel",
           "angleStart": "0deg",
           "angleEnd": "360deg",
           "helpWanted": "Is this capability correct?"
@@ -329,7 +321,7 @@
         {
           "dmxRange": [90, 167],
           "type": "WheelSlotRotation",
-          "wheel": "Glass Gobos",
+          "wheel": "Glass Gobo Wheel",
           "speedStart": "fast CCW",
           "speedEnd": "slow CCW",
           "helpWanted": "Does the Gobo still rotate at DMX value 167?"
@@ -337,13 +329,13 @@
         {
           "dmxRange": [168, 178],
           "type": "WheelSlotRotation",
-          "wheel": "Glass Gobos",
+          "wheel": "Glass Gobo Wheel",
           "speed": "stop"
         },
         {
           "dmxRange": [179, 255],
           "type": "WheelSlotRotation",
-          "wheel": "Glass Gobos",
+          "wheel": "Glass Gobo Wheel",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         }
@@ -359,7 +351,7 @@
         {
           "dmxRange": [11, 250],
           "type": "WheelShake",
-          "wheel": "Glass Gobos",
+          "wheel": "Glass Gobo Wheel",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast"
         },
@@ -369,66 +361,56 @@
         }
       ]
     },
-    "Metal Gobo": {
+    "Metal Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 26],
           "type": "WheelSlot",
-          "wheel": "Metal Gobos",
           "slotNumber": 1
         },
         {
           "dmxRange": [27, 53],
           "type": "WheelSlot",
-          "wheel": "Metal Gobos",
           "slotNumber": 2
         },
         {
           "dmxRange": [54, 80],
           "type": "WheelSlot",
-          "wheel": "Metal Gobos",
           "slotNumber": 3
         },
         {
           "dmxRange": [81, 107],
           "type": "WheelSlot",
-          "wheel": "Metal Gobos",
           "slotNumber": 4
         },
         {
           "dmxRange": [108, 134],
           "type": "WheelSlot",
-          "wheel": "Metal Gobos",
           "slotNumber": 5
         },
         {
           "dmxRange": [135, 161],
           "type": "WheelSlot",
-          "wheel": "Metal Gobos",
           "slotNumber": 6
         },
         {
           "dmxRange": [162, 188],
           "type": "WheelSlot",
-          "wheel": "Metal Gobos",
           "slotNumber": 7
         },
         {
           "dmxRange": [189, 214],
           "type": "WheelSlot",
-          "wheel": "Metal Gobos",
           "slotNumber": 8
         },
         {
           "dmxRange": [215, 219],
           "type": "WheelSlot",
-          "wheel": "Metal Gobos",
           "slotNumber": 9
         },
         {
           "dmxRange": [220, 255],
           "type": "WheelRotation",
-          "wheel": "Metal Gobos",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         }
@@ -444,7 +426,7 @@
         {
           "dmxRange": [11, 250],
           "type": "WheelShake",
-          "wheel": "Metal Gobos",
+          "wheel": "Metal Gobo Wheel",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast"
         },
@@ -515,10 +497,10 @@
         "Dimmer",
         "Strobe",
         "Color Wheel",
-        "Glass Gobo",
+        "Glass Gobo Wheel",
         "Glass Gobo Rotation",
         "Glass Gobo Shake",
-        "Metal Gobo",
+        "Metal Gobo Wheel",
         "Metal Gobo Shake",
         "Focus",
         "Prism",
