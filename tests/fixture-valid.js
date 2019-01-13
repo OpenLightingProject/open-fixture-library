@@ -577,7 +577,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
          */
         function checkWheelCapability() {
           if (`wheel` in cap.jsonObject) {
-            const wheelNames = Array.isArray(cap.jsonObject.wheel) ? cap.jsonObject.wheel : [cap.jsonObject.wheel];
+            const wheelNames = [].concat(cap.jsonObject.wheel);
 
             wheelNames.forEach(wheelName => {
               const wheel = fixture.wheels.find(wheel => wheel.name === wheelName);
