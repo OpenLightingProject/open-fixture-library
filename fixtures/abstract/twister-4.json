@@ -137,34 +137,35 @@
         },
         {
           "dmxRange": [140, 155],
-          "type": "ColorWheelRotation",
-          "speed": "fast CW"
+          "type": "ColorWheelIndex",
+          "index": 8,
+          "comment": "Multicolor [Quadrant]"
         },
         {
           "dmxRange": [156, 172],
           "type": "ColorWheelIndex",
-          "index": 8,
+          "index": 6,
           "colors": ["#ff7f00"],
           "comment": "Orange [Bubbles]"
         },
         {
           "dmxRange": [173, 188],
           "type": "ColorWheelIndex",
-          "index": 9,
+          "index": 5,
           "colors": ["#00ffff"],
           "comment": "Cyan [Tunnel]"
         },
         {
           "dmxRange": [189, 220],
           "type": "ColorWheelIndex",
-          "index": 10,
+          "index": 4,
           "colors": ["#ffff00"],
           "comment": "Yellow [Triangle]"
         },
         {
           "dmxRange": [221, 237],
           "type": "ColorWheelIndex",
-          "index": 11,
+          "index": 2,
           "colors": ["#0000ff"],
           "comment": "Blue [Slash]"
         },
