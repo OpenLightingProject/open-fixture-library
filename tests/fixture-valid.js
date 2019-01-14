@@ -582,7 +582,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
             const wheelNames = [].concat(cap.jsonObject.wheel);
 
             wheelNames.forEach(wheelName => {
-              const wheel = fixture.wheels.find(wheel => wheel.name === wheelName);
+              const wheel = fixture.getWheelByName(wheelName);
               if (wheel) {
                 usedWheels.add(wheelName);
               }
@@ -988,7 +988,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   function checkUnusedWheelSlots() {
     const slotsOfUsedWheels = [];
     [...usedWheels].forEach(wheelName => {
-      const wheel = fixture.wheels.find(wheel => wheel.name === wheelName);
+      const wheel = fixture.getWheelByName(wheelName);
 
       if (wheel.type !== `AnimationGobo`) {
         slotsOfUsedWheels.push(...(wheel.slots.map(

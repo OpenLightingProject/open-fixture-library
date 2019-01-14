@@ -1009,6 +1009,7 @@ A physical DMX device.
     * [.capabilities](#Fixture+capabilities) ⇒ [<code>array.&lt;Capability&gt;</code>](#Capability)
     * [.modes](#Fixture+modes) ⇒ [<code>array.&lt;Mode&gt;</code>](#Mode)
     * [.getLinksOfType(type)](#Fixture+getLinksOfType) ⇒ <code>array.&lt;string&gt;</code>
+    * [.getWheelByName(wheelName)](#Fixture+getWheelByName) ⇒ [<code>Wheel</code>](#Wheel) \| <code>null</code>
     * [.getTemplateChannelByKey(chKey)](#Fixture+getTemplateChannelByKey) ⇒ [<code>TemplateChannel</code>](#TemplateChannel) \| <code>null</code>
     * [.getChannelByKey(key)](#Fixture+getChannelByKey) ⇒ [<code>AbstractChannel</code>](#AbstractChannel) \| <code>null</code>
 
@@ -1261,6 +1262,16 @@ Template channels are used to automatically generate channels.
 | Param | Type | Description |
 | --- | --- | --- |
 | type | <code>string</code> | The type of the links that should be returned. |
+
+<a name="Fixture+getWheelByName"></a>
+
+### fixture.getWheelByName(wheelName) ⇒ [<code>Wheel</code>](#Wheel) \| <code>null</code>
+**Kind**: instance method of [<code>Fixture</code>](#Fixture)  
+**Returns**: [<code>Wheel</code>](#Wheel) \| <code>null</code> - The wheel with the given name, or null if no wheel with the given name exists.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| wheelName | <code>string</code> | The name of the wheel. |
 
 <a name="Fixture+getTemplateChannelByKey"></a>
 
