@@ -83,7 +83,7 @@ If `constant` is `true`, the channel should be set to a static value in the oper
 
 #### Capabilities
 
-A channel can do different things depending on which range its DMX value currently is in. Those ranges, that can be triggered manually in many programs, are called capabilities. Choose a `type` to declare which property of the fixture is changed by this capability, e.g. `ShutterOpen`, `Intensity` or `Pan`. Depending on the type, there exist more properties that further describe the capability, like the pan angle, the strobe rate or the gobo wheel index. Most of these are physical entities that require to be entered using specific units (like `"10.5Hz"` or `"100%"`). Some entities offer keywords to replace specific percentage values, e.g. Distance: `"near"` = `"1%"`, `"far"` = `"100%"`. See the [full list of units, entities and capability types with their properties](capability-types.md). Example:
+A channel can do different things depending on which range its DMX value currently is in. Those ranges that can be triggered manually in many programs are called capabilities. Choose a `type` to declare which property of the fixture is changed by this capability, e.g. `ShutterOpen`, `Intensity` or `Pan`. Depending on the type, there exist more properties that further describe the capability, like the pan angle, the strobe rate or the wheel slot number. Most of these are physical entities that require to be entered using specific units (like `"10.5Hz"` or `"100%"`). Some entities offer keywords to replace specific percentage values, e.g. Distance: `"near"` = `"1%"`, `"far"` = `"100%"`. See the [full list of units, entities and capability types with their properties](capability-types.md). Example:
 
 ```js
 "availableChannels": {
@@ -336,9 +336,9 @@ In wheel-related capabilities, the `wheel` property references the wheel by its 
 `WheelSlot` capabilities select a slot from the wheel. If the capability selects the place in between two slots, the `slotNumber` property can be set to a fractional value (or be proportional as `slotNumberStart` / `slotNumberEnd`). See also [footnote *slotNumber* in the capability types documentation](capability-types.md#property-slotnumber).
 
 `WheelShake` capabilities set the shaking (i.e. continuously rotating back and forth) of the whole wheel around the currently selected slot. A slot can also be activated directly by setting the `slotNumber` property like in `WheelSlot` capabilities.  
-By setting the property `isShaking` is to `slot`, one can specify that only the currently selected slot rotates back and forth around its center (sometimes called *Gobo bounce effect*) instead of the whole wheel.
+By setting the property `isShaking` to `slot`, one can specify that only the currently selected slot rotates back and forth around its center (sometimes called *Gobo bounce effect*) instead of the whole wheel.
 
-`WheelSlotRotation` capabilities control the rotation of the slot (i.e. Gobo, Prism, etc.). A slot can also be activated directly by setting the `slotNumber` property like in `WheelSlot` capabilities.
+`WheelSlotRotation` capabilities control the rotation of the currently selected slot (i.e. Gobo, Prism, etc.). A slot can also be activated directly by setting the `slotNumber` property like in `WheelSlot` capabilities.
 
 `WheelRotation` capabilities rotate the whole wheel, i.e. over all slots.
 
