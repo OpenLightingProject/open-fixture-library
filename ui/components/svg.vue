@@ -148,31 +148,43 @@ function getColorCircle(colors, title) {
   // use current fill color as background / border
   str += `<circle cx="0" cy="0" r="${radius + 1}" />`;
 
-  if (colors.length === 1) {
-    str += `<circle cx="0" cy="0" r="${radius}" fill="${colors[0]}" />`;
-  }
-  else {
-    const slicePercent = 1.0 / colors.length;
-
-    const xAxisRotation = 0;
-    const largeArcFlag = 0;
-    const sweepFlag = 1;
-
-    for (let i = 0; i < colors.length; i++) {
-      const [startX, startY] = getCoordinatesForPercent(i * slicePercent, radius);
-      const [endX, endY] = getCoordinatesForPercent((i + 1) * slicePercent, radius);
-
-      const pathMove = `M ${startX} ${startY}`;
-      const pathArc = `A ${radius} ${radius} ${xAxisRotation} ${largeArcFlag} ${sweepFlag} ${endX} ${endY}`;
-      const pathLine = `L 0 0`;
-
-      str += `<path d="${pathMove} ${pathArc} ${pathLine}" fill="${colors[i]}" />`;
-    }
-  }
+  str += getColorCircleSvgFragment(colors, radius);
 
   str += `</svg>`;
 
   return str;
+}
+
+
+/**
+ * @param {array.<string>} colors An array of hex colors to fill into the circle.
+ * @param {number} radius The radius of the circle.
+ * @returns {string} A string containing one SVG <circle> element or multiple SVG <path> elements.
+ */
+export function getColorCircleSvgFragment(colors, radius) {
+  if (colors.length === 1) {
+    return `<circle cx="0" cy="0" r="${radius}" fill="${colors[0]}" />`;
+  }
+
+  let svgStr = ``;
+  const slicePercent = 1.0 / colors.length;
+
+  const xAxisRotation = 0;
+  const largeArcFlag = 0;
+  const sweepFlag = 1;
+
+  for (let i = 0; i < colors.length; i++) {
+    const [startX, startY] = getCoordinatesForPercent(i * slicePercent, radius);
+    const [endX, endY] = getCoordinatesForPercent((i + 1) * slicePercent, radius);
+
+    const pathMove = `M ${startX} ${startY}`;
+    const pathArc = `A ${radius} ${radius} ${xAxisRotation} ${largeArcFlag} ${sweepFlag} ${endX} ${endY}`;
+    const pathLine = `L 0 0`;
+
+    svgStr += `<path d="${pathMove} ${pathArc} ${pathLine}" fill="${colors[i]}" />`;
+  }
+
+  return svgStr;
 }
 
 

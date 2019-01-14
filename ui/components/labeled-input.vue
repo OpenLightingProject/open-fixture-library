@@ -32,6 +32,8 @@
         <div v-else-if="fieldErrors[`entities-have-same-units`]">Please use the same unit or select a keyword for both entities.</div>
         <div v-else-if="fieldErrors[`valid-color-hex-list`]">Please enter a list of #rrggbb (red, green, blue) hex codes.</div>
         <div v-else-if="fieldErrors[`max-file-size`]">The file size must be less or equal to {{ fieldState.$attrs[`max-file-size`] }}.</div>
+        <div v-else-if="fieldErrors[`animation-gobo-end-without-start`]">AnimationGoboEnd slots must only be used directly after AnimationGoboStart slots.</div>
+        <div v-else-if="fieldErrors[`must-be-animation-gobo-end`]">An AnimationGoboEnd slot must be used directly after an AnimationGoboStart slot.</div>
 
         <!-- general validators -->
         <div v-else-if="fieldErrors.number">Please enter a number.</div>

@@ -20,7 +20,7 @@ To make common percentage values more readable, one can use specific keywords to
 | BeamAngle        | `deg`, `%`       | –            | –            | closed        | narrow                     | wide
 | SwingAngle       | `deg`, `%`       | –            | –            | off           | narrow                     | wide
 | Parameter        | (no unit), `%`   | –            | –            | off / instant | low / slow / small / short | high / fast / big / long
-| Index            | (no unit)        | –            | –            | –             | –                          | –
+| SlotNumber       | (no unit)        | –            | –            | –             | –                          | –
 | Percent          | `%`              | –            | –            | off           | low                        | high
 | Insertion        | `%`              | –            | –            | out           | –                          | in
 | IrisPercent      | `%`              | –            | –            | closed        | –                          | open
@@ -35,14 +35,13 @@ To make common percentage values more readable, one can use specific keywords to
 * [Intensity](#intensity)
 * [ColorIntensity](#colorintensity)
 * [ColorPreset](#colorpreset)
-* [ColorWheelIndex](#colorwheelindex) / [ColorWheelRotation](#colorwheelrotation)
 * [ColorTemperature](#colortemperature)
 * [Pan](#pan) / [PanContinuous](#pancontinuous)
 * [Tilt](#tilt) / [TiltContinuous](#tiltcontinuous)
 * [PanTiltSpeed](#pantiltspeed)
+* [WheelSlot](#wheelslot) / [WheelShake](#wheelshake) / [WheelSlotRotation](#wheelslotrotation) / [WheelRotation](#wheelrotation)
 * [Effect](#effect) / [EffectSpeed](#effectspeed) / [EffectDuration](#effectduration) / [EffectParameter](#effectparameter)
 * [SoundSensitivity](#soundsensitivity)
-* [GoboIndex](#goboindex) / [GoboShake](#goboshake) / [GoboStencilRotation](#gobostencilrotation) / [GoboWheelRotation](#gobowheelrotation)
 * [Focus](#focus)
 * [Zoom](#zoom)
 * [Iris](#iris) / [IrisEffect](#iriseffect)
@@ -136,31 +135,6 @@ To make common percentage values more readable, one can use specific keywords to
   <td valign="top"></td>
 </tr>
 <tr>
-  <th valign="top" scope="row" id="colorwheelindex" rowspan="3">ColorWheelIndex</th>
-  <td valign="top">index<br><sub>:star2: required</sub></td>
-  <td valign="top">Entity <em>Index</em></td>
-  <td valign="top"><a href="#property-index">see footnote <em>index</em></a></td>
-</tr>
-  <td valign="top">colors<br><sub>:grey_question: optional</sub></td>
-  <td valign="top">array of individual color beams as hex code</td>
-  <td valign="top"><a href="#property-colors">see footnote <em>colors</em></a></td>
-</tr>
-<tr>
-  <td valign="top">colorTemperature<br><sub>:grey_question: optional</sub></td>
-  <td valign="top">Entity <em>ColorTemperature</em></td>
-  <td valign="top"></td>
-</tr>
-<tr>
-  <th valign="top" scope="row" id="colorwheelrotation" rowspan="2">ColorWheelRotation</th>
-  <td valign="top">speed<br><sub>:vs: required</sub></td>
-  <td valign="top">Entity <em>RotationSpeed</em></td>
-  <td rowspan="2">either <em>speed</em> or <em>angle</em> is allowed</td>
-</tr>
-<tr>
-  <td valign="top">angle<br><sub>:vs: required</sub></td>
-  <td valign="top">Entity <em>RotationAngle</em></td>
-</tr>
-<tr>
   <th valign="top" scope="row" id="colortemperature">ColorTemperature</th>
   <td valign="top">colorTemperature<br><sub>:star2: required</sub></td>
   <td valign="top">Entity <em>ColorTemperature</em></td>
@@ -199,6 +173,73 @@ To make common percentage values more readable, one can use specific keywords to
 <tr>
   <td valign="top">duration<br><sub>:vs: required</sub></td>
   <td valign="top">Entity <em>Duration</em></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="wheelslot" rowspan="2">WheelSlot</th>
+  <td valign="top">wheel<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Wheel name</td>
+  <td valign="top">Defaults to channel name</td>
+</tr>
+<tr>
+  <td valign="top">slotNumber<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>SlotNumber</em></td>
+  <td valign="top"><a href="#property-slotnumber">see footnote <em>slotNumber</em></a></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="wheelshake" rowspan="4">WheelShake</th>
+  <td valign="top">wheel<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Wheel name or array of wheel names</td>
+  <td valign="top">Defaults to channel name. Array not allowed when <em>slotNumber</em> is set.</td>
+</tr>
+<tr>
+  <td valign="top">slotNumber<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>Slot</em></td>
+  <td valign="top"><a href="#property-slotnumber">see footnote <em>slotNumber</em></a></td>
+</tr>
+<tr>
+  <td valign="top">shakeSpeed<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>Speed</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <td valign="top">shakeAngle<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>SwingAngle</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="wheelslotrotation" rowspan="4">WheelSlotRotation</th>
+  <td valign="top">wheel<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Wheel name or array of wheel names</td>
+  <td valign="top">Defaults to channel name. Array not allowed when <em>slotNumber</em> is set.</td>
+</tr>
+<tr>
+  <td valign="top">slotNumber<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Entity <em>Slot</em></td>
+  <td valign="top"><a href="#property-slotnumber">see footnote <em>slotNumber</em></a></td>
+</tr>
+<tr>
+  <td valign="top">speed<br><sub>:vs: required</sub></td>
+  <td valign="top">Entity <em>RotationSpeed</em></td>
+  <td rowspan="2">either <em>speed</em> or <em>angle</em> is allowed</td>
+</tr>
+<tr>
+  <td valign="top">angle<br><sub>:vs: required</sub></td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="wheelrotation" rowspan="3">WheelRotation</th>
+  <td valign="top">wheel<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">Wheel name or array of wheel names</td>
+  <td valign="top">Defaults to channel name.</td>
+</tr>
+<tr>
+  <td valign="top">speed<br><sub>:vs: required</sub></td>
+  <td valign="top">Entity <em>RotationSpeed</em></td>
+  <td rowspan="2">either <em>speed</em> or <em>angle</em> is allowed</td>
+</tr>
+<tr>
+  <td valign="top">angle<br><sub>:vs: required</sub></td>
+  <td valign="top">Entity <em>RotationAngle</em></td>
 </tr>
 <tr>
   <th valign="top" scope="row" id="effect" rowspan="7">Effect</th>
@@ -258,53 +299,6 @@ To make common percentage values more readable, one can use specific keywords to
   <td valign="top">soundSensitivity<br><sub>:star2: required</sub></td>
   <td valign="top">Entity <em>Percent</em></td>
   <td valign="top"></td>
-</tr>
-<tr>
-  <th valign="top" scope="row" id="goboindex" rowspan="3">GoboIndex</th>
-  <td valign="top">index<br><sub>:star2: required</sub></td>
-  <td valign="top">Entity <em>Index</em></td>
-  <td valign="top"><a href="#property-index">see footnote <em>index</em></a></td>
-</tr>
-<tr>
-  <td valign="top">shakeSpeed<br><sub>:grey_question: optional</sub></td>
-  <td valign="top">Entity <em>Speed</em></td>
-  <td valign="top"></td>
-</tr>
-<tr>
-  <td valign="top">shakeAngle<br><sub>:grey_question: optional</sub></td>
-  <td valign="top">Entity <em>SwingAngle</em></td>
-  <td valign="top"></td>
-</tr>
-<tr>
-  <th valign="top" scope="row" id="goboshake" rowspan="2">GoboShake</th>
-  <td valign="top">shakeSpeed<br><sub>:grey_question: optional</sub></td>
-  <td valign="top">Entity <em>Speed</em></td>
-  <td valign="top"></td>
-</tr>
-<tr>
-  <td valign="top">shakeAngle<br><sub>:grey_question: optional</sub></td>
-  <td valign="top">Entity <em>SwingAngle</em></td>
-  <td valign="top"></td>
-</tr>
-<tr>
-  <th valign="top" scope="row" id="gobostencilrotation" rowspan="2">GoboStencilRotation</th>
-  <td valign="top">speed<br><sub>:vs: required</sub></td>
-  <td valign="top">Entity <em>RotationSpeed</em></td>
-  <td rowspan="2">either <em>speed</em> or <em>angle</em> is allowed</td>
-</tr>
-<tr>
-  <td valign="top">angle<br><sub>:vs: required</sub></td>
-  <td valign="top">Entity <em>RotationAngle</em></td>
-</tr>
-<tr>
-  <th valign="top" scope="row" id="gobowheelrotation" rowspan="2">GoboWheelRotation</th>
-  <td valign="top">speed<br><sub>:vs: required</sub></td>
-  <td valign="top">Entity <em>RotationSpeed</em></td>
-  <td rowspan="2">either <em>speed</em> or <em>angle</em> is allowed</td>
-</tr>
-<tr>
-  <td valign="top">angle<br><sub>:vs: required</sub></td>
-  <td valign="top">Entity <em>RotationAngle</em></td>
 </tr>
 <tr>
   <th valign="top" scope="row" id="focus">Focus</th>
@@ -480,15 +474,15 @@ Properties that must be stepped (they have a :feet: footsteps icon next to them)
 "Individual color beams" means that one beam is visually distinguishable from the others, i.e.:
 
   * A Red/Green/Blue/White/Amber LED produces a single color beam, as all these color components are mixed together. For a color preset "Red+Blue", `colors` should be set to `["#ff00ff"]`.
-  * A laser device has seperate light beams that don't mix. If red and green lasers are active, `colors` should be set to `["#ff0000", "#00ff00"]`.
+  * A laser device has separate light beams that don't mix. If red and green lasers are active, `colors` should be set to `["#ff0000", "#00ff00"]`.
   * UV is always counted as a separate color as the ultraviolet light doesn't really mix with normal RGB colors. For a color preset "Red+Green+UV", `colors` should be set to `["#ffff00", "UV"]`.
 
 
-#### Property *index*
+#### Property *slotNumber*
 
-Use zero-based numbering (e.g. `0` for open, `1` for *Color/Gobo 1*). If the capability shows a split color/gobo, use the value halfway between them (e.g. `1.5` for *Split Color/Gobo 1/2*). If all steps in between can be selected by the proportional capability, use `indexStart` and `indexEnd` (e.g. from *Color/Gobo 1* to *Color/Gobo 2*).
+Use one-based numbering (e.g. `1` for *Open*, `2` for *Color/Gobo 1*). If the capability shows a split slot, use the value halfway between them (e.g. `2.5` for *Split Color/Gobo 1/2*). If all steps in between can be selected by the proportional capability, use `slotNumberStart` and `slotNumberEnd` (e.g. from *Color/Gobo 1* to *Color/Gobo 2*).
 
-**Note:** If there are e.g. 8 gobo slots, and a capability allows gradually selecting anything between the last slot (Gobo 7) and the first (Gobo 0) in this direction, use `"indexStart": 7, "indexEnd": 8`. If you chose `"indexEnd": 0` instead, that would indicate a rotation in the other direction.
+**Note:** If there are e.g. 8 slots, and a capability allows gradually selecting anything between the last slot (*Color/Gobo 7*) and the first (*Open*) in this direction, use `"slotNumberStart": 8, "slotNumberEnd": 9`. If you chose `"slotNumberEnd": 1` instead, that would indicate a rotation in the other direction (i.e. over all other Gobos). Likewise, `"slotNumberStart": 0, "slotNumberEnd": 1` is also allowed.
 
 
 ### How to add new capability types / type-specific properties
@@ -501,4 +495,4 @@ Use zero-based numbering (e.g. `0` for open, `1` for *Color/Gobo 1*). If the cap
 * Add new types to channel type generation (in `CoarseChannel.mjs`)
 * Update editor:
   * Create new component in `ui/components/editor-capabilities`. Make sure it has a `defaultData` object as component data.
-  * Import the new component in the [capability component](../ui/components/editor-capability.vue) and register it in its `components` section.
+  * Import the new component in the [capability component](../ui/components/editor-capability-type-data.vue) and register it in its `components` section.

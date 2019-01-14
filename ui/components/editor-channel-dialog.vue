@@ -148,7 +148,7 @@
         <app-editor-capability-wizard
           v-if="channel.wizard.show"
           :wizard="channel.wizard"
-          :capabilities="channel.capabilities"
+          :channel="channel"
           :resolution="channel.dmxValueResolution"
           :formstate="formstate"
           @close="onWizardClose" />
@@ -158,7 +158,7 @@
             v-for="(cap, index) in channel.capabilities"
             ref="capabilities"
             :key="cap.uuid"
-            :capabilities="channel.capabilities"
+            :channel="channel"
             :formstate="formstate"
             :cap-index="index"
             :resolution="channel.dmxValueResolution"
@@ -471,7 +471,11 @@ export default {
         ColorTemperature: /^(?:Colou?r Temperature(?: Correction)?|CTC|CTO|CTB)$/i,
         Pan: /^(?:Pan|Horizontal Movement)$/i,
         Tilt: /^(?:Tilt|Vertical Movement)$/i,
-        PanTiltSpeed: /^(?:Pan\/?Tilt|Movement) (?:Speed|Time|Duration)$/i,
+        PanTiltSpeed: /^(?:Pan ?\/? ?Tilt|Movement) (?:Speed|Time|Duration)$/i,
+        WheelSlot: /Wheel$|Disk$|Gobos? ?\d*$/i,
+        WheelShake: /\bShake\b/i,
+        WheelSlotRotation: /Gobo ?\d* (?:Rotation|Index)/i,
+        WheelRotation: /Wheels? (?:Rotation|Index)/i,
         EffectSpeed: /^(?:Effect|Program|Macro) Speed$/i,
         EffectDuration: /^(?:Effect|Program|Macro) (?:Time|Duration)$/i,
         SoundSensitivity: /^(?:Sound|Mic|Microphone) Sensitivity$/i,

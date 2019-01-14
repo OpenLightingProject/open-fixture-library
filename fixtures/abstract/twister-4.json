@@ -31,6 +31,54 @@
       "type": "Fixed"
     }
   },
+  "wheels": {
+    "Color / Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Red [Dot Tunnel]",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue [Slash]",
+          "colors": ["#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Green [Segment]",
+          "colors": ["#00ff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow [Triangle]",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Cyan [Tunnel]",
+          "colors": ["#00ffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange [Bubbles]",
+          "colors": ["#ff7f00"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink [Stars]",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Multicolor [Quadrant]"
+        }
+      ]
+    }
+  },
   "availableChannels": {
     "Rotation": {
       "capabilities": [
@@ -81,93 +129,68 @@
         },
         {
           "dmxRange": [10, 25],
-          "type": "ColorWheelIndex",
-          "index": 0,
-          "colors": ["#ffffff"],
-          "comment": "Open"
+          "type": "WheelSlot",
+          "slotNumber": 1
         },
         {
           "dmxRange": [26, 42],
-          "type": "ColorWheelIndex",
-          "index": 1,
-          "colors": ["#ff0000"],
-          "comment": "Red [Dot Tunnel]"
+          "type": "WheelSlot",
+          "slotNumber": 2
         },
         {
           "dmxRange": [43, 58],
-          "type": "ColorWheelIndex",
-          "index": 2,
-          "colors": ["#0000ff"],
-          "comment": "Blue [Slash]"
+          "type": "WheelSlot",
+          "slotNumber": 3
         },
         {
           "dmxRange": [59, 74],
-          "type": "ColorWheelIndex",
-          "index": 3,
-          "colors": ["#00ff00"],
-          "comment": "Green [Segment]"
+          "type": "WheelSlot",
+          "slotNumber": 4
         },
         {
           "dmxRange": [75, 90],
-          "type": "ColorWheelIndex",
-          "index": 4,
-          "colors": ["#ffff00"],
-          "comment": "Yellow [Triangle]"
+          "type": "WheelSlot",
+          "slotNumber": 5
         },
         {
           "dmxRange": [91, 107],
-          "type": "ColorWheelIndex",
-          "index": 5,
-          "colors": ["#00ffff"],
-          "comment": "Cyan [Tunnel]"
+          "type": "WheelSlot",
+          "slotNumber": 6
         },
         {
           "dmxRange": [108, 123],
-          "type": "ColorWheelIndex",
-          "index": 6,
-          "colors": ["#ff7f00"],
-          "comment": "Orange [Bubbles]"
+          "type": "WheelSlot",
+          "slotNumber": 7
         },
         {
           "dmxRange": [124, 139],
-          "type": "ColorWheelIndex",
-          "index": 7,
-          "colors": ["#ff00ff"],
-          "comment": "Pink [Stars]"
+          "type": "WheelSlot",
+          "slotNumber": 8
         },
         {
           "dmxRange": [140, 155],
-          "type": "ColorWheelIndex",
-          "index": 8,
-          "comment": "Multicolor [Quadrant]"
+          "type": "WheelSlot",
+          "slotNumber": 9
         },
         {
           "dmxRange": [156, 172],
-          "type": "ColorWheelIndex",
-          "index": 6,
-          "colors": ["#ff7f00"],
-          "comment": "Orange [Bubbles]"
+          "type": "WheelSlot",
+          "slotNumber": 7
         },
         {
           "dmxRange": [173, 188],
-          "type": "ColorWheelIndex",
-          "index": 5,
-          "colors": ["#00ffff"],
-          "comment": "Cyan [Tunnel]"
+          "type": "WheelSlot",
+          "slotNumber": 6
         },
         {
           "dmxRange": [189, 220],
-          "type": "ColorWheelIndex",
-          "index": 4,
-          "colors": ["#ffff00"],
-          "comment": "Yellow [Triangle]"
+          "type": "WheelSlot",
+          "slotNumber": 5
         },
         {
           "dmxRange": [221, 237],
-          "type": "ColorWheelIndex",
-          "index": 2,
-          "colors": ["#0000ff"],
-          "comment": "Blue [Slash]"
+          "type": "WheelSlot",
+          "slotNumber": 3
         },
         {
           "dmxRange": [238, 253],
