@@ -576,6 +576,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
          * Check that referenced wheels exist in the fixture.
          */
         function checkWheelCapability() {
+          let shouldCheckSlotNumbers = true;
+
           if (`wheel` in cap.jsonObject) {
             const wheelNames = [].concat(cap.jsonObject.wheel);
 
@@ -586,6 +588,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
               }
               else {
                 result.errors.push(`${errorPrefix} references wheel '${wheelName}' which is not defined in the fixture.`);
+                shouldCheckSlotNumbers = false;
               }
             });
 
@@ -595,12 +598,13 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           }
           else if (cap.wheels.includes(undefined)) {
             result.errors.push(`${errorPrefix} does not explicitly reference any wheel, but the default wheel '${cap._channel.name}' (through the channel name) does not exist.`);
+            shouldCheckSlotNumbers = false;
           }
           else {
             usedWheels.add(cap._channel.name);
           }
 
-          if (cap.slotNumber !== null) {
+          if (cap.slotNumber !== null && shouldCheckSlotNumbers) {
             checkSlotNumbers();
           }
 
