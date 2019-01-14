@@ -285,11 +285,7 @@ function getOflCapability(qlcPlusCapability, qlcPlusChannel, oflWheels) {
 
         const comment = getSpeedGuessedComment();
 
-        if (`speed` in cap) {
-          cap.shakeSpeed = cap.speed;
-          delete cap.speed;
-        }
-        else if (`speedStart` in cap) {
+        if (`speedStart` in cap) {
           cap.shakeSpeedStart = cap.speedStart;
           cap.shakeSpeedEnd = cap.speedEnd;
           delete cap.speedStart;
