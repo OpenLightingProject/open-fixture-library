@@ -5,7 +5,7 @@
       :formstate="formstate"
       :name="`capability${capability.uuid}-slotNumber`"
       label="Slot number"
-      hint="Leave the slot number empty if this capability enables wheel slot rotation for a WheelSlot capability in another channel."
+      hint="Leave the slot number empty if this capability doesn't select a wheel slot, but only activates wheel slot rotation for a WheelSlot capability in another channel."
       style="display: inline-block; margin-bottom: 12px;">
       <app-editor-proportional-capability-data-switcher
         :capability="capability"

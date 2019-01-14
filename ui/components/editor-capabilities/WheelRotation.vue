@@ -27,7 +27,8 @@
         ref="speedOrAngleInput"
         :capability="capability"
         :formstate="formstate"
-        :property-name="capability.typeData.speedOrAngle" />
+        :property-name="capability.typeData.speedOrAngle"
+        :required="true" />
 
     </app-labeled-input>
 
@@ -72,6 +73,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+      hint: `Rotation of the whole wheel (i.e. over all wheel slots). Use WheelSlotRotation if only the slot itself (e.g. a Gobo) rotates in this capability.`,
       defaultData: {
         speedOrAngle: `speed`,
         speed: null,
