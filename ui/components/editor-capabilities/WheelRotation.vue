@@ -85,7 +85,7 @@ export default {
     };
   },
   computed: {
-    resetProp() {
+    resetProps() {
       const resetProp = this.capability.typeData.speedOrAngle === `speed` ? `angle` : `speed`;
 
       return [resetProp, `${resetProp}Start`, `${resetProp}End`];
