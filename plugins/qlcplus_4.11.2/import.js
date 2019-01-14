@@ -125,14 +125,12 @@ function getOflWheels(qlcPlusFixture) {
         Gobo: {
           isSlotType: (cap, group) => group === `Gobo`,
           addSlotProperties: (cap, slot) => {
-            slot.type = `Gobo`;
             slot.name = cap._;
           }
         },
         Color: {
           isSlotType: (cap, group) => group === `Colour`,
           addSlotProperties: (cap, slot) => {
-            slot.type = `Color`;
             slot.name = cap._;
 
             if (`Color` in cap.$) {
@@ -147,27 +145,29 @@ function getOflWheels(qlcPlusFixture) {
         Prism: {
           isSlotType: (cap, group) => group === `Prism`,
           addSlotProperties: (cap, slot) => {
-            slot.type = `Prism`;
+            slot.name = cap._;
+          }
+        },
+
+        // default (has to be the last element!)
+        Unknown: {
+          isSlotType: (cap, group) => true,
+          addSlotProperties: (cap, slot) => {
             slot.name = cap._;
           }
         }
       };
 
 
-      const slot = {};
-
       const slotType = Object.keys(slotTypeFunctions).find(
         slotType => slotTypeFunctions[slotType].isSlotType(capability, qlcPlusChannel.Group[0]._)
       );
 
-      if (slotType) {
-        slot.type = slotType;
-        slotTypeFunctions[slotType].addSlotProperties(capability, slot);
-      }
-      else {
-        slot.type = `Unknown`;
-        slot.name = capability._;
-      }
+      const slot = {
+        type: slotType
+      };
+
+      slotTypeFunctions[slotType].addSlotProperties(capability, slot);
 
       slots.push(slot);
     });
