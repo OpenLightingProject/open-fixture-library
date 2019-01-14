@@ -281,10 +281,10 @@ const gdtfAttributes = {
     oflProperty: `slotNumber`,
     defaultPhysicalEntity: `None`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
-      const gdtfIndex = parseInt(gdtfCapability.$.WheelSlotIndex);
+      const gdtfSlotNumber = parseInt(gdtfCapability.$.WheelSlotIndex);
 
-      let slotNumberStart = gdtfIndex;
-      let slotNumberEnd = gdtfIndex;
+      let slotNumberStart = gdtfSlotNumber;
+      let slotNumberEnd = gdtfSlotNumber;
 
       const physicalFrom = gdtfCapability._physicalFrom;
       const physicalTo = gdtfCapability._physicalTo;
@@ -301,12 +301,12 @@ const gdtfAttributes = {
       capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
     },
     afterPhysicalPropertyHook(capability, gdtfCapability) {
-      const gdtfIndex = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
+      const gdtfSlotIndex = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
 
       if (`Wheel` in gdtfCapability._channelFunction.$) {
         const wheelReference = gdtfCapability._channelFunction.$.Wheel;
         const gdtfWheel = followXmlNodeReference(gdtfCapability._fixture.Wheels[0], wheelReference);
-        const gdtfSlot = gdtfWheel.Slot[gdtfIndex];
+        const gdtfSlot = gdtfWheel.Slot[gdtfSlotIndex];
 
         if (gdtfSlot && gdtfCapability.$.Name === gdtfSlot.$.Name) {
           // clear comment
@@ -881,10 +881,10 @@ const gdtfAttributes = {
     oflProperty: `slotNumber`,
     defaultPhysicalEntity: `None`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
-      const gdtfIndex = parseInt(gdtfCapability.$.WheelSlotIndex);
+      const gdtfSlotNumber = parseInt(gdtfCapability.$.WheelSlotIndex);
 
-      let slotNumberStart = gdtfIndex;
-      let slotNumberEnd = gdtfIndex;
+      let slotNumberStart = gdtfSlotNumber;
+      let slotNumberEnd = gdtfSlotNumber;
 
       const physicalFrom = gdtfCapability._physicalFrom;
       const physicalTo = gdtfCapability._physicalTo;
@@ -901,12 +901,12 @@ const gdtfAttributes = {
       capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
     },
     afterPhysicalPropertyHook(capability, gdtfCapability) {
-      const gdtfIndex = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
+      const gdtfSlotIndex = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
 
       if (`Wheel` in gdtfCapability._channelFunction.$) {
         const wheelReference = gdtfCapability._channelFunction.$.Wheel;
         const gdtfWheel = followXmlNodeReference(gdtfCapability._fixture.Wheels[0], wheelReference);
-        const gdtfSlot = gdtfWheel.Slot[gdtfIndex];
+        const gdtfSlot = gdtfWheel.Slot[gdtfSlotIndex];
 
         if (gdtfSlot && gdtfCapability.$.Name === gdtfSlot.$.Name) {
           // clear comment
@@ -971,13 +971,14 @@ const gdtfAttributes = {
   Gobo1Shake: {
     // Control the frequency of the shake of gobo wheel 1.
     inheritFrom: `Gobo1`,
+    oflType: `WheelShake`,
     oflProperty: `shakeSpeed`,
     defaultPhysicalEntity: `Frequency`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
-      const gdtfIndex = parseInt(gdtfCapability.$.WheelSlotIndex);
+      const gdtfSlotNumber = parseInt(gdtfCapability.$.WheelSlotIndex);
 
       capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
-      capability.slotNumber = gdtfIndex;
+      capability.slotNumber = gdtfSlotNumber;
     }
   },
   Gobo1Spin: {
@@ -996,7 +997,7 @@ const gdtfAttributes = {
   },
   Gobo1WheelShake: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1Shake` // there seems to be no differentiation between WheelShake and WheelSlotShake
+    inheritFrom: `Gobo1Shake` // there seems to be no GDTF attribute to specify wheel slot shake, so both Gobo1Shake and Gobo1WheelShake shake the wheel
   },
   Gobo1WheelSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd

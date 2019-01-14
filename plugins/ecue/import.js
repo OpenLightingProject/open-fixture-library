@@ -446,7 +446,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
             SoundSensitivity: /\b(?:sound|mic|microphone) sensitivity\b/,
             WheelShake: /\bgobo shake\b/,
             WheelSlotRotation: /\bgobo rot(?:ation)?\b/,
-            WheelRotation: /\bwheel rot(?:ation)?\b/,
+            WheelRotation: /wheel rot(?:ation)?\b/,
             WheelSlot: /\bgobo\b/,
             Focus: /\bfocus\b/,
             Zoom: /\bzoom\b/,

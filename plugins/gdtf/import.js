@@ -188,6 +188,9 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
           if (name === `Open`) {
             slot.type = `Open`;
           }
+          else if (name === `Closed`) {
+            slot.type = `Closed`;
+          }
           else if (`Color` in gdtfSlot.$) {
             slot.type = `Color`;
             slot.name = name;
