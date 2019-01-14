@@ -7,12 +7,12 @@
       tag="span">
 
       <app-property-input-number
-        v-if="entity === `index`"
+        v-if="entity === `slotNumber`"
         ref="steppedField"
-        v-model="indexStepped"
+        v-model="slotNumberStepped"
         :name="`capability${capability.uuid}-${propertyName}`"
         :required="required"
-        :schema-property="indexSchema" />
+        :schema-property="slotNumberSchema" />
 
       <app-property-input-entity
         v-else-if="entitySchema"
@@ -42,12 +42,12 @@
         class="entity-input">
 
         <app-property-input-number
-          v-if="entity === `index`"
+          v-if="entity === `slotNumber`"
           ref="startField"
-          v-model="indexStart"
+          v-model="slotNumberStart"
           :name="`capability${capability.uuid}-${propertyName}Start`"
           :required="required"
-          :schema-property="indexSchema" />
+          :schema-property="slotNumberSchema" />
 
         <app-property-input-entity
           v-else-if="entitySchema"
@@ -94,12 +94,12 @@
         class="entity-input">
 
         <app-property-input-number
-          v-if="entity === `index`"
+          v-if="entity === `slotNumber`"
           ref="endField"
-          v-model="indexEnd"
+          v-model="slotNumberEnd"
           :name="`capability${capability.uuid}-${propertyName}End`"
           :required="required"
-          :schema-property="indexSchema" />
+          :schema-property="slotNumberSchema" />
 
         <app-property-input-entity
           v-else-if="entitySchema"
@@ -284,12 +284,12 @@ export default {
       }
     },
 
-    // index entity requires a bit of special handling
-    indexSchema() {
-      const unit = this.properties.entities.index.$ref.replace(`#/units/`, ``);
+    // slotNumber entity requires a bit of special handling
+    slotNumberSchema() {
+      const unit = this.properties.entities.slotNumber.$ref.replace(`#/units/`, ``);
       return this.properties.units[unit];
     },
-    indexStepped: {
+    slotNumberStepped: {
       get() {
         return this.capability.typeData[this.propertyName];
       },
@@ -297,7 +297,7 @@ export default {
         this.capability.typeData[this.propertyName] = newData === null ? `` : newData;
       }
     },
-    indexStart: {
+    slotNumberStart: {
       get() {
         return this.capability.typeData[`${this.propertyName}Start`];
       },
@@ -305,7 +305,7 @@ export default {
         this.capability.typeData[`${this.propertyName}Start`] = newData === null ? `` : newData;
       }
     },
-    indexEnd: {
+    slotNumberEnd: {
       get() {
         return this.capability.typeData[`${this.propertyName}End`];
       },
