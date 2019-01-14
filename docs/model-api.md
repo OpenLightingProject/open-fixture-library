@@ -2438,6 +2438,7 @@ Information about a fixture's wheel.
     * [.slots](#Wheel+slots) ⇒ <code>array.&lt;object&gt;</code>
     * [.getSlot(slotNumber)](#Wheel+getSlot) ⇒ <code>object</code>
     * [.getAbsoluteSlotIndex(slotNumber)](#Wheel+getAbsoluteSlotIndex) ⇒ <code>number</code>
+    * [.getSlotsOfType(type)](#Wheel+getSlotsOfType) ⇒ <code>array.&lt;Slot&gt;</code>
 
 <a name="new_Wheel_new"></a>
 
@@ -2490,6 +2491,16 @@ Creates a new Wheel instance.
 | --- | --- | --- |
 | slotNumber | <code>number</code> | The one-based slot number, can be smaller than 1 and greater than the number of slots. |
 
+<a name="Wheel+getSlotsOfType"></a>
+
+### wheel.getSlotsOfType(type) ⇒ <code>array.&lt;Slot&gt;</code>
+**Kind**: instance method of [<code>Wheel</code>](#Wheel)  
+**Returns**: <code>array.&lt;Slot&gt;</code> - All slots with the given type.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| type | <code>string</code> | The wheel slot type to search for. |
+
 <a name="WheelSlot"></a>
 
 ## WheelSlot
@@ -2498,8 +2509,10 @@ Information about a single wheel slot (or a split slot).
 **Kind**: global class  
 
 * [WheelSlot](#WheelSlot)
-    * [new WheelSlot(jsonObject, wheel)](#new_WheelSlot_new)
+    * [new WheelSlot(jsonObject, wheel, floorSlot, ceilSlot)](#new_WheelSlot_new)
+    * [.isSplitSlot](#WheelSlot+isSplitSlot) ⇒ <code>boolean</code>
     * [.type](#WheelSlot+type) ⇒ <code>string</code>
+    * [.nthOfType](#WheelSlot+nthOfType) ⇒ <code>number</code>
     * [.name](#WheelSlot+name) ⇒ <code>string</code>
     * [.colors](#WheelSlot+colors) ⇒ <code>array.&lt;string&gt;</code> \| <code>null</code>
     * [.colorTemperature](#WheelSlot+colorTemperature) ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
@@ -2511,20 +2524,32 @@ Information about a single wheel slot (or a split slot).
 
 <a name="new_WheelSlot_new"></a>
 
-### new WheelSlot(jsonObject, wheel)
+### new WheelSlot(jsonObject, wheel, floorSlot, ceilSlot)
 Creates a new WheelSlot instance.
 
 
-| Param | Type | Description |
-| --- | --- | --- |
-| jsonObject | <code>object</code> | A wheel slot object from the fixture's JSON data. |
-| wheel | [<code>Wheel</code>](#Wheel) | The wheel that this slot belongs to. |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| jsonObject | <code>object</code> \| <code>null</code> |  | A wheel slot object from the fixture's JSON data. If null, this WheelSlot is a split slot. |
+| wheel | [<code>Wheel</code>](#Wheel) |  | The wheel that this slot belongs to. |
+| floorSlot | <code>Slot</code> \| <code>null</code> | <code></code> | For split slots, the WheelSlot instance at the start. |
+| ceilSlot | <code>Slot</code> \| <code>null</code> | <code></code> | For split slots, the WheelSlot instance at the end. |
 
+<a name="WheelSlot+isSplitSlot"></a>
+
+### wheelSlot.isSplitSlot ⇒ <code>boolean</code>
+**Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
+**Returns**: <code>boolean</code> - True if this WheelSlot instance represents a split slot.  
 <a name="WheelSlot+type"></a>
 
 ### wheelSlot.type ⇒ <code>string</code>
 **Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
 **Returns**: <code>string</code> - The slot's type.  
+<a name="WheelSlot+nthOfType"></a>
+
+### wheelSlot.nthOfType ⇒ <code>number</code>
+**Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
+**Returns**: <code>number</code> - The zero-based index of this slot amongst all slots with the same type in this wheel.  
 <a name="WheelSlot+name"></a>
 
 ### wheelSlot.name ⇒ <code>string</code>
