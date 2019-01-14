@@ -290,13 +290,13 @@ function getFineChannelPreset(fineChannel) {
     ColorWheelFine: () => coarseChannel.capabilities.some(
       cap => [`WheelSlot`, `WheelRotation`].includes(cap.type)
     ) && coarseChannel.capabilities.every(
-      cap => [`WheelSlot`, `WheelRotation`, `Effect`, `NoFunction`].includes(cap.type) &&
+      cap => [`WheelSlot`, `WheelShake`, `WheelSlotRotation`, `WheelRotation`, `Effect`, `NoFunction`].includes(cap.type) &&
         (cap.wheels.length === 0 || cap.wheels[0].type === `Color`)
     ),
     GoboWheelFine: () => coarseChannel.capabilities.some(
       cap => [`WheelSlot`, `WheelRotation`].includes(cap.type)
     ) && coarseChannel.capabilities.every(
-      cap => [`WheelSlot`, `WheelRotation`, `Effect`, `NoFunction`].includes(cap.type) &&
+      cap => [`WheelSlot`, `WheelShake`, `WheelSlotRotation`, `WheelRotation`, `Effect`, `NoFunction`].includes(cap.type) &&
         (cap.wheels.length === 0 || cap.wheels[0].type === `Gobo`)
     ),
     GoboIndexFine: () => coarseChannel.capabilities.every(
@@ -486,11 +486,11 @@ function getCapabilityPreset(capability) {
     // gobo capabilities
     // TODO: export a gobo image as res1
     GoboShakeMacro: {
-      handler: cap => cap.type === `WheelShake` && (cap.isSlotType(/Gobo/) || cap.isSlotType(`Open`)),
+      handler: cap => cap.type === `WheelShake` && (cap.isSlotType(/Gobo|Iris|Frost/) || cap.isSlotType(`Open`)),
       res1: cap => (cap.isSlotType(`Open`) ? `Others/open.svg` : null)
     },
     GoboMacro: {
-      handler: cap => cap.isSlotType(/Gobo/) || cap.isSlotType(`Open`),
+      handler: cap => cap.isSlotType(/Gobo|Iris|Frost/) || cap.isSlotType(`Open`),
       res1: cap => (cap.isSlotType(`Open`) ? `Others/open.svg` : null)
     },
 
