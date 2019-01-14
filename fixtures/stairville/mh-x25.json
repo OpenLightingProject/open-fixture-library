@@ -54,7 +54,7 @@
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#ffffff"],
-          "comment": "White"
+          "comment": "Open"
         },
         {
           "dmxRange": [5, 9],
@@ -119,7 +119,7 @@
           "indexEnd": 1,
           "colorsStart": ["#ffffff"],
           "colorsEnd": ["#ffff00"],
-          "comment": "Split White / Yellow"
+          "comment": "Open … Yellow"
         },
         {
           "dmxRange": [55, 64],
@@ -128,7 +128,7 @@
           "indexEnd": 2,
           "colorsStart": ["#ffff00"],
           "colorsEnd": ["#ff00ff"],
-          "comment": "Split Yellow / Pink"
+          "comment": "Yellow … Pink"
         },
         {
           "dmxRange": [65, 73],
@@ -137,7 +137,7 @@
           "indexEnd": 3,
           "colorsStart": ["#ff00ff"],
           "colorsEnd": ["#00ff00"],
-          "comment": "Split Pink / Green"
+          "comment": "Pink … Green"
         },
         {
           "dmxRange": [74, 83],
@@ -146,7 +146,7 @@
           "indexEnd": 4,
           "colorsStart": ["#00ff00"],
           "colorsEnd": ["#d7735b"],
-          "comment": "Split Green / Peachblow"
+          "comment": "Green … Peachblow"
         },
         {
           "dmxRange": [84, 92],
@@ -155,7 +155,7 @@
           "indexEnd": 5,
           "colorsStart": ["#d7735b"],
           "colorsEnd": ["#add8e6"],
-          "comment": "Split Peachblow / Light Blue"
+          "comment": "Peachblow … Light Blue"
         },
         {
           "dmxRange": [93, 101],
@@ -164,7 +164,7 @@
           "indexEnd": 6,
           "colorsStart": ["#add8e6"],
           "colorsEnd": ["#ccfe50"],
-          "comment": "Split Light Blue / Yellow-Green"
+          "comment": "Light Blue … Yellow-Green"
         },
         {
           "dmxRange": [102, 110],
@@ -173,7 +173,7 @@
           "indexEnd": 7,
           "colorsStart": ["#ccfe50"],
           "colorsEnd": ["#ff0000"],
-          "comment": "Split Yellow-Green / Red"
+          "comment": "Yellow-Green … Red"
         },
         {
           "dmxRange": [111, 119],
@@ -182,7 +182,7 @@
           "indexEnd": 8,
           "colorsStart": ["#ff0000"],
           "colorsEnd": ["#0000ff"],
-          "comment": "Split Red / Blue"
+          "comment": "Red … Blue"
         },
         {
           "dmxRange": [120, 127],
@@ -191,7 +191,7 @@
           "indexEnd": 9,
           "colorsStart": ["#0000ff"],
           "colorsEnd": ["#ffffff"],
-          "comment": "Split Blue / White"
+          "comment": "Blue … Open"
         },
         {
           "dmxRange": [128, 191],
@@ -290,49 +290,49 @@
           "type": "GoboIndex",
           "index": 7,
           "shakeAngle": "wide",
-          "comment": "Gobo shake 8"
+          "comment": "Gobo 8"
         },
         {
           "dmxRange": [72, 79],
           "type": "GoboIndex",
           "index": 6,
           "shakeAngle": "wide",
-          "comment": "Gobo shake 7"
+          "comment": "Gobo 7"
         },
         {
           "dmxRange": [80, 87],
           "type": "GoboIndex",
           "index": 5,
           "shakeAngle": "wide",
-          "comment": "Gobo shake 6"
+          "comment": "Gobo 6"
         },
         {
           "dmxRange": [88, 95],
           "type": "GoboIndex",
           "index": 4,
           "shakeAngle": "wide",
-          "comment": "Gobo shake 5"
+          "comment": "Gobo 5"
         },
         {
           "dmxRange": [96, 103],
           "type": "GoboIndex",
           "index": 3,
           "shakeAngle": "wide",
-          "comment": "Gobo shake 4"
+          "comment": "Gobo 4"
         },
         {
           "dmxRange": [104, 111],
           "type": "GoboIndex",
           "index": 2,
           "shakeAngle": "wide",
-          "comment": "Gobo shake 3"
+          "comment": "Gobo 3"
         },
         {
           "dmxRange": [112, 119],
           "type": "GoboIndex",
           "index": 1,
           "shakeAngle": "wide",
-          "comment": "Gobo shake 2"
+          "comment": "Gobo 2"
         },
         {
           "dmxRange": [120, 127],

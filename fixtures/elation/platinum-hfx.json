@@ -48,8 +48,8 @@
         "angleEnd": "270deg"
       }
     },
-    "Color wheel": {
-      "fineChannelAliases": ["Color wheel fine"],
+    "Color Wheel": {
+      "fineChannelAliases": ["Color Wheel fine"],
       "dmxValueResolution": "8bit",
       "capabilities": [
         {
@@ -57,91 +57,91 @@
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#ffffff"],
-          "comment": "white"
+          "comment": "Open"
         },
         {
           "dmxRange": [11, 19],
           "type": "ColorWheelIndex",
           "index": 1,
           "colors": ["#ed2024"],
-          "comment": "red"
+          "comment": "Red"
         },
         {
           "dmxRange": [20, 28],
           "type": "ColorWheelIndex",
           "index": 2,
           "colors": ["#20409a"],
-          "comment": "blue"
+          "comment": "Blue"
         },
         {
           "dmxRange": [29, 37],
           "type": "ColorWheelIndex",
           "index": 3,
           "colors": ["#0ba14b"],
-          "comment": "green"
+          "comment": "Green"
         },
         {
           "dmxRange": [38, 46],
           "type": "ColorWheelIndex",
           "index": 4,
           "colors": ["#fff200"],
-          "comment": "yellow"
+          "comment": "Yellow"
         },
         {
           "dmxRange": [47, 55],
           "type": "ColorWheelIndex",
           "index": 5,
           "colors": ["#d93595"],
-          "comment": "pink"
+          "comment": "Pink"
         },
         {
           "dmxRange": [56, 64],
           "type": "ColorWheelIndex",
           "index": 6,
           "colors": ["#f26522"],
-          "comment": "orange"
+          "comment": "Orange"
         },
         {
           "dmxRange": [65, 73],
           "type": "ColorWheelIndex",
           "index": 7,
           "colors": ["#149389"],
-          "comment": "aqua"
+          "comment": "Aqua"
         },
         {
           "dmxRange": [74, 82],
           "type": "ColorWheelIndex",
           "index": 8,
           "colors": ["#ec008c"],
-          "comment": "magenta"
+          "comment": "Magenta"
         },
         {
           "dmxRange": [83, 91],
           "type": "ColorWheelIndex",
           "index": 9,
           "colors": ["#3b59a8", "#f6f06b", "#47b749", "#991b1e"],
-          "comment": "quad color"
+          "comment": "Quad color"
         },
         {
           "dmxRange": [92, 100],
           "type": "ColorWheelIndex",
           "index": 10,
           "colors": ["#00aeef"],
-          "comment": "cyan"
+          "comment": "Cyan"
         },
         {
           "dmxRange": [101, 109],
           "type": "ColorWheelIndex",
           "index": 11,
           "colors": ["#f26751"],
-          "colorTemperature": "CTO"
+          "comment": "CTO"
         },
         {
           "dmxRange": [110, 118],
           "type": "ColorWheelIndex",
           "index": 12,
           "colors": ["#c3e7ec"],
-          "colorTemperature": "CTB"
+          "comment": "CTB"
         },
         {
           "dmxRange": [119, 127],
@@ -169,7 +169,7 @@
         }
       ]
     },
-    "Rotating Gobos": {
+    "Rotating Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 11],
@@ -180,7 +180,7 @@
           "dmxRange": [12, 21],
           "type": "GoboIndex",
           "index": 0,
-          "comment": "Spot open"
+          "comment": "Open"
         },
         {
           "dmxRange": [22, 31],
@@ -321,15 +321,15 @@
         }
       ]
     },
-    "Static-stamped Gobos (Gobo wheel 2)": {
-      "fineChannelAliases": ["Static-stamped Gobos fine"],
+    "Static Gobo Wheel": {
+      "fineChannelAliases": ["Static Gobo Wheel fine"],
       "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 21],
           "type": "GoboIndex",
           "index": 0,
-          "comment": "open"
+          "comment": "Open"
         },
         {
           "dmxRange": [22, 28],
@@ -875,13 +875,13 @@
         "Pan fine",
         "Tilt",
         "Tilt fine",
-        "Color wheel",
-        "Color wheel fine",
-        "Rotating Gobos",
+        "Color Wheel",
+        "Color Wheel fine",
+        "Rotating Gobo Wheel",
         "Gobo Stencil Rotation",
         "Gobo Stencil Rotation fine",
-        "Static-stamped Gobos (Gobo wheel 2)",
-        "Static-stamped Gobos fine",
+        "Static Gobo Wheel",
+        "Static Gobo Wheel fine",
         "Prism",
         "Prism Index",
         "Prism Index fine",
@@ -907,10 +907,10 @@
         "Pan fine",
         "Tilt",
         "Tilt fine",
-        "Color wheel",
-        "Rotating Gobos",
+        "Color Wheel",
+        "Rotating Gobo Wheel",
         "Gobo Stencil Rotation",
-        "Static-stamped Gobos (Gobo wheel 2)",
+        "Static Gobo Wheel",
         "Prism",
         "Prism Index",
         "Focus",
@@ -930,10 +930,10 @@
       "channels": [
         "Pan",
         "Tilt",
-        "Color wheel",
-        "Rotating Gobos",
+        "Color Wheel",
+        "Rotating Gobo Wheel",
         "Gobo Stencil Rotation",
-        "Static-stamped Gobos (Gobo wheel 2)",
+        "Static Gobo Wheel",
         "Prism",
         "Prism Index",
         "Focus",

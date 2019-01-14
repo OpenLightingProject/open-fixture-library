@@ -53,7 +53,7 @@
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#ffffff"],
-          "comment": "White"
+          "comment": "Open"
         },
         {
           "dmxRange": [10, 19],
@@ -109,56 +109,56 @@
           "type": "ColorWheelIndex",
           "index": 0.5,
           "colors": ["#ffffff", "#ff0000"],
-          "comment": "White/Red"
+          "comment": "Split Open / Red"
         },
         {
           "dmxRange": [90, 99],
           "type": "ColorWheelIndex",
           "index": 1.5,
           "colors": ["#ff0000", "#00ff00"],
-          "comment": "Red/Green"
+          "comment": "Split Red / Green"
         },
         {
           "dmxRange": [100, 109],
           "type": "ColorWheelIndex",
           "index": 2.5,
           "colors": ["#00ff00", "#0000ff"],
-          "comment": "Green/Blue"
+          "comment": "Split Green / Blue"
         },
         {
           "dmxRange": [110, 119],
           "type": "ColorWheelIndex",
           "index": 3.5,
           "colors": ["#0000ff", "#ffff00"],
-          "comment": "Blue/Yellow"
+          "comment": "Split Blue / Yellow"
         },
         {
           "dmxRange": [120, 129],
           "type": "ColorWheelIndex",
           "index": 4.5,
           "colors": ["#ffff00", "#ff00ff"],
-          "comment": "Yellow/Purple"
+          "comment": "Split Yellow / Purple"
         },
         {
           "dmxRange": [130, 139],
           "type": "ColorWheelIndex",
           "index": 5.5,
           "colors": ["#ff00ff", "#ffaa00"],
-          "comment": "Purple/Orange"
+          "comment": "Split Purple / Orange"
         },
         {
           "dmxRange": [140, 149],
           "type": "ColorWheelIndex",
           "index": 6.5,
           "colors": ["#ffaa00", "#00ffff"],
-          "comment": "Orange/Cyan"
+          "comment": "Split Orange / Cyan"
         },
         {
           "dmxRange": [150, 159],
           "type": "ColorWheelIndex",
           "index": 7.5,
           "colors": ["#00ffff", "#ffffff"],
-          "comment": "Cyan/White"
+          "comment": "Split Cyan / Open"
         },
         {
           "dmxRange": [160, 255],
@@ -169,7 +169,7 @@
         }
       ]
     },
-    "Gobo": {
+    "Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 7],
@@ -214,16 +214,18 @@
         },
         {
           "dmxRange": [64, 127],
-          "type": "Effect",
-          "effectName": "Gobo Shake",
-          "helpWanted": "This should probably be multiple shaking GoboIndex capabilities using Gobos 1 to 7, maybe plus Gobo Open?"
+          "type": "GoboIndex",
+          "indexStart": 1,
+          "indexEnd": 7,
+          "shakeAngle": "wide",
+          "comment": "Gobo 1 … Gobo 7",
+          "helpWanted": "At which DMX values can which Gobos be selected?"
         },
         {
           "dmxRange": [128, 255],
           "type": "GoboWheelRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW",
-          "comment": "Gobo scroll"
+          "speedEnd": "fast CW"
         }
       ]
     },
@@ -323,7 +325,7 @@
         "Pan",
         "Tilt",
         "Color Wheel",
-        "Gobo",
+        "Gobo Wheel",
         "Strobe",
         "Dimmer",
         "Horizontal Vertical Run",
@@ -339,7 +341,7 @@
         "Tilt",
         "Tilt fine",
         "Color Wheel",
-        "Gobo",
+        "Gobo Wheel",
         "Strobe",
         "Dimmer",
         "Horizontal Vertical Run",

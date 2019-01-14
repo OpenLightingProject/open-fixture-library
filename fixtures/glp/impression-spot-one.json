@@ -691,48 +691,55 @@
         "distanceEnd": "near"
       }
     },
-    "Gobo 1": {
+    "Gobo Wheel 1": {
       "capabilities": [
         {
           "dmxRange": [0, 15],
           "type": "GoboIndex",
           "index": 1,
-          "comment": "Gobo 1 (open)"
+          "comment": "Open"
         },
         {
           "dmxRange": [16, 31],
           "type": "GoboIndex",
-          "index": 2
+          "index": 2,
+          "comment": "4 Circles"
         },
         {
           "dmxRange": [32, 47],
           "type": "GoboIndex",
-          "index": 3
+          "index": 3,
+          "comment": "Vertical Bars"
         },
         {
           "dmxRange": [48, 63],
           "type": "GoboIndex",
-          "index": 4
+          "index": 4,
+          "comment": "Two Light Tunnels"
         },
         {
           "dmxRange": [64, 79],
           "type": "GoboIndex",
-          "index": 5
+          "index": 5,
+          "comment": "Triangles Random"
         },
         {
           "dmxRange": [80, 95],
           "type": "GoboIndex",
-          "index": 6
+          "index": 6,
+          "comment": "Dash Mini"
         },
         {
           "dmxRange": [96, 111],
           "type": "GoboIndex",
-          "index": 7
+          "index": 7,
+          "comment": "Dots Medium"
         },
         {
           "dmxRange": [112, 126],
           "type": "GoboIndex",
-          "index": 8
+          "index": 8,
+          "comment": "Starry Night Dense"
         },
         {
           "dmxRange": [127, 127],
@@ -759,76 +766,83 @@
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "GoboWheelRotation",
+          "type": "GoboStencilRotation",
           "angleStart": "0deg",
           "angleEnd": "540deg"
         },
         {
           "dmxRange": [128, 129],
-          "type": "GoboWheelRotation",
+          "type": "GoboStencilRotation",
           "speed": "stop"
         },
         {
           "dmxRange": [130, 192],
-          "type": "GoboWheelRotation",
+          "type": "GoboStencilRotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         },
         {
           "dmxRange": [193, 253],
-          "type": "GoboWheelRotation",
+          "type": "GoboStencilRotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         },
         {
           "dmxRange": [254, 255],
-          "type": "GoboWheelRotation",
+          "type": "GoboStencilRotation",
           "speed": "stop"
         }
       ]
     },
-    "Gobo 2": {
+    "Gobo Wheel 2": {
       "capabilities": [
         {
           "dmxRange": [0, 15],
           "type": "GoboIndex",
           "index": 1,
-          "comment": "Gobo 1 (open)"
+          "comment": "Open"
         },
         {
           "dmxRange": [16, 31],
           "type": "GoboIndex",
-          "index": 2
+          "index": 2,
+          "comment": "Cone"
         },
         {
           "dmxRange": [32, 47],
           "type": "GoboIndex",
-          "index": 3
+          "index": 3,
+          "comment": "Leaves Foliage"
         },
         {
           "dmxRange": [48, 63],
           "type": "GoboIndex",
-          "index": 4
+          "index": 4,
+          "comment": "Teeth"
         },
         {
           "dmxRange": [64, 79],
           "type": "GoboIndex",
-          "index": 5
+          "index": 5,
+          "comment": "Shreds"
         },
         {
           "dmxRange": [80, 95],
           "type": "GoboIndex",
-          "index": 6
+          "index": 6,
+          "comment": "Angry Hurricane"
         },
         {
           "dmxRange": [96, 111],
           "type": "GoboIndex",
-          "index": 7
+          "index": 7,
+          "comment": "Shredded Earth"
         },
         {
           "dmxRange": [112, 126],
           "type": "GoboIndex",
-          "index": 8
+          "index": 8,
+          "comment": "Diamond Pattern"
         },
         {
           "dmxRange": [127, 127],
@@ -855,30 +869,30 @@
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "GoboWheelRotation",
+          "type": "GoboStencilRotation",
           "angleStart": "0deg",
           "angleEnd": "540deg"
         },
         {
           "dmxRange": [128, 129],
-          "type": "GoboWheelRotation",
+          "type": "GoboStencilRotation",
           "speed": "stop"
         },
         {
           "dmxRange": [130, 192],
-          "type": "GoboWheelRotation",
+          "type": "GoboStencilRotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         },
         {
           "dmxRange": [193, 253],
-          "type": "GoboWheelRotation",
+          "type": "GoboStencilRotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         },
         {
           "dmxRange": [254, 255],
-          "type": "GoboWheelRotation",
+          "type": "GoboStencilRotation",
           "speed": "stop"
         }
       ]
@@ -986,9 +1000,9 @@
         "Pan/Tilt Speed",
         "Zoom",
         "Focus",
-        "Gobo 1",
+        "Gobo Wheel 1",
         "Gobo 1 Position",
-        "Gobo 2",
+        "Gobo Wheel 2",
         "Gobo 2 Position",
         "Effect Wheel Swing",
         "Effect Wheel Position",
@@ -1013,9 +1027,9 @@
         "Dimmer",
         "Zoom",
         "Focus",
-        "Gobo 1",
+        "Gobo Wheel 1",
         "Gobo 1 Position",
-        "Gobo 2",
+        "Gobo Wheel 2",
         "Gobo 2 Position",
         "Effect Wheel Swing",
         "Effect Wheel Position",
@@ -1048,10 +1062,10 @@
         "Zoom fine",
         "Focus",
         "Focus fine",
-        "Gobo 1",
+        "Gobo Wheel 1",
         "Gobo 1 Position",
         "Gobo 1 Position fine",
-        "Gobo 2",
+        "Gobo Wheel 2",
         "Gobo 2 Position",
         "Gobo 2 Position fine",
         "Effect Wheel Swing",

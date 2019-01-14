@@ -107,7 +107,7 @@
           "indexEnd": 1,
           "colorsStart": ["#ffffff"],
           "colorsEnd": ["#ff0000"],
-          "comment": "Split Open / Red",
+          "comment": "Open … Red",
           "menuClick": "center"
         },
         {
@@ -124,7 +124,7 @@
           "indexEnd": 2,
           "colorsStart": ["#ff0000"],
           "colorsEnd": ["#0000ff"],
-          "comment": "Split Red / Blue",
+          "comment": "Red … Blue",
           "menuClick": "center"
         },
         {
@@ -141,7 +141,7 @@
           "indexEnd": 3,
           "colorsStart": ["#0000ff"],
           "colorsEnd": ["#00ff00"],
-          "comment": "Split Blue / Green",
+          "comment": "Blue … Green",
           "menuClick": "center"
         },
         {
@@ -158,7 +158,7 @@
           "indexEnd": 4,
           "colorsStart": ["#00ff00"],
           "colorsEnd": ["#ff00ff"],
-          "comment": "Split Green / Magenta",
+          "comment": "Green … Magenta",
           "menuClick": "center"
         },
         {
@@ -175,7 +175,7 @@
           "indexEnd": 5,
           "colorsStart": ["#ff00ff"],
           "colorsEnd": ["#ffff00"],
-          "comment": "Split Magenta / Yellow",
+          "comment": "Magenta … Yellow",
           "menuClick": "center"
         },
         {
@@ -192,7 +192,7 @@
           "indexEnd": 6,
           "colorsStart": ["#ffff00"],
           "colorsEnd": ["#00ffff"],
-          "comment": "Split Yellow / Light Blue",
+          "comment": "Yellow … Light Blue",
           "menuClick": "center"
         },
         {
@@ -209,7 +209,7 @@
           "indexEnd": 7,
           "colorsStart": ["#00ffff"],
           "colorsEnd": ["#ffaaff"],
-          "comment": "Split Light Blue / Pink",
+          "comment": "Light Blue … Pink",
           "menuClick": "center"
         },
         {
@@ -226,7 +226,7 @@
           "indexEnd": 8,
           "colorsStart": ["#ffaaff"],
           "colorsEnd": ["#ffaa00"],
-          "comment": "Split Pink / Orange",
+          "comment": "Pink … Orange",
           "menuClick": "center"
         },
         {
@@ -243,7 +243,7 @@
           "indexEnd": 9,
           "colorsStart": ["#ffaa00"],
           "colorsEnd": ["#99ddff"],
-          "comment": "Split Orange / Aqua",
+          "comment": "Orange … Aqua",
           "menuClick": "center"
         },
         {
@@ -260,7 +260,7 @@
           "indexEnd": 10,
           "colorsStart": ["#99ddff"],
           "colorsEnd": ["#aa00ff"],
-          "comment": "Split Aqua / Purple",
+          "comment": "Aqua … Purple",
           "menuClick": "center"
         },
         {
@@ -277,7 +277,7 @@
           "indexEnd": 11,
           "colorsStart": ["#aa00ff"],
           "colorsEnd": ["#ffcc99"],
-          "comment": "Split Purple / CTO",
+          "comment": "Purple … CTO",
           "menuClick": "center"
         },
         {
@@ -294,7 +294,7 @@
           "indexEnd": 12,
           "colorsStart": ["#ffcc99"],
           "colorsEnd": ["#88bbdd"],
-          "comment": "Split CTO / CTB",
+          "comment": "CTO … CTB",
           "menuClick": "center"
         },
         {
@@ -311,7 +311,7 @@
           "indexEnd": 13,
           "colorsStart": ["#88bbdd"],
           "colorsEnd": ["#a996ff"],
-          "comment": "Split CTB / UV",
+          "comment": "CTB … UV",
           "menuClick": "center"
         },
         {
@@ -328,7 +328,7 @@
           "indexEnd": 14,
           "colorsStart": ["#a996ff"],
           "colorsEnd": ["#ffffff"],
-          "comment": "Split UV / Open",
+          "comment": "UV … Open",
           "menuClick": "center"
         },
         {
@@ -466,13 +466,12 @@
         }
       ]
     },
-    "Rotating Gobos": {
+    "Rotating Gobo Wheel": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 11],
           "type": "NoFunction",
-          "comment": "Open",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -482,7 +481,7 @@
           "dmxRange": [12, 23],
           "type": "GoboIndex",
           "index": 0,
-          "comment": "Beamsmoother",
+          "comment": "Open",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -492,7 +491,7 @@
           "dmxRange": [24, 29],
           "type": "GoboIndex",
           "index": 1,
-          "comment": "Gobo 1, indexed",
+          "comment": "Gobo Damped Wave (indexed)",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Indexing",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Indexing fine"
@@ -502,7 +501,7 @@
           "dmxRange": [30, 35],
           "type": "GoboIndex",
           "index": 2,
-          "comment": "Gobo 2, indexed",
+          "comment": "Gobo Luck Stakes (indexed)",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Indexing",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Indexing fine"
@@ -512,7 +511,7 @@
           "dmxRange": [36, 41],
           "type": "GoboIndex",
           "index": 3,
-          "comment": "Gobo 3, indexed",
+          "comment": "Gobo Bite Me (indexed)",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Indexing",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Indexing fine"
@@ -522,7 +521,7 @@
           "dmxRange": [42, 47],
           "type": "GoboIndex",
           "index": 4,
-          "comment": "Gobo 4, indexed",
+          "comment": "Gobo Laser Squares (indexed)",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Indexing",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Indexing fine"
@@ -532,7 +531,7 @@
           "dmxRange": [48, 53],
           "type": "GoboIndex",
           "index": 5,
-          "comment": "Gobo 5, indexed",
+          "comment": "Gobo Kite Surf (indexed)",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Indexing",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Indexing fine"
@@ -542,7 +541,7 @@
           "dmxRange": [54, 59],
           "type": "GoboIndex",
           "index": 6,
-          "comment": "Gobo 6, indexed",
+          "comment": "Gobo Dots in Space (indexed)",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Indexing",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Indexing fine"
@@ -552,7 +551,7 @@
           "dmxRange": [60, 65],
           "type": "GoboIndex",
           "index": 7,
-          "comment": "Gobo 7, indexed",
+          "comment": "Gobo Organic Delight (indexed)",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Indexing",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Indexing fine"
@@ -562,7 +561,7 @@
           "dmxRange": [66, 71],
           "type": "GoboIndex",
           "index": 8,
-          "comment": "Gobo 8, indexed",
+          "comment": "Gobo Slice It (indexed)",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Indexing",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Indexing fine"
@@ -572,7 +571,7 @@
           "dmxRange": [72, 76],
           "type": "GoboIndex",
           "index": 1,
-          "comment": "Gobo 1, rotating",
+          "comment": "Gobo Damped Wave (rotating)",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -582,7 +581,7 @@
           "dmxRange": [77, 81],
           "type": "GoboIndex",
           "index": 2,
-          "comment": "Gobo 2, rotating",
+          "comment": "Gobo Luck Stakes (rotating)",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -592,7 +591,7 @@
           "dmxRange": [82, 86],
           "type": "GoboIndex",
           "index": 3,
-          "comment": "Gobo 3, rotating",
+          "comment": "Gobo Bite Me (rotating)",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -602,7 +601,7 @@
           "dmxRange": [87, 91],
           "type": "GoboIndex",
           "index": 4,
-          "comment": "Gobo 4, rotating",
+          "comment": "Gobo Laser Squares (rotating)",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -612,7 +611,7 @@
           "dmxRange": [92, 96],
           "type": "GoboIndex",
           "index": 5,
-          "comment": "Gobo 5, rotating",
+          "comment": "Gobo Kite Surf (rotating)",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -622,7 +621,7 @@
           "dmxRange": [97, 101],
           "type": "GoboIndex",
           "index": 6,
-          "comment": "Gobo 6, rotating",
+          "comment": "Gobo Dots in Space (rotating)",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -632,7 +631,7 @@
           "dmxRange": [102, 106],
           "type": "GoboIndex",
           "index": 7,
-          "comment": "Gobo 7, rotating",
+          "comment": "Gobo Organic Delight (rotating)",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -642,7 +641,7 @@
           "dmxRange": [107, 111],
           "type": "GoboIndex",
           "index": 8,
-          "comment": "Gobo 8, rotating",
+          "comment": "Gobo Slice It (rotating)",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
             "Rotating Gobo Indexing/Speed fine": "Rotating Gobo Speed fine"
@@ -652,6 +651,7 @@
           "dmxRange": [112, 121],
           "type": "GoboIndex",
           "index": 1,
+          "comment": "Damped Wave",
           "shakeAngle": "wide",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
@@ -662,6 +662,7 @@
           "dmxRange": [122, 131],
           "type": "GoboIndex",
           "index": 2,
+          "comment": "Luck Stakes",
           "shakeAngle": "wide",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
@@ -672,6 +673,7 @@
           "dmxRange": [132, 141],
           "type": "GoboIndex",
           "index": 3,
+          "comment": "Bite Me",
           "shakeAngle": "wide",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
@@ -682,6 +684,7 @@
           "dmxRange": [142, 151],
           "type": "GoboIndex",
           "index": 4,
+          "comment": "Laser Squares",
           "shakeAngle": "wide",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
@@ -692,6 +695,7 @@
           "dmxRange": [152, 161],
           "type": "GoboIndex",
           "index": 5,
+          "comment": "Kite Surf",
           "shakeAngle": "wide",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
@@ -702,6 +706,7 @@
           "dmxRange": [162, 171],
           "type": "GoboIndex",
           "index": 6,
+          "comment": "Dots in Space",
           "shakeAngle": "wide",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
@@ -712,6 +717,7 @@
           "dmxRange": [172, 181],
           "type": "GoboIndex",
           "index": 7,
+          "comment": "Organic Delight",
           "shakeAngle": "wide",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
@@ -722,6 +728,7 @@
           "dmxRange": [182, 191],
           "type": "GoboIndex",
           "index": 8,
+          "comment": "Slice It",
           "shakeAngle": "wide",
           "switchChannels": {
             "Rotating Gobo Indexing/Speed": "Rotating Gobo Speed",
@@ -791,7 +798,7 @@
         }
       ]
     },
-    "Fixed gobos": {
+    "Fixed Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 2],
@@ -881,176 +888,176 @@
           "dmxRange": [42, 42],
           "type": "GoboIndex",
           "index": 0,
-          "comment": "open"
+          "comment": "Open"
         },
         {
           "dmxRange": [43, 53],
           "type": "GoboIndex",
           "indexStart": 0,
           "indexEnd": 1,
-          "comment": "Open > Iris 1"
+          "comment": "Open … Iris 1"
         },
         {
           "dmxRange": [54, 54],
           "type": "GoboIndex",
           "index": 1,
-          "comment": "iris 1"
+          "comment": "Iris 1"
         },
         {
           "dmxRange": [55, 64],
           "type": "GoboIndex",
           "indexStart": 1,
           "indexEnd": 2,
-          "comment": "Iris 1 > Iris 2"
+          "comment": "Iris 1 … Iris 2"
         },
         {
           "dmxRange": [65, 65],
           "type": "GoboIndex",
           "index": 2,
-          "comment": "iris 2"
+          "comment": "Iris 2"
         },
         {
           "dmxRange": [66, 76],
           "type": "GoboIndex",
           "indexStart": 2,
           "indexEnd": 3,
-          "comment": "Iris 2 > Iris 3"
+          "comment": "Iris 2 … Iris 3"
         },
         {
           "dmxRange": [77, 77],
           "type": "GoboIndex",
           "index": 3,
-          "comment": "iris 3"
+          "comment": "Iris 3"
         },
         {
           "dmxRange": [78, 88],
           "type": "GoboIndex",
           "indexStart": 3,
           "indexEnd": 4,
-          "comment": "Iris 3 > Iris 4"
+          "comment": "Iris 3 … Iris 4"
         },
         {
           "dmxRange": [89, 89],
           "type": "GoboIndex",
           "index": 4,
-          "comment": "iris 4"
+          "comment": "Iris 4"
         },
         {
           "dmxRange": [90, 100],
           "type": "GoboIndex",
           "indexStart": 4,
           "indexEnd": 5,
-          "comment": "Iris 4 > Iris 5"
+          "comment": "Iris 4 … Iris 5"
         },
         {
           "dmxRange": [101, 101],
           "type": "GoboIndex",
           "index": 5,
-          "comment": "iris 5"
+          "comment": "Iris 5"
         },
         {
           "dmxRange": [102, 112],
           "type": "GoboIndex",
           "indexStart": 5,
           "indexEnd": 6,
-          "comment": "Iris 5 > Gobo 1"
+          "comment": "Iris 5 … Gobo 1"
         },
         {
           "dmxRange": [113, 113],
           "type": "GoboIndex",
           "index": 6,
-          "comment": "gobo 1"
+          "comment": "Gobo 1"
         },
         {
           "dmxRange": [114, 123],
           "type": "GoboIndex",
           "indexStart": 6,
           "indexEnd": 7,
-          "comment": "Gobo 1 > Gobo 2"
+          "comment": "Gobo 1 … Gobo 2"
         },
         {
           "dmxRange": [124, 124],
           "type": "GoboIndex",
           "index": 7,
-          "comment": "gobo 2"
+          "comment": "Gobo 2"
         },
         {
           "dmxRange": [125, 135],
           "type": "GoboIndex",
           "indexStart": 7,
           "indexEnd": 8,
-          "comment": "Gobo 2 > Gobo 3"
+          "comment": "Gobo 2 … Gobo 3"
         },
         {
           "dmxRange": [136, 136],
           "type": "GoboIndex",
           "index": 8,
-          "comment": "gobo 3"
+          "comment": "Gobo 3"
         },
         {
           "dmxRange": [137, 147],
           "type": "GoboIndex",
           "indexStart": 8,
           "indexEnd": 9,
-          "comment": "Gobo 3 > Gobo 4"
+          "comment": "Gobo 3 … Gobo 4"
         },
         {
           "dmxRange": [148, 148],
           "type": "GoboIndex",
           "index": 9,
-          "comment": "gobo 4"
+          "comment": "Gobo 4"
         },
         {
           "dmxRange": [149, 159],
           "type": "GoboIndex",
           "indexStart": 9,
           "indexEnd": 10,
-          "comment": "Gobo 4 > Gobo 5"
+          "comment": "Gobo 4 … Gobo 5"
         },
         {
           "dmxRange": [160, 160],
           "type": "GoboIndex",
           "index": 10,
-          "comment": "gobo 5"
+          "comment": "Gobo 5"
         },
         {
           "dmxRange": [161, 170],
           "type": "GoboIndex",
           "indexStart": 10,
           "indexEnd": 11,
-          "comment": "Gobo 5 > Gobo 6"
+          "comment": "Gobo 5 … Gobo 6"
         },
         {
           "dmxRange": [171, 171],
           "type": "GoboIndex",
           "index": 11,
-          "comment": "gobo 6"
+          "comment": "Gobo 6"
         },
         {
           "dmxRange": [172, 182],
           "type": "GoboIndex",
           "indexStart": 11,
           "indexEnd": 12,
-          "comment": "Gobo 6 > Gobo 7"
+          "comment": "Gobo 6 … Gobo 7"
         },
         {
           "dmxRange": [183, 183],
           "type": "GoboIndex",
           "index": 12,
-          "comment": "gobo 7"
+          "comment": "Gobo 7"
         },
         {
           "dmxRange": [184, 194],
           "type": "GoboIndex",
           "indexStart": 12,
           "indexEnd": 13,
-          "comment": "Gobo 7 > Gobo 8"
+          "comment": "Gobo 7 … Gobo 8"
         },
         {
           "dmxRange": [195, 195],
           "type": "GoboIndex",
           "index": 13,
-          "comment": "gobo 8"
+          "comment": "Gobo 8"
         },
         {
           "dmxRange": [196, 217],
@@ -1319,10 +1326,10 @@
         "Dimmer fine",
         "Shutter",
         "Color Wheel",
-        "Rotating Gobos",
+        "Rotating Gobo Wheel",
         "Rotating Gobo Indexing/Speed",
         "Rotating Gobo Indexing/Speed fine",
-        "Fixed gobos",
+        "Fixed Gobo Wheel",
         "Rotating Prisms",
         "Rotating Prism Indexing/Speed",
         "Rotating Prism Indexing/Speed fine",

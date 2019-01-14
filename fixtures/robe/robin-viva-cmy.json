@@ -25,6 +25,10 @@
       "https://www.youtube.com/watch?v=2K1CvARI_Wc"
     ]
   },
+  "rdm": {
+    "modelId": 203,
+    "softwareVersion": "1.0"
+  },
   "physical": {
     "dimensions": [380, 675, 250],
     "weight": 19,
@@ -42,10 +46,6 @@
       "panMax": 540,
       "tiltMax": 270
     }
-  },
-  "rdm": {
-    "modelId": 203,
-    "softwareVersion": "1.0"
   },
   "availableChannels": {
     "Pan": {
@@ -266,7 +266,7 @@
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#ffffff"],
-          "comment": "Open/white"
+          "comment": "Open"
         },
         {
           "dmxRange": [1, 17],
@@ -275,7 +275,7 @@
           "indexEnd": 1,
           "colorsStart": ["#ffffff"],
           "colorsEnd": ["#d0282f"],
-          "comment": "Open/white … Deep red"
+          "comment": "Open … Deep red"
         },
         {
           "dmxRange": [18, 18],
@@ -307,7 +307,7 @@
           "indexEnd": 3,
           "colorsStart": ["#00a650"],
           "colorsEnd": ["#f9d1aa"],
-          "comment": "Green … CTO"
+          "comment": "Green … CTO (2700K)"
         },
         {
           "dmxRange": [55, 55],
@@ -324,7 +324,7 @@
           "indexEnd": 4,
           "colorsStart": ["#f9d1aa"],
           "colorsEnd": ["#faa649"],
-          "comment": "CTO … Orange"
+          "comment": "CTO (2700K) … Orange"
         },
         {
           "dmxRange": [73, 73],
@@ -372,14 +372,14 @@
           "indexEnd": 7,
           "colorsStart": ["#6863e1"],
           "colorsEnd": ["#ffffff"],
-          "comment": "Congo blue … Open/white"
+          "comment": "Congo blue … Open"
         },
         {
           "dmxRange": [128, 129],
           "type": "ColorWheelIndex",
           "index": 7,
           "colors": ["#ffffff"],
-          "comment": "Open/white"
+          "comment": "Open"
         },
         {
           "dmxRange": [130, 139],
@@ -934,6 +934,7 @@
           "dmxRange": [92, 103],
           "type": "GoboIndex",
           "index": 1,
+          "comment": "1 (99014836-1)",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast"
         },
@@ -941,6 +942,7 @@
           "dmxRange": [104, 115],
           "type": "GoboIndex",
           "index": 2,
+          "comment": "2 (99014836-2)",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast"
         },
@@ -948,6 +950,7 @@
           "dmxRange": [116, 127],
           "type": "GoboIndex",
           "index": 3,
+          "comment": "3 (99014836-3)",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast"
         },
@@ -955,6 +958,7 @@
           "dmxRange": [128, 139],
           "type": "GoboIndex",
           "index": 4,
+          "comment": "4 (99014836-4)",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast"
         },
@@ -962,6 +966,7 @@
           "dmxRange": [140, 151],
           "type": "GoboIndex",
           "index": 5,
+          "comment": "5 (99014836-5)",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast"
         },
@@ -969,6 +974,7 @@
           "dmxRange": [152, 163],
           "type": "GoboIndex",
           "index": 6,
+          "comment": "6 (99014836-6)",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast"
         },
@@ -976,6 +982,7 @@
           "dmxRange": [164, 175],
           "type": "GoboIndex",
           "index": 7,
+          "comment": "7 (99014836-7)",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast"
         },
@@ -983,6 +990,7 @@
           "dmxRange": [176, 187],
           "type": "GoboIndex",
           "index": 8,
+          "comment": "8 (99014836-8)",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast"
         },
@@ -990,6 +998,7 @@
           "dmxRange": [188, 199],
           "type": "GoboIndex",
           "index": 9,
+          "comment": "9 (99014836-9)",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast"
         },

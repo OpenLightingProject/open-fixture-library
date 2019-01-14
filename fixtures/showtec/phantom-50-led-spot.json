@@ -71,7 +71,7 @@
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#ffffff"],
-          "comment": "White"
+          "comment": "Open"
         },
         {
           "dmxRange": [7, 13],
@@ -134,63 +134,63 @@
           "type": "ColorWheelIndex",
           "index": 0.5,
           "colors": ["#ffffff", "#fef201"],
-          "comment": "Split Color White / Yellow"
+          "comment": "Split Open / Yellow"
         },
         {
           "dmxRange": [72, 78],
           "type": "ColorWheelIndex",
           "index": 1.5,
           "colors": ["#fef201", "#c600ce"],
-          "comment": "Split Color Yellow / Pink"
+          "comment": "Split Yellow / Pink"
         },
         {
           "dmxRange": [79, 85],
           "type": "ColorWheelIndex",
           "index": 2.5,
           "colors": ["#c600ce", "#017f01"],
-          "comment": "Split Color Pink / Green"
+          "comment": "Split Pink / Green"
         },
         {
           "dmxRange": [86, 92],
           "type": "ColorWheelIndex",
           "index": 3.5,
           "colors": ["#017f01", "#941e30"],
-          "comment": "Split Color Green / Red"
+          "comment": "Split Green / Red"
         },
         {
           "dmxRange": [93, 99],
           "type": "ColorWheelIndex",
           "index": 4.5,
           "colors": ["#941e30", "#0155e9"],
-          "comment": "Split Color Red / Light Blue"
+          "comment": "Split Red / Light Blue"
         },
         {
           "dmxRange": [100, 106],
           "type": "ColorWheelIndex",
           "index": 5.5,
           "colors": ["#0155e9", "#01c702"],
-          "comment": "Split Color Light Blue / Light Green"
+          "comment": "Split Light Blue / Light Green"
         },
         {
           "dmxRange": [107, 113],
           "type": "ColorWheelIndex",
           "index": 6.5,
           "colors": ["#01c702", "#ca450c"],
-          "comment": "Split Color Light Green / Orange"
+          "comment": "Split Light Green / Orange"
         },
         {
           "dmxRange": [114, 120],
           "type": "ColorWheelIndex",
           "index": 7.5,
           "colors": ["#ca450c", "#2921d3"],
-          "comment": "Split Color Orange / Dark Blue"
+          "comment": "Split Orange / Dark Blue"
         },
         {
           "dmxRange": [121, 127],
           "type": "ColorWheelIndex",
           "index": 8.5,
           "colors": ["#2921d3", "#ffffff"],
-          "comment": "Split Color Dark Blue / White"
+          "comment": "Split Dark Blue / Open"
         },
         {
           "dmxRange": [128, 191],
@@ -297,6 +297,7 @@
           "dmxRange": [64, 71],
           "type": "GoboIndex",
           "index": 7,
+          "comment": "7 Metal",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "menuClick": "center"
@@ -305,6 +306,7 @@
           "dmxRange": [72, 79],
           "type": "GoboIndex",
           "index": 6,
+          "comment": "6 Metal",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "menuClick": "center"
@@ -313,6 +315,7 @@
           "dmxRange": [80, 87],
           "type": "GoboIndex",
           "index": 5,
+          "comment": "5 Metal",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "menuClick": "center"
@@ -321,6 +324,7 @@
           "dmxRange": [88, 95],
           "type": "GoboIndex",
           "index": 4,
+          "comment": "4 Metal",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "menuClick": "center"
@@ -329,6 +333,7 @@
           "dmxRange": [96, 103],
           "type": "GoboIndex",
           "index": 3,
+          "comment": "3 Metal",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "menuClick": "center"
@@ -337,6 +342,7 @@
           "dmxRange": [104, 111],
           "type": "GoboIndex",
           "index": 2,
+          "comment": "2 Glass",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "menuClick": "center"
@@ -345,6 +351,7 @@
           "dmxRange": [112, 119],
           "type": "GoboIndex",
           "index": 1,
+          "comment": "1 Glass",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "menuClick": "center"
@@ -396,7 +403,7 @@
         {
           "dmxRange": [232, 255],
           "type": "Effect",
-          "effectName": "Gobo Bounce"
+          "effectName": "Gobo Wheel slot shake"
         }
       ]
     },

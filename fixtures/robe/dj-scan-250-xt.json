@@ -54,7 +54,7 @@
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#ffffff"],
-          "comment": "White"
+          "comment": "Open"
         },
         {
           "dmxRange": [8, 15],
@@ -144,8 +144,8 @@
           "dmxRange": [104, 111],
           "type": "ColorWheelIndex",
           "index": 13,
-          "colors": ["#ff0000", "#00ffff"],
-          "comment": "Split Red / Cyan"
+          "colors": ["#ff0000", "#0000ff"],
+          "comment": "Split Red / Blue"
         },
         {
           "dmxRange": [112, 119],
@@ -182,7 +182,7 @@
         }
       ]
     },
-    "Gobos": {
+    "Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 23],
@@ -346,7 +346,7 @@
         "Pan",
         "Tilt",
         "Color Wheel",
-        "Gobos",
+        "Gobo Wheel",
         "Gobo rotation",
         "Shutter / Strobe"
       ]

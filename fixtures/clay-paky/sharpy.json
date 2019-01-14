@@ -46,7 +46,7 @@
           "dmxRange": [0, 4],
           "type": "ColorWheelIndex",
           "index": 0,
-          "comment": "White",
+          "comment": "Open",
           "colors": ["#ffffff"]
         },
         {
@@ -56,7 +56,7 @@
           "indexEnd": 1,
           "colorsStart": ["#ffffff"],
           "colorsEnd": ["#c41c1a"],
-          "comment": "Split White / Red"
+          "comment": "Open … Red"
         },
         {
           "dmxRange": [9, 12],
@@ -72,7 +72,7 @@
           "indexEnd": 2,
           "colorsStart": ["#c41c1a"],
           "colorsEnd": ["#ed8229"],
-          "comment": "Split Red / Orange"
+          "comment": "Red … Orange"
         },
         {
           "dmxRange": [18, 21],
@@ -88,7 +88,7 @@
           "indexEnd": 3,
           "colorsStart": ["#ed8229"],
           "colorsEnd": ["#7abd82"],
-          "comment": "Split Orange / Aquamarine"
+          "comment": "Orange … Aquamarine"
         },
         {
           "dmxRange": [26, 29],
@@ -104,7 +104,7 @@
           "indexEnd": 4,
           "colorsStart": ["#7abd82"],
           "colorsEnd": ["#05822b"],
-          "comment": "Split Aquamarine / Green"
+          "comment": "Aquamarine … Green"
         },
         {
           "dmxRange": [35, 38],
@@ -120,7 +120,7 @@
           "indexEnd": 5,
           "colorsStart": ["#05822b"],
           "colorsEnd": ["#9ec233"],
-          "comment": "Split Green / Light Green"
+          "comment": "Green … Light Green"
         },
         {
           "dmxRange": [43, 46],
@@ -136,7 +136,7 @@
           "indexEnd": 6,
           "colorsStart": ["#9ec233"],
           "colorsEnd": ["#8f73ad"],
-          "comment": "Split Light Green / Lavender"
+          "comment": "Light Green … Lavender"
         },
         {
           "dmxRange": [52, 55],
@@ -152,7 +152,7 @@
           "indexEnd": 7,
           "colorsStart": ["#8f73ad"],
           "colorsEnd": ["#ed8080"],
-          "comment": "Split Lavender / Pink"
+          "comment": "Lavender … Pink"
         },
         {
           "dmxRange": [60, 63],
@@ -168,7 +168,7 @@
           "indexEnd": 8,
           "colorsStart": ["#ed8080"],
           "colorsEnd": ["#ffed00"],
-          "comment": "Split Pink / Yellow"
+          "comment": "Pink … Yellow"
         },
         {
           "dmxRange": [69, 72],
@@ -184,7 +184,7 @@
           "indexEnd": 9,
           "colorsStart": ["#ffed00"],
           "colorsEnd": ["#e30082"],
-          "comment": "Split Yellow / Magenta"
+          "comment": "Yellow … Magenta"
         },
         {
           "dmxRange": [77, 81],
@@ -200,7 +200,7 @@
           "indexEnd": 10,
           "colorsStart": ["#e30082"],
           "colorsEnd": ["#00a6eb"],
-          "comment": "Split Magenta / Cyan"
+          "comment": "Magenta … Cyan"
         },
         {
           "dmxRange": [86, 89],
@@ -216,7 +216,7 @@
           "indexEnd": 11,
           "colorsStart": ["#00a6eb"],
           "colorsEnd": ["#f5c745"],
-          "comment": "Split Cyan / CTO 260"
+          "comment": "Cyan … CTO 260"
         },
         {
           "dmxRange": [94, 98],
@@ -232,7 +232,7 @@
           "indexEnd": 12,
           "colorsStart": ["#f5c745"],
           "colorsEnd": ["#f5d985"],
-          "comment": "Split CTO 260 / CTO 190"
+          "comment": "CTO 260 … CTO 190"
         },
         {
           "dmxRange": [103, 106],
@@ -248,7 +248,7 @@
           "indexEnd": 13,
           "colorsStart": ["#f5d985"],
           "colorsEnd": ["#96c7b8"],
-          "comment": "Split CTO 190 / CTB 8000"
+          "comment": "CTO 190 … CTB 8000"
         },
         {
           "dmxRange": [111, 115],
@@ -264,7 +264,7 @@
           "indexEnd": 14,
           "colorsStart": ["#96c7b8"],
           "colorsEnd": ["#004f99"],
-          "comment": "Split CTB 8000 / Blue"
+          "comment": "CTB 8000 … Blue"
         },
         {
           "dmxRange": [120, 123],
@@ -280,7 +280,7 @@
           "indexEnd": 0,
           "colorsStart": ["#004f99"],
           "colorsEnd": ["#ffffff"],
-          "comment": "Split Blue / White"
+          "comment": "Blue … Open"
         },
         {
           "dmxRange": [128, 255],
@@ -354,7 +354,7 @@
         "type": "Intensity"
       }
     },
-    "Static Gobo Change": {
+    "Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 3],
@@ -799,7 +799,7 @@
         "Color Wheel",
         "Shutter / Strobe",
         "Dimmer",
-        "Static Gobo Change",
+        "Gobo Wheel",
         "Prism Insertion",
         "Prism Rotation",
         "Effects Movement",
@@ -820,7 +820,7 @@
         "Color Wheel",
         "Shutter / Strobe",
         "Dimmer",
-        "Static Gobo Change",
+        "Gobo Wheel",
         "Prism Insertion",
         "Prism Rotation",
         "Effects Movement",

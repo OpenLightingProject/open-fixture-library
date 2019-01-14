@@ -66,7 +66,7 @@
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#ffffff"],
-          "comment": "White"
+          "comment": "Open"
         },
         {
           "dmxRange": [11, 21],
@@ -149,14 +149,16 @@
           "dmxRange": [16, 124],
           "type": "GoboIndex",
           "indexStart": 1,
-          "indexEnd": 6
+          "indexEnd": 6,
+          "comment": "Gobo 1 … Gobo 6"
         },
         {
           "dmxRange": [125, 234],
           "type": "GoboIndex",
           "indexStart": 1,
           "indexEnd": 6,
-          "shakeAngle": "wide"
+          "shakeAngle": "wide",
+          "comment": "Gobo 1 … Gobo 6"
         },
         {
           "dmxRange": [235, 249],

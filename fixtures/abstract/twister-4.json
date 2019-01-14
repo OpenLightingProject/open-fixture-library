@@ -71,7 +71,7 @@
         }
       ]
     },
-    "Color/Gobo": {
+    "Color / Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 9],
@@ -84,103 +84,90 @@
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#ffffff"],
-          "comment": "Open",
-          "menuClick": "start"
+          "comment": "Open"
         },
         {
           "dmxRange": [26, 42],
           "type": "ColorWheelIndex",
           "index": 1,
           "colors": ["#ff0000"],
-          "comment": "Red [Dot Tunnel]",
-          "menuClick": "start"
+          "comment": "Red [Dot Tunnel]"
         },
         {
           "dmxRange": [43, 58],
           "type": "ColorWheelIndex",
           "index": 2,
           "colors": ["#0000ff"],
-          "comment": "Blue [Slash]",
-          "menuClick": "start"
+          "comment": "Blue [Slash]"
         },
         {
           "dmxRange": [59, 74],
           "type": "ColorWheelIndex",
           "index": 3,
           "colors": ["#00ff00"],
-          "comment": "Green [Segment]",
-          "menuClick": "start"
+          "comment": "Green [Segment]"
         },
         {
           "dmxRange": [75, 90],
           "type": "ColorWheelIndex",
           "index": 4,
           "colors": ["#ffff00"],
-          "comment": "Yellow [Triangle]",
-          "menuClick": "start"
+          "comment": "Yellow [Triangle]"
         },
         {
           "dmxRange": [91, 107],
           "type": "ColorWheelIndex",
           "index": 5,
           "colors": ["#00ffff"],
-          "comment": "Cyan [Tunnel]",
-          "menuClick": "start"
+          "comment": "Cyan [Tunnel]"
         },
         {
           "dmxRange": [108, 123],
           "type": "ColorWheelIndex",
           "index": 6,
           "colors": ["#ff7f00"],
-          "comment": "Orange [Bubbles]",
-          "menuClick": "start"
+          "comment": "Orange [Bubbles]"
         },
         {
           "dmxRange": [124, 139],
           "type": "ColorWheelIndex",
           "index": 7,
           "colors": ["#ff00ff"],
-          "comment": "Pink [Stars]",
-          "menuClick": "start"
+          "comment": "Pink [Stars]"
         },
         {
           "dmxRange": [140, 155],
           "type": "ColorWheelIndex",
-          "index": 7,
-          "comment": "Multicolor [Quadrant]",
-          "menuClick": "start"
+          "index": 8,
+          "comment": "Multicolor [Quadrant]"
         },
         {
           "dmxRange": [156, 172],
           "type": "ColorWheelIndex",
-          "index": 8,
+          "index": 6,
           "colors": ["#ff7f00"],
-          "comment": "Orange [Bubbles]",
-          "menuClick": "start"
+          "comment": "Orange [Bubbles]"
         },
         {
           "dmxRange": [173, 188],
           "type": "ColorWheelIndex",
-          "index": 9,
+          "index": 5,
           "colors": ["#00ffff"],
-          "comment": "Cyan [Tunnel]",
-          "menuClick": "start"
+          "comment": "Cyan [Tunnel]"
         },
         {
           "dmxRange": [189, 220],
           "type": "ColorWheelIndex",
-          "index": 10,
+          "index": 4,
           "colors": ["#ffff00"],
-          "comment": "Yellow [Triangle]",
-          "menuClick": "start"
+          "comment": "Yellow [Triangle]"
         },
         {
           "dmxRange": [221, 237],
           "type": "ColorWheelIndex",
-          "index": 11,
+          "index": 2,
           "colors": ["#0000ff"],
-          "comment": "Blue [Slash]",
-          "menuClick": "start"
+          "comment": "Blue [Slash]"
         },
         {
           "dmxRange": [238, 253],
@@ -226,7 +213,7 @@
       "shortName": "1CE-2ch",
       "channels": [
         "Rotation",
-        "Color/Gobo"
+        "Color / Gobo Wheel"
       ]
     },
     {
@@ -234,7 +221,7 @@
       "shortName": "HP-3ch",
       "channels": [
         "Rotation",
-        "Color/Gobo",
+        "Color / Gobo Wheel",
         "Shutter"
       ]
     }

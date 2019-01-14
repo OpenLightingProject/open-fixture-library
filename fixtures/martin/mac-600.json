@@ -150,25 +150,28 @@
           "type": "ColorWheelIndex",
           "indexStart": 0,
           "indexEnd": 1,
-          "comment": "Open…color 1"
+          "comment": "Open … Color 1"
         },
         {
           "dmxRange": [41, 80],
           "type": "ColorWheelIndex",
           "indexStart": 1,
-          "indexEnd": 2
+          "indexEnd": 2,
+          "comment": "Color 1 … Color 2"
         },
         {
           "dmxRange": [81, 120],
           "type": "ColorWheelIndex",
           "indexStart": 2,
-          "indexEnd": 3
+          "indexEnd": 3,
+          "comment": "Color 2 … Color 3"
         },
         {
           "dmxRange": [121, 160],
           "type": "ColorWheelIndex",
           "indexStart": 3,
-          "indexEnd": 4
+          "indexEnd": 4,
+          "comment": "Color 3 … Color 4"
         },
         {
           "dmxRange": [161, 165],
@@ -194,7 +197,8 @@
           "dmxRange": [181, 185],
           "type": "ColorWheelIndex",
           "index": 0,
-          "comment": "Open"
+          "comment": "Open",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [186, 214],

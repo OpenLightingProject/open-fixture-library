@@ -80,14 +80,14 @@
         }
       ]
     },
-    "Color": {
+    "Color Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#000000"],
-          "comment": "Black"
+          "comment": "Closed"
         },
         {
           "dmxRange": [1, 14],
@@ -96,7 +96,7 @@
           "indexEnd": 1,
           "colorsStart": ["#000000"],
           "colorsEnd": ["#ffffff"],
-          "comment": "Split Black / White",
+          "comment": "Closed … Open",
           "menuClick": "center"
         },
         {
@@ -104,7 +104,7 @@
           "type": "ColorWheelIndex",
           "index": 1,
           "colors": ["#ffffff"],
-          "comment": "White"
+          "comment": "Open"
         },
         {
           "dmxRange": [16, 29],
@@ -113,7 +113,7 @@
           "indexEnd": 2,
           "colorsStart": ["#ffffff"],
           "colorsEnd": ["#ca1f7b"],
-          "comment": "Split White / Magenta",
+          "comment": "Open … Magenta",
           "menuClick": "center"
         },
         {
@@ -130,7 +130,7 @@
           "indexEnd": 3,
           "colorsStart": ["#ca1f7b"],
           "colorsEnd": ["#ffc0cb"],
-          "comment": "Split Magenta / Pink",
+          "comment": "Magenta … Pink",
           "menuClick": "center"
         },
         {
@@ -147,7 +147,7 @@
           "indexEnd": 4,
           "colorsStart": ["#ffc0cb"],
           "colorsEnd": ["#ff0000"],
-          "comment": "Split Pink / Red",
+          "comment": "Pink … Red",
           "menuClick": "center"
         },
         {
@@ -164,7 +164,7 @@
           "indexEnd": 5,
           "colorsStart": ["#ff0000"],
           "colorsEnd": ["#ff7f00"],
-          "comment": "Split Red / Orange",
+          "comment": "Red … Orange",
           "menuClick": "center"
         },
         {
@@ -181,7 +181,7 @@
           "indexEnd": 6,
           "colorsStart": ["#ff7f00"],
           "colorsEnd": ["#ffbf00"],
-          "comment": "Split Orange / Amber",
+          "comment": "Orange … Amber",
           "menuClick": "center"
         },
         {
@@ -198,7 +198,7 @@
           "indexEnd": 7,
           "colorsStart": ["#ffbf00"],
           "colorsEnd": ["#ffff00"],
-          "comment": "Split Amber / Yellow",
+          "comment": "Amber … Yellow",
           "menuClick": "center"
         },
         {
@@ -215,7 +215,7 @@
           "indexEnd": 8,
           "colorsStart": ["#ffff00"],
           "colorsEnd": ["#90ee90"],
-          "comment": "Split Yellow / Light Green",
+          "comment": "Yellow … Light Green",
           "menuClick": "center"
         },
         {
@@ -232,7 +232,7 @@
           "indexEnd": 9,
           "colorsStart": ["#90ee90"],
           "colorsEnd": ["#00ff00"],
-          "comment": "Split Light Green / Green",
+          "comment": "Light Green … Green",
           "menuClick": "center"
         },
         {
@@ -249,7 +249,7 @@
           "indexEnd": 10,
           "colorsStart": ["#00ff00"],
           "colorsEnd": ["#00ffff"],
-          "comment": "Split Green / Cyan",
+          "comment": "Green … Cyan",
           "menuClick": "center"
         },
         {
@@ -266,7 +266,7 @@
           "indexEnd": 11,
           "colorsStart": ["#00ffff"],
           "colorsEnd": ["#0000ff"],
-          "comment": "Split Cyan / Blue",
+          "comment": "Cyan … Blue",
           "menuClick": "center"
         },
         {
@@ -283,7 +283,7 @@
           "indexEnd": 12,
           "colorsStart": ["#0000ff"],
           "colorsEnd": ["#00008b"],
-          "comment": "Split Blue / Dark Blue",
+          "comment": "Blue … Dark Blue",
           "menuClick": "center"
         },
         {
@@ -368,18 +368,18 @@
           "type": "ColorWheelIndex",
           "index": 1,
           "colors": ["#ffffff"],
-          "comment": "White"
+          "comment": "Open"
         },
         {
           "dmxRange": [240, 255],
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#000000"],
-          "comment": "Black"
+          "comment": "Closed"
         }
       ]
     },
-    "Gobo": {
+    "Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
@@ -392,7 +392,7 @@
           "type": "GoboIndex",
           "indexStart": 0,
           "indexEnd": 1,
-          "comment": "Split Closed / Open"
+          "comment": "Closed … Open"
         },
         {
           "dmxRange": [15, 15],
@@ -405,7 +405,7 @@
           "type": "GoboIndex",
           "indexStart": 1,
           "indexEnd": 2,
-          "comment": "Split Open / Dot"
+          "comment": "Open … Gobo Dot"
         },
         {
           "dmxRange": [30, 30],
@@ -418,7 +418,7 @@
           "type": "GoboIndex",
           "indexStart": 2,
           "indexEnd": 3,
-          "comment": "Split Dot / Line"
+          "comment": "Gobo Dot … Gobo Line"
         },
         {
           "dmxRange": [45, 45],
@@ -431,7 +431,7 @@
           "type": "GoboIndex",
           "indexStart": 3,
           "indexEnd": 4,
-          "comment": "Split Line / Stars"
+          "comment": "Gobo Line … Gobo Stars"
         },
         {
           "dmxRange": [60, 60],
@@ -444,7 +444,7 @@
           "type": "GoboIndex",
           "indexStart": 4,
           "indexEnd": 5,
-          "comment": "Split Stars / Triangles"
+          "comment": "Gobo Stars … Gobo Triangles"
         },
         {
           "dmxRange": [75, 75],
@@ -457,7 +457,7 @@
           "type": "GoboIndex",
           "indexStart": 5,
           "indexEnd": 6,
-          "comment": "Split Triangles / Star"
+          "comment": "Gobo Triangles … Gobo Star"
         },
         {
           "dmxRange": [90, 90],
@@ -470,7 +470,7 @@
           "type": "GoboIndex",
           "indexStart": 6,
           "indexEnd": 7,
-          "comment": "Split Star / Dots"
+          "comment": "Gobo Star … Gobo Dots"
         },
         {
           "dmxRange": [105, 105],
@@ -483,7 +483,7 @@
           "type": "GoboIndex",
           "indexStart": 7,
           "indexEnd": 8,
-          "comment": "Split Dots / Bells"
+          "comment": "Gobo Dots … Gobo Bells"
         },
         {
           "dmxRange": [120, 120],
@@ -496,7 +496,7 @@
           "type": "GoboIndex",
           "indexStart": 8,
           "indexEnd": 9,
-          "comment": "Split Bells / Cone"
+          "comment": "Gobo Bells … Gobo Cone"
         },
         {
           "dmxRange": [135, 135],
@@ -509,7 +509,7 @@
           "type": "GoboIndex",
           "indexStart": 9,
           "indexEnd": 10,
-          "comment": "Split Cone / Phone"
+          "comment": "Gobo Cone … Gobo Phone"
         },
         {
           "dmxRange": [150, 150],
@@ -522,7 +522,7 @@
           "type": "GoboIndex",
           "indexStart": 10,
           "indexEnd": 11,
-          "comment": "Split Phone / Window"
+          "comment": "Gobo Phone … Gobo Window"
         },
         {
           "dmxRange": [165, 165],
@@ -535,7 +535,7 @@
           "type": "GoboIndex",
           "indexStart": 11,
           "indexEnd": 12,
-          "comment": "Split Window / Triangle"
+          "comment": "Gobo Window … Gobo Triangle"
         },
         {
           "dmxRange": [180, 184],
@@ -674,8 +674,8 @@
       "shortName": "tracking",
       "channels": [
         "Strobe",
-        "Color",
-        "Gobo",
+        "Color Wheel",
+        "Gobo Wheel",
         "Pan",
         "Tilt"
       ]
@@ -685,8 +685,8 @@
       "shortName": "vector",
       "channels": [
         "Strobe",
-        "Color",
-        "Gobo",
+        "Color Wheel",
+        "Gobo Wheel",
         "Pan",
         "Tilt",
         "Movement Speed",

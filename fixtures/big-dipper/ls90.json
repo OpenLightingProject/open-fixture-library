@@ -85,7 +85,7 @@
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#ffffff"],
-          "comment": "White"
+          "comment": "Open"
         },
         {
           "dmxRange": [10, 19],
@@ -141,7 +141,7 @@
           "type": "ColorWheelIndex",
           "index": 7.5,
           "colors": ["#ccaa00", "#ffffff"],
-          "comment": "Split Dark Yellow / White"
+          "comment": "Split Dark Yellow / Open"
         },
         {
           "dmxRange": [90, 99],
@@ -193,7 +193,7 @@
         }
       ]
     },
-    "Glass Gobo": {
+    "Glass Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 35],
@@ -287,7 +287,7 @@
         }
       ]
     },
-    "Metal Gobo": {
+    "Metal Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 26],
@@ -423,10 +423,10 @@
         "Dimmer",
         "Strobe",
         "Color Wheel",
-        "Glass Gobo",
+        "Glass Gobo Wheel",
         "Glass Gobo Rotation",
         "Glass Gobo Shake",
-        "Metal Gobo",
+        "Metal Gobo Wheel",
         "Metal Gobo Shake",
         "Focus",
         "Prism",

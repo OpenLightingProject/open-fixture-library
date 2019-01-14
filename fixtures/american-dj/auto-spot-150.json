@@ -45,7 +45,7 @@
         "angleEnd": "270deg"
       }
     },
-    "Gobo": {
+    "Gobo Wheel": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -137,14 +137,14 @@
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#ffffff"],
-          "comment": "White"
+          "comment": "Open"
         },
         {
           "dmxRange": [7, 13],
           "type": "ColorWheelIndex",
           "index": 0.5,
           "colors": ["#ffffff", "#0000ff"],
-          "comment": "Split White / Blue"
+          "comment": "Split Open / Blue"
         },
         {
           "dmxRange": [14, 20],
@@ -309,7 +309,7 @@
           "type": "ColorWheelIndex",
           "index": 0,
           "colors": ["#ffffff"],
-          "comment": "White"
+          "comment": "Open"
         },
         {
           "dmxRange": [13, 25],
@@ -389,7 +389,7 @@
       "channels": [
         "Pan",
         "Tilt",
-        "Gobo",
+        "Gobo Wheel",
         "Gobo Rotation",
         "Full Colors",
         "Shutter / Dimmer"
@@ -400,7 +400,7 @@
       "channels": [
         "Pan",
         "Tilt",
-        "Gobo",
+        "Gobo Wheel",
         "Gobo Rotation",
         "Split Colors",
         "Shutter / Dimmer"

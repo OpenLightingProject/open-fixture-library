@@ -112,9 +112,10 @@
         },
         {
           "dmxRange": [128, 255],
-          "type": "ColorWheelRotation",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },

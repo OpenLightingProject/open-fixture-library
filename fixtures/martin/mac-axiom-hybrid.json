@@ -116,13 +116,14 @@
         "colorTemperatureEnd": "warm"
       }
     },
-    "Color wheel": {
+    "Color Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
           "type": "ColorWheelIndex",
           "index": 0,
-          "colors": ["#ffffff"]
+          "colors": ["#ffffff"],
+          "comment": "Open"
         },
         {
           "dmxRange": [1, 8],
@@ -130,13 +131,15 @@
           "indexStart": 0,
           "indexEnd": 1,
           "colorsStart": ["#ffffff"],
-          "colorsEnd": ["#71c9ed"]
+          "colorsEnd": ["#71c9ed"],
+          "comment": "Open … Blue"
         },
         {
           "dmxRange": [9, 9],
           "type": "ColorWheelIndex",
           "index": 1,
-          "colors": ["#71c9ed"]
+          "colors": ["#71c9ed"],
+          "comment": "Blue"
         },
         {
           "dmxRange": [10, 17],
@@ -144,13 +147,15 @@
           "indexStart": 1,
           "indexEnd": 2,
           "colorsStart": ["#71c9ed"],
-          "colorsEnd": ["#8ad088"]
+          "colorsEnd": ["#8ad088"],
+          "comment": "Blue … Light green"
         },
         {
           "dmxRange": [18, 18],
           "type": "ColorWheelIndex",
           "index": 2,
-          "colors": ["#8ad088"]
+          "colors": ["#8ad088"],
+          "comment": "Light green"
         },
         {
           "dmxRange": [19, 26],
@@ -158,13 +163,15 @@
           "indexStart": 2,
           "indexEnd": 3,
           "colorsStart": ["#8ad088"],
-          "colorsEnd": ["#d4f1fb"]
+          "colorsEnd": ["#d4f1fb"],
+          "comment": "Light green … Half CTB"
         },
         {
           "dmxRange": [27, 27],
           "type": "ColorWheelIndex",
           "index": 3,
-          "colors": ["#d4f1fb"]
+          "colors": ["#d4f1fb"],
+          "comment": "Half CTB"
         },
         {
           "dmxRange": [28, 35],
@@ -172,13 +179,15 @@
           "indexStart": 3,
           "indexEnd": 4,
           "colorsStart": ["#d4f1fb"],
-          "colorsEnd": ["#cb6122"]
+          "colorsEnd": ["#cb6122"],
+          "comment": "Half CTB … Orange"
         },
         {
           "dmxRange": [36, 36],
           "type": "ColorWheelIndex",
           "index": 4,
-          "colors": ["#cb6122"]
+          "colors": ["#cb6122"],
+          "comment": "Orange"
         },
         {
           "dmxRange": [37, 44],
@@ -186,27 +195,31 @@
           "indexStart": 4,
           "indexEnd": 5,
           "colorsStart": ["#cb6122"],
-          "colorsEnd": ["#9c4aa5"]
+          "colorsEnd": ["#a035a0"],
+          "comment": "Orange … Magenta"
         },
         {
           "dmxRange": [45, 45],
           "type": "ColorWheelIndex",
           "index": 5,
-          "colors": ["#9c4aa5"]
+          "colors": ["#a035a0"],
+          "comment": "Magenta"
         },
         {
           "dmxRange": [46, 53],
           "type": "ColorWheelIndex",
           "indexStart": 5,
           "indexEnd": 6,
-          "colorsStart": ["#9c4aa5"],
-          "colorsEnd": ["#9bd2ef"]
+          "colorsStart": ["#a035a0"],
+          "colorsEnd": ["#9bd2ef"],
+          "comment": "Magenta … Full CTB"
         },
         {
           "dmxRange": [54, 54],
           "type": "ColorWheelIndex",
           "index": 6,
-          "colors": ["#9bd2ef"]
+          "colors": ["#9bd2ef"],
+          "comment": "Full CTB"
         },
         {
           "dmxRange": [55, 62],
@@ -214,13 +227,15 @@
           "indexStart": 6,
           "indexEnd": 7,
           "colorsStart": ["#9bd2ef"],
-          "colorsEnd": ["#f2e663"]
+          "colorsEnd": ["#f2e663"],
+          "comment": "Full CTB … Yellow 2"
         },
         {
           "dmxRange": [63, 63],
           "type": "ColorWheelIndex",
           "index": 7,
-          "colors": ["#f2e663"]
+          "colors": ["#f2e663"],
+          "comment": "Yellow 2"
         },
         {
           "dmxRange": [64, 71],
@@ -228,13 +243,15 @@
           "indexStart": 7,
           "indexEnd": 8,
           "colorsStart": ["#f2e663"],
-          "colorsEnd": ["#85d2f1"]
+          "colorsEnd": ["#85d2f1"],
+          "comment": "Yellow 2 … Light blue"
         },
         {
           "dmxRange": [72, 72],
           "type": "ColorWheelIndex",
           "index": 8,
-          "colors": ["#85d2f1"]
+          "colors": ["#85d2f1"],
+          "comment": "Light blue"
         },
         {
           "dmxRange": [73, 80],
@@ -242,13 +259,15 @@
           "indexStart": 8,
           "indexEnd": 9,
           "colorsStart": ["#85d2f1"],
-          "colorsEnd": ["#be2b1f"]
+          "colorsEnd": ["#be2b1f"],
+          "comment": "Light blue … Light red"
         },
         {
           "dmxRange": [81, 81],
           "type": "ColorWheelIndex",
           "index": 9,
-          "colors": ["#be2b1f"]
+          "colors": ["#be2b1f"],
+          "comment": "Light red"
         },
         {
           "dmxRange": [82, 89],
@@ -256,13 +275,15 @@
           "indexStart": 9,
           "indexEnd": 10,
           "colorsStart": ["#be2b1f"],
-          "colorsEnd": ["#5765b4"]
+          "colorsEnd": ["#5765b4"],
+          "comment": "Light red … Lavender"
         },
         {
           "dmxRange": [90, 90],
           "type": "ColorWheelIndex",
           "index": 10,
-          "colors": ["#5765b4"]
+          "colors": ["#5765b4"],
+          "comment": "Lavender"
         },
         {
           "dmxRange": [91, 98],
@@ -270,13 +291,15 @@
           "indexStart": 10,
           "indexEnd": 11,
           "colorsStart": ["#5765b4"],
-          "colorsEnd": ["#8cc783"]
+          "colorsEnd": ["#8cc783"],
+          "comment": "Lavender … Dark green"
         },
         {
           "dmxRange": [99, 99],
           "type": "ColorWheelIndex",
           "index": 11,
-          "colors": ["#8cc783"]
+          "colors": ["#8cc783"],
+          "comment": "Dark green"
         },
         {
           "dmxRange": [100, 107],
@@ -284,13 +307,15 @@
           "indexStart": 11,
           "indexEnd": 12,
           "colorsStart": ["#8cc783"],
-          "colorsEnd": ["#ac87c3"]
+          "colorsEnd": ["#ac87c3"],
+          "comment": "Dark green … Purple"
         },
         {
           "dmxRange": [108, 108],
           "type": "ColorWheelIndex",
           "index": 12,
-          "colors": ["#ac87c3"]
+          "colors": ["#ac87c3"],
+          "comment": "Purple"
         },
         {
           "dmxRange": [109, 116],
@@ -298,13 +323,15 @@
           "indexStart": 12,
           "indexEnd": 13,
           "colorsStart": ["#ac87c3"],
-          "colorsEnd": ["#aa47a3"]
+          "colorsEnd": ["#aa47a3"],
+          "comment": "Purple … Pink"
         },
         {
           "dmxRange": [117, 117],
           "type": "ColorWheelIndex",
           "index": 13,
-          "colors": ["#aa47a3"]
+          "colors": ["#aa47a3"],
+          "comment": "Pink"
         },
         {
           "dmxRange": [118, 125],
@@ -312,13 +339,15 @@
           "indexStart": 13,
           "indexEnd": 14,
           "colorsStart": ["#aa47a3"],
-          "colorsEnd": ["#ffde3f"]
+          "colorsEnd": ["#ffde3f"],
+          "comment": "Pink … Yellow 1"
         },
         {
           "dmxRange": [126, 126],
           "type": "ColorWheelIndex",
           "index": 14,
-          "colors": ["#ffde3f"]
+          "colors": ["#ffde3f"],
+          "comment": "Yellow 1"
         },
         {
           "dmxRange": [127, 134],
@@ -326,13 +355,15 @@
           "indexStart": 14,
           "indexEnd": 15,
           "colorsStart": ["#ffde3f"],
-          "colorsEnd": ["#3b51aa"]
+          "colorsEnd": ["#3b51aa"],
+          "comment": "Yellow 1 … Blue 101"
         },
         {
           "dmxRange": [135, 135],
           "type": "ColorWheelIndex",
           "index": 15,
-          "colors": ["#3b51aa"]
+          "colors": ["#3b51aa"],
+          "comment": "Blue 101"
         },
         {
           "dmxRange": [136, 143],
@@ -340,13 +371,15 @@
           "indexStart": 15,
           "indexEnd": 16,
           "colorsStart": ["#3b51aa"],
-          "colorsEnd": ["#ac241b"]
+          "colorsEnd": ["#ac241b"],
+          "comment": "Blue 101 … Red"
         },
         {
           "dmxRange": [144, 144],
           "type": "ColorWheelIndex",
           "index": 16,
-          "colors": ["#ac241b"]
+          "colors": ["#ac241b"],
+          "comment": "Red"
         },
         {
           "dmxRange": [145, 152],
@@ -354,115 +387,134 @@
           "indexStart": 16,
           "indexEnd": 0,
           "colorsStart": ["#ac241b"],
-          "colorsEnd": ["#ffffff"]
+          "colorsEnd": ["#ffffff"],
+          "comment": "Red … Open"
         },
         {
           "dmxRange": [153, 162],
           "type": "ColorWheelIndex",
           "index": 0,
-          "colors": ["#ffffff"]
+          "colors": ["#ffffff"],
+          "comment": "Open"
         },
         {
           "dmxRange": [163, 163],
           "type": "ColorWheelIndex",
           "index": 1,
-          "colors": ["#71c9ed"]
+          "colors": ["#71c9ed"],
+          "comment": "Blue"
         },
         {
           "dmxRange": [164, 164],
           "type": "ColorWheelIndex",
           "index": 2,
-          "colors": ["#8ad088"]
+          "colors": ["#8ad088"],
+          "comment": "Light green"
         },
         {
           "dmxRange": [165, 165],
           "type": "ColorWheelIndex",
           "index": 3,
-          "colors": ["#d4f1fb"]
+          "colors": ["#d4f1fb"],
+          "comment": "Half CTB"
         },
         {
           "dmxRange": [166, 166],
           "type": "ColorWheelIndex",
           "index": 4,
-          "colors": ["#cb6122"]
+          "colors": ["#cb6122"],
+          "comment": "Orange"
         },
         {
           "dmxRange": [167, 167],
           "type": "ColorWheelIndex",
           "index": 5,
-          "colors": ["#9c4aa5"]
+          "colors": ["#a035a0"],
+          "comment": "Magenta"
         },
         {
           "dmxRange": [168, 168],
           "type": "ColorWheelIndex",
           "index": 6,
-          "colors": ["#9bd2ef"]
+          "colors": ["#9bd2ef"],
+          "comment": "Full CTB"
         },
         {
           "dmxRange": [169, 169],
           "type": "ColorWheelIndex",
           "index": 7,
-          "colors": ["#f2e663"]
+          "colors": ["#f2e663"],
+          "comment": "Yellow 2"
         },
         {
           "dmxRange": [170, 170],
           "type": "ColorWheelIndex",
           "index": 8,
-          "colors": ["#85d2f1"]
+          "colors": ["#85d2f1"],
+          "comment": "Light blue"
         },
         {
           "dmxRange": [171, 171],
           "type": "ColorWheelIndex",
           "index": 9,
-          "colors": ["#be2b1f"]
+          "colors": ["#be2b1f"],
+          "comment": "Light red"
         },
         {
           "dmxRange": [172, 172],
           "type": "ColorWheelIndex",
           "index": 10,
-          "colors": ["#5765b4"]
+          "colors": ["#5765b4"],
+          "comment": "Lavender"
         },
         {
           "dmxRange": [173, 173],
           "type": "ColorWheelIndex",
           "index": 11,
-          "colors": ["#8cc783"]
+          "colors": ["#8cc783"],
+          "comment": "Dark green"
         },
         {
           "dmxRange": [174, 174],
           "type": "ColorWheelIndex",
           "index": 12,
-          "colors": ["#ac87c3"]
+          "colors": ["#ac87c3"],
+          "comment": "Purple"
         },
         {
           "dmxRange": [175, 175],
           "type": "ColorWheelIndex",
           "index": 13,
-          "colors": ["#aa47a3"]
+          "colors": ["#aa47a3"],
+          "comment": "Pink"
         },
         {
           "dmxRange": [176, 176],
           "type": "ColorWheelIndex",
           "index": 14,
-          "colors": ["#ffde3f"]
+          "colors": ["#ffde3f"],
+          "comment": "Yellow 1"
         },
         {
           "dmxRange": [177, 177],
           "type": "ColorWheelIndex",
           "index": 15,
-          "colors": ["#3b51aa"]
+          "colors": ["#3b51aa"],
+          "comment": "Blue 101"
         },
         {
           "dmxRange": [178, 178],
           "type": "ColorWheelIndex",
           "index": 16,
-          "colors": ["#ac241b"]
+          "colors": ["#ac241b"],
+          "comment": "Red"
         },
         {
           "dmxRange": [179, 192],
           "type": "ColorWheelIndex",
           "index": 0,
-          "colors": ["#ffffff"]
+          "colors": ["#ffffff"],
+          "comment": "Open"
         },
         {
           "dmxRange": [193, 214],
@@ -543,7 +595,7 @@
         }
       ]
     },
-    "Rotating gobo wheel": {
+    "Rotating Gobo Wheel": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -560,7 +612,7 @@
           "dmxRange": [3, 6],
           "type": "GoboIndex",
           "index": 1,
-          "comment": "1 (indexing)",
+          "comment": "Damped Wave (indexing)",
           "switchChannels": {
             "Gobo indexing angle / rotation": "Gobo indexing angle",
             "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
@@ -570,7 +622,7 @@
           "dmxRange": [7, 10],
           "type": "GoboIndex",
           "index": 2,
-          "comment": "2 (indexing)",
+          "comment": "Luck Stakes (indexing)",
           "switchChannels": {
             "Gobo indexing angle / rotation": "Gobo indexing angle",
             "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
@@ -580,7 +632,7 @@
           "dmxRange": [11, 14],
           "type": "GoboIndex",
           "index": 3,
-          "comment": "3 (indexing)",
+          "comment": "Bite Me (indexing)",
           "switchChannels": {
             "Gobo indexing angle / rotation": "Gobo indexing angle",
             "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
@@ -590,7 +642,7 @@
           "dmxRange": [15, 19],
           "type": "GoboIndex",
           "index": 4,
-          "comment": "4 (indexing)",
+          "comment": "Laser Squares (indexing)",
           "switchChannels": {
             "Gobo indexing angle / rotation": "Gobo indexing angle",
             "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
@@ -600,7 +652,7 @@
           "dmxRange": [20, 23],
           "type": "GoboIndex",
           "index": 5,
-          "comment": "5 (indexing)",
+          "comment": "Kite Surf (indexing)",
           "switchChannels": {
             "Gobo indexing angle / rotation": "Gobo indexing angle",
             "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
@@ -610,7 +662,7 @@
           "dmxRange": [24, 27],
           "type": "GoboIndex",
           "index": 6,
-          "comment": "6 (indexing)",
+          "comment": "Dots in Space (indexing)",
           "switchChannels": {
             "Gobo indexing angle / rotation": "Gobo indexing angle",
             "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
@@ -620,7 +672,7 @@
           "dmxRange": [28, 31],
           "type": "GoboIndex",
           "index": 7,
-          "comment": "7 (indexing)",
+          "comment": "Organic Delight (indexing)",
           "switchChannels": {
             "Gobo indexing angle / rotation": "Gobo indexing angle",
             "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
@@ -630,7 +682,7 @@
           "dmxRange": [32, 35],
           "type": "GoboIndex",
           "index": 8,
-          "comment": "8 (indexing)",
+          "comment": "Slice It (indexing)",
           "switchChannels": {
             "Gobo indexing angle / rotation": "Gobo indexing angle",
             "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
@@ -640,7 +692,7 @@
           "dmxRange": [36, 40],
           "type": "GoboIndex",
           "index": 9,
-          "comment": "9 (indexing)",
+          "comment": "Circles (indexing)",
           "switchChannels": {
             "Gobo indexing angle / rotation": "Gobo indexing angle",
             "Gobo indexing angle / rotation fine": "Gobo indexing angle fine"
@@ -650,7 +702,7 @@
           "dmxRange": [41, 44],
           "type": "GoboIndex",
           "index": 1,
-          "comment": "1 (rotation)",
+          "comment": "Damped Wave (rotation)",
           "switchChannels": {
             "Gobo indexing angle / rotation": "Gobo rotation",
             "Gobo indexing angle / rotation fine": "Gobo rotation fine"
@@ -660,7 +712,7 @@
           "dmxRange": [45, 48],
           "type": "GoboIndex",
           "index": 2,
-          "comment": "2 (rotation)",
+          "comment": "Luck Stakes (rotation)",
           "switchChannels": {
             "Gobo indexing angle / rotation": "Gobo rotation",
             "Gobo indexing angle / rotation fine": "Gobo rotation fine"
@@ -670,7 +722,7 @@
           "dmxRange": [49, 52],
           "type": "GoboIndex",
           "index": 3,
-          "comment": "3 (rotation)",
+          "comment": "Bite Me (rotation)",
           "switchChannels": {
             "Gobo indexing angle / rotation": "Gobo rotation",
             "Gobo indexing angle / rotation fine": "Gobo rotation fine"
@@ -680,7 +732,7 @@
           "dmxRange": [53, 56],
           "type": "GoboIndex",
           "index": 4,
-          "comment": "4 (rotation)",
+          "comment": "Laser Squares (rotation)",
           "switchChannels": {
             "Gobo indexing angle / rotation": "Gobo rotation",
             "Gobo indexing angle / rotation fine": "Gobo rotation fine"
@@ -690,7 +742,7 @@
           "dmxRange": [57, 60],
           "type": "GoboIndex",
           "index": 5,
-          "comment": "5 (rotation)",
+          "comment": "Kite Surf (rotation)",
           "switchChannels": {
             "Gobo indexing angle / rotation": "Gobo rotation",
             "Gobo indexing angle / rotation fine": "Gobo rotation fine"
@@ -700,7 +752,7 @@
           "dmxRange": [61, 64],
           "type": "GoboIndex",
           "index": 6,
-          "comment": "6 (rotation)",
+          "comment": "Dots in Space (rotation)",
           "switchChannels": {
             "Gobo indexing angle / rotation": "Gobo rotation",
             "Gobo indexing angle / rotation fine": "Gobo rotation fine"
@@ -710,7 +762,7 @@
           "dmxRange": [65, 68],
           "type": "GoboIndex",
           "index": 7,
-          "comment": "7 (rotation)",
+          "comment": "Organic Delight (rotation)",
           "switchChannels": {
             "Gobo indexing angle / rotation": "Gobo rotation",
             "Gobo indexing angle / rotation fine": "Gobo rotation fine"
@@ -720,7 +772,7 @@
           "dmxRange": [69, 71],
           "type": "GoboIndex",
           "index": 8,
-          "comment": "8 (rotation)",
+          "comment": "Slice It (rotation)",
           "switchChannels": {
             "Gobo indexing angle / rotation": "Gobo rotation",
             "Gobo indexing angle / rotation fine": "Gobo rotation fine"
@@ -730,7 +782,7 @@
           "dmxRange": [72, 80],
           "type": "GoboIndex",
           "index": 9,
-          "comment": "9 (rotation)",
+          "comment": "Circles (rotation)",
           "switchChannels": {
             "Gobo indexing angle / rotation": "Gobo rotation",
             "Gobo indexing angle / rotation fine": "Gobo rotation fine"
@@ -740,6 +792,7 @@
           "dmxRange": [81, 90],
           "type": "GoboIndex",
           "index": 1,
+          "comment": "Damped Wave",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "shakeAngleStart": "25deg",
@@ -753,6 +806,7 @@
           "dmxRange": [91, 100],
           "type": "GoboIndex",
           "index": 2,
+          "comment": "Luck Stakes",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "shakeAngleStart": "25deg",
@@ -766,6 +820,7 @@
           "dmxRange": [101, 110],
           "type": "GoboIndex",
           "index": 3,
+          "comment": "Bite Me",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "shakeAngleStart": "25deg",
@@ -779,6 +834,7 @@
           "dmxRange": [111, 120],
           "type": "GoboIndex",
           "index": 4,
+          "comment": "Laser Squares",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "shakeAngleStart": "25deg",
@@ -792,6 +848,7 @@
           "dmxRange": [121, 130],
           "type": "GoboIndex",
           "index": 5,
+          "comment": "Kite Surf",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "shakeAngleStart": "25deg",
@@ -805,6 +862,7 @@
           "dmxRange": [131, 140],
           "type": "GoboIndex",
           "index": 6,
+          "comment": "Dots in Space",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "shakeAngleStart": "25deg",
@@ -818,6 +876,7 @@
           "dmxRange": [141, 150],
           "type": "GoboIndex",
           "index": 7,
+          "comment": "Organic Delight",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "shakeAngleStart": "25deg",
@@ -831,6 +890,7 @@
           "dmxRange": [151, 160],
           "type": "GoboIndex",
           "index": 8,
+          "comment": "Slice It",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "shakeAngleStart": "25deg",
@@ -844,6 +904,7 @@
           "dmxRange": [161, 170],
           "type": "GoboIndex",
           "index": 9,
+          "comment": "Circles",
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "shakeAngleStart": "25deg",
@@ -885,7 +946,7 @@
         }
       ]
     },
-    "Fixed gobo wheel": {
+    "Fixed Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 20],
@@ -1283,11 +1344,11 @@
         "Magenta",
         "Yellow",
         "CTO",
-        "Color wheel",
-        "Rotating gobo wheel",
+        "Color Wheel",
+        "Rotating Gobo Wheel",
         "Gobo indexing angle / rotation",
         "Gobo indexing angle / rotation fine",
-        "Fixed gobo wheel",
+        "Fixed Gobo Wheel",
         "Frost",
         "Prism deployment",
         "Prism rotation",
