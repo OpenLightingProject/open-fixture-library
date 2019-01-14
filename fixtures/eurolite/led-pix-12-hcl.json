@@ -1,0 +1,1773 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PIX-12 HCL",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Nominari UG"],
+    "createDate": "2019-01-14",
+    "lastModifyDate": "2019-01-14"
+  },
+  "links": {
+    "productPage": [
+      "https://www.steinigke.de/de/mpn51930406-eurolite-led-pix-12-hcl-leiste.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 115, 165],
+    "weight": 5,
+    "power": 150,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Presets": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "UV"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "Red + Green"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "Red + Blue"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Red + White"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Red + Amber"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Red + UV"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "Green + Blue"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "Green + White"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "comment": "Green + Amber"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorPreset",
+          "comment": "Green + UV"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "ColorPreset",
+          "comment": "Green + Blue + White"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ColorPreset",
+          "comment": "Blue + White + Amber"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "ColorPreset",
+          "comment": "White + Amber + UV"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "ColorPreset",
+          "comment": "Amber + UV + Red"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "ColorPreset",
+          "comment": "Red + Blue + White + UV"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "ColorPreset",
+          "comment": "Red + Green + White + UV"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "ColorPreset",
+          "comment": "Red + Green + White + Amber"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "ColorPreset",
+          "comment": "Green + Blue + Amber + UV"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue + White + Amber + UV"
+        }
+      ]
+    },
+    "Pixel Combinations (with Ch. 2)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 15],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3"
+        },
+        {
+          "dmxRange": [16, 21],
+          "type": "Generic",
+          "comment": "Pixel 2+3+4"
+        },
+        {
+          "dmxRange": [22, 27],
+          "type": "Generic",
+          "comment": "Pixel 3+4+5"
+        },
+        {
+          "dmxRange": [28, 33],
+          "type": "Generic",
+          "comment": "Pixel 4+5+6"
+        },
+        {
+          "dmxRange": [34, 39],
+          "type": "Generic",
+          "comment": "Pixel 5+6+7"
+        },
+        {
+          "dmxRange": [40, 45],
+          "type": "Generic",
+          "comment": "Pixel 6+7+8"
+        },
+        {
+          "dmxRange": [46, 51],
+          "type": "Generic",
+          "comment": "Pixel 7+8+9"
+        },
+        {
+          "dmxRange": [52, 57],
+          "type": "Generic",
+          "comment": "Pixel 8+9+10"
+        },
+        {
+          "dmxRange": [58, 63],
+          "type": "Generic",
+          "comment": "Pixel 9+10+11"
+        },
+        {
+          "dmxRange": [64, 69],
+          "type": "Generic",
+          "comment": "Pixel 10+11+12"
+        },
+        {
+          "dmxRange": [70, 75],
+          "type": "Generic",
+          "comment": "Pixel 1+11+12"
+        },
+        {
+          "dmxRange": [76, 81],
+          "type": "Generic",
+          "comment": "Pixel 1+2+12"
+        },
+        {
+          "dmxRange": [82, 87],
+          "type": "Generic",
+          "comment": "Pixel 1"
+        },
+        {
+          "dmxRange": [88, 93],
+          "type": "Generic",
+          "comment": "Pixel 1+2"
+        },
+        {
+          "dmxRange": [94, 99],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3"
+        },
+        {
+          "dmxRange": [100, 105],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3+4"
+        },
+        {
+          "dmxRange": [106, 111],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3+4+5"
+        },
+        {
+          "dmxRange": [112, 117],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3+4+5+6"
+        },
+        {
+          "dmxRange": [118, 123],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3+4+5+6+7"
+        },
+        {
+          "dmxRange": [124, 129],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3+4+5+6+7+8"
+        },
+        {
+          "dmxRange": [130, 135],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3+4+5+6+7+8+9"
+        },
+        {
+          "dmxRange": [136, 141],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3+4+5+6+7+8+9+10"
+        },
+        {
+          "dmxRange": [142, 147],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3+4+5+6+7+8+9+10+11"
+        },
+        {
+          "dmxRange": [148, 153],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3+4+5+6+7+8+9+10+11+12"
+        },
+        {
+          "dmxRange": [154, 159],
+          "type": "Generic",
+          "comment": "Pixel 12"
+        },
+        {
+          "dmxRange": [160, 165],
+          "type": "Generic",
+          "comment": "Pixel 11+12"
+        },
+        {
+          "dmxRange": [166, 171],
+          "type": "Generic",
+          "comment": "Pixel 10+11+12"
+        },
+        {
+          "dmxRange": [172, 177],
+          "type": "Generic",
+          "comment": "Pixel 9+10+11+12"
+        },
+        {
+          "dmxRange": [178, 183],
+          "type": "Generic",
+          "comment": "Pixel 8+9+10+11+12"
+        },
+        {
+          "dmxRange": [184, 189],
+          "type": "Generic",
+          "comment": "Pixel 7+8+9+10+11+12"
+        },
+        {
+          "dmxRange": [190, 195],
+          "type": "Generic",
+          "comment": "Pixel 6+7+8+9+10+11+12"
+        },
+        {
+          "dmxRange": [196, 201],
+          "type": "Generic",
+          "comment": "Pixel 5+6+7+8+9+10+11"
+        },
+        {
+          "dmxRange": [202, 207],
+          "type": "Generic",
+          "comment": "Pixel 4+5+6+7+8+9+10+11"
+        },
+        {
+          "dmxRange": [208, 213],
+          "type": "Generic",
+          "comment": "Pixel 3+4+5+6+7+8+9+10+11"
+        },
+        {
+          "dmxRange": [214, 219],
+          "type": "Generic",
+          "comment": "Pixel 2+3+4+5+6+7+8+9+10+11"
+        },
+        {
+          "dmxRange": [220, 225],
+          "type": "Generic",
+          "comment": "All Pixel On"
+        },
+        {
+          "dmxRange": [226, 231],
+          "type": "Generic",
+          "comment": "Pixel (odd)"
+        },
+        {
+          "dmxRange": [232, 237],
+          "type": "Generic",
+          "comment": "Pixel (even)"
+        },
+        {
+          "dmxRange": [238, 255],
+          "type": "Generic",
+          "comment": "All Pixel On"
+        }
+      ]
+    },
+    "Function": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 119],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Auto-Mode via DMX"
+        },
+        {
+          "dmxRange": [120, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Music Mode via DMX"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "ColorTemperature",
+          "colorTemperature": "2700K"
+        },
+        {
+          "dmxRange": [30, 49],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [50, 69],
+          "type": "ColorTemperature",
+          "colorTemperature": "3400K",
+          "comment": " "
+        },
+        {
+          "dmxRange": [70, 89],
+          "type": "ColorTemperature",
+          "colorTemperature": "4200K"
+        },
+        {
+          "dmxRange": [90, 109],
+          "type": "ColorTemperature",
+          "colorTemperature": "4900K"
+        },
+        {
+          "dmxRange": [110, 129],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [130, 149],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        },
+        {
+          "dmxRange": [150, 169],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [170, 189],
+          "type": "ColorTemperature",
+          "colorTemperature": "7500K"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K"
+        }
+      ]
+    },
+    "Function 2": {
+      "name": "Function",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 119],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Auto-Mode via DMX"
+        },
+        {
+          "dmxRange": [120, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Music Mode via DMX"
+        }
+      ]
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 1+2"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 1+2"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 1+2"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 1+2"
+      }
+    },
+    "Amber 2": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 1+2"
+      }
+    },
+    "UV 2": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 1+2"
+      }
+    },
+    "Red 3": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 3+4"
+      }
+    },
+    "Green 3": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 3+4"
+      }
+    },
+    "Blue 3": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 3+4"
+      }
+    },
+    "White 3": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 3+4"
+      }
+    },
+    "Amber 3": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 3+4"
+      }
+    },
+    "UV 3": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 3+4"
+      }
+    },
+    "Red 4": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "255%",
+        "comment": "Pixel 5+6"
+      }
+    },
+    "Green 4": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 5+6"
+      }
+    },
+    "Blue 4": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 5+6"
+      }
+    },
+    "White 4": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 5+6"
+      }
+    },
+    "Amber 4": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 5+6"
+      }
+    },
+    "UV 4": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 5+6"
+      }
+    },
+    "Red 5": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 7+8"
+      }
+    },
+    "Green 5": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 7+8"
+      }
+    },
+    "Blue 5": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 7+8"
+      }
+    },
+    "White 5": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 7+8"
+      }
+    },
+    "Amber 5": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 7+8"
+      }
+    },
+    "UV 5": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 7+8"
+      }
+    },
+    "Red 6": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 9+10"
+      }
+    },
+    "Green 6": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 9+10"
+      }
+    },
+    "Blue 6": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 9+10"
+      }
+    },
+    "White 6": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 9+10"
+      }
+    },
+    "Amber 6": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 9+10"
+      }
+    },
+    "UV 6": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 9+10"
+      }
+    },
+    "Red 7": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 11+12"
+      }
+    },
+    "Green 7": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 11+12"
+      }
+    },
+    "Blue 7": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 11+12"
+      }
+    },
+    "White 7": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 11+12"
+      }
+    },
+    "Amber 7": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 11+12"
+      }
+    },
+    "UV 7": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 11+12"
+      }
+    },
+    "Red 8": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 1"
+      }
+    },
+    "Green 8": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 1"
+      }
+    },
+    "Blue 8": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 1"
+      }
+    },
+    "White 8": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 1"
+      }
+    },
+    "Amber 8": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 1"
+      }
+    },
+    "UV 8": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 1"
+      }
+    },
+    "Red 9": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 2"
+      }
+    },
+    "Green 9": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 2"
+      }
+    },
+    "Blue 9": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 2"
+      }
+    },
+    "White 9": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 2"
+      }
+    },
+    "Amber 9": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 2"
+      }
+    },
+    "UV 9": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 2"
+      }
+    },
+    "Red 10": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 3"
+      }
+    },
+    "Green 10": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 3"
+      }
+    },
+    "Blue 10": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 3"
+      }
+    },
+    "White 10": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 3"
+      }
+    },
+    "Amber 10": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 3"
+      }
+    },
+    "UV 10": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 3"
+      }
+    },
+    "Red 11": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 4"
+      }
+    },
+    "Green 11": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 4"
+      }
+    },
+    "Blue 11": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 4"
+      }
+    },
+    "White 11": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 4"
+      }
+    },
+    "Amber 11": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 4"
+      }
+    },
+    "UV 11": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 4"
+      }
+    },
+    "Red 12": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 5"
+      }
+    },
+    "Green 12": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 5"
+      }
+    },
+    "Blue 12": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 5"
+      }
+    },
+    "White 12": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 5"
+      }
+    },
+    "Amber 12": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 5"
+      }
+    },
+    "UV 12": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 5"
+      }
+    },
+    "Red 13": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 6"
+      }
+    },
+    "Green 13": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 6"
+      }
+    },
+    "Blue 13": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 6"
+      }
+    },
+    "White 13": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 6"
+      }
+    },
+    "Amber 13": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 6"
+      }
+    },
+    "UV 13": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 6"
+      }
+    },
+    "Red 14": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 7"
+      }
+    },
+    "Green 14": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 7"
+      }
+    },
+    "Blue 14": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 7"
+      }
+    },
+    "White 14": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 7"
+      }
+    },
+    "Amber 14": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 7"
+      }
+    },
+    "UV 14": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 7"
+      }
+    },
+    "Red 15": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 8"
+      }
+    },
+    "Green 15": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 8"
+      }
+    },
+    "Blue 15": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 8"
+      }
+    },
+    "White 15": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 8"
+      }
+    },
+    "Amber 15": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 8"
+      }
+    },
+    "UV 15": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 8"
+      }
+    },
+    "Red 16": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 9"
+      }
+    },
+    "Green 16": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 9"
+      }
+    },
+    "Blue 16": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 9"
+      }
+    },
+    "White 16": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 9"
+      }
+    },
+    "Amber 16": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 9"
+      }
+    },
+    "UV 16": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 9"
+      }
+    },
+    "Red 17": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 10"
+      }
+    },
+    "Green 17": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 10"
+      }
+    },
+    "Blue 17": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 10"
+      }
+    },
+    "White 17": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 10"
+      }
+    },
+    "Amber 17": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 10"
+      }
+    },
+    "UV 17": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 10"
+      }
+    },
+    "Red 18": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 11"
+      }
+    },
+    "Green 18": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 11"
+      }
+    },
+    "Blue 18": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 11"
+      }
+    },
+    "White 18": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 11"
+      }
+    },
+    "Amber 18": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 11"
+      }
+    },
+    "UV 18": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 11"
+      }
+    },
+    "Red 19": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 12"
+      }
+    },
+    "Green 19": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 12"
+      }
+    },
+    "Blue 19": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 12"
+      }
+    },
+    "White 19": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 12"
+      }
+    },
+    "Amber 19": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 12"
+      }
+    },
+    "UV 19": {
+      "name": "UV",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": "Pixel 12"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Color Presets",
+        "Pixel Combinations (with Ch. 2)",
+        "Function"
+      ]
+    },
+    {
+      "name": "6-Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "16-Channel",
+      "shortName": "16ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Pixel Combinations (with Ch. 2)",
+        "Color Temperature",
+        "Function"
+      ]
+    },
+    {
+      "name": "36-Channel",
+      "shortName": "36ch",
+      "channels": [
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "White 2",
+        "Amber 2",
+        "UV 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "White 3",
+        "Amber 3",
+        "UV 3",
+        "Red 4",
+        "Green 4",
+        "Blue 4",
+        "White 4",
+        "Amber 4",
+        "UV 4",
+        "Red 5",
+        "Green 5",
+        "Blue 5",
+        "White 5",
+        "Amber 5",
+        "UV 5",
+        "Red 6",
+        "Green 6",
+        "Blue 6",
+        "White 6",
+        "Amber 6",
+        "UV 6",
+        "Red 7",
+        "Green 7",
+        "Blue 7",
+        "White 7",
+        "Amber 7",
+        "UV 7"
+      ]
+    },
+    {
+      "name": "74-Channel",
+      "shortName": "74ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red 8",
+        "Green 8",
+        "Blue 8",
+        "White 8",
+        "Amber 8",
+        "UV 8",
+        "Red 9",
+        "Green 9",
+        "Blue 9",
+        "White 9",
+        "Amber 9",
+        "UV 9",
+        "Red 10",
+        "Green 10",
+        "Blue 10",
+        "White 10",
+        "Amber 10",
+        "UV 10",
+        "Red 11",
+        "Green 11",
+        "Blue 11",
+        "White 11",
+        "Amber 11",
+        "UV 11",
+        "Red 12",
+        "Green 12",
+        "Blue 12",
+        "White 12",
+        "Amber 12",
+        "UV 12",
+        "Red 13",
+        "Green 13",
+        "Blue 13",
+        "White 13",
+        "Amber 13",
+        "UV 13",
+        "Red 14",
+        "Green 14",
+        "Blue 14",
+        "White 14",
+        "Amber 14",
+        "UV 14",
+        "Red 15",
+        "Green 15",
+        "Blue 15",
+        "White 15",
+        "Amber 15",
+        "UV 15",
+        "Red 16",
+        "Green 16",
+        "Blue 16",
+        "White 16",
+        "Amber 16",
+        "UV 16",
+        "Red 17",
+        "Green 17",
+        "Blue 17",
+        "White 17",
+        "Amber 17",
+        "UV 17",
+        "Red 18",
+        "Green 18",
+        "Blue 18",
+        "White 18",
+        "Amber 18",
+        "UV 18",
+        "Red 19",
+        "Green 19",
+        "Blue 19",
+        "White 19",
+        "Amber 19",
+        "UV 19"
+      ]
+    }
+  ]
+}
