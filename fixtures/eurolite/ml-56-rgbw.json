@@ -1,0 +1,109 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ML-56 RGBW",
+  "shortName": "ML-56 RGBW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Nominari UG"],
+    "createDate": "2019-01-14",
+    "lastModifyDate": "2019-01-14"
+  },
+  "links": {
+    "productPage": [
+      "https://www.steinigke.de/de/mpn51913667-eurolite-led-ml-56-rgbw-36x3w-sil.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [240, 300, 310],
+    "weight": 5,
+    "power": 150,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Cold White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Function": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic",
+          "comment": "ON"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "Generic",
+          "comment": "Sound Controlled (15 Colors)"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "Generic",
+          "comment": "ON"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-Channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Cold White"
+      ]
+    },
+    {
+      "name": "6-Channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Cold White",
+        "Dimmer",
+        "Function"
+      ]
+    }
+  ]
+}
