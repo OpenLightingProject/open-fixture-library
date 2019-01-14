@@ -224,7 +224,9 @@ function addLinks(fixture, editorLinksArray) {
  */
 function addWheels(fixture, editorFixture) {
   const editorWheelChannels = Object.values(editorFixture.availableChannels).filter(
-    editorChannel => editorChannel.wheel.slots.length > 0
+    editorChannel => editorChannel.wheel.slots.length > 0 && editorChannel.wheel.slots.some(
+      editorWheelSlot => editorWheelSlot !== null && editorWheelSlot.type !== ``
+    )
   );
 
   if (editorWheelChannels.length === 0) {
@@ -234,26 +236,33 @@ function addWheels(fixture, editorFixture) {
   fixture.wheels = {};
 
   editorWheelChannels.forEach(editorChannel => {
+    const slots = editorChannel.wheel.slots.map(editorWheelSlot => {
+      if (editorWheelSlot === null || editorWheelSlot.type === ``) {
+        return null;
+      }
+
+      const wheelSlot = {
+        type: editorWheelSlot.type
+      };
+
+      const wheelSlotSchema = schemaProperties.wheelSlotTypes[wheelSlot.type];
+
+      for (const slotProp of Object.keys(wheelSlotSchema.properties)) {
+        if (propExistsIn(slotProp, editorWheelSlot.typeData)) {
+          wheelSlot[slotProp] = editorWheelSlot.typeData[slotProp];
+        }
+      }
+
+      return wheelSlot;
+    });
+
+    // remove trailing null slots
+    while (slots[slots.length - 1] === null) {
+      slots.pop();
+    }
+
     fixture.wheels[editorChannel.name] = {
-      slots: editorChannel.wheel.slots.map(editorWheelSlot => {
-        if (editorWheelSlot === null || editorWheelSlot.type === ``) {
-          return null;
-        }
-
-        const wheelSlot = {
-          type: editorWheelSlot.type
-        };
-
-        const wheelSlotSchema = schemaProperties.wheelSlotTypes[wheelSlot.type];
-
-        for (const slotProp of Object.keys(wheelSlotSchema.properties)) {
-          if (propExistsIn(slotProp, editorWheelSlot.typeData)) {
-            wheelSlot[slotProp] = editorWheelSlot.typeData[slotProp];
-          }
-        }
-
-        return wheelSlot;
-      })
+      slots
     };
   });
 }
