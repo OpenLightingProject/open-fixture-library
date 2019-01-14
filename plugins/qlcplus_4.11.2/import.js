@@ -65,7 +65,7 @@ module.exports.import = function importQlcPlus(buffer, filename, authorName) {
 
       const doubleByteChannels = [];
       for (const channel of qlcPlusFixture.Channel || []) {
-        fixture.availableChannels[channel.$.Name] = getOflChannel(channel);
+        fixture.availableChannels[channel.$.Name] = getOflChannel(channel, fixture.wheels);
 
         if (`Group` in channel && channel.Group[0].$.Byte === `1`) {
           doubleByteChannels.push(channel.$.Name);
@@ -94,7 +94,7 @@ function getOflWheels(qlcPlusFixture) {
 
   for (const channel of qlcPlusFixture.Channel || []) {
     const channelName = channel.$.Name;
-    if (/wheel\b/i.test(channelName)) {
+    if (/wheel\b/i.test(channelName) && !/(rotation|index)/i.test(channelName) && channel.Group[0]._ !== `Speed`) {
       wheels[channelName] = {
         slots: getSlots(channel)
       };
@@ -178,16 +178,19 @@ function getOflWheels(qlcPlusFixture) {
 
 /**
  * @param {object} qlcPlusChannel The QLC+ channel object.
+ * @param {object} oflWheels The OFL fixture's wheels object.
  * @returns {object} The OFL channel object.
  */
-function getOflChannel(qlcPlusChannel) {
+function getOflChannel(qlcPlusChannel, oflWheels) {
   const channel = {
     fineChannelAliases: [],
     dmxValueResolution: `8bit`
   };
 
   if (`Capability` in qlcPlusChannel) {
-    channel.capabilities = qlcPlusChannel.Capability.map(cap => getOflCapability(cap, qlcPlusChannel));
+    channel.capabilities = qlcPlusChannel.Capability.map(
+      cap => getOflCapability(cap, qlcPlusChannel, oflWheels)
+    );
   }
   else {
     channel.capabilities = [getOflCapability({
@@ -196,7 +199,7 @@ function getOflChannel(qlcPlusChannel) {
         Min: `0`,
         Max: `255`
       }
-    }, qlcPlusChannel)];
+    }, qlcPlusChannel, oflWheels)];
   }
 
   if (channel.capabilities.length === 1) {
@@ -211,9 +214,10 @@ function getOflChannel(qlcPlusChannel) {
 /**
  * @param {object} qlcPlusCapability The QLC+ capability object.
  * @param {object} qlcPlusChannel The QLC+ channel object.
+ * @param {object} oflWheels The OFL fixture's wheels object.
  * @returns {object} The OFL capability object.
  */
-function getOflCapability(qlcPlusCapability, qlcPlusChannel) {
+function getOflCapability(qlcPlusCapability, qlcPlusChannel, oflWheels) {
   const cap = {
     dmxRange: [parseInt(qlcPlusCapability.$.Min), parseInt(qlcPlusCapability.$.Max)],
     type: ``
@@ -221,7 +225,7 @@ function getOflCapability(qlcPlusCapability, qlcPlusChannel) {
 
   const channelName = qlcPlusChannel.$.Name.trim();
   const channelType = qlcPlusChannel.Group[0]._;
-  const capabilityName = qlcPlusCapability._.trim();
+  const capabilityName = (qlcPlusCapability._ || ``).trim();
 
   // first check if it can be a NoFunction capability
   if (capabilityName.match(/^(?:nothing|no func(?:tion)?|unused|not used|empty|no strobe|no prism|no frost)$/i)) {
@@ -276,11 +280,36 @@ function getOflCapability(qlcPlusCapability, qlcPlusChannel) {
       cap.type = `WheelSlot`;
       cap.slotNumber = qlcPlusChannel.Capability.indexOf(qlcPlusCapability) + 1;
 
-      cap.comment = getSpeedGuessedComment();
+      if (/shake\b|shaking\b/i.test(capabilityName)) {
+        cap.type = `WheelShake`;
 
-      if (`speedStart` in cap) {
-        cap.type = `WheelRotation`;
-        delete cap.slotNumber;
+        const comment = getSpeedGuessedComment();
+
+        if (`speed` in cap) {
+          cap.shakeSpeed = cap.speed;
+          delete cap.speed;
+        }
+        else if (`speedStart` in cap) {
+          cap.shakeSpeedStart = cap.speedStart;
+          cap.shakeSpeedEnd = cap.speedEnd;
+          delete cap.speedStart;
+          delete cap.speedEnd;
+        }
+
+        cap.comment = comment;
+      }
+      else {
+        cap.comment = getSpeedGuessedComment();
+
+        if (`speedStart` in cap) {
+          if (qlcPlusChannel.$.Name in oflWheels) {
+            cap.type = `WheelRotation`;
+          }
+          else {
+            cap.type = `WheelSlotRotation`;
+          }
+          delete cap.slotNumber;
+        }
       }
     },
     Effect() {
