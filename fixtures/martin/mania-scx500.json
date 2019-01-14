@@ -23,14 +23,13 @@
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "H5 MR16 halogen",
-      "colorTemperature": 4000,
-      "lumens": 1
+      "colorTemperature": 4000
     },
     "lens": {
-      "name": "15°",
       "degreesMinMax": [15, 15]
     },
     "focus": {
+      "type": "Mirror",
       "panMax": 180,
       "tiltMax": 72
     }
