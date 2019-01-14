@@ -92,7 +92,7 @@
             :font-size="slotRadius"
             text-anchor="middle"
             fill="#000">
-            {{ index + 1 }}
+            S
           </text>
 
           <!-- rotate once more (like it was drawn in next slot) -->
@@ -104,7 +104,7 @@
               :font-size="slotRadius"
               text-anchor="middle"
               fill="#000">
-              {{ index + 2 }}
+              E
             </text>
           </g>
         </template>
@@ -123,7 +123,7 @@
             :font-size="slotRadius"
             text-anchor="middle"
             fill="#000">
-            {{ index + 1 }}
+            {{ slot.nthOfType + 1 }}
           </text>
         </template>
       </g>
@@ -272,7 +272,8 @@ export default {
     slotTitles() {
       return this.wheel.slots.map((slot, index) => {
         if (slot.type === `AnimationGoboStart`) {
-          return `Slots ${index + 1}…${index + 2}: Animation Gobo`;
+          const splitSlot = this.wheel.getSlot(index + 1.5);
+          return `Slots ${index + 1}…${index + 2}: ${splitSlot.name}`;
         }
 
         return `Slot ${index + 1}: ${slot.name}`;
