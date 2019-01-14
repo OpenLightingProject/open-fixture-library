@@ -35,7 +35,7 @@
     }
   },
   "availableChannels": {
-    "Strobe, Music Trig, Macro, Reset": {
+    "Effects": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -44,9 +44,10 @@
         },
         {
           "dmxRange": [5, 68],
-          "type": "StrobeSpeed",
-          "speed": "0Hz",
-          "comment": "Strobe (fast to slow)"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [69, 100],
@@ -115,8 +116,9 @@
         },
         {
           "dmxRange": [250, 255],
-          "type": "Generic",
-          "comment": "Reset"
+          "type": "Maintenance",
+          "comment": "Reset",
+          "hold": "5s"
         }
       ]
     },
@@ -430,66 +432,61 @@
       ]
     },
     "Pan": {
-      "defaultValue": 0,
+      "defaultValue": 127,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
-        "angleEnd": "180deg",
-        "comment": "Left to right (127 = neutral)"
+        "angleEnd": "180deg"
       }
     },
     "Tilt": {
-      "defaultValue": 0,
+      "defaultValue": 127,
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
-        "angleEnd": "72deg",
-        "comment": "Down to up (127 = neutral)"
+        "angleEnd": "72deg"
       }
     },
-    "Pan & Tilt Speed": {
+    "Pan/Tilt Speed": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 1],
-          "type": "PanTiltSpeed",
-          "speed": "stop",
+          "type": "NoFunction",
           "comment": "Tracking (default)"
         },
         {
           "dmxRange": [2, 255],
           "type": "PanTiltSpeed",
           "speedStart": "fast",
-          "speedEnd": "slow",
-          "comment": "Fast to slow"
+          "speedEnd": "slow"
         }
       ]
     },
-    "Color & Gobo wheels rotation Speed": {
+    "Color/Gobo Wheel Speed": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 1],
-          "type": "ColorWheelRotation",
-          "speed": "stop",
+          "type": "NoFunction",
           "comment": "Tracking (default)"
         },
         {
           "dmxRange": [2, 255],
-          "type": "EffectSpeed",
-          "speedStart": "fast",
-          "speedEnd": "slow",
-          "comment": "Fast to slow"
+          "type": "Speed",
+          "speedStart": "1Hz",
+          "speedEnd": "0Hz",
+          "comment": "Change speed from one color/gobo to the next one"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "6 Channel",
-      "shortName": "6 CH",
+      "name": "6-channel",
+      "shortName": "6ch",
       "channels": [
-        "Strobe, Music Trig, Macro, Reset",
+        "Effects",
         "Intensity",
         "Colours",
         "Gobos",
@@ -498,17 +495,17 @@
       ]
     },
     {
-      "name": "8 Channel",
-      "shortName": "8 CH",
+      "name": "8-channel",
+      "shortName": "8ch",
       "channels": [
-        "Strobe, Music Trig, Macro, Reset",
-        "Colours",
+        "Effects",
         "Intensity",
+        "Colours",
         "Gobos",
         "Pan",
         "Tilt",
-        "Pan & Tilt Speed",
-        "Color & Gobo wheels rotation Speed"
+        "Pan/Tilt Speed",
+        "Color/Gobo Wheel Speed"
       ]
     }
   ]
