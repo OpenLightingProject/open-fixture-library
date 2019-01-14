@@ -220,7 +220,7 @@ function getOflCapability(qlcPlusCapability, qlcPlusChannel) {
   };
 
   const channelName = qlcPlusChannel.$.Name.trim();
-  const channelType = `Group` in qlcPlusChannel ? qlcPlusChannel.Group[0]._ : qlcPlusChannel.$.Preset;
+  const channelType = qlcPlusChannel.Group[0]._;
   const capabilityName = qlcPlusCapability._.trim();
 
   // first check if it can be a NoFunction capability
