@@ -355,67 +355,112 @@
         {
           "dmxRange": [0, 9],
           "type": "WheelSlot",
-          "slotNumber": 1
+          "slotNumber": 1,
+          "comment": "indexed",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
         },
         {
           "dmxRange": [10, 14],
           "type": "WheelSlot",
           "slotNumber": 2,
-          "comment": "indexing"
+          "comment": "indexed",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
         },
         {
           "dmxRange": [15, 19],
           "type": "WheelSlot",
           "slotNumber": 3,
-          "comment": "indexing"
+          "comment": "indexed",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
         },
         {
           "dmxRange": [20, 24],
           "type": "WheelSlot",
           "slotNumber": 4,
-          "comment": "indexing"
+          "comment": "indexed",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
         },
         {
           "dmxRange": [25, 29],
           "type": "WheelSlot",
           "slotNumber": 5,
-          "comment": "indexing"
+          "comment": "indexed",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
         },
         {
           "dmxRange": [30, 34],
           "type": "WheelSlot",
           "slotNumber": 6,
-          "comment": "indexing"
+          "comment": "indexed",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
         },
         {
           "dmxRange": [35, 39],
           "type": "WheelSlot",
           "slotNumber": 2,
-          "comment": "rotation"
+          "comment": "rotation",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation Speed",
+            "Gobo Indexing / Rotation fine": "Gobo Rotation Speed fine"
+          }
         },
         {
           "dmxRange": [40, 44],
           "type": "WheelSlot",
           "slotNumber": 3,
-          "comment": "rotation"
+          "comment": "rotation",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation Speed",
+            "Gobo Indexing / Rotation fine": "Gobo Rotation Speed fine"
+          }
         },
         {
           "dmxRange": [45, 49],
           "type": "WheelSlot",
           "slotNumber": 4,
-          "comment": "rotation"
+          "comment": "rotation",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation Speed",
+            "Gobo Indexing / Rotation fine": "Gobo Rotation Speed fine"
+          }
         },
         {
           "dmxRange": [50, 54],
           "type": "WheelSlot",
           "slotNumber": 5,
-          "comment": "rotation"
+          "comment": "rotation",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation Speed",
+            "Gobo Indexing / Rotation fine": "Gobo Rotation Speed fine"
+          }
         },
         {
           "dmxRange": [55, 59],
           "type": "WheelSlot",
           "slotNumber": 6,
-          "comment": "rotation"
+          "comment": "rotation",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation Speed",
+            "Gobo Indexing / Rotation fine": "Gobo Rotation Speed fine"
+          }
         },
         {
           "dmxRange": [60, 89],
@@ -424,7 +469,11 @@
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "shakeAngleStart": "360deg",
-          "shakeAngleEnd": "10deg"
+          "shakeAngleEnd": "10deg",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
         },
         {
           "dmxRange": [90, 119],
@@ -433,7 +482,11 @@
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "shakeAngleStart": "360deg",
-          "shakeAngleEnd": "10deg"
+          "shakeAngleEnd": "10deg",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
         },
         {
           "dmxRange": [120, 149],
@@ -442,7 +495,11 @@
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "shakeAngleStart": "360deg",
-          "shakeAngleEnd": "10deg"
+          "shakeAngleEnd": "10deg",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
         },
         {
           "dmxRange": [150, 179],
@@ -451,7 +508,11 @@
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "shakeAngleStart": "360deg",
-          "shakeAngleEnd": "10deg"
+          "shakeAngleEnd": "10deg",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
         },
         {
           "dmxRange": [180, 209],
@@ -460,19 +521,31 @@
           "shakeSpeedStart": "slow",
           "shakeSpeedEnd": "fast",
           "shakeAngleStart": "360deg",
-          "shakeAngleEnd": "10deg"
+          "shakeAngleEnd": "10deg",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
         },
         {
           "dmxRange": [210, 232],
           "type": "WheelRotation",
           "speedStart": "fast CW",
-          "speedEnd": "slow CW"
+          "speedEnd": "slow CW",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation Speed",
+            "Gobo Indexing / Rotation fine": "Gobo Rotation Speed fine"
+          }
         },
         {
           "dmxRange": [233, 255],
           "type": "WheelRotation",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CCW"
+          "speedEnd": "fast CCW",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation Speed",
+            "Gobo Indexing / Rotation fine": "Gobo Rotation Speed fine"
+          }
         }
       ]
     },
@@ -529,42 +602,66 @@
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Animation Wheel Indexing / Rotation": "Animation Wheel Indexing Angle"
+          }
         },
         {
           "dmxRange": [6, 10],
           "type": "Effect",
-          "effectName": "Horizontal indexed position"
+          "effectName": "Horizontal indexed position",
+          "switchChannels": {
+            "Animation Wheel Indexing / Rotation": "Animation Wheel Indexing Angle"
+          }
         },
         {
           "dmxRange": [11, 15],
           "type": "Effect",
-          "effectName": "Horizontal rotation"
+          "effectName": "Horizontal rotation",
+          "switchChannels": {
+            "Animation Wheel Indexing / Rotation": "Animation Wheel Rotation Speed"
+          }
         },
         {
           "dmxRange": [16, 20],
           "type": "Effect",
-          "effectName": "Vertical rotation"
+          "effectName": "Vertical rotation",
+          "switchChannels": {
+            "Animation Wheel Indexing / Rotation": "Animation Wheel Rotation Speed"
+          }
         },
         {
           "dmxRange": [21, 25],
           "type": "Effect",
-          "effectName": "Vertical indexed position"
+          "effectName": "Vertical indexed position",
+          "switchChannels": {
+            "Animation Wheel Indexing / Rotation": "Animation Wheel Indexing Angle"
+          }
         },
         {
           "dmxRange": [26, 110],
           "type": "Effect",
-          "effectName": "Angled position rotation"
+          "effectName": "Angled position rotation",
+          "switchChannels": {
+            "Animation Wheel Indexing / Rotation": "Animation Wheel Rotation Speed"
+          }
         },
         {
           "dmxRange": [111, 195],
           "type": "Effect",
-          "effectName": "Angled position vertical indexed"
+          "effectName": "Angled position vertical indexed",
+          "switchChannels": {
+            "Animation Wheel Indexing / Rotation": "Animation Wheel Indexing Angle"
+          }
         },
         {
           "dmxRange": [196, 255],
           "type": "Effect",
-          "effectName": "Angled position horizontal indexed"
+          "effectName": "Angled position horizontal indexed",
+          "switchChannels": {
+            "Animation Wheel Indexing / Rotation": "Animation Wheel Indexing Angle"
+          }
         }
       ]
     },
@@ -576,7 +673,7 @@
         "angleEnd": "360deg"
       }
     },
-    "Animation Wheel Rotation Angle": {
+    "Animation Wheel Rotation Speed": {
       "defaultValue": 127,
       "capabilities": [
         {
@@ -2407,13 +2504,10 @@
         "CTO",
         "Color Wheel",
         "Rotating Gobo Wheel",
-        "Gobo Indexing Angle",
-        "Gobo Indexing Angle fine",
-        "Gobo Rotation Speed",
-        "Gobo Rotation Speed fine",
+        "Gobo Indexing / Rotation",
+        "Gobo Indexing / Rotation fine",
         "Animation Wheel Function",
-        "Animation Wheel Indexing Angle",
-        "Animation Wheel Rotation Angle",
+        "Animation Wheel Indexing / Rotation",
         "Frost",
         "Iris",
         "Zoom",
@@ -2459,13 +2553,10 @@
         "CTB",
         "Color Wheel",
         "Rotating Gobo Wheel",
-        "Gobo Indexing Angle",
-        "Gobo Indexing Angle fine",
-        "Gobo Rotation Speed",
-        "Gobo Rotation Speed fine",
+        "Gobo Indexing / Rotation",
+        "Gobo Indexing / Rotation fine",
         "Animation Wheel Function",
-        "Animation Wheel Indexing Angle",
-        "Animation Wheel Rotation Angle",
+        "Animation Wheel Indexing / Rotation",
         "Frost",
         "Iris",
         "Zoom",
