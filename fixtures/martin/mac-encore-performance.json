@@ -40,6 +40,7 @@
   },
   "wheels": {
     "Color Wheel": {
+      "direction": "CCW",
       "slots": [
         {
           "type": "Open"
@@ -73,9 +74,6 @@
           "type": "Color",
           "name": "Red 310 SP",
           "colors": ["#eb3d33"]
-        },
-        {
-          "type": "Open"
         }
       ]
     },
@@ -98,6 +96,17 @@
         },
         {
           "type": "Gobo"
+        }
+      ]
+    },
+    "Animation Wheel": {
+      "slots": [
+        {
+          "type": "AnimationGoboStart",
+          "name": "Radial Breakup"
+        },
+        {
+          "type": "AnimationGoboEnd"
         }
       ]
     }
@@ -472,6 +481,7 @@
       "defaultValue": 32768,
       "capability": {
         "type": "WheelSlotRotation",
+        "wheel": "Rotating Gobo Wheel",
         "angleStart": "-180deg",
         "angleEnd": "180deg"
       }
@@ -483,28 +493,33 @@
         {
           "dmxRange": [0, 600],
           "type": "WheelSlotRotation",
+          "wheel": "Rotating Gobo Wheel",
           "angle": "0deg"
         },
         {
           "dmxRange": [601, 32130],
           "type": "WheelSlotRotation",
+          "wheel": "Rotating Gobo Wheel",
           "speedStart": "fast CW",
           "speedEnd": "slow CW"
         },
         {
           "dmxRange": [32131, 32895],
           "type": "WheelSlotRotation",
+          "wheel": "Rotating Gobo Wheel",
           "speed": "stop"
         },
         {
           "dmxRange": [32896, 64515],
           "type": "WheelSlotRotation",
+          "wheel": "Rotating Gobo Wheel",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         },
         {
           "dmxRange": [64516, 65535],
           "type": "WheelSlotRotation",
+          "wheel": "Rotating Gobo Wheel",
           "angle": "90deg"
         }
       ]
@@ -556,6 +571,7 @@
     "Animation Wheel Indexing Angle": {
       "capability": {
         "type": "WheelRotation",
+        "wheel": "Animation Wheel",
         "angleStart": "0deg",
         "angleEnd": "360deg"
       }
@@ -566,28 +582,33 @@
         {
           "dmxRange": [0, 2],
           "type": "WheelRotation",
+          "wheel": "Animation Wheel",
           "angle": "0deg"
         },
         {
           "dmxRange": [3, 126],
           "type": "WheelRotation",
+          "wheel": "Animation Wheel",
           "speedStart": "fast CW",
           "speedEnd": "slow CW"
         },
         {
           "dmxRange": [127, 129],
           "type": "WheelRotation",
+          "wheel": "Animation Wheel",
           "speed": "stop"
         },
         {
           "dmxRange": [130, 253],
           "type": "WheelRotation",
+          "wheel": "Animation Wheel",
           "speedStart": "fast CCW",
           "speedEnd": "slow CCW"
         },
         {
           "dmxRange": [254, 255],
           "type": "WheelRotation",
+          "wheel": "Animation Wheel",
           "angle": "90deg"
         }
       ]
