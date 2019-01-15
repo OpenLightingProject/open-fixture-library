@@ -176,20 +176,20 @@
         "color": "Yellow"
       }
     },
-    "CTB": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorTemperature",
-        "colorTemperatureStart": "3000K",
-        "colorTemperatureEnd": "7000K"
-      }
-    },
     "CTO": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorTemperature",
         "colorTemperatureStart": "6000K",
         "colorTemperatureEnd": "2700K"
+      }
+    },
+    "CTB": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "3000K",
+        "colorTemperatureEnd": "7000K"
       }
     },
     "Color Wheel": {
@@ -753,33 +753,6 @@
         "insertionEnd": "in"
       }
     },
-    "Framing Blade 2 Insertion": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "BladeInsertion",
-        "blade": 2,
-        "insertionStart": "out",
-        "insertionEnd": "in"
-      }
-    },
-    "Framing Blade 3 Insertion": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "BladeInsertion",
-        "blade": 3,
-        "insertionStart": "out",
-        "insertionEnd": "in"
-      }
-    },
-    "Framing Blade 4 Insertion": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "BladeInsertion",
-        "blade": 4,
-        "insertionStart": "out",
-        "insertionEnd": "in"
-      }
-    },
     "Framing Blade 1 Rotation": {
       "defaultValue": 127,
       "capabilities": [
@@ -804,6 +777,15 @@
           "angleEnd": "100%"
         }
       ]
+    },
+    "Framing Blade 2 Insertion": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 2,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
     },
     "Framing Blade 2 Rotation": {
       "defaultValue": 127,
@@ -830,6 +812,15 @@
         }
       ]
     },
+    "Framing Blade 3 Insertion": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 3,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
     "Framing Blade 3 Rotation": {
       "defaultValue": 127,
       "capabilities": [
@@ -854,6 +845,15 @@
           "angleEnd": "100%"
         }
       ]
+    },
+    "Framing Blade 4 Insertion": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 4,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
     },
     "Framing Blade 4 Rotation": {
       "defaultValue": 127,
@@ -1772,6 +1772,27 @@
         }
       ]
     },
+    "FX1 Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 126],
+          "type": "EffectSpeed",
+          "speedStart": "fast reverse",
+          "speedEnd": "slow reverse"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
     "FX2 Selection": {
       "defaultValue": 0,
       "capabilities": [
@@ -2232,27 +2253,6 @@
         {
           "dmxRange": [215, 255],
           "type": "NoFunction"
-        }
-      ]
-    },
-    "FX1 Speed": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 126],
-          "type": "EffectSpeed",
-          "speedStart": "fast reverse",
-          "speedEnd": "slow reverse"
-        },
-        {
-          "dmxRange": [127, 128],
-          "type": "EffectSpeed",
-          "speed": "stop"
-        },
-        {
-          "dmxRange": [129, 255],
-          "type": "EffectSpeed",
-          "speedStart": "slow",
-          "speedEnd": "fast"
         }
       ]
     },
