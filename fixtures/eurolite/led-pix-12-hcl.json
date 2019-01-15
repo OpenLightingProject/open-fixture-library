@@ -49,7 +49,7 @@
         "type": "Intensity"
       }
     },
-    "Pixel Combinations (with Ch. 2)": {
+    "Pixel Combinations": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -234,17 +234,17 @@
         {
           "dmxRange": [220, 225],
           "type": "Generic",
-          "comment": "All Pixel On"
+          "comment": "All Pixels on"
         },
         {
           "dmxRange": [226, 231],
           "type": "Generic",
-          "comment": "Pixel (odd)"
+          "comment": "Odd Pixels on"
         },
         {
           "dmxRange": [232, 237],
           "type": "Generic",
-          "comment": "Pixel (even)"
+          "comment": "Even Pixels on"
         },
         {
           "dmxRange": [238, 255],
@@ -261,17 +261,18 @@
         },
         {
           "dmxRange": [10, 119],
-          "type": "Speed",
+          "type": "Effect",
+          "effectName": "Auto mode",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Auto-Mode via DMX"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [120, 255],
-          "type": "Speed",
+          "type": "Effect",
+          "effectName": "Sound mode",
+          "soundControlled": true,
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Music Mode via DMX"
+          "speedEnd": "fast"
         }
       ]
     },
@@ -283,7 +284,8 @@
         },
         {
           "dmxRange": [10, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         }
@@ -308,8 +310,7 @@
         {
           "dmxRange": [50, 69],
           "type": "ColorTemperature",
-          "colorTemperature": "3400K",
-          "comment": " "
+          "colorTemperature": "3400K"
         },
         {
           "dmxRange": [70, 89],
@@ -345,29 +346,6 @@
           "dmxRange": [190, 255],
           "type": "ColorTemperature",
           "colorTemperature": "8000K"
-        }
-      ]
-    },
-    "Function 2": {
-      "name": "Function",
-      "capabilities": [
-        {
-          "dmxRange": [0, 9],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [10, 119],
-          "type": "Speed",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Auto-Mode via DMX"
-        },
-        {
-          "dmxRange": [120, 255],
-          "type": "Speed",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Music Mode via DMX"
         }
       ]
     }
@@ -546,17 +524,17 @@
   },
   "modes": [
     {
-      "name": "4-Channel",
+      "name": "4-channel",
       "shortName": "4ch",
       "channels": [
         "Dimmer",
         "Color Presets Master",
-        "Pixel Combinations (with Ch. 2)",
+        "Pixel Combinations",
         "Function"
       ]
     },
     {
-      "name": "6-Channel",
+      "name": "6-channel",
       "shortName": "6ch",
       "channels": [
         "Red Master",
@@ -568,7 +546,7 @@
       ]
     },
     {
-      "name": "16-Channel",
+      "name": "16-channel",
       "shortName": "16ch",
       "channels": [
         "Dimmer",
@@ -586,7 +564,7 @@
       ]
     },
     {
-      "name": "36-Channel",
+      "name": "36-channel",
       "shortName": "36ch",
       "channels": [
         {
@@ -612,7 +590,7 @@
       ]
     },
     {
-      "name": "74-Channel",
+      "name": "74-channel",
       "shortName": "74ch",
       "channels": [
         "Dimmer",
