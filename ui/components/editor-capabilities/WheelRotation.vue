@@ -73,7 +73,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
-      hint: `Rotation of the whole wheel (i.e. over all wheel slots). Use WheelSlotRotation if only the slot itself (e.g. a Gobo) rotates in this capability.`,
+      hint: `Rotation of the whole wheel (i.e. over all wheel slots). Use WheelSlotRotation if only the slot itself (e.g. a Gobo) rotates in this capability. If the fixture doesn't have a physical color wheel, use Effect with ColorFade/ColorJump preset instead.`,
       defaultData: {
         speedOrAngle: `speed`,
         speed: null,

@@ -53,7 +53,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
-      hint: `Doesn't activate strobe, only controls the strobe speed.`,
+      hint: `Doesn't activate strobe, only controls the strobe frequency when another channel is set to a ShutterStrobe capability with shutter effect 'Strobe'.`,
       defaultData: {
         speed: null,
         speedStart: `Hz`,

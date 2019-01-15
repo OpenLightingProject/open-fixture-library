@@ -53,6 +53,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+      hint: `Only use this if no other type is applicable. Note that some types like Effect, PanContinuous or Rotation also allow setting a speed value.`,
       defaultData: {
         speed: null,
         speedStart: `slow`,

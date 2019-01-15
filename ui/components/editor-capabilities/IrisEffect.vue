@@ -64,6 +64,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+      hint: `This capability enables a non-static iris effect, e.g. pulse. Use the Iris type instead if a static degree of opening can be chosen.`,
       defaultData: {
         effectName: ``,
         speed: ``,
