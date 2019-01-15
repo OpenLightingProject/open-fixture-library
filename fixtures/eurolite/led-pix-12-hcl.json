@@ -8,17 +8,26 @@
     "lastModifyDate": "2019-01-14"
   },
   "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51930406-Manual-107249-1.00-eurolite-led-pix-12-hcl-bar-en_de.pdf"
+    ],
     "productPage": [
-      "https://www.steinigke.de/de/mpn51930406-eurolite-led-pix-12-hcl-leiste.html"
+      "https://www.steinigke.de/en/mpn51930406-eurolite-led-pix-12-hcl-bar.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=La8oyulvtJ4"
     ]
   },
   "physical": {
-    "dimensions": [1000, 115, 165],
+    "dimensions": [1000, 165, 115],
     "weight": 5,
     "power": 150,
     "DMXconnector": "3-pin",
+    "lens": {
+      "degreesMinMax": [20, 20]
+    },
     "bulb": {
-      "type": "LED"
+      "type": "12× 10W HCL LED (RGBAWUV)"
     }
   },
   "availableChannels": {
