@@ -455,6 +455,11 @@
       "lastActionDate": "2018-08-24",
       "lastAction": "modified"
     },
+    "eurolite/led-ml-56-rgbw": {
+      "name": "LED ML-56 RGBW",
+      "lastActionDate": "2019-01-14",
+      "lastAction": "created"
+    },
     "eurolite/led-par-56-tcl": {
       "name": "LED PAR-56 TCL",
       "lastActionDate": "2018-08-09",
@@ -499,11 +504,6 @@
       "name": "LED TMH-X25",
       "lastActionDate": "2018-09-04",
       "lastAction": "modified"
-    },
-    "eurolite/ml-56-rgbw": {
-      "name": "ML-56 RGBW",
-      "lastActionDate": "2019-01-14",
-      "lastAction": "created"
     },
     "evolight/colours-archspot-54-rgb": {
       "name": "Colours Archspot 54 RGB",
@@ -1162,6 +1162,7 @@
       "led-fe-1500",
       "led-h2o",
       "led-kls-801",
+      "led-ml-56-rgbw",
       "led-par-56-tcl",
       "led-ps-4-hcl",
       "led-sls-6-uv-floor",
@@ -1170,8 +1171,7 @@
       "led-tmh-9",
       "led-tmh-18",
       "led-tmh-x12",
-      "led-tmh-x25",
-      "ml-56-rgbw"
+      "led-tmh-x25"
     ],
     "evolight": [
       "colours-archspot-54-rgb"
@@ -1451,6 +1451,7 @@
       "eurolite/led-fe-1500",
       "eurolite/led-h2o",
       "eurolite/led-kls-801",
+      "eurolite/led-ml-56-rgbw",
       "eurolite/led-par-56-tcl",
       "eurolite/led-ps-4-hcl",
       "eurolite/led-tmh-7",
@@ -1458,7 +1459,6 @@
       "eurolite/led-tmh-18",
       "eurolite/led-tmh-x12",
       "eurolite/led-tmh-x25",
-      "eurolite/ml-56-rgbw",
       "evolight/colours-archspot-54-rgb",
       "futurelight/dmh-75-i-led-moving-head",
       "futurelight/pro-slim-par-7-hcl",
@@ -2064,7 +2064,7 @@
       "robe/robin-600e-spot"
     ],
     "Nominari UG": [
-      "eurolite/ml-56-rgbw"
+      "eurolite/led-ml-56-rgbw"
     ],
     "Pascal Denis": [
       "contest/irledflat-5x12SIXb"
@@ -2268,7 +2268,7 @@
     "venue": "#78cc33"
   },
   "lastUpdated": [
-    "eurolite/ml-56-rgbw",
+    "eurolite/led-ml-56-rgbw",
     "laserworld/ds-1000rgb",
     "eliminator/stealth-wash-zoom",
     "evolight/colours-archspot-54-rgb",
