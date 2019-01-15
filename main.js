@@ -27,7 +27,7 @@ app.set(`port`, process.env.PORT);
 app.use(redirectToHttps);
 
 // support json encoded bodies
-app.use(express.json());
+app.use(express.json({limit: `50mb`}));
 
 // enable compression
 app.use(compression({
