@@ -1,0 +1,614 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PIX-12 HCL",
+  "categories": ["Pixel Bar", "Color Changer"],
+  "meta": {
+    "authors": ["Nominari UG"],
+    "createDate": "2019-01-15",
+    "lastModifyDate": "2019-01-15"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51930406-Manual-107249-1.00-eurolite-led-pix-12-hcl-bar-en_de.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn51930406-eurolite-led-pix-12-hcl-bar.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=La8oyulvtJ4"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 165, 115],
+    "weight": 5,
+    "power": 150,
+    "DMXconnector": "3-pin",
+    "lens": {
+      "degreesMinMax": [20, 20]
+    },
+    "bulb": {
+      "type": "12× 10W HCL LED (RGBAWUV)"
+    }
+  },
+  "matrix": {
+    "pixelCount": [12, 1, 1],
+    "pixelGroups": {
+      "Master": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
+      "1+2": ["1", "2"],
+      "3+4": ["3", "4"],
+      "5+6": ["5", "6"],
+      "7+8": ["7", "8"],
+      "9+10": ["9", "10"],
+      "11+12": ["11", "12"]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pixel Combinations": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 15],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3"
+        },
+        {
+          "dmxRange": [16, 21],
+          "type": "Generic",
+          "comment": "Pixel 2+3+4"
+        },
+        {
+          "dmxRange": [22, 27],
+          "type": "Generic",
+          "comment": "Pixel 3+4+5"
+        },
+        {
+          "dmxRange": [28, 33],
+          "type": "Generic",
+          "comment": "Pixel 4+5+6"
+        },
+        {
+          "dmxRange": [34, 39],
+          "type": "Generic",
+          "comment": "Pixel 5+6+7"
+        },
+        {
+          "dmxRange": [40, 45],
+          "type": "Generic",
+          "comment": "Pixel 6+7+8"
+        },
+        {
+          "dmxRange": [46, 51],
+          "type": "Generic",
+          "comment": "Pixel 7+8+9"
+        },
+        {
+          "dmxRange": [52, 57],
+          "type": "Generic",
+          "comment": "Pixel 8+9+10"
+        },
+        {
+          "dmxRange": [58, 63],
+          "type": "Generic",
+          "comment": "Pixel 9+10+11"
+        },
+        {
+          "dmxRange": [64, 69],
+          "type": "Generic",
+          "comment": "Pixel 10+11+12"
+        },
+        {
+          "dmxRange": [70, 75],
+          "type": "Generic",
+          "comment": "Pixel 1+11+12"
+        },
+        {
+          "dmxRange": [76, 81],
+          "type": "Generic",
+          "comment": "Pixel 1+2+12"
+        },
+        {
+          "dmxRange": [82, 87],
+          "type": "Generic",
+          "comment": "Pixel 1"
+        },
+        {
+          "dmxRange": [88, 93],
+          "type": "Generic",
+          "comment": "Pixel 1+2"
+        },
+        {
+          "dmxRange": [94, 99],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3"
+        },
+        {
+          "dmxRange": [100, 105],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3+4"
+        },
+        {
+          "dmxRange": [106, 111],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3+4+5"
+        },
+        {
+          "dmxRange": [112, 117],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3+4+5+6"
+        },
+        {
+          "dmxRange": [118, 123],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3+4+5+6+7"
+        },
+        {
+          "dmxRange": [124, 129],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3+4+5+6+7+8"
+        },
+        {
+          "dmxRange": [130, 135],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3+4+5+6+7+8+9"
+        },
+        {
+          "dmxRange": [136, 141],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3+4+5+6+7+8+9+10"
+        },
+        {
+          "dmxRange": [142, 147],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3+4+5+6+7+8+9+10+11"
+        },
+        {
+          "dmxRange": [148, 153],
+          "type": "Generic",
+          "comment": "Pixel 1+2+3+4+5+6+7+8+9+10+11+12"
+        },
+        {
+          "dmxRange": [154, 159],
+          "type": "Generic",
+          "comment": "Pixel 12"
+        },
+        {
+          "dmxRange": [160, 165],
+          "type": "Generic",
+          "comment": "Pixel 11+12"
+        },
+        {
+          "dmxRange": [166, 171],
+          "type": "Generic",
+          "comment": "Pixel 10+11+12"
+        },
+        {
+          "dmxRange": [172, 177],
+          "type": "Generic",
+          "comment": "Pixel 9+10+11+12"
+        },
+        {
+          "dmxRange": [178, 183],
+          "type": "Generic",
+          "comment": "Pixel 8+9+10+11+12"
+        },
+        {
+          "dmxRange": [184, 189],
+          "type": "Generic",
+          "comment": "Pixel 7+8+9+10+11+12"
+        },
+        {
+          "dmxRange": [190, 195],
+          "type": "Generic",
+          "comment": "Pixel 6+7+8+9+10+11+12"
+        },
+        {
+          "dmxRange": [196, 201],
+          "type": "Generic",
+          "comment": "Pixel 5+6+7+8+9+10+11"
+        },
+        {
+          "dmxRange": [202, 207],
+          "type": "Generic",
+          "comment": "Pixel 4+5+6+7+8+9+10+11"
+        },
+        {
+          "dmxRange": [208, 213],
+          "type": "Generic",
+          "comment": "Pixel 3+4+5+6+7+8+9+10+11"
+        },
+        {
+          "dmxRange": [214, 219],
+          "type": "Generic",
+          "comment": "Pixel 2+3+4+5+6+7+8+9+10+11"
+        },
+        {
+          "dmxRange": [220, 225],
+          "type": "Generic",
+          "comment": "All Pixels on"
+        },
+        {
+          "dmxRange": [226, 231],
+          "type": "Generic",
+          "comment": "Odd Pixels on"
+        },
+        {
+          "dmxRange": [232, 237],
+          "type": "Generic",
+          "comment": "Even Pixels on"
+        },
+        {
+          "dmxRange": [238, 255],
+          "type": "Generic",
+          "comment": "All Pixel On"
+        }
+      ]
+    },
+    "Function": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 119],
+          "type": "Effect",
+          "effectName": "Auto mode",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [120, 255],
+          "type": "Effect",
+          "effectName": "Sound mode",
+          "soundControlled": true,
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "ColorTemperature",
+          "colorTemperature": "2700K"
+        },
+        {
+          "dmxRange": [30, 49],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [50, 69],
+          "type": "ColorTemperature",
+          "colorTemperature": "3400K"
+        },
+        {
+          "dmxRange": [70, 89],
+          "type": "ColorTemperature",
+          "colorTemperature": "4200K"
+        },
+        {
+          "dmxRange": [90, 109],
+          "type": "ColorTemperature",
+          "colorTemperature": "4900K"
+        },
+        {
+          "dmxRange": [110, 129],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [130, 149],
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
+        },
+        {
+          "dmxRange": [150, 169],
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [170, 189],
+          "type": "ColorTemperature",
+          "colorTemperature": "7500K"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Color Presets $pixelKey": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "UV"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "Red + Green"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "Red + Blue"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Red + White"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Red + Amber"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Red + UV"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "Green + Blue"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "Green + White"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "comment": "Green + Amber"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorPreset",
+          "comment": "Green + UV"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "ColorPreset",
+          "comment": "Green + Blue + White"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ColorPreset",
+          "comment": "Blue + White + Amber"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "ColorPreset",
+          "comment": "White + Amber + UV"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "ColorPreset",
+          "comment": "Amber + UV + Red"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "ColorPreset",
+          "comment": "Red + Blue + White + UV"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "ColorPreset",
+          "comment": "Red + Green + White + UV"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "ColorPreset",
+          "comment": "Red + Green + White + Amber"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "ColorPreset",
+          "comment": "Green + Blue + Amber + UV"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ColorPreset",
+          "comment": "Red + Green + Blue + White + Amber + UV"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Color Presets Master",
+        "Pixel Combinations",
+        "Function"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Amber Master",
+        "UV Master"
+      ]
+    },
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Color Presets $pixelKey"
+          ]
+        },
+        "Color Temperature",
+        "Function"
+      ]
+    },
+    {
+      "name": "36-channel",
+      "shortName": "36ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "1+2",
+            "3+4",
+            "5+6",
+            "7+8",
+            "9+10",
+            "11+12"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey",
+            "UV $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "74-channel",
+      "shortName": "74ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey",
+            "UV $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}
