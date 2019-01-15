@@ -73,14 +73,15 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+      hint: `Rotation of the whole wheel (i.e. over all wheel slots). Use WheelSlotRotation if only the slot itself (e.g. a Gobo) rotates in this capability.`,
       defaultData: {
         speedOrAngle: `speed`,
-        speed: ``,
-        speedStart: null,
-        speedEnd: null,
-        angle: ``,
-        angleStart: null,
-        angleEnd: null,
+        speed: null,
+        speedStart: `slow CW`,
+        speedEnd: `fast CW`,
+        angle: null,
+        angleStart: `0deg`,
+        angleEnd: `360deg`,
         comment: ``
       }
     };

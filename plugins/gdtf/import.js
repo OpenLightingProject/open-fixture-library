@@ -6,7 +6,7 @@ const manufacturers = require(`../../fixtures/manufacturers.json`);
 const { CoarseChannel } = require(`../../lib/model.js`);
 const { scaleDmxValue, scaleDmxRangeIndividually } = require(`../../lib/scale-dmx-values.js`);
 const { gdtfAttributes, gdtfUnits } = require(`./gdtf-attributes.js`);
-const { followXmlNodeReference } = require(`./gdtf-helpers.js`);
+const { getRgbColorFromGdtfColor, followXmlNodeReference } = require(`./gdtf-helpers.js`);
 
 module.exports.name = `GDTF 0.87`;
 module.exports.version = `0.1.0`;
@@ -88,6 +88,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
       fixture.matrix = {};
 
+      addWheels(fixture, gdtfFixture);
+
       autoGenerateGdtfNameAttributes(gdtfFixture);
       const relations = splitSwitchingChannels(gdtfFixture);
 
@@ -151,6 +153,66 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       modelId: parseInt(rdmData.$.DeviceModelID, 16),
       softwareVersion: rdmData.$.SoftwareVersionID
     };
+  }
+
+
+  /**
+   * Adds wheels to the OFL fixture (if there are any).
+   * @param {object} fixture The OFL fixture object.
+   * @param {object} gdtfFixture The GDTF fixture object.
+   */
+  function addWheels(fixture, gdtfFixture) {
+    if (!(`Wheels` in gdtfFixture)) {
+      return;
+    }
+
+    const gdtfWheels = (gdtfFixture.Wheels[0].Wheel || []).filter(
+      wheel => wheel.$.Name !== `ColorMacro`
+    );
+
+    if (gdtfWheels.length === 0) {
+      return;
+    }
+
+    fixture.wheels = {};
+
+    gdtfWheels.forEach(gdtfWheel => {
+      fixture.wheels[gdtfWheel.$.Name] = {
+        slots: gdtfWheel.Slot.map(gdtfSlot => {
+          const name = gdtfSlot.$.Name;
+
+          const slot = {
+            type: `Unknown`
+          };
+
+          if (name === `Open`) {
+            slot.type = `Open`;
+          }
+          else if (name === `Closed`) {
+            slot.type = `Closed`;
+          }
+          else if (`Color` in gdtfSlot.$) {
+            slot.type = `Color`;
+            slot.name = name;
+            slot.colors = [getRgbColorFromGdtfColor(gdtfSlot.$.Color)];
+          }
+          else if (`Facet` in gdtfSlot) {
+            slot.type = `Prism`;
+            slot.name = name;
+            slot.facets = gdtfSlot.Facet.length;
+          }
+          else if (name.startsWith(`Gobo`) || gdtfWheel.$.Name.startsWith(`Gobo`)) {
+            slot.type = `Gobo`;
+            slot.name = name;
+          }
+          else {
+            slot.name = name;
+          }
+
+          return slot;
+        })
+      };
+    });
   }
 
 

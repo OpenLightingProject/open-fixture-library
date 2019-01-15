@@ -210,7 +210,7 @@
         { "enum": ["off", "low", "high", "slow", "fast", "small", "big", "instant", "short", "long"] }
       ]
     },
-    "index": {
+    "slotNumber": {
       "$ref": "#/units/nonNegativeNumber"
     },
     "percent": {
