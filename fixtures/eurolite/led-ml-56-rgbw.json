@@ -1,0 +1,116 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED ML-56 RGBW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Nominari UG"],
+    "createDate": "2019-01-15",
+    "lastModifyDate": "2019-01-15"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51913667-Anleitung-56894-1.00-eurolite-led-ml-56-rgbw-36x3w-sil-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn51913667-eurolite-led-ml-56-rgbw-36x3w-sil.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=gEsY_2H1XfI"
+    ]
+  },
+  "physical": {
+    "dimensions": [240, 300, 310],
+    "weight": 5,
+    "power": 150,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "36× 3W RGBW LEDs"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Cool White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Function": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "Effect",
+          "effectName": "Sound Controlled (15 Colors)",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Cool White"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Cool White",
+        "Dimmer",
+        "Function"
+      ]
+    }
+  ]
+}
