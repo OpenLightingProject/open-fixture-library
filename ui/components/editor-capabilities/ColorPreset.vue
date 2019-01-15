@@ -93,7 +93,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
-      hint: `This capability enables a static predefined color (mix). Use WheelSlot for color wheel filters.`,
+      hint: `This capability enables a static predefined RGB/CMY color. Use WheelSlot for color wheel filters.`,
       defaultData: {
         comment: ``,
         colors: null,

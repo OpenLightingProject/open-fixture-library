@@ -1010,10 +1010,7 @@
           "switchChannels": {}
         },
         "required": ["effectName"],
-        "oneOf": [
-          { "required": ["speed"] },
-          { "required": ["speedStart"] }
-        ],
+        "not": { "required": ["speed", "speedStart"] },
         "dependencies": {
           "speedStart": ["speedEnd"],
           "speedEnd": ["speedStart"]
@@ -1070,10 +1067,7 @@
           "switchChannels": {}
         },
         "required": ["effectName"],
-        "oneOf": [
-          { "required": ["speed"] },
-          { "required": ["speedStart"] }
-        ],
+        "not": { "required": ["speed", "speedStart"] },
         "dependencies": {
           "speedStart": ["speedEnd"],
           "speedEnd": ["speedStart"]

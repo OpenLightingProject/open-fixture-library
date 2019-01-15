@@ -94,13 +94,13 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="strobespeed">StrobeSpeed</th>
-  <td valign="top">speed<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">speed<br><sub>:star2: required</sub></td>
   <td valign="top">Entity <em>Speed</em></td>
   <td valign="top">global, doesn't activate strobe directly</td>
 </tr>
 <tr>
   <th valign="top" scope="row" id="strobeduration">StrobeDuration</th>
-  <td valign="top">duration<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">duration<br><sub>:star2: required</sub></td>
   <td valign="top">Entity <em>Time</em></td>
   <td valign="top"></td>
 </tr>

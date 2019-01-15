@@ -64,6 +64,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+      hint: `This capability enables a non-static frost effect, e.g. pulse. Use the Frost type instead if a static frost intensity can be chosen.`,
       defaultData: {
         effectName: ``,
         speed: ``,
