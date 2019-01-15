@@ -44,7 +44,8 @@
     </section>
 
     <app-editor-capability-type-data
-      v-model="wizard.templateCapability" />
+      v-model="wizard.templateCapability"
+      :channel="channel" />
 
     <table class="capabilities-table">
       <colgroup>
@@ -137,8 +138,8 @@ export default {
     'app-labeled-value': labeledValueVue
   },
   props: {
-    capabilities: {
-      type: Array,
+    channel: {
+      type: Object,
       required: true
     },
     resolution: {
@@ -155,6 +156,10 @@ export default {
     }
   },
   computed: {
+    capabilities() {
+      return this.channel.capabilities;
+    },
+
     /**
      * @returns {number} Maximum allowed DMX value.
      */

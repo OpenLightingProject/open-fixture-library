@@ -111,6 +111,10 @@ export function getEmptyChannel() {
     constant: null,
     crossfade: null,
     precedence: ``,
+    wheel: {
+      direction: ``,
+      slots: []
+    },
     wizard: {
       show: false,
       start: 0,
@@ -145,6 +149,18 @@ export function getEmptyCapability() {
     uuid: uuidV4(),
     open: true,
     dmxRange: null,
+    type: ``,
+    typeData: {}
+  };
+}
+
+
+/**
+ * @returns {object} An empty wheel slot object.
+ */
+export function getEmptyWheelSlot() {
+  return {
+    uuid: uuidV4(),
     type: ``,
     typeData: {}
   };

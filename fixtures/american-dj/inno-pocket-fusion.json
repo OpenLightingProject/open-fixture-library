@@ -35,6 +35,50 @@
       "tiltMax": "infinite"
     }
   },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Blue",
+          "colors": ["#77ccff"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#ff00ff"]
+        }
+      ]
+    }
+  },
   "availableChannels": {
     "Pan": {
       "defaultValue": "50%",
@@ -79,112 +123,82 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "ColorWheelIndex",
-          "index": 0,
-          "comment": "Open",
-          "colors": ["#ffffff"]
+          "type": "WheelSlot",
+          "slotNumber": 1
         },
         {
           "dmxRange": [8, 15],
-          "type": "ColorWheelIndex",
-          "index": 1,
-          "comment": "Red",
-          "colors": ["#ff0000"]
+          "type": "WheelSlot",
+          "slotNumber": 2
         },
         {
           "dmxRange": [16, 23],
-          "type": "ColorWheelIndex",
-          "index": 2,
-          "comment": "Orange",
-          "colors": ["#ffaa00"]
+          "type": "WheelSlot",
+          "slotNumber": 3
         },
         {
           "dmxRange": [24, 31],
-          "type": "ColorWheelIndex",
-          "index": 3,
-          "comment": "Yellow",
-          "colors": ["#ffff00"]
+          "type": "WheelSlot",
+          "slotNumber": 4
         },
         {
           "dmxRange": [32, 39],
-          "type": "ColorWheelIndex",
-          "index": 4,
-          "comment": "Green",
-          "colors": ["#00ff00"]
+          "type": "WheelSlot",
+          "slotNumber": 5
         },
         {
           "dmxRange": [40, 47],
-          "type": "ColorWheelIndex",
-          "index": 5,
-          "comment": "Blue",
-          "colors": ["#0000ff"]
+          "type": "WheelSlot",
+          "slotNumber": 6
         },
         {
           "dmxRange": [48, 55],
-          "type": "ColorWheelIndex",
-          "index": 6,
-          "comment": "Light Blue",
-          "colors": ["#77ccff"]
+          "type": "WheelSlot",
+          "slotNumber": 7
         },
         {
           "dmxRange": [56, 63],
-          "type": "ColorWheelIndex",
-          "index": 7,
-          "comment": "Pink",
-          "colors": ["#ff00ff"]
+          "type": "WheelSlot",
+          "slotNumber": 8
         },
         {
           "dmxRange": [64, 71],
-          "type": "ColorWheelIndex",
-          "index": 0.5,
-          "comment": "Split Open / Red",
-          "colors": ["#ffffff", "#ff0000"]
+          "type": "WheelSlot",
+          "slotNumber": 1.5
         },
         {
           "dmxRange": [72, 79],
-          "type": "ColorWheelIndex",
-          "index": 1.5,
-          "comment": "Split Red / Orange",
-          "colors": ["#ff0000", "#ffaa00"]
+          "type": "WheelSlot",
+          "slotNumber": 2.5
         },
         {
           "dmxRange": [80, 87],
-          "type": "ColorWheelIndex",
-          "index": 2.5,
-          "comment": "Split Orange / Yellow",
-          "colors": ["#ffaa00", "#ffff00"]
+          "type": "WheelSlot",
+          "slotNumber": 3.5
         },
         {
           "dmxRange": [88, 95],
-          "type": "ColorWheelIndex",
-          "index": 3.5,
-          "comment": "Split Yellow / Green",
-          "colors": ["#ffff00", "#00ff00"]
+          "type": "WheelSlot",
+          "slotNumber": 4.5
         },
         {
           "dmxRange": [96, 103],
-          "type": "ColorWheelIndex",
-          "index": 4.5,
-          "comment": "Split Green / Blue",
-          "colors": ["#00ff00", "#0000ff"]
+          "type": "WheelSlot",
+          "slotNumber": 5.5
         },
         {
           "dmxRange": [104, 111],
-          "type": "ColorWheelIndex",
-          "index": 5.5,
-          "comment": "Split Blue / Light Blue",
-          "colors": ["#0000ff", "#77ccff"]
+          "type": "WheelSlot",
+          "slotNumber": 6.5
         },
         {
           "dmxRange": [112, 127],
-          "type": "ColorWheelIndex",
-          "index": 6.5,
-          "comment": "Split Light Blue / Pink",
-          "colors": ["#77ccff", "#ff00ff"]
+          "type": "WheelSlot",
+          "slotNumber": 7.5
         },
         {
           "dmxRange": [128, 255],
-          "type": "ColorWheelRotation",
+          "type": "WheelRotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         }
