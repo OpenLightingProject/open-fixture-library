@@ -224,7 +224,7 @@ function addLinks(fixture, editorLinksArray) {
  */
 function addWheels(fixture, editorFixture) {
   const editorWheelChannels = Object.values(editorFixture.availableChannels).filter(
-    editorChannel => editorChannel.wheel.slots.length > 0 && editorChannel.wheel.slots.some(
+    editorChannel => editorChannel.wheel && editorChannel.wheel.slots.length > 0 && editorChannel.wheel.slots.some(
       editorWheelSlot => editorWheelSlot !== null && editorWheelSlot.type !== ``
     )
   );

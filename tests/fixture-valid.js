@@ -596,7 +596,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
               result.warnings.push(`${errorPrefix} explicitly references wheel '${wheelNames[0]}', which is the default anyway (through the channel name). Please remove the 'wheel' property.`);
             }
           }
-          else if (cap.wheels.includes(undefined)) {
+          else if (cap.wheels.includes(null)) {
             result.errors.push(`${errorPrefix} does not explicitly reference any wheel, but the default wheel '${cap._channel.name}' (through the channel name) does not exist.`);
             shouldCheckSlotNumbers = false;
           }
