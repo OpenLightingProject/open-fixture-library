@@ -8,8 +8,14 @@
     "lastModifyDate": "2019-01-14"
   },
   "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51913667-Anleitung-56894-1.00-eurolite-led-ml-56-rgbw-36x3w-sil-de_en.pdf"
+    ],
     "productPage": [
       "https://www.steinigke.de/de/mpn51913667-eurolite-led-ml-56-rgbw-36x3w-sil.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=gEsY_2H1XfI"
     ]
   },
   "physical": {
@@ -18,7 +24,7 @@
     "power": 150,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "36× 3W RGBW LEDs"
     }
   },
   "availableChannels": {
@@ -43,7 +49,7 @@
         "color": "Blue"
       }
     },
-    "Cold White": {
+    "Cool White": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
@@ -61,22 +67,22 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "Generic",
-          "comment": "ON"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [1, 5],
-          "type": "Generic",
-          "comment": "Sound Controlled (15 Colors)"
+          "type": "Effect",
+          "effectName": "Sound Controlled (15 Colors)",
+          "soundControlled": true
         },
         {
           "dmxRange": [6, 10],
-          "type": "Generic",
-          "comment": "ON"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [11, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         }
@@ -85,21 +91,23 @@
   },
   "modes": [
     {
-      "name": "4-Channel",
+      "name": "4-channel",
+      "shortName": "4ch",
       "channels": [
         "Red",
         "Green",
         "Blue",
-        "Cold White"
+        "Cool White"
       ]
     },
     {
-      "name": "6-Channel",
+      "name": "6-channel",
+      "shortName": "6ch",
       "channels": [
         "Red",
         "Green",
         "Blue",
-        "Cold White",
+        "Cool White",
         "Dimmer",
         "Function"
       ]
