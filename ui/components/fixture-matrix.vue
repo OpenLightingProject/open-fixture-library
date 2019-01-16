@@ -71,6 +71,11 @@
     background-color: $divider-dark;
   }
 }
+
+.pixel-groups {
+  max-height: 40vh;
+  overflow: auto;
+}
 </style>
 
 
