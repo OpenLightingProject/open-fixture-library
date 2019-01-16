@@ -3,7 +3,7 @@
     <nav>
       <div class="left-nav">
         <nuxt-link
-          :class="{'home-logo': true, 'hidden-by-search-field': searchFieldFocused || searchQuery !== ``}"
+          :class="{'home-logo': true, 'hidden-by-search-field': searchFieldFocused}"
           to="/"
           exact
           title="Home"
