@@ -1,0 +1,2588 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MAC Encore Performance",
+  "shortName": "MartinEncorePerf",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2019-01-16",
+    "lastModifyDate": "2019-01-16"
+  },
+  "links": {
+    "manual": [
+      "https://adn.harmanpro.com/site_elements/executables/7477_1526701894/UM_MACEncorePerformance_EN_A_original.pdf"
+    ],
+    "productPage": [
+      "https://www.martin.com/en/products/mac-encore-performance-cld",
+      "https://www.martin.com/en/products/mac-encore-performance-wrm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=o6oVoTM3SrM",
+      "https://www.youtube.com/watch?v=nXhyPJOewcg"
+    ]
+  },
+  "physical": {
+    "dimensions": [480, 740, 452],
+    "weight": 31,
+    "power": 585,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "White LED"
+    },
+    "lens": {
+      "degreesMinMax": [12, 48]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 268
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "direction": "CCW",
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Blue 101 SP",
+          "colors": ["#3355ad"]
+        },
+        {
+          "type": "Color",
+          "name": "Green 203 SP",
+          "colors": ["#5cbe49"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange 311 SP",
+          "colors": ["#ff973f"]
+        },
+        {
+          "type": "Color",
+          "name": "Magenta 522 SP",
+          "colors": ["#c05dae"]
+        },
+        {
+          "type": "Color",
+          "name": "Congo Blue 108 SP",
+          "colors": ["#233a9f"]
+        },
+        {
+          "type": "Color",
+          "name": "Red 310 SP",
+          "colors": ["#eb3d33"]
+        }
+      ]
+    },
+    "Rotating Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    },
+    "Animation Wheel": {
+      "slots": [
+        {
+          "type": "AnimationGoboStart",
+          "name": "Radial Breakup"
+        },
+        {
+          "type": "AnimationGoboEnd"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "defaultValue": 30,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [20, 49],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [50, 200],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz",
+          "randomTiming": true
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Cyan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Yellow": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "CTO": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "6000K",
+        "colorTemperatureEnd": "2700K"
+      }
+    },
+    "CTB": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "3000K",
+        "colorTemperatureEnd": "7000K"
+      }
+    },
+    "Color Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [1, 13],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 2
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [15, 27],
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 3
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [29, 41],
+          "type": "WheelSlot",
+          "slotNumberStart": 3,
+          "slotNumberEnd": 4
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [43, 55],
+          "type": "WheelSlot",
+          "slotNumberStart": 4,
+          "slotNumberEnd": 5
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [57, 69],
+          "type": "WheelSlot",
+          "slotNumberStart": 5,
+          "slotNumberEnd": 6
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [71, 83],
+          "type": "WheelSlot",
+          "slotNumberStart": 6,
+          "slotNumberEnd": 7
+        },
+        {
+          "dmxRange": [84, 84],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [85, 97],
+          "type": "WheelSlot",
+          "slotNumberStart": 7,
+          "slotNumberEnd": 8
+        },
+        {
+          "dmxRange": [98, 160],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [161, 163],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [164, 166],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [167, 169],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [170, 172],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [173, 175],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [176, 178],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [179, 192],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [193, 214],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [215, 221],
+          "type": "WheelRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [222, 243],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [244, 247],
+          "type": "Effect",
+          "effectName": "Random colors",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [248, 251],
+          "type": "Effect",
+          "effectName": "Random colors",
+          "speed": "50%"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "Random colors",
+          "speed": "slow"
+        }
+      ]
+    },
+    "Rotating Gobo Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "indexed",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "indexed",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "indexed",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "indexed",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "indexed",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "indexed",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "rotation",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation Speed",
+            "Gobo Indexing / Rotation fine": "Gobo Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "rotation",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation Speed",
+            "Gobo Indexing / Rotation fine": "Gobo Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "rotation",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation Speed",
+            "Gobo Indexing / Rotation fine": "Gobo Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "rotation",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation Speed",
+            "Gobo Indexing / Rotation fine": "Gobo Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "rotation",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation Speed",
+            "Gobo Indexing / Rotation fine": "Gobo Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [60, 89],
+          "type": "WheelShake",
+          "slotNumber": 2,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "shakeAngleStart": "360deg",
+          "shakeAngleEnd": "10deg",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
+        },
+        {
+          "dmxRange": [90, 119],
+          "type": "WheelShake",
+          "slotNumber": 3,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "shakeAngleStart": "360deg",
+          "shakeAngleEnd": "10deg",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
+        },
+        {
+          "dmxRange": [120, 149],
+          "type": "WheelShake",
+          "slotNumber": 4,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "shakeAngleStart": "360deg",
+          "shakeAngleEnd": "10deg",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
+        },
+        {
+          "dmxRange": [150, 179],
+          "type": "WheelShake",
+          "slotNumber": 5,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "shakeAngleStart": "360deg",
+          "shakeAngleEnd": "10deg",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
+        },
+        {
+          "dmxRange": [180, 209],
+          "type": "WheelShake",
+          "slotNumber": 6,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "shakeAngleStart": "360deg",
+          "shakeAngleEnd": "10deg",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing Angle",
+            "Gobo Indexing / Rotation fine": "Gobo Indexing Angle fine"
+          }
+        },
+        {
+          "dmxRange": [210, 232],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation Speed",
+            "Gobo Indexing / Rotation fine": "Gobo Rotation Speed fine"
+          }
+        },
+        {
+          "dmxRange": [233, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation Speed",
+            "Gobo Indexing / Rotation fine": "Gobo Rotation Speed fine"
+          }
+        }
+      ]
+    },
+    "Gobo Indexing Angle": {
+      "fineChannelAliases": ["Gobo Indexing Angle fine"],
+      "defaultValue": 32768,
+      "capability": {
+        "type": "WheelSlotRotation",
+        "wheel": "Rotating Gobo Wheel",
+        "angleStart": "-180deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Gobo Rotation Speed": {
+      "fineChannelAliases": ["Gobo Rotation Speed fine"],
+      "defaultValue": 32768,
+      "capabilities": [
+        {
+          "dmxRange": [0, 600],
+          "type": "WheelSlotRotation",
+          "wheel": "Rotating Gobo Wheel",
+          "angle": "0deg"
+        },
+        {
+          "dmxRange": [601, 32130],
+          "type": "WheelSlotRotation",
+          "wheel": "Rotating Gobo Wheel",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [32131, 32895],
+          "type": "WheelSlotRotation",
+          "wheel": "Rotating Gobo Wheel",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [32896, 64515],
+          "type": "WheelSlotRotation",
+          "wheel": "Rotating Gobo Wheel",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [64516, 65535],
+          "type": "WheelSlotRotation",
+          "wheel": "Rotating Gobo Wheel",
+          "angle": "90deg"
+        }
+      ]
+    },
+    "Animation Wheel Function": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Animation Wheel Indexing / Rotation": "Animation Wheel Indexing Angle"
+          }
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "Effect",
+          "effectName": "Horizontal indexed position",
+          "switchChannels": {
+            "Animation Wheel Indexing / Rotation": "Animation Wheel Indexing Angle"
+          }
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "Effect",
+          "effectName": "Horizontal rotation",
+          "switchChannels": {
+            "Animation Wheel Indexing / Rotation": "Animation Wheel Rotation Speed"
+          }
+        },
+        {
+          "dmxRange": [16, 20],
+          "type": "Effect",
+          "effectName": "Vertical rotation",
+          "switchChannels": {
+            "Animation Wheel Indexing / Rotation": "Animation Wheel Rotation Speed"
+          }
+        },
+        {
+          "dmxRange": [21, 25],
+          "type": "Effect",
+          "effectName": "Vertical indexed position",
+          "switchChannels": {
+            "Animation Wheel Indexing / Rotation": "Animation Wheel Indexing Angle"
+          }
+        },
+        {
+          "dmxRange": [26, 110],
+          "type": "Effect",
+          "effectName": "Angled position rotation",
+          "switchChannels": {
+            "Animation Wheel Indexing / Rotation": "Animation Wheel Rotation Speed"
+          }
+        },
+        {
+          "dmxRange": [111, 195],
+          "type": "Effect",
+          "effectName": "Angled position vertical indexed",
+          "switchChannels": {
+            "Animation Wheel Indexing / Rotation": "Animation Wheel Indexing Angle"
+          }
+        },
+        {
+          "dmxRange": [196, 255],
+          "type": "Effect",
+          "effectName": "Angled position horizontal indexed",
+          "switchChannels": {
+            "Animation Wheel Indexing / Rotation": "Animation Wheel Indexing Angle"
+          }
+        }
+      ]
+    },
+    "Animation Wheel Indexing Angle": {
+      "capability": {
+        "type": "WheelRotation",
+        "wheel": "Animation Wheel",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Animation Wheel Rotation Speed": {
+      "defaultValue": 127,
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "WheelRotation",
+          "wheel": "Animation Wheel",
+          "angle": "0deg"
+        },
+        {
+          "dmxRange": [3, 126],
+          "type": "WheelRotation",
+          "wheel": "Animation Wheel",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [127, 129],
+          "type": "WheelRotation",
+          "wheel": "Animation Wheel",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [130, 253],
+          "type": "WheelRotation",
+          "wheel": "Animation Wheel",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "WheelRotation",
+          "wheel": "Animation Wheel",
+          "angle": "90deg"
+        }
+      ]
+    },
+    "Frost": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Iris": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Iris",
+        "openPercentStart": "open",
+        "openPercentEnd": "closed"
+      }
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "48deg",
+        "angleEnd": "12deg"
+      }
+    },
+    "Focus": {
+      "fineChannelAliases": ["Focus fine"],
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "far",
+        "distanceEnd": "near"
+      }
+    },
+    "Framing Blade 1 Insertion": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 1,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Framing Blade 1 Rotation": {
+      "defaultValue": 127,
+      "capabilities": [
+        {
+          "dmxRange": [0, 126],
+          "type": "BladeRotation",
+          "blade": 1,
+          "angleStart": "-100%",
+          "angleEnd": "0%"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "BladeRotation",
+          "blade": 1,
+          "angle": "0%"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "BladeRotation",
+          "blade": 1,
+          "angleStart": "0%",
+          "angleEnd": "100%"
+        }
+      ]
+    },
+    "Framing Blade 2 Insertion": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 2,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Framing Blade 2 Rotation": {
+      "defaultValue": 127,
+      "capabilities": [
+        {
+          "dmxRange": [0, 126],
+          "type": "BladeRotation",
+          "blade": 2,
+          "angleStart": "-100%",
+          "angleEnd": "0%"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "BladeRotation",
+          "blade": 2,
+          "angle": "0%"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "BladeRotation",
+          "blade": 2,
+          "angleStart": "0%",
+          "angleEnd": "100%"
+        }
+      ]
+    },
+    "Framing Blade 3 Insertion": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 3,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Framing Blade 3 Rotation": {
+      "defaultValue": 127,
+      "capabilities": [
+        {
+          "dmxRange": [0, 126],
+          "type": "BladeRotation",
+          "blade": 3,
+          "angleStart": "-100%",
+          "angleEnd": "0%"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "BladeRotation",
+          "blade": 3,
+          "angle": "0%"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "BladeRotation",
+          "blade": 3,
+          "angleStart": "0%",
+          "angleEnd": "100%"
+        }
+      ]
+    },
+    "Framing Blade 4 Insertion": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "BladeInsertion",
+        "blade": 4,
+        "insertionStart": "out",
+        "insertionEnd": "in"
+      }
+    },
+    "Framing Blade 4 Rotation": {
+      "defaultValue": 127,
+      "capabilities": [
+        {
+          "dmxRange": [0, 126],
+          "type": "BladeRotation",
+          "blade": 4,
+          "angleStart": "-100%",
+          "angleEnd": "0%"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "BladeRotation",
+          "blade": 4,
+          "angle": "0%"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "BladeRotation",
+          "blade": 4,
+          "angleStart": "0%",
+          "angleEnd": "100%"
+        }
+      ]
+    },
+    "Framing Blade System Rotation": {
+      "defaultValue": 127,
+      "capabilities": [
+        {
+          "dmxRange": [0, 126],
+          "type": "BladeSystemRotation",
+          "angleStart": "-55deg",
+          "angleEnd": "0deg"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "BladeSystemRotation",
+          "angle": "0deg"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "BladeSystemRotation",
+          "angleStart": "0deg",
+          "angleEnd": "55deg"
+        }
+      ]
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32768,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "268deg"
+      }
+    },
+    "Fixture Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "No function (disables calibration)"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset entire fixture"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset color only"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset beam only"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset pan and tilt only"
+        },
+        {
+          "dmxRange": [19, 22],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Linear dimming curve"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Square law dimming curve"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Inverse square law dimming curve"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "S-curve dimming curve"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Fast pan and tilt speed"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Smooth pan and tilt speed"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Parameter shortcuts = ON"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Parameter shortcuts = OFF"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Focus tracking = OFF"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Enable focus tracking at close range"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Enable focus tracking at medium range"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Enable focus tracking at long range"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Video tracking = ON"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Video tracking = OFF"
+        },
+        {
+          "dmxRange": [38, 40],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Beam smoothing = ON"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Beam smoothing = OFF"
+        },
+        {
+          "dmxRange": [43, 51],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Turn on control panel display"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Turn off control panel display"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Regulated fan speed, fixed light output intensity"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Full fan speed, regulated light output intensity"
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Medium fan speed, regulated light output intensity"
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Low fan speed, regulated light output intensity"
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Ultra-low fan speed, regulated li ght output intensity"
+        },
+        {
+          "dmxRange": [59, 60],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Hibernation mode = ON"
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Hibernation mode = OFF"
+        },
+        {
+          "dmxRange": [63, 64],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [65, 65],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Pan and tilt limits = ON"
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Pan and tilt limits = OFF"
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store current pan position as lower pan limit"
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store current pan position as upper pan limit –"
+        },
+        {
+          "dmxRange": [69, 69],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store current tilt position as lower tilt limit"
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store current tilt position  as upper tilt limit"
+        },
+        {
+          "dmxRange": [71, 71],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Reset pan and tilt limits and disable pan/tilt limit functionality"
+        },
+        {
+          "dmxRange": [72, 72],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Tungsten Emulation = ON"
+        },
+        {
+          "dmxRange": [73, 73],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Tungsten Emulation = OFF"
+        },
+        {
+          "dmxRange": [74, 74],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Alternative light source (color  temperature shift) = ON"
+        },
+        {
+          "dmxRange": [75, 75],
+          "type": "Maintenance",
+          "hold": "1s",
+          "comment": "Alternative light source (color temperature shift) = OFF"
+        },
+        {
+          "dmxRange": [76, 99],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [100, 100],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Enable calibration"
+        },
+        {
+          "dmxRange": [101, 101],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store pan and tilt calibration"
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store dimmer calibration"
+        },
+        {
+          "dmxRange": [103, 103],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store cyan calibration"
+        },
+        {
+          "dmxRange": [104, 104],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store magenta calibration"
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store yellow calibration"
+        },
+        {
+          "dmxRange": [106, 106],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [107, 107],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store all CMY calibration"
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store rotating gobo 1 current slot index calibration"
+        },
+        {
+          "dmxRange": [109, 110],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [111, 111],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store framing calibration"
+        },
+        {
+          "dmxRange": [112, 112],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store iris calibration"
+        },
+        {
+          "dmxRange": [113, 113],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store focus calibration"
+        },
+        {
+          "dmxRange": [114, 114],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store zoom calibration"
+        },
+        {
+          "dmxRange": [115, 115],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store color wheel calibration"
+        },
+        {
+          "dmxRange": [116, 116],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Store animation wheel calibration"
+        },
+        {
+          "dmxRange": [117, 198],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [199, 199],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset all calibrations to factory default"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "FX1 Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Effect",
+          "effectName": "Gobo X-Fade"
+        },
+        {
+          "dmxRange": [2, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Effect",
+          "effectName": "Tick tick tick"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Effect",
+          "effectName": "Tick tock"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Effect",
+          "effectName": "Intensity sine wave"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Effect",
+          "effectName": "Intensity step"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Effect",
+          "effectName": "Intensity pulse"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Double"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Triple"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Effect",
+          "effectName": "Up flash"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Effect",
+          "effectName": "Up flash down flash"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Effect",
+          "effectName": "Random level"
+        },
+        {
+          "dmxRange": [18, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Effect",
+          "effectName": "Electric arc"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Effect",
+          "effectName": "Thunderstorm atomic"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Effect",
+          "effectName": "Thunderstorm"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Effect",
+          "effectName": "Welding"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Effect",
+          "effectName": "Animotion"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Effect",
+          "effectName": "Movie flicker"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Effect",
+          "effectName": "Cross chase"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Effect",
+          "effectName": "Random dimmers"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Effect",
+          "effectName": "Shakey dimmers"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Effect",
+          "effectName": "Center out chase"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Effect",
+          "effectName": "Negative pulse"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Effect",
+          "effectName": "Positive pulse"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Effect",
+          "effectName": "Rings in out"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Effect",
+          "effectName": "Random color wave"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Effect",
+          "effectName": "Random color step"
+        },
+        {
+          "dmxRange": [42, 49],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "Effect",
+          "effectName": "Rainbow wave"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Effect",
+          "effectName": "Rainbow step"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Effect",
+          "effectName": "Rainbow pulse"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Effect",
+          "effectName": "RGB wave"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Effect",
+          "effectName": "RGB step"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "Effect",
+          "effectName": "RGB pulse"
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "Effect",
+          "effectName": "CMY wave"
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "Effect",
+          "effectName": "CMY step"
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "Effect",
+          "effectName": "CMY pulse"
+        },
+        {
+          "dmxRange": [59, 59],
+          "type": "Effect",
+          "effectName": "Mix to white wave"
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "Effect",
+          "effectName": "Mix to white step"
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "Effect",
+          "effectName": "Mix to white pulse"
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "Effect",
+          "effectName": "Random bold"
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "Effect",
+          "effectName": "Random mix step"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Effect",
+          "effectName": "Random mix pulse"
+        },
+        {
+          "dmxRange": [65, 65],
+          "type": "Effect",
+          "effectName": "Random subtle"
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "Effect",
+          "effectName": "Red white blue wave"
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "Effect",
+          "effectName": "Red white blue step"
+        },
+        {
+          "dmxRange": [68, 69],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "Effect",
+          "effectName": "Color wheel full step"
+        },
+        {
+          "dmxRange": [71, 71],
+          "type": "Effect",
+          "effectName": "Color wheel all step"
+        },
+        {
+          "dmxRange": [72, 72],
+          "type": "Effect",
+          "effectName": "Color wheel split step"
+        },
+        {
+          "dmxRange": [73, 73],
+          "type": "Effect",
+          "effectName": "Color wheel random split step"
+        },
+        {
+          "dmxRange": [74, 74],
+          "type": "Effect",
+          "effectName": "Color wheel shaker"
+        },
+        {
+          "dmxRange": [75, 75],
+          "type": "Effect",
+          "effectName": "Fire"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "Effect",
+          "effectName": "Water"
+        },
+        {
+          "dmxRange": [77, 77],
+          "type": "Effect",
+          "effectName": "Ice"
+        },
+        {
+          "dmxRange": [78, 78],
+          "type": "Effect",
+          "effectName": "Hot and cold"
+        },
+        {
+          "dmxRange": [79, 79],
+          "type": "Effect",
+          "effectName": "Warm and fuzzy"
+        },
+        {
+          "dmxRange": [80, 80],
+          "type": "IrisEffect",
+          "effectName": "Ramp"
+        },
+        {
+          "dmxRange": [81, 81],
+          "type": "IrisEffect",
+          "effectName": "Step"
+        },
+        {
+          "dmxRange": [82, 82],
+          "type": "IrisEffect",
+          "effectName": "Pulse"
+        },
+        {
+          "dmxRange": [83, 83],
+          "type": "Effect",
+          "effectName": "Zoom wave"
+        },
+        {
+          "dmxRange": [84, 84],
+          "type": "Effect",
+          "effectName": "Zoom step"
+        },
+        {
+          "dmxRange": [85, 85],
+          "type": "Effect",
+          "effectName": "Zoom ramp"
+        },
+        {
+          "dmxRange": [86, 86],
+          "type": "Effect",
+          "effectName": "Random size wave"
+        },
+        {
+          "dmxRange": [87, 87],
+          "type": "Effect",
+          "effectName": "Random size step"
+        },
+        {
+          "dmxRange": [88, 89],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [90, 90],
+          "type": "Effect",
+          "effectName": "Pin to flood"
+        },
+        {
+          "dmxRange": [91, 91],
+          "type": "Effect",
+          "effectName": "Pounce"
+        },
+        {
+          "dmxRange": [92, 92],
+          "type": "Effect",
+          "effectName": "Splash"
+        },
+        {
+          "dmxRange": [93, 122],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [123, 123],
+          "type": "Effect",
+          "effectName": "Milling around"
+        },
+        {
+          "dmxRange": [124, 159],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [160, 160],
+          "type": "Effect",
+          "effectName": "Fire Gobo"
+        },
+        {
+          "dmxRange": [161, 161],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [162, 162],
+          "type": "Effect",
+          "effectName": "Water Gobo"
+        },
+        {
+          "dmxRange": [163, 180],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "Effect",
+          "effectName": "Select fixed gobo 1"
+        },
+        {
+          "dmxRange": [182, 182],
+          "type": "Effect",
+          "effectName": "Select fixed gobo 2"
+        },
+        {
+          "dmxRange": [183, 183],
+          "type": "Effect",
+          "effectName": "Select fixed gobo 3"
+        },
+        {
+          "dmxRange": [184, 184],
+          "type": "Effect",
+          "effectName": "Select fixed gobo 4"
+        },
+        {
+          "dmxRange": [185, 185],
+          "type": "Effect",
+          "effectName": "Select fixed gobo 5"
+        },
+        {
+          "dmxRange": [186, 186],
+          "type": "Effect",
+          "effectName": "Select fixed gobo 6"
+        },
+        {
+          "dmxRange": [187, 187],
+          "type": "Effect",
+          "effectName": "Select fixed gobo 7"
+        },
+        {
+          "dmxRange": [188, 209],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [210, 210],
+          "type": "Effect",
+          "effectName": "Zoom fades"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "Effect",
+          "effectName": "Fade spin gobo zoom"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "Effect",
+          "effectName": "Gobo twist"
+        },
+        {
+          "dmxRange": [213, 213],
+          "type": "Effect",
+          "effectName": "Expand twist"
+        },
+        {
+          "dmxRange": [214, 214],
+          "type": "Effect",
+          "effectName": "Expand twist fade"
+        },
+        {
+          "dmxRange": [215, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "FX1 Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 126],
+          "type": "EffectSpeed",
+          "speedStart": "fast reverse",
+          "speedEnd": "slow reverse"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "FX2 Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Effect",
+          "effectName": "Gobo X-Fade"
+        },
+        {
+          "dmxRange": [2, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Effect",
+          "effectName": "Tick tick tick"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Effect",
+          "effectName": "Tick tock"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Effect",
+          "effectName": "Intensity sine wave"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Effect",
+          "effectName": "Intensity step"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Effect",
+          "effectName": "Intensity pulse"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Double"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Triple"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Effect",
+          "effectName": "Up flash"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Effect",
+          "effectName": "Up flash down flash"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Effect",
+          "effectName": "Random level"
+        },
+        {
+          "dmxRange": [18, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Effect",
+          "effectName": "Electric arc"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Effect",
+          "effectName": "Thunderstorm atomic"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Effect",
+          "effectName": "Thunderstorm"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Effect",
+          "effectName": "Welding"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Effect",
+          "effectName": "Animotion"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Effect",
+          "effectName": "Movie flicker"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Effect",
+          "effectName": "Cross chase"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Effect",
+          "effectName": "Random dimmers"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Effect",
+          "effectName": "Shakey dimmers"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Effect",
+          "effectName": "Center out chase"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Effect",
+          "effectName": "Negative pulse"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Effect",
+          "effectName": "Positive pulse"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Effect",
+          "effectName": "Rings in out"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Effect",
+          "effectName": "Random color wave"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Effect",
+          "effectName": "Random color step"
+        },
+        {
+          "dmxRange": [42, 49],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "Effect",
+          "effectName": "Rainbow wave"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Effect",
+          "effectName": "Rainbow step"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Effect",
+          "effectName": "Rainbow pulse"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Effect",
+          "effectName": "RGB wave"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Effect",
+          "effectName": "RGB step"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "Effect",
+          "effectName": "RGB pulse"
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "Effect",
+          "effectName": "CMY wave"
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "Effect",
+          "effectName": "CMY step"
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "Effect",
+          "effectName": "CMY pulse"
+        },
+        {
+          "dmxRange": [59, 59],
+          "type": "Effect",
+          "effectName": "Mix to white wave"
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "Effect",
+          "effectName": "Mix to white step"
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "Effect",
+          "effectName": "Mix to white pulse"
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "Effect",
+          "effectName": "Random bold"
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "Effect",
+          "effectName": "Random mix step"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Effect",
+          "effectName": "Random mix pulse"
+        },
+        {
+          "dmxRange": [65, 65],
+          "type": "Effect",
+          "effectName": "Random subtle"
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "Effect",
+          "effectName": "Red white blue wave"
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "Effect",
+          "effectName": "Red white blue step"
+        },
+        {
+          "dmxRange": [68, 69],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "Effect",
+          "effectName": "Color wheel full step"
+        },
+        {
+          "dmxRange": [71, 71],
+          "type": "Effect",
+          "effectName": "Color wheel all step"
+        },
+        {
+          "dmxRange": [72, 72],
+          "type": "Effect",
+          "effectName": "Color wheel split step"
+        },
+        {
+          "dmxRange": [73, 73],
+          "type": "Effect",
+          "effectName": "Color wheel random split step"
+        },
+        {
+          "dmxRange": [74, 74],
+          "type": "Effect",
+          "effectName": "Color wheel shaker"
+        },
+        {
+          "dmxRange": [75, 75],
+          "type": "Effect",
+          "effectName": "Fire"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "Effect",
+          "effectName": "Water"
+        },
+        {
+          "dmxRange": [77, 77],
+          "type": "Effect",
+          "effectName": "Ice"
+        },
+        {
+          "dmxRange": [78, 78],
+          "type": "Effect",
+          "effectName": "Hot and cold"
+        },
+        {
+          "dmxRange": [79, 79],
+          "type": "Effect",
+          "effectName": "Warm and fuzzy"
+        },
+        {
+          "dmxRange": [80, 80],
+          "type": "IrisEffect",
+          "effectName": "Ramp"
+        },
+        {
+          "dmxRange": [81, 81],
+          "type": "IrisEffect",
+          "effectName": "Step"
+        },
+        {
+          "dmxRange": [82, 82],
+          "type": "IrisEffect",
+          "effectName": "Pulse"
+        },
+        {
+          "dmxRange": [83, 83],
+          "type": "Effect",
+          "effectName": "Zoom wave"
+        },
+        {
+          "dmxRange": [84, 84],
+          "type": "Effect",
+          "effectName": "Zoom step"
+        },
+        {
+          "dmxRange": [85, 85],
+          "type": "Effect",
+          "effectName": "Zoom ramp"
+        },
+        {
+          "dmxRange": [86, 86],
+          "type": "Effect",
+          "effectName": "Random size wave"
+        },
+        {
+          "dmxRange": [87, 87],
+          "type": "Effect",
+          "effectName": "Random size step"
+        },
+        {
+          "dmxRange": [88, 89],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [90, 90],
+          "type": "Effect",
+          "effectName": "Pin to flood"
+        },
+        {
+          "dmxRange": [91, 91],
+          "type": "Effect",
+          "effectName": "Pounce"
+        },
+        {
+          "dmxRange": [92, 92],
+          "type": "Effect",
+          "effectName": "Splash"
+        },
+        {
+          "dmxRange": [93, 122],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [123, 123],
+          "type": "Effect",
+          "effectName": "Milling around"
+        },
+        {
+          "dmxRange": [124, 159],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [160, 160],
+          "type": "Effect",
+          "effectName": "Fire Gobo"
+        },
+        {
+          "dmxRange": [161, 161],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [162, 162],
+          "type": "Effect",
+          "effectName": "Water Gobo"
+        },
+        {
+          "dmxRange": [163, 180],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "Effect",
+          "effectName": "Select fixed gobo 1"
+        },
+        {
+          "dmxRange": [182, 182],
+          "type": "Effect",
+          "effectName": "Select fixed gobo 2"
+        },
+        {
+          "dmxRange": [183, 183],
+          "type": "Effect",
+          "effectName": "Select fixed gobo 3"
+        },
+        {
+          "dmxRange": [184, 184],
+          "type": "Effect",
+          "effectName": "Select fixed gobo 4"
+        },
+        {
+          "dmxRange": [185, 185],
+          "type": "Effect",
+          "effectName": "Select fixed gobo 5"
+        },
+        {
+          "dmxRange": [186, 186],
+          "type": "Effect",
+          "effectName": "Select fixed gobo 6"
+        },
+        {
+          "dmxRange": [187, 187],
+          "type": "Effect",
+          "effectName": "Select fixed gobo 7"
+        },
+        {
+          "dmxRange": [188, 209],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [210, 210],
+          "type": "Effect",
+          "effectName": "Zoom fades"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "Effect",
+          "effectName": "Fade spin gobo zoom"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "Effect",
+          "effectName": "Gobo twist"
+        },
+        {
+          "dmxRange": [213, 213],
+          "type": "Effect",
+          "effectName": "Expand twist"
+        },
+        {
+          "dmxRange": [214, 214],
+          "type": "Effect",
+          "effectName": "Expand twist fade"
+        },
+        {
+          "dmxRange": [215, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "FX2 Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 126],
+          "type": "EffectSpeed",
+          "speedStart": "fast reverse",
+          "speedEnd": "slow reverse"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "FX Synchronization": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Generic",
+          "comment": "Offset shift 10°"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "Generic",
+          "comment": "Offset shift 20°"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "Generic",
+          "comment": "Offset shift 30°"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Generic",
+          "comment": "Offset shift 40°"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Generic",
+          "comment": "Offset shift 50°"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Generic",
+          "comment": "Offset shift 60°"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "Generic",
+          "comment": "Offset shift 70°"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Generic",
+          "comment": "Offset shift 80°"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Generic",
+          "comment": "Offset shift 90°"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Generic",
+          "comment": "Offset shift 100°"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Generic",
+          "comment": "Offset shift 110°"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Generic",
+          "comment": "Offset shift 120°"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Generic",
+          "comment": "Offset shift 130°"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Generic",
+          "comment": "Offset shift 140°"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Generic",
+          "comment": "Offset shift 150°"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Generic",
+          "comment": "Offset shift 160°"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Generic",
+          "comment": "Offset shift 170°"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Generic",
+          "comment": "Offset shift 180°"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Generic",
+          "comment": "Offset shift 190°"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Generic",
+          "comment": "Offset shift 200°"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Generic",
+          "comment": "Offset shift 210°"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Generic",
+          "comment": "Offset shift 220°"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Generic",
+          "comment": "Offset shift 230°"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Generic",
+          "comment": "Offset shift 240°"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Generic",
+          "comment": "Offset shift 250°"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Generic",
+          "comment": "Offset shift 260°"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Generic",
+          "comment": "Offset shift 270°"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Generic",
+          "comment": "Offset shift 280°"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Generic",
+          "comment": "Offset shift 290°"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Generic",
+          "comment": "Offset shift 300°"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Generic",
+          "comment": "Offset shift 310°"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Generic",
+          "comment": "Offset shift 320°"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Generic",
+          "comment": "Offset shift 330°"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Generic",
+          "comment": "Offset shift 340°"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Generic",
+          "comment": "Offset shift 350°"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Generic",
+          "comment": "Synchronized"
+        },
+        {
+          "dmxRange": [37, 100],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [101, 120],
+          "type": "Generic",
+          "comment": "Random start (FX1 controls overall speed)"
+        },
+        {
+          "dmxRange": [121, 140],
+          "type": "Generic",
+          "comment": "Random duration"
+        },
+        {
+          "dmxRange": [141, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "CLD",
+      "physical": {
+        "bulb": {
+          "colorTemperature": 3000,
+          "lumens": 11600
+        }
+      },
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTO",
+        "Color Wheel",
+        "Rotating Gobo Wheel",
+        "Gobo Indexing / Rotation",
+        "Gobo Indexing / Rotation fine",
+        "Animation Wheel Function",
+        "Animation Wheel Indexing / Rotation",
+        "Frost",
+        "Iris",
+        "Zoom",
+        "Zoom fine",
+        "Focus",
+        "Focus fine",
+        "Framing Blade 1 Insertion",
+        "Framing Blade 1 Rotation",
+        "Framing Blade 2 Insertion",
+        "Framing Blade 2 Rotation",
+        "Framing Blade 3 Insertion",
+        "Framing Blade 3 Rotation",
+        "Framing Blade 4 Insertion",
+        "Framing Blade 4 Rotation",
+        "Framing Blade System Rotation",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Fixture Control",
+        "FX1 Selection",
+        "FX1 Speed",
+        "FX2 Selection",
+        "FX2 Speed",
+        "FX Synchronization"
+      ]
+    },
+    {
+      "name": "WRM",
+      "physical": {
+        "bulb": {
+          "colorTemperature": 6000,
+          "lumens": 9200
+        }
+      },
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTB",
+        "Color Wheel",
+        "Rotating Gobo Wheel",
+        "Gobo Indexing / Rotation",
+        "Gobo Indexing / Rotation fine",
+        "Animation Wheel Function",
+        "Animation Wheel Indexing / Rotation",
+        "Frost",
+        "Iris",
+        "Zoom",
+        "Zoom fine",
+        "Focus",
+        "Focus fine",
+        "Framing Blade 1 Insertion",
+        "Framing Blade 1 Rotation",
+        "Framing Blade 2 Insertion",
+        "Framing Blade 2 Rotation",
+        "Framing Blade 3 Insertion",
+        "Framing Blade 3 Rotation",
+        "Framing Blade 4 Insertion",
+        "Framing Blade 4 Rotation",
+        "Framing Blade System Rotation",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Fixture Control",
+        "FX1 Selection",
+        "FX1 Speed",
+        "FX2 Selection",
+        "FX2 Speed",
+        "FX Synchronization"
+      ]
+    }
+  ]
+}
