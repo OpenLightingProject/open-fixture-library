@@ -17,14 +17,16 @@
       <h4>Pixel groups</h4>
       <span class="hint only-js">Hover over the pixel groups to highlight the corresponding pixels.</span>
 
-      <app-labeled-value
-        v-for="key in matrix.pixelGroupKeys"
-        :key="key"
-        :label="key"
-        :value="matrix.pixelGroups[key].join(`, `)"
-        name="pixel-group"
-        @mouseover.native="highlightedPixelKeys = matrix.pixelGroups[key]"
-        @mouseout.native="highlightedPixelKeys = []" />
+      <div>
+        <app-labeled-value
+          v-for="key in matrix.pixelGroupKeys"
+          :key="key"
+          :label="key"
+          :value="matrix.pixelGroups[key].join(`, `)"
+          name="pixel-group"
+          @mouseover.native="highlightedPixelKeys = matrix.pixelGroups[key]"
+          @mouseout.native="highlightedPixelKeys = []" />
+      </div>
     </section>
   </div>
 </template>
@@ -72,8 +74,8 @@
   }
 }
 
-.pixel-groups {
-  max-height: 40vh;
+.pixel-groups > div {
+  max-height: 32vh;
   overflow: auto;
 }
 </style>
