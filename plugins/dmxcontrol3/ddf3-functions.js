@@ -209,14 +209,14 @@ module.exports = {
     }
   },
   colorWheel: {
-    isCapSuitable: cap => cap.type === `ColorWheelIndex` || cap.type === `ColorPreset` || (cap.type === `ColorWheelRotation` && cap.speed),
+    isCapSuitable: cap => cap.isSlotType(`Color`) || cap.type === `ColorPreset` || (cap.type === `WheelRotation` && cap.speed && cap.wheels[0].type === `Color`),
     create: (channel, caps) => {
       const xmlColorWheel = xmlbuilder.create(`colorwheel`);
 
       // RGB value for dummy colors. Will be decremented by 1 every time a dummy color is created.
       let greyValue = 0x99;
 
-      const presetCaps = caps.filter(cap => cap.type === `ColorWheelIndex` || cap.type === `ColorPreset`);
+      const presetCaps = caps.filter(cap => cap.isSlotType(`Color`) || cap.type === `ColorPreset`);
 
       // split proportional caps so we only have stepped caps
       for (let i = 0; i < presetCaps.length; i++) {
@@ -255,7 +255,7 @@ module.exports = {
 
 
       const rotationCaps = getSingleUnitCapabilities(
-        caps.filter(cap => cap.type === `ColorWheelRotation`), `speed`, `Hz`, 0, 15
+        caps.filter(cap => cap.type === `WheelRotation`), `speed`, `Hz`, 0, 15
       );
       if (rotationCaps.length > 0) {
         const xmlWheelRotation = xmlColorWheel.element(`wheelrotation`);
@@ -285,10 +285,10 @@ module.exports = {
           _splitted: true
         };
 
-        if (cap.index) {
-          startCapJson.index = cap.index[0].number;
-          centerCapJson.index = (cap.index[0].number + cap.index[1].number) / 2;
-          endCapJson.index = cap.index[1].number;
+        if (cap.slotNumber) {
+          startCapJson.slotNumber = cap.slotNumber[0].number;
+          centerCapJson.slotNumber = (cap.slotNumber[0].number + cap.slotNumber[1].number) / 2;
+          endCapJson.slotNumber = cap.slotNumber[1].number;
         }
         if (cap.comment) {
           startCapJson.comment = cap.comment;
@@ -309,7 +309,7 @@ module.exports = {
           capJson => new Capability(capJson, cap._resolution, cap._channel)
         );
 
-        if (cap.index) {
+        if (cap.slotNumber) {
           return [startCap, centerCap, endCap];
         }
         return [startCap, endCap];
@@ -331,16 +331,16 @@ module.exports = {
           type: cap1.type
         };
 
-        const differentIndex = cap1.jsonObject.index !== cap2.jsonObject.index && !(cap1.jsonObject._splitted && cap2.jsonObject.index === 0);
-        const differentColors = !arraysEqual(cap1.jsonObject.colors, cap2.jsonObject.colors);
+        const differentSlotNumber = cap1.jsonObject.slotNumber !== cap2.jsonObject.slotNumber && !(cap1.jsonObject._splitted && cap2.jsonObject.slotNumber === 1);
+        const differentColors = !cap1.slotNumber && !cap2.slotNumber && !arraysEqual(cap1.jsonObject.colors, cap2.jsonObject.colors);
         const differentColorTemperatures = cap1.jsonObject.colorTemperature !== cap2.jsonObject.colorTemperature;
-        const isGenericColor = !cap1.index && !cap1.colors && !cap1.colorTemperature;
-        if (differentIndex || differentColors || differentColorTemperatures || isGenericColor) {
+        const isGenericColor = !cap1.slotNumber && !cap1.colors && !cap1.colorTemperature;
+        if (differentSlotNumber || differentColors || differentColorTemperatures || isGenericColor) {
           return null;
         }
 
-        if (cap1.index) {
-          capJson.index = cap1.jsonObject.index;
+        if (cap1.slotNumber) {
+          capJson.slotNumber = cap1.jsonObject.slotNumber;
         }
 
         if (cap1.hasComment && !cap1.jsonObject._splitted) {
@@ -392,42 +392,42 @@ module.exports = {
     }
   },
   goboWheel: {
-    isCapSuitable: cap => cap.type === `GoboIndex` || (cap.type === `GoboWheelRotation` && cap.speed),
+    isCapSuitable: cap => cap.isSlotType(`Gobo`) || (cap.type === `WheelRotation` && cap.speed && cap.wheels[0].type === `Gobo`),
     create: (channel, caps) => {
       const xmlGoboWheel = xmlbuilder.create(`gobowheel`);
 
-      const capsPerIndex = {};
+      const capsPerSlot = {};
 
       // search for first normal cap and first shaking cap per index
       // further caps of the same index will be ignored (for now)
-      const indexCaps = caps.filter(cap => cap.type === `GoboIndex`);
-      indexCaps.forEach(cap => {
-        const index = `${cap.index[0]}…${cap.index[1]}`;
+      const slotCaps = caps.filter(cap => cap.isSlotType(`Gobo`));
+      slotCaps.forEach(cap => {
+        const slotNumber = `${cap.slotNumber[0]}…${cap.slotNumber[1]}`;
 
-        if (!(index in capsPerIndex)) {
-          capsPerIndex[index] = {
+        if (!(slotNumber in capsPerSlot)) {
+          capsPerSlot[slotNumber] = {
             normalCap: null,
             shakingCap: null
           };
         }
 
-        if (!cap.isShaking && !capsPerIndex[index].normalCap) {
-          capsPerIndex[index].normalCap = cap;
+        if (cap.type !== `WheelShake` && !capsPerSlot[slotNumber].normalCap) {
+          capsPerSlot[slotNumber].normalCap = cap;
         }
-        else if (cap.isShaking && !capsPerIndex[index].shakingCap) {
-          capsPerIndex[index].shakingCap = cap;
+        else if (cap.type === `WheelShake` && !capsPerSlot[slotNumber].shakingCap) {
+          capsPerSlot[slotNumber].shakingCap = cap;
         }
       });
 
-      const usesShake = Object.values(capsPerIndex).some(({ shakingCap }) => shakingCap !== null);
+      const usesShake = Object.values(capsPerSlot).some(({ shakingCap }) => shakingCap !== null);
       if (usesShake) {
         xmlGoboWheel.element(`goboshake`);
       }
 
-      Object.values(capsPerIndex).forEach(({ normalCap, shakingCap }) => {
+      Object.values(capsPerSlot).forEach(({ normalCap, shakingCap }) => {
         if (normalCap) {
           const xmlCap = getBaseXmlCapability(normalCap);
-          xmlCap.attribute(`type`, normalCap.comment.toLowerCase() === `open` ? `open` : `gobo`);
+          xmlCap.attribute(`type`, normalCap.isSlotType(`Open`) ? `open` : `gobo`);
           xmlCap.attribute(`caption`, normalCap.name);
 
           if (shakingCap) {
@@ -450,7 +450,7 @@ module.exports = {
       });
 
       const rotationCaps = getSingleUnitCapabilities(
-        caps.filter(cap => cap.type === `GoboWheelRotation`), `speed`, `Hz`, 0, 15
+        caps.filter(cap => cap.type === `WheelRotation`), `speed`, `Hz`, 0, 15
       );
       if (rotationCaps.length > 0) {
         const xmlWheelRotation = xmlGoboWheel.element(`wheelrotation`);
@@ -461,7 +461,7 @@ module.exports = {
     }
   },
   goboIndex: { // gobo stencil rotation angle
-    isCapSuitable: cap => cap.type === `GoboStencilRotation` && cap.angle !== null,
+    isCapSuitable: cap => cap.type === `WheelSlotRotation` && cap.wheels[0].type === `Gobo` && cap.angle !== null,
     create: (channel, caps) => {
       const xmlGoboIndex = xmlbuilder.create(`goboindex`);
 
@@ -475,7 +475,7 @@ module.exports = {
     }
   },
   goboRotation: { // gobo stencil rotation speed
-    isCapSuitable: cap => cap.type === `GoboStencilRotation` && cap.speed !== null,
+    isCapSuitable: cap => cap.type === `WheelSlotRotation` && cap.wheels[0].type === `Gobo` && cap.speed !== null,
     create: (channel, caps) => {
       const xmlGoboRotation = xmlbuilder.create(`goborotation`);
 
@@ -488,7 +488,7 @@ module.exports = {
     }
   },
   goboShake: { // gobo shake speed
-    isCapSuitable: cap => cap.type === `GoboShake` && cap.shakeSpeed !== null,
+    isCapSuitable: cap => cap.type === `GoboShake` && cap.slot === null && cap.shakeSpeed !== null,
     create: (channel, caps) => {
       const xmlGoboShake = xmlbuilder.create(`goboshake`);
 
