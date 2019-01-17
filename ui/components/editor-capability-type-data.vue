@@ -27,6 +27,7 @@
       v-if="capability.type !== ``"
       ref="capabilityTypeData"
       :capability="capability"
+      :channel="channel"
       :formstate="formstate" />
   </div>
 </template>
@@ -43,23 +44,21 @@ import editorCapabilityStrobeDuration from '~/components/editor-capabilities/Str
 import editorCapabilityIntensity from '~/components/editor-capabilities/Intensity.vue';
 import editorCapabilityColorIntensity from '~/components/editor-capabilities/ColorIntensity.vue';
 import editorCapabilityColorPreset from '~/components/editor-capabilities/ColorPreset.vue';
-import editorCapabilityColorWheelIndex from '~/components/editor-capabilities/ColorWheelIndex.vue';
-import editorCapabilityColorWheelRotation from '~/components/editor-capabilities/ColorWheelRotation.vue';
 import editorCapabilityColorTemperature from '~/components/editor-capabilities/ColorTemperature.vue';
 import editorCapabilityPan from '~/components/editor-capabilities/Pan.vue';
 import editorCapabilityPanContinuous from '~/components/editor-capabilities/PanContinuous.vue';
 import editorCapabilityTilt from '~/components/editor-capabilities/Tilt.vue';
 import editorCapabilityTiltContinuous from '~/components/editor-capabilities/TiltContinuous.vue';
+import editorCapabilityWheelSlot from '~/components/editor-capabilities/WheelSlot.vue';
+import editorCapabilityWheelShake from '~/components/editor-capabilities/WheelShake.vue';
+import editorCapabilityWheelSlotRotation from '~/components/editor-capabilities/WheelSlotRotation.vue';
+import editorCapabilityWheelRotation from '~/components/editor-capabilities/WheelRotation.vue';
 import editorCapabilityPanTiltSpeed from '~/components/editor-capabilities/PanTiltSpeed.vue';
 import editorCapabilityEffect from '~/components/editor-capabilities/Effect.vue';
 import editorCapabilityEffectSpeed from '~/components/editor-capabilities/EffectSpeed.vue';
 import editorCapabilityEffectDuration from '~/components/editor-capabilities/EffectDuration.vue';
 import editorCapabilityEffectParameter from '~/components/editor-capabilities/EffectParameter.vue';
 import editorCapabilitySoundSensitivity from '~/components/editor-capabilities/SoundSensitivity.vue';
-import editorCapabilityGoboIndex from '~/components/editor-capabilities/GoboIndex.vue';
-import editorCapabilityGoboShake from '~/components/editor-capabilities/GoboShake.vue';
-import editorCapabilityGoboStencilRotation from '~/components/editor-capabilities/GoboStencilRotation.vue';
-import editorCapabilityGoboWheelRotation from '~/components/editor-capabilities/GoboWheelRotation.vue';
 import editorCapabilityFocus from '~/components/editor-capabilities/Focus.vue';
 import editorCapabilityZoom from '~/components/editor-capabilities/Zoom.vue';
 import editorCapabilityIris from '~/components/editor-capabilities/Iris.vue';
@@ -91,23 +90,21 @@ export default {
     'app-editor-capability-Intensity': editorCapabilityIntensity,
     'app-editor-capability-ColorIntensity': editorCapabilityColorIntensity,
     'app-editor-capability-ColorPreset': editorCapabilityColorPreset,
-    'app-editor-capability-ColorWheelIndex': editorCapabilityColorWheelIndex,
-    'app-editor-capability-ColorWheelRotation': editorCapabilityColorWheelRotation,
     'app-editor-capability-ColorTemperature': editorCapabilityColorTemperature,
     'app-editor-capability-Pan': editorCapabilityPan,
     'app-editor-capability-PanContinuous': editorCapabilityPanContinuous,
     'app-editor-capability-Tilt': editorCapabilityTilt,
     'app-editor-capability-TiltContinuous': editorCapabilityTiltContinuous,
     'app-editor-capability-PanTiltSpeed': editorCapabilityPanTiltSpeed,
+    'app-editor-capability-WheelSlot': editorCapabilityWheelSlot,
+    'app-editor-capability-WheelShake': editorCapabilityWheelShake,
+    'app-editor-capability-WheelSlotRotation': editorCapabilityWheelSlotRotation,
+    'app-editor-capability-WheelRotation': editorCapabilityWheelRotation,
     'app-editor-capability-Effect': editorCapabilityEffect,
     'app-editor-capability-EffectSpeed': editorCapabilityEffectSpeed,
     'app-editor-capability-EffectDuration': editorCapabilityEffectDuration,
     'app-editor-capability-EffectParameter': editorCapabilityEffectParameter,
     'app-editor-capability-SoundSensitivity': editorCapabilitySoundSensitivity,
-    'app-editor-capability-GoboIndex': editorCapabilityGoboIndex,
-    'app-editor-capability-GoboShake': editorCapabilityGoboShake,
-    'app-editor-capability-GoboStencilRotation': editorCapabilityGoboStencilRotation,
-    'app-editor-capability-GoboWheelRotation': editorCapabilityGoboWheelRotation,
     'app-editor-capability-Focus': editorCapabilityFocus,
     'app-editor-capability-Zoom': editorCapabilityZoom,
     'app-editor-capability-Iris': editorCapabilityIris,
@@ -134,6 +131,10 @@ export default {
   },
   props: {
     capability: {
+      type: Object,
+      required: true
+    },
+    channel: {
       type: Object,
       required: true
     },

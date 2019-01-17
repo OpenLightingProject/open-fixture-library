@@ -59,14 +59,15 @@ module.exports.import = function importQlcPlus(buffer, filename, authorName) {
 
       fixture.physical = getOflPhysical(qlcPlusFixture.Mode[0].Physical[0], {});
       fixture.matrix = {};
+      fixture.wheels = getOflWheels(qlcPlusFixture);
       fixture.availableChannels = {};
       fixture.templateChannels = {};
 
       const doubleByteChannels = [];
       for (const channel of qlcPlusFixture.Channel || []) {
-        fixture.availableChannels[channel.$.Name] = getOflChannel(channel);
+        fixture.availableChannels[channel.$.Name] = getOflChannel(channel, fixture.wheels);
 
-        if (channel.Group[0].$.Byte === `1`) {
+        if (`Group` in channel && channel.Group[0].$.Byte === `1`) {
           doubleByteChannels.push(channel.$.Name);
         }
       }
@@ -84,17 +85,112 @@ module.exports.import = function importQlcPlus(buffer, filename, authorName) {
 };
 
 /**
+ * Try to extract (guessed) wheels from all channels / capabilities.
+ * @param {object} qlcPlusFixture The QLC+ fixture object.
+ * @returns {object|undefined} The OFL wheels object or undefined if there are no wheels.
+ */
+function getOflWheels(qlcPlusFixture) {
+  const wheels = {};
+
+  for (const channel of qlcPlusFixture.Channel || []) {
+    const channelName = channel.$.Name;
+    if (/wheel\b/i.test(channelName) && !/(rotation|index)/i.test(channelName) && channel.Group[0]._ !== `Speed`) {
+      wheels[channelName] = {
+        slots: getSlots(channel)
+      };
+    }
+  }
+
+  return Object.keys(wheels).length > 0 ? wheels : undefined;
+
+
+  /**
+   * @param {object} qlcPlusChannel The QLC+ channel object.
+   * @returns {array.<object>} An array of OFL slot objects.
+   */
+  function getSlots(qlcPlusChannel) {
+    const slots = [];
+
+    (qlcPlusChannel.Capability || []).forEach(capability => {
+      if (/\b(CW|CCW)\b/.test(capability._)) {
+        // skip rotation capabilities
+        return;
+      }
+
+      const slotTypeFunctions = {
+        Open: {
+          isSlotType: (cap, group) => cap._ === `Open`,
+          addSlotProperties: (cap, slot) => {}
+        },
+        Gobo: {
+          isSlotType: (cap, group) => group === `Gobo`,
+          addSlotProperties: (cap, slot) => {
+            slot.name = cap._;
+          }
+        },
+        Color: {
+          isSlotType: (cap, group) => group === `Colour`,
+          addSlotProperties: (cap, slot) => {
+            slot.name = cap._;
+
+            if (`Color` in cap.$) {
+              slot.colors = [cap.$.Color];
+
+              if (`Color2` in cap.$) {
+                slot.colors.push(cap.$.Color2);
+              }
+            }
+          }
+        },
+        Prism: {
+          isSlotType: (cap, group) => group === `Prism`,
+          addSlotProperties: (cap, slot) => {
+            slot.name = cap._;
+          }
+        },
+
+        // default (has to be the last element!)
+        Unknown: {
+          isSlotType: (cap, group) => true,
+          addSlotProperties: (cap, slot) => {
+            slot.name = cap._;
+          }
+        }
+      };
+
+
+      const slotType = Object.keys(slotTypeFunctions).find(
+        slotType => slotTypeFunctions[slotType].isSlotType(capability, qlcPlusChannel.Group[0]._)
+      );
+
+      const slot = {
+        type: slotType
+      };
+
+      slotTypeFunctions[slotType].addSlotProperties(capability, slot);
+
+      slots.push(slot);
+    });
+
+    return slots;
+  }
+}
+
+/**
  * @param {object} qlcPlusChannel The QLC+ channel object.
+ * @param {object} oflWheels The OFL fixture's wheels object.
  * @returns {object} The OFL channel object.
  */
-function getOflChannel(qlcPlusChannel) {
+function getOflChannel(qlcPlusChannel, oflWheels) {
   const channel = {
     fineChannelAliases: [],
     dmxValueResolution: `8bit`
   };
 
   if (`Capability` in qlcPlusChannel) {
-    channel.capabilities = qlcPlusChannel.Capability.map(cap => getOflCapability(cap, qlcPlusChannel));
+    channel.capabilities = qlcPlusChannel.Capability.map(
+      cap => getOflCapability(cap, qlcPlusChannel, oflWheels)
+    );
   }
   else {
     channel.capabilities = [getOflCapability({
@@ -103,7 +199,7 @@ function getOflChannel(qlcPlusChannel) {
         Min: `0`,
         Max: `255`
       }
-    })];
+    }, qlcPlusChannel, oflWheels)];
   }
 
   if (channel.capabilities.length === 1) {
@@ -118,9 +214,10 @@ function getOflChannel(qlcPlusChannel) {
 /**
  * @param {object} qlcPlusCapability The QLC+ capability object.
  * @param {object} qlcPlusChannel The QLC+ channel object.
+ * @param {object} oflWheels The OFL fixture's wheels object.
  * @returns {object} The OFL capability object.
  */
-function getOflCapability(qlcPlusCapability, qlcPlusChannel) {
+function getOflCapability(qlcPlusCapability, qlcPlusChannel, oflWheels) {
   const cap = {
     dmxRange: [parseInt(qlcPlusCapability.$.Min), parseInt(qlcPlusCapability.$.Max)],
     type: ``
@@ -128,7 +225,7 @@ function getOflCapability(qlcPlusCapability, qlcPlusChannel) {
 
   const channelName = qlcPlusChannel.$.Name.trim();
   const channelType = qlcPlusChannel.Group[0]._;
-  const capabilityName = qlcPlusCapability._.trim();
+  const capabilityName = (qlcPlusCapability._ || ``).trim();
 
   // first check if it can be a NoFunction capability
   if (capabilityName.match(/^(?:nothing|no func(?:tion)?|unused|not used|empty|no strobe|no prism|no frost)$/i)) {
@@ -155,33 +252,60 @@ function getOflCapability(qlcPlusCapability, qlcPlusChannel) {
       }
     },
     Colour() {
-      if (`Color` in qlcPlusCapability.$) {
-        cap.colors = [qlcPlusCapability.$.Color];
+      if (channelName.match(/wheel\b/i)) {
+        cap.type = `WheelSlot`;
+        cap.slotNumber = qlcPlusChannel.Capability.indexOf(qlcPlusCapability) + 1;
 
-        if (`Color2` in qlcPlusCapability.$) {
-          cap.colors.push(qlcPlusCapability.$.Color2);
-        }
-      }
-
-      if (channelName.match(/wheel/i)) {
-        cap.type = `ColorWheelIndex`;
         cap.comment = getSpeedGuessedComment();
 
         if (`speedStart` in cap) {
-          cap.type = `ColorWheelRotation`;
+          cap.type = `WheelRotation`;
+          delete cap.slotNumber;
         }
       }
       else {
         cap.type = `ColorPreset`;
         cap.comment = capabilityName;
+
+        if (`Color` in qlcPlusCapability.$) {
+          cap.colors = [qlcPlusCapability.$.Color];
+
+          if (`Color2` in qlcPlusCapability.$) {
+            cap.colors.push(qlcPlusCapability.$.Color2);
+          }
+        }
       }
     },
     Gobo() {
-      cap.type = `GoboIndex`;
-      cap.comment = getSpeedGuessedComment();
+      cap.type = `WheelSlot`;
+      cap.slotNumber = qlcPlusChannel.Capability.indexOf(qlcPlusCapability) + 1;
 
-      if (`speedStart` in cap) {
-        cap.type = `GoboWheelRotation`;
+      if (/shake\b|shaking\b/i.test(capabilityName)) {
+        cap.type = `WheelShake`;
+
+        const comment = getSpeedGuessedComment();
+
+        if (`speedStart` in cap) {
+          cap.shakeSpeedStart = cap.speedStart;
+          cap.shakeSpeedEnd = cap.speedEnd;
+          delete cap.speedStart;
+          delete cap.speedEnd;
+        }
+
+        cap.comment = comment;
+      }
+      else {
+        cap.comment = getSpeedGuessedComment();
+
+        if (`speedStart` in cap) {
+          if (qlcPlusChannel.$.Name in oflWheels) {
+            cap.type = `WheelRotation`;
+          }
+          else {
+            cap.type = `WheelSlotRotation`;
+          }
+          delete cap.slotNumber;
+        }
       }
     },
     Effect() {

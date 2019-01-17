@@ -50,6 +50,19 @@ The different behaviors are implemented as different <a href="#CoarseChannel">Co
 <dd><p>Represents a blueprint channel of which several similar channels can be generated.
 Currently used to create matrix channels.</p>
 </dd>
+<dt><a href="#Wheel">Wheel</a></dt>
+<dd><p>Information about a fixture&#39;s wheel.</p>
+</dd>
+<dt><a href="#WheelSlot">WheelSlot</a></dt>
+<dd><p>Information about a single wheel slot (or a split slot).</p>
+</dd>
+</dl>
+
+## Functions
+
+<dl>
+<dt><a href="#getSlotCapabilityName">getSlotCapabilityName(cap)</a> ⇒ <code>string</code></dt>
+<dd></dd>
 </dl>
 
 ## Typedefs
@@ -159,11 +172,12 @@ A capability represents a range of a channel.
         * [.shutterEffect](#Capability+shutterEffect) ⇒ <code>string</code> \| <code>null</code>
         * [.color](#Capability+color) ⇒ <code>&#x27;Red&#x27;</code> \| <code>&#x27;Green&#x27;</code> \| <code>&#x27;Blue&#x27;</code> \| <code>&#x27;Cyan&#x27;</code> \| <code>&#x27;Magenta&#x27;</code> \| <code>&#x27;Yellow&#x27;</code> \| <code>&#x27;Amber&#x27;</code> \| <code>&#x27;White&#x27;</code> \| <code>&#x27;UV&#x27;</code> \| <code>&#x27;Lime&#x27;</code> \| <code>&#x27;Indigo&#x27;</code> \| <code>null</code>
         * [.colors](#Capability+colors) ⇒ <code>object</code> \| <code>null</code>
+        * [.wheels](#Capability+wheels) ⇒ [<code>array.&lt;Wheel&gt;</code>](#Wheel)
+        * [.isShaking](#Capability+isShaking) ⇒ <code>&#x27;slot&#x27;</code> \| <code>&#x27;wheel&#x27;</code>
         * [.effectName](#Capability+effectName) ⇒ <code>string</code> \| <code>null</code>
         * [.effectPreset](#Capability+effectPreset) ⇒ <code>string</code> \| <code>null</code>
         * [.isSoundControlled](#Capability+isSoundControlled) ⇒ <code>boolean</code> \| <code>null</code>
         * [.randomTiming](#Capability+randomTiming) ⇒ <code>boolean</code> \| <code>null</code>
-        * [.isShaking](#Capability+isShaking) ⇒ <code>boolean</code>
         * [.blade](#Capability+blade) ⇒ <code>&#x27;Top&#x27;</code> \| <code>&#x27;Right&#x27;</code> \| <code>&#x27;Bottom&#x27;</code> \| <code>&#x27;Left&#x27;</code> \| <code>number</code> \| <code>null</code>
         * [.fogType](#Capability+fogType) ⇒ <code>&#x27;Fog&#x27;</code> \| <code>&#x27;Haze&#x27;</code> \| <code>null</code>
         * [.hold](#Capability+hold) ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
@@ -171,7 +185,8 @@ A capability represents a range of a channel.
         * [.duration](#Capability+duration) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
         * [.time](#Capability+time) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
         * [.brightness](#Capability+brightness) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
-        * [.index](#Capability+index) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.slotNumber](#Capability+slotNumber) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.wheelSlot](#Capability+wheelSlot) ⇒ [<code>array.&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code>
         * [.angle](#Capability+angle) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
         * [.colorTemperature](#Capability+colorTemperature) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
         * [.soundSensitivity](#Capability+soundSensitivity) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
@@ -185,6 +200,7 @@ A capability represents a range of a channel.
         * [.parameter](#Capability+parameter) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
         * [.getDmxRangeWithResolution(desiredResolution)](#Capability+getDmxRangeWithResolution) ⇒ [<code>Range</code>](#Range)
         * [.canCrossfadeTo(nextCapability)](#Capability+canCrossfadeTo) ⇒ <code>boolean</code>
+        * [.isSlotType(slotType)](#Capability+isSlotType) ⇒ <code>boolean</code>
         * [._getStartEndArray(prop)](#Capability+_getStartEndArray) ⇒ <code>array</code> \| <code>null</code> ℗
     * _static_
         * [.START_END_ENTITIES](#Capability.START_END_ENTITIES) ⇒ <code>array.&lt;string&gt;</code>
@@ -295,6 +311,18 @@ Create a new Capability instance.
 ### capability.colors ⇒ <code>object</code> \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
 **Returns**: <code>object</code> \| <code>null</code> - The color hex codes for each visually distinguishable light beam. Defaults to null.  
+<a name="Capability+wheels"></a>
+
+### capability.wheels ⇒ [<code>array.&lt;Wheel&gt;</code>](#Wheel)
+**Kind**: instance property of [<code>Capability</code>](#Capability)  
+**Returns**: [<code>array.&lt;Wheel&gt;</code>](#Wheel) - The wheels this capability refers to. The array has one or more elements in wheel-related capabilities, zero otherwise.  
+<a name="Capability+isShaking"></a>
+
+### capability.isShaking ⇒ <code>&#x27;slot&#x27;</code> \| <code>&#x27;wheel&#x27;</code>
+Use only in `WheelShake` capabilities!
+
+**Kind**: instance property of [<code>Capability</code>](#Capability)  
+**Returns**: <code>&#x27;slot&#x27;</code> \| <code>&#x27;wheel&#x27;</code> - The fixture component that is shaking.  
 <a name="Capability+effectName"></a>
 
 ### capability.effectName ⇒ <code>string</code> \| <code>null</code>
@@ -315,11 +343,6 @@ Create a new Capability instance.
 ### capability.randomTiming ⇒ <code>boolean</code> \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
 **Returns**: <code>boolean</code> \| <code>null</code> - Whether this capability's speed / duration varies by a random offset. Defaults to false.  
-<a name="Capability+isShaking"></a>
-
-### capability.isShaking ⇒ <code>boolean</code>
-**Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: <code>boolean</code> - True if this is a capability that activates Gobo shaking, false otherwise.  
 <a name="Capability+blade"></a>
 
 ### capability.blade ⇒ <code>&#x27;Top&#x27;</code> \| <code>&#x27;Right&#x27;</code> \| <code>&#x27;Bottom&#x27;</code> \| <code>&#x27;Left&#x27;</code> \| <code>number</code> \| <code>null</code>
@@ -355,11 +378,16 @@ Create a new Capability instance.
 ### capability.brightness ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
 **Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end brightness values. Defaults to null.  
-<a name="Capability+index"></a>
+<a name="Capability+slotNumber"></a>
 
-### capability.index ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+### capability.slotNumber ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end index values. Defaults to null.  
+**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end slot numbers. Defaults to null.  
+<a name="Capability+wheelSlot"></a>
+
+### capability.wheelSlot ⇒ [<code>array.&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code>
+**Kind**: instance property of [<code>Capability</code>](#Capability)  
+**Returns**: [<code>array.&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code> - Start and end wheel slot objects this capability is referencing. Defaults to null.  
 <a name="Capability+angle"></a>
 
 ### capability.angle ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
@@ -434,6 +462,16 @@ Create a new Capability instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | nextCapability | [<code>Capability</code>](#Capability) | The next capability after this one. |
+
+<a name="Capability+isSlotType"></a>
+
+### capability.isSlotType(slotType) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Capability</code>](#Capability)  
+**Returns**: <code>boolean</code> - True if the capability references a slot (or range of slots) of the given type, false otherwise.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| slotType | <code>string</code> \| <code>RegExp</code> | The type of the slot to check. Can be a regular expression to be checked against the type. |
 
 <a name="Capability+_getStartEndArray"></a>
 
@@ -949,6 +987,7 @@ A physical DMX device.
     * [.rdm](#Fixture+rdm) ⇒ <code>object</code> \| <code>null</code>
     * [.physical](#Fixture+physical) ⇒ [<code>Physical</code>](#Physical) \| <code>null</code>
     * [.matrix](#Fixture+matrix) ⇒ [<code>Matrix</code>](#Matrix) \| <code>null</code>
+    * [.wheels](#Fixture+wheels) ⇒ [<code>array.&lt;Wheel&gt;</code>](#Wheel)
     * [.uniqueChannelNames](#Fixture+uniqueChannelNames) ⇒ <code>object.&lt;string, string&gt;</code>
     * [.availableChannelKeys](#Fixture+availableChannelKeys) ⇒ <code>array.&lt;string&gt;</code>
     * [.availableChannels](#Fixture+availableChannels) ⇒ [<code>array.&lt;CoarseChannel&gt;</code>](#CoarseChannel)
@@ -970,6 +1009,7 @@ A physical DMX device.
     * [.capabilities](#Fixture+capabilities) ⇒ [<code>array.&lt;Capability&gt;</code>](#Capability)
     * [.modes](#Fixture+modes) ⇒ [<code>array.&lt;Mode&gt;</code>](#Mode)
     * [.getLinksOfType(type)](#Fixture+getLinksOfType) ⇒ <code>array.&lt;string&gt;</code>
+    * [.getWheelByName(wheelName)](#Fixture+getWheelByName) ⇒ [<code>Wheel</code>](#Wheel) \| <code>null</code>
     * [.getTemplateChannelByKey(chKey)](#Fixture+getTemplateChannelByKey) ⇒ [<code>TemplateChannel</code>](#TemplateChannel) \| <code>null</code>
     * [.getChannelByKey(key)](#Fixture+getChannelByKey) ⇒ [<code>AbstractChannel</code>](#AbstractChannel) \| <code>null</code>
 
@@ -1104,6 +1144,11 @@ Create a new Fixture instance.
 ### fixture.matrix ⇒ [<code>Matrix</code>](#Matrix) \| <code>null</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
 **Returns**: [<code>Matrix</code>](#Matrix) \| <code>null</code> - The matrix information for this fixture.  
+<a name="Fixture+wheels"></a>
+
+### fixture.wheels ⇒ [<code>array.&lt;Wheel&gt;</code>](#Wheel)
+**Kind**: instance property of [<code>Fixture</code>](#Fixture)  
+**Returns**: [<code>array.&lt;Wheel&gt;</code>](#Wheel) - The fixture's wheels as [Wheel](#Wheel) instances.  
 <a name="Fixture+uniqueChannelNames"></a>
 
 ### fixture.uniqueChannelNames ⇒ <code>object.&lt;string, string&gt;</code>
@@ -1217,6 +1262,16 @@ Template channels are used to automatically generate channels.
 | Param | Type | Description |
 | --- | --- | --- |
 | type | <code>string</code> | The type of the links that should be returned. |
+
+<a name="Fixture+getWheelByName"></a>
+
+### fixture.getWheelByName(wheelName) ⇒ [<code>Wheel</code>](#Wheel) \| <code>null</code>
+**Kind**: instance method of [<code>Fixture</code>](#Fixture)  
+**Returns**: [<code>Wheel</code>](#Wheel) \| <code>null</code> - The wheel with the given name, or null if no wheel with the given name exists.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| wheelName | <code>string</code> | The name of the wheel. |
 
 <a name="Fixture+getTemplateChannelByKey"></a>
 
@@ -2367,6 +2422,183 @@ Replaces the specified variables in the specified string.
 | --- | --- | --- |
 | str | <code>string</code> | The string which has to be modified. |
 | variables | <code>object.&lt;string, string&gt;</code> | Each variable (without $) pointing to its value. |
+
+<a name="Wheel"></a>
+
+## Wheel
+Information about a fixture's wheel.
+
+**Kind**: global class  
+
+* [Wheel](#Wheel)
+    * [new Wheel(wheelName, jsonObject)](#new_Wheel_new)
+    * [.name](#Wheel+name) ⇒ <code>string</code>
+    * [.direction](#Wheel+direction) ⇒ <code>&#x27;CW&#x27;</code> \| <code>&#x27;CCW&#x27;</code>
+    * [.type](#Wheel+type) ⇒ <code>string</code>
+    * [.slots](#Wheel+slots) ⇒ <code>array.&lt;object&gt;</code>
+    * [.getSlot(slotNumber)](#Wheel+getSlot) ⇒ <code>object</code>
+    * [.getAbsoluteSlotIndex(slotNumber)](#Wheel+getAbsoluteSlotIndex) ⇒ <code>number</code>
+    * [.getSlotsOfType(type)](#Wheel+getSlotsOfType) ⇒ [<code>array.&lt;WheelSlot&gt;</code>](#WheelSlot)
+
+<a name="new_Wheel_new"></a>
+
+### new Wheel(wheelName, jsonObject)
+Creates a new Wheel instance.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| wheelName | <code>string</code> | The wheel's name, like specified in the JSON. |
+| jsonObject | <code>object</code> | A wheel object from the fixture's JSON data. |
+
+<a name="Wheel+name"></a>
+
+### wheel.name ⇒ <code>string</code>
+**Kind**: instance property of [<code>Wheel</code>](#Wheel)  
+**Returns**: <code>string</code> - The wheel's name.  
+<a name="Wheel+direction"></a>
+
+### wheel.direction ⇒ <code>&#x27;CW&#x27;</code> \| <code>&#x27;CCW&#x27;</code>
+**Kind**: instance property of [<code>Wheel</code>](#Wheel)  
+**Returns**: <code>&#x27;CW&#x27;</code> \| <code>&#x27;CCW&#x27;</code> - The direction the wheel's slots are arranged in. Defaults to clockwise.  
+<a name="Wheel+type"></a>
+
+### wheel.type ⇒ <code>string</code>
+**Kind**: instance property of [<code>Wheel</code>](#Wheel)  
+**Returns**: <code>string</code> - The type of the Wheel, i.e. the most frequent slot type (except for animation gobo wheels; the wheel type is AnimationGobo there).  
+<a name="Wheel+slots"></a>
+
+### wheel.slots ⇒ <code>array.&lt;object&gt;</code>
+**Kind**: instance property of [<code>Wheel</code>](#Wheel)  
+**Returns**: <code>array.&lt;object&gt;</code> - Array of wheel slots.  
+<a name="Wheel+getSlot"></a>
+
+### wheel.getSlot(slotNumber) ⇒ <code>object</code>
+**Kind**: instance method of [<code>Wheel</code>](#Wheel)  
+**Returns**: <code>object</code> - The slot object. Can be a split slot object, if a non-integer index is specified.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| slotNumber | <code>number</code> | The one-based slot number. |
+
+<a name="Wheel+getAbsoluteSlotIndex"></a>
+
+### wheel.getAbsoluteSlotIndex(slotNumber) ⇒ <code>number</code>
+**Kind**: instance method of [<code>Wheel</code>](#Wheel)  
+**Returns**: <code>number</code> - The zero-based slot index, bounded by the number of slots.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| slotNumber | <code>number</code> | The one-based slot number, can be smaller than 1 and greater than the number of slots. |
+
+<a name="Wheel+getSlotsOfType"></a>
+
+### wheel.getSlotsOfType(type) ⇒ [<code>array.&lt;WheelSlot&gt;</code>](#WheelSlot)
+**Kind**: instance method of [<code>Wheel</code>](#Wheel)  
+**Returns**: [<code>array.&lt;WheelSlot&gt;</code>](#WheelSlot) - All slots with the given type.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| type | <code>string</code> | The wheel slot type to search for. |
+
+<a name="WheelSlot"></a>
+
+## WheelSlot
+Information about a single wheel slot (or a split slot).
+
+**Kind**: global class  
+
+* [WheelSlot](#WheelSlot)
+    * [new WheelSlot(jsonObject, wheel, floorSlot, ceilSlot)](#new_WheelSlot_new)
+    * [.isSplitSlot](#WheelSlot+isSplitSlot) ⇒ <code>boolean</code>
+    * [.type](#WheelSlot+type) ⇒ <code>string</code>
+    * [.nthOfType](#WheelSlot+nthOfType) ⇒ <code>number</code>
+    * [.name](#WheelSlot+name) ⇒ <code>string</code>
+    * [.colors](#WheelSlot+colors) ⇒ <code>array.&lt;string&gt;</code> \| <code>null</code>
+    * [.colorTemperature](#WheelSlot+colorTemperature) ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
+    * [.facets](#WheelSlot+facets) ⇒ <code>number</code> \| <code>null</code>
+    * [.openPercent](#WheelSlot+openPercent) ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
+    * [.frostIntensity](#WheelSlot+frostIntensity) ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
+    * [.floorSlot](#WheelSlot+floorSlot) ⇒ [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code>
+    * [.ceilSlot](#WheelSlot+ceilSlot) ⇒ [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code>
+
+<a name="new_WheelSlot_new"></a>
+
+### new WheelSlot(jsonObject, wheel, floorSlot, ceilSlot)
+Creates a new WheelSlot instance.
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| jsonObject | <code>object</code> \| <code>null</code> |  | A wheel slot object from the fixture's JSON data. If null, this WheelSlot is a split slot. |
+| wheel | [<code>Wheel</code>](#Wheel) |  | The wheel that this slot belongs to. |
+| floorSlot | [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code> | <code></code> | For split slots, the WheelSlot instance at the start. |
+| ceilSlot | [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code> | <code></code> | For split slots, the WheelSlot instance at the end. |
+
+<a name="WheelSlot+isSplitSlot"></a>
+
+### wheelSlot.isSplitSlot ⇒ <code>boolean</code>
+**Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
+**Returns**: <code>boolean</code> - True if this WheelSlot instance represents a split slot.  
+<a name="WheelSlot+type"></a>
+
+### wheelSlot.type ⇒ <code>string</code>
+**Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
+**Returns**: <code>string</code> - The slot's type.  
+<a name="WheelSlot+nthOfType"></a>
+
+### wheelSlot.nthOfType ⇒ <code>number</code>
+**Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
+**Returns**: <code>number</code> - The zero-based index of this slot amongst all slots with the same type in this wheel.  
+<a name="WheelSlot+name"></a>
+
+### wheelSlot.name ⇒ <code>string</code>
+**Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
+**Returns**: <code>string</code> - The wheel slot's name.  
+<a name="WheelSlot+colors"></a>
+
+### wheelSlot.colors ⇒ <code>array.&lt;string&gt;</code> \| <code>null</code>
+**Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
+**Returns**: <code>array.&lt;string&gt;</code> \| <code>null</code> - The colors of this wheel slot, or null if this slot has no colors.  
+<a name="WheelSlot+colorTemperature"></a>
+
+### wheelSlot.colorTemperature ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
+**Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
+**Returns**: [<code>Entity</code>](#Entity) \| <code>null</code> - For Color slots, the slot's color temperature. Null if this slot has no color temperature.  
+<a name="WheelSlot+facets"></a>
+
+### wheelSlot.facets ⇒ <code>number</code> \| <code>null</code>
+**Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
+**Returns**: <code>number</code> \| <code>null</code> - For Prism slots, the number of prism facets. Null if number of facets is not defined.  
+<a name="WheelSlot+openPercent"></a>
+
+### wheelSlot.openPercent ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
+**Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
+**Returns**: [<code>Entity</code>](#Entity) \| <code>null</code> - For Iris slots, the slot's openPercent value. Null if this slot has no openPercent value.  
+<a name="WheelSlot+frostIntensity"></a>
+
+### wheelSlot.frostIntensity ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
+**Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
+**Returns**: [<code>Entity</code>](#Entity) \| <code>null</code> - For Frost slots, the slot's frost intensity. Null if this slot has no frost intensity.  
+<a name="WheelSlot+floorSlot"></a>
+
+### wheelSlot.floorSlot ⇒ [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code>
+**Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
+**Returns**: [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code> - For split slots, the floor (start) slot. Null for non-split slots.  
+<a name="WheelSlot+ceilSlot"></a>
+
+### wheelSlot.ceilSlot ⇒ [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code>
+**Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
+**Returns**: [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code> - For split slots, the ceil (end) slot. Null for non-split slots.  
+<a name="getSlotCapabilityName"></a>
+
+## getSlotCapabilityName(cap) ⇒ <code>string</code>
+**Kind**: global function  
+**Returns**: <code>string</code> - The name for the capability, without the comment appended (if any).  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| cap | <code>object</code> | The capability (with a set slot property) to generate a name for. |
 
 <a name="Resolution"></a>
 

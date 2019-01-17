@@ -45,15 +45,17 @@ module.exports.export = function exportMillumin(fixtures, options) {
       }
     }
 
+    delete jsonData.wheels;
+
     if (jsonData.availableChannels) {
       Object.keys(jsonData.availableChannels).forEach(
-        chKey => downgradeChannel(jsonData.availableChannels, chKey)
+        chKey => downgradeChannel(jsonData.availableChannels, chKey, fixture)
       );
     }
 
     if (jsonData.templateChannels) {
       Object.keys(jsonData.templateChannels).forEach(
-        chKey => downgradeChannel(jsonData.templateChannels, chKey)
+        chKey => downgradeChannel(jsonData.templateChannels, chKey, fixture)
       );
     }
 
@@ -92,10 +94,11 @@ function getDowngradedCategories(categories) {
  * Replaces the specified channel in the specified channels object with a downgraded version for schema 7.1.0.
  * @param {object} channelObject Either availableChannels or templateChannels.
  * @param {string} channelKey A key that exists in given channelObject and specifies the channel that should be downgraded.
+ * @param {Fixture} fixture The fixture the channel belongs to.
  */
-function downgradeChannel(channelObject, channelKey) {
+function downgradeChannel(channelObject, channelKey, fixture) {
   const jsonChannel = channelObject[channelKey];
-  const channel = new CoarseChannel(channelKey, jsonChannel, null);
+  const channel = new CoarseChannel(channelKey, jsonChannel, fixture);
 
   const downgradedChannel = {};
 

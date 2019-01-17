@@ -51,6 +51,11 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   /** @type {Set<string>} */
   const possibleMatrixChKeys = new Set(); // and aliases
   /** @type {Set<string>} */
+  const usedWheels = new Set();
+  /** @type {Set<string>} */
+  const usedWheelSlots = new Set();
+
+  /** @type {Set<string>} */
   const modeNames = new Set();
   /** @type {Set<string>} */
   const modeShortNames = new Set();
@@ -80,6 +85,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     checkMeta(fixture.meta);
     checkPhysical(fixture.physical);
     checkMatrix(fixture.matrix);
+    checkWheels(fixture.wheels);
     checkTemplateChannels(fixtureJson);
     checkChannels(fixtureJson);
 
@@ -88,6 +94,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     checkUnusedChannels();
+    checkUnusedWheels();
+    checkUnusedWheelSlots();
     checkCategories();
     checkRdm(manKey, uniqueValues);
   }
@@ -246,6 +254,36 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           }
           usedMatrixChannels.add(pixelKey);
         }
+      }
+    }
+  }
+
+  /**
+   * Checks if the fixture's wheels are correct.
+   * @param {array.<Wheel>} wheels The fixture's Wheel instances.
+   */
+  function checkWheels(wheels) {
+    for (const wheel of wheels) {
+      if (!/\b(?:wheel|disk)\b/i.test(wheel.name)) {
+        result.warnings.push(`Name of wheel '${wheel.name}' does not contain the word 'wheel' or 'disk', which could lead to confusing capability names.`);
+      }
+
+      const expectedAnimationGoboEndSlots = [];
+      wheel.slots.forEach((slot, index) => {
+        if (slot.type === `AnimationGoboStart`) {
+          expectedAnimationGoboEndSlots.push(index + 1);
+        }
+      });
+
+      const foundAnimationGoboEndSlots = [];
+      wheel.slots.forEach((slot, index) => {
+        if (slot.type === `AnimationGoboEnd`) {
+          foundAnimationGoboEndSlots.push(index);
+        }
+      });
+
+      if (!arraysEqual(expectedAnimationGoboEndSlots, foundAnimationGoboEndSlots)) {
+        result.errors.push(`An 'AnimationGoboEnd' slot must be used after an 'AnimationGoboStart' slot in wheel ${wheel.name}. (${expectedAnimationGoboEndSlots}; ${foundAnimationGoboEndSlots})`);
       }
     }
   }
@@ -499,11 +537,14 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
         const capabilityTypeChecks = {
           ShutterStrobe: checkShutterStrobeCapability,
-          ColorWheelIndex: checkColorWheelIndexCapability,
           Pan: checkPanTiltCapability,
           Tilt: checkPanTiltCapability,
           PanContinuous: checkPanTiltContinuousCapability,
           TiltContinuous: checkPanTiltContinuousCapability,
+          WheelSlot: checkWheelCapability,
+          WheelShake: checkWheelCapability,
+          WheelSlotRotation: checkWheelCapability,
+          WheelRotation: checkWheelCapability,
           Effect: checkEffectCapability
         };
 
@@ -532,12 +573,75 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         }
 
         /**
-         * Type-specific checks for ColorWheelIndex capabilities.
+         * Check that referenced wheels exist in the fixture.
          */
-        function checkColorWheelIndexCapability() {
-          if ((cap.index !== null && cap.index[0].number !== cap.index[1].number) &&
-              (cap.colors !== null && cap.colors.isStep)) {
-            result.errors.push(`${errorPrefix}: Must use colorsStart and colorsEnd when index also has start/end values.`);
+        function checkWheelCapability() {
+          let shouldCheckSlotNumbers = true;
+
+          if (`wheel` in cap.jsonObject) {
+            const wheelNames = [].concat(cap.jsonObject.wheel);
+
+            wheelNames.forEach(wheelName => {
+              const wheel = fixture.getWheelByName(wheelName);
+              if (wheel) {
+                usedWheels.add(wheelName);
+              }
+              else {
+                result.errors.push(`${errorPrefix} references wheel '${wheelName}' which is not defined in the fixture.`);
+                shouldCheckSlotNumbers = false;
+              }
+            });
+
+            if (wheelNames.length === 1 && wheelNames[0] === cap._channel.name) {
+              result.warnings.push(`${errorPrefix} explicitly references wheel '${wheelNames[0]}', which is the default anyway (through the channel name). Please remove the 'wheel' property.`);
+            }
+          }
+          else if (cap.wheels.includes(null)) {
+            result.errors.push(`${errorPrefix} does not explicitly reference any wheel, but the default wheel '${cap._channel.name}' (through the channel name) does not exist.`);
+            shouldCheckSlotNumbers = false;
+          }
+          else {
+            usedWheels.add(cap._channel.name);
+          }
+
+          if (cap.slotNumber !== null && shouldCheckSlotNumbers) {
+            checkSlotNumbers();
+          }
+
+
+          /**
+           * Check that slot indices are used correctly for the specific wheel.
+           */
+          function checkSlotNumbers() {
+            const min = Math.min(cap.slotNumber[0], cap.slotNumber[1]);
+            const max = Math.max(cap.slotNumber[0], cap.slotNumber[1]);
+            for (let i = Math.floor(min); i <= Math.ceil(max); i++) {
+              usedWheelSlots.add(`${cap.wheels[0].name} (slot ${i})`);
+            }
+
+            if (max - min > 1) {
+              result.warnings.push(`${errorPrefix} references a wheel slot range (${min}…${max}) which is greater than 1.`);
+            }
+
+            const minSlotNumber = 1;
+            const maxSlotNumber = cap.wheels[0].slots.length;
+
+            const isInRangeExclusive = (number, start, end) => number > start && number < end;
+            const isInRangeInclusive = (number, start, end) => number >= start && number <= end;
+
+            if (cap.slotNumber[0].equals(cap.slotNumber[1])) {
+              if (!isInRangeExclusive(cap.slotNumber[0].number, minSlotNumber - 1, maxSlotNumber + 1)) {
+                result.errors.push(`${errorPrefix} references wheel slot ${cap.slotNumber[0].number} which is outside the allowed range ${minSlotNumber - 1}…${maxSlotNumber + 1} (exclusive).`);
+              }
+              return;
+            }
+
+            if (!isInRangeInclusive(cap.slotNumber[0].number, minSlotNumber - 1, maxSlotNumber)) {
+              result.errors.push(`${errorPrefix} starts at wheel slot ${cap.slotNumber[0].number} which is outside the allowed range ${minSlotNumber - 1}…${maxSlotNumber} (inclusive).`);
+            }
+            else if (!isInRangeInclusive(cap.slotNumber[1].number, minSlotNumber, maxSlotNumber + 1)) {
+              result.errors.push(`${errorPrefix} ends at wheel slot ${cap.slotNumber[1].number} which is outside the allowed range ${minSlotNumber}…${maxSlotNumber + 1} (inclusive).`);
+            }
           }
         }
 
@@ -866,14 +970,51 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   }
 
   /**
+   * Add a warning if there are unused wheels.
+   */
+  function checkUnusedWheels() {
+    const unusedWheels = fixture.wheels.filter(
+      wheel => !usedWheels.has(wheel.name)
+    ).map(wheel => wheel.name);
+
+    if (unusedWheels.length > 0) {
+      result.warnings.push(`Unused wheel(s): ${unusedWheels.join(`, `)}`);
+    }
+  }
+
+  /**
+   * Add a warning if there are unused wheel slots.
+   */
+  function checkUnusedWheelSlots() {
+    const slotsOfUsedWheels = [];
+    [...usedWheels].forEach(wheelName => {
+      const wheel = fixture.getWheelByName(wheelName);
+
+      if (wheel.type !== `AnimationGobo`) {
+        slotsOfUsedWheels.push(...(wheel.slots.map(
+          (slot, slotIndex) => `${wheelName} (slot ${slotIndex + 1})`
+        )));
+      }
+    });
+
+    const unusedWheelSlots = slotsOfUsedWheels.filter(
+      slot => !usedWheelSlots.has(slot)
+    );
+
+    if (unusedWheelSlots.length > 0) {
+      result.warnings.push(`Unused wheel slot(s): ${unusedWheelSlots.join(`, `)}`);
+    }
+  }
+
+  /**
    * Checks if the used channels fits to the fixture's categories and raise warnings suggesting to add/remove a category.
    */
   function checkCategories() {
     const categories = {
       'Color Changer': {
         isSuggested: isColorChanger(),
-        suggestedPhrase: `there are at least one ColorPreset, ColorWheelIndex or two ColorIntensity capabilities`,
-        invalidPhrase: `there are no ColorPreset, ColorWheelIndex and less than two ColorIntensity capabilities`
+        suggestedPhrase: `there are ColorPreset or ColorIntensity capabilities or Color wheel slots`,
+        invalidPhrase: `there are no ColorPreset and less than two ColorIntensity capabilities and no Color wheel slots`
       },
       'Moving Head': {
         isSuggested: isMovingHead(),
@@ -929,7 +1070,9 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
      * @returns {boolean} Whether the 'Color Changer' category is suggested.
     */
     function isColorChanger() {
-      return hasCapabilityOfType(`ColorPreset`) || hasCapabilityOfType(`ColorWheelIndex`) || hasCapabilityOfType(`ColorIntensity`, 2);
+      return hasCapabilityOfType(`ColorPreset`) || hasCapabilityOfType(`ColorIntensity`, 2) || fixture.wheels.some(
+        wheel => wheel.slots.some(slot => slot.type === `Color`)
+      );
     }
 
     /**

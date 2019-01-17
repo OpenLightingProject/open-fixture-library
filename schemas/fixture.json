@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
 
-  "version": "10.0.0",
+  "version": "11.0.1",
 
   "type": "object",
   "properties": {
@@ -267,6 +267,27 @@
         { "required": ["pixelKeys"] }
       ],
       "additionalProperties": false
+    },
+    "wheels": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "$comment": "wheel names",
+        "$ref": "definitions.json#/nonEmptyString"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "direction": { "enum": ["CW", "CCW"] },
+          "slots": {
+            "type": "array",
+            "minItems": 2,
+            "items": { "$ref": "wheel-slot.json#" }
+          }
+        },
+        "required": ["slots"],
+        "additionalProperties": false
+      }
     },
     "availableChannels": {
       "type": "object",

@@ -270,299 +270,260 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "ColorWheelIndex",
-          "index": 0,
-          "colors": ["#ffffff"],
-          "comment": "Open"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [10, 14],
-          "type": "ColorWheelIndex",
-          "index": 1,
+          "type": "ColorPreset",
           "colors": ["#ffb4a5"],
           "comment": "LEE 790 - Moroccan pink"
         },
         {
           "dmxRange": [15, 19],
-          "type": "ColorWheelIndex",
-          "index": 2,
+          "type": "ColorPreset",
           "colors": ["#ff92a3"],
           "comment": "LEE 157 - Pink"
         },
         {
           "dmxRange": [20, 24],
-          "type": "ColorWheelIndex",
-          "index": 3,
+          "type": "ColorPreset",
           "colors": ["#ff3787"],
           "comment": "LEE 332 - Special rose pink"
         },
         {
           "dmxRange": [25, 29],
-          "type": "ColorWheelIndex",
-          "index": 4,
+          "type": "ColorPreset",
           "colors": ["#ff64c8"],
           "comment": "LEE 328 - Follies pink"
         },
         {
           "dmxRange": [30, 34],
-          "type": "ColorWheelIndex",
-          "index": 5,
+          "type": "ColorPreset",
           "colors": ["#cd6ed7"],
           "comment": "LEE 345 - Fuchsia pink"
         },
         {
           "dmxRange": [35, 39],
-          "type": "ColorWheelIndex",
-          "index": 6,
+          "type": "ColorPreset",
           "colors": ["#be8cf0"],
           "comment": "LEE 194 - Surprise pink"
         },
         {
           "dmxRange": [40, 44],
-          "type": "ColorWheelIndex",
-          "index": 7,
+          "type": "ColorPreset",
           "colors": ["#5000aa"],
           "comment": "LEE 181 - Congo blue"
         },
         {
           "dmxRange": [45, 49],
-          "type": "ColorWheelIndex",
-          "index": 8,
+          "type": "ColorPreset",
           "colors": ["#0000b4"],
           "comment": "LEE 071 - Tokyo blue"
         },
         {
           "dmxRange": [50, 54],
-          "type": "ColorWheelIndex",
-          "index": 9,
+          "type": "ColorPreset",
           "colors": ["#005fbe"],
           "comment": "LEE 120 - Deep blue"
         },
         {
           "dmxRange": [55, 59],
-          "type": "ColorWheelIndex",
-          "index": 10,
+          "type": "ColorPreset",
           "colors": ["#3c8cd2"],
           "comment": "LEE 079 - Just blue"
         },
         {
           "dmxRange": [60, 64],
-          "type": "ColorWheelIndex",
-          "index": 11,
+          "type": "ColorPreset",
           "colors": ["#00a0dc"],
           "comment": "LEE 132 - Medium blue"
         },
         {
           "dmxRange": [65, 69],
-          "type": "ColorWheelIndex",
-          "index": 12,
+          "type": "ColorPreset",
           "colors": ["#91bef5"],
           "comment": "LEE 200 - Double CT blue"
         },
         {
           "dmxRange": [70, 74],
-          "type": "ColorWheelIndex",
-          "index": 13,
+          "type": "ColorPreset",
           "colors": ["#7dd2f5"],
           "comment": "LEE 161 - Slate blue"
         },
         {
           "dmxRange": [75, 79],
-          "type": "ColorWheelIndex",
-          "index": 14,
+          "type": "ColorPreset",
           "colors": ["#c3e1fa"],
           "comment": "LEE 201 - Full CT blue"
         },
         {
           "dmxRange": [80, 84],
-          "type": "ColorWheelIndex",
-          "index": 15,
+          "type": "ColorPreset",
           "colors": ["#d7f0ff"],
           "comment": "LEE 202 - Half CT blue"
         },
         {
           "dmxRange": [85, 89],
-          "type": "ColorWheelIndex",
-          "index": 16,
+          "type": "ColorPreset",
           "colors": ["#b4faf5"],
           "comment": "LEE 117 - Steel blue"
         },
         {
           "dmxRange": [90, 94],
-          "type": "ColorWheelIndex",
-          "index": 17,
+          "type": "ColorPreset",
           "colors": ["#61e8e3"],
           "comment": "LEE 353 - Lighter blue"
         },
         {
           "dmxRange": [95, 99],
-          "type": "ColorWheelIndex",
-          "index": 18,
+          "type": "ColorPreset",
           "colors": ["#00e1eb"],
           "comment": "LEE 118 - Light blue"
         },
         {
           "dmxRange": [100, 104],
-          "type": "ColorWheelIndex",
-          "index": 19,
+          "type": "ColorPreset",
           "colors": ["#00c8b9"],
           "comment": "LEE 116 - Medium blue green"
         },
         {
           "dmxRange": [105, 109],
-          "type": "ColorWheelIndex",
-          "index": 20,
+          "type": "ColorPreset",
           "colors": ["#00dc78"],
           "comment": "LEE 124 - Dark green"
         },
         {
           "dmxRange": [110, 114],
-          "type": "ColorWheelIndex",
-          "index": 21,
+          "type": "ColorPreset",
           "colors": ["#4bc300"],
           "comment": "LEE 139 - Primary green"
         },
         {
           "dmxRange": [115, 119],
-          "type": "ColorWheelIndex",
-          "index": 22,
+          "type": "ColorPreset",
           "colors": ["#5adc5a"],
           "comment": "LEE 089 - Moss green"
         },
         {
           "dmxRange": [120, 124],
-          "type": "ColorWheelIndex",
-          "index": 23,
+          "type": "ColorPreset",
           "colors": ["#78fa6e"],
           "comment": "LEE 122 - Fern green"
         },
         {
           "dmxRange": [125, 129],
-          "type": "ColorWheelIndex",
-          "index": 24,
+          "type": "ColorPreset",
           "colors": ["#aaff00"],
           "comment": "LEE 738 - JAS green"
         },
         {
           "dmxRange": [130, 134],
-          "type": "ColorWheelIndex",
-          "index": 25,
+          "type": "ColorPreset",
           "colors": ["#dcff64"],
           "comment": "LEE 088 - Lime green"
         },
         {
           "dmxRange": [135, 139],
-          "type": "ColorWheelIndex",
-          "index": 26,
+          "type": "ColorPreset",
           "colors": ["#f5ff00"],
           "comment": "LEE 100 - Spring yellow"
         },
         {
           "dmxRange": [140, 144],
-          "type": "ColorWheelIndex",
-          "index": 27,
+          "type": "ColorPreset",
           "colors": ["#ffdc00"],
           "comment": "LEE 104 - Deep amber"
         },
         {
           "dmxRange": [145, 149],
-          "type": "ColorWheelIndex",
-          "index": 28,
+          "type": "ColorPreset",
           "colors": ["#ffbe00"],
           "comment": "LEE 179 - Chrome orange"
         },
         {
           "dmxRange": [150, 154],
-          "type": "ColorWheelIndex",
-          "index": 29,
+          "type": "ColorPreset",
           "colors": ["#ffa000"],
           "comment": "LEE 105 - Orange"
         },
         {
           "dmxRange": [155, 159],
-          "type": "ColorWheelIndex",
-          "index": 30,
+          "type": "ColorPreset",
           "colors": ["#ff8c32"],
           "comment": "LEE 021 - Gold amber"
         },
         {
           "dmxRange": [160, 164],
-          "type": "ColorWheelIndex",
-          "index": 31,
+          "type": "ColorPreset",
           "colors": ["#ff7600"],
           "comment": "LEE 778 - Millennium gold"
         },
         {
           "dmxRange": [165, 169],
-          "type": "ColorWheelIndex",
-          "index": 32,
+          "type": "ColorPreset",
           "colors": ["#ff5f00"],
           "comment": "LEE 135 - Deep golden amber"
         },
         {
           "dmxRange": [170, 174],
-          "type": "ColorWheelIndex",
-          "index": 33,
+          "type": "ColorPreset",
           "colors": ["#ff3200"],
           "comment": "LEE 164 - Flame red"
         },
         {
           "dmxRange": [175, 179],
-          "type": "ColorWheelIndex",
-          "index": 0,
-          "colors": ["#ffffff"],
-          "comment": "Open",
+          "type": "NoFunction",
           "menuClick": "hidden"
         },
         {
           "dmxRange": [180, 201],
-          "type": "ColorWheelRotation",
-          "speedStart": "fast CW",
-          "speedEnd": "slow CW"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [202, 207],
-          "type": "ColorWheelRotation",
+          "type": "Effect",
+          "effectPreset": "ColorJump",
           "speed": "stop"
         },
         {
           "dmxRange": [208, 229],
-          "type": "ColorWheelRotation",
-          "speedStart": "slow CCW",
-          "speedEnd": "fast CCW"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow reverse",
+          "speedEnd": "fast reverse"
         },
         {
           "dmxRange": [230, 234],
-          "type": "ColorWheelIndex",
-          "index": 0,
-          "colors": ["#ffffff"],
-          "comment": "Open",
+          "type": "NoFunction",
           "menuClick": "hidden"
         },
         {
           "dmxRange": [235, 239],
           "type": "Effect",
           "effectPreset": "ColorJump",
-          "speed": "fast"
+          "speed": "fast",
+          "comment": "random color"
         },
         {
           "dmxRange": [240, 244],
           "type": "Effect",
           "effectPreset": "ColorJump",
-          "speed": "50%"
+          "speed": "50%",
+          "comment": "random color"
         },
         {
           "dmxRange": [245, 249],
           "type": "Effect",
           "effectPreset": "ColorJump",
-          "speed": "slow"
+          "speed": "slow",
+          "comment": "random color"
         },
         {
           "dmxRange": [250, 255],
-          "type": "ColorWheelIndex",
-          "index": 0,
-          "colors": ["#ffffff"],
-          "comment": "Open",
+          "type": "NoFunction",
           "menuClick": "hidden"
         }
       ]

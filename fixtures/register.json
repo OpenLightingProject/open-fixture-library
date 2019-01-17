@@ -455,10 +455,20 @@
       "lastActionDate": "2018-08-24",
       "lastAction": "modified"
     },
+    "eurolite/led-ml-56-rgbw": {
+      "name": "LED ML-56 RGBW",
+      "lastActionDate": "2019-01-15",
+      "lastAction": "created"
+    },
     "eurolite/led-par-56-tcl": {
       "name": "LED PAR-56 TCL",
       "lastActionDate": "2018-08-09",
       "lastAction": "modified"
+    },
+    "eurolite/led-pix-12-hcl": {
+      "name": "LED PIX-12 HCL",
+      "lastActionDate": "2019-01-15",
+      "lastAction": "created"
     },
     "eurolite/led-ps-4-hcl": {
       "name": "LED PS-4 HCL",
@@ -725,6 +735,11 @@
       "lastActionDate": "2018-08-09",
       "lastAction": "modified"
     },
+    "martin/mac-encore-performance": {
+      "name": "MAC Encore Performance",
+      "lastActionDate": "2019-01-16",
+      "lastAction": "created"
+    },
     "martin/mac-viper-airfx": {
       "name": "MAC Viper AirFX",
       "lastActionDate": "2018-08-09",
@@ -744,6 +759,11 @@
       "name": "Magnum 2500 HZ",
       "lastActionDate": "2018-08-09",
       "lastAction": "modified"
+    },
+    "martin/mania-scx500": {
+      "name": "Mania SCX500",
+      "lastActionDate": "2019-01-14",
+      "lastAction": "created"
     },
     "martin/roboscan-812": {
       "name": "RoboScan 812",
@@ -1157,7 +1177,9 @@
       "led-fe-1500",
       "led-h2o",
       "led-kls-801",
+      "led-ml-56-rgbw",
       "led-par-56-tcl",
+      "led-pix-12-hcl",
       "led-ps-4-hcl",
       "led-sls-6-uv-floor",
       "led-svf-1",
@@ -1247,10 +1269,12 @@
       "mac-700-wash",
       "mac-aura",
       "mac-axiom-hybrid",
+      "mac-encore-performance",
       "mac-viper-airfx",
       "mac-viper-performance",
       "mac-viper-wash",
       "magnum-2500-hz",
+      "mania-scx500",
       "roboscan-812",
       "rush-mh-2-wash",
       "rush-mh-3-beam",
@@ -1445,7 +1469,9 @@
       "eurolite/led-fe-1500",
       "eurolite/led-h2o",
       "eurolite/led-kls-801",
+      "eurolite/led-ml-56-rgbw",
       "eurolite/led-par-56-tcl",
+      "eurolite/led-pix-12-hcl",
       "eurolite/led-ps-4-hcl",
       "eurolite/led-tmh-7",
       "eurolite/led-tmh-9",
@@ -1490,9 +1516,11 @@
       "martin/mac-700-wash",
       "martin/mac-aura",
       "martin/mac-axiom-hybrid",
+      "martin/mac-encore-performance",
       "martin/mac-viper-airfx",
       "martin/mac-viper-performance",
       "martin/mac-viper-wash",
+      "martin/mania-scx500",
       "martin/roboscan-812",
       "martin/rush-mh-2-wash",
       "martin/rush-mh-3-beam",
@@ -1662,6 +1690,7 @@
       "martin/mac-700-wash",
       "martin/mac-aura",
       "martin/mac-axiom-hybrid",
+      "martin/mac-encore-performance",
       "martin/mac-viper-airfx",
       "martin/mac-viper-performance",
       "martin/mac-viper-wash",
@@ -1700,6 +1729,7 @@
       "chroma-q/color-force-ii-72",
       "clay-paky/show-batten-100",
       "epsilon/duo-q-beam-bar",
+      "eurolite/led-pix-12-hcl",
       "glp/impression-x4-bar-10",
       "gruft/pixel-tube",
       "nicols/led-bar-123-fc-ip",
@@ -1714,6 +1744,7 @@
       "clay-paky/spheriscan",
       "futurelight/sc-250-scanner",
       "lightmaxx/dj-scan-led",
+      "martin/mania-scx500",
       "martin/roboscan-812",
       "nicols/pat-252",
       "robe/dj-scan-250-xt"
@@ -1812,6 +1843,7 @@
       "lightmaxx/easy-wash-quad-led",
       "lightmaxx/platinum-mini-tri-par",
       "martin/atomic-3000",
+      "martin/mac-encore-performance",
       "orion/orcan2",
       "prolights/pixpan16",
       "robe/dj-scan-250-xt",
@@ -1979,6 +2011,10 @@
       "magicfx/psyco2jet",
       "magicfx/smokejet"
     ],
+    "Michael Stiller": [
+      "evolight/colours-archspot-54-rgb",
+      "martin/mania-scx500"
+    ],
     "Nerijus Mongirdas": [
       "jb-systems/twin-effect-laser",
       "qtx/lux-ld30w"
@@ -1986,6 +2022,10 @@
     "Nils Van Zuijlen": [
       "nicols/led-bar-123-fc-ip",
       "sun-star/g-2011-nova"
+    ],
+    "Nominari UG": [
+      "eurolite/led-ml-56-rgbw",
+      "eurolite/led-pix-12-hcl"
     ],
     "p_0g_8mm3_": [
       "stairville/mh-x25",
@@ -2040,9 +2080,6 @@
     ],
     "Massimo Callegari": [
       "clay-paky/sharpy"
-    ],
-    "Michael Stiller": [
-      "evolight/colours-archspot-54-rgb"
     ],
     "MIE": [
       "nicols/pat-252"
@@ -2258,6 +2295,10 @@
     "venue": "#78cc33"
   },
   "lastUpdated": [
+    "martin/mac-encore-performance",
+    "eurolite/led-ml-56-rgbw",
+    "eurolite/led-pix-12-hcl",
+    "martin/mania-scx500",
     "laserworld/ds-1000rgb",
     "eliminator/stealth-wash-zoom",
     "evolight/colours-archspot-54-rgb",

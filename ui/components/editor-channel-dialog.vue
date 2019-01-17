@@ -148,7 +148,7 @@
         <app-editor-capability-wizard
           v-if="channel.wizard.show"
           :wizard="channel.wizard"
-          :capabilities="channel.capabilities"
+          :channel="channel"
           :resolution="channel.dmxValueResolution"
           :formstate="formstate"
           @close="onWizardClose" />
@@ -158,7 +158,7 @@
             v-for="(cap, index) in channel.capabilities"
             ref="capabilities"
             :key="cap.uuid"
-            :capabilities="channel.capabilities"
+            :channel="channel"
             :formstate="formstate"
             :cap-index="index"
             :resolution="channel.dmxValueResolution"
@@ -471,7 +471,11 @@ export default {
         ColorTemperature: /^(?:Colou?r Temperature(?: Correction)?|CTC|CTO|CTB)$/i,
         Pan: /^(?:Pan|Horizontal Movement)$/i,
         Tilt: /^(?:Tilt|Vertical Movement)$/i,
-        PanTiltSpeed: /^(?:Pan\/?Tilt|Movement) (?:Speed|Time|Duration)$/i,
+        PanTiltSpeed: /^(?:Pan ?\/? ?Tilt|Movement) (?:Speed|Time|Duration)$/i,
+        WheelSlot: /Wheel$|Disk$|Gobos? ?\d*$/i,
+        WheelShake: /\bShake\b/i,
+        WheelSlotRotation: /Gobo ?\d* (?:Rotation|Index)/i,
+        WheelRotation: /Wheels? (?:Rotation|Index)/i,
         EffectSpeed: /^(?:Effect|Program|Macro) Speed$/i,
         EffectDuration: /^(?:Effect|Program|Macro) (?:Time|Duration)$/i,
         SoundSensitivity: /^(?:Sound|Mic|Microphone) Sensitivity$/i,
@@ -521,15 +525,21 @@ export default {
 
     onSubmit() {
       if (this.formstate.$invalid) {
-        const field = document.querySelector(`#channel-dialog .vf-field-invalid`);
-        const scrollContainer = field.closest(`dialog`);
+        const invalidFields = document.querySelectorAll(`#channel-dialog .vf-field-invalid`);
 
-        const enclosingDetails = field.closest(`details`);
-        if (enclosingDetails) {
-          enclosingDetails.open = true;
+        for (let i = 0; i < invalidFields.length; i++) {
+          const enclosingDetails = invalidFields[i].closest(`details:not([open])`);
+
+          if (enclosingDetails) {
+            enclosingDetails.open = true;
+
+            // current field could be enclosed another time, so repeat
+            i--;
+          }
         }
 
-        scrollIntoView(field, {
+        const scrollContainer = invalidFields[0].closest(`dialog`);
+        scrollIntoView(invalidFields[0], {
           time: 300,
           align: {
             top: 0,
@@ -537,24 +547,22 @@ export default {
             topOffset: 100
           },
           isScrollable: target => target === scrollContainer
-        }, () => field.focus());
+        }, () => invalidFields[0].focus());
 
         return;
       }
 
       this.$refs.capabilities.forEach(capability => capability.cleanCapabilityData());
 
-      if (this.channel.editMode === `create`) {
-        this.saveCreatedChannel();
-      }
-      else if (this.channel.editMode === `edit-all`) {
-        this.saveEditedChannel();
-      }
-      else if (this.channel.editMode === `edit-duplicate`) {
-        this.saveDuplicatedChannel();
-      }
-      else if (this.channel.editMode === `add-existing`) {
-        this.addExistingChannel();
+      const actions = {
+        'create': this.saveCreatedChannel,
+        'edit-all': this.saveEditedChannel,
+        'edit-duplicate': this.saveDuplicatedChannel,
+        'add-existing': this.addExistingChannel
+      };
+
+      if (this.channel.editMode in actions) {
+        actions[this.channel.editMode]();
       }
 
       this.resetChannelForm();

@@ -40,6 +40,78 @@
       "tiltMax": 180
     }
   },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Pale Blue",
+          "colors": ["#88dddd"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "type": "Open"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
@@ -61,27 +133,27 @@
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "ColorWheelIndex",
-          "indexStart": 0,
-          "indexEnd": 7,
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 8,
           "comment": "blue/pink/red/pale blue/yellow/green/orange/white",
-          "helpWanted": "Which color can be selected at which DMX values?"
+          "helpWanted": "Which color can be selected at which DMX values? Is the Color Wheel correct?"
         },
         {
           "dmxRange": [128, 189],
-          "type": "ColorWheelRotation",
+          "type": "WheelRotation",
           "speedStart": "fast CCW",
           "speedEnd": "slow CCW",
           "helpWanted": "Is this counterclockwise or clockwise?"
         },
         {
           "dmxRange": [190, 193],
-          "type": "ColorWheelRotation",
+          "type": "WheelRotation",
           "speed": "stop"
         },
         {
           "dmxRange": [194, 255],
-          "type": "ColorWheelRotation",
+          "type": "WheelRotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW",
           "helpWanted": "Is this counterclockwise or clockwise?"
@@ -92,34 +164,33 @@
       "capabilities": [
         {
           "dmxRange": [0, 63],
-          "type": "GoboIndex",
-          "indexStart": 0,
-          "indexEnd": 7,
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 8,
           "helpWanted": "Which Gobo can be selected at which DMX values?"
         },
         {
           "dmxRange": [64, 127],
-          "type": "GoboIndex",
-          "indexStart": 0,
-          "indexEnd": 7,
-          "shakeAngle": "wide",
+          "type": "WheelShake",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 8,
           "helpWanted": "Which Gobo can be selected at which DMX values?"
         },
         {
           "dmxRange": [128, 189],
-          "type": "GoboWheelRotation",
+          "type": "WheelRotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW",
           "helpWanted": "Is this counterclockwise or clockwise?"
         },
         {
           "dmxRange": [190, 193],
-          "type": "GoboWheelRotation",
+          "type": "WheelRotation",
           "speed": "stop"
         },
         {
           "dmxRange": [194, 255],
-          "type": "GoboWheelRotation",
+          "type": "WheelRotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW",
           "helpWanted": "Is this counterclockwise or clockwise?"

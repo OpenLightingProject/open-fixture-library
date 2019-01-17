@@ -102,6 +102,9 @@ function addFixture(fixture) {
         addMode(key, mode);
       }
     }
+    else if (prop === `wheels`) {
+      addWheels(out.fixtures[key], fixture);
+    }
     else if (propExistsIn(prop, fixture)) {
       out.fixtures[key][prop] = fixture[prop];
     }
@@ -114,6 +117,11 @@ function addFixture(fixture) {
   out.errors[key] = checkResult.errors;
 }
 
+/**
+ * If a new manufacturer was entered in the editor, it is also saved here.
+ * @param {object} fixture The editor fixture object.
+ * @returns {string} The manufacturer key.
+ */
 function getManufacturerKey(fixture) {
   if (fixture.useExistingManufacturer) {
     return fixture.manufacturerKey;
@@ -141,6 +149,11 @@ function getManufacturerKey(fixture) {
   return manKey;
 }
 
+/**
+ * @param {object} fixture The editor fixture object.
+ * @param {string} manKey The manufacturer key of the fixture.
+ * @returns {string} The fixture key.
+ */
 function getFixtureKey(fixture, manKey) {
   if (`key` in fixture && fixture.key !== `[new]`) {
     return fixture.key;
@@ -184,6 +197,10 @@ function getPhysical(from) {
   return physical;
 }
 
+/**
+ * @param {object} fixture The OFL fixture object to save the links to.
+ * @param {array.<object>} editorLinksArray The editor link object array.
+ */
 function addLinks(fixture, editorLinksArray) {
   fixture.links = {};
 
@@ -198,6 +215,56 @@ function addLinks(fixture, editorLinksArray) {
       fixture.links[linkType] = linksOfType;
     }
   }
+}
+
+/**
+ * Sanitize and save wheels from the editor's channel objects, if there are any.
+ * @param {object} fixture The OFL fixture object to save the wheels to.
+ * @param {object} editorFixture The editor fixture object to get the wheels from.
+ */
+function addWheels(fixture, editorFixture) {
+  const editorWheelChannels = Object.values(editorFixture.availableChannels).filter(
+    editorChannel => editorChannel.wheel && editorChannel.wheel.slots.length > 0 && editorChannel.wheel.slots.some(
+      editorWheelSlot => editorWheelSlot !== null && editorWheelSlot.type !== ``
+    )
+  );
+
+  if (editorWheelChannels.length === 0) {
+    return;
+  }
+
+  fixture.wheels = {};
+
+  editorWheelChannels.forEach(editorChannel => {
+    const slots = editorChannel.wheel.slots.map(editorWheelSlot => {
+      if (editorWheelSlot === null || editorWheelSlot.type === ``) {
+        return null;
+      }
+
+      const wheelSlot = {
+        type: editorWheelSlot.type
+      };
+
+      const wheelSlotSchema = schemaProperties.wheelSlotTypes[wheelSlot.type];
+
+      for (const slotProp of Object.keys(wheelSlotSchema.properties)) {
+        if (propExistsIn(slotProp, editorWheelSlot.typeData)) {
+          wheelSlot[slotProp] = editorWheelSlot.typeData[slotProp];
+        }
+      }
+
+      return wheelSlot;
+    });
+
+    // remove trailing null slots
+    while (slots[slots.length - 1] === null) {
+      slots.pop();
+    }
+
+    fixture.wheels[editorChannel.name] = {
+      slots
+    };
+  });
 }
 
 function addAvailableChannel(fixKey, availableChannels, chId) {

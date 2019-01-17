@@ -73,6 +73,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+      hint: `Only use this if no other type is applicable. Note that some types like WheelSlot and Prism also allow setting a rotation angle / speed value.`,
       defaultData: {
         speedOrAngle: `speed`,
         speed: ``,
@@ -86,7 +87,7 @@ export default {
     };
   },
   computed: {
-    resetProp() {
+    resetProps() {
       const resetProp = this.capability.typeData.speedOrAngle === `speed` ? `angle` : `speed`;
 
       return [resetProp, `${resetProp}Start`, `${resetProp}End`];

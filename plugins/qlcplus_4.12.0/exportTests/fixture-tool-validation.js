@@ -43,6 +43,7 @@ module.exports = function testFixtureToolValidation(exportFile) {
 
     // store used gobos in the gobos/ directory
     .then(() => mkdirp(path.join(directory, `resources/gobos/Others`)))
+    .then(() => writeFile(path.join(directory, `resources/gobos/Others/open.svg`), ``))
     .then(() => writeFile(path.join(directory, `resources/gobos/Others/rainbow.png`), ``))
 
     // call the fixture tool

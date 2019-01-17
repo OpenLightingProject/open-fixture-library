@@ -1,0 +1,4 @@
+# make JSON and Markdown files appear in GitHub language bar
+# see https://github.com/github/linguist#detectable
+*.json linguist-detectable=true
+*.md linguist-detectable=true
