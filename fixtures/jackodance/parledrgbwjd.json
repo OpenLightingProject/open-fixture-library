@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ParLedRGBWJD",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["jackodance"],
+    "createDate": "2019-01-17",
+    "lastModifyDate": "2019-01-17"
+  },
+  "links": {
+    "productPage": [
+      "http://www.jackodance.it"
+    ]
+  },
+  "physical": {
+    "dimensions": [30, 30, 40],
+    "weight": 3,
+    "power": 300,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "StrobeSpeed",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "EffectParameter",
+          "parameter": "low"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "EffectSpeed",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "ParLedRGBWJD",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
