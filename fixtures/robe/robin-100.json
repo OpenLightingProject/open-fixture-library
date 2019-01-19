@@ -1,0 +1,298 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Robin 100",
+  "shortName": "robin100",
+  "categories": ["Moving Head", "Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["ameisso"],
+    "createDate": "2019-01-19",
+    "lastModifyDate": "2019-01-19"
+  },
+  "links": {
+    "productPage": [
+      "https://www.robe.cz/ledbeam-100/"
+    ],
+    "other": [
+      "https://www.robe.cz/index.php?type=10898&tx_odproducts_f%5baction%5d=downloadFile&tx_odproducts_f%5bfile%5d=robe/downloads/dmx_charts/Robin_100_LEDBeam_DMX_charts.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [233, 314, 149],
+    "weight": 4.5,
+    "power": 200,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 5960
+    },
+    "lens": {
+      "degreesMinMax": [7, 7]
+    },
+    "focus": {
+      "panMax": 450,
+      "tiltMax": 300
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "450deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "300deg"
+      }
+    },
+    "Pan/Tilt speed, Pan/Tilt time": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Special functions": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "NoFunction",
+          "comment": "RGBW colour mixing mode"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "NoFunction",
+          "comment": "CMY colour mixing mode"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "NoFunction",
+          "comment": "Pan/Tilt speed mode"
+        },
+        {
+          "dmxRange": [60, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red/Cyan zone 2": {
+      "fineChannelAliases": ["Red/Cyan zone 2 fine"],
+      "dmxValueResolution": "8bit",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green/Magenta zone 2": {
+      "fineChannelAliases": ["Green/Magenta zone 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue/Yellow zone 2": {
+      "fineChannelAliases": ["Blue/Yellow zone 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White zone 2": {
+      "fineChannelAliases": ["White zone 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Red/Cyan zone 3": {
+      "fineChannelAliases": ["Red/Cyan zone 3 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green/Magenta zone 3": {
+      "fineChannelAliases": ["Green/Magenta zone 3 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue/Yellow zone 3": {
+      "fineChannelAliases": ["Blue/Yellow zone 3 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White zone 3": {
+      "fineChannelAliases": ["White zone 3 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CTC": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "19000K",
+        "colorTemperatureEnd": "2700K"
+      }
+    },
+    "Virtual Color Wheel": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red/Cyan all zones": {
+      "fineChannelAliases": ["Red/Cyan all zones fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green/Magenta all zones": {
+      "fineChannelAliases": ["Green/Magenta all zones fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue/Yellow all zones": {
+      "fineChannelAliases": ["Blue/Yellow all zones fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "fineChannelAliases": ["White 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "one",
+      "shortName": "one",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt speed, Pan/Tilt time",
+        "Special functions",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Red/Cyan zone 2",
+        "Red/Cyan zone 2 fine",
+        "Green/Magenta zone 2",
+        "Green/Magenta zone 2 fine",
+        "Blue/Yellow zone 2",
+        "Blue/Yellow zone 2 fine",
+        "White zone 2",
+        "White zone 2 fine",
+        "Red/Cyan zone 3",
+        "Red/Cyan zone 3 fine",
+        "Green/Magenta zone 3",
+        "Green/Magenta zone 3 fine",
+        "Blue/Yellow zone 3",
+        "Blue/Yellow zone 3 fine",
+        "White zone 3",
+        "White zone 3 fine",
+        "CTC",
+        "Virtual Color Wheel",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    },
+    {
+      "name": "two",
+      "shortName": "two",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt speed, Pan/Tilt time",
+        "Special functions",
+        "Red/Cyan all zones",
+        "Red/Cyan all zones fine",
+        "Green/Magenta all zones",
+        "Green/Magenta all zones fine",
+        "Blue/Yellow all zones",
+        "Blue/Yellow all zones fine",
+        "White 2",
+        "White 2 fine",
+        "CTC",
+        "Virtual Color Wheel",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    }
+  ]
+}
