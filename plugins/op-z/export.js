@@ -7,6 +7,8 @@ const {
 module.exports.name = `OP-Z`;
 module.exports.version = `0.1.0`;
 
+const MAX_OPZ_FIXTURES = 16;
+
 /**
  * @param {array.<Fixture>} fixtures An array of Fixture objects.
  * @param {object} options Global options, including:
@@ -25,7 +27,7 @@ module.exports.export = function exportOpZ(fixtures, options) {
   fixtures.forEach(fixture => {
     const fixtureKey = `${fixture.manufacturer.key}/${fixture.key}`;
 
-    fixture.modes.forEach(mode => {
+    fixture.modes.forEach((mode, modeIndex) => {
       const modeName = `${fixtureKey}/${mode.shortName}`;
 
       // add profile
@@ -35,10 +37,12 @@ module.exports.export = function exportOpZ(fixtures, options) {
       });
 
       // add config
-      exportJson.config.push({
-        fixture: exportJson.config.length + 1,
-        profile: modeName
-      });
+      if (modeIndex === 0 && exportJson.config.length < MAX_OPZ_FIXTURES) {
+        exportJson.config.push({
+          fixture: exportJson.config.length + 1,
+          profile: modeName
+        });
+      }
     });
   });
 

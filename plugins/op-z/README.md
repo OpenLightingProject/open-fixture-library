@@ -2,6 +2,8 @@
 
 [Teenage Engineering's OP-Z](https://www.teenageengineering.com/products/op-z) synthesizer and sequencer has a separate track for controlling light fixtures via DMX. The DMX configuration is saved in a `dmx.json` file (see the [OP-Z online manual](https://www.teenageengineering.com/guides/op-z/lights)). This OFL plugin exports that `dmx.json` file for a given set of fixtures, however, it is likely that it needs manual adjustments to fit the exact configuration and workflow of the user.
 
+The OP-Z only allows 16 fixtures to be used at the same time, so the `config` section will only include the first mode of the first 16 fixtures.
+
 
 ## OP-Z channel types
 
