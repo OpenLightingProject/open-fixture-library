@@ -7,6 +7,7 @@ const {
 module.exports.name = `OP-Z`;
 module.exports.version = `0.1.0`;
 
+const MAX_KNOBS = 8;
 const MAX_OPZ_FIXTURES = 16;
 
 /**
@@ -22,7 +23,7 @@ module.exports.export = function exportOpZ(fixtures, options) {
     config: []
   };
 
-  const usedDials = {};
+  const usedKnobs = {};
 
   fixtures.forEach(fixture => {
     const fixtureKey = `${fixture.manufacturer.key}/${fixture.key}`;
@@ -78,14 +79,14 @@ module.exports.export = function exportOpZ(fixtures, options) {
       'color': () => channel.type === `Multi-Color`,
       'intensity': () => channel.type === `Intensity`,
       'fog': () => channel.type === `Fog`,
-      // 'dial 1': () => false,
-      // 'dial 2': () => false,
-      // 'dial 3': () => false,
-      // 'dial 4': () => false,
-      // 'dial 5': () => false,
-      // 'dial 6': () => false,
-      // 'dial 7': () => false,
-      // 'dial 8': () => false,
+      // 'knob1': () => false,
+      // 'knob2': () => false,
+      // 'knob3': () => false,
+      // 'knob4': () => false,
+      // 'knob5': () => false,
+      // 'knob6': () => false,
+      // 'knob7': () => false,
+      // 'knob8': () => false,
       // '0 – 255': () => false,
       'on': () => channel.type === `Shutter`,
       'off': () => channel.type === `Maintenance`
@@ -98,27 +99,26 @@ module.exports.export = function exportOpZ(fixtures, options) {
       return channelType;
     }
 
-    return getDialType() || `${channel.defaultValue}`;
+    return getKnobType() || `${channel.defaultValue}`;
 
 
-    // TODO: is it `dial X` or `knobX` like mentioned in the forums?
     /**
-     * Try to use a `dial X` OP-Z channel type for this channel. A channel used
-     * across different modes will get the same dial again. null is returned
-     * for all channels after all 8 dials are already assigned.
-     * @returns {string|null} The OP-Z channel type `dial X` if applicable, null otherwise.
+     * Try to use a `knobX` OP-Z channel type for this channel. A channel used
+     * across different modes will get the same knob again. null is returned
+     * for all channels after all knobs are already assigned.
+     * @returns {string|null} The OP-Z channel type `knobX` if applicable, null otherwise.
      */
-    function getDialType() {
+    function getKnobType() {
       const channelKey = `${fixtureKey}/${channel.key}`;
-      if (channelKey in usedDials) {
-        return usedDials[channelKey];
+      if (channelKey in usedKnobs) {
+        return usedKnobs[channelKey];
       }
 
-      const usedDialCount = Object.keys(usedDials).length;
-      if (usedDialCount < 8) {
-        usedDials[channelKey] = `dial ${usedDialCount + 1}`;
+      const usedKnobCount = Object.keys(usedKnobs).length;
+      if (usedKnobCount < MAX_KNOBS) {
+        usedKnobs[channelKey] = `knob${usedKnobCount + 1}`;
 
-        return usedDials[channelKey];
+        return usedKnobs[channelKey];
       }
 
       return null;

@@ -7,7 +7,9 @@ The OP-Z only allows 16 fixtures to be used at the same time, so the `config` se
 
 ## OP-Z channel types
 
-This table is taken from the [OP-Z online manual](https://www.teenageengineering.com/guides/op-z/lights).
+*This table is taken from the `how_to_dmx.txt` file in OP-Z's content mode.*
+
+**Note:** The table in the [OP-Z online manual](https://www.teenageengineering.com/guides/op-z/lights) is out of date. `dial 1` there is now actually `knob1` (and so on).
 
 | channel     | range   | description               |
 | ----------- | ------- | ------------------------- |
@@ -18,18 +20,16 @@ This table is taken from the [OP-Z online manual](https://www.teenageengineering
 | `color`     | 0 – 255 | color wheel               |
 | `intensity` | 0 – 255 | intensity / dimmer        |
 | `fog`       | 0, 255  | triggered by animation 14 |
-| `dial 1`    | 0 – 255 | green dial (page 1)       |
-| `dial 2`    | 0 – 255 | blue dial (page 1)        |
-| `dial 3`    | 0 – 255 | yellow dial (page 1)      |
-| `dial 4`    | 0 – 255 | red dial (page 1)         |
-| `dial 5`    | 0 – 255 | green dial (page 2)       |
-| `dial 6`    | 0 – 255 | blue dial (page 2)        |
-| `dial 7`    | 0 – 255 | yellow dial (page 2)      |
-| `dial 8`    | 0 – 255 | red dial (page 2)         |
+| `knob1`     | 0 – 255 | green knob (page 1)       |
+| `knob2`     | 0 – 255 | blue knob (page 1)        |
+| `knob3`     | 0 – 255 | yellow knob (page 1)      |
+| `knob4`     | 0 – 255 | red knob (page 1)         |
+| `knob5`     | 0 – 255 | green knob (page 2)       |
+| `knob6`     | 0 – 255 | blue knob (page 2)        |
+| `knob7`     | 0 – 255 | yellow knob (page 2)      |
+| `knob8`     | 0 – 255 | red knob (page 2)         |
 | `0 – 255`   | 0 – 255 | custom fixed value        |
 | `on`        | 255     | always on                 |
 | `off`       | 0       | always off                |
 
-**TODO:** In [a forum post](https://op-forums.com/t/dmx-on-op-z-dmx-json-question/8099/4), `knob1` instead of `dial 1` (and so on) is mentioned. What is the correct channel type to use?
-
-The dials are assigned to the first 8 DMX channels that are not natively supported by the OP-Z (i.e. color channels, intensity and fog channels). The same channel in different modes is assigned the same dial. After all dials are assigned, remaining channels are just represented by their default DMX value. Fine channels and null channels are always `off`.
+The knobs are assigned to the first 8 DMX channels that are not natively supported by the OP-Z (i.e. color channels, intensity and fog channels). The same channel in different modes is assigned the same knob. After all knobs are assigned, remaining channels are just represented by their default DMX value. Fine channels and null channels are always `off`.
