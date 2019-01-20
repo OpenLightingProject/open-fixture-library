@@ -32,4 +32,6 @@ The OP-Z only allows 16 fixtures to be used at the same time, so the `config` se
 | `on`        | 255     | always on                 |
 | `off`       | 0       | always off                |
 
+**TODO:** One of the example fixtures in the OP-Z's default `dmx.json` contains a `strobe` channel. Is that channel type actually supported?
+
 The knobs are assigned to the first 8 DMX channels that are not natively supported by the OP-Z (i.e. color channels, intensity and fog channels). The same channel in different modes is assigned the same knob. After all knobs are assigned, remaining channels are just represented by their default DMX value. Fine channels and null channels are always `off`.
