@@ -1,4 +1,5 @@
 const {
+  CoarseChannel,
   FineChannel,
   NullChannel,
   SwitchingChannel
@@ -99,7 +100,9 @@ module.exports.export = function exportOpZ(fixtures, options) {
       return channelType;
     }
 
-    return getKnobType() || `${channel.defaultValue}`;
+    const defaultValue = channel.getDefaultValueWithResolution(CoarseChannel.RESOLUTION_8BIT);
+
+    return getKnobType() || `${defaultValue}`;
 
 
     /**
