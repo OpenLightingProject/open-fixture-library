@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "RGBHC Fader",
-  "shortName": "RGBHC",
+  "name": "RGBAC Fader",
+  "shortName": "RGBAC",
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["ameisso"],
@@ -30,15 +30,15 @@
         "color": "Blue"
       }
     },
-    "Hot": {
-      "fineChannelAliases": ["Hot fine", "Hot fine^2"],
+    "Amber": {
+      "fineChannelAliases": ["Amber fine", "Amber fine^2"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber"
       }
     },
-    "Cold": {
-      "fineChannelAliases": ["Cold fine", "Cold fine^2"],
+    "Cyan": {
+      "fineChannelAliases": ["Cyan fine", "Cyan fine^2"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Cyan"
@@ -53,8 +53,8 @@
         "Red",
         "Green",
         "Blue",
-        "Hot",
-        "Cold"
+        "Amber",
+        "Cyan"
       ]
     },
     {
@@ -67,10 +67,10 @@
         "Green fine",
         "Blue",
         "Blue fine",
-        "Hot",
-        "Hot fine",
-        "Cold",
-        "Cold fine"
+        "Amber",
+        "Amber fine",
+        "Cyan",
+        "Cyan fine"
       ]
     },
     {
@@ -86,12 +86,12 @@
         "Blue",
         "Blue fine",
         "Blue fine^2",
-        "Hot",
-        "Hot fine",
-        "Hot fine^2",
-        "Cold",
-        "Cold fine",
-        "Cold fine^2"
+        "Amber",
+        "Amber fine",
+        "Amber fine^2",
+        "Cyan",
+        "Cyan fine",
+        "Cyan fine^2"
       ]
     }
   ]
