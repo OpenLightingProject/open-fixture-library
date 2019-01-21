@@ -1,0 +1,178 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGBHC Fader",
+  "shortName": "RGBHC",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["ameisso"],
+    "createDate": "2019-01-21",
+    "lastModifyDate": "2019-01-21"
+  },
+  "links": {
+    "manual": [
+      "https://open-fixture-library.org"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Hot": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Cold": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "fineChannelAliases": ["Red 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "fineChannelAliases": ["Green 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "fineChannelAliases": ["Blue 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Hot 2": {
+      "name": "Hot",
+      "fineChannelAliases": ["Hot 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Cold 2": {
+      "name": "Cold",
+      "fineChannelAliases": ["Cold 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Red 3": {
+      "name": "Red",
+      "fineChannelAliases": ["Red 3 fine", "Red 3 fine^2"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 3": {
+      "name": "Green",
+      "fineChannelAliases": ["Green 3 fine", "Green 3 fine^2"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 3": {
+      "name": "Blue",
+      "fineChannelAliases": ["Blue 3 fine", "Blue 3 fine^2"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Hot 3": {
+      "name": "Hot",
+      "fineChannelAliases": ["Hot 3 fine", "Hot 3 fine^2"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Cold 3": {
+      "name": "Cold",
+      "fineChannelAliases": ["Cold 3 fine", "Cold 3 fine^2"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 bit",
+      "shortName": "8bit",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Hot",
+        "Cold"
+      ]
+    },
+    {
+      "name": "16 Bit",
+      "shortName": "16bit",
+      "channels": [
+        "Red 2",
+        "Red 2 fine",
+        "Green 2",
+        "Green 2 fine",
+        "Blue 2",
+        "Blue 2 fine",
+        "Hot 2",
+        "Hot 2 fine",
+        "Cold 2",
+        "Cold 2 fine"
+      ]
+    },
+    {
+      "name": "24 Bit",
+      "shortName": "24bit",
+      "channels": [
+        "Red 3",
+        "Red 3 fine",
+        "Red 3 fine^2",
+        "Green 3",
+        "Green 3 fine",
+        "Green 3 fine^2",
+        "Blue 3",
+        "Blue 3 fine",
+        "Blue 3 fine^2",
+        "Hot 3",
+        "Hot 3 fine",
+        "Hot 3 fine^2",
+        "Cold 3",
+        "Cold 3 fine",
+        "Cold 3 fine^2"
+      ]
+    }
+  ]
+}
