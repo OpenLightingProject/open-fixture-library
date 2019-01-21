@@ -92,21 +92,90 @@
         },
         {
           "dmxRange": [30, 39],
-          "type": "NoFunction",
-          "comment": "RGBW colour mixing mode"
+          "type": "Maintenance",
+          "comment": "RGBW color mixing mode",
+          "hold": "3s"
         },
         {
           "dmxRange": [40, 49],
-          "type": "NoFunction",
-          "comment": "CMY colour mixing mode"
+          "type": "Maintenance",
+          "comment": "CMY color mixing mode",
+          "hold": "3s"
         },
         {
           "dmxRange": [50, 59],
-          "type": "NoFunction",
-          "comment": "Pan/Tilt speed mode"
+          "type": "Maintenance",
+          "comment": "Pan/Tilt speed mode",
+          "hold": "3s"
         },
         {
-          "dmxRange": [60, 255],
+          "dmxRange": [60, 69],
+          "type": "Maintenance",
+          "comment": "Pan/Tilt time mode",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Maintenance",
+          "comment": "Enable blackout while pan/tilt moving",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Maintenance",
+          "comment": "Disable blackout while pan/tilt moving",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [90, 109],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "Maintenance",
+          "comment": "Enable color calibration mode",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "Maintenance",
+          "comment": "Disable color calibration mode",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "Maintenance",
+          "comment": "Enable tilt movement reduction",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "Maintenance",
+          "comment": "Disable tilt movement reduction",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Maintenance",
+          "comment": "Pan/Tilt reset",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "comment": "Total reset",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [210, 255],
           "type": "NoFunction"
         }
       ]
