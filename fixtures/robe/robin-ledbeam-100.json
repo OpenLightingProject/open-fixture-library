@@ -188,9 +188,185 @@
       }
     },
     "Virtual Color Wheel": {
-      "capability": {
-        "type": "NoFunction"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 2],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colorTemperature": "2700K",
+          "colors": ["#ffa757"]
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "ColorPreset",
+          "comment": "White Halogen lamp mode",
+          "colorTemperature": "2700K",
+          "colors": ["#ffa757"]
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colorTemperature": "3200K",
+          "colors": ["#ffb87b"]
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "ColorPreset",
+          "comment": "White Halogen lamp mode",
+          "colorTemperature": "3200K",
+          "colors": ["#ffb87b"]
+        },
+        {
+          "dmxRange": [7, 9],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colorTemperature": "4200K",
+          "colors": ["#ffd3af"]
+        },
+        {
+          "dmxRange": [10, 12],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colorTemperature": "5600K",
+          "colors": ["#ffefe1"]
+        },
+        {
+          "dmxRange": [13, 15],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colorTemperature": "8000K",
+          "colors": ["#dde6ff"]
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [17, 55],
+          "type": "ColorPreset",
+          "comment": "Blue … Cyan",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#00ffff"]
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [57, 95],
+          "type": "ColorPreset",
+          "comment": "Cyan … Green",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#00ff00"]
+        },
+        {
+          "dmxRange": [96, 96],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [97, 134],
+          "type": "ColorPreset",
+          "comment": "Green … Yellow",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#ffff00"]
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [136, 174],
+          "type": "ColorPreset",
+          "comment": "Yellow … Red",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#ff0000"]
+        },
+        {
+          "dmxRange": [175, 175],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [176, 214],
+          "type": "ColorPreset",
+          "comment": "Red … Magenta",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [215, 215],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [216, 246],
+          "type": "ColorPreset",
+          "comment": "Magenta … Blue",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "Effect",
+          "effectName": "Zone effect 1"
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "Effect",
+          "effectName": "Zone effect 2"
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "Effect",
+          "effectName": "Zone effect 3"
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "Effect",
+          "effectName": "Zone effect 4"
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "Effect",
+          "effectName": "Zone effect 5"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Effect",
+          "effectName": "Zone effect 6"
+        }
+      ]
     },
     "Shutter / Strobe": {
       "capability": {
