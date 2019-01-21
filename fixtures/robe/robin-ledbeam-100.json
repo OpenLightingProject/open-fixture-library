@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Robin 100",
-  "shortName": "robin100",
+  "name": "Robin LEDBeam 100",
+  "shortName": "RobinLEDBeam100",
   "categories": ["Moving Head", "Color Changer", "Dimmer"],
   "meta": {
     "authors": ["ameisso"],
@@ -9,11 +9,14 @@
     "lastModifyDate": "2019-01-19"
   },
   "links": {
+    "manual": [
+      "https://www.robe.cz/fileadmin/robe/downloads/user_manuals/User_manual_Robin_100_LEDBeam.pdf"
+    ],
     "productPage": [
       "https://www.robe.cz/ledbeam-100/"
     ],
     "other": [
-      "https://www.robe.cz/index.php?type=10898&tx_odproducts_f%5baction%5d=downloadFile&tx_odproducts_f%5bfile%5d=robe/downloads/dmx_charts/Robin_100_LEDBeam_DMX_charts.pdf"
+      "https://www.robe.cz/fileadmin/robe/downloads/dmx_charts/Robin_100_LEDBeam_DMX_charts.pdf"
     ]
   },
   "physical": {
