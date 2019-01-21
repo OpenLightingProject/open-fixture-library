@@ -209,7 +209,7 @@ module.exports = {
     }
   },
   colorWheel: {
-    isCapSuitable: cap => cap.isSlotType(`Color`) || cap.type === `ColorPreset` || (cap.type === `WheelRotation` && cap.speed && cap.wheels[0].type === `Color`),
+    isCapSuitable: cap => cap.isSlotType(`Color`) || cap.type === `ColorPreset` || (cap.type === `WheelRotation` && cap.speed && cap.wheels.some(wheel => wheel.type === `Color`)),
     create: (channel, caps) => {
       const xmlColorWheel = xmlbuilder.create(`colorwheel`);
 
@@ -392,7 +392,7 @@ module.exports = {
     }
   },
   goboWheel: {
-    isCapSuitable: cap => cap.isSlotType(`Gobo`) || (cap.type === `WheelRotation` && cap.speed && cap.wheels[0].type === `Gobo`),
+    isCapSuitable: cap => cap.isSlotType(`Gobo`) || (cap.type === `WheelRotation` && cap.speed && cap.wheels.some(wheel => wheel.type === `Gobo`)),
     create: (channel, caps) => {
       const xmlGoboWheel = xmlbuilder.create(`gobowheel`);
 
@@ -461,7 +461,7 @@ module.exports = {
     }
   },
   goboIndex: { // gobo stencil rotation angle
-    isCapSuitable: cap => cap.type === `WheelSlotRotation` && cap.wheels[0].type === `Gobo` && cap.angle !== null,
+    isCapSuitable: cap => cap.type === `WheelSlotRotation` && cap.wheels.some(wheel => wheel.type === `Gobo`) && cap.angle !== null,
     create: (channel, caps) => {
       const xmlGoboIndex = xmlbuilder.create(`goboindex`);
 
@@ -475,7 +475,7 @@ module.exports = {
     }
   },
   goboRotation: { // gobo stencil rotation speed
-    isCapSuitable: cap => cap.type === `WheelSlotRotation` && cap.wheels[0].type === `Gobo` && cap.speed !== null,
+    isCapSuitable: cap => cap.type === `WheelSlotRotation` && cap.wheels.some(wheel => wheel.type === `Gobo`) && cap.speed !== null,
     create: (channel, caps) => {
       const xmlGoboRotation = xmlbuilder.create(`goborotation`);
 
@@ -488,7 +488,7 @@ module.exports = {
     }
   },
   goboShake: { // gobo shake speed
-    isCapSuitable: cap => cap.type === `GoboShake` && cap.slot === null && cap.shakeSpeed !== null,
+    isCapSuitable: cap => cap.type === `WheelShake` && cap.wheels.some(wheel => wheel.type === `Gobo`) && cap.wheelSlot === null && cap.shakeSpeed !== null,
     create: (channel, caps) => {
       const xmlGoboShake = xmlbuilder.create(`goboshake`);
 
