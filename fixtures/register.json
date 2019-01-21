@@ -575,6 +575,11 @@
       "lastActionDate": "2018-07-21",
       "lastAction": "modified"
     },
+    "generic/rgbhc-fader": {
+      "name": "RGBHC Fader",
+      "lastActionDate": "2019-01-21",
+      "lastAction": "created"
+    },
     "generic/rgbw-fader": {
       "name": "RGBW Fader",
       "lastActionDate": "2018-07-21",
@@ -1207,6 +1212,7 @@
       "rgb-fader",
       "rgba-fader",
       "rgbd-fader",
+      "rgbhc-fader",
       "rgbw-fader"
     ],
     "ghost": [
@@ -1488,6 +1494,7 @@
       "generic/rgb-fader",
       "generic/rgba-fader",
       "generic/rgbd-fader",
+      "generic/rgbhc-fader",
       "generic/rgbw-fader",
       "ghost/ip-spot-bat",
       "glp/force-120",
@@ -1967,6 +1974,7 @@
       "adb/europe-105",
       "adb/warp-m",
       "generic/drgbw-fader",
+      "generic/rgbhc-fader",
       "minuit-une/ivl-carre",
       "prolights/diamond19"
     ],
@@ -2295,6 +2303,7 @@
     "venue": "#78cc33"
   },
   "lastUpdated": [
+    "generic/rgbhc-fader",
     "martin/mac-encore-performance",
     "eurolite/led-ml-56-rgbw",
     "eurolite/led-pix-12-hcl",
