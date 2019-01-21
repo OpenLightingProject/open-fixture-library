@@ -723,7 +723,7 @@ module.exports = {
     }
   },
   index: { // rotation angle
-    isCapSuitable: cap => (cap.type === `ColorWheelRotation` || cap.type === `Rotation`) && cap.angle,
+    isCapSuitable: cap => cap.angle && cap.type.includes(`Rotation`),
     create: (channel, caps) => {
       const xmlIndex = xmlbuilder.create(`index`);
 
@@ -737,7 +737,7 @@ module.exports = {
     }
   },
   rotation: { // rotation speed
-    isCapSuitable: cap => (cap.type === `Rotation` && cap.speed !== null) || cap.type === `PanContinuous` || cap.type === `TiltContinuous`,
+    isCapSuitable: cap => cap.speed !== null && cap.type.match(/(Rotation|Continuous)/),
     create: (channel, caps) => {
       const xmlRotation = xmlbuilder.create(`rotation`);
 
