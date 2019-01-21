@@ -271,38 +271,42 @@ module.exports = {
       function getSplittedCapabilities(cap) {
         const startCapJson = {
           dmxRange: [cap.rawDmxRange.start, cap.rawDmxRange.start],
-          type: cap.type,
           _splitted: true
         };
         const centerCapJson = {
           dmxRange: [cap.rawDmxRange.center, cap.rawDmxRange.center],
-          type: cap.type,
           _splitted: true
         };
         const endCapJson = {
           dmxRange: [cap.rawDmxRange.end, cap.rawDmxRange.end],
-          type: cap.type,
           _splitted: true
         };
 
-        if (cap.slotNumber) {
-          startCapJson.slotNumber = cap.slotNumber[0].number;
+        Object.entries(cap.jsonObject).forEach(([key, value]) => {
+          if (key === `dmxRange`) {
+            return;
+          }
+
+          if (key.includes(`Start`)) {
+            key = key.replace(`Start`, ``);
+            startCapJson[key] = value;
+          }
+          else if (key.includes(`End`)) {
+            key = key.replace(`End`, ``);
+            endCapJson[key] = value;
+          }
+          else {
+            startCapJson[key] = value;
+            centerCapJson[key] = value;
+            endCapJson[key] = value;
+          }
+        });
+
+        if (`slotNumber` in startCapJson) {
           centerCapJson.slotNumber = (cap.slotNumber[0].number + cap.slotNumber[1].number) / 2;
-          endCapJson.slotNumber = cap.slotNumber[1].number;
         }
-        if (cap.comment) {
-          startCapJson.comment = cap.comment;
-          centerCapJson.comment = cap.comment;
-          endCapJson.comment = cap.comment;
-        }
-        if (cap.colors) {
-          startCapJson.colors = cap.colors.startColors;
+        if (`colors` in startCapJson) {
           centerCapJson.colors = cap.colors.allColors;
-          endCapJson.colors = cap.colors.endColors;
-        }
-        if (cap.colorTemperature) {
-          startCapJson.colorTemperature = cap.colorTemperature[0].toString();
-          endCapJson.colorTemperature = cap.colorTemperature[1].toString();
         }
 
         const [startCap, centerCap, endCap] = [startCapJson, centerCapJson, endCapJson].map(
@@ -325,38 +329,33 @@ module.exports = {
           return null;
         }
 
-        const dmxRange = cap1.rawDmxRange.getRangeMergedWith(cap2.rawDmxRange);
-        const capJson = {
-          dmxRange: [dmxRange.start, dmxRange.end],
-          type: cap1.type
-        };
+        const filterDistiguishableKeys = key => ![`dmxRange`, `_splitted`, `menuClick`].includes(key);
+        const distinguishableKeys1 = Object.keys(cap1.jsonObject).filter(filterDistiguishableKeys);
+        const distinguishableKeys2 = Object.keys(cap2.jsonObject).filter(filterDistiguishableKeys);
+        const hasDifferentKeys = !arraysEqual(distinguishableKeys1, distinguishableKeys2);
+        const hasDifferentValues = distinguishableKeys1.some(key => {
+          const value1 = cap1.jsonObject[key];
+          const value2 = cap2.jsonObject[key];
 
-        const differentSlotNumber = cap1.jsonObject.slotNumber !== cap2.jsonObject.slotNumber && !(cap1.jsonObject._splitted && cap2.jsonObject.slotNumber === 1);
-        const differentColors = !cap1.slotNumber && !cap2.slotNumber && !arraysEqual(cap1.jsonObject.colors, cap2.jsonObject.colors);
-        const differentColorTemperatures = cap1.jsonObject.colorTemperature !== cap2.jsonObject.colorTemperature;
-        const isGenericColor = !cap1.slotNumber && !cap1.colors && !cap1.colorTemperature;
-        if (differentSlotNumber || differentColors || differentColorTemperatures || isGenericColor) {
+          if (key === `slotNumber`) {
+            // slotNumber 8 and slotNumber 1 are the same slots if the wheel only has 7 slots
+            return !arraysEqual(cap1.wheelSlot, cap2.wheelSlot);
+          }
+
+          return value1 !== value2 && !arraysEqual(value1, value2);
+        });
+        if (hasDifferentKeys || hasDifferentValues) {
           return null;
         }
 
-        if (cap1.slotNumber) {
-          capJson.slotNumber = cap1.jsonObject.slotNumber;
-        }
+        const capJson = {};
+        const preferredJsonObject = !cap1.jsonObject._splitted ? cap1.jsonObject : cap2.jsonObject; // we prefer unsplitted caps
+        Object.entries(preferredJsonObject).forEach(([key, value]) => {
+          capJson[key] = value;
+        });
 
-        if (cap1.hasComment && !cap1.jsonObject._splitted) {
-          capJson.comment = cap1.comment;
-        }
-        else if (cap2.hasComment) {
-          capJson.comment = cap2.comment;
-        }
-
-        if (cap1.colors) {
-          capJson.colors = cap1.jsonObject.colors;
-        }
-
-        if (cap1.jsonObject.colorTemperature) {
-          capJson.colorTemperature = cap1.jsonObject.colorTemperature;
-        }
+        const dmxRange = cap1.rawDmxRange.getRangeMergedWith(cap2.rawDmxRange);
+        capJson.dmxRange = [dmxRange.start, dmxRange.end];
 
         return new Capability(capJson, cap1._resolution, cap1._channel);
       }
