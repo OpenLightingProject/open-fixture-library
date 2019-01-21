@@ -302,6 +302,17 @@ module.exports = {
           }
         });
 
+        if (cap.hasComment) {
+          const startEndRegex = /^([a-z0-9 ]+?) *(?:…|->?|\bto\b) *([a-z0-9 ]+?)$/i; // Red…Blue, Red to Blue, Red -> Blue, Red-Blue, ...
+          const match = startEndRegex.exec(cap.comment);
+
+          if (match) {
+            const [, startColorName, endColorName] = match;
+            startCapJson.comment = startColorName.replace(/^[a-z]/, firstLetter => firstLetter.toUpperCase());
+            endCapJson.comment = endColorName.replace(/^[a-z]/, firstLetter => firstLetter.toUpperCase());
+          }
+        }
+
         if (`slotNumber` in startCapJson) {
           centerCapJson.slotNumber = (cap.slotNumber[0].number + cap.slotNumber[1].number) / 2;
         }
