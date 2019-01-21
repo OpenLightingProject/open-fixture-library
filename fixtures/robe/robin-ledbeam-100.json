@@ -72,11 +72,12 @@
         "angleEnd": "300deg"
       }
     },
-    "Pan/Tilt speed, Pan/Tilt time": {
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
       "capability": {
         "type": "PanTiltSpeed",
-        "speedStart": "fast",
-        "speedEnd": "slow"
+        "durationStart": "0.1s",
+        "durationEnd": "25.5s"
       }
     },
     "Special functions": {
@@ -174,7 +175,7 @@
         "Pan fine",
         "Tilt",
         "Tilt fine",
-        "Pan/Tilt speed, Pan/Tilt time",
+        "Pan/Tilt Speed",
         "Special functions",
         "Red/Cyan Zone 1",
         "Red/Cyan Zone 1 fine",
@@ -215,7 +216,7 @@
         "Pan fine",
         "Tilt",
         "Tilt fine",
-        "Pan/Tilt speed, Pan/Tilt time",
+        "Pan/Tilt Speed",
         "Special functions",
         "Red/Cyan All Zones",
         "Red/Cyan All Zones fine",
