@@ -114,7 +114,7 @@ To make common percentage values more readable, one can use specific keywords to
   <th valign="top" scope="row" id="colorintensity" rowspan="2">ColorIntensity</th>
   <td valign="top">color<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top">one of our predefined Single Colors:
-    <code>Red</code>, <code>Green</code>, <code>Blue</code>, <code>Cyan</code>, <code>Magenta</code>, <code>Yellow</code>, <code>Amber</code>, <code>White</code>, <code>UV</code>, <code>Lime</code>, <code>Indigo</code>
+    <code>Red</code>, <code>Green</code>, <code>Blue</code>, <code>Cyan</code>, <code>Magenta</code>, <code>Yellow</code>, <code>Amber</code>, <code>White</code>, <code>Warm White</code>, <code>Cold White</code>, <code>UV</code>, <code>Lime</code>, <code>Indigo</code>
   </td>
   <td valign="top"></td>
 </tr>
