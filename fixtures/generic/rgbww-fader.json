@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "RGBAC Fader",
-  "shortName": "RGBAC",
+  "name": "RGBWW Fader",
+  "shortName": "RGBWW",
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["ameisso"],
@@ -30,18 +30,18 @@
         "color": "Blue"
       }
     },
-    "Amber": {
-      "fineChannelAliases": ["Amber fine", "Amber fine^2"],
+    "Warm White": {
+      "fineChannelAliases": ["Warm White fine", "Warm White fine^2"],
       "capability": {
         "type": "ColorIntensity",
-        "color": "Amber"
+        "color": "Warm White"
       }
     },
-    "Cyan": {
-      "fineChannelAliases": ["Cyan fine", "Cyan fine^2"],
+    "Cold White": {
+      "fineChannelAliases": ["Cold White fine", "Cold White fine^2"],
       "capability": {
         "type": "ColorIntensity",
-        "color": "Cyan"
+        "color": "Cold White"
       }
     }
   },
@@ -53,8 +53,8 @@
         "Red",
         "Green",
         "Blue",
-        "Amber",
-        "Cyan"
+        "Warm White",
+        "Cold White"
       ]
     },
     {
@@ -67,10 +67,10 @@
         "Green fine",
         "Blue",
         "Blue fine",
-        "Amber",
-        "Amber fine",
-        "Cyan",
-        "Cyan fine"
+        "Warm White",
+        "Warm White fine",
+        "Cold White",
+        "Cold White fine"
       ]
     },
     {
@@ -86,12 +86,12 @@
         "Blue",
         "Blue fine",
         "Blue fine^2",
-        "Amber",
-        "Amber fine",
-        "Amber fine^2",
-        "Cyan",
-        "Cyan fine",
-        "Cyan fine^2"
+        "Warm White",
+        "Warm White fine",
+        "Warm White fine^2",
+        "Cold White",
+        "Cold White fine",
+        "Cold White fine^2"
       ]
     }
   ]

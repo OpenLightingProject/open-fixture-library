@@ -570,11 +570,6 @@
       "lastActionDate": "2018-07-21",
       "lastAction": "modified"
     },
-    "generic/rgbac-fader": {
-      "name": "RGBAC Fader",
-      "lastActionDate": "2019-01-21",
-      "lastAction": "created"
-    },
     "generic/rgbd-fader": {
       "name": "RGBD Fader",
       "lastActionDate": "2018-07-21",
@@ -584,6 +579,11 @@
       "name": "RGBW Fader",
       "lastActionDate": "2018-07-21",
       "lastAction": "modified"
+    },
+    "generic/rgbww-fader": {
+      "name": "RGBWW Fader",
+      "lastActionDate": "2019-01-21",
+      "lastAction": "created"
     },
     "ghost/ip-spot-bat": {
       "name": "IP Spot Bat",
@@ -1211,9 +1211,9 @@
       "pan-tilt",
       "rgb-fader",
       "rgba-fader",
-      "rgbac-fader",
       "rgbd-fader",
-      "rgbw-fader"
+      "rgbw-fader",
+      "rgbww-fader"
     ],
     "ghost": [
       "ip-spot-bat"
@@ -1493,9 +1493,9 @@
       "generic/drgbw-fader",
       "generic/rgb-fader",
       "generic/rgba-fader",
-      "generic/rgbac-fader",
       "generic/rgbd-fader",
       "generic/rgbw-fader",
+      "generic/rgbww-fader",
       "ghost/ip-spot-bat",
       "glp/force-120",
       "glp/impression-fr1",
@@ -1974,7 +1974,7 @@
       "adb/europe-105",
       "adb/warp-m",
       "generic/drgbw-fader",
-      "generic/rgbac-fader",
+      "generic/rgbww-fader",
       "minuit-une/ivl-carre",
       "prolights/diamond19"
     ],
@@ -2303,7 +2303,7 @@
     "venue": "#78cc33"
   },
   "lastUpdated": [
-    "generic/rgbac-fader",
+    "generic/rgbww-fader",
     "martin/mac-encore-performance",
     "eurolite/led-ml-56-rgbw",
     "eurolite/led-pix-12-hcl",
