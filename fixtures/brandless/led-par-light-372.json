@@ -13,6 +13,7 @@
       "https://www.jackodance.it/wp-content/uploads/2019/01/MJ-3001-72-LED-PAR-LIGHT-372.pdf"
     ]
   },
+  "helpWanted": "Is the 4ch mode correct?",
   "physical": {
     "dimensions": [310, 250, 325],
     "weight": 3.5,
@@ -40,7 +41,8 @@
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
         "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Color Change": {
