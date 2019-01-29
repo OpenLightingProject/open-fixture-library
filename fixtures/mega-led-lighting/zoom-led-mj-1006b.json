@@ -70,12 +70,12 @@
     },
     "User Colors": {
       "capability": {
-        "type": "ColorPreset"
+        "type": "ColorPreset",
+        "helpWanted": "How many colors are there and at which DMX values can they be selected?"
       }
     },
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "dmxValueResolution": "8bit",
       "defaultValue": "50%",
       "capability": {
         "type": "Pan",
@@ -85,7 +85,6 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "dmxValueResolution": "8bit",
       "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
@@ -105,7 +104,8 @@
       "capability": {
         "type": "Zoom",
         "angleStart": "10deg",
-        "angleEnd": "60deg"
+        "angleEnd": "60deg",
+        "helpWanted": "Or is it 60…10°?"
       }
     },
     "Strobe": {
@@ -129,48 +129,75 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Color Macros / Effect Speed": "Color Macros"
+          }
         },
         {
           "dmxRange": [1, 25],
           "type": "Maintenance",
-          "comment": "Start controller handspike"
+          "comment": "Start controller handspike",
+          "switchChannels": {
+            "Color Macros / Effect Speed": "Color Macros"
+          }
         },
         {
           "dmxRange": [26, 50],
           "type": "Maintenance",
-          "comment": "Turn off controller handspike"
+          "comment": "Turn off controller handspike",
+          "switchChannels": {
+            "Color Macros / Effect Speed": "Color Macros"
+          }
         },
         {
           "dmxRange": [51, 90],
           "type": "Maintenance",
-          "comment": "Program color selection switch"
+          "comment": "Program color selection switch",
+          "switchChannels": {
+            "Color Macros / Effect Speed": "Color Macros"
+          }
         },
         {
           "dmxRange": [91, 130],
           "type": "Effect",
-          "effectName": "Color pulse"
+          "effectName": "Color pulse",
+          "switchChannels": {
+            "Color Macros / Effect Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [131, 170],
           "type": "Effect",
-          "effectPreset": "ColorJump"
+          "effectPreset": "ColorJump",
+          "switchChannels": {
+            "Color Macros / Effect Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [171, 210],
           "type": "Effect",
-          "effectPreset": "ColorFade"
+          "effectPreset": "ColorFade",
+          "switchChannels": {
+            "Color Macros / Effect Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [211, 250],
           "type": "Effect",
-          "effectName": "Inside mode 1"
+          "effectName": "Inside mode 1",
+          "switchChannels": {
+            "Color Macros / Effect Speed": "Color Macros"
+          }
         },
         {
           "dmxRange": [251, 255],
           "type": "Effect",
           "effectName": "Sound mode",
-          "soundControlled": true
+          "soundControlled": true,
+          "switchChannels": {
+            "Color Macros / Effect Speed": "Color Macros"
+          }
         }
       ]
     },
@@ -306,6 +333,13 @@
         }
       ]
     },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
     "ID Code": {
       "defaultValue": 0,
       "capabilities": [
@@ -439,13 +473,6 @@
           "comment": "ID 25"
         }
       ]
-    },
-    "Effect Speed": {
-      "capability": {
-        "type": "EffectSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
-      }
     }
   },
   "modes": [
