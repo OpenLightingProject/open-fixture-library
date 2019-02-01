@@ -120,7 +120,7 @@ function addChannel(xml, channel) {
 
     if (chType === `Intensity`) {
       xmlChannel.element({
-        Colour: channel.color !== null ? channel.color : `Generic`
+        Colour: channel.color !== null ? channel.color.replace(/^(?:Warm|Cold) /, ``) : `Generic`
       });
     }
 
@@ -183,7 +183,7 @@ function addFineChannel(xml, fineChannel) {
 
   if (chType === `Intensity`) {
     xmlFineChannel.element({
-      Colour: fineChannel.coarseChannel.color !== null ? fineChannel.coarseChannel.color : `Generic`
+      Colour: fineChannel.coarseChannel.color !== null ? fineChannel.coarseChannel.color.replace(/^(?:Warm|Cold) /, ``) : `Generic`
     });
   }
 
@@ -216,7 +216,7 @@ function getChannelPreset(channel) {
     IntensityMagenta: cap => capabilityHelpers.isColorIntensity(cap, `Magenta`),
     IntensityYellow: cap => capabilityHelpers.isColorIntensity(cap, `Yellow`),
     IntensityAmber: cap => capabilityHelpers.isColorIntensity(cap, `Amber`),
-    IntensityWhite: cap => capabilityHelpers.isColorIntensity(cap, `White`),
+    IntensityWhite: cap => capabilityHelpers.isColorIntensity(cap, `White`) || capabilityHelpers.isColorIntensity(cap, `Warm White`) || capabilityHelpers.isColorIntensity(cap, `Cold White`),
     IntensityUV: cap => capabilityHelpers.isColorIntensity(cap, `UV`),
     IntensityIndigo: cap => capabilityHelpers.isColorIntensity(cap, `Indigo`),
     IntensityLime: cap => capabilityHelpers.isColorIntensity(cap, `Lime`),

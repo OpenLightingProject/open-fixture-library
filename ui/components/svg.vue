@@ -57,6 +57,7 @@ export default {
         let colors = this.colors;
 
         if (this.colors.length === 0 && this.name !== ``) {
+          // hex colors for ColorIntensity capabilities
           const colorLookup = {
             Red: `#ff0000`,
             Green: `#00ff00`,
@@ -66,6 +67,8 @@ export default {
             Yellow: `#ffff00`,
             Amber: `#ffbf00`,
             White: `#ffffff`,
+            'Warm White': `#ffedde`,
+            'Cold White': `#edefff`,
             UV: `#8800ff`,
             Lime: `#bfff00`,
             Indigo: `#4b0082`

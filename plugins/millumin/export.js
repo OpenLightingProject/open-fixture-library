@@ -104,7 +104,11 @@ function downgradeChannel(channelObject, channelKey, fixture) {
 
   addIfValidData(downgradedChannel, `name`, jsonChannel.name);
   downgradedChannel.type = channel.type === `NoFunction` ? `Nothing` : channel.type;
-  addIfValidData(downgradedChannel, `color`, channel.color);
+
+  if (channel.color) {
+    downgradedChannel.color = channel.color.replace(/^(?:Warm|Cold) /, ``);
+  }
+
   addIfValidData(downgradedChannel, `fineChannelAliases`, jsonChannel.fineChannelAliases);
   addIfValidData(downgradedChannel, `defaultValue`, channel.hasDefaultValue, channel.defaultValue);
   addIfValidData(downgradedChannel, `highlightValue`, channel.hasHighlightValue, channel.highlightValue);
@@ -118,7 +122,7 @@ function downgradeChannel(channelObject, channelKey, fixture) {
   if (capabilitiesNeeded()) {
     downgradedChannel.capabilities = [];
 
-    for (const cap of channel.capabilities) {
+    channel.capabilities.forEach(cap => {
       const downgradedCap = {
         range: [cap.rawDmxRange.start, cap.rawDmxRange.end],
         name: cap.name
@@ -136,7 +140,7 @@ function downgradeChannel(channelObject, channelKey, fixture) {
       addIfValidData(downgradedCap, `switchChannels`, cap.jsonObject.switchChannels);
 
       downgradedChannel.capabilities.push(downgradedCap);
-    }
+    });
   }
 
   /**
