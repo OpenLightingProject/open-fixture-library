@@ -138,7 +138,7 @@
     display: inline-block;
     width: 0;
     overflow: hidden;
-    background-image: url('~/static/ofl-logo.svg');
+    background-image: url('~static/ofl-logo.svg');
     background-repeat: no-repeat;
     transition: background-color 0.2s, color 0.2s, padding 0.2s;
 
