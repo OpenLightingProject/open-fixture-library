@@ -38,6 +38,7 @@ async function getSchemas() {
   ));
 
   const fixtureSchema = schemasJson[SCHEMA_FILES.indexOf(`fixture.json`)];
+  const channelSchema = schemasJson[SCHEMA_FILES.indexOf(`channel.json`)];
 
   // allow automatically added properties (but don't validate them)
   fixtureSchema.properties.fixtureKey = true;
@@ -46,6 +47,11 @@ async function getSchemas() {
 
   // allow changed schema property
   fixtureSchema.patternProperties[`^\\$schema$`].enum[0] = `${SCHEMA_BASE_URL}fixture.json`;
+
+  // allow new colors from schema version 11.1.0
+  // see https://github.com/OpenLightingProject/open-fixture-library/pull/763
+  channelSchema.properties.color.enum.push(`Warm White`);
+  channelSchema.properties.color.enum.push(`Cold White`);
 
   return schemasJson;
 }
