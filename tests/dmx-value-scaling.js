@@ -1,6 +1,9 @@
 #!/usr/bin/node
 const colors = require(`colors`);
 
+// see https://github.com/standard-things/esm#getting-started
+require = require(`esm`)(module); // eslint-disable-line no-global-assign
+
 const {
   scaleDmxValue,
   scaleDmxRange

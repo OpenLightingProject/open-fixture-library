@@ -1,5 +1,8 @@
 #!/usr/bin/node
 
+// see https://github.com/standard-things/esm#getting-started
+require = require(`esm`)(module); // eslint-disable-line no-global-assign
+
 const path = require(`path`);
 const fs = require(`fs`);
 const colors = require(`colors`);

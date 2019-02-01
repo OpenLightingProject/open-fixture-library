@@ -2,6 +2,9 @@ const xml2js = require(`xml2js`);
 const JSZip = require(`jszip`);
 const promisify = require(`util`).promisify;
 
+// see https://github.com/standard-things/esm#getting-started
+require = require(`esm`)(module); // eslint-disable-line no-global-assign
+
 const manufacturers = require(`../../fixtures/manufacturers.json`);
 const { CoarseChannel } = require(`../../lib/model.js`);
 const { scaleDmxValue, scaleDmxRangeIndividually } = require(`../../lib/scale-dmx-values.mjs`);
