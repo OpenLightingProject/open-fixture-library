@@ -104,11 +104,7 @@ function downgradeChannel(channelObject, channelKey, fixture) {
 
   addIfValidData(downgradedChannel, `name`, jsonChannel.name);
   downgradedChannel.type = channel.type === `NoFunction` ? `Nothing` : channel.type;
-
-  if (channel.color) {
-    downgradedChannel.color = channel.color;
-  }
-
+  addIfValidData(downgradedChannel, `color`, channel.color);
   addIfValidData(downgradedChannel, `fineChannelAliases`, jsonChannel.fineChannelAliases);
   addIfValidData(downgradedChannel, `defaultValue`, channel.hasDefaultValue, channel.defaultValue);
   addIfValidData(downgradedChannel, `highlightValue`, channel.hasHighlightValue, channel.highlightValue);
