@@ -580,6 +580,11 @@
       "lastActionDate": "2018-07-21",
       "lastAction": "modified"
     },
+    "generic/rgbww-fader": {
+      "name": "RGBWW Fader",
+      "lastActionDate": "2019-01-21",
+      "lastAction": "created"
+    },
     "ghost/ip-spot-bat": {
       "name": "IP Spot Bat",
       "lastActionDate": "2018-08-09",
@@ -1217,7 +1222,8 @@
       "rgb-fader",
       "rgba-fader",
       "rgbd-fader",
-      "rgbw-fader"
+      "rgbw-fader",
+      "rgbww-fader"
     ],
     "ghost": [
       "ip-spot-bat"
@@ -1503,6 +1509,7 @@
       "generic/rgba-fader",
       "generic/rgbd-fader",
       "generic/rgbw-fader",
+      "generic/rgbww-fader",
       "ghost/ip-spot-bat",
       "glp/force-120",
       "glp/impression-fr1",
@@ -1987,6 +1994,7 @@
       "adb/europe-105",
       "adb/warp-m",
       "generic/drgbw-fader",
+      "generic/rgbww-fader",
       "minuit-une/ivl-carre",
       "prolights/diamond19",
       "robe/robin-ledbeam-100"
@@ -2318,6 +2326,7 @@
   },
   "lastUpdated": [
     "mega-led-lighting/led-par-light-372",
+    "generic/rgbww-fader",
     "robe/robin-ledbeam-100",
     "martin/mac-encore-performance",
     "eurolite/led-ml-56-rgbw",

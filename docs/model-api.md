@@ -170,7 +170,7 @@ A capability represents a range of a channel.
         * [.menuClickDmxValue](#Capability+menuClickDmxValue) ⇒ <code>number</code>
         * [.switchChannels](#Capability+switchChannels) ⇒ <code>object.&lt;string, string&gt;</code>
         * [.shutterEffect](#Capability+shutterEffect) ⇒ <code>string</code> \| <code>null</code>
-        * [.color](#Capability+color) ⇒ <code>&#x27;Red&#x27;</code> \| <code>&#x27;Green&#x27;</code> \| <code>&#x27;Blue&#x27;</code> \| <code>&#x27;Cyan&#x27;</code> \| <code>&#x27;Magenta&#x27;</code> \| <code>&#x27;Yellow&#x27;</code> \| <code>&#x27;Amber&#x27;</code> \| <code>&#x27;White&#x27;</code> \| <code>&#x27;UV&#x27;</code> \| <code>&#x27;Lime&#x27;</code> \| <code>&#x27;Indigo&#x27;</code> \| <code>null</code>
+        * [.color](#Capability+color) ⇒ <code>&#x27;Red&#x27;</code> \| <code>&#x27;Green&#x27;</code> \| <code>&#x27;Blue&#x27;</code> \| <code>&#x27;Cyan&#x27;</code> \| <code>&#x27;Magenta&#x27;</code> \| <code>&#x27;Yellow&#x27;</code> \| <code>&#x27;Amber&#x27;</code> \| <code>&#x27;White&#x27;</code> \| <code>&#x27;Warm White&#x27;</code> \| <code>&#x27;Cold White&#x27;</code> \| <code>&#x27;UV&#x27;</code> \| <code>&#x27;Lime&#x27;</code> \| <code>&#x27;Indigo&#x27;</code> \| <code>null</code>
         * [.colors](#Capability+colors) ⇒ <code>object</code> \| <code>null</code>
         * [.wheels](#Capability+wheels) ⇒ [<code>array.&lt;Wheel&gt;</code>](#Wheel)
         * [.isShaking](#Capability+isShaking) ⇒ <code>&#x27;slot&#x27;</code> \| <code>&#x27;wheel&#x27;</code>
@@ -303,9 +303,9 @@ Create a new Capability instance.
 **Returns**: <code>string</code> \| <code>null</code> - Behavior for the shutter, for example 'Closed', 'Strobe' or 'Pulse'. Defaults to null.  
 <a name="Capability+color"></a>
 
-### capability.color ⇒ <code>&#x27;Red&#x27;</code> \| <code>&#x27;Green&#x27;</code> \| <code>&#x27;Blue&#x27;</code> \| <code>&#x27;Cyan&#x27;</code> \| <code>&#x27;Magenta&#x27;</code> \| <code>&#x27;Yellow&#x27;</code> \| <code>&#x27;Amber&#x27;</code> \| <code>&#x27;White&#x27;</code> \| <code>&#x27;UV&#x27;</code> \| <code>&#x27;Lime&#x27;</code> \| <code>&#x27;Indigo&#x27;</code> \| <code>null</code>
+### capability.color ⇒ <code>&#x27;Red&#x27;</code> \| <code>&#x27;Green&#x27;</code> \| <code>&#x27;Blue&#x27;</code> \| <code>&#x27;Cyan&#x27;</code> \| <code>&#x27;Magenta&#x27;</code> \| <code>&#x27;Yellow&#x27;</code> \| <code>&#x27;Amber&#x27;</code> \| <code>&#x27;White&#x27;</code> \| <code>&#x27;Warm White&#x27;</code> \| <code>&#x27;Cold White&#x27;</code> \| <code>&#x27;UV&#x27;</code> \| <code>&#x27;Lime&#x27;</code> \| <code>&#x27;Indigo&#x27;</code> \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: <code>&#x27;Red&#x27;</code> \| <code>&#x27;Green&#x27;</code> \| <code>&#x27;Blue&#x27;</code> \| <code>&#x27;Cyan&#x27;</code> \| <code>&#x27;Magenta&#x27;</code> \| <code>&#x27;Yellow&#x27;</code> \| <code>&#x27;Amber&#x27;</code> \| <code>&#x27;White&#x27;</code> \| <code>&#x27;UV&#x27;</code> \| <code>&#x27;Lime&#x27;</code> \| <code>&#x27;Indigo&#x27;</code> \| <code>null</code> - The color of the lamp that is controlled by this capability. Defaults to null.  
+**Returns**: <code>&#x27;Red&#x27;</code> \| <code>&#x27;Green&#x27;</code> \| <code>&#x27;Blue&#x27;</code> \| <code>&#x27;Cyan&#x27;</code> \| <code>&#x27;Magenta&#x27;</code> \| <code>&#x27;Yellow&#x27;</code> \| <code>&#x27;Amber&#x27;</code> \| <code>&#x27;White&#x27;</code> \| <code>&#x27;Warm White&#x27;</code> \| <code>&#x27;Cold White&#x27;</code> \| <code>&#x27;UV&#x27;</code> \| <code>&#x27;Lime&#x27;</code> \| <code>&#x27;Indigo&#x27;</code> \| <code>null</code> - The color of the lamp that is controlled by this ColorIntensity capability. Defaults to null.  
 <a name="Capability+colors"></a>
 
 ### capability.colors ⇒ <code>object</code> \| <code>null</code>
