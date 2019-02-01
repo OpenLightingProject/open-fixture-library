@@ -249,7 +249,7 @@ import packageJson from '~~/package.json';
 import register from '~~/fixtures/register.json';
 import plugins from '~~/plugins/plugins.json';
 
-import schemaProperties from '~~/lib/schema-properties.js';
+import schemaProperties from '~~/lib/schema-properties.mjs';
 import Fixture from '~~/lib/model/Fixture.mjs';
 
 import svg from '~/components/svg.vue';

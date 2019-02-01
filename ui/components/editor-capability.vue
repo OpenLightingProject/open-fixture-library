@@ -94,7 +94,7 @@ a.remove {
 </style>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.js';
+import schemaProperties from '~~/lib/schema-properties.mjs';
 import {
   getEmptyCapability,
   isCapabilityChanged

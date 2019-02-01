@@ -4,7 +4,7 @@ const colors = require(`colors`);
 const {
   scaleDmxValue,
   scaleDmxRange
-} = require(`../lib/scale-dmx-values.js`);
+} = require(`../lib/scale-dmx-values.mjs`);
 
 
 let errorCount = 0;

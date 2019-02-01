@@ -5,7 +5,7 @@ const register = require(`../fixtures/register.json`);
 const plugins = require(`../plugins/plugins.json`);
 const fixtureSchema = require(`../schemas/dereferenced/fixture.json`);
 const fixtureRedirectSchema = require(`../schemas/dereferenced/fixture-redirect.json`);
-const schemaProperties = require(`../lib/schema-properties.js`);
+const schemaProperties = require(`../lib/schema-properties.mjs`).default;
 
 const {
   FineChannel,

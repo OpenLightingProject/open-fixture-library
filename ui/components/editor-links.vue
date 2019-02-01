@@ -51,7 +51,7 @@ select {
 </style>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.js';
+import schemaProperties from '~~/lib/schema-properties.mjs';
 import { getEmptyLink } from '~/assets/scripts/editor-utils.mjs';
 
 import propertyInputTextVue from '~/components/property-input-text.vue';
