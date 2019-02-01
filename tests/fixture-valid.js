@@ -1,6 +1,9 @@
 const util = require(`util`);
 const Ajv = require(`ajv`);
 
+// see https://github.com/standard-things/esm#getting-started
+require = require(`esm`)(module); // eslint-disable-line no-global-assign
+
 const register = require(`../fixtures/register.json`);
 const plugins = require(`../plugins/plugins.json`);
 const fixtureSchema = require(`../schemas/dereferenced/fixture.json`);

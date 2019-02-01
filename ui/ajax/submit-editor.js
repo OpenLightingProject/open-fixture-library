@@ -1,3 +1,6 @@
+// see https://github.com/standard-things/esm#getting-started
+require = require(`esm`)(module); // eslint-disable-line no-global-assign
+
 const createPullRequest = require(`../../lib/create-github-pr.js`);
 const schemaProperties = require(`../../lib/schema-properties.mjs`).default;
 const { checkFixture } = require(`../../tests/fixture-valid.js`);
