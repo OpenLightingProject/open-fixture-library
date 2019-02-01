@@ -2,7 +2,7 @@ const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
 const { CoarseChannel } = require(`../../lib/model.js`);
 
 module.exports.name = `Millumin`;
-module.exports.version = `0.3.0`;
+module.exports.version = `0.4.0`;
 
 // needed for export test
 module.exports.supportedOflVersion = `7.3.0`;
@@ -104,11 +104,7 @@ function downgradeChannel(channelObject, channelKey, fixture) {
 
   addIfValidData(downgradedChannel, `name`, jsonChannel.name);
   downgradedChannel.type = channel.type === `NoFunction` ? `Nothing` : channel.type;
-
-  if (channel.color) {
-    downgradedChannel.color = channel.color.replace(/^(?:Warm|Cold) /, ``);
-  }
-
+  addIfValidData(downgradedChannel, `color`, channel.color);
   addIfValidData(downgradedChannel, `fineChannelAliases`, jsonChannel.fineChannelAliases);
   addIfValidData(downgradedChannel, `defaultValue`, channel.hasDefaultValue, channel.defaultValue);
   addIfValidData(downgradedChannel, `highlightValue`, channel.hasHighlightValue, channel.highlightValue);
