@@ -1,13 +1,12 @@
 const path = require(`path`);
 
-const SRC_DIR = `./ui/`;
-
 module.exports = {
-  srcDir: SRC_DIR,
+  srcDir: `./ui/`,
   modules: [
     [`@nuxtjs/axios`, {
       browserBaseURL: `/`
-    }]
+    }],
+    `@nuxtjs/style-resources`
   ],
   plugins: [
     `~/plugins/draggable.js`,
@@ -22,13 +21,17 @@ module.exports = {
     },
     `~/plugins/vue-form.js`
   ],
+  css: [
+    `~/assets/styles/style.scss`,
+    `embetty-vue/dist/embetty-vue.css`
+  ],
+  styleResources: {
+    scss: [
+      `~/assets/styles/vars.scss`,
+      `~/assets/styles/mixins.scss`
+    ]
+  },
   build: {
-    styleResources: {
-      scss: [
-        `${SRC_DIR}assets/styles/vars.scss`,
-        `${SRC_DIR}assets/styles/mixins.scss`
-      ]
-    },
     extend(config, ctx) {
       // exclude /assets/icons from url-loader
       const urlLoader = config.module.rules.find(rule => `use` in rule && rule.use[0].loader === `url-loader`);
@@ -138,9 +141,5 @@ module.exports = {
       meta,
       link
     };
-  },
-  css: [
-    `~/assets/styles/style.scss`,
-    `embetty-vue/dist/embetty-vue.css`
-  ]
+  }
 };
