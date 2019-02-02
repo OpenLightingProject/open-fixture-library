@@ -8,12 +8,9 @@
   width: 0;
   height: calc(#{$icon-size} + #{2*$padding});
   overflow: hidden;
-  border: 1px solid rgba($hover-color, 0);
+  border: 1px solid;
   border-radius: 3px;
-  background-color: rgba($hover-color, 0);
   cursor: pointer;
-  color: $secondary-text-dark;
-  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
 
   &::-moz-focus-inner {
     border: 0;
@@ -29,14 +26,15 @@
     fill: currentcolor;
   }
 
+  @include mobile-hover-emulation((
+    background-color: rgba($hover-color, 0) $hover-color,
+    border-color: rgba($hover-color, 0) rgba($hover-color, 0),
+    color: $secondary-text-dark $primary-text-light
+  ));
+
   &:focus {
     border-color: $hover-color;
     outline: none;
-  }
-
-  &:hover {
-    background-color: $hover-color;
-    color: $primary-text-light;
   }
 
   &:active {
