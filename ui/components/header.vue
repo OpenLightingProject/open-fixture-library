@@ -63,19 +63,6 @@
 </template>
 
 <style lang="scss" scoped>
-$link-hover-color: $grey-300;
-$link-hover-transition-time: 0.2s;
-$mobile-link-hover-time: 0.2s;
-
-@keyframes mobile-link-hover {
-  0% {
-    background-color: rgba($link-hover-color, 1);
-  }
-  100% {
-    background-color: rgba($link-hover-color, 0);
-  }
-}
-
 header {
   position: fixed;
   width: 100%;
@@ -98,23 +85,19 @@ header {
     display: inline-block;
     height: 4.5em;
     line-height: 4.5em;
-    background-color: rgba($link-hover-color, 0);
-    transition-duration: $link-hover-transition-time;
-    transition-property: background-color, color;
+    padding: 0 1ex;
+    text-decoration: none;
 
-    #ofl-root.has-hover &:hover,
-    &:active,
-    &:focus {
-      background-color: rgba($link-hover-color, 1);
+    &:active, &:focus {
+      background-color: rgba($grey-300, 1);
       color: #000;
       outline: 0;
     }
-    #ofl-root:not(.has-hover) &:hover {
-      animation-name: mobile-link-hover;
-      animation-delay: $mobile-link-hover-time;
-      animation-duration: $link-hover-transition-time;
-      animation-fill-mode: both;
-    }
+
+    @include mobile-hover-emulation((
+      background-color: rgba($grey-300, 0) rgba($grey-300, 1),
+      color: inherit #000
+    ));
   }
 
   form {
@@ -158,18 +141,13 @@ header {
   .home-logo {
     display: inline-block;
     width: 0;
+    padding: 0;
     overflow: hidden;
     background-image: url('~static/ofl-logo.svg');
     background-repeat: no-repeat;
     transition: background-color 0.2s, color 0.2s, padding 0.2s;
 
     @include home-logo-sizing(122px, 2ex);
-  }
-
-  .right-nav > a {
-    padding: 0 1ex;
-    text-decoration: none;
-    color: inherit;
   }
 }
 

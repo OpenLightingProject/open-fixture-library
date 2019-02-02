@@ -51,3 +51,83 @@
   background-position: $padding center;
   background-size: calc(100% - #{2*$padding}) auto;
 }
+
+@mixin animation-keyframes {
+  $animation-number: 0 !default !global;
+  $animation-number: $animation-number + 1 !global;
+  $name: unquote("ofl-animation-#{$animation-number}");
+  animation-name: $name;
+  @at-root {
+    @keyframes #{$name} {
+      @content;
+    }
+  }
+}
+
+
+/**
+ * Usage:
+ *   @include mobile-hover-emulation((
+ *     background-color: <start color> <end color>,
+ *     // ...
+ *   ), 0.1s, 0.3s);
+ *
+ * Result:
+ *   & {
+ *     background-color: <start-color>;
+ *     transition-duration: 0.1s;
+ *     transition-property: background-color, color;
+ *   }
+ *
+ *   #ofl-root.has-hover &:hover {
+ *     background-color: <end-color>;
+ *   }
+ *   #ofl-root:not(.has-hover) &:hover {
+ *     animation-delay: 0.3s;
+ *     animation-duration: 0.1s;
+ *     animation-fill-mode: both;
+ *     animation-name: ofl-animation-1;
+ *   }
+ *
+ *   @keyframes ofl-animation-1 {
+ *     from {
+ *       background-color: <end-color>;
+ *     }
+ *     to {
+ *       background-color: <start-color>;
+ *     }
+ *   }
+ */
+@mixin mobile-hover-emulation($transition-map, $transition-duration: 0.2s, $mobile-hover-delay: 0.2s) {
+  @each $property in map-keys($transition-map) {
+    #{$property}: nth(map-get($transition-map, $property), 1);
+  }
+
+  transition-duration: $transition-duration;
+  transition-property: map-keys($transition-map);
+
+  #ofl-root.has-hover &:hover {
+    @each $property in map-keys($transition-map) {
+      #{$property}: nth(map-get($transition-map, $property), 2);
+    }
+  }
+
+  #ofl-root:not(.has-hover) &:hover {
+    animation-delay: $mobile-hover-delay;
+    animation-duration: $transition-duration;
+    animation-fill-mode: both;
+
+    @include animation-keyframes {
+      from {
+        @each $property in map-keys($transition-map) {
+          #{$property}: nth(map-get($transition-map, $property), 2);
+        }
+      }
+      to {
+        @each $property in map-keys($transition-map) {
+          #{$property}: nth(map-get($transition-map, $property), 1);
+        }
+      }
+    }
+  }
+}
