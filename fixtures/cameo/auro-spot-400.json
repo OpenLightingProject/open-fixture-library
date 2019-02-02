@@ -78,9 +78,6 @@
           "type": "Color",
           "name": "Magenta",
           "colors": ["#ff00ff"]
-        },
-        {
-          "type": "Open"
         }
       ]
     },
@@ -125,9 +122,6 @@
           "name": "Cold White",
           "colors": ["#f2f6fe"],
           "colorTemperature": "CTB"
-        },
-        {
-          "type": "Open"
         }
       ]
     },
@@ -151,85 +145,6 @@
         {
           "type": "Gobo"
         },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        }
-      ]
-    },
-    "Gobo 1 Shake": {
-      "slots": [
-        null,
-        null,
-        {
-          "type": "Gobo"
-        },
-        null,
-        null,
-        {
-          "type": "Gobo"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
         {
           "type": "Gobo"
         },
@@ -264,85 +179,6 @@
         {
           "type": "Gobo"
         },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        }
-      ]
-    },
-    "Gobo 2 Shake": {
-      "slots": [
-        null,
-        null,
-        {
-          "type": "Gobo"
-        },
-        null,
-        null,
-        {
-          "type": "Gobo"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
         {
           "type": "Gobo"
         },
@@ -775,7 +611,7 @@
         {
           "dmxRange": [6, 22],
           "type": "WheelSlot",
-          "slotNumber": 3
+          "slotNumber": 2
         },
         {
           "dmxRange": [23, 39],
@@ -836,29 +672,34 @@
         {
           "dmxRange": [6, 127],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel 1",
           "angleStart": "0deg",
           "angleEnd": "360deg"
         },
         {
           "dmxRange": [128, 128],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel 1",
           "speed": "stop"
         },
         {
           "dmxRange": [129, 191],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel 1",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         },
         {
           "dmxRange": [192, 250],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel 1",
           "speedStart": "fast CCW",
           "speedEnd": "fast CW"
         },
         {
           "dmxRange": [251, 255],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel 1",
           "speed": "stop"
         }
       ]
@@ -873,6 +714,7 @@
         {
           "dmxRange": [6, 37],
           "type": "WheelShake",
+          "wheel": "Gobo Wheel 1",
           "shakeSpeed": "12.5%",
           "shakeAngleStart": "narrow",
           "shakeAngleEnd": "wide"
@@ -880,6 +722,7 @@
         {
           "dmxRange": [38, 69],
           "type": "WheelShake",
+          "wheel": "Gobo Wheel 1",
           "shakeSpeed": "25%",
           "shakeAngleStart": "narrow",
           "shakeAngleEnd": "wide"
@@ -887,6 +730,7 @@
         {
           "dmxRange": [70, 101],
           "type": "WheelShake",
+          "wheel": "Gobo Wheel 1",
           "shakeSpeed": "37.5%",
           "shakeAngleStart": "narrow",
           "shakeAngleEnd": "wide"
@@ -894,6 +738,7 @@
         {
           "dmxRange": [102, 133],
           "type": "WheelShake",
+          "wheel": "Gobo Wheel 1",
           "shakeSpeed": "50%",
           "shakeAngleStart": "narrow",
           "shakeAngleEnd": "wide"
@@ -901,6 +746,7 @@
         {
           "dmxRange": [134, 165],
           "type": "WheelShake",
+          "wheel": "Gobo Wheel 1",
           "shakeSpeed": "62.5%",
           "shakeAngleStart": "narrow",
           "shakeAngleEnd": "wide"
@@ -908,6 +754,7 @@
         {
           "dmxRange": [166, 197],
           "type": "WheelShake",
+          "wheel": "Gobo Wheel 1",
           "shakeSpeed": "75%",
           "shakeAngleStart": "narrow",
           "shakeAngleEnd": "wide"
@@ -915,6 +762,7 @@
         {
           "dmxRange": [198, 229],
           "type": "WheelShake",
+          "wheel": "Gobo Wheel 1",
           "shakeSpeed": "87.5%",
           "shakeAngleStart": "narrow",
           "shakeAngleEnd": "wide"
@@ -922,6 +770,7 @@
         {
           "dmxRange": [230, 255],
           "type": "WheelShake",
+          "wheel": "Gobo Wheel 1",
           "shakeSpeed": "100%",
           "shakeAngleStart": "narrow",
           "shakeAngleEnd": "wide"
@@ -1010,6 +859,7 @@
         {
           "dmxRange": [6, 37],
           "type": "WheelShake",
+          "wheel": "Gobo Wheel 2",
           "shakeSpeed": "12.5%",
           "shakeAngleStart": "narrow",
           "shakeAngleEnd": "wide"
@@ -1017,6 +867,7 @@
         {
           "dmxRange": [38, 69],
           "type": "WheelShake",
+          "wheel": "Gobo Wheel 2",
           "shakeSpeed": "25%",
           "shakeAngleStart": "narrow",
           "shakeAngleEnd": "wide"
@@ -1024,6 +875,7 @@
         {
           "dmxRange": [70, 101],
           "type": "WheelShake",
+          "wheel": "Gobo Wheel 2",
           "shakeSpeed": "37.5%",
           "shakeAngleStart": "narrow",
           "shakeAngleEnd": "wide"
@@ -1031,6 +883,7 @@
         {
           "dmxRange": [102, 133],
           "type": "WheelShake",
+          "wheel": "Gobo Wheel 2",
           "shakeSpeed": "50%",
           "shakeAngleStart": "narrow",
           "shakeAngleEnd": "wide"
@@ -1038,6 +891,7 @@
         {
           "dmxRange": [134, 165],
           "type": "WheelShake",
+          "wheel": "Gobo Wheel 2",
           "shakeSpeed": "62.5%",
           "shakeAngleStart": "narrow",
           "shakeAngleEnd": "wide"
@@ -1045,6 +899,7 @@
         {
           "dmxRange": [166, 197],
           "type": "WheelShake",
+          "wheel": "Gobo Wheel 2",
           "shakeSpeed": "75%",
           "shakeAngleStart": "narrow",
           "shakeAngleEnd": "wide"
@@ -1052,6 +907,7 @@
         {
           "dmxRange": [198, 229],
           "type": "WheelShake",
+          "wheel": "Gobo Wheel 2",
           "shakeSpeed": "87.5%",
           "shakeAngleStart": "narrow",
           "shakeAngleEnd": "wide"
@@ -1059,6 +915,7 @@
         {
           "dmxRange": [230, 255],
           "type": "WheelShake",
+          "wheel": "Gobo Wheel 2",
           "shakeSpeed": "100%",
           "shakeAngleStart": "narrow",
           "shakeAngleEnd": "wide"
@@ -1100,29 +957,34 @@
         {
           "dmxRange": [6, 127],
           "type": "WheelRotation",
+          "wheel": "Prism Wheel",
           "angleStart": "0deg",
           "angleEnd": "360deg"
         },
         {
           "dmxRange": [128, 128],
           "type": "WheelRotation",
+          "wheel": "Prism Wheel",
           "speed": "stop"
         },
         {
           "dmxRange": [129, 191],
           "type": "WheelRotation",
+          "wheel": "Prism Wheel",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         },
         {
           "dmxRange": [192, 250],
           "type": "WheelRotation",
+          "wheel": "Prism Wheel",
           "speedStart": "fast CCW",
           "speedEnd": "slow CCW"
         },
         {
           "dmxRange": [251, 255],
           "type": "WheelRotation",
+          "wheel": "Prism Wheel",
           "speed": "stop"
         }
       ]
