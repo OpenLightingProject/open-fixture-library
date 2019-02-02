@@ -72,7 +72,10 @@ module.exports.export = function exportOpZ(fixtures, options) {
       return `off`;
     }
 
+    const defaultValue = channel.getDefaultValueWithResolution(CoarseChannel.RESOLUTION_8BIT);
+
     const opZChannelTypes = {
+      [`${defaultValue}`]: () => channel.isConstant || channel.type === `Shutter`,
       'red': () => channel.color === `Red`,
       'green': () => channel.color === `Green`,
       'blue': () => channel.color === `Blue`,
@@ -88,8 +91,7 @@ module.exports.export = function exportOpZ(fixtures, options) {
       // 'knob6': () => false,
       // 'knob7': () => false,
       // 'knob8': () => false,
-      // '0 – 255': () => false,
-      'on': () => channel.type === `Shutter`,
+      // 'on': () => false,
       'off': () => channel.type === `Maintenance`
     };
 
@@ -99,8 +101,6 @@ module.exports.export = function exportOpZ(fixtures, options) {
     if (channelType) {
       return channelType;
     }
-
-    const defaultValue = channel.getDefaultValueWithResolution(CoarseChannel.RESOLUTION_8BIT);
 
     return getKnobType() || `${defaultValue}`;
 
