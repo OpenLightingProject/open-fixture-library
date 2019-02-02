@@ -1,5 +1,5 @@
 <template>
-  <header id="header">
+  <header>
     <nav>
       <div class="left-nav">
         <nuxt-link
@@ -63,7 +63,20 @@
 </template>
 
 <style lang="scss" scoped>
-#header {
+$link-hover-color: $grey-300;
+$link-hover-transition-time: 0.2s;
+$mobile-link-hover-time: 0.2s;
+
+@keyframes mobile-link-hover {
+  0% {
+    background-color: rgba($link-hover-color, 1);
+  }
+  100% {
+    background-color: rgba($link-hover-color, 0);
+  }
+}
+
+header {
   position: fixed;
   width: 100%;
   background: #fafafa;
@@ -85,14 +98,22 @@
     display: inline-block;
     height: 4.5em;
     line-height: 4.5em;
-    background-color: rgba(#e8e8e8, 0);
-    transition: background-color 0.2s, color 0.2s;
+    background-color: rgba($link-hover-color, 0);
+    transition-duration: $link-hover-transition-time;
+    transition-property: background-color, color;
 
-    &:hover,
+    #ofl-root.has-hover &:hover,
+    &:active,
     &:focus {
-      background-color: rgba(#e8e8e8, 1);
+      background-color: rgba($link-hover-color, 1);
       color: #000;
       outline: 0;
+    }
+    #ofl-root:not(.has-hover) &:hover {
+      animation-name: mobile-link-hover;
+      animation-delay: $mobile-link-hover-time;
+      animation-duration: $link-hover-transition-time;
+      animation-fill-mode: both;
     }
   }
 
@@ -155,7 +176,7 @@
 
 /* Tablet */
 @media (max-width: $tablet) {
-  #header {
+  header {
     nav > div {
       -ms-flex: 0 1 100%;
       flex-basis: 100%;
@@ -187,7 +208,7 @@
 
 /* Phone */
 @media (max-width: $phone) {
-  #header {
+  header {
     .home-logo {
       @include home-logo-sizing(82px, .5ex);
 
@@ -213,7 +234,6 @@
   }
 }
 </style>
-
 
 <script>
 import svg from '~/components/svg.vue';
