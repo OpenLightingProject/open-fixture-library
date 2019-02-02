@@ -207,7 +207,6 @@
   "availableChannels": {
     "Dimmer": {
       "fineChannelAliases": ["Dimmer fine"],
-      "dmxValueResolution": "8bit",
       "defaultValue": 0,
       "capability": {
         "type": "Intensity"
@@ -322,7 +321,6 @@
     },
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "dmxValueResolution": "8bit",
       "defaultValue": "50%",
       "capability": {
         "type": "Pan",
@@ -332,7 +330,6 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "dmxValueResolution": "8bit",
       "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
@@ -340,7 +337,7 @@
         "angleEnd": "230deg"
       }
     },
-    "Strobe 2": {
+    "Strobe Extended": {
       "name": "Strobe",
       "defaultValue": 0,
       "capabilities": [
@@ -694,7 +691,7 @@
           "type": "WheelSlotRotation",
           "wheel": "Gobo Wheel 1",
           "speedStart": "fast CCW",
-          "speedEnd": "fast CW"
+          "speedEnd": "slow CCW"
         },
         {
           "dmxRange": [251, 255],
@@ -956,34 +953,34 @@
         },
         {
           "dmxRange": [6, 127],
-          "type": "WheelRotation",
+          "type": "WheelSlotRotation",
           "wheel": "Prism Wheel",
           "angleStart": "0deg",
           "angleEnd": "360deg"
         },
         {
           "dmxRange": [128, 128],
-          "type": "WheelRotation",
+          "type": "WheelSlotRotation",
           "wheel": "Prism Wheel",
           "speed": "stop"
         },
         {
           "dmxRange": [129, 191],
-          "type": "WheelRotation",
+          "type": "WheelSlotRotation",
           "wheel": "Prism Wheel",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         },
         {
           "dmxRange": [192, 250],
-          "type": "WheelRotation",
+          "type": "WheelSlotRotation",
           "wheel": "Prism Wheel",
           "speedStart": "fast CCW",
           "speedEnd": "slow CCW"
         },
         {
           "dmxRange": [251, 255],
-          "type": "WheelRotation",
+          "type": "WheelSlotRotation",
           "wheel": "Prism Wheel",
           "speed": "stop"
         }
@@ -991,11 +988,11 @@
     },
     "Focus": {
       "fineChannelAliases": ["Focus fine"],
-      "dmxValueResolution": "8bit",
       "capability": {
         "type": "Focus",
         "distanceStart": "0%",
-        "distanceEnd": "100%"
+        "distanceEnd": "100%",
+        "helpWanted": "Is this near…far or far…near?"
       }
     },
     "Frost": {
@@ -1180,7 +1177,7 @@
         "Tilt",
         "Tilt fine",
         "Dimmer",
-        "Strobe 2",
+        "Strobe Extended",
         "Color Wheel 1",
         "Color Wheel 2",
         "Gobo Wheel 1",
@@ -1206,7 +1203,7 @@
         "Tilt fine",
         "Dimmer",
         "Dimmer fine",
-        "Strobe 2",
+        "Strobe Extended",
         "Color Wheel 1",
         "Color Wheel 2",
         "Gobo Wheel 1",
