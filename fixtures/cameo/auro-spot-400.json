@@ -205,6 +205,24 @@
     }
   },
   "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "630deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "230deg"
+      }
+    },
     "Dimmer": {
       "fineChannelAliases": ["Dimmer fine"],
       "defaultValue": 0,
@@ -228,114 +246,6 @@
           "speedEnd": "20Hz"
         }
       ]
-    },
-    "Auto Programs": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 5],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [6, 30],
-          "type": "Effect",
-          "effectName": "Program 1"
-        },
-        {
-          "dmxRange": [31, 55],
-          "type": "Effect",
-          "effectName": "Program 2"
-        },
-        {
-          "dmxRange": [56, 80],
-          "type": "Effect",
-          "effectName": "Program 3"
-        },
-        {
-          "dmxRange": [81, 105],
-          "type": "Effect",
-          "effectName": "Program 4"
-        },
-        {
-          "dmxRange": [106, 130],
-          "type": "Effect",
-          "effectName": "Program 5"
-        },
-        {
-          "dmxRange": [131, 155],
-          "type": "Effect",
-          "effectName": "Program 6"
-        },
-        {
-          "dmxRange": [156, 180],
-          "type": "Effect",
-          "effectName": "Program 7"
-        },
-        {
-          "dmxRange": [181, 205],
-          "type": "Effect",
-          "effectName": "Program 8"
-        },
-        {
-          "dmxRange": [206, 230],
-          "type": "Effect",
-          "effectName": "Program 9"
-        },
-        {
-          "dmxRange": [231, 255],
-          "type": "Effect",
-          "effectName": "Program 10"
-        }
-      ]
-    },
-    "Auto Program Speed": {
-      "capability": {
-        "type": "Speed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
-      }
-    },
-    "Reset": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 5],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [6, 127],
-          "type": "Maintenance",
-          "comment": "Reset pan / tilt"
-        },
-        {
-          "dmxRange": [128, 191],
-          "type": "Maintenance",
-          "comment": "Reset effects (iris, prism, gobo, ...)"
-        },
-        {
-          "dmxRange": [192, 255],
-          "type": "Maintenance",
-          "comment": "Reset all functions"
-        }
-      ]
-    },
-    "Pan": {
-      "fineChannelAliases": ["Pan fine"],
-      "defaultValue": "50%",
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "630deg"
-      }
-    },
-    "Tilt": {
-      "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": "50%",
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "230deg"
-      }
     },
     "Strobe Extended": {
       "name": "Strobe",
@@ -1003,12 +913,70 @@
         "frostIntensityEnd": "high"
       }
     },
-    "Pan/Tilt Speed": {
+    "Auto Programs": {
       "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 30],
+          "type": "Effect",
+          "effectName": "Program 1"
+        },
+        {
+          "dmxRange": [31, 55],
+          "type": "Effect",
+          "effectName": "Program 2"
+        },
+        {
+          "dmxRange": [56, 80],
+          "type": "Effect",
+          "effectName": "Program 3"
+        },
+        {
+          "dmxRange": [81, 105],
+          "type": "Effect",
+          "effectName": "Program 4"
+        },
+        {
+          "dmxRange": [106, 130],
+          "type": "Effect",
+          "effectName": "Program 5"
+        },
+        {
+          "dmxRange": [131, 155],
+          "type": "Effect",
+          "effectName": "Program 6"
+        },
+        {
+          "dmxRange": [156, 180],
+          "type": "Effect",
+          "effectName": "Program 7"
+        },
+        {
+          "dmxRange": [181, 205],
+          "type": "Effect",
+          "effectName": "Program 8"
+        },
+        {
+          "dmxRange": [206, 230],
+          "type": "Effect",
+          "effectName": "Program 9"
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "Effect",
+          "effectName": "Program 10"
+        }
+      ]
+    },
+    "Auto Program Speed": {
       "capability": {
-        "type": "PanTiltSpeed",
-        "speedStart": "fast",
-        "speedEnd": "slow"
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     },
     "Pan/Tilt Macro": {
@@ -1098,6 +1066,14 @@
         }
       ]
     },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
     "Device Settings": {
       "defaultValue": 0,
       "capabilities": [
@@ -1152,6 +1128,30 @@
           "type": "Maintenance",
           "hold": "5s",
           "comment": "Silent Fan off"
+        }
+      ]
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 127],
+          "type": "Maintenance",
+          "comment": "Reset pan / tilt"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "comment": "Reset effects (iris, prism, gobo, ...)"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "comment": "Reset all functions"
         }
       ]
     }
