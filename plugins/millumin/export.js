@@ -2,7 +2,7 @@ const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
 const { CoarseChannel } = require(`../../lib/model.js`);
 
 module.exports.name = `Millumin`;
-module.exports.version = `0.3.0`;
+module.exports.version = `0.4.0`;
 
 // needed for export test
 module.exports.supportedOflVersion = `7.3.0`;
@@ -118,7 +118,7 @@ function downgradeChannel(channelObject, channelKey, fixture) {
   if (capabilitiesNeeded()) {
     downgradedChannel.capabilities = [];
 
-    for (const cap of channel.capabilities) {
+    channel.capabilities.forEach(cap => {
       const downgradedCap = {
         range: [cap.rawDmxRange.start, cap.rawDmxRange.end],
         name: cap.name
@@ -136,7 +136,7 @@ function downgradeChannel(channelObject, channelKey, fixture) {
       addIfValidData(downgradedCap, `switchChannels`, cap.jsonObject.switchChannels);
 
       downgradedChannel.capabilities.push(downgradedCap);
-    }
+    });
   }
 
   /**

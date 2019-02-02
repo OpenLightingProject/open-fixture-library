@@ -170,7 +170,7 @@ A capability represents a range of a channel.
         * [.menuClickDmxValue](#Capability+menuClickDmxValue) ⇒ <code>number</code>
         * [.switchChannels](#Capability+switchChannels) ⇒ <code>object.&lt;string, string&gt;</code>
         * [.shutterEffect](#Capability+shutterEffect) ⇒ <code>string</code> \| <code>null</code>
-        * [.color](#Capability+color) ⇒ <code>&#x27;Red&#x27;</code> \| <code>&#x27;Green&#x27;</code> \| <code>&#x27;Blue&#x27;</code> \| <code>&#x27;Cyan&#x27;</code> \| <code>&#x27;Magenta&#x27;</code> \| <code>&#x27;Yellow&#x27;</code> \| <code>&#x27;Amber&#x27;</code> \| <code>&#x27;White&#x27;</code> \| <code>&#x27;UV&#x27;</code> \| <code>&#x27;Lime&#x27;</code> \| <code>&#x27;Indigo&#x27;</code> \| <code>null</code>
+        * [.color](#Capability+color) ⇒ <code>&#x27;Red&#x27;</code> \| <code>&#x27;Green&#x27;</code> \| <code>&#x27;Blue&#x27;</code> \| <code>&#x27;Cyan&#x27;</code> \| <code>&#x27;Magenta&#x27;</code> \| <code>&#x27;Yellow&#x27;</code> \| <code>&#x27;Amber&#x27;</code> \| <code>&#x27;White&#x27;</code> \| <code>&#x27;Warm White&#x27;</code> \| <code>&#x27;Cold White&#x27;</code> \| <code>&#x27;UV&#x27;</code> \| <code>&#x27;Lime&#x27;</code> \| <code>&#x27;Indigo&#x27;</code> \| <code>null</code>
         * [.colors](#Capability+colors) ⇒ <code>object</code> \| <code>null</code>
         * [.wheels](#Capability+wheels) ⇒ [<code>array.&lt;Wheel&gt;</code>](#Wheel)
         * [.isShaking](#Capability+isShaking) ⇒ <code>&#x27;slot&#x27;</code> \| <code>&#x27;wheel&#x27;</code>
@@ -303,9 +303,9 @@ Create a new Capability instance.
 **Returns**: <code>string</code> \| <code>null</code> - Behavior for the shutter, for example 'Closed', 'Strobe' or 'Pulse'. Defaults to null.  
 <a name="Capability+color"></a>
 
-### capability.color ⇒ <code>&#x27;Red&#x27;</code> \| <code>&#x27;Green&#x27;</code> \| <code>&#x27;Blue&#x27;</code> \| <code>&#x27;Cyan&#x27;</code> \| <code>&#x27;Magenta&#x27;</code> \| <code>&#x27;Yellow&#x27;</code> \| <code>&#x27;Amber&#x27;</code> \| <code>&#x27;White&#x27;</code> \| <code>&#x27;UV&#x27;</code> \| <code>&#x27;Lime&#x27;</code> \| <code>&#x27;Indigo&#x27;</code> \| <code>null</code>
+### capability.color ⇒ <code>&#x27;Red&#x27;</code> \| <code>&#x27;Green&#x27;</code> \| <code>&#x27;Blue&#x27;</code> \| <code>&#x27;Cyan&#x27;</code> \| <code>&#x27;Magenta&#x27;</code> \| <code>&#x27;Yellow&#x27;</code> \| <code>&#x27;Amber&#x27;</code> \| <code>&#x27;White&#x27;</code> \| <code>&#x27;Warm White&#x27;</code> \| <code>&#x27;Cold White&#x27;</code> \| <code>&#x27;UV&#x27;</code> \| <code>&#x27;Lime&#x27;</code> \| <code>&#x27;Indigo&#x27;</code> \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: <code>&#x27;Red&#x27;</code> \| <code>&#x27;Green&#x27;</code> \| <code>&#x27;Blue&#x27;</code> \| <code>&#x27;Cyan&#x27;</code> \| <code>&#x27;Magenta&#x27;</code> \| <code>&#x27;Yellow&#x27;</code> \| <code>&#x27;Amber&#x27;</code> \| <code>&#x27;White&#x27;</code> \| <code>&#x27;UV&#x27;</code> \| <code>&#x27;Lime&#x27;</code> \| <code>&#x27;Indigo&#x27;</code> \| <code>null</code> - The color of the lamp that is controlled by this capability. Defaults to null.  
+**Returns**: <code>&#x27;Red&#x27;</code> \| <code>&#x27;Green&#x27;</code> \| <code>&#x27;Blue&#x27;</code> \| <code>&#x27;Cyan&#x27;</code> \| <code>&#x27;Magenta&#x27;</code> \| <code>&#x27;Yellow&#x27;</code> \| <code>&#x27;Amber&#x27;</code> \| <code>&#x27;White&#x27;</code> \| <code>&#x27;Warm White&#x27;</code> \| <code>&#x27;Cold White&#x27;</code> \| <code>&#x27;UV&#x27;</code> \| <code>&#x27;Lime&#x27;</code> \| <code>&#x27;Indigo&#x27;</code> \| <code>null</code> - The color of the lamp that is controlled by this ColorIntensity capability. Defaults to null.  
 <a name="Capability+colors"></a>
 
 ### capability.colors ⇒ <code>object</code> \| <code>null</code>
@@ -475,7 +475,7 @@ Use only in `WheelShake` capabilities!
 
 <a name="Capability+_getStartEndArray"></a>
 
-### capability._getStartEndArray(prop) ⇒ <code>array</code> \| <code>null</code> ℗
+### capability.\_getStartEndArray(prop) ⇒ <code>array</code> \| <code>null</code> ℗
 Parses a property that has start and end variants by generating an array with start and end value.
 
 **Kind**: instance method of [<code>Capability</code>](#Capability)  
@@ -488,7 +488,7 @@ Parses a property that has start and end variants by generating an array with st
 
 <a name="Capability.START_END_ENTITIES"></a>
 
-### Capability.START_END_ENTITIES ⇒ <code>array.&lt;string&gt;</code>
+### Capability.START\_END\_ENTITIES ⇒ <code>array.&lt;string&gt;</code>
 **Kind**: static property of [<code>Capability</code>](#Capability)  
 **Returns**: <code>array.&lt;string&gt;</code> - Type-specific properties that may have a start and an end value.  
 <a name="CoarseChannel"></a>
@@ -751,22 +751,22 @@ Checks the given resolution if it can safely be used in this channel.
 
 <a name="CoarseChannel.RESOLUTION_8BIT"></a>
 
-### CoarseChannel.RESOLUTION_8BIT ⇒ [<code>Resolution</code>](#Resolution)
+### CoarseChannel.RESOLUTION\_8BIT ⇒ [<code>Resolution</code>](#Resolution)
 **Kind**: static property of [<code>CoarseChannel</code>](#CoarseChannel)  
 **Returns**: [<code>Resolution</code>](#Resolution) - Resolution of an 8bit channel.  
 <a name="CoarseChannel.RESOLUTION_16BIT"></a>
 
-### CoarseChannel.RESOLUTION_16BIT ⇒ [<code>Resolution</code>](#Resolution)
+### CoarseChannel.RESOLUTION\_16BIT ⇒ [<code>Resolution</code>](#Resolution)
 **Kind**: static property of [<code>CoarseChannel</code>](#CoarseChannel)  
 **Returns**: [<code>Resolution</code>](#Resolution) - Resolution of a 16bit channel.  
 <a name="CoarseChannel.RESOLUTION_24BIT"></a>
 
-### CoarseChannel.RESOLUTION_24BIT ⇒ [<code>Resolution</code>](#Resolution)
+### CoarseChannel.RESOLUTION\_24BIT ⇒ [<code>Resolution</code>](#Resolution)
 **Kind**: static property of [<code>CoarseChannel</code>](#CoarseChannel)  
 **Returns**: [<code>Resolution</code>](#Resolution) - Resolution of a 24bit channel.  
 <a name="CoarseChannel.RESOLUTION_32BIT"></a>
 
-### CoarseChannel.RESOLUTION_32BIT ⇒ [<code>Resolution</code>](#Resolution)
+### CoarseChannel.RESOLUTION\_32BIT ⇒ [<code>Resolution</code>](#Resolution)
 **Kind**: static property of [<code>CoarseChannel</code>](#CoarseChannel)  
 **Returns**: [<code>Resolution</code>](#Resolution) - Resolution of a 32bit channel.  
 <a name="Entity"></a>
@@ -1454,7 +1454,7 @@ Updates the JSON object and clears the cache used for expensive parameters.
 **Returns**: <code>object.&lt;string, array&gt;</code> - Key is the group key, value is an array of pixel keys.  
 <a name="Matrix+_getPixelDefaultKeys"></a>
 
-### matrix._getPixelDefaultKeys() ⇒ <code>array.&lt;array.&lt;array.&lt;string&gt;&gt;&gt;</code> ℗
+### matrix.\_getPixelDefaultKeys() ⇒ <code>array.&lt;array.&lt;array.&lt;string&gt;&gt;&gt;</code> ℗
 Generate default keys for all pixels.
 
 **Kind**: instance method of [<code>Matrix</code>](#Matrix)  
@@ -1462,7 +1462,7 @@ Generate default keys for all pixels.
 **Access**: private  
 <a name="Matrix+_getPixelDefaultKey"></a>
 
-### matrix._getPixelDefaultKey(x, y, z) ⇒ <code>string</code> ℗
+### matrix.\_getPixelDefaultKey(x, y, z) ⇒ <code>string</code> ℗
 Generate default name based on defined axes and given position if no custom names are set via `pixelKeys`.
 
 | Dimension | Default pixelKey |
@@ -1677,7 +1677,7 @@ Sets a new fixture and resets the cache.
 **Returns**: [<code>array.&lt;AbstractChannel&gt;</code>](#AbstractChannel) - The mode's channels. The count and position equals to actual DMX channel count and position.  
 <a name="Mode+_getMatrixChannelKeysFromInsertBlock"></a>
 
-### mode._getMatrixChannelKeysFromInsertBlock(channelInsert) ⇒ <code>array.&lt;string&gt;</code> ℗
+### mode.\_getMatrixChannelKeysFromInsertBlock(channelInsert) ⇒ <code>array.&lt;string&gt;</code> ℗
 Resolves the matrix channel insert block into a list of channel keys
 
 **Kind**: instance method of [<code>Mode</code>](#Mode)  
@@ -1690,7 +1690,7 @@ Resolves the matrix channel insert block into a list of channel keys
 
 <a name="Mode+_getRepeatForPixelKeys"></a>
 
-### mode._getRepeatForPixelKeys(repeatFor) ⇒ <code>array.&lt;string&gt;</code> ℗
+### mode.\_getRepeatForPixelKeys(repeatFor) ⇒ <code>array.&lt;string&gt;</code> ℗
 Resolves `repeatFor` keywords into a list of pixel (group) keys or just returns the given pixel (group) key array.
 
 **Kind**: instance method of [<code>Mode</code>](#Mode)  

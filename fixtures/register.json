@@ -580,6 +580,11 @@
       "lastActionDate": "2018-07-21",
       "lastAction": "modified"
     },
+    "generic/rgbww-fader": {
+      "name": "RGBWW Fader",
+      "lastActionDate": "2019-01-21",
+      "lastAction": "created"
+    },
     "ghost/ip-spot-bat": {
       "name": "IP Spot Bat",
       "lastActionDate": "2018-08-09",
@@ -869,6 +874,11 @@
       "name": "Robin 600E Spot",
       "lastActionDate": "2018-09-04",
       "lastAction": "modified"
+    },
+    "robe/robin-ledbeam-100": {
+      "name": "Robin LEDBeam 100",
+      "lastActionDate": "2019-01-21",
+      "lastAction": "created"
     },
     "robe/robin-ledbeam-150": {
       "name": "Robin LEDBeam 150",
@@ -1207,7 +1217,8 @@
       "rgb-fader",
       "rgba-fader",
       "rgbd-fader",
-      "rgbw-fader"
+      "rgbw-fader",
+      "rgbww-fader"
     ],
     "ghost": [
       "ip-spot-bat"
@@ -1313,6 +1324,7 @@
       "colorspot-2500e-at",
       "dj-scan-250-xt",
       "robin-600e-spot",
+      "robin-ledbeam-100",
       "robin-ledbeam-150",
       "robin-ledwash-600",
       "robin-viva-cmy"
@@ -1489,6 +1501,7 @@
       "generic/rgba-fader",
       "generic/rgbd-fader",
       "generic/rgbw-fader",
+      "generic/rgbww-fader",
       "ghost/ip-spot-bat",
       "glp/force-120",
       "glp/impression-fr1",
@@ -1539,6 +1552,7 @@
       "robe/colorspot-2500e-at",
       "robe/dj-scan-250-xt",
       "robe/robin-600e-spot",
+      "robe/robin-ledbeam-100",
       "robe/robin-ledbeam-150",
       "robe/robin-ledwash-600",
       "robe/robin-viva-cmy",
@@ -1580,6 +1594,7 @@
       "eurolite/led-sls-6-uv-floor",
       "generic/desk-channel",
       "magicfx/smokejet",
+      "robe/robin-ledbeam-100",
       "robert-juliat/613sx",
       "showtec/club-par-12-4-rgbw",
       "showtec/sunstrip-active-mkii"
@@ -1704,6 +1719,7 @@
       "renkforce/gm107",
       "robe/colorspot-2500e-at",
       "robe/robin-600e-spot",
+      "robe/robin-ledbeam-100",
       "robe/robin-ledbeam-150",
       "robe/robin-ledwash-600",
       "robe/robin-viva-cmy",
@@ -1937,6 +1953,7 @@
       "qtx/lux-ld30w",
       "robe/dj-scan-250-xt",
       "robe/robin-600e-spot",
+      "robe/robin-ledbeam-100",
       "showtec/horizon-8",
       "showtec/kanjo-spot-60",
       "showtec/kanjo-wash-rgb",
@@ -1967,8 +1984,10 @@
       "adb/europe-105",
       "adb/warp-m",
       "generic/drgbw-fader",
+      "generic/rgbww-fader",
       "minuit-une/ivl-carre",
-      "prolights/diamond19"
+      "prolights/diamond19",
+      "robe/robin-ledbeam-100"
     ],
     "Alejo Cervera": [
       "magicfx/stage-flame",
@@ -2295,6 +2314,8 @@
     "venue": "#78cc33"
   },
   "lastUpdated": [
+    "generic/rgbww-fader",
+    "robe/robin-ledbeam-100",
     "martin/mac-encore-performance",
     "eurolite/led-ml-56-rgbw",
     "eurolite/led-pix-12-hcl",

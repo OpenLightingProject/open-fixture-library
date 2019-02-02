@@ -122,7 +122,7 @@ function addChannel(xml, channel) {
 
   if (chType === `Intensity`) {
     xmlChannel.element({
-      Colour: channel.color !== null ? channel.color : `Generic`
+      Colour: channel.color !== null ? channel.color.replace(/^(?:Warm|Cold) /, ``) : `Generic`
     });
   }
 

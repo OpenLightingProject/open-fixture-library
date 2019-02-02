@@ -237,7 +237,7 @@
 import scrollIntoView from 'scroll-into-view';
 import uuidV4 from 'uuid/v4.js';
 
-import schemaProperties from '~~/lib/schema-properties.js';
+import schemaProperties from '~~/lib/schema-properties.mjs';
 import {
   constants,
   getEmptyCapability,
