@@ -4,7 +4,8 @@
     :class="{
       js: isBrowser,
       'no-js': !isBrowser,
-      'has-hover': hasHover
+      touch: isTouchScreen,
+      'no-touch': !isTouchScreen
     }">
 
     <a href="#content" class="accessibility">Skip to content</a>
@@ -65,7 +66,7 @@ export default {
   data() {
     return {
       isBrowser: false,
-      hasHover: true,
+      isTouchScreen: false,
       lastTouchTime: 0
     };
   },
@@ -74,14 +75,14 @@ export default {
       this.isBrowser = true;
 
       // adapted from https://stackoverflow.com/a/30303898/451391
-      document.addEventListener(`touchstart`, this.disableHover, true);
-      document.addEventListener(`mousemove`, this.enableHover, true);
+      document.addEventListener(`touchstart`, this.onTouchStart, true);
+      document.addEventListener(`mousemove`, this.onMouseMove, true);
     }
   },
   beforeDestroy() {
     if (process.browser) {
-      document.removeEventListener(`touchstart`, this.disableHover, true);
-      document.removeEventListener(`mousemove`, this.enableHover, true);
+      document.removeEventListener(`touchstart`, this.onTouchStart, true);
+      document.removeEventListener(`mousemove`, this.onMouseMove, true);
     }
   },
   methods: {
@@ -89,17 +90,17 @@ export default {
       this.$refs.content.focus();
     },
 
-    enableHover() {
+    onMouseMove() {
       // filter emulated events coming from touch events
       if (new Date() - this.lastTouchTime < 500) {
         return;
       }
 
-      this.hasHover = true;
+      this.isTouchScreen = false;
     },
 
-    disableHover() {
-      this.hasHover = false;
+    onTouchStart() {
+      this.isTouchScreen = true;
       this.lastTouchTime = new Date();
     }
   }

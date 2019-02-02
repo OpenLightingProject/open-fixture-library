@@ -77,10 +77,10 @@
  *     transition-property: background-color, color;
  *   }
  *
- *   #ofl-root.has-hover &:hover {
+ *   #ofl-root.no-touch &:hover {
  *     background-color: <end-color>;
  *   }
- *   #ofl-root:not(.has-hover) &:hover {
+ *   #ofl-root.touch &:hover {
  *     animation-delay: 0.3s;
  *     animation-duration: 0.1s;
  *     animation-fill-mode: both;
@@ -104,13 +104,13 @@
   transition-duration: $transition-duration;
   transition-property: map-keys($transition-map);
 
-  #ofl-root.has-hover &:hover {
+  #ofl-root.no-touch &:hover {
     @each $property in map-keys($transition-map) {
       #{$property}: nth(map-get($transition-map, $property), 2);
     }
   }
 
-  #ofl-root:not(.has-hover) &:hover {
+  #ofl-root.touch &:hover {
     animation-delay: $mobile-hover-delay;
     animation-duration: $transition-duration;
     animation-fill-mode: both;
