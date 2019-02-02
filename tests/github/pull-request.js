@@ -1,4 +1,4 @@
-const GitHubApi = require(`@octokit/rest`);
+const Octokit = require(`@octokit/rest`);
 
 require(`../../lib/load-env-file.js`);
 
@@ -10,11 +10,7 @@ const requiredEnvVars = [
   `TRAVIS_COMMIT`
 ];
 
-const github = new GitHubApi({
-  headers: {
-    'user-agent': `Open Fixture Library`
-  }
-});
+let githubClient;
 
 let repoOwner;
 let repoName;
@@ -45,12 +41,11 @@ module.exports.init = function init() {
     repoOwner = process.env.TRAVIS_REPO_SLUG.split(`/`)[0];
     repoName = process.env.TRAVIS_REPO_SLUG.split(`/`)[1];
 
-    github.authenticate({
-      type: `token`,
-      token: process.env.GITHUB_USER_TOKEN
+    githubClient = new Octokit({
+      auth: `token ${process.env.GITHUB_USER_TOKEN}`
     });
 
-    return github.pullRequests.get({
+    return githubClient.pullRequests.get({
       owner: repoOwner,
       repo: repoName,
       number: process.env.TRAVIS_PULL_REQUEST
@@ -67,7 +62,7 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
   // fetch changed files in 100er blocks
   const filePromises = [];
   for (let i = 0; i < this.data.changed_files / 100; i++) {
-    filePromises.push(github.pullRequests.listFiles({
+    filePromises.push(githubClient.pullRequests.listFiles({
       owner: repoOwner,
       repo: repoName,
       number: process.env.TRAVIS_PULL_REQUEST,
@@ -184,7 +179,7 @@ module.exports.updateComment = function updateComment(test) {
   const commentPromises = [];
   for (let i = 0; i < module.exports.data.comments / 100; i++) {
     commentPromises.push(
-      github.issues.listComments({
+      githubClient.issues.listComments({
         owner: repoOwner,
         repo: repoName,
         number: process.env.TRAVIS_PULL_REQUEST,
@@ -212,7 +207,7 @@ module.exports.updateComment = function updateComment(test) {
           }
           else {
             console.log(`Deleting old test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
-            promises.push(github.issues.deleteComment({
+            promises.push(githubClient.issues.deleteComment({
               owner: repoOwner,
               repo: repoName,
               'comment_id': comment.id
@@ -223,7 +218,7 @@ module.exports.updateComment = function updateComment(test) {
 
       if (!equalFound && test.lines.length > 0) {
         console.log(`Creating test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
-        promises.push(github.issues.createComment({
+        promises.push(githubClient.issues.createComment({
           owner: repoOwner,
           repo: repoName,
           number: process.env.TRAVIS_PULL_REQUEST,
