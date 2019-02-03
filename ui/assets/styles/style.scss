@@ -363,9 +363,19 @@ button, input, a.button {
   }
 
   &:target {
-    animation: card-highlight 0.7s ease;
     animation-delay: 0.5s;
+    animation-duration: 0.7s;
     animation-fill-mode: backwards;
+    animation-timing-function: ease;
+
+    @include animation-keyframes {
+      from {
+        background-color: $blue-100;
+      }
+      to {
+        background-color: #fff;
+      }
+    }
   }
 
   .grid-3 > & {
@@ -446,15 +456,6 @@ button, input, a.button {
 
 .manufacturer-color {
   border-left: 0.6rem solid transparent;
-}
-
-@keyframes card-highlight {
-  0% {
-    background-color: $blue-100;
-  }
-  100% {
-    background-color: #fff;
-  }
 }
 
 .list {
