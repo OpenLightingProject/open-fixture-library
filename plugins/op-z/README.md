@@ -1,4 +1,4 @@
-# OP-Z Plugin
+# Teenage Engineering OP-Z Plugin
 
 [Teenage Engineering's OP-Z](https://www.teenageengineering.com/products/op-z) synthesizer and sequencer has a separate track for controlling light fixtures via DMX. The DMX configuration is saved in a `dmx.json` file (see the [OP-Z online manual](https://www.teenageengineering.com/guides/op-z/lights)). This OFL plugin exports that `dmx.json` file for a given set of fixtures, however, it is likely that it needs manual adjustments to fit the exact configuration and workflow of the user.
 
@@ -32,6 +32,6 @@ The OP-Z only allows 16 fixtures to be used at the same time, so the `config` se
 | `on`        | 255     | always on                 |
 | `off`       | 0       | always off                |
 
-**TODO:** One of the example fixtures in the OP-Z's default `dmx.json` contains a `strobe` channel. Is that channel type actually supported?
+**Help wanted:** One of the example fixtures in the OP-Z's default `dmx.json` contains a `strobe` channel. Is that channel type actually supported? Please help us support it, should it be available.
 
 The knobs are assigned to the first 8 DMX channels that are not natively supported by the OP-Z (i.e. color channels, intensity and fog channels). The same channel in different modes is assigned the same knob. After all knobs are assigned, remaining channels are just represented by their default DMX value. Fine channels and null channels are always `off`.
