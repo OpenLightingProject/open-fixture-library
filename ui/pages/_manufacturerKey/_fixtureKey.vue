@@ -223,23 +223,24 @@
 }
 
 #contribute:target {
-  animation: contribute-highlight 1.5s ease;
   animation-delay: 0.5s;
+  animation-duration: 1.5s;
   animation-fill-mode: backwards;
-}
+  animation-timing-function: ease;
 
-@keyframes contribute-highlight {
-  0% {
-    background-color: $blue-100;
-    box-shadow: 0 0 3px 5px $blue-100;
-  }
-  35% {
-    background-color: $blue-100;
-    box-shadow: 0 0 3px 5px $blue-100;
-  }
-  100% {
-    background-color: $grey-200; // page background color
-    box-shadow: 0 0 3px 5px $grey-200;
+  @include animation-keyframes {
+    0% {
+      background-color: $blue-100;
+      box-shadow: 0 0 3px 5px $blue-100;
+    }
+    35% {
+      background-color: $blue-100;
+      box-shadow: 0 0 3px 5px $blue-100;
+    }
+    100% {
+      background-color: $grey-200; // page background color
+      box-shadow: 0 0 3px 5px $grey-200;
+    }
   }
 }
 </style>
