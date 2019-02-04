@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Auro Spot 200",
-  "shortName": "CLAS200",
+  "name": "Auro Spot 100",
+  "shortName": "CLAS100",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Felix Edelmann"],
@@ -10,13 +10,13 @@
   },
   "links": {
     "manual": [
-      "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLAS200/CLAS200_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf"
+      "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLAS100/CLAS100_200_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.PDF"
     ],
     "productPage": [
-      "https://www.cameolight.com/en/products/led-moving-heads/auro-spot-200-led-moving-head/"
+      "https://www.cameolight.com/en/products/led-moving-heads/auro-spot-100-led-moving-head/"
     ],
     "video": [
-      "https://www.youtube.com/watch?v=mqNAfW646yQ",
+      "https://www.youtube.com/watch?v=vBKUMo8lxLk",
       "https://www.youtube.com/watch?v=SVjWTA32sQQ",
       "https://www.youtube.com/watch?v=Ut1U13wIY1Y"
     ]
@@ -24,12 +24,12 @@
   "physical": {
     "dimensions": [285, 480, 180],
     "weight": 8.75,
-    "power": 220,
+    "power": 175,
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
-      "type": "100W white LED",
+      "type": "60W white LED",
       "colorTemperature": 10000,
-      "lumens": 3250
+      "lumens": 2100
     },
     "lens": {
       "degreesMinMax": [12, 12]
