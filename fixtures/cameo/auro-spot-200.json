@@ -10,24 +10,26 @@
   },
   "links": {
     "manual": [
-      "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLAS300/CLAS300_CAMEO_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.PDF"
+      "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLAS200/CLAS200_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf"
     ],
     "productPage": [
-      "https://www.cameolight.com/en/products/led-moving-heads/auro-spot-300-led-moving-head/"
+      "https://www.cameolight.com/en/products/led-moving-heads/auro-spot-200-led-moving-head/"
     ],
     "video": [
+      "https://www.youtube.com/watch?v=mqNAfW646yQ",
+      "https://www.youtube.com/watch?v=SVjWTA32sQQ",
       "https://www.youtube.com/watch?v=Ut1U13wIY1Y"
     ]
   },
   "physical": {
-    "dimensions": [285, 485, 180],
+    "dimensions": [285, 480, 180],
     "weight": 8.75,
-    "power": 320,
+    "power": 220,
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
-      "type": "180W white LED",
-      "colorTemperature": 9300,
-      "lumens": 4371
+      "type": "100W white LED",
+      "colorTemperature": 10000,
+      "lumens": 3250
     },
     "lens": {
       "degreesMinMax": [12, 12]
@@ -86,41 +88,10 @@
         }
       ]
     },
-    "Gobo Wheel 1": {
+    "Gobo Wheel": {
       "slots": [
         {
           "type": "Open"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        }
-      ]
-    },
-    "Gobo Wheel 2": {
-      "slots": [
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
         },
         {
           "type": "Gobo"
@@ -360,7 +331,7 @@
         }
       ]
     },
-    "Gobo Wheel 1": {
+    "Gobo Wheel": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -417,7 +388,7 @@
         }
       ]
     },
-    "Gobo 1 Rotation": {
+    "Gobo Rotation": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -427,39 +398,39 @@
         {
           "dmxRange": [6, 127],
           "type": "WheelSlotRotation",
-          "wheel": "Gobo Wheel 1",
+          "wheel": "Gobo Wheel",
           "angleStart": "0deg",
           "angleEnd": "360deg"
         },
         {
           "dmxRange": [128, 128],
           "type": "WheelSlotRotation",
-          "wheel": "Gobo Wheel 1",
+          "wheel": "Gobo Wheel",
           "speed": "stop"
         },
         {
           "dmxRange": [129, 191],
           "type": "WheelSlotRotation",
-          "wheel": "Gobo Wheel 1",
+          "wheel": "Gobo Wheel",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         },
         {
           "dmxRange": [192, 250],
           "type": "WheelSlotRotation",
-          "wheel": "Gobo Wheel 1",
+          "wheel": "Gobo Wheel",
           "speedStart": "fast CCW",
           "speedEnd": "slow CCW"
         },
         {
           "dmxRange": [251, 255],
           "type": "WheelSlotRotation",
-          "wheel": "Gobo Wheel 1",
+          "wheel": "Gobo Wheel",
           "speed": "stop"
         }
       ]
     },
-    "Gobo 1 Shake": {
+    "Gobo Shake": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -469,173 +440,49 @@
         {
           "dmxRange": [6, 37],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel 1",
+          "wheel": "Gobo Wheel",
           "shakeSpeed": "12.5%"
         },
         {
           "dmxRange": [38, 69],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel 1",
+          "wheel": "Gobo Wheel",
           "shakeSpeed": "25%"
         },
         {
           "dmxRange": [70, 101],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel 1",
+          "wheel": "Gobo Wheel",
           "shakeSpeed": "37.5%"
         },
         {
           "dmxRange": [102, 133],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel 1",
+          "wheel": "Gobo Wheel",
           "shakeSpeed": "50%"
         },
         {
           "dmxRange": [134, 165],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel 1",
+          "wheel": "Gobo Wheel",
           "shakeSpeed": "62.5%"
         },
         {
           "dmxRange": [166, 197],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel 1",
+          "wheel": "Gobo Wheel",
           "shakeSpeed": "75%"
         },
         {
           "dmxRange": [198, 229],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel 1",
+          "wheel": "Gobo Wheel",
           "shakeSpeed": "87.5%"
         },
         {
           "dmxRange": [230, 255],
           "type": "WheelShake",
-          "wheel": "Gobo Wheel 1",
-          "shakeSpeed": "100%"
-        }
-      ]
-    },
-    "Gobo Wheel 2": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 5],
-          "type": "WheelSlot",
-          "slotNumber": 1
-        },
-        {
-          "dmxRange": [6, 20],
-          "type": "WheelSlot",
-          "slotNumber": 2
-        },
-        {
-          "dmxRange": [21, 35],
-          "type": "WheelSlot",
-          "slotNumber": 3
-        },
-        {
-          "dmxRange": [36, 50],
-          "type": "WheelSlot",
-          "slotNumber": 4
-        },
-        {
-          "dmxRange": [51, 65],
-          "type": "WheelSlot",
-          "slotNumber": 5
-        },
-        {
-          "dmxRange": [66, 80],
-          "type": "WheelSlot",
-          "slotNumber": 6
-        },
-        {
-          "dmxRange": [81, 95],
-          "type": "WheelSlot",
-          "slotNumber": 7
-        },
-        {
-          "dmxRange": [96, 110],
-          "type": "WheelSlot",
-          "slotNumber": 8
-        },
-        {
-          "dmxRange": [111, 127],
-          "type": "WheelSlot",
-          "slotNumber": 9
-        },
-        {
-          "dmxRange": [128, 128],
-          "type": "WheelRotation",
-          "speed": "stop"
-        },
-        {
-          "dmxRange": [129, 191],
-          "type": "WheelRotation",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW"
-        },
-        {
-          "dmxRange": [192, 255],
-          "type": "WheelRotation",
-          "speedStart": "fast CCW",
-          "speedEnd": "slow CCW"
-        }
-      ]
-    },
-    "Gobo 2 Shake": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 5],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [6, 37],
-          "type": "WheelShake",
-          "wheel": "Gobo Wheel 2",
-          "shakeSpeed": "12.5%"
-        },
-        {
-          "dmxRange": [38, 69],
-          "type": "WheelShake",
-          "wheel": "Gobo Wheel 2",
-          "shakeSpeed": "25%"
-        },
-        {
-          "dmxRange": [70, 101],
-          "type": "WheelShake",
-          "wheel": "Gobo Wheel 2",
-          "shakeSpeed": "37.5%"
-        },
-        {
-          "dmxRange": [102, 133],
-          "type": "WheelShake",
-          "wheel": "Gobo Wheel 2",
-          "shakeSpeed": "50%"
-        },
-        {
-          "dmxRange": [134, 165],
-          "type": "WheelShake",
-          "wheel": "Gobo Wheel 2",
-          "shakeSpeed": "62.5%"
-        },
-        {
-          "dmxRange": [166, 197],
-          "type": "WheelShake",
-          "wheel": "Gobo Wheel 2",
-          "shakeSpeed": "75%"
-        },
-        {
-          "dmxRange": [198, 229],
-          "type": "WheelShake",
-          "wheel": "Gobo Wheel 2",
-          "shakeSpeed": "87.5%"
-        },
-        {
-          "dmxRange": [230, 255],
-          "type": "WheelShake",
-          "wheel": "Gobo Wheel 2",
+          "wheel": "Gobo Wheel",
           "shakeSpeed": "100%"
         }
       ]
@@ -936,8 +783,8 @@
       ]
     },
     {
-      "name": "15-channel",
-      "shortName": "15ch",
+      "name": "13-channel",
+      "shortName": "13ch",
       "channels": [
         "Pan",
         "Pan fine",
@@ -946,19 +793,17 @@
         "Dimmer",
         "Strobe Extended",
         "Color Wheel",
-        "Gobo Wheel 1",
-        "Gobo 1 Rotation",
-        "Gobo 1 Shake",
-        "Gobo Wheel 2",
-        "Gobo 2 Shake",
+        "Gobo Wheel",
+        "Gobo Rotation",
+        "Gobo Shake",
         "Prism",
         "Focus",
         "Reset"
       ]
     },
     {
-      "name": "24-channel",
-      "shortName": "24ch",
+      "name": "22-channel",
+      "shortName": "22ch",
       "channels": [
         "Pan",
         "Pan fine",
@@ -968,11 +813,9 @@
         "Dimmer fine",
         "Strobe Extended",
         "Color Wheel",
-        "Gobo Wheel 1",
-        "Gobo 1 Rotation",
-        "Gobo 1 Shake",
-        "Gobo Wheel 2",
-        "Gobo 2 Shake",
+        "Gobo Wheel",
+        "Gobo Rotation",
+        "Gobo Shake",
         "Prism",
         "Focus",
         "Focus fine",
