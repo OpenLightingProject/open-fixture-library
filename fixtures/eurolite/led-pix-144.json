@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PIX-144",
+  "categories": ["Color Changer", "Pixel Bar"],
+  "meta": {
+    "authors": ["Paolo Zanchi"],
+    "createDate": "2019-02-05",
+    "lastModifyDate": "2019-02-05"
+  },
+  "links": {
+    "manual": [
+      "https://www.huss-licht-ton.de/images/products_download/User_Manual_27993_1.pdf"
+    ],
+    "productPage": [
+      "http://eurolite.de"
+    ]
+  },
+  "physical": {
+    "dimensions": [1020, 80, 65],
+    "weight": 1,
+    "power": 25,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "focus": {
+      "panMax": 0,
+      "tiltMax": 0
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3 channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
