@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.js';
+import schemaProperties from '~~/lib/schema-properties.mjs';
 
 import editorProportionalCapabilityDataSwitcher from '~/components/editor-proportional-capability-data-switcher.vue';
 import propertyInputEntityVue from '~/components/property-input-entity.vue';

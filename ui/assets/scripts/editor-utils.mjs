@@ -23,7 +23,11 @@ export function getEmptyFixture() {
     shortName: ``,
     categories: [],
     comment: ``,
-    links: [getEmptyLink()],
+    links: [
+      getEmptyLink(`manual`),
+      getEmptyLink(`productPage`),
+      getEmptyLink(`video`)
+    ],
     rdmModelId: null,
     rdmSoftwareVersion: ``,
     physical: getEmptyPhysical(),
@@ -36,12 +40,13 @@ export function getEmptyFixture() {
 
 
 /**
+ * @param {string} linkType The type of the new link.
  * @returns {object} An empty fixture link object.
  */
-export function getEmptyLink() {
+export function getEmptyLink(linkType = `manual`) {
   return {
     uuid: uuidV4(),
-    type: `manual`,
+    type: linkType,
     url: ``
   };
 }

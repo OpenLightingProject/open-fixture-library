@@ -45,7 +45,7 @@
 </style>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.js';
+import schemaProperties from '~~/lib/schema-properties.mjs';
 import { getEmptyWheelSlot } from '~/assets/scripts/editor-utils.mjs';
 
 import conditionalDetailsVue from '~/components/conditional-details.vue';

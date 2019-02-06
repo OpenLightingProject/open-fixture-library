@@ -151,7 +151,7 @@
 </style>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.js';
+import schemaProperties from '~~/lib/schema-properties.mjs';
 
 import labeledInputVue from '~/components/labeled-input.vue';
 import propertyInputDimensionsVue from '~/components/property-input-dimensions.vue';
