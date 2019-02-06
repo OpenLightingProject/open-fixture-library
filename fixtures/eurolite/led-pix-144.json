@@ -20,16 +20,15 @@
     ]
   },
   "physical": {
-    "dimensions": [1020, 80, 65],
+    "dimensions": [1020, 65, 80],
     "weight": 1,
     "power": 25,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "144x RGB-SMD LEDs"
     },
     "focus": {
-      "panMax": 0,
-      "tiltMax": 0
+      "type": "Fixed"
     }
   },
   "availableChannels": {
