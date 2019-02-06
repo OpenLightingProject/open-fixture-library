@@ -43,6 +43,34 @@
       "Master": ["1", "2", "3", "4", "5", "6", "7", "8"]
     }
   },
+  "availableChannels": {
+    "Auto Program / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "Effect",
+          "effectName": "Sound-control 7-color",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    }
+  },
   "templateChannels": {
     "Red $pixelKey": {
       "capability": {
@@ -61,6 +89,37 @@
         "type": "ColorIntensity",
         "color": "Blue"
       }
+    },
+    "Dimmer $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe $pixelKey": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz",
+        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
+      }
+    },
+    "Auto Program $pixelKey": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Effect",
+          "effectName": "RGB program",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     }
   },
   "modes": [
@@ -71,6 +130,83 @@
         "Red Master",
         "Green Master",
         "Blue Master"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Dimmer Master",
+        "Auto Program / Strobe"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer Master",
+        "Strobe Master",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Auto Program Master"
+      ]
+    },
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Strobe $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Auto Program $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "24-channel",
+      "shortName": "24ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "48-channel",
+      "shortName": "48ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey",
+            "Strobe $pixelKey",
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Auto Program $pixelKey"
+          ]
+        }
       ]
     }
   ]
