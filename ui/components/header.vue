@@ -1,5 +1,5 @@
 <template>
-  <header id="header">
+  <header>
     <nav>
       <div class="left-nav">
         <nuxt-link
@@ -63,7 +63,7 @@
 </template>
 
 <style lang="scss" scoped>
-#header {
+header {
   position: fixed;
   width: 100%;
   background: #fafafa;
@@ -85,15 +85,19 @@
     display: inline-block;
     height: 4.5em;
     line-height: 4.5em;
-    background-color: rgba(#e8e8e8, 0);
-    transition: background-color 0.2s, color 0.2s;
+    padding: 0 1ex;
+    text-decoration: none;
 
-    &:hover,
-    &:focus {
-      background-color: rgba(#e8e8e8, 1);
+    &:active, &:focus {
+      background-color: rgba($grey-300, 1);
       color: #000;
       outline: 0;
     }
+
+    @include mobile-hover-emulation((
+      background-color: rgba($grey-300, 0) rgba($grey-300, 1),
+      color: inherit #000
+    ));
   }
 
   form {
@@ -137,25 +141,20 @@
   .home-logo {
     display: inline-block;
     width: 0;
+    padding: 0;
     overflow: hidden;
-    background-image: url('~/static/ofl-logo.svg');
+    background-image: url('~static/ofl-logo.svg');
     background-repeat: no-repeat;
     transition: background-color 0.2s, color 0.2s, padding 0.2s;
 
     @include home-logo-sizing(122px, 2ex);
-  }
-
-  .right-nav > a {
-    padding: 0 1ex;
-    text-decoration: none;
-    color: inherit;
   }
 }
 
 
 /* Tablet */
 @media (max-width: $tablet) {
-  #header {
+  header {
     nav > div {
       -ms-flex: 0 1 100%;
       flex-basis: 100%;
@@ -187,7 +186,7 @@
 
 /* Phone */
 @media (max-width: $phone) {
-  #header {
+  header {
     .home-logo {
       @include home-logo-sizing(82px, .5ex);
 
@@ -213,7 +212,6 @@
   }
 }
 </style>
-
 
 <script>
 import svg from '~/components/svg.vue';

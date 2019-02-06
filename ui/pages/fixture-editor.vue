@@ -250,7 +250,7 @@ import {
 } from '~/assets/scripts/editor-utils.mjs';
 
 import manufacturers from '~~/fixtures/manufacturers.json';
-import schemaProperties from '~~/lib/schema-properties.js';
+import schemaProperties from '~~/lib/schema-properties.mjs';
 
 import labeledInputVue from '~/components/labeled-input.vue';
 import propertyInputNumberVue from '~/components/property-input-number.vue';

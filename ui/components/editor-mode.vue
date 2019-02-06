@@ -164,7 +164,7 @@
 
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.js';
+import schemaProperties from '~~/lib/schema-properties.mjs';
 import { constants } from '~/assets/scripts/editor-utils.mjs';
 
 import svgVue from '~/components/svg.vue';

@@ -1,16 +1,21 @@
 <template>
-  <div>
+  <div
+    id="ofl-root"
+    :class="{
+      js: isBrowser,
+      'no-js': !isBrowser,
+      touch: isTouchScreen,
+      'no-touch': !isTouchScreen
+    }">
+
     <a href="#content" class="accessibility">Skip to content</a>
 
     <app-header @focus-content="focusContent" />
 
-    <div
-      id="content"
-      ref="content"
-      :class="{ js: isBrowser, 'no-js': !isBrowser }"
-      tabindex="-1">
+    <div id="content" ref="content" tabindex="-1">
       <nuxt />
     </div>
+
   </div>
 </template>
 
@@ -60,17 +65,43 @@ export default {
   },
   data() {
     return {
-      isBrowser: false
+      isBrowser: false,
+      isTouchScreen: false,
+      lastTouchTime: 0
     };
   },
   mounted() {
     if (process.browser) {
       this.isBrowser = true;
+
+      // adapted from https://stackoverflow.com/a/30303898/451391
+      document.addEventListener(`touchstart`, this.onTouchStart, true);
+      document.addEventListener(`mousemove`, this.onMouseMove, true);
+    }
+  },
+  beforeDestroy() {
+    if (process.browser) {
+      document.removeEventListener(`touchstart`, this.onTouchStart, true);
+      document.removeEventListener(`mousemove`, this.onMouseMove, true);
     }
   },
   methods: {
     focusContent() {
       this.$refs.content.focus();
+    },
+
+    onMouseMove() {
+      // filter emulated events coming from touch events
+      if (new Date() - this.lastTouchTime < 500) {
+        return;
+      }
+
+      this.isTouchScreen = false;
+    },
+
+    onTouchStart() {
+      this.isTouchScreen = true;
+      this.lastTouchTime = new Date();
     }
   }
 };
