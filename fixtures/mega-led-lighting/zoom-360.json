@@ -1,0 +1,521 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ZOOM 360",
+  "shortName": "MJ-1006B",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2019-02-06",
+    "lastModifyDate": "2019-02-06"
+  },
+  "links": {
+    "manual": [
+      "http://mjledlighting.com/Upload/%E8%8B%B1%E6%96%87%E7%89%88%E8%B5%84%E6%96%99/%E8%AF%B4%E6%98%8E%E4%B9%A6/MJ1006B-16591444880.pdf",
+      "https://www.jackodance.it/wp-content/uploads/2019/01/MJ-1006B-zoom-led-moving-head-light.pdf"
+    ],
+    "productPage": [
+      "http://mjledlighting.com/products_show.aspx?ProductsCateID=42&cid=81"
+    ]
+  },
+  "physical": {
+    "dimensions": [350, 460, 220],
+    "weight": 10,
+    "power": 420,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "36x RBWA LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [10, 60]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 630,
+      "tiltMax": 270
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "User Colors": {
+      "capability": {
+        "type": "ColorPreset",
+        "helpWanted": "How many colors are there and at which DMX values can they be selected?"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "630deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "10deg",
+        "angleEnd": "60deg",
+        "helpWanted": "Or is it 60…10°?"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Effects": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Color Macros / Effect Speed": "Color Macros"
+          }
+        },
+        {
+          "dmxRange": [1, 25],
+          "type": "Maintenance",
+          "comment": "Start controller handspike",
+          "switchChannels": {
+            "Color Macros / Effect Speed": "Color Macros"
+          }
+        },
+        {
+          "dmxRange": [26, 50],
+          "type": "Maintenance",
+          "comment": "Turn off controller handspike",
+          "switchChannels": {
+            "Color Macros / Effect Speed": "Color Macros"
+          }
+        },
+        {
+          "dmxRange": [51, 90],
+          "type": "Maintenance",
+          "comment": "Program color selection switch",
+          "switchChannels": {
+            "Color Macros / Effect Speed": "Color Macros"
+          }
+        },
+        {
+          "dmxRange": [91, 130],
+          "type": "Effect",
+          "effectName": "Color pulse",
+          "switchChannels": {
+            "Color Macros / Effect Speed": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [131, 170],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "switchChannels": {
+            "Color Macros / Effect Speed": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [171, 210],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "switchChannels": {
+            "Color Macros / Effect Speed": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [211, 250],
+          "type": "Effect",
+          "effectName": "Inside mode 1",
+          "switchChannels": {
+            "Color Macros / Effect Speed": "Color Macros"
+          }
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Sound mode",
+          "soundControlled": true,
+          "switchChannels": {
+            "Color Macros / Effect Speed": "Color Macros"
+          }
+        }
+      ]
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 20],
+          "type": "ColorPreset",
+          "comment": "Red … Yellow",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffff00"]
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "ColorPreset",
+          "comment": "Yellow … Green",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#00ff00"]
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "ColorPreset",
+          "comment": "Green … Cyan",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#00ffff"]
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "ColorPreset",
+          "comment": "Cyan … Blue",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "ColorPreset",
+          "comment": "Blue … Magenta",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [101, 120],
+          "type": "ColorPreset",
+          "comment": "Magenta … Red",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#ff0000"]
+        },
+        {
+          "dmxRange": [121, 140],
+          "type": "ColorPreset",
+          "comment": "Red … White",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffffff"]
+        },
+        {
+          "dmxRange": [141, 160],
+          "type": "ColorPreset",
+          "comment": "White … Blue",
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [161, 170],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [171, 200],
+          "type": "ColorPreset",
+          "comment": "Black",
+          "colors": ["#000000"]
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "ColorPreset",
+          "comment": "Color mix 1 (R242 G204 B5 W227)"
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "ColorPreset",
+          "comment": "Color mix 2 (R242 G215 B5 W227)"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "ColorPreset",
+          "comment": "Color mix 3 (R255 G255 B50 W255)"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "ColorPreset",
+          "comment": "Color mix 4 (R255 G255 B90 W255)"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "ColorPreset",
+          "comment": "Color mix 5 (R255 G255 B118 W255)"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "ColorPreset",
+          "comment": "Color mix 6 (R255 G255 B132 W255)"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "ColorPreset",
+          "comment": "Color mix 7 (R2 55 G255 B151 W255)"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "ColorPreset",
+          "comment": "Color mix 8 (R255 G255 B171 W255)"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorPreset",
+          "comment": "Color mix 9 (R255 G255 B185 W255)"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorPreset",
+          "comment": "Color mix 10 (R255 G255 B197 W255)"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "Color mix 11 (R255 G255 B234 W255)"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "ID Code": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "ID 1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "ID 2"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "ID 3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "ID 4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "ID 5"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "ID 6"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "ID 7"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "ID 8"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "ID 9"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "ID 10"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Generic",
+          "comment": "ID 11"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Generic",
+          "comment": "ID 12"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "ID 13"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "ID 14"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Generic",
+          "comment": "ID 15"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Generic",
+          "comment": "ID 16"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Generic",
+          "comment": "ID 17"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Generic",
+          "comment": "ID 18"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Generic",
+          "comment": "ID 19"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Generic",
+          "comment": "ID 20"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Generic",
+          "comment": "ID 21"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Generic",
+          "comment": "ID 22"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Generic",
+          "comment": "ID 23"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "Generic",
+          "comment": "ID 24"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "ID 25"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "User Colors",
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Zoom",
+        "Strobe",
+        "Effects",
+        "Color Macros / Effect Speed",
+        "ID Code"
+      ]
+    },
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "User Colors",
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Zoom"
+      ]
+    }
+  ]
+}
