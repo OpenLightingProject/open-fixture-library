@@ -17,8 +17,8 @@ XXXXX Short description of the software / desk console using the fixture format.
 - **Is the format binary?**  
   XXXXX Yes / No / Unknown
 - **Does a schema / description of the format exist?**  
-  XXXXX Yes, here: XXXXX / No / Unkown
+  XXXXX Yes, here: XXXXX / No / Unknown
 - **Are there many fixtures of good quality in this format?**  
-  XXXXX Yes / No / Unkown
+  XXXXX Yes / No / Unknown
 - **Is there any existing work done to parse this format?**  
-  XXXXX Yes, here: XXXXX / No / Unkown
+  XXXXX Yes, here: XXXXX / No / Unknown
