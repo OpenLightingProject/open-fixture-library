@@ -14,9 +14,9 @@ XXXXX Short description of the software / desk console using the fixture format.
   XXXXX
 - **Where can fixtures of this format be downloaded?**  
   XXXXX
-- **Is the format binary?**  
-  XXXXX Yes / No / Unknown
-- **Does a schema / description of the format exist?**  
+- **What file type is the fixture format?**  
+  XXXXX Binary / XML / JSON / Unknown
+- **Does a schema / description / documentation of the format exist?**  
   XXXXX Yes, here: XXXXX / No / Unknown
 - **Are there many fixtures of good quality in this format?**  
   XXXXX Yes / No / Unknown
