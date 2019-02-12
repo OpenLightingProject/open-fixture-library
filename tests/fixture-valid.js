@@ -721,16 +721,19 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     );
 
     // "6ch" / "8-Channel" / "9 channels" mode names
-    if (mode.name.toLowerCase().match(/^(\d+)(?:\s+|-)?(?:ch|channels?)$/)) {
-      const intendedLength = parseInt(RegExp.$1);
+    [`name`, `shortName`].forEach(nameProp => {
+      if (mode[nameProp].match(/(\d+)(?:\s+|-)?(?:channels?|ch)/i)) {
+        const intendedLength = parseInt(RegExp.$1);
 
-      if (mode.channels.length !== intendedLength) {
-        result.errors.push(`Mode '${mode.name}' should have ${RegExp.$1} channels but actually has ${mode.channels.length}.`);
+        if (mode.channels.length !== intendedLength) {
+          result.errors.push(`Mode '${mode.name}' should have ${RegExp.$1} channels according to its ${nameProp} but actually has ${mode.channels.length}.`);
+        }
+
+        if (mode[nameProp] === RegExp.lastMatch && mode.shortName !== `${intendedLength}ch`) {
+          result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch'.`);
+        }
       }
-      if (mode.shortName !== `${intendedLength}ch`) {
-        result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch'.`);
-      }
-    }
+    });
 
     checkPhysical(mode.physicalOverride, ` in mode '${mode.shortName}'`);
 
