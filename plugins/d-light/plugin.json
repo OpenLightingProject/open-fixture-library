@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schemas/plugin.json",
+
+  "name": "D::Light",
+  "description": [
+    "<p>A lighting software for Windows, Mac OS and Linux.</p>",
+    "",
+    "<p>There are around 80 fixture definitions (device personalities)",
+    "available on the D::Light website. They are stored in a binary format",
+    "(<code>.dld</code>), but D::Light also supports non-encrypted fixtures in",
+    "an XML format. Thus, creating an import plugin is not possible.</p>",
+    "",
+    "<p>The main developer and our contact person is",
+    "<a href=\"https://github.com/sl1200mk2\">sl1200mk2</a></p>"
+  ],
+  "links": {
+    "Website": "https://getdlight.com/en/",
+    "Device personality download (encrypted)": "https://getdlight.com/en/devices-en",
+    "Fixture help in D::Light Wiki": "https://getdlight.com/wiki/index.php?title=DEVICES",
+    "Decrypted Robe Robin 600 LEDWash (mode2)": "https://pastebin.com/BGmwK1Tw",
+    "Decrypted Showtec Phantom 50 (13ch)": "https://pastebin.com/QCRa86Xr"
+  },
+  "fixtureUsage": [
+    "<p>Import fixture in Device Listing window (Devices &gt; Device Listing),",
+    "then patch it (Display &gt; Patch).</p>"
+  ]
+}
