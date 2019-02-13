@@ -98,6 +98,17 @@ app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, (request, response, next) => {
     });
 });
 
+app.get(`/about/plugins/:plugin([a-z0-9_.-]+).json`, (request, response, next) => {
+  const { plugin } = request.params;
+
+  if (!(plugin in plugins.data)) {
+    next();
+    return;
+  }
+
+  response.json(require(`./plugins/${plugin}/plugin.json`));
+});
+
 app.get(`/sitemap.xml`, (request, response) => {
   const sitemapCreator = require(`./lib/generate-sitemap.js`);
 
