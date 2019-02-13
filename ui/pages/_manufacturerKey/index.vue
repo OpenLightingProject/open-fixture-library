@@ -5,11 +5,11 @@
 
     <h1>{{ manufacturer.name }} fixtures</h1>
 
-    <div v-if="`website` in manufacturer || `rdmId` in manufacturer" class="grid-3 list">
+    <div v-if="`website` in manufacturer || `rdmId` in manufacturer" class="grid-3">
       <a
         v-if="`website` in manufacturer"
         :href="manufacturer.website"
-        class="card blue dark">
+        class="card slim blue dark">
         <app-svg name="web" class="left" />
         <span>Manufacturer website</span>
       </a>
@@ -17,7 +17,7 @@
         v-if="`rdmId` in manufacturer"
         :href="`http://rdm.openlighting.org/manufacturer/display?manufacturer=${manufacturer.rdmId}`"
         rel="nofollow"
-        class="card">
+        class="card slim">
         <app-svg name="ola" class="left" />
         <span>Open Lighting RDM database</span>
       </a>
@@ -25,22 +25,24 @@
 
     <p v-if="`comment` in manufacturer" class="comment" style="white-space: pre-wrap;">{{ manufacturer.comment }}</p>
 
-    <ul :class="[`card`, `list`, `fixtures`]">
-      <li v-for="fixture in fixtures" :key="fixture.key">
-        <nuxt-link
-          :to="fixture.link"
-          :style="{ borderLeftColor: manufacturer.color }"
-          class="manufacturer-color">
-          <span class="name">{{ fixture.name }}</span>
-          <app-svg
-            v-for="cat in fixture.categories"
-            :key="cat"
-            :name="cat"
-            type="category"
-            class="right inactive" />
-        </nuxt-link>
-      </li>
-    </ul>
+    <div class="card">
+      <ul class="list fixtures">
+        <li v-for="fixture in fixtures" :key="fixture.key">
+          <nuxt-link
+            :to="fixture.link"
+            :style="{ borderLeftColor: manufacturer.color }"
+            class="manufacturer-color">
+            <span class="name">{{ fixture.name }}</span>
+            <app-svg
+              v-for="cat in fixture.categories"
+              :key="cat"
+              :name="cat"
+              type="category"
+              class="right inactive" />
+          </nuxt-link>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 

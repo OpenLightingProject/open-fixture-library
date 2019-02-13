@@ -2,22 +2,24 @@
   <div>
     <h1>{{ categoryName }} fixtures</h1>
 
-    <ul :class="[`card`, `list`, `fixtures`, `category-${categoryClass}`]">
-      <li v-for="fixture in fixtures" :key="fixture.key">
-        <nuxt-link
-          :to="fixture.link"
-          :style="{ borderLeftColor: fixture.color }"
-          class="manufacturer-color">
-          <span class="name">{{ fixture.name }}</span>
-          <app-svg
-            v-for="cat in fixture.categories"
-            :key="cat"
-            :name="cat"
-            :class="{ inactive: cat !== categoryName, right: true }"
-            type="category" />
-        </nuxt-link>
-      </li>
-    </ul>
+    <div class="card">
+      <ul :class="[`list`, `fixtures`, `category-${categoryClass}`]">
+        <li v-for="fixture in fixtures" :key="fixture.key">
+          <nuxt-link
+            :to="fixture.link"
+            :style="{ borderLeftColor: fixture.color }"
+            class="manufacturer-color">
+            <span class="name">{{ fixture.name }}</span>
+            <app-svg
+              v-for="cat in fixture.categories"
+              :key="cat"
+              :name="cat"
+              :class="{ inactive: cat !== categoryName, right: true }"
+              type="category" />
+          </nuxt-link>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
