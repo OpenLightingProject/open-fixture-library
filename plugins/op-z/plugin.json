@@ -11,9 +11,14 @@
     "",
     "<p>The OP-Z only allows 16 fixtures to be used at the same time, so the",
     "<code>config</code> section will only include the first mode of the first",
-    "16 fixtures; the <code>profiles</code> section will contain all.</p>",
-    "",
-    "<h2>OP-Z channel types</h2>",
+    "16 fixtures; the <code>profiles</code> section will contain all.</p>"
+  ],
+  "links": {
+    "Website": "https://www.teenageengineering.com/products/op-z",
+    "OP-Z online manual: Lights": "https://www.teenageengineering.com/guides/op-z/lights"
+  },
+  "additionalInfo": [
+    "<h3>OP-Z channel types</h3>",
     "",
     "<p><em>This table is taken from the <code>how_to_dmx.txt</code> file in",
     "OP-Z's content mode.</em></p>",
@@ -127,9 +132,5 @@
     "their default DMX value. Fine channels and null channels are always",
     "<code>off</code>.</p>"
   ],
-  "links": {
-    "Website": "https://www.teenageengineering.com/products/op-z",
-    "OP-Z online manual: Lights": "https://www.teenageengineering.com/guides/op-z/lights"
-  },
   "helpWanted": "One of the example fixtures in the OP-Z's default <code>dmx.json</code> contains a <code>strobe</code> channel. Is that channel type actually supported?"
 }

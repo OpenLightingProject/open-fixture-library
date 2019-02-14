@@ -8,10 +8,7 @@
     "<p>There are around 80 fixture definitions (device personalities)",
     "available on the D::Light website. They are stored in a binary format",
     "(<code>.dld</code>), but D::Light also supports non-encrypted fixtures in",
-    "an XML format. Thus, creating an import plugin is not possible.</p>",
-    "",
-    "<p>The main developer and our contact person is",
-    "<a href=\"https://github.com/sl1200mk2\">sl1200mk2</a></p>"
+    "an XML format. Thus, creating an import plugin is not possible.</p>"
   ],
   "links": {
     "Website": "https://getdlight.com/en/",
@@ -23,5 +20,9 @@
   "fixtureUsage": [
     "<p>Import fixture in Device Listing window (Devices &gt; Device Listing),",
     "then patch it (Display &gt; Patch).</p>"
+  ],
+  "additionalInfo": [
+    "<p>The main developer and our contact person is",
+    "<a href=\"https://github.com/sl1200mk2\">sl1200mk2</a></p>"
   ]
 }

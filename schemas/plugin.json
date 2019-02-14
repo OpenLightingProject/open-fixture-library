@@ -52,6 +52,7 @@
       },
       "additionalProperties": { "$ref": "#/definitions/fileLocations" }
     },
+    "additionalInfo": { "$ref": "#/definitions/htmlStringLines" },
     "helpWanted": { "type": "string" }
   },
   "required": ["name", "description", "links"],

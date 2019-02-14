@@ -8,13 +8,13 @@
       <template v-if="importPluginVersion">Import plugin version {{ importPluginVersion }}</template>
     </div>
 
+    <div class="plugin-description" v-html="pluginData.description.join(`\n`)" />
+
     <ul>
       <li v-for="link in Object.keys(pluginData.links)" :key="link">
         <a :href="pluginData.links[link]" target="_blank" rel="nofollow">{{ link }}</a>
       </li>
     </ul>
-
-    <div class="plugin-description" v-html="pluginData.description.join(`\n`)" />
 
     <div v-if="`fixtureUsage` in pluginData" class="fixture-usage">
       <h2 id="fixture-usage">Fixture usage</h2>
@@ -32,10 +32,18 @@
       <div v-for="os in fileLocationOSes" :key="os">
         <h3>{{ os }}</h3>
 
-        <div v-for="library in Object.keys(pluginData.fileLocations[os])" :key="`${os}-${library}`">
-          {{ libraryNames[library] }}: <code>{{ pluginData.fileLocations[os][library] }}</code>
-        </div>
+        <section>
+          <div v-for="library in Object.keys(pluginData.fileLocations[os])" :key="`${os}-${library}`">
+            {{ libraryNames[library] }}: <code>{{ pluginData.fileLocations[os][library] }}</code>
+          </div>
+        </section>
       </div>
+    </div>
+
+    <div v-if="`additionalInfo` in pluginData" class="additional-info">
+      <h2>Additional information</h2>
+
+      <div v-html="pluginData.additionalInfo.join(`\n`)" />
     </div>
 
     <p style="margin-top: 3rem;"><nuxt-link to="/about/plugins">Back to plugin overview</nuxt-link></p>
@@ -49,8 +57,10 @@
 
 .plugin-description,
 .fixture-usage,
-.file-locations {
-  & /deep/ h2 {
+.file-locations,
+.additional-info {
+  & /deep/ h2,
+  & /deep/ h3 {
     margin: 1.5rem 0 -0.5rem;
     line-height: 1.3;
   }
