@@ -8,7 +8,7 @@
     "<code>manufacturerKey</code> and <code>oflURL</code> (a link to the",
     "fixture page on <a href=\"https://open-fixture-library.org\">open-fixture-library.org</a>).",
     "Additionally, the <code>$schema</code> property points to the JSON",
-    "Schema in the correct schema version.</p>",
+    "Schema in the current schema version.</p>",
     "",
     "<p><em>In general, the OFL JSON format wasn't built for the use in",
     "lighting software programs.</em> It is likely to break backwards",
@@ -16,6 +16,7 @@
     "format has to actively follow the development.</p>"
   ],
   "links": {
-    "Fixture format documentation": "https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/fixture-format.md"
+    "Fixture format documentation": "https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/fixture-format.md",
+    "Current format schema": "https://github.com/OpenLightingProject/open-fixture-library/releases"
   }
 }
