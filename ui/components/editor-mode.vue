@@ -69,7 +69,7 @@
 
     <validate
       :state="formstate"
-      :custom="{'no-empty-channel-list': channelListNotEmpty}"
+      :custom="{ 'no-empty-channel-list': channelListNotEmpty }"
       tag="div"
       class="mode-channels">
       <draggable v-model="mode.channels" :options="dragOptions" :name="`mode-${index}-channels`">

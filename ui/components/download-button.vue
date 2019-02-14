@@ -1,5 +1,5 @@
 <template>
-  <div :class="{'download-button': true, 'big': big}">
+  <div :class="{ 'download-button': true, 'big': big }">
     <a href="#" class="title" @click.prevent>{{ title }}</a>
     <ul>
       <li v-for="plugin in exportPlugins" :key="plugin.key">

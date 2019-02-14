@@ -41,7 +41,7 @@ function startServer(port, deployment) {
   servers.push(new Promise((resolve, reject) => {
     http
       .createServer((request, response) => {
-        response.writeHead(200, {'Content-Type': `text/plain`});
+        response.writeHead(200, { 'Content-Type': `text/plain` });
         response.write(`Received`);
         response.end();
 
