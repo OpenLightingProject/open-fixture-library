@@ -32,6 +32,8 @@
             </template>
 
           </select>
+
+          <div class="hint">See <a href="/about/plugins" target="_blank">supported import plugins</a>.</div>
         </app-labeled-input>
 
         <app-labeled-input

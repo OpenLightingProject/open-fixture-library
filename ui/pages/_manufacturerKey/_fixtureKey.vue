@@ -141,16 +141,20 @@
     <section id="contribute">
       <h2>Something wrong with this fixture definition?</h2>
       <p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>
-      <div class="grid-3 list">
+      <div class="grid-3">
         <a
           v-if="isBrowser"
           href="#"
-          class="card"
+          class="card slim"
           @click.prevent="helpWantedContext = fixture">
           <app-svg name="comment-alert" class="left" /><span>Send information</span>
         </a>
-        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card"><app-svg name="bug" class="left" /><span>Create issue on GitHub</span></a>
-        <a :href="mailtoUrl" class="card"><app-svg name="email" class="left" /><span>Send email</span></a>
+        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card slim">
+          <app-svg name="bug" class="left" /><span>Create issue on GitHub</span>
+        </a>
+        <a :href="mailtoUrl" class="card slim">
+          <app-svg name="email" class="left" /><span>Send email</span>
+        </a>
       </div>
     </section>
 

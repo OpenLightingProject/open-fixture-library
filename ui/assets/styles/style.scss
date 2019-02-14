@@ -341,6 +341,12 @@ button, input, a.button {
     float: right;
   }
 
+  & a.big-button {
+    margin: 1rem -1rem -1rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
   &.dark {
     color: $primary-text-light;
     fill: $icon-light;
@@ -460,31 +466,26 @@ button, input, a.button {
 
 .list {
   padding: 0;
+  margin: 0 -1rem;
 
-  &.with-title {
-    padding-bottom: 0.5rem;
+  &:only-child {
+    margin: -1rem;
+
+    & li:first-child a {
+      margin-top: 0;
+
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+    }
+
+    & li:last-child a {
+      border-bottom-left-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
   }
 
-  li {
+  & > li {
     list-style: none;
-  }
-
-  a:not(.big-button) {
-    margin-top: 1px;
-    padding: 0.5rem 1rem;
-  }
-
-  a.big-button {
-    margin: 1rem 0 0;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-
-  a,
-  a .hint {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
   }
 
   & > h2 {
@@ -493,6 +494,22 @@ button, input, a.button {
 
   .name {
     margin-right: auto;
+  }
+}
+
+.list a,
+a.card.slim {
+  margin-top: 1px;
+  padding: 0.5rem 1rem;
+}
+
+.list,
+.card.slim {
+  a,
+  a .hint {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   .icon {
@@ -556,7 +573,7 @@ a.card, .link, .list a {
 }
 
 .card-category,
-.list > .big-button {
+.big-button {
   padding-left: 5rem;
   min-height: 5rem;
 
@@ -573,7 +590,7 @@ a.card, .link, .list a {
   }
 }
 
-.list > .big-button > h2 {
+.big-button > h2 {
   font-size: 1.2rem;
 }
 

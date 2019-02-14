@@ -1,0 +1,22 @@
+{
+  "$schema": "../../schemas/plugin.json",
+
+  "name": "Open Fixture Library JSON",
+  "description": [
+    "<p>Outputs the fixture's JSON object (like stored in the repository, just",
+    "not as prettily printed) plus <code>fixtureKey</code>,",
+    "<code>manufacturerKey</code> and <code>oflURL</code> (a link to the",
+    "fixture page on <a href=\"https://open-fixture-library.org\">open-fixture-library.org</a>).",
+    "Additionally, the <code>$schema</code> property points to the JSON",
+    "Schema in the current schema version.</p>",
+    "",
+    "<p><em>In general, the OFL JSON format wasn't built for the use in",
+    "lighting software programs.</em> It is likely to break backwards",
+    "compatibility with future changes, so every developer who uses the OFL",
+    "format has to actively follow the development.</p>"
+  ],
+  "links": {
+    "Fixture format documentation": "https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/fixture-format.md",
+    "Current format schema": "https://github.com/OpenLightingProject/open-fixture-library/releases"
+  }
+}

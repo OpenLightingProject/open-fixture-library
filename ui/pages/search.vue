@@ -48,18 +48,20 @@
         Loading…
       </div>
 
-      <ul v-else-if="results.length > 0" class="card list fixtures">
-        <li
-          v-for="fixture in fixtureResults"
-          :key="fixture.key">
-          <nuxt-link
-            :to="`/${fixture.key}`"
-            :style="{ borderLeftColor: fixture.color }"
-            class="manufacturer-color">
-            <span class="name">{{ fixture.name }}</span>
-          </nuxt-link>
-        </li>
-      </ul>
+      <div v-else-if="results.length > 0" class="card">
+        <ul class="list fixtures">
+          <li
+            v-for="fixture in fixtureResults"
+            :key="fixture.key">
+            <nuxt-link
+              :to="`/${fixture.key}`"
+              :style="{ borderLeftColor: fixture.color }"
+              class="manufacturer-color">
+              <span class="name">{{ fixture.name }}</span>
+            </nuxt-link>
+          </li>
+        </ul>
+      </div>
 
       <div v-else class="card">
         Your search for <em>{{ searchFor }}</em> did not match any fixtures. Try using another query or browse by <nuxt-link to="/manufacturers">manufacturer</nuxt-link> or <nuxt-link to="/categories">category</nuxt-link>.

@@ -19,27 +19,29 @@
 
     <div class="grid-3 centered">
 
-      <section class="card list">
+      <section class="card">
         <h2>Recently updated fixtures</h2>
 
-        <nuxt-link
-          v-for="fixture in lastUpdated"
-          :key="fixture.key"
-          :to="`/${fixture.key}`"
-          :style="{ borderLeftColor: fixture.color }"
-          class="manufacturer-color">
+        <ul class="list">
+          <li v-for="fixture in lastUpdated" :key="fixture.key">
+            <nuxt-link
+              :to="`/${fixture.key}`"
+              :style="{ borderLeftColor: fixture.color }"
+              class="manufacturer-color">
 
-          {{ fixture.name }}
-          <span class="hint">
-            {{ fixture.action }}
-            <time
-              :datetime="fixture.date.toISOString()"
-              :title="fixture.date.toISOString()">
-              {{ fixture.date.toISOString().replace(/T.*?$/, ``) }}
-            </time>
-          </span>
+              {{ fixture.name }}
+              <div class="hint">
+                {{ fixture.action }}
+                <time
+                  :datetime="fixture.date.toISOString()"
+                  :title="fixture.date.toISOString()">
+                  {{ fixture.date.toISOString().replace(/T.*?$/, ``) }}
+                </time>
+              </div>
 
-        </nuxt-link>
+            </nuxt-link>
+          </li>
+        </ul>
 
         <nuxt-link to="/manufacturers" class="card dark blue big-button" title="Browse all fixtures by manufacturer">
           <app-svg name="folder-multiple" />
@@ -47,18 +49,19 @@
         </nuxt-link>
       </section>
 
-      <section class="card list">
+      <section class="card">
         <h2>Top contributors</h2>
 
-        <nuxt-link
-          v-for="contributor in topContributors"
-          :key="contributor.name"
-          :to="`/${contributor.latestFixtureKey}`">
-          {{ contributor.name }}
-          <span class="hint">
-            {{ contributor.number }} fixture{{ contributor.number === 1 ? `` : `s` }}, latest: {{ contributor.latestFixtureName }}
-          </span>
-        </nuxt-link>
+        <ul class="list">
+          <li v-for="contributor in topContributors" :key="contributor.name">
+            <nuxt-link :to="`/${contributor.latestFixtureKey}`">
+              {{ contributor.name }}
+              <div class="hint">
+                {{ contributor.number }} fixture{{ contributor.number === 1 ? `` : `s` }}, latest: {{ contributor.latestFixtureName }}
+              </div>
+            </nuxt-link>
+          </li>
+        </ul>
 
         <nuxt-link to="/fixture-editor" class="card dark light-green big-button" title="Become a top contributer yourself!">
           <app-svg name="plus" />
@@ -68,16 +71,16 @@
 
     </div>
 
-    <div class="list grid-3 centered">
-      <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+-label%3Atype-bug" rel="nofollow" class="card">
+    <div class="grid-3 centered">
+      <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+-label%3Atype-bug" rel="nofollow" class="card slim">
         <app-svg name="lightbulb-on-outline" class="left" />
         <span>Request feature</span>
       </a>
-      <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card">
+      <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card slim">
         <app-svg name="bug" class="left" />
         <span>Report problem</span>
       </a>
-      <a href="https://github.com/OpenLightingProject/open-fixture-library" class="card">
+      <a href="https://github.com/OpenLightingProject/open-fixture-library" class="card slim">
         <app-svg name="github-circle" class="left" />
         <span>View source</span>
       </a>

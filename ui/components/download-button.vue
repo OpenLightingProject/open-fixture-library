@@ -1,22 +1,66 @@
 <template>
-  <div :class="{ 'download-button': true, 'big': big }">
-    <a href="#" class="title" @click.prevent>{{ title }}</a>
-    <ul>
-      <li v-for="plugin in exportPlugins" :key="plugin.key">
-        <a
-          :href="`${baseLink}.${plugin.key}`"
-          :title="`Download ${plugin.name} fixture definition${isSingleFixture ? `` : `s`}`"
-          rel="nofollow"
-          @click="blur($event)">
-          {{ plugin.name }}
-        </a>
-      </li>
-    </ul>
+  <div class="container">
+    <div :class="{ 'download-button': true, 'big': big }">
+      <a href="#" class="title" @click.prevent>{{ title }}</a>
+      <ul>
+        <li v-for="plugin in exportPlugins" :key="plugin.key">
+          <a
+            :href="`${baseLink}.${plugin.key}`"
+            :title="`Download ${plugin.name} fixture definition${isSingleFixture ? `` : `s`}`"
+            rel="nofollow"
+            @click="blur($event)">
+            {{ plugin.name }}
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <nuxt-link to="/about/plugins" :target="big ? null : `_blank`" class="help-link">
+      <app-svg name="help-circle-outline" /><span class="name">Download instructions</span>
+    </nuxt-link>
   </div>
 </template>
 
+<style lang="scss" scoped>
+.container {
+  text-align: center;
+  margin: 0 0 1em;
+
+  @media (min-width: 650px) {
+    margin: 0;
+  }
+}
+
+.help-link {
+  display: inline-block;
+  color: $secondary-text-dark;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  transition: opacity 0.15s;
+  margin-left: -1ex;
+
+  .icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    fill: $secondary-text-dark;
+  }
+
+  .name {
+    vertical-align: middle;
+    margin-left: 0.5ex;
+  }
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
+}
+</style>
+
 <style lang="scss">
 .download-button {
+  text-align: left;
+
   & > .title {
     display: block;
     box-sizing: border-box;
@@ -94,10 +138,9 @@
   }
 }
 
-.fixture-header > .download-button {
+.fixture-header .download-button {
   display: block;
   position: relative;
-  margin: 0 0 1em;
 }
 
 /* move download button to the right */
@@ -107,7 +150,7 @@
     display: flex;
     -ms-flex-direction: row;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: baseline;
 
     & > .title {
       -ms-flex: 1 1 auto;
@@ -115,7 +158,7 @@
       flex-shrink: 1;
     }
 
-    & > .download-button {
+    & .download-button {
       -ms-flex: 0 0 auto;
       flex-grow: 0;
       flex-shrink: 0;
@@ -137,7 +180,12 @@
 <script>
 import plugins from '~~/plugins/plugins.json';
 
+import svgVue from '~/components/svg.vue';
+
 export default {
+  components: {
+    'app-svg': svgVue
+  },
   props: {
     download: {
       // either the fixture key or the number of fixtures

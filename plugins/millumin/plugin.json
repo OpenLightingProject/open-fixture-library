@@ -1,0 +1,25 @@
+{
+  "$schema": "../../schemas/plugin.json",
+
+  "name": "Millumin",
+  "description": [
+    "<p>The Mac OS software <em>Millumin</em> gained support for light",
+    "fixtures in version 2. The fixture format is essentially",
+    "<a href=\"https://github.com/OpenLightingProject/open-fixture-library/blob/schema-7.3.0/docs/fixture-format.md\">",
+    "the OFL format at schema version 7.3.0</a>, with a few additions.</p>"
+  ],
+  "links": {
+    "Website": "https://www.millumin.com/v3/",
+    "Millumin Help: Create a Light Show": "http://help.millumin.com/?page=01_tutorials_basics/light_show"
+  },
+  "fixtureUsage": [
+    "<p>Copy the exported fixtures into the library folder and restart",
+    "Millumin. For more information, see the Millumin Help link.</p>"
+  ],
+  "fileLocations": {
+    "subDirectoriesAllowed": true,
+    "Mac OS": {
+      "user": "~/Library/Millumin/"
+    }
+  }
+}

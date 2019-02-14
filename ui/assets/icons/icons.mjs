@@ -14,6 +14,7 @@ import emailSvg from '~/assets/icons/email.svg';
 import filePdfSvg from '~/assets/icons/file-pdf.svg';
 import folderMultipleSvg from '~/assets/icons/folder-multiple.svg';
 import githubCircleSvg from '~/assets/icons/github-circle.svg';
+import helpCircleOutline from '~/assets/icons/help-circle-outline.svg';
 import lightbulbOnOutlineSvg from '~/assets/icons/lightbulb-on-outline.svg';
 import linkVariantSvg from '~/assets/icons/link-variant.svg';
 import magnifySvg from '~/assets/icons/magnify.svg';
@@ -21,6 +22,7 @@ import moveSvg from '~/assets/icons/move.svg';
 import olaSvg from '~/assets/icons/ola.svg';
 import pencilSvg from '~/assets/icons/pencil.svg';
 import plusSvg from '~/assets/icons/plus.svg';
+import puzzleSvg from '~/assets/icons/puzzle.svg';
 import swapHorizontalSvg from '~/assets/icons/swap-horizontal.svg';
 import webSvg from '~/assets/icons/web.svg';
 import youtubeSvg from '~/assets/icons/youtube.svg';
@@ -78,6 +80,7 @@ export default {
   'file-pdf': filePdfSvg,
   'folder-multiple': folderMultipleSvg,
   'github-circle': githubCircleSvg,
+  'help-circle-outline': helpCircleOutline,
   'lightbulb-on-outline': lightbulbOnOutlineSvg,
   'link-variant': linkVariantSvg,
   'magnify': magnifySvg,
@@ -85,6 +88,7 @@ export default {
   'ola': olaSvg,
   'pencil': pencilSvg,
   'plus': plusSvg,
+  'puzzle': puzzleSvg,
   'swap-horizontal': swapHorizontalSvg,
   'web': webSvg,
   'youtube': youtubeSvg,
