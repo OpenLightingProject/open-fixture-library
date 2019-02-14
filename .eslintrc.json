@@ -147,6 +147,30 @@
     "vue/multiline-html-element-content-newline": "off",
     "vue/max-attributes-per-line": ["error", { "singleline": 3 }],
     "vue/singleline-html-element-content-newline": "off",
+    "vue/order-in-components": ["error", {
+      "order": [
+        "el",
+        "name",
+        "parent",
+        "functional",
+        ["delimiters", "comments"],
+        ["components", "directives", "filters"],
+        "extends",
+        "mixins",
+        "inheritAttrs",
+        "model",
+        ["props", "propsData"],
+        "validate",
+        "asyncData",
+        "data",
+        "computed",
+        "watch",
+        "LIFECYCLE_HOOKS",
+        "methods",
+        ["template", "render"],
+        "renderError"
+      ]
+    }],
     "vue/prop-name-casing": "error",
     "vue/require-direct-export": "error",
     "vue/v-on-function-call": "error"
