@@ -24,12 +24,23 @@ for (const pluginKey of fs.readdirSync(pluginDir)) {
     exportTests: []
   };
 
+  const pluginJsonPath = path.join(pluginPath, `plugin.json`);
+  if (fs.existsSync(pluginJsonPath)) {
+    const pluginJson = require(pluginJsonPath);
+
+    data.name = pluginJson.name;
+  }
+  else {
+    console.error(`Plugin ${pluginKey} does not contain a plugin.json file.`);
+    process.exit(1);
+  }
+
   const importPath = path.join(pluginPath, `import.js`);
   if (fs.existsSync(importPath)) {
     try {
       const importPlugin = require(importPath);
       plugins.importPlugins.push(pluginKey);
-      data.name = importPlugin.name;
+      data.importPluginVersion = importPlugin.version;
     }
     catch (error) {
       console.error(error.message);
@@ -42,10 +53,7 @@ for (const pluginKey of fs.readdirSync(pluginDir)) {
     try {
       const exportPlugin = require(exportPath);
       plugins.exportPlugins.push(pluginKey);
-
-      if (!data.name) {
-        data.name = exportPlugin.name;
-      }
+      data.exportPluginVersion = exportPlugin.version;
     }
     catch (error) {
       console.error(error.message);
