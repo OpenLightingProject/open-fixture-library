@@ -17,7 +17,7 @@
       ref="select"
       v-model="selectedUnit"
       :required="required"
-      :class="{empty: selectedUnit === ``}"
+      :class="{ empty: selectedUnit === `` }"
       @input="unitSelected"
       @focus.native="onFocus"
       @blur.native="onBlur($event)">

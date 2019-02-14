@@ -85,7 +85,7 @@
 
         <app-labeled-input
           :formstate="formstate"
-          :custom-validators="{'no-manufacturer-name': fixtureNameIsWithoutManufacturer}"
+          :custom-validators="{ 'no-manufacturer-name': fixtureNameIsWithoutManufacturer }"
           name="fixture-name"
           label="Name">
           <app-property-input-text

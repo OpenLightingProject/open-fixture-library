@@ -22,8 +22,8 @@
           :schema-property="properties.capability.dmxRange"
           :range-min="min"
           :range-max="max"
-          :start-hint="capabilities.length === 1 ? `${min}`: `start`"
-          :end-hint="capabilities.length === 1 ? `${max}`: `end`"
+          :start-hint="capabilities.length === 1 ? `${min}` : `start`"
+          :end-hint="capabilities.length === 1 ? `${max}` : `end`"
           :required="capabilities.length > 1"
           @start-updated="onStartUpdated"
           @end-updated="onEndUpdated" />
