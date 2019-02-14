@@ -8,6 +8,7 @@
       <template v-if="importPluginVersion">Import plugin version {{ importPluginVersion }}</template>
     </div>
 
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <div class="plugin-description" v-html="pluginData.description.join(`\n`)" />
 
     <ul>
@@ -19,6 +20,7 @@
     <div v-if="`fixtureUsage` in pluginData" class="fixture-usage">
       <h2 id="fixture-usage">Fixture usage</h2>
 
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <div v-html="pluginData.fixtureUsage.join(`\n`)" />
     </div>
 
@@ -43,6 +45,7 @@
     <div v-if="`additionalInfo` in pluginData" class="additional-info">
       <h2>Additional information</h2>
 
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <div v-html="pluginData.additionalInfo.join(`\n`)" />
     </div>
 
