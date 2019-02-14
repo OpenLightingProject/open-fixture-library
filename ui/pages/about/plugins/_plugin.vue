@@ -24,7 +24,7 @@
       <div v-html="pluginData.fixtureUsage.join(`\n`)" />
     </div>
 
-    <div v-if="fileLocationOSes" class="file-locations">
+    <div v-if="`fileLocations` in pluginData" class="file-locations">
       <h2>File locations</h2>
 
       <p v-if="`subDirectoriesAllowed` in pluginData.fileLocations">
