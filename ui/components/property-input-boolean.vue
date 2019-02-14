@@ -3,7 +3,7 @@
     ref="input"
     v-model="localValue"
     :required="required"
-    :class="{boolean: true, empty: value === null}">
+    :class="{ boolean: true, empty: value === null }">
     <option :value="null" :disabled="required">unknown</option>
     <option :value="true">yes</option>
     <option :value="false">no</option>

@@ -3,7 +3,7 @@
     ref="input"
     v-model="localValue"
     :required="required"
-    :class="{empty: value === ``}">
+    :class="{ empty: value === `` }">
     <option :disabled="required" value="">unknown</option>
     <option
       v-for="item in schemaProperty.enum"
