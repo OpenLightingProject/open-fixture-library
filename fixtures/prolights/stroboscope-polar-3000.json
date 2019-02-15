@@ -1,0 +1,130 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Stroboscope Polar 3000",
+  "shortName": "Polar 3000",
+  "categories": ["Strobe", "Pixel Bar", "Dimmer", "Effect"],
+  "meta": {
+    "authors": ["TAP"],
+    "createDate": "2019-02-15",
+    "lastModifyDate": "2019-02-15"
+  },
+  "comment": "à compléter",
+  "links": {
+    "manual": [
+      "https://www.esl-france.com/index.php?controller=attachment&id_attachment=216"
+    ],
+    "productPage": [
+      "https://www.esl-france.com/eclairage-spectacle/21637-prolights-strobe-a-leds-polar3000.html#.XGaoW9HjJhG"
+    ],
+    "video": [
+      "https://www.esl-france.com/eclairage-spectacle/21637-prolights-strobe-a-leds-polar3000.html#.XGaoW9HjJhG"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "bulb": {
+      "colorTemperature": 6500
+    }
+  },
+  "availableChannels": {
+    "White 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "AutoPrograms": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Nul 000-010 Auto1 011-040 041-070 071-100 101-130 131-160 161-190 191-220 221-255"
+      }
+    },
+    "AutoSpeed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "000-255"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "000-255"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "000 001-255"
+      }
+    },
+    "DimMode": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "000-051 052-101 102-152 153-203 204-255"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11CH",
+      "channels": [
+        "White 1",
+        "White 2",
+        "White 3",
+        "White 4",
+        "White 5",
+        "White 6",
+        "AutoPrograms",
+        "AutoSpeed",
+        "Dimmer",
+        "Strobe",
+        "DimMode"
+      ]
+    }
+  ]
+}
