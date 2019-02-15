@@ -474,7 +474,7 @@ export default {
         PanTiltSpeed: /^(?:Pan ?\/? ?Tilt|Movement) (?:Speed|Time|Duration)$/i,
         WheelShake: /\bShake\b/i,
         WheelSlotRotation: /Gobo ?\d* (?:Rotation|Index)/i,
-         WheelRotation: /Wheels? ?\d* (?:Rotation|Index)/i,
+        WheelRotation: /Wheels? ?\d* (?:Rotation|Index)/i,
         WheelSlot: /Wheel|Dis[ck]|Gobos? ?\d*$/i,
         EffectSpeed: /^(?:Effect|Program|Macro) Speed$/i,
         EffectDuration: /^(?:Effect|Program|Macro) (?:Time|Duration)$/i,
