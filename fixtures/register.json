@@ -880,6 +880,11 @@
       "lastActionDate": "2018-08-09",
       "lastAction": "modified"
     },
+    "prolights/stroboscope-polar-3000": {
+      "name": "Stroboscope Polar 3000",
+      "lastActionDate": "2019-02-15",
+      "lastAction": "created"
+    },
     "prolights/v700spot": {
       "name": "V700SPOT",
       "lastActionDate": "2018-11-01",
@@ -1356,6 +1361,7 @@
     "prolights": [
       "diamond19",
       "pixpan16",
+      "stroboscope-polar-3000",
       "v700spot"
     ],
     "qtx": [
@@ -1645,6 +1651,7 @@
       "eurolite/led-sls-6-uv-floor",
       "generic/desk-channel",
       "magicfx/smokejet",
+      "prolights/stroboscope-polar-3000",
       "robe/robin-ledbeam-100",
       "robert-juliat/613sx",
       "showtec/club-par-12-4-rgbw",
@@ -1657,6 +1664,7 @@
       "magicfx/psyco2jet",
       "magicfx/stage-flame",
       "minuit-une/ivl-carre",
+      "prolights/stroboscope-polar-3000",
       "showven/sparkular",
       "showven/sparkular-fall",
       "venue/tristrip3z"
@@ -1806,6 +1814,7 @@
       "glp/impression-x4-bar-10",
       "gruft/pixel-tube",
       "nicols/led-bar-123-fc-ip",
+      "prolights/stroboscope-polar-3000",
       "showtec/led-light-bar-rgb-v3",
       "showtec/pixel-bar-12-mkii",
       "showtec/sunstrip-active-mkii",
@@ -1850,6 +1859,7 @@
       "glp/impression-x4-bar-10",
       "glp/jdc1",
       "martin/atomic-3000",
+      "prolights/stroboscope-polar-3000",
       "tmb/solaris-flare"
     ]
   },
@@ -2208,6 +2218,9 @@
     "stevebrush": [
       "martin/rush-par-2-rgbw-zoom"
     ],
+    "TAP": [
+      "prolights/stroboscope-polar-3000"
+    ],
     "Thierry": [
       "briteq/cob-slim-100-rgb"
     ],
@@ -2234,7 +2247,9 @@
     },
     "5584": {
       "key": "prolights",
-      "models": {}
+      "models": {
+        "0": "stroboscope-polar-3000"
+      }
     },
     "6906": {
       "key": "tmb",
@@ -2381,6 +2396,7 @@
     "venue": "#78cc33"
   },
   "lastUpdated": [
+    "prolights/stroboscope-polar-3000",
     "clay-paky/alpha-spot-qwo-800",
     "cameo/auro-spot-100",
     "cameo/auro-spot-200",
