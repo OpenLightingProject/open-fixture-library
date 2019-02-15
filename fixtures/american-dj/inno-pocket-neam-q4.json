@@ -19,6 +19,23 @@
       "https://www.youtube.com/watch?v=zG4iWzimoqU"
     ]
   },
+  "physical": {
+    "dimensions": [147, 265, 159],
+    "weight": 3,
+    "power": 45.6,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "15W RGBW LED"
+    },
+    "lens": {
+      "degreesMinMax": [4, 4]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 230
+    }
+  },
   "availableChannels": {
     "Pan": {
       "defaultValue": 0,
