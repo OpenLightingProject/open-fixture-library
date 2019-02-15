@@ -38,66 +38,185 @@
   },
   "availableChannels": {
     "Pan": {
-      "defaultValue": 0,
+      "defaultValue": "50%",
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
-        "angleEnd": "255deg",
-        "comment": "pan movement"
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
-      "defaultValue": 0,
+      "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
-        "angleEnd": "255deg",
-        "comment": "tilt movement"
+        "angleEnd": "230deg"
       }
     },
     "Red": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "red led"
+        "color": "Red"
       }
     },
     "Green": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "green led"
+        "color": "Green"
       }
     },
     "Blue": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "blue led"
+        "color": "Blue"
       }
     },
     "White": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "comment": "white led"
+        "color": "White"
       }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 8,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [140, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [190, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [240, 248],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [249, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Maintenance": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 69],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Maintenance",
+          "comment": "Blackout by pan/tilt movement"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Maintenance",
+          "comment": "Blackout by color change"
+        },
+        {
+          "dmxRange": [100, 199],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "comment": "Reset all"
+        },
+        {
+          "dmxRange": [210, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound active",
+          "soundControlled": true
+        }
+      ]
     }
   },
   "modes": [
     {
-      "name": "10 ch",
+      "name": "10-channel",
+      "shortName": "10ch",
       "channels": [
         "Pan",
         "Tilt",
         "Red",
         "Green",
         "Blue",
-        "White"
+        "White",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Maintenance"
       ]
     }
   ]
