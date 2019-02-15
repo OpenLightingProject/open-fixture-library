@@ -39,6 +39,7 @@
   "availableChannels": {
     "Pan": {
       "defaultValue": "50%",
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -47,6 +48,7 @@
     },
     "Tilt": {
       "defaultValue": "50%",
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -200,6 +202,40 @@
           "soundControlled": true
         }
       ]
+    },
+    "Dimmer Curves": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Maintenance",
+          "comment": "Standard"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Maintenance",
+          "comment": "Stage"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Maintenance",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Maintenance",
+          "comment": "Architectural"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Maintenance",
+          "comment": "Theatre"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "NoFunction",
+          "comment": "Default unit curve"
+        }
+      ]
     }
   },
   "modes": [
@@ -217,6 +253,42 @@
         "Dimmer",
         "Pan/Tilt Speed",
         "Maintenance"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Maintenance",
+        "Dimmer Curves"
+      ]
+    },
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Maintenance",
+        "Dimmer Curves"
       ]
     }
   ]
