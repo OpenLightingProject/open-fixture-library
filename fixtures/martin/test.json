@@ -1,0 +1,33 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Test",
+  "shortName": "AAA",
+  "categories": ["Dimmer", "Blinder", "Moving Head", "Color Changer", "Scanner", "Laser"],
+  "meta": {
+    "authors": ["dfdf"],
+    "createDate": "2019-02-15",
+    "lastModifyDate": "2019-02-15"
+  },
+  "comment": "df",
+  "links": {
+    "other": [
+      "https://www."
+    ]
+  },
+  "availableChannels": {
+    "1aa": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Closed"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "dfdf",
+      "channels": [
+        "1aa"
+      ]
+    }
+  ]
+}
