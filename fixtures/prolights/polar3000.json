@@ -27,51 +27,19 @@
     },
     "lens": {
       "degreesMinMax": [120, 120]
+    },
+    "matrixPixels": {
+      "dimensions": [62, 151, 0],
+      "spacing": [0, 0, 0]
+    }
+  },
+  "matrix": {
+    "pixelCount": [6, 1, 1],
+    "pixelGroups": {
+      "Master": ["1", "2", "3", "4", "5", "6"]
     }
   },
   "availableChannels": {
-    "White 1": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "White 2": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "White 3": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "White 4": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "White 5": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "White 6": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
     "AutoPrograms": {
       "defaultValue": 0,
       "capability": {
@@ -85,13 +53,6 @@
         "type": "Speed",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "comment": "000-255"
-      }
-    },
-    "Dimmer": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Intensity",
         "comment": "000-255"
       }
     },
@@ -110,19 +71,27 @@
       }
     }
   },
+  "templateChannels": {
+    "Dimmer $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
   "modes": [
     {
       "name": "11CH",
       "channels": [
-        "White 1",
-        "White 2",
-        "White 3",
-        "White 4",
-        "White 5",
-        "White 6",
+        "Dimmer 1",
+        "Dimmer 2",
+        "Dimmer 3",
+        "Dimmer 4",
+        "Dimmer 5",
+        "Dimmer 6",
         "AutoPrograms",
         "AutoSpeed",
-        "Dimmer",
+        "Dimmer Master",
         "Strobe",
         "DimMode"
       ]
