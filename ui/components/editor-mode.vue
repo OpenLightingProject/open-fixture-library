@@ -83,28 +83,30 @@
 
             <code v-if="!isChannelNameUnique(channelUuid)" class="channel-uuid"> {{ channelUuid }}</code>
 
-            <a
-              href="#remove"
-              title="Remove channel"
-              @click.prevent="removeChannel(channelUuid)">
-              <app-svg name="close" />
-            </a>
+            <span class="channel-buttons">
+              <a
+                href="#move"
+                title="Drag to change channel order"
+                class="drag-handle"
+                @click.prevent>
+                <app-svg name="move" />
+              </a>
 
-            <a
-              v-if="!isFineChannel(channelUuid)"
-              href="#channel-editor"
-              title="Edit channel"
-              @click.prevent="editChannel(channelUuid)">
-              <app-svg name="pencil" />
-            </a>
+              <a
+                v-if="!isFineChannel(channelUuid)"
+                href="#channel-editor"
+                title="Edit channel"
+                @click.prevent="editChannel(channelUuid)">
+                <app-svg name="pencil" />
+              </a>
 
-            <a
-              href="#move"
-              title="Drag to change channel order"
-              class="drag-handle"
-              @click.prevent>
-              <app-svg name="move" />
-            </a>
+              <a
+                href="#remove"
+                title="Remove channel"
+                @click.prevent="removeChannel(channelUuid)">
+                <app-svg name="close" />
+              </a>
+            </span>
 
           </li>
         </transition-group>
@@ -138,22 +140,47 @@
   padding-top: 4px;
   padding-bottom: 4px;
 
-  & a {
-    opacity: 0;
-    float: right;
-    width: 1.4em;
-    height: 1.4em;
-    padding: 0.3em;
-    transition: opacity 0.1s;
+  & li {
+    position: relative;
+  }
 
-    & .icon {
-      vertical-align: unset;
+  & .channel-buttons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(#fff, 0);
+    transition: background-color 0.1s, box-shadow 0.1s;
+
+    & a {
+      opacity: 0;
+      transition: opacity 0.1s;
+      padding: 0.3em;
     }
   }
 
-  & > li:hover > a,
+  & li:hover .channel-buttons,
+  & li.sortable-chosen .channel-buttons,
+  & li.sortable-ghost .channel-buttons {
+    background-color: rgba(#fff, 1);
+    box-shadow: -1ex 0 1ex 0.5ex #fff;
+
+    & a {
+      opacity: 1;
+    }
+  }
+
   & a:focus {
     opacity: 1;
+  }
+
+  // has to be a separate rule because older browsers would ignore the whole rule
+  & .channel-buttons:focus-within {
+    background-color: rgba(#fff, 1);
+    box-shadow: -1ex 0 1ex 0.5ex #fff;
+
+    & a {
+      opacity: 1;
+    }
   }
 
   & .drag-handle {
