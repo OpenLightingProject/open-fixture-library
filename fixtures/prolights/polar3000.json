@@ -40,35 +40,106 @@
     }
   },
   "availableChannels": {
-    "AutoPrograms": {
+    "Auto Programs": {
       "defaultValue": 0,
-      "capability": {
-        "type": "Generic",
-        "comment": "Nul 000-010 Auto1 011-040 041-070 071-100 101-130 131-160 161-190 191-220 221-255"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 40],
+          "type": "Effect",
+          "effectName": "Auto 1"
+        },
+        {
+          "dmxRange": [41, 70],
+          "type": "Effect",
+          "effectName": "Auto 2"
+        },
+        {
+          "dmxRange": [71, 100],
+          "type": "Effect",
+          "effectName": "Auto 3"
+        },
+        {
+          "dmxRange": [101, 130],
+          "type": "Effect",
+          "effectName": "Auto 4"
+        },
+        {
+          "dmxRange": [131, 160],
+          "type": "Effect",
+          "effectName": "Auto 5"
+        },
+        {
+          "dmxRange": [161, 190],
+          "type": "Effect",
+          "effectName": "Auto 6"
+        },
+        {
+          "dmxRange": [191, 220],
+          "type": "Effect",
+          "effectName": "Auto 7"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "Effect",
+          "effectName": "Auto 0"
+        }
+      ]
     },
-    "AutoSpeed": {
-      "defaultValue": 0,
+    "Auto Speed": {
       "capability": {
-        "type": "Speed",
+        "type": "EffectSpeed",
         "speedStart": "slow",
-        "speedEnd": "fast",
-        "comment": "000-255"
+        "speedEnd": "fast"
       }
     },
     "Strobe": {
       "defaultValue": 0,
-      "capability": {
-        "type": "Generic",
-        "comment": "000 001-255"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     },
-    "DimMode": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Generic",
-        "comment": "000-051 052-101 102-152 153-203 204-255"
-      }
+    "Dimmer Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction",
+          "comment": "Menu setting dimmer mode"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Maintenance",
+          "comment": "Dimmer mode off"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Maintenance",
+          "comment": "Dimmer mode 1"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Maintenance",
+          "comment": "Dimmer mode 2"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Maintenance",
+          "comment": "Dimmer mode 3"
+        }
+      ]
     }
   },
   "templateChannels": {
@@ -89,11 +160,11 @@
         "Dimmer 4",
         "Dimmer 5",
         "Dimmer 6",
-        "AutoPrograms",
-        "AutoSpeed",
+        "Auto Programs",
+        "Auto Speed",
         "Dimmer Master",
         "Strobe",
-        "DimMode"
+        "Dimmer Mode"
       ]
     }
   ]
