@@ -2,13 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "POLAR3000",
   "shortName": "PLPolar3000",
-  "categories": ["Strobe", "Pixel Bar", "Dimmer", "Effect"],
+  "categories": ["Strobe", "Blinder"],
   "meta": {
     "authors": ["TAP"],
-    "createDate": "2019-02-15",
-    "lastModifyDate": "2019-02-15"
+    "createDate": "2019-02-16",
+    "lastModifyDate": "2019-02-16"
   },
-  "comment": "à compléter",
   "links": {
     "manual": [
       "https://www.musiclights.it/download.php?id=2545"
@@ -16,9 +15,6 @@
     "productPage": [
       "https://www.musiclights.it/product/POLAR3000?lang=EN"
     ]
-  },
-  "rdm": {
-    "modelId": 0
   },
   "physical": {
     "bulb": {
