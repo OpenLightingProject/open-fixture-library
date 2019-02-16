@@ -152,14 +152,51 @@
   },
   "modes": [
     {
-      "name": "11CH",
+      "name": "3-channel",
+      "shortName": "3ch",
       "channels": [
-        "Dimmer 1",
-        "Dimmer 2",
-        "Dimmer 3",
-        "Dimmer 4",
-        "Dimmer 5",
-        "Dimmer 6",
+        "Dimmer Master",
+        "Strobe",
+        "Dimmer Mode"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer Master",
+        "Strobe",
+        "Auto Programs",
+        "Auto Speed",
+        "Dimmer Mode"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey"
+          ]
+        },
         "Auto Programs",
         "Auto Speed",
         "Dimmer Master",
