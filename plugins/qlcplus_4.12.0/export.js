@@ -70,7 +70,8 @@ module.exports.export = function exportQlcPlus(fixtures, options) {
       addMode(xml, mode);
     }
 
-    if (fixture.physical !== null) {
+    const allModesHavePhysical = fixture.modes.every(mode => mode.physicalOverride !== null);
+    if (fixture.physical !== null && !allModesHavePhysical) {
       addPhysical(xml, fixture.physical);
     }
 
