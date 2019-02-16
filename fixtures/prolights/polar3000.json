@@ -17,8 +17,16 @@
     ]
   },
   "physical": {
+    "dimensions": [455, 221, 80],
+    "weight": 4.5,
+    "power": 462,
+    "DMXconnector": "3-pin and 5-pin",
     "bulb": {
+      "type": "882x0.5W SMD LEDs",
       "colorTemperature": 6500
+    },
+    "lens": {
+      "degreesMinMax": [120, 120]
     }
   },
   "availableChannels": {
