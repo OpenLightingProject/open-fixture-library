@@ -1,0 +1,208 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "POLAR3000",
+  "shortName": "PLPolar3000",
+  "categories": ["Strobe", "Blinder"],
+  "meta": {
+    "authors": ["TAP"],
+    "createDate": "2019-02-16",
+    "lastModifyDate": "2019-02-16"
+  },
+  "links": {
+    "manual": [
+      "https://www.musiclights.it/download.php?id=2545"
+    ],
+    "productPage": [
+      "https://www.musiclights.it/product/POLAR3000?lang=EN"
+    ]
+  },
+  "physical": {
+    "dimensions": [455, 221, 80],
+    "weight": 4.5,
+    "power": 462,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "882x0.5W SMD LEDs",
+      "colorTemperature": 6500
+    },
+    "lens": {
+      "degreesMinMax": [120, 120]
+    },
+    "matrixPixels": {
+      "dimensions": [62, 151, 0],
+      "spacing": [0, 0, 0]
+    }
+  },
+  "matrix": {
+    "pixelCount": [6, 1, 1],
+    "pixelGroups": {
+      "Master": ["1", "2", "3", "4", "5", "6"]
+    }
+  },
+  "availableChannels": {
+    "Auto Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 40],
+          "type": "Effect",
+          "effectName": "Auto 1"
+        },
+        {
+          "dmxRange": [41, 70],
+          "type": "Effect",
+          "effectName": "Auto 2"
+        },
+        {
+          "dmxRange": [71, 100],
+          "type": "Effect",
+          "effectName": "Auto 3"
+        },
+        {
+          "dmxRange": [101, 130],
+          "type": "Effect",
+          "effectName": "Auto 4"
+        },
+        {
+          "dmxRange": [131, 160],
+          "type": "Effect",
+          "effectName": "Auto 5"
+        },
+        {
+          "dmxRange": [161, 190],
+          "type": "Effect",
+          "effectName": "Auto 6"
+        },
+        {
+          "dmxRange": [191, 220],
+          "type": "Effect",
+          "effectName": "Auto 7"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "Effect",
+          "effectName": "Auto 0"
+        }
+      ]
+    },
+    "Auto Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Dimmer Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction",
+          "comment": "Menu setting dimmer mode"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Maintenance",
+          "comment": "Dimmer mode off"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Maintenance",
+          "comment": "Dimmer mode 1"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Maintenance",
+          "comment": "Dimmer mode 2"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Maintenance",
+          "comment": "Dimmer mode 3"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "Dimmer $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer Master",
+        "Strobe",
+        "Dimmer Mode"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer Master",
+        "Strobe",
+        "Auto Programs",
+        "Auto Speed",
+        "Dimmer Mode"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Dimmer $pixelKey"
+          ]
+        },
+        "Auto Programs",
+        "Auto Speed",
+        "Dimmer Master",
+        "Strobe",
+        "Dimmer Mode"
+      ]
+    }
+  ]
+}
