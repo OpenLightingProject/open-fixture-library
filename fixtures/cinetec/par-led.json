@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PAR LED",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Arthur"],
+    "createDate": "2019-02-17",
+    "lastModifyDate": "2019-02-17"
+  },
+  "comment": "Les infos sont disparates et impossibles à trouver, donc la fixture n'est peut-être pas complète ni juste.",
+  "links": {
+    "productPage": [
+      "https://www.9pboutik.com/boutique/lumieres/par-led/par-18x10-rgbwa.html#item-description"
+    ]
+  },
+  "physical": {
+    "weight": 4,
+    "power": 270,
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Fixe",
+      "degreesMinMax": [25, 45]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "0Hz"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Color Macros": {
+      "defaultValue": 10,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Color Mix"
+      }
+    },
+    "Color Macros 2": {
+      "name": "Color Macros",
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Color Mix 2"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Extended",
+      "shortName": "Ext",
+      "channels": [
+        "Intensity",
+        "Strobe",
+        "Color Macros",
+        "Color Macros 2",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber"
+      ]
+    }
+  ]
+}
