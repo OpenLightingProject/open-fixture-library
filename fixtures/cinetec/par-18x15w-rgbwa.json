@@ -20,14 +20,14 @@
     ]
   },
   "physical": {
-    "weight": 4,
+    "weight": 6.6,
     "power": 270,
+    "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "18x15W RGBWA LEDs"
     },
     "lens": {
-      "name": "Fixe",
-      "degreesMinMax": [25, 45]
+      "degreesMinMax": [15, 45]
     },
     "focus": {
       "type": "Fixed"
