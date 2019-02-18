@@ -44,13 +44,12 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "StrobeSpeed",
-          "speedStart": "0Hz",
-          "speedEnd": "0Hz"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [11, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "25Hz"
         }
@@ -60,14 +59,15 @@
       "defaultValue": 10,
       "capability": {
         "type": "ColorPreset",
-        "comment": "Color Mix"
+        "comment": "Color Mix",
+        "helpWanted": "At which DMX values can which color be selected?"
       }
     },
     "Color Macros 2": {
-      "name": "Color Macros",
       "capability": {
         "type": "ColorPreset",
-        "comment": "Color Mix 2"
+        "comment": "Color Mix 2",
+        "helpWanted": "At which DMX values can which color be selected?"
       }
     },
     "Red": {
