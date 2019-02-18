@@ -108,13 +108,24 @@
   },
   "modes": [
     {
-      "name": "Extended",
-      "shortName": "Ext",
+      "name": "9-channel",
+      "shortName": "9ch",
       "channels": [
         "Intensity",
         "Strobe",
         "Color Macros",
         "Color Macros 2",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
         "Red",
         "Green",
         "Blue",
