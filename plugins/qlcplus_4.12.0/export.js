@@ -74,7 +74,7 @@ module.exports.export = function exportQlcPlus(fixtures, options) {
       addPhysical(xml, fixture.physical);
     }
 
-    xml.doctype(``);
+    xml.dtd(``);
 
     return {
       name: sanitize(`${fixture.manufacturer.name}/-${fixture.name}.qxf`).replace(/\s+/g, `-`),
