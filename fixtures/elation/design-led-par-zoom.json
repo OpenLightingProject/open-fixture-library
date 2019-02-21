@@ -1,0 +1,356 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Design LED Par Zoom",
+  "shortName": "ElationDLEDParZoom",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2019-02-21",
+    "lastModifyDate": "2019-02-21"
+  },
+  "links": {
+    "manual": [
+      "http://cdb.s3.amazonaws.com/ItemRelatedFiles/10094/elation_design_par_led_zoom_user_manual.pdf"
+    ],
+    "productPage": [
+      "https://www.elationlighting.com/design-led-par-zoom"
+    ]
+  },
+  "physical": {
+    "dimensions": [79, 76.5, 60],
+    "weight": 7,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "36× 3W LEDs (10× red, 16× green, 10× blue)"
+    },
+    "lens": {
+      "degreesMinMax": [7, 49]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 7],
+          "type": "ColorPreset",
+          "comment": "R02 Bastard Amber"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "R04 Medium Amber"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "R09 Pale Amber Gold"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "R316 Gallo Gold"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "R21 Golden Amber"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "R26 Light Red"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "R27 Medium Red"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "R36 Medium Pink"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "ColorPreset",
+          "comment": "R339 Broadway Pink"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "comment": "R344 Follies Pink"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "comment": "R52 Light Lavender"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "comment": "R54 Special Lavender"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "comment": "R57 Lavender"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "ColorPreset",
+          "comment": "R59 Indigo"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "ColorPreset",
+          "comment": "R361 Hemsley Blue"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "comment": "R362 Tipton Blue"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "ColorPreset",
+          "comment": "R64 Light Steel Blue"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "ColorPreset",
+          "comment": "R67 Light Sky Blue"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "ColorPreset",
+          "comment": "R68 Sky Blue"
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "ColorPreset",
+          "comment": "R69 Brilliant Blue"
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "ColorPreset",
+          "comment": "R76 Light Green Blue"
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "ColorPreset",
+          "comment": "R79 Bright Blue"
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "ColorPreset",
+          "comment": "R80 Primary Blue"
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "ColorPreset",
+          "comment": "R382 Congo Blue"
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "ColorPreset",
+          "comment": "R87 Pale Yellow Green"
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "ColorPreset",
+          "comment": "R89 Moss Green"
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "ColorPreset",
+          "comment": "R91 Primary Green"
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "ColorPreset",
+          "comment": "L200 Double CTB"
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "ColorPreset",
+          "comment": "L201 Full CTB"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ColorPreset",
+          "comment": "L202 1/2 CTB"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ColorPreset",
+          "comment": "L119 Dark Blue"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        }
+      ]
+    },
+    "Internal Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 40],
+          "type": "Effect",
+          "effectName": "Internal program 1"
+        },
+        {
+          "dmxRange": [41, 70],
+          "type": "Effect",
+          "effectName": "Internal program 2"
+        },
+        {
+          "dmxRange": [71, 100],
+          "type": "Effect",
+          "effectName": "Internal program 3"
+        },
+        {
+          "dmxRange": [101, 130],
+          "type": "Effect",
+          "effectName": "Internal program 4"
+        },
+        {
+          "dmxRange": [131, 160],
+          "type": "Effect",
+          "effectName": "Internal program 5"
+        },
+        {
+          "dmxRange": [161, 190],
+          "type": "Effect",
+          "effectName": "Internal program 6"
+        },
+        {
+          "dmxRange": [191, 220],
+          "type": "Effect",
+          "effectName": "Internal program 7"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "18Hz"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "49deg",
+        "angleEnd": "7deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros",
+        "Internal Programs",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Program Speed",
+        "Zoom"
+      ]
+    }
+  ]
+}
