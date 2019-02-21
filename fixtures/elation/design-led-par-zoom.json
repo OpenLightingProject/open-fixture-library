@@ -220,50 +220,78 @@
       ]
     },
     "Internal Programs": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Dimmer / Program Speed": "Dimmer"
+          }
         },
         {
           "dmxRange": [11, 40],
           "type": "Effect",
-          "effectName": "Internal program 1"
+          "effectName": "Internal program 1",
+          "switchChannels": {
+            "Dimmer / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [41, 70],
           "type": "Effect",
-          "effectName": "Internal program 2"
+          "effectName": "Internal program 2",
+          "switchChannels": {
+            "Dimmer / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [71, 100],
           "type": "Effect",
-          "effectName": "Internal program 3"
+          "effectName": "Internal program 3",
+          "switchChannels": {
+            "Dimmer / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [101, 130],
           "type": "Effect",
-          "effectName": "Internal program 4"
+          "effectName": "Internal program 4",
+          "switchChannels": {
+            "Dimmer / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [131, 160],
           "type": "Effect",
-          "effectName": "Internal program 5"
+          "effectName": "Internal program 5",
+          "switchChannels": {
+            "Dimmer / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [161, 190],
           "type": "Effect",
-          "effectName": "Internal program 6"
+          "effectName": "Internal program 6",
+          "switchChannels": {
+            "Dimmer / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [191, 220],
           "type": "Effect",
-          "effectName": "Internal program 7"
+          "effectName": "Internal program 7",
+          "switchChannels": {
+            "Dimmer / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [221, 255],
           "type": "Effect",
-          "effectPreset": "ColorFade"
+          "effectPreset": "ColorFade",
+          "switchChannels": {
+            "Dimmer / Program Speed": "Program Speed"
+          }
         }
       ]
     },
@@ -347,8 +375,7 @@
         "Color Macros",
         "Internal Programs",
         "Shutter / Strobe",
-        "Dimmer",
-        "Program Speed",
+        "Dimmer / Program Speed",
         "Zoom"
       ]
     }
