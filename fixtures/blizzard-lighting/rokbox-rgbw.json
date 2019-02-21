@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RokBox RGBW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["DMS", "Anonymous"],
+    "createDate": "2019-02-21",
+    "lastModifyDate": "2019-02-21",
+    "importPlugin": {
+      "plugin": "qlcplus_4.11.2",
+      "date": "2019-02-21",
+      "comment": "created by Q Light Controller Plus (version 4.10.5b)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "5-pin",
+    "lens": {
+      "name": "Other"
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Mode 4",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
