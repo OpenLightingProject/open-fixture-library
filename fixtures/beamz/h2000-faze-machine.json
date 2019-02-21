@@ -32,19 +32,24 @@
   "availableChannels": {
     "Smoke": {
       "capability": {
-        "type": "Intensity"
+        "type": "Fog",
+        "fogOutputStart": "off",
+        "fogOutputEnd": "strong"
       }
     },
     "Fan": {
       "capability": {
         "type": "Speed",
+        "speedStart": "80%",
+        "speedEnd": "100%",
         "comment": "Fan Speed"
       }
     }
   },
   "modes": [
     {
-      "name": "smoke",
+      "name": "2-channel",
+      "shortName": "2ch",
       "channels": [
         "Smoke",
         "Fan"
