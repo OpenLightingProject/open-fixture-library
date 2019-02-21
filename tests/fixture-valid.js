@@ -1035,14 +1035,14 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         invalidPhrase: `focus.type is not 'Mirror'`
       },
       'Smoke': {
-        isSuggested: hasCapabilityPropertyValue(`fogType`, `Fog`),
-        suggestedPhrase: `a Fog/FogType capability has fogType 'Fog'`,
-        invalidPhrase: `no Fog/FogType capability has fogType 'Fog'`
+        isSuggested: isFogType(`Fog`),
+        suggestedPhrase: `there are Fog/FogType capabilities with no fogType or fogType 'Fog'`,
+        invalidPhrase: `there are no Fog/FogType capabilities or none has fogType 'Fog'`
       },
       'Hazer': {
-        isSuggested: hasCapabilityPropertyValue(`fogType`, `Haze`),
-        suggestedPhrase: `a Fog/FogType capability has fogType 'Haze'`,
-        invalidPhrase: `no Fog/FogType capability has fogType 'Haze'`
+        isSuggested: isFogType(`Haze`),
+        suggestedPhrase: `there are Fog/FogType capabilities with no fogType or fogType 'Haze'`,
+        invalidPhrase: `there are no Fog/FogType capabilities or none has fogType 'Haze'`
       },
       'Matrix': {
         isInvalid: isNotMatrix(),
@@ -1136,14 +1136,19 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     /**
-     * @param {string} property The property name of the capability's json data.
-     * @param {string} value The property value to search for.
-     * @returns {boolean} Whether the given capability property/value pair occurs in the fixture.
+     * @param {string} fogType The fog type to search for.
+     * @returns {boolean} Whether the fixture has the given fog type.
      */
-    function hasCapabilityPropertyValue(property, value) {
-      return fixture.capabilities.some(
-        cap => cap[property] === value
+    function isFogType(fogType) {
+      const fogCaps = fixture.capabilities.filter(
+        cap => cap.type.startsWith(`Fog`)
       );
+
+      if (fogCaps.length === 0) {
+        return false;
+      }
+
+      return fogCaps.some(cap => cap.fogType === fogType) || fogCaps.every(cap => cap.fogType === null);
     }
 
     /**
