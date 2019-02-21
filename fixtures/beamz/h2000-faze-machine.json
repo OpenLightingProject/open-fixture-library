@@ -24,13 +24,10 @@
     ]
   },
   "physical": {
-    "DMXconnector": "5-pin",
-    "lens": {
-      "name": "Other"
-    },
-    "focus": {
-      "type": "Fixed"
-    }
+    "dimensions": [185, 350, 360],
+    "weight": 6.8,
+    "power": 1700,
+    "DMXconnector": "3-pin"
   },
   "availableChannels": {
     "Smoke": {
