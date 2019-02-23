@@ -579,7 +579,47 @@
   },
   "modes": [
     {
-      "name": "12-channel",
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Master Dimmer"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Master Dimmer",
+        "Shutter / Strobe"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
       "channels": [
         "Red",
         "Green",
@@ -590,7 +630,24 @@
         "Master Dimmer",
         "Shutter / Strobe",
         "Program Selection",
-        "Color Preset",
+        "Programs",
+        "Program Speed / Sound Sensitivity"
+      ]
+    },
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Master Dimmer",
+        "Shutter / Strobe",
+        "Program Selection",
+        "Programs",
         "Program Speed / Sound Sensitivity",
         "Dimmer Curve"
       ]
