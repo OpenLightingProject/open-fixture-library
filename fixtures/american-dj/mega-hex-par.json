@@ -125,7 +125,7 @@
         }
       ]
     },
-    "Program Selection": {
+    "Program Mode": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -133,7 +133,7 @@
           "type": "NoFunction",
           "comment": "Dimming Mode",
           "switchChannels": {
-            "Programs": "Color Macros",
+            "Color Macros / Programs": "Color Macros",
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
@@ -142,7 +142,7 @@
           "type": "Maintenance",
           "comment": "Color Macro Mode",
           "switchChannels": {
-            "Programs": "Color Macros",
+            "Color Macros / Programs": "Color Macros",
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
@@ -151,7 +151,7 @@
           "type": "Maintenance",
           "comment": "Color Change Mode",
           "switchChannels": {
-            "Programs": "Color Change Programs",
+            "Color Macros / Programs": "Color Change Programs",
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
@@ -160,7 +160,7 @@
           "type": "Maintenance",
           "comment": "Color Fade Mode",
           "switchChannels": {
-            "Programs": "Color Fade Programs",
+            "Color Macros / Programs": "Color Fade Programs",
             "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
@@ -169,7 +169,7 @@
           "type": "Maintenance",
           "comment": "Sound Active Mode",
           "switchChannels": {
-            "Programs": "Sound Active Programs",
+            "Color Macros / Programs": "Sound Active Programs",
             "Program Speed / Sound Sensitivity": "Sound Sensitivity"
           }
         }
@@ -629,8 +629,8 @@
         "UV",
         "Master Dimmer",
         "Shutter / Strobe",
-        "Program Selection",
-        "Programs",
+        "Program Mode",
+        "Color Macros / Programs",
         "Program Speed / Sound Sensitivity"
       ]
     },
@@ -646,8 +646,8 @@
         "UV",
         "Master Dimmer",
         "Shutter / Strobe",
-        "Program Selection",
-        "Programs",
+        "Program Mode",
+        "Color Macros / Programs",
         "Program Speed / Sound Sensitivity",
         "Dimmer Curve"
       ]
