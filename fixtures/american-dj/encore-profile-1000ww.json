@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Encore profile 1000WW",
+  "shortName": "Profile 1000\"",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["Gerard Fontanillas"],
+    "createDate": "2019-02-24",
+    "lastModifyDate": "2019-02-24"
+  },
+  "comment": "Profile led 120W",
+  "links": {
+    "manual": [
+      "https://cdb.s3-us-west-1.amazonaws.com/ItemRelatedFiles/8872/encore_profile_1000_ww.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/encore-profile-1000-ww"
+    ]
+  },
+  "physical": {
+    "dimensions": [560, 250, 385],
+    "weight": 8.5,
+    "power": 144,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3200
+    },
+    "lens": {
+      "name": "Beam Angle",
+      "degreesMinMax": [12, 30]
+    }
+  },
+  "availableChannels": {
+    "White": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Master / Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "16Hz",
+        "speedEnd": "255Hz",
+        "comment": "0-15 no funcion; 16-255 strobing slow->fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1 Channel",
+      "shortName": "1 channel",
+      "channels": [
+        "White"
+      ]
+    },
+    {
+      "name": "2 Channel",
+      "shortName": "2 channel",
+      "channels": [
+        "White",
+        "Master / Dimmer"
+      ]
+    },
+    {
+      "name": "3 channel",
+      "shortName": "3 Channel",
+      "channels": [
+        "White",
+        "Master / Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
