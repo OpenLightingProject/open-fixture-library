@@ -1,20 +1,25 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Encore profile 1000WW",
-  "shortName": "Profile 1000\"",
-  "categories": ["Blinder"],
+  "name": "Encore Profile 1000 WW",
+  "shortName": "ADJEncProfile",
+  "categories": ["Blinder", "Dimmer"],
   "meta": {
     "authors": ["Gerard Fontanillas"],
     "createDate": "2019-02-24",
     "lastModifyDate": "2019-02-24"
   },
-  "comment": "Profile led 120W",
   "links": {
     "manual": [
       "https://cdb.s3-us-west-1.amazonaws.com/ItemRelatedFiles/8872/encore_profile_1000_ww.pdf"
     ],
     "productPage": [
       "https://www.adj.com/encore-profile-1000-ww"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=zz6L0bJZoF8",
+      "https://www.youtube.com/watch?v=MdO71QLiFZ4",
+      "https://www.youtube.com/watch?v=SwFZg45s_hE",
+      "https://www.youtube.com/watch?v=2twVkEXGRBg"
     ]
   },
   "physical": {
@@ -33,21 +38,29 @@
   "availableChannels": {
     "White": {
       "capability": {
-        "type": "Intensity"
+        "type": "ColorIntensity",
+        "color": "White"
       }
     },
-    "Master / Dimmer": {
+    "Master Dimmer": {
       "capability": {
         "type": "Intensity"
       }
     },
     "Strobe": {
-      "capability": {
-        "type": "StrobeSpeed",
-        "speedStart": "16Hz",
-        "speedEnd": "255Hz",
-        "comment": "0-15 no funcion; 16-255 strobing slow->fast"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [15, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     }
   },
   "modes": [
@@ -63,7 +76,7 @@
       "shortName": "2 channel",
       "channels": [
         "White",
-        "Master / Dimmer"
+        "Master Dimmer"
       ]
     },
     {
@@ -71,7 +84,7 @@
       "shortName": "3 Channel",
       "channels": [
         "White",
-        "Master / Dimmer",
+        "Master Dimmer",
         "Strobe"
       ]
     }
