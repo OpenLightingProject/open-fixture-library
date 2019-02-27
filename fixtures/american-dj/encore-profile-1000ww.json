@@ -18,16 +18,15 @@
     ]
   },
   "physical": {
-    "dimensions": [560, 250, 385],
+    "dimensions": [250, 385, 560],
     "weight": 8.5,
     "power": 144,
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
-      "type": "LED",
+      "type": "120W warm white COB LED",
       "colorTemperature": 3200
     },
     "lens": {
-      "name": "Beam Angle",
       "degreesMinMax": [12, 30]
     }
   },
