@@ -120,20 +120,25 @@
       "lastActionDate": "2018-08-24",
       "lastAction": "modified"
     },
+    "beamz/h2000-faze-machine": {
+      "name": "H2000 Faze Machine",
+      "lastActionDate": "2019-02-21",
+      "lastAction": "created"
+    },
     "big-dipper/ls90": {
       "name": "LS90",
       "lastActionDate": "2018-09-12",
-      "lastAction": "created"
-    },
-    "blizzard-lighting/rokbox-rgbw": {
-      "name": "RokBox RGBW",
-      "lastActionDate": "2019-02-21",
       "lastAction": "created"
     },
     "blizzard/puck-rgbaw": {
       "name": "Puck RGBAW",
       "lastActionDate": "2018-08-06",
       "lastAction": "modified"
+    },
+    "blizzard/rokbox-rgbw": {
+      "name": "RokBox RGBW",
+      "lastActionDate": "2019-02-27",
+      "lastAction": "created"
     },
     "boomtonedj/crazy-spot-30": {
       "name": "Crazy Spot 30",
@@ -340,6 +345,11 @@
       "lastActionDate": "2018-08-24",
       "lastAction": "modified"
     },
+    "cinetec/par-18x15w-rgbwa": {
+      "name": "PAR 18x15W RGBWA",
+      "lastActionDate": "2019-02-18",
+      "lastAction": "created"
+    },
     "clay-paky/alpha-spot-qwo-800": {
       "name": "Alpha Spot QWO 800",
       "lastActionDate": "2019-02-12",
@@ -394,6 +404,11 @@
       "name": "ACL 360 Roller",
       "lastActionDate": "2018-09-04",
       "lastAction": "modified"
+    },
+    "elation/design-led-par-zoom": {
+      "name": "Design LED Par Zoom",
+      "lastActionDate": "2019-02-21",
+      "lastAction": "created"
     },
     "elation/platinum-hfx": {
       "name": "Platinum HFX",
@@ -1135,13 +1150,14 @@
     "ayrton": [
       "magicblade-fx"
     ],
+    "beamz": [
+      "h2000-faze-machine"
+    ],
     "big-dipper": [
       "ls90"
     ],
     "blizzard": [
-      "puck-rgbaw"
-    ],
-    "blizzard-lighting": [
+      "puck-rgbaw",
       "rokbox-rgbw"
     ],
     "boomtonedj": [
@@ -1197,6 +1213,9 @@
       "color-force-ii-48",
       "color-force-ii-72"
     ],
+    "cinetec": [
+      "par-18x15w-rgbwa"
+    ],
     "clay-paky": [
       "alpha-spot-qwo-800",
       "sharpy",
@@ -1219,6 +1238,7 @@
     ],
     "elation": [
       "acl-360-roller",
+      "design-led-par-zoom",
       "platinum-hfx",
       "platinum-seven",
       "platinum-spot-15r-pro",
@@ -1488,8 +1508,8 @@
       "ayra/tdc-triple-burst",
       "ayrton/magicblade-fx",
       "big-dipper/ls90",
-      "blizzard-lighting/rokbox-rgbw",
       "blizzard/puck-rgbaw",
+      "blizzard/rokbox-rgbw",
       "boomtonedj/crazy-spot-30",
       "boomtonedj/xtrem-led",
       "briteq/bt-ledrotor",
@@ -1526,6 +1546,7 @@
       "chroma-q/color-force-ii-12",
       "chroma-q/color-force-ii-48",
       "chroma-q/color-force-ii-72",
+      "cinetec/par-18x15w-rgbwa",
       "clay-paky/alpha-spot-qwo-800",
       "clay-paky/sharpy",
       "clay-paky/show-batten-100",
@@ -1534,6 +1555,7 @@
       "contest/irledflat-5x12SIXb",
       "dts/xr1200-wash",
       "elation/acl-360-roller",
+      "elation/design-led-par-zoom",
       "elation/platinum-hfx",
       "elation/platinum-seven",
       "elation/platinum-spot-15r-pro",
@@ -1703,6 +1725,7 @@
       "showtec/sunraise-led"
     ],
     "Hazer": [
+      "beamz/h2000-faze-machine",
       "martin/magnum-2500-hz",
       "mdg/hazer-atmosphere-aps",
       "mdg/theone-atmospheric-generator"
@@ -1848,6 +1871,7 @@
     ],
     "Smoke": [
       "american-dj/fog-fury-jett-pro",
+      "beamz/h2000-faze-machine",
       "cameo/steam-wizard-1000",
       "cameo/steam-wizard-2000",
       "look/viper-nt",
@@ -2004,6 +2028,7 @@
       "clay-paky/show-batten-100",
       "coemar/prospot-250-lx",
       "dts/scena-led-150",
+      "elation/design-led-par-zoom",
       "elation/platinum-hfx",
       "epsilon/duo-q-beam-bar",
       "eurolite/led-kls-801",
@@ -2077,16 +2102,15 @@
       "prolights/diamond19",
       "robe/robin-ledbeam-100"
     ],
-    "Anonymous": [
-      "american-dj/mega-bar-rgba",
-      "blizzard-lighting/rokbox-rgbw",
-      "eliminator/stealth-wash-zoom",
-      "stairville/mh-100"
-    ],
     "Alejo Cervera": [
       "magicfx/stage-flame",
       "showven/sparkular",
       "showven/sparkular-fall"
+    ],
+    "Anonymous": [
+      "american-dj/mega-bar-rgba",
+      "eliminator/stealth-wash-zoom",
+      "stairville/mh-100"
     ],
     "Justin Hornsby": [
       "chauvet-dj/washfx",
@@ -2106,6 +2130,10 @@
     "DJMaxone.de": [
       "hong-yi/hy-g60",
       "tiptop-stage-light/3-10w-battery-led-wedge-par"
+    ],
+    "DMS": [
+      "beamz/h2000-faze-machine",
+      "blizzard/rokbox-rgbw"
     ],
     "Jean-François Losson": [
       "arri/skypanel-s30c",
@@ -2147,14 +2175,14 @@
       "boomtonedj/crazy-spot-30",
       "ghost/ip-spot-bat"
     ],
+    "Arthur": [
+      "cinetec/par-18x15w-rgbwa"
+    ],
     "Bram Nauta": [
       "american-dj/vizi-spot-led-pro"
     ],
     "dariovideo": [
       "robert-juliat/613sx"
-    ],
-    "DMS": [
-      "blizzard-lighting/rokbox-rgbw"
     ],
     "Edgar Aichinger": [
       "renkforce/gm107"
@@ -2356,6 +2384,7 @@
     "arri": "#bfcc33",
     "ayra": "#33ccbf",
     "ayrton": "#a3cc66",
+    "beamz": "#76d65c",
     "big-dipper": "#d452e0",
     "blizzard": "#d94426",
     "boomtonedj": "#c5cc66",
@@ -2364,6 +2393,7 @@
     "chauvet-dj": "#d6855c",
     "chauvet-professional": "#5265e0",
     "chroma-q": "#66cc8a",
+    "cinetec": "#bf40b0",
     "clay-paky": "#77bf40",
     "coemar": "#65d926",
     "contest": "#b233cc",
@@ -2416,7 +2446,10 @@
     "venue": "#78cc33"
   },
   "lastUpdated": [
-    "blizzard-lighting/rokbox-rgbw",
+    "blizzard/rokbox-rgbw",
+    "beamz/h2000-faze-machine",
+    "elation/design-led-par-zoom",
+    "cinetec/par-18x15w-rgbwa",
     "prolights/polar3000",
     "american-dj/inno-pocket-beam-q4",
     "clay-paky/alpha-spot-qwo-800",

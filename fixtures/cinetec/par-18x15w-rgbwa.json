@@ -1,0 +1,137 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PAR 18x15W RGBWA",
+  "shortName": "SFLP17A",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Arthur"],
+    "createDate": "2019-02-18",
+    "lastModifyDate": "2019-02-18"
+  },
+  "helpWanted": "Please provide a manual if possible. Why are there two color macro channels? Is the 5-channel mode correct?",
+  "links": {
+    "productPage": [
+      "https://www.9pboutik.com/boutique/lumieres/par-led/par-18x10-rgbwa.html",
+      "http://www.accled.fr/projecteurs-et-accessoires/source-directionnelle/par-a-led-cinetec-18-led-de-15w-40-rvb-ba/"
+    ],
+    "other": [
+      "http://www.dimatec.net/tarifs/cinetec/TARIF%20DIMATEC%202018%20-%20CINETEC.pdf",
+      "http://www.dimatec.net/documentation/download/cinetec/brochure_cinetec.pdf"
+    ]
+  },
+  "physical": {
+    "weight": 6.6,
+    "power": 270,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "18x15W RGBWA LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [15, 45]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Color Macros": {
+      "defaultValue": 10,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Color Mix",
+        "helpWanted": "At which DMX values can which color be selected?"
+      }
+    },
+    "Color Macros 2": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Color Mix 2",
+        "helpWanted": "At which DMX values can which color be selected?"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Intensity",
+        "Strobe",
+        "Color Macros",
+        "Color Macros 2",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber"
+      ]
+    }
+  ]
+}
