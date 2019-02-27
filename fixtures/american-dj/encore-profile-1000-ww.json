@@ -36,13 +36,13 @@
     }
   },
   "availableChannels": {
-    "White": {
+    "Warm White": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White"
+        "color": "Warm White"
       }
     },
-    "Master Dimmer": {
+    "Dimmer": {
       "capability": {
         "type": "Intensity"
       }
@@ -68,23 +68,23 @@
       "name": "1-channel",
       "shortName": "1ch",
       "channels": [
-        "White"
+        "Warm White"
       ]
     },
     {
       "name": "2-channel",
       "shortName": "2ch",
       "channels": [
-        "White",
-        "Master Dimmer"
+        "Warm White",
+        "Dimmer"
       ]
     },
     {
       "name": "3-channel",
       "shortName": "3ch",
       "channels": [
-        "White",
-        "Master Dimmer",
+        "Warm White",
+        "Dimmer",
         "Strobe"
       ]
     }
