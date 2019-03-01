@@ -1,0 +1,211 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Starbust 5x15W RGBWY+UV LED",
+  "shortName": "Starburst ",
+  "categories": ["Moving Head", "Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["gerard fontanillas"],
+    "createDate": "2019-03-01",
+    "lastModifyDate": "2019-03-01"
+  },
+  "links": {
+    "manual": [
+      "https://cdb.s3-us-west-1.amazonaws.com/ItemRelatedFiles/8787/starburst.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/starburst"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=SetHSmR7J6c",
+      "https://www.youtube.com/watch?v=haRjymezIig",
+      "https://www.youtube.com/watch?v=WXHROB4soLs"
+    ]
+  },
+  "physical": {
+    "dimensions": [318, 318, 412.5],
+    "weight": 3.65,
+    "power": 55,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "HEX LED"
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Yellow": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "Purple": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 7,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "StrobeSpeed",
+          "speed": "slow",
+          "comment": "LED ON"
+        },
+        {
+          "dmxRange": [16, 131],
+          "type": "StrobeSpeed",
+          "speed": "slow",
+          "comment": "STROBING SLOW-FAST"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "StrobeSpeed",
+          "speed": "stop",
+          "comment": "LED ON"
+        },
+        {
+          "dmxRange": [140, 181],
+          "type": "StrobeSpeed",
+          "speed": "stop",
+          "comment": "SLOW OPEN - FAST CLOSE"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "StrobeSpeed",
+          "speed": "stop",
+          "comment": "LED ON"
+        },
+        {
+          "dmxRange": [190, 231],
+          "type": "StrobeSpeed",
+          "speed": "fast",
+          "comment": "FAST OPEN - SLOW CLOSE"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "StrobeSpeed",
+          "speed": "stop",
+          "comment": "LED ON"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "StrobeSpeed",
+          "speed": "stop",
+          "comment": "RANDOM STROBE"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "StrobeSpeed",
+          "speed": "stop",
+          "comment": "LED ON"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "Intensity",
+        "comment": "MASTER DIMMER"
+      }
+    },
+    "Pan": {
+      "defaultValue": 9,
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "NoFunction",
+          "comment": "NO ROTATION"
+        },
+        {
+          "dmxRange": [31, 140],
+          "type": "Pan",
+          "angle": "360deg",
+          "comment": "CLOCKWISE ROTATION FAST - SLOW"
+        },
+        {
+          "dmxRange": [141, 145],
+          "type": "Pan",
+          "angle": "0deg",
+          "comment": "STOP"
+        },
+        {
+          "dmxRange": [146, 255],
+          "type": "Pan",
+          "angle": "0deg",
+          "comment": "COUNTER CLOCKWISE RATIATION SLOW-FAST"
+        }
+      ]
+    },
+    "Color Macros": {
+      "defaultValue": 10,
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [26, 255],
+          "type": "ColorPreset",
+          "comment": "COLOR MACROS"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Manual",
+      "shortName": "Manual",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Yellow",
+        "Purple",
+        "Strobe",
+        "Dimmer",
+        "Pan",
+        "Color Macros"
+      ]
+    }
+  ]
+}
