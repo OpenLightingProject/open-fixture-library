@@ -701,7 +701,8 @@
   },
   "modes": [
     {
-      "name": "1",
+      "name": "1st",
+      "rdmPersonalityIndex": 1,
       "channels": [
         "Pan",
         "Pan fine",
@@ -726,7 +727,8 @@
       ]
     },
     {
-      "name": "2",
+      "name": "2nd",
+      "rdmPersonalityIndex": 2,
       "channels": [
         "Pan",
         "Pan fine",
@@ -748,7 +750,8 @@
       ]
     },
     {
-      "name": "3",
+      "name": "3rd",
+      "rdmPersonalityIndex": 3,
       "channels": [
         "Pan",
         "Tilt",
