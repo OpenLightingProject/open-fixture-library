@@ -91,7 +91,7 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "dmxValueResolution": "8bit",
+      "defaultValue": "50%",
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -100,7 +100,7 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "dmxValueResolution": "8bit",
+      "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -108,12 +108,12 @@
       }
     },
     "Pan/Tilt Speed": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 0],
           "type": "PanTiltSpeed",
-          "speed": "fast",
-          "comment": "max speed"
+          "speed": "fast"
         },
         {
           "dmxRange": [1, 255],
@@ -123,102 +123,257 @@
         }
       ]
     },
-    "Power/Special functions": {
-      "capability": {
-        "type": "Generic",
-        "comment": "To activate following functions, stop in DMX value for at least 3 s and shutter must be closed at least 3 s. („Shutter,Strobe” channel 18/16/14 must be at range: 0‐31 DMX). Corresponding menu items are temporarily overriden)."
-      }
-    },
-    "Colour wheel": {
-      "fineChannelAliases": ["Colour wheel fine"],
-      "dmxValueResolution": "8bit",
+    "Power/Special Functions": {
+      "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 15],
-          "type": "ColorPreset",
-          "comment": "Open/white"
+          "dmxRange": [0, 49],
+          "type": "NoFunction",
+          "comment": "Reserved"
         },
         {
-          "dmxRange": [16, 31],
-          "type": "ColorPreset",
-          "comment": "Deep red"
+          "dmxRange": [50, 59],
+          "type": "Maintenance",
+          "comment": "Pan/tilt speed mode (shutter must be closed)",
+          "hold": "3s"
         },
         {
-          "dmxRange": [32, 47],
-          "type": "ColorPreset",
-          "comment": "Deep red"
+          "dmxRange": [60, 69],
+          "type": "Maintenance",
+          "comment": "Pan/tilt time mode (shutter must be closed)",
+          "hold": "3s"
         },
         {
-          "dmxRange": [48, 63],
-          "type": "ColorPreset",
-          "comment": "Orange"
+          "dmxRange": [70, 79],
+          "type": "Maintenance",
+          "comment": "Blackout while pan/tilt moving (shutter must be closed)",
+          "hold": "3s"
         },
         {
-          "dmxRange": [64, 79],
-          "type": "ColorPreset",
-          "comment": "Green"
+          "dmxRange": [80, 89],
+          "type": "Maintenance",
+          "comment": "Disabled blackout while pan/tilt moving (shutter must be closed)",
+          "hold": "3s"
         },
         {
-          "dmxRange": [80, 95],
-          "type": "ColorPreset",
-          "comment": "Light red"
+          "dmxRange": [90, 99],
+          "type": "Maintenance",
+          "comment": "Blackout while color wheel moving (shutter must be closed)",
+          "hold": "3s"
         },
         {
-          "dmxRange": [96, 111],
-          "type": "ColorPreset",
-          "comment": "Amber"
+          "dmxRange": [100, 109],
+          "type": "Maintenance",
+          "comment": "Disabled blackout while color wheel moving (shutter must be closed)",
+          "hold": "3s"
         },
         {
-          "dmxRange": [112, 127],
-          "type": "ColorPreset",
-          "comment": "UV filter"
+          "dmxRange": [110, 129],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Maintenance",
+          "comment": "Lamp on + total reset except pan/tilt",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Maintenance",
+          "comment": "Pan/tilt reset",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Maintenance",
+          "comment": "Color system reset",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Maintenance",
+          "comment": "Dimmer/shutter/hot-spot reset",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Maintenance",
+          "comment": "Zoom reset",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Maintenance",
+          "comment": "Total reset",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [210, 229],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Maintenance",
+          "comment": "Lamp off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "fineChannelAliases": ["Color Wheel fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [1, 15],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 2
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [17, 31],
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 3
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [33, 47],
+          "type": "WheelSlot",
+          "slotNumberStart": 3,
+          "slotNumberEnd": 4
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [49, 63],
+          "type": "WheelSlot",
+          "slotNumberStart": 4,
+          "slotNumberEnd": 5
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [65, 79],
+          "type": "WheelSlot",
+          "slotNumberStart": 5,
+          "slotNumberEnd": 6
+        },
+        {
+          "dmxRange": [80, 80],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [81, 95],
+          "type": "WheelSlot",
+          "slotNumberStart": 6,
+          "slotNumberEnd": 7
+        },
+        {
+          "dmxRange": [96, 96],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [97, 111],
+          "type": "WheelSlot",
+          "slotNumberStart": 7,
+          "slotNumberEnd": 8
+        },
+        {
+          "dmxRange": [112, 112],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [113, 127],
+          "type": "WheelSlot",
+          "slotNumberStart": 8,
+          "slotNumberEnd": 9
         },
         {
           "dmxRange": [128, 129],
-          "type": "ColorPreset",
-          "comment": "White"
+          "type": "WheelSlot",
+          "slotNumber": 1
         },
         {
           "dmxRange": [130, 137],
-          "type": "ColorPreset",
-          "comment": "Deep red"
+          "type": "WheelSlot",
+          "slotNumber": 2
         },
         {
           "dmxRange": [138, 145],
-          "type": "ColorPreset",
-          "comment": "Deep blue"
+          "type": "WheelSlot",
+          "slotNumber": 3
         },
         {
           "dmxRange": [146, 153],
-          "type": "ColorPreset",
-          "comment": "Orange"
+          "type": "WheelSlot",
+          "slotNumber": 4
         },
         {
           "dmxRange": [154, 163],
-          "type": "ColorPreset",
-          "comment": "Green"
+          "type": "WheelSlot",
+          "slotNumber": 5
         },
         {
           "dmxRange": [164, 171],
-          "type": "ColorPreset",
-          "comment": "Light red"
+          "type": "WheelSlot",
+          "slotNumber": 6
         },
         {
           "dmxRange": [172, 181],
-          "type": "ColorPreset",
-          "comment": "Amber"
+          "type": "WheelSlot",
+          "slotNumber": 7
         },
         {
           "dmxRange": [182, 189],
-          "type": "ColorPreset",
-          "comment": "UV filter"
+          "type": "WheelSlot",
+          "slotNumber": 8
         },
         {
           "dmxRange": [190, 215],
           "type": "WheelRotation",
-          "speedStart": "fast CW",
-          "speedEnd": "slow CW",
-          "comment": "Forwards rainbow effect from fast to slow"
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
         },
         {
           "dmxRange": [216, 217],
@@ -233,309 +388,314 @@
         },
         {
           "dmxRange": [244, 249],
-          "type": "ColorPreset",
-          "comment": "Random colour selection by audio control"
+          "type": "Effect",
+          "effectName": "Random color sound-controlled",
+          "soundControlled": true
         },
         {
           "dmxRange": [250, 255],
-          "type": "ColorPreset",
-          "comment": "Auto random colour selection from fast to slow"
+          "type": "Effect",
+          "effectName": "Random color",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         }
       ]
     },
     "Cyan": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Cyan"
       }
     },
     "Magenta": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Magenta"
       }
     },
     "Yellow": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Yellow"
       }
     },
-    "CTO filter": {
+    "CTO Filter": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorTemperature",
         "colorTemperatureStart": "8800K",
         "colorTemperatureEnd": "3200K"
       }
     },
-    "CMY colour macros": {
+    "CMY Color Macros": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "WheelSlot",
-          "slotNumber": 1
+          "type": "NoFunction"
         },
         {
           "dmxRange": [8, 15],
-          "type": "WheelSlot",
-          "slotNumber": 2
+          "type": "Effect",
+          "effectName": "Macro 1"
         },
         {
           "dmxRange": [16, 23],
-          "type": "WheelSlot",
-          "slotNumber": 3
+          "type": "Effect",
+          "effectName": "Macro 2"
         },
         {
           "dmxRange": [24, 31],
-          "type": "WheelSlot",
-          "slotNumber": 4
+          "type": "Effect",
+          "effectName": "Macro 3"
         },
         {
           "dmxRange": [32, 39],
-          "type": "WheelSlot",
-          "slotNumber": 5
+          "type": "Effect",
+          "effectName": "Macro 4"
         },
         {
           "dmxRange": [40, 47],
-          "type": "WheelSlot",
-          "slotNumber": 6
+          "type": "Effect",
+          "effectName": "Macro 5"
         },
         {
           "dmxRange": [48, 55],
-          "type": "WheelSlot",
-          "slotNumber": 7
+          "type": "Effect",
+          "effectName": "Macro 6"
         },
         {
           "dmxRange": [56, 63],
-          "type": "WheelSlot",
-          "slotNumber": 8
+          "type": "Effect",
+          "effectName": "Macro 7"
         },
         {
           "dmxRange": [64, 71],
-          "type": "WheelSlot",
-          "slotNumber": 9
+          "type": "Effect",
+          "effectName": "Macro 8"
         },
         {
           "dmxRange": [72, 79],
-          "type": "WheelSlot",
-          "slotNumber": 10
+          "type": "Effect",
+          "effectName": "Macro 9"
         },
         {
           "dmxRange": [80, 87],
-          "type": "WheelSlot",
-          "slotNumber": 11
+          "type": "Effect",
+          "effectName": "Macro 10"
         },
         {
           "dmxRange": [88, 95],
-          "type": "WheelSlot",
-          "slotNumber": 12
+          "type": "Effect",
+          "effectName": "Macro 11"
         },
         {
           "dmxRange": [96, 103],
-          "type": "WheelSlot",
-          "slotNumber": 13
+          "type": "Effect",
+          "effectName": "Macro 12"
         },
         {
           "dmxRange": [104, 111],
-          "type": "WheelSlot",
-          "slotNumber": 14
+          "type": "Effect",
+          "effectName": "Macro 13"
         },
         {
           "dmxRange": [112, 119],
-          "type": "WheelSlot",
-          "slotNumber": 15
+          "type": "Effect",
+          "effectName": "Macro 14"
         },
         {
           "dmxRange": [120, 127],
-          "type": "WheelSlot",
-          "slotNumber": 16
+          "type": "Effect",
+          "effectName": "Macro 15"
         },
         {
           "dmxRange": [128, 135],
-          "type": "WheelSlot",
-          "slotNumber": 17
+          "type": "Effect",
+          "effectName": "Macro 16"
         },
         {
           "dmxRange": [136, 143],
-          "type": "WheelSlot",
-          "slotNumber": 18
+          "type": "Effect",
+          "effectName": "Macro 17"
         },
         {
           "dmxRange": [144, 151],
-          "type": "WheelSlot",
-          "slotNumber": 19
+          "type": "Effect",
+          "effectName": "Macro 18"
         },
         {
           "dmxRange": [152, 159],
-          "type": "WheelSlot",
-          "slotNumber": 20
+          "type": "Effect",
+          "effectName": "Macro 19"
         },
         {
           "dmxRange": [160, 167],
-          "type": "WheelSlot",
-          "slotNumber": 21
+          "type": "Effect",
+          "effectName": "Macro 20"
         },
         {
           "dmxRange": [168, 175],
-          "type": "WheelSlot",
-          "slotNumber": 22
+          "type": "Effect",
+          "effectName": "Macro 21"
         },
         {
           "dmxRange": [176, 183],
-          "type": "WheelSlot",
-          "slotNumber": 23
+          "type": "Effect",
+          "effectName": "Macro 22"
         },
         {
           "dmxRange": [184, 191],
-          "type": "WheelSlot",
-          "slotNumber": 24
+          "type": "Effect",
+          "effectName": "Macro 23"
         },
         {
           "dmxRange": [192, 199],
-          "type": "WheelSlot",
-          "slotNumber": 25
+          "type": "Effect",
+          "effectName": "Macro 24"
         },
         {
           "dmxRange": [200, 207],
-          "type": "WheelSlot",
-          "slotNumber": 26
+          "type": "Effect",
+          "effectName": "Macro 25"
         },
         {
           "dmxRange": [208, 215],
-          "type": "WheelSlot",
-          "slotNumber": 27
+          "type": "Effect",
+          "effectName": "Macro 26"
         },
         {
           "dmxRange": [216, 223],
-          "type": "WheelSlot",
-          "slotNumber": 28
+          "type": "Effect",
+          "effectName": "Macro 27"
         },
         {
           "dmxRange": [224, 231],
-          "type": "WheelSlot",
-          "slotNumber": 29
+          "type": "Effect",
+          "effectName": "Macro 28"
         },
         {
           "dmxRange": [232, 239],
-          "type": "WheelSlot",
-          "slotNumber": 30
+          "type": "Effect",
+          "effectName": "Macro 29"
         },
         {
-          "dmxRange": [240, 247],
-          "type": "WheelSlot",
-          "slotNumber": 31
+          "dmxRange": [240, 243],
+          "type": "Effect",
+          "effectName": "Macro 30"
         },
         {
-          "dmxRange": [248, 255],
-          "type": "WheelSlot",
-          "slotNumber": 32
+          "dmxRange": [244, 249],
+          "type": "Effect",
+          "effectName": "Random color macro sound-controlled",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Random color macro",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         }
       ]
     },
     "CMY & CTO Speed": {
+      "defaultValue": 0,
       "capability": {
         "type": "Speed",
         "speedStart": "fast",
         "speedEnd": "slow",
-        "comment": "Speed of flags movement from max. to min."
+        "comment": "Flags movement"
       }
     },
     "Zoom": {
       "fineChannelAliases": ["Zoom fine"],
-      "dmxValueResolution": "8bit",
       "capability": {
         "type": "Zoom",
         "angleStart": "narrow",
         "angleEnd": "wide"
       }
     },
-    "Hot‐Spot": {
+    "Hot-Spot": {
+      "defaultValue": 0,
       "capability": {
-        "type": "Frost",
-        "frostIntensityStart": "high",
-        "frostIntensityEnd": "low",
-        "comment": "Beam distribution control from max. to min. intensity"
+        "type": "Maintenance",
+        "parameterStart": "high",
+        "parameterEnd": "low",
+        "comment": "Beam distribution"
       }
     },
-    "Shutter/ strobe": {
+    "Shutter / Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 31],
           "type": "ShutterStrobe",
           "shutterEffect": "Closed",
-          "comment": "Shutter closed, Lamp power reduced to 180W"
+          "comment": "Lamp power = 180W"
         },
         {
           "dmxRange": [32, 63],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Shutter open, Full lamp power"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [64, 95],
-          "type": "StrobeSpeed",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Strobe‐effect from slow to fast"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "15Hz"
         },
         {
           "dmxRange": [96, 127],
           "type": "ShutterStrobe",
           "shutterEffect": "Open",
-          "comment": "Shutter open, Lamp power reduced to 180 W"
+          "comment": "Lamp power = 180W"
         },
         {
           "dmxRange": [128, 143],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
-          "soundControlled": false,
+          "shutterEffect": "RampUp",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Opening pulse in sequences from slow to fast"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [144, 159],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
-          "soundControlled": false,
+          "shutterEffect": "RampDown",
           "speedStart": "fast",
-          "speedEnd": "slow",
-          "comment": "Closing pulse in sequences from fast to slow"
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [160, 191],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "soundControlled": false,
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Shutter open, Electronic strobing „ZAP” from slow to fast"
+          "speedStart": "0Hz",
+          "speedEnd": "33Hz",
+          "comment": "electronic zapping"
         },
         {
           "dmxRange": [192, 223],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "soundControlled": false,
           "speedStart": "slow",
           "speedEnd": "fast",
-          "randomTiming": true,
-          "comment": "Random strobe‐effect from slow to fast"
+          "randomTiming": true
         },
         {
           "dmxRange": [224, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Shutter open, Full lamp power"
+          "shutterEffect": "Open"
         }
       ]
     },
-    "Dimmer intensity": {
-      "fineChannelAliases": ["Dimmer intensity fine"],
-      "dmxValueResolution": "8bit",
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "defaultValue": 0,
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "type": "Intensity"
       }
     }
   },
@@ -548,21 +708,21 @@
         "Tilt",
         "Tilt fine",
         "Pan/Tilt Speed",
-        "Power/Special functions",
-        "Colour wheel",
-        "Colour wheel fine",
+        "Power/Special Functions",
+        "Color Wheel",
+        "Color Wheel fine",
         "Cyan",
         "Magenta",
         "Yellow",
-        "CTO filter",
-        "CMY colour macros",
+        "CTO Filter",
+        "CMY Color Macros",
         "CMY & CTO Speed",
         "Zoom",
         "Zoom fine",
-        "Hot‐Spot",
-        "Shutter/ strobe",
-        "Dimmer intensity",
-        "Dimmer intensity fine"
+        "Hot-Spot",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine"
       ]
     },
     {
@@ -573,18 +733,18 @@
         "Tilt",
         "Tilt fine",
         "Pan/Tilt Speed",
-        "Power/Special functions",
-        "Colour wheel",
+        "Power/Special Functions",
+        "Color Wheel",
         "Cyan",
         "Magenta",
         "Yellow",
-        "CTO filter",
-        "CMY colour macros",
+        "CTO Filter",
+        "CMY Color Macros",
         "CMY & CTO Speed",
         "Zoom",
-        "Hot‐Spot",
-        "Shutter/ strobe",
-        "Dimmer intensity"
+        "Hot-Spot",
+        "Shutter / Strobe",
+        "Dimmer"
       ]
     },
     {
@@ -593,18 +753,18 @@
         "Pan",
         "Tilt",
         "Pan/Tilt Speed",
-        "Power/Special functions",
-        "Colour wheel",
+        "Power/Special Functions",
+        "Color Wheel",
         "Cyan",
         "Magenta",
         "Yellow",
-        "CTO filter",
-        "CMY colour macros",
+        "CTO Filter",
+        "CMY Color Macros",
         "CMY & CTO Speed",
         "Zoom",
-        "Hot‐Spot",
-        "Shutter/ strobe",
-        "Dimmer intensity"
+        "Hot-Spot",
+        "Shutter / Strobe",
+        "Dimmer"
       ]
     }
   ]
