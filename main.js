@@ -54,7 +54,7 @@ app.get(`/download.:format([a-z0-9_.-]+)`, (request, response, next) => {
     return fixtureFromRepository(man, key);
   });
 
-  const plugin = require(path.join(__dirname, `plugins`, format, `export.js`));
+  const plugin = requireNoCacheInDev(path.join(__dirname, `plugins`, format, `export.js`));
   plugin.export(fixtures, {
     baseDir: __dirname,
     date: new Date()
@@ -76,7 +76,7 @@ app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, (request, response, next) => {
   }
 
   if (format === `json`) {
-    response.json(require(`./fixtures/${manKey}/${fixKey}.json`));
+    response.json(requireNoCacheInDev(`./fixtures/${manKey}/${fixKey}.json`));
     return;
   }
 
@@ -85,7 +85,7 @@ app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, (request, response, next) => {
     return;
   }
 
-  const plugin = require(path.join(__dirname, `plugins`, format, `export.js`));
+  const plugin = requireNoCacheInDev(path.join(__dirname, `plugins`, format, `export.js`));
   plugin.export([fixtureFromRepository(manKey, fixKey)], {
     baseDir: __dirname,
     date: new Date()
@@ -106,11 +106,11 @@ app.get(`/about/plugins/:plugin([a-z0-9_.-]+).json`, (request, response, next) =
     return;
   }
 
-  response.json(require(`./plugins/${plugin}/plugin.json`));
+  response.json(requireNoCacheInDev(`./plugins/${plugin}/plugin.json`));
 });
 
 app.get(`/sitemap.xml`, (request, response) => {
-  const sitemapCreator = require(`./lib/generate-sitemap.js`);
+  const sitemapCreator = requireNoCacheInDev(`./lib/generate-sitemap.js`);
 
   response.type(`application/xml`).send(sitemapCreator({
     app,
@@ -119,19 +119,19 @@ app.get(`/sitemap.xml`, (request, response) => {
 });
 
 app.post(`/ajax/import-fixture-file`, (request, response) => {
-  require(`./ui/ajax/import-fixture-file.js`)(request, response);
+  requireNoCacheInDev(`./ui/ajax/import-fixture-file.js`)(request, response);
 });
 
 app.post(`/ajax/get-search-results`, (request, response) => {
-  require(`./ui/ajax/get-search-results.js`)(request, response);
+  requireNoCacheInDev(`./ui/ajax/get-search-results.js`)(request, response);
 });
 
 app.post(`/ajax/submit-editor`, (request, response) => {
-  require(`./ui/ajax/submit-editor.js`)(request, response);
+  requireNoCacheInDev(`./ui/ajax/submit-editor.js`)(request, response);
 });
 
 app.post(`/ajax/submit-feedback`, (request, response) => {
-  require(`./ui/ajax/submit-feedback.js`)(request, response);
+  requireNoCacheInDev(`./ui/ajax/submit-feedback.js`)(request, response);
 });
 
 
@@ -210,4 +210,17 @@ function downloadFiles(response, files, zipName) {
       .type(`application/zip`)
       .send(zipBuffer);
   });
+}
+
+/**
+ * Like standard require(...), but invalidates cache first (if not in production environment).
+ * @param {string} target The require path, like `./register.json`.
+ * @returns {*} The result of standard require(target).
+ */
+function requireNoCacheInDev(target) {
+  if (process.env.NODE_ENV !== `production`) {
+    delete require.cache[require.resolve(target)];
+  }
+
+  return require(target);
 }
