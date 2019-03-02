@@ -20,12 +20,14 @@
     ]
   },
   "physical": {
-    "dimensions": [383.3, 516.2, 409.2],
+    "dimensions": [432.6, 516.2, 409.2],
     "weight": 20,
     "power": 440,
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
-      "type": "high-presure metal halide lamp"
+      "type": "Philips MSR Gold 300/2 MiniFastFit",
+      "colorTemperature": 9300,
+      "lumens": 23000
     },
     "lens": {
       "degreesMinMax": [4, 40]
