@@ -110,12 +110,13 @@ app.get(`/about/plugins/:plugin([a-z0-9_.-]+).json`, (request, response, next) =
 });
 
 app.get(`/sitemap.xml`, (request, response) => {
-  const sitemapCreator = requireNoCacheInDev(`./lib/generate-sitemap.js`);
+  const generateSitemap = requireNoCacheInDev(`./lib/generate-sitemap.js`);
 
-  response.type(`application/xml`).send(sitemapCreator({
-    app,
-    url: `${packageJson.homepage}sitemap.xml`
-  }));
+  if (!app.get(`sitemap`) || process.env.NODE_ENV !== `production`) {
+    app.set(`sitemap`, generateSitemap(packageJson.homepage));
+  }
+
+  response.type(`application/xml`).send(app.get(`sitemap`));
 });
 
 app.post(`/ajax/import-fixture-file`, (request, response) => {
