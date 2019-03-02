@@ -1,0 +1,92 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Encore Profile 1000 WW",
+  "shortName": "ADJEncProfile1000WW",
+  "categories": ["Blinder", "Dimmer"],
+  "meta": {
+    "authors": ["Gerard Fontanillas"],
+    "createDate": "2019-02-27",
+    "lastModifyDate": "2019-02-27"
+  },
+  "links": {
+    "manual": [
+      "https://cdb.s3-us-west-1.amazonaws.com/ItemRelatedFiles/8872/encore_profile_1000_ww.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/encore-profile-1000-ww"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=zz6L0bJZoF8",
+      "https://www.youtube.com/watch?v=MdO71QLiFZ4",
+      "https://www.youtube.com/watch?v=SwFZg45s_hE",
+      "https://www.youtube.com/watch?v=2twVkEXGRBg"
+    ]
+  },
+  "physical": {
+    "dimensions": [250, 385, 560],
+    "weight": 8.5,
+    "power": 144,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "120W warm white COB LED",
+      "colorTemperature": 3200
+    },
+    "lens": {
+      "degreesMinMax": [12, 30]
+    }
+  },
+  "availableChannels": {
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [15, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Warm White"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Warm White",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Warm White",
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}

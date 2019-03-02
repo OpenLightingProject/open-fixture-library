@@ -1,0 +1,251 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RokBox RGBW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["DMS"],
+    "createDate": "2019-02-27",
+    "lastModifyDate": "2019-02-27",
+    "importPlugin": {
+      "plugin": "qlcplus_4.11.2",
+      "date": "2019-02-27",
+      "comment": "created by Q Light Controller Plus (version 4.10.5b)"
+    }
+  },
+  "links": {
+    "manual": [
+      "https://cdn.shopify.com/s/files/1/1741/5055/files/rokbox_manual_rev_a.pdf?6943537019800087189"
+    ],
+    "productPage": [
+      "https://www.blizzardpro.com/products/rokbox"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=jMTYqICI3Ng"
+    ]
+  },
+  "physical": {
+    "dimensions": [229, 228, 165],
+    "weight": 3.3,
+    "power": 126,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "18× 10W 4-in-1 LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [25, 30]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [15, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Effect",
+          "effectName": "Fade In"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Effect",
+          "effectName": "Fade Out"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Effect",
+          "effectName": "Fade In / Fade Out"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectName": "Fade In / Fade Out, Auto run"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "4 colors"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Sound-active multicolor",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "As set in control menu display"
+        },
+        {
+          "dmxRange": [6, 55],
+          "type": "Maintenance",
+          "comment": "Mode 0 = 8bit, 256 dimming steps"
+        },
+        {
+          "dmxRange": [56, 105],
+          "type": "Maintenance",
+          "comment": "Mode 1 = 32bit, 0…25% intensity range"
+        },
+        {
+          "dmxRange": [106, 155],
+          "type": "Maintenance",
+          "comment": "Mode 2 = 32bit, 0…50% intensity range"
+        },
+        {
+          "dmxRange": [156, 205],
+          "type": "Maintenance",
+          "comment": "Mode 3 = 32bit, 0…75% intensity range"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "Maintenance",
+          "comment": "Mode 4 = 32bit, full intensity dimming"
+        }
+      ]
+    },
+    "Hue": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Hue"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Saturation"
+      }
+    },
+    "Value": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Value"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Programs",
+        "Program Speed",
+        "Dimmer Mode"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Programs",
+        "Program Speed"
+      ]
+    },
+    {
+      "name": "HSV",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Value"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
