@@ -1,0 +1,209 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Superbat led 72",
+  "shortName": "superbat",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Gerard Fontanillas"],
+    "createDate": "2019-03-02",
+    "lastModifyDate": "2019-03-02"
+  },
+  "links": {
+    "manual": [
+      "https://www.eafg.es/productos/Docs/Manuales/SUPERBAT_LED_72_MANUAL_20160920113641.pdf"
+    ],
+    "productPage": [
+      "https://www.equipson.es/productos/superbat-led-72"
+    ],
+    "video": [
+      "https://www.equipson.es/productos/superbat-led-72"
+    ]
+  },
+  "physical": {
+    "dimensions": [135, 135, 210],
+    "weight": 2.5,
+    "power": 140,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "LED"
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Yellow": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "UV": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 9,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [30, 49],
+          "type": "ColorPreset",
+          "comment": "color auto run"
+        },
+        {
+          "dmxRange": [50, 69],
+          "type": "ColorPreset",
+          "comment": "color auto gradual"
+        },
+        {
+          "dmxRange": [70, 89],
+          "type": "ColorPreset",
+          "comment": "color auto mutation"
+        },
+        {
+          "dmxRange": [90, 109],
+          "type": "StrobeSpeed",
+          "speed": "slow",
+          "comment": "color strobo with red"
+        },
+        {
+          "dmxRange": [110, 129],
+          "type": "StrobeSpeed",
+          "speed": "slow",
+          "comment": "color strobo with green"
+        },
+        {
+          "dmxRange": [130, 149],
+          "type": "StrobeSpeed",
+          "speed": "slow",
+          "comment": "colro strobo blue"
+        },
+        {
+          "dmxRange": [150, 169],
+          "type": "StrobeSpeed",
+          "speed": "slow",
+          "comment": "color strobo with white"
+        },
+        {
+          "dmxRange": [170, 189],
+          "type": "ColorPreset",
+          "comment": "colro strobo with yellow"
+        },
+        {
+          "dmxRange": [190, 209],
+          "type": "StrobeSpeed",
+          "speed": "slow",
+          "comment": "Color strobo with UV"
+        },
+        {
+          "dmxRange": [210, 249],
+          "type": "StrobeSpeed",
+          "speed": "slow",
+          "comment": "audio 1 from 130 to 249"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "StrobeSpeed",
+          "speed": "slow",
+          "comment": "sound 3"
+        }
+      ]
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "defaultValue": 10,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "speed"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 Channel",
+      "shortName": "6 Channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Yellow",
+        "UV"
+      ]
+    },
+    {
+      "name": "10 Channel",
+      "shortName": "10 Channel",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Yellow",
+        "UV",
+        "Color Macros",
+        "Strobe 2"
+      ]
+    }
+  ]
+}
