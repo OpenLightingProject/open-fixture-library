@@ -1,5 +1,7 @@
 #!/usr/bin/node
 
+const promisify = require(`util`).promisify;
+const readFile = promisify(require(`fs`).readFile);
 const path = require(`path`);
 const express = require(`express`);
 const compression = require(`compression`);
@@ -76,7 +78,14 @@ app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, (request, response, next) => {
   }
 
   if (format === `json`) {
-    response.json(requireNoCacheInDev(`./fixtures/${manKey}/${fixKey}.json`));
+    readFile(`./fixtures/${manKey}/${fixKey}.json`, `utf8`)
+      .then(data => JSON.parse(data))
+      .then(fixtureJson => response.json(fixtureJson))
+      .catch(error => {
+        response
+          .status(500)
+          .send(`Fetching ${manKey}/${fixKey}.json failed: ${error.toString()}`);
+      });
     return;
   }
 
