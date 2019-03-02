@@ -10,7 +10,8 @@
   "comment": "Hello, I (tried) to report all dmx cases but can't figure out specials functions.",
   "links": {
     "manual": [
-      "https://www.robe.cz/index.php?type=10898&tx_odproducts_f%5baction%5d=downloadFile&tx_odproducts_f%5bfile%5d=robe/downloads/user_manuals/User_manual_Robin_300E_Wash.pdf"
+      "https://www.robe.cz/index.php?type=10898&tx_odproducts_f%5baction%5d=downloadFile&tx_odproducts_f%5bfile%5d=robe/downloads/user_manuals/User_manual_Robin_300E_Wash.pdf",
+      "https://www.robe.cz/index.php?type=10898&tx_odproducts_f%5baction%5d=downloadFile&tx_odproducts_f%5bfile%5d=robe/downloads/gobo_config/CW_7_1_Robin_300E_Wash.pdf"
     ],
     "productPage": [
       "https://www.robe.cz/robin-300e-wash/"
@@ -43,103 +44,46 @@
     "softwareVersion": "2.9"
   },
   "wheels": {
-    "CMY colour macros": {
+    "Color Wheel": {
+      "direction": "CCW",
       "slots": [
         {
           "type": "Open"
         },
         {
-          "type": "Open"
+          "type": "Color",
+          "name": "Deep red (99011881)",
+          "colors": ["#e23022"]
         },
         {
-          "type": "Open"
+          "type": "Color",
+          "name": "Deep blue (99011882)",
+          "colors": ["#0251ab"]
         },
         {
-          "type": "Open"
+          "type": "Color",
+          "name": "Orange (99011884)",
+          "colors": ["#ffa54d"]
         },
         {
-          "type": "Open"
+          "type": "Color",
+          "name": "Green (99011883)",
+          "colors": ["#00ab4f"]
         },
         {
-          "type": "Open"
+          "type": "Color",
+          "name": "Light red (99011887)",
+          "colors": ["#ff4f40"]
         },
         {
-          "type": "Open"
+          "type": "Color",
+          "name": "Amber (99011886)",
+          "colors": ["#ffc64f"]
         },
         {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Open"
+          "type": "Color",
+          "name": "UV (99011885)",
+          "colors": ["#1d2971"]
         }
       ]
     }
