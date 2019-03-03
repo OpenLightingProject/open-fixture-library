@@ -22,15 +22,20 @@
     ]
   },
   "physical": {
-    "dimensions": [318, 318, 412.5],
+    "dimensions": [318, 412.5, 318],
     "weight": 3.65,
     "power": 55,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "HEX LED"
+      "type": "5x 15W RGBWAUV LEDs"
+    },
+    "lens": {
+      "name": "34 beams",
+      "degreesMinMax": [1, 1]
     },
     "focus": {
-      "type": "Fixed"
+      "type": "Head",
+      "panMax": "infinite"
     }
   },
   "availableChannels": {
