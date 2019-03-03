@@ -40,176 +40,239 @@
   },
   "availableChannels": {
     "Red": {
-      "defaultValue": 1,
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Green": {
-      "defaultValue": 2,
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blue": {
-      "defaultValue": 3,
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "White": {
-      "defaultValue": 4,
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "Yellow": {
-      "defaultValue": 5,
+    "Amber": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Yellow"
+        "color": "Amber"
       }
     },
-    "Purple": {
-      "defaultValue": 6,
+    "UV": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Magenta"
+        "color": "UV"
       }
     },
     "Strobe": {
-      "defaultValue": 7,
+      "defaultValue": 8,
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "NoFunction",
-          "comment": "OFF"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [8, 15],
-          "type": "StrobeSpeed",
-          "speed": "slow",
-          "comment": "LED ON"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [16, 131],
-          "type": "StrobeSpeed",
-          "speed": "slow",
-          "comment": "STROBING SLOW-FAST"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [132, 139],
-          "type": "StrobeSpeed",
-          "speed": "stop",
-          "comment": "LED ON"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [140, 181],
-          "type": "StrobeSpeed",
-          "speed": "stop",
-          "comment": "SLOW OPEN - FAST CLOSE"
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
         },
         {
           "dmxRange": [182, 189],
-          "type": "StrobeSpeed",
-          "speed": "stop",
-          "comment": "LED ON"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [190, 231],
-          "type": "StrobeSpeed",
-          "speed": "fast",
-          "comment": "FAST OPEN - SLOW CLOSE"
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown"
         },
         {
           "dmxRange": [232, 239],
-          "type": "StrobeSpeed",
-          "speed": "stop",
-          "comment": "LED ON"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [240, 247],
-          "type": "StrobeSpeed",
-          "speed": "stop",
-          "comment": "RANDOM STROBE"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
         },
         {
           "dmxRange": [248, 255],
-          "type": "StrobeSpeed",
-          "speed": "stop",
-          "comment": "LED ON"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
     "Dimmer": {
-      "defaultValue": 8,
+      "defaultValue": 0,
       "capability": {
-        "type": "Intensity",
-        "comment": "MASTER DIMMER"
+        "type": "Intensity"
       }
     },
     "Pan": {
-      "defaultValue": 9,
+      "defaultValue": 143,
       "capabilities": [
         {
           "dmxRange": [0, 30],
-          "type": "NoFunction",
-          "comment": "NO ROTATION"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [31, 140],
-          "type": "Pan",
-          "angle": "360deg",
-          "comment": "CLOCKWISE ROTATION FAST - SLOW"
+          "type": "PanContinuous",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [141, 145],
-          "type": "Pan",
-          "angle": "0deg",
-          "comment": "STOP"
+          "type": "PanContinuous",
+          "speed": "stop"
         },
         {
           "dmxRange": [146, 255],
-          "type": "Pan",
-          "angle": "0deg",
-          "comment": "COUNTER CLOCKWISE RATIATION SLOW-FAST"
+          "type": "PanContinuous",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
     "Color Macros": {
-      "defaultValue": 10,
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 25],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [26, 255],
+          "dmxRange": [26, 205],
           "type": "ColorPreset",
-          "comment": "COLOR MACROS"
+          "helpWanted": "Which color macros can be selected at which DMX values?"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
+    },
+    "Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 55],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [56, 75],
+          "type": "Effect",
+          "effectName": "Sound-active",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [76, 105],
+          "type": "Effect",
+          "effectName": "Red CW"
+        },
+        {
+          "dmxRange": [106, 135],
+          "type": "Effect",
+          "effectName": "Blue CCW"
+        },
+        {
+          "dmxRange": [136, 165],
+          "type": "Effect",
+          "effectName": "7-color change CW"
+        },
+        {
+          "dmxRange": [166, 195],
+          "type": "Effect",
+          "effectName": "7-color change CCW"
+        },
+        {
+          "dmxRange": [196, 225],
+          "type": "Effect",
+          "effectName": "7-color change with strobe CW"
+        },
+        {
+          "dmxRange": [226, 255],
+          "type": "Effect",
+          "effectName": "7-color change with strobe CCW"
+        }
+      ]
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 69],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [70, 85],
+          "type": "Maintenance",
+          "comment": "Reset"
+        },
+        {
+          "dmxRange": [86, 255],
+          "type": "NoFunction"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "Manual",
-      "shortName": "Manual",
+      "name": "12-channel",
+      "shortName": "12ch",
       "channels": [
         "Red",
         "Green",
         "Blue",
         "White",
-        "Yellow",
-        "Purple",
+        "Amber",
+        "UV",
         "Strobe",
         "Dimmer",
         "Pan",
-        "Color Macros"
+        "Color Macros",
+        "Programs",
+        "Reset"
       ]
     }
   ]
