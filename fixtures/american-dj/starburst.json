@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Starbust",
   "shortName": "ADJStarburst",
-  "categories": ["Flower", "Moving Head", "Color Changer"],
+  "categories": ["Effect", "Flower", "Color Changer"],
   "meta": {
     "authors": ["Gerard Fontanillas"],
     "createDate": "2019-03-03",
@@ -32,10 +32,6 @@
     "lens": {
       "name": "34 beams",
       "degreesMinMax": [1, 1]
-    },
-    "focus": {
-      "type": "Head",
-      "panMax": "infinite"
     }
   },
   "availableChannels": {
@@ -145,7 +141,7 @@
         "type": "Intensity"
       }
     },
-    "Pan": {
+    "Rotation": {
       "defaultValue": 143,
       "capabilities": [
         {
@@ -154,18 +150,18 @@
         },
         {
           "dmxRange": [31, 140],
-          "type": "PanContinuous",
+          "type": "Rotation",
           "speedStart": "fast CW",
           "speedEnd": "slow CW"
         },
         {
           "dmxRange": [141, 145],
-          "type": "PanContinuous",
+          "type": "Rotation",
           "speed": "stop"
         },
         {
           "dmxRange": [146, 255],
-          "type": "PanContinuous",
+          "type": "Rotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         }
@@ -186,7 +182,7 @@
         {
           "dmxRange": [206, 255],
           "type": "Effect",
-          "effectPreset": "ColorFade",
+          "effectPreset": "ColorJump",
           "speedStart": "fast",
           "speedEnd": "slow"
         }
@@ -269,7 +265,7 @@
         "UV",
         "Strobe",
         "Dimmer",
-        "Pan",
+        "Rotation",
         "Color Macros",
         "Programs",
         "Reset"
