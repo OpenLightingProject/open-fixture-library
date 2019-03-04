@@ -3,8 +3,8 @@
 
   "name": "Millumin",
   "description": [
-    "<p>The Mac OS software <em>Millumin</em> gained support for light",
-    "fixtures in version 2. The fixture format is essentially",
+    "<p>The Mac OS software <em>Millumin</em> gained support for (advanced)",
+    "light fixtures in version 3. The fixture format is essentially",
     "<a href=\"https://github.com/OpenLightingProject/open-fixture-library/blob/schema-7.3.0/docs/fixture-format.md\">",
     "the OFL format at schema version 7.3.0</a>, with a few additions.</p>"
   ],
@@ -21,5 +21,12 @@
     "Mac OS": {
       "user": "~/Library/Millumin/"
     }
-  }
+  },
+  "additionalInfo": [
+    "<h3>Additions to the OFL format at schema version 7.3.0</h3>",
+    "<ul>",
+    "<li>New top level properties <code>fixtureKey</code>, <code>manufacturerKey</code> and <code>oflURL</code></li>",
+    "<li><code>Warm White</code> and <code>Cold White</code> colors (from <a href=\"https://github.com/OpenLightingProject/open-fixture-library/blob/schema-11.1.0/docs/fixture-format.md\">schema version 11.1.0</a>)</li>",
+    "<ul>"
+  ]
 }
