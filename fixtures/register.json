@@ -105,6 +105,11 @@
       "lastActionDate": "2018-11-01",
       "lastAction": "created"
     },
+    "american-dj/starburst": {
+      "name": "Starbust",
+      "lastActionDate": "2019-03-03",
+      "lastAction": "created"
+    },
     "american-dj/vizi-spot-led-pro": {
       "name": "Vizi Spot LED Pro",
       "lastActionDate": "2018-08-09",
@@ -950,6 +955,11 @@
       "lastActionDate": "2018-08-09",
       "lastAction": "modified"
     },
+    "robe/robin-300e-wash": {
+      "name": "Robin 300E Wash",
+      "lastActionDate": "2019-03-02",
+      "lastAction": "created"
+    },
     "robe/robin-600e-spot": {
       "name": "Robin 600E Spot",
       "lastActionDate": "2018-09-04",
@@ -1155,6 +1165,7 @@
       "revo-burst",
       "revo-sweep",
       "saber-spot-rgbw",
+      "starburst",
       "vizi-spot-led-pro",
       "xs-400"
     ],
@@ -1427,6 +1438,7 @@
     "robe": [
       "colorspot-2500e-at",
       "dj-scan-250-xt",
+      "robin-300e-wash",
       "robin-600e-spot",
       "robin-ledbeam-100",
       "robin-ledbeam-150",
@@ -1524,6 +1536,7 @@
       "american-dj/revo-4-ir",
       "american-dj/revo-sweep",
       "american-dj/saber-spot-rgbw",
+      "american-dj/starburst",
       "american-dj/vizi-spot-led-pro",
       "american-dj/xs-400",
       "arri/skypanel-s30c",
@@ -1670,6 +1683,7 @@
       "renkforce/gm107",
       "robe/colorspot-2500e-at",
       "robe/dj-scan-250-xt",
+      "robe/robin-300e-wash",
       "robe/robin-600e-spot",
       "robe/robin-ledbeam-100",
       "robe/robin-ledbeam-150",
@@ -1721,6 +1735,7 @@
     ],
     "Effect": [
       "american-dj/revo-burst",
+      "american-dj/starburst",
       "ayra/tdc-triple-burst",
       "eurolite/led-h2o",
       "magicfx/psyco2jet",
@@ -1742,6 +1757,7 @@
       "american-dj/revo-4-ir",
       "american-dj/revo-burst",
       "american-dj/revo-sweep",
+      "american-dj/starburst",
       "boomtonedj/xtrem-led",
       "cameo/storm",
       "eurolite/led-fe-1500",
@@ -1845,6 +1861,7 @@
       "qtx/lux-ld30w",
       "renkforce/gm107",
       "robe/colorspot-2500e-at",
+      "robe/robin-300e-wash",
       "robe/robin-600e-spot",
       "robe/robin-ledbeam-100",
       "robe/robin-ledbeam-150",
@@ -2136,6 +2153,11 @@
       "eliminator/stealth-wash-zoom",
       "stairville/mh-100"
     ],
+    "Gerard Fontanillas": [
+      "american-dj/encore-profile-1000-ww",
+      "american-dj/starburst",
+      "mark/superbat-led-72"
+    ],
     "Justin Hornsby": [
       "chauvet-dj/washfx",
       "equinox/gigabar",
@@ -2158,10 +2180,6 @@
     "DMS": [
       "beamz/h2000-faze-machine",
       "blizzard/rokbox-rgbw"
-    ],
-    "Gerard Fontanillas": [
-      "american-dj/encore-profile-1000-ww",
-      "mark/superbat-led-72"
     ],
     "Jean-François Losson": [
       "arri/skypanel-s30c",
@@ -2194,6 +2212,10 @@
     "p_0g_8mm3_": [
       "stairville/mh-x25",
       "stairville/stage-tri-led"
+    ],
+    "stevebrush": [
+      "martin/rush-par-2-rgbw-zoom",
+      "robe/robin-300e-wash"
     ],
     "TAKU": [
       "american-dj/dotz-par",
@@ -2296,9 +2318,6 @@
     "smokris": [
       "blizzard/puck-rgbaw"
     ],
-    "stevebrush": [
-      "martin/rush-par-2-rgbw-zoom"
-    ],
     "TAP": [
       "prolights/polar3000"
     ],
@@ -2391,6 +2410,7 @@
       "key": "robe",
       "models": {
         "7": "colorspot-2500e-at",
+        "34": "robin-300e-wash",
         "57": "robin-600e-spot",
         "118": "robin-ledwash-600",
         "203": "robin-viva-cmy"
@@ -2479,6 +2499,8 @@
   },
   "lastUpdated": [
     "mark/superbat-led-72",
+    "american-dj/starburst",
+    "robe/robin-300e-wash",
     "american-dj/encore-profile-1000-ww",
     "american-dj/mega-hex-par",
     "blizzard/rokbox-rgbw",

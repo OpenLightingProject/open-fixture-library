@@ -1,5 +1,7 @@
 #!/usr/bin/node
 
+const promisify = require(`util`).promisify;
+const readFile = promisify(require(`fs`).readFile);
 const path = require(`path`);
 const express = require(`express`);
 const compression = require(`compression`);
@@ -54,7 +56,7 @@ app.get(`/download.:format([a-z0-9_.-]+)`, (request, response, next) => {
     return fixtureFromRepository(man, key);
   });
 
-  const plugin = require(path.join(__dirname, `plugins`, format, `export.js`));
+  const plugin = requireNoCacheInDev(path.join(__dirname, `plugins`, format, `export.js`));
   plugin.export(fixtures, {
     baseDir: __dirname,
     date: new Date()
@@ -76,7 +78,14 @@ app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, (request, response, next) => {
   }
 
   if (format === `json`) {
-    response.json(require(`./fixtures/${manKey}/${fixKey}.json`));
+    readFile(`./fixtures/${manKey}/${fixKey}.json`, `utf8`)
+      .then(data => JSON.parse(data))
+      .then(fixtureJson => response.json(fixtureJson))
+      .catch(error => {
+        response
+          .status(500)
+          .send(`Fetching ${manKey}/${fixKey}.json failed: ${error.toString()}`);
+      });
     return;
   }
 
@@ -85,7 +94,7 @@ app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, (request, response, next) => {
     return;
   }
 
-  const plugin = require(path.join(__dirname, `plugins`, format, `export.js`));
+  const plugin = requireNoCacheInDev(path.join(__dirname, `plugins`, format, `export.js`));
   plugin.export([fixtureFromRepository(manKey, fixKey)], {
     baseDir: __dirname,
     date: new Date()
@@ -106,32 +115,33 @@ app.get(`/about/plugins/:plugin([a-z0-9_.-]+).json`, (request, response, next) =
     return;
   }
 
-  response.json(require(`./plugins/${plugin}/plugin.json`));
+  response.json(requireNoCacheInDev(`./plugins/${plugin}/plugin.json`));
 });
 
 app.get(`/sitemap.xml`, (request, response) => {
-  const sitemapCreator = require(`./lib/generate-sitemap.js`);
+  const generateSitemap = requireNoCacheInDev(`./lib/generate-sitemap.js`);
 
-  response.type(`application/xml`).send(sitemapCreator({
-    app,
-    url: `${packageJson.homepage}sitemap.xml`
-  }));
+  if (!app.get(`sitemap`) || process.env.NODE_ENV !== `production`) {
+    app.set(`sitemap`, generateSitemap(packageJson.homepage));
+  }
+
+  response.type(`application/xml`).send(app.get(`sitemap`));
 });
 
 app.post(`/ajax/import-fixture-file`, (request, response) => {
-  require(`./ui/ajax/import-fixture-file.js`)(request, response);
+  requireNoCacheInDev(`./ui/ajax/import-fixture-file.js`)(request, response);
 });
 
 app.post(`/ajax/get-search-results`, (request, response) => {
-  require(`./ui/ajax/get-search-results.js`)(request, response);
+  requireNoCacheInDev(`./ui/ajax/get-search-results.js`)(request, response);
 });
 
 app.post(`/ajax/submit-editor`, (request, response) => {
-  require(`./ui/ajax/submit-editor.js`)(request, response);
+  requireNoCacheInDev(`./ui/ajax/submit-editor.js`)(request, response);
 });
 
 app.post(`/ajax/submit-feedback`, (request, response) => {
-  require(`./ui/ajax/submit-feedback.js`)(request, response);
+  requireNoCacheInDev(`./ui/ajax/submit-feedback.js`)(request, response);
 });
 
 
@@ -210,4 +220,17 @@ function downloadFiles(response, files, zipName) {
       .type(`application/zip`)
       .send(zipBuffer);
   });
+}
+
+/**
+ * Like standard require(...), but invalidates cache first (if not in production environment).
+ * @param {string} target The require path, like `./register.json`.
+ * @returns {*} The result of standard require(target).
+ */
+function requireNoCacheInDev(target) {
+  if (process.env.NODE_ENV !== `production`) {
+    delete require.cache[require.resolve(target)];
+  }
+
+  return require(target);
 }
