@@ -2,7 +2,6 @@ const colorNames = require(`color-names`);
 const xml2js = require(`xml2js`);
 const promisify = require(`util`).promisify;
 
-module.exports.name = `e:cue`;
 module.exports.version = `0.3.1`;
 
 const colors = {};

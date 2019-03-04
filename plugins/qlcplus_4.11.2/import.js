@@ -1,7 +1,6 @@
 const xml2js = require(`xml2js`);
 const promisify = require(`util`).promisify;
 
-module.exports.name = `QLC+ 4.11.2`;
 module.exports.version = `0.4.3`;
 
 /**

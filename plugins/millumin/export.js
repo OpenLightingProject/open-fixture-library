@@ -1,7 +1,6 @@
 const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
 const { CoarseChannel } = require(`../../lib/model.js`);
 
-module.exports.name = `Millumin`;
 module.exports.version = `0.4.0`;
 
 // needed for export test

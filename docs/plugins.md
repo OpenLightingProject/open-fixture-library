@@ -36,7 +36,6 @@ If exporting is supported, create a `plugins/<plugin-key>/export.js` module that
 A very simple export plugin looks like this:
 
 ```js
-module.exports.name = `Plugin Name`;
 module.exports.version = `0.1.0`;  // semantic versioning of export plugin
 
 /**
@@ -92,7 +91,6 @@ If the file can not be parsed by the import plugin or contains errors, the retur
 Example:
 
 ```js
-module.exports.name = `Plugin Name`;
 module.exports.version = `0.1.0`;  // semantic versioning of import plugin
 
 /**
