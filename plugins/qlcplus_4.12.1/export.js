@@ -645,83 +645,104 @@ function addMode(xml, mode) {
  * @param {Mode|null} mode The OFL mode object this physical data section belongs to. Only provide this if panMax and tiltMax should be read from this mode's Pan / Tilt channels.
  */
 function addPhysical(xmlParentNode, physical, fixture, mode) {
-  const xmlPhysical = xmlParentNode.element({
-    Physical: {
-      Bulb: {
-        '@Type': physical.bulbType || `Other`,
-        '@Lumens': physical.bulbLumens || 0,
-        '@ColourTemperature': physical.bulbColorTemperature || 0
-      },
-      Dimensions: {
-        '@Weight': physical.weight || 0,
-        '@Width': Math.round(physical.width) || 0,
-        '@Height': Math.round(physical.height) || 0,
-        '@Depth': Math.round(physical.depth) || 0
-      },
-      Lens: {
-        '@Name': physical.lensName || `Other`,
-        '@DegreesMin': physical.lensDegreesMin || 0,
-        '@DegreesMax': physical.lensDegreesMax || 0
-      },
-      Focus: {
-        '@Type': physical.focusType || `Fixed`,
-        '@PanMax': getPanTiltMax(`Pan`),
-        '@TiltMax': getPanTiltMax(`Tilt`)
+  const physicalSections = {
+    Bulb: {
+      needed: true,
+      getAttributes() {
+        return {
+          Type: physical.bulbType || `Other`,
+          Lumens: physical.bulbLumens || 0,
+          ColourTemperature: physical.bulbColorTemperature || 0
+        };
       }
+    },
+    Dimensions: {
+      needed: true,
+      getAttributes() {
+        return {
+          Weight: physical.weight || 0,
+          Width: Math.round(physical.width) || 0,
+          Height: Math.round(physical.height) || 0,
+          Depth: Math.round(physical.depth) || 0
+        };
+      }
+    },
+    Lens: {
+      needed: true,
+      getAttributes() {
+        return {
+          Name: physical.lensName || `Other`,
+          DegreesMin: physical.lensDegreesMin || 0,
+          DegreesMax: physical.lensDegreesMax || 0
+        };
+      }
+    },
+    Focus: {
+      needed: true,
+      getAttributes() {
+        const [PanMax, TiltMax] = [`Pan`, `Tilt`].map(panOrTilt => {
+          const panTiltMax = physical[`focus${panOrTilt}Max`];
+
+          if (panTiltMax === Number.POSITIVE_INFINITY) {
+            try {
+              const panTiltChannel = mode.channels.find(
+                ch => `capabilities` in ch && ch.capabilities.length === 1 &&
+                  ch.capabilities[0].type === panOrTilt && ch.capabilities[0].angle[0].unit === `deg`
+              );
+
+              return Math.max(
+                panTiltChannel.capabilities[0].angle[0].number,
+                panTiltChannel.capabilities[0].angle[1].number
+              );
+            }
+            catch (err) {
+              return 9999;
+            }
+          }
+
+          if (panTiltMax !== null) {
+            return Math.round(panTiltMax);
+          }
+
+          return 0;
+        });
+
+        return {
+          Type: physical.focusType || `Fixed`,
+          PanMax,
+          TiltMax
+        };
+      }
+    },
+    Layout: {
+      needed: fixture.matrix !== null,
+      getAttributes() {
+        return {
+          Width: fixture.matrix.pixelCountX,
+          Height: fixture.matrix.pixelCountY * fixture.matrix.pixelCountZ
+        };
+      }
+    },
+    Technical: {
+      needed: physical.DMXconnector !== null || physical.power !== null,
+      getAttributes() {
+        // add whitespace
+        const connector = physical.DMXconnector === `3.5mm stereo jack` ? `3.5 mm stereo jack` : physical.DMXconnector;
+
+        return {
+          DmxConnector: connector || `Other`,
+          PowerConsumption: Math.round(physical.power) || 0
+        };
+      }
+    }
+  };
+
+  const xmlPhysical = xmlParentNode.element(`Physical`);
+  Object.entries(physicalSections).forEach(([name, section]) => {
+    if (section.needed) {
+      xmlPhysical.element(name, section.getAttributes());
     }
   });
-
-  if (fixture.matrix) {
-    xmlPhysical.element({
-      Layout: {
-        '@Width': fixture.matrix.pixelCountX,
-        '@Height': fixture.matrix.pixelCountY * fixture.matrix.pixelCountZ
-      }
-    });
-  }
-
-  if (physical.DMXconnector !== null || physical.power !== null) {
-    // add whitespace
-    const connector = physical.DMXconnector === `3.5mm stereo jack` ? `3.5 mm stereo jack` : physical.DMXconnector;
-
-    xmlPhysical.element({
-      Technical: {
-        '@DmxConnector': connector || `Other`,
-        '@PowerConsumption': Math.round(physical.power) || 0
-      }
-    });
-  }
-
-  /**
-   * @param {'Pan'|'Tilt'} panOrTilt Whether to check for panMax or tiltMax.
-   * @returns {number} The rounded maximum; 9999 for infinite and 0 as default.
-   */
-  function getPanTiltMax(panOrTilt) {
-    const panTiltMax = physical[`focus${panOrTilt}Max`];
-
-    if (panTiltMax === Number.POSITIVE_INFINITY) {
-      try {
-        const panTiltChannel = mode.channels.find(
-          ch => `capabilities` in ch && ch.capabilities.length === 1 &&
-            ch.capabilities[0].type === panOrTilt && ch.capabilities[0].angle[0].unit === `deg`
-        );
-
-        return Math.max(
-          panTiltChannel.capabilities[0].angle[0].number,
-          panTiltChannel.capabilities[0].angle[1].number
-        );
-      }
-      catch (err) {
-        return 9999;
-      }
-    }
-
-    if (panTiltMax !== null) {
-      return Math.round(panTiltMax);
-    }
-
-    return 0;
-  }
 }
 
 /**
