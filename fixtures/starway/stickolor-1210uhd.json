@@ -1,0 +1,170 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Stickolor 1210UHD",
+  "shortName": "Stickolor",
+  "categories": ["Color Changer", "Pixel Bar"],
+  "meta": {
+    "authors": ["Robin"],
+    "createDate": "2019-03-04",
+    "lastModifyDate": "2019-03-04"
+  },
+  "links": {
+    "manual": [
+      "https://www.freevox.fr/telechargements/document/?doc=441277"
+    ],
+    "productPage": [
+      "https://www.star-way.com/stickolor-1210uhd"
+    ]
+  },
+  "rdm": {
+    "modelId": 21
+  },
+  "physical": {
+    "dimensions": [900, 140, 150],
+    "weight": 6.2,
+    "power": 145,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [50, 67]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "off",
+        "brightnessEnd": "off"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightness": "off"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "1Hz"
+      }
+    },
+    "Red2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Blue1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "off",
+        "brightnessEnd": "off"
+      }
+    },
+    "Green1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "White1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Green2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 CH ",
+      "shortName": "DMX 6 CH ",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "76 CH",
+      "channels": [
+        "Master Dimmer",
+        "Strobe Speed",
+        "Red1",
+        "Blue1",
+        "Green1",
+        "White1",
+        "Amber1",
+        "UV1",
+        "Red2",
+        "Green2"
+      ]
+    }
+  ]
+}
