@@ -1,0 +1,275 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Starbust",
+  "shortName": "ADJStarburst",
+  "categories": ["Effect", "Flower", "Color Changer"],
+  "meta": {
+    "authors": ["Gerard Fontanillas"],
+    "createDate": "2019-03-03",
+    "lastModifyDate": "2019-03-03"
+  },
+  "links": {
+    "manual": [
+      "https://cdb.s3-us-west-1.amazonaws.com/ItemRelatedFiles/8787/starburst.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/starburst"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=SetHSmR7J6c",
+      "https://www.youtube.com/watch?v=haRjymezIig",
+      "https://www.youtube.com/watch?v=WXHROB4soLs"
+    ]
+  },
+  "physical": {
+    "dimensions": [318, 412.5, 318],
+    "weight": 3.65,
+    "power": 55,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "5x 15W RGBWAUV LEDs"
+    },
+    "lens": {
+      "name": "34 beams",
+      "degreesMinMax": [1, 1]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 8,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [140, 181],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [190, 231],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Rotation": {
+      "defaultValue": 143,
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [31, 140],
+          "type": "Rotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [141, 145],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [146, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [26, 205],
+          "type": "ColorPreset",
+          "helpWanted": "Which color macros can be selected at which DMX values?"
+        },
+        {
+          "dmxRange": [206, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
+    },
+    "Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 55],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [56, 75],
+          "type": "Effect",
+          "effectName": "Sound-active",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [76, 105],
+          "type": "Effect",
+          "effectName": "Red CW"
+        },
+        {
+          "dmxRange": [106, 135],
+          "type": "Effect",
+          "effectName": "Blue CCW"
+        },
+        {
+          "dmxRange": [136, 165],
+          "type": "Effect",
+          "effectName": "7-color change CW"
+        },
+        {
+          "dmxRange": [166, 195],
+          "type": "Effect",
+          "effectName": "7-color change CCW"
+        },
+        {
+          "dmxRange": [196, 225],
+          "type": "Effect",
+          "effectName": "7-color change with strobe CW"
+        },
+        {
+          "dmxRange": [226, 255],
+          "type": "Effect",
+          "effectName": "7-color change with strobe CCW"
+        }
+      ]
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 69],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [70, 85],
+          "type": "Maintenance",
+          "comment": "Reset"
+        },
+        {
+          "dmxRange": [86, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Strobe",
+        "Dimmer",
+        "Rotation",
+        "Color Macros",
+        "Programs",
+        "Reset"
+      ]
+    }
+  ]
+}
