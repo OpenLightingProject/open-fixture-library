@@ -1,0 +1,220 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SUPERBAT LED 72",
+  "shortName": "MarkSuperBat72",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Gerard Fontanillas"],
+    "createDate": "2019-03-04",
+    "lastModifyDate": "2019-03-04"
+  },
+  "links": {
+    "manual": [
+      "https://www.eafg.es/productos/Docs/Manuales/SUPERBAT_LED_72_MANUAL_20160920113641.pdf"
+    ],
+    "productPage": [
+      "https://www.equipson.es/products/superbat-led-72"
+    ]
+  },
+  "physical": {
+    "dimensions": [135, 135, 210],
+    "weight": 2.5,
+    "power": 140,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "6x 12W RGBWAUV LEDs"
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "helpWanted": "Can the speed be controlled by the exact DMX value (1=slow, 255=fast; or vice-versa)?"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "ColorPreset",
+          "comment": "Color mixing",
+          "helpWanted": "What does this capability do?"
+        },
+        {
+          "dmxRange": [30, 49],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [50, 69],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Gradual"
+        },
+        {
+          "dmxRange": [70, 89],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Mutation"
+        },
+        {
+          "dmxRange": [90, 109],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [110, 129],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [130, 149],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [150, 169],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [170, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Amber"
+        },
+        {
+          "dmxRange": [190, 209],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "UV"
+        },
+        {
+          "dmxRange": [210, 229],
+          "type": "Effect",
+          "effectName": "Sound 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [230, 249],
+          "type": "Effect",
+          "effectName": "Sound 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound 3",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Does this control the speed of the effects in the Programs channel is this strobe speed?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Programs",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
