@@ -16,54 +16,53 @@
   "data": {
     "d-light": {
       "name": "D::Light",
+      "exportPluginVersion": "0.1.0",
       "exportTests": [
         "attributes-correctness"
-      ],
-      "exportPluginVersion": "0.1.0"
+      ]
     },
     "ecue": {
       "name": "e:cue",
-      "exportTests": [],
       "importPluginVersion": "0.3.1",
-      "exportPluginVersion": "0.3.0"
+      "exportPluginVersion": "0.3.0",
+      "exportTests": []
     },
     "gdtf": {
       "name": "GDTF 0.87",
-      "exportTests": [],
       "importPluginVersion": "0.1.0"
     },
     "millumin": {
       "name": "Millumin",
+      "exportPluginVersion": "0.4.0",
       "exportTests": [
         "json-schema-conformity"
-      ],
-      "exportPluginVersion": "0.4.0"
+      ]
     },
     "ofl": {
       "name": "Open Fixture Library JSON",
-      "exportTests": [],
-      "exportPluginVersion": "11.2.0"
+      "exportPluginVersion": "11.2.0",
+      "exportTests": []
     },
     "op-z": {
       "name": "OP-Z",
-      "exportTests": [],
-      "exportPluginVersion": "0.1.0"
+      "exportPluginVersion": "0.1.0",
+      "exportTests": []
     },
     "qlcplus_4.11.2": {
       "name": "QLC+ 4.11.2",
+      "importPluginVersion": "0.4.3",
+      "exportPluginVersion": "0.5.1",
       "exportTests": [
         "xsd-schema-conformity"
-      ],
-      "importPluginVersion": "0.4.3",
-      "exportPluginVersion": "0.5.1"
+      ]
     },
     "qlcplus_4.12.0": {
       "name": "QLC+ 4.12.0",
+      "exportPluginVersion": "1.0.1",
       "exportTests": [
         "fixture-tool-validation",
         "xsd-schema-conformity"
-      ],
-      "exportPluginVersion": "1.0.1"
+      ]
     }
   }
 }

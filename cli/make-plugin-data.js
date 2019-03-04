@@ -20,8 +20,7 @@ for (const pluginKey of fs.readdirSync(pluginDir)) {
   }
 
   const data = {
-    name: null,
-    exportTests: []
+    name: null
   };
 
   const pluginJsonPath = path.join(pluginPath, `plugin.json`);
@@ -54,6 +53,7 @@ for (const pluginKey of fs.readdirSync(pluginDir)) {
       const exportPlugin = require(exportPath);
       plugins.exportPlugins.push(pluginKey);
       data.exportPluginVersion = exportPlugin.version;
+      data.exportTests = [];
     }
     catch (error) {
       console.error(error.message);

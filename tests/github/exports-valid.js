@@ -8,11 +8,11 @@ const pullRequest = require(`./pull-request.js`);
 const plugins = require(`../../plugins/plugins.json`);
 
 let exportTests = [];
-for (const pluginKey of Object.keys(plugins.data)) {
-  const plugin = plugins.data[pluginKey];
+for (const exportPluginKey of plugins.exportPlugins) {
+  const plugin = plugins.data[exportPluginKey];
 
   exportTests = exportTests.concat(plugin.exportTests.map(
-    testKey => [pluginKey, testKey]
+    testKey => [exportPluginKey, testKey]
   ));
 }
 
