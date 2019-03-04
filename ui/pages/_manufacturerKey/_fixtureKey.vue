@@ -130,12 +130,35 @@
 
     <section class="fixture-modes">
       <app-fixture-mode
-        v-for="(mode, index) in fixture.modes"
+        v-for="(mode, index) in modes"
         :key="mode.name"
         :mode="mode"
         :index="index"
         @helpWantedClicked="helpWantedContext = $event" />
       <div class="clearfix" />
+    </section>
+
+    <section v-if="modesLimited && modeNumberLoadLimit < fixture.modes.length" class="card orange dark">
+      <h2><app-svg name="alert" /> This fixture is big!</h2>
+
+      <div>Only the first {{ modeNumberLoadLimit }} of {{ fixture.modes.length }} modes are displayed. Loading more modes might take a while.</div>
+
+      <div class="button-bar">
+        <a
+          v-if="isBrowser"
+          href="#load-modes"
+          class="button primary"
+          @click.prevent="modeNumberLoadLimit += modeNumberLoadIncrement">
+          Load {{ Math.min(modeNumberLoadIncrement, fixture.modes.length - modeNumberLoadLimit) }} more modes
+        </a>
+        <a
+          href="?loadAllModes"
+          :class="[`button`, isBrowser ? `secondary` : `primary`]"
+          rel="nofollow noindex"
+          @click.prevent="modeNumberLoadLimit = undefined">
+          Load all {{ fixture.modes.length }} modes
+        </a>
+      </div>
     </section>
 
     <section id="contribute">
@@ -323,14 +346,17 @@ export default {
       manufacturerColor: register.colors[manKey],
       fixKey,
       fixtureJson,
-      redirect: redirectObj
+      redirect: redirectObj,
+      modeNumberLoadLimit: `loadAllModes` in query ? undefined : 5 // initially displayed modes, if limited
     };
   },
   data() {
     return {
       plugins,
       isBrowser: false,
-      helpWantedContext: null
+      helpWantedContext: null,
+      modeNumberLoadThreshold: 15, // fixtures with more modes will be limited
+      modeNumberLoadIncrement: 10 // how many modes a button click will load
     };
   },
   computed: {
@@ -350,6 +376,18 @@ export default {
     },
     branch() {
       return process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || `master`;
+    },
+    modesLimited() {
+      return this.fixture.modes.length > this.modeNumberLoadThreshold;
+    },
+    modes() {
+      const modes = this.fixture.modes;
+
+      if (!this.modesLimited) {
+        return modes;
+      }
+
+      return modes.slice(0, this.modeNumberLoadLimit);
     },
     productModelStructuredData() {
       const data = {

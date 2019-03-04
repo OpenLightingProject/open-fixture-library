@@ -1,3 +1,4 @@
+import alertSvg from '~/assets/icons/alert.svg';
 import briefcaseDownloadSvg from '~/assets/icons/briefcase-download.svg';
 import bugSvg from '~/assets/icons/bug.svg';
 import capabilityCenterSvg from '~/assets/icons/capability-center.svg';
@@ -64,6 +65,7 @@ import channelTypesTiltSvg from '~/assets/icons/channel-types/tilt.svg';
 import channelTypesZoomSvg from '~/assets/icons/channel-types/zoom.svg';
 
 export default {
+  'alert': alertSvg,
   'briefcase-download': briefcaseDownloadSvg,
   'bug': bugSvg,
   'capability-center': capabilityCenterSvg,
