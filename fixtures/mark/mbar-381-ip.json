@@ -32,6 +32,26 @@
     }
   },
   "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
     "Red": {
       "defaultValue": 0,
       "capability": {
@@ -99,168 +119,6 @@
           "speedStart": "slow",
           "speedEnd": "fast",
           "comment": "electronic squarewave"
-        }
-      ]
-    },
-    "Color Presets": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 10],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [11, 11],
-          "type": "ColorPreset",
-          "comment": "Blue",
-          "colors": ["#0000ff"]
-        },
-        {
-          "dmxRange": [12, 50],
-          "type": "ColorPreset",
-          "comment": "Blue … Cyan",
-          "colors": ["#0000ff", "#00ffff"]
-        },
-        {
-          "dmxRange": [51, 51],
-          "type": "ColorPreset",
-          "comment": "Cyan",
-          "colors": ["#00ffff"]
-        },
-        {
-          "dmxRange": [52, 90],
-          "type": "ColorPreset",
-          "comment": "Cyan … Green",
-          "colors": ["#00ffff", "#00ff00"]
-        },
-        {
-          "dmxRange": [91, 91],
-          "type": "ColorPreset",
-          "comment": "Green",
-          "colors": ["#00ff00"]
-        },
-        {
-          "dmxRange": [92, 130],
-          "type": "ColorPreset",
-          "comment": "Green … Yellow",
-          "colors": ["#00ff00", "#ffff00"]
-        },
-        {
-          "dmxRange": [131, 131],
-          "type": "ColorPreset",
-          "comment": "Yellow",
-          "colors": ["#ffff00"]
-        },
-        {
-          "dmxRange": [132, 170],
-          "type": "ColorPreset",
-          "comment": "Yellow … Red",
-          "colors": ["#ffff00", "#ff0000"]
-        },
-        {
-          "dmxRange": [171, 171],
-          "type": "ColorPreset",
-          "comment": "Red",
-          "colors": ["#ff0000"]
-        },
-        {
-          "dmxRange": [172, 210],
-          "type": "ColorPreset",
-          "comment": "Red … Magenta",
-          "colors": ["#ff0000", "#ff00ff"]
-        },
-        {
-          "dmxRange": [211, 211],
-          "type": "ColorPreset",
-          "comment": "Magenta",
-          "colors": ["#ff00ff"]
-        },
-        {
-          "dmxRange": [212, 250],
-          "type": "ColorPreset",
-          "comment": "Magenta … Blue",
-          "colors": ["#ff00ff", "#0000ff"]
-        },
-        {
-          "dmxRange": [251, 255],
-          "type": "ColorPreset",
-          "comment": "Blue",
-          "colors": ["#0000ff"]
-        }
-      ]
-    },
-    "Dimmer": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Green": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Dimmer Curve": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 10],
-          "type": "Maintenance",
-          "comment": "Use menu setting"
-        },
-        {
-          "dmxRange": [11, 20],
-          "type": "Maintenance",
-          "comment": "Linear curve"
-        },
-        {
-          "dmxRange": [21, 30],
-          "type": "Maintenance",
-          "comment": "Square law curve"
-        },
-        {
-          "dmxRange": [31, 40],
-          "type": "Maintenance",
-          "comment": "Inverse square law curve"
-        },
-        {
-          "dmxRange": [41, 50],
-          "type": "Maintenance",
-          "comment": "S-curve"
-        },
-        {
-          "dmxRange": [51, 60],
-          "type": "Maintenance",
-          "comment": "Linear curve and smooth"
-        },
-        {
-          "dmxRange": [61, 70],
-          "type": "Maintenance",
-          "comment": "Square law curve and smooth"
-        },
-        {
-          "dmxRange": [71, 80],
-          "type": "Maintenance",
-          "comment": "Inverse square law curve and smooth"
-        },
-        {
-          "dmxRange": [81, 90],
-          "type": "Maintenance",
-          "comment": "S-curve and smooth"
-        },
-        {
-          "dmxRange": [91, 255],
-          "type": "Maintenance",
-          "comment": "Use menu setting"
         }
       ]
     },
@@ -490,6 +348,148 @@
         "speedStart": "fast",
         "speedEnd": "slow"
       }
+    },
+    "Color Presets": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [12, 50],
+          "type": "ColorPreset",
+          "comment": "Blue … Cyan",
+          "colors": ["#0000ff", "#00ffff"]
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [52, 90],
+          "type": "ColorPreset",
+          "comment": "Cyan … Green",
+          "colors": ["#00ffff", "#00ff00"]
+        },
+        {
+          "dmxRange": [91, 91],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [92, 130],
+          "type": "ColorPreset",
+          "comment": "Green … Yellow",
+          "colors": ["#00ff00", "#ffff00"]
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [132, 170],
+          "type": "ColorPreset",
+          "comment": "Yellow … Red",
+          "colors": ["#ffff00", "#ff0000"]
+        },
+        {
+          "dmxRange": [171, 171],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [172, 210],
+          "type": "ColorPreset",
+          "comment": "Red … Magenta",
+          "colors": ["#ff0000", "#ff00ff"]
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [212, 250],
+          "type": "ColorPreset",
+          "comment": "Magenta … Blue",
+          "colors": ["#ff00ff", "#0000ff"]
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        }
+      ]
+    },
+    "Dimmer Curve": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Maintenance",
+          "comment": "Use menu setting"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Maintenance",
+          "comment": "Linear curve"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Maintenance",
+          "comment": "Square law curve"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Maintenance",
+          "comment": "Inverse square law curve"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Maintenance",
+          "comment": "S-curve"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Maintenance",
+          "comment": "Linear curve and smooth"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Maintenance",
+          "comment": "Square law curve and smooth"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Maintenance",
+          "comment": "Inverse square law curve and smooth"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Maintenance",
+          "comment": "S-curve and smooth"
+        },
+        {
+          "dmxRange": [91, 255],
+          "type": "Maintenance",
+          "comment": "Use menu setting"
+        }
+      ]
     }
   },
   "modes": [
