@@ -29,62 +29,71 @@
     }
   },
   "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
     "Red": {
-      "defaultValue": 1,
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "Red"
+        "color": "Red"
       }
     },
     "Green": {
-      "defaultValue": 2,
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blue": {
-      "defaultValue": 3,
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "White": {
-      "defaultValue": 4,
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "Yellow": {
-      "defaultValue": 5,
+    "Amber": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Yellow"
+        "color": "Amber"
       }
     },
     "UV": {
-      "defaultValue": 6,
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "UV"
       }
     },
-    "Dimmer": {
-      "defaultValue": 1,
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Strobe": {
-      "defaultValue": 2,
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Color Macros": {
+    "Programs": {
       "defaultValue": 9,
       "capabilities": [
         {
@@ -93,80 +102,88 @@
         },
         {
           "dmxRange": [10, 29],
-          "type": "ColorPreset"
+          "type": "ColorPreset",
+          "helpWanted": "What does this capability do?"
         },
         {
           "dmxRange": [30, 49],
-          "type": "ColorPreset",
-          "comment": "color auto run"
+          "type": "Effect",
+          "effectPreset": "ColorJump"
         },
         {
           "dmxRange": [50, 69],
-          "type": "ColorPreset",
-          "comment": "color auto gradual"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Gradual"
         },
         {
           "dmxRange": [70, 89],
-          "type": "ColorPreset",
-          "comment": "color auto mutation"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Mutation"
         },
         {
           "dmxRange": [90, 109],
-          "type": "StrobeSpeed",
-          "speed": "slow",
-          "comment": "color strobo with red"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Red"
         },
         {
           "dmxRange": [110, 129],
-          "type": "StrobeSpeed",
-          "speed": "slow",
-          "comment": "color strobo with green"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Green"
         },
         {
           "dmxRange": [130, 149],
-          "type": "StrobeSpeed",
-          "speed": "slow",
-          "comment": "colro strobo blue"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Blue"
         },
         {
           "dmxRange": [150, 169],
-          "type": "StrobeSpeed",
-          "speed": "slow",
-          "comment": "color strobo with white"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "White"
         },
         {
           "dmxRange": [170, 189],
-          "type": "ColorPreset",
-          "comment": "colro strobo with yellow"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Amber"
         },
         {
           "dmxRange": [190, 209],
-          "type": "StrobeSpeed",
-          "speed": "slow",
-          "comment": "Color strobo with UV"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "UV"
         },
         {
-          "dmxRange": [210, 249],
-          "type": "StrobeSpeed",
-          "speed": "slow",
-          "comment": "audio 1 from 130 to 249"
+          "dmxRange": [210, 229],
+          "type": "Effect",
+          "effectName": "Sound 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [230, 249],
+          "type": "Effect",
+          "effectName": "Sound 2",
+          "soundControlled": true
         },
         {
           "dmxRange": [250, 255],
-          "type": "StrobeSpeed",
-          "speed": "slow",
-          "comment": "sound 3"
+          "type": "Effect",
+          "effectName": "Sound 3",
+          "soundControlled": true
         }
       ]
     },
-    "Strobe 2": {
-      "name": "Strobe",
-      "defaultValue": 10,
+    "Effect Speed": {
       "capability": {
         "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "comment": "speed"
+        "helpWanted": "Does this control the speed of the effects in channel 'Programs'? Or is this only strobe speed?"
       }
     }
   },
@@ -179,7 +196,7 @@
         "Green",
         "Blue",
         "White",
-        "Yellow",
+        "Amber",
         "UV"
       ]
     },
@@ -193,10 +210,10 @@
         "Green",
         "Blue",
         "White",
-        "Yellow",
+        "Amber",
         "UV",
-        "Color Macros",
-        "Strobe 2"
+        "Programs",
+        "Effect Speed"
       ]
     }
   ]
