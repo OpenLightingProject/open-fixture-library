@@ -46,8 +46,7 @@
           "dmxRange": [1, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "helpWanted": "Can the speed be controlled by the exact DMX value (1=slow, 255=fast; or vice-versa)?"
         }
       ]
     },
@@ -103,6 +102,7 @@
         {
           "dmxRange": [10, 29],
           "type": "ColorPreset",
+          "comment": "Color mixing",
           "helpWanted": "What does this capability do?"
         },
         {
@@ -183,7 +183,7 @@
         "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast",
-        "helpWanted": "Does this control the speed of the effects in channel 'Programs'? Or is this only strobe speed?"
+        "helpWanted": "Does this control the speed of the effects in the Programs channel is this strobe speed?"
       }
     }
   },
