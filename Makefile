@@ -42,8 +42,11 @@ cli/make-register.js
 	@echo ""
 
 plugins/plugins.json: \
+plugins/*/plugin.json \
 plugins/*/*.js \
-cli/make-plugin-data.js
+plugins/*/exportTests/*.js \
+cli/make-plugin-data.js \
+$(schema-files) # OFL plugin version depends on the schema
 	node cli/make-plugin-data.js
 	@echo ""
 
