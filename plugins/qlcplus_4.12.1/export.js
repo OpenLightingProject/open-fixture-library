@@ -70,7 +70,7 @@ module.exports.export = function exportQlcPlus(fixtures, options) {
     }
 
     if (fixture.physical !== null) {
-      addPhysical(xml, fixture.physical);
+      addPhysical(xml, fixture.physical, fixture);
     }
 
     xml.dtd(``);
@@ -617,7 +617,7 @@ function addMode(xml, mode) {
   );
 
   if (mode.physicalOverride !== null || hasPanTiltInfinite) {
-    addPhysical(xmlMode, mode.physical, hasPanTiltInfinite ? mode : null);
+    addPhysical(xmlMode, mode.physical, mode.fixture, hasPanTiltInfinite ? mode : null);
   }
 
   mode.channels.forEach((channel, index) => {
@@ -641,9 +641,10 @@ function addMode(xml, mode) {
 /**
  * @param {object} xmlParentNode The xmlbuilder object where <Physical> should be added (<FixtureDefinition> or <Mode>).
  * @param {Physical} physical The OFL physical object.
+ * @param {Fixture} fixture The OFL fixture object.
  * @param {Mode|null} mode The OFL mode object this physical data section belongs to. Only provide this if panMax and tiltMax should be read from this mode's Pan / Tilt channels.
  */
-function addPhysical(xmlParentNode, physical, mode) {
+function addPhysical(xmlParentNode, physical, fixture, mode) {
   const xmlPhysical = xmlParentNode.element({
     Physical: {
       Bulb: {
@@ -669,6 +670,15 @@ function addPhysical(xmlParentNode, physical, mode) {
       }
     }
   });
+
+  if (fixture.matrix) {
+    xmlPhysical.element({
+      Layout: {
+        '@Width': fixture.matrix.pixelCountX,
+        '@Height': fixture.matrix.pixelCountY * fixture.matrix.pixelCountZ
+      }
+    });
+  }
 
   if (physical.DMXconnector !== null || physical.power !== null) {
     // add whitespace
