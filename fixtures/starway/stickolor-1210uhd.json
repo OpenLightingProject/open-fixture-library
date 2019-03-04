@@ -38,138 +38,431 @@
     }
   },
   "availableChannels": {
-    "Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightness": "off"
-      }
-    },
-    "Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightness": "off"
-      }
-    },
-    "Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "off",
-        "brightnessEnd": "off"
-      }
-    },
-    "White": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "Amber": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
-    },
-    "UV": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "UV"
-      }
-    },
     "Master Dimmer": {
+      "defaultValue": 0,
       "capability": {
-        "type": "Intensity",
-        "brightness": "off"
+        "type": "Intensity"
       }
     },
-    "Strobe Speed": {
+    "Strobe": {
       "capability": {
-        "type": "StrobeSpeed",
-        "speed": "1Hz"
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
       }
     },
-    "Red2": {
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [10, 17],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"],
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [18, 25],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"],
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [26, 33],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"],
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [34, 41],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [42, 49],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffbf00"],
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [50, 57],
+          "type": "ColorPreset",
+          "comment": "UV",
+          "colors": ["#8800ff"],
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [58, 65],
+          "type": "ColorPreset",
+          "comment": "RW + UV",
+          "colors": ["#ff8080", "#8800ff"],
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [66, 73],
+          "type": "ColorPreset",
+          "comment": "RA + UV",
+          "colors": ["#ff6000", "#8800ff"],
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [74, 81],
+          "type": "ColorPreset",
+          "comment": "BWA",
+          "colors": ["#ffdfff"],
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [82, 89],
+          "type": "ColorPreset",
+          "comment": "BW + UV",
+          "colors": ["#8080ff", "#8800ff"],
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [90, 97],
+          "type": "ColorPreset",
+          "comment": "RBW + UV",
+          "colors": ["#ff80ff", "#8800ff"],
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [98, 105],
+          "type": "ColorPreset",
+          "comment": "RBA + UV",
+          "colors": ["#ff6080", "#8800ff"],
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [106, 113],
+          "type": "ColorPreset",
+          "comment": "RWA + UV",
+          "colors": ["#ff9555", "#8800ff"],
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [114, 121],
+          "type": "ColorPreset",
+          "comment": "GBWA",
+          "colors": ["#baffba"],
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [122, 129],
+          "type": "ColorPreset",
+          "comment": "RGBW + UV",
+          "colors": ["#ffeaaa", "#8800ff"],
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [130, 137],
+          "type": "Effect",
+          "effectName": "Dream",
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [138, 145],
+          "type": "Effect",
+          "effectName": "Meteor",
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [146, 153],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [154, 161],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [162, 169],
+          "type": "Effect",
+          "effectName": "Flow 1",
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [170, 177],
+          "type": "Effect",
+          "effectName": "Flow 2",
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [178, 185],
+          "type": "Effect",
+          "effectName": "Flow 3",
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [186, 193],
+          "type": "Effect",
+          "effectName": "Flow 4",
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [194, 201],
+          "type": "Effect",
+          "effectName": "Flow 5",
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [202, 209],
+          "type": "Effect",
+          "effectName": "Flow 6",
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [210, 217],
+          "type": "Effect",
+          "effectName": "Flow 7",
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [218, 225],
+          "type": "Effect",
+          "effectName": "Flow 8",
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [226, 233],
+          "type": "Effect",
+          "effectName": "Flow 9",
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [234, 241],
+          "type": "Effect",
+          "effectName": "Flow 10",
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [242, 255],
+          "type": "Effect",
+          "effectName": "Sound-control",
+          "soundControlled": true,
+          "switchChannels": {
+            "Macro Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Macro Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Red1": {
+    "Green $pixelKey": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightness": "off"
+        "color": "Green"
       }
     },
-    "Blue1": {
+    "Blue $pixelKey": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "off",
-        "brightnessEnd": "off"
+        "color": "Blue"
       }
     },
-    "Green1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightness": "off"
-      }
-    },
-    "White1": {
+    "White $pixelKey": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "Amber1": {
+    "Amber $pixelKey": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber"
       }
     },
-    "UV1": {
+    "UV $pixelKey": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "UV"
-      }
-    },
-    "Green2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightness": "off"
       }
     }
   },
   "modes": [
     {
-      "name": "6 CH ",
-      "shortName": "DMX 6 CH ",
+      "name": "6-channel",
+      "shortName": "6ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Amber",
-        "UV"
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Amber Master",
+        "UV Master"
       ]
     },
     {
-      "name": "76 CH",
+      "name": "8-channel",
+      "shortName": "8ch",
       "channels": [
         "Master Dimmer",
-        "Strobe Speed",
-        "Red1",
-        "Blue1",
-        "Green1",
-        "White1",
-        "Amber1",
-        "UV1",
-        "Red2",
-        "Green2"
+        "Strobe",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Amber Master",
+        "UV Master"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Amber Master",
+        "UV Master",
+        "Color Macros",
+        "Macro Speed / Sound Sensitivity"
+      ]
+    },
+    {
+      "name": "72-channel",
+      "shortName": "72ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey",
+            "UV $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "76-channel",
+      "shortName": "76ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey",
+            "UV $pixelKey"
+          ]
+        },
+        "Color Macros",
+        "Macro Speed / Sound Sensitivity"
       ]
     }
   ]
