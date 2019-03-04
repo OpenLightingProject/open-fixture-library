@@ -1,0 +1,557 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MBAR 381 IP",
+  "shortName": "MarkMBar381IP",
+  "categories": ["Pixel Bar", "Color Changer"],
+  "meta": {
+    "authors": ["Gerard Fontanillas"],
+    "createDate": "2019-03-04",
+    "lastModifyDate": "2019-03-04"
+  },
+  "links": {
+    "manual": [
+      "https://www.eafg.es/productos/Docs/Manuales/MBAR381IP_MANUAL_V161001_20161028134808.pdf"
+    ],
+    "productPage": [
+      "https://www.equipson.es/products/mbar-381-ip"
+    ]
+  },
+  "physical": {
+    "dimensions": [1001, 68.78, 100],
+    "weight": 4.1,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "3W RGB LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [45, 45]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "matrix": {
+    "pixelCount": [18, 1, 1],
+    "pixelGroups": {
+      "Master": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"]
+    }
+  },
+  "availableChannels": {
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 20],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "not synchronous"
+        },
+        {
+          "dmxRange": [21, 60],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "synchronous"
+        },
+        {
+          "dmxRange": [61, 100],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "electronic sinewave"
+        },
+        {
+          "dmxRange": [101, 140],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [141, 180],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [181, 220],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "electronic squarewave"
+        }
+      ]
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "ColorPreset",
+          "comment": "CT01"
+        },
+        {
+          "dmxRange": [16, 20],
+          "type": "ColorPreset",
+          "comment": "CT02"
+        },
+        {
+          "dmxRange": [21, 25],
+          "type": "ColorPreset",
+          "comment": "CT03"
+        },
+        {
+          "dmxRange": [26, 30],
+          "type": "ColorPreset",
+          "comment": "CT04"
+        },
+        {
+          "dmxRange": [31, 35],
+          "type": "ColorPreset",
+          "comment": "CT05"
+        },
+        {
+          "dmxRange": [36, 40],
+          "type": "ColorPreset",
+          "comment": "CT06"
+        },
+        {
+          "dmxRange": [41, 45],
+          "type": "ColorPreset",
+          "comment": "CT07"
+        },
+        {
+          "dmxRange": [46, 50],
+          "type": "ColorPreset",
+          "comment": "CT08"
+        },
+        {
+          "dmxRange": [51, 55],
+          "type": "ColorPreset",
+          "comment": "CT09"
+        },
+        {
+          "dmxRange": [56, 60],
+          "type": "ColorPreset",
+          "comment": "CT10"
+        },
+        {
+          "dmxRange": [61, 65],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Red-Green-Blue-Yellow-Magenta-Cyan-White"
+        },
+        {
+          "dmxRange": [66, 70],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Red-Green-Blue"
+        },
+        {
+          "dmxRange": [71, 75],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Red-Green, Red-Blue, Green-Blue"
+        },
+        {
+          "dmxRange": [76, 80],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Red-Yellow-White-Cyan-Blue"
+        },
+        {
+          "dmxRange": [81, 85],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Rainbow"
+        },
+        {
+          "dmxRange": [86, 90],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Chase 1"
+        },
+        {
+          "dmxRange": [91, 95],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Chase 2"
+        },
+        {
+          "dmxRange": [96, 100],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Chase 3"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [111, 115],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [116, 120],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [121, 125],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [131, 135],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [136, 140],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [141, 145],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [146, 150],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [151, 155],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [156, 160],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ff8000"]
+        },
+        {
+          "dmxRange": [161, 165],
+          "type": "ColorPreset",
+          "comment": "Violet",
+          "colors": ["#aa00ff"]
+        },
+        {
+          "dmxRange": [166, 170],
+          "type": "ColorPreset",
+          "comment": "Golden",
+          "colors": ["#ffcc00"]
+        },
+        {
+          "dmxRange": [171, 175],
+          "type": "ColorPreset",
+          "comment": "2700K"
+        },
+        {
+          "dmxRange": [176, 180],
+          "type": "ColorPreset",
+          "comment": "3200K"
+        },
+        {
+          "dmxRange": [181, 185],
+          "type": "ColorPreset",
+          "comment": "4000K"
+        },
+        {
+          "dmxRange": [186, 190],
+          "type": "ColorPreset",
+          "comment": "5500K"
+        },
+        {
+          "dmxRange": [191, 195],
+          "type": "ColorPreset",
+          "comment": "6500K"
+        },
+        {
+          "dmxRange": [196, 200],
+          "type": "ColorPreset",
+          "comment": "RGBW",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Macro Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color Presets": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [12, 50],
+          "type": "ColorPreset",
+          "comment": "Blue … Cyan",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#00ffff"]
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [52, 90],
+          "type": "ColorPreset",
+          "comment": "Cyan … Green",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#00ff00"]
+        },
+        {
+          "dmxRange": [91, 91],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [92, 130],
+          "type": "ColorPreset",
+          "comment": "Green … Yellow",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#ffff00"]
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [132, 170],
+          "type": "ColorPreset",
+          "comment": "Yellow … Red",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#ff0000"]
+        },
+        {
+          "dmxRange": [171, 171],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [172, 210],
+          "type": "ColorPreset",
+          "comment": "Red … Magenta",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [212, 250],
+          "type": "ColorPreset",
+          "comment": "Magenta … Blue",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        }
+      ]
+    },
+    "Dimmer Curve": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Maintenance",
+          "comment": "Use menu setting"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Maintenance",
+          "comment": "Linear curve"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Maintenance",
+          "comment": "Square law curve"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Maintenance",
+          "comment": "Inverse square law curve"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Maintenance",
+          "comment": "S-curve"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Maintenance",
+          "comment": "Linear curve and smooth"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Maintenance",
+          "comment": "Square law curve and smooth"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Maintenance",
+          "comment": "Inverse square law curve and smooth"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Maintenance",
+          "comment": "S-curve and smooth"
+        },
+        {
+          "dmxRange": [91, 255],
+          "type": "Maintenance",
+          "comment": "Use menu setting"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "Dimmer $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Green $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer Master",
+        "Strobe",
+        "Color Presets"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer Master",
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer Master",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Strobe",
+        "Dimmer Curve"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Dimmer Master",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Strobe",
+        "Color Macros",
+        "Macro Speed",
+        "Color Presets",
+        "Dimmer Curve"
+      ]
+    }
+  ]
+}
