@@ -22,12 +22,23 @@ for (const pluginKey of fs.readdirSync(pluginDir)) {
   const data = {
     name: null
   };
+  plugins.data[pluginKey] = data;
 
   const pluginJsonPath = path.join(pluginPath, `plugin.json`);
   if (fs.existsSync(pluginJsonPath)) {
     const pluginJson = require(pluginJsonPath);
 
     data.name = pluginJson.name;
+
+    if (pluginJson.previousVersions) {
+      Object.entries(pluginJson.previousVersions).forEach(([key, name]) => {
+        plugins.data[key] = {
+          name,
+          outdated: true,
+          newPlugin: pluginKey
+        };
+      });
+    }
   }
   else {
     console.error(`Plugin ${pluginKey} does not contain a plugin.json file.`);
@@ -74,8 +85,6 @@ for (const pluginKey of fs.readdirSync(pluginDir)) {
       process.exit(1);
     }
   }
-
-  plugins.data[pluginKey] = data;
 }
 
 const filename = path.join(pluginDir, `plugins.json`);

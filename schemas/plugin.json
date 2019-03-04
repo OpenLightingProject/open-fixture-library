@@ -29,6 +29,12 @@
     "name": {
       "type": "string"
     },
+    "previousVersions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
     "description": { "$ref": "#/definitions/htmlStringLines" },
     "links": {
       "type": "object",
