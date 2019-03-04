@@ -2,11 +2,9 @@
 
 The aim of the *Open Fixture Library* is to import and export our fixture definitions from / to fixture formats of third-party lighting control software, for example [QLC+](https://github.com/mcallegari/qlcplus)'s `.qfx` format. A plugin is a converter between our format and one such external format. It implements an import and / or export method that parses / generates the third-party format.
 
-Each plugin has its own directory `plugins/<plugin-key>/` which contains all information, methods and tests about the external format. Please provide a `README.md` as Markdown file with a short explanation about the fixture format. If applicable, it should include
+Each plugin has its own directory `plugins/<plugin-key>/` which contains all information, methods and tests about the external format. You have to provide a `plugin.json` file in that directory, containing at least the plugin name, description and one or more links. See the [schema](../schemas/plugin.json) or other plugins' `plugin.json` files as a reference. This data is also used to create the about page for this plugin in the UI.
 
-* a link to the software that uses this format,
-* how to use our exported fixtures in the software,
-* places where fixtures of this format can be obtained from.
+Be sure to always run `make` after editing `plugin.json` or adding export/import scripts and export tests.
 
 You can try plugins from the command line:
 
