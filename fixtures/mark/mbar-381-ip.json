@@ -31,34 +31,13 @@
       "type": "Fixed"
     }
   },
+  "matrix": {
+    "pixelCount": [18, 1, 1],
+    "pixelGroups": {
+      "Master": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"]
+    }
+  },
   "availableChannels": {
-    "Dimmer": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Green": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
     "Strobe": {
       "defaultValue": 0,
       "capabilities": [
@@ -492,12 +471,41 @@
       ]
     }
   },
+  "templateChannels": {
+    "Dimmer $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Green $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    }
+  },
   "modes": [
     {
       "name": "3-channel",
       "shortName": "3ch",
       "channels": [
-        "Dimmer",
+        "Dimmer Master",
         "Strobe",
         "Color Presets"
       ]
@@ -506,20 +514,20 @@
       "name": "4-channel",
       "shortName": "4ch",
       "channels": [
-        "Dimmer",
-        "Red",
-        "Green",
-        "Blue"
+        "Dimmer Master",
+        "Red Master",
+        "Green Master",
+        "Blue Master"
       ]
     },
     {
       "name": "6-channel",
       "shortName": "6ch",
       "channels": [
-        "Dimmer",
-        "Red",
-        "Green",
-        "Blue",
+        "Dimmer Master",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
         "Strobe",
         "Dimmer Curve"
       ]
@@ -528,10 +536,10 @@
       "name": "9-channel",
       "shortName": "9ch",
       "channels": [
-        "Dimmer",
-        "Red",
-        "Green",
-        "Blue",
+        "Dimmer Master",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
         "Strobe",
         "Color Macros",
         "Macro Speed",
