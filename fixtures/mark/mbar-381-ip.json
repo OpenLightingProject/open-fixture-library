@@ -33,240 +33,243 @@
   },
   "availableChannels": {
     "Red": {
-      "defaultValue": 1,
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Strobe": {
-      "defaultValue": 2,
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "NoFunction",
-          "comment": "no strobe"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [6, 20],
-          "type": "StrobeSpeed",
-          "speed": "slow",
-          "comment": "not synchronous strobe ( slow to fast)"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "not synchronous"
         },
         {
           "dmxRange": [21, 60],
-          "type": "StrobeSpeed",
-          "speed": "slow",
-          "comment": "synchronous strobe ( slow to fast)"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "synchronous"
         },
         {
           "dmxRange": [61, 100],
-          "type": "StrobeSpeed",
-          "speed": "slow",
-          "comment": "electronic sinewave ( slow to fast)"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "electronic sinewave"
         },
         {
           "dmxRange": [101, 140],
-          "type": "StrobeSpeed",
-          "speed": "slow",
-          "comment": "Random strobe ( slow to fast)"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [141, 180],
-          "type": "StrobeSpeed",
-          "speed": "slow",
-          "comment": "opening pulse ( slow to fast)"
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [181, 220],
-          "type": "StrobeSpeed",
-          "speed": "slow",
-          "comment": "closing pulse ( slow to fast)"
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [221, 255],
-          "type": "StrobeSpeed",
-          "speed": "slow",
-          "comment": "electronic squarewave ( slow to fast)"
-        }
-      ]
-    },
-    "Color Macros": {
-      "defaultValue": 3,
-      "capabilities": [
-        {
-          "dmxRange": [0, 10],
-          "type": "NoFunction",
-          "comment": "no effect"
-        },
-        {
-          "dmxRange": [11, 11],
-          "type": "ColorIntensity",
-          "color": "Blue"
-        },
-        {
-          "dmxRange": [12, 50],
-          "type": "ColorPreset",
-          "comment": "Red = 0 Green up, Blue = full (proportional)"
-        },
-        {
-          "dmxRange": [51, 51],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "comment": "light blue"
-        },
-        {
-          "dmxRange": [52, 90],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "comment": "red = 0, green = full, blue = proportional down"
-        },
-        {
-          "dmxRange": [91, 91],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "comment": "green"
-        },
-        {
-          "dmxRange": [92, 130],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "comment": "red up, green full, blue = 0"
-        },
-        {
-          "dmxRange": [131, 131],
-          "type": "ColorIntensity",
-          "color": "Yellow",
-          "comment": "yellow"
-        },
-        {
-          "dmxRange": [132, 170],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "comment": "red = full, green, down, blue 0"
-        },
-        {
-          "dmxRange": [171, 171],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "comment": "red"
-        },
-        {
-          "dmxRange": [172, 210],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "comment": "red = full, green = 0 blue up _(proportional)"
-        },
-        {
-          "dmxRange": [211, 211],
-          "type": "ColorIntensity",
-          "color": "Magenta",
-          "comment": "magenta"
-        },
-        {
-          "dmxRange": [212, 250],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "comment": "red down,  green 0 blue full ( step)"
-        },
-        {
-          "dmxRange": [251, 255],
-          "type": "ColorIntensity",
-          "color": "Blue"
-        }
-      ]
-    },
-    "Dimmer": {
-      "defaultValue": 1,
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Red 2": {
-      "name": "Red",
-      "defaultValue": 2,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green": {
-      "defaultValue": 3,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Blue": {
-      "defaultValue": 4,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Dimmer 2": {
-      "name": "Dimmer",
-      "defaultValue": 6,
-      "capabilities": [
-        {
-          "dmxRange": [0, 10],
-          "type": "Intensity",
-          "comment": "use dimmer mode which menu had set up"
-        },
-        {
-          "dmxRange": [11, 20],
-          "type": "Intensity",
-          "comment": "linear curve"
-        },
-        {
-          "dmxRange": [21, 30],
-          "type": "Intensity",
-          "comment": "square law curve"
-        },
-        {
-          "dmxRange": [31, 40],
-          "type": "Intensity",
-          "comment": "inverse square law curve"
-        },
-        {
-          "dmxRange": [41, 50],
-          "type": "Intensity",
-          "comment": "S-curve"
-        },
-        {
-          "dmxRange": [51, 60],
-          "type": "Intensity",
-          "comment": "linear curve and smooth"
-        },
-        {
-          "dmxRange": [61, 70],
-          "type": "Intensity",
-          "comment": "square law curve and smooth"
-        },
-        {
-          "dmxRange": [71, 80],
-          "type": "Intensity",
-          "comment": "inverse square law curve and smooth"
-        },
-        {
-          "dmxRange": [81, 90],
-          "type": "Intensity",
-          "comment": "S-curve and smooth"
-        },
-        {
-          "dmxRange": [91, 255],
-          "type": "Intensity",
-          "comment": "use dimmer mode which menu had set up"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "electronic squarewave"
         }
       ]
     },
     "Color Presets": {
-      "defaultValue": 6,
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 11],
           "type": "ColorPreset",
-          "comment": "no effect"
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [12, 50],
+          "type": "ColorPreset",
+          "comment": "Blue … Cyan",
+          "colors": ["#0000ff", "#00ffff"]
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [52, 90],
+          "type": "ColorPreset",
+          "comment": "Cyan … Green",
+          "colors": ["#00ffff", "#00ff00"]
+        },
+        {
+          "dmxRange": [91, 91],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [92, 130],
+          "type": "ColorPreset",
+          "comment": "Green … Yellow",
+          "colors": ["#00ff00", "#ffff00"]
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [132, 170],
+          "type": "ColorPreset",
+          "comment": "Yellow … Red",
+          "colors": ["#ffff00", "#ff0000"]
+        },
+        {
+          "dmxRange": [171, 171],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [172, 210],
+          "type": "ColorPreset",
+          "comment": "Red … Magenta",
+          "colors": ["#ff0000", "#ff00ff"]
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [212, 250],
+          "type": "ColorPreset",
+          "comment": "Magenta … Blue",
+          "colors": ["#ff00ff", "#0000ff"]
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer Curve": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Maintenance",
+          "comment": "Use menu setting"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Maintenance",
+          "comment": "Linear curve"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Maintenance",
+          "comment": "Square law curve"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Maintenance",
+          "comment": "Inverse square law curve"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Maintenance",
+          "comment": "S-curve"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Maintenance",
+          "comment": "Linear curve and smooth"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Maintenance",
+          "comment": "Square law curve and smooth"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Maintenance",
+          "comment": "Inverse square law curve and smooth"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Maintenance",
+          "comment": "S-curve and smooth"
+        },
+        {
+          "dmxRange": [91, 255],
+          "type": "Maintenance",
+          "comment": "Use menu setting"
+        }
+      ]
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
         },
         {
           "dmxRange": [11, 15],
@@ -320,43 +323,51 @@
         },
         {
           "dmxRange": [61, 65],
-          "type": "ColorPreset",
-          "comment": "AUTO 1 RGB, RG, RB, GB, RGB"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Red-Green-Blue-Yellow-Magenta-Cyan-White"
         },
         {
           "dmxRange": [66, 70],
-          "type": "ColorPreset",
-          "comment": "AUTO 2"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Red-Green-Blue"
         },
         {
           "dmxRange": [71, 75],
-          "type": "ColorPreset",
-          "comment": "AUTO"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Red-Green, Red-Blue, Green-Blue"
         },
         {
           "dmxRange": [76, 80],
-          "type": "ColorPreset",
-          "comment": "AUTO 4"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Red-Yellow-White-Cyan-Blue"
         },
         {
           "dmxRange": [81, 85],
-          "type": "ColorPreset",
-          "comment": "AUTO  5 RAINBOW EFFECT"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Rainbow"
         },
         {
           "dmxRange": [86, 90],
-          "type": "ColorPreset",
-          "comment": "CHASE 1"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Chase 1"
         },
         {
           "dmxRange": [91, 95],
-          "type": "ColorPreset",
-          "comment": "CHASE 2"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Chase 2"
         },
         {
           "dmxRange": [96, 100],
-          "type": "ColorPreset",
-          "comment": "CHASE 3"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Chase 3"
         },
         {
           "dmxRange": [101, 110],
@@ -364,9 +375,107 @@
           "comment": "Reserved"
         },
         {
-          "dmxRange": [111, 200],
+          "dmxRange": [111, 115],
           "type": "ColorPreset",
-          "comment": "yellow, pink, cyan, orange, violet, golden"
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [116, 120],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [121, 125],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [131, 135],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [136, 140],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [141, 145],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [146, 150],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [151, 155],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [156, 160],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ff8000"]
+        },
+        {
+          "dmxRange": [161, 165],
+          "type": "ColorPreset",
+          "comment": "Violet",
+          "colors": ["#aa00ff"]
+        },
+        {
+          "dmxRange": [166, 170],
+          "type": "ColorPreset",
+          "comment": "Golden",
+          "colors": ["#ffcc00"]
+        },
+        {
+          "dmxRange": [171, 175],
+          "type": "ColorPreset",
+          "comment": "2700K"
+        },
+        {
+          "dmxRange": [176, 180],
+          "type": "ColorPreset",
+          "comment": "3200K"
+        },
+        {
+          "dmxRange": [181, 185],
+          "type": "ColorPreset",
+          "comment": "4000K"
+        },
+        {
+          "dmxRange": [186, 190],
+          "type": "ColorPreset",
+          "comment": "5500K"
+        },
+        {
+          "dmxRange": [191, 195],
+          "type": "ColorPreset",
+          "comment": "6500K"
+        },
+        {
+          "dmxRange": [196, 200],
+          "type": "ColorPreset",
+          "comment": "RGBW",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [201, 255],
@@ -375,145 +484,12 @@
         }
       ]
     },
-    "Effect Speed": {
-      "defaultValue": 7,
+    "Macro Speed": {
       "capability": {
         "type": "EffectSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast",
-        "comment": "speed of auto. Fast to slow when auto 1 auto 5 effective"
+        "speedStart": "fast",
+        "speedEnd": "slow"
       }
-    },
-    "Color Presets 2": {
-      "name": "Color Presets",
-      "defaultValue": 8,
-      "capabilities": [
-        {
-          "dmxRange": [0, 10],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [11, 11],
-          "type": "ColorPreset",
-          "comment": "blue"
-        },
-        {
-          "dmxRange": [12, 50],
-          "type": "ColorPreset",
-          "comment": "blue"
-        },
-        {
-          "dmxRange": [51, 51],
-          "type": "ColorPreset",
-          "comment": "light blue"
-        },
-        {
-          "dmxRange": [52, 90],
-          "type": "ColorPreset",
-          "comment": "red = 0 green = full  blue=down (proportional)"
-        },
-        {
-          "dmxRange": [91, 91],
-          "type": "ColorPreset",
-          "comment": "green"
-        },
-        {
-          "dmxRange": [92, 130],
-          "type": "ColorPreset",
-          "comment": "red= green=full blue = proportional"
-        },
-        {
-          "dmxRange": [131, 131],
-          "type": "ColorPreset",
-          "comment": "green"
-        },
-        {
-          "dmxRange": [132, 170],
-          "type": "ColorPreset",
-          "comment": "red = full, green = down, blue = 0"
-        },
-        {
-          "dmxRange": [171, 171],
-          "type": "ColorPreset",
-          "comment": "red"
-        },
-        {
-          "dmxRange": [172, 210],
-          "type": "ColorPreset",
-          "comment": "red= full, green = 0, blue = up proportional"
-        },
-        {
-          "dmxRange": [211, 211],
-          "type": "ColorPreset",
-          "comment": "Magenta"
-        },
-        {
-          "dmxRange": [212, 250],
-          "type": "ColorPreset",
-          "comment": "red= down, green =0 bleu= full ( proporcional)"
-        },
-        {
-          "dmxRange": [251, 255],
-          "type": "ColorPreset",
-          "comment": "blue"
-        }
-      ]
-    },
-    "Dimmer 3": {
-      "name": "Dimmer",
-      "defaultValue": 9,
-      "capabilities": [
-        {
-          "dmxRange": [0, 10],
-          "type": "Intensity",
-          "comment": "use the immer mode which menu had set up"
-        },
-        {
-          "dmxRange": [11, 20],
-          "type": "Intensity",
-          "comment": "linear curve"
-        },
-        {
-          "dmxRange": [21, 30],
-          "type": "Intensity",
-          "comment": "square law curve"
-        },
-        {
-          "dmxRange": [31, 40],
-          "type": "Intensity",
-          "comment": "inverse square law curve"
-        },
-        {
-          "dmxRange": [41, 50],
-          "type": "Intensity",
-          "comment": "S-curve"
-        },
-        {
-          "dmxRange": [51, 60],
-          "type": "Intensity",
-          "comment": "linear curve and smooth"
-        },
-        {
-          "dmxRange": [61, 70],
-          "type": "Intensity",
-          "comment": "square law curve and smooth"
-        },
-        {
-          "dmxRange": [71, 80],
-          "type": "Intensity",
-          "comment": "inverse square law curve and smooth"
-        },
-        {
-          "dmxRange": [81, 90],
-          "type": "Intensity",
-          "comment": "s-curve and smooth"
-        },
-        {
-          "dmxRange": [91, 255],
-          "type": "Intensity",
-          "comment": "use the dimmer mode which menu had set up"
-        }
-      ]
     }
   },
   "modes": [
@@ -521,9 +497,9 @@
       "name": "3 Channel",
       "shortName": "3 channel",
       "channels": [
-        "Red",
+        "Dimmer",
         "Strobe",
-        "Color Macros"
+        "Color Presets"
       ]
     },
     {
@@ -531,7 +507,7 @@
       "shortName": "4 channel",
       "channels": [
         "Dimmer",
-        "Red 2",
+        "Red",
         "Green",
         "Blue"
       ]
@@ -541,11 +517,11 @@
       "shortName": "6 channel",
       "channels": [
         "Dimmer",
-        "Red 2",
+        "Red",
         "Green",
         "Blue",
         "Strobe",
-        "Dimmer 2"
+        "Dimmer Curve"
       ]
     },
     {
@@ -553,14 +529,14 @@
       "shortName": "9 channel",
       "channels": [
         "Dimmer",
-        "Red 2",
+        "Red",
         "Green",
         "Blue",
         "Strobe",
+        "Color Macros",
+        "Macro Speed",
         "Color Presets",
-        "Effect Speed",
-        "Color Presets 2",
-        "Dimmer 3"
+        "Dimmer Curve"
       ]
     }
   ]
