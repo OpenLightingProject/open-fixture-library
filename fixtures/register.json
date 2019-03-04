@@ -1115,6 +1115,11 @@
       "lastActionDate": "2018-08-09",
       "lastAction": "modified"
     },
+    "starway/stickolor-1210uhd": {
+      "name": "SticKolor 1210UHD",
+      "lastActionDate": "2019-03-04",
+      "lastAction": "created"
+    },
     "sun-star/g-2011-nova": {
       "name": "G-2011 / NOVA",
       "lastActionDate": "2018-12-08",
@@ -1492,6 +1497,9 @@
       "mh-x25",
       "stage-tri-led"
     ],
+    "starway": [
+      "stickolor-1210uhd"
+    ],
     "sun-star": [
       "g-2011-nova"
     ],
@@ -1716,6 +1724,7 @@
       "stairville/mh-100",
       "stairville/mh-x25",
       "stairville/stage-tri-led",
+      "starway/stickolor-1210uhd",
       "tiptop-stage-light/3-10w-battery-led-wedge-par",
       "tmb/solaris-flare",
       "venue/thintri64",
@@ -1906,6 +1915,7 @@
       "showtec/pixel-bar-12-mkii",
       "showtec/sunstrip-active-mkii",
       "skypix/ribalta-beam",
+      "starway/stickolor-1210uhd",
       "venue/tristrip3z"
     ],
     "Scanner": [
@@ -2321,6 +2331,9 @@
     "RAZAKANIRINA": [
       "ibiza-light/par-mini-rgb3"
     ],
+    "Robin": [
+      "starway/stickolor-1210uhd"
+    ],
     "Rummels Bucht Berlin": [
       "glp/impression-x4-bar-10"
     ],
@@ -2353,6 +2366,12 @@
     "1808": {
       "key": "dts",
       "models": {}
+    },
+    "2537": {
+      "key": "starway",
+      "models": {
+        "21": "stickolor-1210uhd"
+      }
     },
     "5584": {
       "key": "prolights",
@@ -2501,6 +2520,7 @@
     "solaris": "#26acd9",
     "solena": "#65e052",
     "stairville": "#725cd6",
+    "starway": "#d926b2",
     "sun-star": "#5cd65e",
     "tiptop-stage-light": "#5cd69f",
     "tmb": "#3357cc",
@@ -2509,6 +2529,7 @@
   "lastUpdated": [
     "mark/mbar-381-ip",
     "mark/superbat-led-72",
+    "starway/stickolor-1210uhd",
     "american-dj/starburst",
     "robe/robin-300e-wash",
     "american-dj/encore-profile-1000-ww",
