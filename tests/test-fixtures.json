@@ -67,34 +67,6 @@
   },
   {
     "man": "cameo",
-    "key": "gobo-scanner-80",
-    "name": "Gobo Scanner 80",
-    "features": [
-      "capability-type-NoFunction",
-      "capability-type-ShutterStrobe",
-      "capability-type-StrobeDuration",
-      "capability-type-Intensity",
-      "capability-type-Pan",
-      "capability-type-Tilt",
-      "capability-type-PanTiltSpeed",
-      "capability-type-WheelSlot",
-      "capability-type-WheelShake",
-      "capability-type-WheelRotation",
-      "capability-type-Effect",
-      "capability-type-Maintenance",
-      "fine-channel-alias",
-      "floating-point-weight",
-      "multiple-categories",
-      "reused-channels",
-      "wheel-type-Color",
-      "wheel-type-Gobo",
-      "wheel-slot-type-Open",
-      "wheel-slot-type-Color",
-      "wheel-slot-type-Gobo"
-    ]
-  },
-  {
-    "man": "cameo",
     "key": "hydrabeam-300-rgbw",
     "name": "Hydrabeam 300 RGBW",
     "features": [
@@ -519,6 +491,28 @@
       "wheel-slot-type-Open",
       "wheel-slot-type-Color",
       "wheel-slot-type-Gobo"
+    ]
+  },
+  {
+    "man": "tmb",
+    "key": "solaris-flare",
+    "name": "Solaris Flare",
+    "features": [
+      "capability-type-NoFunction",
+      "capability-type-ShutterStrobe",
+      "capability-type-StrobeDuration",
+      "capability-type-Intensity",
+      "capability-type-ColorIntensity",
+      "capability-type-Effect",
+      "fine-channel-alias",
+      "floating-point-weight",
+      "many-modes",
+      "matrix-pixelCount",
+      "matrix-pixelGroups",
+      "matrix-channel-used-directly",
+      "multiple-categories",
+      "rdm",
+      "reused-channels"
     ]
   }
 ]
