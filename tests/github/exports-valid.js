@@ -123,7 +123,6 @@ function getTasksForModel(changedComponents) {
 
   if (changedComponents.added.model ||
     changedComponents.modified.model ||
-    changedComponents.renamed.model ||
     changedComponents.removed.model) {
 
     for (const [manKey, fixKey] of testFixtures) {
@@ -192,7 +191,7 @@ function getTasksForExportTests(changedComponents) {
 function getTasksForFixtures(changedComponents) {
   let tasks = [];
 
-  const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures, changedComponents.renamed.fixtures);
+  const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures);
 
   for (const [manKey, fixKey] of fixtures) {
     tasks = tasks.concat(exportTests.map(([pluginKey, testKey]) => ({

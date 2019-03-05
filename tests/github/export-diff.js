@@ -65,7 +65,6 @@ pullRequest.checkEnv()
 
       if (changedComponents.added.model ||
         changedComponents.modified.model ||
-        changedComponents.renamed.model ||
         changedComponents.removed.model) {
 
         for (const manFix of usableTestFixtures) {
