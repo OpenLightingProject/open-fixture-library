@@ -123,7 +123,7 @@ pullRequest.checkEnv()
 
     let lines = [
       `You can view your uncommitted changes in plugin exports manually by executing:`,
-      `\`$ node cli/diff-plugin-outputs.js -p <plugin name> <fixtures>\``,
+      `\`$ node cli/diff-plugin-outputs.js -p <plugin-key> [-p <compare-plugin-key>] <fixtures>\``,
       ``
     ];
 
