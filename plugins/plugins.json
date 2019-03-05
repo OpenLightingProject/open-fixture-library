@@ -11,7 +11,7 @@
     "ofl",
     "op-z",
     "qlcplus_4.11.2",
-    "qlcplus_4.12.0"
+    "qlcplus_4.12.1"
   ],
   "data": {
     "d-light": {
@@ -60,11 +60,16 @@
       "exportTests": [
         "xsd-schema-conformity"
       ],
-      "newPlugin": "qlcplus_4.12.0"
+      "newPlugin": "qlcplus_4.12.1"
     },
     "qlcplus_4.12.0": {
       "name": "QLC+ 4.12.0",
-      "exportPluginVersion": "1.0.1",
+      "outdated": true,
+      "newPlugin": "qlcplus_4.12.1"
+    },
+    "qlcplus_4.12.1": {
+      "name": "QLC+ 4.12.1",
+      "exportPluginVersion": "1.1.0",
       "exportTests": [
         "fixture-tool-validation",
         "xsd-schema-conformity"
