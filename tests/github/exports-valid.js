@@ -73,11 +73,11 @@ pullRequest.checkEnv()
   )
   .then(async tasks => {
     if (tasks.length === 0) {
-      // return pullRequest.updateComment({
-      //   filename: path.relative(path.join(__dirname, `../../`), __filename),
-      //   name: `Export files validity`,
-      //   lines: []
-      // });
+      return pullRequest.updateComment({
+        filename: path.relative(path.join(__dirname, `../../`), __filename),
+        name: `Export files validity`,
+        lines: []
+      });
     }
 
     const lines = [
@@ -102,12 +102,11 @@ pullRequest.checkEnv()
       lines.push(...taskResultLines);
     }
 
-    console.log(lines.join(`\n`));
-    // return pullRequest.updateComment({
-    //   filename: path.relative(path.join(__dirname, `../../`), __filename),
-    //   name: `Export files validity`,
-    //   lines
-    // });
+    return pullRequest.updateComment({
+      filename: path.relative(path.join(__dirname, `../../`), __filename),
+      name: `Export files validity`,
+      lines
+    });
   })
   .catch(error => {
     console.error(error);
