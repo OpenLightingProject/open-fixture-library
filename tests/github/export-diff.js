@@ -106,16 +106,18 @@ pullRequest.checkEnv()
       const removedPlugins = changedComponents.removed.exports;
       for (const addedPlugin of addedPlugins) {
         const pluginData = require(`../../plugins/${addedPlugin}/plugin.json`);
-        const previousPlugins = Object.keys(pluginData.previousVersions || {}).filter(
-          pluginKey => removedPlugins.includes(pluginKey) || (plugins.data[pluginKey] && !addedPlugins.includes(pluginKey))
-        );
 
-        for (const previousPlugin of previousPlugins) {
-          tasks = tasks.concat(usableTestFixtures.map(manFix => ({
-            manFix,
-            currentPluginKey: addedPlugin,
-            comparePluginKey: previousPlugin
-          })));
+        if (pluginData.previousVersions) {
+          const previousVersions = Object.keys(pluginData.previousVersions);
+          const lastVersion = previousVersions[previousVersions.length - 1];
+
+          if (removedPlugins.includes(lastVersion) || (plugins.exportPlugins.includes(lastVersion) && !addedPlugins.includes(lastVersion))) {
+            tasks = tasks.concat(usableTestFixtures.map(manFix => ({
+              manFix,
+              currentPluginKey: addedPlugin,
+              comparePluginKey: lastVersion
+            })));
+          }
         }
       }
 
