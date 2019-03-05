@@ -3,8 +3,8 @@
 const path = require(`path`);
 
 const diffPluginOutputs = require(`../../lib/diff-plugin-outputs.js`);
-const pluginData = require(`../../plugins/plugins.json`);
-const exportPlugins = pluginData.exportPlugins.filter(pluginKey => pluginKey !== `ofl`); // don't diff (essentially) the source files
+const plugins = require(`../../plugins/plugins.json`);
+const exportPlugins = plugins.exportPlugins.filter(pluginKey => pluginKey !== `ofl`); // don't diff (essentially) the source files
 const pullRequest = require(`./pull-request.js`);
 
 require(`../../lib/load-env-file.js`);
@@ -105,10 +105,12 @@ pullRequest.checkEnv()
       const addedPlugins = changedComponents.added.exports;
       const removedPlugins = changedComponents.removed.exports;
       for (const addedPlugin of addedPlugins) {
-        const previousPlugin = Object.keys(pluginData.data).concat(removedPlugins).find(
-          pluginKey => !addedPlugins.includes(pluginKey) && pluginData.data[pluginKey] && pluginData.data[pluginKey].newPlugin === addedPlugin
+        const pluginData = require(`../../plugins/${addedPlugin}/plugin.json`);
+        const previousPlugins = Object.keys(pluginData.previousVersions || {}).filter(
+          pluginKey => removedPlugins.includes(pluginKey) || (plugins.data[pluginKey] && !addedPlugins.includes(pluginKey))
         );
-        if (previousPlugin) {
+
+        for (const previousPlugin of previousPlugins) {
           tasks = tasks.concat(usableTestFixtures.map(manFix => ({
             manFix,
             currentPluginKey: addedPlugin,
