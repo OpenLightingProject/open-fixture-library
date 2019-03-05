@@ -179,8 +179,14 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       result.errors.push(`meta.lastModifyDate is earlier than meta.createDate.`);
     }
 
-    if (meta.importPlugin && !plugins.importPlugins.includes(meta.importPlugin)) {
-      result.errors.push(`Unknown import plugin ${meta.importPlugin}`);
+    if (meta.importPlugin) {
+      const pluginData = plugins.data[meta.importPlugin];
+      const isImportPlugin = plugins.importPlugins.includes(meta.importPlugin);
+      const isOutdatedImportPlugin = pluginData && pluginData.outdated && plugins.importPlugins.includes(pluginData.newPlugin);
+
+      if (!(isImportPlugin || isOutdatedImportPlugin)) {
+        result.errors.push(`Unknown import plugin ${meta.importPlugin}`);
+      }
     }
   }
 

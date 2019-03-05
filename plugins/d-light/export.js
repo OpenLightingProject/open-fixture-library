@@ -7,7 +7,6 @@ const {
   SwitchingChannel
 } = require(`../../lib/model.js`);
 
-module.exports.name = `D::Light`;
 module.exports.version = `0.1.0`;
 
 /**

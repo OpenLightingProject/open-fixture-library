@@ -8,7 +8,6 @@ const {
   SwitchingChannel
 } = require(`../../lib/model.js`);
 
-module.exports.name = `e:cue`;
 module.exports.version = `0.3.0`;
 
 /**

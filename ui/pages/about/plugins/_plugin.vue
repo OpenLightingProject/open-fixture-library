@@ -101,6 +101,11 @@ export default {
   async asyncData({ params, query, app, redirect }) {
     const pluginKey = decodeURIComponent(params.plugin);
 
+    if (plugins.data[pluginKey].outdated) {
+      redirect(301, `/about/plugins/${plugins.data[pluginKey].newPlugin}`);
+      return {};
+    }
+
     const pluginData = await app.$axios.$get(`/about/plugins/${pluginKey}.json`);
 
     const fileLocationOSes = `fileLocations` in pluginData ? Object.keys(pluginData.fileLocations).filter(

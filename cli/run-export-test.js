@@ -34,6 +34,17 @@ if (!args.plugin) {
   process.exit(1);
 }
 
+if (!plugins.exportPlugins.includes(args.plugin)) {
+  console.error(`${colors.red(`[Error]`)} Plugin '${args.plugin}' is not a valid export plugin.\nAvailable export plugins: ${plugins.exportPlugins.join(`, `)}`);
+  process.exit(1);
+}
+
+const pluginData = plugins.data[args.plugin];
+if (pluginData.exportTests.length === 0) {
+  console.log(`${colors.green(`[PASS]`)} Plugin '${args.plugin}' has no export tests.`);
+  process.exit(0);
+}
+
 let fixtures;
 if (args._.length === 0) {
   fixtures = testFixtures.map(
@@ -46,13 +57,13 @@ else {
   );
 }
 
-const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `export.js`));
-plugin.export(fixtures, {
+const pluginExport = require(path.join(__dirname, `../plugins`, args.plugin, `export.js`));
+pluginExport.export(fixtures, {
   baseDir: path.join(__dirname, `..`),
   date: new Date()
 })
   .then(files => Promise.all(
-    plugins.data[args.plugin].exportTests.map(testKey => {
+    pluginData.exportTests.map(testKey => {
       const exportTest = require(path.join(__dirname, `../plugins`, args.plugin, `exportTests/${testKey}.js`));
 
       const filePromises = files.map(file =>

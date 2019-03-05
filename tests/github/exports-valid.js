@@ -7,12 +7,12 @@ const pullRequest = require(`./pull-request.js`);
 
 const plugins = require(`../../plugins/plugins.json`);
 
-let exportTests = [];
-for (const pluginKey of Object.keys(plugins.data)) {
-  const plugin = plugins.data[pluginKey];
+const exportTests = [];
+for (const exportPluginKey of plugins.exportPlugins) {
+  const plugin = plugins.data[exportPluginKey];
 
-  exportTests = exportTests.concat(plugin.exportTests.map(
-    testKey => [pluginKey, testKey]
+  exportTests.push(...plugin.exportTests.map(
+    testKey => [exportPluginKey, testKey]
   ));
 }
 
@@ -73,11 +73,11 @@ pullRequest.checkEnv()
   )
   .then(async tasks => {
     if (tasks.length === 0) {
-      return pullRequest.updateComment({
-        filename: path.relative(path.join(__dirname, `../../`), __filename),
-        name: `Export files validity`,
-        lines: []
-      });
+      // return pullRequest.updateComment({
+      //   filename: path.relative(path.join(__dirname, `../../`), __filename),
+      //   name: `Export files validity`,
+      //   lines: []
+      // });
     }
 
     const lines = [
@@ -102,11 +102,12 @@ pullRequest.checkEnv()
       lines.push(...taskResultLines);
     }
 
-    return pullRequest.updateComment({
-      filename: path.relative(path.join(__dirname, `../../`), __filename),
-      name: `Export files validity`,
-      lines
-    });
+    console.log(lines.join(`\n`));
+    // return pullRequest.updateComment({
+    //   filename: path.relative(path.join(__dirname, `../../`), __filename),
+    //   name: `Export files validity`,
+    //   lines
+    // });
   })
   .catch(error => {
     console.error(error);
@@ -123,7 +124,6 @@ function getTasksForModel(changedComponents) {
 
   if (changedComponents.added.model ||
     changedComponents.modified.model ||
-    changedComponents.renamed.model ||
     changedComponents.removed.model) {
 
     for (const [manKey, fixKey] of testFixtures) {
@@ -192,7 +192,7 @@ function getTasksForExportTests(changedComponents) {
 function getTasksForFixtures(changedComponents) {
   let tasks = [];
 
-  const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures, changedComponents.renamed.fixtures);
+  const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures);
 
   for (const [manKey, fixKey] of fixtures) {
     tasks = tasks.concat(exportTests.map(([pluginKey, testKey]) => ({

@@ -5,7 +5,6 @@ const {
   SwitchingChannel
 } = require(`../../lib/model.js`);
 
-module.exports.name = `OP-Z`;
 module.exports.version = `0.1.0`;
 
 const MAX_KNOBS = 8;

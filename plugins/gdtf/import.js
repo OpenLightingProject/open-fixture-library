@@ -11,7 +11,6 @@ const { scaleDmxValue, scaleDmxRangeIndividually } = require(`../../lib/scale-dm
 const { gdtfAttributes, gdtfUnits } = require(`./gdtf-attributes.js`);
 const { getRgbColorFromGdtfColor, followXmlNodeReference } = require(`./gdtf-helpers.js`);
 
-module.exports.name = `GDTF 0.87`;
 module.exports.version = `0.1.0`;
 
 /**

@@ -20,7 +20,6 @@ const {
 } = require(`../../lib/model.js`);
 /* eslint-enable no-unused-vars */
 
-module.exports.name = `QLC+ 4.11.2`;
 module.exports.version = `0.5.1`;
 
 /**

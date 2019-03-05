@@ -58,7 +58,7 @@ module.exports.init = function init() {
     });
 };
 
-module.exports.fetchChangedComponents = function getChangedComponents() {
+module.exports.fetchChangedComponents = function fetchChangedComponents() {
   // fetch changed files in 100er blocks
   const filePromises = [];
   for (let i = 0; i < this.data.changed_files / 100; i++) {
@@ -91,14 +91,6 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
           exportTests: [], // array of [plugin key, test key]
           fixtures: [] // array of [man key, fix key]
         },
-        renamed: {
-          schema: false,
-          model: false,
-          imports: [], // array of plugin keys
-          exports: [], // array of plugin keys
-          exportTests: [], // array of [plugin key, test key]
-          fixtures: [] // array of [man key, fix key]
-        },
         removed: {
           schema: false,
           model: false,
@@ -110,14 +102,35 @@ module.exports.fetchChangedComponents = function getChangedComponents() {
       };
 
       for (const block of fileBlocks) {
-        block.data.forEach(handleFile);
+        block.data.forEach(handleFileData);
       }
 
       return changedComponents;
 
-      function handleFile(file) {
-        const changeSummary = changedComponents[file.status];
-        const segments = file.filename.split(`/`);
+      /**
+       * Forwards the file's status and path to handleFile(...) with the specialty of splitting renamed files into added/removed.
+       * @param {object} fileData The file object from GitHub.
+       */
+      function handleFileData(fileData) {
+        if (fileData.status === `renamed`) {
+          // Handling renamed files would be a bit tricky, as we also had to store the previous filename.
+          // That's why we simply treat the old file name as removed and the new one as added.
+          handleFile(`added`, fileData.filename);
+          handleFile(`removed`, fileData.previous_filename);
+        }
+        else {
+          handleFile(fileData.status, fileData.filename);
+        }
+      }
+
+      /**
+       * Parse the file type by its path and update the change summary of the file's status accordingly.
+       * @param {'added'|'removed'|'modified'} fileStatus What happened with the file in this pull request.
+       * @param {string} filePath The file name, relative to the repository's root.
+       */
+      function handleFile(fileStatus, filePath) {
+        const changeSummary = changedComponents[fileStatus];
+        const segments = filePath.split(`/`);
 
         if (segments[0] === `lib` && segments[1] === `model`) {
           changeSummary.model = true;

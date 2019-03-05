@@ -16,6 +16,7 @@
     },
     "fileLocations": {
       "type": "object",
+      "minProperties": 1,
       "properties": {
         "main": { "type": "string" },
         "user": { "type": "string" }
@@ -29,9 +30,17 @@
     "name": {
       "type": "string"
     },
+    "previousVersions": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
     "description": { "$ref": "#/definitions/htmlStringLines" },
     "links": {
       "type": "object",
+      "minProperties": 1,
       "properties": {
         "Website": { "$ref": "#/definitions/urlString" },
         "Fixture library download": { "$ref": "#/definitions/urlString" },
@@ -42,6 +51,7 @@
     "fixtureUsage": { "$ref": "#/definitions/htmlStringLines" },
     "fileLocations": {
       "type": "object",
+      "minProperties": 1,
       "properties": {
         "subDirectoriesAllowed": {
           "type": "boolean"

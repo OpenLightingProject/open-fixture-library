@@ -3,7 +3,8 @@
 const path = require(`path`);
 
 const diffPluginOutputs = require(`../../lib/diff-plugin-outputs.js`);
-const exportPlugins = require(`../../plugins/plugins.json`).exportPlugins.filter(pluginKey => pluginKey !== `ofl`); // don't diff (essentially) the source files
+const plugins = require(`../../plugins/plugins.json`);
+const exportPlugins = plugins.exportPlugins.filter(pluginKey => pluginKey !== `ofl`); // don't diff (essentially) the source files
 const pullRequest = require(`./pull-request.js`);
 
 require(`../../lib/load-env-file.js`);
@@ -15,7 +16,8 @@ const testFixtures = require(`../test-fixtures.json`).map(
 /**
  * @typedef {object} Task
  * @property {string} manFix
- * @property {string} pluginKey
+ * @property {string} currentPluginKey
+ * @property {string} comparePluginKey
  */
 
 // generate diff tasks describing the diffed plugins, fixtures and the reason for diffing (which component has changed)
@@ -38,7 +40,8 @@ pullRequest.checkEnv()
       .filter((task, index, arr) => {
         const firstEqualTask = arr.find(otherTask =>
           task.manFix === otherTask.manFix &&
-          task.pluginKey === otherTask.pluginKey
+          task.currentPluginKey === otherTask.currentPluginKey &&
+          task.comparePluginKey === otherTask.comparePluginKey
         );
 
         // remove duplicates
@@ -46,13 +49,18 @@ pullRequest.checkEnv()
       })
       .sort((a, b) => {
         const manFixCompare = a.manFix.localeCompare(b.manFix);
-        const pluginCompare = a.pluginKey.localeCompare(b.pluginKey);
+        const currentPluginCompare = a.currentPluginKey.localeCompare(b.currentPluginKey);
+        const comparePluginCompare = a.comparePluginKey.localeCompare(b.comparePluginKey);
 
         if (manFixCompare !== 0) {
           return manFixCompare;
         }
 
-        return pluginCompare;
+        if (currentPluginCompare !== 0) {
+          return currentPluginCompare;
+        }
+
+        return comparePluginCompare;
       });
 
     return tasks;
@@ -65,13 +73,13 @@ pullRequest.checkEnv()
 
       if (changedComponents.added.model ||
         changedComponents.modified.model ||
-        changedComponents.renamed.model ||
         changedComponents.removed.model) {
 
         for (const manFix of usableTestFixtures) {
           tasks = tasks.concat(usablePlugins.map(pluginKey => ({
             manFix,
-            pluginKey
+            currentPluginKey: pluginKey,
+            comparePluginKey: pluginKey
           })));
         }
       }
@@ -89,8 +97,26 @@ pullRequest.checkEnv()
       for (const changedPlugin of changedPlugins) {
         tasks = tasks.concat(usableTestFixtures.map(manFix => ({
           manFix,
-          pluginKey: changedPlugin
+          currentPluginKey: changedPlugin,
+          comparePluginKey: changedPlugin
         })));
+      }
+
+      const addedPlugins = changedComponents.added.exports;
+      const removedPlugins = changedComponents.removed.exports;
+      for (const addedPlugin of addedPlugins) {
+        const pluginData = require(`../../plugins/${addedPlugin}/plugin.json`);
+        const previousPlugins = Object.keys(pluginData.previousVersions || {}).filter(
+          pluginKey => removedPlugins.includes(pluginKey) || (plugins.data[pluginKey] && !addedPlugins.includes(pluginKey))
+        );
+
+        for (const previousPlugin of previousPlugins) {
+          tasks = tasks.concat(usableTestFixtures.map(manFix => ({
+            manFix,
+            currentPluginKey: addedPlugin,
+            comparePluginKey: previousPlugin
+          })));
+        }
       }
 
       return tasks;
@@ -105,7 +131,8 @@ pullRequest.checkEnv()
       for (const [manKey, fixKey] of changedComponents.modified.fixtures) {
         tasks = tasks.concat(usablePlugins.map(pluginKey => ({
           manFix: `${manKey}/${fixKey}`,
-          pluginKey
+          currentPluginKey: pluginKey,
+          comparePluginKey: pluginKey
         })));
       }
 
@@ -123,7 +150,7 @@ pullRequest.checkEnv()
 
     let lines = [
       `You can view your uncommitted changes in plugin exports manually by executing:`,
-      `\`$ node cli/diff-plugin-outputs.js -p <plugin name> <fixtures>\``,
+      `\`$ node cli/diff-plugin-outputs.js -p <plugin-key> [-c <compare-plugin-key>] <fixtures>\``,
       ``
     ];
 
@@ -159,13 +186,15 @@ pullRequest.checkEnv()
  * @returns {Promise.<array.<string>>} An array of message lines.
  */
 async function performTask(task) {
-  const output = await diffPluginOutputs(task.pluginKey, process.env.TRAVIS_BRANCH, [task.manFix]);
+  const output = await diffPluginOutputs(task.currentPluginKey, task.comparePluginKey, process.env.TRAVIS_BRANCH, [task.manFix]);
   const changeFlags = getChangeFlags(output);
   const emoji = getEmoji(changeFlags);
 
+  const pluginDisplayName = task.currentPluginKey === task.comparePluginKey ? task.currentPluginKey : `${task.comparePluginKey}->${task.currentPluginKey}`;
+
   let lines = [
     `<details>`,
-    `<summary>${emoji} <strong>${task.manFix}:</strong> ${task.pluginKey}</summary>`
+    `<summary>${emoji} <strong>${task.manFix}:</strong> ${pluginDisplayName}</summary>`
   ];
 
   if (changeFlags.nothingChanged) {

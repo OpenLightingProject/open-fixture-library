@@ -2,7 +2,6 @@ const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
 
 const manufacturers = require(`../../fixtures/manufacturers.json`);
 
-module.exports.name = `Open Fixture Library JSON`;
 module.exports.version = require(`../../schemas/fixture.json`).version;
 
 /**
