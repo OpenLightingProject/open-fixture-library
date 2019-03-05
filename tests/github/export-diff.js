@@ -105,8 +105,8 @@ pullRequest.checkEnv()
       const addedPlugins = changedComponents.added.exports;
       const removedPlugins = changedComponents.removed.exports;
       for (const addedPlugin of addedPlugins) {
-        const previousPlugin = removedPlugins.find(
-          removedPlugin => pluginData.data[removedPlugin] && pluginData.data[removedPlugin].newPlugin === addedPlugin
+        const previousPlugin = Object.keys(pluginData.data).concat(removedPlugins).find(
+          pluginKey => !addedPlugins.includes(pluginKey) && pluginData.data[pluginKey] && pluginData.data[pluginKey].newPlugin === addedPlugin
         );
         if (previousPlugin) {
           tasks = tasks.concat(usableTestFixtures.map(manFix => ({
