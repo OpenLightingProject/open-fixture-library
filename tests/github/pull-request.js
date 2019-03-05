@@ -124,7 +124,7 @@ module.exports.fetchChangedComponents = function fetchChangedComponents() {
       }
 
       /**
-       * Parse the file type by its path and update the file's status' change summary accordingly.
+       * Parse the file type by its path and update the change summary of the file's status accordingly.
        * @param {'added'|'removed'|'modified'} fileStatus What happened with the file in this pull request.
        * @param {string} filePath The file name, relative to the repository's root.
        */
