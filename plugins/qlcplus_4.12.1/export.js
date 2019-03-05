@@ -648,7 +648,7 @@ function addMode(xml, mode) {
 function addPhysical(xmlParentNode, physical, fixture, mode) {
   const physicalSections = {
     Bulb: {
-      needed: true,
+      required: true,
       getAttributes() {
         return {
           Type: physical.bulbType || `Other`,
@@ -658,7 +658,7 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
       }
     },
     Dimensions: {
-      needed: true,
+      required: true,
       getAttributes() {
         return {
           Weight: physical.weight || 0,
@@ -669,7 +669,7 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
       }
     },
     Lens: {
-      needed: true,
+      required: true,
       getAttributes() {
         return {
           Name: physical.lensName || `Other`,
@@ -679,7 +679,7 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
       }
     },
     Focus: {
-      needed: true,
+      required: true,
       getAttributes() {
         const [PanMax, TiltMax] = [`Pan`, `Tilt`].map(panOrTilt => {
           const panTiltMax = physical[`focus${panOrTilt}Max`];
@@ -716,7 +716,7 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
       }
     },
     Layout: {
-      needed: fixture.matrix !== null,
+      required: fixture.matrix !== null,
       getAttributes() {
         return {
           Width: fixture.matrix.pixelCountX,
@@ -725,7 +725,7 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
       }
     },
     Technical: {
-      needed: physical.DMXconnector !== null || physical.power !== null,
+      required: physical.DMXconnector !== null || physical.power !== null,
       getAttributes() {
         // add whitespace
         const connector = physical.DMXconnector === `3.5mm stereo jack` ? `3.5 mm stereo jack` : physical.DMXconnector;
@@ -740,7 +740,7 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
 
   const xmlPhysical = xmlParentNode.element(`Physical`);
   Object.entries(physicalSections).forEach(([name, section]) => {
-    if (section.needed) {
+    if (section.required) {
       xmlPhysical.element(name, section.getAttributes());
     }
   });
