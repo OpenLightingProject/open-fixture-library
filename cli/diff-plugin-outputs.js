@@ -4,6 +4,8 @@ const path = require(`path`);
 const minimist = require(`minimist`);
 const colors = require(`colors`);
 
+const diffPluginOutputs = require(`../lib/diff-plugin-outputs.js`);
+
 const testFixtures = require(`../tests/test-fixtures.json`).map(
   fixture => `${fixture.man}/${fixture.key}`
 );
@@ -44,4 +46,4 @@ if (args._.length === 0 && !args.t) {
   console.log(`${colors.yellow(`[Warning]`)} No fixtures specified. See --help for usage.`);
 }
 
-require(`../lib/diff-plugin-outputs.js`)(args.plugin, args.ref, args.t ? testFixtures : args._);
+diffPluginOutputs(args.plugin, args.plugin, args.ref, args.t ? testFixtures : args._);

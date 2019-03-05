@@ -159,7 +159,7 @@ pullRequest.checkEnv()
  * @returns {Promise.<array.<string>>} An array of message lines.
  */
 async function performTask(task) {
-  const output = await diffPluginOutputs(task.pluginKey, process.env.TRAVIS_BRANCH, [task.manFix]);
+  const output = await diffPluginOutputs(task.pluginKey, task.pluginKey, process.env.TRAVIS_BRANCH, [task.manFix]);
   const changeFlags = getChangeFlags(output);
   const emoji = getEmoji(changeFlags);
 
