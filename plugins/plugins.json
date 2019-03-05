@@ -48,6 +48,11 @@
       "exportPluginVersion": "0.1.0",
       "exportTests": []
     },
+    "qlcplus": {
+      "name": "QLC+",
+      "outdated": true,
+      "newPlugin": "qlcplus_4.11.2"
+    },
     "qlcplus_4.11.2": {
       "name": "QLC+ 4.11.2",
       "importPluginVersion": "0.4.3",
@@ -55,11 +60,6 @@
       "exportTests": [
         "xsd-schema-conformity"
       ]
-    },
-    "qlcplus": {
-      "name": "QLC+",
-      "outdated": true,
-      "newPlugin": "qlcplus_4.11.2"
     },
     "qlcplus_4.12.0": {
       "name": "QLC+ 4.12.0",

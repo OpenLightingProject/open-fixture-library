@@ -10,6 +10,8 @@ const plugins = {
   data: {}
 };
 
+const allPreviousVersions = {};
+
 const pluginDir = path.join(__dirname, `../plugins`);
 for (const pluginKey of fs.readdirSync(pluginDir)) {
   const pluginPath = path.join(pluginDir, pluginKey);
@@ -32,7 +34,7 @@ for (const pluginKey of fs.readdirSync(pluginDir)) {
 
     if (pluginJson.previousVersions) {
       Object.entries(pluginJson.previousVersions).forEach(([key, name]) => {
-        plugins.data[key] = {
+        allPreviousVersions[key] = {
           name,
           outdated: true,
           newPlugin: pluginKey
@@ -86,6 +88,20 @@ for (const pluginKey of fs.readdirSync(pluginDir)) {
     }
   }
 }
+
+for (const [key, data] of Object.entries(allPreviousVersions)) {
+  if (key in plugins.data) {
+    plugins.data[key].newPlugin = data.newPlugin;
+  }
+  else {
+    plugins.data[key] = data;
+  }
+}
+
+// sort plugin data object by key
+const sortedPluginData = {};
+Object.keys(plugins.data).sort().forEach(key => (sortedPluginData[key] = plugins.data[key]));
+plugins.data = sortedPluginData;
 
 const filename = path.join(pluginDir, `plugins.json`);
 fs.writeFile(filename, `${JSON.stringify(plugins, null, 2)}\n`, `utf8`, error => {
