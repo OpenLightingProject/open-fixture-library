@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "BT-COLORAY 60R / 120R",
+  "name": "BT-COLORAY 120R",
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["Felix Edelmann"],
@@ -12,14 +12,17 @@
       "https://briteq-lighting.com/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1521803829.pdf"
     ],
     "productPage": [
-      "https://briteq-lighting.com/bt-coloray-60r",
       "https://briteq-lighting.com/bt-coloray-120r"
     ]
   },
   "physical": {
     "dimensions": [272.5, 304.6, 241.7],
     "weight": 4.8,
+    "power": 129,
     "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "120W RGBW LED"
+    },
     "lens": {
       "degreesMinMax": [15, 15]
     },
@@ -110,14 +113,8 @@
   },
   "modes": [
     {
-      "name": "60R: RGB + Dim/Strb",
-      "shortName": "60R-4ch",
-      "physical": {
-        "power": 70,
-        "bulb": {
-          "type": "60W RGBW LED"
-        }
-      },
+      "name": "RGB + Dim/Strb",
+      "shortName": "4ch",
       "channels": [
         "Red",
         "Green",
@@ -126,30 +123,8 @@
       ]
     },
     {
-      "name": "120R: RGB + Dim/Strb",
-      "shortName": "120R-4ch",
-      "physical": {
-        "power": 129,
-        "bulb": {
-          "type": "120W RGBW LED"
-        }
-      },
-      "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "Dimmer / Strobe"
-      ]
-    },
-    {
-      "name": "60R: RGBW + Dim + Strb",
-      "shortName": "60R-6ch",
-      "physical": {
-        "power": 70,
-        "bulb": {
-          "type": "60W RGBW LED"
-        }
-      },
+      "name": "RGBW + Dim + Strb",
+      "shortName": "6ch",
       "channels": [
         "Red",
         "Green",
@@ -160,51 +135,8 @@
       ]
     },
     {
-      "name": "120R: RGBW + Dim + Strb",
-      "shortName": "120R-6ch",
-      "physical": {
-        "power": 129,
-        "bulb": {
-          "type": "120W RGBW LED"
-        }
-      },
-      "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Dimmer",
-        "Strobe"
-      ]
-    },
-    {
-      "name": "60R: RGBW + Dim + Strb + DimSpeed",
-      "shortName": "60R-7ch",
-      "physical": {
-        "power": 70,
-        "bulb": {
-          "type": "60W RGBW LED"
-        }
-      },
-      "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Dimmer",
-        "Strobe",
-        "Dimmer Speed"
-      ]
-    },
-    {
-      "name": "120R: RGBW + Dim + Strb + DimSpeed",
-      "shortName": "120R-7ch",
-      "physical": {
-        "power": 129,
-        "bulb": {
-          "type": "120W RGBW LED"
-        }
-      },
+      "name": "RGBW + Dim + Strb + DimSpeed",
+      "shortName": "7ch",
       "channels": [
         "Red",
         "Green",
