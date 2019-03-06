@@ -1,0 +1,230 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Flat PAR Can RGB 10 IR",
+  "shortName": "CLPFLAT1RGB10IR",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2019-03-06",
+    "lastModifyDate": "2019-03-06"
+  },
+  "links": {
+    "manual": [
+      "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLPFLAT1RGB10IR/CLPFLAT1RGB10IR_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf",
+      "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLPFLAT1TRI3WIR/CLPFLAT1TRI3WIR_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/en/products/led-flat-par/flat-par-rgb-10-ir-144-x-10-mm-flat-led-rgb-par-spot-light-in-black-housing-with-ir-remote-control-capability/",
+      "https://www.cameolight.com/en/products/led-flat-par/flat-par-rgb-10-ir-wh-144-x-10-mm-flat-led-rgb-par-spot-light-in-white-housing-with-ir-remote-control-capability/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=7otHVQmaCfw"
+    ]
+  },
+  "physical": {
+    "dimensions": [180, 175, 115],
+    "weight": 1.2,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "144x 10mm LEDs (48 red, 48 green, 48 blue)"
+    },
+    "lens": {
+      "degreesMinMax": [14, 14]
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Macro": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 36],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [37, 73],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [74, 110],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [111, 147],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [148, 184],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [185, 221],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [222, 255],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        }
+      ]
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0%",
+        "speedEnd": "100%",
+        "helpWanted": "At which DMX values is strobe disabled? That should be a separate capability."
+      }
+    },
+    "Color Macro Advanced": {
+      "name": "Color Macro",
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [5, 15],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [16, 26],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [27, 37],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [38, 48],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [49, 59],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [60, 70],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [81, 150],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [151, 220],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Master Dimmer",
+        "Color Macro"
+      ]
+    },
+    {
+      "name": "3-channel 1",
+      "shortName": "3ch1",
+      "channels": [
+        "Master Dimmer",
+        "Strobe",
+        "Color Macro Advanced"
+      ]
+    },
+    {
+      "name": "3-channel 2 (RGB)",
+      "shortName": "3ch2",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macro Advanced"
+      ]
+    }
+  ]
+}
