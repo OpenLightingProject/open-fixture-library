@@ -1,33 +1,30 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Flat PAR Can Tri 7x 3W IR",
-  "shortName": "CLPFLAT1TRI3WIR",
+  "name": "Flat PAR Can Tri 5x 3W IR",
+  "shortName": "CLPFLAT1TRI5X3WIR",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Fabian"],
-    "createDate": "2018-09-22",
-    "lastModifyDate": "2018-09-22"
+    "authors": ["Felix Edelmann"],
+    "createDate": "2019-03-06",
+    "lastModifyDate": "2019-03-06"
   },
   "links": {
     "manual": [
       "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLPFLAT1TRI3WIR/CLPFLAT1TRI3WIR_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf",
       "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLPFLAT1RGB10IR/CLPFLAT1RGB10IR_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf"
     ],
-    "productPage": [
-      "https://www.cameolight.com/en/products/led-flat-par/flat-par-tri-3w-ir-7-x-3-w-high-power-tri-colour-flat-led-rgb-par-light-in-black-housing",
-      "https://www.cameolight.com/en/products/led-flat-par/flat-par-tri-3w-ir-wh-7-x-3-w-high-power-tri-colour-flat-led-rgb-par-light-in-white-housing"
-    ],
     "video": [
-      "https://www.youtube.com/watch?v=mKLHiZFlf4Y"
+      "https://www.youtube.com/watch?v=-XZnF7kOvnc",
+      "https://www.youtube.com/watch?v=uX1ofuX5T3A"
     ]
   },
   "physical": {
     "dimensions": [180, 175, 115],
     "weight": 1.2,
-    "power": 25,
+    "power": 20,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "7x 3W RGB LEDs"
+      "type": "5x 3W RGB LEDs"
     },
     "lens": {
       "degreesMinMax": [30, 30]
