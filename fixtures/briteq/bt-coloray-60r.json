@@ -52,6 +52,13 @@
         "color": "Blue"
       }
     },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
     "Dimmer / Strobe": {
       "defaultValue": 0,
       "capabilities": [
@@ -72,13 +79,6 @@
           "brightness": "bright"
         }
       ]
-    },
-    "White": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
     },
     "Dimmer": {
       "defaultValue": 0,
