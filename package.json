@@ -18,7 +18,8 @@
   "husky": {
     "hooks": {
       "post-checkout": "make only-gitignored-no-nuxt",
-      "post-merge": "make only-gitignored-no-nuxt"
+      "post-merge": "make only-gitignored-no-nuxt",
+      "pre-commit": "if [ \"$(git rev-parse --abbrev-ref HEAD)\" = \"master\" ]; then echo \"You can't commit directly to master branch\"; exit 1; fi"
     }
   },
   "dependencies": {
