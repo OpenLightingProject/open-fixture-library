@@ -12,6 +12,8 @@ dereferenced-schema-files := $(schema-files:schemas/%=schemas/dereferenced/%)
 
 no-nuxt: register plugin-data test-fixtures schemas model-docs
 
+only-gitignored-no-nuxt: register schemas
+
 all: register plugin-data test-fixtures schemas model-docs nuxt-build
 
 register: fixtures/register.json

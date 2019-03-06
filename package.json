@@ -15,6 +15,13 @@
     "postinstall": "make all",
     "start": "node main.js"
   },
+  "husky": {
+    "hooks": {
+      "post-checkout": "make only-gitignored-no-nuxt",
+      "post-merge": "make only-gitignored-no-nuxt",
+      "pre-commit": "if [ \"$(git rev-parse --abbrev-ref HEAD)\" = \"master\" ]; then echo \"You can't commit directly to master branch\"; exit 1; fi"
+    }
+  },
   "dependencies": {
     "@heise/embetty-server": "^1.2.2",
     "@nuxtjs/axios": "^5.3.6",
@@ -58,6 +65,7 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-vue": "^5.2.1",
+    "husky": "^1.3.1",
     "jsdoc-to-markdown": "^4.0.1",
     "libxml-xsd": "^0.5.2",
     "minimist": "^1.2.0",
