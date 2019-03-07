@@ -70,9 +70,6 @@
         {
           "type": "Color",
           "name": "Light blue"
-        },
-        {
-          "type": "Open"
         }
       ]
     },
@@ -114,9 +111,6 @@
         {
           "type": "Color",
           "name": "Blue"
-        },
-        {
-          "type": "Open"
         }
       ]
     },
@@ -149,183 +143,6 @@
       "slots": [
         {
           "type": "Open"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
         },
         {
           "type": "Gobo"
@@ -917,6 +734,7 @@
     "Gobo 1 Indexing": {
       "capability": {
         "type": "WheelSlotRotation",
+        "wheel": "Gobo Wheel 1",
         "angleStart": "0deg",
         "angleEnd": "180deg"
       }
@@ -927,28 +745,33 @@
         {
           "dmxRange": [0, 2],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel 1",
           "angle": "0deg"
         },
         {
           "dmxRange": [3, 126],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel 1",
           "speedStart": "fast CW",
           "speedEnd": "slow CW"
         },
         {
           "dmxRange": [127, 129],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel 1",
           "speed": "stop"
         },
         {
           "dmxRange": [130, 253],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel 1",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         },
         {
           "dmxRange": [254, 255],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel 1",
           "speed": "stop"
         }
       ]
