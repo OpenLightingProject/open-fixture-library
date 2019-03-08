@@ -62,7 +62,7 @@ else {
   });
 }
 
-const outDir = args.o ? path.join(process.cwd(), args.o) : null;
+const outDir = args.o ? path.resolve(process.cwd(), args.o) : null;
 
 const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `export.js`));
 plugin.export(
