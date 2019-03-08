@@ -48,7 +48,9 @@ if (!plugins.exportPlugins.includes(args.plugin)) {
 let fixtures;
 if (args.a) {
   const register = require(`../fixtures/register.json`);
-  fixtures = Object.keys(register.filesystem).map(fixKey => fixKey.split(`/`));
+  fixtures = Object.keys(register.filesystem).filter(
+    fixKey => !(`redirectTo` in register.filesystem[fixKey]) || register.filesystem[fixKey].reason === `SameAsDifferentBrand`
+  ).map(fixKey => fixKey.split(`/`));
 }
 else {
   fixtures = args._.map(relativePath => {
