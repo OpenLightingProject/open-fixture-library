@@ -29,6 +29,7 @@ module.exports.export = function exportColorSource(fixtures, options) {
 
       const fixtureJson = {
         colortable: null,
+        commands: [],
         hasIntensity: hasIntensity,
         manufacturerName: fixture.manufacturer.name,
         maxOffset: mode.channels.length - 1,
@@ -72,7 +73,7 @@ module.exports.export = function exportColorSource(fixtures, options) {
           channelJson.home = channel.defaultValue;
         }
         else {
-          addChannelDetails(channelJson, channel);
+          addChannelDetails(channelJson, channel, channelIndex);
         }
 
         // remove null values and empty arrays
@@ -86,9 +87,13 @@ module.exports.export = function exportColorSource(fixtures, options) {
       });
 
       fixtureJson.colortable = getColorTable(fixtureJson.parameters);
-      if (fixtureJson.colortable === null) {
-        delete fixtureJson.colortable;
-      }
+
+      // remove null values and empty arrays
+      Object.entries(fixtureJson).forEach(([key, value]) => {
+        if (value === null || (Array.isArray(value) && value.length === 0)) {
+          delete fixtureJson[key];
+        }
+      });
 
       exportJson.personalities.push(fixtureJson);
 
@@ -121,8 +126,9 @@ module.exports.export = function exportColorSource(fixtures, options) {
        * Adds detailed information to given channel JSON that only a CoarseChannel can provide.
        * @param {object} channelJson The ColorSource channel JSON to which the data is added.
        * @param {CoarseChannel} channel The channel whose information should be used.
+       * @param {number} channelIndex The position of the channel in the current mode, starting from zero.
        */
-      function addChannelDetails(channelJson, channel) {
+      function addChannelDetails(channelJson, channel, channelIndex) {
         channelJson.fadeWithIntensity = channel.type === `ColorIntensity` && hasIntensity;
 
         const fineChannel16bit = channel.fineChannels[0];
@@ -153,6 +159,28 @@ module.exports.export = function exportColorSource(fixtures, options) {
               g: parseInt(color[3] + color[4], 16),
               b: parseInt(color[5] + color[6], 16)
             };
+          }
+
+          if (cap.type === `Maintenance` && cap.hold) {
+            fixtureJson.commands.push({
+              name: cap.comment,
+              steps: [
+                {
+                  actions: [{
+                    dmx: channelIndex,
+                    value: capJson.default
+                  }],
+                  wait: 0 // this is apparently the wait time before this step is activated
+                },
+                {
+                  actions: [{
+                    dmx: channelIndex,
+                    value: -1
+                  }],
+                  wait: cap.hold.getBaseUnitEntity().number
+                }
+              ]
+            });
           }
 
           channelJson.ranges.push(capJson);
