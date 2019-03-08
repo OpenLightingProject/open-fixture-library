@@ -5,6 +5,7 @@
     "qlcplus_4.11.2"
   ],
   "exportPlugins": [
+    "colorsource",
     "d-light",
     "ecue",
     "millumin",
@@ -14,6 +15,11 @@
     "qlcplus_4.12.1"
   ],
   "data": {
+    "colorsource": {
+      "name": "ColorSource",
+      "exportPluginVersion": "0.1.0",
+      "exportTests": []
+    },
     "d-light": {
       "name": "D::Light",
       "exportPluginVersion": "0.1.0",

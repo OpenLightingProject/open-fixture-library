@@ -1,0 +1,66 @@
+{
+  "$schema": "../../schemas/plugin.json",
+
+  "name": "ColorSource",
+  "description": [
+    "<p>",
+    "The ColorSource (CS) is a series of DMX consoles by ETC.",
+    "The installed fixture library is not available in a readable format,",
+    "but custom fixtures created using the Personality Editor are saved as JSON files.",
+    "</p>",
+    "<p>",
+    "There is a ColorSource Offline program available that simulates the console if you don't have physical access to one.",
+    "</p>"
+  ],
+  "links": {
+    "Console product page": "https://www.etcconnect.com/Products/Consoles/ColorSource/Features.aspx",
+    "Downloads (including Personality Editor)": "https://www.etcconnect.com/Products/Consoles/ColorSource/Software.aspx",
+    "Console Manual": "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737496502",
+    "Personality Editor manual": "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737490177"
+  },
+  "fixtureUsage": [
+    "<p>",
+    "Load the <code>userlib.jlib</code> onto the root of a USB drive and plug it into the console",
+    "(or your computer, if you use ColorSource Offline).",
+    "When patching devices, select \"User Library\" instead of \"Standard Library\".",
+    "</p>"
+  ],
+  "fileLocations": {
+    "subDirectoriesAllowed": false,
+    "USB drive (for console)": {
+      "user": "/userlib.jlib"
+    }
+  },
+  "additionalInfo": [
+    "<h3>ColorSource channel types</h3>",
+    "",
+    "<table>",
+    "<tr>",
+    "  <th scope=\"col\">CS type</th>",
+    "  <th scope=\"col\">description</th>",
+    "</tr>",
+    "<tr>",
+    "  <td><code>1</code></td>",
+    "  <td>Intensity</td>",
+    "</tr>",
+    "<tr>",
+    "  <td><code>2</code></td>",
+    "  <td>Pan / Tilt</td>",
+    "</tr>",
+    "<tr>",
+    "  <td><code>3</code></td>",
+    "  <td>Color Temperature</td>",
+    "</tr>",
+    "<tr>",
+    "  <td><code>4</code></td>",
+    "  <td>\"Beam\" – basically everything that doesn't fit to another type</td>",
+    "</tr>",
+    "<tr>",
+    "  <td><code>5</code></td>",
+    "  <td>Single Color<sup>[1]</sup>, Hue, Saturation</td>",
+    "</tr>",
+    "</table>",
+    "",
+    "<p><sup>[1]</sup>Known colors: Red, Green, Blue, White, Amber, UV, Cyan, Magenta, Yellow, Indigo, Lime, RedOrange, CoolWhite, MediumWhite, WarmWhite</p>"
+  ]
+}
