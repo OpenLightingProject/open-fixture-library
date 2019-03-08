@@ -161,20 +161,12 @@ module.exports.export = function exportColorSource(fixtures, options) {
     });
   });
 
-  return Promise.resolve([
-    {
-      name: `userlib.jlib`,
-      content: JSON.stringify(exportJson, null, 2),
-      mimetype: `application/json`,
-      fixtures
-    },
-    {
-      name: `userlib-minified.jlib`,
-      content: JSON.stringify(exportJson),
-      mimetype: `application/json`,
-      fixtures
-    }
-  ]);
+  return Promise.resolve([{
+    name: `userlib.jlib`,
+    content: JSON.stringify(exportJson, null, 2),
+    mimetype: `application/json`,
+    fixtures
+  }]);
 };
 
 /**
