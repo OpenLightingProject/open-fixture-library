@@ -200,6 +200,7 @@ A capability represents a range of a channel.
         * [.parameter](#Capability+parameter) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
         * [.getDmxRangeWithResolution(desiredResolution)](#Capability+getDmxRangeWithResolution) ⇒ [<code>Range</code>](#Range)
         * [.canCrossfadeTo(nextCapability)](#Capability+canCrossfadeTo) ⇒ <code>boolean</code>
+        * [.getMenuClickDmxValueWithResolution(desiredResolution)](#Capability+getMenuClickDmxValueWithResolution) ⇒ [<code>Range</code>](#Range)
         * [.isSlotType(slotType)](#Capability+isSlotType) ⇒ <code>boolean</code>
         * [._getStartEndArray(prop)](#Capability+_getStartEndArray) ⇒ <code>array</code> \| <code>null</code> ℗
     * _static_
@@ -462,6 +463,16 @@ Use only in `WheelShake` capabilities!
 | Param | Type | Description |
 | --- | --- | --- |
 | nextCapability | [<code>Capability</code>](#Capability) | The next capability after this one. |
+
+<a name="Capability+getMenuClickDmxValueWithResolution"></a>
+
+### capability.getMenuClickDmxValueWithResolution(desiredResolution) ⇒ [<code>Range</code>](#Range)
+**Kind**: instance method of [<code>Capability</code>](#Capability)  
+**Returns**: [<code>Range</code>](#Range) - The capability's DMX bounds scaled (down) to the given resolution.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| desiredResolution | <code>number</code> | The grade of resolution the dmxRange should be scaled to. |
 
 <a name="Capability+isSlotType"></a>
 

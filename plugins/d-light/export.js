@@ -131,11 +131,13 @@ function addAttribute(xml, mode, attribute, channels) {
         }
       }
 
+
+      const dmxRange = cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
       xmlCapabilities.element({
         name: {
-          '@min': cap.dmxRange.start,
-          '@max': cap.dmxRange.end,
-          '@snap': cap.menuClickDmxValue,
+          '@min': dmxRange.start,
+          '@max': dmxRange.end,
+          '@snap': cap.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
           '@timeHolder': hold,
           '@dummy': `0`,
           '#text': cap.name
