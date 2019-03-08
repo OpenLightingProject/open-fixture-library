@@ -18,7 +18,7 @@ const EDITOR_VERSION = `1.1.1.9.0.4`;
 */
 module.exports.export = function exportColorSource(fixtures, options) {
   const exportJson = {
-    date: new Date().toISOString(),
+    date: options.date.toISOString().replace(/\.\d\d\dZ$/, `Z`),
     editorVersion: EDITOR_VERSION,
     personalities: []
   };
