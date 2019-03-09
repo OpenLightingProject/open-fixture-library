@@ -107,6 +107,10 @@ module.exports.export = function exportColorSource(fixtures, options) {
        * @returns {number} One of ColorSource's channel types as positive integer.
        */
       function getCSChannelType(channel) {
+        if (channel.type === `NoFunction`) {
+          return 0;
+        }
+
         if (channel.type === `Single Color` || [`Hue`, `Saturation`].includes(channel.name)) {
           return 5;
         }
