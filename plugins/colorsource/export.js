@@ -1,8 +1,12 @@
+// see https://github.com/standard-things/esm#getting-started
+require = require(`esm`)(module); // eslint-disable-line no-global-assign
+
 const {
   CoarseChannel,
   FineChannel,
   SwitchingChannel
 } = require(`../../lib/model.js`);
+const { scaleDmxValue } = require(`../../lib/scale-dmx-values.mjs`);
 
 module.exports.name = `ColorSource`;
 module.exports.version = `0.1.0`;
@@ -49,7 +53,7 @@ module.exports.export = function exportColorSource(fixtures, options) {
           coarse: channelIndex,
           fadeWithIntensity: false,
           fine: null,
-          highlight: 255,
+          highlight: 65535,
           home: 0,
           invert: false,
           name,
@@ -70,7 +74,7 @@ module.exports.export = function exportColorSource(fixtures, options) {
           }
 
           channelJson.type = 3;
-          channelJson.home = channel.defaultValue;
+          channelJson.home = scaleDmxValue(channel.defaultValue, CoarseChannel.RESOLUTION_8BIT, CoarseChannel.RESOLUTION_16BIT);
         }
         else {
           addChannelDetails(channelJson, channel, channelIndex);
@@ -138,8 +142,9 @@ module.exports.export = function exportColorSource(fixtures, options) {
           channelJson.size = 16;
         }
 
-        channelJson.highlight = channel.getHighlightValueWithResolution(channelJson.size / 8);
-        channelJson.home = channel.getDefaultValueWithResolution(channelJson.size / 8);
+        const channelResolution = channelJson.size / 8;
+        channelJson.highlight = scaleDmxValue(channel.getHighlightValueWithResolution(channelResolution), channelResolution, CoarseChannel.RESOLUTION_16BIT);
+        channelJson.home = scaleDmxValue(channel.getDefaultValueWithResolution(channelResolution), channelResolution, CoarseChannel.RESOLUTION_16BIT);
         channelJson.invert = channel.isInverted;
         channelJson.snap = !channel.canCrossfade;
 
