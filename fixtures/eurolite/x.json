@@ -1,0 +1,36 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "x",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["xxxx"],
+    "createDate": "2019-03-09",
+    "lastModifyDate": "2019-03-09"
+  },
+  "links": {
+    "other": [
+      "http://xxxx.net"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "1": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "bright",
+        "brightnessEnd": "dark"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "x",
+      "channels": [
+        "1"
+      ]
+    }
+  ]
+}
