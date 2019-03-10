@@ -108,35 +108,6 @@ module.exports.export = function exportColorSource(fixtures, options) {
 
       exportJson.personalities.push(fixtureJson);
 
-
-      /**
-       * @param {!AbstractChannel} channel The OFL channel of which the ColorSource channel type should be returned.
-       * @returns {number} One of ColorSource's channel types as positive integer.
-       */
-      function getCSChannelType(channel) {
-        if (channel.type === `NoFunction`) {
-          return CHANNEL_TYPE_NO_FUNCTION;
-        }
-
-        if (channel.type === `Single Color` || [`Hue`, `Saturation`].includes(channel.name)) {
-          return CHANNEL_TYPE_COLOR;
-        }
-
-        if (channel.type === `Intensity`) {
-          return CHANNEL_TYPE_INTENSITY;
-        }
-
-        if ([`Pan`, `Tilt`].includes(channel.type)) {
-          return CHANNEL_TYPE_POSITION;
-        }
-
-        if (channel.type === `Color Temperature`) {
-          return CHANNEL_TYPE_COLOR_TEMP;
-        }
-
-        return CHANNEL_TYPE_BEAM;
-      }
-
       /**
        * Adds detailed information to given channel JSON that only a CoarseChannel can provide.
        * @param {object} channelJson The ColorSource channel JSON to which the data is added.
@@ -212,6 +183,34 @@ module.exports.export = function exportColorSource(fixtures, options) {
     fixtures
   }]);
 };
+
+/**
+ * @param {!AbstractChannel} channel The OFL channel of which the ColorSource channel type should be returned.
+ * @returns {number} One of ColorSource's channel types as positive integer.
+ */
+function getCSChannelType(channel) {
+  if (channel.type === `NoFunction`) {
+    return CHANNEL_TYPE_NO_FUNCTION;
+  }
+
+  if (channel.type === `Single Color` || [`Hue`, `Saturation`].includes(channel.name)) {
+    return CHANNEL_TYPE_COLOR;
+  }
+
+  if (channel.type === `Intensity`) {
+    return CHANNEL_TYPE_INTENSITY;
+  }
+
+  if ([`Pan`, `Tilt`].includes(channel.type)) {
+    return CHANNEL_TYPE_POSITION;
+  }
+
+  if (channel.type === `Color Temperature`) {
+    return CHANNEL_TYPE_COLOR_TEMP;
+  }
+
+  return CHANNEL_TYPE_BEAM;
+}
 
 /**
  * @param {array.<object>} colorSourceChannels A ColorSource fixture's parameter property.
