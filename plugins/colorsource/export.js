@@ -168,7 +168,7 @@ function getCSChannels(mode, hasIntensity) {
    * @param {number} channelIndex The position of the channel in the current mode, starting from zero.
    */
   function addChannelDetails(channelJson, channel, channelIndex) {
-    channelJson.fadeWithIntensity = channel.type === `ColorIntensity` && hasIntensity;
+    channelJson.fadeWithIntensity = channel.type === `Single Color` && hasIntensity;
 
     const fineChannel16bit = channel.fineChannels[0];
     const fineChannelIndex = mode.getChannelIndex(fineChannel16bit || {}, `default`);
