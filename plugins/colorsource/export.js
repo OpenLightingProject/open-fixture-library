@@ -51,12 +51,7 @@ module.exports.export = function exportColorSource(fixtures, options) {
 
       fixtureJson.colortable = getColorTable(fixtureJson.parameters);
 
-      // remove null values and empty arrays
-      Object.entries(fixtureJson).forEach(([key, value]) => {
-        if (value === null || (Array.isArray(value) && value.length === 0)) {
-          delete fixtureJson[key];
-        }
-      });
+      removeEmptyProperties(fixtureJson);
 
       exportJson.personalities.push(fixtureJson);
     });
@@ -151,12 +146,7 @@ function getCSChannels(mode, hasIntensity) {
       addChannelDetails(channelJson, channel, channelIndex);
     }
 
-    // remove null values and empty arrays
-    Object.entries(channelJson).forEach(([key, value]) => {
-      if (value === null || (Array.isArray(value) && value.length === 0)) {
-        delete channelJson[key];
-      }
-    });
+    removeEmptyProperties(channelJson);
 
     return channelJson;
   }).filter(ch => ch !== null);
@@ -277,4 +267,17 @@ function getColorTable(colorSourceChannels) {
   }
 
   return selectedColorTable || null;
+}
+
+/**
+ * Removes null values and empty arrays from the given object.
+ * Warning: This function is destructive, i.e. it mutates the given object.
+ * @param {object} obj The object whose properties should be cleaned up.
+ */
+function removeEmptyProperties(obj) {
+  Object.entries(obj).forEach(([key, value]) => {
+    if (value === null || (Array.isArray(value) && value.length === 0)) {
+      delete obj[key];
+    }
+  });
 }
