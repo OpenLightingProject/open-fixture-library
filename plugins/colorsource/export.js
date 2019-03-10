@@ -8,17 +8,17 @@ const {
 } = require(`../../lib/model.js`);
 const { scaleDmxValue } = require(`../../lib/scale-dmx-values.mjs`);
 
+module.exports.name = `ColorSource`;
+module.exports.version = `0.1.0`;
+
+const EDITOR_VERSION = `1.1.1.9.0.4`;
+
 const CHANNEL_TYPE_NO_FUNCTION = 0;
 const CHANNEL_TYPE_INTENSITY = 1;
 const CHANNEL_TYPE_POSITION = 2;
 const CHANNEL_TYPE_COLOR_TEMP = 3;
 const CHANNEL_TYPE_BEAM = 4;
 const CHANNEL_TYPE_COLOR = 5;
-
-module.exports.name = `ColorSource`;
-module.exports.version = `0.1.0`;
-
-const EDITOR_VERSION = `1.1.1.9.0.4`;
 
 /**
  * @param {array.<Fixture>} fixtures An array of Fixture objects.
@@ -37,19 +37,18 @@ module.exports.export = function exportColorSource(fixtures, options) {
   fixtures.forEach(fixture => {
     fixture.modes.forEach(mode => {
       const hasIntensity = mode.channels.some(ch => ch.type === `Intensity`);
+      const parameters = getCSChannels(mode, hasIntensity);
 
       const fixtureJson = {
-        colortable: null,
+        colortable: getColorTable(parameters),
         commands: getCommands(mode),
-        hasIntensity: hasIntensity,
+        hasIntensity,
         manufacturerName: fixture.manufacturer.name,
         maxOffset: mode.channels.length - 1,
         modeName: mode.name,
         modelName: fixture.name,
-        parameters: getCSChannels(mode, hasIntensity)
+        parameters
       };
-
-      fixtureJson.colortable = getColorTable(fixtureJson.parameters);
 
       removeEmptyProperties(fixtureJson);
 
@@ -271,7 +270,7 @@ function getColorTable(colorSourceChannels) {
 
 /**
  * Removes null values and empty arrays from the given object.
- * Warning: This function is destructive, i.e. it mutates the given object.
+ * This function is destructive, i.e. it mutates the given object.
  * @param {object} obj The object whose properties should be cleaned up.
  */
 function removeEmptyProperties(obj) {
