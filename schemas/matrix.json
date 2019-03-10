@@ -4,6 +4,45 @@
 
   "$comment": "This file is used by another schema file and should not be used directly as a JSON schema.",
 
+  "definitions": {
+    "pixelNumberConstraintArray": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/pixelNumberConstraint" }
+    },
+    "pixelNumberConstraint": {
+      "type": "string",
+      "oneOf": [
+        {
+          "$comment": "exact position",
+          "pattern": "^=[1-9][0-9]*$"
+        },
+        {
+          "$comment": "minimum position",
+          "pattern": "^>=[1-9][0-9]*$"
+        },
+        {
+          "$comment": "maximum position",
+          "pattern": "^<=[1-9][0-9]*$"
+        },
+        {
+          "$comment": "position divisible by number",
+          "pattern": "^[1-9][0-9]*n$"
+        },
+        {
+          "$comment": "position divisible by number with remainder",
+          "pattern": "^[1-9][0-9]*n\\+[1-9][0-9]*$"
+        },
+        {
+          "const": "even"
+        },
+        {
+          "const": "odd"
+        }
+      ]
+    }
+  },
+
   "type": "object",
   "properties": {
     "pixelCount": {
@@ -43,12 +82,39 @@
         "$ref": "definitions.json#/noVariablesString"
       },
       "additionalProperties": {
-        "type": "array",
-        "minItems": 1,
-        "uniqueItems": true,
-        "items": {
-          "$ref": "definitions.json#/noVariablesString"
-        }
+        "oneOf": [
+          {
+            "$comment": "specify pixel keys directly",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "$ref": "definitions.json#/noVariablesString"
+            }
+          },
+          {
+            "const": "all"
+          },
+          {
+            "$comment": "pixel key constraints",
+            "type": "object",
+            "minProperties": 1,
+            "properties": {
+              "x": { "$ref": "#/definitions/pixelNumberConstraintArray" },
+              "y": { "$ref": "#/definitions/pixelNumberConstraintArray" },
+              "z": { "$ref": "#/definitions/pixelNumberConstraintArray" },
+              "name": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "$comment": "pattern that pixel keys should match",
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        ]
       }
     }
   },
