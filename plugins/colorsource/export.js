@@ -8,6 +8,13 @@ const {
 } = require(`../../lib/model.js`);
 const { scaleDmxValue } = require(`../../lib/scale-dmx-values.mjs`);
 
+const CHANNEL_TYPE_NO_FUNCTION = 0;
+const CHANNEL_TYPE_INTENSITY = 1;
+const CHANNEL_TYPE_POSITION = 2;
+const CHANNEL_TYPE_COLOR_TEMP = 3;
+const CHANNEL_TYPE_BEAM = 4;
+const CHANNEL_TYPE_COLOR = 5;
+
 module.exports.name = `ColorSource`;
 module.exports.version = `0.1.0`;
 
@@ -63,7 +70,7 @@ module.exports.export = function exportColorSource(fixtures, options) {
           type: getCSChannelType(channel)
         };
 
-        if (channelJson.type === 5) {
+        if (channelJson.type === CHANNEL_TYPE_COLOR) {
           channelJson.name = channelJson.name.replace(/ /g, ``); // e.g. 'Warm White' -> 'WarmWhite'
         }
 
@@ -73,7 +80,7 @@ module.exports.export = function exportColorSource(fixtures, options) {
             return;
           }
 
-          channelJson.type = 3;
+          channelJson.type = CHANNEL_TYPE_BEAM;
           channelJson.home = scaleDmxValue(channel.defaultValue, CoarseChannel.RESOLUTION_8BIT, CoarseChannel.RESOLUTION_16BIT);
         }
         else {
@@ -108,26 +115,26 @@ module.exports.export = function exportColorSource(fixtures, options) {
        */
       function getCSChannelType(channel) {
         if (channel.type === `NoFunction`) {
-          return 0;
+          return CHANNEL_TYPE_NO_FUNCTION;
         }
 
         if (channel.type === `Single Color` || [`Hue`, `Saturation`].includes(channel.name)) {
-          return 5;
+          return CHANNEL_TYPE_COLOR;
         }
 
         if (channel.type === `Intensity`) {
-          return 1;
+          return CHANNEL_TYPE_INTENSITY;
         }
 
         if ([`Pan`, `Tilt`].includes(channel.type)) {
-          return 2;
+          return CHANNEL_TYPE_POSITION;
         }
 
         if (channel.type === `Color Temperature`) {
-          return 3;
+          return CHANNEL_TYPE_COLOR_TEMP;
         }
 
-        return 4;
+        return CHANNEL_TYPE_BEAM;
       }
 
       /**
@@ -211,7 +218,7 @@ module.exports.export = function exportColorSource(fixtures, options) {
  * @returns {string|null} The uuid of a suitable color table or null if no color table fits.
  */
 function getColorTable(colorSourceChannels) {
-  const colorChannels = colorSourceChannels.filter(ch => ch.type === 5);
+  const colorChannels = colorSourceChannels.filter(ch => ch.type === CHANNEL_TYPE_COLOR);
 
   const colorTables = {
     "373673E3-571E-4CE2-B12D-CDD44085A1EB": [`Red`, `Green`, `Blue`, `Amber`, `Cyan`, `Indigo`, `RedOrange`],
