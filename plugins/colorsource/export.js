@@ -183,7 +183,7 @@ function getCSChannels(mode, hasIntensity) {
     channelJson.invert = channel.isInverted;
     channelJson.snap = !channel.canCrossfade;
 
-    channel.capabilities.forEach(cap => {
+    channelJson.ranges = channel.capabilities.map(cap => {
       const dmxRange = cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
       const capJson = {
         begin: dmxRange.start,
@@ -193,15 +193,15 @@ function getCSChannels(mode, hasIntensity) {
       };
 
       if (cap.colors && cap.colors.allColors.length === 1) {
-        const color = cap.colors.allColors[0];
+        const color = cap.colors.allColors[0]; // `#rrggbb`
         capJson.media = {
-          r: parseInt(color[1] + color[2], 16),
-          g: parseInt(color[3] + color[4], 16),
-          b: parseInt(color[5] + color[6], 16)
+          r: parseInt(color.slice(1, 3), 16),
+          g: parseInt(color.slice(3, 5), 16),
+          b: parseInt(color.slice(5, 7), 16)
         };
       }
 
-      channelJson.ranges.push(capJson);
+      return capJson;
     });
   }
 }
@@ -265,16 +265,16 @@ function getColorTable(colorSourceChannels) {
     "B074A2D3-0C40-45A7-844A-7C2721E0B267": [`Hue`, `Saturation`]
   };
 
-  let colorTable = Object.keys(colorTables).find(
+  let selectedColorTable = Object.keys(colorTables).find(
     colorTable => colorTables[colorTable].every(
       color => colorChannels.some(ch => ch.name === color)
     )
   );
 
   const has16bitHue = colorChannels.some(ch => ch.name === `Hue` && ch.size === 16);
-  if (colorTable === `B074A2D3-0C40-45A7-844A-7C2721E0B267` && has16bitHue) {
-    colorTable = `B3D05F0E-FB45-4EEA-A8D5-61F545A922DE`; // this is a special case; it refers to Hue / Hue fine / Saturation
+  if (selectedColorTable === `B074A2D3-0C40-45A7-844A-7C2721E0B267` && has16bitHue) {
+    selectedColorTable = `B3D05F0E-FB45-4EEA-A8D5-61F545A922DE`; // this is a special case; it refers to Hue / Hue fine / Saturation
   }
 
-  return colorTable || null;
+  return selectedColorTable || null;
 }
