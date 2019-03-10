@@ -40,62 +40,14 @@ module.exports.export = function exportColorSource(fixtures, options) {
 
       const fixtureJson = {
         colortable: null,
-        commands: [],
+        commands: getCommands(mode),
         hasIntensity: hasIntensity,
         manufacturerName: fixture.manufacturer.name,
         maxOffset: mode.channels.length - 1,
         modeName: mode.name,
         modelName: fixture.name,
-        parameters: []
+        parameters: getCSChannels(mode, hasIntensity)
       };
-
-      mode.channels.forEach((channel, channelIndex) => {
-        const name = channel.name;
-
-        if (channel instanceof SwitchingChannel) {
-          channel = channel.defaultChannel;
-        }
-
-        const channelJson = {
-          coarse: channelIndex,
-          fadeWithIntensity: false,
-          fine: null,
-          highlight: 65535,
-          home: 0,
-          invert: false,
-          name,
-          ranges: [],
-          size: 8,
-          snap: false,
-          type: getCSChannelType(channel)
-        };
-
-        if (channelJson.type === CHANNEL_TYPE_COLOR) {
-          channelJson.name = channelJson.name.replace(/ /g, ``); // e.g. 'Warm White' -> 'WarmWhite'
-        }
-
-        if (channel instanceof FineChannel) {
-          if (channel.resolution === CoarseChannel.RESOLUTION_16BIT) {
-            // already handled by "fine" attribute of coarse channel
-            return;
-          }
-
-          channelJson.type = CHANNEL_TYPE_BEAM;
-          channelJson.home = scaleDmxValue(channel.defaultValue, CoarseChannel.RESOLUTION_8BIT, CoarseChannel.RESOLUTION_16BIT);
-        }
-        else {
-          addChannelDetails(channelJson, channel, channelIndex);
-        }
-
-        // remove null values and empty arrays
-        Object.entries(channelJson).forEach(([key, value]) => {
-          if (value === null || (Array.isArray(value) && value.length === 0)) {
-            delete channelJson[key];
-          }
-        });
-
-        fixtureJson.parameters.push(channelJson);
-      });
 
       fixtureJson.colortable = getColorTable(fixtureJson.parameters);
 
@@ -107,72 +59,6 @@ module.exports.export = function exportColorSource(fixtures, options) {
       });
 
       exportJson.personalities.push(fixtureJson);
-
-      /**
-       * Adds detailed information to given channel JSON that only a CoarseChannel can provide.
-       * @param {object} channelJson The ColorSource channel JSON to which the data is added.
-       * @param {CoarseChannel} channel The channel whose information should be used.
-       * @param {number} channelIndex The position of the channel in the current mode, starting from zero.
-       */
-      function addChannelDetails(channelJson, channel, channelIndex) {
-        channelJson.fadeWithIntensity = channel.type === `ColorIntensity` && hasIntensity;
-
-        const fineChannel16bit = channel.fineChannels[0];
-        const fineChannelIndex = mode.getChannelIndex(fineChannel16bit || {}, `default`);
-        if (fineChannelIndex !== -1) {
-          channelJson.fine = fineChannelIndex;
-          channelJson.size = 16;
-        }
-
-        const channelResolution = channelJson.size / 8;
-        channelJson.highlight = scaleDmxValue(channel.getHighlightValueWithResolution(channelResolution), channelResolution, CoarseChannel.RESOLUTION_16BIT);
-        channelJson.home = scaleDmxValue(channel.getDefaultValueWithResolution(channelResolution), channelResolution, CoarseChannel.RESOLUTION_16BIT);
-        channelJson.invert = channel.isInverted;
-        channelJson.snap = !channel.canCrossfade;
-
-        channel.capabilities.forEach(cap => {
-          const dmxRange = cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
-          const capJson = {
-            begin: dmxRange.start,
-            default: cap.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
-            end: dmxRange.end,
-            label: cap.name
-          };
-
-          if (cap.colors && cap.colors.allColors.length === 1) {
-            const color = cap.colors.allColors[0];
-            capJson.media = {
-              r: parseInt(color[1] + color[2], 16),
-              g: parseInt(color[3] + color[4], 16),
-              b: parseInt(color[5] + color[6], 16)
-            };
-          }
-
-          if (cap.type === `Maintenance` && cap.hold) {
-            fixtureJson.commands.push({
-              name: cap.comment,
-              steps: [
-                {
-                  actions: [{
-                    dmx: channelIndex,
-                    value: capJson.default
-                  }],
-                  wait: 0 // this is apparently the wait time before this step is activated
-                },
-                {
-                  actions: [{
-                    dmx: channelIndex,
-                    value: -1
-                  }],
-                  wait: cap.hold.getBaseUnitEntity().number
-                }
-              ]
-            });
-          }
-
-          channelJson.ranges.push(capJson);
-        });
-      }
     });
   });
 
@@ -183,6 +69,142 @@ module.exports.export = function exportColorSource(fixtures, options) {
     fixtures
   }]);
 };
+
+/**
+ * @param {Mode} mode The personality's mode.
+ * @returns {array.<object>} Array of ColorSource commands (like "Reset"), may be empty. The commands are generated by Maintenance capabilities with hold time set.
+ */
+function getCommands(mode) {
+  const commands = [];
+  mode.channels.forEach((channel, channelIndex) => {
+    if (channel.capabilities) {
+      channel.capabilities.forEach(cap => {
+        if (cap.type === `Maintenance` && cap.hold) {
+          commands.push({
+            name: cap.comment,
+            steps: [
+              {
+                actions: [{
+                  dmx: channelIndex,
+                  value: cap.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT)
+                }],
+                wait: 0 // this is apparently the wait time before this step is activated
+              },
+              {
+                actions: [{
+                  dmx: channelIndex,
+                  value: -1
+                }],
+                wait: cap.hold.getBaseUnitEntity().number
+              }
+            ]
+          });
+        }
+      });
+    }
+  });
+
+  return commands;
+}
+
+/**
+ * @param {Mode} mode The personality's mode.
+ * @param {boolean} hasIntensity Whether the mode has an intensity channel. Should equal fixtureJson.hasIntensity
+ * @returns {array.<object>} ColorSource channel objects of all mode channels.
+ */
+function getCSChannels(mode, hasIntensity) {
+  return mode.channels.map((channel, channelIndex) => {
+    const name = channel.name;
+
+    if (channel instanceof SwitchingChannel) {
+      channel = channel.defaultChannel;
+    }
+
+    const channelJson = {
+      coarse: channelIndex,
+      fadeWithIntensity: false,
+      fine: null,
+      highlight: 65535,
+      home: 0,
+      invert: false,
+      name,
+      ranges: [],
+      size: 8,
+      snap: false,
+      type: getCSChannelType(channel)
+    };
+
+    if (channelJson.type === CHANNEL_TYPE_COLOR) {
+      channelJson.name = channelJson.name.replace(/ /g, ``); // e.g. 'Warm White' -> 'WarmWhite'
+    }
+
+    if (channel instanceof FineChannel) {
+      if (channel.resolution === CoarseChannel.RESOLUTION_16BIT) {
+        // already handled by "fine" attribute of coarse channel
+        return null;
+      }
+
+      channelJson.type = CHANNEL_TYPE_BEAM;
+      channelJson.home = scaleDmxValue(channel.defaultValue, CoarseChannel.RESOLUTION_8BIT, CoarseChannel.RESOLUTION_16BIT);
+    }
+    else {
+      addChannelDetails(channelJson, channel, channelIndex);
+    }
+
+    // remove null values and empty arrays
+    Object.entries(channelJson).forEach(([key, value]) => {
+      if (value === null || (Array.isArray(value) && value.length === 0)) {
+        delete channelJson[key];
+      }
+    });
+
+    return channelJson;
+  }).filter(ch => ch !== null);
+
+  /**
+   * Adds detailed information to given channel JSON that only a CoarseChannel can provide.
+   * @param {object} channelJson The ColorSource channel JSON to which the data is added.
+   * @param {CoarseChannel} channel The channel whose information should be used.
+   * @param {number} channelIndex The position of the channel in the current mode, starting from zero.
+   */
+  function addChannelDetails(channelJson, channel, channelIndex) {
+    channelJson.fadeWithIntensity = channel.type === `ColorIntensity` && hasIntensity;
+
+    const fineChannel16bit = channel.fineChannels[0];
+    const fineChannelIndex = mode.getChannelIndex(fineChannel16bit || {}, `default`);
+    if (fineChannelIndex !== -1) {
+      channelJson.fine = fineChannelIndex;
+      channelJson.size = 16;
+    }
+
+    const channelResolution = channelJson.size / 8;
+    channelJson.highlight = scaleDmxValue(channel.getHighlightValueWithResolution(channelResolution), channelResolution, CoarseChannel.RESOLUTION_16BIT);
+    channelJson.home = scaleDmxValue(channel.getDefaultValueWithResolution(channelResolution), channelResolution, CoarseChannel.RESOLUTION_16BIT);
+    channelJson.invert = channel.isInverted;
+    channelJson.snap = !channel.canCrossfade;
+
+    channel.capabilities.forEach(cap => {
+      const dmxRange = cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
+      const capJson = {
+        begin: dmxRange.start,
+        default: cap.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
+        end: dmxRange.end,
+        label: cap.name
+      };
+
+      if (cap.colors && cap.colors.allColors.length === 1) {
+        const color = cap.colors.allColors[0];
+        capJson.media = {
+          r: parseInt(color[1] + color[2], 16),
+          g: parseInt(color[3] + color[4], 16),
+          b: parseInt(color[5] + color[6], 16)
+        };
+      }
+
+      channelJson.ranges.push(capJson);
+    });
+  }
+}
 
 /**
  * @param {!AbstractChannel} channel The OFL channel of which the ColorSource channel type should be returned.
