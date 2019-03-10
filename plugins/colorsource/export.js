@@ -83,7 +83,7 @@ function getCommands(mode) {
                   dmx: channelIndex,
                   value: cap.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT)
                 }],
-                wait: 0 // this is apparently the wait time before this step is activated
+                wait: 0 // this is apparently the delay before this step is activated
               },
               {
                 actions: [{
@@ -226,7 +226,7 @@ function getCSChannelType(channel) {
 
 /**
  * @param {array.<object>} colorSourceChannels A ColorSource fixture's parameter property.
- * @returns {string|null} The uuid of a suitable color table or null if no color table fits.
+ * @returns {string|null} The UUID of a suitable color table or null if no color table fits.
  */
 function getColorTable(colorSourceChannels) {
   const colorChannels = colorSourceChannels.filter(ch => ch.type === CHANNEL_TYPE_COLOR);
