@@ -796,6 +796,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
               checkUniqueness(
                 usedPixelKeys,
                 pixelKey,
+                result,
                 `PixelKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
               );
             }
@@ -803,6 +804,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
               checkUniqueness(
                 usedPixelKeys,
                 pixelKey,
+                result,
                 `PixelGroupKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
               );
 
@@ -810,6 +812,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
                 checkUniqueness(
                   usedPixelKeys,
                   singlePixelKey,
+                  result,
                   `PixelKey '${singlePixelKey}' in group '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
                 );
               }
