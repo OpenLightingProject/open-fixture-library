@@ -9,7 +9,8 @@
     "but custom fixtures created using the Personality Editor are saved as JSON files.",
     "</p>",
     "<p>",
-    "There is a ColorSource Offline program available that simulates the console if you don't have physical access to one.",
+    "You can download the ColorSource Offline program that simulates the console if you ",
+    "don't have physical access to one; see Downloads below.",
     "</p>"
   ],
   "links": {
@@ -21,7 +22,7 @@
   "fixtureUsage": [
     "<p>",
     "Load the <code>userlib.jlib</code> onto the root of a USB drive and plug it into the console",
-    "(or your computer, if you use ColorSource Offline).",
+    "(or into your computer, if you use ColorSource Offline).",
     "When patching devices, select \"User Library\" instead of \"Standard Library\".",
     "</p>"
   ],
@@ -37,7 +38,7 @@
     "<table>",
     "<tr>",
     "  <th scope=\"col\">CS type</th>",
-    "  <th scope=\"col\">description</th>",
+    "  <th scope=\"col\">Description</th>",
     "</tr>",
     "<tr>",
     "  <td><code>0</code></td>",
@@ -61,10 +62,12 @@
     "</tr>",
     "<tr>",
     "  <td><code>5</code></td>",
-    "  <td>Single Color<sup>[1]</sup>, Hue, Saturation</td>",
+    "  <td>Single Color (see below), Hue, Saturation</td>",
     "</tr>",
     "</table>",
     "",
-    "<p><sup>[1]</sup>Known colors: Red, Green, Blue, White, Amber, UV, Cyan, Magenta, Yellow, Indigo, Lime, RedOrange, CoolWhite, MediumWhite, WarmWhite</p>"
+    "<h3>Known colors</h3>",
+    "<p>Red, Green, Blue, White, Amber, UV, Cyan, Magenta, Yellow, Indigo, ",
+    "Lime, RedOrange, CoolWhite, MediumWhite, WarmWhite</p>"
   ]
 }
