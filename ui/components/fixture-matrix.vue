@@ -13,16 +13,16 @@
       <span class="hint">Front view</span>
     </section>
 
-    <section v-if="matrix.pixelGroupKeys.length > 0" class="pixel-groups">
+    <section v-if="pixelGroups.length > 0" class="pixel-groups">
       <h4>Pixel groups</h4>
       <span class="hint only-js">Hover over the pixel groups to highlight the corresponding pixels.</span>
 
       <div>
         <app-labeled-value
-          v-for="key in matrix.pixelGroupKeys"
+          v-for="[key, value] in pixelGroups"
           :key="key"
           :label="key"
-          :value="matrix.pixelGroups[key].join(`, `)"
+          :value="value"
           name="pixel-group"
           @mouseover.native="highlightedPixelKeys = matrix.pixelGroups[key]"
           @mouseout.native="highlightedPixelKeys = []" />
@@ -122,6 +122,37 @@ export default {
       }
 
       return sizing;
+    },
+
+    pixelGroups() {
+      return this.matrix.pixelGroupKeys.map(groupKey => {
+        const group = this.matrix.jsonObject.pixelGroups[groupKey];
+        const resolvedPixelsKeys = this.matrix.pixelGroups[groupKey];
+
+        if (group === `all`) {
+          return [groupKey, `All pixels`];
+        }
+
+        const constraintAxes = [`x`, `y`, `z`].filter(axis => axis in group);
+
+        const shouldShowPixelKeyArray = Array.isArray(group) || resolvedPixelsKeys.length <= 5 || constraintAxes.some(
+          axis => group[axis].some(constraint => /^\d+n/.test(constraint))
+        ) || constraintAxes.length > 2 || `name` in group;
+
+        if (shouldShowPixelKeyArray) {
+          return [groupKey, resolvedPixelsKeys.join(`, `)];
+        }
+
+        const constraintTexts = constraintAxes.map(axis => {
+          const axisConstraints = group[axis].map(
+            constraint => constraint.replace(`>=`, `≥ `).replace(`<=`, `≤ `).replace(`=`, `= `)
+          );
+
+          return `${axis.toUpperCase()} coordinate is ${axisConstraints.join(`, `)}`;
+        });
+
+        return [groupKey, `Pixels where ${constraintTexts.join(` and `)}`];
+      });
     }
   }
 };
