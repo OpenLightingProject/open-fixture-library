@@ -137,13 +137,14 @@
         {
           "dmxRange": [248, 255],
           "type": "Maintenance",
+          "hold": "5s",
           "comment": "Lamp power off"
         }
       ]
     },
     "Intensity": {
       "capability": {
-        "type": "Intensity"
+        "type": "Dimmer"
       }
     },
     "Cyan": {
