@@ -1,0 +1,95 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Slimline 12q5",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2019-03-13",
+    "lastModifyDate": "2019-03-13"
+  },
+  "links": {
+    "manual": [
+      "http://prolight.co.uk/ftp-in/LEDJ67B_Manual.pdf"
+    ],
+    "productPage": [
+      "https://prolight.co.uk/product/slimline-12q5-rgbw-batten-black-housing"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Xvl8oeKIhH4"
+    ]
+  },
+  "physical": {
+    "dimensions": [87, 1018, 63],
+    "weight": 2.2,
+    "power": 70,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 channel (RGBW)",
+      "shortName": "7 channel ",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros"
+      ]
+    }
+  ]
+}
