@@ -145,7 +145,7 @@ export default {
 
         const constraintTexts = constraintAxes.map(axis => {
           const axisConstraints = group[axis].map(
-            constraint => constraint.replace(`>=`, `≥ `).replace(`<=`, `≤ `).replace(`=`, `= `)
+            constraint => constraint.replace(`>=`, `≥ `).replace(`<=`, `≤ `).replace(`=`, ``)
           );
 
           return `${axis.toUpperCase()} coordinate is ${axisConstraints.join(`, `)}`;
