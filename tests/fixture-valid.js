@@ -261,7 +261,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       pixelGroupKeys.forEach(pixelGroupKey => {
         const usedMatrixChannels = new Set();
 
-
         if (matrix.pixelKeys.includes(pixelGroupKey)) {
           result.errors.push(`pixelGroupKey '${pixelGroupKey}' is already used as pixelKey. Please choose a different name.`);
         }
