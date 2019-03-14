@@ -1,20 +1,23 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Slimline 12q5",
-  "categories": ["Pixel Bar"],
+  "name": "Slimline 12Q5 RGBW",
+  "shortName": "LEDJ67",
+  "categories": ["Pixel Bar", "Color Changer"],
   "meta": {
     "authors": ["Anonymous"],
-    "createDate": "2019-03-13",
-    "lastModifyDate": "2019-03-13"
+    "createDate": "2019-03-14",
+    "lastModifyDate": "2019-03-14"
   },
   "links": {
     "manual": [
-      "http://prolight.co.uk/ftp-in/LEDJ67B_Manual.pdf"
+      "http://prolight.co.uk/ftp-in/LEDJ67_Manual.pdf"
     ],
     "productPage": [
-      "https://prolight.co.uk/product/slimline-12q5-rgbw-batten-black-housing"
+      "https://prolight.co.uk/product/slimline-12q5-rgbw-batten-black-housing",
+      "https://prolight.co.uk/product/slimline-12q5-rgbw-batten-white-housing"
     ],
     "video": [
+      "https://www.youtube.com/watch?v=q9vZgmnNnco",
       "https://www.youtube.com/watch?v=Xvl8oeKIhH4"
     ]
   },
@@ -24,7 +27,10 @@
     "power": 70,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "12x 5W RGBW LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
     }
   },
   "availableChannels": {
