@@ -44,7 +44,6 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "dmxValueResolution": "8bit",
       "defaultValue": "50%",
       "capability": {
         "type": "Pan",
@@ -54,7 +53,6 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "dmxValueResolution": "8bit",
       "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
@@ -62,7 +60,7 @@
         "angleEnd": "280deg"
       }
     },
-    "Pan Tilt Speed": {
+    "Pan/Tilt Speed": {
       "capability": {
         "type": "PanTiltSpeed",
         "speedStart": "0%",
@@ -80,7 +78,6 @@
           "dmxRange": [7, 65],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "soundControlled": false,
           "speedStart": "slow",
           "speedEnd": "fast"
         },
@@ -93,7 +90,6 @@
           "dmxRange": [70, 128],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
-          "soundControlled": false,
           "speedStart": "slow",
           "speedEnd": "fast"
         },
@@ -106,7 +102,6 @@
           "dmxRange": [132, 191],
           "type": "ShutterStrobe",
           "shutterEffect": "RampUp",
-          "soundControlled": false,
           "speedStart": "slow",
           "speedEnd": "fast"
         },
@@ -127,49 +122,40 @@
     },
     "Dimmer": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "type": "Intensity"
       }
     },
     "Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Red"
       }
     },
     "Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Green"
       }
     },
     "Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Blue"
       }
     },
     "White": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "White"
       }
     },
     "RGB Color Change": {
       "capability": {
-        "type": "ColorPreset"
+        "type": "ColorPreset",
+        "helpWanted": "At which DMX values is an effect activated?"
       }
     },
-    "Fonction Control": {
+    "Functions": {
       "capabilities": [
         {
           "dmxRange": [0, 15],
@@ -178,8 +164,7 @@
         {
           "dmxRange": [16, 80],
           "type": "PanTiltSpeed",
-          "speedStart": "stop",
-          "speedEnd": "stop"
+          "speed": "stop"
         },
         {
           "dmxRange": [81, 95],
@@ -189,7 +174,7 @@
           "dmxRange": [96, 110],
           "type": "Maintenance",
           "hold": "3s",
-          "comment": "Reset 3s"
+          "comment": "Reset"
         },
         {
           "dmxRange": [111, 125],
@@ -197,8 +182,8 @@
         },
         {
           "dmxRange": [126, 175],
-          "type": "Generic",
-          "comment": "Automatic program"
+          "type": "Effect",
+          "effectName": "Automatic program"
         },
         {
           "dmxRange": [176, 190],
@@ -206,8 +191,9 @@
         },
         {
           "dmxRange": [191, 240],
-          "type": "Generic",
-          "comment": "Sound Activated program"
+          "type": "Effect",
+          "effectName": "Sound activated program",
+          "soundControlled": true
         },
         {
           "dmxRange": [241, 255],
@@ -215,7 +201,7 @@
         }
       ]
     },
-    "Channel of Fonction Control": {
+    "Pan/Tilt Reversion": {
       "capabilities": [
         {
           "dmxRange": [0, 63],
@@ -255,7 +241,7 @@
         "Tilt",
         "Pan fine",
         "Tilt fine",
-        "Pan Tilt Speed",
+        "Pan/Tilt Speed",
         "Strobe",
         "Dimmer",
         "Red",
@@ -263,8 +249,8 @@
         "Blue",
         "White",
         "RGB Color Change",
-        "Fonction Control",
-        "Channel of Fonction Control",
+        "Functions",
+        "Pan/Tilt Reversion",
         "Zoom"
       ]
     }
