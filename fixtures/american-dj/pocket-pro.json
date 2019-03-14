@@ -117,7 +117,6 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "dmxValueResolution": "8bit",
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -126,7 +125,6 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "dmxValueResolution": "8bit",
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -137,83 +135,84 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "ColorPreset",
-          "comment": "White"
+          "type": "WheelSlot",
+          "slotNumber": 1
         },
         {
           "dmxRange": [8, 14],
-          "type": "ColorPreset",
-          "comment": "Red"
+          "type": "WheelSlot",
+          "slotNumber": 2
         },
         {
           "dmxRange": [15, 21],
-          "type": "ColorPreset",
-          "comment": "Orange"
+          "type": "WheelSlot",
+          "slotNumber": 3
         },
         {
           "dmxRange": [22, 28],
-          "type": "ColorPreset",
-          "comment": "Yellow"
+          "type": "WheelSlot",
+          "slotNumber": 4
         },
         {
           "dmxRange": [29, 35],
-          "type": "ColorPreset",
-          "comment": "Green"
+          "type": "WheelSlot",
+          "slotNumber": 5
         },
         {
           "dmxRange": [36, 42],
-          "type": "ColorPreset",
-          "comment": "UV"
+          "type": "WheelSlot",
+          "slotNumber": 6
         },
         {
           "dmxRange": [43, 49],
-          "type": "ColorPreset"
+          "type": "WheelSlot",
+          "slotNumber": 7
         },
         {
           "dmxRange": [50, 56],
-          "type": "ColorPreset",
-          "comment": "Pink"
+          "type": "WheelSlot",
+          "slotNumber": 8
         },
         {
           "dmxRange": [57, 66],
-          "type": "ColorPreset",
-          "comment": "White & Red"
+          "type": "WheelSlot",
+          "slotNumber": 1.5
         },
         {
           "dmxRange": [67, 76],
-          "type": "ColorPreset",
-          "comment": "Red & Orange"
+          "type": "WheelSlot",
+          "slotNumber": 2.5
         },
         {
           "dmxRange": [77, 86],
-          "type": "ColorPreset",
-          "comment": "Orange & Yellow"
+          "type": "WheelSlot",
+          "slotNumber": 3.5
         },
         {
           "dmxRange": [87, 96],
-          "type": "ColorPreset",
-          "comment": "Yellow & Green"
+          "type": "WheelSlot",
+          "slotNumber": 4.5
         },
         {
           "dmxRange": [97, 106],
-          "type": "ColorPreset",
-          "comment": "Green & UV"
+          "type": "WheelSlot",
+          "slotNumber": 5.5
         },
         {
           "dmxRange": [107, 116],
-          "type": "ColorPreset",
-          "comment": "UV & Light Blue"
+          "type": "WheelSlot",
+          "slotNumber": 6.5
         },
         {
           "dmxRange": [117, 127],
-          "type": "ColorPreset",
-          "comment": "Light Blue & Pink"
+          "type": "WheelSlot",
+          "slotNumber": 7.5
         },
         {
           "dmxRange": [128, 189],
           "type": "WheelRotation",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [190, 193],
@@ -224,8 +223,8 @@
         {
           "dmxRange": [194, 255],
           "type": "WheelRotation",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -347,6 +346,7 @@
       ]
     },
     "Shutter": {
+      "defaultValue": 8,
       "capabilities": [
         {
           "dmxRange": [0, 7],
@@ -373,10 +373,9 @@
         {
           "dmxRange": [140, 181],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
+          "shutterEffect": "RampUp",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Slow Open"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [182, 189],
@@ -386,10 +385,9 @@
         {
           "dmxRange": [190, 231],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
+          "shutterEffect": "RampDown",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Fast Open"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [232, 239],
@@ -424,189 +422,158 @@
         },
         {
           "dmxRange": [8, 15],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 1"
+          "type": "Effect",
+          "effectName": "Macro 1"
         },
         {
           "dmxRange": [16, 23],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 2"
+          "type": "Effect",
+          "effectName": "Macro 2"
         },
         {
           "dmxRange": [24, 31],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 3"
+          "type": "Effect",
+          "effectName": "Macro 3"
         },
         {
           "dmxRange": [32, 39],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 4"
+          "type": "Effect",
+          "effectName": "Macro 4"
         },
         {
           "dmxRange": [40, 47],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 5"
+          "type": "Effect",
+          "effectName": "Macro 5"
         },
         {
           "dmxRange": [48, 55],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 6"
+          "type": "Effect",
+          "effectName": "Macro 6"
         },
         {
           "dmxRange": [56, 63],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 7"
+          "type": "Effect",
+          "effectName": "Macro 7"
         },
         {
           "dmxRange": [64, 71],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 8"
+          "type": "Effect",
+          "effectName": "Macro 8"
         },
         {
           "dmxRange": [72, 79],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 9"
+          "type": "Effect",
+          "effectName": "Macro 9"
         },
         {
           "dmxRange": [80, 87],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 10"
+          "type": "Effect",
+          "effectName": "Macro 10"
         },
         {
           "dmxRange": [88, 95],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 11"
+          "type": "Effect",
+          "effectName": "Macro 11"
         },
         {
           "dmxRange": [96, 103],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 12"
+          "type": "Effect",
+          "effectName": "Macro 12"
         },
         {
           "dmxRange": [104, 111],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 13"
+          "type": "Effect",
+          "effectName": "Macro 13"
         },
         {
           "dmxRange": [112, 119],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 14"
+          "type": "Effect",
+          "effectName": "Macro 14"
         },
         {
           "dmxRange": [120, 127],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 15"
+          "type": "Effect",
+          "effectName": "Macro 15"
         },
         {
           "dmxRange": [128, 135],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 16"
+          "type": "Effect",
+          "effectName": "Macro 16"
         },
         {
           "dmxRange": [136, 143],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 17"
+          "type": "Effect",
+          "effectName": "Macro 17"
         },
         {
           "dmxRange": [144, 151],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 18"
+          "type": "Effect",
+          "effectName": "Macro 18"
         },
         {
           "dmxRange": [152, 159],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 19"
+          "type": "Effect",
+          "effectName": "Macro 19"
         },
         {
           "dmxRange": [160, 167],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 20"
+          "type": "Effect",
+          "effectName": "Macro 20"
         },
         {
           "dmxRange": [168, 175],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 21"
+          "type": "Effect",
+          "effectName": "Macro 21"
         },
         {
           "dmxRange": [176, 183],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 22"
+          "type": "Effect",
+          "effectName": "Macro 22"
         },
         {
           "dmxRange": [184, 191],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 23"
+          "type": "Effect",
+          "effectName": "Macro 23"
         },
         {
           "dmxRange": [192, 199],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 24"
+          "type": "Effect",
+          "effectName": "Macro 24"
         },
         {
           "dmxRange": [200, 207],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 25"
+          "type": "Effect",
+          "effectName": "Macro 25"
         },
         {
           "dmxRange": [208, 215],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 26"
+          "type": "Effect",
+          "effectName": "Macro 26"
         },
         {
           "dmxRange": [216, 223],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 27"
+          "type": "Effect",
+          "effectName": "Macro 27"
         },
         {
           "dmxRange": [224, 231],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 28"
+          "type": "Effect",
+          "effectName": "Macro 28"
         },
         {
           "dmxRange": [232, 239],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 29"
+          "type": "Effect",
+          "effectName": "Macro 29"
         },
         {
           "dmxRange": [240, 247],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 30"
+          "type": "Effect",
+          "effectName": "Macro 30"
         },
         {
           "dmxRange": [248, 255],
-          "type": "EffectParameter",
-          "parameter": 1,
-          "comment": "Macro 31"
+          "type": "Effect",
+          "effectName": "Macro 31"
         }
       ]
     },
@@ -614,40 +581,39 @@
       "capability": {
         "type": "EffectSpeed",
         "speedStart": "slow",
-        "speedEnd": "fast",
-        "comment": "Macro Speed"
+        "speedEnd": "fast"
       }
     },
     "Dimmer Curves": {
       "capabilities": [
         {
           "dmxRange": [0, 20],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Standard"
         },
         {
           "dmxRange": [21, 40],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Stage"
         },
         {
           "dmxRange": [41, 60],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "TV"
         },
         {
           "dmxRange": [61, 80],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Architectural"
         },
         {
           "dmxRange": [81, 100],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Theater"
         },
         {
           "dmxRange": [101, 255],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Default to unit dimmer setting"
         }
       ]
@@ -667,33 +633,33 @@
         },
         {
           "dmxRange": [70, 79],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Enable Pan & Tilt Blackout"
         },
         {
           "dmxRange": [80, 89],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Disable Pan & Tilt Blackout"
         },
         {
           "dmxRange": [90, 99],
-          "type": "Generic",
-          "comment": "Target Mode 1 (0-180)"
+          "type": "Maintenance",
+          "comment": "Target Mode 1 (0-180°)"
         },
         {
           "dmxRange": [100, 109],
-          "type": "Generic",
-          "comment": "Target Mode 2 (90-270)"
+          "type": "Maintenance",
+          "comment": "Target Mode 2 (90-270°)"
         },
         {
           "dmxRange": [110, 119],
-          "type": "Generic",
-          "comment": "Target Mode (180-360"
+          "type": "Maintenance",
+          "comment": "Target Mode (180-360°)"
         },
         {
           "dmxRange": [120, 129],
-          "type": "Generic",
-          "comment": "Target Mode 4 (270-540)"
+          "type": "Maintenance",
+          "comment": "Target Mode 4 (270-54°0)"
         },
         {
           "dmxRange": [130, 199],
@@ -701,7 +667,7 @@
         },
         {
           "dmxRange": [200, 209],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Reset All"
         },
         {
@@ -709,22 +675,6 @@
           "type": "NoFunction"
         }
       ]
-    },
-    "Pan 2": {
-      "name": "Pan",
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "540deg"
-      }
-    },
-    "Tilt 2": {
-      "name": "Tilt",
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "230deg"
-      }
     }
   },
   "modes": [
@@ -749,8 +699,8 @@
     {
       "name": "11 Channel",
       "channels": [
-        "Pan 2",
-        "Tilt 2",
+        "Pan",
+        "Tilt",
         "Color Wheel",
         "Gobo Wheel",
         "Shutter",
