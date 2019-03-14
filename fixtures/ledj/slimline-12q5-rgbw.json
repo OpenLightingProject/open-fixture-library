@@ -33,6 +33,12 @@
       "degreesMinMax": [25, 25]
     }
   },
+  "matrix": {
+    "pixelCount": [12, 1, 1],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
   "availableChannels": {
     "Dimmer / Strobe": {
       "defaultValue": 0,
@@ -65,34 +71,6 @@
         "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
       }
     },
-    "Red": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
     "Color Macros": {
       "defaultValue": 0,
       "capabilities": [
@@ -118,6 +96,36 @@
       ]
     }
   },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
   "modes": [
     {
       "name": "7 channel (RGBW)",
@@ -125,10 +133,10 @@
       "channels": [
         "Dimmer",
         "Strobe",
-        "Red",
-        "Green",
-        "Blue",
-        "White",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
         "Color Macros"
       ]
     }
