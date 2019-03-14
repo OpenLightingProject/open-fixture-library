@@ -39,8 +39,42 @@
     "Color Wheel": {
       "slots": [
         {
+          "type": "Open"
+        },
+        {
           "type": "Color",
-          "name": "White"
+          "name": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "type": "Color",
+          "name": "UV",
+          "colors": ["#8800ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#ff00ff"]
         }
       ]
     },
@@ -76,12 +110,6 @@
         {
           "type": "Gobo",
           "name": "Bubbles"
-        },
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Gobo"
         }
       ]
     }
