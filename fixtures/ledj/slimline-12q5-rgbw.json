@@ -34,6 +34,21 @@
     }
   },
   "availableChannels": {
+    "Dimmer / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 240],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "helpWanted": "Is the strobe speed controllable here (e.g. slow…fast)?"
+        }
+      ]
+    },
     "Dimmer": {
       "defaultValue": 0,
       "capability": {
@@ -43,9 +58,11 @@
     "Strobe": {
       "defaultValue": 0,
       "capability": {
-        "type": "StrobeSpeed",
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
         "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Red": {
@@ -78,9 +95,27 @@
     },
     "Color Macros": {
       "defaultValue": 0,
-      "capability": {
-        "type": "ColorPreset"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 80],
+          "type": "Effect",
+          "effectName": "Color macro"
+        },
+        {
+          "dmxRange": [81, 150],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [151, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        }
+      ]
     }
   },
   "modes": [
