@@ -1,9 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Pocket Pro",
-  "categories": ["Color Changer", "Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["anonymous"],
+    "authors": ["Anonymous"],
     "createDate": "2019-03-14",
     "lastModifyDate": "2019-03-14"
   },
@@ -24,13 +24,13 @@
     "power": 53,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "25W white LED"
     },
     "lens": {
       "degreesMinMax": [15, 15]
     },
     "focus": {
-      "type": "Fixed",
+      "type": "Head",
       "panMax": 540,
       "tiltMax": 230
     }
