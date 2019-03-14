@@ -128,8 +128,35 @@
   },
   "modes": [
     {
-      "name": "7 channel (RGBW)",
-      "shortName": "7 channel ",
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer / Strobe",
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
       "channels": [
         "Dimmer",
         "Strobe",
