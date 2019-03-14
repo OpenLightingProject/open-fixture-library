@@ -8,6 +8,7 @@
     "pixelNumberConstraintArray": {
       "type": "array",
       "minItems": 1,
+      "uniqueItems": true,
       "items": { "$ref": "#/definitions/pixelNumberConstraint" }
     },
     "pixelNumberConstraint": {
@@ -106,6 +107,7 @@
               "name": {
                 "type": "array",
                 "minItems": 1,
+                "uniqueItems": true,
                 "items": {
                   "$comment": "pattern that pixel keys should match",
                   "type": "string",
