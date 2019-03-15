@@ -48,8 +48,8 @@
     ],
     "pixelGroups": {
       "Center":  ["1"],
-      "Middle ring": ["2", "3", "4", "5", "6", "7"],
-      "Outer ring":  ["8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"]
+      "Middle ring": { "name": ["^[2-7]$"] },
+      "Outer ring": { "name": ["^(8|9|1\\d)$"] }
     }
   },
   "availableChannels": {
