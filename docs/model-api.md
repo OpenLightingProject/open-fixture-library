@@ -1380,6 +1380,7 @@ Contains information of how the pixels in a 1-, 2- or 3-dimensional space are ar
     * [._getPixelDefaultKeys()](#Matrix+_getPixelDefaultKeys) ⇒ <code>array.&lt;array.&lt;array.&lt;string&gt;&gt;&gt;</code> ℗
     * [._getPixelDefaultKey(x, y, z)](#Matrix+_getPixelDefaultKey) ⇒ <code>string</code> ℗
     * [.getPixelKeysByOrder(firstAxis, secondAxis, thirdAxis)](#Matrix+getPixelKeysByOrder) ⇒ <code>array.&lt;string&gt;</code>
+    * [._pixelKeyFulfillsConstraints(pixelKey, constraints)](#Matrix+_pixelKeyFulfillsConstraints) ⇒ <code>boolean</code>
 
 <a name="new_Matrix_new"></a>
 
@@ -1509,6 +1510,17 @@ Sorts the pixelKeys by given X/Y/Z order. Order of the parameters equals the ord
 | firstAxis | <code>&#x27;X&#x27;</code> \| <code>&#x27;Y&#x27;</code> \| <code>&#x27;Z&#x27;</code> | Axis with highest ordering. |
 | secondAxis | <code>&#x27;X&#x27;</code> \| <code>&#x27;Y&#x27;</code> \| <code>&#x27;Z&#x27;</code> | Axis with middle ordering. |
 | thirdAxis | <code>&#x27;X&#x27;</code> \| <code>&#x27;Y&#x27;</code> \| <code>&#x27;Z&#x27;</code> | Axis with lowest ordering. |
+
+<a name="Matrix+_pixelKeyFulfillsConstraints"></a>
+
+### matrix.\_pixelKeyFulfillsConstraints(pixelKey, constraints) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Matrix</code>](#Matrix)  
+**Returns**: <code>boolean</code> - True if the pixel key fulfills all constraints, false otherwise.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| pixelKey | <code>string</code> | The pixel key to check against the constraints. |
+| constraints | <code>object</code> | The constraints to apply. |
 
 <a name="Meta"></a>
 
