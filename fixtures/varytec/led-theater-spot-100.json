@@ -19,6 +19,19 @@
       "https://www.thomann.de/intl/thomanntv_video_varytec_led_theater_spot_100_3000k_5959.html"
     ]
   },
+  "physical": {
+    "dimensions": [160, 185, 260],
+    "weight": 5,
+    "power": 115,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "100W COB LED",
+      "colorTemperature": 3000
+    },
+    "lens": {
+      "degreesMinMax": [15, 45]
+    }
+  },
   "availableChannels": {
     "Dimmer": {
       "defaultValue": 1,
