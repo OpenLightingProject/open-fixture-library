@@ -34,33 +34,34 @@
   },
   "availableChannels": {
     "Dimmer": {
-      "defaultValue": 1,
       "capability": {
         "type": "Intensity"
       }
     },
-    "Dimmer 2": {
-      "name": "Dimmer",
-      "fineChannelAliases": ["Dimmer 2 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 1,
-      "highlightValue": 1,
+    "Strobe": {
       "capability": {
-        "type": "Intensity"
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
       }
     }
   },
   "modes": [
     {
-      "name": "1 Kanal DMX Modus",
+      "name": "1-channel",
+      "shortName": "1ch",
       "channels": [
-        "Dimmer 2"
+        "Dimmer"
       ]
     },
     {
-      "name": "2 Kanal DMX Modus",
+      "name": "2-channel",
+      "shortName": "2ch",
       "channels": [
-        "Dimmer"
+        "Dimmer",
+        "Strobe"
       ]
     }
   ]
