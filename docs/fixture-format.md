@@ -214,21 +214,26 @@ The information how these pixels are arranged is stored in the fixture's `matrix
 
 `null` refers to a "hole", i.e. there's no light beam, which allows for non-cubic frames. The above example represents 5 heads arranged like a "+".
 
-Pixels can also be grouped if a fixture allows control in different fine grades, like fourths or halves of a light bar:
+Pixels can also be grouped if a fixture allows control in different fine grades, like fourths or halves of a light bar. There are three ways to define a pixel group:
+
+* The keyword `all` indicates that all pixel keys should belong to this group. This can be useful for channels like "Red Master".
+* An array of pixel keys exactly describes which pixels belong to this group.
+* An object with `x`, `y`, `z` or `name` constraints. All pixels that fulfill *all* constraints belong to this group. XYZ constraints are `<=5`, `=5`, `>=5`, `3n` (divisible by 3), `3n+1` (divisible by 3 with remainder 1), `even` (≙ `2n`) and `odd` (≙ `2n+1`). Name constraints are regular expressions.
 
 ```js
 "matrix": {
-  "pixelKeys": [
-    [
-      ["1/4", "2/4", "3/4", "4/4"]
-    ]
-  ],
+  "pixelCount": [12, 1, 1],
   "pixelGroups": {
-    "1/2": ["1/4", "2/4"],
-    "2/2": ["3/4", "4/4"]
+    "Master": "all",
+    "1/3": { "x": ["<=4"] },
+    "2/3": { "x": [">=5", "<=8"] },
+    "3/3": { "x": [">=9"] },
+    "Outer Thirds": ["1", "2", "3", "4", "9", "10", "11", "12"]
   }
 }
 ```
+
+See the [TMB Solaris Flare](../fixtures/tmb/solaris-flare.json) for a rather complex example of pixel group constraints.
 
 Pixel groups can also be used to better describe the pixel structure, for example to define circular rings consisting of virtual pixels, even if these pixels don't physically exist and only the whole rings can be controlled.
 
@@ -245,9 +250,9 @@ Pixel groups can also be used to better describe the pixel structure, for exampl
     ]
   ],
   "pixelGroups": {
-    "Inner ring":  ["I1", "I2", "I3", "I4"],
-    "Middle ring": ["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8"],
-    "Outer ring":  ["O1", "O2", "O3", "O4", "O5", "O6", "O7", "O8", "O9", "O10", "O11", "O12"]
+    "Inner ring": { "name": ["^I[1-4]$"] },
+    "Middle ring": { "name": ["^M[1-8]$"] },
+    "Outer ring":  { "name": ["^O\\d+$"] }
   }
 }
 ```
