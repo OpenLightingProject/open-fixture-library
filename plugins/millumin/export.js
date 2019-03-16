@@ -46,6 +46,13 @@ module.exports.export = function exportMillumin(fixtures, options) {
 
     delete jsonData.wheels;
 
+    // resolve all pixel key constraints
+    if (jsonData.matrix && jsonData.matrix.pixelGroups) {
+      Object.keys(jsonData.matrix.pixelGroups).forEach(groupKey => {
+        jsonData.matrix.pixelGroups[groupKey] = fixture.matrix.pixelGroups[groupKey];
+      });
+    }
+
     if (jsonData.availableChannels) {
       Object.keys(jsonData.availableChannels).forEach(
         chKey => downgradeChannel(jsonData.availableChannels, chKey, fixture)

@@ -39,7 +39,8 @@ clean:
 fixtures/register.json: \
 fixtures/*/*.json \
 fixtures/manufacturers.json \
-cli/make-register.js
+cli/make-register.js \
+lib/register.js
 	node cli/make-register.js
 	@echo ""
 
