@@ -80,8 +80,9 @@
         },
         {
           "dmxRange": [5, 80],
-          "type": "Effect",
-          "effectName": "Color macro"
+          "type": "ColorPreset",
+          "comment": "Color macro",
+          "helpWanted": "Which colors can be selected at which DMX values? Or is this a color change effect?"
         },
         {
           "dmxRange": [81, 150],
