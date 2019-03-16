@@ -7,7 +7,7 @@ const {
   SwitchingChannel
 } = require(`../../lib/model.js`);
 
-module.exports.version = `0.1.0`;
+module.exports.version = `0.2.0`;
 
 /**
  * @param {array.<Fixture>} fixtures An array of Fixture objects.
