@@ -1,0 +1,231 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "mini led moving head light",
+  "categories": ["Color Changer", "Dimmer", "Moving Head", "Strobe"],
+  "meta": {
+    "authors": ["gerard fontanillas"],
+    "createDate": "2019-03-18",
+    "lastModifyDate": "2019-03-18"
+  },
+  "links": {
+    "productPage": [
+      "https://www.amazon.es/gp/product/B01M09B766/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1"
+    ]
+  },
+  "physical": {
+    "dimensions": [17, 17, 24],
+    "weight": 3.22,
+    "power": 150,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "255%"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "255%"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 3,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Intensity",
+          "comment": "dimming"
+        },
+        {
+          "dmxRange": [8, 134],
+          "type": "NoFunction",
+          "comment": "no function"
+        },
+        {
+          "dmxRange": [135, 239],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "StrobeSpeed",
+          "speed": "slow",
+          "comment": "from low to fast"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Program Speed": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reserved": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Pan dimming": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Tilt dimming": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Effect": {
+      "defaultValue": 6,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 134],
+          "type": "Intensity",
+          "comment": "dimming"
+        },
+        {
+          "dmxRange": [135, 239],
+          "type": "StrobeSpeed",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Medallion"
+        }
+      ]
+    },
+    "Color Presets": {
+      "defaultValue": 11,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "color selection"
+        },
+        {
+          "dmxRange": [8, 231],
+          "type": "ColorPreset",
+          "comment": "color combination 1"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "ColorPreset",
+          "comment": "Color Jump"
+        }
+      ]
+    },
+    "Color Presets 2": {
+      "name": "Color Presets",
+      "defaultValue": 12,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Color Speed"
+      }
+    },
+    "Effect 2": {
+      "name": "Effect",
+      "defaultValue": 13,
+      "capabilities": [
+        {
+          "dmxRange": [0, 142],
+          "type": "Effect",
+          "effectName": "Auto"
+        },
+        {
+          "dmxRange": [143, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "sound 1"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "9 channel",
+      "shortName": "9 channel",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Program Speed",
+        "Reserved"
+      ]
+    },
+    {
+      "name": "14 Channel",
+      "shortName": "14 channel",
+      "channels": [
+        "Pan",
+        "Pan dimming",
+        "Tilt",
+        "Tilt dimming",
+        "Program Speed",
+        "Effect",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Presets",
+        "Color Presets 2",
+        "Effect 2",
+        "Reserved"
+      ]
+    }
+  ]
+}
