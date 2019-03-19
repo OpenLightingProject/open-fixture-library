@@ -1,0 +1,31 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Teatro",
+  "shortName": "teatro",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["it"],
+    "createDate": "2019-03-19",
+    "lastModifyDate": "2019-03-19"
+  },
+  "links": {
+    "other": [
+      "http://www.imagetools.it"
+    ]
+  },
+  "availableChannels": {
+    "Lum": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Extented",
+      "channels": [
+        "Lum"
+      ]
+    }
+  ]
+}
