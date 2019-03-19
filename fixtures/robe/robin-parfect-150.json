@@ -27,6 +27,18 @@
     "modelId": 227,
     "softwareVersion": "1.0"
   },
+  "physical": {
+    "dimensions": [240, 192, 498],
+    "weight": 5,
+    "power": 220,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "7x 30W RGBW multichip LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [3.8, 60]
+    }
+  },
   "availableChannels": {
     "Ctrl": {
       "defaultValue": 0,
