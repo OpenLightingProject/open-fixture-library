@@ -1,0 +1,259 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LMH460Z",
+  "shortName": "LMH460Z",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Folson_dev"],
+    "createDate": "2019-03-22",
+    "lastModifyDate": "2019-03-22"
+  },
+  "comment": "Wash Zoom LED",
+  "links": {
+    "productPage": [
+      "http://ns351448.ovh.net/~bstdj/187.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=Y6BBSuRVWwQ",
+      "https://www.youtube.com/watch?v=vEnjSQS7QY0",
+      "https://www.youtube.com/watch?v=-POl9ZfaeQs"
+    ],
+    "other": [
+      "http://ns351448.ovh.net/~bstdj/wa_files/FICHE_20LMH460Z.pdf",
+      "http://ns351448.ovh.net/~bstdj/wa_files/Page_20LMH460Z.pdf"
+    ]
+  },
+  "helpWanted": "Please provide a manual.",
+  "physical": {
+    "dimensions": [350, 400, 260],
+    "weight": 9,
+    "power": 400,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "36x 10W RGBW LED",
+      "lumens": 451.53
+    },
+    "lens": {
+      "degreesMinMax": [15, 60]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 280
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "280deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 6],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [7, 65],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [66, 69],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [70, 128],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [129, 131],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [132, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [192, 195],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [196, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Dimmer 0-100"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "RGB Color Change": {
+      "capability": {
+        "type": "ColorPreset",
+        "helpWanted": "At which DMX values is an effect activated?"
+      }
+    },
+    "Functions": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 80],
+          "type": "PanTiltSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [81, 95],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [96, 110],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Reset"
+        },
+        {
+          "dmxRange": [111, 125],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [126, 175],
+          "type": "Effect",
+          "effectName": "Automatic program"
+        },
+        {
+          "dmxRange": [176, 190],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [191, 240],
+          "type": "Effect",
+          "effectName": "Sound activated program",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Pan/Tilt Reversion": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "Pan Tilt Forward"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Pan Reverse"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Pan Tilt Reverse"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Tilt Reverse"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "15deg",
+        "angleEnd": "60deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Strobe",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "RGB Color Change",
+        "Functions",
+        "Pan/Tilt Reversion",
+        "Zoom"
+      ]
+    }
+  ]
+}
