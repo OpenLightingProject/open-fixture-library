@@ -34,7 +34,7 @@ const capabilityHelpers = {
   isBeamAngle: cap => (cap.type === `BeamAngle` || cap.type === `Zoom`) && cap.angle !== null
 };
 
-module.exports.version = `1.1.0`;
+module.exports.version = `1.1.1`;
 
 /**
  * @param {array.<Fixture>} fixtures An array of Fixture objects.
