@@ -154,19 +154,21 @@ const nuxt = new Nuxt(nuxtConfig);
 // render every remaining route with Nuxt.js
 app.use(nuxt.render);
 
+let startNuxt;
 if (nuxtConfig.dev) {
   console.log(`Starting dev server with hot reloading...`);
-  new Builder(nuxt).build()
-    .then(listen)
-    .catch(error => {
-      console.error(error);
-      process.exit(1);
-    });
+  startNuxt = new Builder(nuxt).build();
 }
 else {
   // build has been done already
-  listen();
+  startNuxt = nuxt.ready();
 }
+
+startNuxt.then(listen)
+  .catch(error => {
+    console.error(error);
+    process.exit(1);
+  });
 
 
 /**
