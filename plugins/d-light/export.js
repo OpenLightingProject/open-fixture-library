@@ -7,7 +7,7 @@ const {
   SwitchingChannel
 } = require(`../../lib/model.js`);
 
-module.exports.version = `0.1.0`;
+module.exports.version = `0.2.0`;
 
 /**
  * @param {array.<Fixture>} fixtures An array of Fixture objects.
@@ -78,10 +78,10 @@ function addAttribute(xml, mode, attribute, channels) {
     }
   });
 
-  channels.forEach((channel, index) => {
+  channels.forEach((channel, indexInAttribute) => {
     const xmlChannel = xmlAttribute.element({
       ThisAttribute: {
-        '@id': index,
+        '@id': indexInAttribute,
         HOME: {
           '@id': getDefaultValue(getUsableChannel(channel))
         },
@@ -144,36 +144,41 @@ function addAttribute(xml, mode, attribute, channels) {
         }
       });
     }
-  });
 
-  /**
-   * @param {AbstractChannel} channel Any kind of channel, e.g. an item of a mode's channel list.
-   * @returns {string} The parameter name (i. e. channel name) that should be used for this channel in D::Light.
-   */
-  function getParameterName(channel) {
-    const uniqueName = channel.uniqueName;
+    /**
+     * @param {AbstractChannel} channel Any kind of channel, e.g. an item of a mode's channel list.
+     * @returns {string} The parameter name (i. e. channel name) that should be used for this channel in D::Light.
+     */
+    function getParameterName(channel) {
+      const uniqueName = channel.uniqueName;
 
-    channel = getUsableChannel(channel);
+      channel = getUsableChannel(channel);
 
-    if (channel instanceof FineChannel) {
-      // for fine channels, this is simply the coarse channel's index
-      return `${mode.getChannelIndex(channel.coarseChannel.key) + 1}`;
-    }
+      if (channel instanceof FineChannel) {
+        // for fine channels, this is simply the coarse channel's index
+        return `${mode.getChannelIndex(channel.coarseChannel.key) + 1}`;
+      }
 
-    switch (attribute) {
-      case `FOCUS`:
-        return channel.type.toUpperCase(); // PAN or TILT
+      switch (attribute) {
+        case `FOCUS`:
+          return channel.type.toUpperCase(); // PAN or TILT
+
+        case `INTENSITY`:
+          if (indexInAttribute === 0 && uniqueName.toLowerCase().match(/dimmer|intensity/)) {
+            return `DIMMER`;
+          }
+          break;
+      }
 
       // in all other attributes, custom text is allowed
       // but we need to use another name syntax
-      default:
-        return uniqueName
-          .toUpperCase()
-          .replace(/ /g, `_`)
-          .replace(/\//g, `|`)
-          .replace(/COLOR/g, `COLOUR`);
+      return uniqueName
+        .toUpperCase()
+        .replace(/ /g, `_`)
+        .replace(/\//g, `|`)
+        .replace(/COLOR/g, `COLOUR`);
     }
-  }
+  });
 }
 
 /**

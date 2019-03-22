@@ -1,0 +1,172 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Slimline 12Q5 RGBW",
+  "shortName": "LEDJ67",
+  "categories": ["Pixel Bar", "Color Changer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2019-03-14",
+    "lastModifyDate": "2019-03-14"
+  },
+  "links": {
+    "manual": [
+      "http://prolight.co.uk/ftp-in/LEDJ67_Manual.pdf"
+    ],
+    "productPage": [
+      "https://prolight.co.uk/product/slimline-12q5-rgbw-batten-black-housing",
+      "https://prolight.co.uk/product/slimline-12q5-rgbw-batten-white-housing"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=q9vZgmnNnco",
+      "https://www.youtube.com/watch?v=Xvl8oeKIhH4"
+    ]
+  },
+  "physical": {
+    "dimensions": [87, 1018, 63],
+    "weight": 2.2,
+    "power": 70,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12x 5W RGBW LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "matrix": {
+    "pixelCount": [12, 1, 1],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "availableChannels": {
+    "Dimmer / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 240],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "helpWanted": "Is the strobe speed controllable here (e.g. slow…fast)?"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 80],
+          "type": "ColorPreset",
+          "comment": "Color macro",
+          "helpWanted": "Which colors can be selected at which DMX values? Or is this a color change effect?"
+        },
+        {
+          "dmxRange": [81, 150],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [151, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer / Strobe",
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Color Macros"
+      ]
+    }
+  ]
+}
