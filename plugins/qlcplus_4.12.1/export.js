@@ -652,8 +652,8 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
       getAttributes() {
         return {
           Type: physical.bulbType || `Other`,
-          Lumens: physical.bulbLumens || 0,
-          ColourTemperature: physical.bulbColorTemperature || 0
+          Lumens: Math.round(physical.bulbLumens) || 0,
+          ColourTemperature: Math.round(physical.bulbColorTemperature) || 0
         };
       }
     },
