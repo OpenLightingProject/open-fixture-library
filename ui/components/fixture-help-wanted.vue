@@ -148,6 +148,10 @@ export default {
         if (this.fixture.helpWanted === null) {
           return `Specific questions are included in the capabilities below.`;
         }
+
+        if (this.fixture.isCapabilityHelpWanted) {
+          return `${this.fixture.helpWanted} Further questions are included in the capabilities below.`;
+        }
       }
 
       return this.context.helpWanted;
