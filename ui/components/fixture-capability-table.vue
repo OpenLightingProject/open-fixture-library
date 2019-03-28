@@ -55,6 +55,7 @@
           <td colspan="4" />
           <td colspan="2">
             <app-fixture-help-wanted
+              type="capability"
               :context="cap.model"
               @helpWantedClicked="$emit(`helpWantedClicked`, $event)" />
           </td>

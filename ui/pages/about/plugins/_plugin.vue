@@ -17,6 +17,11 @@
       </li>
     </ul>
 
+    <app-fixture-help-wanted
+      v-if="`helpWanted` in pluginData"
+      type="plugin"
+      :context="pluginData" />
+
     <div v-if="`fixtureUsage` in pluginData" class="fixture-usage">
       <h2 id="fixture-usage">Fixture usage</h2>
 
@@ -94,7 +99,12 @@
 <script>
 import plugins from '~~/plugins/plugins.json';
 
+import fixtureHelpWanted from '~/components/fixture-help-wanted.vue';
+
 export default {
+  components: {
+    'app-fixture-help-wanted': fixtureHelpWanted
+  },
   validate({ params }) {
     return decodeURIComponent(params.plugin) in plugins.data;
   },

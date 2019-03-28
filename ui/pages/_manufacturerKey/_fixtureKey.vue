@@ -88,6 +88,7 @@
 
       <app-fixture-help-wanted
         v-if="fixture.isHelpWanted"
+        type="fixture"
         :context="fixture"
         @helpWantedClicked="helpWantedContext = $event" />
 
