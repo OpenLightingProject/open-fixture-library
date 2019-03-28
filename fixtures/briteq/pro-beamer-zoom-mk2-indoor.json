@@ -1,0 +1,437 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Pro Beamer zoom MK2 Indoor",
+  "shortName": "ProBeamerZoom",
+  "categories": ["Other", "Color Changer"],
+  "meta": {
+    "authors": ["Artilom"],
+    "createDate": "2019-03-28",
+    "lastModifyDate": "2019-03-28"
+  },
+  "links": {
+    "manual": [
+      "https://briteq-lighting.com/fr/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1462951425.pdf"
+    ],
+    "productPage": [
+      "https://briteq-lighting.com/fr/pro-beamer-zoom-mk2-indoor"
+    ]
+  },
+  "physical": {
+    "dimensions": [290, 191, 236],
+    "weight": 6.6,
+    "power": 128,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "MasterDimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightness": "off"
+      }
+    },
+    "MasterDimmerFine": {
+      "capability": {
+        "type": "Intensity",
+        "brightness": "off"
+      }
+    },
+    "RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "off",
+        "brightnessEnd": "off"
+      }
+    },
+    "REDfine": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "GREENfine": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "BLUEfine": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "WHITEfine": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "COLORMACRO": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "ColorPreset",
+          "comment": "RED100%/GREENUP/BLUE0%"
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "ColorPreset",
+          "comment": "REDDOWN/GREEN100%/BLUE0%"
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "ColorPreset",
+          "comment": "RED0%/GREEN100%/BLUEUP"
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "ColorPreset",
+          "comment": "RED0%/GREENDOWN/BLUE100%"
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "ColorPreset",
+          "comment": "REDUP/GREEN0%/BLUE100%"
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "ColorPreset",
+          "comment": "RED100%/GREEN0%/BLUEDOWN"
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "ColorPreset",
+          "comment": "RED100%/GREENUP/BLUEUP"
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "ColorPreset",
+          "comment": "REDDOWN/GREENDOWN/BLUE100%"
+        },
+        {
+          "dmxRange": [171, 200],
+          "type": "ColorPreset",
+          "comment": "RED100%/GREEN100%/BLUE100%/WHITE100%"
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "ColorPreset",
+          "comment": "3200K",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "ColorPreset",
+          "comment": "3400K",
+          "colorTemperature": "3400K"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "ColorPreset",
+          "comment": "4200K",
+          "colorTemperature": "4200K"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "ColorPreset",
+          "comment": "4900",
+          "colorTemperature": "4900K"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "ColorPreset",
+          "comment": "5600",
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "ColorPreset",
+          "comment": "5900K",
+          "colorTemperature": "5900K"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "ColorPreset",
+          "comment": "6500K",
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "ColorPreset",
+          "comment": "7200K",
+          "colorTemperature": "7200K"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorPreset",
+          "comment": "8000K",
+          "colorTemperature": "8000K"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorPreset",
+          "comment": "8500K",
+          "colorTemperature": "8500K"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "10000K",
+          "colorTemperature": "10000K"
+        }
+      ]
+    },
+    "STROBE": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "AUTO": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 40],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Generic",
+          "comment": "AUTO1"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Generic",
+          "comment": "AUTO2"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Generic",
+          "comment": "AUTO3"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Generic",
+          "comment": "AUTO4"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Generic",
+          "comment": "AUTO5"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "Generic",
+          "comment": "AUTO6"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "Generic",
+          "comment": "AUTO7"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "Generic",
+          "comment": "AUTO8"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "Generic",
+          "comment": "AUTO9"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "Generic",
+          "comment": "AUTO10"
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "Generic",
+          "comment": "PR01"
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "Generic",
+          "comment": "PRO02"
+        },
+        {
+          "dmxRange": [161, 170],
+          "type": "Generic",
+          "comment": "PR03"
+        },
+        {
+          "dmxRange": [171, 180],
+          "type": "Generic",
+          "comment": "PR04"
+        },
+        {
+          "dmxRange": [181, 190],
+          "type": "Generic",
+          "comment": "PR05"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "Generic",
+          "comment": "PR06"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "Generic",
+          "comment": "PR07"
+        },
+        {
+          "dmxRange": [211, 220],
+          "type": "Generic",
+          "comment": "PR08"
+        },
+        {
+          "dmxRange": [221, 230],
+          "type": "Generic",
+          "comment": "PR09"
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "Generic",
+          "comment": "PR10"
+        }
+      ]
+    },
+    "AUTOSPEEDADJUSTEMENT": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "When using CH13- AUTO1-AUTO10. This function activated"
+      }
+    },
+    "DIMMERSPEED": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Preset dimmer speed from display menu"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "LINEARDIMMER"
+        },
+        {
+          "dmxRange": [30, 69],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "NON LINEAR DIMMER 1 (fastest)"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "NON LINEAR DIMMER 2"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "NON LINEAR DIMMER 3"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "NON LINEAR DIMMER 4 (Slowest)"
+        }
+      ]
+    },
+    "ZOOM": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "GENERIC": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 200],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [201, 220],
+          "type": "Zoom",
+          "angle": "closed",
+          "comment": "ZOOM RESET"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "TOUR16",
+      "shortName": "Tour16",
+      "channels": [
+        "MasterDimmer",
+        "MasterDimmerFine",
+        "RED",
+        "REDfine",
+        "GREEN",
+        "GREENfine",
+        "BLUE",
+        "BLUEfine",
+        "WHITE",
+        "WHITEfine",
+        "COLORMACRO",
+        "STROBE",
+        "AUTO",
+        "AUTOSPEEDADJUSTEMENT",
+        "DIMMERSPEED",
+        "ZOOM",
+        "GENERIC"
+      ]
+    }
+  ]
+}
