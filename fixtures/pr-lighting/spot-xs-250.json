@@ -16,6 +16,24 @@
       "http://www.pr-lighting.com/show_list.php?id=20&page=4#"
     ]
   },
+  "physical": {
+    "dimensions": [390, 564, 373],
+    "weight": 22,
+    "power": 370,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "Philips MSD 250W/2",
+      "colorTemperature": 8500
+    },
+    "lens": {
+      "degreesMinMax": [16, 16]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 270
+    }
+  },
   "availableChannels": {
     "STROBE": {
       "defaultValue": "0%",
