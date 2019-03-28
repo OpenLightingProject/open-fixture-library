@@ -1,0 +1,209 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "STINGER SPOT",
+  "shortName": "stingerspot",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["unk"],
+    "createDate": "2019-03-28",
+    "lastModifyDate": "2019-03-28"
+  },
+  "links": {
+    "manual": [
+      "https://cdb.s3-us-west-1.amazonaws.com/ItemRelatedFiles/11167/stinger-spot-manual-rev-8-18.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/stinger-spot"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=nOYqH2oVWZg"
+    ]
+  },
+  "physical": {
+    "dimensions": [174, 145, 273],
+    "weight": 3,
+    "power": 36,
+    "DMXconnector": "3-pin"
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "WHITE",
+          "colors": ["#ffffff"]
+        },
+        {
+          "type": "Color",
+          "name": "RED",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "ORANGE",
+          "colors": ["#ff9900"]
+        },
+        {
+          "type": "Color",
+          "name": "YELLOW",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "GREEN",
+          "colors": ["#00ff00"]
+        },
+        {
+          "type": "Color",
+          "name": "BLUE",
+          "colors": ["#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "LIGHT BLUE",
+          "colors": ["#0099ff"]
+        },
+        {
+          "type": "Color",
+          "name": "PINK",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "type": "Color",
+          "name": "SPLIT COLORS"
+        },
+        {
+          "type": "Color",
+          "name": "COLOR SCROLL FAST-SLOW"
+        },
+        {
+          "type": "Color",
+          "name": "STOP"
+        },
+        {
+          "type": "Color",
+          "name": "COLOR SCROLL SLOW-FAST"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "dmxValueResolution": "8bit",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "dmxValueResolution": "8bit",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "210deg"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [8, 14],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [15, 21],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [22, 28],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [29, 35],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [36, 42],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [43, 49],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [50, 56],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [57, 127],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [128, 189],
+          "type": "WheelSlotRotation",
+          "slotNumber": 10,
+          "speed": "fast CW"
+        },
+        {
+          "dmxRange": [190, 193],
+          "type": "WheelSlotRotation",
+          "slotNumber": 11,
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [194, 255],
+          "type": "WheelSlotRotation",
+          "slotNumber": 12,
+          "speed": "slow CCW"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "9-channel",
+      "channels": [
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt",
+        "Tilt fine",
+        "Color Wheel"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "channels": [
+        "Pan 2",
+        "Pan 2 fine",
+        "Tilt",
+        "Tilt fine",
+        "Color Wheel"
+      ]
+    }
+  ]
+}
