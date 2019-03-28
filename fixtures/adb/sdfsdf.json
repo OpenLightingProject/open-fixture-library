@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "sdfsdf",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["xcvfsdf"],
+    "createDate": "2019-03-28",
+    "lastModifyDate": "2019-03-28"
+  },
+  "links": {
+    "other": [
+      "http://sdfsdf.sdfsdf.df"
+    ]
+  },
+  "availableChannels": {
+    "Test1": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Test1 2": {
+      "name": "Test1",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Asdasd": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "sdfsdf",
+      "shortName": "aaa",
+      "channels": [
+        "Test1"
+      ]
+    },
+    {
+      "name": "asdasd",
+      "shortName": "aaa",
+      "channels": [
+        "Test1 2",
+        "Asdasd"
+      ]
+    }
+  ]
+}
