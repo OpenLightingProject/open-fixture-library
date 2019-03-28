@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ pluginName }} Plugin</h1>
+    <h1>{{ pluginData.name }} Plugin</h1>
 
     <div class="version-info hint">
       <template v-if="exportPluginVersion">Export plugin version {{ exportPluginVersion }}</template>
@@ -117,15 +117,14 @@ export default {
     }
 
     const pluginData = await app.$axios.$get(`/about/plugins/${pluginKey}.json`);
+    pluginData.key = pluginKey;
 
     const fileLocationOSes = `fileLocations` in pluginData ? Object.keys(pluginData.fileLocations).filter(
       os => os !== `subDirectoriesAllowed`
     ) : null;
 
     return {
-      pluginKey,
       pluginData,
-      pluginName: pluginData.name,
       fileLocationOSes,
       exportPluginVersion: plugins.data[pluginKey].exportPluginVersion,
       importPluginVersion: plugins.data[pluginKey].importPluginVersion,
@@ -137,7 +136,7 @@ export default {
   },
   head() {
     return {
-      title: `${this.pluginName} Plugin`
+      title: `${this.pluginData.name} Plugin`
     };
   }
 };
