@@ -150,7 +150,30 @@
   },
   "modes": [
     {
-      "name": "EXT",
+      "name": "Standard",
+      "shortName": "STd",
+      "channels": [
+        "STROBE",
+        "DIMMER",
+        "COLOR WHEEL",
+        "GOBO",
+        "ROTATING GOBO",
+        "GOBO ROTATION",
+        "GOBO ROTATION fine",
+        "PRISM / FROST",
+        "PRISME ROTATION",
+        "FOCUS",
+        "PAN",
+        "PAN fine",
+        "TILT",
+        "TILT fine",
+        "PAN / TILT SPEED",
+        "CONTROL"
+      ]
+    },
+    {
+      "name": "Extended",
+      "shortName": "EXT",
       "channels": [
         "STROBE",
         "DIMMER",
@@ -162,14 +185,32 @@
         "GOBO ROTATION fine",
         "PRISM / FROST",
         "PRISME ROTATION",
+        "FOCUS",
         "FOCUS fine",
         "PAN",
         "PAN fine",
         "TILT",
         "TILT fine",
         "PAN / TILT SPEED",
-        "CONTROL",
-        "FOCUS"
+        "CONTROL"
+      ]
+    },
+    {
+      "name": "Short",
+      "shortName": "SHRT",
+      "channels": [
+        "STROBE",
+        "DIMMER",
+        "COLOR WHEEL",
+        "GOBO",
+        "ROTATING GOBO",
+        "GOBO ROTATION",
+        "PRISM / FROST",
+        "PRISME ROTATION",
+        "FOCUS",
+        "PAN",
+        "TILT",
+        "CONTROL"
       ]
     }
   ]
