@@ -112,16 +112,7 @@
   },
   "availableChannels": {
     "Pan": {
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "540deg"
-      }
-    },
-    "Pan 2": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 2 fine"],
-      "dmxValueResolution": "8bit",
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -130,7 +121,6 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "dmxValueResolution": "8bit",
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -181,25 +171,26 @@
         },
         {
           "dmxRange": [57, 127],
-          "type": "Generic"
+          "type": "Generic",
+          "comment": "Split Colors",
+          "helpWanted": "Which split colors can be selected at which DMX values?"
         },
         {
           "dmxRange": [128, 189],
-          "type": "WheelSlotRotation",
-          "slotNumber": 10,
-          "speed": "fast CW"
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [190, 193],
-          "type": "WheelSlotRotation",
-          "slotNumber": 11,
+          "type": "WheelRotation",
           "speed": "stop"
         },
         {
           "dmxRange": [194, 255],
-          "type": "WheelSlotRotation",
-          "slotNumber": 12,
-          "speed": "slow CCW"
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     }
@@ -208,18 +199,16 @@
     {
       "name": "9-channel",
       "channels": [
-        "Pan 2",
-        "Pan 2 fine",
+        "Pan",
         "Tilt",
-        "Tilt fine",
         "Color Wheel"
       ]
     },
     {
       "name": "11-channel",
       "channels": [
-        "Pan 2",
-        "Pan 2 fine",
+        "Pan",
+        "Pan fine",
         "Tilt",
         "Tilt fine",
         "Color Wheel"
