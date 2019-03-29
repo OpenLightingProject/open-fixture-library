@@ -54,7 +54,7 @@
           :key="`cap-${index}-helpWanted`">
           <td colspan="4" />
           <td colspan="2">
-            <app-fixture-help-wanted
+            <app-help-wanted-message
               type="capability"
               :context="cap.model"
               @helpWantedClicked="$emit(`helpWantedClicked`, $event)" />
@@ -117,7 +117,7 @@ td, th {
 
 <script>
 import svg from '~/components/svg.vue';
-import fixtureHelpWanted from '~/components/fixture-help-wanted.vue';
+import helpWantedMessage from '~/components/help-wanted-message.vue';
 
 import CoarseChannel from '~~/lib/model/CoarseChannel.mjs';
 import Mode from '~~/lib/model/Mode.mjs';
@@ -125,7 +125,7 @@ import Mode from '~~/lib/model/Mode.mjs';
 export default {
   components: {
     'app-svg': svg,
-    'app-fixture-help-wanted': fixtureHelpWanted
+    'app-help-wanted-message': helpWantedMessage
   },
   props: {
     channel: {

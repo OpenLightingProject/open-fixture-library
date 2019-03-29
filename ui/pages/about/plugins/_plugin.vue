@@ -17,7 +17,7 @@
       </li>
     </ul>
 
-    <app-fixture-help-wanted
+    <app-help-wanted-message
       v-if="`helpWanted` in pluginData"
       type="plugin"
       :context="pluginData" />
@@ -99,11 +99,11 @@
 <script>
 import plugins from '~~/plugins/plugins.json';
 
-import fixtureHelpWanted from '~/components/fixture-help-wanted.vue';
+import helpWantedMessage from '~/components/help-wanted-message.vue';
 
 export default {
   components: {
-    'app-fixture-help-wanted': fixtureHelpWanted
+    'app-help-wanted-message': helpWantedMessage
   },
   validate({ params }) {
     return decodeURIComponent(params.plugin) in plugins.data;
