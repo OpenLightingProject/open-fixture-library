@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ pluginName }} Plugin</h1>
+    <h1>{{ pluginData.name }} Plugin</h1>
 
     <div class="version-info hint">
       <template v-if="exportPluginVersion">Export plugin version {{ exportPluginVersion }}</template>
@@ -16,6 +16,11 @@
         <a :href="pluginData.links[link]" target="_blank" rel="nofollow">{{ link }}</a>
       </li>
     </ul>
+
+    <app-help-wanted-message
+      v-if="`helpWanted` in pluginData"
+      type="plugin"
+      :context="pluginData" />
 
     <div v-if="`fixtureUsage` in pluginData" class="fixture-usage">
       <h2 id="fixture-usage">Fixture usage</h2>
@@ -94,7 +99,12 @@
 <script>
 import plugins from '~~/plugins/plugins.json';
 
+import helpWantedMessage from '~/components/help-wanted-message.vue';
+
 export default {
+  components: {
+    'app-help-wanted-message': helpWantedMessage
+  },
   validate({ params }) {
     return decodeURIComponent(params.plugin) in plugins.data;
   },
@@ -107,15 +117,14 @@ export default {
     }
 
     const pluginData = await app.$axios.$get(`/about/plugins/${pluginKey}.json`);
+    pluginData.key = pluginKey;
 
     const fileLocationOSes = `fileLocations` in pluginData ? Object.keys(pluginData.fileLocations).filter(
       os => os !== `subDirectoriesAllowed`
     ) : null;
 
     return {
-      pluginKey,
       pluginData,
-      pluginName: pluginData.name,
       fileLocationOSes,
       exportPluginVersion: plugins.data[pluginKey].exportPluginVersion,
       importPluginVersion: plugins.data[pluginKey].importPluginVersion,
@@ -127,7 +136,7 @@ export default {
   },
   head() {
     return {
-      title: `${this.pluginName} Plugin`
+      title: `${this.pluginData.name} Plugin`
     };
   }
 };
