@@ -2,7 +2,7 @@
   <section class="help-wanted">
     <div class="information">
       <app-svg name="comment-question-outline" title="Help wanted!" />
-      <strong v-if="title">{{ title }}</strong>
+      <strong v-if="title">{{ title }} </strong>
       <span v-html="description" />
     </div>
 
