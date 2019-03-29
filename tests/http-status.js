@@ -15,6 +15,8 @@ const fails = {
   external: new Set()
 };
 
+const resolvedUrls = {}; // original urls pointing to resolved ones
+
 const siteChecker = new blc.SiteChecker({
   honorRobotExclusions: false,
   maxSocketsPerHost: 3,
@@ -34,7 +36,10 @@ const siteChecker = new blc.SiteChecker({
   ]
 }, {
   html(tree, robots, response, pageUrl, customData) {
-    foundLinks[pageUrl] = [];
+    resolvedUrls[pageUrl] = response.url;
+    if (!(response.url in foundLinks)) {
+      foundLinks[response.url] = [];
+    }
   },
   link(result, customData) {
     let location = colors.cyan(`(ex)`);
@@ -54,13 +59,15 @@ const siteChecker = new blc.SiteChecker({
     }
   },
   page(error, pageUrl, customData) {
+    const resolvedUrl = resolvedUrls[pageUrl];
+
     if (error) {
-      console.log(`${colors.red(`[FAIL]`)} ${pageUrl}\n └ ${error}`);
-      fails.internal.add(pageUrl);
+      console.log(`${colors.red(`[FAIL]`)} ${resolvedUrl}\n └ ${error}`);
+      fails.internal.add(resolvedUrl);
     }
     else {
-      foundLinks[pageUrl].unshift(`${colors.green(`[PASS]`)} ${pageUrl}`);
-      console.log(foundLinks[pageUrl].join(`\n`));
+      foundLinks[resolvedUrl].unshift(`${colors.green(`[PASS]`)} ${resolvedUrl}`);
+      console.log(foundLinks[resolvedUrl].join(`\n`));
     }
   },
   end() {

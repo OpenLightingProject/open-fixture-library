@@ -323,7 +323,7 @@ export default {
 
     const redirectTo = register.filesystem[`${manKey}/${fixKey}`].redirectTo;
     if (redirectTo) {
-      redirect(301, `/${redirectTo}?redirectFrom=${manKey}/${fixKey}`);
+      redirect(302, `/${redirectTo}?redirectFrom=${manKey}/${fixKey}`);
       return {};
     }
 
