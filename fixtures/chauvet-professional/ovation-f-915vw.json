@@ -1,0 +1,72 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ovation F 915vw",
+  "shortName": "Chauvet ovation F 915vw",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Nicolas"],
+    "createDate": "2019-03-29",
+    "lastModifyDate": "2019-03-29"
+  },
+  "links": {
+    "productPage": [
+      "https://www.chauvetprofessional.com/products/ovation-f-915vw/"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "fineChannelAliases": ["Intensity fine"],
+      "dmxValueResolution": "8bit",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "8000K"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "2Hz"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6CH",
+      "shortName": "6CH",
+      "channels": [
+        "Intensity",
+        "Intensity fine",
+        "Color Temperature",
+        "No function",
+        "Zoom",
+        "Shutter / Strobe"
+      ]
+    }
+  ]
+}
