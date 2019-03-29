@@ -20,10 +20,21 @@
     ]
   },
   "physical": {
-    "dimensions": [174, 145, 273],
+    "dimensions": [174, 273, 145],
     "weight": 3,
     "power": 36,
-    "DMXconnector": "3-pin"
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "10W white LED"
+    },
+    "lens": {
+      "degreesMinMax": [13, 13]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 540,
+      "tiltMax": 210
+    }
   },
   "wheels": {
     "Color Wheel": {
