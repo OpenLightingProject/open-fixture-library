@@ -994,6 +994,7 @@ A physical DMX device.
     * [.comment](#Fixture+comment) ⇒ <code>boolean</code>
     * [.helpWanted](#Fixture+helpWanted) ⇒ <code>string</code> \| <code>null</code>
     * [.isHelpWanted](#Fixture+isHelpWanted) ⇒ <code>boolean</code>
+    * [.isCapabilityHelpWanted](#Fixture+isCapabilityHelpWanted) ⇒ <code>boolean</code>
     * [.links](#Fixture+links) ⇒ <code>object.&lt;string, array&gt;</code> \| <code>null</code>
     * [.rdm](#Fixture+rdm) ⇒ <code>object</code> \| <code>null</code>
     * [.physical](#Fixture+physical) ⇒ [<code>Physical</code>](#Physical) \| <code>null</code>
@@ -1128,6 +1129,11 @@ Create a new Fixture instance.
 ### fixture.isHelpWanted ⇒ <code>boolean</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
 **Returns**: <code>boolean</code> - True if help is needed in this fixture (maybe in a capability), false otherwise.  
+<a name="Fixture+isCapabilityHelpWanted"></a>
+
+### fixture.isCapabilityHelpWanted ⇒ <code>boolean</code>
+**Kind**: instance property of [<code>Fixture</code>](#Fixture)  
+**Returns**: <code>boolean</code> - True if help is needed in a capability, false otherwise.  
 <a name="Fixture+links"></a>
 
 ### fixture.links ⇒ <code>object.&lt;string, array&gt;</code> \| <code>null</code>
