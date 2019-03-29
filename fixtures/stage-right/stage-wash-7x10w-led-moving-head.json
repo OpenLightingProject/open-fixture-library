@@ -53,14 +53,14 @@
       "defaultValue": 0,
       "capability": {
         "type": "PanTiltSpeed",
-        "speedStart": "fast",
-        "speedEnd": "slow"
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     },
     "Dimmer / Strobe": {
       "capability": {
         "type": "Intensity",
-        "comment": "At which DMX values is strobe activated?"
+        "helpWanted": "At which DMX values is strobe activated?"
       }
     },
     "Red": {
@@ -115,13 +115,13 @@
     "Auto / Sound Mode": {
       "capability": {
         "type": "Generic",
-        "comment": "At which DMX values can Auto / Sound mode be activated?"
+        "helpWanted": "At which DMX values can Auto / Sound mode be activated?"
       }
     },
     "Reset": {
       "capability": {
-        "type": "Generic",
-        "comment": "At which DMX value is a reset done? How many seconds must that DMX value be set?"
+        "type": "Maintenance",
+        "helpWanted": "At which DMX value is a reset done? How many seconds must that DMX value be set?"
       }
     },
     "Master Dimmer": {
