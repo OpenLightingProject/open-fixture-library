@@ -322,8 +322,7 @@ export default {
       honeypot: ``,
       submit: {
         state: `closed`,
-        pullRequestUrl: ``,
-        rawData: ``
+        sendObject: null
       },
       manufacturers,
       properties: schemaProperties
@@ -542,9 +541,10 @@ export default {
       }
 
       this.submit.sendObject = {
+        createPullRequest: false,
         fixtures: [this.fixture]
       };
-      this.submit.state = `ready`;
+      this.submit.state = `validate`;
     },
 
     reset() {
@@ -553,8 +553,7 @@ export default {
       this.honeypot = ``;
       this.submit = {
         state: `closed`,
-        pullRequestUrl: ``,
-        rawData: ``
+        sendObject: null
       };
 
       this.$router.push({

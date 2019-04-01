@@ -2,6 +2,7 @@
 require = require(`esm`)(module); // eslint-disable-line no-global-assign
 
 const createPullRequest = require(`../../lib/create-github-pr.js`);
+const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
 const schemaProperties = require(`../../lib/schema-properties.mjs`).default;
 const { checkFixture } = require(`../../tests/fixture-valid.js`);
 const { CoarseChannel } = require(`../../lib/model.js`);
@@ -11,22 +12,38 @@ const { CoarseChannel } = require(`../../lib/model.js`);
  * @param {object} request Passed from Express.
  * @param {object} response Passed from Express.
  */
-module.exports = function addFixtures(request, response) {
+module.exports = async function addFixtures(request, response) {
   let pullRequestUrl;
   let error;
 
-  // eslint-disable-next-line promise/catch-or-return
-  createPullRequest(getOutObjectFromEditorData(request.body.fixtures))
-    .then(prUrl => {
-      pullRequestUrl = prUrl;
-    })
-    .catch(err => {
+  const outObject = getOutObjectFromEditorData(request.body.fixtures);
+
+  if (request.body.createPullRequest) {
+    try {
+      pullRequestUrl = await createPullRequest(outObject);
+    }
+    catch (err) {
       error = err.message;
-    })
-    .then(() => response.status(201).json({
-      pullRequestUrl,
-      error
-    }));
+    }
+    finally {
+      response.status(201).json({
+        pullRequestUrl,
+        error
+      });
+    }
+  }
+  else {
+    const errors = Object.values(outObject.errors)[0];
+    const warnings = Object.values(outObject.warnings)[0];
+    const [fixtureKey, fixtureJsonObject] = Object.entries(outObject.fixtures)[0];
+
+    response.status(201).json({
+      errors,
+      warnings,
+      fixtureKey,
+      fixtureJson: fixtureJsonStringify(fixtureJsonObject)
+    });
+  }
 };
 
 

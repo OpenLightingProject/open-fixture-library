@@ -5,12 +5,28 @@
     :shown="submit.state !== `closed`"
     :title="title">
 
-    <a ref="downloadAnchorElement" download="ofl-editor-fixtures.json" hidden />
+    <a
+      ref="downloadAnchorElement"
+      :href="downloadFileUrl"
+      :download="downloadFileName"
+      hidden />
 
     <div v-if="submit.state === `loading`">Uploading…</div>
 
     <div v-else-if="submit.state === `ready`">
-      You can now submit your fixture to the Open Fixture Library website or download it for private use.
+      <template v-if="validationErrors.length || validationWarnings.length">
+        The fixture validation returned some remarks:
+
+        <ul>
+          <li v-for="message in validationErrors" :key="message">{{ message }}</li>
+          <li v-for="message in validationWarnings" :key="message">{{ message }}</li>
+        </ul>
+
+        You can try to resolve them or continue anyway with submitting your fixture to the Open Fixture Library website (then we will fix those issues) or downloading it for private use.
+      </template>
+      <template v-else>
+        The fixture validation was successful. You can now submit your fixture to the Open Fixture Library website or download it for private use.
+      </template>
 
       <div class="button-bar right">
         <a class="button secondary" @click.prevent="onCancel">Continue editing</a>
@@ -22,7 +38,7 @@
     <div v-else-if="submit.state === `success`">
       Your fixture was successfully uploaded to GitHub (see the
       <a
-        :href="submit.pullRequestUrl"
+        :href="pullRequestUrl"
         target="_blank">pull request</a>).
       It will be now reviewed and then published on the website (this may take a few days).
       Thank you for your contribution!
@@ -33,7 +49,7 @@
           href="/fixture-editor"
           class="button secondary"
           @click.prevent="$emit(`reset`)">Create another fixture</a>
-        <a :href="submit.pullRequestUrl" class="button secondary" target="_blank">See pull request</a>
+        <a :href="pullRequestUrl" class="button secondary" target="_blank">See pull request</a>
         <a class="button primary" @click.prevent="onDownload">Download</a>
       </div>
     </div>
@@ -55,14 +71,6 @@
       </div>
     </div>
 
-    <!-- <div v-else-if="submit.state === `invalid`">
-    Unfortunately, the fixture you uploaded was invalid. Please correct the following mistakes before trying again.
-    <textarea v-model="submit.mistakes" readonly />
-    <textarea v-model="submit.rawData" readonly />
-    <div class="button-bar right">
-    <button class="primary" data-action="home">Back to homepage</button>
-    </div>
-    </div>-->
   </app-a11y-dialog>
 </template>
 
@@ -79,6 +87,17 @@ export default {
       type: Object,
       required: true
     }
+  },
+  data() {
+    return {
+      error: null,
+      pullRequestUrl: null,
+      downloadFileName: null,
+      downloadFileUrl: null,
+      validationErrors: [],
+      validationWarnings: [],
+      fixtureJson: null
+    };
   },
   computed: {
     title() {
@@ -101,16 +120,24 @@ export default {
 
       if (this.submit.state === `error`) {
         // eslint-disable-next-line quotes, prefer-template
-        return '```json\n' + rawData + '\n```\n\n' + this.submit.error;
+        return '```json\n' + rawData + '\n```\n\n' + this.error;
       }
 
       return rawData;
     }
   },
+  watch: {
+    'submit.state': function(newState) {
+      if (newState === `validate`) {
+        this.$nextTick(this.onValidate);
+      }
+    }
+  },
   methods: {
-    async onSubmit() {
-      console.log(`submit`, clone(this.submit.sendObject));
+    async onValidate() {
+      console.log(`validate`, clone(this.submit.sendObject));
 
+      this.submit.state = `loading`;
       try {
         const response = await this.$axios.post(
           `/ajax/submit-editor`,
@@ -121,24 +148,47 @@ export default {
           throw new Error(response.data.error);
         }
 
-        this.submit.pullRequestUrl = response.data.pullRequestUrl;
+        this.downloadFileName = `${response.data.fixtureKey}.json`;
+        this.downloadFileUrl = `data:text/json;charset=utf-8,${encodeURIComponent(response.data.fixtureJson)}`;
+        this.validationErrors = response.data.errors;
+        this.validationWarnings = response.data.warnings;
+        this.submit.state = `ready`;
+      }
+      catch (error) {
+        console.error(`There was a problem with the request.`, error);
+
+        this.error = error.message;
+        this.submit.state = `error`;
+      }
+    },
+    async onSubmit() {
+      this.submit.sendObject.createPullRequest = true;
+      console.log(`submit`, clone(this.submit.sendObject));
+
+      this.submit.state = `loading`;
+      try {
+        const response = await this.$axios.post(
+          `/ajax/submit-editor`,
+          this.submit.sendObject
+        );
+
+        if (response.data.error) {
+          throw new Error(response.data.error);
+        }
+
+        this.pullRequestUrl = response.data.pullRequestUrl;
         this.submit.state = `success`;
         this.$emit(`success`);
       }
       catch (error) {
         console.error(`There was a problem with the request.`, error);
 
-        this.submit.error = error.message;
+        this.error = error.message;
         this.submit.state = `error`;
       }
     },
     onDownload() {
-      // eslint-disable-next-line prefer-template
-      const dataStr = `data:text/json;charset=utf-8,` + encodeURIComponent(JSON.stringify(this.submit.sendObject, null, 2));
-      const dlAnchorElem = this.$refs.downloadAnchorElement;
-
-      dlAnchorElem.setAttribute(`href`, dataStr);
-      dlAnchorElem.click();
+      this.$refs.downloadAnchorElement.click();
     },
     onCancel() {
       this.submit.state = `closed`;
