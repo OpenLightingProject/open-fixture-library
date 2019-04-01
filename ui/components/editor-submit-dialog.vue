@@ -7,14 +7,14 @@
     <div v-if="submit.state === `loading`">Uploading…</div>
 
     <div v-else-if="submit.state === `ready`">
-      You can now submit your fixture to the official library or download it for private use.
+      You can now submit your fixture to the Open Fixture Library website or download it for private use.
 
       <a ref="downloadAnchorElement" style="display:none" />
 
       <div class="button-bar right">
-        <a class="button secondary" @click.prevent="onCancel">Cancel</a>
+        <a class="button secondary" @click.prevent="onCancel">Continue editing</a>
         <a class="button secondary" @click.prevent="onDownload">Download</a>
-        <a class="button primary" @click.prevent="onSubmit">Submit</a>
+        <a class="button primary" @click.prevent="onSubmit">Submit to OFL</a>
       </div>
     </div>
 
@@ -23,7 +23,8 @@
       <a
         :href="submit.pullRequestUrl"
         target="_blank">pull request</a>
-      ). It will be now reviewed and then merged into the library. Thank you for your contribution!
+      ). It will be now reviewed and then published on the website (this may take a few days). Thank you for your contribution!
+
       <div class="button-bar right">
         <nuxt-link to="/" class="button secondary">Back to homepage</nuxt-link>
         <a
