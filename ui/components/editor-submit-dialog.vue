@@ -45,7 +45,7 @@
       <textarea v-model="rawData" readonly />
 
       <div class="button-bar right">
-        <a @click.prevent="onCancel" class="button secondary">Cancel</a>
+        <a class="button secondary" @click.prevent="onCancel">Cancel</a>
         <a
           href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
           class="button primary"
@@ -111,7 +111,7 @@ export default {
       try {
         const response = await this.$axios.post(
           `/ajax/submit-editor`,
-          sendObject
+          this.submit.sendObject
         );
 
         if (response.data.error) {
