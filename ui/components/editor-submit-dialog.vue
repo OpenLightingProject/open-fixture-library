@@ -123,7 +123,7 @@ export default {
 
         this.submit.pullRequestUrl = response.data.pullRequestUrl;
         this.submit.state = `success`;
-        this.clearAutoSave();
+        this.$emit(`success`);
       }
       catch (error) {
         console.error(`There was a problem with the request.`, error);

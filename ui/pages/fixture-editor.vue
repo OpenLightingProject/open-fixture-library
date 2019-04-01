@@ -223,7 +223,7 @@
 
     <app-editor-restore-dialog v-model="restoredData" @restore-complete="restoreComplete" />
 
-    <app-editor-submit-dialog :submit="submit" @reset="reset" />
+    <app-editor-submit-dialog :submit="submit" @success="clearAutoSave" @reset="reset" />
   </div>
 </template>
 
