@@ -30,7 +30,8 @@
           href="/fixture-editor"
           class="button secondary"
           @click.prevent="$emit(`reset`)">Create another fixture</a>
-        <a :href="submit.pullRequestUrl" class="button primary" target="_blank">See pull request</a>
+        <a :href="submit.pullRequestUrl" class="button secondary" target="_blank">See pull request</a>
+        <a class="button primary" @click.prevent="onDownload">Download</a>
       </div>
     </div>
 
