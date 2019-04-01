@@ -541,11 +541,9 @@ export default {
         return;
       }
 
-      const sendObject = {
+      this.submit.sendObject = {
         fixtures: [this.fixture]
       };
-
-      this.submit.sendObject = sendObject;
       this.submit.state = `ready`;
     },
 
