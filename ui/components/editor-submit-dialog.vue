@@ -4,12 +4,13 @@
     :cancellable="false"
     :shown="submit.state !== `closed`"
     :title="title">
+
+    <a ref="downloadAnchorElement" download="ofl-editor-fixtures.json" hidden />
+
     <div v-if="submit.state === `loading`">Uploading…</div>
 
     <div v-else-if="submit.state === `ready`">
       You can now submit your fixture to the Open Fixture Library website or download it for private use.
-
-      <a ref="downloadAnchorElement" style="display:none" />
 
       <div class="button-bar right">
         <a class="button secondary" @click.prevent="onCancel">Continue editing</a>
@@ -138,7 +139,6 @@ export default {
       const dlAnchorElem = this.$refs.downloadAnchorElement;
 
       dlAnchorElem.setAttribute(`href`, dataStr);
-      dlAnchorElem.setAttribute(`download`, `fixtures.json`);
       dlAnchorElem.click();
     },
     onCancel() {
