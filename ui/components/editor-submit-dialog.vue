@@ -3,20 +3,18 @@
     id="submit"
     :cancellable="false"
     :shown="submit.state !== `closed`"
-    :title="title"
-  >
+    :title="title">
     <div v-if="submit.state === `loading`">Uploading…</div>
 
     <div v-else-if="submit.state === `ready`">
       You can now submit your fixture to the official library or download it for private use.
-      <!-- <textarea v-model="submit.rawData" readonly /> -->
 
-      <a ref="downloadAnchorElement" style="display:none"></a>
+      <a ref="downloadAnchorElement" style="display:none" />
 
       <div class="button-bar right">
-        <a @click.prevent="onCancel" class="button secondary" target="_blank">Cancel</a>
-        <a @click.prevent="onDownload" class="button secondary" target="_blank">Download</a>
-        <a @click.prevent="onSubmit" class="button primary" target="_blank">Submit</a>
+        <a class="button secondary" @click.prevent="onCancel">Cancel</a>
+        <a class="button secondary" @click.prevent="onDownload">Download</a>
+        <a class="button primary" @click.prevent="onSubmit">Submit</a>
       </div>
     </div>
 
@@ -24,16 +22,14 @@
       Your fixture was successfully uploaded to GitHub (see the
       <a
         :href="submit.pullRequestUrl"
-        target="_blank"
-      >pull request</a>
+        target="_blank">pull request</a>
       ). It will be now reviewed and then merged into the library. Thank you for your contribution!
       <div class="button-bar right">
         <nuxt-link to="/" class="button secondary">Back to homepage</nuxt-link>
         <a
           href="/fixture-editor"
           class="button secondary"
-          @click.prevent="$emit(`reset`)"
-        >Create another fixture</a>
+          @click.prevent="$emit(`reset`)">Create another fixture</a>
         <a :href="submit.pullRequestUrl" class="button primary" target="_blank">See pull request</a>
       </div>
     </div>
@@ -43,19 +39,17 @@
         Unfortunately, there was an error while uploading. Please copy the following data and
         <a
           href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
-          target="_blank"
-        >manually submit them to GitHub</a>.
+          target="_blank">manually submit them to GitHub</a>.
       </span>
 
-      <textarea v-model="rawData" readonly/>
+      <textarea v-model="rawData" readonly />
 
       <div class="button-bar right">
-        <a @click.prevent="onCancel" class="button secondary" target="_blank">Cancel</a>
+        <a @click.prevent="onCancel" class="button secondary">Cancel</a>
         <a
           href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
           class="button primary"
-          target="_blank"
-        >Submit manually</a>
+          target="_blank">Submit manually</a>
       </div>
     </div>
 
@@ -101,10 +95,10 @@ export default {
       return `Upload failed`;
     },
     rawData() {
-      let rawData = JSON.stringify(this.submit.sendObject, null, 2);
+      const rawData = JSON.stringify(this.submit.sendObject, null, 2);
 
       if (this.submit.state === `error`) {
-        return "```json\n" + rawData + "\n\n\n```" + this.submit.error;
+        return '```json\n' + rawData + '\n\n\n```' + this.submit.error;
       }
 
       return rawData;
@@ -127,7 +121,8 @@ export default {
         this.submit.pullRequestUrl = response.data.pullRequestUrl;
         this.submit.state = `success`;
         this.clearAutoSave();
-      } catch (error) {
+      }
+      catch (error) {
         console.error(`There was a problem with the request.`, error);
 
         this.submit.error = error.message;
@@ -135,13 +130,13 @@ export default {
       }
     },
     onDownload() {
-      var dataStr =
-        "data:text/json;charset=utf-8," +
+      const dataStr =
+        `data:text/json;charset=utf-8,` +
         encodeURIComponent(JSON.stringify(this.submit.sendObject, null, 2));
-      var dlAnchorElem = this.$refs.downloadAnchorElement;
+      const dlAnchorElem = this.$refs.downloadAnchorElement;
 
-      dlAnchorElem.setAttribute("href", dataStr);
-      dlAnchorElem.setAttribute("download", "fixtures.json");
+      dlAnchorElem.setAttribute(`href`, dataStr);
+      dlAnchorElem.setAttribute(`download`, `fixtures.json`);
       dlAnchorElem.click();
     },
     onCancel() {
