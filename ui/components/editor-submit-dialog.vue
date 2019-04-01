@@ -68,12 +68,12 @@
 </template>
 
 <script>
-import a11yDialogVue from "~/components/a11y-dialog.vue";
-import { clone } from "~/assets/scripts/editor-utils.mjs";
+import a11yDialogVue from '~/components/a11y-dialog.vue';
+import { clone } from '~/assets/scripts/editor-utils.mjs';
 
 export default {
   components: {
-    "app-a11y-dialog": a11yDialogVue
+    'app-a11y-dialog': a11yDialogVue
   },
   props: {
     submit: {
@@ -142,7 +142,6 @@ export default {
       dlAnchorElem.click();
     },
     onCancel() {
-      this.submit.state = `ready`;
       this.submit.state = `closed`;
     }
   }
