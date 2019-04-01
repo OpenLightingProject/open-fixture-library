@@ -545,7 +545,6 @@ export default {
         fixtures: [this.fixture]
       };
 
-      // eslint-disable-next-line quotes, prefer-template
       this.submit.sendObject = sendObject;
       this.submit.state = `ready`;
     },

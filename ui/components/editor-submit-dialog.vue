@@ -98,7 +98,8 @@ export default {
       const rawData = JSON.stringify(this.submit.sendObject, null, 2);
 
       if (this.submit.state === `error`) {
-        return '```json\n' + rawData + '\n\n\n```' + this.submit.error;
+        // eslint-disable-next-line quotes, prefer-template
+        return '```json\n' + rawData + '\n```\n\n' + this.submit.error;
       }
 
       return rawData;
@@ -130,9 +131,8 @@ export default {
       }
     },
     onDownload() {
-      const dataStr =
-        `data:text/json;charset=utf-8,` +
-        encodeURIComponent(JSON.stringify(this.submit.sendObject, null, 2));
+      // eslint-disable-next-line prefer-template
+      const dataStr = `data:text/json;charset=utf-8,` + encodeURIComponent(JSON.stringify(this.submit.sendObject, null, 2));
       const dlAnchorElem = this.$refs.downloadAnchorElement;
 
       dlAnchorElem.setAttribute(`href`, dataStr);
