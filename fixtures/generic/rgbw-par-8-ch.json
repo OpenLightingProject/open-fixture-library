@@ -1,0 +1,109 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGBW Par 8 CH",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Adrian Branchadell"],
+    "createDate": "2019-04-01",
+    "lastModifyDate": "2019-04-01"
+  },
+  "links": {
+    "productPage": [
+      "https://www.thomann.de/es/eurolite_led_party_tcl_spot.htm?glp=1&gclid=EAIaIQobChMIjLWj49Wv4QIVhUPTCh2iQwKLEAQYASABEgLGs_D_BwE"
+    ]
+  },
+  "rdm": {
+    "modelId": 1234,
+    "softwareVersion": "1.0"
+  },
+  "physical": {
+    "dimensions": [130, 130, 130],
+    "weight": 0.5,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "constant": false,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "soundControlled": false,
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "randomTiming": false
+      }
+    },
+    "Change Colors": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Change Colors Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8CH",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Change Colors",
+        "Change Colors Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
