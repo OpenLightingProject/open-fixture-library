@@ -23,8 +23,9 @@
       Your fixture was successfully uploaded to GitHub (see the
       <a
         :href="submit.pullRequestUrl"
-        target="_blank">pull request</a>
-      ). It will be now reviewed and then published on the website (this may take a few days). Thank you for your contribution!
+        target="_blank">pull request</a>).
+      It will be now reviewed and then published on the website (this may take a few days).
+      Thank you for your contribution!
 
       <div class="button-bar right">
         <nuxt-link to="/" class="button secondary">Back to homepage</nuxt-link>
@@ -38,12 +39,10 @@
     </div>
 
     <div v-else-if="submit.state === `error`">
-      <span>
-        Unfortunately, there was an error while uploading. Please copy the following data and
-        <a
-          href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
-          target="_blank">manually submit them to GitHub</a>.
-      </span>
+      Unfortunately, there was an error while uploading. Please copy the following data and
+      <a
+        href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
+        target="_blank">manually submit them to GitHub</a>.
 
       <textarea v-model="rawData" readonly />
 
