@@ -1,0 +1,546 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGB Power Batten",
+  "shortName": "EQLED032",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Phill"],
+    "createDate": "2019-04-01",
+    "lastModifyDate": "2019-04-01"
+  },
+  "links": {
+    "manual": [
+      "http://www.prolight.co.uk/ftp-in/EQLED032A_Manual.pdf"
+    ],
+    "productPage": [
+      "https://prolight.co.uk/product/rgb-power-batten"
+    ]
+  },
+  "physical": {
+    "dimensions": [88.5, 1064, 85],
+    "weight": 2.8,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Function": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Generic",
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Generic",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Generic",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Generic",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Generic",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Generic",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Generic",
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Generic",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "Generic",
+          "comment": "Program 1"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "Generic",
+          "comment": "Program 2"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "Generic",
+          "comment": "Program 3"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "Generic",
+          "comment": "Program 4"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "Generic",
+          "comment": "Program 5"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "Generic",
+          "comment": "Program 6"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "Generic",
+          "comment": "Program 7"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "Generic",
+          "comment": "Program 8"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "Generic",
+          "comment": "Program 9"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "Generic",
+          "comment": "Program 10"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "Generic",
+          "comment": "Program 11"
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "Generic",
+          "comment": "Program 12"
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "Generic",
+          "comment": "Program 13"
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "Generic",
+          "comment": "Program 14"
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "Generic",
+          "comment": "Program 15"
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "Generic",
+          "comment": "Program 16"
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "Generic",
+          "comment": "Program 17"
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "Generic",
+          "comment": "Program 18"
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "Generic",
+          "comment": "Program 19"
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "Generic",
+          "comment": "Program 20"
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "Generic",
+          "comment": "Program 21"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "Generic",
+          "comment": "Sound Effect"
+        }
+      ]
+    },
+    "Speed/sound": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Generic",
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [8, 231],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Speed"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound sensitivity"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Flash": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Flash",
+        "speedStart": "0Hz",
+        "speedEnd": "50Hz"
+      }
+    },
+    "Segment 1&2 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Segment 1&2 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Segment 1&2 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Segment 3&4 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Segment 3&4 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Segment 3&4 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Segment 5&6 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Segment 5&6 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Segment 5&6 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Segment 7&8 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Segment 7&8 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Segment 7&8 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Segment 1 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Segment 1 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Segment 1 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Segment 2 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Segment 2 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Segment 2 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Segment 3 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Segment 3 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Segment 3 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Segment 4 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Segment 4 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Segment 4 Blue ": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Segment 5 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Segment 5 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Segment 5 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Segment 6 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Segment 6 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Segment 6 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Segment 7 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Segment 7 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Segment 7 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Segment 8 Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Segment 8 Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Segment 8 Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2 channel",
+      "channels": [
+        "Function",
+        "Speed/sound"
+      ]
+    },
+    {
+      "name": "3 channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4 channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "7 channel",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Function",
+        "Speed/sound",
+        "Flash",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "14 channel",
+      "channels": [
+        "Segment 1&2 Red",
+        "Segment 1&2 Green",
+        "Segment 1&2 Blue",
+        "Segment 3&4 Red",
+        "Segment 3&4 Green",
+        "Segment 3&4 Blue",
+        "Segment 5&6 Red",
+        "Segment 5&6 Green",
+        "Segment 5&6 Blue",
+        "Segment 7&8 Red",
+        "Segment 7&8 Green",
+        "Segment 7&8 Blue",
+        "Flash",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "26 channel",
+      "channels": [
+        "Segment 1 Red",
+        "Segment 1 Green",
+        "Segment 1 Blue",
+        "Segment 2 Red",
+        "Segment 2 Green",
+        "Segment 2 Blue",
+        "Segment 3 Red",
+        "Segment 3 Green",
+        "Segment 3 Blue",
+        "Segment 4 Red",
+        "Segment 4 Green",
+        "Segment 4 Blue ",
+        "Segment 5 Red",
+        "Segment 5 Green",
+        "Segment 5 Blue",
+        "Segment 6 Red",
+        "Segment 6 Green",
+        "Segment 6 Blue",
+        "Segment 7 Red",
+        "Segment 7 Green",
+        "Segment 7 Blue",
+        "Segment 8 Red",
+        "Segment 8 Green",
+        "Segment 8 Blue",
+        "Flash",
+        "Dimmer"
+      ]
+    }
+  ]
+}
