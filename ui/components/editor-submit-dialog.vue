@@ -40,9 +40,7 @@
 
     <div v-else-if="submit.state === `success`">
       Your fixture was successfully uploaded to GitHub (see the
-      <a
-        :href="pullRequestUrl"
-        target="_blank">pull request</a>).
+      <a :href="pullRequestUrl" target="_blank">pull request</a>).
       It will be now reviewed and then published on the website (this may take a few days).
       Thank you for your contribution!
 
@@ -52,8 +50,8 @@
           href="/fixture-editor"
           class="button secondary"
           @click.prevent="$emit(`reset`)">Create another fixture</a>
-        <a :href="pullRequestUrl" class="button secondary" target="_blank">See pull request</a>
-        <a class="button primary" @click.prevent="onDownload">Download</a>
+        <a class="button secondary" @click.prevent="onDownload">Download</a>
+        <a :href="pullRequestUrl" class="button primary" target="_blank">See pull request</a>
       </div>
     </div>
 
@@ -152,7 +150,7 @@ export default {
         }
 
         this.downloadFileName = `${response.data.fixtureKey}.json`;
-        this.downloadFileUrl = `data:text/json;charset=utf-8,${encodeURIComponent(response.data.fixtureJson)}`;
+        this.downloadFileUrl = `data:application/json;charset=utf-8,${encodeURIComponent(response.data.fixtureJson)}`;
         this.validationErrors = response.data.errors;
         this.validationWarnings = response.data.warnings;
         this.submit.state = `ready`;
