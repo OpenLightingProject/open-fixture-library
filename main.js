@@ -78,6 +78,9 @@ app.get(`/download.:format([a-z0-9_.-]+)`, (request, response, next) => {
 
 app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
   const { format } = request.params;
+  // TODO
+  const manKey = 'adb';
+  const fixKey = 'xxx';
 
   if (!plugins.exportPlugins.includes(format)) {
     next();
@@ -103,8 +106,7 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
 
   const outObject = getOutObjectFromEditorData(request.body.fixtures);
   let fixtureJsonObject = Object.entries(outObject.fixtures)[0][1];
-  // TODO
-  let fixture = new Fixture('adb', 'sdfdsf', fixtureJsonObject);
+  let fixture = new Fixture(manKey, fixKey, fixtureJsonObject);
 
   let fixtures = [];
   fixtures.push(fixture);

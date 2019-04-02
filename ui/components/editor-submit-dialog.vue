@@ -30,7 +30,7 @@
 
       <div class="button-bar right">
         <a class="button secondary" @click.prevent="onCancel">Continue editing</a>
-        <app-download-button :download="'download-editor'" :help="false" :fixture="submit.sendObject" />
+        <app-download-button :download="'download-editor'" :help="false" :fixtures="submit.sendObject" />
         <a class="button primary" @click.prevent="onSubmit">Submit to OFL</a>
       </div>
     </div>
@@ -50,6 +50,7 @@
           class="button secondary"
           @click.prevent="$emit(`reset`)">Create another fixture</a>
         <a :href="pullRequestUrl" class="button secondary" target="_blank">See pull request</a>
+        <!-- TODO -->
         <a class="button primary" @click.prevent="onDownload">Download</a>
       </div>
     </div>
@@ -188,9 +189,6 @@ export default {
         this.error = error.message;
         this.submit.state = `error`;
       }
-    },
-    onDownload() {
-      this.$refs.downloadAnchorElement.click();
     },
     onCancel() {
       this.submit.state = `closed`;

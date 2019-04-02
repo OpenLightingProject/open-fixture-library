@@ -1,7 +1,5 @@
 <template>
   <div class="container">
-    <a ref="downloadAnchorElement" download="ofl-editor-fixtures.json" hidden />
-
     <div :class="{ 'download-button': true, 'big': big, 'light': light }">
       <a href="#" class="title" @click.prevent>{{ title }}</a>
       <ul>
@@ -201,7 +199,12 @@ export default {
       required: false,
       default: false
     },
-    fixture: {
+    light: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+    fixtures: {
       type: Object,
       required: false,
       default: undefined
@@ -245,15 +248,53 @@ export default {
     blur(event) {
       event.target.blur();
     },
-    onDownload(plugin) {
-      if (this.fixture) {
-        const response = this.$axios.post(
+    async onDownload(plugin) {
+      if (this.fixtures) {
+        const response = await this.$axios.post(
           `/download-editor.${plugin}`,
-          this.fixture
+          this.fixtures
         );
-        console.log('AAAA', response);
+
         if (response.data.error) {
           throw new Error(response.data.error);
+        }
+
+        var filename = "";
+        var disposition = response.headers[`content-disposition`];
+        if (disposition && disposition.indexOf('attachment') !== -1) {
+            var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+            var matches = filenameRegex.exec(disposition);
+            if (matches != null && matches[1]) filename = matches[1].replace(/['"]/g, '');
+        }
+        var type = response.headers[`content-type`];
+
+        var blob = typeof File === 'function'
+            ? new File([response.data], filename, { type: type })
+            : new Blob([response.data], { type: type });
+        if (typeof window.navigator.msSaveBlob !== 'undefined') {
+            // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created. These URLs will no longer resolve as the data backing the URL has been freed."
+            window.navigator.msSaveBlob(blob, filename);
+        } else {
+            var URL = window.URL || window.webkitURL;
+            var downloadUrl = URL.createObjectURL(blob);
+
+            if (filename) {
+                // use HTML5 a[download] attribute to specify filename
+                var a = document.createElement("a");
+                // safari doesn't support this yet
+                if (typeof a.download === 'undefined') {
+                    window.location = downloadUrl;
+                } else {
+                    a.href = downloadUrl;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                }
+            } else {
+                window.location = downloadUrl;
+            }
+
+            setTimeout(function () { URL.revokeObjectURL(downloadUrl); }, 100); // cleanup
         }
       } else if (this.isSingleFixture) {
         window.open(`/${this.download}.${plugin}`);
