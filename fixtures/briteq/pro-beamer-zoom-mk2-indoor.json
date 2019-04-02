@@ -213,112 +213,213 @@
       ]
     },
     "Auto Programs": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 40],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
         },
         {
           "dmxRange": [41, 50],
           "type": "Generic",
-          "comment": "Auto 1"
+          "comment": "Auto 1",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
         },
         {
           "dmxRange": [51, 60],
           "type": "Generic",
-          "comment": "Auto 2"
+          "comment": "Auto 2",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
         },
         {
           "dmxRange": [61, 70],
           "type": "Generic",
-          "comment": "Auto 3"
+          "comment": "Auto 3",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
         },
         {
           "dmxRange": [71, 80],
           "type": "Generic",
-          "comment": "Auto 4"
+          "comment": "Auto 4",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
         },
         {
           "dmxRange": [81, 90],
           "type": "Generic",
-          "comment": "Auto 5"
+          "comment": "Auto 5",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
         },
         {
           "dmxRange": [91, 100],
           "type": "Generic",
-          "comment": "Auto 6"
+          "comment": "Auto 6",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
         },
         {
           "dmxRange": [101, 110],
           "type": "Generic",
-          "comment": "Auto 7"
+          "comment": "Auto 7",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
         },
         {
           "dmxRange": [111, 120],
           "type": "Generic",
-          "comment": "Auto 8"
+          "comment": "Auto 8",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
         },
         {
           "dmxRange": [121, 130],
           "type": "Generic",
-          "comment": "Auto 9"
+          "comment": "Auto 9",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
         },
         {
           "dmxRange": [131, 140],
           "type": "Generic",
-          "comment": "Auto 10"
+          "comment": "Auto 10",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
         },
         {
           "dmxRange": [141, 150],
           "type": "Generic",
-          "comment": "PR.01"
+          "comment": "PR.01",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
         },
         {
           "dmxRange": [151, 160],
           "type": "Generic",
-          "comment": "PR.02"
+          "comment": "PR.02",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
         },
         {
           "dmxRange": [161, 170],
           "type": "Generic",
-          "comment": "PR.03"
+          "comment": "PR.03",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
         },
         {
           "dmxRange": [171, 180],
           "type": "Generic",
-          "comment": "PR.04"
+          "comment": "PR.04",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
         },
         {
           "dmxRange": [181, 190],
           "type": "Generic",
-          "comment": "PR.05"
+          "comment": "PR.05",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
         },
         {
           "dmxRange": [191, 200],
           "type": "Generic",
-          "comment": "PR.06"
+          "comment": "PR.06",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
         },
         {
           "dmxRange": [201, 210],
           "type": "Generic",
-          "comment": "PR.07"
+          "comment": "PR.07",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
         },
         {
           "dmxRange": [211, 220],
           "type": "Generic",
-          "comment": "PR.08"
+          "comment": "PR.08",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
         },
         {
           "dmxRange": [221, 230],
           "type": "Generic",
-          "comment": "PR.09"
+          "comment": "PR.09",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
         },
         {
           "dmxRange": [231, 255],
           "type": "Generic",
-          "comment": "PR.10"
+          "comment": "PR.10",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
         }
       ]
+    },
+    "Step Time": {
+      "capability": {
+        "type": "Time",
+        "timeStart": "short",
+        "timeEnd": "long",
+        "comment": "Is short…long correct?"
+      }
+    },
+    "Fade Time": {
+      "capability": {
+        "type": "Time",
+        "timeStart": "short",
+        "timeEnd": "long",
+        "comment": "Is short…long correct?"
+      }
     },
     "Auto Program Speed": {
       "capability": {
@@ -439,8 +540,26 @@
   },
   "modes": [
     {
-      "name": "TOUR16",
-      "shortName": "Tour16",
+      "name": "Tour 8bit",
+      "shortName": "TOUR",
+      "channels": [
+        "Master Dimmer",
+        "Red Master / Step Time",
+        "Green Master / Fade Time",
+        "Blue Master",
+        "White Master",
+        "Color Macro",
+        "Strobe",
+        "Auto Programs",
+        "Auto Program Speed",
+        "Dimmer Speed",
+        "Zoom",
+        "Reset"
+      ]
+    },
+    {
+      "name": "Tour 16bit",
+      "shortName": "TR16",
       "channels": [
         "Master Dimmer",
         "Master Dimmer fine",
