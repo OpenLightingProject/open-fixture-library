@@ -16,6 +16,7 @@
       "https://briteq-lighting.com/pro-beamer-zoom-mk2-indoor"
     ]
   },
+  "helpWanted": "In FULL mode, is Center/Outer correct? Is Step Time and Fade Time also used in other modes than TOUR?",
   "physical": {
     "dimensions": [236, 191, 290],
     "weight": 6.6,
@@ -571,6 +572,110 @@
         "Blue Master fine",
         "White Master",
         "White Master fine",
+        "Color Macro",
+        "Strobe",
+        "Auto Programs",
+        "Auto Program Speed",
+        "Dimmer Speed",
+        "Zoom",
+        "Reset"
+      ]
+    },
+    {
+      "name": "RGB",
+      "shortName": "ARC.1",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "DRGB",
+      "shortName": "AR1.D",
+      "channels": [
+        "Master Dimmer",
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "RGBW",
+      "shortName": "ARC.2",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master"
+      ]
+    },
+    {
+      "name": "DRGBW",
+      "shortName": "AR2.D",
+      "channels": [
+        "Master Dimmer",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master"
+      ]
+    },
+    {
+      "name": "DRGBW + Strobe",
+      "shortName": "AR2.S",
+      "channels": [
+        "Master Dimmer",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "HSV",
+      "shortName": "HSV",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Value"
+      ]
+    },
+    {
+      "name": "DRGBW + Zoom",
+      "shortName": "AR2.Z",
+      "channels": [
+        "Master Dimmer",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Zoom",
+        "Reset"
+      ]
+    },
+    {
+      "name": "Full",
+      "shortName": "FULL",
+      "channels": [
+        "Master Dimmer",
+        "Master Dimmer fine",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Center", "Outer"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine",
+            "White $pixelKey",
+            "White $pixelKey fine"
+          ]
+        },
         "Color Macro",
         "Strobe",
         "Auto Programs",
