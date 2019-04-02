@@ -28,39 +28,26 @@
       "degreesMinMax": [8, 40]
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [null, "O1", null,     "O2", null],
+        [null, null, null,     null, null],
+        ["O6", null, "Center", null, "O3"],
+        [null, null, null,     null, null],
+        [null, "O5", null,     "O4", null]
+      ]
+    ],
+    "pixelGroups": {
+      "Master": "all",
+      "Outer": { "name": ["^O[1-6]$"] }
+    }
+  },
   "availableChannels": {
     "Master Dimmer": {
       "fineChannelAliases": ["Master Dimmer fine"],
       "capability": {
         "type": "Intensity"
-      }
-    },
-    "Red": {
-      "fineChannelAliases": ["Red fine"],
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green": {
-      "fineChannelAliases": ["Green fine"],
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue": {
-      "fineChannelAliases": ["Blue fine"],
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White": {
-      "fineChannelAliases": ["White fine"],
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
       }
     },
     "Color Macro": {
@@ -420,6 +407,36 @@
       }
     }
   },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "fineChannelAliases": ["Red $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "fineChannelAliases": ["Green $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "fineChannelAliases": ["Blue $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "fineChannelAliases": ["White $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
   "modes": [
     {
       "name": "TOUR16",
@@ -427,14 +444,14 @@
       "channels": [
         "Master Dimmer",
         "Master Dimmer fine",
-        "Red",
-        "Red fine",
-        "Green",
-        "Green fine",
-        "Blue",
-        "Blue fine",
-        "White",
-        "White fine",
+        "Red Master",
+        "Red Master fine",
+        "Green Master",
+        "Green Master fine",
+        "Blue Master",
+        "Blue Master fine",
+        "White Master",
+        "White Master fine",
         "Color Macro",
         "Strobe",
         "Auto Programs",
