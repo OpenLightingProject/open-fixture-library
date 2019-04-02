@@ -22,10 +22,13 @@
           <li v-for="message in validationWarnings" :key="message">{{ message }}</li>
         </ul>
 
-        You can try to resolve them or continue anyway with submitting your fixture to the Open Fixture Library website (then we will fix those issues) or downloading it for private use.
+        You can try to resolve them or continue anyway with submitting your fixture
+        to the Open Fixture Library project (then we will fix those issues).
+        You can also only download the fixture for private use.
       </template>
       <template v-else>
-        The fixture validation was successful. You can now submit your fixture to the Open Fixture Library website or download it for private use.
+        The fixture validation was successful. You can now submit your fixture to
+        the Open Fixture Library project or only download it for private use.
       </template>
 
       <div class="button-bar right">
@@ -63,7 +66,7 @@
       <textarea v-model="rawData" readonly />
 
       <div class="button-bar right">
-        <a class="button secondary" @click.prevent="onCancel">Cancel</a>
+        <a class="button secondary" @click.prevent="onCancel">Close</a>
         <a
           href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
           class="button primary"
