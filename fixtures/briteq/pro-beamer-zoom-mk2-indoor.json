@@ -17,12 +17,15 @@
     ]
   },
   "physical": {
-    "dimensions": [290, 191, 236],
+    "dimensions": [236, 191, 290],
     "weight": 6.6,
     "power": 128,
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
-      "type": "LED"
+      "type": "7x 12W RGBW LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [8, 40]
     }
   },
   "availableChannels": {
