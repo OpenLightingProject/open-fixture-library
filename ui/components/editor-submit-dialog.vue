@@ -30,7 +30,7 @@
 
       <div class="button-bar right">
         <a class="button secondary" @click.prevent="onCancel">Continue editing</a>
-        <a class="button secondary" @click.prevent="onDownload">Download</a>
+        <app-download-button :download="'download-editor'" :help="false" :fixture="submit.sendObject" />
         <a class="button primary" @click.prevent="onSubmit">Submit to OFL</a>
       </div>
     </div>
@@ -76,11 +76,13 @@
 
 <script>
 import a11yDialogVue from '~/components/a11y-dialog.vue';
+import downloadButtonVue from '~/components/download-button.vue';
 import { clone } from '~/assets/scripts/editor-utils.mjs';
 
 export default {
   components: {
-    'app-a11y-dialog': a11yDialogVue
+    'app-a11y-dialog': a11yDialogVue,
+    'app-download-button': downloadButtonVue
   },
   props: {
     submit: {

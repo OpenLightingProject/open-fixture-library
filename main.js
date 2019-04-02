@@ -1,5 +1,8 @@
 #!/usr/bin/node
 
+// see https://github.com/standard-things/esm#getting-started
+require = require(`esm`)(module); // eslint-disable-line no-global-assign
+
 const promisify = require(`util`).promisify;
 const readFile = promisify(require(`fs`).readFile);
 const path = require(`path`);
@@ -14,6 +17,10 @@ const packageJson = require(`./package.json`);
 const plugins = require(`./plugins/plugins.json`);
 const { fixtureFromRepository } = require(`./lib/model.js`);
 const register = require(`./fixtures/register.json`);
+const fixtureJsonStringify = require(`./lib/fixture-json-stringify.js`);
+const getOutObjectFromEditorData = require(`./lib/get-out-object-from-editor-data.js`);
+const Fixture = require(`./lib/model/Fixture.mjs`).default;
+
 
 require(`./lib/load-env-file.js`);
 
@@ -66,6 +73,52 @@ app.get(`/download.:format([a-z0-9_.-]+)`, (request, response, next) => {
       response
         .status(500)
         .send(`Exporting all fixtures with ${format} failed: ${error.toString()}`);
+    });
+});
+
+app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
+  const { format } = request.params;
+
+  if (!plugins.exportPlugins.includes(format)) {
+    next();
+    return;
+  }
+
+  if (format === `json`) {
+    readFile(`./fixtures/${manKey}/${fixKey}.json`, `utf8`)
+      .then(data => JSON.parse(data))
+      .then(fixtureJson => response.json(fixtureJson))
+      .catch(error => {
+        response
+          .status(500)
+          .send(`Fetching ${manKey}/${fixKey}.json failed: ${error.toString()}`);
+      });
+    return;
+  }
+
+  if (!plugins.exportPlugins.includes(format)) {
+    next();
+    return;
+  }
+
+  const outObject = getOutObjectFromEditorData(request.body.fixtures);
+  let fixtureJsonObject = Object.entries(outObject.fixtures)[0][1];
+  // TODO
+  let fixture = new Fixture('adb', 'sdfdsf', fixtureJsonObject);
+
+  let fixtures = [];
+  fixtures.push(fixture);
+
+  const plugin = requireNoCacheInDev(path.join(__dirname, `plugins`, format, `export.js`));
+  plugin.export(fixtures, {
+    baseDir: __dirname,
+    date: new Date()
+  })
+    .then(outfiles => downloadFiles(response, outfiles, `${manKey}_${fixKey}_${format}`))
+    .catch(error => {
+      response
+        .status(500)
+        .send(`Exporting fixture ${manKey}/${fixKey} with ${format} failed: ${error.toString()}`);
     });
 });
 

@@ -1,21 +1,22 @@
 <template>
   <div class="container">
-    <div :class="{ 'download-button': true, 'big': big }">
+    <a ref="downloadAnchorElement" download="ofl-editor-fixtures.json" hidden />
+
+    <div :class="{ 'download-button': true, 'big': big, 'light': light }">
       <a href="#" class="title" @click.prevent>{{ title }}</a>
       <ul>
         <li v-for="plugin in exportPlugins" :key="plugin.key">
           <a
-            :href="`${baseLink}.${plugin.key}`"
             :title="`Download ${plugin.name} fixture definition${isSingleFixture ? `` : `s`}`"
             rel="nofollow"
-            @click="blur($event)">
+            @click="onDownload(plugin.key); blur($event)">
             {{ plugin.name }}
           </a>
         </li>
       </ul>
     </div>
 
-    <nuxt-link to="/about/plugins" :target="big ? null : `_blank`" class="help-link">
+    <nuxt-link v-if="help" to="/about/plugins" :target="big ? null : `_blank`" class="help-link">
       <app-svg name="help-circle-outline" /><span class="name">Download instructions</span>
     </nuxt-link>
   </div>
@@ -25,6 +26,7 @@
 .container {
   text-align: center;
   margin: 0 0 1em;
+  display: inline-block;
 
   @media (min-width: 650px) {
     margin: 0;
@@ -58,6 +60,10 @@
 </style>
 
 <style lang="scss">
+#submit-dialog {
+  overflow: unset;
+}
+
 .download-button {
   text-align: left;
 
@@ -89,17 +95,15 @@
   }
 
   & > ul {
+    display: none;
     position: absolute;
-    left: -9999px;
-    top: 100%;
     padding: 0.7em 0;
     margin: 0;
-    width: 100%;
     list-style: none;
     background-color: $grey-50;
     border-radius: 0 0 2px 2px;
     box-shadow: 0 2px 2px rgba(#000, 0.2);
-    z-index: 90;
+    z-index: 2000;
 
     & a {
       display: block;
@@ -125,7 +129,7 @@
   &:hover > ul,
   & > .title:focus + ul,
   & > .title:active + ul {
-    left: 0;
+    display: block;
   }
 
   /* single rule since unsupporting browsers skip the whole rule */
@@ -134,7 +138,7 @@
     background: $orange-700;
   }
   &:focus-within > ul {
-    left: 0;
+    display: block;
   }
 }
 
@@ -196,6 +200,16 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    fixture: {
+      type: Object,
+      required: false,
+      default: undefined
+    },
+    help: {
+      type: Boolean,
+      required: false,
+      default: true
     }
   },
   data() {
@@ -230,6 +244,22 @@ export default {
   methods: {
     blur(event) {
       event.target.blur();
+    },
+    onDownload(plugin) {
+      if (this.fixture) {
+        const response = this.$axios.post(
+          `/download-editor.${plugin}`,
+          this.fixture
+        );
+        console.log('AAAA', response);
+        if (response.data.error) {
+          throw new Error(response.data.error);
+        }
+      } else if (this.isSingleFixture) {
+        window.open(`/${this.download}.${plugin}`);
+      } else {
+        window.open(`/download.${plugin}`);
+      }
     }
   }
 };
