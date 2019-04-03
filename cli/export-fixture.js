@@ -2,7 +2,7 @@
 const fs = require(`fs`);
 const path = require(`path`);
 const minimist = require(`minimist`);
-const colors = require(`colors`);
+const chalk = require(`chalk`);
 const mkdirp = require(`mkdirp`);
 
 const plugins = require(`../plugins/plugins.json`);
@@ -31,17 +31,17 @@ if (args.help) {
 }
 
 if (!args.plugin) {
-  console.error(`${colors.red(`[Error]`)} No plugin specified. See --help for usage.`);
+  console.error(`${chalk.red(`[Error]`)} No plugin specified. See --help for usage.`);
   process.exit(1);
 }
 
 if (args._.length === 0 && !args.a) {
-  console.error(`${colors.red(`[Error]`)} No fixtures specified. See --help for usage.`);
+  console.error(`${chalk.red(`[Error]`)} No fixtures specified. See --help for usage.`);
   process.exit(1);
 }
 
 if (!plugins.exportPlugins.includes(args.plugin)) {
-  console.error(`${colors.red(`[Error]`)} Plugin '${args.plugin}' does not exist or does not support exporting.\n\navailable plugins: ${Object.keys(plugins.exportPlugins).join(`, `)}`);
+  console.error(`${chalk.red(`[Error]`)} Plugin '${args.plugin}' does not exist or does not support exporting.\n\navailable plugins: ${Object.keys(plugins.exportPlugins).join(`, `)}`);
   process.exit(1);
 }
 
@@ -81,12 +81,12 @@ plugin.export(
         console.log(`Created file ${filePath}`);
       }
       else {
-        console.log(`\n${colors.yellow(`File name: '${file.name}'`)}`);
+        console.log(`\n${chalk.yellow(`File name: '${file.name}'`)}`);
         console.log(file.content);
       }
     });
   })
   .catch(error => {
-    console.error(`${colors.red(`[Error]`)} Exporting failed:`, error);
+    console.error(`${chalk.red(`[Error]`)} Exporting failed:`, error);
     process.exit(1);
   });
