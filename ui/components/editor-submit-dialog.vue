@@ -30,7 +30,7 @@
 
       <div class="button-bar right">
         <a class="button secondary" @click.prevent="onCancel">Continue editing</a>
-        <app-download-button :download="'download-editor'" :help="false" :fixtures="submit.sendObject" />
+        <app-download-button :help="false" :editorFixtures="submit.sendObject" />
         <a class="button primary" @click.prevent="onSubmit">Submit to OFL</a>
       </div>
     </div>
@@ -74,6 +74,14 @@
 
   </app-a11y-dialog>
 </template>
+
+<style lang="scss">
+#submit-dialog {
+  // used for the download button to be able to show
+  // the drop down over the dialog
+  overflow: unset;
+}
+</style>
 
 <script>
 import a11yDialogVue from '~/components/a11y-dialog.vue';
