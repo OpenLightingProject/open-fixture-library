@@ -1,5 +1,5 @@
 #!/usr/bin/node
-const colors = require(`colors`);
+const chalk = require(`chalk`);
 
 // see https://github.com/standard-things/esm#getting-started
 require = require(`esm`)(module); // eslint-disable-line no-global-assign
@@ -29,11 +29,11 @@ testRandomChannelDownscaling(3);
 
 console.log();
 if (errorCount > 0) {
-  console.log(`${colors.red(`[FAIL]`)} Test failed with ${errorCount} error${errorCount > 1 ? `s` : ``}.`);
+  console.log(`${chalk.red(`[FAIL]`)} Test failed with ${errorCount} error${errorCount > 1 ? `s` : ``}.`);
   process.exit(1);
 }
 else {
-  console.log(`${colors.green(`[PASS]`)} Test passed.`);
+  console.log(`${chalk.green(`[PASS]`)} Test passed.`);
   process.exit(0);
 }
 
@@ -316,10 +316,10 @@ function testArraysEqual(description, array, desiredArray) {
  */
 function parseTestResult(passed, passString, failString) {
   if (passed) {
-    console.log(`${colors.green(`[PASS]`)} ${passString}`);
+    console.log(`${chalk.green(`[PASS]`)} ${passString}`);
   }
   else {
-    console.log(`${colors.red(`[FAIL]`)} ${failString}`);
+    console.log(`${chalk.red(`[FAIL]`)} ${failString}`);
     errorCount++;
   }
 }
