@@ -313,7 +313,6 @@ export default {
 
         // download the data as a file. see the following link for more details:
         // https://stackoverflow.com/questions/16086162/handle-file-download-from-ajax-post
-        
         const response = await this.$axios.post(
           `/download-editor.${plugin}`,
           this.editorFixtures

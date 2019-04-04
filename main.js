@@ -17,7 +17,6 @@ const packageJson = require(`./package.json`);
 const plugins = require(`./plugins/plugins.json`);
 const { fixtureFromRepository } = require(`./lib/model.js`);
 const register = require(`./fixtures/register.json`);
-const fixtureJsonStringify = require(`./lib/fixture-json-stringify.js`);
 const getOutObjectFromEditorData = require(`./lib/get-out-object-from-editor-data.js`);
 const Fixture = require(`./lib/model/Fixture.mjs`).default;
 
@@ -78,35 +77,19 @@ app.get(`/download.:format([a-z0-9_.-]+)`, (request, response, next) => {
 
 app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
   const { format } = request.params;
-  // TODO
-  const manKey = 'adb';
-  const fixKey = 'xxx';
 
   if (!plugins.exportPlugins.includes(format)) {
-    next();
-    return;
-  }
+    response
+      .status(500)
+      .send(`Exporting fixture with ${format} failed: Plugin is not supported.`);
 
-  if (format === `json`) {
-    readFile(`./fixtures/${manKey}/${fixKey}.json`, `utf8`)
-      .then(data => JSON.parse(data))
-      .then(fixtureJson => response.json(fixtureJson))
-      .catch(error => {
-        response
-          .status(500)
-          .send(`Fetching ${manKey}/${fixKey}.json failed: ${error.toString()}`);
-      });
-    return;
-  }
-
-  if (!plugins.exportPlugins.includes(format)) {
-    next();
     return;
   }
 
   const outObject = getOutObjectFromEditorData(request.body.fixtures);
-  let fixtureJsonObject = Object.entries(outObject.fixtures)[0][1];
-  let fixture = new Fixture(manKey, fixKey, fixtureJsonObject);
+  const [manKey, fixKey] = Object.entries(outObject.fixtures)[0][0].split(`/`);
+  const fixtureJsonObject = Object.entries(outObject.fixtures)[0][1];
+  const fixture = new Fixture(manKey, fixKey, fixtureJsonObject);
 
   let fixtures = [];
   fixtures.push(fixture);

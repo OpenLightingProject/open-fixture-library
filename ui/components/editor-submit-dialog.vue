@@ -11,6 +11,8 @@
       :download="downloadFileName"
       hidden />
 
+    <div v-if="submit.state === `validating`">Validating…</div>
+
     <div v-if="submit.state === `loading`">Uploading…</div>
 
     <div v-else-if="submit.state === `ready`">
@@ -116,6 +118,10 @@ export default {
         return `Submit your new fixture`;
       }
 
+      if (this.submit.state === `validating`) {
+        return `Validating your new fixture…`;
+      }
+
       if (this.submit.state === `loading`) {
         return `Submitting your new fixture…`;
       }
@@ -148,7 +154,7 @@ export default {
     async onValidate() {
       console.log(`validate`, clone(this.submit.sendObject));
 
-      this.submit.state = `loading`;
+      this.submit.state = `validating`;
       try {
         const response = await this.$axios.post(
           `/ajax/submit-editor`,
