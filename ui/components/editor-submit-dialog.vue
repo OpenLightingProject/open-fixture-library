@@ -35,7 +35,7 @@
 
       <div class="button-bar right">
         <a class="button secondary" @click.prevent="onCancel">Continue editing</a>
-        <app-download-button :help="false" :editorFixtures="submit.sendObject" />
+        <app-download-button :help="false" :editor-fixtures="submit.sendObject" />
         <a class="button primary" @click.prevent="onSubmit">Submit to OFL</a>
       </div>
     </div>

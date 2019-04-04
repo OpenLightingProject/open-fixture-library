@@ -1,9 +1,10 @@
 <template>
   <div class="container">
     <div :class="{ 'download-button': true, 'big': isStyleBig, 'home': isStyleHome }">
-      <a href="#"
-        :class="{ 'button secondary': !isStyleBig && !isStyleHome, title: isStyleBig || isStyleHome }"
-        @click.prevent>{{ title }}</a>
+      <a
+         href="#"
+         :class="{ 'button secondary': !isStyleBig && !isStyleHome, title: isStyleBig || isStyleHome }"
+         @click.prevent>{{ title }}</a>
       <ul>
         <li v-for="plugin in exportPlugins" :key="plugin.key">
           <a
@@ -16,7 +17,8 @@
       </ul>
     </div>
 
-    <nuxt-link v-if="help" to="/about/plugins" :target="isStyleHome ? null : `_blank`" class="help-link">
+    <nuxt-link v-if="help" to="/about/plugins" :target="isStyleHome ? null : `_blank`"
+      class="help-link">
       <app-svg name="help-circle-outline" /><span class="name">Download instructions</span>
     </nuxt-link>
   </div>
@@ -215,27 +217,26 @@ export default {
     // how many fixtures will be downloaded, if !isSingle?
     fixtureCount: {
       type: Number,
-      required: false
+      required: false,
+      default: 0
     },
     // a fixture from the editor, not yet submitted
     editorFixtures: {
       type: Object,
-      required: false
+      required: false,
+      default: undefined
     },
     // the manufacturer key and fixture key of a submitted fixture
     submittedFixtureManKeyAndKey: {
       type: String,
-      required: false
-    },
-    // a fixture list from the editor, not yet submitted
-    editorFixtures: {
-      type: Object,
-      required: false
+      required: false,
+      default: undefined
     },
     // the button style: default, 'big' or 'home'
     buttonStyle: {
       type: String,
-      required: false
+      required: false,
+      default: undefined
     },
     // show the help box
     help: {
@@ -263,10 +264,10 @@ export default {
       return `Download all ${this.fixtureCount} fixtures`;
     },
     isStyleHome() {
-      return this.buttonStyle == 'home';
+      return this.buttonStyle === `home`;
     },
     isStyleBig() {
-      return this.buttonStyle == 'big' || this.isStyleHome;
+      return this.buttonStyle === `big` || this.isStyleHome;
     },
   },
   methods: {
@@ -274,38 +275,38 @@ export default {
       event.target.blur();
     },
     downloadDataAsFile(data, filename, type) {
-        const blob = typeof File === `function`
-            ? new File([data], filename, { type: type })
-            : new Blob([data], { type: type });
+      const blob = typeof File === `function`
+        ? new File([data], filename, { type: type })
+        : new Blob([data], { type: type });
 
-        if (typeof window.navigator.msSaveBlob !== `undefined`) {
-            // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created.
-            // These URLs will no longer resolve as the data backing the URL has been freed."
-            window.navigator.msSaveBlob(blob, filename);
+      if (typeof window.navigator.msSaveBlob !== `undefined`) {
+        // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created.
+        // These URLs will no longer resolve as the data backing the URL has been freed."
+        window.navigator.msSaveBlob(blob, filename);
+      } else {
+        const URL = window.URL || window.webkitURL;
+        const downloadUrl = URL.createObjectURL(blob);
+
+        if (filename) {
+          // use HTML5 a[download] attribute to specify filename
+          const a = document.createElement(`a`);
+
+          // safari doesn't support this in older versions
+          if (typeof a.download === `undefined`) {
+            window.location = downloadUrl;
+          } else {
+            a.href = downloadUrl;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+          }
         } else {
-            const URL = window.URL || window.webkitURL;
-            const downloadUrl = URL.createObjectURL(blob);
-
-            if (filename) {
-                // use HTML5 a[download] attribute to specify filename
-                const a = document.createElement("a");
-
-                // safari doesn't support this in older versions
-                if (typeof a.download === 'undefined') {
-                    window.location = downloadUrl;
-                } else {
-                    a.href = downloadUrl;
-                    a.download = filename;
-                    document.body.appendChild(a);
-                    a.click();
-                }
-            } else {
-                window.location = downloadUrl;
-            }
-
-            // cleanup
-            setTimeout(function () { URL.revokeObjectURL(downloadUrl); }, 100);
+          window.location = downloadUrl;
         }
+
+        // cleanup
+        setTimeout(function () { URL.revokeObjectURL(downloadUrl); }, 100);
+      }
     },
     async onDownload(plugin) {
       if (this.editorFixtures) {

@@ -91,7 +91,7 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
   const fixtureJsonObject = Object.entries(outObject.fixtures)[0][1];
   const fixture = new Fixture(manKey, fixKey, fixtureJsonObject);
 
-  let fixtures = [];
+  const fixtures = [];
   fixtures.push(fixture);
 
   const plugin = requireNoCacheInDev(path.join(__dirname, `plugins`, format, `export.js`));
