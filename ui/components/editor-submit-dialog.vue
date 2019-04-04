@@ -24,10 +24,13 @@
           <li v-for="message in validationWarnings" :key="message">{{ message }}</li>
         </ul>
 
-        You can try to resolve them or continue anyway with submitting your fixture to the Open Fixture Library website (then we will fix those issues) or downloading it for private use.
+        You can try to resolve them or continue anyway with submitting your fixture
+        to the Open Fixture Library project (then we will fix those issues).
+        You can also only download the fixture for private use.
       </template>
       <template v-else>
-        The fixture validation was successful. You can now submit your fixture to the Open Fixture Library website or download it for private use.
+        The fixture validation was successful. You can now submit your fixture to
+        the Open Fixture Library project or only download it for private use.
       </template>
 
       <div class="button-bar right">
@@ -39,9 +42,7 @@
 
     <div v-else-if="submit.state === `success`">
       Your fixture was successfully uploaded to GitHub (see the
-      <a
-        :href="pullRequestUrl"
-        target="_blank">pull request</a>).
+      <a :href="pullRequestUrl" target="_blank">pull request</a>).
       It will be now reviewed and then published on the website (this may take a few days).
       Thank you for your contribution!
 
@@ -51,9 +52,8 @@
           href="/fixture-editor"
           class="button secondary"
           @click.prevent="$emit(`reset`)">Create another fixture</a>
-        <a :href="pullRequestUrl" class="button secondary" target="_blank">See pull request</a>
-        <!-- TODO -->
-        <a class="button primary" @click.prevent="onDownload">Download</a>
+        <a class="button secondary" @click.prevent="onDownload">Download</a>
+        <a :href="pullRequestUrl" class="button primary" target="_blank">See pull request</a>
       </div>
     </div>
 
@@ -66,7 +66,7 @@
       <textarea v-model="rawData" readonly />
 
       <div class="button-bar right">
-        <a class="button secondary" @click.prevent="onCancel">Cancel</a>
+        <a class="button secondary" @click.prevent="onCancel">Close</a>
         <a
           href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
           class="button primary"
@@ -166,7 +166,7 @@ export default {
         }
 
         this.downloadFileName = `${response.data.fixtureKey}.json`;
-        this.downloadFileUrl = `data:text/json;charset=utf-8,${encodeURIComponent(response.data.fixtureJson)}`;
+        this.downloadFileUrl = `data:application/json;charset=utf-8,${encodeURIComponent(response.data.fixtureJson)}`;
         this.validationErrors = response.data.errors;
         this.validationWarnings = response.data.warnings;
         this.submit.state = `ready`;
