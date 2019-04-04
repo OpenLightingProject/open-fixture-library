@@ -1,0 +1,824 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "KNV Cube",
+  "categories": ["Effect", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2019-04-04",
+    "lastModifyDate": "2019-04-04"
+  },
+  "links": {
+    "manual": [
+      "https://www.glp.de/en/products?format=raw&task=download&fid=385"
+    ],
+    "productPage": [
+      "https://www.glp.de/en/products/creative-led-system/knv-cube"
+    ],
+    "video": [
+      "https://m.youtube.com/watch?v=JavZqUiT_ik",
+      "https://www.youtube.com/watch?v=Daz0n9FihT4"
+    ]
+  },
+  "physical": {
+    "dimensions": [250, 250, 183],
+    "weight": 9.3,
+    "power": 45,
+    "bulb": {
+      "type": "25× 30W White LEDs, 400× 0.25W RGB LEDs",
+      "colorTemperature": 5000,
+      "lumens": 55030
+    },
+    "lens": {
+      "degreesMinMax": [120, 120]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [5, 39],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [40, 74],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [75, 109],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [110, 144],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Double flash"
+        },
+        {
+          "dmxRange": [145, 179],
+          "type": "Effect",
+          "effectName": "Random pixel",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [180, 214],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [215, 249],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.289Hz",
+          "speedEnd": "16.67Hz"
+        },
+        {
+          "dmxRange": [250, 252],
+          "type": "Effect",
+          "effectName": "Hyperspeed"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Control / Settings": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "Maintenance",
+          "comment": "Idle"
+        },
+        {
+          "dmxRange": [12, 38],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [39, 41],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Flash Off"
+        },
+        {
+          "dmxRange": [42, 44],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer Flash On"
+        },
+        {
+          "dmxRange": [45, 47],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [48, 50],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimming curve Soft"
+        },
+        {
+          "dmxRange": [51, 53],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimming curve Linear"
+        },
+        {
+          "dmxRange": [54, 56],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [57, 59],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Extra Shutter RGBW"
+        },
+        {
+          "dmxRange": [60, 62],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Extra Shutter RGB only"
+        },
+        {
+          "dmxRange": [63, 65],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Extra Shutter White only"
+        },
+        {
+          "dmxRange": [66, 68],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [69, 71],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fan mode regulated"
+        },
+        {
+          "dmxRange": [72, 74],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fan mode high"
+        },
+        {
+          "dmxRange": [75, 77],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fan mode medium"
+        },
+        {
+          "dmxRange": [78, 80],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Fan mode low"
+        },
+        {
+          "dmxRange": [81, 83],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [84, 86],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Display On"
+        },
+        {
+          "dmxRange": [87, 89],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Display Off"
+        },
+        {
+          "dmxRange": [90, 92],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Display Auto"
+        },
+        {
+          "dmxRange": [93, 95],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Display invert Off"
+        },
+        {
+          "dmxRange": [96, 98],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Display invert On"
+        },
+        {
+          "dmxRange": [99, 101],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "No DMX = Capture scene"
+        },
+        {
+          "dmxRange": [102, 104],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "No DMX = Stand-alone"
+        },
+        {
+          "dmxRange": [105, 107],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "No DMX = Blackout"
+        },
+        {
+          "dmxRange": [108, 110],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "No DMX = Hold"
+        },
+        {
+          "dmxRange": [111, 113],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Test pattern On"
+        },
+        {
+          "dmxRange": [114, 116],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Test pattern Off"
+        },
+        {
+          "dmxRange": [117, 119],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Rotation Off"
+        },
+        {
+          "dmxRange": [120, 122],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Rotation 90°"
+        },
+        {
+          "dmxRange": [123, 125],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Rotation 180°"
+        },
+        {
+          "dmxRange": [126, 128],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Rotation 270°"
+        },
+        {
+          "dmxRange": [129, 131],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Pixel mirror Off"
+        },
+        {
+          "dmxRange": [132, 134],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Pixel mirror On"
+        },
+        {
+          "dmxRange": [135, 137],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "White output limitation Off"
+        },
+        {
+          "dmxRange": [138, 140],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "White output limitation 80%"
+        },
+        {
+          "dmxRange": [141, 143],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "White output limitation 60%"
+        },
+        {
+          "dmxRange": [144, 146],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "White output limitation 40%"
+        },
+        {
+          "dmxRange": [147, 149],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "White output limitation 20%"
+        },
+        {
+          "dmxRange": [150, 152],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "White output limitation 10%"
+        },
+        {
+          "dmxRange": [153, 158],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [159, 161],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "RGB output limitation Off"
+        },
+        {
+          "dmxRange": [162, 164],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "RGB output limitation 80%"
+        },
+        {
+          "dmxRange": [165, 167],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "RGB output limitation 60%"
+        },
+        {
+          "dmxRange": [168, 170],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "RGB output limitation 40%"
+        },
+        {
+          "dmxRange": [171, 173],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "RGB output limitation 20%"
+        },
+        {
+          "dmxRange": [174, 176],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "RGB output limitation 10%"
+        },
+        {
+          "dmxRange": [177, 251],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Reboot fixture"
+        }
+      ]
+    },
+    "White LEDs Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "White LEDs Flash Duration": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "7ms",
+        "durationEnd": "650ms"
+      }
+    },
+    "White LEDs Flash Rate": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [2, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.289Hz",
+          "speedEnd": "16.67Hz"
+        },
+        {
+          "dmxRange": [251, 252],
+          "type": "Effect",
+          "effectName": "Hyperspeed"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Continuously on"
+        }
+      ]
+    },
+    "FX Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [2, 253],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        }
+      ]
+    },
+    "White LEDs Flash Rate / FX Speed": {
+      "capability": {
+        "type": "Generic",
+        "comment": "TODO: Switch channel"
+      }
+    },
+    "White LEDs Flare Effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 49],
+          "type": "Effect",
+          "effectName": "Flare effect",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [60, 109],
+          "type": "Effect",
+          "effectName": "Flare effect",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "random"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [120, 169],
+          "type": "Effect",
+          "effectName": "Flare effect",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "random pixel"
+        },
+        {
+          "dmxRange": [170, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "White LEDs FX Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "NoFunction",
+          "comment": "FX Off"
+        },
+        {
+          "dmxRange": [3, 255],
+          "type": "Generic",
+          "comment": "TODO"
+        }
+      ]
+    },
+    "White LEDs FX Crossfade Time": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "EffectDuration",
+          "duration": "instant"
+        },
+        {
+          "dmxRange": [2, 127],
+          "type": "EffectDuration",
+          "durationStart": "short",
+          "durationEnd": "long",
+          "comment": "Crossfade"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "EffectDuration",
+          "durationStart": "short",
+          "durationEnd": "long",
+          "comment": "Crossfade and tail"
+        }
+      ]
+    },
+    "White LEDs Orientation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "Generic",
+          "comment": "TODO"
+        }
+      ]
+    },
+    "White LEDs FX Offset": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
+    },
+    "White LEDs FX Length": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
+    },
+    "RGB LEDs Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red Pixel $pixelKey": {
+      "fineChannelAliases": ["Red Pixel $pixelKey fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Pixel $pixelKey": {
+      "fineChannelAliases": ["Green Pixel $pixelKey fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Pixel $pixelKey": {
+      "fineChannelAliases": ["Blue Pixel $pixelKey fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "RGB LEDs Shutter / Strobe": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [5, 39],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [40, 74],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [75, 109],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [110, 144],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Double flash"
+        },
+        {
+          "dmxRange": [145, 179],
+          "type": "Effect",
+          "effectName": "Random pixel",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [180, 214],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [215, 249],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.289Hz",
+          "speedEnd": "16.67Hz"
+        },
+        {
+          "dmxRange": [250, 252],
+          "type": "Effect",
+          "effectName": "Hyperspeed"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "White Pixel $pixelKey": {
+      "fineChannelAliases": ["White Pixel $pixelKey fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "RGBW 16-bit",
+      "shortName": "10ch",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Shutter / Strobe",
+        "Control / Settings"
+      ]
+    },
+    {
+      "name": "White strobe with FX, RGB with FX",
+      "shortName": "23ch",
+      "channels": [
+        "White LEDs Intensity",
+        "White LEDs Flash Duration",
+        "White LEDs Flash Rate / FX Speed",
+        "White LEDs Flare Effect",
+        "White LEDs FX Selection",
+        "White LEDs FX Crossfade Time",
+        "White LEDs Orientation",
+        "White LEDs FX Offset",
+        "White LEDs FX Length",
+        "RGB LEDs Dimmer"
+      ]
+    },
+    {
+      "name": "RGB strobe with FX, White 25-pixel",
+      "shortName": "40ch",
+      "channels": [
+        "RGB LEDs Dimmer"
+      ]
+    },
+    {
+      "name": "White strobe with FX, RGB 25-pixel",
+      "channels": [
+        "White LEDs Intensity",
+        "White LEDs Flash Duration",
+        "White LEDs Flash Rate / FX Speed",
+        "White LEDs Flare Effect",
+        "White LEDs FX Selection",
+        "White LEDs FX Crossfade Time",
+        "White LEDs Orientation",
+        "White LEDs FX Offset",
+        "White LEDs FX Length",
+        "Red Pixel $pixelKey",
+        "Green Pixel $pixelKey",
+        "Blue Pixel $pixelKey",
+        "RGB LEDs Shutter / Strobe",
+        "Control / Settings"
+      ]
+    },
+    {
+      "name": "Multi-layer RGBW with FX",
+      "shortName": "35ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "RGBW 25-pixel 8-bit",
+      "shortName": "102ch",
+      "channels": [
+        "Red Pixel $pixelKey",
+        "Green Pixel $pixelKey",
+        "Blue Pixel $pixelKey",
+        "White Pixel $pixelKey",
+        "Shutter / Strobe",
+        "Control / Settings"
+      ]
+    },
+    {
+      "name": "RGBW 25-pixel 16-bit",
+      "shortName": "202ch",
+      "channels": [
+        "Red Pixel $pixelKey",
+        "Red Pixel $pixelKey fine",
+        "Green Pixel $pixelKey",
+        "Green Pixel $pixelKey fine",
+        "Blue Pixel $pixelKey",
+        "Blue Pixel $pixelKey fine",
+        "White Pixel $pixelKey",
+        "White Pixel $pixelKey fine",
+        "Shutter / Strobe",
+        "Control / Settings"
+      ]
+    }
+  ]
+}
