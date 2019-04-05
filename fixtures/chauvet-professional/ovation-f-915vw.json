@@ -26,6 +26,63 @@
         "type": "Intensity"
       }
     },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Orange": {
+      "fineChannelAliases": ["Orange fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Royal Blue": {
+      "fineChannelAliases": ["Royal Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Lime": {
+      "fineChannelAliases": ["Lime fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
     "Color Temperature": {
       "capabilities": [
         {
@@ -256,23 +313,150 @@
         "angleEnd": "wide"
       }
     },
-    "Strobe": {
+    "Dimmer Speed Mode": {
       "capabilities": [
         {
-          "dmxRange": [0, 10],
+          "dmxRange": [0, 51],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [11, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "dmxRange": [52, 101],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer speed mode off"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer speed mode 1"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer speed mode 2"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Dimmer speed mode 3"
+        }
+      ]
+    },
+    "Motor Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 200],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [201, 220],
+          "type": "Maintenance",
+          "comment": "Motor Reset"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "NoFunction"
         }
       ]
     }
   },
   "modes": [
+    {
+      "name": "18-channel",
+      "shortName": "18ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Orange",
+        "Orange fine",
+        "Green",
+        "Green fine",
+        "Royal Blue",
+        "Royal Blue fine",
+        "Blue",
+        "Blue fine",
+        "Lime",
+        "Lime fine",
+        "Strobe",
+        "Color Temperature",
+        "Hue",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "16-channel",
+      "shortName": "16ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Orange",
+        "Orange fine",
+        "Green",
+        "Green fine",
+        "Royal Blue",
+        "Royal Blue fine",
+        "Blue",
+        "Blue fine",
+        "Lime",
+        "Lime fine",
+        "Strobe",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Orange",
+        "Green",
+        "Royal Blue",
+        "Blue",
+        "Lime",
+        "Strobe",
+        "Color Temperature",
+        "Hue",
+        "Dimmer Speed Mode",
+        "Zoom",
+        "Motor Reset"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Orange",
+        "Green",
+        "Royal Blue",
+        "Blue",
+        "Lime",
+        "Strobe",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Orange",
+        "Green",
+        "Royal Blue",
+        "Blue",
+        "Lime",
+        "Zoom"
+      ]
+    },
     {
       "name": "6-channel",
       "shortName": "6ch",
@@ -283,6 +467,16 @@
         "Hue",
         "Zoom",
         "Strobe"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Hue",
+        "Zoom"
       ]
     }
   ]
