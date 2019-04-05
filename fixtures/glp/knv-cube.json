@@ -44,7 +44,11 @@
         ["16", "17", "18", "19", "20"],
         ["21", "22", "23", "24", "25"]
       ]
-    ]
+    ],
+    "pixelGroups": {
+      "White LEDs": "all",
+      "RGB LEDs": "all"
+    }
   },
   "availableChannels": {
     "Red": {
@@ -439,14 +443,52 @@
           "comment": "Reboot fixture"
         }
       ]
+    }
+  },
+  "templateChannels": {
+    "Red Pixel $pixelKey": {
+      "fineChannelAliases": ["Red Pixel $pixelKey fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
     },
-    "White LEDs Intensity": {
+    "Green Pixel $pixelKey": {
+      "fineChannelAliases": ["Green Pixel $pixelKey fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Pixel $pixelKey": {
+      "fineChannelAliases": ["Blue Pixel $pixelKey fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Pixel $pixelKey": {
+      "fineChannelAliases": ["White Pixel $pixelKey fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "$pixelKey Dimmer": {
       "defaultValue": 0,
       "capability": {
         "type": "Intensity"
       }
     },
-    "White LEDs Flash Duration": {
+    "$pixelKey Flash Duration": {
       "defaultValue": 0,
       "capability": {
         "type": "StrobeDuration",
@@ -454,7 +496,7 @@
         "durationEnd": "650ms"
       }
     },
-    "White LEDs Flash Rate": {
+    "$pixelKey Flash Rate": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -483,7 +525,7 @@
         }
       ]
     },
-    "White LEDs FX Speed": {
+    "$pixelKey FX Speed": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -504,7 +546,7 @@
         }
       ]
     },
-    "White LEDs Flare Effect": {
+    "$pixelKey Flare Effect": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -548,7 +590,7 @@
         }
       ]
     },
-    "White LEDs FX Selection": {
+    "$pixelKey FX Selection": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -556,7 +598,7 @@
           "type": "NoFunction",
           "comment": "FX Off",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs Flash Rate"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey Flash Rate"
           }
         },
         {
@@ -564,7 +606,7 @@
           "type": "Effect",
           "effectName": "Sync strobe - circle mask",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -572,7 +614,7 @@
           "type": "Effect",
           "effectName": "Sync strobe - 4 dot mask",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -580,7 +622,7 @@
           "type": "Effect",
           "effectName": "Sync strobe - 1 dot mask",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -588,7 +630,7 @@
           "type": "Effect",
           "effectName": "Random strobe - all",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -596,7 +638,7 @@
           "type": "Effect",
           "effectName": "Random strobe - circle mask",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -604,7 +646,7 @@
           "type": "Effect",
           "effectName": "Random strobe - 4 dot mask",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -612,7 +654,7 @@
           "type": "Effect",
           "effectName": "Random strobe - 1 dot mask",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -620,7 +662,7 @@
           "type": "Effect",
           "effectName": "Lite in/out - all",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -628,7 +670,7 @@
           "type": "Effect",
           "effectName": "Lite in/out - circle mask",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -636,7 +678,7 @@
           "type": "Effect",
           "effectName": "Lite in/out - 4 dot mask",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -644,7 +686,7 @@
           "type": "Effect",
           "effectName": "Lite in/out - 1 dot mask",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -652,7 +694,7 @@
           "type": "Effect",
           "effectName": "Snake",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -660,7 +702,7 @@
           "type": "Effect",
           "effectName": "Raindrops",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -668,7 +710,7 @@
           "type": "Effect",
           "effectName": "Random pixel",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -676,7 +718,7 @@
           "type": "Effect",
           "effectName": "Random fake x 2",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -684,7 +726,7 @@
           "type": "Effect",
           "effectName": "Random fake x 4",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -692,7 +734,7 @@
           "type": "Effect",
           "effectName": "Line",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -700,7 +742,7 @@
           "type": "Effect",
           "effectName": "Double line",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -708,7 +750,7 @@
           "type": "Effect",
           "effectName": "Corner to corner line",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -716,7 +758,7 @@
           "type": "Effect",
           "effectName": "Tilted double lines",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -724,7 +766,7 @@
           "type": "Effect",
           "effectName": "Tilted double lines in to out",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -732,7 +774,7 @@
           "type": "Effect",
           "effectName": "Center line running dot",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -740,7 +782,7 @@
           "type": "Effect",
           "effectName": "Middle line running dot",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -748,7 +790,7 @@
           "type": "Effect",
           "effectName": "Outer line running dot",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -756,7 +798,7 @@
           "type": "Effect",
           "effectName": "Corner to corner",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -764,7 +806,7 @@
           "type": "Effect",
           "effectName": "Arrow",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -772,7 +814,7 @@
           "type": "Effect",
           "effectName": "Wave",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -780,7 +822,7 @@
           "type": "Effect",
           "effectName": "Wheel",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -788,7 +830,7 @@
           "type": "Effect",
           "effectName": "Half wheel",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -796,7 +838,7 @@
           "type": "Effect",
           "effectName": "Circling dot",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -804,7 +846,7 @@
           "type": "Effect",
           "effectName": "Outer circle",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -812,7 +854,7 @@
           "type": "Effect",
           "effectName": "Inner circle",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -820,7 +862,7 @@
           "type": "Effect",
           "effectName": "Outer 4 dots",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -828,7 +870,7 @@
           "type": "Effect",
           "effectName": "Outer single dot",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -836,7 +878,7 @@
           "type": "Effect",
           "effectName": "Middle single dot",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -844,7 +886,7 @@
           "type": "Effect",
           "effectName": "Spinning 2x1 dots",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -852,7 +894,7 @@
           "type": "Effect",
           "effectName": "Asymmetrical 4 dots",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -860,7 +902,7 @@
           "type": "Effect",
           "effectName": "Symmetrical 4 dots",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -868,7 +910,7 @@
           "type": "Effect",
           "effectName": "Square",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -876,7 +918,7 @@
           "type": "Effect",
           "effectName": "Inside out",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -884,7 +926,7 @@
           "type": "Effect",
           "effectName": "Inside out 2",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -892,7 +934,7 @@
           "type": "Effect",
           "effectName": "Abstract 1",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -900,7 +942,7 @@
           "type": "Effect",
           "effectName": "Abstract 2",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -908,7 +950,7 @@
           "type": "Effect",
           "effectName": "Abstract 3",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -916,7 +958,7 @@
           "type": "Effect",
           "effectName": "Hash tag",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -924,7 +966,7 @@
           "type": "Effect",
           "effectName": "Flip flop",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -932,7 +974,7 @@
           "type": "Effect",
           "effectName": "Jumping slash",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -940,7 +982,7 @@
           "type": "Effect",
           "effectName": "Jumping 'L'",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -948,7 +990,7 @@
           "type": "Effect",
           "effectName": "Jumping pins",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         },
         {
@@ -956,12 +998,12 @@
           "type": "Effect",
           "effectName": "Off - No Strobe or FX",
           "switchChannels": {
-            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+            "$pixelKey Flash Rate / FX Speed": "$pixelKey FX Speed"
           }
         }
       ]
     },
-    "White LEDs FX Crossfade Time": {
+    "$pixelKey FX Crossfade Time": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -985,7 +1027,7 @@
         }
       ]
     },
-    "White LEDs Orientation": {
+    "$pixelKey Orientation": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -1225,7 +1267,7 @@
         }
       ]
     },
-    "White LEDs FX Offset": {
+    "$pixelKey FX Offset": {
       "defaultValue": 0,
       "capability": {
         "type": "EffectParameter",
@@ -1233,7 +1275,7 @@
         "parameterEnd": "100%"
       }
     },
-    "White LEDs FX Length": {
+    "$pixelKey FX Length": {
       "defaultValue": 0,
       "capability": {
         "type": "EffectParameter",
@@ -1241,808 +1283,7 @@
         "parameterEnd": "100%"
       }
     },
-    "RGB LEDs Dimmer": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "RGB LEDs Flash Duration": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "StrobeDuration",
-        "durationStart": "7ms",
-        "durationEnd": "650ms"
-      }
-    },
-    "RGB LEDs Flash Rate": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 1],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
-        },
-        {
-          "dmxRange": [2, 250],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "0.289Hz",
-          "speedEnd": "16.67Hz"
-        },
-        {
-          "dmxRange": [251, 252],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Hyperspeed"
-        },
-        {
-          "dmxRange": [253, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Continuously on"
-        }
-      ]
-    },
-    "RGB LEDs FX Speed": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 1],
-          "type": "EffectSpeed",
-          "speed": "stop"
-        },
-        {
-          "dmxRange": [2, 253],
-          "type": "EffectSpeed",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        },
-        {
-          "dmxRange": [254, 255],
-          "type": "EffectSpeed",
-          "speed": "stop"
-        }
-      ]
-    },
-    "RGB LEDs Flare Effect": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 9],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [10, 49],
-          "type": "Effect",
-          "effectName": "Flare effect",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        },
-        {
-          "dmxRange": [50, 59],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [60, 109],
-          "type": "Effect",
-          "effectName": "Flare effect",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "random"
-        },
-        {
-          "dmxRange": [110, 119],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [120, 169],
-          "type": "Effect",
-          "effectName": "Flare effect",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "random pixel"
-        },
-        {
-          "dmxRange": [170, 255],
-          "type": "NoFunction"
-        }
-      ]
-    },
-    "RGB LEDs FX Selection": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 2],
-          "type": "NoFunction",
-          "comment": "FX Off",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs Flash Rate"
-          }
-        },
-        {
-          "dmxRange": [3, 5],
-          "type": "Effect",
-          "effectName": "Sync strobe - circle mask",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [6, 8],
-          "type": "Effect",
-          "effectName": "Sync strobe - 4 dot mask",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [9, 11],
-          "type": "Effect",
-          "effectName": "Sync strobe - 1 dot mask",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [12, 14],
-          "type": "Effect",
-          "effectName": "Random strobe - all",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [15, 17],
-          "type": "Effect",
-          "effectName": "Random strobe - circle mask",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [18, 20],
-          "type": "Effect",
-          "effectName": "Random strobe - 4 dot mask",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [21, 23],
-          "type": "Effect",
-          "effectName": "Random strobe - 1 dot mask",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [24, 26],
-          "type": "Effect",
-          "effectName": "Lite in/out - all",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [27, 29],
-          "type": "Effect",
-          "effectName": "Lite in/out - circle mask",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [30, 32],
-          "type": "Effect",
-          "effectName": "Lite in/out - 4 dot mask",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [33, 35],
-          "type": "Effect",
-          "effectName": "Lite in/out - 1 dot mask",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [36, 38],
-          "type": "Effect",
-          "effectName": "Snake",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [39, 41],
-          "type": "Effect",
-          "effectName": "Raindrops",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [42, 44],
-          "type": "Effect",
-          "effectName": "Random pixel",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [45, 47],
-          "type": "Effect",
-          "effectName": "Random fake x 2",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [48, 50],
-          "type": "Effect",
-          "effectName": "Random fake x 4",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [51, 53],
-          "type": "Effect",
-          "effectName": "Line",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [54, 56],
-          "type": "Effect",
-          "effectName": "Double line",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [57, 59],
-          "type": "Effect",
-          "effectName": "Corner to corner line",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [60, 62],
-          "type": "Effect",
-          "effectName": "Tilted double lines",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [63, 65],
-          "type": "Effect",
-          "effectName": "Tilted double lines in to out",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [66, 68],
-          "type": "Effect",
-          "effectName": "Center line running dot",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [69, 71],
-          "type": "Effect",
-          "effectName": "Middle line running dot",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [72, 74],
-          "type": "Effect",
-          "effectName": "Outer line running dot",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [75, 77],
-          "type": "Effect",
-          "effectName": "Corner to corner",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [78, 80],
-          "type": "Effect",
-          "effectName": "Arrow",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [81, 83],
-          "type": "Effect",
-          "effectName": "Wave",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [84, 86],
-          "type": "Effect",
-          "effectName": "Wheel",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [87, 89],
-          "type": "Effect",
-          "effectName": "Half wheel",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [90, 92],
-          "type": "Effect",
-          "effectName": "Circling dot",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [93, 95],
-          "type": "Effect",
-          "effectName": "Outer circle",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [96, 98],
-          "type": "Effect",
-          "effectName": "Inner circle",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [99, 101],
-          "type": "Effect",
-          "effectName": "Outer 4 dots",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [102, 104],
-          "type": "Effect",
-          "effectName": "Outer single dot",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [105, 107],
-          "type": "Effect",
-          "effectName": "Middle single dot",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [108, 110],
-          "type": "Effect",
-          "effectName": "Spinning 2x1 dots",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [111, 113],
-          "type": "Effect",
-          "effectName": "Asymmetrical 4 dots",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [114, 116],
-          "type": "Effect",
-          "effectName": "Symmetrical 4 dots",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [117, 119],
-          "type": "Effect",
-          "effectName": "Square",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [120, 122],
-          "type": "Effect",
-          "effectName": "Inside out",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [123, 125],
-          "type": "Effect",
-          "effectName": "Inside out 2",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [126, 128],
-          "type": "Effect",
-          "effectName": "Abstract 1",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [129, 131],
-          "type": "Effect",
-          "effectName": "Abstract 2",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [132, 134],
-          "type": "Effect",
-          "effectName": "Abstract 3",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [135, 137],
-          "type": "Effect",
-          "effectName": "Hash tag",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [138, 140],
-          "type": "Effect",
-          "effectName": "Flip flop",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [141, 143],
-          "type": "Effect",
-          "effectName": "Jumping slash",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [144, 146],
-          "type": "Effect",
-          "effectName": "Jumping 'L'",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [147, 149],
-          "type": "Effect",
-          "effectName": "Jumping pins",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        },
-        {
-          "dmxRange": [150, 255],
-          "type": "Effect",
-          "effectName": "Off - No Strobe or FX",
-          "switchChannels": {
-            "RGB LEDs Flash Rate / FX Speed": "RGB LEDs FX Speed"
-          }
-        }
-      ]
-    },
-    "RGB LEDs FX Crossfade Time": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 1],
-          "type": "EffectDuration",
-          "duration": "instant"
-        },
-        {
-          "dmxRange": [2, 127],
-          "type": "EffectDuration",
-          "durationStart": "short",
-          "durationEnd": "long",
-          "comment": "Crossfade"
-        },
-        {
-          "dmxRange": [128, 255],
-          "type": "EffectDuration",
-          "durationStart": "short",
-          "durationEnd": "long",
-          "comment": "Crossfade and tail"
-        }
-      ]
-    },
-    "RGB LEDs Orientation": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 4],
-          "type": "NoFunction",
-          "comment": "Off"
-        },
-        {
-          "dmxRange": [5, 9],
-          "type": "Maintenance",
-          "comment": "Rotate 90°"
-        },
-        {
-          "dmxRange": [10, 14],
-          "type": "Maintenance",
-          "comment": "Rotate 180°"
-        },
-        {
-          "dmxRange": [15, 19],
-          "type": "Maintenance",
-          "comment": "Rotate 270°"
-        },
-        {
-          "dmxRange": [20, 24],
-          "type": "Maintenance",
-          "comment": "Horizontal flip"
-        },
-        {
-          "dmxRange": [25, 29],
-          "type": "Maintenance",
-          "comment": "Rotate 90° & vertical flip"
-        },
-        {
-          "dmxRange": [30, 34],
-          "type": "Maintenance",
-          "comment": "Rotate 180° & horizontal flip"
-        },
-        {
-          "dmxRange": [35, 39],
-          "type": "Maintenance",
-          "comment": "Rotate 270° & vertical flip"
-        },
-        {
-          "dmxRange": [40, 44],
-          "type": "NoFunction",
-          "comment": "Off"
-        },
-        {
-          "dmxRange": [45, 49],
-          "type": "Maintenance",
-          "comment": "Random rotate & flip"
-        },
-        {
-          "dmxRange": [50, 54],
-          "type": "Maintenance",
-          "comment": "Random position"
-        },
-        {
-          "dmxRange": [55, 59],
-          "type": "Maintenance",
-          "comment": "Fix 90° rotation & random position"
-        },
-        {
-          "dmxRange": [60, 64],
-          "type": "Maintenance",
-          "comment": "Fix 180° rotation & random position"
-        },
-        {
-          "dmxRange": [65, 69],
-          "type": "Maintenance",
-          "comment": "Fix 270° rotation & random position"
-        },
-        {
-          "dmxRange": [70, 74],
-          "type": "NoFunction",
-          "comment": "Off"
-        },
-        {
-          "dmxRange": [75, 79],
-          "type": "Maintenance",
-          "comment": "Bounce"
-        },
-        {
-          "dmxRange": [80, 84],
-          "type": "Maintenance",
-          "comment": "Bounce & rotate 90°"
-        },
-        {
-          "dmxRange": [85, 89],
-          "type": "Maintenance",
-          "comment": "Bounce & rotate 180°"
-        },
-        {
-          "dmxRange": [90, 94],
-          "type": "Maintenance",
-          "comment": "Bounce & rotate 270°"
-        },
-        {
-          "dmxRange": [95, 99],
-          "type": "NoFunction",
-          "comment": "Off"
-        },
-        {
-          "dmxRange": [100, 104],
-          "type": "Maintenance",
-          "comment": "Rotate CCW at end"
-        },
-        {
-          "dmxRange": [105, 109],
-          "type": "Maintenance",
-          "comment": "Rotate CW at end"
-        },
-        {
-          "dmxRange": [110, 114],
-          "type": "Maintenance",
-          "comment": "Random rotate at end"
-        },
-        {
-          "dmxRange": [115, 134],
-          "type": "NoFunction",
-          "comment": "Off"
-        },
-        {
-          "dmxRange": [135, 139],
-          "type": "Maintenance",
-          "comment": "Rotate 90° (reversed direction)"
-        },
-        {
-          "dmxRange": [140, 144],
-          "type": "Maintenance",
-          "comment": "Rotate 180° (reversed direction)"
-        },
-        {
-          "dmxRange": [145, 149],
-          "type": "Maintenance",
-          "comment": "Rotate 270° (reversed direction)"
-        },
-        {
-          "dmxRange": [150, 154],
-          "type": "Maintenance",
-          "comment": "Horizontal flip (reversed direction)"
-        },
-        {
-          "dmxRange": [155, 159],
-          "type": "Maintenance",
-          "comment": "Rotate 90° & vertical flip (reversed direction)"
-        },
-        {
-          "dmxRange": [160, 164],
-          "type": "Maintenance",
-          "comment": "Rotate 180° & horizontal flip (reversed direction)"
-        },
-        {
-          "dmxRange": [165, 169],
-          "type": "Maintenance",
-          "comment": "Rotate 270° & vertical flip (reversed direction)"
-        },
-        {
-          "dmxRange": [170, 174],
-          "type": "NoFunction",
-          "comment": "Off"
-        },
-        {
-          "dmxRange": [175, 179],
-          "type": "Maintenance",
-          "comment": "Random Rotate & flip (reversed direction)"
-        },
-        {
-          "dmxRange": [180, 184],
-          "type": "Maintenance",
-          "comment": "Random position (reversed direction)"
-        },
-        {
-          "dmxRange": [185, 189],
-          "type": "Maintenance",
-          "comment": "Fix 90° rotation & random position (reversed direction)"
-        },
-        {
-          "dmxRange": [190, 194],
-          "type": "Maintenance",
-          "comment": "Fix 180° rotation & random position (reversed direction)"
-        },
-        {
-          "dmxRange": [195, 199],
-          "type": "Maintenance",
-          "comment": "Fix 270° rotation & random position (reversed direction)"
-        },
-        {
-          "dmxRange": [200, 204],
-          "type": "NoFunction",
-          "comment": "Off"
-        },
-        {
-          "dmxRange": [205, 209],
-          "type": "Maintenance",
-          "comment": "Bounce (reversed direction)"
-        },
-        {
-          "dmxRange": [210, 214],
-          "type": "Maintenance",
-          "comment": "Bounce & rotate 90° (reversed direction)"
-        },
-        {
-          "dmxRange": [215, 219],
-          "type": "Maintenance",
-          "comment": "Bounce & rotate 180° (reversed direction)"
-        },
-        {
-          "dmxRange": [220, 224],
-          "type": "Maintenance",
-          "comment": "Bounce & rotate 270° (reversed direction)"
-        },
-        {
-          "dmxRange": [225, 229],
-          "type": "NoFunction",
-          "comment": "Off"
-        },
-        {
-          "dmxRange": [230, 234],
-          "type": "Maintenance",
-          "comment": "Rotate CCW at end (reversed direction)"
-        },
-        {
-          "dmxRange": [235, 239],
-          "type": "Maintenance",
-          "comment": "Rotate CW at end (reversed direction)"
-        },
-        {
-          "dmxRange": [240, 244],
-          "type": "Maintenance",
-          "comment": "Random rotate at end (reversed direction)"
-        },
-        {
-          "dmxRange": [245, 255],
-          "type": "NoFunction",
-          "comment": "Off"
-        }
-      ]
-    },
-    "RGB LEDs FX Offset": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "EffectParameter",
-        "parameterStart": "0%",
-        "parameterEnd": "100%"
-      }
-    },
-    "RGB LEDs FX Length": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "EffectParameter",
-        "parameterStart": "0%",
-        "parameterEnd": "100%"
-      }
-    },
-    "RGB LEDs Color Generator": {
+    "$pixelKey FX Color Generator": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -2176,7 +1417,7 @@
         }
       ]
     },
-    "RGB LEDs Shutter / Strobe": {
+    "$pixelKey Shutter / Strobe": {
       "defaultValue": 255,
       "capabilities": [
         {
@@ -2219,7 +1460,7 @@
           "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast",
-          "comment": "Random pixel"
+          "comment": "Pixel flare effect"
         },
         {
           "dmxRange": [180, 214],
@@ -2250,44 +1491,6 @@
       ]
     }
   },
-  "templateChannels": {
-    "Red Pixel $pixelKey": {
-      "fineChannelAliases": ["Red Pixel $pixelKey fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green Pixel $pixelKey": {
-      "fineChannelAliases": ["Green Pixel $pixelKey fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue Pixel $pixelKey": {
-      "fineChannelAliases": ["Blue Pixel $pixelKey fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White Pixel $pixelKey": {
-      "fineChannelAliases": ["White Pixel $pixelKey fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    }
-  },
   "modes": [
     {
       "name": "RGBW 16-bit",
@@ -2309,7 +1512,7 @@
       "name": "White strobe with FX, RGB with FX",
       "shortName": "23ch",
       "channels": [
-        "White LEDs Intensity",
+        "White LEDs Dimmer",
         "White LEDs Flash Duration",
         "White LEDs Flash Rate / FX Speed",
         "White LEDs Flare Effect",
@@ -2330,7 +1533,7 @@
         "RGB LEDs Orientation",
         "RGB LEDs FX Offset",
         "RGB LEDs FX Length",
-        "RGB LEDs Color Generator",
+        "RGB LEDs FX Color Generator",
         "Control / Settings"
       ]
     },
@@ -2338,14 +1541,36 @@
       "name": "RGB strobe with FX, White 25-pixel",
       "shortName": "40ch",
       "channels": [
-        "RGB LEDs Dimmer"
+        "RGB LEDs Dimmer",
+        "RGB LEDs Flash Duration",
+        "RGB LEDs Flash Rate / FX Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "RGB LEDs Flare Effect",
+        "RGB LEDs FX Selection",
+        "RGB LEDs FX Crossfade Time",
+        "RGB LEDs Orientation",
+        "RGB LEDs FX Offset",
+        "RGB LEDs FX Length",
+        "RGB LEDs FX Color Generator",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "White Pixel $pixelKey"
+          ]
+        },
+        "White LEDs Shutter / Strobe",
+        "Control / Settings"
       ]
     },
     {
       "name": "White strobe with FX, RGB 25-pixel",
       "shortName": "86ch",
       "channels": [
-        "White LEDs Intensity",
+        "White LEDs Dimmer",
         "White LEDs Flash Duration",
         "White LEDs Flash Rate / FX Speed",
         "White LEDs Flare Effect",
