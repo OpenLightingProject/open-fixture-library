@@ -19,6 +19,22 @@
       "https://www.youtube.com/watch?v=bSrkOqNl9SI"
     ]
   },
+  "physical": {
+    "dimensions": [320, 275, 569.44],
+    "weight": 8.5,
+    "power": 223,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "89× 3W LED (6× red, 15× orange-red, 8× green, 12× blue, 16× royal blue, 32× lime)"
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [17, 54]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
   "availableChannels": {
     "Dimmer": {
       "fineChannelAliases": ["Dimmer fine"],
@@ -309,8 +325,8 @@
     "Zoom": {
       "capability": {
         "type": "Zoom",
-        "angleStart": "narrow",
-        "angleEnd": "wide"
+        "angleStart": "17deg",
+        "angleEnd": "54deg"
       }
     },
     "Dimmer Speed Mode": {
