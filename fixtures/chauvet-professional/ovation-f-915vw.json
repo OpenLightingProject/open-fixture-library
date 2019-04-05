@@ -25,7 +25,8 @@
     "power": 223,
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
-      "type": "89× 3W LED (6× red, 15× orange-red, 8× green, 12× blue, 16× royal blue, 32× lime)"
+      "type": "89× 3W LED (6× red, 15× orange-red, 8× green, 12× blue, 16× royal blue, 32× lime)",
+      "lumens": 6792
     },
     "lens": {
       "name": "Fresnel",
@@ -94,8 +95,8 @@
           "dmxRange": [11, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "0Hz",
+          "speedEnd": "27Hz"
         }
       ]
     },
