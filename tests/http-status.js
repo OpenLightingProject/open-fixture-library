@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
 const path = require(`path`);
-const colors = require(`colors`);
+const chalk = require(`chalk`);
 const childProcess = require(`child_process`);
 const blc = require(`broken-link-checker`);
 const pullRequest = require(`./github/pull-request.js`);
@@ -42,19 +42,19 @@ const siteChecker = new blc.SiteChecker({
     }
   },
   link(result, customData) {
-    let location = colors.cyan(`(ex)`);
-    let failStr = colors.yellow(`[WARN]`);
+    let location = chalk.cyan(`(ex)`);
+    let failStr = chalk.yellow(`[WARN]`);
     if (result.internal) {
-      location = colors.magenta(`(in)`);
-      failStr = colors.red(`[FAIL]`);
+      location = chalk.magenta(`(in)`);
+      failStr = chalk.red(`[FAIL]`);
     }
 
     if ((result.internal && result.brokenReason === `HTTP_201`) || (!result.internal && !result.broken)) {
-      foundLinks[result.base.resolved].push(` └ ${colors.green(`[PASS]`)} ${location} ${result.url.resolved}`);
+      foundLinks[result.base.resolved].push(` └ ${chalk.green(`[PASS]`)} ${location} ${result.url.resolved}`);
     }
     else if (result.broken) {
       foundLinks[result.base.resolved].push(` └ ${failStr} ${location} ${result.url.resolved}`);
-      foundLinks[result.base.resolved].push(`    └ ${colors.red(blc[result.brokenReason])}`);
+      foundLinks[result.base.resolved].push(`    └ ${chalk.red(blc[result.brokenReason])}`);
       fails[result.internal ? `internal` : `external`].add(result.url.resolved);
     }
   },
@@ -62,11 +62,11 @@ const siteChecker = new blc.SiteChecker({
     const resolvedUrl = resolvedUrls[pageUrl];
 
     if (error) {
-      console.log(`${colors.red(`[FAIL]`)} ${resolvedUrl}\n └ ${error}`);
+      console.log(`${chalk.red(`[FAIL]`)} ${resolvedUrl}\n └ ${error}`);
       fails.internal.add(resolvedUrl);
     }
     else {
-      foundLinks[resolvedUrl].unshift(`${colors.green(`[PASS]`)} ${resolvedUrl}`);
+      foundLinks[resolvedUrl].unshift(`${chalk.green(`[PASS]`)} ${resolvedUrl}`);
       console.log(foundLinks[resolvedUrl].join(`\n`));
     }
   },
@@ -87,15 +87,15 @@ const serverProcess = childProcess.execFile(`node`, [path.join(__dirname, `..`, 
 
   console.log();
   if (stdout) {
-    console.log(colors.yellow(`Server output (stdout):`));
+    console.log(chalk.yellow(`Server output (stdout):`));
     console.log(stdout);
   }
   if (stderr) {
-    console.log(colors.red(`Server errors (stderr):`));
+    console.log(chalk.red(`Server errors (stderr):`));
     console.log(stderr);
   }
 
-  let statusStr = colors.green(`[PASS]`);
+  let statusStr = chalk.green(`[PASS]`);
   let exitCode = 0;
 
   const lines = [
@@ -108,11 +108,11 @@ const serverProcess = childProcess.execFile(`node`, [path.join(__dirname, `..`, 
   let githubCommentLines = [];
 
   if (fails.internal.size > 0) {
-    statusStr = colors.red(`[FAIL]`);
+    statusStr = chalk.red(`[FAIL]`);
     exitCode = 1;
   }
   else if (fails.external.size > 0) {
-    statusStr = colors.yellow(`[WARN]`);
+    statusStr = chalk.yellow(`[WARN]`);
     githubCommentLines = lines;
   }
 
