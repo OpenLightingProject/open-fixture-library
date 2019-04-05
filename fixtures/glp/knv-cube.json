@@ -35,6 +35,17 @@
       "type": "Fixed"
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [ "1",  "2",  "3",  "4",  "5"],
+        [ "6",  "7",  "8",  "9", "10"],
+        ["11", "12", "13", "14", "15"],
+        ["16", "17", "18", "19", "20"],
+        ["21", "22", "23", "24", "25"]
+      ]
+    ]
+  },
   "availableChannels": {
     "Red": {
       "fineChannelAliases": ["Red fine"],
@@ -615,33 +626,6 @@
         "type": "Intensity"
       }
     },
-    "Red Pixel $pixelKey": {
-      "fineChannelAliases": ["Red Pixel $pixelKey fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green Pixel $pixelKey": {
-      "fineChannelAliases": ["Green Pixel $pixelKey fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue Pixel $pixelKey": {
-      "fineChannelAliases": ["Blue Pixel $pixelKey fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
     "RGB LEDs Shutter / Strobe": {
       "defaultValue": 255,
       "capabilities": [
@@ -712,6 +696,35 @@
           "shutterEffect": "Open"
         }
       ]
+    }
+  },
+  "templateChannels": {
+    "Red Pixel $pixelKey": {
+      "fineChannelAliases": ["Red Pixel $pixelKey fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Pixel $pixelKey": {
+      "fineChannelAliases": ["Green Pixel $pixelKey fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Pixel $pixelKey": {
+      "fineChannelAliases": ["Blue Pixel $pixelKey fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "White Pixel $pixelKey": {
       "fineChannelAliases": ["White Pixel $pixelKey fine"],
@@ -765,6 +778,7 @@
     },
     {
       "name": "White strobe with FX, RGB 25-pixel",
+      "shortName": "86ch",
       "channels": [
         "White LEDs Intensity",
         "White LEDs Flash Duration",
@@ -775,9 +789,16 @@
         "White LEDs Orientation",
         "White LEDs FX Offset",
         "White LEDs FX Length",
-        "Red Pixel $pixelKey",
-        "Green Pixel $pixelKey",
-        "Blue Pixel $pixelKey",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red Pixel $pixelKey",
+            "Green Pixel $pixelKey",
+            "Blue Pixel $pixelKey"
+          ]
+        },
         "RGB LEDs Shutter / Strobe",
         "Control / Settings"
       ]
@@ -796,10 +817,17 @@
       "name": "RGBW 25-pixel 8-bit",
       "shortName": "102ch",
       "channels": [
-        "Red Pixel $pixelKey",
-        "Green Pixel $pixelKey",
-        "Blue Pixel $pixelKey",
-        "White Pixel $pixelKey",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red Pixel $pixelKey",
+            "Green Pixel $pixelKey",
+            "Blue Pixel $pixelKey",
+            "White Pixel $pixelKey"
+          ]
+        },
         "Shutter / Strobe",
         "Control / Settings"
       ]
@@ -808,14 +836,21 @@
       "name": "RGBW 25-pixel 16-bit",
       "shortName": "202ch",
       "channels": [
-        "Red Pixel $pixelKey",
-        "Red Pixel $pixelKey fine",
-        "Green Pixel $pixelKey",
-        "Green Pixel $pixelKey fine",
-        "Blue Pixel $pixelKey",
-        "Blue Pixel $pixelKey fine",
-        "White Pixel $pixelKey",
-        "White Pixel $pixelKey fine",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red Pixel $pixelKey",
+            "Red Pixel $pixelKey fine",
+            "Green Pixel $pixelKey",
+            "Green Pixel $pixelKey fine",
+            "Blue Pixel $pixelKey",
+            "Blue Pixel $pixelKey fine",
+            "White Pixel $pixelKey",
+            "White Pixel $pixelKey fine"
+          ]
+        },
         "Shutter / Strobe",
         "Control / Settings"
       ]
