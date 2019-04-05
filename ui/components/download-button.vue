@@ -17,7 +17,10 @@
       </ul>
     </div>
 
-    <nuxt-link v-if="help" to="/about/plugins" :target="isStyleHome ? null : `_blank`"
+    <nuxt-link
+      v-if="help"
+      to="/about/plugins"
+      :target="isStyleHome ? null : `_blank`"
       class="help-link">
       <app-svg name="help-circle-outline" /><span class="name">Download instructions</span>
     </nuxt-link>
@@ -268,7 +271,7 @@ export default {
     },
     isStyleBig() {
       return this.buttonStyle === `big` || this.isStyleHome;
-    },
+    }
   },
   methods: {
     blur(event) {
@@ -283,7 +286,8 @@ export default {
         // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created.
         // These URLs will no longer resolve as the data backing the URL has been freed."
         window.navigator.msSaveBlob(blob, filename);
-      } else {
+      }
+      else {
         const URL = window.URL || window.webkitURL;
         const downloadUrl = URL.createObjectURL(blob);
 
@@ -294,18 +298,22 @@ export default {
           // safari doesn't support this in older versions
           if (typeof a.download === `undefined`) {
             window.location = downloadUrl;
-          } else {
+          }
+          else {
             a.href = downloadUrl;
             a.download = filename;
             document.body.appendChild(a);
             a.click();
           }
-        } else {
+        }
+        else {
           window.location = downloadUrl;
         }
 
         // cleanup
-        setTimeout(function () { URL.revokeObjectURL(downloadUrl); }, 100);
+        setTimeout(() =>  {
+          URL.revokeObjectURL(downloadUrl);
+        }, 100);
       }
     },
     async onDownload(plugin) {
@@ -326,17 +334,21 @@ export default {
         let filename = ``;
         const disposition = response.headers[`content-disposition`];
         if (disposition && disposition.indexOf(`attachment`) !== -1) {
-            const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
-            const matches = filenameRegex.exec(disposition);
-            if (matches != null && matches[1]) filename = matches[1].replace(/['"]/g, '');
+          const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+          const matches = filenameRegex.exec(disposition);
+          if (matches != null && matches[1]) {
+            filename = matches[1].replace(/['"]/g, '');
+          }
         }
         const type = response.headers[`content-type`];
 
         this.downloadDataAsFile(response.data, filename, type);
-      } else if (this.isSingle) {
+      }
+      else if (this.isSingle) {
         // download a single fixture
         window.open(`/${this.submittedFixtureManKeyAndKey}.${plugin}`);
-      } else {
+      }
+      else {
         // download all fixture in a specific format
         window.open(`/download.${plugin}`);
       }
