@@ -122,10 +122,11 @@
         },
         {
           "dmxRange": [145, 179],
-          "type": "Effect",
-          "effectName": "Random pixel",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "comment": "Random pixel"
         },
         {
           "dmxRange": [180, 214],
@@ -144,8 +145,9 @@
         },
         {
           "dmxRange": [250, 252],
-          "type": "Effect",
-          "effectName": "Hyperspeed"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Hyperspeed"
         },
         {
           "dmxRange": [253, 255],
@@ -469,8 +471,9 @@
         },
         {
           "dmxRange": [251, 252],
-          "type": "Effect",
-          "effectName": "Hyperspeed"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Hyperspeed"
         },
         {
           "dmxRange": [253, 255],
@@ -665,10 +668,11 @@
         },
         {
           "dmxRange": [145, 179],
-          "type": "Effect",
-          "effectName": "Random pixel",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "comment": "Random pixel"
         },
         {
           "dmxRange": [180, 214],
@@ -687,8 +691,9 @@
         },
         {
           "dmxRange": [250, 252],
-          "type": "Effect",
-          "effectName": "Hyperspeed"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Hyperspeed"
         },
         {
           "dmxRange": [253, 255],
