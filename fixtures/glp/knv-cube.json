@@ -47,7 +47,10 @@
     ],
     "pixelGroups": {
       "White LEDs": "all",
-      "RGB LEDs": "all"
+      "RGB LEDs": "all",
+      "Layer 1": "all",
+      "Layer 2": "all",
+      "Layer 3": "all"
     }
   },
   "availableChannels": {
@@ -448,7 +451,6 @@
   "templateChannels": {
     "Red Pixel $pixelKey": {
       "fineChannelAliases": ["Red Pixel $pixelKey fine"],
-      "dmxValueResolution": "8bit",
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
@@ -457,7 +459,6 @@
     },
     "Green Pixel $pixelKey": {
       "fineChannelAliases": ["Green Pixel $pixelKey fine"],
-      "dmxValueResolution": "8bit",
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
@@ -466,7 +467,6 @@
     },
     "Blue Pixel $pixelKey": {
       "fineChannelAliases": ["Blue Pixel $pixelKey fine"],
-      "dmxValueResolution": "8bit",
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
@@ -475,7 +475,53 @@
     },
     "White Pixel $pixelKey": {
       "fineChannelAliases": ["White Pixel $pixelKey fine"],
-      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "$pixelKey Master": {
+      "fineChannelAliases": ["$pixelKey Master fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "NoFunction",
+          "comment": "Transparent"
+        },
+        {
+          "dmxRange": [2, 65535],
+          "type": "Intensity"
+        }
+      ]
+    },
+    "$pixelKey Red": {
+      "fineChannelAliases": ["$pixelKey Red fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "$pixelKey Green": {
+      "fineChannelAliases": ["$pixelKey Green fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "$pixelKey Blue": {
+      "fineChannelAliases": ["$pixelKey Blue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "$pixelKey White": {
+      "fineChannelAliases": ["$pixelKey White fine"],
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
@@ -1597,10 +1643,41 @@
       "name": "Multi-layer RGBW with FX",
       "shortName": "35ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "White"
+        "Layer 1 Red",
+        "Layer 1 Green",
+        "Layer 1 Blue",
+        "Layer 1 White",
+        "Layer 2 Master",
+        "Layer 2 Master fine",
+        "Layer 2 Flash Duration",
+        "Layer 2 Flash Rate / FX Speed",
+        "Layer 2 Flare Effect",
+        "Layer 2 Red",
+        "Layer 2 Green",
+        "Layer 2 Blue",
+        "Layer 2 White",
+        "Layer 2 FX Selection",
+        "Layer 2 FX Crossfade Time",
+        "Layer 2 Orientation",
+        "Layer 2 FX Offset",
+        "Layer 2 FX Length",
+        "Layer 2 FX Color Generator",
+        "Layer 3 Master",
+        "Layer 3 Master fine",
+        "Layer 3 Flash Duration",
+        "Layer 3 Flash Rate / FX Speed",
+        "Layer 3 Flare Effect",
+        "Layer 3 Red",
+        "Layer 3 Green",
+        "Layer 3 Blue",
+        "Layer 3 White",
+        "Layer 3 FX Selection",
+        "Layer 3 FX Crossfade Time",
+        "Layer 3 Orientation",
+        "Layer 3 FX Offset",
+        "Layer 3 FX Length",
+        "Layer 3 FX Color Generator",
+        "Control / Settings"
       ]
     },
     {
