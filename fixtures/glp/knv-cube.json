@@ -480,7 +480,7 @@
         }
       ]
     },
-    "FX Speed": {
+    "White LEDs FX Speed": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -500,12 +500,6 @@
           "speed": "stop"
         }
       ]
-    },
-    "White LEDs Flash Rate / FX Speed": {
-      "capability": {
-        "type": "Generic",
-        "comment": "TODO: Switch channel"
-      }
     },
     "White LEDs Flare Effect": {
       "defaultValue": 0,
@@ -557,12 +551,18 @@
         {
           "dmxRange": [0, 2],
           "type": "NoFunction",
-          "comment": "FX Off"
+          "comment": "FX Off",
+          "switchChannels": {
+            "White LEDs Flash Rate / FX Speed": "White LEDs Flash Rate"
+          }
         },
         {
           "dmxRange": [3, 255],
           "type": "Generic",
-          "comment": "TODO"
+          "comment": "TODO",
+          "switchChannels": {
+            "White LEDs Flash Rate / FX Speed": "White LEDs FX Speed"
+          }
         }
       ]
     },
