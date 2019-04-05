@@ -1,16 +1,22 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "ovation F 915vw",
-  "shortName": "Chauvet ovation F 915vw",
+  "name": "Ovation F-915VW",
+  "shortName": "ChauvetOvationF915VW",
   "categories": ["Color Changer", "Dimmer", "Strobe"],
   "meta": {
     "authors": ["Nicolas"],
-    "createDate": "2019-03-29",
-    "lastModifyDate": "2019-03-29"
+    "createDate": "2019-04-05",
+    "lastModifyDate": "2019-04-05"
   },
   "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2017/11/Ovation_F-915VW_UM_Rev1_WO.pdf"
+    ],
     "productPage": [
       "https://www.chauvetprofessional.com/products/ovation-f-915vw/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=bSrkOqNl9SI"
     ]
   },
   "availableChannels": {
