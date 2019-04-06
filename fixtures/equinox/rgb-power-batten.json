@@ -52,179 +52,266 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "Generic",
-          "comment": "No function"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [8, 15],
-          "type": "Generic",
-          "comment": "Red"
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"],
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [16, 23],
-          "type": "Generic",
-          "comment": "Yellow"
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"],
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [24, 31],
-          "type": "Generic",
-          "comment": "Green"
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"],
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [32, 39],
-          "type": "Generic",
-          "comment": "Cyan"
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"],
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [40, 47],
-          "type": "Generic",
-          "comment": "Blue"
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"],
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [48, 55],
-          "type": "Generic",
-          "comment": "Purple"
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#ff00ff"],
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [56, 63],
-          "type": "Generic",
-          "comment": "White"
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [64, 71],
-          "type": "Generic",
-          "comment": "Program 1"
+          "type": "Effect",
+          "effectName": "Program 1",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [72, 79],
-          "type": "Generic",
-          "comment": "Program 2"
+          "type": "Effect",
+          "effectName": "Program 2",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [80, 87],
-          "type": "Generic",
-          "comment": "Program 3"
+          "type": "Effect",
+          "effectName": "Program 3",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [88, 95],
-          "type": "Generic",
-          "comment": "Program 4"
+          "type": "Effect",
+          "effectName": "Program 4",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [96, 103],
-          "type": "Generic",
-          "comment": "Program 5"
+          "type": "Effect",
+          "effectName": "Program 5",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [104, 111],
-          "type": "Generic",
-          "comment": "Program 6"
+          "type": "Effect",
+          "effectName": "Program 6",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [112, 119],
-          "type": "Generic",
-          "comment": "Program 7"
+          "type": "Effect",
+          "effectName": "Program 7",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [120, 127],
-          "type": "Generic",
-          "comment": "Program 8"
+          "type": "Effect",
+          "effectName": "Program 8",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [128, 135],
-          "type": "Generic",
-          "comment": "Program 9"
+          "type": "Effect",
+          "effectName": "Program 9",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [136, 143],
-          "type": "Generic",
-          "comment": "Program 10"
+          "type": "Effect",
+          "effectName": "Program 10",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [144, 151],
-          "type": "Generic",
-          "comment": "Program 11"
+          "type": "Effect",
+          "effectName": "Program 11",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [152, 159],
-          "type": "Generic",
-          "comment": "Program 12"
+          "type": "Effect",
+          "effectName": "Program 12",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [160, 167],
-          "type": "Generic",
-          "comment": "Program 13"
+          "type": "Effect",
+          "effectName": "Program 13",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [168, 175],
-          "type": "Generic",
-          "comment": "Program 14"
+          "type": "Effect",
+          "effectName": "Program 14",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [176, 183],
-          "type": "Generic",
-          "comment": "Program 15"
+          "type": "Effect",
+          "effectName": "Program 15",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [184, 191],
-          "type": "Generic",
-          "comment": "Program 16"
+          "type": "Effect",
+          "effectName": "Program 16",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [192, 199],
-          "type": "Generic",
-          "comment": "Program 17"
+          "type": "Effect",
+          "effectName": "Program 17",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [200, 207],
-          "type": "Generic",
-          "comment": "Program 18"
+          "type": "Effect",
+          "effectName": "Program 18",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [208, 215],
-          "type": "Generic",
-          "comment": "Program 19"
+          "type": "Effect",
+          "effectName": "Program 19",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [216, 223],
-          "type": "Generic",
-          "comment": "Program 20"
+          "type": "Effect",
+          "effectName": "Program 20",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [224, 231],
-          "type": "Generic",
-          "comment": "Program 21"
+          "type": "Effect",
+          "effectName": "Program 21",
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [232, 255],
-          "type": "Generic",
-          "comment": "Sound Effect"
+          "type": "Effect",
+          "effectName": "Sound Effect",
+          "soundControlled": true,
+          "switchChannels": {
+            "Effect Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         }
       ]
     },
-    "Speed/sound": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 7],
-          "type": "Generic",
-          "comment": "No function"
-        },
-        {
-          "dmxRange": [8, 231],
-          "type": "EffectSpeed",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Speed"
-        },
-        {
-          "dmxRange": [232, 255],
-          "type": "SoundSensitivity",
-          "soundSensitivityStart": "low",
-          "soundSensitivityEnd": "high",
-          "comment": "Sound sensitivity"
-        }
-      ]
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
     },
     "Dimmer": {
       "defaultValue": 0,
@@ -235,10 +322,11 @@
     "Flash": {
       "defaultValue": 0,
       "capability": {
-        "type": "Effect",
-        "effectName": "Flash",
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
         "speedStart": "0Hz",
-        "speedEnd": "50Hz"
+        "speedEnd": "50Hz",
+        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off? Is the frequency of 50Hz correct?"
       }
     }
   },
@@ -267,7 +355,7 @@
       "name": "2 channel",
       "channels": [
         "Function",
-        "Speed/sound"
+        "Effect Speed / Sound Sensitivity"
       ]
     },
     {
@@ -294,7 +382,7 @@
         "Green Master",
         "Blue Master",
         "Function",
-        "Speed/sound",
+        "Effect Speed / Sound Sensitivity",
         "Flash",
         "Dimmer"
       ]
