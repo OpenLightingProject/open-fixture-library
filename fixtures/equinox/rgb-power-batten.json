@@ -352,14 +352,16 @@
   },
   "modes": [
     {
-      "name": "2 channel",
+      "name": "2-Channel",
+      "shortName": "2ch",
       "channels": [
         "Function",
         "Effect Speed / Sound Sensitivity"
       ]
     },
     {
-      "name": "3 channel",
+      "name": "3-Channel",
+      "shortName": "3ch",
       "channels": [
         "Red Master",
         "Green Master",
@@ -367,7 +369,8 @@
       ]
     },
     {
-      "name": "4 channel",
+      "name": "4-Channel",
+      "shortName": "4ch",
       "channels": [
         "Red Master",
         "Green Master",
@@ -376,7 +379,8 @@
       ]
     },
     {
-      "name": "7 channel",
+      "name": "7-Channel",
+      "shortName": "7ch",
       "channels": [
         "Red Master",
         "Green Master",
@@ -388,7 +392,8 @@
       ]
     },
     {
-      "name": "14 channel",
+      "name": "14-Channel",
+      "shortName": "14ch",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -405,7 +410,8 @@
       ]
     },
     {
-      "name": "26 channel",
+      "name": "26-Channel",
+      "shortName": "26ch",
       "channels": [
         {
           "insert": "matrixChannels",
