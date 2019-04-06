@@ -1,34 +1,34 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "LED PARty TCL Spot",
-  "shortName": "EurolitePARtyTCLSpot",
+  "name": "LED Big PARty TCL Spot",
+  "shortName": "EuroliteBigPARtyTCLSpot",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Adrian Branchadell", "Felix Edelmann"],
+    "authors": ["Felix Edelmann"],
     "createDate": "2019-04-07",
     "lastModifyDate": "2019-04-07"
   },
   "links": {
     "manual": [
-      "https://www.steinigke.de/download/42110193-Manual-102442-1.00-eurolite-led-party-tcl-spot-en_de.pdf"
+      "https://www.steinigke.de/download/42110196-Manual-102442-1.00-eurolite-led-big-party-tcl-spot-en_de.pdf"
     ],
     "productPage": [
-      "https://www.steinigke.de/en/mpn42110193-eurolite-led-party-tcl-spot.html"
+      "https://www.steinigke.de/en/mpn42110196-eurolite-led-big-party-tcl-spot.html"
     ],
     "video": [
-      "https://www.youtube.com/watch?v=lrAatXEygvI"
+      "https://www.youtube.com/watch?v=2zlm7RiVOKY"
     ]
   },
   "physical": {
-    "dimensions": [150, 160, 90],
-    "weight": 0.46,
-    "power": 10,
+    "dimensions": [150, 245, 255],
+    "weight": 1,
+    "power": 50,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "12x 3W TCL RGB LEDs"
+      "type": "54x 3W TCL RGB LEDs"
     },
     "lens": {
-      "degreesMinMax": [17, 17]
+      "degreesMinMax": [12, 12]
     }
   },
   "availableChannels": {
