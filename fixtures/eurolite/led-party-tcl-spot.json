@@ -19,12 +19,15 @@
     ]
   },
   "physical": {
-    "dimensions": [130, 130, 130],
-    "weight": 0.5,
-    "power": 30,
+    "dimensions": [150, 160, 90],
+    "weight": 0.46,
+    "power": 10,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "12x 3W TCL RGB LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [17, 17]
     }
   },
   "availableChannels": {
