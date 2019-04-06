@@ -32,41 +32,6 @@
     }
   },
   "availableChannels": {
-    "Dimmer": {
-      "defaultValue": 0,
-      "constant": false,
-      "capability": {
-        "type": "Intensity",
-        "comment": "Dimmer"
-      }
-    },
-    "Strobe": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe",
-        "soundControlled": false,
-        "speedStart": "slow",
-        "speedEnd": "fast",
-        "randomTiming": false
-      }
-    },
-    "Change Colors": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Speed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
-      }
-    },
-    "Change Colors Speed": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Speed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
-      }
-    },
     "Red": {
       "defaultValue": 0,
       "capability": {
@@ -88,27 +53,49 @@
         "color": "Blue"
       }
     },
-    "White": {
+    "Dimmer": {
       "defaultValue": 0,
       "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
+        "type": "Intensity"
       }
+    },
+    "Effects": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     }
   },
   "modes": [
     {
-      "name": "8CH",
-      "rdmPersonalityIndex": 1,
+      "name": "5-Channel",
+      "shortName": "5ch",
       "channels": [
-        "Dimmer",
-        "Strobe",
-        "Change Colors",
-        "Change Colors Speed",
         "Red",
         "Green",
         "Blue",
-        "White"
+        "Dimmer",
+        "Effects"
       ]
     }
   ]
