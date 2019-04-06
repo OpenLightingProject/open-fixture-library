@@ -26,6 +26,24 @@
     },
     "lens": {
       "degreesMinMax": [30, 30]
+    },
+    "matrixPixels": {
+      "dimensions": [125, 50, 10],
+      "spacing": [0, 0, 0]
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["Segment 1", "Segment 2", "Segment 3", "Segment 4", "Segment 6", "Segment 5", "Segment 7", "Segment 8"]
+      ]
+    ],
+    "pixelGroups": {
+      "Master": "all",
+      "Segments 1&2": ["Segment 1", "Segment 2"],
+      "Segments 3&4": ["Segment 3", "Segment 4"],
+      "Segments 5&6": ["Segment 5", "Segment 6"],
+      "Segments 7&8": ["Segment 7", "Segment 8"]
     }
   },
   "availableChannels": {
@@ -208,24 +226,6 @@
         }
       ]
     },
-    "Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
     "Dimmer": {
       "defaultValue": 0,
       "capability": {
@@ -240,218 +240,22 @@
         "speedStart": "0Hz",
         "speedEnd": "50Hz"
       }
-    },
-    "Segment 1&2 Red": {
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Segment 1&2 Green": {
+    "Green $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Segment 1&2 Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Segment 3&4 Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Segment 3&4 Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Segment 3&4 Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Segment 5&6 Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Segment 5&6 Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Segment 5&6 Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Segment 7&8 Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Segment 7&8 Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Segment 7&8 Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Segment 1 Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Segment 1 Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Segment 1 Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Segment 2 Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Segment 2 Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Segment 2 Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Segment 3 Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Segment 3 Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Segment 3 Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Segment 4 Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Segment 4 Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Segment 4 Blue ": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Segment 5 Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Segment 5 Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Segment 5 Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Segment 6 Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Segment 6 Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Segment 6 Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Segment 7 Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Segment 7 Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Segment 7 Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Segment 8 Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Segment 8 Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Segment 8 Blue": {
+    "Blue $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
@@ -469,26 +273,26 @@
     {
       "name": "3 channel",
       "channels": [
-        "Red",
-        "Green",
-        "Blue"
+        "Red Master",
+        "Green Master",
+        "Blue Master"
       ]
     },
     {
       "name": "4 channel",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
         "Dimmer"
       ]
     },
     {
       "name": "7 channel",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
         "Function",
         "Speed/sound",
         "Flash",
@@ -498,18 +302,16 @@
     {
       "name": "14 channel",
       "channels": [
-        "Segment 1&2 Red",
-        "Segment 1&2 Green",
-        "Segment 1&2 Blue",
-        "Segment 3&4 Red",
-        "Segment 3&4 Green",
-        "Segment 3&4 Blue",
-        "Segment 5&6 Red",
-        "Segment 5&6 Green",
-        "Segment 5&6 Blue",
-        "Segment 7&8 Red",
-        "Segment 7&8 Green",
-        "Segment 7&8 Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Segments 1&2", "Segments 3&4", "Segments 5&6", "Segments 7&8"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
         "Flash",
         "Dimmer"
       ]
@@ -517,30 +319,16 @@
     {
       "name": "26 channel",
       "channels": [
-        "Segment 1 Red",
-        "Segment 1 Green",
-        "Segment 1 Blue",
-        "Segment 2 Red",
-        "Segment 2 Green",
-        "Segment 2 Blue",
-        "Segment 3 Red",
-        "Segment 3 Green",
-        "Segment 3 Blue",
-        "Segment 4 Red",
-        "Segment 4 Green",
-        "Segment 4 Blue ",
-        "Segment 5 Red",
-        "Segment 5 Green",
-        "Segment 5 Blue",
-        "Segment 6 Red",
-        "Segment 6 Green",
-        "Segment 6 Blue",
-        "Segment 7 Red",
-        "Segment 7 Green",
-        "Segment 7 Blue",
-        "Segment 8 Red",
-        "Segment 8 Green",
-        "Segment 8 Blue",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
         "Flash",
         "Dimmer"
       ]
