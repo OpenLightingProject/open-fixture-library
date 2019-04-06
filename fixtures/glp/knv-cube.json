@@ -22,7 +22,7 @@
   "physical": {
     "dimensions": [250, 250, 183],
     "weight": 9.3,
-    "power": 45,
+    "power": 800,
     "bulb": {
       "type": "25× 30W White LEDs, 400× 0.25W RGB LEDs",
       "colorTemperature": 5000,
@@ -1063,8 +1063,8 @@
         {
           "dmxRange": [128, 255],
           "type": "EffectDuration",
-          "durationStart": "short",
-          "durationEnd": "long",
+          "durationStart": "long",
+          "durationEnd": "short",
           "comment": "Crossfade and tail"
         }
       ]
