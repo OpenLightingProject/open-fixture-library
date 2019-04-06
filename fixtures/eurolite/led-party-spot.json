@@ -1,0 +1,106 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PARty Spot",
+  "shortName": "EurolitePARtySpot",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2019-04-07",
+    "lastModifyDate": "2019-04-07"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/42110192-Manual-101530-1.10-eurolite-led-party-spot-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn42110192-eurolite-led-party-spot.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=fJKxgmbVv4A"
+    ]
+  },
+  "physical": {
+    "dimensions": [145, 155, 90],
+    "weight": 0.46,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12x 1W LEDs (3x red, 3x green, 3x blue, 3x white)"
+    },
+    "lens": {
+      "degreesMinMax": [13, 13]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Effects": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 10],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Effects"
+      ]
+    }
+  ]
+}
