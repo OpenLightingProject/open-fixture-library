@@ -17,12 +17,15 @@
     ]
   },
   "physical": {
-    "dimensions": [88.5, 1064, 85],
-    "weight": 2.8,
+    "dimensions": [1075, 85, 65],
+    "weight": 1.8,
     "power": 30,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "240x 10mm LEDs (96x red, 72x green, 72x blue)"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
     }
   },
   "availableChannels": {
