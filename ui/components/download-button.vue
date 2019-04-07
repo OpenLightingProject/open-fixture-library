@@ -285,11 +285,7 @@ export default {
     }
   },
   methods: {
-    downloadDataAsFile(data, filename, type) {
-      const blob = typeof File === `function`
-        ? new File([data], filename, { type: type })
-        : new Blob([data], { type: type });
-
+    downloadDataAsFile(blob, filename, type) {
       if (typeof window.navigator.msSaveBlob !== `undefined`) {
         // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created.
         // These URLs will no longer resolve as the data backing the URL has been freed."
@@ -299,27 +295,23 @@ export default {
         const URL = window.URL || window.webkitURL;
         const downloadUrl = URL.createObjectURL(blob);
 
-        if (filename) {
-          // use HTML5 a[download] attribute to specify filename
-          const a = document.createElement(`a`);
+        const anchorElement = document.createElement(`a`);
 
-          // safari doesn't support this in older versions
-          if (typeof a.download === `undefined`) {
-            window.location = downloadUrl;
-          }
-          else {
-            a.href = downloadUrl;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-          }
+        if (typeof anchorElement.download === `undefined`) {
+          window.location = downloadUrl;
         }
         else {
-          window.location = downloadUrl;
+          anchorElement.href = downloadUrl;
+          anchorElement.download = filename || ``;
+          document.body.appendChild(anchorElement);
+          anchorElement.click();
         }
 
         // cleanup
-        setTimeout(() => URL.revokeObjectURL(downloadUrl), 100);
+        setTimeout(() => {
+          URL.revokeObjectURL(downloadUrl);
+          document.body.removeChild(anchorElement);
+        }, 100);
       }
     },
     async onDownload(event) {
@@ -337,7 +329,8 @@ export default {
       // for more details, see https://stackoverflow.com/q/16086162/451391
       const response = await this.$axios.post(
         event.target.getAttribute(`href`),
-        this.editorFixtures
+        this.editorFixtures,
+        { responseType: `blob` }
       );
 
       if (response.data.error) {
@@ -349,7 +342,7 @@ export default {
       if (disposition && disposition.indexOf(`attachment`) !== -1) {
         const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
         const matches = filenameRegex.exec(disposition);
-        if (matches != null && matches[1]) {
+        if (matches && matches[1]) {
           filename = matches[1].replace(/['"]/g, ``);
         }
       }
