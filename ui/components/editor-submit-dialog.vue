@@ -34,9 +34,9 @@
       </template>
 
       <div class="button-bar right">
-        <a class="button secondary" @click.prevent="onCancel">Continue editing</a>
+        <a href="#cancel" class="button secondary" @click.prevent="onCancel">Continue editing</a>
         <app-download-button :help="false" :editor-fixtures="submit.sendObject" />
-        <a class="button primary" @click.prevent="onSubmit">Submit to OFL</a>
+        <a href="#submit" class="button primary" @click.prevent="onSubmit">Submit to OFL</a>
       </div>
     </div>
 
@@ -52,7 +52,7 @@
           href="/fixture-editor"
           class="button secondary"
           @click.prevent="$emit(`reset`)">Create another fixture</a>
-        <a class="button secondary" @click.prevent="onDownload">Download</a>
+        <app-download-button :help="false" :editor-fixtures="submit.sendObject" />
         <a :href="pullRequestUrl" class="button primary" target="_blank">See pull request</a>
       </div>
     </div>
@@ -66,7 +66,7 @@
       <textarea v-model="rawData" readonly />
 
       <div class="button-bar right">
-        <a class="button secondary" @click.prevent="onCancel">Close</a>
+        <a href="#cancel" class="button secondary" @click.prevent="onCancel">Close</a>
         <a
           href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
           class="button primary"
