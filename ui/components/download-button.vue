@@ -2,9 +2,9 @@
   <div class="container">
     <div :class="{ 'download-button': true, 'big': isStyleBig, 'home': isStyleHome }">
       <a
-         href="#"
-         :class="{ 'button secondary': !isStyleBig && !isStyleHome, title: isStyleBig || isStyleHome }"
-         @click.prevent>{{ title }}</a>
+        href="#"
+        :class="{ 'button secondary': !isStyleBig && !isStyleHome, title: isStyleBig || isStyleHome }"
+        @click.prevent>{{ title }}</a>
       <ul>
         <li v-for="plugin in exportPlugins" :key="plugin.key">
           <a
@@ -311,9 +311,7 @@ export default {
         }
 
         // cleanup
-        setTimeout(() =>  {
-          URL.revokeObjectURL(downloadUrl);
-        }, 100);
+        setTimeout(() => URL.revokeObjectURL(downloadUrl), 100);
       }
     },
     async onDownload(plugin) {
@@ -337,7 +335,7 @@ export default {
           const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
           const matches = filenameRegex.exec(disposition);
           if (matches != null && matches[1]) {
-            filename = matches[1].replace(/['"]/g, '');
+            filename = matches[1].replace(/['"]/g, ``);
           }
         }
         const type = response.headers[`content-type`];
