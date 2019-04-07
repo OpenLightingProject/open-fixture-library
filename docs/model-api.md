@@ -1320,7 +1320,7 @@ A company or brand that produces fixtures. A fixture is associated to exactly on
 **Kind**: global class  
 
 * [Manufacturer](#Manufacturer)
-    * [new Manufacturer(key)](#new_Manufacturer_new)
+    * [new Manufacturer(key, jsonObject)](#new_Manufacturer_new)
     * [.name](#Manufacturer+name) ⇒ <code>string</code>
     * [.comment](#Manufacturer+comment) ⇒ <code>string</code>
     * [.hasComment](#Manufacturer+hasComment) ⇒ <code>boolean</code>
@@ -1329,13 +1329,14 @@ A company or brand that produces fixtures. A fixture is associated to exactly on
 
 <a name="new_Manufacturer_new"></a>
 
-### new Manufacturer(key)
+### new Manufacturer(key, jsonObject)
 Creates a new Manufacturer instance.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>string</code> | The manufacturer key. Equals to directory name in the fixtures directory. |
+| jsonObject | <code>object</code> \| <code>null</code> | The manufacturer's JSON object. If omitted, the one from `manufacturers.json` will be used. |
 
 <a name="Manufacturer+name"></a>
 

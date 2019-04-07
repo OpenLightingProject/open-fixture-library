@@ -19,6 +19,7 @@ const { fixtureFromRepository } = require(`./lib/model.js`);
 const register = require(`./fixtures/register.json`);
 const getOutObjectFromEditorData = require(`./lib/get-out-object-from-editor-data.js`);
 const Fixture = require(`./lib/model/Fixture.mjs`).default;
+const Manufacturer = require(`./lib/model/Manufacturer.mjs`).default;
 
 
 require(`./lib/load-env-file.js`);
@@ -89,7 +90,12 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
   const outObject = getOutObjectFromEditorData(request.body.fixtures);
   const fixtures = Object.entries(outObject.fixtures).map(([key, jsonObject]) => {
     const [manKey, fixKey] = key.split(`/`);
-    return new Fixture(manKey, fixKey, jsonObject);
+
+    const manufacturer = manKey in outObject.manufacturers
+      ? new Manufacturer(manKey, outObject.manufacturers[manKey])
+      : manKey;
+
+    return new Fixture(manufacturer, fixKey, jsonObject);
   });
 
   let zipName;
