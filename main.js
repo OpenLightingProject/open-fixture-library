@@ -87,23 +87,32 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
   }
 
   const outObject = getOutObjectFromEditorData(request.body.fixtures);
-  const [manKey, fixKey] = Object.entries(outObject.fixtures)[0][0].split(`/`);
-  const fixtureJsonObject = Object.entries(outObject.fixtures)[0][1];
-  const fixture = new Fixture(manKey, fixKey, fixtureJsonObject);
+  const fixtures = Object.entries(outObject.fixtures).map(([key, jsonObject]) => {
+    const [manKey, fixKey] = key.split(`/`);
+    return new Fixture(manKey, fixKey, jsonObject);
+  });
 
-  const fixtures = [];
-  fixtures.push(fixture);
+  let zipName;
+  let errorDesc;
+  if (fixtures.length === 1) {
+    zipName = `${fixtures[0].manufacturer.key}_${fixtures[0].key}_${format}`;
+    errorDesc = `fixture ${fixtures[0].manufacturer.key}/${fixtures[0].key}`;
+  }
+  else {
+    zipName = format;
+    errorDesc = `${fixtures.length} fixtures`;
+  }
 
   const plugin = requireNoCacheInDev(path.join(__dirname, `plugins`, format, `export.js`));
   plugin.export(fixtures, {
     baseDir: __dirname,
     date: new Date()
   })
-    .then(outfiles => downloadFiles(response, outfiles, `${manKey}_${fixKey}_${format}`))
+    .then(outfiles => downloadFiles(response, outfiles, zipName))
     .catch(error => {
       response
         .status(500)
-        .send(`Exporting fixture ${manKey}/${fixKey} with ${format} failed: ${error.toString()}`);
+        .send(`Exporting fixture ${errorDesc} with ${format} failed: ${error.toString()}`);
     });
 });
 
