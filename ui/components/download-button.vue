@@ -8,9 +8,10 @@
       <ul>
         <li v-for="plugin in exportPlugins" :key="plugin.key">
           <a
+            :href="`${baseLink}.${plugin.key}`"
             :title="`Download ${plugin.name} fixture definition${isSingle ? `` : `s`}`"
             rel="nofollow"
-            @click="onDownload(plugin.key); blur($event)">
+            @click="onDownload($event)">
             {{ plugin.name }}
           </a>
         </li>
@@ -108,7 +109,6 @@
       padding: 0.2ex 2ex;
       color: $primary-text-dark;
       transition: background-color 0.2s;
-      cursor: pointer;
     }
 
     & a:hover,
@@ -266,6 +266,17 @@ export default {
 
       return `Download all ${this.fixtureCount} fixtures`;
     },
+    baseLink() {
+      if (this.editorFixtures) {
+        return `/download-editor`;
+      }
+
+      if (this.isSingle) {
+        return `/${this.submittedFixtureManKeyAndKey}`;
+      }
+
+      return `/download`;
+    },
     isStyleHome() {
       return this.buttonStyle === `home`;
     },
@@ -274,9 +285,6 @@ export default {
     }
   },
   methods: {
-    blur(event) {
-      event.target.blur();
-    },
     downloadDataAsFile(data, filename, type) {
       const blob = typeof File === `function`
         ? new File([data], filename, { type: type })
@@ -314,42 +322,40 @@ export default {
         setTimeout(() => URL.revokeObjectURL(downloadUrl), 100);
       }
     },
-    async onDownload(plugin) {
-      if (this.editorFixtures) {
-        // download the not yet submitted editor fixtures
+    async onDownload(event) {
+      event.target.blur();
 
-        // download the data as a file. see the following link for more details:
-        // https://stackoverflow.com/questions/16086162/handle-file-download-from-ajax-post
-        const response = await this.$axios.post(
-          `/download-editor.${plugin}`,
-          this.editorFixtures
-        );
+      if (!this.editorFixtures) {
+        // default link target
+        return;
+      }
 
-        if (response.data.error) {
-          throw new Error(response.data.error);
+      // download the (possibly not yet submitted) editor fixtures
+      event.preventDefault();
+
+      // download the data as a file
+      // for more details, see https://stackoverflow.com/q/16086162/451391
+      const response = await this.$axios.post(
+        event.target.getAttribute(`href`),
+        this.editorFixtures
+      );
+
+      if (response.data.error) {
+        throw new Error(response.data.error);
+      }
+
+      let filename = ``;
+      const disposition = response.headers[`content-disposition`];
+      if (disposition && disposition.indexOf(`attachment`) !== -1) {
+        const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+        const matches = filenameRegex.exec(disposition);
+        if (matches != null && matches[1]) {
+          filename = matches[1].replace(/['"]/g, ``);
         }
+      }
+      const type = response.headers[`content-type`];
 
-        let filename = ``;
-        const disposition = response.headers[`content-disposition`];
-        if (disposition && disposition.indexOf(`attachment`) !== -1) {
-          const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
-          const matches = filenameRegex.exec(disposition);
-          if (matches != null && matches[1]) {
-            filename = matches[1].replace(/['"]/g, ``);
-          }
-        }
-        const type = response.headers[`content-type`];
-
-        this.downloadDataAsFile(response.data, filename, type);
-      }
-      else if (this.isSingle) {
-        // download a single fixture
-        window.open(`/${this.submittedFixtureManKeyAndKey}.${plugin}`);
-      }
-      else {
-        // download all fixture in a specific format
-        window.open(`/download.${plugin}`);
-      }
+      this.downloadDataAsFile(response.data, filename, type);
     }
   }
 };
