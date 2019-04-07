@@ -1,7 +1,7 @@
 #!/usr/bin/node
 const path = require(`path`);
 const minimist = require(`minimist`);
-const colors = require(`colors`);
+const chalk = require(`chalk`);
 
 const plugins = require(`../plugins/plugins.json`);
 const { fixtureFromFile, fixtureFromRepository } = require(`../lib/model.js`);
@@ -29,19 +29,19 @@ if (args.help) {
 }
 
 if (!args.plugin) {
-  console.error(`${colors.red(`[Error]`)} Plugin has to be specified using --plugin`);
+  console.error(`${chalk.red(`[Error]`)} Plugin has to be specified using --plugin`);
   console.log(helpMessage);
   process.exit(1);
 }
 
 if (!plugins.exportPlugins.includes(args.plugin)) {
-  console.error(`${colors.red(`[Error]`)} Plugin '${args.plugin}' is not a valid export plugin.\nAvailable export plugins: ${plugins.exportPlugins.join(`, `)}`);
+  console.error(`${chalk.red(`[Error]`)} Plugin '${args.plugin}' is not a valid export plugin.\nAvailable export plugins: ${plugins.exportPlugins.join(`, `)}`);
   process.exit(1);
 }
 
 const pluginData = plugins.data[args.plugin];
 if (pluginData.exportTests.length === 0) {
-  console.log(`${colors.green(`[PASS]`)} Plugin '${args.plugin}' has no export tests.`);
+  console.log(`${chalk.green(`[PASS]`)} Plugin '${args.plugin}' has no export tests.`);
   process.exit(0);
 }
 
@@ -68,23 +68,23 @@ pluginExport.export(fixtures, {
 
       const filePromises = files.map(file =>
         exportTest(file)
-          .then(() => `${colors.green(`[PASS]`)} ${file.name}`)
+          .then(() => `${chalk.green(`[PASS]`)} ${file.name}`)
           .catch(err => {
             const errors = Array.isArray(err) ? err : [err];
 
-            return [`${colors.red(`[FAIL]`)} ${file.name}`].concat(
+            return [`${chalk.red(`[FAIL]`)} ${file.name}`].concat(
               errors.map(error => `- ${error}`)
             ).join(`\n`);
           })
       );
 
       return Promise.all(filePromises).then(outputPerFile => {
-        console.log(`\n${colors.yellow(`Test ${testKey}`)}`);
+        console.log(`\n${chalk.yellow(`Test ${testKey}`)}`);
         console.log(outputPerFile.join(`\n`));
       });
     })
   ))
   .catch(error => {
-    console.error(`${colors.red(`[Error]`)} Exporting failed:`, error);
+    console.error(`${chalk.red(`[Error]`)} Exporting failed:`, error);
     process.exit(1);
   });

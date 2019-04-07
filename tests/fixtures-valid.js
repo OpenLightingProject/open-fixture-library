@@ -2,7 +2,7 @@
 
 const fs = require(`fs`);
 const path = require(`path`);
-const colors = require(`colors`);
+const chalk = require(`chalk`);
 const Ajv = require(`ajv`);
 
 const manufacturerSchema = require(`../schemas/dereferenced/manufacturers.json`);
@@ -156,18 +156,18 @@ Promise.all(promises).then(results => {
     const failed = result.errors.length > 0;
 
     console.log(
-      failed ? colors.red(`[FAIL]`) : colors.green(`[PASS]`),
+      failed ? chalk.red(`[FAIL]`) : chalk.green(`[PASS]`),
       result.name
     );
 
     totalFails += failed ? 1 : 0;
     for (const error of result.errors) {
-      console.log(`└`, colors.red(`Error:`), error);
+      console.log(`└`, chalk.red(`Error:`), error);
     }
 
     totalWarnings += result.warnings.length;
     for (const warning of result.warnings) {
-      console.log(`└`, colors.yellow(`Warning:`), warning);
+      console.log(`└`, chalk.yellow(`Warning:`), warning);
     }
   });
 
@@ -176,14 +176,14 @@ Promise.all(promises).then(results => {
 
   // summary
   if (totalWarnings > 0) {
-    console.log(colors.yellow(`[INFO]`), `${totalWarnings} unresolved warning(s)`);
+    console.log(chalk.yellow(`[INFO]`), `${totalWarnings} unresolved warning(s)`);
   }
 
   if (totalFails === 0) {
-    console.log(colors.green(`[PASS]`), `All ${results.length} tested files were valid.`);
+    console.log(chalk.green(`[PASS]`), `All ${results.length} tested files were valid.`);
     process.exit(0);
   }
 
-  console.error(colors.red(`[FAIL]`), `${totalFails} of ${results.length} tested files failed.`);
+  console.error(chalk.red(`[FAIL]`), `${totalFails} of ${results.length} tested files failed.`);
   process.exit(1);
-}).catch(error => console.error(colors.red(`[Error]`), `Test errored:`, error));
+}).catch(error => console.error(chalk.red(`[Error]`), `Test errored:`, error));
