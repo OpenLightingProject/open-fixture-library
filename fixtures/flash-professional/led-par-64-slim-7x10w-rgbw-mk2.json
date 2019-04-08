@@ -1,0 +1,461 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PAR 64 SLIM 7x10W RGBW Mk2",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Flash Professional", "Flo Edelmann"],
+    "createDate": "2019-04-08",
+    "lastModifyDate": "2019-04-08",
+    "importPlugin": {
+      "plugin": "qlcplus_4.11.2",
+      "date": "2019-04-08",
+      "comment": "created by Q Light Controller Plus (version 4.11.0)"
+    }
+  },
+  "physical": {
+    "dimensions": [30, 30, 10],
+    "weight": 3,
+    "power": 70,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 9000,
+      "lumens": 10000
+    },
+    "lens": {
+      "name": "PC",
+      "degreesMinMax": [25, 25]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Intensity",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Intensity"
+        }
+      ]
+    },
+    "RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Colour / Macro": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ColorPreset",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0004"]
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [16, 20],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [21, 25],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [26, 30],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [31, 35],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [36, 40],
+          "type": "ColorPreset",
+          "comment": "light red",
+          "colors": ["#ff8082"]
+        },
+        {
+          "dmxRange": [41, 45],
+          "type": "ColorPreset",
+          "comment": "light green",
+          "colors": ["#80ff80"]
+        },
+        {
+          "dmxRange": [46, 50],
+          "type": "ColorPreset",
+          "comment": "light blue",
+          "colors": ["#8080ff"]
+        },
+        {
+          "dmxRange": [51, 55],
+          "type": "ColorPreset",
+          "comment": "orange",
+          "colors": ["#ff6800"]
+        },
+        {
+          "dmxRange": [56, 60],
+          "type": "ColorPreset",
+          "comment": "mint",
+          "colors": ["#6cffc2"]
+        },
+        {
+          "dmxRange": [61, 65],
+          "type": "ColorPreset",
+          "comment": "sky blue",
+          "colors": ["#b3e9ff"]
+        },
+        {
+          "dmxRange": [66, 70],
+          "type": "ColorPreset",
+          "comment": "light cyan",
+          "colors": ["#80ffff"]
+        },
+        {
+          "dmxRange": [71, 75],
+          "type": "ColorPreset",
+          "comment": "light magenta",
+          "colors": ["#ff80ff"]
+        },
+        {
+          "dmxRange": [76, 80],
+          "type": "ColorPreset",
+          "comment": "light yellow",
+          "colors": ["#ffff80"]
+        },
+        {
+          "dmxRange": [81, 85],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [86, 90],
+          "type": "ColorPreset",
+          "comment": "9000k",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [91, 95],
+          "type": "ColorPreset",
+          "comment": "6500k",
+          "colors": ["#ffffe0"]
+        },
+        {
+          "dmxRange": [96, 100],
+          "type": "ColorPreset",
+          "comment": "5600k",
+          "colors": ["#feffbe"]
+        },
+        {
+          "dmxRange": [101, 105],
+          "type": "ColorPreset",
+          "comment": "5000k",
+          "colors": ["#ffffb4"]
+        },
+        {
+          "dmxRange": [106, 110],
+          "type": "ColorPreset",
+          "comment": "4500k",
+          "colors": ["#feff8f"]
+        },
+        {
+          "dmxRange": [111, 115],
+          "type": "ColorPreset",
+          "comment": "3200k",
+          "colors": ["#ffdf8b"]
+        },
+        {
+          "dmxRange": [116, 120],
+          "type": "ColorPreset",
+          "comment": "2500k",
+          "colors": ["#ffcb70"]
+        },
+        {
+          "dmxRange": [121, 125],
+          "type": "ColorPreset",
+          "comment": "2200k",
+          "colors": ["#ff9f31"]
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "ColorPreset",
+          "comment": "Macro 1"
+        },
+        {
+          "dmxRange": [131, 135],
+          "type": "ColorPreset",
+          "comment": "Macro 2"
+        },
+        {
+          "dmxRange": [136, 140],
+          "type": "ColorPreset",
+          "comment": "Macro 3"
+        },
+        {
+          "dmxRange": [141, 145],
+          "type": "ColorPreset",
+          "comment": "Macro 4"
+        },
+        {
+          "dmxRange": [146, 150],
+          "type": "ColorPreset",
+          "comment": "Macro 5"
+        },
+        {
+          "dmxRange": [151, 155],
+          "type": "ColorPreset",
+          "comment": "Macro 6"
+        },
+        {
+          "dmxRange": [156, 160],
+          "type": "ColorPreset",
+          "comment": "Macro 7"
+        },
+        {
+          "dmxRange": [161, 165],
+          "type": "ColorPreset",
+          "comment": "Macro 8"
+        },
+        {
+          "dmxRange": [166, 170],
+          "type": "ColorPreset",
+          "comment": "Macro 9"
+        },
+        {
+          "dmxRange": [171, 175],
+          "type": "ColorPreset",
+          "comment": "Macro 10"
+        },
+        {
+          "dmxRange": [176, 180],
+          "type": "ColorPreset",
+          "comment": "Macro 11"
+        },
+        {
+          "dmxRange": [181, 235],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "ColorPreset",
+          "comment": "sound mode 1"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorPreset",
+          "comment": "sound mode 2"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorPreset",
+          "comment": "sound mode 3"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "sound mode 4"
+        }
+      ]
+    },
+    "Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Speed",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
+    },
+    "Dimmer 16bit": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RED 16bit": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN 16bit": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE 16bit": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "WHITE 16bit": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "empty": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Classic 8",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WHITE",
+        "Colour / Macro",
+        "Speed"
+      ]
+    },
+    {
+      "name": "Clasic 6",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WHITE"
+      ]
+    },
+    {
+      "name": "Pro 6",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WHITE",
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "Pro 7",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WHITE",
+        "Dimmer",
+        "Dimmer 16bit",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "RGB",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE"
+      ]
+    },
+    {
+      "name": "RGBW",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WHITE"
+      ]
+    },
+    {
+      "name": "RGB 16bit",
+      "channels": [
+        "RED",
+        "RED 16bit",
+        "GREEN",
+        "GREEN 16bit",
+        "BLUE",
+        "BLUE 16bit"
+      ]
+    },
+    {
+      "name": "RGBW 16bit",
+      "channels": [
+        "RED",
+        "RED 16bit",
+        "GREEN",
+        "GREEN 16bit",
+        "BLUE",
+        "BLUE 16bit",
+        "WHITE",
+        "WHITE 16bit"
+      ]
+    },
+    {
+      "name": "Flash A-DMX",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WHITE",
+        "Dimmer",
+        "empty",
+        "Strobe",
+        "Colour / Macro"
+      ]
+    }
+  ]
+}
