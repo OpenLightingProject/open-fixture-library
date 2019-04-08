@@ -373,6 +373,17 @@
   },
   "modes": [
     {
+      "name": "Classic 6",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WHITE"
+      ]
+    },
+    {
       "name": "Classic 8",
       "channels": [
         "Dimmer",
@@ -383,17 +394,6 @@
         "WHITE",
         "Colour / Macro",
         "Speed"
-      ]
-    },
-    {
-      "name": "Clasic 6",
-      "channels": [
-        "Dimmer",
-        "Strobe",
-        "RED",
-        "GREEN",
-        "BLUE",
-        "WHITE"
       ]
     },
     {
