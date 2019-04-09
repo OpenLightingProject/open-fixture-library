@@ -1,0 +1,610 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PAR 64 SLIM 7x10W RGBW Mk2",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Flash Professional", "Flo Edelmann"],
+    "createDate": "2019-04-09",
+    "lastModifyDate": "2019-04-09",
+    "importPlugin": {
+      "plugin": "qlcplus_4.11.2",
+      "date": "2019-04-09",
+      "comment": "created by Q Light Controller Plus (version 4.11.0)"
+    }
+  },
+  "links": {
+    "manual": [
+      "http://flash-butrym.pl/en_US/p/file/484d613b7950f9ced2164bfc3980d0b9/P7100408_P7100418-LED-PAR-64-Slim-7x10W-RGBW-Mk2.pdf",
+      "http://flash-butrym.pl/en_US/p/file/b58ec423c37dffb30279fabaa5cb3d2b/LED-PAR-64-Slim-Wireless-DMX-7x10W-RGBW-Mk2.pdf",
+      "http://flash-butrym.pl/en_US/p/file/abb5ae416ed1ebd6b51e298dbed3a7ea/WSZYSTKIE-z-IR-LED-PAR-64-Slim-7x10W-RGBW-IR-Mk2.pdf"
+    ],
+    "productPage": [
+      "http://flash-butrym.pl/en_US/p/LED-PAR-64-SLIM-7x10W-RGBW-Mk2/471",
+      "http://flash-butrym.pl/en_US/p/LED-PAR-64-SLIM-Wireless-DMX-7x10W-RGBW-Mk2/561",
+      "http://flash-butrym.pl/en_US/p/LED-PAR-64-SLIM-IR-remote-7x10W-RGBW-Mk2/548"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=---UxzqLBVM",
+      "https://www.youtube.com/watch?v=dwslAXSCMIc"
+    ]
+  },
+  "physical": {
+    "dimensions": [26, 27, 11],
+    "weight": 1.3,
+    "power": 80,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "7× RGBW LED",
+      "colorTemperature": 9000,
+      "lumens": 10000
+    },
+    "lens": {
+      "name": "PC",
+      "degreesMinMax": [25, 25]
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color / Macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "Open",
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0004"],
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"],
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [16, 20],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"],
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [21, 25],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"],
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [26, 30],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"],
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [31, 35],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"],
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [36, 40],
+          "type": "ColorPreset",
+          "comment": "Light Red",
+          "colors": ["#ff8082"],
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [41, 45],
+          "type": "ColorPreset",
+          "comment": "Light Green",
+          "colors": ["#80ff80"],
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [46, 50],
+          "type": "ColorPreset",
+          "comment": "Light Blue",
+          "colors": ["#8080ff"],
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [51, 55],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ff6800"],
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [56, 60],
+          "type": "ColorPreset",
+          "comment": "Mint",
+          "colors": ["#6cffc2"],
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [61, 65],
+          "type": "ColorPreset",
+          "comment": "Sky Blue",
+          "colors": ["#b3e9ff"],
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [66, 70],
+          "type": "ColorPreset",
+          "comment": "Light Cyan",
+          "colors": ["#80ffff"],
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [71, 75],
+          "type": "ColorPreset",
+          "comment": "Light Magenta",
+          "colors": ["#ff80ff"],
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [76, 80],
+          "type": "ColorPreset",
+          "comment": "Light Yellow",
+          "colors": ["#ffff80"],
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [81, 85],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [86, 90],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "colorTemperature": "9000K",
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [91, 95],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffe0"],
+          "colorTemperature": "6500K",
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [96, 100],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#feffbe"],
+          "colorTemperature": "5600K",
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [101, 105],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffb4"],
+          "colorTemperature": "5000K",
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [106, 110],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#feff8f"],
+          "colorTemperature": "4500K",
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [111, 115],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffdf8b"],
+          "colorTemperature": "3200K",
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [116, 120],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffcb70"],
+          "colorTemperature": "2500K",
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [121, 125],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ff9f31"],
+          "colorTemperature": "2200K",
+          "switchChannels": {
+            "Speed": "Pulse Speed"
+          }
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Macro 1",
+          "switchChannels": {
+            "Speed": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [131, 135],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Macro 2",
+          "switchChannels": {
+            "Speed": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [136, 140],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Macro 3",
+          "switchChannels": {
+            "Speed": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [141, 145],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Macro 4",
+          "switchChannels": {
+            "Speed": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [146, 150],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Macro 5",
+          "switchChannels": {
+            "Speed": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [151, 155],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Macro 6",
+          "switchChannels": {
+            "Speed": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [156, 160],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Macro 7",
+          "switchChannels": {
+            "Speed": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [161, 165],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Macro 8",
+          "switchChannels": {
+            "Speed": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [166, 170],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Macro 9",
+          "switchChannels": {
+            "Speed": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [171, 175],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Macro 10",
+          "switchChannels": {
+            "Speed": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [176, 180],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Macro 11",
+          "switchChannels": {
+            "Speed": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [181, 235],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Speed": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Sound mode 1",
+          "soundControlled": true,
+          "switchChannels": {
+            "Speed": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Sound mode 2",
+          "soundControlled": true,
+          "switchChannels": {
+            "Speed": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Sound mode 3",
+          "soundControlled": true,
+          "switchChannels": {
+            "Speed": "Macro Speed"
+          }
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Sound mode 4",
+          "soundControlled": true,
+          "switchChannels": {
+            "Speed": "Macro Speed"
+          }
+        }
+      ]
+    },
+    "Pulse Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "pulse"
+        }
+      ]
+    },
+    "Macro Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "comment": "macro"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Classic 6",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "Classic 8",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color / Macro",
+        "Speed"
+      ]
+    },
+    {
+      "name": "Pro 6",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "Pro 7",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Dimmer fine",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "RGB",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "RGBW",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "RGB 16bit",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine"
+      ]
+    },
+    {
+      "name": "RGBW 16bit",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine"
+      ]
+    },
+    {
+      "name": "Flash A-DMX",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        null,
+        "Strobe",
+        "Color / Macro"
+      ]
+    }
+  ]
+}
