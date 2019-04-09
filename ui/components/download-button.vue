@@ -1,6 +1,17 @@
 <template>
   <div class="container">
-    <div :class="{ 'download-button': true, 'big': isStyleBig, 'home': isStyleHome }">
+    <!-- Display the download button as a select to make it work inside modals as well -->
+    <select
+      v-if="!isStyleBig"
+      @change="onDownloadSelect($event)"
+      class="select-button">
+      <option value="start">{{ title }}</option>
+      <option :value="plugin.key" v-for="plugin in exportPlugins" :key="plugin.key">{{ plugin.name }}</option>
+    </select>
+    <!-- Display the big button as fixed position div to make it look better -->
+    <div
+      v-if="isStyleBig"
+      :class="{ 'download-button': true, 'big': true, 'home': isStyleHome }">
       <a
         href="#"
         :class="{ 'button secondary': !isStyleBig && !isStyleHome, title: isStyleBig || isStyleHome }"
@@ -11,7 +22,7 @@
             :href="`${baseLink}.${plugin.key}`"
             :title="`Download ${plugin.name} fixture definition${isSingle ? `` : `s`}`"
             rel="nofollow"
-            @click="onDownload($event)">
+            @click="onDownloadButton($event, plugin.key)">
             {{ plugin.name }}
           </a>
         </li>
@@ -61,6 +72,36 @@
   &:hover,
   &:focus {
     opacity: 0.7;
+  }
+}
+
+.select-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  display: inline-block;
+  line-height: 1.4;
+  width: 22ex;
+  margin-left: 1ex;
+  margin-top: 1ex;
+  padding: 0.5em 3ex;
+
+  background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23303030' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
+  background-size: 8px 10px;
+  background-color: #fafafa;
+
+  color: rgba(0, 0, 0, 0.54);
+  font-weight: 600;
+  font-size: 0.9em;
+
+  border-color: #e0e0e0;
+  border-radius: 2px;
+
+  transition: 0.1s background-color;
+
+  &:hover {
+    background-color: #e0e0e0;
   }
 }
 </style>
@@ -314,21 +355,11 @@ export default {
         }, 100);
       }
     },
-    async onDownload(event) {
-      event.target.blur();
-
-      if (!this.editorFixtures) {
-        // default link target
-        return;
-      }
-
-      // download the (possibly not yet submitted) editor fixtures
-      event.preventDefault();
-
+    async formattedDownload(pluginKey) {
       // download the data as a file
       // for more details, see https://stackoverflow.com/q/16086162/451391
       const response = await this.$axios.post(
-        event.target.getAttribute(`href`),
+        `${this.baseLink}.${pluginKey}`,
         this.editorFixtures,
         { responseType: `blob` }
       );
@@ -349,6 +380,38 @@ export default {
       const type = response.headers[`content-type`];
 
       this.downloadDataAsFile(response.data, filename, type);
+    },
+    onDownloadButton(event, pluginKey) {
+      event.target.blur();
+
+      if (!this.editorFixtures) {
+        // default link target
+        return;
+      }
+
+      // download the (possibly not yet submitted) editor fixtures
+      event.preventDefault();
+      this.formattedDownload(pluginKey);
+    },
+    onDownloadSelect(event) {
+      if (event.target.value === `start`) {
+        // no plugin has been selected
+        return;
+      }
+
+      const pluginKey = event.target.value;
+
+      // reset the select value to make it feel more like a button
+      event.target.value = `start`;
+
+      if (!this.editorFixtures) {
+        // download an already submitted fixture
+        window.open(`${this.baseLink}.${pluginKey}`);
+        return;
+      }
+
+      // download the (possibly not yet submitted) editor fixtures
+      this.formattedDownload(pluginKey);
     }
   }
 };
