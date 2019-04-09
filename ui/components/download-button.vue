@@ -1,17 +1,19 @@
 <template>
-  <div class="container">
+  <div class="container" :class="{ 'only-select-button': !isStyleBig && !help }">
     <!-- Display the download button as a select to make it work inside modals as well -->
     <select
       v-if="!isStyleBig"
-      @change="onDownloadSelect($event)"
-      class="select-button">
-      <option value="start">{{ title }}</option>
-      <option :value="plugin.key" v-for="plugin in exportPlugins" :key="plugin.key">{{ plugin.name }}</option>
+      class="select-button"
+      @change="onDownloadSelect($event)">
+      <option value="" disabled selected>{{ title }}</option>
+      <option v-for="plugin in exportPlugins" :key="plugin.key" :value="plugin.key">{{ plugin.name }}</option>
     </select>
+
     <!-- Display the big button as fixed position div to make it look better -->
     <div
-      v-if="isStyleBig"
-      :class="{ 'download-button': true, 'big': true, 'home': isStyleHome }">
+      v-else
+      class="download-button big"
+      :class="{ 'home': isStyleHome }">
       <a
         href="#"
         :class="{ 'button secondary': !isStyleBig && !isStyleHome, title: isStyleBig || isStyleHome }"
@@ -43,9 +45,13 @@
 .container {
   text-align: center;
   margin: 0 0 1em;
-  display: inline-block;
 
   @media (min-width: 650px) {
+    margin: 0;
+  }
+
+  &.only-select-button {
+    display: inline-block;
     margin: 0;
   }
 }
@@ -81,15 +87,15 @@
   appearance: none;
 
   display: inline-block;
+  box-sizing: content-box;
   line-height: 1.4;
-  width: 22ex;
+  height: 1.4em;
+  width: 12.5ex;
   margin-left: 1ex;
   margin-top: 1ex;
   padding: 0.5em 3ex;
 
-  background: #fff url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23303030' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
-  background-size: 8px 10px;
-  background-color: #fafafa;
+  background: #fafafa;
 
   color: rgba(0, 0, 0, 0.54);
   font-weight: 600;
@@ -99,8 +105,10 @@
   border-radius: 2px;
 
   transition: 0.1s background-color;
+  cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: #e0e0e0;
   }
 }
@@ -394,7 +402,7 @@ export default {
       this.formattedDownload(pluginKey);
     },
     onDownloadSelect(event) {
-      if (event.target.value === `start`) {
+      if (event.target.value === ``) {
         // no plugin has been selected
         return;
       }
@@ -402,7 +410,7 @@ export default {
       const pluginKey = event.target.value;
 
       // reset the select value to make it feel more like a button
-      event.target.value = `start`;
+      event.target.value = ``;
 
       if (!this.editorFixtures) {
         // download an already submitted fixture
