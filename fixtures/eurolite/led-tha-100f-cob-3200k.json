@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED THA-100F COB 3200K",
+  "shortName": "LED_THA_100F_COB_3200K",
+  "categories": ["Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["RAZAKANIRINA"],
+    "createDate": "2019-04-10",
+    "lastModifyDate": "2019-04-10"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/eurolite_325016_tha100f_cob_3200k_ger_uk.pdf"
+    ],
+    "productPage": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/eurolite_325016_tha100f_cob_3200k_ger_uk.pdf"
+    ],
+    "video": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/eurolite_325016_tha100f_cob_3200k_ger_uk.pdf"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3200
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Dimmer curve": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3-channel",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Dimmer curve"
+      ]
+    }
+  ]
+}
