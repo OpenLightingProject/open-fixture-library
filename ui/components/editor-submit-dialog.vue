@@ -34,7 +34,8 @@
 
       <div class="button-bar right">
         <a href="#cancel" class="button secondary" @click.prevent="onCancel">Continue editing</a>
-        <app-download-button :showHelp="false" :editor-fixtures="submit.sendObject" />
+        <!-- Hide the download button in case the fixture has errors. Some plugins are not able to download such fixtures. -->
+        <app-download-button v-if="!validationErrors.length" :showHelp="false" :editor-fixtures="submit.sendObject" />
         <a href="#submit" class="button primary" @click.prevent="onSubmit">Submit to OFL</a>
       </div>
     </div>

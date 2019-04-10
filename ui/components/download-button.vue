@@ -144,6 +144,8 @@
 
   & > ul {
     position: absolute;
+    // just move the list to the left outside of the screen but don't hide it,
+    // to still allow screenreaders reading it
     left: -9999px;
     padding: 0.7em 0;
     margin: 0;
