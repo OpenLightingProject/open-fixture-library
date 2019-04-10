@@ -1,5 +1,5 @@
 <template>
-  <div class="container" :class="{ 'only-select-button': !isStyleBig && !help }">
+  <div class="container" :class="{ 'only-select-button': !isStyleBig && !showHelp }">
     <!-- Display the download button as a select to make it work inside modals as well -->
     <select
       v-if="!isStyleBig"
@@ -32,7 +32,7 @@
     </div>
 
     <nuxt-link
-      v-if="help"
+      v-if="showHelp"
       to="/about/plugins"
       :target="isStyleHome ? null : `_blank`"
       class="help-link">
@@ -143,15 +143,15 @@
   }
 
   & > ul {
-    display: none;
     position: absolute;
+    left: -9999px;
     padding: 0.7em 0;
     margin: 0;
     list-style: none;
     background-color: $grey-50;
     border-radius: 0 0 2px 2px;
     box-shadow: 0 2px 2px rgba(#000, 0.2);
-    z-index: 2000;
+    z-index: 90;
 
     & a {
       display: block;
@@ -170,7 +170,7 @@
   &:hover > ul,
   & > .title:focus + ul,
   & > .title:active + ul {
-    display: block;
+    left: 0;
   }
 
   &:focus-within > ul {
@@ -260,12 +260,6 @@ export default {
     'app-svg': svgVue
   },
   props: {
-    // download a single fixture or all of a plugin?
-    isSingle: {
-      type: Boolean,
-      required: false,
-      default: true
-    },
     // how many fixtures will be downloaded, if !isSingle?
     fixtureCount: {
       type: Number,
@@ -279,7 +273,7 @@ export default {
       default: undefined
     },
     // the manufacturer key and fixture key of a submitted fixture
-    submittedFixtureManKeyAndKey: {
+    fixtureKey: {
       type: String,
       required: false,
       default: undefined
@@ -291,7 +285,7 @@ export default {
       default: undefined
     },
     // show the help box
-    help: {
+    showHelp: {
       type: Boolean,
       required: false,
       default: true
@@ -308,6 +302,19 @@ export default {
     };
   },
   computed: {
+    // returns, whether we're handling only one single fixture here
+    // or all fixtures in a specific format
+    isSingle() {
+      if (this.editorFixtures && this.editorFixtures.fixtures.length === 1) {
+        return true;
+      }
+
+      if (this.fixtureKey) {
+        return true;
+      }
+
+      return false;
+    },
     title() {
       if (this.isSingle) {
         return `Download as…`;
@@ -321,7 +328,7 @@ export default {
       }
 
       if (this.isSingle) {
-        return `/${this.submittedFixtureManKeyAndKey}`;
+        return `/${this.fixtureKey}`;
       }
 
       return `/download`;

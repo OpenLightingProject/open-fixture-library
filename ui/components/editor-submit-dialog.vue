@@ -25,8 +25,7 @@
         </ul>
 
         You can try to resolve them or continue anyway with submitting your fixture
-        to the Open Fixture Library project (then we will fix those issues).
-        You can also only download the fixture for private use.
+        to the Open Fixture Library project. We will then fix those issues.
       </template>
       <template v-else>
         The fixture validation was successful. You can now submit your fixture to
@@ -35,7 +34,7 @@
 
       <div class="button-bar right">
         <a href="#cancel" class="button secondary" @click.prevent="onCancel">Continue editing</a>
-        <app-download-button :help="false" :editor-fixtures="submit.sendObject" />
+        <app-download-button :showHelp="false" :editor-fixtures="submit.sendObject" />
         <a href="#submit" class="button primary" @click.prevent="onSubmit">Submit to OFL</a>
       </div>
     </div>
@@ -52,7 +51,7 @@
           href="/fixture-editor"
           class="button secondary"
           @click.prevent="$emit(`reset`)">Create another fixture</a>
-        <app-download-button :help="false" :editor-fixtures="submit.sendObject" />
+        <app-download-button :showHelp="false" :editor-fixtures="submit.sendObject" />
         <a :href="pullRequestUrl" class="button primary" target="_blank">See pull request</a>
       </div>
     </div>
