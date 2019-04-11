@@ -118,7 +118,7 @@ export default {
 
           return {
             name: contributor,
-            number: register.contributors[contributor].length,
+            number: register.contributors[contributor].fixtures.length,
             latestFixtureKey: latestFixtureKey,
             latestFixtureName: getFixtureName(latestFixtureKey)
           };
@@ -169,7 +169,7 @@ function getFixtureName(fixtureKey) {
  */
 function getLatestFixtureKey(contributor) {
   return register.lastUpdated.find(
-    key => register.contributors[contributor].includes(key)
+    key => register.contributors[contributor].fixtures.includes(key)
   );
 }
 </script>
