@@ -50,10 +50,10 @@
       </section>
 
       <section class="card">
-        <h2>Top contributors</h2>
+        <h2>Recent contributors</h2>
 
         <ul class="list">
-          <li v-for="contributor in topContributors" :key="contributor.name">
+          <li v-for="contributor in recentContributors" :key="contributor.name">
             <nuxt-link :to="`/${contributor.latestFixtureKey}`">
               {{ contributor.name }}
               <div class="hint">
@@ -112,7 +112,7 @@ export default {
           color: register.colors[fixtureKey.split(`/`)[0]]
         })
       ),
-      topContributors: Object.keys(register.contributors).slice(0, 5).map(
+      recentContributors: Object.keys(register.contributors).slice(0, 5).map(
         contributor => {
           const latestFixtureKey = getLatestFixtureKey(contributor);
 
