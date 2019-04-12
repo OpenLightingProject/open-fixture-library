@@ -3,6 +3,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`capability${capability.uuid}-slotNumber`"
       label="Slot number"
       hint="Leave the slot number empty if this capability doesn't select a wheel slot, but only activates wheel shaking for a WheelSlot capability in another channel."
@@ -15,6 +16,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`capability${capability.uuid}-shakeSpeed`"
       label="Shake speed">
       <app-editor-proportional-capability-data-switcher
@@ -25,6 +27,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`capability${capability.uuid}-shakeAngle`"
       label="Shake angle">
       <app-editor-proportional-capability-data-switcher

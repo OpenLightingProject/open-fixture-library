@@ -119,7 +119,11 @@
           </select>
         </app-labeled-input>
 
-        <app-labeled-input :formstate="formstate" name="defaultValue" label="Default DMX value">
+        <app-labeled-input
+          :formstate="formstate"
+          :multiple-inputs="true"
+          name="defaultValue"
+          label="Default DMX value">
           <app-property-input-entity
             v-model="channel.defaultValue"
             :schema-property="properties.channel.defaultValue"
@@ -175,7 +179,11 @@
 
         <h3>Advanced channel settings</h3>
 
-        <app-labeled-input :formstate="formstate" name="highlightValue" label="Highlight DMX value">
+        <app-labeled-input
+          :formstate="formstate"
+          :multiple-inputs="true"
+          name="highlightValue"
+          label="Highlight DMX value">
           <app-property-input-entity
             v-model="channel.highlightValue"
             :schema-property="properties.channel.highlightValue"

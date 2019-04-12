@@ -3,6 +3,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`capability${capability.uuid}-blade`"
       label="Blade">
       <app-property-input-entity
@@ -14,6 +15,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`capability${capability.uuid}-angle`"
       label="Angle">
       <app-editor-proportional-capability-data-switcher

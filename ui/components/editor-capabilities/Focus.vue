@@ -3,6 +3,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`capability${capability.uuid}-distance`"
       label="Distance">
       <app-editor-proportional-capability-data-switcher
