@@ -1,27 +1,24 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "LED THA-100F",
-  "shortName": "EuroliteTHA100F",
+  "name": "LED THA-100F MK2",
+  "shortName": "EuroliteTHA100F-2",
   "categories": ["Dimmer", "Strobe"],
   "meta": {
-    "authors": ["RAZAKANIRINA"],
+    "authors": ["Felix Edelmann"],
     "createDate": "2019-04-15",
     "lastModifyDate": "2019-04-15"
   },
   "links": {
     "manual": [
-      "https://www.steinigke.de/download/41602125-Manual-90256-1.10-eurolite-led-tha-100f-theatre-spot-de_en.pdf"
+      "https://www.steinigke.de/download/41602126-Manual-106094-1.00-eurolite-led-tha-100f-mk2-theater-spot-en_de.pdf"
     ],
     "productPage": [
-      "https://www.steinigke.de/en/mpn41602125-eurolite-led-tha-100f-theatre-spot.html"
-    ],
-    "video": [
-      "https://www.youtube.com/watch?v=EByMlz4lq94"
+      "https://www.steinigke.de/en/mpn41602126-eurolite-led-tha-100f-mk2-theater-spot.html"
     ]
   },
   "physical": {
-    "dimensions": [305.0, 369.5, 387.3],
-    "weight": 5.5,
+    "dimensions": [265, 335, 370],
+    "weight": 6,
     "power": 120,
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
@@ -29,7 +26,7 @@
       "colorTemperature": 3200
     },
     "lens": {
-      "degreesMinMax": [10, 50]
+      "degreesMinMax": [6, 31]
     }
   },
   "availableChannels": {
