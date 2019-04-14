@@ -2,26 +2,33 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "RevueLED 120 COB RGBWW",
   "shortName": "SVRevue120RGBWW",
-  "categories": ["Dimmer", "Color Changer"],
+  "categories": ["Color Changer"],
   "meta": {
     "authors": ["RAZAKANIRINA"],
-    "createDate": "2019-04-10",
-    "lastModifyDate": "2019-04-10"
+    "createDate": "2019-04-15",
+    "lastModifyDate": "2019-04-15"
   },
   "links": {
     "manual": [
       "https://images.static-thomann.de/pics/atg/atgdata/document/manual/414200_c_414200_r2_en_online.pdf"
     ],
     "productPage": [
-      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/414200_c_414200_r2_en_online.pdf"
+      "https://www.thomann.de/gb/stairville_revueled_120_cob_rgb_ww_dmx.htm"
     ],
     "video": [
-      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/414200_c_414200_r2_en_online.pdf"
+      "https://www.thomann.de/gb/thomanntv_video_stairville_revueled_120_cob_rgb_6191.html"
     ]
   },
   "physical": {
+    "dimensions": [258, 164, 557],
+    "weight": 5.5,
+    "power": 150,
+    "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "120W COB RGBWW LED"
+    },
+    "lens": {
+      "degreesMinMax": [50, 50]
     }
   },
   "availableChannels": {
@@ -46,11 +53,11 @@
         "color": "Blue"
       }
     },
-    "White": {
+    "Warm White": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "White"
+        "color": "Warm White"
       }
     },
     "Dimmer": {
@@ -62,28 +69,34 @@
     "Strobe": {
       "defaultValue": 0,
       "capability": {
-        "type": "NoFunction"
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0%",
+        "speedEnd": "100%",
+        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
       }
     },
-    "Program": {
+    "Auto Programs": {
       "defaultValue": 0,
       "capability": {
-        "type": "NoFunction"
+        "type": "Effect",
+        "effectName": "Built-in automatic show programs",
+        "helpWanted": "At which DMX values can a show program be selected and when is no show active?"
       }
     }
   },
   "modes": [
     {
-      "name": "revueled 120cob rgbw",
-      "shortName": "revueled 120cob rgbw",
+      "name": "7-channel",
+      "shortName": "7ch",
       "channels": [
         "Red",
         "Green",
         "Blue",
-        "White",
+        "Warm White",
         "Dimmer",
         "Strobe",
-        "Program"
+        "Auto Programs"
       ]
     }
   ]
