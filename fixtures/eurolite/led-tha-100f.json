@@ -109,11 +109,18 @@
   "modes": [
     {
       "name": "3-channel",
-      "shortName": "3-channel",
+      "shortName": "3ch",
       "channels": [
         "Dimmer",
         "Strobe",
         "Dimmer Curve"
+      ]
+    },
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer"
       ]
     }
   ]
