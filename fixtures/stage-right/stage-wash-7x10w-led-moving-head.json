@@ -61,10 +61,25 @@
       }
     },
     "Dimmer / Strobe": {
-      "capability": {
-        "type": "Intensity",
-        "helpWanted": "At which DMX values is strobe activated?"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 134],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [135, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Intensity",
+          "brightness": "bright",
+          "helpWanted": "Is this capability correct?"
+        }
+      ]
     },
     "Red": {
       "defaultValue": 0,
