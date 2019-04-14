@@ -19,13 +19,17 @@
       "https://www.youtube.com/watch?v=EByMlz4lq94"
     ]
   },
-  "rdm": {
-    "modelId": 0
-  },
   "physical": {
+    "dimensions": [305.0, 369.5, 387.3],
+    "weight": 5.5,
+    "power": 120,
+    "DMXconnector": "3-pin and 5-pin",
     "bulb": {
-      "type": "LED",
+      "type": "COB warm white 100W LED",
       "colorTemperature": 3200
+    },
+    "lens": {
+      "degreesMinMax": [10, 50]
     }
   },
   "availableChannels": {
