@@ -34,252 +34,41 @@
       "type": "Fixed"
     }
   },
-  "availableChannels": {
-    "Red": {
+  "matrix": {
+    "pixelCount": [12, 1, 1],
+    "pixelGroups": {
+      "Master": "all",
+      "1/2": { "x": ["<=6"] },
+      "2/2": { "x": [">=7"] },
+      "1/3": ["1", "2", "3", "4"],
+      "2/3": ["5", "6", "7", "8"],
+      "3/3": ["9", "10", "11", "12"],
+      "1/4": ["1", "2", "3"],
+      "2/4": ["4", "5", "6"],
+      "3/4": ["7", "8", "9"],
+      "4/4": ["10", "11", "12"],
+      "1/6": ["1", "2"],
+      "2/6": ["3", "4"],
+      "3/6": ["5", "6"],
+      "4/6": ["7", "8"],
+      "5/6": ["9", "10"],
+      "6/6": ["11", "12"]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green": {
+    "Green $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red 2": {
-      "name": "Red",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 2": {
-      "name": "Green",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 2": {
-      "name": "Blue",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red 3": {
-      "name": "Red",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 3": {
-      "name": "Green",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 3": {
-      "name": "Blue",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red 4": {
-      "name": "Red",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 4": {
-      "name": "Green",
-      "constant": false,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 4": {
-      "name": "Blue",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red 5": {
-      "name": "Red",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 5": {
-      "name": "Green",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 5": {
-      "name": "Blue",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red 6": {
-      "name": "Red",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 6": {
-      "name": "Green",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 6": {
-      "name": "Blue",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red 7": {
-      "name": "Red",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 7": {
-      "name": "Green",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 7": {
-      "name": "Blue",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red 8": {
-      "name": "Red",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 8": {
-      "name": "Green",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 8": {
-      "name": "Blue",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red 9": {
-      "name": "Red",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 9": {
-      "name": "Green",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 9": {
-      "name": "Blue",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red 10": {
-      "name": "Red",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 10": {
-      "name": "Green",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 10": {
-      "name": "Blue",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red 11": {
-      "name": "Red",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 11": {
-      "name": "Green",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 11": {
-      "name": "Blue",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red 12": {
-      "name": "Red",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 12": {
-      "name": "Green",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 12": {
-      "name": "Blue",
+    "Blue $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
@@ -288,45 +77,19 @@
   },
   "modes": [
     {
-      "name": "36 Channel",
-      "shortName": "36CH",
+      "name": "36-channel",
+      "shortName": "36ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "Red 2",
-        "Green 2",
-        "Blue 2",
-        "Red 3",
-        "Green 3",
-        "Blue 3",
-        "Red 4",
-        "Green 4",
-        "Blue 4",
-        "Red 5",
-        "Green 5",
-        "Blue 5",
-        "Red 6",
-        "Green 6",
-        "Blue 6",
-        "Red 7",
-        "Green 7",
-        "Blue 7",
-        "Red 8",
-        "Green 8",
-        "Blue 8",
-        "Red 9",
-        "Green 9",
-        "Blue 9",
-        "Red 10",
-        "Green 10",
-        "Blue 10",
-        "Red 11",
-        "Green 11",
-        "Blue 11",
-        "Red 12",
-        "Green 12",
-        "Blue 12"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     }
   ]
