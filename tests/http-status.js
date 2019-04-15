@@ -6,6 +6,8 @@ const childProcess = require(`child_process`);
 const blc = require(`broken-link-checker`);
 const pullRequest = require(`./github/pull-request.js`);
 
+// disable certificate errors
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 // initialize link checker
 let startTime;
