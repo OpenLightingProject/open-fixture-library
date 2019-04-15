@@ -23,7 +23,7 @@ const siteChecker = new blc.SiteChecker({
   honorRobotExclusions: false,
   maxSocketsPerHost: 3,
   rateLimit: 25,
-  requestMethod: `GET`,
+  retry404Head: true,
   filterLevel: 3,
   excludedKeywords: [
     // canonical URLs
