@@ -2,7 +2,7 @@
 
 const path = require(`path`);
 const minimist = require(`minimist`);
-const colors = require(`colors`);
+const chalk = require(`chalk`);
 
 const diffPluginOutputs = require(`../lib/diff-plugin-outputs.js`);
 
@@ -43,7 +43,7 @@ if (args.help) {
 }
 
 if (!args.plugin) {
-  console.error(`${colors.red(`[Error]`)} Plugin has to be specified using --plugin`);
+  console.error(`${chalk.red(`[Error]`)} Plugin has to be specified using --plugin`);
   console.log(helpMessage);
   process.exit(1);
 }
@@ -54,7 +54,7 @@ if (!args.comparePlugin) {
 }
 
 if (args.fixtures.length === 0 && !args.testFix) {
-  console.log(`${colors.yellow(`[Warning]`)} No fixtures specified. See --help for usage.`);
+  console.log(`${chalk.yellow(`[Warning]`)} No fixtures specified. See --help for usage.`);
 }
 
 diffPluginOutputs(args.plugin, args.comparePlugin, args.ref, args.testFix ? testFixtures : args.fixtures);

@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-const colors = require(`colors`);
+const chalk = require(`chalk`);
 
 const usedVariables = [
   `ALLOW_SEARCH_INDEXING`,
@@ -31,13 +31,13 @@ printVariables();
  */
 function printVariables() {
   for (const key of usedVariables) {
-    let str = colors.yellow(key);
+    let str = chalk.yellow(key);
 
     if (key in process.env) {
-      str += `=${colors.blue(process.env[key])}`;
+      str += `=${chalk.blue(process.env[key])}`;
     }
     else {
-      str += colors.red(` is unset`);
+      str += chalk.red(` is unset`);
     }
 
     console.log(str);

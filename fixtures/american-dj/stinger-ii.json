@@ -1,0 +1,310 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Stinger II",
+  "shortName": "ADJStinger2",
+  "categories": ["Laser", "Flower", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2019-04-07",
+    "lastModifyDate": "2019-04-07"
+  },
+  "links": {
+    "manual": [
+      "https://cdb.s3-us-west-1.amazonaws.com/ItemRelatedFiles/8885/Stinger%20II%20%28Rev.%203-16%29.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/stinger-ii"
+    ],
+    "video": [
+      "https://youtu.be/XCDmUI576hg",
+      "https://youtu.be/aC-e9Qma0fU",
+      "https://youtu.be/YECVi23sda8"
+    ]
+  },
+  "physical": {
+    "dimensions": [230.5, 304, 248],
+    "weight": 5,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "6x 5W RGBWAUV and 8x 3W UV LEDs; red and green laser (4.9mW)"
+    }
+  },
+  "availableChannels": {
+    "Show Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 44],
+          "type": "Effect",
+          "effectName": "Show 1"
+        },
+        {
+          "dmxRange": [45, 79],
+          "type": "Effect",
+          "effectName": "Show 2"
+        },
+        {
+          "dmxRange": [80, 114],
+          "type": "Effect",
+          "effectName": "Show 3"
+        },
+        {
+          "dmxRange": [115, 149],
+          "type": "Effect",
+          "effectName": "Show 4"
+        },
+        {
+          "dmxRange": [150, 184],
+          "type": "Effect",
+          "effectName": "Show 5"
+        },
+        {
+          "dmxRange": [185, 219],
+          "type": "Effect",
+          "effectName": "Show 6"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "Effect",
+          "effectName": "Random show"
+        }
+      ]
+    },
+    "Show Speed / Sound Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 247],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Sound active",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Color Macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 198],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [199, 225],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "1"
+        },
+        {
+          "dmxRange": [226, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "2"
+        }
+      ]
+    },
+    "LED Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 244],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        }
+      ]
+    },
+    "UV": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 134],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [135, 255],
+          "type": "Effect",
+          "effectName": "UV chase"
+        }
+      ]
+    },
+    "UV Chase Speed / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "strobing"
+        }
+      ]
+    },
+    "Lasers": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 49],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [50, 89],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [90, 129],
+          "type": "ColorPreset",
+          "comment": "Red + green",
+          "colors": ["#ff0000", "#00ff00"]
+        },
+        {
+          "dmxRange": [130, 169],
+          "type": "ColorPreset",
+          "comment": "Red + green flicker",
+          "colors": ["#ff0000", "#00ff00"]
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "ColorPreset",
+          "comment": "Green + red flicker",
+          "colors": ["#00ff00", "#ff0000"]
+        },
+        {
+          "dmxRange": [210, 249],
+          "type": "ColorPreset",
+          "comment": "Red + green flicker sync",
+          "colors": ["#ff0000", "#00ff00"]
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ColorPreset",
+          "comment": "Red + green flicker alternate",
+          "colors": ["#ff0000", "#00ff00"]
+        }
+      ]
+    },
+    "Laser Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 244],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        }
+      ]
+    },
+    "LED Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [10, 127],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Laser Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Laser patterns"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Pattern chase",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Show Mode",
+        "Show Speed / Sound Mode"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Show Mode",
+        "Color Macro",
+        "LED Strobe",
+        "UV",
+        "UV Chase Speed / Strobe",
+        "Lasers",
+        "Laser Strobe",
+        "LED Rotation",
+        "Laser Rotation"
+      ]
+    }
+  ]
+}
