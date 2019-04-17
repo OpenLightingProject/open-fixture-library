@@ -3,6 +3,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`capability${capability.uuid}-soundSensitivity`"
       label="Sound sensitivity">
       <app-editor-proportional-capability-data-switcher

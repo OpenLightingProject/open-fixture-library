@@ -122,7 +122,11 @@
             name="comment" />
         </app-labeled-input>
 
-        <app-labeled-input :formstate="formstate" name="links" label="Relevant links">
+        <app-labeled-input
+          :formstate="formstate"
+          :multiple-inputs="true"
+          name="links"
+          label="Relevant links">
           <app-editor-links v-model="fixture.links" :formstate="formstate" />
         </app-labeled-input>
 

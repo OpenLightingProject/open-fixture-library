@@ -3,6 +3,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`capability${capability.uuid}-slotNumber`"
       label="Slot number">
       <app-editor-proportional-capability-data-switcher

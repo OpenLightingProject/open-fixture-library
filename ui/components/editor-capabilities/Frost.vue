@@ -3,6 +3,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`capability${capability.uuid}-frostIntensity`"
       label="Frost intensity">
       <app-editor-proportional-capability-data-switcher

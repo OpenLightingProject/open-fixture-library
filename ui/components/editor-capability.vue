@@ -11,6 +11,7 @@
 
       <app-labeled-input
         :formstate="formstate"
+        :multiple-inputs="true"
         :name="`capability${capability.uuid}-dmxRange`"
         label="DMX range">
 

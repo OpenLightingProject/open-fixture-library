@@ -12,7 +12,9 @@
         :schema-property="properties.definitions.nonEmptyString" />
     </app-labeled-input>
 
-    <app-labeled-input label="Color hex code(s)">
+    <app-labeled-input
+      :multiple-inputs="true"
+      label="Color hex code(s)">
       <app-editor-proportional-capability-data-switcher
         :capability="capability"
         :formstate="formstate"
@@ -52,6 +54,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`capability${capability.uuid}-colorTemperature`"
       label="Color temperature">
       <app-editor-proportional-capability-data-switcher

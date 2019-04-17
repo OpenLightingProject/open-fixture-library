@@ -3,6 +3,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`capability${capability.uuid}-openPercent`"
       label="Degree of opening">
       <app-editor-proportional-capability-data-switcher
