@@ -266,7 +266,10 @@ export default {
     buttonStyle: {
       type: String,
       required: false,
-      default: `default`
+      default: `default`,
+      validate(buttonStyle) {
+        return [`default`, `home`, `select`].includes(buttonStyle);
+      }
     },
     // show the help box
     showHelp: {

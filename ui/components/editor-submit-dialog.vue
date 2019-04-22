@@ -86,6 +86,14 @@ import a11yDialogVue from '~/components/a11y-dialog.vue';
 import downloadButtonVue from '~/components/download-button.vue';
 import { clone } from '~/assets/scripts/editor-utils.mjs';
 
+const stateTitles = {
+  validating: `Validating your new fixture…`,
+  ready: `Submit your new fixture`,
+  uploading: `Submitting your new fixture…`,
+  success: `Upload complete`,
+  error: `Upload failed`
+};
+
 export default {
   components: {
     'app-a11y-dialog': a11yDialogVue,
@@ -94,7 +102,12 @@ export default {
   props: {
     submit: {
       type: Object,
-      required: true
+      required: true,
+      validate(submit) {
+        const validStates = Object.keys(stateTitles);
+
+        return `state` in submit && validStates.includes(submit.state);
+      }
     }
   },
   data() {
@@ -107,14 +120,6 @@ export default {
   },
   computed: {
     title() {
-      const stateTitles = {
-        validating: `Validating your new fixture…`,
-        ready: `Submit your new fixture`,
-        uploading: `Submitting your new fixture…`,
-        success: `Upload complete`,
-        error: `Upload failed`
-      };
-
       return stateTitles[this.submit.state];
     },
     rawData() {
