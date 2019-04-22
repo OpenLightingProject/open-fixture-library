@@ -13,8 +13,6 @@
 
     <div v-if="submit.state === `validating`">Validating…</div>
 
-    <div v-if="submit.state === `loading`">Uploading…</div>
-
     <div v-else-if="submit.state === `ready`">
       <template v-if="validationErrors.length || validationWarnings.length">
         The fixture validation returned some issues:
@@ -41,6 +39,8 @@
         <a href="#submit" class="button primary" @click.prevent="onSubmit">Submit to OFL</a>
       </div>
     </div>
+
+    <div v-if="submit.state === `uploading`">Uploading…</div>
 
     <div v-else-if="submit.state === `success`">
       Your fixture was successfully uploaded to GitHub (see the
@@ -116,23 +116,15 @@ export default {
   },
   computed: {
     title() {
-      if (this.submit.state === `ready`) {
-        return `Submit your new fixture`;
-      }
+      const stateTitles = {
+        validating: `Validating your new fixture…`,
+        ready: `Submit your new fixture`,
+        uploading: `Submitting your new fixture…`,
+        success: `Upload complete`,
+        error: `Upload failed`
+      };
 
-      if (this.submit.state === `validating`) {
-        return `Validating your new fixture…`;
-      }
-
-      if (this.submit.state === `loading`) {
-        return `Submitting your new fixture…`;
-      }
-
-      if (this.submit.state === `success`) {
-        return `Upload complete`;
-      }
-
-      return `Upload failed`;
+      return stateTitles[this.submit.state];
     },
     rawData() {
       const rawData = JSON.stringify(this.submit.sendObject, null, 2);
@@ -147,7 +139,7 @@ export default {
   },
   watch: {
     'submit.state': function(newState) {
-      if (newState === `validate`) {
+      if (newState === `validating`) {
         this.$nextTick(this.onValidate);
       }
     }
@@ -184,7 +176,7 @@ export default {
       this.submit.sendObject.createPullRequest = true;
       console.log(`submit`, clone(this.submit.sendObject));
 
-      this.submit.state = `loading`;
+      this.submit.state = `uploading`;
       try {
         const response = await this.$axios.post(
           `/ajax/submit-editor`,

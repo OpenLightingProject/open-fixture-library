@@ -548,7 +548,7 @@ export default {
         createPullRequest: false,
         fixtures: [this.fixture]
       };
-      this.submit.state = `validate`;
+      this.submit.state = `validating`;
     },
 
     reset() {
