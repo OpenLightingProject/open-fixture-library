@@ -2,13 +2,12 @@
 require = require(`esm`)(module); // eslint-disable-line no-global-assign
 
 const createPullRequest = require(`../../lib/create-github-pr.js`);
-const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
 const getOutObjectFromEditorData = require(`../../lib/get-out-object-from-editor-data.js`);
 
 /**
  * Takes the input from the fixture editor client side script and converts it to an OFL fixture JSON.
  * If indicated in the request, a GitHub pull request is created.
- * Otherwise, the fixture JSON along with the fixture-valid results are returned.
+ * Otherwise, fixture errors and warnings from fixture-valid are returned.
  * @param {object} request Passed from Express.
  * @param {object} response Passed from Express.
  */
@@ -35,13 +34,10 @@ module.exports = async function addFixtures(request, response) {
   else {
     const errors = Object.values(outObject.errors)[0];
     const warnings = Object.values(outObject.warnings)[0];
-    const [fixtureKey, fixtureJsonObject] = Object.entries(outObject.fixtures)[0];
 
     response.status(201).json({
       errors,
-      warnings,
-      fixtureKey,
-      fixtureJson: fixtureJsonStringify(fixtureJsonObject)
+      warnings
     });
   }
 };

@@ -5,12 +5,6 @@
     :shown="submit.state !== `closed`"
     :title="title">
 
-    <a
-      ref="downloadAnchorElement"
-      :href="downloadFileUrl"
-      :download="downloadFileName"
-      hidden />
-
     <div v-if="submit.state === `validating`">Validating…</div>
 
     <div v-else-if="submit.state === `ready`">
@@ -107,11 +101,8 @@ export default {
     return {
       error: null,
       pullRequestUrl: null,
-      downloadFileName: null,
-      downloadFileUrl: null,
       validationErrors: [],
-      validationWarnings: [],
-      fixtureJson: null
+      validationWarnings: []
     };
   },
   computed: {
@@ -159,8 +150,6 @@ export default {
           throw new Error(response.data.error);
         }
 
-        this.downloadFileName = `${response.data.fixtureKey}.json`;
-        this.downloadFileUrl = `data:application/json;charset=utf-8,${encodeURIComponent(response.data.fixtureJson)}`;
         this.validationErrors = response.data.errors;
         this.validationWarnings = response.data.warnings;
         this.submit.state = `ready`;
