@@ -3,7 +3,6 @@
     <!-- Display the download button as a select to make it work inside modals as well -->
     <select
       v-if="!isStyleBig"
-      class="select-button"
       @change="onDownloadSelect($event)">
       <option value="" disabled selected>{{ title }}</option>
       <option v-for="plugin in exportPlugins" :key="plugin.key" :value="plugin.key">{{ plugin.name }}</option>
@@ -13,7 +12,7 @@
     <div
       v-else
       class="download-button big"
-      :class="{ 'home': isStyleHome }">
+      :class="{ home: isStyleHome }">
       <a
         href="#"
         :class="{ 'button secondary': !isStyleBig && !isStyleHome, title: isStyleBig || isStyleHome }"
@@ -81,7 +80,7 @@
   }
 }
 
-.select-button {
+select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -307,15 +306,7 @@ export default {
     // returns whether we're handling only one single fixture here
     // or all fixtures in a specific format
     isSingle() {
-      if (this.editorFixtures && this.editorFixtures.fixtures.length === 1) {
-        return true;
-      }
-
-      if (this.fixtureKey) {
-        return true;
-      }
-
-      return false;
+      return (this.editorFixtures && this.editorFixtures.fixtures.length === 1) || this.fixtureKey;
     },
     title() {
       if (this.isSingle) {
@@ -343,8 +334,8 @@ export default {
     }
   },
   methods: {
-    downloadDataAsFile(blob, filename, type) {
-      if (typeof window.navigator.msSaveBlob !== `undefined`) {
+    downloadDataAsFile(blob, filename = ``) {
+      if (window.navigator.msSaveBlob !== undefined) {
         // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created.
         // These URLs will no longer resolve as the data backing the URL has been freed."
         window.navigator.msSaveBlob(blob, filename);
@@ -355,12 +346,13 @@ export default {
 
         const anchorElement = document.createElement(`a`);
 
-        if (typeof anchorElement.download === `undefined`) {
+        if (anchorElement.download === undefined) {
+          // non-HTML5 workaround
           window.location = downloadUrl;
         }
         else {
           anchorElement.href = downloadUrl;
-          anchorElement.download = filename || ``;
+          anchorElement.download = filename;
           document.body.appendChild(anchorElement);
           anchorElement.click();
         }
@@ -387,16 +379,15 @@ export default {
 
       let filename = ``;
       const disposition = response.headers[`content-disposition`];
-      if (disposition && disposition.indexOf(`attachment`) !== -1) {
+      if (disposition && disposition.includes(`attachment`)) {
         const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
         const matches = filenameRegex.exec(disposition);
         if (matches && matches[1]) {
           filename = matches[1].replace(/['"]/g, ``);
         }
       }
-      const type = response.headers[`content-type`];
 
-      this.downloadDataAsFile(response.data, filename, type);
+      this.downloadDataAsFile(response.data, filename);
     },
     onDownloadButton(event, pluginKey) {
       event.target.blur();
