@@ -1,8 +1,8 @@
 <template>
-  <div class="container" :class="{ 'only-select-button': !isStyleBig && !showHelp }">
+  <div class="container" :class="{ 'only-select-button': buttonStyle === `select` && !showHelp }">
     <!-- Display the download button as a select to make it work inside modals as well -->
     <select
-      v-if="!isStyleBig"
+      v-if="buttonStyle === `select`"
       @change="onDownloadSelect($event)">
       <option value="" disabled selected>{{ title }}</option>
       <option v-for="plugin in exportPlugins" :key="plugin.key" :value="plugin.key">{{ plugin.name }}</option>
@@ -12,7 +12,7 @@
     <div
       v-else
       class="download-button"
-      :class="{ home: isStyleHome }">
+      :class="{ home: buttonStyle === `home` }">
       <a href="#" class="title" @click.prevent>{{ title }}</a>
       <ul>
         <li v-for="plugin in exportPlugins" :key="plugin.key">
@@ -30,7 +30,7 @@
     <nuxt-link
       v-if="showHelp"
       to="/about/plugins"
-      :target="isStyleHome ? null : `_blank`"
+      :target="buttonStyle === `home` ? null : `_blank`"
       class="help-link">
       <app-svg name="help-circle-outline" /><span class="name">Download instructions</span>
     </nuxt-link>
@@ -262,11 +262,11 @@ export default {
       required: false,
       default: undefined
     },
-    // the button style: default, 'big' or 'home'
+    // the button style: default, 'home' or 'select'
     buttonStyle: {
       type: String,
       required: false,
-      default: undefined
+      default: `default`
     },
     // show the help box
     showHelp: {
@@ -308,12 +308,6 @@ export default {
       }
 
       return `/download`;
-    },
-    isStyleHome() {
-      return this.buttonStyle === `home`;
-    },
-    isStyleBig() {
-      return this.buttonStyle === `big` || this.isStyleHome;
     }
   },
   methods: {

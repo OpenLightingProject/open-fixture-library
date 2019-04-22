@@ -29,7 +29,11 @@
       <div class="button-bar right">
         <a href="#cancel" class="button secondary" @click.prevent="onCancel">Continue editing</a>
         <!-- Hide the download button in case the fixture has errors. Some plugins are not able to download such fixtures. -->
-        <app-download-button v-if="!validationErrors.length" :showHelp="false" :editor-fixtures="submit.sendObject" />
+        <app-download-button
+          v-if="!validationErrors.length"
+          button-style="select"
+          :show-help="false"
+          :editor-fixtures="submit.sendObject" />
         <a href="#submit" class="button primary" @click.prevent="onSubmit">Submit to OFL</a>
       </div>
     </div>
@@ -48,7 +52,11 @@
           href="/fixture-editor"
           class="button secondary"
           @click.prevent="$emit(`reset`)">Create another fixture</a>
-        <app-download-button :showHelp="false" :editor-fixtures="submit.sendObject" />
+        <app-download-button
+          v-if="!validationErrors.length"
+          button-style="select"
+          :show-help="false"
+          :editor-fixtures="submit.sendObject" />
         <a :href="pullRequestUrl" class="button primary" target="_blank">See pull request</a>
       </div>
     </div>

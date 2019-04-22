@@ -27,7 +27,7 @@
         </section>
       </div>
 
-      <app-download-button :fixture-key="`${manKey}/${fixKey}`" :button-style="'big'" />
+      <app-download-button :fixture-key="`${manKey}/${fixKey}`" />
     </header>
 
     <section v-if="redirect" class="card yellow">
