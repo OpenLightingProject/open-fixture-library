@@ -267,7 +267,7 @@ export default {
       type: String,
       required: false,
       default: `default`,
-      validate(buttonStyle) {
+      validator(buttonStyle) {
         return [`default`, `home`, `select`].includes(buttonStyle);
       }
     },

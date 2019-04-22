@@ -104,7 +104,7 @@ export default {
     submit: {
       type: Object,
       required: true,
-      validate(submit) {
+      validator(submit) {
         const validStates = Object.keys(stateTitles);
 
         return `state` in submit && validStates.includes(submit.state);
