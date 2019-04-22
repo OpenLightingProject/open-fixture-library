@@ -87,6 +87,7 @@ import downloadButtonVue from '~/components/download-button.vue';
 import { clone } from '~/assets/scripts/editor-utils.mjs';
 
 const stateTitles = {
+  closed: `Closed`,
   validating: `Validating your new fixture…`,
   ready: `Submit your new fixture`,
   uploading: `Submitting your new fixture…`,
