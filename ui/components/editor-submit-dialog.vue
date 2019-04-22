@@ -73,14 +73,6 @@
   </app-a11y-dialog>
 </template>
 
-<style lang="scss">
-#submit-dialog {
-  // used for the download button to be able to show
-  // the drop down over the dialog
-  overflow: unset;
-}
-</style>
-
 <script>
 import a11yDialogVue from '~/components/a11y-dialog.vue';
 import downloadButtonVue from '~/components/download-button.vue';

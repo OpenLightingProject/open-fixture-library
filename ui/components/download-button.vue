@@ -8,15 +8,12 @@
       <option v-for="plugin in exportPlugins" :key="plugin.key" :value="plugin.key">{{ plugin.name }}</option>
     </select>
 
-    <!-- Display the big button as fixed position div to make it look better -->
+    <!-- Display the download button as hoverable div with real links in the dropdown -->
     <div
       v-else
-      class="download-button big"
+      class="download-button"
       :class="{ home: isStyleHome }">
-      <a
-        href="#"
-        :class="{ 'button secondary': !isStyleBig && !isStyleHome, title: isStyleBig || isStyleHome }"
-        @click.prevent>{{ title }}</a>
+      <a href="#" class="title" @click.prevent>{{ title }}</a>
       <ul>
         <li v-for="plugin in exportPlugins" :key="plugin.key">
           <a
@@ -94,26 +91,24 @@ select {
   margin-top: 1ex;
   padding: 0.5em 3ex;
 
-  background: #fafafa;
+  background: $grey-50;
 
-  color: rgba(0, 0, 0, 0.54);
+  color: $secondary-text-dark;
   font-weight: 600;
   font-size: 0.9em;
 
-  border-color: #e0e0e0;
+  border-color: $grey-300;
   border-radius: 2px;
 
   transition: 0.1s background-color;
   cursor: pointer;
 
-  &:hover,
-  &:focus {
-    background-color: #e0e0e0;
+  &:not(:disabled):hover,
+  &:not(:disabled):focus {
+    background-color: $grey-300;
   }
 }
-</style>
 
-<style lang="scss">
 .download-button {
   text-align: left;
 
@@ -123,8 +118,11 @@ select {
     width: 100%;
     padding: 0.5ex 2ex;
     border-radius: 2px;
+    background: $orange-500;
     font-weight: 600;
+    color: $primary-text-light;
     cursor: pointer;
+    box-shadow: 0 2px 2px rgba(#000, 0.2);
     transition: border-radius 0.2s, background-color 0.2s;
 
     /* down arrow */
@@ -146,8 +144,10 @@ select {
     // just move the list to the left outside of the screen but don't hide it,
     // to still allow screenreaders reading it
     left: -9999px;
+    top: 100%;
     padding: 0.7em 0;
     margin: 0;
+    width: 100%;
     list-style: none;
     background-color: $grey-50;
     border-radius: 0 0 2px 2px;
@@ -174,23 +174,11 @@ select {
     left: 0;
   }
 
+  /* separate rule since unsupporting browsers skip the whole rule */
   &:focus-within > ul {
-    display: block;
-  }
-}
-
-.download-button.big {
-  & > .title {
-    background: $orange-500;
-    font-weight: 600;
-    color: $primary-text-light;
-    box-shadow: 0 2px 2px rgba(#000, 0.2);
-    transition: border-radius 0.2s, background-color 0.2s;
+    left: 0;
   }
 
-  & > ul {
-    width: 100%;
-  }
 
   &:hover > .title,
   & > .title:focus,
@@ -199,19 +187,14 @@ select {
     background: $orange-700;
   }
 
-  &:hover > ul,
-  & > .title:focus + ul,
-  & > .title:active + ul {
-    display: block;
-  }
-
-  /* single rule since unsupporting browsers skip the whole rule */
   &:focus-within > .title {
     border-radius: 2px 2px 0 0;
     background: $orange-700;
   }
 }
+</style>
 
+<style lang="scss">
 .fixture-header .download-button {
   display: block;
   position: relative;
