@@ -38,7 +38,7 @@
       </div>
     </div>
 
-    <div v-if="submit.state === `uploading`">Uploading…</div>
+    <div v-else-if="submit.state === `uploading`">Uploading…</div>
 
     <div v-else-if="submit.state === `success`">
       Your fixture was successfully uploaded to GitHub (see the
