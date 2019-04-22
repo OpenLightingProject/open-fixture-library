@@ -3,6 +3,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`capability${capability.uuid}-${capability.typeData.speedOrAngle}`">
 
       <template slot="label">

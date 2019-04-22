@@ -33,6 +33,7 @@
 
       <app-labeled-input
         :formstate="formstate"
+        :multiple-inputs="true"
         :name="`capability${capability.uuid}-speed`"
         label="Speed">
         <app-editor-proportional-capability-data-switcher
@@ -44,6 +45,7 @@
 
       <app-labeled-input
         :formstate="formstate"
+        :multiple-inputs="true"
         :name="`capability${capability.uuid}-duration`"
         label="Duration">
         <app-editor-proportional-capability-data-switcher

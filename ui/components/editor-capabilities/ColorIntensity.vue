@@ -22,6 +22,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`capability${capability.uuid}-brightness`"
       label="Brightness">
       <app-editor-proportional-capability-data-switcher

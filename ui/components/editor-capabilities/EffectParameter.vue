@@ -3,6 +3,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`capability${capability.uuid}-parameter`"
       label="Parameter">
       <app-editor-proportional-capability-data-switcher

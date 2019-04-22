@@ -33,6 +33,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`wheel-slot${wheelSlot.uuid}-colorTemperature`"
       label="Color temperature">
       <app-property-input-entity
