@@ -17,19 +17,21 @@
 
     <div v-else-if="submit.state === `ready`">
       <template v-if="validationErrors.length || validationWarnings.length">
-        The fixture validation returned some remarks:
+        The fixture validation returned some issues:
 
         <ul>
           <li v-for="message in validationErrors" :key="message">{{ message }}</li>
           <li v-for="message in validationWarnings" :key="message">{{ message }}</li>
         </ul>
 
-        You can try to resolve them or continue anyway with submitting your fixture
-        to the Open Fixture Library project. We will then fix those issues.
+        You can try to resolve as many issues as you can (some may be unavoidable
+        in the editor) and then submit your fixture to the Open Fixture Library project.
+        After submitting, we will review the fixture and fix all remaining issues.
       </template>
       <template v-else>
-        The fixture validation was successful. You can now submit your fixture to
-        the Open Fixture Library project or only download it for private use.
+        The fixture validation was successful. You can now submit your fixture to the
+        Open Fixture Library project, where it will be reviewed and added to the library.
+        Even now, you can download your current fixture for private use.
       </template>
 
       <div class="button-bar right">

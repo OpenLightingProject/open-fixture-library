@@ -118,7 +118,7 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
     .catch(error => {
       response
         .status(500)
-        .send(`Exporting fixture ${errorDesc} with ${format} failed: ${error.toString()}`);
+        .send(`Exporting ${errorDesc} with ${format} failed: ${error.toString()}`);
     });
 });
 

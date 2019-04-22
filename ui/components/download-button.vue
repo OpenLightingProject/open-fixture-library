@@ -304,7 +304,7 @@ export default {
     };
   },
   computed: {
-    // returns, whether we're handling only one single fixture here
+    // returns whether we're handling only one single fixture here
     // or all fixtures in a specific format
     isSingle() {
       if (this.editorFixtures && this.editorFixtures.fixtures.length === 1) {

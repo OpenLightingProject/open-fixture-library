@@ -6,7 +6,9 @@ const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
 const getOutObjectFromEditorData = require(`../../lib/get-out-object-from-editor-data.js`);
 
 /**
- * Takes the input from the fixture editor client side script and creates a pull request with the new fixture.
+ * Takes the input from the fixture editor client side script and converts it to an OFL fixture JSON.
+ * If indicated in the request, a GitHub pull request is created.
+ * Otherwise, the fixture JSON along with the fixture-valid results are returned.
  * @param {object} request Passed from Express.
  * @param {object} response Passed from Express.
  */
