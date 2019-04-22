@@ -1,6 +1,6 @@
 <template>
   <div>
-    <draggable v-model="selectedCategories" element="span">
+    <draggable v-model="selectedCategories" tag="span">
       <app-category-badge
         v-for="cat in value"
         :key="cat"

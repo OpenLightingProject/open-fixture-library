@@ -227,7 +227,7 @@
 
     <app-editor-restore-dialog v-model="restoredData" @restore-complete="restoreComplete" />
 
-    <app-editor-submit-dialog :submit="submit" @reset="reset" />
+    <app-editor-submit-dialog :submit="submit" @success="clearAutoSave" @reset="reset" />
   </div>
 </template>
 
@@ -249,8 +249,7 @@ import {
   constants,
   getEmptyFixture,
   getEmptyChannel,
-  getEmptyMode,
-  clone
+  getEmptyMode
 } from '~/assets/scripts/editor-utils.mjs';
 
 import manufacturers from '~~/fixtures/manufacturers.json';
@@ -327,8 +326,7 @@ export default {
       honeypot: ``,
       submit: {
         state: `closed`,
-        pullRequestUrl: ``,
-        rawData: ``
+        sendObject: null
       },
       manufacturers,
       properties: schemaProperties
@@ -524,7 +522,7 @@ export default {
       window.scrollTo(0, 0);
     },
 
-    async onSubmit() {
+    onSubmit() {
       if (this.formstate.$invalid) {
         const field = document.querySelector(`.vf-field-invalid`);
 
@@ -546,33 +544,11 @@ export default {
         return;
       }
 
-      const sendObject = {
+      this.submit.sendObject = {
+        createPullRequest: false,
         fixtures: [this.fixture]
       };
-
-      console.log(`submit`, clone(sendObject));
-
-      // eslint-disable-next-line quotes, prefer-template
-      this.submit.rawData = '```json\n' + JSON.stringify(sendObject, null, 2) + '\n```';
-      this.submit.state = `loading`;
-
-      try {
-        const response = await this.$axios.post(`/ajax/submit-editor`, sendObject);
-
-        if (response.data.error) {
-          throw new Error(response.data.error);
-        }
-
-        this.submit.pullRequestUrl = response.data.pullRequestUrl;
-        this.submit.state = `success`;
-        this.clearAutoSave();
-      }
-      catch (error) {
-        console.error(`There was a problem with the request.`, error);
-
-        this.submit.rawData += `\n\n${error.message}`;
-        this.submit.state = `error`;
-      }
+      this.submit.state = `validating`;
     },
 
     reset() {
@@ -581,8 +557,7 @@ export default {
       this.honeypot = ``;
       this.submit = {
         state: `closed`,
-        pullRequestUrl: ``,
-        rawData: ``
+        sendObject: null
       };
 
       this.$router.push({

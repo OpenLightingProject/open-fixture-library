@@ -99,7 +99,7 @@ export default {
     type: {
       type: String,
       required: true,
-      validate(type) {
+      validator(type) {
         return [`fixture`, `capability`, `plugin`].includes(type);
       }
     },
