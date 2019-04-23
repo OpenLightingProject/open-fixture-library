@@ -1,0 +1,157 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Spot 160XT",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Ringo333"],
+    "createDate": "2019-04-23",
+    "lastModifyDate": "2019-04-23"
+  },
+  "links": {
+    "manual": [
+      "http://www.schellscenic.com/downloads/Spot%20160%20XT.pdf"
+    ],
+    "productPage": [
+      "http://spares.robe.cz/category/78"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=rchX19BOlV0"
+    ]
+  },
+  "physical": {
+    "dimensions": [292, 415, 378],
+    "weight": 10.5,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "colorTemperature": 4200,
+      "lumens": 14000
+    },
+    "lens": {
+      "degreesMinMax": [0, 19]
+    },
+    "focus": {
+      "panMax": 530,
+      "tiltMax": 280
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "530deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "dmxValueResolution": "8bit",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "530deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "dmxValueResolution": "8bit",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "280deg"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "530deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "280deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Pan",
+      "channels": [
+        "Pan 3"
+      ]
+    },
+    {
+      "name": "Tilt",
+      "channels": [
+        "Tilt 2"
+      ]
+    },
+    {
+      "name": "Speed of PAN/TILT movement",
+      "channels": [
+        "Pan/Tilt Speed"
+      ]
+    },
+    {
+      "name": "Colours",
+      "channels": [
+        "Color Presets"
+      ]
+    },
+    {
+      "name": "Rotating Gobos",
+      "channels": [
+        "Gobo Wheel"
+      ]
+    },
+    {
+      "name": "Rotating Gobo rotation",
+      "channels": [
+        "Gobo Wheel Rotation"
+      ]
+    },
+    {
+      "name": "Shutter,Strobe,Reset",
+      "channels": [
+        "Shutter / Strobe"
+      ]
+    }
+  ]
+}
