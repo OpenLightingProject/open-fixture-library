@@ -227,7 +227,7 @@
 
     <app-editor-restore-dialog v-model="restoredData" @restore-complete="restoreComplete" />
 
-    <app-editor-submit-dialog :submit="submit" @success="clearAutoSave" @reset="reset" />
+    <app-editor-submit-dialog :submit="submit" @success="onFixtureSubmitted" @reset="reset" />
   </div>
 </template>
 
@@ -366,6 +366,8 @@ export default {
     this.$root._oflRestoreComplete = false;
   },
   mounted() {
+    this.applyStoredPrefillData();
+
     // let all components initialize without auto-focus
     this.$nextTick(() => this.restoreAutoSave());
   },
@@ -522,6 +524,29 @@ export default {
       window.scrollTo(0, 0);
     },
 
+    applyStoredPrefillData() {
+      if (!storageAvailable) {
+        return;
+      }
+
+      if (this.fixture.metaAuthor === ``) {
+        this.fixture.metaAuthor = localStorage.getItem(`prefillMetaAuthor`);
+      }
+
+      if (this.fixture.metaGithubUsername === ``) {
+        this.fixture.metaGithubUsername = localStorage.getItem(`prefillMetaGithubUsername`);
+      }
+    },
+
+    storePrefillData() {
+      if (!storageAvailable) {
+        return;
+      }
+
+      localStorage.setItem(`prefillMetaAuthor`, this.fixture.metaAuthor);
+      localStorage.setItem(`prefillMetaGithubUsername`, this.fixture.metaGithubUsername);
+    },
+
     onSubmit() {
       if (this.formstate.$invalid) {
         const field = document.querySelector(`.vf-field-invalid`);
@@ -549,6 +574,11 @@ export default {
         fixtures: [this.fixture]
       };
       this.submit.state = `validating`;
+    },
+
+    onFixtureSubmitted() {
+      this.clearAutoSave();
+      this.storePrefillData();
     },
 
     reset() {
