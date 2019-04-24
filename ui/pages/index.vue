@@ -8,7 +8,7 @@
         <h1>Open Fixture Library</h1>
       </div>
 
-      <app-download-button :download="fixtureCount" :big="true" />
+      <app-download-button :fixture-count="fixtureCount" button-style="home" />
     </header>
 
 
