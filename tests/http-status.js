@@ -25,8 +25,11 @@ const siteChecker = new blc.SiteChecker({
   honorRobotExclusions: false,
   maxSocketsPerHost: 3,
   rateLimit: 25,
-  headRetryCodes: [404, 405],
   filterLevel: 3,
+
+  // from fork of broken-link-checker, see https://github.com/stevenvachon/broken-link-checker/pull/120
+  headRetryCodes: [404, 405],
+
   excludedKeywords: [
     // canonical URLs
     `https://open-fixture-library.org/*`,
