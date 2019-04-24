@@ -577,8 +577,8 @@ export default {
     },
 
     onFixtureSubmitted() {
-      this.clearAutoSave();
       this.storePrefillData();
+      this.clearAutoSave();
     },
 
     reset() {
@@ -589,6 +589,7 @@ export default {
         state: `closed`,
         sendObject: null
       };
+      this.applyStoredPrefillData();
 
       this.$router.push({
         path: this.$route.path,
