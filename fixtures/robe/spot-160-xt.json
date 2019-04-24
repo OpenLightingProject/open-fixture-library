@@ -22,13 +22,15 @@
   "physical": {
     "dimensions": [292, 415, 378],
     "weight": 10.5,
+    "power": 300,
     "DMXconnector": "3-pin",
     "bulb": {
+      "type": "Philips CDM-SA/T150W/942",
       "colorTemperature": 4200,
       "lumens": 14000
     },
     "lens": {
-      "degreesMinMax": [0, 19]
+      "degreesMinMax": [19, 19]
     },
     "focus": {
       "panMax": 530,
