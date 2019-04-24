@@ -7,6 +7,8 @@ const blc = require(`broken-link-checker`);
 const pullRequest = require(`./github/pull-request.js`);
 
 // disable certificate errors
+// this is unsafe, but there apparently is no better alternative
+// see https://github.com/request/request/issues/3106
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 // initialize link checker
