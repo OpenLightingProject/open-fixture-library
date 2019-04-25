@@ -1,7 +1,11 @@
 <template>
   <div>
 
-    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-dimensions`" label="Dimensions">
+    <app-labeled-input
+      :formstate="formstate"
+      :multiple-inputs="true"
+      :name="`${namePrefix}-physical-dimensions`"
+      label="Dimensions">
       <app-property-input-dimensions
         ref="firstInput"
         v-model="physical.dimensions"
@@ -26,7 +30,11 @@
         :schema-property="properties.physical.power" /> W
     </app-labeled-input>
 
-    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-DMXconnector`" label="DMX connector">
+    <app-labeled-input
+      :formstate="formstate"
+      :multiple-inputs="true"
+      :name="`${namePrefix}-physical-DMXconnector`"
+      label="DMX connector">
       <app-property-input-select
         v-model="physical.DMXconnector"
         :name="`${namePrefix}-physical-DMXconnector`"
@@ -82,7 +90,11 @@
         :schema-property="properties.physicalLens.name" />
     </app-labeled-input>
 
-    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-lens-degreesMinMax`" label="Beam angle">
+    <app-labeled-input
+      :formstate="formstate"
+      :multiple-inputs="true"
+      :name="`${namePrefix}-physical-lens-degreesMinMax`"
+      label="Beam angle">
       <app-property-input-range
         v-model="physical.lens.degreesMinMax"
         :name="`${namePrefix}-physical-lens-degreesMinMax`"
@@ -96,7 +108,11 @@
 
     <h4>Focus</h4>
 
-    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-focus-type`" label="Focus type">
+    <app-labeled-input
+      :formstate="formstate"
+      :multiple-inputs="true"
+      :name="`${namePrefix}-physical-focus-type`"
+      label="Focus type">
       <app-property-input-select
         v-model="physical.focus.type"
         :name="`${namePrefix}-physical-focus-type`"

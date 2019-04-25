@@ -1,21 +1,37 @@
 <template>
-  <div class="container">
-    <div :class="{ 'download-button': true, 'big': big }">
+  <div class="container" :class="{ 'only-select-button': buttonStyle === `select` && !showHelp }">
+    <!-- Display the download button as a select to make it work inside modals as well -->
+    <select
+      v-if="buttonStyle === `select`"
+      @change="onDownloadSelect($event)">
+      <option value="" disabled selected>{{ title }}</option>
+      <option v-for="plugin in exportPlugins" :key="plugin.key" :value="plugin.key">{{ plugin.name }}</option>
+    </select>
+
+    <!-- Display the download button as hoverable div with real links in the dropdown -->
+    <div
+      v-else
+      class="download-button"
+      :class="{ home: buttonStyle === `home` }">
       <a href="#" class="title" @click.prevent>{{ title }}</a>
       <ul>
         <li v-for="plugin in exportPlugins" :key="plugin.key">
           <a
             :href="`${baseLink}.${plugin.key}`"
-            :title="`Download ${plugin.name} fixture definition${isSingleFixture ? `` : `s`}`"
+            :title="`Download ${plugin.name} fixture definition${isSingle ? `` : `s`}`"
             rel="nofollow"
-            @click="blur($event)">
+            @click="onDownloadButton($event, plugin.key)">
             {{ plugin.name }}
           </a>
         </li>
       </ul>
     </div>
 
-    <nuxt-link to="/about/plugins" :target="big ? null : `_blank`" class="help-link">
+    <nuxt-link
+      v-if="showHelp"
+      to="/about/plugins"
+      :target="buttonStyle === `home` ? null : `_blank`"
+      class="help-link">
       <app-svg name="help-circle-outline" /><span class="name">Download instructions</span>
     </nuxt-link>
   </div>
@@ -27,6 +43,11 @@
   margin: 0 0 1em;
 
   @media (min-width: 650px) {
+    margin: 0;
+  }
+
+  &.only-select-button {
+    display: inline-block;
     margin: 0;
   }
 }
@@ -55,9 +76,39 @@
     opacity: 0.7;
   }
 }
-</style>
 
-<style lang="scss">
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  display: inline-block;
+  box-sizing: content-box;
+  line-height: 1.4;
+  height: 1.4em;
+  width: 12.5ex;
+  margin-left: 1ex;
+  margin-top: 1ex;
+  padding: 0.5em 3ex;
+
+  background: $grey-50;
+
+  color: $secondary-text-dark;
+  font-weight: 600;
+  font-size: 0.9em;
+
+  border-color: $grey-300;
+  border-radius: 2px;
+
+  transition: 0.1s background-color;
+  cursor: pointer;
+
+  &:not(:disabled):hover,
+  &:not(:disabled):focus {
+    background-color: $grey-300;
+  }
+}
+
 .download-button {
   text-align: left;
 
@@ -90,6 +141,8 @@
 
   & > ul {
     position: absolute;
+    // just move the list to the left outside of the screen but don't hide it,
+    // to still allow screenreaders reading it
     left: -9999px;
     top: 100%;
     padding: 0.7em 0;
@@ -115,6 +168,18 @@
     }
   }
 
+  &:hover > ul,
+  & > .title:focus + ul,
+  & > .title:active + ul {
+    left: 0;
+  }
+
+  /* separate rule since unsupporting browsers skip the whole rule */
+  &:focus-within > ul {
+    left: 0;
+  }
+
+
   &:hover > .title,
   & > .title:focus,
   & > .title:active {
@@ -122,22 +187,14 @@
     background: $orange-700;
   }
 
-  &:hover > ul,
-  & > .title:focus + ul,
-  & > .title:active + ul {
-    left: 0;
-  }
-
-  /* single rule since unsupporting browsers skip the whole rule */
   &:focus-within > .title {
     border-radius: 2px 2px 0 0;
     background: $orange-700;
   }
-  &:focus-within > ul {
-    left: 0;
-  }
 }
+</style>
 
+<style lang="scss">
 .fixture-header .download-button {
   display: block;
   position: relative;
@@ -165,7 +222,7 @@
       margin: 1.5rem 0 0;
       width: 14em;
 
-      &.big {
+      &.home {
         width: 19em;
 
         & .title {
@@ -187,15 +244,38 @@ export default {
     'app-svg': svgVue
   },
   props: {
-    download: {
-      // either the fixture key or the number of fixtures
-      type: [String, Number],
-      required: true
+    // how many fixtures will be downloaded, if !isSingle?
+    fixtureCount: {
+      type: Number,
+      required: false,
+      default: 0
     },
-    big: {
+    // a fixture from the editor, not yet submitted
+    editorFixtures: {
+      type: Object,
+      required: false,
+      default: undefined
+    },
+    // the manufacturer key and fixture key of a submitted fixture
+    fixtureKey: {
+      type: String,
+      required: false,
+      default: undefined
+    },
+    // the button style: default, 'home' or 'select'
+    buttonStyle: {
+      type: String,
+      required: false,
+      default: `default`,
+      validator(buttonStyle) {
+        return [`default`, `home`, `select`].includes(buttonStyle);
+      }
+    },
+    // show the help box
+    showHelp: {
       type: Boolean,
       required: false,
-      default: false
+      default: true
     }
   },
   data() {
@@ -209,27 +289,117 @@ export default {
     };
   },
   computed: {
-    isSingleFixture() {
-      return typeof this.download === `string`;
+    // returns whether we're handling only one single fixture here
+    // or all fixtures in a specific format
+    isSingle() {
+      return (this.editorFixtures && this.editorFixtures.fixtures.length === 1) || this.fixtureKey;
     },
     title() {
-      if (this.isSingleFixture) {
-        return `Download as …`;
+      if (this.isSingle) {
+        return `Download as…`;
       }
 
-      return `Download all ${this.download} fixtures`;
+      return `Download all ${this.fixtureCount} fixtures`;
     },
     baseLink() {
-      if (this.isSingleFixture) {
-        return `/${this.download}`;
+      if (this.editorFixtures) {
+        return `/download-editor`;
+      }
+
+      if (this.isSingle) {
+        return `/${this.fixtureKey}`;
       }
 
       return `/download`;
     }
   },
   methods: {
-    blur(event) {
+    downloadDataAsFile(blob, filename = ``) {
+      if (window.navigator.msSaveBlob !== undefined) {
+        // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created.
+        // These URLs will no longer resolve as the data backing the URL has been freed."
+        window.navigator.msSaveBlob(blob, filename);
+      }
+      else {
+        const URL = window.URL || window.webkitURL;
+        const downloadUrl = URL.createObjectURL(blob);
+
+        const anchorElement = document.createElement(`a`);
+
+        if (anchorElement.download === undefined) {
+          // non-HTML5 workaround
+          window.location = downloadUrl;
+        }
+        else {
+          anchorElement.href = downloadUrl;
+          anchorElement.download = filename;
+          document.body.appendChild(anchorElement);
+          anchorElement.click();
+        }
+
+        // cleanup
+        setTimeout(() => {
+          URL.revokeObjectURL(downloadUrl);
+          document.body.removeChild(anchorElement);
+        }, 100);
+      }
+    },
+    async formattedDownload(pluginKey) {
+      // download the data as a file
+      // for more details, see https://stackoverflow.com/q/16086162/451391
+      const response = await this.$axios.post(
+        `${this.baseLink}.${pluginKey}`,
+        this.editorFixtures,
+        { responseType: `blob` }
+      );
+
+      if (response.data.error) {
+        throw new Error(response.data.error);
+      }
+
+      let filename = ``;
+      const disposition = response.headers[`content-disposition`];
+      if (disposition && disposition.includes(`attachment`)) {
+        const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+        const matches = filenameRegex.exec(disposition);
+        if (matches && matches[1]) {
+          filename = matches[1].replace(/['"]/g, ``);
+        }
+      }
+
+      this.downloadDataAsFile(response.data, filename);
+    },
+    onDownloadButton(event, pluginKey) {
       event.target.blur();
+
+      if (!this.editorFixtures) {
+        // default link target
+        return;
+      }
+
+      // download the (possibly not yet submitted) editor fixtures
+      event.preventDefault();
+      this.formattedDownload(pluginKey);
+    },
+    onDownloadSelect(event) {
+      if (event.target.value === ``) {
+        // no plugin has been selected
+        return;
+      }
+
+      const pluginKey = event.target.value;
+
+      // reset the select value to make it feel more like a button
+      event.target.value = ``;
+
+      if (!this.editorFixtures) {
+        // download an already submitted fixture
+        window.open(`${this.baseLink}.${pluginKey}`);
+        return;
+      }
+
+      // download the (possibly not yet submitted) editor fixtures
+      this.formattedDownload(pluginKey);
     }
   }
 };

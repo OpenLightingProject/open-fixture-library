@@ -51,6 +51,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`capability${capability.uuid}-speed`"
       label="Speed">
       <app-editor-proportional-capability-data-switcher
@@ -61,6 +62,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`capability${capability.uuid}-duration`"
       label="Duration">
       <app-editor-proportional-capability-data-switcher
@@ -71,6 +73,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`capability${capability.uuid}-parameter`"
       label="Parameter">
       <app-editor-proportional-capability-data-switcher
@@ -92,6 +95,7 @@
     <app-labeled-input
       v-if="capability.typeData.soundControlled"
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`capability${capability.uuid}-soundSensitivity`"
       label="Sound sensitivity">
       <app-editor-proportional-capability-data-switcher

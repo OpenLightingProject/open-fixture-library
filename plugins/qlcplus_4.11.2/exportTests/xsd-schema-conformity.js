@@ -1,6 +1,5 @@
 const https = require(`https`);
-const promisify = require(`util`).promisify;
-const parseXsd = promisify(require(`libxml-xsd`).parse);
+const libxml = require(`libxmljs`);
 
 const SCHEMA_URL = `https://raw.githubusercontent.com/mcallegari/qlcplus/QLC+_4.11.2/resources/schemas/fixture.xsd`;
 
@@ -13,8 +12,8 @@ const SCHEMA_URL = `https://raw.githubusercontent.com/mcallegari/qlcplus/QLC+_4.
  * @param {string|null} exportFile.mode Mode's shortName if given file only describes a single mode.
  * @returns {Promise.<undefined, array.<string>|!string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
 **/
-module.exports = function testSchemaConformity(exportFile) {
-  return new Promise((resolve, reject) => {
+module.exports = async function testSchemaConformity(exportFile) {
+  const schemaData = await new Promise((resolve, reject) => {
     https.get(SCHEMA_URL, res => {
       let data = ``;
       res.on(`data`, chunk => {
@@ -24,14 +23,14 @@ module.exports = function testSchemaConformity(exportFile) {
         resolve(data);
       });
     });
-  })
-    .then(schemaData => parseXsd(schemaData))
-    .then(schema => schema.validate(exportFile.content))
-    .then(validationErrors => {
-      if (validationErrors) {
-        return Promise.reject(validationErrors.map(err => err.message));
-      }
+  });
 
-      return Promise.resolve();
-    });
+  const xsdDoc = libxml.parseXml(schemaData);
+  const xmlDoc = libxml.parseXml(exportFile.content);
+
+  if (xmlDoc.validate(xsdDoc)) {
+    return;
+  }
+
+  throw xmlDoc.validationErrors.map(err => err.message.trim());
 };
