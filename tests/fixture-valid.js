@@ -1067,6 +1067,12 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    * Checks if the used channels fits to the fixture's categories and raise warnings suggesting to add/remove a category.
    */
   function checkCategories() {
+    const mutuallyExclusiveGroups = [
+      [`Moving Head`, `Scanner`, `Barrel Scanner`],
+      [`Pixel Bar`, `Flower`],
+      [`Pixel Bar`, `Stand`]
+    ];
+
     const categories = {
       'Color Changer': {
         isSuggested: isColorChanger(),
@@ -1074,16 +1080,22 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         invalidPhrase: `there are no ColorPreset and less than two ColorIntensity capabilities and no Color wheel slots`
       },
       'Moving Head': {
-        isSuggested: isMovingHead(),
-        isInvalid: isNotMovingHead(),
-        suggestedPhrase: `focus.type is 'Head' or there's a Pan(Continuous) and a Tilt(Continuous) capability`,
-        invalidPhrase: `focus.type is not 'Head'`
+        isSuggested: hasPanTiltChannels(true),
+        isInvalid: !hasPanTiltChannels(true),
+        suggestedPhrase: `there are pan and tilt channels`,
+        invalidPhrase: `there are not both pan and tilt channels`
       },
       'Scanner': {
-        isSuggested: isScanner(),
-        isInvalid: isNotScanner(),
-        suggestedPhrase: `focus.type is 'Mirror' or there's a Pan(Continuous) and a Tilt(Continuous) capability`,
-        invalidPhrase: `focus.type is not 'Mirror'`
+        isSuggested: hasPanTiltChannels(true),
+        isInvalid: !hasPanTiltChannels(false),
+        suggestedPhrase: `there are pan and tilt channels`,
+        invalidPhrase: `there are no pan or tilt channels`
+      },
+      'Barrel Scanner': {
+        isSuggested: hasPanTiltChannels(true),
+        isInvalid: !hasPanTiltChannels(false),
+        suggestedPhrase: `there are pan and tilt channels`,
+        invalidPhrase: `there are no pan or tilt channels`
       },
       'Smoke': {
         isSuggested: isFogType(`Fog`),
@@ -1107,21 +1119,40 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       }
     };
 
-    for (const categoryName of Object.keys(categories)) {
-      const categoryUsed = fixture.categories.includes(categoryName);
-      const category = categories[categoryName];
+    Object.entries(categories).forEach(([categoryName, category]) => {
+      const isCategoryUsed = fixture.categories.includes(categoryName);
 
       if (!(`isInvalid` in category)) {
         category.isInvalid = !category.isSuggested;
       }
 
-      if (!categoryUsed && category.isSuggested) {
-        result.warnings.push(`Category '${categoryName}' suggested since ${category.suggestedPhrase}.`);
+      if (!isCategoryUsed && category.isSuggested) {
+        // don't suggest this category if another mutually exclusive category is used
+        const exclusiveGroups = mutuallyExclusiveGroups.filter(
+          group => group.includes(categoryName)
+        );
+        const isForbiddenByGroup = exclusiveGroups.some(
+          group => group.some(
+            cat => fixture.categories.includes(cat)
+          )
+        );
+
+        if (!isForbiddenByGroup) {
+          result.warnings.push(`Category '${categoryName}' suggested since ${category.suggestedPhrase}.`);
+        }
       }
-      else if (categoryUsed && category.isInvalid) {
+      else if (isCategoryUsed && category.isInvalid) {
         result.errors.push(`Category '${categoryName}' invalid since ${category.invalidPhrase}.`);
       }
-    }
+    });
+
+    mutuallyExclusiveGroups.forEach(group => {
+      const usedCategories = group.filter(cat => fixture.categories.includes(cat));
+
+      if (usedCategories.length >= 2) {
+        result.errors.push(`Categories '${usedCategories.join(`', '`)}' can't be used together.`);
+      }
+    });
 
     /**
      * @returns {boolean} Whether the 'Color Changer' category is suggested.
@@ -1133,46 +1164,13 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     /**
-     * @returns {boolean} Whether the 'Moving Head' category is suggested.
-    */
-    function isMovingHead() {
-      const hasFocusTypeHead = fixture.physical !== null && fixture.physical.focusType === `Head`;
-      const hasOtherFocusType = fixture.physical !== null && fixture.physical.focusType !== null;
-
-      return hasFocusTypeHead || (hasPanTiltChannels() && !hasOtherFocusType);
-    }
-
-    /**
-     * @returns {boolean} Whether the 'Moving Head' category is invalid.
-    */
-    function isNotMovingHead() {
-      return fixture.physical === null || fixture.physical.focusType !== `Head`;
-    }
-
-    /**
-     * @returns {boolean} Whether the 'Scanner' category is suggested.
-    */
-    function isScanner() {
-      const hasFocusTypeMirror = fixture.physical !== null && fixture.physical.focusType === `Mirror`;
-      const hasOtherFocusType = fixture.physical !== null && fixture.physical.focusType !== null;
-
-      return hasFocusTypeMirror || (hasPanTiltChannels() && !hasOtherFocusType);
-    }
-
-    /**
-     * @returns {boolean} Whether the 'Scanner' category is invalid.
-    */
-    function isNotScanner() {
-      return fixture.physical === null || fixture.physical.focusType !== `Mirror`;
-    }
-
-    /**
-     * @returns {boolean} Whether the fixture has both a Pan / PanContinuous and a Tilt / TiltContinuous channel.
+     * @param {boolean} [both=false] Whether there need to be both Pan and Tilt channels.
+     * @returns {boolean} Whether the fixture has a Pan(Continuous) and/or (depending on 'both') a Tilt(Continuous) channel.
      */
-    function hasPanTiltChannels() {
+    function hasPanTiltChannels(both = false) {
       const hasPan = hasCapabilityOfType(`Pan`) || hasCapabilityOfType(`PanContinuous`);
       const hasTilt = hasCapabilityOfType(`Tilt`) || hasCapabilityOfType(`TiltContinuous`);
-      return hasPan && hasTilt;
+      return both ? (hasPan && hasTilt) : (hasPan || hasTilt);
     }
 
     /**
@@ -1213,12 +1211,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
      * @returns {boolean} True if a matrix with only one axis, which has more than 4 pixels, is defined.
      */
     function isPixelBar() {
-      const mutualExclusiveCategories = [`Flower`, `Stand`];
-      const hasMutualExclusiveCategory = fixture.categories.some(
-        cat => mutualExclusiveCategories.includes(cat)
-      );
-
-      if (hasMutualExclusiveCategory || fixture.matrix === null) {
+      if (fixture.matrix === null) {
         return false;
       }
 
