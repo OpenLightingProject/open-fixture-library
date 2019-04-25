@@ -27,7 +27,7 @@
         </section>
       </div>
 
-      <app-download-button :download="`${manKey}/${fixKey}`" />
+      <app-download-button :fixture-key="`${manKey}/${fixKey}`" />
     </header>
 
     <section v-if="redirect" class="card yellow">
@@ -86,8 +86,9 @@
         </ul>
       </app-labeled-value>
 
-      <app-fixture-help-wanted
+      <app-help-wanted-message
         v-if="fixture.isHelpWanted"
+        type="fixture"
         :context="fixture"
         @helpWantedClicked="helpWantedContext = $event" />
 
@@ -183,7 +184,7 @@
       </div>
     </section>
 
-    <app-fixture-help-wanted-dialog v-model="helpWantedContext" />
+    <app-help-wanted-dialog v-model="helpWantedContext" />
   </div>
 </template>
 
@@ -287,11 +288,11 @@ import categoryBadge from '~/components/category-badge.vue';
 import conditionalDetailsVue from '~/components/conditional-details.vue';
 import downloadButtonVue from '~/components/download-button.vue';
 import fixturePhysical from '~/components/fixture-physical.vue';
-import fixtureHelpWanted from '~/components/fixture-help-wanted.vue';
-import fixtureHelpWantedDialog from '~/components/fixture-help-wanted-dialog.vue';
 import fixtureMatrix from '~/components/fixture-matrix.vue';
 import fixtureWheel from '~/components/fixture-wheel.vue';
 import fixtureMode from '~/components/fixture-mode.vue';
+import helpWantedDialog from '~/components/help-wanted-dialog.vue';
+import helpWantedMessage from '~/components/help-wanted-message.vue';
 import labeledValueVue from '~/components/labeled-value.vue';
 
 import fixtureLinksMixin from '~/assets/scripts/fixture-links-mixin.mjs';
@@ -305,11 +306,11 @@ export default {
     'app-conditional-details': conditionalDetailsVue,
     'app-download-button': downloadButtonVue,
     'app-fixture-physical': fixturePhysical,
-    'app-fixture-help-wanted': fixtureHelpWanted,
-    'app-fixture-help-wanted-dialog': fixtureHelpWantedDialog,
     'app-fixture-matrix': fixtureMatrix,
     'app-fixture-wheel': fixtureWheel,
     'app-fixture-mode': fixtureMode,
+    'app-help-wanted-dialog': helpWantedDialog,
+    'app-help-wanted-message': helpWantedMessage,
     'app-labeled-value': labeledValueVue
   },
   mixins: [fixtureLinksMixin],
@@ -322,7 +323,7 @@ export default {
 
     const redirectTo = register.filesystem[`${manKey}/${fixKey}`].redirectTo;
     if (redirectTo) {
-      redirect(301, `/${redirectTo}?redirectFrom=${manKey}/${fixKey}`);
+      redirect(302, `/${redirectTo}?redirectFrom=${manKey}/${fixKey}`);
       return {};
     }
 

@@ -34,7 +34,7 @@ const capabilityHelpers = {
   isBeamAngle: cap => (cap.type === `BeamAngle` || cap.type === `Zoom`) && cap.angle !== null
 };
 
-module.exports.version = `1.1.0`;
+module.exports.version = `1.1.1`;
 
 /**
  * @param {array.<Fixture>} fixtures An array of Fixture objects.
@@ -652,8 +652,8 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
       getAttributes() {
         return {
           Type: physical.bulbType || `Other`,
-          Lumens: physical.bulbLumens || 0,
-          ColourTemperature: physical.bulbColorTemperature || 0
+          Lumens: Math.round(physical.bulbLumens) || 0,
+          ColourTemperature: Math.round(physical.bulbColorTemperature) || 0
         };
       }
     },

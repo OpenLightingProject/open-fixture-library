@@ -994,6 +994,7 @@ A physical DMX device.
     * [.comment](#Fixture+comment) ⇒ <code>boolean</code>
     * [.helpWanted](#Fixture+helpWanted) ⇒ <code>string</code> \| <code>null</code>
     * [.isHelpWanted](#Fixture+isHelpWanted) ⇒ <code>boolean</code>
+    * [.isCapabilityHelpWanted](#Fixture+isCapabilityHelpWanted) ⇒ <code>boolean</code>
     * [.links](#Fixture+links) ⇒ <code>object.&lt;string, array&gt;</code> \| <code>null</code>
     * [.rdm](#Fixture+rdm) ⇒ <code>object</code> \| <code>null</code>
     * [.physical](#Fixture+physical) ⇒ [<code>Physical</code>](#Physical) \| <code>null</code>
@@ -1128,6 +1129,11 @@ Create a new Fixture instance.
 ### fixture.isHelpWanted ⇒ <code>boolean</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
 **Returns**: <code>boolean</code> - True if help is needed in this fixture (maybe in a capability), false otherwise.  
+<a name="Fixture+isCapabilityHelpWanted"></a>
+
+### fixture.isCapabilityHelpWanted ⇒ <code>boolean</code>
+**Kind**: instance property of [<code>Fixture</code>](#Fixture)  
+**Returns**: <code>boolean</code> - True if help is needed in a capability, false otherwise.  
 <a name="Fixture+links"></a>
 
 ### fixture.links ⇒ <code>object.&lt;string, array&gt;</code> \| <code>null</code>
@@ -1314,22 +1320,23 @@ A company or brand that produces fixtures. A fixture is associated to exactly on
 **Kind**: global class  
 
 * [Manufacturer](#Manufacturer)
-    * [new Manufacturer(key)](#new_Manufacturer_new)
+    * [new Manufacturer(key, jsonObject)](#new_Manufacturer_new)
     * [.name](#Manufacturer+name) ⇒ <code>string</code>
     * [.comment](#Manufacturer+comment) ⇒ <code>string</code>
-    * [.hasComment](#Manufacturer+hasComment) ⇒ <code>string</code>
+    * [.hasComment](#Manufacturer+hasComment) ⇒ <code>boolean</code>
     * [.website](#Manufacturer+website) ⇒ <code>string</code> \| <code>null</code>
     * [.rdmId](#Manufacturer+rdmId) ⇒ <code>number</code> \| <code>null</code>
 
 <a name="new_Manufacturer_new"></a>
 
-### new Manufacturer(key)
+### new Manufacturer(key, jsonObject)
 Creates a new Manufacturer instance.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>string</code> | The manufacturer key. Equals to directory name in the fixtures directory. |
+| jsonObject | <code>object</code> \| <code>null</code> | The manufacturer's JSON object. If omitted, the one from `manufacturers.json` will be used. |
 
 <a name="Manufacturer+name"></a>
 
@@ -1343,9 +1350,9 @@ Creates a new Manufacturer instance.
 **Returns**: <code>string</code> - An additional description or explanation, if the name doesn't give enough information. Defaults to an empty string.  
 <a name="Manufacturer+hasComment"></a>
 
-### manufacturer.hasComment ⇒ <code>string</code>
+### manufacturer.hasComment ⇒ <code>boolean</code>
 **Kind**: instance property of [<code>Manufacturer</code>](#Manufacturer)  
-**Returns**: <code>string</code> - Whether this manufacturer has a comment.  
+**Returns**: <code>boolean</code> - Whether this manufacturer has a comment.  
 <a name="Manufacturer+website"></a>
 
 ### manufacturer.website ⇒ <code>string</code> \| <code>null</code>
@@ -1380,6 +1387,7 @@ Contains information of how the pixels in a 1-, 2- or 3-dimensional space are ar
     * [._getPixelDefaultKeys()](#Matrix+_getPixelDefaultKeys) ⇒ <code>array.&lt;array.&lt;array.&lt;string&gt;&gt;&gt;</code> ℗
     * [._getPixelDefaultKey(x, y, z)](#Matrix+_getPixelDefaultKey) ⇒ <code>string</code> ℗
     * [.getPixelKeysByOrder(firstAxis, secondAxis, thirdAxis)](#Matrix+getPixelKeysByOrder) ⇒ <code>array.&lt;string&gt;</code>
+    * [._pixelKeyFulfillsConstraints(pixelKey, constraints)](#Matrix+_pixelKeyFulfillsConstraints) ⇒ <code>boolean</code>
 
 <a name="new_Matrix_new"></a>
 
@@ -1509,6 +1517,17 @@ Sorts the pixelKeys by given X/Y/Z order. Order of the parameters equals the ord
 | firstAxis | <code>&#x27;X&#x27;</code> \| <code>&#x27;Y&#x27;</code> \| <code>&#x27;Z&#x27;</code> | Axis with highest ordering. |
 | secondAxis | <code>&#x27;X&#x27;</code> \| <code>&#x27;Y&#x27;</code> \| <code>&#x27;Z&#x27;</code> | Axis with middle ordering. |
 | thirdAxis | <code>&#x27;X&#x27;</code> \| <code>&#x27;Y&#x27;</code> \| <code>&#x27;Z&#x27;</code> | Axis with lowest ordering. |
+
+<a name="Matrix+_pixelKeyFulfillsConstraints"></a>
+
+### matrix.\_pixelKeyFulfillsConstraints(pixelKey, constraints) ⇒ <code>boolean</code>
+**Kind**: instance method of [<code>Matrix</code>](#Matrix)  
+**Returns**: <code>boolean</code> - True if the pixel key fulfills all constraints, false otherwise.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| pixelKey | <code>string</code> | The pixel key to check against the constraints. |
+| constraints | <code>object</code> | The constraints to apply. |
 
 <a name="Meta"></a>
 

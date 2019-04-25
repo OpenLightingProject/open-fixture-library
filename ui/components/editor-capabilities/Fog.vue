@@ -22,6 +22,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`capability${capability.uuid}-fogOutput`"
       label="Fog output">
       <app-editor-proportional-capability-data-switcher

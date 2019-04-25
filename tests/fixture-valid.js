@@ -241,17 +241,33 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       result.errors.push(`Matrix must not vary in axis length.`);
     }
 
-    checkPixelGroups();
+    if (`pixelGroups` in matrix.jsonObject) {
+      checkPixelGroups();
+    }
 
     /**
      * Check if the referenced pixelKeys from the pixelGroups exist and are not referenced more than once.
      */
     function checkPixelGroups() {
-      for (const pixelGroupKey of matrix.pixelGroupKeys) {
+      const pixelGroupKeys = Object.keys(matrix.jsonObject.pixelGroups);
+
+      const constraintsCorrect = pixelGroupKeys.every(checkPixelKeyStringConstraints);
+
+      if (!constraintsCorrect) {
+        // don't let model fail
+        return;
+      }
+
+      pixelGroupKeys.forEach(pixelGroupKey => {
         const usedMatrixChannels = new Set();
 
         if (matrix.pixelKeys.includes(pixelGroupKey)) {
           result.errors.push(`pixelGroupKey '${pixelGroupKey}' is already used as pixelKey. Please choose a different name.`);
+        }
+
+        if (matrix.pixelGroups[pixelGroupKey].length === 0) {
+          // this can only happen through invalid constraints, empty arrays are caught by the schema
+          result.errors.push(`pixelGroup '${pixelGroupKey}' does not contain any pixelKeys. Please relax the pixel key constraints.`);
         }
 
         for (const pixelKey of matrix.pixelGroups[pixelGroupKey]) {
@@ -263,6 +279,32 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           }
           usedMatrixChannels.add(pixelKey);
         }
+      });
+
+
+      /**
+       * Checks the pixel group's string constraints.
+       * @param {string} pixelGroupKey The key of the pixel group to check.
+       * @returns {boolean} True if all constraints are valid RegExps, false otherwise.
+       */
+      function checkPixelKeyStringConstraints(pixelGroupKey) {
+        const group = matrix.jsonObject.pixelGroups[pixelGroupKey];
+
+        if (group === `all` || Array.isArray(group)) {
+          return true;
+        }
+
+        for (const pattern of (group.name || [])) {
+          try {
+            new RegExp(pattern);
+          }
+          catch (syntaxError) {
+            result.errors.push(`Pixel key constraint '${pattern}' in pixelGroup '${pixelGroupKey}' is not a valid RegExp pattern. ${syntaxError.message}`);
+            return false;
+          }
+        }
+
+        return true;
       }
     }
   }
@@ -796,6 +838,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
               checkUniqueness(
                 usedPixelKeys,
                 pixelKey,
+                result,
                 `PixelKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
               );
             }
@@ -803,6 +846,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
               checkUniqueness(
                 usedPixelKeys,
                 pixelKey,
+                result,
                 `PixelGroupKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
               );
 
@@ -810,6 +854,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
                 checkUniqueness(
                   usedPixelKeys,
                   singlePixelKey,
+                  result,
                   `PixelKey '${singlePixelKey}' in group '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
                 );
               }

@@ -1,7 +1,7 @@
 language: node_js
 node_js:
   #- "node" # latest
-  - "8"
+  - "10"
 addons:
   apt:
     packages:

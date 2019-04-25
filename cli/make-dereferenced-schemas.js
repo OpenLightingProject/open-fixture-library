@@ -2,7 +2,7 @@
 
 const fs = require(`fs`);
 const path = require(`path`);
-const colors = require(`colors`);
+const chalk = require(`chalk`);
 const schemaRefParser = require(`json-schema-ref-parser`);
 
 const schemaDir = path.join(__dirname, `../schemas/`);
@@ -28,9 +28,9 @@ for (const schemaFile of schemaFiles) {
       `${JSON.stringify(dereferencedSchema, null, 2)}\n`
     ))
     .then(() => {
-      console.log(`${colors.green(`[Success]`)} Updated dereferenced schema ${dereferencedSchemaFile}.`);
+      console.log(`${chalk.green(`[Success]`)} Updated dereferenced schema ${dereferencedSchemaFile}.`);
     })
     .catch(error => {
-      console.error(colors.red(`[Error]`), error);
+      console.error(chalk.red(`[Error]`), error);
     });
 }

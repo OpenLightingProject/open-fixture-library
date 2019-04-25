@@ -3,6 +3,7 @@
 
     <app-labeled-input
       :formstate="formstate"
+      :multiple-inputs="true"
       :name="`wheel-slot${wheelSlot.uuid}-frostIntensity`"
       label="Frost intensity">
       <app-property-input-entity

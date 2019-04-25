@@ -3,7 +3,7 @@
     v-if="formstate"
     :state="formstate"
     :custom="customValidators"
-    tag="label">
+    :tag="multipleInputs ? 'div' : 'label'">
 
     <app-labeled-value :name="name">
       <template slot="label">
@@ -99,6 +99,13 @@ export default {
       type: Object,
       required: false,
       default: null
+    },
+    // avoid a label tag for multiple inputs, because it's not
+    // supported by Safari
+    multipleInputs: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
   computed: {

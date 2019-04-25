@@ -7,7 +7,7 @@
 
 const fs = require(`fs`);
 const path = require(`path`);
-const colors = require(`colors`);
+const chalk = require(`chalk`);
 
 const { fixtureFromRepository } = require(`../lib/model.js`);
 const register = require(`../fixtures/register.json`);
@@ -38,7 +38,7 @@ for (const featureFile of fs.readdirSync(fixFeaturesDir)) {
 
       // check uniqueness of id
       if (fixFeature.id in featuresUsed) {
-        console.error(`${colors.red(`[Error]`)} Fixture feature id '${fixFeature.id}' is used multiple times.`);
+        console.error(`${chalk.red(`[Error]`)} Fixture feature id '${fixFeature.id}' is used multiple times.`);
         process.exit(1);
       }
 
@@ -102,26 +102,26 @@ fixtures.sort((a, b) => {
   return `${a.man}/${a.key}`.localeCompare(`${b.man}/${b.key}`, `en`);
 });
 
-console.log(colors.yellow(`Generated list of test fixtures:`));
+console.log(chalk.yellow(`Generated list of test fixtures:`));
 for (const fixture of fixtures) {
   console.log(` - ${fixture.man}/${fixture.key}`);
 }
 
 fs.writeFile(jsonFile, `${JSON.stringify(fixtures, null, 2)}\n`, `utf8`, error => {
   if (error) {
-    console.error(`${colors.red(`[Fail]`)} Could not write test-fixtures.json`, error);
+    console.error(`${chalk.red(`[Fail]`)} Could not write test-fixtures.json`, error);
   }
   else {
-    console.log(`${colors.green(`[Success]`)} Updated ${jsonFile}`);
+    console.log(`${chalk.green(`[Success]`)} Updated ${jsonFile}`);
   }
 });
 
 fs.writeFile(markdownFile, getMarkdownCode(), `utf8`, error => {
   if (error) {
-    console.error(`${colors.red(`[Fail]`)} Could not write test-fixtures.md`, error);
+    console.error(`${chalk.red(`[Fail]`)} Could not write test-fixtures.md`, error);
   }
   else {
-    console.log(`${colors.green(`[Success]`)} Updated ${markdownFile}`);
+    console.log(`${chalk.green(`[Success]`)} Updated ${markdownFile}`);
   }
 });
 

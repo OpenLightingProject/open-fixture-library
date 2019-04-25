@@ -37,8 +37,8 @@
       ]
     ],
     "pixelGroups": {
-      "White Strobe": ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8"],
-      "Derby": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8"]
+      "White Strobe": { "name": ["^S[1-8]$"] },
+      "Derby": { "name": ["^D[1-8]$"] }
     }
   },
   "templateChannels": {

@@ -2,14 +2,30 @@
   <section class="help-wanted">
     <div class="information">
       <app-svg name="comment-question-outline" title="Help wanted!" />
-      <strong v-if="(context instanceof Fixture)">You can help to improve this fixture definition!</strong>
-      {{ context.helpWanted !== null ? context.helpWanted : `Specific questions are included in the capabilities below.` }}
+      <strong v-if="title">{{ title }} </strong>
+      <span v-html="description" />
     </div>
 
     <div class="actions">
-      <a href="#" class="only-js" @click.prevent="$emit(`helpWantedClicked`, context)"><app-svg name="comment-alert" class="left" /><span>Send information</span></a>
-      <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" class="no-js" rel="nofollow"><app-svg name="bug" class="left" /><span>Create issue on GitHub</span></a>
-      <a :href="mailtoUrl" class="no-js"><app-svg name="email" class="left" /><span>Send email</span></a>
+      <a
+        v-if="type !== `plugin`"
+        href="#"
+        class="only-js"
+        @click.prevent="$emit(`helpWantedClicked`, context)">
+        <app-svg name="comment-alert" class="left" />
+        <span>Send information</span>
+      </a>
+      <a
+        href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug"
+        :class="{ 'no-js': type !== `plugin` }"
+        rel="nofollow">
+        <app-svg name="bug" class="left" />
+        <span>Create issue on GitHub</span>
+      </a>
+      <a :href="mailtoUrl" :class="{ 'no-js': type !== `plugin` }">
+        <app-svg name="email" class="left" />
+        <span>Send email</span>
+      </a>
     </div>
   </section>
 </template>
@@ -75,27 +91,26 @@
 <script>
 import svg from '~/components/svg.vue';
 
-import Fixture from '~~/lib/model/Fixture.mjs';
-import Capability from '~~/lib/model/Capability.mjs';
-
 export default {
   components: {
     'app-svg': svg
   },
   props: {
+    type: {
+      type: String,
+      required: true,
+      validator(type) {
+        return [`fixture`, `capability`, `plugin`].includes(type);
+      }
+    },
     context: {
-      type: [Fixture, Capability],
+      type: Object,
       required: true
     }
   },
-  data: () => {
-    return {
-      Fixture
-    };
-  },
   computed: {
     location() {
-      if (this.context instanceof Capability) {
+      if (this.type === `capability`) {
         const cap = this.context;
         const channel = cap._channel;
         return `Channel "${channel.name}" → Capability "${cap.name}" (${cap.rawDmxRange})`;
@@ -103,18 +118,54 @@ export default {
 
       return null;
     },
+
     fixture() {
-      if (this.context instanceof Fixture) {
+      if (this.type === `fixture`) {
         return this.context;
       }
-      if (this.context instanceof Capability) {
+
+      if (this.type === `capability`) {
         return this.context._channel.fixture;
       }
 
       return null;
     },
+
+    title() {
+      if (this.type === `fixture`) {
+        return `You can help to improve this fixture definition!`;
+      }
+
+      if (this.type === `plugin`) {
+        return `You can help to improve this plugin!`;
+      }
+
+      return null;
+    },
+
+    description() {
+      if (this.type === `fixture`) {
+        if (this.fixture.helpWanted === null) {
+          return `Specific questions are included in the capabilities below.`;
+        }
+
+        if (this.fixture.isCapabilityHelpWanted) {
+          return `${this.fixture.helpWanted} Further questions are included in the capabilities below.`;
+        }
+      }
+
+      return this.context.helpWanted;
+    },
+
     mailtoUrl() {
-      const subject = `Feedback for fixture '${this.fixture.manufacturer.key}/${this.fixture.key}'`;
+      let subject;
+
+      if (this.fixture) {
+        subject = `Feedback for fixture '${this.fixture.manufacturer.key}/${this.fixture.key}'`;
+      }
+      else {
+        subject = `Feedback for ${this.type} '${this.context.key}'`;
+      }
 
       const bodyLines = [];
       if (this.location) {
