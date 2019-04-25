@@ -83,17 +83,33 @@ module.exports.export = function exportMillumin(fixtures, options) {
  * @returns {array.<string>} A filtered categories array.
  */
 function getDowngradedCategories(categories) {
-  const addedCategories = [`Pixel Bar`, `Stand`];
+  const replaceCats = {
+    'Barrel Scanner': `Effect`
+  };
+  const ignoredCats = [`Pixel Bar`, `Stand`];
 
-  const filteredCategories = categories.filter(
-    category => !addedCategories.includes(category)
-  );
+  const downgradedCategories = categories.map(cat => {
+    if (ignoredCats.includes(cat)) {
+      return null;
+    }
 
-  if (filteredCategories.length === 0) {
-    filteredCategories.push(`Other`);
+    if (cat in replaceCats) {
+      cat = replaceCats[cat];
+
+      if (categories.includes(cat)) {
+        // replaced category is already used
+        return null;
+      }
+    }
+
+    return cat;
+  }).filter(cat => cat !== null);
+
+  if (downgradedCategories.length === 0) {
+    downgradedCategories.push(`Other`);
   }
 
-  return filteredCategories;
+  return downgradedCategories;
 }
 
 /**

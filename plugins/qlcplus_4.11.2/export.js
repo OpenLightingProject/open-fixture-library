@@ -339,9 +339,16 @@ function addHeads(xmlMode, mode) {
  * @returns {string} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
  */
 function getFixtureType(fixture) {
+  const replaceCats = {
+    'Barrel Scanner': `Scanner`
+  };
   const ignoredCats = [`Blinder`, `Matrix`, `Pixel Bar`, `Stand`];
 
-  return fixture.categories.find(cat => !ignoredCats.includes(cat)) || `Other`;
+  return fixture.categories.map(
+    cat => (cat in replaceCats ? replaceCats[cat] : cat)
+  ).find(
+    cat => !ignoredCats.includes(cat)
+  ) || `Other`;
 }
 
 /**
