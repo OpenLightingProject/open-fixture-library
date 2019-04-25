@@ -530,11 +530,11 @@ export default {
       }
 
       if (this.fixture.metaAuthor === ``) {
-        this.fixture.metaAuthor = localStorage.getItem(`prefillMetaAuthor`);
+        this.fixture.metaAuthor = localStorage.getItem(`prefillAuthor`);
       }
 
       if (this.fixture.metaGithubUsername === ``) {
-        this.fixture.metaGithubUsername = localStorage.getItem(`prefillMetaGithubUsername`);
+        this.fixture.metaGithubUsername = localStorage.getItem(`prefillGithubUsername`);
       }
     },
 
@@ -543,8 +543,8 @@ export default {
         return;
       }
 
-      localStorage.setItem(`prefillMetaAuthor`, this.fixture.metaAuthor);
-      localStorage.setItem(`prefillMetaGithubUsername`, this.fixture.metaGithubUsername);
+      localStorage.setItem(`prefillAuthor`, this.fixture.metaAuthor);
+      localStorage.setItem(`prefillGithubUsername`, this.fixture.metaGithubUsername);
     },
 
     onSubmit() {
