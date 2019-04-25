@@ -1,0 +1,118 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ROCKPar50 Compact RGB LED Par Wash",
+  "shortName": "ROCKPar50",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Jeff Kowalik"],
+    "createDate": "2019-04-25",
+    "lastModifyDate": "2019-04-25"
+  },
+  "comment": "Rockville ROCKPar50 Compact RGB LED DJ/Club PAR CAN WASH LIGHT",
+  "links": {
+    "video": [
+      "https://player.vimeo.com/external/267483738.hd.mp4?s=131dd71527d1e38a7efd58e5e6c484551bf92de3&profile_id=175"
+    ]
+  },
+  "physical": {
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [15, 45]
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Dimmer Green": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Dimmer Blue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Function Selection": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction",
+          "comment": "Mode-DMX Control"
+        },
+        {
+          "dmxRange": [51, 101],
+          "type": "NoFunction",
+          "comment": "Mode-Color Change"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "NoFunction",
+          "comment": "Mode-Color Fade"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "NoFunction",
+          "comment": "Mode-Strobe"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "NoFunction",
+          "comment": "Mode-Sound Activate"
+        }
+      ]
+    },
+    "Strobe Speed": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Adjust Speed Ch5 / Strobe Rate CH2-4"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Master Dimmer",
+        "Dimmer Red",
+        "Dimmer Green",
+        "Dimmer Blue",
+        "Function Selection",
+        "Strobe Speed"
+      ]
+    },
+    {
+      "name": "3 Channel",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer Red",
+        "Dimmer Green",
+        "Dimmer Blue"
+      ]
+    }
+  ]
+}
