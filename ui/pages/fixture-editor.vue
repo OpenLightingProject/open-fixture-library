@@ -530,11 +530,11 @@ export default {
       }
 
       if (this.fixture.metaAuthor === ``) {
-        this.fixture.metaAuthor = localStorage.getItem(`prefillAuthor`);
+        this.fixture.metaAuthor = localStorage.getItem(`prefillAuthor`) || ``;
       }
 
       if (this.fixture.metaGithubUsername === ``) {
-        this.fixture.metaGithubUsername = localStorage.getItem(`prefillGithubUsername`);
+        this.fixture.metaGithubUsername = localStorage.getItem(`prefillGithubUsername`) || ``;
       }
     },
 
