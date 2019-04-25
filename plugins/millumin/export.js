@@ -44,6 +44,10 @@ module.exports.export = function exportMillumin(fixtures, options) {
       }
     }
 
+    if (jsonData.physical) {
+      jsonData.physical = getDowngradedFixturePhysical(fixture);
+    }
+
     delete jsonData.wheels;
 
     // resolve all pixel key constraints
@@ -110,6 +114,37 @@ function getDowngradedCategories(categories) {
   }
 
   return downgradedCategories;
+}
+
+/**
+ * Replaces the fixture's physical JSON object with one that fits to OFL schema version 7.3.0.
+ * Specifically, the outdated focus.type property is generated and added if needed.
+ * @param {Fixture} fixture The fixture whose physical data should be downgraded.
+ * @returns {object} The downgraded physical JSON object.
+ */
+function getDowngradedFixturePhysical(fixture) {
+  const jsonPhysical = JSON.parse(JSON.stringify(fixture.physical.jsonObject));
+
+
+  const focusTypesCategories = {
+    Head: `Moving Head`,
+    Mirror: `Scanner`,
+    Barrel: `Barrel Scanner`,
+    Fixed: null
+  };
+  const [focusType] = Object.entries(focusTypesCategories).find(
+    ([type, category]) => fixture.categories.includes(category)
+  ) || [undefined];
+
+  if (focusType) {
+    if (!(`focus` in jsonPhysical)) {
+      jsonPhysical.focus = {};
+    }
+
+    jsonPhysical.focus.type = focusType;
+  }
+
+  return jsonPhysical;
 }
 
 /**

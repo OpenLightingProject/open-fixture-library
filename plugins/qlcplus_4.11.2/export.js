@@ -174,7 +174,7 @@ function addMode(xml, mode) {
     mode.physical.focusPanMax === Number.POSITIVE_INFINITY ||
     mode.physical.focusTiltMax === Number.POSITIVE_INFINITY
   );
-  addPhysical(xmlMode, mode.physical || new Physical({}), hasPanTiltInfinite ? mode : null);
+  addPhysical(xmlMode, mode.physical || new Physical({}), mode.fixture, hasPanTiltInfinite ? mode : null);
 
   mode.channels.forEach((channel, index) => {
     xmlMode.element({
@@ -193,9 +193,10 @@ function addMode(xml, mode) {
 /**
  * @param {object} xmlParentNode The xmlbuilder object where <Physical> should be added.
  * @param {Physical} physical The OFL physical object.
+ * @param {Fixture} fixture The OFL fixture object this physical data section belongs to.
  * @param {Mode|null} mode The OFL mode object this physical data section belongs to. Only provide this if panMax and tiltMax should be read from this mode's Pan / Tilt channels.
  */
-function addPhysical(xmlParentNode, physical, mode) {
+function addPhysical(xmlParentNode, physical, fixture, mode) {
   const physicalSections = {
     Bulb: {
       required: true,
@@ -258,8 +259,18 @@ function addPhysical(xmlParentNode, physical, mode) {
           return 0;
         });
 
+        const focusTypesCategories = {
+          Head: `Moving Head`,
+          Mirror: `Scanner`,
+          Barrel: `Barrel Scanner`,
+          Fixed: null
+        };
+        const [Type] = Object.entries(focusTypesCategories).find(
+          ([focusType, category]) => fixture.categories.includes(category) || focusType === `Fixed`
+        );
+
         return {
-          Type: physical.focusType || `Fixed`,
+          Type,
           PanMax,
           TiltMax
         };

@@ -2010,7 +2010,6 @@ A fixture's technical data, belonging to the hardware and not the DMX protocol.
     * [.lensDegreesMin](#Physical+lensDegreesMin) ⇒ <code>number</code> \| <code>null</code>
     * [.lensDegreesMax](#Physical+lensDegreesMax) ⇒ <code>number</code> \| <code>null</code>
     * [.hasFocus](#Physical+hasFocus) ⇒ <code>boolean</code> \| <code>null</code>
-    * [.focusType](#Physical+focusType) ⇒ <code>&#x27;Fixed&#x27;</code> \| <code>&#x27;Head&#x27;</code> \| <code>&#x27;Mirror&#x27;</code> \| <code>&#x27;Barrel&#x27;</code> \| <code>null</code>
     * [.focusPanMax](#Physical+focusPanMax) ⇒ <code>number</code> \| <code>null</code>
     * [.focusTiltMax](#Physical+focusTiltMax) ⇒ <code>number</code> \| <code>null</code>
     * [.hasMatrixPixels](#Physical+hasMatrixPixels) ⇒ <code>boolean</code>
@@ -2112,11 +2111,6 @@ Creates a new Physical instance.
 ### physical.hasFocus ⇒ <code>boolean</code> \| <code>null</code>
 **Kind**: instance property of [<code>Physical</code>](#Physical)  
 **Returns**: <code>boolean</code> \| <code>null</code> - Whether physical data about the focus is available.  
-<a name="Physical+focusType"></a>
-
-### physical.focusType ⇒ <code>&#x27;Fixed&#x27;</code> \| <code>&#x27;Head&#x27;</code> \| <code>&#x27;Mirror&#x27;</code> \| <code>&#x27;Barrel&#x27;</code> \| <code>null</code>
-**Kind**: instance property of [<code>Physical</code>](#Physical)  
-**Returns**: <code>&#x27;Fixed&#x27;</code> \| <code>&#x27;Head&#x27;</code> \| <code>&#x27;Mirror&#x27;</code> \| <code>&#x27;Barrel&#x27;</code> \| <code>null</code> - Whether and how this fixture can change its focus point. Defaults to null.  
 <a name="Physical+focusPanMax"></a>
 
 ### physical.focusPanMax ⇒ <code>number</code> \| <code>null</code>

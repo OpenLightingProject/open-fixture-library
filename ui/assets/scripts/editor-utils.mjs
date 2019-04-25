@@ -72,8 +72,6 @@ export function getEmptyPhysical() {
       degreesMinMax: null
     },
     focus: {
-      type: ``,
-      typeNew: ``,
       panMax: null,
       tiltMax: null
     }

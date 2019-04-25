@@ -108,31 +108,6 @@
 
     <h4>Focus</h4>
 
-    <app-labeled-input
-      :formstate="formstate"
-      :multiple-inputs="true"
-      :name="`${namePrefix}-physical-focus-type`"
-      label="Focus type">
-      <app-property-input-select
-        v-model="physical.focus.type"
-        :name="`${namePrefix}-physical-focus-type`"
-        :schema-property="properties.physicalFocus.type"
-        addition-hint="other focus type" />
-      <validate
-        v-if="physical.focus.type === `[add-value]`"
-        :state="formstate"
-        tag="span">
-        <app-property-input-text
-          v-model="physical.focus.typeNew"
-          :name="`${namePrefix}-physical-focus-typeNew`"
-          :schema-property="properties.definitions.nonEmptyString"
-          :required="true"
-          :auto-focus="true"
-          hint="other focus type"
-          class="addition" />
-      </validate>
-    </app-labeled-input>
-
     <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-focus-panMax`" label="Pan maximum">
       <app-property-input-number
         v-model="physical.focus.panMax"

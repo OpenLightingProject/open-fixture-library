@@ -84,13 +84,6 @@
       <h4>Focus</h4>
 
       <app-labeled-value
-        v-if="physical.focusType !== null"
-        name="focus-type"
-        label="Type">
-        {{ physical.focusType }}
-      </app-labeled-value>
-
-      <app-labeled-value
         v-if="physical.focusPanMax !== null"
         name="focus-panMax"
         label="Max. pan angle">

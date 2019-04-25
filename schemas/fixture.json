@@ -171,15 +171,6 @@
           "type": "object",
           "minProperties": 1,
           "properties": {
-            "type": {
-              "$comment": "additions are welcome",
-              "enum": [
-                "Fixed",
-                "Head",
-                "Mirror",
-                "Barrel"
-              ]
-            },
             "panMax": {
               "oneOf": [
                 {
