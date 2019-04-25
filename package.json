@@ -7,7 +7,7 @@
     "Felix Edelmann <fxedel@gmail.com>"
   ],
   "engines": {
-    "node": "8.9.4"
+    "node": "10.15.3"
   },
   "main": "main.js",
   "scripts": {
@@ -67,7 +67,7 @@
     "eslint-plugin-vue": "^5.2.1",
     "husky": "^2.0.0",
     "jsdoc-to-markdown": "^4.0.1",
-    "libxml-xsd": "^0.5.2",
+    "libxmljs": "^0.19.5",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "node-delete": "^0.1.2"
