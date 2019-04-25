@@ -127,6 +127,18 @@ import a11yDialogVue from '~/components/a11y-dialog.vue';
 import editorFileUploadVue from '~/components/editor-file-upload.vue';
 import labeledInputVue from '~/components/labeled-input.vue';
 
+const storageAvailable = (function() {
+  try {
+    const x = `__storage_test__`;
+    localStorage.setItem(x, x);
+    localStorage.removeItem(x);
+    return true;
+  }
+  catch (e) {
+    return false;
+  }
+})();
+
 export default {
   components: {
     'app-a11y-dialog': a11yDialogVue,
@@ -171,6 +183,9 @@ export default {
 
       return `Upload failed`;
     }
+  },
+  mounted() {
+    this.applyStoredPrefillData();
   },
   methods: {
     async onSubmit(formElement) {
@@ -217,6 +232,7 @@ export default {
 
         this.pullRequestUrl = response.data.pullRequestUrl;
         this.uploading = false;
+        this.storePrefillData();
       }
       catch (error) {
         console.error(error);
@@ -238,6 +254,27 @@ export default {
       this.$nextTick(() => {
         this.formstate._reset();
       });
+    },
+    applyStoredPrefillData() {
+      if (!storageAvailable) {
+        return;
+      }
+
+      if (this.author === ``) {
+        this.author = localStorage.getItem(`prefillAuthor`) || ``;
+      }
+
+      if (this.githubUsername === ``) {
+        this.githubUsername = localStorage.getItem(`prefillGithubUsername`) || ``;
+      }
+    },
+    storePrefillData() {
+      if (!storageAvailable) {
+        return;
+      }
+
+      localStorage.setItem(`prefillAuthor`, this.author);
+      localStorage.setItem(`prefillGithubUsername`, this.githubUsername);
     }
   }
 };
