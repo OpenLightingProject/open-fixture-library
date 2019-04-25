@@ -6,6 +6,10 @@ const childProcess = require(`child_process`);
 const blc = require(`broken-link-checker`);
 const pullRequest = require(`./github/pull-request.js`);
 
+// disable certificate errors
+// this is unsafe, but there apparently is no better alternative
+// see https://github.com/request/request/issues/3106
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 // initialize link checker
 let startTime;
@@ -22,6 +26,10 @@ const siteChecker = new blc.SiteChecker({
   maxSocketsPerHost: 3,
   rateLimit: 25,
   filterLevel: 3,
+
+  // from fork of broken-link-checker, see https://github.com/stevenvachon/broken-link-checker/pull/120
+  headRetryCodes: [404, 405],
+
   excludedKeywords: [
     // canonical URLs
     `https://open-fixture-library.org/*`,
