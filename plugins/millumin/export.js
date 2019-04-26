@@ -116,9 +116,9 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
     Barrel: `Barrel Scanner`,
     Fixed: null
   };
-  const [type] = Object.entries(focusTypesCategories).find(
-    ([focusType, category]) => fixture.categories.includes(category)
-  ) || [null];
+  const type = Object.keys(focusTypesCategories).find(
+    focusType => fixture.categories.includes(focusTypesCategories[focusType])
+  ) || null;
 
   const [panMax, tiltMax] = [`Pan`, `Tilt`].map(panOrTilt => {
     const capabilities = [];
