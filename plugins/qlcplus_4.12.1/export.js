@@ -67,7 +67,7 @@ module.exports.export = function exportQlcPlus(fixtures, options) {
 
     const panMax = getPanTiltMax(`Pan`, fixture.coarseChannels);
     const tiltMax = getPanTiltMax(`Tilt`, fixture.coarseChannels);
-    const useGlobalPhysical = fixture.physical !== null && fixture.modes.every(mode => {
+    const useGlobalPhysical = fixture.modes.every(mode => {
       if (mode.physicalOverride !== null) {
         return false;
       }
@@ -82,7 +82,7 @@ module.exports.export = function exportQlcPlus(fixtures, options) {
     }
 
     if (useGlobalPhysical) {
-      addPhysical(xml, fixture.physical, fixture);
+      addPhysical(xml, fixture.physical || new Physical({}), fixture);
     }
 
     xml.dtd(``);
@@ -624,8 +624,8 @@ function addMode(xml, mode, createPhysical) {
     }
   });
 
-  if (mode.physical && createPhysical) {
-    addPhysical(xmlMode, mode.physical, mode.fixture, mode);
+  if (createPhysical) {
+    addPhysical(xmlMode, mode.physical || new Physical({}), mode.fixture, mode);
   }
 
   mode.channels.forEach((channel, index) => {
@@ -653,6 +653,14 @@ function addMode(xml, mode, createPhysical) {
  * @param {Mode|null} mode The OFL mode object this physical data section belongs to. Only provide this if panMax and tiltMax should be read from this mode's Pan / Tilt channels, otherwise they are read from all channels.
  */
 function addPhysical(xmlParentNode, physical, fixture, mode) {
+  const PanMax = getPanTiltMax(`Pan`, mode ? mode.channels : fixture.coarseChannels);
+  const TiltMax = getPanTiltMax(`Tilt`, mode ? mode.channels : fixture.coarseChannels);
+
+  if (Object.keys(physical.jsonObject).length === 0 && PanMax === 0 && TiltMax === 0) {
+    // empty physical data
+    return;
+  }
+
   const physicalSections = {
     Bulb: {
       required: true,
@@ -700,8 +708,8 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
 
         return {
           Type,
-          PanMax: getPanTiltMax(`Pan`, mode ? mode.channels : fixture.coarseChannels),
-          TiltMax: getPanTiltMax(`Tilt`, mode ? mode.channels : fixture.coarseChannels)
+          PanMax,
+          TiltMax
         };
       }
     },
