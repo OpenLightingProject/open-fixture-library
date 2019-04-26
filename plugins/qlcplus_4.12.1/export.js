@@ -65,12 +65,23 @@ module.exports.export = function exportQlcPlus(fixtures, options) {
       addChannel(xml, channel, fixture);
     }
 
+    const panMax = getPanTiltMax(`Pan`, fixture.coarseChannels);
+    const tiltMax = getPanTiltMax(`Tilt`, fixture.coarseChannels);
+    const useGlobalPhysical = fixture.physical !== null && fixture.modes.every(mode => {
+      if (mode.physicalOverride !== null) {
+        return false;
+      }
+
+      const modePanMax = getPanTiltMax(`Pan`, mode.channels);
+      const modeTiltMax = getPanTiltMax(`Tilt`, mode.channels);
+      return (modePanMax === 0 || panMax === modePanMax) && (modeTiltMax === 0 || tiltMax === modeTiltMax);
+    });
+
     for (const mode of fixture.modes) {
-      addMode(xml, mode);
+      addMode(xml, mode, !useGlobalPhysical);
     }
 
-    const allModesHavePhysical = fixture.modes.every(mode => mode.physicalOverride !== null);
-    if (fixture.physical !== null && !allModesHavePhysical) {
+    if (useGlobalPhysical) {
       addPhysical(xml, fixture.physical, fixture);
     }
 
@@ -604,21 +615,17 @@ function getCapabilityPreset(capability) {
 /**
  * @param {object} xml The xmlbuilder <FixtureDefinition> object.
  * @param {Mode} mode The OFL mode object.
+ * @param {boolean} createPhysical Whether to add a Physical XML element to the mode.
  */
-function addMode(xml, mode) {
+function addMode(xml, mode, createPhysical) {
   const xmlMode = xml.element({
     Mode: {
       '@Name': mode.name
     }
   });
 
-  const hasPanTiltInfinite = mode.physical !== null && (
-    mode.physical.focusPanMax === Number.POSITIVE_INFINITY ||
-    mode.physical.focusTiltMax === Number.POSITIVE_INFINITY
-  );
-
-  if (mode.physicalOverride !== null || hasPanTiltInfinite) {
-    addPhysical(xmlMode, mode.physical, mode.fixture, hasPanTiltInfinite ? mode : null);
+  if (mode.physical && createPhysical) {
+    addPhysical(xmlMode, mode.physical, mode.fixture, mode);
   }
 
   mode.channels.forEach((channel, index) => {
@@ -643,7 +650,7 @@ function addMode(xml, mode) {
  * @param {object} xmlParentNode The xmlbuilder object where <Physical> should be added (<FixtureDefinition> or <Mode>).
  * @param {Physical} physical The OFL physical object.
  * @param {Fixture} fixture The OFL fixture object.
- * @param {Mode|null} mode The OFL mode object this physical data section belongs to. Only provide this if panMax and tiltMax should be read from this mode's Pan / Tilt channels.
+ * @param {Mode|null} mode The OFL mode object this physical data section belongs to. Only provide this if panMax and tiltMax should be read from this mode's Pan / Tilt channels, otherwise they are read from all channels.
  */
 function addPhysical(xmlParentNode, physical, fixture, mode) {
   const physicalSections = {
@@ -681,33 +688,6 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
     Focus: {
       required: true,
       getAttributes() {
-        const [PanMax, TiltMax] = [`Pan`, `Tilt`].map(panOrTilt => {
-          const panTiltMax = physical[`focus${panOrTilt}Max`];
-
-          if (panTiltMax === Number.POSITIVE_INFINITY) {
-            try {
-              const panTiltChannel = mode.channels.find(
-                ch => `capabilities` in ch && ch.capabilities.length === 1 &&
-                  ch.capabilities[0].type === panOrTilt && ch.capabilities[0].angle[0].unit === `deg`
-              );
-
-              return Math.max(
-                panTiltChannel.capabilities[0].angle[0].number,
-                panTiltChannel.capabilities[0].angle[1].number
-              );
-            }
-            catch (err) {
-              return 9999;
-            }
-          }
-
-          if (panTiltMax !== null) {
-            return Math.round(panTiltMax);
-          }
-
-          return 0;
-        });
-
         const focusTypesCategories = {
           Head: `Moving Head`,
           Mirror: `Scanner`,
@@ -720,8 +700,8 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
 
         return {
           Type,
-          PanMax,
-          TiltMax
+          PanMax: getPanTiltMax(`Pan`, mode ? mode.channels : fixture.coarseChannels),
+          TiltMax: getPanTiltMax(`Tilt`, mode ? mode.channels : fixture.coarseChannels)
         };
       }
     },
@@ -754,6 +734,36 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
       xmlPhysical.element(name, section.getAttributes());
     }
   });
+}
+
+/**
+ * @param {'Pan'|'Tilt'} panOrTilt Whether to return pan max or tilt max.
+ * @param {array.<CoarseChannel>} channels The channels in which to look for pan/tilt angles, e.g. all mode channels.
+ * @returns {number} The maximum pan/tilt range in the given channels, i.e. highest angle - lowest angle. If only continous pan/tilt is used, the return value is 9999. Defaults to 0.
+ */
+function getPanTiltMax(panOrTilt, channels) {
+  const capabilities = [];
+  channels.forEach(ch => {
+    if (ch.capabilities) {
+      capabilities.push(...ch.capabilities);
+    }
+  });
+
+  const panTiltCapabilities = capabilities.filter(cap => cap.type === panOrTilt && cap.angle[0].unit === `deg`);
+  const minAngle = Math.min(...panTiltCapabilities.map(cap => Math.min(cap.angle[0].number, cap.angle[1].number)));
+  const maxAngle = Math.max(...panTiltCapabilities.map(cap => Math.max(cap.angle[0].number, cap.angle[1].number)));
+  const panTiltMax = maxAngle - minAngle;
+
+  if (panTiltMax === -Infinity) {
+    const hasContinuousCapability = capabilities.some(cap => cap.type === `${panOrTilt}Continuous`);
+    if (hasContinuousCapability) {
+      return 9999;
+    }
+
+    return 0;
+  }
+
+  return Math.round(panTiltMax);
 }
 
 /**

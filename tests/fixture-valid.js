@@ -590,8 +590,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           ShutterStrobe: checkShutterStrobeCapability,
           Pan: checkPanTiltCapability,
           Tilt: checkPanTiltCapability,
-          PanContinuous: checkPanTiltContinuousCapability,
-          TiltContinuous: checkPanTiltContinuousCapability,
           WheelSlot: checkWheelCapability,
           WheelShake: checkWheelCapability,
           WheelSlotRotation: checkWheelCapability,
@@ -700,37 +698,9 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
          * Type-specific checks for Pan and Tilt capabilities.
          */
         function checkPanTiltCapability() {
-          const max = fixture.physical === null ? null : fixture.physical[`focus${cap.type}Max`];
-          const isInfinite = max === Number.POSITIVE_INFINITY;
           const usesPercentageAngle = cap.angle[0].unit === `%`;
-
-          const panOrTilt = cap.type.toLowerCase();
-
-          if (!usesPercentageAngle) {
-            const range = Math.abs(cap.angle[1] - cap.angle[0]);
-
-            if (!max) {
-              result.warnings.push(`${errorPrefix} defines an exact ${panOrTilt} angle. Setting focus.${panOrTilt}Max in the fixture's physical data is recommended.`);
-            }
-            else if (range > max) {
-              result.errors.push(`${errorPrefix} uses an angle range that is greater than focus.${panOrTilt}Max in the fixture's physical data.`);
-            }
-          }
-          else if (max && !isInfinite) {
-            result.warnings.push(`${errorPrefix} defines an imprecise percentaged ${panOrTilt} angle. Using the exact value from focus.${panOrTilt}Max in the fixture's physical data is recommended.`);
-          }
-        }
-
-        /**
-         * Type-specific checks for PanContinuous and TiltContinuous capabilities.
-         */
-        function checkPanTiltContinuousCapability() {
-          const panOrTilt = cap.type === `PanContinuous` ? `Pan` : `Tilt`;
-
-          const max = fixture.physical === null ? null : fixture.physical[`focus${panOrTilt}Max`];
-
-          if (max !== Number.POSITIVE_INFINITY) {
-            result.errors.push(`${errorPrefix} defines continuous ${panOrTilt.toLowerCase()} but focus.${panOrTilt.toLowerCase()}Max in the fixture's physical data is not "infinite".`);
+          if (usesPercentageAngle) {
+            result.warnings.push(`${errorPrefix} defines an imprecise percentaged angle. Please to try find the value in degrees.`);
           }
         }
 
@@ -897,10 +867,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       else if (channel instanceof FineChannel) {
         checkCoarserChannelsInMode(channel);
       }
-      else {
-        // that's already checked for switched channels and we don't need to check it for fine channels
-        checkPanTiltMaxInPhysical();
-      }
 
       /**
        * Check that a switching channel reference in a mode is valid.
@@ -922,8 +888,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
             checkCoarserChannelsInMode(switchToChannel);
             continue;
           }
-
-          checkPanTiltMaxInPhysical(switchToChannel, mode);
         }
 
         for (let j = 0; j < mode.getChannelIndex(channel); j++) {
@@ -989,25 +953,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
         if (notInMode.length > 0) {
           result.errors.push(`Mode '${mode.shortName}' contains the fine channel '${fineChannel.key}' but is missing its coarser channels ${notInMode}.`);
-        }
-      }
-
-      /**
-       * Check that panMax / tiltMax are defined in this mode's physical section (or globally) when there is a Pan / Tilt channel.
-       */
-      function checkPanTiltMaxInPhysical() {
-        if (channel.type !== `Pan` && channel.type !== `Tilt`) {
-          return;
-        }
-
-        const modelMaxProp = `focus${channel.type}Max`;
-        const jsonMaxProp = `${channel.type.toLowerCase()}Max`;
-
-        if (mode.physical === null || mode.physical[modelMaxProp] === null) {
-          result.warnings.push(`physical.${jsonMaxProp} is not defined although there's a ${channel.type} channel '${channel.key}' in mode '${mode.shortName}'.`);
-        }
-        else if (mode.physical[modelMaxProp] === 0) {
-          result.warnings.push(`physical.${jsonMaxProp} is 0 although there's a ${channel.type} channel '${channel.key}' in mode '${mode.shortName}'.`);
         }
       }
     }

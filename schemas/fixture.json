@@ -167,33 +167,6 @@
           },
           "additionalProperties": false
         },
-        "focus": {
-          "type": "object",
-          "minProperties": 1,
-          "properties": {
-            "panMax": {
-              "oneOf": [
-                {
-                  "$comment": "in degrees",
-                  "type": "number",
-                  "minimum": 0
-                },
-                { "enum": ["infinite"] }
-              ]
-            },
-            "tiltMax": {
-              "oneOf": [
-                {
-                  "$comment": "in degrees",
-                  "type": "number",
-                  "minimum": 0
-                },
-                { "enum": ["infinite"] }
-              ]
-            }
-          },
-          "additionalProperties": false
-        },
         "matrixPixels": {
           "type": "object",
           "minProperties": 1,

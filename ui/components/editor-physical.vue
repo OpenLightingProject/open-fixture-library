@@ -105,33 +105,6 @@
         unit="°" />
     </app-labeled-input>
 
-
-    <h4>Focus</h4>
-
-    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-focus-panMax`" label="Pan maximum">
-      <app-property-input-number
-        v-model="physical.focus.panMax"
-        :name="`${namePrefix}-physical-focus-panMax`"
-        :disabled="panMaxInfinite"
-        :schema-property="properties.physicalFocus.panMax.oneOf[0]" /> °
-
-      <label class="infinitePanTilt">
-        <input v-model="panMaxInfinite" :name="`${namePrefix}-physical-focus-panMaxInfinite`" type="checkbox"> Infinite pan
-      </label>
-    </app-labeled-input>
-
-    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-focus-tiltMax`" label="Tilt maximum">
-      <app-property-input-number
-        v-model="physical.focus.tiltMax"
-        :name="`${namePrefix}-physical-focus-tiltMax`"
-        :disabled="tiltMaxInfinite"
-        :schema-property="properties.physicalFocus.tiltMax.oneOf[0]" /> °
-
-      <label class="infinitePanTilt">
-        <input v-model="tiltMaxInfinite" :name="`${namePrefix}-physical-focus-tiltMaxInfinite`" type="checkbox"> Infinite tilt
-      </label>
-    </app-labeled-input>
-
   </div>
 </template>
 
@@ -185,22 +158,6 @@ export default {
   computed: {
     dimensionRequired() {
       return this.physical.dimensionsWidth !== null || this.physical.dimensionsHeight !== null || this.physical.dimensionsDepth !== null;
-    },
-    panMaxInfinite: {
-      get() {
-        return this.physical.focus.panMax === `infinite`;
-      },
-      set(newIsInfinite) {
-        this.physical.focus.panMax = newIsInfinite ? `infinite` : ``;
-      }
-    },
-    tiltMaxInfinite: {
-      get() {
-        return this.physical.focus.tiltMax === `infinite`;
-      },
-      set(newIsInfinite) {
-        this.physical.focus.tiltMax = newIsInfinite ? `infinite` : ``;
-      }
     }
   },
   mounted: function() {

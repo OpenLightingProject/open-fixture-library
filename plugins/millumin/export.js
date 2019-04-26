@@ -118,13 +118,12 @@ function getDowngradedCategories(categories) {
 
 /**
  * Replaces the fixture's physical JSON object with one that fits to OFL schema version 7.3.0.
- * Specifically, the outdated focus.type property is generated and added if needed.
+ * Specifically, the outdated focus property (with type, panMax and tiltMax) is generated and added if needed.
  * @param {Fixture} fixture The fixture whose physical data should be downgraded.
  * @returns {object} The downgraded physical JSON object.
  */
 function getDowngradedFixturePhysical(fixture) {
   const jsonPhysical = JSON.parse(JSON.stringify(fixture.physical.jsonObject));
-
 
   const focusTypesCategories = {
     Head: `Moving Head`,
@@ -132,16 +131,57 @@ function getDowngradedFixturePhysical(fixture) {
     Barrel: `Barrel Scanner`,
     Fixed: null
   };
-  const [focusType] = Object.entries(focusTypesCategories).find(
-    ([type, category]) => fixture.categories.includes(category)
-  ) || [undefined];
+  const [type] = Object.entries(focusTypesCategories).find(
+    ([focusType, category]) => fixture.categories.includes(category)
+  ) || [null];
 
-  if (focusType) {
-    if (!(`focus` in jsonPhysical)) {
-      jsonPhysical.focus = {};
+  const [panMax, tiltMax] = [`Pan`, `Tilt`].map(panOrTilt => {
+    const capabilities = [];
+    fixture.coarseChannels.forEach(ch => {
+      if (ch.capabilities) {
+        capabilities.push(...ch.capabilities);
+      }
+    });
+
+    const hasContinuousCapability = capabilities.some(cap => cap.type === `${panOrTilt}Continuous`);
+    if (hasContinuousCapability) {
+      return `infinite`;
     }
 
-    jsonPhysical.focus.type = focusType;
+    const panTiltCapabilities = capabilities.filter(cap => cap.type === panOrTilt && cap.angle[0].unit === `deg`);
+    const minAngle = Math.min(...panTiltCapabilities.map(cap => Math.min(cap.angle[0].number, cap.angle[1].number)));
+    const maxAngle = Math.max(...panTiltCapabilities.map(cap => Math.max(cap.angle[0].number, cap.angle[1].number)));
+    const panTiltMax = maxAngle - minAngle;
+
+    if (panTiltMax > -Infinity) {
+      return panTiltMax;
+    }
+
+    return null;
+  });
+
+  const focus = {
+    type,
+    panMax,
+    tiltMax
+  };
+
+  // remove null properties
+  Object.entries(focus).filter(
+    ([key, value]) => value === null
+  ).forEach(
+    ([key, value]) => delete focus[key]
+  );
+
+  if (Object.keys(focus).length > 0) {
+    jsonPhysical.focus = focus;
+
+    if (jsonPhysical.matrixPixels) {
+      // remove matrixPixels and add them again after focus
+      const matrixPixels = jsonPhysical.matrixPixels;
+      delete jsonPhysical.matrixPixels;
+      jsonPhysical.matrixPixels = matrixPixels;
+    }
   }
 
   return jsonPhysical;

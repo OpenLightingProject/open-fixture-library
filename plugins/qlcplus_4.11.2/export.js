@@ -170,11 +170,7 @@ function addMode(xml, mode) {
     }
   });
 
-  const hasPanTiltInfinite = mode.physical !== null && (
-    mode.physical.focusPanMax === Number.POSITIVE_INFINITY ||
-    mode.physical.focusTiltMax === Number.POSITIVE_INFINITY
-  );
-  addPhysical(xmlMode, mode.physical || new Physical({}), mode.fixture, hasPanTiltInfinite ? mode : null);
+  addPhysical(xmlMode, mode.physical || new Physical({}), mode);
 
   mode.channels.forEach((channel, index) => {
     xmlMode.element({
@@ -193,10 +189,9 @@ function addMode(xml, mode) {
 /**
  * @param {object} xmlParentNode The xmlbuilder object where <Physical> should be added.
  * @param {Physical} physical The OFL physical object.
- * @param {Fixture} fixture The OFL fixture object this physical data section belongs to.
- * @param {Mode|null} mode The OFL mode object this physical data section belongs to. Only provide this if panMax and tiltMax should be read from this mode's Pan / Tilt channels.
+ * @param {Mode} mode The OFL mode object this physical data section belongs to.
  */
-function addPhysical(xmlParentNode, physical, fixture, mode) {
+function addPhysical(xmlParentNode, physical, mode) {
   const physicalSections = {
     Bulb: {
       required: true,
@@ -233,30 +228,28 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
       required: true,
       getAttributes() {
         const [PanMax, TiltMax] = [`Pan`, `Tilt`].map(panOrTilt => {
-          const panTiltMax = physical[`focus${panOrTilt}Max`];
-
-          if (panTiltMax === Number.POSITIVE_INFINITY) {
-            try {
-              const panTiltChannel = mode.channels.find(
-                ch => `capabilities` in ch && ch.capabilities.length === 1 &&
-                  ch.capabilities[0].type === panOrTilt && ch.capabilities[0].angle[0].unit === `deg`
-              );
-
-              return Math.max(
-                panTiltChannel.capabilities[0].angle[0].number,
-                panTiltChannel.capabilities[0].angle[1].number
-              );
+          const capabilities = [];
+          mode.channels.forEach(ch => {
+            if (ch.capabilities) {
+              capabilities.push(...ch.capabilities);
             }
-            catch (err) {
+          });
+
+          const panTiltCapabilities = capabilities.filter(cap => cap.type === panOrTilt && cap.angle[0].unit === `deg`);
+          const minAngle = Math.min(...panTiltCapabilities.map(cap => Math.min(cap.angle[0].number, cap.angle[1].number)));
+          const maxAngle = Math.max(...panTiltCapabilities.map(cap => Math.max(cap.angle[0].number, cap.angle[1].number)));
+          const panTiltMax = maxAngle - minAngle;
+
+          if (panTiltMax === -Infinity) {
+            const hasContinuousCapability = capabilities.some(cap => cap.type === `${panOrTilt}Continuous`);
+            if (hasContinuousCapability) {
               return 9999;
             }
+
+            return 0;
           }
 
-          if (panTiltMax !== null) {
-            return Math.round(panTiltMax);
-          }
-
-          return 0;
+          return Math.round(panTiltMax);
         });
 
         const focusTypesCategories = {
@@ -266,7 +259,7 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
           Fixed: null
         };
         const [Type] = Object.entries(focusTypesCategories).find(
-          ([focusType, category]) => fixture.categories.includes(category) || focusType === `Fixed`
+          ([focusType, category]) => mode.fixture.categories.includes(category) || focusType === `Fixed`
         );
 
         return {

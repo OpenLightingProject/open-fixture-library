@@ -70,10 +70,6 @@ export function getEmptyPhysical() {
     lens: {
       name: ``,
       degreesMinMax: null
-    },
-    focus: {
-      panMax: null,
-      tiltMax: null
     }
   };
 }

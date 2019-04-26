@@ -2009,9 +2009,6 @@ A fixture's technical data, belonging to the hardware and not the DMX protocol.
     * [.lensName](#Physical+lensName) ⇒ <code>string</code> \| <code>null</code>
     * [.lensDegreesMin](#Physical+lensDegreesMin) ⇒ <code>number</code> \| <code>null</code>
     * [.lensDegreesMax](#Physical+lensDegreesMax) ⇒ <code>number</code> \| <code>null</code>
-    * [.hasFocus](#Physical+hasFocus) ⇒ <code>boolean</code> \| <code>null</code>
-    * [.focusPanMax](#Physical+focusPanMax) ⇒ <code>number</code> \| <code>null</code>
-    * [.focusTiltMax](#Physical+focusTiltMax) ⇒ <code>number</code> \| <code>null</code>
     * [.hasMatrixPixels](#Physical+hasMatrixPixels) ⇒ <code>boolean</code>
     * [.matrixPixelsDimensions](#Physical+matrixPixelsDimensions) ⇒ <code>array.&lt;number&gt;</code> \| <code>null</code>
     * [.matrixPixelsSpacing](#Physical+matrixPixelsSpacing) ⇒ <code>array.&lt;number&gt;</code> \| <code>null</code>
@@ -2106,21 +2103,6 @@ Creates a new Physical instance.
 ### physical.lensDegreesMax ⇒ <code>number</code> \| <code>null</code>
 **Kind**: instance property of [<code>Physical</code>](#Physical)  
 **Returns**: <code>number</code> \| <code>null</code> - The maximum possible beam angle in degrees. Defaults to null.  
-<a name="Physical+hasFocus"></a>
-
-### physical.hasFocus ⇒ <code>boolean</code> \| <code>null</code>
-**Kind**: instance property of [<code>Physical</code>](#Physical)  
-**Returns**: <code>boolean</code> \| <code>null</code> - Whether physical data about the focus is available.  
-<a name="Physical+focusPanMax"></a>
-
-### physical.focusPanMax ⇒ <code>number</code> \| <code>null</code>
-**Kind**: instance property of [<code>Physical</code>](#Physical)  
-**Returns**: <code>number</code> \| <code>null</code> - The maximum angle in degrees that this fixture can rotate in horizontal direction (Pan). `Number.POSITIVE_INFINITY` if continuous pan is possible. Defaults to null.  
-<a name="Physical+focusTiltMax"></a>
-
-### physical.focusTiltMax ⇒ <code>number</code> \| <code>null</code>
-**Kind**: instance property of [<code>Physical</code>](#Physical)  
-**Returns**: <code>number</code> \| <code>null</code> - The maximum angle in degrees that this fixture can rotate in vertical direction (Tilt). `Number.POSITIVE_INFINITY` if continuous pan is possible. Defaults to null.  
 <a name="Physical+hasMatrixPixels"></a>
 
 ### physical.hasMatrixPixels ⇒ <code>boolean</code>
