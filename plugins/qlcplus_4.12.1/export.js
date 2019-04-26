@@ -696,15 +696,13 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
     Focus: {
       required: true,
       getAttributes() {
-        const focusTypesCategories = {
-          Head: `Moving Head`,
-          Mirror: `Scanner`,
-          Barrel: `Barrel Scanner`,
-          Fixed: null
+        const focusTypeConditions = {
+          Mirror: fixture.categories.includes(`Scanner`),
+          Barrel: fixture.categories.includes(`Barrel Scanner`),
+          Head: fixture.categories.includes(`Moving Head`) || PanMax > 0 || TiltMax > 0,
+          Fixed: true
         };
-        const [Type] = Object.entries(focusTypesCategories).find(
-          ([focusType, category]) => fixture.categories.includes(category) || focusType === `Fixed`
-        );
+        const Type = Object.keys(focusTypeConditions).find(focusType => focusTypeConditions[focusType] === true);
 
         return {
           Type,

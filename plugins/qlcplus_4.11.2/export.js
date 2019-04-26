@@ -252,15 +252,13 @@ function addPhysical(xmlParentNode, physical, mode) {
           return Math.round(panTiltMax);
         });
 
-        const focusTypesCategories = {
-          Head: `Moving Head`,
-          Mirror: `Scanner`,
-          Barrel: `Barrel Scanner`,
-          Fixed: null
+        const focusTypeConditions = {
+          Mirror: mode.fixture.categories.includes(`Scanner`),
+          Barrel: mode.fixture.categories.includes(`Barrel Scanner`),
+          Head: mode.fixture.categories.includes(`Moving Head`) || PanMax > 0 || TiltMax > 0,
+          Fixed: true
         };
-        const [Type] = Object.entries(focusTypesCategories).find(
-          ([focusType, category]) => mode.fixture.categories.includes(category) || focusType === `Fixed`
-        );
+        const Type = Object.keys(focusTypeConditions).find(focusType => focusTypeConditions[focusType] === true);
 
         return {
           Type,
