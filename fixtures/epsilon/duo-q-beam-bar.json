@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Duo Q-Beam Bar",
-  "categories": ["Pixel Bar", "Moving Head", "Color Changer"],
+  "categories": ["Pixel Bar", "Color Changer"],
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2018-11-09",
@@ -31,7 +31,6 @@
       "degreesMinMax": [3, 3]
     },
     "focus": {
-      "type": "Head",
       "tiltMax": 180
     }
   },
