@@ -28,6 +28,7 @@ import swapHorizontalSvg from '~/assets/icons/swap-horizontal.svg';
 import webSvg from '~/assets/icons/web.svg';
 import youtubeSvg from '~/assets/icons/youtube.svg';
 
+import categoriesBarrelScannerSvg from '~/assets/icons/categories/barrel-scanner.svg';
 import categoriesBlinderSvg from '~/assets/icons/categories/blinder.svg';
 import categoriesColorChangerSvg from '~/assets/icons/categories/color-changer.svg';
 import categoriesDimmerSvg from '~/assets/icons/categories/dimmer.svg';
@@ -95,6 +96,7 @@ export default {
   'web': webSvg,
   'youtube': youtubeSvg,
 
+  'categories/barrel-scanner': categoriesBarrelScannerSvg,
   'categories/blinder': categoriesBlinderSvg,
   'categories/color-changer': categoriesColorChangerSvg,
   'categories/dimmer': categoriesDimmerSvg,
