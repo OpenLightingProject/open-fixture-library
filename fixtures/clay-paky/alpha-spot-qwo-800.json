@@ -1,52 +1,95 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Alpha Spot QWO 800",
-  "categories": ["Moving Head", "Color Changer"],
+  "shortName": "AS QWO",
+  "categories": ["Other"],
   "meta": {
-    "authors": ["Flo Edelmann"],
-    "createDate": "2018-05-15",
-    "lastModifyDate": "2019-02-12",
+    "authors": ["Tester"],
+    "createDate": "2019-05-03",
+    "lastModifyDate": "2019-05-03",
     "importPlugin": {
       "plugin": "gdtf",
-      "date": "2018-09-11",
-      "comment": "GDTF fixture type ID: 00 1B 21 63 BA 95 00 00 8E 2D C1 C7 3A F9 7D 46"
+      "date": "2019-05-03",
+      "comment": "GDTF fixture type ID: 001B2163-BA95-0000-8E2D-C1C73AF97D46"
     }
   },
-  "comment": "The ST version has a 6000K lamp.",
-  "links": {
-    "manual": [
-      "https://www.claypaky.it/media/documents/HR_AlphaSpotQWO800_and_ST_Manual_04.2016_EN.pdf"
-    ],
-    "productPage": [
-      "https://www.claypaky.it/en/products/alpha-spot-qwo"
-    ],
-    "video": [
-      "https://www.youtube.com/watch?v=yNq1_7DnGjQ",
-      "https://www.youtube.com/watch?v=539x-P1G4Bo",
-      "https://www.youtube.com/watch?v=GHIqWbGhKKA"
-    ]
-  },
-  "physical": {
-    "dimensions": [385, 405, 650],
-    "weight": 30,
-    "power": 1200,
-    "DMXconnector": "3-pin and 5-pin",
-    "bulb": {
-      "type": "MSR Platinum 35 discharge lamp",
-      "colorTemperature": 7750,
-      "lumens": 54500
-    },
-    "lens": {
-      "degreesMinMax": [11, 55]
-    },
-    "focus": {
-      "type": "Head",
-      "panMax": 540,
-      "tiltMax": 250
-    }
-  },
+  "comment": "Clay Paky Alpha Spot QWO 800",
   "wheels": {
-    "Color Wheel": {
+    "GoboWheel1": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo6"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo7"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo8"
+        }
+      ]
+    },
+    "GoboWheel2": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo1"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo2"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo3"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo4"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo5"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo6"
+        },
+        {
+          "type": "Gobo",
+          "name": "Gobo7"
+        }
+      ]
+    },
+    "ColorWheel1": {
       "slots": [
         {
           "type": "Open"
@@ -54,4370 +97,2010 @@
         {
           "type": "Color",
           "name": "Red",
-          "colors": ["#ee262d"]
+          "colors": ["#640000"]
         },
         {
           "type": "Color",
-          "name": "CTO",
-          "colors": ["#f1c136"],
-          "colorTemperature": "2600K"
+          "name": "CTO 2600",
+          "colors": ["#c54400"]
         },
         {
           "type": "Color",
           "name": "Green",
-          "colors": ["#08954d"]
+          "colors": ["#009911"]
         },
         {
           "type": "Color",
           "name": "Light Green",
-          "colors": ["#87cf34"]
+          "colors": ["#99d200"]
         },
         {
           "type": "Color",
           "name": "Lavender",
-          "colors": ["#8566ba"]
+          "colors": ["#9e43a5"]
         },
         {
           "type": "Color",
           "name": "Aquamarine",
-          "colors": ["#69c981"]
+          "colors": ["#00b593"]
         },
         {
           "type": "Color",
           "name": "Orange",
-          "colors": ["#f47327"]
+          "colors": ["#bd2700"]
         },
         {
           "type": "Color",
           "name": "Blue",
-          "colors": ["#2e52ab"]
-        }
-      ]
-    },
-    "Static Gobo Wheel": {
-      "slots": [
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        }
-      ]
-    },
-    "Rotating Gobo Wheel": {
-      "slots": [
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        },
-        {
-          "type": "Gobo"
-        }
-      ]
-    },
-    "Animation Disk": {
-      "slots": [
-        {
-          "type": "AnimationGoboStart"
-        },
-        {
-          "type": "AnimationGoboEnd"
+          "colors": ["#490064"]
         }
       ]
     }
   },
   "availableChannels": {
-    "Cyan": {
-      "defaultValue": 255,
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Cyan"
-      }
-    },
-    "Magenta": {
-      "defaultValue": 255,
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Magenta"
-      }
-    },
-    "Yellow": {
-      "defaultValue": 255,
-      "highlightValue": 255,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Yellow"
-      }
-    },
-    "CTO": {
-      "capability": {
-        "type": "ColorTemperature",
-        "colorTemperatureStart": "default",
-        "colorTemperatureEnd": "CTO"
-      }
-    },
-    "Color Wheel": {
+    "C": {
+      "defaultValue": 0,
       "highlightValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "WheelSlot",
-          "slotNumber": 1
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "min"
         },
         {
-          "dmxRange": [1, 14],
+          "dmxRange": [1, 254],
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, -1],
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "max"
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "M": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, -1],
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "max"
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Y": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "min"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, -1],
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "max"
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "CTO": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "0%",
+          "colorTemperatureEnd": "100%",
+          "comment": "min CTO"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "0%",
+          "colorTemperatureEnd": "100%"
+        },
+        {
+          "dmxRange": [255, -1],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "0%",
+          "colorTemperatureEnd": "100%",
+          "comment": "max CTO"
+        },
+        {
+          "dmxRange": [0, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "C1": {
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
           "type": "WheelSlot",
+          "wheel": "ColorWheel1",
           "slotNumberStart": 1,
-          "slotNumberEnd": 2
+          "slotNumberEnd": 1.5
         },
         {
-          "dmxRange": [15, 15],
+          "dmxRange": [9, 22],
           "type": "WheelSlot",
-          "slotNumber": 2
+          "wheel": "ColorWheel1",
+          "slotNumberStart": 1.5,
+          "slotNumberEnd": 2.5
         },
         {
-          "dmxRange": [16, 29],
+          "dmxRange": [23, 37],
           "type": "WheelSlot",
-          "slotNumberStart": 2,
-          "slotNumberEnd": 3
+          "wheel": "ColorWheel1",
+          "slotNumberStart": 2.5,
+          "slotNumberEnd": 3.5
         },
         {
-          "dmxRange": [30, 30],
+          "dmxRange": [38, 52],
           "type": "WheelSlot",
-          "slotNumber": 3
+          "wheel": "ColorWheel1",
+          "slotNumberStart": 3.5,
+          "slotNumberEnd": 4.5
         },
         {
-          "dmxRange": [31, 44],
+          "dmxRange": [53, 67],
           "type": "WheelSlot",
-          "slotNumberStart": 3,
-          "slotNumberEnd": 4
+          "wheel": "ColorWheel1",
+          "slotNumberStart": 4.5,
+          "slotNumberEnd": 5.5
         },
         {
-          "dmxRange": [45, 45],
+          "dmxRange": [68, 82],
           "type": "WheelSlot",
-          "slotNumber": 4
+          "wheel": "ColorWheel1",
+          "slotNumberStart": 5.5,
+          "slotNumberEnd": 6.5
         },
         {
-          "dmxRange": [46, 59],
+          "dmxRange": [83, 97],
           "type": "WheelSlot",
-          "slotNumberStart": 4,
-          "slotNumberEnd": 5
+          "wheel": "ColorWheel1",
+          "slotNumberStart": 6.5,
+          "slotNumberEnd": 7.5
         },
         {
-          "dmxRange": [60, 60],
+          "dmxRange": [98, 112],
           "type": "WheelSlot",
-          "slotNumber": 5
+          "wheel": "ColorWheel1",
+          "slotNumberStart": 7.5,
+          "slotNumberEnd": 8.5
         },
         {
-          "dmxRange": [61, 74],
+          "dmxRange": [113, 127],
           "type": "WheelSlot",
-          "slotNumberStart": 5,
-          "slotNumberEnd": 6
-        },
-        {
-          "dmxRange": [75, 75],
-          "type": "WheelSlot",
-          "slotNumber": 6
-        },
-        {
-          "dmxRange": [76, 89],
-          "type": "WheelSlot",
-          "slotNumberStart": 6,
-          "slotNumberEnd": 7
-        },
-        {
-          "dmxRange": [90, 90],
-          "type": "WheelSlot",
-          "slotNumber": 7
-        },
-        {
-          "dmxRange": [91, 104],
-          "type": "WheelSlot",
-          "slotNumberStart": 7,
-          "slotNumberEnd": 8
-        },
-        {
-          "dmxRange": [105, 105],
-          "type": "WheelSlot",
-          "slotNumber": 8
-        },
-        {
-          "dmxRange": [106, 119],
-          "type": "WheelSlot",
-          "slotNumberStart": 8,
+          "wheel": "ColorWheel1",
+          "slotNumberStart": 8.5,
           "slotNumberEnd": 9
         },
         {
-          "dmxRange": [120, 120],
-          "type": "WheelSlot",
-          "slotNumber": 9
+          "dmxRange": [128, 128],
+          "type": "Unknown",
+          "physical": "-0.5236666666666666rpm",
+          "comment": "CCW"
         },
         {
-          "dmxRange": [121, 127],
-          "type": "WheelSlot",
-          "slotNumberStart": 9,
-          "slotNumberEnd": 10
+          "dmxRange": [129, 254],
+          "type": "Unknown",
+          "physicalStart": "0rpm",
+          "physicalEnd": "0.16666666666666669rpm"
         },
         {
-          "dmxRange": [128, 190],
-          "type": "WheelRotation",
-          "speedStart": "-5rpm",
-          "speedEnd": "0rpm",
-          "helpWanted": "Can the color wheel rotate in both directions? The manual only mentions slow to fast rotation in the DMX range 128…255. The capabilities here were imported from the GDTF file and manually edited instead."
-        },
-        {
-          "dmxRange": [191, 192],
-          "type": "WheelRotation",
-          "speed": "stop"
-        },
-        {
-          "dmxRange": [193, 255],
-          "type": "WheelRotation",
-          "speedStart": "5rpm",
-          "speedEnd": "0rpm"
+          "dmxRange": [255, 255],
+          "type": "Unknown",
+          "physical": "0.5236666666666666rpm",
+          "comment": "CW"
         }
       ]
     },
-    "Color Macros": {
+    "C2": {
       "highlightValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "NoFunction"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumberStart": null,
+          "slotNumberEnd": null,
+          "comment": "Unused Range (1)"
         },
         {
           "dmxRange": [1, 1],
-          "type": "ColorPreset",
-          "comment": "Random Macro Color (only for Macro Effects)"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumberStart": null,
+          "slotNumberEnd": null,
+          "comment": "Rdm Macro Color (only for Macro Effects)"
         },
         {
           "dmxRange": [2, 3],
-          "type": "ColorPreset",
-          "colors": ["#e6b0ab"],
-          "comment": "Med Bastard Amber"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 1
         },
         {
           "dmxRange": [4, 5],
-          "type": "ColorPreset",
-          "colors": ["#e0dc00"],
-          "comment": "Med Yellow"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 2
         },
         {
           "dmxRange": [6, 7],
-          "type": "ColorPreset",
-          "colors": ["#b40000"],
-          "comment": "Bright Red"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 3
         },
         {
           "dmxRange": [8, 9],
-          "type": "ColorPreset",
-          "colors": ["#6c1cbe"],
-          "comment": "Lavender"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 4
         },
         {
           "dmxRange": [10, 11],
-          "type": "ColorPreset",
-          "colors": ["#8eb4dd"],
-          "comment": "Pale Blue"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 5
         },
         {
           "dmxRange": [12, 13],
-          "type": "ColorPreset",
-          "colors": ["#0060cd"],
-          "comment": "Sky Blue"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 6
         },
         {
           "dmxRange": [14, 15],
-          "type": "ColorPreset",
-          "colors": ["#ff00ff"],
-          "comment": "Tokyo Blue"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 7
         },
         {
           "dmxRange": [16, 17],
-          "type": "ColorPreset",
-          "colors": ["#002cbd"],
-          "comment": "Just Blue"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 8
         },
         {
           "dmxRange": [18, 19],
-          "type": "ColorPreset",
-          "colors": ["#9ed64d"],
-          "comment": "Lime Green"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 9
         },
         {
           "dmxRange": [20, 21],
-          "type": "ColorPreset",
-          "colors": ["#006d21"],
-          "comment": "Dark Yellow Green"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 10
         },
         {
           "dmxRange": [22, 23],
-          "type": "ColorPreset",
-          "colors": ["#d6dc2d"],
-          "comment": "Spring Yellow"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 11
         },
         {
           "dmxRange": [24, 25],
-          "type": "ColorPreset",
-          "colors": ["#e8d100"],
-          "comment": "Yellow"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 12
         },
         {
           "dmxRange": [26, 27],
-          "type": "ColorPreset",
-          "colors": ["#f1c45b"],
-          "comment": "Light Amber"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 13
         },
         {
           "dmxRange": [28, 29],
-          "type": "ColorPreset",
-          "colors": ["#d7d1b9"],
-          "comment": "Straw"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 14
         },
         {
           "dmxRange": [30, 31],
-          "type": "ColorPreset",
-          "colors": ["#f7af00"],
-          "comment": "Deep Amber"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 15
         },
         {
           "dmxRange": [32, 33],
-          "type": "ColorPreset",
-          "colors": ["#ef7f00"],
-          "comment": "Orange"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 16
         },
         {
           "dmxRange": [34, 35],
-          "type": "ColorPreset",
-          "colors": ["#b70000"],
-          "comment": "Primary Red"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 17
         },
         {
           "dmxRange": [36, 37],
-          "type": "ColorPreset",
-          "colors": ["#f980a9"],
-          "comment": "Light Rose"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 18
         },
         {
           "dmxRange": [38, 39],
-          "type": "ColorPreset",
-          "colors": ["#eda18e"],
-          "comment": "English Rose"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 19
         },
         {
           "dmxRange": [40, 41],
-          "type": "ColorPreset",
-          "colors": ["#f892b1"],
-          "comment": "Light Salmon"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 20
         },
         {
           "dmxRange": [42, 43],
-          "type": "ColorPreset",
-          "colors": ["#ec47b6"],
-          "comment": "Dark Pink"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 21
         },
         {
           "dmxRange": [44, 45],
-          "type": "ColorPreset",
-          "colors": ["#00afbe"],
-          "comment": "Peacock Blue"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 22
         },
         {
           "dmxRange": [46, 47],
-          "type": "ColorPreset",
-          "colors": ["#008192"],
-          "comment": "Medium Blue Green"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 23
         },
         {
           "dmxRange": [48, 49],
-          "type": "ColorPreset",
-          "colors": ["#53bddf"],
-          "comment": "Steel Blue"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 24
         },
         {
           "dmxRange": [50, 51],
-          "type": "ColorPreset",
-          "colors": ["#003987"],
-          "comment": "Light Blue"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 25
         },
         {
           "dmxRange": [52, 53],
-          "type": "ColorPreset",
-          "colors": ["#0000a8"],
-          "comment": "Dark Blue"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 26
         },
         {
           "dmxRange": [54, 55],
-          "type": "ColorPreset",
-          "colors": ["#100092"],
-          "comment": "Deep Blue"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 27
         },
         {
           "dmxRange": [56, 57],
-          "type": "ColorPreset",
-          "colors": ["#53d655"],
-          "comment": "Leaf Green"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 28
         },
         {
           "dmxRange": [58, 59],
-          "type": "ColorPreset",
-          "colors": ["#00cb60"],
-          "comment": "Fern Green"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 29
         },
         {
           "dmxRange": [60, 61],
-          "type": "ColorPreset",
-          "colors": ["#7e008f"],
-          "comment": "Mauve"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 30
         },
         {
           "dmxRange": [62, 63],
-          "type": "ColorPreset",
-          "colors": ["#cc009e"],
-          "comment": "Bright Pink"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 31
         },
         {
           "dmxRange": [64, 65],
-          "type": "ColorPreset",
-          "colors": ["#00b0bd"],
-          "comment": "Marine Blue"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 32
         },
         {
           "dmxRange": [66, 67],
-          "type": "ColorPreset",
-          "colors": ["#004eb6"],
-          "comment": "Medium Blue"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 33
         },
         {
           "dmxRange": [68, 69],
-          "type": "ColorPreset",
-          "colors": ["#e57852"],
-          "comment": "Golden Amber"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 34
         },
         {
           "dmxRange": [70, 71],
-          "type": "ColorPreset",
-          "colors": ["#e30000"],
-          "comment": "Deep Golden Amber"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 35
         },
         {
           "dmxRange": [72, 73],
-          "type": "ColorPreset",
-          "colors": ["#af95cb"],
-          "comment": "Pale Lavender"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 36
         },
         {
           "dmxRange": [74, 75],
-          "type": "ColorPreset",
-          "colors": ["#8472db"],
-          "comment": "Special Lavender"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 37
         },
         {
           "dmxRange": [76, 77],
-          "type": "ColorPreset",
-          "colors": ["#afdc8f"],
-          "comment": "Pale Green"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 38
         },
         {
           "dmxRange": [78, 79],
-          "type": "ColorPreset",
-          "colors": ["#53d655"],
-          "comment": "Light Green"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 39
         },
         {
           "dmxRange": [80, 81],
-          "type": "ColorPreset",
-          "colors": ["#007100"],
-          "comment": "Primary Green"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 40
         },
         {
           "dmxRange": [82, 83],
-          "type": "ColorPreset",
-          "colors": ["#007ad1"],
-          "comment": "Bright Blue"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 41
         },
         {
           "dmxRange": [84, 85],
-          "type": "ColorPreset",
-          "colors": ["#eb9b6f"],
-          "comment": "Apricot"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 42
         },
         {
           "dmxRange": [86, 87],
-          "type": "ColorPreset",
-          "colors": ["#bd006b"],
-          "comment": "Bright Rose"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 43
         },
         {
           "dmxRange": [88, 89],
-          "type": "ColorPreset",
-          "colors": ["#f2b6b4"],
-          "comment": "Pale Gold"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 44
         },
         {
           "dmxRange": [90, 91],
-          "type": "ColorPreset",
-          "colors": ["#f2b6b4"],
-          "comment": "Pale Rose"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 45
         },
         {
           "dmxRange": [92, 93],
-          "type": "ColorPreset",
-          "colors": ["#f95891"],
-          "comment": "Pink"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 46
         },
         {
           "dmxRange": [94, 95],
-          "type": "ColorPreset",
-          "colors": ["#df6300"],
-          "comment": "Deep Orange"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 47
         },
         {
           "dmxRange": [96, 97],
-          "type": "ColorPreset",
-          "colors": ["#edc3c4"],
-          "comment": "Bastard Amber"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 48
         },
         {
           "dmxRange": [98, 99],
-          "type": "ColorPreset",
-          "colors": ["#e2001f"],
-          "comment": "Flame Red"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 49
         },
         {
           "dmxRange": [100, 101],
-          "type": "ColorPreset",
-          "colors": ["#0077d8"],
-          "comment": "Daylight Blue"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 50
         },
         {
           "dmxRange": [102, 103],
-          "type": "ColorPreset",
-          "colors": ["#beb1d6"],
-          "comment": "Lilac Tint"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 51
         },
         {
           "dmxRange": [104, 105],
-          "type": "ColorPreset",
-          "colors": ["#996ebb"],
-          "comment": "Deep Lavender"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 52
         },
         {
           "dmxRange": [106, 107],
-          "type": "ColorPreset",
-          "colors": ["#0092c8"],
-          "comment": "Lagoon Blue"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 53
         },
         {
           "dmxRange": [108, 109],
-          "type": "ColorPreset",
-          "colors": ["#f09e00"],
-          "comment": "Chrome Orange"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 54
         },
         {
           "dmxRange": [110, 111],
-          "type": "ColorPreset",
-          "colors": ["#6000c5"],
-          "comment": "Dark Lavender"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 55
         },
         {
           "dmxRange": [112, 113],
-          "type": "ColorPreset",
-          "colors": ["#ff00ff"],
-          "comment": "Congo Blue"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 56
         },
         {
           "dmxRange": [114, 115],
-          "type": "ColorPreset",
-          "colors": ["#004fbf"],
-          "comment": "Alice Blue"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 57
         },
         {
           "dmxRange": [116, 117],
-          "type": "ColorPreset",
-          "colors": ["#6a92cd"],
-          "comment": "Full CTB"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 58
         },
         {
           "dmxRange": [118, 119],
-          "type": "ColorPreset",
-          "colors": ["#99b2db"],
-          "comment": "1/2 CTB"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 59
         },
         {
           "dmxRange": [120, 121],
-          "type": "ColorPreset",
-          "colors": ["#bac3de"],
-          "comment": "1/4 CTB"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 60
         },
         {
           "dmxRange": [122, 123],
-          "type": "ColorPreset",
-          "colors": ["#e7a36d"],
-          "comment": "Full CTO (Full CT Orange)"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 61,
+          "comment": "Full CTO"
         },
         {
           "dmxRange": [124, 125],
-          "type": "ColorPreset",
-          "colors": ["#e5bda0"],
-          "comment": "1/2 CTO"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 62
         },
         {
           "dmxRange": [126, 127],
-          "type": "ColorPreset",
-          "colors": ["#e6c8bf"],
-          "comment": "1/4 CTO"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 63
         },
         {
           "dmxRange": [128, 129],
-          "type": "ColorPreset",
-          "colors": ["#d8a5ce"],
-          "comment": "Minus Green"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 64
         },
         {
           "dmxRange": [130, 131],
-          "type": "ColorPreset",
-          "colors": ["#dcbdd8"],
-          "comment": "Half Minus Green"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 65
         },
         {
           "dmxRange": [132, 133],
-          "type": "ColorPreset",
-          "colors": ["#79a7d7"],
-          "comment": "3/4 CTB"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 66
         },
         {
           "dmxRange": [134, 135],
-          "type": "ColorPreset",
-          "colors": ["#deb182"],
-          "comment": "3/4 CTO"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 67
         },
         {
           "dmxRange": [136, 137],
-          "type": "ColorPreset",
-          "colors": ["#00a796"],
-          "comment": "Jade"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 68
         },
         {
           "dmxRange": [138, 139],
-          "type": "ColorPreset",
-          "colors": ["#53d655"],
-          "comment": "Mallard Green"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 69
         },
         {
           "dmxRange": [140, 141],
-          "type": "ColorPreset",
-          "colors": ["#854bb8"],
-          "comment": "Fuchsia Pink"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 70
         },
         {
           "dmxRange": [142, 143],
-          "type": "ColorPreset",
-          "colors": ["#0083cf"],
-          "comment": "Glacier BLue (Glacier Blue)"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 71,
+          "comment": "Glacier BLue"
         },
         {
           "dmxRange": [144, 145],
-          "type": "ColorPreset",
-          "colors": ["#00aadc"],
-          "comment": "Lighter Blue"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 72
         },
         {
           "dmxRange": [146, 147],
-          "type": "ColorPreset",
-          "colors": ["#ddc29a"],
-          "comment": "Half CT Straw"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumber": 73
         },
         {
           "dmxRange": [148, 255],
-          "type": "NoFunction"
+          "type": "WheelSlot",
+          "wheel": "ColorMacro",
+          "slotNumberStart": null,
+          "slotNumberEnd": null,
+          "comment": "Unused Range (2)"
         }
       ]
     },
-    "Shutter / Strobe": {
+    "Sh1": {
       "defaultValue": 104,
       "highlightValue": 104,
       "capabilities": [
         {
           "dmxRange": [0, 3],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Closed"
         },
         {
-          "dmxRange": [4, 103],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "1Hz",
-          "speedEnd": "12Hz"
+          "dmxRange": [4, 4],
+          "type": "Unknown",
+          "physicalStart": "0Hz",
+          "physicalEnd": "1Hz",
+          "comment": "min Strobe"
+        },
+        {
+          "dmxRange": [5, 102],
+          "type": "Unknown",
+          "physicalStart": "0Hz",
+          "physicalEnd": "1Hz"
+        },
+        {
+          "dmxRange": [103, 103],
+          "type": "Unknown",
+          "physicalStart": "0Hz",
+          "physicalEnd": "1Hz",
+          "comment": "max Strobe"
         },
         {
           "dmxRange": [104, 107],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Open"
         },
         {
-          "dmxRange": [108, 207],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
-          "speedStart": "0.1Hz",
-          "speedEnd": "10Hz"
+          "dmxRange": [108, 108],
+          "type": "Unknown",
+          "physicalStart": "0Hz",
+          "physicalEnd": "1Hz",
+          "comment": "min Pulse"
+        },
+        {
+          "dmxRange": [109, 206],
+          "type": "Unknown",
+          "physicalStart": "0Hz",
+          "physicalEnd": "1Hz"
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "Unknown",
+          "physicalStart": "0Hz",
+          "physicalEnd": "1Hz",
+          "comment": "max Pulse"
         },
         {
           "dmxRange": [208, 212],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Open (2)"
         },
         {
-          "dmxRange": [213, 251],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "0.1Hz",
-          "speedEnd": "10Hz",
-          "randomTiming": true
+          "dmxRange": [213, 213],
+          "type": "Unknown",
+          "physicalStart": "0Hz",
+          "physicalEnd": "1Hz",
+          "comment": "min Rndm"
+        },
+        {
+          "dmxRange": [214, 250],
+          "type": "Unknown",
+          "physicalStart": "0Hz",
+          "physicalEnd": "1Hz"
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "Unknown",
+          "physicalStart": "0Hz",
+          "physicalEnd": "1Hz",
+          "comment": "max Rndm"
         },
         {
           "dmxRange": [252, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Open (3)"
         }
       ]
     },
-    "Dimmer": {
-      "fineChannelAliases": ["Dimmer fine"],
+    "Dim": {
+      "dmxValueResolution": "16bit",
       "highlightValue": 65535,
-      "capability": {
-        "type": "Intensity"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [1, 16383],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd"
+        },
+        {
+          "dmxRange": [16384, 16385],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd",
+          "comment": "25%"
+        },
+        {
+          "dmxRange": [16386, 32767],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd"
+        },
+        {
+          "dmxRange": [32768, 32768],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd",
+          "comment": "50%"
+        },
+        {
+          "dmxRange": [32769, 50175],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd"
+        },
+        {
+          "dmxRange": [50176, 50176],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd",
+          "comment": "75%"
+        },
+        {
+          "dmxRange": [50177, 65534],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Intensity",
+          "brightnessStart": "0cd",
+          "brightnessEnd": "1cd",
+          "comment": "Open"
+        }
+      ]
     },
     "Iris": {
       "defaultValue": 128,
       "highlightValue": 128,
       "capabilities": [
         {
-          "dmxRange": [0, 131],
+          "dmxRange": [0, 0],
           "type": "Iris",
-          "openPercentStart": "closed",
-          "openPercentEnd": "open"
+          "openPercent": "0%",
+          "comment": "Closed Iris"
         },
         {
-          "dmxRange": [132, 171],
+          "dmxRange": [1, 127],
+          "type": "Iris",
+          "openPercentStart": "0%",
+          "openPercentEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 131],
+          "type": "Iris",
+          "openPercent": "100%",
+          "comment": "Open Iris"
+        },
+        {
+          "dmxRange": [132, 132],
           "type": "IrisEffect",
           "effectName": "Strobe",
-          "speedStart": "0.1Hz",
-          "speedEnd": "10Hz"
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Strobe"
         },
         {
-          "dmxRange": [172, 211],
+          "dmxRange": [133, 170],
+          "type": "IrisEffect",
+          "effectName": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [171, 171],
+          "type": "IrisEffect",
+          "effectName": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Strobe"
+        },
+        {
+          "dmxRange": [172, 172],
           "type": "IrisEffect",
           "effectName": "RampDown",
-          "speedStart": "0.1Hz",
-          "speedEnd": "10Hz"
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Strobe Pulse Close"
         },
         {
-          "dmxRange": [212, 251],
+          "dmxRange": [173, 210],
+          "type": "IrisEffect",
+          "effectName": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "IrisEffect",
+          "effectName": "RampDown",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Strobe Pulse Close"
+        },
+        {
+          "dmxRange": [212, 212],
           "type": "IrisEffect",
           "effectName": "RampUp",
-          "speedStart": "0.1Hz",
-          "speedEnd": "10Hz"
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "min Strobe Pulse Open"
+        },
+        {
+          "dmxRange": [213, 250],
+          "type": "IrisEffect",
+          "effectName": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "IrisEffect",
+          "effectName": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "1Hz",
+          "comment": "max Strobe Pulse Open"
         },
         {
           "dmxRange": [252, 255],
           "type": "Iris",
-          "openPercent": "open"
+          "openPercent": "100%",
+          "comment": "Open Iris (2)"
         }
       ]
     },
-    "Static Gobo Wheel": {
+    "G1": {
       "highlightValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 7],
           "type": "WheelSlot",
+          "wheel": "GoboWheel1",
           "slotNumber": 1
         },
         {
           "dmxRange": [8, 15],
           "type": "WheelSlot",
-          "slotNumber": 2
+          "wheel": "GoboWheel1",
+          "slotNumber": 2,
+          "comment": "Gobo 1"
         },
         {
           "dmxRange": [16, 23],
           "type": "WheelSlot",
-          "slotNumber": 3
+          "wheel": "GoboWheel1",
+          "slotNumber": 3,
+          "comment": "Gobo 2"
         },
         {
           "dmxRange": [24, 31],
           "type": "WheelSlot",
-          "slotNumber": 4
+          "wheel": "GoboWheel1",
+          "slotNumber": 4,
+          "comment": "Gobo 3"
         },
         {
           "dmxRange": [32, 39],
           "type": "WheelSlot",
-          "slotNumber": 5
+          "wheel": "GoboWheel1",
+          "slotNumber": 5,
+          "comment": "Gobo 4"
         },
         {
           "dmxRange": [40, 47],
           "type": "WheelSlot",
-          "slotNumber": 6
+          "wheel": "GoboWheel1",
+          "slotNumber": 6,
+          "comment": "Gobo 5"
         },
         {
           "dmxRange": [48, 55],
           "type": "WheelSlot",
-          "slotNumber": 7
+          "wheel": "GoboWheel1",
+          "slotNumber": 7,
+          "comment": "Gobo 6"
         },
         {
           "dmxRange": [56, 63],
           "type": "WheelSlot",
-          "slotNumber": 8
+          "wheel": "GoboWheel1",
+          "slotNumber": 8,
+          "comment": "Gobo 7"
         },
         {
           "dmxRange": [64, 71],
           "type": "WheelSlot",
-          "slotNumber": 9
+          "wheel": "GoboWheel1",
+          "slotNumber": 9,
+          "comment": "Gobo 8"
         },
         {
-          "dmxRange": [72, 113],
+          "dmxRange": [72, 72],
           "type": "WheelRotation",
-          "speedStart": "-100rpm",
-          "speedEnd": "-5rpm"
+          "wheel": "Unknown",
+          "speed": "-0.5236666666666666rpm",
+          "comment": "max CCW"
+        },
+        {
+          "dmxRange": [73, 113],
+          "type": "WheelRotation",
+          "wheel": "Unknown",
+          "speedStart": "-0.5236666666666666rpm",
+          "speedEnd": "-0.005233333333333333rpm",
+          "comment": "CCW"
         },
         {
           "dmxRange": [114, 117],
           "type": "WheelRotation",
-          "speed": "stop"
+          "wheel": "Unknown",
+          "speed": "stop",
+          "comment": "Stop"
         },
         {
-          "dmxRange": [118, 159],
+          "dmxRange": [118, 158],
           "type": "WheelRotation",
-          "speedStart": "5rpm",
-          "speedEnd": "100rpm"
+          "wheel": "Unknown",
+          "speedStart": "0.005233333333333333rpm",
+          "speedEnd": "0.5236666666666666rpm",
+          "comment": "CW"
+        },
+        {
+          "dmxRange": [159, 159],
+          "type": "WheelRotation",
+          "wheel": "Unknown",
+          "speed": "0.5236666666666666rpm",
+          "comment": "max CW"
         },
         {
           "dmxRange": [160, 171],
-          "type": "WheelShake",
-          "slotNumber": 2,
-          "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "type": "Unknown",
+          "physical": "0Hz",
+          "comment": "Gobo 1 Shake"
         },
         {
           "dmxRange": [172, 183],
-          "type": "WheelShake",
-          "slotNumber": 3,
-          "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "type": "Unknown",
+          "physical": "0Hz",
+          "comment": "Gobo 2 Shake"
         },
         {
           "dmxRange": [184, 195],
-          "type": "WheelShake",
-          "slotNumber": 4,
-          "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "type": "Unknown",
+          "physical": "0Hz",
+          "comment": "Gobo 3 Shake"
         },
         {
           "dmxRange": [196, 207],
-          "type": "WheelShake",
-          "slotNumber": 5,
-          "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "type": "Unknown",
+          "physical": "0Hz",
+          "comment": "Gobo 4 Shake"
         },
         {
           "dmxRange": [208, 219],
-          "type": "WheelShake",
-          "slotNumber": 6,
-          "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "type": "Unknown",
+          "physical": "0Hz",
+          "comment": "Gobo 5 Shake"
         },
         {
           "dmxRange": [220, 231],
-          "type": "WheelShake",
-          "slotNumber": 7,
-          "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "type": "Unknown",
+          "physical": "0Hz",
+          "comment": "Gobo 6 Shake"
         },
         {
           "dmxRange": [232, 243],
-          "type": "WheelShake",
-          "slotNumber": 8,
-          "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "type": "Unknown",
+          "physical": "0Hz",
+          "comment": "Gobo 7 Shake"
         },
         {
           "dmxRange": [244, 255],
-          "type": "WheelShake",
-          "slotNumber": 9,
-          "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "type": "Unknown",
+          "physical": "0Hz",
+          "comment": "Gobo 8 Shake"
         }
       ]
     },
-    "Rotating Gobo Wheel": {
+    "G2": {
       "highlightValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 16],
           "type": "WheelSlot",
+          "wheel": "GoboWheel2",
           "slotNumber": 1
         },
         {
           "dmxRange": [17, 32],
           "type": "WheelSlot",
-          "slotNumber": 2
+          "wheel": "GoboWheel2",
+          "slotNumber": 2,
+          "comment": "Gobo 1"
         },
         {
           "dmxRange": [33, 48],
           "type": "WheelSlot",
-          "slotNumber": 3
+          "wheel": "GoboWheel2",
+          "slotNumber": 3,
+          "comment": "Gobo 2"
         },
         {
           "dmxRange": [49, 64],
           "type": "WheelSlot",
-          "slotNumber": 4
+          "wheel": "GoboWheel2",
+          "slotNumber": 4,
+          "comment": "Gobo 3"
         },
         {
           "dmxRange": [65, 81],
           "type": "WheelSlot",
-          "slotNumber": 5
+          "wheel": "GoboWheel2",
+          "slotNumber": 5,
+          "comment": "Gobo 4"
         },
         {
           "dmxRange": [82, 97],
           "type": "WheelSlot",
-          "slotNumber": 6
+          "wheel": "GoboWheel2",
+          "slotNumber": 6,
+          "comment": "Gobo 5"
         },
         {
           "dmxRange": [98, 113],
           "type": "WheelSlot",
-          "slotNumber": 7
+          "wheel": "GoboWheel2",
+          "slotNumber": 7,
+          "comment": "Gobo 6"
         },
         {
           "dmxRange": [114, 129],
           "type": "WheelSlot",
-          "slotNumber": 8
+          "wheel": "GoboWheel2",
+          "slotNumber": 8,
+          "comment": "Gobo 7"
         },
         {
           "dmxRange": [130, 147],
-          "type": "WheelShake",
-          "slotNumber": 2,
-          "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "type": "Unknown",
+          "physical": "0Hz",
+          "comment": "Gobo 1 Shake"
         },
         {
           "dmxRange": [148, 165],
-          "type": "WheelShake",
-          "slotNumber": 3,
-          "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "type": "Unknown",
+          "physical": "0Hz",
+          "comment": "Gobo 2 Shake"
         },
         {
           "dmxRange": [166, 183],
-          "type": "WheelShake",
-          "slotNumber": 4,
-          "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "type": "Unknown",
+          "physical": "0Hz",
+          "comment": "Gobo 3 Shake"
         },
         {
           "dmxRange": [184, 201],
-          "type": "WheelShake",
-          "slotNumber": 5,
-          "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "type": "Unknown",
+          "physical": "0Hz",
+          "comment": "Gobo 4 Shake"
         },
         {
           "dmxRange": [202, 219],
-          "type": "WheelShake",
-          "slotNumber": 6,
-          "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "type": "Unknown",
+          "physical": "0Hz",
+          "comment": "Gobo 5 Shake"
         },
         {
           "dmxRange": [220, 237],
-          "type": "WheelShake",
-          "slotNumber": 7,
-          "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "type": "Unknown",
+          "physical": "0Hz",
+          "comment": "Gobo 6 Shake"
         },
         {
           "dmxRange": [238, 255],
-          "type": "WheelShake",
-          "slotNumber": 8,
-          "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "type": "Unknown",
+          "physical": "0Hz",
+          "comment": "Gobo 7 Shake"
         }
       ]
     },
-    "Gobo Rotation": {
-      "fineChannelAliases": ["Gobo Rotation fine"],
-      "dmxValueResolution": "8bit",
+    "G2 <>": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating Gobo Wheel",
-          "angle": "0deg"
+          "wheel": "Unknown",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "0 deg"
         },
         {
           "dmxRange": [1, 20],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating Gobo Wheel",
+          "wheel": "Unknown",
           "angleStart": "0deg",
-          "angleEnd": "90deg"
+          "angleEnd": "1deg"
         },
         {
           "dmxRange": [21, 21],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating Gobo Wheel",
-          "angle": "90deg"
+          "wheel": "Unknown",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "90 deg"
         },
         {
           "dmxRange": [22, 41],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating Gobo Wheel",
-          "angleStart": "90deg",
-          "angleEnd": "180deg"
+          "wheel": "Unknown",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
         },
         {
           "dmxRange": [42, 42],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating Gobo Wheel",
-          "angle": "180deg"
+          "wheel": "Unknown",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "180 deg"
         },
         {
           "dmxRange": [43, 62],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating Gobo Wheel",
-          "angleStart": "180deg",
-          "angleEnd": "270deg"
+          "wheel": "Unknown",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
         },
         {
           "dmxRange": [63, 63],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating Gobo Wheel",
-          "angle": "270deg"
+          "wheel": "Unknown",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "270 deg"
         },
         {
           "dmxRange": [64, 83],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating Gobo Wheel",
-          "angleStart": "270deg",
-          "angleEnd": "360deg"
+          "wheel": "Unknown",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
         },
         {
           "dmxRange": [84, 84],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating Gobo Wheel",
-          "angle": "360deg"
+          "wheel": "Unknown",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "360 deg"
         },
         {
           "dmxRange": [85, 104],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating Gobo Wheel",
-          "angleStart": "360deg",
-          "angleEnd": "450deg"
+          "wheel": "Unknown",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
         },
         {
           "dmxRange": [105, 105],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating Gobo Wheel",
-          "angle": "450deg"
+          "wheel": "Unknown",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "450 deg"
         },
         {
           "dmxRange": [106, 126],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating Gobo Wheel",
-          "angleStart": "450deg",
-          "angleEnd": "540deg"
+          "wheel": "Unknown",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
         },
         {
           "dmxRange": [127, 127],
           "type": "WheelSlotRotation",
-          "wheel": "Rotating Gobo Wheel",
-          "angle": "540deg"
+          "wheel": "Unknown",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "540 deg"
         },
         {
-          "dmxRange": [128, 190],
-          "type": "WheelSlotRotation",
-          "wheel": "Rotating Gobo Wheel",
-          "speedStart": "180rpm",
-          "speedEnd": "0.0367rpm"
+          "dmxRange": [128, 128],
+          "type": "Unknown",
+          "physical": "3.141666666666667rpm",
+          "comment": "max CW"
+        },
+        {
+          "dmxRange": [129, 190],
+          "type": "Unknown",
+          "physicalStart": "3.141666666666667rpm",
+          "physicalEnd": "0.006333333333333333rpm",
+          "comment": "CW"
         },
         {
           "dmxRange": [191, 192],
-          "type": "WheelSlotRotation",
-          "wheel": "Rotating Gobo Wheel",
-          "speed": "stop"
+          "type": "Unknown",
+          "physical": "stop",
+          "comment": "Stop"
         },
         {
-          "dmxRange": [193, 255],
-          "type": "WheelSlotRotation",
-          "wheel": "Rotating Gobo Wheel",
-          "speedStart": "-0.0367rpm",
-          "speedEnd": "-180rpm"
+          "dmxRange": [193, 254],
+          "type": "Unknown",
+          "physicalStart": "-0.006333333333333333rpm",
+          "physicalEnd": "-3.141666666666667rpm",
+          "comment": "CCW"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown",
+          "physical": "-3.141666666666667rpm",
+          "comment": "max CCW"
         }
       ]
     },
-    "Prism": {
+    "Prism1": {
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "NoFunction"
+          "type": "Prism",
+          "comment": "Open"
         },
         {
           "dmxRange": [128, 255],
           "type": "Prism",
-          "comment": "3 facet"
+          "comment": "3 facet prism"
         }
       ]
     },
-    "Prism Rotation": {
+    "Prism1 Pos": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
           "type": "PrismRotation",
-          "angle": "0deg"
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "0 deg"
         },
         {
           "dmxRange": [1, 20],
           "type": "PrismRotation",
           "angleStart": "0deg",
-          "angleEnd": "90deg"
+          "angleEnd": "1deg"
         },
         {
           "dmxRange": [21, 21],
           "type": "PrismRotation",
-          "angle": "90deg"
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "90 deg"
         },
         {
           "dmxRange": [22, 41],
           "type": "PrismRotation",
-          "angleStart": "90deg",
-          "angleEnd": "180deg"
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
         },
         {
           "dmxRange": [42, 42],
           "type": "PrismRotation",
-          "angle": "180deg"
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "180 deg"
         },
         {
           "dmxRange": [43, 62],
           "type": "PrismRotation",
-          "angleStart": "180deg",
-          "angleEnd": "270deg"
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
         },
         {
           "dmxRange": [63, 63],
           "type": "PrismRotation",
-          "angle": "270deg"
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "270 deg"
         },
         {
           "dmxRange": [64, 83],
           "type": "PrismRotation",
-          "angleStart": "270deg",
-          "angleEnd": "360deg"
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
         },
         {
           "dmxRange": [84, 84],
           "type": "PrismRotation",
-          "angle": "360deg"
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "360 deg"
         },
         {
           "dmxRange": [85, 104],
           "type": "PrismRotation",
-          "angleStart": "360deg",
-          "angleEnd": "450deg"
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
         },
         {
           "dmxRange": [105, 105],
           "type": "PrismRotation",
-          "angle": "450deg"
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "450 deg"
         },
         {
           "dmxRange": [106, 126],
           "type": "PrismRotation",
-          "angleStart": "450deg",
-          "angleEnd": "540deg"
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
         },
         {
           "dmxRange": [127, 127],
           "type": "PrismRotation",
-          "angle": "540deg"
-        },
-        {
-          "dmxRange": [128, 190],
-          "type": "PrismRotation",
-          "speedStart": "-120rpm",
-          "speedEnd": "-0.05rpm"
-        },
-        {
-          "dmxRange": [191, 192],
-          "type": "PrismRotation",
-          "speed": "stop"
-        },
-        {
-          "dmxRange": [193, 255],
-          "type": "PrismRotation",
-          "speedStart": "0.05rpm",
-          "speedEnd": "120rpm"
-        }
-      ]
-    },
-    "Frost": {
-      "capability": {
-        "type": "Frost",
-        "frostIntensityStart": "0%",
-        "frostIntensityEnd": "100%"
-      }
-    },
-    "Animation Disk": {
-      "capability": {
-        "type": "Effect",
-        "effectName": "Animation Disk insertion",
-        "parameterStart": "0%",
-        "parameterEnd": "100%"
-      }
-    },
-    "Animation Disk Rotation": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 124],
-          "type": "WheelRotation",
-          "wheel": "Animation Disk",
-          "speedStart": "-120rpm",
-          "speedEnd": "-0.0733rpm"
-        },
-        {
-          "dmxRange": [125, 125],
-          "type": "WheelRotation",
-          "wheel": "Animation Disk",
-          "speed": "stop"
-        },
-        {
-          "dmxRange": [126, 255],
-          "type": "WheelRotation",
-          "wheel": "Animation Disk",
-          "speedStart": "0.0733rpm",
-          "speedEnd": "120rpm"
-        }
-      ]
-    },
-    "Focus": {
-      "fineChannelAliases": ["Focus fine"],
-      "capability": {
-        "type": "Focus",
-        "distanceStart": "far",
-        "distanceEnd": "near"
-      }
-    },
-    "Zoom": {
-      "defaultValue": 128,
-      "capability": {
-        "type": "Zoom",
-        "angleStart": "11deg",
-        "angleEnd": "55deg",
-        "helpWanted": "The manual specifies this capability as wide…narrow, the GDTF as narrow…wide (with the given angles). Which one is correct?"
-      }
-    },
-    "Autofocus Distance": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 6],
-          "type": "NoFunction",
-          "comment": "Autofocus off"
-        },
-        {
-          "dmxRange": [7, 9],
-          "type": "Focus",
-          "distance": "3m"
-        },
-        {
-          "dmxRange": [10, 12],
-          "type": "Focus",
-          "distance": "4m"
-        },
-        {
-          "dmxRange": [13, 14],
-          "type": "Focus",
-          "distance": "5m"
-        },
-        {
-          "dmxRange": [15, 17],
-          "type": "Focus",
-          "distance": "6m"
-        },
-        {
-          "dmxRange": [18, 19],
-          "type": "Focus",
-          "distance": "7m"
-        },
-        {
-          "dmxRange": [20, 22],
-          "type": "Focus",
-          "distance": "8m"
-        },
-        {
-          "dmxRange": [23, 25],
-          "type": "Focus",
-          "distance": "9m"
-        },
-        {
-          "dmxRange": [26, 27],
-          "type": "Focus",
-          "distance": "10m"
-        },
-        {
-          "dmxRange": [28, 255],
-          "type": "Focus",
-          "distanceStart": "10m",
-          "distanceEnd": "100m"
-        }
-      ]
-    },
-    "Autofocus Adjust": {
-      "defaultValue": 128,
-      "capabilities": [
-        {
-          "dmxRange": [0, 127],
-          "type": "Focus",
-          "distanceStart": "-100%",
-          "distanceEnd": "0%"
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "540 deg"
         },
         {
           "dmxRange": [128, 128],
-          "type": "Focus",
-          "distance": "0%"
+          "type": "Unknown",
+          "physical": "-2.0943333333333336rpm",
+          "comment": "max CCW"
         },
         {
-          "dmxRange": [129, 255],
-          "type": "Focus",
-          "distanceStart": "0%",
-          "distanceEnd": "100%"
+          "dmxRange": [129, 190],
+          "type": "Unknown",
+          "physicalStart": "-2.0943333333333336rpm",
+          "physicalEnd": "-0.0008666666666666666rpm",
+          "comment": "CCW"
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "Unknown",
+          "physical": "stop",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [193, 254],
+          "type": "Unknown",
+          "physicalStart": "0.0008666666666666666rpm",
+          "physicalEnd": "2.0943333333333336rpm",
+          "comment": "CW"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown",
+          "physical": "2.0943333333333336rpm",
+          "comment": "max CW"
         }
       ]
     },
-    "Effects": {
+    "Frost1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "min Frost"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "max Frost"
+        }
+      ]
+    },
+    "Anim": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Animation"
+        }
+      ]
+    },
+    "Anim Rotate": {
+      "capabilities": [
+        {
+          "dmxRange": [1, 1],
+          "type": "Unknown",
+          "physical": "-2.0943333333333336rpm",
+          "comment": "max CCW"
+        },
+        {
+          "dmxRange": [2, 124],
+          "type": "Unknown",
+          "physicalStart": "-2.0943333333333336rpm",
+          "physicalEnd": "-0.0012833333333333334rpm",
+          "comment": "CCW"
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "Unknown",
+          "physical": "stop",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [126, 254],
+          "type": "Unknown",
+          "physicalStart": "0.0012833333333333334rpm",
+          "physicalEnd": "2.0943333333333336rpm",
+          "comment": "CW"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown",
+          "physical": "2.0943333333333336rpm",
+          "comment": "max CW"
+        }
+      ]
+    },
+    "Focus1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Distant"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Near"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Zoom",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Wide"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "Zoom",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Zoom",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Narrow"
+        }
+      ]
+    },
+    "Focus1 Distance": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 6],
+          "type": "Unknown",
+          "physicalStart": "0m",
+          "physicalEnd": "1m",
+          "comment": "AutoFocus Off"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "Unknown",
+          "physicalStart": "0m",
+          "physicalEnd": "1m",
+          "comment": "Near"
+        },
+        {
+          "dmxRange": [8, 254],
+          "type": "Unknown",
+          "physicalStart": "0m",
+          "physicalEnd": "1m"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Unknown",
+          "physicalStart": "0m",
+          "physicalEnd": "1m",
+          "comment": "Far"
+        }
+      ]
+    },
+    "Focus1 Adjust": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Unknown",
+        "physicalStart": "0%",
+        "physicalEnd": "100%"
+      }
+    },
+    "FX1": {
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "NoFunction",
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
           "comment": "Macro off"
         },
         {
           "dmxRange": [8, 11],
-          "type": "Effect",
-          "effectName": "Stand by"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Stand by"
         },
         {
           "dmxRange": [12, 15],
-          "type": "Effect",
-          "effectName": "Stand by black"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Stand by black"
         },
         {
           "dmxRange": [16, 27],
-          "type": "Effect",
-          "effectName": "Macro 1"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Macro 1"
         },
         {
           "dmxRange": [28, 39],
-          "type": "Effect",
-          "effectName": "Macro 2"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Macro 2"
         },
         {
           "dmxRange": [40, 51],
-          "type": "Effect",
-          "effectName": "Macro 3"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Macro 3"
         },
         {
           "dmxRange": [52, 63],
-          "type": "Effect",
-          "effectName": "Macro 4"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Macro 4"
         },
         {
           "dmxRange": [64, 75],
-          "type": "Effect",
-          "effectName": "Macro 5"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Macro 5"
         },
         {
           "dmxRange": [76, 87],
-          "type": "Effect",
-          "effectName": "Macro 6"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Macro 6"
         },
         {
           "dmxRange": [88, 99],
-          "type": "Effect",
-          "effectName": "Macro 7"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Macro 7"
         },
         {
           "dmxRange": [100, 111],
-          "type": "Effect",
-          "effectName": "Macro 8"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Macro 8"
         },
         {
           "dmxRange": [112, 135],
-          "type": "Effect",
-          "effectName": "Stand by black"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Stand by black (2)"
         },
         {
-          "dmxRange": [136, 147],
-          "type": "Effect",
-          "effectName": "Random Macro 1"
-        },
-        {
-          "dmxRange": [148, 159],
-          "type": "Effect",
-          "effectName": "Random Macro 2"
+          "dmxRange": [136, 159],
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Random Macro 1"
         },
         {
           "dmxRange": [160, 171],
-          "type": "Effect",
-          "effectName": "Random Macro 3"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Random Macro 3"
         },
         {
           "dmxRange": [172, 183],
-          "type": "Effect",
-          "effectName": "Random Macro 4"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Random Macro 4"
         },
         {
           "dmxRange": [184, 195],
-          "type": "Effect",
-          "effectName": "Random Macro 5"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Random Macro 5"
         },
         {
           "dmxRange": [196, 207],
-          "type": "Effect",
-          "effectName": "Random Macro 6"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Random Macro 6"
         },
         {
           "dmxRange": [208, 219],
-          "type": "Effect",
-          "effectName": "Random Macro 7"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Random Macro 7"
         },
         {
           "dmxRange": [220, 231],
-          "type": "Effect",
-          "effectName": "Random Macro 8"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Random Macro 8"
         },
         {
           "dmxRange": [232, 255],
-          "type": "Effect",
-          "effectName": "Stand by black"
+          "type": "Unknown",
+          "physicalStart": "0%",
+          "physicalEnd": "100%",
+          "comment": "Stand by black (3)"
         }
       ]
     },
-    "Pan": {
-      "fineChannelAliases": ["Pan fine"],
+    "P": {
+      "dmxValueResolution": "16bit",
       "defaultValue": 32768,
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "540deg"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 32767],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [32768, 32768],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Center"
+        },
+        {
+          "dmxRange": [32769, 65534],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Max"
+        }
+      ]
     },
-    "Tilt": {
-      "fineChannelAliases": ["Tilt fine"],
+    "T": {
+      "dmxValueResolution": "16bit",
       "defaultValue": 32768,
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "250deg"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Min"
+        },
+        {
+          "dmxRange": [1, 32767],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [32768, 32768],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Center"
+        },
+        {
+          "dmxRange": [32769, 65534],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg"
+        },
+        {
+          "dmxRange": [65535, 65535],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "1deg",
+          "comment": "Max"
+        }
+      ]
     },
-    "Function": {
+    "Dim Curve": {
       "capabilities": [
         {
           "dmxRange": [0, 11],
-          "type": "NoFunction"
+          "type": "Maintenance",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Unused Range"
         },
         {
           "dmxRange": [12, 24],
           "type": "Maintenance",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
           "comment": "Pan Tilt Fast"
         },
         {
           "dmxRange": [25, 37],
           "type": "Maintenance",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
           "comment": "Pan Tilt Normal"
         },
         {
           "dmxRange": [38, 50],
           "type": "Maintenance",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
           "comment": "Dimmer Curve Conventional"
         },
         {
           "dmxRange": [51, 62],
           "type": "Maintenance",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
           "comment": "Dimmer Curve Linear"
         },
         {
           "dmxRange": [63, 255],
-          "type": "NoFunction"
+          "type": "Maintenance",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Unused Range (2)"
         }
       ]
     },
-    "Reset": {
+    "Fixture Global Reset": {
       "capabilities": [
         {
           "dmxRange": [0, 25],
-          "type": "NoFunction"
+          "type": "Maintenance",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Unused Range"
         },
         {
           "dmxRange": [26, 76],
           "type": "Maintenance",
-          "hold": "5s",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
           "comment": "Effects Reset"
         },
         {
           "dmxRange": [77, 127],
           "type": "Maintenance",
-          "hold": "5s",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
           "comment": "Pan/Tilt Reset"
         },
         {
           "dmxRange": [128, 255],
           "type": "Maintenance",
-          "hold": "5s",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
           "comment": "Complete Reset"
         }
       ]
     },
-    "Lamp Control": {
+    "Lamp Ctrl": {
       "capabilities": [
         {
           "dmxRange": [0, 25],
-          "type": "NoFunction"
+          "type": "Maintenance",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Unused Range"
         },
         {
           "dmxRange": [26, 100],
           "type": "Maintenance",
-          "hold": "5s",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
           "comment": "Lamp Off"
         },
         {
           "dmxRange": [101, 179],
-          "type": "NoFunction"
+          "type": "Maintenance",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Unused Range (2)"
         },
         {
           "dmxRange": [180, 255],
           "type": "Maintenance",
-          "hold": "5s",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
           "comment": "Lamp On"
-        }
-      ]
-    },
-    "Pan/Tilt Time": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "PanTiltSpeed",
-          "duration": "0s"
-        },
-        {
-          "dmxRange": [1, 1],
-          "type": "PanTiltSpeed",
-          "duration": "0.2s"
-        },
-        {
-          "dmxRange": [2, 2],
-          "type": "PanTiltSpeed",
-          "duration": "0.4s"
-        },
-        {
-          "dmxRange": [3, 3],
-          "type": "PanTiltSpeed",
-          "duration": "0.6s"
-        },
-        {
-          "dmxRange": [4, 4],
-          "type": "PanTiltSpeed",
-          "duration": "0.8s"
-        },
-        {
-          "dmxRange": [5, 5],
-          "type": "PanTiltSpeed",
-          "duration": "1s"
-        },
-        {
-          "dmxRange": [6, 6],
-          "type": "PanTiltSpeed",
-          "duration": "1.2s"
-        },
-        {
-          "dmxRange": [7, 7],
-          "type": "PanTiltSpeed",
-          "duration": "1.4s"
-        },
-        {
-          "dmxRange": [8, 8],
-          "type": "PanTiltSpeed",
-          "duration": "1.6s"
-        },
-        {
-          "dmxRange": [9, 9],
-          "type": "PanTiltSpeed",
-          "duration": "1.8s"
-        },
-        {
-          "dmxRange": [10, 10],
-          "type": "PanTiltSpeed",
-          "duration": "2s"
-        },
-        {
-          "dmxRange": [11, 11],
-          "type": "PanTiltSpeed",
-          "duration": "2.2s"
-        },
-        {
-          "dmxRange": [12, 12],
-          "type": "PanTiltSpeed",
-          "duration": "2.4s"
-        },
-        {
-          "dmxRange": [13, 13],
-          "type": "PanTiltSpeed",
-          "duration": "2.6s"
-        },
-        {
-          "dmxRange": [14, 14],
-          "type": "PanTiltSpeed",
-          "duration": "2.8s"
-        },
-        {
-          "dmxRange": [15, 15],
-          "type": "PanTiltSpeed",
-          "duration": "3s"
-        },
-        {
-          "dmxRange": [16, 16],
-          "type": "PanTiltSpeed",
-          "duration": "3.2s"
-        },
-        {
-          "dmxRange": [17, 17],
-          "type": "PanTiltSpeed",
-          "duration": "3.4s"
-        },
-        {
-          "dmxRange": [18, 18],
-          "type": "PanTiltSpeed",
-          "duration": "3.6s"
-        },
-        {
-          "dmxRange": [19, 19],
-          "type": "PanTiltSpeed",
-          "duration": "3.8s"
-        },
-        {
-          "dmxRange": [20, 20],
-          "type": "PanTiltSpeed",
-          "duration": "4s"
-        },
-        {
-          "dmxRange": [21, 21],
-          "type": "PanTiltSpeed",
-          "duration": "4.2s"
-        },
-        {
-          "dmxRange": [22, 22],
-          "type": "PanTiltSpeed",
-          "duration": "4.4s"
-        },
-        {
-          "dmxRange": [23, 23],
-          "type": "PanTiltSpeed",
-          "duration": "4.6s"
-        },
-        {
-          "dmxRange": [24, 24],
-          "type": "PanTiltSpeed",
-          "duration": "4.8s"
-        },
-        {
-          "dmxRange": [25, 25],
-          "type": "PanTiltSpeed",
-          "duration": "5s"
-        },
-        {
-          "dmxRange": [26, 26],
-          "type": "PanTiltSpeed",
-          "duration": "5.2s"
-        },
-        {
-          "dmxRange": [27, 27],
-          "type": "PanTiltSpeed",
-          "duration": "5.4s"
-        },
-        {
-          "dmxRange": [28, 28],
-          "type": "PanTiltSpeed",
-          "duration": "5.6s"
-        },
-        {
-          "dmxRange": [29, 29],
-          "type": "PanTiltSpeed",
-          "duration": "5.8s"
-        },
-        {
-          "dmxRange": [30, 30],
-          "type": "PanTiltSpeed",
-          "duration": "6s"
-        },
-        {
-          "dmxRange": [31, 31],
-          "type": "PanTiltSpeed",
-          "duration": "6.2s"
-        },
-        {
-          "dmxRange": [32, 32],
-          "type": "PanTiltSpeed",
-          "duration": "6.4s"
-        },
-        {
-          "dmxRange": [33, 33],
-          "type": "PanTiltSpeed",
-          "duration": "6.6s"
-        },
-        {
-          "dmxRange": [34, 34],
-          "type": "PanTiltSpeed",
-          "duration": "6.8s"
-        },
-        {
-          "dmxRange": [35, 35],
-          "type": "PanTiltSpeed",
-          "duration": "7s"
-        },
-        {
-          "dmxRange": [36, 36],
-          "type": "PanTiltSpeed",
-          "duration": "7.2s"
-        },
-        {
-          "dmxRange": [37, 37],
-          "type": "PanTiltSpeed",
-          "duration": "7.4s"
-        },
-        {
-          "dmxRange": [38, 38],
-          "type": "PanTiltSpeed",
-          "duration": "7.6s"
-        },
-        {
-          "dmxRange": [39, 39],
-          "type": "PanTiltSpeed",
-          "duration": "7.8s"
-        },
-        {
-          "dmxRange": [40, 40],
-          "type": "PanTiltSpeed",
-          "duration": "8s"
-        },
-        {
-          "dmxRange": [41, 41],
-          "type": "PanTiltSpeed",
-          "duration": "8.2s"
-        },
-        {
-          "dmxRange": [42, 42],
-          "type": "PanTiltSpeed",
-          "duration": "8.4s"
-        },
-        {
-          "dmxRange": [43, 43],
-          "type": "PanTiltSpeed",
-          "duration": "8.6s"
-        },
-        {
-          "dmxRange": [44, 44],
-          "type": "PanTiltSpeed",
-          "duration": "8.8s"
-        },
-        {
-          "dmxRange": [45, 45],
-          "type": "PanTiltSpeed",
-          "duration": "9s"
-        },
-        {
-          "dmxRange": [46, 46],
-          "type": "PanTiltSpeed",
-          "duration": "9.2s"
-        },
-        {
-          "dmxRange": [47, 47],
-          "type": "PanTiltSpeed",
-          "duration": "9.4s"
-        },
-        {
-          "dmxRange": [48, 48],
-          "type": "PanTiltSpeed",
-          "duration": "9.6s"
-        },
-        {
-          "dmxRange": [49, 49],
-          "type": "PanTiltSpeed",
-          "duration": "9.8s"
-        },
-        {
-          "dmxRange": [50, 50],
-          "type": "PanTiltSpeed",
-          "duration": "10s"
-        },
-        {
-          "dmxRange": [51, 51],
-          "type": "PanTiltSpeed",
-          "duration": "10.2s"
-        },
-        {
-          "dmxRange": [52, 52],
-          "type": "PanTiltSpeed",
-          "duration": "10.4s"
-        },
-        {
-          "dmxRange": [53, 53],
-          "type": "PanTiltSpeed",
-          "duration": "10.6s"
-        },
-        {
-          "dmxRange": [54, 55],
-          "type": "PanTiltSpeed",
-          "duration": "11s"
-        },
-        {
-          "dmxRange": [56, 57],
-          "type": "PanTiltSpeed",
-          "duration": "12s"
-        },
-        {
-          "dmxRange": [58, 59],
-          "type": "PanTiltSpeed",
-          "duration": "13s"
-        },
-        {
-          "dmxRange": [60, 62],
-          "type": "PanTiltSpeed",
-          "duration": "14s"
-        },
-        {
-          "dmxRange": [63, 64],
-          "type": "PanTiltSpeed",
-          "duration": "15s"
-        },
-        {
-          "dmxRange": [65, 67],
-          "type": "PanTiltSpeed",
-          "duration": "16s"
-        },
-        {
-          "dmxRange": [68, 69],
-          "type": "PanTiltSpeed",
-          "duration": "17s"
-        },
-        {
-          "dmxRange": [70, 72],
-          "type": "PanTiltSpeed",
-          "duration": "18s"
-        },
-        {
-          "dmxRange": [73, 74],
-          "type": "PanTiltSpeed",
-          "duration": "19s"
-        },
-        {
-          "dmxRange": [75, 77],
-          "type": "PanTiltSpeed",
-          "duration": "20s"
-        },
-        {
-          "dmxRange": [78, 80],
-          "type": "PanTiltSpeed",
-          "duration": "21s"
-        },
-        {
-          "dmxRange": [81, 82],
-          "type": "PanTiltSpeed",
-          "duration": "22s"
-        },
-        {
-          "dmxRange": [83, 85],
-          "type": "PanTiltSpeed",
-          "duration": "23s"
-        },
-        {
-          "dmxRange": [86, 87],
-          "type": "PanTiltSpeed",
-          "duration": "24s"
-        },
-        {
-          "dmxRange": [88, 90],
-          "type": "PanTiltSpeed",
-          "duration": "25s"
-        },
-        {
-          "dmxRange": [91, 92],
-          "type": "PanTiltSpeed",
-          "duration": "26s"
-        },
-        {
-          "dmxRange": [93, 95],
-          "type": "PanTiltSpeed",
-          "duration": "27s"
-        },
-        {
-          "dmxRange": [96, 97],
-          "type": "PanTiltSpeed",
-          "duration": "28s"
-        },
-        {
-          "dmxRange": [98, 100],
-          "type": "PanTiltSpeed",
-          "duration": "29s"
-        },
-        {
-          "dmxRange": [101, 103],
-          "type": "PanTiltSpeed",
-          "duration": "30s"
-        },
-        {
-          "dmxRange": [104, 105],
-          "type": "PanTiltSpeed",
-          "duration": "31s"
-        },
-        {
-          "dmxRange": [106, 108],
-          "type": "PanTiltSpeed",
-          "duration": "32s"
-        },
-        {
-          "dmxRange": [109, 110],
-          "type": "PanTiltSpeed",
-          "duration": "33s"
-        },
-        {
-          "dmxRange": [111, 113],
-          "type": "PanTiltSpeed",
-          "duration": "34s"
-        },
-        {
-          "dmxRange": [114, 115],
-          "type": "PanTiltSpeed",
-          "duration": "35s"
-        },
-        {
-          "dmxRange": [116, 118],
-          "type": "PanTiltSpeed",
-          "duration": "36s"
-        },
-        {
-          "dmxRange": [119, 120],
-          "type": "PanTiltSpeed",
-          "duration": "37s"
-        },
-        {
-          "dmxRange": [121, 123],
-          "type": "PanTiltSpeed",
-          "duration": "38s"
-        },
-        {
-          "dmxRange": [124, 126],
-          "type": "PanTiltSpeed",
-          "duration": "39s"
-        },
-        {
-          "dmxRange": [127, 128],
-          "type": "PanTiltSpeed",
-          "duration": "40s"
-        },
-        {
-          "dmxRange": [129, 131],
-          "type": "PanTiltSpeed",
-          "duration": "41s"
-        },
-        {
-          "dmxRange": [132, 133],
-          "type": "PanTiltSpeed",
-          "duration": "42s"
-        },
-        {
-          "dmxRange": [134, 136],
-          "type": "PanTiltSpeed",
-          "duration": "43s"
-        },
-        {
-          "dmxRange": [137, 138],
-          "type": "PanTiltSpeed",
-          "duration": "44s"
-        },
-        {
-          "dmxRange": [139, 141],
-          "type": "PanTiltSpeed",
-          "duration": "45s"
-        },
-        {
-          "dmxRange": [142, 143],
-          "type": "PanTiltSpeed",
-          "duration": "46s"
-        },
-        {
-          "dmxRange": [144, 146],
-          "type": "PanTiltSpeed",
-          "duration": "47s"
-        },
-        {
-          "dmxRange": [147, 148],
-          "type": "PanTiltSpeed",
-          "duration": "48s"
-        },
-        {
-          "dmxRange": [149, 151],
-          "type": "PanTiltSpeed",
-          "duration": "49s"
-        },
-        {
-          "dmxRange": [152, 154],
-          "type": "PanTiltSpeed",
-          "duration": "50s"
-        },
-        {
-          "dmxRange": [155, 156],
-          "type": "PanTiltSpeed",
-          "duration": "51s"
-        },
-        {
-          "dmxRange": [157, 159],
-          "type": "PanTiltSpeed",
-          "duration": "52s"
-        },
-        {
-          "dmxRange": [160, 161],
-          "type": "PanTiltSpeed",
-          "duration": "53s"
-        },
-        {
-          "dmxRange": [162, 164],
-          "type": "PanTiltSpeed",
-          "duration": "54s"
-        },
-        {
-          "dmxRange": [165, 166],
-          "type": "PanTiltSpeed",
-          "duration": "55s"
-        },
-        {
-          "dmxRange": [167, 169],
-          "type": "PanTiltSpeed",
-          "duration": "56s"
-        },
-        {
-          "dmxRange": [170, 171],
-          "type": "PanTiltSpeed",
-          "duration": "57s"
-        },
-        {
-          "dmxRange": [172, 174],
-          "type": "PanTiltSpeed",
-          "duration": "58s"
-        },
-        {
-          "dmxRange": [175, 177],
-          "type": "PanTiltSpeed",
-          "duration": "59s"
-        },
-        {
-          "dmxRange": [178, 179],
-          "type": "PanTiltSpeed",
-          "duration": "60s"
-        },
-        {
-          "dmxRange": [180, 182],
-          "type": "PanTiltSpeed",
-          "duration": "65s"
-        },
-        {
-          "dmxRange": [183, 184],
-          "type": "PanTiltSpeed",
-          "duration": "70s"
-        },
-        {
-          "dmxRange": [185, 187],
-          "type": "PanTiltSpeed",
-          "duration": "75s"
-        },
-        {
-          "dmxRange": [188, 189],
-          "type": "PanTiltSpeed",
-          "duration": "80s"
-        },
-        {
-          "dmxRange": [190, 192],
-          "type": "PanTiltSpeed",
-          "duration": "85s"
-        },
-        {
-          "dmxRange": [193, 194],
-          "type": "PanTiltSpeed",
-          "duration": "90s"
-        },
-        {
-          "dmxRange": [195, 197],
-          "type": "PanTiltSpeed",
-          "duration": "95s"
-        },
-        {
-          "dmxRange": [198, 199],
-          "type": "PanTiltSpeed",
-          "duration": "100s"
-        },
-        {
-          "dmxRange": [200, 202],
-          "type": "PanTiltSpeed",
-          "duration": "110s"
-        },
-        {
-          "dmxRange": [203, 205],
-          "type": "PanTiltSpeed",
-          "duration": "120s"
-        },
-        {
-          "dmxRange": [206, 207],
-          "type": "PanTiltSpeed",
-          "duration": "130s"
-        },
-        {
-          "dmxRange": [208, 210],
-          "type": "PanTiltSpeed",
-          "duration": "140s"
-        },
-        {
-          "dmxRange": [211, 212],
-          "type": "PanTiltSpeed",
-          "duration": "150s"
-        },
-        {
-          "dmxRange": [213, 215],
-          "type": "PanTiltSpeed",
-          "duration": "160s"
-        },
-        {
-          "dmxRange": [216, 217],
-          "type": "PanTiltSpeed",
-          "duration": "170s"
-        },
-        {
-          "dmxRange": [218, 220],
-          "type": "PanTiltSpeed",
-          "duration": "180s"
-        },
-        {
-          "dmxRange": [221, 222],
-          "type": "PanTiltSpeed",
-          "duration": "190s"
-        },
-        {
-          "dmxRange": [223, 225],
-          "type": "PanTiltSpeed",
-          "duration": "200s"
-        },
-        {
-          "dmxRange": [226, 228],
-          "type": "PanTiltSpeed",
-          "duration": "210s"
-        },
-        {
-          "dmxRange": [229, 230],
-          "type": "PanTiltSpeed",
-          "duration": "220s"
-        },
-        {
-          "dmxRange": [231, 233],
-          "type": "PanTiltSpeed",
-          "duration": "230s"
-        },
-        {
-          "dmxRange": [234, 235],
-          "type": "PanTiltSpeed",
-          "duration": "240s"
-        },
-        {
-          "dmxRange": [236, 238],
-          "type": "PanTiltSpeed",
-          "duration": "250s"
-        },
-        {
-          "dmxRange": [239, 240],
-          "type": "PanTiltSpeed",
-          "duration": "260s"
-        },
-        {
-          "dmxRange": [241, 243],
-          "type": "PanTiltSpeed",
-          "duration": "270s"
-        },
-        {
-          "dmxRange": [244, 245],
-          "type": "PanTiltSpeed",
-          "duration": "280s"
-        },
-        {
-          "dmxRange": [246, 248],
-          "type": "PanTiltSpeed",
-          "duration": "290s"
-        },
-        {
-          "dmxRange": [249, 250],
-          "type": "PanTiltSpeed",
-          "duration": "300s"
-        },
-        {
-          "dmxRange": [251, 254],
-          "type": "PanTiltSpeed",
-          "duration": "310s"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "Maintenance",
-          "comment": "Follow cue Data"
-        }
-      ]
-    },
-    "Color Time": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Time",
-          "time": "0s"
-        },
-        {
-          "dmxRange": [1, 1],
-          "type": "Time",
-          "time": "0.2s"
-        },
-        {
-          "dmxRange": [2, 2],
-          "type": "Time",
-          "time": "0.4s"
-        },
-        {
-          "dmxRange": [3, 3],
-          "type": "Time",
-          "time": "0.6s"
-        },
-        {
-          "dmxRange": [4, 4],
-          "type": "Time",
-          "time": "0.8s"
-        },
-        {
-          "dmxRange": [5, 5],
-          "type": "Time",
-          "time": "1s"
-        },
-        {
-          "dmxRange": [6, 6],
-          "type": "Time",
-          "time": "1.2s"
-        },
-        {
-          "dmxRange": [7, 7],
-          "type": "Time",
-          "time": "1.4s"
-        },
-        {
-          "dmxRange": [8, 8],
-          "type": "Time",
-          "time": "1.6s"
-        },
-        {
-          "dmxRange": [9, 9],
-          "type": "Time",
-          "time": "1.8s"
-        },
-        {
-          "dmxRange": [10, 10],
-          "type": "Time",
-          "time": "2s"
-        },
-        {
-          "dmxRange": [11, 11],
-          "type": "Time",
-          "time": "2.2s"
-        },
-        {
-          "dmxRange": [12, 12],
-          "type": "Time",
-          "time": "2.4s"
-        },
-        {
-          "dmxRange": [13, 13],
-          "type": "Time",
-          "time": "2.6s"
-        },
-        {
-          "dmxRange": [14, 14],
-          "type": "Time",
-          "time": "2.8s"
-        },
-        {
-          "dmxRange": [15, 15],
-          "type": "Time",
-          "time": "3s"
-        },
-        {
-          "dmxRange": [16, 16],
-          "type": "Time",
-          "time": "3.2s"
-        },
-        {
-          "dmxRange": [17, 17],
-          "type": "Time",
-          "time": "3.4s"
-        },
-        {
-          "dmxRange": [18, 18],
-          "type": "Time",
-          "time": "3.6s"
-        },
-        {
-          "dmxRange": [19, 19],
-          "type": "Time",
-          "time": "3.8s"
-        },
-        {
-          "dmxRange": [20, 20],
-          "type": "Time",
-          "time": "4s"
-        },
-        {
-          "dmxRange": [21, 21],
-          "type": "Time",
-          "time": "4.2s"
-        },
-        {
-          "dmxRange": [22, 22],
-          "type": "Time",
-          "time": "4.4s"
-        },
-        {
-          "dmxRange": [23, 23],
-          "type": "Time",
-          "time": "4.6s"
-        },
-        {
-          "dmxRange": [24, 24],
-          "type": "Time",
-          "time": "4.8s"
-        },
-        {
-          "dmxRange": [25, 25],
-          "type": "Time",
-          "time": "5s"
-        },
-        {
-          "dmxRange": [26, 26],
-          "type": "Time",
-          "time": "5.2s"
-        },
-        {
-          "dmxRange": [27, 27],
-          "type": "Time",
-          "time": "5.4s"
-        },
-        {
-          "dmxRange": [28, 28],
-          "type": "Time",
-          "time": "5.6s"
-        },
-        {
-          "dmxRange": [29, 29],
-          "type": "Time",
-          "time": "5.8s"
-        },
-        {
-          "dmxRange": [30, 30],
-          "type": "Time",
-          "time": "6s"
-        },
-        {
-          "dmxRange": [31, 31],
-          "type": "Time",
-          "time": "6.2s"
-        },
-        {
-          "dmxRange": [32, 32],
-          "type": "Time",
-          "time": "6.4s"
-        },
-        {
-          "dmxRange": [33, 33],
-          "type": "Time",
-          "time": "6.6s"
-        },
-        {
-          "dmxRange": [34, 34],
-          "type": "Time",
-          "time": "6.8s"
-        },
-        {
-          "dmxRange": [35, 35],
-          "type": "Time",
-          "time": "7s"
-        },
-        {
-          "dmxRange": [36, 36],
-          "type": "Time",
-          "time": "7.2s"
-        },
-        {
-          "dmxRange": [37, 37],
-          "type": "Time",
-          "time": "7.4s"
-        },
-        {
-          "dmxRange": [38, 38],
-          "type": "Time",
-          "time": "7.6s"
-        },
-        {
-          "dmxRange": [39, 39],
-          "type": "Time",
-          "time": "7.8s"
-        },
-        {
-          "dmxRange": [40, 40],
-          "type": "Time",
-          "time": "8s"
-        },
-        {
-          "dmxRange": [41, 41],
-          "type": "Time",
-          "time": "8.2s"
-        },
-        {
-          "dmxRange": [42, 42],
-          "type": "Time",
-          "time": "8.4s"
-        },
-        {
-          "dmxRange": [43, 43],
-          "type": "Time",
-          "time": "8.6s"
-        },
-        {
-          "dmxRange": [44, 44],
-          "type": "Time",
-          "time": "8.8s"
-        },
-        {
-          "dmxRange": [45, 45],
-          "type": "Time",
-          "time": "9s"
-        },
-        {
-          "dmxRange": [46, 46],
-          "type": "Time",
-          "time": "9.2s"
-        },
-        {
-          "dmxRange": [47, 47],
-          "type": "Time",
-          "time": "9.4s"
-        },
-        {
-          "dmxRange": [48, 48],
-          "type": "Time",
-          "time": "9.6s"
-        },
-        {
-          "dmxRange": [49, 49],
-          "type": "Time",
-          "time": "9.8s"
-        },
-        {
-          "dmxRange": [50, 50],
-          "type": "Time",
-          "time": "10s"
-        },
-        {
-          "dmxRange": [51, 51],
-          "type": "Time",
-          "time": "10.2s"
-        },
-        {
-          "dmxRange": [52, 52],
-          "type": "Time",
-          "time": "10.4s"
-        },
-        {
-          "dmxRange": [53, 53],
-          "type": "Time",
-          "time": "10.6s"
-        },
-        {
-          "dmxRange": [54, 55],
-          "type": "Time",
-          "time": "11s"
-        },
-        {
-          "dmxRange": [56, 57],
-          "type": "Time",
-          "time": "12s"
-        },
-        {
-          "dmxRange": [58, 59],
-          "type": "Time",
-          "time": "13s"
-        },
-        {
-          "dmxRange": [60, 62],
-          "type": "Time",
-          "time": "14s"
-        },
-        {
-          "dmxRange": [63, 64],
-          "type": "Time",
-          "time": "15s"
-        },
-        {
-          "dmxRange": [65, 67],
-          "type": "Time",
-          "time": "16s"
-        },
-        {
-          "dmxRange": [68, 69],
-          "type": "Time",
-          "time": "17s"
-        },
-        {
-          "dmxRange": [70, 72],
-          "type": "Time",
-          "time": "18s"
-        },
-        {
-          "dmxRange": [73, 74],
-          "type": "Time",
-          "time": "19s"
-        },
-        {
-          "dmxRange": [75, 77],
-          "type": "Time",
-          "time": "20s"
-        },
-        {
-          "dmxRange": [78, 80],
-          "type": "Time",
-          "time": "21s"
-        },
-        {
-          "dmxRange": [81, 82],
-          "type": "Time",
-          "time": "22s"
-        },
-        {
-          "dmxRange": [83, 85],
-          "type": "Time",
-          "time": "23s"
-        },
-        {
-          "dmxRange": [86, 87],
-          "type": "Time",
-          "time": "24s"
-        },
-        {
-          "dmxRange": [88, 90],
-          "type": "Time",
-          "time": "25s"
-        },
-        {
-          "dmxRange": [91, 92],
-          "type": "Time",
-          "time": "26s"
-        },
-        {
-          "dmxRange": [93, 95],
-          "type": "Time",
-          "time": "27s"
-        },
-        {
-          "dmxRange": [96, 97],
-          "type": "Time",
-          "time": "28s"
-        },
-        {
-          "dmxRange": [98, 100],
-          "type": "Time",
-          "time": "29s"
-        },
-        {
-          "dmxRange": [101, 103],
-          "type": "Time",
-          "time": "30s"
-        },
-        {
-          "dmxRange": [104, 105],
-          "type": "Time",
-          "time": "31s"
-        },
-        {
-          "dmxRange": [106, 108],
-          "type": "Time",
-          "time": "32s"
-        },
-        {
-          "dmxRange": [109, 110],
-          "type": "Time",
-          "time": "33s"
-        },
-        {
-          "dmxRange": [111, 113],
-          "type": "Time",
-          "time": "34s"
-        },
-        {
-          "dmxRange": [114, 115],
-          "type": "Time",
-          "time": "35s"
-        },
-        {
-          "dmxRange": [116, 118],
-          "type": "Time",
-          "time": "36s"
-        },
-        {
-          "dmxRange": [119, 120],
-          "type": "Time",
-          "time": "37s"
-        },
-        {
-          "dmxRange": [121, 123],
-          "type": "Time",
-          "time": "38s"
-        },
-        {
-          "dmxRange": [124, 126],
-          "type": "Time",
-          "time": "39s"
-        },
-        {
-          "dmxRange": [127, 128],
-          "type": "Time",
-          "time": "40s"
-        },
-        {
-          "dmxRange": [129, 131],
-          "type": "Time",
-          "time": "41s"
-        },
-        {
-          "dmxRange": [132, 133],
-          "type": "Time",
-          "time": "42s"
-        },
-        {
-          "dmxRange": [134, 136],
-          "type": "Time",
-          "time": "43s"
-        },
-        {
-          "dmxRange": [137, 138],
-          "type": "Time",
-          "time": "44s"
-        },
-        {
-          "dmxRange": [139, 141],
-          "type": "Time",
-          "time": "45s"
-        },
-        {
-          "dmxRange": [142, 143],
-          "type": "Time",
-          "time": "46s"
-        },
-        {
-          "dmxRange": [144, 146],
-          "type": "Time",
-          "time": "47s"
-        },
-        {
-          "dmxRange": [147, 148],
-          "type": "Time",
-          "time": "48s"
-        },
-        {
-          "dmxRange": [149, 151],
-          "type": "Time",
-          "time": "49s"
-        },
-        {
-          "dmxRange": [152, 154],
-          "type": "Time",
-          "time": "50s"
-        },
-        {
-          "dmxRange": [155, 156],
-          "type": "Time",
-          "time": "51s"
-        },
-        {
-          "dmxRange": [157, 159],
-          "type": "Time",
-          "time": "52s"
-        },
-        {
-          "dmxRange": [160, 161],
-          "type": "Time",
-          "time": "53s"
-        },
-        {
-          "dmxRange": [162, 164],
-          "type": "Time",
-          "time": "54s"
-        },
-        {
-          "dmxRange": [165, 166],
-          "type": "Time",
-          "time": "55s"
-        },
-        {
-          "dmxRange": [167, 169],
-          "type": "Time",
-          "time": "56s"
-        },
-        {
-          "dmxRange": [170, 171],
-          "type": "Time",
-          "time": "57s"
-        },
-        {
-          "dmxRange": [172, 174],
-          "type": "Time",
-          "time": "58s"
-        },
-        {
-          "dmxRange": [175, 177],
-          "type": "Time",
-          "time": "59s"
-        },
-        {
-          "dmxRange": [178, 179],
-          "type": "Time",
-          "time": "60s"
-        },
-        {
-          "dmxRange": [180, 182],
-          "type": "Time",
-          "time": "65s"
-        },
-        {
-          "dmxRange": [183, 184],
-          "type": "Time",
-          "time": "70s"
-        },
-        {
-          "dmxRange": [185, 187],
-          "type": "Time",
-          "time": "75s"
-        },
-        {
-          "dmxRange": [188, 189],
-          "type": "Time",
-          "time": "80s"
-        },
-        {
-          "dmxRange": [190, 192],
-          "type": "Time",
-          "time": "85s"
-        },
-        {
-          "dmxRange": [193, 194],
-          "type": "Time",
-          "time": "90s"
-        },
-        {
-          "dmxRange": [195, 197],
-          "type": "Time",
-          "time": "95s"
-        },
-        {
-          "dmxRange": [198, 199],
-          "type": "Time",
-          "time": "100s"
-        },
-        {
-          "dmxRange": [200, 202],
-          "type": "Time",
-          "time": "110s"
-        },
-        {
-          "dmxRange": [203, 205],
-          "type": "Time",
-          "time": "120s"
-        },
-        {
-          "dmxRange": [206, 207],
-          "type": "Time",
-          "time": "130s"
-        },
-        {
-          "dmxRange": [208, 210],
-          "type": "Time",
-          "time": "140s"
-        },
-        {
-          "dmxRange": [211, 212],
-          "type": "Time",
-          "time": "150s"
-        },
-        {
-          "dmxRange": [213, 215],
-          "type": "Time",
-          "time": "160s"
-        },
-        {
-          "dmxRange": [216, 217],
-          "type": "Time",
-          "time": "170s"
-        },
-        {
-          "dmxRange": [218, 220],
-          "type": "Time",
-          "time": "180s"
-        },
-        {
-          "dmxRange": [221, 222],
-          "type": "Time",
-          "time": "190s"
-        },
-        {
-          "dmxRange": [223, 225],
-          "type": "Time",
-          "time": "200s"
-        },
-        {
-          "dmxRange": [226, 228],
-          "type": "Time",
-          "time": "210s"
-        },
-        {
-          "dmxRange": [229, 230],
-          "type": "Time",
-          "time": "220s"
-        },
-        {
-          "dmxRange": [231, 233],
-          "type": "Time",
-          "time": "230s"
-        },
-        {
-          "dmxRange": [234, 235],
-          "type": "Time",
-          "time": "240s"
-        },
-        {
-          "dmxRange": [236, 238],
-          "type": "Time",
-          "time": "250s"
-        },
-        {
-          "dmxRange": [239, 240],
-          "type": "Time",
-          "time": "260s"
-        },
-        {
-          "dmxRange": [241, 243],
-          "type": "Time",
-          "time": "270s"
-        },
-        {
-          "dmxRange": [244, 245],
-          "type": "Time",
-          "time": "280s"
-        },
-        {
-          "dmxRange": [246, 248],
-          "type": "Time",
-          "time": "290s"
-        },
-        {
-          "dmxRange": [249, 250],
-          "type": "Time",
-          "time": "300s"
-        },
-        {
-          "dmxRange": [251, 254],
-          "type": "Time",
-          "time": "310s"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "Maintenance",
-          "comment": "Follow cue Data"
-        }
-      ]
-    },
-    "Beam Time": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Time",
-          "time": "0s"
-        },
-        {
-          "dmxRange": [1, 1],
-          "type": "Time",
-          "time": "0.2s"
-        },
-        {
-          "dmxRange": [2, 2],
-          "type": "Time",
-          "time": "0.4s"
-        },
-        {
-          "dmxRange": [3, 3],
-          "type": "Time",
-          "time": "0.6s"
-        },
-        {
-          "dmxRange": [4, 4],
-          "type": "Time",
-          "time": "0.8s"
-        },
-        {
-          "dmxRange": [5, 5],
-          "type": "Time",
-          "time": "1s"
-        },
-        {
-          "dmxRange": [6, 6],
-          "type": "Time",
-          "time": "1.2s"
-        },
-        {
-          "dmxRange": [7, 7],
-          "type": "Time",
-          "time": "1.4s"
-        },
-        {
-          "dmxRange": [8, 8],
-          "type": "Time",
-          "time": "1.6s"
-        },
-        {
-          "dmxRange": [9, 9],
-          "type": "Time",
-          "time": "1.8s"
-        },
-        {
-          "dmxRange": [10, 10],
-          "type": "Time",
-          "time": "2s"
-        },
-        {
-          "dmxRange": [11, 11],
-          "type": "Time",
-          "time": "2.2s"
-        },
-        {
-          "dmxRange": [12, 12],
-          "type": "Time",
-          "time": "2.4s"
-        },
-        {
-          "dmxRange": [13, 13],
-          "type": "Time",
-          "time": "2.6s"
-        },
-        {
-          "dmxRange": [14, 14],
-          "type": "Time",
-          "time": "2.8s"
-        },
-        {
-          "dmxRange": [15, 15],
-          "type": "Time",
-          "time": "3s"
-        },
-        {
-          "dmxRange": [16, 16],
-          "type": "Time",
-          "time": "3.2s"
-        },
-        {
-          "dmxRange": [17, 17],
-          "type": "Time",
-          "time": "3.4s"
-        },
-        {
-          "dmxRange": [18, 18],
-          "type": "Time",
-          "time": "3.6s"
-        },
-        {
-          "dmxRange": [19, 19],
-          "type": "Time",
-          "time": "3.8s"
-        },
-        {
-          "dmxRange": [20, 20],
-          "type": "Time",
-          "time": "4s"
-        },
-        {
-          "dmxRange": [21, 21],
-          "type": "Time",
-          "time": "4.2s"
-        },
-        {
-          "dmxRange": [22, 22],
-          "type": "Time",
-          "time": "4.4s"
-        },
-        {
-          "dmxRange": [23, 23],
-          "type": "Time",
-          "time": "4.6s"
-        },
-        {
-          "dmxRange": [24, 24],
-          "type": "Time",
-          "time": "4.8s"
-        },
-        {
-          "dmxRange": [25, 25],
-          "type": "Time",
-          "time": "5s"
-        },
-        {
-          "dmxRange": [26, 26],
-          "type": "Time",
-          "time": "5.2s"
-        },
-        {
-          "dmxRange": [27, 27],
-          "type": "Time",
-          "time": "5.4s"
-        },
-        {
-          "dmxRange": [28, 28],
-          "type": "Time",
-          "time": "5.6s"
-        },
-        {
-          "dmxRange": [29, 29],
-          "type": "Time",
-          "time": "5.8s"
-        },
-        {
-          "dmxRange": [30, 30],
-          "type": "Time",
-          "time": "6s"
-        },
-        {
-          "dmxRange": [31, 31],
-          "type": "Time",
-          "time": "6.2s"
-        },
-        {
-          "dmxRange": [32, 32],
-          "type": "Time",
-          "time": "6.4s"
-        },
-        {
-          "dmxRange": [33, 33],
-          "type": "Time",
-          "time": "6.6s"
-        },
-        {
-          "dmxRange": [34, 34],
-          "type": "Time",
-          "time": "6.8s"
-        },
-        {
-          "dmxRange": [35, 35],
-          "type": "Time",
-          "time": "7s"
-        },
-        {
-          "dmxRange": [36, 36],
-          "type": "Time",
-          "time": "7.2s"
-        },
-        {
-          "dmxRange": [37, 37],
-          "type": "Time",
-          "time": "7.4s"
-        },
-        {
-          "dmxRange": [38, 38],
-          "type": "Time",
-          "time": "7.6s"
-        },
-        {
-          "dmxRange": [39, 39],
-          "type": "Time",
-          "time": "7.8s"
-        },
-        {
-          "dmxRange": [40, 40],
-          "type": "Time",
-          "time": "8s"
-        },
-        {
-          "dmxRange": [41, 41],
-          "type": "Time",
-          "time": "8.2s"
-        },
-        {
-          "dmxRange": [42, 42],
-          "type": "Time",
-          "time": "8.4s"
-        },
-        {
-          "dmxRange": [43, 43],
-          "type": "Time",
-          "time": "8.6s"
-        },
-        {
-          "dmxRange": [44, 44],
-          "type": "Time",
-          "time": "8.8s"
-        },
-        {
-          "dmxRange": [45, 45],
-          "type": "Time",
-          "time": "9s"
-        },
-        {
-          "dmxRange": [46, 46],
-          "type": "Time",
-          "time": "9.2s"
-        },
-        {
-          "dmxRange": [47, 47],
-          "type": "Time",
-          "time": "9.4s"
-        },
-        {
-          "dmxRange": [48, 48],
-          "type": "Time",
-          "time": "9.6s"
-        },
-        {
-          "dmxRange": [49, 49],
-          "type": "Time",
-          "time": "9.8s"
-        },
-        {
-          "dmxRange": [50, 50],
-          "type": "Time",
-          "time": "10s"
-        },
-        {
-          "dmxRange": [51, 51],
-          "type": "Time",
-          "time": "10.2s"
-        },
-        {
-          "dmxRange": [52, 52],
-          "type": "Time",
-          "time": "10.4s"
-        },
-        {
-          "dmxRange": [53, 53],
-          "type": "Time",
-          "time": "10.6s"
-        },
-        {
-          "dmxRange": [54, 55],
-          "type": "Time",
-          "time": "11s"
-        },
-        {
-          "dmxRange": [56, 57],
-          "type": "Time",
-          "time": "12s"
-        },
-        {
-          "dmxRange": [58, 59],
-          "type": "Time",
-          "time": "13s"
-        },
-        {
-          "dmxRange": [60, 62],
-          "type": "Time",
-          "time": "14s"
-        },
-        {
-          "dmxRange": [63, 64],
-          "type": "Time",
-          "time": "15s"
-        },
-        {
-          "dmxRange": [65, 67],
-          "type": "Time",
-          "time": "16s"
-        },
-        {
-          "dmxRange": [68, 69],
-          "type": "Time",
-          "time": "17s"
-        },
-        {
-          "dmxRange": [70, 72],
-          "type": "Time",
-          "time": "18s"
-        },
-        {
-          "dmxRange": [73, 74],
-          "type": "Time",
-          "time": "19s"
-        },
-        {
-          "dmxRange": [75, 77],
-          "type": "Time",
-          "time": "20s"
-        },
-        {
-          "dmxRange": [78, 80],
-          "type": "Time",
-          "time": "21s"
-        },
-        {
-          "dmxRange": [81, 82],
-          "type": "Time",
-          "time": "22s"
-        },
-        {
-          "dmxRange": [83, 85],
-          "type": "Time",
-          "time": "23s"
-        },
-        {
-          "dmxRange": [86, 87],
-          "type": "Time",
-          "time": "24s"
-        },
-        {
-          "dmxRange": [88, 90],
-          "type": "Time",
-          "time": "25s"
-        },
-        {
-          "dmxRange": [91, 92],
-          "type": "Time",
-          "time": "26s"
-        },
-        {
-          "dmxRange": [93, 95],
-          "type": "Time",
-          "time": "27s"
-        },
-        {
-          "dmxRange": [96, 97],
-          "type": "Time",
-          "time": "28s"
-        },
-        {
-          "dmxRange": [98, 100],
-          "type": "Time",
-          "time": "29s"
-        },
-        {
-          "dmxRange": [101, 103],
-          "type": "Time",
-          "time": "30s"
-        },
-        {
-          "dmxRange": [104, 105],
-          "type": "Time",
-          "time": "31s"
-        },
-        {
-          "dmxRange": [106, 108],
-          "type": "Time",
-          "time": "32s"
-        },
-        {
-          "dmxRange": [109, 110],
-          "type": "Time",
-          "time": "33s"
-        },
-        {
-          "dmxRange": [111, 113],
-          "type": "Time",
-          "time": "34s"
-        },
-        {
-          "dmxRange": [114, 115],
-          "type": "Time",
-          "time": "35s"
-        },
-        {
-          "dmxRange": [116, 118],
-          "type": "Time",
-          "time": "36s"
-        },
-        {
-          "dmxRange": [119, 120],
-          "type": "Time",
-          "time": "37s"
-        },
-        {
-          "dmxRange": [121, 123],
-          "type": "Time",
-          "time": "38s"
-        },
-        {
-          "dmxRange": [124, 126],
-          "type": "Time",
-          "time": "39s"
-        },
-        {
-          "dmxRange": [127, 128],
-          "type": "Time",
-          "time": "40s"
-        },
-        {
-          "dmxRange": [129, 131],
-          "type": "Time",
-          "time": "41s"
-        },
-        {
-          "dmxRange": [132, 133],
-          "type": "Time",
-          "time": "42s"
-        },
-        {
-          "dmxRange": [134, 136],
-          "type": "Time",
-          "time": "43s"
-        },
-        {
-          "dmxRange": [137, 138],
-          "type": "Time",
-          "time": "44s"
-        },
-        {
-          "dmxRange": [139, 141],
-          "type": "Time",
-          "time": "45s"
-        },
-        {
-          "dmxRange": [142, 143],
-          "type": "Time",
-          "time": "46s"
-        },
-        {
-          "dmxRange": [144, 146],
-          "type": "Time",
-          "time": "47s"
-        },
-        {
-          "dmxRange": [147, 148],
-          "type": "Time",
-          "time": "48s"
-        },
-        {
-          "dmxRange": [149, 151],
-          "type": "Time",
-          "time": "49s"
-        },
-        {
-          "dmxRange": [152, 154],
-          "type": "Time",
-          "time": "50s"
-        },
-        {
-          "dmxRange": [155, 156],
-          "type": "Time",
-          "time": "51s"
-        },
-        {
-          "dmxRange": [157, 159],
-          "type": "Time",
-          "time": "52s"
-        },
-        {
-          "dmxRange": [160, 161],
-          "type": "Time",
-          "time": "53s"
-        },
-        {
-          "dmxRange": [162, 164],
-          "type": "Time",
-          "time": "54s"
-        },
-        {
-          "dmxRange": [165, 166],
-          "type": "Time",
-          "time": "55s"
-        },
-        {
-          "dmxRange": [167, 169],
-          "type": "Time",
-          "time": "56s"
-        },
-        {
-          "dmxRange": [170, 171],
-          "type": "Time",
-          "time": "57s"
-        },
-        {
-          "dmxRange": [172, 174],
-          "type": "Time",
-          "time": "58s"
-        },
-        {
-          "dmxRange": [175, 177],
-          "type": "Time",
-          "time": "59s"
-        },
-        {
-          "dmxRange": [178, 179],
-          "type": "Time",
-          "time": "60s"
-        },
-        {
-          "dmxRange": [180, 182],
-          "type": "Time",
-          "time": "65s"
-        },
-        {
-          "dmxRange": [183, 184],
-          "type": "Time",
-          "time": "70s"
-        },
-        {
-          "dmxRange": [185, 187],
-          "type": "Time",
-          "time": "75s"
-        },
-        {
-          "dmxRange": [188, 189],
-          "type": "Time",
-          "time": "80s"
-        },
-        {
-          "dmxRange": [190, 192],
-          "type": "Time",
-          "time": "85s"
-        },
-        {
-          "dmxRange": [193, 194],
-          "type": "Time",
-          "time": "90s"
-        },
-        {
-          "dmxRange": [195, 197],
-          "type": "Time",
-          "time": "95s"
-        },
-        {
-          "dmxRange": [198, 199],
-          "type": "Time",
-          "time": "100s"
-        },
-        {
-          "dmxRange": [200, 202],
-          "type": "Time",
-          "time": "110s"
-        },
-        {
-          "dmxRange": [203, 205],
-          "type": "Time",
-          "time": "120s"
-        },
-        {
-          "dmxRange": [206, 207],
-          "type": "Time",
-          "time": "130s"
-        },
-        {
-          "dmxRange": [208, 210],
-          "type": "Time",
-          "time": "140s"
-        },
-        {
-          "dmxRange": [211, 212],
-          "type": "Time",
-          "time": "150s"
-        },
-        {
-          "dmxRange": [213, 215],
-          "type": "Time",
-          "time": "160s"
-        },
-        {
-          "dmxRange": [216, 217],
-          "type": "Time",
-          "time": "170s"
-        },
-        {
-          "dmxRange": [218, 220],
-          "type": "Time",
-          "time": "180s"
-        },
-        {
-          "dmxRange": [221, 222],
-          "type": "Time",
-          "time": "190s"
-        },
-        {
-          "dmxRange": [223, 225],
-          "type": "Time",
-          "time": "200s"
-        },
-        {
-          "dmxRange": [226, 228],
-          "type": "Time",
-          "time": "210s"
-        },
-        {
-          "dmxRange": [229, 230],
-          "type": "Time",
-          "time": "220s"
-        },
-        {
-          "dmxRange": [231, 233],
-          "type": "Time",
-          "time": "230s"
-        },
-        {
-          "dmxRange": [234, 235],
-          "type": "Time",
-          "time": "240s"
-        },
-        {
-          "dmxRange": [236, 238],
-          "type": "Time",
-          "time": "250s"
-        },
-        {
-          "dmxRange": [239, 240],
-          "type": "Time",
-          "time": "260s"
-        },
-        {
-          "dmxRange": [241, 243],
-          "type": "Time",
-          "time": "270s"
-        },
-        {
-          "dmxRange": [244, 245],
-          "type": "Time",
-          "time": "280s"
-        },
-        {
-          "dmxRange": [246, 248],
-          "type": "Time",
-          "time": "290s"
-        },
-        {
-          "dmxRange": [249, 250],
-          "type": "Time",
-          "time": "300s"
-        },
-        {
-          "dmxRange": [251, 254],
-          "type": "Time",
-          "time": "310s"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "Maintenance",
-          "comment": "Follow cue Data"
-        }
-      ]
-    },
-    "Gobo Time": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 0],
-          "type": "Time",
-          "time": "0s"
-        },
-        {
-          "dmxRange": [1, 1],
-          "type": "Time",
-          "time": "0.2s"
-        },
-        {
-          "dmxRange": [2, 2],
-          "type": "Time",
-          "time": "0.4s"
-        },
-        {
-          "dmxRange": [3, 3],
-          "type": "Time",
-          "time": "0.6s"
-        },
-        {
-          "dmxRange": [4, 4],
-          "type": "Time",
-          "time": "0.8s"
-        },
-        {
-          "dmxRange": [5, 5],
-          "type": "Time",
-          "time": "1s"
-        },
-        {
-          "dmxRange": [6, 6],
-          "type": "Time",
-          "time": "1.2s"
-        },
-        {
-          "dmxRange": [7, 7],
-          "type": "Time",
-          "time": "1.4s"
-        },
-        {
-          "dmxRange": [8, 8],
-          "type": "Time",
-          "time": "1.6s"
-        },
-        {
-          "dmxRange": [9, 9],
-          "type": "Time",
-          "time": "1.8s"
-        },
-        {
-          "dmxRange": [10, 10],
-          "type": "Time",
-          "time": "2s"
-        },
-        {
-          "dmxRange": [11, 11],
-          "type": "Time",
-          "time": "2.2s"
-        },
-        {
-          "dmxRange": [12, 12],
-          "type": "Time",
-          "time": "2.4s"
-        },
-        {
-          "dmxRange": [13, 13],
-          "type": "Time",
-          "time": "2.6s"
-        },
-        {
-          "dmxRange": [14, 14],
-          "type": "Time",
-          "time": "2.8s"
-        },
-        {
-          "dmxRange": [15, 15],
-          "type": "Time",
-          "time": "3s"
-        },
-        {
-          "dmxRange": [16, 16],
-          "type": "Time",
-          "time": "3.2s"
-        },
-        {
-          "dmxRange": [17, 17],
-          "type": "Time",
-          "time": "3.4s"
-        },
-        {
-          "dmxRange": [18, 18],
-          "type": "Time",
-          "time": "3.6s"
-        },
-        {
-          "dmxRange": [19, 19],
-          "type": "Time",
-          "time": "3.8s"
-        },
-        {
-          "dmxRange": [20, 20],
-          "type": "Time",
-          "time": "4s"
-        },
-        {
-          "dmxRange": [21, 21],
-          "type": "Time",
-          "time": "4.2s"
-        },
-        {
-          "dmxRange": [22, 22],
-          "type": "Time",
-          "time": "4.4s"
-        },
-        {
-          "dmxRange": [23, 23],
-          "type": "Time",
-          "time": "4.6s"
-        },
-        {
-          "dmxRange": [24, 24],
-          "type": "Time",
-          "time": "4.8s"
-        },
-        {
-          "dmxRange": [25, 25],
-          "type": "Time",
-          "time": "5s"
-        },
-        {
-          "dmxRange": [26, 26],
-          "type": "Time",
-          "time": "5.2s"
-        },
-        {
-          "dmxRange": [27, 27],
-          "type": "Time",
-          "time": "5.4s"
-        },
-        {
-          "dmxRange": [28, 28],
-          "type": "Time",
-          "time": "5.6s"
-        },
-        {
-          "dmxRange": [29, 29],
-          "type": "Time",
-          "time": "5.8s"
-        },
-        {
-          "dmxRange": [30, 30],
-          "type": "Time",
-          "time": "6s"
-        },
-        {
-          "dmxRange": [31, 31],
-          "type": "Time",
-          "time": "6.2s"
-        },
-        {
-          "dmxRange": [32, 32],
-          "type": "Time",
-          "time": "6.4s"
-        },
-        {
-          "dmxRange": [33, 33],
-          "type": "Time",
-          "time": "6.6s"
-        },
-        {
-          "dmxRange": [34, 34],
-          "type": "Time",
-          "time": "6.8s"
-        },
-        {
-          "dmxRange": [35, 35],
-          "type": "Time",
-          "time": "7s"
-        },
-        {
-          "dmxRange": [36, 36],
-          "type": "Time",
-          "time": "7.2s"
-        },
-        {
-          "dmxRange": [37, 37],
-          "type": "Time",
-          "time": "7.4s"
-        },
-        {
-          "dmxRange": [38, 38],
-          "type": "Time",
-          "time": "7.6s"
-        },
-        {
-          "dmxRange": [39, 39],
-          "type": "Time",
-          "time": "7.8s"
-        },
-        {
-          "dmxRange": [40, 40],
-          "type": "Time",
-          "time": "8s"
-        },
-        {
-          "dmxRange": [41, 41],
-          "type": "Time",
-          "time": "8.2s"
-        },
-        {
-          "dmxRange": [42, 42],
-          "type": "Time",
-          "time": "8.4s"
-        },
-        {
-          "dmxRange": [43, 43],
-          "type": "Time",
-          "time": "8.6s"
-        },
-        {
-          "dmxRange": [44, 44],
-          "type": "Time",
-          "time": "8.8s"
-        },
-        {
-          "dmxRange": [45, 45],
-          "type": "Time",
-          "time": "9s"
-        },
-        {
-          "dmxRange": [46, 46],
-          "type": "Time",
-          "time": "9.2s"
-        },
-        {
-          "dmxRange": [47, 47],
-          "type": "Time",
-          "time": "9.4s"
-        },
-        {
-          "dmxRange": [48, 48],
-          "type": "Time",
-          "time": "9.6s"
-        },
-        {
-          "dmxRange": [49, 49],
-          "type": "Time",
-          "time": "9.8s"
-        },
-        {
-          "dmxRange": [50, 50],
-          "type": "Time",
-          "time": "10s"
-        },
-        {
-          "dmxRange": [51, 51],
-          "type": "Time",
-          "time": "10.2s"
-        },
-        {
-          "dmxRange": [52, 52],
-          "type": "Time",
-          "time": "10.4s"
-        },
-        {
-          "dmxRange": [53, 53],
-          "type": "Time",
-          "time": "10.6s"
-        },
-        {
-          "dmxRange": [54, 55],
-          "type": "Time",
-          "time": "11s"
-        },
-        {
-          "dmxRange": [56, 57],
-          "type": "Time",
-          "time": "12s"
-        },
-        {
-          "dmxRange": [58, 59],
-          "type": "Time",
-          "time": "13s"
-        },
-        {
-          "dmxRange": [60, 62],
-          "type": "Time",
-          "time": "14s"
-        },
-        {
-          "dmxRange": [63, 64],
-          "type": "Time",
-          "time": "15s"
-        },
-        {
-          "dmxRange": [65, 67],
-          "type": "Time",
-          "time": "16s"
-        },
-        {
-          "dmxRange": [68, 69],
-          "type": "Time",
-          "time": "17s"
-        },
-        {
-          "dmxRange": [70, 72],
-          "type": "Time",
-          "time": "18s"
-        },
-        {
-          "dmxRange": [73, 74],
-          "type": "Time",
-          "time": "19s"
-        },
-        {
-          "dmxRange": [75, 77],
-          "type": "Time",
-          "time": "20s"
-        },
-        {
-          "dmxRange": [78, 80],
-          "type": "Time",
-          "time": "21s"
-        },
-        {
-          "dmxRange": [81, 82],
-          "type": "Time",
-          "time": "22s"
-        },
-        {
-          "dmxRange": [83, 85],
-          "type": "Time",
-          "time": "23s"
-        },
-        {
-          "dmxRange": [86, 87],
-          "type": "Time",
-          "time": "24s"
-        },
-        {
-          "dmxRange": [88, 90],
-          "type": "Time",
-          "time": "25s"
-        },
-        {
-          "dmxRange": [91, 92],
-          "type": "Time",
-          "time": "26s"
-        },
-        {
-          "dmxRange": [93, 95],
-          "type": "Time",
-          "time": "27s"
-        },
-        {
-          "dmxRange": [96, 97],
-          "type": "Time",
-          "time": "28s"
-        },
-        {
-          "dmxRange": [98, 100],
-          "type": "Time",
-          "time": "29s"
-        },
-        {
-          "dmxRange": [101, 103],
-          "type": "Time",
-          "time": "30s"
-        },
-        {
-          "dmxRange": [104, 105],
-          "type": "Time",
-          "time": "31s"
-        },
-        {
-          "dmxRange": [106, 108],
-          "type": "Time",
-          "time": "32s"
-        },
-        {
-          "dmxRange": [109, 110],
-          "type": "Time",
-          "time": "33s"
-        },
-        {
-          "dmxRange": [111, 113],
-          "type": "Time",
-          "time": "34s"
-        },
-        {
-          "dmxRange": [114, 115],
-          "type": "Time",
-          "time": "35s"
-        },
-        {
-          "dmxRange": [116, 118],
-          "type": "Time",
-          "time": "36s"
-        },
-        {
-          "dmxRange": [119, 120],
-          "type": "Time",
-          "time": "37s"
-        },
-        {
-          "dmxRange": [121, 123],
-          "type": "Time",
-          "time": "38s"
-        },
-        {
-          "dmxRange": [124, 126],
-          "type": "Time",
-          "time": "39s"
-        },
-        {
-          "dmxRange": [127, 128],
-          "type": "Time",
-          "time": "40s"
-        },
-        {
-          "dmxRange": [129, 131],
-          "type": "Time",
-          "time": "41s"
-        },
-        {
-          "dmxRange": [132, 133],
-          "type": "Time",
-          "time": "42s"
-        },
-        {
-          "dmxRange": [134, 136],
-          "type": "Time",
-          "time": "43s"
-        },
-        {
-          "dmxRange": [137, 138],
-          "type": "Time",
-          "time": "44s"
-        },
-        {
-          "dmxRange": [139, 141],
-          "type": "Time",
-          "time": "45s"
-        },
-        {
-          "dmxRange": [142, 143],
-          "type": "Time",
-          "time": "46s"
-        },
-        {
-          "dmxRange": [144, 146],
-          "type": "Time",
-          "time": "47s"
-        },
-        {
-          "dmxRange": [147, 148],
-          "type": "Time",
-          "time": "48s"
-        },
-        {
-          "dmxRange": [149, 151],
-          "type": "Time",
-          "time": "49s"
-        },
-        {
-          "dmxRange": [152, 154],
-          "type": "Time",
-          "time": "50s"
-        },
-        {
-          "dmxRange": [155, 156],
-          "type": "Time",
-          "time": "51s"
-        },
-        {
-          "dmxRange": [157, 159],
-          "type": "Time",
-          "time": "52s"
-        },
-        {
-          "dmxRange": [160, 161],
-          "type": "Time",
-          "time": "53s"
-        },
-        {
-          "dmxRange": [162, 164],
-          "type": "Time",
-          "time": "54s"
-        },
-        {
-          "dmxRange": [165, 166],
-          "type": "Time",
-          "time": "55s"
-        },
-        {
-          "dmxRange": [167, 169],
-          "type": "Time",
-          "time": "56s"
-        },
-        {
-          "dmxRange": [170, 171],
-          "type": "Time",
-          "time": "57s"
-        },
-        {
-          "dmxRange": [172, 174],
-          "type": "Time",
-          "time": "58s"
-        },
-        {
-          "dmxRange": [175, 177],
-          "type": "Time",
-          "time": "59s"
-        },
-        {
-          "dmxRange": [178, 179],
-          "type": "Time",
-          "time": "60s"
-        },
-        {
-          "dmxRange": [180, 182],
-          "type": "Time",
-          "time": "65s"
-        },
-        {
-          "dmxRange": [183, 184],
-          "type": "Time",
-          "time": "70s"
-        },
-        {
-          "dmxRange": [185, 187],
-          "type": "Time",
-          "time": "75s"
-        },
-        {
-          "dmxRange": [188, 189],
-          "type": "Time",
-          "time": "80s"
-        },
-        {
-          "dmxRange": [190, 192],
-          "type": "Time",
-          "time": "85s"
-        },
-        {
-          "dmxRange": [193, 194],
-          "type": "Time",
-          "time": "90s"
-        },
-        {
-          "dmxRange": [195, 197],
-          "type": "Time",
-          "time": "95s"
-        },
-        {
-          "dmxRange": [198, 199],
-          "type": "Time",
-          "time": "100s"
-        },
-        {
-          "dmxRange": [200, 202],
-          "type": "Time",
-          "time": "110s"
-        },
-        {
-          "dmxRange": [203, 205],
-          "type": "Time",
-          "time": "120s"
-        },
-        {
-          "dmxRange": [206, 207],
-          "type": "Time",
-          "time": "130s"
-        },
-        {
-          "dmxRange": [208, 210],
-          "type": "Time",
-          "time": "140s"
-        },
-        {
-          "dmxRange": [211, 212],
-          "type": "Time",
-          "time": "150s"
-        },
-        {
-          "dmxRange": [213, 215],
-          "type": "Time",
-          "time": "160s"
-        },
-        {
-          "dmxRange": [216, 217],
-          "type": "Time",
-          "time": "170s"
-        },
-        {
-          "dmxRange": [218, 220],
-          "type": "Time",
-          "time": "180s"
-        },
-        {
-          "dmxRange": [221, 222],
-          "type": "Time",
-          "time": "190s"
-        },
-        {
-          "dmxRange": [223, 225],
-          "type": "Time",
-          "time": "200s"
-        },
-        {
-          "dmxRange": [226, 228],
-          "type": "Time",
-          "time": "210s"
-        },
-        {
-          "dmxRange": [229, 230],
-          "type": "Time",
-          "time": "220s"
-        },
-        {
-          "dmxRange": [231, 233],
-          "type": "Time",
-          "time": "230s"
-        },
-        {
-          "dmxRange": [234, 235],
-          "type": "Time",
-          "time": "240s"
-        },
-        {
-          "dmxRange": [236, 238],
-          "type": "Time",
-          "time": "250s"
-        },
-        {
-          "dmxRange": [239, 240],
-          "type": "Time",
-          "time": "260s"
-        },
-        {
-          "dmxRange": [241, 243],
-          "type": "Time",
-          "time": "270s"
-        },
-        {
-          "dmxRange": [244, 245],
-          "type": "Time",
-          "time": "280s"
-        },
-        {
-          "dmxRange": [246, 248],
-          "type": "Time",
-          "time": "290s"
-        },
-        {
-          "dmxRange": [249, 250],
-          "type": "Time",
-          "time": "300s"
-        },
-        {
-          "dmxRange": [251, 254],
-          "type": "Time",
-          "time": "310s"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "Maintenance",
-          "comment": "Follow cue Data"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "Standard 32-channel",
-      "shortName": "32ch",
-      "channels": [
-        "Cyan",
-        "Magenta",
-        "Yellow",
-        "CTO",
-        "Color Wheel",
-        "Color Macros",
-        "Shutter / Strobe",
-        "Dimmer",
-        "Dimmer fine",
-        "Iris",
-        "Static Gobo Wheel",
-        "Rotating Gobo Wheel",
-        "Gobo Rotation",
-        "Gobo Rotation fine",
-        "Prism",
-        "Prism Rotation",
-        "Frost",
-        "Animation Disk",
-        "Animation Disk Rotation",
-        "Focus",
-        "Focus fine",
-        "Zoom",
-        "Autofocus Distance",
-        "Autofocus Adjust",
-        "Effects",
-        "Pan",
-        "Pan fine",
-        "Tilt",
-        "Tilt fine",
-        "Function",
-        "Reset",
-        "Lamp Control"
-      ]
-    },
-    {
-      "name": "Vector 36-channel",
-      "shortName": "36ch",
-      "channels": [
-        "Cyan",
-        "Magenta",
-        "Yellow",
-        "CTO",
-        "Color Wheel",
-        "Color Macros",
-        "Shutter / Strobe",
-        "Dimmer",
-        "Dimmer fine",
-        "Iris",
-        "Static Gobo Wheel",
-        "Rotating Gobo Wheel",
-        "Gobo Rotation",
-        "Gobo Rotation fine",
-        "Prism",
-        "Prism Rotation",
-        "Frost",
-        "Animation Disk",
-        "Animation Disk Rotation",
-        "Focus",
-        "Focus fine",
-        "Zoom",
-        "Autofocus Distance",
-        "Autofocus Adjust",
-        "Effects",
-        "Pan",
-        "Pan fine",
-        "Tilt",
-        "Tilt fine",
-        "Function",
-        "Reset",
-        "Lamp Control",
-        "Pan/Tilt Time",
-        "Color Time",
-        "Beam Time",
-        "Gobo Time"
-      ]
+      "name": "Standard Mode (32 ch)",
+      "channels": []
     }
   ]
 }
