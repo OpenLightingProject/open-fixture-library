@@ -245,12 +245,12 @@ async function getTaskPromise(task) {
     testErrored = true;
   }
 
-  return [].concat(
+  return [
     `<details>`,
     `  <summary>${emoji} <strong>${task.manKey} / ${task.fixKey}:</strong> ${task.pluginKey} / ${task.testKey}</summary>`,
     `  <ul>`,
     ...detailListItems.map(listItem => `    <li>${listItem}</li>`),
     `  </ul>`,
     `</details>`
-  );
+  ];
 }
