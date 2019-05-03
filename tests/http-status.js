@@ -74,6 +74,11 @@ const siteChecker = new blc.SiteChecker({
     }
   },
   page(error, pageUrl, customData) {
+    if (!(pageUrl in resolvedUrls)) {
+      resolvedUrls[pageUrl] = pageUrl;
+      foundLinks[pageUrl] = [];
+    }
+
     const resolvedUrl = resolvedUrls[pageUrl];
 
     if (error) {
