@@ -5,23 +5,23 @@
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["Jeff Kowalik"],
-    "createDate": "2019-04-25",
-    "lastModifyDate": "2019-04-25"
+    "createDate": "2019-05-03",
+    "lastModifyDate": "2019-05-03"
   },
-  "comment": "Rockville ROCKPar50 Compact RGB LED DJ/Club PAR CAN WASH LIGHT",
   "links": {
+    "productPage": [
+      "https://www.rockvilleaudio.com/rockpar50/"
+    ],
     "video": [
-      "https://player.vimeo.com/external/267483738.hd.mp4?s=131dd71527d1e38a7efd58e5e6c484551bf92de3&profile_id=175"
+      "https://www.youtube.com/watch?v=E4kI6QuNiMg"
     ]
   },
   "physical": {
-    "power": 120,
+    "dimensions": [185, 178, 110],
+    "power": 24,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
-    },
-    "lens": {
-      "degreesMinMax": [15, 45]
+      "type": "18x 1W LEDs (6x red, 6x green, 6x blue)"
     }
   },
   "availableChannels": {
@@ -31,64 +31,84 @@
         "type": "Intensity"
       }
     },
-    "Dimmer Red": {
+    "Red": {
       "defaultValue": "0%",
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Dimmer Green": {
+    "Green": {
       "defaultValue": "0%",
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Dimmer Blue": {
+    "Blue": {
       "defaultValue": "0%",
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "Function Selection": {
+    "Effects": {
       "defaultValue": "0%",
       "capabilities": [
         {
           "dmxRange": [0, 50],
           "type": "NoFunction",
-          "comment": "Mode-DMX Control"
+          "switchChannels": {
+            "Effect / Strobe Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [51, 101],
-          "type": "NoFunction",
-          "comment": "Mode-Color Change"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "switchChannels": {
+            "Effect / Strobe Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [102, 152],
-          "type": "NoFunction",
-          "comment": "Mode-Color Fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "switchChannels": {
+            "Effect / Strobe Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [153, 203],
-          "type": "NoFunction",
-          "comment": "Mode-Strobe"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "switchChannels": {
+            "Effect / Strobe Speed": "Strobe Speed"
+          }
         },
         {
           "dmxRange": [204, 255],
-          "type": "NoFunction",
-          "comment": "Mode-Sound Activate"
+          "type": "Effect",
+          "effectName": "Sound-activated",
+          "soundControlled": true,
+          "switchChannels": {
+            "Effect / Strobe Speed": "Effect Speed"
+          }
         }
       ]
     },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
     "Strobe Speed": {
-      "defaultValue": "0%",
       "capability": {
         "type": "StrobeSpeed",
         "speedStart": "slow",
-        "speedEnd": "fast",
-        "comment": "Adjust Speed Ch5 / Strobe Rate CH2-4"
+        "speedEnd": "fast"
       }
     }
   },
@@ -98,20 +118,20 @@
       "shortName": "6ch",
       "channels": [
         "Master Dimmer",
-        "Dimmer Red",
-        "Dimmer Green",
-        "Dimmer Blue",
-        "Function Selection",
-        "Strobe Speed"
+        "Red",
+        "Green",
+        "Blue",
+        "Effects",
+        "Effect / Strobe Speed"
       ]
     },
     {
       "name": "3 Channel",
       "shortName": "3ch",
       "channels": [
-        "Dimmer Red",
-        "Dimmer Green",
-        "Dimmer Blue"
+        "Red",
+        "Green",
+        "Blue"
       ]
     }
   ]
