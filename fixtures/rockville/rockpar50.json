@@ -59,7 +59,7 @@
           "dmxRange": [0, 50],
           "type": "NoFunction",
           "switchChannels": {
-            "Effect / Strobe Speed": "Effect Speed"
+            "Speed": "Effect Speed"
           }
         },
         {
@@ -67,7 +67,7 @@
           "type": "Effect",
           "effectPreset": "ColorJump",
           "switchChannels": {
-            "Effect / Strobe Speed": "Effect Speed"
+            "Speed": "Effect Speed"
           }
         },
         {
@@ -75,7 +75,7 @@
           "type": "Effect",
           "effectPreset": "ColorFade",
           "switchChannels": {
-            "Effect / Strobe Speed": "Effect Speed"
+            "Speed": "Effect Speed"
           }
         },
         {
@@ -83,7 +83,7 @@
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "switchChannels": {
-            "Effect / Strobe Speed": "Strobe Speed"
+            "Speed": "Strobe Speed"
           }
         },
         {
@@ -92,7 +92,7 @@
           "effectName": "Sound-activated",
           "soundControlled": true,
           "switchChannels": {
-            "Effect / Strobe Speed": "Effect Speed"
+            "Speed": "Effect Speed"
           }
         }
       ]
@@ -122,7 +122,7 @@
         "Green",
         "Blue",
         "Effects",
-        "Effect / Strobe Speed"
+        "Speed"
       ]
     },
     {
