@@ -47,7 +47,7 @@ const siteChecker = new blc.SiteChecker({
     `https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug`,
     `https://www.heise.de/embetty`,
 
-    ...exportPluginKeys.map(pluginKey => `${BASE_URL}*${pluginKey}`)
+    ...exportPluginKeys.map(pluginKey => `${BASE_URL}*.${pluginKey}`)
   ]
 }, {
   html(tree, robots, response, pageUrl, customData) {
