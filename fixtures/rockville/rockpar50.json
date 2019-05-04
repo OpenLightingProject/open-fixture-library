@@ -1,0 +1,138 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RockPAR50",
+  "shortName": "RockvilleRockPAR50",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Jeff Kowalik"],
+    "createDate": "2019-05-03",
+    "lastModifyDate": "2019-05-03"
+  },
+  "links": {
+    "productPage": [
+      "https://www.rockvilleaudio.com/rockpar50/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=E4kI6QuNiMg"
+    ]
+  },
+  "physical": {
+    "dimensions": [185, 178, 110],
+    "power": 24,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "18x 1W LEDs (6x red, 6x green, 6x blue)"
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Effects": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Speed": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [51, 101],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "switchChannels": {
+            "Speed": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "switchChannels": {
+            "Speed": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "switchChannels": {
+            "Speed": "Strobe Speed"
+          }
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Effect",
+          "effectName": "Sound-activated",
+          "soundControlled": true,
+          "switchChannels": {
+            "Speed": "Effect Speed"
+          }
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Master Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Effects",
+        "Speed"
+      ]
+    },
+    {
+      "name": "3 Channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}

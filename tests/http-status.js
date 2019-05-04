@@ -4,7 +4,12 @@ const path = require(`path`);
 const chalk = require(`chalk`);
 const childProcess = require(`child_process`);
 const blc = require(`broken-link-checker`);
+
 const pullRequest = require(`./github/pull-request.js`);
+
+const exportPluginKeys = require(`../plugins/plugins.json`).exportPlugins;
+
+const BASE_URL = `http://localhost:5000/`;
 
 // disable certificate errors
 // this is unsafe, but there apparently is no better alternative
@@ -40,7 +45,9 @@ const siteChecker = new blc.SiteChecker({
     // otherwise these would somehow be checked for every fixture, and we can
     // safely assume that these are correct and long-lasting links
     `https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug`,
-    `https://www.heise.de/embetty`
+    `https://www.heise.de/embetty`,
+
+    ...exportPluginKeys.map(pluginKey => `${BASE_URL}*.${pluginKey}`)
   ]
 }, {
   html(tree, robots, response, pageUrl, customData) {
@@ -67,6 +74,11 @@ const siteChecker = new blc.SiteChecker({
     }
   },
   page(error, pageUrl, customData) {
+    if (!(pageUrl in resolvedUrls)) {
+      resolvedUrls[pageUrl] = pageUrl;
+      foundLinks[pageUrl] = [];
+    }
+
     const resolvedUrl = resolvedUrls[pageUrl];
 
     if (error) {
@@ -153,5 +165,5 @@ function startLinkChecker(data) {
   console.log(`${data}\nStarting HTTP requests ...\n`);
 
   startTime = new Date();
-  siteChecker.enqueue(`http://localhost:5000/`);
+  siteChecker.enqueue(BASE_URL);
 }
