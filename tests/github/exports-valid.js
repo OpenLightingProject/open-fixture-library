@@ -20,6 +20,8 @@ const testFixtures = require(`../test-fixtures.json`).map(
   fixture => [fixture.man, fixture.key]
 );
 
+let testErrored = false;
+
 /**
  * @typedef {object} Task
  * @property {string} manKey
@@ -107,6 +109,11 @@ pullRequest.checkEnv()
       name: `Export files validity`,
       lines
     });
+  })
+  .then(() => {
+    if (testErrored) {
+      throw new Error(`Unable to export some fixtures.`);
+    }
   })
   .catch(error => {
     console.error(error);
@@ -209,34 +216,41 @@ function getTasksForFixtures(changedComponents) {
  * @param {Task} task The export valid task to fulfill.
  * @returns {Promise} A promise resolving with an array of message lines.
  */
-function getTaskPromise(task) {
+async function getTaskPromise(task) {
   const plugin = require(path.join(__dirname, `../../plugins/${task.pluginKey}/export.js`));
   const test = require(path.join(__dirname, `../../plugins/${task.pluginKey}/exportTests/${task.testKey}.js`));
-  let failed = false;
+  let emoji = `:heavy_check_mark:`;
+  const detailListItems = [];
 
-  return plugin.export([fixtureFromRepository(task.manKey, task.fixKey)], {
-    baseDir: path.join(__dirname, `../..`),
-    date: new Date()
-  })
-    .then(files => Promise.all(files.map(
-      file => test(file)
-        .then(() => `    <li>:heavy_check_mark: ${file.name}</li>`)
-        .catch(err => {
-          failed = true;
-          const errors = Array.isArray(err) ? err : [err];
-          return `    <li><details><summary>:x: ${file.name}</summary>${errors.join(`<br />\n`)}</details></li>`;
-        })
-    )))
-    .then(resultLines => {
-      const emoji = failed ? `:x:` : `:heavy_check_mark:`;
-
-      return [].concat(
-        `<details>`,
-        `  <summary>${emoji} <strong>${task.manKey} / ${task.fixKey}:</strong> ${task.pluginKey} / ${task.testKey}</summary>`,
-        `  <ul>`,
-        resultLines,
-        `  </ul>`,
-        `</details>`
-      );
+  try {
+    const files = await plugin.export([fixtureFromRepository(task.manKey, task.fixKey)], {
+      baseDir: path.join(__dirname, `../..`),
+      date: new Date()
     });
+
+    const resultListItems = await Promise.all(files.map(
+      file => test(file)
+        .then(() => `heavy_check_mark: ${file.name}`)
+        .catch(err => {
+          emoji = `:x:`;
+          const errors = Array.isArray(err) ? err : [err];
+          return `<details><summary>:x: ${file.name}</summary>${errors.join(`<br />\n`)}</details>`;
+        })
+    ));
+    detailListItems.push(...resultListItems);
+  }
+  catch (error) {
+    emoji = `:heavy_exclamation_mark:`;
+    detailListItems.push(`Unable to export fixture: ${error.message}`);
+    testErrored = true;
+  }
+
+  return [
+    `<details>`,
+    `  <summary>${emoji} <strong>${task.manKey} / ${task.fixKey}:</strong> ${task.pluginKey} / ${task.testKey}</summary>`,
+    `  <ul>`,
+    ...detailListItems.map(listItem => `    <li>${listItem}</li>`),
+    `  </ul>`,
+    `</details>`
+  ];
 }

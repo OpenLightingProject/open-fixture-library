@@ -227,7 +227,7 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
 
     if (files.length === 1) {
       response
-        .status(201)
+        .status(200)
         .attachment(files[0].name)
         .type(files[0].mimetype)
         .send(Buffer.from(files[0].content));
@@ -245,7 +245,7 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
       type: `nodebuffer`,
       compression: `DEFLATE`
     });
-    response.status(201)
+    response.status(200)
       .attachment(`ofl_export_${zipName}.zip`)
       .type(`application/zip`)
       .send(zipBuffer);
