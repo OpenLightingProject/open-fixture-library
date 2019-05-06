@@ -129,6 +129,26 @@ module.exports = {
         property: `og:title`,
         content: ``,
         template: titleTemplate
+      },
+      {
+        hid: `image`,
+        property: `og:image`,
+        content: `https://open-fixture-library.org/open-graph.png`
+      },
+      {
+        hid: `image_type`,
+        property: `og:image:type`,
+        content: `image/png`
+      },
+      {
+        hid: `image_width`,
+        property: `og:image:width`,
+        content: `1280`
+      },
+      {
+        hid: `image_height`,
+        property: `og:image:height`,
+        content: `640`
       }
     ];
 
