@@ -37,6 +37,20 @@
       "tiltMax": 205
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [   "Amber Top",    "Blue Top",    "Green Top",    "Red Top"],
+        [         null,           null,           null,         null],
+        ["Amber Bottom", "Blue Bottom", "Green Bottom", "Red Bottom"]
+      ]
+    ],
+    "pixelGroups": {
+      "Master": "all",
+      "Top": { "name": [" Top$"] },
+      "Bottom": { "name": [" Bottom$"] }
+    }
+  },
   "availableChannels": {
     "Shows": {
       "defaultValue": 0,
@@ -80,50 +94,6 @@
         "type": "Pan",
         "angleStart": "0deg",
         "angleEnd": "540deg"
-      }
-    },
-    "Tilt Top": {
-      "fineChannelAliases": ["Tilt Top fine"],
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "205deg"
-      }
-    },
-    "Tilt Bottom": {
-      "fineChannelAliases": ["Tilt Bottom fine"],
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "205deg"
-      }
-    },
-    "Red $pixelKey": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green $pixelKey": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue $pixelKey": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Amber $pixelKey": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
       }
     },
     "Shutter / Strobe": {
@@ -372,6 +342,44 @@
       ]
     }
   },
+  "templateChannels": {
+    "Tilt $pixelKey": {
+      "fineChannelAliases": ["Tilt $pixelKey fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "205deg"
+      }
+    },
+    "Red $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    }
+  },
   "modes": [
     {
       "name": "1-channel",
@@ -405,10 +413,10 @@
         "Tilt Top fine",
         "Tilt Bottom",
         "Tilt Bottom fine",
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
-        "Amber $pixelKey",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Amber Master",
         "Shutter / Strobe",
         "Dimmer",
         "Chases",
@@ -428,10 +436,17 @@
         "Tilt Top fine",
         "Tilt Bottom",
         "Tilt Bottom fine",
-        "Red $pixelKey",
-        "Green $pixelKey",
-        "Blue $pixelKey",
-        "Amber $pixelKey",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Top", "Bottom"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey"
+          ]
+        },
         "Shutter / Strobe",
         "Dimmer",
         "Chases",
