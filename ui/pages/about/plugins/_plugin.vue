@@ -135,8 +135,16 @@ export default {
     };
   },
   head() {
+    const title = `${this.pluginData.name} Plugin`;
+
     return {
-      title: `${this.pluginData.name} Plugin`
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title
+        }
+      ]
     };
   }
 };

@@ -74,6 +74,9 @@ module.exports = {
       return titleChunk ? `${titleChunk} – Open Fixture Library` : `Open Fixture Library`;
     };
 
+    const websitePath = this.$route.path.replace(/\/$/, ``); // remove trailing slash
+    const canonicalUrl = `https://open-fixture-library.org${websitePath}`;
+
     const meta = [
       {
         charset: `utf-8`
@@ -85,6 +88,67 @@ module.exports = {
       {
         name: `mobile-web-app-capable`,
         content: `yes`
+      },
+      {
+        // this enables Twitter link previews
+        name: `twitter:card`,
+        content: `summary`
+      },
+      {
+        hid: `url`,
+        property: `og:url`,
+        content: canonicalUrl
+      },
+      {
+        hid: `type`,
+        property: `og:type`,
+        content: `website`
+      },
+      {
+        hid: `site_name`,
+        property: `og:site_name`,
+        content: `Open Fixture Library`
+      },
+      {
+        hid: `locale`,
+        property: `og:locale`,
+        content: `en_US`
+      },
+      {
+        hid: `determiner`,
+        property: `og:determiner`,
+        content: `the`
+      },
+      {
+        hid: `description`,
+        property: `og:description`,
+        content: `Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!`
+      },
+      {
+        hid: `title`,
+        property: `og:title`,
+        content: ``,
+        template: titleTemplate
+      },
+      {
+        hid: `image`,
+        property: `og:image`,
+        content: `https://open-fixture-library.org/open-graph.png`
+      },
+      {
+        hid: `image_type`,
+        property: `og:image:type`,
+        content: `image/png`
+      },
+      {
+        hid: `image_width`,
+        property: `og:image:width`,
+        content: `1280`
+      },
+      {
+        hid: `image_height`,
+        property: `og:image:height`,
+        content: `640`
       }
     ];
 
@@ -95,12 +159,10 @@ module.exports = {
       });
     }
 
-    const path = this.$route.path.replace(/\/$/, ``); // remove trailing slash
-
     const link = [
       {
         rel: `canonical`,
-        href: `https://open-fixture-library.org${path}`
+        href: canonicalUrl
       },
       {
         rel: `apple-touch-icon`,

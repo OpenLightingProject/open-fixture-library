@@ -146,8 +146,16 @@ export default {
     'app-labeled-input': labeledInputVue
   },
   head() {
+    const title = `Import fixture`;
+
     return {
-      title: `Import fixture`
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title
+        }
+      ]
     };
   },
   asyncData({ query }) {

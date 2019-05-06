@@ -65,8 +65,16 @@ export default {
     'app-svg': svgVue
   },
   head() {
+    const title = `Plugins`;
+
     return {
-      title: `Plugins`
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title
+        }
+      ]
     };
   },
   data() {
