@@ -296,8 +296,16 @@ export default {
     'app-editor-submit-dialog': editorSubmitDialogVue
   },
   head() {
+    const title = `Fixture Editor`;
+
     return {
-      title: `Fixture Editor`
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title
+        }
+      ]
     };
   },
   asyncData({ query }) {

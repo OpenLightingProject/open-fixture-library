@@ -27,8 +27,16 @@ export default {
       console.error(`Nuxt rendering error:`, this.error);
     }
 
+    const title = this.error.statusCode === 404 ? `Not Found` : `Error`;
+
     return {
-      title: this.error.statusCode === 404 ? `Not Found` : `Error`
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title
+        }
+      ]
     };
   }
 };
