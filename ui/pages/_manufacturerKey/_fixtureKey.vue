@@ -549,8 +549,16 @@ export default {
     }
   },
   head() {
+    const title = `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`;
+
     return {
-      title: `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title
+        }
+      ]
     };
   },
   mounted() {
