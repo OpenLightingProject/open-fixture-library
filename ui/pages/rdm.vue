@@ -78,8 +78,16 @@ export default {
     'app-labeled-input': labeledInputVue
   },
   head() {
+    const title = `RDM Lookup`;
+
     return {
-      title: `RDM Lookup`
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title
+        }
+      ]
     };
   },
   async asyncData({ query, redirect }) {

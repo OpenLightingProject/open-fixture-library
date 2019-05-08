@@ -1,0 +1,203 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Dekker LED",
+  "shortName": "ADJDekker",
+  "categories": ["Flower", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2019-05-08",
+    "lastModifyDate": "2019-05-08"
+  },
+  "links": {
+    "manual": [
+      "http://intranet.americandj.com/ItemRelatedFiles/7156/dekker_led.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/dekker-led"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=vq36Zvue0dU"
+    ]
+  },
+  "physical": {
+    "dimensions": [280, 260, 251],
+    "weight": 3.85,
+    "power": 25,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "2x 5W RGBW LEDs"
+    }
+  },
+  "availableChannels": {
+    "Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Rotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 26],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "4-color"
+        },
+        {
+          "dmxRange": [27, 51],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "9-color"
+        },
+        {
+          "dmxRange": [52, 76],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "4-color"
+        },
+        {
+          "dmxRange": [77, 101],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "9-color"
+        },
+        {
+          "dmxRange": [102, 126],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
+        },
+        {
+          "dmxRange": [127, 151],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown"
+        },
+        {
+          "dmxRange": [152, 176],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown"
+        },
+        {
+          "dmxRange": [177, 201],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        },
+        {
+          "dmxRange": [202, 226],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "9-color"
+        },
+        {
+          "dmxRange": [227, 254],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "gradual dim"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Effect",
+          "effectName": "Cycle all programs"
+        }
+      ]
+    },
+    "Program Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Effect",
+          "effectName": "Sound active",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Programs",
+        "Program Speed"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Rotation",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Intensity",
+        "Programs",
+        "Program Speed"
+      ]
+    }
+  ]
+}
