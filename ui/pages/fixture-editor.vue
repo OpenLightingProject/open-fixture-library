@@ -209,7 +209,7 @@
       </section>
 
       <div class="button-bar right">
-        <button type="submit" class="save-fixture primary">Validate fixture</button>
+        <button type="submit" class="save-fixture primary">Create fixture</button>
       </div>
 
     </vue-form>
