@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED ACCU-PAR",
+  "categories": ["Color Changer", "Other"],
+  "meta": {
+    "authors": ["Karl Humbug"],
+    "createDate": "2019-05-11",
+    "lastModifyDate": "2019-05-11"
+  },
+  "comment": "10xRGB 5xCW LED Wireless DMX",
+  "links": {
+    "manual": [
+      "https://bkbraun.com/out/media/87401_BA_E_Ignition_Accu_Par_RGB_W.pdf"
+    ],
+    "productPage": [
+      "https://bkbraun.com/out/media/87401_BA_E_Ignition_Accu_Par_RGB_W.pdf"
+    ],
+    "video": [
+      "https://bkbraun.com/out/media/87401_BA_E_Ignition_Accu_Par_RGB_W.pdf"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "focus": {
+      "type": "Fixed"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CoolWhite": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    },
+    "Master": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX5 6CH",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "CoolWhite",
+        "Strobe",
+        "Master"
+      ]
+    }
+  ]
+}
