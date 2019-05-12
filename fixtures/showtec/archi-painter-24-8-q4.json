@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Archi Painter 24/8 Q4",
+  "shortName": "6ch",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["1st truc"],
+    "createDate": "2019-05-12",
+    "lastModifyDate": "2019-05-12"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/download/1316254/Showtec-Archi-Painter-24-8-Q4.html"
+    ],
+    "productPage": [
+      "https://www.licht-produktiv.de/Archi-Painter-24/8-Q4"
+    ],
+    "video": [
+      "https://www.licht-produktiv.de/Archi-Painter-24/8-Q4"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Intensity Red": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Intensity Green": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Intensity Blue": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensity White": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "20000Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Intensity Red",
+        "Intensity Green",
+        "Intensity Blue",
+        "Intensity White",
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
