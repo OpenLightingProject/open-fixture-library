@@ -37,7 +37,17 @@
       "tiltMax": 180
     }
   },
-  "matrix": {},
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["LED 1", "LED 2"],
+        ["LED 3", "LED 4"]
+      ]
+    ],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
@@ -83,102 +93,6 @@
           "speedEnd": "25Hz"
         }
       ]
-    },
-    "LED 1 Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED 1 Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED 1 Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED 1 White": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED 2 Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED 2 Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED 2 Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED 2 White": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED 3 Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED 3 Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED 3 Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED 3 White": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED 4 Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED 4 Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED 4 Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED 4 White": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
     },
     "Function": {
       "defaultValue": 0,
@@ -387,33 +301,34 @@
         "soundSensitivityStart": "low",
         "soundSensitivityEnd": "high"
       }
-    },
-    "Red": {
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green": {
+    "Green $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue": {
+    "Blue $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "White": {
+    "White $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     }
   },
-  "templateChannels": {},
   "modes": [
     {
       "name": "3 Channel",
@@ -446,10 +361,10 @@
         "Motor Speed",
         "Master Dimmer",
         "Strobe",
-        "Red",
-        "Green",
-        "Blue",
-        "White",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
         "Function",
         "Program Speed / Sound Sensitivity"
       ]
@@ -464,22 +379,22 @@
         "Motor Speed",
         "Master Dimmer",
         "Strobe",
-        "LED 1 Red",
-        "LED 1 Green",
-        "LED 1 Blue",
-        "LED 1 White",
-        "LED 2 Red",
-        "LED 2 Green",
-        "LED 2 Blue",
-        "LED 2 White",
-        "LED 3 Red",
-        "LED 3 Green",
-        "LED 3 Blue",
-        "LED 3 White",
-        "LED 4 Red",
-        "LED 4 Green",
-        "LED 4 Blue",
-        "LED 4 White",
+        "Red LED 1",
+        "Green LED 1",
+        "Blue LED 1",
+        "White LED 1",
+        "Red LED 2",
+        "Green LED 2",
+        "Blue LED 2",
+        "White LED 2",
+        "Red LED 3",
+        "Green LED 3",
+        "Blue LED 3",
+        "White LED 3",
+        "Red LED 4",
+        "Green LED 4",
+        "Blue LED 4",
+        "White LED 4",
         "Function",
         "Program Speed / Sound Sensitivity"
       ]
