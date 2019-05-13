@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "PicoWash 40 Pixel Quad LED",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Harm Aldick"],
     "createDate": "2019-05-11",
@@ -12,20 +12,27 @@
       "comment": "created by Q Light Controller Plus (version 4.11.2 GIT)"
     }
   },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/372705_c_372705_v2_r1_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/intl/fun_generation_picowash_40_pixel_quad_led.htm"
+    ]
+  },
   "physical": {
     "dimensions": [162, 228, 174],
     "weight": 2.8,
     "power": 55,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "4x 10W RGBW LEDs"
     },
     "lens": {
-      "name": "Other",
       "degreesMinMax": [28, 28]
     },
     "focus": {
-      "type": "Fixed",
+      "type": "Head",
       "panMax": 540,
       "tiltMax": 180
     }
