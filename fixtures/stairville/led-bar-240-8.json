@@ -42,346 +42,207 @@
     }
   },
   "availableChannels": {
-    "Intensity": {
-      "fineChannelAliases": ["Intensity fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 1,
+    "Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "Blackout",
+          "colors": ["#000000"],
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Pattern red",
+          "colors": ["#ff0000"],
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Pattern red/green",
+          "colors": ["#ff0000", "#00ff00"],
+          "helpWanted": "Does this pattern mix to yellow? (The same applies to following multi-color patterns).",
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Pattern green",
+          "colors": ["#00ff00"],
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Pattern green/blue",
+          "colors": ["#00ff00", "#0000ff"],
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Pattern blue",
+          "colors": ["#0000ff"],
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Pattern blue/red",
+          "colors": ["#0000ff", "#ff0000"],
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Pattern red/green/blue",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [64, 231],
+          "type": "Effect",
+          "effectName": "Preprogrammed shows",
+          "helpWanted": "Which shows can be selected at which DMX values?",
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "Effect",
+          "effectName": "Sound-controlled shows",
+          "soundControlled": true,
+          "helpWanted": "Which shows can be selected at which DMX values?",
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Show Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
+      }
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "1. segment "
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
-    "Intensity 2": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 2 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 2,
+    "Green $pixelKey": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "1. segment"
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     },
-    "Intensity 3": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 3 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 3,
+    "Blue $pixelKey": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "1. segment"
-      }
-    },
-    "Intensity 4": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 4 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 4,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "2.segment"
-      }
-    },
-    "Intensity 5": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 5 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 5,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "2.segment"
-      }
-    },
-    "Intensity 6": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 6 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 6,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "2.segment"
-      }
-    },
-    "Intensity 7": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 7 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 7,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "3. segment"
-      }
-    },
-    "Intensity 8": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 8 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 8,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "3.segment"
-      }
-    },
-    "Intensity 9": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 9 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 9,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "3.segment"
-      }
-    },
-    "Intensity 10": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 10 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 10,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "4.segment"
-      }
-    },
-    "Intensity 11": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 11 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 11,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "4.segment"
-      }
-    },
-    "Intensity 12": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 12 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 12,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "4.segment"
-      }
-    },
-    "Intensity 13": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 13 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 13,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "5. segment"
-      }
-    },
-    "Intensity 14": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 14 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 14,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "5 segment"
-      }
-    },
-    "Intensity 15": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 15 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 14,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "5 segment"
-      }
-    },
-    "Intensity 16": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 16 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 15,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "6 segment"
-      }
-    },
-    "Intensity 17": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 17 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 17,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "6 segment"
-      }
-    },
-    "Intensity 18": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 18 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 18,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "6 segment"
-      }
-    },
-    "Intensity 19": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 19 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 19,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "7 segment"
-      }
-    },
-    "Intensity 20": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 20 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 20,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "7.segment "
-      }
-    },
-    "Intensity 21": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 21 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 21,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "7 segment"
-      }
-    },
-    "Intensity 22": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 22 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 22,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "8. segment"
-      }
-    },
-    "Intensity 23": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 23 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 23,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "8. segment"
-      }
-    },
-    "Intensity 24": {
-      "name": "Intensity",
-      "fineChannelAliases": ["Intensity 24 fine"],
-      "dmxValueResolution": "8bit",
-      "defaultValue": 24,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": "8.segment"
+        "brightnessStart": "off",
+        "brightnessEnd": "bright"
       }
     }
   },
   "modes": [
     {
-      "name": "extented",
+      "name": "2-channel",
+      "shortName": "2ch",
       "channels": [
-        "Intensity",
-        "Intensity 2",
-        "Intensity 3",
-        "Intensity 4",
-        "Intensity 5",
-        "Intensity 6",
-        "Intensity 7",
-        "Intensity 8",
-        "Intensity 9",
-        "Intensity 10",
-        "Intensity 11",
-        "Intensity 12",
-        "Intensity 13",
-        "Intensity 14",
-        "Intensity 15",
-        "Intensity 16",
-        "Intensity 17",
-        "Intensity 18",
-        "Intensity 19",
-        "Intensity 20",
-        "Intensity 21",
-        "Intensity 22",
-        "Intensity 23",
-        "Intensity 24"
+        "Programs",
+        "Show Speed / Sound Sensitivity"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "24-channel",
+      "shortName": "24ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     }
   ]
