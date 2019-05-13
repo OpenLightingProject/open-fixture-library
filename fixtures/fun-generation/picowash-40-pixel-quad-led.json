@@ -40,46 +40,32 @@
   "matrix": {},
   "availableChannels": {
     "Pan": {
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angleStart": "0%",
-        "angleEnd": "100%",
-        "comment": "Pan (0° - 540°)"
-      }
-    },
-    "Pan (fine)": {
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0%",
-        "angleEnd": "100%"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angleStart": "0%",
-        "angleEnd": "100%",
-        "comment": "Tilt (0° - 180°)"
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
       }
     },
-    "Tilt (fine)": {
+    "Motor Speed": {
+      "defaultValue": 0,
       "capability": {
-        "type": "Tilt",
-        "angleStart": "0%",
-        "angleEnd": "100%"
-      }
-    },
-    "Motor speed": {
-      "capability": {
-        "type": "Speed",
+        "type": "PanTiltSpeed",
         "speedStart": "fast",
         "speedEnd": "slow"
       }
     },
-    "Master dimmer": {
+    "Master Dimmer": {
       "capability": {
-        "type": "Intensity",
-        "comment": "Master dimmer 0 - 100%"
+        "type": "Intensity"
       }
     },
     "Strobe": {
@@ -87,277 +73,343 @@
         {
           "dmxRange": [0, 9],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "No function (open)"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [10, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "1Hz",
-          "speedEnd": "25Hz",
-          "comment": "Strobe, slow to fast"
+          "speedEnd": "25Hz"
         }
       ]
     },
     "LED 1 Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "LED 1 - Red - Dimmer 0 - 100%"
+        "color": "Red"
       }
     },
     "LED 1 Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "LED 1 - Green - Dimmer 0 - 100%"
+        "color": "Green"
       }
     },
     "LED 1 Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "LED 1 - Blue - Dimmer 0 - 100%"
+        "color": "Blue"
       }
     },
     "LED 1 White": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "comment": "LED 1 - White - Dimmer 0 - 100%"
+        "color": "White"
       }
     },
     "LED 2 Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "LED 2 - Red - Dimmer 0 - 100%"
+        "color": "Red"
       }
     },
     "LED 2 Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "LED 2 - Green - Dimmer 0 - 100%"
+        "color": "Green"
       }
     },
     "LED 2 Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "LED 2 - Blue - Dimmer 0 - 100%"
+        "color": "Blue"
       }
     },
     "LED 2 White": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "comment": "LED 2 - White - Dimmer 0 - 100%"
+        "color": "White"
       }
     },
     "LED 3 Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "LED 3 - Red - Dimmer 0 - 100%"
+        "color": "Red"
       }
     },
     "LED 3 Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "LED 3 - Green - Dimmer 0 - 100%"
+        "color": "Green"
       }
     },
     "LED 3 Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "LED 3 - Blue - Dimmer 0 - 100%"
+        "color": "Blue"
       }
     },
     "LED 3 White": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "comment": "LED 3 - White - Dimmer 0 - 100%"
+        "color": "White"
       }
     },
     "LED 4 Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "LED 4 - Red - Dimmer 0 - 100%"
+        "color": "Red"
       }
     },
     "LED 4 Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "LED 4 - Green - Dimmer 0 - 100%"
+        "color": "Green"
       }
     },
     "LED 4 Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "LED 4 - Blue - Dimmer 0 - 100%"
+        "color": "Blue"
       }
     },
     "LED 4 White": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "comment": "LED 4 - White - Dimmer 0 - 100%"
+        "color": "White"
       }
     },
     "Function": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 49],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [50, 59],
-          "type": "Effect",
-          "effectName": "Red"
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [60, 69],
-          "type": "Effect",
-          "effectName": "Green"
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [70, 79],
-          "type": "Effect",
-          "effectName": "Blue"
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [80, 89],
-          "type": "Effect",
-          "effectName": "White"
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [90, 99],
-          "type": "Effect",
-          "effectName": "Yellow"
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [100, 109],
-          "type": "Effect",
-          "effectName": "Cyan"
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [110, 119],
-          "type": "Effect",
-          "effectName": "Purple"
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#ff00ff"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [120, 129],
-          "type": "Effect",
-          "effectName": "All White"
+          "type": "ColorPreset",
+          "comment": "All White",
+          "colors": ["#ffffff"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [130, 139],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [140, 149],
           "type": "Effect",
-          "effectName": "Programme 1"
+          "effectName": "Program 1",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [150, 159],
           "type": "Effect",
-          "effectName": "Programme 2"
+          "effectName": "Program 2",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [160, 169],
           "type": "Effect",
-          "effectName": "Programme 3"
+          "effectName": "Program 3",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [170, 179],
           "type": "Effect",
-          "effectName": "Programme 4"
+          "effectName": "Program 4",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [180, 189],
           "type": "Effect",
-          "effectName": "Programme 5"
+          "effectName": "Program 5",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [190, 199],
           "type": "Effect",
-          "effectName": "Programme 6"
+          "effectName": "Program 6",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [200, 209],
           "type": "Effect",
-          "effectName": "Programme 7"
+          "effectName": "Program 7",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [210, 219],
           "type": "Effect",
-          "effectName": "Programme 8"
+          "effectName": "Program 8",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [220, 229],
           "type": "Effect",
-          "effectName": "Programme 9"
+          "effectName": "Program 9",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [230, 233],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [234, 236],
-          "type": "Effect",
-          "effectName": "Reset"
+          "type": "Maintenance",
+          "comment": "Reset",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [237, 249],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [250, 255],
           "type": "Effect",
-          "effectName": "Sound-controlled mode"
+          "effectName": "Sound-controlled mode",
+          "soundControlled": true,
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         }
       ]
     },
-    "Speed / Sensitivity": {
+    "Program Speed": {
       "capability": {
-        "type": "Speed"
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
       }
     },
     "Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "Red - Dimmer 0 - 100%"
+        "color": "Red"
       }
     },
     "Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "Green - Dimmer 0 - 100%"
+        "color": "Green"
       }
     },
     "Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "Blue - Dimmer 0 - 100%"
+        "color": "Blue"
       }
     },
     "White": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "comment": "White - Dimmer 0 - 100%"
+        "color": "White"
       }
     }
   },
@@ -368,49 +420,49 @@
       "channels": [
         "Pan",
         "Tilt",
-        "Master dimmer"
+        "Master Dimmer"
       ]
     },
     {
       "name": "8 Channel",
       "channels": [
         "Pan",
-        "Pan (fine)",
+        "Pan fine",
         "Tilt",
-        "Tilt (fine)",
-        "Motor speed",
-        "Master dimmer",
+        "Tilt fine",
+        "Motor Speed",
+        "Master Dimmer",
         "Function",
-        "Speed / Sensitivity"
+        "Program Speed / Sound Sensitivity"
       ]
     },
     {
       "name": "13 Channel",
       "channels": [
         "Pan",
-        "Pan (fine)",
+        "Pan fine",
         "Tilt",
-        "Tilt (fine)",
-        "Motor speed",
-        "Master dimmer",
+        "Tilt fine",
+        "Motor Speed",
+        "Master Dimmer",
         "Strobe",
         "Red",
         "Green",
         "Blue",
         "White",
         "Function",
-        "Speed / Sensitivity"
+        "Program Speed / Sound Sensitivity"
       ]
     },
     {
       "name": "25 Channel",
       "channels": [
         "Pan",
-        "Pan (fine)",
+        "Pan fine",
         "Tilt",
-        "Tilt (fine)",
-        "Motor speed",
-        "Master dimmer",
+        "Tilt fine",
+        "Motor Speed",
+        "Master Dimmer",
         "Strobe",
         "LED 1 Red",
         "LED 1 Green",
@@ -429,7 +481,7 @@
         "LED 4 Blue",
         "LED 4 White",
         "Function",
-        "Speed / Sensitivity"
+        "Program Speed / Sound Sensitivity"
       ]
     }
   ]
