@@ -1,18 +1,19 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED Bar 240/8",
-  "categories": ["Pixel Bar", "Color Changer", "Matrix"],
+  "shortName": "StairvilleLedBar240/8",
+  "categories": ["Pixel Bar", "Color Changer"],
   "meta": {
     "authors": ["kiki"],
-    "createDate": "2019-05-09",
-    "lastModifyDate": "2019-05-09"
+    "createDate": "2019-05-13",
+    "lastModifyDate": "2019-05-13"
   },
   "links": {
     "manual": [
-      "https://images.thomann.de/pics/atg/atgdata/document/manual/c_294835_fr_online.pdf"
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/294835_c_294835_v3_r3_en_online.pdf"
     ],
     "productPage": [
-      "https://www.thomann.de/fr/stairville_led_bar_2408_rgb_dmx_30.htm"
+      "https://www.thomann.de/intl/stairville_led_bar_2408_rgb_dmx_30.htm?ref=intl&shp=eyJjb3VudHJ5IjoiZGUiLCJjdXJyZW5jeSI6MiwibGFuZ3VhZ2UiOjJ9&reload=1"
     ],
     "video": [
       "https://www.youtube.com/watch?v=n5rRgpYDY7M"
@@ -24,13 +25,10 @@
     "power": 36,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "240× 10mm LEDs (96× red, 72× green, 72× blue)"
     },
     "lens": {
       "degreesMinMax": [30, 30]
-    },
-    "focus": {
-      "type": "Fixed"
     }
   },
   "availableChannels": {
