@@ -5,15 +5,15 @@
   "categories": ["Pixel Bar", "Color Changer"],
   "meta": {
     "authors": ["kiki"],
-    "createDate": "2019-05-13",
-    "lastModifyDate": "2019-05-13"
+    "createDate": "2019-05-14",
+    "lastModifyDate": "2019-05-14"
   },
   "links": {
     "manual": [
       "https://images.static-thomann.de/pics/atg/atgdata/document/manual/294835_c_294835_v3_r3_en_online.pdf"
     ],
     "productPage": [
-      "https://www.thomann.de/intl/stairville_led_bar_2408_rgb_dmx_30.htm?ref=intl&shp=eyJjb3VudHJ5IjoiZGUiLCJjdXJyZW5jeSI6MiwibGFuZ3VhZ2UiOjJ9&reload=1"
+      "https://www.thomann.de/intl/stairville_led_bar_2408_rgb_dmx_30.htm"
     ],
     "video": [
       "https://www.youtube.com/watch?v=n5rRgpYDY7M"
@@ -156,9 +156,7 @@
     "Dimmer": {
       "defaultValue": 0,
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "type": "Intensity"
       }
     },
     "Strobe": {
@@ -176,27 +174,21 @@
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Red"
       }
     },
     "Green $pixelKey": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Green"
       }
     },
     "Blue $pixelKey": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "off",
-        "brightnessEnd": "bright"
+        "color": "Blue"
       }
     }
   },
