@@ -98,6 +98,10 @@ Base class for channels.
 ### *new AbstractChannel(key)*
 Create a new AbstractChannel instance. Call this from child classes as `super(key)`.
 
+**Throws**:
+
+- <code>TypeError</code> If the AbstractChannel is instantiated directly.
+
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -697,11 +701,13 @@ Overrides [`AbstractChannel.name`](#AbstractChannel+name).
 
 ### coarseChannel.key ⇒ <code>string</code>
 **Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
+**Overrides**: [<code>key</code>](#AbstractChannel+key)  
 **Returns**: <code>string</code> - The channel key.  
 <a name="AbstractChannel+uniqueName"></a>
 
 ### coarseChannel.uniqueName ⇒ <code>string</code>
 **Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
+**Overrides**: [<code>uniqueName</code>](#AbstractChannel+uniqueName)  
 **Returns**: <code>string</code> - Unique version of this channel's name.  
 **See**: [uniqueChannelNames](#Fixture+uniqueChannelNames)  
 <a name="AbstractChannel+pixelKey"></a>
@@ -952,11 +958,13 @@ Overrides [`AbstractChannel.fixture`](#AbstractChannel+fixture).
 
 ### fineChannel.key ⇒ <code>string</code>
 **Kind**: instance property of [<code>FineChannel</code>](#FineChannel)  
+**Overrides**: [<code>key</code>](#AbstractChannel+key)  
 **Returns**: <code>string</code> - The channel key.  
 <a name="AbstractChannel+uniqueName"></a>
 
 ### fineChannel.uniqueName ⇒ <code>string</code>
 **Kind**: instance property of [<code>FineChannel</code>](#FineChannel)  
+**Overrides**: [<code>uniqueName</code>](#AbstractChannel+uniqueName)  
 **Returns**: <code>string</code> - Unique version of this channel's name.  
 **See**: [uniqueChannelNames](#Fixture+uniqueChannelNames)  
 <a name="AbstractChannel+pixelKey"></a>
@@ -1810,6 +1818,7 @@ Uses a unique uuid as channel key.
 Overrides [`AbstractChannel.fixture`](#AbstractChannel+fixture).
 
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>fixture</code>](#CoarseChannel+fixture)  
 **Returns**: [<code>Fixture</code>](#Fixture) - The fixture instance this channel is associated to.  
 <a name="CoarseChannel+name"></a>
 
@@ -1817,122 +1826,146 @@ Overrides [`AbstractChannel.fixture`](#AbstractChannel+fixture).
 Overrides [`AbstractChannel.name`](#AbstractChannel+name).
 
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>name</code>](#CoarseChannel+name)  
 **Returns**: <code>string</code> - The channel name if present or else the channel key.  
 <a name="CoarseChannel+type"></a>
 
 ### nullChannel.type ⇒ <code>string</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>type</code>](#CoarseChannel+type)  
 **Returns**: <code>string</code> - The channel type, derived from the channel's capability types.  
 <a name="CoarseChannel+color"></a>
 
 ### nullChannel.color ⇒ <code>string</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>color</code>](#CoarseChannel+color)  
 **Returns**: <code>string</code> - The color of an included ColorIntensity capability, null if there's no such capability.  
 <a name="CoarseChannel+fineChannelAliases"></a>
 
 ### nullChannel.fineChannelAliases ⇒ <code>array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>fineChannelAliases</code>](#CoarseChannel+fineChannelAliases)  
 **Returns**: <code>array.&lt;string&gt;</code> - This channel's fine channel aliases, ordered by resolution (coarsest first).  
 <a name="CoarseChannel+fineChannels"></a>
 
 ### nullChannel.fineChannels ⇒ [<code>array.&lt;FineChannel&gt;</code>](#FineChannel)
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>fineChannels</code>](#CoarseChannel+fineChannels)  
 **Returns**: [<code>array.&lt;FineChannel&gt;</code>](#FineChannel) - This channel's fine channels, ordered by resolution (coarsest first).  
 <a name="CoarseChannel+maxResolution"></a>
 
 ### nullChannel.maxResolution ⇒ [<code>Resolution</code>](#Resolution)
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>maxResolution</code>](#CoarseChannel+maxResolution)  
 **Returns**: [<code>Resolution</code>](#Resolution) - How fine this channel can be used at its maximum. Equals the amount of coarse and fine channels.  
 <a name="CoarseChannel+dmxValueResolution"></a>
 
 ### nullChannel.dmxValueResolution ⇒ [<code>Resolution</code>](#Resolution)
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>dmxValueResolution</code>](#CoarseChannel+dmxValueResolution)  
 **Returns**: [<code>Resolution</code>](#Resolution) - How fine this channel is declared in the JSON data. Defaults to [maxResolution](#CoarseChannel+maxResolution).  
 <a name="CoarseChannel+maxDmxBound"></a>
 
 ### nullChannel.maxDmxBound ⇒ <code>number</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>maxDmxBound</code>](#CoarseChannel+maxDmxBound)  
 **Returns**: <code>number</code> - The maximum DMX value in the highest possible resolution. E.g. 65535 for a 16bit channel.  
 <a name="CoarseChannel+hasDefaultValue"></a>
 
 ### nullChannel.hasDefaultValue ⇒ <code>boolean</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>hasDefaultValue</code>](#CoarseChannel+hasDefaultValue)  
 **Returns**: <code>boolean</code> - Whether this channel has a defaultValue.  
 <a name="CoarseChannel+defaultValue"></a>
 
 ### nullChannel.defaultValue ⇒ <code>number</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>defaultValue</code>](#CoarseChannel+defaultValue)  
 **Returns**: <code>number</code> - The DMX value this channel initially should be set to. Specified in the finest possible resolution. Defaults to 0.  
 <a name="CoarseChannel+hasHighlightValue"></a>
 
 ### nullChannel.hasHighlightValue ⇒ <code>boolean</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>hasHighlightValue</code>](#CoarseChannel+hasHighlightValue)  
 **Returns**: <code>boolean</code> - Whether this channel has a highlightValue.  
 <a name="CoarseChannel+highlightValue"></a>
 
 ### nullChannel.highlightValue ⇒ <code>number</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>highlightValue</code>](#CoarseChannel+highlightValue)  
 **Returns**: <code>number</code> - A DMX value that "highlights" the function of this channel. Specified in the finest possible resolution. Defaults to the highest possible DMX value.  
 <a name="CoarseChannel+isInverted"></a>
 
 ### nullChannel.isInverted ⇒ <code>boolean</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>isInverted</code>](#CoarseChannel+isInverted)  
 **Returns**: <code>boolean</code> - Whether a fader for this channel should be displayed upside down.  
 <a name="CoarseChannel+isConstant"></a>
 
 ### nullChannel.isConstant ⇒ <code>boolean</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>isConstant</code>](#CoarseChannel+isConstant)  
 **Returns**: <code>boolean</code> - Whether this channel should constantly stay at the same value.  
 <a name="CoarseChannel+canCrossfade"></a>
 
 ### nullChannel.canCrossfade ⇒ <code>boolean</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>canCrossfade</code>](#CoarseChannel+canCrossfade)  
 **Returns**: <code>boolean</code> - Whether switching from one DMX value to another in this channel can be faded smoothly.  
 <a name="CoarseChannel+precedence"></a>
 
 ### nullChannel.precedence ⇒ <code>&#x27;HTP&#x27;</code> \| <code>&#x27;LTP&#x27;</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>precedence</code>](#CoarseChannel+precedence)  
 **Returns**: <code>&#x27;HTP&#x27;</code> \| <code>&#x27;LTP&#x27;</code> - The channel's behavior when being affected by multiple faders: HTP (Highest Takes Precedent) or LTP (Latest Takes Precedent).  
 <a name="CoarseChannel+switchingChannelAliases"></a>
 
 ### nullChannel.switchingChannelAliases ⇒ <code>array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>switchingChannelAliases</code>](#CoarseChannel+switchingChannelAliases)  
 **Returns**: <code>array.&lt;string&gt;</code> - Aliases of the switching channels defined by this channel, ordered by appearance in the JSON.  
 <a name="CoarseChannel+switchingChannels"></a>
 
 ### nullChannel.switchingChannels ⇒ [<code>array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel)
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>switchingChannels</code>](#CoarseChannel+switchingChannels)  
 **Returns**: [<code>array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel) - Switching channels defined by this channel, ordered by appearance in the JSON.  
 <a name="CoarseChannel+switchToChannelKeys"></a>
 
 ### nullChannel.switchToChannelKeys ⇒ <code>array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>switchToChannelKeys</code>](#CoarseChannel+switchToChannelKeys)  
 **Returns**: <code>array.&lt;string&gt;</code> - The keys of the channels to which the switching channels defined by this channel can be switched to.  
 <a name="CoarseChannel+capabilities"></a>
 
 ### nullChannel.capabilities ⇒ [<code>array.&lt;Capability&gt;</code>](#Capability)
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>capabilities</code>](#CoarseChannel+capabilities)  
 **Returns**: [<code>array.&lt;Capability&gt;</code>](#Capability) - All capabilities of this channel, ordered by DMX range.  
 <a name="CoarseChannel+isHelpWanted"></a>
 
 ### nullChannel.isHelpWanted ⇒ <code>boolean</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>isHelpWanted</code>](#CoarseChannel+isHelpWanted)  
 **Returns**: <code>boolean</code> - True if help is needed in a capability of this channel, false otherwise.  
 <a name="AbstractChannel+key"></a>
 
 ### nullChannel.key ⇒ <code>string</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>key</code>](#AbstractChannel+key)  
 **Returns**: <code>string</code> - The channel key.  
 <a name="AbstractChannel+uniqueName"></a>
 
 ### nullChannel.uniqueName ⇒ <code>string</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>uniqueName</code>](#AbstractChannel+uniqueName)  
 **Returns**: <code>string</code> - Unique version of this channel's name.  
 **See**: [uniqueChannelNames](#Fixture+uniqueChannelNames)  
 <a name="AbstractChannel+pixelKey"></a>
 
 ### nullChannel.pixelKey
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>pixelKey</code>](#AbstractChannel+pixelKey)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -1944,6 +1977,7 @@ Overrides [`AbstractChannel.name`](#AbstractChannel+name).
 Checks the given resolution if it can safely be used in this channel.
 
 **Kind**: instance method of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>ensureProperResolution</code>](#CoarseChannel+ensureProperResolution)  
 **Throws**:
 
 - <code>RangeError</code> If the given resolution is invalid in this channel.
@@ -1957,6 +1991,7 @@ Checks the given resolution if it can safely be used in this channel.
 
 ### nullChannel.getResolutionInMode(mode, switchingChannelBehavior) ⇒ [<code>Resolution</code>](#Resolution)
 **Kind**: instance method of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>getResolutionInMode</code>](#CoarseChannel+getResolutionInMode)  
 **Returns**: [<code>Resolution</code>](#Resolution) - How fine this channel is used in the given mode. 0 if the channel isn't used at all.  
 
 | Param | Type | Description |
@@ -1968,6 +2003,7 @@ Checks the given resolution if it can safely be used in this channel.
 
 ### nullChannel.getDefaultValueWithResolution(desiredResolution) ⇒ <code>number</code>
 **Kind**: instance method of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>getDefaultValueWithResolution</code>](#CoarseChannel+getDefaultValueWithResolution)  
 **Returns**: <code>number</code> - The DMX value this channel initially should be set to, scaled to match the given resolution.  
 
 | Param | Type | Description |
@@ -1978,6 +2014,7 @@ Checks the given resolution if it can safely be used in this channel.
 
 ### nullChannel.getHighlightValueWithResolution(desiredResolution) ⇒ <code>number</code>
 **Kind**: instance method of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>getHighlightValueWithResolution</code>](#CoarseChannel+getHighlightValueWithResolution)  
 **Returns**: <code>number</code> - A DMX value that "highlights" the function of this channel, scaled to match the given resolution.  
 
 | Param | Type | Description |
@@ -2345,6 +2382,7 @@ Overrides [`AbstractChannel.fixture`](#AbstractChannel+fixture).
 
 ### switchingChannel.key ⇒ <code>string</code>
 **Kind**: instance property of [<code>SwitchingChannel</code>](#SwitchingChannel)  
+**Overrides**: [<code>key</code>](#AbstractChannel+key)  
 **Returns**: <code>string</code> - The channel key.  
 <a name="AbstractChannel+name"></a>
 
@@ -2352,11 +2390,13 @@ Overrides [`AbstractChannel.fixture`](#AbstractChannel+fixture).
 Override this method for more sensible implementation.
 
 **Kind**: instance property of [<code>SwitchingChannel</code>](#SwitchingChannel)  
+**Overrides**: [<code>name</code>](#AbstractChannel+name)  
 **Returns**: <code>string</code> - The channel key (as name).  
 <a name="AbstractChannel+uniqueName"></a>
 
 ### switchingChannel.uniqueName ⇒ <code>string</code>
 **Kind**: instance property of [<code>SwitchingChannel</code>](#SwitchingChannel)  
+**Overrides**: [<code>uniqueName</code>](#AbstractChannel+uniqueName)  
 **Returns**: <code>string</code> - Unique version of this channel's name.  
 **See**: [uniqueChannelNames](#Fixture+uniqueChannelNames)  
 <a name="AbstractChannel+pixelKey"></a>
