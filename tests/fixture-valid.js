@@ -17,8 +17,12 @@ const {
   SwitchingChannel
 } = require(`../lib/model.js`);
 
-const ajv = new Ajv();
-ajv.addFormat(`color-hex`, ``); // do not crash when `format: color-hex` is used; actual validation is done with an additional pattern, the format is only added for VSCode's color preview
+const ajv = new Ajv({
+  format: `full`,
+  formats: {
+    'color-hex': ``
+  }
+});
 const schemaValidate = ajv.compile(fixtureSchema);
 const redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
 
