@@ -23,7 +23,7 @@
   },
   "patternProperties": {
     "^\\$schema$": {
-      "enum": ["https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture-redirect.json"]
+      "const": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture-redirect.json"
     }
   },
   "additionalProperties": false

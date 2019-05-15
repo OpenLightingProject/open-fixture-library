@@ -52,7 +52,7 @@ async function getSchemas() {
   fixtureSchema.properties.oflURL = true;
 
   // allow changed schema property
-  fixtureSchema.patternProperties[`^\\$schema$`].enum[0] = `${SCHEMA_BASE_URL}fixture.json`;
+  fixtureSchema.patternProperties[`^\\$schema$`].const = `${SCHEMA_BASE_URL}fixture.json`;
 
   // allow new colors from schema version 11.1.0
   // see https://github.com/OpenLightingProject/open-fixture-library/pull/763
