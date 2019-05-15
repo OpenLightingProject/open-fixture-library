@@ -42,6 +42,9 @@ const siteChecker = new blc.SiteChecker({
     // form targets are not meant to be called without parameters / with GET instead of POST
     `http://localhost:5000/ajax/*`,
 
+    // large fixtures shouldn't be tested twice
+    `*?loadAllModes`,
+
     // otherwise these would somehow be checked for every fixture, and we can
     // safely assume that these are correct and long-lasting links
     `https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug`,
