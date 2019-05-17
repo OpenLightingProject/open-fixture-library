@@ -18,7 +18,13 @@ const schemaPromises = getSchemas();
 **/
 module.exports = async function testSchemaConformity(exportFile) {
   const schemas = await schemaPromises;
-  const ajv = new Ajv({ schemas });
+  const ajv = new Ajv({
+    schemas,
+    format: `full`,
+    formats: {
+      'color-hex': ``
+    }
+  });
   const schemaValidate = ajv.getSchema(`https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`);
 
   const schemaValid = schemaValidate(JSON.parse(exportFile.content));
@@ -46,7 +52,8 @@ async function getSchemas() {
   fixtureSchema.properties.oflURL = true;
 
   // allow changed schema property
-  fixtureSchema.patternProperties[`^\\$schema$`].enum[0] = `${SCHEMA_BASE_URL}fixture.json`;
+  fixtureSchema.patternProperties[`^\\$schema$`].const = `${SCHEMA_BASE_URL}fixture.json`;
+  fixtureSchema.patternProperties[`^\\$schema$`].enum = undefined;
 
   // allow new colors from schema version 11.1.0
   // see https://github.com/OpenLightingProject/open-fixture-library/pull/763
