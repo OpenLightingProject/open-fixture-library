@@ -139,6 +139,12 @@ const serverProcess = childProcess.execFile(`node`, [path.join(__dirname, `..`, 
     githubCommentLines = lines;
   }
 
+  const noInternalLinks = Object.keys(foundLinks).length <= 1;
+  if (noInternalLinks) {
+    lines.push(`${chalk.red(`[FAIL]`)} Only one page was tested, so the main page has no internal links.`);
+    exitCode = 1;
+  }
+
   // try to create/delete a GitHub comment
   pullRequest.checkEnv()
     .then(() => pullRequest.init()
@@ -151,11 +157,14 @@ const serverProcess = childProcess.execFile(`node`, [path.join(__dirname, `..`, 
         console.error(`Creating / updating the GitHub PR comment failed.`, error);
       })
     )
+    .catch(err => {
+      console.error(chalk.yellow(`[WARN]`), `Can't create/delete GitHub comment:`, err); // PR env variables not set
+    })
     .then(() => {
       console.log(statusStr, lines.join(`\n`));
       process.exit(exitCode);
     })
-    .catch(() => {}); // PR env variables not set, no GitHub comment created/deleted
+    .catch(() => {});
 });
 console.log(`Started server with process id ${serverProcess.pid}.`);
 
