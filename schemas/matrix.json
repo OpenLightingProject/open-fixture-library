@@ -111,7 +111,8 @@
                 "items": {
                   "$comment": "pattern that pixel keys should match",
                   "type": "string",
-                  "minLength": 1
+                  "minLength": 1,
+                  "format": "regex"
                 }
               }
             }
