@@ -141,7 +141,7 @@ const serverProcess = childProcess.execFile(`node`, [path.join(__dirname, `..`, 
 
   const noInternalLinks = Object.keys(foundLinks).length <= 1;
   if (noInternalLinks) {
-    lines.push(`${chalk.red(`[FAIL]`)} Only one page was tested, so the main page doesn't has any internal links.`);
+    lines.push(`${chalk.red(`[FAIL]`)} Only one page was tested, so the main page has no internal links.`);
     exitCode = 1;
   }
 
