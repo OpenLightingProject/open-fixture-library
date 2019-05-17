@@ -30,7 +30,7 @@
     }
   },
   "availableChannels": {
-    "Auto Program": {
+    "Auto Programs Pars": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -39,314 +39,39 @@
           "comment": "Blackout"
         },
         {
-          "dmxRange": [6, 10],
-          "type": "Generic",
-          "comment": "Auto Mix 1"
+          "dmxRange": [6, 6],
+          "type": "Effect",
+          "effectName": "Auto Par",
+          "speed": "stop"
         },
         {
-          "dmxRange": [11, 15],
-          "type": "Generic",
-          "comment": "Auto Mix 2"
-        },
-        {
-          "dmxRange": [16, 20],
-          "type": "Generic",
-          "comment": "Auto Mix 3"
-        },
-        {
-          "dmxRange": [21, 25],
-          "type": "Generic",
-          "comment": "Auto Mix 4"
-        },
-        {
-          "dmxRange": [26, 35],
-          "type": "Generic",
-          "comment": "Auto Mix 5"
-        },
-        {
-          "dmxRange": [36, 40],
-          "type": "Generic",
-          "comment": "Auto Mix 6"
-        },
-        {
-          "dmxRange": [41, 45],
-          "type": "Generic",
-          "comment": "Auto Mix 7"
-        },
-        {
-          "dmxRange": [46, 50],
-          "type": "Generic",
-          "comment": "Auto Mix 8"
-        },
-        {
-          "dmxRange": [51, 55],
-          "type": "Generic",
-          "comment": "Auto Mix 9"
-        },
-        {
-          "dmxRange": [56, 70],
-          "type": "Generic",
-          "comment": "Auto Mix 10"
-        },
-        {
-          "dmxRange": [71, 75],
-          "type": "Generic",
-          "comment": "Auto Par 1"
-        },
-        {
-          "dmxRange": [76, 80],
-          "type": "Generic",
-          "comment": "Auto Par 2"
-        },
-        {
-          "dmxRange": [81, 85],
-          "type": "Generic",
-          "comment": "Auto Par 3"
-        },
-        {
-          "dmxRange": [86, 90],
-          "type": "Generic",
-          "comment": "Auto Par 4"
-        },
-        {
-          "dmxRange": [91, 95],
-          "type": "Generic",
-          "comment": "Auto Par 5"
-        },
-        {
-          "dmxRange": [96, 100],
-          "type": "Generic",
-          "comment": "Auto Derby 1"
-        },
-        {
-          "dmxRange": [101, 105],
-          "type": "Generic",
-          "comment": "Auto Derby 2"
-        },
-        {
-          "dmxRange": [106, 110],
-          "type": "Generic",
-          "comment": "Auto Derby 3"
-        },
-        {
-          "dmxRange": [111, 115],
-          "type": "Generic",
-          "comment": "Auto Derby 4"
-        },
-        {
-          "dmxRange": [116, 120],
-          "type": "Generic",
-          "comment": "Auto Derby 5"
-        },
-        {
-          "dmxRange": [121, 125],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 1"
-        },
-        {
-          "dmxRange": [126, 130],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 2"
-        },
-        {
-          "dmxRange": [131, 135],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 3"
-        },
-        {
-          "dmxRange": [136, 140],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 4"
-        },
-        {
-          "dmxRange": [141, 145],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 5"
-        },
-        {
-          "dmxRange": [146, 150],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 6"
-        },
-        {
-          "dmxRange": [151, 155],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 7"
-        },
-        {
-          "dmxRange": [156, 160],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 8"
-        },
-        {
-          "dmxRange": [161, 165],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 9"
-        },
-        {
-          "dmxRange": [166, 170],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 10"
-        },
-        {
-          "dmxRange": [171, 175],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 1"
-        },
-        {
-          "dmxRange": [176, 180],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 2"
-        },
-        {
-          "dmxRange": [181, 185],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 3"
-        },
-        {
-          "dmxRange": [186, 190],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 4"
-        },
-        {
-          "dmxRange": [191, 195],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 5"
-        },
-        {
-          "dmxRange": [196, 200],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 6"
-        },
-        {
-          "dmxRange": [201, 205],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 7"
-        },
-        {
-          "dmxRange": [206, 210],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 8"
-        },
-        {
-          "dmxRange": [211, 215],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 9"
-        },
-        {
-          "dmxRange": [216, 220],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 10"
-        },
-        {
-          "dmxRange": [221, 225],
-          "type": "Generic",
-          "comment": "Auto Laser 1"
-        },
-        {
-          "dmxRange": [226, 230],
-          "type": "Generic",
-          "comment": "Auto Laser 2"
-        },
-        {
-          "dmxRange": [231, 235],
-          "type": "Generic",
-          "comment": "Auto Laser 3"
-        },
-        {
-          "dmxRange": [236, 240],
-          "type": "Generic",
-          "comment": "Auto Laser 4"
-        },
-        {
-          "dmxRange": [241, 245],
-          "type": "Generic",
-          "comment": "Auto Laser 5"
-        },
-        {
-          "dmxRange": [246, 255],
-          "type": "Generic",
-          "comment": "Auto Laser 6"
-        }
-      ]
-    },
-    "Auto Program Speed/Sound": {
-      "capability": {
-        "type": "Generic",
-        "comment": "Auto Program Speed/Sound"
-      }
-    },
-    "Auto Program LED Par": {
-      "defaultValue": 0,
-      "highlightValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 5],
-          "type": "Generic",
-          "comment": "Blackout"
-        },
-        {
-          "dmxRange": [6, 56],
-          "type": "Generic",
-          "comment": "Auto Par 1"
+          "dmxRange": [7, 56],
+          "type": "Effect",
+          "effectName": "Auto Par 1"
         },
         {
           "dmxRange": [57, 107],
-          "type": "Generic",
-          "comment": "Auto Par 2"
+          "type": "Effect",
+          "effectName": "Auto Par 2"
         },
         {
           "dmxRange": [108, 158],
-          "type": "Generic",
-          "comment": "Auto Par 3"
+          "type": "Effect",
+          "effectName": "Auto Par 3"
         },
         {
-          "dmxRange": [159, 209],
-          "type": "Generic",
-          "comment": "Auto Par 4"
+          "dmxRange": [159, 208],
+          "type": "Effect",
+          "effectName": "Auto Par 4"
         },
         {
-          "dmxRange": [210, 255],
-          "type": "Generic",
-          "comment": "Auto Par 5"
+          "dmxRange": [209, 255],
+          "type": "Effect",
+          "effectName": "Auto Par 5"
         }
       ]
     },
-    "Auto Program Derby": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 5],
-          "type": "Generic",
-          "comment": "Blackout"
-        },
-        {
-          "dmxRange": [6, 56],
-          "type": "Generic",
-          "comment": "Auto Derby 1"
-        },
-        {
-          "dmxRange": [57, 107],
-          "type": "Generic",
-          "comment": "Auto Derby 2"
-        },
-        {
-          "dmxRange": [108, 158],
-          "type": "Generic",
-          "comment": "Auto Derby 3"
-        },
-        {
-          "dmxRange": [159, 209],
-          "type": "Generic",
-          "comment": "Auto Derby 4"
-        },
-        {
-          "dmxRange": [210, 255],
-          "type": "Generic"
-        }
-      ]
-    },
-    "Auto Program Flash Lights": {
+    "Auto Programs Derbys": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -355,58 +80,105 @@
           "comment": "Blackout"
         },
         {
-          "dmxRange": [6, 25],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 1"
+          "dmxRange": [6, 6],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [7, 56],
+          "type": "Effect",
+          "effectName": "Auto Derby 1"
+        },
+        {
+          "dmxRange": [57, 107],
+          "type": "Effect",
+          "effectName": "Auto Derby 2"
+        },
+        {
+          "dmxRange": [108, 158],
+          "type": "Effect",
+          "effectName": "Auto Derby 3"
+        },
+        {
+          "dmxRange": [159, 208],
+          "type": "Effect",
+          "effectName": "Auto Derby 4"
+        },
+        {
+          "dmxRange": [209, 255],
+          "type": "Effect",
+          "effectName": "Auto Derby 5"
+        }
+      ]
+    },
+    "Auto Programs Flash Lights": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Effect",
+          "effectName": "Auto Flash Lights",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [7, 25],
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 1"
         },
         {
           "dmxRange": [26, 50],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 2"
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 2"
         },
         {
           "dmxRange": [51, 75],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 3"
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 3"
         },
         {
           "dmxRange": [76, 100],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 4"
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 4"
         },
         {
           "dmxRange": [101, 125],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 5"
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 5"
         },
         {
           "dmxRange": [126, 150],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 6"
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 6"
         },
         {
           "dmxRange": [151, 175],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 7"
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 7"
         },
         {
           "dmxRange": [176, 200],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 8"
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 8"
         },
         {
           "dmxRange": [201, 225],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 9"
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 9"
         },
         {
           "dmxRange": [226, 255],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 10"
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 10"
         }
       ]
     },
-    "Auto Program Laser": {
+    "Auto Programs Laser": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -414,59 +186,58 @@
           "comment": "Blackout"
         },
         {
-          "dmxRange": [6, 46],
-          "type": "Generic",
-          "comment": "Auto Laser 1"
+          "dmxRange": [6, 6],
+          "type": "Effect",
+          "effectName": "Continuous Rotating Direction"
+        },
+        {
+          "dmxRange": [7, 46],
+          "type": "Effect",
+          "effectName": "Auto Laser 1"
         },
         {
           "dmxRange": [47, 80],
-          "type": "Generic",
-          "comment": "Auto Laser 2"
+          "type": "Effect",
+          "effectName": "Auto Laser 2"
         },
         {
           "dmxRange": [81, 120],
-          "type": "Generic",
-          "comment": "Auto Laser 3"
+          "type": "Effect",
+          "effectName": "Auto Laser 3"
         },
         {
           "dmxRange": [121, 140],
-          "type": "Generic",
-          "comment": "Auto Laser 4"
+          "type": "Effect",
+          "effectName": "Auto Laser 4"
         },
         {
           "dmxRange": [141, 180],
-          "type": "Generic",
-          "comment": "Auto Laser 5"
+          "type": "Effect",
+          "effectName": "Auto Laser 5"
         },
         {
           "dmxRange": [181, 255],
-          "type": "Generic",
-          "comment": "Auto Laser 6"
+          "type": "Effect",
+          "effectName": "Auto Laser 6"
         }
       ]
     },
     "Derby 1 - Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "255%"
+        "color": "Red"
       }
     },
     "Derby 1 - Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "255%"
+        "color": "Green"
       }
     },
     "Derby 1 - Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "255%"
+        "color": "Blue"
       }
     },
     "Derby 1 - Strobe": {
@@ -478,7 +249,8 @@
         },
         {
           "dmxRange": [6, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "20Hz"
         }
@@ -513,25 +285,19 @@
     "Derby 2 - Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Red"
       }
     },
     "Derby 2 - Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Green"
       }
     },
     "Derby 2 - Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Blue"
       }
     },
     "Derby 2 - Strobe": {
@@ -543,7 +309,8 @@
         },
         {
           "dmxRange": [6, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "20Hz"
         }
@@ -578,38 +345,25 @@
     "Par 1 - Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Red"
       }
     },
     "Par 1 - Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Green"
       }
     },
     "Par 1 - Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Blue"
       }
     },
     "Par 1 - UV": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "UV",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Par 1 - Blackout": {
-      "capability": {
-        "type": "NoFunction"
+        "color": "UV"
       }
     },
     "Par 1 - Strobe": {
@@ -617,16 +371,12 @@
         {
           "dmxRange": [0, 5],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
-        },
-        {
-          "dmxRange": [6, 10],
-          "type": "ShutterStrobe",
           "shutterEffect": "Open"
         },
         {
-          "dmxRange": [11, 255],
-          "type": "Rotation",
+          "dmxRange": [6, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "20Hz"
         }
@@ -635,33 +385,25 @@
     "Par 2 - Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Red"
       }
     },
     "Par 2 - Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Green"
       }
     },
     "Par 2 - Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Blue"
       }
     },
     "Par 2 - UV": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "UV",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "UV"
       }
     },
     "Par 2 - Strobe": {
@@ -669,22 +411,18 @@
         {
           "dmxRange": [0, 5],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
-        },
-        {
-          "dmxRange": [6, 10],
-          "type": "ShutterStrobe",
           "shutterEffect": "Open"
         },
         {
-          "dmxRange": [11, 255],
-          "type": "StrobeSpeed",
+          "dmxRange": [6, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "20Hz"
         }
       ]
     },
-    "Laser Red - Strobe": {
+    "Laser Red - Shutter": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -698,13 +436,14 @@
         },
         {
           "dmxRange": [11, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "20Hz"
         }
       ]
     },
-    "Laser Green - Strobe": {
+    "Laser Green - Shutter": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -718,7 +457,8 @@
         },
         {
           "dmxRange": [11, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "20Hz"
         }
@@ -728,8 +468,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 4],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
+          "type": "Rotation",
+          "speed": "stop"
         },
         {
           "dmxRange": [5, 127],
@@ -738,19 +478,19 @@
           "speedEnd": "fast CW"
         },
         {
-          "dmxRange": [128, 132],
+          "dmxRange": [128, 133],
           "type": "Rotation",
           "speed": "stop"
         },
         {
-          "dmxRange": [133, 255],
+          "dmxRange": [134, 255],
           "type": "Rotation",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         }
       ]
     },
-    "Flash Light 1 - Strobe": {
+    "Flash Light 1 - Shutter": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -764,13 +504,14 @@
         },
         {
           "dmxRange": [11, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "20Hz"
         }
       ]
     },
-    "Flash Light 2 - Strobe": {
+    "Flash Light 2 - Shutter": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -784,13 +525,14 @@
         },
         {
           "dmxRange": [11, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "20Hz"
         }
       ]
     },
-    "Flash Light 3 - Strobe": {
+    "Flash Light 3 - Shutter": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -804,13 +546,14 @@
         },
         {
           "dmxRange": [11, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "20Hz"
         }
       ]
     },
-    "Flash Light 4 - Strobe": {
+    "Flash Light 4 - Shutter": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -824,266 +567,265 @@
         },
         {
           "dmxRange": [11, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "20Hz"
         }
       ]
     },
-    "Auto Program 2": {
-      "name": "Auto Program",
+    "Auto Programs": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "NoFunction",
-          "comment": "Blackout"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [6, 10],
-          "type": "Generic",
-          "comment": "Auto Mix 1"
+          "type": "Effect",
+          "effectName": "Auto Mix 1"
         },
         {
           "dmxRange": [11, 15],
-          "type": "Generic",
-          "comment": "Auto Mix 2"
+          "type": "Effect",
+          "effectName": "Auto Mix 2"
         },
         {
           "dmxRange": [16, 20],
-          "type": "Generic",
-          "comment": "Auto Mix 3"
+          "type": "Effect",
+          "effectName": "Auto Mix 3"
         },
         {
           "dmxRange": [21, 25],
-          "type": "Generic",
-          "comment": "Auto Mix 4"
+          "type": "Effect",
+          "effectName": "Auto Mix 4"
         },
         {
-          "dmxRange": [26, 35],
-          "type": "Generic",
-          "comment": "Auto Mix 5"
+          "dmxRange": [26, 30],
+          "type": "Effect",
+          "effectName": "Auto Mix 5"
+        },
+        {
+          "dmxRange": [31, 35],
+          "type": "Effect",
+          "effectName": "Auto Mix 6"
         },
         {
           "dmxRange": [36, 40],
-          "type": "Generic",
-          "comment": "Auto Mix 6"
+          "type": "Effect",
+          "effectName": "Auto Mix 7"
         },
         {
           "dmxRange": [41, 45],
-          "type": "Generic",
-          "comment": "Auto Mix 7"
+          "type": "Effect",
+          "effectName": "Auto Mix 8"
         },
         {
           "dmxRange": [46, 50],
-          "type": "Generic",
-          "comment": "Auto Mix 8"
+          "type": "Effect",
+          "effectName": "Auto Mix 9"
         },
         {
           "dmxRange": [51, 55],
-          "type": "Generic",
-          "comment": "Auto Mix 9"
+          "type": "Effect",
+          "effectName": "Auto Mix 10"
         },
         {
-          "dmxRange": [56, 70],
-          "type": "Generic",
-          "comment": "Auto Mix 10"
+          "dmxRange": [56, 60],
+          "type": "Effect",
+          "effectName": "Auto Par 1"
+        },
+        {
+          "dmxRange": [61, 65],
+          "type": "Effect",
+          "effectName": "Auto Par 2"
+        },
+        {
+          "dmxRange": [66, 70],
+          "type": "Effect",
+          "effectName": "Auto Par 3"
         },
         {
           "dmxRange": [71, 75],
-          "type": "Generic",
-          "comment": "Auto Par 1"
+          "type": "Effect",
+          "effectName": "Auto Par 4"
         },
         {
           "dmxRange": [76, 80],
-          "type": "Generic",
-          "comment": "Auto Par 2"
+          "type": "Effect",
+          "effectName": "Auto Par 5"
         },
         {
           "dmxRange": [81, 85],
-          "type": "Generic",
-          "comment": "Auto Par 3"
+          "type": "Effect",
+          "effectName": "Auto Derby 1"
         },
         {
           "dmxRange": [86, 90],
-          "type": "Generic",
-          "comment": "Auto Par 4"
+          "type": "Effect",
+          "effectName": "Auto Derby 2"
         },
         {
           "dmxRange": [91, 95],
-          "type": "Generic",
-          "comment": "Auto Par 5"
+          "type": "Effect",
+          "effectName": "Auto Derby 3"
         },
         {
           "dmxRange": [96, 100],
-          "type": "Generic",
-          "comment": "Auto Derby 1"
+          "type": "Effect",
+          "effectName": "Auto Derby 4"
         },
         {
           "dmxRange": [101, 105],
-          "type": "Generic",
-          "comment": "Auto Derby 2"
+          "type": "Effect",
+          "effectName": "Auto Derby 5"
         },
         {
           "dmxRange": [106, 110],
-          "type": "Generic",
-          "comment": "Auto Derby 3"
+          "type": "Effect",
+          "effectName": "Auto Par & Derby 1"
         },
         {
           "dmxRange": [111, 115],
-          "type": "Generic",
-          "comment": "Auto Derby 4"
+          "type": "Effect",
+          "effectName": "Auto Par & Derby 2"
         },
         {
           "dmxRange": [116, 120],
-          "type": "Generic",
-          "comment": "Auto Derby 5"
+          "type": "Effect",
+          "effectName": "Auto Par & Derby 3"
         },
         {
           "dmxRange": [121, 125],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 1"
+          "type": "Effect",
+          "effectName": "Auto Par & Derby 4"
         },
         {
           "dmxRange": [126, 130],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 2"
+          "type": "Effect",
+          "effectName": "Auto Par & Derby 5"
         },
         {
           "dmxRange": [131, 135],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 3"
+          "type": "Effect",
+          "effectName": "Auto Par & Derby 6"
         },
         {
           "dmxRange": [136, 140],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 4"
+          "type": "Effect",
+          "effectName": "Auto Par & Derby 7"
         },
         {
           "dmxRange": [141, 145],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 5"
+          "type": "Effect",
+          "effectName": "Auto Par & Derby 8"
         },
         {
           "dmxRange": [146, 150],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 6"
+          "type": "Effect",
+          "effectName": "Auto Par & Derby 9"
         },
         {
           "dmxRange": [151, 155],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 7"
+          "type": "Effect",
+          "effectName": "Auto Par & Derby 10"
         },
         {
           "dmxRange": [156, 160],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 8"
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 1"
         },
         {
           "dmxRange": [161, 165],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 9"
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 2"
         },
         {
           "dmxRange": [166, 170],
-          "type": "Generic",
-          "comment": "Auto Par & Derby 10"
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 3"
         },
         {
           "dmxRange": [171, 175],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 1"
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 4"
         },
         {
           "dmxRange": [176, 180],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 2"
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 5"
         },
         {
           "dmxRange": [181, 185],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 3"
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 6"
         },
         {
           "dmxRange": [186, 190],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 4"
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 7"
         },
         {
           "dmxRange": [191, 195],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 5"
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 8"
         },
         {
           "dmxRange": [196, 200],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 6"
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 9"
         },
         {
           "dmxRange": [201, 205],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 7"
+          "type": "Effect",
+          "effectName": "Auto Flash Lights 10"
         },
         {
           "dmxRange": [206, 210],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 8"
+          "type": "Effect",
+          "effectName": "Auto Laser 1"
         },
         {
           "dmxRange": [211, 215],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 9"
+          "type": "Effect",
+          "effectName": "Auto Laser 2"
         },
         {
           "dmxRange": [216, 220],
-          "type": "Generic",
-          "comment": "Auto Flash Lights 10"
+          "type": "Effect",
+          "effectName": "Auto Laser 3"
         },
         {
           "dmxRange": [221, 225],
-          "type": "Generic",
-          "comment": "Auto Laser 1"
+          "type": "Effect",
+          "effectName": "Auto Laser 4"
         },
         {
           "dmxRange": [226, 230],
-          "type": "Generic",
-          "comment": "Auto Laser 2"
+          "type": "Effect",
+          "effectName": "Auto Laser 5"
         },
         {
-          "dmxRange": [231, 235],
-          "type": "Generic",
-          "comment": "Auto Laser 3"
-        },
-        {
-          "dmxRange": [236, 240],
-          "type": "Generic",
-          "comment": "Auto Laser 4"
-        },
-        {
-          "dmxRange": [241, 245],
-          "type": "Generic",
-          "comment": "Auto Laser 5"
-        },
-        {
-          "dmxRange": [246, 255],
-          "type": "Generic",
-          "comment": "Auto Laser 6"
+          "dmxRange": [231, 255],
+          "type": "Effect",
+          "effectName": "Auto Laser 6"
         }
       ]
     },
-    "Auto Program Speed/Sound 2": {
-      "name": "Auto Program Speed/Sound",
+    "Program Speed / Sound Control": {
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "Speed",
+          "type": "EffectSpeed",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [128, 255],
-          "type": "SoundSensitivity",
-          "soundSensitivityStart": "0%",
-          "soundSensitivityEnd": "100%"
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true
         }
       ]
     }
@@ -1093,18 +835,19 @@
       "name": "2 Channel",
       "shortName": "2 CH",
       "channels": [
-        "Auto Program",
-        "Auto Program Speed/Sound"
+        "Auto Programs",
+        "Program Speed / Sound Control"
       ]
     },
     {
       "name": "5 Channel",
       "shortName": "5 CH",
       "channels": [
-        "Auto Program LED Par",
-        "Auto Program Derby",
-        "Auto Program Flash Lights",
-        "Auto Program Laser"
+        "Auto Programs Pars",
+        "Auto Programs Derbys",
+        "Auto Programs Flash Lights",
+        "Auto Programs Laser",
+        "Program Speed / Sound Control"
       ]
     },
     {
@@ -1131,15 +874,15 @@
         "Par 2 - Blue",
         "Par 2 - UV",
         "Par 2 - Strobe",
-        "Laser Red - Strobe",
-        "Laser Green - Strobe",
+        "Laser Red - Shutter",
+        "Laser Green - Shutter",
         "Laser - Rotate",
-        "Flash Light 1 - Strobe",
-        "Flash Light 2 - Strobe",
-        "Flash Light 3 - Strobe",
-        "Flash Light 4 - Strobe",
-        "Auto Program 2",
-        "Auto Program Speed/Sound 2"
+        "Flash Light 1 - Shutter",
+        "Flash Light 2 - Shutter",
+        "Flash Light 3 - Shutter",
+        "Flash Light 4 - Shutter",
+        "Auto Programs",
+        "Program Speed / Sound Control"
       ]
     }
   ]
