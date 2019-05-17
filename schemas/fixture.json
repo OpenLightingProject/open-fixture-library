@@ -248,7 +248,7 @@
                   "$comment": "matrix channel insert block",
                   "type": "object",
                   "properties": {
-                    "insert": { "enum": ["matrixChannels"] },
+                    "insert": { "const": "matrixChannels" },
                     "repeatFor": {
                       "oneOf": [
                         {
@@ -327,7 +327,7 @@
   ],
   "patternProperties": {
     "^\\$schema$": {
-      "enum": ["https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json"]
+      "const": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json"
     }
   },
   "additionalProperties": false

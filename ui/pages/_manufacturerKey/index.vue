@@ -106,8 +106,16 @@ export default {
     };
   },
   head() {
+    const title = this.manufacturer.name;
+
     return {
-      title: this.manufacturer.name
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title
+        }
+      ]
     };
   }
 };

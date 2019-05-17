@@ -58,8 +58,16 @@ export default {
     };
   },
   head() {
+    const title = this.categoryName;
+
     return {
-      title: this.categoryName
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title
+        }
+      ]
     };
   }
 };

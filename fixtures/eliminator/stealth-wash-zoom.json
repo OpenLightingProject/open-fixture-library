@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["Anonymous"],
     "createDate": "2019-01-05",
-    "lastModifyDate": "2019-01-05"
+    "lastModifyDate": "2019-05-17"
   },
   "links": {
     "manual": [
@@ -36,14 +36,16 @@
       "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angle": "540deg"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angle": "270deg"
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
       }
     },
     "Color Macros": {

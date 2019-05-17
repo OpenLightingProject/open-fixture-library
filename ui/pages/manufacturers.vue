@@ -47,8 +47,16 @@ import manufacturers from '~~/fixtures/manufacturers.json';
 
 export default {
   head() {
+    const title = `Manufacturers`;
+
     return {
-      title: `Manufacturers`
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title
+        }
+      ]
     };
   },
   data() {
