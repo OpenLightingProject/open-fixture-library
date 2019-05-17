@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Show-Batten 100",
-  "categories": ["Pixel Bar", "Moving Head", "Color Changer"],
+  "categories": ["Pixel Bar", "Color Changer"],
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2018-05-16",
@@ -39,7 +39,6 @@
       "degreesMinMax": [10, 43]
     },
     "focus": {
-      "type": "Head",
       "tiltMax": 240
     }
   },

@@ -6,10 +6,15 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2017-09-04",
-    "lastModifyDate": "2018-09-04"
+    "lastModifyDate": "2019-05-17"
   },
   "links": {
-    "manual": ["http://adjmedia.s3-website-eu-west-1.amazonaws.com/manuals/XS%20400.pdf"],
+    "manual": [
+      "http://adjmedia.s3-website-eu-west-1.amazonaws.com/manuals/XS%20400.pdf"
+    ],
+    "productPage": [
+      "https://www.americandj.eu/en/xs-400.html"
+    ],
     "video": [
       "https://www.youtube.com/watch?v=Don23z-XN-s",
       "https://www.youtube.com/watch?v=AjbBAu8UHW8",
@@ -30,7 +35,7 @@
     },
     "focus": {
       "type": "Head",
-      "panMax": 630,
+      "panMax": 540,
       "tiltMax": "infinite"
     }
   },
@@ -49,9 +54,8 @@
       "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
-        "angleStart": "0%",
-        "angleEnd": "100%",
-        "helpWanted": "Maximum tilt angle in degrees?"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Tilt Continuous Rotation": {
@@ -80,7 +84,8 @@
       "capability": {
         "type": "Speed",
         "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "helpWanted": "Is this pan rotation? If not, is it correct that channel 'Tilt Continuous Rotation' only sets direction and this channel the rotation speed?"
       }
     },
     "Red": {
