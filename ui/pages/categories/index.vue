@@ -26,8 +26,16 @@ export default {
     'app-svg': svg
   },
   head() {
+    const title = `Categories`;
+
     return {
-      title: `Categories`
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title
+        }
+      ]
     };
   },
   data() {

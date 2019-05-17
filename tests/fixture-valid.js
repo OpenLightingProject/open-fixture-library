@@ -17,8 +17,12 @@ const {
   SwitchingChannel
 } = require(`../lib/model.js`);
 
-const ajv = new Ajv();
-ajv.addFormat(`color-hex`, ``); // do not crash when `format: color-hex` is used; actual validation is done with an additional pattern, the format is only added for VSCode's color preview
+const ajv = new Ajv({
+  format: `full`,
+  formats: {
+    'color-hex': ``
+  }
+});
 const schemaValidate = ajv.compile(fixtureSchema);
 const redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
 
@@ -251,13 +255,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     function checkPixelGroups() {
       const pixelGroupKeys = Object.keys(matrix.jsonObject.pixelGroups);
 
-      const constraintsCorrect = pixelGroupKeys.every(checkPixelKeyStringConstraints);
-
-      if (!constraintsCorrect) {
-        // don't let model fail
-        return;
-      }
-
       pixelGroupKeys.forEach(pixelGroupKey => {
         const usedMatrixChannels = new Set();
 
@@ -280,32 +277,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           usedMatrixChannels.add(pixelKey);
         }
       });
-
-
-      /**
-       * Checks the pixel group's string constraints.
-       * @param {string} pixelGroupKey The key of the pixel group to check.
-       * @returns {boolean} True if all constraints are valid RegExps, false otherwise.
-       */
-      function checkPixelKeyStringConstraints(pixelGroupKey) {
-        const group = matrix.jsonObject.pixelGroups[pixelGroupKey];
-
-        if (group === `all` || Array.isArray(group)) {
-          return true;
-        }
-
-        for (const pattern of (group.name || [])) {
-          try {
-            new RegExp(pattern);
-          }
-          catch (syntaxError) {
-            result.errors.push(`Pixel key constraint '${pattern}' in pixelGroup '${pixelGroupKey}' is not a valid RegExp pattern. ${syntaxError.message}`);
-            return false;
-          }
-        }
-
-        return true;
-      }
     }
   }
 

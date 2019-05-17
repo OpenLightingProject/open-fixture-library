@@ -97,8 +97,16 @@ export default {
     'app-labeled-input': labeledInputVue
   },
   head() {
+    const title = this.searchFor ? `Search "${this.searchFor}"` : `Search`;
+
     return {
-      title: this.searchFor ? `Search "${this.searchFor}"` : `Search`
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title
+        }
+      ]
     };
   },
   async asyncData({ query, app }) {
