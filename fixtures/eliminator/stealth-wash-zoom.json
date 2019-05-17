@@ -41,14 +41,16 @@
       "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angle": "540deg"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angle": "270deg"
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
       }
     },
     "Color Macros": {
