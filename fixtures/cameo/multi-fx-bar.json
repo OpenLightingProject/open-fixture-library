@@ -29,6 +29,18 @@
       "type": "12× 12W RGBUV LEDs (PARs), 2× 3W RGB LEDs (derby), 4× 3W white LEDs (strobe), red laser (150mW / 650nm), green laser (50mW / 532nm)"
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [           null,     "Laser Red",   "Laser Green",            null],
+        ["Flash Light 1", "Flash Light 2", "Flash Light 3", "Flash Light 4"],
+        [      "Derby 1",         "Par 1",         "Par 2",       "Derby 2"]
+      ]
+    ],
+    "pixelGroups": {
+      "Laser": ["Laser Red", "Laser Green"]
+    }
+  },
   "availableChannels": {
     "Auto Programs Pars": {
       "defaultValue": 0,
@@ -219,358 +231,6 @@
           "dmxRange": [181, 255],
           "type": "Effect",
           "effectName": "Auto Laser 6"
-        }
-      ]
-    },
-    "Derby 1 - Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Derby 1 - Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Derby 1 - Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Derby 1 - Strobe": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 5],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [6, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "1Hz",
-          "speedEnd": "20Hz"
-        }
-      ]
-    },
-    "Derby 1 - Rotate": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 4],
-          "type": "Rotation",
-          "speed": "stop"
-        },
-        {
-          "dmxRange": [5, 127],
-          "type": "Rotation",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW"
-        },
-        {
-          "dmxRange": [128, 132],
-          "type": "Rotation",
-          "speed": "stop"
-        },
-        {
-          "dmxRange": [133, 255],
-          "type": "Rotation",
-          "speedStart": "slow CCW",
-          "speedEnd": "fast CCW"
-        }
-      ]
-    },
-    "Derby 2 - Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Derby 2 - Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Derby 2 - Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Derby 2 - Strobe": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 5],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [6, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "1Hz",
-          "speedEnd": "20Hz"
-        }
-      ]
-    },
-    "Derby 2 - Rotate": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 4],
-          "type": "Rotation",
-          "speed": "stop"
-        },
-        {
-          "dmxRange": [5, 127],
-          "type": "Rotation",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW"
-        },
-        {
-          "dmxRange": [128, 132],
-          "type": "Rotation",
-          "speed": "stop"
-        },
-        {
-          "dmxRange": [133, 255],
-          "type": "Rotation",
-          "speedStart": "slow CCW",
-          "speedEnd": "fast CCW"
-        }
-      ]
-    },
-    "Par 1 - Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Par 1 - Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Par 1 - Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Par 1 - UV": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "UV"
-      }
-    },
-    "Par 1 - Strobe": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 5],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [6, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "1Hz",
-          "speedEnd": "20Hz"
-        }
-      ]
-    },
-    "Par 2 - Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Par 2 - Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Par 2 - Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Par 2 - UV": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "UV"
-      }
-    },
-    "Par 2 - Strobe": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 5],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [6, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "1Hz",
-          "speedEnd": "20Hz"
-        }
-      ]
-    },
-    "Laser Red - Shutter": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 5],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
-        },
-        {
-          "dmxRange": [6, 10],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [11, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "1Hz",
-          "speedEnd": "20Hz"
-        }
-      ]
-    },
-    "Laser Green - Shutter": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 5],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
-        },
-        {
-          "dmxRange": [6, 10],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [11, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "1Hz",
-          "speedEnd": "20Hz"
-        }
-      ]
-    },
-    "Laser - Rotate": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 4],
-          "type": "Rotation",
-          "speed": "stop"
-        },
-        {
-          "dmxRange": [5, 127],
-          "type": "Rotation",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW"
-        },
-        {
-          "dmxRange": [128, 133],
-          "type": "Rotation",
-          "speed": "stop"
-        },
-        {
-          "dmxRange": [134, 255],
-          "type": "Rotation",
-          "speedStart": "slow CCW",
-          "speedEnd": "fast CCW"
-        }
-      ]
-    },
-    "Flash Light 1 - Shutter": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 5],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
-        },
-        {
-          "dmxRange": [6, 10],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [11, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "1Hz",
-          "speedEnd": "20Hz"
-        }
-      ]
-    },
-    "Flash Light 2 - Shutter": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 5],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
-        },
-        {
-          "dmxRange": [6, 10],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [11, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "1Hz",
-          "speedEnd": "20Hz"
-        }
-      ]
-    },
-    "Flash Light 3 - Shutter": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 5],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
-        },
-        {
-          "dmxRange": [6, 10],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [11, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "1Hz",
-          "speedEnd": "20Hz"
-        }
-      ]
-    },
-    "Flash Light 4 - Shutter": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 5],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
-        },
-        {
-          "dmxRange": [6, 10],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [11, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "1Hz",
-          "speedEnd": "20Hz"
         }
       ]
     },
@@ -830,6 +490,95 @@
       ]
     }
   },
+  "templateChannels": {
+    "$pixelKey Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "$pixelKey Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "$pixelKey Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "$pixelKey UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "$pixelKey Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "$pixelKey Rotate": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [5, 127],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [128, 132],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [133, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "$pixelKey Shutter": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    }
+  },
   "modes": [
     {
       "name": "2 Channel",
@@ -854,33 +603,33 @@
       "name": "29 Channel",
       "shortName": "29 CH",
       "channels": [
-        "Derby 1 - Red",
-        "Derby 1 - Green",
-        "Derby 1 - Blue",
-        "Derby 1 - Strobe",
-        "Derby 1 - Rotate",
-        "Derby 2 - Red",
-        "Derby 2 - Green",
-        "Derby 2 - Blue",
-        "Derby 2 - Strobe",
-        "Derby 2 - Rotate",
-        "Par 1 - Red",
-        "Par 1 - Green",
-        "Par 1 - Blue",
-        "Par 1 - UV",
-        "Par 1 - Strobe",
-        "Par 2 - Red",
-        "Par 2 - Green",
-        "Par 2 - Blue",
-        "Par 2 - UV",
-        "Par 2 - Strobe",
-        "Laser Red - Shutter",
-        "Laser Green - Shutter",
-        "Laser - Rotate",
-        "Flash Light 1 - Shutter",
-        "Flash Light 2 - Shutter",
-        "Flash Light 3 - Shutter",
-        "Flash Light 4 - Shutter",
+        "Derby 1 Red",
+        "Derby 1 Green",
+        "Derby 1 Blue",
+        "Derby 1 Strobe",
+        "Derby 1 Rotate",
+        "Derby 2 Red",
+        "Derby 2 Green",
+        "Derby 2 Blue",
+        "Derby 2 Strobe",
+        "Derby 2 Rotate",
+        "Par 1 Red",
+        "Par 1 Green",
+        "Par 1 Blue",
+        "Par 1 UV",
+        "Par 1 Strobe",
+        "Par 2 Red",
+        "Par 2 Green",
+        "Par 2 Blue",
+        "Par 2 UV",
+        "Par 2 Strobe",
+        "Laser Red Shutter",
+        "Laser Green Shutter",
+        "Laser Rotate",
+        "Flash Light 1 Shutter",
+        "Flash Light 2 Shutter",
+        "Flash Light 3 Shutter",
+        "Flash Light 4 Shutter",
         "Auto Programs",
         "Program Speed / Sound Control"
       ]
