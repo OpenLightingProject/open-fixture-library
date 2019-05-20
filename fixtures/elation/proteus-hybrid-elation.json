@@ -1,0 +1,336 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Proteus Hybrid Elation",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["MeroJul"],
+    "createDate": "2019-05-20",
+    "lastModifyDate": "2019-05-20"
+  },
+  "links": {
+    "manual": [
+      "http://cdb.s3.amazonaws.com/ItemRelatedFiles/10677/ELATION%20PROTEUS%20HYBRID%20DMX%20TRAITS.pdf"
+    ]
+  },
+  "rdm": {
+    "modelId": 22,
+    "softwareVersion": "22A6xxxxxxxx"
+  },
+  "physical": {
+    "dimensions": [571, 465, 805],
+    "weight": 38,
+    "power": 750,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "MSD",
+      "colorTemperature": 8000,
+      "lumens": 23000
+    },
+    "lens": {
+      "degreesMinMax": [2, 38]
+    },
+    "focus": {
+      "type": "Head",
+      "panMax": 360,
+      "tiltMax": 300
+    }
+  },
+  "wheels": {
+    "Rotating Gobo, continuous Rotation(Gobo wheel 1)": {
+      "slots": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo"
+        }
+      ]
+    },
+    "Rotating Gobo, Index Rotation (Gobo Wheel 1)": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    },
+    "Static/Fixed Gobos": {
+      "slots": [
+        null,
+        null,
+        {
+          "type": "Gobo"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 1,
+      "highlightValue": 1,
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Pan ": {
+      "defaultValue": 2,
+      "highlightValue": 2,
+      "precedence": "HTP",
+      "capability": {
+        "type": "PanContinuous",
+        "speed": "0%"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1deg",
+        "angleEnd": "300deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1deg",
+        "angleEnd": "300deg"
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Magenta": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Yellow": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "CTC": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "CTO",
+        "colorTemperatureEnd": "CTB"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Rotating Gobo, continuous Rotation(Gobo wheel 1)": {
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 8
+      }
+    },
+    "Rotating Gobo, Index Rotation (Gobo Wheel 1)": {
+      "constant": true,
+      "precedence": "HTP",
+      "capability": {
+        "type": "WheelSlotRotation",
+        "slotNumber": 4,
+        "speedStart": "2%",
+        "speedEnd": "100%"
+      }
+    },
+    "Static/Fixed Gobos": {
+      "precedence": "HTP",
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 31
+      }
+    },
+    "Rotating Prism": {
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "fast CCW"
+      }
+    },
+    "Rotating Prism, Prism index rotation": {
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "1%"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Autofocus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Autofocus ": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes"
+        }
+      ]
+    },
+    "Dimmer intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Animation Wheel": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Lose"
+      }
+    },
+    "CMY Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "standard",
+      "shortName": "proteus",
+      "channels": [
+        "Pan",
+        "Pan ",
+        "Tilt",
+        "Tilt 2",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTC",
+        "Color Wheel",
+        "Rotating Gobo, continuous Rotation(Gobo wheel 1)",
+        "Rotating Gobo, Index Rotation (Gobo Wheel 1)",
+        "Static/Fixed Gobos",
+        "Rotating Prism",
+        "Rotating Prism, Prism index rotation",
+        "Focus",
+        "Zoom",
+        "Autofocus",
+        "Autofocus ",
+        "Shutter / Strobe",
+        "Dimmer intensity",
+        "Frost",
+        "Animation Wheel",
+        "CMY Speed"
+      ]
+    }
+  ]
+}
