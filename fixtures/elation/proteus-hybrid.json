@@ -246,24 +246,28 @@
       }
     },
     "Cyan": {
+      "fineChannelAliases": ["Cyan fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Cyan"
       }
     },
     "Magenta": {
+      "fineChannelAliases": ["Magenta fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Magenta"
       }
     },
     "Yellow": {
+      "fineChannelAliases": ["Yellow fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Yellow"
       }
     },
     "CTO": {
+      "fineChannelAliases": ["CTO fine"],
       "capability": {
         "type": "ColorTemperature",
         "colorTemperatureStart": "default",
@@ -271,6 +275,8 @@
       }
     },
     "Color Wheel": {
+      "fineChannelAliases": ["Color Wheel fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 15],
@@ -496,6 +502,8 @@
       ]
     },
     "Gobo Rotation": {
+      "fineChannelAliases": ["Gobo Rotation fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -528,6 +536,8 @@
       ]
     },
     "Static Gobo Wheel": {
+      "fineChannelAliases": ["Static Gobo Wheel fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 7],
@@ -825,6 +835,8 @@
       ]
     },
     "Prism Rotation": {
+      "fineChannelAliases": ["Prism Rotation fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 127],
@@ -853,6 +865,7 @@
       ]
     },
     "Focus": {
+      "fineChannelAliases": ["Focus fine"],
       "capability": {
         "type": "Focus",
         "distanceStart": "near",
@@ -860,6 +873,7 @@
       }
     },
     "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
       "capability": {
         "type": "Zoom",
         "angleStart": "narrow",
@@ -937,6 +951,7 @@
       ]
     },
     "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
       "capability": {
         "type": "Intensity"
       }
@@ -1288,8 +1303,38 @@
   },
   "modes": [
     {
+      "name": "Basic",
+      "shortName": "bas",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTO",
+        "Color Wheel",
+        "Rotating Gobo Wheel",
+        "Gobo Rotation",
+        "Static Gobo Wheel",
+        "Rotating Prism / Prism/Gobo Macros",
+        "Prism Rotation",
+        "Focus",
+        "Zoom",
+        "Auto Focus",
+        "Auto Focus fine",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Frost",
+        "Animation Wheel",
+        "CMY Speed",
+        "CMY Macros",
+        "Pan / Tilt Speed",
+        "Maintenance / Programs"
+      ]
+    },
+    {
       "name": "Standard",
-      "shortName": "Stand",
+      "shortName": "std",
       "channels": [
         "Pan",
         "Pan fine",
@@ -1311,6 +1356,49 @@
         "Auto Focus fine",
         "Shutter / Strobe",
         "Dimmer",
+        "Frost",
+        "Animation Wheel",
+        "CMY Speed",
+        "CMY Macros",
+        "Pan / Tilt Speed",
+        "Maintenance / Programs"
+      ]
+    },
+    {
+      "name": "Extended",
+      "shortName": "ext",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Cyan",
+        "Cyan fine",
+        "Magenta",
+        "Magenta fine",
+        "Yellow",
+        "Yellow fine",
+        "CTO",
+        "CTO fine",
+        "Color Wheel",
+        "Color Wheel fine",
+        "Rotating Gobo Wheel",
+        "Gobo Rotation",
+        "Gobo Rotation fine",
+        "Static Gobo Wheel",
+        "Static Gobo Wheel fine",
+        "Rotating Prism / Prism/Gobo Macros",
+        "Prism Rotation",
+        "Prism Rotation fine",
+        "Focus",
+        "Focus fine",
+        "Zoom",
+        "Zoom fine",
+        "Auto Focus",
+        "Auto Focus fine",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
         "Frost",
         "Animation Wheel",
         "CMY Speed",
