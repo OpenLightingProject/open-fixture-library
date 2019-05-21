@@ -65,13 +65,14 @@ module.exports.export = function exportQlcPlus(fixtures, options) {
       addChannel(xml, channel, fixture);
     }
 
+    const useGlobalPhysical = fixture.modes.every(mode => mode.physicalOverride === null);
+
     for (const mode of fixture.modes) {
-      addMode(xml, mode);
+      addMode(xml, mode, !useGlobalPhysical);
     }
 
-    const allModesHavePhysical = fixture.modes.every(mode => mode.physicalOverride !== null);
-    if (fixture.physical !== null && !allModesHavePhysical) {
-      addPhysical(xml, fixture.physical, fixture);
+    if (useGlobalPhysical) {
+      addPhysical(xml, fixture.physical || new Physical({}), fixture);
     }
 
     xml.dtd(``);
@@ -604,8 +605,9 @@ function getCapabilityPreset(capability) {
 /**
  * @param {object} xml The xmlbuilder <FixtureDefinition> object.
  * @param {Mode} mode The OFL mode object.
+ * @param {boolean} createPhysical Whether to add a Physical XML element to the mode.
  */
-function addMode(xml, mode) {
+function addMode(xml, mode, createPhysical) {
   const xmlMode = xml.element({
     Mode: {
       '@Name': mode.name
@@ -617,8 +619,8 @@ function addMode(xml, mode) {
     mode.physical.focusTiltMax === Number.POSITIVE_INFINITY
   );
 
-  if (mode.physicalOverride !== null || hasPanTiltInfinite) {
-    addPhysical(xmlMode, mode.physical, mode.fixture, hasPanTiltInfinite ? mode : null);
+  if (createPhysical) {
+    addPhysical(xmlMode, mode.physical || new Physical({}), mode.fixture, hasPanTiltInfinite ? mode : null);
   }
 
   mode.channels.forEach((channel, index) => {
