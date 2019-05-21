@@ -24,23 +24,22 @@
     "modelId": 22
   },
   "physical": {
-    "dimensions": [571, 31.7, 465],
-    "weight": 38,
+    "dimensions": [465, 650, 571],
+    "weight": 38.0,
     "power": 750,
     "DMXconnector": "5-pin XLR IP65",
     "bulb": {
-      "type": "phillips MSD Platinum",
+      "type": "Philips MSD Platinum 21R 470W",
       "colorTemperature": 8000,
       "lumens": 23000
     },
     "lens": {
-      "name": "Beam Wash",
       "degreesMinMax": [2, 40]
     },
     "focus": {
       "type": "Head",
-      "panMax": 680,
-      "tiltMax": 280
+      "panMax": 630,
+      "tiltMax": 270
     }
   },
   "wheels": {
