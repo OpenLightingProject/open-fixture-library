@@ -801,13 +801,18 @@ function addHeads(xmlMode, mode) {
  * @returns {string} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
  */
 function getFixtureType(fixture) {
-  // see https://github.com/OpenLightingProject/open-fixture-library/issues/581
-  if (fixture.categories.includes(`Pixel Bar`)) {
-    return isBeamBar() ? `LED Bar (Beams)` : `LED Bar (Pixels)`;
-  }
+  const replaceCats = {
+    // see https://github.com/OpenLightingProject/open-fixture-library/issues/581
+    'Pixel Bar': isBeamBar() ? `LED Bar (Beams)` : `LED Bar (Pixels)`
+  };
 
   const ignoredCats = [`Blinder`, `Matrix`, `Stand`];
-  return fixture.categories.find(cat => !ignoredCats.includes(cat)) || `Other`;
+
+  return fixture.categories.map(
+    cat => (cat in replaceCats ? replaceCats[cat] : cat)
+  ).find(
+    cat => !ignoredCats.includes(cat)
+  ) || `Other`;
 
 
   /**
