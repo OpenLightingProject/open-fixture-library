@@ -65,13 +65,14 @@ module.exports.export = function exportQlcPlus(fixtures, options) {
       addChannel(xml, channel, fixture);
     }
 
+    const useGlobalPhysical = fixture.modes.every(mode => mode.physicalOverride === null);
+
     for (const mode of fixture.modes) {
-      addMode(xml, mode);
+      addMode(xml, mode, !useGlobalPhysical);
     }
 
-    const allModesHavePhysical = fixture.modes.every(mode => mode.physicalOverride !== null);
-    if (fixture.physical !== null && !allModesHavePhysical) {
-      addPhysical(xml, fixture.physical, fixture);
+    if (useGlobalPhysical) {
+      addPhysical(xml, fixture.physical || new Physical({}), fixture);
     }
 
     xml.dtd(``);
@@ -604,8 +605,9 @@ function getCapabilityPreset(capability) {
 /**
  * @param {object} xml The xmlbuilder <FixtureDefinition> object.
  * @param {Mode} mode The OFL mode object.
+ * @param {boolean} createPhysical Whether to add a Physical XML element to the mode.
  */
-function addMode(xml, mode) {
+function addMode(xml, mode, createPhysical) {
   const xmlMode = xml.element({
     Mode: {
       '@Name': mode.name
@@ -617,8 +619,8 @@ function addMode(xml, mode) {
     mode.physical.focusTiltMax === Number.POSITIVE_INFINITY
   );
 
-  if (mode.physicalOverride !== null || hasPanTiltInfinite) {
-    addPhysical(xmlMode, mode.physical, mode.fixture, hasPanTiltInfinite ? mode : null);
+  if (createPhysical) {
+    addPhysical(xmlMode, mode.physical || new Physical({}), mode.fixture, hasPanTiltInfinite ? mode : null);
   }
 
   mode.channels.forEach((channel, index) => {
@@ -686,7 +688,8 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
 
           if (panTiltMax === Number.POSITIVE_INFINITY) {
             try {
-              const panTiltChannel = mode.channels.find(
+              const channels = mode ? mode.channels : fixture.coarseChannels;
+              const panTiltChannel = channels.find(
                 ch => `capabilities` in ch && ch.capabilities.length === 1 &&
                   ch.capabilities[0].type === panOrTilt && ch.capabilities[0].angle[0].unit === `deg`
               );
@@ -798,13 +801,18 @@ function addHeads(xmlMode, mode) {
  * @returns {string} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
  */
 function getFixtureType(fixture) {
-  // see https://github.com/OpenLightingProject/open-fixture-library/issues/581
-  if (fixture.categories.includes(`Pixel Bar`)) {
-    return isBeamBar() ? `LED Bar (Beams)` : `LED Bar (Pixels)`;
-  }
+  const replaceCats = {
+    // see https://github.com/OpenLightingProject/open-fixture-library/issues/581
+    'Pixel Bar': isBeamBar() ? `LED Bar (Beams)` : `LED Bar (Pixels)`
+  };
 
   const ignoredCats = [`Blinder`, `Matrix`, `Stand`];
-  return fixture.categories.find(cat => !ignoredCats.includes(cat)) || `Other`;
+
+  return fixture.categories.map(
+    cat => (cat in replaceCats ? replaceCats[cat] : cat)
+  ).find(
+    cat => !ignoredCats.includes(cat)
+  ) || `Other`;
 
 
   /**
