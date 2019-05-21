@@ -1038,6 +1038,12 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    * Checks if the used channels fits to the fixture's categories and raise warnings suggesting to add/remove a category.
    */
   function checkCategories() {
+    const mutuallyExclusiveGroups = [
+      [`Moving Head`, `Scanner`],
+      [`Pixel Bar`, `Flower`],
+      [`Pixel Bar`, `Stand`]
+    ];
+
     const categories = {
       'Color Changer': {
         isSuggested: isColorChanger(),
@@ -1078,21 +1084,36 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       }
     };
 
-    for (const categoryName of Object.keys(categories)) {
-      const categoryUsed = fixture.categories.includes(categoryName);
-      const category = categories[categoryName];
+    Object.entries(categories).forEach(([categoryName, category]) => {
+      const isCategoryUsed = fixture.categories.includes(categoryName);
 
-      if (!(`isInvalid` in category)) {
-        category.isInvalid = !category.isSuggested;
-      }
+      if (!isCategoryUsed && category.isSuggested) {
+        // don't suggest this category if another mutually exclusive category is used
+        const exclusiveGroups = mutuallyExclusiveGroups.filter(
+          group => group.includes(categoryName)
+        );
+        const isForbiddenByGroup = exclusiveGroups.some(
+          group => group.some(
+            cat => fixture.categories.includes(cat)
+          )
+        );
 
-      if (!categoryUsed && category.isSuggested) {
-        result.warnings.push(`Category '${categoryName}' suggested since ${category.suggestedPhrase}.`);
+        if (!isForbiddenByGroup) {
+          result.warnings.push(`Category '${categoryName}' suggested since ${category.suggestedPhrase}.`);
+        }
       }
-      else if (categoryUsed && category.isInvalid) {
+      else if (isCategoryUsed && category.isInvalid) {
         result.errors.push(`Category '${categoryName}' invalid since ${category.invalidPhrase}.`);
       }
-    }
+    });
+
+    mutuallyExclusiveGroups.forEach(group => {
+      const usedCategories = group.filter(cat => fixture.categories.includes(cat));
+
+      if (usedCategories.length >= 2) {
+        result.errors.push(`Categories '${usedCategories.join(`', '`)}' can't be used together.`);
+      }
+    });
 
     /**
      * @returns {boolean} Whether the 'Color Changer' category is suggested.
@@ -1184,12 +1205,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
      * @returns {boolean} True if a matrix with only one axis, which has more than 4 pixels, is defined.
      */
     function isPixelBar() {
-      const mutualExclusiveCategories = [`Flower`, `Stand`];
-      const hasMutualExclusiveCategory = fixture.categories.some(
-        cat => mutualExclusiveCategories.includes(cat)
-      );
-
-      if (hasMutualExclusiveCategory || fixture.matrix === null) {
+      if (fixture.matrix === null) {
         return false;
       }
 
