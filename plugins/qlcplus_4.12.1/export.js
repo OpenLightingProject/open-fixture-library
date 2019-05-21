@@ -688,7 +688,8 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
 
           if (panTiltMax === Number.POSITIVE_INFINITY) {
             try {
-              const panTiltChannel = mode.channels.find(
+              const channels = mode ? mode.channels : fixture.coarseChannels;
+              const panTiltChannel = channels.find(
                 ch => `capabilities` in ch && ch.capabilities.length === 1 &&
                   ch.capabilities[0].type === panOrTilt && ch.capabilities[0].angle[0].unit === `deg`
               );
