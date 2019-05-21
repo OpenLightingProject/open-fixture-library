@@ -334,76 +334,44 @@
     }
   },
   "availableChannels": {
-    "Pan Movement": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angleStart": "1deg",
-        "angleEnd": "680deg"
+        "angleStart": "0deg",
+        "angleEnd": "630deg"
       }
     },
-    "Pan Movement 2": {
-      "name": "Pan Movement",
-      "fineChannelAliases": ["Pan Movement 2 fine"],
-      "capability": {
-        "type": "PanContinuous",
-        "speed": "slow CCW"
-      }
-    },
-    "Pan Movement 3": {
-      "name": "Pan Movement",
-      "fineChannelAliases": ["Pan Movement 3 fine"],
-      "capability": {
-        "type": "PanContinuous",
-        "speed": "slow CCW"
-      }
-    },
-    "Pan Movement 16": {
-      "fineChannelAliases": ["Pan Movement 16 fine"],
-      "dmxValueResolution": "8bit",
-      "capability": {
-        "type": "PanContinuous",
-        "speed": "slow CCW"
-      }
-    },
-    "Tilt Movement": {
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angleStart": "1deg",
-        "angleEnd": "300deg"
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
       }
     },
-    "Tilt Movement 16": {
-      "fineChannelAliases": ["Tilt Movement 16 fine"],
-      "dmxValueResolution": "8bit",
+    "Cyan": {
       "capability": {
-        "type": "TiltContinuous",
-        "speed": "slow CCW"
+        "type": "ColorIntensity",
+        "color": "Cyan"
       }
     },
-    "Cyan Color": {
+    "Magenta": {
       "capability": {
-        "type": "ColorPreset",
-        "comment": "Cyan",
-        "colorTemperature": "default"
+        "type": "ColorIntensity",
+        "color": "Magenta"
       }
     },
-    "Magenta Color": {
+    "Yellow": {
       "capability": {
-        "type": "ColorPreset",
-        "comment": "Magenta",
-        "colorTemperature": "default"
+        "type": "ColorIntensity",
+        "color": "Yellow"
       }
     },
-    "Yellow Color": {
-      "capability": {
-        "type": "ColorPreset",
-        "comment": "Yellow"
-      }
-    },
-    "CTO Color": {
+    "CTO": {
       "capability": {
         "type": "ColorTemperature",
-        "colorTemperatureStart": "CTO",
+        "colorTemperatureStart": "default",
         "colorTemperatureEnd": "CTO"
       }
     },
@@ -987,20 +955,20 @@
         }
       ]
     },
-    "Rotatig Prism, Prism Index Rotation": {
+    "Prism Rotation": {
       "capabilities": [
         {
           "dmxRange": [0, 127],
           "type": "PrismRotation",
-          "speedStart": "stop",
-          "speedEnd": "stop"
+          "angleStart": "0deg",
+          "angleEnd": "360deg",
+          "helpWanted": "Correct angle?"
         },
         {
           "dmxRange": [128, 189],
           "type": "PrismRotation",
           "speedStart": "fast CW",
-          "speedEnd": "slow CW",
-          "comment": "Clockwise Prism Rotation from FAST to SLOW"
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [190, 193],
@@ -1011,8 +979,7 @@
           "dmxRange": [194, 255],
           "type": "PrismRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW",
-          "comment": "Clockwise Prism Rotation from SLOW to FAST"
+          "speedEnd": "fast CW"
         }
       ]
     },
@@ -1030,12 +997,14 @@
         "angleEnd": "wide"
       }
     },
-    "Autofocus": {
+    "Auto Focus": {
+      "fineChannelAliases": ["Auto Focus fine"],
+      "dmxValueResolution": "8bit",
       "capabilities": [
         {
           "dmxRange": [0, 50],
-          "type": "Focus",
-          "distance": "near"
+          "type": "NoFunction",
+          "comment": "Off"
         },
         {
           "dmxRange": [51, 150],
@@ -1048,34 +1017,6 @@
           "distance": "20m"
         }
       ]
-    },
-    "Autofocus f": {
-      "fineChannelAliases": ["Autofocus f fine"],
-      "dmxValueResolution": "8bit",
-      "capability": {
-        "type": "Focus",
-        "distanceStart": "near",
-        "distanceEnd": "far"
-      }
-    },
-    "Autofocus 2": {
-      "name": "Autofocus",
-      "fineChannelAliases": ["Autofocus 2 fine"],
-      "dmxValueResolution": "8bit",
-      "capability": {
-        "type": "Focus",
-        "distanceStart": "near",
-        "distanceEnd": "far"
-      }
-    },
-    "AutoFocus": {
-      "fineChannelAliases": ["AutoFocus fine"],
-      "dmxValueResolution": "8bit",
-      "capability": {
-        "type": "Focus",
-        "distanceStart": "near",
-        "distanceEnd": "far"
-      }
     },
     "Shutter / Strobe": {
       "capabilities": [
@@ -1092,7 +1033,7 @@
         {
           "dmxRange": [64, 95],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUp",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
@@ -1114,9 +1055,10 @@
         {
           "dmxRange": [192, 223],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUpDown",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [224, 255],
@@ -1140,8 +1082,7 @@
         {
           "dmxRange": [128, 255],
           "type": "Frost",
-          "frostIntensityStart": "off",
-          "frostIntensityEnd": "high"
+          "frostIntensity": "high"
         }
       ]
     },
@@ -1184,24 +1125,24 @@
       "name": "Standard",
       "shortName": "Stand",
       "channels": [
-        "Pan Movement",
-        "Pan Movement 16",
-        "Tilt Movement",
-        "Tilt Movement 16",
-        "Cyan Color",
-        "Magenta Color",
-        "Yellow Color",
-        "CTO Color",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTO",
         "Color Wheel",
         "Rotating Gobos, Continuous Rotation(Gobo Wheel 1)",
         "Rotating Gobos, Index Rotation(Gobo Wheel 1)",
         "Static/Fixed Gobos(Gobo Wheel 2)",
         "Rotating Prism, Prism/Gobo Macros",
-        "Rotatig Prism, Prism Index Rotation",
+        "Prism Rotation",
         "Focus",
         "Zoom",
-        "AutoFocus",
-        "AutoFocus fine",
+        "Auto Focus",
+        "Auto Focus fine",
         "Shutter / Strobe",
         "Dimmer",
         "Frost",
