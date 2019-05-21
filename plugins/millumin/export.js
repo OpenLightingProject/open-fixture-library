@@ -38,14 +38,14 @@ module.exports.export = function exportMillumin(fixtures, options) {
     if (oflJson.availableChannels) {
       milluminJson.availableChannels = {};
       Object.entries(oflJson.availableChannels).forEach(([chKey, jsonChannel]) => {
-        milluminJson.availableChannels[chKey] = downgradeChannel(chKey, jsonChannel, fixture);
+        milluminJson.availableChannels[chKey] = getDowngradedChannel(chKey, jsonChannel, fixture);
       });
     }
 
     if (oflJson.templateChannels) {
       milluminJson.templateChannels = {};
       Object.entries(oflJson.templateChannels).forEach(([chKey, jsonChannel]) => {
-        milluminJson.templateChannels[chKey] = downgradeChannel(chKey, jsonChannel, fixture);
+        milluminJson.templateChannels[chKey] = getDowngradedChannel(chKey, jsonChannel, fixture);
       });
     }
 
@@ -197,7 +197,7 @@ function getDowngradedMatrix(jsonMatrix, fixture) {
  * @param {Fixture} fixture The fixture the channel belongs to.
  * @returns {object} A downgraded version of the specified channel object.
  */
-function downgradeChannel(channelKey, jsonChannel, fixture) {
+function getDowngradedChannel(channelKey, jsonChannel, fixture) {
   const channel = new CoarseChannel(channelKey, jsonChannel, fixture);
 
   const downgradedChannel = {};
