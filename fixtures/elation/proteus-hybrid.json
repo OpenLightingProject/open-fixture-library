@@ -986,6 +986,304 @@
         "speedStart": "slow",
         "speedEnd": "fast"
       }
+    },
+    "CMY Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Macro 1"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Macro 2"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Macro 3"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Macro 4"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "ColorPreset",
+          "comment": "Macro 5"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "comment": "Macro 6"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "comment": "Macro 7"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "comment": "Macro 8"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "comment": "Macro 9"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "ColorPreset",
+          "comment": "Macro 10"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "ColorPreset",
+          "comment": "Macro 11"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "comment": "Macro 12"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "ColorPreset",
+          "comment": "Macro 13"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "ColorPreset",
+          "comment": "Macro 14"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "ColorPreset",
+          "comment": "Macro 15"
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "ColorPreset",
+          "comment": "Macro 16"
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "ColorPreset",
+          "comment": "Macro 17"
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "ColorPreset",
+          "comment": "Macro 18"
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "ColorPreset",
+          "comment": "Macro 19"
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "ColorPreset",
+          "comment": "Macro 20"
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "ColorPreset",
+          "comment": "Macro 21"
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "ColorPreset",
+          "comment": "Macro 22"
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "ColorPreset",
+          "comment": "Macro 23"
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "ColorPreset",
+          "comment": "Macro 24"
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "ColorPreset",
+          "comment": "Macro 25"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ColorPreset",
+          "comment": "Macro 26"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ColorPreset",
+          "comment": "Macro 27"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ColorPreset",
+          "comment": "Random CMY"
+        }
+      ]
+    },
+    "Pan / Tilt Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 225],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [226, 235],
+          "type": "Maintenance",
+          "comment": "Blackout at movement"
+        },
+        {
+          "dmxRange": [236, 245],
+          "type": "Maintenance",
+          "comment": "Blackout at all wheel movement"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Maintenance / Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Maintenance",
+          "comment": "Color wheel change normal"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Maintenance",
+          "comment": "Color wheel change to any position"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Maintenance",
+          "comment": "Color / Fixed gobo wheel change to any position"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Maintenance",
+          "comment": "Lamp on"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Maintenance",
+          "comment": "Lamp off"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Maintenance",
+          "comment": "All motors reset"
+        },
+        {
+          "dmxRange": [85, 87],
+          "type": "Maintenance",
+          "comment": "Scan motor reset"
+        },
+        {
+          "dmxRange": [88, 90],
+          "type": "Maintenance",
+          "comment": "Color wheel motor reset"
+        },
+        {
+          "dmxRange": [91, 93],
+          "type": "Maintenance",
+          "comment": "Gobo wheel motor reset"
+        },
+        {
+          "dmxRange": [94, 96],
+          "type": "Maintenance",
+          "comment": "Shutter/dimmer motor reset"
+        },
+        {
+          "dmxRange": [97, 99],
+          "type": "Maintenance",
+          "comment": "Other motors reset"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Effect",
+          "effectName": "Internal Program 1"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Effect",
+          "effectName": "Internal Program 2"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Effect",
+          "effectName": "Internal Program 3"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "Effect",
+          "effectName": "Internal Program 4"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "Effect",
+          "effectName": "Internal Program 5"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "Effect",
+          "effectName": "Internal Program 6"
+        },
+        {
+          "dmxRange": [220, 239],
+          "type": "Effect",
+          "effectName": "Internal Program 7"
+        },
+        {
+          "dmxRange": [240, 241],
+          "type": "Maintenance",
+          "comment": "Dimmer curce standard"
+        },
+        {
+          "dmxRange": [242, 243],
+          "type": "Maintenance",
+          "comment": "Dimmer curce linear"
+        },
+        {
+          "dmxRange": [244, 245],
+          "type": "Maintenance",
+          "comment": "Dimmer curce square"
+        },
+        {
+          "dmxRange": [246, 247],
+          "type": "Maintenance",
+          "comment": "Dimmer curce inverse square"
+        },
+        {
+          "dmxRange": [248, 249],
+          "type": "Maintenance",
+          "comment": "Dimmer curce s-curve"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        }
+      ]
     }
   },
   "modes": [
@@ -1015,7 +1313,10 @@
         "Dimmer",
         "Frost",
         "Animation Wheel",
-        "CMY Speed"
+        "CMY Speed",
+        "CMY Macros",
+        "Pan / Tilt Speed",
+        "Maintenance / Programs"
       ]
     }
   ]
