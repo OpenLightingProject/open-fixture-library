@@ -80,33 +80,6 @@
       </app-labeled-value>
     </section>
 
-    <section v-if="physical.hasFocus" class="focus">
-      <h4>Focus</h4>
-
-      <app-labeled-value
-        v-if="physical.focusType !== null"
-        name="focus-type"
-        label="Type">
-        {{ physical.focusType }}
-      </app-labeled-value>
-
-      <app-labeled-value
-        v-if="physical.focusPanMax !== null"
-        name="focus-panMax"
-        label="Max. pan angle">
-        <template v-if="physical.focusPanMax === Number.POSITIVE_INFINITY">Infinite</template>
-        <template v-else>{{ physical.focusPanMax }}°</template>
-      </app-labeled-value>
-
-      <app-labeled-value
-        v-if="physical.focusTiltMax !== null"
-        name="focus-panMax"
-        label="Max. tilt angle">
-        <template v-if="physical.focusTiltMax === Number.POSITIVE_INFINITY">Infinite</template>
-        <template v-else>{{ physical.focusTiltMax }}°</template>
-      </app-labeled-value>
-    </section>
-
     <section v-if="physical.hasMatrixPixels" class="matrixPixels">
       <h4>Matrix Pixels</h4>
 

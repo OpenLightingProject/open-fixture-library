@@ -32,7 +32,7 @@ module.exports.export = function exportMillumin(fixtures, options) {
 
     addIfValidData(milluminJson, `helpWanted`, oflJson.helpWanted);
     addIfValidData(milluminJson, `rdm`, oflJson.rdm);
-    addIfValidData(milluminJson, `physical`, oflJson.physical);
+    addIfValidData(milluminJson, `physical`, getDowngradedFixturePhysical(oflJson.physical || {}, fixture));
     addIfValidData(milluminJson, `matrix`, getDowngradedMatrix(oflJson.matrix, fixture));
 
     if (oflJson.availableChannels) {
@@ -73,17 +73,107 @@ module.exports.export = function exportMillumin(fixtures, options) {
  * @returns {array.<string>} A filtered categories array.
  */
 function getDowngradedCategories(categories) {
-  const addedCategories = [`Pixel Bar`, `Stand`];
+  const replaceCats = {
+    'Barrel Scanner': `Effect`
+  };
+  const ignoredCats = [`Pixel Bar`, `Stand`];
 
-  const filteredCategories = categories.filter(
-    category => !addedCategories.includes(category)
-  );
+  const downgradedCategories = categories.map(cat => {
+    if (ignoredCats.includes(cat)) {
+      return null;
+    }
 
-  if (filteredCategories.length === 0) {
-    filteredCategories.push(`Other`);
+    if (cat in replaceCats) {
+      cat = replaceCats[cat];
+
+      if (categories.includes(cat)) {
+        // replaced category is already used
+        return null;
+      }
+    }
+
+    return cat;
+  }).filter(cat => cat !== null);
+
+  if (downgradedCategories.length === 0) {
+    downgradedCategories.push(`Other`);
   }
 
-  return filteredCategories;
+  return downgradedCategories;
+}
+
+/**
+ * Replaces the fixture's physical JSON object with one that fits to the supported OFL schema version.
+ * Specifically, the outdated focus property (with type, panMax and tiltMax) is generated and added if needed.
+ * @param {object} jsonPhysical The physical JSON that should be downgraded. May be an empty object.
+ * @param {Fixture} fixture The fixture whose physical data should be downgraded.
+ * @returns {object} The downgraded physical JSON object.
+ */
+function getDowngradedFixturePhysical(jsonPhysical, fixture) {
+  const focusTypesCategories = {
+    Head: `Moving Head`,
+    Mirror: `Scanner`,
+    Barrel: `Barrel Scanner`,
+    Fixed: null
+  };
+  const type = Object.keys(focusTypesCategories).find(
+    focusType => fixture.categories.includes(focusTypesCategories[focusType])
+  ) || null;
+
+  const [panMax, tiltMax] = [`Pan`, `Tilt`].map(panOrTilt => {
+    const capabilities = [];
+    fixture.coarseChannels.forEach(ch => {
+      if (ch.capabilities) {
+        capabilities.push(...ch.capabilities);
+      }
+    });
+
+    const hasContinuousCapability = capabilities.some(cap => cap.type === `${panOrTilt}Continuous`);
+    if (hasContinuousCapability) {
+      return `infinite`;
+    }
+
+    const panTiltCapabilities = capabilities.filter(cap => cap.type === panOrTilt && cap.angle[0].unit === `deg`);
+    const minAngle = Math.min(...panTiltCapabilities.map(cap => Math.min(cap.angle[0].number, cap.angle[1].number)));
+    const maxAngle = Math.max(...panTiltCapabilities.map(cap => Math.max(cap.angle[0].number, cap.angle[1].number)));
+    const panTiltMax = maxAngle - minAngle;
+
+    if (panTiltMax > -Infinity) {
+      return panTiltMax;
+    }
+
+    return null;
+  });
+
+  const focus = {
+    type,
+    panMax,
+    tiltMax
+  };
+
+  // remove null properties
+  Object.entries(focus).filter(
+    ([key, value]) => value === null
+  ).forEach(
+    ([key, value]) => delete focus[key]
+  );
+
+  if (Object.keys(focus).length > 0) {
+    jsonPhysical.focus = focus;
+
+    if (jsonPhysical.matrixPixels) {
+      // remove matrixPixels and add them again after focus
+      const matrixPixels = jsonPhysical.matrixPixels;
+      delete jsonPhysical.matrixPixels;
+      jsonPhysical.matrixPixels = matrixPixels;
+    }
+  }
+
+  // don't return empty objects
+  if (Object.keys(jsonPhysical).length > 0) {
+    return jsonPhysical;
+  }
+  return null;
 }
 
 /**

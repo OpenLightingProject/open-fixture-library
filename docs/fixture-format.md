@@ -67,7 +67,7 @@ The `physical` section describes properties not directly used in the DMX protoco
 
 A fixture can have multiple *modes* (also sometimes called *personalities*) like "Basic 3-channel mode" or "Extended 5-channel mode". Our modes are not allowed to have the word "mode" in them, as it is automatically appended at the end.
 
-A mode can contain the `physical` property to override specific physical data of the fixture. E.g. one mode could set the `panMax` value different than the fixture default.
+A mode can contain the `physical` property to override specific physical data of the fixture. E.g. one mode could set the `power` value different than the fixture default.
 
 A mode's `shortName` must be unique amongst all modes of the respective fixture.
 

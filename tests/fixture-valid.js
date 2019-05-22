@@ -561,8 +561,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           ShutterStrobe: checkShutterStrobeCapability,
           Pan: checkPanTiltCapability,
           Tilt: checkPanTiltCapability,
-          PanContinuous: checkPanTiltContinuousCapability,
-          TiltContinuous: checkPanTiltContinuousCapability,
           WheelSlot: checkWheelCapability,
           WheelShake: checkWheelCapability,
           WheelSlotRotation: checkWheelCapability,
@@ -671,37 +669,9 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
          * Type-specific checks for Pan and Tilt capabilities.
          */
         function checkPanTiltCapability() {
-          const max = fixture.physical === null ? null : fixture.physical[`focus${cap.type}Max`];
-          const isInfinite = max === Number.POSITIVE_INFINITY;
           const usesPercentageAngle = cap.angle[0].unit === `%`;
-
-          const panOrTilt = cap.type.toLowerCase();
-
-          if (!usesPercentageAngle) {
-            const range = Math.abs(cap.angle[1] - cap.angle[0]);
-
-            if (!max) {
-              result.warnings.push(`${errorPrefix} defines an exact ${panOrTilt} angle. Setting focus.${panOrTilt}Max in the fixture's physical data is recommended.`);
-            }
-            else if (range > max) {
-              result.errors.push(`${errorPrefix} uses an angle range that is greater than focus.${panOrTilt}Max in the fixture's physical data.`);
-            }
-          }
-          else if (max && !isInfinite) {
-            result.warnings.push(`${errorPrefix} defines an imprecise percentaged ${panOrTilt} angle. Using the exact value from focus.${panOrTilt}Max in the fixture's physical data is recommended.`);
-          }
-        }
-
-        /**
-         * Type-specific checks for PanContinuous and TiltContinuous capabilities.
-         */
-        function checkPanTiltContinuousCapability() {
-          const panOrTilt = cap.type === `PanContinuous` ? `Pan` : `Tilt`;
-
-          const max = fixture.physical === null ? null : fixture.physical[`focus${panOrTilt}Max`];
-
-          if (max !== Number.POSITIVE_INFINITY) {
-            result.errors.push(`${errorPrefix} defines continuous ${panOrTilt.toLowerCase()} but focus.${panOrTilt.toLowerCase()}Max in the fixture's physical data is not "infinite".`);
+          if (usesPercentageAngle) {
+            result.warnings.push(`${errorPrefix} defines an imprecise percentaged angle. Please to try find the value in degrees.`);
           }
         }
 
@@ -868,10 +838,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       else if (channel instanceof FineChannel) {
         checkCoarserChannelsInMode(channel);
       }
-      else {
-        // that's already checked for switched channels and we don't need to check it for fine channels
-        checkPanTiltMaxInPhysical();
-      }
 
       /**
        * Check that a switching channel reference in a mode is valid.
@@ -893,8 +859,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
             checkCoarserChannelsInMode(switchToChannel);
             continue;
           }
-
-          checkPanTiltMaxInPhysical(switchToChannel, mode);
         }
 
         for (let j = 0; j < mode.getChannelIndex(channel); j++) {
@@ -962,25 +926,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           result.errors.push(`Mode '${mode.shortName}' contains the fine channel '${fineChannel.key}' but is missing its coarser channels ${notInMode}.`);
         }
       }
-
-      /**
-       * Check that panMax / tiltMax are defined in this mode's physical section (or globally) when there is a Pan / Tilt channel.
-       */
-      function checkPanTiltMaxInPhysical() {
-        if (channel.type !== `Pan` && channel.type !== `Tilt`) {
-          return;
-        }
-
-        const modelMaxProp = `focus${channel.type}Max`;
-        const jsonMaxProp = `${channel.type.toLowerCase()}Max`;
-
-        if (mode.physical === null || mode.physical[modelMaxProp] === null) {
-          result.warnings.push(`physical.${jsonMaxProp} is not defined although there's a ${channel.type} channel '${channel.key}' in mode '${mode.shortName}'.`);
-        }
-        else if (mode.physical[modelMaxProp] === 0) {
-          result.warnings.push(`physical.${jsonMaxProp} is 0 although there's a ${channel.type} channel '${channel.key}' in mode '${mode.shortName}'.`);
-        }
-      }
     }
   }
 
@@ -1039,7 +984,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    */
   function checkCategories() {
     const mutuallyExclusiveGroups = [
-      [`Moving Head`, `Scanner`],
+      [`Moving Head`, `Scanner`, `Barrel Scanner`],
       [`Pixel Bar`, `Flower`],
       [`Pixel Bar`, `Stand`]
     ];
@@ -1051,16 +996,22 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         invalidPhrase: `there are no ColorPreset and less than two ColorIntensity capabilities and no Color wheel slots`
       },
       'Moving Head': {
-        isSuggested: isMovingHead(),
-        isInvalid: isNotMovingHead(),
-        suggestedPhrase: `focus.type is 'Head' or there's a Pan(Continuous) and a Tilt(Continuous) capability`,
-        invalidPhrase: `focus.type is not 'Head'`
+        isSuggested: hasPanTiltChannels(true),
+        isInvalid: !hasPanTiltChannels(true),
+        suggestedPhrase: `there are pan and tilt channels`,
+        invalidPhrase: `there are not both pan and tilt channels`
       },
       'Scanner': {
-        isSuggested: isScanner(),
-        isInvalid: isNotScanner(),
-        suggestedPhrase: `focus.type is 'Mirror' or there's a Pan(Continuous) and a Tilt(Continuous) capability`,
-        invalidPhrase: `focus.type is not 'Mirror'`
+        isSuggested: hasPanTiltChannels(true),
+        isInvalid: !hasPanTiltChannels(false),
+        suggestedPhrase: `there are pan and tilt channels`,
+        invalidPhrase: `there are no pan or tilt channels`
+      },
+      'Barrel Scanner': {
+        isSuggested: hasPanTiltChannels(true),
+        isInvalid: !hasPanTiltChannels(false),
+        suggestedPhrase: `there are pan and tilt channels`,
+        invalidPhrase: `there are no pan or tilt channels`
       },
       'Smoke': {
         isSuggested: isFogType(`Fog`),
@@ -1086,6 +1037,10 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
     Object.entries(categories).forEach(([categoryName, category]) => {
       const isCategoryUsed = fixture.categories.includes(categoryName);
+
+      if (!(`isInvalid` in category)) {
+        category.isInvalid = !category.isSuggested;
+      }
 
       if (!isCategoryUsed && category.isSuggested) {
         // don't suggest this category if another mutually exclusive category is used
@@ -1125,46 +1080,13 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     /**
-     * @returns {boolean} Whether the 'Moving Head' category is suggested.
-    */
-    function isMovingHead() {
-      const hasFocusTypeHead = fixture.physical !== null && fixture.physical.focusType === `Head`;
-      const hasOtherFocusType = fixture.physical !== null && fixture.physical.focusType !== null;
-
-      return hasFocusTypeHead || (hasPanTiltChannels() && !hasOtherFocusType);
-    }
-
-    /**
-     * @returns {boolean} Whether the 'Moving Head' category is invalid.
-    */
-    function isNotMovingHead() {
-      return fixture.physical === null || fixture.physical.focusType !== `Head`;
-    }
-
-    /**
-     * @returns {boolean} Whether the 'Scanner' category is suggested.
-    */
-    function isScanner() {
-      const hasFocusTypeMirror = fixture.physical !== null && fixture.physical.focusType === `Mirror`;
-      const hasOtherFocusType = fixture.physical !== null && fixture.physical.focusType !== null;
-
-      return hasFocusTypeMirror || (hasPanTiltChannels() && !hasOtherFocusType);
-    }
-
-    /**
-     * @returns {boolean} Whether the 'Scanner' category is invalid.
-    */
-    function isNotScanner() {
-      return fixture.physical === null || fixture.physical.focusType !== `Mirror`;
-    }
-
-    /**
-     * @returns {boolean} Whether the fixture has both a Pan / PanContinuous and a Tilt / TiltContinuous channel.
+     * @param {boolean} [both=false] Whether there need to be both Pan and Tilt channels.
+     * @returns {boolean} Whether the fixture has a Pan(Continuous) and/or (depending on 'both') a Tilt(Continuous) channel.
      */
-    function hasPanTiltChannels() {
+    function hasPanTiltChannels(both = false) {
       const hasPan = hasCapabilityOfType(`Pan`) || hasCapabilityOfType(`PanContinuous`);
       const hasTilt = hasCapabilityOfType(`Tilt`) || hasCapabilityOfType(`TiltContinuous`);
-      return hasPan && hasTilt;
+      return both ? (hasPan && hasTilt) : (hasPan || hasTilt);
     }
 
     /**

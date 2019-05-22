@@ -105,58 +105,6 @@
         unit="°" />
     </app-labeled-input>
 
-
-    <h4>Focus</h4>
-
-    <app-labeled-input
-      :formstate="formstate"
-      :multiple-inputs="true"
-      :name="`${namePrefix}-physical-focus-type`"
-      label="Focus type">
-      <app-property-input-select
-        v-model="physical.focus.type"
-        :name="`${namePrefix}-physical-focus-type`"
-        :schema-property="properties.physicalFocus.type"
-        addition-hint="other focus type" />
-      <validate
-        v-if="physical.focus.type === `[add-value]`"
-        :state="formstate"
-        tag="span">
-        <app-property-input-text
-          v-model="physical.focus.typeNew"
-          :name="`${namePrefix}-physical-focus-typeNew`"
-          :schema-property="properties.definitions.nonEmptyString"
-          :required="true"
-          :auto-focus="true"
-          hint="other focus type"
-          class="addition" />
-      </validate>
-    </app-labeled-input>
-
-    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-focus-panMax`" label="Pan maximum">
-      <app-property-input-number
-        v-model="physical.focus.panMax"
-        :name="`${namePrefix}-physical-focus-panMax`"
-        :disabled="panMaxInfinite"
-        :schema-property="properties.physicalFocus.panMax.oneOf[0]" /> °
-
-      <label class="infinitePanTilt">
-        <input v-model="panMaxInfinite" :name="`${namePrefix}-physical-focus-panMaxInfinite`" type="checkbox"> Infinite pan
-      </label>
-    </app-labeled-input>
-
-    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-focus-tiltMax`" label="Tilt maximum">
-      <app-property-input-number
-        v-model="physical.focus.tiltMax"
-        :name="`${namePrefix}-physical-focus-tiltMax`"
-        :disabled="tiltMaxInfinite"
-        :schema-property="properties.physicalFocus.tiltMax.oneOf[0]" /> °
-
-      <label class="infinitePanTilt">
-        <input v-model="tiltMaxInfinite" :name="`${namePrefix}-physical-focus-tiltMaxInfinite`" type="checkbox"> Infinite tilt
-      </label>
-    </app-labeled-input>
-
   </div>
 </template>
 
@@ -210,22 +158,6 @@ export default {
   computed: {
     dimensionRequired() {
       return this.physical.dimensionsWidth !== null || this.physical.dimensionsHeight !== null || this.physical.dimensionsDepth !== null;
-    },
-    panMaxInfinite: {
-      get() {
-        return this.physical.focus.panMax === `infinite`;
-      },
-      set(newIsInfinite) {
-        this.physical.focus.panMax = newIsInfinite ? `infinite` : ``;
-      }
-    },
-    tiltMaxInfinite: {
-      get() {
-        return this.physical.focus.tiltMax === `infinite`;
-      },
-      set(newIsInfinite) {
-        this.physical.focus.tiltMax = newIsInfinite ? `infinite` : ``;
-      }
     }
   },
   mounted: function() {
