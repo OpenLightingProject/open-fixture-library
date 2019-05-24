@@ -40,7 +40,8 @@ module.exports.export = function exportColorSource(fixtures, options) {
       const parameters = getCSChannels(mode, hasIntensity);
 
       const fixtureJson = {
-        colortable: getColorTable(parameters),
+        dcid: `11111111-1111-1111-1111-111111111111`,
+        colortable: `11111111-1111-1111-1111-111111111111`,
         commands: getCommands(mode),
         hasIntensity,
         manufacturerName: fixture.manufacturer.name,
@@ -221,51 +222,6 @@ function getCSChannelType(channel) {
   }
 
   return CHANNEL_TYPE_BEAM;
-}
-
-/**
- * @param {array.<object>} colorSourceChannels A ColorSource fixture's parameter property.
- * @returns {string|null} The UUID of a suitable color table or null if no color table fits.
- */
-function getColorTable(colorSourceChannels) {
-  const colorChannels = colorSourceChannels.filter(ch => ch.type === CHANNEL_TYPE_COLOR);
-
-  const colorTables = {
-    "373673E3-571E-4CE2-B12D-CDD44085A1EB": [`Red`, `Green`, `Blue`, `Amber`, `Cyan`, `Indigo`, `RedOrange`],
-    "02A2F87C-AB4C-41F5-8779-A51B99D0BE1C": [`Red`, `Green`, `Blue`, `White`, `Amber`, `Cyan`, `Indigo`],
-    "75FEB905-EA2A-4643-B4F8-1A84141F8E98": [`Red`, `Green`, `Blue`, `Amber`, `Cyan`, `Indigo`, `Lime`],
-    "EDDEAC65-BD2E-4D87-B163-D7A2434EC081": [`Red`, `Green`, `Blue`, `White`, `Amber`, `UV`],
-    "04493BB0-7B6E-4B6C-B3B7-D9641F7511AD": [`Red`, `Green`, `Blue`, `Cyan`, `Indigo`],
-    "91189886-6A6A-47CF-9137-5F5A7A88D829": [`Red`, `Green`, `Amber`, `Indigo`, `RedOrange`],
-    "C7A1FB0A-AA23-468F-9060-AC1625155DE8": [`Red`, `Green`, `Blue`, `White`, `Amber`],
-    "1D16DE15-5F4C-46A9-9C3D-2380C2D2793A": [`Red`, `Green`, `Blue`, `Amber`, `Indigo`],
-    "3F90A9F9-209F-4505-A9F2-FEC17BC6A426": [`Red`, `Green`, `Blue`, `Amber`, `Cyan`],
-    "B28E1514-AE8C-4E06-8472-B52D575B1CF2": [`Red`, `Green`, `Blue`, `White`, `UV`],
-    "77597794-7BFF-46A3-878B-906D3780E6C9": [`Red`, `Blue`, `White`, `Indigo`],
-    "77A82F8A-9B24-4C3F-98FC-B6A29FB1AAE6": [`Red`, `Green`, `Blue`, `White`],
-    "74EF89F4-0B78-4DC6-8E8A-68E3298B7CD2": [`Red`, `Green`, `Blue`, `UV`],
-    "D3E71EC8-3406-4572-A64C-52A38649C795": [`Red`, `Green`, `Blue`, `Amber`],
-    "B043D095-95A4-4DDB-AB38-252C991B13A8": [`Red`, `Green`, `Blue`, `Indigo`],
-    "3874B444-A11E-47D9-8295-04556EAEBEA7": [`Red`, `Green`, `Blue`],
-    "637E8789-5540-45D5-BD83-D7C2A7618B45": [`Red`, `Green`, `Indigo`],
-    "EF4970BA-2536-4725-9B0F-B2D7A021E139": [`Cyan`, `Magenta`, `Yellow`],
-    "E6AC63D6-1349-4BFC-9A04-7548D1DB8E1F": [`CoolWhite`, `MediumWhite`, `WarmWhite`],
-    "7B365530-A4DF-44AD-AEF5-225472BE02AE": [`CoolWhite`, `WarmWhite`],
-    "B074A2D3-0C40-45A7-844A-7C2721E0B267": [`Hue`, `Saturation`]
-  };
-
-  let selectedColorTable = Object.keys(colorTables).find(
-    colorTable => colorTables[colorTable].every(
-      color => colorChannels.some(ch => ch.name === color)
-    )
-  );
-
-  const has16bitHue = colorChannels.some(ch => ch.name === `Hue` && ch.size === 16);
-  if (selectedColorTable === `B074A2D3-0C40-45A7-844A-7C2721E0B267` && has16bitHue) {
-    selectedColorTable = `B3D05F0E-FB45-4EEA-A8D5-61F545A922DE`; // this is a special case; it refers to Hue / Hue fine / Saturation
-  }
-
-  return selectedColorTable || null;
 }
 
 /**
