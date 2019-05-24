@@ -173,26 +173,28 @@ function getCSChannels(mode, hasIntensity) {
     channelJson.invert = channel.isInverted;
     channelJson.snap = !channel.canCrossfade;
 
-    channelJson.ranges = channel.capabilities.map(cap => {
-      const dmxRange = cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
-      const capJson = {
-        begin: dmxRange.start,
-        default: cap.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
-        end: dmxRange.end,
-        label: cap.name
-      };
-
-      if (cap.colors && cap.colors.allColors.length === 1) {
-        const color = cap.colors.allColors[0]; // `#rrggbb`
-        capJson.media = {
-          r: parseInt(color.slice(1, 3), 16),
-          g: parseInt(color.slice(3, 5), 16),
-          b: parseInt(color.slice(5, 7), 16)
+    if (channelJson.type !== CHANNEL_TYPE_NO_FUNCTION) {
+      channelJson.ranges = channel.capabilities.map(cap => {
+        const dmxRange = cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
+        const capJson = {
+          begin: dmxRange.start,
+          default: cap.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
+          end: dmxRange.end,
+          label: cap.name
         };
-      }
 
-      return capJson;
-    });
+        if (cap.colors && cap.colors.allColors.length === 1) {
+          const color = cap.colors.allColors[0]; // `#rrggbb`
+          capJson.media = {
+            r: parseInt(color.slice(1, 3), 16),
+            g: parseInt(color.slice(3, 5), 16),
+            b: parseInt(color.slice(5, 7), 16)
+          };
+        }
+
+        return capJson;
+      });
+    }
   }
 }
 
