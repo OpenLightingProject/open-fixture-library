@@ -16,7 +16,7 @@ const EDITOR_VERSION = `1.1.1.9.0.4`;
 const CHANNEL_TYPE_NO_FUNCTION = 0;
 const CHANNEL_TYPE_INTENSITY = 1;
 const CHANNEL_TYPE_POSITION = 2;
-const CHANNEL_TYPE_COLOR_TEMP = 3;
+const CHANNEL_TYPE_MULTI_COLOR = 3;
 const CHANNEL_TYPE_BEAM = 4;
 const CHANNEL_TYPE_COLOR = 5;
 
@@ -213,15 +213,30 @@ function getCSChannelType(channel) {
     return CHANNEL_TYPE_INTENSITY;
   }
 
-  if ([`Pan`, `Tilt`].includes(channel.type)) {
+  if (isTypePosition()) {
     return CHANNEL_TYPE_POSITION;
   }
 
-  if (channel.type === `Color Temperature`) {
-    return CHANNEL_TYPE_COLOR_TEMP;
+  if ([`Multi-Color`, `Color Temperature`].includes(channel.type)) {
+    return CHANNEL_TYPE_MULTI_COLOR;
   }
 
   return CHANNEL_TYPE_BEAM;
+
+  /**
+   * @returns {boolean} Whether the channel is pan, tilt or pan/tilt speed.
+   */
+  function isTypePosition() {
+    if ([`Pan`, `Tilt`].includes(channel.type)) {
+      return true;
+    }
+
+    if (channel.capabilities && channel.capabilities.some(cap => cap.type === `PanTiltSpeed`)) {
+      return true;
+    }
+
+    return false;
+  }
 }
 
 /**
