@@ -1,0 +1,304 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Lightcan",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Gloryfire"],
+    "createDate": "2019-05-27",
+    "lastModifyDate": "2019-05-27"
+  },
+  "comment": "RGB Light",
+  "links": {
+    "manual": [
+      "http://download.apelabs.com/manuals/Ape_Labs_-_LightCan_-_Manual_-_web.pdf"
+    ],
+    "productPage": [
+      "https://www.apelabs.com/products/leuchtdose"
+    ],
+    "video": [
+      "https://youtu.be/323kJeW-KT0"
+    ]
+  },
+  "physical": {
+    "dimensions": [0, 136, 55],
+    "weight": 0.39,
+    "power": 15,
+    "DMXconnector": "Apelabs DMX Transceifer / 3 PIN",
+    "bulb": {
+      "type": "RGBW LED"
+    },
+    "lens": {
+      "name": "effect lens",
+      "degreesMinMax": [65, 65]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%",
+        "comment": " "
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Programm": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ColorPreset",
+          "comment": "White with fade"
+        },
+        {
+          "dmxRange": [6, 11],
+          "type": "ColorPreset",
+          "comment": "Red with fade"
+        },
+        {
+          "dmxRange": [12, 17],
+          "type": "ColorPreset",
+          "comment": "Orange with fade"
+        },
+        {
+          "dmxRange": [18, 23],
+          "type": "ColorPreset",
+          "comment": "Yellow with fade"
+        },
+        {
+          "dmxRange": [24, 29],
+          "type": "ColorPreset",
+          "comment": "Green (light) with fade"
+        },
+        {
+          "dmxRange": [30, 35],
+          "type": "ColorPreset",
+          "comment": "Green with fade"
+        },
+        {
+          "dmxRange": [36, 41],
+          "type": "ColorPreset",
+          "comment": "Cyan with fade"
+        },
+        {
+          "dmxRange": [42, 47],
+          "type": "ColorPreset",
+          "comment": "Cyan/Blue with fade"
+        },
+        {
+          "dmxRange": [48, 53],
+          "type": "ColorPreset",
+          "comment": "Blue with fade"
+        },
+        {
+          "dmxRange": [54, 59],
+          "type": "ColorPreset",
+          "comment": "Blue/Magenda with fade"
+        },
+        {
+          "dmxRange": [60, 65],
+          "type": "ColorPreset",
+          "comment": "Magenda with fade"
+        },
+        {
+          "dmxRange": [66, 71],
+          "type": "ColorPreset",
+          "comment": "Red (pastel) with fade"
+        },
+        {
+          "dmxRange": [72, 77],
+          "type": "ColorPreset",
+          "comment": "Green (pastel) with fade"
+        },
+        {
+          "dmxRange": [78, 83],
+          "type": "ColorPreset",
+          "comment": "Blue (pastel) with fade"
+        },
+        {
+          "dmxRange": [84, 89],
+          "type": "ColorPreset",
+          "comment": "Blue > Red with fade"
+        },
+        {
+          "dmxRange": [90, 95],
+          "type": "ColorPreset",
+          "comment": "Magenda > White with fade"
+        },
+        {
+          "dmxRange": [96, 101],
+          "type": "ColorPreset",
+          "comment": "White > Blue with fade"
+        },
+        {
+          "dmxRange": [102, 107],
+          "type": "ColorPreset",
+          "comment": "Red >Green>Blue (pastel) with fade"
+        },
+        {
+          "dmxRange": [108, 113],
+          "type": "ColorPreset",
+          "comment": "Yellow>Magenda>Blue with fade"
+        },
+        {
+          "dmxRange": [114, 127],
+          "type": "ColorPreset",
+          "comment": "Rainbow with fade"
+        },
+        {
+          "dmxRange": [128, 133],
+          "type": "ColorPreset",
+          "comment": "White without fade"
+        },
+        {
+          "dmxRange": [134, 139],
+          "type": "ColorPreset",
+          "comment": "Red without fade"
+        },
+        {
+          "dmxRange": [140, 145],
+          "type": "ColorPreset",
+          "comment": "Orange without fade"
+        },
+        {
+          "dmxRange": [146, 151],
+          "type": "ColorPreset",
+          "comment": "Yellow without fade"
+        },
+        {
+          "dmxRange": [152, 157],
+          "type": "ColorPreset",
+          "comment": "Green (pastelwithout fade "
+        },
+        {
+          "dmxRange": [158, 163],
+          "type": "ColorPreset",
+          "comment": "Green without fade"
+        },
+        {
+          "dmxRange": [164, 169],
+          "type": "ColorPreset",
+          "comment": "Cyan without fade"
+        },
+        {
+          "dmxRange": [170, 175],
+          "type": "ColorPreset",
+          "comment": "Cyan Blue without fade"
+        },
+        {
+          "dmxRange": [176, 181],
+          "type": "ColorPreset",
+          "comment": "Blue without fade"
+        },
+        {
+          "dmxRange": [182, 187],
+          "type": "ColorPreset",
+          "comment": "Blue Magenda without fade"
+        },
+        {
+          "dmxRange": [188, 193],
+          "type": "ColorPreset",
+          "comment": "Magenta without fade"
+        },
+        {
+          "dmxRange": [194, 199],
+          "type": "ColorPreset",
+          "comment": "Red (pastel) without fade"
+        },
+        {
+          "dmxRange": [200, 205],
+          "type": "ColorPreset",
+          "comment": "Green (pastel) without fade"
+        },
+        {
+          "dmxRange": [206, 211],
+          "type": "ColorPreset",
+          "comment": "Blue (pastel) without fade"
+        },
+        {
+          "dmxRange": [212, 217],
+          "type": "ColorPreset",
+          "comment": "Blue > Red without fade"
+        },
+        {
+          "dmxRange": [218, 223],
+          "type": "ColorPreset",
+          "comment": "Magenta > White without fade"
+        },
+        {
+          "dmxRange": [224, 229],
+          "type": "ColorPreset",
+          "comment": "White > Blue without fade"
+        },
+        {
+          "dmxRange": [230, 235],
+          "type": "ColorPreset",
+          "comment": "Red > Green > Blue (pastel) without fade"
+        },
+        {
+          "dmxRange": [236, 241],
+          "type": "ColorPreset",
+          "comment": "Yellow > Magenta > Blue without fade"
+        },
+        {
+          "dmxRange": [242, 250],
+          "type": "ColorPreset",
+          "comment": "Rainbow without fade"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "Rainbow without fade"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Channel Red, Green, Blue, White",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "3 Channel Dimmer, Programm, Speed",
+      "channels": [
+        "Dimmer",
+        "Programm"
+      ]
+    }
+  ]
+}
