@@ -149,7 +149,7 @@ function getCSChannels(mode, hasIntensity) {
       channelJson.home = scaleDmxValue(channel.defaultValue, CoarseChannel.RESOLUTION_8BIT, CoarseChannel.RESOLUTION_16BIT);
     }
     else {
-      addChannelDetails(channelJson, channel, channelIndex);
+      addChannelDetails(channelJson, channel);
     }
 
     removeEmptyProperties(channelJson);
@@ -163,7 +163,7 @@ function getCSChannels(mode, hasIntensity) {
    * @param {CoarseChannel} channel The channel whose information should be used.
    * @param {number} channelIndex The position of the channel in the current mode, starting from zero.
    */
-  function addChannelDetails(channelJson, channel, channelIndex) {
+  function addChannelDetails(channelJson, channel) {
     channelJson.fadeWithIntensity = channel.type === `Single Color` && hasIntensity;
 
     const fineChannel16bit = channel.fineChannels[0];
