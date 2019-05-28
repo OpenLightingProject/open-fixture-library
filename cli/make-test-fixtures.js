@@ -50,27 +50,27 @@ for (const featureFile of fs.readdirSync(fixFeaturesDir)) {
 
 // check which features each fixture supports
 let fixtures = [];
-for (const man of Object.keys(register.manufacturers)) {
-  for (const fixKey of register.manufacturers[man]) {
-    // pre-process data
-    const fix = fixtureFromRepository(man, fixKey);
-    const fixResult = {
-      man: man,
-      key: fixKey,
-      name: fix.name,
-      features: []
-    };
+for (const manFix of Object.keys(register.filesystem)) {
+  const [manKey, fixKey] = manFix.split(`/`);
 
-    // check all features
-    for (const fixFeature of fixFeatures) {
-      if (fixFeature.hasFeature(fix)) {
-        fixResult.features.push(fixFeature.id);
-        featuresUsed[fixFeature.id]++;
-      }
+  // pre-process data
+  const fix = fixtureFromRepository(manKey, fixKey);
+  const fixResult = {
+    man: manKey,
+    key: fixKey,
+    name: fix.name,
+    features: []
+  };
+
+  // check all features
+  for (const fixFeature of fixFeatures) {
+    if (fixFeature.hasFeature(fix)) {
+      fixResult.features.push(fixFeature.id);
+      featuresUsed[fixFeature.id]++;
     }
-
-    fixtures.push(fixResult);
   }
+
+  fixtures.push(fixResult);
 }
 
 // first fixtures are more likely to be filtered out, so we start with the ones with the fewest features
