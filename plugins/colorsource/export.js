@@ -47,7 +47,7 @@ module.exports.export = function exportColorSource(fixtures, options) {
 
       const fixtureJson = {
         dcid,
-        colortable: `11111111-1111-1111-1111-111111111111`,
+        colortable: dcid,
         commands: getCommands(mode),
         hasIntensity,
         manufacturerName: fixture.manufacturer.name,
