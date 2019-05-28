@@ -1,5 +1,6 @@
 // see https://github.com/standard-things/esm#getting-started
 require = require(`esm`)(module); // eslint-disable-line no-global-assign
+const uuidV5 = require(`uuid/v5`);
 
 const {
   CoarseChannel,
@@ -20,6 +21,8 @@ const CHANNEL_TYPE_MULTI_COLOR = 3;
 const CHANNEL_TYPE_BEAM = 4;
 const CHANNEL_TYPE_COLOR = 5;
 
+const UUID_NAMESPACE = `0de81b51-02b2-45e3-b53c-578f9eb31b77`;
+
 /**
  * @param {array.<Fixture>} fixtures An array of Fixture objects.
  * @param {object} options Global options, including:
@@ -35,12 +38,15 @@ module.exports.export = function exportColorSource(fixtures, options) {
   };
 
   fixtures.forEach(fixture => {
+    const fixtureUuidNamespace = uuidV5(`${fixture.manufacturer.key}/${fixture.key}`, UUID_NAMESPACE);
+
     fixture.modes.forEach(mode => {
+      const dcid = uuidV5(mode.name, fixtureUuidNamespace);
       const hasIntensity = mode.channels.some(ch => ch.type === `Intensity`);
       const parameters = getCSChannels(mode, hasIntensity);
 
       const fixtureJson = {
-        dcid: `11111111-1111-1111-1111-111111111111`,
+        dcid,
         colortable: `11111111-1111-1111-1111-111111111111`,
         commands: getCommands(mode),
         hasIntensity,
