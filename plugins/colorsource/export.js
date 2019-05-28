@@ -136,7 +136,7 @@ function getCSChannels(mode, hasIntensity) {
     };
 
     if (channelJson.type === CHANNEL_TYPE_COLOR) {
-      channelJson.name = channelJson.name.replace(/ /g, ``); // e.g. 'Warm White' -> 'WarmWhite'
+      handleColorChannel(channelJson, channel);
     }
 
     if (channel instanceof FineChannel) {
@@ -200,6 +200,30 @@ function getCSChannels(mode, hasIntensity) {
 
         return capJson;
       });
+    }
+  }
+
+  /**
+   * If the given channel belongs to a pixel or pixel group that is not the master pixel group,
+   * set the channel type to Beam.
+   * Otherwise, set the channel name to the color because ColorSource detects the color from the channel name.
+   * @param {object} channelJson The ColorSource channel JSON whose data should be modified.
+   * @param {CoarseChannel} channel The OFL channel whose information should be used.
+   */
+  function handleColorChannel(channelJson, channel) {
+    if (channel.pixelKey) {
+      const matrix = mode.fixture.matrix;
+      const isPixelGroup = matrix.pixelGroupKeys.includes(channel.pixelKey);
+      const isMasterPixelGroup = isPixelGroup && matrix.pixelGroups[channel.pixelKey].length === matrix.pixelKeys.length;
+
+      if (!isMasterPixelGroup) {
+        channelJson.type = CHANNEL_TYPE_BEAM;
+        return;
+      }
+    }
+
+    if (channel.color) {
+      channelJson.name = channel.color.replace(/ /g, ``); // e.g. 'Warm White' -> 'WarmWhite'
     }
   }
 }
