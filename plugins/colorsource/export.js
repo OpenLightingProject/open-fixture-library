@@ -78,31 +78,34 @@ module.exports.export = function exportColorSource(fixtures, options) {
 function getCommands(mode) {
   const commands = [];
   mode.channels.forEach((channel, channelIndex) => {
-    if (channel.capabilities) {
-      channel.capabilities.forEach(cap => {
-        if (cap.type === `Maintenance` && cap.hold) {
-          commands.push({
-            name: cap.comment,
-            steps: [
-              {
-                actions: [{
-                  dmx: channelIndex,
-                  value: cap.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT)
-                }],
-                wait: 0 // this is apparently the delay before this step is activated
-              },
-              {
-                actions: [{
-                  dmx: channelIndex,
-                  value: -1
-                }],
-                wait: cap.hold.getBaseUnitEntity().number
-              }
-            ]
-          });
-        }
-      });
+    if (!channel.capabilities) {
+      // e. g. fine channels
+      return;
     }
+
+    channel.capabilities.forEach(cap => {
+      if (cap.type === `Maintenance` && cap.hold) {
+        commands.push({
+          name: cap.comment,
+          steps: [
+            {
+              actions: [{
+                dmx: channelIndex,
+                value: cap.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT)
+              }],
+              wait: 0 // this is apparently the delay before this step is activated
+            },
+            {
+              actions: [{
+                dmx: channelIndex,
+                value: -1
+              }],
+              wait: cap.hold.getBaseUnitEntity().number
+            }
+          ]
+        });
+      }
+    });
   });
 
   return commands;
@@ -114,7 +117,8 @@ function getCommands(mode) {
  * @returns {array.<object>} ColorSource channel objects of all mode channels.
  */
 function getCSChannels(mode, hasIntensity) {
-  return mode.channels.map((channel, channelIndex) => {
+  const channels = [];
+  mode.channels.forEach((channel, channelIndex) => {
     const name = channel.name;
 
     if (channel instanceof SwitchingChannel) {
@@ -136,13 +140,18 @@ function getCSChannels(mode, hasIntensity) {
     };
 
     if (channelJson.type === CHANNEL_TYPE_COLOR) {
-      handleColorChannel(channelJson, channel);
+      if (isMatrixChannel(channel)) {
+        channelJson.type = CHANNEL_TYPE_BEAM;
+      }
+      else if (channel.color) { // it may also be Hue or Saturation, which have no color
+        channelJson.name = channel.color.replace(/ /g, ``); // e.g. 'Warm White' -> 'WarmWhite'
+      }
     }
 
     if (channel instanceof FineChannel) {
       if (channel.resolution === CoarseChannel.RESOLUTION_16BIT) {
         // already handled by "fine" attribute of coarse channel
-        return null;
+        return;
       }
 
       channelJson.type = CHANNEL_TYPE_BEAM;
@@ -154,13 +163,15 @@ function getCSChannels(mode, hasIntensity) {
 
     removeEmptyProperties(channelJson);
 
-    return channelJson;
-  }).filter(ch => ch !== null);
+    channels.push(channelJson);
+  });
+
+  return channels;
 
   /**
    * Adds detailed information to given channel JSON that only a CoarseChannel can provide.
    * @param {object} channelJson The ColorSource channel JSON to which the data is added.
-   * @param {CoarseChannel} channel The channel whose information should be used.
+   * @param {CoarseChannel} channel The OFL channel whose information should be used.
    * @param {number} channelIndex The position of the channel in the current mode, starting from zero.
    */
   function addChannelDetails(channelJson, channel) {
@@ -204,27 +215,19 @@ function getCSChannels(mode, hasIntensity) {
   }
 
   /**
-   * If the given channel belongs to a pixel or pixel group that is not the master pixel group,
-   * set the channel type to Beam.
-   * Otherwise, set the channel name to the color because ColorSource detects the color from the channel name.
-   * @param {object} channelJson The ColorSource channel JSON whose data should be modified.
    * @param {CoarseChannel} channel The OFL channel whose information should be used.
+   * @returns {boolean} Whether the channel belongs to a pixel or pixel group that is not the master pixel group.
    */
-  function handleColorChannel(channelJson, channel) {
-    if (channel.pixelKey) {
-      const matrix = mode.fixture.matrix;
-      const isPixelGroup = matrix.pixelGroupKeys.includes(channel.pixelKey);
-      const isMasterPixelGroup = isPixelGroup && matrix.pixelGroups[channel.pixelKey].length === matrix.pixelKeys.length;
-
-      if (!isMasterPixelGroup) {
-        channelJson.type = CHANNEL_TYPE_BEAM;
-        return;
-      }
+  function isMatrixChannel(channel) {
+    if (!channel.pixelKey) {
+      return false;
     }
 
-    if (channel.color) {
-      channelJson.name = channel.color.replace(/ /g, ``); // e.g. 'Warm White' -> 'WarmWhite'
-    }
+    const matrix = mode.fixture.matrix;
+    const isPixelGroup = matrix.pixelGroupKeys.includes(channel.pixelKey);
+    const isMasterPixelGroup = isPixelGroup && matrix.pixelGroups[channel.pixelKey].length === matrix.pixelKeys.length;
+
+    return !isMasterPixelGroup;
   }
 }
 
