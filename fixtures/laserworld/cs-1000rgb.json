@@ -49,17 +49,17 @@
     "Horizontal Movement": {
       "defaultValue": "50%",
       "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "40deg"
+        "type": "BeamPosition",
+        "horizontalAngleStart": "0deg",
+        "horizontalAngleEnd": "40deg"
       }
     },
     "Vertical Movement": {
       "defaultValue": "50%",
       "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "40deg"
+        "type": "BeamPosition",
+        "verticalAngleStart": "0deg",
+        "verticalAngleEnd": "40deg"
       }
     },
     "Manual Zoom": {
