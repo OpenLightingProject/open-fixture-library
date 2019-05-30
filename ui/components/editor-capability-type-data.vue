@@ -49,16 +49,17 @@ import editorCapabilityPan from '~/components/editor-capabilities/Pan.vue';
 import editorCapabilityPanContinuous from '~/components/editor-capabilities/PanContinuous.vue';
 import editorCapabilityTilt from '~/components/editor-capabilities/Tilt.vue';
 import editorCapabilityTiltContinuous from '~/components/editor-capabilities/TiltContinuous.vue';
+import editorCapabilityPanTiltSpeed from '~/components/editor-capabilities/PanTiltSpeed.vue';
 import editorCapabilityWheelSlot from '~/components/editor-capabilities/WheelSlot.vue';
 import editorCapabilityWheelShake from '~/components/editor-capabilities/WheelShake.vue';
 import editorCapabilityWheelSlotRotation from '~/components/editor-capabilities/WheelSlotRotation.vue';
 import editorCapabilityWheelRotation from '~/components/editor-capabilities/WheelRotation.vue';
-import editorCapabilityPanTiltSpeed from '~/components/editor-capabilities/PanTiltSpeed.vue';
 import editorCapabilityEffect from '~/components/editor-capabilities/Effect.vue';
 import editorCapabilityEffectSpeed from '~/components/editor-capabilities/EffectSpeed.vue';
 import editorCapabilityEffectDuration from '~/components/editor-capabilities/EffectDuration.vue';
 import editorCapabilityEffectParameter from '~/components/editor-capabilities/EffectParameter.vue';
 import editorCapabilitySoundSensitivity from '~/components/editor-capabilities/SoundSensitivity.vue';
+import editorCapabilityBeamAngle from '~/components/editor-capabilities/BeamAngle.vue';
 import editorCapabilityFocus from '~/components/editor-capabilities/Focus.vue';
 import editorCapabilityZoom from '~/components/editor-capabilities/Zoom.vue';
 import editorCapabilityIris from '~/components/editor-capabilities/Iris.vue';
@@ -73,7 +74,6 @@ import editorCapabilityBladeSystemRotation from '~/components/editor-capabilitie
 import editorCapabilityFog from '~/components/editor-capabilities/Fog.vue';
 import editorCapabilityFogOutput from '~/components/editor-capabilities/FogOutput.vue';
 import editorCapabilityFogType from '~/components/editor-capabilities/FogType.vue';
-import editorCapabilityBeamAngle from '~/components/editor-capabilities/BeamAngle.vue';
 import editorCapabilityRotation from '~/components/editor-capabilities/Rotation.vue';
 import editorCapabilitySpeed from '~/components/editor-capabilities/Speed.vue';
 import editorCapabilityTime from '~/components/editor-capabilities/Time.vue';
@@ -105,6 +105,7 @@ export default {
     'app-editor-capability-EffectDuration': editorCapabilityEffectDuration,
     'app-editor-capability-EffectParameter': editorCapabilityEffectParameter,
     'app-editor-capability-SoundSensitivity': editorCapabilitySoundSensitivity,
+    'app-editor-capability-BeamAngle': editorCapabilityBeamAngle,
     'app-editor-capability-Focus': editorCapabilityFocus,
     'app-editor-capability-Zoom': editorCapabilityZoom,
     'app-editor-capability-Iris': editorCapabilityIris,
@@ -119,7 +120,6 @@ export default {
     'app-editor-capability-Fog': editorCapabilityFog,
     'app-editor-capability-FogOutput': editorCapabilityFogOutput,
     'app-editor-capability-FogType': editorCapabilityFogType,
-    'app-editor-capability-BeamAngle': editorCapabilityBeamAngle,
     'app-editor-capability-Rotation': editorCapabilityRotation,
     'app-editor-capability-Speed': editorCapabilitySpeed,
     'app-editor-capability-Time': editorCapabilityTime,
