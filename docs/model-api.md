@@ -192,6 +192,8 @@ A capability represents a range of a channel.
         * [.slotNumber](#Capability+slotNumber) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
         * [.wheelSlot](#Capability+wheelSlot) ⇒ [<code>array.&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code>
         * [.angle](#Capability+angle) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.horizontalAngle](#Capability+horizontalAngle) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.verticalAngle](#Capability+verticalAngle) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
         * [.colorTemperature](#Capability+colorTemperature) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
         * [.soundSensitivity](#Capability+soundSensitivity) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
         * [.shakeAngle](#Capability+shakeAngle) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
@@ -398,6 +400,16 @@ Use only in `WheelShake` capabilities!
 ### capability.angle ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
 **Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end angle values. Defaults to null.  
+<a name="Capability+horizontalAngle"></a>
+
+### capability.horizontalAngle ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+**Kind**: instance property of [<code>Capability</code>](#Capability)  
+**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end horizontal angle values. Defaults to null.  
+<a name="Capability+verticalAngle"></a>
+
+### capability.verticalAngle ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+**Kind**: instance property of [<code>Capability</code>](#Capability)  
+**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end vertical angle values. Defaults to null.  
 <a name="Capability+colorTemperature"></a>
 
 ### capability.colorTemperature ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>

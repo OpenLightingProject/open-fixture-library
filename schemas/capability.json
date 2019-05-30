@@ -50,6 +50,7 @@
       "FogOutput",
       "FogType",
       "BeamAngle",
+      "BeamPosition",
       "Rotation",
       "Speed",
       "Time",
@@ -1351,6 +1352,46 @@
         "dependencies": {
           "angleStart": ["angleEnd"],
           "angleEnd": ["angleStart"]
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": { "const": "BeamPosition" }
+        }
+      },
+      "then": {
+        "properties": {
+          "dmxRange": {},
+          "type": {},
+          "horizontalAngle": { "$ref": "definitions.json#/entities/horizontalAngle" },
+          "horizontalAngleStart": { "$ref": "definitions.json#/entities/horizontalAngle" },
+          "horizontalAngleEnd": { "$ref": "definitions.json#/entities/horizontalAngle" },
+          "verticalAngle": { "$ref": "definitions.json#/entities/verticalAngle" },
+          "verticalAngleStart": { "$ref": "definitions.json#/entities/verticalAngle" },
+          "verticalAngleEnd": { "$ref": "definitions.json#/entities/verticalAngle" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
+        },
+        "anyOf": [
+          { "oneOf": [
+            { "required": ["horizontalAngle"] },
+            { "required": ["horizontalAngleStart"] }
+          ] },
+          { "oneOf": [
+            { "required": ["verticalAngle"] },
+            { "required": ["verticalAngleStart"] }
+          ] }
+        ],
+        "dependencies": {
+          "horizontalAngleStart": ["horizontalAngleEnd"],
+          "horizontalAngleEnd": ["horizontalAngleStart"],
+          "verticalAngleStart": ["verticalAngleEnd"],
+          "verticalAngleEnd": ["verticalAngleStart"]
         },
         "additionalProperties": false
       }
