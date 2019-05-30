@@ -25,17 +25,17 @@
     "DMXconnector": "3-pin"
   },
   "availableChannels": {
-    "Safety Channel On/Off": {
+    "Ignition": {
       "capabilities": [
         {
           "dmxRange": [0, 252],
           "type": "NoFunction",
-          "comment": "Device off No ignition"
+          "comment": "No ignition"
         },
         {
           "dmxRange": [253, 255],
-          "type": "NoFunction",
-          "comment": "Ignition, for new ignition value must fall below 253"
+          "type": "Effect",
+          "effectName": "Single ignition"
         }
       ]
     },
@@ -44,70 +44,54 @@
         {
           "dmxRange": [0, 10],
           "type": "NoFunction",
-          "comment": "Saftety zone, no ignition "
+          "comment": "Saftety zone"
         },
         {
           "dmxRange": [11, 13],
           "type": "Time",
           "timeStart": "20ms",
           "timeEnd": "60ms",
-          "comment": " short fireball"
+          "comment": "Small fireball"
         },
         {
-          "dmxRange": [14, 16],
+          "dmxRange": [14, 34],
           "type": "Time",
           "timeStart": "80ms",
-          "timeEnd": "120ms",
-          "comment": "medium fireball"
-        },
-        {
-          "dmxRange": [17, 20],
-          "type": "Time",
-          "timeStart": "140ms",
-          "timeEnd": "200ms",
-          "comment": "larger fireball"
-        },
-        {
-          "dmxRange": [21, 35],
-          "type": "Time",
-          "timeStart": "220ms",
-          "timeEnd": "500ms",
-          "comment": "extra large fireballs"
+          "timeEnd": "480ms",
+          "comment": "Flame pillar"
         },
         {
           "dmxRange": [36, 60],
           "type": "Time",
-          "timeStart": "520ms",
+          "timeStart": "500ms",
           "timeEnd": "1000ms",
-          "comment": "big flames"
+          "comment": "Larger flames"
         },
         {
           "dmxRange": [61, 200],
           "type": "Time",
           "timeStart": "1020ms",
           "timeEnd": "3800ms",
-          "comment": "maximum range for opening time/valve"
+          "comment": "Extra large flames"
         },
         {
           "dmxRange": [201, 250],
-          "type": "Time",
-          "timeStart": "long",
-          "timeEnd": "long",
-          "comment": "constant burning flame, every 5 sec (safety) ignition"
+          "type": "Effect",
+          "effectName": "Flame every 5 seconds"
         },
         {
           "dmxRange": [251, 255],
           "type": "NoFunction",
-          "comment": "Not useable, safety zone"
+          "comment": "Safety zone"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "DMX ",
+      "name": "Standard",
       "channels": [
-        "Safety Channel On/Off",
+        "Ignition",
         "Valve Opening Time"
       ]
     }
