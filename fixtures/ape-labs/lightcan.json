@@ -32,24 +32,28 @@
   },
   "availableChannels": {
     "Red": {
+      "fineChannelAliases": ["Red fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Green": {
+      "fineChannelAliases": ["Green fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blue": {
+      "fineChannelAliases": ["Blue fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "White": {
+      "fineChannelAliases": ["White fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
@@ -314,7 +318,17 @@
   },
   "modes": [
     {
-      "name": "4 Channel Red, Green, Blue, White",
+      "name": "3-Channel",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer",
+        "Programs",
+        "Program Speed"
+      ]
+    },
+    {
+      "name": "4-Channel",
+      "shortName": "4ch",
       "channels": [
         "Red",
         "Green",
@@ -323,11 +337,17 @@
       ]
     },
     {
-      "name": "3 Channel Dimmer, Programs, Speed",
+      "name": "8-Channel",
+      "shortName": "8ch",
       "channels": [
-        "Dimmer",
-        "Programs",
-        "Program Speed"
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine"
       ]
     }
   ]
