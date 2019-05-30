@@ -60,6 +60,7 @@ import editorCapabilityEffectDuration from '~/components/editor-capabilities/Eff
 import editorCapabilityEffectParameter from '~/components/editor-capabilities/EffectParameter.vue';
 import editorCapabilitySoundSensitivity from '~/components/editor-capabilities/SoundSensitivity.vue';
 import editorCapabilityBeamAngle from '~/components/editor-capabilities/BeamAngle.vue';
+import editorCapabilityBeamPosition from '~/components/editor-capabilities/BeamPosition.vue';
 import editorCapabilityFocus from '~/components/editor-capabilities/Focus.vue';
 import editorCapabilityZoom from '~/components/editor-capabilities/Zoom.vue';
 import editorCapabilityIris from '~/components/editor-capabilities/Iris.vue';
@@ -106,6 +107,7 @@ export default {
     'app-editor-capability-EffectParameter': editorCapabilityEffectParameter,
     'app-editor-capability-SoundSensitivity': editorCapabilitySoundSensitivity,
     'app-editor-capability-BeamAngle': editorCapabilityBeamAngle,
+    'app-editor-capability-BeamPosition': editorCapabilityBeamPosition,
     'app-editor-capability-Focus': editorCapabilityFocus,
     'app-editor-capability-Zoom': editorCapabilityZoom,
     'app-editor-capability-Iris': editorCapabilityIris,
