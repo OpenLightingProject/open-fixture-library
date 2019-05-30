@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED PAR 64 COB 300W RGBWAUV",
-  "categories": ["Dimmer", "Strobe"],
+  "categories": ["Color Changer"],
   "meta": {
     "authors": ["Jeppe Toftdahl cohrt"],
-    "createDate": "2019-05-26",
-    "lastModifyDate": "2019-05-26"
+    "createDate": "2019-05-30",
+    "lastModifyDate": "2019-05-30"
   },
   "links": {
     "manual": [
@@ -19,10 +19,15 @@
     ]
   },
   "physical": {
+    "dimensions": [270, 280, 240],
+    "weight": 3.4,
+    "power": 354,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "led",
-      "colorTemperature": 4000
+      "type": "300W COB RGBAUV LED"
+    },
+    "lens": {
+      "degreesMinMax": [37, 37]
     }
   },
   "availableChannels": {
