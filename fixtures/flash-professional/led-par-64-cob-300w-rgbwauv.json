@@ -34,10 +34,11 @@
     "Dimmer": {
       "defaultValue": 0,
       "capability": {
-        "type": "NoFunction"
+        "type": "Intensity"
       }
     },
     "Strobe": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 11],
@@ -45,7 +46,8 @@
         },
         {
           "dmxRange": [12, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "20Hz"
         }
@@ -55,46 +57,202 @@
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "off",
-        "brightnessEnd": "off"
+        "color": "Red"
       }
     },
     "Green": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blue": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "White": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
     "Amber": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber"
       }
     },
     "UV": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "UV"
       }
+    },
+    "Macro": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Effect",
+          "effectName": "Macro 1"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Effect",
+          "effectName": "Macro 2"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Effect",
+          "effectName": "Macro 3"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Effect",
+          "effectName": "Macro 4"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "ColorPreset",
+          "comment": "Color 1",
+          "helpWanted": "Is this a static color and if yes, which color is this? Same for following colors."
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "ColorPreset",
+          "comment": "Color 2"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "ColorPreset",
+          "comment": "Color 3"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "ColorPreset",
+          "comment": "Color 4"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "ColorPreset",
+          "comment": "Color 5"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "ColorPreset",
+          "comment": "Color 6"
+        },
+        {
+          "dmxRange": [220, 239],
+          "type": "ColorPreset",
+          "comment": "Color 7"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Sound Mode",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Color Change": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color 1",
+          "helpWanted": "Is this a color jump/fade effect or a static color? Same for following effects."
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color 2"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color 3"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color 4"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color 5"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color 6"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color 7"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color 8"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color 9"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color 10"
+        },
+        {
+          "dmxRange": [220, 239],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color 11"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color 12"
+        }
+      ]
     }
   },
   "modes": [
     {
-      "name": "8ch",
-      "shortName": "ISRGBWAUV",
+      "name": "8-channel",
+      "shortName": "8ch",
       "channels": [
         "Dimmer",
         "Strobe",
@@ -102,6 +260,38 @@
         "Green",
         "Blue",
         "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "10-channel 1",
+      "shortName": "10ch1",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Macro",
+        "Color Change"
+      ]
+    },
+    {
+      "name": "10-channel 2",
+      "shortName": "10ch2",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Macro",
+        "Color Change",
         "Amber",
         "UV"
       ]
