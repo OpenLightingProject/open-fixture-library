@@ -34,251 +34,282 @@
     "Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
-        "comment": " "
+        "color": "Red"
       }
     },
     "Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Green"
       }
     },
     "Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Blue"
       }
     },
     "White": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "White"
       }
     },
     "Dimmer": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "type": "Intensity"
       }
     },
-    "Programm": {
+    "Programs": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "ColorPreset",
-          "comment": "White with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "White"
         },
         {
           "dmxRange": [6, 11],
-          "type": "ColorPreset",
-          "comment": "Red with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Red"
         },
         {
           "dmxRange": [12, 17],
-          "type": "ColorPreset",
-          "comment": "Orange with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Orange"
         },
         {
           "dmxRange": [18, 23],
-          "type": "ColorPreset",
-          "comment": "Yellow with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Yellow"
         },
         {
           "dmxRange": [24, 29],
-          "type": "ColorPreset",
-          "comment": "Green (light) with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Lime"
         },
         {
           "dmxRange": [30, 35],
-          "type": "ColorPreset",
-          "comment": "Green with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Green"
         },
         {
           "dmxRange": [36, 41],
-          "type": "ColorPreset",
-          "comment": "Cyan with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Cyan"
         },
         {
           "dmxRange": [42, 47],
-          "type": "ColorPreset",
-          "comment": "Cyan/Blue with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Cyan/Blue"
         },
         {
           "dmxRange": [48, 53],
-          "type": "ColorPreset",
-          "comment": "Blue with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Blue"
         },
         {
           "dmxRange": [54, 59],
-          "type": "ColorPreset",
-          "comment": "Blue/Magenda with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Blue/Magenta"
         },
         {
           "dmxRange": [60, 65],
-          "type": "ColorPreset",
-          "comment": "Magenda with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Magenta"
         },
         {
           "dmxRange": [66, 71],
-          "type": "ColorPreset",
-          "comment": "Red (pastel) with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Red pastel"
         },
         {
           "dmxRange": [72, 77],
-          "type": "ColorPreset",
-          "comment": "Green (pastel) with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Green pastel"
         },
         {
           "dmxRange": [78, 83],
-          "type": "ColorPreset",
-          "comment": "Blue (pastel) with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Blue pastel"
         },
         {
           "dmxRange": [84, 89],
-          "type": "ColorPreset",
-          "comment": "Blue > Red with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Blue > Red"
         },
         {
           "dmxRange": [90, 95],
-          "type": "ColorPreset",
-          "comment": "Magenda > White with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Magenta > White"
         },
         {
           "dmxRange": [96, 101],
-          "type": "ColorPreset",
-          "comment": "White > Blue with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "White > Blue"
         },
         {
           "dmxRange": [102, 107],
-          "type": "ColorPreset",
-          "comment": "Red >Green>Blue (pastel) with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Red pastel > Green pastel > Blue pastel"
         },
         {
           "dmxRange": [108, 113],
-          "type": "ColorPreset",
-          "comment": "Yellow>Magenda>Blue with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Yellow > Magenta > Blue"
         },
         {
           "dmxRange": [114, 127],
-          "type": "ColorPreset",
-          "comment": "Rainbow with fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Rainbow"
         },
         {
           "dmxRange": [128, 133],
-          "type": "ColorPreset",
-          "comment": "White without fade"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "White"
         },
         {
           "dmxRange": [134, 139],
-          "type": "ColorPreset",
-          "comment": "Red without fade"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Red"
         },
         {
           "dmxRange": [140, 145],
-          "type": "ColorPreset",
-          "comment": "Orange without fade"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Orange"
         },
         {
           "dmxRange": [146, 151],
-          "type": "ColorPreset",
-          "comment": "Yellow without fade"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Yellow"
         },
         {
           "dmxRange": [152, 157],
-          "type": "ColorPreset",
-          "comment": "Green (pastelwithout fade "
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Lime"
         },
         {
           "dmxRange": [158, 163],
-          "type": "ColorPreset",
-          "comment": "Green without fade"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Green"
         },
         {
           "dmxRange": [164, 169],
-          "type": "ColorPreset",
-          "comment": "Cyan without fade"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Cyan"
         },
         {
           "dmxRange": [170, 175],
-          "type": "ColorPreset",
-          "comment": "Cyan Blue without fade"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Cyan/Blue"
         },
         {
           "dmxRange": [176, 181],
-          "type": "ColorPreset",
-          "comment": "Blue without fade"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Blue"
         },
         {
           "dmxRange": [182, 187],
-          "type": "ColorPreset",
-          "comment": "Blue Magenda without fade"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Blue/Magenta"
         },
         {
           "dmxRange": [188, 193],
-          "type": "ColorPreset",
-          "comment": "Magenta without fade"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Magenta"
         },
         {
           "dmxRange": [194, 199],
-          "type": "ColorPreset",
-          "comment": "Red (pastel) without fade"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Red pastel"
         },
         {
           "dmxRange": [200, 205],
-          "type": "ColorPreset",
-          "comment": "Green (pastel) without fade"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Green pastel"
         },
         {
           "dmxRange": [206, 211],
-          "type": "ColorPreset",
-          "comment": "Blue (pastel) without fade"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Blue pastel"
         },
         {
           "dmxRange": [212, 217],
-          "type": "ColorPreset",
-          "comment": "Blue > Red without fade"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Blue > Red"
         },
         {
           "dmxRange": [218, 223],
-          "type": "ColorPreset",
-          "comment": "Magenta > White without fade"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Magenta > White"
         },
         {
           "dmxRange": [224, 229],
-          "type": "ColorPreset",
-          "comment": "White > Blue without fade"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "White > Blue"
         },
         {
           "dmxRange": [230, 235],
-          "type": "ColorPreset",
-          "comment": "Red > Green > Blue (pastel) without fade"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Red pastel > Green pastel > Blue pastel"
         },
         {
           "dmxRange": [236, 241],
-          "type": "ColorPreset",
-          "comment": "Yellow > Magenta > Blue without fade"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Yellow > Magenta > Blue"
         },
         {
-          "dmxRange": [242, 250],
-          "type": "ColorPreset",
-          "comment": "Rainbow without fade"
-        },
-        {
-          "dmxRange": [251, 255],
-          "type": "ColorPreset",
-          "comment": "Rainbow without fade"
+          "dmxRange": [242, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Rainbow"
         }
       ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     }
   },
   "modes": [
@@ -292,10 +323,11 @@
       ]
     },
     {
-      "name": "3 Channel Dimmer, Programm, Speed",
+      "name": "3 Channel Dimmer, Programs, Speed",
       "channels": [
         "Dimmer",
-        "Programm"
+        "Programs",
+        "Program Speed"
       ]
     }
   ]
