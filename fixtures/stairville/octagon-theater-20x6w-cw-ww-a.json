@@ -1,0 +1,64 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Octagon Theater 20x6W CW/WW/A",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["SK"],
+    "createDate": "2019-05-31",
+    "lastModifyDate": "2019-05-31"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/367135_c_367135_v3_de_online.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [295, 340, 200],
+    "weight": 6.9,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED CW/WW/A"
+    },
+    "lens": {
+      "degreesMinMax": [36, 36]
+    }
+  },
+  "availableChannels": {
+    "Cold White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Cold White",
+        "Warm White",
+        "Amber",
+        "Dimmer"
+      ]
+    }
+  ]
+}
