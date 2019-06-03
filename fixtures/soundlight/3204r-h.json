@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "3204R-H",
+  "shortName": "SoundLight3204R-H",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["LT-P"],
+    "createDate": "2019-06-03",
+    "lastModifyDate": "2019-06-03"
+  },
+  "comment": "DMX relay control. DMX connector is not XLR but a simple 3-pin wire connector.",
+  "links": {
+    "manual": [
+      "http://www.soundlight.de/produkte/manuals/3204r-h/english/3204r-h%20rdm%20mk1%20e.pdf"
+    ],
+    "productPage": [
+      "http://www.soundlight.de/produkte/3204r-h/index.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [86, 67, 90],
+    "power": 3,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Relay 1": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Relay 2": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Relay 3": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Relay 4": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Relay control",
+      "channels": [
+        "Relay 1",
+        "Relay 2",
+        "Relay 3",
+        "Relay 4"
+      ]
+    }
+  ]
+}
