@@ -17,9 +17,9 @@ To make common percentage values more readable, one can use specific keywords to
 | ColorTemperature | `K`, `%`         | warm / CTO   | –            | default       | –                          | cold / CTB
 | FogOutput        | `m^3/min`, `%`   | –            | –            | off           | weak                       | strong
 | RotationAngle    | `deg`, `%`       | –            | –            | –             | –                          | –
+| BeamAngle        | `deg`, `%`       | –            | –            | closed        | narrow                     | wide
 | HorizontalAngle  | `deg`, `%`       | left         | –            | center        | –                          | right
 | VerticalAngle    | `deg`, `%`       | top          | –            | center        | –                          | bottom
-| BeamAngle        | `deg`, `%`       | –            | –            | closed        | narrow                     | wide
 | SwingAngle       | `deg`, `%`       | –            | –            | off           | narrow                     | wide
 | Parameter        | (no unit), `%`   | –            | –            | off / instant | low / slow / small / short | high / fast / big / long
 | SlotNumber       | (no unit)        | –            | –            | –             | –                          | –
