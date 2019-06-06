@@ -66,6 +66,7 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+      hint: `Only move the beam and not a visible physical part of the fixture. This is especially useful for lasers. Use Pan/Tilt for moving heads.`,
       defaultData: {
         horizontalAngle: null,
         horizontalAngleStart: ``,
