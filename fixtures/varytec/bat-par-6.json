@@ -1,0 +1,97 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BAT.PAR 6",
+  "shortName": "BAT.PAR 6",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Aurelien W"],
+    "createDate": "2019-06-06",
+    "lastModifyDate": "2019-06-06"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/1416955/Varytec-Bat-Par-6-Rgbwa.html"
+    ],
+    "productPage": [
+      "https://www.thomann.de/fr/varytec_bat_par_6_rgbwa.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [250, 254, 130],
+    "weight": 1.9,
+    "power": 8,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "0Hz"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "off",
+        "brightnessEnd": "off"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "StandartConfig",
+      "shortName": "normal config",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Color Wheel",
+        "Strobe Speed"
+      ]
+    }
+  ]
+}
