@@ -18,6 +18,8 @@ To make common percentage values more readable, one can use specific keywords to
 | FogOutput        | `m^3/min`, `%`   | –            | –            | off           | weak                       | strong
 | RotationAngle    | `deg`, `%`       | –            | –            | –             | –                          | –
 | BeamAngle        | `deg`, `%`       | –            | –            | closed        | narrow                     | wide
+| HorizontalAngle  | `deg`, `%`       | left         | –            | center        | –                          | right
+| VerticalAngle    | `deg`, `%`       | top          | –            | center        | –                          | bottom
 | SwingAngle       | `deg`, `%`       | –            | –            | off           | narrow                     | wide
 | Parameter        | (no unit), `%`   | –            | –            | off / instant | low / slow / small / short | high / fast / big / long
 | SlotNumber       | (no unit)        | –            | –            | –             | –                          | –
@@ -42,6 +44,7 @@ To make common percentage values more readable, one can use specific keywords to
 * [WheelSlot](#wheelslot) / [WheelShake](#wheelshake) / [WheelSlotRotation](#wheelslotrotation) / [WheelRotation](#wheelrotation)
 * [Effect](#effect) / [EffectSpeed](#effectspeed) / [EffectDuration](#effectduration) / [EffectParameter](#effectparameter)
 * [SoundSensitivity](#soundsensitivity)
+* [BeamAngle](#beamangle) / [BeamPosition](#beamposition)
 * [Focus](#focus)
 * [Zoom](#zoom)
 * [Iris](#iris) / [IrisEffect](#iriseffect)
@@ -50,7 +53,7 @@ To make common percentage values more readable, one can use specific keywords to
 * [BladeInsertion](#bladeinsertion)
  / [BladeRotation](#bladerotation) / [BladeSystemRotation](#bladesystemrotation)
 * [Fog](#fog) / [FogOutput](#fogoutput) / [FogType](#fogtype)
-* Generic types: [BeamAngle](#beamangle) / [Rotation](#rotation) / [Speed](#speed) / [Time](#time) / [Maintenance](#maintenance) / [Generic](#generic)
+* Generic types: [Rotation](#rotation) / [Speed](#speed) / [Time](#time) / [Maintenance](#maintenance) / [Generic](#generic)
 
 
 <table>
@@ -277,6 +280,22 @@ To make common percentage values more readable, one can use specific keywords to
   <td valign="top"></td>
 </tr>
 <tr>
+  <th valign="top" scope="row" id="beamangle">BeamAngle</th>
+  <td valign="top">angle<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>BeamAngle</em></td>
+  <td valign="top"></td>
+</tr>
+<tr>
+  <th valign="top" scope="row" id="beamposition" rowspan="2">BeamPosition</th>
+  <td valign="top">horizontalAngle<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>HorizontalAngle</em></td>
+  <td valign="top" rowspan="2">at least one of <em>horizontalAngle</em> or <em>verticalAngle</em> is required</td>
+</tr>
+<tr>
+  <td valign="top">verticalAngle<br><sub>:star2: required</sub></td>
+  <td valign="top">Entity <em>VerticalAngle</em></td>
+</tr>
+<tr>
   <th valign="top" scope="row" id="effectspeed">EffectSpeed</th>
   <td valign="top">speed<br><sub>:star2: required</sub></td>
   <td valign="top">Entity <em>Speed</em></td>
@@ -415,12 +434,6 @@ To make common percentage values more readable, one can use specific keywords to
   <th valign="top" scope="row" id="fogtype">FogType</th>
   <td valign="top">fogType<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top"><code>Fog</code> or <code>Haze</code></td>
-  <td valign="top"></td>
-</tr>
-<tr>
-  <th valign="top" scope="row" id="beamangle">BeamAngle</th>
-  <td valign="top">angle<br><sub>:star2: required</sub></td>
-  <td valign="top">Entity <em>BeamAngle</em></td>
   <td valign="top"></td>
 </tr>
 <tr>

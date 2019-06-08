@@ -266,6 +266,10 @@ export default {
     },
     hasStartEnd: {
       get() {
+        if (this.propertyDataStepped === null && this.propertyDataStart === null) {
+          throw new Error(`Stepped and start value are both null. At least one of them should have a value, e.g. an empty string.`);
+        }
+
         return this.propertyDataStepped === null;
       },
       set(shouldHaveStartEnd) {
