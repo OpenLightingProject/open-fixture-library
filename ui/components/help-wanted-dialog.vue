@@ -115,7 +115,7 @@ export default {
       if (this.context instanceof Capability) {
         const cap = this.context;
         const channel = cap._channel;
-        return `Channel "${channel.name}" → Capability "${cap.name}" (${cap.rawDmxRange})`;
+        return `Channel "${channel.key}" → Capability "${cap.name}" (${cap.rawDmxRange})`;
       }
 
       return null;
