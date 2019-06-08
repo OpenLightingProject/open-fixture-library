@@ -22,7 +22,7 @@
     "power": 48,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "6x 8W RGBWA LEDs"
+      "type": "6x 8W RGBUV LEDs"
     },
     "lens": {
       "degreesMinMax": [25, 25]
@@ -204,7 +204,8 @@
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
         "speedStart": "0%",
-        "speedEnd": "100%"
+        "speedEnd": "100%",
+        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
       }
     },
     "Program Speed": {
