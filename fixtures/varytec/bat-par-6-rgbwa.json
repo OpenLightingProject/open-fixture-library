@@ -5,22 +5,28 @@
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["Aurelien W"],
-    "createDate": "2019-06-06",
-    "lastModifyDate": "2019-06-06"
+    "createDate": "2019-06-08",
+    "lastModifyDate": "2019-06-08"
   },
   "links": {
     "manual": [
-      "https://www.manualslib.com/manual/1416955/Varytec-Bat-Par-6-Rgbwa.html"
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/385435_c_385435_385475_r2_en_online.pdf"
     ],
     "productPage": [
-      "https://www.thomann.de/fr/varytec_bat_par_6_rgbwa.htm"
+      "https://www.thomann.de/intl/varytec_bat_par_6_rgbwa.htm"
     ]
   },
   "physical": {
-    "dimensions": [250, 254, 130],
+    "dimensions": [254, 250, 129.65],
     "weight": 1.9,
-    "power": 8,
-    "DMXconnector": "3-pin"
+    "power": 48,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "6x 8W RGBWA LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
   },
   "availableChannels": {
     "Shutter / Strobe": {
