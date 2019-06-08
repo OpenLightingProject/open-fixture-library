@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "BAT.PAR 6 RGBWA",
-  "shortName": "VaryBat6RGBWA",
+  "name": "BAT.PAR 6 RGBUV",
+  "shortName": "VaryBat6RGBUV",
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["Aurelien W"],
@@ -10,10 +10,10 @@
   },
   "links": {
     "manual": [
-      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/385435_c_385435_385475_r2_en_online.pdf"
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/385475_c_385435_385475_r2_en_online.pdf"
     ],
     "productPage": [
-      "https://www.thomann.de/intl/varytec_bat_par_6_rgbwa.htm"
+      "https://www.thomann.de/intl/varytec_bat.par_6_rgbuv.htm"
     ]
   },
   "physical": {
@@ -59,16 +59,10 @@
         "color": "Blue"
       }
     },
-    "White": {
+    "UV": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "Amber": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
+        "color": "UV"
       }
     },
     "Programs": {
@@ -237,14 +231,25 @@
       ]
     },
     {
-      "name": "5-channel",
-      "shortName": "5ch",
+      "name": "4-channel",
+      "shortName": "4ch",
       "channels": [
         "Red",
         "Green",
         "Blue",
-        "White",
-        "Amber"
+        "UV"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "UV",
+        "Strobe"
       ]
     },
     {
@@ -255,21 +260,7 @@
         "Red",
         "Green",
         "Blue",
-        "White",
-        "Amber",
-        "Strobe"
-      ]
-    },
-    {
-      "name": "8-channel",
-      "shortName": "8ch",
-      "channels": [
-        "Intensity",
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Amber",
+        "UV",
         "Programs",
         "Strobe / Program Speed / Sound Sensitivity"
       ]
