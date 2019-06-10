@@ -1,0 +1,131 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Astera FP1 Titan Tube",
+  "shortName": "astera-FP1-titan-tube",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Jack Crombie"],
+    "createDate": "2019-06-10",
+    "lastModifyDate": "2019-06-10"
+  },
+  "links": {
+    "manual": [
+      "https://astera-led.com/Downloads/manual/Titan%20Manual.pdf"
+    ],
+    "productPage": [
+      "https://astera-led.com/titan/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=V83BQca2MDY"
+    ]
+  },
+  "physical": {
+    "dimensions": [42, 1035, 42],
+    "weight": 1.35,
+    "power": 48,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [180, 180]
+    }
+  },
+  "availableChannels": {
+    "Dimmer of Pixel 1": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity of Red Pixel 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Intensity of Green Pixel 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Intensity of Blue Pixel 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe Pixel 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Generic",
+          "comment": "Random Fast Strobe Pixel 1"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Generic",
+          "comment": "Random Medium Strobe Pixel 1"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Generic",
+          "comment": "Random Slow Strobe Pixel 1"
+        },
+        {
+          "dmxRange": [7, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0.4Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Intensity of Amber Pixel 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Intensity of Emulated White Pixel 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer of Pixel 2": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DIM RGBS DIM RGBS 4 Pixels Multi Strobe",
+      "shortName": "4pxrgbs",
+      "channels": [
+        "Dimmer of Pixel 1",
+        "Intensity of Red Pixel 1",
+        "Intensity of Green Pixel 1",
+        "Intensity of Blue Pixel 1",
+        "Strobe Pixel 1"
+      ]
+    },
+    {
+      "name": "DIM RGBAW 1 Pixel",
+      "shortName": "dim-rgbaw-1px",
+      "channels": [
+        "Dimmer of Pixel 1",
+        "Intensity of Red Pixel 1",
+        "Intensity of Green Pixel 1",
+        "Intensity of Blue Pixel 1",
+        "Intensity of Amber Pixel 1",
+        "Intensity of Emulated White Pixel 1"
+      ]
+    }
+  ]
+}
