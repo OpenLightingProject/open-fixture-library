@@ -4,8 +4,8 @@
   "categories": ["Dimmer"],
   "meta": {
     "authors": ["Homemdamesadeluz"],
-    "createDate": "2019-06-11",
-    "lastModifyDate": "2019-06-11"
+    "createDate": "2019-06-17",
+    "lastModifyDate": "2019-06-17"
   },
   "links": {
     "manual": [
@@ -15,14 +15,10 @@
       "https://www.elationlighting.com/uni-bar"
     ]
   },
-  "rdm": {
-    "modelId": 0,
-    "softwareVersion": "unknown"
-  },
   "physical": {
     "dimensions": [200, 66.8, 82],
     "weight": 1.1,
-    "power": 2000,
+    "power": 1200,
     "DMXconnector": "3-pin"
   },
   "availableChannels": {
@@ -34,7 +30,7 @@
   },
   "modes": [
     {
-      "name": "normal",
+      "name": "Dimmer",
       "channels": [
         "Dimmer"
       ]
