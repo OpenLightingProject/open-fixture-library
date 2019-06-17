@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "UNI BAR",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Homemdamesadeluz"],
+    "createDate": "2019-06-17",
+    "lastModifyDate": "2019-06-17"
+  },
+  "links": {
+    "manual": [
+      "http://cdb.s3.amazonaws.com/ItemRelatedFiles/10326/elation_UNI-BAR_user_manual_090216.pdf"
+    ],
+    "productPage": [
+      "https://www.elationlighting.com/uni-bar"
+    ]
+  },
+  "physical": {
+    "dimensions": [200, 66.8, 82],
+    "weight": 1.1,
+    "power": 1200,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Dimmer",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
