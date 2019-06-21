@@ -1,0 +1,69 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CW/WW Fader",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["sonarkon"],
+    "createDate": "2019-06-21",
+    "lastModifyDate": "2019-06-21"
+  },
+  "comment": "Two channel LED Dimmer for  CW/WW.",
+  "links": {
+    "productPage": [
+      "https://www.leds.de/smartarray-24v-tw-2700k-6500k-390lm-53684.html"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED "
+    }
+  },
+  "availableChannels": {
+    "Warm White": {
+      "fineChannelAliases": ["Warm White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Cold White": {
+      "fineChannelAliases": ["Cold White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Warm White 2": {
+      "name": "Warm White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Cold White 2": {
+      "name": "Cold White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16 bit",
+      "channels": [
+        "Warm White",
+        "Warm White fine",
+        "Cold White",
+        "Cold White fine"
+      ]
+    },
+    {
+      "name": "8 bit",
+      "channels": [
+        "Warm White 2",
+        "Cold White 2"
+      ]
+    }
+  ]
+}
