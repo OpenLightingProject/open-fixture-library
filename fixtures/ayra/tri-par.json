@@ -1,0 +1,83 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "tri par",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Tim Nys"],
+    "createDate": "2019-06-22",
+    "lastModifyDate": "2019-06-22"
+  },
+  "links": {
+    "manual": [
+      "https://www.highlite.com/media/attachments/MANUAL/42580_MANUAL_GB_V1.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "255%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "tri par",
+      "shortName": "tri par",
+      "channels": [
+        "Dimmer 2",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "sdgqgb",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
