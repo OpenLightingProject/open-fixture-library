@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "FP1 Titan Tube",
   "shortName": "AsteraFP1Titan",
-  "categories": ["Pixel Bar"],
+  "categories": ["Pixel Bar", "Color Changer", "Blinder", "Strobe"],
   "meta": {
     "authors": ["Jack Crombie"],
     "createDate": "2019-06-10",
@@ -20,16 +20,24 @@
     ]
   },
   "physical": {
-    "dimensions": [42, 1035, 42],
+    "dimensions": [1035, 42, 42],
     "weight": 1.35,
     "power": 48,
     "DMXconnector": "5-pin",
     "bulb": {
-      "type": "LED"
+      "type": "LED",
+      "lumens": 2900
     },
     "lens": {
-      "degreesMinMax": [180, 180]
+      "degreesMinMax": [120, 120]
+    },
+    "matrixPixels": {
+      "dimensions": [64, 42, 42],
+      "spacing": [0, 0, 0]
     }
+  },
+  "matrix": {
+    "pixelCount": [16, 1, 1]
   },
   "availableChannels": {
     "Dimmer of Pixel 1": {
