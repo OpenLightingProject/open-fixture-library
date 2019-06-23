@@ -127,7 +127,8 @@
           <app-property-input-entity
             v-model="channel.defaultValue"
             :schema-property="properties.channel.defaultValue"
-            :max-number="dmxMax"
+            :min-number="0"
+            :max-number="(typeof channel.defaultValue) === `string` ? 100 : dmxMax"
             class="wide"
             name="defaultValue" />
         </app-labeled-input>
@@ -187,7 +188,8 @@
           <app-property-input-entity
             v-model="channel.highlightValue"
             :schema-property="properties.channel.highlightValue"
-            :max-number="dmxMax"
+            :min-number="0"
+            :max-number="(typeof channel.highlightValue) === `string` ? 100 : dmxMax"
             class="wide"
             name="highlightValue" />
         </app-labeled-input>
