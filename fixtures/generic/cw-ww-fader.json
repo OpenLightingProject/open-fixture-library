@@ -25,16 +25,24 @@
   },
   "modes": [
     {
-      "name": "8 bit",
-      "shortName": "8bit",
+      "name": "8 bit W/C",
+      "shortName": "8bit-wc",
       "channels": [
         "Warm White",
         "Cold White"
       ]
     },
     {
-      "name": "16 bit",
-      "shortName": "16bit",
+      "name": "8 bit C/W",
+      "shortName": "8bit-cw",
+      "channels": [
+        "Cold White",
+        "Warm White"
+      ]
+    },
+    {
+      "name": "16 bit W/C",
+      "shortName": "16bit-wc",
       "channels": [
         "Warm White",
         "Warm White fine",
@@ -43,18 +51,18 @@
       ]
     },
     {
-      "name": "16 bit (alternate)",
-      "shortName": "16bit-alt",
+      "name": "16 bit C/W",
+      "shortName": "16bit-cw",
       "channels": [
-        "Warm White",
         "Cold White",
-        "Warm White fine",
-        "Cold White fine"
+        "Cold White fine",
+        "Warm White",
+        "Warm White fine"
       ]
     },
     {
-      "name": "24 bit",
-      "shortName": "24bit",
+      "name": "24 bit W/C",
+      "shortName": "24bit-wc",
       "channels": [
         "Warm White",
         "Warm White fine",
@@ -65,15 +73,15 @@
       ]
     },
     {
-      "name": "24 bit (alternate)",
-      "shortName": "24bit-alt",
+      "name": "24 bit C/W",
+      "shortName": "24bit-cw",
       "channels": [
-        "Warm White",
         "Cold White",
-        "Warm White fine",
         "Cold White fine",
-        "Warm White fine^2",
-        "Cold White fine^2"
+        "Cold White fine^2",
+        "Warm White",
+        "Warm White fine",
+        "Warm White fine^2"
       ]
     }
   ]
