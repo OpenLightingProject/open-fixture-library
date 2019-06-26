@@ -34,10 +34,8 @@ module.exports = function testAttributesCorrectness(exportFile) {
       }
 
       if (errors.length > 0) {
-        return Promise.reject(errors);
+        throw errors;
       }
-
-      return Promise.resolve();
     })
-    .catch(parseError => Promise.reject(`Error parsing XML: ${parseError.toString()}`));
+    .catch(parseErrors => Promise.reject(`Error parsing XML: ${parseErrors.toString()}`));
 };
