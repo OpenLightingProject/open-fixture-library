@@ -7,7 +7,8 @@
         v-model="selectedNumber"
         :schema-property="units[selectedUnit].numberSchema"
         :required="true"
-        :maximum="selectedUnitIsNumber && maxNumber !== null ? maxNumber : `invalid`"
+        :minimum="minNumber !== null ? minNumber : `invalid`"
+        :maximum="maxNumber !== null ? maxNumber : `invalid`"
         :name="name ? `${name}-number` : null"
         @focus.native="onFocus"
         @blur.native="onBlur($event)" />
@@ -110,6 +111,11 @@ export default {
       required: false,
       default: ``
     },
+    minNumber: {
+      type: Number,
+      required: false,
+      default: null
+    },
     maxNumber: {
       type: Number,
       required: false,
@@ -188,10 +194,6 @@ export default {
     },
     hasNumber() {
       return hasNumber(this.selectedUnit, this.enumValues);
-    },
-    selectedUnitIsNumber() {
-      const selectedUnitObj = this.properties.units[this.selectedUnit];
-      return selectedUnitObj && !(`pattern` in selectedUnitObj);
     },
     selectedNumber: {
       get() {
