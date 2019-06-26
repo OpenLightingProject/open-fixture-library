@@ -24,41 +24,33 @@ const EXPORTED_FIXTURE_PATH = `resources/fixtures/manufacturer/fixture.qxf`;
  * @param {string|null} exportFile.mode Mode's shortName if given file only describes a single mode.
  * @returns {Promise.<undefined, array.<string>|!string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
 **/
-module.exports = function testFixtureToolValidation(exportFile) {
-  let directory;
-
+module.exports = async function testFixtureToolValidation(exportFile) {
   // create a unique temporary directory to avoid race conditions when multiple running tests access the same files
-  return mkdtemp(FIXTURE_TOOL_DIR_PREFIX)
-    .then(tmpDir => {
-      directory = tmpDir;
-    })
+  const directory = await mkdtemp(FIXTURE_TOOL_DIR_PREFIX);
 
-    // download fixtures-tool.py into fixtures/scripts directory
-    .then(() => mkdirp(path.join(directory, `resources/fixtures/scripts`)))
-    .then(() => downloadFixtureTool(directory))
+  // download fixtures-tool.py into fixtures/scripts directory
+  await mkdirp(path.join(directory, `resources/fixtures/scripts`));
+  await downloadFixtureTool(directory);
 
-    // write exported fixture.qxf into fixtures/manufacturer directory
-    .then(() => mkdirp(path.join(directory, `resources/fixtures/manufacturer`)))
-    .then(() => writeFile(path.join(directory, EXPORTED_FIXTURE_PATH), exportFile.content))
+  // write exported fixture.qxf into fixtures/manufacturer directory
+  await mkdirp(path.join(directory, `resources/fixtures/manufacturer`));
+  await writeFile(path.join(directory, EXPORTED_FIXTURE_PATH), exportFile.content);
 
-    // store used gobos in the gobos/ directory
-    .then(() => mkdirp(path.join(directory, `resources/gobos/Others`)))
-    .then(() => writeFile(path.join(directory, `resources/gobos/Others/open.svg`), ``))
-    .then(() => writeFile(path.join(directory, `resources/gobos/Others/rainbow.png`), ``))
+  // store used gobos in the gobos/ directory
+  await mkdirp(path.join(directory, `resources/gobos/Others`));
+  await writeFile(path.join(directory, `resources/gobos/Others/open.svg`), ``);
+  await writeFile(path.join(directory, `resources/gobos/Others/rainbow.png`), ``);
 
-    // call the fixture tool
-    .then(() => execFile(path.join(directory, FIXTURE_TOOL_PATH), [`--validate`, `.`], {
-      cwd: path.join(directory, `resources/fixtures`)
-    }))
-    .then(output => {
-      const lastLine = output.stdout.split(`\n`).filter(line => line !== ``).pop();
+  // call the fixture tool
+  const output = await execFile(path.join(directory, FIXTURE_TOOL_PATH), [`--validate`, `.`], {
+    cwd: path.join(directory, `resources/fixtures`)
+  });
 
-      if (lastLine !== `1 definitions processed. 0 errors detected`) {
-        return Promise.reject(output.stdout);
-      }
+  const lastLine = output.stdout.split(`\n`).filter(line => line !== ``).pop();
 
-      return Promise.resolve();
-    });
+  if (lastLine !== `1 definitions processed. 0 errors detected`) {
+    throw output.stdout;
+  }
 };
 
 
