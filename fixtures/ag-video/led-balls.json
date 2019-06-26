@@ -1,0 +1,85 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Led Balls",
+  "shortName": "Ag Video Led Ball",
+  "categories": ["Color Changer", "Dimmer", "Moving Head"],
+  "meta": {
+    "authors": ["Alessandro Gratao"],
+    "createDate": "2019-06-26",
+    "lastModifyDate": "2019-06-26"
+  },
+  "links": {
+    "productPage": [
+      "http://www.agvideo.com.br/"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "weight": 3,
+    "power": 8,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "colorTemperature": 6000,
+      "lumens": 500
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "highlightValue": 255,
+      "constant": true,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "highlightValue": 10,
+      "constant": true,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Position": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1deg",
+        "angleEnd": "360deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "led ball",
+      "shortName": "led ball",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Position"
+      ]
+    }
+  ]
+}
