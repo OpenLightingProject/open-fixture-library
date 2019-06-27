@@ -32,15 +32,14 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
   if (filename.endsWith(`.gdtf`)) {
     // unzip the .gdtf (zip) file and check its description.xml file
-    xmlStr = await JSZip.loadAsync(buffer).then(zip => {
-      const descriptionFile = zip.file(`description.xml`);
+    const zip = await JSZip.loadAsync(buffer);
 
-      if (descriptionFile === null) {
-        throw new Error(`The provided .gdtf (zip) file does not contain a 'description.xml' file in the root directory.`);
-      }
+    const descriptionFile = zip.file(`description.xml`);
+    if (descriptionFile === null) {
+      throw new Error(`The provided .gdtf (zip) file does not contain a 'description.xml' file in the root directory.`);
+    }
 
-      return descriptionFile.async(`string`);
-    });
+    xmlStr = descriptionFile.async(`string`);
   }
 
   const xml = await promisify(parser.parseString)(xmlStr);
@@ -71,8 +70,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
   fixture.meta = {
     authors: [authorName],
-    createDate: getIsoDateFromGdtfDate(revisions[0].$.Date) || timestamp,
-    lastModifyDate: getIsoDateFromGdtfDate(revisions[revisions.length - 1].$.Date) || timestamp,
+    createDate: getIsoDateFromGdtfDate(revisions[0].$.Date, timestamp),
+    lastModifyDate: getIsoDateFromGdtfDate(revisions[revisions.length - 1].$.Date, timestamp),
     importPlugin: {
       plugin: `gdtf`,
       date: timestamp,
@@ -1134,9 +1133,10 @@ function xmlNodeHasNotNoneAttribute(xmlNode, attribute) {
 
 /**
  * @param {string} dateStr A date string in the form "dd.MM.yyyy HH:mm:ss", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-date
+ * @param {string} fallbackDateStr A fallback date string to return if the parsed date is not valid.
  * @returns {string|null} A date string in the form "YYYY-MM-DD", or null if the string could not be parsed.
  */
-function getIsoDateFromGdtfDate(dateStr) {
+function getIsoDateFromGdtfDate(dateStr, fallbackDateStr) {
   const timeRegex = /^([0-3]?\d)\.([01]?\d)\.(\d{4})\s+\d?\d:\d?\d:\d?\d$/;
   const match = dateStr.match(timeRegex);
 
@@ -1147,7 +1147,7 @@ function getIsoDateFromGdtfDate(dateStr) {
     return date.toISOString().replace(/T.*/, ``);
   }
   catch (error) {
-    return null;
+    return fallbackDateStr;
   }
 }
 
