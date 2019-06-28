@@ -14,6 +14,7 @@ let githubClient;
 
 let repoOwner;
 let repoName;
+let prData;
 
 /**
  * Checks if the environment variables for GitHub operations are correct.
@@ -44,11 +45,12 @@ module.exports.init = async function init() {
   const pr = await githubClient.pullRequests.get({
     owner: repoOwner,
     repo: repoName,
-    number: process.env.TRAVIS_PULL_REQUEST
+    'pull_number': process.env.TRAVIS_PULL_REQUEST
   });
 
   // save PR for later use
-  module.exports.data = pr.data;
+  prData = pr.data;
+
   return pr.data;
 };
 
@@ -59,7 +61,7 @@ module.exports.fetchChangedComponents = async function fetchChangedComponents() 
     filePromises.push(githubClient.pullRequests.listFiles({
       owner: repoOwner,
       repo: repoName,
-      number: process.env.TRAVIS_PULL_REQUEST,
+      'pull_number': process.env.TRAVIS_PULL_REQUEST,
       'per_page': 100,
       page: i + 1
     }));
@@ -183,7 +185,7 @@ module.exports.updateComment = async function updateComment(test) {
   const message = lines.join(`\n`);
 
   const commentPromises = [];
-  for (let i = 0; i < module.exports.data.comments / 100; i++) {
+  for (let i = 0; i < prData.comments / 100; i++) {
     commentPromises.push(
       githubClient.issues.listComments({
         owner: repoOwner,
