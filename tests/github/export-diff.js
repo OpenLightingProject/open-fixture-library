@@ -80,9 +80,10 @@ const testFixtures = require(`../test-fixtures.json`).map(
 
 
 /**
- * @returns {Array.<Task>} An array of diff tasks to perform.
+ * @param {object} changedComponents The PR's changed OFL components.
+ * @returns {array.<Task>} An array of diff tasks to perform.
  */
-function getDiffTasks() {
+function getDiffTasks(changedComponents) {
   const usablePlugins = exportPlugins.filter(plugin => !changedComponents.added.exports.includes(plugin));
   const addedFixtures = changedComponents.added.fixtures.map(([man, key]) => `${man}/${key}`);
   const usableTestFixtures = testFixtures.filter(testFixture => !addedFixtures.includes(testFixture));
