@@ -55,9 +55,9 @@ module.exports.init = async function init() {
 };
 
 module.exports.fetchChangedComponents = async function fetchChangedComponents() {
-  // fetch changed files in 100er blocks
+  // fetch changed files in blocks of 100
   const filePromises = [];
-  for (let i = 0; i < this.data.changed_files / 100; i++) {
+  for (let i = 0; i < prData.changed_files / 100; i++) {
     filePromises.push(githubClient.pullRequests.listFiles({
       owner: repoOwner,
       repo: repoName,
