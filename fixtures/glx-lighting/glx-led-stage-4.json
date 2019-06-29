@@ -1,0 +1,277 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "GLX LED STAGE 4",
+  "shortName": "GLS-4 LED STAGE 4",
+  "categories": ["Stand"],
+  "meta": {
+    "authors": ["Andrea Beppiani"],
+    "createDate": "2019-06-29",
+    "lastModifyDate": "2019-06-29"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/1044527/Glx-Gls-4-Led-Stage-4.html"
+    ],
+    "productPage": [
+      "https://www.direzionemusica.it/luci-/luci-teatrali-e-par/glx-4-par-led-stage-gls4.1.37.472.gp.5649.uw"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=842UZEEFHNU"
+    ]
+  },
+  "physical": {
+    "dimensions": [1110, 295, 55],
+    "weight": 8,
+    "power": 50,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Internal programs, auto mode and sound controlled mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "Generic",
+          "comment": "Program 1"
+        },
+        {
+          "dmxRange": [30, 49],
+          "type": "Generic",
+          "comment": "Program 2"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "Program 3"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [70, 89],
+          "type": "Generic",
+          "comment": "Program 4"
+        },
+        {
+          "dmxRange": [90, 109],
+          "type": "Generic",
+          "comment": "Program 5"
+        },
+        {
+          "dmxRange": [110, 129],
+          "type": "Generic",
+          "comment": "Program 6"
+        },
+        {
+          "dmxRange": [130, 149],
+          "type": "Generic",
+          "comment": "Program 7"
+        },
+        {
+          "dmxRange": [150, 169],
+          "type": "Generic",
+          "comment": "Program 8"
+        },
+        {
+          "dmxRange": [170, 189],
+          "type": "Generic",
+          "comment": "Program 9"
+        },
+        {
+          "dmxRange": [190, 209],
+          "type": "Generic",
+          "comment": "Program 10"
+        },
+        {
+          "dmxRange": [210, 229],
+          "type": "Generic",
+          "comment": "Program 11"
+        },
+        {
+          "dmxRange": [230, 249],
+          "type": "Generic",
+          "comment": "Auto Mode: Internal Programs"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Sound controlled Mode"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Spot 1 RED": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Spot 1 GREEN": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Spot 1 BLUE": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Spot 2 RED": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Spot 2 GREEN": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Spot 2 BLUE": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Spot 3 RED": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Spot 3 GREEN": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Spot 3 BLUE": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Spot 4 RED": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Spot 4 GREEN": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Spot 4 BLUE": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "15ch",
+      "shortName": "15ch",
+      "channels": [
+        "Internal programs, auto mode and sound controlled mode",
+        "Dimmer",
+        "Strobe",
+        "Spot 1 RED",
+        "Spot 1 GREEN",
+        "Spot 1 BLUE",
+        "Spot 2 RED",
+        "Spot 2 GREEN",
+        "Spot 2 BLUE",
+        "Spot 3 RED",
+        "Spot 3 GREEN",
+        "Spot 3 BLUE",
+        "Spot 4 RED",
+        "Spot 4 GREEN",
+        "Spot 4 BLUE"
+      ]
+    }
+  ]
+}
