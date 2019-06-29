@@ -42,6 +42,7 @@ const testFixtures = require(`../test-fixtures.json`).map(
         name: `Plugin export diff`,
         lines: []
       });
+      return;
     }
 
     const lines = [
