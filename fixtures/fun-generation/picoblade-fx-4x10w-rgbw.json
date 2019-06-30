@@ -1,0 +1,228 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PicoBlade FX 4x10W RGBW",
+  "categories": ["Moving Head", "Strobe", "Color Changer", "Dimmer", "Flower"],
+  "meta": {
+    "authors": ["Raimund"],
+    "createDate": "2019-06-30",
+    "lastModifyDate": "2019-06-30"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/432322_c_432322_de_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/at/fun_generation_picoblade_fx_4x10w_rgbw.htm?ref=search_prv_4"
+    ],
+    "video": [
+      "https://video1.thomann.de//vidiot/02591c1c/video_i6951p10_yd59vqpa.mp4"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "dmxValueResolution": "8bit",
+      "constant": true,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "dmxValueResolution": "8bit",
+      "constant": true,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "230deg"
+      }
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 191],
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
+        },
+        {
+          "dmxRange": [192, 222],
+          "type": "Rotation",
+          "speed": "slow CW"
+        },
+        {
+          "dmxRange": [223, 224],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Rotation",
+          "speed": "fast CW"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Master": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Auto-Programm": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "red"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "green"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "blue"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "white"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "yellow"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "cyan"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "purple"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "all white"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "comment": "Programm 1"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorPreset",
+          "comment": "Programm 2"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorPreset",
+          "comment": "Programm 3"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "ColorPreset",
+          "comment": "Programm 4"
+        },
+        {
+          "dmxRange": [180, 233],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [234, 236],
+          "type": "ColorPreset",
+          "comment": "Reset"
+        },
+        {
+          "dmxRange": [237, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11-Channel",
+      "shortName": "11CH",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Gobo Wheel",
+        "Master",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Auto-Programm",
+        "Speed"
+      ]
+    }
+  ]
+}
