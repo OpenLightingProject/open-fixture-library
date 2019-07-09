@@ -771,36 +771,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
             return;
           }
 
-          const usedPixelKeys = new Set();
-
-          // simple uniqueness is already checked by schema, but this test also checks for pixelKeys in pixelGroups
           for (const pixelKey of matrixInsertBlock.repeatFor) {
-            if (fixture.matrix.pixelKeys.includes(pixelKey)) {
-              checkUniqueness(
-                usedPixelKeys,
-                pixelKey,
-                result,
-                `PixelKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
-              );
-            }
-            else if (pixelKey in fixture.matrix.pixelGroups) {
-              checkUniqueness(
-                usedPixelKeys,
-                pixelKey,
-                result,
-                `PixelGroupKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
-              );
-
-              for (const singlePixelKey of fixture.matrix.pixelGroups[pixelKey]) {
-                checkUniqueness(
-                  usedPixelKeys,
-                  singlePixelKey,
-                  result,
-                  `PixelKey '${singlePixelKey}' in group '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
-                );
-              }
-            }
-            else {
+            if (!fixture.matrix.pixelKeys.includes(pixelKey) && !(pixelKey in fixture.matrix.pixelGroups)) {
               result.errors.push(`Unknown pixelKey or pixelGroupKey '${pixelKey}'`);
             }
           }
