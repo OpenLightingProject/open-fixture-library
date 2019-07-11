@@ -73,16 +73,32 @@
       }
     },
     "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Fan Control": {
       "capability": {
-        "type": "StrobeSpeed",
-        "speed": "0Hz"
+        "type": "Maintenance",
+        "helpWanted": "Which capabilities can be selected at which DMX values?"
       }
     }
   },
   "modes": [
     {
-      "name": "direct 9",
-      "shortName": "9ch.",
+      "name": "Direct",
+      "shortName": "direct",
       "channels": [
         "Red",
         "Lime",
@@ -92,7 +108,8 @@
         "Blue",
         "Indigo",
         "Intensity",
-        "Strobe"
+        "Strobe",
+        "Fan Control"
       ]
     }
   ]
