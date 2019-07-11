@@ -121,11 +121,11 @@ const serverProcess = childProcess.execFile(`node`, [path.join(__dirname, `..`, 
   let statusStr = chalk.green(`[PASS]`);
   let exitCode = 0;
 
+  const failingLinks = [...fails.internal, ...fails.external];
   const lines = [
     `There were ${fails.internal.size} internal and ${fails.external.size} external links failing.`,
     ``,
-    ...fails.internal.map(link => `- ${link}`),
-    ...fails.external.map(link => `- ${link}`)
+    ...failingLinks.map(link => `- ${link}`)
   ];
 
   let githubCommentLines = [];
