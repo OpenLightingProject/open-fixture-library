@@ -85,6 +85,7 @@ let testErrored = false;
         name: `Export files validity`,
         lines: []
       });
+      return;
     }
 
     const lines = [
