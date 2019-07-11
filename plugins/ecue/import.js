@@ -15,7 +15,7 @@ for (const hex of Object.keys(colorNames)) {
  * @param {string} authorName The importer's name.
  * @returns {Promise.<object, Error>} A Promise resolving to an out object
 **/
-module.exports.import = function importECue(buffer, filename, authorName) {
+module.exports.import = async function importECue(buffer, filename, authorName) {
   const parser = new xml2js.Parser();
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
@@ -25,37 +25,34 @@ module.exports.import = function importECue(buffer, filename, authorName) {
     warnings: {}
   };
 
-  return promisify(parser.parseString)(buffer.toString())
-    .then(xml => {
-      if (!(`Library` in xml.Document) || !(`Fixtures` in xml.Document.Library[0]) || !(`Manufacturer` in xml.Document.Library[0].Fixtures[0])) {
-        throw new Error(`Nothing to import.`);
-      }
+  const xml = await promisify(parser.parseString)(buffer.toString());
 
-      return xml.Document.Library[0].Fixtures[0].Manufacturer || [];
-    })
-    .then(ecueManufacturers => {
-      for (const manufacturer of ecueManufacturers) {
-        const manName = manufacturer.$.Name;
-        const manKey = slugify(manName);
+  if (!(`Library` in xml.Document) || !(`Fixtures` in xml.Document.Library[0]) || !(`Manufacturer` in xml.Document.Library[0].Fixtures[0])) {
+    throw new Error(`Nothing to import.`);
+  }
 
-        out.manufacturers[manKey] = {
-          name: manName
-        };
+  const ecueManufacturers = xml.Document.Library[0].Fixtures[0].Manufacturer || [];
+  ecueManufacturers.forEach(manufacturer => {
+    const manName = manufacturer.$.Name;
+    const manKey = slugify(manName);
 
-        if (manufacturer.$.Comment !== ``) {
-          out.manufacturers[manKey].comment = manufacturer.$.Comment;
-        }
-        if (manufacturer.$.Web !== ``) {
-          out.manufacturers[manKey].website = manufacturer.$.Web;
-        }
+    out.manufacturers[manKey] = {
+      name: manName
+    };
 
-        for (const fixture of (manufacturer.Fixture || [])) {
-          addFixture(fixture, manKey);
-        }
-      }
+    if (manufacturer.$.Comment !== ``) {
+      out.manufacturers[manKey].comment = manufacturer.$.Comment;
+    }
+    if (manufacturer.$.Web !== ``) {
+      out.manufacturers[manKey].website = manufacturer.$.Web;
+    }
 
-      return out;
-    });
+    for (const fixture of (manufacturer.Fixture || [])) {
+      addFixture(fixture, manKey);
+    }
+  });
+
+  return out;
 
 
   /**

@@ -102,7 +102,7 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
   downloadFixtures(response, format, fixtures, zipName, errorDesc);
 });
 
-app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, (request, response, next) => {
+app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, async (request, response, next) => {
   const { manKey, fixKey, format } = request.params;
 
   if (!(`${manKey}/${fixKey}` in register.filesystem)) {
@@ -111,14 +111,15 @@ app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, (request, response, next) => {
   }
 
   if (format === `json`) {
-    readFile(`./fixtures/${manKey}/${fixKey}.json`, `utf8`)
-      .then(data => JSON.parse(data))
-      .then(fixtureJson => response.json(fixtureJson))
-      .catch(error => {
-        response
-          .status(500)
-          .send(`Fetching ${manKey}/${fixKey}.json failed: ${error.toString()}`);
-      });
+    try {
+      const data = await readFile(`./fixtures/${manKey}/${fixKey}.json`, `utf8`);
+      response.json(JSON.parse(data));
+    }
+    catch (error) {
+      response
+        .status(500)
+        .send(`Fetching ${manKey}/${fixKey}.json failed: ${error.toString()}`);
+    }
     return;
   }
 

@@ -28,12 +28,12 @@ if (args._.length !== 1 || !plugins.importPlugins.includes(args.plugin) || !auth
   process.exit(1);
 }
 
-readFile(filename)
-  .then(buffer => {
+(async () => {
+  try {
+    const buffer = await readFile(filename);
+
     const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `import.js`));
-    return plugin.import(buffer, filename, authorName);
-  })
-  .then(result => {
+    const result = await plugin.import(buffer, filename, authorName);
     result.errors = {};
 
     for (const key of Object.keys(result.fixtures)) {
@@ -46,19 +46,22 @@ readFile(filename)
     }
 
     if (args[`create-pull-request`]) {
-      createPullRequest(result)
-        .then(pullRequestUrl => console.log(`URL: ${pullRequestUrl}`))
-        .catch(error => {
-          console.log(fixtureJsonStringify(result));
-          console.error(`Error creating pull request: ${error.message}`);
-        });
+      try {
+        const pullRequestUrl = await createPullRequest(result);
+        console.log(`URL: ${pullRequestUrl}`);
+      }
+      catch (error) {
+        console.log(fixtureJsonStringify(result));
+        console.error(`Error creating pull request: ${error.message}`);
+      }
     }
     else {
       console.log(fixtureJsonStringify(result));
     }
-  })
-  .catch(error => {
+  }
+  catch (error) {
     console.error(`Error parsing '${filename}':`);
     console.error(error);
     process.exit(1);
-  });
+  }
+})();
