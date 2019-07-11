@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "GLS-4 LED Stage 4",
   "shortName": "GLX-Stage4",
-  "categories": ["Stand"],
+  "categories": ["Stand", "Color Changer"],
   "meta": {
     "authors": ["Andrea Beppiani"],
     "createDate": "2019-06-29",
@@ -12,9 +12,6 @@
     "manual": [
       "https://www.manualslib.com/manual/1044527/Glx-Gls-4-Led-Stage-4.html"
     ],
-    "productPage": [
-      "https://www.direzionemusica.it/luci-/luci-teatrali-e-par/glx-4-par-led-stage-gls4.1.37.472.gp.5649.uw"
-    ],
     "video": [
       "https://www.youtube.com/watch?v=842UZEEFHNU"
     ]
@@ -23,7 +20,7 @@
     "dimensions": [1110, 295, 55],
     "weight": 8,
     "power": 50,
-    "DMXconnector": "3-pin XLR IP65",
+    "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED"
     },
@@ -31,8 +28,15 @@
       "degreesMinMax": [25, 25]
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["Spot 1", "Spot 2", "Spot 3", "Spot 4"]
+      ]
+    ]
+  },
   "availableChannels": {
-    "Internal programs, auto mode and sound controlled mode": {
+    "Auto Programs": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -42,18 +46,18 @@
         },
         {
           "dmxRange": [10, 29],
-          "type": "Generic",
-          "comment": "Program 1"
+          "type": "Effect",
+          "effectName": "Program 1"
         },
         {
           "dmxRange": [30, 49],
-          "type": "Generic",
-          "comment": "Program 2"
+          "type": "Effect",
+          "effectName": "Program 2"
         },
         {
           "dmxRange": [50, 59],
-          "type": "Generic",
-          "comment": "Program 3"
+          "type": "Effect",
+          "effectName": "Program 3"
         },
         {
           "dmxRange": [60, 69],
@@ -61,53 +65,54 @@
         },
         {
           "dmxRange": [70, 89],
-          "type": "Generic",
-          "comment": "Program 4"
+          "type": "Effect",
+          "effectName": "Program 4"
         },
         {
           "dmxRange": [90, 109],
-          "type": "Generic",
-          "comment": "Program 5"
+          "type": "Effect",
+          "effectName": "Program 5"
         },
         {
           "dmxRange": [110, 129],
-          "type": "Generic",
-          "comment": "Program 6"
+          "type": "Effect",
+          "effectName": "Program 6"
         },
         {
           "dmxRange": [130, 149],
-          "type": "Generic",
-          "comment": "Program 7"
+          "type": "Effect",
+          "effectName": "Program 7"
         },
         {
           "dmxRange": [150, 169],
-          "type": "Generic",
-          "comment": "Program 8"
+          "type": "Effect",
+          "effectName": "Program 8"
         },
         {
           "dmxRange": [170, 189],
-          "type": "Generic",
-          "comment": "Program 9"
+          "type": "Effect",
+          "effectName": "Program 9"
         },
         {
           "dmxRange": [190, 209],
-          "type": "Generic",
-          "comment": "Program 10"
+          "type": "Effect",
+          "effectName": "Program 10"
         },
         {
           "dmxRange": [210, 229],
-          "type": "Generic",
-          "comment": "Program 11"
+          "type": "Effect",
+          "effectName": "Program 11"
         },
         {
           "dmxRange": [230, 249],
-          "type": "Generic",
-          "comment": "Auto Mode: Internal Programs"
+          "type": "Effect",
+          "effectName": "Auto Mode: Internal Programs"
         },
         {
           "dmxRange": [250, 255],
-          "type": "Generic",
-          "comment": "Sound controlled Mode"
+          "type": "Effect",
+          "effectName": "Sound controlled Mode",
+          "soundControlled": true
         }
       ]
     },
@@ -136,141 +141,55 @@
         },
         {
           "dmxRange": [10, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "0%",
           "speedEnd": "100%"
         }
       ]
-    },
-    "Spot 1 RED": {
-      "defaultValue": "0%",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Spot 1 GREEN": {
+    }
+  },
+  "templateChannels": {
+    "$pixelKey Red": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Red"
       }
     },
-    "Spot 1 BLUE": {
+    "$pixelKey Green": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Green"
       }
     },
-    "Spot 2 RED": {
+    "$pixelKey Blue": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Spot 2 GREEN": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Spot 2 BLUE": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Spot 3 RED": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Spot 3 GREEN": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Spot 3 BLUE": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Spot 4 RED": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Spot 4 GREEN": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Spot 4 BLUE": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Blue"
       }
     }
   },
   "modes": [
     {
-      "name": "15ch",
+      "name": "15-channel",
       "shortName": "15ch",
       "channels": [
-        "Internal programs, auto mode and sound controlled mode",
+        "Auto Programs",
         "Dimmer",
         "Strobe",
-        "Spot 1 RED",
-        "Spot 1 GREEN",
-        "Spot 1 BLUE",
-        "Spot 2 RED",
-        "Spot 2 GREEN",
-        "Spot 2 BLUE",
-        "Spot 3 RED",
-        "Spot 3 GREEN",
-        "Spot 3 BLUE",
-        "Spot 4 RED",
-        "Spot 4 GREEN",
-        "Spot 4 BLUE"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue"
+          ]
+        }
       ]
     }
   ]
