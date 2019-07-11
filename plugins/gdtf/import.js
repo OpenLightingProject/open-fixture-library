@@ -32,109 +32,107 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
   if (filename.endsWith(`.gdtf`)) {
     // unzip the .gdtf (zip) file and check its description.xml file
-    xmlStr = await JSZip.loadAsync(buffer).then(zip => {
-      const descriptionFile = zip.file(`description.xml`);
+    const zip = await JSZip.loadAsync(buffer);
 
-      if (descriptionFile === null) {
-        throw new Error(`The provided .gdtf (zip) file does not contain a 'description.xml' file in the root directory.`);
+    const descriptionFile = zip.file(`description.xml`);
+    if (descriptionFile === null) {
+      throw new Error(`The provided .gdtf (zip) file does not contain a 'description.xml' file in the root directory.`);
+    }
+
+    xmlStr = descriptionFile.async(`string`);
+  }
+
+  const xml = await promisify(parser.parseString)(xmlStr);
+
+  const gdtfFixture = xml.GDTF.FixtureType[0];
+  fixture.name = gdtfFixture.$.Name;
+  fixture.shortName = gdtfFixture.$.ShortName;
+
+  const manKey = slugify(gdtfFixture.$.Manufacturer);
+  const fixKey = `${manKey}/${slugify(fixture.name)}`;
+
+  let manufacturer;
+  if (manKey in manufacturers) {
+    manufacturer = manufacturers[manKey];
+  }
+  else {
+    manufacturer = {
+      name: gdtfFixture.$.Manufacturer
+    };
+    warnings.push(`Please add manufacturer URL.`);
+  }
+
+  fixture.categories = [`Other`]; // TODO: can we find out categories?
+  warnings.push(`Please add fixture categories.`);
+
+  const timestamp = new Date().toISOString().replace(/T.*/, ``);
+  const revisions = gdtfFixture.Revisions[0].Revision;
+
+  fixture.meta = {
+    authors: [authorName],
+    createDate: getIsoDateFromGdtfDate(revisions[0].$.Date, timestamp),
+    lastModifyDate: getIsoDateFromGdtfDate(revisions[revisions.length - 1].$.Date, timestamp),
+    importPlugin: {
+      plugin: `gdtf`,
+      date: timestamp,
+      comment: `GDTF fixture type ID: ${gdtfFixture.$.FixtureTypeID}`
+    }
+  };
+
+  fixture.comment = gdtfFixture.$.Description;
+
+  warnings.push(`Please add relevant links to the fixture.`);
+
+  addRdmInfo(fixture, manufacturer, gdtfFixture);
+
+  warnings.push(`Please add physical data to the fixture.`);
+
+  fixture.matrix = {};
+
+  addWheels(fixture, gdtfFixture);
+
+  autoGenerateGdtfNameAttributes(gdtfFixture);
+  const relations = splitSwitchingChannels(gdtfFixture);
+
+  addChannels(fixture, gdtfFixture);
+  addModes(fixture, gdtfFixture);
+
+  linkSwitchingChannels(fixture, relations);
+
+  if (`availableChannels` in fixture) {
+    Object.keys(fixture.availableChannels).forEach(chKey => {
+      const channel = fixture.availableChannels[chKey];
+      if (channel.defaultValue === null) {
+        delete channel.defaultValue;
       }
-
-      return descriptionFile.async(`string`);
     });
   }
 
-  return promisify(parser.parseString)(xmlStr)
-    .then(xml => {
-      const gdtfFixture = xml.GDTF.FixtureType[0];
-      fixture.name = gdtfFixture.$.Name;
-      fixture.shortName = gdtfFixture.$.ShortName;
+  if (`templateChannels` in fixture) {
+    warnings.push(`Please fix the visual representation of the matrix.`);
 
-      const manKey = slugify(gdtfFixture.$.Manufacturer);
-      const fixKey = `${manKey}/${slugify(fixture.name)}`;
-
-      let manufacturer;
-      if (manKey in manufacturers) {
-        manufacturer = manufacturers[manKey];
+    Object.keys(fixture.templateChannels).forEach(chKey => {
+      const channel = fixture.templateChannels[chKey];
+      if (channel.defaultValue === null) {
+        delete channel.defaultValue;
       }
-      else {
-        manufacturer = {
-          name: gdtfFixture.$.Manufacturer
-        };
-        warnings.push(`Please add manufacturer URL.`);
-      }
-
-      fixture.categories = [`Other`]; // TODO: can we find out categories?
-      warnings.push(`Please add fixture categories.`);
-
-      const timestamp = new Date().toISOString().replace(/T.*/, ``);
-      const revisions = gdtfFixture.Revisions[0].Revision;
-
-      fixture.meta = {
-        authors: [authorName],
-        createDate: getIsoDateFromGdtfDate(revisions[0].$.Date) || timestamp,
-        lastModifyDate: getIsoDateFromGdtfDate(revisions[revisions.length - 1].$.Date) || timestamp,
-        importPlugin: {
-          plugin: `gdtf`,
-          date: timestamp,
-          comment: `GDTF fixture type ID: ${gdtfFixture.$.FixtureTypeID}`
-        }
-      };
-
-      fixture.comment = gdtfFixture.$.Description;
-
-      warnings.push(`Please add relevant links to the fixture.`);
-
-      addRdmInfo(fixture, manufacturer, gdtfFixture);
-
-      warnings.push(`Please add physical data to the fixture.`);
-
-      fixture.matrix = {};
-
-      addWheels(fixture, gdtfFixture);
-
-      autoGenerateGdtfNameAttributes(gdtfFixture);
-      const relations = splitSwitchingChannels(gdtfFixture);
-
-      addChannels(fixture, gdtfFixture);
-      addModes(fixture, gdtfFixture);
-
-      linkSwitchingChannels(fixture, relations);
-
-      if (`availableChannels` in fixture) {
-        Object.keys(fixture.availableChannels).forEach(chKey => {
-          const channel = fixture.availableChannels[chKey];
-          if (channel.defaultValue === null) {
-            delete channel.defaultValue;
-          }
-        });
-      }
-
-      if (`templateChannels` in fixture) {
-        warnings.push(`Please fix the visual representation of the matrix.`);
-
-        Object.keys(fixture.templateChannels).forEach(chKey => {
-          const channel = fixture.templateChannels[chKey];
-          if (channel.defaultValue === null) {
-            delete channel.defaultValue;
-          }
-        });
-      }
-      else {
-        delete fixture.matrix;
-      }
-
-      return {
-        manufacturers: {
-          [manKey]: manufacturer
-        },
-        fixtures: {
-          [fixKey]: fixture
-        },
-        warnings: {
-          [fixKey]: warnings
-        }
-      };
     });
+  }
+  else {
+    delete fixture.matrix;
+  }
+
+  return {
+    manufacturers: {
+      [manKey]: manufacturer
+    },
+    fixtures: {
+      [fixKey]: fixture
+    },
+    warnings: {
+      [fixKey]: warnings
+    }
+  };
 
 
   /**
@@ -1135,9 +1133,10 @@ function xmlNodeHasNotNoneAttribute(xmlNode, attribute) {
 
 /**
  * @param {string} dateStr A date string in the form "dd.MM.yyyy HH:mm:ss", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-date
+ * @param {string} fallbackDateStr A fallback date string to return if the parsed date is not valid.
  * @returns {string|null} A date string in the form "YYYY-MM-DD", or null if the string could not be parsed.
  */
-function getIsoDateFromGdtfDate(dateStr) {
+function getIsoDateFromGdtfDate(dateStr, fallbackDateStr) {
   const timeRegex = /^([0-3]?\d)\.([01]?\d)\.(\d{4})\s+\d?\d:\d?\d:\d?\d$/;
   const match = dateStr.match(timeRegex);
 
@@ -1148,7 +1147,7 @@ function getIsoDateFromGdtfDate(dateStr) {
     return date.toISOString().replace(/T.*/, ``);
   }
   catch (error) {
-    return null;
+    return fallbackDateStr;
   }
 }
 

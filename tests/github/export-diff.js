@@ -21,136 +21,31 @@ const testFixtures = require(`../test-fixtures.json`).map(
  */
 
 // generate diff tasks describing the diffed plugins, fixtures and the reason for diffing (which component has changed)
-pullRequest.checkEnv()
-  .catch(error => {
+(async () => {
+  try {
+    await pullRequest.checkEnv();
+  }
+  catch (error) {
     console.error(error);
     process.exit(0); // if the environment is not correct, just exit without failing
-  })
-  .then(() => pullRequest.init())
-  .then(prData => pullRequest.fetchChangedComponents())
-  .then(changedComponents => {
-    const usablePlugins = exportPlugins.filter(plugin => !changedComponents.added.exports.includes(plugin));
-    const addedFixtures = changedComponents.added.fixtures.map(([man, key]) => `${man}/${key}`);
-    const usableTestFixtures = testFixtures.filter(testFixture => !addedFixtures.includes(testFixture));
+  }
 
-    /** @type {Array.<Task>} */
-    const tasks = getTasksForModel()
-      .concat(getTasksForPlugins())
-      .concat(getTasksForFixtures())
-      .filter((task, index, arr) => {
-        const firstEqualTask = arr.find(otherTask =>
-          task.manFix === otherTask.manFix &&
-          task.currentPluginKey === otherTask.currentPluginKey &&
-          task.comparePluginKey === otherTask.comparePluginKey
-        );
+  try {
+    await pullRequest.init();
+    const changedComponents = await pullRequest.fetchChangedComponents();
 
-        // remove duplicates
-        return task === firstEqualTask;
-      })
-      .sort((a, b) => {
-        const manFixCompare = a.manFix.localeCompare(b.manFix);
-        const currentPluginCompare = a.currentPluginKey.localeCompare(b.currentPluginKey);
-        const comparePluginCompare = a.comparePluginKey.localeCompare(b.comparePluginKey);
+    const tasks = getDiffTasks(changedComponents);
 
-        if (manFixCompare !== 0) {
-          return manFixCompare;
-        }
-
-        if (currentPluginCompare !== 0) {
-          return currentPluginCompare;
-        }
-
-        return comparePluginCompare;
-      });
-
-    return tasks;
-
-    /**
-     * @returns {array.<Task>} What export diff tasks have to be done due to changes in the model. May be empty.
-     */
-    function getTasksForModel() {
-      let tasks = [];
-
-      if (changedComponents.added.model ||
-        changedComponents.modified.model ||
-        changedComponents.removed.model) {
-
-        for (const manFix of usableTestFixtures) {
-          tasks = tasks.concat(usablePlugins.map(pluginKey => ({
-            manFix,
-            currentPluginKey: pluginKey,
-            comparePluginKey: pluginKey
-          })));
-        }
-      }
-
-      return tasks;
-    }
-
-    /**
-     * @returns {array.<Task>} What export diff tasks have to be done due to changes in plugins. May be empty.
-     */
-    function getTasksForPlugins() {
-      let tasks = [];
-
-      const changedPlugins = changedComponents.modified.exports;
-      for (const changedPlugin of changedPlugins) {
-        tasks = tasks.concat(usableTestFixtures.map(manFix => ({
-          manFix,
-          currentPluginKey: changedPlugin,
-          comparePluginKey: changedPlugin
-        })));
-      }
-
-      const addedPlugins = changedComponents.added.exports;
-      const removedPlugins = changedComponents.removed.exports;
-      for (const addedPlugin of addedPlugins) {
-        const pluginData = require(`../../plugins/${addedPlugin}/plugin.json`);
-
-        if (pluginData.previousVersions) {
-          const previousVersions = Object.keys(pluginData.previousVersions);
-          const lastVersion = previousVersions[previousVersions.length - 1];
-
-          if (removedPlugins.includes(lastVersion) || (plugins.exportPlugins.includes(lastVersion) && !addedPlugins.includes(lastVersion))) {
-            tasks = tasks.concat(usableTestFixtures.map(manFix => ({
-              manFix,
-              currentPluginKey: addedPlugin,
-              comparePluginKey: lastVersion
-            })));
-          }
-        }
-      }
-
-      return tasks;
-    }
-
-    /**
-     * @returns {array.<Task>} What export diff tasks have to be done due to changes in fixtures. May be empty.
-     */
-    function getTasksForFixtures() {
-      let tasks = [];
-
-      for (const [manKey, fixKey] of changedComponents.modified.fixtures) {
-        tasks = tasks.concat(usablePlugins.map(pluginKey => ({
-          manFix: `${manKey}/${fixKey}`,
-          currentPluginKey: pluginKey,
-          comparePluginKey: pluginKey
-        })));
-      }
-
-      return tasks;
-    }
-  })
-  .then(async tasks => {
     if (tasks.length === 0) {
-      return pullRequest.updateComment({
+      await pullRequest.updateComment({
         filename: path.relative(path.join(__dirname, `../../`), __filename),
         name: `Plugin export diff`,
         lines: []
       });
+      return;
     }
 
-    let lines = [
+    const lines = [
       `You can view your uncommitted changes in plugin exports manually by executing:`,
       `\`$ node cli/diff-plugin-outputs.js -p <plugin-key> [-c <compare-plugin-key>] <fixtures>\``,
       ``
@@ -168,20 +63,138 @@ pullRequest.checkEnv()
         break;
       }
 
-      lines = lines.concat(taskResultLines);
+      lines.push(...taskResultLines);
     }
 
-    return pullRequest.updateComment({
+    await pullRequest.updateComment({
       filename: path.relative(path.join(__dirname, `../../`), __filename),
       name: `Plugin export diff`,
       lines
     });
-  })
-  .catch(error => {
+  }
+  catch (error) {
     console.error(error);
     process.exit(1);
-  });
+  }
+})();
 
+
+
+/**
+ * @param {object} changedComponents The PR's changed OFL components.
+ * @returns {array.<Task>} An array of diff tasks to perform.
+ */
+function getDiffTasks(changedComponents) {
+  const usablePlugins = exportPlugins.filter(plugin => !changedComponents.added.exports.includes(plugin));
+  const addedFixtures = changedComponents.added.fixtures.map(([man, key]) => `${man}/${key}`);
+  const usableTestFixtures = testFixtures.filter(testFixture => !addedFixtures.includes(testFixture));
+
+  /** @type {Array.<Task>} */
+  return getTasksForModel()
+    .concat(getTasksForPlugins())
+    .concat(getTasksForFixtures())
+    .filter((task, index, arr) => {
+      const firstEqualTask = arr.find(otherTask =>
+        task.manFix === otherTask.manFix &&
+        task.currentPluginKey === otherTask.currentPluginKey &&
+        task.comparePluginKey === otherTask.comparePluginKey
+      );
+
+      // remove duplicates
+      return task === firstEqualTask;
+    })
+    .sort((a, b) => {
+      const manFixCompare = a.manFix.localeCompare(b.manFix);
+      const currentPluginCompare = a.currentPluginKey.localeCompare(b.currentPluginKey);
+      const comparePluginCompare = a.comparePluginKey.localeCompare(b.comparePluginKey);
+
+      if (manFixCompare !== 0) {
+        return manFixCompare;
+      }
+
+      if (currentPluginCompare !== 0) {
+        return currentPluginCompare;
+      }
+
+      return comparePluginCompare;
+    });
+
+  /**
+   * @returns {array.<Task>} What export diff tasks have to be done due to changes in the model. May be empty.
+   */
+  function getTasksForModel() {
+    let tasks = [];
+
+    if (changedComponents.added.model ||
+      changedComponents.modified.model ||
+      changedComponents.removed.model) {
+
+      for (const manFix of usableTestFixtures) {
+        tasks = tasks.concat(usablePlugins.map(pluginKey => ({
+          manFix,
+          currentPluginKey: pluginKey,
+          comparePluginKey: pluginKey
+        })));
+      }
+    }
+
+    return tasks;
+  }
+
+  /**
+   * @returns {array.<Task>} What export diff tasks have to be done due to changes in plugins. May be empty.
+   */
+  function getTasksForPlugins() {
+    let tasks = [];
+
+    const changedPlugins = changedComponents.modified.exports;
+    for (const changedPlugin of changedPlugins) {
+      tasks = tasks.concat(usableTestFixtures.map(manFix => ({
+        manFix,
+        currentPluginKey: changedPlugin,
+        comparePluginKey: changedPlugin
+      })));
+    }
+
+    const addedPlugins = changedComponents.added.exports;
+    const removedPlugins = changedComponents.removed.exports;
+    for (const addedPlugin of addedPlugins) {
+      const pluginData = require(`../../plugins/${addedPlugin}/plugin.json`);
+
+      if (pluginData.previousVersions) {
+        const previousVersions = Object.keys(pluginData.previousVersions);
+        const lastVersion = previousVersions[previousVersions.length - 1];
+
+        if (removedPlugins.includes(lastVersion) || (plugins.exportPlugins.includes(lastVersion) && !addedPlugins.includes(lastVersion))) {
+          tasks = tasks.concat(usableTestFixtures.map(manFix => ({
+            manFix,
+            currentPluginKey: addedPlugin,
+            comparePluginKey: lastVersion
+          })));
+        }
+      }
+    }
+
+    return tasks;
+  }
+
+  /**
+   * @returns {array.<Task>} What export diff tasks have to be done due to changes in fixtures. May be empty.
+   */
+  function getTasksForFixtures() {
+    let tasks = [];
+
+    for (const [manKey, fixKey] of changedComponents.modified.fixtures) {
+      tasks = tasks.concat(usablePlugins.map(pluginKey => ({
+        manFix: `${manKey}/${fixKey}`,
+        currentPluginKey: pluginKey,
+        comparePluginKey: pluginKey
+      })));
+    }
+
+    return tasks;
+  }
+}
 
 /**
  * @param {Task} task The export diff task to fulfill.
