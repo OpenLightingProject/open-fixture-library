@@ -93,12 +93,67 @@
         "type": "Maintenance",
         "helpWanted": "Which capabilities can be selected at which DMX values?"
       }
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color Point": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperature": "default",
+        "helpWanted": "Which color temperatures can be selected at which DMX values?"
+      }
+    },
+    "Red Emulated": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Emulated": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Emulated": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Tint": {
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Which capabilities can be selected at which DMX values?"
+      }
+    },
+    "Plus 7 Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Maintenance",
+          "comment": "Individual color adjust disabled"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "Individual color adjust enabled"
+        }
+      ]
     }
   },
   "modes": [
     {
       "name": "Direct",
-      "shortName": "direct",
       "channels": [
         "Red",
         "Lime",
@@ -110,6 +165,115 @@
         "Intensity",
         "Strobe",
         "Fan Control"
+      ]
+    },
+    {
+      "name": "HSI",
+      "channels": [
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Intensity",
+        "Strobe",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "HSIC",
+      "channels": [
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Intensity",
+        "Strobe",
+        "Fan Control",
+        "Color Point"
+      ]
+    },
+    {
+      "name": "RGB",
+      "channels": [
+        "Red Emulated",
+        "Green Emulated",
+        "Blue Emulated",
+        null,
+        "Strobe",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "Studio",
+      "channels": [
+        "Intensity",
+        "Color Point",
+        "Tint",
+        null,
+        "Strobe",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "HSI Plus 7",
+      "shortName": "HSI+7",
+      "channels": [
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Intensity",
+        "Strobe",
+        "Fan Control",
+        null,
+        "Plus 7 Control",
+        "Red",
+        "Lime",
+        "Amber",
+        "Green",
+        "Cyan",
+        "Blue",
+        "Indigo"
+      ]
+    },
+    {
+      "name": "HSIC Plus 7",
+      "shortName": "HSIC+7",
+      "channels": [
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Intensity",
+        "Strobe",
+        "Fan Control",
+        "Color Point",
+        null,
+        "Plus 7 Control",
+        "Red",
+        "Lime",
+        "Amber",
+        "Green",
+        "Cyan",
+        "Blue",
+        "Indigo"
+      ]
+    },
+    {
+      "name": "RGB Plus 7",
+      "shortName": "RGB+7",
+      "channels": [
+        "Red Emulated",
+        "Green Emulated",
+        "Blue Emulated",
+        null,
+        "Strobe",
+        "Fan Control",
+        null,
+        "Plus 7 Control",
+        "Red",
+        "Lime",
+        "Amber",
+        "Green",
+        "Cyan",
+        "Blue",
+        "Indigo"
       ]
     }
   ]
