@@ -718,8 +718,9 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           result.errors.push(`Mode '${mode.name}' should have ${RegExp.$1} channels according to its ${nameProp} but actually has ${mode.channels.length}.`);
         }
 
-        if (mode[nameProp] === RegExp.lastMatch && mode.shortName !== `${intendedLength}ch`) {
-          result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch'.`);
+        const allowedShortNames = [`${intendedLength}ch`, `Ch${intendedLength}`, `Ch0${intendedLength}`];
+        if (mode[nameProp].length === RegExp.lastMatch.length && !allowedShortNames.includes(mode.shortName)) {
+          result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
         }
       }
     });
