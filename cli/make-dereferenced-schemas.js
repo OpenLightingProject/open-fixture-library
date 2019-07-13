@@ -17,20 +17,22 @@ else {
   );
 }
 
-process.chdir(schemaDir);
-for (const schemaFile of schemaFiles) {
-  const schema = require(path.join(schemaDir, schemaFile));
-  const dereferencedSchemaFile = path.join(schemaDir, `dereferenced`, schemaFile);
+(async () => {
+  process.chdir(schemaDir);
+  for (const schemaFile of schemaFiles) {
+    const schema = require(path.join(schemaDir, schemaFile));
+    const dereferencedSchemaFile = path.join(schemaDir, `dereferenced`, schemaFile);
 
-  schemaRefParser.dereference(schema)
-    .then(dereferencedSchema => fs.writeFileSync(
-      dereferencedSchemaFile,
-      `${JSON.stringify(dereferencedSchema, null, 2)}\n`
-    ))
-    .then(() => {
+    try {
+      const dereferencedSchema = await schemaRefParser.dereference(schema);
+      fs.writeFileSync(
+        dereferencedSchemaFile,
+        `${JSON.stringify(dereferencedSchema, null, 2)}\n`
+      );
       console.log(`${chalk.green(`[Success]`)} Updated dereferenced schema ${dereferencedSchemaFile}.`);
-    })
-    .catch(error => {
+    }
+    catch (error) {
       console.error(chalk.red(`[Error]`), error);
-    });
-}
+    }
+  }
+})();
