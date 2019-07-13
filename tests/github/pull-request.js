@@ -14,160 +14,155 @@ let githubClient;
 
 let repoOwner;
 let repoName;
+let prData;
 
 /**
  * Checks if the environment variables for GitHub operations are correct.
  * @returns {Promise} Rejects an error message if the environment is not correct.
  */
-module.exports.checkEnv = function checkEnv() {
-  return new Promise((resolve, reject) => {
-    for (const envVar of requiredEnvVars) {
-      if (!(envVar in process.env)) {
-        reject(`Environment variable ${envVar} is required for this script. Please define it in your system or in the .env file.`);
-        return;
-      }
+module.exports.checkEnv = async function checkEnv() {
+  for (const envVar of requiredEnvVars) {
+    if (!(envVar in process.env)) {
+      throw `Environment variable ${envVar} is required for this script. Please define it in your system or in the .env file.`;
     }
+  }
 
-    if (process.env.TRAVIS_PULL_REQUEST === `false`) {
-      reject(`Github tests can only be run in pull request builds.`);
-      return;
-    }
-    resolve();
+  if (process.env.TRAVIS_PULL_REQUEST === `false`) {
+    throw `Github tests can only be run in pull request builds.`;
+  }
+};
+
+module.exports.init = async function init() {
+  await module.exports.checkEnv();
+
+  repoOwner = process.env.TRAVIS_REPO_SLUG.split(`/`)[0];
+  repoName = process.env.TRAVIS_REPO_SLUG.split(`/`)[1];
+
+  githubClient = new Octokit({
+    auth: `token ${process.env.GITHUB_USER_TOKEN}`
   });
+
+  const pr = await githubClient.pullRequests.get({
+    owner: repoOwner,
+    repo: repoName,
+    'pull_number': process.env.TRAVIS_PULL_REQUEST
+  });
+
+  // save PR for later use
+  prData = pr.data;
+
+  return pr.data;
 };
 
-module.exports.init = function init() {
-  return module.exports.checkEnv().then(() => {
-    repoOwner = process.env.TRAVIS_REPO_SLUG.split(`/`)[0];
-    repoName = process.env.TRAVIS_REPO_SLUG.split(`/`)[1];
-
-    githubClient = new Octokit({
-      auth: `token ${process.env.GITHUB_USER_TOKEN}`
-    });
-
-    return githubClient.pullRequests.get({
-      owner: repoOwner,
-      repo: repoName,
-      number: process.env.TRAVIS_PULL_REQUEST
-    });
-  })
-    .then(pr => {
-      // save PR for later use
-      module.exports.data = pr.data;
-      return this.data;
-    });
-};
-
-module.exports.fetchChangedComponents = function fetchChangedComponents() {
-  // fetch changed files in 100er blocks
+module.exports.fetchChangedComponents = async function fetchChangedComponents() {
+  // fetch changed files in blocks of 100
   const filePromises = [];
-  for (let i = 0; i < this.data.changed_files / 100; i++) {
+  for (let i = 0; i < prData.changed_files / 100; i++) {
     filePromises.push(githubClient.pullRequests.listFiles({
       owner: repoOwner,
       repo: repoName,
-      number: process.env.TRAVIS_PULL_REQUEST,
+      'pull_number': process.env.TRAVIS_PULL_REQUEST,
       'per_page': 100,
       page: i + 1
     }));
   }
 
   // check which model components, plugins and fixtures have been changed in the PR
-  return Promise.all(filePromises)
-    .then(fileBlocks => {
-      const changedComponents = {
-        added: {
-          schema: false,
-          model: false,
-          imports: [], // array of plugin keys
-          exports: [], // array of plugin keys
-          exportTests: [], // array of [plugin key, test key]
-          fixtures: [] // array of [man key, fix key]
-        },
-        modified: {
-          schema: false,
-          model: false,
-          imports: [], // array of plugin keys
-          exports: [], // array of plugin keys
-          exportTests: [], // array of [plugin key, test key]
-          fixtures: [] // array of [man key, fix key]
-        },
-        removed: {
-          schema: false,
-          model: false,
-          imports: [], // array of plugin keys
-          exports: [], // array of plugin keys
-          exportTests: [], // array of [plugin key, test key]
-          fixtures: [] // array of [man key, fix key]
-        }
-      };
+  const fileBlocks = await Promise.all(filePromises);
 
-      for (const block of fileBlocks) {
-        block.data.forEach(handleFileData);
-      }
+  const changedComponents = {
+    added: {
+      schema: false,
+      model: false,
+      imports: [], // array of plugin keys
+      exports: [], // array of plugin keys
+      exportTests: [], // array of [plugin key, test key]
+      fixtures: [] // array of [man key, fix key]
+    },
+    modified: {
+      schema: false,
+      model: false,
+      imports: [], // array of plugin keys
+      exports: [], // array of plugin keys
+      exportTests: [], // array of [plugin key, test key]
+      fixtures: [] // array of [man key, fix key]
+    },
+    removed: {
+      schema: false,
+      model: false,
+      imports: [], // array of plugin keys
+      exports: [], // array of plugin keys
+      exportTests: [], // array of [plugin key, test key]
+      fixtures: [] // array of [man key, fix key]
+    }
+  };
 
-      return changedComponents;
+  for (const block of fileBlocks) {
+    block.data.forEach(handleFileData);
+  }
 
-      /**
-       * Forwards the file's status and path to handleFile(...) with the specialty of splitting renamed files into added/removed.
-       * @param {object} fileData The file object from GitHub.
-       */
-      function handleFileData(fileData) {
-        if (fileData.status === `renamed`) {
-          // Handling renamed files would be a bit tricky, as we also had to store the previous filename.
-          // That's why we simply treat the old file name as removed and the new one as added.
-          handleFile(`added`, fileData.filename);
-          handleFile(`removed`, fileData.previous_filename);
-        }
-        else {
-          handleFile(fileData.status, fileData.filename);
-        }
-      }
+  return changedComponents;
 
-      /**
-       * Parse the file type by its path and update the change summary of the file's status accordingly.
-       * @param {'added'|'removed'|'modified'} fileStatus What happened with the file in this pull request.
-       * @param {string} filePath The file name, relative to the repository's root.
-       */
-      function handleFile(fileStatus, filePath) {
-        const changeSummary = changedComponents[fileStatus];
-        const segments = filePath.split(`/`);
+  /**
+   * Forwards the file's status and path to handleFile(...) with the specialty of splitting renamed files into added/removed.
+   * @param {object} fileData The file object from GitHub.
+   */
+  function handleFileData(fileData) {
+    if (fileData.status === `renamed`) {
+      // Handling renamed files would be a bit tricky, as we also had to store the previous filename.
+      // That's why we simply treat the old file name as removed and the new one as added.
+      handleFile(`added`, fileData.filename);
+      handleFile(`removed`, fileData.previous_filename);
+    }
+    else {
+      handleFile(fileData.status, fileData.filename);
+    }
+  }
 
-        if (segments[0] === `lib` && segments[1] === `model`) {
-          changeSummary.model = true;
-          return;
-        }
+  /**
+   * Parse the file type by its path and update the change summary of the file's status accordingly.
+   * @param {'added'|'removed'|'modified'} fileStatus What happened with the file in this pull request.
+   * @param {string} filePath The file name, relative to the repository's root.
+   */
+  function handleFile(fileStatus, filePath) {
+    const changeSummary = changedComponents[fileStatus];
+    const segments = filePath.split(`/`);
 
-        if (segments[0] === `plugins` && segments[2] === `import.js`) {
-          changeSummary.imports.push(segments[1]); // plugin key
-          return;
-        }
+    if (segments[0] === `lib` && segments[1] === `model`) {
+      changeSummary.model = true;
+      return;
+    }
 
-        if (segments[0] === `plugins` && segments[2] === `export.js`) {
-          changeSummary.exports.push(segments[1]); // plugin key
-          return;
-        }
+    if (segments[0] === `plugins` && segments[2] === `import.js`) {
+      changeSummary.imports.push(segments[1]); // plugin key
+      return;
+    }
 
-        if (segments[0] === `plugins` && segments[2] === `exportTests`) {
-          changeSummary.exportTests.push([
-            segments[1], // plugin key
-            segments[3].split(`.`)[0] // test key
-          ]);
-          return;
-        }
+    if (segments[0] === `plugins` && segments[2] === `export.js`) {
+      changeSummary.exports.push(segments[1]); // plugin key
+      return;
+    }
 
-        if (segments[0] === `schemas`) {
-          changeSummary.schema = true;
-          return;
-        }
+    if (segments[0] === `plugins` && segments[2] === `exportTests`) {
+      changeSummary.exportTests.push([
+        segments[1], // plugin key
+        segments[3].split(`.`)[0] // test key
+      ]);
+      return;
+    }
 
-        if (segments[0] === `fixtures` && segments.length === 3) {
-          changeSummary.fixtures.push([
-            segments[1], // man key
-            segments[2].split(`.`)[0] // fix key
-          ]);
-        }
-      }
-    });
+    if (segments[0] === `schemas`) {
+      changeSummary.schema = true;
+      return;
+    }
+
+    if (segments[0] === `fixtures` && segments.length === 3) {
+      changeSummary.fixtures.push([
+        segments[1], // man key
+        segments[2].split(`.`)[0] // fix key
+      ]);
+    }
+  }
 };
 
 /**
@@ -179,7 +174,7 @@ module.exports.fetchChangedComponents = function fetchChangedComponents() {
  * @param {array.<string>} test.lines The comment's lines of text
  * @returns {Promise} A Promise that is fulfilled as soon as all GitHub operations have finished
  */
-module.exports.updateComment = function updateComment(test) {
+module.exports.updateComment = async function updateComment(test) {
   let lines = [
     `<!-- GITHUB-TEST: ${test.filename} -->`,
     `# ${test.name}`,
@@ -190,7 +185,7 @@ module.exports.updateComment = function updateComment(test) {
   const message = lines.join(`\n`);
 
   const commentPromises = [];
-  for (let i = 0; i < module.exports.data.comments / 100; i++) {
+  for (let i = 0; i < prData.comments / 100; i++) {
     commentPromises.push(
       githubClient.issues.listComments({
         owner: repoOwner,
@@ -202,45 +197,44 @@ module.exports.updateComment = function updateComment(test) {
     );
   }
 
-  return Promise.all(commentPromises)
-    .then(commentBlocks => {
-      let equalFound = false;
-      const promises = [];
+  const commentBlocks = await Promise.all(commentPromises);
 
-      const comments = [].concat(...commentBlocks.map(block => block.data));
-      for (const comment of comments) {
-        // get rid of \r linebreaks
-        comment.body = comment.body.replace(/\r/g, ``);
+  let equalFound = false;
+  const promises = [];
 
-        // the comment was created by this test script
-        if (lines[0] === comment.body.split(`\n`)[0]) {
-          if (!equalFound && message === comment.body && test.lines.length > 0) {
-            equalFound = true;
-            console.log(`Test comment with same content already exists at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
-          }
-          else {
-            console.log(`Deleting old test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
-            promises.push(githubClient.issues.deleteComment({
-              owner: repoOwner,
-              repo: repoName,
-              'comment_id': comment.id
-            }));
-          }
-        }
+  const comments = [].concat(...commentBlocks.map(block => block.data));
+  comments.forEach(comment => {
+    // get rid of \r linebreaks
+    comment.body = comment.body.replace(/\r/g, ``);
+
+    // the comment was created by this test script
+    if (lines[0] === comment.body.split(`\n`)[0]) {
+      if (!equalFound && message === comment.body && test.lines.length > 0) {
+        equalFound = true;
+        console.log(`Test comment with same content already exists at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
       }
-
-      if (!equalFound && test.lines.length > 0) {
-        console.log(`Creating test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
-        promises.push(githubClient.issues.createComment({
+      else {
+        console.log(`Deleting old test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
+        promises.push(githubClient.issues.deleteComment({
           owner: repoOwner,
           repo: repoName,
-          number: process.env.TRAVIS_PULL_REQUEST,
-          body: message
+          'comment_id': comment.id
         }));
       }
+    }
+  });
 
-      return Promise.all(promises);
-    });
+  if (!equalFound && test.lines.length > 0) {
+    console.log(`Creating test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
+    promises.push(githubClient.issues.createComment({
+      owner: repoOwner,
+      repo: repoName,
+      number: process.env.TRAVIS_PULL_REQUEST,
+      body: message
+    }));
+  }
+
+  return await Promise.all(promises);
 };
 
 module.exports.getTestFixturesMessage = function getTestFixturesMessage(fixtures) {

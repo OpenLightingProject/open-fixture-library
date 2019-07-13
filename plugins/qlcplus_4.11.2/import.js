@@ -9,7 +9,7 @@ module.exports.version = `0.4.3`;
  * @param {string} authorName The importer's name.
  * @returns {Promise.<object, Error>} A Promise resolving to an out object
 **/
-module.exports.import = function importQlcPlus(buffer, filename, authorName) {
+module.exports.import = async function importQlcPlus(buffer, filename, authorName) {
   const parser = new xml2js.Parser();
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
@@ -22,65 +22,64 @@ module.exports.import = function importQlcPlus(buffer, filename, authorName) {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`
   };
 
-  return promisify(parser.parseString)(buffer.toString())
-    .then(xml => {
-      const qlcPlusFixture = xml.FixtureDefinition;
-      fixture.name = qlcPlusFixture.Model[0];
+  const xml = await promisify(parser.parseString)(buffer.toString());
 
-      const manKey = slugify(qlcPlusFixture.Manufacturer[0]);
-      const fixKey = `${manKey}/${slugify(fixture.name)}`;
-      out.warnings[fixKey] = [`Please check if manufacturer is correct.`];
+  const qlcPlusFixture = xml.FixtureDefinition;
+  fixture.name = qlcPlusFixture.Model[0];
 
-      fixture.categories = [qlcPlusFixture.Type[0]];
+  const manKey = slugify(qlcPlusFixture.Manufacturer[0]);
+  const fixKey = `${manKey}/${slugify(fixture.name)}`;
+  out.warnings[fixKey] = [`Please check if manufacturer is correct.`];
 
-      const authors = qlcPlusFixture.Creator[0].Author[0].split(/,\s*/);
-      if (!authors.includes(authorName)) {
-        authors.push(authorName);
-      }
+  fixture.categories = [qlcPlusFixture.Type[0]];
 
-      fixture.meta = {
-        authors: authors,
-        createDate: timestamp,
-        lastModifyDate: timestamp,
-        importPlugin: {
-          plugin: `qlcplus_4.11.2`,
-          date: timestamp,
-          comment: `created by ${qlcPlusFixture.Creator[0].Name[0]} (version ${qlcPlusFixture.Creator[0].Version[0]})`
-        }
-      };
+  const authors = qlcPlusFixture.Creator[0].Author[0].split(/,\s*/);
+  if (!authors.includes(authorName)) {
+    authors.push(authorName);
+  }
 
-      // fill in one empty mode so we don't have to check this case anymore
-      if (!(`Mode` in qlcPlusFixture)) {
-        qlcPlusFixture.Mode = [{
-          Physical: [{}]
-        }];
-      }
+  fixture.meta = {
+    authors: authors,
+    createDate: timestamp,
+    lastModifyDate: timestamp,
+    importPlugin: {
+      plugin: `qlcplus_4.11.2`,
+      date: timestamp,
+      comment: `created by ${qlcPlusFixture.Creator[0].Name[0]} (version ${qlcPlusFixture.Creator[0].Version[0]})`
+    }
+  };
 
-      fixture.physical = getOflPhysical(qlcPlusFixture.Mode[0].Physical[0], {});
-      fixture.matrix = {};
-      fixture.wheels = getOflWheels(qlcPlusFixture);
-      fixture.availableChannels = {};
-      fixture.templateChannels = {};
+  // fill in one empty mode so we don't have to check this case anymore
+  if (!(`Mode` in qlcPlusFixture)) {
+    qlcPlusFixture.Mode = [{
+      Physical: [{}]
+    }];
+  }
 
-      const doubleByteChannels = [];
-      for (const channel of qlcPlusFixture.Channel || []) {
-        fixture.availableChannels[channel.$.Name] = getOflChannel(channel, qlcPlusFixture, fixture.wheels);
+  fixture.physical = getOflPhysical(qlcPlusFixture.Mode[0].Physical[0], {});
+  fixture.matrix = {};
+  fixture.wheels = getOflWheels(qlcPlusFixture);
+  fixture.availableChannels = {};
+  fixture.templateChannels = {};
 
-        if (`Group` in channel && channel.Group[0].$.Byte === `1`) {
-          doubleByteChannels.push(channel.$.Name);
-        }
-      }
+  const doubleByteChannels = [];
+  for (const channel of qlcPlusFixture.Channel || []) {
+    fixture.availableChannels[channel.$.Name] = getOflChannel(channel, qlcPlusFixture, fixture.wheels);
 
-      mergeFineChannels(fixture, doubleByteChannels, out.warnings[fixKey]);
+    if (`Group` in channel && channel.Group[0].$.Byte === `1`) {
+      doubleByteChannels.push(channel.$.Name);
+    }
+  }
 
-      fixture.modes = qlcPlusFixture.Mode.map(mode => getOflMode(mode, fixture.physical, out.warnings[fixKey]));
+  mergeFineChannels(fixture, doubleByteChannels, out.warnings[fixKey]);
 
-      cleanUpFixture(fixture, qlcPlusFixture);
+  fixture.modes = qlcPlusFixture.Mode.map(mode => getOflMode(mode, fixture.physical, out.warnings[fixKey]));
 
-      out.fixtures[fixKey] = fixture;
+  cleanUpFixture(fixture, qlcPlusFixture);
 
-      return out;
-    });
+  out.fixtures[fixKey] = fixture;
+
+  return out;
 };
 
 /**

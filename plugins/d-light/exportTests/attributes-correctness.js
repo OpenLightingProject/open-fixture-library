@@ -10,32 +10,34 @@ const promisify = require(`util`).promisify;
  * @param {string|null} exportFile.mode Mode's shortName if given file only describes a single mode.
  * @returns {Promise.<undefined, array.<string>|!string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
 **/
-module.exports = function testAttributesCorrectness(exportFile) {
+module.exports = async function testAttributesCorrectness(exportFile) {
   const parser = new xml2js.Parser();
 
-  return promisify(parser.parseString)(exportFile.content)
-    .then(xml => {
-      const errors = [];
+  try {
+    const xml = await promisify(parser.parseString)(exportFile.content);
+    const errors = [];
 
-      const attrDefs = xml.Device.Attributes[0].AttributesDefinition;
-      for (const attrDef of attrDefs) {
-        const usedNames = [];
-        const attrName = attrDef.$.id;
+    const attrDefs = xml.Device.Attributes[0].AttributesDefinition;
+    for (const attrDef of attrDefs) {
+      const usedNames = [];
+      const attrName = attrDef.$.id;
 
-        for (const attr of attrDef.ThisAttribute) {
-          const name = attr.parameterName[0].$.id;
-          if (usedNames.includes(name)) {
-            errors.push(`Duplicate parameter name: ${attrName}/${name}`);
-          }
-          else {
-            usedNames.push(name);
-          }
+      for (const attr of attrDef.ThisAttribute) {
+        const name = attr.parameterName[0].$.id;
+        if (usedNames.includes(name)) {
+          errors.push(`Duplicate parameter name: ${attrName}/${name}`);
+        }
+        else {
+          usedNames.push(name);
         }
       }
+    }
 
-      if (errors.length > 0) {
-        throw errors;
-      }
-    })
-    .catch(parseErrors => Promise.reject(`Error parsing XML: ${parseErrors.toString()}`));
+    if (errors.length > 0) {
+      throw errors;
+    }
+  }
+  catch (parseErrors) {
+    throw `Error parsing XML: ${parseErrors.toString()}`;
+  }
 };

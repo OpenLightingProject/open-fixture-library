@@ -66,10 +66,16 @@ function downloadFixtureTool(directory) {
       res.on(`data`, chunk => {
         data += chunk;
       });
-      res.on(`end`, () => {
-        writeFile(path.join(directory, FIXTURE_TOOL_PATH), data, {
-          mode: 0o755
-        }).then(resolve).catch(reject);
+      res.on(`end`, async () => {
+        try {
+          await writeFile(path.join(directory, FIXTURE_TOOL_PATH), data, {
+            mode: 0o755
+          });
+          resolve();
+        }
+        catch (err) {
+          reject(err);
+        }
       });
     }).on(`error`, err => {
       reject(err);
