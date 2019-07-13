@@ -38,7 +38,8 @@
         {
           "dmxRange": [0, 7],
           "type": "ColorPreset",
-          "comment": "Bastard Amber"
+          "comment": "Bastard Amber",
+          "helpWanted": "Does this capability start at 0 or 1? This might differ between Ch.01/Ch.02 and Ch.04/Ch.05/Ch.06 modes."
         },
         {
           "dmxRange": [8, 15],
@@ -236,94 +237,175 @@
         }
       ]
     },
+    "Program Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction",
+          "helpWanted": "Can Program Speed already be controlled in this capability?"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Sound Sensitivity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction",
+          "helpWanted": "Can Sound Sensitivity already be controlled in this capability?"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
     "Programs": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Strobe"
+          }
         },
         {
           "dmxRange": [128, 135],
           "type": "Effect",
-          "effectName": "Color Dreaming 1"
+          "effectName": "Color Dreaming 1",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [136, 143],
           "type": "Effect",
-          "effectName": "Color Dreaming 2"
+          "effectName": "Color Dreaming 2",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [144, 151],
           "type": "Effect",
-          "effectName": "Color Dreaming 3"
+          "effectName": "Color Dreaming 3",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [152, 159],
           "type": "Effect",
-          "effectName": "Color Dreaming 4"
+          "effectName": "Color Dreaming 4",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [160, 167],
           "type": "Effect",
-          "effectName": "Color Dreaming 5"
+          "effectName": "Color Dreaming 5",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [168, 175],
           "type": "Effect",
-          "effectName": "Color Dreaming 6"
+          "effectName": "Color Dreaming 6",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [176, 183],
           "type": "Effect",
-          "effectName": "Color Dreaming 7"
+          "effectName": "Color Dreaming 7",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [184, 191],
           "type": "Effect",
-          "effectName": "Color Dreaming 8"
+          "effectName": "Color Dreaming 8",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [192, 199],
           "type": "Effect",
-          "effectName": "Color Change 1"
+          "effectName": "Color Change 1",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [200, 207],
           "type": "Effect",
-          "effectName": "Color Change 2"
+          "effectName": "Color Change 2",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [208, 215],
           "type": "Effect",
-          "effectName": "Color Change 2"
+          "effectName": "Color Change 2",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [216, 223],
           "type": "Effect",
-          "effectName": "Color Change 4"
+          "effectName": "Color Change 4",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [224, 231],
           "type": "Effect",
-          "effectName": "Color Change 5"
+          "effectName": "Color Change 5",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [232, 239],
           "type": "Effect",
-          "effectName": "Color Change 6"
+          "effectName": "Color Change 6",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [240, 247],
           "type": "Effect",
           "effectName": "Sound Active Mode 1",
-          "soundControlled": true
+          "soundControlled": true,
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         },
         {
           "dmxRange": [248, 255],
           "type": "Effect",
           "effectName": "Sound Active Mode 2",
-          "soundControlled": true
+          "soundControlled": true,
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         }
       ]
     }
@@ -394,7 +476,7 @@
         "Green",
         "Blue",
         "Color macros",
-        "Strobe",
+        "Strobe / Program Speed / Sound Sensitivity",
         "Programs",
         "Dimmer"
       ]
