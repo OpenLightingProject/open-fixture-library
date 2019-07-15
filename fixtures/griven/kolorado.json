@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Kolorado",
+  "shortName": "Kolorado",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["David Olvera"],
+    "createDate": "2019-07-15",
+    "lastModifyDate": "2019-07-15"
+  },
+  "links": {
+    "other": [
+      "http://www.griven.com/kolorado"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "1"
+  },
+  "physical": {
+    "bulb": {
+      "colorTemperature": 1
+    }
+  },
+  "availableChannels": {
+    "Lamp": {
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Lampara ON-OFF"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Amarillo": {
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "Cyan": {
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Magenta": {
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Kolorado",
+      "shortName": "Kolorado",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Lamp",
+        "Dimmer",
+        "Amarillo",
+        "Cyan",
+        "Magenta"
+      ]
+    }
+  ]
+}
