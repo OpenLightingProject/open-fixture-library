@@ -18,6 +18,18 @@
       "https://video1.thomann.de/vidiot/02591c1c/video_i6951p10_yd59vqpa.mp4"
     ]
   },
+  "physical": {
+    "dimensions": [160, 250, 150],
+    "weight": 3,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "4× 10W RGBW LED"
+    },
+    "lens": {
+      "degreesMinMax": [4, 4]
+    }
+  },
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
