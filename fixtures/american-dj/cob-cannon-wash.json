@@ -37,39 +37,37 @@
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "Generic",
-          "comment": "LED OFF"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [32, 63],
-          "type": "Generic",
-          "comment": "LED ON"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [64, 95],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Strobe"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [96, 127],
-          "type": "Generic",
-          "comment": "LED ON"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [128, 159],
           "type": "ShutterStrobe",
           "shutterEffect": "Pulse",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Strobe Pulse"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [160, 191],
-          "type": "Generic",
-          "comment": "LED ON"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [192, 223],
@@ -77,13 +75,12 @@
           "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast",
-          "randomTiming": true,
-          "comment": "Random Strobe"
+          "randomTiming": true
         },
         {
           "dmxRange": [224, 255],
-          "type": "Generic",
-          "comment": "LED ON"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
@@ -120,40 +117,40 @@
       "capabilities": [
         {
           "dmxRange": [0, 20],
-          "type": "Effect",
-          "effectName": "Standard"
+          "type": "Maintenance",
+          "comment": "Standard"
         },
         {
           "dmxRange": [21, 40],
-          "type": "Effect",
-          "effectName": "Stage"
+          "type": "Maintenance",
+          "comment": "Stage"
         },
         {
           "dmxRange": [41, 60],
-          "type": "Effect",
-          "effectName": "TV"
+          "type": "Maintenance",
+          "comment": "TV"
         },
         {
           "dmxRange": [61, 80],
-          "type": "Effect",
-          "effectName": "Architectural"
+          "type": "Maintenance",
+          "comment": "Architectural"
         },
         {
           "dmxRange": [81, 100],
-          "type": "Effect",
-          "effectName": "Theatre"
+          "type": "Maintenance",
+          "comment": "Theatre"
         },
         {
           "dmxRange": [101, 255],
-          "type": "Effect",
-          "effectName": "Default to Unit Setting"
+          "type": "Maintenance",
+          "comment": "Default to Unit Setting"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "3 Channel",
+      "name": "3-channel",
       "shortName": "3ch",
       "channels": [
         "Color Macros",
@@ -162,7 +159,7 @@
       ]
     },
     {
-      "name": "4 Channel",
+      "name": "4-channel",
       "shortName": "4ch",
       "channels": [
         "Red",
@@ -172,7 +169,7 @@
       ]
     },
     {
-      "name": "5 Channel",
+      "name": "5-channel",
       "shortName": "5ch",
       "channels": [
         "Red",
@@ -183,7 +180,7 @@
       ]
     },
     {
-      "name": "6 Channel",
+      "name": "6-channel",
       "shortName": "6ch",
       "channels": [
         "Red",
@@ -195,7 +192,7 @@
       ]
     },
     {
-      "name": "7 Channel",
+      "name": "7-channel",
       "shortName": "7ch",
       "channels": [
         "Red",
