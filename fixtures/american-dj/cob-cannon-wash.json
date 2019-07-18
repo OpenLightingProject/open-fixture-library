@@ -18,10 +18,13 @@
   "physical": {
     "dimensions": [415, 245, 192],
     "weight": 4.1,
-    "power": 150,
+    "power": 132,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "COB LED"
+      "type": "150W RGBA COB LED"
+    },
+    "lens": {
+      "degreesMinMax": [80, 80]
     }
   },
   "availableChannels": {
