@@ -21,8 +21,6 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "dmxValueResolution": "8bit",
-      "constant": true,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -31,15 +29,13 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "dmxValueResolution": "8bit",
-      "constant": true,
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
         "angleEnd": "230deg"
       }
     },
-    "Gobo Wheel": {
+    "Lenses Rotation": {
       "capabilities": [
         {
           "dmxRange": [0, 191],
@@ -50,7 +46,8 @@
         {
           "dmxRange": [192, 222],
           "type": "Rotation",
-          "speed": "slow CW"
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
         },
         {
           "dmxRange": [223, 224],
@@ -60,9 +57,15 @@
         {
           "dmxRange": [225, 255],
           "type": "Rotation",
-          "speed": "fast CW"
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         }
       ]
+    },
+    "Master": {
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Strobe": {
       "capabilities": [
@@ -72,11 +75,180 @@
         },
         {
           "dmxRange": [10, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "25Hz"
         }
       ]
+    },
+    "Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#ff00ff"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "All white",
+          "colors": ["#ffffff"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Effect",
+          "effectName": "Program 1",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Effect",
+          "effectName": "Program 2",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Effect",
+          "effectName": "Program 3",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Effect",
+          "effectName": "Program 4",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [180, 233],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [234, 236],
+          "type": "Maintenance",
+          "comment": "Reset",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [237, 249],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true,
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
     },
     "Red": {
       "capability": {
@@ -88,11 +260,6 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
-      }
-    },
-    "Master": {
-      "capability": {
-        "type": "Intensity"
       }
     },
     "Blue": {
@@ -107,100 +274,9 @@
         "color": "White"
       }
     },
-    "Auto-Programm": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 49],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [50, 59],
-          "type": "ColorPreset",
-          "comment": "red"
-        },
-        {
-          "dmxRange": [60, 69],
-          "type": "ColorPreset",
-          "comment": "green"
-        },
-        {
-          "dmxRange": [70, 79],
-          "type": "ColorPreset",
-          "comment": "blue"
-        },
-        {
-          "dmxRange": [80, 89],
-          "type": "ColorPreset",
-          "comment": "white"
-        },
-        {
-          "dmxRange": [90, 99],
-          "type": "ColorPreset",
-          "comment": "yellow"
-        },
-        {
-          "dmxRange": [100, 109],
-          "type": "ColorPreset",
-          "comment": "cyan"
-        },
-        {
-          "dmxRange": [110, 119],
-          "type": "ColorPreset",
-          "comment": "purple"
-        },
-        {
-          "dmxRange": [120, 129],
-          "type": "ColorPreset",
-          "comment": "all white"
-        },
-        {
-          "dmxRange": [130, 139],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [140, 149],
-          "type": "ColorPreset",
-          "comment": "Programm 1"
-        },
-        {
-          "dmxRange": [150, 159],
-          "type": "ColorPreset",
-          "comment": "Programm 2"
-        },
-        {
-          "dmxRange": [160, 169],
-          "type": "ColorPreset",
-          "comment": "Programm 3"
-        },
-        {
-          "dmxRange": [170, 179],
-          "type": "ColorPreset",
-          "comment": "Programm 4"
-        },
-        {
-          "dmxRange": [180, 233],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [234, 236],
-          "type": "ColorPreset",
-          "comment": "Reset"
-        },
-        {
-          "dmxRange": [237, 249],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [250, 255],
-          "type": "SoundSensitivity",
-          "soundSensitivityStart": "low",
-          "soundSensitivityEnd": "high"
-        }
-      ]
-    },
-    "Speed": {
+    "Motor Speed": {
       "capability": {
-        "type": "Speed",
+        "type": "PanTiltSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
@@ -208,20 +284,53 @@
   },
   "modes": [
     {
-      "name": "11-Channel",
-      "shortName": "11CH",
+      "name": "7-channel",
+      "shortName": "7ch",
       "channels": [
         "Pan",
         "Tilt",
-        "Gobo Wheel",
+        "Lenses Rotation",
+        "Master",
+        "Strobe",
+        "Programs",
+        "Program Speed / Sound Sensitivity"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Lenses Rotation",
         "Master",
         "Strobe",
         "Red",
         "Green",
         "Blue",
         "White",
-        "Auto-Programm",
-        "Speed"
+        "Programs",
+        "Program Speed / Sound Sensitivity"
+      ]
+    },
+    {
+      "name": "14-channel",
+      "shortName": "14ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Motor Speed",
+        "Lenses Rotation",
+        "Master",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Programs",
+        "Program Speed / Sound Sensitivity"
       ]
     }
   ]
