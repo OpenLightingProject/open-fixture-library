@@ -58,33 +58,37 @@ else {
 }
 
 const pluginExport = require(path.join(__dirname, `../plugins`, args.plugin, `export.js`));
-pluginExport.export(fixtures, {
-  baseDir: path.join(__dirname, `..`),
-  date: new Date()
-})
-  .then(files => Promise.all(
-    pluginData.exportTests.map(testKey => {
+
+(async () => {
+  try {
+    const files = await pluginExport.export(fixtures, {
+      baseDir: path.join(__dirname, `..`),
+      date: new Date()
+    });
+
+    await Promise.all(pluginData.exportTests.map(async testKey => {
       const exportTest = require(path.join(__dirname, `../plugins`, args.plugin, `exportTests/${testKey}.js`));
 
-      const filePromises = files.map(file =>
-        exportTest(file)
-          .then(() => `${chalk.green(`[PASS]`)} ${file.name}`)
-          .catch(err => {
-            const errors = Array.isArray(err) ? err : [err];
+      const outputPerFile = await Promise.all(files.map(async file => {
+        try {
+          await exportTest(file);
+          return `${chalk.green(`[PASS]`)} ${file.name}`;
+        }
+        catch (err) {
+          const errors = [].concat(err);
 
-            return [`${chalk.red(`[FAIL]`)} ${file.name}`].concat(
-              errors.map(error => `- ${error}`)
-            ).join(`\n`);
-          })
-      );
+          return [`${chalk.red(`[FAIL]`)} ${file.name}`].concat(
+            errors.map(error => `- ${error}`)
+          ).join(`\n`);
+        }
+      }));
 
-      return Promise.all(filePromises).then(outputPerFile => {
-        console.log(`\n${chalk.yellow(`Test ${testKey}`)}`);
-        console.log(outputPerFile.join(`\n`));
-      });
-    })
-  ))
-  .catch(error => {
+      console.log(`\n${chalk.yellow(`Test ${testKey}`)}`);
+      console.log(outputPerFile.join(`\n`));
+    }));
+  }
+  catch (error) {
     console.error(`${chalk.red(`[Error]`)} Exporting failed:`, error);
     process.exit(1);
-  });
+  }
+})();

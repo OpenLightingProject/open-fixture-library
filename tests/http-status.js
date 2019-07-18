@@ -105,7 +105,7 @@ const siteChecker = new blc.SiteChecker({
 // start server
 const serverProcess = childProcess.execFile(`node`, [path.join(__dirname, `..`, `main.js`)], {
   env: process.env
-}, (error, stdout, stderr) => {
+}, async (error, stdout, stderr) => {
   // when the server process stops
 
   console.log();
@@ -121,12 +121,12 @@ const serverProcess = childProcess.execFile(`node`, [path.join(__dirname, `..`, 
   let statusStr = chalk.green(`[PASS]`);
   let exitCode = 0;
 
+  const failingLinks = [...fails.internal, ...fails.external];
   const lines = [
     `There were ${fails.internal.size} internal and ${fails.external.size} external links failing.`,
-    ``
+    ``,
+    ...failingLinks.map(link => `- ${link}`)
   ];
-  fails.internal.forEach(link => lines.push(`- ${link}`));
-  fails.external.forEach(link => lines.push(`- ${link}`));
 
   let githubCommentLines = [];
 
@@ -145,26 +145,37 @@ const serverProcess = childProcess.execFile(`node`, [path.join(__dirname, `..`, 
     exitCode = 1;
   }
 
-  // try to create/delete a GitHub comment
-  pullRequest.checkEnv()
-    .then(() => pullRequest.init()
-      .then(prData => pullRequest.updateComment({
+  await createOrUpdatePrComment();
+
+  console.log(statusStr, lines.join(`\n`));
+  process.exit(exitCode);
+
+
+  /**
+   * @returns {Promise.<*>} Promise that is resolved when the comment is created / updated.
+   */
+  async function createOrUpdatePrComment() {
+    try {
+      await pullRequest.checkEnv();
+    }
+    catch (err) {
+      console.error(chalk.yellow(`[WARN]`), `Can't create/delete GitHub comment:`, err); // PR env variables not set
+      process.exit(0);
+    }
+
+    try {
+      await pullRequest.init();
+      await pullRequest.updateComment({
         filename: path.relative(path.join(__dirname, `../`), __filename),
         name: `Broken links`,
         lines: githubCommentLines
-      }))
-      .catch(error => {
-        console.error(`Creating / updating the GitHub PR comment failed.`, error);
-      })
-    )
-    .catch(err => {
-      console.error(chalk.yellow(`[WARN]`), `Can't create/delete GitHub comment:`, err); // PR env variables not set
-    })
-    .then(() => {
-      console.log(statusStr, lines.join(`\n`));
-      process.exit(exitCode);
-    })
-    .catch(() => {});
+      });
+    }
+    catch (error) {
+      console.error(`Creating / updating the GitHub PR comment failed.`, error);
+      process.exit(1);
+    }
+  }
 });
 console.log(`Started server with process id ${serverProcess.pid}.`);
 
