@@ -565,7 +565,7 @@ const nativeVideoUrlRegex = /\.(?:mp4|avi)$/;
 
 /**
  * @param {string} url The video URL.
- * @returns {!string} The embettable video data for the URL, or null if the video can not be embetted.
+ * @returns {object|null} The embettable video data for the URL, or null if the video can not be embetted.
  */
 function getEmbettableVideoData(url) {
   if (nativeVideoUrlRegex.test(url)) {
