@@ -15,8 +15,9 @@
 
       <app-labeled-value
         v-if="context.helpWanted !== null"
-        :value="context.helpWanted"
-        label="Problem description" />
+        label="Problem description">
+        <span v-html="context.helpWanted" />
+      </app-labeled-value>
 
       <app-labeled-input name="message" label="Message">
         <textarea v-model="message" name="message" />
@@ -65,9 +66,6 @@
 <script>
 import a11yDialogVue from '~/components/a11y-dialog.vue';
 
-import Fixture from '~~/lib/model/Fixture.mjs';
-import Capability from '~~/lib/model/Capability.mjs';
-
 import labeledInputVue from '~/components/labeled-input.vue';
 import labeledValueVue from '~/components/labeled-value.vue';
 
@@ -78,12 +76,15 @@ export default {
     'app-labeled-value': labeledValueVue
   },
   model: {
-    prop: `context`
+    prop: `contextData`
   },
   props: {
-    context: {
-      type: [Fixture, Capability],
-      default: null
+    contextData: {
+      type: Object,
+      default: null,
+      validator(newContext) {
+        return newContext === null || (`type` in newContext && `context` in newContext);
+      }
     }
   },
   data: () => {
@@ -96,6 +97,12 @@ export default {
     };
   },
   computed: {
+    type() {
+      return this.contextData ? this.contextData.type : null;
+    },
+    context() {
+      return this.contextData ? this.contextData.context : null;
+    },
     title() {
       if (this.state === `loading`) {
         return `Sending your message…`;
@@ -109,10 +116,10 @@ export default {
         return `Failed to send message`;
       }
 
-      return `Improve fixture`;
+      return `Improve ${this.type === `plugin` ? `plugin` : `fixture`}`;
     },
     location() {
-      if (this.context instanceof Capability) {
+      if (this.type === `capability`) {
         const cap = this.context;
         const channel = cap._channel;
         return `Channel "${channel.key}" → Capability "${cap.name}" (${cap.rawDmxRange})`;
@@ -121,24 +128,36 @@ export default {
       return null;
     },
     fixture() {
-      if (this.context instanceof Fixture) {
+      if (this.type === `fixture`) {
         return this.context;
       }
-      if (this.context instanceof Capability) {
+
+      if (this.type === `capability`) {
         return this.context._channel.fixture;
       }
 
       return null;
     },
     sendObject() {
-      return {
-        manKey: this.fixture.manufacturer.key,
-        fixKey: this.fixture.key,
+      const sendObject = {
+        type: this.type,
         location: this.location,
         helpWanted: this.context.helpWanted,
         message: this.message,
         githubUsername: this.githubUsername !== `` ? this.githubUsername : null
       };
+
+      if (this.type === `plugin`) {
+        sendObject.context = this.context.key;
+      }
+      else {
+        const manKey = this.fixture.manufacturer.key;
+        const fixKey = this.fixture.key;
+
+        sendObject.context = `${manKey}/${fixKey}`;
+      }
+
+      return sendObject;
     },
     errorData() {
       return `${JSON.stringify(this.sendObject, null, 2)}\n\n${this.error}`;

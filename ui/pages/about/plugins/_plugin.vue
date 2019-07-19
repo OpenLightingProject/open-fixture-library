@@ -20,7 +20,8 @@
     <app-help-wanted-message
       v-if="`helpWanted` in pluginData"
       type="plugin"
-      :context="pluginData" />
+      :context="pluginData"
+      @help-wanted-clicked="helpWantedContext = $event" />
 
     <div v-if="`fixtureUsage` in pluginData" class="fixture-usage">
       <h2 id="fixture-usage">Fixture usage</h2>
@@ -55,6 +56,8 @@
     </div>
 
     <p style="margin-top: 3rem;"><nuxt-link to="/about/plugins">Back to plugin overview</nuxt-link></p>
+
+    <app-help-wanted-dialog v-model="helpWantedContext" />
   </div>
 </template>
 
@@ -99,10 +102,12 @@
 <script>
 import plugins from '~~/plugins/plugins.json';
 
+import helpWantedDialog from '~/components/help-wanted-dialog.vue';
 import helpWantedMessage from '~/components/help-wanted-message.vue';
 
 export default {
   components: {
+    'app-help-wanted-dialog': helpWantedDialog,
     'app-help-wanted-message': helpWantedMessage
   },
   validate({ params }) {
@@ -132,6 +137,11 @@ export default {
         main: `Main (system) library`,
         user: `User library`
       }
+    };
+  },
+  data() {
+    return {
+      helpWantedContext: null
     };
   },
   head() {
