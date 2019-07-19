@@ -1,0 +1,82 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SilentPAR 7 x 10w 6in1",
+  "shortName": "SilentPar 7x10w 6in1",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2019-07-19",
+    "lastModifyDate": "2019-07-19"
+  },
+  "links": {
+    "manual": [
+      "http://static.boomtonedj.com/pdf/manual/49/49095_silentpar7x10w5in12016enfr.pdf"
+    ],
+    "productPage": [
+      "http://www.boomtonedj.com/boomtonedj-silentpar-7x10w-5in1-p49095.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=wFqLpt4mC8I"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [270, 90, 252],
+    "weight": 3,
+    "power": 70,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [45, 45]
+    }
+  },
+  "availableChannels": {
+    "Red dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "simple",
+      "shortName": "simple",
+      "channels": [
+        "Red dimmer",
+        "Green Dimmer",
+        "Blue Dimmer",
+        "White Dimmer",
+        "Amber Dimmer"
+      ]
+    }
+  ]
+}
