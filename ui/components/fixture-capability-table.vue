@@ -57,7 +57,7 @@
             <app-help-wanted-message
               type="capability"
               :context="cap.model"
-              @helpWantedClicked="$emit(`helpWantedClicked`, $event)" />
+              @help-wanted-clicked="$emit(`help-wanted-clicked`, $event)" />
           </td>
         </tr>
       </template>
