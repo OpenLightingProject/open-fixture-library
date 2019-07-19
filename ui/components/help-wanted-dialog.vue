@@ -76,15 +76,16 @@ export default {
     'app-labeled-value': labeledValueVue
   },
   model: {
-    prop: `contextData`
+    prop: `context`
   },
   props: {
-    contextData: {
+    type: {
+      type: String,
+      required: true
+    },
+    context: {
       type: Object,
-      default: null,
-      validator(newContext) {
-        return newContext === null || (`type` in newContext && `context` in newContext);
-      }
+      default: null
     }
   },
   data: () => {
@@ -97,12 +98,6 @@ export default {
     };
   },
   computed: {
-    type() {
-      return this.contextData ? this.contextData.type : null;
-    },
-    context() {
-      return this.contextData ? this.contextData.context : null;
-    },
     title() {
       if (this.state === `loading`) {
         return `Sending your message…`;

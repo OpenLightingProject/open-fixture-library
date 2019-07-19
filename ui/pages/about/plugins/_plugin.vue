@@ -21,7 +21,7 @@
       v-if="`helpWanted` in pluginData"
       type="plugin"
       :context="pluginData"
-      @help-wanted-clicked="helpWantedContext = $event" />
+      @help-wanted-clicked="openHelpWantedDialog" />
 
     <div v-if="`fixtureUsage` in pluginData" class="fixture-usage">
       <h2 id="fixture-usage">Fixture usage</h2>
@@ -57,7 +57,7 @@
 
     <p style="margin-top: 3rem;"><nuxt-link to="/about/plugins">Back to plugin overview</nuxt-link></p>
 
-    <app-help-wanted-dialog v-model="helpWantedContext" />
+    <app-help-wanted-dialog v-model="helpWantedContext" type="plugin" />
   </div>
 </template>
 
@@ -156,6 +156,11 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    openHelpWantedDialog(event) {
+      this.helpWantedContext = event.context;
+    }
   }
 };
 </script>

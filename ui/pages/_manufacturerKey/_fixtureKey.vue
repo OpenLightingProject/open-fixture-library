@@ -90,7 +90,7 @@
         v-if="fixture.isHelpWanted"
         type="fixture"
         :context="fixture"
-        @help-wanted-clicked="helpWantedContext = $event" />
+        @help-wanted-clicked="openHelpWantedDialog" />
 
       <app-labeled-value
         v-if="fixture.rdm !== null"
@@ -137,7 +137,7 @@
         :key="mode.name"
         :mode="mode"
         :index="index"
-        @help-wanted-clicked="helpWantedContext = $event" />
+        @help-wanted-clicked="openHelpWantedDialog" />
       <div class="clearfix" />
     </section>
 
@@ -172,7 +172,10 @@
           v-if="isBrowser"
           href="#"
           class="card slim"
-          @click.prevent="helpWantedContext = fixture">
+          @click.prevent="() => openHelpWantedDialog({
+            context: fixture,
+            type: `fixture`
+          })">
           <app-svg name="comment-alert" class="left" /><span>Send information</span>
         </a>
         <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card slim">
@@ -184,7 +187,7 @@
       </div>
     </section>
 
-    <app-help-wanted-dialog v-model="helpWantedContext" />
+    <app-help-wanted-dialog v-model="helpWantedContext" :type="helpWantedType" />
   </div>
 </template>
 
@@ -358,6 +361,7 @@ export default {
       plugins,
       isBrowser: false,
       helpWantedContext: null,
+      helpWantedType: ``,
       modeNumberLoadThreshold: 15, // fixtures with more modes will be limited
       modeNumberLoadIncrement: 10 // how many modes a button click will load
     };
@@ -540,6 +544,11 @@ export default {
      */
     getDateHtml(date) {
       return `<time datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, ``)}</time>`;
+    },
+
+    openHelpWantedDialog(event) {
+      this.helpWantedContext = event.context;
+      this.helpWantedType = event.type;
     }
   }
 };
