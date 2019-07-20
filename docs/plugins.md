@@ -153,27 +153,24 @@ const promisify = require(`util`).promisify;
  * @param {string|null} exportFile.mode Mode's shortName if given file only describes a single mode.
  * @returns {Promise.<undefined, array.<string>|string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
 **/
-module.exports = function testValueCorrectness(exportFile) {
+module.exports = async function testValueCorrectness(exportFile) {
   const parser = new xml2js.Parser();
 
-  return promisify(parser.parseString)(exportFile.content)
-    .then(xml => {
-      const errors = [];
+  const xml = await promisify(parser.parseString)(exportFile.content);
 
-      // the lighting software crashes if the name is empty, so we must ensure that this won't happen
-      // (just an example)
-      if (!(Name in xml.Fixture) || xml.Fixture.Name[0] === ``) {
-        errors.push(`Name missing`);
-      }
+  const errors = [];
 
-      if (errors.length > 0) {
-        return Promise.reject(errors);
-      }
+  // the lighting software crashes if the name is empty, so we must ensure that this won't happen
+  // (just an example)
+  if (!(Name in xml.Fixture) || xml.Fixture.Name[0] === ``) {
+    errors.push(`Name missing`);
+  }
 
-      // everything's ok
-      return Promise.resolve();
-    })
-    .catch(parseError => Promise.reject(`Error parsing XML: ${parseError}`));
+  if (errors.length > 0) {
+    throw errors;
+  }
+
+  // everything's ok
 };
 ```
 

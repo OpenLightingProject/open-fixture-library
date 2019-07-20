@@ -90,7 +90,7 @@
         v-if="fixture.isHelpWanted"
         type="fixture"
         :context="fixture"
-        @helpWantedClicked="helpWantedContext = $event" />
+        @help-wanted-clicked="openHelpWantedDialog" />
 
       <app-labeled-value
         v-if="fixture.rdm !== null"
@@ -137,7 +137,7 @@
         :key="mode.name"
         :mode="mode"
         :index="index"
-        @helpWantedClicked="helpWantedContext = $event" />
+        @help-wanted-clicked="openHelpWantedDialog" />
       <div class="clearfix" />
     </section>
 
@@ -172,7 +172,10 @@
           v-if="isBrowser"
           href="#"
           class="card slim"
-          @click.prevent="helpWantedContext = fixture">
+          @click.prevent="() => openHelpWantedDialog({
+            context: fixture,
+            type: `fixture`
+          })">
           <app-svg name="comment-alert" class="left" /><span>Send information</span>
         </a>
         <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card slim">
@@ -184,7 +187,7 @@
       </div>
     </section>
 
-    <app-help-wanted-dialog v-model="helpWantedContext" />
+    <app-help-wanted-dialog v-model="helpWantedContext" :type="helpWantedType" />
   </div>
 </template>
 
@@ -358,6 +361,7 @@ export default {
       plugins,
       isBrowser: false,
       helpWantedContext: null,
+      helpWantedType: ``,
       modeNumberLoadThreshold: 15, // fixtures with more modes will be limited
       modeNumberLoadIncrement: 10 // how many modes a button click will load
     };
@@ -455,48 +459,14 @@ export default {
       const videoUrls = this.fixture.getLinksOfType(`video`);
       const embettableVideoData = [];
 
-      /**
-       * YouTube videos can be in one of the following formats:
-       * - https://www.youtube.com/watch?v={videoId}&otherParameters
-       * - https://youtu.be/{videoId]}?otherParameters
-       */
-      const youtubeRegex = /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]t=([0-9hms]+))?/;
-
-      /**
-       * Vimeo videos can be in one of the following formats:
-       * - https://vimeo.com/{videoId}
-       * - https://vimeo.com/channels/{channelName}/{videoId}
-       * - https://vimeo.com/groups/{groupId}/videos/{videoId}
-       */
-      const vimeoRegex = /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([0-9hms]+))?/;
-
       for (const url of videoUrls) {
         if (embettableVideoData.length === VIDEOS_TO_EMBED) {
           break;
         }
 
-        let match = url.match(youtubeRegex);
-        if (match !== null) {
-          embettableVideoData.push({
-            url,
-            type: `youtube`,
-            displayType: `YouTube`,
-            videoId: match[1],
-            startAt: match[2] || 0
-          });
-          continue;
-        }
-
-        match = url.match(vimeoRegex);
-        if (match !== null) {
-          embettableVideoData.push({
-            url,
-            type: `vimeo`,
-            displayType: `Vimeo`,
-            videoId: match[1],
-            startAt: match[2] || 0
-          });
-          continue;
+        const videoData = getEmbettableVideoData(url);
+        if (videoData !== null) {
+          embettableVideoData.push(videoData);
         }
       }
 
@@ -534,7 +504,7 @@ export default {
             title,
             type: linkType,
             iconName: this.linkTypeIconNames[linkType],
-            hostname: this.getHostname(url)
+            hostname: getHostname(url)
           });
 
           linkDisplayNumber++;
@@ -567,12 +537,6 @@ export default {
     }
   },
   methods: {
-    getHostname(url) {
-      // adapted from https://stackoverflow.com/a/21553982/451391
-      const match = url.match(/^.*?\/\/(?:([^:/?#]*)(?::([0-9]+))?)/);
-      return match ? match[1] : url;
-    },
-
     /**
      * Format a date to display as a <time> HTML tag.
      * @param {Date} date The Date object to format.
@@ -580,8 +544,82 @@ export default {
      */
     getDateHtml(date) {
       return `<time datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, ``)}</time>`;
+    },
+
+    openHelpWantedDialog(event) {
+      this.helpWantedContext = event.context;
+      this.helpWantedType = event.type;
     }
   }
 };
+
+
+/**
+ * YouTube videos can be in one of the following formats:
+ * - https://www.youtube.com/watch?v={videoId}&otherParameters
+ * - https://youtu.be/{videoId]}?otherParameters
+ */
+const youtubeVideoUrlRegex = /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]t=([0-9hms]+))?/;
+
+/**
+ * Vimeo videos can be in one of the following formats:
+ * - https://vimeo.com/{videoId}
+ * - https://vimeo.com/channels/{channelName}/{videoId}
+ * - https://vimeo.com/groups/{groupId}/videos/{videoId}
+ */
+const vimeoVideoUrlRegex = /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([0-9hms]+))?/;
+
+const nativeVideoUrlRegex = /\.(?:mp4|avi)$/;
+
+
+/**
+ * @param {string} url The video URL.
+ * @returns {object|null} The embettable video data for the URL, or null if the video can not be embetted.
+ */
+function getEmbettableVideoData(url) {
+  if (nativeVideoUrlRegex.test(url)) {
+    return {
+      url,
+      type: `native`,
+      displayType: getHostname(url),
+      videoId: url,
+      startAt: 0
+    };
+  }
+
+  let match = url.match(youtubeVideoUrlRegex);
+  if (match !== null) {
+    return {
+      url,
+      type: `youtube`,
+      displayType: `YouTube`,
+      videoId: match[1],
+      startAt: match[2] || 0
+    };
+  }
+
+  match = url.match(vimeoVideoUrlRegex);
+  if (match !== null) {
+    return {
+      url,
+      type: `vimeo`,
+      displayType: `Vimeo`,
+      videoId: match[1],
+      startAt: match[2] || 0
+    };
+  }
+
+  return null;
+}
+
+/**
+ * @param {string} url The URL to extract the hostname from.
+ * @returns {string} The hostname of the provided URL, or the whole URL if the hostname could not be determined.
+ */
+function getHostname(url) {
+  // adapted from https://stackoverflow.com/a/21553982/451391
+  const match = url.match(/^.*?\/\/(?:([^:/?#]*)(?::([0-9]+))?)/);
+  return match ? match[1] : url;
+}
 
 </script>

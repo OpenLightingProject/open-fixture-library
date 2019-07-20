@@ -39,7 +39,7 @@
     "consistent-return": "error",
     "curly": ["error", "all"],
     "dot-location": ["error", "property"],
-    "dot-notation": ["error", { "allowPattern": "^if$" }],
+    "dot-notation": ["error", { "allowPattern": "^(if|then)$" }],
     "eol-last": ["error", "always"],
     "eqeqeq": ["error", "always", { "null": "ignore" }],
     "vue/eqeqeq": ["error", "always", { "null": "ignore" }],
@@ -134,6 +134,7 @@
       }
     }],
     "promise/always-return": "off",
+    "promise/prefer-await-to-then": "error",
     "promise/no-nesting": "off",
     "promise/no-promise-in-callback": "off",
     "promise/no-return-in-finally": "error",

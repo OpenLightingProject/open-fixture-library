@@ -64,15 +64,16 @@ else {
 
 const outDir = args.o ? path.resolve(process.cwd(), args.o) : null;
 
-const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `export.js`));
-plugin.export(
-  fixtures.map(([man, fix]) => fixtureFromRepository(man, fix)),
-  {
-    baseDir: path.join(__dirname, `..`),
-    date: new Date()
-  }
-)
-  .then(files => {
+(async () => {
+  try {
+    const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `export.js`));
+    const files = await plugin.export(
+      fixtures.map(([man, fix]) => fixtureFromRepository(man, fix)),
+      {
+        baseDir: path.join(__dirname, `..`),
+        date: new Date()
+      }
+    );
     files.forEach(file => {
       if (args.o) {
         const filePath = path.join(outDir, file.name);
@@ -85,8 +86,9 @@ plugin.export(
         console.log(file.content);
       }
     });
-  })
-  .catch(error => {
+  }
+  catch (error) {
     console.error(`${chalk.red(`[Error]`)} Exporting failed:`, error);
     process.exit(1);
-  });
+  }
+})();

@@ -1,0 +1,284 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Source Four LED Series 2 Lustr",
+  "shortName": "EtcSF2Lustr",
+  "categories": ["Dimmer", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Jeppe Cohrt"],
+    "createDate": "2019-07-11",
+    "lastModifyDate": "2019-07-11"
+  },
+  "links": {
+    "manual": [
+      "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737483869"
+    ],
+    "productPage": [
+      "https://www.etcconnect.com/Products/Lighting-Fixtures/Source-Four-LED-Series-2/Features.aspx"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=oEjG8XLzuvs"
+    ]
+  },
+  "physical": {
+    "dimensions": [338, 615, 631],
+    "weight": 8.3,
+    "power": 171,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "Seven-color LED array"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Indigo": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Indigo"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Fan Control": {
+      "capability": {
+        "type": "Maintenance",
+        "helpWanted": "Which capabilities can be selected at which DMX values?"
+      }
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color Point": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperature": "default",
+        "helpWanted": "Which color temperatures can be selected at which DMX values?"
+      }
+    },
+    "Red Emulated": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Emulated": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Emulated": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Tint": {
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Which capabilities can be selected at which DMX values?"
+      }
+    },
+    "Plus 7 Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Maintenance",
+          "comment": "Individual color adjust disabled"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "Individual color adjust enabled"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Direct",
+      "channels": [
+        "Red",
+        "Lime",
+        "Amber",
+        "Green",
+        "Cyan",
+        "Blue",
+        "Indigo",
+        "Intensity",
+        "Strobe",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "HSI",
+      "channels": [
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Intensity",
+        "Strobe",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "HSIC",
+      "channels": [
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Intensity",
+        "Strobe",
+        "Fan Control",
+        "Color Point"
+      ]
+    },
+    {
+      "name": "RGB",
+      "channels": [
+        "Red Emulated",
+        "Green Emulated",
+        "Blue Emulated",
+        null,
+        "Strobe",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "Studio",
+      "channels": [
+        "Intensity",
+        "Color Point",
+        "Tint",
+        null,
+        "Strobe",
+        "Fan Control"
+      ]
+    },
+    {
+      "name": "HSI Plus 7",
+      "shortName": "HSI+7",
+      "channels": [
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Intensity",
+        "Strobe",
+        "Fan Control",
+        null,
+        "Plus 7 Control",
+        "Red",
+        "Lime",
+        "Amber",
+        "Green",
+        "Cyan",
+        "Blue",
+        "Indigo"
+      ]
+    },
+    {
+      "name": "HSIC Plus 7",
+      "shortName": "HSIC+7",
+      "channels": [
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Intensity",
+        "Strobe",
+        "Fan Control",
+        "Color Point",
+        null,
+        "Plus 7 Control",
+        "Red",
+        "Lime",
+        "Amber",
+        "Green",
+        "Cyan",
+        "Blue",
+        "Indigo"
+      ]
+    },
+    {
+      "name": "RGB Plus 7",
+      "shortName": "RGB+7",
+      "channels": [
+        "Red Emulated",
+        "Green Emulated",
+        "Blue Emulated",
+        null,
+        "Strobe",
+        "Fan Control",
+        null,
+        "Plus 7 Control",
+        "Red",
+        "Lime",
+        "Amber",
+        "Green",
+        "Cyan",
+        "Blue",
+        "Indigo"
+      ]
+    }
+  ]
+}
