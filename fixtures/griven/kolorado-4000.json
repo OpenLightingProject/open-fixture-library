@@ -2,45 +2,88 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Kolorado 4000",
   "shortName": "GrivenKolorado4000",
-  "categories": ["Color Changer"],
+  "categories": ["Color Changer", "Blinder", "Dimmer"],
   "meta": {
     "authors": ["David Olvera"],
-    "createDate": "2019-07-15",
-    "lastModifyDate": "2019-07-15"
+    "createDate": "2019-07-22",
+    "lastModifyDate": "2019-07-22"
   },
   "links": {
-    "other": [
-      "http://www.griven.com/kolorado"
+    "manual": [
+      "http://www.griven.com/upload/pdf/20091204113618_Instructions_manual_Kolorado_4000_GR0462_rel.4.00.pdf"
+    ],
+    "productPage": [
+      "http://www.griven.com/index.php?action=t_products_eng&id_prod=64"
     ]
   },
-  "rdm": {
-    "modelId": 1,
-    "softwareVersion": "1"
-  },
   "physical": {
+    "dimensions": [620, 821, 623],
+    "weight": 53,
+    "power": 4000,
     "bulb": {
-      "colorTemperature": 1
+      "type": "HMI 4000W SE G38",
+      "colorTemperature": 6000,
+      "lumens": 380000
     }
   },
   "availableChannels": {
-    "Lamp": {
+    "Lamp On/Off": {
       "defaultValue": 0,
-      "constant": true,
-      "capability": {
-        "type": "NoFunction",
-        "comment": "Lampara ON-OFF"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 126],
+          "type": "Maintenance",
+          "comment": "Lamp on"
+        },
+        {
+          "dmxRange": [127, 255],
+          "type": "Maintenance",
+          "comment": "Lamp off"
+        }
+      ]
     },
     "Dimmer": {
-      "defaultValue": 0,
-      "constant": true,
-      "capability": {
-        "type": "Intensity"
-      }
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [6, 127],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Mechanical"
+        },
+        {
+          "dmxRange": [192, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz",
+          "comment": "Electronic"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
     },
-    "Amarillo": {
+    "Yellow": {
       "defaultValue": 0,
-      "constant": true,
       "capability": {
         "type": "ColorIntensity",
         "color": "Yellow"
@@ -48,7 +91,6 @@
     },
     "Cyan": {
       "defaultValue": 0,
-      "constant": true,
       "capability": {
         "type": "ColorIntensity",
         "color": "Cyan"
@@ -56,7 +98,6 @@
     },
     "Magenta": {
       "defaultValue": 0,
-      "constant": true,
       "capability": {
         "type": "ColorIntensity",
         "color": "Magenta"
@@ -65,13 +106,20 @@
   },
   "modes": [
     {
-      "name": "Kolorado",
-      "shortName": "Kolorado",
-      "rdmPersonalityIndex": 1,
+      "name": "2-channel",
+      "shortName": "2ch",
       "channels": [
-        "Lamp",
+        "Lamp On/Off",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Lamp On/Off",
         "Dimmer",
-        "Amarillo",
+        "Yellow",
         "Cyan",
         "Magenta"
       ]
