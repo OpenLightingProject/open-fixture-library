@@ -1,19 +1,19 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "SilentPAR 7x10W 5in1",
-  "shortName": "BoomtoneSilentPar7x10W5in1",
+  "name": "SilentPAR 7x3W 3in1",
+  "shortName": "BoomtoneSilentPar7x3W3in1",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Anonymous"],
+    "authors": ["Felix Edelmann"],
     "createDate": "2019-07-22",
     "lastModifyDate": "2019-07-22"
   },
   "links": {
     "manual": [
-      "http://static.boomtonedj.com/pdf/manual/49/49095_silentpar7x10w5in12016enfr.pdf"
+      "http://static.boomtonedj.com/pdf/manual/49/49094_silentpar7x3w3in12016enfr.pdf"
     ],
     "productPage": [
-      "http://www.boomtonedj.com/boomtonedj-silentpar-7x10w-5in1-p49095.html"
+      "http://www.boomtonedj.com/boomtonedj-silentpar-7x3w-3in1-p49094.html"
     ],
     "video": [
       "https://www.youtube.com/watch?v=wFqLpt4mC8I"
@@ -22,10 +22,10 @@
   "physical": {
     "dimensions": [270, 90, 252],
     "weight": 3,
-    "power": 70,
+    "power": 30,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "7x 10W RGBWA LEDs"
+      "type": "7x 3W RGB LEDs"
     },
     "lens": {
       "degreesMinMax": [45, 45]
@@ -53,18 +53,6 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
-      }
-    },
-    "White": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "Amber": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
       }
     },
     "Strobe": {
@@ -124,26 +112,22 @@
   },
   "modes": [
     {
-      "name": "5-channel",
-      "shortName": "5ch",
+      "name": "3-channel",
+      "shortName": "3ch",
       "channels": [
         "Red",
         "Green",
-        "Blue",
-        "White",
-        "Amber"
+        "Blue"
       ]
     },
     {
-      "name": "9-channel",
-      "shortName": "9ch",
+      "name": "7-channel",
+      "shortName": "7ch",
       "channels": [
         "Intensity",
         "Red",
         "Green",
         "Blue",
-        "White",
-        "Amber",
         "Strobe",
         "Program Speed",
         "Mode"
