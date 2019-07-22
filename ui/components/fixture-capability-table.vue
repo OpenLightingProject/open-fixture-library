@@ -11,7 +11,7 @@
     <thead>
       <tr>
         <th colspan="3" style="text-align: center">DMX values</th>
-        <th /> <!-- color -->
+        <th /> <!-- icon -->
         <th>Capability</th>
         <th /> <!-- menuClick -->
       </tr>
@@ -23,13 +23,9 @@
           <td class="capability-range-separator"><code>…</code></td>
           <td class="capability-range1"><code>{{ cap.dmxRangeEnd }}</code></td>
 
-          <td
-            v-if="cap.model.colors !== null"
-            :title="cap.colorDescription"
-            class="capability-color">
-            <app-svg :colors="cap.model.colors.allColors" type="color-circle" />
+          <td class="capability-icon">
+            <app-fixture-capability-type-icon :capability="cap.model" />
           </td>
-          <td v-else />
 
           <td class="capability-name">{{ cap.model.name }}</td>
 
@@ -118,6 +114,7 @@ td, th {
 <script>
 import svg from '~/components/svg.vue';
 import helpWantedMessage from '~/components/help-wanted-message.vue';
+import fixtureCapabilityTypeIconVue from '~/components/fixture-capability-type-icon.vue';
 
 import CoarseChannel from '~~/lib/model/CoarseChannel.mjs';
 import Mode from '~~/lib/model/Mode.mjs';
@@ -125,7 +122,8 @@ import Mode from '~~/lib/model/Mode.mjs';
 export default {
   components: {
     'app-svg': svg,
-    'app-help-wanted-message': helpWantedMessage
+    'app-help-wanted-message': helpWantedMessage,
+    'app-fixture-capability-type-icon': fixtureCapabilityTypeIconVue
   },
   props: {
     channel: {
@@ -164,7 +162,6 @@ export default {
             model: cap,
             dmxRangeStart: dmxRange.start,
             dmxRangeEnd: dmxRange.end,
-            colorDescription: getColorDescription(cap),
             switchChannels: switchChannels.sort((a, b) => a.index - b.index) // ascending indices
           };
         }
@@ -172,21 +169,4 @@ export default {
     }
   }
 };
-
-/**
- * @param {Capability} capability The capability model object.
- * @returns {string|null} A string describing the colors of this capability, or null if it has no colors.
- */
-function getColorDescription(capability) {
-  if (capability.colors === null) {
-    return null;
-  }
-
-  if (capability.colors.isStep) {
-    const plural = capability.colors.allColors.length > 1 ? `colors` : `color`;
-    return `${plural}: ${capability.colors.allColors.join(`, `)}`;
-  }
-
-  return `transition from ${capability.colors.startColors.join(`, `)} to ${capability.colors.endColors.join(`, `)}`;
-}
 </script>
