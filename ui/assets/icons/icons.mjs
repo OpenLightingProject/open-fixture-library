@@ -46,23 +46,42 @@ import categorySmokeSvg from '~/assets/icons/category/smoke.svg';
 import categoryStandSvg from '~/assets/icons/category/stand.svg';
 import categoryStrobeSvg from '~/assets/icons/category/strobe.svg';
 
+import capabilityBladeInsertionSvg from '~/assets/icons/capability/blade-insertion.svg';
+import capabilityBeamAngleSvg from '~/assets/icons/capability/beam-angle.svg';
+import capabilityBeamPositionSvg from '~/assets/icons/capability/beam-position.svg';
+import capabilityColorSvg from '~/assets/icons/capability/color.svg';
 import capabilityColorTemperatureSvg from '~/assets/icons/capability/color-temperature.svg';
 import capabilityEffectSvg from '~/assets/icons/capability/effect.svg';
+import capabilityEffectParameterSvg from '~/assets/icons/capability/effect-parameter.svg';
 import capabilityFocusSvg from '~/assets/icons/capability/focus.svg';
 import capabilityFogSvg from '~/assets/icons/capability/fog.svg';
+import capabilityFrostSvg from '~/assets/icons/capability/frost.svg';
+import capabilityGenericSvg from '~/assets/icons/capability/generic.svg';
 import capabilityGoboSvg from '~/assets/icons/capability/gobo.svg';
 import capabilityIntensitySvg from '~/assets/icons/capability/intensity.svg';
 import capabilityIrisSvg from '~/assets/icons/capability/iris.svg';
 import capabilityMaintenanceSvg from '~/assets/icons/capability/maintenance.svg';
-import capabilityMultiColorSvg from '~/assets/icons/capability/multi-color.svg';
 import capabilityNoFunctionSvg from '~/assets/icons/capability/no-function.svg';
 import capabilityPanSvg from '~/assets/icons/capability/pan.svg';
+import capabilityPanContinuousCcwSvg from '~/assets/icons/capability/pan-continuous-ccw.svg';
+import capabilityPanContinuousCwSvg from '~/assets/icons/capability/pan-continuous-cw.svg';
 import capabilityPrismSvg from '~/assets/icons/capability/prism.svg';
+import capabilityRotationCcwSvg from '~/assets/icons/capability/rotation-ccw.svg';
+import capabilityRotationCwSvg from '~/assets/icons/capability/rotation-cw.svg';
 import capabilityShutterSvg from '~/assets/icons/capability/shutter.svg';
+import capabilitySlotShakeSvg from '~/assets/icons/capability/slot-shake.svg';
+import capabilitySoundControlled from '~/assets/icons/capability/sound-controlled.svg';
+import capabilitySoundSensitivity from '~/assets/icons/capability/sound-sensitivity.svg';
 import capabilitySpeedSvg from '~/assets/icons/capability/speed.svg';
+import capabilitySpeedForwardSvg from '~/assets/icons/capability/speed-forward.svg';
+import capabilitySpeedReverseSvg from '~/assets/icons/capability/speed-reverse.svg';
+import capabilitySpeedStopSvg from '~/assets/icons/capability/speed-stop.svg';
 import capabilityStrobeSvg from '~/assets/icons/capability/strobe.svg';
 import capabilitySwitchingChannelSvg from '~/assets/icons/capability/switching-channel.svg';
 import capabilityTiltSvg from '~/assets/icons/capability/tilt.svg';
+import capabilityTiltContinuousCcwSvg from '~/assets/icons/capability/tilt-continuous-ccw.svg';
+import capabilityTiltContinuousCwSvg from '~/assets/icons/capability/tilt-continuous-cw.svg';
+import capabilityWheelShakeSvg from '~/assets/icons/capability/wheel-shake.svg';
 import capabilityZoomSvg from '~/assets/icons/capability/zoom.svg';
 
 export default {
@@ -114,22 +133,41 @@ export default {
   'category/stand': categoryStandSvg,
   'category/strobe': categoryStrobeSvg,
 
+  'capability/blade-insertion': capabilityBladeInsertionSvg,
+  'capability/beam-angle': capabilityBeamAngleSvg,
+  'capability/beam-position': capabilityBeamPositionSvg,
+  'capability/color': capabilityColorSvg,
   'capability/color-temperature': capabilityColorTemperatureSvg,
   'capability/effect': capabilityEffectSvg,
+  'capability/effect-parameter': capabilityEffectParameterSvg,
   'capability/focus': capabilityFocusSvg,
   'capability/fog': capabilityFogSvg,
+  'capability/frost': capabilityFrostSvg,
+  'capability/generic': capabilityGenericSvg,
   'capability/gobo': capabilityGoboSvg,
   'capability/intensity': capabilityIntensitySvg,
   'capability/iris': capabilityIrisSvg,
   'capability/maintenance': capabilityMaintenanceSvg,
-  'capability/multi-color': capabilityMultiColorSvg,
-  'capability/nofunction': capabilityNoFunctionSvg,
+  'capability/no-function': capabilityNoFunctionSvg,
   'capability/pan': capabilityPanSvg,
+  'capability/pan-continuous-ccw': capabilityPanContinuousCcwSvg,
+  'capability/pan-continuous-cw': capabilityPanContinuousCwSvg,
   'capability/prism': capabilityPrismSvg,
+  'capability/rotation-ccw': capabilityRotationCcwSvg,
+  'capability/rotation-cw': capabilityRotationCwSvg,
   'capability/shutter': capabilityShutterSvg,
+  'capability/slot-shake': capabilitySlotShakeSvg,
+  'capability/sound-controlled': capabilitySoundControlled,
+  'capability/sound-sensitivity': capabilitySoundSensitivity,
   'capability/speed': capabilitySpeedSvg,
+  'capability/speed-forward': capabilitySpeedForwardSvg,
+  'capability/speed-reverse': capabilitySpeedReverseSvg,
+  'capability/speed-stop': capabilitySpeedStopSvg,
   'capability/strobe': capabilityStrobeSvg,
   'capability/switching-channel': capabilitySwitchingChannelSvg,
   'capability/tilt': capabilityTiltSvg,
+  'capability/tilt-continuous-ccw': capabilityTiltContinuousCcwSvg,
+  'capability/tilt-continuous-cw': capabilityTiltContinuousCwSvg,
+  'capability/wheel-shake': capabilityWheelShakeSvg,
   'capability/zoom': capabilityZoomSvg
 };
