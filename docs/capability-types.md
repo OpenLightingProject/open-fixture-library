@@ -179,7 +179,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="wheelslot" rowspan="2">WheelSlot</th>
-  <td valign="top">wheel<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">wheel<br><sub>:grey_question: optional</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top">Wheel name</td>
   <td valign="top">Defaults to channel name</td>
 </tr>
@@ -189,8 +189,13 @@ To make common percentage values more readable, one can use specific keywords to
   <td valign="top"><a href="#property-slotnumber">see footnote <em>slotNumber</em></a></td>
 </tr>
 <tr>
-  <th valign="top" scope="row" id="wheelshake" rowspan="4">WheelShake</th>
-  <td valign="top">wheel<br><sub>:grey_question: optional</sub></td>
+  <th valign="top" scope="row" id="wheelshake" rowspan="5">WheelShake</th>
+  <td valign="top">isShaking<br><sub>:grey_question: optional</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
+  <td valign="top"><code>wheel</code> or <code>slot</code></td>
+  <td valign="top">Defaults to <code>wheel</code>.</td>
+</tr>
+<tr>
+  <td valign="top">wheel<br><sub>:grey_question: optional</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top">Wheel name or array of wheel names</td>
   <td valign="top">Defaults to channel name. Array not allowed when <em>slotNumber</em> is set.</td>
 </tr>
@@ -211,7 +216,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="wheelslotrotation" rowspan="4">WheelSlotRotation</th>
-  <td valign="top">wheel<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">wheel<br><sub>:grey_question: optional</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top">Wheel name or array of wheel names</td>
   <td valign="top">Defaults to channel name. Array not allowed when <em>slotNumber</em> is set.</td>
 </tr>
@@ -231,7 +236,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="wheelrotation" rowspan="3">WheelRotation</th>
-  <td valign="top">wheel<br><sub>:grey_question: optional</sub></td>
+  <td valign="top">wheel<br><sub>:grey_question: optional</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
   <td valign="top">Wheel name or array of wheel names</td>
   <td valign="top">Defaults to channel name.</td>
 </tr>
