@@ -1,19 +1,19 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "SilentPAR 7x10W 5in1",
-  "shortName": "BoomtoneSilentPar7x10W5in1",
+  "name": "SilentPAR 7x10W 6in1",
+  "shortName": "BoomtoneSilentPar7x10W6in1",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Anonymous"],
+    "authors": ["Felix Edelmann"],
     "createDate": "2019-07-22",
     "lastModifyDate": "2019-07-22"
   },
   "links": {
     "manual": [
-      "http://static.boomtonedj.com/pdf/manual/49/49095_silentpar7x10w5in12016enfr.pdf"
+      "http://static.boomtonedj.com/pdf/manual/49/49096_silentpar7x10w6in12016enfr.pdf"
     ],
     "productPage": [
-      "http://www.boomtonedj.com/boomtonedj-silentpar-7x10w-5in1-p49095.html"
+      "http://www.boomtonedj.com/boomtonedj-silentpar-7x10w-6in1-p49096.html"
     ],
     "video": [
       "https://www.youtube.com/watch?v=wFqLpt4mC8I"
@@ -25,7 +25,7 @@
     "power": 70,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "7x 10W RGBWA LEDs"
+      "type": "7x 10W RGBWAUV LEDs"
     },
     "lens": {
       "degreesMinMax": [45, 45]
@@ -65,6 +65,12 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
       }
     },
     "Strobe": {
@@ -124,19 +130,20 @@
   },
   "modes": [
     {
-      "name": "5-channel",
-      "shortName": "5ch",
+      "name": "6-channel",
+      "shortName": "6ch",
       "channels": [
         "Red",
         "Green",
         "Blue",
         "White",
-        "Amber"
+        "Amber",
+        "UV"
       ]
     },
     {
-      "name": "9-channel",
-      "shortName": "9ch",
+      "name": "10-channel",
+      "shortName": "10ch",
       "channels": [
         "Intensity",
         "Red",
@@ -144,6 +151,7 @@
         "Blue",
         "White",
         "Amber",
+        "UV",
         "Strobe",
         "Program Speed",
         "Mode"
