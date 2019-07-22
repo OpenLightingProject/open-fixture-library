@@ -190,7 +190,7 @@ module.exports.updateComment = async function updateComment(test) {
       githubClient.issues.listComments({
         owner: repoOwner,
         repo: repoName,
-        number: process.env.TRAVIS_PULL_REQUEST,
+        'issue_number': process.env.TRAVIS_PULL_REQUEST,
         'per_page': 100,
         page: i + 1
       })
