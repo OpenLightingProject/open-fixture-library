@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "SilentPAR 5x10W 6in1",
-  "shortName": "BoomtoneSilentPar5x10W6in1",
+  "name": "SilentPAR 12x10W 6in1",
+  "shortName": "BoomtoneSilentPar12x10W6in1",
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["Felix Edelmann"],
@@ -10,10 +10,10 @@
   },
   "links": {
     "manual": [
-      "http://static.boomtonedj.com/pdf/manual/49/49093_silentpar5x10w6in12016enfr.pdf"
+      "http://static.boomtonedj.com/pdf/manual/49/49098_silentpar12x10w6in12016enfr.pdf"
     ],
     "productPage": [
-      "http://www.boomtonedj.com/boomtonedj-silentpar-5x10w-6in1-p49093.html"
+      "http://www.boomtonedj.com/boomtonedj-silentpar-12x10w-6in1-p49098.html"
     ],
     "video": [
       "https://www.youtube.com/watch?v=wFqLpt4mC8I"
@@ -22,10 +22,10 @@
   "physical": {
     "dimensions": [270, 90, 252],
     "weight": 3,
-    "power": 50,
+    "power": 120,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "5x 10W RGBWAUV LEDs"
+      "type": "12x 10W RGBWAUV LEDs"
     },
     "lens": {
       "degreesMinMax": [45, 45]
