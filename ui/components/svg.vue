@@ -127,7 +127,7 @@ function getChannelTypeIcon(channelType, classNames = []) {
   const sanitzedChannelType = channelType.toLowerCase().replace(/[^\w]+/g, `-`);
   classNames.push(`channel${sanitzedChannelType}`, `channel-icon`);
 
-  const svg = getSvg(`channel-types/${sanitzedChannelType}`, classNames);
+  const svg = getSvg(`capability/${sanitzedChannelType}`, classNames);
   return svg.replace(/(<svg[^>]*>)/, `$1<title>Channel type: ${channelType}</title>`);
 }
 

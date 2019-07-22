@@ -46,24 +46,24 @@ import categorySmokeSvg from '~/assets/icons/category/smoke.svg';
 import categoryStandSvg from '~/assets/icons/category/stand.svg';
 import categoryStrobeSvg from '~/assets/icons/category/strobe.svg';
 
-import channelTypesColorTemperatureSvg from '~/assets/icons/channel-types/color-temperature.svg';
-import channelTypesEffectSvg from '~/assets/icons/channel-types/effect.svg';
-import channelTypesFocusSvg from '~/assets/icons/channel-types/focus.svg';
-import channelTypesFogSvg from '~/assets/icons/channel-types/fog.svg';
-import channelTypesGoboSvg from '~/assets/icons/channel-types/gobo.svg';
-import channelTypesIntensitySvg from '~/assets/icons/channel-types/intensity.svg';
-import channelTypesIrisSvg from '~/assets/icons/channel-types/iris.svg';
-import channelTypesMaintenanceSvg from '~/assets/icons/channel-types/maintenance.svg';
-import channelTypesMultiColorSvg from '~/assets/icons/channel-types/multi-color.svg';
-import channelTypesNoFunctionSvg from '~/assets/icons/channel-types/no-function.svg';
-import channelTypesPanSvg from '~/assets/icons/channel-types/pan.svg';
-import channelTypesPrismSvg from '~/assets/icons/channel-types/prism.svg';
-import channelTypesShutterSvg from '~/assets/icons/channel-types/shutter.svg';
-import channelTypesSpeedSvg from '~/assets/icons/channel-types/speed.svg';
-import channelTypesStrobeSvg from '~/assets/icons/channel-types/strobe.svg';
-import channelTypesSwitchingChannelSvg from '~/assets/icons/channel-types/switching-channel.svg';
-import channelTypesTiltSvg from '~/assets/icons/channel-types/tilt.svg';
-import channelTypesZoomSvg from '~/assets/icons/channel-types/zoom.svg';
+import capabilityColorTemperatureSvg from '~/assets/icons/capability/color-temperature.svg';
+import capabilityEffectSvg from '~/assets/icons/capability/effect.svg';
+import capabilityFocusSvg from '~/assets/icons/capability/focus.svg';
+import capabilityFogSvg from '~/assets/icons/capability/fog.svg';
+import capabilityGoboSvg from '~/assets/icons/capability/gobo.svg';
+import capabilityIntensitySvg from '~/assets/icons/capability/intensity.svg';
+import capabilityIrisSvg from '~/assets/icons/capability/iris.svg';
+import capabilityMaintenanceSvg from '~/assets/icons/capability/maintenance.svg';
+import capabilityMultiColorSvg from '~/assets/icons/capability/multi-color.svg';
+import capabilityNoFunctionSvg from '~/assets/icons/capability/no-function.svg';
+import capabilityPanSvg from '~/assets/icons/capability/pan.svg';
+import capabilityPrismSvg from '~/assets/icons/capability/prism.svg';
+import capabilityShutterSvg from '~/assets/icons/capability/shutter.svg';
+import capabilitySpeedSvg from '~/assets/icons/capability/speed.svg';
+import capabilityStrobeSvg from '~/assets/icons/capability/strobe.svg';
+import capabilitySwitchingChannelSvg from '~/assets/icons/capability/switching-channel.svg';
+import capabilityTiltSvg from '~/assets/icons/capability/tilt.svg';
+import capabilityZoomSvg from '~/assets/icons/capability/zoom.svg';
 
 export default {
   'alert': alertSvg,
@@ -114,22 +114,22 @@ export default {
   'category/stand': categoryStandSvg,
   'category/strobe': categoryStrobeSvg,
 
-  'channel-types/color-temperature': channelTypesColorTemperatureSvg,
-  'channel-types/effect': channelTypesEffectSvg,
-  'channel-types/focus': channelTypesFocusSvg,
-  'channel-types/fog': channelTypesFogSvg,
-  'channel-types/gobo': channelTypesGoboSvg,
-  'channel-types/intensity': channelTypesIntensitySvg,
-  'channel-types/iris': channelTypesIrisSvg,
-  'channel-types/maintenance': channelTypesMaintenanceSvg,
-  'channel-types/multi-color': channelTypesMultiColorSvg,
-  'channel-types/nofunction': channelTypesNoFunctionSvg,
-  'channel-types/pan': channelTypesPanSvg,
-  'channel-types/prism': channelTypesPrismSvg,
-  'channel-types/shutter': channelTypesShutterSvg,
-  'channel-types/speed': channelTypesSpeedSvg,
-  'channel-types/strobe': channelTypesStrobeSvg,
-  'channel-types/switching-channel': channelTypesSwitchingChannelSvg,
-  'channel-types/tilt': channelTypesTiltSvg,
-  'channel-types/zoom': channelTypesZoomSvg
+  'capability/color-temperature': capabilityColorTemperatureSvg,
+  'capability/effect': capabilityEffectSvg,
+  'capability/focus': capabilityFocusSvg,
+  'capability/fog': capabilityFogSvg,
+  'capability/gobo': capabilityGoboSvg,
+  'capability/intensity': capabilityIntensitySvg,
+  'capability/iris': capabilityIrisSvg,
+  'capability/maintenance': capabilityMaintenanceSvg,
+  'capability/multi-color': capabilityMultiColorSvg,
+  'capability/nofunction': capabilityNoFunctionSvg,
+  'capability/pan': capabilityPanSvg,
+  'capability/prism': capabilityPrismSvg,
+  'capability/shutter': capabilityShutterSvg,
+  'capability/speed': capabilitySpeedSvg,
+  'capability/strobe': capabilityStrobeSvg,
+  'capability/switching-channel': capabilitySwitchingChannelSvg,
+  'capability/tilt': capabilityTiltSvg,
+  'capability/zoom': capabilityZoomSvg
 };
