@@ -5,8 +5,8 @@
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["Anonymous"],
-    "createDate": "2019-07-19",
-    "lastModifyDate": "2019-07-19"
+    "createDate": "2019-07-22",
+    "lastModifyDate": "2019-07-22"
   },
   "links": {
     "manual": [
@@ -19,63 +19,134 @@
       "https://www.youtube.com/watch?v=wFqLpt4mC8I"
     ]
   },
-  "rdm": {
-    "modelId": 0
-  },
   "physical": {
     "dimensions": [270, 90, 252],
     "weight": 3,
     "power": 70,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "7x 10W RGBWA LEDs"
     },
     "lens": {
       "degreesMinMax": [45, 45]
     }
   },
   "availableChannels": {
-    "Red dimmer": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green Dimmer": {
+    "Green": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue Dimmer": {
+    "Blue": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "White Dimmer": {
+    "White": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "Amber Dimmer": {
+    "Amber": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber"
       }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "Effect",
+          "effectName": "DMX"
+        },
+        {
+          "dmxRange": [60, 119],
+          "type": "Effect",
+          "effectName": "Static"
+        },
+        {
+          "dmxRange": [120, 179],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [180, 239],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Sound-active",
+          "soundControlled": true
+        }
+      ]
     }
   },
   "modes": [
     {
-      "name": "simple",
-      "shortName": "simple",
+      "name": "5-channel",
+      "shortName": "5ch",
       "channels": [
-        "Red dimmer",
-        "Green Dimmer",
-        "Blue Dimmer",
-        "White Dimmer",
-        "Amber Dimmer"
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Strobe",
+        "Program Speed",
+        "Mode"
       ]
     }
   ]
