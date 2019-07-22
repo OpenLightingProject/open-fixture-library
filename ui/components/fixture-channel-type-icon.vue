@@ -1,3 +1,7 @@
+<template>
+  <app-svg v-bind="iconProps" />
+</template>
+
 <script>
 import svg from '~/components/svg.vue';
 
@@ -16,51 +20,55 @@ export default {
       required: true
     }
   },
-  methods: {
-    /**
-     * @param {AbstractChannel} channel The channel to get an icon for.
-     * @returns {object} Object containing the props to pass to <app-svg />
-     */
-    getIconProps(channel) {
-      if (channel instanceof NullChannel) {
-        return {
-          type: `channel-type`,
-          name: `NoFunction`
-        };
-      }
-
-      if (channel instanceof FineChannel) {
-        return this.getIconProps(channel.coarseChannel);
-      }
-
-      if (channel instanceof SwitchingChannel) {
-        return {
-          type: `channel-type`,
-          name: `Switching Channel`
-        };
-      }
-
-      if (channel.type === `Single Color`) {
-        return {
-          type: `color-circle`,
-          name: channel.color
-        };
-      }
-
-      return {
-        type: `channel-type`,
-        name: channel.type
-      };
+  computed: {
+    iconProps() {
+      return getIconProps(this.channel);
     }
-  },
-  render(createElement) {
-    return createElement(
-      `app-svg`,
-      {
-        props: this.getIconProps(this.channel)
-      },
-      ``
-    );
   }
 };
+
+/**
+ * @param {AbstractChannel} channel The channel to get an icon for.
+ * @returns {object} Object containing the props to pass to <app-svg />
+ */
+function getIconProps(channel) {
+  if (channel instanceof NullChannel) {
+    return {
+      type: `capability`,
+      name: `NoFunction`,
+      title: `Channel type: NoFunction`
+    };
+  }
+
+  if (channel instanceof FineChannel) {
+    return getIconProps(channel.coarseChannel);
+  }
+
+  if (channel instanceof SwitchingChannel) {
+    return {
+      type: `capability`,
+      name: `Switching Channel`,
+      title: `Channel type: Switching Channel`
+    };
+  }
+
+  if (channel.type === `Single Color`) {
+    return {
+      type: `color-circle`,
+      name: channel.color
+    };
+  }
+
+  let iconName = channel.type;
+
+  if (channel.type === `Multi-Color`) {
+    iconName = `Color`;
+  }
+
+  return {
+    type: `capability`,
+    name: iconName,
+    title: `Channel type: ${channel.type}`
+  };
+}
 </script>
