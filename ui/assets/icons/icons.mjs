@@ -28,23 +28,23 @@ import swapHorizontalSvg from '~/assets/icons/swap-horizontal.svg';
 import webSvg from '~/assets/icons/web.svg';
 import youtubeSvg from '~/assets/icons/youtube.svg';
 
-import categoriesBarrelScannerSvg from '~/assets/icons/categories/barrel-scanner.svg';
-import categoriesBlinderSvg from '~/assets/icons/categories/blinder.svg';
-import categoriesColorChangerSvg from '~/assets/icons/categories/color-changer.svg';
-import categoriesDimmerSvg from '~/assets/icons/categories/dimmer.svg';
-import categoriesEffectSvg from '~/assets/icons/categories/effect.svg';
-import categoriesFanSvg from '~/assets/icons/categories/fan.svg';
-import categoriesFlowerSvg from '~/assets/icons/categories/flower.svg';
-import categoriesHazerSvg from '~/assets/icons/categories/hazer.svg';
-import categoriesLaserSvg from '~/assets/icons/categories/laser.svg';
-import categoriesMatrixSvg from '~/assets/icons/categories/matrix.svg';
-import categoriesMovingHeadSvg from '~/assets/icons/categories/moving-head.svg';
-import categoriesOtherSvg from '~/assets/icons/categories/other.svg';
-import categoriesPixelBarSvg from '~/assets/icons/categories/pixel-bar.svg';
-import categoriesScannerSvg from '~/assets/icons/categories/scanner.svg';
-import categoriesSmokeSvg from '~/assets/icons/categories/smoke.svg';
-import categoriesStandSvg from '~/assets/icons/categories/stand.svg';
-import categoriesStrobeSvg from '~/assets/icons/categories/strobe.svg';
+import categoryBarrelScannerSvg from '~/assets/icons/category/barrel-scanner.svg';
+import categoryBlinderSvg from '~/assets/icons/category/blinder.svg';
+import categoryColorChangerSvg from '~/assets/icons/category/color-changer.svg';
+import categoryDimmerSvg from '~/assets/icons/category/dimmer.svg';
+import categoryEffectSvg from '~/assets/icons/category/effect.svg';
+import categoryFanSvg from '~/assets/icons/category/fan.svg';
+import categoryFlowerSvg from '~/assets/icons/category/flower.svg';
+import categoryHazerSvg from '~/assets/icons/category/hazer.svg';
+import categoryLaserSvg from '~/assets/icons/category/laser.svg';
+import categoryMatrixSvg from '~/assets/icons/category/matrix.svg';
+import categoryMovingHeadSvg from '~/assets/icons/category/moving-head.svg';
+import categoryOtherSvg from '~/assets/icons/category/other.svg';
+import categoryPixelBarSvg from '~/assets/icons/category/pixel-bar.svg';
+import categoryScannerSvg from '~/assets/icons/category/scanner.svg';
+import categorySmokeSvg from '~/assets/icons/category/smoke.svg';
+import categoryStandSvg from '~/assets/icons/category/stand.svg';
+import categoryStrobeSvg from '~/assets/icons/category/strobe.svg';
 
 import channelTypesColorTemperatureSvg from '~/assets/icons/channel-types/color-temperature.svg';
 import channelTypesEffectSvg from '~/assets/icons/channel-types/effect.svg';
@@ -96,23 +96,23 @@ export default {
   'web': webSvg,
   'youtube': youtubeSvg,
 
-  'categories/barrel-scanner': categoriesBarrelScannerSvg,
-  'categories/blinder': categoriesBlinderSvg,
-  'categories/color-changer': categoriesColorChangerSvg,
-  'categories/dimmer': categoriesDimmerSvg,
-  'categories/effect': categoriesEffectSvg,
-  'categories/fan': categoriesFanSvg,
-  'categories/flower': categoriesFlowerSvg,
-  'categories/hazer': categoriesHazerSvg,
-  'categories/laser': categoriesLaserSvg,
-  'categories/matrix': categoriesMatrixSvg,
-  'categories/moving-head': categoriesMovingHeadSvg,
-  'categories/other': categoriesOtherSvg,
-  'categories/pixel-bar': categoriesPixelBarSvg,
-  'categories/scanner': categoriesScannerSvg,
-  'categories/smoke': categoriesSmokeSvg,
-  'categories/stand': categoriesStandSvg,
-  'categories/strobe': categoriesStrobeSvg,
+  'category/barrel-scanner': categoryBarrelScannerSvg,
+  'category/blinder': categoryBlinderSvg,
+  'category/color-changer': categoryColorChangerSvg,
+  'category/dimmer': categoryDimmerSvg,
+  'category/effect': categoryEffectSvg,
+  'category/fan': categoryFanSvg,
+  'category/flower': categoryFlowerSvg,
+  'category/hazer': categoryHazerSvg,
+  'category/laser': categoryLaserSvg,
+  'category/matrix': categoryMatrixSvg,
+  'category/moving-head': categoryMovingHeadSvg,
+  'category/other': categoryOtherSvg,
+  'category/pixel-bar': categoryPixelBarSvg,
+  'category/scanner': categoryScannerSvg,
+  'category/smoke': categorySmokeSvg,
+  'category/stand': categoryStandSvg,
+  'category/strobe': categoryStrobeSvg,
 
   'channel-types/color-temperature': channelTypesColorTemperatureSvg,
   'channel-types/effect': channelTypesEffectSvg,

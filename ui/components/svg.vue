@@ -112,7 +112,7 @@ function getCategoryIcon(categoryName, classNames = []) {
   const sanitzedCategoryName = categoryName.toLowerCase().replace(/[^\w]+/g, `-`);
   classNames.push(`category-${sanitzedCategoryName}`, `category-icon`);
 
-  const svg = getSvg(`categories/${sanitzedCategoryName}`, classNames);
+  const svg = getSvg(`category/${sanitzedCategoryName}`, classNames);
   return svg.replace(/(<svg[^>]*>)/, `$1<title>Category: ${categoryName}</title>`);
 }
 
