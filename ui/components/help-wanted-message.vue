@@ -8,21 +8,20 @@
 
     <div class="actions">
       <a
-        v-if="type !== `plugin`"
         href="#"
         class="only-js"
-        @click.prevent="$emit(`helpWantedClicked`, context)">
+        @click.prevent="$emit(`help-wanted-clicked`, { type, context })">
         <app-svg name="comment-alert" class="left" />
         <span>Send information</span>
       </a>
       <a
         href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug"
-        :class="{ 'no-js': type !== `plugin` }"
+        class="no-js"
         rel="nofollow">
         <app-svg name="bug" class="left" />
         <span>Create issue on GitHub</span>
       </a>
-      <a :href="mailtoUrl" :class="{ 'no-js': type !== `plugin` }">
+      <a :href="mailtoUrl" class="no-js">
         <app-svg name="email" class="left" />
         <span>Send email</span>
       </a>
