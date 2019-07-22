@@ -1,0 +1,137 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SilentPAR 12x3W 3in1",
+  "shortName": "BoomtoneSilentPar12x3W3in1",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2019-07-22",
+    "lastModifyDate": "2019-07-22"
+  },
+  "links": {
+    "manual": [
+      "http://static.boomtonedj.com/pdf/manual/49/49097_silentpar12x3w3in12016enfr.pdf"
+    ],
+    "productPage": [
+      "http://www.boomtonedj.com/boomtonedj-silentpar-12x3w-3in1-p49097.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=wFqLpt4mC8I"
+    ]
+  },
+  "physical": {
+    "dimensions": [270, 90, 252],
+    "weight": 3,
+    "power": 40,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12x 3W RGB LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [45, 45]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "Effect",
+          "effectName": "DMX"
+        },
+        {
+          "dmxRange": [60, 119],
+          "type": "Effect",
+          "effectName": "Static"
+        },
+        {
+          "dmxRange": [120, 179],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [180, 239],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Sound-active",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Program Speed",
+        "Mode"
+      ]
+    }
+  ]
+}
