@@ -5,13 +5,15 @@
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Felix Edelmann"],
-    "createDate": "2019-07-23",
-    "lastModifyDate": "2019-07-23"
+    "createDate": "2019-07-24",
+    "lastModifyDate": "2019-07-24"
   },
   "comment": "Productcode 011340",
   "links": {
     "manual": [
-      "https://www.ayrton.eu/wp-content/uploads/2018/12/Diablo-V1.pdf"
+      "https://www.ayrton.eu/wp-content/uploads/2018/12/Diablo-V1.pdf",
+      "https://www.ayrton.eu/wp-content/uploads/2018/12/Diablo-color-wheel-1-1.pdf",
+      "https://www.ayrton.eu/wp-content/uploads/2018/12/Diablo-Gobos.pdf"
     ],
     "productPage": [
       "https://www.ayrton.eu/produit/diablo/"
@@ -36,6 +38,7 @@
   },
   "wheels": {
     "Color Wheel": {
+      "direction": "CCW",
       "slots": [
         {
           "type": "Open"
@@ -74,9 +77,6 @@
           "type": "Color",
           "name": "Red",
           "colors": ["#ff0000"]
-        },
-        {
-          "type": "Color"
         }
       ]
     },
@@ -105,6 +105,16 @@
         },
         {
           "type": "Gobo"
+        }
+      ]
+    },
+    "Animation Wheel": {
+      "slots": [
+        {
+          "type": "AnimationGoboStart"
+        },
+        {
+          "type": "AnimationGoboEnd"
         }
       ]
     }
@@ -528,23 +538,27 @@
         {
           "dmxRange": [0, 127],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel",
           "angleStart": "0deg",
           "angleEnd": "360deg"
         },
         {
           "dmxRange": [128, 189],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel",
           "speedStart": "fast CW",
           "speedEnd": "slow CW"
         },
         {
           "dmxRange": [190, 193],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel",
           "speed": "stop"
         },
         {
           "dmxRange": [194, 255],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         }
