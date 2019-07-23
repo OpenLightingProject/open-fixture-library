@@ -1,14 +1,14 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Diablo-S",
-  "shortName": "AyrtonDiabloS",
+  "name": "Diablo-TC",
+  "shortName": "AyrtonDiabloTC",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2019-07-24",
     "lastModifyDate": "2019-07-24"
   },
-  "comment": "Productcode 011340",
+  "comment": "Productcode 011350",
   "links": {
     "manual": [
       "https://www.ayrton.eu/wp-content/uploads/2018/12/Diablo-V1.pdf",
@@ -29,8 +29,8 @@
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "White LED",
-      "colorTemperature": 6500,
-      "lumens": 17500
+      "colorTemperature": 5700,
+      "lumens": 14000
     },
     "lens": {
       "degreesMinMax": [6.7, 53]
