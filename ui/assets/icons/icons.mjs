@@ -46,6 +46,7 @@ import categorySmokeSvg from '~/assets/icons/category/smoke.svg';
 import categoryStandSvg from '~/assets/icons/category/stand.svg';
 import categoryStrobeSvg from '~/assets/icons/category/strobe.svg';
 
+import capabilityAngleSvg from '~/assets/icons/capability/angle.svg';
 import capabilityBladeInsertionSvg from '~/assets/icons/capability/blade-insertion.svg';
 import capabilityBeamAngleSvg from '~/assets/icons/capability/beam-angle.svg';
 import capabilityBeamPositionSvg from '~/assets/icons/capability/beam-position.svg';
@@ -133,6 +134,7 @@ export default {
   'category/stand': categoryStandSvg,
   'category/strobe': categoryStrobeSvg,
 
+  'capability/angle': capabilityAngleSvg,
   'capability/blade-insertion': capabilityBladeInsertionSvg,
   'capability/beam-angle': capabilityBeamAngleSvg,
   'capability/beam-position': capabilityBeamPositionSvg,

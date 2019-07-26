@@ -104,7 +104,7 @@ const specialIconFunctions = {
       specialIconFunctions.RotationSpeed(cap, iconProps);
     }
     else {
-      specialIconFunctions.Angle(cap, iconProps); // TODO
+      specialIconFunctions.Angle(cap, iconProps);
     }
   },
   RotationSpeed(cap, iconProps) {
@@ -117,6 +117,9 @@ const specialIconFunctions = {
     else if (cap.speed[0].number < 0 || cap.speed[1].number < 0) {
       iconProps.name = `rotation-ccw`;
     }
+  },
+  Angle(cap, iconProps) {
+    iconProps.name = `angle`;
   }
 };
 
