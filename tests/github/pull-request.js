@@ -229,7 +229,7 @@ module.exports.updateComment = async function updateComment(test) {
     promises.push(githubClient.issues.createComment({
       owner: repoOwner,
       repo: repoName,
-      number: process.env.TRAVIS_PULL_REQUEST,
+      'issue_number': process.env.TRAVIS_PULL_REQUEST,
       body: message
     }));
   }
