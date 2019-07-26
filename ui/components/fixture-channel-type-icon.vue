@@ -55,7 +55,8 @@ function getIconProps(channel) {
   if (channel.type === `Single Color`) {
     return {
       type: `color-circle`,
-      name: channel.color
+      name: channel.color,
+      title: `Channel type: Single Color, ${channel.color}`
     };
   }
 
