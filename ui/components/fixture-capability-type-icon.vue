@@ -44,7 +44,7 @@ const specialIconFunctions = {
   },
   PanContinuous(cap, iconProps) {
     if (cap.speed[0].number === 0 && cap.speed[1].number === 0) {
-      iconProps.name = `SpeedStop`;
+      iconProps.name = `speed-stop`;
     }
     else if (cap.speed[0].number > 0 || cap.speed[1].number > 0) {
       iconProps.name = `pan-continuous-cw`;
@@ -55,7 +55,7 @@ const specialIconFunctions = {
   },
   TiltContinuous(cap, iconProps) {
     if (cap.speed[0].number === 0 && cap.speed[1].number === 0) {
-      iconProps.name = `SpeedStop`;
+      iconProps.name = `speed-stop`;
     }
     else if (cap.speed[0].number > 0 || cap.speed[1].number > 0) {
       iconProps.name = `tilt-continuous-cw`;
@@ -78,8 +78,8 @@ const specialIconFunctions = {
   },
   WheelShake(cap, iconProps) {
     iconProps.name = (cap.isShaking === `slot`)
-      ? `SlotShake`
-      : `WheelShake`;
+      ? `slot-shake`
+      : `wheel-shake`;
   },
   IrisEffect(cap, iconProps) {
     iconProps.name = `Iris`;
@@ -101,7 +101,7 @@ const specialIconFunctions = {
       iconProps.name = `speed`;
     }
     else if (cap.speed[0].number === 0 && cap.speed[1].number === 0) {
-      iconProps.name = `SpeedStop`;
+      iconProps.name = `speed-stop`;
     }
     else if (cap.speed[0].number > 0 || cap.speed[1].number > 0) {
       iconProps.name = `speed-forward`;
@@ -120,7 +120,7 @@ const specialIconFunctions = {
   },
   RotationSpeed(cap, iconProps) {
     if (cap.speed[0].number === 0 && cap.speed[1].number === 0) {
-      iconProps.name = `SpeedStop`;
+      iconProps.name = `speed-stop`;
     }
     else if (cap.speed[0].number > 0 || cap.speed[1].number > 0) {
       iconProps.name = `rotation-cw`;
