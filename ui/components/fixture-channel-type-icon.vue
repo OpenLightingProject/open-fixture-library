@@ -47,7 +47,7 @@ function getIconProps(channel) {
   if (channel instanceof SwitchingChannel) {
     return {
       type: `capability`,
-      name: `Switching Channel`,
+      name: `switching-channel`,
       title: `Channel type: Switching Channel`
     };
   }
