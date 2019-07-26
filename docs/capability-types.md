@@ -527,6 +527,7 @@ To make common percentage values more readable, one can use specific keywords to
 <tr>
   <th valign="top" scope="row" id="fog" rowspan="2">
     <img src="../ui/assets/icons/capability/fog.svg" />
+    <img src="../ui/assets/icons/capability/haze.svg" />
     Fog
   </th>
   <td valign="top">fogType<br><sub>:grey_question: optional</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
@@ -550,6 +551,7 @@ To make common percentage values more readable, one can use specific keywords to
 <tr>
   <th valign="top" scope="row" id="fog-type">
     <img src="../ui/assets/icons/capability/fog.svg" />
+    <img src="../ui/assets/icons/capability/haze.svg" />
     FogType
   </th>
   <td valign="top">fogType<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
