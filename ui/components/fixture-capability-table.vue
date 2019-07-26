@@ -18,7 +18,7 @@
     </thead>
     <tbody>
       <template v-for="(cap, index) in capabilities">
-        <tr :key="`cap-${index}`">
+        <tr :key="`cap-${index}`" :class="`capability capability-${cap.model.type}`">
           <td class="capability-range0"><code>{{ cap.dmxRangeStart }} </code></td>
           <td class="capability-range-separator"><code>…</code></td>
           <td class="capability-range1"><code>{{ cap.dmxRangeEnd }}</code></td>
@@ -38,9 +38,10 @@
 
         <tr
           v-for="switchChannel in cap.switchChannels"
-          :key="`cap-${index}-switch-${switchChannel.key}`">
+          :key="`cap-${index}-switch-${switchChannel.key}`"
+          class="switch-to-channel">
           <td colspan="4" />
-          <td colspan="2" class="switch-to-channel">
+          <td colspan="2">
             <span class="switching-channel-key">Channel&nbsp;{{ switchChannel.index + 1 }} →</span>&nbsp;{{ switchChannel.to }}
           </td>
         </tr>
@@ -78,6 +79,11 @@ td, th {
   vertical-align: top;
 }
 
+.capability-NoFunction,
+.capability-NoFunction + .switch-to-channel {
+  opacity: 0.6;
+}
+
 .capability-range0 {
   text-align: right;
   padding-right: 2px;
@@ -99,7 +105,7 @@ td, th {
   text-align: right;
 }
 
-.switch-to-channel {
+.switch-to-channel > td {
   line-height: 1rem;
   padding-bottom: 4px;
   font-size: 82%;
