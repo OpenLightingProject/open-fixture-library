@@ -69,7 +69,7 @@ const specialIconFunctions = {
     if (isAnimationGobo(cap.wheelSlot[0]) && isAnimationGobo(cap.wheelSlot[1])) {
       iconProps.name = `Gobo`;
     }
-    else if (cap.wheelSlot[0] === cap.wheelSlot[1]) {
+    else if (cap.wheelSlot[0] === cap.wheelSlot[1] && cap.wheelSlot[0].type !== `Split`) {
       iconProps.name = cap.wheelSlot[0].type;
     }
     else {
