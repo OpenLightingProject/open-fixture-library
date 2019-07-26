@@ -27,9 +27,14 @@ export default {
 
 const specialIconFunctions = {
   ShutterStrobe(cap, iconProps) {
-    iconProps.name = (cap.shutterEffect === `Closed` || cap.shutterEffect === `Open`)
-      ? `Shutter`
-      : `Strobe`;
+    if (cap.shutterEffect === `Closed` || cap.shutterEffect === `Open`) {
+      iconProps.type = `color-circle`;
+      iconProps.colors = [cap.shutterEffect === `Closed` ? `#000000` : `#ffffff`];
+      delete iconProps.name;
+    }
+    else {
+      iconProps.name = `Strobe`;
+    }
   },
   ColorIntensity(cap, iconProps) {
     iconProps.name = `Intensity`;
@@ -60,12 +65,12 @@ const specialIconFunctions = {
     }
   },
   WheelSlot(cap, iconProps) {
-    if (cap.wheelSlot[0] === cap.wheelSlot[1]) {
-      const wheelSlotType = cap.wheelSlot[0].type;
-
-      iconProps.name = wheelSlotType.startsWith(`AnimationGobo`)
-        ? `Gobo`
-        : wheelSlotType;
+    const isAnimationGobo = slot => slot.type.startsWith(`AnimationGobo`);
+    if (isAnimationGobo(cap.wheelSlot[0]) && isAnimationGobo(cap.wheelSlot[1])) {
+      iconProps.name = `Gobo`;
+    }
+    else if (cap.wheelSlot[0] === cap.wheelSlot[1]) {
+      iconProps.name = cap.wheelSlot[0].type;
     }
     else {
       iconProps.name = ``;
@@ -97,6 +102,9 @@ const specialIconFunctions = {
     }
     else if (cap.speed[0].number < 0 || cap.speed[1].number < 0) {
       iconProps.name = `speed-reverse`;
+    }
+    else {
+      iconProps.name = `speed`;
     }
   },
   Rotation(cap, iconProps) {
