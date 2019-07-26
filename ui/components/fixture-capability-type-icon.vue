@@ -87,11 +87,14 @@ const specialIconFunctions = {
   FrostEffect(cap, iconProps) {
     iconProps.name = `Frost`;
   },
+  Fog(cap, iconProps) {
+    iconProps.name = cap.fogType || `Fog`;
+  },
   FogOutput(cap, iconProps) {
     iconProps.name = `Fog`;
   },
   FogType(cap, iconProps) {
-    iconProps.name = `Fog`;
+    iconProps.name = cap.fogType;
   },
   Speed(cap, iconProps) {
     if (!cap.speed) {

@@ -59,6 +59,7 @@ import capabilityFogSvg from '~/assets/icons/capability/fog.svg';
 import capabilityFrostSvg from '~/assets/icons/capability/frost.svg';
 import capabilityGenericSvg from '~/assets/icons/capability/generic.svg';
 import capabilityGoboSvg from '~/assets/icons/capability/gobo.svg';
+import capabilityHazeSvg from '~/assets/icons/capability/haze.svg';
 import capabilityIntensitySvg from '~/assets/icons/capability/intensity.svg';
 import capabilityIrisSvg from '~/assets/icons/capability/iris.svg';
 import capabilityMaintenanceSvg from '~/assets/icons/capability/maintenance.svg';
@@ -147,6 +148,7 @@ export default {
   'capability/frost': capabilityFrostSvg,
   'capability/generic': capabilityGenericSvg,
   'capability/gobo': capabilityGoboSvg,
+  'capability/haze': capabilityHazeSvg,
   'capability/intensity': capabilityIntensitySvg,
   'capability/iris': capabilityIrisSvg,
   'capability/maintenance': capabilityMaintenanceSvg,
