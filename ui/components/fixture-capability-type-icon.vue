@@ -94,17 +94,17 @@ const specialIconFunctions = {
     iconProps.name = `Fog`;
   },
   Speed(cap, iconProps) {
-    if (cap.speed[0].number === 0 && cap.speed[1].number === 0) {
+    if (!cap.speed) {
+      iconProps.name = `speed`;
+    }
+    else if (cap.speed[0].number === 0 && cap.speed[1].number === 0) {
       iconProps.name = `SpeedStop`;
     }
     else if (cap.speed[0].number > 0 || cap.speed[1].number > 0) {
       iconProps.name = `speed-forward`;
     }
-    else if (cap.speed[0].number < 0 || cap.speed[1].number < 0) {
-      iconProps.name = `speed-reverse`;
-    }
     else {
-      iconProps.name = `speed`;
+      iconProps.name = `speed-reverse`;
     }
   },
   Rotation(cap, iconProps) {
@@ -122,7 +122,7 @@ const specialIconFunctions = {
     else if (cap.speed[0].number > 0 || cap.speed[1].number > 0) {
       iconProps.name = `rotation-cw`;
     }
-    else if (cap.speed[0].number < 0 || cap.speed[1].number < 0) {
+    else {
       iconProps.name = `rotation-ccw`;
     }
   },
@@ -157,7 +157,7 @@ function getIconProps(cap) {
   else if (cap.type in specialIconFunctions) {
     specialIconFunctions[cap.type](cap, iconProps);
   }
-  else if (/(?:Speed|Duration|Time)$/.test(cap.type) && cap.speed) {
+  else if (/(?:Speed|Duration|Time)$/.test(cap.type)) {
     specialIconFunctions.Speed(cap, iconProps);
   }
   else if (/Rotation$/.test(cap.type)) {
