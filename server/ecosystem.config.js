@@ -57,7 +57,7 @@ module.exports = {
       ref: "origin/master",
       repo: "git@github.com:OpenLightingProject/open-fixture-library.git",
       path: "/home/flo/open-fixture-library",
-      "post-deploy": "npm ci --dev && (if [ -e server ]; then cp ./server/* /home/flo; fi) && pm2 reload /home/flo/ecosystem.config.js",
+      "post-deploy": "npm ci --dev && (if [ -e server ]; then cp ./server/* /home/flo; fi) && pm2 reload /home/flo/ecosystem.config.js && pm2 reload ofl",
       env: envVariablesOfl,
 
       // used in webhook.js
