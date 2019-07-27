@@ -46,7 +46,6 @@ import categorySmokeSvg from '~/assets/icons/category/smoke.svg';
 import categoryStandSvg from '~/assets/icons/category/stand.svg';
 import categoryStrobeSvg from '~/assets/icons/category/strobe.svg';
 
-import capabilityAngleSvg from '~/assets/icons/capability/angle.svg';
 import capabilityBladeInsertionSvg from '~/assets/icons/capability/blade-insertion.svg';
 import capabilityBeamAngleSvg from '~/assets/icons/capability/beam-angle.svg';
 import capabilityBeamPositionSvg from '~/assets/icons/capability/beam-position.svg';
@@ -68,6 +67,7 @@ import capabilityPanSvg from '~/assets/icons/capability/pan.svg';
 import capabilityPanContinuousCcwSvg from '~/assets/icons/capability/pan-continuous-ccw.svg';
 import capabilityPanContinuousCwSvg from '~/assets/icons/capability/pan-continuous-cw.svg';
 import capabilityPrismSvg from '~/assets/icons/capability/prism.svg';
+import capabilityRotationAngleSvg from '~/assets/icons/capability/rotation-angle.svg';
 import capabilityRotationCcwSvg from '~/assets/icons/capability/rotation-ccw.svg';
 import capabilityRotationCwSvg from '~/assets/icons/capability/rotation-cw.svg';
 import capabilityShutterSvg from '~/assets/icons/capability/shutter.svg';
@@ -135,7 +135,6 @@ export default {
   'category/stand': categoryStandSvg,
   'category/strobe': categoryStrobeSvg,
 
-  'capability/angle': capabilityAngleSvg,
   'capability/blade-insertion': capabilityBladeInsertionSvg,
   'capability/beam-angle': capabilityBeamAngleSvg,
   'capability/beam-position': capabilityBeamPositionSvg,
@@ -157,6 +156,7 @@ export default {
   'capability/pan-continuous-ccw': capabilityPanContinuousCcwSvg,
   'capability/pan-continuous-cw': capabilityPanContinuousCwSvg,
   'capability/prism': capabilityPrismSvg,
+  'capability/roation-angle': capabilityRotationAngleSvg,
   'capability/rotation-ccw': capabilityRotationCcwSvg,
   'capability/rotation-cw': capabilityRotationCwSvg,
   'capability/shutter': capabilityShutterSvg,
