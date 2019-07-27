@@ -27,6 +27,12 @@ export default {
   }
 };
 
+const channelTypeIcons = {
+  'Multi-Color': `color-changer`,
+  'Fog': `smoke`,
+  'Intensity': `dimmer`
+};
+
 /**
  * @param {AbstractChannel} channel The channel to get an icon for.
  * @returns {object} Object containing the props to pass to <app-svg />
@@ -34,7 +40,7 @@ export default {
 function getIconProps(channel) {
   if (channel instanceof NullChannel) {
     return {
-      type: `capability`,
+      type: `fixture`,
       name: `NoFunction`,
       title: `Channel type: NoFunction`
     };
@@ -46,7 +52,7 @@ function getIconProps(channel) {
 
   if (channel instanceof SwitchingChannel) {
     return {
-      type: `capability`,
+      type: `fixture`,
       name: `switching-channel`,
       title: `Channel type: Switching Channel`
     };
@@ -60,15 +66,9 @@ function getIconProps(channel) {
     };
   }
 
-  let iconName = channel.type;
-
-  if (channel.type === `Multi-Color`) {
-    iconName = `Color`;
-  }
-
   return {
-    type: `capability`,
-    name: iconName,
+    type: `fixture`,
+    name: channelTypeIcons[channel.type] || channel.type,
     title: `Channel type: ${channel.type}`
   };
 }

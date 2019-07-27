@@ -36,11 +36,14 @@ const specialIconFunctions = {
       iconProps.name = `Strobe`;
     }
   },
+  Intensity(cap, iconProps) {
+    iconProps.name = `dimmer`;
+  },
   ColorIntensity(cap, iconProps) {
-    iconProps.name = `Intensity`;
+    iconProps.name = `dimmer`;
   },
   ColorPreset(cap, iconProps) {
-    iconProps.name = `Color`;
+    iconProps.name = `color-changer`;
   },
   PanContinuous(cap, iconProps) {
     if (cap.speed[0].number === 0 && cap.speed[1].number === 0) {
@@ -93,13 +96,13 @@ const specialIconFunctions = {
     iconProps.name = `Frost`;
   },
   Fog(cap, iconProps) {
-    iconProps.name = cap.fogType || `Fog`;
+    specialIconFunctions.FogType(cap, iconProps);
   },
   FogOutput(cap, iconProps) {
-    iconProps.name = `Fog`;
+    iconProps.name = `smoke`;
   },
   FogType(cap, iconProps) {
-    iconProps.name = cap.fogType;
+    iconProps.name = cap.fogType === `Haze` ? `hazer` : `smoke`;
   },
   Speed(cap, iconProps) {
     if (!cap.speed) {
@@ -133,6 +136,9 @@ const specialIconFunctions = {
     else {
       iconProps.name = `rotation-ccw`;
     }
+  },
+  Generic(cap, iconProps) {
+    iconProps.name = `other`;
   }
 };
 
@@ -150,7 +156,7 @@ function getIconProps(cap) {
   }
 
   const iconProps = {
-    type: `capability`,
+    type: `fixture`,
     name: cap.type,
     title: `Capability type: ${cap.type}`
   };
