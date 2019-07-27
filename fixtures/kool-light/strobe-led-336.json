@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Strobe Led 336",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Tormant"],
+    "createDate": "2019-07-27",
+    "lastModifyDate": "2019-07-27"
+  },
+  "links": {
+    "manual": [
+      "https://sitelec.org/cours/abati/dmx/strobe_led.pdf",
+      "https://sitelec.org/cours/abati/dmx/strobe2.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [460, 160, 140],
+    "power": 30,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 215],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [216, 231],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "bright",
+        "brightnessEnd": "off"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "bright",
+        "brightnessEnd": "off"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "dark",
+        "brightnessEnd": "off"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "bright",
+        "brightnessEnd": "off"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Strobe Led 336",
+      "channels": [
+        "Strobe",
+        "Dimmer",
+        "Color Wheel",
+        "Blue",
+        "Green",
+        "Red"
+      ]
+    }
+  ]
+}
