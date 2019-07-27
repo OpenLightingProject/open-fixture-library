@@ -77,9 +77,14 @@ const specialIconFunctions = {
     }
   },
   WheelShake(cap, iconProps) {
-    iconProps.name = (cap.isShaking === `slot`)
-      ? `slot-shake`
-      : `wheel-shake`;
+    if (cap.wheelSlot && cap.wheelSlot[0] !== cap.wheelSlot[1]) {
+      iconProps.name = ``;
+    }
+    else {
+      iconProps.name = (cap.isShaking === `slot`)
+        ? `slot-shake`
+        : `wheel-shake`;
+    }
   },
   IrisEffect(cap, iconProps) {
     iconProps.name = `Iris`;
