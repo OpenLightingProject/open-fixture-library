@@ -68,14 +68,14 @@ To make common percentage values more readable, one can use specific keywords to
 <tbody>
 <tr>
   <th valign="top" scope="row" id="no-function">
-    <img src="../ui/assets/icons/capability/no-function.svg" />
+    <img src="../ui/assets/icons/fixture/no-function.svg" />
     NoFunction
   </th>
   <td valign="top" colspan="3">No type-specific properties.</td>
 </tr>
   <th valign="top" scope="row" id="shutter-strobe" rowspan="5">
-    <img src="../ui/assets/icons/capability/shutter.svg" />
-    <img src="../ui/assets/icons/capability/strobe.svg" />
+    <img src="../ui/assets/icons/fixture/shutter.svg" />
+    <img src="../ui/assets/icons/fixture/strobe.svg" />
     ShutterStrobe
   </th>
   <td valign="top">shutterEffect<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
@@ -104,7 +104,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="strobe-speed">
-    <img src="../ui/assets/icons/capability/speed.svg" />
+    <img src="../ui/assets/icons/fixture/speed.svg" />
     StrobeSpeed
   </th>
   <td valign="top">speed<br><sub>:star2: required</sub></td>
@@ -113,7 +113,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="strobe-duration">
-    <img src="../ui/assets/icons/capability/speed.svg" />
+    <img src="../ui/assets/icons/fixture/speed.svg" />
     StrobeDuration
   </th>
   <td valign="top">duration<br><sub>:star2: required</sub></td>
@@ -122,7 +122,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="intensity">
-    <img src="../ui/assets/icons/capability/intensity.svg" />
+    <img src="../ui/assets/icons/fixture/dimmer.svg" />
     Intensity
   </th>
   <td valign="top">brightness<br><sub>:grey_question: optional</sub></td>
@@ -131,6 +131,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="color-intensity" rowspan="2">
+    <img src="../ui/assets/icons/fixture/dimmer.svg" />
     ColorIntensity
   </th>
   <td valign="top">color<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
@@ -146,7 +147,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="color-preset" rowspan="2">
-    <img src="../ui/assets/icons/capability/color.svg" />
+    <img src="../ui/assets/icons/fixture/color-changer.svg" />
     ColorPreset
   </th>
   <td valign="top">colors<br><sub>:grey_question: optional</sub></td>
@@ -160,7 +161,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="color-temperature">
-    <img src="../ui/assets/icons/capability/color-temperature.svg" />
+    <img src="../ui/assets/icons/fixture/color-temperature.svg" />
     ColorTemperature
   </th>
   <td valign="top">colorTemperature<br><sub>:star2: required</sub></td>
@@ -169,7 +170,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="pan">
-    <img src="../ui/assets/icons/capability/pan.svg" />
+    <img src="../ui/assets/icons/fixture/pan.svg" />
     Pan
   </th>
   <td valign="top">angle<br><sub>:star2: required</sub></td>
@@ -178,7 +179,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="pan-continuous">
-    <img src="../ui/assets/icons/capability/pan-continuous-cw.svg" />
+    <img src="../ui/assets/icons/fixture/pan-continuous-cw.svg" />
     PanContinuous
   </th>
   <td valign="top">speed<br><sub>:star2: required</sub></td>
@@ -187,7 +188,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="tilt">
-    <img src="../ui/assets/icons/capability/tilt.svg" />
+    <img src="../ui/assets/icons/fixture/tilt.svg" />
     Tilt
   </th>
   <td valign="top">angle<br><sub>:star2: required</sub></td>
@@ -196,7 +197,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="tilt-continuous">
-    <img src="../ui/assets/icons/capability/tilt-continuous-cw.svg" />
+    <img src="../ui/assets/icons/fixture/tilt-continuous-cw.svg" />
     TiltContinuous
   </th>
   <td valign="top">speed<br><sub>:star2: required</sub></td>
@@ -205,7 +206,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="pan-tilt-speed" rowspan="2">
-    <img src="../ui/assets/icons/capability/speed.svg" />
+    <img src="../ui/assets/icons/fixture/speed.svg" />
     PanTiltSpeed
   </th>
   <td valign="top">speed<br><sub>:vs: required</sub></td>
@@ -218,7 +219,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="wheel-slot" rowspan="2">
-    <img src="../ui/assets/icons/capability/gobo.svg" />
+    <img src="../ui/assets/icons/fixture/gobo.svg" />
     WheelSlot
   </th>
   <td valign="top">wheel<br><sub>:grey_question: optional</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
@@ -232,8 +233,8 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="wheel-shake" rowspan="5">
-    <img src="../ui/assets/icons/capability/wheel-shake.svg" />
-    <img src="../ui/assets/icons/capability/slot-shake.svg" />
+    <img src="../ui/assets/icons/fixture/wheel-shake.svg" />
+    <img src="../ui/assets/icons/fixture/slot-shake.svg" />
     WheelShake
   </th>
   <td valign="top">isShaking<br><sub>:grey_question: optional</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
@@ -262,7 +263,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="wheel-slot-rotation" rowspan="4">
-    <img src="../ui/assets/icons/capability/rotation-cw.svg" />
+    <img src="../ui/assets/icons/fixture/rotation-cw.svg" />
     WheelSlotRotation
   </th>
   <td valign="top">wheel<br><sub>:grey_question: optional</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
@@ -285,7 +286,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="wheel-rotation" rowspan="3">
-    <img src="../ui/assets/icons/capability/rotation-cw.svg" />
+    <img src="../ui/assets/icons/fixture/rotation-cw.svg" />
     WheelRotation
   </th>
   <td valign="top">wheel<br><sub>:grey_question: optional</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
@@ -303,7 +304,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="effect" rowspan="7">
-    <img src="../ui/assets/icons/capability/effect.svg" />
+    <img src="../ui/assets/icons/fixture/effect.svg" />
     Effect
   </th>
   <td valign="top">effectName<br><sub>:vs: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
@@ -341,7 +342,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="beam-angle">
-    <img src="../ui/assets/icons/capability/beam-angle.svg" />
+    <img src="../ui/assets/icons/fixture/beam-angle.svg" />
     BeamAngle
   </th>
   <td valign="top">angle<br><sub>:star2: required</sub></td>
@@ -350,7 +351,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="beam-position" rowspan="2">
-    <img src="../ui/assets/icons/capability/beam-position.svg" />
+    <img src="../ui/assets/icons/fixture/beam-position.svg" />
     BeamPosition
   </th>
   <td valign="top">horizontalAngle<br><sub>:star2: required</sub></td>
@@ -363,7 +364,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="effect-speed">
-    <img src="../ui/assets/icons/capability/speed.svg" />
+    <img src="../ui/assets/icons/fixture/speed.svg" />
     EffectSpeed
   </th>
   <td valign="top">speed<br><sub>:star2: required</sub></td>
@@ -372,7 +373,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="effect-duration">
-    <img src="../ui/assets/icons/capability/speed.svg" />
+    <img src="../ui/assets/icons/fixture/speed.svg" />
     EffectDuration
   </th>
   <td valign="top">duration<br><sub>:star2: required</sub></td>
@@ -381,7 +382,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="effect-parameter">
-    <img src="../ui/assets/icons/capability/effect-parameter.svg" />
+    <img src="../ui/assets/icons/fixture/effect-parameter.svg" />
     EffectParameter
   </th>
   <td valign="top">parameter<br><sub>:star2: required</sub></td>
@@ -390,7 +391,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="sound-sensitivity">
-    <img src="../ui/assets/icons/capability/sound-sensitivity.svg" />
+    <img src="../ui/assets/icons/fixture/sound-sensitivity.svg" />
     SoundSensitivity
   </th>
   <td valign="top">soundSensitivity<br><sub>:star2: required</sub></td>
@@ -399,7 +400,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="focus">
-    <img src="../ui/assets/icons/capability/focus.svg" />
+    <img src="../ui/assets/icons/fixture/focus.svg" />
     Focus
   </th>
   <td valign="top">distance<br><sub>:star2: required</sub></td>
@@ -408,7 +409,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="zoom">
-    <img src="../ui/assets/icons/capability/zoom.svg" />
+    <img src="../ui/assets/icons/fixture/zoom.svg" />
     Zoom
   </th>
   <td valign="top">angle<br><sub>:star2: required</sub></td>
@@ -417,7 +418,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="iris">
-    <img src="../ui/assets/icons/capability/iris.svg" />
+    <img src="../ui/assets/icons/fixture/iris.svg" />
     Iris
   </th>
   <td valign="top">openPercent<br><sub>:star2: required</sub></td>
@@ -426,7 +427,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="iris-effect" rowspan="2">
-    <img src="../ui/assets/icons/capability/iris.svg" />
+    <img src="../ui/assets/icons/fixture/iris.svg" />
     IrisEffect
   </th>
   <td valign="top">effectName<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
@@ -440,7 +441,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="frost">
-    <img src="../ui/assets/icons/capability/frost.svg" />
+    <img src="../ui/assets/icons/fixture/frost.svg" />
     Frost
   </th>
   <td valign="top">frostIntensity<br><sub>:star2: required</sub></td>
@@ -449,7 +450,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="frost-effect" rowspan="2">
-    <img src="../ui/assets/icons/capability/frost.svg" />
+    <img src="../ui/assets/icons/fixture/frost.svg" />
     FrostEffect
   </th>
   <td valign="top">effectName<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
@@ -463,7 +464,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="prism" rowspan="2">
-    <img src="../ui/assets/icons/capability/prism.svg" />
+    <img src="../ui/assets/icons/fixture/prism.svg" />
     Prism
   </th>
   <td valign="top">speed<br><sub>:grey_question: optional</sub></td>
@@ -476,7 +477,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="prism-rotation" rowspan="2">
-    <img src="../ui/assets/icons/capability/rotation-cw.svg" />
+    <img src="../ui/assets/icons/fixture/rotation-cw.svg" />
     PrismRotation
   </th>
   <td valign="top">speed<br><sub>:vs: required</sub></td>
@@ -489,7 +490,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="blade-insertion" rowspan="2">
-    <img src="../ui/assets/icons/capability/blade-insertion.svg" />
+    <img src="../ui/assets/icons/fixture/blade-insertion.svg" />
     BladeInsertion
   </th>
   <td valign="top">blade<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
@@ -503,7 +504,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="blade-rotation" rowspan="2">
-    <img src="../ui/assets/icons/capability/rotation-cw.svg" />
+    <img src="../ui/assets/icons/fixture/rotation-cw.svg" />
     BladeRotation
   </th>
   <td valign="top">blade<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
@@ -517,7 +518,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="blade-system-rotation">
-    <img src="../ui/assets/icons/capability/rotation-cw.svg" />
+    <img src="../ui/assets/icons/fixture/rotation-cw.svg" />
     BladeSystemRotation
   </th>
   <td valign="top">angle<br><sub>:star2: required</sub></td>
@@ -526,8 +527,8 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="fog" rowspan="2">
-    <img src="../ui/assets/icons/capability/fog.svg" />
-    <img src="../ui/assets/icons/capability/haze.svg" />
+    <img src="../ui/assets/icons/fixture/smoke.svg" />
+    <img src="../ui/assets/icons/fixture/hazer.svg" />
     Fog
   </th>
   <td valign="top">fogType<br><sub>:grey_question: optional</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
@@ -541,7 +542,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="fog-output">
-    <img src="../ui/assets/icons/capability/fog.svg" />
+    <img src="../ui/assets/icons/fixture/smoke.svg" />
     FogOutput
   </th>
   <td valign="top">fogOutput<br><sub>:star2: required</sub></td>
@@ -550,8 +551,8 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="fog-type">
-    <img src="../ui/assets/icons/capability/fog.svg" />
-    <img src="../ui/assets/icons/capability/haze.svg" />
+    <img src="../ui/assets/icons/fixture/smoke.svg" />
+    <img src="../ui/assets/icons/fixture/hazer.svg" />
     FogType
   </th>
   <td valign="top">fogType<br><sub>:star2: required</sub><br><sub>:feet: <a href="#must-be-stepped">must be stepped</a></sub></td>
@@ -560,7 +561,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="rotation" rowspan="2">
-    <img src="../ui/assets/icons/capability/rotation-cw.svg" />
+    <img src="../ui/assets/icons/fixture/rotation-cw.svg" />
     Rotation
   </th>
   <td valign="top">speed<br><sub>:vs: required</sub></td>
@@ -573,7 +574,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="speed">
-    <img src="../ui/assets/icons/capability/speed.svg" />
+    <img src="../ui/assets/icons/fixture/speed.svg" />
     Speed
   </th>
   <td valign="top">speed<br><sub>:star2: required</sub></td>
@@ -582,7 +583,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="time">
-    <img src="../ui/assets/icons/capability/speed.svg" />
+    <img src="../ui/assets/icons/fixture/speed.svg" />
     Time
   </th>
   <td valign="top">time<br><sub>:star2: required</sub></td>
@@ -591,7 +592,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="maintenance" rowspan="2">
-    <img src="../ui/assets/icons/capability/maintenance.svg" />
+    <img src="../ui/assets/icons/fixture/maintenance.svg" />
     Maintenance
   </th>
   <td valign="top">parameter<br><sub>:grey_question: optional</sub></td>
@@ -605,7 +606,7 @@ To make common percentage values more readable, one can use specific keywords to
 </tr>
 <tr>
   <th valign="top" scope="row" id="generic">
-    <img src="../ui/assets/icons/capability/generic.svg" />
+    <img src="../ui/assets/icons/fixture/other.svg" />
     Generic
   </th>
   <td valign="top" colspan="3">No type-specific properties.</td>
