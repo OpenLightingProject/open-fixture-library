@@ -73,7 +73,7 @@ const specialIconFunctions = {
       iconProps.name = `Gobo`;
     }
     else if (cap.wheelSlot[0] === cap.wheelSlot[1] && cap.wheelSlot[0].type !== `Split`) {
-      iconProps.name = cap.wheelSlot[0].type;
+      iconProps.name = cap.wheelSlot[0].type === `Color` ? `color-changer` : cap.wheelSlot[0].type;
     }
     else {
       iconProps.name = ``;
