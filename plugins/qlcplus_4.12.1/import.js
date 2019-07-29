@@ -113,7 +113,7 @@ function addOflFixturePhysical(fixture, qlcPlusFixture) {
 
   fixture.physical = getOflPhysical(hasGlobalPhysical ? qlcPlusFixture.Physical[0] : firstPhysicalMode.Physical[0]);
 
-  if (hasGlobalPhysical && qlcPlusFixture.Type[0] === `LED Bar (Pixels)`) {
+  if (qlcPlusFixture.Type[0] === `LED Bar (Pixels)`) {
     fixture.physical.matrixPixels = {
       spacing: [0, 0, 0]
     };
