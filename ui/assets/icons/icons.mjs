@@ -28,6 +28,7 @@ import swapHorizontalSvg from '~/assets/icons/swap-horizontal.svg';
 import webSvg from '~/assets/icons/web.svg';
 import youtubeSvg from '~/assets/icons/youtube.svg';
 
+import fixtureAnimationGoboSvg from '~/assets/icons/fixture/animation-gobo.svg';
 import fixtureBarrelScannerSvg from '~/assets/icons/fixture/barrel-scanner.svg';
 import fixtureBeamAngleSvg from '~/assets/icons/fixture/beam-angle.svg';
 import fixtureBeamPositionSvg from '~/assets/icons/fixture/beam-position.svg';
@@ -109,6 +110,7 @@ export default {
   'web': webSvg,
   'youtube': youtubeSvg,
 
+  'fixture/animation-gobo': fixtureAnimationGoboSvg,
   'fixture/barrel-scanner': fixtureBarrelScannerSvg,
   'fixture/beam-angle': fixtureBeamAngleSvg,
   'fixture/beam-position': fixtureBeamPositionSvg,

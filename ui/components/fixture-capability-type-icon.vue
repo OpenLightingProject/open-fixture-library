@@ -70,7 +70,7 @@ const specialIconFunctions = {
   WheelSlot(cap, iconProps) {
     const isAnimationGobo = slot => slot.type.startsWith(`AnimationGobo`);
     if (isAnimationGobo(cap.wheelSlot[0]) && isAnimationGobo(cap.wheelSlot[1])) {
-      iconProps.name = `Gobo`;
+      iconProps.name = `animation-gobo`;
     }
     else if (cap.wheelSlot[0] === cap.wheelSlot[1] && cap.wheelSlot[0].type !== `Split`) {
       iconProps.name = cap.wheelSlot[0].type === `Color` ? `color-changer` : cap.wheelSlot[0].type;
