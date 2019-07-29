@@ -71,7 +71,7 @@ export default {
     const children = [
       createElement(`app-svg`, {
         props: {
-          type: `category`,
+          type: `fixture`,
           name: this.category
         }
       }),

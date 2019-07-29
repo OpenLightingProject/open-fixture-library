@@ -24,11 +24,12 @@
       <app-labeled-input
         :formstate="formstate"
         :name="`capability${capability.uuid}-soundControlled`"
-        label="Sound controlled?">
+        label="Sound-controlled?">
         <app-property-input-boolean
           v-model="capability.typeData.soundControlled"
           :schema-property="properties.capabilityTypes.ShutterStrobe.properties.soundControlled"
-          :name="`capability${capability.uuid}-soundControlled`" />
+          :name="`capability${capability.uuid}-soundControlled`"
+          label="Strobe is sound-controlled" />
       </app-labeled-input>
 
       <app-labeled-input
@@ -61,7 +62,8 @@
         <app-property-input-boolean
           v-model="capability.typeData.randomTiming"
           :schema-property="properties.capabilityTypes.ShutterStrobe.properties.randomTiming"
-          :name="`capability${capability.uuid}-randomTiming`" />
+          :name="`capability${capability.uuid}-randomTiming`"
+          :label="`Random ${strobeEffectName}`" />
       </app-labeled-input>
     </template>
 
@@ -128,6 +130,11 @@ export default {
     },
     isStrobeEffect() {
       return ![``, `Open`, `Closed`].includes(this.capability.typeData.shutterEffect);
+    },
+    strobeEffectName() {
+      return this.capability.typeData.shutterEffect === `Strobe`
+        ? `Strobe`
+        : `${this.capability.typeData.shutterEffect} Strobe`;
     },
     resetProps() {
       if (!this.isStrobeEffect) {
