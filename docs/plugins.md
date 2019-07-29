@@ -21,6 +21,7 @@ node cli/export-fixture.js -p <plugin> <fixture> [<more fixtures>]
 
 If exporting is supported, create a `plugins/<plugin-key>/export.js` module that provides the plugin name, version and a method that generates the needed third-party files out of an given array of [Fixture](model-api.md#Fixture) objects. This method should return a Promise of an array of objects for each file that should be exported / downloadable; the files are zipped together automatically if necessary. A file object looks like this:
 
+<!-- eslint-skip -->
 ```js
 {
   name: `filename.ext`, // Required, may include forward slashes to generate a folder structure
@@ -69,6 +70,7 @@ If importing is supported, create a `plugins/<plugin-key>/import.js` module that
 
 As file parsing (like XML processing) can be asynchronous, the import method returns its results asynchronously using a [Promise](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise) that resolves to an object that looks like this:
 
+<!-- eslint-skip -->
 ```js
 {
   // Imported manufacturer data; like in manufacturers.json:
