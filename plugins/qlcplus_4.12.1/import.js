@@ -1,7 +1,7 @@
 const xml2js = require(`xml2js`);
 const promisify = require(`util`).promisify;
 
-module.exports.version = `0.4.3`;
+module.exports.version = `0.5.0`;
 
 /**
  * @param {Buffer} buffer The imported file.
