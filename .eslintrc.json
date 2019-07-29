@@ -8,6 +8,7 @@
   },
   "plugins": [
     "json",
+    "markdown",
     "promise",
     "security",
     "vue"
@@ -175,5 +176,13 @@
     "vue/prop-name-casing": "error",
     "vue/require-direct-export": "error",
     "vue/v-on-function-call": "error"
-  }
+  },
+  "overrides": [{
+    "files": ["**/*.md"],
+    "rules": {
+        "no-undef": "off",
+        "no-unused-vars": "off",
+        "require-jsdoc": "off"
+    }
+  }]
 }

@@ -9,15 +9,15 @@ The model uses [ES2015 classes](https://developer.mozilla.org/en-US/docs/Web/Jav
 All model classes are located in the [`lib/model/`](../lib/model) directory. When using the model, it usually suffices to import the `fixtureFromRepository` function from `model.js` which returns a `Fixture` instance:
 
 ```js
-const { fixtureFromRepository } = require('./lib/model.js');
+const { fixtureFromRepository } = require(`./lib/model.js`);
 
-const myFix = fixtureFromRepository('cameo', 'nanospot-120'); // instanceof Fixture
+const myFix = fixtureFromRepository(`cameo`, `nanospot-120`); // instanceof Fixture
 
 const physicalData = myFix.physical; // instanceof Physical
-const panFine = myFix.getChannelByKey('Pan fine'); // instanceof FineChannel
+const panFine = myFix.getChannelByKey(`Pan fine`); // instanceof FineChannel
 
 if (panFine.coarseChannel.hasHighlightValue) {
-  console.log(`Highlight at ${panFine.coarseChannel.highlightValue}`)
+  console.log(`Highlight at ${panFine.coarseChannel.highlightValue}`);
 }
 ```
 
@@ -50,12 +50,12 @@ export default class Fixture {
   }
 
   get hasShortName() {
-    return 'shortName' in this._jsonObject;
+    return `shortName` in this._jsonObject;
   }
 
   // it's not good to create a Meta object with each property access, so we cache it
   get meta() {
-    if (!('meta' in this._cache)) {
+    if (!(`meta` in this._cache)) {
       this._cache.meta = new Meta(this._jsonObject.meta);
     }
 
