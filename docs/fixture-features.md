@@ -13,13 +13,13 @@ Fixture features are saved in the the [`lib/fixture-features/`](../lib/fixture-f
 module.exports = [{
   // Optional, default is the filename (without '.js', succeeded by `-${i}` if
   // multiple features per module are provided). Must be unique!
-  id: 'fine-channel-alias',
+  id: `fine-channel-alias`,
 
   // Required. Used in generated table header. Try to be as short as possible! Markdown is allowed.
-  name: 'Fine channels (16bit)',
+  name: `Fine channels (16bit)`,
 
   // Optional. Is used as a footnote in generated table header. Markdown is allowed.
-  description: 'Whether a channel defines exactly one fine channel alias',
+  description: `Whether a channel defines exactly one fine channel alias`,
 
   /**
    * Required. Checks if the given fixture uses this feature.
