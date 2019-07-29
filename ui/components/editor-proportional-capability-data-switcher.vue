@@ -79,6 +79,7 @@
 
       <span class="separator">
         <a
+          :tabindex="swapButtonTabIndex"
           href="#swap"
           class="swap"
           title="Swap start and end values"
@@ -316,6 +317,12 @@ export default {
       set(newData) {
         this.capability.typeData[`${this.propertyName}End`] = newData === null ? `` : newData;
       }
+    },
+
+    swapButtonTabIndex() {
+      return (this.propertyDataStart === this.propertyDataEnd ||
+        this.propertyDataStart === `` ||
+        this.propertyDataEnd === ``) ? `-1` : null;
     }
   },
   methods: {

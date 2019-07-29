@@ -17,7 +17,7 @@ const MAX_OPZ_FIXTURES = 16;
  * @param {Date|null} options.date The current time.
  * @returns {Promise.<array.<object>, Error>} The generated files.
 */
-module.exports.export = function exportOpZ(fixtures, options) {
+module.exports.export = async function exportOpZ(fixtures, options) {
   const exportJson = {
     profiles: [],
     config: []
@@ -48,12 +48,12 @@ module.exports.export = function exportOpZ(fixtures, options) {
   });
 
 
-  return Promise.resolve([{
+  return [{
     name: `dmx.json`,
     content: JSON.stringify(exportJson, null, 2),
     mimetype: `application/json`,
     fixtures
-  }]);
+  }];
 
 
 

@@ -16,7 +16,7 @@ module.exports.version = `0.2.0`;
  * @param {Date|null} options.date The current time.
  * @returns {Promise.<array.<object>, Error>} The generated files.
 */
-module.exports.export = function exportDLight(fixtures, options) {
+module.exports.export = async function exportDLight(fixtures, options) {
   const deviceFiles = [];
 
   for (const fixture of fixtures) {
@@ -59,7 +59,7 @@ module.exports.export = function exportDLight(fixtures, options) {
     }
   }
 
-  return Promise.resolve(deviceFiles);
+  return deviceFiles;
 };
 
 /**

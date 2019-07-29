@@ -237,7 +237,7 @@ async function getTaskPromise(task) {
     const resultListItems = await Promise.all(files.map(async file => {
       try {
         await test(file);
-        return `heavy_check_mark: ${file.name}`;
+        return `:heavy_check_mark: ${file.name}`;
       }
       catch (err) {
         emoji = `:x:`;

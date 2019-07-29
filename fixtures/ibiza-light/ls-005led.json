@@ -1,0 +1,79 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LS-005LED",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Tormant"],
+    "createDate": "2019-07-29",
+    "lastModifyDate": "2019-07-29"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=Ojwpf-J7rvQ"
+    ]
+  },
+  "helpWanted": "Can you provide a link to a manual, product page, or similar?",
+  "physical": {
+    "dimensions": [460, 160, 140],
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Intensity"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}

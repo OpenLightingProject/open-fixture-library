@@ -85,11 +85,12 @@
     <app-labeled-input
       :formstate="formstate"
       :name="`capability${capability.uuid}-soundControlled`"
-      label="Sound controlled?">
+      label="Sound-controlled?">
       <app-property-input-boolean
         v-model="capability.typeData.soundControlled"
         :schema-property="properties.capabilityTypes.Effect.properties.soundControlled"
-        :name="`capability${capability.uuid}-soundControlled`" />
+        :name="`capability${capability.uuid}-soundControlled`"
+        label="Effect is sound-controlled" />
     </app-labeled-input>
 
     <app-labeled-input

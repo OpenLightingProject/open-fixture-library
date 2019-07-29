@@ -17,7 +17,7 @@ module.exports.version = `0.3.0`;
  * @param {Date|null} options.date The current time.
  * @returns {Promise.<array.<object>, Error>} The generated files.
 */
-module.exports.export = function exportECue(fixtures, options) {
+module.exports.export = async function exportECue(fixtures, options) {
   const timestamp = dateToString(options.date);
 
   const manufacturers = {};
@@ -73,7 +73,7 @@ module.exports.export = function exportECue(fixtures, options) {
     }
   }
 
-  return Promise.resolve([{
+  return [{
     name: `UserLibrary.xml`,
     content: xml.end({
       pretty: true,
@@ -81,7 +81,7 @@ module.exports.export = function exportECue(fixtures, options) {
     }),
     mimetype: `application/xml`,
     fixtures: fixtures
-  }]);
+  }];
 };
 
 /**

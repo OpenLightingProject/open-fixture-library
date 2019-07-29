@@ -29,10 +29,8 @@ module.exports = async function testSchemaConformity(exportFile) {
 
   const schemaValid = schemaValidate(JSON.parse(exportFile.content));
   if (!schemaValid) {
-    return Promise.reject(JSON.stringify(schemaValidate.errors, null, 2));
+    throw JSON.stringify(schemaValidate.errors, null, 2);
   }
-
-  return Promise.resolve();
 };
 
 /**

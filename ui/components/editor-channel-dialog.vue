@@ -198,7 +198,8 @@
           <app-property-input-boolean
             v-model="channel.constant"
             :schema-property="properties.channel.constant"
-            name="constant" />
+            name="constant"
+            label="Channel is fixed to default DMX value" />
         </app-labeled-input>
 
         <app-labeled-input :formstate="formstate" name="precedence" label="Precedence">

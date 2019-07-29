@@ -13,7 +13,7 @@ module.exports.supportedOflVersion = `7.3.0`;
  * @param {Date|null} options.date The current time.
  * @returns {Promise.<array.<object>, Error>} The generated files.
 */
-module.exports.export = function exportMillumin(fixtures, options) {
+module.exports.export = async function exportMillumin(fixtures, options) {
   // one JSON file for each fixture
   const outFiles = fixtures.map(fixture => {
     const oflJson = JSON.parse(JSON.stringify(fixture.jsonObject));
@@ -63,7 +63,7 @@ module.exports.export = function exportMillumin(fixtures, options) {
     };
   });
 
-  return Promise.resolve(outFiles);
+  return outFiles;
 };
 
 /**
