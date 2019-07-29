@@ -24,6 +24,8 @@ export default {
   }
 };
 
+const isAnimationGoboSlot = slot => slot.type.startsWith(`AnimationGobo`);
+const isAnimationGobo = cap => isAnimationGoboSlot(cap.wheelSlot[0]) && isAnimationGoboSlot(cap.wheelSlot[1]);
 
 const specialIconFunctions = {
   ShutterStrobe(cap, iconProps) {
@@ -68,8 +70,7 @@ const specialIconFunctions = {
     }
   },
   WheelSlot(cap, iconProps) {
-    const isAnimationGobo = slot => slot.type.startsWith(`AnimationGobo`);
-    if (isAnimationGobo(cap.wheelSlot[0]) && isAnimationGobo(cap.wheelSlot[1])) {
+    if (isAnimationGobo(cap)) {
       iconProps.name = `animation-gobo`;
     }
     else if (cap.wheelSlot[0] === cap.wheelSlot[1] && cap.wheelSlot[0].type !== `Split`) {
@@ -80,7 +81,10 @@ const specialIconFunctions = {
     }
   },
   WheelShake(cap, iconProps) {
-    if (cap.wheelSlot && cap.wheelSlot[0] !== cap.wheelSlot[1]) {
+    if (cap.wheelSlot && isAnimationGobo(cap)) {
+      iconProps.name = `animation-gobo`;
+    }
+    else if (cap.wheelSlot && cap.wheelSlot[0] !== cap.wheelSlot[1]) {
       iconProps.name = ``;
     }
     else {
