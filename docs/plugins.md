@@ -44,7 +44,7 @@ module.exports.version = `0.1.0`; // semantic versioning of export plugin
  * @param {Date|null} options.date The current time (prefer this over new Date())
  * @returns {Promise.<array.<object>, Error>} All generated files (see file schema above)
 */
-module.exports.export = function exportPluginName(fixtures, options) {
+module.exports.export = async function exportPluginName(fixtures, options) {
   const outfiles = [];
 
   for (const fixture of fixtures) {
@@ -60,7 +60,7 @@ module.exports.export = function exportPluginName(fixtures, options) {
     }
   }
 
-  return Promise.resolve(outfiles);
+  return outfiles;
 };
 ```
 
@@ -100,7 +100,7 @@ module.exports.version = `0.1.0`; // semantic versioning of import plugin
  * @returns {Promise.<object, Error>} A Promise resolving to an out object
  *                                    (see above) or rejects with an error.
 **/
-module.exports.import = function importPluginName(buffer, fileName, authorName) {
+module.exports.import = async function importPluginName(buffer, fileName, authorName) {
   const out = {
     manufacturers: {},
     fixtures: {},
@@ -117,7 +117,7 @@ module.exports.import = function importPluginName(buffer, fileName, authorName) 
   const fileContent = buffer.toString();
   const couldNotParse = fileContent.includes(`Error`);
   if (couldNotParse) {
-    return Promise.reject(new Error(`Could not parse '${fileName}'.`));
+    throw new Error(`Could not parse '${fileName}'.`);
   }
 
   fixtureObject.name = `Thunder Wash 600 RGB`;
@@ -128,11 +128,9 @@ module.exports.import = function importPluginName(buffer, fileName, authorName) 
   // That's the imported fixture
   out.fixtures[`${manKey}/${fixKey}`] = fixtureObject;
 
-  return Promise.resolve(out);
+  return out;
 };
 ```
-
-Note that this example did not use asynchronous functions, so `Promise.resolve` and `Promise.reject` are called to wrap the (synchronously obtained) results in a Promise.
 
 ## Export tests
 
