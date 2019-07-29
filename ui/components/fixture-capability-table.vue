@@ -11,25 +11,21 @@
     <thead>
       <tr>
         <th colspan="3" style="text-align: center">DMX values</th>
-        <th /> <!-- color -->
+        <th /> <!-- icon -->
         <th>Capability</th>
         <th /> <!-- menuClick -->
       </tr>
     </thead>
     <tbody>
       <template v-for="(cap, index) in capabilities">
-        <tr :key="`cap-${index}`">
+        <tr :key="`cap-${index}`" :class="`capability capability-${cap.model.type}`">
           <td class="capability-range0"><code>{{ cap.dmxRangeStart }} </code></td>
           <td class="capability-range-separator"><code>…</code></td>
           <td class="capability-range1"><code>{{ cap.dmxRangeEnd }}</code></td>
 
-          <td
-            v-if="cap.model.colors !== null"
-            :title="cap.colorDescription"
-            class="capability-color">
-            <app-svg :colors="cap.model.colors.allColors" type="color-circle" />
+          <td class="capability-icon">
+            <app-fixture-capability-type-icon :capability="cap.model" />
           </td>
-          <td v-else />
 
           <td class="capability-name">{{ cap.model.name }}</td>
 
@@ -42,9 +38,10 @@
 
         <tr
           v-for="switchChannel in cap.switchChannels"
-          :key="`cap-${index}-switch-${switchChannel.key}`">
+          :key="`cap-${index}-switch-${switchChannel.key}`"
+          class="switch-to-channel">
           <td colspan="4" />
-          <td colspan="2" class="switch-to-channel">
+          <td colspan="2">
             <span class="switching-channel-key">Channel&nbsp;{{ switchChannel.index + 1 }} →</span>&nbsp;{{ switchChannel.to }}
           </td>
         </tr>
@@ -82,6 +79,11 @@ td, th {
   vertical-align: top;
 }
 
+.capability-NoFunction,
+.capability-NoFunction + .switch-to-channel {
+  opacity: 0.6;
+}
+
 .capability-range0 {
   text-align: right;
   padding-right: 2px;
@@ -103,7 +105,7 @@ td, th {
   text-align: right;
 }
 
-.switch-to-channel {
+.switch-to-channel > td {
   line-height: 1rem;
   padding-bottom: 4px;
   font-size: 82%;
@@ -118,6 +120,7 @@ td, th {
 <script>
 import svg from '~/components/svg.vue';
 import helpWantedMessage from '~/components/help-wanted-message.vue';
+import fixtureCapabilityTypeIconVue from '~/components/fixture-capability-type-icon.vue';
 
 import CoarseChannel from '~~/lib/model/CoarseChannel.mjs';
 import Mode from '~~/lib/model/Mode.mjs';
@@ -125,7 +128,8 @@ import Mode from '~~/lib/model/Mode.mjs';
 export default {
   components: {
     'app-svg': svg,
-    'app-help-wanted-message': helpWantedMessage
+    'app-help-wanted-message': helpWantedMessage,
+    'app-fixture-capability-type-icon': fixtureCapabilityTypeIconVue
   },
   props: {
     channel: {
@@ -164,7 +168,6 @@ export default {
             model: cap,
             dmxRangeStart: dmxRange.start,
             dmxRangeEnd: dmxRange.end,
-            colorDescription: getColorDescription(cap),
             switchChannels: switchChannels.sort((a, b) => a.index - b.index) // ascending indices
           };
         }
@@ -172,21 +175,4 @@ export default {
     }
   }
 };
-
-/**
- * @param {Capability} capability The capability model object.
- * @returns {string|null} A string describing the colors of this capability, or null if it has no colors.
- */
-function getColorDescription(capability) {
-  if (capability.colors === null) {
-    return null;
-  }
-
-  if (capability.colors.isStep) {
-    const plural = capability.colors.allColors.length > 1 ? `colors` : `color`;
-    return `${plural}: ${capability.colors.allColors.join(`, `)}`;
-  }
-
-  return `transition from ${capability.colors.startColors.join(`, `)} to ${capability.colors.endColors.join(`, `)}`;
-}
 </script>

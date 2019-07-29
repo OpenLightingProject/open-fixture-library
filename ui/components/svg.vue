@@ -41,18 +41,15 @@ export default {
       type: Array,
       required: false,
       default: () => []
+    },
+    title: {
+      type: String,
+      required: false,
+      default: null
     }
   },
   computed: {
     svgMarkup() {
-      if (this.type === `category`) {
-        return getCategoryIcon(this.name);
-      }
-
-      if (this.type === `channel-type`) {
-        return getChannelTypeIcon(this.name);
-      }
-
       if (this.type === `color-circle`) {
         let colors = this.colors;
 
@@ -76,10 +73,10 @@ export default {
           colors = [colorLookup[this.name]];
         }
 
-        return getColorCircle(colors, this.name);
+        return getColorCircle(colors, this.title || this.name);
       }
 
-      return getSvg(this.name);
+      return getSvg(this.name, this.type, this.title);
     }
   }
 };
@@ -87,48 +84,32 @@ export default {
 
 /**
  * Returns the contents of the provided SVG file as an inline SVG.
- * @param {string} svgBasename Name of the file (withoug extension).
- * @param {array.<string>} classNames List of class names the <svg> tag should have.
+ * @param {string} name Name of the icon (without extension).
+ * @param {string|null} category The category (directory) of the icon.
+ * @param {string|null} title An optional (tooltip) title for the icon.
  * @returns {string} The inline <svg> tag or an empty string if the file was not found.
  */
-function getSvg(svgBasename, classNames = []) {
-  let svg = svgBasename in icons ? icons[svgBasename].replace(/\s+$/, ``) : ``;
+function getSvg(name, category = null, title) {
+  if (name === ``) {
+    return ``;
+  }
 
-  if (classNames.length > 0) {
-    svg = svg.replace(/<svg([^>]*)>/, `<svg$1 class="${classNames.join(` `)}">`);
+  const kebabName = name.replace(/([a-z])([A-Z])/g, `$1-$2`).toLowerCase().replace(/[^\w]+/g, `-`);
+  const svgBasename = (category ? `${category}/` : ``) + kebabName;
+  let svg = ``;
+
+  if (svgBasename in icons) {
+    svg = icons[svgBasename].trim();
+  }
+  else {
+    console.error(`Icon '${svgBasename}' not found`);
+  }
+
+  if (title) {
+    svg = svg.replace(/(<svg[^>]*)>/, `$1 aria-label="${title}"><title>${title}</title>`);
   }
 
   return svg;
-}
-
-
-/**
- * Get an icon for the provided category.
- * @param {string} categoryName Name of the category.
- * @param {array.<string>} classNames List of class names the <svg> tag should have.
- * @returns {string} The inline <svg> tag or an empty string if the file was not found.
- */
-function getCategoryIcon(categoryName, classNames = []) {
-  const sanitzedCategoryName = categoryName.toLowerCase().replace(/[^\w]+/g, `-`);
-  classNames.push(`category-${sanitzedCategoryName}`, `category-icon`);
-
-  const svg = getSvg(`categories/${sanitzedCategoryName}`, classNames);
-  return svg.replace(/(<svg[^>]*>)/, `$1<title>Category: ${categoryName}</title>`);
-}
-
-
-/**
- * Get an icon for the provided channel type.
- * @param {string} channelType Channel type to find the icon for.
- * @param {array.<string>} classNames List of class names the <svg> tag should have.
- * @returns {string} The inline <svg> tag or an empty string if the file was not found.
- */
-function getChannelTypeIcon(channelType, classNames = []) {
-  const sanitzedChannelType = channelType.toLowerCase().replace(/[^\w]+/g, `-`);
-  classNames.push(`channel${sanitzedChannelType}`, `channel-icon`);
-
-  const svg = getSvg(`channel-types/${sanitzedChannelType}`, classNames);
-  return svg.replace(/(<svg[^>]*>)/, `$1<title>Channel type: ${channelType}</title>`);
 }
 
 

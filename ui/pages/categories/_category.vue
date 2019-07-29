@@ -15,7 +15,7 @@
               :key="cat"
               :name="cat"
               :class="{ inactive: cat !== categoryName, right: true }"
-              type="category" />
+              type="fixture" />
           </nuxt-link>
         </li>
       </ul>
