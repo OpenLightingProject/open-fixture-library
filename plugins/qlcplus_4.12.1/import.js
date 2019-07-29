@@ -58,7 +58,7 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
 
   addOflFixturePhysical(fixture, qlcPlusFixture);
 
-  fixture.matrix = {};
+  fixture.matrix = getOflMatrix(qlcPlusFixture);
   fixture.wheels = getOflWheels(qlcPlusFixture);
   fixture.availableChannels = {};
   fixture.templateChannels = {};
@@ -118,6 +118,27 @@ function addOflFixturePhysical(fixture, qlcPlusFixture) {
       spacing: [0, 0, 0]
     };
   }
+}
+
+/**
+ * @param {object} qlcPlusFixture The QLC+ fixture object.
+ * @returns {object} The OFL matrix object (may be empty).
+ */
+function getOflMatrix(qlcPlusFixture) {
+  const matrix = {};
+
+  const physicalLayouts = qlcPlusFixture.Mode.concat(qlcPlusFixture)
+    .filter(obj => `Physical` in obj && `Layout` in obj.Physical[0])
+    .map(obj => obj.Physical[0].Layout[0]);
+
+  if (physicalLayouts) {
+    const maxWidth = Math.max(...physicalLayouts.map(layout => parseInt(layout.$.Width)));
+    const maxHeight = Math.max(...physicalLayouts.map(layout => parseInt(layout.$.Height)));
+
+    matrix.pixelCount = [maxWidth, maxHeight, 1];
+  }
+
+  return matrix;
 }
 
 /**
