@@ -151,7 +151,7 @@ function getOflWheels(qlcPlusFixture) {
 
   for (const channel of qlcPlusFixture.Channel || []) {
     const channelName = channel.$.Name;
-    if (/wheel\b/i.test(channelName) && !/(rotation|index)/i.test(channelName) && channel.Group[0]._ !== `Speed`) {
+    if (/wheel\b/i.test(channelName) && !/(rotation|index)/i.test(channelName) && `Group` in channel && channel.Group[0]._ !== `Speed`) {
       wheels[channelName] = {
         slots: getSlots(channel)
       };
@@ -299,7 +299,7 @@ function getOflChannel(qlcPlusChannel, qlcPlusFixture, oflWheels) {
     };
 
     const channelName = qlcPlusChannel.$.Name.trim();
-    const channelType = qlcPlusChannel.Group[0]._;
+    const channelType = `Group` in qlcPlusChannel ? qlcPlusChannel.Group[0]._ : ``;
     const capabilityName = (qlcPlusCapability._ || ``).trim();
 
     // first check if it can be a NoFunction capability
