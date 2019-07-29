@@ -49,21 +49,22 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
     }
   };
 
-  // fill in one empty mode so we don't have to check this case anymore
   if (!(`Mode` in qlcPlusFixture)) {
-    qlcPlusFixture.Mode = [{
-      Physical: [{}]
-    }];
+    qlcPlusFixture.Mode = [];
+  }
+  if (!(`Channel` in qlcPlusFixture)) {
+    qlcPlusFixture.Channel = [];
   }
 
-  fixture.physical = getOflPhysical(qlcPlusFixture.Mode[0].Physical[0], {});
+  addOflFixturePhysical(fixture, qlcPlusFixture);
+
   fixture.matrix = {};
   fixture.wheels = getOflWheels(qlcPlusFixture);
   fixture.availableChannels = {};
   fixture.templateChannels = {};
 
   const doubleByteChannels = [];
-  for (const channel of qlcPlusFixture.Channel || []) {
+  for (const channel of qlcPlusFixture.Channel) {
     fixture.availableChannels[channel.$.Name] = getOflChannel(channel, qlcPlusFixture, fixture.wheels);
 
     if (`Group` in channel && channel.Group[0].$.Byte === `1`) {
@@ -81,6 +82,23 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
 
   return out;
 };
+
+/**
+ * Adds a global physical object to the OFL fixture object, if necessary.
+ * @param {object} fixture The OFL fixture object.
+ * @param {object} qlcPlusFixture The QLC+ fixture object.
+ */
+function addOflFixturePhysical(fixture, qlcPlusFixture) {
+  const allModesHavePhysical = qlcPlusFixture.Mode.every(mode => `Physical` in mode);
+  const firstPhysicalMode = qlcPlusFixture.Mode.find(mode => `Physical` in mode);
+  const hasGlobalPhysical = `Physical` in qlcPlusFixture;
+
+  if (!hasGlobalPhysical && (allModesHavePhysical || !firstPhysicalMode)) {
+    return;
+  }
+
+  fixture.physical = getOflPhysical(hasGlobalPhysical ? qlcPlusFixture.Physical[0] : firstPhysicalMode.Physical[0]);
+}
 
 /**
  * Try to extract (guessed) wheels from all channels / capabilities.
@@ -460,22 +478,20 @@ function getOflChannel(qlcPlusChannel, qlcPlusFixture, oflWheels) {
 
 /**
  * @param {object} qlcPlusPhysical The QLC+ mode's physical object.
- * @param {object} oflFixPhysical The OFL fixture's physical object.
+ * @param {object|undefined} [oflFixPhysical={}] The OFL fixture's physical object.
  * @returns {object} The OFL mode's physical object.
  */
-function getOflPhysical(qlcPlusPhysical, oflFixPhysical) {
+function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
   const physical = {};
 
   addDimensions();
   addTechnical();
 
   if (`Bulb` in qlcPlusPhysical) {
-    physical.bulb = {};
     addBulb();
   }
 
   if (`Lens` in qlcPlusPhysical) {
-    physical.lens = {};
     addLens();
   }
 
@@ -541,6 +557,8 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical) {
    * Handles the Bulb section.
    */
   function addBulb() {
+    physical.bulb = {};
+
     const type = qlcPlusPhysical.Bulb[0].$.Type;
     if (type !== `` && getOflPhysicalProperty(`bulb`, `type`) !== type) {
       physical.bulb.type = type;
@@ -561,6 +579,8 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical) {
    * Handles the Lens section.
    */
   function addLens() {
+    physical.lens = {};
+
     const name = qlcPlusPhysical.Lens[0].$.Name;
     if (name !== `` && getOflPhysicalProperty(`lens`, `name`) !== name) {
       physical.lens.name = name;
@@ -593,7 +613,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical) {
 
 /**
  * @param {object} qlcPlusMode The QLC+ mode object.
- * @param {object} oflFixPhysical The OFL fixture's physical object.
+ * @param {object|undefined} oflFixPhysical The OFL fixture's physical object.
  * @param {array.<string>} warningsArray This fixture's warnings array in the `out` object.
  * @returns {object} The OFL mode object.
  */
@@ -602,10 +622,12 @@ function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
     name: qlcPlusMode.$.Name
   };
 
-  const physical = getOflPhysical(qlcPlusMode.Physical[0], oflFixPhysical);
+  if (`Physical` in qlcPlusMode) {
+    const physical = getOflPhysical(qlcPlusMode.Physical[0], oflFixPhysical);
 
-  if (JSON.stringify(physical) !== `{}`) {
-    mode.physical = physical;
+    if (JSON.stringify(physical) !== `{}`) {
+      mode.physical = physical;
+    }
   }
 
   mode.channels = [];
