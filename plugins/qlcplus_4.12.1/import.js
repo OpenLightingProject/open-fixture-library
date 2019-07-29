@@ -204,6 +204,10 @@ function getOflChannel(qlcPlusChannel, qlcPlusFixture, oflWheels) {
     dmxValueResolution: `8bit`
   };
 
+  if (`Default` in qlcPlusChannel.$) {
+    channel.defaultValue = parseInt(qlcPlusChannel.$.Default);
+  }
+
   const [panMax, tiltMax] = [`PanMax`, `TiltMax`].map(
     prop => Math.max(...qlcPlusFixture.Mode.map(mode => {
       if (mode.Physical && mode.Physical[0].Focus && mode.Physical[0].Focus[0].$[prop]) {
@@ -232,6 +236,10 @@ function getOflChannel(qlcPlusChannel, qlcPlusFixture, oflWheels) {
     channel.capability = channel.capabilities[0];
     delete channel.capabilities;
     delete channel.capability.dmxRange;
+
+    if (!(`defaultValue` in channel)) {
+      delete channel.dmxValueResolution;
+    }
   }
 
   return channel;
@@ -707,10 +715,6 @@ function cleanUpFixture(fixture, qlcPlusFixture) {
   for (const chKey of Object.keys(fixture.availableChannels)) {
     const channel = fixture.availableChannels[chKey];
 
-    if (`capability` in channel) {
-      // no DMX values used in this channel
-      delete channel.dmxValueResolution;
-    }
     if (channel.fineChannelAliases.length === 0) {
       delete channel.fineChannelAliases;
       delete channel.dmxValueResolution;
