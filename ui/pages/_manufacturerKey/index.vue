@@ -37,7 +37,7 @@
               v-for="cat in fixture.categories"
               :key="cat"
               :name="cat"
-              type="category"
+              type="fixture"
               class="right inactive" />
           </nuxt-link>
         </li>

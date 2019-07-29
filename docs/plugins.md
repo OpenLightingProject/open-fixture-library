@@ -21,6 +21,7 @@ node cli/export-fixture.js -p <plugin> <fixture> [<more fixtures>]
 
 If exporting is supported, create a `plugins/<plugin-key>/export.js` module that provides the plugin name, version and a method that generates the needed third-party files out of an given array of [Fixture](model-api.md#Fixture) objects. This method should return a Promise of an array of objects for each file that should be exported / downloadable; the files are zipped together automatically if necessary. A file object looks like this:
 
+<!-- eslint-skip -->
 ```js
 {
   name: `filename.ext`, // Required, may include forward slashes to generate a folder structure
@@ -34,7 +35,7 @@ If exporting is supported, create a `plugins/<plugin-key>/export.js` module that
 A very simple export plugin looks like this:
 
 ```js
-module.exports.version = `0.1.0`;  // semantic versioning of export plugin
+module.exports.version = `0.1.0`; // semantic versioning of export plugin
 
 /**
  * @param {array.<Fixture>} fixtures An array of Fixture objects, see our fixture model
@@ -43,7 +44,7 @@ module.exports.version = `0.1.0`;  // semantic versioning of export plugin
  * @param {Date|null} options.date The current time (prefer this over new Date())
  * @returns {Promise.<array.<object>, Error>} All generated files (see file schema above)
 */
-module.exports.export = function exportPluginName(fixtures, options) {
+module.exports.export = async function exportPluginName(fixtures, options) {
   const outfiles = [];
 
   for (const fixture of fixtures) {
@@ -59,7 +60,7 @@ module.exports.export = function exportPluginName(fixtures, options) {
     }
   }
 
-  return Promise.resolve(outfiles);
+  return outfiles;
 };
 ```
 
@@ -69,6 +70,7 @@ If importing is supported, create a `plugins/<plugin-key>/import.js` module that
 
 As file parsing (like XML processing) can be asynchronous, the import method returns its results asynchronously using a [Promise](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise) that resolves to an object that looks like this:
 
+<!-- eslint-skip -->
 ```js
 {
   // Imported manufacturer data; like in manufacturers.json:
@@ -89,7 +91,7 @@ If the file can not be parsed by the import plugin or contains errors, the retur
 Example:
 
 ```js
-module.exports.version = `0.1.0`;  // semantic versioning of import plugin
+module.exports.version = `0.1.0`; // semantic versioning of import plugin
 
 /**
  * @param {Buffer} buffer The imported file.
@@ -98,7 +100,7 @@ module.exports.version = `0.1.0`;  // semantic versioning of import plugin
  * @returns {Promise.<object, Error>} A Promise resolving to an out object
  *                                    (see above) or rejects with an error.
 **/
-module.exports.import = function importPluginName(buffer, fileName, authorName) {
+module.exports.import = async function importPluginName(buffer, fileName, authorName) {
   const out = {
     manufacturers: {},
     fixtures: {},
@@ -115,7 +117,7 @@ module.exports.import = function importPluginName(buffer, fileName, authorName) 
   const fileContent = buffer.toString();
   const couldNotParse = fileContent.includes(`Error`);
   if (couldNotParse) {
-    return Promise.reject(new Error(`Could not parse '${fileName}'.`));
+    throw new Error(`Could not parse '${fileName}'.`);
   }
 
   fixtureObject.name = `Thunder Wash 600 RGB`;
@@ -126,11 +128,9 @@ module.exports.import = function importPluginName(buffer, fileName, authorName) 
   // That's the imported fixture
   out.fixtures[`${manKey}/${fixKey}`] = fixtureObject;
 
-  return Promise.resolve(out);
+  return out;
 };
 ```
-
-Note that this example did not use asynchronous functions, so `Promise.resolve` and `Promise.reject` are called to wrap the (synchronously obtained) results in a Promise.
 
 ## Export tests
 
