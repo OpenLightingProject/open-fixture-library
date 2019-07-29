@@ -31,7 +31,7 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
   const fixKey = `${manKey}/${slugify(fixture.name)}`;
   out.warnings[fixKey] = [`Please check if manufacturer is correct.`];
 
-  fixture.categories = [qlcPlusFixture.Type[0]];
+  fixture.categories = getOflCategories(qlcPlusFixture);
 
   const authors = qlcPlusFixture.Creator[0].Author[0].split(/,\s*/);
   if (!authors.includes(authorName)) {
@@ -84,6 +84,20 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
 };
 
 /**
+ * @param {object} qlcPlusFixture The QLC+ fixture object.
+ * @returns {array.<string>} The OFL fixture categories.
+ */
+function getOflCategories(qlcPlusFixture) {
+  const category = qlcPlusFixture.Type[0];
+
+  if (category.startsWith(`LED Bar`)) {
+    return [`Pixel Bar`];
+  }
+
+  return [category];
+}
+
+/**
  * Adds a global physical object to the OFL fixture object, if necessary.
  * @param {object} fixture The OFL fixture object.
  * @param {object} qlcPlusFixture The QLC+ fixture object.
@@ -98,6 +112,12 @@ function addOflFixturePhysical(fixture, qlcPlusFixture) {
   }
 
   fixture.physical = getOflPhysical(hasGlobalPhysical ? qlcPlusFixture.Physical[0] : firstPhysicalMode.Physical[0]);
+
+  if (hasGlobalPhysical && qlcPlusFixture.Type[0] === `LED Bar (Pixels)`) {
+    fixture.physical.matrixPixels = {
+      spacing: [0, 0, 0]
+    };
+  }
 }
 
 /**
