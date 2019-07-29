@@ -25,7 +25,6 @@ Please update these docs and [`cli/debug-env-variables.js`](../cli/debug-env-var
 |`PORT`                             | A free port number, defaults to `5000`     | On which port to start the server. |
 |`TRAVIS_BRANCH`                    |                                            | [Set by Travis][travis-docs]       |
 |`TRAVIS_COMMIT`                    |                                            | [Set by Travis][travis-docs]       |
-|`TRAVIS_EVENT_TYPE`                |                                            | [Set by Travis][travis-docs]       |
 |`TRAVIS_JOB_WEB_URL`               |                                            | [Set by Travis][travis-docs]       |
 |`TRAVIS_PULL_REQUEST`              |                                            | [Set by Travis][travis-docs]       |
 |`TRAVIS_PULL_REQUEST_SLUG`         |                                            | [Set by Travis][travis-docs]       |
