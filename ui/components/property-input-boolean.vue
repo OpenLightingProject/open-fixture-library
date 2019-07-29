@@ -1,13 +1,13 @@
 <template>
-  <select
-    ref="input"
-    v-model="localValue"
-    :required="required"
-    :class="{ boolean: true, empty: value === null }">
-    <option :value="null" :disabled="required">unknown</option>
-    <option :value="true">yes</option>
-    <option :value="false">no</option>
-  </select>
+  <span>
+    <input
+      ref="input"
+      v-model="localValue"
+      type="checkbox"
+      :required="required"
+      :name="name">
+    {{ label }}
+  </span>
 </template>
 
 <script>
@@ -22,23 +22,18 @@ export default {
       required: false,
       default: false
     },
-    hint: {
-      type: String,
-      required: false,
-      default: null
-    },
-    additionHint: {
-      type: String,
-      required: false,
-      default: null
-    },
-    autoFocus: {
-      type: Boolean,
-      required: false,
-      default: false
-    },
     value: {
       type: Boolean,
+      required: false,
+      default: null
+    },
+    name: {
+      type: String,
+      required: false,
+      default: null
+    },
+    label: {
+      type: String,
       required: false,
       default: null
     }
@@ -49,13 +44,8 @@ export default {
         return this.value;
       },
       set(newValue) {
-        this.$emit(`input`, newValue);
+        this.$emit(`input`, newValue ? true : null);
       }
-    }
-  },
-  mounted() {
-    if (this.autoFocus) {
-      this.focus();
     }
   },
   methods: {
