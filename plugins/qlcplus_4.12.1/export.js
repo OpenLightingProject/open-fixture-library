@@ -43,7 +43,7 @@ module.exports.version = `1.1.1`;
  * @param {Date|null} options.date The current time.
  * @returns {Promise.<array.<object>, Error>} The generated files.
 */
-module.exports.export = function exportQlcPlus(fixtures, options) {
+module.exports.export = async function exportQlcPlus(fixtures, options) {
   const outFiles = fixtures.map(fixture => {
     const xml = xmlbuilder.begin()
       .declaration(`1.0`, `UTF-8`)
@@ -97,7 +97,7 @@ module.exports.export = function exportQlcPlus(fixtures, options) {
     };
   });
 
-  return Promise.resolve(outFiles);
+  return outFiles;
 };
 
 /**
