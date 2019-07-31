@@ -134,6 +134,51 @@ function getOflMatrix(qlcPlusFixture) {
   return matrix;
 }
 
+const slotTypeFunctions = {
+  Open: {
+    isSlotType: (cap, chGroup, capPreset) => cap._ === `Open`,
+    addSlotProperties: (cap, slot) => {}
+  },
+  Gobo: {
+    isSlotType: (cap, chGroup, capPreset) => (capPreset ? capPreset === `GoboMacro` : chGroup === `Gobo`),
+    addSlotProperties: (cap, slot) => {
+      slot.name = cap._;
+    }
+  },
+  Color: {
+    isSlotType: (cap, chGroup, capPreset) => (capPreset ? [`ColourMacro`, `ColourDoubleMacro`].includes(capPreset) : chGroup === `Colour`),
+    addSlotProperties: (cap, slot) => {
+      slot.name = cap._;
+
+      const colors = [`Color`, `Color2`, `Res1`, `Res2`]
+        .filter(attr => attr in cap.$)
+        .map(attr => cap.$[attr]);
+
+      if (colors.length) {
+        slot.colors = colors;
+      }
+    }
+  },
+  Prism: {
+    isSlotType: (cap, chGroup, capPreset) => (capPreset ? capPreset === `PrismEffectOn` : chGroup === `Prism`),
+    addSlotProperties: (cap, slot) => {
+      slot.name = cap._;
+
+      if (`Res1` in cap.$) {
+        slot.facets = parseInt(cap.$.Res1);
+      }
+    }
+  },
+
+  // default (has to be the last element!)
+  Unknown: {
+    isSlotType: (cap, chGroup, capPreset) => true,
+    addSlotProperties: (cap, slot) => {
+      slot.name = cap._;
+    }
+  }
+};
+
 /**
  * Try to extract (guessed) wheels from all channels / capabilities.
  * @param {object} qlcPlusFixture The QLC+ fixture object.
@@ -142,14 +187,22 @@ function getOflMatrix(qlcPlusFixture) {
 function getOflWheels(qlcPlusFixture) {
   const wheels = {};
 
-  for (const channel of qlcPlusFixture.Channel) {
+  qlcPlusFixture.Channel.forEach(channel => {
     const channelName = channel.$.Name;
-    if (/wheel\b/i.test(channelName) && !/(rotation|index)/i.test(channelName) && `Group` in channel && channel.Group[0]._ !== `Speed`) {
+
+    const hasGoboPresetCap = (channel.Capability || []).some(
+      cap => [`GoboMacro`, `GoboShakeMacro`].includes(cap.$.Preset)
+    );
+
+    const isWheelChannel = /wheel\b/i.test(channelName) || hasGoboPresetCap;
+    const isRotationChannel = /(rotation|index)/i.test(channelName) || (`Group` in channel && channel.Group[0]._ === `Speed`);
+
+    if (isWheelChannel && !isRotationChannel) {
       wheels[channelName] = {
         slots: getSlots(channel)
       };
     }
-  }
+  });
 
   return Object.keys(wheels).length > 0 ? wheels : undefined;
 
@@ -162,55 +215,19 @@ function getOflWheels(qlcPlusFixture) {
     const slots = [];
 
     (qlcPlusChannel.Capability || []).forEach(capability => {
-      if (/\b(CW|CCW)\b/.test(capability._)) {
+      if (/\b(CW|CCW|rainbow|stop|clockwise|counterclockwise)\b/.test(capability._)) {
         // skip rotation capabilities
         return;
       }
 
-      const slotTypeFunctions = {
-        Open: {
-          isSlotType: (cap, group) => cap._ === `Open`,
-          addSlotProperties: (cap, slot) => {}
-        },
-        Gobo: {
-          isSlotType: (cap, group) => group === `Gobo`,
-          addSlotProperties: (cap, slot) => {
-            slot.name = cap._;
-          }
-        },
-        Color: {
-          isSlotType: (cap, group) => group === `Colour`,
-          addSlotProperties: (cap, slot) => {
-            slot.name = cap._;
+      const capabilityPreset = capability.$.Preset;
 
-            if (`Color` in cap.$) {
-              slot.colors = [cap.$.Color];
-
-              if (`Color2` in cap.$) {
-                slot.colors.push(cap.$.Color2);
-              }
-            }
-          }
-        },
-        Prism: {
-          isSlotType: (cap, group) => group === `Prism`,
-          addSlotProperties: (cap, slot) => {
-            slot.name = cap._;
-          }
-        },
-
-        // default (has to be the last element!)
-        Unknown: {
-          isSlotType: (cap, group) => true,
-          addSlotProperties: (cap, slot) => {
-            slot.name = cap._;
-          }
-        }
-      };
-
+      if (capabilityPreset === `GoboShakeMacro`) {
+        return;
+      }
 
       const slotType = Object.keys(slotTypeFunctions).find(
-        slotType => slotTypeFunctions[slotType].isSlotType(capability, qlcPlusChannel.Group[0]._)
+        slotType => slotTypeFunctions[slotType].isSlotType(capability, qlcPlusChannel.Group[0]._, capabilityPreset)
       );
 
       const slot = {
@@ -415,6 +432,177 @@ const qlcPlusChannelPresets = {
   })
 };
 
+const getShutterStrobeCap = (shutterEffect, speedStart, speedEnd, randomTiming) => {
+  const cap = {
+    type: `ShutterStrobe`,
+    shutterEffect
+  };
+
+  if (speedEnd) {
+    cap.speedStart = speedStart;
+    cap.speedEnd = speedEnd;
+  }
+  else if (speedStart) {
+    cap.speed = speedStart;
+  }
+
+  if (randomTiming) {
+    cap.randomTiming = true;
+  }
+
+  return cap;
+};
+
+const getRotationCapType = ({ channelName, channelType }) => {
+  if ([`Pan`, `Tilt`].includes(channelType)) {
+    return `${channelType}Continuous`;
+  }
+
+  if ([`Colour`, `Gobo`].includes(channelType) || /\bgobo\b/i.test(channelName)) {
+    return /wheel\b/i.test(channelName) ? `WheelRotation` : `WheelSlotRotation`;
+  }
+
+  if (channelType === `Prism`) {
+    return `PrismRotation`;
+  }
+
+  return `Rotation`;
+};
+
+const getRotationSpeedCap = (capData, speedStart, speedEnd) => {
+  const cap = {
+    type: getRotationCapType(capData)
+  };
+
+  if (speedEnd) {
+    cap.speedStart = speedStart;
+    cap.speedEnd = speedEnd;
+  }
+  else if (speedStart) {
+    cap.speed = speedStart;
+  }
+
+  return cap;
+};
+
+const qlcPlusCapabilityPresets = {
+  SlowToFast: () => ({
+    type: `Speed`,
+    speedStart: `slow`,
+    speedEnd: `fast`
+  }),
+  FastToSlow: () => ({
+    type: `Speed`,
+    speedStart: `fast`,
+    speedEnd: `slow`
+  }),
+  NearToFar: () => ({
+    type: `Focus`,
+    distanceStart: `near`,
+    distanceEnd: `far`
+  }),
+  FarToNear: () => ({
+    type: `Focus`,
+    distanceStart: `far`,
+    distanceEnd: `near`
+  }),
+  BigToSmall: () => ({
+    type: `Iris`,
+    openPercentStart: `open`,
+    openPercentEnd: `closed`
+  }),
+  SmallToBig: () => ({
+    type: `Iris`,
+    openPercentStart: `closed`,
+    openPercentEnd: `open`
+  }),
+  ShutterOpen: () => ({
+    type: `ShutterStrobe`,
+    shutterEffect: `Open`
+  }),
+  ShutterClose: () => ({
+    type: `ShutterStrobe`,
+    shutterEffect: `Closed`
+  }),
+  StrobeSlowToFast: () => getShutterStrobeCap(`Strobe`, `slow`, `fast`),
+  StrobeFastToSlow: () => getShutterStrobeCap(`Strobe`, `fast`, `slow`),
+  StrobeRandom: () => getShutterStrobeCap(`Strobe`, null, null, true),
+  StrobeRandomSlowToFast: () => getShutterStrobeCap(`Strobe`, `slow`, `fast`, true),
+  StrobeRandomFastToSlow: () => getShutterStrobeCap(`Strobe`, `slow`, `fast`, true),
+  PulseSlowToFast: () => getShutterStrobeCap(`Pulse`, `slow`, `fast`),
+  PulseFastToSlow: () => getShutterStrobeCap(`Pulse`, `fast`, `slow`),
+  RampUpSlowToFast: () => getShutterStrobeCap(`RampUp`, `slow`, `fast`),
+  RampUpFastToSlow: () => getShutterStrobeCap(`RampUp`, `fast`, `slow`),
+  RampDownSlowToFast: () => getShutterStrobeCap(`RampDown`, `slow`, `fast`),
+  RampDownFastToSlow: () => getShutterStrobeCap(`RampDown`, `fast`, `slow`),
+  StrobeFrequency: ({ res1 }) => getShutterStrobeCap(`Strobe`, `${res1}Hz`),
+  StrobeFreqRange: ({ res1, res2 }) => getShutterStrobeCap(`Strobe`, `${res1}Hz`, `${res2}Hz`),
+  PulseFrequency: ({ res1 }) => getShutterStrobeCap(`Pulse`, `${res1}Hz`),
+  PulseFreqRange: ({ res1, res2 }) => getShutterStrobeCap(`Pulse`, `${res1}Hz`, `${res2}Hz`),
+  RampUpFrequency: ({ res1 }) => getShutterStrobeCap(`RampUp`, `${res1}Hz`),
+  RampUpFreqRange: ({ res1, res2 }) => getShutterStrobeCap(`RampUp`, `${res1}Hz`, `${res2}Hz`),
+  RampDownFrequency: ({ res1 }) => getShutterStrobeCap(`RampDown`, `${res1}Hz`),
+  RampDownFreqRange: ({ res1, res2 }) => getShutterStrobeCap(`RampDown`, `${res1}Hz`, `${res2}Hz`),
+  RotationStop: capData => getRotationSpeedCap(capData, `stop`),
+  RotationIndexed: capData => ({
+    type: getRotationCapType(capData),
+    angleStart: `0deg`,
+    angleEnd: `360deg`,
+    helpWanted: `Are these the correct angles?`
+  }),
+  RotationClockwise: capData => getRotationSpeedCap(capData, `fast CW`),
+  RotationClockwiseSlowToFast: capData => getRotationSpeedCap(capData, `slow CW`, `fast CW`),
+  RotationClockwiseFastToSlow: capData => getRotationSpeedCap(capData, `fast CW`, `slow CW`),
+  RotationCounterClockwise: capData => getRotationSpeedCap(capData, `fast CCW`),
+  RotationCounterClockwiseSlowToFast: capData => getRotationSpeedCap(capData, `slow CCW`, `fast CCW`),
+  RotationCounterClockwiseFastToSlow: capData => getRotationSpeedCap(capData, `fast CCW`, `slow CCW`),
+  ColorMacro: capData => qlcPlusCapabilityPresets.ColorDoubleMacro(capData),
+  ColorDoubleMacro: ({ channelName, res1, res2, index }) => {
+    if (channelName.match(/wheel\b/i)) {
+      return {
+        type: `WheelSlot`,
+        slotNumber: index + 1
+      };
+    }
+
+    const colors = [res1];
+    if (res2) {
+      colors.push(res2);
+    }
+
+    return {
+      type: `ColorPreset`,
+      comment: ``,
+      colors
+    };
+  },
+  ColorWheelIndex: () => ({
+    type: `WheelRotation`,
+    angleStart: `0deg`,
+    angleEnd: `360deg`,
+    helpWanted: `Are these the correct angles?`
+  }),
+  GoboMacro: ({ res1, index }) => ({
+    type: `WheelSlot`,
+    slotNumber: index + 1
+  }),
+  GoboShakeMacro: ({ res1, index }) => ({
+    type: `WheelShake`,
+    slotNumber: index + 1
+  }),
+  // GenericPicture: ({ res1 }) => ({}),
+  PrismEffectOn: ({ res1 }) => ({
+    type: `Prism`,
+    comment: res1 ? `${res1}-facet` : ``
+  }),
+  PrismEffectOff: () => ({
+    type: `NoFunction`
+  })
+  // Alias: () => ({})
+};
+
+const commentIsUnnecessary = (cap, channelName) => `comment` in cap && (cap.comment === channelName || !cap.comment.length || cap.comment.match(/^0%?\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*100%$/));
+
 /**
  * Adds a QLC+ channel to the OFL fixture's availableChannels object.
  * @param {object} fixture The OFL fixture object.
@@ -493,6 +681,32 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
     // first check if it can be a NoFunction capability
     if (capabilityName.match(/^(?:nothing|no func(?:tion)?|unused|not used|empty|no strobe|no prism|no frost)$/i)) {
       cap.type = `NoFunction`;
+      return cap;
+    }
+
+    if (`Preset` in qlcPlusCapability.$) {
+      const preset = qlcPlusCapability.$.Preset;
+
+      if (preset in qlcPlusCapabilityPresets) {
+        const capabilityFunction = qlcPlusCapabilityPresets[preset];
+        const capData = {
+          channelName,
+          channelType,
+          index: qlcPlusChannel.Capability.indexOf(qlcPlusCapability),
+          res1: qlcPlusCapability.$.Res1,
+          res2: qlcPlusCapability.$.Res2
+        };
+
+        Object.assign(cap, capabilityFunction(capData));
+
+        if (cap.comment) {
+          cap.comment += ` ${capabilityName}`;
+        }
+        else {
+          cap.comment = capabilityName;
+        }
+      }
+
       return cap;
     }
 
@@ -575,6 +789,10 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
         cap.type = `Effect`;
         cap.effectName = ``; // set it first here so effectName is before speedStart/speedEnd
         cap.effectName = getSpeedGuessedComment();
+
+        if (/\bsound\b/i.test(cap.effectName)) {
+          cap.soundControlled = true;
+        }
       },
       Maintenance() {
         cap.type = `Maintenance`;
@@ -674,7 +892,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
     }
 
     // delete unnecessary comments
-    if (`comment` in cap && (cap.comment === channelName || cap.comment.match(/^$|^0%?\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*100%$/))) {
+    if (commentIsUnnecessary(cap, channelName)) {
       delete cap.comment;
     }
 
