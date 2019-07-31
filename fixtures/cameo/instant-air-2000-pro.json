@@ -1,0 +1,51 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Instant Air 2000 Pro",
+  "shortName": " CLIA2000PRO",
+  "categories": ["Fan"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2019-07-31",
+    "lastModifyDate": "2019-07-31"
+  },
+  "comment": "Wind machine",
+  "links": {
+    "manual": [
+      "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLIA2000PRO/CLIA2000PRO_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/en/solutions/install/fog-effect-machines/wind-machines/20175/instant-air-2000-pro?c=1941"
+    ]
+  },
+  "physical": {
+    "dimensions": [385, 385, 515],
+    "weight": 8.6,
+    "power": 250,
+    "DMXconnector": "3-pin and 5-pin"
+  },
+  "availableChannels": {
+    "Fan": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "Rotation",
+          "speedStart": "440rpm",
+          "speedEnd": "2500rpm"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Fan"
+      ]
+    }
+  ]
+}
