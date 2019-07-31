@@ -1,6 +1,12 @@
 const xml2js = require(`xml2js`);
 const promisify = require(`util`).promisify;
 
+const {
+  getCapabilityFromChannelPreset,
+  getCapabilityFromCapabilityPreset,
+  importHelpers
+} = require(`./presets.js`);
+
 module.exports.version = `0.5.0`;
 
 /**
@@ -243,382 +249,6 @@ function getOflWheels(qlcPlusFixture) {
   }
 }
 
-const getColorIntensityCap = color => ({
-  type: `ColorIntensity`,
-  color
-});
-
-const getPanTiltCap = (panOrTilt, maxValue) => {
-  const cap = {
-    type: panOrTilt,
-    angleStart: `0deg`,
-    angleEnd: `${maxValue}deg`
-  };
-
-  if (maxValue === 0) {
-    cap.angleStart = `0%`;
-    cap.angleEnd = `100%`;
-    cap.helpWanted = `Can you provide exact angles?`;
-  }
-
-  return cap;
-};
-
-// channel presets ending with "Fine" are left out
-const qlcPlusChannelPresets = {
-  IntensityMasterDimmer: () => ({ type: `Intensity` }),
-  IntensityDimmer: () => ({ type: `Intensity` }),
-  IntensityRed: () => getColorIntensityCap(`Red`),
-  IntensityGreen: () => getColorIntensityCap(`Green`),
-  IntensityBlue: () => getColorIntensityCap(`Blue`),
-  IntensityCyan: () => getColorIntensityCap(`Cyan`),
-  IntensityMagenta: () => getColorIntensityCap(`Magenta`),
-  IntensityYellow: () => getColorIntensityCap(`Yellow`),
-  IntensityAmber: () => getColorIntensityCap(`Amber`),
-  IntensityWhite: () => getColorIntensityCap(`White`),
-  IntensityUV: () => getColorIntensityCap(`UV`),
-  IntensityIndigo: () => getColorIntensityCap(`Indigo`),
-  IntensityLime: () => getColorIntensityCap(`Lime`),
-  IntensityHue: () => ({ type: `Generic` }),
-  IntensitySaturation: () => ({ type: `Generic` }),
-  IntensityLightness: () => ({ type: `Generic` }),
-  IntensityValue: () => ({ type: `Generic` }),
-  NoFunction: () => ({ type: `NoFunction` }),
-  PositionPan: ({ panMax }) => getPanTiltCap(`Pan`, panMax),
-  PositionTilt: ({ tiltMax }) => getPanTiltCap(`Tilt`, tiltMax),
-  PositionXAxis: () => ({
-    type: `BeamPosition`,
-    horizontalAngleStart: `left`,
-    horizontalAngleEnd: `right`,
-    helpWanted: `Is this the correct direction? Can you provide exact angles?`
-  }),
-  PositionYAxis: () => ({
-    type: `BeamPosition`,
-    verticalAngleStart: `top`,
-    verticalAngleEnd: `bottom`,
-    helpWanted: `Is this the correct direction? Can you provide exact angles?`
-  }),
-  ColorRGBMixer: () => ({
-    // basically this is also Hue
-    type: `Generic`
-  }),
-  ColorCTOMixer: () => ({
-    type: `ColorTemperature`,
-    colorTemperatureStart: `default`,
-    colorTemperatureEnd: `warm`,
-    helpWanted: `Can you provide exact color temperature values in Kelvin?`
-  }),
-  ColorCTCMixer: () => ({
-    type: `ColorTemperature`,
-    colorTemperatureStart: `cold`,
-    colorTemperatureEnd: `warm`,
-    helpWanted: `Is this the correct direction? Can you provide exact color temperature values in Kelvin?`
-  }),
-  ColorCTBMixer: () => ({
-    type: `ColorTemperature`,
-    colorTemperatureStart: `default`,
-    colorTemperatureEnd: `cold`,
-    helpWanted: `Can you provide exact color temperature values in Kelvin?`
-  }),
-  SpeedPanSlowFast: () => ({
-    type: `PanTiltSpeed`,
-    speedStart: `slow`,
-    speedEnd: `fast`,
-    comment: `only Pan`
-  }),
-  SpeedPanFastSlow: () => ({
-    type: `PanTiltSpeed`,
-    speedStart: `fast`,
-    speedEnd: `slow`,
-    comment: `only Pan`
-  }),
-  SpeedTiltSlowFast: () => ({
-    type: `PanTiltSpeed`,
-    speedStart: `slow`,
-    speedEnd: `fast`,
-    comment: `only Tilt`
-  }),
-  SpeedTiltFastSlow: () => ({
-    type: `PanTiltSpeed`,
-    speedStart: `fast`,
-    speedEnd: `slow`,
-    comment: `only Tilt`
-  }),
-  SpeedPanTiltSlowFast: () => ({
-    type: `PanTiltSpeed`,
-    speedStart: `slow`,
-    speedEnd: `fast`
-  }),
-  SpeedPanTiltFastSlow: () => ({
-    type: `PanTiltSpeed`,
-    speedStart: `fast`,
-    speedEnd: `slow`
-  }),
-  ColorMacro: () => ({
-    type: `ColorPreset`,
-    helpWanted: `Which color can be selected at which DMX values?`
-  }),
-  ColorWheel: () => ({
-    type: `WheelSlot`,
-    slotNumber: 1,
-    helpWanted: `Which color can be selected at which DMX values?`
-  }),
-  GoboWheel: () => ({
-    type: `WheelSlot`,
-    slotNumber: 1,
-    helpWanted: `Which gobo can be selected at which DMX values?`
-  }),
-  GoboIndex: () => ({
-    type: `WheelRotation`,
-    angleStart: `0deg`,
-    angleEnd: `360deg`,
-    helpWanted: `Are these the correct angles?`
-  }),
-  ShutterStrobeSlowFast: () => ({
-    type: `ShutterStrobe`,
-    shutterEffect: `Strobe`,
-    speedStart: `slow`,
-    speedEnd: `fast`,
-    helpWanted: `At which DMX values is strobe disabled?`
-  }),
-  ShutterStrobeFastSlow: () => ({
-    type: `ShutterStrobe`,
-    shutterEffect: `Strobe`,
-    speedStart: `fast`,
-    speedEnd: `slow`,
-    helpWanted: `At which DMX values is strobe disabled?`
-  }),
-  ShutterIrisMinToMax: () => ({
-    type: `Iris`,
-    openPercentStart: `closed`,
-    openPercentEnd: `open`
-  }),
-  ShutterIrisMaxToMin: () => ({
-    type: `Iris`,
-    openPercentStart: `open`,
-    openPercentEnd: `closed`
-  }),
-  BeamFocusNearFar: () => ({
-    type: `Focus`,
-    distanceStart: `near`,
-    distanceEnd: `far`
-  }),
-  BeamFocusFarNear: () => ({
-    type: `Focus`,
-    distanceStart: `far`,
-    distanceEnd: `near`
-  }),
-  BeamZoomSmallBig: () => ({
-    type: `Zoom`,
-    angleStart: `narrow`,
-    angleEnd: `wide`
-  }),
-  BeamZoomBigSmall: () => ({
-    type: `Zoom`,
-    angleStart: `wide`,
-    angleEnd: `narrow`
-  }),
-  PrismRotationSlowFast: () => ({
-    type: `PrismRotation`,
-    speedStart: `slow CW`,
-    speedEnd: `fast CW`,
-    helpWanted: `Does the prism rotate clockwise or counter-clockwise?`
-  }),
-  PrismRotationFastSlow: () => ({
-    type: `PrismRotation`,
-    speedStart: `fast CW`,
-    speedEnd: `slow CW`,
-    helpWanted: `Does the prism rotate clockwise or counter-clockwise?`
-  })
-};
-
-const getShutterStrobeCap = (shutterEffect, speedStart, speedEnd, randomTiming) => {
-  const cap = {
-    type: `ShutterStrobe`,
-    shutterEffect
-  };
-
-  if (speedEnd) {
-    cap.speedStart = speedStart;
-    cap.speedEnd = speedEnd;
-  }
-  else if (speedStart) {
-    cap.speed = speedStart;
-  }
-
-  if (randomTiming) {
-    cap.randomTiming = true;
-  }
-
-  return cap;
-};
-
-const getRotationCapType = ({ channelName, channelType }) => {
-  if ([`Pan`, `Tilt`].includes(channelType)) {
-    return `${channelType}Continuous`;
-  }
-
-  if ([`Colour`, `Gobo`].includes(channelType) || /\bgobo\b/i.test(channelName)) {
-    return /wheel\b/i.test(channelName) ? `WheelRotation` : `WheelSlotRotation`;
-  }
-
-  if (channelType === `Prism`) {
-    return `PrismRotation`;
-  }
-
-  return `Rotation`;
-};
-
-const getRotationSpeedCap = (capData, speedStart, speedEnd) => {
-  const cap = {
-    type: getRotationCapType(capData)
-  };
-
-  if (cap.type.startsWith(`Wheel`) && !capData.channelNameInWheels) {
-    cap.wheel = ``;
-  }
-
-  if (speedEnd) {
-    cap.speedStart = speedStart;
-    cap.speedEnd = speedEnd;
-  }
-  else if (speedStart) {
-    cap.speed = speedStart;
-  }
-
-  return cap;
-};
-
-const qlcPlusCapabilityPresets = {
-  SlowToFast: () => ({
-    type: `Speed`,
-    speedStart: `slow`,
-    speedEnd: `fast`
-  }),
-  FastToSlow: () => ({
-    type: `Speed`,
-    speedStart: `fast`,
-    speedEnd: `slow`
-  }),
-  NearToFar: () => ({
-    type: `Focus`,
-    distanceStart: `near`,
-    distanceEnd: `far`
-  }),
-  FarToNear: () => ({
-    type: `Focus`,
-    distanceStart: `far`,
-    distanceEnd: `near`
-  }),
-  BigToSmall: () => ({
-    type: `Iris`,
-    openPercentStart: `open`,
-    openPercentEnd: `closed`
-  }),
-  SmallToBig: () => ({
-    type: `Iris`,
-    openPercentStart: `closed`,
-    openPercentEnd: `open`
-  }),
-  ShutterOpen: () => ({
-    type: `ShutterStrobe`,
-    shutterEffect: `Open`
-  }),
-  ShutterClose: () => ({
-    type: `ShutterStrobe`,
-    shutterEffect: `Closed`
-  }),
-  StrobeSlowToFast: () => getShutterStrobeCap(`Strobe`, `slow`, `fast`),
-  StrobeFastToSlow: () => getShutterStrobeCap(`Strobe`, `fast`, `slow`),
-  StrobeRandom: () => getShutterStrobeCap(`Strobe`, null, null, true),
-  StrobeRandomSlowToFast: () => getShutterStrobeCap(`Strobe`, `slow`, `fast`, true),
-  StrobeRandomFastToSlow: () => getShutterStrobeCap(`Strobe`, `slow`, `fast`, true),
-  PulseSlowToFast: () => getShutterStrobeCap(`Pulse`, `slow`, `fast`),
-  PulseFastToSlow: () => getShutterStrobeCap(`Pulse`, `fast`, `slow`),
-  RampUpSlowToFast: () => getShutterStrobeCap(`RampUp`, `slow`, `fast`),
-  RampUpFastToSlow: () => getShutterStrobeCap(`RampUp`, `fast`, `slow`),
-  RampDownSlowToFast: () => getShutterStrobeCap(`RampDown`, `slow`, `fast`),
-  RampDownFastToSlow: () => getShutterStrobeCap(`RampDown`, `fast`, `slow`),
-  StrobeFrequency: ({ res1 }) => getShutterStrobeCap(`Strobe`, `${res1}Hz`),
-  StrobeFreqRange: ({ res1, res2 }) => getShutterStrobeCap(`Strobe`, `${res1}Hz`, `${res2}Hz`),
-  PulseFrequency: ({ res1 }) => getShutterStrobeCap(`Pulse`, `${res1}Hz`),
-  PulseFreqRange: ({ res1, res2 }) => getShutterStrobeCap(`Pulse`, `${res1}Hz`, `${res2}Hz`),
-  RampUpFrequency: ({ res1 }) => getShutterStrobeCap(`RampUp`, `${res1}Hz`),
-  RampUpFreqRange: ({ res1, res2 }) => getShutterStrobeCap(`RampUp`, `${res1}Hz`, `${res2}Hz`),
-  RampDownFrequency: ({ res1 }) => getShutterStrobeCap(`RampDown`, `${res1}Hz`),
-  RampDownFreqRange: ({ res1, res2 }) => getShutterStrobeCap(`RampDown`, `${res1}Hz`, `${res2}Hz`),
-  RotationStop: capData => getRotationSpeedCap(capData, `stop`),
-  RotationIndexed: capData => ({
-    type: getRotationCapType(capData),
-    angleStart: `0deg`,
-    angleEnd: `360deg`,
-    helpWanted: `Are these the correct angles?`
-  }),
-  RotationClockwise: capData => getRotationSpeedCap(capData, `fast CW`),
-  RotationClockwiseSlowToFast: capData => getRotationSpeedCap(capData, `slow CW`, `fast CW`),
-  RotationClockwiseFastToSlow: capData => getRotationSpeedCap(capData, `fast CW`, `slow CW`),
-  RotationCounterClockwise: capData => getRotationSpeedCap(capData, `fast CCW`),
-  RotationCounterClockwiseSlowToFast: capData => getRotationSpeedCap(capData, `slow CCW`, `fast CCW`),
-  RotationCounterClockwiseFastToSlow: capData => getRotationSpeedCap(capData, `fast CCW`, `slow CCW`),
-  ColorMacro: capData => qlcPlusCapabilityPresets.ColorDoubleMacro(capData),
-  ColorDoubleMacro: ({ channelName, res1, res2, index }) => {
-    if (channelName.match(/wheel\b/i)) {
-      return {
-        type: `WheelSlot`,
-        slotNumber: index + 1
-      };
-    }
-
-    const colors = [res1];
-    if (res2) {
-      colors.push(res2);
-    }
-
-    return {
-      type: `ColorPreset`,
-      comment: ``,
-      colors
-    };
-  },
-  ColorWheelIndex: () => ({
-    type: `WheelRotation`,
-    angleStart: `0deg`,
-    angleEnd: `360deg`,
-    helpWanted: `Are these the correct angles?`
-  }),
-  GoboMacro: ({ res1, index }) => ({
-    type: `WheelSlot`,
-    slotNumber: index + 1
-  }),
-  GoboShakeMacro: ({ capabilityName, res1, index }) => {
-    const cap = {
-      type: `WheelShake`,
-      slotNumber: index + 1
-    };
-
-    const comment = getSpeedGuessedComment(capabilityName, cap);
-
-    if (`speedStart` in cap) {
-      cap.shakeSpeedStart = cap.speedStart;
-      cap.shakeSpeedEnd = cap.speedEnd;
-      delete cap.speedStart;
-      delete cap.speedEnd;
-    }
-
-    cap.comment = comment;
-
-    return cap;
-  },
-  // GenericPicture: ({ res1 }) => ({}),
-  PrismEffectOn: ({ res1 }) => ({
-    type: `Prism`,
-    comment: res1 ? `${res1}-facet` : ``
-  }),
-  PrismEffectOff: () => ({
-    type: `NoFunction`
-  })
-  // Alias: () => ({})
-};
 
 const parserPerChannelType = {
   Nothing: () => ({
@@ -648,7 +278,7 @@ const parserPerChannelType = {
       cap.type = `WheelSlot`;
       cap.slotNumber = index + 1;
 
-      cap.comment = getSpeedGuessedComment(capabilityName, cap);
+      cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
 
       if (`speedStart` in cap) {
         cap.type = `WheelRotation`;
@@ -680,7 +310,7 @@ const parserPerChannelType = {
     if (/shake\b|shaking\b/i.test(capabilityName)) {
       cap.type = `WheelShake`;
 
-      const comment = getSpeedGuessedComment(capabilityName, cap);
+      const comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
 
       if (`speedStart` in cap) {
         cap.shakeSpeedStart = cap.speedStart;
@@ -693,7 +323,7 @@ const parserPerChannelType = {
       return cap;
     }
 
-    cap.comment = getSpeedGuessedComment(capabilityName, cap);
+    cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
 
     if (`speedStart` in cap) {
       cap.type = channelNameInWheels ? `WheelRotation` : `WheelSlotRotation`;
@@ -707,7 +337,7 @@ const parserPerChannelType = {
       type: `Effect`,
       effectName: `` // set it first here so effectName is before speedStart/speedEnd
     };
-    cap.effectName = getSpeedGuessedComment(capabilityName, cap);
+    cap.effectName = importHelpers.getSpeedGuessedComment(capabilityName, cap);
 
     if (/\bsound\b/i.test(cap.effectName)) {
       cap.soundControlled = true;
@@ -724,11 +354,11 @@ const parserPerChannelType = {
       const cap = {
         type: `PanContinuous`
       };
-      cap.comment = getSpeedGuessedComment(capabilityName, cap);
+      cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
       return cap;
     }
 
-    return Object.assign(getPanTiltCap(`Pan`, panMax), {
+    return Object.assign(importHelpers.getPanTiltCap(`Pan`, panMax), {
       comment: capabilityName
     });
   },
@@ -737,11 +367,11 @@ const parserPerChannelType = {
       const cap = {
         type: `TiltContinuous`
       };
-      cap.comment = getSpeedGuessedComment(capabilityName, cap);
+      cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
       return cap;
     }
 
-    return Object.assign(getPanTiltCap(`Tilt`, tiltMax), {
+    return Object.assign(importHelpers.getPanTiltCap(`Tilt`, tiltMax), {
       comment: capabilityName
     });
   },
@@ -781,7 +411,7 @@ const parserPerChannelType = {
       cap.randomTiming = true;
     }
 
-    cap.comment = getSpeedGuessedComment(capabilityName, cap);
+    cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
 
     return cap;
   },
@@ -795,44 +425,11 @@ const parserPerChannelType = {
       cap.type = `Speed`;
     }
 
-    cap.comment = getSpeedGuessedComment(capabilityName, cap);
+    cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
 
     return cap;
   }
 };
-
-/**
- * Try to guess speedStart / speedEnd from the capability name and set them
- * to the capability. It may also set cap.type to "Rotation".
- * @param {string} capabilityName The capability name to extract information from.
- * @param {object} cap The OFL capability object to add found properties to.
- * @returns {string} The rest of the capabilityName.
- */
-function getSpeedGuessedComment(capabilityName, cap) {
-  return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|C?CW)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i, (match, direction, start, end) => {
-    const directionStr = direction ? (direction.match(/^(?:clockwise|CW),?\s+$/i) ? ` CW` : ` CCW`) : ``;
-
-    if (directionStr !== ``) {
-      cap.type = `Rotation`;
-    }
-
-    start = start.toLowerCase();
-    end = end.toLowerCase();
-
-    const startNumber = parseFloat(start);
-    const endNumber = parseFloat(end);
-    if (!isNaN(startNumber) && !isNaN(endNumber)) {
-      start = `${startNumber}Hz`;
-      end = `${endNumber}Hz`;
-    }
-
-    cap.speedStart = start + directionStr;
-    cap.speedEnd = end + directionStr;
-
-    // delete the parsed part
-    return ``;
-  });
-}
 
 /**
  * Deletes the capability's comment if it adds no valuable information.
@@ -877,22 +474,10 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
     }))
   );
 
-  if (`Preset` in qlcPlusChannel.$) {
-    const preset = qlcPlusChannel.$.Preset;
+  const preset = qlcPlusChannel.$.Preset;
 
-    if (preset in qlcPlusChannelPresets) {
-      const capabilityFunction = qlcPlusChannelPresets[preset];
-      channel.capabilities = [capabilityFunction({
-        panMax,
-        tiltMax
-      })];
-    }
-    else {
-      channel.capabilities = [{
-        type: `Generic`,
-        helpWanted: `Unknown QLC+ channel preset ${preset}.`
-      }];
-    }
+  if (preset) {
+    channel.capabilities = [getCapabilityFromChannelPreset(preset, panMax, tiltMax)];
   }
   else if (`Capability` in qlcPlusChannel) {
     channel.capabilities = qlcPlusChannel.Capability.map(
@@ -948,20 +533,8 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
 
     const preset = qlcPlusCapability.$.Preset;
 
-    if (preset in qlcPlusCapabilityPresets) {
-      Object.assign(cap, qlcPlusCapabilityPresets[preset](capData));
-
-      if (!cap.comment || capabilityName.includes(cap.comment)) {
-        cap.comment = capabilityName;
-      }
-      else {
-        cap.comment += ` ${capabilityName}`;
-      }
-    }
-    else if (preset) {
-      cap.type = `Generic`;
-      cap.comment = capabilityName;
-      cap.helpWanted = `Unknown QLC+ capability preset ${preset}, Res1="${capData.res1}", Res2="${capData.res2}".`;
+    if (preset) {
+      Object.assign(cap, getCapabilityFromCapabilityPreset(preset, capData));
     }
     else {
       // try to parse capability based on type
