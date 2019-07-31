@@ -304,12 +304,11 @@ async function updateGithubIssue(urlResults) {
     const linkData = {};
 
     try {
-      body = body.replace(/\r\n/g, `\n`); // consistent newline character
-      const lines = body.split(`\n`);
-      lines.splice(0, 6); // delete first lines which only hold general data
+      const lines = body.split(/\r?\n/); // support both \n and \r\n newline types
+      const firstContentLine = lines.findIndex(line => line.startsWith(`|`)) + 2;
+      lines.splice(0, firstContentLine); // delete first lines which only hold general data
       for (const line of lines) {
-        const trimmedLine = line.slice(2, -2); // `| ... |` -> `...`
-        const cells = trimmedLine.split(` | `);
+        const cells = line.match(/(?<=\|)(.+?)(?=\|)/g).map(str => str.trim());
 
         const url = cells.shift();
         linkData[url] = cells.map(cell => {
