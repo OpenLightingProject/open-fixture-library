@@ -3,39 +3,37 @@
  */
 
 
-// ########## Helper functions for export ##########
+// ########## Helper functions ##########
 
-const isIncreasingSpeed = cap => cap.speed !== null && Math.abs(cap.speed[0].number) < Math.abs(cap.speed[1].number);
-const isDecreasingSpeed = cap => cap.speed !== null && Math.abs(cap.speed[0].number) > Math.abs(cap.speed[1].number);
-const isStopped = cap => cap.speed !== null && cap.speed[0].number === 0 && cap.speed[1].number === 0;
-const isIncreasingDuration = cap => cap.duration !== null && Math.abs(cap.duration[0].number) < Math.abs(cap.duration[1].number);
-const isDecreasingDuration = cap => cap.duration !== null && Math.abs(cap.duration[0].number) > Math.abs(cap.duration[1].number);
-const isColorIntensity = (cap, color) => cap.type === `ColorIntensity` && cap.color === color;
-const isShutterEffect = (cap, shutterEffect) => cap.type === `ShutterStrobe` && cap.shutterEffect === shutterEffect;
-const hasFrequency = cap => cap.speed !== null && (cap.speed[0].unit === `Hz` || cap.speed[0].unit === `bpm`);
-const isRotationSpeed = cap => (cap.type.endsWith(`Rotation`) || [`PanContinuous`, `TiltContinuous`, `Prism`].includes(cap.type)) && cap.speed !== null;
-const isRotationAngle = cap => (cap.type.endsWith(`Rotation`) || [`Pan`, `Tilt`, `Prism`].includes(cap.type)) && cap.angle !== null;
-const isBeamAngle = cap => (cap.type === `BeamAngle` || cap.type === `Zoom`) && cap.angle !== null;
+const exportHelpers = {
+  isIncreasingSpeed: cap => cap.speed !== null && Math.abs(cap.speed[0].number) < Math.abs(cap.speed[1].number),
+  isDecreasingSpeed: cap => cap.speed !== null && Math.abs(cap.speed[0].number) > Math.abs(cap.speed[1].number),
+  isStopped: cap => cap.speed !== null && cap.speed[0].number === 0 && cap.speed[1].number === 0,
+  isIncreasingDuration: cap => cap.duration !== null && Math.abs(cap.duration[0].number) < Math.abs(cap.duration[1].number),
+  isDecreasingDuration: cap => cap.duration !== null && Math.abs(cap.duration[0].number) > Math.abs(cap.duration[1].number),
+  isColorIntensity: (cap, color) => cap.type === `ColorIntensity` && cap.color === color,
+  isShutterEffect: (cap, shutterEffect) => cap.type === `ShutterStrobe` && cap.shutterEffect === shutterEffect,
+  hasFrequency: cap => cap.speed !== null && (cap.speed[0].unit === `Hz` || cap.speed[0].unit === `bpm`),
+  isRotationSpeed: cap => (cap.type.endsWith(`Rotation`) || [`PanContinuous`, `TiltContinuous`, `Prism`].includes(cap.type)) && cap.speed !== null,
+  isRotationAngle: cap => (cap.type.endsWith(`Rotation`) || [`Pan`, `Tilt`, `Prism`].includes(cap.type)) && cap.angle !== null,
+  isBeamAngle: cap => (cap.type === `BeamAngle` || cap.type === `Zoom`) && cap.angle !== null,
 
-/**
- * @param {Entity} entity The speed Entity object.
- * @returns {number|null} The frequency in Hertz, or null, if the entity's unit is not convertable to Hertz.
- */
-function getFrequencyInHertz(entity) {
-  if (entity.unit === `Hz`) {
-    return entity.number;
+  /**
+   * @param {Entity} entity The speed Entity object.
+   * @returns {number|null} The frequency in Hertz, or null, if the entity's unit is not convertable to Hertz.
+   */
+  getFrequencyInHertz(entity) {
+    if (entity.unit === `Hz`) {
+      return entity.number;
+    }
+
+    if (entity.unit === `bpm`) {
+      return entity.number / 60;
+    }
+
+    return null;
   }
-
-  if (entity.unit === `bpm`) {
-    return entity.number / 60;
-  }
-
-  return null;
-}
-
-
-
-// ########## Helper functions for import ##########
+};
 
 const importHelpers = {
   getColorIntensityCap: color => ({
@@ -165,47 +163,47 @@ const channelPresets = {
   },
 
   IntensityRed: {
-    isApplicable: cap => isColorIntensity(cap, `Red`),
+    isApplicable: cap => exportHelpers.isColorIntensity(cap, `Red`),
     importCapability: () => importHelpers.getColorIntensityCap(`Red`)
   },
   IntensityGreen: {
-    isApplicable: cap => isColorIntensity(cap, `Green`),
+    isApplicable: cap => exportHelpers.isColorIntensity(cap, `Green`),
     importCapability: () => importHelpers.getColorIntensityCap(`Green`)
   },
   IntensityBlue: {
-    isApplicable: cap => isColorIntensity(cap, `Blue`),
+    isApplicable: cap => exportHelpers.isColorIntensity(cap, `Blue`),
     importCapability: () => importHelpers.getColorIntensityCap(`Blue`)
   },
   IntensityCyan: {
-    isApplicable: cap => isColorIntensity(cap, `Cyan`),
+    isApplicable: cap => exportHelpers.isColorIntensity(cap, `Cyan`),
     importCapability: () => importHelpers.getColorIntensityCap(`Cyan`)
   },
   IntensityMagenta: {
-    isApplicable: cap => isColorIntensity(cap, `Magenta`),
+    isApplicable: cap => exportHelpers.isColorIntensity(cap, `Magenta`),
     importCapability: () => importHelpers.getColorIntensityCap(`Magenta`)
   },
   IntensityYellow: {
-    isApplicable: cap => isColorIntensity(cap, `Yellow`),
+    isApplicable: cap => exportHelpers.isColorIntensity(cap, `Yellow`),
     importCapability: () => importHelpers.getColorIntensityCap(`Yellow`)
   },
   IntensityAmber: {
-    isApplicable: cap => isColorIntensity(cap, `Amber`),
+    isApplicable: cap => exportHelpers.isColorIntensity(cap, `Amber`),
     importCapability: () => importHelpers.getColorIntensityCap(`Amber`)
   },
   IntensityWhite: {
-    isApplicable: cap => isColorIntensity(cap, `White`) || isColorIntensity(cap, `Warm White`) || isColorIntensity(cap, `Cold White`),
+    isApplicable: cap => exportHelpers.isColorIntensity(cap, `White`) || exportHelpers.isColorIntensity(cap, `Warm White`) || exportHelpers.isColorIntensity(cap, `Cold White`),
     importCapability: () => importHelpers.getColorIntensityCap(`White`)
   },
   IntensityUV: {
-    isApplicable: cap => isColorIntensity(cap, `UV`),
+    isApplicable: cap => exportHelpers.isColorIntensity(cap, `UV`),
     importCapability: () => importHelpers.getColorIntensityCap(`UV`)
   },
   IntensityIndigo: {
-    isApplicable: cap => isColorIntensity(cap, `Indigo`),
+    isApplicable: cap => exportHelpers.isColorIntensity(cap, `Indigo`),
     importCapability: () => importHelpers.getColorIntensityCap(`Indigo`)
   },
   IntensityLime: {
-    isApplicable: cap => isColorIntensity(cap, `Lime`),
+    isApplicable: cap => exportHelpers.isColorIntensity(cap, `Lime`),
     importCapability: () => importHelpers.getColorIntensityCap(`Lime`)
   },
 
@@ -253,7 +251,7 @@ const channelPresets = {
     })
   },
   SpeedPanSlowFast: {
-    isApplicable: cap => cap.type === `PanContinuous` && isIncreasingSpeed(cap),
+    isApplicable: cap => cap.type === `PanContinuous` && exportHelpers.isIncreasingSpeed(cap),
     importCapability: () => ({
       type: `PanTiltSpeed`,
       speedStart: `slow`,
@@ -262,7 +260,7 @@ const channelPresets = {
     })
   },
   SpeedPanFastSlow: {
-    isApplicable: cap => cap.type === `PanContinuous` && isDecreasingSpeed(cap),
+    isApplicable: cap => cap.type === `PanContinuous` && exportHelpers.isDecreasingSpeed(cap),
     importCapability: () => ({
       type: `PanTiltSpeed`,
       speedStart: `fast`,
@@ -271,7 +269,7 @@ const channelPresets = {
     })
   },
   SpeedTiltSlowFast: {
-    isApplicable: cap => cap.type === `TiltContinuous` && isIncreasingSpeed(cap),
+    isApplicable: cap => cap.type === `TiltContinuous` && exportHelpers.isIncreasingSpeed(cap),
     importCapability: () => ({
       type: `PanTiltSpeed`,
       speedStart: `slow`,
@@ -280,7 +278,7 @@ const channelPresets = {
     })
   },
   SpeedTiltFastSlow: {
-    isApplicable: cap => cap.type === `TiltContinuous` && isDecreasingSpeed(cap),
+    isApplicable: cap => cap.type === `TiltContinuous` && exportHelpers.isDecreasingSpeed(cap),
     importCapability: () => ({
       type: `PanTiltSpeed`,
       speedStart: `fast`,
@@ -289,7 +287,7 @@ const channelPresets = {
     })
   },
   SpeedPanTiltSlowFast: {
-    isApplicable: cap => cap.type === `PanTiltSpeed` && (isIncreasingSpeed(cap) || isDecreasingDuration(cap)),
+    isApplicable: cap => cap.type === `PanTiltSpeed` && (exportHelpers.isIncreasingSpeed(cap) || exportHelpers.isDecreasingDuration(cap)),
     importCapability: () => ({
       type: `PanTiltSpeed`,
       speedStart: `slow`,
@@ -297,7 +295,7 @@ const channelPresets = {
     })
   },
   SpeedPanTiltFastSlow: {
-    isApplicable: cap => cap.type === `PanTiltSpeed` && (isDecreasingSpeed(cap) || isIncreasingDuration(cap)),
+    isApplicable: cap => cap.type === `PanTiltSpeed` && (exportHelpers.isDecreasingSpeed(cap) || exportHelpers.isIncreasingDuration(cap)),
     importCapability: () => ({
       type: `PanTiltSpeed`,
       speedStart: `fast`,
@@ -374,7 +372,7 @@ const channelPresets = {
   },
 
   ShutterStrobeSlowFast: {
-    isApplicable: cap => cap.type === `ShutterStrobe` && isIncreasingSpeed(cap),
+    isApplicable: cap => cap.type === `ShutterStrobe` && exportHelpers.isIncreasingSpeed(cap),
     importCapability: () => ({
       type: `ShutterStrobe`,
       shutterEffect: `Strobe`,
@@ -384,7 +382,7 @@ const channelPresets = {
     })
   },
   ShutterStrobeFastSlow: {
-    isApplicable: cap => cap.type === `ShutterStrobe` && isDecreasingSpeed(cap),
+    isApplicable: cap => cap.type === `ShutterStrobe` && exportHelpers.isDecreasingSpeed(cap),
     importCapability: () => ({
       type: `ShutterStrobe`,
       shutterEffect: `Strobe`,
@@ -443,7 +441,7 @@ const channelPresets = {
     })
   },
   PrismRotationSlowFast: {
-    isApplicable: cap => cap.type === `PrismRotation` && isIncreasingSpeed(cap),
+    isApplicable: cap => cap.type === `PrismRotation` && exportHelpers.isIncreasingSpeed(cap),
     importCapability: () => ({
       type: `PrismRotation`,
       speedStart: `slow CW`,
@@ -452,7 +450,7 @@ const channelPresets = {
     })
   },
   PrismRotationFastSlow: {
-    isApplicable: cap => cap.type === `PrismRotation` && isDecreasingSpeed(cap),
+    isApplicable: cap => cap.type === `PrismRotation` && exportHelpers.isDecreasingSpeed(cap),
     importCapability: () => ({
       type: `PrismRotation`,
       speedStart: `fast CW`,
@@ -625,14 +623,14 @@ const capabilityPresets = {
   // shutter capabilities
 
   ShutterOpen: {
-    isApplicable: cap => isShutterEffect(cap, `Open`),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `Open`),
     importCapability: () => ({
       type: `ShutterStrobe`,
       shutterEffect: `Open`
     })
   },
   ShutterClose: {
-    isApplicable: cap => isShutterEffect(cap, `Closed`),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `Closed`),
     importCapability: () => ({
       type: `ShutterStrobe`,
       shutterEffect: `Closed`
@@ -643,47 +641,47 @@ const capabilityPresets = {
   // strobe capabilities with specified frequency
 
   StrobeFrequency: {
-    isApplicable: cap => isShutterEffect(cap, `Strobe`) && hasFrequency(cap) && cap.isStep,
-    exportRes1: cap => getFrequencyInHertz(cap.speed[0]),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `Strobe`) && exportHelpers.hasFrequency(cap) && cap.isStep,
+    exportRes1: cap => exportHelpers.getFrequencyInHertz(cap.speed[0]),
     importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`Strobe`, `${res1}Hz`)
   },
   StrobeFreqRange: {
-    isApplicable: cap => isShutterEffect(cap, `Strobe`) && hasFrequency(cap),
-    exportRes1: cap => getFrequencyInHertz(cap.speed[0]),
-    exportRes2: cap => getFrequencyInHertz(cap.speed[1]),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `Strobe`) && exportHelpers.hasFrequency(cap),
+    exportRes1: cap => exportHelpers.getFrequencyInHertz(cap.speed[0]),
+    exportRes2: cap => exportHelpers.getFrequencyInHertz(cap.speed[1]),
     importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`Strobe`, `${res1}Hz`, `${res2}Hz`)
   },
   PulseFrequency: {
-    isApplicable: cap => isShutterEffect(cap, `Pulse`) && hasFrequency(cap) && cap.isStep,
-    exportRes1: cap => getFrequencyInHertz(cap.speed[0]),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `Pulse`) && exportHelpers.hasFrequency(cap) && cap.isStep,
+    exportRes1: cap => exportHelpers.getFrequencyInHertz(cap.speed[0]),
     importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`Pulse`, `${res1}Hz`)
   },
   PulseFreqRange: {
-    isApplicable: cap => isShutterEffect(cap, `Pulse`) && hasFrequency(cap),
-    exportRes1: cap => getFrequencyInHertz(cap.speed[0]),
-    exportRes2: cap => getFrequencyInHertz(cap.speed[1]),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `Pulse`) && exportHelpers.hasFrequency(cap),
+    exportRes1: cap => exportHelpers.getFrequencyInHertz(cap.speed[0]),
+    exportRes2: cap => exportHelpers.getFrequencyInHertz(cap.speed[1]),
     importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`Pulse`, `${res1}Hz`, `${res2}Hz`)
   },
   RampUpFrequency: {
-    isApplicable: cap => isShutterEffect(cap, `RampUp`) && hasFrequency(cap) && cap.isStep,
-    exportRes1: cap => getFrequencyInHertz(cap.speed[0]),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `RampUp`) && exportHelpers.hasFrequency(cap) && cap.isStep,
+    exportRes1: cap => exportHelpers.getFrequencyInHertz(cap.speed[0]),
     importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`RampUp`, `${res1}Hz`)
   },
   RampUpFreqRange: {
-    isApplicable: cap => isShutterEffect(cap, `RampUp`) && hasFrequency(cap),
-    exportRes1: cap => getFrequencyInHertz(cap.speed[0]),
-    exportRes2: cap => getFrequencyInHertz(cap.speed[1]),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `RampUp`) && exportHelpers.hasFrequency(cap),
+    exportRes1: cap => exportHelpers.getFrequencyInHertz(cap.speed[0]),
+    exportRes2: cap => exportHelpers.getFrequencyInHertz(cap.speed[1]),
     importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`RampUp`, `${res1}Hz`, `${res2}Hz`)
   },
   RampDownFrequency: {
-    isApplicable: cap => isShutterEffect(cap, `RampDown`) && hasFrequency(cap) && cap.isStep,
-    exportRes1: cap => getFrequencyInHertz(cap.speed[0]),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `RampDown`) && exportHelpers.hasFrequency(cap) && cap.isStep,
+    exportRes1: cap => exportHelpers.getFrequencyInHertz(cap.speed[0]),
     importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`RampDown`, `${res1}Hz`)
   },
   RampDownFreqRange: {
-    isApplicable: cap => isShutterEffect(cap, `RampDown`) && hasFrequency(cap),
-    exportRes1: cap => getFrequencyInHertz(cap.speed[0]),
-    exportRes2: cap => getFrequencyInHertz(cap.speed[1]),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `RampDown`) && exportHelpers.hasFrequency(cap),
+    exportRes1: cap => exportHelpers.getFrequencyInHertz(cap.speed[0]),
+    exportRes2: cap => exportHelpers.getFrequencyInHertz(cap.speed[1]),
     importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`RampDown`, `${res1}Hz`, `${res2}Hz`)
   },
 
@@ -691,47 +689,47 @@ const capabilityPresets = {
   // other strobe capabilities
 
   StrobeRandomSlowToFast: {
-    isApplicable: cap => isShutterEffect(cap, `Strobe`) && cap.randomTiming && isIncreasingSpeed(cap),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming && exportHelpers.isIncreasingSpeed(cap),
     importCapability: () => importHelpers.getShutterStrobeCap(`Strobe`, `slow`, `fast`, true)
   },
   StrobeRandomFastToSlow: {
-    isApplicable: cap => isShutterEffect(cap, `Strobe`) && cap.randomTiming && isDecreasingSpeed(cap),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming && exportHelpers.isDecreasingSpeed(cap),
     importCapability: () => importHelpers.getShutterStrobeCap(`Strobe`, `fast`, `slow`, true)
   },
   StrobeRandom: {
-    isApplicable: cap => isShutterEffect(cap, `Strobe`) && cap.randomTiming,
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming,
     importCapability: () => importHelpers.getShutterStrobeCap(`Strobe`, null, null, true)
   },
   StrobeSlowToFast: {
-    isApplicable: cap => isShutterEffect(cap, `Strobe`) && isIncreasingSpeed(cap),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `Strobe`) && exportHelpers.isIncreasingSpeed(cap),
     importCapability: () => importHelpers.getShutterStrobeCap(`Strobe`, `slow`, `fast`)
   },
   StrobeFastToSlow: {
-    isApplicable: cap => isShutterEffect(cap, `Strobe`) && isDecreasingSpeed(cap),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `Strobe`) && exportHelpers.isDecreasingSpeed(cap),
     importCapability: () => importHelpers.getShutterStrobeCap(`Strobe`, `fast`, `slow`)
   },
   PulseSlowToFast: {
-    isApplicable: cap => isShutterEffect(cap, `Pulse`) && isIncreasingSpeed(cap),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `Pulse`) && exportHelpers.isIncreasingSpeed(cap),
     importCapability: () => importHelpers.getShutterStrobeCap(`Pulse`, `slow`, `fast`)
   },
   PulseFastToSlow: {
-    isApplicable: cap => isShutterEffect(cap, `Pulse`) && isDecreasingSpeed(cap),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `Pulse`) && exportHelpers.isDecreasingSpeed(cap),
     importCapability: () => importHelpers.getShutterStrobeCap(`Pulse`, `fast`, `slow`)
   },
   RampUpSlowToFast: {
-    isApplicable: cap => isShutterEffect(cap, `RampUp`) && isIncreasingSpeed(cap),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `RampUp`) && exportHelpers.isIncreasingSpeed(cap),
     importCapability: () => importHelpers.getShutterStrobeCap(`RampUp`, `slow`, `fast`)
   },
   RampUpFastToSlow: {
-    isApplicable: cap => isShutterEffect(cap, `RampUp`) && isDecreasingSpeed(cap),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `RampUp`) && exportHelpers.isDecreasingSpeed(cap),
     importCapability: () => importHelpers.getShutterStrobeCap(`RampUp`, `fast`, `slow`)
   },
   RampDownSlowToFast: {
-    isApplicable: cap => isShutterEffect(cap, `RampDown`) && isIncreasingSpeed(cap),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `RampDown`) && exportHelpers.isIncreasingSpeed(cap),
     importCapability: () => importHelpers.getShutterStrobeCap(`RampDown`, `slow`, `fast`)
   },
   RampDownFastToSlow: {
-    isApplicable: cap => isShutterEffect(cap, `RampDown`) && isDecreasingSpeed(cap),
+    isApplicable: cap => exportHelpers.isShutterEffect(cap, `RampDown`) && exportHelpers.isDecreasingSpeed(cap),
     importCapability: () => importHelpers.getShutterStrobeCap(`RampDown`, `fast`, `slow`)
   },
 
@@ -768,7 +766,7 @@ const capabilityPresets = {
     }
   },
   ColorWheelIndex: {
-    isApplicable: cap => cap.type === `WheelRotation` && cap.wheels[0].type === `Color` && isRotationAngle(cap),
+    isApplicable: cap => cap.type === `WheelRotation` && cap.wheels[0].type === `Color` && exportHelpers.isRotationAngle(cap),
     importCapability: () => ({
       type: `WheelRotation`,
       angleStart: `0deg`,
@@ -836,35 +834,35 @@ const capabilityPresets = {
   // rotation capabilities
 
   RotationClockwiseSlowToFast: {
-    isApplicable: cap => isRotationSpeed(cap) && isIncreasingSpeed(cap) && cap.speed[0].number > 0,
+    isApplicable: cap => exportHelpers.isRotationSpeed(cap) && exportHelpers.isIncreasingSpeed(cap) && cap.speed[0].number > 0,
     importCapability: capData => importHelpers.getRotationSpeedCap(capData, `slow CW`, `fast CW`)
   },
   RotationClockwiseFastToSlow: {
-    isApplicable: cap => isRotationSpeed(cap) && isDecreasingSpeed(cap) && cap.speed[1].number > 0,
+    isApplicable: cap => exportHelpers.isRotationSpeed(cap) && exportHelpers.isDecreasingSpeed(cap) && cap.speed[1].number > 0,
     importCapability: capData => importHelpers.getRotationSpeedCap(capData, `fast CW`, `slow CW`)
   },
   RotationClockwise: {
-    isApplicable: cap => isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0].number > 0,
+    isApplicable: cap => exportHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0].number > 0,
     importCapability: capData => importHelpers.getRotationSpeedCap(capData, `fast CW`)
   },
   RotationStop: {
-    isApplicable: cap => isRotationSpeed(cap) && isStopped(cap),
+    isApplicable: cap => exportHelpers.isRotationSpeed(cap) && exportHelpers.isStopped(cap),
     importCapability: capData => importHelpers.getRotationSpeedCap(capData, `stop`)
   },
   RotationCounterClockwiseSlowToFast: {
-    isApplicable: cap => isRotationSpeed(cap) && isIncreasingSpeed(cap) && cap.speed[0].number < 0,
+    isApplicable: cap => exportHelpers.isRotationSpeed(cap) && exportHelpers.isIncreasingSpeed(cap) && cap.speed[0].number < 0,
     importCapability: capData => importHelpers.getRotationSpeedCap(capData, `slow CCW`, `fast CCW`)
   },
   RotationCounterClockwiseFastToSlow: {
-    isApplicable: cap => isRotationSpeed(cap) && isDecreasingSpeed(cap) && cap.speed[1].number < 0,
+    isApplicable: cap => exportHelpers.isRotationSpeed(cap) && exportHelpers.isDecreasingSpeed(cap) && cap.speed[1].number < 0,
     importCapability: capData => importHelpers.getRotationSpeedCap(capData, `fast CCW`, `slow CCW`)
   },
   RotationCounterClockwise: {
-    isApplicable: cap => isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0].number < 0,
+    isApplicable: cap => exportHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0].number < 0,
     importCapability: capData => importHelpers.getRotationSpeedCap(capData, `fast CCW`)
   },
   RotationIndexed: {
-    isApplicable: cap => isRotationAngle(cap),
+    isApplicable: cap => exportHelpers.isRotationAngle(cap),
     importCapability: capData => ({
       type: importHelpers.getRotationCapType(capData),
       angleStart: `0deg`,
@@ -877,7 +875,7 @@ const capabilityPresets = {
   // generic / other capabilities
 
   GenericPicture: {
-    isApplicable: cap => cap.effectPreset === `ColorFade` && !isStopped(cap),
+    isApplicable: cap => cap.effectPreset === `ColorFade` && !exportHelpers.isStopped(cap),
     exportRes1: cap => `Others/rainbow.png`,
     importCapability: ({ res1 }) => ({
       type: `Generic`,
@@ -885,7 +883,7 @@ const capabilityPresets = {
     })
   },
   SlowToFast: {
-    isApplicable: cap => isIncreasingSpeed(cap),
+    isApplicable: cap => exportHelpers.isIncreasingSpeed(cap),
     importCapability: () => ({
       type: `Speed`,
       speedStart: `slow`,
@@ -893,7 +891,7 @@ const capabilityPresets = {
     })
   },
   FastToSlow: {
-    isApplicable: cap => isDecreasingSpeed(cap),
+    isApplicable: cap => exportHelpers.isDecreasingSpeed(cap),
     importCapability: () => ({
       type: `Speed`,
       speedStart: `fast`,
@@ -917,7 +915,7 @@ const capabilityPresets = {
     })
   },
   SmallToBig: {
-    isApplicable: cap => (isBeamAngle(cap) && cap.angle[0].number < cap.angle[1].number) || (cap.parameter !== null && cap.parameter[0].keyword === `small` && cap.parameter[1].keyword === `big`),
+    isApplicable: cap => (exportHelpers.isBeamAngle(cap) && cap.angle[0].number < cap.angle[1].number) || (cap.parameter !== null && cap.parameter[0].keyword === `small` && cap.parameter[1].keyword === `big`),
     importCapability: () => ({
       type: `Iris`,
       openPercentStart: `open`,
@@ -925,7 +923,7 @@ const capabilityPresets = {
     })
   },
   BigToSmall: {
-    isApplicable: cap => (isBeamAngle(cap) && cap.angle[0].number > cap.angle[1].number) || (cap.parameter !== null && cap.parameter[0].keyword === `big` && cap.parameter[1].keyword === `small`),
+    isApplicable: cap => (exportHelpers.isBeamAngle(cap) && cap.angle[0].number > cap.angle[1].number) || (cap.parameter !== null && cap.parameter[0].keyword === `big` && cap.parameter[1].keyword === `small`),
     importCapability: () => ({
       type: `Iris`,
       openPercentStart: `closed`,
