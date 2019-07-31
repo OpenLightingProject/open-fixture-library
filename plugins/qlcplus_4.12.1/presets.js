@@ -18,19 +18,6 @@ const isRotationAngle = cap => (cap.type.endsWith(`Rotation`) || [`Pan`, `Tilt`,
 const isBeamAngle = cap => (cap.type === `BeamAngle` || cap.type === `Zoom`) && cap.angle !== null;
 
 /**
- * @param {string} shutterEffect The shutter effect to create the preset for.
- * @param {boolean} isStep Whether the preset shall only match step capabilities.
- * @returns {object} The generated preset with isApplicable, res1 and res2 generation.
- */
-function getStrobeFrequencyPreset(shutterEffect, isStep) {
-  return {
-    isApplicable: cap => isShutterEffect(cap, shutterEffect) && hasFrequency(cap) && (!isStep || cap.isStep),
-    res1: cap => getFrequencyInHertz(cap.speed[0]),
-    res2: cap => (isStep ? null : getFrequencyInHertz(cap.speed[1]))
-  };
-}
-
-/**
  * @param {Entity} entity The speed Entity object.
  * @returns {number|null} The frequency in Hertz, or null, if the entity's unit is not convertable to Hertz.
  */
@@ -112,10 +99,10 @@ const channelPresets = {
     isApplicable: cap => cap.type === `Tilt`
   },
   PositionXAxis: {
-    isApplicable: cap => false
+    isApplicable: cap => false // TODO export this with BeamPosition capability type
   },
   PositionYAxis: {
-    isApplicable: cap => false
+    isApplicable: cap => false // TODO export this with BeamPosition capability type
   },
   SpeedPanSlowFast: {
     isApplicable: cap => cap.type === `PanContinuous` && isIncreasingSpeed(cap)
@@ -346,14 +333,42 @@ const capabilityPresets = {
 
   // strobe capabilities with specified frequency
 
-  StrobeFrequency: getStrobeFrequencyPreset(`Strobe`, true),
-  StrobeFreqRange: getStrobeFrequencyPreset(`Strobe`, false),
-  PulseFrequency: getStrobeFrequencyPreset(`Pulse`, true),
-  PulseFreqRange: getStrobeFrequencyPreset(`Pulse`, false),
-  RampUpFrequency: getStrobeFrequencyPreset(`RampUp`, true),
-  RampUpFreqRange: getStrobeFrequencyPreset(`RampUp`, false),
-  RampDownFrequency: getStrobeFrequencyPreset(`RampDown`, true),
-  RampDownFreqRange: getStrobeFrequencyPreset(`RampDown`, false),
+  StrobeFrequency: {
+    isApplicable: cap => isShutterEffect(cap, `Strobe`) && hasFrequency(cap) && cap.isStep,
+    res1: cap => getFrequencyInHertz(cap.speed[0])
+  },
+  StrobeFreqRange: {
+    isApplicable: cap => isShutterEffect(cap, `Strobe`) && hasFrequency(cap),
+    res1: cap => getFrequencyInHertz(cap.speed[0]),
+    res2: cap => getFrequencyInHertz(cap.speed[1])
+  },
+  PulseFrequency: {
+    isApplicable: cap => isShutterEffect(cap, `Pulse`) && hasFrequency(cap) && cap.isStep,
+    res1: cap => getFrequencyInHertz(cap.speed[0])
+  },
+  PulseFreqRange: {
+    isApplicable: cap => isShutterEffect(cap, `Pulse`) && hasFrequency(cap),
+    res1: cap => getFrequencyInHertz(cap.speed[0]),
+    res2: cap => getFrequencyInHertz(cap.speed[1])
+  },
+  RampUpFrequency: {
+    isApplicable: cap => isShutterEffect(cap, `RampUp`) && hasFrequency(cap) && cap.isStep,
+    res1: cap => getFrequencyInHertz(cap.speed[0])
+  },
+  RampUpFreqRange: {
+    isApplicable: cap => isShutterEffect(cap, `RampUp`) && hasFrequency(cap),
+    res1: cap => getFrequencyInHertz(cap.speed[0]),
+    res2: cap => getFrequencyInHertz(cap.speed[1])
+  },
+  RampDownFrequency: {
+    isApplicable: cap => isShutterEffect(cap, `RampDown`) && hasFrequency(cap) && cap.isStep,
+    res1: cap => getFrequencyInHertz(cap.speed[0])
+  },
+  RampDownFreqRange: {
+    isApplicable: cap => isShutterEffect(cap, `RampDown`) && hasFrequency(cap),
+    res1: cap => getFrequencyInHertz(cap.speed[0]),
+    res2: cap => getFrequencyInHertz(cap.speed[1])
+  },
 
 
   // other strobe capabilities
