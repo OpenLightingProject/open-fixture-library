@@ -19,10 +19,10 @@
   "physical": {
     "dimensions": [220, 220, 90],
     "weight": 1.5,
-    "power": 180,
+    "power": 150,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "3× 30W COB RGB LED"
     },
     "lens": {
       "degreesMinMax": [80, 80]
@@ -30,76 +30,29 @@
   },
   "availableChannels": {
     "Dimmer": {
-      "defaultValue": 1,
+      "defaultValue": 0,
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "type": "Intensity"
       }
     },
-    "Strobo": {
-      "defaultValue": 2,
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe",
-        "speedStart": "0%",
-        "speedEnd": "100%"
-      }
-    },
-    "Automatic Program": {
-      "defaultValue": 3,
-      "capability": {
-        "type": "ColorPreset"
-      }
-    },
-    "FX Speed": {
-      "defaultValue": 5,
-      "capability": {
-        "type": "Speed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
-      }
-    },
-    "Red": {
-      "defaultValue": 5,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green": {
-      "defaultValue": 6,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue": {
-      "defaultValue": 7,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Strobo 2": {
-      "name": "Strobo",
-      "defaultValue": 2,
+    "Strobe": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "StrobeSpeed",
-          "speed": "stop"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [1, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         }
       ]
     },
     "Mode": {
-      "defaultValue": 3,
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 50],
@@ -119,23 +72,53 @@
         {
           "dmxRange": [151, 200],
           "type": "Effect",
-          "effectPreset": "ColorFade"
+          "effectName": "Sound Activate",
+          "soundControlled": true
         },
         {
           "dmxRange": [201, 255],
-          "type": "Effect",
-          "effectName": "Sound Activate",
-          "soundControlled": true
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Color"
         }
       ]
+    },
+    "FX Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     }
   },
   "modes": [
     {
-      "name": " ",
+      "name": "7-channel",
+      "shortName": "7ch",
       "channels": [
         "Dimmer",
-        "Strobo 2",
+        "Strobe",
         "Mode",
         "FX Speed",
         "Red",
