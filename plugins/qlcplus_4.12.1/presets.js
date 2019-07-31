@@ -570,12 +570,12 @@ const fineChannelPresets = {
   },
 
   ColorWheelFine: {
-    isApplicable: ({ coarseChannel }) => exportHelpers.isWheelChannel && coarseChannel.capabilities.every(
+    isApplicable: ({ coarseChannel }) => exportHelpers.isWheelChannel(coarseChannel) && coarseChannel.capabilities.every(
       cap => exportHelpers.isAllowedInWheels(cap) && (cap.wheels.length === 0 || cap.wheels[0].type === `Color`)
     )
   },
   GoboWheelFine: {
-    isApplicable: ({ coarseChannel }) => exportHelpers.isWheelChannel && coarseChannel.capabilities.every(
+    isApplicable: ({ coarseChannel }) => exportHelpers.isWheelChannel(coarseChannel) && coarseChannel.capabilities.every(
       cap => exportHelpers.isAllowedInWheels(cap) && (cap.wheels.length === 0 || cap.wheels[0].type === `Gobo`)
     )
   },
