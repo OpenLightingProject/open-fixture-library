@@ -308,7 +308,9 @@ async function updateGithubIssue(urlResults) {
       const firstContentLine = lines.findIndex(line => line.startsWith(`|`)) + 2;
       lines.splice(0, firstContentLine); // delete first lines which only hold general data
       for (const line of lines) {
-        const cells = line.match(/(?<=\|)(.+?)(?=\|)/g).map(str => str.trim());
+        const cells = line.split(`|`)
+          .map(str => str.trim())
+          .filter(str => str.length > 0);
 
         const url = cells.shift();
         linkData[url] = cells.map(cell => {
