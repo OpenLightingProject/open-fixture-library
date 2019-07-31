@@ -63,16 +63,9 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
   fixture.availableChannels = {};
   fixture.templateChannels = {};
 
-  const doubleByteChannels = [];
-  for (const channel of qlcPlusFixture.Channel) {
-    fixture.availableChannels[channel.$.Name] = getOflChannel(channel, qlcPlusFixture, fixture.wheels);
+  qlcPlusFixture.Channel.forEach(channel => addOflChannel(fixture, channel, qlcPlusFixture));
 
-    if (`Group` in channel && channel.Group[0].$.Byte === `1`) {
-      doubleByteChannels.push(channel.$.Name);
-    }
-  }
-
-  mergeFineChannels(fixture, doubleByteChannels, out.warnings[fixKey]);
+  mergeFineChannels(fixture, qlcPlusFixture, out.warnings[fixKey]);
 
   fixture.modes = qlcPlusFixture.Mode.map(mode => getOflMode(mode, fixture.physical, out.warnings[fixKey]));
 
@@ -149,7 +142,7 @@ function getOflMatrix(qlcPlusFixture) {
 function getOflWheels(qlcPlusFixture) {
   const wheels = {};
 
-  for (const channel of qlcPlusFixture.Channel || []) {
+  for (const channel of qlcPlusFixture.Channel) {
     const channelName = channel.$.Name;
     if (/wheel\b/i.test(channelName) && !/(rotation|index)/i.test(channelName) && `Group` in channel && channel.Group[0]._ !== `Speed`) {
       wheels[channelName] = {
@@ -233,13 +226,202 @@ function getOflWheels(qlcPlusFixture) {
   }
 }
 
+const getColorIntensityCap = color => ({
+  type: `ColorIntensity`,
+  color
+});
+
+const getPanTiltCap = (panOrTilt, maxValue) => {
+  const cap = {
+    type: panOrTilt,
+    angleStart: `0deg`,
+    angleEnd: `${maxValue}deg`
+  };
+
+  if (maxValue === 0) {
+    cap.angleStart = `0%`;
+    cap.angleEnd = `100%`;
+    cap.helpWanted = `Can you provide exact angles?`;
+  }
+
+  return cap;
+};
+
+// channel presets ending with "Fine" are left out
+const qlcPlusChannelPresets = {
+  IntensityMasterDimmer: () => ({ type: `Intensity` }),
+  IntensityDimmer: () => ({ type: `Intensity` }),
+  IntensityRed: () => getColorIntensityCap(`Red`),
+  IntensityGreen: () => getColorIntensityCap(`Green`),
+  IntensityBlue: () => getColorIntensityCap(`Blue`),
+  IntensityCyan: () => getColorIntensityCap(`Cyan`),
+  IntensityMagenta: () => getColorIntensityCap(`Magenta`),
+  IntensityYellow: () => getColorIntensityCap(`Yellow`),
+  IntensityAmber: () => getColorIntensityCap(`Amber`),
+  IntensityWhite: () => getColorIntensityCap(`White`),
+  IntensityUV: () => getColorIntensityCap(`UV`),
+  IntensityIndigo: () => getColorIntensityCap(`Indigo`),
+  IntensityLime: () => getColorIntensityCap(`Lime`),
+  IntensityHue: () => ({ type: `Generic` }),
+  IntensitySaturation: () => ({ type: `Generic` }),
+  IntensityLightness: () => ({ type: `Generic` }),
+  IntensityValue: () => ({ type: `Generic` }),
+  NoFunction: () => ({ type: `NoFunction` }),
+  PositionPan: ({ panMax }) => getPanTiltCap(`Pan`, panMax),
+  PositionTilt: ({ tiltMax }) => getPanTiltCap(`Tilt`, tiltMax),
+  PositionXAxis: () => ({
+    type: `BeamPosition`,
+    horizontalAngleStart: `left`,
+    horizontalAngleEnd: `right`,
+    helpWanted: `Is this the correct direction? Can you provide exact angles?`
+  }),
+  PositionYAxis: () => ({
+    type: `BeamPosition`,
+    verticalAngleStart: `top`,
+    verticalAngleEnd: `bottom`,
+    helpWanted: `Is this the correct direction? Can you provide exact angles?`
+  }),
+  ColorRGBMixer: () => ({
+    // basically this is also Hue
+    type: `Generic`
+  }),
+  ColorCTOMixer: () => ({
+    type: `ColorTemperature`,
+    colorTemperatureStart: `default`,
+    colorTemperatureEnd: `warm`,
+    helpWanted: `Can you provide exact color temperature values in Kelvin?`
+  }),
+  ColorCTCMixer: () => ({
+    type: `ColorTemperature`,
+    colorTemperatureStart: `cold`,
+    colorTemperatureEnd: `warm`,
+    helpWanted: `Is this the correct direction? Can you provide exact color temperature values in Kelvin?`
+  }),
+  ColorCTBMixer: () => ({
+    type: `ColorTemperature`,
+    colorTemperatureStart: `default`,
+    colorTemperatureEnd: `cold`,
+    helpWanted: `Can you provide exact color temperature values in Kelvin?`
+  }),
+  SpeedPanSlowFast: () => ({
+    type: `PanTiltSpeed`,
+    speedStart: `slow`,
+    speedEnd: `fast`,
+    comment: `only Pan`
+  }),
+  SpeedPanFastSlow: () => ({
+    type: `PanTiltSpeed`,
+    speedStart: `fast`,
+    speedEnd: `slow`,
+    comment: `only Pan`
+  }),
+  SpeedTiltSlowFast: () => ({
+    type: `PanTiltSpeed`,
+    speedStart: `slow`,
+    speedEnd: `fast`,
+    comment: `only Tilt`
+  }),
+  SpeedTiltFastSlow: () => ({
+    type: `PanTiltSpeed`,
+    speedStart: `fast`,
+    speedEnd: `slow`,
+    comment: `only Tilt`
+  }),
+  SpeedPanTiltSlowFast: () => ({
+    type: `PanTiltSpeed`,
+    speedStart: `slow`,
+    speedEnd: `fast`
+  }),
+  SpeedPanTiltFastSlow: () => ({
+    type: `PanTiltSpeed`,
+    speedStart: `fast`,
+    speedEnd: `slow`
+  }),
+  ColorMacro: () => ({
+    type: `ColorPreset`,
+    helpWanted: `Which color can be selected at which DMX values?`
+  }),
+  ColorWheel: () => ({
+    type: `WheelSlot`,
+    slotNumber: 1,
+    helpWanted: `Which color can be selected at which DMX values?`
+  }),
+  GoboWheel: () => ({
+    type: `WheelSlot`,
+    slotNumber: 1,
+    helpWanted: `Which gobo can be selected at which DMX values?`
+  }),
+  GoboIndex: () => ({
+    type: `WheelRotation`,
+    angleStart: `0deg`,
+    angleEnd: `360deg`,
+    helpWanted: `Are these the correct angles?`
+  }),
+  ShutterStrobeSlowFast: () => ({
+    type: `ShutterStrobe`,
+    shutterEffect: `Strobe`,
+    speedStart: `slow`,
+    speedEnd: `fast`,
+    helpWanted: `At which DMX values is strobe disabled?`
+  }),
+  ShutterStrobeFastSlow: () => ({
+    type: `ShutterStrobe`,
+    shutterEffect: `Strobe`,
+    speedStart: `fast`,
+    speedEnd: `slow`,
+    helpWanted: `At which DMX values is strobe disabled?`
+  }),
+  ShutterIrisMinToMax: () => ({
+    type: `Iris`,
+    openPercentStart: `closed`,
+    openPercentEnd: `open`
+  }),
+  ShutterIrisMaxToMin: () => ({
+    type: `Iris`,
+    openPercentStart: `open`,
+    openPercentEnd: `closed`
+  }),
+  BeamFocusNearFar: () => ({
+    type: `Focus`,
+    distanceStart: `near`,
+    distanceEnd: `far`
+  }),
+  BeamFocusFarNear: () => ({
+    type: `Focus`,
+    distanceStart: `far`,
+    distanceEnd: `near`
+  }),
+  BeamZoomSmallBig: () => ({
+    type: `Zoom`,
+    angleStart: `narrow`,
+    angleEnd: `wide`
+  }),
+  BeamZoomBigSmall: () => ({
+    type: `Zoom`,
+    angleStart: `wide`,
+    angleEnd: `narrow`
+  }),
+  PrismRotationSlowFast: () => ({
+    type: `PrismRotation`,
+    speedStart: `slow CW`,
+    speedEnd: `fast CW`,
+    helpWanted: `Does the prism rotate clockwise or counter-clockwise?`
+  }),
+  PrismRotationFastSlow: () => ({
+    type: `PrismRotation`,
+    speedStart: `fast CW`,
+    speedEnd: `slow CW`,
+    helpWanted: `Does the prism rotate clockwise or counter-clockwise?`
+  })
+};
+
 /**
+ * Adds a QLC+ channel to the OFL fixture's availableChannels object.
+ * @param {object} fixture The OFL fixture object.
  * @param {object} qlcPlusChannel The QLC+ channel object.
  * @param {object} qlcPlusFixture The QLC+ fixture object.
- * @param {object} oflWheels The OFL fixture's wheels object.
- * @returns {object} The OFL channel object.
  */
-function getOflChannel(qlcPlusChannel, qlcPlusFixture, oflWheels) {
+function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
   const channel = {
     fineChannelAliases: [],
     dmxValueResolution: `8bit`
@@ -249,18 +431,36 @@ function getOflChannel(qlcPlusChannel, qlcPlusFixture, oflWheels) {
     channel.defaultValue = parseInt(qlcPlusChannel.$.Default);
   }
 
+  const physicalObjects = qlcPlusFixture.Mode.concat(qlcPlusFixture);
   const [panMax, tiltMax] = [`PanMax`, `TiltMax`].map(
-    prop => Math.max(...qlcPlusFixture.Mode.map(mode => {
-      if (mode.Physical && mode.Physical[0].Focus && mode.Physical[0].Focus[0].$[prop]) {
-        return parseInt(mode.Physical[0].Focus[0].$[prop]) || 0;
+    prop => Math.max(...physicalObjects.map(obj => {
+      if (obj.Physical && obj.Physical[0].Focus && obj.Physical[0].Focus[0].$[prop]) {
+        return parseInt(obj.Physical[0].Focus[0].$[prop]) || 0;
       }
       return 0;
     }))
   );
 
-  if (`Capability` in qlcPlusChannel) {
+  if (`Preset` in qlcPlusChannel.$) {
+    const preset = qlcPlusChannel.$.Preset;
+
+    if (preset in qlcPlusChannelPresets) {
+      const capabilityFunction = qlcPlusChannelPresets[preset];
+      channel.capabilities = [capabilityFunction({
+        panMax,
+        tiltMax
+      })];
+    }
+    else {
+      channel.capabilities = [{
+        type: `Generic`,
+        helpWanted: `Unknown QLC+ channel preset ${preset}.`
+      }];
+    }
+  }
+  else if (`Capability` in qlcPlusChannel) {
     channel.capabilities = qlcPlusChannel.Capability.map(
-      cap => getOflCapability(cap, qlcPlusChannel, oflWheels)
+      cap => getOflCapability(cap)
     );
   }
   else {
@@ -270,36 +470,24 @@ function getOflChannel(qlcPlusChannel, qlcPlusFixture, oflWheels) {
         Min: `0`,
         Max: `255`
       }
-    }, qlcPlusChannel, oflWheels)];
+    })];
   }
 
-  if (channel.capabilities.length === 1) {
-    channel.capability = channel.capabilities[0];
-    delete channel.capabilities;
-    delete channel.capability.dmxRange;
-
-    if (!(`defaultValue` in channel)) {
-      delete channel.dmxValueResolution;
-    }
-  }
-
-  return channel;
+  fixture.availableChannels[qlcPlusChannel.$.Name] = channel;
 
 
   /**
    * @param {object} qlcPlusCapability The QLC+ capability object.
-   * @param {object} qlcPlusChannel The QLC+ channel object.
-   * @param {object} oflWheels The OFL fixture's wheels object.
    * @returns {object} The OFL capability object.
    */
-  function getOflCapability(qlcPlusCapability, qlcPlusChannel, oflWheels) {
+  function getOflCapability(qlcPlusCapability) {
     const cap = {
       dmxRange: [parseInt(qlcPlusCapability.$.Min), parseInt(qlcPlusCapability.$.Max)],
       type: ``
     };
 
     const channelName = qlcPlusChannel.$.Name.trim();
-    const channelType = `Group` in qlcPlusChannel ? qlcPlusChannel.Group[0]._ : ``;
+    const channelType = qlcPlusChannel.Group[0]._;
     const capabilityName = (qlcPlusCapability._ || ``).trim();
 
     // first check if it can be a NoFunction capability
@@ -373,7 +561,7 @@ function getOflChannel(qlcPlusChannel, qlcPlusFixture, oflWheels) {
           cap.comment = getSpeedGuessedComment();
 
           if (`speedStart` in cap) {
-            if (qlcPlusChannel.$.Name in oflWheels) {
+            if (qlcPlusChannel.$.Name in fixture.wheels) {
               cap.type = `WheelRotation`;
             }
             else {
@@ -701,19 +889,21 @@ function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
 
 /**
  * @param {object} fixture The OFL fixture object.
- * @param {array.<string>} doubleByteChannels Array of channel keys for fine channels.
+ * @param {object} qlcPlusFixture The QLC+ fixture object.
  * @param {array.<string>} warningsArray This fixture's warnings array in the `out` object.
  */
-function mergeFineChannels(fixture, doubleByteChannels, warningsArray) {
+function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
   const fineChannelRegex = /\s+fine$|16[-_\s]*bit$/i;
 
-  for (const chKey of doubleByteChannels) {
-    try {
-      if (!fineChannelRegex.test(chKey)) {
-        throw new Error(`The corresponding coarse channel could not be detected.`);
-      }
+  const fineChannels = qlcPlusFixture.Channel.filter(
+    channel => (`Group` in channel && channel.Group[0].$.Byte === `1`) || (`Preset` in channel.$ && channel.$.Preset.endsWith(`Fine`))
+  );
 
-      const coarseChannelKey = getCoarseChannelKey(chKey);
+  for (const qlcPlusFineChannel of fineChannels) {
+    const chKey = qlcPlusFineChannel.$.Name;
+
+    try {
+      const coarseChannelKey = getCoarseChannelKey(qlcPlusFineChannel);
       if (!coarseChannelKey) {
         throw new Error(`The corresponding coarse channel could not be detected.`);
       }
@@ -721,7 +911,7 @@ function mergeFineChannels(fixture, doubleByteChannels, warningsArray) {
       fixture.availableChannels[coarseChannelKey].fineChannelAliases.push(chKey);
 
       const fineChannel = fixture.availableChannels[chKey];
-      if (`capabilities` in fineChannel && fineChannel.capabilities.length > 1) {
+      if (fineChannel.capabilities.length > 1) {
         throw new Error(`Merge its capabilities into channel '${coarseChannelKey}'.`);
       }
 
@@ -734,10 +924,29 @@ function mergeFineChannels(fixture, doubleByteChannels, warningsArray) {
 
 
   /**
-   * @param {string} fineChannelKey The key of the fince channel.
+   * @param {string} qlcPlusFineChannel The key of the fine channel.
    * @returns {string|null} The key of the corresponding coarse channel, or null if it could not be detected.
    */
-  function getCoarseChannelKey(fineChannelKey) {
+  function getCoarseChannelKey(qlcPlusFineChannel) {
+    const fineChannelKey = qlcPlusFineChannel.$.Name;
+
+    if (`Preset` in qlcPlusFineChannel.$) {
+      const coarseChannelPreset = qlcPlusFineChannel.$.Preset.slice(0, -4);
+
+      const coarseChannels = qlcPlusFixture.Channel.filter(
+        coarseChannel => coarseChannel.$.Preset === coarseChannelPreset
+      );
+      if (coarseChannels.length === 1) {
+        return coarseChannels[0].$.Name;
+      }
+    }
+
+    // if coarse channel can't be deduced from fine channel preset, try using only its name
+
+    if (!fineChannelRegex.test(fineChannelKey)) {
+      return null;
+    }
+
     // e.g. "Pan" instead of "Pan Fine"
     const coarseChannelKey = fineChannelKey.replace(fineChannelRegex, ``);
 
@@ -755,6 +964,16 @@ function cleanUpFixture(fixture, qlcPlusFixture) {
   // delete empty fineChannelAliases arrays and unnecessary dmxValueResolution properties
   for (const chKey of Object.keys(fixture.availableChannels)) {
     const channel = fixture.availableChannels[chKey];
+
+    if (channel.capabilities.length === 1) {
+      channel.capability = channel.capabilities[0];
+      delete channel.capabilities;
+      delete channel.capability.dmxRange;
+
+      if (!(`defaultValue` in channel)) {
+        delete channel.dmxValueResolution;
+      }
+    }
 
     if (channel.fineChannelAliases.length === 0) {
       delete channel.fineChannelAliases;
