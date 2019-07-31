@@ -76,6 +76,8 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
 
   fixture.modes = qlcPlusFixture.Mode.map(mode => getOflMode(mode, fixture.physical, out.warnings[fixKey]));
 
+  addSwitchingChannels(fixture, qlcPlusFixture);
+
   cleanUpFixture(fixture, qlcPlusFixture);
 
   out.fixtures[fixKey] = fixture;
@@ -421,23 +423,6 @@ const parserPerChannelType = {
 };
 
 /**
- * Deletes the capability's comment if it adds no valuable information.
- * @param {object} cap The OFL capability object.
- * @param {string} channelName The name of the channel this capability belongs to.
- */
-function deleteCommentIfUnnecessary(cap, channelName) {
-  if (!(`comment` in cap)) {
-    return;
-  }
-
-  const zeroToHundredRegex = /^0%?\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*100%$/i;
-
-  if (cap.comment === channelName || !cap.comment.length || zeroToHundredRegex.test(cap.comment)) {
-    delete cap.comment;
-  }
-}
-
-/**
  * Adds a QLC+ channel to the OFL fixture's availableChannels object.
  * @param {object} fixture The OFL fixture object.
  * @param {object} qlcPlusChannel The QLC+ channel object.
@@ -446,12 +431,9 @@ function deleteCommentIfUnnecessary(cap, channelName) {
 function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
   const channel = {
     fineChannelAliases: [],
-    dmxValueResolution: `8bit`
+    dmxValueResolution: `8bit`,
+    defaultValue: parseInt(qlcPlusChannel.$.Default) || 0
   };
-
-  if (`Default` in qlcPlusChannel.$) {
-    channel.defaultValue = parseInt(qlcPlusChannel.$.Default);
-  }
 
   const physicalObjects = qlcPlusFixture.Mode.concat(qlcPlusFixture);
   const [panMax, tiltMax] = [`PanMax`, `TiltMax`].map(
@@ -511,7 +493,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
       qlcPlusChannel,
       channelName,
       channelType,
-      channelNameInWheels: channelName in fixture.wheels,
+      channelNameInWheels: channelName in (fixture.wheels || {}),
       qlcPlusCapability,
       capabilityName,
       index: qlcPlusChannel.Capability.indexOf(qlcPlusCapability),
@@ -523,7 +505,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
 
     const preset = qlcPlusCapability.$.Preset;
 
-    if (preset) {
+    if (preset && preset !== `Alias`) {
       Object.assign(cap, getCapabilityFromCapabilityPreset(preset, capData));
     }
     else {
@@ -531,9 +513,25 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
       Object.assign(cap, parserPerChannelType[channelType](capData));
     }
 
-    deleteCommentIfUnnecessary(cap, channelName);
+    deleteCommentIfUnnecessary();
 
     return cap;
+
+
+    /**
+     * Deletes the capability's comment if it adds no valuable information.
+     */
+    function deleteCommentIfUnnecessary() {
+      if (!(`comment` in cap)) {
+        return;
+      }
+
+      const zeroToHundredRegex = /^0%?\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*100%$/i;
+
+      if (cap.comment === channelName || !cap.comment.length || zeroToHundredRegex.test(cap.comment)) {
+        delete cap.comment;
+      }
+    }
   }
 }
 
@@ -778,6 +776,73 @@ function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
       key => key === coarseChannelKey || key.replace(fineChannelKey, ``).match(/^(?:\s+|\s+coarse)$/i)
     );
   }
+}
+
+/**
+ * Add switchChannels from capability Aliases to channels' capabilities and
+ * update the channel keys in modes.
+ * @param {object} fixture The OFL fixture object.
+ * @param {object} qlcPlusFixture The QCL+ fixture object.
+ */
+function addSwitchingChannels(fixture, qlcPlusFixture) {
+  qlcPlusFixture.Channel.forEach(qlcPlusChannel => {
+    const hasAliases = (qlcPlusChannel.Capability || []).some(cap => cap.$.Preset === `Alias`);
+    if (!hasAliases) {
+      return;
+    }
+
+    const aliases = qlcPlusChannel.Capability.map(cap => (cap.Alias || []).map(alias => alias.$));
+
+    // const switchedChannels = [];
+    // const modes = [];
+    const switchChannels = [];
+
+    [].concat(...aliases).forEach(alias => {
+      // if (!switchedChannels.includes(alias.Channel)) {
+      //   switchedChannels.push(alias.Channel);
+      // }
+
+      // if (!modes.includes(alias.Mode)) {
+      //   modes.push(alias.Mode);
+      // }
+
+      const switchChannel = switchChannels.find(ch => ch.replace === alias.Channel && ch.mode === alias.Mode);
+      if (switchChannel) {
+        switchChannel.alternatives.add(alias.With);
+      }
+      else {
+        switchChannels.push({
+          replace: alias.Channel,
+          mode: alias.Mode,
+          alternatives: new Set([alias.Channel, alias.With])
+        });
+      }
+    });
+
+    // find switching channel keys, update them in modes
+    switchChannels.forEach(switchChannel => {
+      const alternatives = Array.from(switchChannel.alternatives).join(` / `);
+      switchChannel.key = `${alternatives} (${switchChannel.mode})`;
+
+      const mode = fixture.modes.find(mode => mode.name === switchChannel.mode);
+      mode.channels.splice(mode.channels.indexOf(switchChannel.replace), 1, switchChannel.key);
+    });
+
+    // add switchChannels to capabilities
+    fixture.availableChannels[qlcPlusChannel.$.Name].capabilities.forEach((cap, index) => {
+      cap.switchChannels = {};
+
+      switchChannels.forEach(switchChannel => {
+        const alias = aliases[index].find(alias => alias.Channel === switchChannel.replace);
+        if (alias) {
+          cap.switchChannels[switchChannel.key] = alias.With;
+        }
+        else {
+          cap.switchChannels[switchChannel.key] = switchChannel.replace;
+        }
+      });
+    });
+  });
 }
 
 /**
