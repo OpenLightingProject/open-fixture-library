@@ -4,6 +4,7 @@ const promisify = require(`util`).promisify;
 const {
   getCapabilityFromChannelPreset,
   getCapabilityFromCapabilityPreset,
+  capabilityPresets,
   importHelpers
 } = require(`./presets.js`);
 
@@ -302,26 +303,14 @@ const parserPerChannelType = {
     return cap;
   },
   Gobo: ({ capabilityName, channelNameInWheels, index }) => {
+    if (/shake\b|shaking\b/i.test(capabilityName)) {
+      return capabilityPresets.GoboShakeMacro.importCapability({ capabilityName, index });
+    }
+
     const cap = {
       type: `WheelSlot`,
       slotNumber: index + 1
     };
-
-    if (/shake\b|shaking\b/i.test(capabilityName)) {
-      cap.type = `WheelShake`;
-
-      const comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
-
-      if (`speedStart` in cap) {
-        cap.shakeSpeedStart = cap.speedStart;
-        cap.shakeSpeedEnd = cap.speedEnd;
-        delete cap.speedStart;
-        delete cap.speedEnd;
-      }
-
-      cap.comment = comment;
-      return cap;
-    }
 
     cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
 
