@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Instant Air 1000 Pro",
+  "shortName": " CLIA1000PRO",
+  "categories": ["Fan"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2019-07-31",
+    "lastModifyDate": "2019-07-31"
+  },
+  "comment": "Wind machine",
+  "links": {
+    "manual": [
+      "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLIA1000PRO/CLIA1000PRO_CAMEO_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.PDF"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/en/solutions/install/fog-effect-machines/wind-machines/2145/instant-air-1000-pro?c=1941"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=YYE02A0awqo"
+    ]
+  },
+  "physical": {
+    "dimensions": [385, 385, 515],
+    "weight": 10.9,
+    "power": 74,
+    "DMXconnector": "3-pin and 5-pin"
+  },
+  "availableChannels": {
+    "Fan": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Fan"
+      ]
+    }
+  ]
+}
