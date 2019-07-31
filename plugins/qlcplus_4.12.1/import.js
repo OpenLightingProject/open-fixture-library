@@ -720,32 +720,30 @@ const parserPerChannelType = {
     comment: capabilityName
   }),
   Pan: ({ channelName, capabilityName, panMax }) => {
-    const cap = {};
-
     if (channelName.match(/continuous/i)) {
-      cap.type = `PanContinuous`;
+      const cap = {
+        type: `PanContinuous`
+      };
       cap.comment = getSpeedGuessedComment(capabilityName, cap);
       return cap;
     }
 
-    Object.assign(cap, getPanTiltCap(`Pan`, panMax));
-    cap.comment = capabilityName;
-
-    return cap;
+    return Object.assign(getPanTiltCap(`Pan`, panMax), {
+      comment: capabilityName
+    });
   },
   Tilt: ({ channelName, capabilityName, tiltMax }) => {
-    const cap = {};
-
     if (channelName.match(/continuous/i)) {
-      cap.type = `TiltContinuous`;
+      const cap = {
+        type: `TiltContinuous`
+      };
       cap.comment = getSpeedGuessedComment(capabilityName, cap);
       return cap;
     }
 
-    Object.assign(cap, getPanTiltCap(`Tilt`, tiltMax));
-    cap.comment = capabilityName;
-
-    return cap;
+    return Object.assign(getPanTiltCap(`Tilt`, tiltMax), {
+      comment: capabilityName
+    });
   },
   Prism: ({ capabilityName }) => ({
     type: `Prism`,
@@ -836,7 +834,22 @@ function getSpeedGuessedComment(capabilityName, cap) {
   });
 }
 
-const commentIsUnnecessary = (cap, channelName) => `comment` in cap && (cap.comment === channelName || !cap.comment.length || cap.comment.match(/^0%?\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*100%$/));
+/**
+ * Deletes the capability's comment if it adds no valuable information.
+ * @param {object} cap The OFL capability object.
+ * @param {string} channelName The name of the channel this capability belongs to.
+ */
+function deleteCommentIfUnnecessary(cap, channelName) {
+  if (!(`comment` in cap)) {
+    return;
+  }
+
+  const zeroToHundredRegex = /^0%?\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*100%$/i;
+
+  if (cap.comment === channelName || !cap.comment.length || zeroToHundredRegex.test(cap.comment)) {
+    delete cap.comment;
+  }
+}
 
 /**
  * Adds a QLC+ channel to the OFL fixture's availableChannels object.
@@ -914,7 +927,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
     const capabilityName = (qlcPlusCapability._ || ``).trim();
 
     // first check if it can be a NoFunction capability
-    if (capabilityName.match(/^(?:nothing|no func(?:tion)?|unused|not used|empty|no strobe|no prism|no frost)$/i)) {
+    if (/^(?:nothing|no func(?:tion)?|unused|not used|empty|no strobe|no prism|no frost)$/i.test(capabilityName)) {
       cap.type = `NoFunction`;
       return cap;
     }
@@ -948,17 +961,14 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
     else if (preset) {
       cap.type = `Generic`;
       cap.comment = capabilityName;
-      cap.helpWanted = `Unknown QLC+ capability preset ${preset}.`;
+      cap.helpWanted = `Unknown QLC+ capability preset ${preset}, Res1="${capData.res1}", Res2="${capData.res2}".`;
     }
     else {
       // try to parse capability based on type
       Object.assign(cap, parserPerChannelType[channelType](capData));
     }
 
-    // delete unnecessary comments
-    if (commentIsUnnecessary(cap, channelName)) {
-      delete cap.comment;
-    }
+    deleteCommentIfUnnecessary(cap, channelName);
 
     return cap;
   }
