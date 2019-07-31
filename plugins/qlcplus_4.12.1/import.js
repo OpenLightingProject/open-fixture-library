@@ -474,6 +474,10 @@ const getRotationSpeedCap = (capData, speedStart, speedEnd) => {
     type: getRotationCapType(capData)
   };
 
+  if (cap.type.startsWith(`Wheel`) && !capData.channelNameInWheels) {
+    cap.wheel = ``;
+  }
+
   if (speedEnd) {
     cap.speedStart = speedStart;
     cap.speedEnd = speedEnd;
@@ -586,10 +590,25 @@ const qlcPlusCapabilityPresets = {
     type: `WheelSlot`,
     slotNumber: index + 1
   }),
-  GoboShakeMacro: ({ res1, index }) => ({
-    type: `WheelShake`,
-    slotNumber: index + 1
-  }),
+  GoboShakeMacro: ({ capabilityName, res1, index }) => {
+    const cap = {
+      type: `WheelShake`,
+      slotNumber: index + 1
+    };
+
+    const comment = getSpeedGuessedComment(capabilityName, cap);
+
+    if (`speedStart` in cap) {
+      cap.shakeSpeedStart = cap.speedStart;
+      cap.shakeSpeedEnd = cap.speedEnd;
+      delete cap.speedStart;
+      delete cap.speedEnd;
+    }
+
+    cap.comment = comment;
+
+    return cap;
+  },
   // GenericPicture: ({ res1 }) => ({}),
   PrismEffectOn: ({ res1 }) => ({
     type: `Prism`,
@@ -600,6 +619,222 @@ const qlcPlusCapabilityPresets = {
   })
   // Alias: () => ({})
 };
+
+const parserPerChannelType = {
+  Nothing: () => ({
+    type: `NoFunction`
+  }),
+  Intensity: ({ qlcPlusChannel, capabilityName }) => {
+    const cap = {};
+
+    if (`Colour` in qlcPlusChannel && qlcPlusChannel.Colour[0] !== `Generic`) {
+      cap.type = `ColorIntensity`;
+      cap.color = qlcPlusChannel.Colour[0];
+    }
+    else {
+      cap.type = `Intensity`;
+    }
+
+    if (!capabilityName.match(/^(?:intensity|dimmer)$/i)) {
+      cap.comment = capabilityName;
+    }
+
+    return cap;
+  },
+  Colour: ({ channelName, qlcPlusCapability, capabilityName, index }) => {
+    const cap = {};
+
+    if (channelName.match(/wheel\b/i)) {
+      cap.type = `WheelSlot`;
+      cap.slotNumber = index + 1;
+
+      cap.comment = getSpeedGuessedComment(capabilityName, cap);
+
+      if (`speedStart` in cap) {
+        cap.type = `WheelRotation`;
+        delete cap.slotNumber;
+      }
+
+      return cap;
+    }
+
+    cap.type = `ColorPreset`;
+    cap.comment = capabilityName;
+
+    if (`Color` in qlcPlusCapability.$) {
+      cap.colors = [qlcPlusCapability.$.Color];
+
+      if (`Color2` in qlcPlusCapability.$) {
+        cap.colors.push(qlcPlusCapability.$.Color2);
+      }
+    }
+
+    return cap;
+  },
+  Gobo: ({ capabilityName, channelNameInWheels, index }) => {
+    const cap = {
+      type: `WheelSlot`,
+      slotNumber: index + 1
+    };
+
+    if (/shake\b|shaking\b/i.test(capabilityName)) {
+      cap.type = `WheelShake`;
+
+      const comment = getSpeedGuessedComment(capabilityName, cap);
+
+      if (`speedStart` in cap) {
+        cap.shakeSpeedStart = cap.speedStart;
+        cap.shakeSpeedEnd = cap.speedEnd;
+        delete cap.speedStart;
+        delete cap.speedEnd;
+      }
+
+      cap.comment = comment;
+      return cap;
+    }
+
+    cap.comment = getSpeedGuessedComment(capabilityName, cap);
+
+    if (`speedStart` in cap) {
+      cap.type = channelNameInWheels ? `WheelRotation` : `WheelSlotRotation`;
+      delete cap.slotNumber;
+    }
+
+    return cap;
+  },
+  Effect: ({ capabilityName }) => {
+    const cap = {
+      type: `Effect`,
+      effectName: `` // set it first here so effectName is before speedStart/speedEnd
+    };
+    cap.effectName = getSpeedGuessedComment(capabilityName, cap);
+
+    if (/\bsound\b/i.test(cap.effectName)) {
+      cap.soundControlled = true;
+    }
+
+    return cap;
+  },
+  Maintenance: ({ capabilityName }) => ({
+    type: `Maintenance`,
+    comment: capabilityName
+  }),
+  Pan: ({ channelName, capabilityName, panMax }) => {
+    const cap = {};
+
+    if (channelName.match(/continuous/i)) {
+      cap.type = `PanContinuous`;
+      cap.comment = getSpeedGuessedComment(capabilityName, cap);
+      return cap;
+    }
+
+    Object.assign(cap, getPanTiltCap(`Pan`, panMax));
+    cap.comment = capabilityName;
+
+    return cap;
+  },
+  Tilt: ({ channelName, capabilityName, tiltMax }) => {
+    const cap = {};
+
+    if (channelName.match(/continuous/i)) {
+      cap.type = `TiltContinuous`;
+      cap.comment = getSpeedGuessedComment(capabilityName, cap);
+      return cap;
+    }
+
+    Object.assign(cap, getPanTiltCap(`Tilt`, tiltMax));
+    cap.comment = capabilityName;
+
+    return cap;
+  },
+  Prism: ({ capabilityName }) => ({
+    type: `Prism`,
+    comment: capabilityName
+  }),
+  Shutter: ({ capabilityName }) => {
+    const cap = {
+      type: `ShutterStrobe`
+    };
+
+    if (capabilityName.match(/^(?:Blackout|(?:Shutter |Strobe )?Closed?)$/i)) {
+      cap.shutterEffect = `Closed`;
+      return cap;
+    }
+
+    if (capabilityName.match(/^(?:(?:Shutter |Strobe )?Open|Full?)$/i)) {
+      cap.shutterEffect = `Open`;
+      return cap;
+    }
+
+    if (capabilityName.match(/puls/i)) {
+      cap.shutterEffect = `Pulse`;
+    }
+    else if (capabilityName.match(/ramp\s*up/i)) {
+      cap.shutterEffect = `RampUp`;
+    }
+    else if (capabilityName.match(/ramp\s*down/i)) {
+      cap.shutterEffect = `RampDown`;
+    }
+    else {
+      cap.shutterEffect = `Strobe`;
+    }
+
+    if (capabilityName.match(/random/i)) {
+      cap.randomTiming = true;
+    }
+
+    cap.comment = getSpeedGuessedComment(capabilityName, cap);
+
+    return cap;
+  },
+  Speed: ({ channelName, capabilityName }) => {
+    const cap = {};
+
+    if (channelName.match(/pan(?:\/)?tilt/i)) {
+      cap.type = `PanTiltSpeed`;
+    }
+    else {
+      cap.type = `Speed`;
+    }
+
+    cap.comment = getSpeedGuessedComment(capabilityName, cap);
+
+    return cap;
+  }
+};
+
+/**
+ * Try to guess speedStart / speedEnd from the capability name and set them
+ * to the capability. It may also set cap.type to "Rotation".
+ * @param {string} capabilityName The capability name to extract information from.
+ * @param {object} cap The OFL capability object to add found properties to.
+ * @returns {string} The rest of the capabilityName.
+ */
+function getSpeedGuessedComment(capabilityName, cap) {
+  return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|C?CW)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i, (match, direction, start, end) => {
+    const directionStr = direction ? (direction.match(/^(?:clockwise|CW),?\s+$/i) ? ` CW` : ` CCW`) : ``;
+
+    if (directionStr !== ``) {
+      cap.type = `Rotation`;
+    }
+
+    start = start.toLowerCase();
+    end = end.toLowerCase();
+
+    const startNumber = parseFloat(start);
+    const endNumber = parseFloat(end);
+    if (!isNaN(startNumber) && !isNaN(endNumber)) {
+      start = `${startNumber}Hz`;
+      end = `${endNumber}Hz`;
+    }
+
+    cap.speedStart = start + directionStr;
+    cap.speedEnd = end + directionStr;
+
+    // delete the parsed part
+    return ``;
+  });
+}
 
 const commentIsUnnecessary = (cap, channelName) => `comment` in cap && (cap.comment === channelName || !cap.comment.length || cap.comment.match(/^0%?\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*100%$/));
 
@@ -684,211 +919,40 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
       return cap;
     }
 
-    if (`Preset` in qlcPlusCapability.$) {
-      const preset = qlcPlusCapability.$.Preset;
-
-      if (preset in qlcPlusCapabilityPresets) {
-        const capabilityFunction = qlcPlusCapabilityPresets[preset];
-        const capData = {
-          channelName,
-          channelType,
-          index: qlcPlusChannel.Capability.indexOf(qlcPlusCapability),
-          res1: qlcPlusCapability.$.Res1,
-          res2: qlcPlusCapability.$.Res2
-        };
-
-        Object.assign(cap, capabilityFunction(capData));
-
-        if (cap.comment) {
-          cap.comment += ` ${capabilityName}`;
-        }
-        else {
-          cap.comment = capabilityName;
-        }
-      }
-
-      return cap;
-    }
-
-    // capability parsers can rely on the channel type as a first distinctive feature
-    const parserPerChannelType = {
-      Nothing() {
-        cap.type = `NoFunction`;
-      },
-      Intensity() {
-        if (`Colour` in qlcPlusChannel && qlcPlusChannel.Colour[0] !== `Generic`) {
-          cap.type = `ColorIntensity`;
-          cap.color = qlcPlusChannel.Colour[0];
-        }
-        else {
-          cap.type = `Intensity`;
-        }
-
-        if (!capabilityName.match(/^(?:intensity|dimmer)$/i)) {
-          cap.comment = capabilityName;
-        }
-      },
-      Colour() {
-        if (channelName.match(/wheel\b/i)) {
-          cap.type = `WheelSlot`;
-          cap.slotNumber = qlcPlusChannel.Capability.indexOf(qlcPlusCapability) + 1;
-
-          cap.comment = getSpeedGuessedComment();
-
-          if (`speedStart` in cap) {
-            cap.type = `WheelRotation`;
-            delete cap.slotNumber;
-          }
-        }
-        else {
-          cap.type = `ColorPreset`;
-          cap.comment = capabilityName;
-
-          if (`Color` in qlcPlusCapability.$) {
-            cap.colors = [qlcPlusCapability.$.Color];
-
-            if (`Color2` in qlcPlusCapability.$) {
-              cap.colors.push(qlcPlusCapability.$.Color2);
-            }
-          }
-        }
-      },
-      Gobo() {
-        cap.type = `WheelSlot`;
-        cap.slotNumber = qlcPlusChannel.Capability.indexOf(qlcPlusCapability) + 1;
-
-        if (/shake\b|shaking\b/i.test(capabilityName)) {
-          cap.type = `WheelShake`;
-
-          const comment = getSpeedGuessedComment();
-
-          if (`speedStart` in cap) {
-            cap.shakeSpeedStart = cap.speedStart;
-            cap.shakeSpeedEnd = cap.speedEnd;
-            delete cap.speedStart;
-            delete cap.speedEnd;
-          }
-
-          cap.comment = comment;
-        }
-        else {
-          cap.comment = getSpeedGuessedComment();
-
-          if (`speedStart` in cap) {
-            if (qlcPlusChannel.$.Name in fixture.wheels) {
-              cap.type = `WheelRotation`;
-            }
-            else {
-              cap.type = `WheelSlotRotation`;
-            }
-            delete cap.slotNumber;
-          }
-        }
-      },
-      Effect() {
-        cap.type = `Effect`;
-        cap.effectName = ``; // set it first here so effectName is before speedStart/speedEnd
-        cap.effectName = getSpeedGuessedComment();
-
-        if (/\bsound\b/i.test(cap.effectName)) {
-          cap.soundControlled = true;
-        }
-      },
-      Maintenance() {
-        cap.type = `Maintenance`;
-        cap.comment = capabilityName;
-      },
-      Pan() {
-        if (channelName.match(/continuous/i)) {
-          cap.type = `PanContinuous`;
-          cap.comment = getSpeedGuessedComment();
-        }
-        else {
-          cap.type = `Pan`;
-          if (panMax) {
-            cap.angleStart = `0deg`;
-            cap.angleEnd = `${panMax}deg`;
-          }
-          else {
-            cap.angleStart = `0%`;
-            cap.angleEnd = `100%`;
-          }
-          cap.comment = capabilityName;
-        }
-      },
-      Tilt() {
-        if (channelName.match(/continuous/i)) {
-          cap.type = `TiltContinuous`;
-          cap.comment = getSpeedGuessedComment();
-        }
-        else {
-          cap.type = `Tilt`;
-          if (tiltMax) {
-            cap.angleStart = `0deg`;
-            cap.angleEnd = `${tiltMax}deg`;
-          }
-          else {
-            cap.angleStart = `0%`;
-            cap.angleEnd = `100%`;
-          }
-          cap.comment = capabilityName;
-        }
-      },
-      Prism() {
-        cap.type = `Prism`;
-        cap.comment = capabilityName;
-      },
-      Shutter() {
-        cap.type = `ShutterStrobe`;
-
-        if (capabilityName.match(/^(?:Blackout|(?:Shutter |Strobe )?Closed?)$/i)) {
-          cap.shutterEffect = `Closed`;
-          return;
-        }
-
-        if (capabilityName.match(/^(?:(?:Shutter |Strobe )?Open|Full?)$/i)) {
-          cap.shutterEffect = `Open`;
-          return;
-        }
-
-        if (capabilityName.match(/puls/i)) {
-          cap.shutterEffect = `Pulse`;
-        }
-        else if (capabilityName.match(/ramp\s*up/i)) {
-          cap.shutterEffect = `RampUp`;
-        }
-        else if (capabilityName.match(/ramp\s*down/i)) {
-          cap.shutterEffect = `RampDown`;
-        }
-        else {
-          cap.shutterEffect = `Strobe`;
-        }
-
-        if (capabilityName.match(/random/i)) {
-          cap.randomTiming = true;
-        }
-
-        cap.comment = getSpeedGuessedComment();
-      },
-      Speed() {
-        if (channelName.match(/pan(?:\/)?tilt/i)) {
-          cap.type = `PanTiltSpeed`;
-        }
-        else {
-          cap.type = `Speed`;
-        }
-
-        cap.comment = getSpeedGuessedComment();
-      }
+    const capData = {
+      qlcPlusChannel,
+      channelName,
+      channelType,
+      channelNameInWheels: channelName in fixture.wheels,
+      qlcPlusCapability,
+      capabilityName,
+      index: qlcPlusChannel.Capability.indexOf(qlcPlusCapability),
+      res1: qlcPlusCapability.$.Res1,
+      res2: qlcPlusCapability.$.Res2,
+      panMax,
+      tiltMax
     };
 
-    // then run channel type specific parser
-    if (channelType in parserPerChannelType) {
-      parserPerChannelType[channelType]();
+    const preset = qlcPlusCapability.$.Preset;
+
+    if (preset in qlcPlusCapabilityPresets) {
+      Object.assign(cap, qlcPlusCapabilityPresets[preset](capData));
+
+      if (!cap.comment || capabilityName.includes(cap.comment)) {
+        cap.comment = capabilityName;
+      }
+      else {
+        cap.comment += ` ${capabilityName}`;
+      }
     }
-    else {
+    else if (preset) {
       cap.type = `Generic`;
       cap.comment = capabilityName;
+      cap.helpWanted = `Unknown QLC+ capability preset ${preset}.`;
+    }
+    else {
+      // try to parse capability based on type
+      Object.assign(cap, parserPerChannelType[channelType](capData));
     }
 
     // delete unnecessary comments
@@ -897,37 +961,6 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
     }
 
     return cap;
-
-
-    /**
-     * Try to guess speedStart / speedEnd from the capabilityName. May set cap.type to Rotation.
-     * @returns {string} The rest of the capabilityName.
-     */
-    function getSpeedGuessedComment() {
-      return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|C?CW)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i, (match, direction, start, end) => {
-        const directionStr = direction ? (direction.match(/^(?:clockwise|CW),?\s+$/i) ? ` CW` : ` CCW`) : ``;
-
-        if (directionStr !== ``) {
-          cap.type = `Rotation`;
-        }
-
-        start = start.toLowerCase();
-        end = end.toLowerCase();
-
-        const startNumber = parseFloat(start);
-        const endNumber = parseFloat(end);
-        if (!isNaN(startNumber) && !isNaN(endNumber)) {
-          start = `${startNumber}Hz`;
-          end = `${endNumber}Hz`;
-        }
-
-        cap.speedStart = start + directionStr;
-        cap.speedEnd = end + directionStr;
-
-        // delete the parsed part
-        return ``;
-      });
-    }
   }
 }
 
