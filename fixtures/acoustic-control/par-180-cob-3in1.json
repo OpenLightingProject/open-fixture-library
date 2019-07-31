@@ -1,0 +1,147 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PAR 180 COB 3in1",
+  "shortName": "PAR180",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Sergio Collantes"],
+    "createDate": "2019-07-31",
+    "lastModifyDate": "2019-07-31"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/drive/folders/1MNU9qpVMQ3880Og8qXIOpQl60UShyjXo"
+    ],
+    "productPage": [
+      "https://kinson.pro/focos-de-led/foco-par-led-180w-acoustic-control.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [220, 220, 90],
+    "weight": 1.5,
+    "power": 180,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [80, 80]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobo": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Automatic Program": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "FX Speed": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobo 2": {
+      "name": "Strobo",
+      "defaultValue": 2,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "StrobeSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Mode": {
+      "defaultValue": 3,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "NoFunction",
+          "comment": "Manual Mode"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound Activate",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": " ",
+      "channels": [
+        "Dimmer",
+        "Strobo 2",
+        "Mode",
+        "FX Speed",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
