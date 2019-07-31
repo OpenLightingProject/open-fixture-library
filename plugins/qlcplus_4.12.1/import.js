@@ -311,7 +311,7 @@ function getOflChannel(qlcPlusChannel, qlcPlusFixture, oflWheels) {
     // capability parsers can rely on the channel type as a first distinctive feature
     const parserPerChannelType = {
       Nothing() {
-        cap.type = `Nothing`;
+        cap.type = `NoFunction`;
       },
       Intensity() {
         if (`Colour` in qlcPlusChannel && qlcPlusChannel.Colour[0] !== `Generic`) {
@@ -459,7 +459,7 @@ function getOflChannel(qlcPlusChannel, qlcPlusFixture, oflWheels) {
         }
 
         if (capabilityName.match(/random/i)) {
-          cap.shutterEffect += `Random`;
+          cap.randomTiming = true;
         }
 
         cap.comment = getSpeedGuessedComment();
