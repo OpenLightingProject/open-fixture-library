@@ -68,7 +68,7 @@
       </section>
 
       <app-labeled-value
-        v-if="fixture.links !== null"
+        v-if="links.length"
         name="links"
         label="Relevant links">
         <ul class="fixture-links">
