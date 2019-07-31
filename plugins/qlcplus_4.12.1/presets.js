@@ -335,39 +335,39 @@ const capabilityPresets = {
 
   StrobeFrequency: {
     isApplicable: cap => isShutterEffect(cap, `Strobe`) && hasFrequency(cap) && cap.isStep,
-    res1: cap => getFrequencyInHertz(cap.speed[0])
+    exportRes1: cap => getFrequencyInHertz(cap.speed[0])
   },
   StrobeFreqRange: {
     isApplicable: cap => isShutterEffect(cap, `Strobe`) && hasFrequency(cap),
-    res1: cap => getFrequencyInHertz(cap.speed[0]),
-    res2: cap => getFrequencyInHertz(cap.speed[1])
+    exportRes1: cap => getFrequencyInHertz(cap.speed[0]),
+    exportRes2: cap => getFrequencyInHertz(cap.speed[1])
   },
   PulseFrequency: {
     isApplicable: cap => isShutterEffect(cap, `Pulse`) && hasFrequency(cap) && cap.isStep,
-    res1: cap => getFrequencyInHertz(cap.speed[0])
+    exportRes1: cap => getFrequencyInHertz(cap.speed[0])
   },
   PulseFreqRange: {
     isApplicable: cap => isShutterEffect(cap, `Pulse`) && hasFrequency(cap),
-    res1: cap => getFrequencyInHertz(cap.speed[0]),
-    res2: cap => getFrequencyInHertz(cap.speed[1])
+    exportRes1: cap => getFrequencyInHertz(cap.speed[0]),
+    exportRes2: cap => getFrequencyInHertz(cap.speed[1])
   },
   RampUpFrequency: {
     isApplicable: cap => isShutterEffect(cap, `RampUp`) && hasFrequency(cap) && cap.isStep,
-    res1: cap => getFrequencyInHertz(cap.speed[0])
+    exportRes1: cap => getFrequencyInHertz(cap.speed[0])
   },
   RampUpFreqRange: {
     isApplicable: cap => isShutterEffect(cap, `RampUp`) && hasFrequency(cap),
-    res1: cap => getFrequencyInHertz(cap.speed[0]),
-    res2: cap => getFrequencyInHertz(cap.speed[1])
+    exportRes1: cap => getFrequencyInHertz(cap.speed[0]),
+    exportRes2: cap => getFrequencyInHertz(cap.speed[1])
   },
   RampDownFrequency: {
     isApplicable: cap => isShutterEffect(cap, `RampDown`) && hasFrequency(cap) && cap.isStep,
-    res1: cap => getFrequencyInHertz(cap.speed[0])
+    exportRes1: cap => getFrequencyInHertz(cap.speed[0])
   },
   RampDownFreqRange: {
     isApplicable: cap => isShutterEffect(cap, `RampDown`) && hasFrequency(cap),
-    res1: cap => getFrequencyInHertz(cap.speed[0]),
-    res2: cap => getFrequencyInHertz(cap.speed[1])
+    exportRes1: cap => getFrequencyInHertz(cap.speed[0]),
+    exportRes2: cap => getFrequencyInHertz(cap.speed[1])
   },
 
 
@@ -412,12 +412,12 @@ const capabilityPresets = {
 
   ColorMacro: {
     isApplicable: cap => (cap.type === `ColorPreset` || cap.isSlotType(`Color`)) && cap.colors !== null && cap.colors.allColors.length === 1,
-    res1: cap => cap.colors.allColors[0]
+    exportRes1: cap => cap.colors.allColors[0]
   },
   ColorDoubleMacro: {
     isApplicable: cap => (cap.type === `ColorPreset` || cap.isSlotType(`Color`)) && cap.colors !== null && cap.colors.allColors.length === 2,
-    res1: cap => cap.colors.allColors[0],
-    res2: cap => cap.colors.allColors[1]
+    exportRes1: cap => cap.colors.allColors[0],
+    exportRes2: cap => cap.colors.allColors[1]
   },
   ColorWheelIndex: {
     isApplicable: cap => cap.type === `WheelRotation` && cap.wheels[0].type === `Color` && isRotationAngle(cap)
@@ -429,11 +429,11 @@ const capabilityPresets = {
   // TODO: export a gobo image as res1
   GoboShakeMacro: {
     isApplicable: cap => cap.type === `WheelShake` && (cap.isSlotType(/Gobo|Iris|Frost/) || cap.isSlotType(`Open`)),
-    res1: cap => (cap.isSlotType(`Open`) ? `Others/open.svg` : null)
+    exportRes1: cap => (cap.isSlotType(`Open`) ? `Others/open.svg` : null)
   },
   GoboMacro: {
     isApplicable: cap => cap.isSlotType(/Gobo|Iris|Frost/) || cap.isSlotType(`Open`),
-    res1: cap => (cap.isSlotType(`Open`) ? `Others/open.svg` : null)
+    exportRes1: cap => (cap.isSlotType(`Open`) ? `Others/open.svg` : null)
   },
 
 
@@ -442,7 +442,7 @@ const capabilityPresets = {
   // TODO: export the number of prism facets as res1 for Prism capabilities
   PrismEffectOn: {
     isApplicable: cap => cap.type === `Prism` || (cap.type === `WheelSlot` && cap.isSlotType(`Prism`)),
-    res1: cap => (cap.wheelSlot && cap.slotNumber[0].number === cap.slotNumber[1].number && cap.wheelSlot[0].facets)
+    exportRes1: cap => (cap.wheelSlot && cap.slotNumber[0].number === cap.slotNumber[1].number && cap.wheelSlot[0].facets)
   },
   PrismEffectOff: {
     isApplicable: cap => cap.type === `NoFunction` && cap._channel.type === `Prism`
@@ -481,7 +481,7 @@ const capabilityPresets = {
 
   GenericPicture: {
     isApplicable: cap => cap.effectPreset === `ColorFade` && !isStopped(cap),
-    res1: cap => `Others/rainbow.png`
+    exportRes1: cap => `Others/rainbow.png`
   },
   SlowToFast: {
     isApplicable: cap => isIncreasingSpeed(cap)
@@ -527,8 +527,8 @@ function getCapabilityPreset(capability) {
   const preset = capabilityPresets[presetName];
   return {
     presetName,
-    res1: `res1` in preset ? preset.res1(capability) : null,
-    res2: `res2` in preset ? preset.res2(capability) : null
+    res1: `exportRes1` in preset ? preset.exportRes1(capability) : null,
+    res2: `exportRes2` in preset ? preset.exportRes2(capability) : null
   };
 }
 
