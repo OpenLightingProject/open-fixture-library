@@ -474,10 +474,11 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
     }))
   );
 
+  const channelName = qlcPlusChannel.$.Name;
   const preset = qlcPlusChannel.$.Preset;
 
   if (preset) {
-    channel.capabilities = [getCapabilityFromChannelPreset(preset, panMax, tiltMax)];
+    channel.capabilities = [getCapabilityFromChannelPreset(preset, channelName, panMax, tiltMax)];
   }
   else if (`Capability` in qlcPlusChannel) {
     channel.capabilities = qlcPlusChannel.Capability.map(
@@ -494,7 +495,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
     })];
   }
 
-  fixture.availableChannels[qlcPlusChannel.$.Name] = channel;
+  fixture.availableChannels[channelName] = channel;
 
 
   /**

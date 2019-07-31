@@ -17,6 +17,8 @@ const exportHelpers = {
   isRotationSpeed: cap => (cap.type.endsWith(`Rotation`) || [`PanContinuous`, `TiltContinuous`, `Prism`].includes(cap.type)) && cap.speed !== null,
   isRotationAngle: cap => (cap.type.endsWith(`Rotation`) || [`Pan`, `Tilt`, `Prism`].includes(cap.type)) && cap.angle !== null,
   isBeamAngle: cap => (cap.type === `BeamAngle` || cap.type === `Zoom`) && cap.angle !== null,
+  isWheelChannel: channel => channel.capabilities.some(cap => [`WheelSlot`, `WheelRotation`].includes(cap.type)),
+  isAllowedInWheels: cap => [`WheelSlot`, `WheelShake`, `WheelSlotRotation`, `WheelRotation`, `Effect`, `NoFunction`].includes(cap.type),
 
   /**
    * @param {Entity} entity The speed Entity object.
@@ -192,7 +194,10 @@ const channelPresets = {
   },
   IntensityWhite: {
     isApplicable: cap => exportHelpers.isColorIntensity(cap, `White`) || exportHelpers.isColorIntensity(cap, `Warm White`) || exportHelpers.isColorIntensity(cap, `Cold White`),
-    importCapability: () => importHelpers.getColorIntensityCap(`White`)
+    importCapability: ({ channelName }) => ({
+      type: `ColorIntensity`,
+      color: /\bcold\b/i.test(channelName) ? `Cold White` : (/\bwarm\b/i.test(channelName) ? `Warm White` : `White`)
+    })
   },
   IntensityUV: {
     isApplicable: cap => exportHelpers.isColorIntensity(cap, `UV`),
@@ -233,7 +238,7 @@ const channelPresets = {
     importCapability: ({ tiltMax }) => importHelpers.getPanTiltCap(`Tilt`, tiltMax)
   },
   PositionXAxis: {
-    isApplicable: cap => false, // TODO export this with BeamPosition capability type
+    isApplicable: cap => cap.type === `BeamPosition` && cap.horizontalAngle && cap.horizontalAngle[0].number < cap.horizontalAngle[1].number,
     importCapability: () => ({
       type: `BeamPosition`,
       horizontalAngleStart: `left`,
@@ -242,7 +247,7 @@ const channelPresets = {
     })
   },
   PositionYAxis: {
-    isApplicable: cap => false, // TODO export this with BeamPosition capability type
+    isApplicable: cap => cap.type === `BeamPosition` && cap.verticalAngle && cap.verticalAngle[0].number < cap.verticalAngle[1].number,
     importCapability: () => ({
       type: `BeamPosition`,
       verticalAngleStart: `top`,
@@ -253,37 +258,33 @@ const channelPresets = {
   SpeedPanSlowFast: {
     isApplicable: cap => cap.type === `PanContinuous` && exportHelpers.isIncreasingSpeed(cap),
     importCapability: () => ({
-      type: `PanTiltSpeed`,
+      type: `PanContinuous`,
       speedStart: `slow`,
-      speedEnd: `fast`,
-      comment: `only Pan`
+      speedEnd: `fast`
     })
   },
   SpeedPanFastSlow: {
     isApplicable: cap => cap.type === `PanContinuous` && exportHelpers.isDecreasingSpeed(cap),
     importCapability: () => ({
-      type: `PanTiltSpeed`,
+      type: `PanContinuous`,
       speedStart: `fast`,
-      speedEnd: `slow`,
-      comment: `only Pan`
+      speedEnd: `slow`
     })
   },
   SpeedTiltSlowFast: {
     isApplicable: cap => cap.type === `TiltContinuous` && exportHelpers.isIncreasingSpeed(cap),
     importCapability: () => ({
-      type: `PanTiltSpeed`,
+      type: `TiltContinuous`,
       speedStart: `slow`,
-      speedEnd: `fast`,
-      comment: `only Tilt`
+      speedEnd: `fast`
     })
   },
   SpeedTiltFastSlow: {
     isApplicable: cap => cap.type === `TiltContinuous` && exportHelpers.isDecreasingSpeed(cap),
     importCapability: () => ({
-      type: `PanTiltSpeed`,
+      type: `TiltContinuous`,
       speedStart: `fast`,
-      speedEnd: `slow`,
-      comment: `only Tilt`
+      speedEnd: `slow`
     })
   },
   SpeedPanTiltSlowFast: {
@@ -313,15 +314,15 @@ const channelPresets = {
   ColorWheel: {
     isApplicable: cap => cap.type === `WheelRotation` && cap.wheels[0].type === `Color`,
     importCapability: () => ({
-      type: `WheelSlot`,
-      slotNumber: 1,
-      helpWanted: `Which color can be selected at which DMX values?`
+      type: `WheelRotation`,
+      wheel: ``,
+      speedStart: `slow`,
+      speedEnd: `fast`
     })
   },
-  ColorRGBMixer: {
+  ColorRGBMixer: { // basically this is also Hue
     isApplicable: cap => false,
     importCapability: () => ({
-    // basically this is also Hue
       type: `Generic`
     })
   },
@@ -356,15 +357,16 @@ const channelPresets = {
   GoboWheel: {
     isApplicable: cap => cap.type === `WheelRotation` && cap.wheels[0].type === `Gobo`,
     importCapability: () => ({
-      type: `WheelSlot`,
-      slotNumber: 1,
-      helpWanted: `Which gobo can be selected at which DMX values?`
+      type: `WheelRotation`,
+      wheel: ``,
+      speedStart: `slow`,
+      speedEnd: `fast`
     })
   },
   GoboIndex: {
     isApplicable: cap => cap.type === `WheelSlotRotation` && cap.wheels[0].type === `Gobo`,
     importCapability: () => ({
-      type: `WheelRotation`,
+      type: `WheelSlotRotation`,
       angleStart: `0deg`,
       angleEnd: `360deg`,
       helpWanted: `Are these the correct angles?`
@@ -481,13 +483,15 @@ function getChannelPreset(channel) {
 
 /**
  * @param {string} preset The channel preset to import.
+ * @param {string} channelName The channel name.
  * @param {number} panMax The maximum pan angle, or 0.
  * @param {number} tiltMax The maximum tilt angle, or 0.
  * @returns {object} The OFL capability object.
  */
-function getCapabilityFromChannelPreset(preset, panMax, tiltMax) {
+function getCapabilityFromChannelPreset(preset, channelName, panMax, tiltMax) {
   if (preset in channelPresets) {
     return channelPresets[preset].importCapability({
+      channelName,
       panMax,
       tiltMax
     });
@@ -566,19 +570,13 @@ const fineChannelPresets = {
   },
 
   ColorWheelFine: {
-    isApplicable: ({ coarseChannel }) => coarseChannel.capabilities.some(
-      cap => [`WheelSlot`, `WheelRotation`].includes(cap.type)
-    ) && coarseChannel.capabilities.every(
-      cap => [`WheelSlot`, `WheelShake`, `WheelSlotRotation`, `WheelRotation`, `Effect`, `NoFunction`].includes(cap.type) &&
-        (cap.wheels.length === 0 || cap.wheels[0].type === `Color`)
+    isApplicable: ({ coarseChannel }) => exportHelpers.isWheelChannel && coarseChannel.capabilities.every(
+      cap => exportHelpers.isAllowedInWheels(cap) && (cap.wheels.length === 0 || cap.wheels[0].type === `Color`)
     )
   },
   GoboWheelFine: {
-    isApplicable: ({ coarseChannel }) => coarseChannel.capabilities.some(
-      cap => [`WheelSlot`, `WheelRotation`].includes(cap.type)
-    ) && coarseChannel.capabilities.every(
-      cap => [`WheelSlot`, `WheelShake`, `WheelSlotRotation`, `WheelRotation`, `Effect`, `NoFunction`].includes(cap.type) &&
-        (cap.wheels.length === 0 || cap.wheels[0].type === `Gobo`)
+    isApplicable: ({ coarseChannel }) => exportHelpers.isWheelChannel && coarseChannel.capabilities.every(
+      cap => exportHelpers.isAllowedInWheels(cap) && (cap.wheels.length === 0 || cap.wheels[0].type === `Gobo`)
     )
   },
   GoboIndexFine: {
@@ -778,11 +776,11 @@ const capabilityPresets = {
 
   // gobo capabilities
 
-  // TODO: export a gobo image as res1
+  // TODO: import/export a gobo image as res1
   GoboShakeMacro: {
     isApplicable: cap => cap.type === `WheelShake` && (cap.isSlotType(/Gobo|Iris|Frost/) || cap.isSlotType(`Open`)),
     exportRes1: cap => (cap.isSlotType(`Open`) ? `Others/open.svg` : null),
-    importCapability: ({ capabilityName, res1, index }) => {
+    importCapability: ({ capabilityName, index }) => {
       const cap = {
         type: `WheelShake`,
         slotNumber: index + 1
@@ -805,7 +803,7 @@ const capabilityPresets = {
   GoboMacro: {
     isApplicable: cap => cap.isSlotType(/Gobo|Iris|Frost/) || cap.isSlotType(`Open`),
     exportRes1: cap => (cap.isSlotType(`Open`) ? `Others/open.svg` : null),
-    importCapability: ({ res1, index }) => ({
+    importCapability: ({ index }) => ({
       type: `WheelSlot`,
       slotNumber: index + 1
     })
@@ -814,7 +812,7 @@ const capabilityPresets = {
 
   // prism capabilities
 
-  // TODO: export the number of prism facets as res1 for Prism capabilities
+  // TODO: export/import the number of prism facets as res1 for Prism capabilities
   PrismEffectOn: {
     isApplicable: cap => cap.type === `Prism` || (cap.type === `WheelSlot` && cap.isSlotType(`Prism`)),
     exportRes1: cap => (cap.wheelSlot && cap.slotNumber[0].number === cap.slotNumber[1].number && cap.wheelSlot[0].facets),
@@ -917,17 +915,17 @@ const capabilityPresets = {
   SmallToBig: {
     isApplicable: cap => (exportHelpers.isBeamAngle(cap) && cap.angle[0].number < cap.angle[1].number) || (cap.parameter !== null && cap.parameter[0].keyword === `small` && cap.parameter[1].keyword === `big`),
     importCapability: () => ({
-      type: `Iris`,
-      openPercentStart: `open`,
-      openPercentEnd: `closed`
+      type: `BeamAngle`,
+      angleStart: `small`,
+      angleEnd: `big`
     })
   },
   BigToSmall: {
     isApplicable: cap => (exportHelpers.isBeamAngle(cap) && cap.angle[0].number > cap.angle[1].number) || (cap.parameter !== null && cap.parameter[0].keyword === `big` && cap.parameter[1].keyword === `small`),
     importCapability: () => ({
-      type: `Iris`,
-      openPercentStart: `closed`,
-      openPercentEnd: `open`
+      type: `BeamAngle`,
+      angleStart: `big`,
+      angleEnd: `small`
     })
   }
 };
