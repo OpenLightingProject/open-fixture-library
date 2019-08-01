@@ -793,39 +793,72 @@ function addSwitchingChannels(fixture, qlcPlusFixture) {
 
     const aliases = qlcPlusChannel.Capability.map(cap => (cap.Alias || []).map(alias => alias.$));
 
-    // const switchedChannels = [];
-    // const modes = [];
     const switchChannels = [];
-
-    [].concat(...aliases).forEach(alias => {
-      // if (!switchedChannels.includes(alias.Channel)) {
-      //   switchedChannels.push(alias.Channel);
-      // }
-
-      // if (!modes.includes(alias.Mode)) {
-      //   modes.push(alias.Mode);
-      // }
-
-      const switchChannel = switchChannels.find(ch => ch.replace === alias.Channel && ch.mode === alias.Mode);
-      if (switchChannel) {
-        switchChannel.alternatives.add(alias.With);
-      }
-      else {
-        switchChannels.push({
-          replace: alias.Channel,
-          mode: alias.Mode,
-          alternatives: new Set([alias.Channel, alias.With])
-        });
-      }
+    aliases.forEach((capAliases, index) => {
+      capAliases.forEach(alias => {
+        const switchChannel = switchChannels.find(ch => ch.replace === alias.Channel && ch.modes.includes(alias.Mode));
+        if (switchChannel) {
+          switchChannel.switchTo[index] = alias.With;
+        }
+        else {
+          switchChannels.push({
+            default: alias.Channel,
+            modes: [alias.Mode],
+            switchTo: {
+              [index]: alias.With
+            }
+          });
+        }
+      });
     });
 
-    // find switching channel keys, update them in modes
-    switchChannels.forEach(switchChannel => {
-      const alternatives = Array.from(switchChannel.alternatives).join(` / `);
-      switchChannel.key = `${alternatives} (${switchChannel.mode})`;
+    // try to merge similar switchChannels
+    switchChannels.forEach((switchChannel, index) => {
+      const switchTo = Object.entries(switchChannel.switchTo);
 
-      const mode = fixture.modes.find(mode => mode.name === switchChannel.mode);
-      mode.channels.splice(mode.channels.indexOf(switchChannel.replace), 1, switchChannel.key);
+      for (let i = index + 1; i < switchChannels.length; i++) {
+        const otherSwitchChannel = switchChannels[i];
+
+        if (otherSwitchChannel.default !== switchChannel.default) {
+          continue;
+        }
+
+        const otherSwitchTo = otherSwitchChannel.switchTo;
+        const switchToSame = switchTo.length === Object.keys(otherSwitchTo).length && switchTo.every(
+          ([capIndex, switchToChannel]) => otherSwitchTo[capIndex] === switchToChannel
+        );
+
+        if (!switchToSame) {
+          continue;
+        }
+
+        switchChannel.modes.push(...otherSwitchChannel.modes);
+        switchChannels.splice(i, 1);
+        i--;
+      }
+
+      const alternatives = new Set([switchChannel.default, ...Object.values(switchChannel.switchTo)]);
+      switchChannel.key = Array.from(alternatives).join(` / `);
+    });
+
+    // append mode names to switching channel keys if necessary, update switching channels in modes
+    switchChannels.forEach(switchChannel => {
+      const swChannelsWithSameKey = switchChannels.filter(ch => ch.key === switchChannel.key);
+
+      if (swChannelsWithSameKey.length > 1) {
+        swChannelsWithSameKey.forEach(ch => {
+          ch.key += ` (${ch.modes.join(`, `)})`;
+        });
+      }
+
+      const usingModes = fixture.modes.filter(mode => switchChannel.modes.includes(mode.name));
+      usingModes.forEach(mode => {
+        const index = mode.channels.indexOf(switchChannel.default);
+
+        if (index >= 0) {
+          mode.channels.splice(index, 1, switchChannel.key);
+        }
+      });
     });
 
     // add switchChannels to capabilities
@@ -833,13 +866,7 @@ function addSwitchingChannels(fixture, qlcPlusFixture) {
       cap.switchChannels = {};
 
       switchChannels.forEach(switchChannel => {
-        const alias = aliases[index].find(alias => alias.Channel === switchChannel.replace);
-        if (alias) {
-          cap.switchChannels[switchChannel.key] = alias.With;
-        }
-        else {
-          cap.switchChannels[switchChannel.key] = switchChannel.replace;
-        }
+        cap.switchChannels[switchChannel.key] = switchChannel.switchTo[index] || switchChannel.default;
       });
     });
   });
