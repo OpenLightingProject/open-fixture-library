@@ -1,0 +1,149 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Hera",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Guigui"],
+    "createDate": "2019-08-04",
+    "lastModifyDate": "2019-08-04"
+  },
+  "links": {
+    "manual": [
+      "https://www.clf-lighting.com/wp-content/uploads/CLF_HERA_Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.clf-lighting.com/product/hera"
+    ],
+    "video": [
+      "https://youtu.be/lxO2bXqmgJE"
+    ]
+  },
+  "physical": {
+    "dimensions": [260, 290, 180],
+    "power": 121,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [25, 64],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        },
+        {
+          "dmxRange": [65, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "5ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "7ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Strobe"
+      ]
+    }
+  ]
+}
