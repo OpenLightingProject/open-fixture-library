@@ -1,0 +1,104 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "IPSPOTPRO",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["zampano"],
+    "createDate": "2019-08-04",
+    "lastModifyDate": "2019-08-04"
+  },
+  "links": {
+    "manual": [
+      "https://www.mhdiffusion.fr/download/notices/NOTICE-IP%20SPOT%20PRO-GHOST.pdf"
+    ],
+    "productPage": [
+      "https://www.mhdiffusion.fr/?page=produit_detail&ref_nav=IPSPRO"
+    ]
+  },
+  "physical": {
+    "dimensions": [340, 240, 240],
+    "weight": 4.5,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LEDs de 15 Watts RGBWA 5in1."
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "100Hz"
+      }
+    },
+    "Fonction macro": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Speed fonction macro": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "normal",
+      "shortName": "normal",
+      "channels": [
+        "Dimmer",
+        "Red dimmer",
+        "Green dimmer",
+        "Blue dimmer",
+        "White dimmer",
+        "Amber dimmer",
+        "Strobe",
+        "Fonction macro",
+        "Speed fonction macro"
+      ]
+    }
+  ]
+}
