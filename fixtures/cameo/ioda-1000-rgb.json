@@ -1,0 +1,368 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ioda 1000 RGB",
+  "shortName": "Ioda",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["benni"],
+    "createDate": "2019-08-07",
+    "lastModifyDate": "2019-08-07"
+  },
+  "links": {
+    "manual": [
+      "https://www.cameolight.com/de/loesungen/dj-musiker/laser/showlaser/2163/ioda-1000-rgb#detail-downloads"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/de/loesungen/dj-musiker/laser/showlaser/2163/ioda-1000-rgb?c=1562"
+    ],
+    "video": [
+      "https://www.cameolight.com/de/loesungen/dj-musiker/laser/showlaser/2163/ioda-1000-rgb?c=1562"
+    ]
+  },
+  "physical": {
+    "dimensions": [188, 201, 210],
+    "weight": 6.5,
+    "power": 100,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "DPSS , Laser Diode"
+    }
+  },
+  "availableChannels": {
+    "Ch1 Laser off/ Auto/Sound control/DMX ": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "LASER OFF"
+        },
+        {
+          "dmxRange": [10, 59],
+          "type": "Generic",
+          "comment": "Build-in cartoon graphics auto running mode"
+        },
+        {
+          "dmxRange": [60, 109],
+          "type": "Generic",
+          "comment": "Build-in beam graphics auto running mode"
+        },
+        {
+          "dmxRange": [110, 159],
+          "type": "Generic",
+          "comment": "Build-in beam graphics auto running mode"
+        },
+        {
+          "dmxRange": [160, 209],
+          "type": "Generic",
+          "comment": "Build-in cartoon graphics auto running mode"
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "Generic",
+          "comment": "DMX mode, CH2~CH4 valid"
+        }
+      ]
+    },
+    "Ch2 Colour setting": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Generic",
+          "comment": "RGY"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Yellow "
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "ColorPreset",
+          "comment": "Colour Change with rising speed"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "ColorPreset",
+          "comment": "Multiple colour mode slow to fast"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "ColorPreset",
+          "comment": "Colour Fading slow to fast"
+        }
+      ]
+    },
+    "Ch3 Pattern Select": {
+      "capability": {
+        "type": "Generic",
+        "comment": "128 Patterns"
+      }
+    },
+    "Ch4 Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "speed": "slow CW",
+          "comment": "Manual rotation"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Rotation",
+          "speed": "slow CW",
+          "comment": "Auto bidirectional rotation (from slow to fast)"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Rotation",
+          "speed": "slow CW",
+          "comment": "Auto bidirectional rotation pos. 2 (from slow to fast)"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Rotation",
+          "speed": "slow CW",
+          "comment": "Auto clockwise rotation (from slow to fast)"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Rotation",
+          "speed": "slow CW",
+          "comment": "Auto counter-clockwise rotation (from slow to fast)"
+        }
+      ]
+    },
+    "Ch5 X Axis rolling": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Manual rolling"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "Auto bidirectional rolling fw (from slow to fast)"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "Auto bidirectional rolling bw (from slow to fast)"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "Auto rolling forward (from slow to fast)"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "Auto rolling backward (from slow to fast)"
+        }
+      ]
+    },
+    "Ch6 Y Axis rolling": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Manual rolling"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "Auto bidirectional rolling fw (from slow to fast)"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "Auto bidirectional rolling bw (from slow to fast)"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "Auto rolling forward (from slow to fast)"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "Auto rolling backward (from slow to fast)"
+        }
+      ]
+    },
+    "Ch7 X Axis moving": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Manual moving position"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "Auto moving forward (from slow to fast)"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "Auto moving backward (from slow to fast)"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "Auto moving backward 2 (from slow to fast)"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "Auto bidirectional moving (from slow to fast)"
+        }
+      ]
+    },
+    "Ch8 Y axis moving": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Manual moving position"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "Auto moving downward (from slow to fast)"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "Auto moving upward (from slow to fast)"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "Auto moving downward 2 (from slow to fast)"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "Auto bidirectional moving (from slow to fast)"
+        }
+      ]
+    },
+    "Ch 9 Zoom": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Zoom",
+          "angleStart": "wide",
+          "angleEnd": "narrow",
+          "comment": "Size from large to small"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Zoom",
+          "angleStart": "narrow",
+          "angleEnd": "wide",
+          "comment": "Auto zooming (-) from slow to fast"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Zoom",
+          "angleStart": "narrow",
+          "angleEnd": "wide",
+          "comment": "Auto zooming (+) from slow to fast"
+        }
+      ]
+    },
+    "Ch10 Drawing": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic",
+          "comment": "no function"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Generic",
+          "comment": "Auto drawing from slow to fast"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Auto drawing (including „de-drawing“) slow to fast"
+        }
+      ]
+    },
+    "Ch11 Scanning Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Scanning speed from fast to slow"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Scanning speed from fast to slow (gaps)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Ch",
+      "channels": [
+        "Ch1 Laser off/ Auto/Sound control/DMX "
+      ]
+    },
+    {
+      "name": "11 Ch",
+      "channels": [
+        "Ch1 Laser off/ Auto/Sound control/DMX ",
+        "Ch2 Colour setting",
+        "Ch3 Pattern Select",
+        "Ch4 Rotation",
+        "Ch5 X Axis rolling",
+        "Ch6 Y Axis rolling",
+        "Ch7 X Axis moving",
+        "Ch8 Y axis moving",
+        "Ch 9 Zoom",
+        "Ch10 Drawing",
+        "Ch11 Scanning Speed"
+      ]
+    }
+  ]
+}
