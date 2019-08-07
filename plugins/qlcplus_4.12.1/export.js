@@ -22,7 +22,7 @@ const {
 } = require(`../../lib/model.js`);
 /* eslint-enable no-unused-vars */
 
-module.exports.version = `1.1.1`;
+module.exports.version = `1.2.0`;
 
 /**
  * @param {array.<Fixture>} fixtures An array of Fixture objects.
