@@ -107,18 +107,17 @@ function getOflCategories(qlcPlusFixture) {
 function addOflFixturePhysical(fixture, qlcPlusFixture) {
   const allModesHavePhysical = qlcPlusFixture.Mode.every(mode => `Physical` in mode);
   const firstPhysicalMode = qlcPlusFixture.Mode.find(mode => `Physical` in mode);
+  const hasModePhysical = firstPhysicalMode !== null;
   const hasGlobalPhysical = `Physical` in qlcPlusFixture;
 
-  if (!hasGlobalPhysical && (allModesHavePhysical || !firstPhysicalMode)) {
-    return;
-  }
+  if (hasGlobalPhysical || (hasModePhysical && !allModesHavePhysical)) {
+    fixture.physical = getOflPhysical(hasGlobalPhysical ? qlcPlusFixture.Physical[0] : firstPhysicalMode.Physical[0]);
 
-  fixture.physical = getOflPhysical(hasGlobalPhysical ? qlcPlusFixture.Physical[0] : firstPhysicalMode.Physical[0]);
-
-  if (qlcPlusFixture.Type[0] === `LED Bar (Pixels)`) {
-    fixture.physical.matrixPixels = {
-      spacing: [0, 0, 0]
-    };
+    if (qlcPlusFixture.Type[0] === `LED Bar (Pixels)`) {
+      fixture.physical.matrixPixels = {
+        spacing: [0, 0, 0]
+      };
+    }
   }
 }
 
@@ -163,7 +162,7 @@ const slotTypeFunctions = {
         .filter(attr => attr in cap.$)
         .map(attr => cap.$[attr]);
 
-      if (colors.length) {
+      if (colors.length > 0) {
         slot.colors = colors;
       }
     }
@@ -435,11 +434,14 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
     defaultValue: parseInt(qlcPlusChannel.$.Default) || 0
   };
 
-  const physicalObjects = qlcPlusFixture.Mode.concat(qlcPlusFixture);
+  const physicals = qlcPlusFixture.Mode.concat(qlcPlusFixture)
+    .filter(obj => `Physical` in obj)
+    .map(obj => obj.Physical[0]);
+
   const [panMax, tiltMax] = [`PanMax`, `TiltMax`].map(
-    prop => Math.max(...physicalObjects.map(obj => {
-      if (obj.Physical && obj.Physical[0].Focus && obj.Physical[0].Focus[0].$[prop]) {
-        return parseInt(obj.Physical[0].Focus[0].$[prop]) || 0;
+    prop => Math.max(...physicals.map(physical => {
+      if (physical.Focus && prop in physical.Focus[0].$) {
+        return parseInt(physical.Focus[0].$[prop]) || 0;
       }
       return 0;
     }))
@@ -532,7 +534,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
 
       const zeroToHundredRegex = /^0%?\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*100%$/i;
 
-      if (cap.comment === channelName || !cap.comment.length || zeroToHundredRegex.test(cap.comment)) {
+      if (cap.comment === channelName || cap.comment.length === 0 || zeroToHundredRegex.test(cap.comment)) {
         delete cap.comment;
       }
     }
@@ -623,17 +625,17 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
     physical.bulb = {};
 
     const type = qlcPlusPhysical.Bulb[0].$.Type;
-    if (type !== `` && getOflPhysicalProperty(`bulb`, `type`) !== type) {
+    if (type !== `` && getOflFixPhysicalProperty(`bulb`, `type`) !== type) {
       physical.bulb.type = type;
     }
 
     const colorTemp = parseFloat(qlcPlusPhysical.Bulb[0].$.ColourTemperature);
-    if (colorTemp && getOflPhysicalProperty(`bulb`, `colorTemperature`) !== colorTemp) {
+    if (colorTemp && getOflFixPhysicalProperty(`bulb`, `colorTemperature`) !== colorTemp) {
       physical.bulb.colorTemperature = colorTemp;
     }
 
     const lumens = parseFloat(qlcPlusPhysical.Bulb[0].$.Lumens);
-    if (lumens && getOflPhysicalProperty(`bulb`, `lumens`) !== lumens) {
+    if (lumens && getOflFixPhysicalProperty(`bulb`, `lumens`) !== lumens) {
       physical.bulb.lumens = lumens;
     }
   }
@@ -645,7 +647,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
     physical.lens = {};
 
     const name = qlcPlusPhysical.Lens[0].$.Name;
-    if (name !== `` && getOflPhysicalProperty(`lens`, `name`) !== name) {
+    if (name !== `` && getOflFixPhysicalProperty(`lens`, `name`) !== name) {
       physical.lens.name = name;
     }
 
@@ -654,7 +656,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
     const degreesMinMax = [degMin, degMax];
 
     if ((degMin !== 0.0 || degMax !== 0.0)
-      && (JSON.stringify(getOflPhysicalProperty(`lens`, `degreesMinMax`)) !== JSON.stringify(degreesMinMax))) {
+      && (JSON.stringify(getOflFixPhysicalProperty(`lens`, `degreesMinMax`)) !== JSON.stringify(degreesMinMax))) {
       physical.lens.degreesMinMax = degreesMinMax;
     }
   }
@@ -665,7 +667,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
    * @param {string} property The property name in the section,
    * @returns {*} The property data, or undefined.
    */
-  function getOflPhysicalProperty(section, property) {
+  function getOflFixPhysicalProperty(section, property) {
     if (!(section in oflFixPhysical)) {
       return undefined;
     }
@@ -816,21 +818,19 @@ function addSwitchingChannels(fixture, qlcPlusFixture) {
       return;
     }
 
-    const aliases = qlcPlusChannel.Capability.map(cap => (cap.Alias || []).map(alias => alias.$));
-
     const switchChannels = [];
-    aliases.forEach((capAliases, index) => {
-      capAliases.forEach(alias => {
-        const switchChannel = switchChannels.find(ch => ch.default === alias.Channel && ch.modes.includes(alias.Mode));
+    qlcPlusChannel.Capability.forEach((cap, index) => {
+      (cap.Alias || []).forEach(alias => {
+        const switchChannel = switchChannels.find(ch => ch.default === alias.$.Channel && ch.modes.includes(alias.$.Mode));
         if (switchChannel) {
-          switchChannel.switchTo[index] = alias.With;
+          switchChannel.switchTo[index] = alias.$.With;
         }
         else {
           switchChannels.push({
-            default: alias.Channel,
-            modes: [alias.Mode],
+            default: alias.$.Channel,
+            modes: [alias.$.Mode],
             switchTo: {
-              [index]: alias.With
+              [index]: alias.$.With
             }
           });
         }
@@ -839,7 +839,7 @@ function addSwitchingChannels(fixture, qlcPlusFixture) {
 
     // try to merge similar switchChannels
     switchChannels.forEach((switchChannel, index) => {
-      const switchTo = Object.entries(switchChannel.switchTo);
+      const switchToEntries = Object.entries(switchChannel.switchTo);
 
       for (let i = index + 1; i < switchChannels.length; i++) {
         const otherSwitchChannel = switchChannels[i];
@@ -849,7 +849,7 @@ function addSwitchingChannels(fixture, qlcPlusFixture) {
         }
 
         const otherSwitchTo = otherSwitchChannel.switchTo;
-        const switchToSame = switchTo.length === Object.keys(otherSwitchTo).length && switchTo.every(
+        const switchToSame = switchToEntries.length === Object.keys(otherSwitchTo).length && switchToEntries.every(
           ([capIndex, switchToChannel]) => otherSwitchTo[capIndex] === switchToChannel
         );
 
@@ -880,9 +880,7 @@ function addSwitchingChannels(fixture, qlcPlusFixture) {
       usingModes.forEach(mode => {
         const index = mode.channels.indexOf(switchChannel.default);
 
-        if (index >= 0) {
-          mode.channels.splice(index, 1, switchChannel.key);
-        }
+        mode.channels[index] = switchChannel.key;
       });
     });
 

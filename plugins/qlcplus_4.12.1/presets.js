@@ -43,7 +43,7 @@ const importHelpers = {
     color
   }),
 
-  getPanTiltCap: (panOrTilt, maxValue) => {
+  getPanTiltCap: (panOrTilt, maxValue = 0) => {
     const cap = {
       type: panOrTilt,
       angleStart: `0deg`,
@@ -59,7 +59,7 @@ const importHelpers = {
     return cap;
   },
 
-  getShutterStrobeCap: (shutterEffect, speedStart, speedEnd, randomTiming) => {
+  getShutterStrobeCap: (shutterEffect, speedStart = ``, speedEnd = ``, randomTiming = false) => {
     const cap = {
       type: `ShutterStrobe`,
       shutterEffect
@@ -96,7 +96,7 @@ const importHelpers = {
     return `Rotation`;
   },
 
-  getRotationSpeedCap: (capData, speedStart, speedEnd) => {
+  getRotationSpeedCap: (capData, speedStart = ``, speedEnd = ``) => {
     const cap = {
       type: importHelpers.getRotationCapType(capData)
     };
