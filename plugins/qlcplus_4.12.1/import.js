@@ -155,7 +155,7 @@ const slotTypeFunctions = {
     }
   },
   Color: {
-    isSlotType: (cap, chGroup, capPreset) => (capPreset ? [`ColourMacro`, `ColourDoubleMacro`].includes(capPreset) : chGroup === `Colour`),
+    isSlotType: (cap, chGroup, capPreset) => (capPreset ? [`ColorMacro`, `ColorDoubleMacro`].includes(capPreset) : chGroup === `Colour`),
     addSlotProperties: (cap, slot) => {
       slot.name = cap._;
 
@@ -796,7 +796,7 @@ function addSwitchingChannels(fixture, qlcPlusFixture) {
     const switchChannels = [];
     aliases.forEach((capAliases, index) => {
       capAliases.forEach(alias => {
-        const switchChannel = switchChannels.find(ch => ch.replace === alias.Channel && ch.modes.includes(alias.Mode));
+        const switchChannel = switchChannels.find(ch => ch.default === alias.Channel && ch.modes.includes(alias.Mode));
         if (switchChannel) {
           switchChannel.switchTo[index] = alias.With;
         }
