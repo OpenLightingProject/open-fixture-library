@@ -85,8 +85,8 @@ const importHelpers = {
       return `${channelType}Continuous`;
     }
 
-    if ([`Colour`, `Gobo`].includes(channelType) || /\bgobo\b/i.test(channelName)) {
-      return /wheel\b/i.test(channelName) ? `WheelRotation` : `WheelSlotRotation`;
+    if ([`Colour`, `Gobo`].includes(channelType) || /gobo/i.test(channelName)) {
+      return /wheel/i.test(channelName) ? `WheelRotation` : `WheelSlotRotation`;
     }
 
     if (channelType === `Prism`) {

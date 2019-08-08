@@ -224,7 +224,7 @@ function getOflWheels(qlcPlusFixture) {
     const slots = [];
 
     (qlcPlusChannel.Capability || []).forEach(capability => {
-      if (/\b(CW|CCW|rainbow|stop|clockwise|counterclockwise)\b/.test(capability._)) {
+      if (/\bC?CW\b|rainbow|stop|(?:counter|anti)?[ -]?clockwise|rotat|spin/i.test(capability._)) {
         // skip rotation capabilities
         return;
       }
