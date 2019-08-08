@@ -110,10 +110,11 @@ function redeploy(webhookPayload) {
   try {
     execSync(`./redeploy.sh`, {
       cwd: `/home/flo`,
-      env: deploymentConfig.env,
+      env: Object.assign({}, process.env, deploymentConfig.env),
       encoding: `utf8`,
       stdio: `pipe`
     });
+    console.log(`Successfully deployed.`);
   }
   catch (error) {
     console.log(`Redeploy process failed with exit code ${error.status}.`);
