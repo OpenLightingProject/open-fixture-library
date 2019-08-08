@@ -100,6 +100,42 @@ const importHelpers = {
     return cap;
   },
 
+  getSpeedCapType: ({ channelName, channelType }) => {
+    if (channelType === `Shutter` || /strobe/i.test(channelName)) {
+      return `StrobeSpeed`;
+    }
+
+    if (/pan\W*tilt/i.test(channelName)) {
+      return `PanTiltSpeed`;
+    }
+
+    if (channelType === `Effect` || /program|effect/i.test(channelName)) {
+      return `EffectSpeed`;
+    }
+
+    return `Speed`;
+  },
+
+  getBeamAngleCap({ channelName, channelType }, isAscending) {
+    if (channelType === `Shutter` || /iris/i.test(channelName)) {
+      const [openPercentStart, openPercentEnd] = isAscending ? [`closed`, `open`] : [`open`, `closed`];
+
+      return {
+        type: `Iris`,
+        openPercentStart,
+        openPercentEnd
+      };
+    }
+
+    const [angleStart, angleEnd] = isAscending ? [`small`, `big`] : [`big`, `small`];
+
+    return {
+      type: /zoom/i.test(channelName) ? `Zoom` : `BeamAngle`,
+      angleStart,
+      angleEnd
+    };
+  },
+
   /**
    * Try to guess speedStart / speedEnd from the capability name and set them
    * to the capability. It may also set cap.type to "Rotation".
@@ -140,7 +176,16 @@ const importHelpers = {
 
 const channelPresets = {
   IntensityMasterDimmer: {
-    isApplicable: cap => false,
+    isApplicable: cap => {
+      const channel = cap._channel;
+      const matrix = channel.fixture.matrix;
+
+      if (!channelPresets.IntensityDimmer.isApplicable(cap) || matrix === null) {
+        return false;
+      }
+
+      return channel.pixelKey === null || matrix.pixelKeys[channel.pixelKey] === matrix.pixelKeys;
+    },
     importCapability: () => ({ type: `Intensity` })
   },
   IntensityDimmer: {
@@ -304,11 +349,9 @@ const channelPresets = {
       speedEnd: `fast`
     })
   },
-  ColorRGBMixer: { // basically this is also Hue
-    isApplicable: cap => false,
-    importCapability: () => ({
-      type: `Generic`
-    })
+  ColorRGBMixer: {
+    isApplicable: cap => channelPresets.IntensityHue.isApplicable(cap),
+    importCapability: capData => channelPresets.IntensityHue.importCapability(capData)
   },
   ColorCTOMixer: {
     isApplicable: cap => cap.type === `ColorTemperature` && cap.colorTemperature[0].number === 0 && cap.colorTemperature[1].number < 0,
@@ -332,8 +375,8 @@ const channelPresets = {
     isApplicable: cap => cap.type === `ColorTemperature`,
     importCapability: () => ({
       type: `ColorTemperature`,
-      colorTemperatureStart: `cold`,
-      colorTemperatureEnd: `warm`,
+      colorTemperatureStart: `warm`,
+      colorTemperatureEnd: `cold`,
       helpWanted: `Is this the correct direction? Can you provide exact color temperature values in Kelvin?`
     })
   },
@@ -762,7 +805,7 @@ const capabilityPresets = {
 
   // TODO: import/export a gobo image as res1
   GoboShakeMacro: {
-    isApplicable: cap => cap.type === `WheelShake` && (cap.isSlotType(/Gobo|Iris|Frost/) || cap.isSlotType(`Open`)),
+    isApplicable: cap => cap.type === `WheelShake` && cap.isSlotType(/Gobo|Iris|Frost|Open/),
     exportRes1: cap => (cap.isSlotType(`Open`) ? `Others/open.svg` : null),
     importCapability: ({ capabilityName, index }) => {
       const cap = {
@@ -785,7 +828,7 @@ const capabilityPresets = {
     }
   },
   GoboMacro: {
-    isApplicable: cap => cap.isSlotType(/Gobo|Iris|Frost/) || cap.isSlotType(`Open`),
+    isApplicable: cap => cap.type === `WheelSlot` && cap.isSlotType(/Gobo|Iris|Frost|Open/),
     exportRes1: cap => (cap.isSlotType(`Open`) ? `Others/open.svg` : null),
     importCapability: ({ index }) => ({
       type: `WheelSlot`,
@@ -796,14 +839,19 @@ const capabilityPresets = {
 
   // prism capabilities
 
-  // TODO: export/import the number of prism facets as res1 for Prism capabilities
   PrismEffectOn: {
     isApplicable: cap => cap.type === `Prism` || (cap.type === `WheelSlot` && cap.isSlotType(`Prism`)),
     exportRes1: cap => (cap.wheelSlot && cap.slotNumber[0].number === cap.slotNumber[1].number && cap.wheelSlot[0].facets),
-    importCapability: ({ res1 }) => ({
-      type: `Prism`,
-      comment: res1 ? `${res1}-facet` : ``
-    })
+    importCapability: capData => {
+      if (/wheel/i.test(capData.channelName)) {
+        return capabilityPresets.GoboMacro.importCapability(capData);
+      }
+
+      return {
+        type: `Prism`,
+        comment: capData.res1 ? `${capData.res1}-facet` : ``
+      };
+    }
   },
   PrismEffectOff: {
     isApplicable: cap => cap.type === `NoFunction` && cap._channel.type === `Prism`,
@@ -859,23 +907,40 @@ const capabilityPresets = {
   GenericPicture: {
     isApplicable: cap => cap.effectPreset === `ColorFade` && !exportHelpers.isStopped(cap),
     exportRes1: cap => `Others/rainbow.png`,
-    importCapability: ({ res1 }) => ({
-      type: `Generic`,
-      comment: res1
-    })
+    importCapability: ({ res1, channelName, capabilityName }) => {
+      if (res1 === `Others/rainbow.png`) {
+        if (/wheel/i.test(channelName)) {
+          const cap = {
+            type: `WheelRotation`
+          };
+          cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+
+          return cap;
+        }
+        return {
+          type: `Effect`,
+          effectName: capabilityName
+        };
+      }
+
+      return {
+        type: `Generic`,
+        comment: res1
+      };
+    }
   },
   SlowToFast: {
     isApplicable: cap => exportHelpers.isIncreasingSpeed(cap),
-    importCapability: () => ({
-      type: `Speed`,
+    importCapability: capData => ({
+      type: importHelpers.getSpeedCapType(capData),
       speedStart: `slow`,
       speedEnd: `fast`
     })
   },
   FastToSlow: {
     isApplicable: cap => exportHelpers.isDecreasingSpeed(cap),
-    importCapability: () => ({
-      type: `Speed`,
+    importCapability: capData => ({
+      type: importHelpers.getSpeedCapType(capData),
       speedStart: `fast`,
       speedEnd: `slow`
     })
@@ -898,19 +963,11 @@ const capabilityPresets = {
   },
   SmallToBig: {
     isApplicable: cap => (exportHelpers.isBeamAngle(cap) && cap.angle[0].number < cap.angle[1].number) || (cap.parameter !== null && cap.parameter[0].keyword === `small` && cap.parameter[1].keyword === `big`),
-    importCapability: () => ({
-      type: `BeamAngle`,
-      angleStart: `small`,
-      angleEnd: `big`
-    })
+    importCapability: capData => importHelpers.getBeamAngleCap(capData, true)
   },
   BigToSmall: {
     isApplicable: cap => (exportHelpers.isBeamAngle(cap) && cap.angle[0].number > cap.angle[1].number) || (cap.parameter !== null && cap.parameter[0].keyword === `big` && cap.parameter[1].keyword === `small`),
-    importCapability: () => ({
-      type: `BeamAngle`,
-      angleStart: `big`,
-      angleEnd: `small`
-    })
+    importCapability: capData => importHelpers.getBeamAngleCap(capData, false)
   }
 };
 
