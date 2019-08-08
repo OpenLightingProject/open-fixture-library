@@ -184,7 +184,7 @@ const channelPresets = {
         return false;
       }
 
-      return channel.pixelKey === null || matrix.pixelKeys[channel.pixelKey] === matrix.pixelKeys;
+      return channel.pixelKey === null || matrix.pixelGroups[channel.pixelKey] === matrix.pixelKeys;
     },
     importCapability: () => ({ type: `Intensity` })
   },
