@@ -15,6 +15,7 @@ module.exports.version = `0.3.0`;
  * @param {object} options Global options, including:
  * @param {string} options.baseDir Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
+ * @param {string|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<array.<object>, Error>} The generated files.
 */
 module.exports.export = async function exportECue(fixtures, options) {

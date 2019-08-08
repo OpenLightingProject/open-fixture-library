@@ -15,6 +15,7 @@ const MAX_OPZ_FIXTURES = 16;
  * @param {object} options Global options, including:
  * @param {string} options.baseDir Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
+ * @param {string|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<array.<object>, Error>} The generated files.
 */
 module.exports.export = async function exportOpZ(fixtures, options) {

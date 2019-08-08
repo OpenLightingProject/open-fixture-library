@@ -41,6 +41,7 @@ module.exports.version = `1.1.1`;
  * @param {object} options Global options, including:
  * @param {string} options.baseDir Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
+ * @param {string|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<array.<object>, Error>} The generated files.
 */
 module.exports.export = async function exportQlcPlus(fixtures, options) {
@@ -52,7 +53,7 @@ module.exports.export = async function exportQlcPlus(fixtures, options) {
           '@xmlns': `http://www.qlcplus.org/FixtureDefinition`,
           Creator: {
             Name: `OFL – ${fixture.url}`,
-            Version: module.exports.version,
+            Version: options.displayedPluginVersion || module.exports.version,
             Author: fixture.meta.authors.join(`, `)
           },
           Manufacturer: fixture.manufacturer.name,
