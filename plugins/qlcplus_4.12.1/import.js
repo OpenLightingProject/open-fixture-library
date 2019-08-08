@@ -909,7 +909,7 @@ function cleanUpFixture(fixture, qlcPlusFixture) {
       delete channel.capabilities;
       delete channel.capability.dmxRange;
 
-      if (!(`defaultValue` in channel)) {
+      if (!(`defaultValue` in channel) || channel.defaultValue === 0) {
         delete channel.dmxValueResolution;
       }
     }
