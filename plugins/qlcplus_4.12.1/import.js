@@ -485,12 +485,6 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
     const channelType = qlcPlusChannel.Group[0]._;
     const capabilityName = (qlcPlusCapability._ || ``).trim();
 
-    // first check if it can be a NoFunction capability
-    if (/^(?:nothing|no func(?:tion)?|unused|not used|empty|no strobe|no prism|no frost)$/i.test(capabilityName)) {
-      cap.type = `NoFunction`;
-      return cap;
-    }
-
     const capData = {
       qlcPlusChannel,
       channelName,
@@ -509,6 +503,9 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
 
     if (preset && preset !== `Alias`) {
       Object.assign(cap, getCapabilityFromCapabilityPreset(preset, capData));
+    }
+    else if (/^(?:nothing|no func(?:tion)?|unused|not used|empty|no strobe|no prism|no frost)$/i.test(capabilityName)) {
+      cap.type = `NoFunction`;
     }
     else if (channelType in parserPerChannelType) {
       // try to parse capability based on channel type
