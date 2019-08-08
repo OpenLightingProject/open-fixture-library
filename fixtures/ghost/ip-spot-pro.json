@@ -5,8 +5,8 @@
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["zampano"],
-    "createDate": "2019-08-04",
-    "lastModifyDate": "2019-08-04"
+    "createDate": "2019-08-08",
+    "lastModifyDate": "2019-08-08"
   },
   "links": {
     "manual": [
@@ -22,7 +22,7 @@
     "power": 200,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LEDs de 15 Watts RGBWA 5in1."
+      "type": "15W RGBWA LEDs"
     },
     "lens": {
       "degreesMinMax": [25, 25]
@@ -30,56 +30,72 @@
   },
   "availableChannels": {
     "Dimmer": {
-      "defaultValue": "0%",
       "capability": {
         "type": "Intensity"
       }
     },
-    "Red dimmer": {
+    "Red": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green dimmer": {
+    "Green": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue dimmer": {
+    "Blue": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "White dimmer": {
+    "White": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "Amber dimmer": {
+    "Amber": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber"
       }
     },
     "Strobe": {
-      "capability": {
-        "type": "StrobeSpeed",
-        "speedStart": "0Hz",
-        "speedEnd": "100Hz"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
     },
-    "Fonction macro": {
-      "capability": {
-        "type": "Maintenance"
-      }
+    "Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Effect",
+          "effectName": "Function macro",
+          "helpWanted": "Which macros can be selected at which DMX values? Or is there only one macro from 1…255?"
+        }
+      ]
     },
-    "Speed fonction macro": {
+    "Macro Speed": {
       "capability": {
-        "type": "Speed",
+        "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
@@ -87,18 +103,18 @@
   },
   "modes": [
     {
-      "name": "normal",
-      "shortName": "normal",
+      "name": "9-channel",
+      "shortName": "9ch",
       "channels": [
         "Dimmer",
-        "Red dimmer",
-        "Green dimmer",
-        "Blue dimmer",
-        "White dimmer",
-        "Amber dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
         "Strobe",
-        "Fonction macro",
-        "Speed fonction macro"
+        "Macros",
+        "Macro Speed"
       ]
     }
   ]
