@@ -40,7 +40,7 @@ module.exports.version = `1.1.1`;
  * @param {array.<Fixture>} fixtures An array of Fixture objects.
  * @param {object} options Global options, including:
  * @param {string} options.baseDir Absolute path to OFL's root directory.
- * @param {Date|null} options.date The current time.
+ * @param {Date} options.date The current time.
  * @returns {Promise.<array.<object>, Error>} The generated files.
 */
 module.exports.export = async function exportQlcPlus(fixtures, options) {
