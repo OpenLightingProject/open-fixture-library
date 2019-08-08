@@ -229,9 +229,9 @@ function getOflWheels(qlcPlusFixture) {
         return;
       }
 
-      const capabilityPreset = capability.$.Preset;
+      const capabilityPreset = capability.$.Preset || ``;
 
-      if (capabilityPreset === `GoboShakeMacro`) {
+      if (/^(GoboShakeMacro|ColorWheelIndex)$|^Rotation/.test(capabilityPreset)) {
         return;
       }
 
