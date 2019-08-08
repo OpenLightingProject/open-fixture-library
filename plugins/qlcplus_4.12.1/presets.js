@@ -18,23 +18,7 @@ const exportHelpers = {
   isRotationAngle: cap => (cap.type.endsWith(`Rotation`) || [`Pan`, `Tilt`, `Prism`].includes(cap.type)) && cap.angle !== null,
   isBeamAngle: cap => (cap.type === `BeamAngle` || cap.type === `Zoom`) && cap.angle !== null,
   isWheelChannel: channel => channel.capabilities.some(cap => [`WheelSlot`, `WheelRotation`].includes(cap.type)),
-  isAllowedInWheels: cap => [`WheelSlot`, `WheelShake`, `WheelSlotRotation`, `WheelRotation`, `Effect`, `NoFunction`].includes(cap.type),
-
-  /**
-   * @param {Entity} entity The speed Entity object.
-   * @returns {number|null} The frequency in Hertz, or null, if the entity's unit is not convertable to Hertz.
-   */
-  getFrequencyInHertz(entity) {
-    if (entity.unit === `Hz`) {
-      return entity.number;
-    }
-
-    if (entity.unit === `bpm`) {
-      return entity.number / 60;
-    }
-
-    return null;
-  }
+  isAllowedInWheels: cap => [`WheelSlot`, `WheelShake`, `WheelSlotRotation`, `WheelRotation`, `Effect`, `NoFunction`].includes(cap.type)
 };
 
 const importHelpers = {
@@ -640,46 +624,46 @@ const capabilityPresets = {
 
   StrobeFrequency: {
     isApplicable: cap => exportHelpers.isShutterEffect(cap, `Strobe`) && exportHelpers.hasFrequency(cap) && cap.isStep,
-    exportRes1: cap => exportHelpers.getFrequencyInHertz(cap.speed[0]),
+    exportRes1: cap => cap.speed[0].getBaseUnitEntity().number,
     importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`Strobe`, `${res1}Hz`)
   },
   StrobeFreqRange: {
     isApplicable: cap => exportHelpers.isShutterEffect(cap, `Strobe`) && exportHelpers.hasFrequency(cap),
-    exportRes1: cap => exportHelpers.getFrequencyInHertz(cap.speed[0]),
-    exportRes2: cap => exportHelpers.getFrequencyInHertz(cap.speed[1]),
+    exportRes1: cap => cap.speed[0].getBaseUnitEntity().number,
+    exportRes2: cap => cap.speed[1].getBaseUnitEntity().number,
     importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`Strobe`, `${res1}Hz`, `${res2}Hz`)
   },
   PulseFrequency: {
     isApplicable: cap => exportHelpers.isShutterEffect(cap, `Pulse`) && exportHelpers.hasFrequency(cap) && cap.isStep,
-    exportRes1: cap => exportHelpers.getFrequencyInHertz(cap.speed[0]),
+    exportRes1: cap => cap.speed[0].getBaseUnitEntity().number,
     importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`Pulse`, `${res1}Hz`)
   },
   PulseFreqRange: {
     isApplicable: cap => exportHelpers.isShutterEffect(cap, `Pulse`) && exportHelpers.hasFrequency(cap),
-    exportRes1: cap => exportHelpers.getFrequencyInHertz(cap.speed[0]),
-    exportRes2: cap => exportHelpers.getFrequencyInHertz(cap.speed[1]),
+    exportRes1: cap => cap.speed[0].getBaseUnitEntity().number,
+    exportRes2: cap => cap.speed[1].getBaseUnitEntity().number,
     importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`Pulse`, `${res1}Hz`, `${res2}Hz`)
   },
   RampUpFrequency: {
     isApplicable: cap => exportHelpers.isShutterEffect(cap, `RampUp`) && exportHelpers.hasFrequency(cap) && cap.isStep,
-    exportRes1: cap => exportHelpers.getFrequencyInHertz(cap.speed[0]),
+    exportRes1: cap => cap.speed[0].getBaseUnitEntity().number,
     importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`RampUp`, `${res1}Hz`)
   },
   RampUpFreqRange: {
     isApplicable: cap => exportHelpers.isShutterEffect(cap, `RampUp`) && exportHelpers.hasFrequency(cap),
-    exportRes1: cap => exportHelpers.getFrequencyInHertz(cap.speed[0]),
-    exportRes2: cap => exportHelpers.getFrequencyInHertz(cap.speed[1]),
+    exportRes1: cap => cap.speed[0].getBaseUnitEntity().number,
+    exportRes2: cap => cap.speed[1].getBaseUnitEntity().number,
     importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`RampUp`, `${res1}Hz`, `${res2}Hz`)
   },
   RampDownFrequency: {
     isApplicable: cap => exportHelpers.isShutterEffect(cap, `RampDown`) && exportHelpers.hasFrequency(cap) && cap.isStep,
-    exportRes1: cap => exportHelpers.getFrequencyInHertz(cap.speed[0]),
+    exportRes1: cap => cap.speed[0].getBaseUnitEntity().number,
     importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`RampDown`, `${res1}Hz`)
   },
   RampDownFreqRange: {
     isApplicable: cap => exportHelpers.isShutterEffect(cap, `RampDown`) && exportHelpers.hasFrequency(cap),
-    exportRes1: cap => exportHelpers.getFrequencyInHertz(cap.speed[0]),
-    exportRes2: cap => exportHelpers.getFrequencyInHertz(cap.speed[1]),
+    exportRes1: cap => cap.speed[0].getBaseUnitEntity().number,
+    exportRes2: cap => cap.speed[1].getBaseUnitEntity().number,
     importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`RampDown`, `${res1}Hz`, `${res2}Hz`)
   },
 
