@@ -752,6 +752,7 @@ function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
   function getCoarseChannelKey(qlcPlusFineChannel) {
     const fineChannelKey = qlcPlusFineChannel.$.Name;
 
+    // try deducing coarse channel from fine channel preset
     if (`Preset` in qlcPlusFineChannel.$) {
       const coarseChannelPreset = qlcPlusFineChannel.$.Preset.slice(0, -4);
 
@@ -763,7 +764,27 @@ function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
       }
     }
 
-    // if coarse channel can't be deduced from fine channel preset, try using only its name
+    // try deducing coarse channel from fine channel group
+    if (`Group` in qlcPlusFineChannel) {
+      const fineChannelGroupName = qlcPlusFineChannel.Group[0]._;
+
+      const coarseChannels = qlcPlusFixture.Channel.filter(coarseChannel => {
+        if (!(`Group` in coarseChannel)) {
+          return false;
+        }
+
+        const coarseChannelGroupName = coarseChannel.Group[0]._;
+        const coarseChannelGroupByte = parseInt(coarseChannel.Group[0].$.Byte);
+
+        return coarseChannelGroupName === fineChannelGroupName && coarseChannelGroupByte === 0;
+      });
+
+      if (coarseChannels.length === 1) {
+        return coarseChannels[0].$.Name;
+      }
+    }
+
+    // last option: try deducing coarse channel from fine channel name
 
     if (!fineChannelRegex.test(fineChannelKey)) {
       return null;
