@@ -508,9 +508,13 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
     if (preset && preset !== `Alias`) {
       Object.assign(cap, getCapabilityFromCapabilityPreset(preset, capData));
     }
-    else {
-      // try to parse capability based on type
+    else if (channelType in parserPerChannelType) {
+      // try to parse capability based on channel type
       Object.assign(cap, parserPerChannelType[channelType](capData));
+    }
+    else {
+      cap.type = `Generic`,
+      cap.comment = capabilityName;
     }
 
     deleteCommentIfUnnecessary();
@@ -715,7 +719,7 @@ function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
  * @param {array.<string>} warningsArray This fixture's warnings array in the `out` object.
  */
 function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
-  const fineChannelRegex = /\s+fine$|16[-_\s]*bit$/i;
+  const fineChannelRegex = /\s*fine\s*|\s*16[-_\s]*bit\s*/i;
 
   const fineChannels = qlcPlusFixture.Channel.filter(
     channel => (`Group` in channel && channel.Group[0].$.Byte === `1`) || (`Preset` in channel.$ && channel.$.Preset.endsWith(`Fine`))
