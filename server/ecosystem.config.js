@@ -25,7 +25,7 @@ module.exports = {
     {
       name: "ofl",
       script: "main.js",
-      cwd: "/home/flo/open-fixture-library/current",
+      cwd: "/home/flo/open-fixture-library",
       log_date_format: "YYYY-MM-DD HH:mm:ss Z",
       instances: 2,
       exec_mode: "cluster",
@@ -40,30 +40,9 @@ module.exports = {
     {
       name: "embetty",
       script: "./node_modules/@heise/embetty-server/bin/embetty-start",
-      cwd: "/home/flo/open-fixture-library/current",
+      cwd: "/home/flo/open-fixture-library",
       log_date_format: "YYYY-MM-DD HH:mm:ss Z",
       env: envVariablesEmbetty
     }
-  ],
-
-  /**
-   * Deployment section
-   * http://pm2.keymetrics.io/docs/usage/deployment/
-   */
-  deploy: {
-    "ofl-production": {
-      user: "flo",
-      host: "localhost",
-      ref: "origin/master",
-      repo: "git@github.com:OpenLightingProject/open-fixture-library.git",
-      path: "/home/flo/open-fixture-library",
-      "post-deploy": "npm ci --dev && (if [ -e server ]; then cp ./server/* /home/flo; fi) && pm2 reload /home/flo/ecosystem.config.js && pm2 reload ofl",
-      env: envVariablesOfl,
-
-      // used in webhook.js
-      _webhook_port: 40010,
-      _webhook_path: "/",
-      _webhook_secret: secrets.OFL_WEBHOOK_SECRET
-    }
-  }
+  ]
 };
