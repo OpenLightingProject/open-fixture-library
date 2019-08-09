@@ -3,7 +3,6 @@
 const http = require(`http`);
 const https = require(`https`);
 const path = require(`path`);
-const childProcess = require(`child_process`);
 const chalk = require(`chalk`);
 const Octokit = require(`@octokit/rest`);
 
@@ -19,31 +18,46 @@ const SiteCrawler = require(`../lib/site-crawler.js`);
   let errored = false;
 
   try {
+    const crawler = new SiteCrawler();
+
     console.log(chalk.blue.bold(`Starting OFL server ...`));
-    let serverProcess;
     try {
-      serverProcess = await startServer();
+      await crawler.startServer();
     }
     catch (error) {
-      throw `${chalk.redBright(`Failed to start OFL server. Maybe you forgot running 'make nuxt-build' or there is already a running server?`)} ${error.message}`;
+      throw `${chalk.redBright(`Failed to start OFL server. Maybe you forgot running 'make all' or there is already a running server?`)} ${error.message}`;
     }
     console.log();
 
+    const externalUrlSet = new Set();
+
+    crawler.on(`externalLinkFound`, url => {
+      // exclude canonical URLs
+      if (!url.startsWith(`https://open-fixture-library.org`)) {
+        externalUrlSet.add(url);
+        process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
+      }
+    });
+
     const crawlStartTime = new Date();
     console.log(chalk.blue.bold(`Start crawling the website for external links ...`));
-    const externalUrls = await getExternalLinks();
+    await crawler.crawl();
 
     const crawlTime = new Date() - crawlStartTime;
     console.log(`Crawling finished after ${crawlTime / 1000}s.`);
     console.log();
 
-    const onServerClosed = new Promise((resolve, reject) => {
-      serverProcess.on(`close`, resolve);
-    });
-    serverProcess.kill();
-    await onServerClosed; // wait until server has been stopped and stdout/stderr were written to console
+    const { stdout, stderr } = await crawler.stopServer();
+    if (stdout) {
+      console.log(chalk.blueBright(`Server output (stdout):`));
+      console.log(stdout);
+    }
+    if (stderr) {
+      console.log(chalk.blueBright(`Server errors (stderr):`));
+      console.log(stderr);
+    }
 
-    const urlResults = await fetchExternalUrls(externalUrls);
+    const urlResults = await fetchExternalUrls(Array.from(externalUrlSet));
     console.log();
 
     console.log(chalk.blue.bold(`Updating GitHub issue ...`));
@@ -61,65 +75,6 @@ const SiteCrawler = require(`../lib/site-crawler.js`);
 })();
 
 
-/**
- * Starts the production OFL server by creating a new child process.
- * Also logs the server's stdout/stderr to console when it stops.
- * Make sure that 'make nuxt-build' has been called before this function is executed!
- *
- * @returns {Promise} Promise that resolves as soon as the OFL server is up and running, or rejects if the process stops with an error before.
- */
-async function startServer() {
-  let serverProcess;
-
-  const onServerData = new Promise((resolve, reject) => {
-    serverProcess = childProcess.execFile(`node`, [path.join(__dirname, `..`, `main.js`)], {
-      env: process.env
-    }, (error, stdout, stderr) => {
-      if (error && !error.killed) {
-        reject(error);
-        return;
-      }
-
-      if (stdout) {
-        console.log(chalk.blueBright(`Server output (stdout):`));
-        console.log(stdout);
-      }
-
-      if (stderr) {
-        console.log(chalk.blueBright(`Server errors (stderr):`));
-        console.log(stderr);
-      }
-    });
-
-    // wait until server has started
-    serverProcess.stdout.on(`data`, resolve);
-  });
-  await onServerData;
-
-  return serverProcess;
-}
-
-/**
- * Starts the SiteCrawler to search all external links on the local OFL server.
- *
- * @returns {Promise.<array.<string>>} All external link URLs.
- */
-async function getExternalLinks() {
-  const externalUrlSet = new Set();
-
-  const crawler = new SiteCrawler();
-  crawler.on(`externalLinkFound`, url => {
-    // exclude canonical URLs
-    if (!url.startsWith(`https://open-fixture-library.org`)) {
-      externalUrlSet.add(url);
-      process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
-    }
-  });
-
-  await crawler.run();
-
-  return [...externalUrlSet];
-}
 
 
 /**
