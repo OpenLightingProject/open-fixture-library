@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 const http = require(`http`);
 const https = require(`https`);
 const path = require(`path`);
@@ -354,7 +355,7 @@ async function updateGithubIssue(urlResults) {
       const { url, message, failed } = urlResult;
 
       if (Object.keys(oldLinkData).includes(url)) {
-        // url is already in table
+        // URL is already in table
 
         const currentStatus = {
           failed,
