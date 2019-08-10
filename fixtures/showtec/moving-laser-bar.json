@@ -1,0 +1,211 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Moving Laser Bar ",
+  "shortName": "Laser bar",
+  "categories": ["Dimmer", "Effect", "Laser", "Moving Head", "Strobe"],
+  "meta": {
+    "authors": ["Sasha petrov"],
+    "createDate": "2019-08-10",
+    "lastModifyDate": "2019-08-10"
+  },
+  "links": {
+    "video": [
+      "https://youtu.be/cIEHHcdljiM"
+    ]
+  },
+  "availableChannels": {
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angle": "180deg"
+      }
+    },
+    "Pan/Tilt Duration": {
+      "capability": {
+        "type": "TiltContinuous",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 3": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 4": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 5": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 6": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 7": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red 8": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Warm White 2": {
+      "name": "Warm White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Warm White 3": {
+      "name": "Warm White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Warm White 4": {
+      "name": "Warm White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Warm": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Warm White 5": {
+      "name": "Warm White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Warm White 6": {
+      "name": "Warm White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Warm White 7": {
+      "name": "Warm White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Effect Duration": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "24 ch",
+      "shortName": "24ch",
+      "channels": [
+        "Tilt",
+        "Pan/Tilt Duration",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Red",
+        "Red 2",
+        "Red 3",
+        "Red 4",
+        "Red 5",
+        "Red 7",
+        "Red 6",
+        "Red 8",
+        "Warm White",
+        "Warm White 2",
+        "Warm White 5",
+        "Warm White 3",
+        "Warm White 4",
+        "Warm White 6",
+        "Warm",
+        "Warm White 7",
+        "Shutter / Strobe",
+        "Effect Duration",
+        "Effect Speed",
+        "No function"
+      ]
+    }
+  ]
+}
