@@ -1,0 +1,112 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Par12x12",
+  "shortName": "Par12x12",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Ian MacColl"],
+    "createDate": "2019-08-11",
+    "lastModifyDate": "2019-08-11"
+  },
+  "links": {
+    "manual": [
+      "https://cdn.shopify.com/s/files/1/0304/0549/files/PAR12_V2.1.pdf?295489187730623360"
+    ],
+    "productPage": [
+      "https://event-lighting.com.au/products/par12x12"
+    ],
+    "video": [
+      "https://youtu.be/MbdnJqu0MiQ"
+    ]
+  },
+  "physical": {
+    "dimensions": [263, 293, 109],
+    "weight": 3.2,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "high"
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8ch",
+      "shortName": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Intensity",
+        "Strobe"
+      ]
+    }
+  ]
+}
