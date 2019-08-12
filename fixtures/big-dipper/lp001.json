@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LP001",
+  "shortName": "LP001",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["simo"],
+    "createDate": "2019-08-12",
+    "lastModifyDate": "2019-08-12"
+  },
+  "links": {
+    "productPage": [
+      "http://www.sgcom.com"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "LP001 SIMO",
+      "shortName": "LP001",
+      "channels": [
+        "Intensity",
+        "Strobe",
+        "Color Presets",
+        "Color Macros",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
