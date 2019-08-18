@@ -1,0 +1,227 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Compact Par 18",
+  "shortName": "ShowtecCompactPar18",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["aHa Friedberg"],
+    "createDate": "2019-08-18",
+    "lastModifyDate": "2019-08-18"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/st_compact_par_18_tri_mkii_en.pdf"
+    ],
+    "productPage": [
+      "https://www.showtec.co.uk/onlineshop/index.php?route=product/product&product_id=151"
+    ]
+  },
+  "physical": {
+    "dimensions": [250, 290, 96],
+    "weight": 2.84,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 9600
+    },
+    "lens": {
+      "degreesMinMax": [28, 28]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "defaultValue": 255,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Macros": {
+      "highlightValue": 252,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 22],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [23, 45],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [46, 68],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [69, 91],
+          "type": "ColorIntensity",
+          "color": "Cyan"
+        },
+        {
+          "dmxRange": [92, 114],
+          "type": "ColorIntensity",
+          "color": "Yellow"
+        },
+        {
+          "dmxRange": [115, 137],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [138, 160],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [161, 183],
+          "type": "ColorIntensity",
+          "color": "Indigo",
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [184, 206],
+          "type": "NoFunction",
+          "comment": "DarkBlue"
+        },
+        {
+          "dmxRange": [207, 229],
+          "type": "NoFunction",
+          "comment": "LightGreen"
+        },
+        {
+          "dmxRange": [230, 252],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "ColorIntensity",
+          "color": "Warm White"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Color Macros 2": {
+      "name": "Color Macros",
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Can not be mapped"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1Channel",
+      "shortName": "1ch",
+      "channels": [
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "3Channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Red 2",
+        "Green 2",
+        "Blue 2"
+      ]
+    },
+    {
+      "name": "6Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Strobe",
+        "Color Macros 2"
+      ]
+    }
+  ]
+}
