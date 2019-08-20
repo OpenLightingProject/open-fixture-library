@@ -4,8 +4,8 @@
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["Guigui"],
-    "createDate": "2019-08-04",
-    "lastModifyDate": "2019-08-04"
+    "createDate": "2019-08-21",
+    "lastModifyDate": "2019-08-21"
   },
   "links": {
     "manual": [
@@ -20,8 +20,15 @@
   },
   "physical": {
     "dimensions": [260, 290, 180],
+    "weight": 3.8,
     "power": 121,
-    "DMXconnector": "5-pin"
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "12× RGBWAUV LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
   },
   "availableChannels": {
     "Red": {
