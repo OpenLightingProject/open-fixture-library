@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-const path = require(`path`);
 const chalk = require(`chalk`);
 
 require(`../lib/load-env-file.js`);
