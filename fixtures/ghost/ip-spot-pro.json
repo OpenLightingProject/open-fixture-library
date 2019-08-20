@@ -1,0 +1,121 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "IP Spot Pro",
+  "shortName": "GhostIPSPro",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["zampano"],
+    "createDate": "2019-08-08",
+    "lastModifyDate": "2019-08-08"
+  },
+  "links": {
+    "manual": [
+      "https://www.mhdiffusion.fr/download/notices/NOTICE-IP%20SPOT%20PRO-GHOST.pdf"
+    ],
+    "productPage": [
+      "https://www.mhdiffusion.fr/?page=produit_detail&ref_nav=IPSPRO"
+    ]
+  },
+  "physical": {
+    "dimensions": [340, 240, 240],
+    "weight": 4.5,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "15W RGBWA LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Effect",
+          "effectName": "Function macro",
+          "helpWanted": "Which macros can be selected at which DMX values? Or is there only one macro from 1…255?"
+        }
+      ]
+    },
+    "Macro Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Strobe",
+        "Macros",
+        "Macro Speed"
+      ]
+    }
+  ]
+}

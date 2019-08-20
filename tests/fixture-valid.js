@@ -186,7 +186,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     if (meta.importPlugin) {
       const pluginData = plugins.data[meta.importPlugin];
       const isImportPlugin = plugins.importPlugins.includes(meta.importPlugin);
-      const isOutdatedImportPlugin = pluginData && pluginData.outdated && plugins.importPlugins.includes(pluginData.newPlugin);
+      const isOutdatedImportPlugin = pluginData && plugins.importPlugins.includes(pluginData.newPlugin);
 
       if (!(isImportPlugin || isOutdatedImportPlugin)) {
         result.errors.push(`Unknown import plugin ${meta.importPlugin}`);
