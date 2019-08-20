@@ -1,10 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "IODA 1000 RGB",
-  "shortName": "CLLIODA1000RGB",
+  "name": "IODA 400 RGY",
+  "shortName": "CLLIODA400RGY",
   "categories": ["Laser"],
   "meta": {
-    "authors": ["benni"],
+    "authors": ["Felix Edelmann"],
     "createDate": "2019-08-21",
     "lastModifyDate": "2019-08-21"
   },
@@ -12,20 +12,17 @@
     "manual": [
       "https://www.cameolight.com/en/downloads/file/id/-1031133774"
     ],
-    "productPage": [
-      "https://www.cameolight.com/en/solutions/dj-musicians/lasers/show-lasers/2163/ioda-1000-rgb"
-    ],
     "video": [
       "https://youtu.be/LwszbJE4mg4"
     ]
   },
   "physical": {
     "dimensions": [188, 201, 210],
-    "weight": 6.5,
-    "power": 100,
+    "weight": 5.6,
+    "power": 75,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "250 mW red laser (638 nm), 150 mW green DPSS laser (532nm), 600 mW blue laser (447 nm)"
+      "type": "300 mW red laser (637 nm), 120 mW green DPSS laser (532 nm)"
     }
   },
   "availableChannels": {
@@ -71,15 +68,15 @@
         {
           "dmxRange": [0, 7],
           "type": "ColorPreset",
-          "comment": "RGB",
-          "colors": ["#ff0000", "#00ff00", "#0000ff"],
-          "helpWanted": "Does this mix to white or are there individual red, green and blue beams?"
+          "comment": "RGY",
+          "colors": ["#ff0000", "#00ff00", "#ffff00"],
+          "helpWanted": "Does this mix to only yellow or are there individual red, green and yellow beams?"
         },
         {
           "dmxRange": [8, 15],
           "type": "ColorPreset",
-          "comment": "White",
-          "colors": ["#ffffff"]
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
         },
         {
           "dmxRange": [16, 23],
@@ -102,20 +99,20 @@
         {
           "dmxRange": [40, 47],
           "type": "ColorPreset",
-          "comment": "Cyan",
-          "colors": ["#00ffff"]
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
         },
         {
           "dmxRange": [48, 55],
           "type": "ColorPreset",
-          "comment": "Blue",
-          "colors": ["#0000ff"]
+          "comment": "Green",
+          "colors": ["#00ff00"]
         },
         {
           "dmxRange": [56, 63],
           "type": "ColorPreset",
-          "comment": "Magenta",
-          "colors": ["#ff00ff"]
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
         },
         {
           "dmxRange": [64, 127],

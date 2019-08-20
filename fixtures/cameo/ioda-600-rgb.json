@@ -1,10 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "IODA 1000 RGB",
-  "shortName": "CLLIODA1000RGB",
+  "name": "IODA 600 RGB",
+  "shortName": "CLLIODA600RGB",
   "categories": ["Laser"],
   "meta": {
-    "authors": ["benni"],
+    "authors": ["Felix Edelmann"],
     "createDate": "2019-08-21",
     "lastModifyDate": "2019-08-21"
   },
@@ -12,20 +12,17 @@
     "manual": [
       "https://www.cameolight.com/en/downloads/file/id/-1031133774"
     ],
-    "productPage": [
-      "https://www.cameolight.com/en/solutions/dj-musicians/lasers/show-lasers/2163/ioda-1000-rgb"
-    ],
     "video": [
       "https://youtu.be/LwszbJE4mg4"
     ]
   },
   "physical": {
     "dimensions": [188, 201, 210],
-    "weight": 6.5,
+    "weight": 5.8,
     "power": 100,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "250 mW red laser (638 nm), 150 mW green DPSS laser (532nm), 600 mW blue laser (447 nm)"
+      "type": "110 mW red laser (637 nm), 120 mW green DPSS laser (532 nm), 400 mW blue laser (447 nm)"
     }
   },
   "availableChannels": {
