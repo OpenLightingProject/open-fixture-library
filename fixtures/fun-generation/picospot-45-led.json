@@ -9,22 +9,21 @@
   },
   "links": {
     "manual": [
-      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/372642_c_372642_r3_en_online.pdf"
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/424284_c_424284_v2_en_online.pdf"
     ],
     "productPage": [
-      "https://www.thomann.de/intl/fun_generation_picospot_20_led.htm"
-    ],
-    "video": [
-      "https://video1.thomann.de//vidiot/02591c1c/video_i4640p10_yd59vqpa.mp4"
+      "https://www.thomann.de/intl/fun_generation_picospot_45_led.htm"
     ]
   },
   "physical": {
     "dimensions": [162, 242, 174],
     "weight": 3,
-    "power": 35,
+    "power": 70,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "12W white CREE LED"
+      "type": "45W white CREE LED",
+      "lumens": 400,
+      "colorTemperature": 8000
     },
     "lens": {
       "degreesMinMax": [13, 13]
