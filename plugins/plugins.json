@@ -2,7 +2,7 @@
   "importPlugins": [
     "ecue",
     "gdtf",
-    "qlcplus_4.11.2"
+    "qlcplus_4.12.1"
   ],
   "exportPlugins": [
     "d-light",
@@ -55,7 +55,6 @@
     },
     "qlcplus_4.11.2": {
       "name": "QLC+ 4.11.2",
-      "importPluginVersion": "0.4.3",
       "exportPluginVersion": "0.5.2",
       "exportTests": [
         "xsd-schema-conformity"
@@ -69,7 +68,8 @@
     },
     "qlcplus_4.12.1": {
       "name": "QLC+ 4.12.1",
-      "exportPluginVersion": "1.1.1",
+      "importPluginVersion": "0.5.0",
+      "exportPluginVersion": "1.2.0",
       "exportTests": [
         "fixture-tool-validation",
         "xsd-schema-conformity"

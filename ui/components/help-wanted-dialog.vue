@@ -158,7 +158,7 @@ export default {
       return `${JSON.stringify(this.sendObject, null, 2)}\n\n${this.error}`;
     },
     mailtoUrl() {
-      const subject = `Feedback for fixture '${this.sendObject.manKey}/${this.sendObject.fixKey}'`;
+      const subject = `Feedback for ${this.sendObject.type} '${this.sendObject.context}'`;
 
       const mailBodyData = {
         'Problem location': this.location,

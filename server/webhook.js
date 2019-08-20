@@ -4,151 +4,131 @@
 
 const crypto = require(`crypto`);
 const http = require(`http`);
-const { execSync, spawn } = require(`child_process`);
+const { execSync } = require(`child_process`);
 
 const pm2config = require(`./ecosystem.config.js`);
+const secrets = require(`./ofl-secrets.json`);
 
-const servers = [];
-const webhooks = {};
+const pm2AppConfig = pm2config.apps.find(app => app.name === `ofl`);
 
-for (const deployment of Object.keys(pm2config.deploy)) {
-  if (!pm2config.deploy[deployment]._webhook_port) {
-    console.log(`No webhook port configured for '${deployment}' deployment`);
-    continue;
-  }
+const deploymentConfig = {
+  env: pm2AppConfig.env,
+  action: ``,
+  webhookPort: 40010,
+  webhookPath: `/`,
+  webhookSecret: secrets.OFL_WEBHOOK_SECRET
+};
 
-  webhooks[deployment] = {
-    port: pm2config.deploy[deployment]._webhook_port,
-    path: pm2config.deploy[deployment]._webhook_path,
-    secret: pm2config.deploy[deployment]._webhook_secret
-  };
 
-  startServer(webhooks[deployment].port, deployment);
-}
-
-Promise.all(servers)
+startServer()
   .then(() => console.log(`Exited`))
   .catch(error => console.error(`Exited with error`, error));
 
 
 /**
- * @param {number} port The port that the server should listen at.
- * @param {string} deployment The name of the deployment this webhook belongs to.
+ * @returns {Promise} Promise that resolves/rejects when the server process terminates.
  */
-function startServer(port, deployment) {
-  console.log(`Starting webhook listener for ${deployment} on port ${port}`);
+function startServer() {
+  const port = deploymentConfig.webhookPort;
 
-  servers.push(new Promise((resolve, reject) => {
-    http
-      .createServer((request, response) => {
-        response.writeHead(200, { 'Content-Type': `text/plain` });
-        response.write(`Received`);
-        response.end();
+  console.log(`Starting webhook listener on port ${port}`);
 
-        if (request.method !== `POST`) {
-          return;
-        }
+  return new Promise((resolve, reject) => {
+    http.createServer((request, response) => {
+      response.writeHead(200, { 'Content-Type': `text/plain` });
+      response.write(`Received`);
+      response.end();
 
-        let body = ``;
-        request
-          .on(`data`, data => {
-            body += data;
-          })
-          .on(`end`, () => {
-            processRequest(port, request.url, body, request.headers);
-          });
+      if (request.method !== `POST`) {
+        return;
+      }
 
-      })
-      .on(`close`, resolve)
-      .listen(port);
-  }));
+      let body = ``;
+      request.on(`data`, data => {
+        body += data;
+      }).on(`end`, () => {
+        processRequest(request.url, body, request.headers);
+      });
+
+    }).on(`close`, resolve).on(`error`, reject).listen(port);
+  });
 }
 
 /**
  * Handle a received request from the server and check if it is valid. If so,
  * call @see redeploy to update the corresponding app.
  *
- * @param {number} port The port number this request was received in.
  * @param {string} url The absolute path the request was received at.
  * @param {string} body The JSON string from GitHub.
  * @param {object.<string, string>} headers Headers of the request.
  */
-function processRequest(port, url, body, headers) { // eslint-disable-line complexity
-  console.log(`Received request`, port, url);
+function processRequest(url, body, headers) { // eslint-disable-line complexity
+  console.log(`Received webhook request at ${url}`);
 
-  for (const name of Object.keys(webhooks)) {
-    const options = webhooks[name];
-
-    if (options.port !== port) {
-      continue;
-    }
-
-    if (options.path.length && options.path !== url) {
-      continue;
-    }
-
-    if (options.secret.length) {
-      const hmac = crypto.createHmac(`sha1`, options.secret);
-      hmac.update(body, `utf-8`);
-
-      const xub = `X-Hub-Signature`;
-      const received = headers[xub] || headers[xub.toLowerCase()];
-      const expected = `sha1=${hmac.digest(`hex`)}`;
-
-      if (received !== expected) {
-        console.error(`Wrong secret. Expected %s, received %s`, expected, received);
-        continue;
-      }
-
-      console.info(`Secret test passed`);
-    }
-
-    const eventName = headers[`X-GitHub-Event`] || headers[`x-github-event`];
-    if (eventName !== `status`) {
-      console.log(`Wrong event name. Expected 'status', received '${eventName}'`);
-      continue;
-    }
-
-    const json = JSON.parse(body);
-
-    const affectsMasterBranch = `branches` in json && json.branches.some(branch => branch.name === `master`);
-    if (json.state !== `success` || !affectsMasterBranch) {
-      console.log(`Only handle successful events on master branch.`);
-      continue;
-    }
-
-    redeploy(name);
+  if (deploymentConfig.webhookPath !== url) {
+    return;
   }
+
+  const hmac = crypto.createHmac(`sha1`, deploymentConfig.webhookSecret);
+  hmac.update(body, `utf-8`);
+
+  const xub = `X-Hub-Signature`;
+  const received = headers[xub] || headers[xub.toLowerCase()];
+  const expected = `sha1=${hmac.digest(`hex`)}`;
+
+  if (received !== expected) {
+    console.error(`Wrong secret: Expected '${expected}', received '${received}'`);
+    return;
+  }
+
+  console.info(`Secret test passed`);
+
+  const eventName = headers[`X-GitHub-Event`] || headers[`x-github-event`];
+  if (eventName !== `status`) {
+    console.log(`Wrong event name: Expected 'status', received '${eventName}'`);
+    return;
+  }
+
+  const json = JSON.parse(body);
+
+  const affectsMasterBranch = `branches` in json && json.branches.some(branch => branch.name === `master`);
+  if (json.state !== `success` || !affectsMasterBranch) {
+    console.log(`Only handle successful events on master branch`);
+    return;
+  }
+
+  redeploy(json);
 }
 
 /**
- * Calls `pm2 deploy` with the correct ecosystem file and deployment name to
- * fetch the newest git source and redeploy the corresponding app.
- * @param {string} name Name of the deployment to redeploy.
+ * Calls redeploy bash script and notify admin via email if script fails.
+ * @param {object} webhookPayload The data delivered by GitHub via the webhook.
  */
-function redeploy(name) {
-  console.log(`redeploy ${name}`);
+function redeploy(webhookPayload) {
+  console.log(`Redeploy...`);
 
-  const command = `pm2`;
-  const args = [`deploy`, `/home/flo/ecosystem.config.js`, name];
-  const cwd = `${pm2config.deploy[name].path}/current`;
+  try {
+    execSync(`./redeploy.sh`, {
+      cwd: `/home/flo`,
+      env: Object.assign({}, process.env, deploymentConfig.env),
+      encoding: `utf8`,
+      stdio: `pipe`
+    });
+    console.log(`Successfully deployed.`);
+  }
+  catch (error) {
+    console.log(`Redeploy process failed with exit code ${error.status}.`);
+    console.log(`Notify admin via email about failed deployment...`);
 
-  console.log(`spawn '${command} ${args.join(` `)}' in directory '${cwd}'`);
-  const subprocess = spawn(command, args, {
-    cwd: cwd,
-    stdio: `inherit`
-  });
+    const subject = `OFL Deployment failed`;
+    let body = (new Date()).toISOString();
+    body += `\n\nsubprocess status: ${error.status}, signal: ${error.signal}`;
+    body += `\n\nsubprocess stdout:\n${error.stdout}`;
+    body += `\n\nsubprocess stderr:\n${error.stderr}`;
+    body += `\n\nwebhook payload: ${JSON.stringify(webhookPayload, null, 2)}`;
 
-  subprocess.on(`exit`, (code, signal) => {
-    if (code !== 0) {
-      console.log(`notify admin via mail about failed deployment`);
-
-      const subject = `OFL Deployment failed`;
-      const body = (new Date()).toISOString();
-
-      execSync(`mail -s "${subject}" root`, {
-        input: body
-      });
-    }
-  });
+    execSync(`mail -s "${subject}" root`, {
+      input: body
+    });
+  }
 }
