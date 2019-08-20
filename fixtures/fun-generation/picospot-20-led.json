@@ -1,28 +1,30 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "PicoSpot 20 LED",
-  "shortName": "PicoSpot 20 LED",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["LordVonAdel"],
-    "createDate": "2019-08-08",
-    "lastModifyDate": "2019-08-08"
+    "createDate": "2019-08-21",
+    "lastModifyDate": "2019-08-21"
   },
   "links": {
     "manual": [
       "https://images.static-thomann.de/pics/atg/atgdata/document/manual/372642_c_372642_r3_en_online.pdf"
     ],
     "productPage": [
-      "https://www.thomann.de/de/fun_generation_picospot_20_led.htm"
+      "https://www.thomann.de/intl/fun_generation_picospot_20_led.htm"
+    ],
+    "video": [
+      "https://video1.thomann.de//vidiot/02591c1c/video_i4640p10_yd59vqpa.mp4"
     ]
   },
   "physical": {
-    "dimensions": [174, 162, 242],
+    "dimensions": [162, 242, 174],
     "weight": 3,
     "power": 35,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "12W white CREE LED"
     },
     "lens": {
       "degreesMinMax": [13, 13]
@@ -70,29 +72,6 @@
           "type": "Color",
           "name": "Purple",
           "colors": ["#ff00ff"]
-        },
-        {
-          "type": "Color"
-        },
-        {
-          "type": "Color"
-        },
-        {
-          "type": "Color"
-        },
-        {
-          "type": "Color"
-        },
-        {
-          "type": "Color"
-        },
-        {
-          "type": "Color"
-        },
-        {
-          "type": "Color",
-          "name": "White",
-          "colors": ["#ffffff"]
         }
       ]
     },
@@ -127,17 +106,19 @@
   },
   "availableChannels": {
     "Pan": {
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
-        "angleStart": "-270deg",
-        "angleEnd": "270deg"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
-        "angleStart": "-100deg",
-        "angleEnd": "100deg"
+        "angleStart": "0deg",
+        "angleEnd": "200deg"
       }
     },
     "Pan/Tilt Speed": {
@@ -148,20 +129,94 @@
       }
     },
     "Color Wheel": {
-      "constant": true,
       "capabilities": [
         {
-          "dmxRange": [0, 87],
+          "dmxRange": [0, 10],
           "type": "WheelSlot",
-          "slotNumberStart": 0,
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [11, 21],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [22, 32],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [33, 43],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [44, 54],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [55, 65],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [66, 76],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [77, 87],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [88, 98],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 2
+        },
+        {
+          "dmxRange": [99, 109],
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 3
+        },
+        {
+          "dmxRange": [110, 120],
+          "type": "WheelSlot",
+          "slotNumberStart": 3,
+          "slotNumberEnd": 4
+        },
+        {
+          "dmxRange": [121, 131],
+          "type": "WheelSlot",
+          "slotNumberStart": 4,
+          "slotNumberEnd": 5
+        },
+        {
+          "dmxRange": [132, 142],
+          "type": "WheelSlot",
+          "slotNumberStart": 5,
+          "slotNumberEnd": 6
+        },
+        {
+          "dmxRange": [143, 153],
+          "type": "WheelSlot",
+          "slotNumberStart": 6,
+          "slotNumberEnd": 7
+        },
+        {
+          "dmxRange": [154, 164],
+          "type": "WheelSlot",
+          "slotNumberStart": 7,
           "slotNumberEnd": 8
         },
         {
-          "dmxRange": [88, 175],
+          "dmxRange": [165, 175],
           "type": "WheelSlot",
-          "slotNumberStart": 9,
-          "slotNumberEnd": 15,
-          "comment": "Splitted Color"
+          "slotNumberStart": 8,
+          "slotNumberEnd": 9
         },
         {
           "dmxRange": [176, 255],
@@ -171,52 +226,39 @@
         }
       ]
     },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 124],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 8,
+          "helpWanted": "At which DMX value can which gobo be selected? Are split positions between two gobos possible?"
+        },
+        {
+          "dmxRange": [125, 249],
+          "type": "WheelShake",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 8,
+          "helpWanted": "At which DMX value can which gobo be selected? Are split positions between two gobos possible?"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "helpWanted": "Is this really wheel rotation? The manual mentions 'Gobo wheel selection'."
+        }
+      ]
+    },
     "Dimmer": {
       "highlightValue": 255,
       "capability": {
         "type": "Intensity"
       }
     },
-    "Pan 2": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 2 fine"],
-      "capability": {
-        "type": "Pan",
-        "angleStart": "-270deg",
-        "angleEnd": "270deg"
-      }
-    },
-    "Tilt 2": {
-      "name": "Tilt",
-      "fineChannelAliases": ["Tilt 2 fine"],
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "-100deg",
-        "angleEnd": "100deg"
-      }
-    },
-    "Gobo Wheel": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 124],
-          "type": "WheelSlot",
-          "slotNumberStart": 0,
-          "slotNumberEnd": 8
-        },
-        {
-          "dmxRange": [125, 249],
-          "type": "WheelShake"
-        },
-        {
-          "dmxRange": [250, 255],
-          "type": "WheelRotation",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW"
-        }
-      ]
-    },
     "Shutter / Strobe": {
-      "highlightValue": 0,
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 9],
@@ -235,15 +277,115 @@
     "Program": {
       "capabilities": [
         {
-          "dmxRange": [0, 250],
-          "type": "Generic",
-          "comment": "For Scenes and Programs"
+          "dmxRange": [0, 49],
+          "type": "NoFunction"
         },
         {
-          "dmxRange": [251, 255],
-          "type": "SoundSensitivity",
-          "soundSensitivityStart": "low",
-          "soundSensitivityEnd": "high"
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Effect",
+          "effectName": "Scene 02 (empty)"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "effectName": "Scene 03 (empty)"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Scene 04 (empty)"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "effectName": "Scene 05 (empty)"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Effect",
+          "effectName": "Scene 06 (empty)"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Effect",
+          "effectName": "Scene 07 (empty)"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Effect",
+          "effectName": "Scene 08 (empty)"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Effect",
+          "effectName": "Scene 09 (empty)"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Effect",
+          "effectName": "Programme 1"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Effect",
+          "effectName": "Programme 2"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Effect",
+          "effectName": "Programme 3"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Effect",
+          "effectName": "Programme 4"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Effect",
+          "effectName": "Programme 5"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Effect",
+          "effectName": "Programme 6"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Effect",
+          "effectName": "Programme 7"
+        },
+        {
+          "dmxRange": [210, 219],
+          "type": "Effect",
+          "effectName": "Programme 8 (empty)"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Effect",
+          "effectName": "Programme 9 (empty)"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "NoFunction",
+          "comment": "Empty"
+        },
+        {
+          "dmxRange": [240, 249],
+          "type": "NoFunction",
+          "comment": "Empty"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound-controlled operation",
+          "soundControlled": true
         }
       ]
     },
@@ -257,7 +399,8 @@
   },
   "modes": [
     {
-      "name": "5-channel DMX",
+      "name": "5-channel",
+      "shortName": "5ch",
       "channels": [
         "Pan",
         "Tilt",
@@ -267,12 +410,13 @@
       ]
     },
     {
-      "name": "9-Channel DMX",
+      "name": "9-channel",
+      "shortName": "9ch",
       "channels": [
-        "Pan 2",
-        "Pan 2 fine",
-        "Tilt 2",
-        "Tilt 2 fine",
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
         "Pan/Tilt Speed",
         "Color Wheel",
         "Gobo Wheel",
@@ -281,12 +425,13 @@
       ]
     },
     {
-      "name": "11-Channel DMX",
+      "name": "11-channel",
+      "shortName": "11ch",
       "channels": [
-        "Pan 2",
-        "Pan 2 fine",
-        "Tilt 2",
-        "Tilt 2 fine",
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
         "Pan/Tilt Speed",
         "Color Wheel",
         "Gobo Wheel",
