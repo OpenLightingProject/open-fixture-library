@@ -1,0 +1,606 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Hera",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Guigui"],
+    "createDate": "2019-08-21",
+    "lastModifyDate": "2019-08-21"
+  },
+  "links": {
+    "manual": [
+      "https://www.clf-lighting.com/wp-content/uploads/CLF_HERA_Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.clf-lighting.com/product/hera"
+    ],
+    "video": [
+      "https://youtu.be/lxO2bXqmgJE"
+    ]
+  },
+  "physical": {
+    "dimensions": [260, 290, 180],
+    "weight": 3.8,
+    "power": 121,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "12× RGBWAUV LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [25, 64],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [70, 84],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [90, 104],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [110, 124],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [130, 144],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [150, 164],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [170, 184],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Burst pulse"
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [190, 204],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true,
+          "comment": "Burst pulse"
+        },
+        {
+          "dmxRange": [205, 209],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [210, 224],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Sine wave"
+        },
+        {
+          "dmxRange": [225, 229],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [230, 244],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Burst"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "10000K",
+        "colorTemperatureEnd": "2500K"
+      }
+    },
+    "Color Wheel Effect": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "helpWanted": "Do the colors fade or jump?"
+        }
+      ]
+    },
+    "Auto Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Effect",
+          "effectName": "Auto program 1"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Effect",
+          "effectName": "Auto program 2"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Effect",
+          "effectName": "Auto program 3"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Effect",
+          "effectName": "Auto program 4"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Effect",
+          "effectName": "Auto program 5"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Effect",
+          "effectName": "Auto program 6"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Effect",
+          "effectName": "Auto program 7"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Effect",
+          "effectName": "Auto program 8"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Effect",
+          "effectName": "Auto program 9"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Effect",
+          "effectName": "Auto program 10 (cycle 1-10)"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "Effect",
+          "effectName": "Custom program 1"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "Effect",
+          "effectName": "Custom program 2"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Effect",
+          "effectName": "Custom program 3"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Effect",
+          "effectName": "Custom program 4"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Effect",
+          "effectName": "Custom program 5"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Effect",
+          "effectName": "Custom program 6"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Effect",
+          "effectName": "Custom program 7"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Effect",
+          "effectName": "Custom program 8"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Effect",
+          "effectName": "Custom program 9"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "Custom program 10"
+        }
+      ]
+    },
+    "Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Speed",
+          "comment": "Auto speed or dimmer speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Fixture Control Settings": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 94],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Maintenance",
+          "comment": "Manual calibration output mode",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "Maintenance",
+          "comment": "Raw color output mode",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "Maintenance",
+          "comment": "Normal dimming, speed of changes unrestricted",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "Maintenance",
+          "comment": "Smooth dimming, speed of changes restricted slightly",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "Maintenance",
+          "comment": "1600 Hz refresh rate",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "Maintenance",
+          "comment": "11200 Hz refresh rate",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "Maintenance",
+          "comment": "12400 Hz refresh rate",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "Maintenance",
+          "comment": "14800 Hz refresh rate",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "Maintenance",
+          "comment": "WDMX on",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "Maintenance",
+          "comment": "WDMX off",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [170, 174],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [175, 179],
+          "type": "Maintenance",
+          "comment": "WDMX reset",
+          "hold": "3s"
+        },
+        {
+          "dmxRange": [180, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "comment": "Illuminate display"
+        }
+      ]
+    },
+    "Hue": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Hue"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Saturation"
+      }
+    },
+    "Value": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Value"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "for HSI color mixing"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Color Temperature",
+        "Color Wheel Effect",
+        "Auto Programs",
+        "Speed",
+        "Fixture Control Settings"
+      ]
+    },
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Strobe",
+        "Color Temperature",
+        "Color Wheel Effect",
+        "Auto Programs",
+        "Speed",
+        "Fixture Control Settings"
+      ]
+    },
+    {
+      "name": "HSV",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Value"
+      ]
+    },
+    {
+      "name": "HSI",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Intensity"
+      ]
+    }
+  ]
+}
