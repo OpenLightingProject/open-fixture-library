@@ -1,27 +1,37 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Intimidator Spot 260",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Peter Chave", "Felix Edelmann"],
-    "createDate": "2019-08-09",
-    "lastModifyDate": "2019-08-09",
+    "createDate": "2019-08-22",
+    "lastModifyDate": "2019-08-22",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
-      "date": "2019-08-09",
+      "date": "2019-08-22",
       "comment": "created by Q Light Controller Plus (version 4.12.2 GIT)"
     }
   },
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2018/08/Intimidator_Spot_260_UM_Rev3.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/intimidator-spot-260/"
+    ],
+    "video": [
+      "https://youtu.be/PW1Yz53xUyk"
+    ]
+  },
   "physical": {
-    "dimensions": [232, 163, 351],
+    "dimensions": [232, 351, 163],
     "weight": 5.6,
     "power": 107,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED 75W"
+      "type": "White 75W LED"
     },
     "lens": {
-      "name": "Other",
       "degreesMinMax": [12, 17]
     }
   },
