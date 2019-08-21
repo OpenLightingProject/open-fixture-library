@@ -1,6 +1,8 @@
 const xmlbuilder = require(`xmlbuilder`);
 const sanitize = require(`sanitize-filename`);
 
+const { getChannelPreset, getFineChannelPreset, getCapabilityPreset } = require(`./presets.js`);
+
 /* eslint-disable no-unused-vars */
 const {
   AbstractChannel,
@@ -20,27 +22,14 @@ const {
 } = require(`../../lib/model.js`);
 /* eslint-enable no-unused-vars */
 
-const capabilityHelpers = {
-  isIncreasingSpeed: cap => cap.speed !== null && Math.abs(cap.speed[0].number) < Math.abs(cap.speed[1].number),
-  isDecreasingSpeed: cap => cap.speed !== null && Math.abs(cap.speed[0].number) > Math.abs(cap.speed[1].number),
-  isStopped: cap => cap.speed !== null && cap.speed[0].number === 0 && cap.speed[1].number === 0,
-  isIncreasingDuration: cap => cap.duration !== null && Math.abs(cap.duration[0].number) < Math.abs(cap.duration[1].number),
-  isDecreasingDuration: cap => cap.duration !== null && Math.abs(cap.duration[0].number) > Math.abs(cap.duration[1].number),
-  isColorIntensity: (cap, color) => cap.type === `ColorIntensity` && cap.color === color,
-  isShutterEffect: (cap, shutterEffect) => cap.type === `ShutterStrobe` && cap.shutterEffect === shutterEffect,
-  hasFrequency: cap => cap.speed !== null && (cap.speed[0].unit === `Hz` || cap.speed[0].unit === `bpm`),
-  isRotationSpeed: cap => (cap.type.endsWith(`Rotation`) || [`PanContinuous`, `TiltContinuous`, `Prism`].includes(cap.type)) && cap.speed !== null,
-  isRotationAngle: cap => (cap.type.endsWith(`Rotation`) || [`Pan`, `Tilt`, `Prism`].includes(cap.type)) && cap.angle !== null,
-  isBeamAngle: cap => (cap.type === `BeamAngle` || cap.type === `Zoom`) && cap.angle !== null
-};
-
-module.exports.version = `1.1.1`;
+module.exports.version = `1.2.0`;
 
 /**
  * @param {array.<Fixture>} fixtures An array of Fixture objects.
  * @param {object} options Global options, including:
  * @param {string} options.baseDir Absolute path to OFL's root directory.
- * @param {Date|null} options.date The current time.
+ * @param {Date} options.date The current time.
+ * @param {string|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<array.<object>, Error>} The generated files.
 */
 module.exports.export = async function exportQlcPlus(fixtures, options) {
@@ -52,7 +41,7 @@ module.exports.export = async function exportQlcPlus(fixtures, options) {
           '@xmlns': `http://www.qlcplus.org/FixtureDefinition`,
           Creator: {
             Name: `OFL – ${fixture.url}`,
-            Version: module.exports.version,
+            Version: options.displayedPluginVersion || module.exports.version,
             Author: fixture.meta.authors.join(`, `)
           },
           Manufacturer: fixture.manufacturer.name,
@@ -206,126 +195,6 @@ function addFineChannel(xml, fineChannel) {
 }
 
 /**
- * @param {CoarseChannel} channel The OFL channel object.
- * @returns {string|null} The QLC+ channel preset name or null, if there is no suitable one.
- */
-function getChannelPreset(channel) {
-  if (channel.capabilities.length > 1) {
-    return null;
-  }
-
-  const capability = channel.capabilities[0];
-
-  // TODO: try to also detect the `cap => false` presets
-  const channelPresets = {
-    IntensityMasterDimmer: cap => false,
-    IntensityDimmer: cap => cap.type === `Intensity` && cap.brightness[0].number < cap.brightness[1].number,
-    IntensityRed: cap => capabilityHelpers.isColorIntensity(cap, `Red`),
-    IntensityGreen: cap => capabilityHelpers.isColorIntensity(cap, `Green`),
-    IntensityBlue: cap => capabilityHelpers.isColorIntensity(cap, `Blue`),
-    IntensityCyan: cap => capabilityHelpers.isColorIntensity(cap, `Cyan`),
-    IntensityMagenta: cap => capabilityHelpers.isColorIntensity(cap, `Magenta`),
-    IntensityYellow: cap => capabilityHelpers.isColorIntensity(cap, `Yellow`),
-    IntensityAmber: cap => capabilityHelpers.isColorIntensity(cap, `Amber`),
-    IntensityWhite: cap => capabilityHelpers.isColorIntensity(cap, `White`) || capabilityHelpers.isColorIntensity(cap, `Warm White`) || capabilityHelpers.isColorIntensity(cap, `Cold White`),
-    IntensityUV: cap => capabilityHelpers.isColorIntensity(cap, `UV`),
-    IntensityIndigo: cap => capabilityHelpers.isColorIntensity(cap, `Indigo`),
-    IntensityLime: cap => capabilityHelpers.isColorIntensity(cap, `Lime`),
-    IntensityHue: cap => false,
-    IntensitySaturation: cap => false,
-    IntensityLightness: cap => false,
-    IntensityValue: cap => false,
-    PositionPan: cap => cap.type === `Pan`,
-    PositionTilt: cap => cap.type === `Tilt`,
-    PositionXAxis: cap => false,
-    PositionYAxis: cap => false,
-    SpeedPanSlowFast: cap => cap.type === `PanContinuous` && capabilityHelpers.isIncreasingSpeed(cap),
-    SpeedPanFastSlow: cap => cap.type === `PanContinuous` && capabilityHelpers.isDecreasingSpeed(cap),
-    SpeedTiltSlowFast: cap => cap.type === `TiltContinuous` && capabilityHelpers.isIncreasingSpeed(cap),
-    SpeedTiltFastSlow: cap => cap.type === `TiltContinuous` && capabilityHelpers.isDecreasingSpeed(cap),
-    SpeedPanTiltSlowFast: cap => cap.type === `PanTiltSpeed` && (capabilityHelpers.isIncreasingSpeed(cap) || capabilityHelpers.isDecreasingDuration(cap)),
-    SpeedPanTiltFastSlow: cap => cap.type === `PanTiltSpeed` && (capabilityHelpers.isDecreasingSpeed(cap) || capabilityHelpers.isIncreasingDuration(cap)),
-    ColorMacro: cap => cap.type === `ColorPreset` || (cap.type === `WheelSlot` && cap.isSlotType(`Color`)),
-    ColorWheel: cap => cap.type === `WheelRotation` && cap.wheels[0].type === `Color`,
-    ColorRGBMixer: cap => false,
-    ColorCTOMixer: cap => cap.type === `ColorTemperature` && cap.colorTemperature[0].number === 0 && cap.colorTemperature[1].number < 0,
-    ColorCTBMixer: cap => cap.type === `ColorTemperature` && cap.colorTemperature[0].number === 0 && cap.colorTemperature[1].number > 0,
-    ColorCTCMixer: cap => cap.type === `ColorTemperature`,
-    GoboWheel: cap => cap.type === `WheelRotation` && cap.wheels[0].type === `Gobo`,
-    GoboIndex: cap => cap.type === `WheelSlotRotation` && cap.wheels[0].type === `Gobo`,
-    ShutterStrobeSlowFast: cap => cap.type === `ShutterStrobe` && capabilityHelpers.isIncreasingSpeed(cap),
-    ShutterStrobeFastSlow: cap => cap.type === `ShutterStrobe` && capabilityHelpers.isDecreasingSpeed(cap),
-    ShutterIrisMinToMax: cap => cap.type === `Iris` && cap.openPercent[0].number < cap.openPercent[1].number,
-    ShutterIrisMaxToMin: cap => cap.type === `Iris` && cap.openPercent[0].number > cap.openPercent[1].number,
-    BeamFocusNearFar: cap => cap.type === `Focus` && cap.distance[0].number < cap.distance[1].number,
-    BeamFocusFarNear: cap => cap.type === `Focus` && cap.distance[0].number > cap.distance[1].number,
-    BeamZoomSmallBig: cap => cap.type === `Zoom` && cap.angle[0].number < cap.angle[1].number,
-    BeamZoomBigSmall: cap => cap.type === `Zoom` && cap.angle[0].number > cap.angle[1].number,
-    PrismRotationSlowFast: cap => cap.type === `PrismRotation` && capabilityHelpers.isIncreasingSpeed(cap),
-    PrismRotationFastSlow: cap => cap.type === `PrismRotation` && capabilityHelpers.isDecreasingSpeed(cap),
-    NoFunction: cap => cap.type === `NoFunction`
-  };
-
-  return Object.keys(channelPresets).find(presetName => channelPresets[presetName](capability)) || null;
-}
-
-/**
- * @param {FineChannel} fineChannel The OFL fine channel object.
- * @returns {string|null} The QLC+ channel preset name or null, if there is no suitable one.
- */
-function getFineChannelPreset(fineChannel) {
-  const coarseChannel = fineChannel.coarseChannel;
-  const channelPreset = getChannelPreset(coarseChannel);
-
-  const fineChannelPresets = {
-    IntensityMasterDimmerFine: () => channelPreset === `IntensityMasterDimmer`,
-    IntensityDimmerFine: () => channelPreset === `IntensityDimmer`,
-    IntensityRedFine: () => channelPreset === `IntensityRed`,
-    IntensityGreenFine: () => channelPreset === `IntensityGreen`,
-    IntensityBlueFine: () => channelPreset === `IntensityBlue`,
-    IntensityCyanFine: () => channelPreset === `IntensityCyan`,
-    IntensityMagentaFine: () => channelPreset === `IntensityMagenta`,
-    IntensityYellowFine: () => channelPreset === `IntensityYellow`,
-    IntensityAmberFine: () => channelPreset === `IntensityAmber`,
-    IntensityWhiteFine: () => channelPreset === `IntensityWhite`,
-    IntensityUVFine: () => channelPreset === `IntensityUV`,
-    IntensityIndigoFine: () => channelPreset === `IntensityIndigo`,
-    IntensityLimeFine: () => channelPreset === `IntensityLime`,
-    IntensityHueFine: () => channelPreset === `IntensityHue`,
-    IntensitySaturationFine: () => channelPreset === `IntensitySaturation`,
-    IntensityLightnessFine: () => channelPreset === `IntensityLightness`,
-    IntensityValueFine: () => channelPreset === `IntensityValue`,
-    PositionPanFine: () => channelPreset === `PositionPan`,
-    PositionTiltFine: () => channelPreset === `PositionTilt`,
-
-    ColorWheelFine: () => coarseChannel.capabilities.some(
-      cap => [`WheelSlot`, `WheelRotation`].includes(cap.type)
-    ) && coarseChannel.capabilities.every(
-      cap => [`WheelSlot`, `WheelShake`, `WheelSlotRotation`, `WheelRotation`, `Effect`, `NoFunction`].includes(cap.type) &&
-        (cap.wheels.length === 0 || cap.wheels[0].type === `Color`)
-    ),
-    GoboWheelFine: () => coarseChannel.capabilities.some(
-      cap => [`WheelSlot`, `WheelRotation`].includes(cap.type)
-    ) && coarseChannel.capabilities.every(
-      cap => [`WheelSlot`, `WheelShake`, `WheelSlotRotation`, `WheelRotation`, `Effect`, `NoFunction`].includes(cap.type) &&
-        (cap.wheels.length === 0 || cap.wheels[0].type === `Gobo`)
-    ),
-    GoboIndexFine: () => coarseChannel.capabilities.every(
-      cap => cap.type === `WheelSlotRotation` && cap.wheels[0].type === `Gobo`
-    ),
-
-    ShutterIrisFine: () => coarseChannel.type === `Iris`,
-    BeamFocusFine: () => coarseChannel.type === `Focus`,
-    BeamZoomFine: () => coarseChannel.type === `Zoom`
-  };
-
-  // fine channel preset for a group of coarse channels
-  return Object.keys(fineChannelPresets).find(
-    fineChannelPreset => fineChannelPresets[fineChannelPreset]()
-  ) || null;
-}
-
-/**
  * @param {object} xmlChannel The xmlbuilder <Channel> object.
  * @param {Capability} cap The OFL capability object.
  */
@@ -411,205 +280,6 @@ function addCapabilityAliases(xmlCapability, cap) {
   }
 
   return aliasAdded;
-}
-
-/**
- * @typedef CapabilityPreset
- * @type {object}
- * @property {string} presetName The name of the QLC+ capability preset.
- * @property {string|null} res1 A value for the QLC+ capability element's Res1 attribute, or null if the attribute should not be added.
- * @property {string|null} res2 A value for the QLC+ capability element's Res2 attribute, or null if the attribute should not be added.
- */
-
-/**
- * @param {Capability} capability The OFL capability object.
- * @returns {CapabilityPreset|null} The QLC+ capability preset or null, if there is no suitable one.
- */
-function getCapabilityPreset(capability) {
-  const capabilityPresets = {
-    // shutter capabilities
-    ShutterOpen: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `Open`)
-    },
-    ShutterClose: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `Closed`)
-    },
-
-    // strobe capabilities with specified frequency
-    StrobeFrequency: getStrobeFrequencyPreset(`Strobe`, true),
-    StrobeFreqRange: getStrobeFrequencyPreset(`Strobe`, false),
-    PulseFrequency: getStrobeFrequencyPreset(`Pulse`, true),
-    PulseFreqRange: getStrobeFrequencyPreset(`Pulse`, false),
-    RampUpFrequency: getStrobeFrequencyPreset(`RampUp`, true),
-    RampUpFreqRange: getStrobeFrequencyPreset(`RampUp`, false),
-    RampDownFrequency: getStrobeFrequencyPreset(`RampDown`, true),
-    RampDownFreqRange: getStrobeFrequencyPreset(`RampDown`, false),
-
-    // other strobe capabilities
-    StrobeRandomSlowToFast: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming && capabilityHelpers.isIncreasingSpeed(cap)
-    },
-    StrobeRandomFastToSlow: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming && capabilityHelpers.isDecreasingSpeed(cap)
-    },
-    StrobeRandom: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming
-    },
-    StrobeSlowToFast: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && capabilityHelpers.isIncreasingSpeed(cap)
-    },
-    StrobeFastToSlow: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && capabilityHelpers.isDecreasingSpeed(cap)
-    },
-    PulseSlowToFast: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `Pulse`) && capabilityHelpers.isIncreasingSpeed(cap)
-    },
-    PulseFastToSlow: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `Pulse`) && capabilityHelpers.isDecreasingSpeed(cap)
-    },
-    RampUpSlowToFast: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `RampUp`) && capabilityHelpers.isIncreasingSpeed(cap)
-    },
-    RampUpFastToSlow: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `RampUp`) && capabilityHelpers.isDecreasingSpeed(cap)
-    },
-    RampDownSlowToFast: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `RampDown`) && capabilityHelpers.isIncreasingSpeed(cap)
-    },
-    RampDownFastToSlow: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `RampDown`) && capabilityHelpers.isDecreasingSpeed(cap)
-    },
-
-    // color capabilities
-    ColorMacro: {
-      handler: cap => (cap.type === `ColorPreset` || cap.isSlotType(`Color`)) && cap.colors !== null && cap.colors.allColors.length === 1,
-      res1: cap => cap.colors.allColors[0]
-    },
-    ColorDoubleMacro: {
-      handler: cap => (cap.type === `ColorPreset` || cap.isSlotType(`Color`)) && cap.colors !== null && cap.colors.allColors.length === 2,
-      res1: cap => cap.colors.allColors[0],
-      res2: cap => cap.colors.allColors[1]
-    },
-    ColorWheelIndex: {
-      handler: cap => cap.type === `WheelRotation` && cap.wheels[0].type === `Color` && capabilityHelpers.isRotationAngle(cap)
-    },
-
-    // gobo capabilities
-    // TODO: export a gobo image as res1
-    GoboShakeMacro: {
-      handler: cap => cap.type === `WheelShake` && (cap.isSlotType(/Gobo|Iris|Frost/) || cap.isSlotType(`Open`)),
-      res1: cap => (cap.isSlotType(`Open`) ? `Others/open.svg` : null)
-    },
-    GoboMacro: {
-      handler: cap => cap.isSlotType(/Gobo|Iris|Frost/) || cap.isSlotType(`Open`),
-      res1: cap => (cap.isSlotType(`Open`) ? `Others/open.svg` : null)
-    },
-
-    // prism capabilities
-    // TODO: export the number of prism facets as res1 for Prism capabilities
-    PrismEffectOn: {
-      handler: cap => cap.type === `Prism` || (cap.type === `WheelSlot` && cap.isSlotType(`Prism`)),
-      res1: cap => (cap.wheelSlot && cap.slotNumber[0].number === cap.slotNumber[1].number && cap.wheelSlot[0].facets)
-    },
-    PrismEffectOff: {
-      handler: cap => cap.type === `NoFunction` && cap._channel.type === `Prism`
-    },
-
-    // rotation capabilities
-    RotationClockwiseSlowToFast: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isIncreasingSpeed(cap) && cap.speed[0].number > 0
-    },
-    RotationClockwiseFastToSlow: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isDecreasingSpeed(cap) && cap.speed[1].number > 0
-    },
-    RotationClockwise: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0].number > 0
-    },
-    RotationStop: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isStopped(cap)
-    },
-    RotationCounterClockwiseSlowToFast: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isIncreasingSpeed(cap) && cap.speed[0].number < 0
-    },
-    RotationCounterClockwiseFastToSlow: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isDecreasingSpeed(cap) && cap.speed[1].number < 0
-    },
-    RotationCounterClockwise: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0].number < 0
-    },
-    RotationIndexed: {
-      handler: cap => capabilityHelpers.isRotationAngle(cap)
-    },
-
-    // generic / other capabilities
-    GenericPicture: {
-      handler: cap => cap.effectPreset === `ColorFade` && !capabilityHelpers.isStopped(cap),
-      res1: cap => `Others/rainbow.png`
-    },
-    SlowToFast: {
-      handler: cap => capabilityHelpers.isIncreasingSpeed(cap)
-    },
-    FastToSlow: {
-      handler: cap => capabilityHelpers.isDecreasingSpeed(cap)
-    },
-    NearToFar: {
-      handler: cap => cap.distance !== null && cap.distance[0].number < cap.distance[1].number
-    },
-    FarToNear: {
-      handler: cap => cap.distance !== null && cap.distance[0].number > cap.distance[1].number
-    },
-    SmallToBig: {
-      handler: cap => (capabilityHelpers.isBeamAngle(cap) && cap.angle[0].number < cap.angle[1].number) || (cap.parameter !== null && cap.parameter[0].keyword === `small` && cap.parameter[1].keyword === `big`)
-    },
-    BigToSmall: {
-      handler: cap => (capabilityHelpers.isBeamAngle(cap) && cap.angle[0].number > cap.angle[1].number) || (cap.parameter !== null && cap.parameter[0].keyword === `big` && cap.parameter[1].keyword === `small`)
-    }
-  };
-
-  const presetName = Object.keys(capabilityPresets).find(
-    presetName => capabilityPresets[presetName].handler(capability)
-  );
-
-  if (!presetName) {
-    return null;
-  }
-
-  const preset = capabilityPresets[presetName];
-  return {
-    presetName,
-    res1: `res1` in preset ? preset.res1(capability) : null,
-    res2: `res2` in preset ? preset.res2(capability) : null
-  };
-
-
-  /**
-   * @param {string} shutterEffect The shutter effect to create the preset for.
-   * @param {boolean} isStep Whether the preset shall only match step capabilities.
-   * @returns {object} The generated preset with handler, res1 and res2 generation.
-   */
-  function getStrobeFrequencyPreset(shutterEffect, isStep) {
-    return {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, shutterEffect) && capabilityHelpers.hasFrequency(cap) && (!isStep || cap.isStep),
-      res1: cap => getFrequencyInHertz(cap.speed[0]),
-      res2: cap => (isStep ? null : getFrequencyInHertz(cap.speed[1]))
-    };
-  }
-
-  /**
-   * @param {Entity} entity The speed Entity object.
-   * @returns {number|null} The frequency in Hertz, or null, if the entity's unit is not convertable to Hertz.
-   */
-  function getFrequencyInHertz(entity) {
-    if (entity.unit === `Hz`) {
-      return entity.number;
-    }
-
-    if (entity.unit === `bpm`) {
-      return entity.number / 60;
-    }
-
-    return null;
-  }
 }
 
 /**
