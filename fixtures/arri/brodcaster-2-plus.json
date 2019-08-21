@@ -1,0 +1,34 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Brodcaster 2 Plus",
+  "shortName": "Brodcaster",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Giulio"],
+    "createDate": "2019-08-21",
+    "lastModifyDate": "2019-08-21"
+  },
+  "links": {
+    "productPage": [
+      "https://www.arri.com/en/lighting/led/caster-series/broadcaster-2-plus"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Broadcaster 2 Plus",
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}
