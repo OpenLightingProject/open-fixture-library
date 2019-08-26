@@ -26,11 +26,13 @@
   },
   "availableChannels": {
     "Intensity": {
+      "defaultValue": 0,
       "capability": {
         "type": "Intensity"
       }
     },
     "Strobe": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 0],
@@ -46,7 +48,7 @@
       ]
     },
     "Color Macros": {
-      "defaultValue": 11,
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 10],
@@ -81,6 +83,7 @@
       ]
     },
     "Color Presets": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 0],
@@ -94,24 +97,28 @@
       ]
     },
     "Red": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Green": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blue": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "White": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
