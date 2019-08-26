@@ -1,9 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Par12x12",
+  "name": "Par5x12",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Ian MacColl"],
+    "authors": ["Felix Edelmann"],
     "createDate": "2019-08-26",
     "lastModifyDate": "2019-08-26"
   },
@@ -12,19 +12,19 @@
       "https://cdn.shopify.com/s/files/1/0304/0549/files/PAR12_V2.1.pdf"
     ],
     "productPage": [
-      "https://event-lighting.com.au/products/par12x12"
+      "https://event-lighting.com.au/products/par5x12"
     ],
     "video": [
-      "https://youtu.be/MbdnJqu0MiQ"
+      "https://youtu.be/6dmSNkOVrCQ"
     ]
   },
   "physical": {
-    "dimensions": [263, 293, 109],
-    "weight": 3.2,
-    "power": 120,
+    "dimensions": [207, 227, 120],
+    "weight": 1.9,
+    "power": 50,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "12× 12W RGBWAUV LEDs"
+      "type": "5× 12W RGBWAUV LEDs"
     },
     "lens": {
       "degreesMinMax": [30, 30]
