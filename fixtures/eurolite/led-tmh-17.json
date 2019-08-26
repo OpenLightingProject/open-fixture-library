@@ -1,33 +1,42 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "GoboTracer",
+  "name": "LED TMH-17",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Justin Hornsby"],
-    "createDate": "2017-11-16",
-    "lastModifyDate": "2018-09-04"
+    "authors": ["Lech"],
+    "createDate": "2019-08-22",
+    "lastModifyDate": "2019-08-22",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2019-08-22",
+      "comment": "created by Q Light Controller Plus (version 4.12.1)"
+    }
   },
   "links": {
     "manual": [
-      "https://www.mcl-media.co.uk/download.aspx?download=e5650a64-260d-4693-a5b8-3b34459af494"
+      "https://www.steinigke.de/download/51786065-Manual-111842-1.100-eurolite-led-tmh-17-moving-head-spot-en_de.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn51786065-eurolite-led-tmh-17-moving-head-spot.html"
     ],
     "video": [
-      "https://www.youtube.com/watch?v=ZW2WMacskD0"
+      "https://www.youtube.com/watch?v=vWXsAjraBTw"
     ]
   },
   "physical": {
+    "dimensions": [170, 240, 145],
+    "weight": 2.65,
+    "power": 50,
     "DMXconnector": "3-pin",
-    "dimensions": [210, 285, 147],
-    "weight": 3.2,
     "bulb": {
-      "type": "LED"
+      "type": "White 30W LED"
     },
     "lens": {
       "degreesMinMax": [12, 12]
     }
   },
   "wheels": {
-    "Color Wheel": {
+    "Color wheel": {
       "slots": [
         {
           "type": "Open"
@@ -54,8 +63,8 @@
         },
         {
           "type": "Color",
-          "name": "Purple",
-          "colors": ["#ff00ff"]
+          "name": "Light blue",
+          "colors": ["#aaeeff"]
         },
         {
           "type": "Color",
@@ -64,12 +73,13 @@
         },
         {
           "type": "Color",
-          "name": "Cyan",
-          "colors": ["#00ffff"]
+          "name": "Magenta",
+          "colors": ["#ff00ff"]
         }
       ]
     },
     "Gobo Wheel": {
+      "direction": "CCW",
       "slots": [
         {
           "type": "Open"
@@ -101,7 +111,8 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": "50%",
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -110,14 +121,16 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": "50%",
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
-        "angleEnd": "230deg"
+        "angleEnd": "200deg"
       }
     },
-    "Color Wheel": {
+    "Color wheel": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 9],
@@ -162,17 +175,17 @@
         {
           "dmxRange": [80, 89],
           "type": "WheelSlot",
-          "slotNumber": 1.5
+          "slotNumber": 7.5
         },
         {
           "dmxRange": [90, 99],
           "type": "WheelSlot",
-          "slotNumber": 2.5
+          "slotNumber": 6.5
         },
         {
           "dmxRange": [100, 109],
           "type": "WheelSlot",
-          "slotNumber": 3.5
+          "slotNumber": 5.5
         },
         {
           "dmxRange": [110, 119],
@@ -182,33 +195,23 @@
         {
           "dmxRange": [120, 129],
           "type": "WheelSlot",
-          "slotNumber": 5.5
+          "slotNumber": 3.5
         },
         {
           "dmxRange": [130, 139],
           "type": "WheelSlot",
-          "slotNumber": 6.5
+          "slotNumber": 2.5
         },
         {
-          "dmxRange": [140, 149],
-          "type": "WheelSlot",
-          "slotNumber": 7.5
-        },
-        {
-          "dmxRange": [150, 159],
-          "type": "WheelSlot",
-          "slotNumber": 8.5
-        },
-        {
-          "dmxRange": [160, 255],
+          "dmxRange": [140, 255],
           "type": "WheelRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW",
-          "comment": "Color scroll"
+          "speedEnd": "fast CW"
         }
       ]
     },
     "Gobo Wheel": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 7],
@@ -221,12 +224,12 @@
           "slotNumber": 2
         },
         {
-          "dmxRange": [16, 23],
+          "dmxRange": [16, 24],
           "type": "WheelSlot",
           "slotNumber": 3
         },
         {
-          "dmxRange": [24, 31],
+          "dmxRange": [25, 31],
           "type": "WheelSlot",
           "slotNumber": 4
         },
@@ -251,11 +254,58 @@
           "slotNumber": 8
         },
         {
-          "dmxRange": [64, 127],
+          "dmxRange": [64, 71],
           "type": "WheelShake",
-          "slotNumberStart": 2,
-          "slotNumberEnd": 8,
-          "helpWanted": "At which DMX values can which Gobos be selected?"
+          "slotNumber": 8,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "WheelShake",
+          "slotNumber": 7,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "WheelShake",
+          "slotNumber": 6,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "WheelShake",
+          "slotNumber": 5,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "WheelShake",
+          "slotNumber": 4,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "WheelShake",
+          "slotNumber": 3,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "WheelShake",
+          "slotNumber": 2,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "WheelSlot",
+          "slotNumber": 1
         },
         {
           "dmxRange": [128, 255],
@@ -266,123 +316,120 @@
       ]
     },
     "Strobe": {
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe",
-        "speedStart": "stop",
-        "speedEnd": "fast",
-        "helpWanted": "Up to which DMX value is Strobe off?"
-      }
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 249],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
     },
-    "Dimmer": {
+    "Intensity": {
+      "defaultValue": 0,
       "capability": {
         "type": "Intensity"
       }
     },
-    "Horizontal Vertical Run": {
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
       "capability": {
-        "type": "Generic",
-        "helpWanted": "What is this channel for?"
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
       }
     },
-    "Auto Mode": {
+    "Auto Programs": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 59],
-          "type": "NoFunction",
-          "comment": "Other channels on"
+          "type": "NoFunction"
         },
         {
-          "dmxRange": [60, 84],
+          "dmxRange": [60, 159],
           "type": "Effect",
-          "effectName": "Auto mode 3"
+          "effectName": "Internal program"
         },
         {
-          "dmxRange": [85, 109],
+          "dmxRange": [160, 255],
           "type": "Effect",
-          "effectName": "Auto mode 2"
-        },
-        {
-          "dmxRange": [110, 134],
-          "type": "Effect",
-          "effectName": "Auto mode 1"
-        },
-        {
-          "dmxRange": [135, 159],
-          "type": "Effect",
-          "effectName": "Sound-to-light mode 0",
-          "soundControlled": true
-        },
-        {
-          "dmxRange": [160, 184],
-          "type": "Effect",
-          "effectName": "Sound-to-light mode 3",
-          "soundControlled": true
-        },
-        {
-          "dmxRange": [185, 209],
-          "type": "Effect",
-          "effectName": "Sound-to-light mode 2",
-          "soundControlled": true
-        },
-        {
-          "dmxRange": [210, 234],
-          "type": "Effect",
-          "effectName": "Sound-to-light mode 1",
-          "soundControlled": true
-        },
-        {
-          "dmxRange": [235, 255],
-          "type": "Effect",
-          "effectName": "Sound-to-light mode 0",
+          "effectName": "Sound to Light",
           "soundControlled": true
         }
       ]
     },
-    "Reset": {
+    "Maintenance": {
+      "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 249],
+          "dmxRange": [0, 20],
           "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 100],
+          "type": "Maintenance",
+          "comment": "Pan movement"
+        },
+        {
+          "dmxRange": [101, 200],
+          "type": "Maintenance",
+          "comment": "Tilt movement"
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "Maintenance",
+          "comment": "Pan/tilt movement"
         },
         {
           "dmxRange": [250, 255],
           "type": "Maintenance",
-          "comment": "Reset",
-          "hold": "5s"
+          "comment": "Reset"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "9ch",
+      "name": "9-channel",
+      "shortName": "9ch",
       "channels": [
         "Pan",
         "Tilt",
-        "Color Wheel",
+        "Color wheel",
         "Gobo Wheel",
         "Strobe",
-        "Dimmer",
-        "Horizontal Vertical Run",
-        "Auto Mode",
-        "Reset"
+        "Intensity",
+        "Pan/Tilt Speed",
+        "Auto Programs",
+        "Maintenance"
       ]
     },
     {
-      "name": "11ch",
+      "name": "11-channel",
+      "shortName": "11ch",
       "channels": [
         "Pan",
         "Pan fine",
         "Tilt",
         "Tilt fine",
-        "Color Wheel",
+        "Color wheel",
         "Gobo Wheel",
         "Strobe",
-        "Dimmer",
-        "Horizontal Vertical Run",
-        "Auto Mode",
-        "Reset"
+        "Intensity",
+        "Pan/Tilt Speed",
+        "Auto Programs",
+        "Maintenance"
       ]
     }
   ]

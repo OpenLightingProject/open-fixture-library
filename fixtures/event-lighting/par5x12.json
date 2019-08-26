@@ -1,0 +1,365 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Par5x12",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2019-08-26",
+    "lastModifyDate": "2019-08-26"
+  },
+  "links": {
+    "manual": [
+      "https://cdn.shopify.com/s/files/1/0304/0549/files/PAR12_V2.1.pdf"
+    ],
+    "productPage": [
+      "https://event-lighting.com.au/products/par5x12"
+    ],
+    "video": [
+      "https://youtu.be/6dmSNkOVrCQ"
+    ]
+  },
+  "physical": {
+    "dimensions": [207, 227, 120],
+    "weight": 1.9,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "5× 12W RGBWAUV LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [20, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "Strobe simple": {
+      "name": "Strobe",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "warm",
+        "colorTemperatureEnd": "cold"
+      }
+    },
+    "Color Macro / Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "ColorPreset",
+          "comment": "Red … Yellow",
+          "colors": ["#ff0000", "#ffff00"]
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "ColorPreset",
+          "comment": "Yellow … Green",
+          "colors": ["#ffff00", "#00ff00"]
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "ColorPreset",
+          "comment": "Green … Cyan",
+          "colors": ["#00ff00", "#00ffff"]
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "ColorPreset",
+          "comment": "Cyan … Blue",
+          "colors": ["#00ffff", "#0000ff"]
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "ColorPreset",
+          "comment": "Blue … Magenta",
+          "colors": ["#0000ff", "#ff00ff"]
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "ColorPreset",
+          "comment": "Magenta … Red",
+          "colors": ["#ff00ff", "#ff0000"]
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "ColorPreset",
+          "comment": "Red … White",
+          "colors": ["#ff0000", "#ffffff"]
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "ColorPreset",
+          "comment": "White … Blue",
+          "colors": ["#ffffff", "#0000ff"]
+        },
+        {
+          "dmxRange": [180, 200],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "warm",
+          "colorTemperatureEnd": "cold"
+        }
+      ]
+    },
+    "Auto Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [10, 49],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "RGBWAUV colors",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [50, 90],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "36 colors",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [91, 131],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "RGBWAUV colors, RGBW model",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [132, 172],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "36 colors",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [173, 213],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Macros",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [214, 255],
+          "type": "Effect",
+          "effectName": "Sound-active mode",
+          "soundControlled": true,
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Dimmer Curve": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Maintenance",
+          "comment": "Use dimmer curve from control board setting"
+        },
+        {
+          "dmxRange": [10, 57],
+          "type": "Maintenance",
+          "comment": "16bit linear dimmer 1"
+        },
+        {
+          "dmxRange": [58, 106],
+          "type": "Maintenance",
+          "comment": "16bit non-linear dimmer 2"
+        },
+        {
+          "dmxRange": [107, 155],
+          "type": "Maintenance",
+          "comment": "16bit non-linear dimmer 3"
+        },
+        {
+          "dmxRange": [156, 204],
+          "type": "Maintenance",
+          "comment": "16bit non-linear dimmer 4"
+        },
+        {
+          "dmxRange": [205, 255],
+          "type": "Maintenance",
+          "comment": "8bit linear dimmer 5"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Color Temperature",
+        "Intensity"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Intensity",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Intensity",
+        "Strobe simple",
+        "Color Macro / Temperature",
+        "Auto Programs",
+        "Program Speed / Sound Sensitivity",
+        "Dimmer Curve"
+      ]
+    }
+  ]
+}
