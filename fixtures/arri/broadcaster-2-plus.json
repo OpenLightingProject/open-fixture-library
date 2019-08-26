@@ -4,29 +4,67 @@
   "categories": ["Dimmer"],
   "meta": {
     "authors": ["Giulio"],
-    "createDate": "2019-08-21",
-    "lastModifyDate": "2019-08-21"
+    "createDate": "2019-08-26",
+    "lastModifyDate": "2019-08-26"
   },
+  "comment": "Controllable via 4-pin XLR PowerDMX.",
   "links": {
+    "manual": [
+      "https://www.arri.com/resource/blob/31158/de6629cdb138a59ca92684f4e9b7fa59/arri-caster-user-manual-en-apr2015-l02583-data.pdf",
+      "https://www.arri.com/resource/blob/31096/bd7dfefbb42a8bc2d9a27857cba780f4/arri-caster-2-plus-datasheet-en-apr2014-data.pdf"
+    ],
     "productPage": [
       "https://www.arri.com/en/lighting/led/caster-series/broadcaster-2-plus"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=uDUITNNHRQE"
     ]
   },
-  "rdm": {
-    "modelId": 1
+  "physical": {
+    "dimensions": [218, 96, 70],
+    "weight": 0.96,
+    "power": 35,
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Prismatic Homogenizing Lense",
+      "degreesMinMax": [63, 63]
+    }
   },
   "availableChannels": {
     "Intensity": {
       "capability": {
         "type": "Intensity"
       }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "6500K"
+      }
+    },
+    "Plus/Minus Green": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "NoFunction"
+      }
     }
   },
   "modes": [
     {
-      "name": "Broadcaster 2 Plus",
+      "name": "4-channel",
+      "shortName": "4ch",
       "channels": [
-        "Intensity"
+        "Intensity",
+        "Color Temperature",
+        "Plus/Minus Green",
+        "NoFunction"
       ]
     }
   ]
