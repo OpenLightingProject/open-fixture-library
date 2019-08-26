@@ -1,30 +1,29 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "AFH-600",
-  "shortName": "AFH-600",
+  "shortName": "StairvilleAFH600",
   "categories": ["Hazer"],
   "meta": {
     "authors": ["LordVonAdel"],
-    "createDate": "2019-08-22",
-    "lastModifyDate": "2019-08-22"
+    "createDate": "2019-08-26",
+    "lastModifyDate": "2019-08-26"
   },
-  "comment": "A cheap hazer",
   "links": {
     "manual": [
-      "https://images.thomann.de/pics/atg/atgdata/document/manual/306309_c_306309_r2_en_online.pdf"
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/306309_c_306309_r4_en_online.pdf"
     ],
     "productPage": [
-      "https://www.thomann.de/de/stairville_afh_600_dmx_hazer.htm"
+      "https://www.thomann.de/intl/stairville_afh_600_dmx_hazer.htm"
     ],
     "video": [
-      "https://video1.thomann.de//vidiot/02591c1c/video_i4312p10_yd59vqpa.mp4",
-      "https://video1.thomann.de//vidiot/02591c1c/video_i2169p10_yd59vqpa.mp4"
+      "https://video1.thomann.de/vidiot/02591c1c/video_i4312p10_yd59vqpa.mp4",
+      "https://video1.thomann.de/vidiot/02591c1c/video_i2169p10_yd59vqpa.mp4"
     ]
   },
   "physical": {
     "dimensions": [290, 265, 450],
-    "weight": 55,
-    "power": 600,
+    "weight": 5.5,
+    "power": 1290,
     "DMXconnector": "3-pin"
   },
   "availableChannels": {
@@ -32,13 +31,15 @@
       "capability": {
         "type": "Fog",
         "fogType": "Haze",
-        "comment": "Output amount"
+        "fogOutputStart": "0m^3/min",
+        "fogOutputEnd": "850m^3/min"
       }
     }
   },
   "modes": [
     {
-      "name": "1",
+      "name": "1-channel",
+      "shortName": "1ch",
       "channels": [
         "Haze"
       ]
