@@ -11,9 +11,9 @@
   },
   "main": "main.js",
   "scripts": {
-    "dev": "node main.js --dev",
+    "dev": "node --max-old-space-size=4096 main.js --dev",
     "postinstall": "make all",
-    "start": "node main.js"
+    "start": "node --max-old-space-size=4096 main.js"
   },
   "husky": {
     "hooks": {
@@ -47,7 +47,7 @@
     "sanitize-filename": "^1.6.1",
     "sass-loader": "^7.1.0",
     "scroll-into-view": "^1.9.3",
-    "sitemap": "^3.0.0",
+    "sitemap": "^4.1.1",
     "svg-inline-loader": "^0.8.0",
     "uuid": "^3.3.2",
     "vue-form": "^4.10.1",
@@ -56,7 +56,8 @@
     "xmlbuilder": "^13.0.0"
   },
   "devDependencies": {
-    "broken-link-checker": "beaulac/broken-link-checker#886288db1b844143da5fee8583097bdf8ecbea04",
+    "broken-link-checker": "^0.7.8",
+    "default-user-agent": "^1.0.0",
     "diff": "^4.0.1",
     "dir-compare": "^1.7.1",
     "disparity": "^2.0.0",
