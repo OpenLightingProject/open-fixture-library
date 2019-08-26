@@ -11,9 +11,9 @@
   },
   "main": "main.js",
   "scripts": {
-    "dev": "node main.js --dev",
+    "dev": "node --max-old-space-size=4096 main.js --dev",
     "postinstall": "make all",
-    "start": "node main.js"
+    "start": "node --max-old-space-size=4096 main.js"
   },
   "husky": {
     "hooks": {
@@ -56,7 +56,8 @@
     "xmlbuilder": "^13.0.0"
   },
   "devDependencies": {
-    "broken-link-checker": "beaulac/broken-link-checker#886288db1b844143da5fee8583097bdf8ecbea04",
+    "broken-link-checker": "^0.7.8",
+    "default-user-agent": "^1.0.0",
     "diff": "^4.0.1",
     "dir-compare": "^1.7.1",
     "disparity": "^2.0.0",
