@@ -25,8 +25,6 @@ module.exports = {
       script: `main.js`,
       cwd: `/home/flo/open-fixture-library`,
       'log_date_format': `YYYY-MM-DD HH:mm:ss Z`,
-      instances: 2,
-      'exec_mode': `cluster`,
       env: envVariablesOfl
     },
     {
