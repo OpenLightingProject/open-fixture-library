@@ -1,0 +1,118 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "NITRO 510",
+  "shortName": "NITRO 510",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["SEBASTIAN PORTILLA"],
+    "createDate": "2019-08-27",
+    "lastModifyDate": "2019-08-27"
+  },
+  "links": {
+    "manual": [
+      "https://www.vari-lite.com/global/products/sl-nitro-510c"
+    ],
+    "productPage": [
+      "https://www.vari-lite.com/global/products/sl-nitro-510c"
+    ],
+    "video": [
+      "https://www.vari-lite.com/global/products/sl-nitro-510c"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "COLOUR MIXER": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "macro"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "DIMMER CURVE": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    },
+    "DIMMER SHAPE": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "0ms",
+        "durationEnd": "100ms"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 bits",
+      "shortName": "8 bits",
+      "channels": [
+        "Dimmer",
+        "COLOUR MIXER",
+        "Color Macros",
+        "Effect Speed",
+        "DIMMER CURVE",
+        "DIMMER SHAPE",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Shutter"
+      ]
+    }
+  ]
+}
