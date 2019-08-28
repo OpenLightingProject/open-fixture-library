@@ -1,0 +1,138 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Gallary EclipseFC",
+  "categories": ["Color Changer", "Dimmer", "Strobe", "Other"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2019-08-28",
+    "lastModifyDate": "2019-08-28"
+  },
+  "links": {
+    "productPage": [
+      "https://www.musiclights.it/product/GALLERYECLIPSE?lang=EN"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "WDMX"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "11Hz",
+          "speedEnd": "255Hz"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "Intensity",
+          "comment": "r100 g0-100 b0"
+        },
+        {
+          "dmxRange": [31, 255],
+          "type": "Intensity",
+          "comment": "All Color Macro"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "Intensity",
+          "comment": "All Color Temperature"
+        }
+      ]
+    },
+    "Auto Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Intensity",
+          "comment": "All Auto Programs"
+        }
+      ]
+    },
+    "Auto Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer Speed Mode": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11 CHANNEL",
+      "shortName": "11CH",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Color Macros",
+        "Color Temperature",
+        "Auto Programs",
+        "Auto Speed",
+        "Dimmer Speed Mode"
+      ]
+    }
+  ]
+}
