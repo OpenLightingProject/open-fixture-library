@@ -2,22 +2,34 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "SL NITRO 510C",
   "shortName": "SLNitro510C",
-  "categories": ["Pixel Bar"],
+  "categories": ["Strobe", "Color Changer"],
   "meta": {
-    "authors": ["SEBASTIAN PORTILLA"],
+    "authors": ["Sebastian Portilla"],
     "createDate": "2019-08-27",
     "lastModifyDate": "2019-08-27"
   },
   "links": {
     "manual": [
-      "https://www.vari-lite.com/global/products/sl-nitro-510c"
+      "https://www.vari-lite.com/b-dam/vari-lite/products/sl-nitro-510c/guides-and-manuals/Selecon_SL_NITRO_510C_UserManual.pdf"
     ],
     "productPage": [
       "https://www.vari-lite.com/global/products/sl-nitro-510c"
     ],
     "video": [
-      "https://www.vari-lite.com/global/products/sl-nitro-510c"
+      "https://www.youtube.com/watch?v=_4WexFvyAR8&t=383"
     ]
+  },
+  "physical": {
+    "dimensions": [390, 103, 263],
+    "weight": 8,
+    "power": 360,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "264× RGB SMD LEDs, 264× white SMD LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [120, 120]
+    }
   },
   "availableChannels": {
     "Dimmer": {
