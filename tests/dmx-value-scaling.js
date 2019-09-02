@@ -248,7 +248,7 @@ function testRandomChannelDownscaling(resolution) {
   });
 
   /**
-   * @returns {Array.<Array.<number, number>>} Random list of adjacent capability [start, end] ranges. Together, they fill a whole channel.
+   * @returns {Array.<[number, number]>} Random list of adjacent capability [start, end] ranges. Together, they fill a whole channel.
    */
   function getRandomCapabilityRanges() {
     const minimumRangeWidth = Math.pow(256, resolution - 1) - 1; // without a minimum, overlaps would not be avoidable

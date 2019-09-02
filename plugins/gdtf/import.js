@@ -1153,7 +1153,7 @@ function getIsoDateFromGdtfDate(dateStr, fallbackDateStr) {
 
 /**
  * @param {string} dmxValueStr GDTF DMX value in the form "128/2", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-DMXValue
- * @returns {Array.<number>} Array containing DMX value and DMX resolution.
+ * @returns {[number, Resolution]} Array containing DMX value and DMX resolution.
  */
 function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueStr) {
   try {

@@ -176,7 +176,7 @@ export function getColorCircleSvgFragment(colors, radius) {
  * Get x and y coordinates of the point that is `percent` percent of the way around a circle. Note that 37.5% are added to start at a 135deg angle.
  * @param {number} percent Percent of the whole circle.
  * @param {number} radius Radius of the circle.
- * @returns {Array.<number>} Array with x and y coordinate.
+ * @returns {[number, number]} Array with x and y coordinate.
  */
 function getCoordinatesForPercent(percent, radius) {
   percent += 0.375;
