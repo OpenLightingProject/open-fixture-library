@@ -10,7 +10,7 @@ const SCHEMA_URL = `https://raw.githubusercontent.com/mcallegari/qlcplus/QLC+_4.
  * @param {string} exportFile.mimetype File mime type.
  * @param {Array.<Fixture>|null} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
  * @param {string|null} exportFile.mode Mode's shortName if given file only describes a single mode.
- * @returns {Promise.<undefined, Array.<string>|!string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
+ * @returns {Promise.<undefined, Array.<string>|string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
 **/
 module.exports = async function testSchemaConformity(exportFile) {
   const schemaData = await new Promise((resolve, reject) => {
