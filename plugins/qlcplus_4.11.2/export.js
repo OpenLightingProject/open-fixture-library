@@ -23,12 +23,12 @@ const {
 module.exports.version = `0.5.2`;
 
 /**
- * @param {array.<Fixture>} fixtures An array of Fixture objects.
- * @param {object} options Global options, including:
+ * @param {Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {Object} options Global options, including:
  * @param {string} options.baseDir Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
  * @param {string|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
- * @returns {Promise.<array.<object>, Error>} The generated files.
+ * @returns {Promise.<Array.<Object>, Error>} The generated files.
 */
 module.exports.export = async function exportQlcPlus(fixtures, options) {
   const outFiles = fixtures.map(fixture => {
@@ -72,7 +72,7 @@ module.exports.export = async function exportQlcPlus(fixtures, options) {
 };
 
 /**
- * @param {object} xml The xmlbuilder <FixtureDefinition> object.
+ * @param {Object} xml The xmlbuilder <FixtureDefinition> object.
  * @param {CoarseChannel} channel The OFL channel object.
  */
 function addChannel(xml, channel) {
@@ -132,7 +132,7 @@ function addChannel(xml, channel) {
 }
 
 /**
- * @param {object} xmlChannel The xmlbuilder <Channel> object.
+ * @param {Object} xmlChannel The xmlbuilder <Channel> object.
  * @param {Capability} cap The OFL capability object.
  */
 function addCapability(xmlChannel, cap) {
@@ -161,7 +161,7 @@ function addCapability(xmlChannel, cap) {
 }
 
 /**
- * @param {object} xml The xmlbuilder <FixtureDefinition> object.
+ * @param {Object} xml The xmlbuilder <FixtureDefinition> object.
  * @param {Mode} mode The OFL mode object.
  */
 function addMode(xml, mode) {
@@ -188,7 +188,7 @@ function addMode(xml, mode) {
 }
 
 /**
- * @param {object} xmlParentNode The xmlbuilder object where <Physical> should be added.
+ * @param {Object} xmlParentNode The xmlbuilder object where <Physical> should be added.
  * @param {Physical} physical The OFL physical object.
  * @param {Mode} mode The OFL mode object this physical data section belongs to.
  */

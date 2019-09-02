@@ -1,7 +1,7 @@
 /**
- * @param {object} startNode The XML object the reference should be resolved against.
+ * @param {Object} startNode The XML object the reference should be resolved against.
  * @param {string} nodeReference A string of the form "Name.Name.Name…", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-node
- * @returns {object|null} The referenced XML node object, or null if it could not be found.
+ * @returns {Object|null} The referenced XML node object, or null if it could not be found.
  */
 function followXmlNodeReference(startNode, nodeReference) {
   if (!startNode || !nodeReference) {
@@ -28,8 +28,8 @@ function followXmlNodeReference(startNode, nodeReference) {
 
 
   /**
-   * @param {object} node The XML object.
-   * @returns {array.<object>} The XML objects of this node's child nodes.
+   * @param {Object} node The XML object.
+   * @returns {Array.<Object>} The XML objects of this node's child nodes.
    */
   function getChildNodes(node) {
     const childNodes = [];

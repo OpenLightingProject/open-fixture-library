@@ -3,8 +3,8 @@ const manufacturers = require(`../../fixtures/manufacturers.json`);
 
 /**
  * Return search results for given parameters. Very primitive match algorithm, maybe put more effort into it sometime.
- * @param {object} request Passed from Express.
- * @param {object} response Passed from Express.
+ * @param {Object} request Passed from Express.
+ * @param {Object} response Passed from Express.
  */
 module.exports = function getSearchResults(request, response) {
   const { searchQuery, manufacturersQuery, categoriesQuery } = request.body;
@@ -30,7 +30,7 @@ function queryMatch(searchQuery, fixtureKey) {
 
 /**
  * Test if a fixture matches the manufacturer query.
- * @param {array.<string>} manufacturersQuery Selected manufacturers.
+ * @param {Array.<string>} manufacturersQuery Selected manufacturers.
  * @param {string} fixtureKey Key of the fixture to test.
  * @returns {boolean} True if the fixture matches the manufacturer query, false otherwise.
  */
@@ -44,7 +44,7 @@ function manufacturerMatch(manufacturersQuery, fixtureKey) {
 
 /**
  * Test if a fixture matches the category query.
- * @param {array.<string>} categoriesQuery Selected categories.
+ * @param {Array.<string>} categoriesQuery Selected categories.
  * @param {string} fixtureKey Key of the fixture to test.
  * @returns {boolean} True if the fixture matches the category query, false otherwise.
  */

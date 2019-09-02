@@ -8,7 +8,7 @@ export const constants = {
 };
 
 /**
- * @returns {object} An empty fixture object.
+ * @returns {Object} An empty fixture object.
  */
 export function getEmptyFixture() {
   return {
@@ -41,7 +41,7 @@ export function getEmptyFixture() {
 
 /**
  * @param {string} linkType The type of the new link.
- * @returns {object} An empty fixture link object.
+ * @returns {Object} An empty fixture link object.
  */
 export function getEmptyLink(linkType = `manual`) {
   return {
@@ -53,7 +53,7 @@ export function getEmptyLink(linkType = `manual`) {
 
 
 /**
- * @returns {object} An empty fixture's or mode's physical object.
+ * @returns {Object} An empty fixture's or mode's physical object.
  */
 export function getEmptyPhysical() {
   return {
@@ -76,7 +76,7 @@ export function getEmptyPhysical() {
 
 
 /**
- * @returns {object} An empty mode object.
+ * @returns {Object} An empty mode object.
  */
 export function getEmptyMode() {
   return {
@@ -92,7 +92,7 @@ export function getEmptyMode() {
 
 
 /**
- * @returns {object} An empty channel object.
+ * @returns {Object} An empty channel object.
  */
 export function getEmptyChannel() {
   return {
@@ -125,7 +125,7 @@ export function getEmptyChannel() {
 /**
  * @param {string} coarseChannelId The UUID of the coarse channel.
  * @param {number} resolution The resolution of the newly created fine channel.
- * @returns {object} An empty fine channel object for the given coarse channel.
+ * @returns {Object} An empty fine channel object for the given coarse channel.
  */
 export function getEmptyFineChannel(coarseChannelId, resolution) {
   return {
@@ -137,7 +137,7 @@ export function getEmptyFineChannel(coarseChannelId, resolution) {
 
 
 /**
- * @returns {object} An empty capability object.
+ * @returns {Object} An empty capability object.
  */
 export function getEmptyCapability() {
   return {
@@ -151,7 +151,7 @@ export function getEmptyCapability() {
 
 
 /**
- * @returns {object} An empty wheel slot object.
+ * @returns {Object} An empty wheel slot object.
  */
 export function getEmptyWheelSlot() {
   return {
@@ -163,7 +163,7 @@ export function getEmptyWheelSlot() {
 
 
 /**
- * @param {object} channel The channel object.
+ * @param {Object} channel The channel object.
  * @returns {boolean} False if the channel object is still empty / unchanged, true otherwise.
  */
 export function isChannelChanged(channel) {
@@ -190,7 +190,7 @@ export function isChannelChanged(channel) {
 
 
 /**
- * @param {object} cap The capability object.
+ * @param {Object} cap The capability object.
  * @returns {boolean} False if the capability object is still empty / unchanged, true otherwise.
  */
 export function isCapabilityChanged(cap) {
@@ -210,7 +210,7 @@ export function isCapabilityChanged(cap) {
 
 /**
  * @param {string|null} hexString A string of comma-separated hex values, or null.
- * @returns {array.<string>|null} The hex codes as array of strings.
+ * @returns {Array.<string>|null} The hex codes as array of strings.
  */
 export function colorsHexStringToArray(hexString) {
   if (typeof hexString !== `string`) {
@@ -230,8 +230,8 @@ export function colorsHexStringToArray(hexString) {
 
 
 /**
- * @param {object} channel The channel object that shall be sanitized.
- * @returns {object} A clone of the channel object without properties that are just relevant for displaying it in the channel dialog.
+ * @param {Object} channel The channel object that shall be sanitized.
+ * @returns {Object} A clone of the channel object without properties that are just relevant for displaying it in the channel dialog.
  */
 export function getSanitizedChannel(channel) {
   const retChannel = clone(channel);

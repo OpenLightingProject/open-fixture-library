@@ -79,7 +79,7 @@ const SiteCrawler = require(`../lib/site-crawler.js`);
 
 
 /**
- * @typedef {object} UrlResult
+ * @typedef {Object} UrlResult
  * @property {string} url The requested URL.
  * @property {string} message User-visible information about the URL's status.
  * @property {boolean} failed Whether the requested URL can be seen as broken.
@@ -89,8 +89,8 @@ const SiteCrawler = require(`../lib/site-crawler.js`);
  * Fetches the given URLs in small blocks that reduce the likelyhood of false negatives.
  * Pass / fail messages are constantly outputted to console.
  *
- * @param {array.<string>} externalUrls The URLs to fetch.
- * @returns {Promise.<array.<UrlResult>>} The fetch results of the given URLs. Note that the order may (and probably will) be different.
+ * @param {Array.<string>} externalUrls The URLs to fetch.
+ * @returns {Promise.<Array.<UrlResult>>} The fetch results of the given URLs. Note that the order may (and probably will) be different.
  */
 async function fetchExternalUrls(externalUrls) {
   const urlResults = [];
@@ -188,7 +188,7 @@ async function testExternalLink(url) {
 /**
  * Updates the GitHub issue for broken links.
  *
- * @param {array.<UrlResult>} urlResults Fetch results of all external URLs.
+ * @param {Array.<UrlResult>} urlResults Fetch results of all external URLs.
  * @returns {Promise} Promise that resolves when issue has been updated or rejects if the issue can't be updated.
  */
 async function updateGithubIssue(urlResults) {
@@ -243,11 +243,11 @@ async function updateGithubIssue(urlResults) {
   await createCommentIfNeeded(newFailingUrlResults, fixedUrlResults);
 
   /**
-   * @typedef {object.<string, LinkStatus>} LinkData URLs pointing to the last seven statuses.
+   * @typedef {Object.<string, LinkStatus>} LinkData URLs pointing to the last seven statuses.
    */
 
   /**
-   * @typedef {object} LinkStatus
+   * @typedef {Object} LinkStatus
    * @property {boolean} failed Whether the requested URL can be seen as broken.
    * @property {string|null} message User-visible information about the URL's status. May be null for passing links.
    * @property {string|null} jobUrl Link to the travis job. May be null for passing links.
@@ -301,7 +301,7 @@ async function updateGithubIssue(urlResults) {
    * Also updates newFailingUrlResults and fixedUrlResults to remember these URLs for the issue comment.
    *
    * @param {LinkData} oldLinkData The current link data.
-   * @param {array.<UrlResult>} urlResults Fetch results of all external URLs.
+   * @param {Array.<UrlResult>} urlResults Fetch results of all external URLs.
    * @returns {LinkData} Updated link data with new statuses for all existing links, new links added and fixed links removed.
    */
   function getUpdatedLinkData(oldLinkData, urlResults) {
@@ -412,8 +412,8 @@ async function updateGithubIssue(urlResults) {
   /**
    * Creates a notifying issue comment if there are new failing or fixed URLs.
    *
-   * @param {array.<UrlResult>} newFailingUrlResults Failing URLs that were newly added to the table.
-   * @param {array.<UrlResult>} fixedUrlResults URLs that passed the last seven times and therefore could be removed from the table.
+   * @param {Array.<UrlResult>} newFailingUrlResults Failing URLs that were newly added to the table.
+   * @param {Array.<UrlResult>} fixedUrlResults URLs that passed the last seven times and therefore could be removed from the table.
    * @returns {Promise} Promise that resolves as soon as the comment (or no comment) has been created.
    */
   async function createCommentIfNeeded(newFailingUrlResults, fixedUrlResults) {

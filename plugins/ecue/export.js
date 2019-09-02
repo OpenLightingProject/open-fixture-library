@@ -11,12 +11,12 @@ const {
 module.exports.version = `0.3.0`;
 
 /**
- * @param {array.<Fixture>} fixtures An array of Fixture objects.
- * @param {object} options Global options, including:
+ * @param {Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {Object} options Global options, including:
  * @param {string} options.baseDir Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
  * @param {string|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
- * @returns {Promise.<array.<object>, Error>} The generated files.
+ * @returns {Promise.<Array.<Object>, Error>} The generated files.
 */
 module.exports.export = async function exportECue(fixtures, options) {
   const timestamp = dateToString(options.date);
@@ -86,7 +86,7 @@ module.exports.export = async function exportECue(fixtures, options) {
 };
 
 /**
- * @param {object} xmlMan The xmlbuilder <Manufacturer> object.
+ * @param {Object} xmlMan The xmlbuilder <Manufacturer> object.
  * @param {Fixture} fixture The OFL fixture object.
  */
 function addFixture(xmlMan, fixture) {
@@ -115,7 +115,7 @@ function addFixture(xmlMan, fixture) {
 }
 
 /**
- * @param {object} xmlFixture The xmlbuilder <Fixture> object.
+ * @param {Object} xmlFixture The xmlbuilder <Fixture> object.
  * @param {Mode} mode The OFL mode object.
  */
 function handleMode(xmlFixture, mode) {
@@ -229,7 +229,7 @@ function getChannelType(channel) {
 }
 
 /**
- * @param {object} xmlChannel The xmlbuilder <Channel*> object.
+ * @param {Object} xmlChannel The xmlbuilder <Channel*> object.
  * @param {CoarseChannel} channel The OFL channel object.
  * @param {number} resolution The resolution of the channel in the current mode.
  */

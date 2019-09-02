@@ -13,7 +13,7 @@ for (const hex of Object.keys(colorNames)) {
  * @param {Buffer} buffer The imported file.
  * @param {string} filename The imported file's name.
  * @param {string} authorName The importer's name.
- * @returns {Promise.<object, Error>} A Promise resolving to an out object
+ * @returns {Promise.<Object, Error>} A Promise resolving to an out object
 **/
 module.exports.import = async function importECue(buffer, filename, authorName) {
   const parser = new xml2js.Parser();
@@ -57,7 +57,7 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
 
   /**
    * Parses the e:cue fixture and add it to out.fixtures.
-   * @param {object} ecueFixture The e:cue fixture object.
+   * @param {Object} ecueFixture The e:cue fixture object.
    * @param {string} manKey The manufacturer key of the fixture.
    */
   function addFixture(ecueFixture, manKey) {
@@ -119,8 +119,8 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
 };
 
 /**
- * @param {object} ecueFixture The e:cue fixture object.
- * @returns {object} The OFL fixture's physical object.
+ * @param {Object} ecueFixture The e:cue fixture object.
+ * @returns {Object} The OFL fixture's physical object.
  */
 function getPhysical(ecueFixture) {
   const physical = {};
@@ -141,8 +141,8 @@ function getPhysical(ecueFixture) {
 }
 
 /**
- * @param {object} ecueFixture The e:cue fixture object.
- * @returns {array.<object>} An array of all ecue channel objects.
+ * @param {Object} ecueFixture The e:cue fixture object.
+ * @returns {Array.<Object>} An array of all ecue channel objects.
  */
 function getCombinedEcueChannels(ecueFixture) {
   let channels = [];
@@ -172,9 +172,9 @@ function getCombinedEcueChannels(ecueFixture) {
 
 /**
  * Parses the e:cue channel and adds it to OFL fixture's availableChannels and the first mode.
- * @param {object} ecueChannel The e:cue channel object.
- * @param {object} fixture The OFL fixture object.
- * @param {array.<string>} warningsArray This fixture's warnings array in the `out` object.
+ * @param {Object} ecueChannel The e:cue channel object.
+ * @param {Object} fixture The OFL fixture object.
+ * @param {Array.<string>} warningsArray This fixture's warnings array in the `out` object.
  */
 function addChannelToFixture(ecueChannel, fixture, warningsArray) {
   const channel = {};
@@ -247,7 +247,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
    *
    * @param {*} ecueRange The e:cue range object.
    * @param {*} index The index of the capability / range.
-   * @returns {object} The OFL capability object.
+   * @returns {Object} The OFL capability object.
    */
   function getCapability(ecueRange, index) {
     const cap = {
@@ -361,7 +361,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
 
     /**
-     * @returns {array.<number>} The DMX range of this capability.
+     * @returns {Array.<number>} The DMX range of this capability.
      */
     function getDmxRange() {
       const dmxRangeStart = parseInt(ecueRange.$.Start);

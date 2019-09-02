@@ -1572,7 +1572,7 @@ const gdtfAttributes = {
 };
 
 /**
- * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
+ * @param {Object} gdtfCapability The enhanced <ChannelSet> XML object.
  */
 function normalizeAngularSpeedDirection(gdtfCapability) {
   if (/CCW|counter[-\s]*clockwise/.test(gdtfCapability.$.Name)) {
@@ -1586,7 +1586,7 @@ function normalizeAngularSpeedDirection(gdtfCapability) {
 }
 
 /**
- * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
+ * @param {Object} gdtfCapability The enhanced <ChannelSet> XML object.
  * @param {string} primaryColor The color that this capability is most likely.
  * @param {string} secondaryColor The color that this capability is second most likely.
  * @returns {string} Either the primary, or the secondary color.
@@ -1610,7 +1610,7 @@ function guessColorComponentName(gdtfCapability, primaryColor, secondaryColor) {
 }
 
 /**
- * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
+ * @param {Object} gdtfCapability The enhanced <ChannelSet> XML object.
  * @returns {'speed'|'duration'} The OFL property to use for this capability.
  */
 function guessSpeedOrDuration(gdtfCapability) {

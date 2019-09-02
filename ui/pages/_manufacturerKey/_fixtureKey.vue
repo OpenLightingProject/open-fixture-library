@@ -453,7 +453,7 @@ export default {
     },
 
     /**
-     * @returns {array.<object>} Array of videos that can be embetted.
+     * @returns {Array.<Object>} Array of videos that can be embetted.
      */
     videos() {
       const videoUrls = this.fixture.getLinksOfType(`video`);
@@ -574,7 +574,7 @@ const nativeVideoUrlRegex = /\.(?:mp4|avi)$/;
 
 /**
  * @param {string} url The video URL.
- * @returns {object|null} The embettable video data for the URL, or null if the video can not be embetted.
+ * @returns {Object|null} The embettable video data for the URL, or null if the video can not be embetted.
  */
 function getEmbettableVideoData(url) {
   if (nativeVideoUrlRegex.test(url)) {

@@ -4,13 +4,13 @@ const libxml = require(`libxmljs`);
 const SCHEMA_URL = `https://raw.githubusercontent.com/mcallegari/qlcplus/QLC+_4.11.2/resources/schemas/fixture.xsd`;
 
 /**
- * @param {object} exportFile The file returned by the plugins' export module.
+ * @param {Object} exportFile The file returned by the plugins' export module.
  * @param {string} exportFile.name File name, may include slashes to provide a folder structure.
  * @param {string} exportFile.content File content.
  * @param {string} exportFile.mimetype File mime type.
- * @param {array.<Fixture>|null} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @param {Array.<Fixture>|null} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
  * @param {string|null} exportFile.mode Mode's shortName if given file only describes a single mode.
- * @returns {Promise.<undefined, array.<string>|!string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
+ * @returns {Promise.<undefined, Array.<string>|!string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
 **/
 module.exports = async function testSchemaConformity(exportFile) {
   const schemaData = await new Promise((resolve, reject) => {

@@ -71,7 +71,7 @@ Currently used to create matrix channels.</p>
 <dt><a href="#Resolution">Resolution</a> : <code>number</code></dt>
 <dd><p>1 for 8bit, 2 for 16bit, ...</p>
 </dd>
-<dt><a href="#TriggerCapability">TriggerCapability</a> : <code>object</code></dt>
+<dt><a href="#TriggerCapability">TriggerCapability</a> : <code>Object</code></dt>
 <dd></dd>
 <dt><a href="#SwitchingChannelBehavior">SwitchingChannelBehavior</a> : <code>&#x27;keyOnly&#x27;</code> | <code>&#x27;defaultOnly&#x27;</code> | <code>&#x27;switchedOnly&#x27;</code> | <code>&#x27;all&#x27;</code></dt>
 <dd></dd>
@@ -159,7 +159,7 @@ A capability represents a range of a channel.
     * [new Capability(jsonObject, resolution, channel)](#new_Capability_new)
     * _instance_
         * [.jsonObject](#Capability+jsonObject)
-        * [.jsonObject](#Capability+jsonObject) ⇒ <code>object</code>
+        * [.jsonObject](#Capability+jsonObject) ⇒ <code>Object</code>
         * [.dmxRange](#Capability+dmxRange) ⇒ [<code>Range</code>](#Range)
         * [.rawDmxRange](#Capability+rawDmxRange) ⇒ [<code>Range</code>](#Range)
         * [.type](#Capability+type) ⇒ <code>string</code>
@@ -168,15 +168,15 @@ A capability represents a range of a channel.
         * [.comment](#Capability+comment) ⇒ <code>string</code>
         * [.isStep](#Capability+isStep) ⇒ <code>boolean</code>
         * [.isInverted](#Capability+isInverted) ⇒ <code>boolean</code>
-        * [.usedStartEndEntities](#Capability+usedStartEndEntities) ⇒ <code>array.&lt;string&gt;</code>
+        * [.usedStartEndEntities](#Capability+usedStartEndEntities) ⇒ <code>Array.&lt;string&gt;</code>
         * [.helpWanted](#Capability+helpWanted) ⇒ <code>string</code> \| <code>null</code>
         * [.menuClick](#Capability+menuClick) ⇒ <code>&#x27;start&#x27;</code> \| <code>&#x27;center&#x27;</code> \| <code>&#x27;end&#x27;</code> \| <code>&#x27;hidden&#x27;</code>
         * [.menuClickDmxValue](#Capability+menuClickDmxValue) ⇒ <code>number</code>
-        * [.switchChannels](#Capability+switchChannels) ⇒ <code>object.&lt;string, string&gt;</code>
+        * [.switchChannels](#Capability+switchChannels) ⇒ <code>Object.&lt;string, string&gt;</code>
         * [.shutterEffect](#Capability+shutterEffect) ⇒ <code>string</code> \| <code>null</code>
         * [.color](#Capability+color) ⇒ <code>&#x27;Red&#x27;</code> \| <code>&#x27;Green&#x27;</code> \| <code>&#x27;Blue&#x27;</code> \| <code>&#x27;Cyan&#x27;</code> \| <code>&#x27;Magenta&#x27;</code> \| <code>&#x27;Yellow&#x27;</code> \| <code>&#x27;Amber&#x27;</code> \| <code>&#x27;White&#x27;</code> \| <code>&#x27;Warm White&#x27;</code> \| <code>&#x27;Cold White&#x27;</code> \| <code>&#x27;UV&#x27;</code> \| <code>&#x27;Lime&#x27;</code> \| <code>&#x27;Indigo&#x27;</code> \| <code>null</code>
-        * [.colors](#Capability+colors) ⇒ <code>object</code> \| <code>null</code>
-        * [.wheels](#Capability+wheels) ⇒ [<code>array.&lt;Wheel&gt;</code>](#Wheel)
+        * [.colors](#Capability+colors) ⇒ <code>Object</code> \| <code>null</code>
+        * [.wheels](#Capability+wheels) ⇒ [<code>Array.&lt;Wheel&gt;</code>](#Wheel)
         * [.isShaking](#Capability+isShaking) ⇒ <code>&#x27;slot&#x27;</code> \| <code>&#x27;wheel&#x27;</code>
         * [.effectName](#Capability+effectName) ⇒ <code>string</code> \| <code>null</code>
         * [.effectPreset](#Capability+effectPreset) ⇒ <code>string</code> \| <code>null</code>
@@ -185,32 +185,32 @@ A capability represents a range of a channel.
         * [.blade](#Capability+blade) ⇒ <code>&#x27;Top&#x27;</code> \| <code>&#x27;Right&#x27;</code> \| <code>&#x27;Bottom&#x27;</code> \| <code>&#x27;Left&#x27;</code> \| <code>number</code> \| <code>null</code>
         * [.fogType](#Capability+fogType) ⇒ <code>&#x27;Fog&#x27;</code> \| <code>&#x27;Haze&#x27;</code> \| <code>null</code>
         * [.hold](#Capability+hold) ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
-        * [.speed](#Capability+speed) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
-        * [.duration](#Capability+duration) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
-        * [.time](#Capability+time) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
-        * [.brightness](#Capability+brightness) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
-        * [.slotNumber](#Capability+slotNumber) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
-        * [.wheelSlot](#Capability+wheelSlot) ⇒ [<code>array.&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code>
-        * [.angle](#Capability+angle) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
-        * [.horizontalAngle](#Capability+horizontalAngle) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
-        * [.verticalAngle](#Capability+verticalAngle) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
-        * [.colorTemperature](#Capability+colorTemperature) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
-        * [.soundSensitivity](#Capability+soundSensitivity) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
-        * [.shakeAngle](#Capability+shakeAngle) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
-        * [.shakeSpeed](#Capability+shakeSpeed) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
-        * [.distance](#Capability+distance) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
-        * [.openPercent](#Capability+openPercent) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
-        * [.frostIntensity](#Capability+frostIntensity) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
-        * [.insertion](#Capability+insertion) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
-        * [.fogOutput](#Capability+fogOutput) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
-        * [.parameter](#Capability+parameter) ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.speed](#Capability+speed) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.duration](#Capability+duration) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.time](#Capability+time) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.brightness](#Capability+brightness) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.slotNumber](#Capability+slotNumber) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.wheelSlot](#Capability+wheelSlot) ⇒ [<code>Array.&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code>
+        * [.angle](#Capability+angle) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.horizontalAngle](#Capability+horizontalAngle) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.verticalAngle](#Capability+verticalAngle) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.colorTemperature](#Capability+colorTemperature) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.soundSensitivity](#Capability+soundSensitivity) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.shakeAngle](#Capability+shakeAngle) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.shakeSpeed](#Capability+shakeSpeed) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.distance](#Capability+distance) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.openPercent](#Capability+openPercent) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.frostIntensity](#Capability+frostIntensity) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.insertion](#Capability+insertion) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.fogOutput](#Capability+fogOutput) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+        * [.parameter](#Capability+parameter) ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
         * [.getDmxRangeWithResolution(desiredResolution)](#Capability+getDmxRangeWithResolution) ⇒ [<code>Range</code>](#Range)
         * [.canCrossfadeTo(nextCapability)](#Capability+canCrossfadeTo) ⇒ <code>boolean</code>
         * [.getMenuClickDmxValueWithResolution(desiredResolution)](#Capability+getMenuClickDmxValueWithResolution) ⇒ [<code>Range</code>](#Range)
         * [.isSlotType(slotType)](#Capability+isSlotType) ⇒ <code>boolean</code>
-        * [._getStartEndArray(prop)](#Capability+_getStartEndArray) ⇒ <code>array</code> \| <code>null</code> ℗
+        * [._getStartEndArray(prop)](#Capability+_getStartEndArray) ⇒ <code>Array</code> \| <code>null</code> ℗
     * _static_
-        * [.START_END_ENTITIES](#Capability.START_END_ENTITIES) ⇒ <code>array.&lt;string&gt;</code>
+        * [.START_END_ENTITIES](#Capability.START_END_ENTITIES) ⇒ <code>Array.&lt;string&gt;</code>
 
 <a name="new_Capability_new"></a>
 
@@ -220,7 +220,7 @@ Create a new Capability instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | The capability data from the channel's JSON. |
+| jsonObject | <code>Object</code> | The capability data from the channel's JSON. |
 | resolution | [<code>Resolution</code>](#Resolution) | How fine this capability is declared. |
 | channel | [<code>CoarseChannel</code>](#CoarseChannel) | The channel instance this channel is associated to. |
 
@@ -231,13 +231,13 @@ Create a new Capability instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | The capability data from the channel's JSON. |
+| jsonObject | <code>Object</code> | The capability data from the channel's JSON. |
 
 <a name="Capability+jsonObject"></a>
 
-### capability.jsonObject ⇒ <code>object</code>
+### capability.jsonObject ⇒ <code>Object</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: <code>object</code> - The capability data from the channel's JSON.  
+**Returns**: <code>Object</code> - The capability data from the channel's JSON.  
 <a name="Capability+dmxRange"></a>
 
 ### capability.dmxRange ⇒ [<code>Range</code>](#Range)
@@ -280,9 +280,9 @@ Create a new Capability instance.
 **Returns**: <code>boolean</code> - Whether this capability ranges from a high to a low value (e.g. speed fast…slow).  
 <a name="Capability+usedStartEndEntities"></a>
 
-### capability.usedStartEndEntities ⇒ <code>array.&lt;string&gt;</code>
+### capability.usedStartEndEntities ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: <code>array.&lt;string&gt;</code> - Names of non-null properties with (maybe equal) start/end value.  
+**Returns**: <code>Array.&lt;string&gt;</code> - Names of non-null properties with (maybe equal) start/end value.  
 <a name="Capability+helpWanted"></a>
 
 ### capability.helpWanted ⇒ <code>string</code> \| <code>null</code>
@@ -300,9 +300,9 @@ Create a new Capability instance.
 **Returns**: <code>number</code> - The DMX value to set when this capability is chosen in a lighting software's auto menu.  
 <a name="Capability+switchChannels"></a>
 
-### capability.switchChannels ⇒ <code>object.&lt;string, string&gt;</code>
+### capability.switchChannels ⇒ <code>Object.&lt;string, string&gt;</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: <code>object.&lt;string, string&gt;</code> - Switching channel aliases mapped to the channel key to which the switching channel should be set to when this capability is activated.  
+**Returns**: <code>Object.&lt;string, string&gt;</code> - Switching channel aliases mapped to the channel key to which the switching channel should be set to when this capability is activated.  
 <a name="Capability+shutterEffect"></a>
 
 ### capability.shutterEffect ⇒ <code>string</code> \| <code>null</code>
@@ -315,14 +315,14 @@ Create a new Capability instance.
 **Returns**: <code>&#x27;Red&#x27;</code> \| <code>&#x27;Green&#x27;</code> \| <code>&#x27;Blue&#x27;</code> \| <code>&#x27;Cyan&#x27;</code> \| <code>&#x27;Magenta&#x27;</code> \| <code>&#x27;Yellow&#x27;</code> \| <code>&#x27;Amber&#x27;</code> \| <code>&#x27;White&#x27;</code> \| <code>&#x27;Warm White&#x27;</code> \| <code>&#x27;Cold White&#x27;</code> \| <code>&#x27;UV&#x27;</code> \| <code>&#x27;Lime&#x27;</code> \| <code>&#x27;Indigo&#x27;</code> \| <code>null</code> - The color of the lamp that is controlled by this ColorIntensity capability. Defaults to null.  
 <a name="Capability+colors"></a>
 
-### capability.colors ⇒ <code>object</code> \| <code>null</code>
+### capability.colors ⇒ <code>Object</code> \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: <code>object</code> \| <code>null</code> - The color hex codes for each visually distinguishable light beam. Defaults to null.  
+**Returns**: <code>Object</code> \| <code>null</code> - The color hex codes for each visually distinguishable light beam. Defaults to null.  
 <a name="Capability+wheels"></a>
 
-### capability.wheels ⇒ [<code>array.&lt;Wheel&gt;</code>](#Wheel)
+### capability.wheels ⇒ [<code>Array.&lt;Wheel&gt;</code>](#Wheel)
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Wheel&gt;</code>](#Wheel) - The wheels this capability refers to. The array has one or more elements in wheel-related capabilities, zero otherwise.  
+**Returns**: [<code>Array.&lt;Wheel&gt;</code>](#Wheel) - The wheels this capability refers to. The array has one or more elements in wheel-related capabilities, zero otherwise.  
 <a name="Capability+isShaking"></a>
 
 ### capability.isShaking ⇒ <code>&#x27;slot&#x27;</code> \| <code>&#x27;wheel&#x27;</code>
@@ -367,99 +367,99 @@ Use only in `WheelShake` capabilities!
 **Returns**: [<code>Entity</code>](#Entity) \| <code>null</code> - How long this capability should be selected to take effect. Defaults to null.  
 <a name="Capability+speed"></a>
 
-### capability.speed ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+### capability.speed ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end speed values. Defaults to null.  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end speed values. Defaults to null.  
 <a name="Capability+duration"></a>
 
-### capability.duration ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+### capability.duration ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end duration values. Defaults to null.  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end duration values. Defaults to null.  
 <a name="Capability+time"></a>
 
-### capability.time ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+### capability.time ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end time values. Defaults to null.  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end time values. Defaults to null.  
 <a name="Capability+brightness"></a>
 
-### capability.brightness ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+### capability.brightness ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end brightness values. Defaults to null.  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end brightness values. Defaults to null.  
 <a name="Capability+slotNumber"></a>
 
-### capability.slotNumber ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+### capability.slotNumber ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end slot numbers. Defaults to null.  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end slot numbers. Defaults to null.  
 <a name="Capability+wheelSlot"></a>
 
-### capability.wheelSlot ⇒ [<code>array.&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code>
+### capability.wheelSlot ⇒ [<code>Array.&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code> - Start and end wheel slot objects this capability is referencing. Defaults to null.  
+**Returns**: [<code>Array.&lt;WheelSlot&gt;</code>](#WheelSlot) \| <code>null</code> - Start and end wheel slot objects this capability is referencing. Defaults to null.  
 <a name="Capability+angle"></a>
 
-### capability.angle ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+### capability.angle ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end angle values. Defaults to null.  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end angle values. Defaults to null.  
 <a name="Capability+horizontalAngle"></a>
 
-### capability.horizontalAngle ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+### capability.horizontalAngle ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end horizontal angle values. Defaults to null.  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end horizontal angle values. Defaults to null.  
 <a name="Capability+verticalAngle"></a>
 
-### capability.verticalAngle ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+### capability.verticalAngle ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end vertical angle values. Defaults to null.  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end vertical angle values. Defaults to null.  
 <a name="Capability+colorTemperature"></a>
 
-### capability.colorTemperature ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+### capability.colorTemperature ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end colorTemperature values. Defaults to null.  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end colorTemperature values. Defaults to null.  
 <a name="Capability+soundSensitivity"></a>
 
-### capability.soundSensitivity ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+### capability.soundSensitivity ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end sound sensitivity values. Defaults to null.  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end sound sensitivity values. Defaults to null.  
 <a name="Capability+shakeAngle"></a>
 
-### capability.shakeAngle ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+### capability.shakeAngle ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end shake angle values. Defaults to null.  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end shake angle values. Defaults to null.  
 <a name="Capability+shakeSpeed"></a>
 
-### capability.shakeSpeed ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+### capability.shakeSpeed ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end shake speed values. Defaults to null.  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end shake speed values. Defaults to null.  
 <a name="Capability+distance"></a>
 
-### capability.distance ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+### capability.distance ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end distance values. Defaults to null.  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end distance values. Defaults to null.  
 <a name="Capability+openPercent"></a>
 
-### capability.openPercent ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+### capability.openPercent ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end openPercent values. Defaults to null.  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end openPercent values. Defaults to null.  
 <a name="Capability+frostIntensity"></a>
 
-### capability.frostIntensity ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+### capability.frostIntensity ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end frostIntensity values. Defaults to null.  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end frostIntensity values. Defaults to null.  
 <a name="Capability+insertion"></a>
 
-### capability.insertion ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+### capability.insertion ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end insertion values. Defaults to null.  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end insertion values. Defaults to null.  
 <a name="Capability+fogOutput"></a>
 
-### capability.fogOutput ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+### capability.fogOutput ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end fogOutput values. Defaults to null.  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end fogOutput values. Defaults to null.  
 <a name="Capability+parameter"></a>
 
-### capability.parameter ⇒ [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
+### capability.parameter ⇒ [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: [<code>array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end parameter values. Defaults to null.  
+**Returns**: [<code>Array.&lt;Entity&gt;</code>](#Entity) \| <code>null</code> - Start and end parameter values. Defaults to null.  
 <a name="Capability+getDmxRangeWithResolution"></a>
 
 ### capability.getDmxRangeWithResolution(desiredResolution) ⇒ [<code>Range</code>](#Range)
@@ -502,11 +502,11 @@ Use only in `WheelShake` capabilities!
 
 <a name="Capability+_getStartEndArray"></a>
 
-### capability.\_getStartEndArray(prop) ⇒ <code>array</code> \| <code>null</code> ℗
+### capability.\_getStartEndArray(prop) ⇒ <code>Array</code> \| <code>null</code> ℗
 Parses a property that has start and end variants by generating an array with start and end value.
 
 **Kind**: instance method of [<code>Capability</code>](#Capability)  
-**Returns**: <code>array</code> \| <code>null</code> - Start and end value of the property (may be equal), parsed to Entity instances. null if it isn't defined in JSON.  
+**Returns**: <code>Array</code> \| <code>null</code> - Start and end value of the property (may be equal), parsed to Entity instances. null if it isn't defined in JSON.  
 **Access**: private  
 
 | Param | Type | Description |
@@ -515,9 +515,9 @@ Parses a property that has start and end variants by generating an array with st
 
 <a name="Capability.START_END_ENTITIES"></a>
 
-### Capability.START\_END\_ENTITIES ⇒ <code>array.&lt;string&gt;</code>
+### Capability.START\_END\_ENTITIES ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: static property of [<code>Capability</code>](#Capability)  
-**Returns**: <code>array.&lt;string&gt;</code> - Type-specific properties that may have a start and an end value.  
+**Returns**: <code>Array.&lt;string&gt;</code> - Type-specific properties that may have a start and an end value.  
 <a name="CoarseChannel"></a>
 
 ## CoarseChannel ⇐ [<code>AbstractChannel</code>](#AbstractChannel)
@@ -531,13 +531,13 @@ Only the MSB (most significant byte) channel if it's a multi-byte channel.
     * [new CoarseChannel(key, jsonObject, fixture)](#new_CoarseChannel_new)
     * _instance_
         * [.jsonObject](#CoarseChannel+jsonObject)
-        * [.jsonObject](#CoarseChannel+jsonObject) ⇒ <code>object</code>
+        * [.jsonObject](#CoarseChannel+jsonObject) ⇒ <code>Object</code>
         * [.fixture](#CoarseChannel+fixture) ⇒ [<code>Fixture</code>](#Fixture)
         * [.name](#CoarseChannel+name) ⇒ <code>string</code>
         * [.type](#CoarseChannel+type) ⇒ <code>string</code>
         * [.color](#CoarseChannel+color) ⇒ <code>string</code>
-        * [.fineChannelAliases](#CoarseChannel+fineChannelAliases) ⇒ <code>array.&lt;string&gt;</code>
-        * [.fineChannels](#CoarseChannel+fineChannels) ⇒ [<code>array.&lt;FineChannel&gt;</code>](#FineChannel)
+        * [.fineChannelAliases](#CoarseChannel+fineChannelAliases) ⇒ <code>Array.&lt;string&gt;</code>
+        * [.fineChannels](#CoarseChannel+fineChannels) ⇒ [<code>Array.&lt;FineChannel&gt;</code>](#FineChannel)
         * [.maxResolution](#CoarseChannel+maxResolution) ⇒ [<code>Resolution</code>](#Resolution)
         * [.dmxValueResolution](#CoarseChannel+dmxValueResolution) ⇒ [<code>Resolution</code>](#Resolution)
         * [.maxDmxBound](#CoarseChannel+maxDmxBound) ⇒ <code>number</code>
@@ -549,10 +549,10 @@ Only the MSB (most significant byte) channel if it's a multi-byte channel.
         * [.isConstant](#CoarseChannel+isConstant) ⇒ <code>boolean</code>
         * [.canCrossfade](#CoarseChannel+canCrossfade) ⇒ <code>boolean</code>
         * [.precedence](#CoarseChannel+precedence) ⇒ <code>&#x27;HTP&#x27;</code> \| <code>&#x27;LTP&#x27;</code>
-        * [.switchingChannelAliases](#CoarseChannel+switchingChannelAliases) ⇒ <code>array.&lt;string&gt;</code>
-        * [.switchingChannels](#CoarseChannel+switchingChannels) ⇒ [<code>array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel)
-        * [.switchToChannelKeys](#CoarseChannel+switchToChannelKeys) ⇒ <code>array.&lt;string&gt;</code>
-        * [.capabilities](#CoarseChannel+capabilities) ⇒ [<code>array.&lt;Capability&gt;</code>](#Capability)
+        * [.switchingChannelAliases](#CoarseChannel+switchingChannelAliases) ⇒ <code>Array.&lt;string&gt;</code>
+        * [.switchingChannels](#CoarseChannel+switchingChannels) ⇒ [<code>Array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel)
+        * [.switchToChannelKeys](#CoarseChannel+switchToChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
+        * [.capabilities](#CoarseChannel+capabilities) ⇒ [<code>Array.&lt;Capability&gt;</code>](#Capability)
         * [.isHelpWanted](#CoarseChannel+isHelpWanted) ⇒ <code>boolean</code>
         * [.key](#AbstractChannel+key) ⇒ <code>string</code>
         * [.uniqueName](#AbstractChannel+uniqueName) ⇒ <code>string</code>
@@ -576,7 +576,7 @@ Create a new CoarseChannel instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>string</code> | The channel's identifier, must be unique in the fixture. |
-| jsonObject | <code>object</code> | The channel data from the fixture's JSON. |
+| jsonObject | <code>Object</code> | The channel data from the fixture's JSON. |
 | fixture | [<code>Fixture</code>](#Fixture) | The fixture instance this channel is associated to. |
 
 <a name="CoarseChannel+jsonObject"></a>
@@ -586,13 +586,13 @@ Create a new CoarseChannel instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | The channel data from the fixture's JSON. |
+| jsonObject | <code>Object</code> | The channel data from the fixture's JSON. |
 
 <a name="CoarseChannel+jsonObject"></a>
 
-### coarseChannel.jsonObject ⇒ <code>object</code>
+### coarseChannel.jsonObject ⇒ <code>Object</code>
 **Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
-**Returns**: <code>object</code> - The channel data from the fixture's JSON.  
+**Returns**: <code>Object</code> - The channel data from the fixture's JSON.  
 <a name="CoarseChannel+fixture"></a>
 
 ### coarseChannel.fixture ⇒ [<code>Fixture</code>](#Fixture)
@@ -621,14 +621,14 @@ Overrides [`AbstractChannel.name`](#AbstractChannel+name).
 **Returns**: <code>string</code> - The color of an included ColorIntensity capability, null if there's no such capability.  
 <a name="CoarseChannel+fineChannelAliases"></a>
 
-### coarseChannel.fineChannelAliases ⇒ <code>array.&lt;string&gt;</code>
+### coarseChannel.fineChannelAliases ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
-**Returns**: <code>array.&lt;string&gt;</code> - This channel's fine channel aliases, ordered by resolution (coarsest first).  
+**Returns**: <code>Array.&lt;string&gt;</code> - This channel's fine channel aliases, ordered by resolution (coarsest first).  
 <a name="CoarseChannel+fineChannels"></a>
 
-### coarseChannel.fineChannels ⇒ [<code>array.&lt;FineChannel&gt;</code>](#FineChannel)
+### coarseChannel.fineChannels ⇒ [<code>Array.&lt;FineChannel&gt;</code>](#FineChannel)
 **Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
-**Returns**: [<code>array.&lt;FineChannel&gt;</code>](#FineChannel) - This channel's fine channels, ordered by resolution (coarsest first).  
+**Returns**: [<code>Array.&lt;FineChannel&gt;</code>](#FineChannel) - This channel's fine channels, ordered by resolution (coarsest first).  
 <a name="CoarseChannel+maxResolution"></a>
 
 ### coarseChannel.maxResolution ⇒ [<code>Resolution</code>](#Resolution)
@@ -686,24 +686,24 @@ Overrides [`AbstractChannel.name`](#AbstractChannel+name).
 **Returns**: <code>&#x27;HTP&#x27;</code> \| <code>&#x27;LTP&#x27;</code> - The channel's behavior when being affected by multiple faders: HTP (Highest Takes Precedent) or LTP (Latest Takes Precedent).  
 <a name="CoarseChannel+switchingChannelAliases"></a>
 
-### coarseChannel.switchingChannelAliases ⇒ <code>array.&lt;string&gt;</code>
+### coarseChannel.switchingChannelAliases ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
-**Returns**: <code>array.&lt;string&gt;</code> - Aliases of the switching channels defined by this channel, ordered by appearance in the JSON.  
+**Returns**: <code>Array.&lt;string&gt;</code> - Aliases of the switching channels defined by this channel, ordered by appearance in the JSON.  
 <a name="CoarseChannel+switchingChannels"></a>
 
-### coarseChannel.switchingChannels ⇒ [<code>array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel)
+### coarseChannel.switchingChannels ⇒ [<code>Array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel)
 **Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
-**Returns**: [<code>array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel) - Switching channels defined by this channel, ordered by appearance in the JSON.  
+**Returns**: [<code>Array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel) - Switching channels defined by this channel, ordered by appearance in the JSON.  
 <a name="CoarseChannel+switchToChannelKeys"></a>
 
-### coarseChannel.switchToChannelKeys ⇒ <code>array.&lt;string&gt;</code>
+### coarseChannel.switchToChannelKeys ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
-**Returns**: <code>array.&lt;string&gt;</code> - The keys of the channels to which the switching channels defined by this channel can be switched to.  
+**Returns**: <code>Array.&lt;string&gt;</code> - The keys of the channels to which the switching channels defined by this channel can be switched to.  
 <a name="CoarseChannel+capabilities"></a>
 
-### coarseChannel.capabilities ⇒ [<code>array.&lt;Capability&gt;</code>](#Capability)
+### coarseChannel.capabilities ⇒ [<code>Array.&lt;Capability&gt;</code>](#Capability)
 **Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
-**Returns**: [<code>array.&lt;Capability&gt;</code>](#Capability) - All capabilities of this channel, ordered by DMX range.  
+**Returns**: [<code>Array.&lt;Capability&gt;</code>](#Capability) - All capabilities of this channel, ordered by DMX range.  
 <a name="CoarseChannel+isHelpWanted"></a>
 
 ### coarseChannel.isHelpWanted ⇒ <code>boolean</code>
@@ -1002,12 +1002,12 @@ A physical DMX device.
     * [.manufacturer](#Fixture+manufacturer) ⇒ [<code>Manufacturer</code>](#Manufacturer)
     * [.key](#Fixture+key)
     * [.jsonObject](#Fixture+jsonObject)
-    * [.jsonObject](#Fixture+jsonObject) ⇒ <code>object</code>
+    * [.jsonObject](#Fixture+jsonObject) ⇒ <code>Object</code>
     * [.url](#Fixture+url) ⇒ <code>string</code>
     * [.name](#Fixture+name) ⇒ <code>string</code>
     * [.hasShortName](#Fixture+hasShortName) ⇒ <code>boolean</code>
     * [.shortName](#Fixture+shortName) ⇒ <code>string</code>
-    * [.categories](#Fixture+categories) ⇒ <code>array.&lt;string&gt;</code>
+    * [.categories](#Fixture+categories) ⇒ <code>Array.&lt;string&gt;</code>
     * [.mainCategory](#Fixture+mainCategory) ⇒ <code>string</code>
     * [.meta](#Fixture+meta) ⇒ [<code>Meta</code>](#Meta)
     * [.hasComment](#Fixture+hasComment) ⇒ <code>boolean</code>
@@ -1015,32 +1015,32 @@ A physical DMX device.
     * [.helpWanted](#Fixture+helpWanted) ⇒ <code>string</code> \| <code>null</code>
     * [.isHelpWanted](#Fixture+isHelpWanted) ⇒ <code>boolean</code>
     * [.isCapabilityHelpWanted](#Fixture+isCapabilityHelpWanted) ⇒ <code>boolean</code>
-    * [.links](#Fixture+links) ⇒ <code>object.&lt;string, array&gt;</code> \| <code>null</code>
-    * [.rdm](#Fixture+rdm) ⇒ <code>object</code> \| <code>null</code>
+    * [.links](#Fixture+links) ⇒ <code>Object.&lt;string, Array&gt;</code> \| <code>null</code>
+    * [.rdm](#Fixture+rdm) ⇒ <code>Object</code> \| <code>null</code>
     * [.physical](#Fixture+physical) ⇒ [<code>Physical</code>](#Physical) \| <code>null</code>
     * [.matrix](#Fixture+matrix) ⇒ [<code>Matrix</code>](#Matrix) \| <code>null</code>
-    * [.wheels](#Fixture+wheels) ⇒ [<code>array.&lt;Wheel&gt;</code>](#Wheel)
-    * [.uniqueChannelNames](#Fixture+uniqueChannelNames) ⇒ <code>object.&lt;string, string&gt;</code>
-    * [.availableChannelKeys](#Fixture+availableChannelKeys) ⇒ <code>array.&lt;string&gt;</code>
-    * [.availableChannels](#Fixture+availableChannels) ⇒ [<code>array.&lt;CoarseChannel&gt;</code>](#CoarseChannel)
-    * [.coarseChannelKeys](#Fixture+coarseChannelKeys) ⇒ <code>array.&lt;string&gt;</code>
-    * [.coarseChannels](#Fixture+coarseChannels) ⇒ [<code>array.&lt;CoarseChannel&gt;</code>](#CoarseChannel)
-    * [.fineChannelAliases](#Fixture+fineChannelAliases) ⇒ <code>array.&lt;string&gt;</code>
-    * [.fineChannels](#Fixture+fineChannels) ⇒ [<code>array.&lt;FineChannel&gt;</code>](#FineChannel)
-    * [.switchingChannelAliases](#Fixture+switchingChannelAliases) ⇒ <code>array.&lt;string&gt;</code>
-    * [.switchingChannels](#Fixture+switchingChannels) ⇒ [<code>array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel)
-    * [.templateChannelKeys](#Fixture+templateChannelKeys) ⇒ <code>array.&lt;string&gt;</code>
-    * [.templateChannels](#Fixture+templateChannels) ⇒ [<code>array.&lt;TemplateChannel&gt;</code>](#TemplateChannel)
-    * [.matrixChannelKeys](#Fixture+matrixChannelKeys) ⇒ <code>array.&lt;string&gt;</code>
-    * [.matrixChannels](#Fixture+matrixChannels) ⇒ [<code>array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
-    * [.nullChannelKeys](#Fixture+nullChannelKeys) ⇒ <code>array.&lt;string&gt;</code>
-    * [.nullChannels](#Fixture+nullChannels) ⇒ [<code>array.&lt;NullChannel&gt;</code>](#NullChannel)
-    * [.allChannelKeys](#Fixture+allChannelKeys) ⇒ <code>array.&lt;string&gt;</code>
-    * [.allChannels](#Fixture+allChannels) ⇒ [<code>array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
-    * [.allChannelsByKey](#Fixture+allChannelsByKey) ⇒ <code>object.&lt;string, AbstractChannel&gt;</code>
-    * [.capabilities](#Fixture+capabilities) ⇒ [<code>array.&lt;Capability&gt;</code>](#Capability)
-    * [.modes](#Fixture+modes) ⇒ [<code>array.&lt;Mode&gt;</code>](#Mode)
-    * [.getLinksOfType(type)](#Fixture+getLinksOfType) ⇒ <code>array.&lt;string&gt;</code>
+    * [.wheels](#Fixture+wheels) ⇒ [<code>Array.&lt;Wheel&gt;</code>](#Wheel)
+    * [.uniqueChannelNames](#Fixture+uniqueChannelNames) ⇒ <code>Object.&lt;string, string&gt;</code>
+    * [.availableChannelKeys](#Fixture+availableChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.availableChannels](#Fixture+availableChannels) ⇒ [<code>Array.&lt;CoarseChannel&gt;</code>](#CoarseChannel)
+    * [.coarseChannelKeys](#Fixture+coarseChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.coarseChannels](#Fixture+coarseChannels) ⇒ [<code>Array.&lt;CoarseChannel&gt;</code>](#CoarseChannel)
+    * [.fineChannelAliases](#Fixture+fineChannelAliases) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.fineChannels](#Fixture+fineChannels) ⇒ [<code>Array.&lt;FineChannel&gt;</code>](#FineChannel)
+    * [.switchingChannelAliases](#Fixture+switchingChannelAliases) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.switchingChannels](#Fixture+switchingChannels) ⇒ [<code>Array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel)
+    * [.templateChannelKeys](#Fixture+templateChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.templateChannels](#Fixture+templateChannels) ⇒ [<code>Array.&lt;TemplateChannel&gt;</code>](#TemplateChannel)
+    * [.matrixChannelKeys](#Fixture+matrixChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.matrixChannels](#Fixture+matrixChannels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
+    * [.nullChannelKeys](#Fixture+nullChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.nullChannels](#Fixture+nullChannels) ⇒ [<code>Array.&lt;NullChannel&gt;</code>](#NullChannel)
+    * [.allChannelKeys](#Fixture+allChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.allChannels](#Fixture+allChannels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
+    * [.allChannelsByKey](#Fixture+allChannelsByKey) ⇒ <code>Object.&lt;string, AbstractChannel&gt;</code>
+    * [.capabilities](#Fixture+capabilities) ⇒ [<code>Array.&lt;Capability&gt;</code>](#Capability)
+    * [.modes](#Fixture+modes) ⇒ [<code>Array.&lt;Mode&gt;</code>](#Mode)
+    * [.getLinksOfType(type)](#Fixture+getLinksOfType) ⇒ <code>Array.&lt;string&gt;</code>
     * [.getWheelByName(wheelName)](#Fixture+getWheelByName) ⇒ [<code>Wheel</code>](#Wheel) \| <code>null</code>
     * [.getTemplateChannelByKey(chKey)](#Fixture+getTemplateChannelByKey) ⇒ [<code>TemplateChannel</code>](#TemplateChannel) \| <code>null</code>
     * [.getChannelByKey(key)](#Fixture+getChannelByKey) ⇒ [<code>AbstractChannel</code>](#AbstractChannel) \| <code>null</code>
@@ -1055,7 +1055,7 @@ Create a new Fixture instance.
 | --- | --- | --- |
 | man | <code>string</code> \| [<code>Manufacturer</code>](#Manufacturer) | Either the fixture's manufacturer's key or a Manufacturer instance. |
 | key | <code>string</code> | The fixture's unique key. Equals to filename without '.json'. |
-| jsonObject | <code>object</code> | The fixture's parsed JSON data. |
+| jsonObject | <code>Object</code> | The fixture's parsed JSON data. |
 
 <a name="Fixture+manufacturer"></a>
 
@@ -1087,13 +1087,13 @@ Create a new Fixture instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | The fixture's parsed JSON data. |
+| jsonObject | <code>Object</code> | The fixture's parsed JSON data. |
 
 <a name="Fixture+jsonObject"></a>
 
-### fixture.jsonObject ⇒ <code>object</code>
+### fixture.jsonObject ⇒ <code>Object</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: <code>object</code> - The fixture's parsed JSON data.  
+**Returns**: <code>Object</code> - The fixture's parsed JSON data.  
 <a name="Fixture+url"></a>
 
 ### fixture.url ⇒ <code>string</code>
@@ -1116,9 +1116,9 @@ Create a new Fixture instance.
 **Returns**: <code>string</code> - A globally unique and as short as possible product name, defaults to name.  
 <a name="Fixture+categories"></a>
 
-### fixture.categories ⇒ <code>array.&lt;string&gt;</code>
+### fixture.categories ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: <code>array.&lt;string&gt;</code> - The fixture's categories with the most applicable one first.  
+**Returns**: <code>Array.&lt;string&gt;</code> - The fixture's categories with the most applicable one first.  
 <a name="Fixture+mainCategory"></a>
 
 ### fixture.mainCategory ⇒ <code>string</code>
@@ -1156,14 +1156,14 @@ Create a new Fixture instance.
 **Returns**: <code>boolean</code> - True if help is needed in a capability, false otherwise.  
 <a name="Fixture+links"></a>
 
-### fixture.links ⇒ <code>object.&lt;string, array&gt;</code> \| <code>null</code>
+### fixture.links ⇒ <code>Object.&lt;string, Array&gt;</code> \| <code>null</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: <code>object.&lt;string, array&gt;</code> \| <code>null</code> - An object with URL arrays, organized by link type, or null if no links are available for this fixture.  
+**Returns**: <code>Object.&lt;string, Array&gt;</code> \| <code>null</code> - An object with URL arrays, organized by link type, or null if no links are available for this fixture.  
 <a name="Fixture+rdm"></a>
 
-### fixture.rdm ⇒ <code>object</code> \| <code>null</code>
+### fixture.rdm ⇒ <code>Object</code> \| <code>null</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: <code>object</code> \| <code>null</code> - Information about the RDM functionality of this fixture. Defaults to null.  
+**Returns**: <code>Object</code> \| <code>null</code> - Information about the RDM functionality of this fixture. Defaults to null.  
 **Properties**
 
 | Name | Type | Description |
@@ -1183,118 +1183,118 @@ Create a new Fixture instance.
 **Returns**: [<code>Matrix</code>](#Matrix) \| <code>null</code> - The matrix information for this fixture.  
 <a name="Fixture+wheels"></a>
 
-### fixture.wheels ⇒ [<code>array.&lt;Wheel&gt;</code>](#Wheel)
+### fixture.wheels ⇒ [<code>Array.&lt;Wheel&gt;</code>](#Wheel)
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: [<code>array.&lt;Wheel&gt;</code>](#Wheel) - The fixture's wheels as [Wheel](#Wheel) instances.  
+**Returns**: [<code>Array.&lt;Wheel&gt;</code>](#Wheel) - The fixture's wheels as [Wheel](#Wheel) instances.  
 <a name="Fixture+uniqueChannelNames"></a>
 
-### fixture.uniqueChannelNames ⇒ <code>object.&lt;string, string&gt;</code>
+### fixture.uniqueChannelNames ⇒ <code>Object.&lt;string, string&gt;</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: <code>object.&lt;string, string&gt;</code> - Channel keys from [allChannelKeys](#Fixture+allChannelKeys) pointing to unique versions of their channel names.  
+**Returns**: <code>Object.&lt;string, string&gt;</code> - Channel keys from [allChannelKeys](#Fixture+allChannelKeys) pointing to unique versions of their channel names.  
 <a name="Fixture+availableChannelKeys"></a>
 
-### fixture.availableChannelKeys ⇒ <code>array.&lt;string&gt;</code>
+### fixture.availableChannelKeys ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: <code>array.&lt;string&gt;</code> - Coarse channels from the fixture definition's `availableChannels` section. Ordered by appearance.  
+**Returns**: <code>Array.&lt;string&gt;</code> - Coarse channels from the fixture definition's `availableChannels` section. Ordered by appearance.  
 <a name="Fixture+availableChannels"></a>
 
-### fixture.availableChannels ⇒ [<code>array.&lt;CoarseChannel&gt;</code>](#CoarseChannel)
+### fixture.availableChannels ⇒ [<code>Array.&lt;CoarseChannel&gt;</code>](#CoarseChannel)
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: [<code>array.&lt;CoarseChannel&gt;</code>](#CoarseChannel) - Coarse channels from the fixture definition's `availableChannels` section. Ordered by appearance.  
+**Returns**: [<code>Array.&lt;CoarseChannel&gt;</code>](#CoarseChannel) - Coarse channels from the fixture definition's `availableChannels` section. Ordered by appearance.  
 <a name="Fixture+coarseChannelKeys"></a>
 
-### fixture.coarseChannelKeys ⇒ <code>array.&lt;string&gt;</code>
+### fixture.coarseChannelKeys ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: <code>array.&lt;string&gt;</code> - Coarse channels' keys, including matrix channels' keys. If possible, ordered by appearance.  
+**Returns**: <code>Array.&lt;string&gt;</code> - Coarse channels' keys, including matrix channels' keys. If possible, ordered by appearance.  
 <a name="Fixture+coarseChannels"></a>
 
-### fixture.coarseChannels ⇒ [<code>array.&lt;CoarseChannel&gt;</code>](#CoarseChannel)
+### fixture.coarseChannels ⇒ [<code>Array.&lt;CoarseChannel&gt;</code>](#CoarseChannel)
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: [<code>array.&lt;CoarseChannel&gt;</code>](#CoarseChannel) - Coarse channels, including matrix channels. If possible, ordered by appearance.  
+**Returns**: [<code>Array.&lt;CoarseChannel&gt;</code>](#CoarseChannel) - Coarse channels, including matrix channels. If possible, ordered by appearance.  
 <a name="Fixture+fineChannelAliases"></a>
 
-### fixture.fineChannelAliases ⇒ <code>array.&lt;string&gt;</code>
+### fixture.fineChannelAliases ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: <code>array.&lt;string&gt;</code> - All fine channels' aliases, including matrix fine channels' aliases. If possible, ordered by appearance.  
+**Returns**: <code>Array.&lt;string&gt;</code> - All fine channels' aliases, including matrix fine channels' aliases. If possible, ordered by appearance.  
 <a name="Fixture+fineChannels"></a>
 
-### fixture.fineChannels ⇒ [<code>array.&lt;FineChannel&gt;</code>](#FineChannel)
+### fixture.fineChannels ⇒ [<code>Array.&lt;FineChannel&gt;</code>](#FineChannel)
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: [<code>array.&lt;FineChannel&gt;</code>](#FineChannel) - All fine channels, including matrix fine channels. If possible, ordered by appearance.  
+**Returns**: [<code>Array.&lt;FineChannel&gt;</code>](#FineChannel) - All fine channels, including matrix fine channels. If possible, ordered by appearance.  
 <a name="Fixture+switchingChannelAliases"></a>
 
-### fixture.switchingChannelAliases ⇒ <code>array.&lt;string&gt;</code>
+### fixture.switchingChannelAliases ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: <code>array.&lt;string&gt;</code> - All switching channels' aliases, including matrix switching channels' aliases. If possible, ordered by appearance.  
+**Returns**: <code>Array.&lt;string&gt;</code> - All switching channels' aliases, including matrix switching channels' aliases. If possible, ordered by appearance.  
 <a name="Fixture+switchingChannels"></a>
 
-### fixture.switchingChannels ⇒ [<code>array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel)
+### fixture.switchingChannels ⇒ [<code>Array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel)
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: [<code>array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel) - All switching channels, including matrix switching channels. If possible, ordered by appearance.  
+**Returns**: [<code>Array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel) - All switching channels, including matrix switching channels. If possible, ordered by appearance.  
 <a name="Fixture+templateChannelKeys"></a>
 
-### fixture.templateChannelKeys ⇒ <code>array.&lt;string&gt;</code>
+### fixture.templateChannelKeys ⇒ <code>Array.&lt;string&gt;</code>
 Template channels are used to automatically generate channels.
 
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: <code>array.&lt;string&gt;</code> - All template channel keys from the fixture definition's `templateChannels` section. Ordered by appearance.  
+**Returns**: <code>Array.&lt;string&gt;</code> - All template channel keys from the fixture definition's `templateChannels` section. Ordered by appearance.  
 <a name="Fixture+templateChannels"></a>
 
-### fixture.templateChannels ⇒ [<code>array.&lt;TemplateChannel&gt;</code>](#TemplateChannel)
+### fixture.templateChannels ⇒ [<code>Array.&lt;TemplateChannel&gt;</code>](#TemplateChannel)
 Template channels are used to automatically generate channels.
 
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: [<code>array.&lt;TemplateChannel&gt;</code>](#TemplateChannel) - TemplateChannel instances for all template channels from the fixture definition's `templateChannels` section. Ordered by appearance.  
+**Returns**: [<code>Array.&lt;TemplateChannel&gt;</code>](#TemplateChannel) - TemplateChannel instances for all template channels from the fixture definition's `templateChannels` section. Ordered by appearance.  
 <a name="Fixture+matrixChannelKeys"></a>
 
-### fixture.matrixChannelKeys ⇒ <code>array.&lt;string&gt;</code>
+### fixture.matrixChannelKeys ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: <code>array.&lt;string&gt;</code> - Keys of all resolved matrix channels.  
+**Returns**: <code>Array.&lt;string&gt;</code> - Keys of all resolved matrix channels.  
 <a name="Fixture+matrixChannels"></a>
 
-### fixture.matrixChannels ⇒ [<code>array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
+### fixture.matrixChannels ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: [<code>array.&lt;AbstractChannel&gt;</code>](#AbstractChannel) - All (resolved) channels with `pixelKey` information (including fine and switching channels).  
+**Returns**: [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel) - All (resolved) channels with `pixelKey` information (including fine and switching channels).  
 <a name="Fixture+nullChannelKeys"></a>
 
-### fixture.nullChannelKeys ⇒ <code>array.&lt;string&gt;</code>
+### fixture.nullChannelKeys ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: <code>array.&lt;string&gt;</code> - All null channels' keys.  
+**Returns**: <code>Array.&lt;string&gt;</code> - All null channels' keys.  
 <a name="Fixture+nullChannels"></a>
 
-### fixture.nullChannels ⇒ [<code>array.&lt;NullChannel&gt;</code>](#NullChannel)
+### fixture.nullChannels ⇒ [<code>Array.&lt;NullChannel&gt;</code>](#NullChannel)
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: [<code>array.&lt;NullChannel&gt;</code>](#NullChannel) - Automatically generated null channels.  
+**Returns**: [<code>Array.&lt;NullChannel&gt;</code>](#NullChannel) - Automatically generated null channels.  
 <a name="Fixture+allChannelKeys"></a>
 
-### fixture.allChannelKeys ⇒ <code>array.&lt;string&gt;</code>
+### fixture.allChannelKeys ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: <code>array.&lt;string&gt;</code> - All channel keys used in this fixture, including resolved matrix channels' keys. If possible, ordered by appearance.  
+**Returns**: <code>Array.&lt;string&gt;</code> - All channel keys used in this fixture, including resolved matrix channels' keys. If possible, ordered by appearance.  
 <a name="Fixture+allChannels"></a>
 
-### fixture.allChannels ⇒ [<code>array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
+### fixture.allChannels ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: [<code>array.&lt;AbstractChannel&gt;</code>](#AbstractChannel) - All channels used in this fixture, including resolved matrix channels. If possible, ordered by appearance.  
+**Returns**: [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel) - All channels used in this fixture, including resolved matrix channels. If possible, ordered by appearance.  
 <a name="Fixture+allChannelsByKey"></a>
 
-### fixture.allChannelsByKey ⇒ <code>object.&lt;string, AbstractChannel&gt;</code>
+### fixture.allChannelsByKey ⇒ <code>Object.&lt;string, AbstractChannel&gt;</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: <code>object.&lt;string, AbstractChannel&gt;</code> - All channel keys used in this fixture pointing to the respective channel, including matrix channels. If possible, ordered by appearance.  
+**Returns**: <code>Object.&lt;string, AbstractChannel&gt;</code> - All channel keys used in this fixture pointing to the respective channel, including matrix channels. If possible, ordered by appearance.  
 <a name="Fixture+capabilities"></a>
 
-### fixture.capabilities ⇒ [<code>array.&lt;Capability&gt;</code>](#Capability)
+### fixture.capabilities ⇒ [<code>Array.&lt;Capability&gt;</code>](#Capability)
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: [<code>array.&lt;Capability&gt;</code>](#Capability) - All available channels' and template channels' capabilities.  
+**Returns**: [<code>Array.&lt;Capability&gt;</code>](#Capability) - All available channels' and template channels' capabilities.  
 <a name="Fixture+modes"></a>
 
-### fixture.modes ⇒ [<code>array.&lt;Mode&gt;</code>](#Mode)
+### fixture.modes ⇒ [<code>Array.&lt;Mode&gt;</code>](#Mode)
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: [<code>array.&lt;Mode&gt;</code>](#Mode) - The fixture's modes.  
+**Returns**: [<code>Array.&lt;Mode&gt;</code>](#Mode) - The fixture's modes.  
 <a name="Fixture+getLinksOfType"></a>
 
-### fixture.getLinksOfType(type) ⇒ <code>array.&lt;string&gt;</code>
+### fixture.getLinksOfType(type) ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance method of [<code>Fixture</code>](#Fixture)  
-**Returns**: <code>array.&lt;string&gt;</code> - An array of URLs of the specified type (may be empty).  
+**Returns**: <code>Array.&lt;string&gt;</code> - An array of URLs of the specified type (may be empty).  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -1356,7 +1356,7 @@ Creates a new Manufacturer instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>string</code> | The manufacturer key. Equals to directory name in the fixtures directory. |
-| jsonObject | <code>object</code> \| <code>null</code> | The manufacturer's JSON object. If omitted, the one from `manufacturers.json` will be used. |
+| jsonObject | <code>Object</code> \| <code>null</code> | The manufacturer's JSON object. If omitted, the one from `manufacturers.json` will be used. |
 
 <a name="Manufacturer+name"></a>
 
@@ -1393,20 +1393,20 @@ Contains information of how the pixels in a 1-, 2- or 3-dimensional space are ar
 * [Matrix](#Matrix)
     * [new Matrix(jsonObject)](#new_Matrix_new)
     * [.jsonObject](#Matrix+jsonObject)
-    * [.jsonObject](#Matrix+jsonObject) ⇒ <code>object</code>
-    * [.pixelCount](#Matrix+pixelCount) ⇒ <code>array.&lt;number&gt;</code>
+    * [.jsonObject](#Matrix+jsonObject) ⇒ <code>Object</code>
+    * [.pixelCount](#Matrix+pixelCount) ⇒ <code>Array.&lt;number&gt;</code>
     * [.pixelCountX](#Matrix+pixelCountX) ⇒ <code>number</code>
     * [.pixelCountY](#Matrix+pixelCountY) ⇒ <code>number</code>
     * [.pixelCountZ](#Matrix+pixelCountZ) ⇒ <code>number</code>
-    * [.definedAxes](#Matrix+definedAxes) ⇒ <code>array.&lt;string&gt;</code>
-    * [.pixelKeyStructure](#Matrix+pixelKeyStructure) ⇒ <code>array.&lt;array.&lt;array.&lt;string&gt;&gt;&gt;</code>
-    * [.pixelKeys](#Matrix+pixelKeys) ⇒ <code>array.&lt;string&gt;</code>
-    * [.pixelKeyPositions](#Matrix+pixelKeyPositions) ⇒ <code>object.&lt;string, array.&lt;number&gt;&gt;</code>
-    * [.pixelGroupKeys](#Matrix+pixelGroupKeys) ⇒ <code>array.&lt;string&gt;</code>
-    * [.pixelGroups](#Matrix+pixelGroups) ⇒ <code>object.&lt;string, array&gt;</code>
-    * [._getPixelDefaultKeys()](#Matrix+_getPixelDefaultKeys) ⇒ <code>array.&lt;array.&lt;array.&lt;string&gt;&gt;&gt;</code> ℗
+    * [.definedAxes](#Matrix+definedAxes) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.pixelKeyStructure](#Matrix+pixelKeyStructure) ⇒ <code>Array.&lt;Array.&lt;Array.&lt;string&gt;&gt;&gt;</code>
+    * [.pixelKeys](#Matrix+pixelKeys) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.pixelKeyPositions](#Matrix+pixelKeyPositions) ⇒ <code>Object.&lt;string, Array.&lt;number&gt;&gt;</code>
+    * [.pixelGroupKeys](#Matrix+pixelGroupKeys) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.pixelGroups](#Matrix+pixelGroups) ⇒ <code>Object.&lt;string, Array&gt;</code>
+    * [._getPixelDefaultKeys()](#Matrix+_getPixelDefaultKeys) ⇒ <code>Array.&lt;Array.&lt;Array.&lt;string&gt;&gt;&gt;</code> ℗
     * [._getPixelDefaultKey(x, y, z)](#Matrix+_getPixelDefaultKey) ⇒ <code>string</code> ℗
-    * [.getPixelKeysByOrder(firstAxis, secondAxis, thirdAxis)](#Matrix+getPixelKeysByOrder) ⇒ <code>array.&lt;string&gt;</code>
+    * [.getPixelKeysByOrder(firstAxis, secondAxis, thirdAxis)](#Matrix+getPixelKeysByOrder) ⇒ <code>Array.&lt;string&gt;</code>
     * [._pixelKeyFulfillsConstraints(pixelKey, constraints)](#Matrix+_pixelKeyFulfillsConstraints) ⇒ <code>boolean</code>
 
 <a name="new_Matrix_new"></a>
@@ -1415,7 +1415,7 @@ Contains information of how the pixels in a 1-, 2- or 3-dimensional space are ar
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | The fixture's JSON object containing the matrix information. |
+| jsonObject | <code>Object</code> | The fixture's JSON object containing the matrix information. |
 
 <a name="Matrix+jsonObject"></a>
 
@@ -1426,18 +1426,18 @@ Updates the JSON object and clears the cache used for expensive parameters.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | The fixture's JSON object containing the matrix information. |
+| jsonObject | <code>Object</code> | The fixture's JSON object containing the matrix information. |
 
 <a name="Matrix+jsonObject"></a>
 
-### matrix.jsonObject ⇒ <code>object</code>
+### matrix.jsonObject ⇒ <code>Object</code>
 **Kind**: instance property of [<code>Matrix</code>](#Matrix)  
-**Returns**: <code>object</code> - The fixture's JSON object containing the matrix information.  
+**Returns**: <code>Object</code> - The fixture's JSON object containing the matrix information.  
 <a name="Matrix+pixelCount"></a>
 
-### matrix.pixelCount ⇒ <code>array.&lt;number&gt;</code>
+### matrix.pixelCount ⇒ <code>Array.&lt;number&gt;</code>
 **Kind**: instance property of [<code>Matrix</code>](#Matrix)  
-**Returns**: <code>array.&lt;number&gt;</code> - Amount of pixels in X, Y and Z direction. A horizontal bar with 4 LEDs would be `[4, 1, 1]`, a 5x5 pixel head would be `[5, 5, 1]`.  
+**Returns**: <code>Array.&lt;number&gt;</code> - Amount of pixels in X, Y and Z direction. A horizontal bar with 4 LEDs would be `[4, 1, 1]`, a 5x5 pixel head would be `[5, 5, 1]`.  
 **Throws**:
 
 - <code>ReferenceError</code> If neither `pixelCount` nor `pixelKeys` are defined in the matrix JSON object.
@@ -1459,45 +1459,45 @@ Updates the JSON object and clears the cache used for expensive parameters.
 **Returns**: <code>number</code> - Amount of pixels in Z direction.  
 <a name="Matrix+definedAxes"></a>
 
-### matrix.definedAxes ⇒ <code>array.&lt;string&gt;</code>
+### matrix.definedAxes ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>Matrix</code>](#Matrix)  
-**Returns**: <code>array.&lt;string&gt;</code> - Contains each of 'X', 'Y', 'Z' if its respective axis is defined (= if its `pixelCount` is > 1).  
+**Returns**: <code>Array.&lt;string&gt;</code> - Contains each of 'X', 'Y', 'Z' if its respective axis is defined (= if its `pixelCount` is > 1).  
 <a name="Matrix+pixelKeyStructure"></a>
 
-### matrix.pixelKeyStructure ⇒ <code>array.&lt;array.&lt;array.&lt;string&gt;&gt;&gt;</code>
+### matrix.pixelKeyStructure ⇒ <code>Array.&lt;Array.&lt;Array.&lt;string&gt;&gt;&gt;</code>
 **Kind**: instance property of [<code>Matrix</code>](#Matrix)  
-**Returns**: <code>array.&lt;array.&lt;array.&lt;string&gt;&gt;&gt;</code> - Pixel keys by Z, Y and X position.  
+**Returns**: <code>Array.&lt;Array.&lt;Array.&lt;string&gt;&gt;&gt;</code> - Pixel keys by Z, Y and X position.  
 **Throws**:
 
 - <code>ReferenceError</code> if neither `pixelCount` nor `pixelKeys` are defined in the matrix JSON object.
 
 <a name="Matrix+pixelKeys"></a>
 
-### matrix.pixelKeys ⇒ <code>array.&lt;string&gt;</code>
+### matrix.pixelKeys ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>Matrix</code>](#Matrix)  
-**Returns**: <code>array.&lt;string&gt;</code> - All pixelKeys, ordered alphanumerically (1 < 2 < 10 < alice < bob < carol)  
+**Returns**: <code>Array.&lt;string&gt;</code> - All pixelKeys, ordered alphanumerically (1 < 2 < 10 < alice < bob < carol)  
 <a name="Matrix+pixelKeyPositions"></a>
 
-### matrix.pixelKeyPositions ⇒ <code>object.&lt;string, array.&lt;number&gt;&gt;</code>
+### matrix.pixelKeyPositions ⇒ <code>Object.&lt;string, Array.&lt;number&gt;&gt;</code>
 **Kind**: instance property of [<code>Matrix</code>](#Matrix)  
-**Returns**: <code>object.&lt;string, array.&lt;number&gt;&gt;</code> - Each pixelKey pointing to an array of its X/Y/Z position  
+**Returns**: <code>Object.&lt;string, Array.&lt;number&gt;&gt;</code> - Each pixelKey pointing to an array of its X/Y/Z position  
 <a name="Matrix+pixelGroupKeys"></a>
 
-### matrix.pixelGroupKeys ⇒ <code>array.&lt;string&gt;</code>
+### matrix.pixelGroupKeys ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>Matrix</code>](#Matrix)  
-**Returns**: <code>array.&lt;string&gt;</code> - All available pixel group keys, ordered by appearance.  
+**Returns**: <code>Array.&lt;string&gt;</code> - All available pixel group keys, ordered by appearance.  
 <a name="Matrix+pixelGroups"></a>
 
-### matrix.pixelGroups ⇒ <code>object.&lt;string, array&gt;</code>
+### matrix.pixelGroups ⇒ <code>Object.&lt;string, Array&gt;</code>
 **Kind**: instance property of [<code>Matrix</code>](#Matrix)  
-**Returns**: <code>object.&lt;string, array&gt;</code> - Key is the group key, value is an array of pixel keys.  
+**Returns**: <code>Object.&lt;string, Array&gt;</code> - Key is the group key, value is an array of pixel keys.  
 <a name="Matrix+_getPixelDefaultKeys"></a>
 
-### matrix.\_getPixelDefaultKeys() ⇒ <code>array.&lt;array.&lt;array.&lt;string&gt;&gt;&gt;</code> ℗
+### matrix.\_getPixelDefaultKeys() ⇒ <code>Array.&lt;Array.&lt;Array.&lt;string&gt;&gt;&gt;</code> ℗
 Generate default keys for all pixels.
 
 **Kind**: instance method of [<code>Matrix</code>](#Matrix)  
-**Returns**: <code>array.&lt;array.&lt;array.&lt;string&gt;&gt;&gt;</code> - Default pixel keys by Z, Y and X position.  
+**Returns**: <code>Array.&lt;Array.&lt;Array.&lt;string&gt;&gt;&gt;</code> - Default pixel keys by Z, Y and X position.  
 **Access**: private  
 <a name="Matrix+_getPixelDefaultKey"></a>
 
@@ -1526,11 +1526,11 @@ Generate default name based on defined axes and given position if no custom name
 
 <a name="Matrix+getPixelKeysByOrder"></a>
 
-### matrix.getPixelKeysByOrder(firstAxis, secondAxis, thirdAxis) ⇒ <code>array.&lt;string&gt;</code>
+### matrix.getPixelKeysByOrder(firstAxis, secondAxis, thirdAxis) ⇒ <code>Array.&lt;string&gt;</code>
 Sorts the pixelKeys by given X/Y/Z order. Order of the parameters equals the order in a `repeatFor`'s "eachPixelXYZ".
 
 **Kind**: instance method of [<code>Matrix</code>](#Matrix)  
-**Returns**: <code>array.&lt;string&gt;</code> - All pixelKeys ordered by given axis order.  
+**Returns**: <code>Array.&lt;string&gt;</code> - All pixelKeys ordered by given axis order.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -1547,7 +1547,7 @@ Sorts the pixelKeys by given X/Y/Z order. Order of the parameters equals the ord
 | Param | Type | Description |
 | --- | --- | --- |
 | pixelKey | <code>string</code> | The pixel key to check against the constraints. |
-| constraints | <code>object</code> | The constraints to apply. |
+| constraints | <code>Object</code> | The constraints to apply. |
 
 <a name="Meta"></a>
 
@@ -1558,7 +1558,7 @@ Information about a fixture's author and history.
 
 * [Meta](#Meta)
     * [new Meta(jsonObject)](#new_Meta_new)
-    * [.authors](#Meta+authors) ⇒ <code>array.&lt;string&gt;</code>
+    * [.authors](#Meta+authors) ⇒ <code>Array.&lt;string&gt;</code>
     * [.createDate](#Meta+createDate) ⇒ <code>Date</code>
     * [.lastModifyDate](#Meta+lastModifyDate) ⇒ <code>Date</code>
     * [.importPlugin](#Meta+importPlugin) ⇒ <code>string</code> \| <code>null</code>
@@ -1574,13 +1574,13 @@ Creates a new Meta instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | A meta object from the fixture's JSON data. |
+| jsonObject | <code>Object</code> | A meta object from the fixture's JSON data. |
 
 <a name="Meta+authors"></a>
 
-### meta.authors ⇒ <code>array.&lt;string&gt;</code>
+### meta.authors ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>Meta</code>](#Meta)  
-**Returns**: <code>array.&lt;string&gt;</code> - Names of people who contributed to this fixture.  
+**Returns**: <code>Array.&lt;string&gt;</code> - Names of people who contributed to this fixture.  
 <a name="Meta+createDate"></a>
 
 ### meta.createDate ⇒ <code>Date</code>
@@ -1621,7 +1621,7 @@ A fixture's configuration that enables a fixed set of channels and channel order
 * [Mode](#Mode)
     * [new Mode(jsonObject, fixture)](#new_Mode_new)
     * [.jsonObject](#Mode+jsonObject)
-    * [.jsonObject](#Mode+jsonObject) ⇒ <code>object</code>
+    * [.jsonObject](#Mode+jsonObject) ⇒ <code>Object</code>
     * [.fixture](#Mode+fixture)
     * [.fixture](#Mode+fixture) ⇒ [<code>Fixture</code>](#Fixture)
     * [.name](#Mode+name) ⇒ <code>string</code>
@@ -1630,11 +1630,11 @@ A fixture's configuration that enables a fixed set of channels and channel order
     * [.rdmPersonalityIndex](#Mode+rdmPersonalityIndex) ⇒ <code>number</code> \| <code>null</code>
     * [.physicalOverride](#Mode+physicalOverride) ⇒ [<code>Physical</code>](#Physical) \| <code>null</code>
     * [.physical](#Mode+physical) ⇒ [<code>Physical</code>](#Physical) \| <code>null</code>
-    * [.channelKeys](#Mode+channelKeys) ⇒ <code>array.&lt;string&gt;</code>
+    * [.channelKeys](#Mode+channelKeys) ⇒ <code>Array.&lt;string&gt;</code>
     * [.nullChannelCount](#Mode+nullChannelCount) ⇒ <code>number</code>
-    * [.channels](#Mode+channels) ⇒ [<code>array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
-    * [._getMatrixChannelKeysFromInsertBlock(channelInsert)](#Mode+_getMatrixChannelKeysFromInsertBlock) ⇒ <code>array.&lt;string&gt;</code> ℗
-    * [._getRepeatForPixelKeys(repeatFor)](#Mode+_getRepeatForPixelKeys) ⇒ <code>array.&lt;string&gt;</code> ℗
+    * [.channels](#Mode+channels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
+    * [._getMatrixChannelKeysFromInsertBlock(channelInsert)](#Mode+_getMatrixChannelKeysFromInsertBlock) ⇒ <code>Array.&lt;string&gt;</code> ℗
+    * [._getRepeatForPixelKeys(repeatFor)](#Mode+_getRepeatForPixelKeys) ⇒ <code>Array.&lt;string&gt;</code> ℗
     * [.getChannelIndex(channel, [switchingChannelBehavior])](#Mode+getChannelIndex) ⇒ <code>number</code>
 
 <a name="new_Mode_new"></a>
@@ -1645,7 +1645,7 @@ Creates a new Mode instance
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | The mode object from the fixture's JSON data. |
+| jsonObject | <code>Object</code> | The mode object from the fixture's JSON data. |
 | fixture | [<code>Fixture</code>](#Fixture) | The fixture this mode is associated to. |
 
 <a name="Mode+jsonObject"></a>
@@ -1657,13 +1657,13 @@ Sets a new JSON object and resets the cache.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | The mode's new JSON object. |
+| jsonObject | <code>Object</code> | The mode's new JSON object. |
 
 <a name="Mode+jsonObject"></a>
 
-### mode.jsonObject ⇒ <code>object</code>
+### mode.jsonObject ⇒ <code>Object</code>
 **Kind**: instance property of [<code>Mode</code>](#Mode)  
-**Returns**: <code>object</code> - The JSON data representing this mode. It's a fragment of a fixture's JSON data.  
+**Returns**: <code>Object</code> - The JSON data representing this mode. It's a fragment of a fixture's JSON data.  
 <a name="Mode+fixture"></a>
 
 ### mode.fixture
@@ -1712,9 +1712,9 @@ Sets a new fixture and resets the cache.
 **Returns**: [<code>Physical</code>](#Physical) \| <code>null</code> - Fixture's physical with mode's physical override (if present) applied on. Null if neither fixture nor mode define physical data.  
 <a name="Mode+channelKeys"></a>
 
-### mode.channelKeys ⇒ <code>array.&lt;string&gt;</code>
+### mode.channelKeys ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>Mode</code>](#Mode)  
-**Returns**: <code>array.&lt;string&gt;</code> - The mode's channel keys. The count and position equals to actual DMX channel count and position.  
+**Returns**: <code>Array.&lt;string&gt;</code> - The mode's channel keys. The count and position equals to actual DMX channel count and position.  
 <a name="Mode+nullChannelCount"></a>
 
 ### mode.nullChannelCount ⇒ <code>number</code>
@@ -1722,29 +1722,29 @@ Sets a new fixture and resets the cache.
 **Returns**: <code>number</code> - The number of null channels used in this mode.  
 <a name="Mode+channels"></a>
 
-### mode.channels ⇒ [<code>array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
+### mode.channels ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
 **Kind**: instance property of [<code>Mode</code>](#Mode)  
-**Returns**: [<code>array.&lt;AbstractChannel&gt;</code>](#AbstractChannel) - The mode's channels. The count and position equals to actual DMX channel count and position.  
+**Returns**: [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel) - The mode's channels. The count and position equals to actual DMX channel count and position.  
 <a name="Mode+_getMatrixChannelKeysFromInsertBlock"></a>
 
-### mode.\_getMatrixChannelKeysFromInsertBlock(channelInsert) ⇒ <code>array.&lt;string&gt;</code> ℗
+### mode.\_getMatrixChannelKeysFromInsertBlock(channelInsert) ⇒ <code>Array.&lt;string&gt;</code> ℗
 Resolves the matrix channel insert block into a list of channel keys
 
 **Kind**: instance method of [<code>Mode</code>](#Mode)  
-**Returns**: <code>array.&lt;string&gt;</code> - The resolved channel keys  
+**Returns**: <code>Array.&lt;string&gt;</code> - The resolved channel keys  
 **Access**: private  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| channelInsert | <code>object</code> | The JSON channel insert block |
+| channelInsert | <code>Object</code> | The JSON channel insert block |
 
 <a name="Mode+_getRepeatForPixelKeys"></a>
 
-### mode.\_getRepeatForPixelKeys(repeatFor) ⇒ <code>array.&lt;string&gt;</code> ℗
+### mode.\_getRepeatForPixelKeys(repeatFor) ⇒ <code>Array.&lt;string&gt;</code> ℗
 Resolves `repeatFor` keywords into a list of pixel (group) keys or just returns the given pixel (group) key array.
 
 **Kind**: instance method of [<code>Mode</code>](#Mode)  
-**Returns**: <code>array.&lt;string&gt;</code> - The properly ordered list of pixel (group) keys.  
+**Returns**: <code>Array.&lt;string&gt;</code> - The properly ordered list of pixel (group) keys.  
 **Access**: private  
 
 | Param | Type | Description |
@@ -1777,8 +1777,8 @@ Dummy channel used to represent `null` in a mode's channel list.
     * [.name](#CoarseChannel+name) ⇒ <code>string</code>
     * [.type](#CoarseChannel+type) ⇒ <code>string</code>
     * [.color](#CoarseChannel+color) ⇒ <code>string</code>
-    * [.fineChannelAliases](#CoarseChannel+fineChannelAliases) ⇒ <code>array.&lt;string&gt;</code>
-    * [.fineChannels](#CoarseChannel+fineChannels) ⇒ [<code>array.&lt;FineChannel&gt;</code>](#FineChannel)
+    * [.fineChannelAliases](#CoarseChannel+fineChannelAliases) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.fineChannels](#CoarseChannel+fineChannels) ⇒ [<code>Array.&lt;FineChannel&gt;</code>](#FineChannel)
     * [.maxResolution](#CoarseChannel+maxResolution) ⇒ [<code>Resolution</code>](#Resolution)
     * [.dmxValueResolution](#CoarseChannel+dmxValueResolution) ⇒ [<code>Resolution</code>](#Resolution)
     * [.maxDmxBound](#CoarseChannel+maxDmxBound) ⇒ <code>number</code>
@@ -1790,10 +1790,10 @@ Dummy channel used to represent `null` in a mode's channel list.
     * [.isConstant](#CoarseChannel+isConstant) ⇒ <code>boolean</code>
     * [.canCrossfade](#CoarseChannel+canCrossfade) ⇒ <code>boolean</code>
     * [.precedence](#CoarseChannel+precedence) ⇒ <code>&#x27;HTP&#x27;</code> \| <code>&#x27;LTP&#x27;</code>
-    * [.switchingChannelAliases](#CoarseChannel+switchingChannelAliases) ⇒ <code>array.&lt;string&gt;</code>
-    * [.switchingChannels](#CoarseChannel+switchingChannels) ⇒ [<code>array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel)
-    * [.switchToChannelKeys](#CoarseChannel+switchToChannelKeys) ⇒ <code>array.&lt;string&gt;</code>
-    * [.capabilities](#CoarseChannel+capabilities) ⇒ [<code>array.&lt;Capability&gt;</code>](#Capability)
+    * [.switchingChannelAliases](#CoarseChannel+switchingChannelAliases) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.switchingChannels](#CoarseChannel+switchingChannels) ⇒ [<code>Array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel)
+    * [.switchToChannelKeys](#CoarseChannel+switchToChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.capabilities](#CoarseChannel+capabilities) ⇒ [<code>Array.&lt;Capability&gt;</code>](#Capability)
     * [.isHelpWanted](#CoarseChannel+isHelpWanted) ⇒ <code>boolean</code>
     * [.key](#AbstractChannel+key) ⇒ <code>string</code>
     * [.uniqueName](#AbstractChannel+uniqueName) ⇒ <code>string</code>
@@ -1822,7 +1822,7 @@ Uses a unique uuid as channel key.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | The channel data from the fixture's JSON. |
+| jsonObject | <code>Object</code> | The channel data from the fixture's JSON. |
 
 <a name="CoarseChannel+fixture"></a>
 
@@ -1854,16 +1854,16 @@ Overrides [`AbstractChannel.name`](#AbstractChannel+name).
 **Returns**: <code>string</code> - The color of an included ColorIntensity capability, null if there's no such capability.  
 <a name="CoarseChannel+fineChannelAliases"></a>
 
-### nullChannel.fineChannelAliases ⇒ <code>array.&lt;string&gt;</code>
+### nullChannel.fineChannelAliases ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
 **Overrides**: [<code>fineChannelAliases</code>](#CoarseChannel+fineChannelAliases)  
-**Returns**: <code>array.&lt;string&gt;</code> - This channel's fine channel aliases, ordered by resolution (coarsest first).  
+**Returns**: <code>Array.&lt;string&gt;</code> - This channel's fine channel aliases, ordered by resolution (coarsest first).  
 <a name="CoarseChannel+fineChannels"></a>
 
-### nullChannel.fineChannels ⇒ [<code>array.&lt;FineChannel&gt;</code>](#FineChannel)
+### nullChannel.fineChannels ⇒ [<code>Array.&lt;FineChannel&gt;</code>](#FineChannel)
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
 **Overrides**: [<code>fineChannels</code>](#CoarseChannel+fineChannels)  
-**Returns**: [<code>array.&lt;FineChannel&gt;</code>](#FineChannel) - This channel's fine channels, ordered by resolution (coarsest first).  
+**Returns**: [<code>Array.&lt;FineChannel&gt;</code>](#FineChannel) - This channel's fine channels, ordered by resolution (coarsest first).  
 <a name="CoarseChannel+maxResolution"></a>
 
 ### nullChannel.maxResolution ⇒ [<code>Resolution</code>](#Resolution)
@@ -1932,28 +1932,28 @@ Overrides [`AbstractChannel.name`](#AbstractChannel+name).
 **Returns**: <code>&#x27;HTP&#x27;</code> \| <code>&#x27;LTP&#x27;</code> - The channel's behavior when being affected by multiple faders: HTP (Highest Takes Precedent) or LTP (Latest Takes Precedent).  
 <a name="CoarseChannel+switchingChannelAliases"></a>
 
-### nullChannel.switchingChannelAliases ⇒ <code>array.&lt;string&gt;</code>
+### nullChannel.switchingChannelAliases ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
 **Overrides**: [<code>switchingChannelAliases</code>](#CoarseChannel+switchingChannelAliases)  
-**Returns**: <code>array.&lt;string&gt;</code> - Aliases of the switching channels defined by this channel, ordered by appearance in the JSON.  
+**Returns**: <code>Array.&lt;string&gt;</code> - Aliases of the switching channels defined by this channel, ordered by appearance in the JSON.  
 <a name="CoarseChannel+switchingChannels"></a>
 
-### nullChannel.switchingChannels ⇒ [<code>array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel)
+### nullChannel.switchingChannels ⇒ [<code>Array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel)
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
 **Overrides**: [<code>switchingChannels</code>](#CoarseChannel+switchingChannels)  
-**Returns**: [<code>array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel) - Switching channels defined by this channel, ordered by appearance in the JSON.  
+**Returns**: [<code>Array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel) - Switching channels defined by this channel, ordered by appearance in the JSON.  
 <a name="CoarseChannel+switchToChannelKeys"></a>
 
-### nullChannel.switchToChannelKeys ⇒ <code>array.&lt;string&gt;</code>
+### nullChannel.switchToChannelKeys ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
 **Overrides**: [<code>switchToChannelKeys</code>](#CoarseChannel+switchToChannelKeys)  
-**Returns**: <code>array.&lt;string&gt;</code> - The keys of the channels to which the switching channels defined by this channel can be switched to.  
+**Returns**: <code>Array.&lt;string&gt;</code> - The keys of the channels to which the switching channels defined by this channel can be switched to.  
 <a name="CoarseChannel+capabilities"></a>
 
-### nullChannel.capabilities ⇒ [<code>array.&lt;Capability&gt;</code>](#Capability)
+### nullChannel.capabilities ⇒ [<code>Array.&lt;Capability&gt;</code>](#Capability)
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
 **Overrides**: [<code>capabilities</code>](#CoarseChannel+capabilities)  
-**Returns**: [<code>array.&lt;Capability&gt;</code>](#Capability) - All capabilities of this channel, ordered by DMX range.  
+**Returns**: [<code>Array.&lt;Capability&gt;</code>](#Capability) - All capabilities of this channel, ordered by DMX range.  
 <a name="CoarseChannel+isHelpWanted"></a>
 
 ### nullChannel.isHelpWanted ⇒ <code>boolean</code>
@@ -2042,8 +2042,8 @@ A fixture's technical data, belonging to the hardware and not the DMX protocol.
 
 * [Physical](#Physical)
     * [new Physical(jsonObject)](#new_Physical_new)
-    * [.jsonObject](#Physical+jsonObject) ⇒ <code>object</code>
-    * [.dimensions](#Physical+dimensions) ⇒ <code>array.&lt;number&gt;</code> \| <code>null</code>
+    * [.jsonObject](#Physical+jsonObject) ⇒ <code>Object</code>
+    * [.dimensions](#Physical+dimensions) ⇒ <code>Array.&lt;number&gt;</code> \| <code>null</code>
     * [.width](#Physical+width) ⇒ <code>number</code> \| <code>null</code>
     * [.height](#Physical+height) ⇒ <code>number</code> \| <code>null</code>
     * [.depth](#Physical+depth) ⇒ <code>number</code> \| <code>null</code>
@@ -2059,8 +2059,8 @@ A fixture's technical data, belonging to the hardware and not the DMX protocol.
     * [.lensDegreesMin](#Physical+lensDegreesMin) ⇒ <code>number</code> \| <code>null</code>
     * [.lensDegreesMax](#Physical+lensDegreesMax) ⇒ <code>number</code> \| <code>null</code>
     * [.hasMatrixPixels](#Physical+hasMatrixPixels) ⇒ <code>boolean</code>
-    * [.matrixPixelsDimensions](#Physical+matrixPixelsDimensions) ⇒ <code>array.&lt;number&gt;</code> \| <code>null</code>
-    * [.matrixPixelsSpacing](#Physical+matrixPixelsSpacing) ⇒ <code>array.&lt;number&gt;</code> \| <code>null</code>
+    * [.matrixPixelsDimensions](#Physical+matrixPixelsDimensions) ⇒ <code>Array.&lt;number&gt;</code> \| <code>null</code>
+    * [.matrixPixelsSpacing](#Physical+matrixPixelsSpacing) ⇒ <code>Array.&lt;number&gt;</code> \| <code>null</code>
 
 <a name="new_Physical_new"></a>
 
@@ -2070,18 +2070,18 @@ Creates a new Physical instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>object</code> | A fixture's or mode's physical JSON data. |
+| jsonObject | <code>Object</code> | A fixture's or mode's physical JSON data. |
 
 <a name="Physical+jsonObject"></a>
 
-### physical.jsonObject ⇒ <code>object</code>
+### physical.jsonObject ⇒ <code>Object</code>
 **Kind**: instance property of [<code>Physical</code>](#Physical)  
-**Returns**: <code>object</code> - The object from the JSON data that is represented by this Physical object.  
+**Returns**: <code>Object</code> - The object from the JSON data that is represented by this Physical object.  
 <a name="Physical+dimensions"></a>
 
-### physical.dimensions ⇒ <code>array.&lt;number&gt;</code> \| <code>null</code>
+### physical.dimensions ⇒ <code>Array.&lt;number&gt;</code> \| <code>null</code>
 **Kind**: instance property of [<code>Physical</code>](#Physical)  
-**Returns**: <code>array.&lt;number&gt;</code> \| <code>null</code> - Width, height and depth of the fixture in millimeters. Defaults to null.  
+**Returns**: <code>Array.&lt;number&gt;</code> \| <code>null</code> - Width, height and depth of the fixture in millimeters. Defaults to null.  
 <a name="Physical+width"></a>
 
 ### physical.width ⇒ <code>number</code> \| <code>null</code>
@@ -2159,14 +2159,14 @@ Creates a new Physical instance.
 **Returns**: <code>boolean</code> - Whether physical data about the matrix is available.  
 <a name="Physical+matrixPixelsDimensions"></a>
 
-### physical.matrixPixelsDimensions ⇒ <code>array.&lt;number&gt;</code> \| <code>null</code>
+### physical.matrixPixelsDimensions ⇒ <code>Array.&lt;number&gt;</code> \| <code>null</code>
 **Kind**: instance property of [<code>Physical</code>](#Physical)  
-**Returns**: <code>array.&lt;number&gt;</code> \| <code>null</code> - Width, height, depth of a matrix pixel in millimeters.  
+**Returns**: <code>Array.&lt;number&gt;</code> \| <code>null</code> - Width, height, depth of a matrix pixel in millimeters.  
 <a name="Physical+matrixPixelsSpacing"></a>
 
-### physical.matrixPixelsSpacing ⇒ <code>array.&lt;number&gt;</code> \| <code>null</code>
+### physical.matrixPixelsSpacing ⇒ <code>Array.&lt;number&gt;</code> \| <code>null</code>
 **Kind**: instance property of [<code>Physical</code>](#Physical)  
-**Returns**: <code>array.&lt;number&gt;</code> \| <code>null</code> - XYZ-Spacing between matrix pixels in millimeters.  
+**Returns**: <code>Array.&lt;number&gt;</code> \| <code>null</code> - XYZ-Spacing between matrix pixels in millimeters.  
 <a name="Range"></a>
 
 ## Range
@@ -2187,7 +2187,7 @@ Represents a range from one integer to a higher or equal integer. Primarily used
         * [.getRangeMergedWith(range)](#Range+getRangeMergedWith) ⇒ [<code>Range</code>](#Range)
         * [.toString()](#Range+toString) ⇒ <code>string</code>
     * _static_
-        * [.getMergedRanges(ranges)](#Range.getMergedRanges) ⇒ [<code>array.&lt;Range&gt;</code>](#Range)
+        * [.getMergedRanges(ranges)](#Range.getMergedRanges) ⇒ [<code>Array.&lt;Range&gt;</code>](#Range)
 
 <a name="new_Range_new"></a>
 
@@ -2197,7 +2197,7 @@ Creates a new Range instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| rangeArray | <code>array.&lt;number&gt;</code> | Array of start and end value. Start value may not be greater than end value. |
+| rangeArray | <code>Array.&lt;number&gt;</code> | Array of start and end value. Start value may not be greater than end value. |
 
 <a name="Range+start"></a>
 
@@ -2242,7 +2242,7 @@ Creates a new Range instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| ranges | [<code>array.&lt;Range&gt;</code>](#Range) | An array of Range objects. |
+| ranges | [<code>Array.&lt;Range&gt;</code>](#Range) | An array of Range objects. |
 
 <a name="Range+isAdjacentTo"></a>
 
@@ -2271,15 +2271,15 @@ Creates a new Range instance.
 **Returns**: <code>string</code> - Textual representation of this range.  
 <a name="Range.getMergedRanges"></a>
 
-### Range.getMergedRanges(ranges) ⇒ [<code>array.&lt;Range&gt;</code>](#Range)
+### Range.getMergedRanges(ranges) ⇒ [<code>Array.&lt;Range&gt;</code>](#Range)
 Merge specified Range objects. Asserts that ranges don't overlap and that all ranges are valid (start<=end).
 
 **Kind**: static method of [<code>Range</code>](#Range)  
-**Returns**: [<code>array.&lt;Range&gt;</code>](#Range) - Merged ranges.  
+**Returns**: [<code>Array.&lt;Range&gt;</code>](#Range) - Merged ranges.  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| ranges | [<code>array.&lt;Range&gt;</code>](#Range) | Range objects to merge into as few ranges as possible. |
+| ranges | [<code>Array.&lt;Range&gt;</code>](#Range) | Range objects to merge into as few ranges as possible. |
 
 <a name="SwitchingChannel"></a>
 
@@ -2294,12 +2294,12 @@ The different behaviors are implemented as different [CoarseChannel](#CoarseChan
     * [new SwitchingChannel(alias, triggerChannel)](#new_SwitchingChannel_new)
     * [.triggerChannel](#SwitchingChannel+triggerChannel) ⇒ [<code>AbstractChannel</code>](#AbstractChannel)
     * [.fixture](#SwitchingChannel+fixture) ⇒ [<code>Fixture</code>](#Fixture)
-    * [.triggerCapabilities](#SwitchingChannel+triggerCapabilities) ⇒ [<code>array.&lt;TriggerCapability&gt;</code>](#TriggerCapability)
-    * [.triggerRanges](#SwitchingChannel+triggerRanges) ⇒ <code>object.&lt;string, array.&lt;Range&gt;&gt;</code>
+    * [.triggerCapabilities](#SwitchingChannel+triggerCapabilities) ⇒ [<code>Array.&lt;TriggerCapability&gt;</code>](#TriggerCapability)
+    * [.triggerRanges](#SwitchingChannel+triggerRanges) ⇒ <code>Object.&lt;string, Array.&lt;Range&gt;&gt;</code>
     * [.defaultChannelKey](#SwitchingChannel+defaultChannelKey) ⇒ <code>string</code>
     * [.defaultChannel](#SwitchingChannel+defaultChannel) ⇒ [<code>AbstractChannel</code>](#AbstractChannel)
-    * [.switchToChannelKeys](#SwitchingChannel+switchToChannelKeys) ⇒ <code>array.&lt;string&gt;</code>
-    * [.switchToChannels](#SwitchingChannel+switchToChannels) ⇒ [<code>array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
+    * [.switchToChannelKeys](#SwitchingChannel+switchToChannelKeys) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.switchToChannels](#SwitchingChannel+switchToChannels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
     * [.isHelpWanted](#SwitchingChannel+isHelpWanted) ⇒ <code>boolean</code>
     * [.key](#AbstractChannel+key) ⇒ <code>string</code>
     * [.name](#AbstractChannel+name) ⇒ <code>string</code>
@@ -2333,14 +2333,14 @@ Overrides [`AbstractChannel.fixture`](#AbstractChannel+fixture).
 **Returns**: [<code>Fixture</code>](#Fixture) - The fixture in which this channel is used.  
 <a name="SwitchingChannel+triggerCapabilities"></a>
 
-### switchingChannel.triggerCapabilities ⇒ [<code>array.&lt;TriggerCapability&gt;</code>](#TriggerCapability)
+### switchingChannel.triggerCapabilities ⇒ [<code>Array.&lt;TriggerCapability&gt;</code>](#TriggerCapability)
 **Kind**: instance property of [<code>SwitchingChannel</code>](#SwitchingChannel)  
-**Returns**: [<code>array.&lt;TriggerCapability&gt;</code>](#TriggerCapability) - The trigger channel's capabilities in a compact form to only include the DMX range and which channel should be switched to. DMX values are given in the trigger channel's highest possible resolution.  
+**Returns**: [<code>Array.&lt;TriggerCapability&gt;</code>](#TriggerCapability) - The trigger channel's capabilities in a compact form to only include the DMX range and which channel should be switched to. DMX values are given in the trigger channel's highest possible resolution.  
 <a name="SwitchingChannel+triggerRanges"></a>
 
-### switchingChannel.triggerRanges ⇒ <code>object.&lt;string, array.&lt;Range&gt;&gt;</code>
+### switchingChannel.triggerRanges ⇒ <code>Object.&lt;string, Array.&lt;Range&gt;&gt;</code>
 **Kind**: instance property of [<code>SwitchingChannel</code>](#SwitchingChannel)  
-**Returns**: <code>object.&lt;string, array.&lt;Range&gt;&gt;</code> - Keys of channels that can be switched to pointing to an array of DMX values the trigger channel must be set to to active the channel. DMX values are given in the trigger channel's highest possible resolution.  
+**Returns**: <code>Object.&lt;string, Array.&lt;Range&gt;&gt;</code> - Keys of channels that can be switched to pointing to an array of DMX values the trigger channel must be set to to active the channel. DMX values are given in the trigger channel's highest possible resolution.  
 <a name="SwitchingChannel+defaultChannelKey"></a>
 
 ### switchingChannel.defaultChannelKey ⇒ <code>string</code>
@@ -2353,14 +2353,14 @@ Overrides [`AbstractChannel.fixture`](#AbstractChannel+fixture).
 **Returns**: [<code>AbstractChannel</code>](#AbstractChannel) - The channel that is activated when the trigger channel is set to its default value.  
 <a name="SwitchingChannel+switchToChannelKeys"></a>
 
-### switchingChannel.switchToChannelKeys ⇒ <code>array.&lt;string&gt;</code>
+### switchingChannel.switchToChannelKeys ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>SwitchingChannel</code>](#SwitchingChannel)  
-**Returns**: <code>array.&lt;string&gt;</code> - All channel keys this channel can be switched to.  
+**Returns**: <code>Array.&lt;string&gt;</code> - All channel keys this channel can be switched to.  
 <a name="SwitchingChannel+switchToChannels"></a>
 
-### switchingChannel.switchToChannels ⇒ [<code>array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
+### switchingChannel.switchToChannels ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
 **Kind**: instance property of [<code>SwitchingChannel</code>](#SwitchingChannel)  
-**Returns**: [<code>array.&lt;AbstractChannel&gt;</code>](#AbstractChannel) - All channels this channel can be switched to.  
+**Returns**: [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel) - All channels this channel can be switched to.  
 <a name="SwitchingChannel+isHelpWanted"></a>
 
 ### switchingChannel.isHelpWanted ⇒ <code>boolean</code>
@@ -2419,11 +2419,11 @@ Currently used to create matrix channels.
 * [TemplateChannel](#TemplateChannel)
     * [new TemplateChannel(key, jsonObject, fixture)](#new_TemplateChannel_new)
     * _instance_
-        * [.allTemplateKeys](#TemplateChannel+allTemplateKeys) ⇒ <code>array.&lt;string&gt;</code>
-        * [.possibleMatrixChannelKeys](#TemplateChannel+possibleMatrixChannelKeys) ⇒ <code>Map.&lt;string, array.&lt;string&gt;&gt;</code>
-        * [.createMatrixChannels()](#TemplateChannel+createMatrixChannels) ⇒ [<code>array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
+        * [.allTemplateKeys](#TemplateChannel+allTemplateKeys) ⇒ <code>Array.&lt;string&gt;</code>
+        * [.possibleMatrixChannelKeys](#TemplateChannel+possibleMatrixChannelKeys) ⇒ <code>Map.&lt;string, Array.&lt;string&gt;&gt;</code>
+        * [.createMatrixChannels()](#TemplateChannel+createMatrixChannels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
     * _static_
-        * [.resolveTemplateObject(obj, variables)](#TemplateChannel.resolveTemplateObject) ⇒ <code>object</code>
+        * [.resolveTemplateObject(obj, variables)](#TemplateChannel.resolveTemplateObject) ⇒ <code>Object</code>
         * [.resolveTemplateString(str, variables)](#TemplateChannel.resolveTemplateString) ⇒ <code>string</code>
 
 <a name="new_TemplateChannel_new"></a>
@@ -2435,38 +2435,38 @@ Creates new TemplateChannel instance. Also clears cache by setting jsonObject.
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>string</code> | The templateChannel's key with the required variables. |
-| jsonObject | <code>object</code> | The template's JSON data which looks pretty similar to a normal channel's data except that channel aliases must include variables. |
+| jsonObject | <code>Object</code> | The template's JSON data which looks pretty similar to a normal channel's data except that channel aliases must include variables. |
 | fixture | [<code>Fixture</code>](#Fixture) | The Fixture instance. |
 
 <a name="TemplateChannel+allTemplateKeys"></a>
 
-### templateChannel.allTemplateKeys ⇒ <code>array.&lt;string&gt;</code>
+### templateChannel.allTemplateKeys ⇒ <code>Array.&lt;string&gt;</code>
 **Kind**: instance property of [<code>TemplateChannel</code>](#TemplateChannel)  
-**Returns**: <code>array.&lt;string&gt;</code> - Template keys and aliases introduced by this channel, i.e. the channel key itself and defined fine and switching channels.  
+**Returns**: <code>Array.&lt;string&gt;</code> - Template keys and aliases introduced by this channel, i.e. the channel key itself and defined fine and switching channels.  
 <a name="TemplateChannel+possibleMatrixChannelKeys"></a>
 
-### templateChannel.possibleMatrixChannelKeys ⇒ <code>Map.&lt;string, array.&lt;string&gt;&gt;</code>
+### templateChannel.possibleMatrixChannelKeys ⇒ <code>Map.&lt;string, Array.&lt;string&gt;&gt;</code>
 **Kind**: instance property of [<code>TemplateChannel</code>](#TemplateChannel)  
-**Returns**: <code>Map.&lt;string, array.&lt;string&gt;&gt;</code> - All template keys pointing to the key resolved with each pixel key to a matrix channel key.  
+**Returns**: <code>Map.&lt;string, Array.&lt;string&gt;&gt;</code> - All template keys pointing to the key resolved with each pixel key to a matrix channel key.  
 <a name="TemplateChannel+createMatrixChannels"></a>
 
-### templateChannel.createMatrixChannels() ⇒ [<code>array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
+### templateChannel.createMatrixChannels() ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
 Creates matrix channels from this template channel (together with its fine and switching channels if defined) and all pixel keys.
 
 **Kind**: instance method of [<code>TemplateChannel</code>](#TemplateChannel)  
-**Returns**: [<code>array.&lt;AbstractChannel&gt;</code>](#AbstractChannel) - The generated channels associated to the given pixel key and its fine and switching channels.  
+**Returns**: [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel) - The generated channels associated to the given pixel key and its fine and switching channels.  
 <a name="TemplateChannel.resolveTemplateObject"></a>
 
-### TemplateChannel.resolveTemplateObject(obj, variables) ⇒ <code>object</code>
+### TemplateChannel.resolveTemplateObject(obj, variables) ⇒ <code>Object</code>
 Replaces the specified variables in the specified object by cloning the object.
 
 **Kind**: static method of [<code>TemplateChannel</code>](#TemplateChannel)  
-**Returns**: <code>object</code> - A copy of the object with replaced variables.  
+**Returns**: <code>Object</code> - A copy of the object with replaced variables.  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| obj | <code>object</code> | The object which has to be modified. |
-| variables | <code>object.&lt;string, string&gt;</code> | Each variable (without $) pointing to its value. |
+| obj | <code>Object</code> | The object which has to be modified. |
+| variables | <code>Object.&lt;string, string&gt;</code> | Each variable (without $) pointing to its value. |
 
 <a name="TemplateChannel.resolveTemplateString"></a>
 
@@ -2479,7 +2479,7 @@ Replaces the specified variables in the specified string.
 | Param | Type | Description |
 | --- | --- | --- |
 | str | <code>string</code> | The string which has to be modified. |
-| variables | <code>object.&lt;string, string&gt;</code> | Each variable (without $) pointing to its value. |
+| variables | <code>Object.&lt;string, string&gt;</code> | Each variable (without $) pointing to its value. |
 
 <a name="Wheel"></a>
 
@@ -2493,10 +2493,10 @@ Information about a fixture's wheel.
     * [.name](#Wheel+name) ⇒ <code>string</code>
     * [.direction](#Wheel+direction) ⇒ <code>&#x27;CW&#x27;</code> \| <code>&#x27;CCW&#x27;</code>
     * [.type](#Wheel+type) ⇒ <code>string</code>
-    * [.slots](#Wheel+slots) ⇒ <code>array.&lt;object&gt;</code>
-    * [.getSlot(slotNumber)](#Wheel+getSlot) ⇒ <code>object</code>
+    * [.slots](#Wheel+slots) ⇒ <code>Array.&lt;Object&gt;</code>
+    * [.getSlot(slotNumber)](#Wheel+getSlot) ⇒ <code>Object</code>
     * [.getAbsoluteSlotIndex(slotNumber)](#Wheel+getAbsoluteSlotIndex) ⇒ <code>number</code>
-    * [.getSlotsOfType(type)](#Wheel+getSlotsOfType) ⇒ [<code>array.&lt;WheelSlot&gt;</code>](#WheelSlot)
+    * [.getSlotsOfType(type)](#Wheel+getSlotsOfType) ⇒ [<code>Array.&lt;WheelSlot&gt;</code>](#WheelSlot)
 
 <a name="new_Wheel_new"></a>
 
@@ -2507,7 +2507,7 @@ Creates a new Wheel instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | wheelName | <code>string</code> | The wheel's name, like specified in the JSON. |
-| jsonObject | <code>object</code> | A wheel object from the fixture's JSON data. |
+| jsonObject | <code>Object</code> | A wheel object from the fixture's JSON data. |
 
 <a name="Wheel+name"></a>
 
@@ -2526,14 +2526,14 @@ Creates a new Wheel instance.
 **Returns**: <code>string</code> - The type of the Wheel, i.e. the most frequent slot type (except for animation gobo wheels; the wheel type is AnimationGobo there).  
 <a name="Wheel+slots"></a>
 
-### wheel.slots ⇒ <code>array.&lt;object&gt;</code>
+### wheel.slots ⇒ <code>Array.&lt;Object&gt;</code>
 **Kind**: instance property of [<code>Wheel</code>](#Wheel)  
-**Returns**: <code>array.&lt;object&gt;</code> - Array of wheel slots.  
+**Returns**: <code>Array.&lt;Object&gt;</code> - Array of wheel slots.  
 <a name="Wheel+getSlot"></a>
 
-### wheel.getSlot(slotNumber) ⇒ <code>object</code>
+### wheel.getSlot(slotNumber) ⇒ <code>Object</code>
 **Kind**: instance method of [<code>Wheel</code>](#Wheel)  
-**Returns**: <code>object</code> - The slot object. Can be a split slot object, if a non-integer index is specified.  
+**Returns**: <code>Object</code> - The slot object. Can be a split slot object, if a non-integer index is specified.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -2551,9 +2551,9 @@ Creates a new Wheel instance.
 
 <a name="Wheel+getSlotsOfType"></a>
 
-### wheel.getSlotsOfType(type) ⇒ [<code>array.&lt;WheelSlot&gt;</code>](#WheelSlot)
+### wheel.getSlotsOfType(type) ⇒ [<code>Array.&lt;WheelSlot&gt;</code>](#WheelSlot)
 **Kind**: instance method of [<code>Wheel</code>](#Wheel)  
-**Returns**: [<code>array.&lt;WheelSlot&gt;</code>](#WheelSlot) - All slots with the given type.  
+**Returns**: [<code>Array.&lt;WheelSlot&gt;</code>](#WheelSlot) - All slots with the given type.  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -2572,7 +2572,7 @@ Information about a single wheel slot (or a split slot).
     * [.type](#WheelSlot+type) ⇒ <code>string</code>
     * [.nthOfType](#WheelSlot+nthOfType) ⇒ <code>number</code>
     * [.name](#WheelSlot+name) ⇒ <code>string</code>
-    * [.colors](#WheelSlot+colors) ⇒ <code>array.&lt;string&gt;</code> \| <code>null</code>
+    * [.colors](#WheelSlot+colors) ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
     * [.colorTemperature](#WheelSlot+colorTemperature) ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
     * [.facets](#WheelSlot+facets) ⇒ <code>number</code> \| <code>null</code>
     * [.openPercent](#WheelSlot+openPercent) ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
@@ -2588,7 +2588,7 @@ Creates a new WheelSlot instance.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| jsonObject | <code>object</code> \| <code>null</code> |  | A wheel slot object from the fixture's JSON data. If null, this WheelSlot is a split slot. |
+| jsonObject | <code>Object</code> \| <code>null</code> |  | A wheel slot object from the fixture's JSON data. If null, this WheelSlot is a split slot. |
 | wheel | [<code>Wheel</code>](#Wheel) |  | The wheel that this slot belongs to. |
 | floorSlot | [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code> | <code></code> | For split slots, the WheelSlot instance at the start. |
 | ceilSlot | [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code> | <code></code> | For split slots, the WheelSlot instance at the end. |
@@ -2615,9 +2615,9 @@ Creates a new WheelSlot instance.
 **Returns**: <code>string</code> - The wheel slot's name.  
 <a name="WheelSlot+colors"></a>
 
-### wheelSlot.colors ⇒ <code>array.&lt;string&gt;</code> \| <code>null</code>
+### wheelSlot.colors ⇒ <code>Array.&lt;string&gt;</code> \| <code>null</code>
 **Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
-**Returns**: <code>array.&lt;string&gt;</code> \| <code>null</code> - The colors of this wheel slot, or null if this slot has no colors.  
+**Returns**: <code>Array.&lt;string&gt;</code> \| <code>null</code> - The colors of this wheel slot, or null if this slot has no colors.  
 <a name="WheelSlot+colorTemperature"></a>
 
 ### wheelSlot.colorTemperature ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
@@ -2656,7 +2656,7 @@ Creates a new WheelSlot instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| cap | <code>object</code> | The capability (with a set slot property) to generate a name for. |
+| cap | <code>Object</code> | The capability (with a set slot property) to generate a name for. |
 
 <a name="Resolution"></a>
 
@@ -2666,7 +2666,7 @@ Creates a new WheelSlot instance.
 **Kind**: global typedef  
 <a name="TriggerCapability"></a>
 
-## TriggerCapability : <code>object</code>
+## TriggerCapability : <code>Object</code>
 **Kind**: global typedef  
 **Properties**
 

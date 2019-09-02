@@ -148,7 +148,7 @@ const specialIconFunctions = {
 
 /**
  * @param {AbstractChannel} cap The capability to get an icon for.
- * @returns {object} Object containing the props to pass to <app-svg />
+ * @returns {Object} Object containing the props to pass to <app-svg />
  */
 function getIconProps(cap) {
   if (cap.colors !== null) {

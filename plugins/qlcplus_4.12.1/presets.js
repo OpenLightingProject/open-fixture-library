@@ -140,7 +140,7 @@ const importHelpers = {
    * Try to guess speedStart / speedEnd from the capability name and set them
    * to the capability. It may also set cap.type to "Rotation".
    * @param {string} capabilityName The capability name to extract information from.
-   * @param {object} cap The OFL capability object to add found properties to.
+   * @param {Object} cap The OFL capability object to add found properties to.
    * @returns {string} The rest of the capabilityName.
    */
   getSpeedGuessedComment(capabilityName, cap) {
@@ -513,7 +513,7 @@ function getChannelPreset(channel) {
  * @param {string} channelName The channel name.
  * @param {number} panMax The maximum pan angle, or 0.
  * @param {number} tiltMax The maximum tilt angle, or 0.
- * @returns {object} The OFL capability object.
+ * @returns {Object} The OFL capability object.
  */
 function getCapabilityFromChannelPreset(preset, channelName, panMax, tiltMax) {
   if (preset in channelPresets) {
@@ -973,7 +973,7 @@ const capabilityPresets = {
 
 /**
  * @typedef CapabilityPreset
- * @type {object}
+ * @type {Object}
  * @property {string} presetName The name of the QLC+ capability preset.
  * @property {string|null} res1 A value for the QLC+ capability element's Res1 attribute, or null if the attribute should not be added.
  * @property {string|null} res2 A value for the QLC+ capability element's Res2 attribute, or null if the attribute should not be added.
@@ -1002,8 +1002,8 @@ function getCapabilityPreset(capability) {
 
 /**
  * @param {string} preset The capability preset to import.
- * @param {object} capData Additional data about capability and channel.
- * @returns {object} The OFL capability object.
+ * @param {Object} capData Additional data about capability and channel.
+ * @returns {Object} The OFL capability object.
  */
 function getCapabilityFromCapabilityPreset(preset, capData) {
   if (preset in capabilityPresets) {

@@ -614,7 +614,7 @@ export default {
 };
 
 /**
- * @param {object} prefillObject The object supplied in the page query.
+ * @param {Object} prefillObject The object supplied in the page query.
  * @param {string} key The key to check.
  * @returns {boolean} True if the value prefillObject[key] is prefillable, false otherwise.
  */

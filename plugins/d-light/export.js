@@ -10,12 +10,12 @@ const {
 module.exports.version = `0.2.0`;
 
 /**
- * @param {array.<Fixture>} fixtures An array of Fixture objects.
- * @param {object} options Global options, including:
+ * @param {Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {Object} options Global options, including:
  * @param {string} options.baseDir Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
  * @param {string|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
- * @returns {Promise.<array.<object>, Error>} The generated files.
+ * @returns {Promise.<Array.<Object>, Error>} The generated files.
 */
 module.exports.export = async function exportDLight(fixtures, options) {
   const deviceFiles = [];
@@ -69,7 +69,7 @@ module.exports.export = async function exportDLight(fixtures, options) {
  * @param {XMLElement} xml The XML parent element.
  * @param {Mode} mode The fixture's mode that this definition is representing.
  * @param {string} attribute A D::Light attribute name.
- * @param {array.<AbstractChannel>} channels All channels of the mode that are associated to the given attribute name.
+ * @param {Array.<AbstractChannel>} channels All channels of the mode that are associated to the given attribute name.
  */
 function addAttribute(xml, mode, attribute, channels) {
   const xmlAttribute = xml.element({
@@ -207,8 +207,8 @@ function getUsableChannel(channel) {
 }
 
 /**
- * @param {array.<AbstractChannel>} channels List of channels, e.g. from a mode's channel list.
- * @returns {object.<string, AbstractChannel>} D::Light attribute names mapped to the corresponding channels of the given list. All channels are included once.
+ * @param {Array.<AbstractChannel>} channels List of channels, e.g. from a mode's channel list.
+ * @returns {Object.<string, AbstractChannel>} D::Light attribute names mapped to the corresponding channels of the given list. All channels are included once.
  */
 function getChannelsByAttribute(channels) {
   const channelsByAttribute = {

@@ -35,7 +35,7 @@ const channelTypeIcons = {
 
 /**
  * @param {AbstractChannel} channel The channel to get an icon for.
- * @returns {object} Object containing the props to pass to <app-svg />
+ * @returns {Object} Object containing the props to pass to <app-svg />
  */
 function getIconProps(channel) {
   if (channel instanceof NullChannel) {

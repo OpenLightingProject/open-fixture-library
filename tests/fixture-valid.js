@@ -30,14 +30,14 @@ const redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
  * Checks that a given fixture JSON object is valid.
  * @param {string} manKey The manufacturer key.
  * @param {string} fixKey The fixture key.
- * @param {object|null} fixtureJson The fixture JSON object.
+ * @param {Object|null} fixtureJson The fixture JSON object.
  * @param {UniqueValues|null} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
  * @returns {ResultData} The result object containing errors and warnings, if any.
  */
 function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   /**
    * @typedef ResultData
-   * @type {object}
+   * @type {Object}
    * @property {string[]} errors
    * @property {string[]} warnings
    */
@@ -282,7 +282,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Checks if the fixture's wheels are correct.
-   * @param {array.<Wheel>} wheels The fixture's Wheel instances.
+   * @param {Array.<Wheel>} wheels The fixture's Wheel instances.
    */
   function checkWheels(wheels) {
     for (const wheel of wheels) {
@@ -312,7 +312,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Check if templateChannels are defined correctly. Does not check the channel data itself.
-   * @param {object} fixtureJson The fixture's JSON data
+   * @param {Object} fixtureJson The fixture's JSON data
    */
   function checkTemplateChannels(fixtureJson) {
     if (fixtureJson.templateChannels) {
@@ -737,7 +737,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
     /**
      * Checks if the given complex channel insert block is valid.
-     * @param {object} insertBlock The raw JSON data of the insert block.
+     * @param {Object} insertBlock The raw JSON data of the insert block.
      */
     function checkChannelInsertBlock(insertBlock) {
       if (insertBlock.insert === `matrixChannels`) {
@@ -747,11 +747,11 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
       /**
        * Checks the given matrix channel insert.
-       * @param {object} matrixInsertBlock The matrix channel reference specified in the mode's json channel list.
+       * @param {Object} matrixInsertBlock The matrix channel reference specified in the mode's json channel list.
        * @param {'matrixChannels'} matrixInsertBlock.insert Indicates that this is a matrix insert.
-       * @param {'eachPixel'|'eachPixelGroup'|array} matrixInsertBlock.repeatFor The pixelKeys or pixelGroupKeys for which the specified channels should be repeated.
+       * @param {'eachPixel'|'eachPixelGroup'|Array} matrixInsertBlock.repeatFor The pixelKeys or pixelGroupKeys for which the specified channels should be repeated.
        * @param {'perPixel'|'perChannel'} matrixInsertBlock.channelOrder Order the channels like RGB1/RGB2/RGB3 or R123/G123/B123.
-       * @param {array.<string, null>} matrixInsertBlock.templateChannels The template channel keys (and aliases) or null channels to be repeated.
+       * @param {Array.<string, null>} matrixInsertBlock.templateChannels The template channel keys (and aliases) or null channels to be repeated.
        */
       function checkMatrixInsertBlock(matrixInsertBlock) {
         checkMatrixInsertBlockRepeatFor();
@@ -1159,7 +1159,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   /**
    * Checks whether the specified string contains all allowed and no disallowed variables and pushes an error on wrong variable usage.
    * @param {string} str The string to be checked.
-   * @param {array.<string>} allowedVariables Variables that must be included in the string; all other variables are forbidden. Specify them with leading dollar sign ($var).
+   * @param {Array.<string>} allowedVariables Variables that must be included in the string; all other variables are forbidden. Specify them with leading dollar sign ($var).
    */
   function checkTemplateVariables(str, allowedVariables) {
     const usedVariables = str.match(/\$\w+/g) || [];
@@ -1201,8 +1201,8 @@ function getErrorString(description, error) {
 }
 
 /**
- * @param {array|null} a An array.
- * @param {array|null} b Another array.
+ * @param {Array|null} a An array.
+ * @param {Array|null} b Another array.
  * @returns {boolean} True if both arrays are equal, false if they are null or not equal.
  */
 function arraysEqual(a, b) {

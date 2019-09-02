@@ -25,12 +25,12 @@ const {
 module.exports.version = `1.2.0`;
 
 /**
- * @param {array.<Fixture>} fixtures An array of Fixture objects.
- * @param {object} options Global options, including:
+ * @param {Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {Object} options Global options, including:
  * @param {string} options.baseDir Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
  * @param {string|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
- * @returns {Promise.<array.<object>, Error>} The generated files.
+ * @returns {Promise.<Array.<Object>, Error>} The generated files.
 */
 module.exports.export = async function exportQlcPlus(fixtures, options) {
   const outFiles = fixtures.map(fixture => {
@@ -90,7 +90,7 @@ module.exports.export = async function exportQlcPlus(fixtures, options) {
 };
 
 /**
- * @param {object} xml The xmlbuilder <FixtureDefinition> object.
+ * @param {Object} xml The xmlbuilder <FixtureDefinition> object.
  * @param {CoarseChannel} channel The OFL channel object.
  */
 function addChannel(xml, channel) {
@@ -133,7 +133,7 @@ function addChannel(xml, channel) {
 }
 
 /**
- * @param {object} xml The xmlbuilder <FixtureDefinition> object.
+ * @param {Object} xml The xmlbuilder <FixtureDefinition> object.
  * @param {FineChannel} fineChannel The OFL fine channel object.
  */
 function addFineChannel(xml, fineChannel) {
@@ -195,7 +195,7 @@ function addFineChannel(xml, fineChannel) {
 }
 
 /**
- * @param {object} xmlChannel The xmlbuilder <Channel> object.
+ * @param {Object} xmlChannel The xmlbuilder <Channel> object.
  * @param {Capability} cap The OFL capability object.
  */
 function addCapability(xmlChannel, cap) {
@@ -232,7 +232,7 @@ function addCapability(xmlChannel, cap) {
 }
 
 /**
- * @param {object} xmlCapability The xmlbuilder <Capability> object.
+ * @param {Object} xmlCapability The xmlbuilder <Capability> object.
  * @param {Capability} cap The OFL capability object.
  */
 function addCapabilityLegacyAttributes(xmlCapability, cap) {
@@ -246,7 +246,7 @@ function addCapabilityLegacyAttributes(xmlCapability, cap) {
 }
 
 /**
- * @param {object} xmlCapability The xmlbuilder <Capability> object.
+ * @param {Object} xmlCapability The xmlbuilder <Capability> object.
  * @param {Capability} cap The OFL capability object.
  * @returns {boolean} True when one or more <Alias> elements were added to the capability, false otherwise.
  */
@@ -283,7 +283,7 @@ function addCapabilityAliases(xmlCapability, cap) {
 }
 
 /**
- * @param {object} xml The xmlbuilder <FixtureDefinition> object.
+ * @param {Object} xml The xmlbuilder <FixtureDefinition> object.
  * @param {Mode} mode The OFL mode object.
  * @param {boolean} createPhysical Whether to add a Physical XML element to the mode.
  */
@@ -317,7 +317,7 @@ function addMode(xml, mode, createPhysical) {
 }
 
 /**
- * @param {object} xmlParentNode The xmlbuilder object where <Physical> should be added (<FixtureDefinition> or <Mode>).
+ * @param {Object} xmlParentNode The xmlbuilder object where <Physical> should be added (<FixtureDefinition> or <Mode>).
  * @param {Physical} physical The OFL physical object.
  * @param {Fixture} fixture The OFL fixture object.
  * @param {Mode|null} mode The OFL mode object this physical data section belongs to. Only provide this if panMax and tiltMax should be read from this mode's Pan / Tilt channels, otherwise they are read from all channels.
@@ -414,7 +414,7 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
 
 /**
  * @param {'Pan'|'Tilt'} panOrTilt Whether to return pan max or tilt max.
- * @param {array.<CoarseChannel>} channels The channels in which to look for pan/tilt angles, e.g. all mode channels.
+ * @param {Array.<CoarseChannel>} channels The channels in which to look for pan/tilt angles, e.g. all mode channels.
  * @returns {number} The maximum pan/tilt range in the given channels, i.e. highest angle - lowest angle. If only continous pan/tilt is used, the return value is 9999. Defaults to 0.
  */
 function getPanTiltMax(panOrTilt, channels) {

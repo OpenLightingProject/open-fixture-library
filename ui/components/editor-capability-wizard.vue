@@ -182,7 +182,7 @@ export default {
     },
 
     /**
-     * @returns {array.<object>} Generated capabilities. An empty capability is prepended to fill the gap if neccessary.
+     * @returns {Array.<Object>} Generated capabilities. An empty capability is prepended to fill the gap if neccessary.
      */
     computedCapabilites() {
       const capabilities = [];
@@ -250,7 +250,7 @@ export default {
 
     /**
      * @see {@link getCapabilityWithSource}
-     * @returns {array.<object>} Array of all capabilities (generated and inherited), combined with their source.
+     * @returns {Array.<Object>} Array of all capabilities (generated and inherited), combined with their source.
      */
     allCapabilities() {
       const inheritedCapabilities = this.capabilities.map(
@@ -370,9 +370,9 @@ export default {
 };
 
 /**
- * @param {object} cap The "full" capability object.
+ * @param {Object} cap The "full" capability object.
  * @param {string} source The source of the capability (inherited or computed).
- * @returns {object} A capability object that additionally contains the specified source.
+ * @returns {Object} A capability object that additionally contains the specified source.
  */
 function getCapabilityWithSource(cap, source) {
   return Object.assign({}, cap, { source });

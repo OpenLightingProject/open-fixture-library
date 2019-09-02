@@ -115,7 +115,7 @@ function getSvg(name, category = null, title) {
 
 /**
  * Get inline SVG for a color circle (like a pie chart with equally-sized pies).
- * @param {array.<string>} colors Array of color strings to display.
+ * @param {Array.<string>} colors Array of color strings to display.
  * @param {string|null} [title] Text for the title tag. If this parameter is not given, no title tag will be added.
  * @returns {string} The HTML for displaying the color circle.
  */
@@ -141,7 +141,7 @@ function getColorCircle(colors, title) {
 
 
 /**
- * @param {array.<string>} colors An array of hex colors to fill into the circle.
+ * @param {Array.<string>} colors An array of hex colors to fill into the circle.
  * @param {number} radius The radius of the circle.
  * @returns {string} A string containing one SVG <circle> element or multiple SVG <path> elements.
  */
@@ -176,7 +176,7 @@ export function getColorCircleSvgFragment(colors, radius) {
  * Get x and y coordinates of the point that is `percent` percent of the way around a circle. Note that 37.5% are added to start at a 135deg angle.
  * @param {number} percent Percent of the whole circle.
  * @param {number} radius Radius of the circle.
- * @returns {array.<number>} Array with x and y coordinate.
+ * @returns {Array.<number>} Array with x and y coordinate.
  */
 function getCoordinatesForPercent(percent, radius) {
   percent += 0.375;

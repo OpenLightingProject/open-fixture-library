@@ -212,7 +212,7 @@ function listen() {
  * Instruct Express to initiate a download of one / multiple exported fixture files.
  * @param {express.Response} response Express Response object
  * @param {string} pluginKey Key of the export plugin to use.
- * @param {array.<Fixture>} fixtures Array of fixtures to export.
+ * @param {Array.<Fixture>} fixtures Array of fixtures to export.
  * @param {string} zipName Name of the zip file (if multiple files should be downloaded).
  * @param {string} errorDesc String describing what fixture(s) should have been downloaded.
  * @returns {Promise} A Promise that is resolved when the response is sent.

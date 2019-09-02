@@ -105,7 +105,7 @@ module.exports.fetchChangedComponents = async function fetchChangedComponents() 
 
   /**
    * Forwards the file's status and path to handleFile(...) with the specialty of splitting renamed files into added/removed.
-   * @param {object} fileData The file object from GitHub.
+   * @param {Object} fileData The file object from GitHub.
    */
   function handleFileData(fileData) {
     if (fileData.status === `renamed`) {
@@ -168,10 +168,10 @@ module.exports.fetchChangedComponents = async function fetchChangedComponents() 
 /**
  * Creates a new comment in the PR if test.lines is not empty and if there is not already an exactly equal comment.
  * Deletes old comments from the same test (determined by test.filename).
- * @param {object} test Information about the test script that wants to update the comment.
+ * @param {Object} test Information about the test script that wants to update the comment.
  * @param {string} test.filename Relative path from OFL root dir to test file: 'tests/github/test-file-name.js'
  * @param {string} test.name Heading to be used in the comment
- * @param {array.<string>} test.lines The comment's lines of text
+ * @param {Array.<string>} test.lines The comment's lines of text
  * @returns {Promise} A Promise that is fulfilled as soon as all GitHub operations have finished
  */
 module.exports.updateComment = async function updateComment(test) {
