@@ -22,7 +22,7 @@
 </style>
 
 <script>
-import icons from '~/assets/icons/icons.mjs';
+import icons from '~/assets/icons/icons.js';
 
 
 export default {

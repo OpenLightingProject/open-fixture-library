@@ -84,8 +84,8 @@
 <script>
 import labeledValueVue from '~/components/labeled-value.vue';
 
-import Matrix from '~~/lib/model/Matrix.mjs';
-import Physical from '~~/lib/model/Physical.mjs';
+import Matrix from '~~/lib/model/Matrix.js';
+import Physical from '~~/lib/model/Physical.js';
 
 export default {
   components: {

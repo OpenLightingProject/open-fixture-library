@@ -18,8 +18,8 @@ const plugins = require(`./plugins/plugins.json`);
 const { fixtureFromRepository } = require(`./lib/model.js`);
 const register = require(`./fixtures/register.json`);
 const getOutObjectFromEditorData = require(`./lib/get-out-object-from-editor-data.js`);
-const Fixture = require(`./lib/model/Fixture.mjs`).default;
-const Manufacturer = require(`./lib/model/Manufacturer.mjs`).default;
+const Fixture = require(`./lib/model/Fixture.js`).default;
+const Manufacturer = require(`./lib/model/Manufacturer.js`).default;
 
 
 require(`./lib/load-env-file.js`);

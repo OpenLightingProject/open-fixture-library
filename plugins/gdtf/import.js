@@ -7,7 +7,7 @@ require = require(`esm`)(module); // eslint-disable-line no-global-assign
 
 const manufacturers = require(`../../fixtures/manufacturers.json`);
 const { CoarseChannel } = require(`../../lib/model.js`);
-const { scaleDmxValue, scaleDmxRangeIndividually } = require(`../../lib/scale-dmx-values.mjs`);
+const { scaleDmxValue, scaleDmxRangeIndividually } = require(`../../lib/scale-dmx-values.js`);
 const { gdtfAttributes, gdtfUnits } = require(`./gdtf-attributes.js`);
 const { getRgbColorFromGdtfColor, followXmlNodeReference } = require(`./gdtf-helpers.js`);
 

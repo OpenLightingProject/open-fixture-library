@@ -248,7 +248,7 @@
 import scrollIntoView from 'scroll-into-view';
 import uuidV4 from 'uuid/v4.js';
 
-import schemaProperties from '~~/lib/schema-properties.mjs';
+import schemaProperties from '~~/lib/schema-properties.js';
 import {
   constants,
   getEmptyCapability,
@@ -257,7 +257,7 @@ import {
   isChannelChanged,
   isCapabilityChanged,
   clone
-} from '~/assets/scripts/editor-utils.mjs';
+} from '~/assets/scripts/editor-utils.js';
 
 import a11yDialogVue from '~/components/a11y-dialog.vue';
 import editorCapabilityVue from '~/components/editor-capability.vue';

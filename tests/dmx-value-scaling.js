@@ -7,7 +7,7 @@ require = require(`esm`)(module); // eslint-disable-line no-global-assign
 const {
   scaleDmxValue,
   scaleDmxRange
-} = require(`../lib/scale-dmx-values.mjs`);
+} = require(`../lib/scale-dmx-values.js`);
 
 
 let errorCount = 0;

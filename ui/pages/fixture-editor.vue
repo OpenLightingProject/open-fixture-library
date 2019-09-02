@@ -250,10 +250,10 @@ import {
   getEmptyFixture,
   getEmptyChannel,
   getEmptyMode
-} from '~/assets/scripts/editor-utils.mjs';
+} from '~/assets/scripts/editor-utils.js';
 
 import manufacturers from '~~/fixtures/manufacturers.json';
-import schemaProperties from '~~/lib/schema-properties.mjs';
+import schemaProperties from '~~/lib/schema-properties.js';
 
 import labeledInputVue from '~/components/labeled-input.vue';
 import propertyInputNumberVue from '~/components/property-input-number.vue';

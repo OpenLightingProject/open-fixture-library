@@ -283,8 +283,8 @@ import packageJson from '~~/package.json';
 import register from '~~/fixtures/register.json';
 import plugins from '~~/plugins/plugins.json';
 
-import schemaProperties from '~~/lib/schema-properties.mjs';
-import Fixture from '~~/lib/model/Fixture.mjs';
+import schemaProperties from '~~/lib/schema-properties.js';
+import Fixture from '~~/lib/model/Fixture.js';
 
 import svg from '~/components/svg.vue';
 import categoryBadge from '~/components/category-badge.vue';
@@ -298,7 +298,7 @@ import helpWantedDialog from '~/components/help-wanted-dialog.vue';
 import helpWantedMessage from '~/components/help-wanted-message.vue';
 import labeledValueVue from '~/components/labeled-value.vue';
 
-import fixtureLinksMixin from '~/assets/scripts/fixture-links-mixin.mjs';
+import fixtureLinksMixin from '~/assets/scripts/fixture-links-mixin.js';
 
 const VIDEOS_TO_EMBED = 2;
 

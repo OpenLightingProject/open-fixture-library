@@ -49,10 +49,6 @@ module.exports = {
         }
       });
 
-      // include .mjs files for babel-loader
-      const babelLoader = config.module.rules.find(rule => rule.test.toString() === `/\\.jsx?$/i`);
-      babelLoader.test = /\.jsx?$|\.mjs$/;
-
       // condense whitespace in Vue templates
       const vueLoader = config.module.rules.find(rule => rule.loader === `vue-loader`);
       vueLoader.options.compilerOptions = {

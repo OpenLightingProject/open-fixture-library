@@ -5,7 +5,7 @@
 <script>
 import svg from '~/components/svg.vue';
 
-import Capability from '~~/lib/model/Capability.mjs';
+import Capability from '~~/lib/model/Capability.js';
 
 export default {
   components: {

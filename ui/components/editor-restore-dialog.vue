@@ -26,7 +26,7 @@ import {
   getEmptyCapability,
   getSanitizedChannel,
   clone
-} from '~/assets/scripts/editor-utils.mjs';
+} from '~/assets/scripts/editor-utils.js';
 
 import a11yDialogVue from '~/components/a11y-dialog.vue';
 

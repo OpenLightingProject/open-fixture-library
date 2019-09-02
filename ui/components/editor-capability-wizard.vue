@@ -127,7 +127,7 @@ import {
   getEmptyCapability,
   isCapabilityChanged,
   clone
-} from "~/assets/scripts/editor-utils.mjs";
+} from "~/assets/scripts/editor-utils.js";
 
 import editorCapabilityTypeDataVue from '~/components/editor-capability-type-data.vue';
 import labeledValueVue from '~/components/labeled-value.vue';
