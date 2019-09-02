@@ -51,20 +51,20 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   /** @type {Fixture} */
   let fixture;
 
-  /** @type {Set<string>} */
+  /** @type {Set.<String>} */
   const definedChannelKeys = new Set(); // and aliases
-  /** @type {Set<string>} */
+  /** @type {Set.<string>} */
   const usedChannelKeys = new Set(); // and aliases
-  /** @type {Set<string>} */
+  /** @type {Set.<string>} */
   const possibleMatrixChKeys = new Set(); // and aliases
-  /** @type {Set<string>} */
+  /** @type {Set.<string>} */
   const usedWheels = new Set();
-  /** @type {Set<string>} */
+  /** @type {Set.<string>} */
   const usedWheelSlots = new Set();
 
-  /** @type {Set<string>} */
+  /** @type {Set.<string>} */
   const modeNames = new Set();
-  /** @type {Set<string>} */
+  /** @type {Set.<string>} */
   const modeShortNames = new Set();
 
   if (!(`$schema` in fixtureJson)) {
@@ -1178,7 +1178,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
 /**
  * If the Set already contains the given value, add an error. Test is not case-sensitive.
- * @param {Set<string>} set The Set in which all unique values are stored.
+ * @param {Set.<string>} set The Set in which all unique values are stored.
  * @param {string} value The string value to examine.
  * @param {ResultData} result The object to add the error message to (if any).
  * @param {string} messageIfNotUnique If the value is not unique, add this message to errors.

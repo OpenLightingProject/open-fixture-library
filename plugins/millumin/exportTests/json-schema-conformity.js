@@ -63,7 +63,7 @@ async function getSchemas() {
 
 /**
  * @param {string} url The schema URL to fetch
- * @returns {Promise<Object>} A promise resolving to the JSON Schema object.
+ * @returns {Promise.<Object>} A promise resolving to the JSON Schema object.
  */
 function downloadSchema(url) {
   return new Promise((resolve, reject) => {

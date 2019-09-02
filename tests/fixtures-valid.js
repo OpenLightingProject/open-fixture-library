@@ -11,10 +11,10 @@ const { checkFixture, checkUniqueness, getErrorString } = require(`./fixture-val
 /**
  * @typedef UniqueValues
  * @type {Object}
- * @property {Set<string>} manNames All manufacturer names
- * @property {Object.<string, Set<string>>} fixKeysInMan All fixture keys by manufacturer key
- * @property {Object.<string, Set<string>>} fixNamesInMan All fixture names by manufacturer key
- * @property {Set<string>} fixShortNames All fixture short names
+ * @property {Set.<string>} manNames All manufacturer names
+ * @property {Object.<string, Set.<string>>} fixKeysInMan All fixture keys by manufacturer key
+ * @property {Object.<string, Set.<string>>} fixNamesInMan All fixture names by manufacturer key
+ * @property {Set.<string>} fixShortNames All fixture short names
  */
 const uniqueValues = {
   manNames: new Set(),
