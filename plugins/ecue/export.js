@@ -1,12 +1,12 @@
 const xmlbuilder = require(`xmlbuilder`);
 
-const {
-  CoarseChannel,
-  FineChannel,
-  NullChannel,
-  Physical,
-  SwitchingChannel
-} = require(`../../lib/model.js`);
+const { CoarseChannel } = require(`../../lib/model.js`);
+const { FineChannel } = require(`../../lib/model.js`);
+/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
+/** @typedef {import('../../lib/model/Mode.js').default} Mode */
+const { NullChannel } = require(`../../lib/model.js`);
+const { Physical } = require(`../../lib/model.js`);
+const { SwitchingChannel } = require(`../../lib/model.js`);
 
 module.exports.version = `0.3.0`;
 

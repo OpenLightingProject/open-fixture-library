@@ -10,12 +10,18 @@ const fixtureSchema = require(`../schemas/dereferenced/fixture.json`);
 const fixtureRedirectSchema = require(`../schemas/dereferenced/fixture-redirect.json`);
 const schemaProperties = require(`../lib/schema-properties.js`).default;
 
-const {
-  FineChannel,
-  Fixture,
-  NullChannel,
-  SwitchingChannel
-} = require(`../lib/model.js`);
+/** @typedef {import('../lib/model/AbstractChannel.js').default} AbstractChannel */
+/** @typedef {import('../lib/model/Capability.js').default} Capability */
+/** @typedef {import('../lib/model/CoarseChannel.js').default} CoarseChannel */
+const { FineChannel } = require(`../lib/model.js`);
+const { Fixture } = require(`../lib/model.js`);
+/** @typedef {import('../lib/model/Matrix.js').default} Matrix */
+/** @typedef {import('../lib/model/Meta.js').default} Meta */
+const { NullChannel } = require(`../lib/model.js`);
+/** @typedef {import('../lib/model/Physical.js').default} Physical */
+/** @typedef {import('../lib/model/TemplateChannel.js').default} TemplateChannel */
+const { SwitchingChannel } = require(`../lib/model.js`);
+/** @typedef {import('../lib/model/Wheel.js').default} Wheel */
 
 const ajv = new Ajv({
   format: `full`,
@@ -85,7 +91,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   }
 
   try {
-    /** @type {Fixture} */
     fixture = new Fixture(manKey, fixKey, fixtureJson);
 
     checkFixIdentifierUniqueness(uniqueValues);
@@ -749,9 +754,9 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
        * Checks the given matrix channel insert.
        * @param {Object} matrixInsertBlock The matrix channel reference specified in the mode's json channel list.
        * @param {'matrixChannels'} matrixInsertBlock.insert Indicates that this is a matrix insert.
-       * @param {'eachPixel'|'eachPixelGroup'|Array} matrixInsertBlock.repeatFor The pixelKeys or pixelGroupKeys for which the specified channels should be repeated.
+       * @param {'eachPixel'|'eachPixelGroup'|Array.<string>} matrixInsertBlock.repeatFor The pixelKeys or pixelGroupKeys for which the specified channels should be repeated.
        * @param {'perPixel'|'perChannel'} matrixInsertBlock.channelOrder Order the channels like RGB1/RGB2/RGB3 or R123/G123/B123.
-       * @param {Array.<string, null>} matrixInsertBlock.templateChannels The template channel keys (and aliases) or null channels to be repeated.
+       * @param {Array.<string|null>} matrixInsertBlock.templateChannels The template channel keys (and aliases) or null channels to be repeated.
        */
       function checkMatrixInsertBlock(matrixInsertBlock) {
         checkMatrixInsertBlockRepeatFor();

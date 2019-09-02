@@ -58,13 +58,6 @@ Currently used to create matrix channels.</p>
 </dd>
 </dl>
 
-## Functions
-
-<dl>
-<dt><a href="#getSlotCapabilityName">getSlotCapabilityName(cap)</a> ⇒ <code>string</code></dt>
-<dd></dd>
-</dl>
-
 ## Typedefs
 
 <dl>
@@ -899,7 +892,7 @@ Also called LSB (least significant byte) channel.
     * [new FineChannel(key, coarseChannel)](#new_FineChannel_new)
     * [.coarseChannel](#FineChannel+coarseChannel)
     * [.coarseChannel](#FineChannel+coarseChannel) ⇒ [<code>CoarseChannel</code>](#CoarseChannel)
-    * [.coarserChannel](#FineChannel+coarserChannel) ⇒ <code>Channel</code> \| [<code>FineChannel</code>](#FineChannel)
+    * [.coarserChannel](#FineChannel+coarserChannel) ⇒ [<code>CoarseChannel</code>](#CoarseChannel) \| [<code>FineChannel</code>](#FineChannel)
     * [.name](#FineChannel+name) ⇒ <code>string</code>
     * [.fixture](#FineChannel+fixture) ⇒ [<code>Fixture</code>](#Fixture)
     * [.resolution](#FineChannel+resolution) ⇒ [<code>Resolution</code>](#Resolution)
@@ -937,9 +930,9 @@ Sets a new coarse channel and clears the cache.
 **Returns**: [<code>CoarseChannel</code>](#CoarseChannel) - The coarse (MSB) channel.  
 <a name="FineChannel+coarserChannel"></a>
 
-### fineChannel.coarserChannel ⇒ <code>Channel</code> \| [<code>FineChannel</code>](#FineChannel)
+### fineChannel.coarserChannel ⇒ [<code>CoarseChannel</code>](#CoarseChannel) \| [<code>FineChannel</code>](#FineChannel)
 **Kind**: instance property of [<code>FineChannel</code>](#FineChannel)  
-**Returns**: <code>Channel</code> \| [<code>FineChannel</code>](#FineChannel) - The next coarser channel. May also be a fine channel, if this fine channel's resolution is 24bit or higher.  
+**Returns**: [<code>CoarseChannel</code>](#CoarseChannel) \| [<code>FineChannel</code>](#FineChannel) - The next coarser channel. May also be a fine channel, if this fine channel's resolution is 24bit or higher.  
 <a name="FineChannel+name"></a>
 
 ### fineChannel.name ⇒ <code>string</code>
@@ -1759,7 +1752,7 @@ Resolves `repeatFor` keywords into a list of pixel (group) keys or just returns 
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| channel | <code>string</code> \| <code>Channel</code> |  | Either a channel key or a Channel object. |
+| channel | <code>string</code> \| [<code>AbstractChannel</code>](#AbstractChannel) |  | Either a channel key or a Channel object. |
 | [switchingChannelBehavior] | [<code>SwitchingChannelBehavior</code>](#SwitchingChannelBehavior) | <code>&#x27;all&#x27;</code> | Controls how switching channels are counted, see [usesChannelKey](#SwitchingChannel+usesChannelKey) for possible values. |
 
 <a name="NullChannel"></a>
@@ -2648,16 +2641,6 @@ Creates a new WheelSlot instance.
 ### wheelSlot.ceilSlot ⇒ [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code>
 **Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
 **Returns**: [<code>WheelSlot</code>](#WheelSlot) \| <code>null</code> - For split slots, the ceil (end) slot. Null for non-split slots.  
-<a name="getSlotCapabilityName"></a>
-
-## getSlotCapabilityName(cap) ⇒ <code>string</code>
-**Kind**: global function  
-**Returns**: <code>string</code> - The name for the capability, without the comment appended (if any).  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| cap | <code>Object</code> | The capability (with a set slot property) to generate a name for. |
-
 <a name="Resolution"></a>
 
 ## Resolution : <code>number</code>

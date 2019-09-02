@@ -1,9 +1,9 @@
-const {
-  CoarseChannel,
-  FineChannel,
-  NullChannel,
-  SwitchingChannel
-} = require(`../../lib/model.js`);
+/** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
+const { CoarseChannel } = require(`../../lib/model.js`);
+const { FineChannel } = require(`../../lib/model.js`);
+/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
+const { NullChannel } = require(`../../lib/model.js`);
+const { SwitchingChannel } = require(`../../lib/model.js`);
 
 module.exports.version = `0.1.0`;
 

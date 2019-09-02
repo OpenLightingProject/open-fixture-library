@@ -1,24 +1,14 @@
 const xmlbuilder = require(`xmlbuilder`);
 const sanitize = require(`sanitize-filename`);
 
-/* eslint-disable no-unused-vars */
-const {
-  AbstractChannel,
-  Capability,
-  CoarseChannel,
-  FineChannel,
-  Fixture,
-  Manufacturer,
-  Matrix,
-  Meta,
-  Mode,
-  NullChannel,
-  Physical,
-  Range,
-  SwitchingChannel,
-  TemplateChannel
-} = require(`../../lib/model.js`);
-/* eslint-enable no-unused-vars */
+/** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
+const { Capability } = require(`../../lib/model.js`);
+const { CoarseChannel } = require(`../../lib/model.js`);
+const { FineChannel } = require(`../../lib/model.js`);
+/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
+/** @typedef {import('../../lib/model/Mode.js').default} Mode */
+const { Physical } = require(`../../lib/model.js`);
+const { SwitchingChannel } = require(`../../lib/model.js`);
 
 module.exports.version = `0.5.2`;
 

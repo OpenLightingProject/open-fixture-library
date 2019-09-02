@@ -1,5 +1,7 @@
 const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
 
+/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
+
 const manufacturers = require(`../../fixtures/manufacturers.json`);
 
 module.exports.version = require(`../../schemas/fixture.json`).version;

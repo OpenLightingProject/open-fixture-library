@@ -1,11 +1,13 @@
 const xmlbuilder = require(`xmlbuilder`);
 const sanitize = require(`sanitize-filename`);
 
-const {
-  CoarseChannel,
-  FineChannel,
-  SwitchingChannel
-} = require(`../../lib/model.js`);
+/** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
+/** @typedef {import('../../lib/model/Capability.js').default} Capability */
+const { CoarseChannel } = require(`../../lib/model.js`);
+const { FineChannel } = require(`../../lib/model.js`);
+/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
+/** @typedef {import('../../lib/model/Mode.js').default} Mode */
+const { SwitchingChannel } = require(`../../lib/model.js`);
 
 module.exports.version = `0.2.0`;
 
@@ -183,7 +185,7 @@ function addAttribute(xml, mode, attribute, channels) {
 }
 
 /**
- * @param {Channel|FineChannel} channel A usable channel, i. e. no matrix or switching channels.
+ * @param {CoarseChannel|FineChannel} channel A usable channel, i. e. no switching channel.
  * @returns {number} The DMX value this channel should be set to as default.
  */
 function getDefaultValue(channel) {
@@ -196,7 +198,7 @@ function getDefaultValue(channel) {
 
 /**
  * @param {AbstractChannel} channel Any kind of channel, e.g. an item of a mode's channel list.
- * @returns {Channel|FineChannel} Switching channels resolved to their default channel.
+ * @returns {CoarseChannel|FineChannel} Switching channels resolved to their default channel.
  */
 function getUsableChannel(channel) {
   if (channel instanceof SwitchingChannel) {
@@ -237,7 +239,7 @@ function getChannelsByAttribute(channels) {
   return channelsByAttribute;
 
   /**
-   * @param {Channel|FineChannel} channel A usable channel, i. e. no matrix or switching channels.
+   * @param {CoarseChannel|FineChannel} channel A usable channel, i. e. no matrix or switching channels.
    * @returns {string} The proper D::Light attribute name for this channel.
    */
   function getChannelAttribute(channel) {
