@@ -1,0 +1,96 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "18LEDs Par Light",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Anomes"],
+    "createDate": "2019-09-04",
+    "lastModifyDate": "2019-09-04"
+  },
+  "links": {
+    "productPage": [
+      "https://www.amazon.com/dp/B00WU5OM5M/"
+    ]
+  },
+  "physical": {
+    "dimensions": [175, 175, 99],
+    "weight": 0.8,
+    "power": 18,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Master": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "RGB": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
+    },
+    "Mode": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 channels",
+      "shortName": "4ch",
+      "channels": [
+        "Master",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "7 channels",
+      "shortName": "7ch",
+      "channels": [
+        "Master",
+        "Red",
+        "Green",
+        "Blue",
+        "RGB",
+        "Strobe Speed",
+        "Mode"
+      ]
+    }
+  ]
+}
