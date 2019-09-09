@@ -1,0 +1,479 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "B-40 Laser Beam",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Charlélie DESMET"],
+    "createDate": "2019-09-09",
+    "lastModifyDate": "2019-09-09"
+  },
+  "links": {
+    "manual": [
+      "https://www.vistaglo.com/amfilerating/file/download/file_id/9"
+    ],
+    "productPage": [
+      "https://www.thomann.de/fr/eurolite_led_b_40_laser_beam_effect.htm"
+    ]
+  },
+  "availableChannels": {
+    "Programs": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Default Programs"
+      }
+    },
+    "Auto Program Control": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Rotation": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Rotation"
+      }
+    },
+    "LED GROUP 1 - Red Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "LED GROUP 1 - Green Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "LED GROUP 1 - Blue Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "LED GROUP 1 - White Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED GROUP 1 -  Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe frequency"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Sound control strobe"
+        }
+      ]
+    },
+    "LED GROUP 2 - Red Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "LED GROUP 2 - Green Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "LED GROUP 2 - Blue Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "LED GROUP 2 - White Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED GROUP 2 - Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "StrobeSpeed",
+          "speed": "slow",
+          "comment": "Strobe speed"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "StrobeSpeed",
+          "speed": "slow",
+          "comment": "Sound strobe speed"
+        }
+      ]
+    },
+    "LED GROUP 3 - Red Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "LED GROUP 3 - Green Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "LED GROUP 3 - Blue Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "LED GROUP 3 - White Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED GROUP 3 - Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe speed"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Sound strobe speed"
+        }
+      ]
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 15],
+          "type": "ColorPreset",
+          "comment": "RED - RED - RED"
+        },
+        {
+          "dmxRange": [16, 26],
+          "type": "ColorPreset",
+          "comment": "GREEN - GREEN - GREEN"
+        },
+        {
+          "dmxRange": [27, 37],
+          "type": "ColorPreset",
+          "comment": "BLUE - BLUE - BLUE"
+        },
+        {
+          "dmxRange": [38, 48],
+          "type": "ColorPreset",
+          "comment": "WHITE WHITE WHITE"
+        },
+        {
+          "dmxRange": [49, 59],
+          "type": "ColorPreset",
+          "comment": "RED GREEN BLUE"
+        },
+        {
+          "dmxRange": [60, 70],
+          "type": "ColorPreset",
+          "comment": "RED GREEN WHITE"
+        },
+        {
+          "dmxRange": [71, 81],
+          "type": "ColorPreset",
+          "comment": "RED BLUE WHITE"
+        },
+        {
+          "dmxRange": [82, 92],
+          "type": "ColorPreset",
+          "comment": "GREEN BLUE WHITE"
+        },
+        {
+          "dmxRange": [93, 103],
+          "type": "ColorPreset",
+          "comment": "REDGREEN REDBLUE REDWHITE"
+        },
+        {
+          "dmxRange": [104, 114],
+          "type": "ColorPreset",
+          "comment": "GREENRED GREENBLUE GREENWHITE"
+        },
+        {
+          "dmxRange": [115, 125],
+          "type": "ColorPreset",
+          "comment": "BLUERED BLUEGREEN BLUEWHITE"
+        },
+        {
+          "dmxRange": [126, 136],
+          "type": "ColorPreset",
+          "comment": "WHITERED WHITEGREEN WHITEBLUE"
+        },
+        {
+          "dmxRange": [137, 147],
+          "type": "ColorPreset",
+          "comment": "REDGREEN REDGREEN REDGREEN"
+        },
+        {
+          "dmxRange": [148, 158],
+          "type": "ColorPreset",
+          "comment": "REDBLUE REDBLUE REDBLUE"
+        },
+        {
+          "dmxRange": [159, 169],
+          "type": "ColorPreset",
+          "comment": "REDWHITE REDWHITE REDWHITE"
+        },
+        {
+          "dmxRange": [170, 180],
+          "type": "ColorPreset",
+          "comment": "GREENBLUE GREENBLUE GREENBLUE"
+        },
+        {
+          "dmxRange": [181, 191],
+          "type": "ColorPreset",
+          "comment": "GREENWHITE GREENWHITE GREENWHITE"
+        },
+        {
+          "dmxRange": [192, 202],
+          "type": "ColorPreset",
+          "comment": "BLUEWHITE BLUEWHITE BLUEWHITE"
+        },
+        {
+          "dmxRange": [203, 213],
+          "type": "ColorPreset",
+          "comment": "REDGREENBLUE REDGREENBLUE REDGREENBLUE"
+        },
+        {
+          "dmxRange": [214, 224],
+          "type": "ColorPreset",
+          "comment": "REDGREENWHITE REDGREENWHITE REDGREENWHITE"
+        },
+        {
+          "dmxRange": [225, 235],
+          "type": "ColorPreset",
+          "comment": "GREENBLUEWHITE GREENBLUEWHITE GREENBLUEWHITE"
+        },
+        {
+          "dmxRange": [236, 246],
+          "type": "ColorPreset",
+          "comment": "REDGREENBLUE GREENBLUEWHITE REDGREENWHITE"
+        },
+        {
+          "dmxRange": [247, 255],
+          "type": "ColorPreset",
+          "comment": "REDGREENBLUEWHITE REDGREENBLUEWHITE REDGREENBLUEWHITE"
+        }
+      ]
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Laser": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 46],
+          "type": "Intensity",
+          "comment": "Laser Red"
+        },
+        {
+          "dmxRange": [47, 87],
+          "type": "Intensity",
+          "comment": "Laser Green"
+        },
+        {
+          "dmxRange": [88, 128],
+          "type": "Intensity",
+          "comment": "Laser Red + Green"
+        },
+        {
+          "dmxRange": [129, 169],
+          "type": "Intensity",
+          "comment": "Laser Red Strobe + Green"
+        },
+        {
+          "dmxRange": [170, 210],
+          "type": "Intensity",
+          "comment": "Laser Red + Green Strobe"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "Intensity",
+          "comment": "Laser Red + Green Strobe alternating"
+        }
+      ]
+    },
+    "Strobe - Laser": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe speed"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Sound strobe speed"
+        }
+      ]
+    },
+    "Auto Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 40],
+          "type": "Generic",
+          "comment": "Program 1"
+        },
+        {
+          "dmxRange": [41, 76],
+          "type": "Generic",
+          "comment": "Program 2"
+        },
+        {
+          "dmxRange": [77, 112],
+          "type": "Generic",
+          "comment": "Program 3"
+        },
+        {
+          "dmxRange": [113, 148],
+          "type": "Generic",
+          "comment": "Program 4"
+        },
+        {
+          "dmxRange": [149, 184],
+          "type": "Generic",
+          "comment": "Program 5"
+        },
+        {
+          "dmxRange": [185, 220],
+          "type": "Generic",
+          "comment": "Program 6"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "Generic",
+          "comment": "Program 7"
+        }
+      ]
+    },
+    "Auto Programs speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 250],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Speed"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Sound control"
+        }
+      ]
+    },
+    "Rotation 2": {
+      "name": "Rotation",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "22 Channel",
+      "shortName": "22ch",
+      "channels": [
+        "LED GROUP 1 - Red Intensity",
+        "LED GROUP 1 - Green Intensity",
+        "LED GROUP 1 - Blue Intensity",
+        "LED GROUP 1 - White Intensity",
+        "LED GROUP 1 -  Control",
+        "LED GROUP 2 - Red Intensity",
+        "LED GROUP 2 - Green Intensity",
+        "LED GROUP 2 - Blue Intensity",
+        "LED GROUP 2 - White Intensity",
+        "LED GROUP 2 - Control",
+        "LED GROUP 3 - Red Intensity",
+        "LED GROUP 3 - Green Intensity",
+        "LED GROUP 3 - Blue Intensity",
+        "LED GROUP 3 - White Intensity",
+        "LED GROUP 3 - Control",
+        "Color Presets",
+        "Master Dimmer",
+        "Laser",
+        "Strobe - Laser",
+        "Auto Programs",
+        "Auto Programs speed",
+        "Rotation 2"
+      ]
+    }
+  ]
+}
