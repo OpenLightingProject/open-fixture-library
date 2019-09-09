@@ -1,0 +1,430 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Led Triple Flex Center Prod",
+  "categories": ["Flower"],
+  "meta": {
+    "authors": ["Serge.michiels@gmail.com", "Serge Michiels"],
+    "createDate": "2019-09-09",
+    "lastModifyDate": "2019-09-09",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2019-09-09",
+      "comment": "created by Q Light Controller Plus (version 4.12.2)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Other"
+    }
+  },
+  "availableChannels": {
+    "Motor 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?",
+        "comment": "Tilt"
+      }
+    },
+    "Motor 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?",
+        "comment": "Tilt"
+      }
+    },
+    "Motor 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?",
+        "comment": "Tilt"
+      }
+    },
+    "Speed Motor (1/2/3)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "0= fast , 255=slow"
+      }
+    },
+    "Color Program Motor 1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "Effect",
+          "effectName": "Prog.1"
+        },
+        {
+          "dmxRange": [12, 23],
+          "type": "Effect",
+          "effectName": "Prog.2"
+        },
+        {
+          "dmxRange": [24, 35],
+          "type": "Effect",
+          "effectName": "Prog.3"
+        },
+        {
+          "dmxRange": [36, 47],
+          "type": "Effect",
+          "effectName": "Prog.4"
+        },
+        {
+          "dmxRange": [48, 59],
+          "type": "Effect",
+          "effectName": "Prog.5"
+        },
+        {
+          "dmxRange": [60, 71],
+          "type": "Effect",
+          "effectName": "Prog.6"
+        },
+        {
+          "dmxRange": [72, 83],
+          "type": "Effect",
+          "effectName": "Prog.7"
+        },
+        {
+          "dmxRange": [84, 95],
+          "type": "Effect",
+          "effectName": "Prog.8"
+        },
+        {
+          "dmxRange": [96, 107],
+          "type": "Effect",
+          "effectName": "Prog.9"
+        },
+        {
+          "dmxRange": [108, 119],
+          "type": "Effect",
+          "effectName": "Prog.10"
+        },
+        {
+          "dmxRange": [120, 131],
+          "type": "Effect",
+          "effectName": "Prog.11"
+        },
+        {
+          "dmxRange": [132, 143],
+          "type": "Effect",
+          "effectName": "Prog.12"
+        },
+        {
+          "dmxRange": [144, 155],
+          "type": "Effect",
+          "effectName": "Prog.13"
+        },
+        {
+          "dmxRange": [156, 167],
+          "type": "Effect",
+          "effectName": "Prog.14"
+        },
+        {
+          "dmxRange": [168, 179],
+          "type": "Effect",
+          "effectName": "Prog.15"
+        },
+        {
+          "dmxRange": [180, 191],
+          "type": "Effect",
+          "effectName": "Prog.16"
+        },
+        {
+          "dmxRange": [192, 203],
+          "type": "Effect",
+          "effectName": "Prog.17"
+        },
+        {
+          "dmxRange": [204, 215],
+          "type": "Effect",
+          "effectName": "Prog.18"
+        },
+        {
+          "dmxRange": [216, 227],
+          "type": "Effect",
+          "effectName": "Prog.19"
+        },
+        {
+          "dmxRange": [228, 239],
+          "type": "Effect",
+          "effectName": "Prog.20"
+        },
+        {
+          "dmxRange": [240, 251],
+          "type": "Effect",
+          "effectName": "Prog.21"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "Prog.22"
+        }
+      ]
+    },
+    "Color Program Motor 2": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "Effect",
+          "effectName": "Prog.1"
+        },
+        {
+          "dmxRange": [12, 23],
+          "type": "Effect",
+          "effectName": "Prog.2"
+        },
+        {
+          "dmxRange": [24, 35],
+          "type": "Effect",
+          "effectName": "Prog.3"
+        },
+        {
+          "dmxRange": [36, 47],
+          "type": "Effect",
+          "effectName": "Prog.4"
+        },
+        {
+          "dmxRange": [48, 59],
+          "type": "Effect",
+          "effectName": "Prog.5"
+        },
+        {
+          "dmxRange": [60, 71],
+          "type": "Effect",
+          "effectName": "Prog.6"
+        },
+        {
+          "dmxRange": [72, 83],
+          "type": "Effect",
+          "effectName": "Prog.7"
+        },
+        {
+          "dmxRange": [84, 95],
+          "type": "Effect",
+          "effectName": "Prog.8"
+        },
+        {
+          "dmxRange": [96, 107],
+          "type": "Effect",
+          "effectName": "Prog.9"
+        },
+        {
+          "dmxRange": [108, 119],
+          "type": "Effect",
+          "effectName": "Prog.10"
+        },
+        {
+          "dmxRange": [120, 131],
+          "type": "Effect",
+          "effectName": "Prog.11"
+        },
+        {
+          "dmxRange": [132, 143],
+          "type": "Effect",
+          "effectName": "Prog.12"
+        },
+        {
+          "dmxRange": [144, 155],
+          "type": "Effect",
+          "effectName": "Prog.13"
+        },
+        {
+          "dmxRange": [156, 167],
+          "type": "Effect",
+          "effectName": "Prog.14"
+        },
+        {
+          "dmxRange": [168, 179],
+          "type": "Effect",
+          "effectName": "Prog.15"
+        },
+        {
+          "dmxRange": [180, 191],
+          "type": "Effect",
+          "effectName": "Prog.16"
+        },
+        {
+          "dmxRange": [192, 203],
+          "type": "Effect",
+          "effectName": "Prog.17"
+        },
+        {
+          "dmxRange": [204, 215],
+          "type": "Effect",
+          "effectName": "Prog.18"
+        },
+        {
+          "dmxRange": [216, 227],
+          "type": "Effect",
+          "effectName": "Prog.19"
+        },
+        {
+          "dmxRange": [228, 239],
+          "type": "Effect",
+          "effectName": "Prog.20"
+        },
+        {
+          "dmxRange": [240, 251],
+          "type": "Effect",
+          "effectName": "Prog.21"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "Prog.22"
+        }
+      ]
+    },
+    "Color Program Motor 3": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "Effect",
+          "effectName": "Prog.1"
+        },
+        {
+          "dmxRange": [12, 23],
+          "type": "Effect",
+          "effectName": "Prog.2"
+        },
+        {
+          "dmxRange": [24, 35],
+          "type": "Effect",
+          "effectName": "Prog.3"
+        },
+        {
+          "dmxRange": [36, 47],
+          "type": "Effect",
+          "effectName": "Prog.4"
+        },
+        {
+          "dmxRange": [48, 59],
+          "type": "Effect",
+          "effectName": "Prog.5"
+        },
+        {
+          "dmxRange": [60, 71],
+          "type": "Effect",
+          "effectName": "Prog.6"
+        },
+        {
+          "dmxRange": [72, 83],
+          "type": "Effect",
+          "effectName": "Prog.7"
+        },
+        {
+          "dmxRange": [84, 95],
+          "type": "Effect",
+          "effectName": "Prog.8"
+        },
+        {
+          "dmxRange": [96, 107],
+          "type": "Effect",
+          "effectName": "Prog.9"
+        },
+        {
+          "dmxRange": [108, 119],
+          "type": "Effect",
+          "effectName": "Prog.10"
+        },
+        {
+          "dmxRange": [120, 131],
+          "type": "Effect",
+          "effectName": "Prog.11"
+        },
+        {
+          "dmxRange": [132, 143],
+          "type": "Effect",
+          "effectName": "Prog.12"
+        },
+        {
+          "dmxRange": [144, 155],
+          "type": "Effect",
+          "effectName": "Prog.13"
+        },
+        {
+          "dmxRange": [156, 167],
+          "type": "Effect",
+          "effectName": "Prog.14"
+        },
+        {
+          "dmxRange": [168, 179],
+          "type": "Effect",
+          "effectName": "Prog.15"
+        },
+        {
+          "dmxRange": [180, 191],
+          "type": "Effect",
+          "effectName": "Prog.16"
+        },
+        {
+          "dmxRange": [192, 203],
+          "type": "Effect",
+          "effectName": "Prog.17"
+        },
+        {
+          "dmxRange": [204, 215],
+          "type": "Effect",
+          "effectName": "Prog.18"
+        },
+        {
+          "dmxRange": [216, 227],
+          "type": "Effect",
+          "effectName": "Prog.19"
+        },
+        {
+          "dmxRange": [228, 239],
+          "type": "Effect",
+          "effectName": "Prog.20"
+        },
+        {
+          "dmxRange": [240, 251],
+          "type": "Effect",
+          "effectName": "Prog.21"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "Prog.22"
+        }
+      ]
+    },
+    "Speed Program (5/6/7)": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "comment": "0= fast , 255=slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Motor 1",
+        "Motor 2",
+        "Motor 3",
+        "Speed Motor (1/2/3)",
+        "Color Program Motor 1",
+        "Color Program Motor 2",
+        "Color Program Motor 3",
+        "Speed Program (5/6/7)"
+      ]
+    }
+  ]
+}
