@@ -2,9 +2,9 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "A.leda B-EYE K20",
   "shortName": "A.leda B-EYE K20",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["SEBASTIAN PORTILLA"],
+    "authors": ["Sebastian Portilla"],
     "createDate": "2019-08-27",
     "lastModifyDate": "2019-08-27"
   },
@@ -14,10 +14,13 @@
     ],
     "productPage": [
       "https://www.claypaky.it/en/products/b-eye-k20"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=8pmvT2FVHec"
     ]
   },
   "physical": {
-    "dimensions": [395, 330, 476],
+    "dimensions": [395, 476, 330],
     "weight": 21,
     "power": 555,
     "DMXconnector": "3-pin and 5-pin",
