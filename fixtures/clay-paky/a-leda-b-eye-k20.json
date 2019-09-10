@@ -32,36 +32,32 @@
       "degreesMinMax": [4, 60]
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [null, null, null, null, null, null, "28", null, "29", null, null, null, null, null, null],
+        [null, null, null, null, "27", null, null, null, null, null, "30", null, null, null, null],
+        [null, null, "26", null, null, null, "13", null, "14", null, null, null, "31", null, null],
+        [null, null, null, null, "12", null, null, null, null, null, "15", null, null, null, null],
+        [null, "25", null, null, null, null,  "4", null,  "5", null, null, null, null, "32", null],
+        [null, null, null, "11", null, null, null, null, null, null, null, "16", null, null, null],
+        ["24", null, null, null, null,  "3", null,  "1", null,  "6", null, null, null, null, "33"],
+        [null, null, null, "10", null, null, null, null, null, null, null, "17", null, null, null],
+        [null, "23", null, null, null, null,  "2", null,  "7", null, null, null, null, "34", null],
+        [null, null, null, null,  "9", null, null, null, null, null, "18", null, null, null, null],
+        [null, null, "22", null, null, null,  "8", null, "19", null, null, null, "35", null, null],
+        [null, null, null, null, "21", null, null, null, null, null, "36", null, null, null, null],
+        [null, null, null, null, null, null, "20", null, "37", null, null, null, null, null, null]
+      ]
+    ],
+    "pixelGroups": {
+      "Master": "all",
+      "Shape": "all",
+      "Foreground": "all",
+      "Background": "all"
+    }
+  },
   "availableChannels": {
-    "Red": {
-      "fineChannelAliases": ["Red fine"],
-      "defaultValue": 1,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green": {
-      "fineChannelAliases": ["Green fine"],
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue": {
-      "fineChannelAliases": ["Blue fine"],
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White": {
-      "fineChannelAliases": ["White fine"],
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
     "Linear CTO": {
       "capabilities": [
         {
@@ -476,59 +472,6 @@
           "colors": ["#fff5a1"]
         }
       ]
-    },
-    "Strobe": {
-      "defaultValue": 255,
-      "capabilities": [
-        {
-          "dmxRange": [0, 3],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
-        },
-        {
-          "dmxRange": [4, 103],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "1Hz",
-          "speedEnd": "25Hz"
-        },
-        {
-          "dmxRange": [104, 107],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [108, 207],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
-          "speedStart": "0.5Hz",
-          "speedEnd": "25Hz"
-        },
-        {
-          "dmxRange": [208, 212],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [213, 251],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "randomTiming": true
-        },
-        {
-          "dmxRange": [252, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        }
-      ]
-    },
-    "Dimmer": {
-      "fineChannelAliases": ["Dimmer fine"],
-      "capability": {
-        "type": "Intensity"
-      }
     },
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
@@ -1632,16 +1575,6 @@
         "color": "White"
       }
     },
-    "Shape Dimmer": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Background Dimmer": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
     "Shape Transition": {
       "capabilities": [
         {
@@ -1654,100 +1587,6 @@
           "type": "Time",
           "timeStart": "100ms",
           "timeEnd": "4000ms"
-        }
-      ]
-    },
-    "Foreground Strobe": {
-      "defaultValue": 255,
-      "capabilities": [
-        {
-          "dmxRange": [0, 3],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
-        },
-        {
-          "dmxRange": [4, 103],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "1Hz",
-          "speedEnd": "25Hz"
-        },
-        {
-          "dmxRange": [104, 107],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [108, 207],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
-          "speedStart": "0.5Hz",
-          "speedEnd": "25Hz"
-        },
-        {
-          "dmxRange": [208, 212],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [213, 251],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "randomTiming": true
-        },
-        {
-          "dmxRange": [252, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        }
-      ]
-    },
-    "Background Strobe": {
-      "defaultValue": 255,
-      "capabilities": [
-        {
-          "dmxRange": [0, 3],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
-        },
-        {
-          "dmxRange": [4, 103],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "1Hz",
-          "speedEnd": "25Hz"
-        },
-        {
-          "dmxRange": [104, 107],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [108, 207],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
-          "speedStart": "0.5Hz",
-          "speedEnd": "25Hz"
-        },
-        {
-          "dmxRange": [208, 212],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [213, 251],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "randomTiming": true
-        },
-        {
-          "dmxRange": [252, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
         }
       ]
     },
@@ -1846,23 +1685,106 @@
       ]
     }
   },
+  "templateChannels": {
+    "$pixelKey Red": {
+      "fineChannelAliases": ["$pixelKey Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "$pixelKey Green": {
+      "fineChannelAliases": ["$pixelKey Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "$pixelKey Blue": {
+      "fineChannelAliases": ["$pixelKey Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "$pixelKey White": {
+      "fineChannelAliases": ["$pixelKey White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "$pixelKey Dimmer": {
+      "fineChannelAliases": ["$pixelKey Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "$pixelKey Strobe": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0.5Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [213, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    }
+  },
   "modes": [
     {
       "name": "Standard",
       "channels": [
-        "Red",
-        "Red fine",
-        "Green",
-        "Green fine",
-        "Blue",
-        "Blue fine",
-        "White",
-        "White fine",
+        "Master Red",
+        "Master Red fine",
+        "Master Green",
+        "Master Green fine",
+        "Master Blue",
+        "Master Blue fine",
+        "Master White",
+        "Master White fine",
         "Linear CTO",
         "Color Presets",
-        "Strobe",
-        "Dimmer",
-        "Dimmer fine",
+        "Master Strobe",
+        "Master Dimmer",
+        "Master Dimmer fine",
         "Pan",
         "Pan fine",
         "Tilt",
@@ -1876,19 +1798,19 @@
     {
       "name": "Shapes",
       "channels": [
-        "Red",
-        "Red fine",
-        "Green",
-        "Green fine",
-        "Blue",
-        "Blue fine",
-        "White",
-        "White fine",
+        "Master Red",
+        "Master Red fine",
+        "Master Green",
+        "Master Green fine",
+        "Master Blue",
+        "Master Blue fine",
+        "Master White",
+        "Master White fine",
         "Linear CTO",
         "Color Presets",
-        "Strobe",
-        "Dimmer",
-        "Dimmer fine",
+        "Master Strobe",
+        "Master Dimmer",
+        "Master Dimmer fine",
         "Pan",
         "Pan fine",
         "Tilt",
