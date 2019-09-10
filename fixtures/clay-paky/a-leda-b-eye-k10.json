@@ -1,10 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "A.leda B-EYE K20",
-  "shortName": "A.leda B-EYE K20",
+  "name": "A.leda B-EYE K10",
+  "shortName": "A.leda B-EYE K10",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Sebastian Portilla", "Felix Edelmann"],
+    "authors": ["Felix Edelmann"],
     "createDate": "2019-09-10",
     "lastModifyDate": "2019-09-10"
   },
@@ -13,16 +13,16 @@
       "https://www.claypaky.it/media/documents/HR_A.leda_B-Eye_K10-K20_Manual_08.2016_EN.pdf"
     ],
     "productPage": [
-      "https://www.claypaky.it/en/products/b-eye-k20"
+      "https://www.claypaky.it/en/products/aleda-b-eye-k10"
     ],
     "video": [
       "https://www.youtube.com/watch?v=8pmvT2FVHec"
     ]
   },
   "physical": {
-    "dimensions": [395, 476, 330],
-    "weight": 21,
-    "power": 555,
+    "dimensions": [358, 494, 253],
+    "weight": 15,
+    "power": 450,
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
       "type": "Osram Ostar 15W RGBW LED",
@@ -35,19 +35,15 @@
   "matrix": {
     "pixelKeys": [
       [
-        [null, null, null, null, null, null, "28", null, "29", null, null, null, null, null, null],
-        [null, null, null, null, "27", null, null, null, null, null, "30", null, null, null, null],
-        [null, null, "26", null, null, null, "13", null, "14", null, null, null, "31", null, null],
-        [null, null, null, null, "12", null, null, null, null, null, "15", null, null, null, null],
-        [null, "25", null, null, null, null,  "4", null,  "5", null, null, null, null, "32", null],
-        [null, null, null, "11", null, null, null, null, null, null, null, "16", null, null, null],
-        ["24", null, null, null, null,  "3", null,  "1", null,  "6", null, null, null, null, "33"],
-        [null, null, null, "10", null, null, null, null, null, null, null, "17", null, null, null],
-        [null, "23", null, null, null, null,  "2", null,  "7", null, null, null, null, "34", null],
-        [null, null, null, null,  "9", null, null, null, null, null, "18", null, null, null, null],
-        [null, null, "22", null, null, null,  "8", null, "19", null, null, null, "35", null, null],
-        [null, null, null, null, "21", null, null, null, null, null, "36", null, null, null, null],
-        [null, null, null, null, null, null, "20", null, "37", null, null, null, null, null, null]
+        [null, null, null, "13", null, "14", null, null, null],
+        [null, "12", null, null, null, null, null, "15", null],
+        [null, null, null,  "4", null,  "5", null, null, null],
+        ["11", null, null, null, null, null, null, null, "16"],
+        [null, null,  "3", null,  "1", null,  "6", null, null],
+        ["10", null, null, null, null, null, null, null, "17"],
+        [null, null, null,  "2", null,  "7", null, null, null],
+        [null,  "9", null, null, null, null, null, "18", null],
+        [null, null, null,  "8", null, "19", null, null, null]
       ]
     ],
     "pixelGroups": {
@@ -733,8 +729,7 @@
         },
         {
           "dmxRange": [11, 11],
-          "type": "Effect",
-          "effectName": "Ring 3",
+          "type": "NoFunction",
           "switchChannels": {
             "Shape Speed": "Shape Rotation Speed",
             "Shape Fade": "Shape Fade Gamma",
@@ -763,8 +758,7 @@
         },
         {
           "dmxRange": [14, 14],
-          "type": "Effect",
-          "effectName": "Pixel 1 + Ring 3",
+          "type": "NoFunction",
           "switchChannels": {
             "Shape Speed": "Shape Rotation Speed",
             "Shape Fade": "Shape Fade Gamma",
@@ -953,22 +947,20 @@
         },
         {
           "dmxRange": [33, 33],
-          "type": "Effect",
-          "effectName": "X Bump",
+          "type": "NoFunction",
           "switchChannels": {
             "Shape Speed": "Shape Rotation Speed",
-            "Shape Fade": "Shape Linear Fade",
-            "Shape Offset": "Shape Macro Offset"
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
           }
         },
         {
           "dmxRange": [34, 34],
-          "type": "Effect",
-          "effectName": "Image",
+          "type": "NoFunction",
           "switchChannels": {
             "Shape Speed": "Shape Rotation Speed",
-            "Shape Fade": "Shape Linear Fade",
-            "Shape Offset": "Shape Macro Offset"
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
           }
         },
         {
@@ -1033,12 +1025,11 @@
         },
         {
           "dmxRange": [41, 41],
-          "type": "Effect",
-          "effectName": "Vertical arc 1",
+          "type": "NoFunction",
           "switchChannels": {
             "Shape Speed": "Shape Rotation Speed",
-            "Shape Fade": "Shape Linear Fade",
-            "Shape Offset": "Shape Macro Offset"
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
           }
         },
         {
@@ -1053,12 +1044,11 @@
         },
         {
           "dmxRange": [43, 43],
-          "type": "Effect",
-          "effectName": "Horizontal arc 1",
+          "type": "NoFunction",
           "switchChannels": {
             "Shape Speed": "Shape Rotation Speed",
-            "Shape Fade": "Shape Linear Fade",
-            "Shape Offset": "Shape Macro Offset"
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
           }
         },
         {
@@ -1263,12 +1253,11 @@
         },
         {
           "dmxRange": [64, 64],
-          "type": "Effect",
-          "effectName": "Random ring 3",
+          "type": "NoFunction",
           "switchChannels": {
             "Shape Speed": "Shape Rotation Speed",
-            "Shape Fade": "Shape Linear Fade",
-            "Shape Offset": "Shape Random Distribution"
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
           }
         },
         {
@@ -1313,12 +1302,11 @@
         },
         {
           "dmxRange": [69, 69],
-          "type": "Effect",
-          "effectName": "Single pixel ring 3",
+          "type": "NoFunction",
           "switchChannels": {
             "Shape Speed": "Shape Rotation Speed",
-            "Shape Fade": "Shape Linear Fade and Wake Length",
-            "Shape Offset": "Shape Number of Rotating"
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
           }
         },
         {
@@ -1615,7 +1603,7 @@
         {
           "dmxRange": [12, 12],
           "type": "Effect",
-          "effectName": "Ring 4"
+          "effectName": "Pixel 1 + Ring 3"
         },
         {
           "dmxRange": [13, 13],
@@ -1630,50 +1618,10 @@
         {
           "dmxRange": [15, 15],
           "type": "Effect",
-          "effectName": "Pixel 1 + Ring 2 + Ring 3 + Ring 4"
-        },
-        {
-          "dmxRange": [16, 16],
-          "type": "Effect",
-          "effectName": "Ring 2 + Ring 3 + Ring 4"
-        },
-        {
-          "dmxRange": [17, 17],
-          "type": "Effect",
-          "effectName": "Ring 3 + Ring 4"
-        },
-        {
-          "dmxRange": [18, 18],
-          "type": "Effect",
-          "effectName": "Pixel 1 + Ring 4"
-        },
-        {
-          "dmxRange": [19, 19],
-          "type": "Effect",
           "effectName": "Ring 2 + Ring 3"
         },
         {
-          "dmxRange": [20, 20],
-          "type": "Effect",
-          "effectName": "Pixel 1 + Ring 3"
-        },
-        {
-          "dmxRange": [21, 21],
-          "type": "Effect",
-          "effectName": "Ring 2 + Ring 4"
-        },
-        {
-          "dmxRange": [22, 22],
-          "type": "Effect",
-          "effectName": "Pixel 1 + Ring 3 + Ring 4"
-        },
-        {
-          "dmxRange": [23, 23],
-          "type": "Effect",
-          "effectName": "Pixel 1 + Ring 2 + Ring 4"
-        },
-        {
-          "dmxRange": [24, 254],
+          "dmxRange": [16, 254],
           "type": "NoFunction",
           "comment": "No selection (wash)"
         },
