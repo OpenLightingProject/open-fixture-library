@@ -57,6 +57,8 @@
           @click.native="focusContent">
           About
         </nuxt-link>
+
+        <app-theme-switcher v-if="isBrowser" @click.native="focusContent" />
       </div>
     </nav>
   </header>
@@ -206,19 +208,26 @@ header {
 
 <script>
 import svg from '~/components/svg.vue';
+import themeSwitcherVue from '~/components/theme-switcher.vue';
 
 export default {
   components: {
-    'app-svg': svg
+    'app-svg': svg,
+    'app-theme-switcher': themeSwitcherVue
   },
   data() {
     return {
       searchQuery: this.$router.history.current.query.q || ``,
-      searchFieldFocused: false
+      searchFieldFocused: false,
+      isBrowser: false
     };
   },
   mounted() {
     this.$router.afterEach(() => this.updateSearchQuery());
+
+    if (process.browser) {
+      this.isBrowser = true;
+    }
   },
   methods: {
     updateSearchQuery() {
