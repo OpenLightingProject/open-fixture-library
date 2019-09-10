@@ -1766,6 +1766,30 @@
           "shutterEffect": "Open"
         }
       ]
+    },
+    "Red LED $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     }
   },
   "modes": [
@@ -1833,6 +1857,37 @@
         "Foreground Strobe",
         "Background Strobe",
         "Background Select"
+      ]
+    },
+    {
+      "name": "Pixel RGB",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red LED $pixelKey",
+            "Green LED $pixelKey",
+            "Blue LED $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pixel RGBW",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red LED $pixelKey",
+            "Green LED $pixelKey",
+            "Blue LED $pixelKey",
+            "White LED $pixelKey"
+          ]
+        }
       ]
     }
   ]
