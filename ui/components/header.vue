@@ -74,11 +74,14 @@ header {
   nav {
     max-width: 1000px;
     margin: 0 auto;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-direction: row;
-    -ms-flex-wrap: wrap;
-    flex-flow: row wrap;
+    flex-direction: row;
+  }
+
+  .right-nav {
+    flex-shrink: 0;
+    white-space: nowrap;
+    overflow: auto;
   }
 
   a {
@@ -101,9 +104,7 @@ header {
   }
 
   form {
-    -ms-flex: 1 1 auto;
     flex-grow: 1;
-    display: -ms-flexbox;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -130,9 +131,7 @@ header {
   }
 
   .left-nav {
-    -ms-flex: 1 1 auto;
     flex-grow: 1;
-    display: -ms-flexbox;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -155,9 +154,12 @@ header {
 /* Tablet */
 @media (max-width: $tablet) {
   header {
-    nav > div {
-      -ms-flex: 0 1 100%;
-      flex-basis: 100%;
+    nav {
+      flex-wrap: wrap;
+
+      & > div {
+        flex-basis: 100%;
+      }
     }
 
     .home-logo {
@@ -168,18 +170,13 @@ header {
     }
 
     form {
-      -ms-flex: 0 1 auto;
       flex-grow: 0;
       padding: 0 .5ex;
     }
 
-    .right-nav {
-      justify-content: center;
-
-      & > a {
-        line-height: 2.7em;
-        height: 2.7em;
-      }
+    .right-nav > a {
+      line-height: 2.7em;
+      height: 2.7em;
     }
   }
 }
@@ -198,16 +195,10 @@ header {
       }
     }
 
-    form {
-      -ms-flex: 1 1 0px;
+    form,
+    form div {
       flex-grow: 1;
       flex-basis: 0;
-
-      & div {
-        -ms-flex: 1 1 0px;
-        flex-grow: 1;
-        flex-basis: 0;
-      }
     }
   }
 }
