@@ -745,6 +745,1105 @@
           "comment": "Offset"
         }
       ]
+    },
+    "Shape Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Effect",
+          "effectName": "Pixel 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Effect",
+          "effectName": "Ring 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Effect",
+          "effectName": "Ring 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Effect",
+          "effectName": "Ring 3",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 3",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Effect",
+          "effectName": "Single ring (ramp –/+)",
+          "switchChannels": {
+            "Shape Speed": "Shape Size Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Flash Distribution"
+          }
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Effect",
+          "effectName": "Filled rings (ramp –/+)",
+          "switchChannels": {
+            "Shape Speed": "Shape Size Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Flash Distribution"
+          }
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Effect",
+          "effectName": "Open/Close 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Size Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Flash Distribution"
+          }
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Effect",
+          "effectName": "Open/Close 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Size Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Flash Distribution"
+          }
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Effect",
+          "effectName": "Random pixels 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Speed With Fade",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Random Distribution"
+          }
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Effect",
+          "effectName": "Random pixels 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Speed With Fade",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Pixel Density"
+          }
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Effect",
+          "effectName": "Rainbow 1 (variable speed)",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Effect",
+          "effectName": "Rainbow 2 (variable color offset)",
+          "switchChannels": {
+            "Shape Speed": "Shape Color Offset",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Effect",
+          "effectName": "Fan",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Effect",
+          "effectName": "Bar 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Effect",
+          "effectName": "Half moon",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Effect",
+          "effectName": "Triangle",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Effect",
+          "effectName": "Segment 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Effect",
+          "effectName": "Arc 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Effect",
+          "effectName": "Arc 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Effect",
+          "effectName": "Bar 2 (variable size)",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Effect",
+          "effectName": "Random explosion",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Random Distribution"
+          }
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Effect",
+          "effectName": "Segment 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Effect",
+          "effectName": "X Bump",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Effect",
+          "effectName": "Image",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Effect",
+          "effectName": "Bumping section",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Effect",
+          "effectName": "Ramp by 6",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Effect",
+          "effectName": "Ramp by 4",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Effect",
+          "effectName": "Left/right scrolling bar",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "Effect",
+          "effectName": "Up/down scrolling bar",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Effect",
+          "effectName": "Bar 3",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Effect",
+          "effectName": "Vertical arc 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "Effect",
+          "effectName": "Vertical arc 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "Effect",
+          "effectName": "Horizontal arc 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "Effect",
+          "effectName": "Horizontal arc 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "Effect",
+          "effectName": "Mirrored pixel",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "Effect",
+          "effectName": "Pixel animation 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "Effect",
+          "effectName": "Pixel animation 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "Effect",
+          "effectName": "Pixel animation 3",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "Effect",
+          "effectName": "Pixel animation 4",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "Effect",
+          "effectName": "Pixel animation 5",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Effect",
+          "effectName": "Semi arc (ramp –/+)",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Effect",
+          "effectName": "Bumping arc section",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Effect",
+          "effectName": "Pixel animation 6",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Effect",
+          "effectName": "Vertical ramp by 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "Effect",
+          "effectName": "Following pixel by 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "Effect",
+          "effectName": "Syncopation",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "Effect",
+          "effectName": "Bumping 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "Effect",
+          "effectName": "Bumping 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [59, 59],
+          "type": "Effect",
+          "effectName": "Bumping 3",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "Effect",
+          "effectName": "Vertical pixel scrolling",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "Effect",
+          "effectName": "Random vertical section",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Random Distribution"
+          }
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "Effect",
+          "effectName": "Random central section",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Random Distribution"
+          }
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "Effect",
+          "effectName": "Random ring 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Random Distribution"
+          }
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Effect",
+          "effectName": "Random ring 3",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Random Distribution"
+          }
+        },
+        {
+          "dmxRange": [65, 65],
+          "type": "Effect",
+          "effectName": "Random ring 1+3",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Random Distribution"
+          }
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "Effect",
+          "effectName": "Random ring 2+3",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Random Distribution"
+          }
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "Effect",
+          "effectName": "Single pixel ring 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Number of Rotating"
+          }
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "Effect",
+          "effectName": "Single pixel ring 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Number of Rotating"
+          }
+        },
+        {
+          "dmxRange": [69, 69],
+          "type": "Effect",
+          "effectName": "Single pixel ring 3",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Number of Rotating"
+          }
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "Effect",
+          "effectName": "Spiral",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [71, 255],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        }
+      ]
+    },
+    "Shape Size Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "EffectParameter",
+          "parameterStart": "small",
+          "parameterEnd": "big",
+          "comment": "Radius size"
+        },
+        {
+          "dmxRange": [64, 158],
+          "type": "EffectSpeed",
+          "speedStart": "fast reverse",
+          "speedEnd": "slow reverse",
+          "comment": "Closing"
+        },
+        {
+          "dmxRange": [159, 160],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [161, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Opening"
+        }
+      ]
+    },
+    "Shape Speed With Fade": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [64, 158],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "fade out"
+        },
+        {
+          "dmxRange": [159, 160],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [161, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "fade in/out"
+        }
+      ]
+    },
+    "Shape Rotation Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
+        },
+        {
+          "dmxRange": [64, 158],
+          "type": "Rotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
+        },
+        {
+          "dmxRange": [159, 160],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [161, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Shape Color Offset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [64, 158],
+          "type": "Rotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
+        },
+        {
+          "dmxRange": [159, 160],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [161, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Shape Flash Distribution": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "EffectParameter",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Continuous flash distribution"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "Random flash distribution"
+        }
+      ]
+    },
+    "Shape Random Distribution": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": 2,
+        "parameterEnd": 20,
+        "comment": "Pixels"
+      }
+    },
+    "Shape Pixel Density": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high",
+        "helpWanted": "Is this the same as \"Shape Random Distribution\"?"
+      }
+    },
+    "Shape Angle Offset": {
+      "capability": {
+        "type": "Rotation",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Shape Width": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
+    },
+    "Shape Macro Offset": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
+    },
+    "Shape Number of Rotating": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "0%",
+        "parameterEnd": "100%",
+        "helpWanted": "What number is this? The number of rotating rings maybe?"
+      }
+    },
+    "Shape Fade Gamma": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Effect",
+          "effectName": "Snap"
+        },
+        {
+          "dmxRange": [16, 245],
+          "type": "Effect",
+          "effectName": "Smooth, fading curve gamma",
+          "parameterStart": 0.5,
+          "parameterEnd": 2
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Effect",
+          "effectName": "Smooth, fading curve with automatic gamma"
+        }
+      ]
+    },
+    "Shape Linear Fade": {
+      "capability": {
+        "type": "Time",
+        "timeStart": "instant",
+        "timeEnd": "long",
+        "helpWanted": "Is this really a time unit? What is the difference to Shape Transition then?"
+      }
+    },
+    "Shape Linear Fade and Wake Length": {
+      "capability": {
+        "type": "Time",
+        "timeStart": "instant",
+        "timeEnd": "long",
+        "helpWanted": "Is this really a time unit? What is the difference to Shape Transition then?"
+      }
+    },
+    "Shape Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Shape Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Shape Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Shape White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Shape Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Background Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shape Transition": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Time",
+          "time": "instant"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "Time",
+          "timeStart": "100ms",
+          "timeEnd": "4000ms"
+        }
+      ]
+    },
+    "Foreground Strobe": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0.5Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [213, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Background Strobe": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0.5Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [213, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Background Select": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction",
+          "comment": "No selection (wash)"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Effect",
+          "effectName": "Pixel 1"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Effect",
+          "effectName": "Ring 2"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Effect",
+          "effectName": "Ring 3"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Effect",
+          "effectName": "Ring 4"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 2"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 2 + Ring 3"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 2 + Ring 3 + Ring 4"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Effect",
+          "effectName": "Ring 2 + Ring 3 + Ring 4"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Effect",
+          "effectName": "Ring 3 + Ring 4"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 4"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Effect",
+          "effectName": "Ring 2 + Ring 3"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 3"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Effect",
+          "effectName": "Ring 2 + Ring 4"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 3 + Ring 4"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 2 + Ring 4"
+        },
+        {
+          "dmxRange": [24, 254],
+          "type": "NoFunction",
+          "comment": "No selection (wash)"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Effect",
+          "effectName": "Mirror effect"
+        }
+      ]
     }
   },
   "modes": [
@@ -772,6 +1871,46 @@
         "Reset",
         "Zoom",
         "Lens Rotation / Rotation Offset"
+      ]
+    },
+    {
+      "name": "Shapes",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Linear CTO",
+        "Color Presets",
+        "Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Maintenance",
+        "Reset",
+        "Zoom",
+        "Lens Rotation / Rotation Offset",
+        "Shape Selection",
+        "Shape Speed",
+        "Shape Fade",
+        "Shape Red",
+        "Shape Green",
+        "Shape Blue",
+        "Shape White",
+        "Shape Dimmer",
+        "Background Dimmer",
+        "Shape Transition",
+        "Shape Offset",
+        "Foreground Strobe",
+        "Background Strobe",
+        "Background Select"
       ]
     }
   ]
