@@ -1,0 +1,261 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Outdoor LED Strobe RGB",
+  "categories": ["Matrix", "Strobe"],
+  "meta": {
+    "authors": ["T.Hartwig"],
+    "createDate": "2019-09-10",
+    "lastModifyDate": "2019-09-10"
+  },
+  "links": {
+    "other": [
+      "https://www.steinigke.de/de/mpn52200930-eurolite-multiflood-pro-ip-smd-rgbw-strobe-wash.html"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Rot": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Grün": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blau": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Weiß": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Rot 2": {
+      "name": "Rot",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Grün 2": {
+      "name": "Grün",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blau 2": {
+      "name": "Blau",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Weiß 2": {
+      "name": "Weiß",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Rot 3": {
+      "name": "Rot",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Grün 3": {
+      "name": "Grün",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blau 3": {
+      "name": "Blau",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Weiß 3": {
+      "name": "Weiß",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Rot 4": {
+      "name": "Rot",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Grün 4": {
+      "name": "Grün",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blau 4": {
+      "name": "Blau",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Weiß 4": {
+      "name": "Weiß",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Rot 5": {
+      "name": "Rot",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Grün 5": {
+      "name": "Grün",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blau 5": {
+      "name": "Blau",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Weiß 5": {
+      "name": "Weiß",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Rot 6": {
+      "name": "Rot",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Grün 6": {
+      "name": "Grün",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blau 6": {
+      "name": "Blau",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Weiß 6": {
+      "name": "Weiß",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe größe": {
+      "capability": {
+        "type": "StrobeDuration",
+        "duration": "short"
+      }
+    },
+    "Strobe ": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "fast"
+      }
+    },
+    "Ka": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Ka 2": {
+      "name": "Ka",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Ka 3": {
+      "name": "Ka",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Makro": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "31ch",
+      "channels": [
+        "Dimmer",
+        "Rot",
+        "Grün",
+        "Blau",
+        "Weiß",
+        "Rot 2",
+        "Grün 2",
+        "Blau 2",
+        "Weiß 2",
+        "Rot 3",
+        "Grün 3",
+        "Blau 3",
+        "Weiß 3",
+        "Rot 4",
+        "Grün 4",
+        "Blau 4",
+        "Weiß 4",
+        "Rot 5",
+        "Grün 5",
+        "Blau 5",
+        "Weiß 5",
+        "Rot 6",
+        "Grün 6",
+        "Blau 6",
+        "Weiß 6",
+        "Strobe größe",
+        "Strobe ",
+        "Ka",
+        "Ka 2",
+        "Ka 3",
+        "Makro"
+      ]
+    }
+  ]
+}
