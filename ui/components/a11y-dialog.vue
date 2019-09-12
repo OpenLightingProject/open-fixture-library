@@ -16,7 +16,7 @@
         <a
           v-if="cancellable"
           href="#close"
-          class="close"
+          class="icon-button close"
           title="Close"
           @click.prevent="hide">
           Close

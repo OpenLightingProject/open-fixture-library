@@ -4,7 +4,7 @@
     <a
       v-if="fixture.modes.length > 1"
       href="#remove-mode"
-      class="close"
+      class="icon-button close"
       @click.prevent="$emit(`remove`)">
       Remove mode
       <app-svg name="close" />

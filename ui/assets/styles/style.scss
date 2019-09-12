@@ -323,10 +323,76 @@ button, input, a.button {
 
 
 .icon-button {
-  @include icon-button($blue-300, $blue-700);
+  $icon-size: 1.4em;
+  $padding: 0.3em;
 
   display: inline-block;
+  position: relative;
+  padding: 0 0 0 calc(#{$icon-size} + #{2*$padding});
+  width: 0;
+  height: calc(#{$icon-size} + #{2*$padding});
+  overflow: hidden;
+  border: 1px solid;
+  border-radius: 3px;
+  cursor: pointer;
   vertical-align: middle;
+  color: theme-color(icon);
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  & > .icon {
+    display: block;
+    position: absolute;
+    width: $icon-size;
+    height: $icon-size;
+    top: $padding;
+    left: $padding;
+    fill: currentcolor;
+  }
+
+  &:not(.close) {
+    background-color: theme-color(button-primary-text, 0);
+    border-color: theme-color(button-primary-text, 0);
+
+    @include mobile-hover-emulation((
+      background-color: rgba($hover-color, 0) $hover-color,
+      border-color: rgba($hover-color, 0) rgba($hover-color, 0)
+    ));
+
+    &:focus {
+      border-color: $blue-300;
+      outline: none;
+    }
+
+    &:active {
+      background-color: $blue-700;
+      border-color: rgba($blue-300, 0);
+      color: $primary-text-light;
+    }
+  }
+
+  &.close {
+    background-color: rgba($red-700, 0);
+    border-color: rgba($red-700, 0);
+
+    &:hover {
+      background-color: $red-700;
+      color: $primary-text-light;
+    }
+
+    &:focus {
+      border-color: $red-700;
+      outline: none;
+    }
+
+    &:active {
+      background-color: $red-300;
+      border-color: rgba($red-700, 0);
+      color: $primary-text-light;
+    }
+  }
 }
 
 .card {
@@ -342,8 +408,7 @@ button, input, a.button {
   position: relative;
   fill: $icon-dark;
 
-  & .close {
-    @include icon-button($red-700, $red-300);
+  & .icon-button.close {
     float: right;
   }
 

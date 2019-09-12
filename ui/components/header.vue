@@ -22,7 +22,7 @@
               @focus="searchFieldFocused = true"
               @blur="searchFieldFocused = false">
           </div>
-          <button type="submit">
+          <button class="icon-button" type="submit">
             Search
             <app-svg name="magnify" />
           </button>
@@ -119,17 +119,10 @@ header {
   }
 
   button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
     margin-left: 4px;
-
     box-sizing: content-box;
-    background-color: #fbfbfb;
     font-size: 1.05em;
     line-height: 1.2;
-
-    @include icon-button($blue-300, $blue-700);
   }
 
   .left-nav {
