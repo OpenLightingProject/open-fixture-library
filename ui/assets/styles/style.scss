@@ -1,5 +1,14 @@
 @import './fonts.scss';
 
+@each $theme-name, $theme in $themes {
+  [data-theme="#{$theme-name}"] {
+    @each $color-name, $color in $theme {
+      --theme-#{$color-name}: #{colorToRgbString($color)};
+    }
+  }
+}
+
+
 html, body {
   margin: 0;
   padding: 0;
