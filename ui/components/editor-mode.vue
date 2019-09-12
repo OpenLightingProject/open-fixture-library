@@ -72,7 +72,8 @@
       :custom="{ 'no-empty-channel-list': channelListNotEmpty }"
       tag="div"
       class="mode-channels">
-      <draggable v-model="mode.channels" v-bind="dragOptions" :name="`mode-${index}-channels`">
+      <input v-model="mode.channels" :name="`mode-${index}-channels`" type="hidden">
+      <draggable :list="mode.channels" v-bind="dragOptions">
         <transition-group class="mode-channels" tag="ol">
           <li
             v-for="channelUuid in mode.channels"
