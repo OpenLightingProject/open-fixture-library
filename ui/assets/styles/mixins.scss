@@ -14,19 +14,17 @@
 /**
  * Usage:
  *   @include mobile-hover-emulation((
- *     background-color: <start color> <end color>,
+ *     background-color: <hover theme color name>,
  *     // ...
  *   ), 0.1s, 0.3s);
  *
  * Result:
  *   & {
- *     background-color: <start-color>;
  *     transition-duration: 0.1s;
- *     transition-property: background-color, color;
  *   }
  *
  *   #ofl-root.no-touch &:hover {
- *     background-color: <end-color>;
+ *     background-color: <themed hover color>;
  *   }
  *   #ofl-root.touch &:hover {
  *     animation-delay: 0.3s;
@@ -37,24 +35,19 @@
  *
  *   @keyframes ofl-animation-1 {
  *     from {
- *       background-color: <end-color>;
+ *       background-color: <themed hover color>;
  *     }
  *     to {
- *       background-color: <start-color>;
+ *       background-color: unset;
  *     }
  *   }
  */
 @mixin mobile-hover-emulation($transition-map, $transition-duration: 0.2s, $mobile-hover-delay: 0.2s) {
-  @each $property in map-keys($transition-map) {
-    #{$property}: nth(map-get($transition-map, $property), 1);
-  }
-
   transition-duration: $transition-duration;
-  transition-property: map-keys($transition-map);
 
   #ofl-root.no-touch &:hover {
-    @each $property in map-keys($transition-map) {
-      #{$property}: nth(map-get($transition-map, $property), 2);
+    @each $property, $color-name in $transition-map {
+      #{$property}: theme-color($color-name);
     }
   }
 
@@ -65,13 +58,13 @@
 
     @include animation-keyframes {
       from {
-        @each $property in map-keys($transition-map) {
-          #{$property}: nth(map-get($transition-map, $property), 2);
+        @each $property, $color-name in $transition-map {
+          #{$property}: theme-color($color-name);
         }
       }
       to {
-        @each $property in map-keys($transition-map) {
-          #{$property}: nth(map-get($transition-map, $property), 1);
+        @each $property, $color-name in $transition-map {
+          #{$property}: unset;
         }
       }
     }

@@ -357,8 +357,8 @@ button, input, a.button {
     border-color: theme-color(button-primary-text, 0);
 
     @include mobile-hover-emulation((
-      background-color: rgba($hover-color, 0) $hover-color,
-      border-color: rgba($hover-color, 0) rgba($hover-color, 0)
+      background-color: button-primary-background-hover,
+      color: button-primary-text
     ));
 
     &:focus {

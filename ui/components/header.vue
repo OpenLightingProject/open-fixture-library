@@ -100,6 +100,7 @@ header {
     line-height: 4.5em;
     padding: 0 1ex;
     text-decoration: none;
+    color: inherit;
 
     &:active, &:focus {
       background-color: rgba($grey-300, 1);
@@ -108,8 +109,7 @@ header {
     }
 
     @include mobile-hover-emulation((
-      background-color: rgba($grey-300, 0) rgba($grey-300, 1),
-      color: inherit #000
+      background-color: hover-background,
     ));
   }
 
