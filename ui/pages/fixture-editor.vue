@@ -242,7 +242,6 @@ noscript.card {
 }
 </style>
 
-
 <script>
 import scrollIntoView from 'scroll-into-view';
 import {
@@ -267,18 +266,6 @@ import editorChannelDialogVue from '~/components/editor-channel-dialog.vue';
 import editorChooseChannelEditModeDialogVue from '~/components/editor-choose-channel-edit-mode-dialog.vue';
 import editorRestoreDialogVue from '~/components/editor-restore-dialog.vue';
 import editorSubmitDialogVue from '~/components/editor-submit-dialog.vue';
-
-const storageAvailable = (function() {
-  try {
-    const x = `__storage_test__`;
-    localStorage.setItem(x, x);
-    localStorage.removeItem(x);
-    return true;
-  }
-  catch (e) {
-    return false;
-  }
-})();
 
 export default {
   components: {
@@ -469,7 +456,7 @@ export default {
      * @param {'fixture'|'channel'} objectName The object to save.
      */
     autoSave(objectName) {
-      if (!storageAvailable || !this.readyToAutoSave) {
+      if (!this.readyToAutoSave) {
         return;
       }
 
@@ -491,10 +478,6 @@ export default {
     },
 
     clearAutoSave() {
-      if (!storageAvailable) {
-        return;
-      }
-
       localStorage.removeItem(`autoSave`);
     },
 
@@ -502,11 +485,6 @@ export default {
      * Loads auto-saved data from browser's local storage into this component's `restoredData` property, such that a dialog is opened that lets the user choose if they want to apply or discard it.
      */
     restoreAutoSave() {
-      if (!storageAvailable) {
-        this.$root._oflRestoreComplete = true;
-        return;
-      }
-
       try {
         this.restoredData = JSON.parse(localStorage.getItem(`autoSave`)).pop();
 
@@ -533,10 +511,6 @@ export default {
     },
 
     applyStoredPrefillData() {
-      if (!storageAvailable) {
-        return;
-      }
-
       if (this.fixture.metaAuthor === ``) {
         this.fixture.metaAuthor = localStorage.getItem(`prefillAuthor`) || ``;
       }
@@ -547,10 +521,6 @@ export default {
     },
 
     storePrefillData() {
-      if (!storageAvailable) {
-        return;
-      }
-
       localStorage.setItem(`prefillAuthor`, this.fixture.metaAuthor);
       localStorage.setItem(`prefillGithubUsername`, this.fixture.metaGithubUsername);
     },
