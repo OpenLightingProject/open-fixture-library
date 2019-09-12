@@ -92,7 +92,7 @@ export default {
     return {
       state: `ready`,
       message: ``,
-      githubUsername: localStorage.getItem(`prefillGithubUsername`) || ``,
+      githubUsername: ``,
       issueUrl: null,
       error: null
     };
@@ -173,6 +173,11 @@ export default {
       ).join(`\n`);
 
       return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+  },
+  mounted() {
+    if (localStorage) {
+      this.githubUsername = localStorage.getItem(`prefillGithubUsername`) || ``;
     }
   },
   methods: {
