@@ -379,14 +379,15 @@ button, input, a.button {
     background-color: rgba($red-700, 0);
     border-color: rgba($red-700, 0);
 
-    &:hover {
-      background-color: $red-700;
-      color: $primary-text-light;
-    }
-
     &:focus {
       border-color: $red-700;
+      color: theme-color(icon);
       outline: none;
+    }
+
+    &:hover, &:focus:hover {
+      background-color: $red-700;
+      color: $primary-text-light;
     }
 
     &:active {

@@ -38,6 +38,10 @@
   display: none;
 }
 
+.dialog-container {
+  outline: none;
+}
+
 .dialog-overlay {
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.66);

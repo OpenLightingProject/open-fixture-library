@@ -51,6 +51,7 @@ summary {
 
   &:hover, &:focus {
     background-color: theme-color(hover-background);
+    outline: none;
 
     &::after {
       border-color: theme-color(icon-hover);
