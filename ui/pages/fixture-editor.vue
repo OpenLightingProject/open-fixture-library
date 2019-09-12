@@ -127,7 +127,7 @@
           :multiple-inputs="true"
           name="links"
           label="Relevant links">
-          <app-editor-links v-model="fixture.links" :formstate="formstate" />
+          <app-editor-links v-model="fixture.links" :formstate="formstate" name="links" />
         </app-labeled-input>
 
         <app-labeled-input

@@ -69,6 +69,11 @@ export default {
     prop: `links`
   },
   props: {
+    name: { // allow name prop just for vue-form; has no real use in here
+      type: String,
+      required: false,
+      default: ``
+    },
     links: {
       type: Array,
       required: true
