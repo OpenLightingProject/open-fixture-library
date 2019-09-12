@@ -1,0 +1,35 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Giotto Spot 400",
+  "categories": ["Dimmer", "Color Changer", "Moving Head"],
+  "meta": {
+    "authors": ["Giulio"],
+    "createDate": "2019-09-12",
+    "lastModifyDate": "2019-09-12"
+  },
+  "links": {
+    "other": [
+      "https://open-fixture-library.org/fixture-editor"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Pan"
+      ]
+    }
+  ]
+}
