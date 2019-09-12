@@ -127,18 +127,6 @@ import a11yDialogVue from '~/components/a11y-dialog.vue';
 import editorFileUploadVue from '~/components/editor-file-upload.vue';
 import labeledInputVue from '~/components/labeled-input.vue';
 
-const storageAvailable = (function() {
-  try {
-    const x = `__storage_test__`;
-    localStorage.setItem(x, x);
-    localStorage.removeItem(x);
-    return true;
-  }
-  catch (e) {
-    return false;
-  }
-})();
-
 export default {
   components: {
     'app-a11y-dialog': a11yDialogVue,
@@ -264,7 +252,7 @@ export default {
       });
     },
     applyStoredPrefillData() {
-      if (!storageAvailable) {
+      if (!localStorage) {
         return;
       }
 
@@ -277,10 +265,6 @@ export default {
       }
     },
     storePrefillData() {
-      if (!storageAvailable) {
-        return;
-      }
-
       localStorage.setItem(`prefillAuthor`, this.author);
       localStorage.setItem(`prefillGithubUsername`, this.githubUsername);
     }
