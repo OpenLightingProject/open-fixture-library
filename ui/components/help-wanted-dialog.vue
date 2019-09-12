@@ -92,7 +92,7 @@ export default {
     return {
       state: `ready`,
       message: ``,
-      githubUsername: ``,
+      githubUsername: localStorage.getItem(`prefillGithubUsername`) || ``,
       issueUrl: null,
       error: null
     };
@@ -178,6 +178,7 @@ export default {
   methods: {
     async onSubmit() {
       this.state = `loading`;
+      localStorage.setItem(`prefillGithubUsername`, this.githubUsername);
 
       try {
         const response = await this.$axios.post(`/ajax/submit-feedback`, this.sendObject);
