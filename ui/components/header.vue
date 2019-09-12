@@ -65,6 +65,14 @@
 </template>
 
 <style lang="scss" scoped>
+@mixin home-logo-sizing($width, $padding) {
+  padding-left: calc(#{$width} + #{2*$padding});
+
+  &::before {
+    background-size: calc(100% - #{2*$padding}) auto;
+  }
+}
+
 header {
   position: fixed;
   width: 100%;
@@ -137,12 +145,27 @@ header {
     width: 0;
     padding: 0;
     overflow: hidden;
-    background-image: url('~static/ofl-logo.svg');
-    background-repeat: no-repeat;
-    transition: background-color 0.2s, color 0.2s, padding 0.2s;
+    position: relative;
+    transition: background-color 0.2s, padding 0.2s;
 
     @include home-logo-sizing(122px, 2ex);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: url('~static/ofl-logo.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
   }
+}
+
+[data-theme="dark"] header .home-logo::before {
+  filter: #{'brightness(0.4) invert() brightness(0.9)'};
 }
 
 

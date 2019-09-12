@@ -1,9 +1,3 @@
-@mixin home-logo-sizing($width, $padding) {
-  padding-left: calc(#{$width} + #{2*$padding});
-  background-position: $padding center;
-  background-size: calc(100% - #{2*$padding}) auto;
-}
-
 @mixin animation-keyframes {
   $animation-number: 0 !default !global;
   $animation-number: $animation-number + 1 !global;
