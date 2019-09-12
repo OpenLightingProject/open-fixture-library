@@ -13,11 +13,12 @@ html, body {
   margin: 0;
   padding: 0;
   font: 12pt/2 LatoLatin, 'Source Sans Pro', Helvetica, Arial, sans-serif;
-  color: $primary-text-dark;
-  background: $grey-200;
+  color: theme-color(text-primary);
+  background-color: theme-color(page-background);
   word-wrap: break-word;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 html {
@@ -76,7 +77,7 @@ label {
 
 .hint {
   display: block;
-  color: $secondary-text-dark;
+  color: theme-color(text-secondary);
   font-size: 0.8rem;
   line-height: 1.5;
 }
@@ -94,7 +95,7 @@ template {
 
 code {
   font-family: Inconsolata, 'Roboto Mono', 'Source Code Pro', monospace;
-  color: $secondary-text-dark;
+  color: theme-color(text-secondary);
 }
 
 h1 code,
@@ -106,14 +107,14 @@ code.channel-key {
 
 a {
   text-decoration: none;
-  color: $blue-700;
-  fill: $icon-dark;
+  color: theme-color(link);
+  fill: theme-color(icon);
   transition: color 0.1s, fill 0.1s, background-color 0.1s;
 
   &:hover,
   &:focus {
-    color: $blue-300;
-    fill: $icon-dark-hover;
+    color: theme-color(link-hover);
+    fill: theme-color(icon-hover);
   }
 }
 
@@ -127,12 +128,13 @@ input[type=number] {
   box-sizing: border-box;
   max-width: 100%;
   padding: 0.4em;
-  background: #fff;
-  border: 1px solid #cfd6e6;
+  background: theme-color(form-field-background);
+  border: 1px solid theme-color(form-field-border);
+  color: theme-color(text-primary);
   border-radius: 3px;
   font-size: 0.95em;
   font-family: LatoLatin;
-  transition: border-color 0.2s;
+  transition: background-color 0.2s, border-color 0.2s;
 
   &:focus {
     border-color: $blue-300;
@@ -159,8 +161,8 @@ textarea[readonly] {
   font-size: 0.9em;
   font-family: Inconsolata, monospace;
   white-space: pre-wrap;
-  background: $grey-100;
-  color: $primary-text-dark;
+  background: theme-color(header-background);
+  color: theme-color(text-primary);
   padding: 1em;
   border: none;
   width: 100%;
@@ -213,30 +215,30 @@ input.addition {
 }
 
 select.empty {
-  color: $secondary-text-dark;
+  color: theme-color(text-secondary);
   font-style: italic;
 
   & > option {
-    color: $primary-text-dark;
+    color: theme-color(text-primary);
     font-style: normal;
   }
 }
 
 input::-webkit-input-placeholder {
-  color: $secondary-text-dark;
+  color: theme-color(text-secondary);
   font-style: italic;
 }
 input::-moz-placeholder {
-  color: $secondary-text-dark;
+  color: theme-color(text-secondary);
   font-style: italic;
   opacity: 1;
 }
 input:-ms-input-placeholder {
-  color: $secondary-text-dark;
+  color: theme-color(text-secondary);
   font-style: italic;
 }
 input::placeholder {
-  color: $secondary-text-dark;
+  color: theme-color(text-secondary);
   font-style: italic;
   opacity: 1;
 }
@@ -271,7 +273,7 @@ button, input, a.button {
     font-size: 0.9em;
     line-height: 1.4;
     padding: 0.5em 3ex;
-    transition: 0.1s background-color;
+    transition: 0.2s background-color;
 
     &.inline {
       font-size: 0.85em;
@@ -290,26 +292,26 @@ button, input, a.button {
   }
 
   &.primary {
-    background-color: $blue-700;
-    border-color: $blue-700;
-    color: $primary-text-light;
-    fill: $icon-light;
+    background-color: theme-color(button-primary-background);
+    border-color: theme-color(button-primary-border);
+    color: theme-color(button-primary-text);
 
     &:not(:disabled):hover,
     &:not(:disabled):focus {
-      background-color: $blue-300;
+      background-color: theme-color(button-primary-background-hover);
+      outline: 0;
     }
   }
 
   &.secondary {
-    background-color: $grey-50;
-    border-color: $grey-300;
-    color: $secondary-text-dark;
-    fill: $icon-dark;
+    background-color: theme-color(button-secondary-background);
+    border-color: theme-color(button-secondary-border);
+    color: theme-color(button-secondary-text);
 
     &:not(:disabled):hover,
     &:not(:disabled):focus {
-      background-color: $grey-300;
+      background-color: theme-color(button-secondary-background-hover);
+      outline: 0;
     }
   }
 }
@@ -401,12 +403,13 @@ button, input, a.button {
   text-align: left;
   padding: 1rem;
   margin-bottom: $card-spacing;
-  box-shadow: 0 2px 4px $divider-dark;
+  box-shadow: 0 2px 4px theme-color(divider);
   box-sizing: border-box;
-  background-color: #fff;
+  background-color: theme-color(card-background);
   border-radius: 3px;
   position: relative;
-  fill: $icon-dark;
+  fill: theme-color(icon);
+  transition: background-color 0.3s;
 
   & .icon-button.close {
     float: right;
@@ -432,7 +435,7 @@ button, input, a.button {
   }
 
   &.yellow {
-    background: $yellow-300;
+    background-color: theme-color(highlight-background);
   }
 
   &.orange {
@@ -599,14 +602,14 @@ a.card.slim {
 a.card, .link, .list a {
   transition: background-color .2s, fill .2s;
   text-decoration: none;
-  color: $primary-text-dark;
+  color: theme-color(text-primary);
   display: block;
   cursor: pointer;
 
   &:hover,
   &:focus {
-    background-color: $grey-100;
-    fill: $primary-text-dark;
+    background-color: theme-color(hover-background);
+    fill: theme-color(text-primary);
     outline: none;
 
     &.dark {
@@ -627,7 +630,7 @@ a.card, .link, .list a {
   }
 
   &:active {
-    background-color: $grey-200;
+    background-color: theme-color(active-background);
 
     &.light-green {
       background-color: $light-green-700;

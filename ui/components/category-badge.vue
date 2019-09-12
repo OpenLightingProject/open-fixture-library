@@ -4,16 +4,16 @@
   padding: 4px 1.5ex 4px 1ex;
   margin: 0 4px 4px 0;
   border-radius: 5000px; /* see http://stackoverflow.com/a/18795153/451391 */
-  background: $grey-100;
+  background: theme-color(hover-background);
 
   &:link,
   &:visited {
-    color: $primary-text-dark;
-    fill: $icon-dark;
+    color: theme-color(text-primary);
+    fill: theme-color(icon);
   }
   &:hover,
   &:focus {
-    background-color: $grey-300;
+    background-color: theme-color(active-background);
   }
 
   &.selected {

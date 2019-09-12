@@ -148,7 +148,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    background-color: rgba(#fff, 0);
+    background-color: theme-color(card-background, 0);
     transition: background-color 0.1s, box-shadow 0.1s;
 
     & a {
@@ -161,8 +161,8 @@
   & li:hover .channel-buttons,
   & li.sortable-chosen .channel-buttons,
   & li.sortable-ghost .channel-buttons {
-    background-color: rgba(#fff, 1);
-    box-shadow: -1ex 0 1ex 0.5ex #fff;
+    background-color: theme-color(card-background, 1);
+    box-shadow: -1ex 0 1ex 0.5ex theme-color(card-background);
 
     & a {
       opacity: 1;
@@ -175,8 +175,8 @@
 
   // has to be a separate rule because older browsers would ignore the whole rule
   & .channel-buttons:focus-within {
-    background-color: rgba(#fff, 1);
-    box-shadow: -1ex 0 1ex 0.5ex #fff;
+    background-color: theme-color(card-background, 1);
+    box-shadow: -1ex 0 1ex 0.5ex theme-color(card-background);
 
     & a {
       opacity: 1;

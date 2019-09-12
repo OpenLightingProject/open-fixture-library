@@ -129,7 +129,7 @@ summary, .summary {
   }
 
   & > .help-wanted-icon {
-    fill: $yellow-700;
+    fill: theme-color(highlight-hover);
     margin-left: 0.7ex;
     margin-right: 0;
   }

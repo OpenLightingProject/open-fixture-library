@@ -33,7 +33,7 @@
 .help-wanted {
   position: relative;
   margin: 1ex 0;
-  background: $yellow-300;
+  background: theme-color(highlight-background);
   border-radius: 2px;
   min-height: 32px;
   padding: 0;
@@ -44,7 +44,7 @@
   $icon-width: 1.4em;
   $text-margin: 0.5em;
   padding: 0.6em 0.7em 0.6em (0.7em + $icon-width + $text-margin);
-  border-bottom: 2px solid $yellow-600;
+  border-bottom: 2px solid theme-color(highlight-hover);
 
   & > .icon {
     margin-left: -$icon-width - $text-margin;
@@ -69,15 +69,16 @@
   a {
     display: inline-block;
     padding: 0.4em 0.6em;
-    color: $primary-text-dark;
+    color: theme-color(text-primary);
     text-align: center;
     width: 100%;
     box-sizing: border-box;
 
     &:hover,
     &:focus {
-      background: $yellow-600;
-      fill: $primary-text-dark;
+      background: theme-color(highlight-hover);
+      fill: theme-color(text-primary);
+      outline: 0;
     }
 
     & > .icon {

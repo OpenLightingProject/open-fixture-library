@@ -54,7 +54,7 @@
 
 .help-link {
   display: inline-block;
-  color: $secondary-text-dark;
+  color: theme-color(text-secondary);
   font-size: 0.9rem;
   line-height: 1.2;
   transition: opacity 0.15s;
@@ -63,7 +63,7 @@
   .icon {
     width: 1.2rem;
     height: 1.2rem;
-    fill: $secondary-text-dark;
+    fill: theme-color(text-secondary);
   }
 
   .name {
@@ -93,7 +93,7 @@ select {
 
   background: $grey-50;
 
-  color: $secondary-text-dark;
+  color: theme-color(text-secondary);
   font-weight: 600;
   font-size: 0.9em;
 
@@ -149,7 +149,7 @@ select {
     margin: 0;
     width: 100%;
     list-style: none;
-    background-color: $grey-50;
+    background-color: theme-color(header-background);
     border-radius: 0 0 2px 2px;
     box-shadow: 0 2px 2px rgba(#000, 0.2);
     z-index: 90;
@@ -157,13 +157,13 @@ select {
     & a {
       display: block;
       padding: 0.2ex 2ex;
-      color: $primary-text-dark;
+      color: theme-color(text-primary);
       transition: background-color 0.2s;
     }
 
     & a:hover,
     & a:focus {
-      background-color: $grey-200;
+      background-color: theme-color(hover-background);
       outline: 0;
     }
   }

@@ -49,7 +49,8 @@
 }
 
 dialog {
-  background-color: rgb(255, 255, 255);
+  background-color: theme-color(dialog-background);
+  color: theme-color(text-primary);
   border: 0;
   z-index: 1010;
   position: fixed;

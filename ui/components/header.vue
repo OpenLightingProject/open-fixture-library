@@ -76,10 +76,11 @@
 header {
   position: fixed;
   width: 100%;
-  background: #fafafa;
+  background: theme-color(header-background);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
   text-align: center;
   z-index: 100;
+  transition: background-color 0.3s;
 
   nav {
     max-width: 1000px;
@@ -103,8 +104,7 @@ header {
     color: inherit;
 
     &:active, &:focus {
-      background-color: rgba($grey-300, 1);
-      color: #000;
+      background-color: theme-color(hover-background);
       outline: 0;
     }
 

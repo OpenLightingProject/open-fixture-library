@@ -33,7 +33,7 @@ summary {
 
   &::after {
     /* chevron down */
-    border-color: $icon-dark;
+    border-color: theme-color(icon);
     border-style: solid;
     border-width: 0.17em 0.17em 0 0;
     content: '';
@@ -50,10 +50,10 @@ summary {
   }
 
   &:hover, &:focus {
-    background-color: $grey-100;
+    background-color: theme-color(hover-background);
 
     &::after {
-      border-color: $icon-dark-hover;
+      border-color: theme-color(icon-hover);
     }
   }
 }
