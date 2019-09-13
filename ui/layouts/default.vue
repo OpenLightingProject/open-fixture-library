@@ -1,7 +1,5 @@
 <template>
-  <div
-    v-if="isClimateStrike"
-    id="climate-strike">
+  <div v-if="isClimateStrike" id="climate-strike">
 
     <h1>
       The Open Fixture Library joins the
@@ -48,6 +46,13 @@
     <app-header @focus-content="focusContent" />
 
     <div id="content" ref="content" tabindex="-1">
+      <div v-if="showClimateStrikeBanner" id="climate-strike-banner">
+        We are joining the global climate strike, so this website will
+        not be available on 2019-09-20.<br>
+        Learn more at
+        <a href="https://globalclimatestrike.net/">globalclimatestrike.net</a>
+        or <a href="https://www.fridaysforfuture.org/">fridaysforfuture.org</a>.
+      </div>
       <nuxt />
     </div>
 
@@ -123,6 +128,25 @@
   }
 }
 
+#climate-strike-banner {
+  text-align: center;
+  border: 0.5em solid #1da64a;
+  background: #1b7340;
+  padding: 0.5em;
+  color: #fff;
+  line-height: 1.7;
+
+  a {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: rgba(#fff, 0.6);
+
+    &:hover, &:focus {
+      opacity: 0.8;
+    }
+  }
+}
+
 .accessibility {
   position: absolute;
   top: -1000px;
@@ -176,7 +200,8 @@ export default {
       isBrowser: false,
       isTouchScreen: false,
       lastTouchTime: 0,
-      isClimateStrike: false
+      isClimateStrike: false,
+      showClimateStrikeBanner: false
     };
   },
   created() {
@@ -186,6 +211,10 @@ export default {
     this.isClimateStrike = climateStrikeDate.getDate() === today.getDate() &&
       climateStrikeDate.getMonth() === today.getMonth() &&
       climateStrikeDate.getFullYear() === today.getFullYear();
+
+    this.showClimateStrikeBanner = climateStrikeDate.getDate() >= today.getDate() &&
+      climateStrikeDate.getMonth() >= today.getMonth() &&
+      climateStrikeDate.getFullYear() >= today.getFullYear();
   },
   mounted() {
     if (process.browser) {
