@@ -206,7 +206,7 @@ export default {
     };
   },
   created() {
-    const climateStrikeDate = new Date(`2019-09-13`);
+    const climateStrikeDate = new Date(`2019-09-20`);
     const today = new Date();
 
     this.isClimateStrike = climateStrikeDate.getDate() === today.getDate() &&
