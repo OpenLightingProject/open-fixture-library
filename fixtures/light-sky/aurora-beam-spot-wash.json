@@ -36,87 +36,173 @@
     }
   },
   "wheels": {
-    "Color Wheel": {
+    "Effect Disk": {
       "slots": [
         {
-          "type": "Color"
+          "type": "AnimationGoboStart"
+        },
+        {
+          "type": "AnimationGoboEnd"
         }
       ]
     },
-    "Gobo Wheel": {
+    "Rotating Gobo Wheel": {
       "slots": [
         {
           "type": "Open"
         },
         {
-          "type": "Gobo",
-          "name": "Beam reducer 1   "
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Beam reducer 2"
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Beam reducer 3    "
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Beam reducer 4"
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 1 "
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 2 "
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 3"
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 4 "
-        },
-        {
-          "type": "Gobo",
-          "name": "Gobo 5 "
-        },
-        {
-          "type": "Gobo",
-          "name": "Gobo 6"
-        },
-        {
-          "type": "Gobo",
-          "name": "Gobo 7"
-        },
-        {
-          "type": "Gobo",
-          "name": "Gobo 8"
-        },
-        {
-          "type": "Gobo",
-          "name": "Gobo 9"
+          "type": "Gobo"
         },
         {
           "type": "Gobo"
         }
       ]
     },
-    "Gobo Wheel 2": {
+    "Static Gobo Wheel": {
+      "direction": "CCW",
+      "slots": [
+        {
+          "type": "Iris",
+          "openPercent": "40%"
+        },
+        {
+          "type": "Iris",
+          "openPercent": "30%"
+        },
+        {
+          "type": "Iris",
+          "openPercent": "20%"
+        },
+        {
+          "type": "Iris",
+          "openPercent": "10%"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    },
+    "Color Wheel": {
       "slots": [
         {
           "type": "Open"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 1 "
+          "type": "Color",
+          "name": "Dark red",
+          "colors": ["#fe0000"]
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 2"
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ff450c"]
+        },
+        {
+          "type": "Color",
+          "name": "Aquamarine",
+          "colors": ["#01fdfd"]
+        },
+        {
+          "type": "Color",
+          "name": "Dark green",
+          "colors": ["#006401"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#01ff01"]
+        },
+        {
+          "type": "Color",
+          "name": "Lavender",
+          "colors": ["#bfbff3"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#febeca"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#fef100"]
+        },
+        {
+          "type": "Color",
+          "name": "Magenta",
+          "colors": ["#e5007f"]
+        },
+        {
+          "type": "Color",
+          "name": "Cyan",
+          "colors": ["#00a1e9"]
+        },
+        {
+          "type": "Color",
+          "name": "CTO2",
+          "colors": ["#e79d6c"]
+        },
+        {
+          "type": "Color",
+          "name": "CTO1",
+          "colors": ["#f2be9b"]
+        },
+        {
+          "type": "Color",
+          "name": "Dark blue",
+          "colors": ["#1f1586"]
         }
       ]
     }
