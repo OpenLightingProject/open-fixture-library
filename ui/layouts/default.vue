@@ -94,6 +94,7 @@
   a {
     color: #fff;
     text-decoration: underline;
+    text-decoration-color: rgba(#fff, 0.6);
   }
 
   a:hover,
@@ -205,7 +206,7 @@ export default {
     };
   },
   created() {
-    const climateStrikeDate = new Date(`2019-09-20`);
+    const climateStrikeDate = new Date(`2019-09-13`);
     const today = new Date();
 
     this.isClimateStrike = climateStrikeDate.getDate() === today.getDate() &&
