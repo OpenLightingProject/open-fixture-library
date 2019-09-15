@@ -175,9 +175,15 @@ export default {
       return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
   },
+  mounted() {
+    if (localStorage) {
+      this.githubUsername = localStorage.getItem(`prefillGithubUsername`) || ``;
+    }
+  },
   methods: {
     async onSubmit() {
       this.state = `loading`;
+      localStorage.setItem(`prefillGithubUsername`, this.githubUsername);
 
       try {
         const response = await this.$axios.post(`/ajax/submit-feedback`, this.sendObject);
