@@ -1,0 +1,79 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini Dekker 12bit",
+  "categories": ["Flower"],
+  "meta": {
+    "authors": ["Yan"],
+    "createDate": "2019-09-15",
+    "lastModifyDate": "2019-09-15"
+  },
+  "comment": "ADJ Mini Dekker modified for 12bit RGBW and enhanced motor resolution",
+  "links": {
+    "manual": [
+      "http://adjmedia.s3-website-eu-west-1.amazonaws.com/manuals/Mini%20Dekker_FR.pdf"
+    ],
+    "productPage": [
+      "https://www.americandj.eu/fr/mini-dekker.html?___from_store=en"
+    ]
+  },
+  "physical": {
+    "dimensions": [250, 250, 250],
+    "weight": 1.8,
+    "power": 25,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "highlightValue": "50%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "thru 12 bit resolution but 16bit control"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Cold White": {
+      "fineChannelAliases": ["Cold White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Prism",
+        "angle": "350deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Cold White",
+        "Cold White fine",
+        "Prism"
+      ]
+    }
+  ]
+}
