@@ -45,8 +45,7 @@ export default {
     this.prefersDarkMediaQuery = window.matchMedia(`(prefers-color-scheme: dark)`);
     this.prefersDarkMediaQuery.addListener(this.onMediaQueryMatchChange);
 
-    const savedTheme = localStorage.getItem(`theme`);
-    this.theme = savedTheme || (this.prefersDarkMediaQuery.matches ? `dark` : `light`);
+    this.onMediaQueryMatchChange(this.prefersDarkMediaQuery);
   },
   beforeDestroy() {
     if (this.prefersDarkMediaQuery) {
@@ -55,7 +54,8 @@ export default {
   },
   methods: {
     onMediaQueryMatchChange(e) {
-      this.theme = e.matches ? `dark` : `light`;
+      const savedTheme = localStorage.getItem(`theme`);
+      this.theme = savedTheme || (e.matches ? `dark` : `light`);
     },
     toggleTheme() {
       this.theme = this.otherTheme;
