@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FL-233",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Manzat Emanuel"],
+    "createDate": "2019-09-18",
+    "lastModifyDate": "2019-09-18"
+  },
+  "links": {
+    "productPage": [
+      "http://flash-butrym.pl/en_US/p/2x-Moving-Head-7R-FL-233-BEAM-SET/469"
+    ]
+  },
+  "physical": {
+    "power": 350,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Presets": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [4, 7],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [8, 11],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [12, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Fl-233",
+      "channels": [
+        "Color Presets",
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
