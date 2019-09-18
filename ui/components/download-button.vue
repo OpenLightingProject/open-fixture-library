@@ -118,7 +118,7 @@ select {
     width: 100%;
     padding: 0.5ex 2ex;
     border-radius: 2px;
-    background: $orange-500;
+    background: theme-color(orange-background);
     font-weight: 600;
     color: $primary-text-light;
     cursor: pointer;
@@ -184,12 +184,12 @@ select {
   & > .title:focus,
   & > .title:active {
     border-radius: 2px 2px 0 0;
-    background: $orange-700;
+    background: theme-color(orange-background-hover);
   }
 
   &:focus-within > .title {
     border-radius: 2px 2px 0 0;
-    background: $orange-700;
+    background: theme-color(orange-background-hover);
   }
 }
 </style>

@@ -17,7 +17,7 @@
   }
 
   &.selected {
-    background-color: $blue-700;
+    background-color: theme-color(blue-background-active);
     cursor: move;
 
     &:link,

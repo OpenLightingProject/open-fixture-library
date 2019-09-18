@@ -355,8 +355,8 @@ button, input, a.button {
   }
 
   &:not(.close) {
-    background-color: theme-color(button-primary-text, 0);
-    border-color: theme-color(button-primary-text, 0);
+    background-color: theme-color(button-primary-background, 0);
+    border-color: theme-color(button-primary-background, 0);
 
     @include mobile-hover-emulation((
       background-color: button-primary-background-hover,
@@ -369,7 +369,7 @@ button, input, a.button {
     }
 
     &:active {
-      background-color: $blue-700;
+      background-color: theme-color(blue-background-active);
       border-color: rgba($blue-300, 0);
       color: $primary-text-light;
     }
@@ -428,19 +428,19 @@ button, input, a.button {
   }
 
   &.light-green {
-    background: $light-green-500;
+    background: theme-color(light-green-background);
   }
 
   &.blue {
-    background: $blue-500;
+    background: theme-color(blue-background);
   }
 
   &.yellow {
-    background-color: theme-color(highlight-background);
+    background-color: theme-color(yellow-background);
   }
 
   &.orange {
-    background: $orange-500;
+    background: theme-color(orange-background);
   }
 
   &:target {
@@ -618,15 +618,11 @@ a.card, .link, .list a {
     }
 
     &.light-green {
-      background-color: $light-green-600;
+      background-color: theme-color(light-green-background-hover);
     }
 
     &.blue {
-      background-color: $blue-600;
-    }
-
-    &.orange {
-      background-color: $orange-600;
+      background-color: theme-color(blue-background-hover);
     }
   }
 
@@ -634,15 +630,11 @@ a.card, .link, .list a {
     background-color: theme-color(active-background);
 
     &.light-green {
-      background-color: $light-green-700;
+      background-color: theme-color(light-green-background-active);
     }
 
     &.blue {
-      background-color: $blue-700;
-    }
-
-    &.orange {
-      background-color: $orange-700;
+      background-color: theme-color(blue-background-active);
     }
   }
 }

@@ -8,6 +8,7 @@ $blue-300: #64b5f6;
 $blue-500: #2196f3;
 $blue-600: #1e88e5;
 $blue-700: #1976d2;
+$blue-800: #1565c0;
 
 $yellow-300: #fff176;
 $yellow-600: #fdd835;
@@ -16,6 +17,7 @@ $yellow-700: #fbc02d;
 $orange-500: #ff9800;
 $orange-600: #fb8c00;
 $orange-700: #f57c00;
+$orange-800: #ef6c00;
 
 $grey-50: #fafafa;
 $grey-100: #f5f5f5;
@@ -25,6 +27,7 @@ $grey-300: #e0e0e0;
 $light-green-500: #8bc34a;
 $light-green-600: #7cb342;
 $light-green-700: #689f38;
+$light-green-800: #558b2f;
 
 $primary-text-dark:     rgba(0, 0, 0, 0.87);
 $secondary-text-dark:   rgba(0, 0, 0, 0.54);
@@ -96,8 +99,19 @@ $themes: (
     button-secondary-border: $grey-300,
     button-secondary-text: $secondary-text-dark,
 
-    highlight-background: $yellow-300,
-    highlight-hover: $yellow-600,
+    light-green-background: $light-green-500,
+    light-green-background-hover: $light-green-600,
+    light-green-background-active: $light-green-700,
+
+    blue-background: $blue-500,
+    blue-background-hover: $blue-600,
+    blue-background-active: $blue-700,
+
+    yellow-background: $yellow-300,
+    yellow-background-hover: $yellow-600,
+
+    orange-background: $orange-500,
+    orange-background-hover: $orange-700,
   ),
   dark: (
     page-background: $dark-grey,
@@ -131,7 +145,18 @@ $themes: (
     button-secondary-border: $dark-grey-elevation-02dp,
     button-secondary-text: $secondary-text-light,
 
-    highlight-background: #aa8e00,
-    highlight-hover: #dbbb2a,
+    light-green-background: $light-green-700,
+    light-green-background-hover: $light-green-500,
+    light-green-background-active: $light-green-800,
+
+    blue-background: $blue-700,
+    blue-background-hover: $blue-500,
+    blue-background-active: $blue-800,
+
+    yellow-background: #aa8e00,
+    yellow-background-hover: #dbbb2a,
+
+    orange-background: $orange-800,
+    orange-background-hover: $orange-500,
   ),
 );
