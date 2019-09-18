@@ -1,0 +1,376 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Bea230",
+  "shortName": "Beam 230",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["josequioss"],
+    "createDate": "2019-09-18",
+    "lastModifyDate": "2019-09-18"
+  },
+  "links": {
+    "manual": [
+      "http://www.lite-tek.com.mx/manuales/BEAM-230.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [350, 320, 505],
+    "weight": 20,
+    "power": 280,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "colorTemperature": 8000
+    }
+  },
+  "availableChannels": {
+    "Color": {
+      "defaultValue": 1,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ColorPreset",
+          "comment": "Abierto"
+        },
+        {
+          "dmxRange": [5, 8],
+          "type": "ColorPreset",
+          "comment": "Abierto+Rojo"
+        },
+        {
+          "dmxRange": [9, 12],
+          "type": "ColorPreset",
+          "comment": "Rojo"
+        },
+        {
+          "dmxRange": [13, 17],
+          "type": "ColorPreset",
+          "comment": "Rojo+Naranja"
+        },
+        {
+          "dmxRange": [18, 21],
+          "type": "ColorPreset",
+          "comment": "Naranja"
+        },
+        {
+          "dmxRange": [22, 25],
+          "type": "ColorPreset",
+          "comment": "Naranja+Aguamarina"
+        },
+        {
+          "dmxRange": [26, 29],
+          "type": "ColorPreset",
+          "comment": "Aguamarina"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "ColorPreset",
+          "comment": "Color3+Color4"
+        },
+        {
+          "dmxRange": [35, 38],
+          "type": "ColorPreset",
+          "comment": "Verde"
+        },
+        {
+          "dmxRange": [39, 42],
+          "type": "ColorPreset",
+          "comment": "Verde+LightVerde"
+        },
+        {
+          "dmxRange": [43, 46],
+          "type": "ColorPreset",
+          "comment": "Light Verde"
+        },
+        {
+          "dmxRange": [47, 51],
+          "type": "ColorPreset",
+          "comment": "Light Verde+Lavanda"
+        },
+        {
+          "dmxRange": [52, 55],
+          "type": "ColorPreset",
+          "comment": "Lavanda"
+        },
+        {
+          "dmxRange": [56, 59],
+          "type": "ColorPreset",
+          "comment": "Lavanda+Rosa"
+        },
+        {
+          "dmxRange": [60, 63],
+          "type": "ColorPreset",
+          "comment": "Rosa"
+        },
+        {
+          "dmxRange": [64, 68],
+          "type": "ColorPreset",
+          "comment": "Rosa+Amarillo"
+        },
+        {
+          "dmxRange": [69, 72],
+          "type": "ColorPreset",
+          "comment": "Amarillo"
+        },
+        {
+          "dmxRange": [73, 76],
+          "type": "ColorPreset",
+          "comment": "Amarillo+Magenta"
+        },
+        {
+          "dmxRange": [77, 81],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [82, 85],
+          "type": "ColorPreset",
+          "comment": "Magenta+Cyan"
+        },
+        {
+          "dmxRange": [86, 89],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [90, 93],
+          "type": "ColorPreset",
+          "comment": "Cyan+CTO190"
+        },
+        {
+          "dmxRange": [94, 98],
+          "type": "ColorPreset",
+          "comment": "CTO 260"
+        },
+        {
+          "dmxRange": [99, 102],
+          "type": "ColorPreset",
+          "comment": "CTO 260+CTO190"
+        },
+        {
+          "dmxRange": [103, 106],
+          "type": "ColorPreset",
+          "comment": "CTO 190"
+        },
+        {
+          "dmxRange": [107, 110],
+          "type": "ColorPreset",
+          "comment": "CTO 190+CTB8000"
+        },
+        {
+          "dmxRange": [111, 115],
+          "type": "ColorPreset",
+          "comment": "CTB 8000"
+        },
+        {
+          "dmxRange": [116, 119],
+          "type": "ColorPreset",
+          "comment": "CTB 8000+Azulor14"
+        },
+        {
+          "dmxRange": [120, 123],
+          "type": "ColorPreset",
+          "comment": "Azul"
+        },
+        {
+          "dmxRange": [124, 127],
+          "type": "ColorPreset",
+          "comment": "Azul+Abierto"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ColorPreset",
+          "comment": "scroll"
+        }
+      ]
+    },
+    "Estrobo": {
+      "defaultValue": 2,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "duration": "short"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [213, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan": {
+      "defaultValue": 10,
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 12,
+      "capability": {
+        "type": "Tilt",
+        "angle": "270deg"
+      }
+    },
+    "Gobo": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Prism": {
+      "defaultValue": 5,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Prism",
+          "speed": "100%"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Prism",
+          "speed": "0%"
+        }
+      ]
+    },
+    "Prism Rotation": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "PrismRotation",
+        "speed": "0%"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Frost": {
+      "defaultValue": 8,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Frost",
+          "frostIntensity": "100%"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Frost",
+          "frostIntensityStart": "off",
+          "frostIntensityEnd": "high"
+        }
+      ]
+    },
+    "Focus": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Pan Fino": {
+      "defaultValue": 11,
+      "capability": {
+        "type": "Pan",
+        "angle": "1.8deg"
+      }
+    },
+    "Tilt Fino": {
+      "defaultValue": 13,
+      "capability": {
+        "type": "Tilt",
+        "angle": "1.8deg"
+      }
+    },
+    "Macro": {
+      "defaultValue": 14,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Reset": {
+      "defaultValue": 15,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Closed"
+      }
+    },
+    "Lampara": {
+      "defaultValue": 15,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "color",
+      "shortName": "color",
+      "channels": [
+        "Color",
+        "Estrobo",
+        "Dimmer",
+        "Gobo",
+        "Prism",
+        "Prism Rotation",
+        "Color Macros",
+        "Frost",
+        "Focus",
+        "Pan",
+        "Pan Fino",
+        "Tilt",
+        "Tilt Fino",
+        "Macro",
+        "Reset",
+        "Lampara"
+      ]
+    }
+  ]
+}
