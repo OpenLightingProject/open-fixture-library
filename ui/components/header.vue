@@ -58,7 +58,9 @@
           About
         </nuxt-link>
 
-        <app-theme-switcher v-if="isBrowser" @click.native="focusContent" />
+        <client-only>
+          <app-theme-switcher @click.native="focusContent" />
+        </client-only>
       </div>
     </nav>
   </header>
@@ -234,16 +236,11 @@ export default {
   data() {
     return {
       searchQuery: this.$router.history.current.query.q || ``,
-      searchFieldFocused: false,
-      isBrowser: false
+      searchFieldFocused: false
     };
   },
   mounted() {
     this.$router.afterEach(() => this.updateSearchQuery());
-
-    if (process.browser) {
-      this.isBrowser = true;
-    }
   },
   methods: {
     updateSearchQuery() {
