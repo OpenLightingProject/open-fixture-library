@@ -37,15 +37,16 @@ export default {
     }
   },
   created() {
-    if (!window.CSS && !CSS.supports(`color`, `var(--primary)`)) {
+    this.cssVariablesSupported = window.CSS && CSS.supports(`color`, `var(--primary)`);
+
+    if (!this.cssVariablesSupported) {
       return;
     }
 
-    this.cssVariablesSupported = true;
     this.prefersDarkMediaQuery = window.matchMedia(`(prefers-color-scheme: dark)`);
     this.prefersDarkMediaQuery.addListener(this.onMediaQueryMatchChange);
 
-    this.onMediaQueryMatchChange(this.prefersDarkMediaQuery);
+    this.onMediaQueryMatchChange();
   },
   beforeDestroy() {
     if (this.prefersDarkMediaQuery) {
@@ -53,13 +54,22 @@ export default {
     }
   },
   methods: {
-    onMediaQueryMatchChange(e) {
+    getDefaultPreferredTheme() {
+      return this.prefersDarkMediaQuery.matches ? `dark` : `light`;
+    },
+    onMediaQueryMatchChange() {
       const savedTheme = localStorage.getItem(`theme`);
-      this.theme = savedTheme || (e.matches ? `dark` : `light`);
+      this.theme = savedTheme || this.getDefaultPreferredTheme();
     },
     toggleTheme() {
       this.theme = this.otherTheme;
-      localStorage.setItem(`theme`, this.theme);
+
+      if (this.theme === this.getDefaultPreferredTheme()) {
+        localStorage.removeItem(`theme`);
+      }
+      else {
+        localStorage.setItem(`theme`, this.theme);
+      }
     }
   }
 };
