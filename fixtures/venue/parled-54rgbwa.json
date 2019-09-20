@@ -1,0 +1,89 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Parled 54RGBWA",
+  "shortName": "Parled",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Rodrigo"],
+    "createDate": "2019-09-20",
+    "lastModifyDate": "2019-09-20"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/channel/UClW2RG0X6beDxL20DfKO2Kg"
+    ]
+  },
+  "availableChannels": {
+    "Intensidade": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Vermelho": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Verde": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Azul": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Branco": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amarelo": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "9Hz",
+        "speedEnd": "255Hz"
+      }
+    },
+    "Macros coloridas": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "ColorPreset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Parled",
+      "shortName": "Parledplug",
+      "channels": [
+        "Intensidade",
+        "Vermelho",
+        "Verde",
+        "Azul",
+        "Branco",
+        "Amarelo",
+        "Strobe",
+        "Macros coloridas"
+      ]
+    }
+  ]
+}
