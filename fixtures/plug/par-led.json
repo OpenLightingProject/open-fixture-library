@@ -1,0 +1,112 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "par led",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["BIGU"],
+    "createDate": "2019-09-20",
+    "lastModifyDate": "2019-09-20"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/channel/UClW2RG0X6beDxL20DfKO2Kg"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 7
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "50Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Parled 54 RGBWA",
+      "shortName": "PARLED",
+      "rdmPersonalityIndex": 8,
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Color Wheel",
+        "Shutter"
+      ]
+    }
+  ]
+}
