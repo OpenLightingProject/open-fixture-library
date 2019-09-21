@@ -56,10 +56,11 @@
     },
     "RGB": {
       "capability": {
-        "type": "Intensity"
+        "type": "ColorPreset",
+        "helpWanted": "Which color can be selected at which DMX values?"
       }
     },
-    "Strobe Speed": {
+    "Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
@@ -68,21 +69,24 @@
         },
         {
           "dmxRange": [1, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "fast",
-          "speedEnd": "slow"
+          "speedEnd": "slow",
+          "helpWanted": "Is this really fast…slow or slow…fast?"
         }
       ]
     },
     "Mode": {
       "capability": {
-        "type": "Generic"
+        "type": "Generic",
+        "helpWanted": "What does this channel do? Which modes can be selected at which DMX values?"
       }
     }
   },
   "modes": [
     {
-      "name": "4 channels",
+      "name": "4-channel",
       "shortName": "4ch",
       "channels": [
         "Master",
@@ -92,7 +96,7 @@
       ]
     },
     {
-      "name": "7 channels",
+      "name": "7-channel",
       "shortName": "7ch",
       "channels": [
         "Master",
@@ -100,7 +104,7 @@
         "Green",
         "Blue",
         "RGB",
-        "Strobe Speed",
+        "Strobe",
         "Mode"
       ]
     }
