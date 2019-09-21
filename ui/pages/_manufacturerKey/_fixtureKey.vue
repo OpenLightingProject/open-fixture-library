@@ -99,8 +99,8 @@
           <abbr title="Remote Device Management">RDM</abbr> data
         </template>
 
-        {{ fixture.manufacturer.rdmId }} /
-        {{ fixture.rdm.modelId }} /
+        {{ fixture.manufacturer.rdmId }} (0x{{ fixture.manufacturer.rdmId.toString(16) }}) /
+        {{ fixture.rdm.modelId }} (0x{{ fixture.rdm.modelId.toString(16) }}) /
         {{ `softwareVersion` in fixture.rdm ? fixture.rdm.softwareVersion : `?` }} –
         <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${fixture.manufacturer.rdmId}&model=${fixture.rdm.modelId}`" rel="nofollow">
           <app-svg name="ola" /> View in Open Lighting RDM database
