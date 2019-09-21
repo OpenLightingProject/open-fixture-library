@@ -87,11 +87,11 @@
 
   & /deep/ table {
     margin: 1rem 0;
-    border: 1px solid $divider-dark;
+    border: 1px solid theme-color(divider);
     border-collapse: collapse;
 
     th, td {
-      border: 1px solid $divider-dark;
+      border: 1px solid theme-color(divider);
       padding: 1px 1ex;
     }
   }

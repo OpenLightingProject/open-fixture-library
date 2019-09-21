@@ -16,7 +16,7 @@ section {
   padding: .5ex 0;
 
   & > .label {
-    color: $secondary-text-dark;
+    color: theme-color(text-secondary);
   }
 }
 

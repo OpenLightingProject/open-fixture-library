@@ -71,7 +71,7 @@
 
 th {
   font-weight: normal;
-  color: $secondary-text-dark;
+  color: theme-color(text-secondary);
 }
 
 td, th {
@@ -111,7 +111,7 @@ td, th {
   font-size: 82%;
 
   & > .switching-channel-key {
-    color: $secondary-text-dark;
+    color: theme-color(text-secondary);
   }
 }
 </style>
