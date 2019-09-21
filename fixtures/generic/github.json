@@ -1,0 +1,32 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Github",
+  "shortName": "fixture",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2019-09-21",
+    "lastModifyDate": "2019-09-21"
+  },
+  "links": {
+    "other": [
+      "https://google.com"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1ch",
+      "shortName": "1ch",
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}
