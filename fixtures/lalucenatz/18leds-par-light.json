@@ -4,19 +4,31 @@
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["Anomes"],
-    "createDate": "2019-09-04",
-    "lastModifyDate": "2019-09-04"
+    "createDate": "2019-09-21",
+    "lastModifyDate": "2019-09-21"
   },
   "links": {
+    "manual": [
+      "https://images-na.ssl-images-amazon.com/images/I/B1vDZm6YD0S.pdf"
+    ],
     "productPage": [
       "https://www.amazon.com/dp/B00WU5OM5M/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=tXqQy4PfIeA"
     ]
   },
   "physical": {
     "dimensions": [175, 175, 99],
     "weight": 0.8,
-    "power": 18,
-    "DMXconnector": "3-pin"
+    "power": 21,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "18× 1W LEDs (6× red, 6× green, 6× blue)"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
   },
   "availableChannels": {
     "Master": {
