@@ -22,7 +22,7 @@
               @focus="searchFieldFocused = true"
               @blur="searchFieldFocused = false">
           </div>
-          <button type="submit">
+          <button class="icon-button" type="submit">
             Search
             <app-svg name="magnify" />
           </button>
@@ -57,28 +57,44 @@
           @click.native="focusContent">
           About
         </nuxt-link>
+
+        <client-only>
+          <app-theme-switcher @click.native="focusContent" />
+        </client-only>
       </div>
     </nav>
   </header>
 </template>
 
 <style lang="scss" scoped>
+@mixin home-logo-sizing($width, $padding) {
+  padding-left: calc(#{$width} + #{2*$padding});
+
+  &::before {
+    background-size: calc(100% - #{2*$padding}) auto;
+  }
+}
+
 header {
   position: fixed;
   width: 100%;
-  background: #fafafa;
+  background: theme-color(header-background);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
   text-align: center;
   z-index: 100;
+  transition: background-color 0.3s;
 
   nav {
     max-width: 1000px;
     margin: 0 auto;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-direction: row;
-    -ms-flex-wrap: wrap;
-    flex-flow: row wrap;
+    flex-direction: row;
+  }
+
+  .right-nav {
+    flex-shrink: 0;
+    white-space: nowrap;
+    overflow: auto;
   }
 
   a {
@@ -87,23 +103,20 @@ header {
     line-height: 4.5em;
     padding: 0 1ex;
     text-decoration: none;
+    color: inherit;
 
     &:active, &:focus {
-      background-color: rgba($grey-300, 1);
-      color: #000;
+      background-color: theme-color(hover-background);
       outline: 0;
     }
 
     @include mobile-hover-emulation((
-      background-color: rgba($grey-300, 0) rgba($grey-300, 1),
-      color: inherit #000
+      background-color: hover-background,
     ));
   }
 
   form {
-    -ms-flex: 1 1 auto;
     flex-grow: 1;
-    display: -ms-flexbox;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -116,23 +129,14 @@ header {
   }
 
   button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
     margin-left: 4px;
-
     box-sizing: content-box;
-    background-color: #fbfbfb;
     font-size: 1.05em;
     line-height: 1.2;
-
-    @include icon-button($blue-300, $blue-700);
   }
 
   .left-nav {
-    -ms-flex: 1 1 auto;
     flex-grow: 1;
-    display: -ms-flexbox;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -143,21 +147,39 @@ header {
     width: 0;
     padding: 0;
     overflow: hidden;
-    background-image: url('~static/ofl-logo.svg');
-    background-repeat: no-repeat;
-    transition: background-color 0.2s, color 0.2s, padding 0.2s;
+    position: relative;
+    transition: background-color 0.2s, padding 0.2s;
 
     @include home-logo-sizing(122px, 2ex);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: url('~static/ofl-logo.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
   }
+}
+
+[data-theme="dark"] header .home-logo::before {
+  filter: #{'brightness(0.4) invert() brightness(0.9)'};
 }
 
 
 /* Tablet */
 @media (max-width: $tablet) {
   header {
-    nav > div {
-      -ms-flex: 0 1 100%;
-      flex-basis: 100%;
+    nav {
+      flex-wrap: wrap;
+
+      & > div {
+        flex-basis: 100%;
+      }
     }
 
     .home-logo {
@@ -168,18 +190,13 @@ header {
     }
 
     form {
-      -ms-flex: 0 1 auto;
       flex-grow: 0;
       padding: 0 .5ex;
     }
 
-    .right-nav {
-      justify-content: center;
-
-      & > a {
-        line-height: 2.7em;
-        height: 2.7em;
-      }
+    .right-nav > a {
+      line-height: 2.7em;
+      height: 2.7em;
     }
   }
 }
@@ -198,16 +215,10 @@ header {
       }
     }
 
-    form {
-      -ms-flex: 1 1 0px;
+    form,
+    form div {
       flex-grow: 1;
       flex-basis: 0;
-
-      & div {
-        -ms-flex: 1 1 0px;
-        flex-grow: 1;
-        flex-basis: 0;
-      }
     }
   }
 }
@@ -215,10 +226,12 @@ header {
 
 <script>
 import svg from '~/components/svg.vue';
+import themeSwitcherVue from '~/components/theme-switcher.vue';
 
 export default {
   components: {
-    'app-svg': svg
+    'app-svg': svg,
+    'app-theme-switcher': themeSwitcherVue
   },
   data() {
     return {

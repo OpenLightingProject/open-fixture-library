@@ -195,7 +195,7 @@
 .fixture-meta {
   margin: -1.5rem 0 1rem;
   font-size: 0.8rem;
-  color: $secondary-text-dark;
+  color: theme-color(text-secondary);
 
   & > span:not(:last-child)::after {
     content: ' | ';
@@ -237,7 +237,7 @@
   list-style: none;
 
   .hostname {
-    color: $secondary-text-dark;
+    color: theme-color(text-secondary);
     font-size: 0.9em;
     padding-left: 1ex;
   }
