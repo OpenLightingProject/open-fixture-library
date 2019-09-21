@@ -167,7 +167,7 @@ svg {
 
 .slot {
   & text {
-    fill: $primary-text-dark;
+    fill: theme-color(text-primary);
     pointer-events: none;
     font-weight: 400;
   }
