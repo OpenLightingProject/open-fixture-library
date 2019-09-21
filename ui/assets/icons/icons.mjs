@@ -25,6 +25,7 @@ import pencilSvg from '~/assets/icons/pencil.svg';
 import plusSvg from '~/assets/icons/plus.svg';
 import puzzleSvg from '~/assets/icons/puzzle.svg';
 import swapHorizontalSvg from '~/assets/icons/swap-horizontal.svg';
+import themeLightDarkSvg from '~/assets/icons/theme-light-dark.svg';
 import webSvg from '~/assets/icons/web.svg';
 import youtubeSvg from '~/assets/icons/youtube.svg';
 
@@ -107,6 +108,7 @@ export default {
   'plus': plusSvg,
   'puzzle': puzzleSvg,
   'swap-horizontal': swapHorizontalSvg,
+  'theme-light-dark': themeLightDarkSvg,
   'web': webSvg,
   'youtube': youtubeSvg,
 
