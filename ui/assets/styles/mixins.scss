@@ -1,55 +1,3 @@
-@mixin icon-button($hover-color, $active-color) {
-  $icon-size: 1.4em;
-  $padding: 0.3em;
-
-  display: block;
-  position: relative;
-  padding: 0 0 0 calc(#{$icon-size} + #{2*$padding});
-  width: 0;
-  height: calc(#{$icon-size} + #{2*$padding});
-  overflow: hidden;
-  border: 1px solid;
-  border-radius: 3px;
-  cursor: pointer;
-
-  &::-moz-focus-inner {
-    border: 0;
-  }
-
-  & > .icon {
-    display: block;
-    position: absolute;
-    width: $icon-size;
-    height: $icon-size;
-    top: $padding;
-    left: $padding;
-    fill: currentcolor;
-  }
-
-  @include mobile-hover-emulation((
-    background-color: rgba($hover-color, 0) $hover-color,
-    border-color: rgba($hover-color, 0) rgba($hover-color, 0),
-    color: $secondary-text-dark $primary-text-light
-  ));
-
-  &:focus {
-    border-color: $hover-color;
-    outline: none;
-  }
-
-  &:active {
-    background-color: $active-color;
-    border-color: transparent;
-    color: $primary-text-light;
-  }
-}
-
-@mixin home-logo-sizing($width, $padding) {
-  padding-left: calc(#{$width} + #{2*$padding});
-  background-position: $padding center;
-  background-size: calc(100% - #{2*$padding}) auto;
-}
-
 @mixin animation-keyframes {
   $animation-number: 0 !default !global;
   $animation-number: $animation-number + 1 !global;
@@ -66,19 +14,17 @@
 /**
  * Usage:
  *   @include mobile-hover-emulation((
- *     background-color: <start color> <end color>,
+ *     background-color: <hover theme color name>,
  *     // ...
  *   ), 0.1s, 0.3s);
  *
  * Result:
  *   & {
- *     background-color: <start-color>;
  *     transition-duration: 0.1s;
- *     transition-property: background-color, color;
  *   }
  *
  *   #ofl-root.no-touch &:hover {
- *     background-color: <end-color>;
+ *     background-color: <themed hover color>;
  *   }
  *   #ofl-root.touch &:hover {
  *     animation-delay: 0.3s;
@@ -89,24 +35,19 @@
  *
  *   @keyframes ofl-animation-1 {
  *     from {
- *       background-color: <end-color>;
+ *       background-color: <themed hover color>;
  *     }
  *     to {
- *       background-color: <start-color>;
+ *       background-color: unset;
  *     }
  *   }
  */
 @mixin mobile-hover-emulation($transition-map, $transition-duration: 0.2s, $mobile-hover-delay: 0.2s) {
-  @each $property in map-keys($transition-map) {
-    #{$property}: nth(map-get($transition-map, $property), 1);
-  }
-
   transition-duration: $transition-duration;
-  transition-property: map-keys($transition-map);
 
   #ofl-root.no-touch &:hover {
-    @each $property in map-keys($transition-map) {
-      #{$property}: nth(map-get($transition-map, $property), 2);
+    @each $property, $color-name in $transition-map {
+      #{$property}: theme-color($color-name);
     }
   }
 
@@ -117,13 +58,13 @@
 
     @include animation-keyframes {
       from {
-        @each $property in map-keys($transition-map) {
-          #{$property}: nth(map-get($transition-map, $property), 2);
+        @each $property, $color-name in $transition-map {
+          #{$property}: theme-color($color-name);
         }
       }
       to {
-        @each $property in map-keys($transition-map) {
-          #{$property}: nth(map-get($transition-map, $property), 1);
+        @each $property, $color-name in $transition-map {
+          #{$property}: unset;
         }
       }
     }

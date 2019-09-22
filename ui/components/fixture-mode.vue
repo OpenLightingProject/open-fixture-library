@@ -47,7 +47,7 @@ import svg from '~/components/svg.vue';
 import fixturePhysical from '~/components/fixture-physical.vue';
 import fixtureChannel from '~/components/fixture-channel.vue';
 
-import Mode from '~~/lib/model/Mode.mjs';
+import Mode from '~~/lib/model/Mode.js';
 
 export default {
   components: {

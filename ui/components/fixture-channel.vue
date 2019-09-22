@@ -129,7 +129,7 @@ summary, .summary {
   }
 
   & > .help-wanted-icon {
-    fill: $yellow-700;
+    fill: theme-color(yellow-background-hover);
     margin-left: 0.7ex;
     margin-right: 0;
   }
@@ -154,12 +154,12 @@ import fixtureChannelTypeIcon from '~/components/fixture-channel-type-icon.vue';
 import fixtureCapabilityTable from '~/components/fixture-capability-table.vue';
 import labeledValueVue from '~/components/labeled-value.vue';
 
-import AbstractChannel from '~~/lib/model/AbstractChannel.mjs';
-import CoarseChannel from '~~/lib/model/CoarseChannel.mjs';
-import FineChannel from '~~/lib/model/FineChannel.mjs';
-import Mode from '~~/lib/model/Mode.mjs';
-import NullChannel from '~~/lib/model/NullChannel.mjs';
-import SwitchingChannel from '~~/lib/model/SwitchingChannel.mjs';
+import AbstractChannel from '~~/lib/model/AbstractChannel.js';
+import CoarseChannel from '~~/lib/model/CoarseChannel.js';
+import FineChannel from '~~/lib/model/FineChannel.js';
+import Mode from '~~/lib/model/Mode.js';
+import NullChannel from '~~/lib/model/NullChannel.js';
+import SwitchingChannel from '~~/lib/model/SwitchingChannel.js';
 
 export default {
   name: `AppFixtureChannel`,

@@ -79,18 +79,18 @@ const SiteCrawler = require(`../lib/site-crawler.js`);
 
 
 /**
- * @typedef {object} UrlResult
- * @property {string} url The requested URL.
- * @property {string} message User-visible information about the URL's status.
- * @property {boolean} failed Whether the requested URL can be seen as broken.
+ * @typedef {Object} UrlResult
+ * @property {String} url The requested URL.
+ * @property {String} message User-visible information about the URL's status.
+ * @property {Boolean} failed Whether the requested URL can be seen as broken.
  */
 
 /**
  * Fetches the given URLs in small blocks that reduce the likelyhood of false negatives.
  * Pass / fail messages are constantly outputted to console.
  *
- * @param {array.<string>} externalUrls The URLs to fetch.
- * @returns {Promise.<array.<UrlResult>>} The fetch results of the given URLs. Note that the order may (and probably will) be different.
+ * @param {Array.<String>} externalUrls The URLs to fetch.
+ * @returns {Promise.<Array.<UrlResult>>} The fetch results of the given URLs. Note that the order may (and probably will) be different.
  */
 async function fetchExternalUrls(externalUrls) {
   const urlResults = [];
@@ -128,7 +128,7 @@ async function fetchExternalUrls(externalUrls) {
 }
 
 /**
- * @param {string} url The URL to check.
+ * @param {String} url The URL to check.
  *
  * @returns {Promise.<UrlResult>} Status of the checked url.
  */
@@ -143,7 +143,7 @@ async function testExternalLink(url) {
   return resultHEAD;
 
   /**
-   * @param {string} method The HTTP requests method, e.g. GET or HEAD.
+   * @param {String} method The HTTP requests method, e.g. GET or HEAD.
    *
    * @returns {Promise.<UrlResult>} Status of the url which has been requested with the given method.
    */
@@ -188,7 +188,7 @@ async function testExternalLink(url) {
 /**
  * Updates the GitHub issue for broken links.
  *
- * @param {array.<UrlResult>} urlResults Fetch results of all external URLs.
+ * @param {Array.<UrlResult>} urlResults Fetch results of all external URLs.
  * @returns {Promise} Promise that resolves when issue has been updated or rejects if the issue can't be updated.
  */
 async function updateGithubIssue(urlResults) {
@@ -243,18 +243,18 @@ async function updateGithubIssue(urlResults) {
   await createCommentIfNeeded(newFailingUrlResults, fixedUrlResults);
 
   /**
-   * @typedef {object.<string, LinkStatus>} LinkData URLs pointing to the last seven statuses.
+   * @typedef {Object.<String, LinkStatus>} LinkData URLs pointing to the last seven statuses.
    */
 
   /**
-   * @typedef {object} LinkStatus
-   * @property {boolean} failed Whether the requested URL can be seen as broken.
-   * @property {string|null} message User-visible information about the URL's status. May be null for passing links.
-   * @property {string|null} jobUrl Link to the travis job. May be null for passing links.
+   * @typedef {Object} LinkStatus
+   * @property {Boolean} failed Whether the requested URL can be seen as broken.
+   * @property {String|null} message User-visible information about the URL's status. May be null for passing links.
+   * @property {String|null} jobUrl Link to the travis job. May be null for passing links.
    */
 
   /**
-   * @param {string} body The current GitHub issue body.
+   * @param {String} body The current GitHub issue body.
    * @returns {LinkData} The link data that is read from the body.
    */
   function getLinkDataFromBody(body) {
@@ -301,7 +301,7 @@ async function updateGithubIssue(urlResults) {
    * Also updates newFailingUrlResults and fixedUrlResults to remember these URLs for the issue comment.
    *
    * @param {LinkData} oldLinkData The current link data.
-   * @param {array.<UrlResult>} urlResults Fetch results of all external URLs.
+   * @param {Array.<UrlResult>} urlResults Fetch results of all external URLs.
    * @returns {LinkData} Updated link data with new statuses for all existing links, new links added and fixed links removed.
    */
   function getUpdatedLinkData(oldLinkData, urlResults) {
@@ -355,7 +355,7 @@ async function updateGithubIssue(urlResults) {
 
   /**
    * @param {LinkData} linkData The new link data from which to create the issue body.
-   * @returns {string} The new issue body (in Markdown and HTML) from the given link data.
+   * @returns {String} The new issue body (in Markdown and HTML) from the given link data.
    */
   function getBodyFromLinkData(linkData) {
     const lines = [
@@ -412,8 +412,8 @@ async function updateGithubIssue(urlResults) {
   /**
    * Creates a notifying issue comment if there are new failing or fixed URLs.
    *
-   * @param {array.<UrlResult>} newFailingUrlResults Failing URLs that were newly added to the table.
-   * @param {array.<UrlResult>} fixedUrlResults URLs that passed the last seven times and therefore could be removed from the table.
+   * @param {Array.<UrlResult>} newFailingUrlResults Failing URLs that were newly added to the table.
+   * @param {Array.<UrlResult>} fixedUrlResults URLs that passed the last seven times and therefore could be removed from the table.
    * @returns {Promise} Promise that resolves as soon as the comment (or no comment) has been created.
    */
   async function createCommentIfNeeded(newFailingUrlResults, fixedUrlResults) {

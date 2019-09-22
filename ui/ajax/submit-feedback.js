@@ -3,8 +3,8 @@ const { fixtureFromRepository } = require(`../../lib/model.js`);
 
 /**
  * Takes the input from the client side script and creates an issue with the given feedback.
- * @param {object} request Passed from Express.
- * @param {object} response Passed from Express.
+ * @param {Object} request Passed from Express.
+ * @param {Object} response Passed from Express.
  */
 module.exports = async function createFeedbackIssue(request, response) {
   const {
