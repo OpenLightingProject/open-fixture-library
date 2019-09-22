@@ -259,17 +259,17 @@ import manufacturers from '~~/fixtures/manufacturers.json';
 import schemaProperties from '~~/lib/schema-properties.js';
 
 import labeledInputVue from '~/components/labeled-input.vue';
-import propertyInputNumberVue from '~/components/property-input-number.vue';
-import propertyInputTextVue from '~/components/property-input-text.vue';
-import propertyInputTextareaVue from '~/components/property-input-textarea.vue';
-import categoryChooserVue from '~/components/category-chooser.vue';
-import editorLinksVue from '~/components/editor-links.vue';
-import editorPhysicalVue from '~/components/editor-physical.vue';
-import editorModeVue from '~/components/editor-mode.vue';
-import editorChannelDialogVue from '~/components/editor-channel-dialog.vue';
-import editorChooseChannelEditModeDialogVue from '~/components/editor-choose-channel-edit-mode-dialog.vue';
-import editorRestoreDialogVue from '~/components/editor-restore-dialog.vue';
-import editorSubmitDialogVue from '~/components/editor-submit-dialog.vue';
+import propertyInputNumberVue from '~/components/editor/property-input-number.vue';
+import propertyInputTextVue from '~/components/editor/property-input-text.vue';
+import propertyInputTextareaVue from '~/components/editor/property-input-textarea.vue';
+import categoryChooserVue from '~/components/editor/category-chooser.vue';
+import editorLinksVue from '~/components/editor/links.vue';
+import editorPhysicalVue from '~/components/editor/physical.vue';
+import editorModeVue from '~/components/editor/mode.vue';
+import editorChannelDialogVue from '~/components/editor/channel-dialog.vue';
+import editorChooseChannelEditModeDialogVue from '~/components/editor/choose-channel-edit-mode-dialog.vue';
+import editorRestoreDialogVue from '~/components/editor/restore-dialog.vue';
+import editorSubmitDialogVue from '~/components/editor/submit-dialog.vue';
 
 export default {
   components: {
