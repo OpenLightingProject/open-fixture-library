@@ -46,6 +46,51 @@
         "comment": "Rotation"
       }
     },
+    "LED Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "LED Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "LED Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "LED White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        }
+      ]
+    },
     "LED GROUP 1 - Red Intensity": {
       "capability": {
         "type": "ColorIntensity",
@@ -460,6 +505,31 @@
     }
   },
   "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Auto Programs",
+        "Auto Programs speed",
+        "Rotation 2"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "LED Red",
+        "LED Green",
+        "LED Blue",
+        "LED White",
+        "Color Presets",
+        "Master Dimmer",
+        "LED Strobe",
+        "Laser",
+        "Strobe - Laser",
+        "Rotation 2"
+      ]
+    },
     {
       "name": "22 Channel",
       "shortName": "22ch",
