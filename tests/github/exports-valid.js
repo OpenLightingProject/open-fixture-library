@@ -24,10 +24,10 @@ let testErrored = false;
 
 /**
  * @typedef {Object} Task
- * @property {string} manKey
- * @property {string} fixKey
- * @property {string} pluginKey
- * @property {string} testKey
+ * @property {String} manKey
+ * @property {String} fixKey
+ * @property {String} pluginKey
+ * @property {String} testKey
  */
 
 (async () => {

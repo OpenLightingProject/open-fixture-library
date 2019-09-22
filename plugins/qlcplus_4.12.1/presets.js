@@ -139,9 +139,9 @@ const importHelpers = {
   /**
    * Try to guess speedStart / speedEnd from the capability name and set them
    * to the capability. It may also set cap.type to "Rotation".
-   * @param {string} capabilityName The capability name to extract information from.
+   * @param {String} capabilityName The capability name to extract information from.
    * @param {Object} cap The OFL capability object to add found properties to.
-   * @returns {string} The rest of the capabilityName.
+   * @returns {String} The rest of the capabilityName.
    */
   getSpeedGuessedComment(capabilityName, cap) {
     return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|C?CW)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i, (match, direction, start, end) => {
@@ -496,7 +496,7 @@ const channelPresets = {
 
 /**
  * @param {CoarseChannel} channel The OFL channel object.
- * @returns {string|null} The QLC+ channel preset name or null, if there is no suitable one.
+ * @returns {String|null} The QLC+ channel preset name or null, if there is no suitable one.
  */
 function getChannelPreset(channel) {
   if (channel.capabilities.length > 1) {
@@ -509,10 +509,10 @@ function getChannelPreset(channel) {
 }
 
 /**
- * @param {string} preset The channel preset to import.
- * @param {string} channelName The channel name.
- * @param {number} panMax The maximum pan angle, or 0.
- * @param {number} tiltMax The maximum tilt angle, or 0.
+ * @param {String} preset The channel preset to import.
+ * @param {String} channelName The channel name.
+ * @param {Number} panMax The maximum pan angle, or 0.
+ * @param {Number} tiltMax The maximum tilt angle, or 0.
  * @returns {Object} The OFL capability object.
  */
 function getCapabilityFromChannelPreset(preset, channelName, panMax, tiltMax) {
@@ -625,7 +625,7 @@ const fineChannelPresets = {
 
 /**
  * @param {FineChannel} fineChannel The OFL fine channel object.
- * @returns {string|null} The QLC+ channel preset name or null, if there is no suitable one.
+ * @returns {String|null} The QLC+ channel preset name or null, if there is no suitable one.
  */
 function getFineChannelPreset(fineChannel) {
   const coarseChannel = fineChannel.coarseChannel;
@@ -974,9 +974,9 @@ const capabilityPresets = {
 /**
  * @typedef CapabilityPreset
  * @type {Object}
- * @property {string} presetName The name of the QLC+ capability preset.
- * @property {string|null} res1 A value for the QLC+ capability element's Res1 attribute, or null if the attribute should not be added.
- * @property {string|null} res2 A value for the QLC+ capability element's Res2 attribute, or null if the attribute should not be added.
+ * @property {String} presetName The name of the QLC+ capability preset.
+ * @property {String|null} res1 A value for the QLC+ capability element's Res1 attribute, or null if the attribute should not be added.
+ * @property {String|null} res2 A value for the QLC+ capability element's Res2 attribute, or null if the attribute should not be added.
  */
 
 /**
@@ -1001,7 +1001,7 @@ function getCapabilityPreset(capability) {
 }
 
 /**
- * @param {string} preset The capability preset to import.
+ * @param {String} preset The capability preset to import.
  * @param {Object} capData Additional data about capability and channel.
  * @returns {Object} The OFL capability object.
  */

@@ -15,9 +15,9 @@ module.exports.version = `0.5.2`;
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
  * @param {Object} options Global options, including:
- * @param {string} options.baseDir Absolute path to OFL's root directory.
+ * @param {String} options.baseDir Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {string|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
+ * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
 */
 module.exports.export = async function exportQlcPlus(fixtures, options) {
@@ -306,8 +306,8 @@ function addHeads(xmlMode, mode) {
 
   /**
    * @param {AbstractChannel} channel A channel from a mode's channel list.
-   * @param {string} pixelKey The pixel to check for.
-   * @returns {boolean} Whether the given channel controls the given pixel key, either directly or as part of a pixel group.
+   * @param {String} pixelKey The pixel to check for.
+   * @returns {Boolean} Whether the given channel controls the given pixel key, either directly or as part of a pixel group.
    */
   function controlsPixelKey(channel, pixelKey) {
     if (channel instanceof SwitchingChannel) {
@@ -329,7 +329,7 @@ function addHeads(xmlMode, mode) {
 /**
  * Determines the QLC+ fixture type out of the fixture's categories.
  * @param {Fixture} fixture The Fixture instance whose QLC+ type has to be determined.
- * @returns {string} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
+ * @returns {String} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
  */
 function getFixtureType(fixture) {
   const replaceCats = {
@@ -346,8 +346,8 @@ function getFixtureType(fixture) {
 
 /**
  * Converts a channel's type into a valid QLC+ channel type.
- * @param {string} type Our own OFL channel type.
- * @returns {string} The corresponding QLC+ channel type.
+ * @param {String} type Our own OFL channel type.
+ * @returns {String} The corresponding QLC+ channel type.
  */
 function getChannelType(type) {
   const qlcplusChannelTypes = {

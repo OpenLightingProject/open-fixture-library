@@ -40,9 +40,9 @@ module.exports.version = `0.1.0`; // semantic versioning of export plugin
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects, see our fixture model
  * @param {Object} options Some global options, for example:
- * @param {string} options.baseDir Absolute path to OFL's root directory
+ * @param {String} options.baseDir Absolute path to OFL's root directory
  * @param {Date} options.date The current time.
- * @param {string|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
+ * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} All generated files (see file schema above)
 */
 module.exports.export = async function exportPluginName(fixtures, options) {
@@ -96,8 +96,8 @@ module.exports.version = `0.1.0`; // semantic versioning of import plugin
 
 /**
  * @param {Buffer} buffer The imported file.
- * @param {string} fileName The imported file's name.
- * @param {string} authorName The importer's name.
+ * @param {String} fileName The imported file's name.
+ * @param {String} authorName The importer's name.
  * @returns {Promise.<Object, Error>} A Promise resolving to an out object
  *                                    (see above) or rejects with an error.
 **/
@@ -147,12 +147,12 @@ const promisify = require(`util`).promisify;
 
 /**
  * @param {Object} exportFile The file returned by the plugins' export module.
- * @param {string} exportFile.name File name, may include slashes to provide a folder structure.
- * @param {string} exportFile.content File content.
- * @param {string} exportFile.mimetype File mime type.
+ * @param {String} exportFile.name File name, may include slashes to provide a folder structure.
+ * @param {String} exportFile.content File content.
+ * @param {String} exportFile.mimetype File mime type.
  * @param {Array.<Fixture>|null} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
- * @param {string|null} exportFile.mode Mode's shortName if given file only describes a single mode.
- * @returns {Promise.<undefined, Array.<string>|string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
+ * @param {String|null} exportFile.mode Mode's shortName if given file only describes a single mode.
+ * @returns {Promise.<undefined, Array.<String>|String>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
 **/
 module.exports = async function testValueCorrectness(exportFile) {
   const parser = new xml2js.Parser();

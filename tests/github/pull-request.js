@@ -122,7 +122,7 @@ module.exports.fetchChangedComponents = async function fetchChangedComponents() 
   /**
    * Parse the file type by its path and update the change summary of the file's status accordingly.
    * @param {'added'|'removed'|'modified'} fileStatus What happened with the file in this pull request.
-   * @param {string} filePath The file name, relative to the repository's root.
+   * @param {String} filePath The file name, relative to the repository's root.
    */
   function handleFile(fileStatus, filePath) {
     const changeSummary = changedComponents[fileStatus];
@@ -169,9 +169,9 @@ module.exports.fetchChangedComponents = async function fetchChangedComponents() 
  * Creates a new comment in the PR if test.lines is not empty and if there is not already an exactly equal comment.
  * Deletes old comments from the same test (determined by test.filename).
  * @param {Object} test Information about the test script that wants to update the comment.
- * @param {string} test.filename Relative path from OFL root dir to test file: 'tests/github/test-file-name.js'
- * @param {string} test.name Heading to be used in the comment
- * @param {Array.<string>} test.lines The comment's lines of text
+ * @param {String} test.filename Relative path from OFL root dir to test file: 'tests/github/test-file-name.js'
+ * @param {String} test.name Heading to be used in the comment
+ * @param {Array.<String>} test.lines The comment's lines of text
  * @returns {Promise} A Promise that is fulfilled as soon as all GitHub operations have finished
  */
 module.exports.updateComment = async function updateComment(test) {

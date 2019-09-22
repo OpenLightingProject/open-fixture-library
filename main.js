@@ -211,10 +211,10 @@ function listen() {
 /**
  * Instruct Express to initiate a download of one / multiple exported fixture files.
  * @param {express.Response} response Express Response object
- * @param {string} pluginKey Key of the export plugin to use.
+ * @param {String} pluginKey Key of the export plugin to use.
  * @param {Array.<Fixture>} fixtures Array of fixtures to export.
- * @param {string} zipName Name of the zip file (if multiple files should be downloaded).
- * @param {string} errorDesc String describing what fixture(s) should have been downloaded.
+ * @param {String} zipName Name of the zip file (if multiple files should be downloaded).
+ * @param {String} errorDesc String describing what fixture(s) should have been downloaded.
  * @returns {Promise} A Promise that is resolved when the response is sent.
  */
 async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDesc) {
@@ -260,7 +260,7 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
 
 /**
  * Like standard require(...), but invalidates cache first (if not in production environment).
- * @param {string} target The require path, like `./register.json`.
+ * @param {String} target The require path, like `./register.json`.
  * @returns {*} The result of standard require(target).
  */
 function requireNoCacheInDev(target) {

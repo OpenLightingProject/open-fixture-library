@@ -15,9 +15,9 @@ const testFixtures = require(`../test-fixtures.json`).map(
 
 /**
  * @typedef {Object} Task
- * @property {string} manFix
- * @property {string} currentPluginKey
- * @property {string} comparePluginKey
+ * @property {String} manFix
+ * @property {String} currentPluginKey
+ * @property {String} comparePluginKey
  */
 
 // generate diff tasks describing the diffed plugins, fixtures and the reason for diffing (which component has changed)
@@ -198,7 +198,7 @@ function getDiffTasks(changedComponents) {
 
 /**
  * @param {Task} task The export diff task to fulfill.
- * @returns {Promise.<Array.<string>>} An array of message lines.
+ * @returns {Promise.<Array.<String>>} An array of message lines.
  */
 async function performTask(task) {
   const output = await diffPluginOutputs(task.currentPluginKey, task.comparePluginKey, process.env.TRAVIS_BRANCH, [task.manFix]);
@@ -248,10 +248,10 @@ async function performTask(task) {
 /**
  * @typedef ChangeFlags
  * @type Object
- * @property {boolean} hasRemoved Whether any files were removed.
- * @property {boolean} hasAdded Whether any files were added.
- * @property {boolean} hasChanged Whether any files were changed.
- * @property {boolean} nothingChanged Whether changed at all.
+ * @property {Boolean} hasRemoved Whether any files were removed.
+ * @property {Boolean} hasAdded Whether any files were added.
+ * @property {Boolean} hasChanged Whether any files were changed.
+ * @property {Boolean} nothingChanged Whether changed at all.
  */
 
 /**
@@ -273,7 +273,7 @@ function getChangeFlags(diffOutput) {
 
 /**
  * @param {ChangeFlags} changeFlags Object with flags that tell what changed.
- * @returns {string} String containing a GitHub emoji depicting the changes.
+ * @returns {String} String containing a GitHub emoji depicting the changes.
  */
 function getEmoji(changeFlags) {
   if (changeFlags.nothingChanged) {

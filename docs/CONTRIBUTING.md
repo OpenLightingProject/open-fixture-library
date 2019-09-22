@@ -44,9 +44,8 @@ You can also create the pull request if you're not done yet to involve the revie
 We always aim to have clear, readable code. So please try to respect these principles:
 
 * Document every new function with [JSDoc](http://usejsdoc.org/about-getting-started.html)
-  - These types are lowercase: `number`, `string`, `boolean`
-  - And these are uppercase: `Array`, `Object`
-  - Be careful with arrays: Prefer the `Array.<string>` syntax over `string[]`
+  - Primitive types are uppercase: `Number`, `String`, `Boolean`, `Array`, `Object`
+  - Be careful with arrays: Prefer the `Array.<String>` syntax over `String[]`
 * Use [self-describing variable names](http://wiki.c2.com/?GoodVariableNames) and prefer constant variables over literal values without explanation
 * Prefer code readability over [micro-optimisation](https://softwareengineering.stackexchange.com/questions/99445/is-micro-optimisation-important-when-coding)
 * Use new [ES2015 (ES6)](https://babeljs.io/learn-es2015/) features that improve code readability, for example:

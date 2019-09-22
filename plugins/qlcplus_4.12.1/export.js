@@ -17,9 +17,9 @@ module.exports.version = `1.2.0`;
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
  * @param {Object} options Global options, including:
- * @param {string} options.baseDir Absolute path to OFL's root directory.
+ * @param {String} options.baseDir Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {string|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
+ * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
 */
 module.exports.export = async function exportQlcPlus(fixtures, options) {
@@ -238,7 +238,7 @@ function addCapabilityLegacyAttributes(xmlCapability, cap) {
 /**
  * @param {Object} xmlCapability The xmlbuilder <Capability> object.
  * @param {Capability} cap The OFL capability object.
- * @returns {boolean} True when one or more <Alias> elements were added to the capability, false otherwise.
+ * @returns {Boolean} True when one or more <Alias> elements were added to the capability, false otherwise.
  */
 function addCapabilityAliases(xmlCapability, cap) {
   const fixture = cap._channel.fixture;
@@ -275,7 +275,7 @@ function addCapabilityAliases(xmlCapability, cap) {
 /**
  * @param {Object} xml The xmlbuilder <FixtureDefinition> object.
  * @param {Mode} mode The OFL mode object.
- * @param {boolean} createPhysical Whether to add a Physical XML element to the mode.
+ * @param {Boolean} createPhysical Whether to add a Physical XML element to the mode.
  */
 function addMode(xml, mode, createPhysical) {
   const xmlMode = xml.element({
@@ -405,7 +405,7 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
 /**
  * @param {'Pan'|'Tilt'} panOrTilt Whether to return pan max or tilt max.
  * @param {Array.<CoarseChannel>} channels The channels in which to look for pan/tilt angles, e.g. all mode channels.
- * @returns {number} The maximum pan/tilt range in the given channels, i.e. highest angle - lowest angle. If only continous pan/tilt is used, the return value is 9999. Defaults to 0.
+ * @returns {Number} The maximum pan/tilt range in the given channels, i.e. highest angle - lowest angle. If only continous pan/tilt is used, the return value is 9999. Defaults to 0.
  */
 function getPanTiltMax(panOrTilt, channels) {
   const capabilities = [];
@@ -458,8 +458,8 @@ function addHeads(xmlMode, mode) {
 
   /**
    * @param {AbstractChannel} channel A channel from a mode's channel list.
-   * @param {string} pixelKey The pixel to check for.
-   * @returns {boolean} Whether the given channel controls the given pixel key, either directly or as part of a pixel group.
+   * @param {String} pixelKey The pixel to check for.
+   * @returns {Boolean} Whether the given channel controls the given pixel key, either directly or as part of a pixel group.
    */
   function controlsPixelKey(channel, pixelKey) {
     if (channel instanceof SwitchingChannel) {
@@ -481,7 +481,7 @@ function addHeads(xmlMode, mode) {
 /**
  * Determines the QLC+ fixture type out of the fixture's categories.
  * @param {Fixture} fixture The Fixture instance whose QLC+ type has to be determined.
- * @returns {string} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
+ * @returns {String} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
  */
 function getFixtureType(fixture) {
   const replaceCats = {
@@ -500,7 +500,7 @@ function getFixtureType(fixture) {
 
 
   /**
-   * @returns {boolean} True if there are individual beams (or it can not be determined), false if the pixels' colors blend into each other.
+   * @returns {Boolean} True if there are individual beams (or it can not be determined), false if the pixels' colors blend into each other.
    */
   function isBeamBar() {
     if (!fixture.physical || !fixture.physical.matrixPixelsSpacing) {
@@ -513,8 +513,8 @@ function getFixtureType(fixture) {
 
 /**
  * Converts a channel's type into a valid QLC+ channel type.
- * @param {string} type Our own OFL channel type.
- * @returns {string} The corresponding QLC+ channel type.
+ * @param {String} type Our own OFL channel type.
+ * @returns {String} The corresponding QLC+ channel type.
  */
 function getChannelType(type) {
   const qlcplusChannelTypes = {

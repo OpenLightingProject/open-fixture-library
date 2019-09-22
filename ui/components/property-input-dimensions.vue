@@ -136,10 +136,10 @@ export default {
 };
 
 /**
- * @param {number|null} x X value of the dimensions array or null.
- * @param {number|null} y Y value of the dimensions array or null.
- * @param {number|null} z Z value of the dimensions array or null.
- * @returns {[number, number, number]|null} Dimensions array with the inputs or null if all inputs were null.
+ * @param {Number|null} x X value of the dimensions array or null.
+ * @param {Number|null} y Y value of the dimensions array or null.
+ * @param {Number|null} z Z value of the dimensions array or null.
+ * @returns {[Number, Number, Number]|null} Dimensions array with the inputs or null if all inputs were null.
  */
 function getDimensionsArray(x, y, z) {
   if (x === null && y === null && z === null) {

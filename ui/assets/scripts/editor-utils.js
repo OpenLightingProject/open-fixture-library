@@ -40,7 +40,7 @@ export function getEmptyFixture() {
 
 
 /**
- * @param {string} linkType The type of the new link.
+ * @param {String} linkType The type of the new link.
  * @returns {Object} An empty fixture link object.
  */
 export function getEmptyLink(linkType = `manual`) {
@@ -123,8 +123,8 @@ export function getEmptyChannel() {
 
 
 /**
- * @param {string} coarseChannelId The UUID of the coarse channel.
- * @param {number} resolution The resolution of the newly created fine channel.
+ * @param {String} coarseChannelId The UUID of the coarse channel.
+ * @param {Number} resolution The resolution of the newly created fine channel.
  * @returns {Object} An empty fine channel object for the given coarse channel.
  */
 export function getEmptyFineChannel(coarseChannelId, resolution) {
@@ -164,7 +164,7 @@ export function getEmptyWheelSlot() {
 
 /**
  * @param {Object} channel The channel object.
- * @returns {boolean} False if the channel object is still empty / unchanged, true otherwise.
+ * @returns {Boolean} False if the channel object is still empty / unchanged, true otherwise.
  */
 export function isChannelChanged(channel) {
   return Object.keys(channel).some(prop => {
@@ -191,7 +191,7 @@ export function isChannelChanged(channel) {
 
 /**
  * @param {Object} cap The capability object.
- * @returns {boolean} False if the capability object is still empty / unchanged, true otherwise.
+ * @returns {Boolean} False if the capability object is still empty / unchanged, true otherwise.
  */
 export function isCapabilityChanged(cap) {
   if (cap.dmxRange !== null) {
@@ -209,8 +209,8 @@ export function isCapabilityChanged(cap) {
 
 
 /**
- * @param {string|null} hexString A string of comma-separated hex values, or null.
- * @returns {Array.<string>|null} The hex codes as array of strings.
+ * @param {String|null} hexString A string of comma-separated hex values, or null.
+ * @returns {Array.<String>|null} The hex codes as array of strings.
  */
 export function colorsHexStringToArray(hexString) {
   if (typeof hexString !== `string`) {

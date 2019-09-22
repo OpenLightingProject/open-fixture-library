@@ -14,9 +14,9 @@ module.exports.version = `0.2.0`;
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
  * @param {Object} options Global options, including:
- * @param {string} options.baseDir Absolute path to OFL's root directory.
+ * @param {String} options.baseDir Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {string|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
+ * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
 */
 module.exports.export = async function exportDLight(fixtures, options) {
@@ -70,7 +70,7 @@ module.exports.export = async function exportDLight(fixtures, options) {
  * This function adds the given attribute group along with its channels to the given XML.
  * @param {XMLElement} xml The XML parent element.
  * @param {Mode} mode The fixture's mode that this definition is representing.
- * @param {string} attribute A D::Light attribute name.
+ * @param {String} attribute A D::Light attribute name.
  * @param {Array.<AbstractChannel>} channels All channels of the mode that are associated to the given attribute name.
  */
 function addAttribute(xml, mode, attribute, channels) {
@@ -150,7 +150,7 @@ function addAttribute(xml, mode, attribute, channels) {
 
     /**
      * @param {AbstractChannel} channel Any kind of channel, e.g. an item of a mode's channel list.
-     * @returns {string} The parameter name (i. e. channel name) that should be used for this channel in D::Light.
+     * @returns {String} The parameter name (i. e. channel name) that should be used for this channel in D::Light.
      */
     function getParameterName(channel) {
       const uniqueName = channel.uniqueName;
@@ -186,7 +186,7 @@ function addAttribute(xml, mode, attribute, channels) {
 
 /**
  * @param {CoarseChannel|FineChannel} channel A usable channel, i. e. no switching channel.
- * @returns {number} The DMX value this channel should be set to as default.
+ * @returns {Number} The DMX value this channel should be set to as default.
  */
 function getDefaultValue(channel) {
   if (channel instanceof FineChannel) {
@@ -210,7 +210,7 @@ function getUsableChannel(channel) {
 
 /**
  * @param {Array.<AbstractChannel>} channels List of channels, e.g. from a mode's channel list.
- * @returns {Object.<string, AbstractChannel>} D::Light attribute names mapped to the corresponding channels of the given list. All channels are included once.
+ * @returns {Object.<String, AbstractChannel>} D::Light attribute names mapped to the corresponding channels of the given list. All channels are included once.
  */
 function getChannelsByAttribute(channels) {
   const channelsByAttribute = {
@@ -240,7 +240,7 @@ function getChannelsByAttribute(channels) {
 
   /**
    * @param {CoarseChannel|FineChannel} channel A usable channel, i. e. no matrix or switching channels.
-   * @returns {string} The proper D::Light attribute name for this channel.
+   * @returns {String} The proper D::Light attribute name for this channel.
    */
   function getChannelAttribute(channel) {
     if (channel instanceof FineChannel) {

@@ -12,8 +12,8 @@ module.exports.version = `0.5.0`;
 
 /**
  * @param {Buffer} buffer The imported file.
- * @param {string} filename The imported file's name.
- * @param {string} authorName The importer's name.
+ * @param {String} filename The imported file's name.
+ * @param {String} authorName The importer's name.
  * @returns {Promise.<Object, Error>} A Promise resolving to an out object
 **/
 module.exports.import = async function importQlcPlus(buffer, filename, authorName) {
@@ -87,7 +87,7 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
 
 /**
  * @param {Object} qlcPlusFixture The QLC+ fixture object.
- * @returns {Array.<string>} The OFL fixture categories.
+ * @returns {Array.<String>} The OFL fixture categories.
  */
 function getOflCategories(qlcPlusFixture) {
   const category = qlcPlusFixture.Type[0];
@@ -660,8 +660,8 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
 
   /**
    * Helper function to get data from the OFL fixture's physical data.
-   * @param {string} section The section object property name.
-   * @param {string} property The property name in the section,
+   * @param {String} section The section object property name.
+   * @param {String} property The property name in the section,
    * @returns {*} The property data, or undefined.
    */
   function getOflFixPhysicalProperty(section, property) {
@@ -676,7 +676,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
 /**
  * @param {Object} qlcPlusMode The QLC+ mode object.
  * @param {Object|undefined} oflFixPhysical The OFL fixture's physical object.
- * @param {Array.<string>} warningsArray This fixture's warnings array in the `out` object.
+ * @param {Array.<String>} warningsArray This fixture's warnings array in the `out` object.
  * @returns {Object} The OFL mode object.
  */
 function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
@@ -715,7 +715,7 @@ function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
 /**
  * @param {Object} fixture The OFL fixture object.
  * @param {Object} qlcPlusFixture The QLC+ fixture object.
- * @param {Array.<string>} warningsArray This fixture's warnings array in the `out` object.
+ * @param {Array.<String>} warningsArray This fixture's warnings array in the `out` object.
  */
 function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
   const fineChannelRegex = /\s*fine\s*|\s*16[-_\s]*bit\s*/i;
@@ -749,8 +749,8 @@ function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
 
 
   /**
-   * @param {string} qlcPlusFineChannel The key of the fine channel.
-   * @returns {string|null} The key of the corresponding coarse channel, or null if it could not be detected.
+   * @param {String} qlcPlusFineChannel The key of the fine channel.
+   * @returns {String|null} The key of the corresponding coarse channel, or null if it could not be detected.
    */
   function getCoarseChannelKey(qlcPlusFineChannel) {
     const fineChannelKey = qlcPlusFineChannel.$.Name;
@@ -925,8 +925,8 @@ function cleanUpFixture(fixture, qlcPlusFixture) {
 }
 
 /**
- * @param {string} str The string to slugify.
- * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
+ * @param {String} str The string to slugify.
+ * @returns {String} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(str) {
   return str.toLowerCase().replace(/[^a-z0-9-]+/g, ` `).trim().replace(/\s+/g, `-`);

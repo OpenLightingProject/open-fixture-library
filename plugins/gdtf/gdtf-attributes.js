@@ -84,10 +84,10 @@ const gdtfUnits = {
 };
 
 /**
- * @param {number} value1 The first physical value.
- * @param {number|null} value2 The second physical value, or null.
+ * @param {Number} value1 The first physical value.
+ * @param {Number|null} value2 The second physical value, or null.
  * @param {function} predicate A function returning a boolean.
- * @returns {boolean} True if all provided values fulfill the condition predicate.
+ * @returns {Boolean} True if all provided values fulfill the condition predicate.
  */
 function physicalValuesFulfillCondition(value1, value2, predicate) {
   return predicate(value1) && (value2 === null || predicate(value2));
@@ -1587,9 +1587,9 @@ function normalizeAngularSpeedDirection(gdtfCapability) {
 
 /**
  * @param {Object} gdtfCapability The enhanced <ChannelSet> XML object.
- * @param {string} primaryColor The color that this capability is most likely.
- * @param {string} secondaryColor The color that this capability is second most likely.
- * @returns {string} Either the primary, or the secondary color.
+ * @param {String} primaryColor The color that this capability is most likely.
+ * @param {String} secondaryColor The color that this capability is second most likely.
+ * @returns {String} Either the primary, or the secondary color.
  */
 function guessColorComponentName(gdtfCapability, primaryColor, secondaryColor) {
   const name = (gdtfCapability._channelFunction._attribute.$.Pretty || ``).toLowerCase();

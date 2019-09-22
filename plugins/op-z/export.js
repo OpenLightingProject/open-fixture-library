@@ -13,9 +13,9 @@ const MAX_OPZ_FIXTURES = 16;
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
  * @param {Object} options Global options, including:
- * @param {string} options.baseDir Absolute path to OFL's root directory.
+ * @param {String} options.baseDir Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {string|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
+ * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
 */
 module.exports.export = async function exportOpZ(fixtures, options) {
@@ -60,8 +60,8 @@ module.exports.export = async function exportOpZ(fixtures, options) {
 
   /**
    * @param {AbstractChannel} channel The OFL channel object.
-   * @param {string} fixtureKey The OFL fixture key.
-   * @returns {string} The OP-Z channel type.
+   * @param {String} fixtureKey The OFL fixture key.
+   * @returns {String} The OP-Z channel type.
    */
   function getOpZChannelType(channel, fixtureKey) {
     if (channel instanceof SwitchingChannel) {
@@ -109,7 +109,7 @@ module.exports.export = async function exportOpZ(fixtures, options) {
      * Try to use a `knobX` OP-Z channel type for this channel. A channel used
      * across different modes will get the same knob again. null is returned
      * for all channels after all knobs are already assigned.
-     * @returns {string|null} The OP-Z channel type `knobX` if applicable, null otherwise.
+     * @returns {String|null} The OP-Z channel type `knobX` if applicable, null otherwise.
      */
     function getKnobType() {
       const channelKey = `${fixtureKey}/${channel.key}`;

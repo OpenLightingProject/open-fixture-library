@@ -540,7 +540,7 @@ export default {
     /**
      * Format a date to display as a <time> HTML tag.
      * @param {Date} date The Date object to format.
-     * @returns {string} The <time> HTML tag.
+     * @returns {String} The <time> HTML tag.
      */
     getDateHtml(date) {
       return `<time datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, ``)}</time>`;
@@ -573,7 +573,7 @@ const nativeVideoUrlRegex = /\.(?:mp4|avi)$/;
 
 
 /**
- * @param {string} url The video URL.
+ * @param {String} url The video URL.
  * @returns {Object|null} The embettable video data for the URL, or null if the video can not be embetted.
  */
 function getEmbettableVideoData(url) {
@@ -613,8 +613,8 @@ function getEmbettableVideoData(url) {
 }
 
 /**
- * @param {string} url The URL to extract the hostname from.
- * @returns {string} The hostname of the provided URL, or the whole URL if the hostname could not be determined.
+ * @param {String} url The URL to extract the hostname from.
+ * @returns {String} The hostname of the provided URL, or the whole URL if the hostname could not be determined.
  */
 function getHostname(url) {
   // adapted from https://stackoverflow.com/a/21553982/451391
