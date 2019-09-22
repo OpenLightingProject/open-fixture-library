@@ -64,10 +64,10 @@
 </template>
 
 <script>
-import a11yDialogVue from '~/components/a11y-dialog.vue';
+import a11yDialogVue from './a11y-dialog.vue';
 
-import labeledInputVue from '~/components/labeled-input.vue';
-import labeledValueVue from '~/components/labeled-value.vue';
+import labeledInputVue from './labeled-input.vue';
+import labeledValueVue from './labeled-value.vue';
 
 export default {
   components: {

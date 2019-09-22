@@ -95,18 +95,18 @@ a.remove {
 </style>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.js';
+import schemaProperties from '../../../lib/schema-properties.js';
 import {
   getEmptyCapability,
   isCapabilityChanged
-} from '~/assets/scripts/editor-utils.js';
+} from '../../assets/scripts/editor-utils.js';
 
-import conditionalDetailsVue from '~/components/conditional-details.vue';
-import propertyInputRangeVue from '~/components/editor/property-input-range.vue';
-import labeledInputVue from '~/components/labeled-input.vue';
-import svgVue from "~/components/svg.vue";
+import conditionalDetailsVue from '../conditional-details.vue';
+import propertyInputRangeVue from './property-input-range.vue';
+import labeledInputVue from '../labeled-input.vue';
+import svgVue from "../svg.vue";
 
-import editorCapabilityTypeData from '~/components/editor/capability-type-data.vue';
+import editorCapabilityTypeData from './capability-type-data.vue';
 
 export default {
   components: {

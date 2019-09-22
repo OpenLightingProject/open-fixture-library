@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import a11yDialogVue from '~/components/a11y-dialog.vue';
+import a11yDialogVue from '../a11y-dialog.vue';
 
 export default {
   components: {

@@ -248,7 +248,7 @@
 import scrollIntoView from 'scroll-into-view';
 import uuidV4 from 'uuid/v4.js';
 
-import schemaProperties from '~~/lib/schema-properties.js';
+import schemaProperties from '../../../lib/schema-properties.js';
 import {
   constants,
   getEmptyCapability,
@@ -257,17 +257,17 @@ import {
   isChannelChanged,
   isCapabilityChanged,
   clone
-} from '~/assets/scripts/editor-utils.js';
+} from '../../assets/scripts/editor-utils.js';
 
-import a11yDialogVue from '~/components/a11y-dialog.vue';
-import editorCapabilityVue from '~/components/editor/capability.vue';
-import editorCapabilityWizardVue from '~/components/editor/capability-wizard.vue';
-import labeledInputVue from '~/components/labeled-input.vue';
-import propertyInputBooleanVue from '~/components/editor/property-input-boolean.vue';
-import propertyInputEntityVue from '~/components/editor/property-input-entity.vue';
-import propertyInputSelectVue from '~/components/editor/property-input-select.vue';
-import propertyInputTextVue from '~/components/editor/property-input-text.vue';
-import svgVue from '~/components/svg.vue';
+import a11yDialogVue from '../a11y-dialog.vue';
+import editorCapabilityVue from './capability.vue';
+import editorCapabilityWizardVue from './capability-wizard.vue';
+import labeledInputVue from '../labeled-input.vue';
+import propertyInputBooleanVue from './property-input-boolean.vue';
+import propertyInputEntityVue from './property-input-entity.vue';
+import propertyInputSelectVue from './property-input-select.vue';
+import propertyInputTextVue from './property-input-text.vue';
+import svgVue from '../svg.vue';
 
 export default {
   components: {

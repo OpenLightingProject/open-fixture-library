@@ -74,8 +74,8 @@
 </style>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.js';
-import propertyInputNumberVue from '~/components/editor/property-input-number.vue';
+import schemaProperties from '../../../lib/schema-properties.js';
+import propertyInputNumberVue from './property-input-number.vue';
 
 export default {
   components: {

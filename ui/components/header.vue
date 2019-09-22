@@ -225,8 +225,8 @@ header {
 </style>
 
 <script>
-import svg from '~/components/svg.vue';
-import themeSwitcherVue from '~/components/theme-switcher.vue';
+import svg from './svg.vue';
+import themeSwitcherVue from './theme-switcher.vue';
 
 export default {
   components: {

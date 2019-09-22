@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import svgVue from '~/components/svg.vue';
+import svgVue from './svg.vue';
 
 export default {
   components: {

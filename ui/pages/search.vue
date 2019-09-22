@@ -85,11 +85,11 @@
 </style>
 
 <script>
-import register from '~~/fixtures/register.json';
-import manufacturers from '~~/fixtures/manufacturers.json';
+import register from '../../fixtures/register.json';
+import manufacturers from '../../fixtures/manufacturers.json';
 
-import conditionalDetailsVue from '~/components/conditional-details.vue';
-import labeledInputVue from '~/components/labeled-input.vue';
+import conditionalDetailsVue from '../components/conditional-details.vue';
+import labeledInputVue from '../components/labeled-input.vue';
 
 export default {
   components: {

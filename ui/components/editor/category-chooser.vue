@@ -26,7 +26,7 @@
 
 
 <script>
-import categoryBadgeVue from '~/components/category-badge.vue';
+import categoryBadgeVue from '../category-badge.vue';
 
 export default {
   components: {

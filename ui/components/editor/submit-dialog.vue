@@ -82,9 +82,9 @@
 </template>
 
 <script>
-import a11yDialogVue from '~/components/a11y-dialog.vue';
-import downloadButtonVue from '~/components/download-button.vue';
-import { clone } from '~/assets/scripts/editor-utils.js';
+import a11yDialogVue from '../a11y-dialog.vue';
+import downloadButtonVue from '../download-button.vue';
+import { clone } from '../../assets/scripts/editor-utils.js';
 
 const stateTitles = {
   closed: `Closed`,

@@ -3,9 +3,9 @@
 </template>
 
 <script>
-import svg from '~/components/svg.vue';
+import svg from '../svg.vue';
 
-import Capability from '~~/lib/model/Capability.js';
+import Capability from '../../../lib/model/Capability.js';
 
 export default {
   components: {

@@ -118,12 +118,12 @@ td, th {
 
 
 <script>
-import svg from '~/components/svg.vue';
-import helpWantedMessage from '~/components/help-wanted-message.vue';
-import fixtureCapabilityTypeIconVue from '~/components/fixture-page/capability-type-icon.vue';
+import svg from '../svg.vue';
+import helpWantedMessage from '../help-wanted-message.vue';
+import fixtureCapabilityTypeIconVue from './capability-type-icon.vue';
 
-import CoarseChannel from '~~/lib/model/CoarseChannel.js';
-import Mode from '~~/lib/model/Mode.js';
+import CoarseChannel from '../../../lib/model/CoarseChannel.js';
+import Mode from '../../../lib/model/Mode.js';
 
 export default {
   components: {

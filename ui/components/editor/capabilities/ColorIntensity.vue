@@ -47,11 +47,11 @@
 </template>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.js';
+import schemaProperties from '../../../../lib/schema-properties.js';
 
-import editorProportionalCapabilityDataSwitcher from '~/components/editor/proportional-capability-data-switcher.vue';
-import propertyInputTextVue from '~/components/editor/property-input-text.vue';
-import labeledInputVue from '~/components/labeled-input.vue';
+import editorProportionalCapabilityDataSwitcher from '../proportional-capability-data-switcher.vue';
+import propertyInputTextVue from '../property-input-text.vue';
+import labeledInputVue from '../../labeled-input.vue';
 
 export default {
   components: {

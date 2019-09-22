@@ -43,11 +43,11 @@
 </style>
 
 <script>
-import svg from '~/components/svg.vue';
-import fixturePhysical from '~/components/fixture-page/physical.vue';
-import fixtureChannel from '~/components/fixture-page/channel.vue';
+import svg from '../svg.vue';
+import fixturePhysical from './physical.vue';
+import fixtureChannel from './channel.vue';
 
-import Mode from '~~/lib/model/Mode.js';
+import Mode from '../../../lib/model/Mode.js';
 
 export default {
   components: {

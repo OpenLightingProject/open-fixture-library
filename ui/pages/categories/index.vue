@@ -17,9 +17,9 @@
 </template>
 
 <script>
-import svg from '~/components/svg.vue';
+import svg from '../../components/svg.vue';
 
-import register from '~~/fixtures/register.json';
+import register from '../../../fixtures/register.json';
 
 export default {
   components: {

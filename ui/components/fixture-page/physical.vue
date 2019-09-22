@@ -130,9 +130,9 @@
 
 
 <script>
-import labeledValueVue from '~/components/labeled-value.vue';
+import labeledValueVue from '../labeled-value.vue';
 
-import Physical from '~~/lib/model/Physical.js';
+import Physical from '../../../lib/model/Physical.js';
 
 export default {
   components: {

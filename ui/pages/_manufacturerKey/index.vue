@@ -47,11 +47,11 @@
 </template>
 
 <script>
-import svg from '~/components/svg.vue';
+import svg from '../../components/svg.vue';
 
-import packageJson from '~~/package.json';
-import register from '~~/fixtures/register.json';
-import manufacturers from '~~/fixtures/manufacturers.json';
+import packageJson from '../../../package.json';
+import register from '../../../fixtures/register.json';
+import manufacturers from '../../../fixtures/manufacturers.json';
 
 export default {
   components: {

@@ -177,12 +177,12 @@
 </style>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.js';
+import schemaProperties from '../../../lib/schema-properties.js';
 
-import appSvg from '~/components/svg.vue';
-import propertyInputEntityVue from '~/components/editor/property-input-entity.vue';
-import propertyInputNumberVue from '~/components/editor/property-input-number.vue';
-import propertyInputTextVue from '~/components/editor/property-input-text.vue';
+import appSvg from '../svg.vue';
+import propertyInputEntityVue from './property-input-entity.vue';
+import propertyInputNumberVue from './property-input-number.vue';
+import propertyInputTextVue from './property-input-text.vue';
 
 export default {
   components: {

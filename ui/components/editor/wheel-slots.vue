@@ -16,7 +16,7 @@
 </style>
 
 <script>
-import editorWheelSlotVue from '~/components/editor/wheel-slot.vue';
+import editorWheelSlotVue from './wheel-slot.vue';
 
 export default {
   components: {

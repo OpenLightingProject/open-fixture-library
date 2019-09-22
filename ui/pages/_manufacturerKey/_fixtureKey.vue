@@ -279,26 +279,26 @@
 </style>
 
 <script>
-import packageJson from '~~/package.json';
-import register from '~~/fixtures/register.json';
-import plugins from '~~/plugins/plugins.json';
+import packageJson from '../../../package.json';
+import register from '../../../fixtures/register.json';
+import plugins from '../../../plugins/plugins.json';
 
-import schemaProperties from '~~/lib/schema-properties.js';
-import Fixture from '~~/lib/model/Fixture.js';
+import schemaProperties from '../../../lib/schema-properties.js';
+import Fixture from '../../../lib/model/Fixture.js';
 
-import svg from '~/components/svg.vue';
-import categoryBadge from '~/components/category-badge.vue';
-import conditionalDetailsVue from '~/components/conditional-details.vue';
-import downloadButtonVue from '~/components/download-button.vue';
-import fixturePhysical from '~/components/fixture-page/physical.vue';
-import fixtureMatrix from '~/components/fixture-page/matrix.vue';
-import fixtureWheel from '~/components/fixture-page/wheel.vue';
-import fixtureMode from '~/components/fixture-page/mode.vue';
-import helpWantedDialog from '~/components/help-wanted-dialog.vue';
-import helpWantedMessage from '~/components/help-wanted-message.vue';
-import labeledValueVue from '~/components/labeled-value.vue';
+import svg from '../../components/svg.vue';
+import categoryBadge from '../../components/category-badge.vue';
+import conditionalDetailsVue from '../../components/conditional-details.vue';
+import downloadButtonVue from '../../components/download-button.vue';
+import fixturePhysical from '../../components/fixture-page/physical.vue';
+import fixtureMatrix from '../../components/fixture-page/matrix.vue';
+import fixtureWheel from '../../components/fixture-page/wheel.vue';
+import fixtureMode from '../../components/fixture-page/mode.vue';
+import helpWantedDialog from '../../components/help-wanted-dialog.vue';
+import helpWantedMessage from '../../components/help-wanted-message.vue';
+import labeledValueVue from '../../components/labeled-value.vue';
 
-import fixtureLinksMixin from '~/assets/scripts/fixture-links-mixin.js';
+import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
 
 const VIDEOS_TO_EMBED = 2;
 

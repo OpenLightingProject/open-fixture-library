@@ -148,18 +148,18 @@ ol.mode-channels {
 </style>
 
 <script>
-import svg from '~/components/svg.vue';
-import conditionalDetails from '~/components/conditional-details.vue';
-import fixtureChannelTypeIcon from '~/components/fixture-page/channel-type-icon.vue';
-import fixtureCapabilityTable from '~/components/fixture-page/capability-table.vue';
-import labeledValueVue from '~/components/labeled-value.vue';
+import svg from '../svg.vue';
+import conditionalDetails from '../conditional-details.vue';
+import fixtureChannelTypeIcon from './channel-type-icon.vue';
+import fixtureCapabilityTable from './capability-table.vue';
+import labeledValueVue from '../labeled-value.vue';
 
-import AbstractChannel from '~~/lib/model/AbstractChannel.js';
-import CoarseChannel from '~~/lib/model/CoarseChannel.js';
-import FineChannel from '~~/lib/model/FineChannel.js';
-import Mode from '~~/lib/model/Mode.js';
-import NullChannel from '~~/lib/model/NullChannel.js';
-import SwitchingChannel from '~~/lib/model/SwitchingChannel.js';
+import AbstractChannel from '../../../lib/model/AbstractChannel.js';
+import CoarseChannel from '../../../lib/model/CoarseChannel.js';
+import FineChannel from '../../../lib/model/FineChannel.js';
+import Mode from '../../../lib/model/Mode.js';
+import NullChannel from '../../../lib/model/NullChannel.js';
+import SwitchingChannel from '../../../lib/model/SwitchingChannel.js';
 
 export default {
   name: `AppFixtureChannel`,

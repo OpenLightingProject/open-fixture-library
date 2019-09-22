@@ -56,9 +56,9 @@ h3 {
 </style>
 
 <script>
-import plugins from '~~/plugins/plugins.json';
+import plugins from '../../../../plugins/plugins.json';
 
-import svgVue from '~/components/svg.vue';
+import svgVue from '../../../components/svg.vue';
 
 export default {
   components: {

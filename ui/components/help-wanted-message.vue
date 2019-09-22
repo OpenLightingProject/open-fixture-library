@@ -89,7 +89,7 @@
 </style>
 
 <script>
-import svg from '~/components/svg.vue';
+import svg from './svg.vue';
 
 export default {
   components: {

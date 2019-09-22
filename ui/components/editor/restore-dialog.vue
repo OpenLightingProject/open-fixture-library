@@ -26,9 +26,9 @@ import {
   getEmptyCapability,
   getSanitizedChannel,
   clone
-} from '~/assets/scripts/editor-utils.js';
+} from '../../assets/scripts/editor-utils.js';
 
-import a11yDialogVue from '~/components/a11y-dialog.vue';
+import a11yDialogVue from '../a11y-dialog.vue';
 
 export default {
   components: {

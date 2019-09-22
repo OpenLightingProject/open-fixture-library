@@ -192,14 +192,14 @@
 
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.js';
-import { constants } from '~/assets/scripts/editor-utils.js';
+import schemaProperties from '../../../lib/schema-properties.js';
+import { constants } from '../../assets/scripts/editor-utils.js';
 
-import svgVue from '~/components/svg.vue';
-import labeledInputVue from '~/components/labeled-input.vue';
-import propertyInputNumberVue from '~/components/editor/property-input-number.vue';
-import propertyInputTextVue from '~/components/editor/property-input-text.vue';
-import editorPhysicalVue from '~/components/editor/physical.vue';
+import svgVue from '../svg.vue';
+import labeledInputVue from '../labeled-input.vue';
+import propertyInputNumberVue from './property-input-number.vue';
+import propertyInputTextVue from './property-input-text.vue';
+import editorPhysicalVue from './physical.vue';
 
 export default {
   components: {

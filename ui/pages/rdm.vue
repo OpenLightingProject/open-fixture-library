@@ -68,10 +68,10 @@
 </template>
 
 <script>
-import labeledInputVue from '~/components/labeled-input.vue';
+import labeledInputVue from '../components/labeled-input.vue';
 
-import register from '~~/fixtures/register.json';
-import manufacturers from '~~/fixtures/manufacturers.json';
+import register from '../../fixtures/register.json';
+import manufacturers from '../../fixtures/manufacturers.json';
 
 export default {
   components: {

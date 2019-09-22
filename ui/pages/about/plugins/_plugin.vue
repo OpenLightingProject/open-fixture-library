@@ -100,10 +100,10 @@
 </style>
 
 <script>
-import plugins from '~~/plugins/plugins.json';
+import plugins from '../../../../plugins/plugins.json';
 
-import helpWantedDialog from '~/components/help-wanted-dialog.vue';
-import helpWantedMessage from '~/components/help-wanted-message.vue';
+import helpWantedDialog from '../../../components/help-wanted-dialog.vue';
+import helpWantedMessage from '../../../components/help-wanted-message.vue';
 
 export default {
   components: {

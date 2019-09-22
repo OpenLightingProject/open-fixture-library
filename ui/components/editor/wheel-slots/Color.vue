@@ -47,13 +47,13 @@
 </template>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.js';
-import { colorsHexStringToArray } from '~/assets/scripts/editor-utils.js';
+import schemaProperties from '../../../../lib/schema-properties.js';
+import { colorsHexStringToArray } from '../../../assets/scripts/editor-utils.js';
 
-import propertyInputEntityVue from '~/components/editor/property-input-entity.vue';
-import propertyInputTextVue from '~/components/editor/property-input-text.vue';
-import labeledInputVue from '~/components/labeled-input.vue';
-import svgVue from '~/components/svg.vue';
+import propertyInputEntityVue from '../property-input-entity.vue';
+import propertyInputTextVue from '../property-input-text.vue';
+import labeledInputVue from '../../labeled-input.vue';
+import svgVue from '../../svg.vue';
 
 export default {
   components: {

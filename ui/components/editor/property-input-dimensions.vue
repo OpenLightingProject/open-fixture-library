@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import propertyInputNumberVue from '~/components/editor/property-input-number.vue';
+import propertyInputNumberVue from './property-input-number.vue';
 
 export default {
   components: {

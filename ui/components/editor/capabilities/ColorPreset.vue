@@ -67,13 +67,13 @@
 </template>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.js';
-import { colorsHexStringToArray } from '~/assets/scripts/editor-utils.js';
+import schemaProperties from '../../../../lib/schema-properties.js';
+import { colorsHexStringToArray } from '../../../assets/scripts/editor-utils.js';
 
-import editorProportionalCapabilityDataSwitcher from '~/components/editor/proportional-capability-data-switcher.vue';
-import propertyInputTextVue from '~/components/editor/property-input-text.vue';
-import labeledInputVue from '~/components/labeled-input.vue';
-import svgVue from '~/components/svg.vue';
+import editorProportionalCapabilityDataSwitcher from '../proportional-capability-data-switcher.vue';
+import propertyInputTextVue from '../property-input-text.vue';
+import labeledInputVue from '../../labeled-input.vue';
+import svgVue from '../../svg.vue';
 
 export default {
   components: {

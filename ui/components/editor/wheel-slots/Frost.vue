@@ -17,10 +17,10 @@
 </template>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.js';
+import schemaProperties from '../../../../lib/schema-properties.js';
 
-import propertyInputEntityVue from '~/components/editor/property-input-entity.vue';
-import labeledInputVue from '~/components/labeled-input.vue';
+import propertyInputEntityVue from '../property-input-entity.vue';
+import labeledInputVue from '../../labeled-input.vue';
 
 export default {
   components: {

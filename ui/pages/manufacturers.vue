@@ -42,8 +42,8 @@
 </style>
 
 <script>
-import register from '~~/fixtures/register.json';
-import manufacturers from '~~/fixtures/manufacturers.json';
+import register from '../../fixtures/register.json';
+import manufacturers from '../../fixtures/manufacturers.json';
 
 export default {
   head() {

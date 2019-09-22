@@ -45,21 +45,21 @@
 </style>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.js';
-import { getEmptyWheelSlot } from '~/assets/scripts/editor-utils.js';
+import schemaProperties from '../../../lib/schema-properties.js';
+import { getEmptyWheelSlot } from '../../assets/scripts/editor-utils.js';
 
-import conditionalDetailsVue from '~/components/conditional-details.vue';
-import labeledInputVue from '~/components/labeled-input.vue';
+import conditionalDetailsVue from '../conditional-details.vue';
+import labeledInputVue from '../labeled-input.vue';
 
-import editorWheelSlotAnimationGoboEnd from '~/components/editor/wheel-slots/AnimationGoboEnd.vue';
-import editorWheelSlotAnimationGoboStart from '~/components/editor/wheel-slots/AnimationGoboStart.vue';
-import editorWheelSlotClosed from '~/components/editor/wheel-slots/Closed.vue';
-import editorWheelSlotColor from '~/components/editor/wheel-slots/Color.vue';
-import editorWheelSlotFrost from '~/components/editor/wheel-slots/Frost.vue';
-import editorWheelSlotGobo from '~/components/editor/wheel-slots/Gobo.vue';
-import editorWheelSlotIris from '~/components/editor/wheel-slots/Iris.vue';
-import editorWheelSlotOpen from '~/components/editor/wheel-slots/Open.vue';
-import editorWheelSlotPrism from '~/components/editor/wheel-slots/Prism.vue';
+import editorWheelSlotAnimationGoboEnd from './wheel-slots/AnimationGoboEnd.vue';
+import editorWheelSlotAnimationGoboStart from './wheel-slots/AnimationGoboStart.vue';
+import editorWheelSlotClosed from './wheel-slots/Closed.vue';
+import editorWheelSlotColor from './wheel-slots/Color.vue';
+import editorWheelSlotFrost from './wheel-slots/Frost.vue';
+import editorWheelSlotGobo from './wheel-slots/Gobo.vue';
+import editorWheelSlotIris from './wheel-slots/Iris.vue';
+import editorWheelSlotOpen from './wheel-slots/Open.vue';
+import editorWheelSlotPrism from './wheel-slots/Prism.vue';
 
 export default {
   components: {

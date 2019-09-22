@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import labeledValueVue from '~/components/labeled-value.vue';
+import labeledValueVue from './labeled-value.vue';
 
 export default {
   components: {

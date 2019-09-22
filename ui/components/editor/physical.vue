@@ -115,14 +115,14 @@
 </style>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.js';
+import schemaProperties from '../../../lib/schema-properties.js';
 
-import labeledInputVue from '~/components/labeled-input.vue';
-import propertyInputDimensionsVue from '~/components/editor/property-input-dimensions.vue';
-import propertyInputNumberVue from '~/components/editor/property-input-number.vue';
-import propertyInputRangeVue from '~/components/editor/property-input-range.vue';
-import propertyInputSelectVue from '~/components/editor/property-input-select.vue';
-import propertyInputTextVue from '~/components/editor/property-input-text.vue';
+import labeledInputVue from '../labeled-input.vue';
+import propertyInputDimensionsVue from './property-input-dimensions.vue';
+import propertyInputNumberVue from './property-input-number.vue';
+import propertyInputRangeVue from './property-input-range.vue';
+import propertyInputSelectVue from './property-input-select.vue';
+import propertyInputTextVue from './property-input-text.vue';
 
 export default {
   components: {
