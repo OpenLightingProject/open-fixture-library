@@ -1,18 +1,22 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "B-40 Laser Beam",
-  "categories": ["Other"],
+  "name": "LED B-40",
+  "categories": ["Laser", "Flower", "Effect", "Color Changer"],
   "meta": {
-    "authors": ["Charlélie DESMET"],
-    "createDate": "2019-09-09",
-    "lastModifyDate": "2019-09-09"
+    "authors": ["Charlélie DESMET", "Flo Edelmann"],
+    "createDate": "2019-09-23",
+    "lastModifyDate": "2019-09-23"
   },
+  "comment": "Laser Beam Effect",
   "links": {
     "manual": [
-      "https://www.vistaglo.com/amfilerating/file/download/file_id/9"
+      "https://www.steinigke.de/download/51741087-Manual-122554-1.100-eurolite-led-b-40-laser-beam-effect-en_de.pdf"
     ],
     "productPage": [
-      "https://www.thomann.de/fr/eurolite_led_b_40_laser_beam_effect.htm"
+      "https://www.steinigke.de/en/mpn51741087-eurolite-led-b-40-laser-beam-effect.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=_AniHjqqb_0"
     ]
   },
   "availableChannels": {
