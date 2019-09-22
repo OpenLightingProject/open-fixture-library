@@ -56,7 +56,7 @@ $(schema-files) # OFL plugin version depends on the schema
 tests/test-fixtures.json: \
 lib/fixture-features/*.js \
 fixtures/register.json \
-lib/model/*.mjs \
+lib/model/*.js \
 cli/make-test-fixtures.js \
 $(dereferenced-schema-files)
 	node cli/make-test-fixtures.js
@@ -74,10 +74,10 @@ cli/make-dereferenced-schemas.js
 
 
 jsdoc2md := $(shell echo $$(npm bin)/jsdoc2md)
-jsdoc2md-cmd := $(jsdoc2md) --configure jsdoc-config.json --private --files lib/model/*.mjs > docs/model-api.md
+jsdoc2md-cmd := $(jsdoc2md) --configure jsdoc-config.json --private --files lib/model/*.js > docs/model-api.md
 
 docs/model-api.md: \
-lib/model/*.mjs \
+lib/model/*.js \
 jsdoc-config.json
 	@test -f $(jsdoc2md) && (echo "$(jsdoc2md-cmd)" && $(jsdoc2md-cmd)) || echo "$(jsdoc2md) not available"
 	@echo ""

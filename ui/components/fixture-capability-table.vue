@@ -122,8 +122,8 @@ import svg from '~/components/svg.vue';
 import helpWantedMessage from '~/components/help-wanted-message.vue';
 import fixtureCapabilityTypeIconVue from '~/components/fixture-capability-type-icon.vue';
 
-import CoarseChannel from '~~/lib/model/CoarseChannel.mjs';
-import Mode from '~~/lib/model/Mode.mjs';
+import CoarseChannel from '~~/lib/model/CoarseChannel.js';
+import Mode from '~~/lib/model/Mode.js';
 
 export default {
   components: {

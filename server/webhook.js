@@ -58,9 +58,9 @@ function startServer() {
  * Handle a received request from the server and check if it is valid. If so,
  * call @see redeploy to update the corresponding app.
  *
- * @param {string} url The absolute path the request was received at.
- * @param {string} body The JSON string from GitHub.
- * @param {object.<string, string>} headers Headers of the request.
+ * @param {String} url The absolute path the request was received at.
+ * @param {String} body The JSON string from GitHub.
+ * @param {Object.<String, String>} headers Headers of the request.
  */
 function processRequest(url, body, headers) { // eslint-disable-line complexity
   console.log(`Received webhook request at ${url}`);
@@ -102,7 +102,7 @@ function processRequest(url, body, headers) { // eslint-disable-line complexity
 
 /**
  * Calls redeploy bash script and notify admin via email if script fails.
- * @param {object} webhookPayload The data delivered by GitHub via the webhook.
+ * @param {Object} webhookPayload The data delivered by GitHub via the webhook.
  */
 function redeploy(webhookPayload) {
   console.log(`Redeploy...`);

@@ -84,7 +84,7 @@
 <script>
 import a11yDialogVue from '~/components/a11y-dialog.vue';
 import downloadButtonVue from '~/components/download-button.vue';
-import { clone } from '~/assets/scripts/editor-utils.mjs';
+import { clone } from '~/assets/scripts/editor-utils.js';
 
 const stateTitles = {
   closed: `Closed`,

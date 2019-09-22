@@ -95,11 +95,11 @@ a.remove {
 </style>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.mjs';
+import schemaProperties from '~~/lib/schema-properties.js';
 import {
   getEmptyCapability,
   isCapabilityChanged
-} from '~/assets/scripts/editor-utils.mjs';
+} from '~/assets/scripts/editor-utils.js';
 
 import conditionalDetailsVue from '~/components/conditional-details.vue';
 import propertyInputRangeVue from '~/components/property-input-range.vue';

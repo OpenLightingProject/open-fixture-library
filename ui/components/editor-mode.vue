@@ -192,8 +192,8 @@
 
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.mjs';
-import { constants } from '~/assets/scripts/editor-utils.mjs';
+import schemaProperties from '~~/lib/schema-properties.js';
+import { constants } from '~/assets/scripts/editor-utils.js';
 
 import svgVue from '~/components/svg.vue';
 import labeledInputVue from '~/components/labeled-input.vue';
