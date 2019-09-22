@@ -44,8 +44,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   /**
    * @typedef ResultData
    * @type {Object}
-   * @property {String[]} errors
-   * @property {String[]} warnings
+   * @property {Array.<String>} errors
+   * @property {Array.<String>} warnings
    */
 
   /** @type ResultData */
