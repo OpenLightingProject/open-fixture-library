@@ -4,7 +4,7 @@
     <a
       v-if="fixture.modes.length > 1"
       href="#remove-mode"
-      class="close"
+      class="icon-button close"
       @click.prevent="$emit(`remove`)">
       Remove mode
       <app-svg name="close" />
@@ -72,7 +72,8 @@
       :custom="{ 'no-empty-channel-list': channelListNotEmpty }"
       tag="div"
       class="mode-channels">
-      <draggable v-model="mode.channels" v-bind="dragOptions" :name="`mode-${index}-channels`">
+      <input v-model="mode.channels" :name="`mode-${index}-channels`" type="hidden">
+      <draggable :list="mode.channels" v-bind="dragOptions">
         <transition-group class="mode-channels" tag="ol">
           <li
             v-for="channelUuid in mode.channels"
@@ -148,7 +149,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    background-color: rgba(#fff, 0);
+    background-color: theme-color(card-background, 0);
     transition: background-color 0.1s, box-shadow 0.1s;
 
     & a {
@@ -161,8 +162,8 @@
   & li:hover .channel-buttons,
   & li.sortable-chosen .channel-buttons,
   & li.sortable-ghost .channel-buttons {
-    background-color: rgba(#fff, 1);
-    box-shadow: -1ex 0 1ex 0.5ex #fff;
+    background-color: theme-color(card-background, 1);
+    box-shadow: -1ex 0 1ex 0.5ex theme-color(card-background);
 
     & a {
       opacity: 1;
@@ -175,8 +176,8 @@
 
   // has to be a separate rule because older browsers would ignore the whole rule
   & .channel-buttons:focus-within {
-    background-color: rgba(#fff, 1);
-    box-shadow: -1ex 0 1ex 0.5ex #fff;
+    background-color: theme-color(card-background, 1);
+    box-shadow: -1ex 0 1ex 0.5ex theme-color(card-background);
 
     & a {
       opacity: 1;

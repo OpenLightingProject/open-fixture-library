@@ -10,7 +10,7 @@
   vertical-align: middle;
 
   &.inactive {
-    fill: $icon-inactive-dark;
+    fill: theme-color(icon-inactive);
   }
 
   & svg {

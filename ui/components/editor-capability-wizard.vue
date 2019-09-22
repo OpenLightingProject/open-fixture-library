@@ -88,7 +88,7 @@
 
 th {
   font-weight: normal;
-  color: $secondary-text-dark;
+  color: theme-color(text-secondary);
 }
 
 td, th {
@@ -114,11 +114,11 @@ td, th {
 
 .inherited,
 .inherited code {
-  color: $disabled-text-dark;
+  color: theme-color(text-disabled);
 }
 .computed,
 .computed code {
-  color: $primary-text-dark;
+  color: theme-color(text-primary);
 }
 </style>
 

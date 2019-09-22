@@ -99,8 +99,8 @@
           <abbr title="Remote Device Management">RDM</abbr> data
         </template>
 
-        {{ fixture.manufacturer.rdmId }} /
-        {{ fixture.rdm.modelId }} /
+        {{ fixture.manufacturer.rdmId }} (0x{{ fixture.manufacturer.rdmId.toString(16) }}) /
+        {{ fixture.rdm.modelId }} (0x{{ fixture.rdm.modelId.toString(16) }}) /
         {{ `softwareVersion` in fixture.rdm ? fixture.rdm.softwareVersion : `?` }} –
         <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${fixture.manufacturer.rdmId}&model=${fixture.rdm.modelId}`" rel="nofollow">
           <app-svg name="ola" /> View in Open Lighting RDM database
@@ -195,7 +195,7 @@
 .fixture-meta {
   margin: -1.5rem 0 1rem;
   font-size: 0.8rem;
-  color: $secondary-text-dark;
+  color: theme-color(text-secondary);
 
   & > span:not(:last-child)::after {
     content: ' | ';
@@ -237,7 +237,7 @@
   list-style: none;
 
   .hostname {
-    color: $secondary-text-dark;
+    color: theme-color(text-secondary);
     font-size: 0.9em;
     padding-left: 1ex;
   }

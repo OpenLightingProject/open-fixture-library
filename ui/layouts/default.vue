@@ -46,9 +46,14 @@
 #content {
   max-width: 1000px;
   margin: 0 auto;
-  min-height: calc(100vh - 5em - 10px);
+  min-height: 100vh;
+  box-sizing: border-box;
   overflow: hidden;
   padding: 5em 10px 10px;
+
+  @media (max-width: $tablet) {
+    padding-top: 6.2em;
+  }
 }
 #content:focus {
   outline: 0;

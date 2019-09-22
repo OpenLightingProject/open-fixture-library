@@ -16,7 +16,7 @@
         <a
           v-if="cancellable"
           href="#close"
-          class="close"
+          class="icon-button close"
           title="Close"
           @click.prevent="hide">
           Close
@@ -38,6 +38,10 @@
   display: none;
 }
 
+.dialog-container {
+  outline: none;
+}
+
 .dialog-overlay {
   z-index: 1000;
   background-color: rgba(0, 0, 0, 0.66);
@@ -49,7 +53,8 @@
 }
 
 dialog {
-  background-color: rgb(255, 255, 255);
+  background-color: theme-color(dialog-background);
+  color: theme-color(text-primary);
   border: 0;
   z-index: 1010;
   position: fixed;

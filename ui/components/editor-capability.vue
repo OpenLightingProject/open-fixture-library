@@ -57,7 +57,7 @@
   position: relative;
 
   &:not(:last-child) {
-    border-bottom: 1px solid $divider-dark;
+    border-bottom: 1px solid theme-color(divider);
   }
 
   &[open] {
@@ -75,7 +75,7 @@
 }
 
 .unset {
-  color: $disabled-text-dark;
+  color: theme-color(text-disabled);
 }
 
 a.remove {
