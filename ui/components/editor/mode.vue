@@ -195,6 +195,7 @@
 import schemaProperties from '../../../lib/schema-properties.js';
 import { constants } from '../../assets/scripts/editor-utils.js';
 
+import draggable from 'vuedraggable';
 import svgVue from '../svg.vue';
 import labeledInputVue from '../labeled-input.vue';
 import propertyInputNumberVue from './property-input-number.vue';
@@ -203,6 +204,7 @@ import editorPhysicalVue from './physical.vue';
 
 export default {
   components: {
+    draggable,
     'app-svg': svgVue,
     'app-labeled-input': labeledInputVue,
     'app-property-input-number': propertyInputNumberVue,

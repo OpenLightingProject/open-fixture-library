@@ -26,10 +26,12 @@
 
 
 <script>
+import draggable from 'vuedraggable';
 import categoryBadgeVue from '../category-badge.vue';
 
 export default {
   components: {
+    draggable,
     'app-category-badge': categoryBadgeVue
   },
   props: {

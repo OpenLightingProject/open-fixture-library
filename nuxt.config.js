@@ -9,7 +9,6 @@ module.exports = {
     `@nuxtjs/style-resources`
   ],
   plugins: [
-    `~/plugins/draggable.js`,
     `~/plugins/embetty-vue.js`,
     {
       src: `~/plugins/focus-directive.js`,
