@@ -1,0 +1,150 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "AF-180 LED Fogger",
+  "shortName": "AF 180",
+  "categories": ["Smoke", "Color Changer"],
+  "meta": {
+    "authors": ["peaceman"],
+    "createDate": "2019-09-25",
+    "lastModifyDate": "2019-09-25"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/c_334044_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_af_180_led_fogger_co2_fx_dmx.htm"
+    ],
+    "video": [
+      "https://video2.thomann.de//vidiot/02591c1c/video_i2656p10_yd59vqpa.mp4"
+    ]
+  },
+  "availableChannels": {
+    "Fog Output": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "FogOutput",
+          "fogOutput": "0%"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "FogOutput",
+          "fogOutput": "100%"
+        }
+      ]
+    },
+    "Intensity all LED": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Intensity",
+          "brightness": "off",
+          "comment": "all LED off"
+        },
+        {
+          "dmxRange": [21, 35],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightness": "100%"
+        },
+        {
+          "dmxRange": [36, 50],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightness": "100%"
+        },
+        {
+          "dmxRange": [51, 65],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightness": "100%"
+        },
+        {
+          "dmxRange": [66, 80],
+          "type": "ColorIntensity",
+          "color": "Yellow",
+          "brightness": "100%"
+        },
+        {
+          "dmxRange": [81, 95],
+          "type": "ColorIntensity",
+          "color": "Magenta",
+          "brightness": "100%"
+        },
+        {
+          "dmxRange": [96, 110],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "brightness": "100%"
+        },
+        {
+          "dmxRange": [111, 127],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightness": "100%"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "ColorPreset",
+          "comment": "automatic color change"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "strobe off"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Intensity Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "when ch3 < 20"
+      }
+    },
+    "Intensity Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "when ch3 < 20"
+      }
+    },
+    "Intensity Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "when ch3 < 20"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "AF 180 all function",
+      "channels": [
+        "Fog Output",
+        "Intensity all LED",
+        "Color Presets",
+        "Strobe",
+        "Intensity Red",
+        "Intensity Green",
+        "Intensity Blue"
+      ]
+    }
+  ]
+}
