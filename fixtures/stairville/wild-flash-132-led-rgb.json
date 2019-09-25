@@ -1,0 +1,135 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Wild flash 132 LED RGB",
+  "shortName": "Wild flash 132 ",
+  "categories": ["Color Changer", "Strobe", "Blinder"],
+  "meta": {
+    "authors": ["peaceman"],
+    "createDate": "2019-09-25",
+    "lastModifyDate": "2019-09-25"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/399663_c_399664_399663_399658_399662_r3_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_wild_wash_132_led_rgb_dmx.htm?sid=bf2844777040db93d2864ab7d58feb04"
+    ],
+    "video": [
+      "https://video2.thomann.de//vidiot/02591c1c/video_i6100p10_yd59vqpa.mp4"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Generic",
+          "comment": "LEDs on brightness by Ch 1"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "NoFunction",
+          "comment": "blackout"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "randomTiming": true,
+          "comment": "speed up"
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "randomTiming": true,
+          "comment": "speed up, brightness down"
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "randomTiming": true,
+          "comment": "speed up"
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "Effect",
+          "effectName": "Interrupt",
+          "durationStart": "5s",
+          "durationEnd": "1s"
+        },
+        {
+          "dmxRange": [128, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "LEDs on brightness by Ch 1"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Sound Sensitivity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "sound controll off"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6 CH",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Sound Sensitivity"
+      ]
+    }
+  ]
+}
