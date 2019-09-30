@@ -1,0 +1,124 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BT-STAGEPAR 6in1",
+  "shortName": "btstagepar",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["josequioss"],
+    "createDate": "2019-09-30",
+    "lastModifyDate": "2019-09-30"
+  },
+  "links": {
+    "manual": [
+      "https://briteq-lighting.com/fr/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1517492038.pdf"
+    ],
+    "productPage": [
+      "https://briteq-lighting.com/fr/bt-stagepar-6in1"
+    ]
+  },
+  "physical": {
+    "dimensions": [300, 275, 300],
+    "weight": 3.5,
+    "power": 120,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Rojo": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Rojo",
+        "colors": ["#ff0000"]
+      }
+    },
+    "Verde": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Verde",
+        "colors": ["#008f39"]
+      }
+    },
+    "Azul": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Azul",
+        "colors": ["#3b83bd"]
+      }
+    },
+    "Blanco": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Blanco",
+        "colors": ["#ffffff"]
+      }
+    },
+    "Ambar": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Ambar",
+        "colors": ["#ffbf00"]
+      }
+    },
+    "Uv": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "UV",
+        "colors": ["#461783"]
+      }
+    },
+    "Atenuador maestro": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Estrobo": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Modo 8 canales RGBWUV + ATEN + ESTROBO",
+      "shortName": "8 channel",
+      "channels": [
+        "Rojo",
+        "Verde",
+        "Azul",
+        "Blanco",
+        "Ambar",
+        "Uv",
+        "Atenuador maestro",
+        "Estrobo"
+      ]
+    }
+  ]
+}
