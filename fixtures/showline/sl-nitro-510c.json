@@ -577,6 +577,29 @@
         }
       ]
     },
+    "Strobe Duration": {
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "0ms",
+        "durationEnd": "8364ms"
+      }
+    },
+    "Strobe Rate": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Single flash when intensity > 5"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0.5Hz",
+          "speedEnd": "30.488Hz"
+        }
+      ]
+    },
     "Strobe": {
       "defaultValue": 0,
       "capabilities": [
@@ -1432,6 +1455,38 @@
             "$pixelKey White",
             "$pixelKey Strobe Duration",
             "$pixelKey Strobe Rate"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Master Dimmer",
+        "Color Macros",
+        "Strobe Duration",
+        "Strobe Rate",
+        "Strobe",
+        "Control"
+      ]
+    },
+    {
+      "name": "Mapping 16-Bit",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Red fine",
+            "$pixelKey Green",
+            "$pixelKey Green fine",
+            "$pixelKey Blue",
+            "$pixelKey Blue fine",
+            "$pixelKey White",
+            "$pixelKey White fine"
           ]
         }
       ]
