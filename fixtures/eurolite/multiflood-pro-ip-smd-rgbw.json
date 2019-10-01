@@ -61,178 +61,309 @@
       }
     },
     "Rot 2": {
-      "name": "Rot",
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Grün 2": {
-      "name": "Grün",
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blau 2": {
-      "name": "Blau",
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "Weiß 2": {
-      "name": "Weiß",
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
     "Rot 3": {
-      "name": "Rot",
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Grün 3": {
-      "name": "Grün",
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blau 3": {
-      "name": "Blau",
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "Weiß 3": {
-      "name": "Weiß",
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
     "Rot 4": {
-      "name": "Rot",
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Grün 4": {
-      "name": "Grün",
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blau 4": {
-      "name": "Blau",
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "Weiß 4": {
-      "name": "Weiß",
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
     "Rot 5": {
-      "name": "Rot",
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Grün 5": {
-      "name": "Grün",
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blau 5": {
-      "name": "Blau",
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "Weiß 5": {
-      "name": "Weiß",
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
     "Rot 6": {
-      "name": "Rot",
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Grün 6": {
-      "name": "Grün",
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blau 6": {
-      "name": "Blau",
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "Weiß 6": {
-      "name": "Weiß",
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "Strobe größe": {
+    "Strobe Duration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "StrobeDuration",
+          "durationStart": "short",
+          "durationEnd": "long"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Random Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        }
+      ]
+    },
+    "Internal Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "Internal Programs",
+          "helpWanted": "At which DMX values can which programs be selected?"
+        }
+      ]
+    },
+    "Program Speed": {
       "capability": {
-        "type": "StrobeDuration",
-        "duration": "short"
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     },
-    "Strobe ": {
-      "capability": {
-        "type": "StrobeSpeed",
-        "speed": "fast"
-      }
-    },
-    "Ka": {
-      "capability": {
-        "type": "NoFunction"
-      }
-    },
-    "Ka 2": {
-      "name": "Ka",
-      "capability": {
-        "type": "NoFunction"
-      }
-    },
-    "Ka 3": {
-      "name": "Ka",
-      "capability": {
-        "type": "NoFunction"
-      }
-    },
-    "Makro": {
-      "capability": {
-        "type": "ColorPreset"
-      }
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 17],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [18, 25],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [26, 33],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [34, 41],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [42, 49],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [50, 57],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [58, 65],
+          "type": "ColorPreset",
+          "comment": "Light red",
+          "colors": ["#ff9999"]
+        },
+        {
+          "dmxRange": [66, 73],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [74, 81],
+          "type": "ColorPreset",
+          "comment": "Light green",
+          "colors": ["#99ff99"]
+        },
+        {
+          "dmxRange": [82, 89],
+          "type": "ColorPreset",
+          "comment": "Light blue",
+          "colors": ["#9999ff"]
+        },
+        {
+          "dmxRange": [90, 97],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "dmxRange": [98, 105],
+          "type": "ColorPreset",
+          "comment": "Full white (RGBW)",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [106, 113],
+          "type": "ColorPreset",
+          "comment": "White (RGB)",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [114, 121],
+          "type": "ColorPreset",
+          "comment": "Light yellow",
+          "colors": ["#ffff99"]
+        },
+        {
+          "dmxRange": [122, 128],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [129, 160],
+          "type": "Effect",
+          "effectName": "Auto program 1"
+        },
+        {
+          "dmxRange": [161, 192],
+          "type": "Effect",
+          "effectName": "Auto program 2"
+        },
+        {
+          "dmxRange": [193, 224],
+          "type": "Effect",
+          "effectName": "Program 1",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Effect",
+          "effectName": "Program 2",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     }
   },
   "modes": [
@@ -264,12 +395,12 @@
         "Grün 6",
         "Blau 6",
         "Weiß 6",
-        "Strobe größe",
-        "Strobe ",
-        "Ka",
-        "Ka 2",
-        "Ka 3",
-        "Makro"
+        "Strobe Duration",
+        "Strobe",
+        "Random Strobe",
+        "Internal Programs",
+        "Program Speed",
+        "Color Presets"
       ]
     }
   ]
