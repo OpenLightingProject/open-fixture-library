@@ -36,9 +36,124 @@
         ["6", "5", "4"],
         ["1", "2", "3"]
       ]
-    ]
+    ],
+    "pixelGroups": {
+      "Master": "all",
+      "Background": "all"
+    }
   },
   "availableChannels": {
+    "RGBW Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        },
+        {
+          "dmxRange": [251, 254],
+          "type": "ColorPreset",
+          "comment": "RGBW",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Special, RGBW full on"
+        }
+      ]
+    },
+    "Red Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightness": "bright"
+        }
+      ]
+    },
+    "Green Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightness": "bright"
+        }
+      ]
+    },
+    "Blue Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightness": "bright"
+        }
+      ]
+    },
+    "White Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightness": "bright"
+        }
+      ]
+    },
     "Dimmer": {
       "capability": {
         "type": "Intensity"
@@ -257,6 +372,80 @@
     }
   },
   "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "RGBW Strobe",
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "White Strobe"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer",
+        "Strobe Duration",
+        "Strobe",
+        "Random Strobe",
+        "Internal Programs",
+        "Program Speed",
+        "Color Presets"
+      ]
+    },
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
+      "channels": [
+        "Dimmer",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Strobe",
+        "Internal Programs",
+        "Program Speed",
+        "Color Presets",
+        "Red Background",
+        "Green Background",
+        "Blue Background",
+        "White Background"
+      ]
+    },
+    {
+      "name": "15-channel",
+      "shortName": "15ch",
+      "channels": [
+        "Dimmer",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Strobe Duration",
+        "Strobe",
+        "Random Strobe",
+        "Internal Programs",
+        "Program Speed",
+        "Color Presets",
+        "Red Background",
+        "Green Background",
+        "Blue Background",
+        "White Background"
+      ]
+    },
     {
       "name": "31-channel",
       "shortName": "31ch",
