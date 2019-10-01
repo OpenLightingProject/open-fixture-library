@@ -7,6 +7,7 @@
     "ecmaVersion": 2017
   },
   "plugins": [
+    "jsdoc",
     "json",
     "markdown",
     "promise",
@@ -15,6 +16,7 @@
   ],
   "extends": [
     "eslint:recommended",
+    "plugin:jsdoc/recommended",
     "plugin:promise/recommended",
     "plugin:security/recommended",
     "plugin:vue/recommended"
@@ -48,6 +50,35 @@
     "getter-return": "error",
     "guard-for-in": "error",
     "indent": ["error", 2, { "SwitchCase": 1 }],
+    "jsdoc/check-alignment": "error",
+    "jsdoc/check-indentation": "error",
+    "jsdoc/check-param-names": "error",
+    "jsdoc/check-syntax": "error",
+    "jsdoc/check-tag-names": "error",
+    "jsdoc/check-types": "error",
+    "jsdoc/implements-on-classes": "error",
+    "jsdoc/newline-after-description": "off",
+    "jsdoc/no-undefined-types": "off",
+    "jsdoc/require-description": "off",
+    "jsdoc/require-description-complete-sentence": "off",
+    "jsdoc/require-jsdoc": ["warn", {
+      "require": {
+        "FunctionDeclaration": true,
+        "MethodDefinition": true,
+        "ClassDeclaration": true,
+        "ArrowFunctionExpression": false,
+        "FunctionExpression": false
+      }
+    }],
+    "jsdoc/require-param": "error",
+    "jsdoc/require-param-description": "error",
+    "jsdoc/require-param-name": "error",
+    "jsdoc/require-param-type": "error",
+    "jsdoc/require-returns": "error",
+    "jsdoc/require-returns-check": "error",
+    "jsdoc/require-returns-description": "error",
+    "jsdoc/require-returns-type": "error",
+    "jsdoc/valid-types": "error",
     "key-spacing": "error",
     "vue/key-spacing": "error",
     "keyword-spacing": "error",
@@ -76,15 +107,6 @@
     "prefer-rest-params": "error",
     "prefer-template": "error",
     "quotes": ["error", "backtick", { "allowTemplateLiterals": true }],
-    "require-jsdoc": ["warn", {
-      "require": {
-        "FunctionDeclaration": true,
-        "MethodDefinition": true,
-        "ClassDeclaration": true,
-        "ArrowFunctionExpression": false,
-        "FunctionExpression": false
-      }
-    }],
     "security/detect-child-process": "off",
     "security/detect-non-literal-fs-filename": "off",
     "security/detect-non-literal-require": "off",
@@ -101,39 +123,6 @@
     "vue/space-infix-ops": "error",
     "spaced-comment": ["error", "always"],
     "template-curly-spacing": "error",
-    "valid-jsdoc": ["error", {
-      "requireReturn": false,
-      "prefer": {
-        "arg": "param",
-        "argument": "param",
-        "augments": "extends",
-        "class": "constructor",
-        "const": "constant",
-        "defaultvalue": "default",
-        "desc": "description",
-        "exception": "throws",
-        "file": "fileoverview",
-        "fires": "emits",
-        "func": "function",
-        "host": "external",
-        "linkcode": "link",
-        "linkplain": "link",
-        "method": "function",
-        "overview": "fileoverview",
-        "prop": "property",
-        "return": "returns",
-        "var": "member",
-        "virtual": "abstract",
-        "yield": "yields"
-      },
-      "preferType": {
-        "array": "Array",
-        "boolean": "Boolean",
-        "number": "Number",
-        "object": "Object",
-        "string": "String"
-      }
-    }],
     "promise/always-return": "off",
     "promise/prefer-await-to-then": "error",
     "promise/no-nesting": "off",
@@ -176,6 +165,42 @@
     "vue/prop-name-casing": "error",
     "vue/require-direct-export": "error",
     "vue/v-on-function-call": "error"
+  },
+  "settings": {
+    "jsdoc": {
+      "tagNamePreference": {
+        "arg": "param",
+        "argument": "param",
+        "augments": "extends",
+        "class": "constructor",
+        "const": "constant",
+        "defaultvalue": "default",
+        "desc": "description",
+        "exception": "throws",
+        "file": "fileoverview",
+        "fires": "emits",
+        "func": "function",
+        "host": "external",
+        "linkcode": "link",
+        "linkplain": "link",
+        "method": "function",
+        "overview": "fileoverview",
+        "prop": "property",
+        "return": "returns",
+        "var": "member",
+        "virtual": "abstract",
+        "yield": "yields"
+      },
+      "preferredTypes": {
+        "array": "Array",
+        "boolean": "Boolean",
+        "number": "Number",
+        "object": "Object",
+        "string": "String",
+        "<>": ".<>",
+        "[]": "Array"
+      }
+    }
   },
   "overrides": [{
     "files": ["**/*.md"],
