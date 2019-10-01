@@ -3,8 +3,8 @@ const manufacturers = require(`../../fixtures/manufacturers.json`);
 
 /**
  * Return search results for given parameters. Very primitive match algorithm, maybe put more effort into it sometime.
- * @param {object} request Passed from Express.
- * @param {object} response Passed from Express.
+ * @param {Object} request Passed from Express.
+ * @param {Object} response Passed from Express.
  */
 module.exports = function getSearchResults(request, response) {
   const { searchQuery, manufacturersQuery, categoriesQuery } = request.body;
@@ -17,9 +17,9 @@ module.exports = function getSearchResults(request, response) {
 
 /**
  * Test if a fixture matches the search query.
- * @param {string} searchQuery Search query that the user entered.
- * @param {string} fixtureKey Key of the fixture to test.
- * @returns {boolean} True if the fixture matches the search query, false otherwise.
+ * @param {String} searchQuery Search query that the user entered.
+ * @param {String} fixtureKey Key of the fixture to test.
+ * @returns {Boolean} True if the fixture matches the search query, false otherwise.
  */
 function queryMatch(searchQuery, fixtureKey) {
   const man = fixtureKey.split(`/`)[0];
@@ -30,9 +30,9 @@ function queryMatch(searchQuery, fixtureKey) {
 
 /**
  * Test if a fixture matches the manufacturer query.
- * @param {array.<string>} manufacturersQuery Selected manufacturers.
- * @param {string} fixtureKey Key of the fixture to test.
- * @returns {boolean} True if the fixture matches the manufacturer query, false otherwise.
+ * @param {Array.<String>} manufacturersQuery Selected manufacturers.
+ * @param {String} fixtureKey Key of the fixture to test.
+ * @returns {Boolean} True if the fixture matches the manufacturer query, false otherwise.
  */
 function manufacturerMatch(manufacturersQuery, fixtureKey) {
   const man = fixtureKey.split(`/`)[0];
@@ -44,9 +44,9 @@ function manufacturerMatch(manufacturersQuery, fixtureKey) {
 
 /**
  * Test if a fixture matches the category query.
- * @param {array.<string>} categoriesQuery Selected categories.
- * @param {string} fixtureKey Key of the fixture to test.
- * @returns {boolean} True if the fixture matches the category query, false otherwise.
+ * @param {Array.<String>} categoriesQuery Selected categories.
+ * @param {String} fixtureKey Key of the fixture to test.
+ * @returns {Boolean} True if the fixture matches the category query, false otherwise.
  */
 function categoryMatch(categoriesQuery, fixtureKey) {
   return categoriesQuery.length === 0 ||

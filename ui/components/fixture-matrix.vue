@@ -65,12 +65,12 @@
   transition: background-color 0.2s;
 
   &:not(:empty) {
-    border-color: $icon-inactive-dark;
-    background-color: #fff;
+    border-color: theme-color(icon-inactive);
+    background-color: theme-color(card-background);
   }
 
   &.highlight {
-    background-color: $divider-dark;
+    background-color: theme-color(divider);
   }
 }
 
@@ -84,8 +84,8 @@
 <script>
 import labeledValueVue from '~/components/labeled-value.vue';
 
-import Matrix from '~~/lib/model/Matrix.mjs';
-import Physical from '~~/lib/model/Physical.mjs';
+import Matrix from '~~/lib/model/Matrix.js';
+import Physical from '~~/lib/model/Physical.js';
 
 export default {
   components: {

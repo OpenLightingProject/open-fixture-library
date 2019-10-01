@@ -132,7 +132,7 @@
 <script>
 import labeledValueVue from '~/components/labeled-value.vue';
 
-import Physical from '~~/lib/model/Physical.mjs';
+import Physical from '~~/lib/model/Physical.js';
 
 export default {
   components: {

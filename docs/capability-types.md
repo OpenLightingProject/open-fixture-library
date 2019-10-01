@@ -640,10 +640,10 @@ Use one-based numbering (e.g. `1` for *Open*, `2` for *Color/Gobo 1*). If the ca
 
 * Update the schema (mainly `capability.json`, `definitions.json` for units / entities)
 * Update this document (both table of contents and the section itself)
-* Add new properties to the model (in `Capability.mjs`)
+* Add new properties to the model (in `Capability.js`)
 * If it's a start/end entity, add its name to `Capability.START_END_ENTITIES`
-* Add new types to capability name generation (in `Capability.mjs`)
-* Add new types to channel type generation (in `CoarseChannel.mjs`)
+* Add new types to capability name generation (in `Capability.js`)
+* Add new types to channel type generation (in `CoarseChannel.js`)
 * Add a capability icon (see `ui/assets/icon` and maybe also the `app-fixture-capability-type-icon` component)
 * Update editor:
   * Create new component in `ui/components/editor-capabilities`. Make sure it has a `defaultData` object as component data.

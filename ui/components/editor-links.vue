@@ -51,13 +51,13 @@ select {
 </style>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.mjs';
-import { getEmptyLink } from '~/assets/scripts/editor-utils.mjs';
+import schemaProperties from '~~/lib/schema-properties.js';
+import { getEmptyLink } from '~/assets/scripts/editor-utils.js';
 
 import propertyInputTextVue from '~/components/property-input-text.vue';
 import svgVue from '~/components/svg.vue';
 
-import fixtureLinksMixin from '~/assets/scripts/fixture-links-mixin.mjs';
+import fixtureLinksMixin from '~/assets/scripts/fixture-links-mixin.js';
 
 export default {
   components: {
@@ -69,6 +69,11 @@ export default {
     prop: `links`
   },
   props: {
+    name: { // allow name prop just for vue-form; has no real use in here
+      type: String,
+      required: false,
+      default: ``
+    },
     links: {
       type: Array,
       required: true

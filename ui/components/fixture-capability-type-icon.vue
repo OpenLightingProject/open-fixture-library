@@ -5,7 +5,7 @@
 <script>
 import svg from '~/components/svg.vue';
 
-import Capability from '~~/lib/model/Capability.mjs';
+import Capability from '~~/lib/model/Capability.js';
 
 export default {
   components: {
@@ -148,7 +148,7 @@ const specialIconFunctions = {
 
 /**
  * @param {AbstractChannel} cap The capability to get an icon for.
- * @returns {object} Object containing the props to pass to <app-svg />
+ * @returns {Object} Object containing the props to pass to <app-svg />
  */
 function getIconProps(cap) {
   if (cap.colors !== null) {
@@ -184,7 +184,7 @@ function getIconProps(cap) {
 
 /**
  * @param {Capability} capability The capability model object.
- * @returns {string|null} A string describing the colors of this capability, or null if it has no colors.
+ * @returns {String|null} A string describing the colors of this capability, or null if it has no colors.
  */
 function getColorDescription(capability) {
   if (capability.colors === null) {
