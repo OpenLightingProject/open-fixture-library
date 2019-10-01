@@ -47,8 +47,8 @@
 </template>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.mjs';
-import { colorsHexStringToArray } from '~/assets/scripts/editor-utils.mjs';
+import schemaProperties from '~~/lib/schema-properties.js';
+import { colorsHexStringToArray } from '~/assets/scripts/editor-utils.js';
 
 import propertyInputEntityVue from '~/components/property-input-entity.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';

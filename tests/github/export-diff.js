@@ -14,10 +14,10 @@ const testFixtures = require(`../test-fixtures.json`).map(
 );
 
 /**
- * @typedef {object} Task
- * @property {string} manFix
- * @property {string} currentPluginKey
- * @property {string} comparePluginKey
+ * @typedef {Object} Task
+ * @property {String} manFix
+ * @property {String} currentPluginKey
+ * @property {String} comparePluginKey
  */
 
 // generate diff tasks describing the diffed plugins, fixtures and the reason for diffing (which component has changed)
@@ -81,8 +81,8 @@ const testFixtures = require(`../test-fixtures.json`).map(
 
 
 /**
- * @param {object} changedComponents The PR's changed OFL components.
- * @returns {array.<Task>} An array of diff tasks to perform.
+ * @param {Object} changedComponents The PR's changed OFL components.
+ * @returns {Array.<Task>} An array of diff tasks to perform.
  */
 function getDiffTasks(changedComponents) {
   const usablePlugins = exportPlugins.filter(plugin => !changedComponents.added.exports.includes(plugin));
@@ -120,7 +120,7 @@ function getDiffTasks(changedComponents) {
     });
 
   /**
-   * @returns {array.<Task>} What export diff tasks have to be done due to changes in the model. May be empty.
+   * @returns {Array.<Task>} What export diff tasks have to be done due to changes in the model. May be empty.
    */
   function getTasksForModel() {
     let tasks = [];
@@ -142,7 +142,7 @@ function getDiffTasks(changedComponents) {
   }
 
   /**
-   * @returns {array.<Task>} What export diff tasks have to be done due to changes in plugins. May be empty.
+   * @returns {Array.<Task>} What export diff tasks have to be done due to changes in plugins. May be empty.
    */
   function getTasksForPlugins() {
     let tasks = [];
@@ -179,7 +179,7 @@ function getDiffTasks(changedComponents) {
   }
 
   /**
-   * @returns {array.<Task>} What export diff tasks have to be done due to changes in fixtures. May be empty.
+   * @returns {Array.<Task>} What export diff tasks have to be done due to changes in fixtures. May be empty.
    */
   function getTasksForFixtures() {
     let tasks = [];
@@ -198,7 +198,7 @@ function getDiffTasks(changedComponents) {
 
 /**
  * @param {Task} task The export diff task to fulfill.
- * @returns {Promise.<array.<string>>} An array of message lines.
+ * @returns {Promise.<Array.<String>>} An array of message lines.
  */
 async function performTask(task) {
   const output = await diffPluginOutputs(task.currentPluginKey, task.comparePluginKey, process.env.TRAVIS_BRANCH, [task.manFix]);
@@ -247,15 +247,15 @@ async function performTask(task) {
 
 /**
  * @typedef ChangeFlags
- * @type object
- * @property {boolean} hasRemoved Whether any files were removed.
- * @property {boolean} hasAdded Whether any files were added.
- * @property {boolean} hasChanged Whether any files were changed.
- * @property {boolean} nothingChanged Whether changed at all.
+ * @type Object
+ * @property {Boolean} hasRemoved Whether any files were removed.
+ * @property {Boolean} hasAdded Whether any files were added.
+ * @property {Boolean} hasChanged Whether any files were changed.
+ * @property {Boolean} nothingChanged Whether changed at all.
  */
 
 /**
- * @param {object} diffOutput Output object from {@link diffPluginOutputs}.
+ * @param {Object} diffOutput Output object from {@link diffPluginOutputs}.
  * @returns {ChangeFlags} Object with change flags.
  */
 function getChangeFlags(diffOutput) {
@@ -273,7 +273,7 @@ function getChangeFlags(diffOutput) {
 
 /**
  * @param {ChangeFlags} changeFlags Object with flags that tell what changed.
- * @returns {string} String containing a GitHub emoji depicting the changes.
+ * @returns {String} String containing a GitHub emoji depicting the changes.
  */
 function getEmoji(changeFlags) {
   if (changeFlags.nothingChanged) {

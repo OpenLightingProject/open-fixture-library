@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.mjs';
+import schemaProperties from '~~/lib/schema-properties.js';
 
 import labeledInputVue from '~/components/labeled-input.vue';
 

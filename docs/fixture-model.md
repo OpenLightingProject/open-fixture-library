@@ -21,7 +21,7 @@ if (panFine.coarseChannel.hasHighlightValue) {
 }
 ```
 
-If you want to use a model class directly, also import it via `model.js` (like this: ``const { Meta } = require(`./lib/model.js`);``) because ES modules (`*.mjs`) and CommonJS modules (`*.js`) don't work together nicely; `model.js` fixes this through a polyfill.
+If you want to use a model class directly, also import it via `model.js` (like this: ``const { Meta } = require(`./lib/model.js`);``) because ES modules (`import ... from ...`, `export ...`) and CommonJS modules (`require(...)`, `module.exports = ...`) don't work together nicely; `model.js` fixes this through a polyfill.
 
 Model properties are always implemented using getters and setters. To store data, we use backing fields (an internal property prefixed with underscore, e.g. `_jsonObject`) to hold the data. The backing field should never be accessed directly, but only through its getter and setter functions (without underscore).
 

@@ -4,7 +4,7 @@
     <a
       v-if="fixture.modes.length > 1"
       href="#remove-mode"
-      class="close"
+      class="icon-button close"
       @click.prevent="$emit(`remove`)">
       Remove mode
       <app-svg name="close" />
@@ -149,7 +149,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    background-color: rgba(#fff, 0);
+    background-color: theme-color(card-background, 0);
     transition: background-color 0.1s, box-shadow 0.1s;
 
     & a {
@@ -162,8 +162,8 @@
   & li:hover .channel-buttons,
   & li.sortable-chosen .channel-buttons,
   & li.sortable-ghost .channel-buttons {
-    background-color: rgba(#fff, 1);
-    box-shadow: -1ex 0 1ex 0.5ex #fff;
+    background-color: theme-color(card-background, 1);
+    box-shadow: -1ex 0 1ex 0.5ex theme-color(card-background);
 
     & a {
       opacity: 1;
@@ -176,8 +176,8 @@
 
   // has to be a separate rule because older browsers would ignore the whole rule
   & .channel-buttons:focus-within {
-    background-color: rgba(#fff, 1);
-    box-shadow: -1ex 0 1ex 0.5ex #fff;
+    background-color: theme-color(card-background, 1);
+    box-shadow: -1ex 0 1ex 0.5ex theme-color(card-background);
 
     & a {
       opacity: 1;
@@ -192,8 +192,8 @@
 
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.mjs';
-import { constants } from '~/assets/scripts/editor-utils.mjs';
+import schemaProperties from '~~/lib/schema-properties.js';
+import { constants } from '~/assets/scripts/editor-utils.js';
 
 import svgVue from '~/components/svg.vue';
 import labeledInputVue from '~/components/labeled-input.vue';

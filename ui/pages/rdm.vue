@@ -158,7 +158,7 @@ export default {
 
 /**
  * @param {*} queryParam Vue Router's query parameter to check.
- * @returns {boolean} True if the query parameter is not specified or empty.
+ * @returns {Boolean} True if the query parameter is not specified or empty.
  */
 function isEmpty(queryParam) {
   return queryParam === undefined || queryParam === ``;
