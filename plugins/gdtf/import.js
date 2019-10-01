@@ -18,7 +18,7 @@ module.exports.version = `0.1.0`;
  * @param {String} filename The imported file's name.
  * @param {String} authorName The importer's name.
  * @returns {Promise.<Object, Error>} A Promise resolving to an out object
-**/
+ **/
 module.exports.import = async function importGdtf(buffer, filename, authorName) {
   const parser = new xml2js.Parser();
 
@@ -244,8 +244,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
   }
 
   /**
-   * @typedef Relation
-   * @type Object
+   * @typedef {Object} Relation
    * @property {Number} modeIndex
    * @property {Object} masterGdtfChannel
    * @property {String} switchingChannelName
@@ -315,8 +314,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
   }
 
   /**
-   * @typedef ChannelWrapper
-   * @type Object
+   * @typedef {Object} ChannelWrapper
    * @property {String} key The channel key.
    * @property {Object} channel The OFL channel object.
    * @property {Number} maxResolution The highest used resolution of this channel.
@@ -642,7 +640,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       }
 
       /**
-       * @param {function|null} hook The hook function, or a falsy value.
+       * @param {Function|null} hook The hook function, or a falsy value.
        * @param  {...*} args The arguments to pass to the hook.
        * @returns {*} The return value of the hook, or null if no hook was called.
        */
@@ -673,7 +671,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
       /**
        * @param {Object} gdtfCapability The enhanced <ChannelSet> XML object.
-       * @returns {function} The function to turn a physical value into an entity string with the correct unit.
+       * @returns {Function} The function to turn a physical value into an entity string with the correct unit.
        */
       function getPhysicalUnit(gdtfCapability) {
         const gdtfAttribute = gdtfCapability._channelFunction._attribute;
@@ -805,9 +803,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
   }
 
   /**
-   * @typedef DmxBreakWrapper
-   * @description Holds a list of OFL channel keys belonging to consecutive GDTF channels with the same DMXBreak attribute.
-   * @type Object
+   * @typedef {Object} DmxBreakWrapper Holds a list of OFL channel keys belonging to consecutive GDTF channels with the same DMXBreak attribute.
    * @property {String|undefined} dmxBreak The DMXBreak attribute of consecutive DMXChannel nodes.
    * @property {String} geometry The Geometry attribute of consecutive DMXChannel nodes.
    * @property {Array.<String>} channels The OFL channel keys in this DMX break.
@@ -823,7 +819,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     const matrixPixels = new Set();
 
     fixture.modes = gdtfFixture.DMXModes[0].DMXMode.map(gdtfMode => {
-      /** @type Array.<DmxBreakWrapper> */
+      /** @type {Array.<DmxBreakWrapper>} */
       const dmxBreakWrappers = [];
 
       gdtfMode.DMXChannels[0].DMXChannel.forEach(gdtfChannel => {

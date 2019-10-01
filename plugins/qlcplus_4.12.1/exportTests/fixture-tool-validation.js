@@ -23,7 +23,7 @@ const EXPORTED_FIXTURE_PATH = `resources/fixtures/manufacturer/fixture.qxf`;
  * @param {Array.<Fixture>|null} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
  * @param {String|null} exportFile.mode Mode's shortName if given file only describes a single mode.
  * @returns {Promise.<undefined, Array.<String>|String>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
-**/
+ **/
 module.exports = async function testFixtureToolValidation(exportFile) {
   // create a unique temporary directory to avoid race conditions when multiple running tests access the same files
   const directory = await mkdtemp(FIXTURE_TOOL_DIR_PREFIX);
