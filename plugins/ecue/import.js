@@ -11,9 +11,9 @@ for (const hex of Object.keys(colorNames)) {
 
 /**
  * @param {Buffer} buffer The imported file.
- * @param {string} filename The imported file's name.
- * @param {string} authorName The importer's name.
- * @returns {Promise.<object, Error>} A Promise resolving to an out object
+ * @param {String} filename The imported file's name.
+ * @param {String} authorName The importer's name.
+ * @returns {Promise.<Object, Error>} A Promise resolving to an out object
 **/
 module.exports.import = async function importECue(buffer, filename, authorName) {
   const parser = new xml2js.Parser();
@@ -57,8 +57,8 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
 
   /**
    * Parses the e:cue fixture and add it to out.fixtures.
-   * @param {object} ecueFixture The e:cue fixture object.
-   * @param {string} manKey The manufacturer key of the fixture.
+   * @param {Object} ecueFixture The e:cue fixture object.
+   * @param {String} manKey The manufacturer key of the fixture.
    */
   function addFixture(ecueFixture, manKey) {
     const fixture = {
@@ -119,8 +119,8 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
 };
 
 /**
- * @param {object} ecueFixture The e:cue fixture object.
- * @returns {object} The OFL fixture's physical object.
+ * @param {Object} ecueFixture The e:cue fixture object.
+ * @returns {Object} The OFL fixture's physical object.
  */
 function getPhysical(ecueFixture) {
   const physical = {};
@@ -141,8 +141,8 @@ function getPhysical(ecueFixture) {
 }
 
 /**
- * @param {object} ecueFixture The e:cue fixture object.
- * @returns {array.<object>} An array of all ecue channel objects.
+ * @param {Object} ecueFixture The e:cue fixture object.
+ * @returns {Array.<Object>} An array of all ecue channel objects.
  */
 function getCombinedEcueChannels(ecueFixture) {
   let channels = [];
@@ -172,9 +172,9 @@ function getCombinedEcueChannels(ecueFixture) {
 
 /**
  * Parses the e:cue channel and adds it to OFL fixture's availableChannels and the first mode.
- * @param {object} ecueChannel The e:cue channel object.
- * @param {object} fixture The OFL fixture object.
- * @param {array.<string>} warningsArray This fixture's warnings array in the `out` object.
+ * @param {Object} ecueChannel The e:cue channel object.
+ * @param {Object} fixture The OFL fixture object.
+ * @param {Array.<String>} warningsArray This fixture's warnings array in the `out` object.
  */
 function addChannelToFixture(ecueChannel, fixture, warningsArray) {
   const channel = {};
@@ -247,7 +247,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
    *
    * @param {*} ecueRange The e:cue range object.
    * @param {*} index The index of the capability / range.
-   * @returns {object} The OFL capability object.
+   * @returns {Object} The OFL capability object.
    */
   function getCapability(ecueRange, index) {
     const cap = {
@@ -361,7 +361,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
 
     /**
-     * @returns {array.<number>} The DMX range of this capability.
+     * @returns {Array.<Number>} The DMX range of this capability.
      */
     function getDmxRange() {
       const dmxRangeStart = parseInt(ecueRange.$.Start);
@@ -375,7 +375,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
     }
 
     /**
-     * @returns {string} The parsed capability type.
+     * @returns {String} The parsed capability type.
      */
     function getCapabilityType() {
       // capability parsers can rely on the channel type as a first distinctive feature
@@ -478,7 +478,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
     /**
      * Try to guess speedStart / speedEnd from the capabilityName. May set cap.type to Rotation.
-     * @returns {string} The rest of the capabilityName.
+     * @returns {String} The rest of the capabilityName.
      */
     function getSpeedGuessedComment() {
       return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|C?CW)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i, (match, direction, start, end) => {
@@ -509,8 +509,8 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 }
 
 /**
- * @param {string} str The string to slugify.
- * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
+ * @param {String} str The string to slugify.
+ * @returns {String} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(str) {
   return str.toLowerCase().replace(/[^a-z0-9-]+/g, ` `).trim().replace(/\s+/g, `-`);

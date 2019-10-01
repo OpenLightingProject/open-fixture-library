@@ -67,8 +67,8 @@
 </template>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.mjs';
-import { colorsHexStringToArray } from '~/assets/scripts/editor-utils.mjs';
+import schemaProperties from '~~/lib/schema-properties.js';
+import { colorsHexStringToArray } from '~/assets/scripts/editor-utils.js';
 
 import editorProportionalCapabilityDataSwitcher from '~/components/editor-proportional-capability-data-switcher.vue';
 import propertyInputTextVue from '~/components/property-input-text.vue';

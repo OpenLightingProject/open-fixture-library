@@ -26,7 +26,7 @@ import {
   getEmptyCapability,
   getSanitizedChannel,
   clone
-} from '~/assets/scripts/editor-utils.mjs';
+} from '~/assets/scripts/editor-utils.js';
 
 import a11yDialogVue from '~/components/a11y-dialog.vue';
 
@@ -81,8 +81,8 @@ export default {
 };
 
 /**
- * @param {object} fixture The fixture object from the saved user data.
- * @returns {object} A fixture editor fixture object with all required properties.
+ * @param {Object} fixture The fixture object from the saved user data.
+ * @returns {Object} A fixture editor fixture object with all required properties.
  */
 function getRestoredFixture(fixture) {
   const restoredFixture = Object.assign(getEmptyFixture(), fixture);
@@ -106,9 +106,9 @@ function getRestoredFixture(fixture) {
 }
 
 /**
- * @param {object} channel The channel object from the saved user data.
+ * @param {Object} channel The channel object from the saved user data.
  * @param {booelan} isChannelDialog True if the channel object is used in the channel dialog and should therefore not be sanitized.
- * @returns {object} A fixture editor channel object with all required properties.
+ * @returns {Object} A fixture editor channel object with all required properties.
  */
 function getRestoredChannel(channel, isChannelDialog) {
   if (`coarseChannelId` in channel) {

@@ -88,7 +88,7 @@
 
 th {
   font-weight: normal;
-  color: $secondary-text-dark;
+  color: theme-color(text-secondary);
 }
 
 td, th {
@@ -114,11 +114,11 @@ td, th {
 
 .inherited,
 .inherited code {
-  color: $disabled-text-dark;
+  color: theme-color(text-disabled);
 }
 .computed,
 .computed code {
-  color: $primary-text-dark;
+  color: theme-color(text-primary);
 }
 </style>
 
@@ -127,7 +127,7 @@ import {
   getEmptyCapability,
   isCapabilityChanged,
   clone
-} from "~/assets/scripts/editor-utils.mjs";
+} from "~/assets/scripts/editor-utils.js";
 
 import editorCapabilityTypeDataVue from '~/components/editor-capability-type-data.vue';
 import labeledValueVue from '~/components/labeled-value.vue';
@@ -161,14 +161,14 @@ export default {
     },
 
     /**
-     * @returns {number} Maximum allowed DMX value.
+     * @returns {Number} Maximum allowed DMX value.
      */
     dmxMax() {
       return Math.pow(256, this.resolution) - 1;
     },
 
     /**
-     * @returns {number} Index in capabilities array where the generated capabilities need to be inserted.
+     * @returns {Number} Index in capabilities array where the generated capabilities need to be inserted.
      */
     insertIndex() {
       // loop from inherited capabilities array end to start
@@ -182,7 +182,7 @@ export default {
     },
 
     /**
-     * @returns {array.<object>} Generated capabilities. An empty capability is prepended to fill the gap if neccessary.
+     * @returns {Array.<Object>} Generated capabilities. An empty capability is prepended to fill the gap if neccessary.
      */
     computedCapabilites() {
       const capabilities = [];
@@ -220,7 +220,7 @@ export default {
     },
 
     /**
-     * @returns {number} Number of (empty) capabilities to remove after the generated ones.
+     * @returns {Number} Number of (empty) capabilities to remove after the generated ones.
      */
     removeCount() {
       const nextCapability = this.capabilities[this.insertIndex];
@@ -242,7 +242,7 @@ export default {
     },
 
     /**
-     * @returns {number} DMX value range end of the last generated capability.
+     * @returns {Number} DMX value range end of the last generated capability.
      */
     end() {
       return this.computedCapabilites.length === 0 ? -1 : this.computedCapabilites[this.computedCapabilites.length - 1].dmxRange[1];
@@ -250,7 +250,7 @@ export default {
 
     /**
      * @see {@link getCapabilityWithSource}
-     * @returns {array.<object>} Array of all capabilities (generated and inherited), combined with their source.
+     * @returns {Array.<Object>} Array of all capabilities (generated and inherited), combined with their source.
      */
     allCapabilities() {
       const inheritedCapabilities = this.capabilities.map(
@@ -271,7 +271,7 @@ export default {
 
     /**
      * Performs validation of the user input.
-     * @returns {string|null} A string with an validation error, or null if there is no error.
+     * @returns {String|null} A string with an validation error, or null if there is no error.
      */
     validationError() {
       if (this.wizard.start < 0) {
@@ -290,7 +290,7 @@ export default {
     },
 
     /**
-     * @returns {string|null} A string with an error that prevents the generated capabilities from being saved, or null if there is no error.
+     * @returns {String|null} A string with an error that prevents the generated capabilities from being saved, or null if there is no error.
      */
     error() {
       if (this.validationError) {
@@ -370,9 +370,9 @@ export default {
 };
 
 /**
- * @param {object} cap The "full" capability object.
- * @param {string} source The source of the capability (inherited or computed).
- * @returns {object} A capability object that additionally contains the specified source.
+ * @param {Object} cap The "full" capability object.
+ * @param {String} source The source of the capability (inherited or computed).
+ * @returns {Object} A capability object that additionally contains the specified source.
  */
 function getCapabilityWithSource(cap, source) {
   return Object.assign({}, cap, { source });

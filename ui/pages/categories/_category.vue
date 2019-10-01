@@ -73,9 +73,9 @@ export default {
 };
 
 /**
- * @param {string} manKey The manufacturer key.
- * @param {string} fixKey The fixture key.
- * @returns {string} The manufacturer and fixture names, separated by a space.
+ * @param {String} manKey The manufacturer key.
+ * @param {String} fixKey The fixture key.
+ * @returns {String} The manufacturer and fixture names, separated by a space.
  */
 function getFixtureName(manKey, fixKey) {
   const manufacturerName = manufacturers[manKey].name;

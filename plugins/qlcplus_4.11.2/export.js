@@ -1,34 +1,24 @@
 const xmlbuilder = require(`xmlbuilder`);
 const sanitize = require(`sanitize-filename`);
 
-/* eslint-disable no-unused-vars */
-const {
-  AbstractChannel,
-  Capability,
-  CoarseChannel,
-  FineChannel,
-  Fixture,
-  Manufacturer,
-  Matrix,
-  Meta,
-  Mode,
-  NullChannel,
-  Physical,
-  Range,
-  SwitchingChannel,
-  TemplateChannel
-} = require(`../../lib/model.js`);
-/* eslint-enable no-unused-vars */
+/** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
+const { Capability } = require(`../../lib/model.js`);
+const { CoarseChannel } = require(`../../lib/model.js`);
+const { FineChannel } = require(`../../lib/model.js`);
+/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
+/** @typedef {import('../../lib/model/Mode.js').default} Mode */
+const { Physical } = require(`../../lib/model.js`);
+const { SwitchingChannel } = require(`../../lib/model.js`);
 
 module.exports.version = `0.5.2`;
 
 /**
- * @param {array.<Fixture>} fixtures An array of Fixture objects.
- * @param {object} options Global options, including:
- * @param {string} options.baseDir Absolute path to OFL's root directory.
+ * @param {Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {Object} options Global options, including:
+ * @param {String} options.baseDir Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {string|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
- * @returns {Promise.<array.<object>, Error>} The generated files.
+ * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
+ * @returns {Promise.<Array.<Object>, Error>} The generated files.
 */
 module.exports.export = async function exportQlcPlus(fixtures, options) {
   const outFiles = fixtures.map(fixture => {
@@ -72,7 +62,7 @@ module.exports.export = async function exportQlcPlus(fixtures, options) {
 };
 
 /**
- * @param {object} xml The xmlbuilder <FixtureDefinition> object.
+ * @param {Object} xml The xmlbuilder <FixtureDefinition> object.
  * @param {CoarseChannel} channel The OFL channel object.
  */
 function addChannel(xml, channel) {
@@ -132,7 +122,7 @@ function addChannel(xml, channel) {
 }
 
 /**
- * @param {object} xmlChannel The xmlbuilder <Channel> object.
+ * @param {Object} xmlChannel The xmlbuilder <Channel> object.
  * @param {Capability} cap The OFL capability object.
  */
 function addCapability(xmlChannel, cap) {
@@ -161,7 +151,7 @@ function addCapability(xmlChannel, cap) {
 }
 
 /**
- * @param {object} xml The xmlbuilder <FixtureDefinition> object.
+ * @param {Object} xml The xmlbuilder <FixtureDefinition> object.
  * @param {Mode} mode The OFL mode object.
  */
 function addMode(xml, mode) {
@@ -188,7 +178,7 @@ function addMode(xml, mode) {
 }
 
 /**
- * @param {object} xmlParentNode The xmlbuilder object where <Physical> should be added.
+ * @param {Object} xmlParentNode The xmlbuilder object where <Physical> should be added.
  * @param {Physical} physical The OFL physical object.
  * @param {Mode} mode The OFL mode object this physical data section belongs to.
  */
@@ -316,8 +306,8 @@ function addHeads(xmlMode, mode) {
 
   /**
    * @param {AbstractChannel} channel A channel from a mode's channel list.
-   * @param {string} pixelKey The pixel to check for.
-   * @returns {boolean} Whether the given channel controls the given pixel key, either directly or as part of a pixel group.
+   * @param {String} pixelKey The pixel to check for.
+   * @returns {Boolean} Whether the given channel controls the given pixel key, either directly or as part of a pixel group.
    */
   function controlsPixelKey(channel, pixelKey) {
     if (channel instanceof SwitchingChannel) {
@@ -339,7 +329,7 @@ function addHeads(xmlMode, mode) {
 /**
  * Determines the QLC+ fixture type out of the fixture's categories.
  * @param {Fixture} fixture The Fixture instance whose QLC+ type has to be determined.
- * @returns {string} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
+ * @returns {String} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
  */
 function getFixtureType(fixture) {
   const replaceCats = {
@@ -356,8 +346,8 @@ function getFixtureType(fixture) {
 
 /**
  * Converts a channel's type into a valid QLC+ channel type.
- * @param {string} type Our own OFL channel type.
- * @returns {string} The corresponding QLC+ channel type.
+ * @param {String} type Our own OFL channel type.
+ * @returns {String} The corresponding QLC+ channel type.
  */
 function getChannelType(type) {
   const qlcplusChannelTypes = {

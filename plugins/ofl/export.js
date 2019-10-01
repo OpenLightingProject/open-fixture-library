@@ -1,16 +1,18 @@
 const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
 
+/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
+
 const manufacturers = require(`../../fixtures/manufacturers.json`);
 
 module.exports.version = require(`../../schemas/fixture.json`).version;
 
 /**
- * @param {array.<Fixture>} fixtures An array of Fixture objects.
- * @param {object} options Global options, including:
- * @param {string} options.baseDir Absolute path to OFL's root directory.
+ * @param {Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {Object} options Global options, including:
+ * @param {String} options.baseDir Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {string|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
- * @returns {Promise.<array.<object>, Error>} The generated files.
+ * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
+ * @returns {Promise.<Array.<Object>, Error>} The generated files.
 */
 module.exports.export = async function exportOfl(fixtures, options) {
   const displayedPluginVersion = options.displayedPluginVersion || module.exports.version;

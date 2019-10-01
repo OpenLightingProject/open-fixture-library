@@ -99,8 +99,8 @@
           <abbr title="Remote Device Management">RDM</abbr> data
         </template>
 
-        {{ fixture.manufacturer.rdmId }} /
-        {{ fixture.rdm.modelId }} /
+        {{ fixture.manufacturer.rdmId }} (0x{{ fixture.manufacturer.rdmId.toString(16) }}) /
+        {{ fixture.rdm.modelId }} (0x{{ fixture.rdm.modelId.toString(16) }}) /
         {{ `softwareVersion` in fixture.rdm ? fixture.rdm.softwareVersion : `?` }} –
         <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${fixture.manufacturer.rdmId}&model=${fixture.rdm.modelId}`" rel="nofollow">
           <app-svg name="ola" /> View in Open Lighting RDM database
@@ -195,7 +195,7 @@
 .fixture-meta {
   margin: -1.5rem 0 1rem;
   font-size: 0.8rem;
-  color: $secondary-text-dark;
+  color: theme-color(text-secondary);
 
   & > span:not(:last-child)::after {
     content: ' | ';
@@ -237,7 +237,7 @@
   list-style: none;
 
   .hostname {
-    color: $secondary-text-dark;
+    color: theme-color(text-secondary);
     font-size: 0.9em;
     padding-left: 1ex;
   }
@@ -283,8 +283,8 @@ import packageJson from '~~/package.json';
 import register from '~~/fixtures/register.json';
 import plugins from '~~/plugins/plugins.json';
 
-import schemaProperties from '~~/lib/schema-properties.mjs';
-import Fixture from '~~/lib/model/Fixture.mjs';
+import schemaProperties from '~~/lib/schema-properties.js';
+import Fixture from '~~/lib/model/Fixture.js';
 
 import svg from '~/components/svg.vue';
 import categoryBadge from '~/components/category-badge.vue';
@@ -298,7 +298,7 @@ import helpWantedDialog from '~/components/help-wanted-dialog.vue';
 import helpWantedMessage from '~/components/help-wanted-message.vue';
 import labeledValueVue from '~/components/labeled-value.vue';
 
-import fixtureLinksMixin from '~/assets/scripts/fixture-links-mixin.mjs';
+import fixtureLinksMixin from '~/assets/scripts/fixture-links-mixin.js';
 
 const VIDEOS_TO_EMBED = 2;
 
@@ -453,7 +453,7 @@ export default {
     },
 
     /**
-     * @returns {array.<object>} Array of videos that can be embetted.
+     * @returns {Array.<Object>} Array of videos that can be embetted.
      */
     videos() {
       const videoUrls = this.fixture.getLinksOfType(`video`);
@@ -540,7 +540,7 @@ export default {
     /**
      * Format a date to display as a <time> HTML tag.
      * @param {Date} date The Date object to format.
-     * @returns {string} The <time> HTML tag.
+     * @returns {String} The <time> HTML tag.
      */
     getDateHtml(date) {
       return `<time datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, ``)}</time>`;
@@ -573,8 +573,8 @@ const nativeVideoUrlRegex = /\.(?:mp4|avi)$/;
 
 
 /**
- * @param {string} url The video URL.
- * @returns {object|null} The embettable video data for the URL, or null if the video can not be embetted.
+ * @param {String} url The video URL.
+ * @returns {Object|null} The embettable video data for the URL, or null if the video can not be embetted.
  */
 function getEmbettableVideoData(url) {
   if (nativeVideoUrlRegex.test(url)) {
@@ -613,8 +613,8 @@ function getEmbettableVideoData(url) {
 }
 
 /**
- * @param {string} url The URL to extract the hostname from.
- * @returns {string} The hostname of the provided URL, or the whole URL if the hostname could not be determined.
+ * @param {String} url The URL to extract the hostname from.
+ * @returns {String} The hostname of the provided URL, or the whole URL if the hostname could not be determined.
  */
 function getHostname(url) {
   // adapted from https://stackoverflow.com/a/21553982/451391
