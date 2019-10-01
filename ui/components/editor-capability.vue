@@ -57,7 +57,7 @@
   position: relative;
 
   &:not(:last-child) {
-    border-bottom: 1px solid $divider-dark;
+    border-bottom: 1px solid theme-color(divider);
   }
 
   &[open] {
@@ -75,7 +75,7 @@
 }
 
 .unset {
-  color: $disabled-text-dark;
+  color: theme-color(text-disabled);
 }
 
 a.remove {
@@ -95,11 +95,11 @@ a.remove {
 </style>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.mjs';
+import schemaProperties from '~~/lib/schema-properties.js';
 import {
   getEmptyCapability,
   isCapabilityChanged
-} from '~/assets/scripts/editor-utils.mjs';
+} from '~/assets/scripts/editor-utils.js';
 
 import conditionalDetailsVue from '~/components/conditional-details.vue';
 import propertyInputRangeVue from '~/components/property-input-range.vue';

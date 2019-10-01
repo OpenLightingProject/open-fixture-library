@@ -191,8 +191,8 @@ export default {
 };
 
 /**
- * @param {object} query The raw query returned by Vue Router
- * @returns {object} Object with properties "search" (string), "manufacturers" and "categories" (arrays of strings).
+ * @param {Object} query The raw query returned by Vue Router
+ * @returns {Object} Object with properties "search" (string), "manufacturers" and "categories" (arrays of strings).
  */
 function getSanitizedQuery(query) {
   const searchQuery = (query.q || ``).trim();
@@ -216,8 +216,8 @@ function getSanitizedQuery(query) {
 
 /**
  * Request search results from the backend.
- * @param {object} axios The axios instance to use.
- * @param {object} sanitizedQuery A query object like returned from {@link getSanitizedQuery}.
+ * @param {Object} axios The axios instance to use.
+ * @param {Object} sanitizedQuery A query object like returned from {@link getSanitizedQuery}.
  * @returns {Promise} The request promise.
  */
 function getSearchResults(axios, sanitizedQuery) {

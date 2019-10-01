@@ -28,6 +28,7 @@ module.exports = {
   styleResources: {
     scss: [
       `~/assets/styles/vars.scss`,
+      `~/assets/styles/theming.scss`,
       `~/assets/styles/mixins.scss`
     ]
   },
@@ -48,10 +49,6 @@ module.exports = {
           removeSVGTagAttrs: false
         }
       });
-
-      // include .mjs files for babel-loader
-      const babelLoader = config.module.rules.find(rule => rule.test.toString() === `/\\.jsx?$/i`);
-      babelLoader.test = /\.jsx?$|\.mjs$/;
 
       // condense whitespace in Vue templates
       const vueLoader = config.module.rules.find(rule => rule.loader === `vue-loader`);

@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import schemaProperties from '~~/lib/schema-properties.mjs';
+import schemaProperties from '~~/lib/schema-properties.js';
 
 import propertyInputTextVue from '~/components/property-input-text.vue';
 import labeledInputVue from '~/components/labeled-input.vue';

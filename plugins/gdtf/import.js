@@ -7,7 +7,7 @@ require = require(`esm`)(module); // eslint-disable-line no-global-assign
 
 const manufacturers = require(`../../fixtures/manufacturers.json`);
 const { CoarseChannel } = require(`../../lib/model.js`);
-const { scaleDmxValue, scaleDmxRangeIndividually } = require(`../../lib/scale-dmx-values.mjs`);
+const { scaleDmxValue, scaleDmxRangeIndividually } = require(`../../lib/scale-dmx-values.js`);
 const { gdtfAttributes, gdtfUnits } = require(`./gdtf-attributes.js`);
 const { getRgbColorFromGdtfColor, followXmlNodeReference } = require(`./gdtf-helpers.js`);
 
@@ -15,9 +15,9 @@ module.exports.version = `0.1.0`;
 
 /**
  * @param {Buffer} buffer The imported file.
- * @param {string} filename The imported file's name.
- * @param {string} authorName The importer's name.
- * @returns {Promise.<object, Error>} A Promise resolving to an out object
+ * @param {String} filename The imported file's name.
+ * @param {String} authorName The importer's name.
+ * @returns {Promise.<Object, Error>} A Promise resolving to an out object
 **/
 module.exports.import = async function importGdtf(buffer, filename, authorName) {
   const parser = new xml2js.Parser();
@@ -137,9 +137,9 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
   /**
    * Adds an RDM section to the OFL fixture and manufacturer if applicable.
-   * @param {object} fixture The OFL fixture object.
-   * @param {object} manufacturer The OFL manufacturer object.
-   * @param {object} gdtfFixture The GDTF fixture object.
+   * @param {Object} fixture The OFL fixture object.
+   * @param {Object} manufacturer The OFL manufacturer object.
+   * @param {Object} gdtfFixture The GDTF fixture object.
    */
   function addRdmInfo(fixture, manufacturer, gdtfFixture) {
     if (!(`Protocols` in gdtfFixture) || !(`RDM` in gdtfFixture.Protocols[0])) {
@@ -158,8 +158,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
   /**
    * Adds wheels to the OFL fixture (if there are any).
-   * @param {object} fixture The OFL fixture object.
-   * @param {object} gdtfFixture The GDTF fixture object.
+   * @param {Object} fixture The OFL fixture object.
+   * @param {Object} gdtfFixture The GDTF fixture object.
    */
   function addWheels(fixture, gdtfFixture) {
     if (!(`Wheels` in gdtfFixture)) {
@@ -217,7 +217,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
 
   /**
-   * @param {object} gdtfFixture The GDTF fixture object.
+   * @param {Object} gdtfFixture The GDTF fixture object.
    */
   function autoGenerateGdtfNameAttributes(gdtfFixture) {
     gdtfFixture.DMXModes[0].DMXMode.forEach((gdtfMode, modeIndex) => {
@@ -245,18 +245,18 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
   /**
    * @typedef Relation
-   * @type object
-   * @property {number} modeIndex
-   * @property {object} masterGdtfChannel
-   * @property {string} switchingChannelName
-   * @property {object} slaveGdtfChannel
-   * @property {number} dmxFrom
-   * @property {number} dmxTo
+   * @type Object
+   * @property {Number} modeIndex
+   * @property {Object} masterGdtfChannel
+   * @property {String} switchingChannelName
+   * @property {Object} slaveGdtfChannel
+   * @property {Number} dmxFrom
+   * @property {Number} dmxTo
    */
 
   /**
-   * @param {object} gdtfFixture The GDTF fixture object.
-   * @returns {array.<Relation>} An array of relations.
+   * @param {Object} gdtfFixture The GDTF fixture object.
+   * @returns {Array.<Relation>} An array of relations.
    */
   function splitSwitchingChannels(gdtfFixture) {
     const relations = [];
@@ -316,17 +316,17 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
   /**
    * @typedef ChannelWrapper
-   * @type object
-   * @property {string} key The channel key.
-   * @property {object} channel The OFL channel object.
-   * @property {number} maxResolution The highest used resolution of this channel.
-   * @property {array.<number>} modeIndices The indices of the modes that this channel is used in.
+   * @type Object
+   * @property {String} key The channel key.
+   * @property {Object} channel The OFL channel object.
+   * @property {Number} maxResolution The highest used resolution of this channel.
+   * @property {Array.<Number>} modeIndices The indices of the modes that this channel is used in.
    */
 
   /**
    * Add availableChannels and templateChannels to the fixture.
-   * @param {object} fixture The OFL fixture object.
-   * @param {object} gdtfFixture The GDTF fixture object.
+   * @param {Object} fixture The OFL fixture object.
+   * @param {Object} gdtfFixture The GDTF fixture object.
    */
   function addChannels(fixture, gdtfFixture) {
     const availableChannels = [];
@@ -393,9 +393,9 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
   }
 
   /**
-   * @param {array.<ChannelWrapper>} channelWrappers The OFL availableChannels or templateChannels object.
-   * @param {object} gdtfChannel The GDTF <DMXChannel> XML object.
-   * @param {object} gdtfFixture The GDTF fixture object.
+   * @param {Array.<ChannelWrapper>} channelWrappers The OFL availableChannels or templateChannels object.
+   * @param {Object} gdtfChannel The GDTF <DMXChannel> XML object.
+   * @param {Object} gdtfFixture The GDTF fixture object.
    */
   function addChannel(channelWrappers, gdtfChannel, gdtfFixture) {
     const name = getChannelName();
@@ -459,7 +459,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
 
     /**
-     * @returns {string} The channel name.
+     * @returns {String} The channel name.
      */
     function getChannelName() {
       const channelAttribute = gdtfChannel.LogicalChannel[0].$.Attribute;
@@ -475,7 +475,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     }
 
     /**
-     * @returns {array.<object>} Array of OFL capability objects (but with GDTF DMX values).
+     * @returns {Array.<Object>} Array of OFL capability objects (but with GDTF DMX values).
      */
     function getCapabilities() {
       // save all <ChannelSet> XML nodes in a flat list
@@ -596,8 +596,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
 
       /**
-       * @param {number} index The index of the capability.
-       * @returns {array.<number>} The GDTF DMX value for this capability's range end.
+       * @param {Number} index The index of the capability.
+       * @returns {Array.<Number>} The GDTF DMX value for this capability's range end.
        */
       function getDmxRangeEnd(index) {
         const dmxFrom = gdtfCapabilities[index]._dmxFrom;
@@ -613,8 +613,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       }
 
       /**
-       * @param {string} attrName The GDTF attribute name.
-       * @returns {object} The capability type data from @file gdtf-attributes.js
+       * @param {String} attrName The GDTF attribute name.
+       * @returns {Object} The capability type data from @file gdtf-attributes.js
        */
       function getCapabilityTypeData(attrName) {
         const capabilityTypeData = gdtfAttributes[attrName];
@@ -655,9 +655,9 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       }
 
       /**
-       * @param {object} capabilityTypeData The capability type data from @file gdtf-attributes.js
-       * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
-       * @returns {string|null} The OFL property name, or null.
+       * @param {Object} capabilityTypeData The capability type data from @file gdtf-attributes.js
+       * @param {Object} gdtfCapability The enhanced <ChannelSet> XML object.
+       * @returns {String|null} The OFL property name, or null.
        */
       function getOflProperty(capabilityTypeData, gdtfCapability) {
         if (!(`oflProperty` in capabilityTypeData)) {
@@ -672,7 +672,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       }
 
       /**
-       * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
+       * @param {Object} gdtfCapability The enhanced <ChannelSet> XML object.
        * @returns {function} The function to turn a physical value into an entity string with the correct unit.
        */
       function getPhysicalUnit(gdtfCapability) {
@@ -701,7 +701,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     }
 
     /**
-     * @returns {number} The resolution of this channel.
+     * @returns {Number} The resolution of this channel.
      */
     function getChannelResolution() {
       if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Uber`)) {
@@ -720,7 +720,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     }
 
     /**
-     * @returns {string} The channel key, derived from the name and made unique.
+     * @returns {String} The channel key, derived from the name and made unique.
      */
     function getChannelKey() {
       let key = name;
@@ -777,7 +777,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
 
       /**
-       * @returns {number} The highest DMX value resolution used in this channel, or 0 if no DMX value is used at all.
+       * @returns {Number} The highest DMX value resolution used in this channel, or 0 if no DMX value is used at all.
        */
       function getMaxDmxValueResolution() {
         const dmxValues = [];
@@ -807,23 +807,23 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
   /**
    * @typedef DmxBreakWrapper
    * @description Holds a list of OFL channel keys belonging to consecutive GDTF channels with the same DMXBreak attribute.
-   * @type object
-   * @property {string|undefined} dmxBreak The DMXBreak attribute of consecutive DMXChannel nodes.
-   * @property {string} geometry The Geometry attribute of consecutive DMXChannel nodes.
-   * @property {array.<string>} channels The OFL channel keys in this DMX break.
+   * @type Object
+   * @property {String|undefined} dmxBreak The DMXBreak attribute of consecutive DMXChannel nodes.
+   * @property {String} geometry The Geometry attribute of consecutive DMXChannel nodes.
+   * @property {Array.<String>} channels The OFL channel keys in this DMX break.
    */
 
   /**
    * Add modes and matrix pixel keys (if needed) to the fixture.
-   * @param {object} fixture The OFL fixture object.
-   * @param {object} gdtfFixture The GDTF fixture object.
+   * @param {Object} fixture The OFL fixture object.
+   * @param {Object} gdtfFixture The GDTF fixture object.
    */
   function addModes(fixture, gdtfFixture) {
     // save all matrix pixels that are used in some mode
     const matrixPixels = new Set();
 
     fixture.modes = gdtfFixture.DMXModes[0].DMXMode.map(gdtfMode => {
-      /** @type array.<DmxBreakWrapper> */
+      /** @type Array.<DmxBreakWrapper> */
       const dmxBreakWrappers = [];
 
       gdtfMode.DMXChannels[0].DMXChannel.forEach(gdtfChannel => {
@@ -895,8 +895,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
     /**
      * Adds the OFL channel key to dmxBreakWrappers' last entry's channels array.
-     * @param {object} gdtfChannel The GDTF channel object.
-     * @param {array.<DmxBreakWrapper>} dmxBreakWrappers The DMXBreak wrapper array.
+     * @param {Object} gdtfChannel The GDTF channel object.
+     * @param {Array.<DmxBreakWrapper>} dmxBreakWrappers The DMXBreak wrapper array.
      */
     function addChannelKeyToDmxBreakWrapper(gdtfChannel, dmxBreakWrappers) {
       const chKey = gdtfChannel._oflChannelKey;
@@ -923,8 +923,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
     /**
      * Find all <GeometryReference> XML nodes with a given Geometry attribute.
-     * @param {string} geometryName The name of the geometry reference.
-     * @returns {array.<object>} An array of all geometry reference XML objects.
+     * @param {String} geometryName The name of the geometry reference.
+     * @returns {Array.<Object>} An array of all geometry reference XML objects.
      */
     function findGeometryReferences(geometryName) {
       const geometryReferences = [];
@@ -938,7 +938,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
        * Recursively go through the child nodes of a given XML node and add
        * <GeometryReference> nodes with the correct Geometry attribute to the
        * geometryReferences array.
-       * @param {object} xmlNode The XML node object to start traversing at.
+       * @param {Object} xmlNode The XML node object to start traversing at.
        */
       function traverseGeometries(xmlNode) {
         // add all suitable GeometryReference child nodes
@@ -961,8 +961,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
   /**
    * Adds switchChannels property to all master channels' capabilities and use
    * the switching channel key in modes' channel lists.
-   * @param {object} fixture The OFL fixture object.
-   * @param {array.<Relation>} relations The array of relations.
+   * @param {Object} fixture The OFL fixture object.
+   * @param {Array.<Relation>} relations The array of relations.
    */
   function linkSwitchingChannels(fixture, relations) {
     const relationsPerMaster = {};
@@ -1069,8 +1069,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
 
     /**
-     * @param {object} switchingChannelRelations Switching channel's relations.
-     * @returns {object} Simplified switching channel's relations.
+     * @param {Object} switchingChannelRelations Switching channel's relations.
+     * @returns {Object} Simplified switching channel's relations.
      */
     function simplifySwitchingChannelRelations(switchingChannelRelations) {
       const simplifiedRelations = {};
@@ -1105,7 +1105,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
     /**
      * @param {CoarseChannel} channel The OFL channel object.
-     * @returns {number} The fineness of the channel.
+     * @returns {Number} The fineness of the channel.
      */
     function getChannelResolution(channel) {
       if (`dmxValueResolution` in channel) {
@@ -1123,18 +1123,18 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
 
 /**
- * @param {object} xmlNode An XML node object.
- * @param {string} attribute The attribute name to check.
- * @returns {boolean} True if the node has the attribute and its value is not "None", false otherwise.
+ * @param {Object} xmlNode An XML node object.
+ * @param {String} attribute The attribute name to check.
+ * @returns {Boolean} True if the node has the attribute and its value is not "None", false otherwise.
  */
 function xmlNodeHasNotNoneAttribute(xmlNode, attribute) {
   return attribute in xmlNode.$ && xmlNode.$[attribute] !== `None`;
 }
 
 /**
- * @param {string} dateStr A date string in the form "dd.MM.yyyy HH:mm:ss", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-date
- * @param {string} fallbackDateStr A fallback date string to return if the parsed date is not valid.
- * @returns {string|null} A date string in the form "YYYY-MM-DD", or null if the string could not be parsed.
+ * @param {String} dateStr A date string in the form "dd.MM.yyyy HH:mm:ss", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-date
+ * @param {String} fallbackDateStr A fallback date string to return if the parsed date is not valid.
+ * @returns {String|null} A date string in the form "YYYY-MM-DD", or null if the string could not be parsed.
  */
 function getIsoDateFromGdtfDate(dateStr, fallbackDateStr) {
   const timeRegex = /^([0-3]?\d)\.([01]?\d)\.(\d{4})\s+\d?\d:\d?\d:\d?\d$/;
@@ -1152,8 +1152,8 @@ function getIsoDateFromGdtfDate(dateStr, fallbackDateStr) {
 }
 
 /**
- * @param {string} dmxValueStr GDTF DMX value in the form "128/2", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-DMXValue
- * @returns {array.<number>} Array containing DMX value and DMX resolution.
+ * @param {String} dmxValueStr GDTF DMX value in the form "128/2", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-DMXValue
+ * @returns {[Number, Resolution]} Array containing DMX value and DMX resolution.
  */
 function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueStr) {
   try {
@@ -1166,8 +1166,8 @@ function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueStr) {
 }
 
 /**
- * @param {string} str The string to slugify.
- * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
+ * @param {String} str The string to slugify.
+ * @returns {String} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(str) {
   return str.toLowerCase().replace(/[^a-z0-9-]+/g, ` `).trim().replace(/\s+/g, `-`);

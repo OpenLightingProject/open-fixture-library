@@ -167,7 +167,7 @@ svg {
 
 .slot {
   & text {
-    fill: $primary-text-dark;
+    fill: theme-color(text-primary);
     pointer-events: none;
     font-weight: 400;
   }
@@ -203,7 +203,7 @@ figcaption table {
 
 <script>
 const { getColorCircleSvgFragment } = require(`~/components/svg.vue`);
-import Wheel from '~~/lib/model/Wheel.mjs';
+import Wheel from '~~/lib/model/Wheel.js';
 
 import conditionalDetailsVue from '~/components/conditional-details.vue';
 

@@ -8,8 +8,8 @@ const getOutObjectFromEditorData = require(`../../lib/get-out-object-from-editor
  * Takes the input from the fixture editor client side script and converts it to an OFL fixture JSON.
  * If indicated in the request, a GitHub pull request is created.
  * Otherwise, fixture errors and warnings from fixture-valid are returned.
- * @param {object} request Passed from Express.
- * @param {object} response Passed from Express.
+ * @param {Object} request Passed from Express.
+ * @param {Object} response Passed from Express.
  */
 module.exports = async function addFixtures(request, response) {
   let pullRequestUrl;
