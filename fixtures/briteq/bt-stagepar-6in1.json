@@ -1,0 +1,110 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BT-STAGEPAR 6in1",
+  "shortName": "BT-STAGEPAR6in1",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["josequioss"],
+    "createDate": "2019-10-01",
+    "lastModifyDate": "2019-10-01"
+  },
+  "links": {
+    "manual": [
+      "https://briteq-lighting.com/fr/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1517492038.pdf"
+    ],
+    "productPage": [
+      "https://briteq-lighting.com/fr/bt-stagepar-6in1"
+    ]
+  },
+  "physical": {
+    "dimensions": [300, 275, 300],
+    "weight": 2.5,
+    "power": 120,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Rojo": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Verde": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Azul": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blanco": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Ambar": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Estrobo": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8 channel",
+      "shortName": "8channel",
+      "channels": [
+        "Rojo",
+        "Verde",
+        "Azul",
+        "Blanco",
+        "Ambar",
+        "UV",
+        "Dimmer",
+        "Estrobo"
+      ]
+    }
+  ]
+}
