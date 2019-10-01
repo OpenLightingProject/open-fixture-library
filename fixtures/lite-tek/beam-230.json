@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Beam 230",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["josequioss"],
     "createDate": "2019-09-18",
@@ -9,16 +9,25 @@
   },
   "links": {
     "manual": [
-      "http://www.lite-tek.com.mx/manuales/BEAM-230.pdf"
+      "https://lite-tek.com.mx/manuales/BEAM-230.pdf"
+    ],
+    "productPage": [
+      "https://lite-tek.com.mx/producto/beam-230/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=hXLsF72Pnk4",
+      "https://www.youtube.com/watch?v=dMQJ2XyHWTE"
     ]
   },
   "physical": {
-    "dimensions": [350, 320, 505],
-    "weight": 20,
-    "power": 280,
+    "dimensions": [350, 505, 320],
+    "weight": 20.1,
+    "power": 320,
     "DMXconnector": "3-pin",
     "bulb": {
-      "colorTemperature": 8000
+      "type": "YODN 7R",
+      "colorTemperature": 8000,
+      "lumens": 8500
     }
   },
   "availableChannels": {
