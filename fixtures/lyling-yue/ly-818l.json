@@ -1,0 +1,145 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LY-818L",
+  "shortName": "led18x18",
+  "categories": ["Matrix"],
+  "meta": {
+    "authors": ["josequioss"],
+    "createDate": "2019-10-01",
+    "lastModifyDate": "2019-10-01"
+  },
+  "links": {
+    "productPage": [
+      "https://lingyuelight.en.made-in-china.com/"
+    ]
+  },
+  "physical": {
+    "weight": 5,
+    "power": 350,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Rojo": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Rojo"
+      }
+    },
+    "Verde": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Verde"
+      }
+    },
+    "Azul": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Azul"
+      }
+    },
+    "Blanco": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Ambar": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Fade": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Estrobo": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "duration": "short"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning",
+          "speedStart": "slow",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "10 channel",
+      "shortName": "10channel",
+      "channels": [
+        "Dimmer",
+        "Rojo",
+        "Verde",
+        "Azul",
+        "Blanco",
+        "Ambar",
+        "UV",
+        "Strobe",
+        "Fade",
+        "Estrobo"
+      ]
+    }
+  ]
+}
