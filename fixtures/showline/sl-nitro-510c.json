@@ -900,6 +900,29 @@
         }
       ]
     },
+    "$pixelKey RGB Strobe Duration": {
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "0ms",
+        "durationEnd": "8364ms"
+      }
+    },
+    "$pixelKey RGB Strobe Rate": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Single flash when intensity > 5"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0.5Hz",
+          "speedEnd": "30.488Hz"
+        }
+      ]
+    },
     "$pixelKey White Strobe Duration": {
       "capability": {
         "type": "StrobeDuration",
@@ -1063,6 +1086,134 @@
             "$pixelKey Green Strobe Rate",
             "$pixelKey Blue Strobe Duration",
             "$pixelKey Blue Strobe Rate",
+            "$pixelKey White Strobe Duration",
+            "$pixelKey White Strobe Rate"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGBW Expanded 1-zone",
+      "channels": [
+        "Master Dimmer",
+        "Master Dimmer fine",
+        "Color Macros",
+        "Strobe",
+        "Intensity Timing",
+        "Color Timing",
+        "Control",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Zones 1-6"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Intensity",
+            "$pixelKey Red",
+            "$pixelKey Red fine",
+            "$pixelKey Green",
+            "$pixelKey Green fine",
+            "$pixelKey Blue",
+            "$pixelKey Blue fine",
+            "$pixelKey White",
+            "$pixelKey White fine",
+            "$pixelKey RGB Strobe Duration",
+            "$pixelKey RGB Strobe Rate",
+            "$pixelKey White Strobe Duration",
+            "$pixelKey White Strobe Rate"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGBW Expanded 2-zone",
+      "channels": [
+        "Master Dimmer",
+        "Master Dimmer fine",
+        "Color Macros",
+        "Strobe",
+        "Intensity Timing",
+        "Color Timing",
+        "Control",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Zones 1-3", "Zones 4-6"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Intensity",
+            "$pixelKey Red",
+            "$pixelKey Red fine",
+            "$pixelKey Green",
+            "$pixelKey Green fine",
+            "$pixelKey Blue",
+            "$pixelKey Blue fine",
+            "$pixelKey White",
+            "$pixelKey White fine",
+            "$pixelKey RGB Strobe Duration",
+            "$pixelKey RGB Strobe Rate",
+            "$pixelKey White Strobe Duration",
+            "$pixelKey White Strobe Rate"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGBW Expanded 3-zone",
+      "channels": [
+        "Master Dimmer",
+        "Master Dimmer fine",
+        "Color Macros",
+        "Strobe",
+        "Intensity Timing",
+        "Color Timing",
+        "Control",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Zones 1+4", "Zones 2+5", "Zones 3+6"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Intensity",
+            "$pixelKey Red",
+            "$pixelKey Red fine",
+            "$pixelKey Green",
+            "$pixelKey Green fine",
+            "$pixelKey Blue",
+            "$pixelKey Blue fine",
+            "$pixelKey White",
+            "$pixelKey White fine",
+            "$pixelKey RGB Strobe Duration",
+            "$pixelKey RGB Strobe Rate",
+            "$pixelKey White Strobe Duration",
+            "$pixelKey White Strobe Rate"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGBW Expanded 6-zone",
+      "channels": [
+        "Master Dimmer",
+        "Master Dimmer fine",
+        "Color Macros",
+        "Strobe",
+        "Intensity Timing",
+        "Color Timing",
+        "Control",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Intensity",
+            "$pixelKey Red",
+            "$pixelKey Red fine",
+            "$pixelKey Green",
+            "$pixelKey Green fine",
+            "$pixelKey Blue",
+            "$pixelKey Blue fine",
+            "$pixelKey White",
+            "$pixelKey White fine",
+            "$pixelKey RGB Strobe Duration",
+            "$pixelKey RGB Strobe Rate",
             "$pixelKey White Strobe Duration",
             "$pixelKey White Strobe Rate"
           ]
