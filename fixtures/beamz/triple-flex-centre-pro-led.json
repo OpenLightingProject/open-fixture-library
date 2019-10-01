@@ -1,9 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Triple Flex Centre Pro LED",
-  "categories": ["Flower"],
+  "categories": ["Flower", "Scanner"],
   "meta": {
-    "authors": ["Serge.michiels@gmail.com", "Serge Michiels"],
+    "authors": ["Serge Michiels"],
     "createDate": "2019-09-09",
     "lastModifyDate": "2019-09-09",
     "importPlugin": {
@@ -12,13 +12,27 @@
       "comment": "created by Q Light Controller Plus (version 4.12.2)"
     }
   },
+  "links": {
+    "manual": [
+      "https://files.tronios.com/Manuals/153.406%7CManual.pdf"
+    ],
+    "productPage": [
+      "https://www.tronios.com/triple-flex-centre-pro-led/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=3pROoLUR4Tw"
+    ]
+  },
   "physical": {
-    "DMXconnector": "5-pin",
+    "dimensions": [320, 320, 160],
+    "weight": 1,
+    "power": 40,
+    "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "72 LEDs (24× red, 24× green, 24× blue)"
     },
     "lens": {
-      "name": "Other"
+      "degreesMinMax": [20, 20]
     }
   },
   "availableChannels": {
