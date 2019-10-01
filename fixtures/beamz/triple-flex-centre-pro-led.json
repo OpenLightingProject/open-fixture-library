@@ -23,6 +23,7 @@
       "https://www.youtube.com/watch?v=3pROoLUR4Tw"
     ]
   },
+  "helpWanted": "The 7-channel mode is derived from the manual, the 8-channel mode from the imported QLC+ fixture. Which one is correct? Or are there different versions of this fixture with different DMX configurations?",
   "physical": {
     "dimensions": [320, 320, 160],
     "weight": 1,
@@ -45,6 +46,32 @@
     ]
   },
   "availableChannels": {
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 200],
+          "type": "Effect",
+          "effectName": "Auto mode",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Is speed correct here?"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound mode",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "soundControlled": true,
+          "helpWanted": "Is speed correct here?"
+        }
+      ]
+    },
     "Motor Speed": {
       "defaultValue": 0,
       "capability": {
@@ -190,6 +217,19 @@
     }
   },
   "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Mode",
+        "Color Program 1",
+        "Color Program 2",
+        "Color Program 3",
+        "Tilt 1",
+        "Tilt 2",
+        "Tilt 3"
+      ]
+    },
     {
       "name": "8-channel",
       "shortName": "8ch",
