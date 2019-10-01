@@ -1,19 +1,34 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Multiflood Pro IP SMD RGBW",
-  "categories": ["Matrix", "Strobe"],
+  "categories": ["Blinder", "Strobe", "Matrix", "Color Changer"],
   "meta": {
-    "authors": ["T.Hartwig"],
+    "authors": ["T. Hartwig"],
     "createDate": "2019-09-10",
     "lastModifyDate": "2019-09-10"
   },
   "links": {
-    "other": [
-      "https://www.steinigke.de/de/mpn52200930-eurolite-multiflood-pro-ip-smd-rgbw-strobe-wash.html"
+    "manual": [
+      "https://www.steinigke.de/download/52200930-Anleitung-122489-1.000-eurolite-multiflood-pro-ip-smd-rgbw-strobe-wash-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn52200930-eurolite-multiflood-pro-ip-smd-rgbw-strobe-wash.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=juyIUr8L76w"
     ]
   },
   "physical": {
-    "DMXconnector": "3-pin"
+    "dimensions": [490, 285, 160],
+    "weight": 12.5,
+    "power": 315,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "1320× 0.4W SMD 5050 RGBW LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [120, 120]
+    }
   },
   "availableChannels": {
     "Dimmer": {
