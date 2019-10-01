@@ -1,0 +1,129 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LY-818L",
+  "shortName": "ly818l",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["josequioss"],
+    "createDate": "2019-10-01",
+    "lastModifyDate": "2019-10-01"
+  },
+  "links": {
+    "productPage": [
+      "https://lingyuelight.en.made-in-china.com/product/IShnYcgdrNVM/China-RGBWA-UV-IP65-PAR-LED-18-X-18-Outdoor-Stage-Light.html"
+    ]
+  },
+  "physical": {
+    "weight": 5,
+    "power": 350
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Rojo": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Verde": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Azul": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blanco": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Ambar": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Velocidad Estrobo": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Fade": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Varios": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [51, 100],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "10 channel",
+      "shortName": "10channel",
+      "channels": [
+        "Dimmer",
+        "Rojo",
+        "Verde",
+        "Azul",
+        "Blanco",
+        "Ambar",
+        "UV",
+        "Velocidad Estrobo",
+        "Fade",
+        "Varios"
+      ]
+    }
+  ]
+}
