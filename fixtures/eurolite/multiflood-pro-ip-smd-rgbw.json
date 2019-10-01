@@ -1,0 +1,474 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Multiflood Pro IP SMD RGBW",
+  "categories": ["Blinder", "Strobe", "Matrix", "Color Changer"],
+  "meta": {
+    "authors": ["T. Hartwig"],
+    "createDate": "2019-10-01",
+    "lastModifyDate": "2019-10-01"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/52200930-Anleitung-122489-1.000-eurolite-multiflood-pro-ip-smd-rgbw-strobe-wash-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn52200930-eurolite-multiflood-pro-ip-smd-rgbw-strobe-wash.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=juyIUr8L76w"
+    ]
+  },
+  "physical": {
+    "dimensions": [490, 285, 160],
+    "weight": 12.5,
+    "power": 315,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "1320× 0.4W SMD 5050 RGBW LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [120, 120]
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["6", "5", "4"],
+        ["1", "2", "3"]
+      ]
+    ],
+    "pixelGroups": {
+      "Master": "all",
+      "Background": "all"
+    }
+  },
+  "availableChannels": {
+    "RGBW Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        },
+        {
+          "dmxRange": [251, 254],
+          "type": "ColorPreset",
+          "comment": "RGBW",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Special, RGBW full on"
+        }
+      ]
+    },
+    "Red Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightness": "bright"
+        }
+      ]
+    },
+    "Green Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightness": "bright"
+        }
+      ]
+    },
+    "Blue Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightness": "bright"
+        }
+      ]
+    },
+    "White Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorIntensity",
+          "color": "White",
+          "brightness": "bright"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Duration": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "StrobeDuration",
+          "durationStart": "short",
+          "durationEnd": "long"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Random Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        }
+      ]
+    },
+    "Internal Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "Internal Programs",
+          "helpWanted": "At which DMX values can which programs be selected?"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 17],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [18, 25],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [26, 33],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [34, 41],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [42, 49],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [50, 57],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [58, 65],
+          "type": "ColorPreset",
+          "comment": "Light red",
+          "colors": ["#ff9999"]
+        },
+        {
+          "dmxRange": [66, 73],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [74, 81],
+          "type": "ColorPreset",
+          "comment": "Light green",
+          "colors": ["#99ff99"]
+        },
+        {
+          "dmxRange": [82, 89],
+          "type": "ColorPreset",
+          "comment": "Light blue",
+          "colors": ["#9999ff"]
+        },
+        {
+          "dmxRange": [90, 97],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "dmxRange": [98, 105],
+          "type": "ColorPreset",
+          "comment": "Full white (RGBW)",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [106, 113],
+          "type": "ColorPreset",
+          "comment": "White (RGB)",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [114, 121],
+          "type": "ColorPreset",
+          "comment": "Light yellow",
+          "colors": ["#ffff99"]
+        },
+        {
+          "dmxRange": [122, 128],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [129, 160],
+          "type": "Effect",
+          "effectName": "Auto program 1"
+        },
+        {
+          "dmxRange": [161, 192],
+          "type": "Effect",
+          "effectName": "Auto program 2"
+        },
+        {
+          "dmxRange": [193, 224],
+          "type": "Effect",
+          "effectName": "Program 1",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Effect",
+          "effectName": "Program 2",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "RGBW Strobe",
+        "Red Strobe",
+        "Green Strobe",
+        "Blue Strobe",
+        "White Strobe"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer",
+        "Strobe Duration",
+        "Strobe",
+        "Random Strobe",
+        "Internal Programs",
+        "Program Speed",
+        "Color Presets"
+      ]
+    },
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
+      "channels": [
+        "Dimmer",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Strobe",
+        "Internal Programs",
+        "Program Speed",
+        "Color Presets",
+        "Red Background",
+        "Green Background",
+        "Blue Background",
+        "White Background"
+      ]
+    },
+    {
+      "name": "15-channel",
+      "shortName": "15ch",
+      "channels": [
+        "Dimmer",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Strobe Duration",
+        "Strobe",
+        "Random Strobe",
+        "Internal Programs",
+        "Program Speed",
+        "Color Presets",
+        "Red Background",
+        "Green Background",
+        "Blue Background",
+        "White Background"
+      ]
+    },
+    {
+      "name": "31-channel",
+      "shortName": "31ch",
+      "channels": [
+        "Dimmer",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        },
+        "Strobe Duration",
+        "Strobe",
+        "Random Strobe",
+        "Internal Programs",
+        "Program Speed",
+        "Color Presets"
+      ]
+    }
+  ]
+}
