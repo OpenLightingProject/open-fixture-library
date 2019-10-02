@@ -169,27 +169,13 @@
   "settings": {
     "jsdoc": {
       "tagNamePreference": {
-        "arg": "param",
-        "argument": "param",
         "augments": "extends",
         "class": "constructor",
-        "const": "constant",
-        "defaultvalue": "default",
-        "desc": "description",
-        "exception": "throws",
         "file": "fileoverview",
         "fires": "emits",
-        "func": "function",
-        "host": "external",
         "linkcode": "link",
         "linkplain": "link",
-        "method": "function",
-        "overview": "fileoverview",
-        "prop": "property",
-        "return": "returns",
-        "var": "member",
-        "virtual": "abstract",
-        "yield": "yields"
+        "overview": "fileoverview"
       },
       "preferredTypes": {
         "array": "Array",
