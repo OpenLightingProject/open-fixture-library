@@ -246,8 +246,7 @@ async function performTask(task) {
 }
 
 /**
- * @typedef ChangeFlags
- * @type Object
+ * @typedef {Object} ChangeFlags
  * @property {Boolean} hasRemoved Whether any files were removed.
  * @property {Boolean} hasAdded Whether any files were added.
  * @property {Boolean} hasChanged Whether any files were changed.
