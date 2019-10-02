@@ -5,8 +5,8 @@
   "categories": ["Strobe", "Color Changer"],
   "meta": {
     "authors": ["Sebastian Portilla", "Felix Edelmann"],
-    "createDate": "2019-10-01",
-    "lastModifyDate": "2019-10-01"
+    "createDate": "2019-10-02",
+    "lastModifyDate": "2019-10-02"
   },
   "links": {
     "manual": [
@@ -39,12 +39,12 @@
       ]
     ],
     "pixelGroups": {
-      "Zones 1-6": "all",
-      "Zones 1-3": ["Zone 1", "Zone 2", "Zone 3"],
-      "Zones 4-6": ["Zone 4", "Zone 5", "Zone 6"],
-      "Zones 1+4": ["Zone 1", "Zone 4"],
-      "Zones 2+5": ["Zone 2", "Zone 5"],
-      "Zones 3+6": ["Zone 3", "Zone 6"]
+      "All Zones": "all",
+      "Top Row": ["Zone 1", "Zone 2", "Zone 3"],
+      "Bottom Row": ["Zone 4", "Zone 5", "Zone 6"],
+      "Left Zone": ["Zone 1", "Zone 4"],
+      "Center Zone": ["Zone 2", "Zone 5"],
+      "Right Zone": ["Zone 3", "Zone 6"]
     }
   },
   "availableChannels": {
@@ -983,7 +983,7 @@
         "Control",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Zones 1-6"],
+          "repeatFor": ["All Zones"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "$pixelKey Intensity",
@@ -1019,7 +1019,7 @@
         "Control",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Zones 1-3", "Zones 4-6"],
+          "repeatFor": ["Top Row", "Bottom Row"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "$pixelKey Intensity",
@@ -1055,7 +1055,7 @@
         "Control",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Zones 1+4", "Zones 2+5", "Zones 3+6"],
+          "repeatFor": ["Left Zone", "Center Zone", "Right Zone"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "$pixelKey Intensity",
@@ -1127,7 +1127,7 @@
         "Control",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Zones 1-6"],
+          "repeatFor": ["All Zones"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "$pixelKey Intensity",
@@ -1159,7 +1159,7 @@
         "Control",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Zones 1-3", "Zones 4-6"],
+          "repeatFor": ["Top Row", "Bottom Row"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "$pixelKey Intensity",
@@ -1191,7 +1191,7 @@
         "Control",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Zones 1+4", "Zones 2+5", "Zones 3+6"],
+          "repeatFor": ["Left Zone", "Center Zone", "Right Zone"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "$pixelKey Intensity",
@@ -1255,7 +1255,7 @@
         "Control",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Zones 1-6"],
+          "repeatFor": ["All Zones"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "$pixelKey Intensity",
@@ -1285,7 +1285,7 @@
         "Control",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Zones 1-3", "Zones 4-6"],
+          "repeatFor": ["Top Row", "Bottom Row"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "$pixelKey Intensity",
@@ -1315,7 +1315,7 @@
         "Control",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Zones 1+4", "Zones 2+5", "Zones 3+6"],
+          "repeatFor": ["Left Zone", "Center Zone", "Right Zone"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "$pixelKey Intensity",
@@ -1373,7 +1373,7 @@
         "Control",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Zones 1-6"],
+          "repeatFor": ["All Zones"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "$pixelKey Intensity",
@@ -1397,7 +1397,7 @@
         "Control",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Zones 1-3", "Zones 4-6"],
+          "repeatFor": ["Top Row", "Bottom Row"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "$pixelKey Intensity",
@@ -1421,7 +1421,7 @@
         "Control",
         {
           "insert": "matrixChannels",
-          "repeatFor": ["Zones 1+4", "Zones 2+5", "Zones 3+6"],
+          "repeatFor": ["Left Zone", "Center Zone", "Right Zone"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "$pixelKey Intensity",
