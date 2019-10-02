@@ -9,7 +9,7 @@ const promisify = require(`util`).promisify;
  * @param {Array.<Fixture>|null} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
  * @param {String|null} exportFile.mode Mode's shortName if given file only describes a single mode.
  * @returns {Promise.<undefined, Array.<String>|String>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
- **/
+ */
 module.exports = async function testAttributesCorrectness(exportFile) {
   const parser = new xml2js.Parser();
 

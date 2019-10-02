@@ -18,7 +18,7 @@ module.exports.version = `0.1.0`;
  * @param {String} filename The imported file's name.
  * @param {String} authorName The importer's name.
  * @returns {Promise.<Object, Error>} A Promise resolving to an out object
- **/
+ */
 module.exports.import = async function importGdtf(buffer, filename, authorName) {
   const parser = new xml2js.Parser();
 
