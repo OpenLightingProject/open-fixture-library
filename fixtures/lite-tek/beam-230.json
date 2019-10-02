@@ -4,8 +4,8 @@
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["josequioss"],
-    "createDate": "2019-10-01",
-    "lastModifyDate": "2019-10-01"
+    "createDate": "2019-10-02",
+    "lastModifyDate": "2019-10-02"
   },
   "links": {
     "manual": [
@@ -340,7 +340,8 @@
         },
         {
           "dmxRange": [4, 103],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
@@ -612,39 +613,10 @@
     "Prism Rotation": {
       "capabilities": [
         {
-          "dmxRange": [0, 20],
+          "dmxRange": [0, 127],
           "type": "PrismRotation",
-          "angle": "0deg"
-        },
-        {
-          "dmxRange": [21, 41],
-          "type": "PrismRotation",
-          "angle": "90deg"
-        },
-        {
-          "dmxRange": [42, 62],
-          "type": "PrismRotation",
-          "angle": "180deg"
-        },
-        {
-          "dmxRange": [63, 83],
-          "type": "PrismRotation",
-          "angle": "270deg"
-        },
-        {
-          "dmxRange": [84, 104],
-          "type": "PrismRotation",
-          "angle": "360deg"
-        },
-        {
-          "dmxRange": [105, 126],
-          "type": "PrismRotation",
-          "angle": "450deg"
-        },
-        {
-          "dmxRange": [127, 127],
-          "type": "PrismRotation",
-          "angle": "540deg"
+          "angleStart": "0deg",
+          "angleEnd": "540deg"
         },
         {
           "dmxRange": [128, 190],
