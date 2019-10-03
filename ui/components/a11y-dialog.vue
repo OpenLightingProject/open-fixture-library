@@ -20,7 +20,7 @@
           title="Close"
           @click.prevent="hide">
           Close
-          <app-svg name="close" />
+          <ofl-svg name="close" />
         </a>
 
         <h2 :id="`${id}-dialog-title`" tabindex="-1" autofocus>{{ title }}</h2>

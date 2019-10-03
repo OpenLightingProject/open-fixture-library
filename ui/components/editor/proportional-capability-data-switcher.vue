@@ -84,7 +84,7 @@
           class="swap"
           title="Swap start and end values"
           @click.prevent="swapStartEnd">
-          <app-svg name="swap-horizontal" />
+          <ofl-svg name="swap-horizontal" />
         </a>
         …
       </span>

@@ -24,7 +24,7 @@
     </app-labeled-input>
 
     <app-labeled-input v-if="colorPreview !== null" label="Color preview">
-      <app-svg
+      <ofl-svg
         v-for="color in colorPreview"
         :key="color"
         :colors="[color]"

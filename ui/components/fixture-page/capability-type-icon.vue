@@ -1,5 +1,5 @@
 <template>
-  <app-svg v-bind="iconProps" />
+  <ofl-svg v-bind="iconProps" />
 </template>
 
 <script>
@@ -143,7 +143,7 @@ const specialIconFunctions = {
 
 /**
  * @param {AbstractChannel} cap The capability to get an icon for.
- * @returns {Object} Object containing the props to pass to <app-svg />
+ * @returns {Object} Object containing the props to pass to <ofl-svg />
  */
 function getIconProps(cap) {
   if (cap.colors !== null) {

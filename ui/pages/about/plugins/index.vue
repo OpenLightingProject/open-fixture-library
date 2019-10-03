@@ -13,7 +13,7 @@
         <ul class="list">
           <li v-for="plugin in plugins.exportPlugins" :key="plugin">
             <nuxt-link :to="`/about/plugins/${plugin}`">
-              <app-svg name="puzzle" class="left" />
+              <ofl-svg name="puzzle" class="left" />
               <span class="name">{{ plugins.data[plugin].name }}</span>
             </nuxt-link>
           </li>
@@ -28,7 +28,7 @@
         <ul class="list">
           <li v-for="plugin in plugins.importPlugins" :key="plugin">
             <nuxt-link :to="`/about/plugins/${plugin}`">
-              <app-svg name="puzzle" class="left" />
+              <ofl-svg name="puzzle" class="left" />
               <span class="name">{{ plugins.data[plugin].name }}</span>
             </nuxt-link>
           </li>

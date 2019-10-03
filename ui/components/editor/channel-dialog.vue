@@ -139,14 +139,14 @@
             class="icon-button expand-all"
             title="Expand all capabilities"
             @click.prevent="openDetails">
-            <app-svg name="chevron-double-down" />
+            <ofl-svg name="chevron-double-down" />
           </a>
           <a
             href="#collapse-all"
             class="icon-button collapse-all"
             title="Collapse all capabilities"
             @click.prevent="closeDetails">
-            <app-svg name="chevron-double-up" />
+            <ofl-svg name="chevron-double-up" />
           </a>
         </template></h3>
 
@@ -173,7 +173,7 @@
 
         <section>
           <a href="#wizard" class="button secondary" @click.prevent="setWizardVisibility(!channel.wizard.show)">
-            <app-svg name="capability-wizard" />
+            <ofl-svg name="capability-wizard" />
             {{ channel.wizard.show ? 'Close' : 'Open' }} Capability Wizard
           </a>
         </section>

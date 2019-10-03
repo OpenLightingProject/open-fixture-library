@@ -10,7 +10,7 @@
         v-if="`website` in manufacturer"
         :href="manufacturer.website"
         class="card slim blue dark">
-        <app-svg name="web" class="left" />
+        <ofl-svg name="web" class="left" />
         <span>Manufacturer website</span>
       </a>
       <a
@@ -18,7 +18,7 @@
         :href="`http://rdm.openlighting.org/manufacturer/display?manufacturer=${manufacturer.rdmId}`"
         rel="nofollow"
         class="card slim">
-        <app-svg name="ola" class="left" />
+        <ofl-svg name="ola" class="left" />
         <span>Open Lighting RDM database</span>
       </a>
     </div>
@@ -33,7 +33,7 @@
             :style="{ borderLeftColor: manufacturer.color }"
             class="manufacturer-color">
             <span class="name">{{ fixture.name }}</span>
-            <app-svg
+            <ofl-svg
               v-for="cat in fixture.categories"
               :key="cat"
               :name="cat"

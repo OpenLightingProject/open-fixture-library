@@ -32,7 +32,7 @@
           <td
             :title="cap.model.menuClick === `hidden` ? `this capability is hidden in quick menus` : `choosing this capability in a quick menu snaps to ${cap.model.menuClick} of capability`"
             class="capability-menuClick">
-            <app-svg :name="`capability-${cap.model.menuClick}`" />
+            <ofl-svg :name="`capability-${cap.model.menuClick}`" />
           </td>
         </tr>
 

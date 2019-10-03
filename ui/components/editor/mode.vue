@@ -7,7 +7,7 @@
       class="icon-button close"
       @click.prevent="$emit(`remove`)">
       Remove mode
-      <app-svg name="close" />
+      <ofl-svg name="close" />
     </a>
 
     <h2>Mode #{{ index + 1 }}</h2>
@@ -90,7 +90,7 @@
                 title="Drag to change channel order"
                 class="drag-handle"
                 @click.prevent>
-                <app-svg name="move" />
+                <ofl-svg name="move" />
               </a>
 
               <a
@@ -98,14 +98,14 @@
                 href="#channel-editor"
                 title="Edit channel"
                 @click.prevent="editChannel(channelUuid)">
-                <app-svg name="pencil" />
+                <ofl-svg name="pencil" />
               </a>
 
               <a
                 href="#remove"
                 title="Remove channel"
                 @click.prevent="removeChannel(channelUuid)">
-                <app-svg name="close" />
+                <ofl-svg name="close" />
               </a>
             </span>
 

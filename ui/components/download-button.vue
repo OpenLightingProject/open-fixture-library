@@ -32,7 +32,7 @@
       to="/about/plugins"
       :target="buttonStyle === `home` ? null : `_blank`"
       class="help-link">
-      <app-svg name="help-circle-outline" /><span class="name">Download instructions</span>
+      <ofl-svg name="help-circle-outline" /><span class="name">Download instructions</span>
     </nuxt-link>
   </div>
 </template>

@@ -10,7 +10,7 @@
             :style="{ borderLeftColor: fixture.color }"
             class="manufacturer-color">
             <span class="name">{{ fixture.name }}</span>
-            <app-svg
+            <ofl-svg
               v-for="cat in fixture.categories"
               :key="cat"
               :name="cat"

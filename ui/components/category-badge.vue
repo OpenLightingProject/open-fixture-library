@@ -64,7 +64,7 @@ export default {
       selected: this.selected
     };
     const children = [
-      createElement(`app-svg`, {
+      createElement(`ofl-svg`, {
         props: {
           type: `fixture`,
           name: this.category

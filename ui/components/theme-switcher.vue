@@ -5,7 +5,7 @@
     aria-hidden="true"
     :title="`Switch to ${otherTheme} theme`"
     @click.prevent="toggleTheme">
-    <app-svg name="theme-light-dark" />
+    <ofl-svg name="theme-light-dark" />
   </a>
 </template>
 

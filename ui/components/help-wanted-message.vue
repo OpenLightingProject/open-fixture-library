@@ -1,7 +1,7 @@
 <template>
   <section class="help-wanted">
     <div class="information">
-      <app-svg name="comment-question-outline" title="Help wanted!" />
+      <ofl-svg name="comment-question-outline" title="Help wanted!" />
       <strong v-if="title">{{ title }} </strong>
       <span v-html="description" />
     </div>
@@ -11,18 +11,18 @@
         href="#"
         class="only-js"
         @click.prevent="$emit(`help-wanted-clicked`, { type, context })">
-        <app-svg name="comment-alert" class="left" />
+        <ofl-svg name="comment-alert" class="left" />
         <span>Send information</span>
       </a>
       <a
         href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug"
         class="no-js"
         rel="nofollow">
-        <app-svg name="bug" class="left" />
+        <ofl-svg name="bug" class="left" />
         <span>Create issue on GitHub</span>
       </a>
       <a :href="mailtoUrl" class="no-js">
-        <app-svg name="email" class="left" />
+        <ofl-svg name="email" class="left" />
         <span>Send email</span>
       </a>
     </div>

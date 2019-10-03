@@ -24,7 +24,7 @@
           </div>
           <button class="icon-button" type="submit">
             Search
-            <app-svg name="magnify" />
+            <ofl-svg name="magnify" />
           </button>
         </form>
       </div>

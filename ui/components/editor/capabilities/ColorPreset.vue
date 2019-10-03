@@ -27,7 +27,7 @@
       :formstate="formstate"
       :name="`capability${capability.uuid}-colorsHexString`"
       label="Color preview">
-      <app-svg
+      <ofl-svg
         v-for="color in colorPreview"
         :key="color"
         :colors="[color]"
@@ -39,13 +39,13 @@
       :formstate="formstate"
       :name="`capability${capability.uuid}-colorsHexString`"
       label="Color preview">
-      <app-svg
+      <ofl-svg
         v-for="color in colorPreviewStart || []"
         :key="color"
         :colors="[color]"
         type="color-circle" />
       …
-      <app-svg
+      <ofl-svg
         v-for="color in colorPreviewEnd || []"
         :key="color"
         :colors="[color]"

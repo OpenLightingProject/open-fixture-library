@@ -37,7 +37,7 @@
         class="remove"
         title="Remove capability"
         @click.prevent="clear">
-        <app-svg name="close" />
+        <ofl-svg name="close" />
       </a>
 
       <app-editor-capability-type-data

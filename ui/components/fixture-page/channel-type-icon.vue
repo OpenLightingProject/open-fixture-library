@@ -1,5 +1,5 @@
 <template>
-  <app-svg v-bind="iconProps" />
+  <ofl-svg v-bind="iconProps" />
 </template>
 
 <script>
@@ -30,7 +30,7 @@ const channelTypeIcons = {
 
 /**
  * @param {AbstractChannel} channel The channel to get an icon for.
- * @returns {Object} Object containing the props to pass to <app-svg />
+ * @returns {Object} Object containing the props to pass to <ofl-svg />
  */
 function getIconProps(channel) {
   if (channel instanceof NullChannel) {

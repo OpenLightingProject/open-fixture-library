@@ -61,7 +61,7 @@
             :href="video.url"
             rel="nofollow"
             target="_blank">
-            <app-svg name="youtube" />
+            <ofl-svg name="youtube" />
             Watch video at {{ video.displayType }}
           </a>
         </div>
@@ -78,7 +78,7 @@
               :title="link.title"
               rel="nofollow"
               target="_blank">
-              <app-svg :name="link.iconName" />
+              <ofl-svg :name="link.iconName" />
               {{ link.name }}
               <span v-if="link.type !== `other`" class="hostname">({{ link.hostname }})</span>
             </a>
@@ -103,7 +103,7 @@
         {{ fixture.rdm.modelId }} (0x{{ fixture.rdm.modelId.toString(16) }}) /
         {{ `softwareVersion` in fixture.rdm ? fixture.rdm.softwareVersion : `?` }} –
         <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${fixture.manufacturer.rdmId}&model=${fixture.rdm.modelId}`" rel="nofollow">
-          <app-svg name="ola" /> View in Open Lighting RDM database
+          <ofl-svg name="ola" /> View in Open Lighting RDM database
         </a>
         <span class="hint">manufacturer ID / model ID / software version</span>
       </app-labeled-value>
@@ -142,7 +142,7 @@
     </section>
 
     <section v-if="modesLimited && modeNumberLoadLimit < fixture.modes.length" class="card orange dark">
-      <h2><app-svg name="alert" /> This fixture is big!</h2>
+      <h2><ofl-svg name="alert" /> This fixture is big!</h2>
 
       <div>Only the first {{ modeNumberLoadLimit }} of {{ fixture.modes.length }} modes are displayed. Loading more modes might take a while.</div>
 
@@ -176,13 +176,13 @@
             context: fixture,
             type: `fixture`
           })">
-          <app-svg name="comment-alert" class="left" /><span>Send information</span>
+          <ofl-svg name="comment-alert" class="left" /><span>Send information</span>
         </a>
         <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card slim">
-          <app-svg name="bug" class="left" /><span>Create issue on GitHub</span>
+          <ofl-svg name="bug" class="left" /><span>Create issue on GitHub</span>
         </a>
         <a :href="mailtoUrl" class="card slim">
-          <app-svg name="email" class="left" /><span>Send email</span>
+          <ofl-svg name="email" class="left" /><span>Send email</span>
         </a>
       </div>
     </section>

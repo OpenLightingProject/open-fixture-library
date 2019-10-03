@@ -44,7 +44,7 @@
         </ul>
 
         <nuxt-link to="/manufacturers" class="card dark blue big-button" title="Browse all fixtures by manufacturer">
-          <app-svg name="folder-multiple" />
+          <ofl-svg name="folder-multiple" />
           <h2>Browse fixtures</h2>
         </nuxt-link>
       </section>
@@ -64,7 +64,7 @@
         </ul>
 
         <nuxt-link to="/fixture-editor" class="card dark light-green big-button" title="Become a top contributer yourself!">
-          <app-svg name="plus" />
+          <ofl-svg name="plus" />
           <h2>Add fixture</h2>
         </nuxt-link>
       </section>
@@ -73,15 +73,15 @@
 
     <div class="grid-3 centered">
       <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+-label%3Atype-bug" rel="nofollow" class="card slim">
-        <app-svg name="lightbulb-on-outline" class="left" />
+        <ofl-svg name="lightbulb-on-outline" class="left" />
         <span>Request feature</span>
       </a>
       <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card slim">
-        <app-svg name="bug" class="left" />
+        <ofl-svg name="bug" class="left" />
         <span>Report problem</span>
       </a>
       <a href="https://github.com/OpenLightingProject/open-fixture-library" class="card slim">
-        <app-svg name="github-circle" class="left" />
+        <ofl-svg name="github-circle" class="left" />
         <span>View source</span>
       </a>
     </div>

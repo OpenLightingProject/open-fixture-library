@@ -8,7 +8,7 @@
           :value="linkType">{{ linkTypeNames[linkType] }}</option>
       </select>
 
-      <app-svg :name="linkTypeIconNames[link.type]" />
+      <ofl-svg :name="linkTypeIconNames[link.type]" />
 
       <validate :state="formstate" tag="span">
         <app-property-input-text
@@ -24,12 +24,12 @@
         href="#remove-link"
         title="Remove link"
         @click.prevent="removeLink(index)">
-        <app-svg name="close" />
+        <ofl-svg name="close" />
       </a>
     </div>
 
     <a href="#add-link" @click.prevent="addLink">
-      <app-svg name="plus" />
+      <ofl-svg name="plus" />
       Add link
     </a>
   </div>

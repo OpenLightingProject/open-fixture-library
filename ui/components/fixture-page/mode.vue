@@ -16,10 +16,10 @@
 
     <h3>DMX channels<template v-if="showCollapseExpandButtons">
       <button class="icon-button expand-all only-js" title="Expand all channels" @click.prevent="openDetails">
-        <app-svg name="chevron-double-down" />
+        <ofl-svg name="chevron-double-down" />
       </button>
       <button class="icon-button collapse-all only-js" title="Collapse all channels" @click.prevent="closeDetails">
-        <app-svg name="chevron-double-up" />
+        <ofl-svg name="chevron-double-up" />
       </button>
     </template></h3>
 

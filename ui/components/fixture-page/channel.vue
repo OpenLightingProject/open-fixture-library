@@ -3,7 +3,7 @@
     <app-conditional-details class="channel">
       <template slot="summary">
         <app-fixture-channel-type-icon :channel="channel" />{{ channel.name }}<code v-if="channelKey" class="channel-key">{{ channelKey }}</code>{{ appendToHeading ? ` ${appendToHeading}` : `` }}
-        <app-svg
+        <ofl-svg
           v-if="channel.isHelpWanted"
           class="help-wanted-icon"
           name="comment-question-outline"
