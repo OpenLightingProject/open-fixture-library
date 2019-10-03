@@ -24,15 +24,10 @@
 </template>
 
 <script>
-import svg from '../../components/svg.vue';
-
 import register from '../../../fixtures/register.json';
 import manufacturers from '../../../fixtures/manufacturers.json';
 
 export default {
-  components: {
-    'app-svg': svg
-  },
   validate({ params }) {
     return decodeURIComponent(params.category) in register.categories;
   },

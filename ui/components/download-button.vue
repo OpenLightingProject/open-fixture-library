@@ -237,12 +237,7 @@ select {
 <script>
 import plugins from '../../plugins/plugins.json';
 
-import svgVue from './svg.vue';
-
 export default {
-  components: {
-    'app-svg': svgVue
-  },
   props: {
     // how many fixtures will be downloaded, if !isSingle?
     fixtureCount: {

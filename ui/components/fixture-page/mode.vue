@@ -43,7 +43,6 @@
 </style>
 
 <script>
-import svg from '../svg.vue';
 import fixturePhysical from './physical.vue';
 import fixtureChannel from './channel.vue';
 
@@ -51,7 +50,6 @@ import Mode from '../../../lib/model/Mode.js';
 
 export default {
   components: {
-    'app-svg': svg,
     'app-fixture-physical': fixturePhysical,
     'app-fixture-channel': fixtureChannel
   },

@@ -41,12 +41,7 @@
 
 
 <script>
-import svg from './svg.vue';
-
 export default {
-  components: {
-    'app-svg': svg
-  },
   props: {
     category: {
       type: String,

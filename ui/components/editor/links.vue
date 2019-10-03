@@ -55,14 +55,12 @@ import schemaProperties from '../../../lib/schema-properties.js';
 import { getEmptyLink } from '../../assets/scripts/editor-utils.js';
 
 import propertyInputTextVue from './property-input-text.vue';
-import svgVue from '../svg.vue';
 
 import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
 
 export default {
   components: {
-    'app-property-input-text': propertyInputTextVue,
-    'app-svg': svgVue
+    'app-property-input-text': propertyInputTextVue
   },
   mixins: [fixtureLinksMixin],
   model: {

@@ -10,12 +10,7 @@
 </template>
 
 <script>
-import svgVue from './svg.vue';
-
 export default {
-  components: {
-    'app-svg': svgVue
-  },
   data() {
     return {
       cssVariablesSupported: false,

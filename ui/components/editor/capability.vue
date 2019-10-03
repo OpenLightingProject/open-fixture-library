@@ -104,7 +104,6 @@ import {
 import conditionalDetailsVue from '../conditional-details.vue';
 import propertyInputRangeVue from './property-input-range.vue';
 import labeledInputVue from '../labeled-input.vue';
-import svgVue from "../svg.vue";
 
 import editorCapabilityTypeData from './capability-type-data.vue';
 
@@ -113,7 +112,6 @@ export default {
     'app-conditional-details': conditionalDetailsVue,
     'app-property-input-range': propertyInputRangeVue,
     'app-labeled-input': labeledInputVue,
-    'app-svg': svgVue,
     'app-editor-capability-type-data': editorCapabilityTypeData
   },
   props: {

@@ -148,7 +148,6 @@ ol.mode-channels {
 </style>
 
 <script>
-import svg from '../svg.vue';
 import conditionalDetails from '../conditional-details.vue';
 import fixtureChannelTypeIcon from './channel-type-icon.vue';
 import fixtureCapabilityTable from './capability-table.vue';
@@ -164,7 +163,6 @@ import SwitchingChannel from '../../../lib/model/SwitchingChannel.js';
 export default {
   name: `AppFixtureChannel`,
   components: {
-    'app-svg': svg,
     'app-conditional-details': conditionalDetails,
     'app-fixture-channel-type-icon': fixtureChannelTypeIcon,
     'app-fixture-capability-table': fixtureCapabilityTable,

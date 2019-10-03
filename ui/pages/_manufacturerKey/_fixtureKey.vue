@@ -286,7 +286,6 @@ import plugins from '../../../plugins/plugins.json';
 import schemaProperties from '../../../lib/schema-properties.js';
 import Fixture from '../../../lib/model/Fixture.js';
 
-import svg from '../../components/svg.vue';
 import categoryBadge from '../../components/category-badge.vue';
 import conditionalDetailsVue from '../../components/conditional-details.vue';
 import downloadButtonVue from '../../components/download-button.vue';
@@ -304,7 +303,6 @@ const VIDEOS_TO_EMBED = 2;
 
 export default {
   components: {
-    'app-svg': svg,
     'app-category-badge': categoryBadge,
     'app-conditional-details': conditionalDetailsVue,
     'app-download-button': downloadButtonVue,

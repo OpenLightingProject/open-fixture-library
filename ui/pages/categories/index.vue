@@ -17,14 +17,9 @@
 </template>
 
 <script>
-import svg from '../../components/svg.vue';
-
 import register from '../../../fixtures/register.json';
 
 export default {
-  components: {
-    'app-svg': svg
-  },
   head() {
     const title = `Categories`;
 

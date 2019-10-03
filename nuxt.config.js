@@ -10,6 +10,7 @@ module.exports = {
   ],
   plugins: [
     `~/plugins/embetty-vue.js`,
+    `~/plugins/global-components.js`,
     {
       src: `~/plugins/polyfills.js`,
       ssr: false

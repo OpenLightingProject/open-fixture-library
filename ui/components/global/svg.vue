@@ -22,8 +22,7 @@
 </style>
 
 <script>
-import icons from '../assets/icons/icons.js';
-
+import icons from '../../assets/icons/icons.js';
 
 export default {
   props: {

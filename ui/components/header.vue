@@ -225,12 +225,10 @@ header {
 </style>
 
 <script>
-import svg from './svg.vue';
 import themeSwitcherVue from './theme-switcher.vue';
 
 export default {
   components: {
-    'app-svg': svg,
     'app-theme-switcher': themeSwitcherVue
   },
   data() {

@@ -118,7 +118,6 @@ td, th {
 
 
 <script>
-import svg from '../svg.vue';
 import helpWantedMessage from '../help-wanted-message.vue';
 import fixtureCapabilityTypeIconVue from './capability-type-icon.vue';
 
@@ -127,7 +126,6 @@ import Mode from '../../../lib/model/Mode.js';
 
 export default {
   components: {
-    'app-svg': svg,
     'app-help-wanted-message': helpWantedMessage,
     'app-fixture-capability-type-icon': fixtureCapabilityTypeIconVue
   },

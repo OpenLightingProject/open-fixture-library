@@ -3,14 +3,9 @@
 </template>
 
 <script>
-import svg from '../svg.vue';
-
 import Capability from '../../../lib/model/Capability.js';
 
 export default {
-  components: {
-    'app-svg': svg
-  },
   props: {
     capability: {
       type: Capability,

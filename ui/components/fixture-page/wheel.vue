@@ -202,7 +202,7 @@ figcaption table {
 </style>
 
 <script>
-const { getColorCircleSvgFragment } = require(`../svg.vue`);
+const { getColorCircleSvgFragment } = require(`../global/svg.vue`);
 import Wheel from '../../../lib/model/Wheel.js';
 
 import conditionalDetailsVue from '../conditional-details.vue';

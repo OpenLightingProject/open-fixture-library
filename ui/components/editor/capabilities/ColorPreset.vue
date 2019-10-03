@@ -73,14 +73,12 @@ import { colorsHexStringToArray } from '../../../assets/scripts/editor-utils.js'
 import editorProportionalCapabilityDataSwitcher from '../proportional-capability-data-switcher.vue';
 import propertyInputTextVue from '../property-input-text.vue';
 import labeledInputVue from '../../labeled-input.vue';
-import svgVue from '../../svg.vue';
 
 export default {
   components: {
     'app-editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
     'app-property-input-text': propertyInputTextVue,
-    'app-labeled-input': labeledInputVue,
-    'app-svg': svgVue
+    'app-labeled-input': labeledInputVue
   },
   props: {
     capability: {

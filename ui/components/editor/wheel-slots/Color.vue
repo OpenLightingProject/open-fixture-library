@@ -53,14 +53,12 @@ import { colorsHexStringToArray } from '../../../assets/scripts/editor-utils.js'
 import propertyInputEntityVue from '../property-input-entity.vue';
 import propertyInputTextVue from '../property-input-text.vue';
 import labeledInputVue from '../../labeled-input.vue';
-import svgVue from '../../svg.vue';
 
 export default {
   components: {
     'app-property-input-entity': propertyInputEntityVue,
     'app-property-input-text': propertyInputTextVue,
-    'app-labeled-input': labeledInputVue,
-    'app-svg': svgVue
+    'app-labeled-input': labeledInputVue
   },
   props: {
     wheelSlot: {

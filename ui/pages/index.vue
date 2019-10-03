@@ -89,7 +89,6 @@
 </template>
 
 <script>
-import svg from '../components/svg.vue';
 import downloadButtonVue from '../components/download-button.vue';
 
 import packageJson from '../../package.json';
@@ -98,7 +97,6 @@ import manufacturers from '../../fixtures/manufacturers.json';
 
 export default {
   components: {
-    'app-svg': svg,
     'app-download-button': downloadButtonVue
   },
   data() {

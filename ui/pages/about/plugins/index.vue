@@ -58,12 +58,7 @@ h3 {
 <script>
 import plugins from '../../../../plugins/plugins.json';
 
-import svgVue from '../../../components/svg.vue';
-
 export default {
-  components: {
-    'app-svg': svgVue
-  },
   head() {
     const title = `Plugins`;
 

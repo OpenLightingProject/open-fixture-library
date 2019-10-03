@@ -179,14 +179,12 @@
 <script>
 import schemaProperties from '../../../lib/schema-properties.js';
 
-import appSvg from '../svg.vue';
 import propertyInputEntityVue from './property-input-entity.vue';
 import propertyInputNumberVue from './property-input-number.vue';
 import propertyInputTextVue from './property-input-text.vue';
 
 export default {
   components: {
-    'app-svg': appSvg,
     'app-property-input-entity': propertyInputEntityVue,
     'app-property-input-number': propertyInputNumberVue,
     'app-property-input-text': propertyInputTextVue

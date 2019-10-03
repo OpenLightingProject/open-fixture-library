@@ -107,12 +107,7 @@ dialog.card {
 <script>
 const A11yDialog = process.browser ? require(`a11y-dialog`) : null;
 
-import svgVue from './svg.vue';
-
 export default {
-  components: {
-    'app-svg': svgVue
-  },
   props: {
     id: {
       type: String,

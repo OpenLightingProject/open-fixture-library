@@ -89,12 +89,7 @@
 </style>
 
 <script>
-import svg from './svg.vue';
-
 export default {
-  components: {
-    'app-svg': svg
-  },
   props: {
     type: {
       type: String,

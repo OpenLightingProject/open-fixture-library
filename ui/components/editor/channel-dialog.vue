@@ -267,7 +267,6 @@ import propertyInputBooleanVue from './property-input-boolean.vue';
 import propertyInputEntityVue from './property-input-entity.vue';
 import propertyInputSelectVue from './property-input-select.vue';
 import propertyInputTextVue from './property-input-text.vue';
-import svgVue from '../svg.vue';
 
 export default {
   components: {
@@ -278,8 +277,7 @@ export default {
     'app-property-input-boolean': propertyInputBooleanVue,
     'app-property-input-entity': propertyInputEntityVue,
     'app-property-input-select': propertyInputSelectVue,
-    'app-property-input-text': propertyInputTextVue,
-    'app-svg': svgVue
+    'app-property-input-text': propertyInputTextVue
   },
   model: {
     prop: `channel`
