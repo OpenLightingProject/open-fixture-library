@@ -86,7 +86,7 @@ const gdtfUnits = {
 /**
  * @param {Number} value1 The first physical value.
  * @param {Number|null} value2 The second physical value, or null.
- * @param {function} predicate A function returning a boolean.
+ * @param {Function} predicate A function returning a boolean.
  * @returns {Boolean} True if all provided values fulfill the condition predicate.
  */
 function physicalValuesFulfillCondition(value1, value2, predicate) {

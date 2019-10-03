@@ -993,7 +993,7 @@ A physical DMX device.
     * [new Fixture(man, key, jsonObject)](#new_Fixture_new)
     * [.manufacturer](#Fixture+manufacturer)
     * [.manufacturer](#Fixture+manufacturer) ⇒ [<code>Manufacturer</code>](#Manufacturer)
-    * [.key](#Fixture+key)
+    * [.key](#Fixture+key) ⇒ <code>String</code>
     * [.jsonObject](#Fixture+jsonObject)
     * [.jsonObject](#Fixture+jsonObject) ⇒ <code>Object</code>
     * [.url](#Fixture+url) ⇒ <code>String</code>
@@ -1066,13 +1066,9 @@ Create a new Fixture instance.
 **Returns**: [<code>Manufacturer</code>](#Manufacturer) - The fixture's manufacturer.  
 <a name="Fixture+key"></a>
 
-### fixture.key
+### fixture.key ⇒ <code>String</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| key | <code>String</code> | The fixture's unique key. Equals to filename without '.json'. |
-
+**Returns**: <code>String</code> - The fixture's unique key. Equals to filename without '.json'.  
 <a name="Fixture+jsonObject"></a>
 
 ### fixture.jsonObject

@@ -42,13 +42,12 @@ const redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
  */
 function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   /**
-   * @typedef ResultData
-   * @type {Object}
+   * @typedef {Object} ResultData
    * @property {Array.<String>} errors
    * @property {Array.<String>} warnings
    */
 
-  /** @type ResultData */
+  /** @type {ResultData} */
   const result = {
     errors: [],
     warnings: []
@@ -1050,7 +1049,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
     /**
      * @returns {Boolean} Whether the 'Color Changer' category is suggested.
-    */
+     */
     function isColorChanger() {
       return hasCapabilityOfType(`ColorPreset`) || hasCapabilityOfType(`ColorIntensity`, 2) || fixture.wheels.some(
         wheel => wheel.slots.some(slot => slot.type === `Color`)
