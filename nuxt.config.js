@@ -11,10 +11,6 @@ module.exports = {
   plugins: [
     `~/plugins/embetty-vue.js`,
     {
-      src: `~/plugins/focus-directive.js`,
-      ssr: false
-    },
-    {
       src: `~/plugins/polyfills.js`,
       ssr: false
     },
