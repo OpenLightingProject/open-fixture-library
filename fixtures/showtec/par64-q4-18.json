@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Par64 q4-18",
+  "shortName": "Par64 q4-18",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Drini Black Box"],
+    "createDate": "2019-10-05",
+    "lastModifyDate": "2019-10-05"
+  },
+  "links": {
+    "manual": [
+      "https://assets.highlite.com/attachments/MANUAL/42469_MANUAL_GB_V1.pdf"
+    ],
+    "productPage": [
+      "https://www.showtec.co.uk/onlineshop/index.php?route=product/product&product_id=112"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=EEbs1cHj6oI"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "Led"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Par64 q4-18",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
