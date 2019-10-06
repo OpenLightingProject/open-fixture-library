@@ -29,51 +29,329 @@
     },
     "lens": {
       "degreesMinMax": [29, 29]
+    },
+    "matrixPixels": {
+      "dimensions": [70, 70, 0],
+      "spacing": [0, 0, 0]
     }
   },
-  "availableChannels": {
-    "Red": {
+  "matrix": {
+    "pixelCount": [6, 1, 1],
+    "pixelGroups": {
+      "Master": "all",
+      "1/2": ["1", "2", "3"],
+      "2/2": ["4", "5", "6"],
+      "1/3": ["1", "2"],
+      "2/3": ["3", "4"],
+      "3/3": ["5", "6"]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green": {
-      "constant": true,
+    "Green $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue": {
-      "constant": true,
+    "Blue $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "Amber": {
+    "Amber $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber"
       }
     },
-    "White": {
+    "White $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
+      }
+    },
+    "Hue $pixelKey": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Saturation $pixelKey": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Intensity $pixelKey": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature $pixelKey": {
+      "defaultValue": 191,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2000K",
+        "colorTemperatureEnd": "10000K"
       }
     }
   },
   "modes": [
     {
-      "name": "RGBAW",
+      "name": "RGB All",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "Amber",
-        "White"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGBAW All",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey",
+            "White $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSI All",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSIC All",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Master"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey",
+            "Color Temperature $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGB Halves",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGBAW Halves",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey",
+            "White $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSI Halves",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSIC Halves",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/2", "2/2"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey",
+            "Color Temperature $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGB Thirds",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/3", "2/3", "3/3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGBAW Thirds",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/3", "2/3", "3/3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey",
+            "White $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSI Thirds",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/3", "2/3", "3/3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSIC Thirds",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["1/3", "2/3", "3/3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey",
+            "Color Temperature $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGB Individual",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RGBAW Individual",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey",
+            "White $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSI Individual",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HSIC Individual",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Hue $pixelKey",
+            "Saturation $pixelKey",
+            "Intensity $pixelKey",
+            "Color Temperature $pixelKey"
+          ]
+        }
       ]
     }
   ]
