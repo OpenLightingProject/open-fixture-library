@@ -1,29 +1,36 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Mac 250 Krypton",
-  "categories": ["Color Changer", "Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Teichi"],
-    "createDate": "2019-09-23",
-    "lastModifyDate": "2019-09-23"
+    "createDate": "2019-10-06",
+    "lastModifyDate": "2019-10-06"
   },
   "links": {
     "manual": [
-      "http://www.martin.com/Admin/Public/Download.aspx?file=%2ffiles%2ffiles%2fproductdocuments%2f11_MANUALS%2f999%2fUM_MAC250KryptonEntour_DE_D.pdf"
+      "https://adn.harmanpro.com/site_elements/executables/5646_1526694591/UM_MAC250KryptonEntour_EN_K_original.pdf"
+    ],
+    "productPage": [
+      "https://www.martin.com/en/products/mac-250-krypton"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=HUzUeKIRmVo",
+      "https://www.youtube.com/watch?v=gdBW29YXsuM"
     ]
   },
   "physical": {
-    "dimensions": [375, 315, 538],
+    "dimensions": [393, 538, 315],
     "weight": 22.4,
     "power": 326,
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
       "type": "Halogen",
-      "colorTemperature": 9000,
-      "lumens": 4600
+      "colorTemperature": 8500,
+      "lumens": 5000
     },
     "lens": {
-      "degreesMinMax": [20.6, 20.6]
+      "degreesMinMax": [20.1, 20.1]
     }
   },
   "wheels": {
