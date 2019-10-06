@@ -9,8 +9,7 @@ const manufacturerSchema = require(`../schemas/dereferenced/manufacturers.json`)
 const { checkFixture, checkUniqueness, getErrorString } = require(`./fixture-valid.js`);
 
 /**
- * @typedef UniqueValues
- * @type {Object}
+ * @typedef {Object} UniqueValues
  * @property {Set.<String>} manNames All manufacturer names
  * @property {Object.<String, Set.<String>>} fixKeysInMan All fixture keys by manufacturer key
  * @property {Object.<String, Set.<String>>} fixNamesInMan All fixture names by manufacturer key
