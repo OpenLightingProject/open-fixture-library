@@ -972,8 +972,7 @@ const capabilityPresets = {
 };
 
 /**
- * @typedef CapabilityPreset
- * @type {Object}
+ * @typedef {Object} CapabilityPreset
  * @property {String} presetName The name of the QLC+ capability preset.
  * @property {String|null} res1 A value for the QLC+ capability element's Res1 attribute, or null if the attribute should not be added.
  * @property {String|null} res2 A value for the QLC+ capability element's Res2 attribute, or null if the attribute should not be added.

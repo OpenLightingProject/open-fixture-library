@@ -17,7 +17,7 @@ const MAX_OPZ_FIXTURES = 16;
  * @param {Date} options.date The current time.
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
-*/
+ */
 module.exports.export = async function exportOpZ(fixtures, options) {
   const exportJson = {
     profiles: [],
