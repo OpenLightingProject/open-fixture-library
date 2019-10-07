@@ -1,0 +1,231 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "8x 3W LED Spider Effekt",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Tobias König", "TobiasK"],
+    "createDate": "2019-10-07",
+    "lastModifyDate": "2019-10-07",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2019-10-07",
+      "comment": "created by Q Light Controller Plus (version 4.11.2)"
+    }
+  },
+  "matrix": {
+    "pixelCount": [
+      null,
+      null,
+      1
+    ]
+  },
+  "availableChannels": {
+    "X1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?",
+        "comment": "Tilt Kopf 1"
+      }
+    },
+    "X2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?",
+        "comment": "Tilt Kopf 2"
+      }
+    },
+    "X/Y Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed"
+      }
+    },
+    "Master Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "Helligkeit Gesamt"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Effect",
+          "effectName": "closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Effect",
+          "effectName": "open"
+        },
+        {
+          "dmxRange": [16, 131],
+          "type": "Effect",
+          "effectName": "strobo",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [132, 139],
+          "type": "Effect",
+          "effectName": "open"
+        },
+        {
+          "dmxRange": [140, 181],
+          "type": "Effect",
+          "effectName": "fast open -> slow close"
+        },
+        {
+          "dmxRange": [182, 189],
+          "type": "Effect",
+          "effectName": "open"
+        },
+        {
+          "dmxRange": [190, 231],
+          "type": "Effect",
+          "effectName": "slow open -> fast close"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "Effect",
+          "effectName": "open"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "Effect",
+          "effectName": "random strobo"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "open"
+        }
+      ]
+    },
+    "LED1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Helligkeit"
+      }
+    },
+    "LED2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Helligkeit"
+      }
+    },
+    "LED3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Helligkeit"
+      }
+    },
+    "LED4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "Helligkeit"
+      }
+    },
+    "LED5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Helligkeit"
+      }
+    },
+    "LED6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Helligkeit"
+      }
+    },
+    "LED7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Helligkeit"
+      }
+    },
+    "LED8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "Helligkeit"
+      }
+    },
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Maintenance",
+          "comment": "DMX"
+        },
+        {
+          "dmxRange": [8, 63],
+          "type": "Maintenance",
+          "comment": "automode"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "comment": "music mode"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "reset"
+        }
+      ]
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "Head1",
+      "physical": {
+        "DMXconnector": "3-pin",
+        "lens": {
+          "name": "Other"
+        }
+      },
+      "channels": [
+        "X1",
+        "X2",
+        "X/Y Speed",
+        "Master Dimmer",
+        "Strobe",
+        "LED1",
+        "LED2",
+        "LED3",
+        "LED4",
+        "LED5",
+        "LED6",
+        "LED7",
+        "LED8",
+        "Mode"
+      ]
+    }
+  ]
+}
