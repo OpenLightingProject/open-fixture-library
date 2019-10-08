@@ -1,40 +1,40 @@
 <template>
   <div class="capability-type-data">
 
-    <app-labeled-input
+    <labeled-input
       :formstate="formstate"
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-blade`"
       label="Blade">
-      <app-property-input-entity
+      <property-input-entity
         v-model="capability.typeData.blade"
         :name="`capability${capability.uuid}-blade`"
         :schema-property="bladeSchema"
         :required="true" />
-    </app-labeled-input>
+    </labeled-input>
 
-    <app-labeled-input
+    <labeled-input
       :formstate="formstate"
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-insertion`"
       label="Insertion">
-      <app-editor-proportional-capability-data-switcher
+      <editor-proportional-capability-data-switcher
         :capability="capability"
         :formstate="formstate"
         :required="true"
         property-name="insertion" />
-    </app-labeled-input>
+    </labeled-input>
 
-    <app-labeled-input
+    <labeled-input
       :formstate="formstate"
       :name="`capability${capability.uuid}-comment`"
       label="Comment">
-      <app-property-input-text
+      <property-input-text
         v-model="capability.typeData.comment"
         :formstate="formstate"
         :name="`capability${capability.uuid}-comment`"
         :schema-property="properties.definitions.nonEmptyString" />
-    </app-labeled-input>
+    </labeled-input>
 
   </div>
 </template>
@@ -43,16 +43,16 @@
 import schemaProperties from '../../../../lib/schema-properties.js';
 
 import editorProportionalCapabilityDataSwitcher from '../proportional-capability-data-switcher.vue';
-import propertyInputEntityVue from '../property-input-entity.vue';
-import propertyInputTextVue from '../property-input-text.vue';
-import labeledInputVue from '../../labeled-input.vue';
+import propertyInputEntity from '../property-input-entity.vue';
+import propertyInputText from '../property-input-text.vue';
+import labeledInput from '../../labeled-input.vue';
 
 export default {
   components: {
-    'app-editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
-    'app-property-input-entity': propertyInputEntityVue,
-    'app-property-input-text': propertyInputTextVue,
-    'app-labeled-input': labeledInputVue
+    'editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
+    'property-input-entity': propertyInputEntity,
+    'property-input-text': propertyInputText,
+    'labeled-input': labeledInput
   },
   props: {
     capability: {

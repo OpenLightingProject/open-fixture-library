@@ -1,7 +1,7 @@
 <template>
   <div>
     <draggable v-model="selectedCategories" tag="span">
-      <app-category-badge
+      <category-badge
         v-for="cat in value"
         :key="cat"
         :category="cat"
@@ -12,7 +12,7 @@
         @blur.native="onBlur($event)" />
     </draggable>
 
-    <app-category-badge
+    <category-badge
       v-for="cat in unselectedCategories"
       :key="cat"
       :category="cat"
@@ -27,12 +27,12 @@
 
 <script>
 import draggable from 'vuedraggable';
-import categoryBadgeVue from '../category-badge.vue';
+import categoryBadge from '../category-badge.vue';
 
 export default {
   components: {
     draggable,
-    'app-category-badge': categoryBadgeVue
+    'category-badge': categoryBadge
   },
   props: {
     value: {

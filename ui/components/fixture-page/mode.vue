@@ -10,7 +10,7 @@
     <template v-if="mode.physicalOverride !== null">
       <h3>Physical overrides</h3>
       <section class="physical physical-override">
-        <app-fixture-physical :physical="mode.physicalOverride" />
+        <fixture-physical :physical="mode.physicalOverride" />
       </section>
     </template>
 
@@ -24,7 +24,7 @@
     </template></h3>
 
     <ol class="mode-channels">
-      <app-fixture-channel
+      <fixture-channel
         v-for="channel in mode.channels"
         :key="channel.key"
         :channel="channel"
@@ -50,8 +50,8 @@ import Mode from '../../../lib/model/Mode.js';
 
 export default {
   components: {
-    'app-fixture-physical': fixturePhysical,
-    'app-fixture-channel': fixtureChannel
+    'fixture-physical': fixturePhysical,
+    'fixture-channel': fixtureChannel
   },
   props: {
     mode: {

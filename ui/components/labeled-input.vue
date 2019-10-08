@@ -5,7 +5,7 @@
     :custom="customValidators"
     :tag="multipleInputs ? 'div' : 'label'">
 
-    <app-labeled-value :name="name">
+    <labeled-value :name="name">
       <template slot="label">
         <template v-if="label">{{ label }}</template>
         <slot name="label" />
@@ -50,12 +50,12 @@
 
       <div v-if="hint" class="hint">{{ hint }}</div>
 
-    </app-labeled-value>
+    </labeled-value>
 
   </validate>
 
   <label v-else>
-    <app-labeled-value>
+    <labeled-value>
       <template slot="label">
         <template v-if="label">{{ label }}</template>
         <slot name="label" />
@@ -63,16 +63,16 @@
 
       <slot />
       <div v-if="hint" class="hint">{{ hint }}</div>
-    </app-labeled-value>
+    </labeled-value>
   </label>
 </template>
 
 <script>
-import labeledValueVue from './labeled-value.vue';
+import labeledValue from './labeled-value.vue';
 
 export default {
   components: {
-    'app-labeled-value': labeledValueVue
+    'labeled-value': labeledValue
   },
   props: {
     name: {

@@ -1,4 +1,4 @@
 import Vue from 'vue';
-import oflSvgVue from '../components/global/ofl-svg.vue';
+import oflSvg from '../components/global/ofl-svg.vue';
 
-Vue.component(`ofl-svg`, oflSvgVue);
+Vue.component(`ofl-svg`, oflSvg);

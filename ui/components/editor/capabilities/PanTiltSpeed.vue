@@ -1,7 +1,7 @@
 <template>
   <div class="capability-type-data">
 
-    <app-labeled-input
+    <labeled-input
       :formstate="formstate"
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-${capability.typeData.speedOrDuration}`">
@@ -23,7 +23,7 @@
         </template>
       </template>
 
-      <app-editor-proportional-capability-data-switcher
+      <editor-proportional-capability-data-switcher
         v-if="capability.typeData.speedOrDuration"
         ref="speedOrDurationInput"
         :capability="capability"
@@ -31,18 +31,18 @@
         :property-name="capability.typeData.speedOrDuration"
         :required="true" />
 
-    </app-labeled-input>
+    </labeled-input>
 
-    <app-labeled-input
+    <labeled-input
       :formstate="formstate"
       :name="`capability${capability.uuid}-comment`"
       label="Comment">
-      <app-property-input-text
+      <property-input-text
         v-model="capability.typeData.comment"
         :formstate="formstate"
         :name="`capability${capability.uuid}-comment`"
         :schema-property="properties.definitions.nonEmptyString" />
-    </app-labeled-input>
+    </labeled-input>
 
   </div>
 </template>
@@ -51,14 +51,14 @@
 import schemaProperties from '../../../../lib/schema-properties.js';
 
 import editorProportionalCapabilityDataSwitcher from '../proportional-capability-data-switcher.vue';
-import propertyInputTextVue from '../property-input-text.vue';
-import labeledInputVue from '../../labeled-input.vue';
+import propertyInputText from '../property-input-text.vue';
+import labeledInput from '../../labeled-input.vue';
 
 export default {
   components: {
-    'app-editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
-    'app-property-input-text': propertyInputTextVue,
-    'app-labeled-input': labeledInputVue
+    'editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
+    'property-input-text': propertyInputText,
+    'labeled-input': labeledInput
   },
   props: {
     capability: {

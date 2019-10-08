@@ -1,19 +1,19 @@
 <!-- Usage:
 
 1. with content
-  <app-conditional-details>
+  <conditional-details>
     <template slot="summary">Hello</template>
 
     World
-  </app-conditional-details>
+  </conditional-details>
 
   renders:
   <details><summary>Hello</summary>World</details>
 
 2. without content
-  <app-conditional-details>
+  <conditional-details>
     <template slot="summary">Hello</template>
-  </app-conditional-details>
+  </conditional-details>
 
   renders:
   <div class="summary">Hello</div>

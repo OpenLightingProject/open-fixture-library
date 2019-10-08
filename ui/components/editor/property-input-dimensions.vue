@@ -1,7 +1,7 @@
 <template>
   <span class="dimensions">
     <validate :state="formstate" tag="span">
-      <app-property-input-number
+      <property-input-number
         ref="xInput"
         v-model="x"
         :name="`${name}-x`"
@@ -13,7 +13,7 @@
     </validate>
     &times;
     <validate :state="formstate" tag="span">
-      <app-property-input-number
+      <property-input-number
         v-model="y"
         :name="`${name}-y`"
         :schema-property="schemaProperty.items"
@@ -24,7 +24,7 @@
     </validate>
     &times;
     <validate :state="formstate" tag="span">
-      <app-property-input-number
+      <property-input-number
         v-model="z"
         :name="`${name}-z`"
         :schema-property="schemaProperty.items"
@@ -38,11 +38,11 @@
 </template>
 
 <script>
-import propertyInputNumberVue from './property-input-number.vue';
+import propertyInputNumber from './property-input-number.vue';
 
 export default {
   components: {
-    'app-property-input-number': propertyInputNumberVue
+    'property-input-number': propertyInputNumber
   },
   model: {
     prop: `dimensions`

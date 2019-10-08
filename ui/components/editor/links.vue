@@ -11,7 +11,7 @@
       <ofl-svg :name="linkTypeIconNames[link.type]" />
 
       <validate :state="formstate" tag="span">
-        <app-property-input-text
+        <property-input-text
           v-model="link.url"
           :name="`links-${link.uuid}`"
           :schema-property="properties.definitions.urlString"
@@ -54,13 +54,13 @@ select {
 import schemaProperties from '../../../lib/schema-properties.js';
 import { getEmptyLink } from '../../assets/scripts/editor-utils.js';
 
-import propertyInputTextVue from './property-input-text.vue';
+import propertyInputText from './property-input-text.vue';
 
 import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
 
 export default {
   components: {
-    'app-property-input-text': propertyInputTextVue
+    'property-input-text': propertyInputText
   },
   mixins: [fixtureLinksMixin],
   model: {

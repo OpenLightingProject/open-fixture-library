@@ -1,33 +1,33 @@
 <template>
   <div class="capability-type-data">
 
-    <app-labeled-input
+    <labeled-input
       :formstate="formstate"
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-slotNumber`"
       label="Slot number">
-      <app-editor-proportional-capability-data-switcher
+      <editor-proportional-capability-data-switcher
         :capability="capability"
         :formstate="formstate"
         :required="true"
         property-name="slotNumber" />
-    </app-labeled-input>
+    </labeled-input>
 
-    <app-editor-wheel-slots
+    <editor-wheel-slots
       :channel="channel"
       :capability="capability"
       :formstate="formstate" />
 
-    <app-labeled-input
+    <labeled-input
       :formstate="formstate"
       :name="`capability${capability.uuid}-comment`"
       label="Comment">
-      <app-property-input-text
+      <property-input-text
         v-model="capability.typeData.comment"
         :formstate="formstate"
         :name="`capability${capability.uuid}-comment`"
         :schema-property="properties.definitions.nonEmptyString" />
-    </app-labeled-input>
+    </labeled-input>
 
   </div>
 </template>
@@ -36,16 +36,16 @@
 import schemaProperties from '../../../../lib/schema-properties.js';
 
 import editorProportionalCapabilityDataSwitcher from '../proportional-capability-data-switcher.vue';
-import editorWheelSlotsVue from '../wheel-slots.vue';
-import propertyInputTextVue from '../property-input-text.vue';
-import labeledInputVue from '../../labeled-input.vue';
+import editorWheelSlots from '../wheel-slots.vue';
+import propertyInputText from '../property-input-text.vue';
+import labeledInput from '../../labeled-input.vue';
 
 export default {
   components: {
-    'app-editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
-    'app-editor-wheel-slots': editorWheelSlotsVue,
-    'app-property-input-text': propertyInputTextVue,
-    'app-labeled-input': labeledInputVue
+    'editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
+    'editor-wheel-slots': editorWheelSlots,
+    'property-input-text': propertyInputText,
+    'labeled-input': labeledInput
   },
   props: {
     capability: {

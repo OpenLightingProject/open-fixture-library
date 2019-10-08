@@ -1,5 +1,5 @@
 <template>
-  <app-conditional-details :open="capability.open" class="capability">
+  <conditional-details :open="capability.open" class="capability">
     <template slot="summary">
       DMX range
       <code :class="{ 'unset': start === null }">{{ start !== null ? start : min }}</code> …
@@ -9,13 +9,13 @@
 
     <div class="capability-content">
 
-      <app-labeled-input
+      <labeled-input
         :formstate="formstate"
         :multiple-inputs="true"
         :name="`capability${capability.uuid}-dmxRange`"
         label="DMX range">
 
-        <app-property-input-range
+        <property-input-range
           ref="firstInput"
           v-model="capability.dmxRange"
           :formstate="formstate"
@@ -29,7 +29,7 @@
           @start-updated="onStartUpdated"
           @end-updated="onEndUpdated" />
 
-      </app-labeled-input>
+      </labeled-input>
 
       <a
         v-if="isChanged"
@@ -40,7 +40,7 @@
         <ofl-svg name="close" />
       </a>
 
-      <app-editor-capability-type-data
+      <editor-capability-type-data
         ref="capabilityTypeData"
         v-model="capability"
         :channel="channel"
@@ -48,7 +48,7 @@
         required />
 
     </div>
-  </app-conditional-details>
+  </conditional-details>
 </template>
 
 <style lang="scss" scoped>
@@ -101,18 +101,18 @@ import {
   isCapabilityChanged
 } from '../../assets/scripts/editor-utils.js';
 
-import conditionalDetailsVue from '../conditional-details.vue';
-import propertyInputRangeVue from './property-input-range.vue';
-import labeledInputVue from '../labeled-input.vue';
+import conditionalDetails from '../conditional-details.vue';
+import propertyInputRange from './property-input-range.vue';
+import labeledInput from '../labeled-input.vue';
 
 import editorCapabilityTypeData from './capability-type-data.vue';
 
 export default {
   components: {
-    'app-conditional-details': conditionalDetailsVue,
-    'app-property-input-range': propertyInputRangeVue,
-    'app-labeled-input': labeledInputVue,
-    'app-editor-capability-type-data': editorCapabilityTypeData
+    'conditional-details': conditionalDetails,
+    'property-input-range': propertyInputRange,
+    'labeled-input': labeledInput,
+    'editor-capability-type-data': editorCapabilityTypeData
   },
   props: {
     channel: {

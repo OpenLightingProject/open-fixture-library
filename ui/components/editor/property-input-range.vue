@@ -1,7 +1,7 @@
 <template>
   <span class="range">
     <validate :state="formstate" tag="span">
-      <app-property-input-number
+      <property-input-number
         ref="firstInput"
         v-model="start"
         :name="`${name}-start`"
@@ -16,7 +16,7 @@
     </validate>
     …
     <validate :state="formstate" tag="span">
-      <app-property-input-number
+      <property-input-number
         v-model="end"
         :name="`${name}-end`"
         :schema-property="schemaProperty.items"
@@ -33,11 +33,11 @@
 </template>
 
 <script>
-import propertyInputNumberVue from './property-input-number.vue';
+import propertyInputNumber from './property-input-number.vue';
 
 export default {
   components: {
-    'app-property-input-number': propertyInputNumberVue
+    'property-input-number': propertyInputNumber
   },
   model: {
     prop: `range`

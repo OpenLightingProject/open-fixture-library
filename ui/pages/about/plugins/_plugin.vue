@@ -17,7 +17,7 @@
       </li>
     </ul>
 
-    <app-help-wanted-message
+    <help-wanted-message
       v-if="`helpWanted` in pluginData"
       type="plugin"
       :context="pluginData"
@@ -57,7 +57,7 @@
 
     <p style="margin-top: 3rem;"><nuxt-link to="/about/plugins">Back to plugin overview</nuxt-link></p>
 
-    <app-help-wanted-dialog v-model="helpWantedContext" type="plugin" />
+    <help-wanted-dialog v-model="helpWantedContext" type="plugin" />
   </div>
 </template>
 
@@ -107,8 +107,8 @@ import helpWantedMessage from '../../../components/help-wanted-message.vue';
 
 export default {
   components: {
-    'app-help-wanted-dialog': helpWantedDialog,
-    'app-help-wanted-message': helpWantedMessage
+    'help-wanted-dialog': helpWantedDialog,
+    'help-wanted-message': helpWantedMessage
   },
   validate({ params }) {
     return decodeURIComponent(params.plugin) in plugins.data;

@@ -1,12 +1,12 @@
 <template>
   <div>
 
-    <app-labeled-input
+    <labeled-input
       :formstate="formstate"
       :multiple-inputs="true"
       :name="`${namePrefix}-physical-dimensions`"
       label="Dimensions">
-      <app-property-input-dimensions
+      <property-input-dimensions
         ref="firstInput"
         v-model="physical.dimensions"
         :name="`${namePrefix}-physical-dimensions`"
@@ -14,28 +14,28 @@
         :hints="[`width`, `height`, `depth`]"
         :formstate="formstate"
         unit="mm" />
-    </app-labeled-input>
+    </labeled-input>
 
-    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-weight`" label="Weight">
-      <app-property-input-number
+    <labeled-input :formstate="formstate" :name="`${namePrefix}-physical-weight`" label="Weight">
+      <property-input-number
         v-model="physical.weight"
         :name="`${namePrefix}-physical-weight`"
         :schema-property="properties.physical.weight" /> kg
-    </app-labeled-input>
+    </labeled-input>
 
-    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-power`" label="Power">
-      <app-property-input-number
+    <labeled-input :formstate="formstate" :name="`${namePrefix}-physical-power`" label="Power">
+      <property-input-number
         v-model="physical.power"
         :name="`${namePrefix}-physical-power`"
         :schema-property="properties.physical.power" /> W
-    </app-labeled-input>
+    </labeled-input>
 
-    <app-labeled-input
+    <labeled-input
       :formstate="formstate"
       :multiple-inputs="true"
       :name="`${namePrefix}-physical-DMXconnector`"
       label="DMX connector">
-      <app-property-input-select
+      <property-input-select
         v-model="physical.DMXconnector"
         :name="`${namePrefix}-physical-DMXconnector`"
         :schema-property="properties.physical.DMXconnector"
@@ -44,7 +44,7 @@
         v-if="physical.DMXconnector === `[add-value]`"
         :state="formstate"
         tag="span">
-        <app-property-input-text
+        <property-input-text
           v-model="physical.DMXconnectorNew"
           :name="`${namePrefix}-physical-DMXconnectorNew`"
           :schema-property="properties.definitions.nonEmptyString"
@@ -53,49 +53,49 @@
           hint="other DMX connector"
           class="addition" />
       </validate>
-    </app-labeled-input>
+    </labeled-input>
 
 
     <h4>Bulb</h4>
 
-    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-bulb-type`" label="Bulb type">
-      <app-property-input-text
+    <labeled-input :formstate="formstate" :name="`${namePrefix}-physical-bulb-type`" label="Bulb type">
+      <property-input-text
         v-model="physical.bulb.type"
         :name="`${namePrefix}-physical-bulb-type`"
         :schema-property="properties.physicalBulb.type"
         hint="e.g. LED" />
-    </app-labeled-input>
+    </labeled-input>
 
-    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-bulb-colorTemperature`" label="Color temperature">
-      <app-property-input-number
+    <labeled-input :formstate="formstate" :name="`${namePrefix}-physical-bulb-colorTemperature`" label="Color temperature">
+      <property-input-number
         v-model="physical.bulb.colorTemperature"
         :name="`${namePrefix}-physical-bulb-colorTemperature`"
         :schema-property="properties.physicalBulb.colorTemperature" /> K
-    </app-labeled-input>
+    </labeled-input>
 
-    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-bulb-lumens`" label="Lumens">
-      <app-property-input-number
+    <labeled-input :formstate="formstate" :name="`${namePrefix}-physical-bulb-lumens`" label="Lumens">
+      <property-input-number
         v-model="physical.bulb.lumens"
         :name="`${namePrefix}-physical-bulb-lumens`"
         :schema-property="properties.physicalBulb.lumens" /> lm
-    </app-labeled-input>
+    </labeled-input>
 
 
     <h4>Lens</h4>
 
-    <app-labeled-input :formstate="formstate" :name="`${namePrefix}-physical-lens-name`" label="Lens name">
-      <app-property-input-text
+    <labeled-input :formstate="formstate" :name="`${namePrefix}-physical-lens-name`" label="Lens name">
+      <property-input-text
         v-model="physical.lens.name"
         :name="`${namePrefix}-physical-lens-name`"
         :schema-property="properties.physicalLens.name" />
-    </app-labeled-input>
+    </labeled-input>
 
-    <app-labeled-input
+    <labeled-input
       :formstate="formstate"
       :multiple-inputs="true"
       :name="`${namePrefix}-physical-lens-degreesMinMax`"
       label="Beam angle">
-      <app-property-input-range
+      <property-input-range
         v-model="physical.lens.degreesMinMax"
         :name="`${namePrefix}-physical-lens-degreesMinMax`"
         :schema-property="properties.physicalLens.degreesMinMax"
@@ -103,7 +103,7 @@
         start-hint="min"
         end-hint="max"
         unit="°" />
-    </app-labeled-input>
+    </labeled-input>
 
   </div>
 </template>
@@ -117,21 +117,21 @@
 <script>
 import schemaProperties from '../../../lib/schema-properties.js';
 
-import labeledInputVue from '../labeled-input.vue';
-import propertyInputDimensionsVue from './property-input-dimensions.vue';
-import propertyInputNumberVue from './property-input-number.vue';
-import propertyInputRangeVue from './property-input-range.vue';
-import propertyInputSelectVue from './property-input-select.vue';
-import propertyInputTextVue from './property-input-text.vue';
+import labeledInput from '../labeled-input.vue';
+import propertyInputDimensions from './property-input-dimensions.vue';
+import propertyInputNumber from './property-input-number.vue';
+import propertyInputRange from './property-input-range.vue';
+import propertyInputSelect from './property-input-select.vue';
+import propertyInputText from './property-input-text.vue';
 
 export default {
   components: {
-    'app-labeled-input': labeledInputVue,
-    'app-property-input-dimensions': propertyInputDimensionsVue,
-    'app-property-input-number': propertyInputNumberVue,
-    'app-property-input-range': propertyInputRangeVue,
-    'app-property-input-select': propertyInputSelectVue,
-    'app-property-input-text': propertyInputTextVue
+    'labeled-input': labeledInput,
+    'property-input-dimensions': propertyInputDimensions,
+    'property-input-number': propertyInputNumber,
+    'property-input-range': propertyInputRange,
+    'property-input-select': propertyInputSelect,
+    'property-input-text': propertyInputText
   },
   model: {
     prop: `physical`

@@ -12,8 +12,8 @@
 
     <h2>Mode #{{ index + 1 }}</h2>
 
-    <app-labeled-input :formstate="formstate" :name="`mode-${index}-name`" label="Name">
-      <app-property-input-text
+    <labeled-input :formstate="formstate" :name="`mode-${index}-name`" label="Name">
+      <property-input-text
         ref="firstInput"
         v-model="mode.name"
         :name="`mode-${index}-name`"
@@ -22,28 +22,28 @@
         no-mode-name
         hint="e.g. Extended"
         title="The name must not contain the word 'mode'." />
-    </app-labeled-input>
+    </labeled-input>
 
-    <app-labeled-input :formstate="formstate" :name="`mode-${index}-shortName`" label="Unique short name">
-      <app-property-input-text
+    <labeled-input :formstate="formstate" :name="`mode-${index}-shortName`" label="Unique short name">
+      <property-input-text
         v-model="mode.shortName"
         :name="`mode-${index}-shortName`"
         :schema-property="properties.definitions.modeNameString.allOf[1]"
         no-mode-name
         hint="e.g. ext; defaults to name"
         title="The short name must not contain the word 'mode'." />
-    </app-labeled-input>
+    </labeled-input>
 
-    <app-labeled-input
+    <labeled-input
       v-if="fixture.rdmModelId !== null"
       :formstate="formstate"
       :name="`mode-${index}-rdmPersonalityIndex`"
       label="RDM personality index">
-      <app-property-input-number
+      <property-input-number
         v-model="mode.rdmPersonalityIndex"
         :name="`mode-${index}-rdmPersonalityIndex`"
         :schema-property="properties.mode.rdmPersonalityIndex" />
-    </app-labeled-input>
+    </labeled-input>
 
 
     <h3>Physical override</h3>
@@ -57,7 +57,7 @@
     </label>
 
     <section class="physical-override">
-      <app-editor-physical
+      <editor-physical
         v-if="mode.enablePhysicalOverride"
         v-model="mode.physical"
         :formstate="formstate"
@@ -196,18 +196,18 @@ import schemaProperties from '../../../lib/schema-properties.js';
 import { constants } from '../../assets/scripts/editor-utils.js';
 
 import draggable from 'vuedraggable';
-import labeledInputVue from '../labeled-input.vue';
-import propertyInputNumberVue from './property-input-number.vue';
-import propertyInputTextVue from './property-input-text.vue';
-import editorPhysicalVue from './physical.vue';
+import labeledInput from '../labeled-input.vue';
+import propertyInputNumber from './property-input-number.vue';
+import propertyInputText from './property-input-text.vue';
+import editorPhysical from './physical.vue';
 
 export default {
   components: {
     draggable,
-    'app-labeled-input': labeledInputVue,
-    'app-property-input-number': propertyInputNumberVue,
-    'app-property-input-text': propertyInputTextVue,
-    'app-editor-physical': editorPhysicalVue
+    'labeled-input': labeledInput,
+    'property-input-number': propertyInputNumber,
+    'property-input-text': propertyInputText,
+    'editor-physical': editorPhysical
   },
   model: {
     prop: `mode`

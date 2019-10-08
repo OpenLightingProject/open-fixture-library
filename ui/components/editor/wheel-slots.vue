@@ -1,6 +1,6 @@
 <template>
   <div class="capability-wheel-slots">
-    <app-editor-wheel-slot
+    <editor-wheel-slot
       v-for="slotNumber in slotDetailNumbers"
       :key="slotNumber"
       :channel="channel"
@@ -16,11 +16,11 @@
 </style>
 
 <script>
-import editorWheelSlotVue from './wheel-slot.vue';
+import editorWheelSlot from './wheel-slot.vue';
 
 export default {
   components: {
-    'app-editor-wheel-slot': editorWheelSlotVue
+    'editor-wheel-slot': editorWheelSlot
   },
   props: {
     capability: {

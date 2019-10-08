@@ -1,6 +1,6 @@
 <template>
   <div class="editor-capability-type-data">
-    <app-labeled-input
+    <labeled-input
       :formstate="formstate"
       :name="`capability${capability.uuid}-type`"
       :hint="capabilityTypeHint"
@@ -20,7 +20,7 @@
           :value="type">{{ type }}</option>
 
       </select>
-    </app-labeled-input>
+    </labeled-input>
 
     <component
       :is="`app-editor-capability-${capability.type}`"
@@ -35,7 +35,7 @@
 <script>
 import schemaProperties from '../../../lib/schema-properties.js';
 
-import labeledInputVue from '../labeled-input.vue';
+import labeledInput from '../labeled-input.vue';
 
 import editorCapabilityNoFunction from './capabilities/NoFunction.vue';
 import editorCapabilityShutterStrobe from './capabilities/ShutterStrobe.vue';
@@ -83,50 +83,50 @@ import editorCapabilityGeneric from './capabilities/Generic.vue';
 
 export default {
   components: {
-    'app-labeled-input': labeledInputVue,
-    'app-editor-capability-NoFunction': editorCapabilityNoFunction,
-    'app-editor-capability-ShutterStrobe': editorCapabilityShutterStrobe,
-    'app-editor-capability-StrobeSpeed': editorCapabilityStrobeSpeed,
-    'app-editor-capability-StrobeDuration': editorCapabilityStrobeDuration,
-    'app-editor-capability-Intensity': editorCapabilityIntensity,
-    'app-editor-capability-ColorIntensity': editorCapabilityColorIntensity,
-    'app-editor-capability-ColorPreset': editorCapabilityColorPreset,
-    'app-editor-capability-ColorTemperature': editorCapabilityColorTemperature,
-    'app-editor-capability-Pan': editorCapabilityPan,
-    'app-editor-capability-PanContinuous': editorCapabilityPanContinuous,
-    'app-editor-capability-Tilt': editorCapabilityTilt,
-    'app-editor-capability-TiltContinuous': editorCapabilityTiltContinuous,
-    'app-editor-capability-PanTiltSpeed': editorCapabilityPanTiltSpeed,
-    'app-editor-capability-WheelSlot': editorCapabilityWheelSlot,
-    'app-editor-capability-WheelShake': editorCapabilityWheelShake,
-    'app-editor-capability-WheelSlotRotation': editorCapabilityWheelSlotRotation,
-    'app-editor-capability-WheelRotation': editorCapabilityWheelRotation,
-    'app-editor-capability-Effect': editorCapabilityEffect,
-    'app-editor-capability-EffectSpeed': editorCapabilityEffectSpeed,
-    'app-editor-capability-EffectDuration': editorCapabilityEffectDuration,
-    'app-editor-capability-EffectParameter': editorCapabilityEffectParameter,
-    'app-editor-capability-SoundSensitivity': editorCapabilitySoundSensitivity,
-    'app-editor-capability-BeamAngle': editorCapabilityBeamAngle,
-    'app-editor-capability-BeamPosition': editorCapabilityBeamPosition,
-    'app-editor-capability-Focus': editorCapabilityFocus,
-    'app-editor-capability-Zoom': editorCapabilityZoom,
-    'app-editor-capability-Iris': editorCapabilityIris,
-    'app-editor-capability-IrisEffect': editorCapabilityIrisEffect,
-    'app-editor-capability-Frost': editorCapabilityFrost,
-    'app-editor-capability-FrostEffect': editorCapabilityFrostEffect,
-    'app-editor-capability-Prism': editorCapabilityPrism,
-    'app-editor-capability-PrismRotation': editorCapabilityPrismRotation,
-    'app-editor-capability-BladeInsertion': editorCapabilityBladeInsertion,
-    'app-editor-capability-BladeRotation': editorCapabilityBladeRotation,
-    'app-editor-capability-BladeSystemRotation': editorCapabilityBladeSystemRotation,
-    'app-editor-capability-Fog': editorCapabilityFog,
-    'app-editor-capability-FogOutput': editorCapabilityFogOutput,
-    'app-editor-capability-FogType': editorCapabilityFogType,
-    'app-editor-capability-Rotation': editorCapabilityRotation,
-    'app-editor-capability-Speed': editorCapabilitySpeed,
-    'app-editor-capability-Time': editorCapabilityTime,
-    'app-editor-capability-Maintenance': editorCapabilityMaintenance,
-    'app-editor-capability-Generic': editorCapabilityGeneric
+    'labeled-input': labeledInput,
+    'editor-capability-NoFunction': editorCapabilityNoFunction,
+    'editor-capability-ShutterStrobe': editorCapabilityShutterStrobe,
+    'editor-capability-StrobeSpeed': editorCapabilityStrobeSpeed,
+    'editor-capability-StrobeDuration': editorCapabilityStrobeDuration,
+    'editor-capability-Intensity': editorCapabilityIntensity,
+    'editor-capability-ColorIntensity': editorCapabilityColorIntensity,
+    'editor-capability-ColorPreset': editorCapabilityColorPreset,
+    'editor-capability-ColorTemperature': editorCapabilityColorTemperature,
+    'editor-capability-Pan': editorCapabilityPan,
+    'editor-capability-PanContinuous': editorCapabilityPanContinuous,
+    'editor-capability-Tilt': editorCapabilityTilt,
+    'editor-capability-TiltContinuous': editorCapabilityTiltContinuous,
+    'editor-capability-PanTiltSpeed': editorCapabilityPanTiltSpeed,
+    'editor-capability-WheelSlot': editorCapabilityWheelSlot,
+    'editor-capability-WheelShake': editorCapabilityWheelShake,
+    'editor-capability-WheelSlotRotation': editorCapabilityWheelSlotRotation,
+    'editor-capability-WheelRotation': editorCapabilityWheelRotation,
+    'editor-capability-Effect': editorCapabilityEffect,
+    'editor-capability-EffectSpeed': editorCapabilityEffectSpeed,
+    'editor-capability-EffectDuration': editorCapabilityEffectDuration,
+    'editor-capability-EffectParameter': editorCapabilityEffectParameter,
+    'editor-capability-SoundSensitivity': editorCapabilitySoundSensitivity,
+    'editor-capability-BeamAngle': editorCapabilityBeamAngle,
+    'editor-capability-BeamPosition': editorCapabilityBeamPosition,
+    'editor-capability-Focus': editorCapabilityFocus,
+    'editor-capability-Zoom': editorCapabilityZoom,
+    'editor-capability-Iris': editorCapabilityIris,
+    'editor-capability-IrisEffect': editorCapabilityIrisEffect,
+    'editor-capability-Frost': editorCapabilityFrost,
+    'editor-capability-FrostEffect': editorCapabilityFrostEffect,
+    'editor-capability-Prism': editorCapabilityPrism,
+    'editor-capability-PrismRotation': editorCapabilityPrismRotation,
+    'editor-capability-BladeInsertion': editorCapabilityBladeInsertion,
+    'editor-capability-BladeRotation': editorCapabilityBladeRotation,
+    'editor-capability-BladeSystemRotation': editorCapabilityBladeSystemRotation,
+    'editor-capability-Fog': editorCapabilityFog,
+    'editor-capability-FogOutput': editorCapabilityFogOutput,
+    'editor-capability-FogType': editorCapabilityFogType,
+    'editor-capability-Rotation': editorCapabilityRotation,
+    'editor-capability-Speed': editorCapabilitySpeed,
+    'editor-capability-Time': editorCapabilityTime,
+    'editor-capability-Maintenance': editorCapabilityMaintenance,
+    'editor-capability-Generic': editorCapabilityGeneric
   },
   model: {
     prop: `capability`

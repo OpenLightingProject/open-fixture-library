@@ -16,7 +16,7 @@
       <section class="card">
         <h2>File information</h2>
 
-        <app-labeled-input :formstate="formstate" name="plugin" label="Import file type">
+        <labeled-input :formstate="formstate" name="plugin" label="Import file type">
           <select
             v-model="plugin"
             :class="{ empty: plugin === `` }"
@@ -34,38 +34,38 @@
           </select>
 
           <div class="hint">See <a href="/about/plugins" target="_blank">supported import plugins</a>.</div>
-        </app-labeled-input>
+        </labeled-input>
 
-        <app-labeled-input
+        <labeled-input
           :formstate="formstate"
           name="file"
           label="Fixture definition file"
           hint="Maximum file size is 5MB.">
-          <app-editor-file-upload
+          <editor-file-upload
             v-model="file"
             :required="true"
             name="file"
             max-file-size="5MB" />
-        </app-labeled-input>
+        </labeled-input>
 
-        <app-labeled-input :formstate="formstate" name="comment" label="Comment">
+        <labeled-input :formstate="formstate" name="comment" label="Comment">
           <textarea v-model="comment" name="comment" />
-        </app-labeled-input>
+        </labeled-input>
       </section>
 
       <section class="user card">
         <h2>Author data</h2>
 
-        <app-labeled-input :formstate="formstate" name="author" label="Your name">
+        <labeled-input :formstate="formstate" name="author" label="Your name">
           <input
             v-model="author"
             type="text"
             required
             name="author"
             placeholder="e.g. Anonymous">
-        </app-labeled-input>
+        </labeled-input>
 
-        <app-labeled-input
+        <labeled-input
           :formstate="formstate"
           name="githubUsername"
           label="GitHub username"
@@ -74,12 +74,12 @@
             v-model="githubUsername"
             type="text"
             name="githubUsername">
-        </app-labeled-input>
+        </labeled-input>
 
-        <app-labeled-input hidden name="honeypot" label="Ignore this!">
+        <labeled-input hidden name="honeypot" label="Ignore this!">
           <input v-model="honeypot" type="text" name="honeypot">
           <div class="hint">Spammers are likely to fill this field. Leave it empty to show that you're a human.</div>
-        </app-labeled-input>
+        </labeled-input>
       </section>
 
       <div class="button-bar">
@@ -87,7 +87,7 @@
       </div>
     </vue-form>
 
-    <app-a11y-dialog
+    <a11y-dialog
       id="submit"
       :cancellable="false"
       :shown="uploading || pullRequestUrl !== null || error !== null"
@@ -114,7 +114,7 @@
         </div>
       </div>
 
-    </app-a11y-dialog>
+    </a11y-dialog>
   </div>
 </template>
 
@@ -123,15 +123,15 @@ import scrollIntoView from 'scroll-into-view';
 
 import plugins from '../../plugins/plugins.json';
 
-import a11yDialogVue from '../components/a11y-dialog.vue';
-import editorFileUploadVue from '../components/editor/file-upload.vue';
-import labeledInputVue from '../components/labeled-input.vue';
+import a11yDialog from '../components/a11y-dialog.vue';
+import editorFileUpload from '../components/editor/file-upload.vue';
+import labeledInput from '../components/labeled-input.vue';
 
 export default {
   components: {
-    'app-a11y-dialog': a11yDialogVue,
-    'app-editor-file-upload': editorFileUploadVue,
-    'app-labeled-input': labeledInputVue
+    'a11y-dialog': a11yDialog,
+    'editor-file-upload': editorFileUpload,
+    'labeled-input': labeledInput
   },
   head() {
     const title = `Import fixture`;

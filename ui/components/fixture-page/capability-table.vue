@@ -24,7 +24,7 @@
           <td class="capability-range1"><code>{{ cap.dmxRangeEnd }}</code></td>
 
           <td class="capability-icon">
-            <app-fixture-capability-type-icon :capability="cap.model" />
+            <fixture-capability-type-icon :capability="cap.model" />
           </td>
 
           <td class="capability-name">{{ cap.model.name }}</td>
@@ -51,7 +51,7 @@
           :key="`cap-${index}-helpWanted`">
           <td colspan="4" />
           <td colspan="2">
-            <app-help-wanted-message
+            <help-wanted-message
               type="capability"
               :context="cap.model"
               @help-wanted-clicked="$emit(`help-wanted-clicked`, $event)" />
@@ -119,15 +119,15 @@ td, th {
 
 <script>
 import helpWantedMessage from '../help-wanted-message.vue';
-import fixtureCapabilityTypeIconVue from './capability-type-icon.vue';
+import fixtureCapabilityTypeIcon from './capability-type-icon.vue';
 
 import CoarseChannel from '../../../lib/model/CoarseChannel.js';
 import Mode from '../../../lib/model/Mode.js';
 
 export default {
   components: {
-    'app-help-wanted-message': helpWantedMessage,
-    'app-fixture-capability-type-icon': fixtureCapabilityTypeIconVue
+    'help-wanted-message': helpWantedMessage,
+    'fixture-capability-type-icon': fixtureCapabilityTypeIcon
   },
   props: {
     channel: {

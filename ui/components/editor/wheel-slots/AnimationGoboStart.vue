@@ -1,16 +1,16 @@
 <template>
   <div class="wheel-slot-type-data">
 
-    <app-labeled-input
+    <labeled-input
       :formstate="formstate"
       :name="`wheel-slot${wheelSlot.uuid}-name`"
       label="Animation gobo name">
-      <app-property-input-text
+      <property-input-text
         v-model="wheelSlot.typeData.name"
         :formstate="formstate"
         :name="`wheel-slot${wheelSlot.uuid}-name`"
         :schema-property="properties.definitions.nonEmptyString" />
-    </app-labeled-input>
+    </labeled-input>
 
   </div>
 </template>
@@ -18,13 +18,13 @@
 <script>
 import schemaProperties from '../../../../lib/schema-properties.js';
 
-import propertyInputTextVue from '../property-input-text.vue';
-import labeledInputVue from '../../labeled-input.vue';
+import propertyInputText from '../property-input-text.vue';
+import labeledInput from '../../labeled-input.vue';
 
 export default {
   components: {
-    'app-property-input-text': propertyInputTextVue,
-    'app-labeled-input': labeledInputVue
+    'property-input-text': propertyInputText,
+    'labeled-input': labeledInput
   },
   props: {
     wheelSlot: {

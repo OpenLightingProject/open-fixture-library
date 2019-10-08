@@ -6,7 +6,7 @@
       :state="formstate"
       tag="span">
 
-      <app-property-input-number
+      <property-input-number
         v-if="entity === `slotNumber`"
         ref="steppedField"
         v-model="slotNumberStepped"
@@ -14,7 +14,7 @@
         :required="required"
         :schema-property="slotNumberSchema" />
 
-      <app-property-input-entity
+      <property-input-entity
         v-else-if="entitySchema"
         ref="steppedField"
         v-model="propertyDataStepped"
@@ -22,7 +22,7 @@
         :required="required"
         :schema-property="entitySchema" />
 
-      <app-property-input-text
+      <property-input-text
         v-else
         ref="steppedField"
         v-model="propertyDataStepped"
@@ -41,7 +41,7 @@
         tag="label"
         class="entity-input">
 
-        <app-property-input-number
+        <property-input-number
           v-if="entity === `slotNumber`"
           ref="startField"
           v-model="slotNumberStart"
@@ -49,7 +49,7 @@
           :required="required"
           :schema-property="slotNumberSchema" />
 
-        <app-property-input-entity
+        <property-input-entity
           v-else-if="entitySchema"
           ref="startField"
           v-model="propertyDataStart"
@@ -60,7 +60,7 @@
           hint="start"
           @unit-selected="onUnitSelected" />
 
-        <app-property-input-text
+        <property-input-text
           v-else
           ref="startField"
           v-model="propertyDataStart"
@@ -94,7 +94,7 @@
         tag="label"
         class="entity-input">
 
-        <app-property-input-number
+        <property-input-number
           v-if="entity === `slotNumber`"
           ref="endField"
           v-model="slotNumberEnd"
@@ -102,7 +102,7 @@
           :required="required"
           :schema-property="slotNumberSchema" />
 
-        <app-property-input-entity
+        <property-input-entity
           v-else-if="entitySchema"
           ref="endField"
           v-model="propertyDataEnd"
@@ -113,7 +113,7 @@
           hint="end"
           @unit-selected="onUnitSelected" />
 
-        <app-property-input-text
+        <property-input-text
           v-else
           ref="endField"
           v-model="propertyDataEnd"
@@ -179,15 +179,15 @@
 <script>
 import schemaProperties from '../../../lib/schema-properties.js';
 
-import propertyInputEntityVue from './property-input-entity.vue';
-import propertyInputNumberVue from './property-input-number.vue';
-import propertyInputTextVue from './property-input-text.vue';
+import propertyInputEntity from './property-input-entity.vue';
+import propertyInputNumber from './property-input-number.vue';
+import propertyInputText from './property-input-text.vue';
 
 export default {
   components: {
-    'app-property-input-entity': propertyInputEntityVue,
-    'app-property-input-number': propertyInputNumberVue,
-    'app-property-input-text': propertyInputTextVue
+    'property-input-entity': propertyInputEntity,
+    'property-input-number': propertyInputNumber,
+    'property-input-text': propertyInputText
   },
   props: {
     capability: {

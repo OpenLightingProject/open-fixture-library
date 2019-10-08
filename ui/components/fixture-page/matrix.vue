@@ -18,7 +18,7 @@
       <span class="hint only-js">Hover over the pixel groups to highlight the corresponding pixels.</span>
 
       <div>
-        <app-labeled-value
+        <labeled-value
           v-for="[key, value] in pixelGroups"
           :key="key"
           :label="key"
@@ -82,14 +82,14 @@
 
 
 <script>
-import labeledValueVue from '../labeled-value.vue';
+import labeledValue from '../labeled-value.vue';
 
 import Matrix from '../../../lib/model/Matrix.js';
 import Physical from '../../../lib/model/Physical.js';
 
 export default {
   components: {
-    'app-labeled-value': labeledValueVue
+    'labeled-value': labeledValue
   },
   props: {
     matrix: {

@@ -8,7 +8,7 @@
         <h1>Open Fixture Library</h1>
       </div>
 
-      <app-download-button :fixture-count="fixtureCount" button-style="home" />
+      <download-button :fixture-count="fixtureCount" button-style="home" />
     </header>
 
 
@@ -89,7 +89,7 @@
 </template>
 
 <script>
-import downloadButtonVue from '../components/download-button.vue';
+import downloadButton from '../components/download-button.vue';
 
 import packageJson from '../../package.json';
 import register from '../../fixtures/register.json';
@@ -97,7 +97,7 @@ import manufacturers from '../../fixtures/manufacturers.json';
 
 export default {
   components: {
-    'app-download-button': downloadButtonVue
+    'download-button': downloadButton
   },
   data() {
     return {

@@ -10,7 +10,7 @@
 
     <a href="#content" class="accessibility">Skip to content</a>
 
-    <app-header @focus-content="focusContent" />
+    <header @focus-content="focusContent" />
 
     <div id="content" ref="content" tabindex="-1">
       <nuxt />
@@ -66,7 +66,7 @@ import header from '../components/header';
 
 export default {
   components: {
-    'app-header': header
+    'header': header
   },
   data() {
     return {

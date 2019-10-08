@@ -1,9 +1,9 @@
 <template>
-  <app-conditional-details class="editor-wheel-slot" :open="open">
+  <conditional-details class="editor-wheel-slot" :open="open">
     <template slot="summary">Details for wheel slot {{ slotNumber }}</template>
 
     <div class="wheel-slot-content">
-      <app-labeled-input
+      <labeled-input
         :formstate="formstate"
         :custom-validators="{
           'animation-gobo-end-without-start': animationGoboEndAfterStart,
@@ -26,7 +26,7 @@
             :value="type">{{ type }}</option>
 
         </select>
-      </app-labeled-input>
+      </labeled-input>
 
       <component
         :is="`app-editor-wheel-slot-${slot.type}`"
@@ -35,7 +35,7 @@
         :wheel-slot="slot"
         :formstate="formstate" />
     </div>
-  </app-conditional-details>
+  </conditional-details>
 </template>
 
 <style lang="scss" scoped>
@@ -48,8 +48,8 @@
 import schemaProperties from '../../../lib/schema-properties.js';
 import { getEmptyWheelSlot } from '../../assets/scripts/editor-utils.js';
 
-import conditionalDetailsVue from '../conditional-details.vue';
-import labeledInputVue from '../labeled-input.vue';
+import conditionalDetails from '../conditional-details.vue';
+import labeledInput from '../labeled-input.vue';
 
 import editorWheelSlotAnimationGoboEnd from './wheel-slots/AnimationGoboEnd.vue';
 import editorWheelSlotAnimationGoboStart from './wheel-slots/AnimationGoboStart.vue';
@@ -63,17 +63,17 @@ import editorWheelSlotPrism from './wheel-slots/Prism.vue';
 
 export default {
   components: {
-    'app-conditional-details': conditionalDetailsVue,
-    'app-labeled-input': labeledInputVue,
-    'app-editor-wheel-slot-AnimationGoboEnd': editorWheelSlotAnimationGoboEnd,
-    'app-editor-wheel-slot-AnimationGoboStart': editorWheelSlotAnimationGoboStart,
-    'app-editor-wheel-slot-Closed': editorWheelSlotClosed,
-    'app-editor-wheel-slot-Color': editorWheelSlotColor,
-    'app-editor-wheel-slot-Frost': editorWheelSlotFrost,
-    'app-editor-wheel-slot-Gobo': editorWheelSlotGobo,
-    'app-editor-wheel-slot-Iris': editorWheelSlotIris,
-    'app-editor-wheel-slot-Open': editorWheelSlotOpen,
-    'app-editor-wheel-slot-Prism': editorWheelSlotPrism
+    'conditional-details': conditionalDetails,
+    'labeled-input': labeledInput,
+    'editor-wheel-slot-AnimationGoboEnd': editorWheelSlotAnimationGoboEnd,
+    'editor-wheel-slot-AnimationGoboStart': editorWheelSlotAnimationGoboStart,
+    'editor-wheel-slot-Closed': editorWheelSlotClosed,
+    'editor-wheel-slot-Color': editorWheelSlotColor,
+    'editor-wheel-slot-Frost': editorWheelSlotFrost,
+    'editor-wheel-slot-Gobo': editorWheelSlotGobo,
+    'editor-wheel-slot-Iris': editorWheelSlotIris,
+    'editor-wheel-slot-Open': editorWheelSlotOpen,
+    'editor-wheel-slot-Prism': editorWheelSlotPrism
   },
   model: {
     prop: `capability`

@@ -4,11 +4,11 @@
     <h1 v-else>Search</h1>
 
     <form class="filter" action="/search" @submit.prevent="onSubmit">
-      <app-labeled-input label="Search query">
+      <labeled-input label="Search query">
         <input v-model="searchQuery" type="search" name="q">
-      </app-labeled-input>
+      </labeled-input>
 
-      <app-conditional-details :open="detailsInitiallyOpen">
+      <conditional-details :open="detailsInitiallyOpen">
         <template slot="summary">Filter results</template>
 
         <select v-model="manufacturersQuery" name="manufacturers" multiple>
@@ -34,7 +34,7 @@
             :selected="categoriesQuery.includes(cat)"
             :value="cat">{{ cat }}</option>
         </select>
-      </app-conditional-details>
+      </conditional-details>
 
       <button :disabled="searchQuery === `` && isBrowser" type="submit" class="primary">Search</button>
     </form>
@@ -88,13 +88,13 @@
 import register from '../../fixtures/register.json';
 import manufacturers from '../../fixtures/manufacturers.json';
 
-import conditionalDetailsVue from '../components/conditional-details.vue';
-import labeledInputVue from '../components/labeled-input.vue';
+import conditionalDetails from '../components/conditional-details.vue';
+import labeledInput from '../components/labeled-input.vue';
 
 export default {
   components: {
-    'app-conditional-details': conditionalDetailsVue,
-    'app-labeled-input': labeledInputVue
+    'conditional-details': conditionalDetails,
+    'labeled-input': labeledInput
   },
   head() {
     const title = this.searchFor ? `Search "${this.searchFor}"` : `Search`;

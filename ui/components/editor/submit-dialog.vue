@@ -1,5 +1,5 @@
 <template>
-  <app-a11y-dialog
+  <a11y-dialog
     id="submit"
     :cancellable="false"
     :shown="submit.state !== `closed`"
@@ -29,7 +29,7 @@
       <div class="button-bar right">
         <a href="#cancel" class="button secondary" @click.prevent="onCancel">Continue editing</a>
         <!-- Hide the download button in case the fixture has errors. Some plugins are not able to download such fixtures. -->
-        <app-download-button
+        <download-button
           v-if="!validationErrors.length"
           button-style="select"
           :show-help="false"
@@ -52,7 +52,7 @@
           href="/fixture-editor"
           class="button secondary"
           @click.prevent="$emit(`reset`)">Create another fixture</a>
-        <app-download-button
+        <download-button
           v-if="!validationErrors.length"
           button-style="select"
           :show-help="false"
@@ -78,12 +78,12 @@
       </div>
     </div>
 
-  </app-a11y-dialog>
+  </a11y-dialog>
 </template>
 
 <script>
-import a11yDialogVue from '../a11y-dialog.vue';
-import downloadButtonVue from '../download-button.vue';
+import a11yDialog from '../a11y-dialog.vue';
+import downloadButton from '../download-button.vue';
 import { clone } from '../../assets/scripts/editor-utils.js';
 
 const stateTitles = {
@@ -97,8 +97,8 @@ const stateTitles = {
 
 export default {
   components: {
-    'app-a11y-dialog': a11yDialogVue,
-    'app-download-button': downloadButtonVue
+    'a11y-dialog': a11yDialog,
+    'download-button': downloadButton
   },
   props: {
     submit: {

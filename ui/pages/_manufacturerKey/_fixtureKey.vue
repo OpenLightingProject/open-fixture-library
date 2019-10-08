@@ -18,16 +18,16 @@
           <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manKey}/${fixKey}.json`">Source</a></span>
           <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manKey}/${fixKey}.json`">Revisions</a></span>
 
-          <app-conditional-details v-if="fixture.meta.importPlugin !== null">
+          <conditional-details v-if="fixture.meta.importPlugin !== null">
             <template slot="summary">
               Imported using the <nuxt-link :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</nuxt-link> on <span v-html="getDateHtml(fixture.meta.importDate)" />.
             </template>
             <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>
-          </app-conditional-details>
+          </conditional-details>
         </section>
       </div>
 
-      <app-download-button :fixture-key="`${manKey}/${fixKey}`" />
+      <download-button :fixture-key="`${manKey}/${fixKey}`" />
     </header>
 
     <section v-if="redirect" class="card yellow">
@@ -36,16 +36,16 @@
 
     <section :style="{ borderTopColor: manufacturerColor }" class="fixture-info card">
 
-      <app-labeled-value
+      <labeled-value
         name="categories"
         label="Categories">
-        <app-category-badge
+        <category-badge
           v-for="cat in fixture.categories"
           :key="cat"
           :category="cat" />
-      </app-labeled-value>
+      </labeled-value>
 
-      <app-labeled-value
+      <labeled-value
         v-if="fixture.hasComment"
         :value="fixture.comment"
         name="comment"
@@ -67,7 +67,7 @@
         </div>
       </section>
 
-      <app-labeled-value
+      <labeled-value
         v-if="links.length"
         name="links"
         label="Relevant links">
@@ -84,15 +84,15 @@
             </a>
           </li>
         </ul>
-      </app-labeled-value>
+      </labeled-value>
 
-      <app-help-wanted-message
+      <help-wanted-message
         v-if="fixture.isHelpWanted"
         type="fixture"
         :context="fixture"
         @help-wanted-clicked="openHelpWantedDialog" />
 
-      <app-labeled-value
+      <labeled-value
         v-if="fixture.rdm !== null"
         name="rdm">
         <template slot="label">
@@ -106,33 +106,33 @@
           <ofl-svg name="ola" /> View in Open Lighting RDM database
         </a>
         <span class="hint">manufacturer ID / model ID / software version</span>
-      </app-labeled-value>
+      </labeled-value>
 
       <template v-if="fixture.physical !== null">
         <h3 class="physical">Physical data</h3>
         <section class="physical">
-          <app-fixture-physical :physical="fixture.physical" />
+          <fixture-physical :physical="fixture.physical" />
         </section>
       </template>
 
       <template v-if="fixture.matrix !== null">
         <h3 class="matrix">Matrix</h3>
         <section class="matrix">
-          <app-fixture-matrix :matrix="fixture.matrix" :physical="fixture.physical" />
+          <fixture-matrix :matrix="fixture.matrix" :physical="fixture.physical" />
         </section>
       </template>
 
       <template v-if="fixture.wheels.length > 0">
         <h3 class="wheels">Wheels</h3>
         <section class="wheels">
-          <app-fixture-wheel v-for="wheel in fixture.wheels" :key="wheel.name" :wheel="wheel" />
+          <fixture-wheel v-for="wheel in fixture.wheels" :key="wheel.name" :wheel="wheel" />
         </section>
       </template>
 
     </section>
 
     <section class="fixture-modes">
-      <app-fixture-mode
+      <fixture-mode
         v-for="(mode, index) in modes"
         :key="mode.name"
         :mode="mode"
@@ -187,7 +187,7 @@
       </div>
     </section>
 
-    <app-help-wanted-dialog v-model="helpWantedContext" :type="helpWantedType" />
+    <help-wanted-dialog v-model="helpWantedContext" :type="helpWantedType" />
   </div>
 </template>
 
@@ -287,15 +287,15 @@ import schemaProperties from '../../../lib/schema-properties.js';
 import Fixture from '../../../lib/model/Fixture.js';
 
 import categoryBadge from '../../components/category-badge.vue';
-import conditionalDetailsVue from '../../components/conditional-details.vue';
-import downloadButtonVue from '../../components/download-button.vue';
+import conditionalDetails from '../../components/conditional-details.vue';
+import downloadButton from '../../components/download-button.vue';
 import fixturePhysical from '../../components/fixture-page/physical.vue';
 import fixtureMatrix from '../../components/fixture-page/matrix.vue';
 import fixtureWheel from '../../components/fixture-page/wheel.vue';
 import fixtureMode from '../../components/fixture-page/mode.vue';
 import helpWantedDialog from '../../components/help-wanted-dialog.vue';
 import helpWantedMessage from '../../components/help-wanted-message.vue';
-import labeledValueVue from '../../components/labeled-value.vue';
+import labeledValue from '../../components/labeled-value.vue';
 
 import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
 
@@ -303,16 +303,16 @@ const VIDEOS_TO_EMBED = 2;
 
 export default {
   components: {
-    'app-category-badge': categoryBadge,
-    'app-conditional-details': conditionalDetailsVue,
-    'app-download-button': downloadButtonVue,
-    'app-fixture-physical': fixturePhysical,
-    'app-fixture-matrix': fixtureMatrix,
-    'app-fixture-wheel': fixtureWheel,
-    'app-fixture-mode': fixtureMode,
-    'app-help-wanted-dialog': helpWantedDialog,
-    'app-help-wanted-message': helpWantedMessage,
-    'app-labeled-value': labeledValueVue
+    'category-badge': categoryBadge,
+    'conditional-details': conditionalDetails,
+    'download-button': downloadButton,
+    'fixture-physical': fixturePhysical,
+    'fixture-matrix': fixtureMatrix,
+    'fixture-wheel': fixtureWheel,
+    'fixture-mode': fixtureMode,
+    'help-wanted-dialog': helpWantedDialog,
+    'help-wanted-message': helpWantedMessage,
+    'labeled-value': labeledValue
   },
   mixins: [fixtureLinksMixin],
   validate({ params }) {

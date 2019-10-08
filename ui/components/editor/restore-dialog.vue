@@ -1,5 +1,5 @@
 <template>
-  <app-a11y-dialog
+  <a11y-dialog
     id="restore"
     :cancellable="false"
     :shown="restoredData !== null"
@@ -12,7 +12,7 @@
       <button class="restore primary" @click.prevent="applyRestored">Restore to continue work</button>
     </div>
 
-  </app-a11y-dialog>
+  </a11y-dialog>
 </template>
 
 <script>
@@ -28,11 +28,11 @@ import {
   clone
 } from '../../assets/scripts/editor-utils.js';
 
-import a11yDialogVue from '../a11y-dialog.vue';
+import a11yDialog from '../a11y-dialog.vue';
 
 export default {
   components: {
-    'app-a11y-dialog': a11yDialogVue
+    'a11y-dialog': a11yDialog
   },
   model: {
     prop: `restoredData`

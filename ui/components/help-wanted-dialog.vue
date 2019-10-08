@@ -1,5 +1,5 @@
 <template>
-  <app-a11y-dialog
+  <a11y-dialog
     id="help-wanted"
     ref="dialog"
     :cancellable="state !== `loading`"
@@ -8,27 +8,27 @@
     @hide="onHide">
 
     <form v-if="state === `ready` && context !== null" action="#" @submit.prevent="onSubmit">
-      <app-labeled-value
+      <labeled-value
         v-if="location !== null"
         :value="location"
         label="Location" />
 
-      <app-labeled-value
+      <labeled-value
         v-if="context.helpWanted !== null"
         label="Problem description">
         <span v-html="context.helpWanted" />
-      </app-labeled-value>
+      </labeled-value>
 
-      <app-labeled-input name="message" label="Message">
+      <labeled-input name="message" label="Message">
         <textarea v-model="message" name="message" />
-      </app-labeled-input>
+      </labeled-input>
 
-      <app-labeled-input
+      <labeled-input
         name="github-username"
         label="GitHub username"
         hint="If you want to be mentioned in the issue.">
         <input v-model="githubUsername" type="text" name="github-username">
-      </app-labeled-input>
+      </labeled-input>
 
       <div class="button-bar right">
         <button :disabled="message === ``" type="submit" class="primary">Send information</button>
@@ -60,20 +60,20 @@
       </div>
     </template>
 
-  </app-a11y-dialog>
+  </a11y-dialog>
 </template>
 
 <script>
-import a11yDialogVue from './a11y-dialog.vue';
+import a11yDialog from './a11y-dialog.vue';
 
-import labeledInputVue from './labeled-input.vue';
-import labeledValueVue from './labeled-value.vue';
+import labeledInput from './labeled-input.vue';
+import labeledValue from './labeled-value.vue';
 
 export default {
   components: {
-    'app-a11y-dialog': a11yDialogVue,
-    'app-labeled-input': labeledInputVue,
-    'app-labeled-value': labeledValueVue
+    'a11y-dialog': a11yDialog,
+    'labeled-input': labeledInput,
+    'labeled-value': labeledValue
   },
   model: {
     prop: `context`

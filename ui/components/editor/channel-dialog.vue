@@ -1,5 +1,5 @@
 <template>
-  <app-a11y-dialog
+  <a11y-dialog
     id="channel"
     ref="channelDialog"
     :cancellable="true"
@@ -15,7 +15,7 @@
       @submit.prevent="onSubmit">
 
       <div v-if="channel.editMode === `add-existing`">
-        <app-labeled-input :formstate="formstate" name="existingChannelUuid" label="Select an existing channel">
+        <labeled-input :formstate="formstate" name="existingChannelUuid" label="Select an existing channel">
           <select
             v-model="channel.uuid"
             name="existingChannelUuid"
@@ -29,14 +29,14 @@
               {{ getChannelName(channelUuid) }}
             </option>
           </select>
-        </app-labeled-input>
+        </labeled-input>
 
         <p>or <a href="#create-channel" @click.prevent="setEditModeCreate">create a new channel</a></p>
       </div>
 
       <div v-else>
-        <app-labeled-input :formstate="formstate" name="name" label="Name">
-          <app-property-input-text
+        <labeled-input :formstate="formstate" name="name" label="Name">
+          <property-input-text
             v-model="channel.name"
             :schema-property="properties.channel.name"
             :required="true"
@@ -47,7 +47,7 @@
             title="Please start with an uppercase letter or a number. Don't create fine channels here, set its resolution below instead."
             class="channelName"
             @blur="onChannelNameChanged" />
-        </app-labeled-input>
+        </labeled-input>
 
         <datalist id="channel-name-suggestions" hidden>
           <option>Intensity</option>
@@ -95,15 +95,15 @@
           <option>Reserved</option>
         </datalist>
 
-        <app-labeled-input :formstate="formstate" name="resolution" label="Channel resolution">
+        <labeled-input :formstate="formstate" name="resolution" label="Channel resolution">
           <select v-model="channel.resolution" name="resolution" @change="onResolutionChanged">
             <option :value="constants.RESOLUTION_8BIT">8 bit (No fine channels)</option>
             <option :value="constants.RESOLUTION_16BIT">16 bit (1 fine channel)</option>
             <option :value="constants.RESOLUTION_24BIT">24 bit (2 fine channels)</option>
           </select>
-        </app-labeled-input>
+        </labeled-input>
 
-        <app-labeled-input
+        <labeled-input
           v-if="channel.resolution > constants.RESOLUTION_8BIT"
           :formstate="formstate"
           name="dmxValueResolution"
@@ -117,21 +117,21 @@
             <option v-if="channel.resolution >= constants.RESOLUTION_16BIT" :value="constants.RESOLUTION_16BIT">16 bit (range 0…65535)</option>
             <option v-if="channel.resolution >= constants.RESOLUTION_24BIT" :value="constants.RESOLUTION_24BIT">24 bit (range 0…16777215)</option>
           </select>
-        </app-labeled-input>
+        </labeled-input>
 
-        <app-labeled-input
+        <labeled-input
           :formstate="formstate"
           :multiple-inputs="true"
           name="defaultValue"
           label="Default DMX value">
-          <app-property-input-entity
+          <property-input-entity
             v-model="channel.defaultValue"
             :schema-property="properties.channel.defaultValue"
             :min-number="0"
             :max-number="(typeof channel.defaultValue) === `string` ? 100 : dmxMax"
             class="wide"
             name="defaultValue" />
-        </app-labeled-input>
+        </labeled-input>
 
         <h3>Capabilities<template v-if="!channel.wizard.show && channel.capabilities.length > 1">
           <a
@@ -150,7 +150,7 @@
           </a>
         </template></h3>
 
-        <app-editor-capability-wizard
+        <editor-capability-wizard
           v-if="channel.wizard.show"
           :wizard="channel.wizard"
           :channel="channel"
@@ -159,7 +159,7 @@
           @close="onWizardClose" />
 
         <div v-else class="capability-editor">
-          <app-editor-capability
+          <editor-capability
             v-for="(cap, index) in channel.capabilities"
             ref="capabilities"
             :key="cap.uuid"
@@ -180,34 +180,34 @@
 
         <h3>Advanced channel settings</h3>
 
-        <app-labeled-input
+        <labeled-input
           :formstate="formstate"
           :multiple-inputs="true"
           name="highlightValue"
           label="Highlight DMX value">
-          <app-property-input-entity
+          <property-input-entity
             v-model="channel.highlightValue"
             :schema-property="properties.channel.highlightValue"
             :min-number="0"
             :max-number="(typeof channel.highlightValue) === `string` ? 100 : dmxMax"
             class="wide"
             name="highlightValue" />
-        </app-labeled-input>
+        </labeled-input>
 
-        <app-labeled-input :formstate="formstate" name="constant" label="Constant?">
-          <app-property-input-boolean
+        <labeled-input :formstate="formstate" name="constant" label="Constant?">
+          <property-input-boolean
             v-model="channel.constant"
             :schema-property="properties.channel.constant"
             name="constant"
             label="Channel is fixed to default DMX value" />
-        </app-labeled-input>
+        </labeled-input>
 
-        <app-labeled-input :formstate="formstate" name="precedence" label="Precedence">
-          <app-property-input-select
+        <labeled-input :formstate="formstate" name="precedence" label="Precedence">
+          <property-input-select
             v-model="channel.precedence"
             :schema-property="properties.channel.precedence"
             name="precedence" />
-        </app-labeled-input>
+        </labeled-input>
 
       </div>
 
@@ -217,7 +217,7 @@
 
     </vue-form>
 
-  </app-a11y-dialog>
+  </a11y-dialog>
 </template>
 
 <style lang="scss" scoped>
@@ -259,25 +259,25 @@ import {
   clone
 } from '../../assets/scripts/editor-utils.js';
 
-import a11yDialogVue from '../a11y-dialog.vue';
-import editorCapabilityVue from './capability.vue';
-import editorCapabilityWizardVue from './capability-wizard.vue';
-import labeledInputVue from '../labeled-input.vue';
-import propertyInputBooleanVue from './property-input-boolean.vue';
-import propertyInputEntityVue from './property-input-entity.vue';
-import propertyInputSelectVue from './property-input-select.vue';
-import propertyInputTextVue from './property-input-text.vue';
+import a11yDialog from '../a11y-dialog.vue';
+import editorCapability from './capability.vue';
+import editorCapabilityWizard from './capability-wizard.vue';
+import labeledInput from '../labeled-input.vue';
+import propertyInputBoolean from './property-input-boolean.vue';
+import propertyInputEntity from './property-input-entity.vue';
+import propertyInputSelect from './property-input-select.vue';
+import propertyInputText from './property-input-text.vue';
 
 export default {
   components: {
-    'app-a11y-dialog': a11yDialogVue,
-    'app-editor-capability': editorCapabilityVue,
-    'app-editor-capability-wizard': editorCapabilityWizardVue,
-    'app-labeled-input': labeledInputVue,
-    'app-property-input-boolean': propertyInputBooleanVue,
-    'app-property-input-entity': propertyInputEntityVue,
-    'app-property-input-select': propertyInputSelectVue,
-    'app-property-input-text': propertyInputTextVue
+    'a11y-dialog': a11yDialog,
+    'editor-capability': editorCapability,
+    'editor-capability-wizard': editorCapabilityWizard,
+    'labeled-input': labeledInput,
+    'property-input-boolean': propertyInputBoolean,
+    'property-input-entity': propertyInputEntity,
+    'property-input-select': propertyInputSelect,
+    'property-input-text': propertyInputText
   },
   model: {
     prop: `channel`

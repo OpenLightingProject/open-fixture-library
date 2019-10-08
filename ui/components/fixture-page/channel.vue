@@ -1,8 +1,8 @@
 <template>
   <li>
-    <app-conditional-details class="channel">
+    <conditional-details class="channel">
       <template slot="summary">
-        <app-fixture-channel-type-icon :channel="channel" />{{ channel.name }}<code v-if="channelKey" class="channel-key">{{ channelKey }}</code>{{ appendToHeading ? ` ${appendToHeading}` : `` }}
+        <fixture-channel-type-icon :channel="channel" />{{ channel.name }}<code v-if="channelKey" class="channel-key">{{ channelKey }}</code>{{ appendToHeading ? ` ${appendToHeading}` : `` }}
         <ofl-svg
           v-if="channel.isHelpWanted"
           class="help-wanted-icon"
@@ -19,106 +19,106 @@
       <template v-else-if="(channel instanceof SwitchingChannel)">
         <span>Switches depending on trigger channel's value.</span>
 
-        <app-labeled-value
+        <labeled-value
           name="switchingChannel-triggerChannel"
           label="Trigger channel">
           {{ channel.triggerChannel.name }} (channel&nbsp;{{ mode.getChannelIndex(channel.triggerChannel.key) + 1 }})
-        </app-labeled-value>
+        </labeled-value>
 
         <ol>
-          <app-fixture-channel
+          <fixture-channel
             v-for="(ranges, switchToChannelKey) in channel.triggerRanges"
             :key="switchToChannelKey"
             :channel="fixture.getChannelByKey(switchToChannelKey)"
             :mode="mode"
             :append-to-heading="channel.defaultChannel.key === switchToChannelKey ? `(default)` : null"
             @help-wanted-clicked="$emit(`help-wanted-clicked`, $event)">
-            <app-labeled-value
+            <labeled-value
               name="switchingChannel-triggerRanges"
               label="Activated when">
               <span v-html="`Trigger channel is set to ${ranges.map(range => `<span style='white-space: nowrap;'>${range}</span>`).join(` or `)}`" />
-            </app-labeled-value>
-          </app-fixture-channel>
+            </labeled-value>
+          </fixture-channel>
         </ol>
       </template>
 
       <template v-if="channel.pixelKey !== null && !(channel instanceof SwitchingChannel)">
-        <app-labeled-value
+        <labeled-value
           v-if="fixture.matrix.pixelGroupKeys.includes(channel.pixelKey)"
           :value="`${channel.pixelKey}`"
           name="channel-pixel-group"
           label="Pixel group" />
 
         <template v-else>
-          <app-labeled-value
+          <labeled-value
             :value="`${channel.pixelKey}`"
             name="channel-pixel-key"
             label="Pixel" />
-          <app-labeled-value
+          <labeled-value
             name="channel-pixel-position"
             label="Pixel position">
             ({{ fixture.matrix.pixelKeyPositions[channel.pixelKey][0] }},
             {{ fixture.matrix.pixelKeyPositions[channel.pixelKey][1] }},
             {{ fixture.matrix.pixelKeyPositions[channel.pixelKey][2] }})
             <span class="hint">(X, Y, Z)</span>
-          </app-labeled-value>
+          </labeled-value>
         </template>
       </template>
 
       <template v-if="(channel instanceof CoarseChannel)">
-        <app-labeled-value
+        <labeled-value
           v-if="resolutionInMode > CoarseChannel.RESOLUTION_8BIT"
           name="channel-fineChannelAliases"
           label="Fine channels">
           {{ channel.fineChannels.slice(0, resolutionInMode - 1).map(
             fineChannel => `${fineChannel.name} (channel&nbsp;${mode.getChannelIndex(fineChannel) + 1})`
           ).join(`, `) }}
-        </app-labeled-value>
+        </labeled-value>
 
-        <app-labeled-value
+        <labeled-value
           v-if="channel.hasDefaultValue"
           :value="`${channel.getDefaultValueWithResolution(resolutionInMode)}`"
           name="channel-defaultValue"
           label="Default DMX value" />
 
-        <app-labeled-value
+        <labeled-value
           v-if="channel.hasHighlightValue"
           :value="`${channel.getHighlightValueWithResolution(resolutionInMode)}`"
           name="channel-highlightValue"
           label="Highlight DMX value" />
 
-        <app-labeled-value
+        <labeled-value
           v-if="channel.isInverted"
           name="channel-isInverted"
           label="Is inverted?"
           value="Yes" />
 
-        <app-labeled-value
+        <labeled-value
           v-if="channel.isConstant"
           name="channel-isConstant"
           label="Is constant?"
           value="Yes" />
 
-        <app-labeled-value
+        <labeled-value
           v-if="channel.canCrossfade"
           name="channel-canCrossfade"
           label="Can crossfade?"
           value="Yes" />
 
-        <app-labeled-value
+        <labeled-value
           v-if="channel.precedence !== `LTP`"
           :value="channel.precedence"
           name="channel-precedence"
           label="Precedence" />
 
-        <app-fixture-capability-table
+        <fixture-capability-table
           :channel="channel"
           :mode="mode"
           :resolution-in-mode="resolutionInMode"
           @help-wanted-clicked="$emit(`help-wanted-clicked`, $event)" />
       </template>
 
-    </app-conditional-details>
+    </conditional-details>
   </li>
 </template>
 
@@ -151,7 +151,7 @@ ol.mode-channels {
 import conditionalDetails from '../conditional-details.vue';
 import fixtureChannelTypeIcon from './channel-type-icon.vue';
 import fixtureCapabilityTable from './capability-table.vue';
-import labeledValueVue from '../labeled-value.vue';
+import labeledValue from '../labeled-value.vue';
 
 import AbstractChannel from '../../../lib/model/AbstractChannel.js';
 import CoarseChannel from '../../../lib/model/CoarseChannel.js';
@@ -163,10 +163,10 @@ import SwitchingChannel from '../../../lib/model/SwitchingChannel.js';
 export default {
   name: `AppFixtureChannel`,
   components: {
-    'app-conditional-details': conditionalDetails,
-    'app-fixture-channel-type-icon': fixtureChannelTypeIcon,
-    'app-fixture-capability-table': fixtureCapabilityTable,
-    'app-labeled-value': labeledValueVue
+    'conditional-details': conditionalDetails,
+    'fixture-channel-type-icon': fixtureChannelTypeIcon,
+    'fixture-capability-table': fixtureCapabilityTable,
+    'labeled-value': labeledValue
   },
   props: {
     channel: {

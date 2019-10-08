@@ -59,7 +59,7 @@
         </nuxt-link>
 
         <client-only>
-          <app-theme-switcher @click.native="focusContent" />
+          <theme-switcher @click.native="focusContent" />
         </client-only>
       </div>
     </nav>
@@ -225,11 +225,11 @@ header {
 </style>
 
 <script>
-import themeSwitcherVue from './theme-switcher.vue';
+import themeSwitcher from './theme-switcher.vue';
 
 export default {
   components: {
-    'app-theme-switcher': themeSwitcherVue
+    'theme-switcher': themeSwitcher
   },
   data() {
     return {

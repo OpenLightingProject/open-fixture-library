@@ -1,5 +1,5 @@
 <template>
-  <app-a11y-dialog
+  <a11y-dialog
     id="chooseChannelEditMode"
     :cancellable="false"
     :shown="channel.editMode === `edit-?`"
@@ -11,15 +11,15 @@
       <button class="primary" @click.prevent="chooseChannelEditMode(`edit-all`)">In all modes</button>
     </div>
 
-  </app-a11y-dialog>
+  </a11y-dialog>
 </template>
 
 <script>
-import a11yDialogVue from '../a11y-dialog.vue';
+import a11yDialog from '../a11y-dialog.vue';
 
 export default {
   components: {
-    'app-a11y-dialog': a11yDialogVue
+    'a11y-dialog': a11yDialog
   },
   props: {
     channel: {

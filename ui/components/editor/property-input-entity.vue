@@ -2,7 +2,7 @@
   <span :class="{ 'entity-input': true, 'has-number': hasNumber }">
 
     <validate v-if="hasNumber" tag="span">
-      <app-property-input-number
+      <property-input-number
         ref="input"
         v-model="selectedNumber"
         :schema-property="units[selectedUnit].numberSchema"
@@ -75,11 +75,11 @@
 
 <script>
 import schemaProperties from '../../../lib/schema-properties.js';
-import propertyInputNumberVue from './property-input-number.vue';
+import propertyInputNumber from './property-input-number.vue';
 
 export default {
   components: {
-    'app-property-input-number': propertyInputNumberVue
+    'property-input-number': propertyInputNumber
   },
   props: {
     schemaProperty: {

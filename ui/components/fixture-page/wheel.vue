@@ -129,7 +129,7 @@
       </g>
     </svg>
     <figcaption>
-      <app-conditional-details>
+      <conditional-details>
         <template slot="summary">{{ wheel.name }}</template>
 
         <table>
@@ -143,7 +143,7 @@
           </tr>
         </table>
 
-      </app-conditional-details>
+      </conditional-details>
     </figcaption>
   </figure>
 </template>
@@ -205,11 +205,11 @@ figcaption table {
 const { getColorCircleSvgFragment } = require(`../global/ofl-svg.vue`);
 import Wheel from '../../../lib/model/Wheel.js';
 
-import conditionalDetailsVue from '../conditional-details.vue';
+import conditionalDetails from '../conditional-details.vue';
 
 export default {
   components: {
-    'app-conditional-details': conditionalDetailsVue
+    'conditional-details': conditionalDetails
   },
   props: {
     wheel: {
