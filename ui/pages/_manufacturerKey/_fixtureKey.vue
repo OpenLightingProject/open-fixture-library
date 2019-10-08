@@ -53,7 +53,7 @@
 
       <section v-if="videos" class="fixture-videos">
         <div v-for="video in videos" :key="video.url" class="fixture-video">
-          <EmbettyVideo
+          <embetty-video
             :type="video.type"
             :video-id="video.videoId"
             :start-at="video.startAt" />
