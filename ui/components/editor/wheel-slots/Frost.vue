@@ -1,17 +1,17 @@
 <template>
   <div class="wheel-slot-type-data">
 
-    <labeled-input
+    <LabeledInput
       :formstate="formstate"
       :multiple-inputs="true"
       :name="`wheel-slot${wheelSlot.uuid}-frostIntensity`"
       label="Frost intensity">
-      <property-input-entity
+      <PropertyInputEntity
         v-model="wheelSlot.typeData.frostIntensity"
         :formstate="formstate"
         :name="`wheel-slot${wheelSlot.uuid}-frostIntensity`"
         :schema-property="properties.entities.percent" />
-    </labeled-input>
+    </LabeledInput>
 
   </div>
 </template>
@@ -19,13 +19,13 @@
 <script>
 import schemaProperties from '../../../../lib/schema-properties.js';
 
-import propertyInputEntity from '../property-input-entity.vue';
-import labeledInput from '../../labeled-input.vue';
+import PropertyInputEntity from '../PropertyInputEntity.vue';
+import LabeledInput from '../../LabeledInput.vue';
 
 export default {
   components: {
-    'property-input-entity': propertyInputEntity,
-    'labeled-input': labeledInput
+    PropertyInputEntity,
+    LabeledInput
   },
   props: {
     wheelSlot: {

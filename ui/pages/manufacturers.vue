@@ -17,7 +17,7 @@
       <h2 :id="letterData.id">{{ letter }}</h2>
 
       <div class="manufacturers grid-4">
-        <nuxt-link
+        <NuxtLink
           v-for="manufacturer in letterData.manufacturers"
           :key="manufacturer.key"
           :to="`/${manufacturer.key}`"
@@ -25,7 +25,7 @@
           class="card manufacturer-color">
           <span class="name">{{ manufacturer.name }}</span>
           <span class="fixtures hint">{{ manufacturer.fixtureCount }} fixture{{ manufacturer.fixtureCount === 1 ? `` : `s` }}</span>
-        </nuxt-link>
+        </NuxtLink>
       </div>
     </div>
   </div>

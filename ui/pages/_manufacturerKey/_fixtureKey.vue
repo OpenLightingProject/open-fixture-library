@@ -6,7 +6,7 @@
     <header class="fixture-header">
       <div class="title">
         <h1>
-          <nuxt-link :to="`/${fixture.manufacturer.key}`">{{ fixture.manufacturer.name }}</nuxt-link>
+          <NuxtLink :to="`/${fixture.manufacturer.key}`">{{ fixture.manufacturer.name }}</NuxtLink>
           {{ fixture.name }}
           <code v-if="fixture.hasShortName">{{ fixture.shortName }}</code>
         </h1>
@@ -18,16 +18,16 @@
           <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manKey}/${fixKey}.json`">Source</a></span>
           <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manKey}/${fixKey}.json`">Revisions</a></span>
 
-          <conditional-details v-if="fixture.meta.importPlugin !== null">
+          <ConditionalDetails v-if="fixture.meta.importPlugin !== null">
             <template slot="summary">
-              Imported using the <nuxt-link :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</nuxt-link> on <span v-html="getDateHtml(fixture.meta.importDate)" />.
+              Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <span v-html="getDateHtml(fixture.meta.importDate)" />.
             </template>
             <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>
-          </conditional-details>
+          </ConditionalDetails>
         </section>
       </div>
 
-      <download-button :fixture-key="`${manKey}/${fixKey}`" />
+      <DownloadButton :fixture-key="`${manKey}/${fixKey}`" />
     </header>
 
     <section v-if="redirect" class="card yellow">
@@ -36,16 +36,16 @@
 
     <section :style="{ borderTopColor: manufacturerColor }" class="fixture-info card">
 
-      <labeled-value
+      <LabeledValue
         name="categories"
         label="Categories">
-        <category-badge
+        <CategoryBadge
           v-for="cat in fixture.categories"
           :key="cat"
           :category="cat" />
-      </labeled-value>
+      </LabeledValue>
 
-      <labeled-value
+      <LabeledValue
         v-if="fixture.hasComment"
         :value="fixture.comment"
         name="comment"
@@ -53,7 +53,7 @@
 
       <section v-if="videos" class="fixture-videos">
         <div v-for="video in videos" :key="video.url" class="fixture-video">
-          <embetty-video
+          <EmbettyVideo
             :type="video.type"
             :video-id="video.videoId"
             :start-at="video.startAt" />
@@ -61,13 +61,13 @@
             :href="video.url"
             rel="nofollow"
             target="_blank">
-            <ofl-svg name="youtube" />
+            <OflSvg name="youtube" />
             Watch video at {{ video.displayType }}
           </a>
         </div>
       </section>
 
-      <labeled-value
+      <LabeledValue
         v-if="links.length"
         name="links"
         label="Relevant links">
@@ -78,21 +78,21 @@
               :title="link.title"
               rel="nofollow"
               target="_blank">
-              <ofl-svg :name="link.iconName" />
+              <OflSvg :name="link.iconName" />
               {{ link.name }}
               <span v-if="link.type !== `other`" class="hostname">({{ link.hostname }})</span>
             </a>
           </li>
         </ul>
-      </labeled-value>
+      </LabeledValue>
 
-      <help-wanted-message
+      <HelpWantedMessage
         v-if="fixture.isHelpWanted"
         type="fixture"
         :context="fixture"
         @help-wanted-clicked="openHelpWantedDialog" />
 
-      <labeled-value
+      <LabeledValue
         v-if="fixture.rdm !== null"
         name="rdm">
         <template slot="label">
@@ -103,36 +103,36 @@
         {{ fixture.rdm.modelId }} (0x{{ fixture.rdm.modelId.toString(16) }}) /
         {{ `softwareVersion` in fixture.rdm ? fixture.rdm.softwareVersion : `?` }} –
         <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${fixture.manufacturer.rdmId}&model=${fixture.rdm.modelId}`" rel="nofollow">
-          <ofl-svg name="ola" /> View in Open Lighting RDM database
+          <OflSvg name="ola" /> View in Open Lighting RDM database
         </a>
         <span class="hint">manufacturer ID / model ID / software version</span>
-      </labeled-value>
+      </LabeledValue>
 
       <template v-if="fixture.physical !== null">
         <h3 class="physical">Physical data</h3>
         <section class="physical">
-          <fixture-physical :physical="fixture.physical" />
+          <FixturePhysical :physical="fixture.physical" />
         </section>
       </template>
 
       <template v-if="fixture.matrix !== null">
         <h3 class="matrix">Matrix</h3>
         <section class="matrix">
-          <fixture-matrix :matrix="fixture.matrix" :physical="fixture.physical" />
+          <FixtureMatrix :matrix="fixture.matrix" :physical="fixture.physical" />
         </section>
       </template>
 
       <template v-if="fixture.wheels.length > 0">
         <h3 class="wheels">Wheels</h3>
         <section class="wheels">
-          <fixture-wheel v-for="wheel in fixture.wheels" :key="wheel.name" :wheel="wheel" />
+          <FixtureWheel v-for="wheel in fixture.wheels" :key="wheel.name" :wheel="wheel" />
         </section>
       </template>
 
     </section>
 
     <section class="fixture-modes">
-      <fixture-mode
+      <FixtureMode
         v-for="(mode, index) in modes"
         :key="mode.name"
         :mode="mode"
@@ -142,7 +142,7 @@
     </section>
 
     <section v-if="modesLimited && modeNumberLoadLimit < fixture.modes.length" class="card orange dark">
-      <h2><ofl-svg name="alert" /> This fixture is big!</h2>
+      <h2><OflSvg name="alert" /> This fixture is big!</h2>
 
       <div>Only the first {{ modeNumberLoadLimit }} of {{ fixture.modes.length }} modes are displayed. Loading more modes might take a while.</div>
 
@@ -176,18 +176,18 @@
             context: fixture,
             type: `fixture`
           })">
-          <ofl-svg name="comment-alert" class="left" /><span>Send information</span>
+          <OflSvg name="comment-alert" class="left" /><span>Send information</span>
         </a>
         <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card slim">
-          <ofl-svg name="bug" class="left" /><span>Create issue on GitHub</span>
+          <OflSvg name="bug" class="left" /><span>Create issue on GitHub</span>
         </a>
         <a :href="mailtoUrl" class="card slim">
-          <ofl-svg name="email" class="left" /><span>Send email</span>
+          <OflSvg name="email" class="left" /><span>Send email</span>
         </a>
       </div>
     </section>
 
-    <help-wanted-dialog v-model="helpWantedContext" :type="helpWantedType" />
+    <HelpWantedDialog v-model="helpWantedContext" :type="helpWantedType" />
   </div>
 </template>
 
@@ -286,16 +286,16 @@ import plugins from '../../../plugins/plugins.json';
 import schemaProperties from '../../../lib/schema-properties.js';
 import Fixture from '../../../lib/model/Fixture.js';
 
-import categoryBadge from '../../components/category-badge.vue';
-import conditionalDetails from '../../components/conditional-details.vue';
-import downloadButton from '../../components/download-button.vue';
-import fixturePhysical from '../../components/fixture-page/physical.vue';
-import fixtureMatrix from '../../components/fixture-page/matrix.vue';
-import fixtureWheel from '../../components/fixture-page/wheel.vue';
-import fixtureMode from '../../components/fixture-page/mode.vue';
-import helpWantedDialog from '../../components/help-wanted-dialog.vue';
-import helpWantedMessage from '../../components/help-wanted-message.vue';
-import labeledValue from '../../components/labeled-value.vue';
+import CategoryBadge from '../../components/CategoryBadge.vue';
+import ConditionalDetails from '../../components/ConditionalDetails.vue';
+import DownloadButton from '../../components/DownloadButton.vue';
+import FixturePhysical from '../../components/fixture-page/FixturePhysical.vue';
+import FixtureMatrix from '../../components/fixture-page/FixtureMatrix.vue';
+import FixtureWheel from '../../components/fixture-page/FixtureWheel.vue';
+import FixtureMode from '../../components/fixture-page/FixtureMode.vue';
+import HelpWantedDialog from '../../components/HelpWantedDialog.vue';
+import HelpWantedMessage from '../../components/HelpWantedMessage.vue';
+import LabeledValue from '../../components/LabeledValue.vue';
 
 import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
 
@@ -303,19 +303,19 @@ const VIDEOS_TO_EMBED = 2;
 
 export default {
   components: {
-    'category-badge': categoryBadge,
-    'conditional-details': conditionalDetails,
-    'download-button': downloadButton,
-    'fixture-physical': fixturePhysical,
-    'fixture-matrix': fixtureMatrix,
-    'fixture-wheel': fixtureWheel,
-    'fixture-mode': fixtureMode,
-    'help-wanted-dialog': helpWantedDialog,
-    'help-wanted-message': helpWantedMessage,
-    'labeled-value': labeledValue
+    CategoryBadge,
+    ConditionalDetails,
+    DownloadButton,
+    FixturePhysical,
+    FixtureMatrix,
+    FixtureWheel,
+    FixtureMode,
+    HelpWantedDialog,
+    HelpWantedMessage,
+    LabeledValue
   },
   mixins: [fixtureLinksMixin],
-  validate({ params }) {
+  Validate({ params }) {
     return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
   },
   async asyncData({ params, query, app, redirect }) {

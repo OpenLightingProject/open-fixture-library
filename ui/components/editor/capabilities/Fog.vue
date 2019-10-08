@@ -1,7 +1,7 @@
 <template>
   <div class="capability-type-data">
 
-    <labeled-input
+    <LabeledInput
       :formstate="formstate"
       :name="`capability${capability.uuid}-fogType`"
       label="Fog type">
@@ -18,29 +18,29 @@
           :value="fogType">{{ fogType }}</option>
 
       </select>
-    </labeled-input>
+    </LabeledInput>
 
-    <labeled-input
+    <LabeledInput
       :formstate="formstate"
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-fogOutput`"
       label="Fog output">
-      <editor-proportional-capability-data-switcher
+      <ProportionalCapabilityDataSwitcher
         :capability="capability"
         :formstate="formstate"
         property-name="fogOutput" />
-    </labeled-input>
+    </LabeledInput>
 
-    <labeled-input
+    <LabeledInput
       :formstate="formstate"
       :name="`capability${capability.uuid}-comment`"
       label="Comment">
-      <property-input-text
+      <PropertyInputText
         v-model="capability.typeData.comment"
         :formstate="formstate"
         :name="`capability${capability.uuid}-comment`"
         :schema-property="properties.definitions.nonEmptyString" />
-    </labeled-input>
+    </LabeledInput>
 
   </div>
 </template>
@@ -48,15 +48,15 @@
 <script>
 import schemaProperties from '../../../../lib/schema-properties.js';
 
-import editorProportionalCapabilityDataSwitcher from '../proportional-capability-data-switcher.vue';
-import propertyInputText from '../property-input-text.vue';
-import labeledInput from '../../labeled-input.vue';
+import ProportionalCapabilityDataSwitcher from '../ProportionalCapabilityDataSwitcher.vue';
+import PropertyInputText from '../PropertyInputText.vue';
+import LabeledInput from '../../LabeledInput.vue';
 
 export default {
   components: {
-    'editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
-    'property-input-text': propertyInputText,
-    'labeled-input': labeledInput
+    ProportionalCapabilityDataSwitcher,
+    PropertyInputText,
+    LabeledInput
   },
   props: {
     capability: {

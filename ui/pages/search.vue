@@ -4,11 +4,11 @@
     <h1 v-else>Search</h1>
 
     <form class="filter" action="/search" @submit.prevent="onSubmit">
-      <labeled-input label="Search query">
+      <LabeledInput label="Search query">
         <input v-model="searchQuery" type="search" name="q">
-      </labeled-input>
+      </LabeledInput>
 
-      <conditional-details :open="detailsInitiallyOpen">
+      <ConditionalDetails :open="detailsInitiallyOpen">
         <template slot="summary">Filter results</template>
 
         <select v-model="manufacturersQuery" name="manufacturers" multiple>
@@ -34,7 +34,7 @@
             :selected="categoriesQuery.includes(cat)"
             :value="cat">{{ cat }}</option>
         </select>
-      </conditional-details>
+      </ConditionalDetails>
 
       <button :disabled="searchQuery === `` && isBrowser" type="submit" class="primary">Search</button>
     </form>
@@ -53,18 +53,18 @@
           <li
             v-for="fixture in fixtureResults"
             :key="fixture.key">
-            <nuxt-link
+            <NuxtLink
               :to="`/${fixture.key}`"
               :style="{ borderLeftColor: fixture.color }"
               class="manufacturer-color">
               <span class="name">{{ fixture.name }}</span>
-            </nuxt-link>
+            </NuxtLink>
           </li>
         </ul>
       </div>
 
       <div v-else class="card">
-        Your search for <em>{{ searchFor }}</em> did not match any fixtures. Try using another query or browse by <nuxt-link to="/manufacturers">manufacturer</nuxt-link> or <nuxt-link to="/categories">category</nuxt-link>.
+        Your search for <em>{{ searchFor }}</em> did not match any fixtures. Try using another query or browse by <NuxtLink to="/manufacturers">manufacturer</NuxtLink> or <NuxtLink to="/categories">category</NuxtLink>.
       </div>
     </div>
   </div>
@@ -88,13 +88,13 @@
 import register from '../../fixtures/register.json';
 import manufacturers from '../../fixtures/manufacturers.json';
 
-import conditionalDetails from '../components/conditional-details.vue';
-import labeledInput from '../components/labeled-input.vue';
+import ConditionalDetails from '../components/ConditionalDetails.vue';
+import LabeledInput from '../components/LabeledInput.vue';
 
 export default {
   components: {
-    'conditional-details': conditionalDetails,
-    'labeled-input': labeledInput
+    ConditionalDetails,
+    LabeledInput
   },
   head() {
     const title = this.searchFor ? `Search "${this.searchFor}"` : `Search`;

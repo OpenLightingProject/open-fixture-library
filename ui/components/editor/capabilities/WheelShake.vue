@@ -1,56 +1,56 @@
 <template>
   <div class="capability-type-data">
 
-    <labeled-input
+    <LabeledInput
       :formstate="formstate"
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-slotNumber`"
       label="Slot number"
       hint="Leave the slot number empty if this capability doesn't select a wheel slot, but only activates wheel shaking for a WheelSlot capability in another channel."
       style="display: inline-block; margin-bottom: 12px;">
-      <editor-proportional-capability-data-switcher
+      <ProportionalCapabilityDataSwitcher
         :capability="capability"
         :formstate="formstate"
         property-name="slotNumber" />
-    </labeled-input>
+    </LabeledInput>
 
-    <labeled-input
+    <LabeledInput
       :formstate="formstate"
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-shakeSpeed`"
       label="Shake speed">
-      <editor-proportional-capability-data-switcher
+      <ProportionalCapabilityDataSwitcher
         :capability="capability"
         :formstate="formstate"
         property-name="shakeSpeed" />
-    </labeled-input>
+    </LabeledInput>
 
-    <labeled-input
+    <LabeledInput
       :formstate="formstate"
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-shakeAngle`"
       label="Shake angle">
-      <editor-proportional-capability-data-switcher
+      <ProportionalCapabilityDataSwitcher
         :capability="capability"
         :formstate="formstate"
         property-name="shakeAngle" />
-    </labeled-input>
+    </LabeledInput>
 
-    <editor-wheel-slots
+    <WheelSlots
       :channel="channel"
       :capability="capability"
       :formstate="formstate" />
 
-    <labeled-input
+    <LabeledInput
       :formstate="formstate"
       :name="`capability${capability.uuid}-comment`"
       label="Comment">
-      <property-input-text
+      <PropertyInputText
         v-model="capability.typeData.comment"
         :formstate="formstate"
         :name="`capability${capability.uuid}-comment`"
         :schema-property="properties.definitions.nonEmptyString" />
-    </labeled-input>
+    </LabeledInput>
 
   </div>
 </template>
@@ -58,17 +58,17 @@
 <script>
 import schemaProperties from '../../../../lib/schema-properties.js';
 
-import editorProportionalCapabilityDataSwitcher from '../proportional-capability-data-switcher.vue';
-import editorWheelSlots from '../wheel-slots.vue';
-import propertyInputText from '../property-input-text.vue';
-import labeledInput from '../../labeled-input.vue';
+import ProportionalCapabilityDataSwitcher from '../ProportionalCapabilityDataSwitcher.vue';
+import WheelSlots from '../EditorWheelSlots.vue';
+import PropertyInputText from '../PropertyInputText.vue';
+import LabeledInput from '../../LabeledInput.vue';
 
 export default {
   components: {
-    'editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
-    'editor-wheel-slots': editorWheelSlots,
-    'property-input-text': propertyInputText,
-    'labeled-input': labeledInput
+    ProportionalCapabilityDataSwitcher,
+    WheelSlots,
+    PropertyInputText,
+    LabeledInput
   },
   props: {
     capability: {

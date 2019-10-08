@@ -1,47 +1,47 @@
 <template>
   <div class="wheel-slot-type-data">
 
-    <labeled-input
+    <LabeledInput
       :formstate="formstate"
       :name="`wheel-slot${wheelSlot.uuid}-name`"
       label="Color name">
-      <property-input-text
+      <PropertyInputText
         v-model="wheelSlot.typeData.name"
         :formstate="formstate"
         :name="`wheel-slot${wheelSlot.uuid}-name`"
         :schema-property="properties.definitions.nonEmptyString" />
-    </labeled-input>
+    </LabeledInput>
 
-    <labeled-input
+    <LabeledInput
       label="Color hex code(s)"
       :formstate="formstate"
       :name="`wheel-slot${wheelSlot.uuid}-colorsHexString`">
-      <property-input-text
+      <PropertyInputText
         v-model="wheelSlot.typeData.colorsHexString"
         :name="`wheel-slot${wheelSlot.uuid}-colorsHexString`"
         :schema-property="properties.definitions.nonEmptyString"
         valid-color-hex-list />
-    </labeled-input>
+    </LabeledInput>
 
-    <labeled-input v-if="colorPreview !== null" label="Color preview">
-      <ofl-svg
+    <LabeledInput v-if="colorPreview !== null" label="Color preview">
+      <OflSvg
         v-for="color in colorPreview"
         :key="color"
         :colors="[color]"
         type="color-circle" />
-    </labeled-input>
+    </LabeledInput>
 
-    <labeled-input
+    <LabeledInput
       :formstate="formstate"
       :multiple-inputs="true"
       :name="`wheel-slot${wheelSlot.uuid}-colorTemperature`"
       label="Color temperature">
-      <property-input-entity
+      <PropertyInputEntity
         v-model="wheelSlot.typeData.colorTemperature"
         :formstate="formstate"
         :name="`wheel-slot${wheelSlot.uuid}-colorTemperature`"
         :schema-property="properties.entities.colorTemperature" />
-    </labeled-input>
+    </LabeledInput>
 
   </div>
 </template>
@@ -50,15 +50,15 @@
 import schemaProperties from '../../../../lib/schema-properties.js';
 import { colorsHexStringToArray } from '../../../assets/scripts/editor-utils.js';
 
-import propertyInputEntity from '../property-input-entity.vue';
-import propertyInputText from '../property-input-text.vue';
-import labeledInput from '../../labeled-input.vue';
+import PropertyInputEntity from '../PropertyInputEntity.vue';
+import PropertyInputText from '../PropertyInputText.vue';
+import LabeledInput from '../../LabeledInput.vue';
 
 export default {
   components: {
-    'property-input-entity': propertyInputEntity,
-    'property-input-text': propertyInputText,
-    'labeled-input': labeledInput
+    PropertyInputEntity,
+    PropertyInputText,
+    LabeledInput
   },
   props: {
     wheelSlot: {

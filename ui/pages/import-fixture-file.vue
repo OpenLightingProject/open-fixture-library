@@ -16,7 +16,7 @@
       <section class="card">
         <h2>File information</h2>
 
-        <labeled-input :formstate="formstate" name="plugin" label="Import file type">
+        <LabeledInput :formstate="formstate" name="plugin" label="Import file type">
           <select
             v-model="plugin"
             :class="{ empty: plugin === `` }"
@@ -34,38 +34,38 @@
           </select>
 
           <div class="hint">See <a href="/about/plugins" target="_blank">supported import plugins</a>.</div>
-        </labeled-input>
+        </LabeledInput>
 
-        <labeled-input
+        <LabeledInput
           :formstate="formstate"
           name="file"
           label="Fixture definition file"
           hint="Maximum file size is 5MB.">
-          <editor-file-upload
+          <EditorFileUpload
             v-model="file"
             :required="true"
             name="file"
             max-file-size="5MB" />
-        </labeled-input>
+        </LabeledInput>
 
-        <labeled-input :formstate="formstate" name="comment" label="Comment">
+        <LabeledInput :formstate="formstate" name="comment" label="Comment">
           <textarea v-model="comment" name="comment" />
-        </labeled-input>
+        </LabeledInput>
       </section>
 
       <section class="user card">
         <h2>Author data</h2>
 
-        <labeled-input :formstate="formstate" name="author" label="Your name">
+        <LabeledInput :formstate="formstate" name="author" label="Your name">
           <input
             v-model="author"
             type="text"
             required
             name="author"
             placeholder="e.g. Anonymous">
-        </labeled-input>
+        </LabeledInput>
 
-        <labeled-input
+        <LabeledInput
           :formstate="formstate"
           name="githubUsername"
           label="GitHub username"
@@ -74,12 +74,12 @@
             v-model="githubUsername"
             type="text"
             name="githubUsername">
-        </labeled-input>
+        </LabeledInput>
 
-        <labeled-input hidden name="honeypot" label="Ignore this!">
+        <LabeledInput hidden name="honeypot" label="Ignore this!">
           <input v-model="honeypot" type="text" name="honeypot">
           <div class="hint">Spammers are likely to fill this field. Leave it empty to show that you're a human.</div>
-        </labeled-input>
+        </LabeledInput>
       </section>
 
       <div class="button-bar">
@@ -87,7 +87,7 @@
       </div>
     </vue-form>
 
-    <a11y-dialog
+    <A11yDialog
       id="submit"
       :cancellable="false"
       :shown="uploading || pullRequestUrl !== null || error !== null"
@@ -99,7 +99,7 @@
         Your fixture was successfully uploaded to GitHub (see the <a :href="pullRequestUrl" target="_blank">pull request</a>). It will be now reviewed and then merged into the library. Thank you for your contribution!
 
         <div class="button-bar right">
-          <nuxt-link to="/" class="button secondary">Back to homepage</nuxt-link>
+          <NuxtLink to="/" class="button secondary">Back to homepage</NuxtLink>
           <a href="/import-fixture-file" class="button secondary" @click.prevent="reset">Import another fixture</a>
           <a :href="pullRequestUrl" class="button primary" target="_blank">See pull request</a>
         </div>
@@ -109,12 +109,12 @@
         <span>Unfortunately, there was an error while uploading: {{ error }}</span>
 
         <div class="button-bar right">
-          <nuxt-link to="/" class="button secondary">Back to homepage</nuxt-link>
+          <NuxtLink to="/" class="button secondary">Back to homepage</NuxtLink>
           <a href="/import-fixture-file" class="button primary" @click.prevent="reset">Try again</a>
         </div>
       </div>
 
-    </a11y-dialog>
+    </A11yDialog>
   </div>
 </template>
 
@@ -123,15 +123,15 @@ import scrollIntoView from 'scroll-into-view';
 
 import plugins from '../../plugins/plugins.json';
 
-import a11yDialog from '../components/a11y-dialog.vue';
-import editorFileUpload from '../components/editor/file-upload.vue';
-import labeledInput from '../components/labeled-input.vue';
+import A11yDialog from '../components/A11yDialog.vue';
+import EditorFileUpload from '../components/editor/FileUpload.vue';
+import LabeledInput from '../components/LabeledInput.vue';
 
 export default {
   components: {
-    'a11y-dialog': a11yDialog,
-    'editor-file-upload': editorFileUpload,
-    'labeled-input': labeledInput
+    A11yDialog,
+    EditorFileUpload,
+    LabeledInput
   },
   head() {
     const title = `Import fixture`;

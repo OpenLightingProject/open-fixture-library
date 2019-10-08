@@ -1,7 +1,7 @@
 <template>
   <div class="capability-type-data">
 
-    <labeled-input
+    <LabeledInput
       :formstate="formstate"
       :name="`capability${capability.uuid}-${capability.typeData.effectNameOrPreset}`">
 
@@ -22,7 +22,7 @@
         </template>
       </template>
 
-      <property-input-text
+      <PropertyInputText
         v-if="capability.typeData.effectNameOrPreset === `effectName`"
         ref="effectNameOrPresetInput"
         v-model="capability.typeData.effectName"
@@ -47,74 +47,74 @@
 
       </select>
 
-    </labeled-input>
+    </LabeledInput>
 
-    <labeled-input
+    <LabeledInput
       :formstate="formstate"
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-speed`"
       label="Speed">
-      <editor-proportional-capability-data-switcher
+      <ProportionalCapabilityDataSwitcher
         :capability="capability"
         :formstate="formstate"
         property-name="speed" />
-    </labeled-input>
+    </LabeledInput>
 
-    <labeled-input
+    <LabeledInput
       :formstate="formstate"
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-duration`"
       label="Duration">
-      <editor-proportional-capability-data-switcher
+      <ProportionalCapabilityDataSwitcher
         :capability="capability"
         :formstate="formstate"
         property-name="duration" />
-    </labeled-input>
+    </LabeledInput>
 
-    <labeled-input
+    <LabeledInput
       :formstate="formstate"
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-parameter`"
       label="Parameter">
-      <editor-proportional-capability-data-switcher
+      <ProportionalCapabilityDataSwitcher
         :capability="capability"
         :formstate="formstate"
         property-name="parameter" />
-    </labeled-input>
+    </LabeledInput>
 
-    <labeled-input
+    <LabeledInput
       :formstate="formstate"
       :name="`capability${capability.uuid}-soundControlled`"
       label="Sound-controlled?">
-      <property-input-boolean
+      <PropertyInputBoolean
         v-model="capability.typeData.soundControlled"
         :schema-property="properties.capabilityTypes.Effect.properties.soundControlled"
         :name="`capability${capability.uuid}-soundControlled`"
         label="Effect is sound-controlled" />
-    </labeled-input>
+    </LabeledInput>
 
-    <labeled-input
+    <LabeledInput
       v-if="capability.typeData.soundControlled"
       :formstate="formstate"
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-soundSensitivity`"
       label="Sound sensitivity">
-      <editor-proportional-capability-data-switcher
+      <ProportionalCapabilityDataSwitcher
         :capability="capability"
         :formstate="formstate"
         property-name="soundSensitivity" />
-    </labeled-input>
+    </LabeledInput>
 
-    <labeled-input
+    <LabeledInput
       :formstate="formstate"
       :name="`capability${capability.uuid}-comment`"
       label="Comment">
-      <property-input-text
+      <PropertyInputText
         v-model="capability.typeData.comment"
         :formstate="formstate"
         :name="`capability${capability.uuid}-comment`"
         :schema-property="properties.definitions.nonEmptyString" />
-    </labeled-input>
+    </LabeledInput>
 
   </div>
 </template>
@@ -122,17 +122,17 @@
 <script>
 import schemaProperties from '../../../../lib/schema-properties.js';
 
-import editorProportionalCapabilityDataSwitcher from '../proportional-capability-data-switcher.vue';
-import propertyInputBoolean from '../property-input-boolean.vue';
-import propertyInputText from '../property-input-text.vue';
-import labeledInput from '../../labeled-input.vue';
+import ProportionalCapabilityDataSwitcher from '../ProportionalCapabilityDataSwitcher.vue';
+import PropertyInputBoolean from '../PropertyInputBoolean.vue';
+import PropertyInputText from '../PropertyInputText.vue';
+import LabeledInput from '../../LabeledInput.vue';
 
 export default {
   components: {
-    'editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
-    'property-input-boolean': propertyInputBoolean,
-    'property-input-text': propertyInputText,
-    'labeled-input': labeledInput
+    ProportionalCapabilityDataSwitcher,
+    PropertyInputBoolean,
+    PropertyInputText,
+    LabeledInput
   },
   props: {
     capability: {

@@ -1,67 +1,67 @@
 <template>
   <div class="capability-type-data">
 
-    <labeled-input
+    <LabeledInput
       :formstate="formstate"
       :name="`capability${capability.uuid}-comment`"
       label="Color preset name">
-      <property-input-text
+      <PropertyInputText
         v-model="capability.typeData.comment"
         :formstate="formstate"
         :name="`capability${capability.uuid}-comment`"
         :schema-property="properties.definitions.nonEmptyString" />
-    </labeled-input>
+    </LabeledInput>
 
-    <labeled-input
+    <LabeledInput
       :multiple-inputs="true"
       label="Color hex code(s)">
-      <editor-proportional-capability-data-switcher
+      <ProportionalCapabilityDataSwitcher
         :capability="capability"
         :formstate="formstate"
         property-name="colorsHexString"
         hint="comma-separated list of #rrggbb hex codes" />
-    </labeled-input>
+    </LabeledInput>
 
-    <labeled-input
+    <LabeledInput
       v-if="colorPreview !== null"
       :formstate="formstate"
       :name="`capability${capability.uuid}-colorsHexString`"
       label="Color preview">
-      <ofl-svg
+      <OflSvg
         v-for="color in colorPreview"
         :key="color"
         :colors="[color]"
         type="color-circle" />
-    </labeled-input>
+    </LabeledInput>
 
-    <labeled-input
+    <LabeledInput
       v-if="colorPreviewStart !== null || colorPreviewEnd !== null"
       :formstate="formstate"
       :name="`capability${capability.uuid}-colorsHexString`"
       label="Color preview">
-      <ofl-svg
+      <OflSvg
         v-for="color in colorPreviewStart || []"
         :key="color"
         :colors="[color]"
         type="color-circle" />
       …
-      <ofl-svg
+      <OflSvg
         v-for="color in colorPreviewEnd || []"
         :key="color"
         :colors="[color]"
         type="color-circle" />
-    </labeled-input>
+    </LabeledInput>
 
-    <labeled-input
+    <LabeledInput
       :formstate="formstate"
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-colorTemperature`"
       label="Color temperature">
-      <editor-proportional-capability-data-switcher
+      <ProportionalCapabilityDataSwitcher
         :capability="capability"
         :formstate="formstate"
         property-name="colorTemperature" />
-    </labeled-input>
+    </LabeledInput>
 
   </div>
 </template>
@@ -70,15 +70,15 @@
 import schemaProperties from '../../../../lib/schema-properties.js';
 import { colorsHexStringToArray } from '../../../assets/scripts/editor-utils.js';
 
-import editorProportionalCapabilityDataSwitcher from '../proportional-capability-data-switcher.vue';
-import propertyInputText from '../property-input-text.vue';
-import labeledInput from '../../labeled-input.vue';
+import ProportionalCapabilityDataSwitcher from '../ProportionalCapabilityDataSwitcher.vue';
+import PropertyInputText from '../PropertyInputText.vue';
+import LabeledInput from '../../LabeledInput.vue';
 
 export default {
   components: {
-    'editor-proportional-capability-data-switcher': editorProportionalCapabilityDataSwitcher,
-    'property-input-text': propertyInputText,
-    'labeled-input': labeledInput
+    ProportionalCapabilityDataSwitcher,
+    PropertyInputText,
+    LabeledInput
   },
   props: {
     capability: {

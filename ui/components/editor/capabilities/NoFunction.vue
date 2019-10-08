@@ -1,28 +1,28 @@
 <template>
   <div class="capability-type-data">
-    <labeled-input
+    <LabeledInput
       :formstate="formstate"
       :name="`capability${capability.uuid}-comment`"
       label="Comment">
-      <property-input-text
+      <PropertyInputText
         v-model="capability.typeData.comment"
         :formstate="formstate"
         :name="`capability${capability.uuid}-comment`"
         :schema-property="properties.definitions.nonEmptyString" />
-    </labeled-input>
+    </LabeledInput>
   </div>
 </template>
 
 <script>
 import schemaProperties from '../../../../lib/schema-properties.js';
 
-import propertyInputText from '../property-input-text.vue';
-import labeledInput from '../../labeled-input.vue';
+import PropertyInputText from '../PropertyInputText.vue';
+import LabeledInput from '../../LabeledInput.vue';
 
 export default {
   components: {
-    'property-input-text': propertyInputText,
-    'labeled-input': labeledInput
+    PropertyInputText,
+    LabeledInput
   },
   props: {
     capability: {
