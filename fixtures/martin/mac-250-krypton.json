@@ -809,20 +809,22 @@
     },
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": "50%",
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
       "capability": {
         "type": "Pan",
-        "angleStart": "-270deg",
-        "angleEnd": "270deg"
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": "50%",
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
       "capability": {
         "type": "Tilt",
-        "angleStart": "-128.5deg",
-        "angleEnd": "128.5deg"
+        "angleStart": "0deg",
+        "angleEnd": "257deg"
       }
     },
     "Pan/Tilt Speed": {
