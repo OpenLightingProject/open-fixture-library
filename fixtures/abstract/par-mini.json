@@ -1,0 +1,98 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "par mini",
+  "shortName": "par mini",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Ranaivo Razakanirina"],
+    "createDate": "2019-10-09",
+    "lastModifyDate": "2019-10-09"
+  },
+  "links": {
+    "manual": [
+      "https://open-fixture-library.org"
+    ],
+    "productPage": [
+      "https://open-fixture-library.org"
+    ],
+    "video": [
+      "https://open-fixture-library.org"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Strobe": {
+      "defaultValue": 0,
+      "constant": true,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Not assigned": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Not assigned 2": {
+      "name": "Not assigned",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Cold White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 channels",
+      "shortName": "8ch",
+      "channels": [
+        "Strobe",
+        "Not assigned",
+        "Not assigned 2",
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Cold White"
+      ]
+    }
+  ]
+}
