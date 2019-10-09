@@ -1,0 +1,45 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "16 bit dimmer",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Benjamin Nesme"],
+    "createDate": "2019-10-09",
+    "lastModifyDate": "2019-10-09"
+  },
+  "comment": "Dimmer 16 bit pour controleur LED",
+  "links": {
+    "other": [
+      "https://www.amazon.fr/Channel-Decoder-Controller-Dimmer-DC5-24V/dp/B075FHJM35/ref=sr_1_9?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=dmx+controleur+led&qid=1570610626&sr=8-9"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "1"
+  },
+  "physical": {
+    "bulb": {
+      "colorTemperature": 3200,
+      "lumens": 3000
+    }
+  },
+  "availableChannels": {
+    "Intensity ": {
+      "fineChannelAliases": ["Intensity  fine"],
+      "defaultValue": "0%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Intensity ",
+        "Intensity  fine"
+      ]
+    }
+  ]
+}
