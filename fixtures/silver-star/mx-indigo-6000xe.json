@@ -1,0 +1,130 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MX-Indigo 6000XE ",
+  "shortName": "YG-LED621XWA",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Khors"],
+    "createDate": "2019-10-11",
+    "lastModifyDate": "2019-10-11"
+  },
+  "comment": "To Do",
+  "links": {
+    "manual": [
+      "http://file001.shop-pro.jp/PA01017/727/silverstar/ss_indg6000xe_mnl.pdf"
+    ],
+    "productPage": [
+      "http://www.show-light.ru/svetovoe-oborudovanie/svetodiodnye-oborydovanie-led/pribory-polnogo-vrashcheniya-led/silver-star-yg-led621xwa-mx-indigo-6000-xe-povorotnaya-golova-detail"
+    ],
+    "video": [
+      "https://youtu.be/5PMrgbFYnJo"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "170deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "Position Mspeed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "ColourMix": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "120Hz"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Control": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Extended",
+      "shortName": "621_15ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Position Mspeed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "ColourMix",
+        "Intensity",
+        "Strobe",
+        "Zoom",
+        "Control"
+      ]
+    }
+  ]
+}
