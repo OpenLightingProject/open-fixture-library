@@ -1,0 +1,879 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Illusion Dotz 4.4",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Dávid Czirók", "István Király"],
+    "createDate": "2019-10-12",
+    "lastModifyDate": "2019-10-12",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2019-10-12",
+      "comment": "created by Q Light Controller Plus (version 4.12.1)"
+    }
+  },
+  "physical": {
+    "dimensions": [492, 467, 393],
+    "weight": 16.5,
+    "power": 468,
+    "DMXconnector": "3-pin and 5-pin",
+    "lens": {
+      "name": "Other",
+      "degreesMinMax": [15, 15]
+    }
+  },
+  "availableChannels": {
+    "Pan Movement 8bit": {
+      "fineChannelAliases": ["Pan Fine 16 bit"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Tilt Movement 8 bit": {
+      "fineChannelAliases": ["Tilt Fine 16 bit"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg",
+        "comment": "Tilt Movement 8bit"
+      }
+    },
+    "RED 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "0-100"
+      }
+    },
+    "GREEN 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "0-100"
+      }
+    },
+    "BLUE 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "0-100"
+      }
+    },
+    "RED 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "0-100"
+      }
+    },
+    "GREEN 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "0-100"
+      }
+    },
+    "BLUE 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "0-100"
+      }
+    },
+    "RED 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "0-100"
+      }
+    },
+    "GREEN 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "0-100"
+      }
+    },
+    "BLUE 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "0-100"
+      }
+    },
+    "RED 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "0-100"
+      }
+    },
+    "GREEN 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "0-100"
+      }
+    },
+    "BLUE 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "0-100"
+      }
+    },
+    "RED5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "0-100"
+      }
+    },
+    "GREEN 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "0-100"
+      }
+    },
+    "BLUE5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "0-100"
+      }
+    },
+    "RED 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "0-100"
+      }
+    },
+    "GREEN 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "0-100"
+      }
+    },
+    "BLUE 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "0-100"
+      }
+    },
+    "RED 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "0-100"
+      }
+    },
+    "GREEN 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "0-100"
+      }
+    },
+    "BLUE 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "0-100"
+      }
+    },
+    "RED 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "0-100"
+      }
+    },
+    "GREEN 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "0-100"
+      }
+    },
+    "BLUE 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "0-100"
+      }
+    },
+    "RED 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "0-100"
+      }
+    },
+    "GREEN 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "0-100"
+      }
+    },
+    "BLUE 9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "0-100"
+      }
+    },
+    "RED 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "0-100"
+      }
+    },
+    "GREEN 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "0-100"
+      }
+    },
+    "BLUE 10": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "0-100"
+      }
+    },
+    "RED11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "0-100"
+      }
+    },
+    "GREEN 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "0-100"
+      }
+    },
+    "BLUE 11": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "0-100"
+      }
+    },
+    "RED 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "0-100"
+      }
+    },
+    "GREEN 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "0-100"
+      }
+    },
+    "BLUE 12": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "0-100"
+      }
+    },
+    "RED 13": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "0-100"
+      }
+    },
+    "GREEN 13": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "0-100"
+      }
+    },
+    "BLUE 13": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "0-100"
+      }
+    },
+    "RED 14": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "0-100"
+      }
+    },
+    "GREEN 14": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "0-100"
+      }
+    },
+    "BLUE 14": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "0-100"
+      }
+    },
+    "RED 15": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "0-100"
+      }
+    },
+    "GREEN 15": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "0-100"
+      }
+    },
+    "BLUE 15": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "0-100"
+      }
+    },
+    "RED 16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "0-100"
+      }
+    },
+    "GREEN 16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "0-100"
+      }
+    },
+    "BLUE 16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "0-100"
+      }
+    },
+    "SHUTT & STROB": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "LED'S OFF"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "LED'S ON"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "STROB"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "LED'S ON"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "PLULS EFFEC"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "LED'S ON"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "STROB"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "LED'S ON"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "0-100"
+      }
+    },
+    "Dimmer Curves": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Intensity",
+          "comment": "Standard"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Intensity",
+          "comment": "Stage"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Intensity",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Intensity",
+          "comment": "Architectural"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Intensity",
+          "comment": "Theatre"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "Intensity",
+          "comment": "Deffult To Unit Settings"
+        }
+      ]
+    },
+    "Auto Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Maintenance",
+          "comment": "P1"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Maintenance",
+          "comment": "P2"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Maintenance",
+          "comment": "P3"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Maintenance",
+          "comment": "P4"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Maintenance",
+          "comment": "P5"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Maintenance",
+          "comment": "P6"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Maintenance",
+          "comment": "P7"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Maintenance",
+          "comment": "P8"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Maintenance",
+          "comment": "P9"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "Maintenance",
+          "comment": "P10"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "Maintenance",
+          "comment": "P11"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "Maintenance",
+          "comment": "P12"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "Maintenance",
+          "comment": "P13"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "Maintenance",
+          "comment": "P14"
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "Maintenance",
+          "comment": "P15"
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "Maintenance",
+          "comment": "P16"
+        },
+        {
+          "dmxRange": [161, 170],
+          "type": "Maintenance",
+          "comment": "P17"
+        },
+        {
+          "dmxRange": [171, 180],
+          "type": "Maintenance",
+          "comment": "P18"
+        },
+        {
+          "dmxRange": [181, 190],
+          "type": "Maintenance",
+          "comment": "P19"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "Maintenance",
+          "comment": "P20"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "Maintenance",
+          "comment": "P21"
+        },
+        {
+          "dmxRange": [211, 220],
+          "type": "Maintenance",
+          "comment": "P22"
+        },
+        {
+          "dmxRange": [221, 230],
+          "type": "Maintenance",
+          "comment": "P23"
+        },
+        {
+          "dmxRange": [231, 240],
+          "type": "Maintenance",
+          "comment": "P24"
+        },
+        {
+          "dmxRange": [241, 250],
+          "type": "Maintenance",
+          "comment": "P25"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Maintenance",
+          "comment": "Gardient effect"
+        }
+      ]
+    },
+    "Program speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pan/Tilt Movment Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 225],
+          "type": "PanTiltSpeed",
+          "comment": "Max to min speed"
+        },
+        {
+          "dmxRange": [226, 235],
+          "type": "PanTiltSpeed",
+          "comment": "blackout by movement"
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Lamp on/off,reset & programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 79],
+          "type": "Maintenance",
+          "comment": "Normal"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Maintenance",
+          "comment": "all motor reset"
+        },
+        {
+          "dmxRange": [85, 96],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [97, 99],
+          "type": "Maintenance",
+          "comment": "other motor reset"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Maintenance",
+          "comment": "internal program 1"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Maintenance",
+          "comment": "internal program 2"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Maintenance",
+          "comment": "internal program 3"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "Maintenance",
+          "comment": "internal program 4"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "Maintenance",
+          "comment": "internal program 5"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "Maintenance",
+          "comment": "internal program 6"
+        },
+        {
+          "dmxRange": [220, 239],
+          "type": "Maintenance",
+          "comment": "internal program 7"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Maintenance",
+          "comment": "sound active program"
+        }
+      ]
+    },
+    "ALL RED": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "0-100"
+      }
+    },
+    "ALL GREEN": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "0-100"
+      }
+    },
+    "ALL BLUE": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "0-100"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "59 channel",
+      "channels": [
+        "Pan Movement 8bit",
+        "Pan Fine 16 bit",
+        "Tilt Movement 8 bit",
+        "Tilt Fine 16 bit",
+        "RED 1",
+        "GREEN 1",
+        "BLUE 1",
+        "RED 2",
+        "GREEN 2",
+        "BLUE 2",
+        "RED 3",
+        "GREEN 3",
+        "BLUE 3",
+        "RED 4",
+        "GREEN 4",
+        "BLUE 4",
+        "RED5",
+        "GREEN 5",
+        "BLUE5",
+        "RED 6",
+        "GREEN 6",
+        "BLUE 6",
+        "RED 7",
+        "GREEN 7",
+        "BLUE 7",
+        "RED 8",
+        "GREEN 8",
+        "BLUE 8",
+        "RED 9",
+        "GREEN 9",
+        "BLUE 9",
+        "RED 10",
+        "GREEN 10",
+        "BLUE 10",
+        "RED11",
+        "GREEN 11",
+        "BLUE 11",
+        "RED 12",
+        "GREEN 12",
+        "BLUE 12",
+        "RED 13",
+        "GREEN 13",
+        "BLUE 13",
+        "RED 14",
+        "GREEN 14",
+        "BLUE 14",
+        "RED 15",
+        "GREEN 15",
+        "BLUE 15",
+        "RED 16",
+        "GREEN 16",
+        "BLUE 16",
+        "SHUTT & STROB",
+        "Dimmer",
+        "Dimmer Curves",
+        "Auto Programs",
+        "Program speed",
+        "Pan/Tilt Movment Speed",
+        "Lamp on/off,reset & programs"
+      ]
+    },
+    {
+      "name": "14 channel",
+      "channels": [
+        "Pan Movement 8bit",
+        "Pan Fine 16 bit",
+        "Tilt Movement 8 bit",
+        "Tilt Fine 16 bit",
+        "ALL RED",
+        "ALL GREEN",
+        "ALL BLUE",
+        "SHUTT & STROB",
+        "Dimmer",
+        "Dimmer Curves",
+        "Auto Programs",
+        "Program speed",
+        "Pan/Tilt Movment Speed",
+        "Lamp on/off,reset & programs"
+      ]
+    },
+    {
+      "name": "12 channel",
+      "channels": [
+        "Pan Movement 8bit",
+        "Tilt Movement 8 bit",
+        "ALL RED",
+        "ALL GREEN",
+        "ALL BLUE",
+        "SHUTT & STROB",
+        "Dimmer",
+        "Dimmer Curves",
+        "Auto Programs",
+        "Program speed",
+        "Pan/Tilt Movment Speed",
+        "Lamp on/off,reset & programs"
+      ]
+    }
+  ]
+}
