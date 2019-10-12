@@ -1,0 +1,106 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ColorSource Par",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Joseph Gates"],
+    "createDate": "2019-10-12",
+    "lastModifyDate": "2019-10-12"
+  },
+  "links": {
+    "manual": [
+      "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737484145"
+    ],
+    "productPage": [
+      "https://www.etcconnect.com/Products/Lighting-Fixtures/ColorSource-PAR/Features.aspx?utm_campaign=ColorSource"
+    ],
+    "video": [
+      "https://youtu.be/8yZygyTDANU"
+    ]
+  },
+  "physical": {
+    "dimensions": [203, 310, 240],
+    "weight": 3.77,
+    "power": 90,
+    "bulb": {
+      "type": "LED",
+      "lumens": 2749
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "60Hz"
+      }
+    },
+    "Lime": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Lime"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5ch-Default",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "RGB",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "1ch",
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "Direct",
+      "shortName": "Dir",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Lime",
+        "Strobe"
+      ]
+    }
+  ]
+}
