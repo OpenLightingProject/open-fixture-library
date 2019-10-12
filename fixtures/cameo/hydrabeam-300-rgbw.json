@@ -1,19 +1,16 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Hydrabeam 300 RGBW",
-  "shortName": "CLHB300RGBW",
-  "categories": ["Moving Head", "Color Changer"],
+  "categories": ["Moving Head"],
   "meta": {
-    "authors": ["Flo Edelmann"],
-    "createDate": "2017-07-24",
-    "lastModifyDate": "2018-09-04"
-  },
-  "links": {
-    "manual": ["https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLHB300W/CLHB300_CAMEO_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.PDF"],
-    "video": [
-      "https://www.youtube.com/watch?v=_tO2vB15ieE",
-      "https://www.youtube.com/watch?v=OY2TEMiPsCY"
-    ]
+    "authors": ["TJ", "István Király"],
+    "createDate": "2019-10-12",
+    "lastModifyDate": "2019-10-12",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2019-10-12",
+      "comment": "created by Q Light Controller Plus (version 4.12.2)"
+    }
   },
   "physical": {
     "dimensions": [380, 240, 380],
@@ -24,778 +21,361 @@
       "type": "LED"
     },
     "lens": {
-      "degreesMinMax": [4.5, 4.5]
+      "name": "Other",
+      "degreesMinMax": [0, 4.5]
     }
   },
-  "matrix": {
-    "pixelKeys": [
-      [
-        [null, "1",  null],
-        ["2",  null, "3" ]
-      ]
-    ]
-  },
   "availableChannels": {
-    "Master Dimmer": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Headspeed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
       "capability": {
         "type": "Intensity"
       }
     },
     "Strobe": {
       "defaultValue": 0,
-      "highlightValue": 200,
-      "capabilities": [
-        {
-          "dmxRange": [0, 10],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [11, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        }
-      ]
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
     },
-    "Show mode": {
+    "Color macro": {
       "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 7],
-          "type": "NoFunction",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [8, 22],
-          "type": "Effect",
-          "effectName": "Show mode 1",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [23, 37],
-          "type": "Effect",
-          "effectName": "Show mode 2",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [38, 52],
-          "type": "Effect",
-          "effectName": "Show mode 3",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [53, 67],
-          "type": "Effect",
-          "effectName": "Show mode 4",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [68, 82],
-          "type": "Effect",
-          "effectName": "Show mode 5",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [83, 97],
-          "type": "Effect",
-          "effectName": "Show mode 6",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [98, 112],
-          "type": "Effect",
-          "effectName": "Show mode 7",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [113, 127],
-          "type": "Effect",
-          "effectName": "Show mode 8",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [128, 142],
-          "type": "Effect",
-          "effectName": "Show mode 9",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [143, 157],
-          "type": "Effect",
-          "effectName": "Show mode 10",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [158, 172],
-          "type": "Effect",
-          "effectName": "Show mode 11",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [173, 187],
-          "type": "Effect",
-          "effectName": "Show mode 12",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [188, 202],
-          "type": "Effect",
-          "effectName": "Show mode 13",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [203, 217],
-          "type": "Effect",
-          "effectName": "Show mode 14",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [218, 232],
-          "type": "Effect",
-          "effectName": "Show mode 15",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [233, 247],
-          "type": "Effect",
-          "effectName": "Show mode 16",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Show mode speed"
-          }
-        },
-        {
-          "dmxRange": [248, 255],
-          "type": "Effect",
-          "effectName": "Sound Control",
-          "soundControlled": true,
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity": "Sound sensitivity"
-          }
-        }
-      ]
+      "capability": {
+        "type": "ColorPreset",
+        "helpWanted": "Which color can be selected at which DMX values?"
+      }
+    },
+    "Mode 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
     },
     "Show mode speed": {
+      "defaultValue": 0,
       "capability": {
-        "type": "EffectSpeed",
+        "type": "PanContinuous",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
     },
-    "Sound sensitivity": {
-      "capability": {
-        "type": "SoundSensitivity",
-        "soundSensitivityStart": "low",
-        "soundSensitivityEnd": "high"
-      }
-    },
-    "Light control": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 30],
-          "type": "Effect",
-          "effectName": "Auto color change"
-        },
-        {
-          "dmxRange": [31, 45],
-          "type": "ColorPreset",
-          "comment": "Red",
-          "colors": ["#ff0000"]
-        },
-        {
-          "dmxRange": [46, 60],
-          "type": "ColorPreset",
-          "comment": "Green",
-          "colors": ["#00ff00"]
-        },
-        {
-          "dmxRange": [61, 75],
-          "type": "ColorPreset",
-          "comment": "Blue",
-          "colors": ["#0000ff"]
-        },
-        {
-          "dmxRange": [76, 90],
-          "type": "ColorPreset",
-          "comment": "White",
-          "colors": ["#ffffff"]
-        },
-        {
-          "dmxRange": [91, 105],
-          "type": "ColorPreset",
-          "comment": "Red + Green",
-          "colors": ["#ffff00"]
-        },
-        {
-          "dmxRange": [106, 120],
-          "type": "ColorPreset",
-          "comment": "Red + Blue",
-          "colors": ["#ff00ff"]
-        },
-        {
-          "dmxRange": [121, 135],
-          "type": "ColorPreset",
-          "comment": "Red + White",
-          "colors": ["#ff8080"]
-        },
-        {
-          "dmxRange": [136, 150],
-          "type": "ColorPreset",
-          "comment": "Green + Blue",
-          "colors": ["#00ffff"]
-        },
-        {
-          "dmxRange": [151, 165],
-          "type": "ColorPreset",
-          "comment": "Green + White",
-          "colors": ["#80ff80"]
-        },
-        {
-          "dmxRange": [166, 180],
-          "type": "ColorPreset",
-          "comment": "Blue + White",
-          "colors": ["#8080ff"]
-        },
-        {
-          "dmxRange": [181, 195],
-          "type": "ColorPreset",
-          "comment": "Red + Green + Blue",
-          "colors": ["#ffffff"]
-        },
-        {
-          "dmxRange": [196, 210],
-          "type": "ColorPreset",
-          "comment": "Red + Green + White",
-          "colors": ["#ffff80"]
-        },
-        {
-          "dmxRange": [211, 225],
-          "type": "ColorPreset",
-          "comment": "Red + Blue + White",
-          "colors": ["#ff80ff"]
-        },
-        {
-          "dmxRange": [226, 240],
-          "type": "ColorPreset",
-          "comment": "Green + Blue + White",
-          "colors": ["#80ffff"]
-        },
-        {
-          "dmxRange": [241, 255],
-          "type": "ColorPreset",
-          "comment": "Red + Green + Blue + White",
-          "colors": ["#ffffff"]
-        }
-      ]
-    },
-    "Auto color change speed": {
-      "capability": {
-        "type": "EffectSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
-      }
-    },
-    "Master Pan": {
-      "fineChannelAliases": ["Master Pan fine"],
-      "defaultValue": "50%",
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "540deg"
-      }
-    },
-    "Master Tilt": {
-      "fineChannelAliases": ["Master Tilt fine"],
-      "defaultValue": "50%",
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "270deg"
-      }
-    },
-    "Master Red": {
+    "Red": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Master Green": {
+    "Green": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Master Blue": {
+    "Blue": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "Master White": {
+    "White": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "Head speed": {
+    "Pan 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Pan fine 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset PositionPanFine."
+      }
+    },
+    "Tilt 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Tilt fine 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset PositionTiltFine."
+      }
+    },
+    "Headspeed 1": {
+      "defaultValue": 0,
       "capability": {
         "type": "PanTiltSpeed",
         "speedStart": "fast",
         "speedEnd": "slow"
       }
     },
-    "Head Speed 1": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 10],
-          "type": "PanTiltSpeed",
-          "speed": "slow"
-        },
-        {
-          "dmxRange": [11, 255],
-          "type": "PanTiltSpeed",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        }
-      ]
-    },
-    "Sound mode / Reset": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 199],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [200, 209],
-          "type": "Maintenance",
-          "comment": "Reset"
-        },
-        {
-          "dmxRange": [210, 240],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [241, 255],
-          "type": "Effect",
-          "effectName": "Sound Control",
-          "soundControlled": true
-        }
-      ]
-    }
-  },
-  "templateChannels": {
-    "Pan $pixelKey": {
-      "fineChannelAliases": ["Pan $pixelKey fine"],
-      "defaultValue": "50%",
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "540deg"
-      }
-    },
-    "Tilt $pixelKey": {
-      "fineChannelAliases": ["Tilt $pixelKey fine"],
-      "defaultValue": "50%",
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "270deg"
-      }
-    },
-    "Dimmer $pixelKey": {
+    "Dimmer 1": {
+      "defaultValue": 0,
       "capability": {
         "type": "Intensity"
       }
     },
-    "Head Speed $pixelKey simple": {
-      "name": "Head Speed $pixelKey",
+    "Strobe 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Color macro 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "helpWanted": "Which color can be selected at which DMX values?"
+      }
+    },
+    "Mode 1 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Show mode speed 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanContinuous",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Pan 1 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Pan fine 1 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset PositionPanFine."
+      }
+    },
+    "Tilt 1 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Tilt fine 1 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset PositionTiltFine."
+      }
+    },
+    "Headspeed 1 1": {
+      "defaultValue": 0,
       "capability": {
         "type": "PanTiltSpeed",
         "speedStart": "fast",
         "speedEnd": "slow"
       }
     },
-    "Head Speed $pixelKey": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 10],
-          "type": "Maintenance",
-          "comment": "Use Head Speed 1"
-        },
-        {
-          "dmxRange": [11, 255],
-          "type": "PanTiltSpeed",
-          "speedStart": "fast",
-          "speedEnd": "slow"
-        }
-      ]
-    },
-    "Strobe $pixelKey": {
+    "Dimmer 1 1": {
       "defaultValue": 0,
-      "highlightValue": 200,
-      "capabilities": [
-        {
-          "dmxRange": [0, 10],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [11, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        }
-      ]
+      "capability": {
+        "type": "Intensity"
+      }
     },
-    "Color $pixelKey": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 30],
-          "type": "NoFunction",
-          "comment": "Use master color dimmers"
-        },
-        {
-          "dmxRange": [31, 45],
-          "type": "ColorPreset",
-          "comment": "Red",
-          "colors": ["#ff0000"]
-        },
-        {
-          "dmxRange": [46, 60],
-          "type": "ColorPreset",
-          "comment": "Green",
-          "colors": ["#00ff00"]
-        },
-        {
-          "dmxRange": [61, 75],
-          "type": "ColorPreset",
-          "comment": "Blue",
-          "colors": ["#0000ff"]
-        },
-        {
-          "dmxRange": [76, 90],
-          "type": "ColorPreset",
-          "comment": "White",
-          "colors": ["#ffffff"]
-        },
-        {
-          "dmxRange": [91, 105],
-          "type": "ColorPreset",
-          "comment": "Red + Green",
-          "colors": ["#ffff00"]
-        },
-        {
-          "dmxRange": [106, 120],
-          "type": "ColorPreset",
-          "comment": "Red + Blue",
-          "colors": ["#ff00ff"]
-        },
-        {
-          "dmxRange": [121, 135],
-          "type": "ColorPreset",
-          "comment": "Red + White",
-          "colors": ["#ff8080"]
-        },
-        {
-          "dmxRange": [136, 150],
-          "type": "ColorPreset",
-          "comment": "Green + Blue",
-          "colors": ["#00ffff"]
-        },
-        {
-          "dmxRange": [151, 165],
-          "type": "ColorPreset",
-          "comment": "Green + White",
-          "colors": ["#80ff80"]
-        },
-        {
-          "dmxRange": [166, 180],
-          "type": "ColorPreset",
-          "comment": "Blue + White",
-          "colors": ["#8080ff"]
-        },
-        {
-          "dmxRange": [181, 195],
-          "type": "ColorPreset",
-          "comment": "Red + Green + Blue",
-          "colors": ["#ffffff"]
-        },
-        {
-          "dmxRange": [196, 210],
-          "type": "ColorPreset",
-          "comment": "Red + Green + White",
-          "colors": ["#ffff80"]
-        },
-        {
-          "dmxRange": [211, 225],
-          "type": "ColorPreset",
-          "comment": "Red + Blue + White",
-          "colors": ["#ff80ff"]
-        },
-        {
-          "dmxRange": [226, 240],
-          "type": "ColorPreset",
-          "comment": "Green + Blue + White",
-          "colors": ["#80ffff"]
-        },
-        {
-          "dmxRange": [241, 255],
-          "type": "ColorPreset",
-          "comment": "Red + Green + Blue + White",
-          "colors": ["#ffffff"]
-        }
-      ]
+    "Strobe 1 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
     },
-    "Red $pixelKey": {
+    "Color macro 1 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorPreset",
+        "helpWanted": "Which color can be selected at which DMX values?"
+      }
+    },
+    "Mode 1 1 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Show mode speed 1 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanContinuous",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red 1 1": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green $pixelKey": {
+    "Green 1 1": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue $pixelKey": {
+    "Blue 1 1": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "White $pixelKey": {
+    "White 1 1": {
+      "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
-      }
-    },
-    "Mode $pixelKey": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 7],
-          "type": "NoFunction",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
-          }
-        },
-        {
-          "dmxRange": [8, 30],
-          "type": "Effect",
-          "effectName": "Show mode 1",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
-          }
-        },
-        {
-          "dmxRange": [31, 53],
-          "type": "Effect",
-          "effectName": "Show mode 2",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
-          }
-        },
-        {
-          "dmxRange": [54, 76],
-          "type": "Effect",
-          "effectName": "Show mode 3",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
-          }
-        },
-        {
-          "dmxRange": [77, 99],
-          "type": "Effect",
-          "effectName": "Show mode 4",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
-          }
-        },
-        {
-          "dmxRange": [100, 122],
-          "type": "Effect",
-          "effectName": "Sound control",
-          "soundControlled": true,
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity $pixelKey": "Sound sensitivity $pixelKey"
-          }
-        },
-        {
-          "dmxRange": [123, 199],
-          "type": "NoFunction",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
-          }
-        },
-        {
-          "dmxRange": [200, 224],
-          "type": "Maintenance",
-          "comment": "reset",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
-          }
-        },
-        {
-          "dmxRange": [225, 255],
-          "type": "NoFunction",
-          "switchChannels": {
-            "Show mode speed / Sound sensitivity $pixelKey": "Show mode speed $pixelKey"
-          }
-        }
-      ]
-    },
-    "Show mode speed $pixelKey": {
-      "capability": {
-        "type": "EffectSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
-      }
-    },
-    "Sound sensitivity $pixelKey": {
-      "capability": {
-        "type": "SoundSensitivity",
-        "soundSensitivityStart": "low",
-        "soundSensitivityEnd": "high"
       }
     }
   },
   "modes": [
     {
-      "name": "6-channel",
-      "shortName": "6ch",
+      "name": "42-channel mode",
       "channels": [
-        "Master Dimmer",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Headspeed",
+        "Dimmer",
         "Strobe",
-        "Show mode",
-        "Show mode speed / Sound sensitivity",
-        "Light control",
-        "Auto color change speed"
-      ]
-    },
-    {
-      "name": "10-channel",
-      "shortName": "10ch",
-      "channels": [
-        "Master Pan",
-        "Master Tilt",
-        "Master Dimmer",
-        "Strobe",
-        "Show mode",
-        "Show mode speed / Sound sensitivity",
-        "Light control",
-        "Auto color change speed",
-        "Master Pan fine",
-        "Master Tilt fine"
-      ]
-    },
-    {
-      "name": "16-channel",
-      "shortName": "16ch",
-      "channels": [
-        "Master Dimmer",
-        "Strobe",
-        "Master Red",
-        "Master Green",
-        "Master Blue",
-        "Master White",
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Pan $pixelKey",
-            "Tilt $pixelKey",
-            "Dimmer $pixelKey"
-          ]
-        },
-        "Head speed"
-      ]
-    },
-    {
-      "name": "26-channel",
-      "shortName": "26ch",
-      "channels": [
-        "Master Dimmer",
-        "Strobe",
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Pan $pixelKey",
-            "Pan $pixelKey fine",
-            "Tilt $pixelKey",
-            "Tilt $pixelKey fine",
-            "Head Speed $pixelKey",
-            "Color $pixelKey"
-          ]
-        },
-        "Sound mode / Reset",
-        "Sound sensitivity",
-        "Master Red",
-        "Master Green",
-        "Master Blue",
-        "Master White"
-      ]
-    },
-    {
-      "name": "42-channel",
-      "shortName": "42ch",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Pan $pixelKey",
-            "Pan $pixelKey fine",
-            "Tilt $pixelKey",
-            "Tilt $pixelKey fine",
-            "Head Speed $pixelKey simple",
-            "Dimmer $pixelKey",
-            "Strobe $pixelKey",
-            "Color $pixelKey",
-            "Mode $pixelKey",
-            "Show mode speed / Sound sensitivity $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "White $pixelKey"
-          ]
-        }
+        "Color macro",
+        "Mode 1",
+        "Show mode speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Pan 1",
+        "Pan fine 1",
+        "Tilt 1",
+        "Tilt fine 1",
+        "Headspeed 1",
+        "Dimmer 1",
+        "Strobe 1",
+        "Color macro 1",
+        "Mode 1 1",
+        "Show mode speed 1",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1",
+        "Pan 1 1",
+        "Pan fine 1 1",
+        "Tilt 1 1",
+        "Tilt fine 1 1",
+        "Headspeed 1 1",
+        "Dimmer 1 1",
+        "Strobe 1 1",
+        "Color macro 1 1",
+        "Mode 1 1 1",
+        "Show mode speed 1 1",
+        "Red 1 1",
+        "Green 1 1",
+        "Blue 1 1",
+        "White 1 1"
       ]
     }
   ]
