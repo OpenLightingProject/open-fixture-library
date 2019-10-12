@@ -1,0 +1,127 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Cuepix Blinder WW2",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["Dávid Czirók", "István Király"],
+    "createDate": "2019-10-12",
+    "lastModifyDate": "2019-10-12",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2019-10-12",
+      "comment": "created by Q Light Controller Plus (version 4.12.1)"
+    }
+  },
+  "physical": {
+    "dimensions": [260, 182, 478],
+    "weight": 5.1,
+    "power": 229,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3200
+    },
+    "lens": {
+      "name": "Other"
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "0-100"
+      }
+    },
+    "Left cob module dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "0-100"
+      }
+    },
+    "Right cob module dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "comment": "0-100"
+      }
+    },
+    "Flash/strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimming curve modes": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 41],
+          "type": "Maintenance",
+          "comment": "stamdard"
+        },
+        {
+          "dmxRange": [42, 84],
+          "type": "Maintenance",
+          "comment": "stage"
+        },
+        {
+          "dmxRange": [85, 127],
+          "type": "Maintenance",
+          "comment": "tv"
+        },
+        {
+          "dmxRange": [128, 170],
+          "type": "Maintenance",
+          "comment": "architectural"
+        },
+        {
+          "dmxRange": [171, 213],
+          "type": "Maintenance",
+          "comment": "theatre"
+        },
+        {
+          "dmxRange": [214, 255],
+          "type": "Maintenance",
+          "comment": "Default to unit setting"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1 ch",
+      "channels": [
+        "Master Dimmer"
+      ]
+    },
+    {
+      "name": "2 ch",
+      "channels": [
+        "Master Dimmer",
+        "Dimming curve modes"
+      ]
+    },
+    {
+      "name": "3 ch",
+      "channels": [
+        "Master Dimmer",
+        "Flash/strobe",
+        "Dimming curve modes"
+      ]
+    },
+    {
+      "name": "4 ch",
+      "channels": [
+        "Left cob module dimmer",
+        "Right cob module dimmer",
+        "Flash/strobe",
+        "Dimming curve modes"
+      ]
+    }
+  ]
+}
