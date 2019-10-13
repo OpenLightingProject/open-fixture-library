@@ -32,6 +32,13 @@
     }
   },
   "availableChannels": {
+    "All Colors": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "R+G+B+W+A"
+      }
+    },
     "Red": {
       "capability": {
         "type": "ColorIntensity",
@@ -73,6 +80,48 @@
         "type": "Intensity"
       }
     },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "3200K",
+        "colorTemperatureEnd": "10000K"
+      }
+    },
+    "Simple Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Dimmer / Chase / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 190],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [201, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Intensity",
+          "brightness": "100%"
+        }
+      ]
+    },
     "Strobe": {
       "capabilities": [
         {
@@ -99,9 +148,114 @@
           "speedEnd": "fast"
         }
       ]
+    },
+    "Extended Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [8, 37],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [38, 67],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [68, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 247],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "ColorPreset",
+          "helpWanted": "Which color can be selected at which DMX values?"
+        }
+      ]
     }
   },
   "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "All Colors"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "All Colors",
+        "UV"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "All Colors",
+        "UV",
+        "Simple Strobe"
+      ]
+    },
+    {
+      "name": "3-channel+",
+      "shortName": "3ch+",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "UV"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer / Chase / Strobe"
+      ]
+    },
     {
       "name": "8-channel",
       "shortName": "8ch",
@@ -114,6 +268,36 @@
         "UV",
         "Dimmer",
         "Strobe"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Dimmer",
+        "Strobe",
+        "Color Presets"
+      ]
+    },
+    {
+      "name": "9-channel+",
+      "shortName": "9ch+",
+      "channels": [
+        "Dimmer",
+        "Extended Strobe",
+        "Programs",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
       ]
     }
   ]
