@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "BT-STAGEPAR 6in1",
   "shortName": "BT-STAGEPAR6in1",
-  "categories": ["Other"],
+  "categories": ["Color Changer"],
   "meta": {
     "authors": ["josequioss"],
     "createDate": "2019-10-01",
@@ -10,17 +10,26 @@
   },
   "links": {
     "manual": [
-      "https://briteq-lighting.com/fr/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1517492038.pdf"
+      "https://briteq-lighting.com/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1517492038.pdf"
     ],
     "productPage": [
-      "https://briteq-lighting.com/fr/bt-stagepar-6in1"
+      "https://briteq-lighting.com/bt-stagepar-6in1"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=dZgixI0Cq5Q"
     ]
   },
   "physical": {
     "dimensions": [300, 275, 300],
-    "weight": 2.5,
+    "weight": 3.5,
     "power": 120,
-    "DMXconnector": "3-pin"
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12× 12W 6in1 LEDs (Red, Green, Blue, White, Amber, UV)"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
   },
   "availableChannels": {
     "Rojo": {
