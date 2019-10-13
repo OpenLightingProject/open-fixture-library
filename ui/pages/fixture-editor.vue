@@ -258,33 +258,33 @@ import {
 import manufacturers from '../../fixtures/manufacturers.json';
 import schemaProperties from '../../lib/schema-properties.js';
 
+import EditorCategoryChooser from '../components/editor/EditorCategoryChooser.vue';
+import EditorChannelDialog from '../components/editor/EditorChannelDialog.vue';
+import EditorChooseChannelEditModeDialog from '../components/editor/EditorChooseChannelEditModeDialog.vue';
+import EditorLinks from '../components/editor/EditorLinks.vue';
+import EditorMode from '../components/editor/EditorMode.vue';
+import EditorPhysical from '../components/editor/EditorPhysical.vue';
+import EditorRestoreDialog from '../components/editor/EditorRestoreDialog.vue';
+import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';
 import LabeledInput from '../components/LabeledInput.vue';
 import PropertyInputNumber from '../components/PropertyInputNumber.vue';
 import PropertyInputText from '../components/PropertyInputText.vue';
 import PropertyInputTextarea from '../components/PropertyInputTextarea.vue';
-import EditorCategoryChooser from '../components/editor/EditorCategoryChooser.vue';
-import EditorLinks from '../components/editor/EditorLinks.vue';
-import EditorPhysical from '../components/editor/EditorPhysical.vue';
-import EditorMode from '../components/editor/EditorMode.vue';
-import EditorChannelDialog from '../components/editor/EditorChannelDialog.vue';
-import EditorChooseChannelEditModeDialog from '../components/editor/EditorChooseChannelEditModeDialog.vue';
-import EditorRestoreDialog from '../components/editor/EditorRestoreDialog.vue';
-import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';
 
 export default {
   components: {
+    EditorCategoryChooser,
+    EditorChannelDialog,
+    EditorChooseChannelEditModeDialog,
+    EditorLinks,
+    EditorMode,
+    EditorPhysical,
+    EditorRestoreDialog,
+    EditorSubmitDialog,
     LabeledInput,
     PropertyInputNumber,
     PropertyInputText,
-    PropertyInputTextarea,
-    EditorCategoryChooser,
-    EditorPhysical,
-    EditorLinks,
-    EditorMode,
-    EditorChannelDialog,
-    EditorChooseChannelEditModeDialog,
-    EditorRestoreDialog,
-    EditorSubmitDialog
+    PropertyInputTextarea
   },
   head() {
     const title = `Fixture Editor`;

@@ -80,12 +80,11 @@
 }
 </style>
 
-
 <script>
-import LabeledValue from '../LabeledValue.vue';
-
 import Matrix from '../../../lib/model/Matrix.js';
 import Physical from '../../../lib/model/Physical.js';
+
+import LabeledValue from '../LabeledValue.vue';
 
 export default {
   components: {

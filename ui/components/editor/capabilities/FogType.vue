@@ -37,13 +37,13 @@
 <script>
 import schemaProperties from '../../../../lib/schema-properties.js';
 
-import PropertyInputText from '../../PropertyInputText.vue';
 import LabeledInput from '../../LabeledInput.vue';
+import PropertyInputText from '../../PropertyInputText.vue';
 
 export default {
   components: {
-    PropertyInputText,
-    LabeledInput
+    LabeledInput,
+    PropertyInputText
   },
   props: {
     capability: {

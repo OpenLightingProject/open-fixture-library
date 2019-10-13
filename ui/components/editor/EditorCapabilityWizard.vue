@@ -129,13 +129,13 @@ import {
   clone
 } from "../../assets/scripts/editor-utils.js";
 
-import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
 import LabeledValue from '../LabeledValue.vue';
+import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
 
 export default {
   components: {
-    EditorCapabilityTypeData,
-    LabeledValue
+    LabeledValue,
+    EditorCapabilityTypeData
   },
   props: {
     channel: {

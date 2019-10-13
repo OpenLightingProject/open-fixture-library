@@ -102,17 +102,16 @@ import {
 } from '../../assets/scripts/editor-utils.js';
 
 import ConditionalDetails from '../ConditionalDetails.vue';
-import PropertyInputRange from '../PropertyInputRange.vue';
-import LabeledInput from '../LabeledInput.vue';
-
 import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
+import LabeledInput from '../LabeledInput.vue';
+import PropertyInputRange from '../PropertyInputRange.vue';
 
 export default {
   components: {
     ConditionalDetails,
-    PropertyInputRange,
+    EditorCapabilityTypeData,
     LabeledInput,
-    EditorCapabilityTypeData
+    PropertyInputRange
   },
   props: {
     channel: {

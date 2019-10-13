@@ -27,6 +27,7 @@
 
 <script>
 import Draggable from 'vuedraggable';
+
 import CategoryBadge from '../CategoryBadge.vue';
 
 export default {

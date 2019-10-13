@@ -44,14 +44,14 @@
 import schemaProperties from '../../../../lib/schema-properties.js';
 
 import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
 import LabeledInput from '../../LabeledInput.vue';
+import PropertyInputText from '../../PropertyInputText.vue';
 
 export default {
   components: {
     EditorProportionalPropertySwitcher,
-    PropertyInputText,
-    LabeledInput
+    LabeledInput,
+    PropertyInputText
   },
   props: {
     capability: {

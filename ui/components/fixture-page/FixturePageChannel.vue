@@ -148,17 +148,17 @@ ol.mode-channels {
 </style>
 
 <script>
-import ConditionalDetails from '../ConditionalDetails.vue';
-import ChannelTypeIcon from '../ChannelTypeIcon.vue';
-import FixturePageCapabilityTable from './FixturePageCapabilityTable.vue';
-import LabeledValue from '../LabeledValue.vue';
-
 import AbstractChannel from '../../../lib/model/AbstractChannel.js';
 import CoarseChannel from '../../../lib/model/CoarseChannel.js';
 import FineChannel from '../../../lib/model/FineChannel.js';
 import Mode from '../../../lib/model/Mode.js';
 import NullChannel from '../../../lib/model/NullChannel.js';
 import SwitchingChannel from '../../../lib/model/SwitchingChannel.js';
+
+import ConditionalDetails from '../ConditionalDetails.vue';
+import ChannelTypeIcon from '../ChannelTypeIcon.vue';
+import FixturePageCapabilityTable from './FixturePageCapabilityTable.vue';
+import LabeledValue from '../LabeledValue.vue';
 
 export default {
   name: `FixturePageChannel`,

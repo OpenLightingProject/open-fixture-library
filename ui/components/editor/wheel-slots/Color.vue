@@ -50,15 +50,15 @@
 import schemaProperties from '../../../../lib/schema-properties.js';
 import { colorsHexStringToArray } from '../../../assets/scripts/editor-utils.js';
 
+import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputEntity from '../../PropertyInputEntity.vue';
 import PropertyInputText from '../../PropertyInputText.vue';
-import LabeledInput from '../../LabeledInput.vue';
 
 export default {
   components: {
+    LabeledInput,
     PropertyInputEntity,
-    PropertyInputText,
-    LabeledInput
+    PropertyInputText
   },
   props: {
     wheelSlot: {

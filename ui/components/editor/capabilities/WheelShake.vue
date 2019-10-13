@@ -60,15 +60,15 @@ import schemaProperties from '../../../../lib/schema-properties.js';
 
 import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
 import EditorWheelSlots from '../EditorWheelSlots.vue';
-import PropertyInputText from '../../PropertyInputText.vue';
 import LabeledInput from '../../LabeledInput.vue';
+import PropertyInputText from '../../PropertyInputText.vue';
 
 export default {
   components: {
     EditorProportionalPropertySwitcher,
     EditorWheelSlots,
-    PropertyInputText,
-    LabeledInput
+    LabeledInput,
+    PropertyInputText
   },
   props: {
     capability: {

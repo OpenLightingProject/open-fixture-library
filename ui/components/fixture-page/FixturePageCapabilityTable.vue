@@ -116,18 +116,17 @@ td, th {
 }
 </style>
 
-
 <script>
-import HelpWantedMessage from '../HelpWantedMessage.vue';
-import CapabilityTypeIcon from '../CapabilityTypeIcon.vue';
-
 import CoarseChannel from '../../../lib/model/CoarseChannel.js';
 import Mode from '../../../lib/model/Mode.js';
 
+import CapabilityTypeIcon from '../CapabilityTypeIcon.vue';
+import HelpWantedMessage from '../HelpWantedMessage.vue';
+
 export default {
   components: {
-    HelpWantedMessage,
-    CapabilityTypeIcon
+    CapabilityTypeIcon,
+    HelpWantedMessage
   },
   props: {
     channel: {

@@ -89,11 +89,11 @@
 </template>
 
 <script>
-import DownloadButton from '../components/DownloadButton.vue';
-
 import packageJson from '../../package.json';
 import register from '../../fixtures/register.json';
 import manufacturers from '../../fixtures/manufacturers.json';
+
+import DownloadButton from '../components/DownloadButton.vue';
 
 export default {
   components: {

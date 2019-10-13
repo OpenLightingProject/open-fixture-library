@@ -128,11 +128,10 @@
 }
 </style>
 
-
 <script>
-import LabeledValue from '../LabeledValue.vue';
-
 import Physical from '../../../lib/model/Physical.js';
+
+import LabeledValue from '../LabeledValue.vue';
 
 export default {
   components: {

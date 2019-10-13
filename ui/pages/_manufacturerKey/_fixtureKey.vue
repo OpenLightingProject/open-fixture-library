@@ -286,18 +286,18 @@ import plugins from '../../../plugins/plugins.json';
 import schemaProperties from '../../../lib/schema-properties.js';
 import Fixture from '../../../lib/model/Fixture.js';
 
+import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
+
 import CategoryBadge from '../../components/CategoryBadge.vue';
 import ConditionalDetails from '../../components/ConditionalDetails.vue';
 import DownloadButton from '../../components/DownloadButton.vue';
-import FixturePagePhysical from '../../components/fixture-page/FixturePagePhysical.vue';
 import FixturePageMatrix from '../../components/fixture-page/FixturePageMatrix.vue';
-import FixturePageWheel from '../../components/fixture-page/FixturePageWheel.vue';
 import FixturePageMode from '../../components/fixture-page/FixturePageMode.vue';
+import FixturePagePhysical from '../../components/fixture-page/FixturePagePhysical.vue';
+import FixturePageWheel from '../../components/fixture-page/FixturePageWheel.vue';
 import HelpWantedDialog from '../../components/HelpWantedDialog.vue';
 import HelpWantedMessage from '../../components/HelpWantedMessage.vue';
 import LabeledValue from '../../components/LabeledValue.vue';
-
-import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
 
 const VIDEOS_TO_EMBED = 2;
 
@@ -306,10 +306,10 @@ export default {
     CategoryBadge,
     ConditionalDetails,
     DownloadButton,
-    FixturePagePhysical,
     FixturePageMatrix,
-    FixturePageWheel,
     FixturePageMode,
+    FixturePagePhysical,
+    FixturePageWheel,
     HelpWantedDialog,
     HelpWantedMessage,
     LabeledValue

@@ -19,13 +19,13 @@
 <script>
 import schemaProperties from '../../../../lib/schema-properties.js';
 
-import PropertyInputEntity from '../../PropertyInputEntity.vue';
 import LabeledInput from '../../LabeledInput.vue';
+import PropertyInputEntity from '../../PropertyInputEntity.vue';
 
 export default {
   components: {
-    PropertyInputEntity,
-    LabeledInput
+    LabeledInput,
+    PropertyInputEntity
   },
   props: {
     wheelSlot: {

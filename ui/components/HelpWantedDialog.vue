@@ -65,7 +65,6 @@
 
 <script>
 import A11yDialog from './A11yDialog.vue';
-
 import LabeledInput from './LabeledInput.vue';
 import LabeledValue from './LabeledValue.vue';
 

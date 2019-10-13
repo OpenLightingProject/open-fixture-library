@@ -43,15 +43,15 @@
 </style>
 
 <script>
-import FixturePagePhysical from './FixturePagePhysical.vue';
-import FixturePageChannel from './FixturePageChannel.vue';
-
 import Mode from '../../../lib/model/Mode.js';
+
+import FixturePageChannel from './FixturePageChannel.vue';
+import FixturePagePhysical from './FixturePagePhysical.vue';
 
 export default {
   components: {
-    FixturePagePhysical,
-    FixturePageChannel
+    FixturePageChannel,
+    FixturePagePhysical
   },
   props: {
     mode: {
