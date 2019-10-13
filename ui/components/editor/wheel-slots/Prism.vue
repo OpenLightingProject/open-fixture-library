@@ -29,8 +29,8 @@
 <script>
 import schemaProperties from '../../../../lib/schema-properties.js';
 
-import PropertyInputNumber from '../PropertyInputNumber.vue';
-import PropertyInputText from '../PropertyInputText.vue';
+import PropertyInputNumber from '../../PropertyInputNumber.vue';
+import PropertyInputText from '../../PropertyInputText.vue';
 import LabeledInput from '../../LabeledInput.vue';
 
 export default {

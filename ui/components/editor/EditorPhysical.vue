@@ -118,11 +118,11 @@
 import schemaProperties from '../../../lib/schema-properties.js';
 
 import LabeledInput from '../LabeledInput.vue';
-import PropertyInputDimensions from './PropertyInputDimensions.vue';
-import PropertyInputNumber from './PropertyInputNumber.vue';
-import PropertyInputRange from './PropertyInputRange.vue';
-import PropertyInputSelect from './PropertyInputSelect.vue';
-import PropertyInputText from './PropertyInputText.vue';
+import PropertyInputDimensions from '../PropertyInputDimensions.vue';
+import PropertyInputNumber from '../PropertyInputNumber.vue';
+import PropertyInputRange from '../PropertyInputRange.vue';
+import PropertyInputSelect from '../PropertyInputSelect.vue';
+import PropertyInputText from '../PropertyInputText.vue';
 
 export default {
   components: {

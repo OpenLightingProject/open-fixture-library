@@ -37,7 +37,7 @@ import schemaProperties from '../../../../lib/schema-properties.js';
 
 import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
 import EditorWheelSlots from '../EditorWheelSlots.vue';
-import PropertyInputText from '../PropertyInputText.vue';
+import PropertyInputText from '../../PropertyInputText.vue';
 import LabeledInput from '../../LabeledInput.vue';
 
 export default {

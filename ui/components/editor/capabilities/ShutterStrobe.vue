@@ -85,8 +85,8 @@
 import schemaProperties from '../../../../lib/schema-properties.js';
 
 import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
-import PropertyInputBoolean from '../PropertyInputBoolean.vue';
-import PropertyInputText from '../PropertyInputText.vue';
+import PropertyInputBoolean from '../../PropertyInputBoolean.vue';
+import PropertyInputText from '../../PropertyInputText.vue';
 import LabeledInput from '../../LabeledInput.vue';
 
 export default {

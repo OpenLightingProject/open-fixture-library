@@ -102,7 +102,7 @@ import {
 } from '../../assets/scripts/editor-utils.js';
 
 import ConditionalDetails from '../ConditionalDetails.vue';
-import PropertyInputRange from './PropertyInputRange.vue';
+import PropertyInputRange from '../PropertyInputRange.vue';
 import LabeledInput from '../LabeledInput.vue';
 
 import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';

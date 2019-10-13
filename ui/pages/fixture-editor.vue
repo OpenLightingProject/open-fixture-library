@@ -259,9 +259,9 @@ import manufacturers from '../../fixtures/manufacturers.json';
 import schemaProperties from '../../lib/schema-properties.js';
 
 import LabeledInput from '../components/LabeledInput.vue';
-import PropertyInputNumber from '../components/editor/PropertyInputNumber.vue';
-import PropertyInputText from '../components/editor/PropertyInputText.vue';
-import PropertyInputTextarea from '../components/editor/PropertyInputTextarea.vue';
+import PropertyInputNumber from '../components/PropertyInputNumber.vue';
+import PropertyInputText from '../components/PropertyInputText.vue';
+import PropertyInputTextarea from '../components/PropertyInputTextarea.vue';
 import EditorCategoryChooser from '../components/editor/EditorCategoryChooser.vue';
 import EditorLinks from '../components/editor/EditorLinks.vue';
 import EditorPhysical from '../components/editor/EditorPhysical.vue';

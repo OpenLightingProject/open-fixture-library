@@ -179,9 +179,9 @@
 <script>
 import schemaProperties from '../../../lib/schema-properties.js';
 
-import PropertyInputEntity from './PropertyInputEntity.vue';
-import PropertyInputNumber from './PropertyInputNumber.vue';
-import PropertyInputText from './PropertyInputText.vue';
+import PropertyInputEntity from '../PropertyInputEntity.vue';
+import PropertyInputNumber from '../PropertyInputNumber.vue';
+import PropertyInputText from '../PropertyInputText.vue';
 
 export default {
   components: {

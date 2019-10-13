@@ -197,8 +197,8 @@ import { constants } from '../../assets/scripts/editor-utils.js';
 
 import Draggable from 'vuedraggable';
 import LabeledInput from '../LabeledInput.vue';
-import PropertyInputNumber from './PropertyInputNumber.vue';
-import PropertyInputText from './PropertyInputText.vue';
+import PropertyInputNumber from '../PropertyInputNumber.vue';
+import PropertyInputText from '../PropertyInputText.vue';
 import EditorPhysical from './EditorPhysical.vue';
 
 export default {

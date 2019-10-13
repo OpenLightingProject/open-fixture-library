@@ -263,10 +263,10 @@ import A11yDialog from '../A11yDialog.vue';
 import EditorCapability from './EditorCapability.vue';
 import EditorCapabilityWizard from './EditorCapabilityWizard.vue';
 import LabeledInput from '../LabeledInput.vue';
-import PropertyInputBoolean from './PropertyInputBoolean.vue';
-import PropertyInputEntity from './PropertyInputEntity.vue';
-import PropertyInputSelect from './PropertyInputSelect.vue';
-import PropertyInputText from './PropertyInputText.vue';
+import PropertyInputBoolean from '../PropertyInputBoolean.vue';
+import PropertyInputEntity from '../PropertyInputEntity.vue';
+import PropertyInputSelect from '../PropertyInputSelect.vue';
+import PropertyInputText from '../PropertyInputText.vue';
 
 export default {
   components: {

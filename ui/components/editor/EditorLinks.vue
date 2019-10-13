@@ -54,7 +54,7 @@ select {
 import schemaProperties from '../../../lib/schema-properties.js';
 import { getEmptyLink } from '../../assets/scripts/editor-utils.js';
 
-import PropertyInputText from './PropertyInputText.vue';
+import PropertyInputText from '../PropertyInputText.vue';
 
 import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
 
