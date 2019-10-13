@@ -32,31 +32,31 @@
     }
   },
   "availableChannels": {
-    "Rojo": {
+    "Red": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Verde": {
+    "Green": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Azul": {
+    "Blue": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "Blanco": {
+    "White": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "Ambar": {
+    "Amber": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber"
@@ -73,27 +73,28 @@
         "type": "Intensity"
       }
     },
-    "Estrobo": {
+    "Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [1, 5],
           "type": "ShutterStrobe",
-          "shutterEffect": "Spikes",
+          "shutterEffect": "Strobe",
           "soundControlled": true
         },
         {
           "dmxRange": [6, 10],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [11, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         }
@@ -102,17 +103,17 @@
   },
   "modes": [
     {
-      "name": "8 channel",
-      "shortName": "8channel",
+      "name": "8-channel",
+      "shortName": "8ch",
       "channels": [
-        "Rojo",
-        "Verde",
-        "Azul",
-        "Blanco",
-        "Ambar",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
         "UV",
         "Dimmer",
-        "Estrobo"
+        "Strobe"
       ]
     }
   ]
