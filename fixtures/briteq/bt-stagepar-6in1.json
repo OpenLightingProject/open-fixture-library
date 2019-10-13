@@ -88,6 +88,7 @@
       }
     },
     "Simple Strobe": {
+      "name": "Strobe",
       "capability": {
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
@@ -150,6 +151,7 @@
       ]
     },
     "Extended Strobe": {
+      "name": "Strobe",
       "capabilities": [
         {
           "dmxRange": [0, 7],
