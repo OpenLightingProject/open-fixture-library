@@ -119,7 +119,7 @@ td, th {
 
 <script>
 import HelpWantedMessage from '../HelpWantedMessage.vue';
-import CapabilityTypeIcon from './CapabilityTypeIcon.vue';
+import CapabilityTypeIcon from '../CapabilityTypeIcon.vue';
 
 import CoarseChannel from '../../../lib/model/CoarseChannel.js';
 import Mode from '../../../lib/model/Mode.js';

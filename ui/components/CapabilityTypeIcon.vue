@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Capability from '../../../lib/model/Capability.js';
+import Capability from '../../lib/model/Capability.js';
 
 export default {
   props: {

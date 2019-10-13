@@ -3,10 +3,10 @@
 </template>
 
 <script>
-import AbstractChannel from '../../../lib/model/AbstractChannel.js';
-import FineChannel from '../../../lib/model/FineChannel.js';
-import NullChannel from '../../../lib/model/NullChannel.js';
-import SwitchingChannel from '../../../lib/model/SwitchingChannel.js';
+import AbstractChannel from '../../lib/model/AbstractChannel.js';
+import FineChannel from '../../lib/model/FineChannel.js';
+import NullChannel from '../../lib/model/NullChannel.js';
+import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 
 export default {
   props: {

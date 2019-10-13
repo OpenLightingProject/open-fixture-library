@@ -149,7 +149,7 @@ ol.mode-channels {
 
 <script>
 import ConditionalDetails from '../ConditionalDetails.vue';
-import ChannelTypeIcon from './ChannelTypeIcon.vue';
+import ChannelTypeIcon from '../ChannelTypeIcon.vue';
 import FixturePageCapabilityTable from './FixturePageCapabilityTable.vue';
 import LabeledValue from '../LabeledValue.vue';
 
