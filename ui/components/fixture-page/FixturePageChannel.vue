@@ -26,7 +26,7 @@
         </LabeledValue>
 
         <ol>
-          <FixtureChannel
+          <FixturePageChannel
             v-for="(ranges, switchToChannelKey) in channel.triggerRanges"
             :key="switchToChannelKey"
             :channel="fixture.getChannelByKey(switchToChannelKey)"
@@ -38,7 +38,7 @@
               label="Activated when">
               <span v-html="`Trigger channel is set to ${ranges.map(range => `<span style='white-space: nowrap;'>${range}</span>`).join(` or `)}`" />
             </LabeledValue>
-          </FixtureChannel>
+          </FixturePageChannel>
         </ol>
       </template>
 
@@ -111,7 +111,7 @@
           name="channel-precedence"
           label="Precedence" />
 
-        <CapabilityTable
+        <FixturePageCapabilityTable
           :channel="channel"
           :mode="mode"
           :resolution-in-mode="resolutionInMode"
@@ -150,7 +150,7 @@ ol.mode-channels {
 <script>
 import ConditionalDetails from '../ConditionalDetails.vue';
 import ChannelTypeIcon from './ChannelTypeIcon.vue';
-import CapabilityTable from './CapabilityTable.vue';
+import FixturePageCapabilityTable from './FixturePageCapabilityTable.vue';
 import LabeledValue from '../LabeledValue.vue';
 
 import AbstractChannel from '../../../lib/model/AbstractChannel.js';
@@ -161,11 +161,11 @@ import NullChannel from '../../../lib/model/NullChannel.js';
 import SwitchingChannel from '../../../lib/model/SwitchingChannel.js';
 
 export default {
-  name: `FixtureChannel`,
+  name: `FixturePageChannel`,
   components: {
     ConditionalDetails,
     ChannelTypeIcon,
-    CapabilityTable,
+    FixturePageCapabilityTable,
     LabeledValue
   },
   props: {

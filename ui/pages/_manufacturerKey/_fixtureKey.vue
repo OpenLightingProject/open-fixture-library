@@ -111,28 +111,28 @@
       <template v-if="fixture.physical !== null">
         <h3 class="physical">Physical data</h3>
         <section class="physical">
-          <FixturePhysical :physical="fixture.physical" />
+          <FixturePagePhysical :physical="fixture.physical" />
         </section>
       </template>
 
       <template v-if="fixture.matrix !== null">
         <h3 class="matrix">Matrix</h3>
         <section class="matrix">
-          <FixtureMatrix :matrix="fixture.matrix" :physical="fixture.physical" />
+          <FixturePageMatrix :matrix="fixture.matrix" :physical="fixture.physical" />
         </section>
       </template>
 
       <template v-if="fixture.wheels.length > 0">
         <h3 class="wheels">Wheels</h3>
         <section class="wheels">
-          <FixtureWheel v-for="wheel in fixture.wheels" :key="wheel.name" :wheel="wheel" />
+          <FixturePageWheel v-for="wheel in fixture.wheels" :key="wheel.name" :wheel="wheel" />
         </section>
       </template>
 
     </section>
 
     <section class="fixture-modes">
-      <FixtureMode
+      <FixturePageMode
         v-for="(mode, index) in modes"
         :key="mode.name"
         :mode="mode"
@@ -289,10 +289,10 @@ import Fixture from '../../../lib/model/Fixture.js';
 import CategoryBadge from '../../components/CategoryBadge.vue';
 import ConditionalDetails from '../../components/ConditionalDetails.vue';
 import DownloadButton from '../../components/DownloadButton.vue';
-import FixturePhysical from '../../components/fixture-page/FixturePhysical.vue';
-import FixtureMatrix from '../../components/fixture-page/FixtureMatrix.vue';
-import FixtureWheel from '../../components/fixture-page/FixtureWheel.vue';
-import FixtureMode from '../../components/fixture-page/FixtureMode.vue';
+import FixturePagePhysical from '../../components/fixture-page/FixturePagePhysical.vue';
+import FixturePageMatrix from '../../components/fixture-page/FixturePageMatrix.vue';
+import FixturePageWheel from '../../components/fixture-page/FixturePageWheel.vue';
+import FixturePageMode from '../../components/fixture-page/FixturePageMode.vue';
 import HelpWantedDialog from '../../components/HelpWantedDialog.vue';
 import HelpWantedMessage from '../../components/HelpWantedMessage.vue';
 import LabeledValue from '../../components/LabeledValue.vue';
@@ -306,10 +306,10 @@ export default {
     CategoryBadge,
     ConditionalDetails,
     DownloadButton,
-    FixturePhysical,
-    FixtureMatrix,
-    FixtureWheel,
-    FixtureMode,
+    FixturePagePhysical,
+    FixturePageMatrix,
+    FixturePageWheel,
+    FixturePageMode,
     HelpWantedDialog,
     HelpWantedMessage,
     LabeledValue

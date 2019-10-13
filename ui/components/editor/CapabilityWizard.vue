@@ -78,7 +78,7 @@
 </template>
 
 <style lang="scss" scoped>
-/* TODO: a lot of this stuff is duplicated in CapabilityTable.vue */
+/* TODO: a lot of this stuff is duplicated in FixturePageCapabilityTable.vue */
 
 .capabilities-table {
   margin-top: 1em;

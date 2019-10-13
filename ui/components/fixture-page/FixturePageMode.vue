@@ -10,7 +10,7 @@
     <template v-if="mode.physicalOverride !== null">
       <h3>Physical overrides</h3>
       <section class="physical physical-override">
-        <FixturePhysical :physical="mode.physicalOverride" />
+        <FixturePagePhysical :physical="mode.physicalOverride" />
       </section>
     </template>
 
@@ -24,7 +24,7 @@
     </template></h3>
 
     <ol class="mode-channels">
-      <FixtureChannel
+      <FixturePageChannel
         v-for="channel in mode.channels"
         :key="channel.key"
         :channel="channel"
@@ -43,15 +43,15 @@
 </style>
 
 <script>
-import FixturePhysical from './FixturePhysical.vue';
-import FixtureChannel from './FixtureChannel.vue';
+import FixturePagePhysical from './FixturePagePhysical.vue';
+import FixturePageChannel from './FixturePageChannel.vue';
 
 import Mode from '../../../lib/model/Mode.js';
 
 export default {
   components: {
-    FixturePhysical,
-    FixtureChannel
+    FixturePagePhysical,
+    FixturePageChannel
   },
   props: {
     mode: {
