@@ -25,7 +25,7 @@
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-fogOutput`"
       label="Fog output">
-      <ProportionalCapabilityDataSwitcher
+      <EditorProportionalPropertySwitcher
         :capability="capability"
         :formstate="formstate"
         property-name="fogOutput" />
@@ -48,13 +48,13 @@
 <script>
 import schemaProperties from '../../../../lib/schema-properties.js';
 
-import ProportionalCapabilityDataSwitcher from '../ProportionalCapabilityDataSwitcher.vue';
+import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
 import PropertyInputText from '../PropertyInputText.vue';
 import LabeledInput from '../../LabeledInput.vue';
 
 export default {
   components: {
-    ProportionalCapabilityDataSwitcher,
+    EditorProportionalPropertySwitcher,
     PropertyInputText,
     LabeledInput
   },

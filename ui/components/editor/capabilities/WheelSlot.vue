@@ -6,14 +6,14 @@
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-slotNumber`"
       label="Slot number">
-      <ProportionalCapabilityDataSwitcher
+      <EditorProportionalPropertySwitcher
         :capability="capability"
         :formstate="formstate"
         :required="true"
         property-name="slotNumber" />
     </LabeledInput>
 
-    <WheelSlots
+    <EditorWheelSlots
       :channel="channel"
       :capability="capability"
       :formstate="formstate" />
@@ -35,15 +35,15 @@
 <script>
 import schemaProperties from '../../../../lib/schema-properties.js';
 
-import ProportionalCapabilityDataSwitcher from '../ProportionalCapabilityDataSwitcher.vue';
-import WheelSlots from '../EditorWheelSlots.vue';
+import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
+import EditorWheelSlots from '../EditorWheelSlots.vue';
 import PropertyInputText from '../PropertyInputText.vue';
 import LabeledInput from '../../LabeledInput.vue';
 
 export default {
   components: {
-    ProportionalCapabilityDataSwitcher,
-    WheelSlots,
+    EditorProportionalPropertySwitcher,
+    EditorWheelSlots,
     PropertyInputText,
     LabeledInput
   },

@@ -18,7 +18,7 @@
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-angle`"
       label="Angle">
-      <ProportionalCapabilityDataSwitcher
+      <EditorProportionalPropertySwitcher
         :capability="capability"
         :formstate="formstate"
         :required="true"
@@ -42,14 +42,14 @@
 <script>
 import schemaProperties from '../../../../lib/schema-properties.js';
 
-import ProportionalCapabilityDataSwitcher from '../ProportionalCapabilityDataSwitcher.vue';
+import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
 import PropertyInputEntity from '../PropertyInputEntity.vue';
 import PropertyInputText from '../PropertyInputText.vue';
 import LabeledInput from '../../LabeledInput.vue';
 
 export default {
   components: {
-    ProportionalCapabilityDataSwitcher,
+    EditorProportionalPropertySwitcher,
     PropertyInputEntity,
     PropertyInputText,
     LabeledInput

@@ -40,7 +40,7 @@
         <OflSvg name="close" />
       </a>
 
-      <CapabilityTypeData
+      <EditorCapabilityTypeData
         ref="capabilityTypeData"
         v-model="capability"
         :channel="channel"
@@ -105,14 +105,14 @@ import ConditionalDetails from '../ConditionalDetails.vue';
 import PropertyInputRange from './PropertyInputRange.vue';
 import LabeledInput from '../LabeledInput.vue';
 
-import CapabilityTypeData from './CapabilityTypeData.vue';
+import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
 
 export default {
   components: {
     ConditionalDetails,
     PropertyInputRange,
     LabeledInput,
-    CapabilityTypeData
+    EditorCapabilityTypeData
   },
   props: {
     channel: {

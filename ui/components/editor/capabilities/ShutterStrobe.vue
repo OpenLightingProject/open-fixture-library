@@ -37,7 +37,7 @@
         :multiple-inputs="true"
         :name="`capability${capability.uuid}-speed`"
         label="Speed">
-        <ProportionalCapabilityDataSwitcher
+        <EditorProportionalPropertySwitcher
           :capability="capability"
           :formstate="formstate"
           property-name="speed"
@@ -49,7 +49,7 @@
         :multiple-inputs="true"
         :name="`capability${capability.uuid}-duration`"
         label="Duration">
-        <ProportionalCapabilityDataSwitcher
+        <EditorProportionalPropertySwitcher
           :capability="capability"
           :formstate="formstate"
           property-name="duration" />
@@ -84,14 +84,14 @@
 <script>
 import schemaProperties from '../../../../lib/schema-properties.js';
 
-import ProportionalCapabilityDataSwitcher from '../ProportionalCapabilityDataSwitcher.vue';
+import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
 import PropertyInputBoolean from '../PropertyInputBoolean.vue';
 import PropertyInputText from '../PropertyInputText.vue';
 import LabeledInput from '../../LabeledInput.vue';
 
 export default {
   components: {
-    ProportionalCapabilityDataSwitcher,
+    EditorProportionalPropertySwitcher,
     PropertyInputBoolean,
     PropertyInputText,
     LabeledInput

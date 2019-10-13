@@ -124,7 +124,7 @@ import scrollIntoView from 'scroll-into-view';
 import plugins from '../../plugins/plugins.json';
 
 import A11yDialog from '../components/A11yDialog.vue';
-import EditorFileUpload from '../components/editor/FileUpload.vue';
+import EditorFileUpload from '../components/editor/EditorFileUpload.vue';
 import LabeledInput from '../components/LabeledInput.vue';
 
 export default {

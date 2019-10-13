@@ -110,7 +110,7 @@
             name="fixture-categories"
             label="Categories"
             hint="Select and reorder all applicable categories, the most suitable first.">
-            <CategoryChooser
+            <EditorCategoryChooser
               v-model="fixture.categories"
               :all-categories="properties.fixture.categories.items.enum"
               name="fixture-categories"
@@ -262,14 +262,14 @@ import LabeledInput from '../components/LabeledInput.vue';
 import PropertyInputNumber from '../components/editor/PropertyInputNumber.vue';
 import PropertyInputText from '../components/editor/PropertyInputText.vue';
 import PropertyInputTextarea from '../components/editor/PropertyInputTextarea.vue';
-import CategoryChooser from '../components/editor/CategoryChooser.vue';
+import EditorCategoryChooser from '../components/editor/EditorCategoryChooser.vue';
 import EditorLinks from '../components/editor/EditorLinks.vue';
 import EditorPhysical from '../components/editor/EditorPhysical.vue';
 import EditorMode from '../components/editor/EditorMode.vue';
-import EditorChannelDialog from '../components/editor/ChannelDialog.vue';
-import EditorChooseChannelEditModeDialog from '../components/editor/ChooseChannelEditModeDialog.vue';
-import EditorRestoreDialog from '../components/editor/RestoreDialog.vue';
-import EditorSubmitDialog from '../components/editor/SubmitDialog.vue';
+import EditorChannelDialog from '../components/editor/EditorChannelDialog.vue';
+import EditorChooseChannelEditModeDialog from '../components/editor/EditorChooseChannelEditModeDialog.vue';
+import EditorRestoreDialog from '../components/editor/EditorRestoreDialog.vue';
+import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';
 
 export default {
   components: {
@@ -277,7 +277,7 @@ export default {
     PropertyInputNumber,
     PropertyInputText,
     PropertyInputTextarea,
-    CategoryChooser,
+    EditorCategoryChooser,
     EditorPhysical,
     EditorLinks,
     EditorMode,

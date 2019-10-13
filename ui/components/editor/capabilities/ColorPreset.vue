@@ -15,7 +15,7 @@
     <LabeledInput
       :multiple-inputs="true"
       label="Color hex code(s)">
-      <ProportionalCapabilityDataSwitcher
+      <EditorProportionalPropertySwitcher
         :capability="capability"
         :formstate="formstate"
         property-name="colorsHexString"
@@ -57,7 +57,7 @@
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-colorTemperature`"
       label="Color temperature">
-      <ProportionalCapabilityDataSwitcher
+      <EditorProportionalPropertySwitcher
         :capability="capability"
         :formstate="formstate"
         property-name="colorTemperature" />
@@ -70,13 +70,13 @@
 import schemaProperties from '../../../../lib/schema-properties.js';
 import { colorsHexStringToArray } from '../../../assets/scripts/editor-utils.js';
 
-import ProportionalCapabilityDataSwitcher from '../ProportionalCapabilityDataSwitcher.vue';
+import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
 import PropertyInputText from '../PropertyInputText.vue';
 import LabeledInput from '../../LabeledInput.vue';
 
 export default {
   components: {
-    ProportionalCapabilityDataSwitcher,
+    EditorProportionalPropertySwitcher,
     PropertyInputText,
     LabeledInput
   },

@@ -43,7 +43,7 @@
       </label>
     </section>
 
-    <CapabilityTypeData
+    <EditorCapabilityTypeData
       v-model="wizard.templateCapability"
       :channel="channel" />
 
@@ -129,12 +129,12 @@ import {
   clone
 } from "../../assets/scripts/editor-utils.js";
 
-import CapabilityTypeData from './CapabilityTypeData.vue';
+import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
 import LabeledValue from '../LabeledValue.vue';
 
 export default {
   components: {
-    CapabilityTypeData,
+    EditorCapabilityTypeData,
     LabeledValue
   },
   props: {

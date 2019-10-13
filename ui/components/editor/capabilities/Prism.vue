@@ -23,7 +23,7 @@
         </template>
       </template>
 
-      <ProportionalCapabilityDataSwitcher
+      <EditorProportionalPropertySwitcher
         v-if="capability.typeData.speedOrAngle"
         ref="speedOrAngleInput"
         :capability="capability"
@@ -49,13 +49,13 @@
 <script>
 import schemaProperties from '../../../../lib/schema-properties.js';
 
-import ProportionalCapabilityDataSwitcher from '../ProportionalCapabilityDataSwitcher.vue';
+import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
 import PropertyInputText from '../PropertyInputText.vue';
 import LabeledInput from '../../LabeledInput.vue';
 
 export default {
   components: {
-    ProportionalCapabilityDataSwitcher,
+    EditorProportionalPropertySwitcher,
     PropertyInputText,
     LabeledInput
   },

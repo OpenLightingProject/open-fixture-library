@@ -8,7 +8,7 @@
       label="Slot number"
       hint="Leave the slot number empty if this capability doesn't select a wheel slot, but only activates wheel shaking for a WheelSlot capability in another channel."
       style="display: inline-block; margin-bottom: 12px;">
-      <ProportionalCapabilityDataSwitcher
+      <EditorProportionalPropertySwitcher
         :capability="capability"
         :formstate="formstate"
         property-name="slotNumber" />
@@ -19,7 +19,7 @@
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-shakeSpeed`"
       label="Shake speed">
-      <ProportionalCapabilityDataSwitcher
+      <EditorProportionalPropertySwitcher
         :capability="capability"
         :formstate="formstate"
         property-name="shakeSpeed" />
@@ -30,13 +30,13 @@
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-shakeAngle`"
       label="Shake angle">
-      <ProportionalCapabilityDataSwitcher
+      <EditorProportionalPropertySwitcher
         :capability="capability"
         :formstate="formstate"
         property-name="shakeAngle" />
     </LabeledInput>
 
-    <WheelSlots
+    <EditorWheelSlots
       :channel="channel"
       :capability="capability"
       :formstate="formstate" />
@@ -58,15 +58,15 @@
 <script>
 import schemaProperties from '../../../../lib/schema-properties.js';
 
-import ProportionalCapabilityDataSwitcher from '../ProportionalCapabilityDataSwitcher.vue';
-import WheelSlots from '../EditorWheelSlots.vue';
+import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
+import EditorWheelSlots from '../EditorWheelSlots.vue';
 import PropertyInputText from '../PropertyInputText.vue';
 import LabeledInput from '../../LabeledInput.vue';
 
 export default {
   components: {
-    ProportionalCapabilityDataSwitcher,
-    WheelSlots,
+    EditorProportionalPropertySwitcher,
+    EditorWheelSlots,
     PropertyInputText,
     LabeledInput
   },

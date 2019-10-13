@@ -8,7 +8,7 @@
       label="Slot number"
       hint="Leave the slot number empty if this capability doesn't select a wheel slot, but only activates wheel slot rotation for a WheelSlot capability in another channel."
       style="display: inline-block; margin-bottom: 12px;">
-      <ProportionalCapabilityDataSwitcher
+      <EditorProportionalPropertySwitcher
         :capability="capability"
         :formstate="formstate"
         property-name="slotNumber" />
@@ -36,7 +36,7 @@
         </template>
       </template>
 
-      <ProportionalCapabilityDataSwitcher
+      <EditorProportionalPropertySwitcher
         v-if="capability.typeData.speedOrAngle"
         ref="speedOrAngleInput"
         :capability="capability"
@@ -46,7 +46,7 @@
 
     </LabeledInput>
 
-    <WheelSlots
+    <EditorWheelSlots
       :channel="channel"
       :capability="capability"
       :formstate="formstate" />
@@ -68,15 +68,15 @@
 <script>
 import schemaProperties from '../../../../lib/schema-properties.js';
 
-import ProportionalCapabilityDataSwitcher from '../ProportionalCapabilityDataSwitcher.vue';
-import WheelSlots from '../EditorWheelSlots.vue';
+import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
+import EditorWheelSlots from '../EditorWheelSlots.vue';
 import PropertyInputText from '../PropertyInputText.vue';
 import LabeledInput from '../../LabeledInput.vue';
 
 export default {
   components: {
-    ProportionalCapabilityDataSwitcher,
-    WheelSlots,
+    EditorProportionalPropertySwitcher,
+    EditorWheelSlots,
     PropertyInputText,
     LabeledInput
   },
