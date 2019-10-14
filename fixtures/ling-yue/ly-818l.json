@@ -31,31 +31,31 @@
         "type": "Intensity"
       }
     },
-    "Rojo": {
+    "Red": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Verde": {
+    "Green": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Azul": {
+    "Blue": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "Blanco": {
+    "White": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "Ambar": {
+    "Amber": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber"
@@ -122,11 +122,11 @@
       "shortName": "10channel",
       "channels": [
         "Dimmer",
-        "Rojo",
-        "Verde",
-        "Azul",
-        "Blanco",
-        "Ambar",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
         "UV",
         "Velocidad Estrobo",
         "Fade",
