@@ -1,0 +1,156 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "AF-180 LED Fogger",
+  "shortName": "AF 180",
+  "categories": ["Smoke", "Color Changer"],
+  "meta": {
+    "authors": ["peaceman"],
+    "createDate": "2019-10-06",
+    "lastModifyDate": "2019-10-06"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/c_334044_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/intl/stairville_af_180_led_fogger_co2_fx_dmx.htm"
+    ],
+    "video": [
+      "https://video2.thomann.de/vidiot/02591c1c/video_i2656p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [340, 190, 300],
+    "weight": 8.9,
+    "power": 850,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED (3× red, 3× green, 3× blue)"
+    }
+  },
+  "availableChannels": {
+    "Fog": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Fog",
+          "fogType": "Fog"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 35],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [36, 50],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [51, 65],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [66, 80],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [81, 95],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [96, 110],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [111, 127],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Fog",
+        "Dimmer",
+        "Color Presets",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}

@@ -13,7 +13,7 @@ module.exports.version = require(`../../schemas/fixture.json`).version;
  * @param {Date} options.date The current time.
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
-*/
+ */
 module.exports.export = async function exportOfl(fixtures, options) {
   const displayedPluginVersion = options.displayedPluginVersion || module.exports.version;
 

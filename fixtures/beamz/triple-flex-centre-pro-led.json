@@ -1,0 +1,248 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Triple Flex Centre Pro LED",
+  "categories": ["Flower", "Scanner"],
+  "meta": {
+    "authors": ["Serge Michiels"],
+    "createDate": "2019-10-02",
+    "lastModifyDate": "2019-10-02",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2019-10-02",
+      "comment": "created by Q Light Controller Plus (version 4.12.2)"
+    }
+  },
+  "links": {
+    "manual": [
+      "https://files.tronios.com/Manuals/153.406%7CManual.pdf"
+    ],
+    "productPage": [
+      "https://www.tronios.com/triple-flex-centre-pro-led/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=3pROoLUR4Tw"
+    ]
+  },
+  "helpWanted": "The 7-channel mode is derived from the manual, the 8-channel mode from the imported QLC+ fixture. Which one is correct? Or are there different versions of this fixture with different DMX configurations?",
+  "physical": {
+    "dimensions": [320, 320, 160],
+    "weight": 1,
+    "power": 40,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "72 LEDs (24× red, 24× green, 24× blue)"
+    },
+    "lens": {
+      "degreesMinMax": [20, 20]
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [null,  "1", null],
+        [null, null, null],
+        [ "2", null,  "3"]
+      ]
+    ]
+  },
+  "availableChannels": {
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 200],
+          "type": "Effect",
+          "effectName": "Auto mode",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Is speed correct here?"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "Sound mode",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "soundControlled": true,
+          "helpWanted": "Is speed correct here?"
+        }
+      ]
+    },
+    "Motor Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Program Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    }
+  },
+  "templateChannels": {
+    "Tilt $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Color Program $pixelKey": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "Effect",
+          "effectName": "Prog.1",
+          "helpWanted": "Is this a static color (combination)? If so, which colors are activated with this capability? Same for following capabilities."
+        },
+        {
+          "dmxRange": [12, 23],
+          "type": "Effect",
+          "effectName": "Prog.2"
+        },
+        {
+          "dmxRange": [24, 35],
+          "type": "Effect",
+          "effectName": "Prog.3"
+        },
+        {
+          "dmxRange": [36, 47],
+          "type": "Effect",
+          "effectName": "Prog.4"
+        },
+        {
+          "dmxRange": [48, 59],
+          "type": "Effect",
+          "effectName": "Prog.5"
+        },
+        {
+          "dmxRange": [60, 71],
+          "type": "Effect",
+          "effectName": "Prog.6"
+        },
+        {
+          "dmxRange": [72, 83],
+          "type": "Effect",
+          "effectName": "Prog.7"
+        },
+        {
+          "dmxRange": [84, 95],
+          "type": "Effect",
+          "effectName": "Prog.8"
+        },
+        {
+          "dmxRange": [96, 107],
+          "type": "Effect",
+          "effectName": "Prog.9"
+        },
+        {
+          "dmxRange": [108, 119],
+          "type": "Effect",
+          "effectName": "Prog.10"
+        },
+        {
+          "dmxRange": [120, 131],
+          "type": "Effect",
+          "effectName": "Prog.11"
+        },
+        {
+          "dmxRange": [132, 143],
+          "type": "Effect",
+          "effectName": "Prog.12"
+        },
+        {
+          "dmxRange": [144, 155],
+          "type": "Effect",
+          "effectName": "Prog.13"
+        },
+        {
+          "dmxRange": [156, 167],
+          "type": "Effect",
+          "effectName": "Prog.14"
+        },
+        {
+          "dmxRange": [168, 179],
+          "type": "Effect",
+          "effectName": "Prog.15"
+        },
+        {
+          "dmxRange": [180, 191],
+          "type": "Effect",
+          "effectName": "Prog.16"
+        },
+        {
+          "dmxRange": [192, 203],
+          "type": "Effect",
+          "effectName": "Prog.17"
+        },
+        {
+          "dmxRange": [204, 215],
+          "type": "Effect",
+          "effectName": "Prog.18"
+        },
+        {
+          "dmxRange": [216, 227],
+          "type": "Effect",
+          "effectName": "Prog.19"
+        },
+        {
+          "dmxRange": [228, 239],
+          "type": "Effect",
+          "effectName": "Prog.20"
+        },
+        {
+          "dmxRange": [240, 251],
+          "type": "Effect",
+          "effectName": "Prog.21"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "Prog.22"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Mode",
+        "Color Program 1",
+        "Color Program 2",
+        "Color Program 3",
+        "Tilt 1",
+        "Tilt 2",
+        "Tilt 3"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Tilt 1",
+        "Tilt 2",
+        "Tilt 3",
+        "Motor Speed",
+        "Color Program 1",
+        "Color Program 2",
+        "Color Program 3",
+        "Program Speed"
+      ]
+    }
+  ]
+}
