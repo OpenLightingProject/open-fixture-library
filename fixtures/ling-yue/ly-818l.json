@@ -2,12 +2,13 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LY-818L",
   "shortName": "ly818l",
-  "categories": ["Other"],
+  "categories": ["Color Changer"],
   "meta": {
     "authors": ["josequioss"],
     "createDate": "2019-10-01",
     "lastModifyDate": "2019-10-01"
   },
+  "comment": "RGBWA+UV IP65 PAR LED 18× 18W Outdoor Stage Light",
   "links": {
     "productPage": [
       "https://lingyuelight.en.made-in-china.com/product/IShnYcgdrNVM/China-RGBWA-UV-IP65-PAR-LED-18-X-18-Outdoor-Stage-Light.html"
@@ -15,7 +16,14 @@
   },
   "physical": {
     "weight": 5,
-    "power": 350
+    "power": 350,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "8× 18W 6in1 LEDs (Red, Green, Blue, White, Amber, UV)"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
   },
   "availableChannels": {
     "Dimmer": {
