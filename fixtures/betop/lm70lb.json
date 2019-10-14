@@ -1,0 +1,353 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LM70LB",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["migue9", "mige9"],
+    "createDate": "2019-10-14",
+    "lastModifyDate": "2019-10-14",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2019-10-14",
+      "comment": "created by Q Light Controller Plus (version 4.12.2)"
+    }
+  },
+  "physical": {
+    "dimensions": [175, 235, 175],
+    "weight": 3.4,
+    "power": 60,
+    "DMXconnector": "Other",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 4500,
+      "lumens": 10
+    },
+    "lens": {
+      "name": "Other",
+      "degreesMinMax": [0, 25]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt Fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "P/T Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "All Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe from"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Laser": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Effect",
+          "effectName": "Close"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Effect",
+          "effectName": "Open"
+        },
+        {
+          "dmxRange": [16, 239],
+          "type": "Effect",
+          "effectName": "Strobe from",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Open"
+        }
+      ]
+    },
+    "Built In Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "Color Close"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Color1"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Colo2"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Color3"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Color4"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Color5"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Color6"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Color7"
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "ColorPreset",
+          "comment": "Color8"
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "comment": "Color9"
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "comment": "Color10"
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "comment": "Color11"
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "comment": "Color12"
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "ColorPreset",
+          "comment": "Color13"
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "ColorPreset",
+          "comment": "Color14"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "comment": "Color15"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "ColorPreset",
+          "comment": "Color16"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "ColorPreset",
+          "comment": "Color17"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "ColorPreset",
+          "comment": "Color19"
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "ColorPreset",
+          "comment": "Color19"
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "ColorPreset",
+          "comment": "Color20"
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "ColorPreset",
+          "comment": "Color21"
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "ColorPreset",
+          "comment": "Color22"
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "ColorPreset",
+          "comment": "Color23"
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "ColorPreset",
+          "comment": "Color24"
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "ColorPreset",
+          "comment": "Color25"
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "ColorPreset",
+          "comment": "Color26"
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "ColorPreset",
+          "comment": "Color27"
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "ColorPreset",
+          "comment": "Color28"
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "ColorPreset",
+          "comment": "Color29"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ColorPreset",
+          "comment": "Color30"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ColorPreset",
+          "comment": "Color31"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Extended",
+      "channels": [
+        "Pan",
+        "Pan Fine",
+        "Tilt",
+        "Tilt Fine",
+        "P/T Speed",
+        "Reset",
+        "All Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Built In Color",
+        "Laser"
+      ]
+    },
+    {
+      "name": "Standard",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Reset",
+        "Laser"
+      ]
+    }
+  ]
+}
