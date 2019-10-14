@@ -95,7 +95,7 @@
       <LabeledValue
         v-if="fixture.rdm !== null"
         name="rdm">
-        <template slot="label">
+        <template #label>
           <abbr title="Remote Device Management">RDM</abbr> data
         </template>
 

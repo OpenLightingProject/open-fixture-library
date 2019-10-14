@@ -5,7 +5,7 @@
       :formstate="formstate"
       :name="`capability${capability.uuid}-${capability.typeData.effectNameOrPreset}`">
 
-      <template slot="label">
+      <template #label>
         <template v-if="capability.typeData.effectNameOrPreset === `effectName`">
           Effect name / <a
             href="#effectPreset"

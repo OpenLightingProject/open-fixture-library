@@ -6,7 +6,7 @@
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-${capability.typeData.speedOrDuration}`">
 
-      <template slot="label">
+      <template #label>
         <template v-if="capability.typeData.speedOrDuration === `duration`">
           Duration / <a
             href="#speed"

@@ -71,7 +71,7 @@
             </LabeledInput>
 
             <LabeledInput :formstate="formstate" name="new-manufacturer-rdmId">
-              <template slot="label"><abbr title="Remote Device Management">RDM</abbr> model ID</template>
+              <template #label><abbr title="Remote Device Management">RDM</abbr> model ID</template>
               <PropertyInputNumber
                 v-model="fixture.newManufacturerRdmId"
                 :schema-property="properties.manufacturer.rdmId"
@@ -136,7 +136,7 @@
             :formstate="formstate"
             name="rdmModelId"
             hint="The RDM manufacturer ID is saved per manufacturer.">
-            <template slot="label"><abbr title="Remote Device Management">RDM</abbr> model ID</template>
+            <template #label><abbr title="Remote Device Management">RDM</abbr> model ID</template>
             <PropertyInputNumber
               v-model="fixture.rdmModelId"
               :schema-property="properties.fixture.rdm.properties.modelId"

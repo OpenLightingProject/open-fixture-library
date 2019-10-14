@@ -6,7 +6,7 @@
       :multiple-inputs="true"
       :name="`capability${capability.uuid}-${capability.typeData.speedOrAngle}`">
 
-      <template slot="label">
+      <template #label>
         <template v-if="capability.typeData.speedOrAngle === `speed`">
           Speed / <a
             href="#angle"

@@ -6,7 +6,7 @@
     :tag="multipleInputs ? 'div' : 'label'">
 
     <LabeledValue :name="name">
-      <template slot="label">
+      <template #label>
         <template v-if="label">{{ label }}</template>
         <slot name="label" />
       </template>
@@ -56,7 +56,7 @@
 
   <label v-else>
     <LabeledValue>
-      <template slot="label">
+      <template #label>
         <template v-if="label">{{ label }}</template>
         <slot name="label" />
       </template>
