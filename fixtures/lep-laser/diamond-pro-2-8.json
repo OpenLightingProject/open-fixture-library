@@ -17,6 +17,7 @@
       "https://www.youtube.com/watch?v=YHbKlJp-M9k"
     ]
   },
+  "helpWanted": "Can you provide a link to a manual?",
   "physical": {
     "dimensions": [334, 125, 390],
     "weight": 7.0,
@@ -30,7 +31,7 @@
         {
           "dmxRange": [0, 63],
           "type": "Maintenance",
-          "comment": "Laser Off"
+          "comment": "Laser off"
         },
         {
           "dmxRange": [64, 127],
@@ -40,12 +41,12 @@
         {
           "dmxRange": [128, 159],
           "type": "Maintenance",
-          "comment": "Sound mode, (beam patterns)"
+          "comment": "Sound mode (beam patterns)"
         },
         {
           "dmxRange": [160, 191],
           "type": "Maintenance",
-          "comment": "Sound mode, (graphics)"
+          "comment": "Sound mode (graphics)"
         },
         {
           "dmxRange": [192, 255],
@@ -60,32 +61,32 @@
         {
           "dmxRange": [0, 0],
           "type": "Effect",
-          "effectName": "1 Line horiz."
+          "effectName": "1 Line horizontal"
         },
         {
           "dmxRange": [1, 1],
           "type": "Effect",
-          "effectName": "2 Lines horiz. stacked"
+          "effectName": "2 Lines horizontal stacked"
         },
         {
           "dmxRange": [2, 2],
           "type": "Effect",
-          "effectName": "2 Lines horiz. side by side"
+          "effectName": "2 Lines horizontal side by side"
         },
         {
           "dmxRange": [3, 3],
           "type": "Effect",
-          "effectName": "1 Line vert."
+          "effectName": "1 Line vertical"
         },
         {
           "dmxRange": [4, 4],
           "type": "Effect",
-          "effectName": "2 Lines vert. side by side"
+          "effectName": "2 Lines vertical side by side"
         },
         {
           "dmxRange": [5, 5],
           "type": "Effect",
-          "effectName": "2 Lines horiz. stacked"
+          "effectName": "2 Lines horizontal stacked"
         },
         {
           "dmxRange": [6, 6],
@@ -105,12 +106,12 @@
         {
           "dmxRange": [9, 9],
           "type": "Effect",
-          "effectName": "cardiogram"
+          "effectName": "Cardiogram"
         },
         {
           "dmxRange": [10, 10],
           "type": "Effect",
-          "effectName": "rectangle pulsed line"
+          "effectName": "Rectangle pulsed line"
         },
         {
           "dmxRange": [11, 11],
@@ -150,7 +151,7 @@
         {
           "dmxRange": [18, 18],
           "type": "Effect",
-          "effectName": "YinYang"
+          "effectName": "Yin Yang"
         },
         {
           "dmxRange": [19, 19],
@@ -175,12 +176,12 @@
         {
           "dmxRange": [23, 23],
           "type": "Effect",
-          "effectName": "4 legged Star"
+          "effectName": "4-pointed Star"
         },
         {
           "dmxRange": [24, 24],
           "type": "Effect",
-          "effectName": "5 legged Star"
+          "effectName": "5-pointed Star"
         },
         {
           "dmxRange": [25, 25],
@@ -215,12 +216,12 @@
         {
           "dmxRange": [31, 31],
           "type": "Effect",
-          "effectName": "Diamond horiz."
+          "effectName": "Diamond horizontal"
         },
         {
           "dmxRange": [32, 32],
           "type": "Effect",
-          "effectName": "2 Diamonds vert."
+          "effectName": "2 Diamonds vertical"
         },
         {
           "dmxRange": [33, 33],
@@ -255,27 +256,27 @@
         {
           "dmxRange": [39, 39],
           "type": "Effect",
-          "effectName": "5 Lines horiz.diagonal"
+          "effectName": "5 Lines horizontal diagonal"
         },
         {
           "dmxRange": [40, 40],
           "type": "Effect",
-          "effectName": "8 short lines horiz."
+          "effectName": "8 short lines horizontal"
         },
         {
           "dmxRange": [41, 41],
           "type": "Effect",
-          "effectName": "8 short lines vert. vert."
+          "effectName": "8 short lines vertical"
         },
         {
           "dmxRange": [42, 42],
           "type": "Effect",
-          "effectName": "7 Big points horiz.diagonal"
+          "effectName": "7 Big points horizontal diagonal"
         },
         {
           "dmxRange": [43, 43],
           "type": "Effect",
-          "effectName": "7 Big points horiz.diagonal"
+          "effectName": "7 Big points vertical diagonal"
         },
         {
           "dmxRange": [44, 44],
@@ -285,7 +286,7 @@
         {
           "dmxRange": [45, 45],
           "type": "Effect",
-          "effectName": "7 Small circles vert."
+          "effectName": "7 Small circles vertical"
         },
         {
           "dmxRange": [46, 46],
@@ -355,7 +356,7 @@
         {
           "dmxRange": [70, 73],
           "type": "Effect",
-          "effectName": "diagonal lines"
+          "effectName": "Diagonal lines"
         },
         {
           "dmxRange": [74, 74],
@@ -390,7 +391,7 @@
         {
           "dmxRange": [80, 80],
           "type": "Effect",
-          "effectName": "7 Triangles Vert."
+          "effectName": "7 Triangles vertical"
         },
         {
           "dmxRange": [81, 81],
@@ -435,17 +436,17 @@
         {
           "dmxRange": [103, 104],
           "type": "Effect",
-          "effectName": "dotted Circle"
+          "effectName": "Dotted Circle"
         },
         {
           "dmxRange": [105, 106],
           "type": "Effect",
-          "effectName": "dancing vert. line"
+          "effectName": "Dancing vertical line"
         },
         {
           "dmxRange": [107, 108],
           "type": "Effect",
-          "effectName": "dotted horiz. line  goes up…down"
+          "effectName": "Dotted horizontal line up…down"
         },
         {
           "dmxRange": [109, 114],
@@ -455,17 +456,17 @@
         {
           "dmxRange": [115, 116],
           "type": "Effect",
-          "effectName": "wobbly Sinus"
+          "effectName": "Wobbly Sinus"
         },
         {
           "dmxRange": [117, 118],
           "type": "Effect",
-          "effectName": "dotted Sinus up…down"
+          "effectName": "Dotted Sinus up…down"
         },
         {
           "dmxRange": [119, 120],
           "type": "Effect",
-          "effectName": "2dotted horiz. lines up…down"
+          "effectName": "2 dotted horizontal lines up…down"
         },
         {
           "dmxRange": [121, 122],
@@ -485,22 +486,22 @@
         {
           "dmxRange": [127, 128],
           "type": "Effect",
-          "effectName": "2 horiz. lines  revolving"
+          "effectName": "2 horizontal lines revolving"
         },
         {
           "dmxRange": [129, 130],
           "type": "Effect",
-          "effectName": "4 dottet lines dancing"
+          "effectName": "4 dotted lines dancing"
         },
         {
           "dmxRange": [131, 132],
           "type": "Effect",
-          "effectName": "2 dancing dottet vert. lines"
+          "effectName": "2 dancing dotted vertical lines"
         },
         {
           "dmxRange": [133, 134],
           "type": "Effect",
-          "effectName": "2 dancing vert. sinus"
+          "effectName": "2 dancing vertical sinus"
         },
         {
           "dmxRange": [135, 136],
@@ -509,8 +510,8 @@
         },
         {
           "dmxRange": [137, 255],
-          "type": "Effect",
-          "effectName": ""
+          "type": "NoFunction",
+          "helpWanted": "Can no pattern be selected in this DMX range?"
         }
       ]
     },
@@ -526,8 +527,7 @@
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "fast",
-          "speedEnd": "slow",
-          "comment": "Strobe slow…fast"
+          "speedEnd": "slow"
         }
       ]
     },
@@ -536,65 +536,52 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "Pan",
-          "angleStart": "0%",
-          "angleEnd": "100%",
-          "helpWanted": "Can you provide exact angles?",
-          "comment": "Horizontal beam position center"
+          "type": "BeamPosition",
+          "horizontalAngle": "center"
         },
         {
           "dmxRange": [1, 42],
-          "type": "Pan",
-          "angleStart": "0%",
-          "angleEnd": "100%",
-          "helpWanted": "Can you provide exact angles?",
-          "comment": "Beam position center…right"
+          "type": "BeamPosition",
+          "horizontalAngleStart": "center",
+          "horizontalAngleEnd": "right"
         },
         {
           "dmxRange": [43, 127],
-          "type": "Speed",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Beam position right…left"
+          "type": "BeamPosition",
+          "horizontalAngleStart": "right",
+          "horizontalAngleEnd": "left"
         },
         {
           "dmxRange": [128, 167],
-          "type": "Speed",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Beam position left…center"
+          "type": "BeamPosition",
+          "horizontalAngleStart": "left",
+          "horizontalAngleEnd": "center"
         },
         {
           "dmxRange": [168, 188],
-          "type": "Pan",
-          "angleStart": "0%",
-          "angleEnd": "100%",
-          "helpWanted": "Can you provide exact angles?",
-          "comment": "Movement left…right alternating slow…fast"
+          "type": "Effect",
+          "effectName": "Movement left…right alternating",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [189, 210],
-          "type": "Pan",
-          "angleStart": "0%",
-          "angleEnd": "100%",
-          "helpWanted": "Can you provide exact angles?",
-          "comment": "Movement right…left alternating slow…fast"
+          "type": "Effect",
+          "effectName": "Movement right…left alternating",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [211, 253],
-          "type": "Pan",
-          "angleStart": "0%",
-          "angleEnd": "100%",
-          "helpWanted": "Can you provide exact angles?",
-          "comment": "Movement 5 Steps right-left alternating slow…fast"
+          "type": "Effect",
+          "effectName": "Movement 5 Steps right…left alternating",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [254, 255],
-          "type": "Pan",
-          "angleStart": "0%",
-          "angleEnd": "100%",
-          "helpWanted": "Can you provide exact angles?",
-          "comment": "Horizontal beam position center"
+          "type": "BeamPosition",
+          "horizontalAngle": "center"
         }
       ]
     },
@@ -603,65 +590,52 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "Tilt",
-          "angleStart": "0%",
-          "angleEnd": "100%",
-          "helpWanted": "Can you provide exact angles?",
-          "comment": "Vertical beam position center"
+          "type": "BeamPosition",
+          "verticalAngle": "center"
         },
         {
           "dmxRange": [1, 42],
-          "type": "Tilt",
-          "angleStart": "0%",
-          "angleEnd": "100%",
-          "helpWanted": "Can you provide exact angles?",
-          "comment": "Beam position center…bottom"
+          "type": "BeamPosition",
+          "verticalAngleStart": "center",
+          "verticalAngleEnd": "bottom"
         },
         {
           "dmxRange": [43, 127],
-          "type": "Speed",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Beam position bottom…top"
+          "type": "BeamPosition",
+          "verticalAngleStart": "bottom",
+          "verticalAngleEnd": "top"
         },
         {
           "dmxRange": [128, 167],
-          "type": "Speed",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Beam position top…center"
+          "type": "BeamPosition",
+          "verticalAngleStart": "top",
+          "verticalAngleEnd": "center"
         },
         {
           "dmxRange": [168, 188],
-          "type": "Tilt",
-          "angleStart": "0%",
-          "angleEnd": "100%",
-          "helpWanted": "Can you provide exact angles?",
-          "comment": "Movement bottom…top alternating slow…fast"
+          "type": "Effect",
+          "effectName": "Movement bottom…top alternating",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [189, 210],
-          "type": "Tilt",
-          "angleStart": "0%",
-          "angleEnd": "100%",
-          "helpWanted": "Can you provide exact angles?",
-          "comment": "Movement top…bottom alternating slow…fast"
+          "type": "Effect",
+          "effectName": "Movement top…bottom alternating",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [211, 254],
-          "type": "Tilt",
-          "angleStart": "0%",
-          "angleEnd": "100%",
-          "helpWanted": "Can you provide exact angles?",
-          "comment": "Movement 5 Steps bottom…top alternating slow…fast"
+          "type": "Effect",
+          "effectName": "Movement 5 Steps bottom…top alternating",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [255, 255],
-          "type": "Tilt",
-          "angleStart": "0%",
-          "angleEnd": "100%",
-          "helpWanted": "Can you provide exact angles?",
-          "comment": "Vertical beam position center"
+          "type": "BeamPosition",
+          "verticalAngle": "center"
         }
       ]
     },
@@ -675,30 +649,29 @@
         {
           "dmxRange": [11, 109],
           "type": "Zoom",
-          "angleStart": "small",
-          "angleEnd": "big",
-          "comment": "Zoom narrow…wide"
+          "angleStart": "narrow",
+          "angleEnd": "wide"
         },
         {
           "dmxRange": [110, 154],
-          "type": "Speed",
+          "type": "Effect",
+          "effectName": "Zoom in",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Zoom in slow…fast"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [155, 204],
-          "type": "Speed",
+          "type": "Effect",
+          "effectName": "Zoom out",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Zoom out slow…fast"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [205, 255],
-          "type": "Speed",
+          "type": "Effect",
+          "effectName": "Alternate zoom in/out",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Alternate zoom in/out angle slow…fast"
+          "speedEnd": "fast"
         }
       ]
     },
@@ -709,16 +682,13 @@
           "dmxRange": [0, 150],
           "type": "Rotation",
           "angleStart": "0deg",
-          "angleEnd": "360deg",
-          "helpWanted": "Are these the correct angles?",
-          "comment": "Rotation 0…360°"
+          "angleEnd": "360deg"
         },
         {
           "dmxRange": [151, 255],
           "type": "Rotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW",
-          "comment": "Rotation CW slow…fast"
+          "speedEnd": "fast CW"
         }
       ]
     },
@@ -729,16 +699,13 @@
           "dmxRange": [0, 150],
           "type": "Rotation",
           "angleStart": "0deg",
-          "angleEnd": "360deg",
-          "helpWanted": "Are these the correct angles?",
-          "comment": "Rotation 0…360°"
+          "angleEnd": "360deg"
         },
         {
           "dmxRange": [151, 255],
           "type": "Rotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW",
-          "comment": "Rotation CW slow…fast"
+          "speedEnd": "fast CW"
         }
       ]
     },
@@ -749,23 +716,19 @@
           "dmxRange": [0, 180],
           "type": "Rotation",
           "angleStart": "0deg",
-          "angleEnd": "360deg",
-          "helpWanted": "Are these the correct angles?",
-          "comment": "Rotation 0…360°"
+          "angleEnd": "360deg"
         },
         {
           "dmxRange": [181, 217],
           "type": "Rotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW",
-          "comment": "Rotation CW slow…fast"
+          "speedEnd": "fast CW"
         },
         {
           "dmxRange": [218, 255],
           "type": "Rotation",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CCW",
-          "comment": "Rotation CCW slow…fast"
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -778,10 +741,8 @@
         },
         {
           "dmxRange": [64, 127],
-          "type": "EffectSpeed",
-          "speedStart": "fast",
-          "speedEnd": "slow",
-          "comment": "Dots visible with Pattern"
+          "type": "Effect",
+          "effectName": "Dots visible with Pattern"
         },
         {
           "dmxRange": [128, 191],
@@ -803,16 +764,12 @@
           "type": "NoFunction"
         },
         {
-          "dmxRange": [11, 180],
+          "dmxRange": [11, 255],
           "type": "Effect",
-          "effectName": "Wave overlay to Pattern"
-        },
-        {
-          "dmxRange": [181, 200],
-          "type": "EffectSpeed",
+          "effectName": "Wave overlay to Pattern",
           "speedStart": "slow",
           "speedEnd": "fast",
-          "comment": "Wave overlay fast"
+          "helpWanted": "Is this capability correct?"
         }
       ]
     },
@@ -862,23 +819,28 @@
           "colors": ["#00ffff"]
         },
         {
+          "dmxRange": [36, 138],
+          "type": "Generic",
+          "helpWanted": "Which colors can be selected in this DMX range?"
+        },
+        {
           "dmxRange": [139, 164],
           "type": "ColorPreset",
           "comment": "Multi-color"
         },
         {
           "dmxRange": [165, 174],
-          "type": "Speed",
+          "type": "Effect",
+          "effectPreset": "ColorJump",
           "speedStart": "fast",
-          "speedEnd": "slow",
-          "comment": "Color jump fast…slow"
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [175, 255],
-          "type": "Speed",
+          "type": "Effect",
+          "effectName": "Changing multi-color",
           "speedStart": "fast",
-          "speedEnd": "slow",
-          "comment": "Changing multi-color fast…slow"
+          "speedEnd": "slow"
         }
       ]
     }
@@ -886,6 +848,7 @@
   "modes": [
     {
       "name": "12-channel",
+      "shortName": "12ch",
       "channels": [
         "Mode Select",
         "Pattern Selection",
