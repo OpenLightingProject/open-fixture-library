@@ -1,9 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "diamond Pro 2.8",
-  "categories": ["Laser"],
+  "name": "Diamond PRO 2.8",
+  "categories": ["Laser", "Color Changer"],
   "meta": {
-    "authors": ["Dirk", "dirk"],
+    "authors": ["Dirk"],
     "createDate": "2019-10-04",
     "lastModifyDate": "2019-10-04",
     "importPlugin": {
@@ -12,17 +12,16 @@
       "comment": "created by Q Light Controller Plus (version 4.12.2)"
     }
   },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=YHbKlJp-M9k"
+    ]
+  },
   "physical": {
     "dimensions": [334, 125, 390],
-    "weight": 2.8,
+    "weight": 7.0,
     "power": 50,
-    "DMXconnector": "3-pin",
-    "bulb": {
-      "type": "Other"
-    },
-    "lens": {
-      "name": "Other"
-    }
+    "DMXconnector": "3-pin"
   },
   "availableChannels": {
     "Mode Select": {
