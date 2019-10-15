@@ -12,10 +12,10 @@
 
         <ul class="list">
           <li v-for="plugin in plugins.exportPlugins" :key="plugin">
-            <nuxt-link :to="`/about/plugins/${plugin}`">
-              <app-svg name="puzzle" class="left" />
+            <NuxtLink :to="`/about/plugins/${plugin}`">
+              <OflSvg name="puzzle" class="left" />
               <span class="name">{{ plugins.data[plugin].name }}</span>
-            </nuxt-link>
+            </NuxtLink>
           </li>
         </ul>
       </div>
@@ -23,14 +23,14 @@
       <div class="card">
         <h2>Import plugins</h2>
 
-        <div class="hint">for <nuxt-link to="/import-fixture-file">importing fixtures</nuxt-link> from other formats into OFL</div>
+        <div class="hint">for <NuxtLink to="/import-fixture-file">importing fixtures</NuxtLink> from other formats into OFL</div>
 
         <ul class="list">
           <li v-for="plugin in plugins.importPlugins" :key="plugin">
-            <nuxt-link :to="`/about/plugins/${plugin}`">
-              <app-svg name="puzzle" class="left" />
+            <NuxtLink :to="`/about/plugins/${plugin}`">
+              <OflSvg name="puzzle" class="left" />
               <span class="name">{{ plugins.data[plugin].name }}</span>
-            </nuxt-link>
+            </NuxtLink>
           </li>
         </ul>
       </div>
@@ -56,14 +56,9 @@ h3 {
 </style>
 
 <script>
-import plugins from '~~/plugins/plugins.json';
-
-import svgVue from '~/components/svg.vue';
+import plugins from '../../../../plugins/plugins.json';
 
 export default {
-  components: {
-    'app-svg': svgVue
-  },
   head() {
     const title = `Plugins`;
 
