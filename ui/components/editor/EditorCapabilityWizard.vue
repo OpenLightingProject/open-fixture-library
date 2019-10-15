@@ -71,7 +71,13 @@
     <span v-if="error" class="error-message">{{ error }}</span>
 
     <div class="button-bar right">
-      <button :disabled="error" class="restore primary" @click.prevent="apply">Generate capabilities</button>
+      <button
+        type="submit"
+        :disabled="error"
+        class="restore primary"
+        @click.prevent="apply">
+        Generate capabilities
+      </button>
     </div>
 
   </div>
