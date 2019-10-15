@@ -17,7 +17,7 @@
       </li>
     </ul>
 
-    <app-help-wanted-message
+    <HelpWantedMessage
       v-if="`helpWanted` in pluginData"
       type="plugin"
       :context="pluginData"
@@ -55,9 +55,9 @@
       <div v-html="pluginData.additionalInfo.join(`\n`)" />
     </div>
 
-    <p style="margin-top: 3rem;"><nuxt-link to="/about/plugins">Back to plugin overview</nuxt-link></p>
+    <p style="margin-top: 3rem;"><NuxtLink to="/about/plugins">Back to plugin overview</NuxtLink></p>
 
-    <app-help-wanted-dialog v-model="helpWantedContext" type="plugin" />
+    <HelpWantedDialog v-model="helpWantedContext" type="plugin" />
   </div>
 </template>
 
@@ -100,15 +100,15 @@
 </style>
 
 <script>
-import plugins from '~~/plugins/plugins.json';
+import plugins from '../../../../plugins/plugins.json';
 
-import helpWantedDialog from '~/components/help-wanted-dialog.vue';
-import helpWantedMessage from '~/components/help-wanted-message.vue';
+import HelpWantedDialog from '../../../components/HelpWantedDialog.vue';
+import HelpWantedMessage from '../../../components/HelpWantedMessage.vue';
 
 export default {
   components: {
-    'app-help-wanted-dialog': helpWantedDialog,
-    'app-help-wanted-message': helpWantedMessage
+    HelpWantedDialog,
+    HelpWantedMessage
   },
   validate({ params }) {
     return decodeURIComponent(params.plugin) in plugins.data;
