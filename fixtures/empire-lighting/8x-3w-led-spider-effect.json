@@ -17,45 +17,38 @@
       "https://forum.dmxcontrol-projects.org/core/index.php?attachment/12216-empire-lighting-led-spider-effekt-pdf/"
     ]
   },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
   "matrix": {
-    "pixelCount": [
-      null,
-      null,
-      1
-    ]
+    "pixelKeys": [
+      [
+        ["LED 1", "LED 2", "LED 3", "LED 4"],
+        [   null,    null,    null,    null],
+        ["LED 5", "LED 6", "LED 7", "LED 8"]
+      ]
+    ],
+    "pixelGroups": {
+      "Head 1": ["LED 1", "LED 2", "LED 3", "LED 4"],
+      "Head 2": ["LED 5", "LED 6", "LED 7", "LED 8"],
+      "Red": ["LED 1", "LED 5"],
+      "Green": ["LED 2", "LED 6"],
+      "Blue": ["LED 3", "LED 7"],
+      "White": ["LED 4", "LED 8"]
+    }
   },
   "availableChannels": {
-    "X1": {
-      "defaultValue": 0,
+    "Tilt Speed": {
       "capability": {
-        "type": "Tilt",
-        "angleStart": "0%",
-        "angleEnd": "100%",
-        "helpWanted": "Can you provide exact angles?",
-        "comment": "Tilt Kopf 1"
-      }
-    },
-    "X2": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0%",
-        "angleEnd": "100%",
-        "helpWanted": "Can you provide exact angles?",
-        "comment": "Tilt Kopf 2"
-      }
-    },
-    "X/Y Speed": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Speed"
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
       }
     },
     "Master Dimmer": {
       "defaultValue": 0,
       "capability": {
-        "type": "Intensity",
-        "comment": "Helligkeit Gesamt"
+        "type": "Intensity"
       }
     },
     "Strobe": {
@@ -63,172 +56,147 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "Effect",
-          "effectName": "closed"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [8, 15],
-          "type": "Effect",
-          "effectName": "open"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [16, 131],
-          "type": "Effect",
-          "effectName": "strobo",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [132, 139],
-          "type": "Effect",
-          "effectName": "open"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [140, 181],
-          "type": "Effect",
-          "effectName": "fast open -> slow close"
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown"
         },
         {
           "dmxRange": [182, 189],
-          "type": "Effect",
-          "effectName": "open"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [190, 231],
-          "type": "Effect",
-          "effectName": "slow open -> fast close"
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp"
         },
         {
           "dmxRange": [232, 239],
-          "type": "Effect",
-          "effectName": "open"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [240, 247],
-          "type": "Effect",
-          "effectName": "random strobo"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
         },
         {
           "dmxRange": [248, 255],
-          "type": "Effect",
-          "effectName": "open"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
-    },
-    "LED1": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "Helligkeit"
-      }
-    },
-    "LED2": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "Helligkeit"
-      }
-    },
-    "LED3": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "Helligkeit"
-      }
-    },
-    "LED4": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White",
-        "comment": "Helligkeit"
-      }
-    },
-    "LED5": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "Helligkeit"
-      }
-    },
-    "LED6": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "Helligkeit"
-      }
-    },
-    "LED7": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "Helligkeit"
-      }
-    },
-    "LED8": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White",
-        "comment": "Helligkeit"
-      }
     },
     "Mode": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "Maintenance",
+          "type": "NoFunction",
           "comment": "DMX"
         },
         {
           "dmxRange": [8, 63],
-          "type": "Maintenance",
-          "comment": "automode"
+          "type": "Effect",
+          "effectName": "Auto mode"
         },
         {
           "dmxRange": [64, 127],
-          "type": "Maintenance",
-          "comment": "music mode"
+          "type": "Effect",
+          "effectName": "Music mode",
+          "soundControlled": true
         },
         {
           "dmxRange": [128, 255],
           "type": "Maintenance",
-          "comment": "reset"
+          "comment": "Reset"
         }
       ]
     }
   },
-  "templateChannels": {},
+  "templateChannels": {
+    "Tilt $pixelKey": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "helpWanted": "Can you provide exact angles?"
+      }
+    },
+    "Red $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Helligkeit"
+      }
+    },
+    "Green $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Helligkeit"
+      }
+    },
+    "Blue $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Helligkeit"
+      }
+    },
+    "White $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "Helligkeit"
+      }
+    }
+  },
   "modes": [
     {
-      "name": "Head1",
-      "physical": {
-        "DMXconnector": "3-pin",
-        "lens": {
-          "name": "Other"
-        }
-      },
+      "name": "14-channel",
+      "shortName": "14ch",
       "channels": [
-        "X1",
-        "X2",
-        "X/Y Speed",
+        "Tilt Head 1",
+        "Tilt Head 2",
+        "Tilt Speed",
         "Master Dimmer",
         "Strobe",
-        "LED1",
-        "LED2",
-        "LED3",
-        "LED4",
-        "LED5",
-        "LED6",
-        "LED7",
-        "LED8",
+        "Red LED 1",
+        "Green LED 2",
+        "Blue LED 3",
+        "White LED 4",
+        "Red LED 5",
+        "Green LED 6",
+        "Blue LED 7",
+        "White LED 8",
         "Mode"
       ]
     }
