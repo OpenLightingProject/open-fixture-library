@@ -8,8 +8,18 @@
     Do you want to restore the data (auto-saved <time>{{ restoredDate }}</time>) to continue to create the fixture?
 
     <div class="button-bar right">
-      <button class="discard secondary" @click.prevent="discardRestored">Discard data</button>
-      <button class="restore primary" @click.prevent="applyRestored">Restore to continue work</button>
+      <button
+        type="submit"
+        class="discard secondary"
+        @click.prevent="discardRestored">
+        Discard data
+      </button>
+      <button
+        type="submit"
+        class="restore primary"
+        @click.prevent="applyRestored">
+        Restore to continue work
+      </button>
     </div>
 
   </A11yDialog>

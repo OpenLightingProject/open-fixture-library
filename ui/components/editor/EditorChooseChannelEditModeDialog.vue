@@ -7,8 +7,18 @@
     @show="onChooseChannelEditModeDialogOpen">
 
     <div class="button-bar right">
-      <button class="secondary" @click.prevent="chooseChannelEditMode(`edit-duplicate`)">Only in this mode</button>
-      <button class="primary" @click.prevent="chooseChannelEditMode(`edit-all`)">In all modes</button>
+      <button
+        type="submit"
+        class="secondary"
+        @click.prevent="chooseChannelEditMode(`edit-duplicate`)">
+        Only in this mode
+      </button>
+      <button
+        type="submit"
+        class="primary"
+        @click.prevent="chooseChannelEditMode(`edit-all`)">
+        In all modes
+      </button>
     </div>
 
   </A11yDialog>

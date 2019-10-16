@@ -315,7 +315,7 @@ export default {
     LabeledValue
   },
   mixins: [fixtureLinksMixin],
-  Validate({ params }) {
+  validate({ params }) {
     return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
   },
   async asyncData({ params, query, app, redirect }) {
