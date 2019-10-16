@@ -31,10 +31,10 @@
     "pixelGroups": {
       "Head 1": ["LED 1", "LED 2", "LED 3", "LED 4"],
       "Head 2": ["LED 5", "LED 6", "LED 7", "LED 8"],
-      "Red": ["LED 1", "LED 5"],
-      "Green": ["LED 2", "LED 6"],
-      "Blue": ["LED 3", "LED 7"],
-      "White": ["LED 4", "LED 8"]
+      "Left": ["LED 1", "LED 5"],
+      "Middle-Left": ["LED 2", "LED 6"],
+      "Middle-Right": ["LED 3", "LED 7"],
+      "Right": ["LED 4", "LED 8"]
     }
   },
   "availableChannels": {
@@ -176,6 +176,22 @@
     }
   },
   "modes": [
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Tilt Head 1",
+        "Tilt Head 2",
+        "Tilt Speed",
+        "Master Dimmer",
+        "Strobe",
+        "Red Left",
+        "Green Middle-Left",
+        "Blue Middle-Right",
+        "White Right",
+        "Mode"
+      ]
+    },
     {
       "name": "14-channel",
       "shortName": "14ch",
