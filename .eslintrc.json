@@ -129,7 +129,14 @@
     "promise/no-promise-in-callback": "off",
     "promise/no-return-in-finally": "error",
     "promise/valid-params": "error",
-    "vue/component-name-in-template-casing": ["error", "kebab-case"],
+    "vue/component-name-in-template-casing": ["error", "PascalCase", {
+      "registeredComponentsOnly": false,
+      "ignores": [
+        "vue-form",
+        "validate",
+        "field-messages"
+      ]
+    }],
     "vue/html-closing-bracket-newline": ["error", {
       "singleline": "never",
       "multiline": "never"
@@ -164,7 +171,11 @@
     }],
     "vue/prop-name-casing": "error",
     "vue/require-direct-export": "error",
-    "vue/v-on-function-call": "error"
+    "vue/v-on-function-call": "error",
+    "vue/match-component-file-name": ["error", {
+      "extensions": ["vue"],
+      "shouldMatchCase": true
+    }]
   },
   "settings": {
     "jsdoc": {
