@@ -1,0 +1,398 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Lux Ld01",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Thomaxz"],
+    "createDate": "2019-10-18",
+    "lastModifyDate": "2019-10-18"
+  },
+  "links": {
+    "manual": [
+      "https://manualzz.com/download/943540"
+    ],
+    "productPage": [
+      "https://www.i-bidder.com/en-gb/auction-catalogues/pro-auction/catalogue-id-pr10125/lot-81f53109-6251-4d68-a5c6-a30e009cf2e4"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=EKwxFZwRC3M"
+    ]
+  },
+  "physical": {
+    "dimensions": [173, 249, 173],
+    "weight": 3.8,
+    "power": 83.6,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Flower"
+        },
+        {
+          "type": "Gobo",
+          "name": "Light Swirl"
+        },
+        {
+          "type": "Gobo",
+          "name": "Triangle Circle"
+        },
+        {
+          "type": "Gobo",
+          "name": "Small Hearts"
+        },
+        {
+          "type": "Gobo",
+          "name": "Small lights"
+        },
+        {
+          "type": "Gobo",
+          "name": "Star like"
+        },
+        {
+          "type": "Gobo",
+          "name": "Big swirl"
+        },
+        {
+          "type": "Gobo",
+          "name": "Lines in quads"
+        },
+        {
+          "type": "Gobo",
+          "name": "Another type of flower"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Vector Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer / Strobe": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Also used for strobe"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 21],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [22, 34],
+          "type": "ColorPreset",
+          "comment": "RED",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [35, 49],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [50, 63],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [64, 77],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#009999"]
+        },
+        {
+          "dmxRange": [78, 91],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [92, 105],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [106, 119],
+          "type": "ColorPreset",
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [120, 133],
+          "type": "ColorPreset",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [134, 147],
+          "type": "ColorPreset",
+          "comment": "Chartreuse"
+        },
+        {
+          "dmxRange": [148, 161],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [162, 175],
+          "type": "ColorPreset",
+          "comment": "Brown"
+        },
+        {
+          "dmxRange": [176, 189],
+          "type": "ColorPreset",
+          "comment": "Gold"
+        },
+        {
+          "dmxRange": [190, 203],
+          "type": "ColorPreset",
+          "comment": "Crimson"
+        },
+        {
+          "dmxRange": [204, 217],
+          "type": "ColorPreset",
+          "comment": "Violet"
+        },
+        {
+          "dmxRange": [218, 231],
+          "type": "ColorPreset",
+          "comment": "Crape"
+        },
+        {
+          "dmxRange": [232, 254],
+          "type": "ColorPreset",
+          "comment": "Color Change Macro 1"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Vector Speed (Color)": {
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Vector speeed for color"
+      }
+    },
+    "Movement Macros": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Auto programs and Sound programs"
+      }
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [80, 94],
+          "type": "WheelShake",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [95, 109],
+          "type": "WheelShake",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [110, 124],
+          "type": "WheelShake",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [125, 139],
+          "type": "WheelShake",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [140, 154],
+          "type": "WheelShake",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [155, 169],
+          "type": "WheelShake",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [170, 184],
+          "type": "WheelShake",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [185, 199],
+          "type": "WheelShake",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [200, 214],
+          "type": "WheelShake",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [215, 235],
+          "type": "Effect",
+          "effectName": "Possitve rainbow effect with increasing speed"
+        },
+        {
+          "dmxRange": [236, 254],
+          "type": "Effect",
+          "effectName": "Negative rainbow effect with increasing speed"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "13 Channel",
+      "shortName": "13ch",
+      "channels": [
+        "Pan 3",
+        "Pan 3 fine",
+        "Tilt 2",
+        "Tilt 2 fine",
+        "Vector Speed",
+        "Dimmer / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros",
+        "Vector Speed (Color)",
+        "Movement Macros",
+        "Gobo Wheel"
+      ]
+    }
+  ]
+}
