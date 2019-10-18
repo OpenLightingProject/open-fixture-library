@@ -72,7 +72,7 @@ const gdtfUnits = {
   AngularAcc(value) {
     return `${value}deg/s2`;
   },
-  WaveLength(value) {
+  Wavelength(value) {
     return `${value}nm`;
   },
   ColorComponent(value) {
