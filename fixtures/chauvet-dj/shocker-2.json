@@ -1,0 +1,91 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Shocker 2",
+  "categories": ["Strobe", "Blinder"],
+  "meta": {
+    "authors": ["Dark_Llama"],
+    "createDate": "2019-10-20",
+    "lastModifyDate": "2019-10-20"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2017/12/Shocker_2_UM_Rev2_WO.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/shocker-2/"
+    ]
+  },
+  "physical": {
+    "dimensions": [309.5, 153, 96],
+    "weight": 4.7,
+    "power": 154,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "COB LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [51, 51]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1 Channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "2 Channel",
+      "shortName": "2ch",
+      "channels": [
+        "White",
+        "White 2"
+      ]
+    },
+    {
+      "name": "4 Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "White",
+        "White 2",
+        "Strobe"
+      ]
+    }
+  ]
+}
