@@ -10,7 +10,7 @@ require(`../lib/load-env-file.js`);
 
 const USER_AGENT = require(`default-user-agent`)();
 const GITHUB_COMMENT_HEADING = `## Broken links update`;
-const TIMEOUT = 20000;
+const TIMEOUT = 30000;
 
 const SiteCrawler = require(`../lib/site-crawler.js`);
 
