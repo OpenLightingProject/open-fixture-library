@@ -4,11 +4,12 @@
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["Joseph Gates"],
-    "createDate": "2019-10-12",
-    "lastModifyDate": "2019-10-12"
+    "createDate": "2019-10-21",
+    "lastModifyDate": "2019-10-21"
   },
   "links": {
     "manual": [
+      "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737494635",
       "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737484146"
     ],
     "productPage": [
@@ -24,9 +25,12 @@
     "power": 147,
     "DMXconnector": "5-pin",
     "bulb": {
-      "type": "LED",
+      "type": "60 Lumileds LUXEON Rebel LED",
       "lumens": 6932
     }
+  },
+  "rdm": {
+    "modelId": 517
   },
   "availableChannels": {
     "Intensity": {
@@ -52,24 +56,37 @@
         "color": "Blue"
       }
     },
-    "Strobe": {
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe",
-        "speedStart": "1Hz",
-        "speedEnd": "50Hz"
-      }
-    },
     "Lime": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Lime"
       }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "33Hz"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "NoFunction"
+        }
+      ]
     }
   },
   "modes": [
     {
-      "name": "5ch (Default)",
+      "name": "5 Channel (Default)",
+      "shortName": "5ch",
+      "rdmPersonalityIndex": 1,
       "channels": [
         "Intensity",
         "Red",
@@ -79,22 +96,9 @@
       ]
     },
     {
-      "name": "RGB",
-      "channels": [
-        "Red",
-        "Green",
-        "Blue"
-      ]
-    },
-    {
-      "name": "1ch",
-      "channels": [
-        "Intensity"
-      ]
-    },
-    {
       "name": "Direct",
-      "shortName": "Dir",
+      "shortName": "dir",
+      "rdmPersonalityIndex": 2,
       "channels": [
         "Intensity",
         "Red",
@@ -102,6 +106,24 @@
         "Blue",
         "Lime",
         "Strobe"
+      ]
+    },
+    {
+      "name": "1 Channel",
+      "shortName": "1ch",
+      "rdmPersonalityIndex": 3,
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "RGB",
+      "shortName": "rgb",
+      "rdmPersonalityIndex": 4,
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
       ]
     }
   ]
