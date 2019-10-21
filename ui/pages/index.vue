@@ -8,7 +8,7 @@
         <h1>Open Fixture Library</h1>
       </div>
 
-      <app-download-button :fixture-count="fixtureCount" button-style="home" />
+      <DownloadButton :fixture-count="fixtureCount" button-style="home" />
     </header>
 
 
@@ -24,7 +24,7 @@
 
         <ul class="list">
           <li v-for="fixture in lastUpdated" :key="fixture.key">
-            <nuxt-link
+            <NuxtLink
               :to="`/${fixture.key}`"
               :style="{ borderLeftColor: fixture.color }"
               class="manufacturer-color">
@@ -39,14 +39,14 @@
                 </time>
               </div>
 
-            </nuxt-link>
+            </NuxtLink>
           </li>
         </ul>
 
-        <nuxt-link to="/manufacturers" class="card dark blue big-button" title="Browse all fixtures by manufacturer">
-          <app-svg name="folder-multiple" />
+        <NuxtLink to="/manufacturers" class="card dark blue big-button" title="Browse all fixtures by manufacturer">
+          <OflSvg name="folder-multiple" />
           <h2>Browse fixtures</h2>
-        </nuxt-link>
+        </NuxtLink>
       </section>
 
       <section class="card">
@@ -54,34 +54,34 @@
 
         <ul class="list">
           <li v-for="contributor in recentContributors" :key="contributor.name">
-            <nuxt-link :to="`/${contributor.latestFixtureKey}`">
+            <NuxtLink :to="`/${contributor.latestFixtureKey}`">
               {{ contributor.name }}
               <div class="hint">
                 {{ contributor.number }} fixture{{ contributor.number === 1 ? `` : `s` }}, latest: {{ contributor.latestFixtureName }}
               </div>
-            </nuxt-link>
+            </NuxtLink>
           </li>
         </ul>
 
-        <nuxt-link to="/fixture-editor" class="card dark light-green big-button" title="Become a top contributer yourself!">
-          <app-svg name="plus" />
+        <NuxtLink to="/fixture-editor" class="card dark light-green big-button" title="Become a top contributer yourself!">
+          <OflSvg name="plus" />
           <h2>Add fixture</h2>
-        </nuxt-link>
+        </NuxtLink>
       </section>
 
     </div>
 
     <div class="grid-3 centered">
       <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+-label%3Atype-bug" rel="nofollow" class="card slim">
-        <app-svg name="lightbulb-on-outline" class="left" />
+        <OflSvg name="lightbulb-on-outline" class="left" />
         <span>Request feature</span>
       </a>
       <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card slim">
-        <app-svg name="bug" class="left" />
+        <OflSvg name="bug" class="left" />
         <span>Report problem</span>
       </a>
       <a href="https://github.com/OpenLightingProject/open-fixture-library" class="card slim">
-        <app-svg name="github-circle" class="left" />
+        <OflSvg name="github-circle" class="left" />
         <span>View source</span>
       </a>
     </div>
@@ -89,17 +89,15 @@
 </template>
 
 <script>
-import svg from '~/components/svg.vue';
-import downloadButtonVue from '~/components/download-button.vue';
+import packageJson from '../../package.json';
+import register from '../../fixtures/register.json';
+import manufacturers from '../../fixtures/manufacturers.json';
 
-import packageJson from '~~/package.json';
-import register from '~~/fixtures/register.json';
-import manufacturers from '~~/fixtures/manufacturers.json';
+import DownloadButton from '../components/DownloadButton.vue';
 
 export default {
   components: {
-    'app-svg': svg,
-    'app-download-button': downloadButtonVue
+    DownloadButton
   },
   data() {
     return {

@@ -10,10 +10,10 @@
 
     <a href="#content" class="accessibility">Skip to content</a>
 
-    <app-header @focus-content="focusContent" />
+    <HeaderBar @focus-content="focusContent" />
 
     <div id="content" ref="content" tabindex="-1">
-      <nuxt />
+      <Nuxt />
     </div>
 
   </div>
@@ -62,11 +62,11 @@
 
 
 <script>
-import header from '~/components/header';
+import HeaderBar from '../components/HeaderBar.vue';
 
 export default {
   components: {
-    'app-header': header
+    HeaderBar
   },
   data() {
     return {

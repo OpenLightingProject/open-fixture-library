@@ -5,18 +5,18 @@
     <div class="card">
       <ul :class="[`list`, `fixtures`, `category-${categoryClass}`]">
         <li v-for="fixture in fixtures" :key="fixture.key">
-          <nuxt-link
+          <NuxtLink
             :to="fixture.link"
             :style="{ borderLeftColor: fixture.color }"
             class="manufacturer-color">
             <span class="name">{{ fixture.name }}</span>
-            <app-svg
+            <OflSvg
               v-for="cat in fixture.categories"
               :key="cat"
               :name="cat"
               :class="{ inactive: cat !== categoryName, right: true }"
               type="fixture" />
-          </nuxt-link>
+          </NuxtLink>
         </li>
       </ul>
     </div>
@@ -24,15 +24,10 @@
 </template>
 
 <script>
-import svg from '~/components/svg.vue';
-
-import register from '~~/fixtures/register.json';
-import manufacturers from '~~/fixtures/manufacturers.json';
+import register from '../../../fixtures/register.json';
+import manufacturers from '../../../fixtures/manufacturers.json';
 
 export default {
-  components: {
-    'app-svg': svg
-  },
   validate({ params }) {
     return decodeURIComponent(params.category) in register.categories;
   },
