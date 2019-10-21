@@ -10,6 +10,7 @@ require(`../lib/load-env-file.js`);
 
 const USER_AGENT = require(`default-user-agent`)();
 const GITHUB_COMMENT_HEADING = `## Broken links update`;
+const TIMEOUT = 20000;
 
 const SiteCrawler = require(`../lib/site-crawler.js`);
 
@@ -153,7 +154,7 @@ async function testExternalLink(url) {
       headers: {
         'user-agent': USER_AGENT
       },
-      timeout: 10000
+      timeout: TIMEOUT
     };
 
     return new Promise((resolve, reject) => {
