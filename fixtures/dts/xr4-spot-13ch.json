@@ -1,0 +1,585 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "XR4 SPOT 13ch",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["lightroom"],
+    "createDate": "2019-10-22",
+    "lastModifyDate": "2019-10-22",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2019-10-22",
+      "comment": "created by Q Light Controller Plus (version 4.12.2)"
+    }
+  },
+  "physical": {
+    "dimensions": [426, 590, 415],
+    "weight": 20,
+    "power": 350,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "MSD 250W",
+      "colorTemperature": 8500,
+      "lumens": 18000
+    },
+    "lens": {
+      "name": "Other"
+    }
+  },
+  "wheels": {
+    "Color Wheel 1": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Split White / Lavender",
+          "colors": ["#ffffff", "#ffaaff"]
+        },
+        {
+          "type": "Color",
+          "name": "Lavender",
+          "colors": ["#ffaaff", "#ffaa00"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Lavender / Orange",
+          "colors": ["#ffaa00", "#ffaaff"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ffaa00", "#ff7000"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Orange / Green",
+          "colors": ["#ff7000", "#55ff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00ff7f", "#00c628"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Green / Blue",
+          "colors": ["#00c628", "#00aaff"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#00aaff", "#f4001c"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Blue / Pink",
+          "colors": ["#00aaff", "#ff55ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#ff55ff", "#660adb"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Pink / dark Blue",
+          "colors": ["#5555ff", "#ff00ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Dark Blue",
+          "colors": ["#5555ff", "#ffbf00"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Dark Blue / Yellow",
+          "colors": ["#5555ff", "#ffff7f"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00", "#ffffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Yellow / Red",
+          "colors": ["#ffff00", "#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Split Red / White",
+          "colors": ["#ff0000", "#ffffff"]
+        }
+      ]
+    },
+    "Gobo": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Sonne color"
+        },
+        {
+          "type": "Gobo",
+          "name": "Splash color"
+        },
+        {
+          "type": "Gobo",
+          "name": "Chess"
+        },
+        {
+          "type": "Gobo",
+          "name": "Splash"
+        },
+        {
+          "type": "Gobo",
+          "name": "Ugly"
+        },
+        {
+          "type": "Gobo",
+          "name": "Freaky Helix"
+        },
+        {
+          "type": "Gobo",
+          "name": "Dots and Triangle"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 127,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 127,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Movement Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Speed",
+          "comment": "Standard"
+        },
+        {
+          "dmxRange": [11, 25],
+          "type": "Speed",
+          "comment": "Pan/tilt movement fast"
+        },
+        {
+          "dmxRange": [26, 127],
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Pan/tilt movement fast…slow (Vector mode)"
+        },
+        {
+          "dmxRange": [128, 247],
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Pan/tilt movement fast…slow (Reaction time to DMX signal)"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Speed",
+          "comment": "Pan/tilt movement slow (Reaction time to DMX signal)"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "Intensity",
+          "comment": "Intensity off"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "Intensity",
+          "comment": "Intensity dark…bright"
+        }
+      ]
+    },
+    "Shutter": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Shutter closed"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Shutter closed"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true,
+          "comment": "Random Strobe"
+        },
+        {
+          "dmxRange": [80, 139],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe speed slow to fast"
+        },
+        {
+          "dmxRange": [140, 179],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Pulse open speed slow to fast"
+        },
+        {
+          "dmxRange": [180, 219],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "pulse close speed slow to fast"
+        },
+        {
+          "dmxRange": [220, 227],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Colourand Gobo in black-out"
+        },
+        {
+          "dmxRange": [228, 233],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Pan and Tilt in black-out"
+        },
+        {
+          "dmxRange": [234, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        }
+      ]
+    },
+    "Color Wheel 1": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [11, 21],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Split White / Lavender"
+        },
+        {
+          "dmxRange": [22, 32],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Lavender"
+        },
+        {
+          "dmxRange": [33, 43],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Split Lavender / Orange"
+        },
+        {
+          "dmxRange": [44, 54],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [55, 65],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Split Orange / Green"
+        },
+        {
+          "dmxRange": [66, 76],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [77, 87],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Split Green / Blue"
+        },
+        {
+          "dmxRange": [88, 98],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [99, 109],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "Split Blue / Pink"
+        },
+        {
+          "dmxRange": [110, 120],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [121, 131],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "Split Pink / dark Blue"
+        },
+        {
+          "dmxRange": [132, 142],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "Dark Blue"
+        },
+        {
+          "dmxRange": [143, 153],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "Split Dark Blue / Yellow"
+        },
+        {
+          "dmxRange": [154, 164],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [165, 175],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "Split Yellow / Red"
+        },
+        {
+          "dmxRange": [176, 186],
+          "type": "WheelSlot",
+          "slotNumber": 17,
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [187, 197],
+          "type": "WheelSlot",
+          "slotNumber": 18,
+          "comment": "Split Red / White"
+        },
+        {
+          "dmxRange": [198, 224],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW",
+          "comment": "Color Wheel rotation CW fast…slow"
+        },
+        {
+          "dmxRange": [225, 228],
+          "type": "WheelRotation",
+          "speed": "stop",
+          "comment": "Color Wheel rotation stop"
+        },
+        {
+          "dmxRange": [229, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW",
+          "comment": "Color Wheel rotation CCW slow…fast"
+        }
+      ]
+    },
+    "Gobo": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [26, 51],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Sonne color"
+        },
+        {
+          "dmxRange": [52, 77],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "Splash color"
+        },
+        {
+          "dmxRange": [78, 103],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "Chess"
+        },
+        {
+          "dmxRange": [104, 129],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "Splash"
+        },
+        {
+          "dmxRange": [130, 155],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "Ugly"
+        },
+        {
+          "dmxRange": [156, 181],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "Freaky Helix"
+        },
+        {
+          "dmxRange": [182, 207],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "Dots and Triangle"
+        },
+        {
+          "dmxRange": [208, 255],
+          "type": "WheelSlotRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Gobo rotation slow to fast"
+        }
+      ]
+    },
+    "Gobo Rotation - Prism Rotation": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Proportional index 0° / 360°"
+        },
+        {
+          "dmxRange": [128, 180],
+          "type": "WheelSlotRotation",
+          "wheel": "",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW",
+          "comment": "Gobo rotation max to min"
+        },
+        {
+          "dmxRange": [181, 202],
+          "type": "WheelSlotRotation",
+          "wheel": "",
+          "speed": "stop",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [203, 255],
+          "type": "WheelSlotRotation",
+          "wheel": "",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Gobo rotation min to max"
+        }
+      ]
+    },
+    "Prism": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "NoFunction",
+          "comment": "No effect"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Prism",
+          "comment": "0-facet Prism"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Maintenance",
+          "comment": "Total Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "13ch mode",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Movement Speed",
+        "Dimmer",
+        "Shutter",
+        "Color Wheel 1",
+        "Gobo",
+        "Gobo Rotation - Prism Rotation",
+        "Prism",
+        "Zoom",
+        "Reset"
+      ]
+    }
+  ]
+}
