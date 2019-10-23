@@ -1,0 +1,209 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LiteBarH9",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["dywilson"],
+    "createDate": "2019-10-23",
+    "lastModifyDate": "2019-10-23"
+  },
+  "links": {
+    "other": [
+      "https://www.showtech.com.au/product/litebar-h9/"
+    ]
+  },
+  "availableChannels": {
+    "Red 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "UV 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Red 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "UV 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Red 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "UV 3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [15, 255],
+          "type": "EffectParameter",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        }
+      ]
+    },
+    "Variable": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "1%",
+          "soundSensitivityEnd": "100%"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dim Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "23Ch",
+      "channels": [
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "Amber 1",
+        "White 1",
+        "UV 1",
+        "Red 2",
+        "Green 2",
+        "Blue 2",
+        "Amber 2",
+        "White 2",
+        "UV 2",
+        "Red 3",
+        "Green 3",
+        "Blue 3",
+        "Amber 3",
+        "White 3",
+        "UV 3",
+        "Color Macros",
+        "Variable",
+        "Effects",
+        "Dimmer",
+        "Dim Speed"
+      ]
+    }
+  ]
+}
