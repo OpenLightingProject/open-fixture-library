@@ -1,0 +1,82 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LP64 LED-PROMO",
+  "shortName": "PAR LED 64  ",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Proteus"],
+    "createDate": "2019-10-25",
+    "lastModifyDate": "2019-10-25"
+  },
+  "links": {
+    "manual": [
+      "https://www.ibiza-light.com/media/catalog/product/LP64LED-PROMO_manual.pdf"
+    ],
+    "productPage": [
+      "https://www.ibiza-light.com/produits-2/light-effects/disco-lighting/effet-lumineux-disco/led-projector-64-dmx-promo.html"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Program Speed": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Red",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Color Macros",
+        "Program Speed"
+      ]
+    }
+  ]
+}
