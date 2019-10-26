@@ -34,7 +34,7 @@
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
-        "angleEnd": "270deg"
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
@@ -42,13 +42,13 @@
       "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
-        "angleStart": "170deg",
-        "angleEnd": "0deg"
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
       }
     },
-    "Position Mspeed": {
+    "Pan/Tilt Speed": {
       "capability": {
-        "type": "Speed",
+        "type": "PanTiltSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
@@ -88,17 +88,26 @@
         "type": "ColorPreset"
       }
     },
-    "Intensity": {
+    "Dimmer": {
       "capability": {
         "type": "Intensity"
       }
     },
     "Strobe": {
-      "capability": {
-        "type": "StrobeSpeed",
-        "speedStart": "0Hz",
-        "speedEnd": "120Hz"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
     },
     "Zoom": {
       "capability": {
@@ -115,21 +124,21 @@
   },
   "modes": [
     {
-      "name": "Extended",
-      "shortName": "621_15ch",
+      "name": "Advanced 15-channel",
+      "shortName": "15ch",
       "channels": [
         "Pan",
         "Pan fine",
         "Tilt",
         "Tilt fine",
-        "Position Mspeed",
+        "Pan/Tilt Speed",
         "Red",
         "Green",
         "Blue",
         "White",
         "Amber",
         "ColourMix",
-        "Intensity",
+        "Dimmer",
         "Strobe",
         "Zoom",
         "Control"
