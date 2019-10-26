@@ -97,63 +97,63 @@
         {
           "dmxRange": [11, 30],
           "type": "ColorPreset",
-          "comment": "Red 100% / Green increasing / Blue 0%",
+          "comment": "Red … Yellow",
           "colorsStart": ["#ff0000"],
           "colorsEnd": ["#ffff00"]
         },
         {
           "dmxRange": [31, 50],
           "type": "ColorPreset",
-          "comment": "Red decreasing / Green 100% / Blue 0%",
+          "comment": "Yellow … Green",
           "colorsStart": ["#ffff00"],
           "colorsEnd": ["#00ff00"]
         },
         {
           "dmxRange": [51, 70],
           "type": "ColorPreset",
-          "comment": "Red 0% / Green 100% / Blue increasing",
+          "comment": "Green … Cyan",
           "colorsStart": ["#00ff00"],
           "colorsEnd": ["#00ffff"]
         },
         {
           "dmxRange": [71, 90],
           "type": "ColorPreset",
-          "comment": "Red 0% / Green decreasing / Blue 100%",
+          "comment": "Cyan … Blue",
           "colorsStart": ["#00ffff"],
           "colorsEnd": ["#0000ff"]
         },
         {
           "dmxRange": [91, 110],
           "type": "ColorPreset",
-          "comment": "Red increasing / Green 0% / Blue 100%",
+          "comment": "Blue … Magenta",
           "colorsStart": ["#0000ff"],
           "colorsEnd": ["#ff00ff"]
         },
         {
           "dmxRange": [111, 130],
           "type": "ColorPreset",
-          "comment": "Red 100% / Green 0% / Blue decreasing",
+          "comment": "Magenta … Red",
           "colorsStart": ["#ff00ff"],
           "colorsEnd": ["#ff0000"]
         },
         {
           "dmxRange": [131, 150],
           "type": "ColorPreset",
-          "comment": "Red 100% / Green increasing / Blue increasing",
+          "comment": "Red … White",
           "colorsStart": ["#ff0000"],
           "colorsEnd": ["#ffffff"]
         },
         {
           "dmxRange": [151, 170],
           "type": "ColorPreset",
-          "comment": "Red decreasing / Green decreasing / Blue 100%",
+          "comment": "White … Blue",
           "colorsStart": ["#ffffff"],
           "colorsEnd": ["#0000ff"]
         },
         {
           "dmxRange": [171, 200],
           "type": "ColorPreset",
-          "comment": "Red 100% / Green 100% / Blue 100% / White 100%",
+          "comment": "Red + Green + Blue + White 100%",
           "colors": ["#ffffff"]
         },
         {
