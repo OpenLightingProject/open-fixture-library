@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PAR 56",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Moritz A. Vieli"],
+    "createDate": "2019-10-27",
+    "lastModifyDate": "2019-10-27"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/c_193245_v2_r3_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/gb/stairville_led_par_56_alu_schwarz.htm"
+    ],
+    "video": [
+      "https://video2.thomann.de//vidiot/02591c1c/video_i2192p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [295, 225, 225],
+    "weight": 1.4,
+    "power": 16,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "NoFunction",
+          "comment": "RGB Control"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "7 color fades"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "7 color changes"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "3 color changes"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Effect Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 100],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [101, 150],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [151, 255],
+          "type": "EffectSpeed",
+          "speed": "fast",
+          "comment": "Speed control by the device"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Mode",
+        "Red",
+        "Green",
+        "Blue",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
