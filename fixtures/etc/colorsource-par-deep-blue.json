@@ -1,9 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "ColorSource PAR",
+  "name": "ColorSource PAR Deep Blue",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Joseph Gates"],
+    "authors": ["Felix Edelmann"],
     "createDate": "2019-10-30",
     "lastModifyDate": "2019-10-30"
   },
@@ -26,14 +26,14 @@
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "40 Lumileds LUXEON Z LED",
-      "lumens": 3039
+      "lumens": 2429
     },
     "lens": {
       "degreesMinMax": [14.5, 14.5]
     }
   },
   "rdm": {
-    "modelId": 513
+    "modelId": 514
   },
   "availableChannels": {
     "Intensity": {
@@ -53,10 +53,10 @@
         "color": "Green"
       }
     },
-    "Blue": {
+    "Indigo": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue"
+        "color": "Indigo"
       }
     },
     "Lime": {
@@ -94,7 +94,7 @@
         "Intensity",
         "Red",
         "Green",
-        "Blue",
+        "Indigo",
         "Strobe"
       ]
     },
@@ -106,7 +106,7 @@
         "Intensity",
         "Red",
         "Green",
-        "Blue",
+        "Indigo",
         "Lime",
         "Strobe"
       ]
@@ -126,7 +126,7 @@
       "channels": [
         "Red",
         "Green",
-        "Blue"
+        "Indigo"
       ]
     }
   ]
