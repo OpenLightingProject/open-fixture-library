@@ -409,33 +409,6 @@
   },
   "modes": [
     {
-      "name": "Extended 59-channel",
-      "shortName": "59ch",
-      "channels": [
-        "Pan",
-        "Pan fine",
-        "Tilt",
-        "Tilt fine",
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelXYZ",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey"
-          ]
-        },
-        "Shutter / Strobe",
-        "Dimmer",
-        "Dimmer Curves",
-        "Auto Programs",
-        "Program Speed",
-        "Pan/Tilt Movement Speed",
-        "Maintenance / Internal Programs"
-      ]
-    },
-    {
       "name": "Standard 14-channel",
       "shortName": "14ch",
       "channels": [
@@ -464,6 +437,33 @@
         "Red Master",
         "Green Master",
         "Blue Master",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer Curves",
+        "Auto Programs",
+        "Program Speed",
+        "Pan/Tilt Movement Speed",
+        "Maintenance / Internal Programs"
+      ]
+    },
+    {
+      "name": "Extended 59-channel",
+      "shortName": "59ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
         "Shutter / Strobe",
         "Dimmer",
         "Dimmer Curves",
