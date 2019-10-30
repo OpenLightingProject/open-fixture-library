@@ -1,0 +1,868 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Diamond PRO 2.8",
+  "categories": ["Laser", "Color Changer"],
+  "meta": {
+    "authors": ["Dirk"],
+    "createDate": "2019-10-15",
+    "lastModifyDate": "2019-10-15",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2019-10-15",
+      "comment": "created by Q Light Controller Plus (version 4.12.2)"
+    }
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=YHbKlJp-M9k"
+    ]
+  },
+  "helpWanted": "Can you provide a link to a manual?",
+  "physical": {
+    "dimensions": [334, 125, 390],
+    "weight": 7.0,
+    "power": 50,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Mode Select": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Maintenance",
+          "comment": "Laser off"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "comment": "Sound mode, shutoff after 2 sec"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Maintenance",
+          "comment": "Sound mode (beam patterns)"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Maintenance",
+          "comment": "Sound mode (graphics)"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "comment": "DMX Mode"
+        }
+      ]
+    },
+    "Pattern Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Effect",
+          "effectName": "1 Line horizontal"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Effect",
+          "effectName": "2 Lines horizontal stacked"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "Effect",
+          "effectName": "2 Lines horizontal side by side"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "Effect",
+          "effectName": "1 Line vertical"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Effect",
+          "effectName": "2 Lines vertical side by side"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Effect",
+          "effectName": "2 Lines horizontal stacked"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Effect",
+          "effectName": "Swastika-like pattern"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "Effect",
+          "effectName": "Sinus"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Effect",
+          "effectName": "2 Sinus diagonally across each other"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Effect",
+          "effectName": "Cardiogram"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Effect",
+          "effectName": "Rectangle pulsed line"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Effect",
+          "effectName": "Square"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Effect",
+          "effectName": "2 Squares diagonally across each other"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Effect",
+          "effectName": "Square big"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Effect",
+          "effectName": "Rectangle"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Effect",
+          "effectName": "Triangle"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Effect",
+          "effectName": "Maze Square"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Effect",
+          "effectName": "Maze Triangle"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Effect",
+          "effectName": "Yin Yang"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Effect",
+          "effectName": "Half Circle up"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Effect",
+          "effectName": "Big Circle"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Effect",
+          "effectName": "2 Circles same center"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Effect",
+          "effectName": "5 Circles form a square"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Effect",
+          "effectName": "4-pointed Star"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Effect",
+          "effectName": "5-pointed Star"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Effect",
+          "effectName": "Pentagon"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Effect",
+          "effectName": "Octagon"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Effect",
+          "effectName": "3 thin Spikes"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Effect",
+          "effectName": "3 thick Spikes"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Effect",
+          "effectName": "5 thick Spikes"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Effect",
+          "effectName": "Stars twinkling"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Effect",
+          "effectName": "Diamond horizontal"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Effect",
+          "effectName": "2 Diamonds vertical"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Effect",
+          "effectName": "Heart"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Effect",
+          "effectName": "8 lines every 45 degrees"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Effect",
+          "effectName": "4 lightnings"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Effect",
+          "effectName": "3 Circles"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Effect",
+          "effectName": "5 Circles"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Effect",
+          "effectName": "3 Fishes"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "Effect",
+          "effectName": "5 Lines horizontal diagonal"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Effect",
+          "effectName": "8 short lines horizontal"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Effect",
+          "effectName": "8 short lines vertical"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "Effect",
+          "effectName": "7 Big points horizontal diagonal"
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "Effect",
+          "effectName": "7 Big points vertical diagonal"
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "Effect",
+          "effectName": "Big Letter S"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "Effect",
+          "effectName": "7 Small circles vertical"
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "Effect",
+          "effectName": "5 thin spikes"
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "Effect",
+          "effectName": "Big circle with breaks"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "Effect",
+          "effectName": "Big Square with breaks"
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "Effect",
+          "effectName": "6 lines every 60 degrees"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "Effect",
+          "effectName": "Tumbler"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Effect",
+          "effectName": "Medium Circle"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Effect",
+          "effectName": "Big Arrow Right"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Effect",
+          "effectName": "Big Square"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Effect",
+          "effectName": "Tongs"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "Effect",
+          "effectName": "Hourglass"
+        },
+        {
+          "dmxRange": [56, 67],
+          "type": "Effect",
+          "effectName": "Small circle 1…12 Hour CW"
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "Effect",
+          "effectName": "4 deranged arrows"
+        },
+        {
+          "dmxRange": [69, 69],
+          "type": "Effect",
+          "effectName": "4 arrows"
+        },
+        {
+          "dmxRange": [70, 73],
+          "type": "Effect",
+          "effectName": "Diagonal lines"
+        },
+        {
+          "dmxRange": [74, 74],
+          "type": "Effect",
+          "effectName": "Big circle with breaks"
+        },
+        {
+          "dmxRange": [75, 75],
+          "type": "Effect",
+          "effectName": "4 Groups of 4 Triangles"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "Effect",
+          "effectName": "Big Letter V"
+        },
+        {
+          "dmxRange": [77, 77],
+          "type": "Effect",
+          "effectName": "Big Letters XY"
+        },
+        {
+          "dmxRange": [78, 78],
+          "type": "Effect",
+          "effectName": "Sinus"
+        },
+        {
+          "dmxRange": [79, 79],
+          "type": "Effect",
+          "effectName": "Stars Twinkling"
+        },
+        {
+          "dmxRange": [80, 80],
+          "type": "Effect",
+          "effectName": "7 Triangles vertical"
+        },
+        {
+          "dmxRange": [81, 81],
+          "type": "Effect",
+          "effectName": "Circle with 8 arrows"
+        },
+        {
+          "dmxRange": [82, 82],
+          "type": "Effect",
+          "effectName": "8 Circles"
+        },
+        {
+          "dmxRange": [83, 89],
+          "type": "Effect",
+          "effectName": "Welcome"
+        },
+        {
+          "dmxRange": [90, 92],
+          "type": "Effect",
+          "effectName": "Stars"
+        },
+        {
+          "dmxRange": [93, 95],
+          "type": "Effect",
+          "effectName": "Dancer"
+        },
+        {
+          "dmxRange": [96, 98],
+          "type": "Effect",
+          "effectName": "Hearts colliding"
+        },
+        {
+          "dmxRange": [99, 100],
+          "type": "Effect",
+          "effectName": "Tumbler growing"
+        },
+        {
+          "dmxRange": [101, 102],
+          "type": "Effect",
+          "effectName": "Circle"
+        },
+        {
+          "dmxRange": [103, 104],
+          "type": "Effect",
+          "effectName": "Dotted Circle"
+        },
+        {
+          "dmxRange": [105, 106],
+          "type": "Effect",
+          "effectName": "Dancing vertical line"
+        },
+        {
+          "dmxRange": [107, 108],
+          "type": "Effect",
+          "effectName": "Dotted horizontal line up…down"
+        },
+        {
+          "dmxRange": [109, 114],
+          "type": "Effect",
+          "effectName": "2 Circles dancing"
+        },
+        {
+          "dmxRange": [115, 116],
+          "type": "Effect",
+          "effectName": "Wobbly Sinus"
+        },
+        {
+          "dmxRange": [117, 118],
+          "type": "Effect",
+          "effectName": "Dotted Sinus up…down"
+        },
+        {
+          "dmxRange": [119, 120],
+          "type": "Effect",
+          "effectName": "2 dotted horizontal lines up…down"
+        },
+        {
+          "dmxRange": [121, 122],
+          "type": "Effect",
+          "effectName": "2 diagonals up…down"
+        },
+        {
+          "dmxRange": [123, 124],
+          "type": "Effect",
+          "effectName": "2 Circles dancing"
+        },
+        {
+          "dmxRange": [125, 126],
+          "type": "Effect",
+          "effectName": "Points Sinus up…down"
+        },
+        {
+          "dmxRange": [127, 128],
+          "type": "Effect",
+          "effectName": "2 horizontal lines revolving"
+        },
+        {
+          "dmxRange": [129, 130],
+          "type": "Effect",
+          "effectName": "4 dotted lines dancing"
+        },
+        {
+          "dmxRange": [131, 132],
+          "type": "Effect",
+          "effectName": "2 dancing dotted vertical lines"
+        },
+        {
+          "dmxRange": [133, 134],
+          "type": "Effect",
+          "effectName": "2 dancing vertical sinus"
+        },
+        {
+          "dmxRange": [135, 136],
+          "type": "Effect",
+          "effectName": "2 Lines revolving"
+        },
+        {
+          "dmxRange": [137, 255],
+          "type": "NoFunction",
+          "helpWanted": "Can no pattern be selected in this DMX range?"
+        }
+      ]
+    },
+    "Strobe Effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
+    },
+    "Horizontal Movement": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "BeamPosition",
+          "horizontalAngle": "center"
+        },
+        {
+          "dmxRange": [1, 42],
+          "type": "BeamPosition",
+          "horizontalAngleStart": "center",
+          "horizontalAngleEnd": "right"
+        },
+        {
+          "dmxRange": [43, 127],
+          "type": "BeamPosition",
+          "horizontalAngleStart": "right",
+          "horizontalAngleEnd": "left"
+        },
+        {
+          "dmxRange": [128, 167],
+          "type": "BeamPosition",
+          "horizontalAngleStart": "left",
+          "horizontalAngleEnd": "center"
+        },
+        {
+          "dmxRange": [168, 188],
+          "type": "Effect",
+          "effectName": "Movement left…right alternating",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [189, 210],
+          "type": "Effect",
+          "effectName": "Movement right…left alternating",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [211, 253],
+          "type": "Effect",
+          "effectName": "Movement 5 Steps right…left alternating",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "BeamPosition",
+          "horizontalAngle": "center"
+        }
+      ]
+    },
+    "Vertical Movement": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "BeamPosition",
+          "verticalAngle": "center"
+        },
+        {
+          "dmxRange": [1, 42],
+          "type": "BeamPosition",
+          "verticalAngleStart": "center",
+          "verticalAngleEnd": "bottom"
+        },
+        {
+          "dmxRange": [43, 127],
+          "type": "BeamPosition",
+          "verticalAngleStart": "bottom",
+          "verticalAngleEnd": "top"
+        },
+        {
+          "dmxRange": [128, 167],
+          "type": "BeamPosition",
+          "verticalAngleStart": "top",
+          "verticalAngleEnd": "center"
+        },
+        {
+          "dmxRange": [168, 188],
+          "type": "Effect",
+          "effectName": "Movement bottom…top alternating",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [189, 210],
+          "type": "Effect",
+          "effectName": "Movement top…bottom alternating",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [211, 254],
+          "type": "Effect",
+          "effectName": "Movement 5 Steps bottom…top alternating",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "BeamPosition",
+          "verticalAngle": "center"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 109],
+          "type": "Zoom",
+          "angleStart": "narrow",
+          "angleEnd": "wide"
+        },
+        {
+          "dmxRange": [110, 154],
+          "type": "Effect",
+          "effectName": "Zoom in",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [155, 204],
+          "type": "Effect",
+          "effectName": "Zoom out",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [205, 255],
+          "type": "Effect",
+          "effectName": "Alternate zoom in/out",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Rotation Y-axis": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 150],
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
+        },
+        {
+          "dmxRange": [151, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Rotation X-axis": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 150],
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
+        },
+        {
+          "dmxRange": [151, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Rotation Z-axis": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 180],
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
+        },
+        {
+          "dmxRange": [181, 217],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [218, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Blanking": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectName": "Dots visible with Pattern"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Dashed Lines"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Dots instead of Pattern"
+        }
+      ]
+    },
+    "Wave Movement": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Effect",
+          "effectName": "Wave overlay to Pattern",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Is this capability correct?"
+        }
+      ]
+    },
+    "Color Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [30, 35],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [36, 138],
+          "type": "Generic",
+          "helpWanted": "Which colors can be selected in this DMX range?"
+        },
+        {
+          "dmxRange": [139, 164],
+          "type": "ColorPreset",
+          "comment": "Multi-color"
+        },
+        {
+          "dmxRange": [165, 174],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [175, 255],
+          "type": "Effect",
+          "effectName": "Changing multi-color",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Mode Select",
+        "Pattern Selection",
+        "Strobe Effect",
+        "Horizontal Movement",
+        "Vertical Movement",
+        "Zoom",
+        "Rotation Y-axis",
+        "Rotation X-axis",
+        "Rotation Z-axis",
+        "Blanking",
+        "Wave Movement",
+        "Color Selection"
+      ]
+    }
+  ]
+}
