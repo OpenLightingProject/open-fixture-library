@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Illusion Dotz 4.4",
-  "categories": ["Matrix", "Moving Head"],
+  "categories": ["Matrix", "Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Dávid Czirók", "István Király"],
     "createDate": "2019-10-30",
@@ -26,6 +26,7 @@
       "https://youtu.be/vyVgKv-uXws"
     ]
   },
+  "helpWanted": "Is the order of the individual pixels in Extended 59-channel mode correct?",
   "physical": {
     "dimensions": [492, 467, 393],
     "weight": 16.5,
@@ -38,470 +39,85 @@
       "degreesMinMax": [15, 15]
     }
   },
+  "matrix": {
+    "pixelCount": [4, 4, 1],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
   "availableChannels": {
-    "Pan Movement 8bit": {
-      "fineChannelAliases": ["Pan Fine 16 bit"],
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
       "defaultValue": 0,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
-        "angleEnd": "360deg"
+        "angleEnd": "540deg"
       }
     },
-    "Tilt Movement 8 bit": {
-      "fineChannelAliases": ["Tilt Fine 16 bit"],
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
       "defaultValue": 0,
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
-        "angleEnd": "270deg",
-        "comment": "Tilt Movement 8bit"
+        "angleEnd": "270deg"
       }
     },
-    "RED 1": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "0-100"
-      }
-    },
-    "GREEN 1": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "0-100"
-      }
-    },
-    "BLUE 1": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "0-100"
-      }
-    },
-    "RED 2": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "0-100"
-      }
-    },
-    "GREEN 2": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "0-100"
-      }
-    },
-    "BLUE 2": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "0-100"
-      }
-    },
-    "RED 3": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "0-100"
-      }
-    },
-    "GREEN 3": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "0-100"
-      }
-    },
-    "BLUE 3": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "0-100"
-      }
-    },
-    "RED 4": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "0-100"
-      }
-    },
-    "GREEN 4": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "0-100"
-      }
-    },
-    "BLUE 4": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "0-100"
-      }
-    },
-    "RED5": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "0-100"
-      }
-    },
-    "GREEN 5": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "0-100"
-      }
-    },
-    "BLUE5": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "0-100"
-      }
-    },
-    "RED 6": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "0-100"
-      }
-    },
-    "GREEN 6": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "0-100"
-      }
-    },
-    "BLUE 6": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "0-100"
-      }
-    },
-    "RED 7": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "0-100"
-      }
-    },
-    "GREEN 7": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "0-100"
-      }
-    },
-    "BLUE 7": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "0-100"
-      }
-    },
-    "RED 8": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "0-100"
-      }
-    },
-    "GREEN 8": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "0-100"
-      }
-    },
-    "BLUE 8": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "0-100"
-      }
-    },
-    "RED 9": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "0-100"
-      }
-    },
-    "GREEN 9": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "0-100"
-      }
-    },
-    "BLUE 9": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "0-100"
-      }
-    },
-    "RED 10": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "0-100"
-      }
-    },
-    "GREEN 10": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "0-100"
-      }
-    },
-    "BLUE 10": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "0-100"
-      }
-    },
-    "RED11": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "0-100"
-      }
-    },
-    "GREEN 11": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "0-100"
-      }
-    },
-    "BLUE 11": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "0-100"
-      }
-    },
-    "RED 12": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "0-100"
-      }
-    },
-    "GREEN 12": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "0-100"
-      }
-    },
-    "BLUE 12": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "0-100"
-      }
-    },
-    "RED 13": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "0-100"
-      }
-    },
-    "GREEN 13": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "0-100"
-      }
-    },
-    "BLUE 13": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "0-100"
-      }
-    },
-    "RED 14": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "0-100"
-      }
-    },
-    "GREEN 14": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "0-100"
-      }
-    },
-    "BLUE 14": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "0-100"
-      }
-    },
-    "RED 15": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "0-100"
-      }
-    },
-    "GREEN 15": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "0-100"
-      }
-    },
-    "BLUE 15": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "0-100"
-      }
-    },
-    "RED 16": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "0-100"
-      }
-    },
-    "GREEN 16": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "0-100"
-      }
-    },
-    "BLUE 16": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "0-100"
-      }
-    },
-    "SHUTT & STROB": {
-      "defaultValue": 0,
+    "Shutter / Strobe": {
+      "defaultValue": 32,
       "capabilities": [
         {
           "dmxRange": [0, 31],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "LED'S OFF"
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [32, 63],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "LED'S ON"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [64, 95],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "STROB"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [96, 127],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "LED'S ON"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [128, 159],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "PLULS EFFEC"
+          "shutterEffect": "Pulse"
         },
         {
           "dmxRange": [160, 191],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "LED'S ON"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [192, 223],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "comment": "STROB"
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [224, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "LED'S ON"
+          "shutterEffect": "Open"
         }
       ]
     },
     "Dimmer": {
       "defaultValue": 0,
       "capability": {
-        "type": "Intensity",
-        "comment": "0-100"
+        "type": "Intensity"
       }
     },
     "Dimmer Curves": {
@@ -509,33 +125,33 @@
       "capabilities": [
         {
           "dmxRange": [0, 20],
-          "type": "Intensity",
+          "type": "Maintenance",
           "comment": "Standard"
         },
         {
           "dmxRange": [21, 40],
-          "type": "Intensity",
+          "type": "Maintenance",
           "comment": "Stage"
         },
         {
           "dmxRange": [41, 60],
-          "type": "Intensity",
+          "type": "Maintenance",
           "comment": "TV"
         },
         {
           "dmxRange": [61, 80],
-          "type": "Intensity",
+          "type": "Maintenance",
           "comment": "Architectural"
         },
         {
           "dmxRange": [81, 100],
-          "type": "Intensity",
+          "type": "Maintenance",
           "comment": "Theatre"
         },
         {
           "dmxRange": [101, 255],
-          "type": "Intensity",
-          "comment": "Deffult To Unit Settings"
+          "type": "Maintenance",
+          "comment": "Default to unit settings"
         }
       ]
     },
@@ -544,155 +160,156 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "Maintenance",
-          "comment": "P1"
+          "type": "Effect",
+          "effectName": "Program 1",
+          "helpWanted": "Does DMX value 0 really activate an auto program? Or does this capability start at 1 in fact?"
         },
         {
           "dmxRange": [11, 20],
-          "type": "Maintenance",
-          "comment": "P2"
+          "type": "Effect",
+          "effectName": "Program 2"
         },
         {
           "dmxRange": [21, 30],
-          "type": "Maintenance",
-          "comment": "P3"
+          "type": "Effect",
+          "effectName": "Program 3"
         },
         {
           "dmxRange": [31, 40],
-          "type": "Maintenance",
-          "comment": "P4"
+          "type": "Effect",
+          "effectName": "Program 4"
         },
         {
           "dmxRange": [41, 50],
-          "type": "Maintenance",
-          "comment": "P5"
+          "type": "Effect",
+          "effectName": "Program 5"
         },
         {
           "dmxRange": [51, 60],
-          "type": "Maintenance",
-          "comment": "P6"
+          "type": "Effect",
+          "effectName": "Program 6"
         },
         {
           "dmxRange": [61, 70],
-          "type": "Maintenance",
-          "comment": "P7"
+          "type": "Effect",
+          "effectName": "Program 7"
         },
         {
           "dmxRange": [71, 80],
-          "type": "Maintenance",
-          "comment": "P8"
+          "type": "Effect",
+          "effectName": "Program 8"
         },
         {
           "dmxRange": [81, 90],
-          "type": "Maintenance",
-          "comment": "P9"
+          "type": "Effect",
+          "effectName": "Program 9"
         },
         {
           "dmxRange": [91, 100],
-          "type": "Maintenance",
-          "comment": "P10"
+          "type": "Effect",
+          "effectName": "Program 10"
         },
         {
           "dmxRange": [101, 110],
-          "type": "Maintenance",
-          "comment": "P11"
+          "type": "Effect",
+          "effectName": "Program 11"
         },
         {
           "dmxRange": [111, 120],
-          "type": "Maintenance",
-          "comment": "P12"
+          "type": "Effect",
+          "effectName": "Program 12"
         },
         {
           "dmxRange": [121, 130],
-          "type": "Maintenance",
-          "comment": "P13"
+          "type": "Effect",
+          "effectName": "Program 13"
         },
         {
           "dmxRange": [131, 140],
-          "type": "Maintenance",
-          "comment": "P14"
+          "type": "Effect",
+          "effectName": "Program 14"
         },
         {
           "dmxRange": [141, 150],
-          "type": "Maintenance",
-          "comment": "P15"
+          "type": "Effect",
+          "effectName": "Program 15"
         },
         {
           "dmxRange": [151, 160],
-          "type": "Maintenance",
-          "comment": "P16"
+          "type": "Effect",
+          "effectName": "Program 16"
         },
         {
           "dmxRange": [161, 170],
-          "type": "Maintenance",
-          "comment": "P17"
+          "type": "Effect",
+          "effectName": "Program 17"
         },
         {
           "dmxRange": [171, 180],
-          "type": "Maintenance",
-          "comment": "P18"
+          "type": "Effect",
+          "effectName": "Program 18"
         },
         {
           "dmxRange": [181, 190],
-          "type": "Maintenance",
-          "comment": "P19"
+          "type": "Effect",
+          "effectName": "Program 19"
         },
         {
           "dmxRange": [191, 200],
-          "type": "Maintenance",
-          "comment": "P20"
+          "type": "Effect",
+          "effectName": "Program 20"
         },
         {
           "dmxRange": [201, 210],
-          "type": "Maintenance",
-          "comment": "P21"
+          "type": "Effect",
+          "effectName": "Program 21"
         },
         {
           "dmxRange": [211, 220],
-          "type": "Maintenance",
-          "comment": "P22"
+          "type": "Effect",
+          "effectName": "Program 22"
         },
         {
           "dmxRange": [221, 230],
-          "type": "Maintenance",
-          "comment": "P23"
+          "type": "Effect",
+          "effectName": "Program 23"
         },
         {
           "dmxRange": [231, 240],
-          "type": "Maintenance",
-          "comment": "P24"
+          "type": "Effect",
+          "effectName": "Program 24"
         },
         {
           "dmxRange": [241, 250],
-          "type": "Maintenance",
-          "comment": "P25"
+          "type": "Effect",
+          "effectName": "Program 25"
         },
         {
           "dmxRange": [251, 255],
-          "type": "Maintenance",
-          "comment": "Gardient effect"
+          "type": "Effect",
+          "effectName": "Gradient effect"
         }
       ]
     },
-    "Program speed": {
-      "defaultValue": 0,
+    "Program Speed": {
       "capability": {
-        "type": "Speed",
+        "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
     },
-    "Pan/Tilt Movment Speed": {
+    "Pan/Tilt Movement Speed": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 225],
           "type": "PanTiltSpeed",
-          "comment": "Max to min speed"
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [226, 235],
-          "type": "PanTiltSpeed",
+          "type": "Maintenance",
           "comment": "blackout by movement"
         },
         {
@@ -701,194 +318,159 @@
         }
       ]
     },
-    "Lamp on/off,reset & programs": {
+    "Maintenance / Internal Programs": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 79],
-          "type": "Maintenance",
-          "comment": "Normal"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [80, 84],
           "type": "Maintenance",
-          "comment": "all motor reset"
+          "comment": "All motor reset"
         },
         {
           "dmxRange": [85, 96],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "helpWanted": "Is the lamp off when this capability is selected?"
         },
         {
           "dmxRange": [97, 99],
           "type": "Maintenance",
-          "comment": "other motor reset"
+          "comment": "Other motor reset"
         },
         {
           "dmxRange": [100, 119],
-          "type": "Maintenance",
-          "comment": "internal program 1"
+          "type": "Effect",
+          "effectName": "Internal program 1"
         },
         {
           "dmxRange": [120, 139],
-          "type": "Maintenance",
-          "comment": "internal program 2"
+          "type": "Effect",
+          "effectName": "Internal program 2"
         },
         {
           "dmxRange": [140, 159],
-          "type": "Maintenance",
-          "comment": "internal program 3"
+          "type": "Effect",
+          "effectName": "Internal program 3"
         },
         {
           "dmxRange": [160, 179],
-          "type": "Maintenance",
-          "comment": "internal program 4"
+          "type": "Effect",
+          "effectName": "Internal program 4"
         },
         {
           "dmxRange": [180, 199],
-          "type": "Maintenance",
-          "comment": "internal program 5"
+          "type": "Effect",
+          "effectName": "Internal program 5"
         },
         {
           "dmxRange": [200, 219],
-          "type": "Maintenance",
-          "comment": "internal program 6"
+          "type": "Effect",
+          "effectName": "Internal program 6"
         },
         {
           "dmxRange": [220, 239],
-          "type": "Maintenance",
-          "comment": "internal program 7"
+          "type": "Effect",
+          "effectName": "Internal program 7"
         },
         {
           "dmxRange": [240, 255],
-          "type": "Maintenance",
-          "comment": "sound active program"
+          "type": "Effect",
+          "effectName": "Sound active program",
+          "soundControlled": true
         }
       ]
-    },
-    "ALL RED": {
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "0-100"
+        "color": "Red"
       }
     },
-    "ALL GREEN": {
+    "Green $pixelKey": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "0-100"
+        "color": "Green"
       }
     },
-    "ALL BLUE": {
+    "Blue $pixelKey": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "0-100"
+        "color": "Blue"
       }
     }
   },
   "modes": [
     {
-      "name": "59 channel",
+      "name": "Extended 59-channel",
+      "shortName": "59ch",
       "channels": [
-        "Pan Movement 8bit",
-        "Pan Fine 16 bit",
-        "Tilt Movement 8 bit",
-        "Tilt Fine 16 bit",
-        "RED 1",
-        "GREEN 1",
-        "BLUE 1",
-        "RED 2",
-        "GREEN 2",
-        "BLUE 2",
-        "RED 3",
-        "GREEN 3",
-        "BLUE 3",
-        "RED 4",
-        "GREEN 4",
-        "BLUE 4",
-        "RED5",
-        "GREEN 5",
-        "BLUE5",
-        "RED 6",
-        "GREEN 6",
-        "BLUE 6",
-        "RED 7",
-        "GREEN 7",
-        "BLUE 7",
-        "RED 8",
-        "GREEN 8",
-        "BLUE 8",
-        "RED 9",
-        "GREEN 9",
-        "BLUE 9",
-        "RED 10",
-        "GREEN 10",
-        "BLUE 10",
-        "RED11",
-        "GREEN 11",
-        "BLUE 11",
-        "RED 12",
-        "GREEN 12",
-        "BLUE 12",
-        "RED 13",
-        "GREEN 13",
-        "BLUE 13",
-        "RED 14",
-        "GREEN 14",
-        "BLUE 14",
-        "RED 15",
-        "GREEN 15",
-        "BLUE 15",
-        "RED 16",
-        "GREEN 16",
-        "BLUE 16",
-        "SHUTT & STROB",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "Shutter / Strobe",
         "Dimmer",
         "Dimmer Curves",
         "Auto Programs",
-        "Program speed",
-        "Pan/Tilt Movment Speed",
-        "Lamp on/off,reset & programs"
+        "Program Speed",
+        "Pan/Tilt Movement Speed",
+        "Maintenance / Internal Programs"
       ]
     },
     {
-      "name": "14 channel",
+      "name": "Standard 14-channel",
+      "shortName": "14ch",
       "channels": [
-        "Pan Movement 8bit",
-        "Pan Fine 16 bit",
-        "Tilt Movement 8 bit",
-        "Tilt Fine 16 bit",
-        "ALL RED",
-        "ALL GREEN",
-        "ALL BLUE",
-        "SHUTT & STROB",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Shutter / Strobe",
         "Dimmer",
         "Dimmer Curves",
         "Auto Programs",
-        "Program speed",
-        "Pan/Tilt Movment Speed",
-        "Lamp on/off,reset & programs"
+        "Program Speed",
+        "Pan/Tilt Movement Speed",
+        "Maintenance / Internal Programs"
       ]
     },
     {
-      "name": "12 channel",
+      "name": "Basic 12-channel",
+      "shortName": "12ch",
       "channels": [
-        "Pan Movement 8bit",
-        "Tilt Movement 8 bit",
-        "ALL RED",
-        "ALL GREEN",
-        "ALL BLUE",
-        "SHUTT & STROB",
+        "Pan",
+        "Tilt",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Shutter / Strobe",
         "Dimmer",
         "Dimmer Curves",
         "Auto Programs",
-        "Program speed",
-        "Pan/Tilt Movment Speed",
-        "Lamp on/off,reset & programs"
+        "Program Speed",
+        "Pan/Tilt Movement Speed",
+        "Maintenance / Internal Programs"
       ]
     }
   ]
