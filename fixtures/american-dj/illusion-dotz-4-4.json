@@ -1,24 +1,40 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Illusion Dotz 4.4",
-  "categories": ["Moving Head"],
+  "categories": ["Matrix", "Moving Head"],
   "meta": {
     "authors": ["Dávid Czirók", "István Király"],
-    "createDate": "2019-10-12",
-    "lastModifyDate": "2019-10-12",
+    "createDate": "2019-10-30",
+    "lastModifyDate": "2019-10-30",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
-      "date": "2019-10-12",
+      "date": "2019-10-30",
       "comment": "created by Q Light Controller Plus (version 4.12.1)"
     }
+  },
+  "links": {
+    "manual": [
+      "http://intranet.americandj.com/ItemRelatedFiles/8697/illusion_dotz_4_4.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/illusion-dotz-4-4"
+    ],
+    "video": [
+      "https://youtu.be/NbQMI2cSr00",
+      "https://youtu.be/9Q4ybDqgpP4",
+      "https://youtu.be/m9pnTYFYrGs",
+      "https://youtu.be/vyVgKv-uXws"
+    ]
   },
   "physical": {
     "dimensions": [492, 467, 393],
     "weight": 16.5,
     "power": 468,
     "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "16× 30W RGB COB LEDs"
+    },
     "lens": {
-      "name": "Other",
       "degreesMinMax": [15, 15]
     }
   },
