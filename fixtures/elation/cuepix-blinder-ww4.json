@@ -1,9 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "CUEPIX Blinder WW2",
-  "categories": ["Blinder", "Strobe"],
+  "name": "CUEPIX Blinder WW4",
+  "categories": ["Blinder", "Matrix", "Strobe"],
   "meta": {
-    "authors": ["Dávid Czirók", "István Király"],
+    "authors": ["Felix Edelmann"],
     "createDate": "2019-10-30",
     "lastModifyDate": "2019-10-30",
     "importPlugin": {
@@ -14,10 +14,10 @@
   },
   "links": {
     "manual": [
-      "http://cdb.s3.amazonaws.com/ItemRelatedFiles/9941/elation_cuepix_blinder_ww2_user_manual_ver_2.pdf"
+      "http://cdb.s3.amazonaws.com/ItemRelatedFiles/9870/elation_cuepix_blinder_ww4_user_manual_ver_1.pdf"
     ],
     "productPage": [
-      "https://www.elationlighting.com/cuepix-blinder-ww2"
+      "https://www.elationlighting.com/cuepix-blinder-ww4"
     ]
   },
   "physical": {
@@ -36,7 +36,8 @@
   "matrix": {
     "pixelKeys": [
       [
-        ["Left", "Right"]
+        ["Top-Left", "Top-Right"],
+        ["Bottom-Left", "Bottom-Right"]
       ]
     ],
     "pixelGroups": {
@@ -44,6 +45,72 @@
     }
   },
   "availableChannels": {
+    "Internal Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [21, 42],
+          "type": "Effect",
+          "effectName": "Dream"
+        },
+        {
+          "dmxRange": [43, 64],
+          "type": "Effect",
+          "effectName": "Meteor"
+        },
+        {
+          "dmxRange": [65, 87],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [88, 110],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [111, 123],
+          "type": "Effect",
+          "effectName": "Flow 1"
+        },
+        {
+          "dmxRange": [124, 146],
+          "type": "Effect",
+          "effectName": "Flow 2"
+        },
+        {
+          "dmxRange": [147, 169],
+          "type": "Effect",
+          "effectName": "Flow 3"
+        },
+        {
+          "dmxRange": [170, 192],
+          "type": "Effect",
+          "effectName": "Flow 4"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Macro Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Master Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
     "Strobe": {
       "defaultValue": 32,
       "capabilities": [
@@ -154,24 +221,54 @@
       "shortName": "2ch",
       "channels": [
         "Warm White Master",
-        "Dimming Curve"
-      ]
-    },
-    {
-      "name": "3-channel",
-      "shortName": "3ch",
-      "channels": [
-        "Warm White Master",
-        "Strobe",
-        "Dimming Curve"
+        "Master Dimmer"
       ]
     },
     {
       "name": "4-channel",
       "shortName": "4ch",
       "channels": [
-        "Warm White Left",
-        "Warm White Right",
+        "Warm White Top-Left",
+        "Warm White Top-Right",
+        "Warm White Bottom-Left",
+        "Warm White Bottom-Right"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Warm White Top-Left",
+        "Warm White Top-Right",
+        "Warm White Bottom-Left",
+        "Warm White Bottom-Right",
+        "Master Dimmer"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Warm White Top-Left",
+        "Warm White Top-Right",
+        "Warm White Bottom-Left",
+        "Warm White Bottom-Right",
+        "Master Dimmer",
+        "Strobe",
+        "Dimming Curve"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Warm White Top-Left",
+        "Warm White Top-Right",
+        "Warm White Bottom-Left",
+        "Warm White Bottom-Right",
+        "Internal Macros",
+        "Macro Speed",
+        "Master Dimmer",
         "Strobe",
         "Dimming Curve"
       ]
