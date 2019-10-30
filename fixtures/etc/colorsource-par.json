@@ -1,18 +1,19 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "ColorSource Par",
+  "name": "ColorSource PAR",
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["Joseph Gates"],
-    "createDate": "2019-10-12",
-    "lastModifyDate": "2019-10-12"
+    "createDate": "2019-10-30",
+    "lastModifyDate": "2019-10-30"
   },
   "links": {
     "manual": [
-      "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737484145"
+      "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737484145",
+      "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737494638"
     ],
     "productPage": [
-      "https://www.etcconnect.com/Products/Lighting-Fixtures/ColorSource-PAR/Features.aspx?utm_campaign=ColorSource"
+      "https://www.etcconnect.com/Products/Lighting-Fixtures/ColorSource-PAR/Features.aspx"
     ],
     "video": [
       "https://youtu.be/8yZygyTDANU"
@@ -22,10 +23,17 @@
     "dimensions": [203, 310, 240],
     "weight": 3.77,
     "power": 90,
+    "DMXconnector": "5-pin",
     "bulb": {
-      "type": "LED",
-      "lumens": 2749
+      "type": "40 Lumileds LUXEON Z LED",
+      "lumens": 3039
+    },
+    "lens": {
+      "degreesMinMax": [14.5, 14.5]
     }
+  },
+  "rdm": {
+    "modelId": 513
   },
   "availableChannels": {
     "Intensity": {
@@ -51,23 +59,37 @@
         "color": "Blue"
       }
     },
-    "Strobe": {
-      "capability": {
-        "type": "StrobeSpeed",
-        "speedStart": "1Hz",
-        "speedEnd": "60Hz"
-      }
-    },
     "Lime": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Lime"
       }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 254],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "33Hz"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "NoFunction"
+        }
+      ]
     }
   },
   "modes": [
     {
-      "name": "5ch-Default",
+      "name": "5 Channel (Default)",
+      "shortName": "5ch",
+      "rdmPersonalityIndex": 1,
       "channels": [
         "Intensity",
         "Red",
@@ -77,22 +99,9 @@
       ]
     },
     {
-      "name": "RGB",
-      "channels": [
-        "Red",
-        "Green",
-        "Blue"
-      ]
-    },
-    {
-      "name": "1ch",
-      "channels": [
-        "Intensity"
-      ]
-    },
-    {
       "name": "Direct",
-      "shortName": "Dir",
+      "shortName": "dir",
+      "rdmPersonalityIndex": 2,
       "channels": [
         "Intensity",
         "Red",
@@ -100,6 +109,24 @@
         "Blue",
         "Lime",
         "Strobe"
+      ]
+    },
+    {
+      "name": "1 Channel",
+      "shortName": "1ch",
+      "rdmPersonalityIndex": 3,
+      "channels": [
+        "Intensity"
+      ]
+    },
+    {
+      "name": "RGB",
+      "shortName": "rgb",
+      "rdmPersonalityIndex": 4,
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
       ]
     }
   ]
