@@ -1,0 +1,689 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MAC 250 Wash",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Nicolas", "Florian Edelmann"],
+    "createDate": "2019-10-31",
+    "lastModifyDate": "2019-10-31"
+  },
+  "comment": "Can be converted to a MAC 250 Beam with a MAC 250 Beam Kit, i.e. color filters are removed and beam effect gobos are inserted in the color wheel.",
+  "links": {
+    "manual": [
+      "https://adn.harmanpro.com/site_elements/executables/5846_1526694942/UM_MAC250Wash_EN_G_original.pdf"
+    ],
+    "productPage": [
+      "https://www.martin.com/en/products/mac-250-wash"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=6pt5-Sw3YVc",
+      "https://www.youtube.com/watch?v=RdbXAUhW048"
+    ]
+  },
+  "physical": {
+    "dimensions": [393, 538, 315],
+    "weight": 22.9,
+    "power": 326,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "250W discharge lamp (standard: Philips MSD 250/2)",
+      "colorTemperature": 8500,
+      "lumens": 7700
+    },
+    "lens": {
+      "degreesMinMax": [25.9, 48.8]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "direction": "CCW",
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "CTC 5500",
+          "colorTemperature": "2900K"
+        },
+        {
+          "type": "Color",
+          "name": "Pink 312"
+        },
+        {
+          "type": "Color",
+          "name": "UV"
+        },
+        {
+          "type": "Color",
+          "name": "Red 308"
+        },
+        {
+          "type": "Color",
+          "name": "Green 206"
+        },
+        {
+          "type": "Color",
+          "name": "Blue 108"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [20, 49],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [50, 72],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [73, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "opening pulse"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "closing pulse"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 147],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [148, 167],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "50%",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [168, 187],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "slow",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [188, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [191, 193],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speed": "fast",
+          "randomTiming": true,
+          "comment": "opening pulse"
+        },
+        {
+          "dmxRange": [194, 196],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speed": "slow",
+          "randomTiming": true,
+          "comment": "opening pulse"
+        },
+        {
+          "dmxRange": [197, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speed": "fast",
+          "randomTiming": true,
+          "comment": "closing pulse"
+        },
+        {
+          "dmxRange": [200, 202],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speed": "slow",
+          "randomTiming": true,
+          "comment": "closing pulse"
+        },
+        {
+          "dmxRange": [203, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [208, 217],
+          "type": "Maintenance",
+          "comment": "Reset fixture"
+        },
+        {
+          "dmxRange": [218, 227],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [228, 237],
+          "type": "Maintenance",
+          "comment": "Lamp On"
+        },
+        {
+          "dmxRange": [238, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Maintenance",
+          "comment": "Lamp Off"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Cyan Intensity": {
+      "fineChannelAliases": ["Cyan Intensity fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan"
+      }
+    },
+    "Random Cyan": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "Full Cyan range"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "EffectParameter",
+          "comment": "Minimum Cyan setting",
+          "parameterStart": "0%",
+          "parameterEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 254],
+          "type": "EffectParameter",
+          "comment": "Maximum Cyan setting",
+          "parameterStart": "0%",
+          "parameterEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "NoFunction",
+          "comment": "Full Cyan range"
+        }
+      ]
+    },
+    "Magenta Intensity": {
+      "fineChannelAliases": ["Magenta Intensity fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta"
+      }
+    },
+    "Random Magenta": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "Full Magenta range"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "EffectParameter",
+          "comment": "Minimum Magenta setting",
+          "parameterStart": "0%",
+          "parameterEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 254],
+          "type": "EffectParameter",
+          "comment": "Maximum Magenta setting",
+          "parameterStart": "0%",
+          "parameterEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "NoFunction",
+          "comment": "Full Magenta range"
+        }
+      ]
+    },
+    "Yellow Intensity": {
+      "fineChannelAliases": ["Yellow Intensity fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "Random Yellow": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "comment": "Full Yellow range"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "EffectParameter",
+          "comment": "Minimum Yellow setting",
+          "parameterStart": "0%",
+          "parameterEnd": "100%"
+        },
+        {
+          "dmxRange": [128, 254],
+          "type": "EffectParameter",
+          "comment": "Maximum Yellow setting",
+          "parameterStart": "0%",
+          "parameterEnd": "100%"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "NoFunction",
+          "comment": "Full Yellow range"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "fineChannelAliases": ["Color Wheel fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity"
+          }
+        },
+        {
+          "dmxRange": [1, 26],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 2,
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity"
+          }
+        },
+        {
+          "dmxRange": [27, 51],
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 3,
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity"
+          }
+        },
+        {
+          "dmxRange": [52, 77],
+          "type": "WheelSlot",
+          "slotNumberStart": 3,
+          "slotNumberEnd": 4,
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity"
+          }
+        },
+        {
+          "dmxRange": [78, 102],
+          "type": "WheelSlot",
+          "slotNumberStart": 4,
+          "slotNumberEnd": 5,
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity"
+          }
+        },
+        {
+          "dmxRange": [103, 128],
+          "type": "WheelSlot",
+          "slotNumberStart": 5,
+          "slotNumberEnd": 6,
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity"
+          }
+        },
+        {
+          "dmxRange": [129, 152],
+          "type": "WheelSlot",
+          "slotNumberStart": 6,
+          "slotNumberEnd": 7,
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity"
+          }
+        },
+        {
+          "dmxRange": [153, 179],
+          "type": "WheelSlot",
+          "slotNumberStart": 7,
+          "slotNumberEnd": 8,
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity"
+          }
+        },
+        {
+          "dmxRange": [180, 183],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity"
+          }
+        },
+        {
+          "dmxRange": [184, 187],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity"
+          }
+        },
+        {
+          "dmxRange": [188, 191],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity"
+          }
+        },
+        {
+          "dmxRange": [192, 195],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity"
+          }
+        },
+        {
+          "dmxRange": [196, 199],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity"
+          }
+        },
+        {
+          "dmxRange": [200, 203],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity"
+          }
+        },
+        {
+          "dmxRange": [204, 207],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity"
+          }
+        },
+        {
+          "dmxRange": [208, 226],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW",
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity"
+          }
+        },
+        {
+          "dmxRange": [227, 245],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW",
+          "switchChannels": {
+            "Cyan": "Cyan Intensity",
+            "Magenta": "Magenta Intensity",
+            "Yellow": "Yellow Intensity"
+          }
+        },
+        {
+          "dmxRange": [246, 248],
+          "type": "Effect",
+          "effectName": "Random CMY color",
+          "speed": "fast",
+          "switchChannels": {
+            "Cyan": "Random Cyan",
+            "Magenta": "Random Magenta",
+            "Yellow": "Random Yellow"
+          }
+        },
+        {
+          "dmxRange": [249, 251],
+          "type": "Effect",
+          "effectName": "Random CMY color",
+          "comment": "Medium",
+          "switchChannels": {
+            "Cyan": "Random Cyan",
+            "Magenta": "Random Magenta",
+            "Yellow": "Random Yellow"
+          }
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "Random CMY color",
+          "speed": "slow",
+          "switchChannels": {
+            "Cyan": "Random Cyan",
+            "Magenta": "Random Magenta",
+            "Yellow": "Random Yellow"
+          }
+        }
+      ]
+    },
+    "Frost": {
+      "fineChannelAliases": ["Frost fine"],
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "257deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "PanTiltSpeed",
+          "speed": "fast",
+          "comment": "Tracking"
+        },
+        {
+          "dmxRange": [3, 242],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [243, 245],
+          "type": "PanTiltSpeed",
+          "speed": "slow",
+          "comment": "Tracking"
+        },
+        {
+          "dmxRange": [246, 248],
+          "type": "PanTiltSpeed",
+          "speed": "50%",
+          "comment": "Tracking"
+        },
+        {
+          "dmxRange": [249, 251],
+          "type": "PanTiltSpeed",
+          "speed": "fast",
+          "comment": "Tracking"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "PanTiltSpeed",
+          "speed": "fast",
+          "comment": "Blackout while moving"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "EffectSpeed",
+          "speed": "fast",
+          "comment": "Tracking mode"
+        },
+        {
+          "dmxRange": [3, 245],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Vector mode"
+        },
+        {
+          "dmxRange": [246, 248],
+          "type": "EffectSpeed",
+          "speed": "fast",
+          "comment": "Tracking, effect wheels do not cross open position"
+        },
+        {
+          "dmxRange": [249, 251],
+          "type": "EffectSpeed",
+          "speed": "fast",
+          "comment": "Tracking, effect wheels turn shortest distance"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "EffectSpeed",
+          "speed": "fast",
+          "comment": "Vector mode"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16-Bit",
+      "shortName": "16Bt",
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Color Wheel",
+        "Frost",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Effect Speed"
+      ]
+    },
+    {
+      "name": "16-Bit Extendend",
+      "shortName": "16Ex",
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Cyan",
+        "Cyan Intensity fine",
+        "Magenta",
+        "Magenta Intensity fine",
+        "Yellow",
+        "Yellow Intensity fine",
+        "Color Wheel",
+        "Color Wheel fine",
+        "Frost",
+        "Frost fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
