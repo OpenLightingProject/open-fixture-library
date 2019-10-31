@@ -75,7 +75,7 @@ const pluginExport = require(path.join(__dirname, `../plugins`, args.plugin, `ex
           return `${chalk.green(`[PASS]`)} ${file.name}`;
         }
         catch (err) {
-          const errors = [].concat(err);
+          const errors = Array.isArray(err) ? err : [err];
 
           return [`${chalk.red(`[FAIL]`)} ${file.name}`].concat(
             errors.map(error => `- ${error}`)

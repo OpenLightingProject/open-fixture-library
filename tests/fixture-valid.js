@@ -910,7 +910,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    * Add a warning if there are unused channels.
    */
   function checkUnusedChannels() {
-    const unused = [...definedChannelKeys].filter(
+    const unused = Array.from(definedChannelKeys).filter(
       chKey => !usedChannelKeys.has(chKey)
     );
 
@@ -937,7 +937,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    */
   function checkUnusedWheelSlots() {
     const slotsOfUsedWheels = [];
-    [...usedWheels].forEach(wheelName => {
+    Array.from(usedWheels).forEach(wheelName => {
       const wheel = fixture.getWheelByName(wheelName);
 
       if (wheel.type !== `AnimationGobo`) {
