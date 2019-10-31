@@ -1,23 +1,24 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "MAC 250 Wash",
+  "name": "MAC 250 Beam",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Nicolas", "Florian Edelmann"],
+    "authors": ["Florian Edelmann"],
     "createDate": "2019-10-31",
     "lastModifyDate": "2019-10-31"
   },
-  "comment": "Can be converted to a MAC 250 Beam with a MAC 250 Beam Kit, i.e. color filters are removed and beam effect gobos are inserted in the color wheel.",
+  "comment": "Can be converted from a MAC 250 Wash with a MAC 250 Beam Kit, i.e. color filters are removed and beam effect gobos are inserted in the color wheel.",
   "links": {
     "manual": [
-      "https://adn.harmanpro.com/site_elements/executables/5846_1526694942/UM_MAC250Wash_EN_G_original.pdf"
+      "https://adn.harmanpro.com/site_elements/executables/5846_1526694942/UM_MAC250Wash_EN_G_original.pdf",
+      "https://adn.harmanpro.com/site_elements/executables/3354_1526062748/INST_MAC250BeamKit_EN_G_original.pdf"
     ],
     "productPage": [
-      "https://www.martin.com/en/products/mac-250-wash"
+      "https://www.martin.com/en/products/mac-250-beam"
     ],
     "video": [
-      "https://www.youtube.com/watch?v=6pt5-Sw3YVc",
-      "https://www.youtube.com/watch?v=RdbXAUhW048"
+      "https://www.youtube.com/watch?v=2obCQerSMPg",
+      "https://www.youtube.com/watch?v=3qYMqdxzuQQ"
     ]
   },
   "physical": {
@@ -35,36 +36,35 @@
     }
   },
   "wheels": {
-    "Color Wheel": {
+    "Gobo Wheel": {
       "direction": "CCW",
       "slots": [
         {
           "type": "Open"
         },
         {
-          "type": "Color",
-          "name": "CTC 5500",
-          "colorTemperature": "2900K"
+          "type": "Iris",
+          "openPercent": "50%"
         },
         {
-          "type": "Color",
-          "name": "Pink 312"
+          "type": "Iris",
+          "openPercent": "25%"
         },
         {
-          "type": "Color",
-          "name": "UV"
+          "type": "Gobo",
+          "name": "Beam two dots"
         },
         {
-          "type": "Color",
-          "name": "Red 308"
+          "type": "Gobo",
+          "name": "Beam three dots"
         },
         {
-          "type": "Color",
-          "name": "Green 206"
+          "type": "Gobo",
+          "name": "Beam two bars 10"
         },
         {
-          "type": "Color",
-          "name": "Blue 108"
+          "type": "Gobo",
+          "name": "Beamcone 15"
         }
       ]
     }
@@ -317,8 +317,8 @@
         }
       ]
     },
-    "Color Wheel": {
-      "fineChannelAliases": ["Color Wheel fine"],
+    "Gobo Wheel": {
+      "fineChannelAliases": ["Gobo Wheel fine"],
       "dmxValueResolution": "8bit",
       "defaultValue": 0,
       "capabilities": [
@@ -650,7 +650,7 @@
         "Cyan",
         "Magenta",
         "Yellow",
-        "Color Wheel",
+        "Gobo Wheel",
         "Frost",
         "Pan",
         "Pan fine",
@@ -673,8 +673,8 @@
         "Magenta Intensity fine",
         "Yellow",
         "Yellow Intensity fine",
-        "Color Wheel",
-        "Color Wheel fine",
+        "Gobo Wheel",
+        "Gobo Wheel fine",
         "Frost",
         "Frost fine",
         "Pan",
