@@ -1,18 +1,15 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Lux Ld01",
-  "categories": ["Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Thomaxz"],
-    "createDate": "2019-10-18",
-    "lastModifyDate": "2019-10-18"
+    "createDate": "2019-11-01",
+    "lastModifyDate": "2019-11-01"
   },
   "links": {
     "manual": [
       "https://manualzz.com/download/943540"
-    ],
-    "productPage": [
-      "https://www.i-bidder.com/en-gb/auction-catalogues/pro-auction/catalogue-id-pr10125/lot-81f53109-6251-4d68-a5c6-a30e009cf2e4"
     ],
     "video": [
       "https://www.youtube.com/watch?v=EKwxFZwRC3M"
@@ -24,7 +21,10 @@
     "power": 83.6,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "14W RGB LED"
+    },
+    "lens": {
+      "degreesMinMax": [13, 13]
     }
   },
   "wheels": {
@@ -67,22 +67,14 @@
         },
         {
           "type": "Gobo",
-          "name": "Another type of flower"
+          "name": "Flowers"
         }
       ]
     }
   },
   "availableChannels": {
     "Pan": {
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "540deg"
-      }
-    },
-    "Pan 2": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 2 fine"],
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -97,36 +89,40 @@
         "angleEnd": "270deg"
       }
     },
-    "Pan 3": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 3 fine"],
+    "Pan/Tilt Speed": {
       "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "540deg"
-      }
-    },
-    "Tilt 2": {
-      "name": "Tilt",
-      "fineChannelAliases": ["Tilt 2 fine"],
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "270deg"
-      }
-    },
-    "Vector Speed": {
-      "capability": {
-        "type": "Speed",
+        "type": "PanTiltSpeed",
         "speedStart": "fast",
         "speedEnd": "slow"
       }
     },
     "Dimmer / Strobe": {
-      "capability": {
-        "type": "Intensity",
-        "comment": "Also used for strobe"
-      }
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [8, 134],
+          "type": "Intensity",
+          "brightnessStart": "100%",
+          "brightnessEnd": "0%"
+        },
+        {
+          "dmxRange": [135, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
     },
     "Red": {
       "capability": {
@@ -161,7 +157,7 @@
         {
           "dmxRange": [22, 34],
           "type": "ColorPreset",
-          "comment": "RED",
+          "comment": "Red",
           "colors": ["#ff0000"]
         },
         {
@@ -180,85 +176,183 @@
           "dmxRange": [64, 77],
           "type": "ColorPreset",
           "comment": "Cyan",
-          "colors": ["#009999"]
+          "colors": ["#00ffff"]
         },
         {
           "dmxRange": [78, 91],
           "type": "ColorPreset",
-          "comment": "Magenta"
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
         },
         {
           "dmxRange": [92, 105],
           "type": "ColorPreset",
-          "comment": "Yellow"
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
         },
         {
           "dmxRange": [106, 119],
           "type": "ColorPreset",
-          "comment": "Purple"
+          "comment": "Purple",
+          "colors": ["#cc00ff"]
         },
         {
           "dmxRange": [120, 133],
           "type": "ColorPreset",
-          "comment": "Orange"
+          "comment": "Orange",
+          "colors": ["#ffaa00"]
         },
         {
           "dmxRange": [134, 147],
           "type": "ColorPreset",
-          "comment": "Chartreuse"
+          "comment": "Chartreuse",
+          "colors": ["#7fff00"]
         },
         {
           "dmxRange": [148, 161],
           "type": "ColorPreset",
-          "comment": "Pink"
+          "comment": "Pink",
+          "colors": ["#ff66cc"]
         },
         {
           "dmxRange": [162, 175],
           "type": "ColorPreset",
-          "comment": "Brown"
+          "comment": "Brown",
+          "colors": ["#aa6600"]
         },
         {
           "dmxRange": [176, 189],
           "type": "ColorPreset",
-          "comment": "Gold"
+          "comment": "Gold",
+          "colors": ["#ffcc00"]
         },
         {
           "dmxRange": [190, 203],
           "type": "ColorPreset",
-          "comment": "Crimson"
+          "comment": "Crimson",
+          "colors": ["#dc143c"]
         },
         {
           "dmxRange": [204, 217],
           "type": "ColorPreset",
-          "comment": "Violet"
+          "comment": "Violet",
+          "colors": ["#6600ff"]
         },
         {
           "dmxRange": [218, 231],
           "type": "ColorPreset",
-          "comment": "Crape"
+          "comment": "Crape",
+          "colors": ["#ff66aa"]
         },
         {
-          "dmxRange": [232, 254],
-          "type": "ColorPreset",
-          "comment": "Color Change Macro 1"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "ColorPreset"
+          "dmxRange": [232, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
         }
       ]
     },
     "Vector Speed (Color)": {
       "capability": {
-        "type": "NoFunction",
-        "comment": "Vector speeed for color"
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     },
     "Movement Macros": {
-      "capability": {
-        "type": "Generic",
-        "comment": "Auto programs and Sound programs"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 22],
+          "type": "Effect",
+          "effectName": "Auto Program 1"
+        },
+        {
+          "dmxRange": [23, 37],
+          "type": "Effect",
+          "effectName": "Auto Program 2"
+        },
+        {
+          "dmxRange": [38, 52],
+          "type": "Effect",
+          "effectName": "Auto Program 3"
+        },
+        {
+          "dmxRange": [53, 67],
+          "type": "Effect",
+          "effectName": "Auto Program 4"
+        },
+        {
+          "dmxRange": [68, 82],
+          "type": "Effect",
+          "effectName": "Auto Program 5"
+        },
+        {
+          "dmxRange": [83, 97],
+          "type": "Effect",
+          "effectName": "Auto Program 6"
+        },
+        {
+          "dmxRange": [98, 112],
+          "type": "Effect",
+          "effectName": "Auto Program 7"
+        },
+        {
+          "dmxRange": [113, 127],
+          "type": "Effect",
+          "effectName": "Auto Program 8"
+        },
+        {
+          "dmxRange": [128, 142],
+          "type": "Effect",
+          "effectName": "Sound-active Program 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [143, 157],
+          "type": "Effect",
+          "effectName": "Sound-active Program 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [158, 172],
+          "type": "Effect",
+          "effectName": "Sound-active Program 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [173, 187],
+          "type": "Effect",
+          "effectName": "Sound-active Program 4",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [188, 202],
+          "type": "Effect",
+          "effectName": "Sound-active Program 5",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [203, 217],
+          "type": "Effect",
+          "effectName": "Sound-active Program 6",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [218, 232],
+          "type": "Effect",
+          "effectName": "Sound-active Program 7",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [233, 255],
+          "type": "Effect",
+          "effectName": "Sound-active Program 8",
+          "soundControlled": true
+        }
+      ]
     },
     "Gobo Wheel": {
       "capabilities": [
@@ -359,31 +453,29 @@
         },
         {
           "dmxRange": [215, 235],
-          "type": "Effect",
-          "effectName": "Possitve rainbow effect with increasing speed"
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         },
         {
-          "dmxRange": [236, 254],
-          "type": "Effect",
-          "effectName": "Negative rainbow effect with increasing speed"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "NoFunction"
+          "dmxRange": [236, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "13 Channel",
+      "name": "13-Channel",
       "shortName": "13ch",
       "channels": [
-        "Pan 3",
-        "Pan 3 fine",
-        "Tilt 2",
-        "Tilt 2 fine",
-        "Vector Speed",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
         "Dimmer / Strobe",
         "Red",
         "Green",
@@ -392,6 +484,45 @@
         "Vector Speed (Color)",
         "Movement Macros",
         "Gobo Wheel"
+      ]
+    },
+    {
+      "name": "12-Channel for Wash",
+      "shortName": "12ch-wash",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros",
+        "Vector Speed (Color)",
+        "Movement Macros"
+      ]
+    },
+    {
+      "name": "5-Channel for Spot",
+      "shortName": "5ch-spot",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer / Strobe",
+        "Color Macros",
+        "Gobo Wheel"
+      ]
+    },
+    {
+      "name": "4-Channel for Wash",
+      "shortName": "5ch-wash",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer / Strobe",
+        "Color Macros"
       ]
     }
   ]
