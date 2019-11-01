@@ -149,26 +149,6 @@
     ]
   },
   {
-    "man": "chauvet-dj",
-    "key": "slimpar-pro-h-usb",
-    "name": "SlimPAR Pro H USB",
-    "features": [
-      "capability-type-NoFunction",
-      "capability-type-ShutterStrobe",
-      "capability-type-Intensity",
-      "capability-type-ColorIntensity",
-      "capability-type-ColorPreset",
-      "capability-type-Effect",
-      "capability-type-EffectSpeed",
-      "capability-type-SoundSensitivity",
-      "capability-type-Maintenance",
-      "floating-point-weight",
-      "floating-point-power",
-      "reused-channels",
-      "switching-channels"
-    ]
-  },
-  {
     "man": "generic",
     "key": "pan-tilt",
     "name": "Pan/Tilt Fader",
@@ -439,6 +419,34 @@
       "reused-channels",
       "switching-channels",
       "switching-channel-positions"
+    ]
+  },
+  {
+    "man": "qtx",
+    "key": "lux-ld01",
+    "name": "Lux Ld01",
+    "features": [
+      "capability-type-NoFunction",
+      "capability-type-ShutterStrobe",
+      "capability-type-Intensity",
+      "capability-type-ColorIntensity",
+      "capability-type-ColorPreset",
+      "capability-type-Pan",
+      "capability-type-Tilt",
+      "capability-type-PanTiltSpeed",
+      "capability-type-WheelSlot",
+      "capability-type-WheelShake",
+      "capability-type-WheelRotation",
+      "capability-type-Effect",
+      "capability-type-EffectSpeed",
+      "fine-channel-alias",
+      "floating-point-weight",
+      "floating-point-power",
+      "multiple-categories",
+      "reused-channels",
+      "wheel-type-Gobo",
+      "wheel-slot-type-Open",
+      "wheel-slot-type-Gobo"
     ]
   },
   {
