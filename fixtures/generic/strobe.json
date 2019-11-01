@@ -3,28 +3,12 @@
   "name": "Strobe",
   "categories": ["Strobe"],
   "meta": {
-    "authors": ["Mike Rowlands", "Mikey Rowlands"],
-    "createDate": "2019-10-17",
-    "lastModifyDate": "2019-10-17",
-    "importPlugin": {
-      "plugin": "qlcplus_4.12.1",
-      "date": "2019-10-17",
-      "comment": "created by Q Light Controller Plus (version 4.12.2)"
-    }
-  },
-  "physical": {
-    "power": 2600,
-    "DMXconnector": "3-pin",
-    "bulb": {
-      "type": "HTI 2500W"
-    },
-    "lens": {
-      "name": "Other"
-    }
+    "authors": ["Mikey Rowlands"],
+    "createDate": "2019-11-01",
+    "lastModifyDate": "2019-11-01"
   },
   "availableChannels": {
     "Frequency": {
-      "defaultValue": 0,
       "capability": {
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
@@ -41,7 +25,14 @@
   },
   "modes": [
     {
-      "name": "Mode 1",
+      "name": "Frequency + Dimmer",
+      "channels": [
+        "Frequency",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "Dimmer + Frequency",
       "channels": [
         "Frequency",
         "Dimmer"
