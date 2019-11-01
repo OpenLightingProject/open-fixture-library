@@ -145,7 +145,7 @@ function getMarkdownCode() {
   mdLines.push(``);
 
   // table head
-  const tableHead = [].concat(`*Fixture number*`, fixtures.map((fixture, index) => index + 1)).join(` | `);
+  const tableHead = [`*Fixture number*`].concat(fixtures.map((fixture, index) => index + 1)).join(` | `);
 
   mdLines.push(tableHead);
   mdLines.push(`|-`.repeat(fixtures.length + 1));
