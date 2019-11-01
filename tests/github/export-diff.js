@@ -90,9 +90,7 @@ function getDiffTasks(changedComponents) {
   const usableTestFixtures = testFixtures.filter(testFixture => !addedFixtures.includes(testFixture));
 
   /** @type {Array.<Task>} */
-  return getTasksForModel()
-    .concat(getTasksForPlugins())
-    .concat(getTasksForFixtures())
+  return getTasksForModel().concat(getTasksForPlugins(), getTasksForFixtures())
     .filter((task, index, arr) => {
       const firstEqualTask = arr.find(otherTask =>
         task.manFix === otherTask.manFix &&
@@ -123,14 +121,14 @@ function getDiffTasks(changedComponents) {
    * @returns {Array.<Task>} What export diff tasks have to be done due to changes in the model. May be empty.
    */
   function getTasksForModel() {
-    let tasks = [];
+    const tasks = [];
 
     if (changedComponents.added.model ||
       changedComponents.modified.model ||
       changedComponents.removed.model) {
 
       for (const manFix of usableTestFixtures) {
-        tasks = tasks.concat(usablePlugins.map(pluginKey => ({
+        tasks.push(...usablePlugins.map(pluginKey => ({
           manFix,
           currentPluginKey: pluginKey,
           comparePluginKey: pluginKey
@@ -145,11 +143,11 @@ function getDiffTasks(changedComponents) {
    * @returns {Array.<Task>} What export diff tasks have to be done due to changes in plugins. May be empty.
    */
   function getTasksForPlugins() {
-    let tasks = [];
+    const tasks = [];
 
     const changedPlugins = changedComponents.modified.exports;
     for (const changedPlugin of changedPlugins) {
-      tasks = tasks.concat(usableTestFixtures.map(manFix => ({
+      tasks.push(...usableTestFixtures.map(manFix => ({
         manFix,
         currentPluginKey: changedPlugin,
         comparePluginKey: changedPlugin
@@ -166,7 +164,7 @@ function getDiffTasks(changedComponents) {
         const lastVersion = previousVersions[previousVersions.length - 1];
 
         if (removedPlugins.includes(lastVersion) || (plugins.exportPlugins.includes(lastVersion) && !addedPlugins.includes(lastVersion))) {
-          tasks = tasks.concat(usableTestFixtures.map(manFix => ({
+          tasks.push(...usableTestFixtures.map(manFix => ({
             manFix,
             currentPluginKey: addedPlugin,
             comparePluginKey: lastVersion
@@ -182,10 +180,10 @@ function getDiffTasks(changedComponents) {
    * @returns {Array.<Task>} What export diff tasks have to be done due to changes in fixtures. May be empty.
    */
   function getTasksForFixtures() {
-    let tasks = [];
+    const tasks = [];
 
     for (const [manKey, fixKey] of changedComponents.modified.fixtures) {
-      tasks = tasks.concat(usablePlugins.map(pluginKey => ({
+      tasks.push(...usablePlugins.map(pluginKey => ({
         manFix: `${manKey}/${fixKey}`,
         currentPluginKey: pluginKey,
         comparePluginKey: pluginKey
@@ -207,7 +205,7 @@ async function performTask(task) {
 
   const pluginDisplayName = task.currentPluginKey === task.comparePluginKey ? task.currentPluginKey : `${task.comparePluginKey}->${task.currentPluginKey}`;
 
-  let lines = [
+  const lines = [
     `<details>`,
     `<summary>${emoji} <strong>${task.manFix}:</strong> ${pluginDisplayName}</summary>`
   ];
@@ -220,12 +218,12 @@ async function performTask(task) {
 
     if (changeFlags.hasRemoved) {
       lines.push(`<strong>Removed files</strong>`);
-      lines = lines.concat(`<ul>`, output.removedFiles.map(file => `<li>${file}</li>`), `</ul>`);
+      lines.push(`<ul>`, ...output.removedFiles.map(file => `<li>${file}</li>`), `</ul>`);
     }
 
     if (changeFlags.hasAdded) {
       lines.push(`<strong>Added files</strong>`);
-      lines = lines.concat(`<ul>`, output.addedFiles.map(file => `<li>${file}</li>`), `</ul>`);
+      lines.push(`<ul>`, ...output.addedFiles.map(file => `<li>${file}</li>`), `</ul>`);
     }
 
     for (const file of Object.keys(output.changedFiles)) {
