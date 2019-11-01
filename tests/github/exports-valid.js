@@ -132,14 +132,14 @@ let testErrored = false;
  * @returns {Array.<Task>} What export valid tasks have to be done due to changes in the model. May be empty.
  */
 function getTasksForModel(changedComponents) {
-  let tasks = [];
+  const tasks = [];
 
   if (changedComponents.added.model ||
     changedComponents.modified.model ||
     changedComponents.removed.model) {
 
     for (const [manKey, fixKey] of testFixtures) {
-      tasks = tasks.concat(exportTests.map(([pluginKey, testKey]) => ({
+      tasks.push(...exportTests.map(([pluginKey, testKey]) => ({
         manKey,
         fixKey,
         pluginKey,
@@ -156,7 +156,7 @@ function getTasksForModel(changedComponents) {
  * @returns {Array.<Task>} What export valid tasks have to be done due to changes in plugins. May be empty.
  */
 function getTasksForPlugins(changedComponents) {
-  let tasks = [];
+  const tasks = [];
 
   const changedPlugins = changedComponents.added.exports.concat(changedComponents.modified.exports);
 
@@ -164,7 +164,7 @@ function getTasksForPlugins(changedComponents) {
     const pluginExportTests = plugins.data[changedPlugin].exportTests;
 
     for (const [manKey, fixKey] of testFixtures) {
-      tasks = tasks.concat(pluginExportTests.map(testKey => ({
+      tasks.push(...pluginExportTests.map(testKey => ({
         manKey,
         fixKey,
         pluginKey: changedPlugin,
@@ -181,12 +181,12 @@ function getTasksForPlugins(changedComponents) {
  * @returns {Array.<Task>} What export valid tasks have to be done due to changes in export tests. May be empty.
  */
 function getTasksForExportTests(changedComponents) {
-  let tasks = [];
+  const tasks = [];
 
   const changedExportTests = changedComponents.added.exportTests.concat(changedComponents.modified.exportTests);
 
   for (const [manKey, fixKey] of testFixtures) {
-    tasks = tasks.concat(changedExportTests.map(([pluginKey, testKey]) => ({
+    tasks.push(...changedExportTests.map(([pluginKey, testKey]) => ({
       manKey,
       fixKey,
       pluginKey,
@@ -202,12 +202,12 @@ function getTasksForExportTests(changedComponents) {
  * @returns {Array.<Task>} What export valid tasks have to be done due to changes in fixtures. May be empty.
  */
 function getTasksForFixtures(changedComponents) {
-  let tasks = [];
+  const tasks = [];
 
   const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures);
 
   for (const [manKey, fixKey] of fixtures) {
-    tasks = tasks.concat(exportTests.map(([pluginKey, testKey]) => ({
+    tasks.push(...exportTests.map(([pluginKey, testKey]) => ({
       manKey,
       fixKey,
       pluginKey,

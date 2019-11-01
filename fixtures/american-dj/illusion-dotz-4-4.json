@@ -1,0 +1,477 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Illusion Dotz 4.4",
+  "categories": ["Matrix", "Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Dávid Czirók", "István Király"],
+    "createDate": "2019-10-30",
+    "lastModifyDate": "2019-10-30",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2019-10-30",
+      "comment": "created by Q Light Controller Plus (version 4.12.1)"
+    }
+  },
+  "links": {
+    "manual": [
+      "http://intranet.americandj.com/ItemRelatedFiles/8697/illusion_dotz_4_4.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/illusion-dotz-4-4"
+    ],
+    "video": [
+      "https://youtu.be/NbQMI2cSr00",
+      "https://youtu.be/9Q4ybDqgpP4",
+      "https://youtu.be/m9pnTYFYrGs",
+      "https://youtu.be/vyVgKv-uXws"
+    ]
+  },
+  "helpWanted": "Is the order of the individual pixels in Extended 59-channel mode correct?",
+  "physical": {
+    "dimensions": [492, 467, 393],
+    "weight": 16.5,
+    "power": 468,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "16× 30W RGB COB LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [15, 15]
+    }
+  },
+  "matrix": {
+    "pixelCount": [4, 4, 1],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 32,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer Curves": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Maintenance",
+          "comment": "Standard"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Maintenance",
+          "comment": "Stage"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Maintenance",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Maintenance",
+          "comment": "Architectural"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Maintenance",
+          "comment": "Theatre"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "Maintenance",
+          "comment": "Default to unit settings"
+        }
+      ]
+    },
+    "Auto Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Effect",
+          "effectName": "Program 1",
+          "helpWanted": "Does DMX value 0 really activate an auto program? Or does this capability start at 1 in fact?"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Effect",
+          "effectName": "Program 2"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Effect",
+          "effectName": "Program 3"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Effect",
+          "effectName": "Program 4"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Effect",
+          "effectName": "Program 5"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Effect",
+          "effectName": "Program 6"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Effect",
+          "effectName": "Program 7"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Effect",
+          "effectName": "Program 8"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Effect",
+          "effectName": "Program 9"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "Effect",
+          "effectName": "Program 10"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "Effect",
+          "effectName": "Program 11"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "Effect",
+          "effectName": "Program 12"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "Effect",
+          "effectName": "Program 13"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "Effect",
+          "effectName": "Program 14"
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "Effect",
+          "effectName": "Program 15"
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "Effect",
+          "effectName": "Program 16"
+        },
+        {
+          "dmxRange": [161, 170],
+          "type": "Effect",
+          "effectName": "Program 17"
+        },
+        {
+          "dmxRange": [171, 180],
+          "type": "Effect",
+          "effectName": "Program 18"
+        },
+        {
+          "dmxRange": [181, 190],
+          "type": "Effect",
+          "effectName": "Program 19"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "Effect",
+          "effectName": "Program 20"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "Effect",
+          "effectName": "Program 21"
+        },
+        {
+          "dmxRange": [211, 220],
+          "type": "Effect",
+          "effectName": "Program 22"
+        },
+        {
+          "dmxRange": [221, 230],
+          "type": "Effect",
+          "effectName": "Program 23"
+        },
+        {
+          "dmxRange": [231, 240],
+          "type": "Effect",
+          "effectName": "Program 24"
+        },
+        {
+          "dmxRange": [241, 250],
+          "type": "Effect",
+          "effectName": "Program 25"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Gradient effect"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pan/Tilt Movement Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 225],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [226, 235],
+          "type": "Maintenance",
+          "comment": "blackout by movement"
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Maintenance / Internal Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 79],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Maintenance",
+          "comment": "All motor reset"
+        },
+        {
+          "dmxRange": [85, 96],
+          "type": "NoFunction",
+          "helpWanted": "Is the lamp off when this capability is selected?"
+        },
+        {
+          "dmxRange": [97, 99],
+          "type": "Maintenance",
+          "comment": "Other motor reset"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Effect",
+          "effectName": "Internal program 1"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Effect",
+          "effectName": "Internal program 2"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Effect",
+          "effectName": "Internal program 3"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "Effect",
+          "effectName": "Internal program 4"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "Effect",
+          "effectName": "Internal program 5"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "Effect",
+          "effectName": "Internal program 6"
+        },
+        {
+          "dmxRange": [220, 239],
+          "type": "Effect",
+          "effectName": "Internal program 7"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Sound active program",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard 14-channel",
+      "shortName": "14ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer Curves",
+        "Auto Programs",
+        "Program Speed",
+        "Pan/Tilt Movement Speed",
+        "Maintenance / Internal Programs"
+      ]
+    },
+    {
+      "name": "Basic 12-channel",
+      "shortName": "12ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer Curves",
+        "Auto Programs",
+        "Program Speed",
+        "Pan/Tilt Movement Speed",
+        "Maintenance / Internal Programs"
+      ]
+    },
+    {
+      "name": "Extended 59-channel",
+      "shortName": "59ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer Curves",
+        "Auto Programs",
+        "Program Speed",
+        "Pan/Tilt Movement Speed",
+        "Maintenance / Internal Programs"
+      ]
+    }
+  ]
+}
