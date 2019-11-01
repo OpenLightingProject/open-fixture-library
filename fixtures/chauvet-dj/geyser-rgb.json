@@ -1,16 +1,32 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Geyser RGB",
-  "categories": ["Smoke"],
+  "categories": ["Smoke", "Color Changer"],
   "meta": {
     "authors": ["Alex Jacobs"],
-    "createDate": "2019-10-16",
-    "lastModifyDate": "2019-10-16"
+    "createDate": "2019-11-01",
+    "lastModifyDate": "2019-11-01"
   },
   "links": {
     "manual": [
       "https://www.chauvetdj.com/wp-content/uploads/2015/12/GeyserRGB_UM_Rev8_WO-1.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/geyser-rgb/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=hQXFyo28Ndc",
+      "https://www.youtube.com/watch?v=pq10ol45HNE"
     ]
+  },
+  "physical": {
+    "dimensions": [375, 250, 510],
+    "weight": 9.6,
+    "power": 1500,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "21× 3W LEDs (7× red, 7× green, 7× blue)"
+    }
   },
   "availableChannels": {
     "Fog": {
@@ -23,7 +39,8 @@
         {
           "dmxRange": [10, 255],
           "type": "Fog",
-          "fogType": "Fog"
+          "fogType": "Fog",
+          "fogOutput": "481m^3/min"
         }
       ]
     },
@@ -74,8 +91,8 @@
         },
         {
           "dmxRange": [10, 255],
-          "type": "Generic",
-          "comment": "Moves through color presets"
+          "type": "ColorPreset",
+          "helpWanted": "Which colors can be selected at which DMX values?"
         }
       ]
     },
@@ -101,7 +118,8 @@
         },
         {
           "dmxRange": [10, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         }
@@ -122,7 +140,8 @@
   },
   "modes": [
     {
-      "name": "Fog",
+      "name": "8-channel",
+      "shortName": "8ch",
       "channels": [
         "Fog",
         "Red",
