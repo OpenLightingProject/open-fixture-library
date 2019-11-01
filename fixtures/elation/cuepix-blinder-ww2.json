@@ -1,0 +1,180 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CUEPIX Blinder WW2",
+  "categories": ["Blinder", "Strobe"],
+  "meta": {
+    "authors": ["Dávid Czirók", "István Király"],
+    "createDate": "2019-10-30",
+    "lastModifyDate": "2019-10-30",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2019-10-30",
+      "comment": "created by Q Light Controller Plus (version 4.12.1)"
+    }
+  },
+  "links": {
+    "manual": [
+      "http://cdb.s3.amazonaws.com/ItemRelatedFiles/9941/elation_cuepix_blinder_ww2_user_manual_ver_2.pdf"
+    ],
+    "productPage": [
+      "https://www.elationlighting.com/cuepix-blinder-ww2"
+    ]
+  },
+  "physical": {
+    "dimensions": [259.4, 181.2, 478],
+    "weight": 5.1,
+    "power": 229,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "100W Warm White COB LEDs",
+      "colorTemperature": 3200
+    },
+    "lens": {
+      "degreesMinMax": [60, 60]
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["Left", "Right"]
+      ]
+    ],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "availableChannels": {
+    "Strobe": {
+      "defaultValue": 32,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimming Curve": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 41],
+          "type": "Maintenance",
+          "comment": "Standard"
+        },
+        {
+          "dmxRange": [42, 84],
+          "type": "Maintenance",
+          "comment": "Stage"
+        },
+        {
+          "dmxRange": [85, 127],
+          "type": "Maintenance",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [128, 170],
+          "type": "Maintenance",
+          "comment": "Architectural"
+        },
+        {
+          "dmxRange": [171, 213],
+          "type": "Maintenance",
+          "comment": "Theatre"
+        },
+        {
+          "dmxRange": [214, 255],
+          "type": "Maintenance",
+          "comment": "Default to unit setting"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "Warm White $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Warm White Master"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Warm White Master",
+        "Dimming Curve"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Warm White Master",
+        "Strobe",
+        "Dimming Curve"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Warm White Left",
+        "Warm White Right",
+        "Strobe",
+        "Dimming Curve"
+      ]
+    }
+  ]
+}
