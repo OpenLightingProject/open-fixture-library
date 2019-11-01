@@ -1,0 +1,299 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Pot 12×1W RGBW",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Dennis Fischer"],
+    "createDate": "2019-11-01",
+    "lastModifyDate": "2019-11-01"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/377666_c_377666_r4_de_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/fun_generation_led_pot_12x1w_rgbw.htm"
+    ],
+    "video": [
+      "https://video2.thomann.de//vidiot/02591c1c/video_i4829p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [168, 172, 130],
+    "weight": 0.76,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Effect",
+          "effectName": "Black Out"
+        },
+        {
+          "dmxRange": [1, 16],
+          "type": "Effect",
+          "effectName": "Color Macro activation ",
+          "comment": "Macro activated for DMX Channel 7"
+        },
+        {
+          "dmxRange": [17, 33],
+          "type": "Effect",
+          "effectName": "Program 01"
+        },
+        {
+          "dmxRange": [34, 50],
+          "type": "Effect",
+          "effectName": "Program 02"
+        },
+        {
+          "dmxRange": [51, 67],
+          "type": "Effect",
+          "effectName": "Program 03"
+        },
+        {
+          "dmxRange": [68, 84],
+          "type": "Effect",
+          "effectName": "Program 04"
+        },
+        {
+          "dmxRange": [85, 101],
+          "type": "Effect",
+          "effectName": "Program 05"
+        },
+        {
+          "dmxRange": [102, 118],
+          "type": "Effect",
+          "effectName": "Program 06"
+        },
+        {
+          "dmxRange": [119, 135],
+          "type": "Effect",
+          "effectName": "Program 07"
+        },
+        {
+          "dmxRange": [136, 152],
+          "type": "Effect",
+          "effectName": "Program 08"
+        },
+        {
+          "dmxRange": [153, 169],
+          "type": "Effect",
+          "effectName": "Program 09"
+        },
+        {
+          "dmxRange": [170, 186],
+          "type": "Effect",
+          "effectName": "Program 10"
+        },
+        {
+          "dmxRange": [187, 203],
+          "type": "Effect",
+          "effectName": "Program 11"
+        },
+        {
+          "dmxRange": [204, 220],
+          "type": "Effect",
+          "effectName": "Program 12"
+        },
+        {
+          "dmxRange": [221, 237],
+          "type": "Effect",
+          "effectName": "Program 13"
+        },
+        {
+          "dmxRange": [238, 255],
+          "type": "Effect",
+          "effectName": "Sound controlled"
+        }
+      ]
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ColorPreset",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ff9600"]
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffb400"]
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ff008c"]
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "ColorPreset",
+          "comment": "Turkis",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "ColorPreset",
+          "comment": "Red/White",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "ColorPreset",
+          "comment": "Green/White",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "ColorPreset",
+          "comment": "Blue/White",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "ColorPreset",
+          "comment": "light Amber",
+          "colors": ["#ffc828"]
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6 Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter / Strobe"
+      ]
+    },
+    {
+      "name": "8 Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Program",
+        "Color Presets",
+        "Shutter / Strobe"
+      ]
+    }
+  ]
+}
