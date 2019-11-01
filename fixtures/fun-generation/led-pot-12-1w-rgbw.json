@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED Pot 12×1W RGBW",
-  "categories": ["Other"],
+  "categories": ["Color Changer"],
   "meta": {
     "authors": ["Dennis Fischer"],
     "createDate": "2019-11-01",
@@ -9,22 +9,25 @@
   },
   "links": {
     "manual": [
-      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/377666_c_377666_r4_de_online.pdf"
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/377666_c_377666_r4_en_online.pdf"
     ],
     "productPage": [
-      "https://www.thomann.de/de/fun_generation_led_pot_12x1w_rgbw.htm"
+      "https://www.thomann.de/intl/fun_generation_led_pot_12x1w_rgbw.htm"
     ],
     "video": [
-      "https://video2.thomann.de//vidiot/02591c1c/video_i4829p10_yd59vqpa.mp4"
+      "https://video2.thomann.de/vidiot/02591c1c/video_i4829p10_yd59vqpa.mp4"
     ]
   },
   "physical": {
-    "dimensions": [168, 172, 130],
+    "dimensions": [172, 130, 168],
     "weight": 0.76,
     "power": 15,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "12× 1W TrueColour LED (3× red, 3× green, 3× blue, 3× white)"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
     }
   },
   "availableChannels": {
@@ -68,8 +71,8 @@
           "dmxRange": [1, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
         }
       ]
     },
@@ -163,7 +166,8 @@
         {
           "dmxRange": [0, 15],
           "type": "ColorPreset",
-          "comment": "Off"
+          "comment": "Off",
+          "colors": ["#000000"]
         },
         {
           "dmxRange": [16, 31],
@@ -222,31 +226,31 @@
         {
           "dmxRange": [160, 175],
           "type": "ColorPreset",
-          "comment": "Turkis",
+          "comment": "Cyan",
           "colors": ["#00ffff"]
         },
         {
           "dmxRange": [176, 191],
           "type": "ColorPreset",
-          "comment": "Red/White",
-          "colors": ["#ff0000"]
+          "comment": "Light Red",
+          "colors": ["#ff8080"]
         },
         {
           "dmxRange": [192, 207],
           "type": "ColorPreset",
-          "comment": "Green/White",
-          "colors": ["#00ff00"]
+          "comment": "Light Green",
+          "colors": ["#80ff80"]
         },
         {
           "dmxRange": [208, 223],
           "type": "ColorPreset",
-          "comment": "Blue/White",
-          "colors": ["#0000ff"]
+          "comment": "Light Blue",
+          "colors": ["#8080ff"]
         },
         {
           "dmxRange": [224, 239],
           "type": "ColorPreset",
-          "comment": "light Amber",
+          "comment": "Light Amber",
           "colors": ["#ffc828"]
         },
         {
@@ -260,7 +264,7 @@
   },
   "modes": [
     {
-      "name": "4 Channel",
+      "name": "4-channel",
       "shortName": "4ch",
       "channels": [
         "Red",
@@ -270,7 +274,7 @@
       ]
     },
     {
-      "name": "6 Channel",
+      "name": "6-channel",
       "shortName": "6ch",
       "channels": [
         "Dimmer",
@@ -282,7 +286,7 @@
       ]
     },
     {
-      "name": "8 Channel",
+      "name": "8-channel",
       "shortName": "8ch",
       "channels": [
         "Dimmer",
@@ -291,7 +295,7 @@
         "Blue",
         "White",
         "Program",
-        "Color Presets",
+        "Color Presets / Program Speed",
         "Shutter / Strobe"
       ]
     }
