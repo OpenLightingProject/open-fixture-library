@@ -77,87 +77,135 @@
       ]
     },
     "Program": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "Effect",
-          "effectName": "Black Out"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Color Presets / Program Speed": "Color Presets"
+          }
         },
         {
           "dmxRange": [1, 16],
           "type": "Effect",
-          "effectName": "Color Macro activation ",
-          "comment": "Macro activated for DMX Channel 7"
+          "effectName": "Color Macro activation",
+          "switchChannels": {
+            "Color Presets / Program Speed": "Color Presets"
+          }
         },
         {
           "dmxRange": [17, 33],
           "type": "Effect",
-          "effectName": "Program 01"
+          "effectName": "Program 01",
+          "switchChannels": {
+            "Color Presets / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [34, 50],
           "type": "Effect",
-          "effectName": "Program 02"
+          "effectName": "Program 02",
+          "switchChannels": {
+            "Color Presets / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [51, 67],
           "type": "Effect",
-          "effectName": "Program 03"
+          "effectName": "Program 03",
+          "switchChannels": {
+            "Color Presets / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [68, 84],
           "type": "Effect",
-          "effectName": "Program 04"
+          "effectName": "Program 04",
+          "switchChannels": {
+            "Color Presets / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [85, 101],
           "type": "Effect",
-          "effectName": "Program 05"
+          "effectName": "Program 05",
+          "switchChannels": {
+            "Color Presets / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [102, 118],
           "type": "Effect",
-          "effectName": "Program 06"
+          "effectName": "Program 06",
+          "switchChannels": {
+            "Color Presets / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [119, 135],
           "type": "Effect",
-          "effectName": "Program 07"
+          "effectName": "Program 07",
+          "switchChannels": {
+            "Color Presets / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [136, 152],
           "type": "Effect",
-          "effectName": "Program 08"
+          "effectName": "Program 08",
+          "switchChannels": {
+            "Color Presets / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [153, 169],
           "type": "Effect",
-          "effectName": "Program 09"
+          "effectName": "Program 09",
+          "switchChannels": {
+            "Color Presets / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [170, 186],
           "type": "Effect",
-          "effectName": "Program 10"
+          "effectName": "Program 10",
+          "switchChannels": {
+            "Color Presets / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [187, 203],
           "type": "Effect",
-          "effectName": "Program 11"
+          "effectName": "Program 11",
+          "switchChannels": {
+            "Color Presets / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [204, 220],
           "type": "Effect",
-          "effectName": "Program 12"
+          "effectName": "Program 12",
+          "switchChannels": {
+            "Color Presets / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [221, 237],
           "type": "Effect",
-          "effectName": "Program 13"
+          "effectName": "Program 13",
+          "switchChannels": {
+            "Color Presets / Program Speed": "Program Speed"
+          }
         },
         {
           "dmxRange": [238, 255],
           "type": "Effect",
-          "effectName": "Sound controlled"
+          "effectName": "Sound control",
+          "soundControlled": true,
+          "switchChannels": {
+            "Color Presets / Program Speed": "Program Speed"
+          }
         }
       ]
     },
@@ -258,6 +306,22 @@
           "type": "ColorPreset",
           "comment": "White",
           "colors": ["#ffffff"]
+        }
+      ]
+    },
+    "Program Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 100],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "Effect",
+          "effectName": "Intensity Sound to Light",
+          "soundControlled": true
         }
       ]
     }
