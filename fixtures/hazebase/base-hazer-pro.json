@@ -1,0 +1,55 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "base*hazer*pro",
+  "shortName": "basehazerpro",
+  "categories": ["Hazer"],
+  "meta": {
+    "authors": ["Flo Edelmann"],
+    "createDate": "2019-11-05",
+    "lastModifyDate": "2019-11-05"
+  },
+  "links": {
+    "manual": [
+      "https://hazebase.com/wp-content/uploads//manual_base_hazer.pdf"
+    ],
+    "productPage": [
+      "https://hazebase.com/hazer/bazehazerpro/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=m1Z7sziCdL0"
+    ]
+  },
+  "physical": {
+    "dimensions": [59.4, 18.5, 54],
+    "weight": 18,
+    "power": 1500,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Haze": {
+      "capability": {
+        "type": "Fog",
+        "fogType": "Haze",
+        "fogOutputStart": "weak",
+        "fogOutputEnd": "strong"
+      }
+    },
+    "Fan": {
+      "capability": {
+        "type": "Rotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Haze",
+        "Fan"
+      ]
+    }
+  ]
+}
