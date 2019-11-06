@@ -1,0 +1,157 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Geyser RGB",
+  "categories": ["Smoke", "Color Changer"],
+  "meta": {
+    "authors": ["Alex Jacobs"],
+    "createDate": "2019-11-01",
+    "lastModifyDate": "2019-11-01"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2015/12/GeyserRGB_UM_Rev8_WO-1.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/geyser-rgb/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=hQXFyo28Ndc",
+      "https://www.youtube.com/watch?v=pq10ol45HNE"
+    ]
+  },
+  "physical": {
+    "dimensions": [375, 250, 510],
+    "weight": 9.6,
+    "power": 1500,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "21× 3W LEDs (7× red, 7× green, 7× blue)"
+    }
+  },
+  "availableChannels": {
+    "Fog": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Fog",
+          "fogType": "Fog",
+          "fogOutput": "481m^3/min"
+        }
+      ]
+    },
+    "Red": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ColorIntensity",
+          "color": "Red"
+        }
+      ]
+    },
+    "Green": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ColorIntensity",
+          "color": "Green"
+        }
+      ]
+    },
+    "Blue": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        }
+      ]
+    },
+    "Color Mixing": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ColorPreset",
+          "helpWanted": "Which colors can be selected at which DMX values?"
+        }
+      ]
+    },
+    "Auto Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Intensity"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Fog",
+        "Red",
+        "Green",
+        "Blue",
+        "Color Mixing",
+        "Auto Speed",
+        "Strobe",
+        "Dimmer"
+      ]
+    }
+  ]
+}

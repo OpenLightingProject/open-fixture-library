@@ -868,7 +868,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       };
     });
 
-    const matrixPixelList = [...matrixPixels];
+    const matrixPixelList = Array.from(matrixPixels);
 
     fixture.matrix = {
       pixelKeys: [
