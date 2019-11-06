@@ -178,7 +178,10 @@
     "vue/match-component-file-name": ["error", {
       "extensions": ["vue"],
       "shouldMatchCase": true
-    }]
+    }],
+    "vue/no-deprecated-scope-attribute": "error",
+    "vue/valid-v-slot": "error",
+    "vue/v-slot-style": ["error", "shorthand"]
   },
   "settings": {
     "jsdoc": {
