@@ -365,20 +365,23 @@ async function updateGithubIssue(urlResults) {
       `**Last updated:** ${(new Date()).toISOString()}`,
       ``,
       `| URL | today | -1d | -2d | -3d | -4d | -5d | -6d |`,
-      `|-----|-------|-----|-----|-----|-----|-----|-----|`
-    ].concat(Object.entries(linkData).map(([url, statuses]) => {
-      let line = `| ${url} |`;
-      for (const status of statuses) {
-        const { failed, message, jobUrl } = status;
-        if (failed) {
-          line += ` <a href="${jobUrl}" title="${message}">:x:</a> |`;
-        }
-        else {
-          line += ` :heavy_check_mark: |`;
-        }
-      }
-      return line;
-    }));
+      `|-----|-------|-----|-----|-----|-----|-----|-----|`,
+      ...Object.entries(linkData).map(([url, statuses]) => {
+        const columns = [
+          url,
+          ...statuses.map(status => {
+            if (!status.failed) {
+              return `:heavy_check_mark:`;
+            }
+
+            const message = status.message.replace(`\n`, ` `).replace(`"`, `&quot;`);
+            return `<a href="${status.jobUrl}" title="${message}">:x:</a>`;
+          })
+        ];
+
+        return `| ${columns.join(` | `)} |`;
+      })
+    ];
 
     return lines.join(`\n`);
   }

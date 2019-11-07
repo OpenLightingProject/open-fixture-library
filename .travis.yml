@@ -27,7 +27,7 @@ matrix:
     - env: TESTFILE=tests/external-links.js
       if: type in (api, cron)
 script:
-  - NODE_ENV=production node "$TESTFILE"
+  - NODE_ENV=production node --tls-min-v1.0 "$TESTFILE"
 cache:
   directories:
     - node_modules # cache NPM dependencies
