@@ -369,13 +369,12 @@ async function updateGithubIssue(urlResults) {
     ].concat(Object.entries(linkData).map(([url, statuses]) => {
       let line = `| ${url} |`;
       for (const status of statuses) {
-        const { failed, message, jobUrl } = status;
-        if (failed) {
-          line += ` <a href="${jobUrl}" title="${message}">:x:</a> |`;
-        }
-        else {
-          line += ` :heavy_check_mark: |`;
-        }
+        const { failed, jobUrl } = status;
+        const message = status.message.replace(`\n`, ` `).replace(`"`, `&quot;`);
+
+        line += ` `;
+        line += failed ? `<a href="${jobUrl}" title="${message}">:x:</a>` : `:heavy_check_mark:`;
+        line += ` |`;
       }
       return line;
     }));
