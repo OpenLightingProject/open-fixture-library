@@ -370,7 +370,7 @@ async function updateGithubIssue(urlResults) {
       let line = `| ${url} |`;
       for (const status of statuses) {
         const { failed, jobUrl } = status;
-        const message = status.message.replace(`\n`, ` `).replace(`"`, `&quot;`);
+        const message = (status.message || ``).replace(`\n`, ` `).replace(`"`, `&quot;`);
 
         line += ` `;
         line += failed ? `<a href="${jobUrl}" title="${message}">:x:</a>` : `:heavy_check_mark:`;
