@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mega Bar 50RGB or 50RGB RC",
+  "categories": ["Color Changer", "Strobe", "Effect"],
+  "meta": {
+    "authors": ["Peter G."],
+    "createDate": "2019-11-10",
+    "lastModifyDate": "2019-11-10"
+  },
+  "links": {
+    "manual": [
+      "https://www.adj.com/mega-bar-50rgb-rc"
+    ],
+    "productPage": [
+      "https://www.adj.com/mega-bar-50rgb-rc"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=8Px1FM_7BU8&feature=emb_logo"
+    ]
+  },
+  "physical": {
+    "dimensions": [560, 102, 63],
+    "weight": 1.5,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 357
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Program": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Preset Programs"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-Channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros",
+        "Program Speed",
+        "Program",
+        "Intensity"
+      ]
+    },
+    {
+      "name": "3-Channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
