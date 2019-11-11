@@ -1,0 +1,256 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PicoBeam 60 COB RGBW",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["gloryfire"],
+    "createDate": "2019-11-11",
+    "lastModifyDate": "2019-11-11"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/442853_c_442853_v2_r1_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/fun_generation_picobeam_60_cob_rgbw.htm"
+    ],
+    "video": [
+      "https://www.thomann.de/de/thomanntv_video_fun_generation_picobeam_60_cob_rgbw_7286.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [147, 234, 175],
+    "weight": 3,
+    "power": 60,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Pan  ": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "1deg",
+        "comment": "Pan fine channel"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "1deg",
+        "comment": "Tilt fine channel"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Programm": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Purple"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "All white"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "dark"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Effect",
+          "effectName": "Programm 1"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Effect",
+          "effectName": "Programm 2"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Effect",
+          "effectName": "Programm 3"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Effect",
+          "effectName": "Programm 4"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Effect",
+          "effectName": "Programm 5"
+        },
+        {
+          "dmxRange": [190, 233],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [234, 236],
+          "type": "Effect",
+          "effectName": "Reset"
+        },
+        {
+          "dmxRange": [237, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound control"
+        }
+      ]
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Intensity Red": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Red"
+      }
+    },
+    "Intensity Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Intensity Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensity White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "8ch",
+      "channels": [
+        "Pan",
+        "Pan  ",
+        "Tilt",
+        "Tilt 2",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Programm",
+        "Sound Sensitivity"
+      ]
+    },
+    {
+      "name": "13ch",
+      "channels": [
+        "Pan",
+        "Pan  ",
+        "Tilt",
+        "Tilt 2",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Intensity Red",
+        "Intensity Green",
+        "Intensity Blue",
+        "Intensity White",
+        "Programm",
+        "Sound Sensitivity"
+      ]
+    }
+  ]
+}
