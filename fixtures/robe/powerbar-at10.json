@@ -1,0 +1,123 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "powerbar AT10",
+  "shortName": "PWBarAT10",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["u.mano"],
+    "createDate": "2019-11-12",
+    "lastModifyDate": "2019-11-12"
+  },
+  "links": {
+    "productPage": [
+      "https://www.robe.cz/products/led-series/"
+    ]
+  },
+  "rdm": {
+    "modelId": 0,
+    "softwareVersion": "1.7"
+  },
+  "physical": {
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [20, 50]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Green": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Blue": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "White": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": "0%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Color Macros": {
+      "defaultValue": "0%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Macros 2": {
+      "name": "Color Macros",
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Effect",
+        "effectName": "pixel mapping"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter / Strobe",
+        "Color Macros",
+        "Color Macros 2",
+        "Dimmer"
+      ]
+    }
+  ]
+}
