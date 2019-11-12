@@ -1,0 +1,174 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Accent 1Q",
+  "shortName": "Acc1Q",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["P"],
+    "createDate": "2019-11-12",
+    "lastModifyDate": "2019-11-12"
+  },
+  "links": {
+    "manual": [
+      "https://www.musiclights.it/download.php?id=3242"
+    ]
+  },
+  "physical": {
+    "dimensions": [110, 172, 67],
+    "weight": 0.89,
+    "power": 14,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "Led"
+    },
+    "lens": {
+      "degreesMinMax": [10, 10]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "brightness": "100%"
+      }
+    },
+    "Red": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "100%"
+      }
+    },
+    "Green": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Cold White": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "highlightValue": "0%",
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Macros": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 200],
+          "type": "ColorPreset"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "warm",
+          "colorTemperatureEnd": "cold"
+        }
+      ]
+    },
+    "Color Macros 2": {
+      "name": "Color Macros",
+      "defaultValue": "0%",
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [52, 255],
+          "type": "Effect",
+          "effectName": "auto program"
+        }
+      ]
+    },
+    "Program Speed": {
+      "defaultValue": "0%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Effect Speed": {
+      "defaultValue": "0%",
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [52, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "10 channel",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Cold White",
+        "Strobe",
+        "Color Macros",
+        "Color Macros 2",
+        "Program Speed",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
