@@ -1,0 +1,130 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "XC-PixelCast RGBWUVA Par",
+  "shortName": "PixelcastPar",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Chan Xiang Ju"],
+    "createDate": "2019-11-13",
+    "lastModifyDate": "2019-11-13"
+  },
+  "links": {
+    "other": [
+      "http://www.xc.sg"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "1000Hz"
+        }
+      ]
+    },
+    "Color Macros": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "NoFunction",
+        "comment": "Color Macros"
+      }
+    },
+    "Macro Speed": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "UV": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "highlightValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10 Channel",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Color Macros",
+        "Macro Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "UV",
+        "Amber"
+      ]
+    }
+  ]
+}
