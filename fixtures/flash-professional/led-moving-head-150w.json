@@ -372,7 +372,8 @@
         {
           "dmxRange": [16, 18],
           "type": "WheelSlot",
-          "slotNumber": 2
+          "slotNumber": 2,
+          "helpWanted": "Which colors can be selected at which wheel slot?"
         },
         {
           "dmxRange": [19, 21],
@@ -453,7 +454,8 @@
           "dmxRange": [64, 127],
           "type": "WheelRotation",
           "angleStart": "0deg",
-          "angleEnd": "360deg"
+          "angleEnd": "360deg",
+          "helpWanted": "Are these angles correct?"
         },
         {
           "dmxRange": [128, 189],
@@ -484,7 +486,8 @@
         {
           "dmxRange": [8, 16],
           "type": "WheelSlot",
-          "slotNumber": 2
+          "slotNumber": 2,
+          "helpWanted": "Which gobo can be selected at which wheel slot?"
         },
         {
           "dmxRange": [17, 25],
@@ -551,7 +554,8 @@
         {
           "dmxRange": [8, 16],
           "type": "WheelSlot",
-          "slotNumber": 2
+          "slotNumber": 2,
+          "helpWanted": "Which gobo can be selected at which wheel slot?"
         },
         {
           "dmxRange": [17, 25],
@@ -610,14 +614,16 @@
           "type": "WheelSlotRotation",
           "wheel": "Rotating Gobo Wheel",
           "angleStart": "0deg",
-          "angleEnd": "365deg"
+          "angleEnd": "360deg",
+          "helpWanted": "Are these angles correct?"
         },
         {
           "dmxRange": [128, 189],
           "type": "WheelSlotRotation",
           "wheel": "Rotating Gobo Wheel",
           "speedStart": "fast CW",
-          "speedEnd": "slow CW"
+          "speedEnd": "slow CW",
+          "helpWanted": "Is this really counter-clockwise? It's different in all other channels."
         },
         {
           "dmxRange": [190, 193],
@@ -643,13 +649,15 @@
         {
           "dmxRange": [8, 128],
           "type": "Generic",
-          "comment": "Angle"
+          "comment": "Angle",
+          "helpWanted": "What is this capability?"
         },
         {
           "dmxRange": [129, 255],
           "type": "Frost",
           "frostIntensityStart": "low",
-          "frostIntensityEnd": "high"
+          "frostIntensityEnd": "high",
+          "helpWanted": "Is this a proporional capability or just on/off?"
         }
       ]
     },
@@ -661,7 +669,8 @@
         },
         {
           "dmxRange": [8, 255],
-          "type": "Prism"
+          "type": "Prism",
+          "comment": "3-facet"
         }
       ]
     },
@@ -696,7 +705,8 @@
       "capability": {
         "type": "Focus",
         "distanceStart": "near",
-        "distanceEnd": "far"
+        "distanceEnd": "far",
+        "helpWanted": "Is this the correct direction?"
       }
     },
     "Shutter": {
