@@ -37,52 +37,44 @@
           "type": "Open"
         },
         {
-          "type": "Color"
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff0000"]
         },
         {
-          "type": "Color"
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ffaa00"]
         },
         {
-          "type": "Color"
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00"]
         },
         {
-          "type": "Color"
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00ff00"]
         },
         {
-          "type": "Color"
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000ff"]
         },
         {
-          "type": "Color"
+          "type": "Color",
+          "name": "Magenta",
+          "colors": ["#ff00cc"]
         },
         {
-          "type": "Color"
+          "type": "Color",
+          "name": "Turquoise",
+          "colors": ["#00ffcc"]
         },
         {
-          "type": "Color"
-        },
-        {
-          "type": "Color"
-        },
-        {
-          "type": "Color"
-        },
-        {
-          "type": "Color"
-        },
-        {
-          "type": "Color"
-        },
-        {
-          "type": "Color"
-        },
-        {
-          "type": "Color"
-        },
-        {
-          "type": "Color"
-        },
-        {
-          "type": "Color"
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#ffaaff"]
         }
       ]
     },
@@ -92,25 +84,32 @@
           "type": "Open"
         },
         {
-          "type": "Gobo"
+          "type": "Iris",
+          "openPercent": "10%"
         },
         {
-          "type": "Gobo"
+          "type": "Iris",
+          "openPercent": "25%"
         },
         {
-          "type": "Gobo"
+          "type": "Iris",
+          "openPercent": "40%"
         },
         {
-          "type": "Gobo"
+          "type": "Iris",
+          "openPercent": "50%"
         },
         {
-          "type": "Gobo"
+          "type": "Iris",
+          "openPercent": "75%"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "name": "Biohazard"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "name": "Fuzzy rays"
         }
       ]
     },
@@ -120,22 +119,28 @@
           "type": "Open"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "name": "Bar"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "name": "Striped shutter"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "name": "Life"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "name": "Flower"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "name": "Arrows"
         },
         {
-          "type": "Gobo"
+          "type": "Gobo",
+          "name": "Stars"
         }
       ]
     }
@@ -372,90 +377,96 @@
         {
           "dmxRange": [16, 18],
           "type": "WheelSlot",
-          "slotNumber": 2,
-          "helpWanted": "Which colors can be selected at which wheel slot?"
+          "slotNumberStart": 1,
+          "slotNumberEnd": 2
         },
         {
           "dmxRange": [19, 21],
           "type": "WheelSlot",
-          "slotNumber": 3
+          "slotNumber": 2
         },
         {
           "dmxRange": [22, 24],
           "type": "WheelSlot",
-          "slotNumber": 4
+          "slotNumberStart": 2,
+          "slotNumberEnd": 3
         },
         {
           "dmxRange": [25, 27],
           "type": "WheelSlot",
-          "slotNumber": 5
+          "slotNumber": 3
         },
         {
           "dmxRange": [28, 30],
           "type": "WheelSlot",
-          "slotNumber": 6
+          "slotNumberStart": 3,
+          "slotNumberEnd": 4
         },
         {
           "dmxRange": [31, 33],
           "type": "WheelSlot",
-          "slotNumber": 7
+          "slotNumber": 4
         },
         {
           "dmxRange": [34, 36],
           "type": "WheelSlot",
-          "slotNumber": 8
+          "slotNumberStart": 4,
+          "slotNumberEnd": 5
         },
         {
           "dmxRange": [37, 39],
           "type": "WheelSlot",
-          "slotNumber": 9
+          "slotNumber": 5
         },
         {
           "dmxRange": [40, 42],
           "type": "WheelSlot",
-          "slotNumber": 10
+          "slotNumberStart": 5,
+          "slotNumberEnd": 6
         },
         {
           "dmxRange": [43, 45],
           "type": "WheelSlot",
-          "slotNumber": 11
+          "slotNumber": 6
         },
         {
           "dmxRange": [46, 48],
           "type": "WheelSlot",
-          "slotNumber": 12
+          "slotNumberStart": 6,
+          "slotNumberEnd": 7
         },
         {
           "dmxRange": [49, 51],
           "type": "WheelSlot",
-          "slotNumber": 13
+          "slotNumber": 7
         },
         {
           "dmxRange": [52, 54],
           "type": "WheelSlot",
-          "slotNumber": 14
+          "slotNumberStart": 7,
+          "slotNumberEnd": 8
         },
         {
           "dmxRange": [55, 57],
           "type": "WheelSlot",
-          "slotNumber": 15
+          "slotNumber": 8
         },
         {
           "dmxRange": [58, 60],
           "type": "WheelSlot",
-          "slotNumber": 16
+          "slotNumberStart": 8,
+          "slotNumberEnd": 9
         },
         {
           "dmxRange": [61, 63],
           "type": "WheelSlot",
-          "slotNumber": 17
+          "slotNumber": 9
         },
         {
           "dmxRange": [64, 127],
           "type": "WheelRotation",
           "angleStart": "0deg",
-          "angleEnd": "360deg",
-          "helpWanted": "Are these angles correct?"
+          "angleEnd": "360deg"
         },
         {
           "dmxRange": [128, 189],
@@ -486,8 +497,7 @@
         {
           "dmxRange": [8, 16],
           "type": "WheelSlot",
-          "slotNumber": 2,
-          "helpWanted": "Which gobo can be selected at which wheel slot?"
+          "slotNumber": 2
         },
         {
           "dmxRange": [17, 25],
@@ -520,10 +530,53 @@
           "slotNumber": 8
         },
         {
-          "dmxRange": [68, 127],
+          "dmxRange": [68, 72],
           "type": "WheelShake",
-          "slotNumberStart": 2,
-          "slotNumberEnd": 8
+          "slotNumber": 2,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [73, 81],
+          "type": "WheelShake",
+          "slotNumber": 3,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [82, 90],
+          "type": "WheelShake",
+          "slotNumber": 4,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [91, 99],
+          "type": "WheelShake",
+          "slotNumber": 5,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [100, 108],
+          "type": "WheelShake",
+          "slotNumber": 6,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [109, 117],
+          "type": "WheelShake",
+          "slotNumber": 7,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [118, 127],
+          "type": "WheelShake",
+          "slotNumber": 8,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [128, 189],
@@ -547,46 +600,81 @@
     "Rotating Gobo Wheel": {
       "capabilities": [
         {
-          "dmxRange": [0, 7],
+          "dmxRange": [0, 8],
           "type": "WheelSlot",
           "slotNumber": 1
         },
         {
-          "dmxRange": [8, 16],
+          "dmxRange": [9, 17],
           "type": "WheelSlot",
-          "slotNumber": 2,
-          "helpWanted": "Which gobo can be selected at which wheel slot?"
+          "slotNumber": 2
         },
         {
-          "dmxRange": [17, 25],
+          "dmxRange": [18, 26],
           "type": "WheelSlot",
           "slotNumber": 3
         },
         {
-          "dmxRange": [26, 34],
+          "dmxRange": [27, 35],
           "type": "WheelSlot",
           "slotNumber": 4
         },
         {
-          "dmxRange": [35, 43],
+          "dmxRange": [36, 44],
           "type": "WheelSlot",
           "slotNumber": 5
         },
         {
-          "dmxRange": [44, 52],
+          "dmxRange": [45, 53],
           "type": "WheelSlot",
           "slotNumber": 6
         },
         {
-          "dmxRange": [53, 61],
+          "dmxRange": [54, 63],
           "type": "WheelSlot",
           "slotNumber": 7
         },
         {
-          "dmxRange": [62, 127],
+          "dmxRange": [64, 73],
           "type": "WheelShake",
-          "slotNumberStart": 2,
-          "slotNumberEnd": 7
+          "slotNumber": 2,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [74, 83],
+          "type": "WheelShake",
+          "slotNumber": 3,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [84, 93],
+          "type": "WheelShake",
+          "slotNumber": 4,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [94, 103],
+          "type": "WheelShake",
+          "slotNumber": 5,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [104, 113],
+          "type": "WheelShake",
+          "slotNumber": 6,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [114, 127],
+          "type": "WheelShake",
+          "slotNumber": 7,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [128, 189],
@@ -614,16 +702,14 @@
           "type": "WheelSlotRotation",
           "wheel": "Rotating Gobo Wheel",
           "angleStart": "0deg",
-          "angleEnd": "360deg",
-          "helpWanted": "Are these angles correct?"
+          "angleEnd": "360deg"
         },
         {
           "dmxRange": [128, 189],
           "type": "WheelSlotRotation",
           "wheel": "Rotating Gobo Wheel",
           "speedStart": "fast CW",
-          "speedEnd": "slow CW",
-          "helpWanted": "Is this really counter-clockwise? It's different in all other channels."
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [190, 193],
@@ -648,16 +734,13 @@
         },
         {
           "dmxRange": [8, 128],
-          "type": "Generic",
-          "comment": "Angle",
-          "helpWanted": "What is this capability?"
+          "type": "Zoom",
+          "angle": "20deg"
         },
         {
           "dmxRange": [129, 255],
           "type": "Frost",
-          "frostIntensityStart": "low",
-          "frostIntensityEnd": "high",
-          "helpWanted": "Is this a proporional capability or just on/off?"
+          "frostIntensity": "high"
         }
       ]
     },
@@ -704,9 +787,8 @@
     "Focus": {
       "capability": {
         "type": "Focus",
-        "distanceStart": "near",
-        "distanceEnd": "far",
-        "helpWanted": "Is this the correct direction?"
+        "distanceStart": "far",
+        "distanceEnd": "near"
       }
     },
     "Shutter": {
