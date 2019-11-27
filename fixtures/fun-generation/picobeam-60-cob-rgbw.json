@@ -4,8 +4,8 @@
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["gloryfire"],
-    "createDate": "2019-11-11",
-    "lastModifyDate": "2019-11-11"
+    "createDate": "2019-11-27",
+    "lastModifyDate": "2019-11-27"
   },
   "links": {
     "manual": [
@@ -22,10 +22,17 @@
     "dimensions": [147, 234, 175],
     "weight": 3,
     "power": 60,
-    "DMXconnector": "3-pin"
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "60W RGBW COB LED"
+    },
+    "lens": {
+      "degreesMinMax": [4, 4]
+    }
   },
   "availableChannels": {
     "Pan": {
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -33,6 +40,7 @@
       }
     },
     "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -41,26 +49,7 @@
     },
     "Dimmer": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Pan  ": {
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "1deg",
-        "comment": "Pan fine channel"
-      }
-    },
-    "Tilt 2": {
-      "name": "Tilt",
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "1deg",
-        "comment": "Tilt fine channel"
+        "type": "Intensity"
       }
     },
     "Pan/Tilt Speed": {
@@ -70,101 +59,176 @@
         "speedEnd": "slow"
       }
     },
-    "Programm": {
+    "Program": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 49],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [50, 59],
           "type": "ColorPreset",
-          "comment": "Red"
+          "comment": "Red",
+          "colors": ["#ff0000"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [60, 69],
           "type": "ColorPreset",
-          "comment": "Green"
+          "comment": "Green",
+          "colors": ["#00ff00"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [70, 79],
           "type": "ColorPreset",
-          "comment": "Blue"
+          "comment": "Blue",
+          "colors": ["#0000ff"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [80, 89],
           "type": "ColorPreset",
-          "comment": "White"
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [90, 99],
           "type": "ColorPreset",
-          "comment": "Yellow"
+          "comment": "Yellow",
+          "colors": ["#ffff00"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [100, 109],
           "type": "ColorPreset",
-          "comment": "Cyan"
+          "comment": "Cyan",
+          "colors": ["#00ffff"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [110, 119],
           "type": "ColorPreset",
-          "comment": "Purple"
+          "comment": "Purple",
+          "colors": ["#ff00ff"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [120, 129],
           "type": "ColorPreset",
-          "comment": "All white"
+          "comment": "All white",
+          "colors": ["#ffffff"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [130, 139],
           "type": "ColorPreset",
-          "comment": "dark"
+          "comment": "Dark",
+          "colors": ["#aaaaaa"],
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [140, 149],
           "type": "Effect",
-          "effectName": "Programm 1"
+          "effectName": "Program 1",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [150, 159],
           "type": "Effect",
-          "effectName": "Programm 2"
+          "effectName": "Program 2",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [160, 169],
           "type": "Effect",
-          "effectName": "Programm 3"
+          "effectName": "Program 3",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [170, 179],
           "type": "Effect",
-          "effectName": "Programm 4"
+          "effectName": "Program 4",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [180, 189],
           "type": "Effect",
-          "effectName": "Programm 5"
+          "effectName": "Program 5",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [190, 233],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [234, 236],
-          "type": "Effect",
-          "effectName": "Reset"
+          "type": "Maintenance",
+          "comment": "Reset",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [237, 249],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Program Speed"
+          }
         },
         {
           "dmxRange": [250, 255],
           "type": "Effect",
-          "effectName": "Sound control"
+          "effectName": "Sound control",
+          "soundControlled": true,
+          "switchChannels": {
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
         }
       ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Sound Sensitivity": {
       "capability": {
@@ -187,25 +251,25 @@
         }
       ]
     },
-    "Intensity Red": {
+    "Red": {
       "capability": {
-        "type": "Intensity",
-        "comment": "Red"
+        "type": "ColorIntensity",
+        "color": "Red"
       }
     },
-    "Intensity Green": {
+    "Green": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Intensity Blue": {
+    "Blue": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "Intensity White": {
+    "White": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
@@ -214,7 +278,8 @@
   },
   "modes": [
     {
-      "name": "3ch",
+      "name": "3-Channel",
+      "shortName": "3ch",
       "channels": [
         "Pan",
         "Tilt",
@@ -222,34 +287,36 @@
       ]
     },
     {
-      "name": "8ch",
+      "name": "8-Channel",
+      "shortName": "8ch",
       "channels": [
         "Pan",
-        "Pan  ",
+        "Pan fine",
         "Tilt",
-        "Tilt 2",
+        "Tilt fine",
         "Pan/Tilt Speed",
         "Dimmer",
-        "Programm",
-        "Sound Sensitivity"
+        "Program",
+        "Program Speed / Sound Sensitivity"
       ]
     },
     {
-      "name": "13ch",
+      "name": "13-Channel",
+      "shortName": "13ch",
       "channels": [
         "Pan",
-        "Pan  ",
+        "Pan fine",
         "Tilt",
-        "Tilt 2",
+        "Tilt fine",
         "Pan/Tilt Speed",
         "Dimmer",
         "Strobe",
-        "Intensity Red",
-        "Intensity Green",
-        "Intensity Blue",
-        "Intensity White",
-        "Programm",
-        "Sound Sensitivity"
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Program",
+        "Program Speed / Sound Sensitivity"
       ]
     }
   ]
