@@ -47,16 +47,54 @@
         "angleEnd": "270deg"
       }
     },
-    "Dimmer": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
     "Pan/Tilt Speed": {
       "capability": {
         "type": "PanTiltSpeed",
         "speedStart": "fast",
         "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
       }
     },
     "Program": {
@@ -235,44 +273,6 @@
         "type": "SoundSensitivity",
         "soundSensitivityStart": "low",
         "soundSensitivityEnd": "high"
-      }
-    },
-    "Strobe": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 9],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [10, 255],
-          "type": "StrobeSpeed",
-          "speedStart": "1Hz",
-          "speedEnd": "25Hz"
-        }
-      ]
-    },
-    "Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
       }
     }
   },
