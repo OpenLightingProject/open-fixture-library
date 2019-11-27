@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "JBLED A7",
-  "categories": ["Color Changer", "Moving Head"],
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Swiftb0y"],
-    "createDate": "2019-11-23",
-    "lastModifyDate": "2019-11-23"
+    "createDate": "2019-11-27",
+    "lastModifyDate": "2019-11-27"
   },
   "comment": "Wash RGB LED Moving Head",
   "links": {
@@ -23,60 +23,6 @@
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
       "type": "LED"
-    }
-  },
-  "wheels": {
-    "Color Wheel": {
-      "slots": [
-        {
-          "type": "Color",
-          "name": "White",
-          "colors": ["#ffffff"]
-        },
-        {
-          "type": "Color",
-          "name": "Red",
-          "colors": ["#ff0000"]
-        },
-        {
-          "type": "Color",
-          "name": "Yellow",
-          "colors": ["#ffff00"]
-        },
-        {
-          "type": "Color",
-          "name": "Magenta",
-          "colors": ["#ff00ff"]
-        },
-        {
-          "type": "Color",
-          "name": "Green",
-          "colors": ["#00ff00"]
-        },
-        {
-          "type": "Color",
-          "name": "Amber",
-          "colors": ["#ffbf00"]
-        },
-        {
-          "type": "Color",
-          "name": "Blue",
-          "colors": ["#0000ff"]
-        },
-        {
-          "type": "Color",
-          "name": "Cyan",
-          "colors": ["#00ffff"]
-        },
-        {
-          "type": "Color",
-          "name": "White",
-          "colors": ["#ffffff"]
-        },
-        {
-          "type": "Open"
-        }
-      ]
     }
   },
   "availableChannels": {
@@ -100,13 +46,12 @@
           "dmxRange": [0, 7],
           "type": "ColorTemperature",
           "colorTemperature": "default",
-          "comment": "no white balance active. Full output power"
+          "comment": "full output power"
         },
         {
           "dmxRange": [8, 15],
           "type": "ColorTemperature",
-          "colorTemperature": "8500K",
-          "comment": "White Color Balance"
+          "colorTemperature": "8500K"
         },
         {
           "dmxRange": [16, 23],
@@ -115,29 +60,30 @@
         },
         {
           "dmxRange": [24, 31],
-          "type": "ColorTemperature",
-          "colorTemperature": "default",
-          "comment": "Linear Color Balance for RGB color picker func"
+          "type": "Effect",
+          "effectName": "Linear color balance for color picker function"
         },
         {
           "dmxRange": [32, 207],
-          "type": "NoFunction",
-          "comment": "safe"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [208, 215],
-          "type": "Generic",
-          "comment": "Camera mode 50Hz (after 2 seconds)"
+          "type": "Maintenance",
+          "comment": "Camera mode 50Hz",
+          "hold": "2s"
         },
         {
           "dmxRange": [216, 223],
-          "type": "Generic",
-          "comment": "Camera mode 60Hz (after 2 seconds)"
+          "type": "Maintenance",
+          "comment": "Camera mode 60Hz",
+          "hold": "2s"
         },
         {
           "dmxRange": [224, 231],
-          "type": "Generic",
-          "comment": "Camera mode FLEX (Precise rate has to be set on the device itself)"
+          "type": "Maintenance",
+          "comment": "Camera mode flex (use device setting)",
+          "hold": "2s"
         },
         {
           "dmxRange": [232, 239],
@@ -145,8 +91,9 @@
         },
         {
           "dmxRange": [240, 247],
-          "type": "Generic",
-          "comment": "reset (after 2 seconds)"
+          "type": "Maintenance",
+          "comment": "Reset",
+          "hold": "2s"
         },
         {
           "dmxRange": [248, 255],
@@ -185,7 +132,7 @@
           "shutterEffect": "Pulse",
           "speedStart": "slow",
           "speedEnd": "fast",
-          "comment": "fade-effect with dimmer"
+          "comment": "fade effect with dimmer"
         },
         {
           "dmxRange": [126, 126],
@@ -203,8 +150,7 @@
           "shutterEffect": "RampUp",
           "speed": "slow",
           "durationStart": "0.6s",
-          "durationEnd": "4.8s",
-          "comment": "Shutter Pulse Opening <10Hz (0.6sec - 4.6sec)"
+          "durationEnd": "4.8s"
         },
         {
           "dmxRange": [143, 143],
@@ -216,9 +162,7 @@
           "type": "ShutterStrobe",
           "shutterEffect": "RampDown",
           "durationStart": "0.6s",
-          "durationEnd": "4.6s",
-          "randomTiming": true,
-          "comment": "shutter pulse closing"
+          "durationEnd": "4.6s"
         },
         {
           "dmxRange": [159, 159],
@@ -228,11 +172,10 @@
         {
           "dmxRange": [160, 174],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
+          "shutterEffect": "Strobe",
           "speed": "0%",
           "durationStart": "0.6s",
-          "durationEnd": "4.8s",
-          "comment": "shutter fade"
+          "durationEnd": "4.8s"
         },
         {
           "dmxRange": [175, 175],
@@ -245,8 +188,7 @@
           "shutterEffect": "Strobe",
           "speed": "100%",
           "durationStart": "0.6s",
-          "durationEnd": "4.8s",
-          "comment": "shutter fade"
+          "durationEnd": "4.8s"
         },
         {
           "dmxRange": [191, 191],
@@ -319,6 +261,7 @@
       }
     },
     "Zoom": {
+      "defaultValue": 25,
       "capability": {
         "type": "Zoom",
         "angleStart": "12deg",
@@ -327,18 +270,21 @@
       }
     },
     "Red": {
+      "fineChannelAliases": ["Red fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Green": {
+      "fineChannelAliases": ["Green fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blue": {
+      "fineChannelAliases": ["Blue fine"],
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
@@ -347,122 +293,147 @@
     "CTC": {
       "capability": {
         "type": "ColorTemperature",
-        "colorTemperatureStart": "0%",
-        "colorTemperatureEnd": "100%"
+        "colorTemperatureStart": "2900K",
+        "colorTemperatureEnd": "6000K"
       }
     },
-    "Color Wheel": {
+    "Color Macros": {
       "capabilities": [
         {
           "dmxRange": [0, 1],
-          "type": "WheelSlot",
-          "slotNumber": 10,
-          "comment": "inactive; mixing via RGB"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [2, 3],
-          "type": "WheelSlot",
-          "slotNumber": 1
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [4, 7],
-          "type": "WheelSlot",
-          "slotNumber": 1.5
+          "type": "ColorPreset",
+          "comment": "White … Red",
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#ff0000"]
         },
         {
           "dmxRange": [8, 11],
-          "type": "WheelSlot",
-          "slotNumber": 2
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
         },
         {
           "dmxRange": [12, 15],
-          "type": "WheelSlot",
-          "slotNumber": 2.5
+          "type": "ColorPreset",
+          "comment": "Red … Yellow",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffff00"]
         },
         {
           "dmxRange": [16, 19],
-          "type": "WheelSlot",
-          "slotNumber": 3
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
         },
         {
           "dmxRange": [20, 23],
-          "type": "WheelSlot",
-          "slotNumber": 3.5
+          "type": "ColorPreset",
+          "comment": "Yellow … Magenta",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#ff00ff"]
         },
         {
           "dmxRange": [24, 27],
-          "type": "WheelSlot",
-          "slotNumber": 4
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
         },
         {
           "dmxRange": [28, 31],
-          "type": "WheelSlot",
-          "slotNumber": 4.5
+          "type": "ColorPreset",
+          "comment": "Magenta … Green",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#00ff00"]
         },
         {
           "dmxRange": [32, 35],
-          "type": "WheelSlot",
-          "slotNumber": 5
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
         },
         {
           "dmxRange": [36, 39],
-          "type": "WheelSlot",
-          "slotNumber": 5.5
+          "type": "ColorPreset",
+          "comment": "Green … Amber",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#ffbf00"]
         },
         {
           "dmxRange": [40, 43],
-          "type": "WheelSlot",
-          "slotNumber": 6
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffbf00"]
         },
         {
           "dmxRange": [44, 47],
-          "type": "WheelSlot",
-          "slotNumber": 6.5
+          "type": "ColorPreset",
+          "comment": "Amber … Blue",
+          "colorsStart": ["#ffbf00"],
+          "colorsEnd": ["#0000ff"]
         },
         {
           "dmxRange": [48, 51],
-          "type": "WheelSlot",
-          "slotNumber": 7
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
         },
         {
           "dmxRange": [52, 55],
-          "type": "WheelSlot",
-          "slotNumber": 7.5
+          "type": "ColorPreset",
+          "comment": "Blue … Cyan",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#00ffff"]
         },
         {
           "dmxRange": [56, 59],
-          "type": "WheelSlot",
-          "slotNumber": 8
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
         },
         {
           "dmxRange": [60, 63],
-          "type": "WheelSlot",
-          "slotNumberStart": 8,
-          "slotNumberEnd": 9
+          "type": "ColorPreset",
+          "comment": "Cyan … White",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#ffffff"]
         },
         {
           "dmxRange": [64, 191],
-          "type": "WheelRotation",
-          "angleStart": "0deg",
-          "angleEnd": "360deg",
-          "comment": "The fixture is emulating a physical wheel so using WheelRotation instead of ColorFade is still appropriate here IMO"
+          "type": "ColorPreset",
+          "comment": "White … Red … Yellow … Magenta … Green … Amber … Blue … Cyan … White",
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#ffffff"],
+          "helpWanted": "Is this capability correct? Can all gradients between these colors be chosen? If so, what's the difference to the previous color presets?"
         },
         {
           "dmxRange": [192, 222],
-          "type": "WheelRotation",
-          "speedStart": "fast CW",
-          "speedEnd": "slow CW"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [223, 224],
-          "type": "WheelRotation",
+          "type": "Effect",
+          "effectPreset": "ColorFade",
           "speed": "stop"
         },
         {
           "dmxRange": [225, 255],
-          "type": "WheelRotation",
-          "speedStart": "slow CCW",
-          "speedEnd": "fast CCW"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow reverse",
+          "speedEnd": "fast reverse"
         }
       ]
     },
@@ -471,8 +442,7 @@
         {
           "dmxRange": [0, 3],
           "type": "PanTiltSpeed",
-          "speed": "fast",
-          "comment": "realtime"
+          "duration": "instant"
         },
         {
           "dmxRange": [4, 255],
@@ -482,13 +452,12 @@
         }
       ]
     },
-    "Effect Speed": {
+    "Effects Delay": {
       "capabilities": [
         {
           "dmxRange": [0, 3],
-          "type": "EffectSpeed",
-          "speed": "fast",
-          "comment": "realtime"
+          "type": "Time",
+          "time": "instant"
         },
         {
           "dmxRange": [4, 255],
@@ -506,60 +475,32 @@
         },
         {
           "dmxRange": [96, 127],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "black out at pan/tilt moves"
         },
         {
           "dmxRange": [128, 159],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "black out at color changing"
         },
         {
           "dmxRange": [160, 223],
-          "type": "Generic"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [224, 255],
-          "type": "Generic",
-          "comment": "black out at color changes and pan/tilt moves (The Dimmer fade time can be adjusted from slow 5sec. to max.)"
+          "type": "Maintenance",
+          "comment": "black out at color changes and pan/tilt moves. Dimmer fade",
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
         }
       ]
-    },
-    "Red 2": {
-      "name": "Red",
-      "fineChannelAliases": ["Red 2 fine"],
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Red 3": {
-      "name": "Red",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 2": {
-      "name": "Green",
-      "fineChannelAliases": ["Green 2 fine"],
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 2": {
-      "name": "Blue",
-      "fineChannelAliases": ["Blue 2 fine"],
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
     }
   },
   "modes": [
     {
-      "name": "STANDARD RGB 8 BIT (S8)",
+      "name": "Standard 8bit",
+      "shortName": "S8",
       "channels": [
         "Pan",
         "Pan fine",
@@ -569,18 +510,19 @@
         "Shutter",
         "Dimmer",
         "Zoom",
-        "Red 3",
+        "Red",
         "Green",
         "Blue",
         "CTC",
-        "Color Wheel",
+        "Color Macros",
         "Pan/Tilt Speed",
-        "Effect Speed",
+        "Effects Delay",
         "Blackout Move"
       ]
     },
     {
-      "name": "STANDARD RGB 16 BIT (S16)",
+      "name": "Standard 16bit",
+      "shortName": "S16",
       "channels": [
         "Pan",
         "Pan fine",
@@ -590,21 +532,22 @@
         "Shutter",
         "Dimmer",
         "Zoom",
-        "Red 2",
-        "Red 2 fine",
-        "Green 2",
-        "Green 2 fine",
-        "Blue 2",
-        "Blue 2 fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
         "CTC",
-        "Color Wheel",
+        "Color Macros",
         "Pan/Tilt Speed",
-        "Effect Speed",
+        "Effects Delay",
         "Blackout Move"
       ]
     },
     {
-      "name": "COMPRESSED RGB 8 BIT (C8)",
+      "name": "Compressed 8bit",
+      "shortName": "C8",
       "channels": [
         "Pan",
         "Pan fine",
@@ -621,7 +564,8 @@
       ]
     },
     {
-      "name": "COMPRESSED RGB 16 BIT (C16)",
+      "name": "Compressed 16bit",
+      "shortName": "C16",
       "channels": [
         "Pan",
         "Pan fine",
@@ -631,12 +575,12 @@
         "Shutter",
         "Dimmer",
         "Zoom",
-        "Red 2",
-        "Red 2 fine",
-        "Green 2",
-        "Green 2 fine",
-        "Blue 2",
-        "Blue 2 fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
         "CTC"
       ]
     }
