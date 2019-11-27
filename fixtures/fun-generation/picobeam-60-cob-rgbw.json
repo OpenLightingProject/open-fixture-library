@@ -44,7 +44,7 @@
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
-        "angleEnd": "270deg"
+        "angleEnd": "200deg"
       }
     },
     "Pan/Tilt Speed": {
@@ -67,7 +67,8 @@
         },
         {
           "dmxRange": [10, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "25Hz"
         }
