@@ -1,0 +1,562 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Multi PAR COB 1",
+  "shortName": "CLMPARCOB1",
+  "categories": ["Stand", "Color Changer"],
+  "meta": {
+    "authors": ["Pascal Frank"],
+    "createDate": "2019-11-27",
+    "lastModifyDate": "2019-11-27"
+  },
+  "links": {
+    "manual": [
+      "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLMPARCOB1/CLMPARCOB1_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/en/solutions/dj-musicians/lighting-systems/2209/multi-par-cob-1"
+    ],
+    "video": [
+      "https://youtu.be/LeBgnYJFcGA"
+    ]
+  },
+  "physical": {
+    "dimensions": [1005, 258, 80],
+    "weight": 9,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "RGB COB LED"
+    },
+    "lens": {
+      "name": "Fesnel Lens",
+      "degreesMinMax": [25, 50]
+    }
+  },
+  "matrix": {
+    "pixelCount": [4, 1, 1],
+    "pixelGroups": {
+      "Master": "all",
+      "1+2": ["1", "2"],
+      "3+4": ["3", "4"]
+    }
+  },
+  "availableChannels": {
+    "Macros": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Master Dimmer"
+          }
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"],
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Master Dimmer"
+          }
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"],
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Master Dimmer"
+          }
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"],
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Master Dimmer"
+          }
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Red+Green",
+          "colors": ["#ffff00"],
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Master Dimmer"
+          }
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Green+Blue",
+          "colors": ["#00ffff"],
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Master Dimmer"
+          }
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Red+Blue",
+          "colors": ["#ff00ff"],
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Master Dimmer"
+          }
+        },
+        {
+          "dmxRange": [64, 71],
+          "type": "ColorPreset",
+          "comment": "Red+Green+Blue",
+          "colors": ["#ffffff"],
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Master Dimmer"
+          }
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "comment": "Color 1",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Master Dimmer"
+          }
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "comment": "Color 2",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Master Dimmer"
+          }
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "comment": "Color 3",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Master Dimmer"
+          }
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "comment": "Color 4",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Master Dimmer"
+          }
+        },
+        {
+          "dmxRange": [104, 111],
+          "type": "ColorPreset",
+          "comment": "Color 5",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Master Dimmer"
+          }
+        },
+        {
+          "dmxRange": [112, 119],
+          "type": "ColorPreset",
+          "comment": "Color 6",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Master Dimmer"
+          }
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "comment": "Color 7",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Master Dimmer"
+          }
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "ColorPreset",
+          "comment": "Color 8",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Master Dimmer"
+          }
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "Effect",
+          "effectName": "Dream",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "Effect",
+          "effectName": "Meteor",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [152, 159],
+          "type": "Effect",
+          "effectName": "Fade",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [160, 167],
+          "type": "Effect",
+          "effectName": "Change",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [168, 175],
+          "type": "Effect",
+          "effectName": "Flow 1",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [176, 183],
+          "type": "Effect",
+          "effectName": "Flow 2",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [184, 191],
+          "type": "Effect",
+          "effectName": "Flow 3",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [192, 199],
+          "type": "Effect",
+          "effectName": "Flow 4",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [200, 207],
+          "type": "Effect",
+          "effectName": "Flow 5",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [208, 215],
+          "type": "Effect",
+          "effectName": "Flow 6",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [216, 223],
+          "type": "Effect",
+          "effectName": "Flow 7",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [224, 231],
+          "type": "Effect",
+          "effectName": "Flow 8",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [232, 239],
+          "type": "Effect",
+          "effectName": "Flow 9",
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Music control",
+          "soundControlled": true,
+          "switchChannels": {
+            "Dimmer / Speed / Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Sound / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 128],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Power Out 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "On"
+        }
+      ]
+    },
+    "Power Out 2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "On"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Macros $pixelKey": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [5, 36],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [37, 73],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [74, 110],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [111, 147],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [148, 184],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [185, 221],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [222, 255],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-Channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "4-Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Color Macros 1",
+        "Color Macros 2",
+        "Color Macros 3",
+        "Color Macros 4"
+      ]
+    },
+    {
+      "name": "5-Channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Power Out 1",
+        "Power Out 2"
+      ]
+    },
+    {
+      "name": "6-Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red 1+2",
+        "Green 1+2",
+        "Blue 1+2",
+        "Red 3+4",
+        "Green 3+4",
+        "Blue 3+4"
+      ]
+    },
+    {
+      "name": "7-Channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Master Dimmer",
+        "Sound / Strobe",
+        "Power Out 1",
+        "Power Out 2"
+      ]
+    },
+    {
+      "name": "8-Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Macros",
+        "Dimmer / Speed / Sensitivity",
+        "Strobe",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Power Out 1",
+        "Power Out 2"
+      ]
+    },
+    {
+      "name": "12-Channel",
+      "shortName": "12ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "17-Channel",
+      "shortName": "17ch",
+      "channels": [
+        "Macros",
+        "Dimmer / Speed / Sensitivity",
+        "Strobe",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
+        "Power Out 1",
+        "Power Out 2"
+      ]
+    }
+  ]
+}
