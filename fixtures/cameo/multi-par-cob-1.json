@@ -41,34 +41,6 @@
     }
   },
   "availableChannels": {
-    "Power Out 1": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 127],
-          "type": "Generic",
-          "comment": "Off"
-        },
-        {
-          "dmxRange": [128, 255],
-          "type": "Generic",
-          "comment": "On"
-        }
-      ]
-    },
-    "Power Out 2": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 127],
-          "type": "Generic",
-          "comment": "Off"
-        },
-        {
-          "dmxRange": [128, 255],
-          "type": "Generic",
-          "comment": "On"
-        }
-      ]
-    },
     "Macros": {
       "defaultValue": 0,
       "capabilities": [
@@ -321,6 +293,11 @@
         }
       ]
     },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
     "Effect Speed": {
       "capability": {
         "type": "EffectSpeed",
@@ -333,11 +310,6 @@
         "type": "SoundSensitivity",
         "soundSensitivityStart": "low",
         "soundSensitivityEnd": "high"
-      }
-    },
-    "Master Dimmer": {
-      "capability": {
-        "type": "Intensity"
       }
     },
     "Strobe": {
@@ -373,6 +345,34 @@
           "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
+        }
+      ]
+    },
+    "Power Out 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "On"
+        }
+      ]
+    },
+    "Power Out 2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "On"
         }
       ]
     }
@@ -495,6 +495,19 @@
       ]
     },
     {
+      "name": "7-Channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Master Dimmer",
+        "Sound / Strobe",
+        "Power Out 1",
+        "Power Out 2"
+      ]
+    },
+    {
       "name": "8-Channel",
       "shortName": "8ch",
       "channels": [
@@ -541,19 +554,6 @@
             "Blue $pixelKey"
           ]
         },
-        "Power Out 1",
-        "Power Out 2"
-      ]
-    },
-    {
-      "name": "7-Channel",
-      "shortName": "7ch",
-      "channels": [
-        "Red Master",
-        "Green Master",
-        "Blue Master",
-        "Master Dimmer",
-        "Sound / Strobe",
         "Power Out 1",
         "Power Out 2"
       ]
