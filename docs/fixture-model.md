@@ -30,14 +30,14 @@ Avoid returning `undefined` by returning smart default values if necessary. If t
 <!-- eslint-disable jsdoc/require-jsdoc -->
 ```js
 export default class Fixture {
+  // returns backing field to avoid accessing _jsonObject from outside
+  get jsonObject() {
+    return this._jsonObject;
+  }
+
   set jsonObject(jsonObject) {
     this._jsonObject = jsonObject;
     this._cache = {};
-  }
-
-  // only returns backing field to avoid accessing _jsonObject from outside
-  get jsonObject() {
-    return this._jsonObject;
   }
 
   // required, no default needed
