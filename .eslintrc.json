@@ -101,6 +101,7 @@
     "no-new-object": "error",
     "no-prototype-builtins": "error",
     "no-return-assign": "error",
+    "no-shadow": ["error", { "builtinGlobals": false }],
     "no-template-curly-in-string": "error",
     "no-trailing-spaces": "error",
     "no-unused-vars": ["error", { "args": "none" }],

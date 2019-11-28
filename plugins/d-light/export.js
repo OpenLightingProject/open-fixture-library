@@ -92,7 +92,7 @@ function addAttribute(xml, mode, attribute, channels) {
           '@id': mode.getChannelIndex(channel)
         },
         parameterName: {
-          '@id': getParameterName(channel)
+          '@id': getParameterName()
         },
         minLevel: {
           '@id': 0
@@ -149,10 +149,9 @@ function addAttribute(xml, mode, attribute, channels) {
     }
 
     /**
-     * @param {AbstractChannel} channel Any kind of channel, e.g. an item of a mode's channel list.
      * @returns {String} The parameter name (i. e. channel name) that should be used for this channel in D::Light.
      */
-    function getParameterName(channel) {
+    function getParameterName() {
       const uniqueName = channel.uniqueName;
 
       channel = getUsableChannel(channel);

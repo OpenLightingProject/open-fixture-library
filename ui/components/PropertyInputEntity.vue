@@ -258,8 +258,9 @@ export default {
         newUnitString = ``;
       }
 
-      const unitName = Object.keys(this.units).find(unitName => this.units[unitName].unitStr === newUnitString);
-      this.selectedUnit = unitName;
+      this.selectedUnit = Object.keys(this.units).find(
+        unitName => this.units[unitName].unitStr === newUnitString
+      );
     },
     unitSelected() {
       // 1st nextTick for data change locally (emits event), 2nd nextTick for new value from props
