@@ -13,7 +13,8 @@
       "https://www.jb-lighting.de/download/Handbuch/JBLED_A7_Manual.pdf"
     ],
     "video": [
-      "https://www.youtube.com/watch?v=OBVMcR1yKqw"
+      "https://www.youtube.com/watch?v=OBVMcR1yKqw",
+      "https://www.youtube.com/watch?v=T8IXQbxDiQI"
     ]
   },
   "physical": {
@@ -299,7 +300,7 @@
         "colorTemperatureEnd": "6000K"
       }
     },
-    "Color Macros": {
+    "Virtual Color Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 1],
@@ -314,9 +315,8 @@
         {
           "dmxRange": [4, 7],
           "type": "ColorPreset",
-          "comment": "White … Red",
-          "colorsStart": ["#ffffff"],
-          "colorsEnd": ["#ff0000"]
+          "comment": "White / Red",
+          "colors": ["#ffffff", "#ff0000"]
         },
         {
           "dmxRange": [8, 11],
@@ -327,9 +327,8 @@
         {
           "dmxRange": [12, 15],
           "type": "ColorPreset",
-          "comment": "Red … Yellow",
-          "colorsStart": ["#ff0000"],
-          "colorsEnd": ["#ffff00"]
+          "comment": "Red / Yellow",
+          "colors": ["#ff0000", "#ffff00"]
         },
         {
           "dmxRange": [16, 19],
@@ -340,9 +339,8 @@
         {
           "dmxRange": [20, 23],
           "type": "ColorPreset",
-          "comment": "Yellow … Magenta",
-          "colorsStart": ["#ffff00"],
-          "colorsEnd": ["#ff00ff"]
+          "comment": "Yellow / Magenta",
+          "colors": ["#ffff00", "#ff00ff"]
         },
         {
           "dmxRange": [24, 27],
@@ -353,9 +351,8 @@
         {
           "dmxRange": [28, 31],
           "type": "ColorPreset",
-          "comment": "Magenta … Green",
-          "colorsStart": ["#ff00ff"],
-          "colorsEnd": ["#00ff00"]
+          "comment": "Magenta / Green",
+          "colors": ["#ff00ff", "#00ff00"]
         },
         {
           "dmxRange": [32, 35],
@@ -366,9 +363,8 @@
         {
           "dmxRange": [36, 39],
           "type": "ColorPreset",
-          "comment": "Green … Amber",
-          "colorsStart": ["#00ff00"],
-          "colorsEnd": ["#ffbf00"]
+          "comment": "Green / Amber",
+          "colors": ["#00ff00", "#ffbf00"]
         },
         {
           "dmxRange": [40, 43],
@@ -379,9 +375,8 @@
         {
           "dmxRange": [44, 47],
           "type": "ColorPreset",
-          "comment": "Amber … Blue",
-          "colorsStart": ["#ffbf00"],
-          "colorsEnd": ["#0000ff"]
+          "comment": "Amber / Blue",
+          "colors": ["#ffbf00", "#0000ff"]
         },
         {
           "dmxRange": [48, 51],
@@ -392,9 +387,8 @@
         {
           "dmxRange": [52, 55],
           "type": "ColorPreset",
-          "comment": "Blue … Cyan",
-          "colorsStart": ["#0000ff"],
-          "colorsEnd": ["#00ffff"]
+          "comment": "Blue / Cyan",
+          "colors": ["#0000ff", "#00ffff"]
         },
         {
           "dmxRange": [56, 59],
@@ -405,9 +399,8 @@
         {
           "dmxRange": [60, 63],
           "type": "ColorPreset",
-          "comment": "Cyan … White",
-          "colorsStart": ["#00ffff"],
-          "colorsEnd": ["#ffffff"]
+          "comment": "Cyan / White",
+          "colors": ["#00ffff", "#ffffff"]
         },
         {
           "dmxRange": [64, 191],
@@ -415,7 +408,7 @@
           "comment": "White … Red … Yellow … Magenta … Green … Amber … Blue … Cyan … White",
           "colorsStart": ["#ffffff"],
           "colorsEnd": ["#ffffff"],
-          "helpWanted": "Is this capability correct? Can all gradients between these colors be chosen? If so, what's the difference to the previous color presets?"
+          "helpWanted": "It would be helpful to split up this capability into individual ranges. At which DMX values are the full-color stops located?"
         },
         {
           "dmxRange": [192, 222],
@@ -516,7 +509,7 @@
         "Green",
         "Blue",
         "CTC",
-        "Color Macros",
+        "Virtual Color Wheel",
         "Pan/Tilt Speed",
         "Effects Delay",
         "Blackout Move"
@@ -541,7 +534,7 @@
         "Blue",
         "Blue fine",
         "CTC",
-        "Color Macros",
+        "Virtual Color Wheel",
         "Pan/Tilt Speed",
         "Effects Delay",
         "Blackout Move"
