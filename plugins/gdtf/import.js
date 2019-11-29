@@ -693,6 +693,12 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
             physicalEntity = capabilityTypeData.defaultPhysicalEntity;
           }
         }
+        else if (!(physicalEntity in gdtfUnits)) {
+          // ignore case of PhysicalUnit attribute
+          physicalEntity = Object.keys(gdtfUnits).find(
+            entity => entity.toLowerCase() === physicalEntity.toLowerCase()
+          );
+        }
 
         return gdtfUnits[physicalEntity];
       }
