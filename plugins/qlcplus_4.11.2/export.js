@@ -1,35 +1,26 @@
 const xmlbuilder = require(`xmlbuilder`);
 const sanitize = require(`sanitize-filename`);
 
-/* eslint-disable no-unused-vars */
-const {
-  AbstractChannel,
-  Capability,
-  CoarseChannel,
-  FineChannel,
-  Fixture,
-  Manufacturer,
-  Matrix,
-  Meta,
-  Mode,
-  NullChannel,
-  Physical,
-  Range,
-  SwitchingChannel,
-  TemplateChannel
-} = require(`../../lib/model.js`);
-/* eslint-enable no-unused-vars */
+/** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
+const { Capability } = require(`../../lib/model.js`);
+const { CoarseChannel } = require(`../../lib/model.js`);
+const { FineChannel } = require(`../../lib/model.js`);
+/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
+/** @typedef {import('../../lib/model/Mode.js').default} Mode */
+const { Physical } = require(`../../lib/model.js`);
+const { SwitchingChannel } = require(`../../lib/model.js`);
 
 module.exports.version = `0.5.2`;
 
 /**
- * @param {array.<Fixture>} fixtures An array of Fixture objects.
- * @param {object} options Global options, including:
- * @param {string} options.baseDir Absolute path to OFL's root directory.
- * @param {Date|null} options.date The current time.
- * @returns {Promise.<array.<object>, Error>} The generated files.
-*/
-module.exports.export = function exportQlcPlus(fixtures, options) {
+ * @param {Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {Object} options Global options, including:
+ * @param {String} options.baseDir Absolute path to OFL's root directory.
+ * @param {Date} options.date The current time.
+ * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
+ * @returns {Promise.<Array.<Object>, Error>} The generated files.
+ */
+module.exports.export = async function exportQlcPlus(fixtures, options) {
   const outFiles = fixtures.map(fixture => {
     const xml = xmlbuilder.begin()
       .declaration(`1.0`, `UTF-8`)
@@ -38,7 +29,7 @@ module.exports.export = function exportQlcPlus(fixtures, options) {
           '@xmlns': `http://www.qlcplus.org/FixtureDefinition`,
           Creator: {
             Name: `OFL – ${fixture.url}`,
-            Version: module.exports.version,
+            Version: options.displayedPluginVersion || module.exports.version,
             Author: fixture.meta.authors.join(`, `)
           },
           Manufacturer: fixture.manufacturer.name,
@@ -67,11 +58,11 @@ module.exports.export = function exportQlcPlus(fixtures, options) {
     };
   });
 
-  return Promise.resolve(outFiles);
+  return outFiles;
 };
 
 /**
- * @param {object} xml The xmlbuilder <FixtureDefinition> object.
+ * @param {Object} xml The xmlbuilder <FixtureDefinition> object.
  * @param {CoarseChannel} channel The OFL channel object.
  */
 function addChannel(xml, channel) {
@@ -131,7 +122,7 @@ function addChannel(xml, channel) {
 }
 
 /**
- * @param {object} xmlChannel The xmlbuilder <Channel> object.
+ * @param {Object} xmlChannel The xmlbuilder <Channel> object.
  * @param {Capability} cap The OFL capability object.
  */
 function addCapability(xmlChannel, cap) {
@@ -160,7 +151,7 @@ function addCapability(xmlChannel, cap) {
 }
 
 /**
- * @param {object} xml The xmlbuilder <FixtureDefinition> object.
+ * @param {Object} xml The xmlbuilder <FixtureDefinition> object.
  * @param {Mode} mode The OFL mode object.
  */
 function addMode(xml, mode) {
@@ -170,11 +161,7 @@ function addMode(xml, mode) {
     }
   });
 
-  const hasPanTiltInfinite = mode.physical !== null && (
-    mode.physical.focusPanMax === Number.POSITIVE_INFINITY ||
-    mode.physical.focusTiltMax === Number.POSITIVE_INFINITY
-  );
-  addPhysical(xmlMode, mode.physical || new Physical({}), hasPanTiltInfinite ? mode : null);
+  addPhysical(xmlMode, mode.physical || new Physical({}), mode);
 
   mode.channels.forEach((channel, index) => {
     xmlMode.element({
@@ -191,9 +178,9 @@ function addMode(xml, mode) {
 }
 
 /**
- * @param {object} xmlParentNode The xmlbuilder object where <Physical> should be added.
+ * @param {Object} xmlParentNode The xmlbuilder object where <Physical> should be added.
  * @param {Physical} physical The OFL physical object.
- * @param {Mode|null} mode The OFL mode object this physical data section belongs to. Only provide this if panMax and tiltMax should be read from this mode's Pan / Tilt channels.
+ * @param {Mode} mode The OFL mode object this physical data section belongs to.
  */
 function addPhysical(xmlParentNode, physical, mode) {
   const physicalSections = {
@@ -232,34 +219,40 @@ function addPhysical(xmlParentNode, physical, mode) {
       required: true,
       getAttributes() {
         const [PanMax, TiltMax] = [`Pan`, `Tilt`].map(panOrTilt => {
-          const panTiltMax = physical[`focus${panOrTilt}Max`];
-
-          if (panTiltMax === Number.POSITIVE_INFINITY) {
-            try {
-              const panTiltChannel = mode.channels.find(
-                ch => `capabilities` in ch && ch.capabilities.length === 1 &&
-                  ch.capabilities[0].type === panOrTilt && ch.capabilities[0].angle[0].unit === `deg`
-              );
-
-              return Math.max(
-                panTiltChannel.capabilities[0].angle[0].number,
-                panTiltChannel.capabilities[0].angle[1].number
-              );
+          const capabilities = [];
+          mode.channels.forEach(ch => {
+            if (ch.capabilities) {
+              capabilities.push(...ch.capabilities);
             }
-            catch (err) {
+          });
+
+          const panTiltCapabilities = capabilities.filter(cap => cap.type === panOrTilt && cap.angle[0].unit === `deg`);
+          const minAngle = Math.min(...panTiltCapabilities.map(cap => Math.min(cap.angle[0].number, cap.angle[1].number)));
+          const maxAngle = Math.max(...panTiltCapabilities.map(cap => Math.max(cap.angle[0].number, cap.angle[1].number)));
+          const panTiltMax = maxAngle - minAngle;
+
+          if (panTiltMax === -Infinity) {
+            const hasContinuousCapability = capabilities.some(cap => cap.type === `${panOrTilt}Continuous`);
+            if (hasContinuousCapability) {
               return 9999;
             }
+
+            return 0;
           }
 
-          if (panTiltMax !== null) {
-            return Math.round(panTiltMax);
-          }
-
-          return 0;
+          return Math.round(panTiltMax);
         });
 
+        const focusTypeConditions = {
+          Mirror: mode.fixture.categories.includes(`Scanner`),
+          Barrel: mode.fixture.categories.includes(`Barrel Scanner`),
+          Head: mode.fixture.categories.includes(`Moving Head`) || PanMax > 0 || TiltMax > 0,
+          Fixed: true
+        };
+        const Type = Object.keys(focusTypeConditions).find(focusType => focusTypeConditions[focusType] === true);
+
         return {
-          Type: physical.focusType || `Fixed`,
+          Type,
           PanMax,
           TiltMax
         };
@@ -313,8 +306,8 @@ function addHeads(xmlMode, mode) {
 
   /**
    * @param {AbstractChannel} channel A channel from a mode's channel list.
-   * @param {string} pixelKey The pixel to check for.
-   * @returns {boolean} Whether the given channel controls the given pixel key, either directly or as part of a pixel group.
+   * @param {String} pixelKey The pixel to check for.
+   * @returns {Boolean} Whether the given channel controls the given pixel key, either directly or as part of a pixel group.
    */
   function controlsPixelKey(channel, pixelKey) {
     if (channel instanceof SwitchingChannel) {
@@ -336,18 +329,25 @@ function addHeads(xmlMode, mode) {
 /**
  * Determines the QLC+ fixture type out of the fixture's categories.
  * @param {Fixture} fixture The Fixture instance whose QLC+ type has to be determined.
- * @returns {string} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
+ * @returns {String} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
  */
 function getFixtureType(fixture) {
+  const replaceCats = {
+    'Barrel Scanner': `Scanner`
+  };
   const ignoredCats = [`Blinder`, `Matrix`, `Pixel Bar`, `Stand`];
 
-  return fixture.categories.find(cat => !ignoredCats.includes(cat)) || `Other`;
+  return fixture.categories.map(
+    cat => (cat in replaceCats ? replaceCats[cat] : cat)
+  ).find(
+    cat => !ignoredCats.includes(cat)
+  ) || `Other`;
 }
 
 /**
  * Converts a channel's type into a valid QLC+ channel type.
- * @param {string} type Our own OFL channel type.
- * @returns {string} The corresponding QLC+ channel type.
+ * @param {String} type Our own OFL channel type.
+ * @returns {String} The corresponding QLC+ channel type.
  */
 function getChannelType(type) {
   const qlcplusChannelTypes = {

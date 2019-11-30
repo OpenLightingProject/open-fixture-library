@@ -18,8 +18,8 @@ const plugins = require(`./plugins/plugins.json`);
 const { fixtureFromRepository } = require(`./lib/model.js`);
 const register = require(`./fixtures/register.json`);
 const getOutObjectFromEditorData = require(`./lib/get-out-object-from-editor-data.js`);
-const Fixture = require(`./lib/model/Fixture.mjs`).default;
-const Manufacturer = require(`./lib/model/Manufacturer.mjs`).default;
+const Fixture = require(`./lib/model/Fixture.js`).default;
+const Manufacturer = require(`./lib/model/Manufacturer.js`).default;
 
 
 require(`./lib/load-env-file.js`);
@@ -102,7 +102,7 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
   downloadFixtures(response, format, fixtures, zipName, errorDesc);
 });
 
-app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, (request, response, next) => {
+app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, async (request, response, next) => {
   const { manKey, fixKey, format } = request.params;
 
   if (!(`${manKey}/${fixKey}` in register.filesystem)) {
@@ -111,14 +111,15 @@ app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, (request, response, next) => {
   }
 
   if (format === `json`) {
-    readFile(`./fixtures/${manKey}/${fixKey}.json`, `utf8`)
-      .then(data => JSON.parse(data))
-      .then(fixtureJson => response.json(fixtureJson))
-      .catch(error => {
-        response
-          .status(500)
-          .send(`Fetching ${manKey}/${fixKey}.json failed: ${error.toString()}`);
-      });
+    try {
+      const data = await readFile(`./fixtures/${manKey}/${fixKey}.json`, `utf8`);
+      response.json(JSON.parse(data));
+    }
+    catch (error) {
+      response
+        .status(500)
+        .send(`Fetching ${manKey}/${fixKey}.json failed: ${error.toString()}`);
+    }
     return;
   }
 
@@ -210,10 +211,10 @@ function listen() {
 /**
  * Instruct Express to initiate a download of one / multiple exported fixture files.
  * @param {express.Response} response Express Response object
- * @param {string} pluginKey Key of the export plugin to use.
- * @param {array.<Fixture>} fixtures Array of fixtures to export.
- * @param {string} zipName Name of the zip file (if multiple files should be downloaded).
- * @param {string} errorDesc String describing what fixture(s) should have been downloaded.
+ * @param {String} pluginKey Key of the export plugin to use.
+ * @param {Array.<Fixture>} fixtures Array of fixtures to export.
+ * @param {String} zipName Name of the zip file (if multiple files should be downloaded).
+ * @param {String} errorDesc String describing what fixture(s) should have been downloaded.
  * @returns {Promise} A Promise that is resolved when the response is sent.
  */
 async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDesc) {
@@ -259,7 +260,7 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
 
 /**
  * Like standard require(...), but invalidates cache first (if not in production environment).
- * @param {string} target The require path, like `./register.json`.
+ * @param {String} target The require path, like `./register.json`.
  * @returns {*} The result of standard require(target).
  */
 function requireNoCacheInDev(target) {

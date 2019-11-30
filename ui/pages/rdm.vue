@@ -7,7 +7,7 @@
       <p>Find a fixture definition or manufacturer by entering its RDM IDs.</p>
 
       <form action="/rdm" method="get">
-        <app-labeled-input label="Manufacturer ID">
+        <LabeledInput label="Manufacturer ID">
           <input
             type="number"
             name="manufacturerId"
@@ -15,9 +15,9 @@
             max="65535"
             step="1"
             required>
-        </app-labeled-input>
+        </LabeledInput>
 
-        <app-labeled-input
+        <LabeledInput
           label="Model ID"
           hint="Leave this field empty to find the manufacturer.">
           <input
@@ -26,9 +26,9 @@
             min="0"
             max="65535"
             step="1">
-        </app-labeled-input>
+        </LabeledInput>
 
-        <app-labeled-input
+        <LabeledInput
           label="Personality index"
           hint="Optional.">
           <input
@@ -36,7 +36,7 @@
             name="personalityIndex"
             min="1"
             step="1">
-        </app-labeled-input>
+        </LabeledInput>
 
         <div class="button-bar">
           <button type="submit" class="primary">Lookup fixture / manufacturer</button>
@@ -50,12 +50,12 @@
 
       <template v-if="notFound === `fixture`">
         <p>The requested <a :href="manufacturerLink">{{ manufacturerName }}</a> fixture was not found in the Open Fixture Library. Maybe a fixture in the library is missing the RDM ID? It may be included in the <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${manufacturerId}&amp;model=${modelId}`">Open Lighting RDM database</a>.</p>
-        <p>Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <nuxt-link :to="`/fixture-editor?prefill=${prefillQuery}`">add it yourself</nuxt-link>!</p>
+        <p>Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <NuxtLink :to="`/fixture-editor?prefill=${prefillQuery}`">add it yourself</NuxtLink>!</p>
         <p>Thank you either way!</p>
       </template>
 
       <template v-else-if="searchFor === `fixture`">
-        <p>The manufacturer of the requested fixture was not found in the Open Fixture Library. The fixture may be included in the <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${manufacturerId}&amp;model=${modelId}`">Open Lighting RDM database</a>. Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name and manufacturer of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <nuxt-link :to="`/fixture-editor?prefill=${prefillQuery}`">add it yourself</nuxt-link>!</p>
+        <p>The manufacturer of the requested fixture was not found in the Open Fixture Library. The fixture may be included in the <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${manufacturerId}&amp;model=${modelId}`">Open Lighting RDM database</a>. Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name and manufacturer of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <NuxtLink :to="`/fixture-editor?prefill=${prefillQuery}`">add it yourself</NuxtLink>!</p>
         <p>Thank you either way!</p>
       </template>
 
@@ -68,18 +68,26 @@
 </template>
 
 <script>
-import labeledInputVue from '~/components/labeled-input.vue';
+import register from '../../fixtures/register.json';
+import manufacturers from '../../fixtures/manufacturers.json';
 
-import register from '~~/fixtures/register.json';
-import manufacturers from '~~/fixtures/manufacturers.json';
+import LabeledInput from '../components/LabeledInput.vue';
 
 export default {
   components: {
-    'app-labeled-input': labeledInputVue
+    LabeledInput
   },
   head() {
+    const title = `RDM Lookup`;
+
     return {
-      title: `RDM Lookup`
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title
+        }
+      ]
     };
   },
   async asyncData({ query, redirect }) {
@@ -150,7 +158,7 @@ export default {
 
 /**
  * @param {*} queryParam Vue Router's query parameter to check.
- * @returns {boolean} True if the query parameter is not specified or empty.
+ * @returns {Boolean} True if the query parameter is not specified or empty.
  */
 function isEmpty(queryParam) {
   return queryParam === undefined || queryParam === ``;

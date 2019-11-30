@@ -7,13 +7,19 @@
     "ecmaVersion": 2017
   },
   "plugins": [
+    "array-func",
+    "jsdoc",
     "json",
+    "markdown",
     "promise",
     "security",
     "vue"
   ],
   "extends": [
     "eslint:recommended",
+    "plugin:array-func/all",
+    "plugin:jsdoc/recommended",
+    "plugin:json/recommended",
     "plugin:promise/recommended",
     "plugin:security/recommended",
     "plugin:vue/recommended"
@@ -39,7 +45,7 @@
     "consistent-return": "error",
     "curly": ["error", "all"],
     "dot-location": ["error", "property"],
-    "dot-notation": ["error", { "allowPattern": "^if$" }],
+    "dot-notation": ["error", { "allowPattern": "^(if|then)$" }],
     "eol-last": ["error", "always"],
     "eqeqeq": ["error", "always", { "null": "ignore" }],
     "vue/eqeqeq": ["error", "always", { "null": "ignore" }],
@@ -47,6 +53,35 @@
     "getter-return": "error",
     "guard-for-in": "error",
     "indent": ["error", 2, { "SwitchCase": 1 }],
+    "jsdoc/check-alignment": "error",
+    "jsdoc/check-indentation": "error",
+    "jsdoc/check-param-names": "error",
+    "jsdoc/check-syntax": "error",
+    "jsdoc/check-tag-names": "error",
+    "jsdoc/check-types": "error",
+    "jsdoc/implements-on-classes": "error",
+    "jsdoc/newline-after-description": "off",
+    "jsdoc/no-undefined-types": "off",
+    "jsdoc/require-description": "off",
+    "jsdoc/require-description-complete-sentence": "off",
+    "jsdoc/require-jsdoc": ["warn", {
+      "require": {
+        "FunctionDeclaration": true,
+        "MethodDefinition": true,
+        "ClassDeclaration": true,
+        "ArrowFunctionExpression": false,
+        "FunctionExpression": false
+      }
+    }],
+    "jsdoc/require-param": "error",
+    "jsdoc/require-param-description": "error",
+    "jsdoc/require-param-name": "error",
+    "jsdoc/require-param-type": "error",
+    "jsdoc/require-returns": "error",
+    "jsdoc/require-returns-check": "error",
+    "jsdoc/require-returns-description": "error",
+    "jsdoc/require-returns-type": "error",
+    "jsdoc/valid-types": "error",
     "key-spacing": "error",
     "vue/key-spacing": "error",
     "keyword-spacing": "error",
@@ -75,15 +110,6 @@
     "prefer-rest-params": "error",
     "prefer-template": "error",
     "quotes": ["error", "backtick", { "allowTemplateLiterals": true }],
-    "require-jsdoc": ["warn", {
-      "require": {
-        "FunctionDeclaration": true,
-        "MethodDefinition": true,
-        "ClassDeclaration": true,
-        "ArrowFunctionExpression": false,
-        "FunctionExpression": false
-      }
-    }],
     "security/detect-child-process": "off",
     "security/detect-non-literal-fs-filename": "off",
     "security/detect-non-literal-require": "off",
@@ -100,45 +126,20 @@
     "vue/space-infix-ops": "error",
     "spaced-comment": ["error", "always"],
     "template-curly-spacing": "error",
-    "valid-jsdoc": ["error", {
-      "requireReturn": false,
-      "prefer": {
-        "arg": "param",
-        "argument": "param",
-        "augments": "extends",
-        "class": "constructor",
-        "const": "constant",
-        "defaultvalue": "default",
-        "desc": "description",
-        "exception": "throws",
-        "file": "fileoverview",
-        "fires": "emits",
-        "func": "function",
-        "host": "external",
-        "linkcode": "link",
-        "linkplain": "link",
-        "method": "function",
-        "overview": "fileoverview",
-        "prop": "property",
-        "return": "returns",
-        "var": "member",
-        "virtual": "abstract",
-        "yield": "yields"
-      },
-      "preferType": {
-        "Array": "array",
-        "Boolean": "boolean",
-        "Number": "number",
-        "Object": "object",
-        "String": "string"
-      }
-    }],
     "promise/always-return": "off",
+    "promise/prefer-await-to-then": "error",
     "promise/no-nesting": "off",
     "promise/no-promise-in-callback": "off",
     "promise/no-return-in-finally": "error",
     "promise/valid-params": "error",
-    "vue/component-name-in-template-casing": ["error", "kebab-case"],
+    "vue/component-name-in-template-casing": ["error", "PascalCase", {
+      "registeredComponentsOnly": false,
+      "ignores": [
+        "vue-form",
+        "validate",
+        "field-messages"
+      ]
+    }],
     "vue/html-closing-bracket-newline": ["error", {
       "singleline": "never",
       "multiline": "never"
@@ -173,6 +174,43 @@
     }],
     "vue/prop-name-casing": "error",
     "vue/require-direct-export": "error",
-    "vue/v-on-function-call": "error"
-  }
+    "vue/v-on-function-call": "error",
+    "vue/match-component-file-name": ["error", {
+      "extensions": ["vue"],
+      "shouldMatchCase": true
+    }],
+    "vue/no-deprecated-scope-attribute": "error",
+    "vue/valid-v-slot": "error",
+    "vue/v-slot-style": ["error", "shorthand"]
+  },
+  "settings": {
+    "jsdoc": {
+      "tagNamePreference": {
+        "augments": "extends",
+        "class": "constructor",
+        "file": "fileoverview",
+        "fires": "emits",
+        "linkcode": "link",
+        "linkplain": "link",
+        "overview": "fileoverview"
+      },
+      "preferredTypes": {
+        "array": "Array",
+        "boolean": "Boolean",
+        "number": "Number",
+        "object": "Object",
+        "string": "String",
+        "<>": ".<>",
+        "[]": "Array.<>"
+      }
+    }
+  },
+  "overrides": [{
+    "files": ["**/*.md"],
+    "rules": {
+        "no-undef": "off",
+        "no-unused-vars": "off",
+        "require-jsdoc": "off"
+    }
+  }]
 }

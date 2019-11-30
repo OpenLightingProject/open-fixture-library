@@ -11,11 +11,11 @@ for (const hex of Object.keys(colorNames)) {
 
 /**
  * @param {Buffer} buffer The imported file.
- * @param {string} filename The imported file's name.
- * @param {string} authorName The importer's name.
- * @returns {Promise.<object, Error>} A Promise resolving to an out object
-**/
-module.exports.import = function importECue(buffer, filename, authorName) {
+ * @param {String} filename The imported file's name.
+ * @param {String} authorName The importer's name.
+ * @returns {Promise.<Object, Error>} A Promise resolving to an out object
+ */
+module.exports.import = async function importECue(buffer, filename, authorName) {
   const parser = new xml2js.Parser();
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
@@ -25,43 +25,40 @@ module.exports.import = function importECue(buffer, filename, authorName) {
     warnings: {}
   };
 
-  return promisify(parser.parseString)(buffer.toString())
-    .then(xml => {
-      if (!(`Library` in xml.Document) || !(`Fixtures` in xml.Document.Library[0]) || !(`Manufacturer` in xml.Document.Library[0].Fixtures[0])) {
-        throw new Error(`Nothing to import.`);
-      }
+  const xml = await promisify(parser.parseString)(buffer.toString());
 
-      return xml.Document.Library[0].Fixtures[0].Manufacturer || [];
-    })
-    .then(ecueManufacturers => {
-      for (const manufacturer of ecueManufacturers) {
-        const manName = manufacturer.$.Name;
-        const manKey = slugify(manName);
+  if (!(`Library` in xml.Document) || !(`Fixtures` in xml.Document.Library[0]) || !(`Manufacturer` in xml.Document.Library[0].Fixtures[0])) {
+    throw new Error(`Nothing to import.`);
+  }
 
-        out.manufacturers[manKey] = {
-          name: manName
-        };
+  const ecueManufacturers = xml.Document.Library[0].Fixtures[0].Manufacturer || [];
+  ecueManufacturers.forEach(manufacturer => {
+    const manName = manufacturer.$.Name;
+    const manKey = slugify(manName);
 
-        if (manufacturer.$.Comment !== ``) {
-          out.manufacturers[manKey].comment = manufacturer.$.Comment;
-        }
-        if (manufacturer.$.Web !== ``) {
-          out.manufacturers[manKey].website = manufacturer.$.Web;
-        }
+    out.manufacturers[manKey] = {
+      name: manName
+    };
 
-        for (const fixture of (manufacturer.Fixture || [])) {
-          addFixture(fixture, manKey);
-        }
-      }
+    if (manufacturer.$.Comment !== ``) {
+      out.manufacturers[manKey].comment = manufacturer.$.Comment;
+    }
+    if (manufacturer.$.Web !== ``) {
+      out.manufacturers[manKey].website = manufacturer.$.Web;
+    }
 
-      return out;
-    });
+    for (const fixture of (manufacturer.Fixture || [])) {
+      addFixture(fixture, manKey);
+    }
+  });
+
+  return out;
 
 
   /**
    * Parses the e:cue fixture and add it to out.fixtures.
-   * @param {object} ecueFixture The e:cue fixture object.
-   * @param {string} manKey The manufacturer key of the fixture.
+   * @param {Object} ecueFixture The e:cue fixture object.
+   * @param {String} manKey The manufacturer key of the fixture.
    */
   function addFixture(ecueFixture, manKey) {
     const fixture = {
@@ -122,8 +119,8 @@ module.exports.import = function importECue(buffer, filename, authorName) {
 };
 
 /**
- * @param {object} ecueFixture The e:cue fixture object.
- * @returns {object} The OFL fixture's physical object.
+ * @param {Object} ecueFixture The e:cue fixture object.
+ * @returns {Object} The OFL fixture's physical object.
  */
 function getPhysical(ecueFixture) {
   const physical = {};
@@ -144,16 +141,16 @@ function getPhysical(ecueFixture) {
 }
 
 /**
- * @param {object} ecueFixture The e:cue fixture object.
- * @returns {array.<object>} An array of all ecue channel objects.
+ * @param {Object} ecueFixture The e:cue fixture object.
+ * @returns {Array.<Object>} An array of all ecue channel objects.
  */
 function getCombinedEcueChannels(ecueFixture) {
-  let channels = [];
+  const channels = [];
 
   const channelTypes = [`ChannelIntensity`, `ChannelColor`, `ChannelBeam`, `ChannelFocus`];
   for (const channelType of channelTypes) {
     if (ecueFixture[channelType]) {
-      channels = channels.concat(ecueFixture[channelType].map(ch => {
+      channels.push(...ecueFixture[channelType].map(ch => {
         // save the channel type in the channel object
         ch._ecueChannelType = channelType;
         return ch;
@@ -162,7 +159,7 @@ function getCombinedEcueChannels(ecueFixture) {
   }
 
   // sort channels by (coarse) DMX channel
-  channels = channels.sort((a, b) => {
+  channels.sort((a, b) => {
     if (parseInt(a.$.DmxByte0) < parseInt(b.$.DmxByte0)) {
       return -1;
     }
@@ -175,9 +172,9 @@ function getCombinedEcueChannels(ecueFixture) {
 
 /**
  * Parses the e:cue channel and adds it to OFL fixture's availableChannels and the first mode.
- * @param {object} ecueChannel The e:cue channel object.
- * @param {object} fixture The OFL fixture object.
- * @param {array.<string>} warningsArray This fixture's warnings array in the `out` object.
+ * @param {Object} ecueChannel The e:cue channel object.
+ * @param {Object} fixture The OFL fixture object.
+ * @param {Array.<String>} warningsArray This fixture's warnings array in the `out` object.
  */
 function addChannelToFixture(ecueChannel, fixture, warningsArray) {
   const channel = {};
@@ -250,7 +247,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
    *
    * @param {*} ecueRange The e:cue range object.
    * @param {*} index The index of the capability / range.
-   * @returns {object} The OFL capability object.
+   * @returns {Object} The OFL capability object.
    */
   function getCapability(ecueRange, index) {
     const cap = {
@@ -364,7 +361,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
 
     /**
-     * @returns {array.<number>} The DMX range of this capability.
+     * @returns {Array.<Number>} The DMX range of this capability.
      */
     function getDmxRange() {
       const dmxRangeStart = parseInt(ecueRange.$.Start);
@@ -378,7 +375,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
     }
 
     /**
-     * @returns {string} The parsed capability type.
+     * @returns {String} The parsed capability type.
      */
     function getCapabilityType() {
       // capability parsers can rely on the channel type as a first distinctive feature
@@ -447,6 +444,8 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
             WheelSlotRotation: /\bgobo rot(?:ation)?\b/,
             WheelRotation: /wheel rot(?:ation)?\b/,
             WheelSlot: /\bgobo\b/,
+            BeamAngle: /\bbeam angle\b/,
+            BeamPosition: /\b(beam|horizontal|vertical) position\b/,
             Focus: /\bfocus\b/,
             Zoom: /\bzoom\b/,
             IrisEffect: /\biris effect\b/,
@@ -461,7 +460,6 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
             FogOutput: /\bfog output\b/,
             FogType: /\bfog type\b/,
             Fog: /\bfog\b/,
-            BeamAngle: /\bbeam angle\b/,
             Rotation: /\brotation\b/,
             Speed: /\bspeed\b/,
             Time: /\btime\b/,
@@ -480,7 +478,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
     /**
      * Try to guess speedStart / speedEnd from the capabilityName. May set cap.type to Rotation.
-     * @returns {string} The rest of the capabilityName.
+     * @returns {String} The rest of the capabilityName.
      */
     function getSpeedGuessedComment() {
       return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|C?CW)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i, (match, direction, start, end) => {
@@ -511,8 +509,8 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 }
 
 /**
- * @param {string} str The string to slugify.
- * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
+ * @param {String} str The string to slugify.
+ * @returns {String} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(str) {
   return str.toLowerCase().replace(/[^a-z0-9-]+/g, ` `).trim().replace(/\s+/g, `-`);

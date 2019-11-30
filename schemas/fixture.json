@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
 
-  "version": "11.3.0",
+  "version": "12.1.0",
 
   "type": "object",
   "properties": {
@@ -21,6 +21,7 @@
       "uniqueItems": true,
       "items": {
         "enum": [
+          "Barrel Scanner",
           "Blinder",
           "Color Changer",
           "Dimmer",
@@ -166,42 +167,6 @@
           },
           "additionalProperties": false
         },
-        "focus": {
-          "type": "object",
-          "minProperties": 1,
-          "properties": {
-            "type": {
-              "$comment": "additions are welcome",
-              "enum": [
-                "Fixed",
-                "Head",
-                "Mirror",
-                "Barrel"
-              ]
-            },
-            "panMax": {
-              "oneOf": [
-                {
-                  "$comment": "in degrees",
-                  "type": "number",
-                  "minimum": 0
-                },
-                { "enum": ["infinite"] }
-              ]
-            },
-            "tiltMax": {
-              "oneOf": [
-                {
-                  "$comment": "in degrees",
-                  "type": "number",
-                  "minimum": 0
-                },
-                { "enum": ["infinite"] }
-              ]
-            }
-          },
-          "additionalProperties": false
-        },
         "matrixPixels": {
           "type": "object",
           "minProperties": 1,
@@ -283,7 +248,7 @@
                   "$comment": "matrix channel insert block",
                   "type": "object",
                   "properties": {
-                    "insert": { "enum": ["matrixChannels"] },
+                    "insert": { "const": "matrixChannels" },
                     "repeatFor": {
                       "oneOf": [
                         {
@@ -362,7 +327,7 @@
   ],
   "patternProperties": {
     "^\\$schema$": {
-      "enum": ["https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json"]
+      "const": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json"
     }
   },
   "additionalProperties": false

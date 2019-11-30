@@ -1,22 +1,33 @@
 language: node_js
 node_js:
   #- "node" # latest
-  - "10"
+  - "12"
 addons:
   apt:
     packages:
       - python-lxml # for QLC+ fixture-tool-validation export test
-env:
-  - TESTFILE=tests/http-status.js
-  - TESTFILE=tests/github/export-diff.js
-  - TESTFILE=tests/github/exports-valid.js
-  - TESTFILE=tests/github/schema-version-reminder.js
-  - TESTFILE=tests/fixtures-valid.js
-  - TESTFILE=tests/make-targets-updated.js
-  - TESTFILE=tests/lint.js
-  - TESTFILE=tests/dmx-value-scaling.js
+matrix:
+  include:
+    - env: TESTFILE=tests/http-status.js
+      if: type in (push, pull_request, api)
+    - env: TESTFILE=tests/github/export-diff.js
+      if: type in (pull_request, api)
+    - env: TESTFILE=tests/github/exports-valid.js
+      if: type in (pull_request, api)
+    - env: TESTFILE=tests/github/schema-version-reminder.js
+      if: type in (pull_request, api)
+    - env: TESTFILE=tests/fixtures-valid.js
+      if: type in (push, pull_request, api)
+    - env: TESTFILE=tests/make-targets-updated.js
+      if: type in (push, pull_request, api)
+    - env: TESTFILE=tests/lint.js
+      if: type in (push, pull_request, api)
+    - env: TESTFILE=tests/dmx-value-scaling.js
+      if: type in (push, pull_request, api)
+    - env: TESTFILE=tests/external-links.js
+      if: type in (api, cron)
 script:
-  - NODE_ENV=production node "$TESTFILE"
+  - NODE_ENV=production node --tls-min-v1.0 "$TESTFILE"
 cache:
   directories:
     - node_modules # cache NPM dependencies

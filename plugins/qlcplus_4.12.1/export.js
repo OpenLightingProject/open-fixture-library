@@ -1,49 +1,28 @@
 const xmlbuilder = require(`xmlbuilder`);
 const sanitize = require(`sanitize-filename`);
 
-/* eslint-disable no-unused-vars */
-const {
-  AbstractChannel,
-  Capability,
-  CoarseChannel,
-  FineChannel,
-  Fixture,
-  Manufacturer,
-  Matrix,
-  Meta,
-  Mode,
-  NullChannel,
-  Physical,
-  Range,
-  SwitchingChannel,
-  TemplateChannel
-} = require(`../../lib/model.js`);
-/* eslint-enable no-unused-vars */
+const { getChannelPreset, getFineChannelPreset, getCapabilityPreset } = require(`./presets.js`);
 
-const capabilityHelpers = {
-  isIncreasingSpeed: cap => cap.speed !== null && Math.abs(cap.speed[0].number) < Math.abs(cap.speed[1].number),
-  isDecreasingSpeed: cap => cap.speed !== null && Math.abs(cap.speed[0].number) > Math.abs(cap.speed[1].number),
-  isStopped: cap => cap.speed !== null && cap.speed[0].number === 0 && cap.speed[1].number === 0,
-  isIncreasingDuration: cap => cap.duration !== null && Math.abs(cap.duration[0].number) < Math.abs(cap.duration[1].number),
-  isDecreasingDuration: cap => cap.duration !== null && Math.abs(cap.duration[0].number) > Math.abs(cap.duration[1].number),
-  isColorIntensity: (cap, color) => cap.type === `ColorIntensity` && cap.color === color,
-  isShutterEffect: (cap, shutterEffect) => cap.type === `ShutterStrobe` && cap.shutterEffect === shutterEffect,
-  hasFrequency: cap => cap.speed !== null && (cap.speed[0].unit === `Hz` || cap.speed[0].unit === `bpm`),
-  isRotationSpeed: cap => (cap.type.endsWith(`Rotation`) || [`PanContinuous`, `TiltContinuous`, `Prism`].includes(cap.type)) && cap.speed !== null,
-  isRotationAngle: cap => (cap.type.endsWith(`Rotation`) || [`Pan`, `Tilt`, `Prism`].includes(cap.type)) && cap.angle !== null,
-  isBeamAngle: cap => (cap.type === `BeamAngle` || cap.type === `Zoom`) && cap.angle !== null
-};
+/** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
+const { Capability } = require(`../../lib/model.js`);
+const { CoarseChannel } = require(`../../lib/model.js`);
+/** @typedef {import('../../lib/model/FineChannel.js').default} FineChannel */
+/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
+/** @typedef {import('../../lib/model/Mode.js').default} Mode */
+const { Physical } = require(`../../lib/model.js`);
+const { SwitchingChannel } = require(`../../lib/model.js`);
 
-module.exports.version = `1.1.1`;
+module.exports.version = `1.2.0`;
 
 /**
- * @param {array.<Fixture>} fixtures An array of Fixture objects.
- * @param {object} options Global options, including:
- * @param {string} options.baseDir Absolute path to OFL's root directory.
- * @param {Date|null} options.date The current time.
- * @returns {Promise.<array.<object>, Error>} The generated files.
-*/
-module.exports.export = function exportQlcPlus(fixtures, options) {
+ * @param {Array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {Object} options Global options, including:
+ * @param {String} options.baseDir Absolute path to OFL's root directory.
+ * @param {Date} options.date The current time.
+ * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
+ * @returns {Promise.<Array.<Object>, Error>} The generated files.
+ */
+module.exports.export = async function exportQlcPlus(fixtures, options) {
   const outFiles = fixtures.map(fixture => {
     const xml = xmlbuilder.begin()
       .declaration(`1.0`, `UTF-8`)
@@ -52,7 +31,7 @@ module.exports.export = function exportQlcPlus(fixtures, options) {
           '@xmlns': `http://www.qlcplus.org/FixtureDefinition`,
           Creator: {
             Name: `OFL – ${fixture.url}`,
-            Version: module.exports.version,
+            Version: options.displayedPluginVersion || module.exports.version,
             Author: fixture.meta.authors.join(`, `)
           },
           Manufacturer: fixture.manufacturer.name,
@@ -65,13 +44,24 @@ module.exports.export = function exportQlcPlus(fixtures, options) {
       addChannel(xml, channel, fixture);
     }
 
+    const panMax = getPanTiltMax(`Pan`, fixture.coarseChannels);
+    const tiltMax = getPanTiltMax(`Tilt`, fixture.coarseChannels);
+    const useGlobalPhysical = fixture.modes.every(mode => {
+      if (mode.physicalOverride !== null) {
+        return false;
+      }
+
+      const modePanMax = getPanTiltMax(`Pan`, mode.channels);
+      const modeTiltMax = getPanTiltMax(`Tilt`, mode.channels);
+      return (modePanMax === 0 || panMax === modePanMax) && (modeTiltMax === 0 || tiltMax === modeTiltMax);
+    });
+
     for (const mode of fixture.modes) {
-      addMode(xml, mode);
+      addMode(xml, mode, !useGlobalPhysical);
     }
 
-    const allModesHavePhysical = fixture.modes.every(mode => mode.physicalOverride !== null);
-    if (fixture.physical !== null && !allModesHavePhysical) {
-      addPhysical(xml, fixture.physical, fixture);
+    if (useGlobalPhysical) {
+      addPhysical(xml, fixture.physical || new Physical({}), fixture);
     }
 
     xml.dtd(``);
@@ -86,11 +76,11 @@ module.exports.export = function exportQlcPlus(fixtures, options) {
     };
   });
 
-  return Promise.resolve(outFiles);
+  return outFiles;
 };
 
 /**
- * @param {object} xml The xmlbuilder <FixtureDefinition> object.
+ * @param {Object} xml The xmlbuilder <FixtureDefinition> object.
  * @param {CoarseChannel} channel The OFL channel object.
  */
 function addChannel(xml, channel) {
@@ -133,7 +123,7 @@ function addChannel(xml, channel) {
 }
 
 /**
- * @param {object} xml The xmlbuilder <FixtureDefinition> object.
+ * @param {Object} xml The xmlbuilder <FixtureDefinition> object.
  * @param {FineChannel} fineChannel The OFL fine channel object.
  */
 function addFineChannel(xml, fineChannel) {
@@ -195,127 +185,7 @@ function addFineChannel(xml, fineChannel) {
 }
 
 /**
- * @param {CoarseChannel} channel The OFL channel object.
- * @returns {string|null} The QLC+ channel preset name or null, if there is no suitable one.
- */
-function getChannelPreset(channel) {
-  if (channel.capabilities.length > 1) {
-    return null;
-  }
-
-  const capability = channel.capabilities[0];
-
-  // TODO: try to also detect the `cap => false` presets
-  const channelPresets = {
-    IntensityMasterDimmer: cap => false,
-    IntensityDimmer: cap => cap.type === `Intensity` && cap.brightness[0].number < cap.brightness[1].number,
-    IntensityRed: cap => capabilityHelpers.isColorIntensity(cap, `Red`),
-    IntensityGreen: cap => capabilityHelpers.isColorIntensity(cap, `Green`),
-    IntensityBlue: cap => capabilityHelpers.isColorIntensity(cap, `Blue`),
-    IntensityCyan: cap => capabilityHelpers.isColorIntensity(cap, `Cyan`),
-    IntensityMagenta: cap => capabilityHelpers.isColorIntensity(cap, `Magenta`),
-    IntensityYellow: cap => capabilityHelpers.isColorIntensity(cap, `Yellow`),
-    IntensityAmber: cap => capabilityHelpers.isColorIntensity(cap, `Amber`),
-    IntensityWhite: cap => capabilityHelpers.isColorIntensity(cap, `White`) || capabilityHelpers.isColorIntensity(cap, `Warm White`) || capabilityHelpers.isColorIntensity(cap, `Cold White`),
-    IntensityUV: cap => capabilityHelpers.isColorIntensity(cap, `UV`),
-    IntensityIndigo: cap => capabilityHelpers.isColorIntensity(cap, `Indigo`),
-    IntensityLime: cap => capabilityHelpers.isColorIntensity(cap, `Lime`),
-    IntensityHue: cap => false,
-    IntensitySaturation: cap => false,
-    IntensityLightness: cap => false,
-    IntensityValue: cap => false,
-    PositionPan: cap => cap.type === `Pan`,
-    PositionTilt: cap => cap.type === `Tilt`,
-    PositionXAxis: cap => false,
-    PositionYAxis: cap => false,
-    SpeedPanSlowFast: cap => cap.type === `PanContinuous` && capabilityHelpers.isIncreasingSpeed(cap),
-    SpeedPanFastSlow: cap => cap.type === `PanContinuous` && capabilityHelpers.isDecreasingSpeed(cap),
-    SpeedTiltSlowFast: cap => cap.type === `TiltContinuous` && capabilityHelpers.isIncreasingSpeed(cap),
-    SpeedTiltFastSlow: cap => cap.type === `TiltContinuous` && capabilityHelpers.isDecreasingSpeed(cap),
-    SpeedPanTiltSlowFast: cap => cap.type === `PanTiltSpeed` && (capabilityHelpers.isIncreasingSpeed(cap) || capabilityHelpers.isDecreasingDuration(cap)),
-    SpeedPanTiltFastSlow: cap => cap.type === `PanTiltSpeed` && (capabilityHelpers.isDecreasingSpeed(cap) || capabilityHelpers.isIncreasingDuration(cap)),
-    ColorMacro: cap => cap.type === `ColorPreset` || (cap.type === `WheelSlot` && cap.isSlotType(`Color`)),
-    ColorWheel: cap => cap.type === `WheelRotation` && cap.wheels[0].type === `Color`,
-    ColorRGBMixer: cap => false,
-    ColorCTOMixer: cap => cap.type === `ColorTemperature` && cap.colorTemperature[0].number === 0 && cap.colorTemperature[1].number < 0,
-    ColorCTBMixer: cap => cap.type === `ColorTemperature` && cap.colorTemperature[0].number === 0 && cap.colorTemperature[1].number > 0,
-    ColorCTCMixer: cap => cap.type === `ColorTemperature`,
-    GoboWheel: cap => cap.type === `WheelRotation` && cap.wheels[0].type === `Gobo`,
-    GoboIndex: cap => cap.type === `WheelSlotRotation` && cap.wheels[0].type === `Gobo`,
-    ShutterStrobeSlowFast: cap => cap.type === `ShutterStrobe` && capabilityHelpers.isIncreasingSpeed(cap),
-    ShutterStrobeFastSlow: cap => cap.type === `ShutterStrobe` && capabilityHelpers.isDecreasingSpeed(cap),
-    ShutterIrisMinToMax: cap => cap.type === `Iris` && cap.openPercent[0].number < cap.openPercent[1].number,
-    ShutterIrisMaxToMin: cap => cap.type === `Iris` && cap.openPercent[0].number > cap.openPercent[1].number,
-    BeamFocusNearFar: cap => cap.type === `Focus` && cap.distance[0].number < cap.distance[1].number,
-    BeamFocusFarNear: cap => cap.type === `Focus` && cap.distance[0].number > cap.distance[1].number,
-    BeamZoomSmallBig: cap => cap.type === `Zoom` && cap.angle[0].number < cap.angle[1].number,
-    BeamZoomBigSmall: cap => cap.type === `Zoom` && cap.angle[0].number > cap.angle[1].number,
-    PrismRotationSlowFast: cap => cap.type === `PrismRotation` && capabilityHelpers.isIncreasingSpeed(cap),
-    PrismRotationFastSlow: cap => cap.type === `PrismRotation` && capabilityHelpers.isDecreasingSpeed(cap),
-    NoFunction: cap => cap.type === `NoFunction`
-  };
-
-  return Object.keys(channelPresets).find(presetName => channelPresets[presetName](capability)) || null;
-}
-
-/**
- * @param {FineChannel} fineChannel The OFL fine channel object.
- * @returns {string|null} The QLC+ channel preset name or null, if there is no suitable one.
- */
-function getFineChannelPreset(fineChannel) {
-  const coarseChannel = fineChannel.coarseChannel;
-  const channelPreset = getChannelPreset(coarseChannel);
-
-  const fineChannelPresets = {
-    IntensityMasterDimmerFine: () => channelPreset === `IntensityMasterDimmer`,
-    IntensityDimmerFine: () => channelPreset === `IntensityDimmer`,
-    IntensityRedFine: () => channelPreset === `IntensityRed`,
-    IntensityGreenFine: () => channelPreset === `IntensityGreen`,
-    IntensityBlueFine: () => channelPreset === `IntensityBlue`,
-    IntensityCyanFine: () => channelPreset === `IntensityCyan`,
-    IntensityMagentaFine: () => channelPreset === `IntensityMagenta`,
-    IntensityYellowFine: () => channelPreset === `IntensityYellow`,
-    IntensityAmberFine: () => channelPreset === `IntensityAmber`,
-    IntensityWhiteFine: () => channelPreset === `IntensityWhite`,
-    IntensityUVFine: () => channelPreset === `IntensityUV`,
-    IntensityIndigoFine: () => channelPreset === `IntensityIndigo`,
-    IntensityLimeFine: () => channelPreset === `IntensityLime`,
-    IntensityHueFine: () => channelPreset === `IntensityHue`,
-    IntensitySaturationFine: () => channelPreset === `IntensitySaturation`,
-    IntensityLightnessFine: () => channelPreset === `IntensityLightness`,
-    IntensityValueFine: () => channelPreset === `IntensityValue`,
-    PositionPanFine: () => channelPreset === `PositionPan`,
-    PositionTiltFine: () => channelPreset === `PositionTilt`,
-
-    ColorWheelFine: () => coarseChannel.capabilities.some(
-      cap => [`WheelSlot`, `WheelRotation`].includes(cap.type)
-    ) && coarseChannel.capabilities.every(
-      cap => [`WheelSlot`, `WheelShake`, `WheelSlotRotation`, `WheelRotation`, `Effect`, `NoFunction`].includes(cap.type) &&
-        (cap.wheels.length === 0 || cap.wheels[0].type === `Color`)
-    ),
-    GoboWheelFine: () => coarseChannel.capabilities.some(
-      cap => [`WheelSlot`, `WheelRotation`].includes(cap.type)
-    ) && coarseChannel.capabilities.every(
-      cap => [`WheelSlot`, `WheelShake`, `WheelSlotRotation`, `WheelRotation`, `Effect`, `NoFunction`].includes(cap.type) &&
-        (cap.wheels.length === 0 || cap.wheels[0].type === `Gobo`)
-    ),
-    GoboIndexFine: () => coarseChannel.capabilities.every(
-      cap => cap.type === `WheelSlotRotation` && cap.wheels[0].type === `Gobo`
-    ),
-
-    ShutterIrisFine: () => coarseChannel.type === `Iris`,
-    BeamFocusFine: () => coarseChannel.type === `Focus`,
-    BeamZoomFine: () => coarseChannel.type === `Zoom`
-  };
-
-  // fine channel preset for a group of coarse channels
-  return Object.keys(fineChannelPresets).find(
-    fineChannelPreset => fineChannelPresets[fineChannelPreset]()
-  ) || null;
-}
-
-/**
- * @param {object} xmlChannel The xmlbuilder <Channel> object.
+ * @param {Object} xmlChannel The xmlbuilder <Channel> object.
  * @param {Capability} cap The OFL capability object.
  */
 function addCapability(xmlChannel, cap) {
@@ -352,7 +222,7 @@ function addCapability(xmlChannel, cap) {
 }
 
 /**
- * @param {object} xmlCapability The xmlbuilder <Capability> object.
+ * @param {Object} xmlCapability The xmlbuilder <Capability> object.
  * @param {Capability} cap The OFL capability object.
  */
 function addCapabilityLegacyAttributes(xmlCapability, cap) {
@@ -366,9 +236,9 @@ function addCapabilityLegacyAttributes(xmlCapability, cap) {
 }
 
 /**
- * @param {object} xmlCapability The xmlbuilder <Capability> object.
+ * @param {Object} xmlCapability The xmlbuilder <Capability> object.
  * @param {Capability} cap The OFL capability object.
- * @returns {boolean} True when one or more <Alias> elements were added to the capability, false otherwise.
+ * @returns {Boolean} True when one or more <Alias> elements were added to the capability, false otherwise.
  */
 function addCapabilityAliases(xmlCapability, cap) {
   const fixture = cap._channel.fixture;
@@ -403,222 +273,19 @@ function addCapabilityAliases(xmlCapability, cap) {
 }
 
 /**
- * @typedef CapabilityPreset
- * @type {object}
- * @property {string} presetName The name of the QLC+ capability preset.
- * @property {string|null} res1 A value for the QLC+ capability element's Res1 attribute, or null if the attribute should not be added.
- * @property {string|null} res2 A value for the QLC+ capability element's Res2 attribute, or null if the attribute should not be added.
- */
-
-/**
- * @param {Capability} capability The OFL capability object.
- * @returns {CapabilityPreset|null} The QLC+ capability preset or null, if there is no suitable one.
- */
-function getCapabilityPreset(capability) {
-  const capabilityPresets = {
-    // shutter capabilities
-    ShutterOpen: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `Open`)
-    },
-    ShutterClose: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `Closed`)
-    },
-
-    // strobe capabilities with specified frequency
-    StrobeFrequency: getStrobeFrequencyPreset(`Strobe`, true),
-    StrobeFreqRange: getStrobeFrequencyPreset(`Strobe`, false),
-    PulseFrequency: getStrobeFrequencyPreset(`Pulse`, true),
-    PulseFreqRange: getStrobeFrequencyPreset(`Pulse`, false),
-    RampUpFrequency: getStrobeFrequencyPreset(`RampUp`, true),
-    RampUpFreqRange: getStrobeFrequencyPreset(`RampUp`, false),
-    RampDownFrequency: getStrobeFrequencyPreset(`RampDown`, true),
-    RampDownFreqRange: getStrobeFrequencyPreset(`RampDown`, false),
-
-    // other strobe capabilities
-    StrobeRandomSlowToFast: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming && capabilityHelpers.isIncreasingSpeed(cap)
-    },
-    StrobeRandomFastToSlow: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming && capabilityHelpers.isDecreasingSpeed(cap)
-    },
-    StrobeRandom: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && cap.randomTiming
-    },
-    StrobeSlowToFast: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && capabilityHelpers.isIncreasingSpeed(cap)
-    },
-    StrobeFastToSlow: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `Strobe`) && capabilityHelpers.isDecreasingSpeed(cap)
-    },
-    PulseSlowToFast: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `Pulse`) && capabilityHelpers.isIncreasingSpeed(cap)
-    },
-    PulseFastToSlow: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `Pulse`) && capabilityHelpers.isDecreasingSpeed(cap)
-    },
-    RampUpSlowToFast: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `RampUp`) && capabilityHelpers.isIncreasingSpeed(cap)
-    },
-    RampUpFastToSlow: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `RampUp`) && capabilityHelpers.isDecreasingSpeed(cap)
-    },
-    RampDownSlowToFast: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `RampDown`) && capabilityHelpers.isIncreasingSpeed(cap)
-    },
-    RampDownFastToSlow: {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, `RampDown`) && capabilityHelpers.isDecreasingSpeed(cap)
-    },
-
-    // color capabilities
-    ColorMacro: {
-      handler: cap => (cap.type === `ColorPreset` || cap.isSlotType(`Color`)) && cap.colors !== null && cap.colors.allColors.length === 1,
-      res1: cap => cap.colors.allColors[0]
-    },
-    ColorDoubleMacro: {
-      handler: cap => (cap.type === `ColorPreset` || cap.isSlotType(`Color`)) && cap.colors !== null && cap.colors.allColors.length === 2,
-      res1: cap => cap.colors.allColors[0],
-      res2: cap => cap.colors.allColors[1]
-    },
-    ColorWheelIndex: {
-      handler: cap => cap.type === `WheelRotation` && cap.wheels[0].type === `Color` && capabilityHelpers.isRotationAngle(cap)
-    },
-
-    // gobo capabilities
-    // TODO: export a gobo image as res1
-    GoboShakeMacro: {
-      handler: cap => cap.type === `WheelShake` && (cap.isSlotType(/Gobo|Iris|Frost/) || cap.isSlotType(`Open`)),
-      res1: cap => (cap.isSlotType(`Open`) ? `Others/open.svg` : null)
-    },
-    GoboMacro: {
-      handler: cap => cap.isSlotType(/Gobo|Iris|Frost/) || cap.isSlotType(`Open`),
-      res1: cap => (cap.isSlotType(`Open`) ? `Others/open.svg` : null)
-    },
-
-    // prism capabilities
-    // TODO: export the number of prism facets as res1 for Prism capabilities
-    PrismEffectOn: {
-      handler: cap => cap.type === `Prism` || (cap.type === `WheelSlot` && cap.isSlotType(`Prism`)),
-      res1: cap => (cap.wheelSlot && cap.slotNumber[0].number === cap.slotNumber[1].number && cap.wheelSlot[0].facets)
-    },
-    PrismEffectOff: {
-      handler: cap => cap.type === `NoFunction` && cap._channel.type === `Prism`
-    },
-
-    // rotation capabilities
-    RotationClockwiseSlowToFast: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isIncreasingSpeed(cap) && cap.speed[0].number > 0
-    },
-    RotationClockwiseFastToSlow: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isDecreasingSpeed(cap) && cap.speed[1].number > 0
-    },
-    RotationClockwise: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0].number > 0
-    },
-    RotationStop: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isStopped(cap)
-    },
-    RotationCounterClockwiseSlowToFast: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isIncreasingSpeed(cap) && cap.speed[0].number < 0
-    },
-    RotationCounterClockwiseFastToSlow: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && capabilityHelpers.isDecreasingSpeed(cap) && cap.speed[1].number < 0
-    },
-    RotationCounterClockwise: {
-      handler: cap => capabilityHelpers.isRotationSpeed(cap) && cap.speed[0].number === cap.speed[1].number && cap.speed[0].number < 0
-    },
-    RotationIndexed: {
-      handler: cap => capabilityHelpers.isRotationAngle(cap)
-    },
-
-    // generic / other capabilities
-    GenericPicture: {
-      handler: cap => cap.effectPreset === `ColorFade` && !capabilityHelpers.isStopped(cap),
-      res1: cap => `Others/rainbow.png`
-    },
-    SlowToFast: {
-      handler: cap => capabilityHelpers.isIncreasingSpeed(cap)
-    },
-    FastToSlow: {
-      handler: cap => capabilityHelpers.isDecreasingSpeed(cap)
-    },
-    NearToFar: {
-      handler: cap => cap.distance !== null && cap.distance[0].number < cap.distance[1].number
-    },
-    FarToNear: {
-      handler: cap => cap.distance !== null && cap.distance[0].number > cap.distance[1].number
-    },
-    SmallToBig: {
-      handler: cap => (capabilityHelpers.isBeamAngle(cap) && cap.angle[0].number < cap.angle[1].number) || (cap.parameter !== null && cap.parameter[0].keyword === `small` && cap.parameter[1].keyword === `big`)
-    },
-    BigToSmall: {
-      handler: cap => (capabilityHelpers.isBeamAngle(cap) && cap.angle[0].number > cap.angle[1].number) || (cap.parameter !== null && cap.parameter[0].keyword === `big` && cap.parameter[1].keyword === `small`)
-    }
-  };
-
-  const presetName = Object.keys(capabilityPresets).find(
-    presetName => capabilityPresets[presetName].handler(capability)
-  );
-
-  if (!presetName) {
-    return null;
-  }
-
-  const preset = capabilityPresets[presetName];
-  return {
-    presetName,
-    res1: `res1` in preset ? preset.res1(capability) : null,
-    res2: `res2` in preset ? preset.res2(capability) : null
-  };
-
-
-  /**
-   * @param {string} shutterEffect The shutter effect to create the preset for.
-   * @param {boolean} isStep Whether the preset shall only match step capabilities.
-   * @returns {object} The generated preset with handler, res1 and res2 generation.
-   */
-  function getStrobeFrequencyPreset(shutterEffect, isStep) {
-    return {
-      handler: cap => capabilityHelpers.isShutterEffect(cap, shutterEffect) && capabilityHelpers.hasFrequency(cap) && (!isStep || cap.isStep),
-      res1: cap => getFrequencyInHertz(cap.speed[0]),
-      res2: cap => (isStep ? null : getFrequencyInHertz(cap.speed[1]))
-    };
-  }
-
-  /**
-   * @param {Entity} entity The speed Entity object.
-   * @returns {number|null} The frequency in Hertz, or null, if the entity's unit is not convertable to Hertz.
-   */
-  function getFrequencyInHertz(entity) {
-    if (entity.unit === `Hz`) {
-      return entity.number;
-    }
-
-    if (entity.unit === `bpm`) {
-      return entity.number / 60;
-    }
-
-    return null;
-  }
-}
-
-/**
- * @param {object} xml The xmlbuilder <FixtureDefinition> object.
+ * @param {Object} xml The xmlbuilder <FixtureDefinition> object.
  * @param {Mode} mode The OFL mode object.
+ * @param {Boolean} createPhysical Whether to add a Physical XML element to the mode.
  */
-function addMode(xml, mode) {
+function addMode(xml, mode, createPhysical) {
   const xmlMode = xml.element({
     Mode: {
       '@Name': mode.name
     }
   });
 
-  const hasPanTiltInfinite = mode.physical !== null && (
-    mode.physical.focusPanMax === Number.POSITIVE_INFINITY ||
-    mode.physical.focusTiltMax === Number.POSITIVE_INFINITY
-  );
-
-  if (mode.physicalOverride !== null || hasPanTiltInfinite) {
-    addPhysical(xmlMode, mode.physical, mode.fixture, hasPanTiltInfinite ? mode : null);
+  if (createPhysical) {
+    addPhysical(xmlMode, mode.physical || new Physical({}), mode.fixture, mode);
   }
 
   mode.channels.forEach((channel, index) => {
@@ -640,12 +307,20 @@ function addMode(xml, mode) {
 }
 
 /**
- * @param {object} xmlParentNode The xmlbuilder object where <Physical> should be added (<FixtureDefinition> or <Mode>).
+ * @param {Object} xmlParentNode The xmlbuilder object where <Physical> should be added (<FixtureDefinition> or <Mode>).
  * @param {Physical} physical The OFL physical object.
  * @param {Fixture} fixture The OFL fixture object.
- * @param {Mode|null} mode The OFL mode object this physical data section belongs to. Only provide this if panMax and tiltMax should be read from this mode's Pan / Tilt channels.
+ * @param {Mode|null} mode The OFL mode object this physical data section belongs to. Only provide this if panMax and tiltMax should be read from this mode's Pan / Tilt channels, otherwise they are read from all channels.
  */
 function addPhysical(xmlParentNode, physical, fixture, mode) {
+  const PanMax = getPanTiltMax(`Pan`, mode ? mode.channels : fixture.coarseChannels);
+  const TiltMax = getPanTiltMax(`Tilt`, mode ? mode.channels : fixture.coarseChannels);
+
+  if (Object.keys(physical.jsonObject).length === 0 && PanMax === 0 && TiltMax === 0) {
+    // empty physical data
+    return;
+  }
+
   const physicalSections = {
     Bulb: {
       required: true,
@@ -681,35 +356,16 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
     Focus: {
       required: true,
       getAttributes() {
-        const [PanMax, TiltMax] = [`Pan`, `Tilt`].map(panOrTilt => {
-          const panTiltMax = physical[`focus${panOrTilt}Max`];
-
-          if (panTiltMax === Number.POSITIVE_INFINITY) {
-            try {
-              const panTiltChannel = mode.channels.find(
-                ch => `capabilities` in ch && ch.capabilities.length === 1 &&
-                  ch.capabilities[0].type === panOrTilt && ch.capabilities[0].angle[0].unit === `deg`
-              );
-
-              return Math.max(
-                panTiltChannel.capabilities[0].angle[0].number,
-                panTiltChannel.capabilities[0].angle[1].number
-              );
-            }
-            catch (err) {
-              return 9999;
-            }
-          }
-
-          if (panTiltMax !== null) {
-            return Math.round(panTiltMax);
-          }
-
-          return 0;
-        });
+        const focusTypeConditions = {
+          Mirror: fixture.categories.includes(`Scanner`),
+          Barrel: fixture.categories.includes(`Barrel Scanner`),
+          Head: fixture.categories.includes(`Moving Head`) || PanMax > 0 || TiltMax > 0,
+          Fixed: true
+        };
+        const Type = Object.keys(focusTypeConditions).find(focusType => focusTypeConditions[focusType] === true);
 
         return {
-          Type: physical.focusType || `Fixed`,
+          Type,
           PanMax,
           TiltMax
         };
@@ -747,6 +403,36 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
 }
 
 /**
+ * @param {'Pan'|'Tilt'} panOrTilt Whether to return pan max or tilt max.
+ * @param {Array.<CoarseChannel>} channels The channels in which to look for pan/tilt angles, e.g. all mode channels.
+ * @returns {Number} The maximum pan/tilt range in the given channels, i.e. highest angle - lowest angle. If only continous pan/tilt is used, the return value is 9999. Defaults to 0.
+ */
+function getPanTiltMax(panOrTilt, channels) {
+  const capabilities = [];
+  channels.forEach(ch => {
+    if (ch.capabilities) {
+      capabilities.push(...ch.capabilities);
+    }
+  });
+
+  const panTiltCapabilities = capabilities.filter(cap => cap.type === panOrTilt && cap.angle[0].unit === `deg`);
+  const minAngle = Math.min(...panTiltCapabilities.map(cap => Math.min(cap.angle[0].number, cap.angle[1].number)));
+  const maxAngle = Math.max(...panTiltCapabilities.map(cap => Math.max(cap.angle[0].number, cap.angle[1].number)));
+  const panTiltMax = maxAngle - minAngle;
+
+  if (panTiltMax === -Infinity) {
+    const hasContinuousCapability = capabilities.some(cap => cap.type === `${panOrTilt}Continuous`);
+    if (hasContinuousCapability) {
+      return 9999;
+    }
+
+    return 0;
+  }
+
+  return Math.round(panTiltMax);
+}
+
+/**
  * Adds Head tags for all used pixels in the given mode, ordered by XYZ direction (pixel groups by appearence in JSON).
  * @param {XMLElement} xmlMode The Mode tag to which the Head tags should be added
  * @param {Mode} mode The fixture's mode whose pixels should be determined.
@@ -772,8 +458,8 @@ function addHeads(xmlMode, mode) {
 
   /**
    * @param {AbstractChannel} channel A channel from a mode's channel list.
-   * @param {string} pixelKey The pixel to check for.
-   * @returns {boolean} Whether the given channel controls the given pixel key, either directly or as part of a pixel group.
+   * @param {String} pixelKey The pixel to check for.
+   * @returns {Boolean} Whether the given channel controls the given pixel key, either directly or as part of a pixel group.
    */
   function controlsPixelKey(channel, pixelKey) {
     if (channel instanceof SwitchingChannel) {
@@ -795,20 +481,26 @@ function addHeads(xmlMode, mode) {
 /**
  * Determines the QLC+ fixture type out of the fixture's categories.
  * @param {Fixture} fixture The Fixture instance whose QLC+ type has to be determined.
- * @returns {string} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
+ * @returns {String} The first of the fixture's categories that is supported by QLC+, defaults to 'Other'.
  */
 function getFixtureType(fixture) {
-  // see https://github.com/OpenLightingProject/open-fixture-library/issues/581
-  if (fixture.categories.includes(`Pixel Bar`)) {
-    return isBeamBar() ? `LED Bar (Beams)` : `LED Bar (Pixels)`;
-  }
+  const replaceCats = {
+    'Barrel Scanner': `Scanner`,
 
+    // see https://github.com/OpenLightingProject/open-fixture-library/issues/581
+    'Pixel Bar': isBeamBar() ? `LED Bar (Beams)` : `LED Bar (Pixels)`
+  };
   const ignoredCats = [`Blinder`, `Matrix`, `Stand`];
-  return fixture.categories.find(cat => !ignoredCats.includes(cat)) || `Other`;
+
+  return fixture.categories.map(
+    cat => (cat in replaceCats ? replaceCats[cat] : cat)
+  ).find(
+    cat => !ignoredCats.includes(cat)
+  ) || `Other`;
 
 
   /**
-   * @returns {boolean} True if there are individual beams (or it can not be determined), false if the pixels' colors blend into each other.
+   * @returns {Boolean} True if there are individual beams (or it can not be determined), false if the pixels' colors blend into each other.
    */
   function isBeamBar() {
     if (!fixture.physical || !fixture.physical.matrixPixelsSpacing) {
@@ -821,8 +513,8 @@ function getFixtureType(fixture) {
 
 /**
  * Converts a channel's type into a valid QLC+ channel type.
- * @param {string} type Our own OFL channel type.
- * @returns {string} The corresponding QLC+ channel type.
+ * @param {String} type Our own OFL channel type.
+ * @returns {String} The corresponding QLC+ channel type.
  */
 function getChannelType(type) {
   const qlcplusChannelTypes = {

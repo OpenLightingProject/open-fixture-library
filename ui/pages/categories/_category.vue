@@ -5,18 +5,18 @@
     <div class="card">
       <ul :class="[`list`, `fixtures`, `category-${categoryClass}`]">
         <li v-for="fixture in fixtures" :key="fixture.key">
-          <nuxt-link
+          <NuxtLink
             :to="fixture.link"
             :style="{ borderLeftColor: fixture.color }"
             class="manufacturer-color">
             <span class="name">{{ fixture.name }}</span>
-            <app-svg
+            <OflSvg
               v-for="cat in fixture.categories"
               :key="cat"
               :name="cat"
               :class="{ inactive: cat !== categoryName, right: true }"
-              type="category" />
-          </nuxt-link>
+              type="fixture" />
+          </NuxtLink>
         </li>
       </ul>
     </div>
@@ -24,15 +24,10 @@
 </template>
 
 <script>
-import svg from '~/components/svg.vue';
-
-import register from '~~/fixtures/register.json';
-import manufacturers from '~~/fixtures/manufacturers.json';
+import register from '../../../fixtures/register.json';
+import manufacturers from '../../../fixtures/manufacturers.json';
 
 export default {
-  components: {
-    'app-svg': svg
-  },
   validate({ params }) {
     return decodeURIComponent(params.category) in register.categories;
   },
@@ -58,16 +53,24 @@ export default {
     };
   },
   head() {
+    const title = this.categoryName;
+
     return {
-      title: this.categoryName
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title
+        }
+      ]
     };
   }
 };
 
 /**
- * @param {string} manKey The manufacturer key.
- * @param {string} fixKey The fixture key.
- * @returns {string} The manufacturer and fixture names, separated by a space.
+ * @param {String} manKey The manufacturer key.
+ * @param {String} fixKey The fixture key.
+ * @returns {String} The manufacturer and fixture names, separated by a space.
  */
 function getFixtureName(manKey, fixKey) {
   const manufacturerName = manufacturers[manKey].name;

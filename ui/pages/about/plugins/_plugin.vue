@@ -17,10 +17,11 @@
       </li>
     </ul>
 
-    <app-help-wanted-message
+    <HelpWantedMessage
       v-if="`helpWanted` in pluginData"
       type="plugin"
-      :context="pluginData" />
+      :context="pluginData"
+      @help-wanted-clicked="openHelpWantedDialog" />
 
     <div v-if="`fixtureUsage` in pluginData" class="fixture-usage">
       <h2 id="fixture-usage">Fixture usage</h2>
@@ -54,7 +55,9 @@
       <div v-html="pluginData.additionalInfo.join(`\n`)" />
     </div>
 
-    <p style="margin-top: 3rem;"><nuxt-link to="/about/plugins">Back to plugin overview</nuxt-link></p>
+    <p style="margin-top: 3rem;"><NuxtLink to="/about/plugins">Back to plugin overview</NuxtLink></p>
+
+    <HelpWantedDialog v-model="helpWantedContext" type="plugin" />
   </div>
 </template>
 
@@ -84,11 +87,11 @@
 
   & /deep/ table {
     margin: 1rem 0;
-    border: 1px solid $divider-dark;
+    border: 1px solid theme-color(divider);
     border-collapse: collapse;
 
     th, td {
-      border: 1px solid $divider-dark;
+      border: 1px solid theme-color(divider);
       padding: 1px 1ex;
     }
   }
@@ -97,13 +100,15 @@
 </style>
 
 <script>
-import plugins from '~~/plugins/plugins.json';
+import plugins from '../../../../plugins/plugins.json';
 
-import helpWantedMessage from '~/components/help-wanted-message.vue';
+import HelpWantedDialog from '../../../components/HelpWantedDialog.vue';
+import HelpWantedMessage from '../../../components/HelpWantedMessage.vue';
 
 export default {
   components: {
-    'app-help-wanted-message': helpWantedMessage
+    HelpWantedDialog,
+    HelpWantedMessage
   },
   validate({ params }) {
     return decodeURIComponent(params.plugin) in plugins.data;
@@ -134,10 +139,28 @@ export default {
       }
     };
   },
-  head() {
+  data() {
     return {
-      title: `${this.pluginData.name} Plugin`
+      helpWantedContext: null
     };
+  },
+  head() {
+    const title = `${this.pluginData.name} Plugin`;
+
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title
+        }
+      ]
+    };
+  },
+  methods: {
+    openHelpWantedDialog(event) {
+      this.helpWantedContext = event.context;
+    }
   }
 };
 </script>

@@ -25,11 +25,6 @@
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "Green laser 532nm"
-    },
-    "focus": {
-      "type": "Fixed",
-      "panMax": 31,
-      "tiltMax": 31
     }
   },
   "availableChannels": {
@@ -386,22 +381,22 @@
         }
       ]
     },
-    "Pan": {
+    "Horizontal Position": {
       "defaultValue": "50%",
       "precedence": "LTP",
       "capability": {
-        "type": "Pan",
-        "angleStart": "-15.5deg",
-        "angleEnd": "15.5deg"
+        "type": "BeamPosition",
+        "horizontalAngleStart": "-15.5deg",
+        "horizontalAngleEnd": "15.5deg"
       }
     },
-    "Tilt": {
+    "Vertical Position": {
       "defaultValue": "50%",
       "precedence": "LTP",
       "capability": {
-        "type": "Tilt",
-        "angleStart": "-15.5deg",
-        "angleEnd": "15.5deg"
+        "type": "BeamPosition",
+        "verticalAngleStart": "-15.5deg",
+        "verticalAngleEnd": "15.5deg"
       }
     },
     "Effect Speed": {
@@ -428,8 +423,8 @@
       "channels": [
         "Mode",
         "Programs",
-        "Pan",
-        "Tilt",
+        "Horizontal Position",
+        "Vertical Position",
         "Effect Speed",
         "Rotation Speed"
       ]

@@ -35,6 +35,8 @@
       "EffectDuration",
       "EffectParameter",
       "SoundSensitivity",
+      "BeamAngle",
+      "BeamPosition",
       "Focus",
       "Zoom",
       "Iris",
@@ -49,7 +51,6 @@
       "Fog",
       "FogOutput",
       "FogType",
-      "BeamAngle",
       "Rotation",
       "Speed",
       "Time",
@@ -88,7 +89,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["NoFunction"] }
+          "type": { "const": "NoFunction" }
         }
       },
       "then": {
@@ -106,7 +107,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["ShutterStrobe"] }
+          "type": { "const": "ShutterStrobe" }
         }
       },
       "then": {
@@ -156,7 +157,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["StrobeSpeed"] }
+          "type": { "const": "StrobeSpeed" }
         }
       },
       "then": {
@@ -185,7 +186,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["StrobeDuration"] }
+          "type": { "const": "StrobeDuration" }
         }
       },
       "then": {
@@ -214,7 +215,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["Intensity"] }
+          "type": { "const": "Intensity" }
         }
       },
       "then": {
@@ -240,7 +241,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["ColorIntensity"] }
+          "type": { "const": "ColorIntensity" }
         }
       },
       "then": {
@@ -284,7 +285,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["ColorPreset"] }
+          "type": { "const": "ColorPreset" }
         }
       },
       "then": {
@@ -332,7 +333,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["ColorTemperature"] }
+          "type": { "const": "ColorTemperature" }
         }
       },
       "then": {
@@ -361,7 +362,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["Pan"] }
+          "type": { "const": "Pan" }
         }
       },
       "then": {
@@ -390,7 +391,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["PanContinuous"] }
+          "type": { "const": "PanContinuous" }
         }
       },
       "then": {
@@ -419,7 +420,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["Tilt"] }
+          "type": { "const": "Tilt" }
         }
       },
       "then": {
@@ -448,7 +449,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["TiltContinuous"] }
+          "type": { "const": "TiltContinuous" }
         }
       },
       "then": {
@@ -477,7 +478,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["PanTiltSpeed"] }
+          "type": { "const": "PanTiltSpeed" }
         }
       },
       "then": {
@@ -513,7 +514,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["WheelSlot"] }
+          "type": { "const": "WheelSlot" }
         }
       },
       "then": {
@@ -543,7 +544,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["WheelShake"] }
+          "type": { "const": "WheelShake" }
         }
       },
       "then": {
@@ -618,7 +619,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["WheelSlotRotation"] }
+          "type": { "const": "WheelSlotRotation" }
         }
       },
       "then": {
@@ -690,7 +691,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["WheelRotation"] }
+          "type": { "const": "WheelRotation" }
         }
       },
       "then": {
@@ -737,7 +738,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["Effect"] }
+          "type": { "const": "Effect" }
         }
       },
       "then": {
@@ -792,7 +793,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["EffectSpeed"] }
+          "type": { "const": "EffectSpeed" }
         }
       },
       "then": {
@@ -821,7 +822,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["EffectDuration"] }
+          "type": { "const": "EffectDuration" }
         }
       },
       "then": {
@@ -850,7 +851,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["EffectParameter"] }
+          "type": { "const": "EffectParameter" }
         }
       },
       "then": {
@@ -879,7 +880,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["SoundSensitivity"] }
+          "type": { "const": "SoundSensitivity" }
         }
       },
       "then": {
@@ -908,36 +909,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["Focus"] }
-        }
-      },
-      "then": {
-        "properties": {
-          "dmxRange": {},
-          "type": {},
-          "distance": { "$ref": "definitions.json#/entities/distance" },
-          "distanceStart": { "$ref": "definitions.json#/entities/distance" },
-          "distanceEnd": { "$ref": "definitions.json#/entities/distance" },
-          "comment": {},
-          "helpWanted": {},
-          "menuClick": {},
-          "switchChannels": {}
-        },
-        "oneOf": [
-          { "required": ["distance"] },
-          { "required": ["distanceStart"] }
-        ],
-        "dependencies": {
-          "distanceStart": ["distanceEnd"],
-          "distanceEnd": ["distanceStart"]
-        },
-        "additionalProperties": false
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "type": { "enum": ["Zoom"] }
+          "type": { "const": "BeamAngle" }
         }
       },
       "then": {
@@ -966,7 +938,105 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["Iris"] }
+          "type": { "const": "BeamPosition" }
+        }
+      },
+      "then": {
+        "properties": {
+          "dmxRange": {},
+          "type": {},
+          "horizontalAngle": { "$ref": "definitions.json#/entities/horizontalAngle" },
+          "horizontalAngleStart": { "$ref": "definitions.json#/entities/horizontalAngle" },
+          "horizontalAngleEnd": { "$ref": "definitions.json#/entities/horizontalAngle" },
+          "verticalAngle": { "$ref": "definitions.json#/entities/verticalAngle" },
+          "verticalAngleStart": { "$ref": "definitions.json#/entities/verticalAngle" },
+          "verticalAngleEnd": { "$ref": "definitions.json#/entities/verticalAngle" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
+        },
+        "anyOf": [
+          { "oneOf": [
+            { "required": ["horizontalAngle"] },
+            { "required": ["horizontalAngleStart"] }
+          ] },
+          { "oneOf": [
+            { "required": ["verticalAngle"] },
+            { "required": ["verticalAngleStart"] }
+          ] }
+        ],
+        "dependencies": {
+          "horizontalAngleStart": ["horizontalAngleEnd"],
+          "horizontalAngleEnd": ["horizontalAngleStart"],
+          "verticalAngleStart": ["verticalAngleEnd"],
+          "verticalAngleEnd": ["verticalAngleStart"]
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": { "const": "Focus" }
+        }
+      },
+      "then": {
+        "properties": {
+          "dmxRange": {},
+          "type": {},
+          "distance": { "$ref": "definitions.json#/entities/distance" },
+          "distanceStart": { "$ref": "definitions.json#/entities/distance" },
+          "distanceEnd": { "$ref": "definitions.json#/entities/distance" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
+        },
+        "oneOf": [
+          { "required": ["distance"] },
+          { "required": ["distanceStart"] }
+        ],
+        "dependencies": {
+          "distanceStart": ["distanceEnd"],
+          "distanceEnd": ["distanceStart"]
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": { "const": "Zoom" }
+        }
+      },
+      "then": {
+        "properties": {
+          "dmxRange": {},
+          "type": {},
+          "angle": { "$ref": "definitions.json#/entities/beamAngle" },
+          "angleStart": { "$ref": "definitions.json#/entities/beamAngle" },
+          "angleEnd": { "$ref": "definitions.json#/entities/beamAngle" },
+          "comment": {},
+          "helpWanted": {},
+          "menuClick": {},
+          "switchChannels": {}
+        },
+        "oneOf": [
+          { "required": ["angle"] },
+          { "required": ["angleStart"] }
+        ],
+        "dependencies": {
+          "angleStart": ["angleEnd"],
+          "angleEnd": ["angleStart"]
+        },
+        "additionalProperties": false
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "type": { "const": "Iris" }
         }
       },
       "then": {
@@ -995,7 +1065,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["IrisEffect"] }
+          "type": { "const": "IrisEffect" }
         }
       },
       "then": {
@@ -1023,7 +1093,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["Frost"] }
+          "type": { "const": "Frost" }
         }
       },
       "then": {
@@ -1052,7 +1122,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["FrostEffect"] }
+          "type": { "const": "FrostEffect" }
         }
       },
       "then": {
@@ -1080,7 +1150,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["Prism"] }
+          "type": { "const": "Prism" }
         }
       },
       "then": {
@@ -1120,7 +1190,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["PrismRotation"] }
+          "type": { "const": "PrismRotation" }
         }
       },
       "then": {
@@ -1156,7 +1226,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["BladeInsertion"] }
+          "type": { "const": "BladeInsertion" }
         }
       },
       "then": {
@@ -1190,7 +1260,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["BladeRotation"] }
+          "type": { "const": "BladeRotation" }
         }
       },
       "then": {
@@ -1224,7 +1294,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["BladeSystemRotation"] }
+          "type": { "const": "BladeSystemRotation" }
         }
       },
       "then": {
@@ -1253,7 +1323,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["Fog"] }
+          "type": { "const": "Fog" }
         }
       },
       "then": {
@@ -1280,7 +1350,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["FogOutput"] }
+          "type": { "const": "FogOutput" }
         }
       },
       "then": {
@@ -1309,7 +1379,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["FogType"] }
+          "type": { "const": "FogType" }
         }
       },
       "then": {
@@ -1329,36 +1399,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["BeamAngle"] }
-        }
-      },
-      "then": {
-        "properties": {
-          "dmxRange": {},
-          "type": {},
-          "angle": { "$ref": "definitions.json#/entities/beamAngle" },
-          "angleStart": { "$ref": "definitions.json#/entities/beamAngle" },
-          "angleEnd": { "$ref": "definitions.json#/entities/beamAngle" },
-          "comment": {},
-          "helpWanted": {},
-          "menuClick": {},
-          "switchChannels": {}
-        },
-        "oneOf": [
-          { "required": ["angle"] },
-          { "required": ["angleStart"] }
-        ],
-        "dependencies": {
-          "angleStart": ["angleEnd"],
-          "angleEnd": ["angleStart"]
-        },
-        "additionalProperties": false
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "type": { "enum": ["Rotation"] }
+          "type": { "const": "Rotation" }
         }
       },
       "then": {
@@ -1394,7 +1435,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["Speed"] }
+          "type": { "const": "Speed" }
         }
       },
       "then": {
@@ -1423,7 +1464,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["Time"] }
+          "type": { "const": "Time" }
         }
       },
       "then": {
@@ -1452,7 +1493,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["Maintenance"] }
+          "type": { "const": "Maintenance" }
         }
       },
       "then": {
@@ -1479,7 +1520,7 @@
     {
       "if": {
         "properties": {
-          "type": { "enum": ["Generic"] }
+          "type": { "const": "Generic" }
         }
       },
       "then": {

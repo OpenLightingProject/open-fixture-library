@@ -6,12 +6,16 @@
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2017-12-21",
-    "lastModifyDate": "2018-08-09"
+    "lastModifyDate": "2019-05-17"
   },
   "comment": "Note that the manual contains some mistakes that are corrected in this definition.",
   "links": {
-    "manual": ["http://www.partirentournee.com/sites/default/files/matos/Future%20Light/asservis/Scan%20SC%20series%20240%20to%20980/SC-250.pdf"],
-    "video": ["https://www.youtube.com/watch?v=OkrkEscJLDI"]
+    "manual": [
+      "https://www.manualslib.de/manual/317298/Future-Light-Sc-250.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=OkrkEscJLDI"
+    ]
   },
   "physical": {
     "dimensions": [280, 160, 470],
@@ -23,9 +27,6 @@
     },
     "lens": {
       "degreesMinMax": [19, 19]
-    },
-    "focus": {
-      "type": "Mirror"
     }
   },
   "wheels": {
@@ -112,6 +113,7 @@
       ]
     },
     "Gobo Wheel": {
+      "direction": "CCW",
       "slots": [
         {
           "type": "Open"

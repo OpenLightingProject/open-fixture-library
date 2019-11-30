@@ -4,11 +4,11 @@
     <h1 v-else>Search</h1>
 
     <form class="filter" action="/search" @submit.prevent="onSubmit">
-      <app-labeled-input label="Search query">
+      <LabeledInput label="Search query">
         <input v-model="searchQuery" type="search" name="q">
-      </app-labeled-input>
+      </LabeledInput>
 
-      <app-conditional-details :open="detailsInitiallyOpen">
+      <ConditionalDetails :open="detailsInitiallyOpen">
         <template slot="summary">Filter results</template>
 
         <select v-model="manufacturersQuery" name="manufacturers" multiple>
@@ -34,7 +34,7 @@
             :selected="categoriesQuery.includes(cat)"
             :value="cat">{{ cat }}</option>
         </select>
-      </app-conditional-details>
+      </ConditionalDetails>
 
       <button :disabled="searchQuery === `` && isBrowser" type="submit" class="primary">Search</button>
     </form>
@@ -53,18 +53,18 @@
           <li
             v-for="fixture in fixtureResults"
             :key="fixture.key">
-            <nuxt-link
+            <NuxtLink
               :to="`/${fixture.key}`"
               :style="{ borderLeftColor: fixture.color }"
               class="manufacturer-color">
               <span class="name">{{ fixture.name }}</span>
-            </nuxt-link>
+            </NuxtLink>
           </li>
         </ul>
       </div>
 
       <div v-else class="card">
-        Your search for <em>{{ searchFor }}</em> did not match any fixtures. Try using another query or browse by <nuxt-link to="/manufacturers">manufacturer</nuxt-link> or <nuxt-link to="/categories">category</nuxt-link>.
+        Your search for <em>{{ searchFor }}</em> did not match any fixtures. Try using another query or browse by <NuxtLink to="/manufacturers">manufacturer</NuxtLink> or <NuxtLink to="/categories">category</NuxtLink>.
       </div>
     </div>
   </div>
@@ -85,20 +85,28 @@
 </style>
 
 <script>
-import register from '~~/fixtures/register.json';
-import manufacturers from '~~/fixtures/manufacturers.json';
+import register from '../../fixtures/register.json';
+import manufacturers from '../../fixtures/manufacturers.json';
 
-import conditionalDetailsVue from '~/components/conditional-details.vue';
-import labeledInputVue from '~/components/labeled-input.vue';
+import ConditionalDetails from '../components/ConditionalDetails.vue';
+import LabeledInput from '../components/LabeledInput.vue';
 
 export default {
   components: {
-    'app-conditional-details': conditionalDetailsVue,
-    'app-labeled-input': labeledInputVue
+    ConditionalDetails,
+    LabeledInput
   },
   head() {
+    const title = this.searchFor ? `Search "${this.searchFor}"` : `Search`;
+
     return {
-      title: this.searchFor ? `Search "${this.searchFor}"` : `Search`
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title
+        }
+      ]
     };
   },
   async asyncData({ query, app }) {
@@ -183,8 +191,8 @@ export default {
 };
 
 /**
- * @param {object} query The raw query returned by Vue Router
- * @returns {object} Object with properties "search" (string), "manufacturers" and "categories" (arrays of strings).
+ * @param {Object} query The raw query returned by Vue Router
+ * @returns {Object} Object with properties "search" (string), "manufacturers" and "categories" (arrays of strings).
  */
 function getSanitizedQuery(query) {
   const searchQuery = (query.q || ``).trim();
@@ -208,8 +216,8 @@ function getSanitizedQuery(query) {
 
 /**
  * Request search results from the backend.
- * @param {object} axios The axios instance to use.
- * @param {object} sanitizedQuery A query object like returned from {@link getSanitizedQuery}.
+ * @param {Object} axios The axios instance to use.
+ * @param {Object} sanitizedQuery A query object like returned from {@link getSanitizedQuery}.
  * @returns {Promise} The request promise.
  */
 function getSearchResults(axios, sanitizedQuery) {

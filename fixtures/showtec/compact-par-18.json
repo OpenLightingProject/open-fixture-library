@@ -1,0 +1,503 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Compact Par 18",
+  "shortName": "ShowtecCompactPar18",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["aHa Friedberg"],
+    "createDate": "2019-08-26",
+    "lastModifyDate": "2019-08-26"
+  },
+  "comment": "Ordercode 42592",
+  "links": {
+    "manual": [
+      "https://assets.highlite.com/attachments/MANUAL/42592_MANUAL_GB_V1.pdf"
+    ],
+    "productPage": [
+      "https://www.highlite.com/en/42592-compact-par-18-mkii.html"
+    ],
+    "video": [
+      "https://vimeo.com/202769399"
+    ]
+  },
+  "physical": {
+    "dimensions": [250, 290, 96],
+    "weight": 2.84,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "18× 3W RGB LEDs",
+      "lumens": 9600
+    },
+    "lens": {
+      "degreesMinMax": [28, 28]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "RGB Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "ColorPreset",
+          "comment": "RGB macro 1",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [9, 17],
+          "type": "ColorPreset",
+          "comment": "RGB macro 2",
+          "colors": ["#ff3200"]
+        },
+        {
+          "dmxRange": [18, 26],
+          "type": "ColorPreset",
+          "comment": "RGB macro 3",
+          "colors": ["#ff9600"]
+        },
+        {
+          "dmxRange": [27, 35],
+          "type": "ColorPreset",
+          "comment": "RGB macro 4",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [36, 44],
+          "type": "ColorPreset",
+          "comment": "RGB macro 5",
+          "colors": ["#c8ff00"]
+        },
+        {
+          "dmxRange": [45, 53],
+          "type": "ColorPreset",
+          "comment": "RGB macro 6",
+          "colors": ["#64ff00"]
+        },
+        {
+          "dmxRange": [54, 62],
+          "type": "ColorPreset",
+          "comment": "RGB macro 7",
+          "colors": ["#28ff00"]
+        },
+        {
+          "dmxRange": [63, 71],
+          "type": "ColorPreset",
+          "comment": "RGB macro 8",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [72, 80],
+          "type": "ColorPreset",
+          "comment": "RGB macro 9",
+          "colors": ["#00ff32"]
+        },
+        {
+          "dmxRange": [81, 89],
+          "type": "ColorPreset",
+          "comment": "RGB macro 10",
+          "colors": ["#00ff96"]
+        },
+        {
+          "dmxRange": [90, 98],
+          "type": "ColorPreset",
+          "comment": "RGB macro 11",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [99, 107],
+          "type": "ColorPreset",
+          "comment": "RGB macro 12",
+          "colors": ["#0096ff"]
+        },
+        {
+          "dmxRange": [108, 116],
+          "type": "ColorPreset",
+          "comment": "RGB macro 13",
+          "colors": ["#0032ff"]
+        },
+        {
+          "dmxRange": [117, 125],
+          "type": "ColorPreset",
+          "comment": "RGB macro 14",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [126, 134],
+          "type": "ColorPreset",
+          "comment": "RGB macro 15",
+          "colors": ["#3200ff"]
+        },
+        {
+          "dmxRange": [135, 143],
+          "type": "ColorPreset",
+          "comment": "RGB macro 16",
+          "colors": ["#9600fa"]
+        },
+        {
+          "dmxRange": [144, 152],
+          "type": "ColorPreset",
+          "comment": "RGB macro 17",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [153, 161],
+          "type": "ColorPreset",
+          "comment": "RGB macro 18",
+          "colors": ["#dc0032"]
+        },
+        {
+          "dmxRange": [162, 170],
+          "type": "ColorPreset",
+          "comment": "RGB macro 19",
+          "colors": ["#963264"]
+        },
+        {
+          "dmxRange": [171, 179],
+          "type": "ColorPreset",
+          "comment": "RGB macro 20",
+          "colors": ["#32b4dc"]
+        },
+        {
+          "dmxRange": [180, 188],
+          "type": "ColorPreset",
+          "comment": "RGB macro 21",
+          "colors": ["#32dc64"]
+        },
+        {
+          "dmxRange": [189, 197],
+          "type": "ColorPreset",
+          "comment": "RGB macro 22",
+          "colors": ["#96dc00"]
+        },
+        {
+          "dmxRange": [198, 206],
+          "type": "ColorPreset",
+          "comment": "RGB macro 23",
+          "colors": ["#9600dc"]
+        },
+        {
+          "dmxRange": [207, 215],
+          "type": "ColorPreset",
+          "comment": "RGB macro 24",
+          "colors": ["#00b4dc"]
+        },
+        {
+          "dmxRange": [216, 224],
+          "type": "ColorPreset",
+          "comment": "RGB macro 25",
+          "colors": ["#00dc32"]
+        },
+        {
+          "dmxRange": [225, 233],
+          "type": "ColorPreset",
+          "comment": "RGB macro 26",
+          "colors": ["#dc6432"]
+        },
+        {
+          "dmxRange": [234, 242],
+          "type": "ColorPreset",
+          "comment": "RGB macro 27",
+          "colors": ["#dcc864"]
+        },
+        {
+          "dmxRange": [243, 251],
+          "type": "ColorPreset",
+          "comment": "RGB macro 28",
+          "colors": ["#ffc896"]
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ColorPreset",
+          "comment": "RGB macro 29",
+          "colors": ["#ffffff"]
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Macros": {
+      "highlightValue": 252,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 22],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [23, 45],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [46, 68],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [69, 91],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [92, 114],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [115, 137],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "dmxRange": [138, 160],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ddaaff"]
+        },
+        {
+          "dmxRange": [161, 183],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [184, 206],
+          "type": "ColorPreset",
+          "comment": "Dark blue",
+          "colors": ["#0000aa"]
+        },
+        {
+          "dmxRange": [207, 229],
+          "type": "ColorPreset",
+          "comment": "Light green",
+          "colors": ["#aaffaa"]
+        },
+        {
+          "dmxRange": [230, 252],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "ColorPreset",
+          "comment": "Warm white",
+          "colors": ["#ffeebb"]
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Color Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Red / RGB Macros / Program Speed / Sound Sensitivity": "Red"
+          }
+        },
+        {
+          "dmxRange": [1, 24],
+          "type": "Effect",
+          "effectName": "29 static colors",
+          "switchChannels": {
+            "Red / RGB Macros / Program Speed / Sound Sensitivity": "RGB Macros"
+          }
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "7-color",
+          "switchChannels": {
+            "Red / RGB Macros / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "3-color",
+          "switchChannels": {
+            "Red / RGB Macros / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "7-color",
+          "switchChannels": {
+            "Red / RGB Macros / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "3-color",
+          "switchChannels": {
+            "Red / RGB Macros / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "Effect",
+          "effectName": "Fantasy change 1",
+          "switchChannels": {
+            "Red / RGB Macros / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "Effect",
+          "effectName": "Fantasy change 2",
+          "switchChannels": {
+            "Red / RGB Macros / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "Effect",
+          "effectName": "Red gradual change",
+          "switchChannels": {
+            "Red / RGB Macros / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "Effect",
+          "effectName": "Green gradual change",
+          "switchChannels": {
+            "Red / RGB Macros / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [225, 249],
+          "type": "Effect",
+          "effectName": "Blue gradual change",
+          "switchChannels": {
+            "Red / RGB Macros / Program Speed / Sound Sensitivity": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true,
+          "switchChannels": {
+            "Red / RGB Macros / Program Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1Channel",
+      "shortName": "1ch",
+      "channels": [
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "3Channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "6Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red / RGB Macros / Program Speed / Sound Sensitivity",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Color Programs"
+      ]
+    }
+  ]
+}

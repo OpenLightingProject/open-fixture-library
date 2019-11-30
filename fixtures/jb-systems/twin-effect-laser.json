@@ -21,10 +21,7 @@
     "dimensions": [240, 110, 215],
     "weight": 2.6,
     "power": 28,
-    "DMXconnector": "3-pin",
-    "focus": {
-      "type": "Fixed"
-    }
+    "DMXconnector": "3-pin"
   },
   "availableChannels": {
     "laser-mode-1ch": {
@@ -423,10 +420,9 @@
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "Rotation",
-          "angleStart": "0%",
-          "angleEnd": "100%",
-          "comment": "128 different fixed positions on X-axis"
+          "type": "BeamPosition",
+          "horizontalAngleStart": "0%",
+          "horizontalAngleEnd": "100%"
         },
         {
           "dmxRange": [128, 191],
@@ -446,10 +442,9 @@
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "Rotation",
-          "angleStart": "0%",
-          "angleEnd": "100%",
-          "comment": "128 different fixed positions on Y-axis"
+          "type": "BeamPosition",
+          "verticalAngleStart": "0%",
+          "verticalAngleEnd": "100%"
         },
         {
           "dmxRange": [128, 191],
@@ -469,18 +464,19 @@
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "Effect",
-          "effectName": "0º to 359º fixed positions around X axis"
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "359deg"
         },
         {
           "dmxRange": [128, 191],
-          "type": "Effect",
-          "effectName": "CW rolling around X axis"
+          "type": "Rotation",
+          "speed": "fast CW"
         },
         {
           "dmxRange": [192, 255],
-          "type": "Effect",
-          "effectName": "CCW rolling around X axis"
+          "type": "Rotation",
+          "speed": "fast CCW"
         }
       ]
     },
@@ -488,18 +484,19 @@
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "Effect",
-          "effectName": "0º to 359º fixed positions around Y axis"
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "359deg"
         },
         {
           "dmxRange": [128, 191],
-          "type": "Effect",
-          "effectName": "CW rolling around Y axis"
+          "type": "Rotation",
+          "speed": "fast CW"
         },
         {
           "dmxRange": [192, 255],
-          "type": "Effect",
-          "effectName": "CCW  rolling around Y axis"
+          "type": "Rotation",
+          "speed": "fast CCW"
         }
       ]
     },
@@ -507,18 +504,19 @@
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "Effect",
-          "effectName": "0º to 359º fixed positions around Z axis"
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "359deg"
         },
         {
           "dmxRange": [128, 191],
-          "type": "Effect",
-          "effectName": "CW rolling around Z axis"
+          "type": "Rotation",
+          "speed": "fast CW"
         },
         {
           "dmxRange": [192, 255],
-          "type": "Effect",
-          "effectName": "CCW rolling around Z axis"
+          "type": "Rotation",
+          "speed": "fast CCW"
         }
       ]
     },
@@ -708,7 +706,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 127],
-          "type": "BeamAngle",
+          "type": "Zoom",
           "angleStart": "wide",
           "angleEnd": "narrow",
           "comment": "Pattern size"

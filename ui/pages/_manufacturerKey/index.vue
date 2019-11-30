@@ -10,7 +10,7 @@
         v-if="`website` in manufacturer"
         :href="manufacturer.website"
         class="card slim blue dark">
-        <app-svg name="web" class="left" />
+        <OflSvg name="web" class="left" />
         <span>Manufacturer website</span>
       </a>
       <a
@@ -18,7 +18,7 @@
         :href="`http://rdm.openlighting.org/manufacturer/display?manufacturer=${manufacturer.rdmId}`"
         rel="nofollow"
         class="card slim">
-        <app-svg name="ola" class="left" />
+        <OflSvg name="ola" class="left" />
         <span>Open Lighting RDM database</span>
       </a>
     </div>
@@ -28,18 +28,18 @@
     <div class="card">
       <ul class="list fixtures">
         <li v-for="fixture in fixtures" :key="fixture.key">
-          <nuxt-link
+          <NuxtLink
             :to="fixture.link"
             :style="{ borderLeftColor: manufacturer.color }"
             class="manufacturer-color">
             <span class="name">{{ fixture.name }}</span>
-            <app-svg
+            <OflSvg
               v-for="cat in fixture.categories"
               :key="cat"
               :name="cat"
-              type="category"
+              type="fixture"
               class="right inactive" />
-          </nuxt-link>
+          </NuxtLink>
         </li>
       </ul>
     </div>
@@ -47,16 +47,11 @@
 </template>
 
 <script>
-import svg from '~/components/svg.vue';
-
-import packageJson from '~~/package.json';
-import register from '~~/fixtures/register.json';
-import manufacturers from '~~/fixtures/manufacturers.json';
+import packageJson from '../../../package.json';
+import register from '../../../fixtures/register.json';
+import manufacturers from '../../../fixtures/manufacturers.json';
 
 export default {
-  components: {
-    'app-svg': svg
-  },
   validate({ params }) {
     return params.manufacturerKey in manufacturers && params.manufacturerKey !== `$schema`;
   },
@@ -106,8 +101,16 @@ export default {
     };
   },
   head() {
+    const title = this.manufacturer.name;
+
     return {
-      title: this.manufacturer.name
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title
+        }
+      ]
     };
   }
 };

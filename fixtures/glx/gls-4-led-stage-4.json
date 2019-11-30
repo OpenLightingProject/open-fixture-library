@@ -1,0 +1,196 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "GLS-4 LED Stage 4",
+  "shortName": "GLX-Stage4",
+  "categories": ["Stand", "Color Changer"],
+  "meta": {
+    "authors": ["Andrea Beppiani"],
+    "createDate": "2019-07-11",
+    "lastModifyDate": "2019-07-11"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/1044527/Glx-Gls-4-Led-Stage-4.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=842UZEEFHNU"
+    ]
+  },
+  "physical": {
+    "dimensions": [1110, 295, 55],
+    "weight": 8,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["Spot 1", "Spot 2", "Spot 3", "Spot 4"]
+      ]
+    ]
+  },
+  "availableChannels": {
+    "Auto Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "Effect",
+          "effectName": "Program 1"
+        },
+        {
+          "dmxRange": [30, 49],
+          "type": "Effect",
+          "effectName": "Program 2"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Effect",
+          "effectName": "Program 3"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [70, 89],
+          "type": "Effect",
+          "effectName": "Program 4"
+        },
+        {
+          "dmxRange": [90, 109],
+          "type": "Effect",
+          "effectName": "Program 5"
+        },
+        {
+          "dmxRange": [110, 129],
+          "type": "Effect",
+          "effectName": "Program 6"
+        },
+        {
+          "dmxRange": [130, 149],
+          "type": "Effect",
+          "effectName": "Program 7"
+        },
+        {
+          "dmxRange": [150, 169],
+          "type": "Effect",
+          "effectName": "Program 8"
+        },
+        {
+          "dmxRange": [170, 189],
+          "type": "Effect",
+          "effectName": "Program 9"
+        },
+        {
+          "dmxRange": [190, 209],
+          "type": "Effect",
+          "effectName": "Program 10"
+        },
+        {
+          "dmxRange": [210, 229],
+          "type": "Effect",
+          "effectName": "Program 11"
+        },
+        {
+          "dmxRange": [230, 249],
+          "type": "Effect",
+          "effectName": "Auto Mode: Internal Programs"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Sound controlled Mode",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "$pixelKey Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "$pixelKey Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "$pixelKey Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "15-channel",
+      "shortName": "15ch",
+      "channels": [
+        "Auto Programs",
+        "Dimmer",
+        "Strobe",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "$pixelKey Red",
+            "$pixelKey Green",
+            "$pixelKey Blue"
+          ]
+        }
+      ]
+    }
+  ]
+}

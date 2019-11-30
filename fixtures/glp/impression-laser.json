@@ -20,11 +20,6 @@
     "DMXconnector": "3-pin",
     "lens": {
       "degreesMinMax": [40, 40]
-    },
-    "focus": {
-      "type": "Head",
-      "panMax": 660,
-      "tiltMax": 300
     }
   },
   "availableChannels": {
@@ -428,8 +423,7 @@
       "capability": {
         "type": "BeamAngle",
         "angleStart": "0deg",
-        "angleEnd": "40deg",
-        "helpWanted": "Is this the correct direction?"
+        "angleEnd": "40deg"
       }
     },
     "Y Size": {
@@ -437,8 +431,7 @@
       "capability": {
         "type": "BeamAngle",
         "angleStart": "0deg",
-        "angleEnd": "40deg",
-        "helpWanted": "Is this the correct direction?"
+        "angleEnd": "40deg"
       }
     },
     "Rotation": {
@@ -451,17 +444,17 @@
     "X Position": {
       "defaultValue": 128,
       "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "40deg"
+        "type": "BeamPosition",
+        "horizontalAngleStart": "0deg",
+        "horizontalAngleEnd": "40deg"
       }
     },
     "Y Position": {
       "defaultValue": 128,
       "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "40deg"
+        "type": "BeamPosition",
+        "verticalAngleStart": "0deg",
+        "verticalAngleEnd": "40deg"
       }
     },
     "Visible Points": {

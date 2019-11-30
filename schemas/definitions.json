@@ -28,7 +28,8 @@
   },
   "urlString": {
     "type": "string",
-    "pattern": "^(ftp|http|https)://[^ \"]+$"
+    "pattern": "^(ftp|http|https)://[^ \"]+$",
+    "format": "uri"
   },
   "urlArray": {
     "type": "array",
@@ -38,7 +39,8 @@
   },
   "isoDateString": {
     "type": "string",
-    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+    "format": "date"
   },
   "colorString": {
     "type": "string",
@@ -194,6 +196,20 @@
         { "$ref": "#/units/degrees" },
         { "$ref": "#/units/percent" },
         { "enum": ["closed", "narrow", "wide"] }
+      ]
+    },
+    "horizontalAngle": {
+      "oneOf": [
+        { "$ref": "#/units/degrees" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["left", "center", "right"] }
+      ]
+    },
+    "verticalAngle": {
+      "oneOf": [
+        { "$ref": "#/units/degrees" },
+        { "$ref": "#/units/percent" },
+        { "enum": ["top", "center", "bottom"] }
       ]
     },
     "swingAngle": {

@@ -1,34 +1,43 @@
 const createIssue = require(`../../lib/create-github-issue.js`);
 const { fixtureFromRepository } = require(`../../lib/model.js`);
 
-const GITHUB_LABELS = [`component-fixture`, `via-editor`];
-
 /**
  * Takes the input from the client side script and creates an issue with the given feedback.
- * @param {object} request Passed from Express.
- * @param {object} response Passed from Express.
+ * @param {Object} request Passed from Express.
+ * @param {Object} response Passed from Express.
  */
 module.exports = async function createFeedbackIssue(request, response) {
   const {
-    manKey,
-    fixKey,
+    type,
+    context,
     location,
     helpWanted,
     message,
     githubUsername
   } = request.body;
 
-  const title = `Feedback for fixture '${manKey}/${fixKey}'`;
+  let title;
+  const issueContentData = {};
+  const labels = [`via-editor`];
 
-  const fixture = fixtureFromRepository(manKey, fixKey);
+  if (type === `plugin`) {
+    title = `Feedback for plugin '${context}'`;
+    labels.push(`component-plugin`);
+  }
+  else {
+    title = `Feedback for fixture '${context}'`;
+    labels.push(`component-fixture`);
 
-  const issueContentData = {
-    'Manufacturer': fixture.manufacturer.name,
-    'Fixture': fixture.name,
-    'Problem location': location,
-    'Problem description': helpWanted,
-    'Message': message
-  };
+    const [manKey, fixKey] = context.split(`/`);
+    const fixture = fixtureFromRepository(manKey, fixKey);
+
+    issueContentData.Manufacturer = fixture.manufacturer.name;
+    issueContentData.Fixture = fixture.name;
+  }
+
+  issueContentData[`Problem location`] = location;
+  issueContentData[`Problem description`] = helpWanted;
+  issueContentData.Message = message;
 
   const lines = Object.entries(issueContentData).filter(
     ([key, value]) => value !== null
@@ -44,7 +53,7 @@ module.exports = async function createFeedbackIssue(request, response) {
   let issueUrl;
   let error;
   try {
-    issueUrl = await createIssue(title, lines.join(`\n`), GITHUB_LABELS);
+    issueUrl = await createIssue(title, lines.join(`\n`), labels);
     console.log(`Created issue at ${issueUrl}`);
   }
   catch (e) {

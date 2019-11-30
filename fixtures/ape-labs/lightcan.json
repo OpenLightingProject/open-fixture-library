@@ -1,0 +1,354 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LightCan",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Gloryfire"],
+    "createDate": "2019-05-30",
+    "lastModifyDate": "2019-05-30"
+  },
+  "comment": "Only controllable via Wireless DMX (W-APE).",
+  "links": {
+    "manual": [
+      "http://download.apelabs.com/manuals/Ape_Labs_-_LightCan_-_Manual_-_web.pdf"
+    ],
+    "productPage": [
+      "https://www.apelabs.com/products/leuchtdose"
+    ],
+    "video": [
+      "https://youtu.be/323kJeW-KT0"
+    ]
+  },
+  "physical": {
+    "dimensions": [55, 136, 55],
+    "weight": 0.39,
+    "bulb": {
+      "type": "15W RGBW LED"
+    },
+    "lens": {
+      "name": "Effect lens",
+      "degreesMinMax": [65, 65]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [6, 11],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [12, 17],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [18, 23],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [24, 29],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Lime"
+        },
+        {
+          "dmxRange": [30, 35],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [36, 41],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [42, 47],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Cyan/Blue"
+        },
+        {
+          "dmxRange": [48, 53],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [54, 59],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Blue/Magenta"
+        },
+        {
+          "dmxRange": [60, 65],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [66, 71],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Red pastel"
+        },
+        {
+          "dmxRange": [72, 77],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Green pastel"
+        },
+        {
+          "dmxRange": [78, 83],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Blue pastel"
+        },
+        {
+          "dmxRange": [84, 89],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Blue > Red"
+        },
+        {
+          "dmxRange": [90, 95],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Magenta > White"
+        },
+        {
+          "dmxRange": [96, 101],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "White > Blue"
+        },
+        {
+          "dmxRange": [102, 107],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Red pastel > Green pastel > Blue pastel"
+        },
+        {
+          "dmxRange": [108, 113],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Yellow > Magenta > Blue"
+        },
+        {
+          "dmxRange": [114, 127],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "Rainbow"
+        },
+        {
+          "dmxRange": [128, 133],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [134, 139],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [140, 145],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [146, 151],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [152, 157],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Lime"
+        },
+        {
+          "dmxRange": [158, 163],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [164, 169],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [170, 175],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Cyan/Blue"
+        },
+        {
+          "dmxRange": [176, 181],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [182, 187],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Blue/Magenta"
+        },
+        {
+          "dmxRange": [188, 193],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [194, 199],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Red pastel"
+        },
+        {
+          "dmxRange": [200, 205],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Green pastel"
+        },
+        {
+          "dmxRange": [206, 211],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Blue pastel"
+        },
+        {
+          "dmxRange": [212, 217],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Blue > Red"
+        },
+        {
+          "dmxRange": [218, 223],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Magenta > White"
+        },
+        {
+          "dmxRange": [224, 229],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "White > Blue"
+        },
+        {
+          "dmxRange": [230, 235],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Red pastel > Green pastel > Blue pastel"
+        },
+        {
+          "dmxRange": [236, 241],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Yellow > Magenta > Blue"
+        },
+        {
+          "dmxRange": [242, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Rainbow"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-Channel",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer",
+        "Programs",
+        "Program Speed"
+      ]
+    },
+    {
+      "name": "4-Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "8-Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine"
+      ]
+    }
+  ]
+}

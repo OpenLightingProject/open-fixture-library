@@ -8,37 +8,46 @@ const register = require(`../fixtures/register.json`);
 const plugins = require(`../plugins/plugins.json`);
 const fixtureSchema = require(`../schemas/dereferenced/fixture.json`);
 const fixtureRedirectSchema = require(`../schemas/dereferenced/fixture-redirect.json`);
-const schemaProperties = require(`../lib/schema-properties.mjs`).default;
+const schemaProperties = require(`../lib/schema-properties.js`).default;
 
-const {
-  FineChannel,
-  Fixture,
-  NullChannel,
-  SwitchingChannel
-} = require(`../lib/model.js`);
+/** @typedef {import('../lib/model/AbstractChannel.js').default} AbstractChannel */
+/** @typedef {import('../lib/model/Capability.js').default} Capability */
+/** @typedef {import('../lib/model/CoarseChannel.js').default} CoarseChannel */
+const { FineChannel } = require(`../lib/model.js`);
+const { Fixture } = require(`../lib/model.js`);
+/** @typedef {import('../lib/model/Matrix.js').default} Matrix */
+/** @typedef {import('../lib/model/Meta.js').default} Meta */
+const { NullChannel } = require(`../lib/model.js`);
+/** @typedef {import('../lib/model/Physical.js').default} Physical */
+/** @typedef {import('../lib/model/TemplateChannel.js').default} TemplateChannel */
+const { SwitchingChannel } = require(`../lib/model.js`);
+/** @typedef {import('../lib/model/Wheel.js').default} Wheel */
 
-const ajv = new Ajv();
-ajv.addFormat(`color-hex`, ``); // do not crash when `format: color-hex` is used; actual validation is done with an additional pattern, the format is only added for VSCode's color preview
+const ajv = new Ajv({
+  format: `full`,
+  formats: {
+    'color-hex': ``
+  }
+});
 const schemaValidate = ajv.compile(fixtureSchema);
 const redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
 
 /**
  * Checks that a given fixture JSON object is valid.
- * @param {string} manKey The manufacturer key.
- * @param {string} fixKey The fixture key.
- * @param {object|null} fixtureJson The fixture JSON object.
+ * @param {String} manKey The manufacturer key.
+ * @param {String} fixKey The fixture key.
+ * @param {Object|null} fixtureJson The fixture JSON object.
  * @param {UniqueValues|null} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
  * @returns {ResultData} The result object containing errors and warnings, if any.
  */
 function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   /**
-   * @typedef ResultData
-   * @type {object}
-   * @property {string[]} errors
-   * @property {string[]} warnings
+   * @typedef {Object} ResultData
+   * @property {Array.<String>} errors
+   * @property {Array.<String>} warnings
    */
 
-  /** @type ResultData */
+  /** @type {ResultData} */
   const result = {
     errors: [],
     warnings: []
@@ -47,20 +56,20 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   /** @type {Fixture} */
   let fixture;
 
-  /** @type {Set<string>} */
+  /** @type {Set.<String>} */
   const definedChannelKeys = new Set(); // and aliases
-  /** @type {Set<string>} */
+  /** @type {Set.<String>} */
   const usedChannelKeys = new Set(); // and aliases
-  /** @type {Set<string>} */
+  /** @type {Set.<String>} */
   const possibleMatrixChKeys = new Set(); // and aliases
-  /** @type {Set<string>} */
+  /** @type {Set.<String>} */
   const usedWheels = new Set();
-  /** @type {Set<string>} */
+  /** @type {Set.<String>} */
   const usedWheelSlots = new Set();
 
-  /** @type {Set<string>} */
+  /** @type {Set.<String>} */
   const modeNames = new Set();
-  /** @type {Set<string>} */
+  /** @type {Set.<String>} */
   const modeShortNames = new Set();
 
   if (!(`$schema` in fixtureJson)) {
@@ -81,7 +90,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   }
 
   try {
-    /** @type {Fixture} */
     fixture = new Fixture(manKey, fixKey, fixtureJson);
 
     checkFixIdentifierUniqueness(uniqueValues);
@@ -182,7 +190,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     if (meta.importPlugin) {
       const pluginData = plugins.data[meta.importPlugin];
       const isImportPlugin = plugins.importPlugins.includes(meta.importPlugin);
-      const isOutdatedImportPlugin = pluginData && pluginData.outdated && plugins.importPlugins.includes(pluginData.newPlugin);
+      const isOutdatedImportPlugin = pluginData && plugins.importPlugins.includes(pluginData.newPlugin);
 
       if (!(isImportPlugin || isOutdatedImportPlugin)) {
         result.errors.push(`Unknown import plugin ${meta.importPlugin}`);
@@ -193,7 +201,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   /**
    * Checks if the given Physical object is valid.
    * @param {Physical|null} physical A fixture's or a mode's physical data.
-   * @param {string} [modeDescription=''] Optional information in error messages about current mode.
+   * @param {String} [modeDescription=''] Optional information in error messages about current mode.
    */
   function checkPhysical(physical, modeDescription = ``) {
     if (physical === null) {
@@ -251,13 +259,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     function checkPixelGroups() {
       const pixelGroupKeys = Object.keys(matrix.jsonObject.pixelGroups);
 
-      const constraintsCorrect = pixelGroupKeys.every(checkPixelKeyStringConstraints);
-
-      if (!constraintsCorrect) {
-        // don't let model fail
-        return;
-      }
-
       pixelGroupKeys.forEach(pixelGroupKey => {
         const usedMatrixChannels = new Set();
 
@@ -280,38 +281,12 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           usedMatrixChannels.add(pixelKey);
         }
       });
-
-
-      /**
-       * Checks the pixel group's string constraints.
-       * @param {string} pixelGroupKey The key of the pixel group to check.
-       * @returns {boolean} True if all constraints are valid RegExps, false otherwise.
-       */
-      function checkPixelKeyStringConstraints(pixelGroupKey) {
-        const group = matrix.jsonObject.pixelGroups[pixelGroupKey];
-
-        if (group === `all` || Array.isArray(group)) {
-          return true;
-        }
-
-        for (const pattern of (group.name || [])) {
-          try {
-            new RegExp(pattern);
-          }
-          catch (syntaxError) {
-            result.errors.push(`Pixel key constraint '${pattern}' in pixelGroup '${pixelGroupKey}' is not a valid RegExp pattern. ${syntaxError.message}`);
-            return false;
-          }
-        }
-
-        return true;
-      }
     }
   }
 
   /**
    * Checks if the fixture's wheels are correct.
-   * @param {array.<Wheel>} wheels The fixture's Wheel instances.
+   * @param {Array.<Wheel>} wheels The fixture's Wheel instances.
    */
   function checkWheels(wheels) {
     for (const wheel of wheels) {
@@ -341,7 +316,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Check if templateChannels are defined correctly. Does not check the channel data itself.
-   * @param {object} fixtureJson The fixture's JSON data
+   * @param {Object} fixtureJson The fixture's JSON data
    */
   function checkTemplateChannels(fixtureJson) {
     if (fixtureJson.templateChannels) {
@@ -481,8 +456,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
       /**
        * Check that a capability's range is valid.
-       * @param {number} capNumber The number of the capability in the channel, starting with 0.
-       * @returns {boolean} True if the range is valid, false otherwise. The global `result` object is updated then.
+       * @param {Number} capNumber The number of the capability in the channel, starting with 0.
+       * @returns {Boolean} True if the range is valid, false otherwise. The global `result` object is updated then.
        */
       function checkDmxRange(capNumber) {
         const cap = channel.capabilities[capNumber];
@@ -495,7 +470,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
         /**
          * Checks that the first capability's DMX range starts with 0.
-         * @returns {boolean} True if this is not the first capability or it starts with 0, false otherwise.
+         * @returns {Boolean} True if this is not the first capability or it starts with 0, false otherwise.
          */
         function checkFirstCapabilityRangeStart() {
           if (capNumber === 0 && cap.rawDmxRange.start !== 0) {
@@ -507,7 +482,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         }
 
         /**
-         * @returns {boolean} True if this capability's DMX range is valid, i.e. the end is greater than or equal to the start, false otherwise.
+         * @returns {Boolean} True if this capability's DMX range is valid, i.e. the end is greater than or equal to the start, false otherwise.
          */
         function checkRangeValid() {
           if (cap.rawDmxRange.start > cap.rawDmxRange.end) {
@@ -519,7 +494,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         }
 
         /**
-         * @returns {boolean} True if this capability's DMX range start is adjacent to the previous capability's DMX range end, false otherwise.
+         * @returns {Boolean} True if this capability's DMX range start is adjacent to the previous capability's DMX range end, false otherwise.
          */
         function checkRangesAdjacent() {
           if (capNumber > 0) {
@@ -536,7 +511,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
         /**
          * Checks that the last capability's DMX range is one of the allowed values, e.g. 255 or 65535 for 16bit channels.
-         * @returns {boolean} True if this is not the last capability or it ends with an allowed value, false otherwise.
+         * @returns {Boolean} True if this is not the last capability or it ends with an allowed value, false otherwise.
          */
         function checkLastCapabilityRangeEnd() {
           if (capNumber === channel.capabilities.length - 1) {
@@ -553,7 +528,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       /**
        * Check that a capability is valid (except its DMX range).
        * @param {Capability} cap The capability to check.
-       * @param {string} errorPrefix An identifier for the capability to use in errors and warnings.
+       * @param {String} errorPrefix An identifier for the capability to use in errors and warnings.
        */
       function checkCapability(cap, errorPrefix) {
         const switchingChannelAliases = Object.keys(cap.switchChannels);
@@ -590,8 +565,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           ShutterStrobe: checkShutterStrobeCapability,
           Pan: checkPanTiltCapability,
           Tilt: checkPanTiltCapability,
-          PanContinuous: checkPanTiltContinuousCapability,
-          TiltContinuous: checkPanTiltContinuousCapability,
           WheelSlot: checkWheelCapability,
           WheelShake: checkWheelCapability,
           WheelSlotRotation: checkWheelCapability,
@@ -700,37 +673,9 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
          * Type-specific checks for Pan and Tilt capabilities.
          */
         function checkPanTiltCapability() {
-          const max = fixture.physical === null ? null : fixture.physical[`focus${cap.type}Max`];
-          const isInfinite = max === Number.POSITIVE_INFINITY;
           const usesPercentageAngle = cap.angle[0].unit === `%`;
-
-          const panOrTilt = cap.type.toLowerCase();
-
-          if (!usesPercentageAngle) {
-            const range = Math.abs(cap.angle[1] - cap.angle[0]);
-
-            if (!max) {
-              result.warnings.push(`${errorPrefix} defines an exact ${panOrTilt} angle. Setting focus.${panOrTilt}Max in the fixture's physical data is recommended.`);
-            }
-            else if (range > max) {
-              result.errors.push(`${errorPrefix} uses an angle range that is greater than focus.${panOrTilt}Max in the fixture's physical data.`);
-            }
-          }
-          else if (max && !isInfinite) {
-            result.warnings.push(`${errorPrefix} defines an imprecise percentaged ${panOrTilt} angle. Using the exact value from focus.${panOrTilt}Max in the fixture's physical data is recommended.`);
-          }
-        }
-
-        /**
-         * Type-specific checks for PanContinuous and TiltContinuous capabilities.
-         */
-        function checkPanTiltContinuousCapability() {
-          const panOrTilt = cap.type === `PanContinuous` ? `Pan` : `Tilt`;
-
-          const max = fixture.physical === null ? null : fixture.physical[`focus${panOrTilt}Max`];
-
-          if (max !== Number.POSITIVE_INFINITY) {
-            result.errors.push(`${errorPrefix} defines continuous ${panOrTilt.toLowerCase()} but focus.${panOrTilt.toLowerCase()}Max in the fixture's physical data is not "infinite".`);
+          if (usesPercentageAngle) {
+            result.warnings.push(`${errorPrefix} defines an imprecise percentaged angle. Please to try find the value in degrees.`);
           }
         }
 
@@ -777,8 +722,9 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           result.errors.push(`Mode '${mode.name}' should have ${RegExp.$1} channels according to its ${nameProp} but actually has ${mode.channels.length}.`);
         }
 
-        if (mode[nameProp] === RegExp.lastMatch && mode.shortName !== `${intendedLength}ch`) {
-          result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch'.`);
+        const allowedShortNames = [`${intendedLength}ch`, `Ch${intendedLength}`, `Ch0${intendedLength}`];
+        if (mode[nameProp].length === RegExp.lastMatch.length && !allowedShortNames.includes(mode.shortName)) {
+          result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
         }
       }
     });
@@ -795,7 +741,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
     /**
      * Checks if the given complex channel insert block is valid.
-     * @param {object} insertBlock The raw JSON data of the insert block.
+     * @param {Object} insertBlock The raw JSON data of the insert block.
      */
     function checkChannelInsertBlock(insertBlock) {
       if (insertBlock.insert === `matrixChannels`) {
@@ -805,11 +751,11 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
       /**
        * Checks the given matrix channel insert.
-       * @param {object} matrixInsertBlock The matrix channel reference specified in the mode's json channel list.
+       * @param {Object} matrixInsertBlock The matrix channel reference specified in the mode's json channel list.
        * @param {'matrixChannels'} matrixInsertBlock.insert Indicates that this is a matrix insert.
-       * @param {'eachPixel'|'eachPixelGroup'|array} matrixInsertBlock.repeatFor The pixelKeys or pixelGroupKeys for which the specified channels should be repeated.
+       * @param {'eachPixel'|'eachPixelGroup'|Array.<String>} matrixInsertBlock.repeatFor The pixelKeys or pixelGroupKeys for which the specified channels should be repeated.
        * @param {'perPixel'|'perChannel'} matrixInsertBlock.channelOrder Order the channels like RGB1/RGB2/RGB3 or R123/G123/B123.
-       * @param {array.<string, null>} matrixInsertBlock.templateChannels The template channel keys (and aliases) or null channels to be repeated.
+       * @param {Array.<String|null>} matrixInsertBlock.templateChannels The template channel keys (and aliases) or null channels to be repeated.
        */
       function checkMatrixInsertBlock(matrixInsertBlock) {
         checkMatrixInsertBlockRepeatFor();
@@ -830,36 +776,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
             return;
           }
 
-          const usedPixelKeys = new Set();
-
-          // simple uniqueness is already checked by schema, but this test also checks for pixelKeys in pixelGroups
           for (const pixelKey of matrixInsertBlock.repeatFor) {
-            if (fixture.matrix.pixelKeys.includes(pixelKey)) {
-              checkUniqueness(
-                usedPixelKeys,
-                pixelKey,
-                result,
-                `PixelKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
-              );
-            }
-            else if (pixelKey in fixture.matrix.pixelGroups) {
-              checkUniqueness(
-                usedPixelKeys,
-                pixelKey,
-                result,
-                `PixelGroupKey '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
-              );
-
-              for (const singlePixelKey of fixture.matrix.pixelGroups[pixelKey]) {
-                checkUniqueness(
-                  usedPixelKeys,
-                  singlePixelKey,
-                  result,
-                  `PixelKey '${singlePixelKey}' in group '${pixelKey}' is used more than once in repeatFor in mode '${mode.shortName}'.`
-                );
-              }
-            }
-            else {
+            if (!fixture.matrix.pixelKeys.includes(pixelKey) && !(pixelKey in fixture.matrix.pixelGroups)) {
               result.errors.push(`Unknown pixelKey or pixelGroupKey '${pixelKey}'`);
             }
           }
@@ -869,7 +787,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
     /**
      * Check that a channel reference in a mode is valid.
-     * @param {number} chIndex The mode's channel index.
+     * @param {Number} chIndex The mode's channel index.
      */
     function checkModeChannelKey(chIndex) {
       const chKey = mode.channelKeys[chIndex];
@@ -897,10 +815,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       else if (channel instanceof FineChannel) {
         checkCoarserChannelsInMode(channel);
       }
-      else {
-        // that's already checked for switched channels and we don't need to check it for fine channels
-        checkPanTiltMaxInPhysical();
-      }
 
       /**
        * Check that a switching channel reference in a mode is valid.
@@ -922,8 +836,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
             checkCoarserChannelsInMode(switchToChannel);
             continue;
           }
-
-          checkPanTiltMaxInPhysical(switchToChannel, mode);
         }
 
         for (let j = 0; j < mode.getChannelIndex(channel); j++) {
@@ -991,25 +903,6 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           result.errors.push(`Mode '${mode.shortName}' contains the fine channel '${fineChannel.key}' but is missing its coarser channels ${notInMode}.`);
         }
       }
-
-      /**
-       * Check that panMax / tiltMax are defined in this mode's physical section (or globally) when there is a Pan / Tilt channel.
-       */
-      function checkPanTiltMaxInPhysical() {
-        if (channel.type !== `Pan` && channel.type !== `Tilt`) {
-          return;
-        }
-
-        const modelMaxProp = `focus${channel.type}Max`;
-        const jsonMaxProp = `${channel.type.toLowerCase()}Max`;
-
-        if (mode.physical === null || mode.physical[modelMaxProp] === null) {
-          result.warnings.push(`physical.${jsonMaxProp} is not defined although there's a ${channel.type} channel '${channel.key}' in mode '${mode.shortName}'.`);
-        }
-        else if (mode.physical[modelMaxProp] === 0) {
-          result.warnings.push(`physical.${jsonMaxProp} is 0 although there's a ${channel.type} channel '${channel.key}' in mode '${mode.shortName}'.`);
-        }
-      }
     }
   }
 
@@ -1017,7 +910,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    * Add a warning if there are unused channels.
    */
   function checkUnusedChannels() {
-    const unused = [...definedChannelKeys].filter(
+    const unused = Array.from(definedChannelKeys).filter(
       chKey => !usedChannelKeys.has(chKey)
     );
 
@@ -1044,7 +937,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    */
   function checkUnusedWheelSlots() {
     const slotsOfUsedWheels = [];
-    [...usedWheels].forEach(wheelName => {
+    Array.from(usedWheels).forEach(wheelName => {
       const wheel = fixture.getWheelByName(wheelName);
 
       if (wheel.type !== `AnimationGobo`) {
@@ -1067,6 +960,12 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    * Checks if the used channels fits to the fixture's categories and raise warnings suggesting to add/remove a category.
    */
   function checkCategories() {
+    const mutuallyExclusiveGroups = [
+      [`Moving Head`, `Scanner`, `Barrel Scanner`],
+      [`Pixel Bar`, `Flower`],
+      [`Pixel Bar`, `Stand`]
+    ];
+
     const categories = {
       'Color Changer': {
         isSuggested: isColorChanger(),
@@ -1074,16 +973,22 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         invalidPhrase: `there are no ColorPreset and less than two ColorIntensity capabilities and no Color wheel slots`
       },
       'Moving Head': {
-        isSuggested: isMovingHead(),
-        isInvalid: isNotMovingHead(),
-        suggestedPhrase: `focus.type is 'Head' or there's a Pan(Continuous) and a Tilt(Continuous) capability`,
-        invalidPhrase: `focus.type is not 'Head'`
+        isSuggested: hasPanTiltChannels(true),
+        isInvalid: !hasPanTiltChannels(true),
+        suggestedPhrase: `there are pan and tilt channels`,
+        invalidPhrase: `there are not both pan and tilt channels`
       },
       'Scanner': {
-        isSuggested: isScanner(),
-        isInvalid: isNotScanner(),
-        suggestedPhrase: `focus.type is 'Mirror' or there's a Pan(Continuous) and a Tilt(Continuous) capability`,
-        invalidPhrase: `focus.type is not 'Mirror'`
+        isSuggested: hasPanTiltChannels(true),
+        isInvalid: !hasPanTiltChannels(false),
+        suggestedPhrase: `there are pan and tilt channels`,
+        invalidPhrase: `there are no pan or tilt channels`
+      },
+      'Barrel Scanner': {
+        isSuggested: hasPanTiltChannels(true),
+        isInvalid: !hasPanTiltChannels(false),
+        suggestedPhrase: `there are pan and tilt channels`,
+        invalidPhrase: `there are no pan or tilt channels`
       },
       'Smoke': {
         isSuggested: isFogType(`Fog`),
@@ -1107,25 +1012,44 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       }
     };
 
-    for (const categoryName of Object.keys(categories)) {
-      const categoryUsed = fixture.categories.includes(categoryName);
-      const category = categories[categoryName];
+    Object.entries(categories).forEach(([categoryName, category]) => {
+      const isCategoryUsed = fixture.categories.includes(categoryName);
 
       if (!(`isInvalid` in category)) {
         category.isInvalid = !category.isSuggested;
       }
 
-      if (!categoryUsed && category.isSuggested) {
-        result.warnings.push(`Category '${categoryName}' suggested since ${category.suggestedPhrase}.`);
+      if (!isCategoryUsed && category.isSuggested) {
+        // don't suggest this category if another mutually exclusive category is used
+        const exclusiveGroups = mutuallyExclusiveGroups.filter(
+          group => group.includes(categoryName)
+        );
+        const isForbiddenByGroup = exclusiveGroups.some(
+          group => group.some(
+            cat => fixture.categories.includes(cat)
+          )
+        );
+
+        if (!isForbiddenByGroup) {
+          result.warnings.push(`Category '${categoryName}' suggested since ${category.suggestedPhrase}.`);
+        }
       }
-      else if (categoryUsed && category.isInvalid) {
+      else if (isCategoryUsed && category.isInvalid) {
         result.errors.push(`Category '${categoryName}' invalid since ${category.invalidPhrase}.`);
       }
-    }
+    });
+
+    mutuallyExclusiveGroups.forEach(group => {
+      const usedCategories = group.filter(cat => fixture.categories.includes(cat));
+
+      if (usedCategories.length >= 2) {
+        result.errors.push(`Categories '${usedCategories.join(`', '`)}' can't be used together.`);
+      }
+    });
 
     /**
-     * @returns {boolean} Whether the 'Color Changer' category is suggested.
-    */
+     * @returns {Boolean} Whether the 'Color Changer' category is suggested.
+     */
     function isColorChanger() {
       return hasCapabilityOfType(`ColorPreset`) || hasCapabilityOfType(`ColorIntensity`, 2) || fixture.wheels.some(
         wheel => wheel.slots.some(slot => slot.type === `Color`)
@@ -1133,52 +1057,19 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     /**
-     * @returns {boolean} Whether the 'Moving Head' category is suggested.
-    */
-    function isMovingHead() {
-      const hasFocusTypeHead = fixture.physical !== null && fixture.physical.focusType === `Head`;
-      const hasOtherFocusType = fixture.physical !== null && fixture.physical.focusType !== null;
-
-      return hasFocusTypeHead || (hasPanTiltChannels() && !hasOtherFocusType);
-    }
-
-    /**
-     * @returns {boolean} Whether the 'Moving Head' category is invalid.
-    */
-    function isNotMovingHead() {
-      return fixture.physical === null || fixture.physical.focusType !== `Head`;
-    }
-
-    /**
-     * @returns {boolean} Whether the 'Scanner' category is suggested.
-    */
-    function isScanner() {
-      const hasFocusTypeMirror = fixture.physical !== null && fixture.physical.focusType === `Mirror`;
-      const hasOtherFocusType = fixture.physical !== null && fixture.physical.focusType !== null;
-
-      return hasFocusTypeMirror || (hasPanTiltChannels() && !hasOtherFocusType);
-    }
-
-    /**
-     * @returns {boolean} Whether the 'Scanner' category is invalid.
-    */
-    function isNotScanner() {
-      return fixture.physical === null || fixture.physical.focusType !== `Mirror`;
-    }
-
-    /**
-     * @returns {boolean} Whether the fixture has both a Pan / PanContinuous and a Tilt / TiltContinuous channel.
+     * @param {Boolean} [both=false] Whether there need to be both Pan and Tilt channels.
+     * @returns {Boolean} Whether the fixture has a Pan(Continuous) and/or (depending on 'both') a Tilt(Continuous) channel.
      */
-    function hasPanTiltChannels() {
+    function hasPanTiltChannels(both = false) {
       const hasPan = hasCapabilityOfType(`Pan`) || hasCapabilityOfType(`PanContinuous`);
       const hasTilt = hasCapabilityOfType(`Tilt`) || hasCapabilityOfType(`TiltContinuous`);
-      return hasPan && hasTilt;
+      return both ? (hasPan && hasTilt) : (hasPan || hasTilt);
     }
 
     /**
-     * @param {string} type What capability type to search for.
-     * @param {number} [minimum=1] How many occurrences are needed to succeed.
-     * @returns {boolean} Whether the given capability type occurs at least at the given minimum times in the fixture.
+     * @param {String} type What capability type to search for.
+     * @param {Number} [minimum=1] How many occurrences are needed to succeed.
+     * @returns {Boolean} Whether the given capability type occurs at least at the given minimum times in the fixture.
      */
     function hasCapabilityOfType(type, minimum = 1) {
       return fixture.capabilities.filter(
@@ -1187,8 +1078,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     /**
-     * @param {string} fogType The fog type to search for.
-     * @returns {boolean} Whether the fixture has the given fog type.
+     * @param {String} fogType The fog type to search for.
+     * @returns {Boolean} Whether the fixture has the given fog type.
      */
     function isFogType(fogType) {
       const fogCaps = fixture.capabilities.filter(
@@ -1203,22 +1094,17 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     /**
-     * @returns {boolean} True if it can't be a matrix.
+     * @returns {Boolean} True if it can't be a matrix.
      */
     function isNotMatrix() {
       return fixture.matrix === null || fixture.matrix.definedAxes.length < 2;
     }
 
     /**
-     * @returns {boolean} True if a matrix with only one axis, which has more than 4 pixels, is defined.
+     * @returns {Boolean} True if a matrix with only one axis, which has more than 4 pixels, is defined.
      */
     function isPixelBar() {
-      const mutualExclusiveCategories = [`Flower`, `Stand`];
-      const hasMutualExclusiveCategory = fixture.categories.some(
-        cat => mutualExclusiveCategories.includes(cat)
-      );
-
-      if (hasMutualExclusiveCategory || fixture.matrix === null) {
+      if (fixture.matrix === null) {
         return false;
       }
 
@@ -1229,7 +1115,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     /**
-     * @returns {boolean} True if it can't be a pixel bar.
+     * @returns {Boolean} True if it can't be a pixel bar.
      */
     function isNotPixelBar() {
       return fixture.matrix === null || fixture.matrix.definedAxes.length > 1;
@@ -1238,7 +1124,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Checks if everything regarding this fixture's RDM data is correct.
-   * @param {string} manKey The manufacturer key.
+   * @param {String} manKey The manufacturer key.
    * @param {UniqueValues|null} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
    */
   function checkRdm(manKey, uniqueValues = null) {
@@ -1276,8 +1162,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Checks whether the specified string contains all allowed and no disallowed variables and pushes an error on wrong variable usage.
-   * @param {string} str The string to be checked.
-   * @param {array.<string>} allowedVariables Variables that must be included in the string; all other variables are forbidden. Specify them with leading dollar sign ($var).
+   * @param {String} str The string to be checked.
+   * @param {Array.<String>} allowedVariables Variables that must be included in the string; all other variables are forbidden. Specify them with leading dollar sign ($var).
    */
   function checkTemplateVariables(str, allowedVariables) {
     const usedVariables = str.match(/\$\w+/g) || [];
@@ -1296,10 +1182,10 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
 /**
  * If the Set already contains the given value, add an error. Test is not case-sensitive.
- * @param {Set<string>} set The Set in which all unique values are stored.
- * @param {string} value The string value to examine.
+ * @param {Set.<String>} set The Set in which all unique values are stored.
+ * @param {String} value The string value to examine.
  * @param {ResultData} result The object to add the error message to (if any).
- * @param {string} messageIfNotUnique If the value is not unique, add this message to errors.
+ * @param {String} messageIfNotUnique If the value is not unique, add this message to errors.
  */
 function checkUniqueness(set, value, result, messageIfNotUnique) {
   if (set.has(value.toLowerCase())) {
@@ -1310,18 +1196,18 @@ function checkUniqueness(set, value, result, messageIfNotUnique) {
 
 
 /**
- * @param {string} description The error message.
+ * @param {String} description The error message.
  * @param {*} error An error object to append to the message.
- * @returns {string} A string containing the message and a deep inspection of the given error object.
+ * @returns {String} A string containing the message and a deep inspection of the given error object.
  */
 function getErrorString(description, error) {
   return `${description} ${util.inspect(error, false, null)}`;
 }
 
 /**
- * @param {array|null} a An array.
- * @param {array|null} b Another array.
- * @returns {boolean} True if both arrays are equal, false if they are null or not equal.
+ * @param {Array|null} a An array.
+ * @param {Array|null} b Another array.
+ * @returns {Boolean} True if both arrays are equal, false if they are null or not equal.
  */
 function arraysEqual(a, b) {
   if (a === b) {

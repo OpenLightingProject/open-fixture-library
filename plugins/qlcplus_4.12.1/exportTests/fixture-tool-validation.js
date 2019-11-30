@@ -16,55 +16,47 @@ const FIXTURE_TOOL_PATH = `resources/fixtures/scripts/fixtures-tool.py`;
 const EXPORTED_FIXTURE_PATH = `resources/fixtures/manufacturer/fixture.qxf`;
 
 /**
- * @param {object} exportFile The file returned by the plugins' export module.
- * @param {string} exportFile.name File name, may include slashes to provide a folder structure.
- * @param {string} exportFile.content File content.
- * @param {string} exportFile.mimetype File mime type.
- * @param {array.<Fixture>|null} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
- * @param {string|null} exportFile.mode Mode's shortName if given file only describes a single mode.
- * @returns {Promise.<undefined, array.<string>|!string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
-**/
-module.exports = function testFixtureToolValidation(exportFile) {
-  let directory;
-
+ * @param {Object} exportFile The file returned by the plugins' export module.
+ * @param {String} exportFile.name File name, may include slashes to provide a folder structure.
+ * @param {String} exportFile.content File content.
+ * @param {String} exportFile.mimetype File mime type.
+ * @param {Array.<Fixture>|null} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @param {String|null} exportFile.mode Mode's shortName if given file only describes a single mode.
+ * @returns {Promise.<undefined, Array.<String>|String>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
+ */
+module.exports = async function testFixtureToolValidation(exportFile) {
   // create a unique temporary directory to avoid race conditions when multiple running tests access the same files
-  return mkdtemp(FIXTURE_TOOL_DIR_PREFIX)
-    .then(tmpDir => {
-      directory = tmpDir;
-    })
+  const directory = await mkdtemp(FIXTURE_TOOL_DIR_PREFIX);
 
-    // download fixtures-tool.py into fixtures/scripts directory
-    .then(() => mkdirp(path.join(directory, `resources/fixtures/scripts`)))
-    .then(() => downloadFixtureTool(directory))
+  // download fixtures-tool.py into fixtures/scripts directory
+  await mkdirp(path.join(directory, `resources/fixtures/scripts`));
+  await downloadFixtureTool(directory);
 
-    // write exported fixture.qxf into fixtures/manufacturer directory
-    .then(() => mkdirp(path.join(directory, `resources/fixtures/manufacturer`)))
-    .then(() => writeFile(path.join(directory, EXPORTED_FIXTURE_PATH), exportFile.content))
+  // write exported fixture.qxf into fixtures/manufacturer directory
+  await mkdirp(path.join(directory, `resources/fixtures/manufacturer`));
+  await writeFile(path.join(directory, EXPORTED_FIXTURE_PATH), exportFile.content);
 
-    // store used gobos in the gobos/ directory
-    .then(() => mkdirp(path.join(directory, `resources/gobos/Others`)))
-    .then(() => writeFile(path.join(directory, `resources/gobos/Others/open.svg`), ``))
-    .then(() => writeFile(path.join(directory, `resources/gobos/Others/rainbow.png`), ``))
+  // store used gobos in the gobos/ directory
+  await mkdirp(path.join(directory, `resources/gobos/Others`));
+  await writeFile(path.join(directory, `resources/gobos/Others/open.svg`), ``);
+  await writeFile(path.join(directory, `resources/gobos/Others/rainbow.png`), ``);
 
-    // call the fixture tool
-    .then(() => execFile(path.join(directory, FIXTURE_TOOL_PATH), [`--validate`, `.`], {
-      cwd: path.join(directory, `resources/fixtures`)
-    }))
-    .then(output => {
-      const lastLine = output.stdout.split(`\n`).filter(line => line !== ``).pop();
+  // call the fixture tool
+  const output = await execFile(path.join(directory, FIXTURE_TOOL_PATH), [`--validate`, `.`], {
+    cwd: path.join(directory, `resources/fixtures`)
+  });
 
-      if (lastLine !== `1 definitions processed. 0 errors detected`) {
-        return Promise.reject(output.stdout);
-      }
+  const lastLine = output.stdout.split(`\n`).filter(line => line !== ``).pop();
 
-      return Promise.resolve();
-    });
+  if (lastLine !== `1 definitions processed. 0 errors detected`) {
+    throw output.stdout;
+  }
 };
 
 
 /**
  * Download the QLC+ fixture tool from GitHub, or use local version if already present.
- * @param {string} directory The absolute path of the temporary directory.
+ * @param {String} directory The absolute path of the temporary directory.
  * @returns {Promise} A Promise that resolves when the fixture tool is usable.
  */
 function downloadFixtureTool(directory) {
@@ -74,10 +66,16 @@ function downloadFixtureTool(directory) {
       res.on(`data`, chunk => {
         data += chunk;
       });
-      res.on(`end`, () => {
-        writeFile(path.join(directory, FIXTURE_TOOL_PATH), data, {
-          mode: 0o755
-        }).then(resolve).catch(reject);
+      res.on(`end`, async () => {
+        try {
+          await writeFile(path.join(directory, FIXTURE_TOOL_PATH), data, {
+            mode: 0o755
+          });
+          resolve();
+        }
+        catch (err) {
+          reject(err);
+        }
       });
     }).on(`error`, err => {
       reject(err);

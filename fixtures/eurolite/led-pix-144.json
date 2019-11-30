@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED PIX-144",
-  "categories": ["Color Changer", "Pixel Bar"],
+  "categories": ["Pixel Bar", "Color Changer"],
   "meta": {
     "authors": ["Paolo Zanchi"],
     "createDate": "2019-02-06",
@@ -26,9 +26,6 @@
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "144x RGB-SMD LEDs"
-    },
-    "focus": {
-      "type": "Fixed"
     },
     "matrixPixels": {
       "dimensions": [125, 65, 0],

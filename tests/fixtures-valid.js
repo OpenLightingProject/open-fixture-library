@@ -9,13 +9,14 @@ const manufacturerSchema = require(`../schemas/dereferenced/manufacturers.json`)
 const { checkFixture, checkUniqueness, getErrorString } = require(`./fixture-valid.js`);
 
 /**
- * @typedef UniqueValues
- * @type {object}
- * @property {Set<string>} manNames All manufacturer names
- * @property {Object.<string, Set<string>>} fixKeysInMan All fixture keys by manufacturer key
- * @property {Object.<string, Set<string>>} fixNamesInMan All fixture names by manufacturer key
- * @property {Set<string>} fixShortNames All fixture short names
+ * @typedef {Object} UniqueValues
+ * @property {Set.<String>} manNames All manufacturer names
+ * @property {Object.<String, Set.<String>>} fixKeysInMan All fixture keys by manufacturer key
+ * @property {Object.<String, Set.<String>>} fixNamesInMan All fixture names by manufacturer key
+ * @property {Object.<String, Set.<String>>} fixRdmIdsInMan All RDM ids by manufacturer key
+ * @property {Set.<String>} fixShortNames All fixture short names
  */
+/** @type {UniqueValues} */
 const uniqueValues = {
   manNames: new Set(),
   manRdmIds: new Set(),
@@ -45,8 +46,8 @@ for (const manKey of fs.readdirSync(fixturePath)) {
 
 /**
  * Checks (asynchronously) the given fixture by adding a Promise to the promises array that resolves with a result object.
- * @param {string} manKey The manufacturer key.
- * @param {string} fixKey The fixture key.
+ * @param {String} manKey The manufacturer key.
+ * @param {String} fixKey The fixture key.
  */
 function handleFixtureFile(manKey, fixKey) {
   const filename = `${manKey}/${fixKey}.json`;

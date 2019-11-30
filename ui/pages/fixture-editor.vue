@@ -4,230 +4,234 @@
 
     <section class="card">
       <h2>Import fixture</h2>
-      Instead of creating a new fixture definition in the editor below, you can also <nuxt-link to="/import-fixture-file">import an existing fixture definition file</nuxt-link>.
+      Instead of creating a new fixture definition in the editor below, you can also <NuxtLink to="/import-fixture-file">import an existing fixture definition file</NuxtLink>.
     </section>
 
     <noscript class="card yellow">
       Please enable JavaScript to use the Fixture Editor!
     </noscript>
 
-    <vue-form
-      :state="formstate"
-      action="#"
-      class="only-js"
-      @submit.prevent="onSubmit">
+    <ClientOnly placeholder="Fixture editor is loading...">
 
-      <section class="manufacturer card">
-        <h2>Manufacturer</h2>
+      <vue-form
+        :state="formstate"
+        action="#"
+        class="only-js"
+        @submit.prevent="onSubmit">
 
-        <section v-if="fixture.useExistingManufacturer">
-          <app-labeled-input :formstate="formstate" name="manufacturerKey" label="Choose from list">
-            <select
-              ref="existingManufacturerSelect"
-              v-model="fixture.manufacturerKey"
-              :class="{ empty: fixture.manufacturerKey === `` }"
-              required
-              name="manufacturerKey">
+        <section class="manufacturer card">
+          <h2>Manufacturer</h2>
 
-              <option value="" disabled>Please select a manufacturer</option>
+          <section v-if="fixture.useExistingManufacturer">
+            <LabeledInput :formstate="formstate" name="manufacturerKey" label="Choose from list">
+              <select
+                ref="existingManufacturerSelect"
+                v-model="fixture.manufacturerKey"
+                :class="{ empty: fixture.manufacturerKey === `` }"
+                required
+                name="manufacturerKey">
 
-              <template v-for="(manufacturer, manKey) in manufacturers">
-                <option v-if="manKey !== `$schema`" :key="manKey" :value="manKey">
-                  {{ manufacturer.name }}
-                </option>
-              </template>
+                <option value="" disabled>Please select a manufacturer</option>
 
-            </select>
-          </app-labeled-input>
+                <template v-for="(manufacturer, manKey) in manufacturers">
+                  <option v-if="manKey !== `$schema`" :key="manKey" :value="manKey">
+                    {{ manufacturer.name }}
+                  </option>
+                </template>
 
-          <div>or <a href="#add-new-manufacturer" @click.prevent="switchManufacturer(false)">add a new manufacturer</a></div>
+              </select>
+            </LabeledInput>
+
+            <div>or <a href="#add-new-manufacturer" @click.prevent="switchManufacturer(false)">add a new manufacturer</a></div>
+          </section>
+
+          <div v-else>
+            <LabeledInput :formstate="formstate" name="new-manufacturer-name" label="Name">
+              <PropertyInputText
+                ref="newManufacturerNameInput"
+                v-model="fixture.newManufacturerName"
+                :schema-property="properties.manufacturer.name"
+                :required="true"
+                name="new-manufacturer-name" />
+            </LabeledInput>
+
+            <LabeledInput :formstate="formstate" name="new-manufacturer-website" label="Website">
+              <PropertyInputText
+                v-model="fixture.newManufacturerWebsite"
+                :schema-property="properties.manufacturer.website"
+                type="url"
+                name="new-manufacturer-website" />
+            </LabeledInput>
+
+            <LabeledInput :formstate="formstate" name="new-manufacturer-comment" label="Comment">
+              <PropertyInputTextarea
+                v-model="fixture.newManufacturerComment"
+                :schema-property="properties.manufacturer.comment"
+                name="new-manufacturer-comment" />
+            </LabeledInput>
+
+            <LabeledInput :formstate="formstate" name="new-manufacturer-rdmId">
+              <template #label><abbr title="Remote Device Management">RDM</abbr> manufacturer ID</template>
+              <PropertyInputNumber
+                v-model="fixture.newManufacturerRdmId"
+                :schema-property="properties.manufacturer.rdmId"
+                name="new-manufacturer-rdmId" />
+            </LabeledInput>
+
+            <div>or <a href="#use-existing-manufacturer" @click.prevent="switchManufacturer(true)">choose an existing manufacturer</a></div>
+          </div>
         </section>
 
-        <div v-else>
-          <app-labeled-input :formstate="formstate" name="new-manufacturer-name" label="Name">
-            <app-property-input-text
-              ref="newManufacturerNameInput"
-              v-model="fixture.newManufacturerName"
-              :schema-property="properties.manufacturer.name"
+        <section class="fixture-info card">
+          <h2>Fixture info</h2>
+
+          <LabeledInput
+            :formstate="formstate"
+            :custom-validators="{ 'no-manufacturer-name': fixtureNameIsWithoutManufacturer }"
+            name="fixture-name"
+            label="Name">
+            <PropertyInputText
+              v-model="fixture.name"
+              :schema-property="properties.fixture.name"
               :required="true"
-              name="new-manufacturer-name" />
-          </app-labeled-input>
+              name="fixture-name" />
+          </LabeledInput>
 
-          <app-labeled-input :formstate="formstate" name="new-manufacturer-website" label="Website">
-            <app-property-input-text
-              v-model="fixture.newManufacturerWebsite"
-              :schema-property="properties.manufacturer.website"
-              type="url"
-              name="new-manufacturer-website" />
-          </app-labeled-input>
+          <LabeledInput :formstate="formstate" name="fixture-shortName" label="Unique short name">
+            <PropertyInputText
+              v-model="fixture.shortName"
+              :schema-property="properties.fixture.shortName"
+              name="fixture-shortName"
+              hint="defaults to name" />
+          </LabeledInput>
 
-          <app-labeled-input :formstate="formstate" name="new-manufacturer-comment" label="Comment">
-            <app-property-input-textarea
-              v-model="fixture.newManufacturerComment"
-              :schema-property="properties.manufacturer.comment"
-              name="new-manufacturer-comment" />
-          </app-labeled-input>
-
-          <app-labeled-input :formstate="formstate" name="new-manufacturer-rdmId">
-            <template slot="label"><abbr title="Remote Device Management">RDM</abbr> model ID</template>
-            <app-property-input-number
-              v-model="fixture.newManufacturerRdmId"
-              :schema-property="properties.manufacturer.rdmId"
-              name="new-manufacturer-rdmId" />
-          </app-labeled-input>
-
-          <div>or <a href="#use-existing-manufacturer" @click.prevent="switchManufacturer(true)">choose an existing manufacturer</a></div>
-        </div>
-      </section>
-
-      <section class="fixture-info card">
-        <h2>Fixture info</h2>
-
-        <app-labeled-input
-          :formstate="formstate"
-          :custom-validators="{ 'no-manufacturer-name': fixtureNameIsWithoutManufacturer }"
-          name="fixture-name"
-          label="Name">
-          <app-property-input-text
-            v-model="fixture.name"
-            :schema-property="properties.fixture.name"
-            :required="true"
-            name="fixture-name" />
-        </app-labeled-input>
-
-        <app-labeled-input :formstate="formstate" name="fixture-shortName" label="Unique short name">
-          <app-property-input-text
-            v-model="fixture.shortName"
-            :schema-property="properties.fixture.shortName"
-            name="fixture-shortName"
-            hint="defaults to name" />
-        </app-labeled-input>
-
-        <app-labeled-input
-          :formstate="formstate"
-          name="fixture-categories"
-          label="Categories"
-          hint="Select and reorder all applicable categories, the most suitable first.">
-          <app-category-chooser
-            v-model="fixture.categories"
-            :all-categories="properties.fixture.categories.items.enum"
+          <LabeledInput
+            :formstate="formstate"
             name="fixture-categories"
-            categories-not-empty />
-        </app-labeled-input>
+            label="Categories"
+            hint="Select and reorder all applicable categories, the most suitable first.">
+            <EditorCategoryChooser
+              v-model="fixture.categories"
+              :all-categories="properties.fixture.categories.items.enum"
+              name="fixture-categories"
+              categories-not-empty />
+          </LabeledInput>
 
-        <app-labeled-input :formstate="formstate" name="comment" label="Comment">
-          <app-property-input-textarea
-            v-model="fixture.comment"
-            :schema-property="properties.fixture.comment"
-            name="comment" />
-        </app-labeled-input>
+          <LabeledInput :formstate="formstate" name="comment" label="Comment">
+            <PropertyInputTextarea
+              v-model="fixture.comment"
+              :schema-property="properties.fixture.comment"
+              name="comment" />
+          </LabeledInput>
 
-        <app-labeled-input
-          :formstate="formstate"
-          :multiple-inputs="true"
-          name="links"
-          label="Relevant links">
-          <app-editor-links v-model="fixture.links" :formstate="formstate" />
-        </app-labeled-input>
+          <LabeledInput
+            :formstate="formstate"
+            :multiple-inputs="true"
+            name="links"
+            label="Relevant links">
+            <EditorLinks v-model="fixture.links" :formstate="formstate" name="links" />
+          </LabeledInput>
 
-        <app-labeled-input
-          :formstate="formstate"
-          name="rdmModelId"
-          hint="The RDM manufacturer ID is saved per manufacturer.">
-          <template slot="label"><abbr title="Remote Device Management">RDM</abbr> model ID</template>
-          <app-property-input-number
-            v-model="fixture.rdmModelId"
-            :schema-property="properties.fixture.rdm.properties.modelId"
-            name="rdmModelId" />
-        </app-labeled-input>
+          <LabeledInput
+            :formstate="formstate"
+            name="rdmModelId"
+            hint="The RDM manufacturer ID is saved per manufacturer.">
+            <template #label><abbr title="Remote Device Management">RDM</abbr> model ID</template>
+            <PropertyInputNumber
+              v-model="fixture.rdmModelId"
+              :schema-property="properties.fixture.rdm.properties.modelId"
+              name="rdmModelId" />
+          </LabeledInput>
 
-        <app-labeled-input
-          v-if="fixture.rdmModelId !== null"
-          :formstate="formstate"
-          name="rdmSoftwareVersion"
-          label="RDM software version">
-          <app-property-input-text
-            v-model="fixture.rdmSoftwareVersion"
-            :schema-property="properties.fixture.rdm.properties.softwareVersion"
-            name="rdmSoftwareVersion" />
-        </app-labeled-input>
-      </section>
+          <LabeledInput
+            v-if="fixture.rdmModelId !== null"
+            :formstate="formstate"
+            name="rdmSoftwareVersion"
+            label="RDM software version">
+            <PropertyInputText
+              v-model="fixture.rdmSoftwareVersion"
+              :schema-property="properties.fixture.rdm.properties.softwareVersion"
+              name="rdmSoftwareVersion" />
+          </LabeledInput>
+        </section>
 
-      <section class="physical card">
-        <h2>Physical data</h2>
-        <app-editor-physical
-          v-model="fixture.physical"
-          :formstate="formstate"
-          name-prefix="fixture" />
-      </section>
+        <section class="physical card">
+          <h2>Physical data</h2>
+          <EditorPhysical
+            v-model="fixture.physical"
+            :formstate="formstate"
+            name-prefix="fixture" />
+        </section>
 
-      <section class="fixture-modes">
-        <app-editor-mode
-          v-for="(mode, index) in fixture.modes"
-          :key="mode.uuid"
-          v-model="fixture.modes[index]"
-          :index="index"
-          :fixture="fixture"
-          :formstate="formstate"
-          @open-channel-editor="openChannelEditor"
-          @remove="fixture.modes.splice(index, 1)" />
+        <section class="fixture-modes">
+          <EditorMode
+            v-for="(mode, index) in fixture.modes"
+            :key="mode.uuid"
+            v-model="fixture.modes[index]"
+            :index="index"
+            :fixture="fixture"
+            :formstate="formstate"
+            @open-channel-editor="openChannelEditor"
+            @remove="fixture.modes.splice(index, 1)" />
 
-        <a class="fixture-mode card add-mode-link" href="#add-mode" @click.prevent="addNewMode">
-          <h2>+ Add mode</h2>
-        </a>
+          <a class="fixture-mode card add-mode-link" href="#add-mode" @click.prevent="addNewMode">
+            <h2>+ Add mode</h2>
+          </a>
 
-        <div class="clearfix" />
-      </section>
+          <div class="clearfix" />
+        </section>
 
-      <section class="user card">
-        <h2>Author data</h2>
+        <section class="user card">
+          <h2>Author data</h2>
 
-        <app-labeled-input :formstate="formstate" name="author" label="Your name">
-          <app-property-input-text
-            v-model="fixture.metaAuthor"
-            :schema-property="properties.definitions.nonEmptyString"
-            :required="true"
-            name="author"
-            hint="e.g. Anonymous" />
-        </app-labeled-input>
+          <LabeledInput :formstate="formstate" name="author" label="Your name">
+            <PropertyInputText
+              v-model="fixture.metaAuthor"
+              :schema-property="properties.definitions.nonEmptyString"
+              :required="true"
+              name="author"
+              hint="e.g. Anonymous" />
+          </LabeledInput>
 
-        <app-labeled-input
-          :formstate="formstate"
-          name="github-username"
-          label="GitHub username"
-          hint="If you want to be mentioned in the pull request.">
-          <app-property-input-text
-            v-model="fixture.metaGithubUsername"
-            :schema-property="properties.definitions.nonEmptyString"
-            name="github-username" />
-        </app-labeled-input>
+          <LabeledInput
+            :formstate="formstate"
+            name="github-username"
+            label="GitHub username"
+            hint="If you want to be mentioned in the pull request.">
+            <PropertyInputText
+              v-model="fixture.metaGithubUsername"
+              :schema-property="properties.definitions.nonEmptyString"
+              name="github-username" />
+          </LabeledInput>
 
-        <app-labeled-input hidden name="honeypot" label="Ignore this!">
-          <input v-model="honeypot" type="text">
-          <div class="hint">Spammers are likely to fill this field. Leave it empty to show that you're a human.</div>
-        </app-labeled-input>
-      </section>
+          <LabeledInput hidden name="honeypot" label="Ignore this!">
+            <input v-model="honeypot" type="text">
+            <div class="hint">Spammers are likely to fill this field. Leave it empty to show that you're a human.</div>
+          </LabeledInput>
+        </section>
 
-      <div class="button-bar right">
-        <button type="submit" class="save-fixture primary">Create fixture</button>
-      </div>
+        <div class="button-bar right">
+          <button type="submit" class="save-fixture primary">Create fixture</button>
+        </div>
 
-    </vue-form>
+      </vue-form>
 
-    <app-editor-channel-dialog
-      v-model="channel"
-      :fixture="fixture"
-      @reset-channel="resetChannel"
-      @channel-changed="autoSave(`channel`)"
-      @remove-channel="removeChannel" />
+      <EditorChannelDialog
+        v-model="channel"
+        :fixture="fixture"
+        @reset-channel="resetChannel"
+        @channel-changed="autoSave(`channel`)"
+        @remove-channel="removeChannel" />
 
-    <app-editor-choose-channel-edit-mode-dialog
-      :channel="channel"
-      :fixture="fixture" />
+      <EditorChooseChannelEditModeDialog
+        :channel="channel"
+        :fixture="fixture" />
 
-    <app-editor-restore-dialog v-model="restoredData" @restore-complete="restoreComplete" />
+      <EditorRestoreDialog v-model="restoredData" @restore-complete="restoreComplete" />
 
-    <app-editor-submit-dialog :submit="submit" @success="onFixtureSubmitted" @reset="reset" />
+      <EditorSubmitDialog :submit="submit" @success="onFixtureSubmitted" @reset="reset" />
+
+    </ClientOnly>
   </div>
 </template>
 
@@ -242,7 +246,6 @@ noscript.card {
 }
 </style>
 
-
 <script>
 import scrollIntoView from 'scroll-into-view';
 import {
@@ -250,54 +253,50 @@ import {
   getEmptyFixture,
   getEmptyChannel,
   getEmptyMode
-} from '~/assets/scripts/editor-utils.mjs';
+} from '../assets/scripts/editor-utils.js';
 
-import manufacturers from '~~/fixtures/manufacturers.json';
-import schemaProperties from '~~/lib/schema-properties.mjs';
+import manufacturers from '../../fixtures/manufacturers.json';
+import schemaProperties from '../../lib/schema-properties.js';
 
-import labeledInputVue from '~/components/labeled-input.vue';
-import propertyInputNumberVue from '~/components/property-input-number.vue';
-import propertyInputTextVue from '~/components/property-input-text.vue';
-import propertyInputTextareaVue from '~/components/property-input-textarea.vue';
-import categoryChooserVue from '~/components/category-chooser.vue';
-import editorLinksVue from '~/components/editor-links.vue';
-import editorPhysicalVue from '~/components/editor-physical.vue';
-import editorModeVue from '~/components/editor-mode.vue';
-import editorChannelDialogVue from '~/components/editor-channel-dialog.vue';
-import editorChooseChannelEditModeDialogVue from '~/components/editor-choose-channel-edit-mode-dialog.vue';
-import editorRestoreDialogVue from '~/components/editor-restore-dialog.vue';
-import editorSubmitDialogVue from '~/components/editor-submit-dialog.vue';
-
-const storageAvailable = (function() {
-  try {
-    const x = `__storage_test__`;
-    localStorage.setItem(x, x);
-    localStorage.removeItem(x);
-    return true;
-  }
-  catch (e) {
-    return false;
-  }
-})();
+import EditorCategoryChooser from '../components/editor/EditorCategoryChooser.vue';
+import EditorChannelDialog from '../components/editor/EditorChannelDialog.vue';
+import EditorChooseChannelEditModeDialog from '../components/editor/EditorChooseChannelEditModeDialog.vue';
+import EditorLinks from '../components/editor/EditorLinks.vue';
+import EditorMode from '../components/editor/EditorMode.vue';
+import EditorPhysical from '../components/editor/EditorPhysical.vue';
+import EditorRestoreDialog from '../components/editor/EditorRestoreDialog.vue';
+import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';
+import LabeledInput from '../components/LabeledInput.vue';
+import PropertyInputNumber from '../components/PropertyInputNumber.vue';
+import PropertyInputText from '../components/PropertyInputText.vue';
+import PropertyInputTextarea from '../components/PropertyInputTextarea.vue';
 
 export default {
   components: {
-    'app-labeled-input': labeledInputVue,
-    'app-property-input-number': propertyInputNumberVue,
-    'app-property-input-text': propertyInputTextVue,
-    'app-property-input-textarea': propertyInputTextareaVue,
-    'app-category-chooser': categoryChooserVue,
-    'app-editor-physical': editorPhysicalVue,
-    'app-editor-links': editorLinksVue,
-    'app-editor-mode': editorModeVue,
-    'app-editor-channel-dialog': editorChannelDialogVue,
-    'app-editor-choose-channel-edit-mode-dialog': editorChooseChannelEditModeDialogVue,
-    'app-editor-restore-dialog': editorRestoreDialogVue,
-    'app-editor-submit-dialog': editorSubmitDialogVue
+    EditorCategoryChooser,
+    EditorChannelDialog,
+    EditorChooseChannelEditModeDialog,
+    EditorLinks,
+    EditorMode,
+    EditorPhysical,
+    EditorRestoreDialog,
+    EditorSubmitDialog,
+    LabeledInput,
+    PropertyInputNumber,
+    PropertyInputText,
+    PropertyInputTextarea
   },
   head() {
+    const title = `Fixture Editor`;
+
     return {
-      title: `Fixture Editor`
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title
+        }
+      ]
     };
   },
   asyncData({ query }) {
@@ -392,8 +391,8 @@ export default {
     },
 
     /**
-     * @param {string} channelUuid The channel's UUID.
-     * @returns {string} The channel's name.
+     * @param {String} channelUuid The channel's UUID.
+     * @returns {String} The channel's name.
      */
     getChannelName(channelUuid) {
       const channel = this.fixture.availableChannels[channelUuid];
@@ -411,8 +410,8 @@ export default {
     },
 
     /**
-     * @param {string} channelUuid The channel's UUID.
-     * @returns {boolean} True if the channel's name is not used in another channel, too.
+     * @param {String} channelUuid The channel's UUID.
+     * @returns {Boolean} True if the channel's name is not used in another channel, too.
      */
     isChannelNameUnique(channelUuid) {
       const chName = this.getChannelName(channelUuid);
@@ -423,8 +422,8 @@ export default {
     },
 
     /**
-     * @param {string} channelUuid The channel's UUID.
-     * @param {string|null} [modeUuid] The mode's UUID. If not supplied, remove channel everywhere.
+     * @param {String} channelUuid The channel's UUID.
+     * @param {String|null} [modeUuid] The mode's UUID. If not supplied, remove channel everywhere.
      */
     removeChannel(channelUuid, modeUuid) {
       if (modeUuid) {
@@ -461,7 +460,7 @@ export default {
      * @param {'fixture'|'channel'} objectName The object to save.
      */
     autoSave(objectName) {
-      if (!storageAvailable || !this.readyToAutoSave) {
+      if (!this.readyToAutoSave) {
         return;
       }
 
@@ -483,10 +482,6 @@ export default {
     },
 
     clearAutoSave() {
-      if (!storageAvailable) {
-        return;
-      }
-
       localStorage.removeItem(`autoSave`);
     },
 
@@ -494,11 +489,6 @@ export default {
      * Loads auto-saved data from browser's local storage into this component's `restoredData` property, such that a dialog is opened that lets the user choose if they want to apply or discard it.
      */
     restoreAutoSave() {
-      if (!storageAvailable) {
-        this.$root._oflRestoreComplete = true;
-        return;
-      }
-
       try {
         this.restoredData = JSON.parse(localStorage.getItem(`autoSave`)).pop();
 
@@ -525,10 +515,6 @@ export default {
     },
 
     applyStoredPrefillData() {
-      if (!storageAvailable) {
-        return;
-      }
-
       if (this.fixture.metaAuthor === ``) {
         this.fixture.metaAuthor = localStorage.getItem(`prefillAuthor`) || ``;
       }
@@ -539,10 +525,6 @@ export default {
     },
 
     storePrefillData() {
-      if (!storageAvailable) {
-        return;
-      }
-
       localStorage.setItem(`prefillAuthor`, this.fixture.metaAuthor);
       localStorage.setItem(`prefillGithubUsername`, this.fixture.metaGithubUsername);
     },
@@ -606,9 +588,9 @@ export default {
 };
 
 /**
- * @param {object} prefillObject The object supplied in the page query.
- * @param {string} key The key to check.
- * @returns {boolean} True if the value prefillObject[key] is prefillable, false otherwise.
+ * @param {Object} prefillObject The object supplied in the page query.
+ * @param {String} key The key to check.
+ * @returns {Boolean} True if the value prefillObject[key] is prefillable, false otherwise.
  */
 function isPrefillable(prefillObject, key) {
   const allowedPrefillValues = {

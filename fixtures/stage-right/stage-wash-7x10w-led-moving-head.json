@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Felix Edelmann"],
     "createDate": "2019-03-29",
-    "lastModifyDate": "2019-04-15"
+    "lastModifyDate": "2019-10-30"
   },
   "links": {
     "manual": [
@@ -26,11 +26,6 @@
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "7x10W RGBW LEDs"
-    },
-    "focus": {
-      "type": "Head",
-      "panMax": 540,
-      "tiltMax": 270
     }
   },
   "availableChannels": {
@@ -131,10 +126,36 @@
       }
     },
     "Auto / Sound Mode": {
-      "capability": {
-        "type": "Generic",
-        "helpWanted": "At which DMX values can Auto / Sound mode be activated?"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 63],
+          "type": "Effect",
+          "effectName": "Auto Mode",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectName": "Auto Mode",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Sound Mode 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Sound Mode 2",
+          "soundControlled": true
+        }
+      ]
     },
     "Reset": {
       "capability": {

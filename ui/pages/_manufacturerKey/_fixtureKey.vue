@@ -6,7 +6,7 @@
     <header class="fixture-header">
       <div class="title">
         <h1>
-          <nuxt-link :to="`/${fixture.manufacturer.key}`">{{ fixture.manufacturer.name }}</nuxt-link>
+          <NuxtLink :to="`/${fixture.manufacturer.key}`">{{ fixture.manufacturer.name }}</NuxtLink>
           {{ fixture.name }}
           <code v-if="fixture.hasShortName">{{ fixture.shortName }}</code>
         </h1>
@@ -18,16 +18,16 @@
           <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manKey}/${fixKey}.json`">Source</a></span>
           <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manKey}/${fixKey}.json`">Revisions</a></span>
 
-          <app-conditional-details v-if="fixture.meta.importPlugin !== null">
+          <ConditionalDetails v-if="fixture.meta.importPlugin !== null">
             <template slot="summary">
-              Imported using the <nuxt-link :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</nuxt-link> on <span v-html="getDateHtml(fixture.meta.importDate)" />.
+              Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <span v-html="getDateHtml(fixture.meta.importDate)" />.
             </template>
             <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>
-          </app-conditional-details>
+          </ConditionalDetails>
         </section>
       </div>
 
-      <app-download-button :fixture-key="`${manKey}/${fixKey}`" />
+      <DownloadButton :fixture-key="`${manKey}/${fixKey}`" />
     </header>
 
     <section v-if="redirect" class="card yellow">
@@ -36,16 +36,16 @@
 
     <section :style="{ borderTopColor: manufacturerColor }" class="fixture-info card">
 
-      <app-labeled-value
+      <LabeledValue
         name="categories"
         label="Categories">
-        <app-category-badge
+        <CategoryBadge
           v-for="cat in fixture.categories"
           :key="cat"
           :category="cat" />
-      </app-labeled-value>
+      </LabeledValue>
 
-      <app-labeled-value
+      <LabeledValue
         v-if="fixture.hasComment"
         :value="fixture.comment"
         name="comment"
@@ -53,7 +53,7 @@
 
       <section v-if="videos" class="fixture-videos">
         <div v-for="video in videos" :key="video.url" class="fixture-video">
-          <embetty-video
+          <EmbettyVideo
             :type="video.type"
             :video-id="video.videoId"
             :start-at="video.startAt" />
@@ -61,14 +61,14 @@
             :href="video.url"
             rel="nofollow"
             target="_blank">
-            <app-svg name="youtube" />
+            <OflSvg name="youtube" />
             Watch video at {{ video.displayType }}
           </a>
         </div>
       </section>
 
-      <app-labeled-value
-        v-if="fixture.links !== null"
+      <LabeledValue
+        v-if="links.length"
         name="links"
         label="Relevant links">
         <ul class="fixture-links">
@@ -78,71 +78,71 @@
               :title="link.title"
               rel="nofollow"
               target="_blank">
-              <app-svg :name="link.iconName" />
+              <OflSvg :name="link.iconName" />
               {{ link.name }}
               <span v-if="link.type !== `other`" class="hostname">({{ link.hostname }})</span>
             </a>
           </li>
         </ul>
-      </app-labeled-value>
+      </LabeledValue>
 
-      <app-help-wanted-message
+      <HelpWantedMessage
         v-if="fixture.isHelpWanted"
         type="fixture"
         :context="fixture"
-        @helpWantedClicked="helpWantedContext = $event" />
+        @help-wanted-clicked="openHelpWantedDialog" />
 
-      <app-labeled-value
+      <LabeledValue
         v-if="fixture.rdm !== null"
         name="rdm">
-        <template slot="label">
+        <template #label>
           <abbr title="Remote Device Management">RDM</abbr> data
         </template>
 
-        {{ fixture.manufacturer.rdmId }} /
-        {{ fixture.rdm.modelId }} /
+        {{ fixture.manufacturer.rdmId }} (0x{{ fixture.manufacturer.rdmId.toString(16) }}) /
+        {{ fixture.rdm.modelId }} (0x{{ fixture.rdm.modelId.toString(16) }}) /
         {{ `softwareVersion` in fixture.rdm ? fixture.rdm.softwareVersion : `?` }} –
         <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${fixture.manufacturer.rdmId}&model=${fixture.rdm.modelId}`" rel="nofollow">
-          <app-svg name="ola" /> View in Open Lighting RDM database
+          <OflSvg name="ola" /> View in Open Lighting RDM database
         </a>
         <span class="hint">manufacturer ID / model ID / software version</span>
-      </app-labeled-value>
+      </LabeledValue>
 
       <template v-if="fixture.physical !== null">
         <h3 class="physical">Physical data</h3>
         <section class="physical">
-          <app-fixture-physical :physical="fixture.physical" />
+          <FixturePagePhysical :physical="fixture.physical" />
         </section>
       </template>
 
       <template v-if="fixture.matrix !== null">
         <h3 class="matrix">Matrix</h3>
         <section class="matrix">
-          <app-fixture-matrix :matrix="fixture.matrix" :physical="fixture.physical" />
+          <FixturePageMatrix :matrix="fixture.matrix" :physical="fixture.physical" />
         </section>
       </template>
 
       <template v-if="fixture.wheels.length > 0">
         <h3 class="wheels">Wheels</h3>
         <section class="wheels">
-          <app-fixture-wheel v-for="wheel in fixture.wheels" :key="wheel.name" :wheel="wheel" />
+          <FixturePageWheel v-for="wheel in fixture.wheels" :key="wheel.name" :wheel="wheel" />
         </section>
       </template>
 
     </section>
 
     <section class="fixture-modes">
-      <app-fixture-mode
+      <FixturePageMode
         v-for="(mode, index) in modes"
         :key="mode.name"
         :mode="mode"
         :index="index"
-        @helpWantedClicked="helpWantedContext = $event" />
+        @help-wanted-clicked="openHelpWantedDialog" />
       <div class="clearfix" />
     </section>
 
     <section v-if="modesLimited && modeNumberLoadLimit < fixture.modes.length" class="card orange dark">
-      <h2><app-svg name="alert" /> This fixture is big!</h2>
+      <h2><OflSvg name="alert" /> This fixture is big!</h2>
 
       <div>Only the first {{ modeNumberLoadLimit }} of {{ fixture.modes.length }} modes are displayed. Loading more modes might take a while.</div>
 
@@ -172,19 +172,22 @@
           v-if="isBrowser"
           href="#"
           class="card slim"
-          @click.prevent="helpWantedContext = fixture">
-          <app-svg name="comment-alert" class="left" /><span>Send information</span>
+          @click.prevent="() => openHelpWantedDialog({
+            context: fixture,
+            type: `fixture`
+          })">
+          <OflSvg name="comment-alert" class="left" /><span>Send information</span>
         </a>
         <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card slim">
-          <app-svg name="bug" class="left" /><span>Create issue on GitHub</span>
+          <OflSvg name="bug" class="left" /><span>Create issue on GitHub</span>
         </a>
         <a :href="mailtoUrl" class="card slim">
-          <app-svg name="email" class="left" /><span>Send email</span>
+          <OflSvg name="email" class="left" /><span>Send email</span>
         </a>
       </div>
     </section>
 
-    <app-help-wanted-dialog v-model="helpWantedContext" />
+    <HelpWantedDialog v-model="helpWantedContext" :type="helpWantedType" />
   </div>
 </template>
 
@@ -192,7 +195,7 @@
 .fixture-meta {
   margin: -1.5rem 0 1rem;
   font-size: 0.8rem;
-  color: $secondary-text-dark;
+  color: theme-color(text-secondary);
 
   & > span:not(:last-child)::after {
     content: ' | ';
@@ -234,7 +237,7 @@
   list-style: none;
 
   .hostname {
-    color: $secondary-text-dark;
+    color: theme-color(text-secondary);
     font-size: 0.9em;
     padding-left: 1ex;
   }
@@ -276,42 +279,40 @@
 </style>
 
 <script>
-import packageJson from '~~/package.json';
-import register from '~~/fixtures/register.json';
-import plugins from '~~/plugins/plugins.json';
+import packageJson from '../../../package.json';
+import register from '../../../fixtures/register.json';
+import plugins from '../../../plugins/plugins.json';
 
-import schemaProperties from '~~/lib/schema-properties.mjs';
-import Fixture from '~~/lib/model/Fixture.mjs';
+import schemaProperties from '../../../lib/schema-properties.js';
+import Fixture from '../../../lib/model/Fixture.js';
 
-import svg from '~/components/svg.vue';
-import categoryBadge from '~/components/category-badge.vue';
-import conditionalDetailsVue from '~/components/conditional-details.vue';
-import downloadButtonVue from '~/components/download-button.vue';
-import fixturePhysical from '~/components/fixture-physical.vue';
-import fixtureMatrix from '~/components/fixture-matrix.vue';
-import fixtureWheel from '~/components/fixture-wheel.vue';
-import fixtureMode from '~/components/fixture-mode.vue';
-import helpWantedDialog from '~/components/help-wanted-dialog.vue';
-import helpWantedMessage from '~/components/help-wanted-message.vue';
-import labeledValueVue from '~/components/labeled-value.vue';
+import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
 
-import fixtureLinksMixin from '~/assets/scripts/fixture-links-mixin.mjs';
+import CategoryBadge from '../../components/CategoryBadge.vue';
+import ConditionalDetails from '../../components/ConditionalDetails.vue';
+import DownloadButton from '../../components/DownloadButton.vue';
+import FixturePageMatrix from '../../components/fixture-page/FixturePageMatrix.vue';
+import FixturePageMode from '../../components/fixture-page/FixturePageMode.vue';
+import FixturePagePhysical from '../../components/fixture-page/FixturePagePhysical.vue';
+import FixturePageWheel from '../../components/fixture-page/FixturePageWheel.vue';
+import HelpWantedDialog from '../../components/HelpWantedDialog.vue';
+import HelpWantedMessage from '../../components/HelpWantedMessage.vue';
+import LabeledValue from '../../components/LabeledValue.vue';
 
 const VIDEOS_TO_EMBED = 2;
 
 export default {
   components: {
-    'app-svg': svg,
-    'app-category-badge': categoryBadge,
-    'app-conditional-details': conditionalDetailsVue,
-    'app-download-button': downloadButtonVue,
-    'app-fixture-physical': fixturePhysical,
-    'app-fixture-matrix': fixtureMatrix,
-    'app-fixture-wheel': fixtureWheel,
-    'app-fixture-mode': fixtureMode,
-    'app-help-wanted-dialog': helpWantedDialog,
-    'app-help-wanted-message': helpWantedMessage,
-    'app-labeled-value': labeledValueVue
+    CategoryBadge,
+    ConditionalDetails,
+    DownloadButton,
+    FixturePageMatrix,
+    FixturePageMode,
+    FixturePagePhysical,
+    FixturePageWheel,
+    HelpWantedDialog,
+    HelpWantedMessage,
+    LabeledValue
   },
   mixins: [fixtureLinksMixin],
   validate({ params }) {
@@ -358,6 +359,7 @@ export default {
       plugins,
       isBrowser: false,
       helpWantedContext: null,
+      helpWantedType: ``,
       modeNumberLoadThreshold: 15, // fixtures with more modes will be limited
       modeNumberLoadIncrement: 10 // how many modes a button click will load
     };
@@ -449,54 +451,20 @@ export default {
     },
 
     /**
-     * @returns {array.<object>} Array of videos that can be embetted.
+     * @returns {Array.<Object>} Array of videos that can be embetted.
      */
     videos() {
       const videoUrls = this.fixture.getLinksOfType(`video`);
       const embettableVideoData = [];
-
-      /**
-       * YouTube videos can be in one of the following formats:
-       * - https://www.youtube.com/watch?v={videoId}&otherParameters
-       * - https://youtu.be/{videoId]}?otherParameters
-       */
-      const youtubeRegex = /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]t=([0-9hms]+))?/;
-
-      /**
-       * Vimeo videos can be in one of the following formats:
-       * - https://vimeo.com/{videoId}
-       * - https://vimeo.com/channels/{channelName}/{videoId}
-       * - https://vimeo.com/groups/{groupId}/videos/{videoId}
-       */
-      const vimeoRegex = /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([0-9hms]+))?/;
 
       for (const url of videoUrls) {
         if (embettableVideoData.length === VIDEOS_TO_EMBED) {
           break;
         }
 
-        let match = url.match(youtubeRegex);
-        if (match !== null) {
-          embettableVideoData.push({
-            url,
-            type: `youtube`,
-            displayType: `YouTube`,
-            videoId: match[1],
-            startAt: match[2] || 0
-          });
-          continue;
-        }
-
-        match = url.match(vimeoRegex);
-        if (match !== null) {
-          embettableVideoData.push({
-            url,
-            type: `vimeo`,
-            displayType: `Vimeo`,
-            videoId: match[1],
-            startAt: match[2] || 0
-          });
-          continue;
+        const videoData = getEmbettableVideoData(url);
+        if (videoData !== null) {
+          embettableVideoData.push(videoData);
         }
       }
 
@@ -534,7 +502,7 @@ export default {
             title,
             type: linkType,
             iconName: this.linkTypeIconNames[linkType],
-            hostname: this.getHostname(url)
+            hostname: getHostname(url)
           });
 
           linkDisplayNumber++;
@@ -549,8 +517,16 @@ export default {
     }
   },
   head() {
+    const title = `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`;
+
     return {
-      title: `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title
+        }
+      ]
     };
   },
   mounted() {
@@ -559,21 +535,89 @@ export default {
     }
   },
   methods: {
-    getHostname(url) {
-      // adapted from https://stackoverflow.com/a/21553982/451391
-      const match = url.match(/^.*?\/\/(?:([^:/?#]*)(?::([0-9]+))?)/);
-      return match ? match[1] : url;
-    },
-
     /**
      * Format a date to display as a <time> HTML tag.
      * @param {Date} date The Date object to format.
-     * @returns {string} The <time> HTML tag.
+     * @returns {String} The <time> HTML tag.
      */
     getDateHtml(date) {
       return `<time datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, ``)}</time>`;
+    },
+
+    openHelpWantedDialog(event) {
+      this.helpWantedContext = event.context;
+      this.helpWantedType = event.type;
     }
   }
 };
+
+
+/**
+ * YouTube videos can be in one of the following formats:
+ * - https://www.youtube.com/watch?v={videoId}&otherParameters
+ * - https://youtu.be/{videoId]}?otherParameters
+ */
+const youtubeVideoUrlRegex = /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]t=([0-9hms]+))?/;
+
+/**
+ * Vimeo videos can be in one of the following formats:
+ * - https://vimeo.com/{videoId}
+ * - https://vimeo.com/channels/{channelName}/{videoId}
+ * - https://vimeo.com/groups/{groupId}/videos/{videoId}
+ */
+const vimeoVideoUrlRegex = /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([0-9hms]+))?/;
+
+const nativeVideoUrlRegex = /\.(?:mp4|avi)$/;
+
+
+/**
+ * @param {String} url The video URL.
+ * @returns {Object|null} The embettable video data for the URL, or null if the video can not be embetted.
+ */
+function getEmbettableVideoData(url) {
+  if (nativeVideoUrlRegex.test(url)) {
+    return {
+      url,
+      type: `native`,
+      displayType: getHostname(url),
+      videoId: url,
+      startAt: 0
+    };
+  }
+
+  let match = url.match(youtubeVideoUrlRegex);
+  if (match !== null) {
+    return {
+      url,
+      type: `youtube`,
+      displayType: `YouTube`,
+      videoId: match[1],
+      startAt: match[2] || 0
+    };
+  }
+
+  match = url.match(vimeoVideoUrlRegex);
+  if (match !== null) {
+    return {
+      url,
+      type: `vimeo`,
+      displayType: `Vimeo`,
+      videoId: match[1],
+      startAt: match[2] || 0
+    };
+  }
+
+  return null;
+}
+
+/**
+ * @param {String} url The URL to extract the hostname from.
+ * @returns {String} The hostname of the provided URL, or the whole URL if the hostname could not be determined.
+ */
+function getHostname(url) {
+  // adapted from https://stackoverflow.com/a/21553982/451391
+  const match = url.match(/^.*?\/\/(?:([^:/?#]*)(?::([0-9]+))?)/);
+  return match ? match[1] : url;
+}
 
 </script>

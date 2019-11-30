@@ -1,0 +1,1061 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "IODA 400 RGY",
+  "shortName": "CLLIODA400RGY",
+  "categories": ["Laser", "Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2019-08-21",
+    "lastModifyDate": "2019-08-21"
+  },
+  "links": {
+    "manual": [
+      "https://www.cameolight.com/en/downloads/file/id/-1031133774"
+    ],
+    "video": [
+      "https://youtu.be/LwszbJE4mg4"
+    ]
+  },
+  "physical": {
+    "dimensions": [188, 201, 210],
+    "weight": 5.6,
+    "power": 75,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "300 mW red laser (637 nm), 120 mW green DPSS laser (532 nm)"
+    }
+  },
+  "availableChannels": {
+    "Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Laser off"
+        },
+        {
+          "dmxRange": [10, 59],
+          "type": "Effect",
+          "effectName": "Auto mode: Cartoon graphics"
+        },
+        {
+          "dmxRange": [60, 109],
+          "type": "Effect",
+          "effectName": "Auto mode: Beam graphics"
+        },
+        {
+          "dmxRange": [110, 159],
+          "type": "Effect",
+          "effectName": "Sound mode: Beam graphics",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [160, 209],
+          "type": "Effect",
+          "effectName": "Sound mode: Cartoon graphics",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [210, 255],
+          "type": "NoFunction",
+          "comment": "DMX mode"
+        }
+      ]
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "RGY",
+          "colors": ["#ff0000", "#00ff00", "#ffff00"],
+          "helpWanted": "Does this mix to only yellow or are there individual red, green and yellow beams?"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Multiple color mode",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Pattern Select": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Effect",
+          "effectName": "Pattern 1"
+        },
+        {
+          "dmxRange": [2, 3],
+          "type": "Effect",
+          "effectName": "Pattern 2"
+        },
+        {
+          "dmxRange": [4, 5],
+          "type": "Effect",
+          "effectName": "Pattern 3"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Effect",
+          "effectName": "Pattern 4"
+        },
+        {
+          "dmxRange": [8, 9],
+          "type": "Effect",
+          "effectName": "Pattern 5"
+        },
+        {
+          "dmxRange": [10, 11],
+          "type": "Effect",
+          "effectName": "Pattern 6"
+        },
+        {
+          "dmxRange": [12, 13],
+          "type": "Effect",
+          "effectName": "Pattern 7"
+        },
+        {
+          "dmxRange": [14, 15],
+          "type": "Effect",
+          "effectName": "Pattern 8"
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "Effect",
+          "effectName": "Pattern 9"
+        },
+        {
+          "dmxRange": [18, 19],
+          "type": "Effect",
+          "effectName": "Pattern 10"
+        },
+        {
+          "dmxRange": [20, 21],
+          "type": "Effect",
+          "effectName": "Pattern 11"
+        },
+        {
+          "dmxRange": [22, 23],
+          "type": "Effect",
+          "effectName": "Pattern 12"
+        },
+        {
+          "dmxRange": [24, 25],
+          "type": "Effect",
+          "effectName": "Pattern 13"
+        },
+        {
+          "dmxRange": [26, 27],
+          "type": "Effect",
+          "effectName": "Pattern 14"
+        },
+        {
+          "dmxRange": [28, 29],
+          "type": "Effect",
+          "effectName": "Pattern 15"
+        },
+        {
+          "dmxRange": [30, 31],
+          "type": "Effect",
+          "effectName": "Pattern 16"
+        },
+        {
+          "dmxRange": [32, 33],
+          "type": "Effect",
+          "effectName": "Pattern 17"
+        },
+        {
+          "dmxRange": [34, 35],
+          "type": "Effect",
+          "effectName": "Pattern 18"
+        },
+        {
+          "dmxRange": [36, 37],
+          "type": "Effect",
+          "effectName": "Pattern 19"
+        },
+        {
+          "dmxRange": [38, 39],
+          "type": "Effect",
+          "effectName": "Pattern 20"
+        },
+        {
+          "dmxRange": [40, 41],
+          "type": "Effect",
+          "effectName": "Pattern 21"
+        },
+        {
+          "dmxRange": [42, 43],
+          "type": "Effect",
+          "effectName": "Pattern 22"
+        },
+        {
+          "dmxRange": [44, 45],
+          "type": "Effect",
+          "effectName": "Pattern 23"
+        },
+        {
+          "dmxRange": [46, 47],
+          "type": "Effect",
+          "effectName": "Pattern 24"
+        },
+        {
+          "dmxRange": [48, 49],
+          "type": "Effect",
+          "effectName": "Pattern 25"
+        },
+        {
+          "dmxRange": [50, 51],
+          "type": "Effect",
+          "effectName": "Pattern 26"
+        },
+        {
+          "dmxRange": [52, 53],
+          "type": "Effect",
+          "effectName": "Pattern 27"
+        },
+        {
+          "dmxRange": [54, 55],
+          "type": "Effect",
+          "effectName": "Pattern 28"
+        },
+        {
+          "dmxRange": [56, 57],
+          "type": "Effect",
+          "effectName": "Pattern 29"
+        },
+        {
+          "dmxRange": [58, 59],
+          "type": "Effect",
+          "effectName": "Pattern 30"
+        },
+        {
+          "dmxRange": [60, 61],
+          "type": "Effect",
+          "effectName": "Pattern 31"
+        },
+        {
+          "dmxRange": [62, 63],
+          "type": "Effect",
+          "effectName": "Pattern 32"
+        },
+        {
+          "dmxRange": [64, 65],
+          "type": "Effect",
+          "effectName": "Pattern 33"
+        },
+        {
+          "dmxRange": [66, 67],
+          "type": "Effect",
+          "effectName": "Pattern 34"
+        },
+        {
+          "dmxRange": [68, 69],
+          "type": "Effect",
+          "effectName": "Pattern 35"
+        },
+        {
+          "dmxRange": [70, 71],
+          "type": "Effect",
+          "effectName": "Pattern 36"
+        },
+        {
+          "dmxRange": [72, 73],
+          "type": "Effect",
+          "effectName": "Pattern 37"
+        },
+        {
+          "dmxRange": [74, 75],
+          "type": "Effect",
+          "effectName": "Pattern 38"
+        },
+        {
+          "dmxRange": [76, 77],
+          "type": "Effect",
+          "effectName": "Pattern 39"
+        },
+        {
+          "dmxRange": [78, 79],
+          "type": "Effect",
+          "effectName": "Pattern 40"
+        },
+        {
+          "dmxRange": [80, 81],
+          "type": "Effect",
+          "effectName": "Pattern 41"
+        },
+        {
+          "dmxRange": [82, 83],
+          "type": "Effect",
+          "effectName": "Pattern 42"
+        },
+        {
+          "dmxRange": [84, 85],
+          "type": "Effect",
+          "effectName": "Pattern 43"
+        },
+        {
+          "dmxRange": [86, 87],
+          "type": "Effect",
+          "effectName": "Pattern 44"
+        },
+        {
+          "dmxRange": [88, 89],
+          "type": "Effect",
+          "effectName": "Pattern 45"
+        },
+        {
+          "dmxRange": [90, 91],
+          "type": "Effect",
+          "effectName": "Pattern 46"
+        },
+        {
+          "dmxRange": [92, 93],
+          "type": "Effect",
+          "effectName": "Pattern 47"
+        },
+        {
+          "dmxRange": [94, 95],
+          "type": "Effect",
+          "effectName": "Pattern 48"
+        },
+        {
+          "dmxRange": [96, 97],
+          "type": "Effect",
+          "effectName": "Pattern 49"
+        },
+        {
+          "dmxRange": [98, 99],
+          "type": "Effect",
+          "effectName": "Pattern 50"
+        },
+        {
+          "dmxRange": [100, 101],
+          "type": "Effect",
+          "effectName": "Pattern 51"
+        },
+        {
+          "dmxRange": [102, 103],
+          "type": "Effect",
+          "effectName": "Pattern 52"
+        },
+        {
+          "dmxRange": [104, 105],
+          "type": "Effect",
+          "effectName": "Pattern 53"
+        },
+        {
+          "dmxRange": [106, 107],
+          "type": "Effect",
+          "effectName": "Pattern 54"
+        },
+        {
+          "dmxRange": [108, 109],
+          "type": "Effect",
+          "effectName": "Pattern 55"
+        },
+        {
+          "dmxRange": [110, 111],
+          "type": "Effect",
+          "effectName": "Pattern 56"
+        },
+        {
+          "dmxRange": [112, 113],
+          "type": "Effect",
+          "effectName": "Pattern 57"
+        },
+        {
+          "dmxRange": [114, 115],
+          "type": "Effect",
+          "effectName": "Pattern 58"
+        },
+        {
+          "dmxRange": [116, 117],
+          "type": "Effect",
+          "effectName": "Pattern 59"
+        },
+        {
+          "dmxRange": [118, 119],
+          "type": "Effect",
+          "effectName": "Pattern 60"
+        },
+        {
+          "dmxRange": [120, 121],
+          "type": "Effect",
+          "effectName": "Pattern 61"
+        },
+        {
+          "dmxRange": [122, 123],
+          "type": "Effect",
+          "effectName": "Pattern 62"
+        },
+        {
+          "dmxRange": [124, 125],
+          "type": "Effect",
+          "effectName": "Pattern 63"
+        },
+        {
+          "dmxRange": [126, 127],
+          "type": "Effect",
+          "effectName": "Pattern 64"
+        },
+        {
+          "dmxRange": [128, 129],
+          "type": "Effect",
+          "effectName": "Pattern 65"
+        },
+        {
+          "dmxRange": [130, 131],
+          "type": "Effect",
+          "effectName": "Pattern 66"
+        },
+        {
+          "dmxRange": [132, 133],
+          "type": "Effect",
+          "effectName": "Pattern 67"
+        },
+        {
+          "dmxRange": [134, 135],
+          "type": "Effect",
+          "effectName": "Pattern 68"
+        },
+        {
+          "dmxRange": [136, 137],
+          "type": "Effect",
+          "effectName": "Pattern 69"
+        },
+        {
+          "dmxRange": [138, 139],
+          "type": "Effect",
+          "effectName": "Pattern 70"
+        },
+        {
+          "dmxRange": [140, 141],
+          "type": "Effect",
+          "effectName": "Pattern 71"
+        },
+        {
+          "dmxRange": [142, 143],
+          "type": "Effect",
+          "effectName": "Pattern 72"
+        },
+        {
+          "dmxRange": [144, 145],
+          "type": "Effect",
+          "effectName": "Pattern 73"
+        },
+        {
+          "dmxRange": [146, 147],
+          "type": "Effect",
+          "effectName": "Pattern 74"
+        },
+        {
+          "dmxRange": [148, 149],
+          "type": "Effect",
+          "effectName": "Pattern 75"
+        },
+        {
+          "dmxRange": [150, 151],
+          "type": "Effect",
+          "effectName": "Pattern 76"
+        },
+        {
+          "dmxRange": [152, 153],
+          "type": "Effect",
+          "effectName": "Pattern 77"
+        },
+        {
+          "dmxRange": [154, 155],
+          "type": "Effect",
+          "effectName": "Pattern 78"
+        },
+        {
+          "dmxRange": [156, 157],
+          "type": "Effect",
+          "effectName": "Pattern 79"
+        },
+        {
+          "dmxRange": [158, 159],
+          "type": "Effect",
+          "effectName": "Pattern 80"
+        },
+        {
+          "dmxRange": [160, 161],
+          "type": "Effect",
+          "effectName": "Pattern 81"
+        },
+        {
+          "dmxRange": [162, 163],
+          "type": "Effect",
+          "effectName": "Pattern 82"
+        },
+        {
+          "dmxRange": [164, 165],
+          "type": "Effect",
+          "effectName": "Pattern 83"
+        },
+        {
+          "dmxRange": [166, 167],
+          "type": "Effect",
+          "effectName": "Pattern 84"
+        },
+        {
+          "dmxRange": [168, 169],
+          "type": "Effect",
+          "effectName": "Pattern 85"
+        },
+        {
+          "dmxRange": [170, 171],
+          "type": "Effect",
+          "effectName": "Pattern 86"
+        },
+        {
+          "dmxRange": [172, 173],
+          "type": "Effect",
+          "effectName": "Pattern 87"
+        },
+        {
+          "dmxRange": [174, 175],
+          "type": "Effect",
+          "effectName": "Pattern 88"
+        },
+        {
+          "dmxRange": [176, 177],
+          "type": "Effect",
+          "effectName": "Pattern 89"
+        },
+        {
+          "dmxRange": [178, 179],
+          "type": "Effect",
+          "effectName": "Pattern 90"
+        },
+        {
+          "dmxRange": [180, 181],
+          "type": "Effect",
+          "effectName": "Pattern 91"
+        },
+        {
+          "dmxRange": [182, 183],
+          "type": "Effect",
+          "effectName": "Pattern 92"
+        },
+        {
+          "dmxRange": [184, 185],
+          "type": "Effect",
+          "effectName": "Pattern 93"
+        },
+        {
+          "dmxRange": [186, 187],
+          "type": "Effect",
+          "effectName": "Pattern 94"
+        },
+        {
+          "dmxRange": [188, 189],
+          "type": "Effect",
+          "effectName": "Pattern 95"
+        },
+        {
+          "dmxRange": [190, 191],
+          "type": "Effect",
+          "effectName": "Pattern 96"
+        },
+        {
+          "dmxRange": [192, 193],
+          "type": "Effect",
+          "effectName": "Pattern 97"
+        },
+        {
+          "dmxRange": [194, 195],
+          "type": "Effect",
+          "effectName": "Pattern 98"
+        },
+        {
+          "dmxRange": [196, 197],
+          "type": "Effect",
+          "effectName": "Pattern 99"
+        },
+        {
+          "dmxRange": [198, 199],
+          "type": "Effect",
+          "effectName": "Pattern 100"
+        },
+        {
+          "dmxRange": [200, 201],
+          "type": "Effect",
+          "effectName": "Pattern 101"
+        },
+        {
+          "dmxRange": [202, 203],
+          "type": "Effect",
+          "effectName": "Pattern 102"
+        },
+        {
+          "dmxRange": [204, 205],
+          "type": "Effect",
+          "effectName": "Pattern 103"
+        },
+        {
+          "dmxRange": [206, 207],
+          "type": "Effect",
+          "effectName": "Pattern 104"
+        },
+        {
+          "dmxRange": [208, 209],
+          "type": "Effect",
+          "effectName": "Pattern 105"
+        },
+        {
+          "dmxRange": [210, 211],
+          "type": "Effect",
+          "effectName": "Pattern 106"
+        },
+        {
+          "dmxRange": [212, 213],
+          "type": "Effect",
+          "effectName": "Pattern 107"
+        },
+        {
+          "dmxRange": [214, 215],
+          "type": "Effect",
+          "effectName": "Pattern 108"
+        },
+        {
+          "dmxRange": [216, 217],
+          "type": "Effect",
+          "effectName": "Pattern 109"
+        },
+        {
+          "dmxRange": [218, 219],
+          "type": "Effect",
+          "effectName": "Pattern 110"
+        },
+        {
+          "dmxRange": [220, 221],
+          "type": "Effect",
+          "effectName": "Pattern 111"
+        },
+        {
+          "dmxRange": [222, 223],
+          "type": "Effect",
+          "effectName": "Pattern 112"
+        },
+        {
+          "dmxRange": [224, 225],
+          "type": "Effect",
+          "effectName": "Pattern 113"
+        },
+        {
+          "dmxRange": [226, 227],
+          "type": "Effect",
+          "effectName": "Pattern 114"
+        },
+        {
+          "dmxRange": [228, 229],
+          "type": "Effect",
+          "effectName": "Pattern 115"
+        },
+        {
+          "dmxRange": [230, 231],
+          "type": "Effect",
+          "effectName": "Pattern 116"
+        },
+        {
+          "dmxRange": [232, 233],
+          "type": "Effect",
+          "effectName": "Pattern 117"
+        },
+        {
+          "dmxRange": [234, 235],
+          "type": "Effect",
+          "effectName": "Pattern 118"
+        },
+        {
+          "dmxRange": [236, 237],
+          "type": "Effect",
+          "effectName": "Pattern 119"
+        },
+        {
+          "dmxRange": [238, 239],
+          "type": "Effect",
+          "effectName": "Pattern 120"
+        },
+        {
+          "dmxRange": [240, 241],
+          "type": "Effect",
+          "effectName": "Pattern 121"
+        },
+        {
+          "dmxRange": [242, 243],
+          "type": "Effect",
+          "effectName": "Pattern 122"
+        },
+        {
+          "dmxRange": [244, 245],
+          "type": "Effect",
+          "effectName": "Pattern 123"
+        },
+        {
+          "dmxRange": [246, 247],
+          "type": "Effect",
+          "effectName": "Pattern 124"
+        },
+        {
+          "dmxRange": [248, 249],
+          "type": "Effect",
+          "effectName": "Pattern 125"
+        },
+        {
+          "dmxRange": [250, 251],
+          "type": "Effect",
+          "effectName": "Pattern 126"
+        },
+        {
+          "dmxRange": [252, 253],
+          "type": "Effect",
+          "effectName": "Pattern 127"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "Effect",
+          "effectName": "Pattern 128"
+        }
+      ]
+    },
+    "Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectName": "Bidirectional rotation",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectName": "Bidirectional rotation pos. 2",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "X Axis Rolling": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectName": "Bidirectional rolling",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectName": "Bidirectional rolling",
+          "speedStart": "slow reverse",
+          "speedEnd": "fast reverse"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Y Axis Rolling": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectName": "Bidirectional rolling",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectName": "Bidirectional rolling",
+          "speedStart": "slow reverse",
+          "speedEnd": "fast reverse"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "X Axis Moving": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "BeamPosition",
+          "horizontalAngleStart": "left",
+          "horizontalAngleEnd": "right"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectName": "Auto moving forward",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectName": "Auto moving backward",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectName": "Auto moving backward 2",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Auto bidirectional moving",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Y Axis Moving": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "BeamPosition",
+          "verticalAngleStart": "top",
+          "verticalAngleEnd": "bottom"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectName": "Auto moving downward",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectName": "Auto moving upward",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectName": "Auto moving downward 2",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Auto bidirectional moving",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Zoom": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Zoom",
+          "angleStart": "wide",
+          "angleEnd": "narrow"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "Decreasing auto zooming",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "Increasing auto zooming",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Drawing": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Effect",
+          "effectName": "Auto drawing",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Auto drawing + de-drawing",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Scanning Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "With gaps"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Program",
+        "Color Presets",
+        "Pattern Select",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Program",
+        "Color Presets",
+        "Pattern Select",
+        "Rotation",
+        "X Axis Rolling",
+        "Y Axis Rolling",
+        "X Axis Moving",
+        "Y Axis Moving",
+        "Zoom",
+        "Drawing",
+        "Scanning Speed"
+      ]
+    }
+  ]
+}

@@ -50,27 +50,27 @@ for (const featureFile of fs.readdirSync(fixFeaturesDir)) {
 
 // check which features each fixture supports
 let fixtures = [];
-for (const man of Object.keys(register.manufacturers)) {
-  for (const fixKey of register.manufacturers[man]) {
-    // pre-process data
-    const fix = fixtureFromRepository(man, fixKey);
-    const fixResult = {
-      man: man,
-      key: fixKey,
-      name: fix.name,
-      features: []
-    };
+for (const manFix of Object.keys(register.filesystem)) {
+  const [manKey, fixKey] = manFix.split(`/`);
 
-    // check all features
-    for (const fixFeature of fixFeatures) {
-      if (fixFeature.hasFeature(fix)) {
-        fixResult.features.push(fixFeature.id);
-        featuresUsed[fixFeature.id]++;
-      }
+  // pre-process data
+  const fix = fixtureFromRepository(manKey, fixKey);
+  const fixResult = {
+    man: manKey,
+    key: fixKey,
+    name: fix.name,
+    features: []
+  };
+
+  // check all features
+  for (const fixFeature of fixFeatures) {
+    if (fixFeature.hasFeature(fix)) {
+      fixResult.features.push(fixFeature.id);
+      featuresUsed[fixFeature.id]++;
     }
-
-    fixtures.push(fixResult);
   }
+
+  fixtures.push(fixResult);
 }
 
 // first fixtures are more likely to be filtered out, so we start with the ones with the fewest features
@@ -127,7 +127,7 @@ fs.writeFile(markdownFile, getMarkdownCode(), `utf8`, error => {
 
 /**
  * Generates a markdown table presenting the test fixtures and all fix features.
- * @returns {string} The markdown code to be used in a markdown file.
+ * @returns {String} The markdown code to be used in a markdown file.
  */
 function getMarkdownCode() {
   const mdLines = [
@@ -145,7 +145,7 @@ function getMarkdownCode() {
   mdLines.push(``);
 
   // table head
-  const tableHead = [].concat(`*Fixture number*`, fixtures.map((fixture, index) => index + 1)).join(` | `);
+  const tableHead = [`*Fixture number*`].concat(fixtures.map((fixture, index) => index + 1)).join(` | `);
 
   mdLines.push(tableHead);
   mdLines.push(`|-`.repeat(fixtures.length + 1));

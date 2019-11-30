@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Gasprojector GX2",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Gloryfire"],
+    "createDate": "2019-05-30",
+    "lastModifyDate": "2019-05-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.explo.at/_Resources/Persistent/459c14f10f9fddad03748a108704cb345c719266/Gasbrenner%20GX2%202.0%20EN.pdf"
+    ],
+    "productPage": [
+      "https://www.explo.at/en/effektgeraete/gas/gx2-12v.html"
+    ],
+    "video": [
+      "https://youtu.be/nRJiaLzVk0Y",
+      "https://www.youtube.com/watch?v=ut26zDS3Z4c"
+    ]
+  },
+  "physical": {
+    "dimensions": [260, 390, 260],
+    "weight": 6.8,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Ignition": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 252],
+          "type": "NoFunction",
+          "comment": "No ignition"
+        },
+        {
+          "dmxRange": [253, 255],
+          "type": "Effect",
+          "effectName": "Single ignition"
+        }
+      ]
+    },
+    "Valve Opening Time": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "Saftety zone"
+        },
+        {
+          "dmxRange": [11, 13],
+          "type": "Time",
+          "timeStart": "20ms",
+          "timeEnd": "60ms",
+          "comment": "Small fireball"
+        },
+        {
+          "dmxRange": [14, 34],
+          "type": "Time",
+          "timeStart": "80ms",
+          "timeEnd": "480ms",
+          "comment": "Flame pillar"
+        },
+        {
+          "dmxRange": [35, 60],
+          "type": "Time",
+          "timeStart": "500ms",
+          "timeEnd": "1000ms",
+          "comment": "Larger flames"
+        },
+        {
+          "dmxRange": [61, 200],
+          "type": "Time",
+          "timeStart": "1020ms",
+          "timeEnd": "3800ms",
+          "comment": "Extra large flames"
+        },
+        {
+          "dmxRange": [201, 250],
+          "type": "Effect",
+          "effectName": "Flame every 5 seconds"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction",
+          "comment": "Safety zone"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Ignition",
+        "Valve Opening Time"
+      ]
+    }
+  ]
+}
