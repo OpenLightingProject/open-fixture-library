@@ -53,9 +53,45 @@ const uniqueValues = {
 };
 
 const promises = [];
-
-// search fixture files
 const fixturePath = path.join(__dirname, `..`, `fixtures`);
+
+
+if (args.fixtures !== undefined) {
+  // were assuming the fixtures are given as a semicolon
+  // separated list in the form `<manufacturer>[/[fixtures]]`
+  // where [fixtures] is a comma separated list of concrete fixtures
+
+  const fixturesToParse = args.fixtures;
+  const allManufacturers = fs.readdirSync(fixturePath);
+  for (const manufacturerFixtures of fixturesToParse.split(`;`)) {
+    let [manKey, fixtures] = manufacturerFixtures.split(`/`);
+    if (!allManufacturers.includes(manKey)) {
+      promises.push(new Promise(resolve => {
+        resolve({
+          filename: manKey,
+          errors: [`invalid manufacturer`]
+        });
+      }));
+      continue;
+    }
+    if (fixtures === `` || fixtures === undefined) {
+      console.log(fs.readdirSync(path.resolve(fixturePath, manKey)))
+      for (const file of fs.readdirSync(path.resolve(fixturePath, manKey))) {
+        if (path.extname(file) === `.json`) {
+          const fixKey = path.basename(file, `.json`);
+          handleFixtureFile(manKey, fixKey);
+        }
+      }
+    }
+    else {
+      fixtures = fixtures.split(`,`);
+      for (const fix of fixtures) {
+        handleFixtureFile(manKey, path.basename(fix, `.json`));
+      }
+    }
+  }
+}
+else {
   for (const manKey of fs.readdirSync(fixturePath)) {
     const manDir = path.join(fixturePath, manKey);
 
@@ -69,6 +105,8 @@ const fixturePath = path.join(__dirname, `..`, `fixtures`);
       }
     }
   }
+  checkManufacturers();
+}
 
 /**
  * Checks (asynchronously) the given fixture by adding a Promise to the promises array that resolves with a result object.
