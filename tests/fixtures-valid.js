@@ -56,19 +56,19 @@ const promises = [];
 
 // search fixture files
 const fixturePath = path.join(__dirname, `..`, `fixtures`);
-for (const manKey of fs.readdirSync(fixturePath)) {
-  const manDir = path.join(fixturePath, manKey);
+  for (const manKey of fs.readdirSync(fixturePath)) {
+    const manDir = path.join(fixturePath, manKey);
 
-  // files in manufacturer directory
-  if (fs.statSync(manDir).isDirectory()) {
-    for (const file of fs.readdirSync(manDir)) {
-      if (path.extname(file) === `.json`) {
-        const fixKey = path.basename(file, `.json`);
-        handleFixtureFile(manKey, fixKey);
+    // files in manufacturer directory
+    if (fs.statSync(manDir).isDirectory()) {
+      for (const file of fs.readdirSync(manDir)) {
+        if (path.extname(file) === `.json`) {
+          const fixKey = path.basename(file, `.json`);
+          handleFixtureFile(manKey, fixKey);
+        }
       }
     }
   }
-}
 
 /**
  * Checks (asynchronously) the given fixture by adding a Promise to the promises array that resolves with a result object.
@@ -113,64 +113,68 @@ function handleFixtureFile(manKey, fixKey) {
   }));
 }
 
-// check manufacturers file
-promises.push(new Promise((resolve, reject) => {
-  const result = {
-    name: `manufacturers.json`,
-    errors: [],
-    warnings: []
-  };
-  const filename = path.join(fixturePath, result.name);
+/**
+ * Checks Manufacturers file
+ */
+function checkManufacturers() {
+  promises.push(new Promise((resolve, reject) => {
+    const result = {
+      name: `manufacturers.json`,
+      errors: [],
+      warnings: []
+    };
+    const filename = path.join(fixturePath, result.name);
 
-  fs.readFile(filename, `utf8`, (readError, data) => {
-    if (readError) {
-      result.errors.push(getErrorString(`File could not be read.`, readError));
-      return resolve(result);
-    }
-
-    let manufacturers;
-    try {
-      manufacturers = JSON.parse(data);
-    }
-    catch (parseError) {
-      result.errors.push(getErrorString(`File could not be parsed.`, parseError));
-      return resolve(result);
-    }
-
-
-    const validate = (new Ajv()).compile(manufacturerSchema);
-    const valid = validate(manufacturers);
-    if (!valid) {
-      result.errors.push(getErrorString(`File does not match schema.`, validate.errors));
-      return resolve(result);
-    }
-
-    for (const manKey of Object.keys(manufacturers)) {
-      if (manKey.startsWith(`$`)) {
-        // JSON schema property
-        continue;
+    fs.readFile(filename, `utf8`, (readError, data) => {
+      if (readError) {
+        result.errors.push(getErrorString(`File could not be read.`, readError));
+        return resolve(result);
       }
 
-      checkUniqueness(
-        uniqueValues.manNames,
-        manufacturers[manKey].name,
-        result,
-        `Manufacturer name '${manufacturers[manKey].name}' is not unique (test is not case-sensitive).`
-      );
+      let manufacturers;
+      try {
+        manufacturers = JSON.parse(data);
+      }
+      catch (parseError) {
+        result.errors.push(getErrorString(`File could not be parsed.`, parseError));
+        return resolve(result);
+      }
 
-      if (`rdmId` in manufacturers[manKey]) {
+
+      const validate = (new Ajv()).compile(manufacturerSchema);
+      const valid = validate(manufacturers);
+      if (!valid) {
+        result.errors.push(getErrorString(`File does not match schema.`, validate.errors));
+        return resolve(result);
+      }
+
+      for (const manKey of Object.keys(manufacturers)) {
+        if (manKey.startsWith(`$`)) {
+          // JSON schema property
+          continue;
+        }
+
         checkUniqueness(
-          uniqueValues.manRdmIds,
-          `${manufacturers[manKey].rdmId}`,
+          uniqueValues.manNames,
+          manufacturers[manKey].name,
           result,
-          `Manufacturer RDM ID '${manufacturers[manKey].rdmId}' is not unique.`
+          `Manufacturer name '${manufacturers[manKey].name}' is not unique (test is not case-sensitive).`
         );
-      }
-    }
 
-    return resolve(result);
-  });
-}));
+        if (`rdmId` in manufacturers[manKey]) {
+          checkUniqueness(
+            uniqueValues.manRdmIds,
+            `${manufacturers[manKey].rdmId}`,
+            result,
+            `Manufacturer RDM ID '${manufacturers[manKey].rdmId}' is not unique.`
+          );
+        }
+      }
+
+      return resolve(result);
+    });
+  }));
+}
 
 
 // print results
