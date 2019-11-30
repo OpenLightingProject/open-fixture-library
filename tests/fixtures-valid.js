@@ -5,6 +5,32 @@ const path = require(`path`);
 const chalk = require(`chalk`);
 const Ajv = require(`ajv`);
 
+// interactive commandline support
+const minimist = require(`minimist`);
+
+const args = minimist(process.argv.slice(2), {
+  boolean: [`h`],
+  string: [`f`], // convert to file with possibly completion?
+  alias: { h: `help`, f: `fixtures` }
+});
+
+
+const helpMessage = [
+  `Check validity of some/all fixtures`,
+  `Usage: node ${path.relative(process.cwd(), __filename)} [ -f | -h ]`,
+  `Options:`,
+  `  --fixtures <directive>,  -f <directive>: path to fixtures to check explicity.`,
+  `     directive stands for a semicolon separated list in the form <manufacturer>[/[fixtures]]`
+  `     and [fixtures] is a comma separated of fixtures`
+  `     when [fixtures] is omitted, all of the fixtures for that manufacturer will be validated`
+  `  --help,                  -h: Show this help message.`
+].join(`\n`);
+
+if (args.help) {
+  console.log(helpMessage);
+  process.exit(0);
+}
+
 const manufacturerSchema = require(`../schemas/dereferenced/manufacturers.json`);
 const { checkFixture, checkUniqueness, getErrorString } = require(`./fixture-valid.js`);
 
