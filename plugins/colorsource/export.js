@@ -7,7 +7,7 @@ const {
   FineChannel,
   SwitchingChannel
 } = require(`../../lib/model.js`);
-const { scaleDmxValue } = require(`../../lib/scale-dmx-values.mjs`);
+const { scaleDmxValue } = require(`../../lib/scale-dmx-values.js`);
 
 module.exports.name = `ColorSource`;
 module.exports.version = `0.1.0`;
