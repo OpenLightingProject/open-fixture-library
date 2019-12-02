@@ -69,7 +69,8 @@ if (args.fixtures !== undefined) {
       promises.push(new Promise(resolve => {
         resolve({
           filename: manKey,
-          errors: [`invalid manufacturer`]
+          errors: [`invalid manufacturer`],
+          warning: []
         });
       }));
       continue;
