@@ -1,0 +1,260 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SmartBat",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Matteo Piccina"],
+    "createDate": "2019-12-02",
+    "lastModifyDate": "2019-12-02"
+  },
+  "links": {
+    "manual": [
+      "https://www.musiclights.it/download.php?id=3844"
+    ],
+    "productPage": [
+      "https://www.musiclights.it/product/SMARTBAT"
+    ]
+  },
+  "physical": {
+    "dimensions": [138, 186, 145],
+    "weight": 3.4,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 1127
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Color + Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "ColorPreset",
+          "comment": "Red to Yellow",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffff00"]
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "ColorPreset",
+          "comment": "Yellow to Red",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#00ff00"]
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "ColorPreset",
+          "comment": "Green to Cyan",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#00ffff"]
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "ColorPreset",
+          "comment": "Cyan to Blue",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "ColorPreset",
+          "comment": "Blue to Magenta",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "ColorPreset",
+          "comment": "Magenta to Red",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#ff0000"]
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "ColorPreset",
+          "comment": "Red to White",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffffff"]
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "ColorPreset",
+          "comment": "White to Blue",
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [171, 200],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "warm",
+          "colorTemperatureEnd": "cold",
+          "comment": "Color Temperature"
+        }
+      ]
+    },
+    "Auto/Sound Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "No Function"
+        },
+        {
+          "dmxRange": [11, 60],
+          "type": "Generic",
+          "comment": "Auto Program 1"
+        },
+        {
+          "dmxRange": [61, 120],
+          "type": "Generic",
+          "comment": "Auto Program 2"
+        },
+        {
+          "dmxRange": [121, 180],
+          "type": "Generic",
+          "comment": "Auto Program 3"
+        },
+        {
+          "dmxRange": [181, 240],
+          "type": "Generic",
+          "comment": "Auto Program 4"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Generic",
+          "comment": "Sound Show"
+        }
+      ]
+    },
+    "Auto Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "Generic",
+          "comment": "Preset dimmer speed from display menu"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Generic",
+          "comment": "Dimmer speed mode off"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Generic",
+          "comment": "Dimmer speed mode 1 (fast speed)"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Generic",
+          "comment": "Dimmer speed mode 2 (middle speed)"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Generic",
+          "comment": "Dimmer speed mode 3 (slow speed)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Ch",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6 Ch",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "10 Ch",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Color + Color Temperature",
+        "Strobe",
+        "Auto/Sound Programs",
+        "Auto Speed",
+        "Dimmer Speed"
+      ]
+    }
+  ]
+}
