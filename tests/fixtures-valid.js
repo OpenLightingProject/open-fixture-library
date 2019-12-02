@@ -20,9 +20,9 @@ const helpMessage = [
   `Usage: node ${path.relative(process.cwd(), __filename)} [ -f | -h ]`,
   `Options:`,
   `  --fixtures <directive>,  -f <directive>: path to fixtures to check explicity.`,
-  `     directive stands for a semicolon separated list in the form <manufacturer>[/[fixtures]]`
-  `     and [fixtures] is a comma separated of fixtures`
-  `     when [fixtures] is omitted, all of the fixtures for that manufacturer will be validated`
+  `     directive stands for a semicolon separated list in the form <manufacturer>[/[fixtures]]`,
+  `     and [fixtures] is a comma separated of fixtures`,
+  `     when [fixtures] is omitted, all of the fixtures for that manufacturer will be validated`,
   `  --help,                  -h: Show this help message.`
 ].join(`\n`);
 
