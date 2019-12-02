@@ -64,7 +64,7 @@ if (args.fixtures !== undefined) {
   const fixturesToParse = args.fixtures;
   const allManufacturers = fs.readdirSync(fixturePath);
   for (const manufacturerFixtures of fixturesToParse.split(`;`)) {
-    let [manKey, fixtures] = manufacturerFixtures.split(`/`);
+    const [manKey, fixtures] = manufacturerFixtures.split(`/`);
     if (!allManufacturers.includes(manKey)) {
       promises.push(new Promise(resolve => {
         resolve({
@@ -84,8 +84,7 @@ if (args.fixtures !== undefined) {
       }
     }
     else {
-      fixtures = fixtures.split(`,`);
-      for (const fix of fixtures) {
+      for (const fix of fixtures.split(`,`)) {
         handleFixtureFile(manKey, path.basename(fix, `.json`));
       }
     }
