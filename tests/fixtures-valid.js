@@ -68,7 +68,7 @@ if (args.fixtures !== undefined) {
     if (!allManufacturers.includes(manKey)) {
       promises.push(new Promise(resolve => {
         resolve({
-          filename: manKey,
+          name: manKey,
           errors: [`invalid manufacturer`],
           warning: []
         });
