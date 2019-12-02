@@ -75,7 +75,6 @@ if (args.fixtures !== undefined) {
       continue;
     }
     if (fixtures === `` || fixtures === undefined) {
-      console.log(fs.readdirSync(path.resolve(fixturePath, manKey)))
       for (const file of fs.readdirSync(path.resolve(fixturePath, manKey))) {
         if (path.extname(file) === `.json`) {
           const fixKey = path.basename(file, `.json`);
