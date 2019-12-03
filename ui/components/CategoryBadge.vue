@@ -3,7 +3,7 @@
   display: inline-block;
   padding: 4px 1.5ex 4px 1ex;
   margin: 0 4px 4px 0;
-  border-radius: 5000px; /* see http://stackoverflow.com/a/18795153/451391 */
+  border-radius: 5000px; /* see https://stackoverflow.com/a/18795153/451391 */
   background: theme-color(hover-background);
 
   &:link,
