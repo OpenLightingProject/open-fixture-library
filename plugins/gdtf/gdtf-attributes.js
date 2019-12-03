@@ -72,7 +72,9 @@ const gdtfUnits = {
   AngularAcc(value) {
     return `${value}deg/s2`;
   },
-  WaveLength(value) {
+  Wavelength(value) {
+    // it's actually 'WaveLength' in GDTF, but likely to change in the next GDTF version
+    // see https://github.com/OpenLightingProject/open-fixture-library/pull/1084
     return `${value}nm`;
   },
   ColorComponent(value) {

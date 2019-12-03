@@ -983,17 +983,17 @@ const capabilityPresets = {
  * @returns {CapabilityPreset|null} The QLC+ capability preset or null, if there is no suitable one.
  */
 function getCapabilityPreset(capability) {
-  const presetName = Object.keys(capabilityPresets).find(
+  const foundPresetName = Object.keys(capabilityPresets).find(
     presetName => capabilityPresets[presetName].isApplicable(capability)
   );
 
-  if (!presetName) {
+  if (!foundPresetName) {
     return null;
   }
 
-  const preset = capabilityPresets[presetName];
+  const preset = capabilityPresets[foundPresetName];
   return {
-    presetName,
+    presetName: foundPresetName,
     res1: `exportRes1` in preset ? preset.exportRes1(capability) : null,
     res2: `exportRes2` in preset ? preset.exportRes2(capability) : null
   };

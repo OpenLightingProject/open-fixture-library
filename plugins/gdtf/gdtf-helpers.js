@@ -88,7 +88,7 @@ function getRgbColorFromGdtfColor(gdtfColorStr) {
 
   let r, g, b;
   if (Y > 1) {
-    [r, g, b] = RGB.map(x => (x > 0 ? x / 255 : 0));
+    [r, g, b] = RGB.map(c => (c > 0 ? c / 255 : 0));
   }
   else {
     [r, g, b] = RGB;
