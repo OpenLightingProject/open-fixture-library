@@ -20,8 +20,6 @@ matrix:
       if: type in (push, pull_request, api)
     - env: TESTFILE=tests/make-targets-updated.js
       if: type in (push, pull_request, api)
-    - env: TESTFILE=tests/lint.js
-      if: type in (push, pull_request, api)
     - env: TESTFILE=tests/dmx-value-scaling.js
       if: type in (push, pull_request, api)
     - env: TESTFILE=tests/external-links.js
