@@ -11,9 +11,13 @@ jobs:
         os: [ubuntu-latest]
 
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup Node ${{ matrix.node_version }}
+        uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node_version }}
-      - run: npm ci
-      - run: npm test
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm lint -- --format compact

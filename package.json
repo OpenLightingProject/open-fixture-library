@@ -15,8 +15,7 @@
     "postinstall": "make all",
     "start": "node --max-old-space-size=4096 main.js",
     "lint": "eslint --ext .js,.vue,.json,.md .",
-    "lint:errors-only": "eslint --ext .js,.vue,.json,.md --quiet --format codeframe .",
-    "test": "npm run lint"
+    "lint:errors-only": "npm run lint -- --quiet --format codeframe"
   },
   "husky": {
     "hooks": {
