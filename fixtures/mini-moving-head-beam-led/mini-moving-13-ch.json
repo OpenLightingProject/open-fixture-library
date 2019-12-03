@@ -1,0 +1,150 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini Moving 13 Ch",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["vjshing"],
+    "createDate": "2019-12-03",
+    "lastModifyDate": "2019-12-03"
+  },
+  "links": {
+    "other": [
+      "http://vjshing.com.br"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "ledstagelight"
+  },
+  "physical": {
+    "dimensions": [130, 130, 250],
+    "weight": 3.5,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED RGBW"
+    },
+    "lens": {
+      "name": "Beam",
+      "degreesMinMax": [0, 8]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "1deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan/Tilt Duration": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Duration 2": {
+      "name": "Pan/Tilt Duration",
+      "defaultValue": 4,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "defaultValue": 8,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 9,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue": {
+      "defaultValue": 10,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 11,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "No function": {
+      "defaultValue": 12,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved": {
+      "defaultValue": 13,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Pan",
+      "shortName": "Pan",
+      "channels": [
+        "Pan",
+        "Pan/Tilt Duration",
+        "Tilt",
+        "Pan/Tilt Duration 2",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "No function",
+        "Reserved"
+      ]
+    }
+  ]
+}
