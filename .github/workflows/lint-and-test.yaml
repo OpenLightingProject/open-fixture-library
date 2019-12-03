@@ -20,4 +20,4 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Lint
-        run: npm lint -- --format compact
+        run: npm run lint -- --format compact
