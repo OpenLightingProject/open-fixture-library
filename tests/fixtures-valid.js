@@ -32,6 +32,8 @@ const helpMessage = [
 
 const fixturePaths = args._;
 
+// print help and exit on -h or no fixtures given.
+if (args.help || (fixturePaths.length === 0 && !args.a)) {
   console.log(helpMessage);
   process.exit(0);
 }
