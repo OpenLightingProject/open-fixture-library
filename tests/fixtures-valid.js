@@ -30,7 +30,7 @@ const helpMessage = [
   `     Show this help message.`
 ].join(`\n`);
 
-const fixturePaths = args._;
+let fixturePaths = args._;
 
 // print help and exit on -h or no fixtures given.
 if (args.help || (fixturePaths.length === 0 && !args.a)) {
@@ -79,6 +79,8 @@ if (args.a) {
   checkManufacturers();
 }
 else {
+  // sanitize given path
+  fixturePaths = fixturePaths.map(relativePath => path.resolve(relativePath));
   for (const fixPath of fixturePaths) {
     if (path.extname(fixPath) !== `.json`) {
       continue;
