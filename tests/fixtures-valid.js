@@ -9,21 +9,25 @@ const Ajv = require(`ajv`);
 const minimist = require(`minimist`);
 
 const args = minimist(process.argv.slice(2), {
-  boolean: [`h`],
-  string: [`f`], // convert to file with possibly completion?
-  alias: { h: `help`, f: `fixtures` }
+  boolean: [`h`, `a`],
+  alias: { h: `help`, a: `all-fixtures` }
 });
 
 
 const helpMessage = [
   `Check validity of some/all fixtures`,
-  `Usage: node ${path.relative(process.cwd(), __filename)} [ -f | -h ]`,
+  `Usage: node ${path.relative(process.cwd(), __filename)} [ -a | -h | fixtures [...] ]`,
   `Options:`,
-  `  --fixtures <directive>,  -f <directive>: path to fixtures to check explicity.`,
+  `  fixtures: a list of fixtures contained in the fixtures/ directory.`,
+  `     has to resolve to the form 'manufacturer/fixture'`,
+  `     depending on your shell, you can use glob-patterns to match multiple fixtures`,
+  `  --all-fixtures, -a:`,
+  `     check all fixtures contained in the fixtures/ directory`,
   `     directive stands for a semicolon separated list in the form <manufacturer>[/[fixtures]]`,
   `     and [fixtures] is a comma separated of fixtures`,
   `     when [fixtures] is omitted, all of the fixtures for that manufacturer will be validated`,
-  `  --help,                  -h: Show this help message.`
+  `  --help, -h:`,
+  `     Show this help message.`
 ].join(`\n`);
 
 if (args.help) {
