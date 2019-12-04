@@ -30,7 +30,8 @@ const helpMessage = [
   `     Show this help message.`
 ].join(`\n`);
 
-if (args.help) {
+const fixturePaths = args._;
+
   console.log(helpMessage);
   process.exit(0);
 }
@@ -59,42 +60,7 @@ const uniqueValues = {
 const promises = [];
 const fixturePath = path.join(__dirname, `..`, `fixtures`);
 
-
-if (args.fixtures !== undefined) {
-  // were assuming the fixtures are given as a semicolon
-  // separated list in the form `<manufacturer>[/[fixtures]]`
-  // where [fixtures] is a comma separated list of concrete fixtures
-
-  const fixturesToParse = args.fixtures;
-  const allManufacturers = fs.readdirSync(fixturePath);
-  for (const manufacturerFixtures of fixturesToParse.split(`;`)) {
-    const [manKey, fixtures] = manufacturerFixtures.split(`/`);
-    if (!allManufacturers.includes(manKey)) {
-      promises.push(new Promise(resolve => {
-        resolve({
-          name: manKey,
-          errors: [`invalid manufacturer`],
-          warning: []
-        });
-      }));
-      continue;
-    }
-    if (fixtures === `` || fixtures === undefined) {
-      for (const file of fs.readdirSync(path.resolve(fixturePath, manKey))) {
-        if (path.extname(file) === `.json`) {
-          const fixKey = path.basename(file, `.json`);
-          handleFixtureFile(manKey, fixKey);
-        }
-      }
-    }
-    else {
-      for (const fix of fixtures.split(`,`)) {
-        handleFixtureFile(manKey, path.basename(fix, `.json`));
-      }
-    }
-  }
-}
-else {
+if (args.a) {
   for (const manKey of fs.readdirSync(fixturePath)) {
     const manDir = path.join(fixturePath, manKey);
 
@@ -109,6 +75,16 @@ else {
     }
   }
   checkManufacturers();
+}
+else {
+  for (const fixPath of fixturePaths) {
+    if (path.extname(fixPath) !== `.json`) {
+      continue;
+    }
+    const fixKey = path.basename(fixPath, `.json`);
+    const manKey = path.dirname(fixPath).split(path.sep).pop();
+    handleFixtureFile(manKey, fixKey);
+  }
 }
 
 /**
