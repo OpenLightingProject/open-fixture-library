@@ -46,7 +46,7 @@ We always aim to have clear, readable code. So please try to respect these princ
 * Document every new function with [JSDoc](http://usejsdoc.org/about-getting-started.html)
   - Primitive types are uppercase: `Number`, `String`, `Boolean`, `Array`, `Object`
   - Be careful with arrays: Prefer the `Array.<String>` syntax over `String[]`
-* Use [self-describing variable names](http://wiki.c2.com/?GoodVariableNames) and prefer constant variables over literal values without explanation
+* Use [self-describing variable names](https://wiki.c2.com/?GoodVariableNames) and prefer constant variables over literal values without explanation
 * Prefer code readability over [micro-optimisation](https://softwareengineering.stackexchange.com/questions/99445/is-micro-optimisation-important-when-coding)
 * Use new [ES2015 (ES6)](https://babeljs.io/learn-es2015/) features that improve code readability, for example:
   - Instead of `var`, use [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) where possible, [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) in all other cases

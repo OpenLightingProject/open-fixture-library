@@ -234,15 +234,15 @@ function getOflWheels(qlcPlusFixture) {
         return;
       }
 
-      const slotType = Object.keys(slotTypeFunctions).find(
+      const foundSlotType = Object.keys(slotTypeFunctions).find(
         slotType => slotTypeFunctions[slotType].isSlotType(capability, qlcPlusChannel.Group[0]._, capabilityPreset)
       );
 
       const slot = {
-        type: slotType
+        type: foundSlotType
       };
 
-      slotTypeFunctions[slotType].addSlotProperties(capability, slot);
+      slotTypeFunctions[foundSlotType].addSlotProperties(capability, slot);
 
       slots.push(slot);
     });
@@ -448,10 +448,10 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
   );
 
   const channelName = qlcPlusChannel.$.Name;
-  const preset = qlcPlusChannel.$.Preset;
+  const channelPreset = qlcPlusChannel.$.Preset;
 
-  if (preset) {
-    channel.capabilities = [getCapabilityFromChannelPreset(preset, channelName, panMax, tiltMax)];
+  if (channelPreset) {
+    channel.capabilities = [getCapabilityFromChannelPreset(channelPreset, channelName, panMax, tiltMax)];
   }
   else if (`Capability` in qlcPlusChannel) {
     channel.capabilities = qlcPlusChannel.Capability.map(
@@ -481,15 +481,15 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
       type: ``
     };
 
-    const channelName = qlcPlusChannel.$.Name.trim();
+    const trimmedChannelName = qlcPlusChannel.$.Name.trim();
     const channelType = qlcPlusChannel.Group[0]._;
     const capabilityName = (qlcPlusCapability._ || ``).trim();
 
     const capData = {
       qlcPlusChannel,
-      channelName,
+      channelName: trimmedChannelName,
       channelType,
-      channelNameInWheels: channelName in (fixture.wheels || {}),
+      channelNameInWheels: trimmedChannelName in (fixture.wheels || {}),
       qlcPlusCapability,
       capabilityName,
       index: qlcPlusChannel.Capability.indexOf(qlcPlusCapability),
@@ -499,10 +499,10 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
       tiltMax
     };
 
-    const preset = qlcPlusCapability.$.Preset;
+    const capPreset = qlcPlusCapability.$.Preset;
 
-    if (preset && preset !== `Alias`) {
-      Object.assign(cap, getCapabilityFromCapabilityPreset(preset, capData));
+    if (capPreset && capPreset !== `Alias`) {
+      Object.assign(cap, getCapabilityFromCapabilityPreset(capPreset, capData));
     }
     else if (/^(?:nothing|no func(?:tion)?|unused|not used|empty|no strobe|no prism|no frost)$/i.test(capabilityName)) {
       cap.type = `NoFunction`;
@@ -531,7 +531,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
 
       const zeroToHundredRegex = /^0%?\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*100%$/i;
 
-      if (cap.comment === channelName || cap.comment.length === 0 || zeroToHundredRegex.test(cap.comment)) {
+      if (cap.comment === trimmedChannelName || cap.comment.length === 0 || zeroToHundredRegex.test(cap.comment)) {
         delete cap.comment;
       }
     }
