@@ -80,7 +80,7 @@ else {
   fixturePaths = fixturePaths.map(relativePath => path.resolve(relativePath));
   for (const fixPath of fixturePaths) {
     if (path.extname(fixPath) !== `.json`) {
-      // todo: only produce this warning at a higher verbosity level
+      // TODO: only produce this warning at a higher verbosity level
       promises.push({
         name: fixPath,
         errors: [],
