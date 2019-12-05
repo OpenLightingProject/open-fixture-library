@@ -23,7 +23,6 @@ const helpMessage = [
   `     depending on your shell, you can use glob-patterns to match multiple fixtures`,
   `  --all-fixtures, -a:`,
   `     check all fixtures contained in the fixtures/ directory`,
-  `     directive stands for a semicolon separated list in the form <manufacturer>[/[fixtures]]`,
   `  --help, -h:`,
   `     Show this help message.`
 ].join(`\n`);
