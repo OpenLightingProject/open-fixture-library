@@ -83,6 +83,12 @@ else {
   fixturePaths = fixturePaths.map(relativePath => path.resolve(relativePath));
   for (const fixPath of fixturePaths) {
     if (path.extname(fixPath) !== `.json`) {
+      // todo: only produce this warning this at a higher verbosity level
+      promises.push({
+        name: fixPath,
+        errors: [],
+        warnings: [`specified file is not a .json document`]
+      });
       continue;
     }
     const fixKey = path.basename(fixPath, `.json`);
