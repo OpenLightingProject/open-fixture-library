@@ -5,11 +5,11 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2018-06-14",
-    "lastModifyDate": "2018-09-04"
+    "lastModifyDate": "2019-12-03"
   },
   "links": {
     "manual": [
-      "https://www.glp.de/en/products?format=raw&task=download&fid=396"
+      "https://www.glp.de/en/products?format=raw&task=download&fid=571"
     ],
     "productPage": [
       "https://www.glp.de/en/products/strobes-led/jdc1"
@@ -1167,6 +1167,12 @@
         "color": "Blue"
       }
     },
+    "Plate White Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
     "Color Set 2 Red Intensity": {
       "capability": {
         "type": "ColorIntensity",
@@ -1425,6 +1431,23 @@
         "Color Set 2 Red Intensity",
         "Color Set 2 Green Intensity",
         "Color Set 2 Blue Intensity"
+      ]
+    },
+    {
+      "name": "Easy 11-channel",
+      "shortName": "M6",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Beam Intensity",
+        "Beam Duration",
+        "Beam Rate",
+        "Beam FX Shutter",
+        "Special / Control",
+        "Plate Red Intensity",
+        "Plate Green Intensity",
+        "Plate Blue Intensity",
+        "Plate White Intensity"
       ]
     }
   ]
