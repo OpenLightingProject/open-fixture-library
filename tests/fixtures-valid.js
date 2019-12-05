@@ -24,8 +24,6 @@ const helpMessage = [
   `  --all-fixtures, -a:`,
   `     check all fixtures contained in the fixtures/ directory`,
   `     directive stands for a semicolon separated list in the form <manufacturer>[/[fixtures]]`,
-  `     and [fixtures] is a comma separated of fixtures`,
-  `     when [fixtures] is omitted, all of the fixtures for that manufacturer will be validated`,
   `  --help, -h:`,
   `     Show this help message.`
 ].join(`\n`);
