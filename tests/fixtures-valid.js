@@ -16,7 +16,7 @@ const args = minimist(process.argv.slice(2), {
 
 const helpMessage = [
   `Check validity of some/all fixtures`,
-  `Usage: node ${path.relative(process.cwd(), __filename)} [ -a | -h | fixtures [...] ]`,
+  `Usage: node ${path.relative(process.cwd(), __filename)} -a | -h | fixtures [...]`,
   `Options:`,
   `  fixtures: a list of fixtures contained in the fixtures/ directory.`,
   `     has to resolve to the form 'manufacturer/fixture'`,
