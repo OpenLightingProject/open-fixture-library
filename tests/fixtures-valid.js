@@ -8,6 +8,11 @@ const Ajv = require(`ajv`);
 // interactive commandline support
 const minimist = require(`minimist`);
 
+
+const manufacturerSchema = require(`../schemas/dereferenced/manufacturers.json`);
+const { checkFixture, checkUniqueness, getErrorString } = require(`./fixture-valid.js`);
+
+
 const args = minimist(process.argv.slice(2), {
   boolean: [`h`, `a`],
   alias: { h: `help`, a: `all-fixtures` }
@@ -34,9 +39,6 @@ if (args.help || (fixturePaths.length === 0 && !args.a)) {
   console.log(helpMessage);
   process.exit(0);
 }
-
-const manufacturerSchema = require(`../schemas/dereferenced/manufacturers.json`);
-const { checkFixture, checkUniqueness, getErrorString } = require(`./fixture-valid.js`);
 
 /**
  * @typedef {Object} UniqueValues
@@ -68,12 +70,12 @@ if (args.a) {
       for (const file of fs.readdirSync(manDir)) {
         if (path.extname(file) === `.json`) {
           const fixKey = path.basename(file, `.json`);
-          handleFixtureFile(manKey, fixKey);
+          promises.push(checkFixtureFile(manKey, fixKey));
         }
       }
     }
   }
-  checkManufacturers();
+  promises.push(checkManufacturers());
 }
 else {
   // sanitize given path
@@ -90,16 +92,17 @@ else {
     }
     const fixKey = path.basename(fixPath, `.json`);
     const manKey = path.dirname(fixPath).split(path.sep).pop();
-    handleFixtureFile(manKey, fixKey);
+    promises.push(checkFixtureFile(manKey, fixKey));
   }
 }
 
 /**
- * Checks (asynchronously) the given fixture by adding a Promise to the promises array that resolves with a result object.
+ * Checks (asynchronously) the given fixture.
  * @param {String} manKey The manufacturer key.
  * @param {String} fixKey The fixture key.
+ * @returns {Promise.<Object>} A Promise resolving to a result object.
  */
-function handleFixtureFile(manKey, fixKey) {
+async function checkFixtureFile(manKey, fixKey) {
   const filename = `${manKey}/${fixKey}.json`;
   const result = {
     name: filename,
@@ -109,95 +112,73 @@ function handleFixtureFile(manKey, fixKey) {
 
   const filepath = path.join(fixturePath, filename);
 
-  promises.push(new Promise((resolve, reject) => {
-    fs.readFile(filepath, `utf8`, (readError, data) => {
-      if (readError) {
-        result.errors.push(getErrorString(`File could not be read.`, readError));
-        return resolve(result);
-      }
-
-      let fixtureJson;
-      try {
-        fixtureJson = JSON.parse(data);
-      }
-      catch (parseError) {
-        result.errors.push(getErrorString(`File could not be parsed as JSON.`, parseError));
-        return resolve(result);
-      }
-
-      try {
-        // checkFixture(..) returns { errors: [..], warnings: [..] }
-        Object.assign(result, checkFixture(manKey, fixKey, fixtureJson, uniqueValues));
-      }
-      catch (validateError) {
-        result.errors.push(getErrorString(`Fixture could not be validated.`, validateError));
-      }
-      return resolve(result);
-    });
-  }));
+  try {
+    const data = fs.readFileSync(filepath, `utf8`);
+    const fixtureJson = JSON.parse(data);
+    Object.assign(result, checkFixture(manKey, fixKey, fixtureJson, uniqueValues));
+  }
+  catch (error) {
+    // isn't getErrorString redundant?
+    result.errors.push(getErrorString(error.toString(), error));
+  }
+  return result;
 }
-
 /**
  * Checks Manufacturers file
+ * @returns {Promise.<Object>} A Promise resolving to a result object.
  */
-function checkManufacturers() {
-  promises.push(new Promise((resolve, reject) => {
-    const result = {
-      name: `manufacturers.json`,
-      errors: [],
-      warnings: []
-    };
-    const filename = path.join(fixturePath, result.name);
+async function checkManufacturers() {
+  const result = {
+    name: `manufacturers.json`,
+    errors: [],
+    warnings: []
+  };
 
-    fs.readFile(filename, `utf8`, (readError, data) => {
-      if (readError) {
-        result.errors.push(getErrorString(`File could not be read.`, readError));
-        return resolve(result);
+  const filename = path.join(fixturePath, result.name);
+
+  try {
+    // todo deduplicate code
+    const data = fs.readFileSync(filename, `utf8`);
+    const manufacturers = JSON.parse(data);
+    const validate = (new Ajv()).compile(manufacturerSchema);
+    const valid = validate(manufacturers);
+    if (!valid) {
+      // todo handle validate.errors
+      throw new Error(`Invalid`);
+    }
+    for (const [manKey, manProps] of Object.entries(manufacturers)) {
+      if (manKey.startsWith(`$`)) {
+        // JSON schema property
+        continue;
       }
 
-      let manufacturers;
-      try {
-        manufacturers = JSON.parse(data);
-      }
-      catch (parseError) {
-        result.errors.push(getErrorString(`File could not be parsed.`, parseError));
-        return resolve(result);
-      }
-
-
-      const validate = (new Ajv()).compile(manufacturerSchema);
-      const valid = validate(manufacturers);
-      if (!valid) {
-        result.errors.push(getErrorString(`File does not match schema.`, validate.errors));
-        return resolve(result);
-      }
-
-      for (const manKey of Object.keys(manufacturers)) {
-        if (manKey.startsWith(`$`)) {
-          // JSON schema property
-          continue;
-        }
-
+      // legacy purposes
+      const uniquenessTestResults = {
+        errors: []
+      };
+      checkUniqueness(
+        uniqueValues.manNames,
+        manProps.name,
+        uniquenessTestResults,
+        `Manufacturer name '${manProps.name}' is not unique (test is not case-sensitive).`
+      );
+      if (`rdmId` in manProps) {
         checkUniqueness(
-          uniqueValues.manNames,
-          manufacturers[manKey].name,
-          result,
-          `Manufacturer name '${manufacturers[manKey].name}' is not unique (test is not case-sensitive).`
+          uniqueValues.manRdmIds,
+          `${manProps.rdmId}`,
+          uniquenessTestResults,
+          `Manufacturer RDM ID '${manProps.rdmId}' is not unique.`
         );
-
-        if (`rdmId` in manufacturers[manKey]) {
-          checkUniqueness(
-            uniqueValues.manRdmIds,
-            `${manufacturers[manKey].rdmId}`,
-            result,
-            `Manufacturer RDM ID '${manufacturers[manKey].rdmId}' is not unique.`
-          );
-        }
       }
-
-      return resolve(result);
-    });
-  }));
+      console.log(result);
+      result.errors.push(...uniquenessTestResults.errors);
+    }
+  }
+  catch (error) {
+    // isn't getErrorString redundant?
+    result.errors.push(getErrorString(error.toString(), error));
+  }
+  return result;
 }
 
 
