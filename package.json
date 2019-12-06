@@ -15,7 +15,9 @@
     "postinstall": "make all",
     "start": "node --max-old-space-size=4096 main.js",
     "lint": "eslint --ext .js,.vue,.json,.md .",
-    "lint:errors-only": "npm run lint -- --quiet --format codeframe"
+    "lint:errors-only": "npm run lint -- --quiet --format codeframe",
+    "test": "npm run lint && npm run test:fixtures-valid",
+    "test:fixtures-valid": "node tests/fixtures-valid.js -a"
   },
   "husky": {
     "hooks": {
