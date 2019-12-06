@@ -16,5 +16,11 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
+      - name: Run dmx-value-scaling test
+        run: npm run test:dmx-value-scalin
       - name: Run fixtures-valid test
         run: npm run test:fixtures-valid
+      - name: Run http-status test
+        run: npm run test:http-status
+      - name: Run make-targets-updated test
+        run: npm run test:make-targets-update
