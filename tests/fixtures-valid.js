@@ -8,6 +8,8 @@ const Ajv = require(`ajv`);
 // interactive commandline support
 const minimist = require(`minimist`);
 
+const promisify = require(`util`).promisify;
+const readFile = promisify(require(`fs`).readFile);
 
 const manufacturerSchema = require(`../schemas/dereferenced/manufacturers.json`);
 const { checkFixture, checkUniqueness } = require(`./fixture-valid.js`);
@@ -113,7 +115,7 @@ async function checkFixtureFile(manKey, fixKey) {
   const filepath = path.join(fixturePath, filename);
 
   try {
-    const data = fs.readFileSync(filepath, `utf8`);
+    const data = await readFile(filepath, `utf8`);
     const fixtureJson = JSON.parse(data);
     Object.assign(result, checkFixture(manKey, fixKey, fixtureJson, uniqueValues));
   }
@@ -136,7 +138,7 @@ async function checkManufacturers() {
   const filename = path.join(fixturePath, result.name);
 
   try {
-    const data = fs.readFileSync(filename, `utf8`);
+    const data = await readFile(filename, `utf8`);
     const manufacturers = JSON.parse(data);
     const validate = (new Ajv()).compile(manufacturerSchema);
     const valid = validate(manufacturers);
