@@ -2,7 +2,7 @@ name: Test
 on: pull_request
 
 jobs:
-  test:
+  lint:
     name: Lint
     runs-on: ubuntu-latest
     steps:
