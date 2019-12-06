@@ -143,8 +143,7 @@ async function checkManufacturers() {
     const validate = (new Ajv()).compile(manufacturerSchema);
     const valid = validate(manufacturers);
     if (!valid) {
-      // todo handle validate.errors
-      throw new Error(`Invalid`);
+      throw validate.errors;
     }
     for (const [manKey, manProps] of Object.entries(manufacturers)) {
       if (manKey.startsWith(`$`)) {
@@ -170,13 +169,12 @@ async function checkManufacturers() {
           `Manufacturer RDM ID '${manProps.rdmId}' is not unique.`
         );
       }
-      console.log(result);
       result.errors.push(...uniquenessTestResults.errors);
     }
   }
-  catch (error) {
-    // isn't getErrorString redundant?
-    result.errors.push(getErrorString(error.toString(), error));
+  catch (errors) {
+    const isIterable = typeof errors[Symbol.iterator] === `function`;
+    result.errors.push(...(isIterable ? errors : [errors]));
   }
   return result;
 }
