@@ -16,3 +16,17 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
+
+  test:
+    name: Fixtures valid
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup Node.js v12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Install dependencies
+        run: npm ci
+      - run: node tests/fixtures-valid.js -a
