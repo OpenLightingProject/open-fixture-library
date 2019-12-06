@@ -10,7 +10,7 @@ const minimist = require(`minimist`);
 
 
 const manufacturerSchema = require(`../schemas/dereferenced/manufacturers.json`);
-const { checkFixture, checkUniqueness, getErrorString } = require(`./fixture-valid.js`);
+const { checkFixture, checkUniqueness } = require(`./fixture-valid.js`);
 
 
 const args = minimist(process.argv.slice(2), {
@@ -118,8 +118,7 @@ async function checkFixtureFile(manKey, fixKey) {
     Object.assign(result, checkFixture(manKey, fixKey, fixtureJson, uniqueValues));
   }
   catch (error) {
-    // isn't getErrorString redundant?
-    result.errors.push(getErrorString(error.toString(), error));
+    result.errors.push(error);
   }
   return result;
 }
