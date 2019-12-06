@@ -136,7 +136,6 @@ async function checkManufacturers() {
   const filename = path.join(fixturePath, result.name);
 
   try {
-    // todo deduplicate code
     const data = fs.readFileSync(filename, `utf8`);
     const manufacturers = JSON.parse(data);
     const validate = (new Ajv()).compile(manufacturerSchema);
