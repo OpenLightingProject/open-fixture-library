@@ -17,7 +17,7 @@ jobs:
       - name: Lint
         run: npm run lint
 
-  test:
+  fixtures-valid:
     name: Fixtures valid
     runs-on: ubuntu-latest
     steps:
