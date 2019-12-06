@@ -2,8 +2,8 @@ name: Test
 on: pull_request
 
 jobs:
-  lint:
-    name: Lint
+  required:
+    name: Required
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -16,17 +16,5 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
-
-  fixtures-valid:
-    name: Fixtures valid
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-      - name: Setup Node.js v12
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
-      - name: Install dependencies
-        run: npm ci
-      - run: node tests/fixtures-valid.js -a
+      - name: Run fixtures-valid test
+        run: npm run test:fixtures-valid
