@@ -1,0 +1,96 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BeamSpot1-DMX FC",
+  "shortName": "Briteq BeamSpot 6ch+",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["ALEKSEY KHOROSHEV"],
+    "createDate": "2019-12-08",
+    "lastModifyDate": "2019-12-08"
+  },
+  "links": {
+    "manual": [
+      "https://briteq-lighting.com/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1476262257.pdf"
+    ],
+    "productPage": [
+      "https://briteq-lighting.com/beamspot1-dmx-fc"
+    ],
+    "other": [
+      "https://briteq-lighting.com/beamspot1-dmx-fc"
+    ]
+  },
+  "physical": {
+    "weight": 1.23,
+    "power": 15,
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [4, 4]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "constant": true,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": "100%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Intensity": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "RGBWIS_6CH",
+      "shortName": "6CH+",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Intensity",
+        "Strobe"
+      ]
+    }
+  ]
+}
