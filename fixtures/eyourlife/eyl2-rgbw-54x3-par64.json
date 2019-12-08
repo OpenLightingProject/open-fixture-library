@@ -1,0 +1,311 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "EYL2 RGBW  54x3 Par64",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Moss", "moss"],
+    "createDate": "2019-12-08",
+    "lastModifyDate": "2019-12-08",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2019-12-08",
+      "comment": "created by Q Light Controller Plus (version 4.12.2)"
+    }
+  },
+  "physical": {
+    "dimensions": [230, 220, 255],
+    "weight": 4.5,
+    "power": 170,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 500
+    },
+    "lens": {
+      "name": "Other",
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "wheels": {
+    "Color Macros/Effects": {
+      "slots": [
+        {
+          "type": "Color",
+          "name": "Blackout"
+        },
+        {
+          "type": "Color",
+          "name": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "type": "Color",
+          "name": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "type": "Color",
+          "name": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Pink",
+          "colors": ["#ff69b4"]
+        },
+        {
+          "type": "Color",
+          "name": "Bright green",
+          "colors": ["#90ee90"]
+        },
+        {
+          "type": "Color",
+          "name": "Lavender",
+          "colors": ["#e6e6fa"]
+        },
+        {
+          "type": "Color",
+          "name": "Pale Pink",
+          "colors": ["#ffc0cb"]
+        },
+        {
+          "type": "Color",
+          "name": "Bright yellow",
+          "colors": ["#ffffe0"]
+        },
+        {
+          "type": "Color",
+          "name": "Bright magenta",
+          "colors": ["#ff55ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Pale cyan",
+          "colors": ["#e0ffff"]
+        },
+        {
+          "type": "Color",
+          "name": "Warm white",
+          "colors": ["#faebd7"]
+        },
+        {
+          "type": "Gobo",
+          "name": "Color jumping speed: slow(081) - fast(150)"
+        },
+        {
+          "type": "Gobo",
+          "name": "Color fading speed: slow(151) - fast(220)"
+        },
+        {
+          "type": "Color",
+          "name": "Sound control (mic sensitivity)"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Color Macros/Effects": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ColorPreset",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [5, 10],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [16, 20],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [21, 25],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [26, 30],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [31, 35],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [36, 40],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [41, 45],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ff69b4"]
+        },
+        {
+          "dmxRange": [46, 50],
+          "type": "ColorPreset",
+          "comment": "Bright green",
+          "colors": ["#90ee90"]
+        },
+        {
+          "dmxRange": [51, 55],
+          "type": "ColorPreset",
+          "comment": "Lavender",
+          "colors": ["#e6e6fa"]
+        },
+        {
+          "dmxRange": [56, 60],
+          "type": "ColorPreset",
+          "comment": "Pale Pink",
+          "colors": ["#ffc0cb"]
+        },
+        {
+          "dmxRange": [61, 65],
+          "type": "ColorPreset",
+          "comment": "Bright yellow",
+          "colors": ["#ffffe0"]
+        },
+        {
+          "dmxRange": [66, 70],
+          "type": "ColorPreset",
+          "comment": "Bright magenta",
+          "colors": ["#ff55ff"]
+        },
+        {
+          "dmxRange": [71, 75],
+          "type": "ColorPreset",
+          "comment": "Pale cyan",
+          "colors": ["#e0ffff"]
+        },
+        {
+          "dmxRange": [76, 80],
+          "type": "ColorPreset",
+          "comment": "Warm white",
+          "colors": ["#faebd7"]
+        },
+        {
+          "dmxRange": [81, 150],
+          "type": "WheelSlot",
+          "slotNumber": 17,
+          "comment": "Color jumping speed: slow(081) - fast(150)"
+        },
+        {
+          "dmxRange": [151, 220],
+          "type": "WheelSlot",
+          "slotNumber": 18,
+          "comment": "Color fading speed: slow(151) - fast(220)"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "ColorPreset",
+          "comment": "Sound control (mic sensitivity)"
+        }
+      ]
+    },
+    "Speed adj": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "adj strobe speed"
+      }
+    },
+    "Master Dimmer 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8-Channel Mode",
+      "channels": [
+        "Strobe",
+        "Color Macros/Effects",
+        "Speed adj",
+        "Master Dimmer 1",
+        "Red 1",
+        "Green 1",
+        "Blue 1",
+        "White 1"
+      ]
+    }
+  ]
+}
