@@ -9,7 +9,7 @@ const Ajv = require(`ajv`);
 const minimist = require(`minimist`);
 
 const promisify = require(`util`).promisify;
-const readFile = promisify(require(`fs`).readFile);
+const readFile = promisify(fs.readFile);
 
 const manufacturerSchema = require(`../schemas/dereferenced/manufacturers.json`);
 const { checkFixture, checkUniqueness } = require(`./fixture-valid.js`);
