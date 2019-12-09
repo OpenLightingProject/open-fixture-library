@@ -1,0 +1,88 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PAR 12x3W ",
+  "shortName": "RGB PAR",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["ErikK"],
+    "createDate": "2019-12-09",
+    "lastModifyDate": "2019-12-09"
+  },
+  "links": {
+    "productPage": [
+      "http://fractallights.com/pl/produkty/LED_PAR_12_x_3W/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=pTaziaXTSyI"
+    ]
+  },
+  "physical": {
+    "weight": 1.2,
+    "power": 36,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 1,
+      "constant": true,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speed": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Clasic",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter / Strobe"
+      ]
+    }
+  ]
+}
