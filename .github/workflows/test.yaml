@@ -4,7 +4,6 @@ on:
     branches:
       - greenkeeper/**
   pull_request:
-
 jobs:
   required:
     name: Required
