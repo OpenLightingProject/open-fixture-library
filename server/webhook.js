@@ -84,16 +84,15 @@ function processRequest(url, body, headers) { // eslint-disable-line complexity
   console.info(`Secret test passed`);
 
   const eventName = headers[`X-GitHub-Event`] || headers[`x-github-event`];
-  if (eventName !== `status`) {
-    console.log(`Wrong event name: Expected 'status', received '${eventName}'`);
+  if (eventName !== `push`) {
+    console.log(`Wrong event name: Expected 'push', received '${eventName}'`);
     return;
   }
 
   const json = JSON.parse(body);
 
-  const affectsMasterBranch = `branches` in json && json.branches.some(branch => branch.name === `master`);
-  if (json.state !== `success` || !affectsMasterBranch) {
-    console.log(`Only handle successful events on master branch`);
+  if (json.ref !== `refs/heads/master`) {
+    console.log(`Wrong branch: Expected 'refs/heads/master', received '${json.ref}'`);
     return;
   }
 
