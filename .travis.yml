@@ -21,7 +21,3 @@ script:
 cache:
   directories:
     - node_modules # cache NPM dependencies
-branches:
-  only: # for other branches, the PR builds are sufficient
-  - master
-  - /^greenkeeper\/.*/
