@@ -96,6 +96,8 @@ function processRequest(url, body, headers) { // eslint-disable-line complexity
     return;
   }
 
+  console.log(`Redeploy because of commit ${json.head_commit.id}: '${json.head_commit.message}'`);
+
   redeploy(json);
 }
 
@@ -104,8 +106,6 @@ function processRequest(url, body, headers) { // eslint-disable-line complexity
  * @param {Object} webhookPayload The data delivered by GitHub via the webhook.
  */
 function redeploy(webhookPayload) {
-  console.log(`Redeploy...`);
-
   try {
     execSync(`./redeploy.sh`, {
       cwd: `/home/flo`,
