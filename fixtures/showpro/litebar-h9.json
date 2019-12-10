@@ -28,117 +28,22 @@
     },
     "lens": {
       "degreesMinMax": [29, 29]
+    },
+    "matrixPixels": {
+      "dimensions": [50, 50, 0],
+      "spacing": [61, 0, 0]
+    }
+  },
+  "matrix": {
+    "pixelCount": [9, 1, 1],
+    "pixelGroups": {
+      "Master": "all",
+      "Segment 1": ["1", "2", "3"],
+      "Segment 2": ["4", "5", "6"],
+      "Segment 3": ["7", "8", "9"]
     }
   },
   "availableChannels": {
-    "Red 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Amber 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
-    },
-    "White 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "UV 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "UV"
-      }
-    },
-    "Red 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Amber 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
-    },
-    "White 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "UV 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "UV"
-      }
-    },
-    "Red 3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green 3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue 3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Amber 3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
-    },
-    "White 3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "UV 3": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "UV"
-      }
-    },
     "Color Macros": {
       "capabilities": [
         {
@@ -191,6 +96,44 @@
         "type": "Speed",
         "speedStart": "slow",
         "speedEnd": "fast"
+      }
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "UV $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
       }
     }
   },
