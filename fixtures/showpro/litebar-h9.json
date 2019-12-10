@@ -1,12 +1,13 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Litebar H9",
-  "categories": ["Other"],
+  "categories": ["Pixel Bar", "Color Changer"],
   "meta": {
-    "authors": ["dywilson"],
-    "createDate": "2019-10-23",
-    "lastModifyDate": "2019-10-23"
+    "authors": ["dywilson", "Flo Edelmann"],
+    "createDate": "2019-12-10",
+    "lastModifyDate": "2019-12-10"
   },
+  "comment": "Seems to be manufactured by NiTEC but exclusively sold under the ShowPRO brand.",
   "links": {
     "manual": [
       "http://www.showtech.com.au/webdata/LEDNIT150/downloads/LiteBar-H9-User-Manual.pdf"
