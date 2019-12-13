@@ -10,14 +10,14 @@
 
       <OflSvg :name="linkTypeIconNames[link.type]" />
 
-      <validate :state="formstate" tag="span">
+      <Validate :state="formstate" tag="span">
         <PropertyInputText
           v-model="link.url"
           :name="`links-${link.uuid}`"
           :schema-property="properties.definitions.urlString"
           type="url"
           required />
-      </validate>
+      </Validate>
 
       <a
         v-if="links.length > 1"
