@@ -13,7 +13,14 @@
   "scripts": {
     "dev": "node --max-old-space-size=4096 main.js --dev",
     "postinstall": "make all",
-    "start": "node --max-old-space-size=4096 main.js"
+    "start": "node --max-old-space-size=4096 main.js",
+    "lint": "eslint --ext .js,.vue,.json,.md .",
+    "lint:errors-only": "npm run lint -- --quiet --format codeframe",
+    "test": "npm run lint && npm run test:fixtures-valid",
+    "test:dmx-value-scaling": "node tests/dmx-value-scaling.js",
+    "test:fixtures-valid": "node tests/fixtures-valid.js -a",
+    "test:http-status": "NODE_ENV=production node --tls-min-v1.0 tests/http-status.js",
+    "test:make-targets-updated": "node tests/make-targets-updated.js"
   },
   "husky": {
     "hooks": {
