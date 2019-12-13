@@ -7,6 +7,7 @@
     "ecmaVersion": 2017
   },
   "plugins": [
+    "array-func",
     "jsdoc",
     "json",
     "markdown",
@@ -16,6 +17,7 @@
   ],
   "extends": [
     "eslint:recommended",
+    "plugin:array-func/all",
     "plugin:jsdoc/recommended",
     "plugin:json/recommended",
     "plugin:promise/recommended",
@@ -49,6 +51,7 @@
     "vue/eqeqeq": ["error", "always", { "null": "ignore" }],
     "func-call-spacing": "error",
     "getter-return": "error",
+    "grouped-accessor-pairs": ["error", "getBeforeSet"],
     "guard-for-in": "error",
     "indent": ["error", 2, { "SwitchCase": 1 }],
     "jsdoc/check-alignment": "error",
@@ -89,6 +92,7 @@
     "no-confusing-arrow": ["error", { "allowParens": true }],
     "no-bitwise": "error",
     "no-console": "off",
+    "no-dupe-else-if": "error",
     "no-else-return": ["error", { "allowElseIf": false }],
     "no-lonely-if": "error",
     "no-loop-func": "warn",
@@ -97,6 +101,7 @@
     "no-new-object": "error",
     "no-prototype-builtins": "error",
     "no-return-assign": "error",
+    "no-shadow": ["error", { "builtinGlobals": false }],
     "no-template-curly-in-string": "error",
     "no-trailing-spaces": "error",
     "no-unused-vars": ["error", { "args": "none" }],
@@ -176,7 +181,10 @@
     "vue/match-component-file-name": ["error", {
       "extensions": ["vue"],
       "shouldMatchCase": true
-    }]
+    }],
+    "vue/no-deprecated-scope-attribute": "error",
+    "vue/valid-v-slot": "error",
+    "vue/v-slot-style": ["error", "shorthand"]
   },
   "settings": {
     "jsdoc": {

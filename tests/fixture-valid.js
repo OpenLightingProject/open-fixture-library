@@ -92,12 +92,12 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   try {
     fixture = new Fixture(manKey, fixKey, fixtureJson);
 
-    checkFixIdentifierUniqueness(uniqueValues);
+    checkFixIdentifierUniqueness();
     checkMeta(fixture.meta);
     checkPhysical(fixture.physical);
     checkMatrix(fixture.matrix);
     checkWheels(fixture.wheels);
-    checkTemplateChannels(fixtureJson);
+    checkTemplateChannels();
     checkChannels(fixtureJson);
 
     for (const mode of fixture.modes) {
@@ -108,7 +108,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     checkUnusedWheels();
     checkUnusedWheelSlots();
     checkCategories();
-    checkRdm(manKey, uniqueValues);
+    checkRdm();
   }
   catch (error) {
     result.errors.push(getErrorString(`File could not be imported into model.`, error));
@@ -122,9 +122,9 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    * Checks that a fixture redirect file is valid and redirecting to a fixture correctly.
    */
   function checkFixtureRedirect() {
-    const schemaValid = redirectSchemaValidate(fixtureJson);
+    const redirectSchemaValid = redirectSchemaValidate(fixtureJson);
 
-    if (!schemaValid) {
+    if (!redirectSchemaValid) {
       result.errors.push(getErrorString(`File does not match schema.`, redirectSchemaValidate.errors));
     }
 
@@ -137,15 +137,12 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Checks that fixture key, name and shortName are unique.
-   * @param {UniqueValues|null} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
    */
-  function checkFixIdentifierUniqueness(uniqueValues = null) {
+  function checkFixIdentifierUniqueness() {
     // test is called for a single fixture, e.g. when importing
     if (uniqueValues === null) {
       return;
     }
-
-    const manKey = fixture.manufacturer.key;
 
     // fixture.key
     if (!(manKey in uniqueValues.fixKeysInMan)) {
@@ -316,9 +313,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Check if templateChannels are defined correctly. Does not check the channel data itself.
-   * @param {Object} fixtureJson The fixture's JSON data
    */
-  function checkTemplateChannels(fixtureJson) {
+  function checkTemplateChannels() {
     if (fixtureJson.templateChannels) {
       for (const templateChannel of fixture.templateChannels) {
         checkTemplateChannel(templateChannel);
@@ -737,7 +733,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       }
     }
 
-    mode.channelKeys.forEach((mode, i) => checkModeChannelKey(i));
+    mode.channelKeys.forEach((chKey, i) => checkModeChannelKey(i));
 
     /**
      * Checks if the given complex channel insert block is valid.
@@ -896,7 +892,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         ).concat(coarseChannel.key);
 
         const notInMode = coarserChannelKeys.filter(
-          chKey => mode.getChannelIndex(chKey) === -1
+          coarseChannelKey => mode.getChannelIndex(coarseChannelKey) === -1
         );
 
         if (notInMode.length > 0) {
@@ -910,7 +906,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    * Add a warning if there are unused channels.
    */
   function checkUnusedChannels() {
-    const unused = [...definedChannelKeys].filter(
+    const unused = Array.from(definedChannelKeys).filter(
       chKey => !usedChannelKeys.has(chKey)
     );
 
@@ -937,7 +933,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    */
   function checkUnusedWheelSlots() {
     const slotsOfUsedWheels = [];
-    [...usedWheels].forEach(wheelName => {
+    Array.from(usedWheels).forEach(wheelName => {
       const wheel = fixture.getWheelByName(wheelName);
 
       if (wheel.type !== `AnimationGobo`) {
@@ -1124,10 +1120,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Checks if everything regarding this fixture's RDM data is correct.
-   * @param {String} manKey The manufacturer key.
-   * @param {UniqueValues|null} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
    */
-  function checkRdm(manKey, uniqueValues = null) {
+  function checkRdm() {
     if (fixture.rdm === null || uniqueValues === null) {
       return;
     }

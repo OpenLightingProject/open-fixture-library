@@ -175,13 +175,13 @@ module.exports.fetchChangedComponents = async function fetchChangedComponents() 
  * @returns {Promise} A Promise that is fulfilled as soon as all GitHub operations have finished
  */
 module.exports.updateComment = async function updateComment(test) {
-  let lines = [
+  const lines = [
     `<!-- GITHUB-TEST: ${test.filename} -->`,
     `# ${test.name}`,
     `(Output of test script \`${test.filename}\`.)`,
-    ``
+    ``,
+    ...test.lines
   ];
-  lines = lines.concat(test.lines);
   const message = lines.join(`\n`);
 
   const commentPromises = [];
@@ -202,7 +202,7 @@ module.exports.updateComment = async function updateComment(test) {
   let equalFound = false;
   const promises = [];
 
-  const comments = [].concat(...commentBlocks.map(block => block.data));
+  const comments = commentBlocks.flatMap(block => block.data);
   comments.forEach(comment => {
     // get rid of \r linebreaks
     comment.body = comment.body.replace(/\r/g, ``);
@@ -238,8 +238,9 @@ module.exports.updateComment = async function updateComment(test) {
 };
 
 module.exports.getTestFixturesMessage = function getTestFixturesMessage(fixtures) {
-  let lines = [];
-  lines.push(`Tested with the following minimal collection of [test fixtures](https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/fixture-features.md) that cover all fixture features:`);
-  lines = lines.concat(fixtures.map(fix => `- ${fix}`), ``);
-  return lines;
+  return [
+    `Tested with the following minimal collection of [test fixtures](https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/fixture-features.md) that cover all fixture features:`,
+    ...fixtures.map(fix => `- ${fix}`),
+    ``
+  ];
 };

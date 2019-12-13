@@ -145,12 +145,12 @@ function getPhysical(ecueFixture) {
  * @returns {Array.<Object>} An array of all ecue channel objects.
  */
 function getCombinedEcueChannels(ecueFixture) {
-  let channels = [];
+  const channels = [];
 
   const channelTypes = [`ChannelIntensity`, `ChannelColor`, `ChannelBeam`, `ChannelFocus`];
   for (const channelType of channelTypes) {
     if (ecueFixture[channelType]) {
-      channels = channels.concat(ecueFixture[channelType].map(ch => {
+      channels.push(...ecueFixture[channelType].map(ch => {
         // save the channel type in the channel object
         ch._ecueChannelType = channelType;
         return ch;
@@ -159,7 +159,7 @@ function getCombinedEcueChannels(ecueFixture) {
   }
 
   // sort channels by (coarse) DMX channel
-  channels = channels.sort((a, b) => {
+  channels.sort((a, b) => {
     if (parseInt(a.$.DmxByte0) < parseInt(b.$.DmxByte0)) {
       return -1;
     }
