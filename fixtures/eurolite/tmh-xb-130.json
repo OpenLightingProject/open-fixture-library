@@ -1,0 +1,205 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TMH XB 130",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Henry Haage"],
+    "createDate": "2019-12-16",
+    "lastModifyDate": "2019-12-16"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51786810-Anleitung-114498-1.100-eurolite-tmh-xb-130-moving-head-beam-de_en.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [299, 435, 252],
+    "weight": 10,
+    "power": 170,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "HRI 132",
+      "colorTemperature": 4000
+    },
+    "lens": {
+      "degreesMinMax": [1, 1]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Pan 16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Tilt 16": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "100%"
+      }
+    },
+    "Geschwindigkeit Pan/Tilt": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Pan Tilt Function": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Normal - Blackout"
+      }
+    },
+    "Shutter / Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0,
+        "comment": "open"
+      }
+    },
+    "Gobo Wheel": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 0,
+        "comment": "Open"
+      }
+    },
+    "Prisma Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Prima Rotation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PrismRotation",
+        "speedStart": "stop",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Focus": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "14 Ch",
+      "channels": [
+        "Pan",
+        "Pan 16",
+        "Tilt",
+        "Tilt 16",
+        "Geschwindigkeit Pan/Tilt",
+        "Pan Tilt Function",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Prisma Frost",
+        "Prima Rotation",
+        "Focus",
+        "Reset"
+      ]
+    }
+  ]
+}
