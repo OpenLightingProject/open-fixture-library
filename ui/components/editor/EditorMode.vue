@@ -67,7 +67,7 @@
 
     <h3>DMX channels</h3>
 
-    <validate
+    <Validate
       :state="formstate"
       :custom="{ 'no-empty-channel-list': channelListNotEmpty }"
       tag="div"
@@ -112,15 +112,15 @@
           </li>
         </TransitionGroup>
       </Draggable>
-      <field-messages
+      <FieldMessages
         :state="formstate"
         :name="`mode-${index}-channels`"
         show="$submitted"
         tag="div"
         class="error-message">
         <div slot="no-empty-channel-list">A mode must contain at least one channel.</div>
-      </field-messages>
-    </validate>
+      </FieldMessages>
+    </Validate>
 
     <a href="#add-channel" class="button primary" @click.prevent="addChannel">add channel</a>
 
