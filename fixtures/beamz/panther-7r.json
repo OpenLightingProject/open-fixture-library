@@ -11,10 +11,26 @@
   "links": {
     "manual": [
       "http://files.tronios.com/Manuals/150.470%7CManual.pdf"
+    ],
+    "productPage": [
+      "https://www.tronios.de/panther-7r-moving-head/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=H47-USm9oco"
     ]
   },
   "physical": {
-    "DMXconnector": "3-pin"
+    "dimensions": [370, 470, 290],
+    "weight": 18.7,
+    "power": 380,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "MSD 7R 230W",
+      "colorTemperature": 8000
+    },
+    "lens": {
+      "degreesMinMax": [2.5, 2.5]
+    }
   },
   "wheels": {
     "Gobo Wheel": {
