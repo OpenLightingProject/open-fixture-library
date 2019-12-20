@@ -1,7 +1,7 @@
 <template>
   <span :class="{ 'entity-input': true, 'has-number': hasNumber }">
 
-    <validate v-if="hasNumber" tag="span">
+    <Validate v-if="hasNumber" tag="span">
       <PropertyInputNumber
         ref="input"
         v-model="selectedNumber"
@@ -12,7 +12,7 @@
         :name="name ? `${name}-number` : null"
         @focus.native="onFocus"
         @blur.native="onBlur($event)" />
-    </validate>
+    </Validate>
 
     <select
       ref="select"
@@ -258,8 +258,9 @@ export default {
         newUnitString = ``;
       }
 
-      const unitName = Object.keys(this.units).find(unitName => this.units[unitName].unitStr === newUnitString);
-      this.selectedUnit = unitName;
+      this.selectedUnit = Object.keys(this.units).find(
+        unitName => this.units[unitName].unitStr === newUnitString
+      );
     },
     unitSelected() {
       // 1st nextTick for data change locally (emits event), 2nd nextTick for new value from props

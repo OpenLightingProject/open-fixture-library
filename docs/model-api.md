@@ -83,8 +83,8 @@ Base class for channels.
     * *[.key](#AbstractChannel+key) ⇒ <code>String</code>*
     * *[.name](#AbstractChannel+name) ⇒ <code>String</code>*
     * *[.uniqueName](#AbstractChannel+uniqueName) ⇒ <code>String</code>*
-    * *[.pixelKey](#AbstractChannel+pixelKey)*
     * *[.pixelKey](#AbstractChannel+pixelKey) ⇒ <code>String</code>*
+    * *[.pixelKey](#AbstractChannel+pixelKey)*
 
 <a name="new_AbstractChannel_new"></a>
 
@@ -129,6 +129,11 @@ Override this method for more sensible implementation.
 **See**: [uniqueChannelNames](#Fixture+uniqueChannelNames)  
 <a name="AbstractChannel+pixelKey"></a>
 
+### *abstractChannel.pixelKey ⇒ <code>String</code>*
+**Kind**: instance property of [<code>AbstractChannel</code>](#AbstractChannel)  
+**Returns**: <code>String</code> - The key of the pixel (group) that this channel is associated to. Defaults to null.  
+<a name="AbstractChannel+pixelKey"></a>
+
 ### *abstractChannel.pixelKey*
 **Kind**: instance property of [<code>AbstractChannel</code>](#AbstractChannel)  
 
@@ -136,11 +141,6 @@ Override this method for more sensible implementation.
 | --- | --- | --- |
 | pixelKey | <code>String</code> | The key of the pixel (group) that this channel is associated to. Set to null to dereference a channel from a pixel (group). |
 
-<a name="AbstractChannel+pixelKey"></a>
-
-### *abstractChannel.pixelKey ⇒ <code>String</code>*
-**Kind**: instance property of [<code>AbstractChannel</code>](#AbstractChannel)  
-**Returns**: <code>String</code> - The key of the pixel (group) that this channel is associated to. Defaults to null.  
 <a name="Capability"></a>
 
 ## Capability
@@ -151,8 +151,8 @@ A capability represents a range of a channel.
 * [Capability](#Capability)
     * [new Capability(jsonObject, resolution, channel)](#new_Capability_new)
     * _instance_
-        * [.jsonObject](#Capability+jsonObject)
         * [.jsonObject](#Capability+jsonObject) ⇒ <code>Object</code>
+        * [.jsonObject](#Capability+jsonObject)
         * [.dmxRange](#Capability+dmxRange) ⇒ [<code>Range</code>](#Range)
         * [.rawDmxRange](#Capability+rawDmxRange) ⇒ [<code>Range</code>](#Range)
         * [.type](#Capability+type) ⇒ <code>String</code>
@@ -219,6 +219,11 @@ Create a new Capability instance.
 
 <a name="Capability+jsonObject"></a>
 
+### capability.jsonObject ⇒ <code>Object</code>
+**Kind**: instance property of [<code>Capability</code>](#Capability)  
+**Returns**: <code>Object</code> - The capability data from the channel's JSON.  
+<a name="Capability+jsonObject"></a>
+
 ### capability.jsonObject
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
 
@@ -226,11 +231,6 @@ Create a new Capability instance.
 | --- | --- | --- |
 | jsonObject | <code>Object</code> | The capability data from the channel's JSON. |
 
-<a name="Capability+jsonObject"></a>
-
-### capability.jsonObject ⇒ <code>Object</code>
-**Kind**: instance property of [<code>Capability</code>](#Capability)  
-**Returns**: <code>Object</code> - The capability data from the channel's JSON.  
 <a name="Capability+dmxRange"></a>
 
 ### capability.dmxRange ⇒ [<code>Range</code>](#Range)
@@ -523,8 +523,8 @@ Only the MSB (most significant byte) channel if it's a multi-byte channel.
 * [CoarseChannel](#CoarseChannel) ⇐ [<code>AbstractChannel</code>](#AbstractChannel)
     * [new CoarseChannel(key, jsonObject, fixture)](#new_CoarseChannel_new)
     * _instance_
-        * [.jsonObject](#CoarseChannel+jsonObject)
         * [.jsonObject](#CoarseChannel+jsonObject) ⇒ <code>Object</code>
+        * [.jsonObject](#CoarseChannel+jsonObject)
         * [.fixture](#CoarseChannel+fixture) ⇒ [<code>Fixture</code>](#Fixture)
         * [.name](#CoarseChannel+name) ⇒ <code>String</code>
         * [.type](#CoarseChannel+type) ⇒ <code>String</code>
@@ -549,7 +549,7 @@ Only the MSB (most significant byte) channel if it's a multi-byte channel.
         * [.isHelpWanted](#CoarseChannel+isHelpWanted) ⇒ <code>Boolean</code>
         * [.key](#AbstractChannel+key) ⇒ <code>String</code>
         * [.uniqueName](#AbstractChannel+uniqueName) ⇒ <code>String</code>
-        * [.pixelKey](#AbstractChannel+pixelKey)
+        * [.pixelKey](#AbstractChannel+pixelKey) ⇒ <code>String</code>
         * [.ensureProperResolution(uncheckedResolution)](#CoarseChannel+ensureProperResolution)
         * [.getResolutionInMode(mode, switchingChannelBehavior)](#CoarseChannel+getResolutionInMode) ⇒ [<code>Resolution</code>](#Resolution)
         * [.getDefaultValueWithResolution(desiredResolution)](#CoarseChannel+getDefaultValueWithResolution) ⇒ <code>Number</code>
@@ -574,6 +574,11 @@ Create a new CoarseChannel instance.
 
 <a name="CoarseChannel+jsonObject"></a>
 
+### coarseChannel.jsonObject ⇒ <code>Object</code>
+**Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
+**Returns**: <code>Object</code> - The channel data from the fixture's JSON.  
+<a name="CoarseChannel+jsonObject"></a>
+
 ### coarseChannel.jsonObject
 **Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
 
@@ -581,11 +586,6 @@ Create a new CoarseChannel instance.
 | --- | --- | --- |
 | jsonObject | <code>Object</code> | The channel data from the fixture's JSON. |
 
-<a name="CoarseChannel+jsonObject"></a>
-
-### coarseChannel.jsonObject ⇒ <code>Object</code>
-**Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
-**Returns**: <code>Object</code> - The channel data from the fixture's JSON.  
 <a name="CoarseChannel+fixture"></a>
 
 ### coarseChannel.fixture ⇒ [<code>Fixture</code>](#Fixture)
@@ -717,14 +717,10 @@ Overrides [`AbstractChannel.name`](#AbstractChannel+name).
 **See**: [uniqueChannelNames](#Fixture+uniqueChannelNames)  
 <a name="AbstractChannel+pixelKey"></a>
 
-### coarseChannel.pixelKey
+### coarseChannel.pixelKey ⇒ <code>String</code>
 **Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
 **Overrides**: [<code>pixelKey</code>](#AbstractChannel+pixelKey)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| pixelKey | <code>String</code> | The key of the pixel (group) that this channel is associated to. Set to null to dereference a channel from a pixel (group). |
-
+**Returns**: <code>String</code> - The key of the pixel (group) that this channel is associated to. Defaults to null.  
 <a name="CoarseChannel+ensureProperResolution"></a>
 
 ### coarseChannel.ensureProperResolution(uncheckedResolution)
@@ -890,8 +886,8 @@ Also called LSB (least significant byte) channel.
 
 * [FineChannel](#FineChannel) ⇐ [<code>AbstractChannel</code>](#AbstractChannel)
     * [new FineChannel(key, coarseChannel)](#new_FineChannel_new)
-    * [.coarseChannel](#FineChannel+coarseChannel)
     * [.coarseChannel](#FineChannel+coarseChannel) ⇒ [<code>CoarseChannel</code>](#CoarseChannel)
+    * [.coarseChannel](#FineChannel+coarseChannel)
     * [.coarserChannel](#FineChannel+coarserChannel) ⇒ [<code>CoarseChannel</code>](#CoarseChannel) \| [<code>FineChannel</code>](#FineChannel)
     * [.name](#FineChannel+name) ⇒ <code>String</code>
     * [.fixture](#FineChannel+fixture) ⇒ [<code>Fixture</code>](#Fixture)
@@ -899,7 +895,7 @@ Also called LSB (least significant byte) channel.
     * [.defaultValue](#FineChannel+defaultValue) ⇒ <code>Number</code>
     * [.key](#AbstractChannel+key) ⇒ <code>String</code>
     * [.uniqueName](#AbstractChannel+uniqueName) ⇒ <code>String</code>
-    * [.pixelKey](#AbstractChannel+pixelKey)
+    * [.pixelKey](#AbstractChannel+pixelKey) ⇒ <code>String</code>
 
 <a name="new_FineChannel_new"></a>
 
@@ -914,6 +910,11 @@ Creates a new FineChannel instance.
 
 <a name="FineChannel+coarseChannel"></a>
 
+### fineChannel.coarseChannel ⇒ [<code>CoarseChannel</code>](#CoarseChannel)
+**Kind**: instance property of [<code>FineChannel</code>](#FineChannel)  
+**Returns**: [<code>CoarseChannel</code>](#CoarseChannel) - The coarse (MSB) channel.  
+<a name="FineChannel+coarseChannel"></a>
+
 ### fineChannel.coarseChannel
 Sets a new coarse channel and clears the cache.
 
@@ -923,11 +924,6 @@ Sets a new coarse channel and clears the cache.
 | --- | --- | --- |
 | coarseChannel | [<code>CoarseChannel</code>](#CoarseChannel) | The new coarse channel. |
 
-<a name="FineChannel+coarseChannel"></a>
-
-### fineChannel.coarseChannel ⇒ [<code>CoarseChannel</code>](#CoarseChannel)
-**Kind**: instance property of [<code>FineChannel</code>](#FineChannel)  
-**Returns**: [<code>CoarseChannel</code>](#CoarseChannel) - The coarse (MSB) channel.  
 <a name="FineChannel+coarserChannel"></a>
 
 ### fineChannel.coarserChannel ⇒ [<code>CoarseChannel</code>](#CoarseChannel) \| [<code>FineChannel</code>](#FineChannel)
@@ -974,14 +970,10 @@ Overrides [`AbstractChannel.fixture`](#AbstractChannel+fixture).
 **See**: [uniqueChannelNames](#Fixture+uniqueChannelNames)  
 <a name="AbstractChannel+pixelKey"></a>
 
-### fineChannel.pixelKey
+### fineChannel.pixelKey ⇒ <code>String</code>
 **Kind**: instance property of [<code>FineChannel</code>](#FineChannel)  
 **Overrides**: [<code>pixelKey</code>](#AbstractChannel+pixelKey)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| pixelKey | <code>String</code> | The key of the pixel (group) that this channel is associated to. Set to null to dereference a channel from a pixel (group). |
-
+**Returns**: <code>String</code> - The key of the pixel (group) that this channel is associated to. Defaults to null.  
 <a name="Fixture"></a>
 
 ## Fixture
@@ -991,11 +983,11 @@ A physical DMX device.
 
 * [Fixture](#Fixture)
     * [new Fixture(man, key, jsonObject)](#new_Fixture_new)
-    * [.manufacturer](#Fixture+manufacturer)
     * [.manufacturer](#Fixture+manufacturer) ⇒ [<code>Manufacturer</code>](#Manufacturer)
+    * [.manufacturer](#Fixture+manufacturer)
     * [.key](#Fixture+key) ⇒ <code>String</code>
-    * [.jsonObject](#Fixture+jsonObject)
     * [.jsonObject](#Fixture+jsonObject) ⇒ <code>Object</code>
+    * [.jsonObject](#Fixture+jsonObject)
     * [.url](#Fixture+url) ⇒ <code>String</code>
     * [.name](#Fixture+name) ⇒ <code>String</code>
     * [.hasShortName](#Fixture+hasShortName) ⇒ <code>Boolean</code>
@@ -1052,6 +1044,11 @@ Create a new Fixture instance.
 
 <a name="Fixture+manufacturer"></a>
 
+### fixture.manufacturer ⇒ [<code>Manufacturer</code>](#Manufacturer)
+**Kind**: instance property of [<code>Fixture</code>](#Fixture)  
+**Returns**: [<code>Manufacturer</code>](#Manufacturer) - The fixture's manufacturer.  
+<a name="Fixture+manufacturer"></a>
+
 ### fixture.manufacturer
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
 
@@ -1059,16 +1056,16 @@ Create a new Fixture instance.
 | --- | --- | --- |
 | newMan | <code>String</code> \| [<code>Manufacturer</code>](#Manufacturer) | Either the fixture's manufacturer's key or a Manufacturer instance. |
 
-<a name="Fixture+manufacturer"></a>
-
-### fixture.manufacturer ⇒ [<code>Manufacturer</code>](#Manufacturer)
-**Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: [<code>Manufacturer</code>](#Manufacturer) - The fixture's manufacturer.  
 <a name="Fixture+key"></a>
 
 ### fixture.key ⇒ <code>String</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
 **Returns**: <code>String</code> - The fixture's unique key. Equals to filename without '.json'.  
+<a name="Fixture+jsonObject"></a>
+
+### fixture.jsonObject ⇒ <code>Object</code>
+**Kind**: instance property of [<code>Fixture</code>](#Fixture)  
+**Returns**: <code>Object</code> - The fixture's parsed JSON data.  
 <a name="Fixture+jsonObject"></a>
 
 ### fixture.jsonObject
@@ -1078,11 +1075,6 @@ Create a new Fixture instance.
 | --- | --- | --- |
 | jsonObject | <code>Object</code> | The fixture's parsed JSON data. |
 
-<a name="Fixture+jsonObject"></a>
-
-### fixture.jsonObject ⇒ <code>Object</code>
-**Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-**Returns**: <code>Object</code> - The fixture's parsed JSON data.  
 <a name="Fixture+url"></a>
 
 ### fixture.url ⇒ <code>String</code>
@@ -1381,8 +1373,8 @@ Contains information of how the pixels in a 1-, 2- or 3-dimensional space are ar
 
 * [Matrix](#Matrix)
     * [new Matrix(jsonObject)](#new_Matrix_new)
-    * [.jsonObject](#Matrix+jsonObject)
     * [.jsonObject](#Matrix+jsonObject) ⇒ <code>Object</code>
+    * [.jsonObject](#Matrix+jsonObject)
     * [.pixelCount](#Matrix+pixelCount) ⇒ <code>Array.&lt;Number&gt;</code>
     * [.pixelCountX](#Matrix+pixelCountX) ⇒ <code>Number</code>
     * [.pixelCountY](#Matrix+pixelCountY) ⇒ <code>Number</code>
@@ -1408,6 +1400,11 @@ Contains information of how the pixels in a 1-, 2- or 3-dimensional space are ar
 
 <a name="Matrix+jsonObject"></a>
 
+### matrix.jsonObject ⇒ <code>Object</code>
+**Kind**: instance property of [<code>Matrix</code>](#Matrix)  
+**Returns**: <code>Object</code> - The fixture's JSON object containing the matrix information.  
+<a name="Matrix+jsonObject"></a>
+
 ### matrix.jsonObject
 Updates the JSON object and clears the cache used for expensive parameters.
 
@@ -1417,11 +1414,6 @@ Updates the JSON object and clears the cache used for expensive parameters.
 | --- | --- | --- |
 | jsonObject | <code>Object</code> | The fixture's JSON object containing the matrix information. |
 
-<a name="Matrix+jsonObject"></a>
-
-### matrix.jsonObject ⇒ <code>Object</code>
-**Kind**: instance property of [<code>Matrix</code>](#Matrix)  
-**Returns**: <code>Object</code> - The fixture's JSON object containing the matrix information.  
 <a name="Matrix+pixelCount"></a>
 
 ### matrix.pixelCount ⇒ <code>Array.&lt;Number&gt;</code>
@@ -1609,10 +1601,10 @@ A fixture's configuration that enables a fixed set of channels and channel order
 
 * [Mode](#Mode)
     * [new Mode(jsonObject, fixture)](#new_Mode_new)
-    * [.jsonObject](#Mode+jsonObject)
     * [.jsonObject](#Mode+jsonObject) ⇒ <code>Object</code>
-    * [.fixture](#Mode+fixture)
+    * [.jsonObject](#Mode+jsonObject)
     * [.fixture](#Mode+fixture) ⇒ [<code>Fixture</code>](#Fixture)
+    * [.fixture](#Mode+fixture)
     * [.name](#Mode+name) ⇒ <code>String</code>
     * [.shortName](#Mode+shortName) ⇒ <code>String</code>
     * [.hasShortName](#Mode+hasShortName) ⇒ <code>Boolean</code>
@@ -1639,6 +1631,11 @@ Creates a new Mode instance
 
 <a name="Mode+jsonObject"></a>
 
+### mode.jsonObject ⇒ <code>Object</code>
+**Kind**: instance property of [<code>Mode</code>](#Mode)  
+**Returns**: <code>Object</code> - The JSON data representing this mode. It's a fragment of a fixture's JSON data.  
+<a name="Mode+jsonObject"></a>
+
 ### mode.jsonObject
 Sets a new JSON object and resets the cache.
 
@@ -1648,11 +1645,11 @@ Sets a new JSON object and resets the cache.
 | --- | --- | --- |
 | jsonObject | <code>Object</code> | The mode's new JSON object. |
 
-<a name="Mode+jsonObject"></a>
+<a name="Mode+fixture"></a>
 
-### mode.jsonObject ⇒ <code>Object</code>
+### mode.fixture ⇒ [<code>Fixture</code>](#Fixture)
 **Kind**: instance property of [<code>Mode</code>](#Mode)  
-**Returns**: <code>Object</code> - The JSON data representing this mode. It's a fragment of a fixture's JSON data.  
+**Returns**: [<code>Fixture</code>](#Fixture) - The fixture this mode belongs to.  
 <a name="Mode+fixture"></a>
 
 ### mode.fixture
@@ -1664,11 +1661,6 @@ Sets a new fixture and resets the cache.
 | --- | --- | --- |
 | fixture | [<code>Fixture</code>](#Fixture) | The new fixture. |
 
-<a name="Mode+fixture"></a>
-
-### mode.fixture ⇒ [<code>Fixture</code>](#Fixture)
-**Kind**: instance property of [<code>Mode</code>](#Mode)  
-**Returns**: [<code>Fixture</code>](#Fixture) - The fixture this mode belongs to.  
 <a name="Mode+name"></a>
 
 ### mode.name ⇒ <code>String</code>
@@ -1761,7 +1753,7 @@ Dummy channel used to represent `null` in a mode's channel list.
 
 * [NullChannel](#NullChannel) ⇐ [<code>CoarseChannel</code>](#CoarseChannel)
     * [new NullChannel(fixture)](#new_NullChannel_new)
-    * [.jsonObject](#CoarseChannel+jsonObject)
+    * [.jsonObject](#CoarseChannel+jsonObject) ⇒ <code>Object</code>
     * [.fixture](#CoarseChannel+fixture) ⇒ [<code>Fixture</code>](#Fixture)
     * [.name](#CoarseChannel+name) ⇒ <code>String</code>
     * [.type](#CoarseChannel+type) ⇒ <code>String</code>
@@ -1786,7 +1778,7 @@ Dummy channel used to represent `null` in a mode's channel list.
     * [.isHelpWanted](#CoarseChannel+isHelpWanted) ⇒ <code>Boolean</code>
     * [.key](#AbstractChannel+key) ⇒ <code>String</code>
     * [.uniqueName](#AbstractChannel+uniqueName) ⇒ <code>String</code>
-    * [.pixelKey](#AbstractChannel+pixelKey)
+    * [.pixelKey](#AbstractChannel+pixelKey) ⇒ <code>String</code>
     * [.ensureProperResolution(uncheckedResolution)](#CoarseChannel+ensureProperResolution)
     * [.getResolutionInMode(mode, switchingChannelBehavior)](#CoarseChannel+getResolutionInMode) ⇒ [<code>Resolution</code>](#Resolution)
     * [.getDefaultValueWithResolution(desiredResolution)](#CoarseChannel+getDefaultValueWithResolution) ⇒ <code>Number</code>
@@ -1805,14 +1797,10 @@ Uses a unique uuid as channel key.
 
 <a name="CoarseChannel+jsonObject"></a>
 
-### nullChannel.jsonObject
+### nullChannel.jsonObject ⇒ <code>Object</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
 **Overrides**: [<code>jsonObject</code>](#CoarseChannel+jsonObject)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| jsonObject | <code>Object</code> | The channel data from the fixture's JSON. |
-
+**Returns**: <code>Object</code> - The channel data from the fixture's JSON.  
 <a name="CoarseChannel+fixture"></a>
 
 ### nullChannel.fixture ⇒ [<code>Fixture</code>](#Fixture)
@@ -1964,14 +1952,10 @@ Overrides [`AbstractChannel.name`](#AbstractChannel+name).
 **See**: [uniqueChannelNames](#Fixture+uniqueChannelNames)  
 <a name="AbstractChannel+pixelKey"></a>
 
-### nullChannel.pixelKey
+### nullChannel.pixelKey ⇒ <code>String</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
 **Overrides**: [<code>pixelKey</code>](#AbstractChannel+pixelKey)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| pixelKey | <code>String</code> | The key of the pixel (group) that this channel is associated to. Set to null to dereference a channel from a pixel (group). |
-
+**Returns**: <code>String</code> - The key of the pixel (group) that this channel is associated to. Defaults to null.  
 <a name="CoarseChannel+ensureProperResolution"></a>
 
 ### nullChannel.ensureProperResolution(uncheckedResolution)
@@ -2293,7 +2277,7 @@ The different behaviors are implemented as different [CoarseChannel](#CoarseChan
     * [.key](#AbstractChannel+key) ⇒ <code>String</code>
     * [.name](#AbstractChannel+name) ⇒ <code>String</code>
     * [.uniqueName](#AbstractChannel+uniqueName) ⇒ <code>String</code>
-    * [.pixelKey](#AbstractChannel+pixelKey)
+    * [.pixelKey](#AbstractChannel+pixelKey) ⇒ <code>String</code>
     * [.usesChannelKey(chKey, [switchingChannelBehavior])](#SwitchingChannel+usesChannelKey) ⇒ <code>Boolean</code>
 
 <a name="new_SwitchingChannel_new"></a>
@@ -2378,14 +2362,10 @@ Override this method for more sensible implementation.
 **See**: [uniqueChannelNames](#Fixture+uniqueChannelNames)  
 <a name="AbstractChannel+pixelKey"></a>
 
-### switchingChannel.pixelKey
+### switchingChannel.pixelKey ⇒ <code>String</code>
 **Kind**: instance property of [<code>SwitchingChannel</code>](#SwitchingChannel)  
 **Overrides**: [<code>pixelKey</code>](#AbstractChannel+pixelKey)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| pixelKey | <code>String</code> | The key of the pixel (group) that this channel is associated to. Set to null to dereference a channel from a pixel (group). |
-
+**Returns**: <code>String</code> - The key of the pixel (group) that this channel is associated to. Defaults to null.  
 <a name="SwitchingChannel+usesChannelKey"></a>
 
 ### switchingChannel.usesChannelKey(chKey, [switchingChannelBehavior]) ⇒ <code>Boolean</code>

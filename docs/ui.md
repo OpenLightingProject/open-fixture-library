@@ -1,6 +1,6 @@
 # User Interface (UI) / Website
 
-Our website [open-fixture-library.org/](https://open-fixture-library.org/) is a [Nuxt](https://nuxtjs.org/) instance running on an [Express](http://expressjs.com/) server. That means that every page is a [Vue](https://vuejs.org/) component that is rendered on the server. Users that have JavaScript enabled can navigate purely on the client-side though, so only a small page-specific JavaScript file is downloaded via [XHR](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) and rendered in the browser. All that is handled automatically by Nuxt.
+Our website [open-fixture-library.org/](https://open-fixture-library.org/) is a [Nuxt](https://nuxtjs.org/) instance running on an [Express](https://expressjs.com/) server. That means that every page is a [Vue](https://vuejs.org/) component that is rendered on the server. Users that have JavaScript enabled can navigate purely on the client-side though, so only a small page-specific JavaScript file is downloaded via [XHR](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) and rendered in the browser. All that is handled automatically by Nuxt.
 
 
 ## Local development server
