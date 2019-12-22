@@ -230,9 +230,6 @@
 
 <style lang="scss">
 #channel-dialog {
-  /* prevent smooth scrolling when triggered from capability insertion etc. */
-  scroll-behavior: auto;
-
   .existingChannelUuid {
     display: block;
   }
