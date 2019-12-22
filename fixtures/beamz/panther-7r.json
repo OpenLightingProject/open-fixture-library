@@ -5,8 +5,8 @@
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Matteo Piccina"],
-    "createDate": "2019-12-20",
-    "lastModifyDate": "2019-12-20"
+    "createDate": "2019-12-22",
+    "lastModifyDate": "2019-12-22"
   },
   "links": {
     "manual": [
@@ -219,7 +219,8 @@
         },
         {
           "dmxRange": [5, 250],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "0Hz",
           "speedEnd": "13Hz"
         },
@@ -438,7 +439,7 @@
         {
           "dmxRange": [72, 113],
           "type": "WheelRotation",
-          "speedStart":"slow CW",
+          "speedStart": "slow CW",
           "speedEnd": "fast CW"
         },
         {
@@ -676,7 +677,7 @@
     "Frost": {
       "capability": {
         "type": "Frost",
-        "frostIntensityStart": "low",
+        "frostIntensityStart": "off",
         "frostIntensityEnd": "high"
       }
     }
