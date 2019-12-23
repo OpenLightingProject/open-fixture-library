@@ -6,7 +6,7 @@
       <strong>Warning:</strong> The fixture can not be edited after importing, so please provide as much information as possible in the comment.
     </section>
 
-    <vue-form
+    <VueForm
       :state="formstate"
       action="/ajax/import-fixture-file"
       method="post"
@@ -85,7 +85,7 @@
       <div class="button-bar">
         <button type="submit" class="primary">Import fixture</button>
       </div>
-    </vue-form>
+    </VueForm>
 
     <A11yDialog
       id="submit"

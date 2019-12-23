@@ -83,21 +83,21 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
   warnings.push(`Please add relevant links to the fixture.`);
 
-  addRdmInfo(fixture, manufacturer, gdtfFixture);
+  addRdmInfo();
 
   warnings.push(`Please add physical data to the fixture.`);
 
   fixture.matrix = {};
 
-  addWheels(fixture, gdtfFixture);
+  addWheels();
 
-  autoGenerateGdtfNameAttributes(gdtfFixture);
-  const relations = splitSwitchingChannels(gdtfFixture);
+  autoGenerateGdtfNameAttributes();
+  const switchingChannelRelations = splitSwitchingChannels();
 
-  addChannels(fixture, gdtfFixture);
-  addModes(fixture, gdtfFixture);
+  addChannels();
+  addModes();
 
-  linkSwitchingChannels(fixture, relations);
+  linkSwitchingChannels();
 
   if (`availableChannels` in fixture) {
     Object.keys(fixture.availableChannels).forEach(chKey => {
@@ -137,11 +137,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
   /**
    * Adds an RDM section to the OFL fixture and manufacturer if applicable.
-   * @param {Object} fixture The OFL fixture object.
-   * @param {Object} manufacturer The OFL manufacturer object.
-   * @param {Object} gdtfFixture The GDTF fixture object.
    */
-  function addRdmInfo(fixture, manufacturer, gdtfFixture) {
+  function addRdmInfo() {
     if (!(`Protocols` in gdtfFixture) || !(`RDM` in gdtfFixture.Protocols[0])) {
       return;
     }
@@ -158,10 +155,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
   /**
    * Adds wheels to the OFL fixture (if there are any).
-   * @param {Object} fixture The OFL fixture object.
-   * @param {Object} gdtfFixture The GDTF fixture object.
    */
-  function addWheels(fixture, gdtfFixture) {
+  function addWheels() {
     if (!(`Wheels` in gdtfFixture)) {
       return;
     }
@@ -217,9 +212,11 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
 
   /**
-   * @param {Object} gdtfFixture The GDTF fixture object.
+   * Autmatically generates `Name` attributes for GDTF's `<DMXChannel>`,
+   * `<LogicalChannel>` and `<ChannelFunction>` elements if they are not
+   * already defined.
    */
-  function autoGenerateGdtfNameAttributes(gdtfFixture) {
+  function autoGenerateGdtfNameAttributes() {
     gdtfFixture.DMXModes[0].DMXMode.forEach((gdtfMode, modeIndex) => {
       // add default Name attributes, so that the references work later
       gdtfMode.DMXChannels[0].DMXChannel.forEach(gdtfChannel => {
@@ -254,10 +251,9 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
    */
 
   /**
-   * @param {Object} gdtfFixture The GDTF fixture object.
    * @returns {Array.<Relation>} An array of relations.
    */
-  function splitSwitchingChannels(gdtfFixture) {
+  function splitSwitchingChannels() {
     const relations = [];
 
     gdtfFixture.DMXModes[0].DMXMode.forEach((gdtfMode, modeIndex) => {
@@ -323,20 +319,18 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
   /**
    * Add availableChannels and templateChannels to the fixture.
-   * @param {Object} fixture The OFL fixture object.
-   * @param {Object} gdtfFixture The GDTF fixture object.
    */
-  function addChannels(fixture, gdtfFixture) {
+  function addChannels() {
     const availableChannels = [];
     const templateChannels = [];
 
     gdtfFixture.DMXModes[0].DMXMode.forEach(gdtfMode => {
       gdtfMode.DMXChannels[0].DMXChannel.forEach(gdtfChannel => {
         if (gdtfChannel.$.DMXBreak === `Overwrite`) {
-          addChannel(templateChannels, gdtfChannel, gdtfFixture);
+          addChannel(templateChannels, gdtfChannel);
         }
         else {
-          addChannel(availableChannels, gdtfChannel, gdtfFixture);
+          addChannel(availableChannels, gdtfChannel);
         }
       });
     });
@@ -393,9 +387,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
   /**
    * @param {Array.<ChannelWrapper>} channelWrappers The OFL availableChannels or templateChannels object.
    * @param {Object} gdtfChannel The GDTF <DMXChannel> XML object.
-   * @param {Object} gdtfFixture The GDTF fixture object.
    */
-  function addChannel(channelWrappers, gdtfChannel, gdtfFixture) {
+  function addChannel(channelWrappers, gdtfChannel) {
     const name = getChannelName();
 
     if (gdtfChannel.LogicalChannel.length > 1) {
@@ -693,6 +686,12 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
             physicalEntity = capabilityTypeData.defaultPhysicalEntity;
           }
         }
+        else if (!(physicalEntity in gdtfUnits)) {
+          // ignore case of PhysicalUnit attribute
+          physicalEntity = Object.keys(gdtfUnits).find(
+            entity => entity.toLowerCase() === physicalEntity.toLowerCase()
+          );
+        }
 
         return gdtfUnits[physicalEntity];
       }
@@ -811,10 +810,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
   /**
    * Add modes and matrix pixel keys (if needed) to the fixture.
-   * @param {Object} fixture The OFL fixture object.
-   * @param {Object} gdtfFixture The GDTF fixture object.
    */
-  function addModes(fixture, gdtfFixture) {
+  function addModes() {
     // save all matrix pixels that are used in some mode
     const matrixPixels = new Set();
 
@@ -957,15 +954,13 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
   /**
    * Adds switchChannels property to all master channels' capabilities and use
    * the switching channel key in modes' channel lists.
-   * @param {Object} fixture The OFL fixture object.
-   * @param {Array.<Relation>} relations The array of relations.
    */
-  function linkSwitchingChannels(fixture, relations) {
+  function linkSwitchingChannels() {
     const relationsPerMaster = {};
     const modeChannelReplacements = [];
 
     // bring relations into a structure we can work with
-    relations.forEach(relation => {
+    switchingChannelRelations.forEach(relation => {
       const masterKey = relation.masterGdtfChannel._oflChannelKey;
 
       if (!(masterKey in relationsPerMaster)) {
@@ -1017,7 +1012,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
     // switch channels in trigger channels' capabilities
     Object.keys(relationsPerMaster).forEach(triggerChannelKey => {
-      const triggerChannelRelations = simplifySwitchingChannelRelations(relationsPerMaster[triggerChannelKey]);
+      const triggerChannelRelations = simplifySwitchingChannelRelations(triggerChannelKey);
 
       let triggerChannel;
       if (fixture.availableChannels && triggerChannelKey in fixture.availableChannels) {
@@ -1065,18 +1060,18 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
 
     /**
-     * @param {Object} switchingChannelRelations Switching channel's relations.
+     * @param {String} triggerChannelKey Key of the trigger channel, whose relations should be simplified.
      * @returns {Object} Simplified switching channel's relations.
      */
-    function simplifySwitchingChannelRelations(switchingChannelRelations) {
+    function simplifySwitchingChannelRelations(triggerChannelKey) {
       const simplifiedRelations = {};
 
-      Object.keys(switchingChannelRelations).forEach(switchingChannelKey => {
-        const relations = switchingChannelRelations[switchingChannelKey];
+      Object.keys(relationsPerMaster[triggerChannelKey]).forEach(switchingChannelKey => {
+        const relations = relations[switchingChannelKey];
 
         // were this switching channel's relations already added?
         const addedSwitchingChannelKey = Object.keys(simplifiedRelations).find(
-          otherKey => JSON.stringify(switchingChannelRelations[otherKey]) === JSON.stringify(relations)
+          otherKey => JSON.stringify(relations[otherKey]) === JSON.stringify(relations)
         );
 
         if (addedSwitchingChannelKey) {

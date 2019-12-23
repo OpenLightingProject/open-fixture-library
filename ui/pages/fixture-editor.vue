@@ -13,7 +13,7 @@
 
     <ClientOnly placeholder="Fixture editor is loading...">
 
-      <vue-form
+      <VueForm
         :state="formstate"
         action="#"
         class="only-js"
@@ -214,7 +214,7 @@
           <button type="submit" class="save-fixture primary">Create fixture</button>
         </div>
 
-      </vue-form>
+      </VueForm>
 
       <EditorChannelDialog
         v-model="channel"
@@ -427,12 +427,12 @@ export default {
      */
     removeChannel(channelUuid, modeUuid) {
       if (modeUuid) {
-        const mode = this.fixture.modes.find(mode => mode.uuid === modeUuid);
+        const channelMode = this.fixture.modes.find(mode => mode.uuid === modeUuid);
 
-        const channelPosition = mode.channels.indexOf(channelUuid);
+        const channelPosition = channelMode.channels.indexOf(channelUuid);
         if (channelPosition > -1) {
           // remove channel reference from mode
-          mode.channels.splice(channelPosition, 1);
+          channelMode.channels.splice(channelPosition, 1);
         }
 
         return;

@@ -1,6 +1,6 @@
 <template>
   <span class="dimensions">
-    <validate :state="formstate" tag="span">
+    <Validate :state="formstate" tag="span">
       <PropertyInputNumber
         ref="xInput"
         v-model="x"
@@ -10,9 +10,9 @@
         :hint="hints[0]"
         @focus.native="onFocus"
         @blur.native="onBlur($event)" />
-    </validate>
+    </Validate>
     &times;
-    <validate :state="formstate" tag="span">
+    <Validate :state="formstate" tag="span">
       <PropertyInputNumber
         v-model="y"
         :name="`${name}-y`"
@@ -21,9 +21,9 @@
         :hint="hints[1]"
         @focus.native="onFocus"
         @blur.native="onBlur($event)" />
-    </validate>
+    </Validate>
     &times;
-    <validate :state="formstate" tag="span">
+    <Validate :state="formstate" tag="span">
       <PropertyInputNumber
         v-model="z"
         :name="`${name}-z`"
@@ -32,7 +32,7 @@
         :hint="hints[2]"
         @focus.native="onFocus"
         @blur.native="onBlur($event)" />
-    </validate>
+    </Validate>
     {{ unit }}
   </span>
 </template>
