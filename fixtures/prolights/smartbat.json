@@ -32,6 +32,11 @@
     }
   },
   "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
     "Red": {
       "capability": {
         "type": "ColorIntensity",
@@ -55,26 +60,6 @@
         "type": "ColorIntensity",
         "color": "White"
       }
-    },
-    "Dimmer": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Strobe": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 10],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [11, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        }
-      ]
     },
     "Color Presets / Temperature": {
       "capabilities": [
@@ -149,6 +134,21 @@
           "type": "ColorTemperature",
           "colorTemperatureStart": "warm",
           "colorTemperatureEnd": "cold"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
