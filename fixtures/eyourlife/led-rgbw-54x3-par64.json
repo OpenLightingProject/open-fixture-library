@@ -1,17 +1,18 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "LED RGBW  54x3 Par64",
+  "name": "LED RGBW 54x3 Par64",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Moss", "moss"],
-    "createDate": "2019-12-08",
-    "lastModifyDate": "2019-12-08",
+    "authors": ["Moss"],
+    "createDate": "2019-12-23",
+    "lastModifyDate": "2019-12-23",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
-      "date": "2019-12-08",
+      "date": "2019-12-23",
       "comment": "created by Q Light Controller Plus (version 4.12.2)"
     }
   },
+  "helpWanted": "Can you provide a link to a product page or manual?",
   "physical": {
     "dimensions": [230, 220, 255],
     "weight": 4.5,
@@ -22,105 +23,7 @@
       "lumens": 500
     },
     "lens": {
-      "name": "Other",
       "degreesMinMax": [25, 25]
-    }
-  },
-  "wheels": {
-    "Color Macros/Effects": {
-      "slots": [
-        {
-          "type": "Color",
-          "name": "Blackout"
-        },
-        {
-          "type": "Color",
-          "name": "Red",
-          "colors": ["#ff0000"]
-        },
-        {
-          "type": "Color",
-          "name": "Green",
-          "colors": ["#00ff00"]
-        },
-        {
-          "type": "Color",
-          "name": "Blue",
-          "colors": ["#0000ff"]
-        },
-        {
-          "type": "Color",
-          "name": "White",
-          "colors": ["#ffffff"]
-        },
-        {
-          "type": "Color",
-          "name": "Yellow",
-          "colors": ["#ffff00"]
-        },
-        {
-          "type": "Color",
-          "name": "Cyan",
-          "colors": ["#00ffff"]
-        },
-        {
-          "type": "Color",
-          "name": "Magenta",
-          "colors": ["#ff00ff"]
-        },
-        {
-          "type": "Color",
-          "name": "Pink",
-          "colors": ["#ff69b4"]
-        },
-        {
-          "type": "Color",
-          "name": "Bright green",
-          "colors": ["#90ee90"]
-        },
-        {
-          "type": "Color",
-          "name": "Lavender",
-          "colors": ["#e6e6fa"]
-        },
-        {
-          "type": "Color",
-          "name": "Pale Pink",
-          "colors": ["#ffc0cb"]
-        },
-        {
-          "type": "Color",
-          "name": "Bright yellow",
-          "colors": ["#ffffe0"]
-        },
-        {
-          "type": "Color",
-          "name": "Bright magenta",
-          "colors": ["#ff55ff"]
-        },
-        {
-          "type": "Color",
-          "name": "Pale cyan",
-          "colors": ["#e0ffff"]
-        },
-        {
-          "type": "Color",
-          "name": "Warm white",
-          "colors": ["#faebd7"]
-        },
-        {
-          "type": "Gobo",
-          "name": "Color jumping speed: slow(081) - fast(150)"
-        },
-        {
-          "type": "Gobo",
-          "name": "Color fading speed: slow(151) - fast(220)"
-        },
-        {
-          "type": "Color",
-          "name": "Sound control (mic sensitivity)"
-        }
-      ]
     }
   },
   "availableChannels": {
@@ -173,8 +76,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 4],
-          "type": "ColorPreset",
-          "comment": "Blackout"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [5, 10],
@@ -268,34 +170,42 @@
         },
         {
           "dmxRange": [81, 150],
-          "type": "WheelSlot",
-          "slotNumber": 17,
-          "comment": "Color jumping speed: slow(081) - fast(150)"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [151, 220],
-          "type": "WheelSlot",
-          "slotNumber": 18,
-          "comment": "Color fading speed: slow(151) - fast(220)"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [221, 255],
-          "type": "ColorPreset",
-          "comment": "Sound control (mic sensitivity)"
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
         }
       ]
     },
-    "Speed adj": {
+    "Speed": {
       "defaultValue": 0,
       "capability": {
-        "type": "Effect",
-        "effectName": "adj strobe speed"
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "Which speed is this?"
       }
     }
   },
   "modes": [
     {
-      "name": "8-Channel Mode",
+      "name": "8-Channel",
+      "shortName": "8ch",
       "channels": [
         "Master Dimmer",
         "Red",
@@ -304,7 +214,7 @@
         "White",
         "Strobe",
         "Color Macros/Effects",
-        "Speed adj"
+        "Speed"
       ]
     }
   ]
