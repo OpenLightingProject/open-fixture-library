@@ -1,0 +1,109 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LP64 LED-PROMO",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Proteus"],
+    "createDate": "2019-12-13",
+    "lastModifyDate": "2019-12-13"
+  },
+  "comment": "LED PAR64 CAN",
+  "links": {
+    "manual": [
+      "https://www.ibiza-light.com/media/catalog/product/LP64LED-PROMO_manual.pdf"
+    ],
+    "productPage": [
+      "https://www.ibiza-light.com/produits-2/light-effects/disco-lighting/effet-lumineux-disco/led-projector-64-dmx-promo.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [220, 220, 325],
+    "weight": 2.8,
+    "power": 36,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "177× 5mm RGB LEDs"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 200],
+          "type": "Effect",
+          "effectName": "DMX Auto"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Effect",
+          "effectName": "DMX Sound",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Programs",
+        "Program Speed"
+      ]
+    }
+  ]
+}

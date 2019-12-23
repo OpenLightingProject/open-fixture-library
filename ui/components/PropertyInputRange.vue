@@ -1,6 +1,6 @@
 <template>
   <span class="range">
-    <validate :state="formstate" tag="span">
+    <Validate :state="formstate" tag="span">
       <PropertyInputNumber
         ref="firstInput"
         v-model="start"
@@ -13,9 +13,9 @@
         :lazy="true"
         @focus.native="onFocus"
         @blur.native="onBlur($event)" />
-    </validate>
+    </Validate>
     …
-    <validate :state="formstate" tag="span">
+    <Validate :state="formstate" tag="span">
       <PropertyInputNumber
         v-model="end"
         :name="`${name}-end`"
@@ -27,7 +27,7 @@
         :lazy="true"
         @focus.native="onFocus"
         @blur.native="onBlur($event)" />
-    </validate>
+    </Validate>
     {{ unit }}
   </span>
 </template>

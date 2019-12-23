@@ -13,7 +13,7 @@
 
     <ClientOnly placeholder="Fixture editor is loading...">
 
-      <vue-form
+      <VueForm
         :state="formstate"
         action="#"
         class="only-js"
@@ -214,7 +214,7 @@
           <button type="submit" class="save-fixture primary">Create fixture</button>
         </div>
 
-      </vue-form>
+      </VueForm>
 
       <EditorChannelDialog
         v-model="channel"
