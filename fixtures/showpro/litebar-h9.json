@@ -1,0 +1,426 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Litebar H9",
+  "categories": ["Pixel Bar", "Color Changer"],
+  "meta": {
+    "authors": ["dywilson", "Flo Edelmann"],
+    "createDate": "2019-12-10",
+    "lastModifyDate": "2019-12-10"
+  },
+  "comment": "Seems to be manufactured by NiTEC but exclusively sold under the ShowPRO brand.",
+  "links": {
+    "manual": [
+      "http://www.showtech.com.au/webdata/LEDNIT150/downloads/LiteBar-H9-User-Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.showtech.com.au/product/litebar-h9/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=2tAa6qg27mw"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 56, 168],
+    "weight": 3.2,
+    "power": 77,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "9× 10W RGBAW+UV LED"
+    },
+    "lens": {
+      "degreesMinMax": [29, 29]
+    },
+    "matrixPixels": {
+      "dimensions": [50, 50, 0],
+      "spacing": [61, 0, 0]
+    }
+  },
+  "matrix": {
+    "pixelCount": [9, 1, 1],
+    "pixelGroups": {
+      "Master": "all",
+      "Segment 1": ["1", "2", "3"],
+      "Segment 2": ["4", "5", "6"],
+      "Segment 3": ["7", "8", "9"]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "NoFunction",
+          "comment": "Default dimmer speed set from menu"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Maintenance",
+          "comment": "Dimmer speed mode",
+          "parameter": "off"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Maintenance",
+          "comment": "Dimmer speed mode 1",
+          "parameter": "fast"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Maintenance",
+          "comment": "Dimmer speed mode 2",
+          "parameter": "50%"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Maintenance",
+          "comment": "Dimmer speed mode 3",
+          "parameter": "slow"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [15, 255],
+          "type": "ColorPreset",
+          "helpWanted": "Which colors can be selected at which DMX values?"
+        }
+      ]
+    },
+    "Effects": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "0–100%",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "100–0%",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [96, 114],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "100–0-100%",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [115, 122],
+          "type": "Effect",
+          "effectName": "Auto program 2",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [123, 130],
+          "type": "Effect",
+          "effectName": "Auto program 3",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [131, 138],
+          "type": "Effect",
+          "effectName": "Auto program 4",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [139, 146],
+          "type": "Effect",
+          "effectName": "Auto program 5",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [147, 154],
+          "type": "Effect",
+          "effectName": "Auto program 6",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [155, 162],
+          "type": "Effect",
+          "effectName": "Auto program 7",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [163, 170],
+          "type": "Effect",
+          "effectName": "Auto program 8",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [171, 178],
+          "type": "Effect",
+          "effectName": "Auto program 9",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [179, 186],
+          "type": "Effect",
+          "effectName": "Auto program 10",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [187, 194],
+          "type": "Effect",
+          "effectName": "Auto program 11",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [195, 202],
+          "type": "Effect",
+          "effectName": "Auto program 12",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [203, 210],
+          "type": "Effect",
+          "effectName": "Auto program 13",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [211, 218],
+          "type": "Effect",
+          "effectName": "Auto program 14",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [219, 226],
+          "type": "Effect",
+          "effectName": "Auto program 1",
+          "comment": "cycles through programs 2-14",
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [227, 255],
+          "type": "Effect",
+          "effectName": "Sound-active mode",
+          "soundControlled": true,
+          "switchChannels": {
+            "Strobe / Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "off"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "helpWanted": "Is this the correct direction?"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "UV $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Amber Master",
+        "White Master",
+        "UV Master"
+      ]
+    },
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Amber Master",
+        "White Master",
+        "UV Master",
+        "Dimmer",
+        "Strobe",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Amber Master",
+        "White Master",
+        "UV Master",
+        "Color Macros",
+        "Strobe / Speed / Sound Sensitivity",
+        "Effects",
+        "Dimmer",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "18-channel",
+      "shortName": "18ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Segment 1", "Segment 2", "Segment 3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey",
+            "White $pixelKey",
+            "UV $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "23-channel",
+      "shortName": "23ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Segment 1", "Segment 2", "Segment 3"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Amber $pixelKey",
+            "White $pixelKey",
+            "UV $pixelKey"
+          ]
+        },
+        "Color Macros",
+        "Strobe / Speed / Sound Sensitivity",
+        "Effects",
+        "Dimmer",
+        "Dimmer Speed"
+      ]
+    }
+  ]
+}

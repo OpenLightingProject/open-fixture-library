@@ -1,7 +1,7 @@
 <template>
   <div class="proportional-capability-data">
 
-    <validate
+    <Validate
       v-if="!hasStartEnd"
       :state="formstate"
       tag="span">
@@ -33,10 +33,10 @@
 
       <span v-if="hint" class="hint">{{ hint }}</span>
 
-    </validate>
+    </Validate>
 
     <template v-else>
-      <validate
+      <Validate
         :state="formstate"
         tag="label"
         class="entity-input">
@@ -75,7 +75,7 @@
           {{ capability.dmxRange && capability.dmxRange[0] !== null ? `DMX value ${capability.dmxRange[0]}` : `capability start` }}
         </span>
 
-      </validate>
+      </Validate>
 
       <span class="separator">
         <a
@@ -89,7 +89,7 @@
         …
       </span>
 
-      <validate
+      <Validate
         :state="formstate"
         tag="label"
         class="entity-input">
@@ -128,7 +128,7 @@
           {{ capability.dmxRange && capability.dmxRange[1] !== null ? `DMX value ${capability.dmxRange[1]}` : `capability end` }}
         </span>
 
-      </validate>
+      </Validate>
     </template>
 
     <section>

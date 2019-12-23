@@ -15,7 +15,11 @@ module.exports = {
       src: `~/plugins/polyfills.js`,
       ssr: false
     },
-    `~/plugins/vue-form.js`
+    `~/plugins/vue-form.js`,
+    {
+      src: `~/plugins/vue-smooth-scroll.js`,
+      ssr: false
+    }
   ],
   css: [
     `~/assets/styles/style.scss`,
