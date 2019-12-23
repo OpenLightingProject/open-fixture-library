@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Matteo Piccina"],
     "createDate": "2019-12-22",
-    "lastModifyDate": "2019-12-22"
+    "lastModifyDate": "2019-12-23"
   },
   "links": {
     "manual": [
@@ -333,14 +333,14 @@
         {
           "dmxRange": [128, 191],
           "type": "WheelRotation",
-          "speed": "fast CW",
-          "helpWanted": "Can you select the speed in this capability?"
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         },
         {
           "dmxRange": [192, 255],
           "type": "WheelRotation",
-          "speed": "fast CCW",
-          "helpWanted": "Can you select the speed in this capability?"
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -662,15 +662,13 @@
           "dmxRange": [26, 100],
           "type": "Maintenance",
           "comment": "Lamp off",
-          "hold": "3s",
-          "helpWanted": "The manual specifies a hold time of 5s, which is correct?"
+          "hold": "3s"
         },
         {
           "dmxRange": [101, 255],
           "type": "Maintenance",
           "comment": "Lamp on",
-          "hold": "3s",
-          "helpWanted": "The manual specifies no hold time, which is correct?"
+          "hold": "3s"
         }
       ]
     },
