@@ -335,7 +335,7 @@ export default {
       const redirectJson = await app.$axios.$get(`/${query.redirectFrom}.json`);
 
       const reasonExplanations = {
-        FixtureRenamed: `The fixture was renamed by the manufacturer.`,
+        FixtureRenamed: `The fixture was renamed.`,
         SameAsDifferentBrand: `The fixture is the same but sold under different brands / names.`
       };
 
