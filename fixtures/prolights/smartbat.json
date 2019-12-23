@@ -188,7 +188,7 @@
     },
     "Auto Speed": {
       "capability": {
-        "type": "Speed",
+        "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
@@ -221,7 +221,7 @@
         {
           "dmxRange": [204, 255],
           "type": "Maintenance",
-          "comment": "Dimmer speed slow",
+          "comment": "Dimmer speed",
           "parameter": "slow"
         }
       ]
