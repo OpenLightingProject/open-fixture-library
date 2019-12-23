@@ -13,16 +13,22 @@
     ],
     "productPage": [
       "https://www.musiclights.it/product/SMARTBAT"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=2A7gp6_6tMQ"
     ]
   },
   "physical": {
-    "dimensions": [138, 186, 145],
+    "dimensions": [137.8, 184, 145],
     "weight": 3.4,
     "power": 30,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED",
+      "type": "4× 8W RGBW LED",
       "lumens": 1127
+    },
+    "lens": {
+      "degreesMinMax": [15, 15]
     }
   },
   "availableChannels": {
@@ -63,13 +69,14 @@
         },
         {
           "dmxRange": [11, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         }
       ]
     },
-    "Color Color + Color Temperature": {
+    "Color Presets / Temperature": {
       "capabilities": [
         {
           "dmxRange": [0, 10],
@@ -78,56 +85,56 @@
         {
           "dmxRange": [11, 30],
           "type": "ColorPreset",
-          "comment": "Red to Yellow",
+          "comment": "Red … Yellow",
           "colorsStart": ["#ff0000"],
           "colorsEnd": ["#ffff00"]
         },
         {
           "dmxRange": [31, 50],
           "type": "ColorPreset",
-          "comment": "Yellow to Red",
+          "comment": "Yellow … Red",
           "colorsStart": ["#ffff00"],
           "colorsEnd": ["#00ff00"]
         },
         {
           "dmxRange": [51, 70],
           "type": "ColorPreset",
-          "comment": "Green to Cyan",
+          "comment": "Green … Cyan",
           "colorsStart": ["#00ff00"],
           "colorsEnd": ["#00ffff"]
         },
         {
           "dmxRange": [71, 90],
           "type": "ColorPreset",
-          "comment": "Cyan to Blue",
+          "comment": "Cyan … Blue",
           "colorsStart": ["#00ffff"],
           "colorsEnd": ["#0000ff"]
         },
         {
           "dmxRange": [91, 110],
           "type": "ColorPreset",
-          "comment": "Blue to Magenta",
+          "comment": "Blue … Magenta",
           "colorsStart": ["#0000ff"],
           "colorsEnd": ["#ff00ff"]
         },
         {
           "dmxRange": [111, 130],
           "type": "ColorPreset",
-          "comment": "Magenta to Red",
+          "comment": "Magenta … Red",
           "colorsStart": ["#ff00ff"],
           "colorsEnd": ["#ff0000"]
         },
         {
           "dmxRange": [131, 150],
           "type": "ColorPreset",
-          "comment": "Red to White",
+          "comment": "Red … White",
           "colorsStart": ["#ff0000"],
           "colorsEnd": ["#ffffff"]
         },
         {
           "dmxRange": [151, 170],
           "type": "ColorPreset",
-          "comment": "White to Blue",
+          "comment": "White … Blue",
           "colorsStart": ["#ffffff"],
           "colorsEnd": ["#0000ff"]
         },
@@ -141,8 +148,7 @@
           "dmxRange": [201, 255],
           "type": "ColorTemperature",
           "colorTemperatureStart": "warm",
-          "colorTemperatureEnd": "cold",
-          "comment": "Color Temperature"
+          "colorTemperatureEnd": "cold"
         }
       ]
     },
@@ -150,33 +156,33 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "NoFunction",
-          "comment": "No Function"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [11, 60],
-          "type": "Generic",
-          "comment": "Auto Program 1"
+          "type": "Effect",
+          "effectName": "Auto Program 1"
         },
         {
           "dmxRange": [61, 120],
-          "type": "Generic",
-          "comment": "Auto Program 2"
+          "type": "Effect",
+          "effectName": "Auto Program 2"
         },
         {
           "dmxRange": [121, 180],
-          "type": "Generic",
-          "comment": "Auto Program 3"
+          "type": "Effect",
+          "effectName": "Auto Program 3"
         },
         {
           "dmxRange": [181, 240],
-          "type": "Generic",
-          "comment": "Auto Program 4"
+          "type": "Effect",
+          "effectName": "Auto Program 4"
         },
         {
           "dmxRange": [241, 255],
-          "type": "Generic",
-          "comment": "Sound Show"
+          "type": "Effect",
+          "effectName": "Sound Show",
+          "soundControlled": true
         }
       ]
     },
@@ -191,35 +197,39 @@
       "capabilities": [
         {
           "dmxRange": [0, 51],
-          "type": "Generic",
-          "comment": "Preset dimmer speed from display menu"
+          "type": "NoFunction",
+          "comment": "Use device setting"
         },
         {
           "dmxRange": [52, 101],
-          "type": "Generic",
-          "comment": "Dimmer speed mode off"
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": "off"
         },
         {
           "dmxRange": [102, 152],
-          "type": "Generic",
-          "comment": "Dimmer speed mode 1 (fast speed)"
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": "fast"
         },
         {
           "dmxRange": [153, 203],
-          "type": "Generic",
-          "comment": "Dimmer speed mode 2 (middle speed)"
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": "50%"
         },
         {
           "dmxRange": [204, 255],
-          "type": "Generic",
-          "comment": "Dimmer speed mode 3 (slow speed)"
+          "type": "Maintenance",
+          "comment": "Dimmer speed slow",
+          "parameter": "slow"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "4 Ch",
+      "name": "4-Channel",
       "shortName": "4ch",
       "channels": [
         "Red",
@@ -229,7 +239,7 @@
       ]
     },
     {
-      "name": "6 Ch",
+      "name": "6-Channel",
       "shortName": "6ch",
       "channels": [
         "Dimmer",
@@ -241,7 +251,7 @@
       ]
     },
     {
-      "name": "10 Ch",
+      "name": "10-Channel",
       "shortName": "10ch",
       "channels": [
         "Dimmer",
@@ -249,7 +259,7 @@
         "Green",
         "Blue",
         "White",
-        "Color Color + Color Temperature",
+        "Color Presets / Temperature",
         "Strobe",
         "Auto/Sound Programs",
         "Auto Speed",
