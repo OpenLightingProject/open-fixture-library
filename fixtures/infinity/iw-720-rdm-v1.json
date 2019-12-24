@@ -1,0 +1,700 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "iW-720 RDM V1",
+  "shortName": "iW-720 washer",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["zuvieltv"],
+    "createDate": "2019-12-24",
+    "lastModifyDate": "2019-12-24"
+  },
+  "comment": "RGBW WASH, MANUAL ZOOM",
+  "links": {
+    "manual": [
+      "https://www.highlite.com/media/attachments/MANUAL/41524_MANUAL_GB_V1.pdf"
+    ],
+    "productPage": [
+      "https://www.infinity-intelligent-light.com/de/infinity-iw-720/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=HlHJ84QR5p4"
+    ]
+  },
+  "rdm": {
+    "modelId": 41521,
+    "softwareVersion": "v1"
+  },
+  "physical": {
+    "dimensions": [204, 380, 219],
+    "weight": 8,
+    "power": 240,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "7x 20W RGBW 4-in-1 LED (LED Engin)",
+      "lumens": 31300
+    },
+    "lens": {
+      "name": "Zoom: Motorized",
+      "degreesMinMax": [7, 50]
+    }
+  },
+  "availableChannels": {
+    "Horizontal movement (Pan)": {
+      "fineChannelAliases": ["Horizontal movement (Pan) fine"],
+      "defaultValue": 128,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Vertical movement (Tilt)": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Horizontal movement (Pan) 2": {
+      "name": "Horizontal movement (Pan)",
+      "fineChannelAliases": ["Horizontal movement (Pan) 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Vertical movement (Tilt) 2": {
+      "name": "Vertical movement (Tilt)",
+      "fineChannelAliases": ["Vertical movement (Tilt) 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 255],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "540deg"
+        },
+        {
+          "dmxRange": [256, 65535],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "540deg",
+          "comment": "fine"
+        }
+      ]
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Pan 3": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 3 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 255],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "270deg"
+        },
+        {
+          "dmxRange": [256, 65535],
+          "type": "Tilt",
+          "angleStart": "0deg",
+          "angleEnd": "270deg"
+        }
+      ]
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Red Dimmer intensity (CH12 and CH13 must be open)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Dimmer intensity (CH12 and CH13 must be open)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Dimmer intensity (CH12 and CH13 must be open)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Dimmer intensity (CH12 and CH13 must be open)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Mobile Macros (CH12 and CH13 must be open ) Use in combination with CH11": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Generic",
+          "comment": "LED program 1 (no movement)"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Generic",
+          "comment": "LED program 2 (no movement)"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Generic",
+          "comment": "LED program 3 (no movement)"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Generic",
+          "comment": "LED program 4 (no movement)"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Generic",
+          "comment": "LED program 5 (no movement)"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Generic",
+          "comment": "LED program 6 (no movement)"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "Generic",
+          "comment": "LED program 7 (no movement)"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Generic",
+          "comment": "LED program 8 (no movement)"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Generic",
+          "comment": "LED program 9 (no movement)"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Generic",
+          "comment": "LED program 10 (no movement)"
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "Generic",
+          "comment": "LED program 11 (no movement)"
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "Generic",
+          "comment": "LED program 12 (no movement)"
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "Generic",
+          "comment": "LED program 13 (no movement)"
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "Generic",
+          "comment": "LED program 14 (no movement)"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Generic",
+          "comment": "LED program 15 (no movement)"
+        }
+      ]
+    },
+    "Built-in Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer (Shutter and Colors RGBW must be open)": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe (Dimmer must be open)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Close"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [25, 64],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "from fast to slow"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
+        },
+        {
+          "dmxRange": [70, 84],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "(fast on and slow off), from fast to slow"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
+        },
+        {
+          "dmxRange": [90, 104],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "(slow on and fast off), from fast to slow"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter open"
+        },
+        {
+          "dmxRange": [110, 124],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true,
+          "comment": "(random strobe), from fast to slow"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [130, 144],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true,
+          "comment": "(random strobe fast on and slow off), from fast to slow"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [150, 164],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true,
+          "comment": "(random strobe slow on and fast off), from fast to slow"
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [170, 184],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "(pulse strobe), from fast to slow"
+        },
+        {
+          "dmxRange": [185, 189],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [190, 204],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "randomTiming": true,
+          "comment": "(random pulse frequency strobe), from fast to slow"
+        },
+        {
+          "dmxRange": [205, 209],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [210, 224],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "(strobe light, gradually destroy), from fast to slow"
+        },
+        {
+          "dmxRange": [225, 229],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [230, 244],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "(pulse strobe), from fast to slow"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    },
+    "Channel Functions": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Generic",
+          "comment": "Blackout during Pan/Tilt movement"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Reset Pan after 3 seconds"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Reset Tilt after 3 seconds"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Maintenance",
+          "hold": "3s",
+          "comment": "Reset Zoom after 3 seconds"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Maintenance",
+          "hold": "instant",
+          "comment": "Reset all"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "PanTiltSpeed",
+          "speed": "fast",
+          "comment": "Pan/Tilt Speed Fast"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "PanTiltSpeed",
+          "speed": "slow",
+          "comment": "Pan/Tilt Speed Slow"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "Generic",
+          "comment": "Fan Full Speed"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "Generic",
+          "comment": "Fan Temperature controlled"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "Generic",
+          "comment": "Dimming Fast"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "Generic",
+          "comment": "Dimming Smooth"
+        },
+        {
+          "dmxRange": [145, 239],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "Generic",
+          "comment": "XY Smoothing model open"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Generic",
+          "comment": "XY Smoothing model to shut down"
+        }
+      ]
+    },
+    "Built-in Programs; Use in combination with CH6 - CH9": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 23],
+          "type": "Generic",
+          "comment": "Built-in Macro 1"
+        },
+        {
+          "dmxRange": [24, 39],
+          "type": "Generic",
+          "comment": "Built-in Macro 2"
+        },
+        {
+          "dmxRange": [40, 55],
+          "type": "Generic",
+          "comment": "Built-in Macro 3"
+        },
+        {
+          "dmxRange": [56, 71],
+          "type": "Generic",
+          "comment": "Built-in Macro 4"
+        },
+        {
+          "dmxRange": [72, 87],
+          "type": "Generic",
+          "comment": "Built-in Macro 5"
+        },
+        {
+          "dmxRange": [88, 103],
+          "type": "Generic",
+          "comment": "Built-in Macro 6"
+        },
+        {
+          "dmxRange": [104, 119],
+          "type": "Generic",
+          "comment": "Built-in Macro 7"
+        },
+        {
+          "dmxRange": [120, 135],
+          "type": "Generic",
+          "comment": "Built-in Macro 8"
+        },
+        {
+          "dmxRange": [136, 151],
+          "type": "Generic",
+          "comment": "Sound-controlled Macro 1"
+        },
+        {
+          "dmxRange": [152, 167],
+          "type": "Generic",
+          "comment": "Sound-controlled Macro 2"
+        },
+        {
+          "dmxRange": [168, 183],
+          "type": "Generic",
+          "comment": "Sound-controlled Macro 3"
+        },
+        {
+          "dmxRange": [184, 199],
+          "type": "Generic",
+          "comment": "Sound-controlled Macro 4"
+        },
+        {
+          "dmxRange": [200, 215],
+          "type": "Generic",
+          "comment": "Sound-controlled Macro 5"
+        },
+        {
+          "dmxRange": [216, 231],
+          "type": "Generic",
+          "comment": "Sound-controlled Macro 6"
+        },
+        {
+          "dmxRange": [232, 246],
+          "type": "Generic",
+          "comment": "Sound-controlled Macro 7"
+        },
+        {
+          "dmxRange": [247, 255],
+          "type": "Generic",
+          "comment": "Sound-controlled Macro 8"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic 16ch",
+      "shortName": "16ch",
+      "channels": [
+        "Pan 2",
+        "Tilt 2",
+        "Pan 2 fine",
+        "Tilt 2 fine",
+        "Pan/Tilt Speed",
+        "Red Dimmer intensity (CH12 and CH13 must be open)",
+        "Green Dimmer intensity (CH12 and CH13 must be open)",
+        "Blue Dimmer intensity (CH12 and CH13 must be open)",
+        "White Dimmer intensity (CH12 and CH13 must be open)",
+        "Mobile Macros (CH12 and CH13 must be open ) Use in combination with CH11",
+        "Built-in Speed",
+        "Dimmer (Shutter and Colors RGBW must be open)",
+        "Shutter / Strobe (Dimmer must be open)",
+        "Zoom",
+        "Channel Functions",
+        "Built-in Programs; Use in combination with CH6 - CH9"
+      ]
+    }
+  ]
+}
