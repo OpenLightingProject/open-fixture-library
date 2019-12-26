@@ -136,12 +136,7 @@
     "promise/no-return-in-finally": "error",
     "promise/valid-params": "error",
     "vue/component-name-in-template-casing": ["error", "PascalCase", {
-      "registeredComponentsOnly": false,
-      "ignores": [
-        "vue-form",
-        "validate",
-        "field-messages"
-      ]
+      "registeredComponentsOnly": false
     }],
     "vue/html-closing-bracket-newline": ["error", {
       "singleline": "never",

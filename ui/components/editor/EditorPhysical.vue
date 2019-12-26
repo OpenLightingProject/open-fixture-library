@@ -40,7 +40,7 @@
         :name="`${namePrefix}-physical-DMXconnector`"
         :schema-property="properties.physical.DMXconnector"
         addition-hint="other DMX connector" />
-      <validate
+      <Validate
         v-if="physical.DMXconnector === `[add-value]`"
         :state="formstate"
         tag="span">
@@ -52,7 +52,7 @@
           :auto-focus="true"
           hint="other DMX connector"
           class="addition" />
-      </validate>
+      </Validate>
     </LabeledInput>
 
 

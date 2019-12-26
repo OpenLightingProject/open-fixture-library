@@ -7,6 +7,7 @@
       <a
         v-for="(letterData, letter) in letters"
         :key="letter"
+        v-smooth-scroll
         :href="`#${letterData.id}`"
         class="jump-link">
         {{ letter }}
