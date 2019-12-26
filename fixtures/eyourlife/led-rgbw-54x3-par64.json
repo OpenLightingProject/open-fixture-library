@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["Moss"],
     "createDate": "2019-12-23",
-    "lastModifyDate": "2019-12-23",
+    "lastModifyDate": "2019-12-26",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
       "date": "2019-12-23",
@@ -204,7 +204,7 @@
   },
   "modes": [
     {
-      "name": "8-Channel",
+      "name": "8-channel",
       "shortName": "8ch",
       "channels": [
         "Master Dimmer",
@@ -215,6 +215,20 @@
         "Strobe",
         "Color Macros/Effects",
         "Speed"
+      ]
+    },
+    {
+      "name": "EYL2 variant 8-channel",
+      "shortName": "eyl2",
+      "channels": [
+        "Strobe",
+        "Color Macros/Effects",
+        "Speed",
+        "Master Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
       ]
     }
   ]
