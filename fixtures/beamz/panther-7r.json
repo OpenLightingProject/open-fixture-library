@@ -611,8 +611,9 @@
         {
           "dmxRange": [128, 190],
           "type": "PrismRotation",
-          "speed": "fast CW",
-          "helpWanted": "Can you select the speed in this capability?"
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "helpWanted": "Is this the correct direction?"
         },
         {
           "dmxRange": [191, 192],
@@ -622,8 +623,8 @@
         {
           "dmxRange": [193, 255],
           "type": "PrismRotation",
-          "speed":"fast CCW",
-          "helpWanted": "Can you select the speed in this capability?"
+          "speedStart":"slow CCW",
+          "speedEnd":"fast CCW"
         }
       ]
     },
