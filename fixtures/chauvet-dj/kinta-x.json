@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Kinta X",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Mike Rowlands", "Mikey Rowlands"],
+    "createDate": "2019-12-26",
+    "lastModifyDate": "2019-12-26",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2019-12-26",
+      "comment": "created by Q Light Controller Plus (version 4.12.2)"
+    }
+  },
+  "physical": {
+    "dimensions": [283, 297, 264],
+    "weight": 2.7,
+    "power": 25,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "name": "Other"
+    }
+  },
+  "availableChannels": {
+    "LED/Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [15, 100],
+          "type": "Intensity",
+          "comment": "LED On"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "Intensity",
+          "comment": "Auto Mode"
+        }
+      ]
+    },
+    "Movement": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 85],
+          "type": "Intensity",
+          "comment": "Counter-clockwise motor rotation (Slow ~ Fast)"
+        },
+        {
+          "dmxRange": [86, 170],
+          "type": "Intensity",
+          "comment": "Clockwise motor rotation (Slow ~ Fast)"
+        },
+        {
+          "dmxRange": [171, 255],
+          "type": "Intensity",
+          "comment": "Motor rotation right-to-left-to-right (Slow ~ Fast)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Nomral",
+      "channels": [
+        "LED/Mode",
+        "Movement"
+      ]
+    }
+  ]
+}
