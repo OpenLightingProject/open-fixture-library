@@ -1,7 +1,7 @@
 <template>
   <li>
     <ConditionalDetails class="channel">
-      <template slot="summary">
+      <template #summary>
         <ChannelTypeIcon :channel="channel" />{{ channel.name }}<code v-if="channelKey" class="channel-key">{{ channelKey }}</code>{{ appendToHeading ? ` ${appendToHeading}` : `` }}
         <OflSvg
           v-if="channel.isHelpWanted"
@@ -36,7 +36,13 @@
             <LabeledValue
               name="switchingChannel-triggerRanges"
               label="Activated when">
-              <span v-html="`Trigger channel is set to ${ranges.map(range => `<span style='white-space: nowrap;'>${range}</span>`).join(` or `)}`" />
+              Trigger channel is set to
+              <template v-for="(range, index) in ranges">
+                {{ index > 0 ? ` or ` : `` }}
+                <span :key="range" style="white-space: nowrap;">
+                  {{ range }}
+                </span>
+              </template>
             </LabeledValue>
           </FixturePageChannel>
         </ol>

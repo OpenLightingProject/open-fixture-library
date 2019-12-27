@@ -1,6 +1,9 @@
 <template>
   <div>
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <script type="application/ld+json" v-html="websiteStructuredData" />
+
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <script type="application/ld+json" v-html="organizationStructuredData" />
 
     <header class="fixture-header">

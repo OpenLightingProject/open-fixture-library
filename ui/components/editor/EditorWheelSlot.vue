@@ -1,6 +1,6 @@
 <template>
   <ConditionalDetails class="editor-wheel-slot" :open="open">
-    <template slot="summary">Details for wheel slot {{ slotNumber }}</template>
+    <template #summary>Details for wheel slot {{ slotNumber }}</template>
 
     <div class="wheel-slot-content">
       <LabeledInput

@@ -1,6 +1,9 @@
 <template>
   <div>
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <script type="application/ld+json" v-html="productModelStructuredData" />
+
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <script type="application/ld+json" v-html="breadcrumbListStructuredData" />
 
     <header class="fixture-header">
@@ -12,15 +15,15 @@
         </h1>
 
         <section class="fixture-meta">
-          <span class="last-modify-date">Last modified:&nbsp;<span v-html="lastModifyDate" /></span>
-          <span class="create-date">Created:&nbsp;<span v-html="createDate" /></span>
+          <span class="last-modify-date">Last modified:&nbsp;<OflTime :date="fixture.meta.lastModifyDate" /></span>
+          <span class="create-date">Created:&nbsp;<OflTime :date="fixture.meta.createDate" /></span>
           <span class="authors">Author{{ fixture.meta.authors.length === 1 ? `` : `s` }}:&nbsp;{{ fixture.meta.authors.join(`, `) }}</span>
           <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manKey}/${fixKey}.json`">Source</a></span>
           <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manKey}/${fixKey}.json`">Revisions</a></span>
 
           <ConditionalDetails v-if="fixture.meta.importPlugin !== null">
-            <template slot="summary">
-              Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <span v-html="getDateHtml(fixture.meta.importDate)" />.
+            <template #summary>
+              Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <OflTime :date="fixture.meta.importDate" />.
             </template>
             <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>
           </ConditionalDetails>
@@ -368,12 +371,6 @@ export default {
     fixture() {
       return new Fixture(this.manKey, this.fixKey, this.fixtureJson);
     },
-    lastModifyDate() {
-      return this.getDateHtml(this.fixture.meta.lastModifyDate);
-    },
-    createDate() {
-      return this.getDateHtml(this.fixture.meta.createDate);
-    },
     githubRepoPath() {
       const slug = process.env.TRAVIS_PULL_REQUEST_SLUG || process.env.TRAVIS_REPO_SLUG || `OpenLightingProject/open-fixture-library`;
 
@@ -535,15 +532,6 @@ export default {
     }
   },
   methods: {
-    /**
-     * Format a date to display as a <time> HTML tag.
-     * @param {Date} date The Date object to format.
-     * @returns {String} The <time> HTML tag.
-     */
-    getDateHtml(date) {
-      return `<time datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, ``)}</time>`;
-    },
-
     openHelpWantedDialog(event) {
       this.helpWantedContext = event.context;
       this.helpWantedType = event.type;
