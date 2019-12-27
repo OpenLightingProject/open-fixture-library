@@ -118,7 +118,9 @@
         show="$submitted"
         tag="div"
         class="error-message">
-        <div slot="no-empty-channel-list">A mode must contain at least one channel.</div>
+        <template #no-empty-channel-list>
+          <div>A mode must contain at least one channel.</div>
+        </template>
       </FieldMessages>
     </Validate>
 

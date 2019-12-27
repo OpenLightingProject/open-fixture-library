@@ -19,7 +19,7 @@
           <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manKey}/${fixKey}.json`">Revisions</a></span>
 
           <ConditionalDetails v-if="fixture.meta.importPlugin !== null">
-            <template slot="summary">
+            <template #summary>
               Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <span v-html="getDateHtml(fixture.meta.importDate)" />.
             </template>
             <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>

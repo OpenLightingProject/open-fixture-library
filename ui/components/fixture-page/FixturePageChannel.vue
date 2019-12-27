@@ -1,7 +1,7 @@
 <template>
   <li>
     <ConditionalDetails class="channel">
-      <template slot="summary">
+      <template #summary>
         <ChannelTypeIcon :channel="channel" />{{ channel.name }}<code v-if="channelKey" class="channel-key">{{ channelKey }}</code>{{ appendToHeading ? ` ${appendToHeading}` : `` }}
         <OflSvg
           v-if="channel.isHelpWanted"

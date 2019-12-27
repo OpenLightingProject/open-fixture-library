@@ -130,7 +130,7 @@
     </svg>
     <figcaption>
       <ConditionalDetails>
-        <template slot="summary">{{ wheel.name }}</template>
+        <template #summary>{{ wheel.name }}</template>
 
         <table>
           <tr

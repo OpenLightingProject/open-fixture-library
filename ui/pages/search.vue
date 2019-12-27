@@ -9,7 +9,7 @@
       </LabeledInput>
 
       <ConditionalDetails :open="detailsInitiallyOpen">
-        <template slot="summary">Filter results</template>
+        <template #summary>Filter results</template>
 
         <select v-model="manufacturersQuery" name="manufacturers" multiple>
           <option
