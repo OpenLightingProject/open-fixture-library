@@ -38,8 +38,8 @@
               label="Activated when">
               Trigger channel is set to
               <template v-for="(range, index) in ranges">
-                <span v-if="index > 0" :key="`range-${range}-or`"> or </span>
-                <span :key="`range-${range}`" style="white-space: nowrap;">
+                {{ index > 0 ? ` or ` : `` }}
+                <span :key="range" style="white-space: nowrap;">
                   {{ range }}
                 </span>
               </template>
