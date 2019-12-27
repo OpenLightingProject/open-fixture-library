@@ -94,6 +94,8 @@
     "no-console": "off",
     "no-dupe-else-if": "error",
     "no-else-return": ["error", { "allowElseIf": false }],
+    "no-irregular-whitespace": "error",
+    "vue/no-irregular-whitespace": "error",
     "no-lonely-if": "error",
     "no-loop-func": "warn",
     "no-mixed-operators": "error",
@@ -179,7 +181,13 @@
     }],
     "vue/no-deprecated-scope-attribute": "error",
     "vue/valid-v-slot": "error",
-    "vue/v-slot-style": ["error", "shorthand"]
+    "vue/v-slot-style": ["error", "shorthand"],
+    "vue/component-tags-order": ["error", {
+      "order": ["template", "style", "script"]
+    }],
+    "vue/component-definition-name-casing": "error",
+    "vue/no-deprecated-slot-attribute": "error",
+    "vue/no-deprecated-slot-scope-attribute": "error"
   },
   "settings": {
     "jsdoc": {
@@ -206,9 +214,9 @@
   "overrides": [{
     "files": ["**/*.md"],
     "rules": {
-        "no-undef": "off",
-        "no-unused-vars": "off",
-        "require-jsdoc": "off"
+      "no-undef": "off",
+      "no-unused-vars": "off",
+      "require-jsdoc": "off"
     }
   }]
 }
