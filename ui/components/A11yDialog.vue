@@ -33,11 +33,6 @@
 </template>
 
 <style lang="scss" scoped>
-.dialog-container[aria-hidden=true],
-[data-a11y-dialog-native] > .dialog-overlay {
-  display: none;
-}
-
 .dialog-container {
   outline: none;
 }
@@ -50,6 +45,11 @@
   left: 0;
   bottom: 0;
   right: 0;
+}
+
+.dialog-container[aria-hidden=true],
+[data-a11y-dialog-native] > .dialog-overlay {
+  display: none;
 }
 
 dialog {

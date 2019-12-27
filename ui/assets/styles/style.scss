@@ -117,6 +117,25 @@ a {
   }
 }
 
+textarea {
+  min-height: 4em;
+  resize: vertical;
+}
+
+select {
+  width: 30ex;
+}
+input[type=number] {
+  width: 10ex;
+}
+textarea,
+input[type=text],
+input[type=email],
+input[type=search],
+input[type=url] {
+  width: 40ex;
+}
+
 select,
 textarea,
 input[type=text],
@@ -139,6 +158,11 @@ input[type=number] {
     border-color: $blue-300;
   }
 
+  &:disabled {
+    background: $grey-100;
+    opacity: 0.9;
+  }
+
   &.vf-touched.vf-invalid,
   &.vf-submitted.vf-invalid,
   &.vf-touched[class^=vf-invalid-],
@@ -147,11 +171,6 @@ input[type=number] {
   .vf-touched[class^=vf-invalid-] & {
     border-color: red;
     box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
-  }
-
-  &:disabled {
-    background: $grey-100;
-    opacity: 0.9;
   }
 }
 
@@ -190,25 +209,6 @@ textarea[readonly] {
   }
 }
 
-textarea {
-  min-height: 4em;
-  resize: vertical;
-}
-
-select {
-  width: 30ex;
-}
-input[type=number] {
-  width: 10ex;
-}
-textarea,
-input[type=text],
-input[type=email],
-input[type=search],
-input[type=url] {
-  width: 40ex;
-}
-
 input.addition {
   margin-left: 1ex;
 }
@@ -242,27 +242,7 @@ input::placeholder {
   opacity: 1;
 }
 
-.button-bar {
-  margin: 2ex 0 0;
-
-  &.right {
-    text-align: right;
-
-    & button,
-    & .button {
-      margin-right: 0;
-      margin-left: 1ex;
-    }
-  }
-
-  & button,
-  & .button {
-    margin-top: 1ex;
-    margin-right: 1ex;
-  }
-}
-
-button, input, a.button {
+button, a.button {
   &.primary, &.secondary {
     border-radius: 2px;
     border: 1px solid;
@@ -279,14 +259,14 @@ button, input, a.button {
       padding: 4px 6px;
     }
 
-    &:not(:disabled):active {
-      position: relative;
-      top: 1px;
-    }
-
     &:disabled {
       cursor: default;
       opacity: 0.5;
+    }
+
+    &:not(:disabled):active {
+      position: relative;
+      top: 1px;
     }
   }
 
@@ -311,6 +291,26 @@ button, input, a.button {
     &:not(:disabled):focus {
       background-color: theme-color(button-secondary-background-hover);
       outline: 0;
+    }
+  }
+}
+
+.button-bar {
+  margin: 2ex 0 0;
+
+  & button,
+  & .button {
+    margin-top: 1ex;
+    margin-right: 1ex;
+  }
+
+  &.right {
+    text-align: right;
+
+    & button,
+    & .button {
+      margin-right: 0;
+      margin-left: 1ex;
     }
   }
 }
@@ -384,7 +384,7 @@ button, input, a.button {
       outline: none;
     }
 
-    &:hover, &:focus:hover {
+    &:hover {
       background-color: $red-700;
       color: $primary-text-light;
     }
