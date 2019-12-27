@@ -1,0 +1,247 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TP81",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Anonymus"],
+    "createDate": "2019-12-27",
+    "lastModifyDate": "2019-12-27"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/894728/Alkalite-Tracpod-Tp-81.html?page=6#manual"
+    ]
+  },
+  "availableChannels": {
+    "Rainbow": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Rainbow"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Rainbow 2": {
+      "name": "Rainbow",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Rainbow"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Sound Sensitivity 2": {
+      "name": "Sound Sensitivity",
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Rainbow 3": {
+      "name": "Rainbow",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Rainbow"
+      }
+    },
+    "Red 3": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue 3": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green 3": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "100000Hz",
+        "randomTiming": true
+      }
+    },
+    "Sound Sensitivity 3": {
+      "name": "Sound Sensitivity",
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Rainbow 4": {
+      "name": "Rainbow",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Rainbow"
+      }
+    },
+    "Red 4": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue 4": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green 4": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Strobe 3": {
+      "name": "Strobe",
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Sound Sensitivity 4": {
+      "name": "Sound Sensitivity",
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Rainbow 5": {
+      "name": "Rainbow",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Rainbow"
+      }
+    },
+    "Red 5": {
+      "name": "Red",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue 5": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green 5": {
+      "name": "Green",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Strobe 4": {
+      "name": "Strobe",
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Sound Sensitivity 5": {
+      "name": "Sound Sensitivity",
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Extendet",
+      "physical": {
+        "DMXconnector": "3-pin",
+        "bulb": {
+          "type": "LED"
+        }
+      },
+      "channels": [
+        "Rainbow",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Sound Sensitivity"
+      ]
+    }
+  ]
+}
