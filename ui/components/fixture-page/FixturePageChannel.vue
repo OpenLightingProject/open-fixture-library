@@ -36,7 +36,13 @@
             <LabeledValue
               name="switchingChannel-triggerRanges"
               label="Activated when">
-              <span v-html="`Trigger channel is set to ${ranges.map(range => `<span style='white-space: nowrap;'>${range}</span>`).join(` or `)}`" />
+              Trigger channel is set to
+              <template v-for="(range, index) in ranges">
+                <span v-if="index > 0" :key="`range-${range}-or`"> or </span>
+                <span :key="`range-${range}`" style="white-space: nowrap;">
+                  {{ range }}
+                </span>
+              </template>
             </LabeledValue>
           </FixturePageChannel>
         </ol>

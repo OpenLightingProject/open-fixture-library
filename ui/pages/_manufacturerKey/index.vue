@@ -1,7 +1,7 @@
 <template>
   <div>
-    <script type="application/ld+json" v-html="organizationStructuredData" />
-    <script type="application/ld+json" v-html="itemListStructuredData" />
+    <script type="application/ld+json">{{ organizationStructuredData }}</script>
+    <script type="application/ld+json">{{ itemListStructuredData }}</script>
 
     <h1>{{ manufacturer.name }} fixtures</h1>
 

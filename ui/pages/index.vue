@@ -1,7 +1,7 @@
 <template>
   <div>
-    <script type="application/ld+json" v-html="websiteStructuredData" />
-    <script type="application/ld+json" v-html="organizationStructuredData" />
+    <script type="application/ld+json">{{ websiteStructuredData }}</script>
+    <script type="application/ld+json">{{ organizationStructuredData }}</script>
 
     <header class="fixture-header">
       <div class="title">
