@@ -4,6 +4,8 @@ on:
     branches:
       - greenkeeper/**
   pull_request:
+    branches-ignore:
+      - greenkeeper/**
 jobs:
   required:
     name: Required
