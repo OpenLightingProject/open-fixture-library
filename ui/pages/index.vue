@@ -1,7 +1,10 @@
 <template>
   <div>
-    <script type="application/ld+json">{{ websiteStructuredData }}</script>
-    <script type="application/ld+json">{{ organizationStructuredData }}</script>
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <script type="application/ld+json" v-html="websiteStructuredData" />
+
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <script type="application/ld+json" v-html="organizationStructuredData" />
 
     <header class="fixture-header">
       <div class="title">

@@ -1,7 +1,10 @@
 <template>
   <div>
-    <script type="application/ld+json">{{ organizationStructuredData }}</script>
-    <script type="application/ld+json">{{ itemListStructuredData }}</script>
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <script type="application/ld+json" v-html="organizationStructuredData" />
+
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <script type="application/ld+json" v-html="itemListStructuredData" />
 
     <h1>{{ manufacturer.name }} fixtures</h1>
 

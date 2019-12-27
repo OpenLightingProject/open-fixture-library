@@ -1,7 +1,10 @@
 <template>
   <div>
-    <script type="application/ld+json">{{ productModelStructuredData }}</script>
-    <script type="application/ld+json">{{ breadcrumbListStructuredData }}</script>
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <script type="application/ld+json" v-html="productModelStructuredData" />
+
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <script type="application/ld+json" v-html="breadcrumbListStructuredData" />
 
     <header class="fixture-header">
       <div class="title">
