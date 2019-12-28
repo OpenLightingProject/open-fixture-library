@@ -14,8 +14,10 @@
     "dev": "node --max-old-space-size=4096 main.js --dev",
     "postinstall": "make all",
     "start": "node --max-old-space-size=4096 main.js",
-    "lint": "eslint --ext .js,.vue,.json,.md .",
-    "lint:errors-only": "npm run lint -- --quiet --format codeframe",
+    "lint": "npm run lint:eslint && npm run lint:stylelint",
+    "lint:eslint": "eslint --ext .js,.vue,.json,.md .",
+    "lint:eslint-errors-only": "npm run lint -- --quiet --format codeframe",
+    "lint:stylelint": "stylelint **/*.scss **/*.vue",
     "test": "npm run lint && npm run test:fixtures-valid",
     "test:dmx-value-scaling": "node tests/dmx-value-scaling.js",
     "test:fixtures-valid": "node tests/fixtures-valid.js -a",
@@ -80,7 +82,10 @@
     "libxmljs": "^0.19.7",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
-    "node-delete": "^0.1.2"
+    "node-delete": "^0.1.2",
+    "stylelint": "^12.0.1",
+    "stylelint-config-recommended-scss": "^4.1.0",
+    "stylelint-scss": "^3.13.0"
   },
   "homepage": "https://open-fixture-library.org/",
   "repository": {
