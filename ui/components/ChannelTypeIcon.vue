@@ -1,7 +1,3 @@
-<template>
-  <OflSvg v-bind="iconProps" />
-</template>
-
 <script>
 import AbstractChannel from '../../lib/model/AbstractChannel.js';
 import FineChannel from '../../lib/model/FineChannel.js';
@@ -9,16 +5,17 @@ import NullChannel from '../../lib/model/NullChannel.js';
 import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 
 export default {
+  functional: true,
   props: {
     channel: {
       type: AbstractChannel,
       required: true
     }
   },
-  computed: {
-    iconProps() {
-      return getIconProps(this.channel);
-    }
+  render(createElement, context) {
+    return createElement(`OflSvg`, {
+      props: getIconProps(context.props.channel)
+    });
   }
 };
 
