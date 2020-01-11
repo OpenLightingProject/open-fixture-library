@@ -1,3 +1,16 @@
+<template functional>
+  <section :class="props.name">
+    <div class="label">
+      <template v-if="props.label">{{ props.label }}</template>
+      <slot name="label" />
+    </div>
+    <div class="value">
+      <template v-if="props.value">{{ props.value }}</template>
+      <slot />
+    </div>
+  </section>
+</template>
+
 <style lang="scss" scoped>
 section {
   padding: .5ex 0;
@@ -33,7 +46,6 @@ section {
 
 <script>
 export default {
-  functional: true,
   props: {
     name: {
       type: String,
@@ -50,44 +62,6 @@ export default {
       required: false,
       default: null
     }
-  },
-  render(createElement, context) {
-    const data = context.data;
-    data.class = [data.class, context.props.name];
-
-    const slots = context.slots();
-
-    return createElement(`section`, data, [
-      createElement(
-        `div`,
-        { class: `label` },
-        getChildren(context.props.label, slots.label)
-      ),
-      createElement(
-        `div`,
-        { class: `value` },
-        getChildren(context.props.value, slots.default)
-      )
-    ]);
   }
 };
-
-/**
- * @param {String} string The string prop to use if it's specified.
- * @param {Object} slot The slot VNode to use if it's specified.
- * @returns {Array.<Object>} An array of VNodes.
- */
-function getChildren(string, slot) {
-  const children = [];
-
-  if (string) {
-    children.push(string);
-  }
-
-  if (slot) {
-    children.push(slot);
-  }
-
-  return children;
-}
 </script>
