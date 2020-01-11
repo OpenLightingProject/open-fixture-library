@@ -1,5 +1,10 @@
 <template functional>
-  <section :class="props.name">
+  <section
+    :ref="data.ref"
+    :class="[data.class, data.staticClass, props.name]"
+    :style="[data.style, data.staticStyle]"
+    v-bind="data.attrs"
+    v-on="listeners">
     <div class="label">
       <template v-if="props.label">{{ props.label }}</template>
       <slot name="label" />

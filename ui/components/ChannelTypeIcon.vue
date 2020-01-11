@@ -13,9 +13,9 @@ export default {
     }
   },
   render(createElement, context) {
-    return createElement(`OflSvg`, {
+    return createElement(`OflSvg`, Object.assign({}, context.data, {
       props: getIconProps(context.props.channel)
-    });
+    }));
   }
 };
 
