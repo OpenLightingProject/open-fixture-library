@@ -1,21 +1,18 @@
-<template>
-  <OflSvg v-bind="iconProps" />
-</template>
-
 <script>
 import Capability from '../../lib/model/Capability.js';
 
 export default {
+  functional: true,
   props: {
     capability: {
       type: Capability,
       required: true
     }
   },
-  computed: {
-    iconProps() {
-      return getIconProps(this.capability);
-    }
+  render(createElement, context) {
+    return createElement(`OflSvg`, Object.assign({}, context.data, {
+      props: getIconProps(context.props.capability)
+    }));
   }
 };
 
