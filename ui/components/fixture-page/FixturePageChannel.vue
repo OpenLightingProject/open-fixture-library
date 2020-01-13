@@ -39,8 +39,8 @@
               Trigger channel is set to
               <template v-for="(range, index) in ranges">
                 {{ index > 0 ? ` or ` : `` }}
-                <span :key="range" style="white-space: nowrap;">
-                  {{ range }}
+                <span :key="range.toString()" style="white-space: nowrap;">
+                  {{ range.toString() }}
                 </span>
               </template>
             </LabeledValue>
