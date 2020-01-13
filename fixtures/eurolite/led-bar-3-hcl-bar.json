@@ -102,12 +102,14 @@
         {
           "dmxRange": [130, 189],
           "type": "Effect",
-          "effectName": "Cound controlled color fade"
+          "effectName": "Cound controlled color fade",
+          "soundControlled": true
         },
         {
           "dmxRange": [190, 255],
           "type": "Effect",
-          "effectName": "Cound controlled color change"
+          "effectName": "Cound controlled color change",
+          "soundControlled": true
         }
       ]
     },
