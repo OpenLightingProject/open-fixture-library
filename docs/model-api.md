@@ -2629,10 +2629,10 @@ Creates a new WheelSlot instance.
 **Kind**: global typedef  
 **Properties**
 
-| Name | Type |
-| --- | --- |
-| dmxRange | [<code>Range</code>](#Range) | 
-| switchTo | <code>String</code> | 
+| Name | Type | Description |
+| --- | --- | --- |
+| dmxRange | [<code>Range</code>](#Range) | The DMX range that triggers the switching channel. |
+| switchTo | <code>String</code> | The channel to switch to in the given DMX range. |
 
 <a name="SwitchingChannelBehavior"></a>
 
