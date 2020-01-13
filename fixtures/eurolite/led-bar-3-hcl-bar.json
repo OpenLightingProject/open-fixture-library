@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED Bar-3 HCL Bar",
-  "shortName": "LED Bar-3 HCL",
+  "shortName": "LEDBar-3HCL",
   "categories": ["Pixel Bar", "Color Changer"],
   "meta": {
     "authors": ["Rainer Jung"],
@@ -33,9 +33,48 @@
   },
   "availableChannels": {
     "Dimmer": {
+      "defaultValue": 0,
       "capability": {
         "type": "Intensity"
       }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 129],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "NoFunction"
+        }
+      ]
     },
     "Color Presets": {
       "capabilities": [
@@ -158,6 +197,14 @@
           "colors": ["#ff008c"]
         }
       ]
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz"
+      }
     }
   },
   "modes": [
@@ -167,6 +214,25 @@
       "channels": [
         "Dimmer",
         "Color Presets"
+      ]
+    },
+    {
+      "name": "3 Channels",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4 Channels",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Color Presets",
+        "Mode"
       ]
     }
   ]
