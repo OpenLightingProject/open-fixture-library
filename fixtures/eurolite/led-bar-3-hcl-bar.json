@@ -38,58 +38,76 @@
       }
     },
     "Red": {
+      "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Green": {
+      "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blue": {
+      "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "White": {
+      "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
     "Amber": {
+      "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber"
       }
     },
     "UV": {
+      "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
         "color": "UV"
       }
     },
-    "Color Presets": {
+    "Mode": {
       "capabilities": [
         {
           "dmxRange": [0, 9],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [10, 129],
-          "type": "NoFunction"
+          "dmxRange": [10, 69],
+          "type": "Effect",
+          "effectName": "Increasing color fade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Effect",
+          "effectName": "Increasing color change",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [130, 189],
-          "type": "NoFunction"
+          "type": "Effect",
+          "effectName": "Cound controlled color fade"
         },
         {
           "dmxRange": [190, 255],
-          "type": "NoFunction"
+          "type": "Effect",
+          "effectName": "Cound controlled color change"
         }
       ]
     },
