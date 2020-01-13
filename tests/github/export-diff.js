@@ -15,9 +15,9 @@ const testFixtures = require(`../test-fixtures.json`).map(
 
 /**
  * @typedef {Object} Task
- * @property {String} manFix
- * @property {String} currentPluginKey
- * @property {String} comparePluginKey
+ * @property {String} manFix The combined manufacturer / fixture key.
+ * @property {String} currentPluginKey The plugin key in the current repo version.
+ * @property {String} comparePluginKey The plugin key that should be compared against.
  */
 
 // generate diff tasks describing the diffed plugins, fixtures and the reason for diffing (which component has changed)
