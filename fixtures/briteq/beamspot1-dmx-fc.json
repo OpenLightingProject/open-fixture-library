@@ -33,64 +33,60 @@
   },
   "availableChannels": {
     "Red": {
-      "defaultValue": "100%",
-      "highlightValue": "100%",
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Green": {
-      "defaultValue": "100%",
-      "highlightValue": "100%",
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blue": {
-      "defaultValue": "100%",
-      "highlightValue": "100%",
-      "constant": true,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "White": {
-      "defaultValue": "100%",
-      "highlightValue": "100%",
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "Intensity": {
-      "defaultValue": "0%",
-      "highlightValue": "100%",
+    "Master Dimmer": {
       "capability": {
         "type": "Intensity"
       }
     },
     "Strobe": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "StrobeSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     }
   },
   "modes": [
     {
-      "name": "RGBWIS_6CH",
-      "shortName": "6CH+",
+      "name": "RGBW + Master + Strobe",
+      "shortName": "06CH+",
       "channels": [
         "Red",
         "Green",
         "Blue",
         "White",
-        "Intensity",
+        "Master Dimmer",
         "Strobe"
       ]
     }
