@@ -8,22 +8,12 @@ addons:
       - python-lxml # for QLC+ fixture-tool-validation export test
 matrix:
   include:
-    - env: TESTFILE=tests/http-status.js
-      if: type in (push, pull_request, api)
     - env: TESTFILE=tests/github/export-diff.js
       if: type in (pull_request, api)
     - env: TESTFILE=tests/github/exports-valid.js
       if: type in (pull_request, api)
     - env: TESTFILE=tests/github/schema-version-reminder.js
       if: type in (pull_request, api)
-    - env: TESTFILE=tests/fixtures-valid.js
-      if: type in (push, pull_request, api)
-    - env: TESTFILE=tests/make-targets-updated.js
-      if: type in (push, pull_request, api)
-    - env: TESTFILE=tests/lint.js
-      if: type in (push, pull_request, api)
-    - env: TESTFILE=tests/dmx-value-scaling.js
-      if: type in (push, pull_request, api)
     - env: TESTFILE=tests/external-links.js
       if: type in (api, cron)
 script:
@@ -31,7 +21,3 @@ script:
 cache:
   directories:
     - node_modules # cache NPM dependencies
-branches:
-  only: # for other branches, the PR builds are sufficient
-  - master
-  - /^greenkeeper\/.*/

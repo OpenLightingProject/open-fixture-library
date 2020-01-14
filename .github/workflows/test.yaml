@@ -1,0 +1,33 @@
+name: Test
+on:
+  push:
+    branches:
+      - greenkeeper/**
+  pull_request:
+    branches-ignore:
+      - greenkeeper/**
+jobs:
+  required:
+    name: Required
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup Node.js v12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Install dependencies
+        run: npm ci
+      - name: Run ESLint
+        run: npm run lint:eslint
+      - name: Run Stylelint
+        run: npm run lint:stylelint -- --formatter compact
+      - name: Run dmx-value-scaling test
+        run: npm run test:dmx-value-scaling
+      - name: Run fixtures-valid test
+        run: npm run test:fixtures-valid
+      - name: Run http-status test
+        run: npm run test:http-status
+      - name: Run make-targets-updated test
+        run: npm run test:make-targets-updated

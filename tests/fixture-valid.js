@@ -43,8 +43,8 @@ const redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
 function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   /**
    * @typedef {Object} ResultData
-   * @property {Array.<String>} errors
-   * @property {Array.<String>} warnings
+   * @property {Array.<String>} errors All errors of this fixture.
+   * @property {Array.<String>} warnings All warnings of this fixture.
    */
 
   /** @type {ResultData} */

@@ -9,7 +9,7 @@
     @show="onChannelDialogOpen"
     @hide="onChannelDialogClose">
 
-    <vue-form
+    <VueForm
       :state="formstate"
       action="#"
       @submit.prevent="onSubmit">
@@ -215,7 +215,7 @@
         <button :disabled="channel.wizard.show" type="submit" class="primary">{{ submitButtonTitle }}</button>
       </div>
 
-    </vue-form>
+    </VueForm>
 
   </A11yDialog>
 </template>
@@ -230,9 +230,6 @@
 
 <style lang="scss">
 #channel-dialog {
-  /* prevent smooth scrolling when triggered from capability insertion etc. */
-  scroll-behavior: auto;
-
   .existingChannelUuid {
     display: block;
   }
