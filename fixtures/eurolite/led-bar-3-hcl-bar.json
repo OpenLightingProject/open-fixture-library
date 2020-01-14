@@ -88,27 +88,27 @@
         {
           "dmxRange": [10, 69],
           "type": "Effect",
-          "effectPreset": "Increasing color fade",
+          "effectPreset": "ColorFade",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [70, 129],
           "type": "Effect",
-          "effectPreset": "Increasing color change",
+          "effectPreset": "ColorJump",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [130, 189],
           "type": "Effect",
-          "effectPreset": "Cound controlled color fade",
+          "effectPreset": "ColorFade",
           "soundControlled": true
         },
         {
           "dmxRange": [190, 255],
           "type": "Effect",
-          "effectPreset": "Cound controlled color change",
+          "effectPreset": "ColorJump",
           "soundControlled": true
         }
       ]
