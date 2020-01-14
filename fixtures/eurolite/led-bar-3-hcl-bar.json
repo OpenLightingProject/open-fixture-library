@@ -5,7 +5,7 @@
   "meta": {
     "authors": ["Rainer Jung"],
     "createDate": "2020-01-14",
-    "lastModifyDate": "2020-01-13"
+    "lastModifyDate": "2020-01-14"
   },
   "links": {
     "manual": [
@@ -20,7 +20,7 @@
   },
   "physical": {
     "dimensions": [265, 129, 87],
-    "weight": 1.13,
+    "weight": 0.9,
     "power": 12,
     "DMXconnector": "3-pin",
     "bulb": {
@@ -88,27 +88,27 @@
         {
           "dmxRange": [10, 69],
           "type": "Effect",
-          "effectName": "Increasing color fade",
+          "effectPreset": "Increasing color fade",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [70, 129],
           "type": "Effect",
-          "effectName": "Increasing color change",
+          "effectPreset": "Increasing color change",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [130, 189],
           "type": "Effect",
-          "effectName": "Cound controlled color fade",
+          "effectPreset": "Cound controlled color fade",
           "soundControlled": true
         },
         {
           "dmxRange": [190, 255],
           "type": "Effect",
-          "effectName": "Cound controlled color change",
+          "effectPreset": "Cound controlled color change",
           "soundControlled": true
         }
       ]
@@ -213,7 +213,7 @@
           "dmxRange": [160, 169],
           "type": "ColorPreset",
           "comment": "Lavender",
-          "colors": ["#8c8cff"]
+          "colors": ["#ccbfff"]
         },
         {
           "dmxRange": [170, 179],
@@ -246,7 +246,7 @@
   },
   "modes": [
     {
-      "name": "2 Channels",
+      "name": "2-channel",
       "shortName": "2ch",
       "channels": [
         "Dimmer",
@@ -254,7 +254,7 @@
       ]
     },
     {
-      "name": "3 Channels",
+      "name": "3-channel",
       "shortName": "3ch",
       "channels": [
         "Red",
@@ -263,7 +263,7 @@
       ]
     },
     {
-      "name": "4 Channels",
+      "name": "4-channel",
       "shortName": "4ch",
       "channels": [
         "Dimmer",
@@ -273,7 +273,7 @@
       ]
     },
     {
-      "name": "6 Channels",
+      "name": "6-channel",
       "shortName": "6ch",
       "channels": [
         "Red",
@@ -285,7 +285,7 @@
       ]
     },
     {
-      "name": "10 Channels",
+      "name": "10-channel",
       "shortName": "10ch",
       "channels": [
         "Dimmer",
