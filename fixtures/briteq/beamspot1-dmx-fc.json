@@ -1,12 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "BeamSpot1-DMX FC",
-  "shortName": "Briteq BeamSpot 6ch+",
+  "name": "BEAMSPOT1-DMX FC",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["ALEKSEY KHOROSHEV"],
-    "createDate": "2019-12-08",
-    "lastModifyDate": "2019-12-08"
+    "authors": ["Aleksey Khoroshev"],
+    "createDate": "2020-01-14",
+    "lastModifyDate": "2020-01-14"
   },
   "links": {
     "manual": [
@@ -15,18 +14,21 @@
     "productPage": [
       "https://briteq-lighting.com/beamspot1-dmx-fc"
     ],
-    "other": [
-      "https://briteq-lighting.com/beamspot1-dmx-fc"
+    "video": [
+      "https://www.facebook.com/MRProducts/videos/briteq-sound-lightshow-2016-hq-video/1103561746357817/"
     ]
   },
   "physical": {
+    "dimensions": [124.5, 195.5, 172.25],
     "weight": 1.23,
     "power": 15,
+    "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "15W RGBW LED",
+      "lumens": 275
     },
     "lens": {
-      "degreesMinMax": [4, 4]
+      "degreesMinMax": [4, 45]
     }
   },
   "availableChannels": {
