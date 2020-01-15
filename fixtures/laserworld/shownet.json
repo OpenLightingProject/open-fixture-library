@@ -1,0 +1,1882 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Shownet",
+  "categories": ["Laser"],
+  "meta": {
+    "authors": ["elix", "elixxx"],
+    "createDate": "2020-01-15",
+    "lastModifyDate": "2020-01-15",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2020-01-15",
+      "comment": "created by Q Light Controller Plus (version 4.12.1)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Laser"
+    },
+    "lens": {
+      "name": "Other"
+    }
+  },
+  "matrix": {
+    "pixelCount": [
+      null,
+      null,
+      1
+    ]
+  },
+  "availableChannels": {
+    "Helligkeit": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Symbole": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "ILDA 1"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "ILDA 2"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "comment": "ILDA 3"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "comment": "ILDA 4"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "comment": "ILDA 5"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "comment": "ILDA 6"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "comment": "ILDA 7"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "comment": "ILDA 8"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "comment": "ILDA 9"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "WheelSlot",
+          "slotNumber": 10,
+          "comment": "ILDA 10"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "WheelSlot",
+          "slotNumber": 11,
+          "comment": "ILDA 11"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "WheelSlot",
+          "slotNumber": 12,
+          "comment": "ILDA 12"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "WheelSlot",
+          "slotNumber": 13,
+          "comment": "ILDA 13"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "WheelSlot",
+          "slotNumber": 14,
+          "comment": "ILDA 14"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "WheelSlot",
+          "slotNumber": 15,
+          "comment": "ILDA 15"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "WheelSlot",
+          "slotNumber": 16,
+          "comment": "ILDA 16"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "WheelSlot",
+          "slotNumber": 17,
+          "comment": "ILDA 17"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "WheelSlot",
+          "slotNumber": 18,
+          "comment": "ILDA 18"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "WheelSlot",
+          "slotNumber": 19,
+          "comment": "ILDA 19"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "WheelSlot",
+          "slotNumber": 20,
+          "comment": "ILDA 20"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "WheelSlot",
+          "slotNumber": 21,
+          "comment": "ILDA 21"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "WheelSlot",
+          "slotNumber": 22,
+          "comment": "ILDA 22"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "WheelSlot",
+          "slotNumber": 23,
+          "comment": "ILDA 23"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "WheelSlot",
+          "slotNumber": 24,
+          "comment": "ILDA 24"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "WheelSlot",
+          "slotNumber": 25,
+          "comment": "ILDA 25"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "WheelSlot",
+          "slotNumber": 26,
+          "comment": "ILDA 26"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "WheelSlot",
+          "slotNumber": 27,
+          "comment": "ILDA 27"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "WheelSlot",
+          "slotNumber": 28,
+          "comment": "ILDA 28"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "WheelSlot",
+          "slotNumber": 29,
+          "comment": "ILDA 29"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "WheelSlot",
+          "slotNumber": 30,
+          "comment": "ILDA 30"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "WheelSlot",
+          "slotNumber": 31,
+          "comment": "ILDA 31"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "WheelSlot",
+          "slotNumber": 32,
+          "comment": "ILDA 32"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "WheelSlot",
+          "slotNumber": 33,
+          "comment": "ILDA 33"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "WheelSlot",
+          "slotNumber": 34,
+          "comment": "ILDA 34"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "WheelSlot",
+          "slotNumber": 35,
+          "comment": "ILDA 35"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "WheelSlot",
+          "slotNumber": 36,
+          "comment": "ILDA 36"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "WheelSlot",
+          "slotNumber": 37,
+          "comment": "ILDA 37"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "WheelSlot",
+          "slotNumber": 38,
+          "comment": "ILDA 38"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "WheelSlot",
+          "slotNumber": 39,
+          "comment": "ILDA 39"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "WheelSlot",
+          "slotNumber": 40,
+          "comment": "ILDA 40"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "WheelSlot",
+          "slotNumber": 41,
+          "comment": "ILDA 41"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "WheelSlot",
+          "slotNumber": 42,
+          "comment": "ILDA 42"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "WheelSlot",
+          "slotNumber": 43,
+          "comment": "ILDA 43"
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "WheelSlot",
+          "slotNumber": 44,
+          "comment": "ILDA 44"
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "WheelSlot",
+          "slotNumber": 45,
+          "comment": "ILDA 45"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "WheelSlot",
+          "slotNumber": 46,
+          "comment": "ILDA 46"
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "WheelSlot",
+          "slotNumber": 47,
+          "comment": "ILDA 47"
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "WheelSlot",
+          "slotNumber": 48,
+          "comment": "ILDA 48"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "WheelSlot",
+          "slotNumber": 49,
+          "comment": "ILDA 49"
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "WheelSlot",
+          "slotNumber": 50,
+          "comment": "ILDA 50"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "WheelSlot",
+          "slotNumber": 51,
+          "comment": "ILDA 51"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "WheelSlot",
+          "slotNumber": 52,
+          "comment": "ILDA 52"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "WheelSlot",
+          "slotNumber": 53,
+          "comment": "ILDA 53"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "WheelSlot",
+          "slotNumber": 54,
+          "comment": "ILDA 54"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "WheelSlot",
+          "slotNumber": 55,
+          "comment": "ILDA 55"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "WheelSlot",
+          "slotNumber": 56,
+          "comment": "ILDA 56"
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "WheelSlot",
+          "slotNumber": 57,
+          "comment": "ILDA 57"
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "WheelSlot",
+          "slotNumber": 58,
+          "comment": "ILDA 58"
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "WheelSlot",
+          "slotNumber": 59,
+          "comment": "ILDA 59"
+        },
+        {
+          "dmxRange": [59, 59],
+          "type": "WheelSlot",
+          "slotNumber": 60,
+          "comment": "ILDA 60"
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "WheelSlot",
+          "slotNumber": 61,
+          "comment": "ILDA 61"
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "WheelSlot",
+          "slotNumber": 62,
+          "comment": "ILDA 62"
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "WheelSlot",
+          "slotNumber": 63,
+          "comment": "ILDA 63"
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "WheelSlot",
+          "slotNumber": 64,
+          "comment": "ILDA 64"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "WheelSlot",
+          "slotNumber": 65,
+          "comment": "ILDA 65"
+        },
+        {
+          "dmxRange": [65, 65],
+          "type": "WheelSlot",
+          "slotNumber": 66,
+          "comment": "ILDA 66"
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "WheelSlot",
+          "slotNumber": 67,
+          "comment": "ILDA 67"
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "WheelSlot",
+          "slotNumber": 68,
+          "comment": "ILDA 68"
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "WheelSlot",
+          "slotNumber": 69,
+          "comment": "ILDA 69"
+        },
+        {
+          "dmxRange": [69, 69],
+          "type": "WheelSlot",
+          "slotNumber": 70,
+          "comment": "ILDA 70"
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "WheelSlot",
+          "slotNumber": 71,
+          "comment": "ILDA 71"
+        },
+        {
+          "dmxRange": [71, 71],
+          "type": "WheelSlot",
+          "slotNumber": 72,
+          "comment": "ILDA 72"
+        },
+        {
+          "dmxRange": [72, 72],
+          "type": "WheelSlot",
+          "slotNumber": 73,
+          "comment": "ILDA 73"
+        },
+        {
+          "dmxRange": [73, 73],
+          "type": "WheelSlot",
+          "slotNumber": 74,
+          "comment": "ILDA 74"
+        },
+        {
+          "dmxRange": [74, 74],
+          "type": "WheelSlot",
+          "slotNumber": 75,
+          "comment": "ILDA 75"
+        },
+        {
+          "dmxRange": [75, 75],
+          "type": "WheelSlot",
+          "slotNumber": 76,
+          "comment": "ILDA 76"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "WheelSlot",
+          "slotNumber": 77,
+          "comment": "ILDA 77"
+        },
+        {
+          "dmxRange": [77, 77],
+          "type": "WheelSlot",
+          "slotNumber": 78,
+          "comment": "ILDA 78"
+        },
+        {
+          "dmxRange": [78, 78],
+          "type": "WheelSlot",
+          "slotNumber": 79,
+          "comment": "ILDA 79"
+        },
+        {
+          "dmxRange": [79, 79],
+          "type": "WheelSlot",
+          "slotNumber": 80,
+          "comment": "ILDA 80"
+        },
+        {
+          "dmxRange": [80, 80],
+          "type": "WheelSlot",
+          "slotNumber": 81,
+          "comment": "ILDA 81"
+        },
+        {
+          "dmxRange": [81, 81],
+          "type": "WheelSlot",
+          "slotNumber": 82,
+          "comment": "ILDA 82"
+        },
+        {
+          "dmxRange": [82, 82],
+          "type": "WheelSlot",
+          "slotNumber": 83,
+          "comment": "ILDA 83"
+        },
+        {
+          "dmxRange": [83, 83],
+          "type": "WheelSlot",
+          "slotNumber": 84,
+          "comment": "ILDA 84"
+        },
+        {
+          "dmxRange": [84, 84],
+          "type": "WheelSlot",
+          "slotNumber": 85,
+          "comment": "ILDA 85"
+        },
+        {
+          "dmxRange": [85, 85],
+          "type": "WheelSlot",
+          "slotNumber": 86,
+          "comment": "ILDA 86"
+        },
+        {
+          "dmxRange": [86, 86],
+          "type": "WheelSlot",
+          "slotNumber": 87,
+          "comment": "ILDA 87"
+        },
+        {
+          "dmxRange": [87, 87],
+          "type": "WheelSlot",
+          "slotNumber": 88,
+          "comment": "ILDA 88"
+        },
+        {
+          "dmxRange": [88, 88],
+          "type": "WheelSlot",
+          "slotNumber": 89,
+          "comment": "ILDA 89"
+        },
+        {
+          "dmxRange": [89, 89],
+          "type": "WheelSlot",
+          "slotNumber": 90,
+          "comment": "ILDA 90"
+        },
+        {
+          "dmxRange": [90, 90],
+          "type": "WheelSlot",
+          "slotNumber": 91,
+          "comment": "ILDA 91"
+        },
+        {
+          "dmxRange": [91, 91],
+          "type": "WheelSlot",
+          "slotNumber": 92,
+          "comment": "ILDA 92"
+        },
+        {
+          "dmxRange": [92, 92],
+          "type": "WheelSlot",
+          "slotNumber": 93,
+          "comment": "ILDA 93"
+        },
+        {
+          "dmxRange": [93, 93],
+          "type": "WheelSlot",
+          "slotNumber": 94,
+          "comment": "ILDA 94"
+        },
+        {
+          "dmxRange": [94, 94],
+          "type": "WheelSlot",
+          "slotNumber": 95,
+          "comment": "ILDA 95"
+        },
+        {
+          "dmxRange": [95, 95],
+          "type": "WheelSlot",
+          "slotNumber": 96,
+          "comment": "ILDA 96"
+        },
+        {
+          "dmxRange": [96, 96],
+          "type": "WheelSlot",
+          "slotNumber": 97,
+          "comment": "ILDA 97"
+        },
+        {
+          "dmxRange": [97, 97],
+          "type": "WheelSlot",
+          "slotNumber": 98,
+          "comment": "ILDA 98"
+        },
+        {
+          "dmxRange": [98, 98],
+          "type": "WheelSlot",
+          "slotNumber": 99,
+          "comment": "ILDA 99"
+        },
+        {
+          "dmxRange": [99, 99],
+          "type": "WheelSlot",
+          "slotNumber": 100,
+          "comment": "ILDA 100"
+        },
+        {
+          "dmxRange": [100, 100],
+          "type": "WheelSlot",
+          "slotNumber": 101,
+          "comment": "ILDA 101"
+        },
+        {
+          "dmxRange": [101, 101],
+          "type": "WheelSlot",
+          "slotNumber": 102,
+          "comment": "ILDA 102"
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "WheelSlot",
+          "slotNumber": 103,
+          "comment": "ILDA 103"
+        },
+        {
+          "dmxRange": [103, 103],
+          "type": "WheelSlot",
+          "slotNumber": 104,
+          "comment": "ILDA 104"
+        },
+        {
+          "dmxRange": [104, 104],
+          "type": "WheelSlot",
+          "slotNumber": 105,
+          "comment": "ILDA 105"
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "WheelSlot",
+          "slotNumber": 106,
+          "comment": "ILDA 106"
+        },
+        {
+          "dmxRange": [106, 106],
+          "type": "WheelSlot",
+          "slotNumber": 107,
+          "comment": "ILDA 107"
+        },
+        {
+          "dmxRange": [107, 107],
+          "type": "WheelSlot",
+          "slotNumber": 108,
+          "comment": "ILDA 108"
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "WheelSlot",
+          "slotNumber": 109,
+          "comment": "ILDA 109"
+        },
+        {
+          "dmxRange": [109, 109],
+          "type": "WheelSlot",
+          "slotNumber": 110,
+          "comment": "ILDA 110"
+        },
+        {
+          "dmxRange": [110, 110],
+          "type": "WheelSlot",
+          "slotNumber": 111,
+          "comment": "ILDA 111"
+        },
+        {
+          "dmxRange": [111, 111],
+          "type": "WheelSlot",
+          "slotNumber": 112,
+          "comment": "ILDA 112"
+        },
+        {
+          "dmxRange": [112, 112],
+          "type": "WheelSlot",
+          "slotNumber": 113,
+          "comment": "ILDA 113"
+        },
+        {
+          "dmxRange": [113, 113],
+          "type": "WheelSlot",
+          "slotNumber": 114,
+          "comment": "ILDA 114"
+        },
+        {
+          "dmxRange": [114, 114],
+          "type": "WheelSlot",
+          "slotNumber": 115,
+          "comment": "ILDA 115"
+        },
+        {
+          "dmxRange": [115, 115],
+          "type": "WheelSlot",
+          "slotNumber": 116,
+          "comment": "ILDA 116"
+        },
+        {
+          "dmxRange": [116, 116],
+          "type": "WheelSlot",
+          "slotNumber": 117,
+          "comment": "ILDA 117"
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "WheelSlot",
+          "slotNumber": 118,
+          "comment": "ILDA 118"
+        },
+        {
+          "dmxRange": [118, 118],
+          "type": "WheelSlot",
+          "slotNumber": 119,
+          "comment": "ILDA 119"
+        },
+        {
+          "dmxRange": [119, 119],
+          "type": "WheelSlot",
+          "slotNumber": 120,
+          "comment": "ILDA 120"
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "WheelSlot",
+          "slotNumber": 121,
+          "comment": "ILDA 121"
+        },
+        {
+          "dmxRange": [121, 121],
+          "type": "WheelSlot",
+          "slotNumber": 122,
+          "comment": "ILDA 122"
+        },
+        {
+          "dmxRange": [122, 122],
+          "type": "WheelSlot",
+          "slotNumber": 123,
+          "comment": "ILDA 123"
+        },
+        {
+          "dmxRange": [123, 123],
+          "type": "WheelSlot",
+          "slotNumber": 124,
+          "comment": "ILDA 124"
+        },
+        {
+          "dmxRange": [124, 124],
+          "type": "WheelSlot",
+          "slotNumber": 125,
+          "comment": "ILDA 125"
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "WheelSlot",
+          "slotNumber": 126,
+          "comment": "ILDA 126"
+        },
+        {
+          "dmxRange": [126, 126],
+          "type": "WheelSlot",
+          "slotNumber": 127,
+          "comment": "ILDA 127"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "WheelSlot",
+          "slotNumber": 128,
+          "comment": "ILDA 128"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "WheelSlot",
+          "slotNumber": 129,
+          "comment": "ILDA 129"
+        },
+        {
+          "dmxRange": [129, 129],
+          "type": "WheelSlot",
+          "slotNumber": 130,
+          "comment": "ILDA 130"
+        },
+        {
+          "dmxRange": [130, 130],
+          "type": "WheelSlot",
+          "slotNumber": 131,
+          "comment": "ILDA 131"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "WheelSlot",
+          "slotNumber": 132,
+          "comment": "ILDA 132"
+        },
+        {
+          "dmxRange": [132, 132],
+          "type": "WheelSlot",
+          "slotNumber": 133,
+          "comment": "ILDA 133"
+        },
+        {
+          "dmxRange": [133, 133],
+          "type": "WheelSlot",
+          "slotNumber": 134,
+          "comment": "ILDA 134"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "WheelSlot",
+          "slotNumber": 135,
+          "comment": "ILDA 135"
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "WheelSlot",
+          "slotNumber": 136,
+          "comment": "ILDA 136"
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "WheelSlot",
+          "slotNumber": 137,
+          "comment": "ILDA 137"
+        },
+        {
+          "dmxRange": [137, 137],
+          "type": "WheelSlot",
+          "slotNumber": 138,
+          "comment": "ILDA 138"
+        },
+        {
+          "dmxRange": [138, 138],
+          "type": "WheelSlot",
+          "slotNumber": 139,
+          "comment": "ILDA 139"
+        },
+        {
+          "dmxRange": [139, 139],
+          "type": "WheelSlot",
+          "slotNumber": 140,
+          "comment": "ILDA 140"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "WheelSlot",
+          "slotNumber": 141,
+          "comment": "ILDA 141"
+        },
+        {
+          "dmxRange": [141, 141],
+          "type": "WheelSlot",
+          "slotNumber": 142,
+          "comment": "ILDA 142"
+        },
+        {
+          "dmxRange": [142, 142],
+          "type": "WheelSlot",
+          "slotNumber": 143,
+          "comment": "ILDA 143"
+        },
+        {
+          "dmxRange": [143, 143],
+          "type": "WheelSlot",
+          "slotNumber": 144,
+          "comment": "ILDA 144"
+        },
+        {
+          "dmxRange": [144, 144],
+          "type": "WheelSlot",
+          "slotNumber": 145,
+          "comment": "ILDA 145"
+        },
+        {
+          "dmxRange": [145, 145],
+          "type": "WheelSlot",
+          "slotNumber": 146,
+          "comment": "ILDA 146"
+        },
+        {
+          "dmxRange": [146, 146],
+          "type": "WheelSlot",
+          "slotNumber": 147,
+          "comment": "ILDA 147"
+        },
+        {
+          "dmxRange": [147, 147],
+          "type": "WheelSlot",
+          "slotNumber": 148,
+          "comment": "ILDA 148"
+        },
+        {
+          "dmxRange": [148, 148],
+          "type": "WheelSlot",
+          "slotNumber": 149,
+          "comment": "ILDA 149"
+        },
+        {
+          "dmxRange": [149, 149],
+          "type": "WheelSlot",
+          "slotNumber": 150,
+          "comment": "ILDA 150"
+        },
+        {
+          "dmxRange": [150, 150],
+          "type": "WheelSlot",
+          "slotNumber": 151,
+          "comment": "ILDA 151"
+        },
+        {
+          "dmxRange": [151, 151],
+          "type": "WheelSlot",
+          "slotNumber": 152,
+          "comment": "ILDA 152"
+        },
+        {
+          "dmxRange": [152, 152],
+          "type": "WheelSlot",
+          "slotNumber": 153,
+          "comment": "ILDA 153"
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "WheelSlot",
+          "slotNumber": 154,
+          "comment": "ILDA 154"
+        },
+        {
+          "dmxRange": [154, 154],
+          "type": "WheelSlot",
+          "slotNumber": 155,
+          "comment": "ILDA 155"
+        },
+        {
+          "dmxRange": [155, 155],
+          "type": "WheelSlot",
+          "slotNumber": 156,
+          "comment": "ILDA 156"
+        },
+        {
+          "dmxRange": [156, 156],
+          "type": "WheelSlot",
+          "slotNumber": 157,
+          "comment": "ILDA 157"
+        },
+        {
+          "dmxRange": [157, 157],
+          "type": "WheelSlot",
+          "slotNumber": 158,
+          "comment": "ILDA 158"
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "WheelSlot",
+          "slotNumber": 159,
+          "comment": "ILDA 159"
+        },
+        {
+          "dmxRange": [159, 159],
+          "type": "WheelSlot",
+          "slotNumber": 160,
+          "comment": "ILDA 160"
+        },
+        {
+          "dmxRange": [160, 160],
+          "type": "WheelSlot",
+          "slotNumber": 161,
+          "comment": "ILDA 161"
+        },
+        {
+          "dmxRange": [161, 161],
+          "type": "WheelSlot",
+          "slotNumber": 162,
+          "comment": "ILDA 162"
+        },
+        {
+          "dmxRange": [162, 162],
+          "type": "WheelSlot",
+          "slotNumber": 163,
+          "comment": "ILDA 163"
+        },
+        {
+          "dmxRange": [163, 163],
+          "type": "WheelSlot",
+          "slotNumber": 164,
+          "comment": "ILDA 164"
+        },
+        {
+          "dmxRange": [164, 164],
+          "type": "WheelSlot",
+          "slotNumber": 165,
+          "comment": "ILDA 165"
+        },
+        {
+          "dmxRange": [165, 165],
+          "type": "WheelSlot",
+          "slotNumber": 166,
+          "comment": "ILDA 166"
+        },
+        {
+          "dmxRange": [166, 166],
+          "type": "WheelSlot",
+          "slotNumber": 167,
+          "comment": "ILDA 167"
+        },
+        {
+          "dmxRange": [167, 167],
+          "type": "WheelSlot",
+          "slotNumber": 168,
+          "comment": "ILDA 168"
+        },
+        {
+          "dmxRange": [168, 168],
+          "type": "WheelSlot",
+          "slotNumber": 169,
+          "comment": "ILDA 169"
+        },
+        {
+          "dmxRange": [169, 169],
+          "type": "WheelSlot",
+          "slotNumber": 170,
+          "comment": "ILDA 170"
+        },
+        {
+          "dmxRange": [170, 170],
+          "type": "WheelSlot",
+          "slotNumber": 171,
+          "comment": "ILDA 171"
+        },
+        {
+          "dmxRange": [171, 171],
+          "type": "WheelSlot",
+          "slotNumber": 172,
+          "comment": "ILDA 172"
+        },
+        {
+          "dmxRange": [172, 172],
+          "type": "WheelSlot",
+          "slotNumber": 173,
+          "comment": "ILDA 173"
+        },
+        {
+          "dmxRange": [173, 173],
+          "type": "WheelSlot",
+          "slotNumber": 174,
+          "comment": "ILDA 174"
+        },
+        {
+          "dmxRange": [174, 174],
+          "type": "WheelSlot",
+          "slotNumber": 175,
+          "comment": "ILDA 175"
+        },
+        {
+          "dmxRange": [175, 175],
+          "type": "WheelSlot",
+          "slotNumber": 176,
+          "comment": "ILDA 176"
+        },
+        {
+          "dmxRange": [176, 176],
+          "type": "WheelSlot",
+          "slotNumber": 177,
+          "comment": "ILDA 177"
+        },
+        {
+          "dmxRange": [177, 177],
+          "type": "WheelSlot",
+          "slotNumber": 178,
+          "comment": "ILDA 178"
+        },
+        {
+          "dmxRange": [178, 178],
+          "type": "WheelSlot",
+          "slotNumber": 179,
+          "comment": "ILDA 179"
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "WheelSlot",
+          "slotNumber": 180,
+          "comment": "ILDA 180"
+        },
+        {
+          "dmxRange": [180, 180],
+          "type": "WheelSlot",
+          "slotNumber": 181,
+          "comment": "ILDA 181"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "WheelSlot",
+          "slotNumber": 182,
+          "comment": "ILDA 182"
+        },
+        {
+          "dmxRange": [182, 182],
+          "type": "WheelSlot",
+          "slotNumber": 183,
+          "comment": "ILDA 183"
+        },
+        {
+          "dmxRange": [183, 183],
+          "type": "WheelSlot",
+          "slotNumber": 184,
+          "comment": "ILDA 184"
+        },
+        {
+          "dmxRange": [184, 184],
+          "type": "WheelSlot",
+          "slotNumber": 185,
+          "comment": "ILDA 185"
+        },
+        {
+          "dmxRange": [185, 185],
+          "type": "WheelSlot",
+          "slotNumber": 186,
+          "comment": "ILDA 186"
+        },
+        {
+          "dmxRange": [186, 186],
+          "type": "WheelSlot",
+          "slotNumber": 187,
+          "comment": "ILDA 187"
+        },
+        {
+          "dmxRange": [187, 187],
+          "type": "WheelSlot",
+          "slotNumber": 188,
+          "comment": "ILDA 188"
+        },
+        {
+          "dmxRange": [188, 188],
+          "type": "WheelSlot",
+          "slotNumber": 189,
+          "comment": "ILDA 189"
+        },
+        {
+          "dmxRange": [189, 189],
+          "type": "WheelSlot",
+          "slotNumber": 190,
+          "comment": "ILDA 190"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "WheelSlot",
+          "slotNumber": 191,
+          "comment": "ILDA 191"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "WheelSlot",
+          "slotNumber": 192,
+          "comment": "ILDA 192"
+        },
+        {
+          "dmxRange": [192, 192],
+          "type": "WheelSlot",
+          "slotNumber": 193,
+          "comment": "ILDA 193"
+        },
+        {
+          "dmxRange": [193, 193],
+          "type": "WheelSlot",
+          "slotNumber": 194,
+          "comment": "ILDA 194"
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "WheelSlot",
+          "slotNumber": 195,
+          "comment": "ILDA 195"
+        },
+        {
+          "dmxRange": [195, 195],
+          "type": "WheelSlot",
+          "slotNumber": 196,
+          "comment": "ILDA 196"
+        },
+        {
+          "dmxRange": [196, 196],
+          "type": "WheelSlot",
+          "slotNumber": 197,
+          "comment": "ILDA 197"
+        },
+        {
+          "dmxRange": [197, 197],
+          "type": "WheelSlot",
+          "slotNumber": 198,
+          "comment": "ILDA 198"
+        },
+        {
+          "dmxRange": [198, 198],
+          "type": "WheelSlot",
+          "slotNumber": 199,
+          "comment": "ILDA 199"
+        },
+        {
+          "dmxRange": [199, 199],
+          "type": "WheelSlot",
+          "slotNumber": 200,
+          "comment": "ILDA 200"
+        },
+        {
+          "dmxRange": [200, 200],
+          "type": "WheelSlot",
+          "slotNumber": 201,
+          "comment": "ILDA 201"
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "WheelSlot",
+          "slotNumber": 202,
+          "comment": "ILDA 202"
+        },
+        {
+          "dmxRange": [202, 202],
+          "type": "WheelSlot",
+          "slotNumber": 203,
+          "comment": "ILDA 203"
+        },
+        {
+          "dmxRange": [203, 203],
+          "type": "WheelSlot",
+          "slotNumber": 204,
+          "comment": "ILDA 204"
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "WheelSlot",
+          "slotNumber": 205,
+          "comment": "ILDA 205"
+        },
+        {
+          "dmxRange": [205, 205],
+          "type": "WheelSlot",
+          "slotNumber": 206,
+          "comment": "ILDA 206"
+        },
+        {
+          "dmxRange": [206, 206],
+          "type": "WheelSlot",
+          "slotNumber": 207,
+          "comment": "ILDA 207"
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "WheelSlot",
+          "slotNumber": 208,
+          "comment": "ILDA 208"
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "WheelSlot",
+          "slotNumber": 209,
+          "comment": "ILDA 209"
+        },
+        {
+          "dmxRange": [209, 209],
+          "type": "WheelSlot",
+          "slotNumber": 210,
+          "comment": "ILDA 210"
+        },
+        {
+          "dmxRange": [210, 210],
+          "type": "WheelSlot",
+          "slotNumber": 211,
+          "comment": "ILDA 211"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "WheelSlot",
+          "slotNumber": 212,
+          "comment": "ILDA 212"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "WheelSlot",
+          "slotNumber": 213,
+          "comment": "ILDA 213"
+        },
+        {
+          "dmxRange": [213, 213],
+          "type": "WheelSlot",
+          "slotNumber": 214,
+          "comment": "ILDA 214"
+        },
+        {
+          "dmxRange": [214, 214],
+          "type": "WheelSlot",
+          "slotNumber": 215,
+          "comment": "ILDA 215"
+        },
+        {
+          "dmxRange": [215, 215],
+          "type": "WheelSlot",
+          "slotNumber": 216,
+          "comment": "ILDA 216"
+        },
+        {
+          "dmxRange": [216, 216],
+          "type": "WheelSlot",
+          "slotNumber": 217,
+          "comment": "ILDA 217"
+        },
+        {
+          "dmxRange": [217, 217],
+          "type": "WheelSlot",
+          "slotNumber": 218,
+          "comment": "ILDA 218"
+        },
+        {
+          "dmxRange": [218, 218],
+          "type": "WheelSlot",
+          "slotNumber": 219,
+          "comment": "ILDA 219"
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "WheelSlot",
+          "slotNumber": 220,
+          "comment": "ILDA 220"
+        },
+        {
+          "dmxRange": [220, 220],
+          "type": "WheelSlot",
+          "slotNumber": 221,
+          "comment": "ILDA 221"
+        },
+        {
+          "dmxRange": [221, 221],
+          "type": "WheelSlot",
+          "slotNumber": 222,
+          "comment": "ILDA 222"
+        },
+        {
+          "dmxRange": [222, 222],
+          "type": "WheelSlot",
+          "slotNumber": 223,
+          "comment": "ILDA 223"
+        },
+        {
+          "dmxRange": [223, 223],
+          "type": "WheelSlot",
+          "slotNumber": 224,
+          "comment": "ILDA 224"
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "WheelSlot",
+          "slotNumber": 225,
+          "comment": "ILDA 225"
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "WheelSlot",
+          "slotNumber": 226,
+          "comment": "ILDA 226"
+        },
+        {
+          "dmxRange": [226, 226],
+          "type": "WheelSlot",
+          "slotNumber": 227,
+          "comment": "ILDA 227"
+        },
+        {
+          "dmxRange": [227, 227],
+          "type": "WheelSlot",
+          "slotNumber": 228,
+          "comment": "ILDA 228"
+        },
+        {
+          "dmxRange": [228, 228],
+          "type": "WheelSlot",
+          "slotNumber": 229,
+          "comment": "ILDA 229"
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "WheelSlot",
+          "slotNumber": 230,
+          "comment": "ILDA 230"
+        },
+        {
+          "dmxRange": [230, 230],
+          "type": "WheelSlot",
+          "slotNumber": 231,
+          "comment": "ILDA 231"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "WheelSlot",
+          "slotNumber": 232,
+          "comment": "ILDA 232"
+        },
+        {
+          "dmxRange": [232, 232],
+          "type": "WheelSlot",
+          "slotNumber": 233,
+          "comment": "ILDA 233"
+        },
+        {
+          "dmxRange": [233, 233],
+          "type": "WheelSlot",
+          "slotNumber": 234,
+          "comment": "ILDA 234"
+        },
+        {
+          "dmxRange": [234, 234],
+          "type": "WheelSlot",
+          "slotNumber": 235,
+          "comment": "ILDA 235"
+        },
+        {
+          "dmxRange": [235, 235],
+          "type": "WheelSlot",
+          "slotNumber": 236,
+          "comment": "ILDA 236"
+        },
+        {
+          "dmxRange": [236, 236],
+          "type": "WheelSlot",
+          "slotNumber": 237,
+          "comment": "ILDA 237"
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "WheelSlot",
+          "slotNumber": 238,
+          "comment": "ILDA 238"
+        },
+        {
+          "dmxRange": [238, 238],
+          "type": "WheelSlot",
+          "slotNumber": 239,
+          "comment": "ILDA 239"
+        },
+        {
+          "dmxRange": [239, 239],
+          "type": "WheelSlot",
+          "slotNumber": 240,
+          "comment": "ILDA 240"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "WheelSlot",
+          "slotNumber": 241,
+          "comment": "ILDA 241"
+        },
+        {
+          "dmxRange": [241, 241],
+          "type": "WheelSlot",
+          "slotNumber": 242,
+          "comment": "ILDA 242"
+        },
+        {
+          "dmxRange": [242, 242],
+          "type": "WheelSlot",
+          "slotNumber": 243,
+          "comment": "ILDA 243"
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "WheelSlot",
+          "slotNumber": 244,
+          "comment": "ILDA 244"
+        },
+        {
+          "dmxRange": [244, 244],
+          "type": "WheelSlot",
+          "slotNumber": 245,
+          "comment": "ILDA 245"
+        },
+        {
+          "dmxRange": [245, 245],
+          "type": "WheelSlot",
+          "slotNumber": 246,
+          "comment": "ILDA 246"
+        },
+        {
+          "dmxRange": [246, 246],
+          "type": "WheelSlot",
+          "slotNumber": 247,
+          "comment": "ILDA 247"
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "WheelSlot",
+          "slotNumber": 248,
+          "comment": "ILDA 248"
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "WheelSlot",
+          "slotNumber": 249,
+          "comment": "ILDA 249"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "WheelSlot",
+          "slotNumber": 250,
+          "comment": "ILDA 250"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "WheelSlot",
+          "slotNumber": 251,
+          "comment": "ILDA 251"
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "WheelSlot",
+          "slotNumber": 252,
+          "comment": "ILDA 252"
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "WheelSlot",
+          "slotNumber": 253,
+          "comment": "ILDA 253"
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "WheelSlot",
+          "slotNumber": 254,
+          "comment": "ILDA 254"
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "WheelSlot",
+          "slotNumber": 255,
+          "comment": "ILDA 255"
+        }
+      ]
+    },
+    "FPS": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed"
+      }
+    },
+    "Size": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "x + y"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "x"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "y"
+        }
+      ]
+    },
+    "Größe auto": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Intensity",
+          "comment": "default"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Intensity",
+          "comment": "x+y"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Intensity",
+          "comment": "x"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Intensity",
+          "comment": "y"
+        }
+      ]
+    },
+    "Drehung": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 192],
+          "type": "Prism",
+          "comment": "drehen"
+        },
+        {
+          "dmxRange": [193, 224],
+          "type": "Prism",
+          "comment": "auto gegen uhrzeige"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Prism",
+          "comment": "auto drehung Uhrzeiger"
+        }
+      ]
+    },
+    "Positios x": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "BeamPosition",
+        "horizontalAngleStart": "left",
+        "horizontalAngleEnd": "right",
+        "helpWanted": "Is this the correct direction? Can you provide exact angles?"
+      }
+    },
+    "Position X fine": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Unknown QLC+ channel preset PositionPanFine."
+      }
+    },
+    "Position y": {
+      "fineChannelAliases": ["Position y fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capability": {
+        "type": "BeamPosition",
+        "verticalAngleStart": "top",
+        "verticalAngleEnd": "bottom",
+        "helpWanted": "Is this the correct direction? Can you provide exact angles?"
+      }
+    },
+    "Color effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ColorPreset",
+          "comment": "orginal"
+        },
+        {
+          "dmxRange": [16, 79],
+          "type": "ColorPreset",
+          "comment": "one color"
+        },
+        {
+          "dmxRange": [80, 143],
+          "type": "ColorPreset",
+          "comment": "replace orginal"
+        },
+        {
+          "dmxRange": [144, 255],
+          "type": "ColorPreset",
+          "comment": "Auto change"
+        }
+      ]
+    },
+    "color extented": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "ColorPreset",
+          "comment": "Farbverlauf"
+        },
+        {
+          "dmxRange": [128, 192],
+          "type": "ColorPreset",
+          "comment": "Farbblöcken"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "ColorPreset",
+          "comment": "Autochanging color"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "kein Strobe"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Modus": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Maintenance",
+          "comment": "DMX"
+        },
+        {
+          "dmxRange": [20, 83],
+          "type": "Maintenance",
+          "comment": "Auto x +y"
+        },
+        {
+          "dmxRange": [84, 147],
+          "type": "Maintenance",
+          "comment": "Auto x"
+        },
+        {
+          "dmxRange": [148, 211],
+          "type": "Maintenance",
+          "comment": "Auto y"
+        },
+        {
+          "dmxRange": [212, 233],
+          "type": "Maintenance",
+          "comment": "Auto"
+        },
+        {
+          "dmxRange": [234, 255],
+          "type": "Maintenance",
+          "comment": "Musik"
+        }
+      ]
+    },
+    "ScannSpeed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Maintenance",
+          "comment": "Default"
+        },
+        {
+          "dmxRange": [32, 255],
+          "type": "Maintenance",
+          "comment": "5-30 kpps"
+        }
+      ]
+    },
+    "Safty - zone": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Intensity",
+          "comment": "Safty unten"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Intensity",
+          "comment": "Safty oben"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Intensity",
+          "comment": "Safty link"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Intensity",
+          "comment": "Safty rechts"
+        }
+      ]
+    },
+    "Safty - intensity": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Intensity",
+          "comment": "Keine reduktion"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Intensity",
+          "comment": "reduktion blackout"
+        }
+      ]
+    },
+    "Blanking": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 192],
+          "type": "Prism",
+          "comment": "Menge muster ausgeblendet"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "Prism",
+          "comment": "Automatisch"
+        }
+      ]
+    },
+    "Blanking Auswahl": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 192],
+          "type": "Prism",
+          "comment": "Manuell"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "Prism",
+          "comment": "Automatisch"
+        }
+      ]
+    }
+  },
+  "templateChannels": {},
+  "modes": [
+    {
+      "name": "prof",
+      "channels": [
+        "Helligkeit",
+        "Symbole",
+        "FPS",
+        "Size",
+        "Größe auto",
+        "Drehung",
+        "Positios x",
+        "Position X fine",
+        "Position y",
+        "Position y fine",
+        "Color effect",
+        "color extented",
+        "Strobe",
+        "Modus",
+        "ScannSpeed",
+        "Safty - zone",
+        "Safty - intensity",
+        "Blanking",
+        "Blanking Auswahl"
+      ]
+    }
+  ]
+}
