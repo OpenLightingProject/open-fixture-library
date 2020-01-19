@@ -1,0 +1,247 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "n-150",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["Matthias Naumann", "Mathew96"],
+    "createDate": "2020-01-19",
+    "lastModifyDate": "2020-01-19",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2020-01-19",
+      "comment": "created by Q Light Controller Plus (version 4.12.2)"
+    }
+  },
+  "physical": {
+    "dimensions": [300, 240, 670],
+    "weight": 15,
+    "power": 1500,
+    "DMXconnector": "3-pin",
+    "lens": {
+      "name": "Other"
+    }
+  },
+  "availableChannels": {
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 13],
+          "type": "Effect",
+          "effectName": "Off"
+        },
+        {
+          "dmxRange": [14, 127],
+          "type": "Effect",
+          "effectName": "Volume Mode"
+        },
+        {
+          "dmxRange": [128, 231],
+          "type": "Effect",
+          "effectName": "Timer Mode"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "Effect",
+          "effectName": "Full Volume"
+        }
+      ]
+    },
+    "Fog Volume": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 70],
+          "type": "Intensity",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [71, 75],
+          "type": "Intensity",
+          "comment": "20% (Permanent)"
+        },
+        {
+          "dmxRange": [76, 100],
+          "type": "Intensity",
+          "comment": "30% (50sec)"
+        },
+        {
+          "dmxRange": [101, 125],
+          "type": "Intensity",
+          "comment": "40% (43sec)"
+        },
+        {
+          "dmxRange": [126, 150],
+          "type": "Intensity",
+          "comment": "50% (34sec)"
+        },
+        {
+          "dmxRange": [151, 175],
+          "type": "Intensity",
+          "comment": "60% (29sec)"
+        },
+        {
+          "dmxRange": [176, 200],
+          "type": "Intensity",
+          "comment": "70% (25sec)"
+        },
+        {
+          "dmxRange": [201, 225],
+          "type": "Intensity",
+          "comment": "80% (23sec)"
+        },
+        {
+          "dmxRange": [226, 245],
+          "type": "Intensity",
+          "comment": "90% (21sec)"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Intensity",
+          "comment": "100% (20sec)"
+        }
+      ]
+    },
+    "Fog Duration": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Speed",
+          "comment": "1 sec"
+        },
+        {
+          "dmxRange": [6, 29],
+          "type": "Speed",
+          "comment": "13 sec"
+        },
+        {
+          "dmxRange": [30, 54],
+          "type": "Speed",
+          "comment": "33 sec"
+        },
+        {
+          "dmxRange": [55, 79],
+          "type": "Speed",
+          "comment": "53 sec"
+        },
+        {
+          "dmxRange": [80, 104],
+          "type": "Speed",
+          "comment": "73 sec"
+        },
+        {
+          "dmxRange": [105, 129],
+          "type": "Speed",
+          "comment": "92 sec"
+        },
+        {
+          "dmxRange": [130, 154],
+          "type": "Speed",
+          "comment": "112 sec"
+        },
+        {
+          "dmxRange": [155, 179],
+          "type": "Speed",
+          "comment": "131 sec"
+        },
+        {
+          "dmxRange": [180, 204],
+          "type": "Speed",
+          "comment": "151 sec"
+        },
+        {
+          "dmxRange": [205, 229],
+          "type": "Speed",
+          "comment": "170 sec"
+        },
+        {
+          "dmxRange": [230, 254],
+          "type": "Speed",
+          "comment": "190 sec"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Speed",
+          "comment": "200 sec"
+        }
+      ]
+    },
+    "Fog Interval": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Speed",
+          "comment": "1 sec"
+        },
+        {
+          "dmxRange": [6, 29],
+          "type": "Speed",
+          "comment": "13 sec"
+        },
+        {
+          "dmxRange": [30, 54],
+          "type": "Speed",
+          "comment": "33 sec"
+        },
+        {
+          "dmxRange": [55, 79],
+          "type": "Speed",
+          "comment": "53 sec"
+        },
+        {
+          "dmxRange": [80, 104],
+          "type": "Speed",
+          "comment": "73 sec"
+        },
+        {
+          "dmxRange": [105, 129],
+          "type": "Speed",
+          "comment": "92 sec"
+        },
+        {
+          "dmxRange": [130, 154],
+          "type": "Speed",
+          "comment": "112 sec"
+        },
+        {
+          "dmxRange": [155, 179],
+          "type": "Speed",
+          "comment": "131 sec"
+        },
+        {
+          "dmxRange": [180, 204],
+          "type": "Speed",
+          "comment": "151 sec"
+        },
+        {
+          "dmxRange": [205, 229],
+          "type": "Speed",
+          "comment": "170 sec"
+        },
+        {
+          "dmxRange": [230, 254],
+          "type": "Speed",
+          "comment": "190 sec"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Speed",
+          "comment": "200 sec"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Mode",
+        "Fog Volume",
+        "Fog Duration",
+        "Fog Interval"
+      ]
+    }
+  ]
+}
