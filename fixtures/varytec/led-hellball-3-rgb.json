@@ -1,0 +1,121 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Hellball 3 RGB",
+  "shortName": "hellball-rgb",
+  "categories": ["Flower"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2020-01-19",
+    "lastModifyDate": "2020-01-19"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/278299_c_278299_r3_de_online.pdf"
+    ],
+    "productPage": [
+      "http://example.com/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=aZWRgRL9f_E"
+    ]
+  },
+  "physical": {
+    "dimensions": [180, 160, 180],
+    "weight": 0.8,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Strobe": {
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "Strobe off"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "StrobeSpeed",
+          "speed": "0Hz",
+          "comment": "Help needed on frequency"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Rotation (Pan)": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 127],
+          "type": "Pan",
+          "angleStart": "0deg",
+          "angleEnd": "180deg"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "PanContinuous",
+          "speedStart": "0rpm",
+          "speedEnd": "10rpm",
+          "comment": "Help needed on speed"
+        }
+      ]
+    },
+    "Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "Control by Channels 1-5"
+        },
+        {
+          "dmxRange": [6, 127],
+          "type": "Effect",
+          "effectName": "Programmed Shows"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Sound-controlled shows",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "default",
+      "channels": [
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "Rotation (Pan)",
+        "Control"
+      ]
+    }
+  ]
+}
