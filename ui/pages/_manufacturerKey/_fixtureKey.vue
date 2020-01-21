@@ -540,22 +540,52 @@ export default {
 };
 
 
-/**
- * YouTube videos can be in one of the following formats:
- * - https://www.youtube.com/watch?v={videoId}&otherParameters
- * - https://youtu.be/{videoId]}?otherParameters
- */
-const youtubeVideoUrlRegex = /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]t=([0-9hms]+))?/;
+const supportedVideoFormats = {
 
-/**
- * Vimeo videos can be in one of the following formats:
- * - https://vimeo.com/{videoId}
- * - https://vimeo.com/channels/{channelName}/{videoId}
- * - https://vimeo.com/groups/{groupId}/videos/{videoId}
- */
-const vimeoVideoUrlRegex = /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([0-9hms]+))?/;
+  native: {
+    regex: /\.(?:mp4|avi)$/,
+    displayType: url => getHostname(url),
+    videoId: (url, match) => url,
+    startAt: (url, match) => 0
+  },
 
-const nativeVideoUrlRegex = /\.(?:mp4|avi)$/;
+  youtube: {
+    /**
+     * YouTube videos can be in one of the following formats:
+     * - https://www.youtube.com/watch?v={videoId}&otherParameters
+     * - https://youtu.be/{videoId]}?otherParameters
+     */
+    regex: /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]t=([0-9hms]+))?/,
+    displayType: url => `YouTube`,
+    videoId: (url, match) => match[1],
+    startAt: (url, match) => match[2] || 0
+  },
+
+  vimeo: {
+    /**
+     * Vimeo videos can be in one of the following formats:
+     * - https://vimeo.com/{videoId}
+     * - https://vimeo.com/channels/{channelName}/{videoId}
+     * - https://vimeo.com/groups/{groupId}/videos/{videoId}
+     */
+    regex: /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([0-9hms]+))?/,
+    displayType: url => `Vimeo`,
+    videoId: (url, match) => match[1],
+    startAt: (url, match) => match[2] || 0
+  },
+
+  facebook: {
+    /**
+     * Facebook videos can be in the following format:
+     * - https://www.facebook.com/{pageName}/videos/{videoTitle}/{videoId}/
+     */
+    regex: /^https:\/\/www\.facebook\.com\/[^/]+\/videos\/[^/]+\/(\d+)\/$/,
+    displayType: url => `Facebook`,
+    videoId: (url, match) => match[1],
+    startAt: (url, match) => 0
+  }
+
+};
 
 
 /**
@@ -563,36 +593,21 @@ const nativeVideoUrlRegex = /\.(?:mp4|avi)$/;
  * @returns {Object|null} The embettable video data for the URL, or null if the video can not be embetted.
  */
 function getEmbettableVideoData(url) {
-  if (nativeVideoUrlRegex.test(url)) {
-    return {
-      url,
-      type: `native`,
-      displayType: getHostname(url),
-      videoId: url,
-      startAt: 0
-    };
-  }
+  const videoTypes = Object.keys(supportedVideoFormats);
 
-  let match = url.match(youtubeVideoUrlRegex);
-  if (match !== null) {
-    return {
-      url,
-      type: `youtube`,
-      displayType: `YouTube`,
-      videoId: match[1],
-      startAt: match[2] || 0
-    };
-  }
+  for (const type of videoTypes) {
+    const format = supportedVideoFormats[type];
+    const match = url.match(format.regex);
 
-  match = url.match(vimeoVideoUrlRegex);
-  if (match !== null) {
-    return {
-      url,
-      type: `vimeo`,
-      displayType: `Vimeo`,
-      videoId: match[1],
-      startAt: match[2] || 0
-    };
+    if (match) {
+      return {
+        url,
+        type,
+        displayType: format.displayType(url),
+        videoId: format.videoId(url, match),
+        startAt: format.startAt(url, match)
+      };
+    }
   }
 
   return null;
