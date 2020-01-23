@@ -1,15 +1,21 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "TMH XB 130",
-  "categories": ["Moving Head"],
+  "name": "TMH XB-130",
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Henry Haage"],
-    "createDate": "2019-12-16",
-    "lastModifyDate": "2019-12-16"
+    "createDate": "2020-01-23",
+    "lastModifyDate": "2020-01-23"
   },
   "links": {
     "manual": [
       "https://www.steinigke.de/download/51786810-Anleitung-114498-1.100-eurolite-tmh-xb-130-moving-head-beam-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn51786810-eurolite-tmh-xb-130-moving-head-beam.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=4KPILAbN-0M"
     ]
   },
   "physical": {
@@ -18,7 +24,7 @@
     "power": 170,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "HRI 132",
+      "type": "Osram Sirius HRI 132W discharge lamp",
       "colorTemperature": 4000
     },
     "lens": {
