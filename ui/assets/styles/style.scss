@@ -12,12 +12,11 @@
 html, body {
   margin: 0;
   padding: 0;
-  font: 12pt/2 LatoLatin, 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  font: 12pt/2 $font-stack-text;
   color: theme-color(text-primary);
   background-color: theme-color(page-background);
   word-wrap: break-word;
   text-rendering: optimizeLegibility;
-  scroll-behavior: smooth;
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -94,7 +93,7 @@ template {
 }
 
 code {
-  font-family: Inconsolata, 'Roboto Mono', 'Source Code Pro', monospace;
+  font-family: $font-stack-code;
   color: theme-color(text-secondary);
 }
 
@@ -118,6 +117,25 @@ a {
   }
 }
 
+textarea {
+  min-height: 4em;
+  resize: vertical;
+}
+
+select {
+  width: 30ex;
+}
+input[type=number] {
+  width: 10ex;
+}
+textarea,
+input[type=text],
+input[type=email],
+input[type=search],
+input[type=url] {
+  width: 40ex;
+}
+
 select,
 textarea,
 input[type=text],
@@ -133,11 +151,16 @@ input[type=number] {
   color: theme-color(text-primary);
   border-radius: 3px;
   font-size: 0.95em;
-  font-family: LatoLatin;
+  font-family: $font-stack-text;
   transition: background-color 0.2s, border-color 0.2s;
 
   &:focus {
     border-color: $blue-300;
+  }
+
+  &:disabled {
+    background: $grey-100;
+    opacity: 0.9;
   }
 
   &.vf-touched.vf-invalid,
@@ -149,17 +172,12 @@ input[type=number] {
     border-color: red;
     box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
   }
-
-  &:disabled {
-    background: $grey-100;
-    opacity: 0.9;
-  }
 }
 
 textarea[readonly] {
   line-height: 1.3;
   font-size: 0.9em;
-  font-family: Inconsolata, monospace;
+  font-family: $font-stack-code;
   white-space: pre-wrap;
   background: theme-color(header-background);
   color: theme-color(text-primary);
@@ -189,25 +207,6 @@ textarea[readonly] {
     font-weight: 600;
     vertical-align: middle;
   }
-}
-
-textarea {
-  min-height: 4em;
-  resize: vertical;
-}
-
-select {
-  width: 30ex;
-}
-input[type=number] {
-  width: 10ex;
-}
-textarea,
-input[type=text],
-input[type=email],
-input[type=search],
-input[type=url] {
-  width: 40ex;
 }
 
 input.addition {
@@ -243,27 +242,7 @@ input::placeholder {
   opacity: 1;
 }
 
-.button-bar {
-  margin: 2ex 0 0;
-
-  &.right {
-    text-align: right;
-
-    & button,
-    & .button {
-      margin-right: 0;
-      margin-left: 1ex;
-    }
-  }
-
-  & button,
-  & .button {
-    margin-top: 1ex;
-    margin-right: 1ex;
-  }
-}
-
-button, input, a.button {
+button, a.button {
   &.primary, &.secondary {
     border-radius: 2px;
     border: 1px solid;
@@ -280,14 +259,14 @@ button, input, a.button {
       padding: 4px 6px;
     }
 
-    &:not(:disabled):active {
-      position: relative;
-      top: 1px;
-    }
-
     &:disabled {
       cursor: default;
       opacity: 0.5;
+    }
+
+    &:not(:disabled):active {
+      position: relative;
+      top: 1px;
     }
   }
 
@@ -312,6 +291,26 @@ button, input, a.button {
     &:not(:disabled):focus {
       background-color: theme-color(button-secondary-background-hover);
       outline: 0;
+    }
+  }
+}
+
+.button-bar {
+  margin: 2ex 0 0;
+
+  & button,
+  & .button {
+    margin-top: 1ex;
+    margin-right: 1ex;
+  }
+
+  &.right {
+    text-align: right;
+
+    & button,
+    & .button {
+      margin-right: 0;
+      margin-left: 1ex;
     }
   }
 }
@@ -385,7 +384,7 @@ button, input, a.button {
       outline: none;
     }
 
-    &:hover, &:focus:hover {
+    &:hover {
       background-color: $red-700;
       color: $primary-text-light;
     }

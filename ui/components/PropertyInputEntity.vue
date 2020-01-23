@@ -1,7 +1,7 @@
 <template>
   <span :class="{ 'entity-input': true, 'has-number': hasNumber }">
 
-    <validate v-if="hasNumber" tag="span">
+    <Validate v-if="hasNumber" tag="span">
       <PropertyInputNumber
         ref="input"
         v-model="selectedNumber"
@@ -12,7 +12,7 @@
         :name="name ? `${name}-number` : null"
         @focus.native="onFocus"
         @blur.native="onBlur($event)" />
-    </validate>
+    </Validate>
 
     <select
       ref="select"
@@ -20,8 +20,8 @@
       :required="required"
       :class="{ empty: selectedUnit === `` }"
       @input="unitSelected"
-      @focus.native="onFocus"
-      @blur.native="onBlur($event)">
+      @focus="onFocus"
+      @blur="onBlur($event)">
 
       <option :disabled="required" value="">unset</option>
 

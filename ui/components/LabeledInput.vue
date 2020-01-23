@@ -1,5 +1,5 @@
 <template>
-  <validate
+  <Validate
     v-if="formstate"
     :state="formstate"
     :custom="customValidators"
@@ -52,7 +52,7 @@
 
     </LabeledValue>
 
-  </validate>
+  </Validate>
 
   <label v-else>
     <LabeledValue>

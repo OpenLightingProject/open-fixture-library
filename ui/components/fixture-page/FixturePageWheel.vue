@@ -130,17 +130,19 @@
     </svg>
     <figcaption>
       <ConditionalDetails>
-        <template slot="summary">{{ wheel.name }}</template>
+        <template #summary>{{ wheel.name }}</template>
 
         <table>
-          <tr
-            v-for="(slot, index) in wheel.slots"
-            :key="`slot-${index}`"
-            @mouseover="highlightedSlot = (slot.type === `AnimationGoboEnd` ? index - 1 : index)"
-            @mouseout="highlightedSlot = null">
-            <th scope="row">Slot {{ index + 1 }}</th>
-            <td>{{ slot.name }}</td>
-          </tr>
+          <tbody>
+            <tr
+              v-for="(slot, index) in wheel.slots"
+              :key="`slot-${index}`"
+              @mouseover="highlightedSlot = (slot.type === `AnimationGoboEnd` ? index - 1 : index)"
+              @mouseout="highlightedSlot = null">
+              <th scope="row">Slot {{ index + 1 }}</th>
+              <td>{{ slot.name }}</td>
+            </tr>
+          </tbody>
         </table>
 
       </ConditionalDetails>

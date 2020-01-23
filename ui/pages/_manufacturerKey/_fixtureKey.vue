@@ -1,6 +1,9 @@
 <template>
   <div>
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <script type="application/ld+json" v-html="productModelStructuredData" />
+
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <script type="application/ld+json" v-html="breadcrumbListStructuredData" />
 
     <header class="fixture-header">
@@ -12,15 +15,15 @@
         </h1>
 
         <section class="fixture-meta">
-          <span class="last-modify-date">Last modified:&nbsp;<span v-html="lastModifyDate" /></span>
-          <span class="create-date">Created:&nbsp;<span v-html="createDate" /></span>
+          <span class="last-modify-date">Last modified:&nbsp;<OflTime :date="fixture.meta.lastModifyDate" /></span>
+          <span class="create-date">Created:&nbsp;<OflTime :date="fixture.meta.createDate" /></span>
           <span class="authors">Author{{ fixture.meta.authors.length === 1 ? `` : `s` }}:&nbsp;{{ fixture.meta.authors.join(`, `) }}</span>
           <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manKey}/${fixKey}.json`">Source</a></span>
           <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manKey}/${fixKey}.json`">Revisions</a></span>
 
           <ConditionalDetails v-if="fixture.meta.importPlugin !== null">
-            <template slot="summary">
-              Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <span v-html="getDateHtml(fixture.meta.importDate)" />.
+            <template #summary>
+              Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <OflTime :date="fixture.meta.importDate" />.
             </template>
             <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>
           </ConditionalDetails>
@@ -335,7 +338,7 @@ export default {
       const redirectJson = await app.$axios.$get(`/${query.redirectFrom}.json`);
 
       const reasonExplanations = {
-        FixtureRenamed: `The fixture was renamed by the manufacturer.`,
+        FixtureRenamed: `The fixture was renamed.`,
         SameAsDifferentBrand: `The fixture is the same but sold under different brands / names.`
       };
 
@@ -367,12 +370,6 @@ export default {
   computed: {
     fixture() {
       return new Fixture(this.manKey, this.fixKey, this.fixtureJson);
-    },
-    lastModifyDate() {
-      return this.getDateHtml(this.fixture.meta.lastModifyDate);
-    },
-    createDate() {
-      return this.getDateHtml(this.fixture.meta.createDate);
     },
     githubRepoPath() {
       const slug = process.env.TRAVIS_PULL_REQUEST_SLUG || process.env.TRAVIS_REPO_SLUG || `OpenLightingProject/open-fixture-library`;
@@ -535,15 +532,6 @@ export default {
     }
   },
   methods: {
-    /**
-     * Format a date to display as a <time> HTML tag.
-     * @param {Date} date The Date object to format.
-     * @returns {String} The <time> HTML tag.
-     */
-    getDateHtml(date) {
-      return `<time datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, ``)}</time>`;
-    },
-
     openHelpWantedDialog(event) {
       this.helpWantedContext = event.context;
       this.helpWantedType = event.type;
@@ -552,22 +540,52 @@ export default {
 };
 
 
-/**
- * YouTube videos can be in one of the following formats:
- * - https://www.youtube.com/watch?v={videoId}&otherParameters
- * - https://youtu.be/{videoId]}?otherParameters
- */
-const youtubeVideoUrlRegex = /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]t=([0-9hms]+))?/;
+const supportedVideoFormats = {
 
-/**
- * Vimeo videos can be in one of the following formats:
- * - https://vimeo.com/{videoId}
- * - https://vimeo.com/channels/{channelName}/{videoId}
- * - https://vimeo.com/groups/{groupId}/videos/{videoId}
- */
-const vimeoVideoUrlRegex = /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([0-9hms]+))?/;
+  native: {
+    regex: /\.(?:mp4|avi)$/,
+    displayType: url => getHostname(url),
+    videoId: (url, match) => url,
+    startAt: (url, match) => 0
+  },
 
-const nativeVideoUrlRegex = /\.(?:mp4|avi)$/;
+  youtube: {
+    /**
+     * YouTube videos can be in one of the following formats:
+     * - https://www.youtube.com/watch?v={videoId}&otherParameters
+     * - https://youtu.be/{videoId]}?otherParameters
+     */
+    regex: /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]t=([0-9hms]+))?/,
+    displayType: url => `YouTube`,
+    videoId: (url, match) => match[1],
+    startAt: (url, match) => match[2] || 0
+  },
+
+  vimeo: {
+    /**
+     * Vimeo videos can be in one of the following formats:
+     * - https://vimeo.com/{videoId}
+     * - https://vimeo.com/channels/{channelName}/{videoId}
+     * - https://vimeo.com/groups/{groupId}/videos/{videoId}
+     */
+    regex: /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([0-9hms]+))?/,
+    displayType: url => `Vimeo`,
+    videoId: (url, match) => match[1],
+    startAt: (url, match) => match[2] || 0
+  },
+
+  facebook: {
+    /**
+     * Facebook videos can be in the following format:
+     * - https://www.facebook.com/{pageName}/videos/{videoTitle}/{videoId}/
+     */
+    regex: /^https:\/\/www\.facebook\.com\/[^/]+\/videos\/[^/]+\/(\d+)\/$/,
+    displayType: url => `Facebook`,
+    videoId: (url, match) => match[1],
+    startAt: (url, match) => 0
+  }
+
+};
 
 
 /**
@@ -575,36 +593,21 @@ const nativeVideoUrlRegex = /\.(?:mp4|avi)$/;
  * @returns {Object|null} The embettable video data for the URL, or null if the video can not be embetted.
  */
 function getEmbettableVideoData(url) {
-  if (nativeVideoUrlRegex.test(url)) {
-    return {
-      url,
-      type: `native`,
-      displayType: getHostname(url),
-      videoId: url,
-      startAt: 0
-    };
-  }
+  const videoTypes = Object.keys(supportedVideoFormats);
 
-  let match = url.match(youtubeVideoUrlRegex);
-  if (match !== null) {
-    return {
-      url,
-      type: `youtube`,
-      displayType: `YouTube`,
-      videoId: match[1],
-      startAt: match[2] || 0
-    };
-  }
+  for (const type of videoTypes) {
+    const format = supportedVideoFormats[type];
+    const match = url.match(format.regex);
 
-  match = url.match(vimeoVideoUrlRegex);
-  if (match !== null) {
-    return {
-      url,
-      type: `vimeo`,
-      displayType: `Vimeo`,
-      videoId: match[1],
-      startAt: match[2] || 0
-    };
+    if (match) {
+      return {
+        url,
+        type,
+        displayType: format.displayType(url),
+        videoId: format.videoId(url, match),
+        startAt: format.startAt(url, match)
+      };
+    }
   }
 
   return null;

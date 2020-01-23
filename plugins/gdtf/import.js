@@ -242,12 +242,12 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
   /**
    * @typedef {Object} Relation
-   * @property {Number} modeIndex
-   * @property {Object} masterGdtfChannel
-   * @property {String} switchingChannelName
-   * @property {Object} slaveGdtfChannel
-   * @property {Number} dmxFrom
-   * @property {Number} dmxTo
+   * @property {Number} modeIndex The zero-based index of the mode this relation applies to.
+   * @property {Object} masterGdtfChannel The GDTF channel that triggers switching.
+   * @property {String} switchingChannelName The name of the switching channel (containing multiple default channels).
+   * @property {Object} slaveGdtfChannel The GDTF channel that is switched by the master.
+   * @property {Number} dmxFrom The start of the DMX range triggering this relation.
+   * @property {Number} dmxTo The end of the DMX range triggering this relation.
    */
 
   /**

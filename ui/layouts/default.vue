@@ -124,7 +124,7 @@
       display: inline-block;
       padding: 0 4px;
       margin: 4px;
-      font-family: Inconsolata;
+      font-family: $font-stack-code;
     }
   }
 }
