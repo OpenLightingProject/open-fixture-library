@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "masas",
+  "shortName": "dimmer",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Masis"],
+    "createDate": "2020-01-23",
+    "lastModifyDate": "2020-01-23"
+  },
+  "comment": "colonos",
+  "links": {
+    "other": [
+      "https://www.qereq.com",
+      "https://www.qereq.com",
+      "https://www.qereq.com"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "8465"
+  },
+  "availableChannels": {
+    "YYEN 443": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open",
+        "comment": "OLLE"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "rddd",
+      "channels": [
+        "YYEN 443"
+      ]
+    }
+  ]
+}
