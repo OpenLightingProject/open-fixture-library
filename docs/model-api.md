@@ -2540,6 +2540,7 @@ Information about a single wheel slot (or a split slot).
     * [.isSplitSlot](#WheelSlot+isSplitSlot) ⇒ <code>Boolean</code>
     * [.type](#WheelSlot+type) ⇒ <code>String</code>
     * [.nthOfType](#WheelSlot+nthOfType) ⇒ <code>Number</code>
+    * [.resource](#WheelSlot+resource) ⇒ <code>Object</code> \| <code>null</code>
     * [.name](#WheelSlot+name) ⇒ <code>String</code>
     * [.colors](#WheelSlot+colors) ⇒ <code>Array.&lt;String&gt;</code> \| <code>null</code>
     * [.colorTemperature](#WheelSlot+colorTemperature) ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
@@ -2577,6 +2578,11 @@ Creates a new WheelSlot instance.
 ### wheelSlot.nthOfType ⇒ <code>Number</code>
 **Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
 **Returns**: <code>Number</code> - The zero-based index of this slot amongst all slots with the same type in this wheel.  
+<a name="WheelSlot+resource"></a>
+
+### wheelSlot.resource ⇒ <code>Object</code> \| <code>null</code>
+**Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
+**Returns**: <code>Object</code> \| <code>null</code> - The gobo resource object, or null if no resource is specified for the slot.  
 <a name="WheelSlot+name"></a>
 
 ### wheelSlot.name ⇒ <code>String</code>
