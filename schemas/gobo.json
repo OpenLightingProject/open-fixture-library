@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/gobos.json",
+
+  "version": "12.1.0",
+
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "const": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/gobos.json"
+    },
+    "name": { "$ref": "definitions.json#/nonEmptyString" },
+    "keywords": {
+      "description": "Space-separated list of lowercase words describing the gobo.",
+      "type": "string",
+      "pattern": "^[a-z]+( [a-z]+)*$"
+    },
+    "source": {
+      "description": "An URL or text describing where the gobo was extracted from.",
+      "anyOf": [
+        { "$ref": "definitions.json#/nonEmptyString" },
+        { "$ref": "definitions.json#/urlString" }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["$schema", "name"]
+}

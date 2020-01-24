@@ -76,6 +76,7 @@
       "then": {
         "properties": {
           "type": {},
+          "resource": { "$ref": "definitions.json#/goboResourceString" },
           "name": { "$ref": "definitions.json#/nonEmptyString" }
         },
         "additionalProperties": false
