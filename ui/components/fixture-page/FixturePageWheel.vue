@@ -116,7 +116,16 @@
             :r="slotRadius"
             fill="#fff" />
 
+          <image
+            v-if="slot.resource && slot.resource.image"
+            :x="-slotRadius"
+            :y="slotRotateRadius - slotRadius"
+            :width="slotRadius * 2"
+            :height="slotRadius * 2"
+            :xlink:href="slot.resource.image" />
+
           <text
+            v-else
             :x="0"
             :y="slotRotateRadius + slotRadius * 0.35"
             :transform="`rotate(${-slotRotateAngle * index}, 0, ${slotRotateRadius})`"
