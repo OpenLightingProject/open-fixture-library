@@ -178,7 +178,7 @@ svg {
 
 .slot {
   & text {
-    fill: theme-color(text-primary);
+    fill: $primary-text-dark;
     pointer-events: none;
     font-weight: 400;
   }
@@ -195,6 +195,12 @@ svg {
 figcaption /deep/ summary {
   font-weight: bold;
   text-align: center;
+  position: sticky;
+  top: 0;
+
+  &:not(:hover):not(:focus) {
+    background: theme-color(card-background, 0.8);
+  }
 }
 
 figcaption {
@@ -208,6 +214,11 @@ figcaption table {
   & td,
   & th {
     padding: 3px;
+    vertical-align: top;
+  }
+
+  th {
+    white-space: nowrap;
   }
 }
 </style>
