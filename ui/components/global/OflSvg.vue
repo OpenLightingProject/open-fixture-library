@@ -9,6 +9,14 @@
     fill: theme-color(icon-inactive);
   }
 
+  &.gobo-icon {
+    background-color: white;
+    background-clip: content-box;
+    border-radius: 50%;
+    padding: 2px;
+    box-sizing: border-box;
+  }
+
   & svg {
     width: 100%;
     height: 100%;
