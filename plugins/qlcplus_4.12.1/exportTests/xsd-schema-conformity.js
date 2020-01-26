@@ -13,6 +13,10 @@ const SCHEMA_URL = `https://raw.githubusercontent.com/mcallegari/qlcplus/master/
  * @returns {Promise.<undefined, Array.<String>|String>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
 module.exports = async function testSchemaConformity(exportFile) {
+  if (exportFile.name.startsWith(`gobos/`)) {
+    return;
+  }
+
   const schemaData = await new Promise((resolve, reject) => {
     https.get(SCHEMA_URL, res => {
       let data = ``;
