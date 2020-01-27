@@ -1,0 +1,76 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Compact Par 7 Tri",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["sonotron"],
+    "createDate": "2020-01-27",
+    "lastModifyDate": "2020-01-27"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/300407_compact_par_7_uk.pdf"
+    ],
+    "productPage": [
+      "http://www.showtec.co.uk/"
+    ],
+    "video": [
+      "https://video1.thomann.de//vidiot/02591c1c/video_i4411p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [290, 275, 115],
+    "weight": 2.6,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 1540
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3 ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4 ch",
+      "channels": [
+        "Master Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
