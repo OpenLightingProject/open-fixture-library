@@ -11,7 +11,6 @@
     "millumin",
     "ofl",
     "op-z",
-    "qlcplus_4.11.2",
     "qlcplus_4.12.1"
   ],
   "data": {
@@ -57,14 +56,11 @@
     "qlcplus": {
       "name": "QLC+",
       "outdated": true,
-      "newPlugin": "qlcplus_4.11.2"
+      "newPlugin": "qlcplus_4.12.1"
     },
     "qlcplus_4.11.2": {
       "name": "QLC+ 4.11.2",
-      "exportPluginVersion": "0.5.2",
-      "exportTests": [
-        "xsd-schema-conformity"
-      ],
+      "outdated": true,
       "newPlugin": "qlcplus_4.12.1"
     },
     "qlcplus_4.12.0": {
