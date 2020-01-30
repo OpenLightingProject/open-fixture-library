@@ -66,8 +66,10 @@ module.exports.export = async function exportQlcPlus(fixtures, options) {
 
     xml.dtd(``);
 
+    const sanitizedFileName = sanitize(`${fixture.manufacturer.name}-${fixture.name}.qxf`).replace(/\s+/g, `-`);
+
     return {
-      name: sanitize(`${fixture.manufacturer.name}/-${fixture.name}.qxf`).replace(/\s+/g, `-`),
+      name: `fixtures/${sanitizedFileName}`,
       content: xml.end({
         pretty: true,
         indent: ` `
