@@ -74,10 +74,10 @@ const outDir = args.o ? path.resolve(process.cwd(), args.o) : null;
         date: new Date()
       }
     );
-    files.forEach(file => {
+    for (const file of files) {
       if (args.o) {
         const filePath = path.join(outDir, file.name);
-        mkdirp.sync(path.dirname(filePath));
+        await mkdirp(path.dirname(filePath));
         fs.writeFileSync(filePath, file.content);
         console.log(`Created file ${filePath}`);
       }
@@ -85,7 +85,7 @@ const outDir = args.o ? path.resolve(process.cwd(), args.o) : null;
         console.log(`\n${chalk.yellow(`File name: '${file.name}'`)}`);
         console.log(file.content);
       }
-    });
+    }
   }
   catch (error) {
     console.error(`${chalk.red(`[Error]`)} Exporting failed:`, error);

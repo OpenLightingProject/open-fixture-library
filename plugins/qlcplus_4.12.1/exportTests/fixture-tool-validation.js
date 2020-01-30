@@ -2,9 +2,9 @@ const https = require(`https`);
 const path = require(`path`);
 const fs = require(`fs`);
 const os = require(`os`);
+const mkdirp = require(`mkdirp`);
 const { promisify } = require(`util`);
 
-const mkdirp = promisify(require(`mkdirp`));
 const mkdtemp = promisify(fs.mkdtemp);
 const writeFile = promisify(fs.writeFile);
 const execFile = promisify(require(`child_process`).execFile);
