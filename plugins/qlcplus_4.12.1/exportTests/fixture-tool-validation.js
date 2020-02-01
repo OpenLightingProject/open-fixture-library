@@ -48,16 +48,13 @@ module.exports = async function testFixtureToolValidation(exportFile, allExportF
   await writeFile(path.join(directory, EXPORTED_FIXTURE_PATH), exportFile.content);
 
   // store used gobos in the gobos/ directory
-  const qlcplusGobos = Object.keys(qlcplusGoboAliases).concat(
-    `Others/open.svg`,
-    `Others/rainbow.png`,
-    allExportFiles.filter(file => file.name.startsWith(`gobos/`)).map(
-      file => file.name.replace(/^gobos\//, ``)
-    )
+  const qlcplusGobos = [`gobos/Others/open.svg`, `gobos/Others/rainbow.png`].concat(
+    Object.keys(qlcplusGoboAliases).map(gobo => `gobos/${gobo}`),
+    allExportFiles.filter(file => file.name.startsWith(`gobos/`)).map(file => file.name)
   );
 
   for (const gobo of qlcplusGobos) {
-    const goboPath = path.join(directory, `resources/gobos`, gobo);
+    const goboPath = path.join(directory, `resources`, gobo);
     const goboDirectory = path.dirname(goboPath);
 
     await mkdirp(goboDirectory);
