@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PROJECTEUR HF",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["STUDIO5"],
+    "createDate": "2020-02-01",
+    "lastModifyDate": "2020-02-01"
+  },
+  "links": {
+    "manual": [
+      "https://www.phocealight.fr/pars-leds-batterie/25-77-box-batterie-6x15w.html#/30-couleur-noir"
+    ]
+  },
+  "availableChannels": {
+    "ROUGE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "VERT": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLEU": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "BLANC": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "AMBRE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "DIMMER": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "STROBE": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "MODE": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "MODE 2": {
+      "name": "MODE",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6CH",
+      "channels": [
+        "ROUGE",
+        "VERT",
+        "BLEU",
+        "BLANC",
+        "AMBRE",
+        "UV"
+      ]
+    },
+    {
+      "name": "10CH",
+      "channels": [
+        "DIMMER",
+        "ROUGE",
+        "VERT",
+        "BLEU",
+        "BLANC",
+        "AMBRE",
+        "UV",
+        "STROBE",
+        "MODE",
+        "MODE 2"
+      ]
+    }
+  ]
+}
