@@ -85,7 +85,9 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
       ? new Manufacturer(manKey, outObject.manufacturers[manKey])
       : manKey;
 
-    return new Fixture(manufacturer, fixKey, embedResourcesIntoFixtureJson(jsonObject));
+    embedResourcesIntoFixtureJson(jsonObject);
+
+    return new Fixture(manufacturer, fixKey, jsonObject);
   });
 
   let zipName;
@@ -113,7 +115,8 @@ app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, async (request, response, next
   if (format === `json`) {
     try {
       const data = await readFile(`./fixtures/${manKey}/${fixKey}.json`, `utf8`);
-      const json = embedResourcesIntoFixtureJson(JSON.parse(data));
+      const json = JSON.parse(data);
+      embedResourcesIntoFixtureJson(json);
       response.json(json);
     }
     catch (error) {
