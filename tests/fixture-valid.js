@@ -303,7 +303,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           foundAnimationGoboEndSlots.push(index);
         }
 
-        if (slot.resource) {
+        if (typeof slot.resource === `string`) {
           try {
             getResourceFromString(slot.resource);
           }

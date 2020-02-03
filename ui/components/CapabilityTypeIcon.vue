@@ -16,10 +16,10 @@ export default {
     if (capability.type !== `WheelShake` && wheelSlot !== null && wheelSlot[0] === wheelSlot[1]) {
       const resource = wheelSlot[0].resource;
 
-      if (resource && resource.image) {
+      if (resource && resource.hasImage) {
         const data = Object.assign({}, context.data, {
           attrs: Object.assign({}, context.data.attrs, {
-            src: resource.image,
+            src: resource.imageDataUrl,
             title: `Capability type: ${capability.type}, slot ${capability.slotNumber[0]} (${wheelSlot[0].name})`
           }),
           class: [context.data.class, `icon`, `gobo-icon`]

@@ -87,26 +87,14 @@ module.exports.export = async function exportQlcPlus(fixtures, options) {
 
   // add gobo images not included in QLC+ to exported files
   Object.entries(customGobos).forEach(([qlcplusResName, oflResource]) => {
-    // oflResource.image is in one of the following forms:
-    // "data:<mimeType>;base64,<base64Data>" or
-    // "data:<mimeType>;charset=utf-8,<uriEncodedData>"
-    const [mediaType, imageData] = oflResource.image.replace(`data:`, ``).split(`,`);
-    let mimeType = mediaType;
-
-    let fileContent;
-
-    if (mediaType.endsWith(`;base64`)) {
-      fileContent = Buffer.from(imageData, `base64`);
-      mimeType = mediaType.replace(`;base64`, ``);
-    }
-    else {
-      fileContent = decodeURIComponent(imageData);
-    }
+    const fileContent = (oflResource.imageEncoding === `base64`)
+      ? Buffer.from(oflResource.imageData, `base64`)
+      : oflResource.imageData;
 
     outFiles.push({
       name: `gobos/${qlcplusResName}`,
       content: fileContent,
-      mimeType
+      mimeType: oflResource.imageMimeType
     });
   });
 

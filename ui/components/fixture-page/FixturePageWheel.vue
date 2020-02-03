@@ -117,12 +117,12 @@
             fill="#fff" />
 
           <image
-            v-if="slot.resource && slot.resource.image"
+            v-if="slot.resource && slot.resource.hasImage"
             :x="-slotRadius"
             :y="slotRotateRadius - slotRadius"
             :width="slotRadius * 2"
             :height="slotRadius * 2"
-            :xlink:href="slot.resource.image" />
+            :xlink:href="slot.resource.imageDataUrl" />
 
           <text
             v-else
