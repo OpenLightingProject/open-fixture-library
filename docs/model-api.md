@@ -2265,7 +2265,7 @@ Information about a resource.
 **Kind**: global class  
 
 * [Resource](#Resource)
-    * [new Resource(jsonObject, wheelSlot)](#new_Resource_new)
+    * [new Resource(jsonObject)](#new_Resource_new)
     * [.name](#Resource+name) ⇒ <code>String</code>
     * [.keywords](#Resource+keywords) ⇒ <code>Array.&lt;String&gt;</code>
     * [.source](#Resource+source) ⇒ <code>String</code> \| <code>null</code>
@@ -2273,22 +2273,21 @@ Information about a resource.
     * [.type](#Resource+type) ⇒ <code>String</code>
     * [.alias](#Resource+alias) ⇒ <code>String</code> \| <code>null</code>
     * [.hasImage](#Resource+hasImage) ⇒ <code>Boolean</code>
-    * [.imageExtension](#Resource+imageExtension) ⇒ <code>String</code>
-    * [.imageMimeType](#Resource+imageMimeType) ⇒ <code>String</code>
-    * [.imageData](#Resource+imageData) ⇒ <code>String</code>
-    * [.imageEncoding](#Resource+imageEncoding) ⇒ <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf8&#x27;</code>
-    * [.imageDataUrl](#Resource+imageDataUrl) ⇒ <code>String</code>
+    * [.imageExtension](#Resource+imageExtension) ⇒ <code>String</code> \| <code>null</code>
+    * [.imageMimeType](#Resource+imageMimeType) ⇒ <code>String</code> \| <code>null</code>
+    * [.imageData](#Resource+imageData) ⇒ <code>String</code> \| <code>null</code>
+    * [.imageEncoding](#Resource+imageEncoding) ⇒ <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf8&#x27;</code> \| <code>null</code>
+    * [.imageDataUrl](#Resource+imageDataUrl) ⇒ <code>String</code> \| <code>null</code>
 
 <a name="new_Resource_new"></a>
 
-### new Resource(jsonObject, wheelSlot)
+### new Resource(jsonObject)
 Creates a new Resource instance.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| jsonObject | <code>Object</code> \| <code>null</code> | A embedded resource object from the fixture's JSON data. |
-| wheelSlot | [<code>WheelSlot</code>](#WheelSlot) | The wheel slot that this resource belongs to. |
+| jsonObject | <code>Object</code> | An embedded resource object from the fixture's JSON data. |
 
 <a name="Resource+name"></a>
 
@@ -2327,29 +2326,29 @@ Creates a new Resource instance.
 **Returns**: <code>Boolean</code> - True if this resource has an associated image, false otherwise.  
 <a name="Resource+imageExtension"></a>
 
-### resource.imageExtension ⇒ <code>String</code>
+### resource.imageExtension ⇒ <code>String</code> \| <code>null</code>
 **Kind**: instance property of [<code>Resource</code>](#Resource)  
-**Returns**: <code>String</code> - The resource image's file extension.  
+**Returns**: <code>String</code> \| <code>null</code> - The resource image's file extension, or null if there is no image.  
 <a name="Resource+imageMimeType"></a>
 
-### resource.imageMimeType ⇒ <code>String</code>
+### resource.imageMimeType ⇒ <code>String</code> \| <code>null</code>
 **Kind**: instance property of [<code>Resource</code>](#Resource)  
-**Returns**: <code>String</code> - The resource image's MIME type.  
+**Returns**: <code>String</code> \| <code>null</code> - The resource image's MIME type, or null if there is no image.  
 <a name="Resource+imageData"></a>
 
-### resource.imageData ⇒ <code>String</code>
+### resource.imageData ⇒ <code>String</code> \| <code>null</code>
 **Kind**: instance property of [<code>Resource</code>](#Resource)  
-**Returns**: <code>String</code> - The resource image data (base64 or utf8 encoded).  
+**Returns**: <code>String</code> \| <code>null</code> - The resource image data (base64 or utf8 encoded), or null if there is no image.  
 <a name="Resource+imageEncoding"></a>
 
-### resource.imageEncoding ⇒ <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf8&#x27;</code>
+### resource.imageEncoding ⇒ <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf8&#x27;</code> \| <code>null</code>
 **Kind**: instance property of [<code>Resource</code>](#Resource)  
-**Returns**: <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf8&#x27;</code> - The resource image's data encoding.  
+**Returns**: <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf8&#x27;</code> \| <code>null</code> - The resource image's data encoding, or null if there is no image.  
 <a name="Resource+imageDataUrl"></a>
 
-### resource.imageDataUrl ⇒ <code>String</code>
+### resource.imageDataUrl ⇒ <code>String</code> \| <code>null</code>
 **Kind**: instance property of [<code>Resource</code>](#Resource)  
-**Returns**: <code>String</code> - A data URL containing the resource image.  
+**Returns**: <code>String</code> \| <code>null</code> - A data URL containing the resource image, or null if there is no image.  
 <a name="SwitchingChannel"></a>
 
 ## SwitchingChannel ⇐ [<code>AbstractChannel</code>](#AbstractChannel)
