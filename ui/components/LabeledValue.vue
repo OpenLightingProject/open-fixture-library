@@ -1,11 +1,16 @@
-<template>
-  <section :class="name">
+<template functional>
+  <section
+    :ref="data.ref"
+    :class="[data.class, data.staticClass, props.name]"
+    :style="[data.style, data.staticStyle]"
+    v-bind="data.attrs"
+    v-on="listeners">
     <div class="label">
-      <template v-if="label">{{ label }}</template>
+      <template v-if="props.label">{{ props.label }}</template>
       <slot name="label" />
     </div>
     <div class="value">
-      <template v-if="value">{{ value }}</template>
+      <template v-if="props.value">{{ props.value }}</template>
       <slot />
     </div>
   </section>

@@ -118,7 +118,9 @@
         show="$submitted"
         tag="div"
         class="error-message">
-        <div slot="no-empty-channel-list">A mode must contain at least one channel.</div>
+        <template #no-empty-channel-list>
+          <div>A mode must contain at least one channel.</div>
+        </template>
       </FieldMessages>
     </Validate>
 
@@ -145,6 +147,10 @@
     position: relative;
   }
 
+  & a:focus {
+    opacity: 1;
+  }
+
   & .channel-buttons {
     position: absolute;
     top: 0;
@@ -159,9 +165,8 @@
     }
   }
 
-  & li:hover .channel-buttons,
-  & li.sortable-chosen .channel-buttons,
-  & li.sortable-ghost .channel-buttons {
+  // has to be a separate rule because older browsers would ignore the whole rule
+  & .channel-buttons:focus-within {
     background-color: theme-color(card-background, 1);
     box-shadow: -1ex 0 1ex 0.5ex theme-color(card-background);
 
@@ -170,12 +175,9 @@
     }
   }
 
-  & a:focus {
-    opacity: 1;
-  }
-
-  // has to be a separate rule because older browsers would ignore the whole rule
-  & .channel-buttons:focus-within {
+  & li:hover .channel-buttons,
+  & li.sortable-chosen .channel-buttons,
+  & li.sortable-ghost .channel-buttons {
     background-color: theme-color(card-background, 1);
     box-shadow: -1ex 0 1ex 0.5ex theme-color(card-background);
 

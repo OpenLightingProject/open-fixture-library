@@ -1,6 +1,6 @@
 <template>
   <ConditionalDetails :open="capability.open" class="capability">
-    <template slot="summary">
+    <template #summary>
       DMX range
       <code :class="{ 'unset': start === null }">{{ start !== null ? start : min }}</code> …
       <code :class="{ 'unset': end === null }">{{ end !== null ? end : max }}</code>:
