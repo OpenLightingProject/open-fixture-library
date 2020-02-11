@@ -30,6 +30,12 @@
       "degreesMinMax": [45, 45]
     }
   },
+  "matrix": {
+    "pixelCount": [5, 5, 1],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
@@ -989,26 +995,28 @@
           "comment": "Pan/Tilt blackout off"
         }
       ]
-    },
-    "Red": {
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green": {
+    "Green $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue": {
+    "Blue $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "White": {
+    "White $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
@@ -1050,10 +1058,45 @@
         "Pattern",
         "Pattern Speed",
         "Function",
-        "Red",
-        "Green",
-        "Blue",
-        "White"
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master"
+      ]
+    },
+    {
+      "name": "118-Channel",
+      "shortName": "118ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Linear Strobe",
+        "FX Strobe",
+        "Color Macros",
+        "Effect Macros",
+        "Effect Speed",
+        "Pattern",
+        "Pattern Speed",
+        "Function",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        }
       ]
     }
   ]
