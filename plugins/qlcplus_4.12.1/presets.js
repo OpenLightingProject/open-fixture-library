@@ -2,6 +2,8 @@
  * @fileoverview Channel and capability presets, together with functions to export or import them.
  */
 
+const qlcplusGoboAliases = require(`../../resources/gobos/aliases/qlcplus.json`);
+
 
 // ########## Helper functions ##########
 
@@ -18,7 +20,30 @@ const exportHelpers = {
   isRotationAngle: cap => (cap.type.endsWith(`Rotation`) || [`Pan`, `Tilt`, `Prism`].includes(cap.type)) && cap.angle !== null,
   isBeamAngle: cap => (cap.type === `BeamAngle` || cap.type === `Zoom`) && cap.angle !== null,
   isWheelChannel: channel => channel.capabilities.some(cap => [`WheelSlot`, `WheelRotation`].includes(cap.type)),
-  isAllowedInWheels: cap => [`WheelSlot`, `WheelShake`, `WheelSlotRotation`, `WheelRotation`, `Effect`, `NoFunction`].includes(cap.type)
+  isAllowedInWheels: cap => [`WheelSlot`, `WheelShake`, `WheelSlotRotation`, `WheelRotation`, `Effect`, `NoFunction`].includes(cap.type),
+  getGoboRes: cap => {
+    if (cap.isSlotType(`Open`)) {
+      return `Others/open.svg`;
+    }
+
+    if (cap.wheelSlot !== null && cap.wheelSlot[0] === cap.wheelSlot[1]) {
+      const resource = cap.wheelSlot[0].resource;
+
+      if (resource) {
+        const qlcplusGoboAlias = Object.keys(qlcplusGoboAliases).find(
+          alias => qlcplusGoboAliases[alias] === resource.key
+        );
+
+        if (qlcplusGoboAlias) {
+          return qlcplusGoboAlias;
+        }
+
+        return `ofl/${resource.key}.${resource.imageExtension}`;
+      }
+    }
+
+    return null;
+  }
 };
 
 const importHelpers = {
@@ -806,7 +831,7 @@ const capabilityPresets = {
   // TODO: import/export a gobo image as res1
   GoboShakeMacro: {
     isApplicable: cap => cap.type === `WheelShake` && cap.isSlotType(/Gobo|Iris|Frost|Open/),
-    exportRes1: cap => (cap.isSlotType(`Open`) ? `Others/open.svg` : null),
+    exportRes1: exportHelpers.getGoboRes,
     importCapability: ({ capabilityName, index }) => {
       const cap = {
         type: `WheelShake`,
@@ -829,7 +854,7 @@ const capabilityPresets = {
   },
   GoboMacro: {
     isApplicable: cap => cap.type === `WheelSlot` && cap.isSlotType(/Gobo|Iris|Frost|Open/),
-    exportRes1: cap => (cap.isSlotType(`Open`) ? `Others/open.svg` : null),
+    exportRes1: exportHelpers.getGoboRes,
     importCapability: ({ index }) => ({
       type: `WheelSlot`,
       slotNumber: index + 1
@@ -1038,5 +1063,6 @@ module.exports = {
   getCapabilityPreset,
   getCapabilityFromCapabilityPreset,
 
-  importHelpers
+  importHelpers,
+  exportHelpers
 };
