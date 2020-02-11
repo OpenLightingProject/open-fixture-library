@@ -19,6 +19,7 @@ This document gives a high-level overview of the concepts used in the JSON forma
     - [Matrix structure](#matrix-structure)
     - [Template channels](#template-channels)
   - [Wheels](#wheels)
+    - [Gobo resources](#gobo-resources)
     - [Using wheels in capabilities](#using-wheels-in-capabilities)
   - [RDM (Remote Device Management) data](#rdm-remote-device-management-data)
 - [Fixture redirects](#fixture-redirects)
