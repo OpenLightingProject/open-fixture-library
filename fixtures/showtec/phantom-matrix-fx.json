@@ -32,6 +32,7 @@
   },
   "availableChannels": {
     "Pan": {
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -39,10 +40,18 @@
       }
     },
     "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
         "angleEnd": "270deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
       }
     },
     "Dimmer": {
@@ -71,6 +80,36 @@
           "speedStart": "0Hz",
           "speedEnd": "10Hz",
           "comment": "linear"
+        }
+      ]
+    },
+    "Linear Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "10Hz"
+        }
+      ]
+    },
+    "FX Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "10Hz"
         }
       ]
     },
@@ -950,6 +989,30 @@
           "comment": "Pan/Tilt blackout off"
         }
       ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     }
   },
   "modes": [
@@ -967,6 +1030,30 @@
         "Pattern",
         "Pattern Speed",
         "Function"
+      ]
+    },
+    {
+      "name": "18-Channel",
+      "shortName": "18ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Linear Strobe",
+        "FX Strobe",
+        "Color Macros",
+        "Effect Macros",
+        "Effect Speed",
+        "Pattern",
+        "Pattern Speed",
+        "Function",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
       ]
     }
   ]
