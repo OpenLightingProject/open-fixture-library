@@ -374,8 +374,7 @@ async function updateGithubIssue(urlResults) {
       `| URL <th nowrap>today … 6 days ago</th>`,
       `|--------------------------------------|`,
       ...Object.entries(linkData).map(([url, statuses]) => {
-        let str = `| ${url} <td nowrap>`;
-        str += statuses.map(status => {
+        const statusIcons = statuses.map(status => {
           if (!status.failed) {
             return `:heavy_check_mark:`;
           }
@@ -383,9 +382,8 @@ async function updateGithubIssue(urlResults) {
           const message = status.message.replace(`\n`, ` `).replace(`"`, `&quot;`);
           return `<a href="${status.jobUrl}" title="${message}">:x:</a>`;
         }).join(`&nbsp;`);
-        str += `</td>`;
 
-        return str;
+        return `| ${url} <td nowrap>${statusIcons}</td>`;
       })
     ];
 
