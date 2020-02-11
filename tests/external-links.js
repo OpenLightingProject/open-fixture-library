@@ -371,8 +371,8 @@ async function updateGithubIssue(urlResults) {
       ``,
       `**Last updated:** ${(new Date()).toISOString()}`,
       ``,
-      `| URL | today … 6 days ago |`,
-      `|-----|--------------------|`,
+      `| URL <th nowrap>today … 6 days ago</th>`,
+      `|--------------------------------------|`,
       ...Object.entries(linkData).map(([url, statuses]) => {
         let str = `| ${url} <td nowrap>`;
         str += statuses.map(status => {
