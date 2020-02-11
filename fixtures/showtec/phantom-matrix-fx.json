@@ -35,14 +35,14 @@
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
-        "angleEnd": "255deg"
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
-        "angleEnd": "255deg"
+        "angleEnd": "270deg"
       }
     },
     "Dimmer": {
@@ -54,20 +54,23 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [11, 128],
-          "type": "StrobeSpeed",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "10Hz",
+          "comment": "FX"
         },
         {
           "dmxRange": [129, 255],
-          "type": "StrobeSpeed",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "10Hz",
+          "comment": "linear"
         }
       ]
     },
@@ -80,167 +83,200 @@
         {
           "dmxRange": [8, 13],
           "type": "ColorPreset",
-          "comment": "Farbe 1"
+          "comment": "Color 1 (R=255)",
+          "colors": ["#ff0000"]
         },
         {
           "dmxRange": [14, 20],
           "type": "ColorPreset",
-          "comment": "Farbe 2"
+          "comment": "Color 2 (R=255 W=100)",
+          "colors": ["#ff4848"]
         },
         {
           "dmxRange": [21, 27],
           "type": "ColorPreset",
-          "comment": "Farbe 3"
+          "comment": "Color 3 (R=255 W=200)",
+          "colors": ["#ff7070"]
         },
         {
           "dmxRange": [28, 34],
           "type": "ColorPreset",
-          "comment": "Farbe 4"
+          "comment": "Color 4 (R=255 G=50)",
+          "colors": ["#ff3200"]
         },
         {
           "dmxRange": [35, 41],
           "type": "ColorPreset",
-          "comment": "Farbe 5"
+          "comment": "Color 5 (R=255 G=150)",
+          "colors": ["#ff9600"]
         },
         {
           "dmxRange": [42, 48],
           "type": "ColorPreset",
-          "comment": "Farbe 6"
+          "comment": "Color 6 (R=255 G=255)",
+          "colors": ["#ffff00"]
         },
         {
           "dmxRange": [49, 55],
           "type": "ColorPreset",
-          "comment": "Farbe 7"
+          "comment": "Color 7 (R=255 G=255 W=75)",
+          "colors": ["#ffff3a"]
         },
         {
           "dmxRange": [56, 62],
           "type": "ColorPreset",
-          "comment": "Farbe 8"
+          "comment": "Color 8 (G=255 W=255)",
+          "colors": ["#80ff80"]
         },
         {
           "dmxRange": [63, 69],
           "type": "ColorPreset",
-          "comment": "Farbe 9"
+          "comment": "Color 9 (G=255 W=150)",
+          "colors": ["#5eff5e"]
         },
         {
           "dmxRange": [70, 76],
           "type": "ColorPreset",
-          "comment": "Farbe 10"
+          "comment": "Color 10 (G=255 W=50)",
+          "colors": ["#2aff2a"]
         },
         {
           "dmxRange": [77, 83],
           "type": "ColorPreset",
-          "comment": "Farbe 11"
+          "comment": "Color 11 (G=255)",
+          "colors": ["#00ff00"]
         },
         {
           "dmxRange": [84, 90],
           "type": "ColorPreset",
-          "comment": "Farbe 12"
+          "comment": "Color 12 (G=255 B=50)",
+          "colors": ["#00ff32"]
         },
         {
           "dmxRange": [91, 97],
           "type": "ColorPreset",
-          "comment": "Farbe 13"
+          "comment": "Color 13 (G=255 B=150)",
+          "colors": ["#00ff96"]
         },
         {
           "dmxRange": [98, 104],
           "type": "ColorPreset",
-          "comment": "Farbe 14"
+          "comment": "Color 14 (G=255 B=255)",
+          "colors": ["#00ffff"]
         },
         {
           "dmxRange": [105, 111],
           "type": "ColorPreset",
-          "comment": "Farbe 15"
+          "comment": "Color 15 (G=255 B=255 W=75)",
+          "colors": ["#3affff"]
         },
         {
           "dmxRange": [112, 118],
           "type": "ColorPreset",
-          "comment": "Farbe 16"
+          "comment": "Color 16 (G=255 B=255 W=150)",
+          "colors": ["#5effff"]
         },
         {
           "dmxRange": [119, 125],
           "type": "ColorPreset",
-          "comment": "Farbe 17"
+          "comment": "Color 17 (G=100 B=255 W=255)",
+          "colors": ["#80b2ff"]
         },
         {
           "dmxRange": [126, 132],
           "type": "ColorPreset",
-          "comment": "Farbe 18"
+          "comment": "Color 18 (B=255 W=100)",
+          "colors": ["#4848ff"]
         },
         {
           "dmxRange": [133, 139],
           "type": "ColorPreset",
-          "comment": "Farbe 19"
+          "comment": "Color 19 (B=255 W=50)",
+          "colors": ["#2a2aff"]
         },
         {
           "dmxRange": [140, 146],
           "type": "ColorPreset",
-          "comment": "Farbe 20"
+          "comment": "Color 20 (B=255)",
+          "colors": ["#0000ff"]
         },
         {
           "dmxRange": [147, 153],
           "type": "ColorPreset",
-          "comment": "Farbe 21"
+          "comment": "Color 21 (R=75 B=255)",
+          "colors": ["#4b00ff"]
         },
         {
           "dmxRange": [154, 160],
           "type": "ColorPreset",
-          "comment": "Farbe 22"
+          "comment": "Color 22 (R=160 B=255)",
+          "colors": ["#a000ff"]
         },
         {
           "dmxRange": [161, 167],
           "type": "ColorPreset",
-          "comment": "Farbe 23"
+          "comment": "Color 23 (R=255 B=255)",
+          "colors": ["#ff00ff"]
         },
         {
           "dmxRange": [168, 174],
           "type": "ColorPreset",
-          "comment": "Farbe 24"
+          "comment": "Color 24 (R=255 B=175)",
+          "colors": ["#ff00af"]
         },
         {
           "dmxRange": [175, 181],
           "type": "ColorPreset",
-          "comment": "Farbe 25"
+          "comment": "Color 25 (R=255 B=100)",
+          "colors": ["#ff0064"]
         },
         {
           "dmxRange": [182, 188],
           "type": "ColorPreset",
-          "comment": "Farbe 26"
+          "comment": "Color 26 (R=255 B=100 W=50)",
+          "colors": ["#ff2a7d"]
         },
         {
           "dmxRange": [189, 195],
           "type": "ColorPreset",
-          "comment": "Farbe 27"
+          "comment": "Color 27 (R=255 B=25 W=50)",
+          "colors": ["#ff2a3f"]
         },
         {
           "dmxRange": [196, 202],
           "type": "ColorPreset",
-          "comment": "Farbe 28"
+          "comment": "Color 28 (R=255 B=25 W=25)",
+          "colors": ["#ff172e"]
         },
         {
           "dmxRange": [203, 209],
           "type": "ColorPreset",
-          "comment": "Farbe 29"
+          "comment": "Color 29 (R=255 B=25)",
+          "colors": ["#ff0019"]
         },
         {
           "dmxRange": [210, 216],
           "type": "ColorPreset",
-          "comment": "Farbe 30"
+          "comment": "Color 30 (W=255)",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [217, 223],
           "type": "ColorPreset",
-          "comment": "Farbe 31"
+          "comment": "Color 31 (R=75 G=75 W=255)",
+          "colors": ["#ffffc5"]
         },
         {
           "dmxRange": [224, 230],
           "type": "ColorPreset",
-          "comment": "Farbe 32"
+          "comment": "Color 32 (B=100 W=255)",
+          "colors": ["#b7b7ff"]
         },
         {
           "dmxRange": [231, 255],
           "type": "ColorPreset",
-          "comment": "Farbe 33"
+          "comment": "Color 33 (R=255 G=255 B=255 W=255)",
+          "colors": ["#ffffff"]
         }
       ]
     },
@@ -253,102 +289,122 @@
         {
           "dmxRange": [13, 24],
           "type": "Effect",
-          "effectName": "Farbwechsel 1"
+          "effectPreset": "ColorJump",
+          "comment": "1"
         },
         {
           "dmxRange": [25, 36],
           "type": "Effect",
-          "effectName": "Farbwechsel 2"
+          "effectPreset": "ColorJump",
+          "comment": "2"
         },
         {
           "dmxRange": [37, 48],
           "type": "Effect",
-          "effectName": "Farbwechsel 3"
+          "effectPreset": "ColorJump",
+          "comment": "3"
         },
         {
           "dmxRange": [49, 60],
           "type": "Effect",
-          "effectName": "Farbwechsel 4"
+          "effectPreset": "ColorJump",
+          "comment": "4"
         },
         {
           "dmxRange": [61, 72],
           "type": "Effect",
-          "effectName": "Farbwechsel 5"
+          "effectPreset": "ColorJump",
+          "comment": "5"
         },
         {
           "dmxRange": [73, 84],
           "type": "Effect",
-          "effectName": "Farbwechsel 6"
+          "effectPreset": "ColorJump",
+          "comment": "6"
         },
         {
           "dmxRange": [85, 96],
           "type": "Effect",
-          "effectName": "Farbwechsel 7"
+          "effectPreset": "ColorJump",
+          "comment": "7"
         },
         {
           "dmxRange": [97, 108],
           "type": "Effect",
-          "effectName": "Farbwechsel 8"
+          "effectPreset": "ColorJump",
+          "comment": "8"
         },
         {
           "dmxRange": [109, 120],
           "type": "Effect",
-          "effectName": "Farbfluss 1"
+          "effectPreset": "ColorFade",
+          "comment": "1"
         },
         {
           "dmxRange": [121, 132],
           "type": "Effect",
-          "effectName": "Farbfluss 2"
+          "effectPreset": "ColorFade",
+          "comment": "2"
         },
         {
           "dmxRange": [133, 144],
           "type": "Effect",
-          "effectName": "Farbfluss 3"
+          "effectPreset": "ColorFade",
+          "comment": "3"
         },
         {
           "dmxRange": [145, 156],
           "type": "Effect",
-          "effectName": "Farbfluss 4"
+          "effectPreset": "ColorFade",
+          "comment": "4"
         },
         {
           "dmxRange": [157, 168],
           "type": "Effect",
-          "effectName": "Farbfluss 5"
+          "effectPreset": "ColorFade",
+          "comment": "5"
         },
         {
           "dmxRange": [169, 180],
           "type": "Effect",
-          "effectName": "Farbfluss 6"
+          "effectPreset": "ColorFade",
+          "comment": "6"
         },
         {
           "dmxRange": [181, 192],
           "type": "Effect",
-          "effectName": "Farbfluss 7"
+          "effectPreset": "ColorFade",
+          "comment": "7"
         },
         {
           "dmxRange": [193, 204],
           "type": "Effect",
-          "effectName": "Regenbogeneffekt 1"
+          "effectPreset": "ColorFade",
+          "comment": "Rainbow 1"
         },
         {
           "dmxRange": [205, 216],
           "type": "Effect",
-          "effectName": "Regenbogeneffekt 2"
+          "effectPreset": "ColorFade",
+          "comment": "Rainbow 2"
         },
         {
           "dmxRange": [217, 228],
           "type": "Effect",
-          "effectName": "Blau-roter Farbfluss"
+          "effectPreset": "ColorFade",
+          "comment": "blue-red"
         },
         {
           "dmxRange": [229, 240],
           "type": "Effect",
-          "effectName": "Blau-grüner Farbfluss"
+          "effectPreset": "ColorFade",
+          "comment": "blue-green"
         },
         {
           "dmxRange": [241, 255],
           "type": "Effect",
-          "effectName": "Gelb-roter Farbfluss"
+          "effectPreset": "ColorFade",
+          "comment": "yellow-red"
         }
       ]
     },
@@ -403,16 +459,12 @@
         {
           "dmxRange": [29, 31],
           "type": "Effect",
-          "effectName": "7",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "effectName": "7"
         },
         {
           "dmxRange": [32, 34],
           "type": "Effect",
-          "effectName": "8",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "effectName": "8"
         },
         {
           "dmxRange": [35, 37],
@@ -552,239 +604,237 @@
         {
           "dmxRange": [116, 118],
           "type": "Effect",
-          "effectName": "Muster 1"
+          "effectName": "Pattern 1"
         },
         {
           "dmxRange": [119, 121],
           "type": "Effect",
-          "effectName": "Muster 2"
+          "effectName": "Pattern 2"
         },
         {
           "dmxRange": [122, 124],
           "type": "Effect",
-          "effectName": "Muster 3"
+          "effectName": "Pattern 3"
         },
         {
           "dmxRange": [125, 127],
           "type": "Effect",
-          "effectName": "Muster 4"
+          "effectName": "Pattern 4"
         },
         {
           "dmxRange": [128, 130],
           "type": "Effect",
-          "effectName": "Muster 5"
+          "effectName": "Pattern 5"
         },
         {
           "dmxRange": [131, 133],
           "type": "Effect",
-          "effectName": "Muster 6"
+          "effectName": "Pattern 6"
         },
         {
           "dmxRange": [134, 136],
           "type": "Effect",
-          "effectName": "Muster 7"
+          "effectName": "Pattern 7"
         },
         {
           "dmxRange": [137, 139],
           "type": "Effect",
-          "effectName": "Muster 8"
+          "effectName": "Pattern 8"
         },
         {
           "dmxRange": [140, 142],
           "type": "Effect",
-          "effectName": "Muster 9"
+          "effectName": "Pattern 9"
         },
         {
           "dmxRange": [143, 145],
           "type": "Effect",
-          "effectName": "Muster 10"
+          "effectName": "Pattern 10"
         },
         {
           "dmxRange": [146, 148],
           "type": "Effect",
-          "effectName": "Muster 11"
+          "effectName": "Pattern 11"
         },
         {
           "dmxRange": [149, 151],
           "type": "Effect",
-          "effectName": "Muster 12"
+          "effectName": "Pattern 12"
         },
         {
           "dmxRange": [152, 154],
           "type": "Effect",
-          "effectName": "Muster 13"
+          "effectName": "Pattern 13"
         },
         {
           "dmxRange": [155, 157],
           "type": "Effect",
-          "effectName": "Muster 14"
+          "effectName": "Pattern 14"
         },
         {
           "dmxRange": [158, 160],
           "type": "Effect",
-          "effectName": "Muster 15"
+          "effectName": "Pattern 15"
         },
         {
           "dmxRange": [161, 163],
           "type": "Effect",
-          "effectName": "Muster 16"
+          "effectName": "Pattern 16"
         },
         {
           "dmxRange": [164, 166],
           "type": "Effect",
-          "effectName": "Muster 17"
+          "effectName": "Pattern 17"
         },
         {
           "dmxRange": [167, 169],
           "type": "Effect",
-          "effectName": "Muster 18"
+          "effectName": "Pattern 18"
         },
         {
           "dmxRange": [170, 172],
           "type": "Effect",
-          "effectName": "Muster 19"
+          "effectName": "Pattern 19"
         },
         {
           "dmxRange": [173, 175],
           "type": "Effect",
-          "effectName": "Muster  20"
+          "effectName": "Pattern 20"
         },
         {
           "dmxRange": [176, 178],
           "type": "Effect",
-          "effectName": "Muster 21"
+          "effectName": "Pattern 21"
         },
         {
           "dmxRange": [179, 181],
           "type": "Effect",
-          "effectName": "Muster 22"
+          "effectName": "Pattern 22"
         },
         {
           "dmxRange": [182, 184],
           "type": "Effect",
-          "effectName": "Muster 23"
+          "effectName": "Pattern 23"
         },
         {
           "dmxRange": [185, 187],
           "type": "Effect",
-          "effectName": "Muster 24"
+          "effectName": "Pattern 24"
         },
         {
           "dmxRange": [188, 190],
           "type": "Effect",
-          "effectName": "Muster 25"
+          "effectName": "Pattern 25"
         },
         {
           "dmxRange": [191, 193],
           "type": "Effect",
-          "effectName": "Muster 26"
+          "effectName": "Pattern 26"
         },
         {
           "dmxRange": [194, 196],
           "type": "Effect",
-          "effectName": "Muster 27"
+          "effectName": "Pattern 27"
         },
         {
           "dmxRange": [197, 199],
           "type": "Effect",
-          "effectName": "Muster 28"
+          "effectName": "Pattern 28"
         },
         {
           "dmxRange": [200, 202],
           "type": "Effect",
-          "effectName": "Muster 29"
+          "effectName": "Pattern 29"
         },
         {
           "dmxRange": [203, 205],
           "type": "Effect",
-          "effectName": "Muster 30"
+          "effectName": "Pattern 30"
         },
         {
           "dmxRange": [206, 208],
           "type": "Effect",
-          "effectName": "Muster 31"
+          "effectName": "Pattern 31"
         },
         {
           "dmxRange": [209, 211],
           "type": "Effect",
-          "effectName": "Muster 32"
+          "effectName": "Pattern 32"
         },
         {
           "dmxRange": [212, 214],
           "type": "Effect",
-          "effectName": "Muster 33"
+          "effectName": "Pattern 33"
         },
         {
           "dmxRange": [215, 217],
           "type": "Effect",
-          "effectName": "Muster 34"
+          "effectName": "Pattern 34"
         },
         {
           "dmxRange": [218, 220],
           "type": "Effect",
-          "effectName": "Muster 35"
+          "effectName": "Pattern 35"
         },
         {
           "dmxRange": [221, 223],
           "type": "Effect",
-          "effectName": "Muster 36"
+          "effectName": "Pattern 36"
         },
         {
           "dmxRange": [224, 226],
           "type": "Effect",
-          "effectName": "Muster 37"
+          "effectName": "Pattern 37"
         },
         {
           "dmxRange": [227, 229],
           "type": "Effect",
-          "effectName": "Muster 38"
+          "effectName": "Pattern 38"
         },
         {
           "dmxRange": [230, 232],
           "type": "Effect",
-          "effectName": "Muster 39"
+          "effectName": "Pattern 39"
         },
         {
           "dmxRange": [233, 235],
           "type": "Effect",
-          "effectName": "Muster 40"
+          "effectName": "Pattern 40"
         },
         {
           "dmxRange": [236, 238],
           "type": "Effect",
-          "effectName": "Muster 41"
+          "effectName": "Pattern 41"
         },
         {
           "dmxRange": [239, 241],
           "type": "Effect",
-          "effectName": "Muster 42"
+          "effectName": "Pattern 42"
         },
         {
           "dmxRange": [242, 244],
           "type": "Effect",
-          "effectName": "Muster 43"
+          "effectName": "Pattern 43"
         },
         {
           "dmxRange": [245, 247],
           "type": "Effect",
-          "effectName": "Muster 44"
+          "effectName": "Pattern 44"
         },
         {
           "dmxRange": [248, 250],
           "type": "Effect",
-          "effectName": "Muster 45",
-          "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "effectName": "Pattern 45"
         },
         {
           "dmxRange": [251, 253],
           "type": "Effect",
-          "effectName": "Muster 46"
+          "effectName": "Pattern 46"
         },
         {
           "dmxRange": [254, 255],
           "type": "Effect",
-          "effectName": "Muster 47"
+          "effectName": "Pattern 47"
         }
       ]
     },
@@ -853,52 +903,59 @@
         },
         {
           "dmxRange": [97, 160],
-          "type": "SoundSensitivity",
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true,
           "soundSensitivityStart": "low",
-          "soundSensitivityEnd": "high",
-          "comment": "Musiktaktung"
+          "soundSensitivityEnd": "high"
         },
         {
           "dmxRange": [161, 170],
-          "type": "Generic",
-          "comment": "Paninversion"
+          "type": "Maintenance",
+          "comment": "Pan inversion",
+          "hold": "5s"
         },
         {
           "dmxRange": [171, 180],
-          "type": "Generic",
-          "comment": "Tiltinversion"
+          "type": "Maintenance",
+          "comment": "Tilt inversion",
+          "hold": "5s"
         },
         {
           "dmxRange": [181, 190],
-          "type": "Generic",
-          "comment": "Pan normal"
+          "type": "Maintenance",
+          "comment": "Pan normal",
+          "hold": "5s"
         },
         {
           "dmxRange": [191, 200],
-          "type": "Generic",
-          "comment": "Tilt normal"
+          "type": "Maintenance",
+          "comment": "Tilt normal",
+          "hold": "5s"
         },
         {
           "dmxRange": [201, 220],
-          "type": "Generic",
-          "comment": "Pan/Tilt-Blackout ein"
+          "type": "Maintenance",
+          "comment": "Pan/Tilt blackout on"
         },
         {
           "dmxRange": [221, 240],
-          "type": "Generic",
-          "comment": "Reset"
+          "type": "Maintenance",
+          "comment": "Reset",
+          "hold": "5s"
         },
         {
           "dmxRange": [241, 255],
-          "type": "Generic",
-          "comment": "Pan/Tilt-Blackout aus"
+          "type": "Maintenance",
+          "comment": "Pan/Tilt blackout off"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "10 Channel",
+      "name": "10-Channel",
+      "shortName": "10ch",
       "channels": [
         "Pan",
         "Tilt",
