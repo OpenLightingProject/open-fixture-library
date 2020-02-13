@@ -1,0 +1,142 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Precision DMX",
+  "categories": ["Other", "Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Brian McDade"],
+    "createDate": "2020-02-13",
+    "lastModifyDate": "2020-02-13"
+  },
+  "links": {
+    "manual": [
+      "http://www.gantom.com/wp-content/uploads/2018/07/Precision-DMX-User-Guide-1.1.pdf"
+    ],
+    "productPage": [
+      "https://www.gantom.com/lighting-fixtures/precision-dmx/"
+    ],
+    "video": [
+      "https://youtu.be/Oi_wBNiZeQk"
+    ]
+  },
+  "physical": {
+    "power": 3,
+    "DMXconnector": "3.5mm stereo jack",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [21, 21]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Built in Functions": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 71],
+          "type": "Generic",
+          "comment": "Fade In"
+        },
+        {
+          "dmxRange": [72, 111],
+          "type": "Generic",
+          "comment": "Fade Out"
+        },
+        {
+          "dmxRange": [112, 151],
+          "type": "Generic",
+          "comment": "Pulsing"
+        },
+        {
+          "dmxRange": [152, 191],
+          "type": "Generic",
+          "comment": "Smooth Color Fade"
+        },
+        {
+          "dmxRange": [192, 231],
+          "type": "Generic",
+          "comment": "RGB Color Cycle"
+        },
+        {
+          "dmxRange": [232, 250],
+          "type": "Generic",
+          "comment": "6 Color Cycle"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "Candle Flicker"
+        }
+      ]
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3 Channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "7 Channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros",
+        "Speed",
+        "Built in Functions",
+        "Master Dimmer"
+      ]
+    }
+  ]
+}
