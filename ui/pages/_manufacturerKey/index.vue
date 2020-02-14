@@ -1,6 +1,9 @@
 <template>
   <div>
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <script type="application/ld+json" v-html="organizationStructuredData" />
+
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <script type="application/ld+json" v-html="itemListStructuredData" />
 
     <h1>{{ manufacturer.name }} fixtures</h1>

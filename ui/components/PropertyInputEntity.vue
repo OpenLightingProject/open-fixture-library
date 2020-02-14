@@ -20,8 +20,8 @@
       :required="required"
       :class="{ empty: selectedUnit === `` }"
       @input="unitSelected"
-      @focus.native="onFocus"
-      @blur.native="onBlur($event)">
+      @focus="onFocus"
+      @blur="onBlur($event)">
 
       <option :disabled="required" value="">unset</option>
 

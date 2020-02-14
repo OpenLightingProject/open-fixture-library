@@ -1,7 +1,12 @@
 const xmlbuilder = require(`xmlbuilder`);
 const sanitize = require(`sanitize-filename`);
 
-const { getChannelPreset, getFineChannelPreset, getCapabilityPreset } = require(`./presets.js`);
+const {
+  getChannelPreset,
+  getFineChannelPreset,
+  getCapabilityPreset,
+  exportHelpers
+} = require(`./presets.js`);
 
 /** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
 const { Capability } = require(`../../lib/model.js`);
@@ -12,7 +17,7 @@ const { CoarseChannel } = require(`../../lib/model.js`);
 const { Physical } = require(`../../lib/model.js`);
 const { SwitchingChannel } = require(`../../lib/model.js`);
 
-module.exports.version = `1.2.0`;
+module.exports.version = `1.3.0`;
 
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
@@ -23,6 +28,8 @@ module.exports.version = `1.2.0`;
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
 module.exports.export = async function exportQlcPlus(fixtures, options) {
+  const customGobos = {};
+
   const outFiles = fixtures.map(fixture => {
     const xml = xmlbuilder.begin()
       .declaration(`1.0`, `UTF-8`)
@@ -41,7 +48,7 @@ module.exports.export = async function exportQlcPlus(fixtures, options) {
       });
 
     for (const channel of fixture.coarseChannels) {
-      addChannel(xml, channel, fixture);
+      addChannel(xml, channel, customGobos);
     }
 
     const panMax = getPanTiltMax(`Pan`, fixture.coarseChannels);
@@ -66,8 +73,10 @@ module.exports.export = async function exportQlcPlus(fixtures, options) {
 
     xml.dtd(``);
 
+    const sanitizedFileName = sanitize(`${fixture.manufacturer.name}-${fixture.name}.qxf`).replace(/\s+/g, `-`);
+
     return {
-      name: sanitize(`${fixture.manufacturer.name}/-${fixture.name}.qxf`).replace(/\s+/g, `-`),
+      name: `fixtures/${sanitizedFileName}`,
       content: xml.end({
         pretty: true,
         indent: ` `
@@ -76,14 +85,28 @@ module.exports.export = async function exportQlcPlus(fixtures, options) {
     };
   });
 
+  // add gobo images not included in QLC+ to exported files
+  Object.entries(customGobos).forEach(([qlcplusResName, oflResource]) => {
+    const fileContent = (oflResource.imageEncoding === `base64`)
+      ? Buffer.from(oflResource.imageData, `base64`)
+      : oflResource.imageData;
+
+    outFiles.push({
+      name: `gobos/${qlcplusResName}`,
+      content: fileContent,
+      mimeType: oflResource.imageMimeType
+    });
+  });
+
   return outFiles;
 };
 
 /**
  * @param {Object} xml The xmlbuilder <FixtureDefinition> object.
  * @param {CoarseChannel} channel The OFL channel object.
+ * @param {Object} customGobos An object where gobo resources not included in QLC+ can be added to.
  */
-function addChannel(xml, channel) {
+function addChannel(xml, channel, customGobos) {
   const chType = getChannelType(channel.type);
 
   const xmlChannel = xml.element({
@@ -115,18 +138,19 @@ function addChannel(xml, channel) {
     }
 
     for (const cap of channel.capabilities) {
-      addCapability(xmlChannel, cap);
+      addCapability(xmlChannel, cap, customGobos);
     }
   }
 
-  channel.fineChannels.forEach(fineChannel => addFineChannel(xml, fineChannel));
+  channel.fineChannels.forEach(fineChannel => addFineChannel(xml, fineChannel, customGobos));
 }
 
 /**
  * @param {Object} xml The xmlbuilder <FixtureDefinition> object.
  * @param {FineChannel} fineChannel The OFL fine channel object.
+ * @param {Object} customGobos An object where gobo resources not included in QLC+ can be added to.
  */
-function addFineChannel(xml, fineChannel) {
+function addFineChannel(xml, fineChannel, customGobos) {
   const xmlFineChannel = xml.element({
     Channel: {
       '@Name': fineChannel.uniqueName
@@ -150,7 +174,7 @@ function addFineChannel(xml, fineChannel) {
       dmxRange: [0, 255],
       type: `Generic`,
       comment: `Fine^${fineChannel.resolution - 1} adjustment for ${fineChannel.coarseChannel.uniqueName}`
-    }, CoarseChannel.RESOLUTION_8BIT, fineChannel.coarseChannel));
+    }, CoarseChannel.RESOLUTION_8BIT, fineChannel.coarseChannel), customGobos);
 
     return;
   }
@@ -187,8 +211,9 @@ function addFineChannel(xml, fineChannel) {
 /**
  * @param {Object} xmlChannel The xmlbuilder <Channel> object.
  * @param {Capability} cap The OFL capability object.
+ * @param {Object} customGobos An object where gobo resources not included in QLC+ can be added to.
  */
-function addCapability(xmlChannel, cap) {
+function addCapability(xmlChannel, cap, customGobos) {
   const dmxRange = cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
 
   const xmlCapability = xmlChannel.element({
@@ -210,6 +235,10 @@ function addCapability(xmlChannel, cap) {
 
     if (preset.res1 !== null) {
       xmlCapability.attribute(`Res1`, preset.res1);
+
+      if (`${preset.res1}`.startsWith(`ofl/`)) {
+        customGobos[preset.res1] = cap.wheelSlot[0].resource;
+      }
     }
 
     if (preset.res2 !== null) {
@@ -217,20 +246,30 @@ function addCapability(xmlChannel, cap) {
     }
   }
   else {
-    addCapabilityLegacyAttributes(xmlCapability, cap);
+    addCapabilityLegacyAttributes(xmlCapability, cap, customGobos);
   }
 }
 
 /**
  * @param {Object} xmlCapability The xmlbuilder <Capability> object.
  * @param {Capability} cap The OFL capability object.
+ * @param {Object} customGobos An object where gobo resources not included in QLC+ can be added to.
  */
-function addCapabilityLegacyAttributes(xmlCapability, cap) {
+function addCapabilityLegacyAttributes(xmlCapability, cap, customGobos) {
   if (cap.colors !== null && cap.colors.allColors.length <= 2) {
     xmlCapability.attribute(`Color`, cap.colors.allColors[0]);
 
     if (cap.colors.allColors.length > 1) {
       xmlCapability.attribute(`Color2`, cap.colors.allColors[1]);
+    }
+  }
+
+  const goboRes = exportHelpers.getGoboRes(cap);
+  if (goboRes) {
+    xmlCapability.attribute(`Res`, goboRes);
+
+    if (goboRes.startsWith(`ofl/`)) {
+      customGobos[goboRes] = cap.wheelSlot[0].resource;
     }
   }
 }

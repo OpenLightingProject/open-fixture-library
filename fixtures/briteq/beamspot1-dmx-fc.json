@@ -1,0 +1,263 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BEAMSPOT1-DMX FC",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Aleksey Khoroshev"],
+    "createDate": "2020-01-14",
+    "lastModifyDate": "2020-01-14"
+  },
+  "links": {
+    "manual": [
+      "https://briteq-lighting.com/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1476262257.pdf"
+    ],
+    "productPage": [
+      "https://briteq-lighting.com/beamspot1-dmx-fc"
+    ],
+    "video": [
+      "https://www.facebook.com/MRProducts/videos/briteq-sound-lightshow-2016-hq-video/1103561746357817/"
+    ]
+  },
+  "physical": {
+    "dimensions": [124.5, 195.5, 172.25],
+    "weight": 1.23,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "15W RGBW LED",
+      "lumens": 275
+    },
+    "lens": {
+      "degreesMinMax": [4, 45]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Functions": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 190],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "7 colors"
+        },
+        {
+          "dmxRange": [201, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Intensity",
+          "brightness": "100%"
+        }
+      ]
+    },
+    "Sound / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 24],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true,
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "7 colors"
+        },
+        {
+          "dmxRange": [25, 34],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [35, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Extended Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 37],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [38, 67],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [68, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 127],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [128, 247],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true,
+          "helpWanted": "Is this the same sound controlled effect (7 colors) as in other channels?"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "RGB + Functions",
+      "shortName": "04CH RGB+DIM",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Functions"
+      ]
+    },
+    {
+      "name": "RGBW",
+      "shortName": "04CH RGBW",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "RGBW + Functions",
+      "shortName": "05CH RGBW+DIM",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Functions"
+      ]
+    },
+    {
+      "name": "RGBW + Master + Sound/Strobe",
+      "shortName": "06CH",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Master Dimmer",
+        "Sound / Strobe"
+      ]
+    },
+    {
+      "name": "RGBW + Master + Strobe",
+      "shortName": "06CH+",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Master Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "Master + Strobe + Programs + RGBW",
+      "shortName": "07CH",
+      "channels": [
+        "Master Dimmer",
+        "Extended Strobe",
+        "Programs",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}

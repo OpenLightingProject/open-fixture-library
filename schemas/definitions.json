@@ -63,6 +63,13 @@
       "ColorFade"
     ]
   },
+  "goboResourceString": {
+    "type": "string",
+    "oneOf": [
+      { "pattern": "^gobos/[a-z0-9-]+$" },
+      { "pattern": "^gobos/aliases/[a-z0-9_.-]+/" }
+    ]
+  },
 
   "units": {
     "number": {

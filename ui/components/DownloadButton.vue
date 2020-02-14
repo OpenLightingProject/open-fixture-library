@@ -168,14 +168,14 @@ select {
     }
   }
 
-  &:hover > ul,
-  & > .title:focus + ul,
-  & > .title:active + ul {
+  /* separate rule since unsupporting browsers skip the whole rule */
+  &:focus-within > ul {
     left: 0;
   }
 
-  /* separate rule since unsupporting browsers skip the whole rule */
-  &:focus-within > ul {
+  &:hover > ul,
+  & > .title:focus + ul,
+  & > .title:active + ul {
     left: 0;
   }
 
