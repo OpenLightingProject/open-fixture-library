@@ -24,10 +24,10 @@ let testErrored = false;
 
 /**
  * @typedef {Object} Task
- * @property {String} manKey
- * @property {String} fixKey
- * @property {String} pluginKey
- * @property {String} testKey
+ * @property {String} manKey The manufacturer key of the fixture that should be tested.
+ * @property {String} fixKey The key of the fixture that should be tested.
+ * @property {String} pluginKey The key of the export plugin whose output should be tested.
+ * @property {String} testKey The key of the export test that should be executed.
  */
 
 (async () => {
@@ -236,7 +236,7 @@ async function getTaskPromise(task) {
 
     const resultListItems = await Promise.all(files.map(async file => {
       try {
-        await test(file);
+        await test(file, files);
         return `:heavy_check_mark: ${file.name}`;
       }
       catch (err) {

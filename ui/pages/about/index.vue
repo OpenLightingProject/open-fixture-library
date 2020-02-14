@@ -13,7 +13,7 @@
 
     <h2>Used resources</h2>
     <p>
-      Fonts: <a href="https://www.latofonts.com/">Lato</a> and <a href="https://levien.com/type/myfonts/inconsolata.html" style="font-family: Inconsolata">Inconsolata</a><br>
+      Fonts: <a href="https://www.latofonts.com/">Lato</a> and <a href="https://levien.com/type/myfonts/inconsolata.html" class="monospaced">Inconsolata</a><br>
       Icons: <a href="https://materialdesignicons.com/">Material Design Icons</a>
     </p>
 
@@ -37,6 +37,10 @@ p {
 h2 {
   margin: 1.5rem 0 -0.5rem;
   line-height: 1.3;
+}
+
+.monospaced {
+  font-family: $font-stack-code;
 }
 </style>
 

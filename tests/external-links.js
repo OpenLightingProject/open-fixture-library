@@ -278,13 +278,10 @@ async function updateGithubIssue(urlResults) {
       const firstContentLine = lines.findIndex(line => line.startsWith(`|`)) + 2;
       lines.splice(0, firstContentLine); // delete first lines which only hold general data
       for (const line of lines) {
-        const cells = line.split(`|`)
-          .map(str => str.trim())
-          .filter(str => str.length > 0);
+        const [, url, lastResults] = line.match(/^\| (.*) <td nowrap>(.*)<\/td>$/);
 
-        const url = cells.shift();
-        linkData[url] = cells.map(cell => {
-          if (cell === `:heavy_check_mark:`) {
+        linkData[url] = lastResults.split(`&nbsp;`).map(item => {
+          if (item === `:heavy_check_mark:`) {
             return {
               failed: false,
               message: null,
@@ -292,7 +289,7 @@ async function updateGithubIssue(urlResults) {
             };
           }
 
-          const [, jobUrl, message] = cell.match(/<a href="(.*)" title="(.*)">:x:<\/a>/);
+          const [, jobUrl, message] = item.match(/<a href="(.*)" title="(.*)">:x:<\/a>/);
 
           return {
             failed: true,
@@ -374,22 +371,19 @@ async function updateGithubIssue(urlResults) {
       ``,
       `**Last updated:** ${(new Date()).toISOString()}`,
       ``,
-      `| URL | today | -1d | -2d | -3d | -4d | -5d | -6d |`,
-      `|-----|-------|-----|-----|-----|-----|-----|-----|`,
+      `| URL <th nowrap>today … 6 days ago</th>`,
+      `|--------------------------------------|`,
       ...Object.entries(linkData).map(([url, statuses]) => {
-        const columns = [
-          url,
-          ...statuses.map(status => {
-            if (!status.failed) {
-              return `:heavy_check_mark:`;
-            }
+        const statusIcons = statuses.map(status => {
+          if (!status.failed) {
+            return `:heavy_check_mark:`;
+          }
 
-            const message = status.message.replace(`\n`, ` `).replace(`"`, `&quot;`);
-            return `<a href="${status.jobUrl}" title="${message}">:x:</a>`;
-          })
-        ];
+          const message = status.message.replace(`\n`, ` `).replace(`"`, `&quot;`);
+          return `<a href="${status.jobUrl}" title="${message}">:x:</a>`;
+        }).join(`&nbsp;`);
 
-        return `| ${columns.join(` | `)} |`;
+        return `| ${url} <td nowrap>${statusIcons}</td>`;
       })
     ];
 

@@ -1,7 +1,3 @@
-<template>
-  <span class="icon" v-html="svgMarkup" />
-</template>
-
 <style lang="scss">
 .icon {
   display: inline-block;
@@ -11,6 +7,14 @@
 
   &.inactive {
     fill: theme-color(icon-inactive);
+  }
+
+  &.gobo-icon {
+    background-color: white;
+    background-clip: content-box;
+    border-radius: 50%;
+    padding: 2px;
+    box-sizing: border-box;
   }
 
   & svg {
@@ -25,6 +29,7 @@
 import icons from '../../assets/icons/icons.js';
 
 export default {
+  functional: true,
   props: {
     type: {
       type: String,
@@ -47,36 +52,44 @@ export default {
       default: null
     }
   },
-  computed: {
-    svgMarkup() {
-      if (this.type === `color-circle`) {
-        let colors = this.colors;
+  render(createElement, context) {
+    let svgMarkup;
 
-        if (this.colors.length === 0 && this.name !== ``) {
-          // hex colors for ColorIntensity capabilities
-          const colorLookup = {
-            Red: `#ff0000`,
-            Green: `#00ff00`,
-            Blue: `#0000ff`,
-            Cyan: `#00ffff`,
-            Magenta: `#ff00ff`,
-            Yellow: `#ffff00`,
-            Amber: `#ffbf00`,
-            White: `#ffffff`,
-            'Warm White': `#ffedde`,
-            'Cold White': `#edefff`,
-            UV: `#8800ff`,
-            Lime: `#bfff00`,
-            Indigo: `#4b0082`
-          };
-          colors = [colorLookup[this.name]];
-        }
+    if (context.props.type === `color-circle`) {
+      let colors = context.props.colors;
 
-        return getColorCircle(colors, this.title || this.name);
+      if (context.props.colors.length === 0 && context.props.name !== ``) {
+        // hex colors for ColorIntensity capabilities
+        const colorLookup = {
+          Red: `#ff0000`,
+          Green: `#00ff00`,
+          Blue: `#0000ff`,
+          Cyan: `#00ffff`,
+          Magenta: `#ff00ff`,
+          Yellow: `#ffff00`,
+          Amber: `#ffbf00`,
+          White: `#ffffff`,
+          'Warm White': `#ffedde`,
+          'Cold White': `#edefff`,
+          UV: `#8800ff`,
+          Lime: `#bfff00`,
+          Indigo: `#4b0082`
+        };
+        colors = [colorLookup[context.props.name]];
       }
 
-      return getSvg(this.name, this.type, this.title);
+      svgMarkup = getColorCircle(colors, context.props.title || context.props.name);
     }
+    else {
+      svgMarkup = getSvg(context.props.name, context.props.type, context.props.title);
+    }
+
+    return createElement(`span`, Object.assign({}, context.data, {
+      class: [`icon`, context.data.class],
+      domProps: {
+        innerHTML: svgMarkup
+      }
+    }));
   }
 };
 
