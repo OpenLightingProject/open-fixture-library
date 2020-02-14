@@ -9,6 +9,7 @@ const plugins = require(`../plugins/plugins.json`);
 const fixtureSchema = require(`../schemas/dereferenced/fixture.json`);
 const fixtureRedirectSchema = require(`../schemas/dereferenced/fixture-redirect.json`);
 const schemaProperties = require(`../lib/schema-properties.js`).default;
+const { getResourceFromString } = require(`../lib/model.js`);
 
 /** @typedef {import('../lib/model/AbstractChannel.js').default} AbstractChannel */
 /** @typedef {import('../lib/model/Capability.js').default} Capability */
@@ -43,8 +44,8 @@ const redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
 function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   /**
    * @typedef {Object} ResultData
-   * @property {Array.<String>} errors
-   * @property {Array.<String>} warnings
+   * @property {Array.<String>} errors All errors of this fixture.
+   * @property {Array.<String>} warnings All warnings of this fixture.
    */
 
   /** @type {ResultData} */
@@ -292,16 +293,23 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       }
 
       const expectedAnimationGoboEndSlots = [];
+      const foundAnimationGoboEndSlots = [];
+
       wheel.slots.forEach((slot, index) => {
         if (slot.type === `AnimationGoboStart`) {
           expectedAnimationGoboEndSlots.push(index + 1);
         }
-      });
-
-      const foundAnimationGoboEndSlots = [];
-      wheel.slots.forEach((slot, index) => {
-        if (slot.type === `AnimationGoboEnd`) {
+        else if (slot.type === `AnimationGoboEnd`) {
           foundAnimationGoboEndSlots.push(index);
+        }
+
+        if (typeof slot.resource === `string`) {
+          try {
+            getResourceFromString(slot.resource);
+          }
+          catch (error) {
+            result.errors.push(error.message);
+          }
         }
       });
 

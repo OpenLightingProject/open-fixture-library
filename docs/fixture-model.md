@@ -71,3 +71,9 @@ export default class Fixture {
   // ...
 }
 ```
+
+## Resource references
+
+Resources (e.g. gobo images) are embedded by the model into the fixture JSON, i.e. instead of returning a string, `WheelSlot.resource` will return the resource object. The relevant code is in the `embedResourcesIntoFixtureJson` function in [`lib/model.js](../lib/model.js).
+
+Thus, all information needed for the fixure is still included in the fixture JSON.

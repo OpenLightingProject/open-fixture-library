@@ -116,7 +116,16 @@
             :r="slotRadius"
             fill="#fff" />
 
+          <image
+            v-if="slot.resource && slot.resource.hasImage"
+            :x="-slotRadius"
+            :y="slotRotateRadius - slotRadius"
+            :width="slotRadius * 2"
+            :height="slotRadius * 2"
+            :xlink:href="slot.resource.imageDataUrl" />
+
           <text
+            v-else
             :x="0"
             :y="slotRotateRadius + slotRadius * 0.35"
             :transform="`rotate(${-slotRotateAngle * index}, 0, ${slotRotateRadius})`"
@@ -133,14 +142,16 @@
         <template #summary>{{ wheel.name }}</template>
 
         <table>
-          <tr
-            v-for="(slot, index) in wheel.slots"
-            :key="`slot-${index}`"
-            @mouseover="highlightedSlot = (slot.type === `AnimationGoboEnd` ? index - 1 : index)"
-            @mouseout="highlightedSlot = null">
-            <th scope="row">Slot {{ index + 1 }}</th>
-            <td>{{ slot.name }}</td>
-          </tr>
+          <tbody>
+            <tr
+              v-for="(slot, index) in wheel.slots"
+              :key="`slot-${index}`"
+              @mouseover="highlightedSlot = (slot.type === `AnimationGoboEnd` ? index - 1 : index)"
+              @mouseout="highlightedSlot = null">
+              <th scope="row">Slot {{ index + 1 }}</th>
+              <td>{{ slot.name }}</td>
+            </tr>
+          </tbody>
         </table>
 
       </ConditionalDetails>
@@ -167,7 +178,7 @@ svg {
 
 .slot {
   & text {
-    fill: theme-color(text-primary);
+    fill: $primary-text-dark;
     pointer-events: none;
     font-weight: 400;
   }
@@ -184,6 +195,12 @@ svg {
 figcaption /deep/ summary {
   font-weight: bold;
   text-align: center;
+  position: sticky;
+  top: 0;
+
+  &:not(:hover):not(:focus) {
+    background: theme-color(card-background, 0.8);
+  }
 }
 
 figcaption {
@@ -197,6 +214,11 @@ figcaption table {
   & td,
   & th {
     padding: 3px;
+    vertical-align: top;
+  }
+
+  th {
+    white-space: nowrap;
   }
 }
 </style>
