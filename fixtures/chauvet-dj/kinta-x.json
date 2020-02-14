@@ -1,76 +1,91 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Kinta X",
-  "categories": ["Effect"],
+  "categories": ["Flower", "Color Changer"],
   "meta": {
-    "authors": ["Mike Rowlands", "Mikey Rowlands"],
-    "createDate": "2019-12-26",
-    "lastModifyDate": "2019-12-26",
+    "authors": ["Mikey Rowlands"],
+    "createDate": "2020-02-15",
+    "lastModifyDate": "2020-02-15",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
-      "date": "2019-12-26",
+      "date": "2020-02-15",
       "comment": "created by Q Light Controller Plus (version 4.12.2)"
     }
+  },
+  "links": {
+    "manual": [
+      "https://m.jam.ua/files/files/KintaX_UM_Rev4_WO.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/news/kinta-x-becomes-an-led-powerhouse/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=yM4Mz510LHk"
+    ]
   },
   "physical": {
     "dimensions": [283, 297, 264],
     "weight": 2.7,
-    "power": 25,
+    "power": 24,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "3× 3W LEDs (1× red, green, blue each)"
     },
     "lens": {
-      "name": "Other"
+      "degreesMinMax": [135, 135]
     }
   },
   "availableChannels": {
-    "LED/Mode": {
+    "Mode": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 14],
-          "type": "NoFunction"
+          "type": "Intensity",
+          "brightness": "off"
         },
         {
           "dmxRange": [15, 100],
           "type": "Intensity",
-          "comment": "LED On"
+          "brightness": "bright"
         },
         {
           "dmxRange": [101, 255],
-          "type": "Intensity",
-          "comment": "Auto Mode"
+          "type": "Effect",
+          "effectName": "Auto Mode"
         }
       ]
     },
-    "Movement": {
+    "Rotation": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 85],
-          "type": "Intensity",
-          "comment": "Counter-clockwise motor rotation (Slow ~ Fast)"
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         },
         {
           "dmxRange": [86, 170],
-          "type": "Intensity",
-          "comment": "Clockwise motor rotation (Slow ~ Fast)"
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         },
         {
           "dmxRange": [171, 255],
-          "type": "Intensity",
-          "comment": "Motor rotation right-to-left-to-right (Slow ~ Fast)"
+          "type": "Effect",
+          "effectName": "Rotation bounce"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "Nomral",
+      "name": "2-channel",
+      "shortName": "2ch",
       "channels": [
-        "LED/Mode",
-        "Movement"
+        "Mode",
+        "Rotation"
       ]
     }
   ]
