@@ -5,10 +5,9 @@
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["zuvieltv"],
-    "createDate": "2019-12-24",
-    "lastModifyDate": "2019-12-24"
+    "createDate": "2020-02-15",
+    "lastModifyDate": "2020-02-15"
   },
-  "comment": "RGBW WASH, MANUAL ZOOM",
   "links": {
     "manual": [
       "https://www.highlite.com/media/attachments/MANUAL/41524_MANUAL_GB_V1.pdf"
@@ -20,21 +19,15 @@
       "https://www.youtube.com/watch?v=HlHJ84QR5p4"
     ]
   },
-  "rdm": {
-    "modelId": 41521,
-    "softwareVersion": "v1"
-  },
   "physical": {
-    "dimensions": [204, 380, 219],
+    "dimensions": [285, 390, 197],
     "weight": 8,
-    "power": 240,
+    "power": 170,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "7x 20W RGBW 4-in-1 LED (LED Engin)",
-      "lumens": 31300
+      "type": "7× 20W Osram RGBW LEDs"
     },
     "lens": {
-      "name": "Zoom: Motorized",
       "degreesMinMax": [7, 50]
     }
   },
