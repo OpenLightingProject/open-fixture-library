@@ -1,9 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "PAR LED 7x10W",
+  "name": "PAR LED 7x9W",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Marek Jędrzejewski"],
+    "authors": ["Felix Edelmann"],
     "createDate": "2020-02-15",
     "lastModifyDate": "2020-02-15"
   },
@@ -11,15 +11,18 @@
     "productPage": [
       "http://fractallights.com/produkty/PAR_LED_7_x_9W_7_x_10W_7_x_12W/",
       "http://fractallights.com/catalog/#p=6"
+    ],
+    "video": [
+      "https://youtu.be/2CFWcla3nOc"
     ]
   },
   "physical": {
     "dimensions": [180, 180, 110],
     "weight": 2,
-    "power": 90,
+    "power": 80,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "7×10W RGBW LEDs"
+      "type": "7×9W RGB LEDs"
     },
     "lens": {
       "degreesMinMax": [25, 25]
@@ -47,12 +50,6 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
-      }
-    },
-    "White": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
       }
     },
     "Strobe": {
@@ -143,26 +140,24 @@
   },
   "modes": [
     {
-      "name": "8-channel",
-      "shortName": "8ch",
+      "name": "7-channel",
+      "shortName": "7ch",
       "channels": [
         "Dimmer",
         "Red",
         "Green",
         "Blue",
-        "White",
         "Strobe",
         "Mode",
         "Color Presets / Effect Speed"
       ]
     },
     {
-      "name": "RGBW",
+      "name": "RGB",
       "channels": [
         "Red",
         "Green",
-        "Blue",
-        "White"
+        "Blue"
       ]
     }
   ]

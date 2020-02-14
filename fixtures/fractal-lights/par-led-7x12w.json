@@ -1,9 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "PAR LED 7x10W",
+  "name": "PAR LED 7x12W",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Marek Jędrzejewski"],
+    "authors": ["Felix Edelmann"],
     "createDate": "2020-02-15",
     "lastModifyDate": "2020-02-15"
   },
@@ -16,10 +16,10 @@
   "physical": {
     "dimensions": [180, 180, 110],
     "weight": 2,
-    "power": 90,
+    "power": 100,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "7×10W RGBW LEDs"
+      "type": "7×12W RGBWA LEDs"
     },
     "lens": {
       "degreesMinMax": [25, 25]
@@ -53,6 +53,12 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
       }
     },
     "Strobe": {
@@ -143,26 +149,28 @@
   },
   "modes": [
     {
-      "name": "8-channel",
-      "shortName": "8ch",
+      "name": "9-channel",
+      "shortName": "9ch",
       "channels": [
         "Dimmer",
         "Red",
         "Green",
         "Blue",
         "White",
+        "Amber",
         "Strobe",
         "Mode",
         "Color Presets / Effect Speed"
       ]
     },
     {
-      "name": "RGBW",
+      "name": "RGBWA",
       "channels": [
         "Red",
         "Green",
         "Blue",
-        "White"
+        "White",
+        "Amber"
       ]
     }
   ]
