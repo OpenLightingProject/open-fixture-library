@@ -181,7 +181,7 @@
           })">
           <OflSvg name="comment-alert" class="left" /><span>Send information</span>
         </a>
-        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card slim">
+        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Abug" rel="nofollow" class="card slim">
           <OflSvg name="bug" class="left" /><span>Create issue on GitHub</span>
         </a>
         <a :href="mailtoUrl" class="card slim">
