@@ -1,9 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "ShowNET",
-  "categories": ["Laser"],
+  "categories": ["Laser", "Color Changer"],
   "meta": {
-    "authors": ["elixxx"],
+    "authors": ["elixxx", "Felix Edelmann"],
     "createDate": "2020-02-16",
     "lastModifyDate": "2020-02-16",
     "importPlugin": {
@@ -1307,7 +1307,8 @@
         }
       ]
     },
-    "Pattern Speed": {
+    "Pattern Speed DJ": {
+      "name": "Pattern Speed",
       "defaultValue": 0,
       "capabilities": [
         {
@@ -1322,6 +1323,14 @@
           "speedEnd": "100Hz"
         }
       ]
+    },
+    "Pattern Speed": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "100Hz"
+      }
     },
     "Size": {
       "defaultValue": 0,
@@ -1348,6 +1357,22 @@
           "comment": "height"
         }
       ]
+    },
+    "Horizontal Size": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "wide",
+        "angleEnd": "closed"
+      }
+    },
+    "Vertical Size": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "wide",
+        "angleEnd": "closed"
+      }
     },
     "Automatic Size": {
       "defaultValue": 0,
@@ -1379,14 +1404,16 @@
         }
       ]
     },
-    "Rotation": {
+    "Rotation DJ": {
+      "name": "Rotation",
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 192],
           "type": "Rotation",
-          "angleStart": "0deg",
-          "angleEnd": "360deg"
+          "angleStart": "-180deg",
+          "angleEnd": "180deg",
+          "helpWanted": "Are the angles correct?"
         },
         {
           "dmxRange": [193, 224],
@@ -1402,33 +1429,68 @@
         }
       ]
     },
+    "Rotation": {
+      "fineChannelAliases": ["Rotation fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capability": {
+        "type": "Rotation",
+        "angleStart": "-180deg",
+        "angleEnd": "180deg",
+        "helpWanted": "Are the angles correct?"
+      }
+    },
     "Horizontal Position": {
       "fineChannelAliases": ["Horizontal Position fine"],
-      "defaultValue": 0,
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
       "capability": {
         "type": "BeamPosition",
         "horizontalAngleStart": "left",
-        "horizontalAngleEnd": "right",
-        "helpWanted": "Is this the correct direction? Can you provide exact angles?"
+        "horizontalAngleEnd": "right"
       }
     },
     "Vertical Position": {
       "fineChannelAliases": ["Vertical Position fine"],
-      "defaultValue": 0,
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
       "capability": {
         "type": "BeamPosition",
         "verticalAngleStart": "top",
-        "verticalAngleEnd": "bottom",
-        "helpWanted": "Is this the correct direction? Can you provide exact angles?"
+        "verticalAngleEnd": "bottom"
       }
+    },
+    "Inversion": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "comment": "Invert X axis"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "comment": "Invert Y axis"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "comment": "Invert X and Y axes"
+        }
+      ]
     },
     "Color Effects": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 15],
-          "type": "Effect",
-          "effectName": "Original colors"
+          "type": "NoFunction",
+          "comment": "Original colors"
         },
         {
           "dmxRange": [16, 79],
@@ -1466,6 +1528,93 @@
           "effectName": "Automatic change of color fade effects"
         }
       ]
+    },
+    "Color Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction",
+          "comment": "Original colors"
+        },
+        {
+          "dmxRange": [16, 47],
+          "type": "ColorPreset",
+          "comment": "Red … Yellow",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffff00"]
+        },
+        {
+          "dmxRange": [48, 79],
+          "type": "ColorPreset",
+          "comment": "Yellow … Green",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#00ff00"]
+        },
+        {
+          "dmxRange": [80, 111],
+          "type": "ColorPreset",
+          "comment": "Green … Cyan",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#00ffff"]
+        },
+        {
+          "dmxRange": [112, 143],
+          "type": "ColorPreset",
+          "comment": "Cyan … Blue",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [144, 175],
+          "type": "ColorPreset",
+          "comment": "Blue … Purple",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [176, 207],
+          "type": "ColorPreset",
+          "comment": "Purple … Red",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#ff0000"]
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "ColorPreset",
+          "comment": "White 50%",
+          "colors": ["#808080"]
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Manual control"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
     },
     "Strobe": {
       "defaultValue": 0,
@@ -1519,7 +1668,8 @@
         }
       ]
     },
-    "Scan Speed": {
+    "Scan Speed DJ": {
+      "name": "Scan Speed",
       "defaultValue": 0,
       "capabilities": [
         {
@@ -1532,7 +1682,25 @@
           "type": "Maintenance",
           "parameterStart": 5,
           "parameterEnd": 30,
-          "comment": "kpps (thousands points per second)"
+          "comment": "Scan speed in kpps (thousands points per second):",
+          "helpWanted": "Is this actually 5…40kpps like in Professional Mode?"
+        }
+      ]
+    },
+    "Scan Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction",
+          "comment": "Default"
+        },
+        {
+          "dmxRange": [32, 255],
+          "type": "Maintenance",
+          "parameterStart": 5,
+          "parameterEnd": 40,
+          "comment": "Scan speed in kpps (thousands points per second):"
         }
       ]
     },
@@ -1561,7 +1729,8 @@
         }
       ]
     },
-    "Safety Zone Intensity": {
+    "Safety Zone Intensity DJ": {
+      "name": "Safety Zone Intensity",
       "defaultValue": 0,
       "capabilities": [
         {
@@ -1580,6 +1749,36 @@
           "comment": "Reduction to blackout"
         }
       ]
+    },
+    "Safety Zone Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance",
+        "comment": "Reduction",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
+    },
+    "Color Balancing Red": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "bright",
+        "brightnessEnd": "off"
+      }
+    },
+    "Color Balancing Green": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "bright",
+        "brightnessEnd": "off"
+      }
+    },
+    "Color Balancing Blue": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "bright",
+        "brightnessEnd": "off"
+      }
     },
     "Blanking": {
       "defaultValue": 0,
@@ -1614,6 +1813,72 @@
           "parameterEnd": "fast"
         }
       ]
+    },
+    "Reserved 1": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 3": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 4": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 5": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 6": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 7": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 8": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 9": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 10": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 11": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
     }
   },
   "modes": [
@@ -1622,10 +1887,10 @@
       "channels": [
         "Intensity",
         "Patterns",
-        "Pattern Speed",
+        "Pattern Speed DJ",
         "Size",
         "Automatic Size",
-        "Rotation",
+        "Rotation DJ",
         "Horizontal Position",
         "Horizontal Position fine",
         "Vertical Position",
@@ -1634,11 +1899,50 @@
         "Color Effects Extended",
         "Strobe",
         "Mode",
+        "Scan Speed DJ",
+        "Safety Zone",
+        "Safety Zone Intensity DJ",
+        "Blanking",
+        "Blank Shift"
+      ]
+    },
+    {
+      "name": "Professional",
+      "channels": [
+        "Intensity",
+        "Patterns",
+        "Pattern Speed",
+        "Horizontal Position",
+        "Horizontal Position fine",
+        "Vertical Position",
+        "Vertical Position fine",
+        "Rotation",
+        "Rotation fine",
+        "Horizontal Size",
+        "Vertical Size",
+        "Inversion",
+        "Color Selection",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
         "Scan Speed",
         "Safety Zone",
         "Safety Zone Intensity",
-        "Blanking",
-        "Blank Shift"
+        "Color Balancing Red",
+        "Color Balancing Green",
+        "Color Balancing Blue",
+        "Reserved 1",
+        "Reserved 2",
+        "Reserved 3",
+        "Reserved 4",
+        "Reserved 5",
+        "Reserved 6",
+        "Reserved 7",
+        "Reserved 8",
+        "Reserved 9",
+        "Reserved 10",
+        "Reserved 11"
       ]
     }
   ]
