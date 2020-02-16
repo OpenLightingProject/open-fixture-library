@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/manufacturers.json",
 
-  "version": "12.1.0",
+  "version": "12.2.0",
 
   "type": "object",
   "propertyNames": {
@@ -13,18 +13,9 @@
   "additionalProperties": {
     "type": "object",
     "properties": {
-      "name": {
-        "type": "string",
-        "pattern": "^[^\n]+$"
-      },
-      "comment": {
-        "type": "string",
-        "minLength": 1
-      },
-      "website": {
-        "type": "string",
-        "pattern": "^(ftp|http|https):\\/\\/[^ \"]+$"
-      },
+      "name": { "$ref": "definitions.json#/nonEmptyString" },
+      "comment": { "$ref": "definitions.json#/nonEmptyMultilineString" },
+      "website": { "$ref": "definitions.json#/urlString" },
       "rdmId": {
         "type": "integer",
         "minimum": 0,

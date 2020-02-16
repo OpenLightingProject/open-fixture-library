@@ -42,6 +42,9 @@ Also called LSB (least significant byte) channel.</p>
 <dt><a href="#Range">Range</a></dt>
 <dd><p>Represents a range from one integer to a higher or equal integer. Primarily used for DMX ranges of capabilities.</p>
 </dd>
+<dt><a href="#Resource">Resource</a></dt>
+<dd><p>Information about a resource.</p>
+</dd>
 <dt><a href="#SwitchingChannel">SwitchingChannel</a> ⇐ <code><a href="#AbstractChannel">AbstractChannel</a></code></dt>
 <dd><p>Represents a channel that switches its behavior depending on trigger channel&#39;s value.
 The different behaviors are implemented as different <a href="#CoarseChannel">CoarseChannel</a>s or <a href="#FineChannel">FineChannel</a>s.</p>
@@ -2254,6 +2257,98 @@ Merge specified Range objects. Asserts that ranges don't overlap and that all ra
 | --- | --- | --- |
 | ranges | [<code>Array.&lt;Range&gt;</code>](#Range) | Range objects to merge into as few ranges as possible. |
 
+<a name="Resource"></a>
+
+## Resource
+Information about a resource.
+
+**Kind**: global class  
+
+* [Resource](#Resource)
+    * [new Resource(jsonObject)](#new_Resource_new)
+    * [.name](#Resource+name) ⇒ <code>String</code>
+    * [.keywords](#Resource+keywords) ⇒ <code>Array.&lt;String&gt;</code>
+    * [.source](#Resource+source) ⇒ <code>String</code> \| <code>null</code>
+    * [.key](#Resource+key) ⇒ <code>String</code>
+    * [.type](#Resource+type) ⇒ <code>String</code>
+    * [.alias](#Resource+alias) ⇒ <code>String</code> \| <code>null</code>
+    * [.hasImage](#Resource+hasImage) ⇒ <code>Boolean</code>
+    * [.imageExtension](#Resource+imageExtension) ⇒ <code>String</code> \| <code>null</code>
+    * [.imageMimeType](#Resource+imageMimeType) ⇒ <code>String</code> \| <code>null</code>
+    * [.imageData](#Resource+imageData) ⇒ <code>String</code> \| <code>null</code>
+    * [.imageEncoding](#Resource+imageEncoding) ⇒ <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf8&#x27;</code> \| <code>null</code>
+    * [.imageDataUrl](#Resource+imageDataUrl) ⇒ <code>String</code> \| <code>null</code>
+
+<a name="new_Resource_new"></a>
+
+### new Resource(jsonObject)
+Creates a new Resource instance.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| jsonObject | <code>Object</code> | An embedded resource object from the fixture's JSON data. |
+
+<a name="Resource+name"></a>
+
+### resource.name ⇒ <code>String</code>
+**Kind**: instance property of [<code>Resource</code>](#Resource)  
+**Returns**: <code>String</code> - The resource's name.  
+<a name="Resource+keywords"></a>
+
+### resource.keywords ⇒ <code>Array.&lt;String&gt;</code>
+**Kind**: instance property of [<code>Resource</code>](#Resource)  
+**Returns**: <code>Array.&lt;String&gt;</code> - An array of keywords belonging to this resource.  
+<a name="Resource+source"></a>
+
+### resource.source ⇒ <code>String</code> \| <code>null</code>
+**Kind**: instance property of [<code>Resource</code>](#Resource)  
+**Returns**: <code>String</code> \| <code>null</code> - The source this resource was taken from, or null if it's not specified.  
+<a name="Resource+key"></a>
+
+### resource.key ⇒ <code>String</code>
+**Kind**: instance property of [<code>Resource</code>](#Resource)  
+**Returns**: <code>String</code> - The resource key.  
+<a name="Resource+type"></a>
+
+### resource.type ⇒ <code>String</code>
+**Kind**: instance property of [<code>Resource</code>](#Resource)  
+**Returns**: <code>String</code> - The resource name, i.e. its directory.  
+<a name="Resource+alias"></a>
+
+### resource.alias ⇒ <code>String</code> \| <code>null</code>
+**Kind**: instance property of [<code>Resource</code>](#Resource)  
+**Returns**: <code>String</code> \| <code>null</code> - The resource alias, as specified in the fixture, or null if the resource was referenced directly.  
+<a name="Resource+hasImage"></a>
+
+### resource.hasImage ⇒ <code>Boolean</code>
+**Kind**: instance property of [<code>Resource</code>](#Resource)  
+**Returns**: <code>Boolean</code> - True if this resource has an associated image, false otherwise.  
+<a name="Resource+imageExtension"></a>
+
+### resource.imageExtension ⇒ <code>String</code> \| <code>null</code>
+**Kind**: instance property of [<code>Resource</code>](#Resource)  
+**Returns**: <code>String</code> \| <code>null</code> - The resource image's file extension, or null if there is no image.  
+<a name="Resource+imageMimeType"></a>
+
+### resource.imageMimeType ⇒ <code>String</code> \| <code>null</code>
+**Kind**: instance property of [<code>Resource</code>](#Resource)  
+**Returns**: <code>String</code> \| <code>null</code> - The resource image's MIME type, or null if there is no image.  
+<a name="Resource+imageData"></a>
+
+### resource.imageData ⇒ <code>String</code> \| <code>null</code>
+**Kind**: instance property of [<code>Resource</code>](#Resource)  
+**Returns**: <code>String</code> \| <code>null</code> - The resource image data (base64 or utf8 encoded), or null if there is no image.  
+<a name="Resource+imageEncoding"></a>
+
+### resource.imageEncoding ⇒ <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf8&#x27;</code> \| <code>null</code>
+**Kind**: instance property of [<code>Resource</code>](#Resource)  
+**Returns**: <code>&#x27;base64&#x27;</code> \| <code>&#x27;utf8&#x27;</code> \| <code>null</code> - The resource image's data encoding, or null if there is no image.  
+<a name="Resource+imageDataUrl"></a>
+
+### resource.imageDataUrl ⇒ <code>String</code> \| <code>null</code>
+**Kind**: instance property of [<code>Resource</code>](#Resource)  
+**Returns**: <code>String</code> \| <code>null</code> - A data URL containing the resource image, or null if there is no image.  
 <a name="SwitchingChannel"></a>
 
 ## SwitchingChannel ⇐ [<code>AbstractChannel</code>](#AbstractChannel)
@@ -2540,6 +2635,7 @@ Information about a single wheel slot (or a split slot).
     * [.isSplitSlot](#WheelSlot+isSplitSlot) ⇒ <code>Boolean</code>
     * [.type](#WheelSlot+type) ⇒ <code>String</code>
     * [.nthOfType](#WheelSlot+nthOfType) ⇒ <code>Number</code>
+    * [.resource](#WheelSlot+resource) ⇒ [<code>Resource</code>](#Resource) \| <code>String</code> \| <code>null</code>
     * [.name](#WheelSlot+name) ⇒ <code>String</code>
     * [.colors](#WheelSlot+colors) ⇒ <code>Array.&lt;String&gt;</code> \| <code>null</code>
     * [.colorTemperature](#WheelSlot+colorTemperature) ⇒ [<code>Entity</code>](#Entity) \| <code>null</code>
@@ -2577,6 +2673,11 @@ Creates a new WheelSlot instance.
 ### wheelSlot.nthOfType ⇒ <code>Number</code>
 **Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
 **Returns**: <code>Number</code> - The zero-based index of this slot amongst all slots with the same type in this wheel.  
+<a name="WheelSlot+resource"></a>
+
+### wheelSlot.resource ⇒ [<code>Resource</code>](#Resource) \| <code>String</code> \| <code>null</code>
+**Kind**: instance property of [<code>WheelSlot</code>](#WheelSlot)  
+**Returns**: [<code>Resource</code>](#Resource) \| <code>String</code> \| <code>null</code> - The gobo resource object if it was previously embedded, or the gobo resource reference string, or null if no resource is specified for the slot.  
 <a name="WheelSlot+name"></a>
 
 ### wheelSlot.name ⇒ <code>String</code>
