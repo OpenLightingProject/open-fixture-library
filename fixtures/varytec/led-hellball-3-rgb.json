@@ -1,19 +1,19 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LED Hellball 3 RGB",
-  "shortName": "hellball-rgb",
-  "categories": ["Flower"],
+  "shortName": "VarytecLedHellball3",
+  "categories": ["Flower", "Color Changer"],
   "meta": {
     "authors": ["Anonymous"],
-    "createDate": "2020-01-19",
-    "lastModifyDate": "2020-01-19"
+    "createDate": "2020-02-19",
+    "lastModifyDate": "2020-02-19"
   },
   "links": {
     "manual": [
-      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/278299_c_278299_r3_de_online.pdf"
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/278299_c_278299_r3_en_online.pdf"
     ],
     "productPage": [
-      "http://example.com/"
+      "https://www.thomann.de/intl/varytec_led_hellball_3_rgb.htm"
     ],
     "video": [
       "https://www.youtube.com/watch?v=aZWRgRL9f_E"
@@ -25,7 +25,7 @@
     "power": 15,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "3× 3W RGB LEDs"
     }
   },
   "availableChannels": {
@@ -34,14 +34,14 @@
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "NoFunction",
-          "comment": "Strobe off"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [6, 255],
-          "type": "StrobeSpeed",
-          "speed": "0Hz",
-          "comment": "Help needed on frequency"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
@@ -73,34 +73,35 @@
           "dmxRange": [6, 127],
           "type": "Pan",
           "angleStart": "0deg",
-          "angleEnd": "180deg"
+          "angleEnd": "180deg",
+          "helpWanted": "Are the angles correct?"
         },
         {
           "dmxRange": [128, 255],
           "type": "PanContinuous",
-          "speedStart": "0rpm",
-          "speedEnd": "10rpm",
-          "comment": "Help needed on speed"
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         }
       ]
     },
-    "Control": {
+    "Shows": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "NoFunction",
-          "comment": "Control by Channels 1-5"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [6, 127],
           "type": "Effect",
-          "effectName": "Programmed Shows"
+          "effectName": "Built-in shows",
+          "helpWanted": "At which DMX value can which show be selected?"
         },
         {
           "dmxRange": [128, 255],
           "type": "Effect",
           "effectName": "Sound-controlled shows",
-          "soundControlled": true
+          "soundControlled": true,
+          "helpWanted": "At which DMX value can which show be selected?"
         }
       ]
     }
@@ -114,7 +115,7 @@
         "Green",
         "Blue",
         "Rotation (Pan)",
-        "Control"
+        "Shows"
       ]
     }
   ]
