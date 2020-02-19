@@ -1,0 +1,478 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "AUROBEAM 150",
+  "shortName": "AUROBEAM 150",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Ray Tone"],
+    "createDate": "2020-02-19",
+    "lastModifyDate": "2020-02-19"
+  },
+  "links": {
+    "manual": [
+      "https://www.adamhall.com/shop/de-de/downloads/file/id/-406287878"
+    ],
+    "productPage": [
+      "https://www.adamhall.com/shop/de-de/lichttechnik/bewegtes-licht/moving-heads/2064/auro-beam-150"
+    ],
+    "video": [
+      "https://youtu.be/Zsb151QKp7M"
+    ]
+  },
+  "physical": {
+    "dimensions": [375, 260, 180],
+    "weight": 5.5,
+    "power": 130,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 1700
+    },
+    "lens": {
+      "degreesMinMax": [12, 12]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Pan",
+        "angle": "180deg"
+      }
+    },
+    "Pan Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 124],
+          "type": "PanContinuous",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [125, 139],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "PanContinuous",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Tilt",
+        "angle": "180deg"
+      }
+    },
+    "Tilt Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 124],
+          "type": "TiltContinuous",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [125, 139],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "TiltContinuous",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "durationStart": "5s",
+          "durationEnd": "1s"
+        },
+        {
+          "dmxRange": [128, 249],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "ColorPreset",
+          "comment": "No function"
+        },
+        {
+          "dmxRange": [9, 20],
+          "type": "ColorPreset",
+          "comment": "red"
+        },
+        {
+          "dmxRange": [21, 32],
+          "type": "ColorPreset",
+          "comment": "green"
+        },
+        {
+          "dmxRange": [33, 44],
+          "type": "ColorPreset",
+          "comment": "blue"
+        },
+        {
+          "dmxRange": [45, 56],
+          "type": "ColorPreset",
+          "comment": "bright blue"
+        },
+        {
+          "dmxRange": [57, 68],
+          "type": "ColorPreset",
+          "comment": "cyan"
+        },
+        {
+          "dmxRange": [69, 80],
+          "type": "ColorPreset",
+          "comment": "turquoise"
+        },
+        {
+          "dmxRange": [81, 92],
+          "type": "ColorPreset",
+          "comment": "cold green"
+        },
+        {
+          "dmxRange": [93, 104],
+          "type": "ColorPreset",
+          "comment": "warm green"
+        },
+        {
+          "dmxRange": [105, 116],
+          "type": "ColorPreset",
+          "comment": "pink"
+        },
+        {
+          "dmxRange": [117, 128],
+          "type": "ColorPreset",
+          "comment": "magenta"
+        },
+        {
+          "dmxRange": [129, 140],
+          "type": "ColorPreset",
+          "comment": "purple"
+        },
+        {
+          "dmxRange": [141, 152],
+          "type": "ColorPreset",
+          "comment": "orange"
+        },
+        {
+          "dmxRange": [153, 164],
+          "type": "ColorPreset",
+          "comment": "yellow"
+        },
+        {
+          "dmxRange": [165, 176],
+          "type": "ColorPreset",
+          "comment": "warm white"
+        },
+        {
+          "dmxRange": [177, 188],
+          "type": "ColorPreset",
+          "comment": "cold white"
+        },
+        {
+          "dmxRange": [189, 210],
+          "type": "ColorPreset",
+          "comment": "color change"
+        },
+        {
+          "dmxRange": [211, 232],
+          "type": "ColorPreset",
+          "comment": "color fading"
+        },
+        {
+          "dmxRange": [233, 255],
+          "type": "ColorPreset",
+          "comment": "Sound mode"
+        }
+      ]
+    },
+    "Auto Program": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 24],
+          "type": "Effect",
+          "effectName": "Auto Program 1"
+        },
+        {
+          "dmxRange": [25, 40],
+          "type": "Effect",
+          "effectName": "Auto Program 2"
+        },
+        {
+          "dmxRange": [41, 56],
+          "type": "Effect",
+          "effectName": "Auto Program 3"
+        },
+        {
+          "dmxRange": [57, 72],
+          "type": "Effect",
+          "effectName": "Auto Program 4",
+          "parameter": "low"
+        },
+        {
+          "dmxRange": [73, 88],
+          "type": "Effect",
+          "effectName": "Auto Program 5"
+        },
+        {
+          "dmxRange": [89, 104],
+          "type": "Effect",
+          "effectName": "Auto Program 6"
+        },
+        {
+          "dmxRange": [105, 120],
+          "type": "Effect",
+          "effectName": "Auto Program 7"
+        },
+        {
+          "dmxRange": [121, 136],
+          "type": "Effect",
+          "effectName": "Auto Program 8"
+        },
+        {
+          "dmxRange": [137, 152],
+          "type": "Effect",
+          "effectName": "Auto Program 9"
+        },
+        {
+          "dmxRange": [153, 168],
+          "type": "Effect",
+          "effectName": "Auto Program 10"
+        },
+        {
+          "dmxRange": [169, 184],
+          "type": "Effect",
+          "effectName": "Auto Program 11"
+        },
+        {
+          "dmxRange": [185, 200],
+          "type": "Effect",
+          "effectName": "Auto Program 12"
+        },
+        {
+          "dmxRange": [201, 216],
+          "type": "Effect",
+          "effectName": "auto color change"
+        },
+        {
+          "dmxRange": [217, 232],
+          "type": "Effect",
+          "effectName": "auto color fading"
+        },
+        {
+          "dmxRange": [233, 255],
+          "type": "Effect",
+          "effectName": "Sound Mode"
+        }
+      ]
+    },
+    "Auto Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Auto Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 23],
+          "type": "Effect",
+          "effectName": "Blackout"
+        },
+        {
+          "dmxRange": [24, 81],
+          "type": "Effect",
+          "effectName": "Movement Pattern (eight)"
+        },
+        {
+          "dmxRange": [82, 139],
+          "type": "Effect",
+          "effectName": "Movement Pattern (ellipse)"
+        },
+        {
+          "dmxRange": [140, 197],
+          "type": "Effect",
+          "effectName": "Movement Pattern (random)"
+        },
+        {
+          "dmxRange": [198, 255],
+          "type": "Effect",
+          "effectName": "Sound Mode"
+        }
+      ]
+    },
+    "Auto Mode Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 149],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [150, 200],
+          "type": "Effect",
+          "effectName": "Motor Reset"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "19 channel",
+      "shortName": "19ch",
+      "channels": [
+        "Pan",
+        "Pan Rotation",
+        "Tilt",
+        "Tilt Rotation",
+        "Pan fine",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Color Macros",
+        "Auto Program",
+        "Auto Program Speed",
+        "Auto Mode",
+        "Auto Mode Speed",
+        "Reset"
+      ]
+    }
+  ]
+}
