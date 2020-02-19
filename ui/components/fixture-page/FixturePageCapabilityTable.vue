@@ -100,6 +100,16 @@ td, th {
   padding-left: 2px;
 }
 
+.capability-icon .gobo-icon {
+  transition: transform 0.4s;
+  pointer-events: none;
+}
+
+.capability-icon:hover .gobo-icon {
+  transform: scale(4);
+  z-index: 1;
+}
+
 
 .capability-menuClick {
   text-align: right;

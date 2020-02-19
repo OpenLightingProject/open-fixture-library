@@ -1,5 +1,6 @@
 const xml2js = require(`xml2js`);
 const promisify = require(`util`).promisify;
+const qlcplusGoboAliases = require(`../../resources/gobos/aliases/qlcplus.json`);
 
 const {
   getCapabilityFromChannelPreset,
@@ -8,7 +9,7 @@ const {
   importHelpers
 } = require(`./presets.js`);
 
-module.exports.version = `0.5.0`;
+module.exports.version = `1.0.0`;
 
 /**
  * @param {Buffer} buffer The imported file.
@@ -144,13 +145,35 @@ function getOflMatrix(qlcPlusFixture) {
 
 const slotTypeFunctions = {
   Open: {
-    isSlotType: (cap, chGroup, capPreset) => cap._ === `Open`,
+    isSlotType: (cap, chGroup, capPreset) => cap._ === `Open` || cap.$.Res1 === `Others/open.svg` || cap.$.Res === `Others/open.svg`,
     addSlotProperties: (cap, slot) => {}
   },
   Gobo: {
     isSlotType: (cap, chGroup, capPreset) => (capPreset ? capPreset === `GoboMacro` : chGroup === `Gobo`),
     addSlotProperties: (cap, slot) => {
-      slot.name = cap._;
+      const goboRes = cap.$.Res1 || cap.$.Res || null;
+      let useResourceName = false;
+
+      if (goboRes) {
+        const goboKey = qlcplusGoboAliases[goboRes];
+
+        if (goboKey) {
+          slot.resource = `gobos/${goboKey}`;
+
+          const resource = require(`../../resources/gobos/${goboKey}.json`);
+
+          if (resource.name === cap._) {
+            useResourceName = true;
+          }
+        }
+        else {
+          slot.resource = `gobos/aliases/qlcplus/${goboRes}`;
+        }
+      }
+
+      if (!useResourceName) {
+        slot.name = cap._;
+      }
     }
   },
   Color: {
