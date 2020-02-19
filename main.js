@@ -15,7 +15,7 @@ const robotsTxtGenerator = require(`./ui/express-middleware/robots-txt.js`);
 
 const packageJson = require(`./package.json`);
 const plugins = require(`./plugins/plugins.json`);
-const { fixtureFromRepository } = require(`./lib/model.js`);
+const { fixtureFromRepository, embedResourcesIntoFixtureJson } = require(`./lib/model.js`);
 const register = require(`./fixtures/register.json`);
 const getOutObjectFromEditorData = require(`./lib/get-out-object-from-editor-data.js`);
 const Fixture = require(`./lib/model/Fixture.js`).default;
@@ -85,6 +85,8 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
       ? new Manufacturer(manKey, outObject.manufacturers[manKey])
       : manKey;
 
+    embedResourcesIntoFixtureJson(jsonObject);
+
     return new Fixture(manufacturer, fixKey, jsonObject);
   });
 
@@ -113,7 +115,9 @@ app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, async (request, response, next
   if (format === `json`) {
     try {
       const data = await readFile(`./fixtures/${manKey}/${fixKey}.json`, `utf8`);
-      response.json(JSON.parse(data));
+      const json = JSON.parse(data);
+      embedResourcesIntoFixtureJson(json);
+      response.json(json);
     }
     catch (error) {
       response

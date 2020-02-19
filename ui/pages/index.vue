@@ -75,11 +75,11 @@
     </div>
 
     <div class="grid-3 centered">
-      <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+-label%3Atype-bug" rel="nofollow" class="card slim">
+      <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+-label%3Abug" rel="nofollow" class="card slim">
         <OflSvg name="lightbulb-on-outline" class="left" />
         <span>Request feature</span>
       </a>
-      <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card slim">
+      <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Abug" rel="nofollow" class="card slim">
         <OflSvg name="bug" class="left" />
         <span>Report problem</span>
       </a>

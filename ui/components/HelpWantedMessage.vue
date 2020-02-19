@@ -15,7 +15,7 @@
         <span>Send information</span>
       </a>
       <a
-        href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug"
+        href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Abug"
         class="no-js"
         rel="nofollow">
         <OflSvg name="bug" class="left" />
