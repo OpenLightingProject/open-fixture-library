@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PLS25 Par",
+  "categories": ["Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Marek Jędrzejewski"],
+    "createDate": "2020-02-19",
+    "lastModifyDate": "2020-02-19"
+  },
+  "links": {
+    "manual": [
+      "https://res.cloudinary.com/chal-tec/image/upload/bbg/10032389/bda/10032389.pdf"
+    ],
+    "productPage": [
+      "https://www.beamzlighting.com/product/pls25-par/"
+    ],
+    "video": [
+      "https://youtu.be/Kd83PELCiGo"
+    ]
+  },
+  "physical": {
+    "dimensions": [160, 115, 120],
+    "weight": 1,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [13, 13]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 10],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "duration": "instant",
+          "soundControlled": true,
+          "comment": "Sound activated color jump, I don't see sensitivity change on value change"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "duration": "instant"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6 channels",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
