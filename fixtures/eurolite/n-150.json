@@ -1,25 +1,33 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "n-150",
+  "name": "N-150",
   "categories": ["Smoke"],
   "meta": {
-    "authors": ["Matthias Naumann", "Mathew96"],
-    "createDate": "2020-01-19",
-    "lastModifyDate": "2020-01-19",
+    "authors": ["Matthias Naumann"],
+    "createDate": "2020-02-19",
+    "lastModifyDate": "2020-02-19",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
-      "date": "2020-01-19",
+      "date": "2020-02-19",
       "comment": "created by Q Light Controller Plus (version 4.12.2)"
     }
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51701970-Manual-58249-1.700-eurolite-n-150-smoke-machine-de_en_es_fr.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn51701970-eurolite-n-150-smoke-machine.html"
+    ],
+    "video": [
+      "https://youtu.be/Jwrp7I_kYVs"
+    ]
   },
   "physical": {
     "dimensions": [300, 240, 670],
     "weight": 15,
     "power": 1500,
-    "DMXconnector": "3-pin",
-    "lens": {
-      "name": "Other"
-    }
+    "DMXconnector": "3-pin"
   },
   "availableChannels": {
     "Mode": {
@@ -27,23 +35,26 @@
       "capabilities": [
         {
           "dmxRange": [0, 13],
-          "type": "Effect",
-          "effectName": "Off"
+          "type": "Fog",
+          "fogType": "Fog",
+          "fogOutput": "off"
         },
         {
           "dmxRange": [14, 127],
-          "type": "Effect",
-          "effectName": "Volume Mode"
+          "type": "Fog",
+          "fogType": "Fog",
+          "comment": "Select volume on channel 2"
         },
         {
           "dmxRange": [128, 231],
           "type": "Effect",
-          "effectName": "Timer Mode"
+          "effectName": "Timer mode"
         },
         {
           "dmxRange": [232, 255],
-          "type": "Effect",
-          "effectName": "Full Volume"
+          "type": "Fog",
+          "fogType": "Fog",
+          "fogOutput": "strong"
         }
       ]
     },
@@ -52,195 +63,205 @@
       "capabilities": [
         {
           "dmxRange": [0, 70],
-          "type": "Intensity",
-          "comment": "Off"
+          "type": "FogOutput",
+          "fogOutput": "off"
         },
         {
           "dmxRange": [71, 75],
-          "type": "Intensity",
-          "comment": "20% (Permanent)"
+          "type": "FogOutput",
+          "fogOutput": "20%",
+          "comment": "permanent"
         },
         {
           "dmxRange": [76, 100],
-          "type": "Intensity",
-          "comment": "30% (50sec)"
+          "type": "FogOutput",
+          "fogOutput": "30%",
+          "comment": "50sec"
         },
         {
           "dmxRange": [101, 125],
-          "type": "Intensity",
-          "comment": "40% (43sec)"
+          "type": "FogOutput",
+          "fogOutput": "40%",
+          "comment": "43sec"
         },
         {
           "dmxRange": [126, 150],
-          "type": "Intensity",
-          "comment": "50% (34sec)"
+          "type": "FogOutput",
+          "fogOutput": "50%",
+          "comment": "34sec"
         },
         {
           "dmxRange": [151, 175],
-          "type": "Intensity",
-          "comment": "60% (29sec)"
+          "type": "FogOutput",
+          "fogOutput": "60%",
+          "comment": "29sec"
         },
         {
           "dmxRange": [176, 200],
-          "type": "Intensity",
-          "comment": "70% (25sec)"
+          "type": "FogOutput",
+          "fogOutput": "70%",
+          "comment": "25sec"
         },
         {
           "dmxRange": [201, 225],
-          "type": "Intensity",
-          "comment": "80% (23sec)"
+          "type": "FogOutput",
+          "fogOutput": "80%",
+          "comment": "23sec"
         },
         {
           "dmxRange": [226, 245],
-          "type": "Intensity",
-          "comment": "90% (21sec)"
+          "type": "FogOutput",
+          "fogOutput": "90%",
+          "comment": "21sec"
         },
         {
           "dmxRange": [246, 255],
-          "type": "Intensity",
-          "comment": "100% (20sec)"
+          "type": "FogOutput",
+          "fogOutput": "100%",
+          "comment": "20sec"
         }
       ]
     },
-    "Fog Duration": {
+    "Timer Duration": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "Speed",
-          "comment": "1 sec"
+          "type": "Time",
+          "time": "1s"
         },
         {
           "dmxRange": [6, 29],
-          "type": "Speed",
-          "comment": "13 sec"
+          "type": "Time",
+          "time": "13s"
         },
         {
           "dmxRange": [30, 54],
-          "type": "Speed",
-          "comment": "33 sec"
+          "type": "Time",
+          "time": "33s"
         },
         {
           "dmxRange": [55, 79],
-          "type": "Speed",
-          "comment": "53 sec"
+          "type": "Time",
+          "time": "53s"
         },
         {
           "dmxRange": [80, 104],
-          "type": "Speed",
-          "comment": "73 sec"
+          "type": "Time",
+          "time": "73s"
         },
         {
           "dmxRange": [105, 129],
-          "type": "Speed",
-          "comment": "92 sec"
+          "type": "Time",
+          "time": "92s"
         },
         {
           "dmxRange": [130, 154],
-          "type": "Speed",
-          "comment": "112 sec"
+          "type": "Time",
+          "time": "112s"
         },
         {
           "dmxRange": [155, 179],
-          "type": "Speed",
-          "comment": "131 sec"
+          "type": "Time",
+          "time": "131s"
         },
         {
           "dmxRange": [180, 204],
-          "type": "Speed",
-          "comment": "151 sec"
+          "type": "Time",
+          "time": "151s"
         },
         {
           "dmxRange": [205, 229],
-          "type": "Speed",
-          "comment": "170 sec"
+          "type": "Time",
+          "time": "170s"
         },
         {
           "dmxRange": [230, 254],
-          "type": "Speed",
-          "comment": "190 sec"
+          "type": "Time",
+          "time": "190s"
         },
         {
           "dmxRange": [255, 255],
-          "type": "Speed",
-          "comment": "200 sec"
+          "type": "Time",
+          "time": "200s"
         }
       ]
     },
-    "Fog Interval": {
+    "Timer Interval": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "Speed",
-          "comment": "1 sec"
+          "type": "Time",
+          "time": "1s"
         },
         {
           "dmxRange": [6, 29],
-          "type": "Speed",
-          "comment": "13 sec"
+          "type": "Time",
+          "time": "13s"
         },
         {
           "dmxRange": [30, 54],
-          "type": "Speed",
-          "comment": "33 sec"
+          "type": "Time",
+          "time": "33s"
         },
         {
           "dmxRange": [55, 79],
-          "type": "Speed",
-          "comment": "53 sec"
+          "type": "Time",
+          "time": "53s"
         },
         {
           "dmxRange": [80, 104],
-          "type": "Speed",
-          "comment": "73 sec"
+          "type": "Time",
+          "time": "73s"
         },
         {
           "dmxRange": [105, 129],
-          "type": "Speed",
-          "comment": "92 sec"
+          "type": "Time",
+          "time": "92s"
         },
         {
           "dmxRange": [130, 154],
-          "type": "Speed",
-          "comment": "112 sec"
+          "type": "Time",
+          "time": "112s"
         },
         {
           "dmxRange": [155, 179],
-          "type": "Speed",
-          "comment": "131 sec"
+          "type": "Time",
+          "time": "131s"
         },
         {
           "dmxRange": [180, 204],
-          "type": "Speed",
-          "comment": "151 sec"
+          "type": "Time",
+          "time": "151s"
         },
         {
           "dmxRange": [205, 229],
-          "type": "Speed",
-          "comment": "170 sec"
+          "type": "Time",
+          "time": "170s"
         },
         {
           "dmxRange": [230, 254],
-          "type": "Speed",
-          "comment": "190 sec"
+          "type": "Time",
+          "time": "190s"
         },
         {
           "dmxRange": [255, 255],
-          "type": "Speed",
-          "comment": "200 sec"
+          "type": "Time",
+          "time": "200s"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "Default",
+      "name": "4-channel",
+      "shortName": "4ch",
       "channels": [
         "Mode",
         "Fog Volume",
-        "Fog Duration",
-        "Fog Interval"
+        "Timer Duration",
+        "Timer Interval"
       ]
     }
   ]
