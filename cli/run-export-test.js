@@ -71,7 +71,7 @@ const pluginExport = require(path.join(__dirname, `../plugins`, args.plugin, `ex
 
       const outputPerFile = await Promise.all(files.map(async file => {
         try {
-          await exportTest(file);
+          await exportTest(file, files);
           return `${chalk.green(`[PASS]`)} ${file.name}`;
         }
         catch (err) {

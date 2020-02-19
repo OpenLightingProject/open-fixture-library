@@ -236,7 +236,7 @@ async function getTaskPromise(task) {
 
     const resultListItems = await Promise.all(files.map(async file => {
       try {
-        await test(file);
+        await test(file, files);
         return `:heavy_check_mark: ${file.name}`;
       }
       catch (err) {
