@@ -1,0 +1,272 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Vector Pixel Bar",
+  "categories": ["Pixel Bar", "Color Changer"],
+  "meta": {
+    "authors": ["Stephan Klein"],
+    "createDate": "2020-02-20",
+    "lastModifyDate": "2020-02-20"
+  },
+  "links": {
+    "manual": [
+      "https://www.musicstore.de/INTERSHOP/web/WFS/MusicStore-MusicStoreShop-Site/de_DE/-/EUR/ViewProductAttachment-ResolveManualURL?File=DE_LIG0016266-000.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [1130, 210, 150],
+    "weight": 8,
+    "power": 180,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "slow"
+      }
+    },
+    "Function": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 17],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [18, 22],
+          "type": "Effect",
+          "effectName": "Color Change"
+        },
+        {
+          "dmxRange": [23, 27],
+          "type": "Effect",
+          "effectName": "Color Change / Hard Change"
+        },
+        {
+          "dmxRange": [28, 32],
+          "type": "Effect",
+          "effectName": "Color Change / Slow Change"
+        },
+        {
+          "dmxRange": [33, 37],
+          "type": "Effect",
+          "effectName": "Color"
+        },
+        {
+          "dmxRange": [38, 42],
+          "type": "Effect",
+          "effectName": "Color Changer"
+        },
+        {
+          "dmxRange": [43, 47],
+          "type": "Effect",
+          "effectName": "Slow Color Changer"
+        },
+        {
+          "dmxRange": [48, 251],
+          "type": "Effect",
+          "effectName": "Running Light"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "Sound to light"
+        }
+      ]
+    },
+    "Function 2": {
+      "name": "Function",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Different Effects"
+      }
+    },
+    "Function Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "RGBWA Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 2": {
+      "name": "RGBWA Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 3": {
+      "name": "RGBWA Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 4": {
+      "name": "RGBWA Dimmer",
+      "constant": true,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 5": {
+      "name": "RGBWA Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 6": {
+      "name": "RGBWA Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 7": {
+      "name": "RGBWA Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 8": {
+      "name": "RGBWA Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 9": {
+      "name": "RGBWA Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 10": {
+      "name": "RGBWA Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 11": {
+      "name": "RGBWA Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 12": {
+      "name": "RGBWA Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 13": {
+      "name": "RGBWA Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 14": {
+      "name": "RGBWA Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 15": {
+      "name": "RGBWA Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 16": {
+      "name": "RGBWA Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 17": {
+      "name": "RGBWA Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "RGBWA Dimmer 18": {
+      "name": "RGBWA Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "28ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Function",
+        "Function 2",
+        "Function Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "RGBWA Dimmer",
+        "RGBWA Dimmer 2",
+        "RGBWA Dimmer 3",
+        "RGBWA Dimmer 4",
+        "RGBWA Dimmer 5",
+        "RGBWA Dimmer 6",
+        "RGBWA Dimmer 7",
+        "RGBWA Dimmer 8",
+        "RGBWA Dimmer 9",
+        "RGBWA Dimmer 10",
+        "RGBWA Dimmer 11",
+        "RGBWA Dimmer 12",
+        "RGBWA Dimmer 13",
+        "RGBWA Dimmer 14",
+        "RGBWA Dimmer 15",
+        "RGBWA Dimmer 16",
+        "RGBWA Dimmer 17",
+        "RGBWA Dimmer 18"
+      ]
+    }
+  ]
+}
