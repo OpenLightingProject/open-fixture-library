@@ -1,0 +1,72 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "GRBW",
+  "shortName": "GRBW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Stuart Hanlon"],
+    "createDate": "2020-02-20",
+    "lastModifyDate": "2020-02-20"
+  },
+  "comment": "RGBW fixture with GRBW pixel order",
+  "links": {
+    "manual": [
+      "https://www.google.com/search?q=sk6812+rgbw&oq=sk6812"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Green": {
+      "constant": true,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Red": {
+      "constant": true,
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off",
+        "comment": "Red"
+      }
+    },
+    "Blue": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off",
+        "comment": "Blue"
+      }
+    },
+    "White": {
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightness": "off",
+        "comment": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 Bit",
+      "channels": [
+        "Green",
+        "Red",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
