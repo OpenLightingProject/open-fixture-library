@@ -6,11 +6,16 @@
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2017-02-24",
-    "lastModifyDate": "2018-08-09"
+    "lastModifyDate": "2020-02-20"
   },
+  "comment": "Earlier models of this fixture don't have the 6ch2 mode, just one 6ch mode.",
   "links": {
-    "manual": ["https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLTW600RGB/CLTW600RGB_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf"],
-    "video": ["https://www.youtube.com/watch?v=bAnmeHVZfe0"]
+    "manual": [
+      "https://adamhall.s3.amazonaws.com/media/MARKEN/CAMEO/CLTW600RGB/CLTW600RGB_Cameo_Bedienungsanleitung_EN_DE_FR_ES_PL_IT.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=bAnmeHVZfe0"
+    ]
   },
   "physical": {
     "dimensions": [335, 182, 93],
@@ -327,42 +332,86 @@
     {
       "name": "1-channel",
       "shortName": "1ch",
-      "channels": ["strobe1"]
+      "channels": [
+        "strobe1"
+      ]
     },
     {
       "name": "2-channel 1",
       "shortName": "2ch1",
-      "channels": ["Dimmer", "Color Macros"]
+      "channels": [
+        "Dimmer",
+        "Color Macros"
+      ]
     },
     {
       "name": "2-channel 2",
       "shortName": "2ch2",
-      "channels": ["Dimmer", "strobe2"]
+      "channels": [
+        "Dimmer",
+        "strobe2"
+      ]
     },
     {
       "name": "3-channel 1",
       "shortName": "3ch1",
-      "channels": ["Dimmer", "strobe2", "Flash Duration"]
+      "channels": [
+        "Dimmer",
+        "strobe2",
+        "Flash Duration"
+      ]
     },
     {
       "name": "3-channel 2",
       "shortName": "3ch2",
-      "channels": ["Dimmer", "strobe2", "Color Macros"]
+      "channels": [
+        "Dimmer",
+        "strobe2",
+        "Color Macros"
+      ]
     },
     {
       "name": "3-channel 3",
       "shortName": "3ch3",
-      "channels": ["Red", "Green", "Blue"]
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
     },
     {
       "name": "4-channel",
       "shortName": "4ch",
-      "channels": ["Dimmer", "strobe3", "Color Macros", "Sound Control"]
+      "channels": [
+        "Dimmer",
+        "strobe3",
+        "Color Macros",
+        "Sound Control"
+      ]
     },
     {
-      "name": "6-channel",
-      "shortName": "6ch",
-      "channels": ["Dimmer", "strobe3", "Red", "Green", "Blue", "Sound Control"]
+      "name": "6-channel 1",
+      "shortName": "6ch1",
+      "channels": [
+        "Dimmer",
+        "strobe3",
+        "Red",
+        "Green",
+        "Blue",
+        "Sound Control"
+      ]
+    },
+    {
+      "name": "6-channel 2",
+      "shortName": "6ch2",
+      "channels": [
+        "Dimmer",
+        "strobe2",
+        "Flash Duration",
+        "Red",
+        "Green",
+        "Blue"
+      ]
     }
   ]
 }
