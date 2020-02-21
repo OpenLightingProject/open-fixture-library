@@ -42,7 +42,7 @@ module.exports.init = async function init() {
     auth: `token ${process.env.GITHUB_USER_TOKEN}`
   });
 
-  const pr = await githubClient.pullRequests.get({
+  const pr = await githubClient.pulls.get({
     owner: repoOwner,
     repo: repoName,
     'pull_number': process.env.TRAVIS_PULL_REQUEST
@@ -58,7 +58,7 @@ module.exports.fetchChangedComponents = async function fetchChangedComponents() 
   // fetch changed files in blocks of 100
   const filePromises = [];
   for (let i = 0; i < prData.changed_files / 100; i++) {
-    filePromises.push(githubClient.pullRequests.listFiles({
+    filePromises.push(githubClient.pulls.listFiles({
       owner: repoOwner,
       repo: repoName,
       'pull_number': process.env.TRAVIS_PULL_REQUEST,
