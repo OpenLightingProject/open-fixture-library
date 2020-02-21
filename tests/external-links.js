@@ -219,7 +219,7 @@ async function updateGithubIssue(urlResults) {
     }
   }
 
-  const githubClient = Octokit({
+  const githubClient = new Octokit({
     auth: `token ${process.env.GITHUB_USER_TOKEN}`
   });
 

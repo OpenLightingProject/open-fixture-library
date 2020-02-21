@@ -38,7 +38,7 @@ module.exports.init = async function init() {
   repoOwner = process.env.TRAVIS_REPO_SLUG.split(`/`)[0];
   repoName = process.env.TRAVIS_REPO_SLUG.split(`/`)[1];
 
-  githubClient = Octokit({
+  githubClient = new Octokit({
     auth: `token ${process.env.GITHUB_USER_TOKEN}`
   });
 
