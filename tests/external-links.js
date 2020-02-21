@@ -4,7 +4,7 @@ const http = require(`http`);
 const https = require(`https`);
 const path = require(`path`);
 const chalk = require(`chalk`);
-const Octokit = require(`@octokit/rest`);
+const { Octokit } = require(`@octokit/rest`);
 
 require(`../lib/load-env-file.js`);
 
@@ -219,7 +219,7 @@ async function updateGithubIssue(urlResults) {
     }
   }
 
-  const githubClient = new Octokit({
+  const githubClient = Octokit({
     auth: `token ${process.env.GITHUB_USER_TOKEN}`
   });
 
