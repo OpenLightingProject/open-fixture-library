@@ -153,11 +153,8 @@ app.get(`/about/plugins/:plugin([a-z0-9_.-]+).json`, (request, response, next) =
 app.get(`/sitemap.xml`, (request, response) => {
   const generateSitemap = requireNoCacheInDev(`./lib/generate-sitemap.js`);
 
-  if (!app.get(`sitemap`) || process.env.NODE_ENV !== `production`) {
-    app.set(`sitemap`, generateSitemap(packageJson.homepage));
-  }
-
-  response.type(`application/xml`).send(app.get(`sitemap`));
+  response.type(`application/xml`);
+  generateSitemap(packageJson.homepage).pipe(response);
 });
 
 app.post(`/ajax/import-fixture-file`, (request, response) => {
