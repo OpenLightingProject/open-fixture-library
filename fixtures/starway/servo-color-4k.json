@@ -1,0 +1,204 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SERVO COLOR 4K",
+  "shortName": "4K",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["MullRR"],
+    "createDate": "2020-03-17",
+    "lastModifyDate": "2020-03-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.freevox.fr/telechargements/document/?doc=441243"
+    ],
+    "productPage": [
+      "https://www.star-way.com/"
+    ]
+  },
+  "physical": {
+    "dimensions": [222, 313, 370],
+    "weight": 7.8,
+    "power": 300,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "19 Leds"
+    },
+    "lens": {
+      "degreesMinMax": [10, 48]
+    }
+  },
+  "availableChannels": {
+    "Pan / Tilt Speed": {
+      "fineChannelAliases": ["Pan / Tilt Speed fine"],
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Pan / Tilt Speed 2": {
+      "name": "Pan / Tilt Speed",
+      "fineChannelAliases": ["Pan / Tilt Speed 2 fine"],
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Vitesse du programme": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speed": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Rouge": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Bleu": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Rotation de la roue": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 251],
+          "type": "ColorPreset",
+          "comment": "Voir la section canal 13"
+        },
+        {
+          "dmxRange": [252, 253],
+          "type": "Rotation",
+          "speed": "fast CW"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "Rotation",
+          "speed": "fast CW"
+        }
+      ]
+    },
+    "Température de couleur": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Controle": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Vert": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Rouge 2": {
+      "name": "Rouge",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Blanc": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Intensité": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Intensité 2": {
+      "name": "Intensité",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Vert 2": {
+      "name": "Vert",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Bleu 2": {
+      "name": "Bleu",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Blanc 2": {
+      "name": "Blanc",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "15 Cannaux 8Bits",
+      "channels": [
+        "Pan / Tilt Speed",
+        "Pan / Tilt Speed fine",
+        "Pan / Tilt Speed 2",
+        "Pan / Tilt Speed 2 fine",
+        "Vitesse du programme",
+        "Dimmer",
+        "Strobe",
+        "Zoom",
+        "Rouge",
+        "Vert",
+        "Bleu",
+        "Blanc",
+        "Rotation de la roue",
+        "Température de couleur",
+        "Controle"
+      ]
+    },
+    {
+      "name": "20 Cannaux 16Bits",
+      "channels": [
+        "Pan / Tilt Speed",
+        "Pan / Tilt Speed 2",
+        "Pan / Tilt Speed fine",
+        "Pan / Tilt Speed 2 fine",
+        "Vitesse du programme",
+        "Intensité",
+        "Intensité 2",
+        "Strobe",
+        "Zoom",
+        "Rouge",
+        "Rouge 2",
+        "Vert",
+        "Vert 2",
+        "Bleu",
+        "Bleu 2",
+        "Blanc",
+        "Blanc 2",
+        "Rotation de la roue",
+        "Température de couleur",
+        "Controle"
+      ]
+    }
+  ]
+}
