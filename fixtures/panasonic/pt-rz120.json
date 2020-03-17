@@ -1,0 +1,121 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PT-RZ120",
+  "shortName": "Projector",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Walter Ponce"],
+    "createDate": "2020-03-17",
+    "lastModifyDate": "2020-03-17"
+  },
+  "comment": "Single Chip Laser 12k Projector",
+  "links": {
+    "manual": [
+      "https://eww.pavc.panasonic.co.jp/projector/extranet/main/products/rz120/manual.html"
+    ],
+    "productPage": [
+      "https://panasonic.net/cns/projector/products/rz120/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=2DrfjBJxjYA"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "dimensions": [498, 200, 581],
+    "weight": 23.6,
+    "power": 1100,
+    "bulb": {
+      "type": "Laser Diode",
+      "lumens": 12000
+    }
+  },
+  "availableChannels": {
+    "Shutter": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Input Select": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Lens Function Select": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Lens Control": {
+      "defaultValue": 100,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Power": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Light Output": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Enable/Disable": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Fade in": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Fade out": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Custom Masking": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Geometry": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Shutter",
+        "Input Select",
+        "Lens Function Select",
+        "Lens Control",
+        "Power",
+        "Light Output",
+        "Enable/Disable",
+        "Fade in",
+        "Fade out",
+        "Custom Masking",
+        "Geometry"
+      ]
+    }
+  ]
+}
