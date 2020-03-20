@@ -13,7 +13,7 @@ jobs:
           AUTHOR: ${{ toJson(github.event.pull_request.user.login) }}
         run: echo "$AUTHOR"
       - uses: andymckay/labeler@1.0.2
-        if: github.event.pull_request.user.login == "FloEdelmann"
+        if: github.event.pull_request.user.login == 'FloEdelmann'
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
           add-labels: "dependencies"
