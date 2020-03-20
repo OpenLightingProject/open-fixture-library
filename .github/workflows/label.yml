@@ -15,5 +15,5 @@ jobs:
         if: github.event.pull_request.user.login == 'FloEdelmann'
         with:
           token: ${{secrets.GITHUB_TOKEN}}
-          labels: dependencies
+          label: dependencies
           type: add
