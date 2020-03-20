@@ -1,0 +1,20 @@
+name: Label
+on:
+  pull_request:
+    types: [opened]
+  push: # for testing
+jobs:
+  dependencies:
+    name: Dependencies
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Dump PR author
+        env:
+          AUTHOR: ${{ toJson(github.event.pull_request.user.login) }}
+        run: echo "$AUTHOR"
+      - uses: andymckay/labeler@1.0.2
+        if: github.event.pull_request.user.login == "FloEdelmann"
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          add-labels: "dependencies"
+          ignore-if-assigned: false
