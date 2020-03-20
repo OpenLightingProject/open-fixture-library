@@ -5,15 +5,15 @@ on:
 jobs:
   dependencies:
     name: Dependencies
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
     steps:
       - name: Dump PR author
         env:
           AUTHOR: ${{ toJson(github.event.pull_request.user.login) }}
         run: echo "$AUTHOR"
-      - uses: andymckay/labeler@1.0.2
+      - uses: buildsville/add-remove-label@v1
         if: github.event.pull_request.user.login == 'FloEdelmann'
         with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
-          add-labels: "dependencies"
-          ignore-if-assigned: false
+          token: ${{secrets.GITHUB_TOKEN}}
+          labels: dependencies
+          type: add
