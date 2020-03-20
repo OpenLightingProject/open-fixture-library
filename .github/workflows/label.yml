@@ -1,8 +1,7 @@
 name: Label
 on:
   pull_request:
-    types: [opened]
-  push: # for testing
+    # types: [opened]
 jobs:
   dependencies:
     name: Dependencies
