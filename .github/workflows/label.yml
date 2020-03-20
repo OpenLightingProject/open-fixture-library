@@ -1,18 +1,15 @@
 name: Label
 on:
   pull_request:
-    # types: opened
+    types: opened
 jobs:
   dependencies:
     name: Dependencies
     runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login == 'snyk-bot'
     steps:
-      - name: Dump PR author
-        env:
-          AUTHOR: ${{ toJson(github.event.pull_request.user.login) }}
-        run: echo "$AUTHOR"
-      - uses: buildsville/add-remove-label@v1
-        if: github.event.pull_request.user.login == 'FloEdelmann'
+      - name: "Add `dependencies` label"
+        uses: buildsville/add-remove-label@v1
         with:
           token: ${{secrets.GITHUB_TOKEN}}
           label: dependencies
