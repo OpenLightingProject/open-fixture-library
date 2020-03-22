@@ -1,0 +1,16 @@
+name: Label
+on:
+  pull_request:
+    types: opened
+jobs:
+  dependencies:
+    name: Dependencies
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login == 'snyk-bot'
+    steps:
+      - name: "Add `dependencies` label"
+        uses: buildsville/add-remove-label@v1
+        with:
+          token: ${{secrets.GITHUB_TOKEN}}
+          label: dependencies
+          type: add
