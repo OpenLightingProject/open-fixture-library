@@ -31,31 +31,31 @@
     }
   },
   "availableChannels": {
-    "ROUGE": {
+    "Red": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "VERT": {
+    "Green": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "BLEU": {
+    "Blue": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "BLANC": {
+    "White": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "AMBRE": {
+    "Amber": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Amber"
@@ -67,25 +67,100 @@
         "color": "UV"
       }
     },
-    "DIMMER": {
+    "Dimmer": {
       "capability": {
         "type": "Intensity"
       }
     },
-    "STROBE": {
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Color / Program Speed": "Color"
+          }
+        },
+        {
+          "dmxRange": [10, 49],
+          "type": "Maintenance",
+          "comment": "Color selection",
+          "switchChannels": {
+            "Color / Program Speed": "Color"
+          }
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "NoFunction",
+          "helpWanted": "What does happen in this DMX range?",
+          "switchChannels": {
+            "Color / Program Speed": "Color"
+          }
+        },
+        {
+          "dmxRange": [100, 169],
+          "type": "NoFunction",
+          "helpWanted": "What does happen in this DMX range?",
+          "switchChannels": {
+            "Color / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true,
+          "switchChannels": {
+            "Color / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [210, 239],
+          "type": "Effect",
+          "effectName": "Sound pulse + strobe",
+          "soundControlled": true,
+          "switchChannels": {
+            "Color / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Sound strobe",
+          "soundControlled": true,
+          "switchChannels": {
+            "Color / Program Speed": "Program Speed"
+          }
+        }
+      ]
+    },
+    "Color": {
       "capability": {
-        "type": "Intensity"
+        "type": "ColorPreset",
+        "helpWanted": "Which colors can be selected at which DMX values?"
       }
     },
-    "MODE": {
+    "Program Speed": {
       "capability": {
-        "type": "Intensity"
-      }
-    },
-    "MODE 2": {
-      "name": "MODE",
-      "capability": {
-        "type": "Intensity"
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     }
   },
@@ -94,11 +169,11 @@
       "name": "6-channel",
       "shortName": "6ch",
       "channels": [
-        "ROUGE",
-        "VERT",
-        "BLEU",
-        "BLANC",
-        "AMBRE",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
         "UV"
       ]
     },
@@ -106,16 +181,16 @@
       "name": "10-channel",
       "shortName": "10ch",
       "channels": [
-        "DIMMER",
-        "STROBE",
-        "ROUGE",
-        "VERT",
-        "BLEU",
-        "BLANC",
-        "AMBRE",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
         "UV",
-        "MODE",
-        "MODE 2"
+        "Mode",
+        "Color / Program Speed"
       ]
     }
   ]
