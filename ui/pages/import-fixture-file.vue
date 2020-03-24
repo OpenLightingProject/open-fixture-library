@@ -42,6 +42,7 @@
           label="Fixture definition file"
           hint="Maximum file size is 5MB.">
           <EditorFileUpload
+            ref="fileUpload"
             v-model="file"
             :required="true"
             name="file"
@@ -240,6 +241,8 @@ export default {
       this.pullRequestUrl = null;
       this.error = null;
       this.uploading = false;
+      this.plugin = ``;
+      this.$refs.fileUpload.clear();
 
       // clear query
       this.$router.push({
