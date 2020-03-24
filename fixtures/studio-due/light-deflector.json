@@ -18,6 +18,11 @@
       "http://www.forum.licht-geluid.nl/licht-forum-foto-s/3267-studio-due-light-deflector.html"
     ]
   },
+  "physical": {
+    "dimensions": [320, 460, 130],
+    "weight": 5.0,
+    "power": 69
+  },
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
@@ -35,6 +40,14 @@
         "angleEnd": "360deg"
       }
     },
+    "Tilt Spin": {
+      "capability": {
+        "type": "TiltContinuous",
+        "helpWanted": "At which DMX values is continuous tilt disabled? Where does it spin clockwise / counter-clockwise?",
+        "speedStart": "slow CW",
+        "speedEnd": "slow CCW"
+      }
+    },
     "Pan/Tilt Speed": {
       "capability": {
         "type": "PanTiltSpeed",
@@ -42,23 +55,36 @@
         "speedEnd": "fast"
       }
     },
-    "No function": {
+    "Reset": {
       "capability": {
-        "type": "NoFunction"
+        "type": "Maintenance",
+        "comment": "Reset Pan/Tilt",
+        "helpWanted": "At which DMX values does the fixture perform a reset?"
       }
     }
   },
   "modes": [
     {
-      "name": "16 Bits",
-      "shortName": "16bits",
+      "name": "8 bit 4-channel",
+      "shortName": "8bit",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Tilt Spin",
+        "Pan/Tilt Speed"
+      ]
+    },
+    {
+      "name": "16 bit 7-channel",
+      "shortName": "16bit",
       "channels": [
         "Pan",
         "Pan fine",
         "Tilt",
         "Tilt fine",
-        "No function",
-        "Pan/Tilt Speed"
+        "Tilt Spin",
+        "Pan/Tilt Speed",
+        "Reset"
       ]
     }
   ]
