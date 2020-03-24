@@ -44,8 +44,8 @@
       "capability": {
         "type": "TiltContinuous",
         "helpWanted": "At which DMX values is continuous tilt disabled? Where does it spin clockwise / counter-clockwise?",
-        "speedStart": "slow CW",
-        "speedEnd": "slow CW"
+        "speedStart": "0.166667rpm",
+        "speedEnd": "30rpm"
       }
     },
     "Pan/Tilt Speed": {
