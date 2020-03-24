@@ -1,6 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "PROJECTEUR HF",
+  "name": "Box LEDs Batterie 6x15W",
+  "shortName": "PL-BOXBHF6X15W",
   "categories": ["Dimmer"],
   "meta": {
     "authors": ["STUDIO5"],
@@ -9,7 +10,13 @@
   },
   "links": {
     "manual": [
+      "https://www.phocealight.fr/index.php?controller=attachment&id_attachment=6"
+    ],
+    "productPage": [
       "https://www.phocealight.fr/pars-leds-batterie/25-77-box-batterie-6x15w.html#/30-couleur-noir"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=RMeX3Y-FwzA"
     ]
   },
   "availableChannels": {
