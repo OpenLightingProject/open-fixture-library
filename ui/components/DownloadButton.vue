@@ -91,13 +91,13 @@ select {
   margin-top: 1ex;
   padding: 0.5em 3ex;
 
-  background: $grey-50;
+  background: theme-color(button-secondary-background);
 
-  color: theme-color(text-secondary);
+  color: theme-color(button-secondary-text);
   font-weight: 600;
   font-size: 0.9em;
 
-  border-color: $grey-300;
+  border-color: theme-color(button-secondary-border);
   border-radius: 2px;
 
   transition: 0.1s background-color;
@@ -105,7 +105,7 @@ select {
 
   &:not(:disabled):hover,
   &:not(:disabled):focus {
-    background-color: $grey-300;
+    background-color: theme-color(button-secondary-background-hover);
   }
 }
 
