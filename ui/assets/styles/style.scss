@@ -444,16 +444,13 @@ button, a.button {
 
   &:target {
     animation-delay: 0.5s;
-    animation-duration: 0.7s;
+    animation-duration: 1.2s;
     animation-fill-mode: backwards;
     animation-timing-function: ease;
 
     @include animation-keyframes {
       from {
-        background-color: $blue-100;
-      }
-      to {
-        background-color: #fff;
+        background-color: theme-color(blue-highlight);
       }
     }
   }
