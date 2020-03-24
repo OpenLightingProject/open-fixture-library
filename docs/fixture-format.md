@@ -19,6 +19,7 @@ This document gives a high-level overview of the concepts used in the JSON forma
     - [Matrix structure](#matrix-structure)
     - [Template channels](#template-channels)
   - [Wheels](#wheels)
+    - [Gobo resources](#gobo-resources)
     - [Using wheels in capabilities](#using-wheels-in-capabilities)
   - [RDM (Remote Device Management) data](#rdm-remote-device-management-data)
 - [Fixture redirects](#fixture-redirects)
@@ -329,6 +330,7 @@ The slots in a wheel have types, similar to [capability types](capability-types.
   - `colors` (array of hex strings)
   - `colorTemperature` ([Entity](capability-types.md#possible-entities-and-keywords) *ColorTemperature*)
 * `Gobo`
+  - `resource` (resource reference string, see below)
   - `name` (string)
 * `Prism`
   - `name` (string)
@@ -342,6 +344,14 @@ The slots in a wheel have types, similar to [capability types](capability-types.
 * `AnimationGoboEnd`
 
 Animation Gobo slots are wider than normal gobos (sometimes they fill the whole wheel); rotating the wheel over these slots creates an animation. To model the wider slots, an `AnimationGoboEnd` slot must be used directly after an `AnimationGoboStart` slot.
+
+#### Gobo resources
+
+Gobos are referenced with a resource reference in the form `gobos/<gobo key>`.
+
+Gobo resources are stored in the [`resources/gobos/`](../resources/gobos/) directory. Each one consists of a JSON file (`<gobo key>.json`) describing the gobo (with name, keywords, and a source where the gobo image was extracted from) and the gobo image itself (`<gobo key>.svg` or `<gobo key>.png`).
+
+In the [`resources/gobos/aliases/`](../resources/gobos/aliases/) directory, sets of aliases can be defined as separate JSON files in which aliases are mapped to gobo keys. This is useful for plugins (e.g. the QLC+ import plugin knows which OFL gobo key to use when QLC+ gobo `Others/0001.svg` is referenced in a fixture). It also enables referencing gobos in fixture files with an alias like `gobos/aliases/<alias file>/<alias key>` (e.g. a Robe fixture could reference `gobos/aliases/robe/15020246-rafia`) to make validating the gobo information easier with a manual where product numbers are specified.
 
 #### Using wheels in capabilities
 

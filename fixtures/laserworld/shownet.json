@@ -1,0 +1,1957 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ShowNET",
+  "categories": ["Laser", "Color Changer"],
+  "meta": {
+    "authors": ["elixxx", "Felix Edelmann"],
+    "createDate": "2020-02-16",
+    "lastModifyDate": "2020-02-16",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2020-02-16",
+      "comment": "created by Q Light Controller Plus (version 4.12.1)"
+    }
+  },
+  "comment": "LAN interface to be used as DMX triggered playback system for laser show.",
+  "links": {
+    "manual": [
+      "https://www.laserworld.com/en/support/downloads/download/109-laserworld-showeditor-and-shownet/1799-laserworld-manual-shownet-2018.html"
+    ],
+    "productPage": [
+      "https://www.laserworld.com/shop/laserworld-shownet-network-interface"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Patterns": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Effect",
+          "effectName": "ILDA 1"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "Effect",
+          "effectName": "ILDA 2"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "Effect",
+          "effectName": "ILDA 3"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "Effect",
+          "effectName": "ILDA 4"
+        },
+        {
+          "dmxRange": [5, 5],
+          "type": "Effect",
+          "effectName": "ILDA 5"
+        },
+        {
+          "dmxRange": [6, 6],
+          "type": "Effect",
+          "effectName": "ILDA 6"
+        },
+        {
+          "dmxRange": [7, 7],
+          "type": "Effect",
+          "effectName": "ILDA 7"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Effect",
+          "effectName": "ILDA 8"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Effect",
+          "effectName": "ILDA 9"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Effect",
+          "effectName": "ILDA 10"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Effect",
+          "effectName": "ILDA 11"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Effect",
+          "effectName": "ILDA 12"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Effect",
+          "effectName": "ILDA 13"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Effect",
+          "effectName": "ILDA 14"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Effect",
+          "effectName": "ILDA 15"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Effect",
+          "effectName": "ILDA 16"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Effect",
+          "effectName": "ILDA 17"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Effect",
+          "effectName": "ILDA 18"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Effect",
+          "effectName": "ILDA 19"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Effect",
+          "effectName": "ILDA 20"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Effect",
+          "effectName": "ILDA 21"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Effect",
+          "effectName": "ILDA 22"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Effect",
+          "effectName": "ILDA 23"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Effect",
+          "effectName": "ILDA 24"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Effect",
+          "effectName": "ILDA 25"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Effect",
+          "effectName": "ILDA 26"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Effect",
+          "effectName": "ILDA 27"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Effect",
+          "effectName": "ILDA 28"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Effect",
+          "effectName": "ILDA 29"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Effect",
+          "effectName": "ILDA 30"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Effect",
+          "effectName": "ILDA 31"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Effect",
+          "effectName": "ILDA 32"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Effect",
+          "effectName": "ILDA 33"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Effect",
+          "effectName": "ILDA 34"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Effect",
+          "effectName": "ILDA 35"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Effect",
+          "effectName": "ILDA 36"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Effect",
+          "effectName": "ILDA 37"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Effect",
+          "effectName": "ILDA 38"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "Effect",
+          "effectName": "ILDA 39"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Effect",
+          "effectName": "ILDA 40"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Effect",
+          "effectName": "ILDA 41"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "Effect",
+          "effectName": "ILDA 42"
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "Effect",
+          "effectName": "ILDA 43"
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "Effect",
+          "effectName": "ILDA 44"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "Effect",
+          "effectName": "ILDA 45"
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "Effect",
+          "effectName": "ILDA 46"
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "Effect",
+          "effectName": "ILDA 47"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "Effect",
+          "effectName": "ILDA 48"
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "Effect",
+          "effectName": "ILDA 49"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "Effect",
+          "effectName": "ILDA 50"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Effect",
+          "effectName": "ILDA 51"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Effect",
+          "effectName": "ILDA 52"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Effect",
+          "effectName": "ILDA 53"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Effect",
+          "effectName": "ILDA 54"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "Effect",
+          "effectName": "ILDA 55"
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "Effect",
+          "effectName": "ILDA 56"
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "Effect",
+          "effectName": "ILDA 57"
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "Effect",
+          "effectName": "ILDA 58"
+        },
+        {
+          "dmxRange": [59, 59],
+          "type": "Effect",
+          "effectName": "ILDA 59"
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "Effect",
+          "effectName": "ILDA 60"
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "Effect",
+          "effectName": "ILDA 61"
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "Effect",
+          "effectName": "ILDA 62"
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "Effect",
+          "effectName": "ILDA 63"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Effect",
+          "effectName": "ILDA 64"
+        },
+        {
+          "dmxRange": [65, 65],
+          "type": "Effect",
+          "effectName": "ILDA 65"
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "Effect",
+          "effectName": "ILDA 66"
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "Effect",
+          "effectName": "ILDA 67"
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "Effect",
+          "effectName": "ILDA 68"
+        },
+        {
+          "dmxRange": [69, 69],
+          "type": "Effect",
+          "effectName": "ILDA 69"
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "Effect",
+          "effectName": "ILDA 70"
+        },
+        {
+          "dmxRange": [71, 71],
+          "type": "Effect",
+          "effectName": "ILDA 71"
+        },
+        {
+          "dmxRange": [72, 72],
+          "type": "Effect",
+          "effectName": "ILDA 72"
+        },
+        {
+          "dmxRange": [73, 73],
+          "type": "Effect",
+          "effectName": "ILDA 73"
+        },
+        {
+          "dmxRange": [74, 74],
+          "type": "Effect",
+          "effectName": "ILDA 74"
+        },
+        {
+          "dmxRange": [75, 75],
+          "type": "Effect",
+          "effectName": "ILDA 75"
+        },
+        {
+          "dmxRange": [76, 76],
+          "type": "Effect",
+          "effectName": "ILDA 76"
+        },
+        {
+          "dmxRange": [77, 77],
+          "type": "Effect",
+          "effectName": "ILDA 77"
+        },
+        {
+          "dmxRange": [78, 78],
+          "type": "Effect",
+          "effectName": "ILDA 78"
+        },
+        {
+          "dmxRange": [79, 79],
+          "type": "Effect",
+          "effectName": "ILDA 79"
+        },
+        {
+          "dmxRange": [80, 80],
+          "type": "Effect",
+          "effectName": "ILDA 80"
+        },
+        {
+          "dmxRange": [81, 81],
+          "type": "Effect",
+          "effectName": "ILDA 81"
+        },
+        {
+          "dmxRange": [82, 82],
+          "type": "Effect",
+          "effectName": "ILDA 82"
+        },
+        {
+          "dmxRange": [83, 83],
+          "type": "Effect",
+          "effectName": "ILDA 83"
+        },
+        {
+          "dmxRange": [84, 84],
+          "type": "Effect",
+          "effectName": "ILDA 84"
+        },
+        {
+          "dmxRange": [85, 85],
+          "type": "Effect",
+          "effectName": "ILDA 85"
+        },
+        {
+          "dmxRange": [86, 86],
+          "type": "Effect",
+          "effectName": "ILDA 86"
+        },
+        {
+          "dmxRange": [87, 87],
+          "type": "Effect",
+          "effectName": "ILDA 87"
+        },
+        {
+          "dmxRange": [88, 88],
+          "type": "Effect",
+          "effectName": "ILDA 88"
+        },
+        {
+          "dmxRange": [89, 89],
+          "type": "Effect",
+          "effectName": "ILDA 89"
+        },
+        {
+          "dmxRange": [90, 90],
+          "type": "Effect",
+          "effectName": "ILDA 90"
+        },
+        {
+          "dmxRange": [91, 91],
+          "type": "Effect",
+          "effectName": "ILDA 91"
+        },
+        {
+          "dmxRange": [92, 92],
+          "type": "Effect",
+          "effectName": "ILDA 92"
+        },
+        {
+          "dmxRange": [93, 93],
+          "type": "Effect",
+          "effectName": "ILDA 93"
+        },
+        {
+          "dmxRange": [94, 94],
+          "type": "Effect",
+          "effectName": "ILDA 94"
+        },
+        {
+          "dmxRange": [95, 95],
+          "type": "Effect",
+          "effectName": "ILDA 95"
+        },
+        {
+          "dmxRange": [96, 96],
+          "type": "Effect",
+          "effectName": "ILDA 96"
+        },
+        {
+          "dmxRange": [97, 97],
+          "type": "Effect",
+          "effectName": "ILDA 97"
+        },
+        {
+          "dmxRange": [98, 98],
+          "type": "Effect",
+          "effectName": "ILDA 98"
+        },
+        {
+          "dmxRange": [99, 99],
+          "type": "Effect",
+          "effectName": "ILDA 99"
+        },
+        {
+          "dmxRange": [100, 100],
+          "type": "Effect",
+          "effectName": "ILDA 100"
+        },
+        {
+          "dmxRange": [101, 101],
+          "type": "Effect",
+          "effectName": "ILDA 101"
+        },
+        {
+          "dmxRange": [102, 102],
+          "type": "Effect",
+          "effectName": "ILDA 102"
+        },
+        {
+          "dmxRange": [103, 103],
+          "type": "Effect",
+          "effectName": "ILDA 103"
+        },
+        {
+          "dmxRange": [104, 104],
+          "type": "Effect",
+          "effectName": "ILDA 104"
+        },
+        {
+          "dmxRange": [105, 105],
+          "type": "Effect",
+          "effectName": "ILDA 105"
+        },
+        {
+          "dmxRange": [106, 106],
+          "type": "Effect",
+          "effectName": "ILDA 106"
+        },
+        {
+          "dmxRange": [107, 107],
+          "type": "Effect",
+          "effectName": "ILDA 107"
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "Effect",
+          "effectName": "ILDA 108"
+        },
+        {
+          "dmxRange": [109, 109],
+          "type": "Effect",
+          "effectName": "ILDA 109"
+        },
+        {
+          "dmxRange": [110, 110],
+          "type": "Effect",
+          "effectName": "ILDA 110"
+        },
+        {
+          "dmxRange": [111, 111],
+          "type": "Effect",
+          "effectName": "ILDA 111"
+        },
+        {
+          "dmxRange": [112, 112],
+          "type": "Effect",
+          "effectName": "ILDA 112"
+        },
+        {
+          "dmxRange": [113, 113],
+          "type": "Effect",
+          "effectName": "ILDA 113"
+        },
+        {
+          "dmxRange": [114, 114],
+          "type": "Effect",
+          "effectName": "ILDA 114"
+        },
+        {
+          "dmxRange": [115, 115],
+          "type": "Effect",
+          "effectName": "ILDA 115"
+        },
+        {
+          "dmxRange": [116, 116],
+          "type": "Effect",
+          "effectName": "ILDA 116"
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "Effect",
+          "effectName": "ILDA 117"
+        },
+        {
+          "dmxRange": [118, 118],
+          "type": "Effect",
+          "effectName": "ILDA 118"
+        },
+        {
+          "dmxRange": [119, 119],
+          "type": "Effect",
+          "effectName": "ILDA 119"
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "Effect",
+          "effectName": "ILDA 120"
+        },
+        {
+          "dmxRange": [121, 121],
+          "type": "Effect",
+          "effectName": "ILDA 121"
+        },
+        {
+          "dmxRange": [122, 122],
+          "type": "Effect",
+          "effectName": "ILDA 122"
+        },
+        {
+          "dmxRange": [123, 123],
+          "type": "Effect",
+          "effectName": "ILDA 123"
+        },
+        {
+          "dmxRange": [124, 124],
+          "type": "Effect",
+          "effectName": "ILDA 124"
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "Effect",
+          "effectName": "ILDA 125"
+        },
+        {
+          "dmxRange": [126, 126],
+          "type": "Effect",
+          "effectName": "ILDA 126"
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "Effect",
+          "effectName": "ILDA 127"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Effect",
+          "effectName": "ILDA 128"
+        },
+        {
+          "dmxRange": [129, 129],
+          "type": "Effect",
+          "effectName": "ILDA 129"
+        },
+        {
+          "dmxRange": [130, 130],
+          "type": "Effect",
+          "effectName": "ILDA 130"
+        },
+        {
+          "dmxRange": [131, 131],
+          "type": "Effect",
+          "effectName": "ILDA 131"
+        },
+        {
+          "dmxRange": [132, 132],
+          "type": "Effect",
+          "effectName": "ILDA 132"
+        },
+        {
+          "dmxRange": [133, 133],
+          "type": "Effect",
+          "effectName": "ILDA 133"
+        },
+        {
+          "dmxRange": [134, 134],
+          "type": "Effect",
+          "effectName": "ILDA 134"
+        },
+        {
+          "dmxRange": [135, 135],
+          "type": "Effect",
+          "effectName": "ILDA 135"
+        },
+        {
+          "dmxRange": [136, 136],
+          "type": "Effect",
+          "effectName": "ILDA 136"
+        },
+        {
+          "dmxRange": [137, 137],
+          "type": "Effect",
+          "effectName": "ILDA 137"
+        },
+        {
+          "dmxRange": [138, 138],
+          "type": "Effect",
+          "effectName": "ILDA 138"
+        },
+        {
+          "dmxRange": [139, 139],
+          "type": "Effect",
+          "effectName": "ILDA 139"
+        },
+        {
+          "dmxRange": [140, 140],
+          "type": "Effect",
+          "effectName": "ILDA 140"
+        },
+        {
+          "dmxRange": [141, 141],
+          "type": "Effect",
+          "effectName": "ILDA 141"
+        },
+        {
+          "dmxRange": [142, 142],
+          "type": "Effect",
+          "effectName": "ILDA 142"
+        },
+        {
+          "dmxRange": [143, 143],
+          "type": "Effect",
+          "effectName": "ILDA 143"
+        },
+        {
+          "dmxRange": [144, 144],
+          "type": "Effect",
+          "effectName": "ILDA 144"
+        },
+        {
+          "dmxRange": [145, 145],
+          "type": "Effect",
+          "effectName": "ILDA 145"
+        },
+        {
+          "dmxRange": [146, 146],
+          "type": "Effect",
+          "effectName": "ILDA 146"
+        },
+        {
+          "dmxRange": [147, 147],
+          "type": "Effect",
+          "effectName": "ILDA 147"
+        },
+        {
+          "dmxRange": [148, 148],
+          "type": "Effect",
+          "effectName": "ILDA 148"
+        },
+        {
+          "dmxRange": [149, 149],
+          "type": "Effect",
+          "effectName": "ILDA 149"
+        },
+        {
+          "dmxRange": [150, 150],
+          "type": "Effect",
+          "effectName": "ILDA 150"
+        },
+        {
+          "dmxRange": [151, 151],
+          "type": "Effect",
+          "effectName": "ILDA 151"
+        },
+        {
+          "dmxRange": [152, 152],
+          "type": "Effect",
+          "effectName": "ILDA 152"
+        },
+        {
+          "dmxRange": [153, 153],
+          "type": "Effect",
+          "effectName": "ILDA 153"
+        },
+        {
+          "dmxRange": [154, 154],
+          "type": "Effect",
+          "effectName": "ILDA 154"
+        },
+        {
+          "dmxRange": [155, 155],
+          "type": "Effect",
+          "effectName": "ILDA 155"
+        },
+        {
+          "dmxRange": [156, 156],
+          "type": "Effect",
+          "effectName": "ILDA 156"
+        },
+        {
+          "dmxRange": [157, 157],
+          "type": "Effect",
+          "effectName": "ILDA 157"
+        },
+        {
+          "dmxRange": [158, 158],
+          "type": "Effect",
+          "effectName": "ILDA 158"
+        },
+        {
+          "dmxRange": [159, 159],
+          "type": "Effect",
+          "effectName": "ILDA 159"
+        },
+        {
+          "dmxRange": [160, 160],
+          "type": "Effect",
+          "effectName": "ILDA 160"
+        },
+        {
+          "dmxRange": [161, 161],
+          "type": "Effect",
+          "effectName": "ILDA 161"
+        },
+        {
+          "dmxRange": [162, 162],
+          "type": "Effect",
+          "effectName": "ILDA 162"
+        },
+        {
+          "dmxRange": [163, 163],
+          "type": "Effect",
+          "effectName": "ILDA 163"
+        },
+        {
+          "dmxRange": [164, 164],
+          "type": "Effect",
+          "effectName": "ILDA 164"
+        },
+        {
+          "dmxRange": [165, 165],
+          "type": "Effect",
+          "effectName": "ILDA 165"
+        },
+        {
+          "dmxRange": [166, 166],
+          "type": "Effect",
+          "effectName": "ILDA 166"
+        },
+        {
+          "dmxRange": [167, 167],
+          "type": "Effect",
+          "effectName": "ILDA 167"
+        },
+        {
+          "dmxRange": [168, 168],
+          "type": "Effect",
+          "effectName": "ILDA 168"
+        },
+        {
+          "dmxRange": [169, 169],
+          "type": "Effect",
+          "effectName": "ILDA 169"
+        },
+        {
+          "dmxRange": [170, 170],
+          "type": "Effect",
+          "effectName": "ILDA 170"
+        },
+        {
+          "dmxRange": [171, 171],
+          "type": "Effect",
+          "effectName": "ILDA 171"
+        },
+        {
+          "dmxRange": [172, 172],
+          "type": "Effect",
+          "effectName": "ILDA 172"
+        },
+        {
+          "dmxRange": [173, 173],
+          "type": "Effect",
+          "effectName": "ILDA 173"
+        },
+        {
+          "dmxRange": [174, 174],
+          "type": "Effect",
+          "effectName": "ILDA 174"
+        },
+        {
+          "dmxRange": [175, 175],
+          "type": "Effect",
+          "effectName": "ILDA 175"
+        },
+        {
+          "dmxRange": [176, 176],
+          "type": "Effect",
+          "effectName": "ILDA 176"
+        },
+        {
+          "dmxRange": [177, 177],
+          "type": "Effect",
+          "effectName": "ILDA 177"
+        },
+        {
+          "dmxRange": [178, 178],
+          "type": "Effect",
+          "effectName": "ILDA 178"
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "Effect",
+          "effectName": "ILDA 179"
+        },
+        {
+          "dmxRange": [180, 180],
+          "type": "Effect",
+          "effectName": "ILDA 180"
+        },
+        {
+          "dmxRange": [181, 181],
+          "type": "Effect",
+          "effectName": "ILDA 181"
+        },
+        {
+          "dmxRange": [182, 182],
+          "type": "Effect",
+          "effectName": "ILDA 182"
+        },
+        {
+          "dmxRange": [183, 183],
+          "type": "Effect",
+          "effectName": "ILDA 183"
+        },
+        {
+          "dmxRange": [184, 184],
+          "type": "Effect",
+          "effectName": "ILDA 184"
+        },
+        {
+          "dmxRange": [185, 185],
+          "type": "Effect",
+          "effectName": "ILDA 185"
+        },
+        {
+          "dmxRange": [186, 186],
+          "type": "Effect",
+          "effectName": "ILDA 186"
+        },
+        {
+          "dmxRange": [187, 187],
+          "type": "Effect",
+          "effectName": "ILDA 187"
+        },
+        {
+          "dmxRange": [188, 188],
+          "type": "Effect",
+          "effectName": "ILDA 188"
+        },
+        {
+          "dmxRange": [189, 189],
+          "type": "Effect",
+          "effectName": "ILDA 189"
+        },
+        {
+          "dmxRange": [190, 190],
+          "type": "Effect",
+          "effectName": "ILDA 190"
+        },
+        {
+          "dmxRange": [191, 191],
+          "type": "Effect",
+          "effectName": "ILDA 191"
+        },
+        {
+          "dmxRange": [192, 192],
+          "type": "Effect",
+          "effectName": "ILDA 192"
+        },
+        {
+          "dmxRange": [193, 193],
+          "type": "Effect",
+          "effectName": "ILDA 193"
+        },
+        {
+          "dmxRange": [194, 194],
+          "type": "Effect",
+          "effectName": "ILDA 194"
+        },
+        {
+          "dmxRange": [195, 195],
+          "type": "Effect",
+          "effectName": "ILDA 195"
+        },
+        {
+          "dmxRange": [196, 196],
+          "type": "Effect",
+          "effectName": "ILDA 196"
+        },
+        {
+          "dmxRange": [197, 197],
+          "type": "Effect",
+          "effectName": "ILDA 197"
+        },
+        {
+          "dmxRange": [198, 198],
+          "type": "Effect",
+          "effectName": "ILDA 198"
+        },
+        {
+          "dmxRange": [199, 199],
+          "type": "Effect",
+          "effectName": "ILDA 199"
+        },
+        {
+          "dmxRange": [200, 200],
+          "type": "Effect",
+          "effectName": "ILDA 200"
+        },
+        {
+          "dmxRange": [201, 201],
+          "type": "Effect",
+          "effectName": "ILDA 201"
+        },
+        {
+          "dmxRange": [202, 202],
+          "type": "Effect",
+          "effectName": "ILDA 202"
+        },
+        {
+          "dmxRange": [203, 203],
+          "type": "Effect",
+          "effectName": "ILDA 203"
+        },
+        {
+          "dmxRange": [204, 204],
+          "type": "Effect",
+          "effectName": "ILDA 204"
+        },
+        {
+          "dmxRange": [205, 205],
+          "type": "Effect",
+          "effectName": "ILDA 205"
+        },
+        {
+          "dmxRange": [206, 206],
+          "type": "Effect",
+          "effectName": "ILDA 206"
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "Effect",
+          "effectName": "ILDA 207"
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "Effect",
+          "effectName": "ILDA 208"
+        },
+        {
+          "dmxRange": [209, 209],
+          "type": "Effect",
+          "effectName": "ILDA 209"
+        },
+        {
+          "dmxRange": [210, 210],
+          "type": "Effect",
+          "effectName": "ILDA 210"
+        },
+        {
+          "dmxRange": [211, 211],
+          "type": "Effect",
+          "effectName": "ILDA 211"
+        },
+        {
+          "dmxRange": [212, 212],
+          "type": "Effect",
+          "effectName": "ILDA 212"
+        },
+        {
+          "dmxRange": [213, 213],
+          "type": "Effect",
+          "effectName": "ILDA 213"
+        },
+        {
+          "dmxRange": [214, 214],
+          "type": "Effect",
+          "effectName": "ILDA 214"
+        },
+        {
+          "dmxRange": [215, 215],
+          "type": "Effect",
+          "effectName": "ILDA 215"
+        },
+        {
+          "dmxRange": [216, 216],
+          "type": "Effect",
+          "effectName": "ILDA 216"
+        },
+        {
+          "dmxRange": [217, 217],
+          "type": "Effect",
+          "effectName": "ILDA 217"
+        },
+        {
+          "dmxRange": [218, 218],
+          "type": "Effect",
+          "effectName": "ILDA 218"
+        },
+        {
+          "dmxRange": [219, 219],
+          "type": "Effect",
+          "effectName": "ILDA 219"
+        },
+        {
+          "dmxRange": [220, 220],
+          "type": "Effect",
+          "effectName": "ILDA 220"
+        },
+        {
+          "dmxRange": [221, 221],
+          "type": "Effect",
+          "effectName": "ILDA 221"
+        },
+        {
+          "dmxRange": [222, 222],
+          "type": "Effect",
+          "effectName": "ILDA 222"
+        },
+        {
+          "dmxRange": [223, 223],
+          "type": "Effect",
+          "effectName": "ILDA 223"
+        },
+        {
+          "dmxRange": [224, 224],
+          "type": "Effect",
+          "effectName": "ILDA 224"
+        },
+        {
+          "dmxRange": [225, 225],
+          "type": "Effect",
+          "effectName": "ILDA 225"
+        },
+        {
+          "dmxRange": [226, 226],
+          "type": "Effect",
+          "effectName": "ILDA 226"
+        },
+        {
+          "dmxRange": [227, 227],
+          "type": "Effect",
+          "effectName": "ILDA 227"
+        },
+        {
+          "dmxRange": [228, 228],
+          "type": "Effect",
+          "effectName": "ILDA 228"
+        },
+        {
+          "dmxRange": [229, 229],
+          "type": "Effect",
+          "effectName": "ILDA 229"
+        },
+        {
+          "dmxRange": [230, 230],
+          "type": "Effect",
+          "effectName": "ILDA 230"
+        },
+        {
+          "dmxRange": [231, 231],
+          "type": "Effect",
+          "effectName": "ILDA 231"
+        },
+        {
+          "dmxRange": [232, 232],
+          "type": "Effect",
+          "effectName": "ILDA 232"
+        },
+        {
+          "dmxRange": [233, 233],
+          "type": "Effect",
+          "effectName": "ILDA 233"
+        },
+        {
+          "dmxRange": [234, 234],
+          "type": "Effect",
+          "effectName": "ILDA 234"
+        },
+        {
+          "dmxRange": [235, 235],
+          "type": "Effect",
+          "effectName": "ILDA 235"
+        },
+        {
+          "dmxRange": [236, 236],
+          "type": "Effect",
+          "effectName": "ILDA 236"
+        },
+        {
+          "dmxRange": [237, 237],
+          "type": "Effect",
+          "effectName": "ILDA 237"
+        },
+        {
+          "dmxRange": [238, 238],
+          "type": "Effect",
+          "effectName": "ILDA 238"
+        },
+        {
+          "dmxRange": [239, 239],
+          "type": "Effect",
+          "effectName": "ILDA 239"
+        },
+        {
+          "dmxRange": [240, 240],
+          "type": "Effect",
+          "effectName": "ILDA 240"
+        },
+        {
+          "dmxRange": [241, 241],
+          "type": "Effect",
+          "effectName": "ILDA 241"
+        },
+        {
+          "dmxRange": [242, 242],
+          "type": "Effect",
+          "effectName": "ILDA 242"
+        },
+        {
+          "dmxRange": [243, 243],
+          "type": "Effect",
+          "effectName": "ILDA 243"
+        },
+        {
+          "dmxRange": [244, 244],
+          "type": "Effect",
+          "effectName": "ILDA 244"
+        },
+        {
+          "dmxRange": [245, 245],
+          "type": "Effect",
+          "effectName": "ILDA 245"
+        },
+        {
+          "dmxRange": [246, 246],
+          "type": "Effect",
+          "effectName": "ILDA 246"
+        },
+        {
+          "dmxRange": [247, 247],
+          "type": "Effect",
+          "effectName": "ILDA 247"
+        },
+        {
+          "dmxRange": [248, 248],
+          "type": "Effect",
+          "effectName": "ILDA 248"
+        },
+        {
+          "dmxRange": [249, 249],
+          "type": "Effect",
+          "effectName": "ILDA 249"
+        },
+        {
+          "dmxRange": [250, 250],
+          "type": "Effect",
+          "effectName": "ILDA 250"
+        },
+        {
+          "dmxRange": [251, 251],
+          "type": "Effect",
+          "effectName": "ILDA 251"
+        },
+        {
+          "dmxRange": [252, 252],
+          "type": "Effect",
+          "effectName": "ILDA 252"
+        },
+        {
+          "dmxRange": [253, 253],
+          "type": "Effect",
+          "effectName": "ILDA 253"
+        },
+        {
+          "dmxRange": [254, 254],
+          "type": "Effect",
+          "effectName": "ILDA 254"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Effect",
+          "effectName": "ILDA 255"
+        }
+      ]
+    },
+    "Pattern Speed DJ": {
+      "name": "Pattern Speed",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "EffectSpeed",
+          "speed": "50Hz"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "EffectSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "100Hz"
+        }
+      ]
+    },
+    "Pattern Speed": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "100Hz"
+      }
+    },
+    "Size": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "BeamAngle",
+          "angleStart": "wide",
+          "angleEnd": "closed",
+          "comment": "width and height"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "BeamAngle",
+          "angleStart": "wide",
+          "angleEnd": "closed",
+          "comment": "width"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "BeamAngle",
+          "angleStart": "wide",
+          "angleEnd": "closed",
+          "comment": "height"
+        }
+      ]
+    },
+    "Horizontal Size": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "wide",
+        "angleEnd": "closed"
+      }
+    },
+    "Vertical Size": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "BeamAngle",
+        "angleStart": "wide",
+        "angleEnd": "closed"
+      }
+    },
+    "Automatic Size": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Effect",
+          "effectName": "changing width and height",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Effect",
+          "effectName": "changing width",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Effect",
+          "effectName": "changing height",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Rotation DJ": {
+      "name": "Rotation",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 192],
+          "type": "Rotation",
+          "angleStart": "-180deg",
+          "angleEnd": "180deg",
+          "helpWanted": "Are the angles correct?"
+        },
+        {
+          "dmxRange": [193, 224],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Rotation": {
+      "fineChannelAliases": ["Rotation fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capability": {
+        "type": "Rotation",
+        "angleStart": "-180deg",
+        "angleEnd": "180deg",
+        "helpWanted": "Are the angles correct?"
+      }
+    },
+    "Horizontal Position": {
+      "fineChannelAliases": ["Horizontal Position fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capability": {
+        "type": "BeamPosition",
+        "horizontalAngleStart": "left",
+        "horizontalAngleEnd": "right"
+      }
+    },
+    "Vertical Position": {
+      "fineChannelAliases": ["Vertical Position fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 128,
+      "capability": {
+        "type": "BeamPosition",
+        "verticalAngleStart": "top",
+        "verticalAngleEnd": "bottom"
+      }
+    },
+    "Inversion": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "comment": "Invert X axis"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "comment": "Invert Y axis"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "comment": "Invert X and Y axes"
+        }
+      ]
+    },
+    "Color Effects": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction",
+          "comment": "Original colors"
+        },
+        {
+          "dmxRange": [16, 79],
+          "type": "Effect",
+          "effectName": "Single color (monochrome)"
+        },
+        {
+          "dmxRange": [80, 143],
+          "type": "Effect",
+          "effectName": "Replace colors"
+        },
+        {
+          "dmxRange": [144, 255],
+          "type": "Effect",
+          "effectName": "Color change"
+        }
+      ]
+    },
+    "Color Effects Extended": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [128, 192],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "Effect",
+          "effectName": "Automatic change of color fade effects"
+        }
+      ]
+    },
+    "Color Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction",
+          "comment": "Original colors"
+        },
+        {
+          "dmxRange": [16, 47],
+          "type": "ColorPreset",
+          "comment": "Red … Yellow",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffff00"]
+        },
+        {
+          "dmxRange": [48, 79],
+          "type": "ColorPreset",
+          "comment": "Yellow … Green",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#00ff00"]
+        },
+        {
+          "dmxRange": [80, 111],
+          "type": "ColorPreset",
+          "comment": "Green … Cyan",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#00ffff"]
+        },
+        {
+          "dmxRange": [112, 143],
+          "type": "ColorPreset",
+          "comment": "Cyan … Blue",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [144, 175],
+          "type": "ColorPreset",
+          "comment": "Blue … Purple",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [176, 207],
+          "type": "ColorPreset",
+          "comment": "Purple … Red",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#ff0000"]
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "ColorPreset",
+          "comment": "White 50%",
+          "colors": ["#808080"]
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Manual control"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "NoFunction",
+          "comment": "Manual control"
+        },
+        {
+          "dmxRange": [20, 83],
+          "type": "Effect",
+          "effectName": "Auto position X+Y"
+        },
+        {
+          "dmxRange": [84, 147],
+          "type": "Effect",
+          "effectName": "Auto position X"
+        },
+        {
+          "dmxRange": [148, 211],
+          "type": "Effect",
+          "effectName": "Auto position Y"
+        },
+        {
+          "dmxRange": [212, 233],
+          "type": "Effect",
+          "effectName": "Demo mode"
+        },
+        {
+          "dmxRange": [234, 255],
+          "type": "Effect",
+          "effectName": "Sound-to-light",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Scan Speed DJ": {
+      "name": "Scan Speed",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction",
+          "comment": "Default"
+        },
+        {
+          "dmxRange": [32, 255],
+          "type": "Maintenance",
+          "parameterStart": 5,
+          "parameterEnd": 30,
+          "comment": "Scan speed in kpps (thousands points per second):",
+          "helpWanted": "Is this actually 5…40kpps like in Professional Mode?"
+        }
+      ]
+    },
+    "Scan Speed": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction",
+          "comment": "Default"
+        },
+        {
+          "dmxRange": [32, 255],
+          "type": "Maintenance",
+          "parameterStart": 5,
+          "parameterEnd": 40,
+          "comment": "Scan speed in kpps (thousands points per second):"
+        }
+      ]
+    },
+    "Safety Zone": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Maintenance",
+          "comment": "Safety bottom"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Maintenance",
+          "comment": "Safety top"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Maintenance",
+          "comment": "Safety left"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "comment": "Safety right"
+        }
+      ]
+    },
+    "Safety Zone Intensity DJ": {
+      "name": "Safety Zone Intensity",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Maintenance",
+          "comment": "No reduction"
+        },
+        {
+          "dmxRange": [1, 128],
+          "type": "Maintenance",
+          "comment": "Reduction to 50% brightness"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Maintenance",
+          "comment": "Reduction to blackout"
+        }
+      ]
+    },
+    "Safety Zone Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Maintenance",
+        "comment": "Reduction",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
+    },
+    "Color Balancing Red": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "bright",
+        "brightnessEnd": "off"
+      }
+    },
+    "Color Balancing Green": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "bright",
+        "brightnessEnd": "off"
+      }
+    },
+    "Color Balancing Blue": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "bright",
+        "brightnessEnd": "off"
+      }
+    },
+    "Blanking": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 192],
+          "type": "Maintenance",
+          "comment": "Manual blanking"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "Maintenance",
+          "comment": "Automatic blanking",
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
+        }
+      ]
+    },
+    "Blank Shift": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 192],
+          "type": "Maintenance",
+          "comment": "Manual blank shift"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "Maintenance",
+          "comment": "Automatic blank shift",
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
+        }
+      ]
+    },
+    "Reserved 1": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 2": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 3": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 4": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 5": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 6": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 7": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 8": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 9": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 10": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reserved 11": {
+      "name": "Reserved",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DJ",
+      "channels": [
+        "Intensity",
+        "Patterns",
+        "Pattern Speed DJ",
+        "Size",
+        "Automatic Size",
+        "Rotation DJ",
+        "Horizontal Position",
+        "Horizontal Position fine",
+        "Vertical Position",
+        "Vertical Position fine",
+        "Color Effects",
+        "Color Effects Extended",
+        "Strobe",
+        "Mode",
+        "Scan Speed DJ",
+        "Safety Zone",
+        "Safety Zone Intensity DJ",
+        "Blanking",
+        "Blank Shift"
+      ]
+    },
+    {
+      "name": "Professional",
+      "channels": [
+        "Intensity",
+        "Patterns",
+        "Pattern Speed",
+        "Horizontal Position",
+        "Horizontal Position fine",
+        "Vertical Position",
+        "Vertical Position fine",
+        "Rotation",
+        "Rotation fine",
+        "Horizontal Size",
+        "Vertical Size",
+        "Inversion",
+        "Color Selection",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Scan Speed",
+        "Safety Zone",
+        "Safety Zone Intensity",
+        "Color Balancing Red",
+        "Color Balancing Green",
+        "Color Balancing Blue",
+        "Reserved 1",
+        "Reserved 2",
+        "Reserved 3",
+        "Reserved 4",
+        "Reserved 5",
+        "Reserved 6",
+        "Reserved 7",
+        "Reserved 8",
+        "Reserved 9",
+        "Reserved 10",
+        "Reserved 11"
+      ]
+    }
+  ]
+}

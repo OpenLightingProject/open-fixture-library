@@ -1,0 +1,268 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "N-150",
+  "categories": ["Smoke"],
+  "meta": {
+    "authors": ["Matthias Naumann"],
+    "createDate": "2020-02-19",
+    "lastModifyDate": "2020-02-19",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2020-02-19",
+      "comment": "created by Q Light Controller Plus (version 4.12.2)"
+    }
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51701970-Manual-58249-1.700-eurolite-n-150-smoke-machine-de_en_es_fr.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn51701970-eurolite-n-150-smoke-machine.html"
+    ],
+    "video": [
+      "https://youtu.be/Jwrp7I_kYVs"
+    ]
+  },
+  "physical": {
+    "dimensions": [300, 240, 670],
+    "weight": 15,
+    "power": 1500,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 13],
+          "type": "Fog",
+          "fogType": "Fog",
+          "fogOutput": "off"
+        },
+        {
+          "dmxRange": [14, 127],
+          "type": "Fog",
+          "fogType": "Fog",
+          "comment": "Select volume on channel 2"
+        },
+        {
+          "dmxRange": [128, 231],
+          "type": "Effect",
+          "effectName": "Timer mode"
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "Fog",
+          "fogType": "Fog",
+          "fogOutput": "strong"
+        }
+      ]
+    },
+    "Fog Volume": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 70],
+          "type": "FogOutput",
+          "fogOutput": "off"
+        },
+        {
+          "dmxRange": [71, 75],
+          "type": "FogOutput",
+          "fogOutput": "20%",
+          "comment": "permanent"
+        },
+        {
+          "dmxRange": [76, 100],
+          "type": "FogOutput",
+          "fogOutput": "30%",
+          "comment": "50sec"
+        },
+        {
+          "dmxRange": [101, 125],
+          "type": "FogOutput",
+          "fogOutput": "40%",
+          "comment": "43sec"
+        },
+        {
+          "dmxRange": [126, 150],
+          "type": "FogOutput",
+          "fogOutput": "50%",
+          "comment": "34sec"
+        },
+        {
+          "dmxRange": [151, 175],
+          "type": "FogOutput",
+          "fogOutput": "60%",
+          "comment": "29sec"
+        },
+        {
+          "dmxRange": [176, 200],
+          "type": "FogOutput",
+          "fogOutput": "70%",
+          "comment": "25sec"
+        },
+        {
+          "dmxRange": [201, 225],
+          "type": "FogOutput",
+          "fogOutput": "80%",
+          "comment": "23sec"
+        },
+        {
+          "dmxRange": [226, 245],
+          "type": "FogOutput",
+          "fogOutput": "90%",
+          "comment": "21sec"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "FogOutput",
+          "fogOutput": "100%",
+          "comment": "20sec"
+        }
+      ]
+    },
+    "Timer Duration": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Time",
+          "time": "1s"
+        },
+        {
+          "dmxRange": [6, 29],
+          "type": "Time",
+          "time": "13s"
+        },
+        {
+          "dmxRange": [30, 54],
+          "type": "Time",
+          "time": "33s"
+        },
+        {
+          "dmxRange": [55, 79],
+          "type": "Time",
+          "time": "53s"
+        },
+        {
+          "dmxRange": [80, 104],
+          "type": "Time",
+          "time": "73s"
+        },
+        {
+          "dmxRange": [105, 129],
+          "type": "Time",
+          "time": "92s"
+        },
+        {
+          "dmxRange": [130, 154],
+          "type": "Time",
+          "time": "112s"
+        },
+        {
+          "dmxRange": [155, 179],
+          "type": "Time",
+          "time": "131s"
+        },
+        {
+          "dmxRange": [180, 204],
+          "type": "Time",
+          "time": "151s"
+        },
+        {
+          "dmxRange": [205, 229],
+          "type": "Time",
+          "time": "170s"
+        },
+        {
+          "dmxRange": [230, 254],
+          "type": "Time",
+          "time": "190s"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Time",
+          "time": "200s"
+        }
+      ]
+    },
+    "Timer Interval": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Time",
+          "time": "1s"
+        },
+        {
+          "dmxRange": [6, 29],
+          "type": "Time",
+          "time": "13s"
+        },
+        {
+          "dmxRange": [30, 54],
+          "type": "Time",
+          "time": "33s"
+        },
+        {
+          "dmxRange": [55, 79],
+          "type": "Time",
+          "time": "53s"
+        },
+        {
+          "dmxRange": [80, 104],
+          "type": "Time",
+          "time": "73s"
+        },
+        {
+          "dmxRange": [105, 129],
+          "type": "Time",
+          "time": "92s"
+        },
+        {
+          "dmxRange": [130, 154],
+          "type": "Time",
+          "time": "112s"
+        },
+        {
+          "dmxRange": [155, 179],
+          "type": "Time",
+          "time": "131s"
+        },
+        {
+          "dmxRange": [180, 204],
+          "type": "Time",
+          "time": "151s"
+        },
+        {
+          "dmxRange": [205, 229],
+          "type": "Time",
+          "time": "170s"
+        },
+        {
+          "dmxRange": [230, 254],
+          "type": "Time",
+          "time": "190s"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Time",
+          "time": "200s"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Mode",
+        "Fog Volume",
+        "Timer Duration",
+        "Timer Interval"
+      ]
+    }
+  ]
+}

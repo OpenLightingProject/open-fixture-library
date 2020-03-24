@@ -11,6 +11,7 @@ This is the developer documentation for the *Open Fixture Library*. Please follo
   - `fixture-features/` – [Fixture features](fixture-features.md), special fixture characteristics used to determine a set of test fixtures
   - `model/` – Classes of the [fixture model](fixture-model.md) that help ease processing fixture data (see the [model API reference](model-api.md))
 * `plugins/` – [Plugins](plugins.md) for export / import to / from other software's fixture formats
+* `resources/` – Resources (e.g. [gobos](fixture-format.md#gobo-resources)) that fixtures can use
 * `schemas/` – Schemas for the [fixture definitions](fixture-format.md#schema)
 * `server/` – Load balancer config and auto-deploy script for everyone interested
 * `tests/` – [Unit tests](testing.md), much of them run automatically in GitHub with Travis
