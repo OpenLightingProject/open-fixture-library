@@ -166,10 +166,12 @@ const importHelpers = {
    * to the capability. It may also set cap.type to "Rotation".
    * @param {String} capabilityName The capability name to extract information from.
    * @param {Object} cap The OFL capability object to add found properties to.
+   * @param {Boolean} isRotationCap Whether to add ' CW' for default speed values.
    * @returns {String} The rest of the capabilityName.
    */
-  getSpeedGuessedComment(capabilityName, cap) {
-    return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|C?CW)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i, (match, direction, start, end) => {
+  getSpeedGuessedComment(capabilityName, cap, isRotationCap) {
+    const speedRegex = /(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|C?CW)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i;
+    const parsedComment = capabilityName.replace(speedRegex, (_, direction, start, end) => {
       const directionStr = direction ? (direction.match(/^(?:clockwise|CW),?\s+$/i) ? ` CW` : ` CCW`) : ``;
 
       if (directionStr !== ``) {
@@ -192,6 +194,15 @@ const importHelpers = {
       // delete the parsed part
       return ``;
     });
+
+    if (cap.speedStart === undefined && cap.speedEnd === undefined) {
+      const directionStr = isRotationCap ? ` CW` : ``;
+      cap.speedStart = `slow${directionStr}`;
+      cap.speedEnd = `fast${directionStr}`;
+      cap.helpWanted = `Are the automatically added speed values correct?`;
+    }
+
+    return parsedComment;
   }
 };
 
@@ -838,7 +849,7 @@ const capabilityPresets = {
         slotNumber: index + 1
       };
 
-      const comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+      const comment = importHelpers.getSpeedGuessedComment(capabilityName, cap, false);
 
       if (`speedStart` in cap) {
         cap.shakeSpeedStart = cap.speedStart;
@@ -938,7 +949,7 @@ const capabilityPresets = {
           const cap = {
             type: `WheelRotation`
           };
-          cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+          cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap, true);
 
           return cap;
         }

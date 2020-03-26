@@ -315,7 +315,7 @@ const parserPerChannelType = {
       cap.type = `WheelSlot`;
       cap.slotNumber = index + 1;
 
-      cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+      cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap, true);
 
       if (`speedStart` in cap) {
         cap.type = `WheelRotation`;
@@ -348,7 +348,7 @@ const parserPerChannelType = {
       slotNumber: index + 1
     };
 
-    cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+    cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap, true);
 
     if (`speedStart` in cap) {
       cap.type = channelNameInWheels ? `WheelRotation` : `WheelSlotRotation`;
@@ -362,7 +362,7 @@ const parserPerChannelType = {
       type: `Effect`,
       effectName: `` // set it first here so effectName is before speedStart/speedEnd
     };
-    cap.effectName = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+    cap.effectName = importHelpers.getSpeedGuessedComment(capabilityName, cap, false);
 
     if (/\bsound\b/i.test(cap.effectName)) {
       cap.soundControlled = true;
@@ -379,7 +379,7 @@ const parserPerChannelType = {
       const cap = {
         type: `PanContinuous`
       };
-      cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+      cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap, true);
       return cap;
     }
 
@@ -392,7 +392,7 @@ const parserPerChannelType = {
       const cap = {
         type: `TiltContinuous`
       };
-      cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+      cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap, true);
       return cap;
     }
 
@@ -436,7 +436,7 @@ const parserPerChannelType = {
       cap.randomTiming = true;
     }
 
-    cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+    cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap, false);
 
     return cap;
   },
@@ -450,7 +450,7 @@ const parserPerChannelType = {
       cap.type = `Speed`;
     }
 
-    cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+    cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap, false);
 
     return cap;
   }
