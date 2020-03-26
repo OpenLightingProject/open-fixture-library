@@ -108,7 +108,7 @@ function getOflCategories(qlcPlusFixture) {
 function addOflFixturePhysical(fixture, qlcPlusFixture) {
   const allModesHavePhysical = qlcPlusFixture.Mode.every(mode => `Physical` in mode);
   const firstPhysicalMode = qlcPlusFixture.Mode.find(mode => `Physical` in mode);
-  const hasModePhysical = firstPhysicalMode !== null;
+  const hasModePhysical = firstPhysicalMode !== undefined;
   const hasGlobalPhysical = `Physical` in qlcPlusFixture;
 
   if (hasGlobalPhysical || (hasModePhysical && !allModesHavePhysical)) {
