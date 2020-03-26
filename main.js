@@ -17,7 +17,6 @@ const packageJson = require(`./package.json`);
 const plugins = require(`./plugins/plugins.json`);
 const { fixtureFromRepository, embedResourcesIntoFixtureJson } = require(`./lib/model.js`);
 const register = require(`./fixtures/register.json`);
-const getOutObjectFromEditorData = require(`./lib/get-out-object-from-editor-data.js`);
 const Fixture = require(`./lib/model/Fixture.js`).default;
 const Manufacturer = require(`./lib/model/Manufacturer.js`).default;
 
