@@ -105,6 +105,11 @@ export default {
     endpoint: {
       type: String,
       required: true
+    },
+    queryParameters: {
+      type: Object,
+      required: false,
+      default: () => ({})
     }
   },
   data() {
@@ -121,7 +126,7 @@ export default {
       return stateTitles[this.state];
     },
     sendObjectJson() {
-      if (!(this.sendObject instanceof FormData)) {
+      if (process.server || !(this.sendObject instanceof FormData)) {
         return this.sendObject;
       }
 
@@ -179,6 +184,18 @@ export default {
     },
     hasValidationErrors() {
       return this.validationIssues.some(message => message.severity === `error`);
+    }
+  },
+  created() {
+    const { pullRequestUrl, error } = this.queryParameters;
+
+    if (error && error !== `null`) {
+      this.error = error;
+      this.state = `error`;
+    }
+    else if (pullRequestUrl && pullRequestUrl !== `null`) {
+      this.pullRequestUrl = pullRequestUrl;
+      this.state = `success`;
     }
   },
   methods: {
