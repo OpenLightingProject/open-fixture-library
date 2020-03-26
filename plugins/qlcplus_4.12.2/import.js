@@ -716,8 +716,15 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
  */
 function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
   const mode = {
-    name: qlcPlusMode.$.Name
+    name: qlcPlusMode.$.Name.replace(/\s+(mode)|(mode)\s+/ig, ``)
   };
+
+  const match = mode.name.match(/(\d+)(?:\s+|-)?(?:channels?|chan|ch)/i);
+  if (match) {
+    const [matchedPart, numberOfChannels] = match;
+    mode.shortName = mode.name.replace(matchedPart, `${numberOfChannels}ch`);
+    mode.name = mode.name.replace(matchedPart, `${numberOfChannels}-channel`);
+  }
 
   if (`Physical` in qlcPlusMode) {
     const physical = getOflPhysical(qlcPlusMode.Physical[0], oflFixPhysical);
