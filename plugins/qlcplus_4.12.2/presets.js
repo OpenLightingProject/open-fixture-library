@@ -171,38 +171,46 @@ const importHelpers = {
    */
   getSpeedGuessedComment(capabilityName, cap, isRotationCap) {
     const speedRegex = /(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|C?CW)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i;
-    const parsedComment = capabilityName.replace(speedRegex, (_, direction, start, end) => {
-      const directionStr = direction ? (direction.match(/^(?:clockwise|CW),?\s+$/i) ? ` CW` : ` CCW`) : ``;
+    if (capabilityName.match(speedRegex)) {
+      return capabilityName.replace(speedRegex, (_, direction, start, end) => {
+        const directionStr = direction ? (direction.match(/^(?:clockwise|CW),?\s+$/i) ? ` CW` : ` CCW`) : ``;
 
-      if (directionStr !== ``) {
-        cap.type = `Rotation`;
-      }
+        if (directionStr !== ``) {
+          cap.type = `Rotation`;
+        }
 
-      start = start.toLowerCase();
-      end = end.toLowerCase();
+        start = start.toLowerCase();
+        end = end.toLowerCase();
 
-      const startNumber = parseFloat(start);
-      const endNumber = parseFloat(end);
-      if (!isNaN(startNumber) && !isNaN(endNumber)) {
-        start = `${startNumber}Hz`;
-        end = `${endNumber}Hz`;
-      }
+        const startNumber = parseFloat(start);
+        const endNumber = parseFloat(end);
+        if (!isNaN(startNumber) && !isNaN(endNumber)) {
+          start = `${startNumber}Hz`;
+          end = `${endNumber}Hz`;
+        }
 
-      cap.speedStart = start + directionStr;
-      cap.speedEnd = end + directionStr;
+        cap.speedStart = start + directionStr;
+        cap.speedEnd = end + directionStr;
 
-      // delete the parsed part
-      return ``;
-    });
-
-    if (cap.speedStart === undefined && cap.speedEnd === undefined) {
-      const directionStr = isRotationCap ? ` CW` : ``;
-      cap.speedStart = `slow${directionStr}`;
-      cap.speedEnd = `fast${directionStr}`;
-      cap.helpWanted = `Are the automatically added speed values correct?`;
+        // delete the parsed part
+        return ``;
+      });
     }
 
-    return parsedComment;
+    const stopRegex = /(?:\s*\b)(?:stop(?:ped)?|no rotation|no rotate)(?:\b\s*)/ig;
+    if (capabilityName.match(stopRegex)) {
+      return capabilityName.replace(stopRegex, () => {
+        cap.speed = `stop`;
+        return ``;
+      });
+    }
+
+    const directionStr = isRotationCap ? ` CW` : ``;
+    cap.speedStart = `slow${directionStr}`;
+    cap.speedEnd = `fast${directionStr}`;
+    cap.helpWanted = `Are the automatically added speed values correct?`;
+
+    return capabilityName;
   }
 };
 
