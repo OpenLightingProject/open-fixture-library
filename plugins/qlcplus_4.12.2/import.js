@@ -1,5 +1,7 @@
 const xml2js = require(`xml2js`);
 const promisify = require(`util`).promisify;
+
+const oflManufacturers = require(`../../fixtures/manufacturers.json`);
 const qlcplusGoboAliases = require(`../../resources/gobos/aliases/qlcplus.json`);
 
 const {
@@ -21,11 +23,8 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
   const parser = new xml2js.Parser();
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
-  const out = {
-    manufacturers: {},
-    fixtures: {},
-    warnings: {}
-  };
+  const warnings = [];
+
   const fixture = {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`
   };
@@ -37,7 +36,14 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
 
   const manKey = slugify(qlcPlusFixture.Manufacturer[0]);
   const fixKey = `${manKey}/${slugify(fixture.name)}`;
-  out.warnings[fixKey] = [`Please check if manufacturer is correct.`];
+
+  const manufacturers = {};
+  if (!(manKey in oflManufacturers)) {
+    manufacturers[manKey] = {
+      name: qlcPlusFixture.Manufacturer[0]
+    };
+    warnings.push(`Please check if manufacturer is correct and add manufacturer URL.`);
+  }
 
   fixture.categories = getOflCategories(qlcPlusFixture);
 
@@ -73,17 +79,23 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
 
   qlcPlusFixture.Channel.forEach(channel => addOflChannel(fixture, channel, qlcPlusFixture));
 
-  mergeFineChannels(fixture, qlcPlusFixture, out.warnings[fixKey]);
+  mergeFineChannels(fixture, qlcPlusFixture, warnings);
 
-  fixture.modes = qlcPlusFixture.Mode.map(mode => getOflMode(mode, fixture.physical, out.warnings[fixKey]));
+  fixture.modes = qlcPlusFixture.Mode.map(mode => getOflMode(mode, fixture.physical, warnings));
 
   addSwitchingChannels(fixture, qlcPlusFixture);
 
   cleanUpFixture(fixture, qlcPlusFixture);
 
-  out.fixtures[fixKey] = fixture;
-
-  return out;
+  return {
+    manufacturers,
+    fixtures: {
+      [fixKey]: fixture
+    },
+    warnings: {
+      [fixKey]: warnings
+    }
+  };
 };
 
 /**
