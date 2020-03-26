@@ -170,10 +170,10 @@ const importHelpers = {
    * @returns {String} The rest of the capabilityName.
    */
   getSpeedGuessedComment(capabilityName, cap, isRotationCap) {
-    const speedRegex = /(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|C?CW)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i;
+    const speedRegex = /(?:^|,\s*|\s+)\(?((?:(?:counter\s?-?\s?)?clockwise|C?CW)(?:\s+rotation)?(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i;
     if (capabilityName.match(speedRegex)) {
       return capabilityName.replace(speedRegex, (_, direction, start, end) => {
-        const directionStr = direction ? (direction.match(/^(?:clockwise|CW),?\s+$/i) ? ` CW` : ` CCW`) : ``;
+        const directionStr = direction ? (direction.match(/counter|CCW/i) ? ` CCW` : ` CW`) : ``;
 
         if (directionStr !== ``) {
           cap.type = `Rotation`;
