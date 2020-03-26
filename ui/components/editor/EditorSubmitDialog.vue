@@ -121,8 +121,25 @@ export default {
     title() {
       return stateTitles[this.state];
     },
+    sendObjectJson() {
+      if (!(this.sendObject instanceof FormData)) {
+        return this.sendObject;
+      }
+
+      if (this.sendObject.entries) {
+        const sendObject = {};
+
+        for (const [key, value] of this.sendObject.entries()) {
+          sendObject[key] = value;
+        }
+
+        return sendObject;
+      }
+
+      return `couldn't convert FormData object to JSON`;
+    },
     rawData() {
-      const rawData = JSON.stringify(this.sendObject, null, 2);
+      const rawData = JSON.stringify(this.sendObjectJson, null, 2);
 
       if (this.state === `error`) {
         // eslint-disable-next-line quotes, prefer-template
@@ -134,9 +151,9 @@ export default {
   },
   methods: {
     async validate(sendObject) {
-      this.sendObject = sendObject
+      this.sendObject = sendObject;
 
-      console.log(`validate`, clone(this.sendObject));
+      console.log(`validate`, clone(this.sendObjectJson));
 
       this.state = `validating`;
       try {
@@ -161,8 +178,14 @@ export default {
       }
     },
     async onSubmit() {
-      this.sendObject.createPullRequest = true;
-      console.log(`submit`, clone(this.sendObject));
+      if (this.sendObject instanceof FormData) {
+        this.sendObject.append(`createPullRequest`, `true`);
+      }
+      else {
+        this.sendObject.createPullRequest = true;
+      }
+
+      console.log(`submit`, clone(this.sendObjectJson));
 
       this.state = `uploading`;
       try {
