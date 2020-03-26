@@ -8,12 +8,13 @@
     <div v-if="state === `validating`">Validating…</div>
 
     <div v-else-if="state === `ready`">
-      <template v-if="validationErrors.length || validationWarnings.length">
+      <template v-if="validationIssues.length">
         The fixture validation returned some issues:
 
         <ul>
-          <li v-for="message in validationErrors" :key="message">{{ message }}</li>
-          <li v-for="message in validationWarnings" :key="message">{{ message }}</li>
+          <li v-for="issue in validationIssues" :key="issue.key">
+            <strong>{{ issue.fixture }}:</strong> {{ issue.message }}
+          </li>
         </ul>
 
         You can try to resolve as many issues as you can (some may be unavoidable
@@ -28,9 +29,8 @@
 
       <div class="button-bar right">
         <a href="#cancel" class="button secondary" @click.prevent="onCancel">Continue editing</a>
-        <!-- Hide the download button in case the fixture has errors. Some plugins are not able to download such fixtures. -->
         <DownloadButton
-          v-if="!validationErrors.length"
+          v-if="canDownload"
           button-style="select"
           :show-help="false"
           :editor-fixtures="sendObject" />
@@ -53,7 +53,7 @@
           class="button secondary"
           @click.prevent="onReset">Create another fixture</a>
         <DownloadButton
-          v-if="!validationErrors.length"
+          v-if="canDownload"
           button-style="select"
           :show-help="false"
           :editor-fixtures="sendObject" />
@@ -113,8 +113,7 @@ export default {
       sendObject: null,
       error: null,
       pullRequestUrl: null,
-      validationErrors: [],
-      validationWarnings: []
+      validationResult: null
     };
   },
   computed: {
@@ -147,6 +146,39 @@ export default {
       }
 
       return rawData;
+    },
+    canDownload() {
+      // Hide the download button in case the fixture has errors. Some plugins are not able to export such fixtures.
+      // TODO: make imported fixtures downloadable as well
+      return process.client && !this.hasValidationErrors && !(this.sendObject instanceof FormData);
+    },
+    validationIssues() {
+      if (this.validationResult === null) {
+        return [];
+      }
+
+      return Object.keys(this.validationResult.fixtures).flatMap(fixture => {
+        const fixtureErrors = this.validationResult.errors[fixture] || [];
+        const fixtureWarnings = this.validationResult.warnings[fixture] || [];
+
+        return [
+          ...fixtureErrors.map((error, index) => ({
+            fixture,
+            message: error,
+            severity: `error`,
+            key: `${fixture}-error-${index}-${error}`
+          })),
+          ...fixtureWarnings.map((warning, index) => ({
+            fixture,
+            message: warning,
+            severity: `warning`,
+            key: `${fixture}-warning-${index}-${warning}`
+          }))
+        ];
+      });
+    },
+    hasValidationErrors() {
+      return this.validationIssues.some(message => message.severity === `error`);
     }
   },
   methods: {
@@ -166,8 +198,7 @@ export default {
           throw new Error(response.data.error);
         }
 
-        this.validationErrors = response.data.errors;
-        this.validationWarnings = response.data.warnings;
+        this.validationResult = response.data;
         this.state = `ready`;
       }
       catch (error) {
