@@ -41,6 +41,10 @@ export default {
       }
 
       this.$emit(`input`, file);
+    },
+    clear() {
+      this.$refs.fileInput.value = ``;
+      this.onFileChanged();
     }
   }
 };

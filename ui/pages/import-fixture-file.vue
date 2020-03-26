@@ -42,6 +42,7 @@
           label="Fixture definition file"
           hint="Maximum file size is 5MB.">
           <EditorFileUpload
+            ref="fileUpload"
             v-model="file"
             :required="true"
             name="file"
@@ -82,39 +83,17 @@
         </LabeledInput>
       </section>
 
-      <div class="button-bar">
+      <div class="button-bar right">
         <button type="submit" class="primary">Import fixture</button>
       </div>
     </VueForm>
 
-    <A11yDialog
-      id="submit"
-      :cancellable="false"
-      :shown="uploading || pullRequestUrl !== null || error !== null"
-      :title="dialogTitle">
-
-      <div v-if="uploading">Uploading…</div>
-
-      <div v-else-if="pullRequestUrl">
-        Your fixture was successfully uploaded to GitHub (see the <a :href="pullRequestUrl" target="_blank">pull request</a>). It will be now reviewed and then merged into the library. Thank you for your contribution!
-
-        <div class="button-bar right">
-          <NuxtLink to="/" class="button secondary">Back to homepage</NuxtLink>
-          <a href="/import-fixture-file" class="button secondary" @click.prevent="reset">Import another fixture</a>
-          <a :href="pullRequestUrl" class="button primary" target="_blank">See pull request</a>
-        </div>
-      </div>
-
-      <div v-else-if="error">
-        <span>Unfortunately, there was an error while uploading: {{ error }}</span>
-
-        <div class="button-bar right">
-          <NuxtLink to="/" class="button secondary">Back to homepage</NuxtLink>
-          <a href="/import-fixture-file" class="button primary" @click.prevent="reset">Try again</a>
-        </div>
-      </div>
-
-    </A11yDialog>
+    <EditorSubmitDialog
+      ref="submitDialog"
+      endpoint="/ajax/import-fixture-file"
+      :query-parameters="queryParameters"
+      @success="storePrefillData"
+      @reset="reset" />
   </div>
 </template>
 
@@ -123,14 +102,14 @@ import scrollIntoView from 'scroll-into-view';
 
 import plugins from '../../plugins/plugins.json';
 
-import A11yDialog from '../components/A11yDialog.vue';
 import EditorFileUpload from '../components/editor/EditorFileUpload.vue';
+import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';
 import LabeledInput from '../components/LabeledInput.vue';
 
 export default {
   components: {
-    A11yDialog,
     EditorFileUpload,
+    EditorSubmitDialog,
     LabeledInput
   },
   head() {
@@ -147,12 +126,6 @@ export default {
     };
   },
   asyncData({ query }) {
-    let pullRequestUrl = query.pullRequestUrl;
-
-    if (pullRequestUrl === `null`) {
-      pullRequestUrl = null;
-    }
-
     return {
       formstate: {},
       plugins,
@@ -162,23 +135,8 @@ export default {
       author: ``,
       githubUsername: ``,
       honeypot: ``,
-      pullRequestUrl: pullRequestUrl || null,
-      error: query.error || null,
-      uploading: false
+      queryParameters: query
     };
-  },
-  computed: {
-    dialogTitle() {
-      if (this.uploading) {
-        return `Submitting fixture definition file…`;
-      }
-
-      if (this.pullRequestUrl) {
-        return `Upload complete`;
-      }
-
-      return `Upload failed`;
-    }
   },
   mounted() {
     this.applyStoredPrefillData();
@@ -214,32 +172,14 @@ export default {
 
       // submit via AJAX
 
-      this.uploading = true;
+      const sendObject = new FormData(formElement);
+      sendObject.append(`isAjax`, `true`);
 
-      const formData = new FormData(formElement);
-      formData.append(`isAjax`, `true`);
-
-      try {
-        const response = await this.$axios.post(`/ajax/import-fixture-file`, formData);
-
-        if (response.data.error) {
-          throw new Error(response.data.error);
-        }
-
-        this.pullRequestUrl = response.data.pullRequestUrl;
-        this.uploading = false;
-        this.storePrefillData();
-      }
-      catch (error) {
-        console.error(error);
-        this.error = error.message;
-        this.uploading = false;
-      }
+      this.$refs.submitDialog.validate(sendObject);
     },
     reset() {
-      this.pullRequestUrl = null;
-      this.error = null;
-      this.uploading = false;
+      this.plugin = ``;
+      this.$refs.fileUpload.clear();
 
       // clear query
       this.$router.push({
