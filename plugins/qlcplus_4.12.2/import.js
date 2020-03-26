@@ -645,7 +645,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
       DMXconnector = `3.5mm stereo jack`;
     }
 
-    if (DMXconnector !== `` && oflFixPhysical.DMXconnector !== DMXconnector) {
+    if (![``, `Other`, oflFixPhysical.DMXconnector].includes(DMXconnector)) {
       physical.DMXconnector = DMXconnector;
     }
   }
@@ -657,7 +657,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
     physical.bulb = {};
 
     const type = qlcPlusPhysical.Bulb[0].$.Type;
-    if (type !== `` && getOflFixPhysicalProperty(`bulb`, `type`) !== type) {
+    if (![``, `Other`, getOflFixPhysicalProperty(`bulb`, `type`)].includes(type)) {
       physical.bulb.type = type;
     }
 
@@ -679,7 +679,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
     physical.lens = {};
 
     const name = qlcPlusPhysical.Lens[0].$.Name;
-    if (name !== `` && getOflFixPhysicalProperty(`lens`, `name`) !== name) {
+    if (![``, `Other`, getOflFixPhysicalProperty(`lens`, `name`)].includes(name)) {
       physical.lens.name = name;
     }
 
