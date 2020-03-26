@@ -33,7 +33,7 @@
           v-if="canDownload"
           button-style="select"
           :show-help="false"
-          :editor-fixtures="sendObject" />
+          :editor-fixtures="validationResult" />
         <a href="#submit" class="button primary" @click.prevent="onSubmit">Submit to OFL</a>
       </div>
     </div>
@@ -56,7 +56,7 @@
           v-if="canDownload"
           button-style="select"
           :show-help="false"
-          :editor-fixtures="sendObject" />
+          :editor-fixtures="validationResult" />
         <a :href="pullRequestUrl" class="button primary" target="_blank">See pull request</a>
       </div>
     </div>
@@ -154,8 +154,7 @@ export default {
     },
     canDownload() {
       // Hide the download button in case the fixture has errors. Some plugins are not able to export such fixtures.
-      // TODO: make imported fixtures downloadable as well
-      return process.client && !this.hasValidationErrors && !(this.sendObject instanceof FormData);
+      return process.client && !this.hasValidationErrors;
     },
     validationIssues() {
       if (this.validationResult === null) {

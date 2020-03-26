@@ -245,7 +245,7 @@ export default {
       required: false,
       default: 0
     },
-    // a fixture from the editor, not yet submitted
+    // fixtures from the editor, not yet submitted
     editorFixtures: {
       type: Object,
       required: false,
@@ -287,7 +287,7 @@ export default {
     // returns whether we're handling only one single fixture here
     // or all fixtures in a specific format
     isSingle() {
-      return (this.editorFixtures && this.editorFixtures.fixtures.length === 1) || this.fixtureKey;
+      return (this.editorFixtures && Object.keys(this.editorFixtures.fixtures).length === 1) || this.fixtureKey;
     },
     title() {
       if (this.isSingle) {

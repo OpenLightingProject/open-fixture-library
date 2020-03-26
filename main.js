@@ -77,7 +77,7 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
     return;
   }
 
-  const outObject = getOutObjectFromEditorData(request.body.fixtures);
+  const outObject = request.body;
   const fixtures = Object.entries(outObject.fixtures).map(([key, jsonObject]) => {
     const [manKey, fixKey] = key.split(`/`);
 
