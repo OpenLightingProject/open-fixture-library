@@ -446,6 +446,15 @@ const parserPerChannelType = {
     if (channelName.match(/pan(?:\/)?tilt/i)) {
       cap.type = `PanTiltSpeed`;
     }
+    else if (channelName.match(/strobe/i) || capabilityName.match(/strobe/i)) {
+      if (channelName.match(/speed|rate/i)) {
+        cap.type = `StrobeSpeed`;
+      }
+      else {
+        cap.type = `ShutterStrobe`;
+        cap.shutterEffect = `Strobe`;
+      }
+    }
     else {
       cap.type = `Speed`;
     }
