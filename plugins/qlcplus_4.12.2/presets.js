@@ -169,29 +169,42 @@ const importHelpers = {
    * @returns {String} The rest of the capabilityName.
    */
   getSpeedGuessedComment(capabilityName, cap) {
-    return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|C?CW)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i, (match, direction, start, end) => {
-      const directionStr = direction ? (direction.match(/^(?:clockwise|CW),?\s+$/i) ? ` CW` : ` CCW`) : ``;
+    const speedRegex = /(?:^|,\s*|\s+)\(?((?:(?:counter\s?-?\s?)?clockwise|C?CW).*?(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i;
+    if (capabilityName.match(speedRegex)) {
+      return capabilityName.replace(speedRegex, (_, direction, start, end) => {
+        const directionStr = direction ? (direction.match(/counter|CCW/i) ? ` CCW` : ` CW`) : ``;
 
-      if (directionStr !== ``) {
-        cap.type = `Rotation`;
-      }
+        if (directionStr !== ``) {
+          cap.type = `Rotation`;
+        }
 
-      start = start.toLowerCase();
-      end = end.toLowerCase();
+        start = start.toLowerCase();
+        end = end.toLowerCase();
 
-      const startNumber = parseFloat(start);
-      const endNumber = parseFloat(end);
-      if (!isNaN(startNumber) && !isNaN(endNumber)) {
-        start = `${startNumber}Hz`;
-        end = `${endNumber}Hz`;
-      }
+        const startNumber = parseFloat(start);
+        const endNumber = parseFloat(end);
+        if (!isNaN(startNumber) && !isNaN(endNumber)) {
+          start = `${startNumber}Hz`;
+          end = `${endNumber}Hz`;
+        }
 
-      cap.speedStart = start + directionStr;
-      cap.speedEnd = end + directionStr;
+        cap.speedStart = start + directionStr;
+        cap.speedEnd = end + directionStr;
 
-      // delete the parsed part
-      return ``;
-    });
+        // delete the parsed part
+        return ``;
+      });
+    }
+
+    const stopRegex = /(?:\s*\b)(?:stop(?:ped)?|no rotation|no rotate)(?:\b\s*)/ig;
+    if (capabilityName.match(stopRegex)) {
+      return capabilityName.replace(stopRegex, () => {
+        cap.speed = `stop`;
+        return ``;
+      });
+    }
+
+    return capabilityName;
   }
 };
 
@@ -840,7 +853,11 @@ const capabilityPresets = {
 
       const comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
 
-      if (`speedStart` in cap) {
+      if (`speed` in cap) {
+        cap.shakeSpeed = cap.speed;
+        delete cap.speed;
+      }
+      else if (`speedStart` in cap) {
         cap.shakeSpeedStart = cap.speedStart;
         cap.shakeSpeedEnd = cap.speedEnd;
         delete cap.speedStart;
@@ -939,6 +956,12 @@ const capabilityPresets = {
             type: `WheelRotation`
           };
           cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+
+          if (!(`speed` in cap || `speedStart` in cap)) {
+            cap.speedStart = `slow CW`;
+            cap.speedEnd = `fast CW`;
+            cap.helpWanted = `Are the automatically added speed values correct?`;
+          }
 
           return cap;
         }
