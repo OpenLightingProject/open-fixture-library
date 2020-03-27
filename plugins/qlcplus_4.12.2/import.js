@@ -370,6 +370,10 @@ const parserPerChannelType = {
         cap.type = `Speed`;
       }
     }
+    else if (cap.type === `Rotation`) {
+      cap.comment = cap.effectName;
+      delete cap.effectName;
+    }
     else if (/\bsound\b/i.test(cap.effectName)) {
       cap.soundControlled = true;
     }
