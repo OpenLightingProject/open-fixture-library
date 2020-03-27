@@ -315,9 +315,9 @@ const parserPerChannelType = {
       cap.type = `WheelSlot`;
       cap.slotNumber = index + 1;
 
-      cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap, true);
+      cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
 
-      if (`speedStart` in cap) {
+      if (`speed` in cap || `speedStart` in cap) {
         cap.type = `WheelRotation`;
         delete cap.slotNumber;
       }
@@ -348,9 +348,9 @@ const parserPerChannelType = {
       slotNumber: index + 1
     };
 
-    cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap, true);
+    cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
 
-    if (`speedStart` in cap) {
+    if (`speed` in cap || `speedStart` in cap) {
       cap.type = channelNameInWheels ? `WheelRotation` : `WheelSlotRotation`;
       delete cap.slotNumber;
     }
@@ -362,7 +362,7 @@ const parserPerChannelType = {
       type: `Effect`,
       effectName: `` // set it first here so effectName is before speedStart/speedEnd
     };
-    cap.effectName = importHelpers.getSpeedGuessedComment(capabilityName, cap, false);
+    cap.effectName = importHelpers.getSpeedGuessedComment(capabilityName, cap);
 
     if (cap.effectName === ``) {
       delete cap.effectName;
@@ -385,7 +385,14 @@ const parserPerChannelType = {
       const cap = {
         type: `PanContinuous`
       };
-      cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap, true);
+      cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+
+      if (!(`speed` in cap || `speedStart` in cap)) {
+        cap.speedStart = `slow CW`;
+        cap.speedEnd = `fast CW`;
+        cap.helpWanted = `Are the automatically added speed values correct?`;
+      }
+
       return cap;
     }
 
@@ -398,7 +405,14 @@ const parserPerChannelType = {
       const cap = {
         type: `TiltContinuous`
       };
-      cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap, true);
+      cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+
+      if (!(`speed` in cap || `speedStart` in cap)) {
+        cap.speedStart = `slow CW`;
+        cap.speedEnd = `fast CW`;
+        cap.helpWanted = `Are the automatically added speed values correct?`;
+      }
+
       return cap;
     }
 
@@ -415,34 +429,34 @@ const parserPerChannelType = {
       type: `ShutterStrobe`
     };
 
-    if (capabilityName.match(/^(?:Blackout|(?:Shutter |Strobe )?Closed?)$/i)) {
-      cap.shutterEffect = `Closed`;
-      return cap;
-    }
+    const shutterEffects = {
+      Closed: /^(?:Blackout|(?:Shutter |Strobe )?Closed?)$/i,
+      Open: /^(?:(?:Shutter |Strobe )?Open|Full?)$/i,
+      Pulse: /puls/i,
+      RampUp: /ramp\s*up/i,
+      RampDown: /ramp\s*down/i
+    };
 
-    if (capabilityName.match(/^(?:(?:Shutter |Strobe )?Open|Full?)$/i)) {
-      cap.shutterEffect = `Open`;
-      return cap;
-    }
+    cap.shutterEffect = Object.keys(shutterEffects).find(
+      shutterEffect => capabilityName.match(shutterEffects[shutterEffect])
+    ) || `Strobe`;
 
-    if (capabilityName.match(/puls/i)) {
-      cap.shutterEffect = `Pulse`;
-    }
-    else if (capabilityName.match(/ramp\s*up/i)) {
-      cap.shutterEffect = `RampUp`;
-    }
-    else if (capabilityName.match(/ramp\s*down/i)) {
-      cap.shutterEffect = `RampDown`;
-    }
-    else {
-      cap.shutterEffect = `Strobe`;
+    if ([`Open`, `Closed`].includes(cap.shutterEffect)) {
+      // short circuit, there's no need to test for randomTiming or speed
+      return cap;
     }
 
     if (capabilityName.match(/random/i)) {
       cap.randomTiming = true;
     }
 
-    cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap, false);
+    cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+
+    if (!(`speed` in cap || `speedStart` in cap)) {
+      cap.speedStart = `slow`;
+      cap.speedEnd = `fast`;
+      cap.helpWanted = `Are the automatically added speed values correct?`;
+    }
 
     return cap;
   },
@@ -465,7 +479,13 @@ const parserPerChannelType = {
       cap.type = `Speed`;
     }
 
-    cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap, false);
+    cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+
+    if (!(`speed` in cap || `speedStart` in cap)) {
+      cap.speedStart = `slow`;
+      cap.speedEnd = `fast`;
+      cap.helpWanted = `Are the automatically added speed values correct?`;
+    }
 
     return cap;
   }

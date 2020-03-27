@@ -166,10 +166,9 @@ const importHelpers = {
    * to the capability. It may also set cap.type to "Rotation".
    * @param {String} capabilityName The capability name to extract information from.
    * @param {Object} cap The OFL capability object to add found properties to.
-   * @param {Boolean} isRotationCap Whether to add ' CW' for default speed values.
    * @returns {String} The rest of the capabilityName.
    */
-  getSpeedGuessedComment(capabilityName, cap, isRotationCap) {
+  getSpeedGuessedComment(capabilityName, cap) {
     const speedRegex = /(?:^|,\s*|\s+)\(?((?:(?:counter\s?-?\s?)?clockwise|C?CW)(?:\s+rotation)?(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i;
     if (capabilityName.match(speedRegex)) {
       return capabilityName.replace(speedRegex, (_, direction, start, end) => {
@@ -204,11 +203,6 @@ const importHelpers = {
         return ``;
       });
     }
-
-    const directionStr = isRotationCap ? ` CW` : ``;
-    cap.speedStart = `slow${directionStr}`;
-    cap.speedEnd = `fast${directionStr}`;
-    cap.helpWanted = `Are the automatically added speed values correct?`;
 
     return capabilityName;
   }
@@ -857,9 +851,13 @@ const capabilityPresets = {
         slotNumber: index + 1
       };
 
-      const comment = importHelpers.getSpeedGuessedComment(capabilityName, cap, false);
+      const comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
 
-      if (`speedStart` in cap) {
+      if (`speed` in cap) {
+        cap.shakeSpeed = cap.speed;
+        delete cap.speed;
+      }
+      else if (`speedStart` in cap) {
         cap.shakeSpeedStart = cap.speedStart;
         cap.shakeSpeedEnd = cap.speedEnd;
         delete cap.speedStart;
@@ -957,7 +955,13 @@ const capabilityPresets = {
           const cap = {
             type: `WheelRotation`
           };
-          cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap, true);
+          cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+
+          if (!(`speed` in cap || `speedStart` in cap)) {
+            cap.speedStart = `slow CW`;
+            cap.speedEnd = `fast CW`;
+            cap.helpWanted = `Are the automatically added speed values correct?`;
+          }
 
           return cap;
         }
