@@ -10,6 +10,7 @@ const fixtureSchema = require(`../schemas/dereferenced/fixture.json`);
 const fixtureRedirectSchema = require(`../schemas/dereferenced/fixture-redirect.json`);
 const schemaProperties = require(`../lib/schema-properties.js`).default;
 const { getResourceFromString } = require(`../lib/model.js`);
+const getAjvErrorMessages = require(`../lib/get-ajv-error-messages.js`);
 
 /** @typedef {import('../lib/model/AbstractChannel.js').default} AbstractChannel */
 /** @typedef {import('../lib/model/Capability.js').default} Capability */
@@ -28,7 +29,8 @@ const ajv = new Ajv({
   format: `full`,
   formats: {
     'color-hex': ``
-  }
+  },
+  verbose: true
 });
 const schemaValidate = ajv.compile(fixtureSchema);
 const redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
@@ -86,7 +88,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   const schemaValid = schemaValidate(fixtureJson);
   if (!schemaValid) {
-    result.errors.push(getErrorString(`File does not match schema.`, schemaValidate.errors));
+    const errorMessages = getAjvErrorMessages(schemaValidate.errors, `fixture`);
+    result.errors.push(...errorMessages.map(message => getErrorString(`File does not match schema:`, message)));
     return result;
   }
 
@@ -1203,6 +1206,10 @@ function checkUniqueness(set, value, result, messageIfNotUnique) {
  * @returns {String} A string containing the message and a deep inspection of the given error object.
  */
 function getErrorString(description, error) {
+  if (typeof error === `string`) {
+    return `${description} ${error}`;
+  }
+
   return `${description} ${util.inspect(error, false, null)}`;
 }
 

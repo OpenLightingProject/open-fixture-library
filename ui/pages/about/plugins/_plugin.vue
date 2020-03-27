@@ -81,7 +81,7 @@
   }
 
   & /deep/ code {
-    background-color: $grey-50;
+    background-color: theme-color(header-background);
     padding: 3px 5px;
   }
 
