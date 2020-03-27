@@ -509,26 +509,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
   };
 
   const physicals = qlcPlusFixture.Mode.concat(qlcPlusFixture)
-    .filter(obj => `Physical` in obj)
-    .map(obj => obj.Physical[0]);
-
-  const [panMax, tiltMax] = [`PanMax`, `TiltMax`].map(
-    prop => Math.max(...physicals.map(physical => {
-      if (physical.Focus && prop in physical.Focus[0].$) {
-        return parseInt(physical.Focus[0].$[prop]) || 0;
-      }
-      return 0;
-    }))
-  );
-
-  const channelName = qlcPlusChannel.$.Name;
-  const channelPreset = qlcPlusChannel.$.Preset;
-
-  if (channelPreset) {
-    channel.capabilities = [getCapabilityFromChannelPreset(channelPreset, channelName, panMax, tiltMax)];
-  }
-  else if (`Capability` in qlcPlusChannel) {
-    channel.capabilities = qlcPlusChannel.Capability.map(
+    .filter(obcsvLineItemspabilities = qlcPlusChannel.Capability.map(
       cap => getOflCapability(cap)
     );
   }
@@ -755,7 +736,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
  */
 function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
   const mode = {
-    name: qlcPlusMode.$.Name.replace(/\s+(?:mode)|(?:mode)\s+/ig, ``)
+    name: qlcPlusMode.$.Name.replace(/\s+mode|mode\s+/ig, ``)
   };
 
   const match = mode.name.match(/(\d+)(?:\s+|-)?(?:channels?|chan|ch)/i);
