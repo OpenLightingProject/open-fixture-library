@@ -364,7 +364,13 @@ const parserPerChannelType = {
     };
     cap.effectName = importHelpers.getSpeedGuessedComment(capabilityName, cap, false);
 
-    if (/\bsound\b/i.test(cap.effectName)) {
+    if (cap.effectName === ``) {
+      delete cap.effectName;
+      if (cap.type === `Effect`) {
+        cap.type = `Speed`;
+      }
+    }
+    else if (/\bsound\b/i.test(cap.effectName)) {
       cap.soundControlled = true;
     }
 
