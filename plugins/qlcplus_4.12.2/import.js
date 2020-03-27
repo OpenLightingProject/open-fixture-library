@@ -11,7 +11,7 @@ const {
   importHelpers
 } = require(`./presets.js`);
 
-module.exports.version = `1.0.0`;
+module.exports.version = `1.1.0`;
 
 /**
  * @param {Buffer} buffer The imported file.
