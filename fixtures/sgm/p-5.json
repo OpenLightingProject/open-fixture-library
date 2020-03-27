@@ -1,0 +1,251 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "P-5",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Matthias Schlecht", "Flo Edelmann"],
+    "createDate": "2020-03-27",
+    "lastModifyDate": "2020-03-27",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2020-03-27",
+      "comment": "created by Q Light Controller Plus (version 4.12.3 GIT)"
+    }
+  },
+  "physical": {
+    "dimensions": [497, 268, 122],
+    "weight": 8.9,
+    "power": 450,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 20031
+    },
+    "lens": {
+      "degreesMinMax": [15, 43]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensity": {
+      "fineChannelAliases": ["Intensity fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CTC": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorPreset",
+          "comment": "5600 K"
+        },
+        {
+          "dmxRange": [1, 4],
+          "type": "ColorPreset",
+          "comment": "No CTC (Raw)"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "ColorPreset",
+          "comment": "CTC 2000K -> 10000K"
+        }
+      ]
+    },
+    "Shutter": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "Closed"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [16, 151],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe"
+        },
+        {
+          "dmxRange": [152, 175],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Pulse - Open"
+        },
+        {
+          "dmxRange": [176, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Pulse - Close"
+        },
+        {
+          "dmxRange": [200, 244],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true,
+          "comment": "Strobe Random"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel (Full Color Calibrated)",
+      "shortName": "3ch (Full Color Calibrated)",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4-channel (RAW)",
+      "shortName": "4ch (RAW)",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6-channel (RAW)",
+      "shortName": "6ch (RAW)",
+      "channels": [
+        "Shutter",
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6-channel (CTC)",
+      "shortName": "6ch (CTC)",
+      "channels": [
+        "Shutter",
+        "Intensity",
+        "CTC",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "8-channel (RAW) 16bit",
+      "shortName": "8ch (RAW) 16bit",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine"
+      ]
+    },
+    {
+      "name": "9-channel (RAW) 16bit",
+      "shortName": "9ch (RAW) 16bit",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine"
+      ]
+    },
+    {
+      "name": "10-channel (RAW) 16bit",
+      "shortName": "10ch (RAW) 16bit",
+      "channels": [
+        "Intensity",
+        "Intensity fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine"
+      ]
+    },
+    {
+      "name": "10-channel (CTC)",
+      "shortName": "10ch (CTC)",
+      "channels": [
+        "Shutter",
+        "Intensity",
+        "Intensity fine",
+        "CTC",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine"
+      ]
+    }
+  ]
+}
