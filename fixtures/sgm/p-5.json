@@ -82,18 +82,20 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "ColorPreset",
-          "comment": "5600 K"
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
         },
         {
           "dmxRange": [1, 4],
-          "type": "ColorPreset",
-          "comment": "No CTC (Raw)"
+          "type": "ColorTemperature",
+          "colorTemperature": "default",
+          "comment": "Raw"
         },
         {
           "dmxRange": [5, 255],
-          "type": "ColorPreset",
-          "comment": "CTC 2000K -> 10000K"
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2000K",
+          "colorTemperatureEnd": "10000K"
         }
       ]
     },
@@ -103,38 +105,33 @@
         {
           "dmxRange": [0, 7],
           "type": "ShutterStrobe",
-          "shutterEffect": "Closed",
-          "comment": "Closed"
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [8, 15],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Open"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [16, 151],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Strobe"
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [152, 175],
           "type": "ShutterStrobe",
           "shutterEffect": "RampUp",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Pulse - Open"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [176, 199],
           "type": "ShutterStrobe",
           "shutterEffect": "RampDown",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Pulse - Close"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [200, 244],
@@ -142,14 +139,12 @@
           "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast",
-          "randomTiming": true,
-          "comment": "Strobe Random"
+          "randomTiming": true
         },
         {
           "dmxRange": [245, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Open"
+          "shutterEffect": "Open"
         }
       ]
     }
