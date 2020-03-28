@@ -9,7 +9,8 @@
   },
   "links": {
     "manual": [
-      "http://www.gantom.com/wp-content/uploads/2018/07/Precision-DMX-User-Guide-1.1.pdf"
+      "http://www.gantom.com/wp-content/uploads/2018/07/Precision-DMX-User-Guide-1.1.pdf",
+      "http://www.gantom.com/wp-content/uploads/2018/05/Precision_DMX_2018.pdf"
     ],
     "productPage": [
       "https://www.gantom.com/lighting-fixtures/precision-dmx/"
@@ -18,11 +19,13 @@
       "https://youtu.be/Oi_wBNiZeQk"
     ]
   },
+  "helpWanted": "Does the 3ch mode really exist? It is never mentioned in the manual.",
   "physical": {
-    "power": 3,
+    "dimensions": [44.5, 52.5, 52],
+    "power": 3.8,
     "DMXconnector": "3.5mm stereo jack",
     "bulb": {
-      "type": "LED"
+      "type": "RGB LED"
     },
     "lens": {
       "degreesMinMax": [21, 21]
