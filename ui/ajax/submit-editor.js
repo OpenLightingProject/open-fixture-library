@@ -32,12 +32,6 @@ module.exports = async function addFixtures(request, response) {
     }
   }
   else {
-    const errors = Object.values(outObject.errors)[0];
-    const warnings = Object.values(outObject.warnings)[0];
-
-    response.status(201).json({
-      errors,
-      warnings
-    });
+    response.status(201).json(outObject);
   }
 };
