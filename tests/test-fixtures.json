@@ -51,9 +51,9 @@
     ]
   },
   {
-    "man": "ayrton",
-    "key": "magicblade-fx",
-    "name": "MagicBlade FX",
+    "man": "cameo",
+    "key": "auro-beam-150",
+    "name": "Auro Beam 150",
     "features": [
       "capability-type-NoFunction",
       "capability-type-ShutterStrobe",
@@ -67,17 +67,21 @@
       "capability-type-PanTiltSpeed",
       "capability-type-Effect",
       "capability-type-EffectSpeed",
-      "capability-type-EffectParameter",
-      "capability-type-Zoom",
+      "capability-type-SoundSensitivity",
       "capability-type-Maintenance",
+      "duplicate-channel-names",
       "fine-channel-alias",
-      "floating-point-lens-degrees",
-      "matrix-pixelCount",
+      "fine-positions-1",
+      "floating-point-weight",
+      "matrix-pixelKeys",
       "matrix-pixelGroups",
+      "matrix-custom-layout",
       "matrix-channel-used-directly",
       "multiple-categories",
       "multiple-focuses",
-      "reused-channels"
+      "reused-channels",
+      "switching-channels",
+      "switching-channel-positions"
     ]
   },
   {
