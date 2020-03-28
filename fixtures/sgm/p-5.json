@@ -152,7 +152,7 @@
   "modes": [
     {
       "name": "3-channel (Full Color Calibrated)",
-      "shortName": "3ch (Full Color Calibrated)",
+      "shortName": "3ch-calibrated",
       "channels": [
         "Red",
         "Green",
@@ -161,7 +161,7 @@
     },
     {
       "name": "4-channel (RAW)",
-      "shortName": "4ch (RAW)",
+      "shortName": "4ch-raw",
       "channels": [
         "Red",
         "Green",
@@ -171,7 +171,7 @@
     },
     {
       "name": "6-channel (RAW)",
-      "shortName": "6ch (RAW)",
+      "shortName": "6ch-raw",
       "channels": [
         "Shutter",
         "Intensity",
@@ -183,7 +183,7 @@
     },
     {
       "name": "6-channel (CTC)",
-      "shortName": "6ch (CTC)",
+      "shortName": "6ch-ctc",
       "channels": [
         "Shutter",
         "Intensity",
@@ -195,7 +195,7 @@
     },
     {
       "name": "8-channel (RAW) 16bit",
-      "shortName": "8ch (RAW) 16bit",
+      "shortName": "8ch-raw 16bit",
       "channels": [
         "Red",
         "Red fine",
@@ -209,7 +209,7 @@
     },
     {
       "name": "9-channel (RAW) 16bit",
-      "shortName": "9ch (RAW) 16bit",
+      "shortName": "9ch-raw 16bit",
       "channels": [
         "Intensity",
         "Red",
@@ -224,7 +224,7 @@
     },
     {
       "name": "10-channel (RAW) 16bit",
-      "shortName": "10ch (RAW) 16bit",
+      "shortName": "10ch-raw 16bit",
       "channels": [
         "Intensity",
         "Intensity fine",
@@ -240,7 +240,7 @@
     },
     {
       "name": "10-channel (CTC)",
-      "shortName": "10ch (CTC)",
+      "shortName": "10ch-ctc",
       "channels": [
         "Shutter",
         "Intensity",
