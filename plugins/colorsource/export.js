@@ -1,6 +1,6 @@
 // see https://github.com/standard-things/esm#getting-started
 require = require(`esm`)(module); // eslint-disable-line no-global-assign
-const uuidV5 = require(`uuid/v5`);
+const { v5: uuidv5 } = require(`uuid`);
 
 const {
   CoarseChannel,
@@ -38,10 +38,10 @@ module.exports.export = function exportColorSource(fixtures, options) {
   };
 
   fixtures.forEach(fixture => {
-    const fixtureUuidNamespace = uuidV5(`${fixture.manufacturer.key}/${fixture.key}`, UUID_NAMESPACE);
+    const fixtureUuidNamespace = uuidv5(`${fixture.manufacturer.key}/${fixture.key}`, UUID_NAMESPACE);
 
     fixture.modes.forEach(mode => {
-      const dcid = uuidV5(mode.name, fixtureUuidNamespace);
+      const dcid = uuidv5(mode.name, fixtureUuidNamespace);
       const hasIntensity = mode.channels.some(ch => ch.type === `Intensity`);
       const parameters = getColorSourceChannels(mode, hasIntensity);
 

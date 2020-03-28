@@ -17,7 +17,6 @@ const packageJson = require(`./package.json`);
 const plugins = require(`./plugins/plugins.json`);
 const { fixtureFromRepository, embedResourcesIntoFixtureJson } = require(`./lib/model.js`);
 const register = require(`./fixtures/register.json`);
-const getOutObjectFromEditorData = require(`./lib/get-out-object-from-editor-data.js`);
 const Fixture = require(`./lib/model/Fixture.js`).default;
 const Manufacturer = require(`./lib/model/Manufacturer.js`).default;
 
@@ -77,7 +76,7 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
     return;
   }
 
-  const outObject = getOutObjectFromEditorData(request.body.fixtures);
+  const outObject = request.body;
   const fixtures = Object.entries(outObject.fixtures).map(([key, jsonObject]) => {
     const [manKey, fixKey] = key.split(`/`);
 
@@ -153,11 +152,8 @@ app.get(`/about/plugins/:plugin([a-z0-9_.-]+).json`, (request, response, next) =
 app.get(`/sitemap.xml`, (request, response) => {
   const generateSitemap = requireNoCacheInDev(`./lib/generate-sitemap.js`);
 
-  if (!app.get(`sitemap`) || process.env.NODE_ENV !== `production`) {
-    app.set(`sitemap`, generateSitemap(packageJson.homepage));
-  }
-
-  response.type(`application/xml`).send(app.get(`sitemap`));
+  response.type(`application/xml`);
+  generateSitemap(packageJson.homepage).pipe(response);
 });
 
 app.post(`/ajax/import-fixture-file`, (request, response) => {
