@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Precision DMX",
-  "categories": ["Other", "Color Changer", "Dimmer"],
+  "categories": ["Color Changer"],
   "meta": {
     "authors": ["Brian McDade"],
-    "createDate": "2020-02-13",
-    "lastModifyDate": "2020-02-13"
+    "createDate": "2020-03-28",
+    "lastModifyDate": "2020-03-28"
   },
   "links": {
     "manual": [
@@ -55,57 +55,102 @@
         },
         {
           "dmxRange": [32, 255],
-          "type": "ColorPreset"
+          "type": "ColorPreset",
+          "helpWanted": "At which DMX value can which color be selected?"
         }
       ]
     },
-    "Speed": {
+    "Strobe": {
       "capability": {
-        "type": "Speed",
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX value is Strobe disabled? When is the lamp constantly on/off?"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
     },
-    "Built in Functions": {
+    "Built-in Functions": {
+      "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 31],
-          "type": "NoFunction"
+          "dmxRange": [0, 0],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [1, 31],
+          "type": "NoFunction",
+          "helpWanted": "What does this capability do? Is channel 5 really set to 'Effect Speed', and which speed is controlled then?",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [32, 71],
-          "type": "Generic",
-          "comment": "Fade In"
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [72, 111],
-          "type": "Generic",
-          "comment": "Fade Out"
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [112, 151],
-          "type": "Generic",
-          "comment": "Pulsing"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [152, 191],
-          "type": "Generic",
-          "comment": "Smooth Color Fade"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [192, 231],
-          "type": "Generic",
-          "comment": "RGB Color Cycle"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "red, green, blue",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [232, 250],
-          "type": "Generic",
-          "comment": "6 Color Cycle"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "6-color",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [251, 255],
-          "type": "Generic",
-          "comment": "Candle Flicker"
+          "type": "Effect",
+          "effectName": "Candle Flicker",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
         }
       ]
     },
@@ -117,7 +162,7 @@
   },
   "modes": [
     {
-      "name": "3 Channel",
+      "name": "3-channel",
       "shortName": "3ch",
       "channels": [
         "Red",
@@ -126,15 +171,15 @@
       ]
     },
     {
-      "name": "7 Channel",
+      "name": "7-channel",
       "shortName": "7ch",
       "channels": [
         "Red",
         "Green",
         "Blue",
         "Color Macros",
-        "Speed",
-        "Built in Functions",
+        "Strobe / Effect Speed",
+        "Built-in Functions",
         "Master Dimmer"
       ]
     }
