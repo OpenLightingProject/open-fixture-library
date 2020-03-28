@@ -2,7 +2,7 @@
 
 This is the developer documentation for the *Open Fixture Library*. Please follow links in the folder structure below to get more information on a specific topic.
 
-## Folder structure
+## Repository folder structure
 
 * `cli/` – Useful scripts to be called from the command line
 * `docs/` – Documentation (*you are here!*)

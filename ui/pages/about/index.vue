@@ -5,6 +5,9 @@
     <p>Created by Florian and Felix Edelmann.</p>
     <p>The full code of the <em>Open Fixture Library</em> is <a href="https://github.com/OpenLightingProject/open-fixture-library">open source</a> (licensed under the <a href="https://tldrlegal.com/license/mit-license" title="Massachusetts Institute of Technology License">MIT License</a>) and everybody is invited to contribute!</p>
 
+    <h2>Documentation</h2>
+    <p>The developer documentation can be found at the <a href="https://github.com/OpenLightingProject/open-fixture-library/tree/master/docs">GitHub repository</a>. It contains an explanation of the <a href="https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/fixture-format.md">JSON fixture format</a> we use internally, and from which fixture definitions in other formats can be exported by <a href="https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/plugins.md">plugins</a>.</p>
+
     <h2>History</h2>
     <p>We were used to programming lighting shows with the <a href="https://www.osram.de/ecue/">e:cue</a> software and – because at some point we found it being limited in functionality – wanted to try out other programs. I built a <a href="https://github.com/FloEdelmann/bachelor">DMX interface</a> with <a href="https://www.openlighting.org/ola/">Open Lighting Architecture</a> to be able to try <a href="https://www.qlcplus.org/">QLC+</a> and we kept on using that combination since then.</p>
     <p>The problem we noticed during our testing phase was that all the fixture definitions we created for e:cue could not be easily converted for use with other software. The idea for a converter was born (<a href="https://github.com/FloEdelmann/fixture-converter">fixture-converter on GitHub</a>, September 2016 – January 2017).</p>
