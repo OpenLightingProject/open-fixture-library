@@ -13,7 +13,7 @@
       "https://www.cameolight.com/en/downloads/file/id/-406287878"
     ],
     "productPage": [
-      "https://www.cameolight.com/en/solutions/dj-musicians/moving-lights/moving-heads/2064/auro-beam-150?c=1989"
+      "https://www.cameolight.com/en/solutions/dj-musicians/moving-lights/moving-heads/2064/auro-beam-150"
     ],
     "video": [
       "https://youtu.be/Zsb151QKp7M"
@@ -36,11 +36,11 @@
   "matrix": {
     "pixelKeys": [
       [
+        [null, null,  "2", null, null],
+        [ "7", null, null, null,  "3"],
         [null, null,  "1", null, null],
-        [ "2", null, null, null,  "3"],
-        [null, null,  "4", null, null],
-        [ "5", null, null, null,  "6"],
-        [null, null,  "7", null, null]
+        [ "6", null, null, null,  "4"],
+        [null, null,  "5", null, null]
       ]
     ],
     "pixelGroups": {
@@ -54,8 +54,7 @@
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
-        "angleEnd": "360deg",
-        "helpWanted": "Is the angle correct?"
+        "angleEnd": "360deg"
       }
     },
     "Pan Continuous": {
@@ -89,8 +88,7 @@
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
-        "angleEnd": "360deg",
-        "helpWanted": "Is the angle correct?"
+        "angleEnd": "360deg"
       }
     },
     "Tilt Continuous": {
@@ -236,6 +234,7 @@
           "dmxRange": [9, 20],
           "type": "ColorPreset",
           "comment": "red",
+          "colors": ["#ff0000"],
           "switchChannels": {
             "Color Macro Speed / Sound Sensitivity": "Color Macro Speed"
           }
@@ -244,6 +243,7 @@
           "dmxRange": [21, 32],
           "type": "ColorPreset",
           "comment": "green",
+          "colors": ["#00ff00"],
           "switchChannels": {
             "Color Macro Speed / Sound Sensitivity": "Color Macro Speed"
           }
@@ -252,6 +252,7 @@
           "dmxRange": [33, 44],
           "type": "ColorPreset",
           "comment": "blue",
+          "colors": ["#0000ff"],
           "switchChannels": {
             "Color Macro Speed / Sound Sensitivity": "Color Macro Speed"
           }
@@ -260,6 +261,7 @@
           "dmxRange": [45, 56],
           "type": "ColorPreset",
           "comment": "bright blue",
+          "colors": ["#00aaff"],
           "switchChannels": {
             "Color Macro Speed / Sound Sensitivity": "Color Macro Speed"
           }
@@ -268,6 +270,7 @@
           "dmxRange": [57, 68],
           "type": "ColorPreset",
           "comment": "cyan",
+          "colors": ["#00ffff"],
           "switchChannels": {
             "Color Macro Speed / Sound Sensitivity": "Color Macro Speed"
           }
@@ -276,6 +279,7 @@
           "dmxRange": [69, 80],
           "type": "ColorPreset",
           "comment": "turquoise",
+          "colors": ["#00ffbb"],
           "switchChannels": {
             "Color Macro Speed / Sound Sensitivity": "Color Macro Speed"
           }
@@ -284,6 +288,7 @@
           "dmxRange": [81, 92],
           "type": "ColorPreset",
           "comment": "cold green",
+          "colors": ["#53ff7b"],
           "switchChannels": {
             "Color Macro Speed / Sound Sensitivity": "Color Macro Speed"
           }
@@ -292,6 +297,7 @@
           "dmxRange": [93, 104],
           "type": "ColorPreset",
           "comment": "warm green",
+          "colors": ["#c2ff34"],
           "switchChannels": {
             "Color Macro Speed / Sound Sensitivity": "Color Macro Speed"
           }
@@ -300,6 +306,7 @@
           "dmxRange": [105, 116],
           "type": "ColorPreset",
           "comment": "pink",
+          "colors": ["#ffaacc"],
           "switchChannels": {
             "Color Macro Speed / Sound Sensitivity": "Color Macro Speed"
           }
@@ -308,6 +315,7 @@
           "dmxRange": [117, 128],
           "type": "ColorPreset",
           "comment": "magenta",
+          "colors": ["#ff00ff"],
           "switchChannels": {
             "Color Macro Speed / Sound Sensitivity": "Color Macro Speed"
           }
@@ -316,6 +324,7 @@
           "dmxRange": [129, 140],
           "type": "ColorPreset",
           "comment": "purple",
+          "colors": ["#aa00ff"],
           "switchChannels": {
             "Color Macro Speed / Sound Sensitivity": "Color Macro Speed"
           }
@@ -324,6 +333,7 @@
           "dmxRange": [141, 152],
           "type": "ColorPreset",
           "comment": "orange",
+          "colors": ["#ffbb00"],
           "switchChannels": {
             "Color Macro Speed / Sound Sensitivity": "Color Macro Speed"
           }
@@ -332,6 +342,7 @@
           "dmxRange": [153, 164],
           "type": "ColorPreset",
           "comment": "yellow",
+          "colors": ["#ffff00"],
           "switchChannels": {
             "Color Macro Speed / Sound Sensitivity": "Color Macro Speed"
           }
@@ -340,6 +351,7 @@
           "dmxRange": [165, 176],
           "type": "ColorPreset",
           "comment": "warm white",
+          "colors": ["#ffddaa"],
           "switchChannels": {
             "Color Macro Speed / Sound Sensitivity": "Color Macro Speed"
           }
@@ -348,6 +360,7 @@
           "dmxRange": [177, 188],
           "type": "ColorPreset",
           "comment": "cold white",
+          "colors": ["#aaddff"],
           "switchChannels": {
             "Color Macro Speed / Sound Sensitivity": "Color Macro Speed"
           }
@@ -431,7 +444,6 @@
           "dmxRange": [57, 72],
           "type": "Effect",
           "effectName": "Auto Program 4",
-          "parameter": "low",
           "switchChannels": {
             "Auto Program Speed / Sound Sensitivity": "Auto Program Speed"
           }
