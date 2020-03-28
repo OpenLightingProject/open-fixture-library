@@ -4,8 +4,8 @@
   "categories": ["Color Changer", "Strobe"],
   "meta": {
     "authors": ["Marek Jędrzejewski"],
-    "createDate": "2020-02-19",
-    "lastModifyDate": "2020-02-19"
+    "createDate": "2020-03-28",
+    "lastModifyDate": "2020-03-28"
   },
   "links": {
     "manual": [
@@ -20,11 +20,11 @@
   },
   "physical": {
     "dimensions": [160, 115, 120],
-    "weight": 1,
+    "weight": 0.6,
     "power": 15,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "12× 1W LEDs (3× red, 3× green, 3× blue, 3× white)"
     },
     "lens": {
       "degreesMinMax": [13, 13]
@@ -70,24 +70,21 @@
           "dmxRange": [1, 10],
           "type": "Effect",
           "effectPreset": "ColorJump",
-          "duration": "instant",
-          "soundControlled": true,
-          "comment": "Sound activated color jump, I don't see sensitivity change on value change"
+          "soundControlled": true
         },
         {
           "dmxRange": [11, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "duration": "instant"
+          "speedEnd": "fast"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "6 channels",
+      "name": "6-channel",
       "shortName": "6ch",
       "channels": [
         "Red",
