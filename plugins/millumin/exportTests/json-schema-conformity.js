@@ -29,7 +29,8 @@ module.exports = async function testSchemaConformity(exportFile, allExportFiles)
     format: `full`,
     formats: {
       'color-hex': ``
-    }
+    },
+    verbose: true
   });
   const schemaValidate = ajv.getSchema(`https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`);
 
