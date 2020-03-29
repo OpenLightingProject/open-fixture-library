@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Fountain Motor",
+  "shortName": "FM",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Pepe Alset Field Service"],
+    "createDate": "2020-03-29",
+    "lastModifyDate": "2020-03-29"
+  },
+  "links": {
+    "video": [
+      "http://jfgjsdfjg.nl"
+    ]
+  },
+  "physical": {
+    "dimensions": [315, 315, 2000],
+    "weight": 10,
+    "power": 50,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Stroke Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Rotator": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Speed",
+        "speed": "slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Motor Bord",
+      "channels": [
+        "Stroke Speed",
+        "Rotator"
+      ]
+    }
+  ]
+}
