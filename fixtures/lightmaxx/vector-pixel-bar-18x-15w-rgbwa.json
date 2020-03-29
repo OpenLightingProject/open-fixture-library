@@ -27,6 +27,9 @@
       "degreesMinMax": [45, 45]
     }
   },
+  "matrix": {
+    "pixelCount": [18, 1, 1]
+  },
   "availableChannels": {
     "Dimmer": {
       "capability": {
@@ -130,111 +133,10 @@
         "type": "ColorIntensity",
         "color": "Amber"
       }
-    },
-    "RGBWA Dimmer": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "RGBWA Dimmer 2": {
-      "name": "RGBWA Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "RGBWA Dimmer 3": {
-      "name": "RGBWA Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "RGBWA Dimmer 4": {
-      "name": "RGBWA Dimmer",
-      "constant": true,
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "RGBWA Dimmer 5": {
-      "name": "RGBWA Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "RGBWA Dimmer 6": {
-      "name": "RGBWA Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "RGBWA Dimmer 7": {
-      "name": "RGBWA Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "RGBWA Dimmer 8": {
-      "name": "RGBWA Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "RGBWA Dimmer 9": {
-      "name": "RGBWA Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "RGBWA Dimmer 10": {
-      "name": "RGBWA Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "RGBWA Dimmer 11": {
-      "name": "RGBWA Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "RGBWA Dimmer 12": {
-      "name": "RGBWA Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "RGBWA Dimmer 13": {
-      "name": "RGBWA Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "RGBWA Dimmer 14": {
-      "name": "RGBWA Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "RGBWA Dimmer 15": {
-      "name": "RGBWA Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "RGBWA Dimmer 16": {
-      "name": "RGBWA Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "RGBWA Dimmer 17": {
-      "name": "RGBWA Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "RGBWA Dimmer 18": {
-      "name": "RGBWA Dimmer",
+    }
+  },
+  "templateChannels": {
+    "RGBWA Dimmer $pixelKey": {
       "capability": {
         "type": "Intensity"
       }
@@ -242,7 +144,8 @@
   },
   "modes": [
     {
-      "name": "28ch",
+      "name": "28-channel",
+      "shortName": "28ch",
       "channels": [
         "Dimmer",
         "Strobe",
@@ -254,24 +157,14 @@
         "Blue",
         "White",
         "Amber",
-        "RGBWA Dimmer",
-        "RGBWA Dimmer 2",
-        "RGBWA Dimmer 3",
-        "RGBWA Dimmer 4",
-        "RGBWA Dimmer 5",
-        "RGBWA Dimmer 6",
-        "RGBWA Dimmer 7",
-        "RGBWA Dimmer 8",
-        "RGBWA Dimmer 9",
-        "RGBWA Dimmer 10",
-        "RGBWA Dimmer 11",
-        "RGBWA Dimmer 12",
-        "RGBWA Dimmer 13",
-        "RGBWA Dimmer 14",
-        "RGBWA Dimmer 15",
-        "RGBWA Dimmer 16",
-        "RGBWA Dimmer 17",
-        "RGBWA Dimmer 18"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "RGBWA Dimmer $pixelKey"
+          ]
+        }
       ]
     }
   ]
