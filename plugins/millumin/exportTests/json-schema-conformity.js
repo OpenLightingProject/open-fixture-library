@@ -1,5 +1,6 @@
 const https = require(`https`);
 const Ajv = require(`ajv`);
+const getAjvErrorMessages = require(`../../../lib/get-ajv-error-messages.js`);
 
 const SUPPORTED_OFL_VERSION = require(`../export.js`).supportedOflVersion;
 const SCHEMA_BASE_URL = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${SUPPORTED_OFL_VERSION}/schemas/`;
@@ -28,13 +29,14 @@ module.exports = async function testSchemaConformity(exportFile, allExportFiles)
     format: `full`,
     formats: {
       'color-hex': ``
-    }
+    },
+    verbose: true
   });
   const schemaValidate = ajv.getSchema(`https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`);
 
   const schemaValid = schemaValidate(JSON.parse(exportFile.content));
   if (!schemaValid) {
-    throw JSON.stringify(schemaValidate.errors, null, 2);
+    throw getAjvErrorMessages(schemaValidate.errors, `fixture`);
   }
 };
 
