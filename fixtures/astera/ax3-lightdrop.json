@@ -12,11 +12,22 @@
       "comment": "created by Q Light Controller Plus (version 4.12.3 GIT)"
     }
   },
+  "links": {
+    "manual": [
+      "https://www.astera-led.com/Downloads/manual/AX3%20Manual%20%28EN%29.pdf"
+    ],
+    "productPage": [
+      "https://astera-led.com/ax3/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=1QZb19aNqAg",
+      "https://www.youtube.com/watch?v=u9XPp9icNiA"
+    ]
+  },
   "physical": {
-    "dimensions": [96, 96, 59],
+    "dimensions": [96.4, 96.4, 59],
     "weight": 0.4,
     "power": 15,
-    "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED",
       "colorTemperature": 4000,
@@ -55,12 +66,6 @@
         "color": "White"
       }
     },
-    "No function": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "NoFunction"
-      }
-    },
     "Master dimmer": {
       "defaultValue": 0,
       "capability": {
@@ -72,13 +77,15 @@
       "capabilities": [
         {
           "dmxRange": [0, 4],
-          "type": "ColorPreset",
-          "comment": "No Effect"
+          "type": "ColorTemperature",
+          "colorTemperature": "default"
         },
         {
           "dmxRange": [5, 255],
-          "type": "ColorPreset",
-          "comment": "Color Temperature CCT = 2000 + 20*DMX-Value"
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2100K",
+          "colorTemperatureEnd": "7100K",
+          "comment": "Color Temperature = 2000 + 20*DMX-Value"
         }
       ]
     },
@@ -3348,37 +3355,35 @@
         {
           "dmxRange": [0, 3],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "Off"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [4, 4],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "randomTiming": true,
-          "comment": "Random Fast"
+          "speed": "fast",
+          "randomTiming": true
         },
         {
           "dmxRange": [5, 5],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "randomTiming": true,
-          "comment": "Random Medium"
+          "speed": "50%",
+          "randomTiming": true
         },
         {
           "dmxRange": [6, 6],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "randomTiming": true,
-          "comment": "Random Slow"
+          "speed": "slow",
+          "randomTiming": true
         },
         {
           "dmxRange": [7, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "0.4Hz",
-          "speedEnd": "25Hz",
-          "comment": "Variable Strobe (0.4Hz --> 25Hz)"
+          "speedEnd": "25Hz"
         }
       ]
     },
@@ -3388,22 +3393,22 @@
         {
           "dmxRange": [0, 7],
           "type": "Effect",
-          "effectName": "One Static Color"
+          "effectName": "One Color Static"
         },
         {
           "dmxRange": [8, 15],
           "type": "Effect",
-          "effectName": "Two Static Color"
+          "effectName": "Two Color Static"
         },
         {
           "dmxRange": [16, 23],
           "type": "Effect",
-          "effectName": "Three Static Color"
+          "effectName": "Three Color Static"
         },
         {
           "dmxRange": [24, 31],
           "type": "Effect",
-          "effectName": "Four Static Color"
+          "effectName": "Four Color Static"
         },
         {
           "dmxRange": [32, 39],
@@ -3496,15 +3501,15 @@
       "capability": {
         "type": "EffectSpeed",
         "speedStart": "slow",
-        "speedEnd": "fast",
-        "comment": "Program Speed S->F"
+        "speedEnd": "fast"
       }
     },
     "Program Cross Fade": {
       "defaultValue": 0,
       "capability": {
-        "type": "Effect",
-        "effectName": "Crossfade (no ->fast)"
+        "type": "EffectDuration",
+        "durationStart": "instant",
+        "durationEnd": "long"
       }
     },
     "Program Direction": {
@@ -3512,25 +3517,23 @@
       "capabilities": [
         {
           "dmxRange": [0, 63],
-          "type": "Effect",
-          "effectName": "Forward with loop"
+          "type": "Maintenance",
+          "comment": "Forward with loop"
         },
         {
           "dmxRange": [64, 127],
-          "type": "Effect",
-          "effectName": "Forward one time and",
-          "speed": "stop"
+          "type": "Maintenance",
+          "comment": "Forward one time and stop"
         },
         {
           "dmxRange": [128, 190],
-          "type": "Effect",
-          "effectName": "Reverse one time and",
-          "speed": "stop"
+          "type": "Maintenance",
+          "comment": "Reverse one time and stop"
         },
         {
           "dmxRange": [191, 255],
-          "type": "Effect",
-          "effectName": "Reverse with loop"
+          "type": "Maintenance",
+          "comment": "Reverse with loop"
         }
       ]
     },
@@ -3539,38 +3542,40 @@
       "capabilities": [
         {
           "dmxRange": [0, 63],
-          "type": "Effect",
-          "effectName": "One Group"
+          "type": "EffectParameter",
+          "parameter": 1
         },
         {
           "dmxRange": [64, 127],
-          "type": "Effect",
-          "effectName": "Two Groups"
+          "type": "EffectParameter",
+          "parameter": 2
         },
         {
           "dmxRange": [128, 190],
-          "type": "Effect",
-          "effectName": "Three Groups"
+          "type": "EffectParameter",
+          "parameter": 3
         },
         {
           "dmxRange": [191, 255],
-          "type": "Effect",
-          "effectName": "Four Groups"
+          "type": "EffectParameter",
+          "parameter": 4
         }
       ]
     },
     "Program user Offset in Groups": {
       "defaultValue": 0,
       "capability": {
-        "type": "Effect",
-        "effectName": "Offset (with groups >1, the unit in the group is offset with)"
+        "type": "EffectParameter",
+        "parameterStart": "off",
+        "parameterEnd": "high",
+        "comment": "with groups >1, the offset within the virtual large program"
       }
     },
     "Program Restart": {
       "defaultValue": 0,
       "capability": {
-        "type": "Effect",
-        "effectName": "Program Restart"
+        "type": "Maintenance",
+        "comment": "Change value to restart program"
       }
     },
     "Intensity Red of Color 1": {
@@ -3661,6 +3666,7 @@
   "modes": [
     {
       "name": "1: RGB",
+      "shortName": "1-rgb",
       "channels": [
         "Red",
         "Green",
@@ -3669,6 +3675,7 @@
     },
     {
       "name": "2: RGBW",
+      "shortName": "2-rgbw",
       "channels": [
         "Red",
         "Green",
@@ -3678,16 +3685,18 @@
     },
     {
       "name": "3: RGBAW",
+      "shortName": "3-rgbaw",
       "channels": [
         "Red",
         "Green",
         "Blue",
-        "No function",
+        null,
         "White"
       ]
     },
     {
       "name": "4: DIM RGB",
+      "shortName": "4-dim-rgb",
       "channels": [
         "Master dimmer",
         "Red",
@@ -3697,6 +3706,7 @@
     },
     {
       "name": "5: DIM RGBW",
+      "shortName": "5-dim-rgbw",
       "channels": [
         "Master dimmer",
         "Red",
@@ -3707,17 +3717,19 @@
     },
     {
       "name": "6: DIM RGBAW",
+      "shortName": "6-dim-rgbaw",
       "channels": [
         "Master dimmer",
         "Red",
         "Green",
         "Blue",
-        "No function",
+        null,
         "White"
       ]
     },
     {
       "name": "7: DIM RGB CCT DIM IND",
+      "shortName": "7-dim-rgb-cct-dim-ind",
       "channels": [
         "Red",
         "Green",
@@ -3729,6 +3741,7 @@
     },
     {
       "name": "8: RGBS",
+      "shortName": "8-rgbs",
       "channels": [
         "Red",
         "Green",
@@ -3738,6 +3751,7 @@
     },
     {
       "name": "9: RGBWS",
+      "shortName": "9-rgbws",
       "channels": [
         "Red",
         "Green",
@@ -3748,17 +3762,19 @@
     },
     {
       "name": "10: RGBAWS",
+      "shortName": "10-rgbaws",
       "channels": [
         "Red",
         "Green",
         "Blue",
-        "No function",
+        null,
         "White",
         "Strobe"
       ]
     },
     {
       "name": "11: DIM RGBS",
+      "shortName": "11-dim-rgbs",
       "channels": [
         "Master dimmer",
         "Red",
@@ -3769,6 +3785,7 @@
     },
     {
       "name": "12: DIM RGBWS",
+      "shortName": "12-dim-rgbws",
       "channels": [
         "Master dimmer",
         "Red",
@@ -3780,18 +3797,20 @@
     },
     {
       "name": "13: DIM RGBAWS",
+      "shortName": "13-dim-rgbaws",
       "channels": [
         "Master dimmer",
         "Red",
         "Green",
         "Blue",
-        "No function",
+        null,
         "White",
         "Strobe"
       ]
     },
     {
       "name": "14: RGB CCT DIM IND S",
+      "shortName": "14-rgb-cct-dim-ind-s",
       "channels": [
         "Red",
         "Green",
@@ -3804,6 +3823,7 @@
     },
     {
       "name": "15: EFFECT FIX",
+      "shortName": "15-effect-fix",
       "channels": [
         "Master dimmer",
         "Strobe",
@@ -3822,6 +3842,7 @@
     },
     {
       "name": "16: EFFECT RGB",
+      "shortName": "16-effect-rgb",
       "channels": [
         "Master dimmer",
         "Strobe",
