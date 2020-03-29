@@ -228,7 +228,7 @@
     },
     "parameter": {
       "oneOf": [
-        { "$ref": "#/units/nonNegativeNumber" },
+        { "$ref": "#/units/number" },
         { "$ref": "#/units/percent" },
         { "enum": ["off", "low", "high", "slow", "fast", "small", "big", "instant", "short", "long"] }
       ]
