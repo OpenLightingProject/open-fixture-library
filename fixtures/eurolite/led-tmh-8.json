@@ -31,46 +31,37 @@
     }
   },
   "wheels": {
-    "Gobo wheel / Gobo shake": {
+    "Gobo Wheel": {
       "slots": [
         {
           "type": "Open"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 1"
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 2"
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 3"
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 4"
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 5"
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 6"
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 7"
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 8"
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 9"
+          "type": "Gobo"
         }
       ]
     }
@@ -80,7 +71,7 @@
       "defaultValue": 128,
       "capability": {
         "type": "Pan",
-        "angleStart": "360deg",
+        "angleStart": "0deg",
         "angleEnd": "540deg"
       }
     },
@@ -88,7 +79,7 @@
       "defaultValue": 128,
       "capability": {
         "type": "Tilt",
-        "angleStart": "90deg",
+        "angleStart": "0deg",
         "angleEnd": "230deg"
       }
     },
@@ -96,27 +87,24 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "Generic",
-          "comment": "Closed"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [8, 134],
-          "type": "Intensity",
-          "brightnessStart": "0%",
-          "brightnessEnd": "100%",
-          "comment": "dimmer intensity 0-100 %"
+          "type": "Intensity"
         },
         {
           "dmxRange": [135, 239],
-          "type": "EffectSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "strobe effect with increasing speed"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [240, 255],
-          "type": "Generic",
-          "comment": "open"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
@@ -128,51 +116,51 @@
         },
         {
           "dmxRange": [11, 31],
-          "type": "ColorIntensity",
-          "color": "Warm White",
-          "comment": "White (RGBW macro white)"
+          "type": "ColorPreset",
+          "comment": "RGBW White",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [32, 52],
-          "type": "ColorIntensity",
-          "color": "Red",
-          "comment": "Red"
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
         },
         {
           "dmxRange": [53, 73],
-          "type": "ColorIntensity",
-          "color": "Green",
-          "comment": "Green"
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
         },
         {
           "dmxRange": [74, 94],
-          "type": "ColorIntensity",
-          "color": "Blue",
-          "comment": "Blue"
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
         },
         {
           "dmxRange": [95, 115],
-          "type": "ColorIntensity",
-          "color": "White",
-          "comment": "White"
+          "type": "ColorPreset",
+          "comment": "Pure White",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [116, 136],
-          "type": "ColorIntensity",
-          "color": "Yellow",
-          "comment": "Yellow"
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
         },
         {
           "dmxRange": [137, 157],
-          "type": "ColorIntensity",
-          "color": "Cyan",
-          "comment": "Cyan"
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
         },
         {
           "dmxRange": [158, 178],
-          "type": "ColorIntensity",
-          "color": "Magenta",
-          "comment": "Magenta"
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
         },
         {
           "dmxRange": [179, 199],
@@ -187,7 +175,7 @@
         {
           "dmxRange": [221, 241],
           "type": "Effect",
-          "effectName": "Color change Macro 2"
+          "effectName": "Color change Macro 3"
         },
         {
           "dmxRange": [242, 252],
@@ -201,7 +189,7 @@
         }
       ]
     },
-    "Gobo wheel / Gobo shake": {
+    "Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 7],
@@ -319,29 +307,30 @@
         {
           "dmxRange": [215, 235],
           "type": "Effect",
-          "effectName": "Rainbow forward",
+          "effectPreset": "ColorFade",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [236, 255],
           "type": "Effect",
-          "effectName": "Rainbow backward",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "effectPreset": "ColorFade",
+          "speedStart": "slow reverse",
+          "speedEnd": "fast reverse"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "5ch",
+      "name": "5-channel",
+      "shortName": "5ch",
       "channels": [
         "Pan",
         "Tilt",
         "Dimmer / Strobe",
         "Color Macros",
-        "Gobo wheel / Gobo shake"
+        "Gobo Wheel"
       ]
     }
   ]
