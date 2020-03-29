@@ -243,7 +243,7 @@
 
 <script>
 import scrollIntoView from 'scroll-into-view';
-import uuidV4 from 'uuid/v4.js';
+import { v4 as uuidv4 } from 'uuid';
 
 import schemaProperties from '../../../lib/schema-properties.js';
 import {
@@ -401,7 +401,7 @@ export default {
   methods: {
     setEditModeCreate() {
       this.channel.editMode = `create`;
-      this.channel.uuid = uuidV4();
+      this.channel.uuid = uuidv4();
     },
 
     getChannelName(channelUuid) {
@@ -601,7 +601,7 @@ export default {
     saveDuplicatedChannel() {
       const oldChannelKey = this.channel.uuid;
 
-      const newChannelKey = uuidV4();
+      const newChannelKey = uuidv4();
       const newChannel = getSanitizedChannel(this.channel);
       newChannel.uuid = newChannelKey;
       this.$set(this.fixture.availableChannels, newChannelKey, newChannel);

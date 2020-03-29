@@ -1,5 +1,7 @@
 const xml2js = require(`xml2js`);
 const promisify = require(`util`).promisify;
+
+const oflManufacturers = require(`../../fixtures/manufacturers.json`);
 const qlcplusGoboAliases = require(`../../resources/gobos/aliases/qlcplus.json`);
 
 const {
@@ -9,7 +11,7 @@ const {
   importHelpers
 } = require(`./presets.js`);
 
-module.exports.version = `1.0.0`;
+module.exports.version = `1.1.0`;
 
 /**
  * @param {Buffer} buffer The imported file.
@@ -21,11 +23,8 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
   const parser = new xml2js.Parser();
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
-  const out = {
-    manufacturers: {},
-    fixtures: {},
-    warnings: {}
-  };
+  const warnings = [];
+
   const fixture = {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`
   };
@@ -37,7 +36,14 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
 
   const manKey = slugify(qlcPlusFixture.Manufacturer[0]);
   const fixKey = `${manKey}/${slugify(fixture.name)}`;
-  out.warnings[fixKey] = [`Please check if manufacturer is correct.`];
+
+  const manufacturers = {};
+  if (!(manKey in oflManufacturers)) {
+    manufacturers[manKey] = {
+      name: qlcPlusFixture.Manufacturer[0]
+    };
+    warnings.push(`Please check if manufacturer is correct and add manufacturer URL.`);
+  }
 
   fixture.categories = getOflCategories(qlcPlusFixture);
 
@@ -73,17 +79,23 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
 
   qlcPlusFixture.Channel.forEach(channel => addOflChannel(fixture, channel, qlcPlusFixture));
 
-  mergeFineChannels(fixture, qlcPlusFixture, out.warnings[fixKey]);
+  mergeFineChannels(fixture, qlcPlusFixture, warnings);
 
-  fixture.modes = qlcPlusFixture.Mode.map(mode => getOflMode(mode, fixture.physical, out.warnings[fixKey]));
+  fixture.modes = qlcPlusFixture.Mode.map(mode => getOflMode(mode, fixture.physical, warnings));
 
   addSwitchingChannels(fixture, qlcPlusFixture);
 
   cleanUpFixture(fixture, qlcPlusFixture);
 
-  out.fixtures[fixKey] = fixture;
-
-  return out;
+  return {
+    manufacturers,
+    fixtures: {
+      [fixKey]: fixture
+    },
+    warnings: {
+      [fixKey]: warnings
+    }
+  };
 };
 
 /**
@@ -108,7 +120,7 @@ function getOflCategories(qlcPlusFixture) {
 function addOflFixturePhysical(fixture, qlcPlusFixture) {
   const allModesHavePhysical = qlcPlusFixture.Mode.every(mode => `Physical` in mode);
   const firstPhysicalMode = qlcPlusFixture.Mode.find(mode => `Physical` in mode);
-  const hasModePhysical = firstPhysicalMode !== null;
+  const hasModePhysical = firstPhysicalMode !== undefined;
   const hasGlobalPhysical = `Physical` in qlcPlusFixture;
 
   if (hasGlobalPhysical || (hasModePhysical && !allModesHavePhysical)) {
@@ -305,7 +317,7 @@ const parserPerChannelType = {
 
       cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
 
-      if (`speedStart` in cap) {
+      if (`speed` in cap || `speedStart` in cap) {
         cap.type = `WheelRotation`;
         delete cap.slotNumber;
       }
@@ -338,7 +350,7 @@ const parserPerChannelType = {
 
     cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
 
-    if (`speedStart` in cap) {
+    if (`speed` in cap || `speedStart` in cap) {
       cap.type = channelNameInWheels ? `WheelRotation` : `WheelSlotRotation`;
       delete cap.slotNumber;
     }
@@ -352,7 +364,17 @@ const parserPerChannelType = {
     };
     cap.effectName = importHelpers.getSpeedGuessedComment(capabilityName, cap);
 
-    if (/\bsound\b/i.test(cap.effectName)) {
+    if (cap.effectName === ``) {
+      delete cap.effectName;
+      if (cap.type === `Effect`) {
+        cap.type = `Speed`;
+      }
+    }
+    else if (cap.type === `Rotation`) {
+      cap.comment = cap.effectName;
+      delete cap.effectName;
+    }
+    else if (/\bsound\b/i.test(cap.effectName)) {
       cap.soundControlled = true;
     }
 
@@ -368,6 +390,13 @@ const parserPerChannelType = {
         type: `PanContinuous`
       };
       cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+
+      if (!(`speed` in cap || `speedStart` in cap)) {
+        cap.speedStart = `slow CW`;
+        cap.speedEnd = `fast CW`;
+        cap.helpWanted = `Are the automatically added speed values correct?`;
+      }
+
       return cap;
     }
 
@@ -381,6 +410,13 @@ const parserPerChannelType = {
         type: `TiltContinuous`
       };
       cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+
+      if (!(`speed` in cap || `speedStart` in cap)) {
+        cap.speedStart = `slow CW`;
+        cap.speedEnd = `fast CW`;
+        cap.helpWanted = `Are the automatically added speed values correct?`;
+      }
+
       return cap;
     }
 
@@ -397,27 +433,21 @@ const parserPerChannelType = {
       type: `ShutterStrobe`
     };
 
-    if (capabilityName.match(/^(?:Blackout|(?:Shutter |Strobe )?Closed?)$/i)) {
-      cap.shutterEffect = `Closed`;
-      return cap;
-    }
+    const shutterEffects = {
+      Closed: /^(?:Blackout|(?:Shutter |Strobe )?Closed?)$/i,
+      Open: /^(?:(?:Shutter |Strobe )?Open|Full?)$/i,
+      Pulse: /puls/i,
+      RampUp: /ramp\s*up/i,
+      RampDown: /ramp\s*down/i
+    };
 
-    if (capabilityName.match(/^(?:(?:Shutter |Strobe )?Open|Full?)$/i)) {
-      cap.shutterEffect = `Open`;
-      return cap;
-    }
+    cap.shutterEffect = Object.keys(shutterEffects).find(
+      shutterEffect => capabilityName.match(shutterEffects[shutterEffect])
+    ) || `Strobe`;
 
-    if (capabilityName.match(/puls/i)) {
-      cap.shutterEffect = `Pulse`;
-    }
-    else if (capabilityName.match(/ramp\s*up/i)) {
-      cap.shutterEffect = `RampUp`;
-    }
-    else if (capabilityName.match(/ramp\s*down/i)) {
-      cap.shutterEffect = `RampDown`;
-    }
-    else {
-      cap.shutterEffect = `Strobe`;
+    if ([`Open`, `Closed`].includes(cap.shutterEffect)) {
+      // short circuit, there's no need to test for randomTiming or speed
+      return cap;
     }
 
     if (capabilityName.match(/random/i)) {
@@ -425,6 +455,12 @@ const parserPerChannelType = {
     }
 
     cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+
+    if (!(`speed` in cap || `speedStart` in cap)) {
+      cap.speedStart = `slow`;
+      cap.speedEnd = `fast`;
+      cap.helpWanted = `Are the automatically added speed values correct?`;
+    }
 
     return cap;
   },
@@ -434,11 +470,26 @@ const parserPerChannelType = {
     if (channelName.match(/pan(?:\/)?tilt/i)) {
       cap.type = `PanTiltSpeed`;
     }
+    else if (channelName.match(/strobe/i) || capabilityName.match(/strobe/i)) {
+      if (channelName.match(/speed|rate/i)) {
+        cap.type = `StrobeSpeed`;
+      }
+      else {
+        cap.type = `ShutterStrobe`;
+        cap.shutterEffect = `Strobe`;
+      }
+    }
     else {
       cap.type = `Speed`;
     }
 
     cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+
+    if (!(`speed` in cap || `speedStart` in cap)) {
+      cap.speedStart = `slow`;
+      cap.speedEnd = `fast`;
+      cap.helpWanted = `Are the automatically added speed values correct?`;
+    }
 
     return cap;
   }
@@ -633,7 +684,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
       DMXconnector = `3.5mm stereo jack`;
     }
 
-    if (DMXconnector !== `` && oflFixPhysical.DMXconnector !== DMXconnector) {
+    if (![``, `Other`, oflFixPhysical.DMXconnector].includes(DMXconnector)) {
       physical.DMXconnector = DMXconnector;
     }
   }
@@ -645,7 +696,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
     physical.bulb = {};
 
     const type = qlcPlusPhysical.Bulb[0].$.Type;
-    if (type !== `` && getOflFixPhysicalProperty(`bulb`, `type`) !== type) {
+    if (![``, `Other`, getOflFixPhysicalProperty(`bulb`, `type`)].includes(type)) {
       physical.bulb.type = type;
     }
 
@@ -667,7 +718,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
     physical.lens = {};
 
     const name = qlcPlusPhysical.Lens[0].$.Name;
-    if (name !== `` && getOflFixPhysicalProperty(`lens`, `name`) !== name) {
+    if (![``, `Other`, getOflFixPhysicalProperty(`lens`, `name`)].includes(name)) {
       physical.lens.name = name;
     }
 
@@ -704,8 +755,15 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
  */
 function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
   const mode = {
-    name: qlcPlusMode.$.Name
+    name: qlcPlusMode.$.Name.replace(/\s+mode|mode\s+/ig, ``)
   };
+
+  const match = mode.name.match(/(\d+)(?:\s+|-)?(?:channels?|chan|ch)/i);
+  if (match) {
+    const [matchedPart, numberOfChannels] = match;
+    mode.shortName = mode.name.replace(matchedPart, `${numberOfChannels}ch`);
+    mode.name = mode.name.replace(matchedPart, `${numberOfChannels}-channel`);
+  }
 
   if (`Physical` in qlcPlusMode) {
     const physical = getOflPhysical(qlcPlusMode.Physical[0], oflFixPhysical);

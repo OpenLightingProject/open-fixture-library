@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PLS25 Par",
+  "categories": ["Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["Marek Jędrzejewski"],
+    "createDate": "2020-03-28",
+    "lastModifyDate": "2020-03-28"
+  },
+  "links": {
+    "manual": [
+      "https://res.cloudinary.com/chal-tec/image/upload/bbg/10032389/bda/10032389.pdf"
+    ],
+    "productPage": [
+      "https://www.beamzlighting.com/product/pls25-par/"
+    ],
+    "video": [
+      "https://youtu.be/Kd83PELCiGo"
+    ]
+  },
+  "physical": {
+    "dimensions": [160, 115, 120],
+    "weight": 0.6,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "12× 1W LEDs (3× red, 3× green, 3× blue, 3× white)"
+    },
+    "lens": {
+      "degreesMinMax": [13, 13]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 10],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}

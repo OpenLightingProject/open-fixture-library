@@ -91,13 +91,13 @@ select {
   margin-top: 1ex;
   padding: 0.5em 3ex;
 
-  background: $grey-50;
+  background: theme-color(button-secondary-background);
 
-  color: theme-color(text-secondary);
+  color: theme-color(button-secondary-text);
   font-weight: 600;
   font-size: 0.9em;
 
-  border-color: $grey-300;
+  border-color: theme-color(button-secondary-border);
   border-radius: 2px;
 
   transition: 0.1s background-color;
@@ -105,7 +105,7 @@ select {
 
   &:not(:disabled):hover,
   &:not(:disabled):focus {
-    background-color: $grey-300;
+    background-color: theme-color(button-secondary-background-hover);
   }
 }
 
@@ -245,7 +245,7 @@ export default {
       required: false,
       default: 0
     },
-    // a fixture from the editor, not yet submitted
+    // fixtures from the editor, not yet submitted
     editorFixtures: {
       type: Object,
       required: false,
@@ -287,7 +287,7 @@ export default {
     // returns whether we're handling only one single fixture here
     // or all fixtures in a specific format
     isSingle() {
-      return (this.editorFixtures && this.editorFixtures.fixtures.length === 1) || this.fixtureKey;
+      return (this.editorFixtures && Object.keys(this.editorFixtures.fixtures).length === 1) || this.fixtureKey;
     },
     title() {
       if (this.isSingle) {
