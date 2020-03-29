@@ -68,7 +68,8 @@
   },
   "availableChannels": {
     "Pan": {
-      "defaultValue": 128,
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32768,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -76,11 +77,19 @@
       }
     },
     "Tilt": {
-      "defaultValue": 128,
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32768,
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
         "angleEnd": "230deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
       }
     },
     "Dimmer / Strobe": {
@@ -104,9 +113,34 @@
         {
           "dmxRange": [240, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open"
+          "shutterEffect": "Open",
+          "helpWanted": "Does this capability start at DMX value 233 or 240? Is this the same in both modes (5ch and 14ch)?"
         }
       ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
     },
     "Color Macros": {
       "capabilities": [
@@ -186,6 +220,109 @@
           "dmxRange": [253, 255],
           "type": "Effect",
           "effectName": "Color change Macro 5"
+        }
+      ]
+    },
+    "RGBW Speed": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "instant",
+        "durationEnd": "long"
+      }
+    },
+    "Motion Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 23],
+          "type": "Effect",
+          "effectName": "Motion macro 1"
+        },
+        {
+          "dmxRange": [24, 39],
+          "type": "Effect",
+          "effectName": "Motion macro 2"
+        },
+        {
+          "dmxRange": [40, 55],
+          "type": "Effect",
+          "effectName": "Motion macro 3"
+        },
+        {
+          "dmxRange": [56, 71],
+          "type": "Effect",
+          "effectName": "Motion macro 4"
+        },
+        {
+          "dmxRange": [72, 87],
+          "type": "Effect",
+          "effectName": "Motion macro 5"
+        },
+        {
+          "dmxRange": [88, 103],
+          "type": "Effect",
+          "effectName": "Motion macro 6"
+        },
+        {
+          "dmxRange": [104, 119],
+          "type": "Effect",
+          "effectName": "Motion macro 7"
+        },
+        {
+          "dmxRange": [120, 135],
+          "type": "Effect",
+          "effectName": "Motion macro 8"
+        },
+        {
+          "dmxRange": [136, 151],
+          "type": "Effect",
+          "effectName": "Sound-controlled Motion macro 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [152, 167],
+          "type": "Effect",
+          "effectName": "Sound-controlled Motion macro 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [168, 183],
+          "type": "Effect",
+          "effectName": "Sound-controlled Motion macro 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [184, 199],
+          "type": "Effect",
+          "effectName": "Sound-controlled Motion macro 4",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [200, 215],
+          "type": "Effect",
+          "effectName": "Sound-controlled Motion macro 5",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [216, 231],
+          "type": "Effect",
+          "effectName": "Sound-controlled Motion macro 6",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [232, 247],
+          "type": "Effect",
+          "effectName": "Sound-controlled Motion macro 7",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Effect",
+          "effectName": "Sound-controlled Motion macro 8",
+          "soundControlled": true
         }
       ]
     },
@@ -330,6 +467,26 @@
         "Tilt",
         "Dimmer / Strobe",
         "Color Macros",
+        "Gobo Wheel"
+      ]
+    },
+    {
+      "name": "14-channel",
+      "shortName": "14ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "RGBW Speed",
+        "Motion Macros",
         "Gobo Wheel"
       ]
     }
