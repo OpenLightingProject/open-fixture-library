@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "PT-RZ120",
+  "name": "PT-RZ120L",
   "categories": ["Other", "Laser"],
   "meta": {
     "authors": ["Walter Ponce", "Flo Edelmann"],
@@ -20,8 +20,8 @@
     ]
   },
   "physical": {
-    "dimensions": [498, 200, 581],
-    "weight": 23.6,
+    "dimensions": [498, 200, 538],
+    "weight": 22.8,
     "power": 1100,
     "bulb": {
       "type": "Laser Diode",
