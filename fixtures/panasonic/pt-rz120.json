@@ -136,6 +136,10 @@
           "dmxRange": [32, 63],
           "type": "Maintenance",
           "comment": "Move to home position"
+        },
+        {
+          "dmxRange": [64, 255],
+          "type": "NoFunction"
         }
       ]
     },
