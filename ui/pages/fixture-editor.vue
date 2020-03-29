@@ -229,7 +229,11 @@
 
       <EditorRestoreDialog v-model="restoredData" @restore-complete="restoreComplete" />
 
-      <EditorSubmitDialog :submit="submit" @success="onFixtureSubmitted" @reset="reset" />
+      <EditorSubmitDialog
+        ref="submitDialog"
+        endpoint="/ajax/submit-editor"
+        @success="onFixtureSubmitted"
+        @reset="reset" />
 
     </ClientOnly>
   </div>
@@ -323,10 +327,6 @@ export default {
       fixture: initFixture,
       channel: getEmptyChannel(),
       honeypot: ``,
-      submit: {
-        state: `closed`,
-        sendObject: null
-      },
       manufacturers,
       properties: schemaProperties
     };
@@ -551,11 +551,10 @@ export default {
         return;
       }
 
-      this.submit.sendObject = {
+      this.$refs.submitDialog.validate({
         createPullRequest: false,
         fixtures: [this.fixture]
-      };
-      this.submit.state = `validating`;
+      });
     },
 
     onFixtureSubmitted() {
@@ -567,10 +566,6 @@ export default {
       this.fixture = getEmptyFixture();
       this.channel = getEmptyChannel();
       this.honeypot = ``;
-      this.submit = {
-        state: `closed`,
-        sendObject: null
-      };
       this.applyStoredPrefillData();
 
       this.$router.push({
