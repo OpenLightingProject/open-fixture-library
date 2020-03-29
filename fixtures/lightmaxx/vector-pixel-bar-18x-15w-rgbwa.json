@@ -28,7 +28,10 @@
     }
   },
   "matrix": {
-    "pixelCount": [18, 1, 1]
+    "pixelCount": [18, 1, 1],
+    "pixelGroups": {
+      "Master": "all"
+    }
   },
   "availableChannels": {
     "Dimmer": {
@@ -407,36 +410,6 @@
         "speedStart": "slow",
         "speedEnd": "fast"
       }
-    },
-    "Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "White": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "Amber": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
     }
   },
   "templateChannels": {
@@ -444,9 +417,55 @@
       "capability": {
         "type": "Intensity"
       }
+    },
+    "Red $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
     }
   },
   "modes": [
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Function",
+        "Running Effects / Color Running Effect Direction",
+        "Function Speed",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Amber Master"
+      ]
+    },
     {
       "name": "28-channel",
       "shortName": "28ch",
@@ -456,17 +475,63 @@
         "Function",
         "Running Effects / Color Running Effect Direction",
         "Function Speed",
-        "Red",
-        "Green",
-        "Blue",
-        "White",
-        "Amber",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Amber Master",
         {
           "insert": "matrixChannels",
           "repeatFor": "eachPixelXYZ",
           "channelOrder": "perPixel",
           "templateChannels": [
             "RGBWA Dimmer $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "90-channel",
+      "shortName": "90ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "100-channel",
+      "shortName": "100ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Function",
+        "Running Effects / Color Running Effect Direction",
+        "Function Speed",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Amber Master",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey",
+            "Amber $pixelKey"
           ]
         }
       ]
