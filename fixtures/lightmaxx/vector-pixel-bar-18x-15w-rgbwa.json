@@ -16,12 +16,15 @@
     ]
   },
   "physical": {
-    "dimensions": [1130, 210, 150],
+    "dimensions": [1130, 150, 210],
     "weight": 8,
     "power": 180,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "18× 15W RGBWA LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [45, 45]
     }
   },
   "availableChannels": {
