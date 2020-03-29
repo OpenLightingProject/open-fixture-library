@@ -94,6 +94,31 @@
       "capability": {
         "type": "Generic"
       }
+    },
+    "Lens Position": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Lens H Shift": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Lens V Shift": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Lens Focus": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Lens Zoom": {
+      "capability": {
+        "type": "Generic"
+      }
     }
   },
   "modes": [
@@ -111,6 +136,22 @@
         "Fade out",
         "Custom Masking",
         "Geometry"
+      ]
+    },
+    {
+      "name": "2",
+      "channels": [
+        "Light Output",
+        "Input Select",
+        "Lens Position",
+        "Lens H Shift",
+        "Lens V Shift",
+        "Lens Focus",
+        "Lens Zoom",
+        "Power",
+        "Geometry",
+        "Custom Masking",
+        "Enable/Disable"
       ]
     }
   ]
