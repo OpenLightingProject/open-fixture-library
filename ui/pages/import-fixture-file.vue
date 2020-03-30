@@ -8,7 +8,7 @@
 
     <VueForm
       :state="formstate"
-      action="/ajax/import-fixture-file"
+      action="/api/import-fixture-file"
       method="post"
       enctype="multipart/form-data"
       @submit.prevent="onSubmit($event.target)">
@@ -90,7 +90,7 @@
 
     <EditorSubmitDialog
       ref="submitDialog"
-      endpoint="/ajax/import-fixture-file"
+      endpoint="/api/import-fixture-file"
       :query-parameters="queryParameters"
       @success="storePrefillData"
       @reset="reset" />

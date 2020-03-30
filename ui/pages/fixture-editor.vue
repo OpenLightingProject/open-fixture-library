@@ -231,7 +231,7 @@
 
       <EditorSubmitDialog
         ref="submitDialog"
-        endpoint="/ajax/submit-editor"
+        endpoint="/api/submit-editor"
         @success="onFixtureSubmitted"
         @reset="reset" />
 
