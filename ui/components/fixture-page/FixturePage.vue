@@ -27,6 +27,10 @@
       <DownloadButton :fixture-key="`${manKey}/${fixKey}`" />
     </header>
 
+    <section v-if="$scopedSlots.notice" class="card yellow">
+      <slot name="notice" />
+    </section>
+
     <section :style="{ borderTopColor: manufacturerColor }" class="fixture-info card">
 
       <LabeledValue

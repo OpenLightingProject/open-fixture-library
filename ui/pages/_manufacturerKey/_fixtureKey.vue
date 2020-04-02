@@ -6,11 +6,11 @@
     <!-- eslint-disable-next-line vue/no-v-html -->
     <script type="application/ld+json" v-html="breadcrumbListStructuredData" />
 
-    <section v-if="redirect" class="card yellow">
-      Redirected from <code>{{ redirect.from }}</code>: {{ redirect.reason }}
-    </section>
-
-    <FixturePage :fixture="fixture" :load-all-modes="loadAllModes" />
+    <FixturePage :fixture="fixture" :load-all-modes="loadAllModes">
+      <template v-if="redirect" #notice>
+        Redirected from <code>{{ redirect.from }}</code>: {{ redirect.reason }}
+      </template>
+    </FixturePage>
   </div>
 </template>
 
