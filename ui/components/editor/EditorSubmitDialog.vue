@@ -175,7 +175,7 @@ export default {
   },
   methods: {
     async validate(requestBody) {
-      this.requestBody = clone(requestBody);
+      this.requestBody = requestBody;
 
       console.log(`validate`, clone(this.requestBody));
 
@@ -190,7 +190,11 @@ export default {
         this.state = `ready`;
       }
       catch (error) {
-        const errorMessage = error.response.data.error || error.message;
+        let errorMessage = error.message;
+        if (error.response && error.response.data.error) {
+          errorMessage = error.response.data.error;
+        }
+
         console.error(`There was a problem with the request:`, errorMessage);
 
         this.error = errorMessage;
@@ -218,7 +222,11 @@ export default {
         this.$emit(`success`);
       }
       catch (error) {
-        const errorMessage = error.response.data.error || error.message;
+        let errorMessage = error.message;
+        if (error.response && error.response.data.error) {
+          errorMessage = error.response.data.error;
+        }
+
         console.error(`There was a problem with the request:`, errorMessage);
 
         this.error = errorMessage;
