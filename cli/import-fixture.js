@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 const path = require(`path`);
 const minimist = require(`minimist`);
@@ -9,6 +9,8 @@ const { checkFixture } = require(`../tests/fixture-valid.js`);
 const plugins = require(`../plugins/plugins.json`);
 const fixtureJsonStringify = require(`../lib/fixture-json-stringify.js`);
 const createPullRequest = require(`../lib/create-github-pr.js`);
+
+/** @typedef {import('../lib/types.js').FixtureCreateResult} FixtureCreateResult */
 
 const args = minimist(process.argv.slice(2), {
   string: [`p`, `a`],
@@ -33,8 +35,15 @@ if (args._.length !== 1 || !plugins.importPlugins.includes(args.plugin) || !auth
     const buffer = await readFile(filename);
 
     const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `import.js`));
-    const result = await plugin.import(buffer, filename, authorName);
-    result.errors = {};
+    const { manufacturers, fixtures, warnings } = await plugin.import(buffer, filename, authorName);
+
+    /** @type {FixtureCreateResult} */
+    const result = {
+      manufacturers,
+      fixtures,
+      warnings,
+      errors: {}
+    };
 
     for (const key of Object.keys(result.fixtures)) {
       const [manKey, fixKey] = key.split(`/`);

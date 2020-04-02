@@ -2,17 +2,20 @@ const express = require(`express`);
 
 const api = express.Router();
 
-api.route(`/import-fixture-file`)
-  .post(requireNoCacheInDev(`./import-fixture-file.js`));
-
 api.route(`/get-search-results`)
   .post(requireNoCacheInDev(`./get-search-results.js`));
 
-api.route(`/submit-editor`)
-  .post(requireNoCacheInDev(`./submit-editor.js`));
-
 api.route(`/submit-feedback`)
   .post(requireNoCacheInDev(`./submit-feedback.js`));
+
+api.route(`/fixtures/from-editor`)
+  .post(requireNoCacheInDev(`./fixtures/from-editor.js`));
+
+api.route(`/fixtures/import`)
+  .post(requireNoCacheInDev(`./fixtures/import.js`));
+
+api.route(`/fixtures/submit`)
+  .post(requireNoCacheInDev(`./fixtures/submit.js`));
 
 module.exports = api;
 
