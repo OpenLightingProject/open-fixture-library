@@ -134,14 +134,13 @@ export default {
       return new Fixture(this.manKey, this.fixKey, this.fixtureJson);
     },
     productModelStructuredData() {
-      console.log(`productModelStructuredData`);
       const data = {
         '@context': `http://schema.org`,
         '@type': `ProductModel`,
         'name': this.fixture.name,
         'category': this.fixture.mainCategory,
         'manufacturer': {
-          'url': `${packageJson.homepage}${this.fixKey}`
+          'url': `${packageJson.homepage}${this.manKey}`
         }
       };
 
@@ -174,7 +173,7 @@ export default {
             '@type': `ListItem`,
             'position': 2,
             'item': {
-              '@id': `${packageJson.homepage}${this.fixKey}`,
+              '@id': `${packageJson.homepage}${this.manKey}`,
               'name': this.fixture.manufacturer.name
             }
           },
