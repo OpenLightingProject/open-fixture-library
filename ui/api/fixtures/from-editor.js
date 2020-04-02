@@ -10,7 +10,7 @@ const getOutObjectFromEditorData = require(`../../../lib/get-out-object-from-edi
  * @param {RequestBody} request.body The editor's fixture objects.
  * @param {Object} response Passed from Express.
  */
-module.exports = function addFixtures(request, response) {
+module.exports = function createFixtureFromEditor(request, response) {
   try {
     const fixtureCreateResult = getOutObjectFromEditorData(request.body);
     response.status(201).json(fixtureCreateResult);
