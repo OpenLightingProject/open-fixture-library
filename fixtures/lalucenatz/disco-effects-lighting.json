@@ -1,0 +1,96 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Disco Effects Lighting",
+  "categories": ["Flower", "Other"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2020-04-02",
+    "lastModifyDate": "2020-04-02"
+  },
+  "links": {
+    "productPage": [
+      "https://www.amazon.com/dp/B011QEVO44/ref=cm_sw_r_cp_tai_aGvHEbVJN3CMK"
+    ],
+    "video": [
+      "https://youtu.be/jYfDDvw0aEU"
+    ]
+  },
+  "rdm": {
+    "modelId": 63005
+  },
+  "physical": {
+    "dimensions": [8.86, 8.07, 8.46],
+    "weight": 1.3,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red + Orange Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green + Purple Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue + White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green + Yellow Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Light Always On": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Mode": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 Channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red + Orange Dimmer",
+        "Green + Purple Dimmer",
+        "Blue + White",
+        "Green + Yellow Dimmer",
+        "Shutter / Strobe",
+        "Light Always On",
+        "Sound Mode"
+      ]
+    }
+  ]
+}
