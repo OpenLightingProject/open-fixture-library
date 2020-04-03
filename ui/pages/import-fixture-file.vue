@@ -200,14 +200,8 @@ export default {
       }
     },
     reset() {
-      this.plugin = ``;
       this.$refs.fileUpload.clear();
-
-      // clear query
-      this.$router.push({
-        path: this.$route.path,
-        query: {}
-      });
+      this.githubComment = ``;
 
       this.$nextTick(() => {
         this.formstate._reset();
