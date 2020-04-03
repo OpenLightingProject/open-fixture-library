@@ -213,7 +213,7 @@ export default {
       this.state = `uploading`;
       try {
         const response = await this.$axios.post(
-          `/api/fixtures/submit`,
+          `/api/v1/fixtures/submit`,
           this.requestBody
         );
 

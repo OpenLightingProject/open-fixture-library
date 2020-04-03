@@ -231,7 +231,7 @@
 
       <EditorSubmitDialog
         ref="submitDialog"
-        endpoint="/api/fixtures/from-editor"
+        endpoint="/api/v1/fixtures/from-editor"
         :github-username="githubUsername"
         @success="onFixtureSubmitted"
         @reset="reset" />

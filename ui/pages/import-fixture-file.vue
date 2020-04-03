@@ -95,7 +95,7 @@
 
       <EditorSubmitDialog
         ref="submitDialog"
-        endpoint="/api/fixtures/import"
+        endpoint="/api/v1/fixtures/import"
         :github-username="githubUsername"
         :github-comment="githubComment"
         @success="storePrefillData"

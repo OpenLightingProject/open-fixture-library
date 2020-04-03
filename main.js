@@ -156,7 +156,7 @@ app.get(`/sitemap.xml`, (request, response) => {
   generateSitemap(packageJson.homepage).pipe(response);
 });
 
-app.use(`/api`, (request, response) => {
+app.use(`/api/v1`, (request, response) => {
   requireNoCacheInDev(`./ui/api/index.js`)(request, response);
 });
 
