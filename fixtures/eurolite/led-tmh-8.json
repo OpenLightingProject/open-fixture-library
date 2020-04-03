@@ -443,17 +443,15 @@
         },
         {
           "dmxRange": [215, 235],
-          "type": "Effect",
-          "effectPreset": "ColorFade",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         },
         {
           "dmxRange": [236, 255],
-          "type": "Effect",
-          "effectPreset": "ColorFade",
-          "speedStart": "slow reverse",
-          "speedEnd": "fast reverse"
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     }
