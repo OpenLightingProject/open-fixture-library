@@ -32,7 +32,9 @@
     "Light Output": {
       "defaultValue": 0,
       "capability": {
-        "type": "Intensity"
+        "type": "Intensity",
+        "brightnessStart": "bright",
+        "brightnessEnd": "off"
       }
     },
     "Input Select (1)": {
@@ -148,51 +150,45 @@
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "EffectParameter",
-          "parameterStart": "-100%",
-          "parameterEnd": "-50%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "fast",
+          "comment": "Lens adjustment –"
         },
         {
           "dmxRange": [32, 63],
-          "type": "EffectParameter",
-          "parameterStart": "-50%",
-          "parameterEnd": "-1%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "50%",
+          "comment": "Lens adjustment –"
         },
         {
           "dmxRange": [64, 95],
-          "type": "EffectParameter",
-          "parameterStart": "-1%",
-          "parameterEnd": "-0.1%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "1%",
+          "comment": "Lens adjustment –"
         },
         {
           "dmxRange": [96, 159],
-          "type": "EffectParameter",
-          "parameter": "0%",
+          "type": "Speed",
+          "speed": "stop",
           "comment": "Lens adjustment"
         },
         {
           "dmxRange": [160, 191],
-          "type": "EffectParameter",
-          "parameterStart": "0.1%",
-          "parameterEnd": "1%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "slow",
+          "comment": "Lens adjustment +"
         },
         {
           "dmxRange": [192, 223],
-          "type": "EffectParameter",
-          "parameterStart": "1%",
-          "parameterEnd": "50%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "50%",
+          "comment": "Lens adjustment +"
         },
         {
           "dmxRange": [224, 255],
-          "type": "EffectParameter",
-          "parameterStart": "50%",
-          "parameterEnd": "100%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "fast",
+          "comment": "Lens adjustment +"
         }
       ]
     },
@@ -201,51 +197,45 @@
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "EffectParameter",
-          "parameterStart": "-100%",
-          "parameterEnd": "-50%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "fast",
+          "comment": "Lens adjustment –"
         },
         {
           "dmxRange": [32, 63],
-          "type": "EffectParameter",
-          "parameterStart": "-50%",
-          "parameterEnd": "-1%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "50%",
+          "comment": "Lens adjustment –"
         },
         {
           "dmxRange": [64, 95],
-          "type": "EffectParameter",
-          "parameterStart": "-1%",
-          "parameterEnd": "-0.1%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "1%",
+          "comment": "Lens adjustment –"
         },
         {
           "dmxRange": [96, 159],
-          "type": "EffectParameter",
-          "parameter": "0%",
+          "type": "Speed",
+          "speed": "stop",
           "comment": "Lens adjustment"
         },
         {
           "dmxRange": [160, 191],
-          "type": "EffectParameter",
-          "parameterStart": "0.1%",
-          "parameterEnd": "1%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "slow",
+          "comment": "Lens adjustment +"
         },
         {
           "dmxRange": [192, 223],
-          "type": "EffectParameter",
-          "parameterStart": "1%",
-          "parameterEnd": "50%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "50%",
+          "comment": "Lens adjustment +"
         },
         {
           "dmxRange": [224, 255],
-          "type": "EffectParameter",
-          "parameterStart": "50%",
-          "parameterEnd": "100%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "fast",
+          "comment": "Lens adjustment +"
         }
       ]
     },
@@ -254,51 +244,45 @@
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "EffectParameter",
-          "parameterStart": "-100%",
-          "parameterEnd": "-50%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "fast",
+          "comment": "Lens adjustment –"
         },
         {
           "dmxRange": [32, 63],
-          "type": "EffectParameter",
-          "parameterStart": "-50%",
-          "parameterEnd": "-1%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "50%",
+          "comment": "Lens adjustment –"
         },
         {
           "dmxRange": [64, 95],
-          "type": "EffectParameter",
-          "parameterStart": "-1%",
-          "parameterEnd": "-0.1%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "1%",
+          "comment": "Lens adjustment –"
         },
         {
           "dmxRange": [96, 159],
-          "type": "EffectParameter",
-          "parameter": "0%",
+          "type": "Speed",
+          "speed": "stop",
           "comment": "Lens adjustment"
         },
         {
           "dmxRange": [160, 191],
-          "type": "EffectParameter",
-          "parameterStart": "0.1%",
-          "parameterEnd": "1%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "slow",
+          "comment": "Lens adjustment +"
         },
         {
           "dmxRange": [192, 223],
-          "type": "EffectParameter",
-          "parameterStart": "1%",
-          "parameterEnd": "50%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "50%",
+          "comment": "Lens adjustment +"
         },
         {
           "dmxRange": [224, 255],
-          "type": "EffectParameter",
-          "parameterStart": "50%",
-          "parameterEnd": "100%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "fast",
+          "comment": "Lens adjustment +"
         }
       ]
     },
@@ -307,51 +291,45 @@
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "EffectParameter",
-          "parameterStart": "-100%",
-          "parameterEnd": "-50%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "fast",
+          "comment": "Lens adjustment –"
         },
         {
           "dmxRange": [32, 63],
-          "type": "EffectParameter",
-          "parameterStart": "-50%",
-          "parameterEnd": "-1%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "50%",
+          "comment": "Lens adjustment –"
         },
         {
           "dmxRange": [64, 95],
-          "type": "EffectParameter",
-          "parameterStart": "-1%",
-          "parameterEnd": "-0.1%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "1%",
+          "comment": "Lens adjustment –"
         },
         {
           "dmxRange": [96, 159],
-          "type": "EffectParameter",
-          "parameter": "0%",
+          "type": "Speed",
+          "speed": "stop",
           "comment": "Lens adjustment"
         },
         {
           "dmxRange": [160, 191],
-          "type": "EffectParameter",
-          "parameterStart": "0.1%",
-          "parameterEnd": "1%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "slow",
+          "comment": "Lens adjustment +"
         },
         {
           "dmxRange": [192, 223],
-          "type": "EffectParameter",
-          "parameterStart": "1%",
-          "parameterEnd": "50%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "50%",
+          "comment": "Lens adjustment +"
         },
         {
           "dmxRange": [224, 255],
-          "type": "EffectParameter",
-          "parameterStart": "50%",
-          "parameterEnd": "100%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "fast",
+          "comment": "Lens adjustment +"
         }
       ]
     },
@@ -398,51 +376,45 @@
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "EffectParameter",
-          "parameterStart": "-100%",
-          "parameterEnd": "-50%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "fast",
+          "comment": "Lens adjustment –"
         },
         {
           "dmxRange": [32, 63],
-          "type": "EffectParameter",
-          "parameterStart": "-50%",
-          "parameterEnd": "-1%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "50%",
+          "comment": "Lens adjustment –"
         },
         {
           "dmxRange": [64, 95],
-          "type": "EffectParameter",
-          "parameterStart": "-1%",
-          "parameterEnd": "-0.1%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "1%",
+          "comment": "Lens adjustment –"
         },
         {
           "dmxRange": [96, 127],
-          "type": "EffectParameter",
-          "parameter": "0%",
+          "type": "Speed",
+          "speed": "stop",
           "comment": "Lens adjustment"
         },
         {
           "dmxRange": [128, 159],
-          "type": "EffectParameter",
-          "parameterStart": "0.1%",
-          "parameterEnd": "1%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "slow",
+          "comment": "Lens adjustment +"
         },
         {
           "dmxRange": [160, 191],
-          "type": "EffectParameter",
-          "parameterStart": "1%",
-          "parameterEnd": "50%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "50%",
+          "comment": "Lens adjustment +"
         },
         {
           "dmxRange": [192, 223],
-          "type": "EffectParameter",
-          "parameterStart": "50%",
-          "parameterEnd": "100%",
-          "comment": "Lens adjustment"
+          "type": "Speed",
+          "speed": "fast",
+          "comment": "Lens adjustment +"
         },
         {
           "dmxRange": [224, 255],
@@ -719,7 +691,7 @@
         {
           "dmxRange": [160, 223],
           "type": "Maintenance",
-          "comment": "off"
+          "comment": "on"
         },
         {
           "dmxRange": [224, 255],
@@ -740,14 +712,9 @@
           "comment": "Factory default setting"
         },
         {
-          "dmxRange": [64, 65],
+          "dmxRange": [64, 127],
           "type": "Maintenance",
-          "parameter": -31
-        },
-        {
-          "dmxRange": [66, 127],
-          "type": "Maintenance",
-          "parameterStart": -30,
+          "parameterStart": -31,
           "parameterEnd": -1
         },
         {
@@ -756,15 +723,10 @@
           "parameter": 0
         },
         {
-          "dmxRange": [130, 189],
+          "dmxRange": [130, 191],
           "type": "Maintenance",
           "parameterStart": 1,
-          "parameterEnd": 30
-        },
-        {
-          "dmxRange": [190, 191],
-          "type": "Maintenance",
-          "parameter": 31
+          "parameterEnd": 31
         },
         {
           "dmxRange": [192, 255],
@@ -785,14 +747,9 @@
           "comment": "Factory default setting"
         },
         {
-          "dmxRange": [64, 65],
+          "dmxRange": [64, 127],
           "type": "Maintenance",
-          "parameter": -31
-        },
-        {
-          "dmxRange": [66, 127],
-          "type": "Maintenance",
-          "parameterStart": -30,
+          "parameterStart": -31,
           "parameterEnd": -1
         },
         {
@@ -801,15 +758,10 @@
           "parameter": 0
         },
         {
-          "dmxRange": [130, 189],
+          "dmxRange": [130, 191],
           "type": "Maintenance",
           "parameterStart": 1,
-          "parameterEnd": 30
-        },
-        {
-          "dmxRange": [190, 191],
-          "type": "Maintenance",
-          "parameter": 31
+          "parameterEnd": 31
         },
         {
           "dmxRange": [192, 255],
