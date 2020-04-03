@@ -33,7 +33,6 @@ export function getEmptyFixture() {
     physical: getEmptyPhysical(),
     modes: [getEmptyMode()],
     metaAuthor: ``,
-    metaGithubUsername: ``,
     availableChannels: {}
   };
 }

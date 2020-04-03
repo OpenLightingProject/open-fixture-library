@@ -221,7 +221,7 @@ function getSanitizedQuery(query) {
  * @returns {Promise} The request promise.
  */
 function getSearchResults(axios, sanitizedQuery) {
-  return axios.$post(`/ajax/get-search-results`, {
+  return axios.$post(`/api/v1/get-search-results`, {
     searchQuery: sanitizedQuery.search,
     manufacturersQuery: sanitizedQuery.manufacturers,
     categoriesQuery: sanitizedQuery.categories

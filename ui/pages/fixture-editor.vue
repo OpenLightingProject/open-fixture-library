@@ -199,7 +199,7 @@
             label="GitHub username"
             hint="If you want to be mentioned in the pull request.">
             <PropertyInputText
-              v-model="fixture.metaGithubUsername"
+              v-model="githubUsername"
               :schema-property="properties.definitions.nonEmptyString"
               name="github-username" />
           </LabeledInput>
@@ -231,7 +231,8 @@
 
       <EditorSubmitDialog
         ref="submitDialog"
-        endpoint="/ajax/submit-editor"
+        endpoint="/api/v1/fixtures/from-editor"
+        :github-username="githubUsername"
         @success="onFixtureSubmitted"
         @reset="reset" />
 
@@ -326,6 +327,7 @@ export default {
       restoredData: null,
       fixture: initFixture,
       channel: getEmptyChannel(),
+      githubUsername: ``,
       honeypot: ``,
       manufacturers,
       properties: schemaProperties
@@ -519,14 +521,14 @@ export default {
         this.fixture.metaAuthor = localStorage.getItem(`prefillAuthor`) || ``;
       }
 
-      if (this.fixture.metaGithubUsername === ``) {
-        this.fixture.metaGithubUsername = localStorage.getItem(`prefillGithubUsername`) || ``;
+      if (this.githubUsername === ``) {
+        this.githubUsername = localStorage.getItem(`prefillGithubUsername`) || ``;
       }
     },
 
     storePrefillData() {
       localStorage.setItem(`prefillAuthor`, this.fixture.metaAuthor);
-      localStorage.setItem(`prefillGithubUsername`, this.fixture.metaGithubUsername);
+      localStorage.setItem(`prefillGithubUsername`, this.githubUsername);
     },
 
     onSubmit() {
@@ -551,10 +553,7 @@ export default {
         return;
       }
 
-      this.$refs.submitDialog.validate({
-        createPullRequest: false,
-        fixtures: [this.fixture]
-      });
+      this.$refs.submitDialog.validate([this.fixture]);
     },
 
     onFixtureSubmitted() {
