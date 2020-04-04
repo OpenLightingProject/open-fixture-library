@@ -52,58 +52,6 @@
     padding: 0 0.7ex;
   }
 }
-
-.fixture-info {
-  border-top: 0.4rem solid transparent;
-}
-
-.comment /deep/ .value {
-  white-space: pre-line;
-}
-
-.fixture-videos {
-  text-align: center;
-  line-height: 1;
-  margin: 1rem 0 0;
-  padding: 0;
-}
-.fixture-video {
-  margin-bottom: 1rem;
-
-  @media screen and (min-width: $phone-landscape) {
-    display: inline-block;
-    width: 50%;
-  }
-
-  & a {
-    display: inline-block;
-    margin-top: 4px;
-  }
-}
-
-.fixture-links {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-
-  .hostname {
-    color: theme-color(text-secondary);
-    font-size: 0.9em;
-    padding-left: 1ex;
-  }
-
-  .link-other {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
-
-.wheels {
-  white-space: nowrap;
-  overflow: hidden;
-  overflow-x: auto;
-}
 </style>
 
 <script>

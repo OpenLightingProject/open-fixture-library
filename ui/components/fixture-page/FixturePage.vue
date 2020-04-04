@@ -158,17 +158,6 @@
 </template>
 
 <style lang="scss" scoped>
-.fixture-meta {
-  margin: -1.5rem 0 1rem;
-  font-size: 0.8rem;
-  color: theme-color(text-secondary);
-
-  & > span:not(:last-child)::after {
-    content: ' | ';
-    padding: 0 0.7ex;
-  }
-}
-
 .fixture-info {
   border-top: 0.4rem solid transparent;
 }
