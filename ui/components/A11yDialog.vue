@@ -1,55 +1,84 @@
 <template>
   <div
     :aria-hidden="shown ? `false` : `true`"
-    class="dialog-container"
+    class="fullscreen"
     tabindex="-1"
     @click="overlayClick">
-    <div class="dialog-overlay" tabindex="-1" />
+    <div class="backdrop" tabindex="-1" />
 
-    <dialog
-      :id="`${id}-dialog`"
-      :aria-labelledby="id + '-dialog-title'"
-      :open="shown"
-      class="card">
-      <div>
+    <div class="dialog-wrapper" :class="{ wide }">
+      <dialog
+        :id="`${id}-dialog`"
+        :aria-labelledby="id + '-dialog-title'"
+        :open="shown"
+        class="card">
+        <div>
 
-        <a
-          v-if="cancellable"
-          href="#close"
-          class="icon-button close"
-          title="Close"
-          @click.prevent="hide">
-          Close
-          <OflSvg name="close" />
-        </a>
+          <a
+            v-if="cancellable"
+            href="#close"
+            class="icon-button close"
+            title="Close"
+            @click.prevent="hide">
+            Close
+            <OflSvg name="close" />
+          </a>
 
-        <h2 :id="`${id}-dialog-title`" tabindex="-1" autofocus>{{ title }}</h2>
+          <h2 :id="`${id}-dialog-title`" tabindex="-1" autofocus>
+            {{ title }}
+            <slot name="after-title" />
+          </h2>
 
-        <slot />
+          <slot />
 
-      </div>
-    </dialog>
+        </div>
+      </dialog>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.dialog-container {
+.fullscreen {
   outline: none;
-}
-
-.dialog-overlay {
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.66);
   position: fixed;
+  z-index: 1000;
   top: 0;
   left: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  /* fixes bug with hiding app bars on mobile */
+  /* (avoid 'width: 100vw' as this includes the scroll bar) */
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.dialog-container[aria-hidden=true],
-[data-a11y-dialog-native] > .dialog-overlay {
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.66);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.fullscreen[aria-hidden=true],
+[data-a11y-dialog-native] > .backdrop {
   display: none;
+}
+
+.fullscreen > .dialog-wrapper {
+  height: 100vh;
+  width: 100vw;
+  padding: 16px;
+  max-width: 650px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.wide {
+    max-width: 1000px;
+  }
 }
 
 dialog {
@@ -57,15 +86,9 @@ dialog {
   color: theme-color(text-primary);
   border: 0;
   z-index: 1010;
-  position: fixed;
-  top: 50%;
-  left: 50%;
   margin: 0;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
   min-width: 20rem;
-  max-width: 90%;
-  max-height: 90%;
+  max-height: 100%;
   overflow: auto;
   overscroll-behavior: contain;
 
@@ -88,17 +111,6 @@ dialog.card {
 
   & > div {
     padding: 1rem;
-  }
-}
-
-@media (max-width: $phone) {
-  /* make dialogs cover the whole screen */
-  dialog {
-    box-sizing: border-box;
-    max-width: none;
-    max-height: none;
-    width: 100%;
-    height: 100%;
   }
 }
 </style>
@@ -125,6 +137,11 @@ export default {
     title: {
       type: String,
       required: true,
+    },
+    wide: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
   data() {

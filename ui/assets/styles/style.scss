@@ -438,6 +438,10 @@ button, a.button {
     background-color: theme-color(yellow-background);
   }
 
+  &.red {
+    background-color: theme-color(red-background);
+  }
+
   &.orange {
     background: theme-color(orange-background);
   }
