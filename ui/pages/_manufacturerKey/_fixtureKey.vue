@@ -37,7 +37,35 @@
       Redirected from <code>{{ redirect.from }}</code>: {{ redirect.reason }}
     </section>
 
-    <FixturePage :fixture="fixture" :load-all-modes="loadAllModes" />
+    <FixturePage
+      :fixture="fixture"
+      :load-all-modes="loadAllModes"
+      @help-wanted-clicked="openHelpWantedDialog" />
+
+    <section id="contribute">
+      <h2>Something wrong with this fixture definition?</h2>
+      <p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>
+      <div class="grid-3">
+        <a
+          v-if="isBrowser"
+          href="#"
+          class="card slim"
+          @click.prevent="() => openHelpWantedDialog({
+            context: fixture,
+            type: `fixture`,
+          })">
+          <OflSvg name="comment-alert" class="left" /><span>Send information</span>
+        </a>
+        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Abug" rel="nofollow" class="card slim">
+          <OflSvg name="bug" class="left" /><span>Create issue on GitHub</span>
+        </a>
+        <a :href="mailtoUrl" class="card slim">
+          <OflSvg name="email" class="left" /><span>Send email</span>
+        </a>
+      </div>
+    </section>
+
+    <HelpWantedDialog v-model="helpWantedContext" :type="helpWantedType" />
   </div>
 </template>
 
@@ -64,12 +92,14 @@ import Fixture from '../../../lib/model/Fixture.js';
 import ConditionalDetails from '../../components/ConditionalDetails.vue';
 import DownloadButton from '../../components/DownloadButton.vue';
 import FixturePage from '../../components/fixture-page/FixturePage.vue';
+import HelpWantedDialog from '../../components/HelpWantedDialog.vue';
 
 export default {
   components: {
     ConditionalDetails,
     DownloadButton,
     FixturePage,
+    HelpWantedDialog,
   },
   validate({ params }) {
     return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
@@ -102,12 +132,15 @@ export default {
     }
 
     return {
+      isBrowser: false,
       plugins,
       manKey,
       fixKey,
       fixtureJson,
       redirect: redirectObj,
       loadAllModes: `loadAllModes` in query,
+      helpWantedContext: null,
+      helpWantedType: ``,
     };
   },
   computed: {
@@ -177,6 +210,10 @@ export default {
     branch() {
       return process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || `master`;
     },
+    mailtoUrl() {
+      const subject = `Feedback for fixture '${this.manKey}/${this.fixKey}'`;
+      return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}`;
+    },
   },
   head() {
     const title = `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`;
@@ -190,6 +227,17 @@ export default {
         },
       ],
     };
+  },
+  mounted() {
+    if (process.browser) {
+      this.isBrowser = true;
+    }
+  },
+  methods: {
+    openHelpWantedDialog(event) {
+      this.helpWantedContext = event.context;
+      this.helpWantedType = event.type;
+    },
   },
 };
 

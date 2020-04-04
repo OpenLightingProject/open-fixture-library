@@ -56,7 +56,7 @@
         v-if="fixture.isHelpWanted"
         type="fixture"
         :context="fixture"
-        @help-wanted-clicked="openHelpWantedDialog" />
+        @help-wanted-clicked="$emit(`help-wanted-clicked`, $event)" />
 
       <LabeledValue
         v-if="fixture.rdm !== null"
@@ -103,7 +103,7 @@
         :key="mode.name"
         :mode="mode"
         :index="index"
-        @help-wanted-clicked="openHelpWantedDialog" />
+        @help-wanted-clicked="$emit(`help-wanted-clicked`, $event)" />
       <div class="clearfix" />
     </section>
 
@@ -129,31 +129,6 @@
         </a>
       </div>
     </section>
-
-    <section id="contribute">
-      <h2>Something wrong with this fixture definition?</h2>
-      <p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>
-      <div class="grid-3">
-        <a
-          v-if="isBrowser"
-          href="#"
-          class="card slim"
-          @click.prevent="() => openHelpWantedDialog({
-            context: fixture,
-            type: `fixture`,
-          })">
-          <OflSvg name="comment-alert" class="left" /><span>Send information</span>
-        </a>
-        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Abug" rel="nofollow" class="card slim">
-          <OflSvg name="bug" class="left" /><span>Create issue on GitHub</span>
-        </a>
-        <a :href="mailtoUrl" class="card slim">
-          <OflSvg name="email" class="left" /><span>Send email</span>
-        </a>
-      </div>
-    </section>
-
-    <HelpWantedDialog v-model="helpWantedContext" :type="helpWantedType" />
   </div>
 </template>
 
@@ -224,7 +199,6 @@ import FixturePageMatrix from '../../components/fixture-page/FixturePageMatrix.v
 import FixturePageMode from '../../components/fixture-page/FixturePageMode.vue';
 import FixturePagePhysical from '../../components/fixture-page/FixturePagePhysical.vue';
 import FixturePageWheel from '../../components/fixture-page/FixturePageWheel.vue';
-import HelpWantedDialog from '../../components/HelpWantedDialog.vue';
 import HelpWantedMessage from '../../components/HelpWantedMessage.vue';
 import LabeledValue from '../../components/LabeledValue.vue';
 
@@ -237,7 +211,6 @@ export default {
     FixturePageMode,
     FixturePagePhysical,
     FixturePageWheel,
-    HelpWantedDialog,
     HelpWantedMessage,
     LabeledValue,
   },
@@ -257,8 +230,6 @@ export default {
     return {
       manufacturerColor: register.colors[this.fixture.manufacturer.key] || null,
       isBrowser: false,
-      helpWantedContext: null,
-      helpWantedType: ``,
       modeNumberLoadLimit: this.loadAllModes ? undefined : 5, // initially displayed modes, if limited
       modeNumberLoadThreshold: 15, // fixtures with more modes will be limited
       modeNumberLoadIncrement: 10, // how many modes a button click will load
@@ -345,21 +316,11 @@ export default {
 
       return links;
     },
-    mailtoUrl() {
-      const subject = `Feedback for fixture '${this.manKey}/${this.fixKey}'`;
-      return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}`;
-    },
   },
   mounted() {
     if (process.browser) {
       this.isBrowser = true;
     }
-  },
-  methods: {
-    openHelpWantedDialog(event) {
-      this.helpWantedContext = event.context;
-      this.helpWantedType = event.type;
-    },
   },
 };
 
