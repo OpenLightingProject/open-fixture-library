@@ -6,11 +6,38 @@
     <!-- eslint-disable-next-line vue/no-v-html -->
     <script type="application/ld+json" v-html="breadcrumbListStructuredData" />
 
-    <FixturePage :fixture="fixture" :load-all-modes="loadAllModes">
-      <template v-if="redirect" #notice>
-        Redirected from <code>{{ redirect.from }}</code>: {{ redirect.reason }}
-      </template>
-    </FixturePage>
+    <header class="fixture-header">
+      <div class="title">
+        <h1>
+          <NuxtLink :to="`/${manKey}`">{{ fixture.manufacturer.name }}</NuxtLink>
+          {{ fixture.name }}
+          <code v-if="fixture.hasShortName">{{ fixture.shortName }}</code>
+        </h1>
+
+        <section class="fixture-meta">
+          <span class="last-modify-date">Last modified:&nbsp;<OflTime :date="fixture.meta.lastModifyDate" /></span>
+          <span class="create-date">Created:&nbsp;<OflTime :date="fixture.meta.createDate" /></span>
+          <span class="authors">Author{{ fixture.meta.authors.length === 1 ? `` : `s` }}:&nbsp;{{ fixture.meta.authors.join(`, `) }}</span>
+          <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manKey}/${fixKey}.json`">Source</a></span>
+          <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manKey}/${fixKey}.json`">Revisions</a></span>
+
+          <ConditionalDetails v-if="fixture.meta.importPlugin !== null">
+            <template #summary>
+              Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <OflTime :date="fixture.meta.importDate" />.
+            </template>
+            <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>
+          </ConditionalDetails>
+        </section>
+      </div>
+
+      <DownloadButton :fixture-key="`${manKey}/${fixKey}`" />
+    </header>
+
+    <section v-if="redirect" class="card yellow">
+      Redirected from <code>{{ redirect.from }}</code>: {{ redirect.reason }}
+    </section>
+
+    <FixturePage :fixture="fixture" :load-all-modes="loadAllModes" />
   </div>
 </template>
 
@@ -82,13 +109,18 @@
 <script>
 import packageJson from '../../../package.json';
 import register from '../../../fixtures/register.json';
+import plugins from '../../../plugins/plugins.json';
 
 import Fixture from '../../../lib/model/Fixture.js';
 
+import ConditionalDetails from '../../components/ConditionalDetails.vue';
+import DownloadButton from '../../components/DownloadButton.vue';
 import FixturePage from '../../components/fixture-page/FixturePage.vue';
 
 export default {
   components: {
+    ConditionalDetails,
+    DownloadButton,
     FixturePage,
   },
   validate({ params }) {
@@ -122,6 +154,7 @@ export default {
     }
 
     return {
+      plugins,
       manKey,
       fixKey,
       fixtureJson,
@@ -187,6 +220,14 @@ export default {
           },
         ],
       };
+    },
+    githubRepoPath() {
+      const slug = process.env.TRAVIS_PULL_REQUEST_SLUG || process.env.TRAVIS_REPO_SLUG || `OpenLightingProject/open-fixture-library`;
+
+      return `https://github.com/${slug}`;
+    },
+    branch() {
+      return process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || `master`;
     },
   },
   head() {

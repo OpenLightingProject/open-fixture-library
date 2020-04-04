@@ -1,36 +1,5 @@
 <template>
   <div>
-    <header class="fixture-header">
-      <div class="title">
-        <h1>
-          <NuxtLink :to="`/${manKey}`">{{ fixture.manufacturer.name }}</NuxtLink>
-          {{ fixture.name }}
-          <code v-if="fixture.hasShortName">{{ fixture.shortName }}</code>
-        </h1>
-
-        <section class="fixture-meta">
-          <span class="last-modify-date">Last modified:&nbsp;<OflTime :date="fixture.meta.lastModifyDate" /></span>
-          <span class="create-date">Created:&nbsp;<OflTime :date="fixture.meta.createDate" /></span>
-          <span class="authors">Author{{ fixture.meta.authors.length === 1 ? `` : `s` }}:&nbsp;{{ fixture.meta.authors.join(`, `) }}</span>
-          <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manKey}/${fixKey}.json`">Source</a></span>
-          <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manKey}/${fixKey}.json`">Revisions</a></span>
-
-          <ConditionalDetails v-if="fixture.meta.importPlugin !== null">
-            <template #summary>
-              Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <OflTime :date="fixture.meta.importDate" />.
-            </template>
-            <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>
-          </ConditionalDetails>
-        </section>
-      </div>
-
-      <DownloadButton :fixture-key="`${manKey}/${fixKey}`" />
-    </header>
-
-    <section v-if="$scopedSlots.notice" class="card yellow">
-      <slot name="notice" />
-    </section>
-
     <section :style="{ borderTopColor: manufacturerColor }" class="fixture-info card">
 
       <LabeledValue
@@ -255,7 +224,6 @@
 
 <script>
 import register from '../../../fixtures/register.json';
-import plugins from '../../../plugins/plugins.json';
 
 import schemaProperties from '../../../lib/schema-properties.js';
 import Fixture from '../../../lib/model/Fixture.js';
@@ -263,8 +231,6 @@ import Fixture from '../../../lib/model/Fixture.js';
 import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
 
 import CategoryBadge from '../../components/CategoryBadge.vue';
-import ConditionalDetails from '../../components/ConditionalDetails.vue';
-import DownloadButton from '../../components/DownloadButton.vue';
 import FixturePageMatrix from '../../components/fixture-page/FixturePageMatrix.vue';
 import FixturePageMode from '../../components/fixture-page/FixturePageMode.vue';
 import FixturePagePhysical from '../../components/fixture-page/FixturePagePhysical.vue';
@@ -278,8 +244,6 @@ const VIDEOS_TO_EMBED = 2;
 export default {
   components: {
     CategoryBadge,
-    ConditionalDetails,
-    DownloadButton,
     FixturePageMatrix,
     FixturePageMode,
     FixturePagePhysical,
@@ -302,8 +266,7 @@ export default {
   },
   data() {
     return {
-      manufacturerColor: register.colors[this.fixKey] || null,
-      plugins,
+      manufacturerColor: register.colors[this.fixture.manufacturer.key] || null,
       isBrowser: false,
       helpWantedContext: null,
       helpWantedType: ``,
@@ -318,14 +281,6 @@ export default {
     },
     fixKey() {
       return this.fixture.key;
-    },
-    githubRepoPath() {
-      const slug = process.env.TRAVIS_PULL_REQUEST_SLUG || process.env.TRAVIS_REPO_SLUG || `OpenLightingProject/open-fixture-library`;
-
-      return `https://github.com/${slug}`;
-    },
-    branch() {
-      return process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || `master`;
     },
     modesLimited() {
       return this.fixture.modes.length > this.modeNumberLoadThreshold;
