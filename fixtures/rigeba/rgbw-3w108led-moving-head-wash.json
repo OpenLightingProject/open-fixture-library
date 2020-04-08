@@ -1,0 +1,281 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "rgbw 3w108led moving head wash",
+  "shortName": "china moving head wash 3X108",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["noellanda"],
+    "createDate": "2020-04-08",
+    "lastModifyDate": "2020-04-08"
+  },
+  "links": {
+    "video": [
+      "https://youtu.be/LqtURdoREvc"
+    ]
+  },
+  "physical": {
+    "dimensions": [8, 17, 17],
+    "weight": 9.5,
+    "power": 324,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "led"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Pan",
+        "angle": "0deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "280deg"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 6],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [7, 65],
+          "type": "StrobeSpeed",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [66, 69],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [70, 128],
+          "type": "StrobeSpeed",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [129, 132],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [133, 191],
+          "type": "StrobeDuration",
+          "duration": "short"
+        },
+        {
+          "dmxRange": [192, 195],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [196, 255],
+          "type": "StrobeDuration",
+          "duration": "short"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Blue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "White": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightness": "off"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speed": "fast"
+      }
+    },
+    "Color Presets ": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 14],
+          "type": "ColorPreset",
+          "comment": "red"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "ColorPreset",
+          "comment": "yellow"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ColorPreset",
+          "comment": "green"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "ColorPreset",
+          "comment": "light blue"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "ColorPreset",
+          "comment": " blue"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "ColorPreset",
+          "comment": "pink"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [50, 94],
+          "type": "Effect",
+          "effectName": "color jump ",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "color strobe change"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "Effect",
+          "effectName": "color fade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [155, 166],
+          "type": "ColorPreset",
+          "comment": "red+green"
+        },
+        {
+          "dmxRange": [167, 178],
+          "type": "ColorPreset",
+          "comment": "green+red"
+        },
+        {
+          "dmxRange": [179, 190],
+          "type": "ColorPreset",
+          "comment": "green+blue"
+        },
+        {
+          "dmxRange": [191, 202],
+          "type": "ColorPreset",
+          "comment": "blue+green"
+        },
+        {
+          "dmxRange": [203, 214],
+          "type": "ColorPreset",
+          "comment": "blue+red"
+        },
+        {
+          "dmxRange": [215, 226],
+          "type": "ColorPreset",
+          "comment": "red+blue"
+        },
+        {
+          "dmxRange": [227, 238],
+          "type": "ColorPreset",
+          "comment": "red green+ blue"
+        },
+        {
+          "dmxRange": [239, 250],
+          "type": "ColorPreset",
+          "comment": "blue red+ green"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "all"
+        }
+      ]
+    },
+    "Auto": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "parameter": "off",
+          "hold": "3s",
+          "comment": "reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "108 moving head wash",
+      "shortName": "108X3w  led wash",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Pan/Tilt Speed",
+        "Color Presets ",
+        "Auto",
+        "Reset"
+      ]
+    }
+  ]
+}
