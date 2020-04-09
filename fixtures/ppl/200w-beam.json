@@ -1,0 +1,372 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "200w beam",
+  "shortName": "china beam",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["noellanda"],
+    "createDate": "2020-04-09",
+    "lastModifyDate": "2020-04-09"
+  },
+  "links": {
+    "video": [
+      "https://youtu.be/j_6A_yssHj4"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "colorTemperature": 7000
+    }
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 211],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "fast reverse",
+          "speedEnd": "fast reverse"
+        },
+        {
+          "dmxRange": [212, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightness": "dark"
+      }
+    },
+    "Bulb off/on": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 199],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Generic",
+          "comment": "bulb off"
+        },
+        {
+          "dmxRange": [210, 220],
+          "type": "Generic",
+          "comment": "bulb on"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan duration": {
+      "fineChannelAliases": ["Pan duration fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angle": "0deg",
+        "comment": "pan fine"
+      }
+    },
+    "Tilt duration": {
+      "fineChannelAliases": ["Tilt duration fine"],
+      "capability": {
+        "type": "Time",
+        "timeStart": "instant",
+        "timeEnd": "long"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ColorPreset",
+          "comment": "white"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "red"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ColorPreset",
+          "comment": "blue"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "ColorPreset",
+          "comment": "yellow"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "comment": "yellow"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "green"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "pink"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "blue"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "orange"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "light blue"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "violet"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "green"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "yellow"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "light pink"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "amber"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "comment": "yellow/amber"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "gobo 1"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "gobo 2"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "gobo 3"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "gobo 4"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "gobo 5"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "gobo 6"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "gobo 7"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "gobo 8"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "gobo 9"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "gobo 10"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "gobo 11"
+        },
+        {
+          "dmxRange": [110, 129],
+          "type": "Generic",
+          "comment": "gobo 12"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "gobo 13"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "gobo 14"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Generic",
+          "comment": "gobo 15"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Generic",
+          "comment": "gobo 16"
+        },
+        {
+          "dmxRange": [170, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Gobo effect": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Prism Macros": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "macro"
+      }
+    },
+    "Prism Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 150],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [151, 255],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        }
+      ]
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Focus 2": {
+      "name": "Focus",
+      "fineChannelAliases": ["Focus 2 fine"],
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "200w beam",
+      "shortName": "china 200w beam",
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Bulb off/on",
+        "Pan/Tilt Speed",
+        "Pan",
+        "Tilt",
+        "Pan duration",
+        "Tilt duration",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Gobo effect",
+        "Prism Macros",
+        "Prism Rotation",
+        "Focus 2",
+        "Focus 2 fine",
+        "Frost"
+      ]
+    }
+  ]
+}
