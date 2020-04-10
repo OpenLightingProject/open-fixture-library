@@ -1,0 +1,65 @@
+{
+  "post": {
+    "operationId": "getSearchResults",
+    "description": "Return search results for given parameters.",
+    "tags": ["root"],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "searchQuery": {
+                "type": "string"
+              },
+              "manufacturersQuery": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "categoriesQuery": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "searchQuery",
+              "manufacturersQuery",
+              "categoriesQuery"
+            ]
+          },
+          "example": {
+            "searchQuery": "showtec phantom",
+            "manufacturersQuery": [],
+            "categoriesQuery": []
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Fixture keys matching the queries.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": [
+              "showtec/phantom-3r-beam",
+              "showtec/phantom-50-led-spot",
+              "showtec/phantom-140-led-spot",
+              "showtec/phantom-matrix-fx"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
