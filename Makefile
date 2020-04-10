@@ -8,13 +8,13 @@ dereferenced-schema-files := $(schema-files:schemas/%=schemas/dereferenced/%)
 
 ### PHONY rules, see https://stackoverflow.com/a/2145605/451391
 
-.PHONY: all no-nuxt register plugin-data test-fixtures schemas model-docs nuxt-build clean
+.PHONY: all no-nuxt register plugin-data test-fixtures schemas model-docs api-docs nuxt-build clean
 
-no-nuxt: register plugin-data test-fixtures schemas model-docs
+no-nuxt: register plugin-data test-fixtures schemas model-docs api-docs
 
 only-gitignored-no-nuxt: register schemas
 
-all: register plugin-data test-fixtures schemas model-docs nuxt-build
+all: no-nuxt nuxt-build
 
 register: fixtures/register.json
 
@@ -25,6 +25,8 @@ test-fixtures: tests/test-fixtures.json tests/test-fixtures.md
 schemas: $(dereferenced-schema-files)
 
 model-docs: docs/model-api.md
+
+api-docs: docs/rest-api.md
 
 nuxt-build:
 	$$(npm bin)/nuxt build
@@ -80,4 +82,12 @@ docs/model-api.md: \
 lib/model/*.js \
 jsdoc-config.json
 	@test -f $(jsdoc2md) && (echo "$(jsdoc2md-cmd)" && $(jsdoc2md-cmd)) || echo "$(jsdoc2md) not available"
+	@echo ""
+
+widdershins := $(shell echo $$(npm bin)/widdershins)
+widdershins-cmd := $(widdershins) --code true --language_tabs --omitBody true --omitHeader true --resolve true --outfile docs/rest-api.md ui/api/openapi.json
+
+docs/rest-api.md: \
+ui/api/openapi.json
+	@test -f $(widdershins) && (echo "$(widdershins-cmd)" && $(widdershins-cmd)) || echo "$(widdershins) not available"
 	@echo ""

@@ -13,7 +13,7 @@ Locally, running `npm run dev` starts the development server at  `http://localho
 *Note: for non-UI-related folders, see [README.md](README.md).*
 
 * `ui/`
-  - `api/` – Handlers that respond to AJAX resquests from the frontend
+  - `api/` – Handlers that respond to AJAX resquests from the frontend (see the [REST API reference](rest-api.md))
   - `assets/` – Icons, scripts, stylesheets, etc.
   - `components/` – Reusable Vue components
   - `express-middleware/` – Functions that directly hook into Express.js (the server side router)
