@@ -1,9 +1,9 @@
 const path = require(`path`);
 
-const importPlugins = require(`../../../plugins/plugins.json`).importPlugins;
-const { checkFixture } = require(`../../../tests/fixture-valid.js`);
+const importPlugins = require(`../../../../plugins/plugins.json`).importPlugins;
+const { checkFixture } = require(`../../../../tests/fixture-valid.js`);
 
-/** @typedef {import('../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
+/** @typedef {import('../../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
 
 /**
  * @typedef {Object} RequestBody
@@ -41,7 +41,7 @@ async function importFixture(body) {
     throw new Error(`'${body.plugin}' is not a valid import plugin.`);
   }
 
-  const plugin = require(path.join(__dirname, `../../../plugins`, body.plugin, `import.js`));
+  const plugin = require(path.join(__dirname, `../../../../plugins`, body.plugin, `import.js`));
   const { manufacturers, fixtures, warnings } = await plugin.import(
     Buffer.from(body.fileContentBase64, `base64`),
     body.fileName,

@@ -3,19 +3,19 @@ const express = require(`express`);
 const api = express.Router();
 
 api.route(`/get-search-results`)
-  .post(requireNoCacheInDev(`./get-search-results.js`));
+  .post(requireNoCacheInDev(`./routes/get-search-results.js`));
 
 api.route(`/submit-feedback`)
-  .post(requireNoCacheInDev(`./submit-feedback.js`));
+  .post(requireNoCacheInDev(`./routes/submit-feedback.js`));
 
 api.route(`/fixtures/from-editor`)
-  .post(requireNoCacheInDev(`./fixtures/from-editor.js`));
+  .post(requireNoCacheInDev(`./routes/fixtures/from-editor.js`));
 
 api.route(`/fixtures/import`)
-  .post(requireNoCacheInDev(`./fixtures/import.js`));
+  .post(requireNoCacheInDev(`./routes/fixtures/import.js`));
 
 api.route(`/fixtures/submit`)
-  .post(requireNoCacheInDev(`./fixtures/submit.js`));
+  .post(requireNoCacheInDev(`./routes/fixtures/submit.js`));
 
 module.exports = api;
 

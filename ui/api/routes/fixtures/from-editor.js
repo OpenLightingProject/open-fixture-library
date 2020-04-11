@@ -1,8 +1,8 @@
-const schemaProperties = require(`../../../lib/schema-properties.js`).default;
-const { checkFixture } = require(`../../../tests/fixture-valid.js`);
-const { CoarseChannel } = require(`../../../lib/model.js`);
+const schemaProperties = require(`../../../../lib/schema-properties.js`).default;
+const { checkFixture } = require(`../../../../tests/fixture-valid.js`);
+const { CoarseChannel } = require(`../../../../lib/model.js`);
 
-/** @typedef {import('./types.js').FixtureCreateResult} FixtureCreateResult */
+/** @typedef {import('../../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
 
 /**
  * @typedef {Array.<Object>} RequestBody Array of fixture objects used in the Fixture Editor.

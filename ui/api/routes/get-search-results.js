@@ -1,5 +1,5 @@
-const register = require(`../../fixtures/register.json`);
-const manufacturers = require(`../../fixtures/manufacturers.json`);
+const register = require(`../../../fixtures/register.json`);
+const manufacturers = require(`../../../fixtures/manufacturers.json`);
 
 /**
  * Return search results for given parameters. Very primitive match algorithm, maybe put more effort into it sometime.

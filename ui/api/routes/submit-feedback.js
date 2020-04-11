@@ -1,5 +1,5 @@
-const createIssue = require(`../../lib/create-github-issue.js`);
-const { fixtureFromRepository } = require(`../../lib/model.js`);
+const createIssue = require(`../../../lib/create-github-issue.js`);
+const { fixtureFromRepository } = require(`../../../lib/model.js`);
 
 /**
  * Takes the input from the client side script and creates an issue with the given feedback.

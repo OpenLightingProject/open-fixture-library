@@ -1,6 +1,6 @@
-const createPullRequest = require(`../../../lib/create-github-pr.js`);
+const createPullRequest = require(`../../../../lib/create-github-pr.js`);
 
-/** @typedef {import('./types.js').FixtureCreateResult} FixtureCreateResult */
+/** @typedef {import('../../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
 
 /**
  * @typedef {Object} RequestBody
