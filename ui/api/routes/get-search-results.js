@@ -1,19 +1,22 @@
 const register = require(`../../../fixtures/register.json`);
 const manufacturers = require(`../../../fixtures/manufacturers.json`);
 
+/** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
+
 /**
  * Return search results for given parameters. Very primitive match algorithm, maybe put more effort into it sometime.
+ * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
  * @param {Object} request Passed from Express.
  * @param {Object} response Passed from Express.
  */
-module.exports = function getSearchResults(request, response) {
+function getSearchResults(ctx, request, response) {
   const { searchQuery, manufacturersQuery, categoriesQuery } = request.body;
 
   const results = Object.keys(register.filesystem).filter(
     key => queryMatch(searchQuery, key) && manufacturerMatch(manufacturersQuery, key) && categoryMatch(categoriesQuery, key),
   );
   response.json(results);
-};
+}
 
 /**
  * Test if a fixture matches the search query.
@@ -55,3 +58,5 @@ function categoryMatch(categoriesQuery, fixtureKey) {
       cat => cat in register.categories && register.categories[cat].includes(fixtureKey),
     );
 }
+
+module.exports = { getSearchResults };

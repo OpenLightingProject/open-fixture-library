@@ -3,6 +3,7 @@ const { checkFixture } = require(`../../../../tests/fixture-valid.js`);
 const { CoarseChannel } = require(`../../../../lib/model.js`);
 
 /** @typedef {import('../../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
+/** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 
 /**
  * @typedef {Array.<Object>} RequestBody Array of fixture objects used in the Fixture Editor.
@@ -10,11 +11,12 @@ const { CoarseChannel } = require(`../../../../lib/model.js`);
 
 /**
  * Converts the given editor fixture data into OFL fixtures and responds with a FixtureCreateResult.
+ * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
  * @param {Object} request Passed from Express.
  * @param {RequestBody} request.body The editor's fixture objects.
  * @param {Object} response Passed from Express.
  */
-module.exports = function createFixtureFromEditor(request, response) {
+function createFixtureFromEditor(ctx, request, response) {
   try {
     const fixtureCreateResult = getFixtureCreateResult(request.body);
     response.status(201).json(fixtureCreateResult);
@@ -24,7 +26,7 @@ module.exports = function createFixtureFromEditor(request, response) {
       error: error.message,
     });
   }
-};
+}
 
 
 /**
@@ -417,3 +419,5 @@ function getComboboxInput(prop, from) {
 function slugify(str) {
   return str.toLowerCase().replace(/[^a-z0-9-]+/g, ` `).trim().replace(/\s+/g, `-`);
 }
+
+module.exports = { createFixtureFromEditor };

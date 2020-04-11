@@ -1,6 +1,7 @@
 const createPullRequest = require(`../../../../lib/create-github-pr.js`);
 
 /** @typedef {import('../../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
+/** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 
 /**
  * @typedef {Object} RequestBody
@@ -12,11 +13,12 @@ const createPullRequest = require(`../../../../lib/create-github-pr.js`);
 /**
  * Creates a GitHub pull request with the given fixture data.
  * Includes warnings, errors, GitHub username and GitHub comment in the PR description.
+ * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
  * @param {Object} request Passed from Express.
  * @param {RequestBody} request.body The fixture data to submit, along with additional info for the pull request.
  * @param {Object} response Passed from Express.
  */
-module.exports = async function submitFixtures(request, response) {
+async function submitFixtures(ctx, request, response) {
   try {
     const pullRequestUrl = await createPullRequest(
       request.body.fixtureCreateResult,
@@ -32,4 +34,6 @@ module.exports = async function submitFixtures(request, response) {
       error: error.message,
     });
   }
-};
+}
+
+module.exports = { submitFixtures };
