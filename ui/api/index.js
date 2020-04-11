@@ -1,6 +1,25 @@
 const express = require(`express`);
+const cors = require(`cors`);
 
 const api = express.Router();
+
+const corsWhitelist = [
+  /[/.]open-fixture-library\.org(?::\d+|)$/,
+  /[/.]open-fixture-library-pr-\d+\.herokuapp\.com$/,
+  /\/localhost(?::\d+|)$/,
+];
+
+api.use(cors({
+  origin(origin, callback) {
+    const corsAllowed = process.env.NODE_ENV !== `production`
+      || !origin // allow non XHR/fetch requests
+      || corsWhitelist.some(regex => regex.test(origin));
+
+    callback(null, corsAllowed ? true : `https://open-fixture-library.org`);
+  },
+  optionsSuccessStatus: 200, // IE11 chokes on default 204
+}));
+
 
 api.route(`/get-search-results`)
   .post(requireNoCacheInDev(`./routes/get-search-results.js`));
