@@ -5,67 +5,85 @@
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["Stuart Hanlon"],
-    "createDate": "2020-02-20",
-    "lastModifyDate": "2020-02-20"
+    "createDate": "2020-04-17",
+    "lastModifyDate": "2020-04-17"
   },
   "comment": "RGBW fixture with GRBW pixel order",
-  "links": {
-    "manual": [
-      "https://www.google.com/search?q=sk6812+rgbw&oq=sk6812"
-    ]
-  },
-  "physical": {
-    "bulb": {
-      "type": "LED"
-    }
-  },
   "availableChannels": {
     "Green": {
-      "constant": true,
+      "fineChannelAliases": ["Green fine", "Green fine^2"],
       "precedence": "LTP",
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightness": "off"
+        "color": "Green"
       }
     },
     "Red": {
-      "constant": true,
+      "fineChannelAliases": ["Red fine", "Red fine^2"],
       "precedence": "LTP",
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightness": "off",
-        "comment": "Red"
+        "color": "Red"
       }
     },
     "Blue": {
+      "fineChannelAliases": ["Blue fine", "Blue fine^2"],
       "precedence": "LTP",
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightness": "off",
-        "comment": "Blue"
+        "color": "Blue"
       }
     },
     "White": {
+      "fineChannelAliases": ["White fine", "White fine^2"],
       "precedence": "LTP",
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "brightness": "off",
-        "comment": "White"
+        "color": "White"
       }
     }
   },
   "modes": [
     {
-      "name": "8 Bit",
+      "name": "8 bit",
+      "shortName": "8bit",
       "channels": [
         "Green",
         "Red",
         "Blue",
         "White"
+      ]
+    },
+    {
+      "name": "16 bit",
+      "shortName": "16bit",
+      "channels": [
+        "Green",
+        "Green fine",
+        "Red",
+        "Red fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine"
+      ]
+    },
+    {
+      "name": "24 bit",
+      "shortName": "24bit",
+      "channels": [
+        "Green",
+        "Green fine",
+        "Green fine^2",
+        "Red",
+        "Red fine",
+        "Red fine^2",
+        "Blue",
+        "Blue fine",
+        "Blue fine^2",
+        "White",
+        "White fine",
+        "White fine^2"
       ]
     }
   ]
