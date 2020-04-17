@@ -2,18 +2,19 @@
   <A11yDialog
     id="submit"
     :cancellable="false"
-    :shown="submit.state !== `closed`"
+    :shown="state !== `closed`"
     :title="title">
 
-    <div v-if="submit.state === `validating`">Validating…</div>
+    <div v-if="state === `validating`">Validating…</div>
 
-    <div v-else-if="submit.state === `ready`">
-      <template v-if="validationErrors.length || validationWarnings.length">
+    <div v-else-if="state === `ready`">
+      <template v-if="validationIssues.length">
         The fixture validation returned some issues:
 
         <ul>
-          <li v-for="message in validationErrors" :key="message">{{ message }}</li>
-          <li v-for="message in validationWarnings" :key="message">{{ message }}</li>
+          <li v-for="issue in validationIssues" :key="issue.key">
+            <strong>{{ issue.fixture }}:</strong> {{ issue.message }}
+          </li>
         </ul>
 
         You can try to resolve as many issues as you can (some may be unavoidable
@@ -28,19 +29,18 @@
 
       <div class="button-bar right">
         <a href="#cancel" class="button secondary" @click.prevent="onCancel">Continue editing</a>
-        <!-- Hide the download button in case the fixture has errors. Some plugins are not able to download such fixtures. -->
         <DownloadButton
-          v-if="!validationErrors.length"
+          v-if="canDownload"
           button-style="select"
           :show-help="false"
-          :editor-fixtures="submit.sendObject" />
+          :editor-fixtures="fixtureCreateResult" />
         <a href="#submit" class="button primary" @click.prevent="onSubmit">Submit to OFL</a>
       </div>
     </div>
 
-    <div v-else-if="submit.state === `uploading`">Uploading…</div>
+    <div v-else-if="state === `uploading`">Uploading…</div>
 
-    <div v-else-if="submit.state === `success`">
+    <div v-else-if="state === `success`">
       Your fixture was successfully uploaded to GitHub (see the
       <a :href="pullRequestUrl" target="_blank">pull request</a>).
       It will be now reviewed and then published on the website (this may take a few days).
@@ -51,17 +51,17 @@
         <a
           href="/fixture-editor"
           class="button secondary"
-          @click.prevent="$emit(`reset`)">Create another fixture</a>
+          @click.prevent="onReset">Create another fixture</a>
         <DownloadButton
-          v-if="!validationErrors.length"
+          v-if="canDownload"
           button-style="select"
           :show-help="false"
-          :editor-fixtures="submit.sendObject" />
+          :editor-fixtures="fixtureCreateResult" />
         <a :href="pullRequestUrl" class="button primary" target="_blank">See pull request</a>
       </div>
     </div>
 
-    <div v-else-if="submit.state === `error`">
+    <div v-else-if="state === `error`">
       Unfortunately, there was an error while uploading. Please copy the following data and
       <a
         href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
@@ -102,100 +102,143 @@ export default {
     DownloadButton
   },
   props: {
-    submit: {
-      type: Object,
-      required: true,
-      validator(submit) {
-        const validStates = Object.keys(stateTitles);
-
-        return `state` in submit && validStates.includes(submit.state);
-      }
+    endpoint: {
+      type: String,
+      required: true
+    },
+    githubUsername: {
+      type: String,
+      required: false,
+      default: null
+    },
+    githubComment: {
+      type: String,
+      required: false,
+      default: null
     }
   },
   data() {
     return {
+      state: `closed`,
+      requestBody: null,
       error: null,
       pullRequestUrl: null,
-      validationErrors: [],
-      validationWarnings: []
+      fixtureCreateResult: null
     };
   },
   computed: {
     title() {
-      return stateTitles[this.submit.state];
+      return stateTitles[this.state];
     },
     rawData() {
-      const rawData = JSON.stringify(this.submit.sendObject, null, 2);
+      const rawData = JSON.stringify(this.requestBody, null, 2);
 
-      if (this.submit.state === `error`) {
+      if (this.state === `error`) {
         // eslint-disable-next-line quotes, prefer-template
         return '```json\n' + rawData + '\n```\n\n' + this.error;
       }
 
       return rawData;
-    }
-  },
-  watch: {
-    'submit.state': function(newState) {
-      if (newState === `validating`) {
-        this.$nextTick(this.onValidate);
+    },
+    canDownload() {
+      // Hide the download button in case the fixture has errors. Some plugins are not able to export such fixtures.
+      return process.client && !this.hasValidationErrors;
+    },
+    validationIssues() {
+      if (this.fixtureCreateResult === null) {
+        return [];
       }
+
+      return Object.keys(this.fixtureCreateResult.fixtures).flatMap(fixture => {
+        const fixtureErrors = this.fixtureCreateResult.errors[fixture] || [];
+        const fixtureWarnings = this.fixtureCreateResult.warnings[fixture] || [];
+
+        return [
+          ...fixtureErrors.map((error, index) => ({
+            fixture,
+            message: error,
+            severity: `error`,
+            key: `${fixture}-error-${index}-${error}`
+          })),
+          ...fixtureWarnings.map((warning, index) => ({
+            fixture,
+            message: warning,
+            severity: `warning`,
+            key: `${fixture}-warning-${index}-${warning}`
+          }))
+        ];
+      });
+    },
+    hasValidationErrors() {
+      return this.validationIssues.some(message => message.severity === `error`);
     }
   },
   methods: {
-    async onValidate() {
-      console.log(`validate`, clone(this.submit.sendObject));
+    async validate(requestBody) {
+      this.requestBody = requestBody;
 
-      this.submit.state = `validating`;
+      console.log(`validate`, clone(this.requestBody));
+
+      this.state = `validating`;
       try {
         const response = await this.$axios.post(
-          `/ajax/submit-editor`,
-          this.submit.sendObject
+          this.endpoint,
+          this.requestBody
         );
 
-        if (response.data.error) {
-          throw new Error(response.data.error);
-        }
-
-        this.validationErrors = response.data.errors;
-        this.validationWarnings = response.data.warnings;
-        this.submit.state = `ready`;
+        this.fixtureCreateResult = response.data;
+        this.state = `ready`;
       }
       catch (error) {
-        console.error(`There was a problem with the request.`, error);
+        let errorMessage = error.message;
+        if (error.response && error.response.data.error) {
+          errorMessage = error.response.data.error;
+        }
 
-        this.error = error.message;
-        this.submit.state = `error`;
+        console.error(`There was a problem with the request:`, errorMessage);
+
+        this.error = errorMessage;
+        this.state = `error`;
       }
     },
     async onSubmit() {
-      this.submit.sendObject.createPullRequest = true;
-      console.log(`submit`, clone(this.submit.sendObject));
+      this.requestBody = {
+        fixtureCreateResult: this.fixtureCreateResult,
+        githubUsername: this.githubUsername,
+        githubComment: this.githubComment
+      };
 
-      this.submit.state = `uploading`;
+      console.log(`submit`, clone(this.requestBody));
+
+      this.state = `uploading`;
       try {
         const response = await this.$axios.post(
-          `/ajax/submit-editor`,
-          this.submit.sendObject
+          `/api/v1/fixtures/submit`,
+          this.requestBody
         );
 
-        if (response.data.error) {
-          throw new Error(response.data.error);
-        }
-
         this.pullRequestUrl = response.data.pullRequestUrl;
-        this.submit.state = `success`;
+        this.state = `success`;
         this.$emit(`success`);
       }
       catch (error) {
-        console.error(`There was a problem with the request.`, error);
+        let errorMessage = error.message;
+        if (error.response && error.response.data.error) {
+          errorMessage = error.response.data.error;
+        }
 
-        this.error = error.message;
-        this.submit.state = `error`;
+        console.error(`There was a problem with the request:`, errorMessage);
+
+        this.error = errorMessage;
+        this.state = `error`;
       }
     },
+    onReset() {
+      this.state = `closed`;
+      this.$emit(`reset`);
+    },
     onCancel() {
-      this.submit.state = `closed`;
+      this.state = `closed`;
     }
   }
 };

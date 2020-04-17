@@ -199,7 +199,7 @@
             label="GitHub username"
             hint="If you want to be mentioned in the pull request.">
             <PropertyInputText
-              v-model="fixture.metaGithubUsername"
+              v-model="githubUsername"
               :schema-property="properties.definitions.nonEmptyString"
               name="github-username" />
           </LabeledInput>
@@ -229,7 +229,12 @@
 
       <EditorRestoreDialog v-model="restoredData" @restore-complete="restoreComplete" />
 
-      <EditorSubmitDialog :submit="submit" @success="onFixtureSubmitted" @reset="reset" />
+      <EditorSubmitDialog
+        ref="submitDialog"
+        endpoint="/api/v1/fixtures/from-editor"
+        :github-username="githubUsername"
+        @success="onFixtureSubmitted"
+        @reset="reset" />
 
     </ClientOnly>
   </div>
@@ -322,11 +327,8 @@ export default {
       restoredData: null,
       fixture: initFixture,
       channel: getEmptyChannel(),
+      githubUsername: ``,
       honeypot: ``,
-      submit: {
-        state: `closed`,
-        sendObject: null
-      },
       manufacturers,
       properties: schemaProperties
     };
@@ -519,14 +521,14 @@ export default {
         this.fixture.metaAuthor = localStorage.getItem(`prefillAuthor`) || ``;
       }
 
-      if (this.fixture.metaGithubUsername === ``) {
-        this.fixture.metaGithubUsername = localStorage.getItem(`prefillGithubUsername`) || ``;
+      if (this.githubUsername === ``) {
+        this.githubUsername = localStorage.getItem(`prefillGithubUsername`) || ``;
       }
     },
 
     storePrefillData() {
       localStorage.setItem(`prefillAuthor`, this.fixture.metaAuthor);
-      localStorage.setItem(`prefillGithubUsername`, this.fixture.metaGithubUsername);
+      localStorage.setItem(`prefillGithubUsername`, this.githubUsername);
     },
 
     onSubmit() {
@@ -551,11 +553,7 @@ export default {
         return;
       }
 
-      this.submit.sendObject = {
-        createPullRequest: false,
-        fixtures: [this.fixture]
-      };
-      this.submit.state = `validating`;
+      this.$refs.submitDialog.validate([this.fixture]);
     },
 
     onFixtureSubmitted() {
@@ -567,10 +565,6 @@ export default {
       this.fixture = getEmptyFixture();
       this.channel = getEmptyChannel();
       this.honeypot = ``;
-      this.submit = {
-        state: `closed`,
-        sendObject: null
-      };
       this.applyStoredPrefillData();
 
       this.$router.push({

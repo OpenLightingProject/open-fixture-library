@@ -1,0 +1,91 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Light Deflector",
+  "categories": ["Scanner"],
+  "meta": {
+    "authors": ["Manu Larue"],
+    "createDate": "2020-03-24",
+    "lastModifyDate": "2020-03-24"
+  },
+  "links": {
+    "manual": [
+      "http://www.studiodue.com/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1309791201.pdf"
+    ],
+    "productPage": [
+      "http://www.studiodue.com/light-deflector.html"
+    ],
+    "other": [
+      "http://www.forum.licht-geluid.nl/licht-forum-foto-s/3267-studio-due-light-deflector.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [320, 460, 130],
+    "weight": 5.0,
+    "power": 69
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Tilt Spin": {
+      "capability": {
+        "type": "TiltContinuous",
+        "helpWanted": "At which DMX values is continuous tilt disabled? Where does it spin clockwise / counter-clockwise?",
+        "speedStart": "0.166667rpm",
+        "speedEnd": "30rpm"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reset": {
+      "capability": {
+        "type": "Maintenance",
+        "comment": "Reset Pan/Tilt",
+        "helpWanted": "At which DMX values does the fixture perform a reset?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 bit 4-channel",
+      "shortName": "8bit",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Tilt Spin",
+        "Pan/Tilt Speed"
+      ]
+    },
+    {
+      "name": "16 bit 7-channel",
+      "shortName": "16bit",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Tilt Spin",
+        "Pan/Tilt Speed",
+        "Reset"
+      ]
+    }
+  ]
+}

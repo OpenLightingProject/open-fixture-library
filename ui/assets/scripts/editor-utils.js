@@ -1,4 +1,4 @@
-import uuidV4 from 'uuid/v4.js';
+import { v4 as uuidv4 } from 'uuid';
 
 export const constants = {
   RESOLUTION_8BIT: 1,
@@ -33,7 +33,6 @@ export function getEmptyFixture() {
     physical: getEmptyPhysical(),
     modes: [getEmptyMode()],
     metaAuthor: ``,
-    metaGithubUsername: ``,
     availableChannels: {}
   };
 }
@@ -45,7 +44,7 @@ export function getEmptyFixture() {
  */
 export function getEmptyLink(linkType = `manual`) {
   return {
-    uuid: uuidV4(),
+    uuid: uuidv4(),
     type: linkType,
     url: ``
   };
@@ -80,7 +79,7 @@ export function getEmptyPhysical() {
  */
 export function getEmptyMode() {
   return {
-    uuid: uuidV4(),
+    uuid: uuidv4(),
     name: ``,
     shortName: ``,
     rdmPersonalityIndex: null,
@@ -96,7 +95,7 @@ export function getEmptyMode() {
  */
 export function getEmptyChannel() {
   return {
-    uuid: uuidV4(),
+    uuid: uuidv4(),
     editMode: ``,
     modeId: ``,
     name: ``,
@@ -129,7 +128,7 @@ export function getEmptyChannel() {
  */
 export function getEmptyFineChannel(coarseChannelId, resolution) {
   return {
-    uuid: uuidV4(),
+    uuid: uuidv4(),
     coarseChannelId: coarseChannelId,
     resolution: resolution
   };
@@ -141,7 +140,7 @@ export function getEmptyFineChannel(coarseChannelId, resolution) {
  */
 export function getEmptyCapability() {
   return {
-    uuid: uuidV4(),
+    uuid: uuidv4(),
     open: true,
     dmxRange: null,
     type: ``,
@@ -155,7 +154,7 @@ export function getEmptyCapability() {
  */
 export function getEmptyWheelSlot() {
   return {
-    uuid: uuidV4(),
+    uuid: uuidv4(),
     type: ``,
     typeData: {}
   };

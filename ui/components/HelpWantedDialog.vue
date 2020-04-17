@@ -185,7 +185,7 @@ export default {
       localStorage.setItem(`prefillGithubUsername`, this.githubUsername);
 
       try {
-        const response = await this.$axios.post(`/ajax/submit-feedback`, this.sendObject);
+        const response = await this.$axios.post(`/api/v1/submit-feedback`, this.sendObject);
 
         if (response.data.error) {
           throw new Error(response.data.error);

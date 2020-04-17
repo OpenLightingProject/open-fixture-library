@@ -4,6 +4,7 @@ const fs = require(`fs`);
 const path = require(`path`);
 const chalk = require(`chalk`);
 const Ajv = require(`ajv`);
+const getAjvErrorMessages = require(`../lib/get-ajv-error-messages.js`);
 
 // interactive commandline support
 const minimist = require(`minimist`);
@@ -140,11 +141,12 @@ async function checkManufacturers() {
   try {
     const data = await readFile(filename, `utf8`);
     const manufacturers = JSON.parse(data);
-    const validate = (new Ajv()).compile(manufacturerSchema);
+    const validate = (new Ajv({ verbose: true })).compile(manufacturerSchema);
     const valid = validate(manufacturers);
     if (!valid) {
-      throw validate.errors;
+      throw getAjvErrorMessages(validate.errors, `manufacturers`);
     }
+
     for (const [manKey, manProps] of Object.entries(manufacturers)) {
       if (manKey.startsWith(`$`)) {
         // JSON schema property
