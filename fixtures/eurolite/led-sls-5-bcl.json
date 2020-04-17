@@ -1,0 +1,172 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED SLS 5 BCL",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Christian Hollbjär", "darth62"],
+    "createDate": "2020-04-17",
+    "lastModifyDate": "2020-04-17",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2020-04-17",
+      "comment": "created by Q Light Controller Plus (version 4.10.5 GIT)"
+    }
+  },
+  "physical": {
+    "dimensions": [230, 270, 110],
+    "weight": 3,
+    "power": 24,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [0, 20]
+    }
+  },
+  "availableChannels": {
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Sound / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Sound control",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Strobe"
+        }
+      ]
+    },
+    "CH5 Modes": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 28],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [29, 57],
+          "type": "Effect",
+          "effectName": "White"
+        },
+        {
+          "dmxRange": [58, 82],
+          "type": "Effect",
+          "effectName": "Amber"
+        },
+        {
+          "dmxRange": [83, 87],
+          "type": "Effect",
+          "effectName": "Color Dreaming 1"
+        },
+        {
+          "dmxRange": [88, 92],
+          "type": "Effect",
+          "effectName": "Color Dreaming 2"
+        },
+        {
+          "dmxRange": [93, 97],
+          "type": "Effect",
+          "effectName": "Color Dreaming 3"
+        },
+        {
+          "dmxRange": [164, 168],
+          "type": "Effect",
+          "effectName": "Color Change"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Effect",
+          "effectName": "Sound Active",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Strobe/Speed/Sensitivity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Strobe, Color speed, Sound sensitivity (depends on CH5)",
+        "soundControlled": true
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "White",
+        "Amber"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "White",
+        "Amber",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "White",
+        "Amber",
+        "Dimmer",
+        "Sound / Strobe"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "White",
+        "Amber",
+        "Dimmer",
+        "Strobe/Speed/Sensitivity",
+        "CH5 Modes"
+      ]
+    }
+  ]
+}
