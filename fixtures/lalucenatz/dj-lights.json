@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Disco Effects Lighting",
-  "categories": ["Flower", "Other"],
+  "name": "DJ Lights",
+  "categories": ["Flower", "Color Changer"],
   "meta": {
     "authors": ["Anonymous"],
-    "createDate": "2020-04-02",
-    "lastModifyDate": "2020-04-02"
+    "createDate": "2020-04-17",
+    "lastModifyDate": "2020-04-17"
   },
   "links": {
     "productPage": [
@@ -15,16 +15,12 @@
       "https://youtu.be/jYfDDvw0aEU"
     ]
   },
-  "rdm": {
-    "modelId": 63005
-  },
   "physical": {
-    "dimensions": [8.86, 8.07, 8.46],
+    "dimensions": [20, 14, 16],
     "weight": 1.3,
-    "power": 30,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "30W LED"
     }
   },
   "availableChannels": {
@@ -61,25 +57,29 @@
       "capability": {
         "type": "StrobeSpeed",
         "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "helpWanted": "The manual states fast…slow, which direction is correct? At which DMX values is the light constantly on or off?"
       }
     },
     "Light Always On": {
       "capability": {
         "type": "EffectSpeed",
         "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "helpWanted": "What does this channel do?"
       }
     },
     "Sound Mode": {
       "capability": {
-        "type": "Generic"
+        "type": "Effect",
+        "effectName": "Sound mode",
+        "helpWanted": "At which DMX values is sound mode deactivated? Are there different effects at different DMX values?"
       }
     }
   },
   "modes": [
     {
-      "name": "8 Channel",
+      "name": "8-channel",
       "shortName": "8ch",
       "channels": [
         "Dimmer",
