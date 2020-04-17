@@ -156,20 +156,8 @@ app.get(`/sitemap.xml`, (request, response) => {
   generateSitemap(packageJson.homepage).pipe(response);
 });
 
-app.post(`/ajax/import-fixture-file`, (request, response) => {
-  requireNoCacheInDev(`./ui/ajax/import-fixture-file.js`)(request, response);
-});
-
-app.post(`/ajax/get-search-results`, (request, response) => {
-  requireNoCacheInDev(`./ui/ajax/get-search-results.js`)(request, response);
-});
-
-app.post(`/ajax/submit-editor`, (request, response) => {
-  requireNoCacheInDev(`./ui/ajax/submit-editor.js`)(request, response);
-});
-
-app.post(`/ajax/submit-feedback`, (request, response) => {
-  requireNoCacheInDev(`./ui/ajax/submit-feedback.js`)(request, response);
+app.use(`/api/v1`, (request, response) => {
+  requireNoCacheInDev(`./ui/api/index.js`)(request, response);
 });
 
 

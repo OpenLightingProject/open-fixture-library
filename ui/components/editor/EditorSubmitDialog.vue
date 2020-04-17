@@ -33,7 +33,7 @@
           v-if="canDownload"
           button-style="select"
           :show-help="false"
-          :editor-fixtures="validationResult" />
+          :editor-fixtures="fixtureCreateResult" />
         <a href="#submit" class="button primary" @click.prevent="onSubmit">Submit to OFL</a>
       </div>
     </div>
@@ -56,7 +56,7 @@
           v-if="canDownload"
           button-style="select"
           :show-help="false"
-          :editor-fixtures="validationResult" />
+          :editor-fixtures="fixtureCreateResult" />
         <a :href="pullRequestUrl" class="button primary" target="_blank">See pull request</a>
       </div>
     </div>
@@ -106,44 +106,32 @@ export default {
       type: String,
       required: true
     },
-    queryParameters: {
-      type: Object,
+    githubUsername: {
+      type: String,
       required: false,
-      default: () => ({})
+      default: null
+    },
+    githubComment: {
+      type: String,
+      required: false,
+      default: null
     }
   },
   data() {
     return {
       state: `closed`,
-      sendObject: null,
+      requestBody: null,
       error: null,
       pullRequestUrl: null,
-      validationResult: null
+      fixtureCreateResult: null
     };
   },
   computed: {
     title() {
       return stateTitles[this.state];
     },
-    sendObjectJson() {
-      if (process.server || !(this.sendObject instanceof FormData)) {
-        return this.sendObject;
-      }
-
-      if (this.sendObject.entries) {
-        const sendObject = {};
-
-        for (const [key, value] of this.sendObject.entries()) {
-          sendObject[key] = value;
-        }
-
-        return sendObject;
-      }
-
-      return `couldn't convert FormData object to JSON`;
-    },
     rawData() {
-      const rawData = JSON.stringify(this.sendObjectJson, null, 2);
+      const rawData = JSON.stringify(this.requestBody, null, 2);
 
       if (this.state === `error`) {
         // eslint-disable-next-line quotes, prefer-template
@@ -157,13 +145,13 @@ export default {
       return process.client && !this.hasValidationErrors;
     },
     validationIssues() {
-      if (this.validationResult === null) {
+      if (this.fixtureCreateResult === null) {
         return [];
       }
 
-      return Object.keys(this.validationResult.fixtures).flatMap(fixture => {
-        const fixtureErrors = this.validationResult.errors[fixture] || [];
-        const fixtureWarnings = this.validationResult.warnings[fixture] || [];
+      return Object.keys(this.fixtureCreateResult.fixtures).flatMap(fixture => {
+        const fixtureErrors = this.fixtureCreateResult.errors[fixture] || [];
+        const fixtureWarnings = this.fixtureCreateResult.warnings[fixture] || [];
 
         return [
           ...fixtureErrors.map((error, index) => ({
@@ -185,74 +173,63 @@ export default {
       return this.validationIssues.some(message => message.severity === `error`);
     }
   },
-  created() {
-    const { pullRequestUrl, error } = this.queryParameters;
-
-    if (error && error !== `null`) {
-      this.error = error;
-      this.state = `error`;
-    }
-    else if (pullRequestUrl && pullRequestUrl !== `null`) {
-      this.pullRequestUrl = pullRequestUrl;
-      this.state = `success`;
-    }
-  },
   methods: {
-    async validate(sendObject) {
-      this.sendObject = sendObject;
+    async validate(requestBody) {
+      this.requestBody = requestBody;
 
-      console.log(`validate`, clone(this.sendObjectJson));
+      console.log(`validate`, clone(this.requestBody));
 
       this.state = `validating`;
       try {
         const response = await this.$axios.post(
           this.endpoint,
-          this.sendObject
+          this.requestBody
         );
 
-        if (response.data.error) {
-          throw new Error(response.data.error);
-        }
-
-        this.validationResult = response.data;
+        this.fixtureCreateResult = response.data;
         this.state = `ready`;
       }
       catch (error) {
-        console.error(`There was a problem with the request.`, error);
+        let errorMessage = error.message;
+        if (error.response && error.response.data.error) {
+          errorMessage = error.response.data.error;
+        }
 
-        this.error = error.message;
+        console.error(`There was a problem with the request:`, errorMessage);
+
+        this.error = errorMessage;
         this.state = `error`;
       }
     },
     async onSubmit() {
-      if (this.sendObject instanceof FormData) {
-        this.sendObject.append(`createPullRequest`, `true`);
-      }
-      else {
-        this.sendObject.createPullRequest = true;
-      }
+      this.requestBody = {
+        fixtureCreateResult: this.fixtureCreateResult,
+        githubUsername: this.githubUsername,
+        githubComment: this.githubComment
+      };
 
-      console.log(`submit`, clone(this.sendObjectJson));
+      console.log(`submit`, clone(this.requestBody));
 
       this.state = `uploading`;
       try {
         const response = await this.$axios.post(
-          this.endpoint,
-          this.sendObject
+          `/api/v1/fixtures/submit`,
+          this.requestBody
         );
-
-        if (response.data.error) {
-          throw new Error(response.data.error);
-        }
 
         this.pullRequestUrl = response.data.pullRequestUrl;
         this.state = `success`;
         this.$emit(`success`);
       }
       catch (error) {
-        console.error(`There was a problem with the request.`, error);
+        let errorMessage = error.message;
+        if (error.response && error.response.data.error) {
+          errorMessage = error.response.data.error;
+        }
 
-        this.error = error.message;
+        console.error(`There was a problem with the request:`, errorMessage);
+
+        this.error = errorMessage;
         this.state = `error`;
       }
     },

@@ -6,94 +6,102 @@
       <strong>Warning:</strong> The fixture can not be edited after importing, so please provide as much information as possible in the comment.
     </section>
 
-    <VueForm
-      :state="formstate"
-      action="/ajax/import-fixture-file"
-      method="post"
-      enctype="multipart/form-data"
-      @submit.prevent="onSubmit($event.target)">
+    <noscript class="card yellow">
+      Please enable JavaScript to use the Fixture Importer!
+    </noscript>
 
-      <section class="card">
-        <h2>File information</h2>
+    <ClientOnly placeholder="Fixture Importer is loading...">
 
-        <LabeledInput :formstate="formstate" name="plugin" label="Import file type">
-          <select
-            v-model="plugin"
-            :class="{ empty: plugin === `` }"
-            required
-            name="plugin">
+      <VueForm
+        :state="formstate"
+        action="#"
+        class="only-js"
+        @submit.prevent="onSubmit">
 
-            <option value="" disabled>Please select an import file type</option>
+        <section class="card">
+          <h2>File information</h2>
 
-            <template v-for="pluginKey in plugins.importPlugins">
-              <option :key="pluginKey" :value="pluginKey">
-                {{ plugins.data[pluginKey].name }}
-              </option>
-            </template>
+          <LabeledInput :formstate="formstate" name="plugin" label="Import file type">
+            <select
+              v-model="plugin"
+              :class="{ empty: plugin === `` }"
+              required
+              name="plugin">
 
-          </select>
+              <option value="" disabled>Please select an import file type</option>
 
-          <div class="hint">See <a href="/about/plugins" target="_blank">supported import plugins</a>.</div>
-        </LabeledInput>
+              <template v-for="pluginKey in plugins.importPlugins">
+                <option :key="pluginKey" :value="pluginKey">
+                  {{ plugins.data[pluginKey].name }}
+                </option>
+              </template>
 
-        <LabeledInput
-          :formstate="formstate"
-          name="file"
-          label="Fixture definition file"
-          hint="Maximum file size is 5MB.">
-          <EditorFileUpload
-            ref="fileUpload"
-            v-model="file"
-            :required="true"
+            </select>
+
+            <div class="hint">See <a href="/about/plugins" target="_blank">supported import plugins</a>.</div>
+          </LabeledInput>
+
+          <LabeledInput
+            :formstate="formstate"
             name="file"
-            max-file-size="5MB" />
-        </LabeledInput>
+            label="Fixture definition file"
+            hint="Maximum file size is 5MB.">
+            <EditorFileUpload
+              ref="fileUpload"
+              v-model="file"
+              :required="true"
+              name="file"
+              max-file-size="5MB" />
+          </LabeledInput>
 
-        <LabeledInput :formstate="formstate" name="comment" label="Comment">
-          <textarea v-model="comment" name="comment" />
-        </LabeledInput>
-      </section>
+          <LabeledInput :formstate="formstate" name="githubComment" label="Comment">
+            <textarea v-model="githubComment" name="githubComment" />
+          </LabeledInput>
+        </section>
 
-      <section class="user card">
-        <h2>Author data</h2>
+        <section class="user card">
+          <h2>Author data</h2>
 
-        <LabeledInput :formstate="formstate" name="author" label="Your name">
-          <input
-            v-model="author"
-            type="text"
-            required
-            name="author"
-            placeholder="e.g. Anonymous">
-        </LabeledInput>
+          <LabeledInput :formstate="formstate" name="author" label="Your name">
+            <input
+              v-model="author"
+              type="text"
+              required
+              name="author"
+              placeholder="e.g. Anonymous">
+          </LabeledInput>
 
-        <LabeledInput
-          :formstate="formstate"
-          name="githubUsername"
-          label="GitHub username"
-          hint="If you want to be mentioned in the pull request.">
-          <input
-            v-model="githubUsername"
-            type="text"
-            name="githubUsername">
-        </LabeledInput>
+          <LabeledInput
+            :formstate="formstate"
+            name="githubUsername"
+            label="GitHub username"
+            hint="If you want to be mentioned in the pull request.">
+            <input
+              v-model="githubUsername"
+              type="text"
+              name="githubUsername">
+          </LabeledInput>
 
-        <LabeledInput hidden name="honeypot" label="Ignore this!">
-          <input v-model="honeypot" type="text" name="honeypot">
-          <div class="hint">Spammers are likely to fill this field. Leave it empty to show that you're a human.</div>
-        </LabeledInput>
-      </section>
+          <LabeledInput hidden name="honeypot" label="Ignore this!">
+            <input v-model="honeypot" type="text" name="honeypot">
+            <div class="hint">Spammers are likely to fill this field. Leave it empty to show that you're a human.</div>
+          </LabeledInput>
+        </section>
 
-      <div class="button-bar right">
-        <button type="submit" class="primary">Import fixture</button>
-      </div>
-    </VueForm>
+        <div class="button-bar right">
+          <button type="submit" class="primary">Import fixture</button>
+        </div>
+      </VueForm>
 
-    <EditorSubmitDialog
-      ref="submitDialog"
-      endpoint="/ajax/import-fixture-file"
-      :query-parameters="queryParameters"
-      @success="storePrefillData"
-      @reset="reset" />
+      <EditorSubmitDialog
+        ref="submitDialog"
+        endpoint="/api/v1/fixtures/import"
+        :github-username="githubUsername"
+        :github-comment="githubComment"
+        @success="storePrefillData"
+        @reset="reset" />
+
+    </ClientOnly>
   </div>
 </template>
 
@@ -125,24 +133,23 @@ export default {
       ]
     };
   },
-  asyncData({ query }) {
+  data() {
     return {
       formstate: {},
       plugins,
       plugin: ``,
       file: null,
-      comment: ``,
+      githubComment: ``,
       author: ``,
       githubUsername: ``,
-      honeypot: ``,
-      queryParameters: query
+      honeypot: ``
     };
   },
   mounted() {
     this.applyStoredPrefillData();
   },
   methods: {
-    async onSubmit(formElement) {
+    async onSubmit() {
       if (this.formstate.$invalid) {
         const field = document.querySelector(`.vf-field-invalid`);
 
@@ -164,28 +171,37 @@ export default {
         return;
       }
 
-      if (!(`FormData` in window)) {
-        // submit manually (with page reloading)
-        formElement.submit();
-        return;
+      const fileDataUrl = await getFileDataUrl(this.file);
+      const [, fileContentBase64] = fileDataUrl.match(/base64,(.+)$/);
+
+      this.$refs.submitDialog.validate({
+        plugin: this.plugin,
+        fileName: this.file.name,
+        fileContentBase64,
+        author: this.author
+      });
+
+      /**
+       * @param {File} file A File object from an HTML5 file input.
+       * @returns {Promise.<String>} Resolves with the file contents as dataURL string.
+       */
+      function getFileDataUrl(file) {
+        return new Promise((resolve, reject) => {
+          const fileReader = new FileReader();
+
+          fileReader.onload = () => {
+            resolve(fileReader.result);
+          };
+          fileReader.onerror = reject;
+          fileReader.onabort = reject;
+
+          fileReader.readAsDataURL(file);
+        });
       }
-
-      // submit via AJAX
-
-      const sendObject = new FormData(formElement);
-      sendObject.append(`isAjax`, `true`);
-
-      this.$refs.submitDialog.validate(sendObject);
     },
     reset() {
-      this.plugin = ``;
       this.$refs.fileUpload.clear();
-
-      // clear query
-      this.$router.push({
-        path: this.$route.path,
-        query: {}
-      });
+      this.githubComment = ``;
 
       this.$nextTick(() => {
         this.formstate._reset();
