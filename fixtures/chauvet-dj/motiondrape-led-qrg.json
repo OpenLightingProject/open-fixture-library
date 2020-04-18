@@ -21,12 +21,12 @@
     ]
   },
   "physical": {
-    "dimensions": [135, 243, 50],
+    "dimensions": [135, 50, 243],
     "weight": 4.4,
-    "power": 51,
+    "power": 54,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "176× LED"
     }
   },
   "availableChannels": {
@@ -34,13 +34,12 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "NoFunction"
+          "type": "Intensity",
+          "brightness": "off"
         },
         {
           "dmxRange": [8, 255],
-          "type": "Intensity",
-          "brightnessStart": "0%",
-          "brightnessEnd": "255%"
+          "type": "Intensity"
         }
       ]
     },
@@ -52,34 +51,29 @@
         },
         {
           "dmxRange": [11, 255],
-          "type": "StrobeSpeed",
-          "speedStart": "0%",
-          "speedEnd": "100%"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         }
       ]
     },
     "Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Red"
       }
     },
     "Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Green"
       }
     },
     "Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Blue"
       }
     },
     "Program 1-15": {
@@ -258,7 +252,8 @@
   },
   "modes": [
     {
-      "name": "8ch",
+      "name": "8-channel",
+      "shortName": "8ch",
       "channels": [
         "Dimmer",
         "Strobe",
