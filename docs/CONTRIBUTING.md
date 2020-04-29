@@ -14,6 +14,8 @@ As soon as an issue is assigned to somebody, it means that this person is respon
 
 ## Local installation
 
+*Note for Windows users:* Local installation is currently broken on Windows. See [#1276](https://github.com/OpenLightingProject/open-fixture-library/issues/1276).
+
 1. Install [npm](https://www.npmjs.com/get-npm)
 2. [Clone](https://help.github.com/articles/cloning-a-repository/) the repository
 3. Navigate into your clone's directory (probably `open-fixture-library/`)
