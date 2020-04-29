@@ -36,7 +36,7 @@ module.exports = {
     extend(config, ctx) {
       // exclude /assets/icons from url-loader
       const urlLoader = config.module.rules.find(rule => `use` in rule && rule.use[0].loader === `url-loader`);
-      urlLoader.exclude = /assets\/icons/;
+      urlLoader.exclude = path.resolve(__dirname, `ui/assets/icons`);
 
       // include /assets/icons for svg-inline-loader
       config.module.rules.push({
