@@ -14,14 +14,45 @@ As soon as an issue is assigned to somebody, it means that this person is respon
 
 ## Local installation
 
-*Note for Windows users:* Local installation is currently broken on Windows. See [#1276](https://github.com/OpenLightingProject/open-fixture-library/issues/1276).
+### Linux/macOS
 
-1. Install [npm](https://www.npmjs.com/get-npm)
-2. [Clone](https://help.github.com/articles/cloning-a-repository/) the repository
-3. Navigate into your clone's directory (probably `open-fixture-library/`)
-4. Run `npm install`
+Make sure you have these dependencies installed:
 
-Now, everything's installed and should be working. To start the website server at [`http://localhost:5000/`](http://localhost:5000/), run `npm run dev` (see [UI docs](ui.md)).
+* `git`
+* `make`
+* [Node.js](https://nodejs.org/en/download/package-manager/)
+
+Then run
+
+```sh
+git clone https://github.com/OpenLightingProject/open-fixture-library.git
+cd open-fixture-library
+npm install
+```
+
+Continue with [UI docs](ui.md).  
+
+### Windows
+
+Make sure you have these dependencies installed:
+
+* GNU make
+  - [Install Scoop](https://github.com/lukesampson/scoop/wiki/Quick-Start)
+  - `scoop install make`
+* [Git](https://gitforwindows.org/)
+* [Node.js](https://nodejs.org/en/download/)
+* windows-build-tools
+  - `npm install --global windows-build-tools --vs2015`
+
+Choose a project path that only contains ASCII characters and no spaces. Open a Terminal and run
+
+```bat
+git clone https://github.com/OpenLightingProject/open-fixture-library.git
+cd open-fixture-library
+npm install
+```
+
+Continue with [UI docs](ui.md).  
 
 ## Where you can help
 
