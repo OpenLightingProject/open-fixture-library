@@ -14,7 +14,7 @@ As soon as an issue is assigned to somebody, it means that this person is respon
 
 ## Local installation
 
-### Linux/macOS
+### Linux / macOS
 
 Make sure you have these dependencies installed:
 
@@ -30,7 +30,7 @@ cd open-fixture-library
 npm install
 ```
 
-Continue with [UI docs](ui.md).  
+Continue with [UI docs](ui.md).
 
 ### Windows
 
@@ -38,11 +38,11 @@ Make sure you have these dependencies installed:
 
 * GNU make
   - [Install Scoop](https://github.com/lukesampson/scoop/wiki/Quick-Start)
-  - `scoop install make`
+  - Run `scoop install make`
 * [Git](https://gitforwindows.org/)
 * [Node.js](https://nodejs.org/en/download/)
-* windows-build-tools
-  - `npm install --global windows-build-tools --vs2015`
+* [windows-build-tools](https://www.npmjs.com/package/windows-build-tools)
+  - [Open a Terminal as Administrator](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/) and run `npm install --global windows-build-tools --vs2015`
 
 Choose a project path that only contains ASCII characters and no spaces. Open a Terminal and run
 
