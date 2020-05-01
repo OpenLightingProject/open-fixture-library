@@ -11,7 +11,7 @@ const { scaleDmxValue, scaleDmxRangeIndividually } = require(`../../lib/scale-dm
 const { gdtfAttributes, gdtfUnits } = require(`./gdtf-attributes.js`);
 const { getRgbColorFromGdtfColor, followXmlNodeReference } = require(`./gdtf-helpers.js`);
 
-module.exports.version = `0.1.0`;
+module.exports.version = `0.2.0`;
 
 /**
  * @param {Buffer} buffer The imported file.
