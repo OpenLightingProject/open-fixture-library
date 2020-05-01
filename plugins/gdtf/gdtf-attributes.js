@@ -538,12 +538,13 @@ const gdtfAttributes = {
     // Defines whether the color wheel takes the shortest distance between two colors.
     inheritFrom: `AnimationIndexRotateMode`,
   },
-  Control: {
+  'Control(n)': {
     // Controls the channel of a fixture.
     oflType: `Maintenance`,
     oflProperty: `parameter`,
     defaultPhysicalEntity: `Percent`,
   },
+  CRIMode: undefined, // Controls CRI settings of output. (since GDTF v1.0)
   CTB: {
     // Controls the fixture's "Correct to blue" wheel or mixing system.
     inheritFrom: `CTO`,
@@ -570,6 +571,7 @@ const gdtfAttributes = {
     // Resets the fixture's CTO.
     inheritFrom: `BeamReset`,
   },
+  CustomColor: undefined, // Custom color related functions (save, recall..). (since GDTF v1.0)
   CyanMode: {
     // Controls how Cyan is used within the fixture's cyan CMY-mixing feature.
     inheritFrom: `AnimationIndexRotateMode`,
@@ -590,6 +592,8 @@ const gdtfAttributes = {
     // Selects different modes of intensity.
     inheritFrom: `AnimationIndexRotateMode`,
   },
+  DisplayIntensity: undefined, // Adjusts intensity of display (since GDTF v1.0)
+  DMXInput: undefined, // Selects DMX Input (since GDTF v1.0)
   Effects: {
     // Generically predefined macros and effects of a fixture.
     oflType: `Effect`,

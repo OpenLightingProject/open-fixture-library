@@ -174,6 +174,10 @@ const deprecatedGdtfAttributes = {
     // Renamed to ColorMacro(n) in GDTF v1.0
     inheritFrom: `ColorMacro(n)`,
   },
+  Control: {
+    // Renamed to Control(n) in GDTF v1.0
+    inheritFrom: `Control(n)`,
+  },
   ControlAutofocus: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `Control`,
