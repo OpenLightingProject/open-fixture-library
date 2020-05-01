@@ -201,7 +201,8 @@ const gdtfAttributes = {
       capability.blade = positions[bladeNumber - 1] || bladeNumber;
     },
   },
-  Blower: undefined, // Fog or hazer‘s blower feature.
+  'Blower(n)': undefined, // Fog or hazer‘s blower feature.
+  ChromaticMode: undefined, // Selects chromatic behavior of the device.
   'CIE_Brightness': undefined, // Controls the fixture's CIE 1931 color attribute regarding the brightness (Y).
   'CIE_X': undefined, // Controls the fixture's CIE 1931 color attribute regarding the chromaticity x.
   'CIE_Y': undefined, // Controls the fixture's CIE 1931 color attribute regarding the chromaticity y.

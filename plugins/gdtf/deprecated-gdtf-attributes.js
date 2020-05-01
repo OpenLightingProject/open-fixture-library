@@ -41,6 +41,10 @@ const deprecatedGdtfAttributes = {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `AnimationIndexRotateMode`,
   },
+  Blower: {
+    // Renamed to Blower(n) in GDTF v1.0
+    inheritFrom: `Blower(n)`,
+  },
   'Color(n)Audio': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     // Officially supported as Color(n)WheelAudio since GDTF v0.88
