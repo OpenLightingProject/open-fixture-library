@@ -492,16 +492,6 @@ const deprecatedGdtfAttributes = {
     // Renamed to Shutter(n)StrobeRandomPulseOpen in GDTF v1.0
     inheritFrom: `Shutter(n)StrobeRandomPulseOpen`,
   },
-  Zoom: {
-    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    oflType: `Zoom`,
-    oflProperty: `angle`,
-    defaultPhysicalEntity: `Angle`,
-  },
-  ZoomMSpeed: {
-    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `IrisMSpeed`,
-  },
 };
 
 /**

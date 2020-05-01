@@ -1205,13 +1205,36 @@ const gdtfAttributes = {
     // Resets the fixture's tilt.
     inheritFrom: `BeamReset`,
   },
+  UVStability: undefined, // Settings for UV stability color behavior. (since GDTF v1.0)
   Video: undefined, // Controls video features.
+  'VideoCamera(n)': undefined, // Selects the video camera(n). (since GDTF v1.0)
+  'VideoEffect(n)Parameter(m)': undefined, // Controls parameter (m) of VideoEffect(n)Type. (since GDTF v1.0)
+  'VideoEffect(n)Type': undefined, // Selects dedicated effects which are used for media. (since GDTF v1.0)
+  'VideoScale(n)_All': undefined, // Scales the media content or video object along all three axes. (since GDTF v1.0)
+  'VideoScale(n)_X': undefined, // Scales the media content or video object along the x-axis. (since GDTF v1.0)
+  'VideoScale(n)_Y': undefined, // Scales the media content or video object along the y-axis. (since GDTF v1.0)
+  'VideoScale(n)_Z': undefined, // Scales the media content or video object along the z-axis. (since GDTF v1.0)
+  WavelengthCorrection: undefined, // Settings for WaveLength corrections of colors. (since GDTF v1.0)
+  WhiteCount: undefined, // Controls if White LED is proportionally added to RGB. (since GDTF v1.0)
   XYZ_X: undefined, // Defines a fixture’s x-coordinate within an XYZ coordinate system.
   XYZ_Y: undefined, // Defines a fixture’s y-coordinate within an XYZ coordinate system.
   XYZ_Z: undefined, // Defines a fixture‘s z-coordinate within an XYZ coordinate system.
   YellowMode: {
     // Controls how Cyan is used within the fixture's yellow CMY-mixing feature.
     inheritFrom: `AnimationIndexRotateMode`,
+  },
+  Zoom: {
+    // Controls the spread of the fixture's beam/spot. (since GDTF v1.0)
+    oflType: `Zoom`,
+    oflProperty: `angle`,
+    defaultPhysicalEntity: `Angle`,
+  },
+  ZoomMode: undefined, // Changes modes of the fixture´s zoom. (since GDTF v1.0)
+  ZoomModeBeam: undefined, // Selects beam mode of zoom. (since GDTF v1.0)
+  ZoomModeSpot: undefined, // Selects spot mode of zoom. (since GDTF v1.0)
+  ZoomMSpeed: {
+    // Movement speed of the fixture's zoom. (since GDTF v1.0)
+    inheritFrom: `IrisMSpeed`,
   },
   ZoomReset: {
     // Resets the fixture's zoom.
