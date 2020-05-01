@@ -300,9 +300,29 @@ const deprecatedGdtfAttributes = {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `EffectsPar(n)`,
   },
-  Frost3: {
-    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Frost`,
+  Fan: {
+    // Renamed to Fan(n) in GDTF v1.0
+    inheritFrom: `Fan(n)`,
+  },
+  Focus: {
+    // Renamed to Focus(n) in GDTF v1.0
+    inheritFrom: `Focus(n)`,
+  },
+  FocusAdjust: {
+    // Renamed to Focus(n)Adjust in GDTF v1.0
+    inheritFrom: `Focus(n)Adjust`,
+  },
+  FocusDistance: {
+    // Renamed to Focus(n)Distance in GDTF v1.0
+    inheritFrom: `Focus(n)Distance`,
+  },
+  Fog: {
+    // Renamed to Fog(n) in GDTF v1.0
+    inheritFrom: `Fog(n)`,
+  },
+  Frost: {
+    // Renamed to Frost(n) in GDTF v1.0
+    inheritFrom: `Frost(n)`,
   },
   FrostHeavy: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -318,7 +338,8 @@ const deprecatedGdtfAttributes = {
   },
   FrostMSpeed: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `IrisMSpeed`,
+    // Officially supported as Frost(n)MSpeed since GDTF v1.0
+    inheritFrom: `Frost(n)MSpeed`,
   },
   'Gobo(n)Audio': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd

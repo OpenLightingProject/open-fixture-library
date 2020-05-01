@@ -644,7 +644,7 @@ const gdtfAttributes = {
     },
   },
   EffectsSync: undefined, // Sets offset between running effects and effects 2.
-  Fan: {
+  'Fan(n)': {
     // Fog or hazer's Fan feature.
     oflType: `Rotation`,
     oflProperty: `speed`,
@@ -653,6 +653,7 @@ const gdtfAttributes = {
       normalizeAngularSpeedDirection(gdtfCapability);
     },
   },
+  'Fan(n)Mode': undefined, // Controls fan (n) mode.
   Fans: undefined, // Fancontrols a fixture or device.
   FixtureCalibrationReset: {
     // Resets the fixture's calibration.
@@ -662,19 +663,19 @@ const gdtfAttributes = {
     // Generally resets the entire fixture.
     inheritFrom: `BeamReset`,
   },
-  Focus: {
+  'Focus(n)': {
     // Controls the sharpness of the fixture's spot light. Can blur or sharpen the edge of the spot.
     oflType: `Focus`,
     oflProperty: `distance`,
     defaultPhysicalEntity: `Length`,
   },
-  FocusAdjust: {
+  'Focus(n)Adjust': {
     // Autofocuses functionality using presets.
-    inheritFrom: `Focus`,
+    inheritFrom: `Focus(n)`,
   },
-  FocusDistance: {
+  'Focus(n)Distance': {
     // Autofocuses functionality using distance.
-    inheritFrom: `Focus`,
+    inheritFrom: `Focus(n)`,
   },
   FocusMode: {
     // Changes modes of the fixture’s focus - manual or auto- focus.
@@ -688,11 +689,7 @@ const gdtfAttributes = {
     // Resets the fixture's focus.
     inheritFrom: `BeamReset`,
   },
-  Focus2: {
-    // Controls the sharpness of the fixture's spot light. Can blur or sharpen the edge of the spot (2).
-    inheritFrom: `Focus`,
-  },
-  Fog: {
+  'Fog(n)': {
     // Fog or hazer's Fog feature.
     oflType: `Fog`,
     oflProperty: `fogOutput`,
@@ -700,6 +697,7 @@ const gdtfAttributes = {
       capability.fogType = `Fog`;
     },
   },
+  FollowSpotMode: undefined, // Selects follow spot control mode. (since GDTF v1.0)
   FrameMSpeed: {
     // Movement speed of the fixture's shapers.
     inheritFrom: `IntensityMSpeed`,
@@ -708,15 +706,15 @@ const gdtfAttributes = {
     // Resets the fixture's shapers.
     inheritFrom: `BeamReset`,
   },
-  Frost: {
+  'Frost(n)': {
     // The ability to soften the fixture's spot light with a frosted lens.
     oflType: `Frost`,
     oflProperty: `frostIntensity`,
     defaultPhysicalEntity: `Percent`,
   },
-  Frost2: {
-    // The ability to soften the fixture's spot light with a frosted lens (2).
-    inheritFrom: `Frost`,
+  'Frost(n)MSpeed': {
+    // Movement speed of the fixture's frost (n). (since GDTF v1.0)
+    inheritFrom: `IrisMSpeed`,
   },
   Function: {
     // Generally controls features of the fixture.
