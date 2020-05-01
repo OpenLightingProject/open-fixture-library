@@ -255,7 +255,11 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
   function splitSwitchingChannels() {
     const relations = [];
 
-    addLegacyRelations();
+    addModeMasterRelations();
+
+    if (relations.length === 0) {
+      addLegacyRelations();
+    }
 
     relations.forEach(relation => {
       const followerChannel = relation.followerGdtfChannel;
@@ -287,7 +291,43 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
 
     /**
-     * Adds <Relation Type="Mode">'s data to the array.
+     * Adds <ChannelFunction ModeMaster="…">'s relation data to the array.
+     * This way of specifying relations was added in GDTF v0.88.
+     */
+    function addModeMasterRelations() {
+      gdtfFixture.DMXModes[0].DMXMode.forEach((gdtfMode, modeIndex) => {
+        gdtfMode.DMXChannels[0].DMXChannel.forEach(gdtfDmxChannel => {
+          gdtfDmxChannel.LogicalChannel.forEach(gdtfLogicalChannel => {
+            gdtfLogicalChannel.ChannelFunction.forEach(gdtfChannelFunction => {
+              if (!(`ModeMaster` in gdtfChannelFunction.$)) {
+                return;
+              }
+
+              const masterChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfChannelFunction.$.ModeMaster.split(`.`)[0]);
+
+              const dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelFunction.$.ModeFrom || `0/1`);
+              const maxDmxValue = Math.pow(256, dmxFrom[1]) - 1;
+              const dmxTo = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelFunction.$.ModeTo || `${maxDmxValue}/${dmxFrom[1]}`);
+
+              const relation = {
+                modeIndex,
+                masterGdtfChannel: masterChannel,
+                switchingChannelName: gdtfDmxChannel.$.Name,
+                followerGdtfChannel: gdtfDmxChannel,
+                followerChannelFunction: gdtfChannelFunction,
+                dmxFrom,
+                dmxTo,
+              };
+
+              relations.push(relation);
+            });
+          });
+        });
+      });
+    }
+
+    /**
+     * Adds <Relation Type="Mode">'s relation data to the array.
      * This behavior is deprecated since GDTF v0.88, but still supported as a fallback.
      */
     function addLegacyRelations() {
@@ -1086,11 +1126,11 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       const simplifiedRelations = {};
 
       Object.keys(relationsPerMaster[triggerChannelKey]).forEach(switchingChannelKey => {
-        const relations = relations[switchingChannelKey];
+        const relations = relationsPerMaster[triggerChannelKey][switchingChannelKey];
 
         // were this switching channel's relations already added?
         const addedSwitchingChannelKey = Object.keys(simplifiedRelations).find(
-          otherKey => JSON.stringify(relations[otherKey]) === JSON.stringify(relations),
+          otherKey => JSON.stringify(relationsPerMaster[triggerChannelKey][otherKey]) === JSON.stringify(relations),
         );
 
         if (addedSwitchingChannelKey) {
