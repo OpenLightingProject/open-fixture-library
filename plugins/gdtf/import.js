@@ -66,12 +66,12 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
   warnings.push(`Please add fixture categories.`);
 
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
-  const revisions = gdtfFixture.Revisions[0].Revision;
+  const [createDate, lastModifyDate] = getRevisionDates();
 
   fixture.meta = {
     authors: [authorName],
-    createDate: getIsoDateFromGdtfDate(revisions[0].$.Date, timestamp),
-    lastModifyDate: getIsoDateFromGdtfDate(revisions[revisions.length - 1].$.Date, timestamp),
+    createDate: getIsoDateFromGdtfDate(createDate, timestamp),
+    lastModifyDate: getIsoDateFromGdtfDate(lastModifyDate, timestamp),
     importPlugin: {
       plugin: `gdtf`,
       date: timestamp,
@@ -133,6 +133,21 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       [fixKey]: warnings,
     },
   };
+
+  /**
+   * @returns {[String|undefined, String|undefined]} An array with the earliest and latest revision dates of the GDTF fixture, if they are defined in <Revision> tag.
+   */
+  function getRevisionDates() {
+    if (!(`Revisions` in gdtfFixture) || !(`Revision` in gdtfFixture.Revisions[0])) {
+      return [undefined, undefined];
+    }
+
+    const revisions = gdtfFixture.Revisions[0].Revision;
+    const earliestRevision = revisions[0];
+    const latestRevision = revisions[revisions.length - 1];
+
+    return [earliestRevision.$.Date, latestRevision.$.Date];
+  }
 
   /**
    * @returns {String|undefined} The comment to add to the fixture.
@@ -1224,11 +1239,15 @@ function xmlNodeHasNotNoneAttribute(xmlNode, attribute) {
  * the form "dd.MM.yyyy HH:mm:ss", so those have to be converted to the ISO format.
  *
  * @see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-date
- * @param {String} dateStr An ISO date string or a date in the form "dd.MM.yyyy HH:mm:ss"
+ * @param {String|undefined} dateStr An ISO date string or a date in the form "dd.MM.yyyy HH:mm:ss"
  * @param {String} fallbackDateStr A fallback date string to return if the parsed date is not valid.
  * @returns {String} A date string in the form "YYYY-MM-DD" (may be the provided fallback date string).
  */
 function getIsoDateFromGdtfDate(dateStr, fallbackDateStr) {
+  if (!dateStr) {
+    return fallbackDateStr;
+  }
+
   const isoDateRegex = /^(\d{4}-\d{2}-\d{2})T/;
   if (dateStr.match(isoDateRegex)) {
     return RegExp.$1;
