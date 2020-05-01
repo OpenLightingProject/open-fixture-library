@@ -784,6 +784,11 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
      * @returns {Number} The resolution of this channel.
      */
     function getChannelResolution() {
+      // The Offset attribute replaced the Coarse/Fine/Ultra/Uber attributes in GDTF v1.0
+      if (`Offset` in gdtfChannel.$) {
+        return gdtfChannel.$.Offset.split(`,`).length;
+      }
+
       if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Uber`)) {
         return 4;
       }
@@ -970,7 +975,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
 
     /**
-     * Adds the OFL channel key to dmxBreakWrappers' last entry's channels array.
+     * Adds the OFL channel key (and fine channel keys) to dmxBreakWrappers'
+     * last entry's channels array.
      * @param {Object} gdtfChannel The GDTF channel object.
      * @param {Array.<DmxBreakWrapper>} dmxBreakWrappers The DMXBreak wrapper array.
      */
@@ -980,21 +986,29 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
       const channels = dmxBreakWrappers[dmxBreakWrappers.length - 1].channels;
 
-      if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Coarse`)) {
-        channels[parseInt(gdtfChannel.$.Coarse, 10) - 1] = chKey;
+      let channelOffsets;
+      const channelKeys = [chKey].concat(oflChannel.fineChannelAliases);
+
+      // The Offset attribute replaced the Coarse/Fine/Ultra/Uber attributes in GDTF v1.0
+      if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Offset`)) {
+        channelOffsets = gdtfChannel.$.Offset.split(`,`);
+      }
+      else {
+        channelOffsets = [
+          gdtfChannel.$.Coarse,
+          gdtfChannel.$.Fine,
+          gdtfChannel.$.Ultra,
+          gdtfChannel.$.Uber,
+        ];
       }
 
-      if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Fine`)) {
-        channels[parseInt(gdtfChannel.$.Fine, 10) - 1] = oflChannel.fineChannelAliases[0];
-      }
+      channelOffsets.forEach((channelOffset, index) => {
+        const dmxChannelNumber = parseInt(channelOffset, 10);
 
-      if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Ultra`)) {
-        channels[parseInt(gdtfChannel.$.Ultra, 10) - 1] = oflChannel.fineChannelAliases[1];
-      }
-
-      if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Uber`)) {
-        channels[parseInt(gdtfChannel.$.Uber, 10) - 1] = oflChannel.fineChannelAliases[2];
-      }
+        if (!isNaN(dmxChannelNumber)) {
+          channels[dmxChannelNumber - 1] = channelKeys[index];
+        }
+      });
     }
 
     /**
