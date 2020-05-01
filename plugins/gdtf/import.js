@@ -1182,13 +1182,22 @@ function xmlNodeHasNotNoneAttribute(xmlNode, attribute) {
 }
 
 /**
- * @param {String} dateStr A date string in the form "dd.MM.yyyy HH:mm:ss", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-date
+ * GDTF date strings are already in ISO format. Before GDTF v1.0, date strings had
+ * the form "dd.MM.yyyy HH:mm:ss", so those have to be converted to the ISO format.
+ *
+ * @see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-date
+ * @param {String} dateStr An ISO date string or a date in the form "dd.MM.yyyy HH:mm:ss"
  * @param {String} fallbackDateStr A fallback date string to return if the parsed date is not valid.
- * @returns {String|null} A date string in the form "YYYY-MM-DD", or null if the string could not be parsed.
+ * @returns {String} A date string in the form "YYYY-MM-DD" (may be the provided fallback date string).
  */
 function getIsoDateFromGdtfDate(dateStr, fallbackDateStr) {
-  const timeRegex = /^([0-3]?\d)\.([01]?\d)\.(\d{4})\s+\d?\d:\d?\d:\d?\d$/;
-  const match = dateStr.match(timeRegex);
+  const isoDateRegex = /^(\d{4}-\d{2}-\d{2})T/;
+  if (dateStr.match(isoDateRegex)) {
+    return RegExp.$1;
+  }
+
+  const germanDateTimeRegex = /^([0-3]?\d)\.([01]?\d)\.(\d{4})\s+\d?\d:\d?\d:\d?\d$/;
+  const match = dateStr.match(germanDateTimeRegex);
 
   try {
     const [, day, month, year] = match;
