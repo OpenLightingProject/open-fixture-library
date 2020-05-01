@@ -957,10 +957,14 @@ const gdtfAttributes = {
     // Controls the energy consumption of the lamp.
     inheritFrom: `AnimationIndexRotateMode`,
   },
+  LEDFrequency: undefined, // Controls LED frequency. (since GDTF v1.0)
+  LEDZoneMode: undefined, // Changes zones of LEDs. (since GDTF v1.0)
   MagentaMode: {
     // Controls how Cyan is used within the fixture's magenta CMY-mixing.
     inheritFrom: `AnimationIndexRotateMode`,
   },
+  MediaContent: undefined, // Selects the content slot of in the selected media folder (e.g. of a media server). (since GDTF v1.0)
+  MediaFolder: undefined, // Selects the media folder of a device (e.g., a media server). (since GDTF v1.0)
   NoFeature: {
     // Ranges without a functionality.
     oflType: `NoFunction`,
@@ -980,6 +984,9 @@ const gdtfAttributes = {
     // Resets the fixture's pan.
     inheritFrom: `BeamReset`,
   },
+  PanTiltMode: undefined, // Selects fixture's pan/tilt mode. Selects between a limited pan/tilt range or a continuous pan/tilt range. (since GDTF v1.0)
+  PixelMode: undefined, // Controls behavior of LED pixels. (since GDTF v1.0)
+  Playmode: undefined, // Selects the playmode of a device (e.g., a media server). (since GDTF v1.0)
   PositionEffect: {
     // Selects the predefined position effects that are built into the fixture.
     inheritFrom: `Effects`,
