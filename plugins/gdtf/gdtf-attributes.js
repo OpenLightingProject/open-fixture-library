@@ -145,120 +145,45 @@ const gdtfAttributes = {
     oflProperty: `parameter`,
     defaultPhysicalEntity: `Percent`,
   },
-  Blade1A: {
-    // 1 of 2 shutters that shape the top of the beam.
+  'Blade(n)A': {
+    // 1 of 2 shutters that shape the top/right/bottom/left of the beam.
     oflType: `BladeInsertion`,
     oflProperty: `insertion`,
     defaultPhysicalEntity: `Percent`, // Angle is also common
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.blade = `Top`;
+    beforePhysicalPropertyHook(capability, gdtfCapability, attributeName) {
+      const positions = [`Top`, `Right`, `Bottom`, `Left`];
+      const bladeNumber = parseInt(attributeName.slice(5), 10);
+      capability.blade = positions[bladeNumber - 1] || bladeNumber;
     },
   },
-  Blade1B: {
-    // 2 of 2 shutters that shape the top of the beam.
+  'Blade(n)B': {
+    // 2 of 2 shutters that shape the top/right/bottom/left of the beam.
     oflType: `BladeInsertion`,
     oflProperty: `insertion`,
     defaultPhysicalEntity: `Percent`, // Angle is also common
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.blade = `Top`;
+    beforePhysicalPropertyHook(capability, gdtfCapability, attributeName) {
+      const positions = [`Top`, `Right`, `Bottom`, `Left`];
+      const bladeNumber = parseInt(attributeName.slice(5), 10);
+      capability.blade = positions[bladeNumber - 1] || bladeNumber;
     },
   },
-  Blade1Rot: {
-    // Rotates position of blade1.
+  'Blade(n)Rot': {
+    // Rotates position of blade(n).
     oflType: `BladeRotation`,
     oflProperty: `angle`,
     defaultPhysicalEntity: `Angle`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.blade = `Top`;
-    },
-  },
-  Blade2A: {
-    // 1 of 2 shutters that shape the right of the beam.
-    oflType: `BladeInsertion`,
-    oflProperty: `insertion`,
-    defaultPhysicalEntity: `Percent`, // Angle is also common
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.blade = `Right`;
-    },
-  },
-  Blade2B: {
-    // 2 of 2 shutters that shape the right of the beam.
-    oflType: `BladeInsertion`,
-    oflProperty: `insertion`,
-    defaultPhysicalEntity: `Percent`, // Angle is also common
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.blade = `Right`;
-    },
-  },
-  Blade2Rot: {
-    // Rotates position of blade2.
-    oflType: `BladeRotation`,
-    oflProperty: `angle`,
-    defaultPhysicalEntity: `Angle`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.blade = `Right`;
-    },
-  },
-  Blade3A: {
-    // 1 of 2 shutters that shape the bottom of the beam.
-    oflType: `BladeInsertion`,
-    oflProperty: `insertion`,
-    defaultPhysicalEntity: `Percent`, // Angle is also common
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.blade = `Bottom`;
-    },
-  },
-  Blade3B: {
-    // 2 of 2 shutters that shape the bottom of the beam.
-    oflType: `BladeInsertion`,
-    oflProperty: `insertion`,
-    defaultPhysicalEntity: `Percent`, // Angle is also common
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.blade = `Bottom`;
-    },
-  },
-  Blade3Rot: {
-    // Rotates position of blade3.
-    oflType: `BladeRotation`,
-    oflProperty: `angle`,
-    defaultPhysicalEntity: `Angle`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.blade = `Bottom`;
-    },
-  },
-  Blade4A: {
-    // 1 of 2 shutters that shape the left of the beam.
-    oflType: `BladeInsertion`,
-    oflProperty: `insertion`,
-    defaultPhysicalEntity: `Percent`, // Angle is also common
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.blade = `Left`;
-    },
-  },
-  Blade4B: {
-    // 2 of 2 shutters that shape the left of the beam.
-    oflType: `BladeInsertion`,
-    oflProperty: `insertion`,
-    defaultPhysicalEntity: `Percent`, // Angle is also common
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.blade = `Left`;
-    },
-  },
-  Blade4Rot: {
-    // Rotates position of blade4.
-    oflType: `BladeRotation`,
-    oflProperty: `angle`,
-    defaultPhysicalEntity: `Angle`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.blade = `Left`;
+    beforePhysicalPropertyHook(capability, gdtfCapability, attributeName) {
+      const positions = [`Top`, `Right`, `Bottom`, `Left`];
+      const bladeNumber = parseInt(attributeName.slice(5), 10);
+      capability.blade = positions[bladeNumber - 1] || bladeNumber;
     },
   },
   Blower: undefined, // Fog or hazer‘s blower feature.
   'CIE_Brightness': undefined, // Controls the fixture's CIE 1931 color attribute regarding the brightness (Y).
   'CIE_X': undefined, // Controls the fixture's CIE 1931 color attribute regarding the chromaticity x.
   'CIE_Y': undefined, // Controls the fixture's CIE 1931 color attribute regarding the chromaticity y.
-  Color1: {
-    // The fixture’s color wheel 1. Selects colors in color wheel 1. This is the main attribute of color wheel’s 1 wheel control.
+  'Color(n)': {
+    // The fixture’s color wheel (n). Selects colors in color wheel (n). This is the main attribute of color wheel’s (n) wheel control.
     oflType: `WheelSlot`,
     oflProperty: `slotNumber`,
     defaultPhysicalEntity: `None`,
@@ -297,11 +222,11 @@ const gdtfAttributes = {
       }
     },
   },
-  Color1Mode: {
+  'Color(n)Mode': {
     // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 1.
     inheritFrom: `AnimationIndexRotateMode`,
   },
-  Color1WheelAudio: {
+  'Color(n)WheelAudio': {
     // Controls audio-controlled functionality of color wheel 1 (since GDTF v0.88)
     oflType: `Effect`,
     oflProperty: `speed`,
@@ -314,7 +239,7 @@ const gdtfAttributes = {
       capability.soundControlled = true;
     },
   },
-  Color1WheelIndex: {
+  'Color(n)WheelIndex': {
     // Controls angle of indexed rotation of color wheel 1 (since GDTF v0.88)
     oflType: `WheelRotation`,
     oflProperty: `angle`,
@@ -323,11 +248,11 @@ const gdtfAttributes = {
       capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
     },
   },
-  Color1WheelRandom: {
+  'Color(n)WheelRandom': {
     // Controls speed of color wheel´s 1 random color slot selection. (since GDTF v0.88)
     inheritFrom: `Effects`,
   },
-  Color1WheelSpin: {
+  'Color(n)WheelSpin': {
     // Controls the speed and direction of continuous rotation of color wheel 1.
     oflType: `WheelRotation`,
     oflProperty: `speed`,
@@ -336,78 +261,6 @@ const gdtfAttributes = {
       capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
       normalizeAngularSpeedDirection(gdtfCapability);
     },
-  },
-  Color2: {
-    // The fixture’s color wheel 2. Selects colors in color wheel 2. This is the main attribute of color wheel’s 2 wheel control.
-    inheritFrom: `Color1`,
-  },
-  Color2Mode: {
-    // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 2.
-    inheritFrom: `Color1Mode`,
-  },
-  Color2WheelAudio: {
-    // Controls audio-controlled functionality of color wheel 2 (since GDTF v0.88)
-    inheritFrom: `Color1WheelAudio`,
-  },
-  Color2WheelIndex: {
-    // Controls angle of indexed rotation of color wheel 2 (since GDTF v0.88)
-    inheritFrom: `Color1WheelIndex`,
-  },
-  Color2WheelRandom: {
-    // Controls speed of color wheel´s 2 random color slot selection. (since GDTF v0.88)
-    inheritFrom: `Color1WheelRandom`,
-  },
-  Color2WheelSpin: {
-    // Controls the speed and direction of continuous rotation of color wheel 2.
-    inheritFrom: `Color1WheelSpin`,
-  },
-  Color3: {
-    // The fixture’s color wheel 3. Selects colors in color wheel 3. This is the main attribute of color wheel’s 3 wheel control.
-    inheritFrom: `Color1`,
-  },
-  Color3Mode: {
-    // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 3.
-    inheritFrom: `Color1Mode`,
-  },
-  Color3WheelAudio: {
-    // Controls audio-controlled functionality of color wheel 3 (since GDTF v0.88)
-    inheritFrom: `Color1WheelAudio`,
-  },
-  Color3WheelIndex: {
-    // Controls angle of indexed rotation of color wheel 3 (since GDTF v0.88)
-    inheritFrom: `Color1WheelIndex`,
-  },
-  Color3WheelRandom: {
-    // Controls speed of color wheel´s 3 random color slot selection. (since GDTF v0.88)
-    inheritFrom: `Color1WheelRandom`,
-  },
-  Color3WheelSpin: {
-    // Controls the speed and direction of continuous rotation of color wheel 3.
-    inheritFrom: `Color1WheelSpin`,
-  },
-  Color4: {
-    // The fixture’s color wheel 4. Selects colors in color wheel 4. This is the main attribute of color wheel’s 4 wheel control.
-    inheritFrom: `Color1`,
-  },
-  Color4Mode: {
-    // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 4.
-    inheritFrom: `Color1Mode`,
-  },
-  Color4WheelAudio: {
-    // Controls audio-controlled functionality of color wheel 4 (since GDTF v0.88)
-    inheritFrom: `Color1WheelAudio`,
-  },
-  Color4WheelIndex: {
-    // Controls angle of indexed rotation of color wheel 4 (since GDTF v0.88)
-    inheritFrom: `Color1WheelIndex`,
-  },
-  Color4WheelRandom: {
-    // Controls speed of color wheel´s 4 random color slot selection. (since GDTF v0.88)
-    inheritFrom: `Color1WheelRandom`,
-  },
-  Color4WheelSpin: {
-    // Controls the speed and direction of continuous rotation of color wheel 4.
-    inheritFrom: `Color1WheelSpin`,
   },
   ColorEffects: {
     // Selects predefined color effects built into the fixture.
@@ -770,8 +623,8 @@ const gdtfAttributes = {
     // General speed of fixture's features.
     inheritFrom: `IntensityMSpeed`,
   },
-  Gobo1: {
-    // The fixture’s gobo wheel 1. This is the main attribute of gobo wheel’s 1 wheel control. Selects gobos in gobo wheel 1. A different channel function sets the angle of the indexed position in the selected gobo or the angular speed of its continuous rotation.
+  'Gobo(n)': {
+    // The fixture’s gobo wheel (n). This is the main attribute of gobo wheel’s (n) wheel control. Selects gobos in gobo wheel (n). A different channel function sets the angle of the indexed position in the selected gobo or the angular speed of its continuous rotation.
     oflType: `WheelSlot`,
     oflProperty: `slotNumber`,
     defaultPhysicalEntity: `None`,
@@ -810,8 +663,8 @@ const gdtfAttributes = {
       }
     },
   },
-  Gobo1Pos: {
-    // Controls angle of indexed rotation of gobos in gobo wheel 1. This is the main attribute of gobo wheel’s 1 wheel slot control.
+  'Gobo(n)Pos': {
+    // Controls angle of indexed rotation of gobos in gobo wheel (n). This is the main attribute of gobo wheel’s (n) wheel slot control.
     oflType: `WheelSlotRotation`,
     oflProperty: `angle`,
     defaultPhysicalEntity: `Angle`,
@@ -819,8 +672,8 @@ const gdtfAttributes = {
       capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
     },
   },
-  Gobo1PosRotate: {
-    // Controls the speed and direction of continuous rotation of gobos in gobo wheel 1.
+  'Gobo(n)PosRotate': {
+    // Controls the speed and direction of continuous rotation of gobos in gobo wheel (n).
     oflType: `WheelSlotRotation`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `AngularSpeed`,
@@ -829,9 +682,9 @@ const gdtfAttributes = {
       normalizeAngularSpeedDirection(gdtfCapability);
     },
   },
-  Gobo1PosShake: {
-    // Controls frequency of the shake of gobos in gobo wheel 1. (since GDTF v0.88)
-    inheritFrom: `Gobo1`,
+  'Gobo(n)PosShake': {
+    // Controls frequency of the shake of gobos in gobo wheel (n).
+    inheritFrom: `Gobo(n)`,
     oflType: `WheelShake`,
     oflProperty: `shakeSpeed`,
     defaultPhysicalEntity: `Frequency`,
@@ -843,20 +696,20 @@ const gdtfAttributes = {
       capability.slotNumber = gdtfSlotNumber;
     },
   },
-  Gobo1SelectSpin: {
-    // Selects gobos whose rotation is continuous in gobo wheel 1 and controls the angular speed of the gobo’s spin within the same channel function. (since GDTF v0.88)
-    inheritFrom: `Gobo1`,
+  'Gobo(n)SelectEffects': {
+    // Selects gobos which run effects in gobo wheel (n). (since GDTF v0.88)
+    inheritFrom: `Gobo(n)`,
   },
-  Gobo1SelectShake: {
-    // Selects gobos which shake in gobo wheel 1 and controls the frequency of the gobo’s shake within the same channel function. (since GDTF v0.88)
-    inheritFrom: `Gobo1WheelShake`,
+  'Gobo(n)SelectShake': {
+    // Selects gobos which shake in gobo wheel (n) and controls the frequency of the gobo’s shake within the same channel function. (since GDTF v0.88)
+    inheritFrom: `Gobo(n)WheelShake`,
   },
-  Gobo1SelectEffects: {
-    // Selects gobos which run effects in gobo wheel 1. (since GDTF v0.88)
-    inheritFrom: `Gobo1`,
+  'Gobo(n)SelectSpin': {
+    // Selects gobos whose rotation is continuous in gobo wheel (n) and controls the angular speed of the gobo’s spin within the same channel function. (since GDTF v0.88)
+    inheritFrom: `Gobo(n)`,
   },
-  Gobo1WheelAudio: {
-    // Controls audio-controlled functionality of gobo wheel 1. (since GDTF v0.88)
+  'Gobo(n)WheelAudio': {
+    // Controls audio-controlled functionality of gobo wheel (n). (since GDTF v0.88)
     oflType: `Effect`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `Speed`,
@@ -868,17 +721,27 @@ const gdtfAttributes = {
       capability.soundControlled = true;
     },
   },
-  Gobo1WheelIndex: {
-    // Controls angle of indexed rotation of gobo wheel 1. (since GDTF v0.88)
-    inheritFrom: `Gobo1`,
+  'Gobo(n)WheelIndex': {
+    // Controls angle of indexed rotation of gobo wheel (n). (since GDTF v0.88)
+    inheritFrom: `Gobo(n)`,
   },
-  Gobo1WheelMode: {
-    // Changes control between selecting, indexing, and rotating the gobos of gobo wheel 1.
+  'Gobo(n)WheelMode': {
+    // Changes control between selecting, indexing, and rotating the gobos of gobo wheel (n).
     inheritFrom: `AnimationIndexRotateMode`,
   },
-  Gobo1WheelShake: {
-    // Controls frequency of the shake of gobo wheel 1.
-    inheritFrom: `Gobo1`,
+  'Gobo(n)WheelRandom': {
+    // Controls speed of gobo wheel´s (n) random gobo slot selection. (since GDTF v0.88)
+    oflType: `Effect`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Speed`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.effectName = gdtfCapability.$.Name;
+      gdtfCapability.$.Name = undefined;
+    },
+  },
+  'Gobo(n)WheelShake': {
+    // Controls frequency of the shake of gobo wheel (n).
+    inheritFrom: `Gobo(n)`,
     oflType: `WheelShake`,
     oflProperty: `shakeSpeed`,
     defaultPhysicalEntity: `Frequency`,
@@ -889,8 +752,8 @@ const gdtfAttributes = {
       capability.slotNumber = gdtfSlotNumber;
     },
   },
-  Gobo1WheelSpin: {
-    // Controls the speed and direction of continuous rotation of gobo wheel 1.
+  'Gobo(n)WheelSpin': {
+    // Controls the speed and direction of continuous rotation of gobo wheel (n).
     oflType: `WheelRotation`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `AngularSpeed`,
@@ -899,121 +762,7 @@ const gdtfAttributes = {
       normalizeAngularSpeedDirection(gdtfCapability);
     },
   },
-  Gobo1WheelRandom: {
-    // Controls speed of gobo wheel´s 1 random gobo slot selection. (since GDTF v0.88)
-    oflType: `Effect`,
-    oflProperty: `speed`,
-    defaultPhysicalEntity: `Speed`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.effectName = gdtfCapability.$.Name;
-      gdtfCapability.$.Name = undefined;
-    },
-  },
-  Gobo2: {
-    // Selects gobos in the fixture's gobo wheel 2.
-    inheritFrom: `Gobo1`,
-  },
-  Gobo2Pos: {
-    // Controls angle of indexed rotation of gobos in gobo wheel 2. This is the main attribute of gobo wheel’s 2 wheel slot control.
-    inheritFrom: `Gobo1Pos`,
-  },
-  Gobo2PosRotate: {
-    // Controls the speed and direction of continuous rotation of gobos in gobo wheel 2.
-    inheritFrom: `Gobo1PosRotate`,
-  },
-  Gobo2PosShake: {
-    // Controls frequency of the shake of gobos in gobo wheel 2. (since v0.88)
-    inheritFrom: `Gobo1PosShake`,
-  },
-  Gobo2SelectEffects: {
-    // Selects gobos which run effects in gobo wheel 2. (since GDTF v0.88)
-    inheritFrom: `Gobo1SelectEffects`,
-  },
-  Gobo2SelectShake: {
-    // Selects gobos which shake in gobo wheel 2 and controls the frequency of the gobo’s shake within the same channel function. (since GDTF v0.88)
-    inheritFrom: `Gobo1SelectShake`,
-  },
-  Gobo2SelectSpin: {
-    // Selects gobos whose rotation is continuous in gobo wheel 2 and controls the angular speed of the gobo’s spin within the same channel function. (since GDTF v0.88)
-    inheritFrom: `Gobo1SelectSpin`,
-  },
-  Gobo2WheelAudio: {
-    // Controls audio-controlled functionality of gobo wheel 2. (since v0.88)
-    inheritFrom: `Gobo1WheelAudio`,
-  },
-  Gobo2WheelIndex: {
-    // Controls angle of indexed rotation of gobo wheel 2. (since v0.88)
-    inheritFrom: `Gobo1WheelIndex`,
-  },
-  Gobo2WheelMode: {
-    // Changes control between selecting, indexing, and rotating the gobos of gobo wheel 2.
-    inheritFrom: `Gobo1WheelMode`,
-  },
-  Gobo2WheelRandom: {
-    // Controls speed of gobo wheel´s 2 random gobo slot selection. (since v0.88)
-    inheritFrom: `Gobo1WheelRandom`,
-  },
-  Gobo2WheelShake: {
-    // Controls frequency of the shake of gobo wheel 2.
-    inheritFrom: `Gobo1WheelShake`,
-  },
-  Gobo2WheelSpin: {
-    // Controls the speed and direction of continuous rotation of gobo wheel 2.
-    inheritFrom: `Gobo1WheelSpin`,
-  },
-  Gobo3: {
-    // The fixture’s gobo wheel 3. This is the main attribute of gobo wheel’s 3 wheel control. Selects gobos in gobo wheel 3. A different channel function sets the angle of the indexed position in the selected gobo or the angular speed of its continuous rotation.
-    inheritFrom: `Gobo1`,
-  },
-  Gobo3Pos: {
-    // Controls angle of indexed rotation of gobos in gobo wheel 3. This is the main attribute of gobo wheel’s 3 wheel slot control.
-    inheritFrom: `Gobo1Pos`,
-  },
-  Gobo3PosShake: {
-    // Controls frequency of the shake of gobos in gobo wheel 3. (since v0.88)
-    inheritFrom: `Gobo1PosShake`,
-  },
-  Gobo3PosRotate: {
-    // Controls the speed and direction of continuous rotation of gobos in gobo wheel 3.
-    inheritFrom: `Gobo1PosRotate`,
-  },
-  Gobo3SelectEffects: {
-    // Selects gobos which run effects in gobo wheel 3. (since v0.88)
-    inheritFrom: `Gobo1SelectEffects`,
-  },
-  Gobo3SelectShake: {
-    // Selects gobos which shake in gobo wheel 3 and controls the frequency of the gobo’s shake within the same channel function. (since v0.88)
-    inheritFrom: `Gobo1SelectShake`,
-  },
-  Gobo3SelectSpin: {
-    // Selects gobos whose rotation is continuous in gobo wheel 3 and controls the angular speed of the gobo’s spin within the same channel function. (since v0.88)
-    inheritFrom: `Gobo1SelectSpin`,
-  },
-  Gobo3WheelAudio: {
-    // Controls audio-controlled functionality of gobo wheel 3. (since v0.88)
-    inheritFrom: `Gobo1WheelAudio`,
-  },
-  Gobo3WheelIndex: {
-    // Controls angle of indexed rotation of gobo wheel 3. (since v0.88)
-    inheritFrom: `Gobo1WheelIndex`,
-  },
-  Gobo3WheelMode: {
-    // Changes control between selecting, indexing, and rotating the gobos of gobo wheel 3.
-    inheritFrom: `Gobo1WheelMode`,
-  },
-  Gobo3WheelShake: {
-    // Controls frequency of the shake of gobo wheel 3. (since v0.88)
-    inheritFrom: `Gobo1WheelShake`,
-  },
-  Gobo3WheelSpin: {
-    // Controls the speed and direction of continuous rotation of gobo wheel 3. (since v0.88)
-    inheritFrom: `Gobo1WheelSpin`,
-  },
-  Gobo3WheelRandom: {
-    // Controls speed of gobo wheel´s 3 random gobo slot selection. (since v0.88)
-    inheritFrom: `Gobo1WheelRandom`,
-  },
-  GoboWheelMSpeed: {
+  'GoboWheel(n)MSpeed': {
     // Movement speed of the fixture's gobo wheel.
     inheritFrom: `IntensityMSpeed`,
   },
@@ -1149,20 +898,20 @@ const gdtfAttributes = {
     // Resets the fixture's pan/tilt.
     inheritFrom: `BeamReset`,
   },
-  Prism1: {
-    // The fixture’s prism wheel 1. Selects prisms in prism wheel 1. A different channel function sets the angle of the indexed position in the selected prism or the angular speed of its continuous rotation. This is the main attribute of prism wheel’s 1 wheel control.
+  'Prism(n)': {
+    // The fixture’s prism wheel (n). Selects prisms in prism wheel (n). A different channel function sets the angle of the indexed position in the selected prism or the angular speed of its continuous rotation. This is the main attribute of prism wheel’s (n) wheel control.
     oflType: `Prism`,
     oflProperty: null,
     defaultPhysicalEntity: `None`,
   },
-  Prism1Pos: {
-    // Controls angle of indexed rotation of prisms in prism wheel 1. This is the main attribute of prism wheel’s 1 wheel slot control.
+  'Prism(n)Pos': {
+    // Controls angle of indexed rotation of prisms in prism wheel (n). This is the main attribute of prism wheel’s 1 wheel slot control.
     oflType: `PrismRotation`,
     oflProperty: `angle`,
     defaultPhysicalEntity: `Angle`,
   },
-  Prism1PosRotate: {
-    // Controls the speed and direction of continuous rotation of prisms in prism wheel 1.
+  'Prism(n)PosRotate': {
+    // Controls the speed and direction of continuous rotation of prisms in prism wheel (n).
     oflType: `PrismRotation`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `AngularSpeed`,
@@ -1170,25 +919,9 @@ const gdtfAttributes = {
       normalizeAngularSpeedDirection(gdtfCapability);
     },
   },
-  Prism1SelectSpin: {
-    // Selects prisms whose rotation is continuous in prism wheel 1 and controls the angular speed of the prism’s spin within the same channel function. (since GDTF v0.88)
-    inheritFrom: `Prism1PosRotate`,
-  },
-  Prism2: {
-    // The fixture’s prism wheel 2. Selects prisms in prism wheel 2. A different channel function sets the angle of the indexed position in the selected prism or the angular speed of its continuous rotation. This is the main attribute of prism wheel’s 2 wheel control.
-    inheritFrom: `Prism1`,
-  },
-  Prism2Pos: {
-    // Controls angle of indexed rotation of prisms in prism wheel 2. This is the main attribute of prism wheel’s 2 wheel slot control.
-    inheritFrom: `Prism1Pos`,
-  },
-  Prism2PosRotate: {
-    // Controls the speed and direction of continuous rotation of prisms in prism wheel 2. (since GDTF v0.88)
-    inheritFrom: `Prism1PosRotate`,
-  },
-  Prism2SelectSpin: {
-    // Selects prisms whose rotation is continuous in prism wheel 2 and controls the angular speed of the prism’s spin within the same channel function.
-    inheritFrom: `Prism1SelectSpin`,
+  'Prism(n)SelectSpin': {
+    // Selects prisms whose rotation is continuous in prism wheel (n) and controls the angular speed of the prism’s spin within the same channel function. (since GDTF v0.88)
+    inheritFrom: `Prism(n)PosRotate`,
   },
   ShaperMacros: {
     // Predefined presets for shaper positions.

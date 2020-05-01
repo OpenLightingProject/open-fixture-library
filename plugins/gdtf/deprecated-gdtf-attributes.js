@@ -29,40 +29,28 @@ const deprecatedGdtfAttributes = {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `AnimationIndexRotateMode`,
   },
-  Color1Audio: {
+  'Color(n)Audio': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    // Officially supported as Color1WheelAudio since GDTF v0.88
-    inheritFrom: `Color1WheelAudio`,
+    // Officially supported as Color(n)WheelAudio since GDTF v0.88
+    inheritFrom: `Color(n)WheelAudio`,
   },
-  Color1Index: {
+  'Color(n)Index': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    // Officially supported as Color1WheelIndex since GDTF v0.88
-    inheritFrom: `Color1WheelIndex`,
+    // Officially supported as Color(n)WheelIndex since GDTF v0.88
+    inheritFrom: `Color(n)WheelIndex`,
   },
-  Color1Random: {
+  'Color(n)Random': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    // Officially supported as Color1WheelRandom since GDTF v0.88
-    inheritFrom: `Color1WheelRandom`,
+    // Officially supported as Color(n)WheelRandom since GDTF v0.88
+    inheritFrom: `Color(n)WheelRandom`,
   },
-  Color1Select: {
+  'Color(n)Select': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Color1`,
+    inheritFrom: `Color(n)`,
   },
-  Color1Spin: {
-    // Renamed to Color1WheelSpin in GDTF v0.88
-    inheritFrom: `Color1WheelSpin`,
-  },
-  Color2Spin: {
-    // Renamed to Color2WheelSpin in GDTF v0.88
-    inheritFrom: `Color2WheelSpin`,
-  },
-  Color3Spin: {
-    // Renamed to Color3WheelSpin in GDTF v0.88
-    inheritFrom: `Color3WheelSpin`,
-  },
-  Color4Spin: {
-    // Renamed to Color4WheelSpin in GDTF v0.88
-    inheritFrom: `Color4WheelSpin`,
+  'Color(n)Spin': {
+    // Renamed to Color(n)WheelSpin in GDTF v0.88
+    inheritFrom: `Color(n)WheelSpin`,
   },
   ColorControl: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -74,108 +62,35 @@ const deprecatedGdtfAttributes = {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `IntensityMSpeed`,
   },
-  ColorRGB1: {
-    // Controls the intensity of the fixture's red emitters or its cyan CMY-mixing feature.
-    // Replaced by ColorRGB_R in GDTF v0.88
+  'ColorRGB(n)': {
+    // Controls the intensity of the fixture's color emitters.
+    // Replaced by ColorRGB_* in GDTF v0.88
     oflType: `ColorIntensity`,
     oflProperty: `brightness`,
     defaultPhysicalEntity: `ColorComponent`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = guessColorComponentName(gdtfCapability, `Red`, `Cyan`);
+    beforePhysicalPropertyHook(capability, gdtfCapability, attributeName) {
+      const rgbNumber = parseInt(attributeName.slice(8), 10);
+
+      if (rgbNumber === 1) {
+        capability.color = guessColorComponentName(gdtfCapability, `Red`, `Cyan`);
+      }
+      else if (rgbNumber === 2) {
+        capability.color = guessColorComponentName(gdtfCapability, `Green`, `Magenta`);
+      }
+      else if (rgbNumber === 3) {
+        capability.color = guessColorComponentName(gdtfCapability, `Blue`, `Yellow`);
+      }
+      else if (rgbNumber === 4) {
+        capability.color = `Amber`;
+      }
+      else if (rgbNumber === 5) {
+        capability.color = `White`;
+      }
+      else {
+        // This is most likely wrong but enables the user to make an informed choice.
+        capability.color = gdtfCapability._channelFunction._attribute.$.Pretty || `Unknown`;
+      }
     },
-  },
-  ColorRGB2: {
-    // Controls the intensity of the fixture's green emitters or its magenta CMY-mixing feature.
-    // Replaced by ColorRGB_G in GDTF v0.88
-    inheritFrom: `ColorRGB1`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = guessColorComponentName(gdtfCapability, `Green`, `Magenta`);
-    },
-  },
-  ColorRGB3: {
-    // Controls the intensity of the fixture's blue emitters or its yellow CMY-mixing feature.
-    // Replaced by ColorRGB_B in GDTF v0.88
-    inheritFrom: `ColorRGB1`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = guessColorComponentName(gdtfCapability, `Blue`, `Yellow`);
-    },
-  },
-  ColorRGB4: {
-    // Controls the intensity of the fixture's amber emitters.
-    // Replaced by ColorRGB_C in GDTF v0.88
-    inheritFrom: `ColorRGB1`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = `Amber`;
-    },
-  },
-  ColorRGB5: {
-    // Controls the intensity of the fixture's white emitters.
-    // Replaced by ColorRGB_M in GDTF v0.88
-    inheritFrom: `ColorRGB1`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = `White`;
-    },
-  },
-  ColorRGB6: {
-    // Controls the intensity of the fixture's color emitters.
-    // Replaced by ColorRGB_Y in GDTF v0.88
-    oflType: `ColorIntensity`,
-    oflProperty: `brightness`,
-    defaultPhysicalEntity: `ColorComponent`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      // This is most likely wrong but enables the user to make an informed choice.
-      capability.color = gdtfCapability._channelFunction._attribute.$.Pretty || `Unknown`;
-    },
-  },
-  ColorRGB7: {
-    // Controls the intensity of the fixture's color emitters.
-    // Replaced by ColorRGB_RY in GDTF v0.88
-    inheritFrom: `ColorRGB6`,
-  },
-  ColorRGB8: {
-    // Controls the intensity of the fixture's color emitters.
-    // Replaced by ColorRGB_GY in GDTF v0.88
-    inheritFrom: `ColorRGB6`,
-  },
-  ColorRGB9: {
-    // Controls the intensity of the fixture's color emitters.
-    // Replaced by ColorRGB_GC in GDTF v0.88
-    inheritFrom: `ColorRGB6`,
-  },
-  ColorRGB10: {
-    // Controls the intensity of the fixture's color emitters.
-    // Replaced by ColorRGB_BC in GDTF v0.88
-    inheritFrom: `ColorRGB6`,
-  },
-  ColorRGB11: {
-    // Controls the intensity of the fixture's color emitters.
-    // Replaced by ColorRGB_BM in GDTF v0.88
-    inheritFrom: `ColorRGB6`,
-  },
-  ColorRGB12: {
-    // Controls the intensity of the fixture's color emitters.
-    // Replaced by ColorRGB_RM in GDTF v0.88
-    inheritFrom: `ColorRGB6`,
-  },
-  ColorRGB13: {
-    // Controls the intensity of the fixture's color emitters.
-    // Replaced by ColorRGB_W in GDTF v0.88
-    inheritFrom: `ColorRGB6`,
-  },
-  ColorRGB14: {
-    // Controls the intensity of the fixture's color emitters.
-    // Replaced by ColorRGB_WW in GDTF v0.88
-    inheritFrom: `ColorRGB6`,
-  },
-  ColorRGB15: {
-    // Controls the intensity of the fixture's color emitters.
-    // Replaced by ColorRGB_CW in GDTF v0.88
-    inheritFrom: `ColorRGB6`,
-  },
-  ColorRGB16: {
-    // Controls the intensity of the fixture's color emitters.
-    // Replaced by ColorRGB_UV in GDTF v0.88
-    inheritFrom: `ColorRGB6`,
   },
   ControlAutofocus: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -250,15 +165,11 @@ const deprecatedGdtfAttributes = {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `Effects`,
   },
-  EffectsPar1: {
+  'EffectsPar(n)': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     oflType: `EffectParameter`,
     oflProperty: `parameter`,
     defaultPhysicalEntity: `None`,
-  },
-  EffectsPar2: {
-    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `EffectsPar1`,
   },
   EffectsPos: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -325,148 +236,90 @@ const deprecatedGdtfAttributes = {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `IrisMSpeed`,
   },
-  Gobo1Audio: {
+  'Gobo(n)Audio': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     // Officially supported as Gobo1WheelAudio since GDTF v0.88
     inheritFrom: `Gobo1WheelAudio`,
   },
-  Gobo1PosRotation: {
-    // Renamed to Gobo1PosRotate in GDTF v0.88
-    inheritFrom: `Gobo1PosRotate`,
-  },
-  Gobo1Random: {
+  'Gobo(n)GoboIndex': undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  'Gobo(n)GoboShakeIndex': undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  'Gobo(n)PosIndex': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    // Officially supported as Gobo1WheelRandom since GDTF v0.88
-    inheritFrom: `Gobo1WheelRandom`,
+    inheritFrom: `Gobo(n)Pos`,
   },
-  Gobo1RandomAudio: {
+  'Gobo(n)PosRotation': {
+    // Renamed to Gobo(n)PosRotate in GDTF v0.88
+    inheritFrom: `Gobo(n)PosRotate`,
+  },
+  'Gobo(n)PosSpin': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1WheelAudio`,
+    inheritFrom: `Gobo(n)PosRotate`,
   },
-  Gobo1Select: {
+  'Gobo(n)Random': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1`,
+    // Officially supported as Gobo(n)WheelRandom since GDTF v0.88
+    inheritFrom: `Gobo(n)WheelRandom`,
   },
-  Gobo1Shake: {
-    // Renamed to Gobo1WheelShake in GDTF v0.88
-    inheritFrom: `Gobo1WheelShake`,
-  },
-  Gobo1Spin: {
-    // Renamed to Gobo1WheelSpin in GDTF v0.88
-    inheritFrom: `Gobo1WheelSpin`,
-  },
-  Gobo1WheelShake: {
+  'Gobo(n)RandomAudio': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1Shake`, // there seems to be no GDTF attribute to specify wheel slot shake, so both Gobo1Shake and Gobo1WheelShake shake the wheel
+    inheritFrom: `Gobo(n)WheelAudio`,
   },
-  Gobo1WheelSpin: {
+  'Gobo(n)Select': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1Spin`,
+    inheritFrom: `Gobo(n)`,
   },
-  Gobo2GoboIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Gobo2GoboShakeIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Gobo2PosIndex: {
+  'Gobo(n)SelectIndex': undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  'Gobo(n)Shake': {
+    // Renamed to Gobo(n)WheelShake in GDTF v0.88
+    inheritFrom: `Gobo(n)WheelShake`,
+  },
+  'Gobo(n)SelectShakeIndex': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1Pos`,
+    inheritFrom: `Gobo(n)SelectShake`,
   },
-  Gobo2PosRotation: {
-    // Renamed to Gobo2PosRotate in GDTF v0.88
-    inheritFrom: `Gobo2PosRotate`,
+  'Gobo(n)SelectShakeSpin': undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  'Gobo(n)Spin': {
+    // Renamed to Gobo(n)WheelSpin in GDTF v0.88
+    inheritFrom: `Gobo(n)WheelSpin`,
   },
-  Gobo2PosSpin: {
-    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1PosRotation`,
+  GoboWheelMSpeed: {
+    // Renamed to GoboWheel(n)MSpeed in GDTF v1.0
+    inheritFrom: `GoboWheel(n)MSpeed`,
   },
-  Gobo2Random: {
-    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1Random`,
-  },
-  Gobo2SelectIndex: {
-    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1SelectIndex`,
-  },
-  Gobo2SelectShakeIndex: {
-    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1SelectShakeIndex`,
-  },
-  Gobo2SelectShakeSpin: {
-    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1SelectShakeSpin`,
-  },
-  Gobo2SelectSpin: {
-    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1SelectSpin`,
-  },
-  Gobo2Shake: {
-    // Renamed to Gobo2WheelShake in GDTF v0.88
-    inheritFrom: `Gobo2WheelShake`,
-  },
-  Gobo2Spin: {
-    // Renamed to Gobo2WheelSpin in GDTF v0.88
-    inheritFrom: `Gobo2WheelSpin`,
-  },
-  Gobo2WheelSpin: {
-    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1WheelSpin`,
-  },
-  Gobo3PosRotation: {
-    // Renamed to Gobo3PosRotate in GDTF v0.88
-    inheritFrom: `Gobo3PosRotate`,
-  },
-  Gobo3Shake: {
-    // Renamed to Gobo3WheelShake in GDTF v0.88
-    inheritFrom: `Gobo3WheelShake`,
-  },
-  Gobo3Spin: {
-    // Renamed to Gobo3WheelSpin in GDTF v0.88
-    inheritFrom: `Gobo3WheelSpin`,
+  Haze: {
+    // Renamed to Haze(n) in GDTF v1.0
+    inheritFrom: `Haze(n)`,
   },
   Prism: {
-    // Renamed to Prism1 in GDTF v0.88
-    inheritFrom: `Prism1`,
+    // Renamed to Prism(n) in GDTF v0.88
+    inheritFrom: `Prism(n)`,
   },
   PrismPos: {
-    // Renamed to Prism1Pos in GDTF v0.88
-    inheritFrom: `Prism1Pos`,
+    // Renamed to Prism(n)Pos in GDTF v0.88
+    inheritFrom: `Prism(n)Pos`,
   },
   PrismPosIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   PrismPosRotation: {
-    // Renamed to Prism1PosRotate in GDTF v0.88
-    inheritFrom: `Prism1PosRotate`,
+    // Renamed to Prism(n)PosRotate in GDTF v0.88
+    inheritFrom: `Prism(n)PosRotate`,
   },
   PrismPrismIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Prism1PosIndex: {
+  'Prism(n)PosIndex': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Prism1Pos`,
+    inheritFrom: `Prism(n)Pos`,
   },
-  Prism1PosSpin: {
+  'Prism(n)PosRotation': {
+    // Renamed to Prism(n)PosRotate in GDTF v0.88
+    inheritFrom: `Prism(n)PosRotate`,
+  },
+  'Prism(n)PosSpin': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Prism1PosRotate`,
+    inheritFrom: `Prism(n)PosRotate`,
   },
-  Prism1SelectIndex: {
+  'Prism(n)PrismIndex': undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  'Prism(n)SelectIndex': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Prism1`,
-  },
-  Prism1SelectSpin: {
-    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Prism1`,
-  },
-  Prism2PosIndex: {
-    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Prism2Pos`,
-  },
-  Prism2PosRotation: {
-    // Renamed to Prism2PosRotate in GDTF v0.88
-    inheritFrom: `Prism2PosRotate`,
-  },
-  Prism2PosSpin: {
-    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Prism2PosRotate`,
-  },
-  Prism2PrismIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Prism2SelectIndex: {
-    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Prism2`,
+    inheritFrom: `Prism(n)`,
   },
   PrismMSpeed: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
