@@ -75,7 +75,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     importPlugin: {
       plugin: `gdtf`,
       date: timestamp,
-      comment: `GDTF fixture type ID: ${gdtfFixture.$.FixtureTypeID}`,
+      comment: `GDTF v${xml.GDTF.$.DataVersion} fixture type ID: ${gdtfFixture.$.FixtureTypeID}`,
     },
   };
 
