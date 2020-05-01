@@ -261,6 +261,10 @@ const deprecatedGdtfAttributes = {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `Gobo1Pos`,
   },
+  Gobo2PosRotation: {
+    // Renamed to Gobo2PosRotate in GDTF v0.88
+    inheritFrom: `Gobo2PosRotate`,
+  },
   Gobo2PosSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `Gobo1PosRotation`,
@@ -285,9 +289,29 @@ const deprecatedGdtfAttributes = {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `Gobo1SelectSpin`,
   },
+  Gobo2Shake: {
+    // Renamed to Gobo2WheelShake in GDTF v0.88
+    inheritFrom: `Gobo2WheelShake`,
+  },
+  Gobo2Spin: {
+    // Renamed to Gobo2WheelSpin in GDTF v0.88
+    inheritFrom: `Gobo2WheelSpin`,
+  },
   Gobo2WheelSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `Gobo1WheelSpin`,
+  },
+  Gobo3PosRotation: {
+    // Renamed to Gobo3PosRotate in GDTF v0.88
+    inheritFrom: `Gobo3PosRotate`,
+  },
+  Gobo3Shake: {
+    // Renamed to Gobo3WheelShake in GDTF v0.88
+    inheritFrom: `Gobo3WheelShake`,
+  },
+  Gobo3Spin: {
+    // Renamed to Gobo3WheelSpin in GDTF v0.88
+    inheritFrom: `Gobo3WheelSpin`,
   },
   PrismPosIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   PrismPrismIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd

@@ -810,48 +810,104 @@ const gdtfAttributes = {
     inheritFrom: `Gobo1`,
   },
   Gobo2Pos: {
-    // Controls the angle of indexed rotation of gobos in gobo wheel 2.
+    // Controls angle of indexed rotation of gobos in gobo wheel 2. This is the main attribute of gobo wheel’s 2 wheel slot control.
     inheritFrom: `Gobo1Pos`,
   },
-  Gobo2PosRotation: {
+  Gobo2PosRotate: {
     // Controls the speed and direction of continuous rotation of gobos in gobo wheel 2.
-    inheritFrom: `Gobo1PosRotation`,
+    inheritFrom: `Gobo1PosRotate`,
   },
-  Gobo2Shake: {
-    // Control the frequency of the shake of gobo wheel 2.
-    inheritFrom: `Gobo1Shake`,
+  Gobo2PosShake: {
+    // Controls frequency of the shake of gobos in gobo wheel 2. (since v0.88)
+    inheritFrom: `Gobo1PosShake`,
   },
-  Gobo2Spin: {
-    // Controls the speed and direction of the continuous rotation of gobo wheel 2.
-    inheritFrom: `Gobo1Spin`,
+  Gobo2SelectEffects: {
+    // Selects gobos which run effects in gobo wheel 2. (since GDTF v0.88)
+    inheritFrom: `Gobo1SelectEffects`,
+  },
+  Gobo2SelectShake: {
+    // Selects gobos which shake in gobo wheel 2 and controls the frequency of the gobo’s shake within the same channel function. (since GDTF v0.88)
+    inheritFrom: `Gobo1SelectShake`,
+  },
+  Gobo2SelectSpin: {
+    // Selects gobos whose rotation is continuous in gobo wheel 2 and controls the angular speed of the gobo’s spin within the same channel function. (since GDTF v0.88)
+    inheritFrom: `Gobo1SelectSpin`,
+  },
+  Gobo2WheelAudio: {
+    // Controls audio-controlled functionality of gobo wheel 2. (since v0.88)
+    inheritFrom: `Gobo1WheelAudio`,
+  },
+  Gobo2WheelIndex: {
+    // Controls angle of indexed rotation of gobo wheel 2. (since v0.88)
+    inheritFrom: `Gobo1WheelIndex`,
   },
   Gobo2WheelMode: {
     // Changes control between selecting, indexing, and rotating the gobos of gobo wheel 2.
     inheritFrom: `Gobo1WheelMode`,
   },
+  Gobo2WheelRandom: {
+    // Controls speed of gobo wheel´s 2 random gobo slot selection. (since v0.88)
+    inheritFrom: `Gobo1WheelRandom`,
+  },
+  Gobo2WheelShake: {
+    // Controls frequency of the shake of gobo wheel 2.
+    inheritFrom: `Gobo1WheelShake`,
+  },
+  Gobo2WheelSpin: {
+    // Controls the speed and direction of continuous rotation of gobo wheel 2.
+    inheritFrom: `Gobo1WheelSpin`,
+  },
   Gobo3: {
-    // Selects gobos in the fixture's gobo wheel 3.
+    // The fixture’s gobo wheel 3. This is the main attribute of gobo wheel’s 3 wheel control. Selects gobos in gobo wheel 3. A different channel function sets the angle of the indexed position in the selected gobo or the angular speed of its continuous rotation.
     inheritFrom: `Gobo1`,
   },
   Gobo3Pos: {
-    // Controls the angle of indexed rotation of gobos in gobo wheel 3.
+    // Controls angle of indexed rotation of gobos in gobo wheel 3. This is the main attribute of gobo wheel’s 3 wheel slot control.
     inheritFrom: `Gobo1Pos`,
   },
-  Gobo3PosRotation: {
-    // Controls the speed and direction of the continuous rotation of gobos in gobo wheel 3.
-    inheritFrom: `Gobo1PosRotation`,
+  Gobo3PosShake: {
+    // Controls frequency of the shake of gobos in gobo wheel 3. (since v0.88)
+    inheritFrom: `Gobo1PosShake`,
   },
-  Gobo3Shake: {
-    // Control the frequency of the shake of gobo wheel 3.
-    inheritFrom: `Gobo1Shake`,
+  Gobo3PosRotate: {
+    // Controls the speed and direction of continuous rotation of gobos in gobo wheel 3.
+    inheritFrom: `Gobo1PosRotate`,
   },
-  Gobo3Spin: {
-    // Controls the speed and direction of the continuous rotation of gobo wheel 3.
-    inheritFrom: `Gobo1Spin`,
+  Gobo3SelectEffects: {
+    // Selects gobos which run effects in gobo wheel 3. (since v0.88)
+    inheritFrom: `Gobo1SelectEffects`,
+  },
+  Gobo3SelectShake: {
+    // Selects gobos which shake in gobo wheel 3 and controls the frequency of the gobo’s shake within the same channel function. (since v0.88)
+    inheritFrom: `Gobo1SelectShake`,
+  },
+  Gobo3SelectSpin: {
+    // Selects gobos whose rotation is continuous in gobo wheel 3 and controls the angular speed of the gobo’s spin within the same channel function. (since v0.88)
+    inheritFrom: `Gobo1SelectSpin`,
+  },
+  Gobo3WheelAudio: {
+    // Controls audio-controlled functionality of gobo wheel 3. (since v0.88)
+    inheritFrom: `Gobo1WheelAudio`,
+  },
+  Gobo3WheelIndex: {
+    // Controls angle of indexed rotation of gobo wheel 3. (since v0.88)
+    inheritFrom: `Gobo1WheelIndex`,
   },
   Gobo3WheelMode: {
     // Changes control between selecting, indexing, and rotating the gobos of gobo wheel 3.
     inheritFrom: `Gobo1WheelMode`,
+  },
+  Gobo3WheelShake: {
+    // Controls frequency of the shake of gobo wheel 3. (since v0.88)
+    inheritFrom: `Gobo1WheelShake`,
+  },
+  Gobo3WheelSpin: {
+    // Controls the speed and direction of continuous rotation of gobo wheel 3. (since v0.88)
+    inheritFrom: `Gobo1WheelSpin`,
+  },
+  Gobo3WheelRandom: {
+    // Controls speed of gobo wheel´s 3 random gobo slot selection. (since v0.88)
+    inheritFrom: `Gobo1WheelRandom`,
   },
   GoboWheelMSpeed: {
     // Movement speed of the fixture's gobo wheel.
