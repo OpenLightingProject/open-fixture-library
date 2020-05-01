@@ -254,6 +254,9 @@ const gdtfAttributes = {
     },
   },
   Blower: undefined, // Fog or hazer‘s blower feature.
+  'CIE_Brightness': undefined, // Controls the fixture's CIE 1931 color attribute regarding the brightness (Y).
+  'CIE_X': undefined, // Controls the fixture's CIE 1931 color attribute regarding the chromaticity x.
+  'CIE_Y': undefined, // Controls the fixture's CIE 1931 color attribute regarding the chromaticity y.
   Color1: {
     // The fixture’s color wheel 1. Selects colors in color wheel 1. This is the main attribute of color wheel’s 1 wheel control.
     oflType: `WheelSlot`,
