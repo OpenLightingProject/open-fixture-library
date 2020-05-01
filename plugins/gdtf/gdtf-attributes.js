@@ -594,7 +594,7 @@ const gdtfAttributes = {
   },
   DisplayIntensity: undefined, // Adjusts intensity of display (since GDTF v1.0)
   DMXInput: undefined, // Selects DMX Input (since GDTF v1.0)
-  Effects: {
+  'Effects(n)': {
     // Generically predefined macros and effects of a fixture.
     oflType: `Effect`,
     oflProperty: `speed`,
@@ -604,13 +604,34 @@ const gdtfAttributes = {
       gdtfCapability.$.Name = undefined;
     },
   },
-  EffectsFade: {
+  'Effects(n)Adjust(m)': {
+    // Controls parameter (m) of effect (n) (since GDTF v1.0)
+    oflType: `EffectParameter`,
+    oflProperty: `parameter`,
+    defaultPhysicalEntity: `None`,
+  },
+  'Effects(n)Fade': {
     // Snapping or smooth look of running effects.
     oflType: `EffectDuration`,
     oflProperty: `duration`,
     defaultPhysicalEntity: `Time`,
   },
-  EffectsRate: {
+  'Effects(n)Pos': {
+    // Controls angle of indexed rotation of slot/effect in effect wheel/macro (n). This is the main attribute of effect wheel/macro (n) slot/effect control. (since GDTF v1.0)
+    oflType: `Rotation`,
+    oflProperty: `angle`,
+    defaultPhysicalEntity: `Angle`,
+  },
+  'Effects(n)PosRotate': {
+    // Controls speed and direction of slot/effect in effect wheel (n). (since GDTF v1.0)
+    oflType: `Rotation`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `AngularSpeed`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      normalizeAngularSpeedDirection(gdtfCapability);
+    },
+  },
+  'Effects(n)Rate': {
     // Speed of running effects.
     oflType: `EffectSpeed`,
     oflProperty: guessSpeedOrDuration,
@@ -623,18 +644,6 @@ const gdtfAttributes = {
     },
   },
   EffectsSync: undefined, // Sets offset between running effects and effects 2.
-  Effects2: {
-    // Generically predefined macros and effects of a fixture (2).
-    inheritFrom: `Effects`,
-  },
-  Effects2Fade: {
-    // Snapping or smooth look of running effects (2).
-    inheritFrom: `EffectsFade`,
-  },
-  Effects2Rate: {
-    // Speed of running effects (2).
-    inheritFrom: `EffectsRate`,
-  },
   Fan: {
     // Fog or hazer's Fan feature.
     oflType: `Rotation`,

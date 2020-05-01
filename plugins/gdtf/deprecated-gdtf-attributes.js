@@ -246,6 +246,14 @@ const deprecatedGdtfAttributes = {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `CTO`,
   },
+  Effects: {
+    // Renamed to Effects(n) in GDTF v1.0
+    inheritFrom: `Effects(n)`,
+  },
+  EffectsFade: {
+    // Renamed to Effects(n)Fade in GDTF v1.0
+    inheritFrom: `Effects(n)Fade`,
+  },
   EffectsIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   EffectsMacro: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -253,15 +261,13 @@ const deprecatedGdtfAttributes = {
   },
   'EffectsPar(n)': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    oflType: `EffectParameter`,
-    oflProperty: `parameter`,
-    defaultPhysicalEntity: `None`,
+    // Officially supported as Effects(n)Adjust(m) since GDTF v1.0
+    inheritFrom: `Effects(n)Adjust(m)`,
   },
   EffectsPos: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    oflType: `Rotation`,
-    oflProperty: `angle`,
-    defaultPhysicalEntity: `Angle`,
+    // Officially supported as Effects(n)Pos since GDTF v1.0
+    inheritFrom: `Effects(n)Pos`,
   },
   EffectsPosIndex: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -269,12 +275,12 @@ const deprecatedGdtfAttributes = {
   },
   EffectsPosSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    oflType: `Rotation`,
-    oflProperty: `speed`,
-    defaultPhysicalEntity: `AngularSpeed`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      normalizeAngularSpeedDirection(gdtfCapability);
-    },
+    // Officially supported as Effects(n)PosRotate since GDTF v1.0
+    inheritFrom: `Effects(n)PosRotate`,
+  },
+  EffectsRate: {
+    // Renamed to Effects(n)Rate in GDTF v1.0
+    inheritFrom: `Effects(n)Rate`,
   },
   EffectsRateIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   EffectsSelectIndex: {
@@ -292,15 +298,7 @@ const deprecatedGdtfAttributes = {
   Effects2Macro: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   Effects2Par2: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `EffectsPar2`,
-  },
-  Effects2Pos: {
-    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `EffectsPos`,
-  },
-  Effects3: {
-    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Effects`,
+    inheritFrom: `EffectsPar(n)`,
   },
   Frost3: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
