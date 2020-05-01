@@ -108,6 +108,70 @@ const deprecatedGdtfAttributes = {
       }
     },
   },
+  'ColorRGB_B': {
+    // Renamed to ColorAdd_B in GDTF v1.0
+    inheritFrom: `ColorAdd_B`,
+  },
+  'ColorRGB_BC': {
+    // Renamed to ColorAdd_BC in GDTF v1.0
+    inheritFrom: `ColorAdd_BC`,
+  },
+  'ColorRGB_BM': {
+    // Renamed to ColorAdd_BM in GDTF v1.0
+    inheritFrom: `ColorAdd_BM`,
+  },
+  'ColorRGB_C': {
+    // Renamed to ColorAdd_C in GDTF v1.0
+    inheritFrom: `ColorAdd_C`,
+  },
+  'ColorRGB_CW': {
+    // Renamed to ColorAdd_CW in GDTF v1.0
+    inheritFrom: `ColorAdd_CW`,
+  },
+  'ColorRGB_G': {
+    // Renamed to ColorAdd_G in GDTF v1.0
+    inheritFrom: `ColorAdd_G`,
+  },
+  'ColorRGB_GC': {
+    // Renamed to ColorAdd_GC in GDTF v1.0
+    inheritFrom: `ColorAdd_GC`,
+  },
+  'ColorRGB_GY': {
+    // Renamed to ColorAdd_GY in GDTF v1.0
+    inheritFrom: `ColorAdd_GY`,
+  },
+  'ColorRGB_M': {
+    // Renamed to ColorAdd_M in GDTF v1.0
+    inheritFrom: `ColorAdd_M`,
+  },
+  'ColorRGB_R': {
+    // Renamed to ColorAdd_R in GDTF v1.0
+    inheritFrom: `ColorAdd_R`,
+  },
+  'ColorRGB_RM': {
+    // Renamed to ColorAdd_RM in GDTF v1.0
+    inheritFrom: `ColorAdd_RM`,
+  },
+  'ColorRGB_RY': {
+    // Renamed to ColorAdd_RY in GDTF v1.0
+    inheritFrom: `ColorAdd_RY`,
+  },
+  'ColorRGB_UV': {
+    // Renamed to ColorAdd_UV in GDTF v1.0
+    inheritFrom: `ColorAdd_UV`,
+  },
+  'ColorRGB_W': {
+    // Renamed to ColorAdd_W in GDTF v1.0
+    inheritFrom: `ColorAdd_W`,
+  },
+  'ColorRGB_WW': {
+    // Renamed to ColorAdd_WW in GDTF v1.0
+    inheritFrom: `ColorAdd_WW`,
+  },
+  'ColorRGB_Y': {
+    // Renamed to ColorAdd_Y in GDTF v1.0
+    inheritFrom: `ColorAdd_Y`,
+  },
   ControlAutofocus: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `Control`,

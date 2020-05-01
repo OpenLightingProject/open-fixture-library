@@ -286,6 +286,132 @@ const gdtfAttributes = {
       normalizeAngularSpeedDirection(gdtfCapability);
     },
   },
+  'ColorAdd_B': {
+    // Controls the intensity of the fixture's blue emitters for direct additive color mixing. (since GDTF v1.0)
+    oflType: `ColorIntensity`,
+    oflProperty: `brightness`,
+    defaultPhysicalEntity: `ColorComponent`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Blue`;
+    },
+  },
+  'ColorAdd_BC': {
+    // Controls the intensity of the fixture's light-blue emitters for direct additive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_B`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Blue`;
+    },
+    afterPhysicalPropertyHook(capability, gdtfCapability) {
+      capability.comment = `Light-Blue`;
+    },
+  },
+  'ColorAdd_BM': {
+    // Controls the intensity of the fixture's purple emitters for direct additive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_B`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Indigo`;
+    },
+    afterPhysicalPropertyHook(capability, gdtfCapability) {
+      capability.comment = `Purple`;
+    },
+  },
+  'ColorAdd_C': {
+    // Controls the intensity of the fixture's cyan emitters for direct additive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_B`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Cyan`;
+    },
+  },
+  'ColorAdd_CW': {
+    // Controls the intensity of the fixture's cool white emitters for direct additive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_B`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Cold White`;
+    },
+  },
+  'ColorAdd_G': {
+    // Controls the intensity of the fixture's green emitters for direct additive color mixing (since GDTF v1.0)
+    inheritFrom: `ColorAdd_B`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Green`;
+    },
+  },
+  'ColorAdd_GC': {
+    // Controls the intensity of the fixture's blue-green emitters for direct additive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_B`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Blue`;
+    },
+    afterPhysicalPropertyHook(capability, gdtfCapability) {
+      capability.comment = `Blue-Green`;
+    },
+  },
+  'ColorAdd_GY': {
+    // Controls the intensity of the fixture's lime emitters for direct additive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_B`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Lime`;
+    },
+  },
+  'ColorAdd_M': {
+    // Controls the intensity of the fixture's magenta emitters for direct additive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_B`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Magenta`;
+    },
+  },
+  'ColorAdd_R': {
+    // Controls the intensity of the fixture's red emitters for direct additive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_B`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Red`;
+    },
+  },
+  'ColorAdd_RM': {
+    // Controls the intensity of the fixture's pink emitters for direct additive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_B`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Magenta`;
+    },
+    afterPhysicalPropertyHook(capability, gdtfCapability) {
+      capability.comment = `Pink`;
+    },
+  },
+  'ColorAdd_RY': {
+    // Controls the intensity of the fixture's amber emitters for direct additive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_B`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Amber`;
+    },
+  },
+  'ColorAdd_UV': {
+    // Controls the intensity of the fixture's UV emitters for direct additive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_B`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `UV`;
+    },
+  },
+  'ColorAdd_W': {
+    // Controls the intensity of the fixture's white emitters for direct additive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_B`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `White`;
+    },
+  },
+  'ColorAdd_WW': {
+    // Controls the intensity of the fixture's warm white emitters for direct additive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_B`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Warm White`;
+    },
+  },
+  'ColorAdd_Y': {
+    // Controls the intensity of the fixture's yellow emitters for direct additive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_B`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Yellow`;
+    },
+  },
   ColorEffects: {
     // Selects predefined color effects built into the fixture.
     inheritFrom: `Effects`,
@@ -331,132 +457,6 @@ const gdtfAttributes = {
   ColorMixReset: {
     // Resets the fixture's color mixing system.
     inheritFrom: `BeamReset`,
-  },
-  'ColorRGB_R': {
-    // Controls the intensity of the fixture's red emitters or its cyan CMY-mixing feature. (since GDTF v0.88)
-    oflType: `ColorIntensity`,
-    oflProperty: `brightness`,
-    defaultPhysicalEntity: `ColorComponent`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = `Red`;
-    },
-  },
-  'ColorRGB_G': {
-    // Controls the intensity of the fixture's green emitters or its magenta CMY-mixing feature. (since GDTF v0.88)
-    inheritFrom: `ColorRGB_R`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = `Green`;
-    },
-  },
-  'ColorRGB_B': {
-    // Controls the intensity of the fixture's blue emitters or its yellow CMY-mixing feature. (since GDTF v0.88)
-    inheritFrom: `ColorRGB_R`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = `Blue`;
-    },
-  },
-  'ColorRGB_C': {
-    // Controls the intensity of the fixture's cyan emitters. (since GDTF v0.88)
-    inheritFrom: `ColorRGB_R`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = `Cyan`;
-    },
-  },
-  'ColorRGB_M': {
-    // Controls the intensity of the fixture's magenta emitters. (since GDTF v0.88)
-    inheritFrom: `ColorRGB_R`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = `Magenta`;
-    },
-  },
-  'ColorRGB_Y': {
-    // Controls the intensity of the fixture's yellow emitters. (since GDTF v0.88)
-    inheritFrom: `ColorRGB_R`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = `Yellow`;
-    },
-  },
-  'ColorRGB_RY': {
-    // Controls the intensity of the fixture's amber emitters. (since GDTF v0.88)
-    inheritFrom: `ColorRGB_R`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = `Amber`;
-    },
-  },
-  'ColorRGB_GY': {
-    // Controls the intensity of the fixture's lime emitters. (since GDTF v0.88)
-    inheritFrom: `ColorRGB_R`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = `Lime`;
-    },
-  },
-  'ColorRGB_GC': {
-    // Controls the intensity of the fixture's blue-green emitters. (since GDTF v0.88)
-    inheritFrom: `ColorRGB_R`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = `Blue`;
-    },
-    afterPhysicalPropertyHook(capability, gdtfCapability) {
-      capability.comment = `Blue-Green`;
-    },
-  },
-  'ColorRGB_BC': {
-    // Controls the intensity of the fixture's light-blue emitters. (since GDTF v0.88)
-    inheritFrom: `ColorRGB_R`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = `Blue`;
-    },
-    afterPhysicalPropertyHook(capability, gdtfCapability) {
-      capability.comment = `Light-Blue`;
-    },
-  },
-  'ColorRGB_BM': {
-    // Controls the intensity of the fixture's purple emitters. (since GDTF v0.88)
-    inheritFrom: `ColorRGB_R`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = `Indigo`;
-    },
-    afterPhysicalPropertyHook(capability, gdtfCapability) {
-      capability.comment = `Purple`;
-    },
-  },
-  'ColorRGB_RM': {
-    // Controls the intensity of the fixture's pink emitters. (since GDTF v0.88)
-    inheritFrom: `ColorRGB_R`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = `Magenta`;
-    },
-    afterPhysicalPropertyHook(capability, gdtfCapability) {
-      capability.comment = `Pink`;
-    },
-  },
-  'ColorRGB_W': {
-    // Controls the intensity of the fixture's white emitters. (since GDTF v0.88)
-    inheritFrom: `ColorRGB_R`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = `White`;
-    },
-  },
-  'ColorRGB_WW': {
-    // Controls the intensity of the fixture's warm white emitters. (since GDTF v0.88)
-    inheritFrom: `ColorRGB_R`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = `Warm White`;
-    },
-  },
-  'ColorRGB_CW': {
-    // Controls the intensity of the fixture's cool white emitters. (since GDTF v0.88)
-    inheritFrom: `ColorRGB_R`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = `Cold White`;
-    },
-  },
-  'ColorRGB_UV': {
-    // Controls the intensity of the fixture's UV emitters. (since GDTF v0.88)
-    inheritFrom: `ColorRGB_R`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = `UV`;
-    },
   },
   ColorWheelReset: {
     // Resets the fixture's color wheel.
