@@ -1021,6 +1021,14 @@ const gdtfAttributes = {
     oflProperty: null,
     defaultPhysicalEntity: `None`,
   },
+  'Prism(n)Macro': {
+    // Macro functions of prism wheel (n).
+    inheritFrom: `Effects(n)`,
+  },
+  'Prism(n)MSpeed': {
+    // Movement speed of the fixture's prism wheel (n).
+    inheritFrom: `IntensityMSpeed`,
+  },
   'Prism(n)Pos': {
     // Controls angle of indexed rotation of prisms in prism wheel (n). This is the main attribute of prism wheel’s 1 wheel slot control.
     oflType: `PrismRotation`,
@@ -1040,9 +1048,14 @@ const gdtfAttributes = {
     // Selects prisms whose rotation is continuous in prism wheel (n) and controls the angular speed of the prism’s spin within the same channel function. (since GDTF v0.88)
     inheritFrom: `Prism(n)PosRotate`,
   },
+  ReflectorAdjust: undefined, // Movement speed of the fixture's frost.
   ShaperMacros: {
     // Predefined presets for shaper positions.
-    inheritFrom: `Effects`,
+    inheritFrom: `Effects(n)`,
+  },
+  ShaperMacrosSpeed: {
+    // Speed of predefined effects on shapers,
+    inheritFrom: `Effects(n)Rate`,
   },
   ShaperRot: {
     // Rotates position of blade assembly.
