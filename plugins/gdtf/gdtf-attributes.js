@@ -163,6 +163,11 @@ const gdtfAttributes = {
     oflProperty: `parameter`,
     defaultPhysicalEntity: `Percent`,
   },
+  BeamShaper: undefined, // Activates fixture's beam shaper.
+  BeamShaperMacro: undefined, // Predefined presets for fixture's beam shaper positions.
+  BeamShaperPos: undefined, // Indexing of fixture's beam shaper.
+  BeamShaperPosRotate: undefined, // Continuous rotation of fixture's beam shaper.
+  BlackoutMode: undefined, // Close the light output under certain conditions (movement correction, gobo movement, etc.).
   'Blade(n)A': {
     // 1 of 2 shutters that shape the top/right/bottom/left of the beam.
     oflType: `BladeInsertion`,
