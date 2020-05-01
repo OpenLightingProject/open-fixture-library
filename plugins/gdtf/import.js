@@ -178,17 +178,46 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
    * Adds an RDM section to the OFL fixture and manufacturer if applicable.
    */
   function addRdmInfo() {
-    if (!(`Protocols` in gdtfFixture) || !(`RDM` in gdtfFixture.Protocols[0])) {
+    if (!(`Protocols` in gdtfFixture) || !(`FTRDM` in gdtfFixture.Protocols[0] || `RDM` in gdtfFixture.Protocols[0])) {
       return;
     }
 
-    const rdmData = gdtfFixture.Protocols[0].RDM[0];
+    const rdmData = (gdtfFixture.Protocols[0].FTRDM || gdtfFixture.Protocols[0].RDM)[0];
+    const softwareVersion = getLatestSoftwareVersion();
 
     manufacturer.rdmId = parseInt(rdmData.$.ManufacturerID, 16);
     fixture.rdm = {
       modelId: parseInt(rdmData.$.DeviceModelID, 16),
-      softwareVersion: rdmData.$.SoftwareVersionID,
+      softwareVersion: softwareVersion.name,
     };
+
+    softwareVersion.personalities.forEach(personality => {
+      const index = parseInt(personality.$.Value.replace(`0x`, ``), 16);
+      const mode = followXmlNodeReference(gdtfFixture.DMXModes[0].DMXMode, personality.$.DMXMode);
+      mode._oflRdmPersonalityIndex = index;
+    });
+
+
+    /**
+     * @returns {Object} Name and DMX personalities of the latest RDM software version(both may be undefined).
+     */
+    function getLatestSoftwareVersion() {
+      const maxSoftwareVersion = (rdmData.SoftwareVersionID || []).reduce(
+        (maxVersion, currVersion) => ((maxVersion && maxVersion.$.Value > currVersion.$.Value) ? maxVersion : currVersion),
+      );
+
+      if (maxSoftwareVersion) {
+        return {
+          name: maxSoftwareVersion.Value,
+          personalities: maxSoftwareVersion.DMXPersonality,
+        };
+      }
+
+      return {
+        name: rdmData.$.SoftwareVersionID,
+        personalities: [],
+      };
+    }
   }
 
 
@@ -964,6 +993,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
       return {
         name: gdtfMode.$.Name,
+        rdmPersonalityIndex: gdtfMode._oflRdmPersonalityIndex,
         channels,
       };
     });
