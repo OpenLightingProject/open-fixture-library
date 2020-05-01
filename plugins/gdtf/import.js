@@ -675,11 +675,12 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
         };
 
         const gdtfAttribute = gdtfCapability._channelFunction._attribute;
-        const capabilityTypeData = getCapabilityTypeData(gdtfAttribute.$.Name);
+        const attributeName = gdtfAttribute.$.Name;
+        const capabilityTypeData = getCapabilityTypeData(attributeName);
 
         capability.type = capabilityTypeData.oflType;
 
-        callHook(capabilityTypeData.beforePhysicalPropertyHook, capability, gdtfCapability);
+        callHook(capabilityTypeData.beforePhysicalPropertyHook, capability, gdtfCapability, attributeName);
 
         const oflProperty = getOflProperty(capabilityTypeData, gdtfCapability);
 
@@ -703,7 +704,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
           }
         }
 
-        callHook(capabilityTypeData.afterPhysicalPropertyHook, capability, gdtfCapability);
+        callHook(capabilityTypeData.afterPhysicalPropertyHook, capability, gdtfCapability, attributeName);
 
         if (gdtfCapability.$.Name) {
           capability.comment = gdtfCapability.$.Name;
@@ -735,11 +736,16 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
        * @returns {Object} The capability type data from @file gdtf-attributes.js
        */
       function getCapabilityTypeData(attrName) {
-        const capabilityTypeData = gdtfAttributes[attrName];
+        let capabilityTypeData = gdtfAttributes[attrName];
+
+        if (!capabilityTypeData) {
+          const enumeratedAttributeName = attrName.replace(/\d+/, `(n)`).replace(/\d+/, `(m)`);
+          capabilityTypeData = gdtfAttributes[enumeratedAttributeName];
+        }
 
         if (!capabilityTypeData) {
           return {
-            oflType: `Unknown`, // will trigger an error in the validation
+            oflType: `Unknown (${attrName})`, // will trigger an error in the validation
             oflProperty: `physical`, // will also trigger an error, but the information could be useful
           };
         }
