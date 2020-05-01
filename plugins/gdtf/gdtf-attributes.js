@@ -335,40 +335,76 @@ const gdtfAttributes = {
     },
   },
   Color2: {
-    // Selects colors in the fixture's color wheel 2.
+    // The fixture’s color wheel 2. Selects colors in color wheel 2. This is the main attribute of color wheel’s 2 wheel control.
     inheritFrom: `Color1`,
   },
   Color2Mode: {
     // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 2.
     inheritFrom: `Color1Mode`,
   },
-  Color2Spin: {
-    // Controls the speed and direction of the fixture's color wheel 2.
-    inheritFrom: `Color1Spin`,
+  Color2WheelAudio: {
+    // Controls audio-controlled functionality of color wheel 2 (since GDTF v0.88)
+    inheritFrom: `Color1WheelAudio`,
+  },
+  Color2WheelIndex: {
+    // Controls angle of indexed rotation of color wheel 2 (since GDTF v0.88)
+    inheritFrom: `Color1WheelIndex`,
+  },
+  Color2WheelRandom: {
+    // Controls speed of color wheel´s 2 random color slot selection. (since GDTF v0.88)
+    inheritFrom: `Color1WheelRandom`,
+  },
+  Color2WheelSpin: {
+    // Controls the speed and direction of continuous rotation of color wheel 2.
+    inheritFrom: `Color1WheelSpin`,
   },
   Color3: {
-    // Selects colors in the fixture's color wheel 3.
+    // The fixture’s color wheel 3. Selects colors in color wheel 3. This is the main attribute of color wheel’s 3 wheel control.
     inheritFrom: `Color1`,
   },
   Color3Mode: {
     // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 3.
     inheritFrom: `Color1Mode`,
   },
-  Color3Spin: {
-    // Controls the speed and direction of the fixture's color wheel 3.
-    inheritFrom: `Color1Spin`,
+  Color3WheelAudio: {
+    // Controls audio-controlled functionality of color wheel 3 (since GDTF v0.88)
+    inheritFrom: `Color1WheelAudio`,
+  },
+  Color3WheelIndex: {
+    // Controls angle of indexed rotation of color wheel 3 (since GDTF v0.88)
+    inheritFrom: `Color1WheelIndex`,
+  },
+  Color3WheelRandom: {
+    // Controls speed of color wheel´s 3 random color slot selection. (since GDTF v0.88)
+    inheritFrom: `Color1WheelRandom`,
+  },
+  Color3WheelSpin: {
+    // Controls the speed and direction of continuous rotation of color wheel 3.
+    inheritFrom: `Color1WheelSpin`,
   },
   Color4: {
-    // Selects colors in the fixture's color wheel 4.
+    // The fixture’s color wheel 4. Selects colors in color wheel 4. This is the main attribute of color wheel’s 4 wheel control.
     inheritFrom: `Color1`,
   },
   Color4Mode: {
     // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 4.
     inheritFrom: `Color1Mode`,
   },
-  Color4Spin: {
-    // Controls the speed and direction of the fixture's color wheel 4.
-    inheritFrom: `Color1Spin`,
+  Color4WheelAudio: {
+    // Controls audio-controlled functionality of color wheel 4 (since GDTF v0.88)
+    inheritFrom: `Color1WheelAudio`,
+  },
+  Color4WheelIndex: {
+    // Controls angle of indexed rotation of color wheel 4 (since GDTF v0.88)
+    inheritFrom: `Color1WheelIndex`,
+  },
+  Color4WheelRandom: {
+    // Controls speed of color wheel´s 4 random color slot selection. (since GDTF v0.88)
+    inheritFrom: `Color1WheelRandom`,
+  },
+  Color4WheelSpin: {
+    // Controls the speed and direction of continuous rotation of color wheel 4.
+    inheritFrom: `Color1WheelSpin`,
   },
   ColorEffects: {
     // Selects predefined color effects built into the fixture.

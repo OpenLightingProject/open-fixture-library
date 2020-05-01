@@ -52,6 +52,18 @@ const deprecatedGdtfAttributes = {
     // Renamed to Color1WheelSpin in GDTF v0.88
     inheritFrom: `Color1WheelSpin`,
   },
+  Color2Spin: {
+    // Renamed to Color2WheelSpin in GDTF v0.88
+    inheritFrom: `Color2WheelSpin`,
+  },
+  Color3Spin: {
+    // Renamed to Color3WheelSpin in GDTF v0.88
+    inheritFrom: `Color3WheelSpin`,
+  },
+  Color4Spin: {
+    // Renamed to Color4WheelSpin in GDTF v0.88
+    inheritFrom: `Color4WheelSpin`,
+  },
   ColorControl: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     oflType: `Maintenance`,
