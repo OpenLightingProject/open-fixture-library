@@ -873,7 +873,7 @@ const gdtfAttributes = {
     // Resets the fixture's gobo wheel.
     inheritFrom: `BeamReset`,
   },
-  Haze: {
+  'Haze(n)': {
     // Fog or hazer's haze feature.
     oflType: `Fog`,
     oflProperty: `fogOutput`,
@@ -938,6 +938,13 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Frequency`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.effectName = `Strobe`;
+    },
+  },
+  IrisStrobeRandom: {
+    // Sets speed of the iris's random movement. (since GDTF v1.0)
+    inheritFrom: `IrisStrobe`,
+    afterPhysicalPropertyHook(capability) {
+      capability.randomTiming = true;
     },
   },
   LampControl: {
