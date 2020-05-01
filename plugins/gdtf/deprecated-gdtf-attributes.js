@@ -68,12 +68,6 @@ const deprecatedGdtfAttributes = {
     // Renamed to Color(n)WheelSpin in GDTF v0.88
     inheritFrom: `Color(n)WheelSpin`,
   },
-  ColorControl: {
-    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    oflType: `Maintenance`,
-    oflProperty: `parameter`,
-    defaultPhysicalEntity: `Percent`,
-  },
   ColorMacroMSpeed: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `IntensityMSpeed`,
@@ -171,6 +165,14 @@ const deprecatedGdtfAttributes = {
   'ColorRGB_Y': {
     // Renamed to ColorAdd_Y in GDTF v1.0
     inheritFrom: `ColorAdd_Y`,
+  },
+  ColorEffects: {
+    // Renamed to ColorEffects(n) in GDTF v1.0
+    inheritFrom: `ColorEffects(n)`,
+  },
+  ColorMacro: {
+    // Renamed to ColorMacro(n) in GDTF v1.0
+    inheritFrom: `ColorMacro(n)`,
   },
   ControlAutofocus: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd

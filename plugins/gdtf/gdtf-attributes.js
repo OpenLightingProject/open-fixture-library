@@ -412,11 +412,25 @@ const gdtfAttributes = {
       capability.color = `Yellow`;
     },
   },
-  ColorEffects: {
+  ColorCalibrationMode: {
+    // Sets calibration mode (for example on/off). (since GDTF v1.0)
+    inheritFrom: `Control`,
+  },
+  ColorConsistency: {
+    // Controls consistent behavior of color. (since GDTF v1.0)
+    inheritFrom: `Control`,
+  },
+  ColorControl: {
+    // Controls special color related functions. (since GDTF v1.0)
+    oflType: `Maintenance`,
+    oflProperty: `parameter`,
+    defaultPhysicalEntity: `Percent`,
+  },
+  'ColorEffects(n)': {
     // Selects predefined color effects built into the fixture.
     inheritFrom: `Effects`,
   },
-  ColorMacro: {
+  'ColorMacro(n)': {
     // Selects predefined colors that are programed in the fixture's firmware.
     oflType: `ColorPreset`,
     oflProperty: null,
@@ -442,10 +456,6 @@ const gdtfAttributes = {
       }
     },
   },
-  ColorMacro2: {
-    // Selects predefined colors that are programed in the fixture's firmware (2).
-    inheritFrom: `ColorMacro`,
-  },
   ColorMixMode: {
     // Changes control between selecting continuous selection, half selection, random selection, color spinning, etc. in color mixing.
     inheritFrom: `AnimationIndexRotateMode`,
@@ -458,6 +468,64 @@ const gdtfAttributes = {
     // Resets the fixture's color mixing system.
     inheritFrom: `BeamReset`,
   },
+  ColorModelMode: {
+    // Controls color model (CMY/RGB/HSV..). (since GDTF v1.0)
+    inheritFrom: `AnimationIndexRotateMode`,
+  },
+  'ColorRGB_Blue': {
+    // Controls the fixture's blue attribute for indirect RGB color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_B`,
+  },
+  'ColorRGB_Cyan': {
+    // Controls the fixture's cyan attribute for indirect CMY color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_C`,
+  },
+  'ColorRGB_Green': {
+    // Controls the fixture's green attribute for indirect RGB color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_G`,
+  },
+  'ColorRGB_Magenta': {
+    // Controls the fixture's magenta attribute for indirect CMY color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_M`,
+  },
+  'ColorRGB_Quality': undefined, // Controls the fixture's quality attribute for indirect color mixing. (since GDTF v1.0)
+  'ColorRGB_Red': {
+    // Controls the fixture's red attribute for indirect RGB color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_R`,
+  },
+  'ColorRGB_Yellow': {
+    // Controls the fixture's yellow attribute for indirect CMY color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_Y`,
+  },
+  ColorSettingsReset: {
+    // Resets settings of color control channel. (since GDTF v1.0)
+    inheritFrom: `BeamReset`,
+  },
+  'ColorSub_B': {
+    // Controls the insertion of the fixture's blue filter flag for direct subtractive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_B`,
+  },
+  'ColorSub_C': {
+    // Controls the insertion of the fixture's cyan filter flag for direct subtractive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_C`,
+  },
+  'ColorSub_G': {
+    // Controls the insertion of the fixture's green filter flag for direct subtractive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_G`,
+  },
+  'ColorSub_M': {
+    // Controls the insertion of the fixture's magenta filter flag for direct subtractive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_M`,
+  },
+  'ColorSub_R': {
+    // Controls the insertion of the fixture's red filter flag for direct subtractive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_R`,
+  },
+  'ColorSub_Y': {
+    // Controls the insertion of the fixture's yellow filter flag for direct subtractive color mixing. (since GDTF v1.0)
+    inheritFrom: `ColorAdd_Y`,
+  },
+  ColorUniformity: undefined, // Controls behavior of color uniformity. (since GDTF v1.0)
   ColorWheelReset: {
     // Resets the fixture's color wheel.
     inheritFrom: `BeamReset`,
