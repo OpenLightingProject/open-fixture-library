@@ -456,6 +456,42 @@ const deprecatedGdtfAttributes = {
   ShaperRotIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   ShaperSelectIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   ShaperSelectSpin: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  Shutter: {
+    // Renamed to Shutter(n) in GDTF v1.0
+    inheritFrom: `Shutter(n)`,
+  },
+  ShutterStrobe: {
+    // Renamed to Shutter(n)Strobe in GDTF v1.0
+    inheritFrom: `Shutter(n)Strobe`,
+  },
+  ShutterStrobePulse: {
+    // Renamed to Shutter(n)StrobePulse in GDTF v1.0
+    inheritFrom: `Shutter(n)StrobePulse`,
+  },
+  ShutterStrobePulseClose: {
+    // Renamed to Shutter(n)StrobePulseClose in GDTF v1.0
+    inheritFrom: `Shutter(n)StrobePulseClose`,
+  },
+  ShutterStrobePulseOpen: {
+    // Renamed to Shutter(n)StrobePulseOpen in GDTF v1.0
+    inheritFrom: `Shutter(n)StrobePulseOpen`,
+  },
+  ShutterStrobeRandom: {
+    // Renamed to Shutter(n)StrobeRandom in GDTF v1.0
+    inheritFrom: `Shutter(n)StrobeRandom`,
+  },
+  ShutterStrobeRandomPulse: {
+    // Renamed to Shutter(n)StrobeRandomPulse in GDTF v1.0
+    inheritFrom: `Shutter(n)StrobeRandomPulse`,
+  },
+  ShutterStrobeRandomPulseClose: {
+    // Renamed to Shutter(n)StrobeRandomPulseClose in GDTF v1.0
+    inheritFrom: `Shutter(n)StrobeRandomPulseClose`,
+  },
+  ShutterStrobeRandomPulseOpen: {
+    // Renamed to Shutter(n)StrobeRandomPulseOpen in GDTF v1.0
+    inheritFrom: `Shutter(n)StrobeRandomPulseOpen`,
+  },
   Zoom: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     oflType: `Zoom`,
