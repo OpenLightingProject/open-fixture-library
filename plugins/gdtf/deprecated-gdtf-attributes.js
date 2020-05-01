@@ -2,28 +2,40 @@ const { normalizeAngularSpeedDirection } = require(`./gdtf-helpers.js`);
 
 const deprecatedGdtfAttributes = {
   ActiveZone: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  AnimationIndexRotate: {
+    // Controls the animation disk's index or its rotation speed.
+    // Replaced by AnimationWheel(n)Pos in GDTF v1.0
+    inheritFrom: `AnimationWheel(n)Pos`,
+  },
+  AnimationIndexRotateMode: {
+    // Changes control between selecting, indexing, and rotating the animation wheel.
+    // Replaced by AnimationWheel(n)Mode in GDTF v1.0
+    inheritFrom: `AnimationWheel(n)Mode`,
+  },
+  AnimationOffset: {
+    // Controls the animation disk's shaking.
+    // Replaced by AnimationWheel(n)PosShake in GDTF v1.0
+    inheritFrom: `AnimationWheel(n)PosShake`,
+  },
+  AnimationWheel: {
+    // Inserts a gobo disk into the beam. The disk has the ability to continuously index and rotate.
+    // Replaced by AnimationWheel(n) in GDTF v1.0
+    inheritFrom: `AnimationWheel(n)`,
+  },
   AnimationWheelMacro: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Effects`,
+    // Officially supported as AnimationWheel(n)Macro since GDTF v1.0
+    inheritFrom: `AnimationWheel(n)Macro`,
   },
   AnimationWheelPos: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    oflType: `WheelRotation`,
-    oflProperty: `angle`,
-    defaultPhysicalEntity: `Angle`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.wheel = `Animation Disk`;
-    },
+    // Officially supported as AnimationWheel(n)Pos since GDTF v1.0
+    inheritFrom: `AnimationWheel(n)Pos`,
   },
   AnimationWheelPosSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    oflType: `WheelRotation`,
-    oflProperty: `speed`,
-    defaultPhysicalEntity: `AngularSpeed`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.wheel = `Animation Disk`;
-      normalizeAngularSpeedDirection(gdtfCapability);
-    },
+    // Officially supported as AnimationWheel(n)PosRotate since GDTF v1.0
+    inheritFrom: `AnimationWheel(n)PosRotate`,
   },
   BeamMode: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd

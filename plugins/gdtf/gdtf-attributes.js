@@ -103,33 +103,51 @@ function physicalValuesFulfillCondition(value1, value2, predicate) {
 
 // see https://gdtf-share.com/wiki/GDTF_File_Description#Appendix_A._Attribute_Definitions
 const gdtfAttributes = {
-  AnimationIndexRotate: {
-    // Controls the animation disk's index or its rotation speed.
-    inheritFrom: `AnimationWheelPosSpin`,
+  'AnimationWheel(n)': {
+    // This is the main attribute of the animation wheel's (n) wheel control. Selects slots in the animation wheel. A different channel function sets the angle of the indexed position in the selected slot or the angular speed of its continuous rotation.
+    inheritFrom: `Gobo(n)`,
   },
-  AnimationIndexRotateMode: {
-    // Changes control between selecting, indexing, and rotating the animation wheel.
+  'AnimationWheel(n)Audio': {
+    // Controls audio-controlled functionality of animation wheel (n).
+    inheritFrom: `Gobo(n)WheelAudio`,
+  },
+  'AnimationWheel(n)Macro': {
+    // Selects predefined effects in animation wheel (n).
+    inheritFrom: `Gobo(n)WheelRandom`,
+  },
+  'AnimationWheel(n)Mode': {
+    // Changes control between selecting, indexing, and rotating the slots of animation wheel (n).
     oflType: `Maintenance`,
     oflProperty: `parameter`,
     defaultPhysicalEntity: `Percent`,
   },
-  AnimationOffset: {
-    // Controls the animation disk's shaking.
-    oflType: `WheelShake`,
-    oflProperty: `shakeAngle`,
-    defaultPhysicalEntity: `Percent`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.wheel = `Animation Disk`;
-    },
+  'AnimationWheel(n)Pos': {
+    // Controls angle of indexed rotation of slots in animation wheel. This is the main attribute of animation wheel (n) wheel slot control.
+    inheritFrom: `Gobo(n)Pos`,
   },
-  AnimationWheel: {
-    // Inserts a gobo disk into the beam. The disk has the ability to continuously index and rotate.
-    oflType: `Effect`,
-    oflProperty: `parameter`,
-    defaultPhysicalEntity: `Percent`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.effectName = `Animation Disk insertion`;
-    },
+  'AnimationWheel(n)PosRotate': {
+    // Controls the speed and direction of continuous rotation of slots in animation wheel (n).
+    inheritFrom: `Gobo(n)PosRotate`,
+  },
+  'AnimationWheel(n)PosShake': {
+    // Controls frequency of the shake of slots in animation wheel (n).
+    inheritFrom: `Gobo(n)PosShake`,
+  },
+  'AnimationWheel(n)Random': {
+    // Controls speed of animation wheel (n) random slot selection.
+    inheritFrom: `Gobo(n)WheelRandom`,
+  },
+  'AnimationWheel(n)SelectEffects': {
+    // Selects slots which run effects in animation wheel (n).
+    inheritFrom: `Gobo(n)SelectEffects`,
+  },
+  'AnimationWheel(n)SelectShake': {
+    // Selects slots which shake in animation wheel and controls the frequency of the slots shake within the same channel function.
+    inheritFrom: `Gobo(n)SelectShake`,
+  },
+  'AnimationWheel(n)SelectSpin': {
+    // Selects slots whose rotation is continuous in animation wheel and controls the angular speed of the slot spin within the same channel function
+    inheritFrom: `Gobo(n)SelectSpin`,
   },
   AnimationWheelShortcutMode: {
     // Defines whether the animation wheel takes the shortest distance between two positions.
