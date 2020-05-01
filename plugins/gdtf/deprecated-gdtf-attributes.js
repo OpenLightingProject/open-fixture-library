@@ -74,6 +74,109 @@ const deprecatedGdtfAttributes = {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `IntensityMSpeed`,
   },
+  ColorRGB1: {
+    // Controls the intensity of the fixture's red emitters or its cyan CMY-mixing feature.
+    // Replaced by ColorRGB_R in GDTF v0.88
+    oflType: `ColorIntensity`,
+    oflProperty: `brightness`,
+    defaultPhysicalEntity: `ColorComponent`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = guessColorComponentName(gdtfCapability, `Red`, `Cyan`);
+    },
+  },
+  ColorRGB2: {
+    // Controls the intensity of the fixture's green emitters or its magenta CMY-mixing feature.
+    // Replaced by ColorRGB_G in GDTF v0.88
+    inheritFrom: `ColorRGB1`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = guessColorComponentName(gdtfCapability, `Green`, `Magenta`);
+    },
+  },
+  ColorRGB3: {
+    // Controls the intensity of the fixture's blue emitters or its yellow CMY-mixing feature.
+    // Replaced by ColorRGB_B in GDTF v0.88
+    inheritFrom: `ColorRGB1`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = guessColorComponentName(gdtfCapability, `Blue`, `Yellow`);
+    },
+  },
+  ColorRGB4: {
+    // Controls the intensity of the fixture's amber emitters.
+    // Replaced by ColorRGB_C in GDTF v0.88
+    inheritFrom: `ColorRGB1`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Amber`;
+    },
+  },
+  ColorRGB5: {
+    // Controls the intensity of the fixture's white emitters.
+    // Replaced by ColorRGB_M in GDTF v0.88
+    inheritFrom: `ColorRGB1`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `White`;
+    },
+  },
+  ColorRGB6: {
+    // Controls the intensity of the fixture's color emitters.
+    // Replaced by ColorRGB_Y in GDTF v0.88
+    oflType: `ColorIntensity`,
+    oflProperty: `brightness`,
+    defaultPhysicalEntity: `ColorComponent`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      // This is most likely wrong but enables the user to make an informed choice.
+      capability.color = gdtfCapability._channelFunction._attribute.$.Pretty || `Unknown`;
+    },
+  },
+  ColorRGB7: {
+    // Controls the intensity of the fixture's color emitters.
+    // Replaced by ColorRGB_RY in GDTF v0.88
+    inheritFrom: `ColorRGB6`,
+  },
+  ColorRGB8: {
+    // Controls the intensity of the fixture's color emitters.
+    // Replaced by ColorRGB_GY in GDTF v0.88
+    inheritFrom: `ColorRGB6`,
+  },
+  ColorRGB9: {
+    // Controls the intensity of the fixture's color emitters.
+    // Replaced by ColorRGB_GC in GDTF v0.88
+    inheritFrom: `ColorRGB6`,
+  },
+  ColorRGB10: {
+    // Controls the intensity of the fixture's color emitters.
+    // Replaced by ColorRGB_BC in GDTF v0.88
+    inheritFrom: `ColorRGB6`,
+  },
+  ColorRGB11: {
+    // Controls the intensity of the fixture's color emitters.
+    // Replaced by ColorRGB_BM in GDTF v0.88
+    inheritFrom: `ColorRGB6`,
+  },
+  ColorRGB12: {
+    // Controls the intensity of the fixture's color emitters.
+    // Replaced by ColorRGB_RM in GDTF v0.88
+    inheritFrom: `ColorRGB6`,
+  },
+  ColorRGB13: {
+    // Controls the intensity of the fixture's color emitters.
+    // Replaced by ColorRGB_W in GDTF v0.88
+    inheritFrom: `ColorRGB6`,
+  },
+  ColorRGB14: {
+    // Controls the intensity of the fixture's color emitters.
+    // Replaced by ColorRGB_WW in GDTF v0.88
+    inheritFrom: `ColorRGB6`,
+  },
+  ColorRGB15: {
+    // Controls the intensity of the fixture's color emitters.
+    // Replaced by ColorRGB_CW in GDTF v0.88
+    inheritFrom: `ColorRGB6`,
+  },
+  ColorRGB16: {
+    // Controls the intensity of the fixture's color emitters.
+    // Replaced by ColorRGB_UV in GDTF v0.88
+    inheritFrom: `ColorRGB6`,
+  },
   ControlAutofocus: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `Control`,
@@ -402,5 +505,29 @@ const deprecatedGdtfAttributes = {
     inheritFrom: `IrisMSpeed`,
   },
 };
+
+/**
+ * @param {Object} gdtfCapability The enhanced <ChannelSet> XML object.
+ * @param {String} primaryColor The color that this capability is most likely.
+ * @param {String} secondaryColor The color that this capability is second most likely.
+ * @returns {String} Either the primary, or the secondary color.
+ */
+function guessColorComponentName(gdtfCapability, primaryColor, secondaryColor) {
+  const name = (gdtfCapability._channelFunction._attribute.$.Pretty || ``).toLowerCase();
+
+  if (name.includes(secondaryColor.toLowerCase())) {
+    return secondaryColor;
+  }
+
+  if (name.includes(primaryColor.toLowerCase())) {
+    return primaryColor;
+  }
+
+  if (name.includes(secondaryColor.charAt(0).toLowerCase())) {
+    return secondaryColor;
+  }
+
+  return primaryColor;
+}
 
 module.exports = deprecatedGdtfAttributes;

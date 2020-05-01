@@ -452,92 +452,131 @@ const gdtfAttributes = {
     // Resets the fixture's color mixing system.
     inheritFrom: `BeamReset`,
   },
-  ColorRGB1: {
-    // Controls the intensity of the fixture's red emitters or its cyan CMY-mixing feature.
+  'ColorRGB_R': {
+    // Controls the intensity of the fixture's red emitters or its cyan CMY-mixing feature. (since GDTF v0.88)
     oflType: `ColorIntensity`,
     oflProperty: `brightness`,
     defaultPhysicalEntity: `ColorComponent`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = guessColorComponentName(gdtfCapability, `Red`, `Cyan`);
+      capability.color = `Red`;
     },
   },
-  ColorRGB2: {
-    // Controls the intensity of the fixture's green emitters or its magenta CMY-mixing feature.
-    inheritFrom: `ColorRGB1`,
+  'ColorRGB_G': {
+    // Controls the intensity of the fixture's green emitters or its magenta CMY-mixing feature. (since GDTF v0.88)
+    inheritFrom: `ColorRGB_R`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = guessColorComponentName(gdtfCapability, `Green`, `Magenta`);
+      capability.color = `Green`;
     },
   },
-  ColorRGB3: {
-    // Controls the intensity of the fixture's blue emitters or its yellow CMY-mixing feature.
-    inheritFrom: `ColorRGB1`,
+  'ColorRGB_B': {
+    // Controls the intensity of the fixture's blue emitters or its yellow CMY-mixing feature. (since GDTF v0.88)
+    inheritFrom: `ColorRGB_R`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.color = guessColorComponentName(gdtfCapability, `Blue`, `Yellow`);
+      capability.color = `Blue`;
     },
   },
-  ColorRGB4: {
-    // Controls the intensity of the fixture's amber emitters.
-    inheritFrom: `ColorRGB1`,
+  'ColorRGB_C': {
+    // Controls the intensity of the fixture's cyan emitters. (since GDTF v0.88)
+    inheritFrom: `ColorRGB_R`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Cyan`;
+    },
+  },
+  'ColorRGB_M': {
+    // Controls the intensity of the fixture's magenta emitters. (since GDTF v0.88)
+    inheritFrom: `ColorRGB_R`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Magenta`;
+    },
+  },
+  'ColorRGB_Y': {
+    // Controls the intensity of the fixture's yellow emitters. (since GDTF v0.88)
+    inheritFrom: `ColorRGB_R`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Yellow`;
+    },
+  },
+  'ColorRGB_RY': {
+    // Controls the intensity of the fixture's amber emitters. (since GDTF v0.88)
+    inheritFrom: `ColorRGB_R`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.color = `Amber`;
     },
   },
-  ColorRGB5: {
-    // Controls the intensity of the fixture's white emitters.
-    inheritFrom: `ColorRGB1`,
+  'ColorRGB_GY': {
+    // Controls the intensity of the fixture's lime emitters. (since GDTF v0.88)
+    inheritFrom: `ColorRGB_R`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Lime`;
+    },
+  },
+  'ColorRGB_GC': {
+    // Controls the intensity of the fixture's blue-green emitters. (since GDTF v0.88)
+    inheritFrom: `ColorRGB_R`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Blue`;
+    },
+    afterPhysicalPropertyHook(capability, gdtfCapability) {
+      capability.comment = `Blue-Green`;
+    },
+  },
+  'ColorRGB_BC': {
+    // Controls the intensity of the fixture's light-blue emitters. (since GDTF v0.88)
+    inheritFrom: `ColorRGB_R`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Blue`;
+    },
+    afterPhysicalPropertyHook(capability, gdtfCapability) {
+      capability.comment = `Light-Blue`;
+    },
+  },
+  'ColorRGB_BM': {
+    // Controls the intensity of the fixture's purple emitters. (since GDTF v0.88)
+    inheritFrom: `ColorRGB_R`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Indigo`;
+    },
+    afterPhysicalPropertyHook(capability, gdtfCapability) {
+      capability.comment = `Purple`;
+    },
+  },
+  'ColorRGB_RM': {
+    // Controls the intensity of the fixture's pink emitters. (since GDTF v0.88)
+    inheritFrom: `ColorRGB_R`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Magenta`;
+    },
+    afterPhysicalPropertyHook(capability, gdtfCapability) {
+      capability.comment = `Pink`;
+    },
+  },
+  'ColorRGB_W': {
+    // Controls the intensity of the fixture's white emitters. (since GDTF v0.88)
+    inheritFrom: `ColorRGB_R`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.color = `White`;
     },
   },
-  ColorRGB6: {
-    // Controls the intensity of the fixture's color emitters.
-    oflType: `ColorIntensity`,
-    oflProperty: `brightness`,
-    defaultPhysicalEntity: `ColorComponent`,
+  'ColorRGB_WW': {
+    // Controls the intensity of the fixture's warm white emitters. (since GDTF v0.88)
+    inheritFrom: `ColorRGB_R`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
-      // This is most likely wrong but enables the user to make an informed choice.
-      capability.color = gdtfCapability._channelFunction._attribute.$.Pretty || `Unknown`;
+      capability.color = `Warm White`;
     },
   },
-  ColorRGB7: {
-    // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`,
+  'ColorRGB_CW': {
+    // Controls the intensity of the fixture's cool white emitters. (since GDTF v0.88)
+    inheritFrom: `ColorRGB_R`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `Cold White`;
+    },
   },
-  ColorRGB8: {
-    // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`,
-  },
-  ColorRGB9: {
-    // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`,
-  },
-  ColorRGB10: {
-    // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`,
-  },
-  ColorRGB11: {
-    // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`,
-  },
-  ColorRGB12: {
-    // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`,
-  },
-  ColorRGB13: {
-    // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`,
-  },
-  ColorRGB14: {
-    // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`,
-  },
-  ColorRGB15: {
-    // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`,
-  },
-  ColorRGB16: {
-    // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`,
+  'ColorRGB_UV': {
+    // Controls the intensity of the fixture's UV emitters. (since GDTF v0.88)
+    inheritFrom: `ColorRGB_R`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.color = `UV`;
+    },
   },
   ColorWheelReset: {
     // Resets the fixture's color wheel.
@@ -1373,30 +1412,6 @@ const gdtfAttributes = {
     inheritFrom: `BeamReset`,
   },
 };
-
-/**
- * @param {Object} gdtfCapability The enhanced <ChannelSet> XML object.
- * @param {String} primaryColor The color that this capability is most likely.
- * @param {String} secondaryColor The color that this capability is second most likely.
- * @returns {String} Either the primary, or the secondary color.
- */
-function guessColorComponentName(gdtfCapability, primaryColor, secondaryColor) {
-  const name = (gdtfCapability._channelFunction._attribute.$.Pretty || ``).toLowerCase();
-
-  if (name.includes(secondaryColor.toLowerCase())) {
-    return secondaryColor;
-  }
-
-  if (name.includes(primaryColor.toLowerCase())) {
-    return primaryColor;
-  }
-
-  if (name.includes(secondaryColor.charAt(0).toLowerCase())) {
-    return secondaryColor;
-  }
-
-  return primaryColor;
-}
 
 /**
  * @param {Object} gdtfCapability The enhanced <ChannelSet> XML object.
