@@ -221,8 +221,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       // add default Name attributes, so that the references work later
       gdtfMode.DMXChannels[0].DMXChannel.forEach(gdtfChannel => {
         // auto-generate <DMXChannel> Name attribute
-        const geometryParts = gdtfChannel.$.Geometry.split(`.`);
-        const geometry = geometryParts[geometryParts.length - 1];
+        const geometry = gdtfChannel.$.Geometry.split(`.`).pop();
         gdtfChannel.$.Name = `${geometry}_${gdtfChannel.LogicalChannel[0].$.Attribute}`;
 
         gdtfChannel.LogicalChannel.forEach(gdtfLogicalChannel => {
@@ -245,7 +244,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
    * @property {Number} modeIndex The zero-based index of the mode this relation applies to.
    * @property {Object} masterGdtfChannel The GDTF channel that triggers switching.
    * @property {String} switchingChannelName The name of the switching channel (containing multiple default channels).
-   * @property {Object} slaveGdtfChannel The GDTF channel that is switched by the master.
+   * @property {Object} followerGdtfChannel The GDTF channel that is switched by the master.
    * @property {Number} dmxFrom The start of the DMX range triggering this relation.
    * @property {Number} dmxTo The end of the DMX range triggering this relation.
    */
@@ -267,8 +266,11 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
         }
 
         const masterChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfRelation.$.Master);
-        const slaveChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfRelation.$.Slave.split(`.`)[0]);
-        const slaveChannelFunction = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfRelation.$.Slave);
+
+        // Slave was renamed to Follower in GDTF v0.88
+        const followerChannelReference = gdtfRelation.$.Follower || gdtfRelation.$.Slave;
+        const followerChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], followerChannelReference.split(`.`)[0]);
+        const followerChannelFunction = followXmlNodeReference(gdtfMode.DMXChannels[0], followerChannelReference);
 
         const dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXFrom || `0/1`);
         const maxDmxValue = Math.pow(256, dmxFrom[1]) - 1;
@@ -277,28 +279,28 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
         const relation = {
           modeIndex,
           masterGdtfChannel: masterChannel,
-          switchingChannelName: slaveChannel.$.Name,
-          slaveGdtfChannel: slaveChannel,
+          switchingChannelName: followerChannel.$.Name,
+          followerGdtfChannel: followerChannel,
           dmxFrom,
           dmxTo,
         };
 
         // if channel was already split, skip splitting it again, else
-        // split channel such that slaveChannelFunction is the only child
-        if (slaveChannel.LogicalChannel[0].ChannelFunction.length > 1) {
-          const channelCopy = JSON.parse(JSON.stringify(slaveChannel));
+        // split channel such that followerChannelFunction is the only child
+        if (followerChannel.LogicalChannel[0].ChannelFunction.length > 1) {
+          const channelCopy = JSON.parse(JSON.stringify(followerChannel));
           channelCopy.$.Name += `_OflSplit`;
-          relation.slaveGdtfChannel = channelCopy;
+          relation.followerGdtfChannel = channelCopy;
 
-          // remove slaveChannelFunction from slaveChannel and all others from the copy
-          const channelFunctionIndex = slaveChannel.LogicalChannel[0].ChannelFunction.indexOf(slaveChannelFunction);
-          slaveChannel.LogicalChannel[0].ChannelFunction.splice(channelFunctionIndex, 1);
+          // remove followerChannelFunction from followerChannel and all others from the copy
+          const channelFunctionIndex = followerChannel.LogicalChannel[0].ChannelFunction.indexOf(followerChannelFunction);
+          followerChannel.LogicalChannel[0].ChannelFunction.splice(channelFunctionIndex, 1);
           channelCopy.LogicalChannel[0].ChannelFunction = [
             channelCopy.LogicalChannel[0].ChannelFunction[channelFunctionIndex],
           ];
 
-          // insert channelCopy before the slaveChannel
-          const channelIndex = gdtfMode.DMXChannels[0].DMXChannel.indexOf(slaveChannel);
+          // insert channelCopy before the followerChannel
+          const channelIndex = gdtfMode.DMXChannels[0].DMXChannel.indexOf(followerChannel);
           gdtfMode.DMXChannels[0].DMXChannel.splice(channelIndex, 0, channelCopy);
         }
 
@@ -969,7 +971,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
       const modeIndex = relation.modeIndex;
       const switchingChannelKey = `${modeIndex}_${relation.switchingChannelName}`;
-      const switchToChannelKey = relation.slaveGdtfChannel._oflChannelKey;
+      const switchToChannelKey = relation.followerGdtfChannel._oflChannelKey;
 
       if (!(switchingChannelKey in relationsPerMaster[masterKey])) {
         relationsPerMaster[masterKey][switchingChannelKey] = [];
