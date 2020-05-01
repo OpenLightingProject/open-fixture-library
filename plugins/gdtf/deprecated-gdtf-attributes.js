@@ -219,37 +219,33 @@ const deprecatedGdtfAttributes = {
   },
   Gobo1Audio: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    oflType: `Effect`,
-    oflProperty: `speed`,
-    defaultPhysicalEntity: `Speed`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.effectName = gdtfCapability.$.Name;
-      gdtfCapability.$.Name = undefined;
-    },
-    afterPhysicalPropertyHook(capability, gdtfCapability) {
-      capability.soundControlled = true;
-    },
+    // Officially supported as Gobo1WheelAudio since GDTF v0.88
+    inheritFrom: `Gobo1WheelAudio`,
+  },
+  Gobo1PosRotation: {
+    // Renamed to Gobo1PosRotate in GDTF v0.88
+    inheritFrom: `Gobo1PosRotate`,
   },
   Gobo1Random: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Effects`,
+    // Officially supported as Gobo1WheelRandom since GDTF v0.88
+    inheritFrom: `Gobo1WheelRandom`,
   },
   Gobo1RandomAudio: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    oflType: `Effect`,
-    oflProperty: `speed`,
-    defaultPhysicalEntity: `Speed`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.effectName = gdtfCapability.$.Name;
-      gdtfCapability.$.Name = undefined;
-    },
-    afterPhysicalPropertyHook(capability, gdtfCapability) {
-      capability.soundControlled = true;
-    },
+    inheritFrom: `Gobo1WheelAudio`,
   },
   Gobo1Select: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `Gobo1`,
+  },
+  Gobo1Shake: {
+    // Renamed to Gobo1WheelShake in GDTF v0.88
+    inheritFrom: `Gobo1WheelShake`,
+  },
+  Gobo1Spin: {
+    // Renamed to Gobo1WheelSpin in GDTF v0.88
+    inheritFrom: `Gobo1WheelSpin`,
   },
   Gobo1WheelShake: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd

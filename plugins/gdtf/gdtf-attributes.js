@@ -667,7 +667,7 @@ const gdtfAttributes = {
     inheritFrom: `IntensityMSpeed`,
   },
   Gobo1: {
-    // Selects gobos in the fixture's gobo wheel 1.
+    // The fixture’s gobo wheel 1. This is the main attribute of gobo wheel’s 1 wheel control. Selects gobos in gobo wheel 1. A different channel function sets the angle of the indexed position in the selected gobo or the angular speed of its continuous rotation.
     oflType: `WheelSlot`,
     oflProperty: `slotNumber`,
     defaultPhysicalEntity: `None`,
@@ -707,7 +707,7 @@ const gdtfAttributes = {
     },
   },
   Gobo1Pos: {
-    // Controls angle of indexed rotation of gobos in gobo wheel 1.
+    // Controls angle of indexed rotation of gobos in gobo wheel 1. This is the main attribute of gobo wheel’s 1 wheel slot control.
     oflType: `WheelSlotRotation`,
     oflProperty: `angle`,
     defaultPhysicalEntity: `Angle`,
@@ -715,7 +715,7 @@ const gdtfAttributes = {
       capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
     },
   },
-  Gobo1PosRotation: {
+  Gobo1PosRotate: {
     // Controls the speed and direction of continuous rotation of gobos in gobo wheel 1.
     oflType: `WheelSlotRotation`,
     oflProperty: `speed`,
@@ -725,8 +725,55 @@ const gdtfAttributes = {
       normalizeAngularSpeedDirection(gdtfCapability);
     },
   },
-  Gobo1Shake: {
-    // Control the frequency of the shake of gobo wheel 1.
+  Gobo1PosShake: {
+    // Controls frequency of the shake of gobos in gobo wheel 1. (since GDTF v0.88)
+    inheritFrom: `Gobo1`,
+    oflType: `WheelShake`,
+    oflProperty: `shakeSpeed`,
+    defaultPhysicalEntity: `Frequency`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      const gdtfSlotNumber = parseInt(gdtfCapability.$.WheelSlotIndex, 10);
+
+      capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
+      capability.isShaking = `slot`;
+      capability.slotNumber = gdtfSlotNumber;
+    },
+  },
+  Gobo1SelectSpin: {
+    // Selects gobos whose rotation is continuous in gobo wheel 1 and controls the angular speed of the gobo’s spin within the same channel function. (since GDTF v0.88)
+    inheritFrom: `Gobo1`,
+  },
+  Gobo1SelectShake: {
+    // Selects gobos which shake in gobo wheel 1 and controls the frequency of the gobo’s shake within the same channel function. (since GDTF v0.88)
+    inheritFrom: `Gobo1WheelShake`,
+  },
+  Gobo1SelectEffects: {
+    // Selects gobos which run effects in gobo wheel 1. (since GDTF v0.88)
+    inheritFrom: `Gobo1`,
+  },
+  Gobo1WheelAudio: {
+    // Controls audio-controlled functionality of gobo wheel 1. (since GDTF v0.88)
+    oflType: `Effect`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Speed`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.effectName = gdtfCapability.$.Name;
+      gdtfCapability.$.Name = undefined;
+    },
+    afterPhysicalPropertyHook(capability, gdtfCapability) {
+      capability.soundControlled = true;
+    },
+  },
+  Gobo1WheelIndex: {
+    // Controls angle of indexed rotation of gobo wheel 1. (since GDTF v0.88)
+    inheritFrom: `Gobo1`,
+  },
+  Gobo1WheelMode: {
+    // Changes control between selecting, indexing, and rotating the gobos of gobo wheel 1.
+    inheritFrom: `AnimationIndexRotateMode`,
+  },
+  Gobo1WheelShake: {
+    // Controls frequency of the shake of gobo wheel 1.
     inheritFrom: `Gobo1`,
     oflType: `WheelShake`,
     oflProperty: `shakeSpeed`,
@@ -738,8 +785,8 @@ const gdtfAttributes = {
       capability.slotNumber = gdtfSlotNumber;
     },
   },
-  Gobo1Spin: {
-    // Controls the speed and direction of the continuous rotation of gobo wheel 1.
+  Gobo1WheelSpin: {
+    // Controls the speed and direction of continuous rotation of gobo wheel 1.
     oflType: `WheelRotation`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `AngularSpeed`,
@@ -748,9 +795,15 @@ const gdtfAttributes = {
       normalizeAngularSpeedDirection(gdtfCapability);
     },
   },
-  Gobo1WheelMode: {
-    // Changes control between selecting, indexing, and rotating the gobos of gobo wheel 1.
-    inheritFrom: `AnimationIndexRotateMode`,
+  Gobo1WheelRandom: {
+    // Controls speed of gobo wheel´s 1 random gobo slot selection. (since GDTF v0.88)
+    oflType: `Effect`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Speed`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.effectName = gdtfCapability.$.Name;
+      gdtfCapability.$.Name = undefined;
+    },
   },
   Gobo2: {
     // Selects gobos in the fixture's gobo wheel 2.
