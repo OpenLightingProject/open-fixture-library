@@ -1149,26 +1149,30 @@ const gdtfAttributes = {
     // Resets the fixture's pan/tilt.
     inheritFrom: `BeamReset`,
   },
-  Prism: {
-    // Controls the insertion of fixture ́s prism wheel 1. Refracts the beam into multiple beams of light on wheel 1.
+  Prism1: {
+    // The fixture’s prism wheel 1. Selects prisms in prism wheel 1. A different channel function sets the angle of the indexed position in the selected prism or the angular speed of its continuous rotation. This is the main attribute of prism wheel’s 1 wheel control.
     oflType: `Prism`,
     oflProperty: null,
     defaultPhysicalEntity: `None`,
   },
-  PrismPos: {
-    // Controls the indexed position of fixture‘s prism on prism wheel 1.
+  Prism1Pos: {
+    // Controls angle of indexed rotation of prisms in prism wheel 1. This is the main attribute of prism wheel’s 1 wheel slot control.
     oflType: `PrismRotation`,
     oflProperty: `angle`,
     defaultPhysicalEntity: `Angle`,
   },
-  PrismPosRotation: {
-    // Controls the speed and direction of the continuous rotation of the fixture’s prism on prism wheel 1.
+  Prism1PosRotate: {
+    // Controls the speed and direction of continuous rotation of prisms in prism wheel 1.
     oflType: `PrismRotation`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `AngularSpeed`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       normalizeAngularSpeedDirection(gdtfCapability);
     },
+  },
+  Prism1SelectSpin: {
+    // Selects prisms whose rotation is continuous in prism wheel 1 and controls the angular speed of the prism’s spin within the same channel function. (since GDTF v0.88)
+    inheritFrom: `Prism1PosRotate`,
   },
   Prism2: {
     // Controls the insertion of fixture´s prism wheel 2. Refracts the beam into multiple beams of light on wheel 2.
