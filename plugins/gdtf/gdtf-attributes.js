@@ -255,7 +255,7 @@ const gdtfAttributes = {
   },
   Blower: undefined, // Fog or hazer‘s blower feature.
   Color1: {
-    // Selects colors in the fixture's color wheel 1.
+    // The fixture’s color wheel 1. Selects colors in color wheel 1. This is the main attribute of color wheel’s 1 wheel control.
     oflType: `WheelSlot`,
     oflProperty: `slotNumber`,
     defaultPhysicalEntity: `None`,
@@ -298,8 +298,34 @@ const gdtfAttributes = {
     // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 1.
     inheritFrom: `AnimationIndexRotateMode`,
   },
-  Color1Spin: {
-    // Controls the speed and direction of the fixture's color wheel 1.
+  Color1WheelAudio: {
+    // Controls audio-controlled functionality of color wheel 1 (since GDTF v0.88)
+    oflType: `Effect`,
+    oflProperty: `speed`,
+    defaultPhysicalEntity: `Speed`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.effectName = gdtfCapability.$.Name;
+      gdtfCapability.$.Name = undefined;
+    },
+    afterPhysicalPropertyHook(capability, gdtfCapability) {
+      capability.soundControlled = true;
+    },
+  },
+  Color1WheelIndex: {
+    // Controls angle of indexed rotation of color wheel 1 (since GDTF v0.88)
+    oflType: `WheelRotation`,
+    oflProperty: `angle`,
+    defaultPhysicalEntity: `Angle`,
+    beforePhysicalPropertyHook(capability, gdtfCapability) {
+      capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
+    },
+  },
+  Color1WheelRandom: {
+    // Controls speed of color wheel´s 1 random color slot selection. (since GDTF v0.88)
+    inheritFrom: `Effects`,
+  },
+  Color1WheelSpin: {
+    // Controls the speed and direction of continuous rotation of color wheel 1.
     oflType: `WheelRotation`,
     oflProperty: `speed`,
     defaultPhysicalEntity: `AngularSpeed`,

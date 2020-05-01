@@ -31,33 +31,26 @@ const deprecatedGdtfAttributes = {
   },
   Color1Audio: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    oflType: `Effect`,
-    oflProperty: `speed`,
-    defaultPhysicalEntity: `Speed`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.effectName = gdtfCapability.$.Name;
-      gdtfCapability.$.Name = undefined;
-    },
-    afterPhysicalPropertyHook(capability, gdtfCapability) {
-      capability.soundControlled = true;
-    },
+    // Officially supported as Color1WheelAudio since GDTF v0.88
+    inheritFrom: `Color1WheelAudio`,
   },
   Color1Index: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    oflType: `WheelRotation`,
-    oflProperty: `angle`,
-    defaultPhysicalEntity: `Angle`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
-    },
+    // Officially supported as Color1WheelIndex since GDTF v0.88
+    inheritFrom: `Color1WheelIndex`,
   },
   Color1Random: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Effects`,
+    // Officially supported as Color1WheelRandom since GDTF v0.88
+    inheritFrom: `Color1WheelRandom`,
   },
   Color1Select: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `Color1`,
+  },
+  Color1Spin: {
+    // Renamed to Color1WheelSpin in GDTF v0.88
+    inheritFrom: `Color1WheelSpin`,
   },
   ColorControl: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
