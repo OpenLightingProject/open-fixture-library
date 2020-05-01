@@ -255,60 +255,77 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
   function splitSwitchingChannels() {
     const relations = [];
 
-    gdtfFixture.DMXModes[0].DMXMode.forEach((gdtfMode, modeIndex) => {
-      if (!(`Relations` in gdtfMode) || typeof gdtfMode.Relations[0] !== `object`) {
-        return;
+    addLegacyRelations();
+
+    relations.forEach(relation => {
+      const followerChannel = relation.followerGdtfChannel;
+
+      // if channel was already split, skip splitting it again, else
+      // split channel such that followerChannelFunction is the only child
+      if (followerChannel.LogicalChannel[0].ChannelFunction.length > 1) {
+        const channelCopy = JSON.parse(JSON.stringify(followerChannel));
+        channelCopy.$.Name += `_OflSplit`;
+        relation.followerGdtfChannel = channelCopy;
+
+        // remove followerChannelFunction from followerChannel and all others from the copy
+        const channelFunctionIndex = followerChannel.LogicalChannel[0].ChannelFunction.indexOf(relation.followerChannelFunction);
+        followerChannel.LogicalChannel[0].ChannelFunction.splice(channelFunctionIndex, 1);
+        channelCopy.LogicalChannel[0].ChannelFunction = [
+          channelCopy.LogicalChannel[0].ChannelFunction[channelFunctionIndex],
+        ];
+
+        // insert channelCopy before the followerChannel
+        const gdtfMode = gdtfFixture.DMXModes[0].DMXMode[relation.modeIndex];
+        const channelIndex = gdtfMode.DMXChannels[0].DMXChannel.indexOf(followerChannel);
+        gdtfMode.DMXChannels[0].DMXChannel.splice(channelIndex, 0, channelCopy);
       }
 
-      gdtfMode.Relations[0].Relation.forEach(gdtfRelation => {
-        if (gdtfRelation.$.Type !== `Mode`) {
-          return;
-        }
-
-        const masterChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfRelation.$.Master);
-
-        // Slave was renamed to Follower in GDTF v0.88
-        const followerChannelReference = gdtfRelation.$.Follower || gdtfRelation.$.Slave;
-        const followerChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], followerChannelReference.split(`.`)[0]);
-        const followerChannelFunction = followXmlNodeReference(gdtfMode.DMXChannels[0], followerChannelReference);
-
-        const dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXFrom || `0/1`);
-        const maxDmxValue = Math.pow(256, dmxFrom[1]) - 1;
-        const dmxTo = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXTo || `${maxDmxValue}/${dmxFrom[1]}`);
-
-        const relation = {
-          modeIndex,
-          masterGdtfChannel: masterChannel,
-          switchingChannelName: followerChannel.$.Name,
-          followerGdtfChannel: followerChannel,
-          dmxFrom,
-          dmxTo,
-        };
-
-        // if channel was already split, skip splitting it again, else
-        // split channel such that followerChannelFunction is the only child
-        if (followerChannel.LogicalChannel[0].ChannelFunction.length > 1) {
-          const channelCopy = JSON.parse(JSON.stringify(followerChannel));
-          channelCopy.$.Name += `_OflSplit`;
-          relation.followerGdtfChannel = channelCopy;
-
-          // remove followerChannelFunction from followerChannel and all others from the copy
-          const channelFunctionIndex = followerChannel.LogicalChannel[0].ChannelFunction.indexOf(followerChannelFunction);
-          followerChannel.LogicalChannel[0].ChannelFunction.splice(channelFunctionIndex, 1);
-          channelCopy.LogicalChannel[0].ChannelFunction = [
-            channelCopy.LogicalChannel[0].ChannelFunction[channelFunctionIndex],
-          ];
-
-          // insert channelCopy before the followerChannel
-          const channelIndex = gdtfMode.DMXChannels[0].DMXChannel.indexOf(followerChannel);
-          gdtfMode.DMXChannels[0].DMXChannel.splice(channelIndex, 0, channelCopy);
-        }
-
-        relations.push(relation);
-      });
+      delete relation.followerChannelFunction;
     });
 
     return relations;
+
+
+    /**
+     * Adds <Relation Type="Mode">'s data to the array.
+     * This behavior is deprecated since GDTF v0.88, but still supported as a fallback.
+     */
+    function addLegacyRelations() {
+      gdtfFixture.DMXModes[0].DMXMode.forEach((gdtfMode, modeIndex) => {
+        if (!(`Relations` in gdtfMode) || typeof gdtfMode.Relations[0] !== `object`) {
+          return;
+        }
+
+        gdtfMode.Relations[0].Relation.forEach(gdtfRelation => {
+          if (gdtfRelation.$.Type !== `Mode`) {
+            return;
+          }
+
+          const masterChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfRelation.$.Master);
+
+          // Slave was renamed to Follower in GDTF v0.88
+          const followerChannelReference = gdtfRelation.$.Follower || gdtfRelation.$.Slave;
+          const followerChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], followerChannelReference.split(`.`)[0]);
+          const followerChannelFunction = followXmlNodeReference(gdtfMode.DMXChannels[0], followerChannelReference);
+
+          const dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXFrom || `0/1`);
+          const maxDmxValue = Math.pow(256, dmxFrom[1]) - 1;
+          const dmxTo = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXTo || `${maxDmxValue}/${dmxFrom[1]}`);
+
+          const relation = {
+            modeIndex,
+            masterGdtfChannel: masterChannel,
+            switchingChannelName: followerChannel.$.Name,
+            followerGdtfChannel: followerChannel,
+            followerChannelFunction,
+            dmxFrom,
+            dmxTo,
+          };
+
+          relations.push(relation);
+        });
+      });
+    }
   }
 
   /**
