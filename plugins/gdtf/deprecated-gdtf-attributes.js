@@ -455,16 +455,16 @@ const deprecatedGdtfAttributes = {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `Prism2Pos`,
   },
+  Prism2PosRotation: {
+    // Renamed to Prism2PosRotate in GDTF v0.88
+    inheritFrom: `Prism2PosRotate`,
+  },
   Prism2PosSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Prism2PosRotation`,
+    inheritFrom: `Prism2PosRotate`,
   },
   Prism2PrismIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   Prism2SelectIndex: {
-    // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Prism2`,
-  },
-  Prism2SelectSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     inheritFrom: `Prism2`,
   },

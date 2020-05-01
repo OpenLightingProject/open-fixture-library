@@ -1175,16 +1175,20 @@ const gdtfAttributes = {
     inheritFrom: `Prism1PosRotate`,
   },
   Prism2: {
-    // Controls the insertion of fixture´s prism wheel 2. Refracts the beam into multiple beams of light on wheel 2.
-    inheritFrom: `Prism`,
+    // The fixture’s prism wheel 2. Selects prisms in prism wheel 2. A different channel function sets the angle of the indexed position in the selected prism or the angular speed of its continuous rotation. This is the main attribute of prism wheel’s 2 wheel control.
+    inheritFrom: `Prism1`,
   },
   Prism2Pos: {
-    // Controls the indexed position of fixture‘s prism on prism wheel 2.
-    inheritFrom: `PrismPos`,
+    // Controls angle of indexed rotation of prisms in prism wheel 2. This is the main attribute of prism wheel’s 2 wheel slot control.
+    inheritFrom: `Prism1Pos`,
   },
-  Prism2PosRotation: {
-    // Controls the speed and direction of the continuous rotation of the fixture’s prism on prism wheel 2.
-    inheritFrom: `PrismPosRotation`,
+  Prism2PosRotate: {
+    // Controls the speed and direction of continuous rotation of prisms in prism wheel 2. (since GDTF v0.88)
+    inheritFrom: `Prism1PosRotate`,
+  },
+  Prism2SelectSpin: {
+    // Selects prisms whose rotation is continuous in prism wheel 2 and controls the angular speed of the prism’s spin within the same channel function.
+    inheritFrom: `Prism1SelectSpin`,
   },
   ShaperMacros: {
     // Predefined presets for shaper positions.
