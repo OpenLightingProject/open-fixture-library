@@ -39,7 +39,7 @@ const deprecatedGdtfAttributes = {
   },
   BeamMode: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `AnimationIndexRotateMode`,
+    inheritFrom: `AnimationWheel(n)Mode`,
   },
   Blower: {
     // Renamed to Blower(n) in GDTF v1.0
@@ -180,67 +180,67 @@ const deprecatedGdtfAttributes = {
   },
   ControlAutofocus: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`,
+    inheritFrom: `Control(n)`,
   },
   ControlBlackout: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`,
+    inheritFrom: `Control(n)`,
   },
   ControlCalibrationMode: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`,
+    inheritFrom: `Control(n)`,
   },
   ControlColorMode: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`,
+    inheritFrom: `Control(n)`,
   },
   ControlCRIMode: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`,
+    inheritFrom: `Control(n)`,
   },
   ControlDimmerCurve: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`,
+    inheritFrom: `Control(n)`,
   },
   ControlDisplayIntensity: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`,
+    inheritFrom: `Control(n)`,
   },
   ControlDMXInput: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`,
+    inheritFrom: `Control(n)`,
   },
   ControlFanMode: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`,
+    inheritFrom: `Control(n)`,
   },
   ControlFollowSpotMode: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`,
+    inheritFrom: `Control(n)`,
   },
   ControlLamp: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`,
+    inheritFrom: `Control(n)`,
   },
   ControlLampMode: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`,
+    inheritFrom: `Control(n)`,
   },
   ControlPanTiltMode: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`,
+    inheritFrom: `Control(n)`,
   },
   ControlParking: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`,
+    inheritFrom: `Control(n)`,
   },
   ControlReset: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`,
+    inheritFrom: `Control(n)`,
   },
   ControlWhiteCount: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`,
+    inheritFrom: `Control(n)`,
   },
   CTG: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -257,7 +257,7 @@ const deprecatedGdtfAttributes = {
   EffectsIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   EffectsMacro: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Effects`,
+    inheritFrom: `Effects(n)`,
   },
   'EffectsPar(n)': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -271,7 +271,7 @@ const deprecatedGdtfAttributes = {
   },
   EffectsPosIndex: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `EffectsPos`,
+    inheritFrom: `Effects(n)Pos`,
   },
   EffectsPosSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -285,20 +285,20 @@ const deprecatedGdtfAttributes = {
   EffectsRateIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   EffectsSelectIndex: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Effects`,
+    inheritFrom: `Effects(n)`,
   },
   EffectsSelectSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Effects`,
+    inheritFrom: `Effects(n)`,
   },
   EffectsSelectSpinDynamic: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Effects`,
+    inheritFrom: `Effects(n)`,
   },
-  Effects2Macro: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-  Effects2Par2: {
+  'Effects(n)Macro': undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
+  'Effects(n)Par(m)': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `EffectsPar(n)`,
+    inheritFrom: `Effects(n)Adjust(m)`,
   },
   Fan: {
     // Renamed to Fan(n) in GDTF v1.0
@@ -326,15 +326,15 @@ const deprecatedGdtfAttributes = {
   },
   FrostHeavy: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Frost`,
+    inheritFrom: `Frost(n)`,
   },
   FrostLight: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Frost`,
+    inheritFrom: `Frost(n)`,
   },
   FrostMedium: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Frost`,
+    inheritFrom: `Frost(n)`,
   },
   FrostMSpeed: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -343,8 +343,8 @@ const deprecatedGdtfAttributes = {
   },
   'Gobo(n)Audio': {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    // Officially supported as Gobo1WheelAudio since GDTF v0.88
-    inheritFrom: `Gobo1WheelAudio`,
+    // Officially supported as Gobo(n)WheelAudio since GDTF v0.88
+    inheritFrom: `Gobo(n)WheelAudio`,
   },
   'Gobo(n)GoboIndex': undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   'Gobo(n)GoboShakeIndex': undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd

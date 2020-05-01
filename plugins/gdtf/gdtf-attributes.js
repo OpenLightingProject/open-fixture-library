@@ -151,11 +151,11 @@ const gdtfAttributes = {
   },
   AnimationWheelShortcutMode: {
     // Defines whether the animation wheel takes the shortest distance between two positions.
-    inheritFrom: `AnimationIndexRotateMode`,
+    inheritFrom: `AnimationWheel(n)Mode`,
   },
   BeamEffectIndexRotateMode: {
     // Changes mode to control either index or rotation of the beam effects.
-    inheritFrom: `AnimationIndexRotateMode`,
+    inheritFrom: `AnimationWheel(n)Mode`,
   },
   BeamReset: {
     // Resets the fixture's beam features.
@@ -248,7 +248,7 @@ const gdtfAttributes = {
   },
   'Color(n)Mode': {
     // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 1.
-    inheritFrom: `AnimationIndexRotateMode`,
+    inheritFrom: `AnimationWheel(n)Mode`,
   },
   'Color(n)WheelAudio': {
     // Controls audio-controlled functionality of color wheel 1 (since GDTF v0.88)
@@ -274,7 +274,7 @@ const gdtfAttributes = {
   },
   'Color(n)WheelRandom': {
     // Controls speed of color wheel´s 1 random color slot selection. (since GDTF v0.88)
-    inheritFrom: `Effects`,
+    inheritFrom: `Effects(n)`,
   },
   'Color(n)WheelSpin': {
     // Controls the speed and direction of continuous rotation of color wheel 1.
@@ -414,11 +414,11 @@ const gdtfAttributes = {
   },
   ColorCalibrationMode: {
     // Sets calibration mode (for example on/off). (since GDTF v1.0)
-    inheritFrom: `Control`,
+    inheritFrom: `Control(n)`,
   },
   ColorConsistency: {
     // Controls consistent behavior of color. (since GDTF v1.0)
-    inheritFrom: `Control`,
+    inheritFrom: `Control(n)`,
   },
   ColorControl: {
     // Controls special color related functions. (since GDTF v1.0)
@@ -428,7 +428,7 @@ const gdtfAttributes = {
   },
   'ColorEffects(n)': {
     // Selects predefined color effects built into the fixture.
-    inheritFrom: `Effects`,
+    inheritFrom: `Effects(n)`,
   },
   'ColorMacro(n)': {
     // Selects predefined colors that are programed in the fixture's firmware.
@@ -458,7 +458,7 @@ const gdtfAttributes = {
   },
   ColorMixMode: {
     // Changes control between selecting continuous selection, half selection, random selection, color spinning, etc. in color mixing.
-    inheritFrom: `AnimationIndexRotateMode`,
+    inheritFrom: `AnimationWheel(n)Mode`,
   },
   ColorMixMSpeed: {
     // Movement speed of the fixture's ColorMix presets.
@@ -470,7 +470,7 @@ const gdtfAttributes = {
   },
   ColorModelMode: {
     // Controls color model (CMY/RGB/HSV..). (since GDTF v1.0)
-    inheritFrom: `AnimationIndexRotateMode`,
+    inheritFrom: `AnimationWheel(n)Mode`,
   },
   'ColorRGB_Blue': {
     // Controls the fixture's blue attribute for indirect RGB color mixing. (since GDTF v1.0)
@@ -536,7 +536,7 @@ const gdtfAttributes = {
   },
   ColorWheelShortcutMode: {
     // Defines whether the color wheel takes the shortest distance between two colors.
-    inheritFrom: `AnimationIndexRotateMode`,
+    inheritFrom: `AnimationWheel(n)Mode`,
   },
   'Control(n)': {
     // Controls the channel of a fixture.
@@ -574,7 +574,7 @@ const gdtfAttributes = {
   CustomColor: undefined, // Custom color related functions (save, recall..). (since GDTF v1.0)
   CyanMode: {
     // Controls how Cyan is used within the fixture's cyan CMY-mixing feature.
-    inheritFrom: `AnimationIndexRotateMode`,
+    inheritFrom: `AnimationWheel(n)Mode`,
   },
   Dimmer: {
     // Controls the intensity of a fixture.
@@ -590,7 +590,7 @@ const gdtfAttributes = {
   },
   DimmerMode: {
     // Selects different modes of intensity.
-    inheritFrom: `AnimationIndexRotateMode`,
+    inheritFrom: `AnimationWheel(n)Mode`,
   },
   DisplayIntensity: undefined, // Adjusts intensity of display (since GDTF v1.0)
   DMXInput: undefined, // Selects DMX Input (since GDTF v1.0)
@@ -679,7 +679,7 @@ const gdtfAttributes = {
   },
   FocusMode: {
     // Changes modes of the fixture’s focus - manual or auto- focus.
-    inheritFrom: `AnimationIndexRotateMode`,
+    inheritFrom: `AnimationWheel(n)Mode`,
   },
   FocusMSpeed: {
     // Movement speed of the fixture's focus.
@@ -830,7 +830,7 @@ const gdtfAttributes = {
   },
   'Gobo(n)WheelMode': {
     // Changes control between selecting, indexing, and rotating the gobos of gobo wheel (n).
-    inheritFrom: `AnimationIndexRotateMode`,
+    inheritFrom: `AnimationWheel(n)Mode`,
   },
   'Gobo(n)WheelRandom': {
     // Controls speed of gobo wheel´s (n) random gobo slot selection. (since GDTF v0.88)
@@ -903,7 +903,7 @@ const gdtfAttributes = {
   },
   IrisMode: {
     // Changes modes of the fixture’s iris - linear, strobe, pulse.
-    inheritFrom: `AnimationIndexRotateMode`,
+    inheritFrom: `AnimationWheel(n)Mode`,
   },
   IrisMSpeed: {
     // Movement speed of the fixture's iris.
@@ -955,13 +955,13 @@ const gdtfAttributes = {
   },
   LampPowerMode: {
     // Controls the energy consumption of the lamp.
-    inheritFrom: `AnimationIndexRotateMode`,
+    inheritFrom: `AnimationWheel(n)Mode`,
   },
   LEDFrequency: undefined, // Controls LED frequency. (since GDTF v1.0)
   LEDZoneMode: undefined, // Changes zones of LEDs. (since GDTF v1.0)
   MagentaMode: {
     // Controls how Cyan is used within the fixture's magenta CMY-mixing.
-    inheritFrom: `AnimationIndexRotateMode`,
+    inheritFrom: `AnimationWheel(n)Mode`,
   },
   MediaContent: undefined, // Selects the content slot of in the selected media folder (e.g. of a media server). (since GDTF v1.0)
   MediaFolder: undefined, // Selects the media folder of a device (e.g., a media server). (since GDTF v1.0)
@@ -978,7 +978,7 @@ const gdtfAttributes = {
   },
   PanMode: {
     // Selects fixture's pan mode. Selects between a limited pan range (e.g. -270 to 270) or a continuous pan range.
-    inheritFrom: `AnimationIndexRotateMode`,
+    inheritFrom: `AnimationWheel(n)Mode`,
   },
   PanReset: {
     // Resets the fixture's pan.
@@ -989,15 +989,15 @@ const gdtfAttributes = {
   Playmode: undefined, // Selects the playmode of a device (e.g., a media server). (since GDTF v1.0)
   PositionEffect: {
     // Selects the predefined position effects that are built into the fixture.
-    inheritFrom: `Effects`,
+    inheritFrom: `Effects(n)`,
   },
   PositionEffectFade: {
     // Snaps or smooth fades with timing in running predefined position effects.
-    inheritFrom: `EffectsFade`,
+    inheritFrom: `Effects(n)Fade`,
   },
   PositionEffectRate: {
     // Controls the speed of the predefined position effects that are built into the fixture.
-    inheritFrom: `EffectsRate`,
+    inheritFrom: `Effects(n)Rate`,
   },
   PositionModes: {
     // Selects the fixture's position mode.
@@ -1183,7 +1183,7 @@ const gdtfAttributes = {
   },
   StrobeMode: {
     // Changes strobe style - strobe, pulse, random strobe, etc. - of the shutter attribute.
-    inheritFrom: `AnimationIndexRotateMode`,
+    inheritFrom: `AnimationWheel(n)Mode`,
   },
   StrobeRate: {
     // Controls the time between strobe flashes.
@@ -1199,7 +1199,7 @@ const gdtfAttributes = {
   },
   TiltMode: {
     // Selects fixture's pan mode. Selects between a limited tilt range (e.g. -130 to 130) or a continuous tilt range.
-    inheritFrom: `AnimationIndexRotateMode`,
+    inheritFrom: `AnimationWheel(n)Mode`,
   },
   TiltReset: {
     // Resets the fixture's tilt.
@@ -1221,7 +1221,7 @@ const gdtfAttributes = {
   XYZ_Z: undefined, // Defines a fixture‘s z-coordinate within an XYZ coordinate system.
   YellowMode: {
     // Controls how Cyan is used within the fixture's yellow CMY-mixing feature.
-    inheritFrom: `AnimationIndexRotateMode`,
+    inheritFrom: `AnimationWheel(n)Mode`,
   },
   Zoom: {
     // Controls the spread of the fixture's beam/spot. (since GDTF v1.0)
