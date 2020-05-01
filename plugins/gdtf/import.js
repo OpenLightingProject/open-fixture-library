@@ -79,7 +79,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     },
   };
 
-  fixture.comment = gdtfFixture.$.Description;
+  fixture.comment = getFixtureComment();
 
   warnings.push(`Please add relevant links to the fixture.`);
 
@@ -133,6 +133,30 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       [fixKey]: warnings,
     },
   };
+
+  /**
+   * @returns {String|undefined} The comment to add to the fixture.
+   */
+  function getFixtureComment() {
+    const { Name, LongName, Manufacturer, Description } = gdtfFixture.$;
+
+    const includeLongName = (LongName && LongName !== Name);
+    const includeDescription = (Description && Description !== `${Manufacturer} ${Name}`);
+
+    if (includeLongName && includeDescription) {
+      return `${LongName}: ${Description}`;
+    }
+
+    if (includeLongName) {
+      return LongName;
+    }
+
+    if (includeDescription) {
+      return Description;
+    }
+
+    return undefined;
+  }
 
 
   /**
