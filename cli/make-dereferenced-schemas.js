@@ -3,7 +3,7 @@
 const fs = require(`fs`);
 const path = require(`path`);
 const chalk = require(`chalk`);
-const schemaRefParser = require(`json-schema-ref-parser`);
+const schemaRefParser = require(`@apidevtools/json-schema-ref-parser`);
 
 const schemaDir = path.join(__dirname, `../schemas/`);
 
