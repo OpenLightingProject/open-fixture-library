@@ -1,0 +1,90 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "GRBW Fader",
+  "shortName": "GRBW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Stuart Hanlon"],
+    "createDate": "2020-04-17",
+    "lastModifyDate": "2020-04-17"
+  },
+  "comment": "RGBW fixture with GRBW pixel order",
+  "availableChannels": {
+    "Green": {
+      "fineChannelAliases": ["Green fine", "Green fine^2"],
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine", "Red fine^2"],
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine", "Blue fine^2"],
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine", "White fine^2"],
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 bit",
+      "shortName": "8bit",
+      "channels": [
+        "Green",
+        "Red",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "16 bit",
+      "shortName": "16bit",
+      "channels": [
+        "Green",
+        "Green fine",
+        "Red",
+        "Red fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine"
+      ]
+    },
+    {
+      "name": "24 bit",
+      "shortName": "24bit",
+      "channels": [
+        "Green",
+        "Green fine",
+        "Green fine^2",
+        "Red",
+        "Red fine",
+        "Red fine^2",
+        "Blue",
+        "Blue fine",
+        "Blue fine^2",
+        "White",
+        "White fine",
+        "White fine^2"
+      ]
+    }
+  ]
+}
