@@ -59,17 +59,17 @@
       </ul>
 
       <div class="button-bar right">
-        <a href="#cancel" class="button secondary" @click.prevent="onCancel">Continue editing</a>
-        <a
+        <button type="button" class="secondary" @click.prevent="onCancel">Continue editing</button>
+        <button
           v-if="hasPreview"
-          href="#preview"
-          class="button primary"
-          @click.prevent="onPreview">Preview fixture{{ isPlural ? `s` : `` }}</a>
-        <a
+          type="button"
+          class="primary"
+          @click.prevent="onPreview">Preview fixture{{ isPlural ? `s` : `` }}</button>
+        <button
           v-else
-          href="#submit"
-          class="button primary"
-          @click.prevent="onSubmit">Submit to OFL</a>
+          type="button"
+          class="primary"
+          @click.prevent="onSubmit">Submit to OFL</button>
       </div>
     </div>
 
@@ -112,8 +112,8 @@
       </div>
 
       <div class="button-bar right">
-        <a href="#cancel" class="button secondary" @click.prevent="onCancel">Continue editing</a>
-        <a href="#submit" class="button primary" @click.prevent="onSubmit">Submit to OFL</a>
+        <button type="button" class="secondary" @click.prevent="onCancel">Continue editing</button>
+        <button type="button" class="primary" @click.prevent="onSubmit">Submit to OFL</button>
       </div>
     </div>
 
@@ -127,7 +127,7 @@
 
       <div class="button-bar right">
         <NuxtLink to="/" class="button secondary">Back to homepage</NuxtLink>
-        <a href="#close" class="button secondary" @click.prevent="onReset">Close</a>
+        <button type="button" class="button secondary" @click.prevent="onReset">Close</button>
         <DownloadButton
           v-if="Object.values(fixtureCreateResult.errors).flat().length === 0"
           button-style="select"
@@ -146,7 +146,7 @@
       <textarea v-model="rawData" readonly />
 
       <div class="button-bar right">
-        <a href="#cancel" class="button secondary" @click.prevent="onCancel">Close</a>
+        <button type="button" class="button secondary" @click.prevent="onCancel">Close</button>
         <a
           href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
           class="button primary"

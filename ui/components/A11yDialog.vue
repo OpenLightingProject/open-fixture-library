@@ -14,15 +14,15 @@
         class="card">
         <div>
 
-          <a
+          <button
             v-if="cancellable"
-            href="#close"
+            type="button"
             class="icon-button close"
             title="Close"
             @click.prevent="hide">
             Close
             <OflSvg name="close" />
-          </a>
+          </button>
 
           <h2 :id="`${id}-dialog-title`" tabindex="-1" autofocus>
             {{ title }}
