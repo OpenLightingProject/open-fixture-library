@@ -8,11 +8,11 @@
 
     <template v-if="state === `preview`" #after-title>
       <select
-        v-if="Object.keys(fixtureCreateResult.fixtures).length > 1"
+        v-if="fixtureKeys.length > 1"
         v-model="previewFixtureKey"
         class="preview-fixture-chooser">
         <option
-          v-for="key in Object.keys(fixtureCreateResult.fixtures)"
+          v-for="key in fixtureKeys"
           :key="key"
           :value="key">{{ key }}</option>
       </select>
@@ -28,7 +28,7 @@
         and then submit your fixture{{ isPlural ? `s` : `` }} to the Open Fixture Library project.
         After submitting, we will review the fixture{{ isPlural ? `s` : `` }} and fix all remaining issues.
       </template>
-      <template v-else-if="hasValidationIssues">
+      <template v-else-if="hasValidationErrors || hasValidationWarnings">
         Unfortunately, the fixture validation returned some issues.
         You can try to resolve as many as you can (some may be unavoidable in the editor).
         Next, head over to the preview, where it is also possible to download
@@ -45,7 +45,7 @@
       </template>
 
       <ul>
-        <li v-for="key in Object.keys(fixtureCreateResult.fixtures)" :key="key">
+        <li v-for="key in fixtureKeys" :key="key">
           <strong>{{ key }}</strong>
           <ul>
             <li v-for="message in fixtureCreateResult.errors[key]" :key="message">
@@ -82,32 +82,27 @@
           </h1>
 
           <DownloadButton
-            v-if="fixtureCreateResult.errors[previewFixtureKey].length === 0"
+            v-if="previewFixtureResults.errors.length === 0"
             :show-help="false"
-            :editor-fixtures="{
-              manufacturers: { [previewFixtureKey]: fixtureCreateResult.manufacturers[previewFixtureKey] },
-              fixtures: { [previewFixtureKey]: fixtureCreateResult.fixtures[previewFixtureKey] },
-              warnings: { [previewFixtureKey]: fixtureCreateResult.warnings[previewFixtureKey] },
-              errors: { [previewFixtureKey]: fixtureCreateResult.errors[previewFixtureKey] },
-            }" />
+            :editor-fixtures="previewFixtureCreateResult" />
         </header>
 
-        <section v-if="fixtureCreateResult.warnings[previewFixtureKey].length > 0" class="card yellow">
+        <section v-if="previewFixtureResults.warnings.length > 0" class="card yellow">
           <strong>Warnings:<br></strong>
-          <span v-for="message in fixtureCreateResult.warnings[previewFixtureKey]" :key="message">
+          <span v-for="message in previewFixtureResults.warnings" :key="message">
             {{ message }}<br>
           </span>
         </section>
 
-        <section v-if="fixtureCreateResult.errors[previewFixtureKey].length > 0" class="card red">
+        <section v-if="previewFixtureResults.errors.length > 0" class="card red">
           <strong>Errors – not possible to show fixture preview:<br></strong>
-          <span v-for="message in fixtureCreateResult.errors[previewFixtureKey]" :key="message">
+          <span v-for="message in previewFixtureResults.errors" :key="message">
             {{ message }}<br>
           </span>
         </section>
 
         <FixturePage
-          v-if="fixtureCreateResult.errors[previewFixtureKey].length === 0"
+          v-if="previewFixtureResults.errors.length === 0"
           :fixture="previewFixture" />
       </div>
 
@@ -129,7 +124,7 @@
         <NuxtLink to="/" class="button secondary">Back to homepage</NuxtLink>
         <button type="button" class="button secondary" @click.prevent="onReset">Close</button>
         <DownloadButton
-          v-if="Object.values(fixtureCreateResult.errors).flat().length === 0"
+          v-if="!hasValidationErrors"
           button-style="select"
           :show-help="false"
           :editor-fixtures="fixtureCreateResult" />
@@ -238,12 +233,15 @@ export default {
     };
   },
   computed: {
-    isPlural() {
+    fixtureKeys() {
       if (this.fixtureCreateResult === null) {
-        return false;
+        return [];
       }
 
-      return Object.keys(this.fixtureCreateResult.fixtures).length > 1;
+      return Object.keys(this.fixtureCreateResult.fixtures);
+    },
+    isPlural() {
+      return this.fixtureKeys.length > 1;
     },
     title() {
       if (this.state in stateTitlesPlural && this.isPlural) {
@@ -263,21 +261,26 @@ export default {
     },
     hasPreview() {
       if (this.fixtureCreateResult === null) {
-        return false; // undetermined
+        return false;
       }
 
       return Object.values(this.fixtureCreateResult.errors).some(
         errors => errors.length === 0,
       );
     },
-    hasValidationIssues() {
+    hasValidationErrors() {
       if (this.fixtureCreateResult === null) {
-        return false; // undetermined
+        return false;
       }
 
-      const warnings = Object.values(this.fixtureCreateResult.warnings).flat();
-      const errors = Object.values(this.fixtureCreateResult.errors).flat();
-      return warnings.length > 0 || errors.length > 0;
+      return Object.values(this.fixtureCreateResult.errors).flat().length > 0;
+    },
+    hasValidationWarnings() {
+      if (this.fixtureCreateResult === null) {
+        return false;
+      }
+
+      return Object.values(this.fixtureCreateResult.warnings).flat().length > 0;
     },
     previewFixture() {
       if (this.previewFixtureKey === null) {
@@ -292,6 +295,34 @@ export default {
       }
 
       return new Fixture(man, fixKey, this.fixtureCreateResult.fixtures[this.previewFixtureKey]);
+    },
+    previewFixtureResults() {
+      if (this.previewFixtureKey === null) {
+        return null;
+      }
+
+      return {
+        warnings: this.fixtureCreateResult.warnings[this.previewFixtureKey],
+        errors: this.fixtureCreateResult.errors[this.previewFixtureKey],
+      };
+    },
+    previewFixtureCreateResult() {
+      if (this.previewFixtureKey === null) {
+        return null;
+      }
+
+      return {
+        manufacturers: this.fixtureCreateResult.manufacturers,
+        fixtures: {
+          [this.previewFixtureKey]: this.fixtureCreateResult.fixtures[this.previewFixtureKey],
+        },
+        warnings: {
+          [this.previewFixtureKey]: this.previewFixtureResults.warnings,
+        },
+        errors: {
+          [this.previewFixtureKey]: this.previewFixtureResults.errors,
+        },
+      };
     },
   },
   methods: {
