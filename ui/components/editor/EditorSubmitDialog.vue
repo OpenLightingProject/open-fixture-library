@@ -95,7 +95,7 @@
         </section>
 
         <section v-if="previewFixtureResults.errors.length > 0" class="card red">
-          <strong>Errors – not possible to show fixture preview:<br></strong>
+          <strong>Errors (prevent showing the fixture preview):<br></strong>
           <span v-for="message in previewFixtureResults.errors" :key="message">
             {{ message }}<br>
           </span>
