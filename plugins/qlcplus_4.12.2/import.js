@@ -146,8 +146,8 @@ function getOflMatrix(qlcPlusFixture) {
     .map(obj => obj.Physical[0].Layout[0]);
 
   if (physicalLayouts) {
-    const maxWidth = Math.max(...physicalLayouts.map(layout => parseInt(layout.$.Width)));
-    const maxHeight = Math.max(...physicalLayouts.map(layout => parseInt(layout.$.Height)));
+    const maxWidth = Math.max(...physicalLayouts.map(layout => parseInt(layout.$.Width, 10)));
+    const maxHeight = Math.max(...physicalLayouts.map(layout => parseInt(layout.$.Height, 10)));
 
     matrix.pixelCount = [maxWidth, maxHeight, 1];
   }
@@ -208,7 +208,7 @@ const slotTypeFunctions = {
       slot.name = cap._;
 
       if (`Res1` in cap.$) {
-        slot.facets = parseInt(cap.$.Res1);
+        slot.facets = parseInt(cap.$.Res1, 10);
       }
     },
   },
@@ -505,7 +505,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
   const channel = {
     fineChannelAliases: [],
     dmxValueResolution: `8bit`,
-    defaultValue: parseInt(qlcPlusChannel.$.Default) || 0,
+    defaultValue: parseInt(qlcPlusChannel.$.Default, 10) || 0,
   };
 
   const physicals = qlcPlusFixture.Mode.concat(qlcPlusFixture)
@@ -515,7 +515,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
   const [panMax, tiltMax] = [`PanMax`, `TiltMax`].map(
     prop => Math.max(...physicals.map(physical => {
       if (physical.Focus && prop in physical.Focus[0].$) {
-        return parseInt(physical.Focus[0].$[prop]) || 0;
+        return parseInt(physical.Focus[0].$[prop], 10) || 0;
       }
       return 0;
     })),
@@ -551,7 +551,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
    */
   function getOflCapability(qlcPlusCapability) {
     const cap = {
-      dmxRange: [parseInt(qlcPlusCapability.$.Min), parseInt(qlcPlusCapability.$.Max)],
+      dmxRange: [parseInt(qlcPlusCapability.$.Min, 10), parseInt(qlcPlusCapability.$.Max, 10)],
       type: ``,
     };
 
@@ -775,7 +775,7 @@ function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
 
   mode.channels = [];
   for (const ch of (qlcPlusMode.Channel || [])) {
-    mode.channels[parseInt(ch.$.Number)] = ch._;
+    mode.channels[parseInt(ch.$.Number, 10)] = ch._;
   }
 
   if (`Head` in qlcPlusMode) {
@@ -784,7 +784,7 @@ function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
         return;
       }
 
-      const channelList = head.Channel.map(ch => mode.channels[parseInt(ch)]).join(`, `);
+      const channelList = head.Channel.map(ch => mode.channels[parseInt(ch, 10)]).join(`, `);
 
       warningsArray.push(`Please add ${mode.name} mode's Head #${index + 1} to the fixture's matrix. The included channels were ${channelList}.`);
     });
@@ -858,9 +858,9 @@ function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
         }
 
         const coarseChannelGroupName = coarseChannel.Group[0]._;
-        const coarseChannelGroupByte = parseInt(coarseChannel.Group[0].$.Byte);
+        const coarseChannelGroupByte = coarseChannel.Group[0].$.Byte;
 
-        return coarseChannelGroupName === fineChannelGroupName && coarseChannelGroupByte === 0;
+        return coarseChannelGroupName === fineChannelGroupName && coarseChannelGroupByte === `0`;
       });
 
       if (coarseChannels.length === 1) {

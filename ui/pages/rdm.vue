@@ -93,9 +93,9 @@ export default {
   async asyncData({ query, redirect }) {
     const { manufacturerId, modelId, personalityIndex } = query;
 
-    const manufacturerIdNumber = parseInt(manufacturerId);
-    const modelIdNumber = parseInt(modelId);
-    const personalityIndexNumber = parseInt(personalityIndex);
+    const manufacturerIdNumber = parseInt(manufacturerId, 10);
+    const modelIdNumber = parseInt(modelId, 10);
+    const personalityIndexNumber = parseInt(personalityIndex, 10);
 
     if (isEmpty(manufacturerId)) {
       return {

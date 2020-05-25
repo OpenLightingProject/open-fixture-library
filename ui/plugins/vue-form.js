@@ -69,7 +69,7 @@ Vue.use(VueForm, {
     },
     'max-file-size': function(file, attrValue) {
       if (typeof file === `object`) {
-        let maxSize = parseInt(attrValue);
+        let maxSize = parseInt(attrValue, 10);
 
         if (attrValue.includes(`M`)) {
           maxSize *= 1000 * 1000;

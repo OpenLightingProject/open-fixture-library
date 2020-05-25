@@ -159,13 +159,7 @@ function getCombinedEcueChannels(ecueFixture) {
   }
 
   // sort channels by (coarse) DMX channel
-  channels.sort((a, b) => {
-    if (parseInt(a.$.DmxByte0) < parseInt(b.$.DmxByte0)) {
-      return -1;
-    }
-
-    return (parseInt(a.$.DmxByte0) > parseInt(b.$.DmxByte0)) ? 1 : 0;
-  });
+  channels.sort((a, b) => parseInt(a.$.DmxByte0, 10) - parseInt(b.$.DmxByte0, 10));
 
   return channels;
 }
@@ -193,7 +187,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
     const shortNameFine = `${channelKey} fine`;
     channel.fineChannelAliases = [shortNameFine];
     maxDmxValue = (256 * 256) - 1;
-    fixture.modes[0].channels[parseInt(ecueChannel.$.DmxByte1) - 1] = shortNameFine;
+    fixture.modes[0].channels[parseInt(ecueChannel.$.DmxByte1, 10) - 1] = shortNameFine;
   }
 
   addDmxValues();
@@ -219,7 +213,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
   }
 
   fixture.availableChannels[channelKey] = channel;
-  fixture.modes[0].channels[parseInt(ecueChannel.$.DmxByte0) - 1] = channelKey;
+  fixture.modes[0].channels[parseInt(ecueChannel.$.DmxByte0, 10) - 1] = channelKey;
 
 
   /**
@@ -227,11 +221,11 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
    */
   function addDmxValues() {
     if (ecueChannel.$.DefaultValue !== `0`) {
-      channel.defaultValue = parseInt(ecueChannel.$.DefaultValue);
+      channel.defaultValue = parseInt(ecueChannel.$.DefaultValue, 10);
     }
 
     if (ecueChannel.$.Highlight !== `0`) {
-      channel.highlightValue = parseInt(ecueChannel.$.Highlight);
+      channel.highlightValue = parseInt(ecueChannel.$.Highlight, 10);
     }
 
     if (ecueChannel.$.Constant === `1`) {
@@ -364,11 +358,11 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
      * @returns {Array.<Number>} The DMX range of this capability.
      */
     function getDmxRange() {
-      const dmxRangeStart = parseInt(ecueRange.$.Start);
-      let dmxRangeEnd = parseInt(ecueRange.$.End);
+      const dmxRangeStart = parseInt(ecueRange.$.Start, 10);
+      let dmxRangeEnd = parseInt(ecueRange.$.End, 10);
 
       if (dmxRangeEnd === -1) {
-        dmxRangeEnd = (index + 1 < ecueChannel.Range.length) ? parseInt(ecueChannel.Range[index + 1].$.Start) - 1 : maxDmxValue;
+        dmxRangeEnd = (index + 1 < ecueChannel.Range.length) ? parseInt(ecueChannel.Range[index + 1].$.Start, 10) - 1 : maxDmxValue;
       }
 
       return [dmxRangeStart, dmxRangeEnd];

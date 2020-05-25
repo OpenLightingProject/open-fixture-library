@@ -898,19 +898,19 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       const channels = dmxBreakWrappers[dmxBreakWrappers.length - 1].channels;
 
       if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Coarse`)) {
-        channels[parseInt(gdtfChannel.$.Coarse) - 1] = chKey;
+        channels[parseInt(gdtfChannel.$.Coarse, 10) - 1] = chKey;
       }
 
       if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Fine`)) {
-        channels[parseInt(gdtfChannel.$.Fine) - 1] = oflChannel.fineChannelAliases[0];
+        channels[parseInt(gdtfChannel.$.Fine, 10) - 1] = oflChannel.fineChannelAliases[0];
       }
 
       if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Ultra`)) {
-        channels[parseInt(gdtfChannel.$.Ultra) - 1] = oflChannel.fineChannelAliases[1];
+        channels[parseInt(gdtfChannel.$.Ultra, 10) - 1] = oflChannel.fineChannelAliases[1];
       }
 
       if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Uber`)) {
-        channels[parseInt(gdtfChannel.$.Uber) - 1] = oflChannel.fineChannelAliases[2];
+        channels[parseInt(gdtfChannel.$.Uber, 10) - 1] = oflChannel.fineChannelAliases[2];
       }
     }
 
@@ -1100,7 +1100,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
      */
     function getChannelResolution(channel) {
       if (`dmxValueResolution` in channel) {
-        return parseInt(channel.dmxValueResolution) * 8;
+        return parseInt(channel.dmxValueResolution, 10) * 8;
       }
 
       if (`fineChannelAliases` in channel) {
@@ -1133,7 +1133,7 @@ function getIsoDateFromGdtfDate(dateStr, fallbackDateStr) {
 
   try {
     const [, day, month, year] = match;
-    const date = new Date(Date.UTC(parseInt(year), parseInt(month) - 1, day));
+    const date = new Date(Date.UTC(parseInt(year, 10), parseInt(month, 10) - 1, day));
 
     return date.toISOString().replace(/T.*/, ``);
   }
@@ -1149,10 +1149,10 @@ function getIsoDateFromGdtfDate(dateStr, fallbackDateStr) {
 function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueStr) {
   try {
     const [, value, resolution] = dmxValueStr.match(/^(\d+)\/(\d)$/);
-    return [parseInt(value), parseInt(resolution)];
+    return [parseInt(value, 10), parseInt(resolution, 10)];
   }
   catch (error) {
-    return [parseInt(dmxValueStr) || 0, 1];
+    return [parseInt(dmxValueStr, 10) || 0, 1];
   }
 }
 

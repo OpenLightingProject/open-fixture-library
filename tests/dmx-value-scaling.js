@@ -133,7 +133,7 @@ function testScaleDmxValuesDown() {
  * @param {Number} desiredDmxValue The correct value for dmxValue in the desired resolution.
  */
 function testScaleDmxValue(dmxValue, currentResolution, desiredResolution, desiredDmxValue) {
-  dmxValue = parseInt(dmxValue);
+  dmxValue = parseInt(dmxValue, 10);
 
   testEqual(
     `scaleDmxValue(${dmxValue}, ${currentResolution}, ${desiredResolution})`,
