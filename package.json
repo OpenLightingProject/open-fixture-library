@@ -16,7 +16,7 @@
     "start": "node --max-old-space-size=4096 main.js",
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "eslint --ext .js,.vue,.json,.md .",
-    "lint:eslint-errors-only": "npm run lint -- --quiet --format codeframe",
+    "lint:eslint-errors-only": "npm run lint:eslint -- --quiet --format codeframe",
     "lint:stylelint": "stylelint **/*.scss **/*.vue",
     "test": "npm run lint && npm run test:fixtures-valid",
     "test:dmx-value-scaling": "node tests/dmx-value-scaling.js",
