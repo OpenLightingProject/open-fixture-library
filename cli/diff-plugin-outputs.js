@@ -8,14 +8,14 @@ const diffPluginOutputs = require(`../lib/diff-plugin-outputs.js`);
 
 const plugins = require(`../plugins/plugins.json`);
 const testFixtures = require(`../tests/test-fixtures.json`).map(
-  fixture => `${fixture.man}/${fixture.key}`
+  fixture => `${fixture.man}/${fixture.key}`,
 );
 
 const args = minimist(process.argv.slice(2), {
   string: [`p`, `c`, `r`],
   boolean: [`t`, `h`],
   alias: { p: `plugin`, c: `compare-plugin`, r: `ref`, t: `test-fix`, h: `help` },
-  default: { r: `HEAD` }
+  default: { r: `HEAD` },
 });
 args.comparePlugin = args[`compare-plugin`];
 args.testFix = args[`test-fix`];
@@ -34,7 +34,7 @@ const helpMessage = [
   `                        E. g. 02ba13, HEAD~1 or master.`,
   `                        Defaults to HEAD.`,
   `  --test-fix,       -t: Use the test fixtures instead of specifing custom fixtures.`,
-  `  --help,           -h: Show this help message.`
+  `  --help,           -h: Show this help message.`,
 ].join(`\n`);
 
 if (args.help) {

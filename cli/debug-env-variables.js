@@ -13,7 +13,7 @@ const usedVariables = [
   `TRAVIS_JOB_WEB_URL`,
   `TRAVIS_PULL_REQUEST`,
   `TRAVIS_PULL_REQUEST_SLUG`,
-  `TRAVIS_REPO_SLUG`
+  `TRAVIS_REPO_SLUG`,
 ];
 
 console.log(`This scripts lists all environment variables that are used in the Open Fixture Library.\n`);

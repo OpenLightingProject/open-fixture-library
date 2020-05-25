@@ -30,7 +30,7 @@ require(`../../lib/load-env-file.js`);
     await pullRequest.updateComment({
       filename: path.relative(path.join(__dirname, `../../`), __filename),
       name: `Schema has changed`,
-      lines: lines
+      lines: lines,
     });
   }
   catch (error) {

@@ -55,18 +55,18 @@ export default {
     name: {
       type: String,
       required: false,
-      default: null
+      default: null,
     },
     label: {
       type: String,
       required: false,
-      default: null
+      default: null,
     },
     value: {
       type: String,
       required: false,
-      default: null
-    }
-  }
+      default: null,
+    },
+  },
 };
 </script>

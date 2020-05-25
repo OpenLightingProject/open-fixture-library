@@ -38,18 +38,18 @@ export default {
   components: {
     EditorProportionalPropertySwitcher,
     LabeledInput,
-    PropertyInputText
+    PropertyInputText,
   },
   props: {
     capability: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -59,9 +59,9 @@ export default {
         soundSensitivity: null,
         soundSensitivityStart: `low`,
         soundSensitivityEnd: `high`,
-        comment: ``
-      }
+        comment: ``,
+      },
     };
-  }
+  },
 };
 </script>

@@ -21,7 +21,7 @@ module.exports = function createFixtureFromEditor(request, response) {
   }
   catch (error) {
     response.status(400).json({
-      error: error.message
+      error: error.message,
     });
   }
 };
@@ -36,7 +36,7 @@ function getFixtureCreateResult(fixtures) {
     manufacturers: {},
     fixtures: {},
     warnings: {},
-    errors: {}
+    errors: {},
   };
 
   // { 'uuid 1': 'new channel key 1', ... }
@@ -52,7 +52,7 @@ function getFixtureCreateResult(fixtures) {
     const key = `${manKey}/${fixKey}`;
 
     result.fixtures[key] = {
-      $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`
+      $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
     };
 
     for (const prop of Object.keys(schemaProperties.fixture)) {
@@ -68,7 +68,7 @@ function getFixtureCreateResult(fixtures) {
         result.fixtures[key].meta = {
           authors: [fixture.metaAuthor],
           createDate: now,
-          lastModifyDate: now
+          lastModifyDate: now,
         };
       }
       else if (prop === `links`) {
@@ -82,7 +82,7 @@ function getFixtureCreateResult(fixtures) {
       }
       else if (prop === `rdm` && propExistsIn(`rdmModelId`, fixture)) {
         result.fixtures[key].rdm = {
-          modelId: fixture.rdmModelId
+          modelId: fixture.rdmModelId,
         };
         if (propExistsIn(`rdmSoftwareVersion`, fixture)) {
           result.fixtures[key].rdm.softwareVersion = fixture.rdmSoftwareVersion;
@@ -123,7 +123,7 @@ function getFixtureCreateResult(fixtures) {
     const manKey = slugify(fixture.newManufacturerName);
 
     result.manufacturers[manKey] = {
-      name: fixture.newManufacturerName
+      name: fixture.newManufacturerName,
     };
 
     if (propExistsIn(`newManufacturerComment`, fixture)) {
@@ -154,7 +154,7 @@ function getFixtureCreateResult(fixtures) {
     let fixKey = slugify(fixture.name);
 
     const otherFixtureKeys = Object.keys(result.fixtures).filter(
-      key => key.startsWith(manKey)
+      key => key.startsWith(manKey),
     ).map(key => key.slice(manKey.length + 1));
 
     while (otherFixtureKeys.includes(fixKey)) {
@@ -200,7 +200,7 @@ function getFixtureCreateResult(fixtures) {
 
     for (const linkType of linkTypes) {
       const linksOfType = editorLinksArray.filter(
-        linkObj => linkObj.type === linkType
+        linkObj => linkObj.type === linkType,
       ).map(linkObj => linkObj.url);
 
       if (linksOfType.length) {
@@ -217,8 +217,8 @@ function getFixtureCreateResult(fixtures) {
   function addWheels(fixture, editorFixture) {
     const editorWheelChannels = Object.values(editorFixture.availableChannels).filter(
       editorChannel => editorChannel.wheel && editorChannel.wheel.slots.length > 0 && editorChannel.wheel.slots.some(
-        editorWheelSlot => editorWheelSlot !== null && editorWheelSlot.type !== ``
-      )
+        editorWheelSlot => editorWheelSlot !== null && editorWheelSlot.type !== ``,
+      ),
     );
 
     if (editorWheelChannels.length === 0) {
@@ -234,7 +234,7 @@ function getFixtureCreateResult(fixtures) {
         }
 
         const wheelSlot = {
-          type: editorWheelSlot.type
+          type: editorWheelSlot.type,
         };
 
         const wheelSlotSchema = schemaProperties.wheelSlotTypes[wheelSlot.type];
@@ -254,7 +254,7 @@ function getFixtureCreateResult(fixtures) {
       }
 
       fixture.wheels[editorChannel.name] = {
-        slots
+        slots,
       };
     });
   }

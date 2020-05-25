@@ -161,5 +161,5 @@ export default {
   'fixture/tilt-continuous-cw': fixtureTiltContinuousCwSvg,
   'fixture/tilt': fixtureTiltSvg,
   'fixture/wheel-shake': fixtureWheelShakeSvg,
-  'fixture/zoom': fixtureZoomSvg
+  'fixture/zoom': fixtureZoomSvg,
 };

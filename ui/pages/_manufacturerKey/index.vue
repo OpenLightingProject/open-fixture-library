@@ -68,16 +68,16 @@ export default {
         link: `/${manKey}/${fixKey}`,
         name: register.filesystem[`${manKey}/${fixKey}`].name,
         categories: Object.keys(register.categories).filter(
-          cat => register.categories[cat].includes(`${manKey}/${fixKey}`)
-        )
-      })
+          cat => register.categories[cat].includes(`${manKey}/${fixKey}`),
+        ),
+      }),
     );
 
     const organizationStructuredData = {
       '@context': `http://schema.org`,
       '@type': `Organization`,
       'name': manufacturer.name,
-      'brand': manufacturer.name
+      'brand': manufacturer.name,
     };
 
     if (`website` in manufacturer) {
@@ -90,17 +90,17 @@ export default {
       'itemListElement': fixtures.map((fix, index) => ({
         '@type': `ListItem`,
         'position': index + 1,
-        'url': `${packageJson.homepage}${fix.link}`
-      }))
+        'url': `${packageJson.homepage}${fix.link}`,
+      })),
     };
 
     return {
       manufacturer: Object.assign({}, manufacturer, {
-        color: register.colors[manKey]
+        color: register.colors[manKey],
       }),
       fixtures,
       organizationStructuredData,
-      itemListStructuredData
+      itemListStructuredData,
     };
   },
   head() {
@@ -111,10 +111,10 @@ export default {
       meta: [
         {
           hid: `title`,
-          content: title
-        }
-      ]
+          content: title,
+        },
+      ],
     };
-  }
+  },
 };
 </script>

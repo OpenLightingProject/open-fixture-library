@@ -257,7 +257,7 @@ import {
   constants,
   getEmptyFixture,
   getEmptyChannel,
-  getEmptyMode
+  getEmptyMode,
 } from '../assets/scripts/editor-utils.js';
 
 import manufacturers from '../../fixtures/manufacturers.json';
@@ -289,7 +289,7 @@ export default {
     LabeledInput,
     PropertyInputNumber,
     PropertyInputText,
-    PropertyInputTextarea
+    PropertyInputTextarea,
   },
   head() {
     const title = `Fixture Editor`;
@@ -299,9 +299,9 @@ export default {
       meta: [
         {
           hid: `title`,
-          content: title
-        }
-      ]
+          content: title,
+        },
+      ],
     };
   },
   asyncData({ query }) {
@@ -330,7 +330,7 @@ export default {
       githubUsername: ``,
       honeypot: ``,
       manufacturers,
-      properties: schemaProperties
+      properties: schemaProperties,
     };
   },
   computed: {
@@ -353,15 +353,15 @@ export default {
       manufacturerName = manufacturerName.trim().toLowerCase();
 
       return manufacturerName === `` || !this.fixture.name.trim().toLowerCase().startsWith(manufacturerName);
-    }
+    },
   },
   watch: {
     fixture: {
       handler: function() {
         this.autoSave(`fixture`);
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   beforeMount() {
     this.$root._oflRestoreComplete = false;
@@ -419,7 +419,7 @@ export default {
       const chName = this.getChannelName(channelUuid);
 
       return Object.keys(this.fixture.availableChannels).every(
-        uuid => chName !== this.getChannelName(uuid) || uuid === channelUuid
+        uuid => chName !== this.getChannelName(uuid) || uuid === channelUuid,
       );
     },
 
@@ -478,8 +478,8 @@ export default {
         {
           fixture: this.fixture,
           channel: this.channel,
-          timestamp: Date.now()
-        }
+          timestamp: Date.now(),
+        },
       ]));
     },
 
@@ -540,9 +540,9 @@ export default {
           align: {
             top: 0,
             left: 0,
-            topOffset: 100
+            topOffset: 100,
           },
-          isScrollable: target => target === window
+          isScrollable: target => target === window,
         }, () => field.focus());
 
         return;
@@ -569,7 +569,7 @@ export default {
 
       this.$router.push({
         path: this.$route.path,
-        query: {} // clear prefill query
+        query: {}, // clear prefill query
       });
 
       this.$nextTick(() => {
@@ -577,8 +577,8 @@ export default {
         this.$refs.existingManufacturerSelect.focus();
         window.scrollTo(0, 0);
       });
-    }
-  }
+    },
+  },
 };
 
 /**
@@ -591,7 +591,7 @@ function isPrefillable(prefillObject, key) {
     useExistingManufacturer: `boolean`,
     manufacturerKey: `string`,
     newManufacturerRdmId: `number`,
-    rdmModelId: `number`
+    rdmModelId: `number`,
   };
 
   return key in allowedPrefillValues && typeof prefillObject[key] === allowedPrefillValues[key];

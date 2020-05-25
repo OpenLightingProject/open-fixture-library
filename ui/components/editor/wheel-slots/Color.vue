@@ -58,18 +58,18 @@ export default {
   components: {
     LabeledInput,
     PropertyInputEntity,
-    PropertyInputText
+    PropertyInputText,
   },
   props: {
     wheelSlot: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -78,9 +78,9 @@ export default {
         name: ``,
         colors: null,
         colorsHexString: ``,
-        colorTemperature: ``
+        colorTemperature: ``,
       },
-      colorPreview: null
+      colorPreview: null,
     };
   },
   watch: {
@@ -89,8 +89,8 @@ export default {
         this.wheelSlot.typeData.colors = colorsHexStringToArray(hexString);
         this.colorPreview = this.wheelSlot.typeData.colors;
       },
-      immediate: true
-    }
-  }
+      immediate: true,
+    },
+  },
 };
 </script>

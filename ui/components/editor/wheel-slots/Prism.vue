@@ -37,27 +37,27 @@ export default {
   components: {
     LabeledInput,
     PropertyInputNumber,
-    PropertyInputText
+    PropertyInputText,
   },
   props: {
     wheelSlot: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
       properties: schemaProperties,
       defaultData: {
         name: ``,
-        facets: ``
-      }
+        facets: ``,
+      },
     };
-  }
+  },
 };
 </script>

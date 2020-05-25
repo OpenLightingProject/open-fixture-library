@@ -58,18 +58,18 @@ export default {
   components: {
     EditorProportionalPropertySwitcher,
     LabeledInput,
-    PropertyInputText
+    PropertyInputText,
   },
   props: {
     capability: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -82,8 +82,8 @@ export default {
         duration: ``,
         durationStart: null,
         durationEnd: null,
-        comment: ``
-      }
+        comment: ``,
+      },
     };
   },
   computed: {
@@ -94,13 +94,13 @@ export default {
       const resetProp = this.capability.typeData.speedOrDuration === `duration` ? `speed` : `duration`;
 
       return [resetProp, `${resetProp}Start`, `${resetProp}End`];
-    }
+    },
   },
   methods: {
     changeSpeedOrDuration(newValue) {
       this.capability.typeData.speedOrDuration = newValue;
       this.$nextTick(() => this.$refs.speedOrDurationInput.focus());
-    }
-  }
+    },
+  },
 };
 </script>

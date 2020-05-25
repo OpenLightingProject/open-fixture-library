@@ -38,18 +38,18 @@ export default {
   components: {
     EditorProportionalPropertySwitcher,
     LabeledInput,
-    PropertyInputText
+    PropertyInputText,
   },
   props: {
     capability: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -58,9 +58,9 @@ export default {
         time: null,
         timeStart: ``,
         timeEnd: ``,
-        comment: ``
-      }
+        comment: ``,
+      },
     };
-  }
+  },
 };
 </script>

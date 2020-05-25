@@ -10,7 +10,7 @@ const pullRequest = require(`./pull-request.js`);
 require(`../../lib/load-env-file.js`);
 
 const testFixtures = require(`../test-fixtures.json`).map(
-  fixture => `${fixture.man}/${fixture.key}`
+  fixture => `${fixture.man}/${fixture.key}`,
 );
 
 /**
@@ -40,7 +40,7 @@ const testFixtures = require(`../test-fixtures.json`).map(
       await pullRequest.updateComment({
         filename: path.relative(path.join(__dirname, `../../`), __filename),
         name: `Plugin export diff`,
-        lines: []
+        lines: [],
       });
       return;
     }
@@ -48,7 +48,7 @@ const testFixtures = require(`../test-fixtures.json`).map(
     const lines = [
       `You can view your uncommitted changes in plugin exports manually by executing:`,
       `\`$ node cli/diff-plugin-outputs.js -p <plugin-key> [-c <compare-plugin-key>] <fixtures>\``,
-      ``
+      ``,
     ];
 
     const tooLongMessage = `:warning: The output of the script is too long to fit in this comment, please run it yourself locally!`;
@@ -69,7 +69,7 @@ const testFixtures = require(`../test-fixtures.json`).map(
     await pullRequest.updateComment({
       filename: path.relative(path.join(__dirname, `../../`), __filename),
       name: `Plugin export diff`,
-      lines
+      lines,
     });
   }
   catch (error) {
@@ -95,7 +95,7 @@ function getDiffTasks(changedComponents) {
       const firstEqualTask = arr.find(otherTask =>
         task.manFix === otherTask.manFix &&
         task.currentPluginKey === otherTask.currentPluginKey &&
-        task.comparePluginKey === otherTask.comparePluginKey
+        task.comparePluginKey === otherTask.comparePluginKey,
       );
 
       // remove duplicates
@@ -131,7 +131,7 @@ function getDiffTasks(changedComponents) {
         tasks.push(...usablePlugins.map(pluginKey => ({
           manFix,
           currentPluginKey: pluginKey,
-          comparePluginKey: pluginKey
+          comparePluginKey: pluginKey,
         })));
       }
     }
@@ -150,7 +150,7 @@ function getDiffTasks(changedComponents) {
       tasks.push(...usableTestFixtures.map(manFix => ({
         manFix,
         currentPluginKey: changedPlugin,
-        comparePluginKey: changedPlugin
+        comparePluginKey: changedPlugin,
       })));
     }
 
@@ -167,7 +167,7 @@ function getDiffTasks(changedComponents) {
           tasks.push(...usableTestFixtures.map(manFix => ({
             manFix,
             currentPluginKey: addedPlugin,
-            comparePluginKey: lastVersion
+            comparePluginKey: lastVersion,
           })));
         }
       }
@@ -186,7 +186,7 @@ function getDiffTasks(changedComponents) {
       tasks.push(...usablePlugins.map(pluginKey => ({
         manFix: `${manKey}/${fixKey}`,
         currentPluginKey: pluginKey,
-        comparePluginKey: pluginKey
+        comparePluginKey: pluginKey,
       })));
     }
 
@@ -207,7 +207,7 @@ async function performTask(task) {
 
   const lines = [
     `<details>`,
-    `<summary>${emoji} <strong>${task.manFix}:</strong> ${pluginDisplayName}</summary>`
+    `<summary>${emoji} <strong>${task.manFix}:</strong> ${pluginDisplayName}</summary>`,
   ];
 
   if (changeFlags.nothingChanged) {
@@ -264,7 +264,7 @@ function getChangeFlags(diffOutput) {
     hasRemoved,
     hasAdded,
     hasChanged,
-    nothingChanged: !hasRemoved && !hasAdded && !hasChanged
+    nothingChanged: !hasRemoved && !hasAdded && !hasChanged,
   };
 }
 

@@ -62,7 +62,7 @@ module.exports.export = async function exportMillumin(fixtures, options) {
       name: `${fixture.manufacturer.key}/${fixture.key}.json`,
       content: fixtureJsonStringify(milluminJson),
       mimetype: `application/ofl-fixture`,
-      fixtures: [fixture]
+      fixtures: [fixture],
     };
   });
 
@@ -77,7 +77,7 @@ module.exports.export = async function exportMillumin(fixtures, options) {
  */
 function getDowngradedCategories(categories) {
   const replaceCats = {
-    'Barrel Scanner': `Effect`
+    'Barrel Scanner': `Effect`,
   };
   const ignoredCats = [`Pixel Bar`, `Stand`];
 
@@ -117,10 +117,10 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
     Head: `Moving Head`,
     Mirror: `Scanner`,
     Barrel: `Barrel Scanner`,
-    Fixed: null
+    Fixed: null,
   };
   const type = Object.keys(focusTypesCategories).find(
-    focusType => fixture.categories.includes(focusTypesCategories[focusType])
+    focusType => fixture.categories.includes(focusTypesCategories[focusType]),
   ) || null;
 
   const [panMax, tiltMax] = [`Pan`, `Tilt`].map(panOrTilt => {
@@ -151,14 +151,14 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
   const focus = {
     type,
     panMax,
-    tiltMax
+    tiltMax,
   };
 
   // remove null properties
   Object.entries(focus).filter(
-    ([key, value]) => value === null
+    ([key, value]) => value === null,
   ).forEach(
-    ([key, value]) => delete focus[key]
+    ([key, value]) => delete focus[key],
   );
 
   if (Object.keys(focus).length > 0) {
@@ -222,7 +222,7 @@ function getDowngradedChannel(channelKey, jsonChannel, fixture) {
     channel.capabilities.forEach(cap => {
       const downgradedCap = {
         range: [cap.rawDmxRange.start, cap.rawDmxRange.end],
-        name: cap.name
+        name: cap.name,
       };
 
       addIfValidData(downgradedCap, `menuClick`, cap.jsonObject.menuClick);

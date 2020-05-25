@@ -136,21 +136,21 @@ import HelpWantedMessage from '../HelpWantedMessage.vue';
 export default {
   components: {
     CapabilityTypeIcon,
-    HelpWantedMessage
+    HelpWantedMessage,
   },
   props: {
     channel: {
       type: CoarseChannel,
-      required: true
+      required: true,
     },
     mode: {
       type: Mode,
-      required: true
+      required: true,
     },
     resolutionInMode: {
       type: Number,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     capabilities() {
@@ -166,7 +166,7 @@ export default {
               switchChannels.push({
                 key: switchingChannelKey,
                 index: switchingChannelIndex,
-                to: cap.switchChannels[switchingChannelKey]
+                to: cap.switchChannels[switchingChannelKey],
               });
             }
           }
@@ -175,11 +175,11 @@ export default {
             model: cap,
             dmxRangeStart: dmxRange.start,
             dmxRangeEnd: dmxRange.end,
-            switchChannels: switchChannels.sort((a, b) => a.index - b.index) // ascending indices
+            switchChannels: switchChannels.sort((a, b) => a.index - b.index), // ascending indices
           };
-        }
+        },
       );
-    }
-  }
+    },
+  },
 };
 </script>

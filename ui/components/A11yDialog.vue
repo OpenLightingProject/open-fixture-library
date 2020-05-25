@@ -111,29 +111,29 @@ export default {
   props: {
     id: {
       type: String,
-      required: true
+      required: true,
     },
     cancellable: {
       type: Boolean,
       required: false,
-      default: true
+      default: true,
     },
     shown: {
       type: Boolean,
-      required: true
+      required: true,
     },
     title: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      dialog: null
+      dialog: null,
     };
   },
   watch: {
-    shown: `update`
+    shown: `update`,
   },
   mounted() {
     if (A11yDialog) {
@@ -172,7 +172,7 @@ export default {
       if (this.cancellable && event.target.matches(`dialog, .dialog-overlay`)) {
         this.hide();
       }
-    }
-  }
+    },
+  },
 };
 </script>

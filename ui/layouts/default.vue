@@ -38,7 +38,7 @@
       js: isBrowser,
       'no-js': !isBrowser,
       touch: isTouchScreen,
-      'no-touch': !isTouchScreen
+      'no-touch': !isTouchScreen,
     }">
 
     <a href="#content" class="accessibility">Skip to content</a>
@@ -194,7 +194,7 @@ import HeaderBar from '../components/HeaderBar.vue';
 
 export default {
   components: {
-    HeaderBar
+    HeaderBar,
   },
   data() {
     return {
@@ -203,7 +203,7 @@ export default {
       lastTouchTime: 0,
       isClimateStrike: false,
       showClimateStrikeBanner: false,
-      strikeDateString: `2019-11-29`
+      strikeDateString: `2019-11-29`,
     };
   },
   created() {
@@ -250,7 +250,7 @@ export default {
     onTouchStart() {
       this.isTouchScreen = true;
       this.lastTouchTime = new Date();
-    }
-  }
+    },
+  },
 };
 </script>

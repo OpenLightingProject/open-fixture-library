@@ -21,15 +21,15 @@ module.exports = async function submitFixtures(request, response) {
     const pullRequestUrl = await createPullRequest(
       request.body.fixtureCreateResult,
       request.body.githubUsername,
-      request.body.githubComment
+      request.body.githubComment,
     );
     response.status(201).json({
-      pullRequestUrl
+      pullRequestUrl,
     });
   }
   catch (error) {
     response.status(500).json({
-      error: error.message
+      error: error.message,
     });
   }
 };

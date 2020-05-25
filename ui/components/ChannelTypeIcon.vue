@@ -9,20 +9,20 @@ export default {
   props: {
     channel: {
       type: AbstractChannel,
-      required: true
-    }
+      required: true,
+    },
   },
   render(createElement, context) {
     return createElement(`OflSvg`, Object.assign({}, context.data, {
-      props: getIconProps(context.props.channel)
+      props: getIconProps(context.props.channel),
     }));
-  }
+  },
 };
 
 const channelTypeIcons = {
   'Multi-Color': `color-changer`,
   'Fog': `smoke`,
-  'Intensity': `dimmer`
+  'Intensity': `dimmer`,
 };
 
 /**
@@ -34,7 +34,7 @@ function getIconProps(channel) {
     return {
       type: `fixture`,
       name: `NoFunction`,
-      title: `Channel type: NoFunction`
+      title: `Channel type: NoFunction`,
     };
   }
 
@@ -46,7 +46,7 @@ function getIconProps(channel) {
     return {
       type: `fixture`,
       name: `switching-channel`,
-      title: `Channel type: Switching Channel`
+      title: `Channel type: Switching Channel`,
     };
   }
 
@@ -54,14 +54,14 @@ function getIconProps(channel) {
     return {
       type: `color-circle`,
       name: channel.color,
-      title: `Channel type: Single Color, ${channel.color}`
+      title: `Channel type: Single Color, ${channel.color}`,
     };
   }
 
   return {
     type: `fixture`,
     name: channelTypeIcons[channel.type] || channel.type,
-    title: `Channel type: ${channel.type}`
+    title: `Channel type: ${channel.type}`,
   };
 }
 </script>

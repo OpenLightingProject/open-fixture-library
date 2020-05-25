@@ -22,7 +22,7 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
   const out = {
     manufacturers: {},
     fixtures: {},
-    warnings: {}
+    warnings: {},
   };
 
   const xml = await promisify(parser.parseString)(buffer.toString());
@@ -37,7 +37,7 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
     const manKey = slugify(manName);
 
     out.manufacturers[manKey] = {
-      name: manName
+      name: manName,
     };
 
     if (manufacturer.$.Comment !== ``) {
@@ -63,7 +63,7 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
   function addFixture(ecueFixture, manKey) {
     const fixture = {
       $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
-      name: ecueFixture.$.Name
+      name: ecueFixture.$.Name,
     };
 
     let fixKey = `${manKey}/${slugify(fixture.name)}`;
@@ -88,8 +88,8 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
       lastModifyDate: ecueFixture.$._ModifiedDate.replace(/#.*/, ``),
       importPlugin: {
         plugin: `ecue`,
-        date: timestamp
-      }
+        date: timestamp,
+      },
     };
 
     if (ecueFixture.$.Comment !== ``) {
@@ -107,7 +107,7 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
     fixture.modes = [{
       name: `${ecueFixture.$.AllocateDmxChannels}-channel`,
       shortName: `${ecueFixture.$.AllocateDmxChannels}ch`,
-      channels: []
+      channels: [],
     }];
 
     for (const ecueChannel of getCombinedEcueChannels(ecueFixture)) {
@@ -205,8 +205,8 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
         End: maxDmxValue,
         Name: `0-100%`,
         AutoMenu: `1`,
-        Centre: `0`
-      }
+        Centre: `0`,
+      },
     }];
   }
 
@@ -251,7 +251,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
    */
   function getCapability(ecueRange, index) {
     const cap = {
-      dmxRange: getDmxRange()
+      dmxRange: getDmxRange(),
     };
 
     const capabilityName = ecueRange.$.Name.trim();
@@ -262,7 +262,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
     const capabilityTypeParsers = {
       ColorIntensity() {
         cap.color = [`Red`, `Green`, `Blue`, `Cyan`, `Magenta`, `Yellow`, `Amber`, `Warm White`, `Cold White`, `White`, `UV`, `Lime`].find(
-          color => channelName.toLowerCase().includes(color.toLowerCase())
+          color => channelName.toLowerCase().includes(color.toLowerCase()),
         );
 
         cap.comment = capabilityName;
@@ -335,7 +335,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
       },
       NoFunction() {
         // don't even add a comment
-      }
+      },
     };
 
     if (cap.type in capabilityTypeParsers) {
@@ -463,14 +463,14 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
             Rotation: /\brotation\b/,
             Speed: /\bspeed\b/,
             Time: /\btime\b/,
-            Maintenance: /\b(?:reset|maintenance)\b/
+            Maintenance: /\b(?:reset|maintenance)\b/,
           };
 
           return Object.keys(capabilityTypeRegexps).find(
             channelType => capabilityName.toLowerCase().match(capabilityTypeRegexps[channelType]) ||
-              channelName.toLowerCase().match(capabilityTypeRegexps[channelType])
+              channelName.toLowerCase().match(capabilityTypeRegexps[channelType]),
           ) || `Generic`;
-        }
+        },
       };
 
       return capabilityTypePerChannelType[ecueChannel._ecueChannelType]();

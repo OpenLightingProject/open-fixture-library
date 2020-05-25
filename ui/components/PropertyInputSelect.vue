@@ -20,32 +20,32 @@ export default {
   props: {
     schemaProperty: {
       type: Object,
-      required: true
+      required: true,
     },
     required: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     hint: {
       type: String,
       required: false,
-      default: null
+      default: null,
     },
     additionHint: {
       type: String,
       required: false,
-      default: null
+      default: null,
     },
     autoFocus: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     value: {
       type: null,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     localValue: {
@@ -54,8 +54,8 @@ export default {
       },
       set(newValue) {
         this.$emit(`input`, newValue);
-      }
-    }
+      },
+    },
   },
   mounted() {
     if (this.autoFocus) {
@@ -65,8 +65,8 @@ export default {
   methods: {
     focus() {
       this.$refs.input.focus();
-    }
-  }
+    },
+  },
 };
 </script>
 

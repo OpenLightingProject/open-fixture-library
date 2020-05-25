@@ -18,7 +18,7 @@ const { checkFixture, checkUniqueness } = require(`./fixture-valid.js`);
 
 const args = minimist(process.argv.slice(2), {
   boolean: [`h`, `a`],
-  alias: { h: `help`, a: `all-fixtures` }
+  alias: { h: `help`, a: `all-fixtures` },
 });
 
 
@@ -32,7 +32,7 @@ const helpMessage = [
   `  --all-fixtures, -a:`,
   `     check all fixtures contained in the fixtures/ directory`,
   `  --help, -h:`,
-  `     Show this help message.`
+  `     Show this help message.`,
 ].join(`\n`);
 
 let fixturePaths = args._;
@@ -58,7 +58,7 @@ const uniqueValues = {
   fixKeysInMan: {}, // new Set() for each manufacturer
   fixNamesInMan: {}, // new Set() for each manufacturer
   fixRdmIdsInMan: {}, // new Set() for each manufacturer
-  fixShortNames: new Set()
+  fixShortNames: new Set(),
 };
 
 const promises = [];
@@ -89,7 +89,7 @@ else {
       promises.push({
         name: fixPath,
         errors: [],
-        warnings: [`specified file is not a .json document`]
+        warnings: [`specified file is not a .json document`],
       });
       continue;
     }
@@ -110,7 +110,7 @@ async function checkFixtureFile(manKey, fixKey) {
   const result = {
     name: filename,
     errors: [],
-    warnings: []
+    warnings: [],
   };
 
   const filepath = path.join(fixturePath, filename);
@@ -133,7 +133,7 @@ async function checkManufacturers() {
   const result = {
     name: `manufacturers.json`,
     errors: [],
-    warnings: []
+    warnings: [],
   };
 
   const filename = path.join(fixturePath, result.name);
@@ -155,20 +155,20 @@ async function checkManufacturers() {
 
       // legacy purposes
       const uniquenessTestResults = {
-        errors: []
+        errors: [],
       };
       checkUniqueness(
         uniqueValues.manNames,
         manProps.name,
         uniquenessTestResults,
-        `Manufacturer name '${manProps.name}' is not unique (test is not case-sensitive).`
+        `Manufacturer name '${manProps.name}' is not unique (test is not case-sensitive).`,
       );
       if (`rdmId` in manProps) {
         checkUniqueness(
           uniqueValues.manRdmIds,
           `${manProps.rdmId}`,
           uniquenessTestResults,
-          `Manufacturer RDM ID '${manProps.rdmId}' is not unique.`
+          `Manufacturer RDM ID '${manProps.rdmId}' is not unique.`,
         );
       }
       result.errors.push(...uniquenessTestResults.errors);
@@ -193,7 +193,7 @@ Promise.all(promises).then(results => {
 
     console.log(
       failed ? chalk.red(`[FAIL]`) : chalk.green(`[PASS]`),
-      result.name
+      result.name,
     );
 
     totalFails += failed ? 1 : 0;

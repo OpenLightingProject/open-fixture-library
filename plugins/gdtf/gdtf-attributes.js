@@ -82,7 +82,7 @@ const gdtfUnits = {
     // ColorRGBX attributes (X = 1…16) and CTO / CTC / CTB attributes
     // or as an "index offset" for ColorX attributes (X = 1…4) -> handled before
     return `${value * 100}%`;
-  }
+  },
 };
 
 /**
@@ -101,13 +101,13 @@ const gdtfAttributes = {
   ActiveZone: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   AnimationIndexRotate: {
     // Controls the animation disk's index or its rotation speed.
-    inheritFrom: `AnimationWheelPosSpin`
+    inheritFrom: `AnimationWheelPosSpin`,
   },
   AnimationIndexRotateMode: {
     // Changes control between selecting, indexing, and rotating the animation wheel.
     oflType: `Maintenance`,
     oflProperty: `parameter`,
-    defaultPhysicalEntity: `Percent`
+    defaultPhysicalEntity: `Percent`,
   },
   AnimationOffset: {
     // Controls the animation disk's shaking.
@@ -116,7 +116,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Percent`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.wheel = `Animation Disk`;
-    }
+    },
   },
   AnimationWheel: {
     // Inserts a gobo disk into the beam. The disk has the ability to continuously index and rotate.
@@ -125,11 +125,11 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Percent`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.effectName = `Animation Disk insertion`;
-    }
+    },
   },
   AnimationWheelMacro: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Effects`
+    inheritFrom: `Effects`,
   },
   AnimationWheelPos: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -138,7 +138,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Angle`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.wheel = `Animation Disk`;
-    }
+    },
   },
   AnimationWheelPosSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -148,25 +148,25 @@ const gdtfAttributes = {
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.wheel = `Animation Disk`;
       normalizeAngularSpeedDirection(gdtfCapability);
-    }
+    },
   },
   AnimationWheelShortcutMode: {
     // Defines whether the animation wheel takes the shortest distance between two positions.
-    inheritFrom: `AnimationIndexRotateMode`
+    inheritFrom: `AnimationIndexRotateMode`,
   },
   BeamEffectIndexRotateMode: {
     // Changes mode to control either index or rotation of the beam effects.
-    inheritFrom: `AnimationIndexRotateMode`
+    inheritFrom: `AnimationIndexRotateMode`,
   },
   BeamMode: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `AnimationIndexRotateMode`
+    inheritFrom: `AnimationIndexRotateMode`,
   },
   BeamReset: {
     // Resets the fixture's beam features.
     oflType: `Maintenance`,
     oflProperty: `parameter`,
-    defaultPhysicalEntity: `Percent`
+    defaultPhysicalEntity: `Percent`,
   },
   Blade1A: {
     // 1 of 2 shutters that shape the top of the beam.
@@ -175,7 +175,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Percent`, // Angle is also common
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Top`;
-    }
+    },
   },
   Blade1B: {
     // 2 of 2 shutters that shape the top of the beam.
@@ -184,7 +184,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Percent`, // Angle is also common
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Top`;
-    }
+    },
   },
   Blade1Rot: {
     // Rotates position of blade1.
@@ -193,7 +193,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Angle`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Top`;
-    }
+    },
   },
   Blade2A: {
     // 1 of 2 shutters that shape the right of the beam.
@@ -202,7 +202,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Percent`, // Angle is also common
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Right`;
-    }
+    },
   },
   Blade2B: {
     // 2 of 2 shutters that shape the right of the beam.
@@ -211,7 +211,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Percent`, // Angle is also common
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Right`;
-    }
+    },
   },
   Blade2Rot: {
     // Rotates position of blade2.
@@ -220,7 +220,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Angle`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Right`;
-    }
+    },
   },
   Blade3A: {
     // 1 of 2 shutters that shape the bottom of the beam.
@@ -229,7 +229,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Percent`, // Angle is also common
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Bottom`;
-    }
+    },
   },
   Blade3B: {
     // 2 of 2 shutters that shape the bottom of the beam.
@@ -238,7 +238,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Percent`, // Angle is also common
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Bottom`;
-    }
+    },
   },
   Blade3Rot: {
     // Rotates position of blade3.
@@ -247,7 +247,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Angle`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Bottom`;
-    }
+    },
   },
   Blade4A: {
     // 1 of 2 shutters that shape the left of the beam.
@@ -256,7 +256,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Percent`, // Angle is also common
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Left`;
-    }
+    },
   },
   Blade4B: {
     // 2 of 2 shutters that shape the left of the beam.
@@ -265,7 +265,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Percent`, // Angle is also common
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Left`;
-    }
+    },
   },
   Blade4Rot: {
     // Rotates position of blade4.
@@ -274,7 +274,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Angle`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.blade = `Left`;
-    }
+    },
   },
   Blower: undefined, // Fog or hazer‘s blower feature.
   Color1: {
@@ -315,7 +315,7 @@ const gdtfAttributes = {
           gdtfCapability.$.Name = ``;
         }
       }
-    }
+    },
   },
   Color1Audio: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -328,7 +328,7 @@ const gdtfAttributes = {
     },
     afterPhysicalPropertyHook(capability, gdtfCapability) {
       capability.soundControlled = true;
-    }
+    },
   },
   Color1Index: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -337,19 +337,19 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Angle`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
-    }
+    },
   },
   Color1Mode: {
     // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 1.
-    inheritFrom: `AnimationIndexRotateMode`
+    inheritFrom: `AnimationIndexRotateMode`,
   },
   Color1Random: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Effects`
+    inheritFrom: `Effects`,
   },
   Color1Select: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Color1`
+    inheritFrom: `Color1`,
   },
   Color1Spin: {
     // Controls the speed and direction of the fixture's color wheel 1.
@@ -359,53 +359,53 @@ const gdtfAttributes = {
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
       normalizeAngularSpeedDirection(gdtfCapability);
-    }
+    },
   },
   Color2: {
     // Selects colors in the fixture's color wheel 2.
-    inheritFrom: `Color1`
+    inheritFrom: `Color1`,
   },
   Color2Mode: {
     // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 2.
-    inheritFrom: `Color1Mode`
+    inheritFrom: `Color1Mode`,
   },
   Color2Spin: {
     // Controls the speed and direction of the fixture's color wheel 2.
-    inheritFrom: `Color1Spin`
+    inheritFrom: `Color1Spin`,
   },
   Color3: {
     // Selects colors in the fixture's color wheel 3.
-    inheritFrom: `Color1`
+    inheritFrom: `Color1`,
   },
   Color3Mode: {
     // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 3.
-    inheritFrom: `Color1Mode`
+    inheritFrom: `Color1Mode`,
   },
   Color3Spin: {
     // Controls the speed and direction of the fixture's color wheel 3.
-    inheritFrom: `Color1Spin`
+    inheritFrom: `Color1Spin`,
   },
   Color4: {
     // Selects colors in the fixture's color wheel 4.
-    inheritFrom: `Color1`
+    inheritFrom: `Color1`,
   },
   Color4Mode: {
     // Changes control between selecting, continuous selection, half selection, random selection, color spinning, etc. in colors of color wheel 4.
-    inheritFrom: `Color1Mode`
+    inheritFrom: `Color1Mode`,
   },
   Color4Spin: {
     // Controls the speed and direction of the fixture's color wheel 4.
-    inheritFrom: `Color1Spin`
+    inheritFrom: `Color1Spin`,
   },
   ColorControl: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     oflType: `Maintenance`,
     oflProperty: `parameter`,
-    defaultPhysicalEntity: `Percent`
+    defaultPhysicalEntity: `Percent`,
   },
   ColorEffects: {
     // Selects predefined color effects built into the fixture.
-    inheritFrom: `Effects`
+    inheritFrom: `Effects`,
   },
   ColorMacro: {
     // Selects predefined colors that are programed in the fixture's firmware.
@@ -431,27 +431,27 @@ const gdtfAttributes = {
           }
         }
       }
-    }
+    },
   },
   ColorMacro2: {
     // Selects predefined colors that are programed in the fixture's firmware (2).
-    inheritFrom: `ColorMacro`
+    inheritFrom: `ColorMacro`,
   },
   ColorMacroMSpeed: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `IntensityMSpeed`
+    inheritFrom: `IntensityMSpeed`,
   },
   ColorMixMode: {
     // Changes control between selecting continuous selection, half selection, random selection, color spinning, etc. in color mixing.
-    inheritFrom: `AnimationIndexRotateMode`
+    inheritFrom: `AnimationIndexRotateMode`,
   },
   ColorMixMSpeed: {
     // Movement speed of the fixture's ColorMix presets.
-    inheritFrom: `IntensityMSpeed`
+    inheritFrom: `IntensityMSpeed`,
   },
   ColorMixReset: {
     // Resets the fixture's color mixing system.
-    inheritFrom: `BeamReset`
+    inheritFrom: `BeamReset`,
   },
   ColorRGB1: {
     // Controls the intensity of the fixture's red emitters or its cyan CMY-mixing feature.
@@ -460,35 +460,35 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `ColorComponent`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.color = guessColorComponentName(gdtfCapability, `Red`, `Cyan`);
-    }
+    },
   },
   ColorRGB2: {
     // Controls the intensity of the fixture's green emitters or its magenta CMY-mixing feature.
     inheritFrom: `ColorRGB1`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.color = guessColorComponentName(gdtfCapability, `Green`, `Magenta`);
-    }
+    },
   },
   ColorRGB3: {
     // Controls the intensity of the fixture's blue emitters or its yellow CMY-mixing feature.
     inheritFrom: `ColorRGB1`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.color = guessColorComponentName(gdtfCapability, `Blue`, `Yellow`);
-    }
+    },
   },
   ColorRGB4: {
     // Controls the intensity of the fixture's amber emitters.
     inheritFrom: `ColorRGB1`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.color = `Amber`;
-    }
+    },
   },
   ColorRGB5: {
     // Controls the intensity of the fixture's white emitters.
     inheritFrom: `ColorRGB1`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.color = `White`;
-    }
+    },
   },
   ColorRGB6: {
     // Controls the intensity of the fixture's color emitters.
@@ -498,179 +498,179 @@ const gdtfAttributes = {
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       // This is most likely wrong but enables the user to make an informed choice.
       capability.color = gdtfCapability._channelFunction._attribute.$.Pretty || `Unknown`;
-    }
+    },
   },
   ColorRGB7: {
     // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`
+    inheritFrom: `ColorRGB6`,
   },
   ColorRGB8: {
     // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`
+    inheritFrom: `ColorRGB6`,
   },
   ColorRGB9: {
     // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`
+    inheritFrom: `ColorRGB6`,
   },
   ColorRGB10: {
     // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`
+    inheritFrom: `ColorRGB6`,
   },
   ColorRGB11: {
     // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`
+    inheritFrom: `ColorRGB6`,
   },
   ColorRGB12: {
     // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`
+    inheritFrom: `ColorRGB6`,
   },
   ColorRGB13: {
     // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`
+    inheritFrom: `ColorRGB6`,
   },
   ColorRGB14: {
     // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`
+    inheritFrom: `ColorRGB6`,
   },
   ColorRGB15: {
     // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`
+    inheritFrom: `ColorRGB6`,
   },
   ColorRGB16: {
     // Controls the intensity of the fixture's color emitters.
-    inheritFrom: `ColorRGB6`
+    inheritFrom: `ColorRGB6`,
   },
   ColorWheelReset: {
     // Resets the fixture's color wheel.
-    inheritFrom: `BeamReset`
+    inheritFrom: `BeamReset`,
   },
   ColorWheelSelectMSpeed: {
     // Movement speed of the fixture's color wheel.
-    inheritFrom: `IntensityMSpeed`
+    inheritFrom: `IntensityMSpeed`,
   },
   ColorWheelShortcutMode: {
     // Defines whether the color wheel takes the shortest distance between two colors.
-    inheritFrom: `AnimationIndexRotateMode`
+    inheritFrom: `AnimationIndexRotateMode`,
   },
   Control: {
     // Controls the channel of a fixture.
     oflType: `Maintenance`,
     oflProperty: `parameter`,
-    defaultPhysicalEntity: `Percent`
+    defaultPhysicalEntity: `Percent`,
   },
   ControlAutofocus: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`
+    inheritFrom: `Control`,
   },
   ControlBlackout: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`
+    inheritFrom: `Control`,
   },
   ControlCalibrationMode: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`
+    inheritFrom: `Control`,
   },
   ControlColorMode: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`
+    inheritFrom: `Control`,
   },
   ControlCRIMode: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`
+    inheritFrom: `Control`,
   },
   ControlDimmerCurve: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`
+    inheritFrom: `Control`,
   },
   ControlDisplayIntensity: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`
+    inheritFrom: `Control`,
   },
   ControlDMXInput: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`
+    inheritFrom: `Control`,
   },
   ControlFanMode: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`
+    inheritFrom: `Control`,
   },
   ControlFollowSpotMode: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`
+    inheritFrom: `Control`,
   },
   ControlLamp: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`
+    inheritFrom: `Control`,
   },
   ControlLampMode: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`
+    inheritFrom: `Control`,
   },
   ControlPanTiltMode: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`
+    inheritFrom: `Control`,
   },
   ControlParking: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`
+    inheritFrom: `Control`,
   },
   ControlReset: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`
+    inheritFrom: `Control`,
   },
   ControlWhiteCount: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Control`
+    inheritFrom: `Control`,
   },
   CTB: {
     // Controls the fixture's "Correct to blue" wheel or mixing system.
-    inheritFrom: `CTO`
+    inheritFrom: `CTO`,
   },
   CTBReset: {
     // Resets the fixture's CTB.
-    inheritFrom: `BeamReset`
+    inheritFrom: `BeamReset`,
   },
   CTC: {
     // Controls the fixture's "Correct to color" wheel or mixing system.
-    inheritFrom: `CTO`
+    inheritFrom: `CTO`,
   },
   CTCReset: {
     // Resets the fixture's CTC.
-    inheritFrom: `BeamReset`
+    inheritFrom: `BeamReset`,
   },
   CTG: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `CTO`
+    inheritFrom: `CTO`,
   },
   CTO: {
     // Controls the fixture's "Correct to orange" wheel or mixing system.
     oflType: `ColorTemperature`,
     oflProperty: `colorTemperature`,
-    defaultPhysicalEntity: `Temperature` // ColorComponent is also common
+    defaultPhysicalEntity: `Temperature`, // ColorComponent is also common
   },
   CTOReset: {
     // Resets the fixture's CTO.
-    inheritFrom: `BeamReset`
+    inheritFrom: `BeamReset`,
   },
   CyanMode: {
     // Controls how Cyan is used within the fixture's cyan CMY-mixing feature.
-    inheritFrom: `AnimationIndexRotateMode`
+    inheritFrom: `AnimationIndexRotateMode`,
   },
   Dimmer: {
     // Controls the intensity of a fixture.
     oflType: `Intensity`,
     oflProperty: `brightness`,
-    defaultPhysicalEntity: `LuminousIntensity`
+    defaultPhysicalEntity: `LuminousIntensity`,
   },
   DimmerCurve: {
     // Selects different dimmer curves of the fixture.
     oflType: `Maintenance`,
     oflProperty: `parameter`,
-    defaultPhysicalEntity: `Percent`
+    defaultPhysicalEntity: `Percent`,
   },
   DimmerMode: {
     // Selects different modes of intensity.
-    inheritFrom: `AnimationIndexRotateMode`
+    inheritFrom: `AnimationIndexRotateMode`,
   },
   Effects: {
     // Generically predefined macros and effects of a fixture.
@@ -680,38 +680,38 @@ const gdtfAttributes = {
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.effectName = gdtfCapability.$.Name;
       gdtfCapability.$.Name = undefined;
-    }
+    },
   },
   EffectsFade: {
     // Snapping or smooth look of running effects.
     oflType: `EffectDuration`,
     oflProperty: `duration`,
-    defaultPhysicalEntity: `Time`
+    defaultPhysicalEntity: `Time`,
   },
   EffectsIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   EffectsMacro: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Effects`
+    inheritFrom: `Effects`,
   },
   EffectsPar1: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     oflType: `EffectParameter`,
     oflProperty: `parameter`,
-    defaultPhysicalEntity: `None`
+    defaultPhysicalEntity: `None`,
   },
   EffectsPar2: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `EffectsPar1`
+    inheritFrom: `EffectsPar1`,
   },
   EffectsPos: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     oflType: `Rotation`,
     oflProperty: `angle`,
-    defaultPhysicalEntity: `Angle`
+    defaultPhysicalEntity: `Angle`,
   },
   EffectsPosIndex: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `EffectsPos`
+    inheritFrom: `EffectsPos`,
   },
   EffectsPosSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -720,7 +720,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `AngularSpeed`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       normalizeAngularSpeedDirection(gdtfCapability);
-    }
+    },
   },
   EffectsRate: {
     // Speed of running effects.
@@ -732,46 +732,46 @@ const gdtfAttributes = {
         // overwrite capability type
         capability.type = `EffectDuration`;
       }
-    }
+    },
   },
   EffectsRateIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   EffectsSelectIndex: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Effects`
+    inheritFrom: `Effects`,
   },
   EffectsSelectSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Effects`
+    inheritFrom: `Effects`,
   },
   EffectsSelectSpinDynamic: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Effects`
+    inheritFrom: `Effects`,
   },
   EffectsSync: undefined, // Sets offset between running effects and effects 2.
   Effects2: {
     // Generically predefined macros and effects of a fixture (2).
-    inheritFrom: `Effects`
+    inheritFrom: `Effects`,
   },
   Effects2Fade: {
     // Snapping or smooth look of running effects (2).
-    inheritFrom: `EffectsFade`
+    inheritFrom: `EffectsFade`,
   },
   Effects2Macro: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   Effects2Par2: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `EffectsPar2`
+    inheritFrom: `EffectsPar2`,
   },
   Effects2Pos: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `EffectsPos`
+    inheritFrom: `EffectsPos`,
   },
   Effects2Rate: {
     // Speed of running effects (2).
-    inheritFrom: `EffectsRate`
+    inheritFrom: `EffectsRate`,
   },
   Effects3: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Effects`
+    inheritFrom: `Effects`,
   },
   Fan: {
     // Fog or hazer's Fan feature.
@@ -780,46 +780,46 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `AngularSpeed`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       normalizeAngularSpeedDirection(gdtfCapability);
-    }
+    },
   },
   Fans: undefined, // Fancontrols a fixture or device.
   FixtureCalibrationReset: {
     // Resets the fixture's calibration.
-    inheritFrom: `BeamReset`
+    inheritFrom: `BeamReset`,
   },
   FixtureGlobalReset: {
     // Generally resets the entire fixture.
-    inheritFrom: `BeamReset`
+    inheritFrom: `BeamReset`,
   },
   Focus: {
     // Controls the sharpness of the fixture's spot light. Can blur or sharpen the edge of the spot.
     oflType: `Focus`,
     oflProperty: `distance`,
-    defaultPhysicalEntity: `Length`
+    defaultPhysicalEntity: `Length`,
   },
   FocusAdjust: {
     // Autofocuses functionality using presets.
-    inheritFrom: `Focus`
+    inheritFrom: `Focus`,
   },
   FocusDistance: {
     // Autofocuses functionality using distance.
-    inheritFrom: `Focus`
+    inheritFrom: `Focus`,
   },
   FocusMode: {
     // Changes modes of the fixture’s focus - manual or auto- focus.
-    inheritFrom: `AnimationIndexRotateMode`
+    inheritFrom: `AnimationIndexRotateMode`,
   },
   FocusMSpeed: {
     // Movement speed of the fixture's focus.
-    inheritFrom: `IntensityMSpeed`
+    inheritFrom: `IntensityMSpeed`,
   },
   FocusReset: {
     // Resets the fixture's focus.
-    inheritFrom: `BeamReset`
+    inheritFrom: `BeamReset`,
   },
   Focus2: {
     // Controls the sharpness of the fixture's spot light. Can blur or sharpen the edge of the spot (2).
-    inheritFrom: `Focus`
+    inheritFrom: `Focus`,
   },
   Fog: {
     // Fog or hazer's Fog feature.
@@ -827,55 +827,55 @@ const gdtfAttributes = {
     oflProperty: `fogOutput`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.fogType = `Fog`;
-    }
+    },
   },
   FrameMSpeed: {
     // Movement speed of the fixture's shapers.
-    inheritFrom: `IntensityMSpeed`
+    inheritFrom: `IntensityMSpeed`,
   },
   FrameReset: {
     // Resets the fixture's shapers.
-    inheritFrom: `BeamReset`
+    inheritFrom: `BeamReset`,
   },
   Frost: {
     // The ability to soften the fixture's spot light with a frosted lens.
     oflType: `Frost`,
     oflProperty: `frostIntensity`,
-    defaultPhysicalEntity: `Percent`
+    defaultPhysicalEntity: `Percent`,
   },
   Frost2: {
     // The ability to soften the fixture's spot light with a frosted lens (2).
-    inheritFrom: `Frost`
+    inheritFrom: `Frost`,
   },
   Frost3: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Frost`
+    inheritFrom: `Frost`,
   },
   FrostHeavy: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Frost`
+    inheritFrom: `Frost`,
   },
   FrostLight: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Frost`
+    inheritFrom: `Frost`,
   },
   FrostMedium: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Frost`
+    inheritFrom: `Frost`,
   },
   FrostMSpeed: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `IrisMSpeed`
+    inheritFrom: `IrisMSpeed`,
   },
   Function: {
     // Generally controls features of the fixture.
     oflType: `Maintenance`,
     oflProperty: `parameter`,
-    defaultPhysicalEntity: `Percent`
+    defaultPhysicalEntity: `Percent`,
   },
   GlobalMSpeed: {
     // General speed of fixture's features.
-    inheritFrom: `IntensityMSpeed`
+    inheritFrom: `IntensityMSpeed`,
   },
   Gobo1: {
     // Selects gobos in the fixture's gobo wheel 1.
@@ -915,7 +915,7 @@ const gdtfAttributes = {
           gdtfCapability.$.Name = ``;
         }
       }
-    }
+    },
   },
   Gobo1Audio: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -928,7 +928,7 @@ const gdtfAttributes = {
     },
     afterPhysicalPropertyHook(capability, gdtfCapability) {
       capability.soundControlled = true;
-    }
+    },
   },
   Gobo1Pos: {
     // Controls angle of indexed rotation of gobos in gobo wheel 1.
@@ -937,7 +937,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Angle`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
-    }
+    },
   },
   Gobo1PosRotation: {
     // Controls the speed and direction of continuous rotation of gobos in gobo wheel 1.
@@ -947,11 +947,11 @@ const gdtfAttributes = {
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
       normalizeAngularSpeedDirection(gdtfCapability);
-    }
+    },
   },
   Gobo1Random: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Effects`
+    inheritFrom: `Effects`,
   },
   Gobo1RandomAudio: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -964,11 +964,11 @@ const gdtfAttributes = {
     },
     afterPhysicalPropertyHook(capability, gdtfCapability) {
       capability.soundControlled = true;
-    }
+    },
   },
   Gobo1Select: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1`
+    inheritFrom: `Gobo1`,
   },
   Gobo1Shake: {
     // Control the frequency of the shake of gobo wheel 1.
@@ -981,7 +981,7 @@ const gdtfAttributes = {
 
       capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
       capability.slotNumber = gdtfSlotNumber;
-    }
+    },
   },
   Gobo1Spin: {
     // Controls the speed and direction of the continuous rotation of gobo wheel 1.
@@ -991,109 +991,109 @@ const gdtfAttributes = {
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
       normalizeAngularSpeedDirection(gdtfCapability);
-    }
+    },
   },
   Gobo1WheelMode: {
     // Changes control between selecting, indexing, and rotating the gobos of gobo wheel 1.
-    inheritFrom: `AnimationIndexRotateMode`
+    inheritFrom: `AnimationIndexRotateMode`,
   },
   Gobo1WheelShake: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1Shake` // there seems to be no GDTF attribute to specify wheel slot shake, so both Gobo1Shake and Gobo1WheelShake shake the wheel
+    inheritFrom: `Gobo1Shake`, // there seems to be no GDTF attribute to specify wheel slot shake, so both Gobo1Shake and Gobo1WheelShake shake the wheel
   },
   Gobo1WheelSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1Spin`
+    inheritFrom: `Gobo1Spin`,
   },
   Gobo2: {
     // Selects gobos in the fixture's gobo wheel 2.
-    inheritFrom: `Gobo1`
+    inheritFrom: `Gobo1`,
   },
   Gobo2GoboIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   Gobo2GoboShakeIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   Gobo2Pos: {
     // Controls the angle of indexed rotation of gobos in gobo wheel 2.
-    inheritFrom: `Gobo1Pos`
+    inheritFrom: `Gobo1Pos`,
   },
   Gobo2PosIndex: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1Pos`
+    inheritFrom: `Gobo1Pos`,
   },
   Gobo2PosRotation: {
     // Controls the speed and direction of continuous rotation of gobos in gobo wheel 2.
-    inheritFrom: `Gobo1PosRotation`
+    inheritFrom: `Gobo1PosRotation`,
   },
   Gobo2PosSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1PosRotation`
+    inheritFrom: `Gobo1PosRotation`,
   },
   Gobo2Random: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1Random`
+    inheritFrom: `Gobo1Random`,
   },
   Gobo2SelectIndex: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1SelectIndex`
+    inheritFrom: `Gobo1SelectIndex`,
   },
   Gobo2SelectShakeIndex: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1SelectShakeIndex`
+    inheritFrom: `Gobo1SelectShakeIndex`,
   },
   Gobo2SelectShakeSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1SelectShakeSpin`
+    inheritFrom: `Gobo1SelectShakeSpin`,
   },
   Gobo2SelectSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1SelectSpin`
+    inheritFrom: `Gobo1SelectSpin`,
   },
   Gobo2Shake: {
     // Control the frequency of the shake of gobo wheel 2.
-    inheritFrom: `Gobo1Shake`
+    inheritFrom: `Gobo1Shake`,
   },
   Gobo2Spin: {
     // Controls the speed and direction of the continuous rotation of gobo wheel 2.
-    inheritFrom: `Gobo1Spin`
+    inheritFrom: `Gobo1Spin`,
   },
   Gobo2WheelMode: {
     // Changes control between selecting, indexing, and rotating the gobos of gobo wheel 2.
-    inheritFrom: `Gobo1WheelMode`
+    inheritFrom: `Gobo1WheelMode`,
   },
   Gobo2WheelSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Gobo1WheelSpin`
+    inheritFrom: `Gobo1WheelSpin`,
   },
   Gobo3: {
     // Selects gobos in the fixture's gobo wheel 3.
-    inheritFrom: `Gobo1`
+    inheritFrom: `Gobo1`,
   },
   Gobo3Pos: {
     // Controls the angle of indexed rotation of gobos in gobo wheel 3.
-    inheritFrom: `Gobo1Pos`
+    inheritFrom: `Gobo1Pos`,
   },
   Gobo3PosRotation: {
     // Controls the speed and direction of the continuous rotation of gobos in gobo wheel 3.
-    inheritFrom: `Gobo1PosRotation`
+    inheritFrom: `Gobo1PosRotation`,
   },
   Gobo3Shake: {
     // Control the frequency of the shake of gobo wheel 3.
-    inheritFrom: `Gobo1Shake`
+    inheritFrom: `Gobo1Shake`,
   },
   Gobo3Spin: {
     // Controls the speed and direction of the continuous rotation of gobo wheel 3.
-    inheritFrom: `Gobo1Spin`
+    inheritFrom: `Gobo1Spin`,
   },
   Gobo3WheelMode: {
     // Changes control between selecting, indexing, and rotating the gobos of gobo wheel 3.
-    inheritFrom: `Gobo1WheelMode`
+    inheritFrom: `Gobo1WheelMode`,
   },
   GoboWheelMSpeed: {
     // Movement speed of the fixture's gobo wheel.
-    inheritFrom: `IntensityMSpeed`
+    inheritFrom: `IntensityMSpeed`,
   },
   GoboWheelReset: {
     // Resets the fixture's gobo wheel.
-    inheritFrom: `BeamReset`
+    inheritFrom: `BeamReset`,
   },
   Haze: {
     // Fog or hazer's haze feature.
@@ -1101,7 +1101,7 @@ const gdtfAttributes = {
     oflProperty: `fogOutput`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.fogType = `Haze`;
-    }
+    },
   },
   'HSB_Brightness': undefined, // Controls the fixture's color attribute regarding the brightness.
   'HSB_Hue': undefined, // Controls the fixture's color attribute regarding the hue.
@@ -1111,25 +1111,25 @@ const gdtfAttributes = {
     // Movement speed of the fixture's intensity.
     oflType: `Speed`,
     oflProperty: guessSpeedOrDuration,
-    defaultPhysicalEntity: `Speed`
+    defaultPhysicalEntity: `Speed`,
   },
   IntensityReset: {
     // Resets the fixture's intensity.
-    inheritFrom: `BeamReset`
+    inheritFrom: `BeamReset`,
   },
   Iris: {
     // Controls the diameter of the fixture's beam.
     oflType: `Iris`,
     oflProperty: `openPercent`,
-    defaultPhysicalEntity: `Angle`
+    defaultPhysicalEntity: `Angle`,
   },
   IrisMode: {
     // Changes modes of the fixture’s iris - linear, strobe, pulse.
-    inheritFrom: `AnimationIndexRotateMode`
+    inheritFrom: `AnimationIndexRotateMode`,
   },
   IrisMSpeed: {
     // Movement speed of the fixture's iris.
-    inheritFrom: `IntensityMSpeed`
+    inheritFrom: `IntensityMSpeed`,
   },
   IrisPulseClose: {
     // Sets speed of iris‘s closing pulse.
@@ -1138,7 +1138,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Frequency`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.effectName = `RampDown`;
-    }
+    },
   },
   IrisPulseOpen: {
     // Sets speed of iris‘s opening pulse.
@@ -1147,11 +1147,11 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Frequency`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.effectName = `RampUp`;
-    }
+    },
   },
   IrisReset: {
     // Resets the fixture's iris.
-    inheritFrom: `BeamReset`
+    inheritFrom: `BeamReset`,
   },
   IrisStrobe: {
     // Sets speed of the iris’s strobe feature.
@@ -1160,80 +1160,80 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Frequency`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.effectName = `Strobe`;
-    }
+    },
   },
   LampControl: {
     // Controls the fixture's lamp on/lamp off feature.
     oflType: `Maintenance`,
     oflProperty: `parameter`,
-    defaultPhysicalEntity: `Percent`
+    defaultPhysicalEntity: `Percent`,
   },
   LampPowerMode: {
     // Controls the energy consumption of the lamp.
-    inheritFrom: `AnimationIndexRotateMode`
+    inheritFrom: `AnimationIndexRotateMode`,
   },
   MagentaMode: {
     // Controls how Cyan is used within the fixture's magenta CMY-mixing.
-    inheritFrom: `AnimationIndexRotateMode`
+    inheritFrom: `AnimationIndexRotateMode`,
   },
   NoFeature: {
     // Ranges without a functionality.
     oflType: `NoFunction`,
-    oflProperty: null
+    oflProperty: null,
   },
   Pan: {
     // Controls the fixture's sideward movement (horizontal axis).
     oflType: `Pan`,
     oflProperty: `angle`,
-    defaultPhysicalEntity: `Angle`
+    defaultPhysicalEntity: `Angle`,
   },
   PanMode: {
     // Selects fixture's pan mode. Selects between a limited pan range (e.g. -270 to 270) or a continuous pan range.
-    inheritFrom: `AnimationIndexRotateMode`
+    inheritFrom: `AnimationIndexRotateMode`,
   },
   PanReset: {
     // Resets the fixture's pan.
-    inheritFrom: `BeamReset`
+    inheritFrom: `BeamReset`,
   },
   PositionEffect: {
     // Selects the predefined position effects that are built into the fixture.
-    inheritFrom: `Effects`
+    inheritFrom: `Effects`,
   },
   PositionEffectRate: {
     // Controls the speed of the predefined position effects that are built into the fixture.
-    inheritFrom: `EffectsRate`
+    inheritFrom: `EffectsRate`,
   },
   PositionEffectFade: {
     // Snaps or smooth fades with timing in running predefined position effects.
-    inheritFrom: `EffectsFade`
+    inheritFrom: `EffectsFade`,
   },
   PositionModes: {
     // Selects the fixture's position mode.
     // TODO: Is this a typo in the GDTF wiki / schema and it should be "PositionMode"?
     oflType: `Maintenance`,
     oflProperty: `parameter`,
-    defaultPhysicalEntity: `Percent`
+    defaultPhysicalEntity: `Percent`,
   },
   PositionMSpeed: {
     // Movement speed of the fixture's pan/tilt.
     inheritFrom: `IntensityMSpeed`,
-    oflType: `PanTiltSpeed`
+    oflType: `PanTiltSpeed`,
   },
   PositionReset: {
     // Resets the fixture's pan/tilt.
-    inheritFrom: `BeamReset`
+    inheritFrom: `BeamReset`,
   },
   Prism: {
     // Controls the insertion of fixture ́s prism wheel 1. Refracts the beam into multiple beams of light on wheel 1.
     oflType: `Prism`,
     oflProperty: null,
-    defaultPhysicalEntity: `None`
+    defaultPhysicalEntity: `None`,
   },
   PrismPos: {
     // Controls the indexed position of fixture‘s prism on prism wheel 1.
     oflType: `PrismRotation`,
     oflProperty: `angle`,
-    defaultPhysicalEntity: `Angle`
+    defaultPhysicalEntity: `Angle`,
   },
   PrismPosIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   PrismPosRotation: {
@@ -1243,83 +1243,83 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `AngularSpeed`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       normalizeAngularSpeedDirection(gdtfCapability);
-    }
+    },
   },
   PrismPrismIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   Prism1: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Prism`
+    inheritFrom: `Prism`,
   },
   Prism1Pos: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `PrismPos`
+    inheritFrom: `PrismPos`,
   },
   Prism1PosIndex: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Prism1Pos`
+    inheritFrom: `Prism1Pos`,
   },
   Prism1PosSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Prism1PosRotation`
+    inheritFrom: `Prism1PosRotation`,
   },
   Prism1SelectIndex: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Prism1`
+    inheritFrom: `Prism1`,
   },
   Prism1SelectSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Prism1`
+    inheritFrom: `Prism1`,
   },
   Prism2: {
     // Controls the insertion of fixture´s prism wheel 2. Refracts the beam into multiple beams of light on wheel 2.
-    inheritFrom: `Prism`
+    inheritFrom: `Prism`,
   },
   Prism2Pos: {
     // Controls the indexed position of fixture‘s prism on prism wheel 2.
-    inheritFrom: `PrismPos`
+    inheritFrom: `PrismPos`,
   },
   Prism2PosIndex: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Prism2Pos`
+    inheritFrom: `Prism2Pos`,
   },
   Prism2PosRotation: {
     // Controls the speed and direction of the continuous rotation of the fixture’s prism on prism wheel 2.
-    inheritFrom: `PrismPosRotation`
+    inheritFrom: `PrismPosRotation`,
   },
   Prism2PosSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Prism2PosRotation`
+    inheritFrom: `Prism2PosRotation`,
   },
   Prism2PrismIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   Prism2SelectIndex: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Prism2`
+    inheritFrom: `Prism2`,
   },
   Prism2SelectSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `Prism2`
+    inheritFrom: `Prism2`,
   },
   PrismMSpeed: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `IrisMSpeed`
+    inheritFrom: `IrisMSpeed`,
   },
   Shaper: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   ShaperIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   ShaperMacros: {
     // Predefined presets for shaper positions.
-    inheritFrom: `Effects`
+    inheritFrom: `Effects`,
   },
   ShaperPos: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     oflType: `Rotation`,
     oflProperty: `angle`,
-    defaultPhysicalEntity: `Angle`
+    defaultPhysicalEntity: `Angle`,
   },
   ShaperPosIndex: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     oflType: `Rotation`,
     oflProperty: `angle`,
-    defaultPhysicalEntity: `Angle`
+    defaultPhysicalEntity: `Angle`,
   },
   ShaperPosSpin: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -1328,13 +1328,13 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `AngularSpeed`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       normalizeAngularSpeedDirection(gdtfCapability);
-    }
+    },
   },
   ShaperRot: {
     // Rotates position of blade assembly.
     oflType: `BladeSystemRotation`,
     oflProperty: `angle`,
-    defaultPhysicalEntity: `Angle`
+    defaultPhysicalEntity: `Angle`,
   },
   ShaperRotIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
   ShaperSelectIndex: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -1357,11 +1357,11 @@ const gdtfAttributes = {
       else {
         capability.helpWanted = `What does physical value ${physicalFrom}…${physicalTo} mean?`;
       }
-    }
+    },
   },
   ShutterReset: {
     // Resets the fixture's shutter.
-    inheritFrom: `BeamReset`
+    inheritFrom: `BeamReset`,
   },
   ShutterStrobe: {
     // Controls the frequency/speed of the fixture´s mechanical or electronical strobe shutter feature.
@@ -1370,7 +1370,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Frequency`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.shutterEffect = `Strobe`;
-    }
+    },
   },
   ShutterStrobePulse: {
     // Controls the frequency/speed of the fixture´s mechanical or electronical pulse shutter feature.
@@ -1379,7 +1379,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Frequency`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.shutterEffect = `Pulse`;
-    }
+    },
   },
   ShutterStrobePulseClose: {
     // Controls the frequency/speed of the fixture´s mechanical or electronical closing pulse shutter feature.
@@ -1388,7 +1388,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Frequency`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.shutterEffect = `RampDown`;
-    }
+    },
   },
   ShutterStrobePulseOpen: {
     // Controls the frequency/speed of the fixture´s mechanical or electronical opening pulse shutter feature.
@@ -1397,7 +1397,7 @@ const gdtfAttributes = {
     defaultPhysicalEntity: `Frequency`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       capability.shutterEffect = `RampUp`;
-    }
+    },
   },
   ShutterStrobeRandom: {
     // Controls the frequency/speed of the fixture´s mechanical or electronical random strobe shutter feature.
@@ -1409,7 +1409,7 @@ const gdtfAttributes = {
     },
     afterPhysicalPropertyHook(capability, gdtfCapability) {
       capability.randomTiming = true;
-    }
+    },
   },
   ShutterStrobeRandomPulse: {
     // Controls the frequency/speed of the fixture´s mechanical or electronical random pulse shutter feature.
@@ -1421,7 +1421,7 @@ const gdtfAttributes = {
     },
     afterPhysicalPropertyHook(capability, gdtfCapability) {
       capability.randomTiming = true;
-    }
+    },
   },
   ShutterStrobeRandomPulseClose: {
     // Controls the frequency/speed of the fixture´s mechanical or electronical random closing pulse shutter feature.
@@ -1433,7 +1433,7 @@ const gdtfAttributes = {
     },
     afterPhysicalPropertyHook(capability, gdtfCapability) {
       capability.randomTiming = true;
-    }
+    },
   },
   ShutterStrobeRandomPulseOpen: {
     // Controls the frequency/speed of the fixture´s mechanical or electronical random opening pulse shutter feature.
@@ -1445,109 +1445,109 @@ const gdtfAttributes = {
     },
     afterPhysicalPropertyHook(capability, gdtfCapability) {
       capability.randomTiming = true;
-    }
+    },
   },
   Shutter2: {
     // Controls the fixture´s mechanical or electronical shutter feature (2). Is used with foreground/background strobe.
-    inheritFrom: `Shutter1`
+    inheritFrom: `Shutter1`,
   },
   Shutter2Strobe: {
     // Controls the frequency/speed of the fixture ́s mechanical or electronical strobe shutter feature (2).
-    inheritFrom: `Shutter1Strobe`
+    inheritFrom: `Shutter1Strobe`,
   },
   Shutter2StrobePulse: {
     // Controls the frequency/speed of the fixture ́s mechanical or electronical pulse shutter feature (2).
-    inheritFrom: `Shutter1StrobePulse`
+    inheritFrom: `Shutter1StrobePulse`,
   },
   Shutter2StrobePulseClose: {
     // Controls the frequency/speed of the fixture ́s mechanical or electronical closing pulse shutter feature (2).
-    inheritFrom: `Shutter1StrobePulseClose`
+    inheritFrom: `Shutter1StrobePulseClose`,
   },
   Shutter2StrobePulseOpen: {
     // Controls the frequency/speed of the fixture ́s mechanical or electronical opening pulse shutter feature (2).
-    inheritFrom: `Shutter1StrobePulseOpen`
+    inheritFrom: `Shutter1StrobePulseOpen`,
   },
   Shutter2StrobeRandom: {
     // Controls the frequency/speed of the fixture ́s mechanical or electronical random strobe shutter feature (2).
-    inheritFrom: `Shutter1StrobeRandom`
+    inheritFrom: `Shutter1StrobeRandom`,
   },
   Shutter2StrobeRandomPulse: {
     // Controls the frequency/speed of the fixture ́s mechanical or electronical random pulse shutter feature (2).
-    inheritFrom: `Shutter1StrobeRandomPulse`
+    inheritFrom: `Shutter1StrobeRandomPulse`,
   },
   Shutter2StrobeRandomPulseClose: {
     // Controls the frequency/speed of the fixture ́s mechanical or electronical random closing pulse shutter feature (2).
-    inheritFrom: `Shutter1StrobeRandomPulseClose`
+    inheritFrom: `Shutter1StrobeRandomPulseClose`,
   },
   Shutter2StrobeRandomPulseOpen: {
     // Controls the frequency/speed of the fixture ́s mechanical or electronical random opening pulse shutter feature (2).
-    inheritFrom: `Shutter1StrobeRandomPulseOpen`
+    inheritFrom: `Shutter1StrobeRandomPulseOpen`,
   },
   Shutter3: {
     // Controls the fixture ´s mechanical or electronical shutter feature (3). Is used with foreground/background strobe.
-    inheritFrom: `Shutter1`
+    inheritFrom: `Shutter1`,
   },
   Shutter3Strobe: {
     // Controls the frequency/speed of the fixture´s mechanical or electronical strobe shutter feature (3).
-    inheritFrom: `Shutter1Strobe`
+    inheritFrom: `Shutter1Strobe`,
   },
   Shutter3StrobePulse: {
     // Controls the frequency/speed of the fixture´s mechanical or electronical pulse shutter feature (3).
-    inheritFrom: `Shutter1StrobePulse`
+    inheritFrom: `Shutter1StrobePulse`,
   },
   Shutter3StrobePulseClose: {
     // Controls the frequency/speed of the fixture´s mechanical or electronical closing pulse shutter feature (3).
-    inheritFrom: `Shutter1StrobePulseClose`
+    inheritFrom: `Shutter1StrobePulseClose`,
   },
   Shutter3StrobePulseOpen: {
     // Controls the frequency/speed of the fixture´s mechanical or electronical opening pulse shutter feature (3).
-    inheritFrom: `Shutter1StrobePulseOpen`
+    inheritFrom: `Shutter1StrobePulseOpen`,
   },
   Shutter3StrobeRandom: {
     // Controls the frequency/speed of the fixture´s mechanical or electronical random strobe shutter feature (3).
-    inheritFrom: `Shutter1StrobeRandom`
+    inheritFrom: `Shutter1StrobeRandom`,
   },
   Shutter3StrobeRandomPulse: {
     // Controls the frequency/speed of the fixture´s mechanical or electronical random pulse shutter feature (3).
-    inheritFrom: `Shutter1StrobeRandomPulse`
+    inheritFrom: `Shutter1StrobeRandomPulse`,
   },
   Shutter3StrobeRandomPulseClose: {
     // Controls the frequency/speed of the fixture´s mechanical or electronical random closing pulse shutter feature (3).
-    inheritFrom: `Shutter1StrobeRandomPulseClose`
+    inheritFrom: `Shutter1StrobeRandomPulseClose`,
   },
   Shutter3StrobeRandomPulseOpen: {
     // Controls the frequency/speed of the fixture´s mechanical or electronical random opening pulse shutter feature (3).
-    inheritFrom: `Shutter1StrobeRandomPulseOpen`
+    inheritFrom: `Shutter1StrobeRandomPulseOpen`,
   },
   StrobeDuration: {
     // Controls the length of a strobe flash.
     oflType: `StrobeDuration`,
     oflProperty: `duration`,
-    defaultPhysicalEntity: `Time`
+    defaultPhysicalEntity: `Time`,
   },
   StrobeMode: {
     // Changes strobe style - strobe, pulse, random strobe, etc. - of the shutter attribute.
-    inheritFrom: `AnimationIndexRotateMode`
+    inheritFrom: `AnimationIndexRotateMode`,
   },
   StrobeRate: {
     // Controls the time between strobe flashes.
     oflType: `StrobeSpeed`,
     oflProperty: `speed`,
-    defaultPhysicalEntity: `Frequency`
+    defaultPhysicalEntity: `Frequency`,
   },
   Tilt: {
     // Controls the fixture's upward and the downward movement (vertical axis).
     oflType: `Tilt`,
     oflProperty: `angle`,
-    defaultPhysicalEntity: `Angle`
+    defaultPhysicalEntity: `Angle`,
   },
   TiltMode: {
     // Selects fixture's pan mode. Selects between a limited tilt range (e.g. -130 to 130) or a continuous tilt range.
-    inheritFrom: `AnimationIndexRotateMode`
+    inheritFrom: `AnimationIndexRotateMode`,
   },
   TiltReset: {
     // Resets the fixture's tilt.
-    inheritFrom: `BeamReset`
+    inheritFrom: `BeamReset`,
   },
   Video: undefined, // Controls video features.
   XYZ_X: undefined, // Defines a fixture’s x-coordinate within an XYZ coordinate system.
@@ -1555,22 +1555,22 @@ const gdtfAttributes = {
   XYZ_Z: undefined, // Defines a fixture‘s z-coordinate within an XYZ coordinate system.
   YellowMode: {
     // Controls how Cyan is used within the fixture's yellow CMY-mixing feature.
-    inheritFrom: `AnimationIndexRotateMode`
+    inheritFrom: `AnimationIndexRotateMode`,
   },
   Zoom: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
     oflType: `Zoom`,
     oflProperty: `angle`,
-    defaultPhysicalEntity: `Angle`
+    defaultPhysicalEntity: `Angle`,
   },
   ZoomMSpeed: {
     // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
-    inheritFrom: `IrisMSpeed`
+    inheritFrom: `IrisMSpeed`,
   },
   ZoomReset: {
     // Resets the fixture's zoom.
-    inheritFrom: `BeamReset`
-  }
+    inheritFrom: `BeamReset`,
+  },
 };
 
 /**
@@ -1621,5 +1621,5 @@ function guessSpeedOrDuration(gdtfCapability) {
 
 module.exports = {
   gdtfUnits,
-  gdtfAttributes
+  gdtfAttributes,
 };

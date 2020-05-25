@@ -19,7 +19,7 @@ catch (error) {
 const result = childProcess.spawnSync(`git diff --exit-code`, {
   cwd: path.join(__dirname, `..`),
   shell: true,
-  stdio: `inherit`
+  stdio: `inherit`,
 });
 console.log(`\n`);
 

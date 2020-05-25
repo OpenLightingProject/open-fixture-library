@@ -50,18 +50,18 @@ export default {
     EditorProportionalPropertySwitcher,
     LabeledInput,
     PropertyInputEntity,
-    PropertyInputText
+    PropertyInputText,
   },
   props: {
     capability: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -71,8 +71,8 @@ export default {
         parameterStart: null,
         parameterEnd: null,
         hold: ``,
-        comment: ``
-      }
+        comment: ``,
+      },
     };
   },
   computed: {
@@ -81,7 +81,7 @@ export default {
       const entityName = propertySchema.$ref.replace(`definitions.json#/entities/`, ``);
 
       return this.properties.entities[entityName];
-    }
-  }
+    },
+  },
 };
 </script>

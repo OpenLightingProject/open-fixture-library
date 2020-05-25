@@ -72,20 +72,20 @@ export default {
   components: {
     A11yDialog,
     LabeledInput,
-    LabeledValue
+    LabeledValue,
   },
   model: {
-    prop: `context`
+    prop: `context`,
   },
   props: {
     type: {
       type: String,
-      required: true
+      required: true,
     },
     context: {
       type: Object,
-      default: null
-    }
+      default: null,
+    },
   },
   data: () => {
     return {
@@ -93,7 +93,7 @@ export default {
       message: ``,
       githubUsername: ``,
       issueUrl: null,
-      error: null
+      error: null,
     };
   },
   computed: {
@@ -138,7 +138,7 @@ export default {
         location: this.location,
         helpWanted: this.context.helpWanted,
         message: this.message,
-        githubUsername: this.githubUsername !== `` ? this.githubUsername : null
+        githubUsername: this.githubUsername !== `` ? this.githubUsername : null,
       };
 
       if (this.type === `plugin`) {
@@ -162,17 +162,17 @@ export default {
       const mailBodyData = {
         'Problem location': this.location,
         'Problem description': this.context.helpWanted,
-        'Message': this.message
+        'Message': this.message,
       };
 
       const body = Object.entries(mailBodyData).filter(
-        ([key, value]) => value !== null
+        ([key, value]) => value !== null,
       ).map(
-        ([key, value]) => `${key}:${value.includes(`\n`) ? `\n` : ` `}${value}`
+        ([key, value]) => `${key}:${value.includes(`\n`) ? `\n` : ` `}${value}`,
       ).join(`\n`);
 
       return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    }
+    },
   },
   mounted() {
     if (localStorage) {
@@ -212,7 +212,7 @@ export default {
       this.issueUrl = null;
       this.error = null;
       this.$emit(`input`, null);
-    }
-  }
+    },
+  },
 };
 </script>

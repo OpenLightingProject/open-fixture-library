@@ -171,7 +171,7 @@
           class="card slim"
           @click.prevent="() => openHelpWantedDialog({
             context: fixture,
-            type: `fixture`
+            type: `fixture`,
           })">
           <OflSvg name="comment-alert" class="left" /><span>Send information</span>
         </a>
@@ -286,19 +286,19 @@ export default {
     FixturePageWheel,
     HelpWantedDialog,
     HelpWantedMessage,
-    LabeledValue
+    LabeledValue,
   },
   mixins: [fixtureLinksMixin],
   props: {
     fixture: {
       type: Fixture,
-      required: true
+      required: true,
     },
     loadAllModes: {
       type: Boolean,
       required: false,
-      default: true
-    }
+      default: true,
+    },
   },
   data() {
     return {
@@ -309,7 +309,7 @@ export default {
       helpWantedType: ``,
       modeNumberLoadLimit: this.loadAllModes ? undefined : 5, // initially displayed modes, if limited
       modeNumberLoadThreshold: 15, // fixtures with more modes will be limited
-      modeNumberLoadIncrement: 10 // how many modes a button click will load
+      modeNumberLoadIncrement: 10, // how many modes a button click will load
     };
   },
   computed: {
@@ -370,7 +370,7 @@ export default {
 
         if (linkType === `video`) {
           linksOfType = linksOfType.filter(
-            url => !this.videos.some(video => video.url === url)
+            url => !this.videos.some(video => video.url === url),
           );
           linkDisplayNumber += this.videos.length;
         }
@@ -392,7 +392,7 @@ export default {
             title,
             type: linkType,
             iconName: this.linkTypeIconNames[linkType],
-            hostname: getHostname(url)
+            hostname: getHostname(url),
           });
 
           linkDisplayNumber++;
@@ -404,7 +404,7 @@ export default {
     mailtoUrl() {
       const subject = `Feedback for fixture '${this.manKey}/${this.fixKey}'`;
       return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}`;
-    }
+    },
   },
   mounted() {
     if (process.browser) {
@@ -415,8 +415,8 @@ export default {
     openHelpWantedDialog(event) {
       this.helpWantedContext = event.context;
       this.helpWantedType = event.type;
-    }
-  }
+    },
+  },
 };
 
 
@@ -426,7 +426,7 @@ const supportedVideoFormats = {
     regex: /\.(?:mp4|avi)$/,
     displayType: url => getHostname(url),
     videoId: (url, match) => url,
-    startAt: (url, match) => 0
+    startAt: (url, match) => 0,
   },
 
   youtube: {
@@ -438,7 +438,7 @@ const supportedVideoFormats = {
     regex: /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]t=([0-9hms]+))?/,
     displayType: url => `YouTube`,
     videoId: (url, match) => match[1],
-    startAt: (url, match) => match[2] || 0
+    startAt: (url, match) => match[2] || 0,
   },
 
   vimeo: {
@@ -451,7 +451,7 @@ const supportedVideoFormats = {
     regex: /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([0-9hms]+))?/,
     displayType: url => `Vimeo`,
     videoId: (url, match) => match[1],
-    startAt: (url, match) => match[2] || 0
+    startAt: (url, match) => match[2] || 0,
   },
 
   facebook: {
@@ -462,8 +462,8 @@ const supportedVideoFormats = {
     regex: /^https:\/\/www\.facebook\.com\/[^/]+\/videos\/[^/]+\/(\d+)\/$/,
     displayType: url => `Facebook`,
     videoId: (url, match) => match[1],
-    startAt: (url, match) => 0
-  }
+    startAt: (url, match) => 0,
+  },
 
 };
 
@@ -485,7 +485,7 @@ function getEmbettableVideoData(url) {
         type,
         displayType: format.displayType(url),
         videoId: format.videoId(url, match),
-        startAt: format.startAt(url, match)
+        startAt: format.startAt(url, match),
       };
     }
   }

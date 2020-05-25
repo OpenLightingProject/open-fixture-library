@@ -135,13 +135,13 @@ import LabeledValue from '../LabeledValue.vue';
 
 export default {
   components: {
-    LabeledValue
+    LabeledValue,
   },
   props: {
     physical: {
       type: Physical,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 };
 </script>

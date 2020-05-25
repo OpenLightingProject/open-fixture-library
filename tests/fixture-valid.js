@@ -28,9 +28,9 @@ const { SwitchingChannel } = require(`../lib/model.js`);
 const ajv = new Ajv({
   format: `full`,
   formats: {
-    'color-hex': ``
+    'color-hex': ``,
   },
-  verbose: true
+  verbose: true,
 });
 const schemaValidate = ajv.compile(fixtureSchema);
 const redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
@@ -53,7 +53,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   /** @type {ResultData} */
   const result = {
     errors: [],
-    warnings: []
+    warnings: [],
   };
 
   /** @type {Fixture} */
@@ -156,7 +156,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       uniqueValues.fixKeysInMan[manKey],
       fixture.key,
       result,
-      `Fixture key '${fixture.key}' is not unique in manufacturer ${manKey} (test is not case-sensitive).`
+      `Fixture key '${fixture.key}' is not unique in manufacturer ${manKey} (test is not case-sensitive).`,
     );
 
     // fixture.name
@@ -167,7 +167,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       uniqueValues.fixNamesInMan[manKey],
       fixture.name,
       result,
-      `Fixture name '${fixture.name}' is not unique in manufacturer ${manKey} (test is not case-sensitive).`
+      `Fixture name '${fixture.name}' is not unique in manufacturer ${manKey} (test is not case-sensitive).`,
     );
 
     // fixture.shortName
@@ -175,7 +175,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       uniqueValues.fixShortNames,
       fixture.shortName,
       result,
-      `Fixture shortName '${fixture.shortName}' is not unique (test is not case-sensitive).`
+      `Fixture shortName '${fixture.shortName}' is not unique (test is not case-sensitive).`,
     );
   }
 
@@ -243,8 +243,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
     const variesInAxisLength = matrix.pixelKeyStructure.some(
       rows => rows.length !== matrix.pixelCountY || rows.some(
-        columns => columns.length !== matrix.pixelCountX
-      )
+        columns => columns.length !== matrix.pixelCountX,
+      ),
     );
     if (variesInAxisLength) {
       result.errors.push(`Matrix must not vary in axis length.`);
@@ -346,7 +346,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       const possibleMatrixChannelKeys = templateChannel.possibleMatrixChannelKeys.get(templateKey);
 
       const templateChannelUsed = fixture.allChannelKeys.some(
-        chKey => possibleMatrixChannelKeys.includes(chKey)
+        chKey => possibleMatrixChannelKeys.includes(chKey),
       );
       if (!templateChannelUsed) {
         result.warnings.push(`Template channel '${templateKey}' is never used.`);
@@ -357,7 +357,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           possibleMatrixChKeys,
           chKey,
           result,
-          `Generated channel key ${chKey} can be produced by multiple template channels (test is not case-sensitive).`
+          `Generated channel key ${chKey} can be produced by multiple template channels (test is not case-sensitive).`,
         );
       }
     }
@@ -374,7 +374,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           definedChannelKeys,
           channel.key,
           result,
-          `Channel key '${channel.key}' is already defined (maybe in another letter case).`
+          `Channel key '${channel.key}' is already defined (maybe in another letter case).`,
         );
         checkChannel(channel);
       }
@@ -405,7 +405,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         definedChannelKeys,
         alias,
         result,
-        `Fine channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`
+        `Fine channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`,
       );
     });
 
@@ -416,7 +416,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
         definedChannelKeys,
         alias,
         result,
-        `Switching channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`
+        `Switching channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`,
       );
     });
 
@@ -576,7 +576,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           WheelShake: checkWheelCapability,
           WheelSlotRotation: checkWheelCapability,
           WheelRotation: checkWheelCapability,
-          Effect: checkEffectCapability
+          Effect: checkEffectCapability,
         };
 
         if (Object.keys(capabilityTypeChecks).includes(cap.type)) {
@@ -711,13 +711,13 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       modeNames,
       mode.name,
       result,
-      `Mode name '${mode.name}' is not unique (test is not case-sensitive).`
+      `Mode name '${mode.name}' is not unique (test is not case-sensitive).`,
     );
     checkUniqueness(
       modeShortNames,
       mode.shortName,
       result,
-      `Mode shortName '${mode.shortName}' is not unique (test is not case-sensitive).`
+      `Mode shortName '${mode.shortName}' is not unique (test is not case-sensitive).`,
     );
 
     // "6ch" / "8-Channel" / "9 channels" mode names
@@ -873,7 +873,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
               }
 
               const overlap = channel.triggerRanges[switchToChannelKey].some(
-                range => range.overlapsWithOneOf(otherChannel.triggerRanges[switchToChannelKey])
+                range => range.overlapsWithOneOf(otherChannel.triggerRanges[switchToChannelKey]),
               );
               if (overlap) {
                 result.errors.push(`Channel '${switchToChannelKey}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
@@ -883,7 +883,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           else {
             // fail if one of this channel's switchToChannels appears anywhere
             const firstDuplicate = channel.switchToChannels.find(
-              ch => otherChannel.usesChannelKey(ch.key, `all`)
+              ch => otherChannel.usesChannelKey(ch.key, `all`),
             );
             if (firstDuplicate !== undefined) {
               result.errors.push(`Channel '${firstDuplicate.key}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
@@ -899,11 +899,11 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       function checkCoarserChannelsInMode(fineChannel) {
         const coarseChannel = fineChannel.coarseChannel;
         const coarserChannelKeys = coarseChannel.fineChannelAliases.filter(
-          (alias, index) => index < fineChannel.resolution - 2
+          (alias, index) => index < fineChannel.resolution - 2,
         ).concat(coarseChannel.key);
 
         const notInMode = coarserChannelKeys.filter(
-          coarseChannelKey => mode.getChannelIndex(coarseChannelKey) === -1
+          coarseChannelKey => mode.getChannelIndex(coarseChannelKey) === -1,
         );
 
         if (notInMode.length > 0) {
@@ -918,7 +918,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    */
   function checkUnusedChannels() {
     const unused = Array.from(definedChannelKeys).filter(
-      chKey => !usedChannelKeys.has(chKey)
+      chKey => !usedChannelKeys.has(chKey),
     );
 
     if (unused.length > 0) {
@@ -931,7 +931,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
    */
   function checkUnusedWheels() {
     const unusedWheels = fixture.wheels.filter(
-      wheel => !usedWheels.has(wheel.name)
+      wheel => !usedWheels.has(wheel.name),
     ).map(wheel => wheel.name);
 
     if (unusedWheels.length > 0) {
@@ -949,13 +949,13 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
       if (wheel.type !== `AnimationGobo`) {
         slotsOfUsedWheels.push(...(wheel.slots.map(
-          (slot, slotIndex) => `${wheelName} (slot ${slotIndex + 1})`
+          (slot, slotIndex) => `${wheelName} (slot ${slotIndex + 1})`,
         )));
       }
     });
 
     const unusedWheelSlots = slotsOfUsedWheels.filter(
-      slot => !usedWheelSlots.has(slot)
+      slot => !usedWheelSlots.has(slot),
     );
 
     if (unusedWheelSlots.length > 0) {
@@ -970,53 +970,53 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     const mutuallyExclusiveGroups = [
       [`Moving Head`, `Scanner`, `Barrel Scanner`],
       [`Pixel Bar`, `Flower`],
-      [`Pixel Bar`, `Stand`]
+      [`Pixel Bar`, `Stand`],
     ];
 
     const categories = {
       'Color Changer': {
         isSuggested: isColorChanger(),
         suggestedPhrase: `there are ColorPreset or ColorIntensity capabilities or Color wheel slots`,
-        invalidPhrase: `there are no ColorPreset and less than two ColorIntensity capabilities and no Color wheel slots`
+        invalidPhrase: `there are no ColorPreset and less than two ColorIntensity capabilities and no Color wheel slots`,
       },
       'Moving Head': {
         isSuggested: hasPanTiltChannels(true),
         isInvalid: !hasPanTiltChannels(true),
         suggestedPhrase: `there are pan and tilt channels`,
-        invalidPhrase: `there are not both pan and tilt channels`
+        invalidPhrase: `there are not both pan and tilt channels`,
       },
       'Scanner': {
         isSuggested: hasPanTiltChannels(true),
         isInvalid: !hasPanTiltChannels(false),
         suggestedPhrase: `there are pan and tilt channels`,
-        invalidPhrase: `there are no pan or tilt channels`
+        invalidPhrase: `there are no pan or tilt channels`,
       },
       'Barrel Scanner': {
         isSuggested: hasPanTiltChannels(true),
         isInvalid: !hasPanTiltChannels(false),
         suggestedPhrase: `there are pan and tilt channels`,
-        invalidPhrase: `there are no pan or tilt channels`
+        invalidPhrase: `there are no pan or tilt channels`,
       },
       'Smoke': {
         isSuggested: isFogType(`Fog`),
         suggestedPhrase: `there are Fog/FogType capabilities with no fogType or fogType 'Fog'`,
-        invalidPhrase: `there are no Fog/FogType capabilities or none has fogType 'Fog'`
+        invalidPhrase: `there are no Fog/FogType capabilities or none has fogType 'Fog'`,
       },
       'Hazer': {
         isSuggested: isFogType(`Haze`),
         suggestedPhrase: `there are Fog/FogType capabilities with no fogType or fogType 'Haze'`,
-        invalidPhrase: `there are no Fog/FogType capabilities or none has fogType 'Haze'`
+        invalidPhrase: `there are no Fog/FogType capabilities or none has fogType 'Haze'`,
       },
       'Matrix': {
         isInvalid: isNotMatrix(),
-        invalidPhrase: `fixture does not define a matrix`
+        invalidPhrase: `fixture does not define a matrix`,
       },
       'Pixel Bar': {
         isSuggested: isPixelBar(),
         isInvalid: isNotPixelBar(),
         suggestedPhrase: `matrix pixels are horizontally aligned`,
-        invalidPhrase: `no horizontally aligned matrix is defined`
-      }
+        invalidPhrase: `no horizontally aligned matrix is defined`,
+      },
     };
 
     Object.entries(categories).forEach(([categoryName, category]) => {
@@ -1029,12 +1029,12 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       if (!isCategoryUsed && category.isSuggested) {
         // don't suggest this category if another mutually exclusive category is used
         const exclusiveGroups = mutuallyExclusiveGroups.filter(
-          group => group.includes(categoryName)
+          group => group.includes(categoryName),
         );
         const isForbiddenByGroup = exclusiveGroups.some(
           group => group.some(
-            cat => fixture.categories.includes(cat)
-          )
+            cat => fixture.categories.includes(cat),
+          ),
         );
 
         if (!isForbiddenByGroup) {
@@ -1059,7 +1059,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
      */
     function isColorChanger() {
       return hasCapabilityOfType(`ColorPreset`) || hasCapabilityOfType(`ColorIntensity`, 2) || fixture.wheels.some(
-        wheel => wheel.slots.some(slot => slot.type === `Color`)
+        wheel => wheel.slots.some(slot => slot.type === `Color`),
       );
     }
 
@@ -1080,7 +1080,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
      */
     function hasCapabilityOfType(type, minimum = 1) {
       return fixture.capabilities.filter(
-        cap => cap.type === type
+        cap => cap.type === type,
       ).length >= minimum;
     }
 
@@ -1090,7 +1090,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
      */
     function isFogType(fogType) {
       const fogCaps = fixture.capabilities.filter(
-        cap => cap.type.startsWith(`Fog`)
+        cap => cap.type.startsWith(`Fog`),
       );
 
       if (fogCaps.length === 0) {
@@ -1145,7 +1145,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       uniqueValues.fixRdmIdsInMan[manKey],
       `${fixture.rdm.modelId}`,
       result,
-      `Fixture RDM model ID '${fixture.rdm.modelId}' is not unique in manufacturer ${manKey}.`
+      `Fixture RDM model ID '${fixture.rdm.modelId}' is not unique in manufacturer ${manKey}.`,
     );
 
     if (fixture.manufacturer.rdmId === null) {
@@ -1159,7 +1159,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           rdmPersonalityIndices,
           `${mode.rdmPersonalityIndex}`,
           result,
-          `RDM personality index '${mode.rdmPersonalityIndex}' in mode '${mode.shortName}' is not unique in the fixture.`
+          `RDM personality index '${mode.rdmPersonalityIndex}' in mode '${mode.shortName}' is not unique in the fixture.`,
         );
       }
     }
@@ -1234,5 +1234,5 @@ function arraysEqual(a, b) {
 module.exports = {
   checkFixture,
   checkUniqueness,
-  getErrorString
+  getErrorString,
 };

@@ -108,7 +108,7 @@ import HelpWantedMessage from '../../../components/HelpWantedMessage.vue';
 export default {
   components: {
     HelpWantedDialog,
-    HelpWantedMessage
+    HelpWantedMessage,
   },
   validate({ params }) {
     return decodeURIComponent(params.plugin) in plugins.data;
@@ -125,7 +125,7 @@ export default {
     pluginData.key = pluginKey;
 
     const fileLocationOSes = `fileLocations` in pluginData ? Object.keys(pluginData.fileLocations).filter(
-      os => os !== `subDirectoriesAllowed`
+      os => os !== `subDirectoriesAllowed`,
     ) : null;
 
     return {
@@ -135,13 +135,13 @@ export default {
       importPluginVersion: plugins.data[pluginKey].importPluginVersion,
       libraryNames: {
         main: `Main (system) library`,
-        user: `User library`
-      }
+        user: `User library`,
+      },
     };
   },
   data() {
     return {
-      helpWantedContext: null
+      helpWantedContext: null,
     };
   },
   head() {
@@ -152,15 +152,15 @@ export default {
       meta: [
         {
           hid: `title`,
-          content: title
-        }
-      ]
+          content: title,
+        },
+      ],
     };
   },
   methods: {
     openHelpWantedDialog(event) {
       this.helpWantedContext = event.context;
-    }
-  }
+    },
+  },
 };
 </script>

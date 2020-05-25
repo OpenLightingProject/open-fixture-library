@@ -22,26 +22,26 @@ import PropertyInputText from '../../PropertyInputText.vue';
 export default {
   components: {
     LabeledInput,
-    PropertyInputText
+    PropertyInputText,
   },
   props: {
     capability: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
       properties: schemaProperties,
       defaultData: {
-        comment: ``
-      }
+        comment: ``,
+      },
     };
-  }
+  },
 };
 </script>

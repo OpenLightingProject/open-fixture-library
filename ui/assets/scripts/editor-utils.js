@@ -4,7 +4,7 @@ export const constants = {
   RESOLUTION_8BIT: 1,
   RESOLUTION_16BIT: 2,
   RESOLUTION_24BIT: 3,
-  RESOLUTION_32BIT: 4
+  RESOLUTION_32BIT: 4,
 };
 
 /**
@@ -26,14 +26,14 @@ export function getEmptyFixture() {
     links: [
       getEmptyLink(`manual`),
       getEmptyLink(`productPage`),
-      getEmptyLink(`video`)
+      getEmptyLink(`video`),
     ],
     rdmModelId: null,
     rdmSoftwareVersion: ``,
     physical: getEmptyPhysical(),
     modes: [getEmptyMode()],
     metaAuthor: ``,
-    availableChannels: {}
+    availableChannels: {},
   };
 }
 
@@ -46,7 +46,7 @@ export function getEmptyLink(linkType = `manual`) {
   return {
     uuid: uuidv4(),
     type: linkType,
-    url: ``
+    url: ``,
   };
 }
 
@@ -64,12 +64,12 @@ export function getEmptyPhysical() {
     bulb: {
       type: ``,
       colorTemperature: null,
-      lumens: null
+      lumens: null,
     },
     lens: {
       name: ``,
-      degreesMinMax: null
-    }
+      degreesMinMax: null,
+    },
   };
 }
 
@@ -85,7 +85,7 @@ export function getEmptyMode() {
     rdmPersonalityIndex: null,
     enablePhysicalOverride: false,
     physical: getEmptyPhysical(),
-    channels: []
+    channels: [],
   };
 }
 
@@ -107,16 +107,16 @@ export function getEmptyChannel() {
     precedence: ``,
     wheel: {
       direction: ``,
-      slots: []
+      slots: [],
     },
     wizard: {
       show: false,
       start: 0,
       width: 10,
       count: 3,
-      templateCapability: getEmptyCapability()
+      templateCapability: getEmptyCapability(),
     },
-    capabilities: [getEmptyCapability()]
+    capabilities: [getEmptyCapability()],
   };
 }
 
@@ -130,7 +130,7 @@ export function getEmptyFineChannel(coarseChannelId, resolution) {
   return {
     uuid: uuidv4(),
     coarseChannelId: coarseChannelId,
-    resolution: resolution
+    resolution: resolution,
   };
 }
 
@@ -144,7 +144,7 @@ export function getEmptyCapability() {
     open: true,
     dmxRange: null,
     type: ``,
-    typeData: {}
+    typeData: {},
   };
 }
 
@@ -156,7 +156,7 @@ export function getEmptyWheelSlot() {
   return {
     uuid: uuidv4(),
     type: ``,
-    typeData: {}
+    typeData: {},
   };
 }
 
@@ -217,7 +217,7 @@ export function colorsHexStringToArray(hexString) {
   }
 
   const hexArray = hexString.split(/\s*,\s*/).map(hex => hex.trim().toLowerCase()).filter(
-    hex => hex.match(/^#[0-9a-f]{6}$/)
+    hex => hex.match(/^#[0-9a-f]{6}$/),
   );
 
   if (hexArray.length === 0) {

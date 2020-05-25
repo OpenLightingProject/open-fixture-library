@@ -11,7 +11,7 @@ const { fixtureFromRepository } = require(`../lib/model.js`);
 const args = minimist(process.argv.slice(2), {
   string: [`p`, `o`],
   boolean: [`h`, `a`],
-  alias: { p: `plugin`, h: `help`, a: `all-fixtures`, o: `output-dir` }
+  alias: { p: `plugin`, h: `help`, a: `all-fixtures`, o: `output-dir` },
 });
 
 const helpMessage = [
@@ -22,7 +22,7 @@ const helpMessage = [
   `  --all-fixtures, -a: Use all fixtures from register`,
   `  --output-dir,   -o: If set, save outputted files in this directory`,
   `                      instead of printing the contents in the console`,
-  `  --help,         -h: Show this help message.`
+  `  --help,         -h: Show this help message.`,
 ].join(`\n`);
 
 if (args.help) {
@@ -49,7 +49,7 @@ let fixtures;
 if (args.a) {
   const register = require(`../fixtures/register.json`);
   fixtures = Object.keys(register.filesystem).filter(
-    fixKey => !(`redirectTo` in register.filesystem[fixKey]) || register.filesystem[fixKey].reason === `SameAsDifferentBrand`
+    fixKey => !(`redirectTo` in register.filesystem[fixKey]) || register.filesystem[fixKey].reason === `SameAsDifferentBrand`,
   ).map(fixKey => fixKey.split(`/`));
 }
 else {
@@ -57,7 +57,7 @@ else {
     const absolutePath = path.join(process.cwd(), relativePath);
     return [
       path.basename(path.dirname(absolutePath)), // man key
-      path.basename(absolutePath, path.extname(absolutePath)) // fix key
+      path.basename(absolutePath, path.extname(absolutePath)), // fix key
     ];
   });
 }
@@ -71,8 +71,8 @@ const outDir = args.o ? path.resolve(process.cwd(), args.o) : null;
       fixtures.map(([man, fix]) => fixtureFromRepository(man, fix)),
       {
         baseDir: path.join(__dirname, `..`),
-        date: new Date()
-      }
+        date: new Date(),
+      },
     );
     for (const file of files) {
       if (args.o) {

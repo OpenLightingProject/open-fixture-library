@@ -94,7 +94,7 @@ import LabeledInput from '../components/LabeledInput.vue';
 export default {
   components: {
     ConditionalDetails,
-    LabeledInput
+    LabeledInput,
   },
   head() {
     const title = this.searchFor ? `Search "${this.searchFor}"` : `Search`;
@@ -104,9 +104,9 @@ export default {
       meta: [
         {
           hid: `title`,
-          content: title
-        }
-      ]
+          content: title,
+        },
+      ],
     };
   },
   async asyncData({ query, app }) {
@@ -118,7 +118,7 @@ export default {
       manufacturersQuery: sanitizedQuery.manufacturers,
       categoriesQuery: sanitizedQuery.categories,
       detailsInitiallyOpen: sanitizedQuery.manufacturers.length > 0 || sanitizedQuery.categories.length > 0,
-      results: await getSearchResults(app.$axios, sanitizedQuery)
+      results: await getSearchResults(app.$axios, sanitizedQuery),
     };
   },
   data() {
@@ -127,12 +127,12 @@ export default {
         manKey => ({
           key: manKey,
           name: manufacturers[manKey].name,
-          fixtureCount: register.manufacturers[manKey].length
-        })
+          fixtureCount: register.manufacturers[manKey].length,
+        }),
       ),
       categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)),
       loading: false,
-      isBrowser: false
+      isBrowser: false,
     };
   },
   computed: {
@@ -143,10 +143,10 @@ export default {
         return {
           key,
           name: `${manufacturers[man].name} ${register.filesystem[key].name}`,
-          color: register.colors[man]
+          color: register.colors[man],
         };
       });
-    }
+    },
   },
   mounted() {
     this.isBrowser = true;
@@ -171,8 +171,8 @@ export default {
         query: {
           q: this.searchQuery,
           manufacturers: this.manufacturersQuery,
-          categories: this.categoriesQuery
-        }
+          categories: this.categoriesQuery,
+        },
       });
     },
     async updateResults() {
@@ -186,8 +186,8 @@ export default {
       this.searchFor = sanitizedQuery.search;
 
       this.loading = false;
-    }
-  }
+    },
+  },
 };
 
 /**
@@ -210,7 +210,7 @@ function getSanitizedQuery(query) {
   return {
     search: searchQuery,
     manufacturers: manufacturersQuery,
-    categories: categoriesQuery
+    categories: categoriesQuery,
   };
 }
 
@@ -224,7 +224,7 @@ function getSearchResults(axios, sanitizedQuery) {
   return axios.$post(`/api/v1/get-search-results`, {
     searchQuery: sanitizedQuery.search,
     manufacturersQuery: sanitizedQuery.manufacturers,
-    categoriesQuery: sanitizedQuery.categories
+    categoriesQuery: sanitizedQuery.categories,
   });
 }
 </script>

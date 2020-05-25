@@ -210,28 +210,28 @@ export default {
     EditorPhysical,
     LabeledInput,
     PropertyInputNumber,
-    PropertyInputText
+    PropertyInputText,
   },
   model: {
-    prop: `mode`
+    prop: `mode`,
   },
   props: {
     mode: {
       type: Object,
-      required: true
+      required: true,
     },
     index: {
       type: Number,
-      required: true
+      required: true,
     },
     fixture: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
@@ -278,9 +278,9 @@ export default {
 
             return nextCoarserChannelFound;
           },
-          revertClone: true
-        }
-      }
+          revertClone: true,
+        },
+      },
     };
   },
   computed: {
@@ -290,7 +290,7 @@ export default {
     },
     channelListNotEmpty() {
       return this.mode.channels.length > 0;
-    }
+    },
   },
   mounted() {
     if (this.$root._oflRestoreComplete) {
@@ -305,13 +305,13 @@ export default {
       this.$emit(`open-channel-editor`, {
         modeId: this.mode.uuid,
         editMode: `edit-?`,
-        uuid: channelUuid
+        uuid: channelUuid,
       });
     },
     addChannel: function() {
       this.$emit(`open-channel-editor`, {
         modeId: this.mode.uuid,
-        editMode: `add-existing`
+        editMode: `add-existing`,
       });
     },
     isChannelNameUnique(channelUuid) {
@@ -341,7 +341,7 @@ export default {
 
       // then remove the channel itself
       this.fixtureEditor.removeChannel(channelUuid, this.mode.uuid);
-    }
-  }
+    },
+  },
 };
 </script>

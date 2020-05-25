@@ -28,9 +28,9 @@ export default {
       meta: [
         {
           hid: `title`,
-          content: title
-        }
-      ]
+          content: title,
+        },
+      ],
     };
   },
   data() {
@@ -38,10 +38,10 @@ export default {
       categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)).map(
         catName => ({
           name: catName,
-          fixtureCount: register.categories[catName].length
-        })
-      )
+          fixtureCount: register.categories[catName].length,
+        }),
+      ),
     };
-  }
+  },
 };
 </script>

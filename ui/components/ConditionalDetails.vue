@@ -84,13 +84,13 @@ export default {
     if (this.$slots.default) {
       return createElement(`details`, [
         createElement(`summary`, this.$slots.summary),
-        this.$slots.default
+        this.$slots.default,
       ]);
     }
 
     return createElement(`div`, {
-      class: `summary`
+      class: `summary`,
     }, this.$slots.summary);
-  }
+  },
 };
 </script>

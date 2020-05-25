@@ -78,22 +78,22 @@ export default {
     EditorProportionalPropertySwitcher,
     EditorWheelSlots,
     LabeledInput,
-    PropertyInputText
+    PropertyInputText,
   },
   props: {
     capability: {
       type: Object,
-      required: true
+      required: true,
     },
     channel: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -109,8 +109,8 @@ export default {
         angle: ``,
         angleStart: null,
         angleEnd: null,
-        comment: ``
-      }
+        comment: ``,
+      },
     };
   },
   computed: {
@@ -118,13 +118,13 @@ export default {
       const resetProp = this.capability.typeData.speedOrAngle === `speed` ? `angle` : `speed`;
 
       return [resetProp, `${resetProp}Start`, `${resetProp}End`];
-    }
+    },
   },
   methods: {
     changeSpeedOrAngle(newValue) {
       this.capability.typeData.speedOrAngle = newValue;
       this.$nextTick(() => this.$refs.speedOrAngleInput.focus());
-    }
-  }
+    },
+  },
 };
 </script>

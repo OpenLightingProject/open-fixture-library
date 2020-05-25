@@ -35,24 +35,24 @@ import {
   getEmptyFineChannel,
   getEmptyCapability,
   getSanitizedChannel,
-  clone
+  clone,
 } from '../../assets/scripts/editor-utils.js';
 
 import A11yDialog from '../A11yDialog.vue';
 
 export default {
   components: {
-    A11yDialog
+    A11yDialog,
   },
   model: {
-    prop: `restoredData`
+    prop: `restoredData`,
   },
   props: {
     restoredData: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   computed: {
     restoredDate() {
@@ -60,7 +60,7 @@ export default {
         return null;
       }
       return (new Date(this.restoredData.timestamp)).toISOString().replace(/\..*$/, ``).replace(`T`, `, `);
-    }
+    },
   },
   methods: {
     discardRestored() {
@@ -86,8 +86,8 @@ export default {
           this.$emit(`restore-complete`);
         });
       });
-    }
-  }
+    },
+  },
 };
 
 /**
@@ -135,14 +135,14 @@ function getRestoredChannel(channel, isChannelDialog) {
   restoredChannel.capabilities.forEach((cap, index) => {
     restoredChannel.capabilities[index] = Object.assign(
       getEmptyCapability(),
-      cap
+      cap,
     );
   });
 
   if (isChannelDialog) {
     restoredChannel.wizard.templateCapability = Object.assign(
       getEmptyCapability(),
-      restoredChannel.wizard.templateCapability
+      restoredChannel.wizard.templateCapability,
     );
   }
 

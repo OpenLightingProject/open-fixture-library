@@ -13,7 +13,7 @@ module.exports = async function createFeedbackIssue(request, response) {
     location,
     helpWanted,
     message,
-    githubUsername
+    githubUsername,
   } = request.body;
 
   let title;
@@ -40,9 +40,9 @@ module.exports = async function createFeedbackIssue(request, response) {
   issueContentData.Message = message;
 
   const lines = Object.entries(issueContentData).filter(
-    ([key, value]) => value !== null
+    ([key, value]) => value !== null,
   ).map(
-    ([key, value]) => `**${key}**:${value.includes(`\n`) ? `\n` : ` `}${value}`
+    ([key, value]) => `**${key}**:${value.includes(`\n`) ? `\n` : ` `}${value}`,
   );
 
   if (githubUsername) {
@@ -62,6 +62,6 @@ module.exports = async function createFeedbackIssue(request, response) {
 
   response.status(201).json({
     issueUrl,
-    error
+    error,
   });
 };

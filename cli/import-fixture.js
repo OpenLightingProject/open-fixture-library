@@ -18,8 +18,8 @@ const args = minimist(process.argv.slice(2), {
   alias: {
     a: `author-name`,
     p: `plugin`,
-    c: `create-pull-request`
-  }
+    c: `create-pull-request`,
+  },
 });
 
 const filename = args._[0];
@@ -42,7 +42,7 @@ if (args._.length !== 1 || !plugins.importPlugins.includes(args.plugin) || !auth
       manufacturers,
       fixtures,
       warnings,
-      errors: {}
+      errors: {},
     };
 
     for (const key of Object.keys(result.fixtures)) {
