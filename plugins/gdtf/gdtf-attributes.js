@@ -283,7 +283,7 @@ const gdtfAttributes = {
     oflProperty: `slotNumber`,
     defaultPhysicalEntity: `None`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
-      const gdtfSlotNumber = parseInt(gdtfCapability.$.WheelSlotIndex);
+      const gdtfSlotNumber = parseInt(gdtfCapability.$.WheelSlotIndex, 10);
 
       let slotNumberStart = gdtfSlotNumber;
       let slotNumberEnd = gdtfSlotNumber;
@@ -303,7 +303,7 @@ const gdtfAttributes = {
       capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
     },
     afterPhysicalPropertyHook(capability, gdtfCapability) {
-      const gdtfSlotIndex = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
+      const gdtfSlotIndex = parseInt(gdtfCapability.$.WheelSlotIndex, 10) - 1;
 
       if (`Wheel` in gdtfCapability._channelFunction.$) {
         const wheelReference = gdtfCapability._channelFunction.$.Wheel;
@@ -415,7 +415,7 @@ const gdtfAttributes = {
     beforePhysicalPropertyHook(capability, gdtfCapability) {
       // sometimes a workaround to add color information is used: reference a virtual color wheel
 
-      const index = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
+      const index = parseInt(gdtfCapability.$.WheelSlotIndex, 10) - 1;
       if (`Wheel` in gdtfCapability._channelFunction.$) {
         const wheelReference = gdtfCapability._channelFunction.$.Wheel;
         const gdtfWheel = followXmlNodeReference(gdtfCapability._fixture.Wheels[0], wheelReference);
@@ -883,7 +883,7 @@ const gdtfAttributes = {
     oflProperty: `slotNumber`,
     defaultPhysicalEntity: `None`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
-      const gdtfSlotNumber = parseInt(gdtfCapability.$.WheelSlotIndex);
+      const gdtfSlotNumber = parseInt(gdtfCapability.$.WheelSlotIndex, 10);
 
       let slotNumberStart = gdtfSlotNumber;
       let slotNumberEnd = gdtfSlotNumber;
@@ -903,7 +903,7 @@ const gdtfAttributes = {
       capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
     },
     afterPhysicalPropertyHook(capability, gdtfCapability) {
-      const gdtfSlotIndex = parseInt(gdtfCapability.$.WheelSlotIndex) - 1;
+      const gdtfSlotIndex = parseInt(gdtfCapability.$.WheelSlotIndex, 10) - 1;
 
       if (`Wheel` in gdtfCapability._channelFunction.$) {
         const wheelReference = gdtfCapability._channelFunction.$.Wheel;
@@ -977,7 +977,7 @@ const gdtfAttributes = {
     oflProperty: `shakeSpeed`,
     defaultPhysicalEntity: `Frequency`,
     beforePhysicalPropertyHook(capability, gdtfCapability) {
-      const gdtfSlotNumber = parseInt(gdtfCapability.$.WheelSlotIndex);
+      const gdtfSlotNumber = parseInt(gdtfCapability.$.WheelSlotIndex, 10);
 
       capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
       capability.slotNumber = gdtfSlotNumber;
