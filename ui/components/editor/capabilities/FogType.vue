@@ -43,18 +43,18 @@ import PropertyInputText from '../../PropertyInputText.vue';
 export default {
   components: {
     LabeledInput,
-    PropertyInputText
+    PropertyInputText,
   },
   props: {
     capability: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -62,14 +62,14 @@ export default {
       hint: `Doesn't activate fog, only selects the fog type (Fog or Haze).`,
       defaultData: {
         fogType: ``,
-        comment: ``
-      }
+        comment: ``,
+      },
     };
   },
   computed: {
     fogTypes() {
       return this.properties.capabilityTypes.Fog.properties.fogType.enum;
-    }
-  }
+    },
+  },
 };
 </script>

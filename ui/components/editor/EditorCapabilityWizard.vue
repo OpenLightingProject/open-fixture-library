@@ -132,7 +132,7 @@ td, th {
 import {
   getEmptyCapability,
   isCapabilityChanged,
-  clone
+  clone,
 } from "../../assets/scripts/editor-utils.js";
 
 import LabeledValue from '../LabeledValue.vue';
@@ -141,25 +141,25 @@ import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
 export default {
   components: {
     LabeledValue,
-    EditorCapabilityTypeData
+    EditorCapabilityTypeData,
   },
   props: {
     channel: {
       type: Object,
-      required: true
+      required: true,
     },
     resolution: {
       type: Number,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
-      required: true
+      required: true,
     },
     wizard: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     capabilities() {
@@ -207,7 +207,7 @@ export default {
 
         cap.dmxRange = [
           this.wizard.start + (i * this.wizard.width),
-          this.wizard.start + ((i + 1) * this.wizard.width) - 1
+          this.wizard.start + ((i + 1) * this.wizard.width) - 1,
         ];
         cap.type = this.wizard.templateCapability.type;
         cap.typeData = clone(this.wizard.templateCapability.typeData);
@@ -260,18 +260,18 @@ export default {
      */
     allCapabilities() {
       const inheritedCapabilities = this.capabilities.map(
-        cap => getCapabilityWithSource(cap, `inherited`)
+        cap => getCapabilityWithSource(cap, `inherited`),
       );
 
       const computedCapabilites = this.computedCapabilites.map(
-        cap => getCapabilityWithSource(cap, `computed`)
+        cap => getCapabilityWithSource(cap, `computed`),
       );
 
       // insert all computed capabilities at insertIndex
       inheritedCapabilities.splice(this.insertIndex, this.removeCount, ...computedCapabilites);
 
       return inheritedCapabilities.filter(
-        cap => cap.dmxRange !== null
+        cap => cap.dmxRange !== null,
       );
     },
 
@@ -323,7 +323,7 @@ export default {
       }
 
       return null;
-    }
+    },
   },
   mounted() {
     if (this.$root._oflRestoreComplete) {
@@ -371,8 +371,8 @@ export default {
       this.capabilities.splice(this.insertIndex, this.removeCount, ...this.computedCapabilites);
 
       this.$emit(`close`, this.insertIndex);
-    }
-  }
+    },
+  },
 };
 
 /**

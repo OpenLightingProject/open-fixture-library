@@ -243,19 +243,19 @@ export default {
     fixtureCount: {
       type: Number,
       required: false,
-      default: 0
+      default: 0,
     },
     // fixtures from the editor, not yet submitted
     editorFixtures: {
       type: Object,
       required: false,
-      default: undefined
+      default: undefined,
     },
     // the manufacturer key and fixture key of a submitted fixture
     fixtureKey: {
       type: String,
       required: false,
-      default: undefined
+      default: undefined,
     },
     // the button style: default, 'home' or 'select'
     buttonStyle: {
@@ -264,23 +264,23 @@ export default {
       default: `default`,
       validator(buttonStyle) {
         return [`default`, `home`, `select`].includes(buttonStyle);
-      }
+      },
     },
     // show the help box
     showHelp: {
       type: Boolean,
       required: false,
-      default: true
-    }
+      default: true,
+    },
   },
   data() {
     return {
       exportPlugins: plugins.exportPlugins.map(
         pluginKey => ({
           key: pluginKey,
-          name: plugins.data[pluginKey].name
-        })
-      )
+          name: plugins.data[pluginKey].name,
+        }),
+      ),
     };
   },
   computed: {
@@ -306,7 +306,7 @@ export default {
       }
 
       return `/download`;
-    }
+    },
   },
   methods: {
     downloadDataAsFile(blob, filename = ``) {
@@ -345,7 +345,7 @@ export default {
       const response = await this.$axios.post(
         `${this.baseLink}.${pluginKey}`,
         this.editorFixtures,
-        { responseType: `blob` }
+        { responseType: `blob` },
       );
 
       if (response.data.error) {
@@ -395,7 +395,7 @@ export default {
 
       // download the (possibly not yet submitted) editor fixtures
       this.formattedDownload(pluginKey);
-    }
-  }
+    },
+  },
 };
 </script>

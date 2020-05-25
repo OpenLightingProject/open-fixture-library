@@ -89,7 +89,7 @@ import FixturePage from '../../components/fixture-page/FixturePage.vue';
 
 export default {
   components: {
-    FixturePage
+    FixturePage,
   },
   validate({ params }) {
     return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
@@ -112,12 +112,12 @@ export default {
 
       const reasonExplanations = {
         FixtureRenamed: `The fixture was renamed.`,
-        SameAsDifferentBrand: `The fixture is the same but sold under different brands / names.`
+        SameAsDifferentBrand: `The fixture is the same but sold under different brands / names.`,
       };
 
       redirectObj = {
         from: query.redirectFrom,
-        reason: reasonExplanations[redirectJson.reason]
+        reason: reasonExplanations[redirectJson.reason],
       };
     }
 
@@ -126,7 +126,7 @@ export default {
       fixKey,
       fixtureJson,
       redirect: redirectObj,
-      loadAllModes: `loadAllModes` in query
+      loadAllModes: `loadAllModes` in query,
     };
   },
   computed: {
@@ -140,8 +140,8 @@ export default {
         'name': this.fixture.name,
         'category': this.fixture.mainCategory,
         'manufacturer': {
-          'url': `${packageJson.homepage}${this.manKey}`
-        }
+          'url': `${packageJson.homepage}${this.manKey}`,
+        },
       };
 
       if (this.fixture.hasComment) {
@@ -166,28 +166,28 @@ export default {
             'position': 1,
             'item': {
               '@id': `${packageJson.homepage}manufacturers`,
-              'name': `Manufacturers`
-            }
+              'name': `Manufacturers`,
+            },
           },
           {
             '@type': `ListItem`,
             'position': 2,
             'item': {
               '@id': `${packageJson.homepage}${this.manKey}`,
-              'name': this.fixture.manufacturer.name
-            }
+              'name': this.fixture.manufacturer.name,
+            },
           },
           {
             '@type': `ListItem`,
             'position': 3,
             'item': {
               '@id': this.fixture.url,
-              'name': this.fixture.name
-            }
-          }
-        ]
+              'name': this.fixture.name,
+            },
+          },
+        ],
       };
-    }
+    },
   },
   head() {
     const title = `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`;
@@ -197,11 +197,11 @@ export default {
       meta: [
         {
           hid: `title`,
-          content: title
-        }
-      ]
+          content: title,
+        },
+      ],
     };
-  }
+  },
 };
 
 </script>

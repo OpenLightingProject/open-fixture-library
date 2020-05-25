@@ -23,7 +23,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
   const parser = new xml2js.Parser();
 
   const fixture = {
-    $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`
+    $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
   };
 
   const warnings = [];
@@ -57,7 +57,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
   }
   else {
     manufacturer = {
-      name: gdtfFixture.$.Manufacturer
+      name: gdtfFixture.$.Manufacturer,
     };
     warnings.push(`Please add manufacturer URL.`);
   }
@@ -75,8 +75,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     importPlugin: {
       plugin: `gdtf`,
       date: timestamp,
-      comment: `GDTF fixture type ID: ${gdtfFixture.$.FixtureTypeID}`
-    }
+      comment: `GDTF fixture type ID: ${gdtfFixture.$.FixtureTypeID}`,
+    },
   };
 
   fixture.comment = gdtfFixture.$.Description;
@@ -124,14 +124,14 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
   return {
     manufacturers: {
-      [manKey]: manufacturer
+      [manKey]: manufacturer,
     },
     fixtures: {
-      [fixKey]: fixture
+      [fixKey]: fixture,
     },
     warnings: {
-      [fixKey]: warnings
-    }
+      [fixKey]: warnings,
+    },
   };
 
 
@@ -148,7 +148,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     manufacturer.rdmId = parseInt(rdmData.$.ManufacturerID, 16);
     fixture.rdm = {
       modelId: parseInt(rdmData.$.DeviceModelID, 16),
-      softwareVersion: rdmData.$.SoftwareVersionID
+      softwareVersion: rdmData.$.SoftwareVersionID,
     };
   }
 
@@ -162,7 +162,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     }
 
     const gdtfWheels = (gdtfFixture.Wheels[0].Wheel || []).filter(
-      wheel => wheel.$.Name !== `ColorMacro`
+      wheel => wheel.$.Name !== `ColorMacro`,
     );
 
     if (gdtfWheels.length === 0) {
@@ -177,7 +177,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
           const name = gdtfSlot.$.Name;
 
           const slot = {
-            type: `Unknown`
+            type: `Unknown`,
           };
 
           if (name === `Open`) {
@@ -205,7 +205,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
           }
 
           return slot;
-        })
+        }),
       };
     });
   }
@@ -280,7 +280,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
           switchingChannelName: slaveChannel.$.Name,
           slaveGdtfChannel: slaveChannel,
           dmxFrom,
-          dmxTo
+          dmxTo,
         };
 
         // if channel was already split, skip splitting it again, else
@@ -294,7 +294,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
           const channelFunctionIndex = slaveChannel.LogicalChannel[0].ChannelFunction.indexOf(slaveChannelFunction);
           slaveChannel.LogicalChannel[0].ChannelFunction.splice(channelFunctionIndex, 1);
           channelCopy.LogicalChannel[0].ChannelFunction = [
-            channelCopy.LogicalChannel[0].ChannelFunction[channelFunctionIndex]
+            channelCopy.LogicalChannel[0].ChannelFunction[channelFunctionIndex],
           ];
 
           // insert channelCopy before the slaveChannel
@@ -396,14 +396,14 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     }
 
     const modeIndex = gdtfFixture.DMXModes[0].DMXMode.findIndex(
-      gdtfMode => gdtfMode.DMXChannels[0].DMXChannel.includes(gdtfChannel)
+      gdtfMode => gdtfMode.DMXChannels[0].DMXChannel.includes(gdtfChannel),
     );
 
     const channel = {
       name: name,
       fineChannelAliases: [],
       dmxValueResolution: ``,
-      defaultValue: null
+      defaultValue: null,
     };
 
     if (`Default` in gdtfChannel.$) {
@@ -428,7 +428,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
     // check if we already added the same channel in another mode
     const sameChannel = channelWrappers.find(
-      ch => JSON.stringify(ch.channel) === JSON.stringify(channel) && !ch.modeIndices.includes(modeIndex)
+      ch => JSON.stringify(ch.channel) === JSON.stringify(channel) && !ch.modeIndices.includes(modeIndex),
     );
     if (sameChannel) {
       gdtfChannel._oflChannelKey = sameChannel.key;
@@ -445,7 +445,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       key: channelKey,
       channel: channel,
       maxResolution: getChannelResolution(),
-      modeIndices: [modeIndex]
+      modeIndices: [modeIndex],
     });
 
 
@@ -457,7 +457,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
       try {
         return gdtfFixture.AttributeDefinitions[0].Attributes[0].Attribute.find(
-          attribute => attribute.$.Name === channelAttribute
+          attribute => attribute.$.Name === channelAttribute,
         ).$.Pretty || channelAttribute;
       }
       catch (error) {
@@ -485,22 +485,22 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
             // add an empty <ChannelSet />
             gdtfChannelFunction.ChannelSet = [
               {
-                $: {}
-              }
+                $: {},
+              },
             ];
           }
 
           // save GDTF attribute for later
           gdtfChannelFunction._attribute = followXmlNodeReference(
             gdtfFixture.AttributeDefinitions[0].Attributes[0],
-            gdtfChannelFunction.$.Attribute
+            gdtfChannelFunction.$.Attribute,
           );
 
           if (!gdtfChannelFunction._attribute) {
             gdtfChannelFunction._attribute = {
               $: {
-                Name: `NoFeature`
-              }
+                Name: `NoFeature`,
+              },
             };
           }
 
@@ -544,7 +544,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
       return gdtfCapabilities.map((gdtfCapability, index) => {
         const capability = {
-          dmxRange: [gdtfCapability._dmxFrom, getDmxRangeEnd(index)]
+          dmxRange: [gdtfCapability._dmxFrom, getDmxRangeEnd(index)],
         };
 
         const gdtfAttribute = gdtfCapability._channelFunction._attribute;
@@ -613,7 +613,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
         if (!capabilityTypeData) {
           return {
             oflType: `Unknown`, // will trigger an error in the validation
-            oflProperty: `physical` // will also trigger an error, but the information could be useful
+            oflProperty: `physical`, // will also trigger an error, but the information could be useful
           };
         }
 
@@ -625,7 +625,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
         gdtfAttributes[attrName] = Object.assign(
           {},
           getCapabilityTypeData(capabilityTypeData.inheritFrom),
-          capabilityTypeData
+          capabilityTypeData,
         );
         delete gdtfAttributes[attrName].inheritFrom;
 
@@ -689,7 +689,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
         else if (!(physicalEntity in gdtfUnits)) {
           // ignore case of PhysicalUnit attribute
           physicalEntity = Object.keys(gdtfUnits).find(
-            entity => entity.toLowerCase() === physicalEntity.toLowerCase()
+            entity => entity.toLowerCase() === physicalEntity.toLowerCase(),
           );
         }
 
@@ -795,7 +795,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
         }
 
         return Math.max(0, ...dmxValues.map(
-          ([value, resolution]) => resolution
+          ([value, resolution]) => resolution,
         ));
       }
     }
@@ -824,7 +824,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
           dmxBreakWrappers.push({
             dmxBreak: gdtfChannel.$.DMXBreak,
             geometry: gdtfChannel.$.Geometry,
-            channels: []
+            channels: [],
           });
         }
 
@@ -844,7 +844,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
         const geometryReferences = findGeometryReferences(channelWrapper.geometry);
         const usedMatrixPixels = geometryReferences.map(
-          (gdtfGeoRef, index) => gdtfGeoRef.$.Name || `${channelWrapper.geometry} ${index + 1}`
+          (gdtfGeoRef, index) => gdtfGeoRef.$.Name || `${channelWrapper.geometry} ${index + 1}`,
         );
 
         usedMatrixPixels.forEach(pixelKey => matrixPixels.add(pixelKey));
@@ -854,14 +854,14 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
           repeatFor: usedMatrixPixels,
           channelOrder: `perPixel`,
           templateChannels: channelWrapper.channels.map(
-            chKey => `${chKey} $pixelKey`
-          )
+            chKey => `${chKey} $pixelKey`,
+          ),
         });
       });
 
       return {
         name: gdtfMode.$.Name,
-        channels
+        channels,
       };
     });
 
@@ -870,9 +870,9 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     fixture.matrix = {
       pixelKeys: [
         [
-          matrixPixelList
-        ]
-      ]
+          matrixPixelList,
+        ],
+      ],
     };
 
     // try to simplify matrix channel insert blocks
@@ -978,7 +978,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       relationsPerMaster[masterKey][switchingChannelKey].push({
         dmxFrom: relation.dmxFrom,
         dmxTo: relation.dmxTo,
-        switchToChannelKey
+        switchToChannelKey,
       });
 
       if (!modeChannelReplacements[modeIndex]) {
@@ -1003,7 +1003,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
           relationsPerMaster[masterKey][switchingFineChannelKey].push({
             dmxFrom: relation.dmxFrom,
             dmxTo: relation.dmxTo,
-            switchToChannelKey: fineChannelAlias
+            switchToChannelKey: fineChannelAlias,
           });
           modeChannelReplacements[modeIndex][fineChannelAlias] = switchingFineChannelKey;
         });
@@ -1071,7 +1071,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
         // were this switching channel's relations already added?
         const addedSwitchingChannelKey = Object.keys(simplifiedRelations).find(
-          otherKey => JSON.stringify(relations[otherKey]) === JSON.stringify(relations)
+          otherKey => JSON.stringify(relations[otherKey]) === JSON.stringify(relations),
         );
 
         if (addedSwitchingChannelKey) {

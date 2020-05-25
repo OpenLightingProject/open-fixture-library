@@ -229,12 +229,12 @@ import ThemeSwitcher from './ThemeSwitcher.vue';
 
 export default {
   components: {
-    ThemeSwitcher
+    ThemeSwitcher,
   },
   data() {
     return {
       searchQuery: this.$router.history.current.query.q || ``,
-      searchFieldFocused: false
+      searchFieldFocused: false,
     };
   },
   mounted() {
@@ -251,12 +251,12 @@ export default {
       this.$router.push({
         path: `/search`,
         query: {
-          q: this.searchQuery
-        }
+          q: this.searchQuery,
+        },
       });
       this.focusContent();
-    }
-  }
+    },
+  },
 };
 </script>
 

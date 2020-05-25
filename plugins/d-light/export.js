@@ -31,15 +31,15 @@ module.exports.export = async function exportDLight(fixtures, options) {
           Device: {
             'OFL_Export': {
               '@id': options.displayedPluginVersion || module.exports.version,
-              '#text': fixture.url
+              '#text': fixture.url,
             },
             frames: {
-              '@id': mode.channels.length
+              '@id': mode.channels.length,
             },
             ManufacturerName: fixture.manufacturer.name,
             ModelName: `${fixture.name} (${mode.name})`,
-            creationDate: fixture.meta.createDate.toISOString().split(`T`)[0]
-          }
+            creationDate: fixture.meta.createDate.toISOString().split(`T`)[0],
+          },
         })
         .element(`Attributes`);
 
@@ -53,11 +53,11 @@ module.exports.export = async function exportDLight(fixtures, options) {
         name: `${fixture.manufacturer.key}/${fixture.key}-${sanitize(mode.shortName)}.xml`,
         content: xml.end({
           pretty: true,
-          indent: `  `
+          indent: `  `,
         }),
         mimetype: `application/xml`,
         fixtures: [fixture],
-        mode: mode.shortName
+        mode: mode.shortName,
       });
     }
   }
@@ -77,8 +77,8 @@ function addAttribute(xml, mode, attribute, channels) {
   const xmlAttribute = xml.element({
     AttributesDefinition: {
       '@id': attribute,
-      '@length': channels.length
-    }
+      '@length': channels.length,
+    },
   });
 
   channels.forEach((channel, indexInAttribute) => {
@@ -86,21 +86,21 @@ function addAttribute(xml, mode, attribute, channels) {
       ThisAttribute: {
         '@id': indexInAttribute,
         HOME: {
-          '@id': getDefaultValue(getUsableChannel(channel))
+          '@id': getDefaultValue(getUsableChannel(channel)),
         },
         addressIndex: {
-          '@id': mode.getChannelIndex(channel)
+          '@id': mode.getChannelIndex(channel),
         },
         parameterName: {
-          '@id': getParameterName()
+          '@id': getParameterName(),
         },
         minLevel: {
-          '@id': 0
+          '@id': 0,
         },
         maxLevel: {
-          '@id': 255
-        }
-      }
+          '@id': 255,
+        },
+      },
     });
 
     channel = getUsableChannel(channel);
@@ -111,8 +111,8 @@ function addAttribute(xml, mode, attribute, channels) {
 
       xmlCapabilities = xmlChannel.element({
         Definitions: {
-          '@index': caps.length
-        }
+          '@index': caps.length,
+        },
       });
 
       caps.forEach(addCapability);
@@ -143,8 +143,8 @@ function addAttribute(xml, mode, attribute, channels) {
           '@snap': cap.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
           '@timeHolder': hold,
           '@dummy': `0`,
-          '#text': cap.name
-        }
+          '#text': cap.name,
+        },
       });
     }
 
@@ -221,7 +221,7 @@ function getChannelsByAttribute(channels) {
     'EFFECT': [],
     'CONTROL': [],
     'EXTRA': [],
-    'FINE': []
+    'FINE': [],
   };
 
   for (const channel of channels) {
@@ -229,7 +229,7 @@ function getChannelsByAttribute(channels) {
   }
 
   const emptyAttributes = Object.keys(channelsByAttribute).filter(
-    attribute => channelsByAttribute[attribute].length === 0
+    attribute => channelsByAttribute[attribute].length === 0,
   );
   for (const emptyAttribute of emptyAttributes) {
     delete channelsByAttribute[emptyAttribute];
@@ -256,7 +256,7 @@ function getChannelsByAttribute(channels) {
       BEAM: [`Iris`, `Focus`, `Zoom`],
       EFFECT: [`Strobe`, `Shutter`, `Speed`, `Gobo`, `Prism`, `Effect`, `Fog`],
       CONTROL: [`Maintenance`],
-      EXTRA: [`NoFunction`]
+      EXTRA: [`NoFunction`],
     };
 
     for (const attribute of Object.keys(oflToDLightMap)) {

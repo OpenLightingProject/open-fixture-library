@@ -68,22 +68,22 @@ export default {
     EditorProportionalPropertySwitcher,
     EditorWheelSlots,
     LabeledInput,
-    PropertyInputText
+    PropertyInputText,
   },
   props: {
     capability: {
       type: Object,
-      required: true
+      required: true,
     },
     channel: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -98,9 +98,9 @@ export default {
         shakeAngle: ``,
         shakeAngleStart: null,
         shakeAngleEnd: null,
-        comment: ``
-      }
+        comment: ``,
+      },
     };
-  }
+  },
 };
 </script>

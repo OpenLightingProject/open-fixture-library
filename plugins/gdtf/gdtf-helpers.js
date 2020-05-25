@@ -13,7 +13,7 @@ function followXmlNodeReference(startNode, nodeReference) {
 
   for (const nameAttr of nameParts) {
     const nodeWithNameAttr = getChildNodes(currentNode).find(
-      node => `$` in node && node.$.Name === nameAttr
+      node => `$` in node && node.$.Name === nameAttr,
     );
 
     if (nodeWithNameAttr) {
@@ -122,5 +122,5 @@ function getRgbColorFromGdtfColor(gdtfColorStr) {
 
 module.exports = {
   followXmlNodeReference,
-  getRgbColorFromGdtfColor
+  getRgbColorFromGdtfColor,
 };

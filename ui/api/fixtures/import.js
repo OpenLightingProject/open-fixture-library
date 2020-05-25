@@ -26,7 +26,7 @@ module.exports = async function importFixtureFile(request, response) {
   }
   catch (error) {
     response.status(400).json({
-      error: error.message
+      error: error.message,
     });
   }
 };
@@ -45,7 +45,7 @@ async function importFixture(body) {
   const { manufacturers, fixtures, warnings } = await plugin.import(
     Buffer.from(body.fileContentBase64, `base64`),
     body.fileName,
-    body.author
+    body.author,
   ).catch(parseError => {
     parseError.message = `Parse error (${parseError.message})`;
     throw parseError;
@@ -56,7 +56,7 @@ async function importFixture(body) {
     manufacturers,
     fixtures,
     warnings,
-    errors: {}
+    errors: {},
   };
 
   Object.keys(result.fixtures).forEach(key => {

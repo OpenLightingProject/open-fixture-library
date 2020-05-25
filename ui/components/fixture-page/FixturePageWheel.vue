@@ -231,19 +231,19 @@ import ConditionalDetails from '../ConditionalDetails.vue';
 
 export default {
   components: {
-    ConditionalDetails
+    ConditionalDetails,
   },
   props: {
     wheel: {
       type: Wheel,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       highlightedSlot: null,
       wheelRadius: 50,
-      wheelPadding: 3
+      wheelPadding: 3,
     };
   },
   computed: {
@@ -300,7 +300,7 @@ export default {
 
         return `Slot ${index + 1}: ${slot.name}`;
       });
-    }
-  }
+    },
+  },
 };
 </script>

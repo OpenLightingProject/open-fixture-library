@@ -75,7 +75,7 @@ import LabeledInput from '../components/LabeledInput.vue';
 
 export default {
   components: {
-    LabeledInput
+    LabeledInput,
   },
   head() {
     const title = `RDM Lookup`;
@@ -85,9 +85,9 @@ export default {
       meta: [
         {
           hid: `title`,
-          content: title
-        }
-      ]
+          content: title,
+        },
+      ],
     };
   },
   async asyncData({ query, redirect }) {
@@ -100,7 +100,7 @@ export default {
     if (isEmpty(manufacturerId)) {
       return {
         notFound: null,
-        searchFor: `nothing`
+        searchFor: `nothing`,
       };
     }
 
@@ -109,7 +109,7 @@ export default {
         return {
           notFound: `manufacturer`,
           searchFor: `manufacturer`,
-          manufacturerId: manufacturerIdNumber
+          manufacturerId: manufacturerIdNumber,
         };
       }
 
@@ -121,8 +121,8 @@ export default {
         prefillQuery: encodeURIComponent(JSON.stringify({
           useExistingManufacturer: false,
           newManufacturerRdmId: manufacturerIdNumber,
-          rdmModelId: modelIdNumber
-        }))
+          rdmModelId: modelIdNumber,
+        })),
       };
     }
 
@@ -150,10 +150,10 @@ export default {
       prefillQuery: encodeURIComponent(JSON.stringify({
         useExistingManufacturer: true,
         manufacturerKey: manufacturer.key,
-        rdmModelId: modelIdNumber
-      }))
+        rdmModelId: modelIdNumber,
+      })),
     };
-  }
+  },
 };
 
 /**

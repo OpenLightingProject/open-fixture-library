@@ -45,11 +45,11 @@ export default {
           link: `/${fixtureKey}`,
           name: getFixtureName(manKey, fixKey),
           categories: Object.keys(register.categories).filter(
-            cat => register.categories[cat].includes(fixtureKey)
+            cat => register.categories[cat].includes(fixtureKey),
           ),
-          color: register.colors[manKey]
+          color: register.colors[manKey],
         };
-      })
+      }),
     };
   },
   head() {
@@ -60,11 +60,11 @@ export default {
       meta: [
         {
           hid: `title`,
-          content: title
-        }
-      ]
+          content: title,
+        },
+      ],
     };
-  }
+  },
 };
 
 /**

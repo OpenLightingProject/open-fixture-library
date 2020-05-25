@@ -39,7 +39,7 @@ app.use(express.json({ limit: `50mb` }));
 
 // enable compression
 app.use(compression({
-  threshold: `500B`
+  threshold: `500B`,
 }));
 
 
@@ -56,7 +56,7 @@ app.get(`/download.:format([a-z0-9_.-]+)`, (request, response, next) => {
   }
 
   const fixtures = Object.keys(register.filesystem).filter(
-    fixKey => !(`redirectTo` in register.filesystem[fixKey]) || register.filesystem[fixKey].reason === `SameAsDifferentBrand`
+    fixKey => !(`redirectTo` in register.filesystem[fixKey]) || register.filesystem[fixKey].reason === `SameAsDifferentBrand`,
   ).map(fixture => {
     const [man, key] = fixture.split(`/`);
     return fixtureFromRepository(man, key);
@@ -211,7 +211,7 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
   try {
     const files = await plugin.export(fixtures, {
       baseDir: __dirname,
-      date: new Date()
+      date: new Date(),
     });
 
     if (files.length === 1) {
@@ -232,7 +232,7 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
 
     const zipBuffer = await archive.generateAsync({
       type: `nodebuffer`,
-      compression: `DEFLATE`
+      compression: `DEFLATE`,
     });
     response.status(200)
       .attachment(`ofl_export_${zipName}.zip`)

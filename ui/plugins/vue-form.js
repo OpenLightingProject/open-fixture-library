@@ -82,6 +82,6 @@ Vue.use(VueForm, {
       }
 
       return true;
-    }
-  }
+    },
+  },
 });

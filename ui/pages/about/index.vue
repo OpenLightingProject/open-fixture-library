@@ -57,10 +57,10 @@ export default {
       meta: [
         {
           hid: `title`,
-          content: title
-        }
-      ]
+          content: title,
+        },
+      ],
     };
-  }
+  },
 };
 </script>

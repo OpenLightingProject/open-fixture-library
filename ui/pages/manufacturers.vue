@@ -55,9 +55,9 @@ export default {
       meta: [
         {
           hid: `title`,
-          content: title
-        }
-      ]
+          content: title,
+        },
+      ],
     };
   },
   data() {
@@ -73,7 +73,7 @@ export default {
       if (!(letter in letters)) {
         letters[letter] = {
           id: letter === `#` ? `letter-numeric` : `letter-${letter.toLowerCase()}`,
-          manufacturers: []
+          manufacturers: [],
         };
       }
 
@@ -81,13 +81,13 @@ export default {
         key: manKey,
         name: manufacturers[manKey].name,
         fixtureCount: register.manufacturers[manKey].length,
-        color: register.colors[manKey]
+        color: register.colors[manKey],
       });
     });
 
     return {
-      letters
+      letters,
     };
-  }
+  },
 };
 </script>

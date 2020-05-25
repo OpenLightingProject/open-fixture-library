@@ -7,7 +7,7 @@
         :formstate="formstate"
         :custom-validators="{
           'animation-gobo-end-without-start': animationGoboEndAfterStart,
-          'must-be-animation-gobo-end': animationGoboEndValid
+          'must-be-animation-gobo-end': animationGoboEndValid,
         }"
         :name="`wheel-slot${slot.uuid}-type`"
         label="Slot type">
@@ -73,15 +73,15 @@ export default {
     WheelSlotGobo,
     WheelSlotIris,
     WheelSlotOpen,
-    WheelSlotPrism
+    WheelSlotPrism,
   },
   model: {
-    prop: `capability`
+    prop: `capability`,
   },
   props: {
     channel: {
       type: Object,
-      required: true
+      required: true,
     },
     slotNumber: {
       type: Number,
@@ -89,18 +89,18 @@ export default {
       valid(slotNumber) {
         // only integer slot numbers are allowed
         return slotNumber % 1 === 0;
-      }
+      },
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
       properties: schemaProperties,
-      open: false
+      open: false,
     };
   },
   computed: {
@@ -137,7 +137,7 @@ export default {
     animationGoboEndValid() {
       const prevSlot = this.channel.wheel.slots[this.slotNumber - 2];
       return !prevSlot || prevSlot.type !== `AnimationGoboStart` || this.slot.type === `AnimationGoboEnd`;
-    }
+    },
   },
   created() {
     this.$watch(`slotNumber`, function(newSlotNumber) {
@@ -150,7 +150,7 @@ export default {
         });
       }
     }, {
-      immediate: true
+      immediate: true,
     });
   },
   methods: {
@@ -167,7 +167,7 @@ export default {
           }
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>

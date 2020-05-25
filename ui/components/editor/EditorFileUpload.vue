@@ -10,23 +10,23 @@
 <script>
 export default {
   model: {
-    prop: `value`
+    prop: `value`,
   },
   props: {
     required: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     name: {
       type: String,
-      required: true
+      required: true,
     },
     value: {
       type: null,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   mounted() {
     this.onFileChanged();
@@ -45,8 +45,8 @@ export default {
     clear() {
       this.$refs.fileInput.value = ``;
       this.onFileChanged();
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -15,21 +15,21 @@ export default {
     return {
       cssVariablesSupported: false,
       theme: `light`,
-      prefersDarkMediaQuery: null
+      prefersDarkMediaQuery: null,
     };
   },
   computed: {
     otherTheme() {
       return this.theme === `light` ? `dark` : `light`;
-    }
+    },
   },
   watch: {
     theme: {
       handler(theme) {
         document.documentElement.setAttribute(`data-theme`, theme);
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   created() {
     this.cssVariablesSupported = window.CSS && CSS.supports(`color`, `var(--primary)`);
@@ -65,7 +65,7 @@ export default {
       else {
         localStorage.setItem(`theme`, this.theme);
       }
-    }
-  }
+    },
+  },
 };
 </script>

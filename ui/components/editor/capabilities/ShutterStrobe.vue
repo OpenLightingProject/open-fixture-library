@@ -94,18 +94,18 @@ export default {
     EditorProportionalPropertySwitcher,
     LabeledInput,
     PropertyInputBoolean,
-    PropertyInputText
+    PropertyInputText,
   },
   props: {
     capability: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -120,8 +120,8 @@ export default {
         durationStart: null,
         durationEnd: null,
         randomTiming: null,
-        comment: ``
-      }
+        comment: ``,
+      },
     };
   },
   computed: {
@@ -146,12 +146,12 @@ export default {
           `duration`,
           `durationStart`,
           `durationEnd`,
-          `randomTiming`
+          `randomTiming`,
         ];
       }
 
       return [];
-    }
-  }
+    },
+  },
 };
 </script>

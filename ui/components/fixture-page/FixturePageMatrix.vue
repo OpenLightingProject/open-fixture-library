@@ -88,22 +88,22 @@ import LabeledValue from '../LabeledValue.vue';
 
 export default {
   components: {
-    LabeledValue
+    LabeledValue,
   },
   props: {
     matrix: {
       type: Matrix,
-      required: true
+      required: true,
     },
     physical: {
       type: Physical,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       highlightedPixelKeys: [],
-      baseHeight: 3.2 // in em
+      baseHeight: 3.2, // in em
     };
   },
   computed: {
@@ -135,7 +135,7 @@ export default {
         const constraintAxes = [`x`, `y`, `z`].filter(axis => axis in group);
 
         const shouldShowPixelKeyArray = Array.isArray(group) || resolvedPixelsKeys.length <= 5 || constraintAxes.some(
-          axis => group[axis].some(constraint => /^\d+n/.test(constraint))
+          axis => group[axis].some(constraint => /^\d+n/.test(constraint)),
         ) || constraintAxes.length > 2 || `name` in group;
 
         if (shouldShowPixelKeyArray) {
@@ -144,7 +144,7 @@ export default {
 
         const constraintTexts = constraintAxes.map(axis => {
           const axisConstraints = group[axis].map(
-            constraint => constraint.replace(`>=`, `≥ `).replace(`<=`, `≤ `).replace(`=`, ``)
+            constraint => constraint.replace(`>=`, `≥ `).replace(`<=`, `≤ `).replace(`=`, ``),
           );
 
           return `${axis.toUpperCase()} coordinate is ${axisConstraints.join(`, `)}`;
@@ -152,7 +152,7 @@ export default {
 
         return [groupKey, `Pixels where ${constraintTexts.join(` and `)}`];
       });
-    }
-  }
+    },
+  },
 };
 </script>

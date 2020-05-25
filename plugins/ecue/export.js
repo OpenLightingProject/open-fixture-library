@@ -27,7 +27,7 @@ module.exports.export = async function exportECue(fixtures, options) {
     if (!(man in manufacturers)) {
       manufacturers[man] = {
         data: fix.manufacturer,
-        fixtures: []
+        fixtures: [],
       };
     }
     manufacturers[man].fixtures.push(fix);
@@ -38,24 +38,24 @@ module.exports.export = async function exportECue(fixtures, options) {
       Document: {
         '@Owner': `user`,
         '@TypeVersion': 2,
-        '@SaveTimeStamp': timestamp
-      }
+        '@SaveTimeStamp': timestamp,
+      },
     },
     {
       version: `1.0`,
       encoding: `UTF-8`,
-      standalone: true
-    }
+      standalone: true,
+    },
   );
 
   const xmlLibrary = xml.element({
-    Library: {}
+    Library: {},
   });
   const xmlFixtures = xmlLibrary.element({
-    Fixtures: {}
+    Fixtures: {},
   });
   const xmlTiles = xmlLibrary.element({
-    Tiles: {}
+    Tiles: {},
   });
 
   for (const man of Object.keys(manufacturers)) {
@@ -64,7 +64,7 @@ module.exports.export = async function exportECue(fixtures, options) {
       '_ModifiedDate': timestamp,
       'Name': manufacturers[man].data.name,
       'Comment': manufacturers[man].data.comment,
-      'Web': manufacturers[man].data.website || ``
+      'Web': manufacturers[man].data.website || ``,
     };
     xmlTiles.element(`Manufacturer`, manAttributes);
 
@@ -78,10 +78,10 @@ module.exports.export = async function exportECue(fixtures, options) {
     name: `UserLibrary.xml`,
     content: xml.end({
       pretty: true,
-      indent: `    `
+      indent: `    `,
     }),
     mimetype: `application/xml`,
-    fixtures: fixtures
+    fixtures: fixtures,
   }];
 };
 
@@ -107,7 +107,7 @@ function addFixture(xmlMan, fixture) {
       'Power': physical.power || 0,
       'DimWidth': physical.width || 10,
       'DimHeight': physical.height || 10,
-      'DimDepth': physical.depth || 10
+      'DimDepth': physical.depth || 10,
     });
 
     handleMode(xmlFixture, mode);
@@ -170,7 +170,7 @@ function handleMode(xmlFixture, mode) {
       'Crossfade': channel.canCrossfade ? 1 : 0,
       'Invert': channel.isInverted ? 1 : 0,
       'Precedence': channel.precedence,
-      'ClassicPos': viewPosCount
+      'ClassicPos': viewPosCount,
     });
 
     if (fineChannelKey === null) {
@@ -241,7 +241,7 @@ function addCapabilities(xmlChannel, channel, resolution) {
       'Start': dmxRange.start,
       'End': dmxRange.end,
       'AutoMenu': cap.menuClick === `hidden` ? 0 : 1,
-      'Centre': cap.menuClick === `center` ? 1 : 0
+      'Centre': cap.menuClick === `center` ? 1 : 0,
     });
   }
 }

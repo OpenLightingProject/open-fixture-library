@@ -10,7 +10,7 @@ module.exports = function getSearchResults(request, response) {
   const { searchQuery, manufacturersQuery, categoriesQuery } = request.body;
 
   const results = Object.keys(register.filesystem).filter(
-    key => queryMatch(searchQuery, key) && manufacturerMatch(manufacturersQuery, key) && categoryMatch(categoriesQuery, key)
+    key => queryMatch(searchQuery, key) && manufacturerMatch(manufacturersQuery, key) && categoryMatch(categoriesQuery, key),
   );
   response.json(results);
 };
@@ -52,6 +52,6 @@ function categoryMatch(categoriesQuery, fixtureKey) {
   return categoriesQuery.length === 0 ||
     (categoriesQuery.length === 1 && categoriesQuery[0] === ``) ||
     categoriesQuery.some(
-      cat => cat in register.categories && register.categories[cat].includes(fixtureKey)
+      cat => cat in register.categories && register.categories[cat].includes(fixtureKey),
     );
 }

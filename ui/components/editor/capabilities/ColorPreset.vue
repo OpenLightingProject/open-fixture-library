@@ -78,18 +78,18 @@ export default {
   components: {
     EditorProportionalPropertySwitcher,
     LabeledInput,
-    PropertyInputText
+    PropertyInputText,
   },
   props: {
     capability: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -105,11 +105,11 @@ export default {
         colorsHexStringEnd: null,
         colorTemperature: ``,
         colorTemperatureStart: null,
-        colorTemperatureEnd: null
+        colorTemperatureEnd: null,
       },
       colorPreview: null,
       colorPreviewStart: null,
-      colorPreviewEnd: null
+      colorPreviewEnd: null,
     };
   },
   watch: {
@@ -118,22 +118,22 @@ export default {
         this.capability.typeData.colors = colorsHexStringToArray(hexString);
         this.colorPreview = this.capability.typeData.colors;
       },
-      immediate: true
+      immediate: true,
     },
     'capability.typeData.colorsHexStringStart': {
       handler(hexString) {
         this.capability.typeData.colorsStart = colorsHexStringToArray(hexString);
         this.colorPreviewStart = this.capability.typeData.colorsStart;
       },
-      immediate: true
+      immediate: true,
     },
     'capability.typeData.colorsHexStringEnd': {
       handler(hexString) {
         this.capability.typeData.colorsEnd = colorsHexStringToArray(hexString);
         this.colorPreviewEnd = this.capability.typeData.colorsEnd;
       },
-      immediate: true
-    }
-  }
+      immediate: true,
+    },
+  },
 };
 </script>

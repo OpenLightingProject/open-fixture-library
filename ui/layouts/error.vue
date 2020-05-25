@@ -19,8 +19,8 @@ export default {
   props: {
     error: {
       type: [Object, Error],
-      required: true
-    }
+      required: true,
+    },
   },
   head() {
     if (this.error.statusCode !== 404) {
@@ -34,10 +34,10 @@ export default {
       meta: [
         {
           hid: `title`,
-          content: title
-        }
-      ]
+          content: title,
+        },
+      ],
     };
-  }
+  },
 };
 </script>

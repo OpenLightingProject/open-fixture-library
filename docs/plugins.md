@@ -56,7 +56,7 @@ module.exports.export = async function exportPluginName(fixtures, options) {
         // That's just an example! Usually, the (way larger) file contents are
         // computed using several (possibly asynchronous) helper functions
         content: `<title>${fixture.name}: ${mode.channels.length}ch</title>`,
-        mimetype: `application/xml`
+        mimetype: `application/xml`,
       });
     }
   }
@@ -104,7 +104,7 @@ module.exports.import = async function importPluginName(buffer, fileName, author
   const out = {
     manufacturers: {},
     fixtures: {},
-    warnings: {}
+    warnings: {},
   };
 
   // just an example

@@ -93,29 +93,29 @@ const stateTitles = {
   ready: `Submit your new fixture`,
   uploading: `Submitting your new fixture…`,
   success: `Upload complete`,
-  error: `Upload failed`
+  error: `Upload failed`,
 };
 
 export default {
   components: {
     A11yDialog,
-    DownloadButton
+    DownloadButton,
   },
   props: {
     endpoint: {
       type: String,
-      required: true
+      required: true,
     },
     githubUsername: {
       type: String,
       required: false,
-      default: null
+      default: null,
     },
     githubComment: {
       type: String,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -123,7 +123,7 @@ export default {
       requestBody: null,
       error: null,
       pullRequestUrl: null,
-      fixtureCreateResult: null
+      fixtureCreateResult: null,
     };
   },
   computed: {
@@ -158,20 +158,20 @@ export default {
             fixture,
             message: error,
             severity: `error`,
-            key: `${fixture}-error-${index}-${error}`
+            key: `${fixture}-error-${index}-${error}`,
           })),
           ...fixtureWarnings.map((warning, index) => ({
             fixture,
             message: warning,
             severity: `warning`,
-            key: `${fixture}-warning-${index}-${warning}`
-          }))
+            key: `${fixture}-warning-${index}-${warning}`,
+          })),
         ];
       });
     },
     hasValidationErrors() {
       return this.validationIssues.some(message => message.severity === `error`);
-    }
+    },
   },
   methods: {
     async validate(requestBody) {
@@ -183,7 +183,7 @@ export default {
       try {
         const response = await this.$axios.post(
           this.endpoint,
-          this.requestBody
+          this.requestBody,
         );
 
         this.fixtureCreateResult = response.data;
@@ -205,7 +205,7 @@ export default {
       this.requestBody = {
         fixtureCreateResult: this.fixtureCreateResult,
         githubUsername: this.githubUsername,
-        githubComment: this.githubComment
+        githubComment: this.githubComment,
       };
 
       console.log(`submit`, clone(this.requestBody));
@@ -214,7 +214,7 @@ export default {
       try {
         const response = await this.$axios.post(
           `/api/v1/fixtures/submit`,
-          this.requestBody
+          this.requestBody,
         );
 
         this.pullRequestUrl = response.data.pullRequestUrl;
@@ -239,7 +239,7 @@ export default {
     },
     onCancel() {
       this.state = `closed`;
-    }
-  }
+    },
+  },
 };
 </script>

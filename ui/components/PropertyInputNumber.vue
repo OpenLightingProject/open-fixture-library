@@ -18,42 +18,42 @@ export default {
   props: {
     schemaProperty: {
       type: Object,
-      required: true
+      required: true,
     },
     required: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     hint: {
       type: String,
       required: false,
-      default: null
+      default: null,
     },
     autoFocus: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     minimum: {
       type: [Number, String], // can be the string `invalid`
       required: false,
-      default: null
+      default: null,
     },
     maximum: {
       type: [Number, String], // can be the string `invalid`
       required: false,
-      default: null
+      default: null,
     },
     value: {
       type: null,
-      required: true
+      required: true,
     },
     lazy: {
       type: Boolean,
       required: false,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     min() {
@@ -102,9 +102,9 @@ export default {
         'data-exclusive-minimum': this.exclusiveMinimum === null ? null : `${this.exclusiveMinimum}`,
         'data-exclusive-maximum': this.exclusiveMaximum === null ? null : `${this.exclusiveMaximum}`,
         step: `${this.step}`,
-        type: `number`
+        type: `number`,
       };
-    }
+    },
   },
   mounted() {
     if (this.autoFocus) {
@@ -115,7 +115,7 @@ export default {
       this.$emit(`vf:validate`, newValidationData);
     }, {
       deep: true,
-      immediate: true
+      immediate: true,
     });
   },
   methods: {
@@ -143,8 +143,8 @@ export default {
       }
 
       this.$emit(`input`, value);
-    }
-  }
+    },
+  },
 };
 </script>
 

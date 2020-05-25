@@ -14,7 +14,7 @@ const { fixtureFromRepository } = require(`../lib/model.js`);
 const args = minimist(process.argv.slice(2), {
   string: [`o`],
   boolean: [`h`, `a`],
-  alias: { h: `help`, a: `all-fixtures`, o: `output` }
+  alias: { h: `help`, a: `all-fixtures`, o: `output` },
 });
 
 const helpMessage = [
@@ -23,7 +23,7 @@ const helpMessage = [
   `  --all-fixtures, -a: Use all fixtures from register`,
   `  --output,       -o: If set, save outputted data to this file`,
   `                      instead of printing to the console`,
-  `  --help,         -h: Show this help message.`
+  `  --help,         -h: Show this help message.`,
 ].join(`\n`);
 
 if (args.help) {
@@ -52,7 +52,7 @@ const productCategories = {
   Scanner: 259, // Fixture Moving Mirror
   'Barrel Scanner': 259, // Fixture Moving Mirror
   'Moving Head': 258, // Fixture Moving Yoke
-  Default: 257 // Fixture Fixed
+  Default: 257, // Fixture Fixed
 };
 
 const rdmData = {};
@@ -71,7 +71,7 @@ for (const [manufacturerId, { key, models }] of Object.entries(register.rdm)) {
     const personalities = fixture.modes.map((mode, index) => ({
       description: `${mode.name} mode`,
       index: mode.rdmPersonalityIndex || (index + 1),
-      'slot_count': mode.channelKeys.length
+      'slot_count': mode.channelKeys.length,
     }));
 
     rdmModels.push({
@@ -85,9 +85,9 @@ for (const [manufacturerId, { key, models }] of Object.entries(register.rdm)) {
           label: fixture.rdm.softwareVersion,
           personalities,
           sensors: [],
-          'supported_parameters': []
-        }
-      }
+          'supported_parameters': [],
+        },
+      },
     });
   }
 

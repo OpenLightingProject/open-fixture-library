@@ -9,8 +9,8 @@ export default {
   props: {
     date: {
       type: Date,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 };
 </script>

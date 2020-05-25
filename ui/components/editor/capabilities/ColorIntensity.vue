@@ -57,18 +57,18 @@ export default {
   components: {
     EditorProportionalPropertySwitcher,
     LabeledInput,
-    PropertyInputText
+    PropertyInputText,
   },
   props: {
     capability: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -78,14 +78,14 @@ export default {
         brightness: null,
         brightnessStart: `off`,
         brightnessEnd: `bright`,
-        comment: ``
-      }
+        comment: ``,
+      },
     };
   },
   computed: {
     colors() {
       return this.properties.capabilityTypes.ColorIntensity.properties.color.enum;
-    }
-  }
+    },
+  },
 };
 </script>

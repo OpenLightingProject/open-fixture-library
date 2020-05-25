@@ -253,7 +253,7 @@ import {
   getSanitizedChannel,
   isChannelChanged,
   isCapabilityChanged,
-  clone
+  clone,
 } from '../../assets/scripts/editor-utils.js';
 
 import A11yDialog from '../A11yDialog.vue';
@@ -274,20 +274,20 @@ export default {
     PropertyInputBoolean,
     PropertyInputEntity,
     PropertyInputSelect,
-    PropertyInputText
+    PropertyInputText,
   },
   model: {
-    prop: `channel`
+    prop: `channel`,
   },
   props: {
     channel: {
       type: Object,
-      required: true
+      required: true,
     },
     fixture: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
@@ -295,7 +295,7 @@ export default {
       restored: false,
       channelChanged: false,
       properties: schemaProperties,
-      constants
+      constants,
     };
   },
   computed: {
@@ -324,15 +324,15 @@ export default {
           }
 
           const modeChannels = this.currentMode.channels.map(
-            uuid => this.fixture.availableChannels[uuid]
+            uuid => this.fixture.availableChannels[uuid],
           );
 
           const otherFineChannels = modeChannels.filter(
-            ch => `coarseChannelId` in ch && ch.coarseChannelId === channel.coarseChannelId
+            ch => `coarseChannelId` in ch && ch.coarseChannelId === channel.coarseChannelId,
           );
 
           const maxFoundResolution = Math.max(constants.RESOLUTION_8BIT, ...otherFineChannels.map(
-            ch => ch.resolution
+            ch => ch.resolution,
           ));
 
           if (maxFoundResolution !== channel.resolution - 1) {
@@ -385,7 +385,7 @@ export default {
     },
     singleColors() {
       return this.properties.capabilityTypes.ColorIntensity.properties.color.enum;
-    }
+    },
   },
   watch: {
     channel: {
@@ -395,8 +395,8 @@ export default {
           this.channelChanged = true;
         }
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   methods: {
     setEditModeCreate() {
@@ -460,7 +460,7 @@ export default {
       const changeCapabilityType = this.$refs.capabilities[0].$refs.capabilityTypeData.changeCapabilityType;
 
       const matchingColor = this.singleColors.find(
-        color => channelName.toLowerCase().includes(color.toLowerCase())
+        color => channelName.toLowerCase().includes(color.toLowerCase()),
       );
       if (matchingColor) {
         cap.type = `ColorIntensity`;
@@ -492,11 +492,11 @@ export default {
         Fog: /^(?:Fog|Haze)$/i,
         FogOutput: /^(?:Fog (?:Output|Intensity|Emission)|Pump)$/i,
         Speed: /^.*?Speed$/i,
-        Time: /^.*?(?:Time|Duration)$/i
+        Time: /^.*?(?:Time|Duration)$/i,
       };
 
       const matchingType = Object.keys(capabilityTypeSuggestions).find(
-        type => capabilityTypeSuggestions[type].test(channelName)
+        type => capabilityTypeSuggestions[type].test(channelName),
       );
 
       if (matchingType) {
@@ -550,9 +550,9 @@ export default {
           align: {
             top: 0,
             left: 0,
-            topOffset: 100
+            topOffset: 100,
           },
-          isScrollable: target => target === scrollContainer
+          isScrollable: target => target === scrollContainer,
         }, () => invalidFields[0].focus());
 
         return;
@@ -564,7 +564,7 @@ export default {
         'create': this.saveCreatedChannel,
         'edit-all': this.saveEditedChannel,
         'edit-duplicate': this.saveDuplicatedChannel,
-        'add-existing': this.addExistingChannel
+        'add-existing': this.addExistingChannel,
       };
 
       if (this.channel.editMode in actions) {
@@ -680,9 +680,9 @@ export default {
           align: {
             top: 0,
             left: 0,
-            topOffset: 100
+            topOffset: 100,
           },
-          isScrollable: target => target === scrollContainer
+          isScrollable: target => target === scrollContainer,
         }, () => firstNewCap.$refs.firstInput.focus());
       });
     },
@@ -701,7 +701,7 @@ export default {
 
     insertEmptyCapability(index) {
       this.channel.capabilities.splice(index, 0, getEmptyCapability());
-    }
-  }
+    },
+  },
 };
 </script>
