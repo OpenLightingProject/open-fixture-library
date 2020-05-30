@@ -10,7 +10,6 @@ const express = require(`express`);
 const compression = require(`compression`);
 const { Nuxt, Builder } = require(`nuxt`);
 
-const redirectToHttps = require(`./ui/express-middleware/redirect-to-https.js`);
 const robotsTxtGenerator = require(`./ui/express-middleware/robots-txt.js`);
 
 const packageJson = require(`./package.json`);
@@ -30,9 +29,6 @@ if (!process.env.PORT) {
   process.env.PORT = 5000;
 }
 app.set(`port`, process.env.PORT);
-
-// redirect to HTTPS site version if environment forces HTTPS
-app.use(redirectToHttps);
 
 // support json encoded bodies
 app.use(express.json({ limit: `50mb` }));
