@@ -58,6 +58,22 @@ module.exports = {
       };
     },
   },
+  render: {
+    csp: {
+      policies: {
+        'default-src': [`'self'`, `https://*.open-fixture-library.org`],
+        'script-src': [`'self'`, `'unsafe-eval'`],
+        'style-src': [`'self'`, `'unsafe-inline'`],
+        'img-src': [`'self'`, `https://*.open-fixture-library.org`, `https://*.ytimg.com`, `data:`],
+        'frame-src': [`'self'`, `https://*.vimeo.com`, `*.youtube-nocookie.com`, `https://www.facebook.com`],
+        'media-src': [`*`], // allow all videos
+        'form-action': [`'self'`],
+        'frame-ancestors': [`'none'`],
+        'object-src': [`'none'`],
+        'base-uri': [`'self'`],
+      },
+    },
+  },
   loading: {
     color: `#1e88e5`,
   },
