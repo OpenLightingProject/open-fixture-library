@@ -180,21 +180,14 @@ else {
   startNuxt = nuxt.ready();
 }
 
-startNuxt.then(listen)
-  .catch(error => {
-    console.error(error);
-    process.exit(1);
-  });
+startNuxt.catch(error => {
+  console.error(error);
+  process.exit(1);
+});
 
-
-/**
- * Listen for incoming web requests on the port specified in process.env.PORT
- */
-function listen() {
-  app.listen(process.env.PORT, () => {
-    console.log(`Node app is running on port`, process.env.PORT);
-  });
-}
+app.listen(process.env.PORT, () => {
+  console.log(`Node app is running on port`, process.env.PORT);
+});
 
 /**
  * Instruct Express to initiate a download of one / multiple exported fixture files.
