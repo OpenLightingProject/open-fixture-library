@@ -6,11 +6,13 @@
     :title="title"
     :wide="state === `preview`">
 
-    <template v-if="state === `preview`" #after-title>
+    <template v-if="state === `preview`" #title>
+      <span class="preview-fixture-title">{{ title }}</span>
       <select
         v-if="fixtureKeys.length > 1"
         v-model="previewFixtureKey"
         class="preview-fixture-chooser">
+        <option disabled>Choose fixture to preview</option>
         <option
           v-for="key in fixtureKeys"
           :key="key"
@@ -153,11 +155,14 @@
 </template>
 
 <style lang="scss" scoped>
+.preview-fixture-title {
+  margin-right: 1ex;
+}
+
 .preview-fixture-chooser {
   vertical-align: middle;
   font-size: 1rem;
   width: 350px;
-  margin-left: 1ex;
 }
 
 .fixture-page {
@@ -175,7 +180,7 @@
   }
 }
 
-.button-bar.right {
+.button-bar {
   position: sticky;
   bottom: 0;
   background: theme-color(dialog-background);

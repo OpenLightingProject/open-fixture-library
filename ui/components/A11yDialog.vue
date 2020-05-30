@@ -25,8 +25,7 @@
         </button>
 
         <h2 :id="`${id}-dialog-title`" tabindex="-1" autofocus>
-          {{ title }}
-          <slot name="after-title" />
+          <slot name="title">{{ title }}</slot>
         </h2>
 
         <slot />
@@ -142,7 +141,8 @@ export default {
     },
     title: {
       type: String,
-      required: true,
+      required: false,
+      default: ``,
     },
     wide: {
       type: Boolean,
