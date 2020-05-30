@@ -5,10 +5,10 @@
 # https://wiki.nginx.org/QuickStart
 # https://wiki.nginx.org/Configuration
 #
-# Generally, you will want to move this file somewhere, and start with a clean
-# file but keep this around for reference. Or just disable in sites-enabled.
-#
 # Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
+#
+# Test the configuration with `nginx -t`
+# before restarting with `systemctl restart nginx`
 ##
 
 
@@ -65,13 +65,15 @@ server {
 
 
 # redirect requests to http://[www.]open-fixture-library.org to HTTPS version
+# No canonicalization steps are taken yet.
+# See https://www.sentinelstand.com/article/http-strict-transport-security-hsts-canonical-www-redirects
 server {
     listen 80;
     listen [::]:80;
 
     server_name open-fixture-library.org www.open-fixture-library.org;
 
-    return 301 https://open-fixture-library.org$request_uri;
+    return 301 https://$host$request_uri;
 }
 
 
