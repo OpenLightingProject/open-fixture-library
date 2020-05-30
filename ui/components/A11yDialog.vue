@@ -100,7 +100,8 @@ dialog.card {
 
 @media (max-width: $phone) {
   /* make dialogs cover the whole screen */
-  dialog {
+  dialog,
+  dialog.wide {
     min-width: none;
     max-width: none;
     max-height: none;
