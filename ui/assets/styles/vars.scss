@@ -3,6 +3,7 @@ $font-stack-code: Inconsolata, 'Roboto Mono', 'Source Code Pro', monospace;
 
 // from https://material.io/design/color/#tools-for-picking-colors
 
+$red-200: #ef9a9a;
 $red-300: #e57373;
 $red-700: #d32f2f;
 
@@ -114,6 +115,8 @@ $themes: (
     yellow-background: $yellow-300,
     yellow-background-hover: $yellow-600,
 
+    red-background: $red-200,
+
     orange-background: $orange-500,
     orange-background-hover: $orange-700,
   ),
@@ -160,6 +163,8 @@ $themes: (
 
     yellow-background: #aa8e00,
     yellow-background-hover: #dbbb2a,
+
+    red-background: #990000,
 
     orange-background: $orange-800,
     orange-background-hover: $orange-500,
