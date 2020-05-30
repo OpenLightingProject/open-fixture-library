@@ -164,6 +164,15 @@
   background: theme-color(page-background);
   margin: 1rem -1rem -1rem;
   padding: .1rem 1rem 1rem;
+
+  & /deep/ .help-wanted .actions {
+    cursor: not-allowed;
+
+    a {
+      pointer-events: none;
+      opacity: 0.7;
+    }
+  }
 }
 
 .button-bar.right {
