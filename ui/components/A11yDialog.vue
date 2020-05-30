@@ -38,29 +38,16 @@
 <style lang="scss" scoped>
 .dialog-container {
   outline: none;
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  box-sizing: border-box;
-  padding: 30px;
-  overflow: hidden;
-
-  /* fixes bug with hiding app bars on mobile */
-  /* (avoid 'width: 100vw' as this includes the scroll bar) */
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .dialog-overlay {
+  z-index: 1000;
   background-color: rgba(0, 0, 0, 0.66);
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
 }
 
 .dialog-container[aria-hidden=true],
@@ -73,16 +60,20 @@ dialog {
   color: theme-color(text-primary);
   border: 0;
   z-index: 1010;
+  position: fixed;
+  top: 50%;
+  left: 50%;
   margin: 0;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
   min-width: 20rem;
-  max-width: 650px;
-  max-height: 100%;
+  max-width: 90%;
+  max-height: 90%;
   overflow: auto;
   overscroll-behavior: contain;
 
   &.wide {
     width: 1000px;
-    max-width: 100%;
   }
 
   &::backdrop {
@@ -108,14 +99,14 @@ dialog.card {
 }
 
 @media (max-width: $phone) {
-  .dialog-container {
-    padding: 10px;
-  }
-
+  /* make dialogs cover the whole screen */
   dialog,
   dialog.wide {
-    min-width: 0;
-    width: auto;
+    min-width: none;
+    max-width: none;
+    max-height: none;
+    width: 100%;
+    height: 100%;
   }
 }
 </style>
