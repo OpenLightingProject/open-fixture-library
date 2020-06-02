@@ -19,6 +19,7 @@ server {
     listen [::]:443 ssl;
 
     server_name open-fixture-library.org;
+    server_tokens off;
 
     ssl_certificate /etc/letsencrypt/live/open-fixture-library.org/fullchain.pem; # managed by Certbot
     ssl_certificate_key /etc/letsencrypt/live/open-fixture-library.org/privkey.pem; # managed by Certbot
@@ -47,6 +48,7 @@ server {
     listen [::]:443 ssl;
 
     server_name www.open-fixture-library.org;
+    server_tokens off;
 
     return 301 https://open-fixture-library.org$request_uri;
 }
@@ -58,6 +60,7 @@ server {
     listen [::]:80;
 
     server_name _;
+    server_tokens off;
 
     # drop connection
     return 444;
@@ -72,6 +75,7 @@ server {
     listen [::]:80;
 
     server_name open-fixture-library.org www.open-fixture-library.org;
+    server_tokens off;
 
     return 301 https://$host$request_uri;
 }
@@ -84,6 +88,7 @@ server {
     listen 443 ssl;
 
     server_name webhooks.open-fixture-library.org;
+    server_tokens off;
 
     location / {
         proxy_pass http://localhost:40010;
@@ -103,6 +108,7 @@ server {
     listen 443 ssl;
 
     server_name embetty.open-fixture-library.org;
+    server_tokens off;
 
     location / {
         proxy_http_version 1.1;
