@@ -8,6 +8,7 @@ const readFile = promisify(require(`fs`).readFile);
 const path = require(`path`);
 const express = require(`express`);
 const compression = require(`compression`);
+const helmet = require(`helmet`);
 const { Nuxt, Builder } = require(`nuxt`);
 
 const robotsTxtGenerator = require(`./ui/express-middleware/robots-txt.js`);
@@ -30,7 +31,29 @@ if (!process.env.PORT) {
 }
 app.set(`port`, process.env.PORT);
 
-// support json encoded bodies
+// set various security HTTP headers
+app.use(helmet({
+  contentSecurityPolicy: false, // set in Nuxt config, so inline scripts are allowed by their SHA hash
+  dnsPrefetchControl: true,
+  expectCt: false,
+  featurePolicy: false,
+  frameguard: true,
+  hidePoweredBy: true,
+  hsts: {
+    maxAge: 2 * 365 * 24 * 60 * 60,
+    includeSubDomains: true,
+    preload: true,
+  },
+  ieNoOpen: true,
+  noSniff: true,
+  permittedCrossDomainPolicies: false,
+  referrerPolicy: {
+    policy: `no-referrer`,
+  },
+  xssFilter: true,
+}));
+
+// support JSON encoded bodies
 app.use(express.json({ limit: `50mb` }));
 
 // enable compression
