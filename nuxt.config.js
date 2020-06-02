@@ -61,11 +61,14 @@ module.exports = {
   render: {
     csp: {
       policies: {
-        'default-src': [`'self'`, `https://*.open-fixture-library.org`],
-        'script-src': [`'self'`, `'unsafe-eval'`],
+        'default-src': [`'none'`],
+        'script-src': [`'unsafe-eval'`], // needed because of https://github.com/nuxt/nuxt.js/pull/7454
         'style-src': [`'self'`, `'unsafe-inline'`],
         'img-src': [`'self'`, `https://*.open-fixture-library.org`, `https://*.ytimg.com`, `data:`],
         'frame-src': [`'self'`, `https://*.vimeo.com`, `*.youtube-nocookie.com`, `https://www.facebook.com`],
+        'font-src': [`'self'`],
+        'connect-src': [`'self'`],
+        'manifest-src': [`'self'`],
         'media-src': [`*`], // allow all videos
         'form-action': [`'self'`],
         'frame-ancestors': [`'none'`],
