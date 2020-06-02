@@ -199,7 +199,9 @@ else {
   startNuxt = nuxt.ready();
 }
 
-startNuxt.catch(error => {
+startNuxt.then(() => {
+  console.log(`Nuxt.js is ready.`);
+}).catch(error => {
   console.error(error);
   process.exit(1);
 });
