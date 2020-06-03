@@ -15,8 +15,8 @@
 # requests to https://open-fixture-library.org (without subdomain)
 # proxied to http://localhost:5000
 server {
-    listen 443 ssl;
-    listen [::]:443 ssl;
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
 
     server_name open-fixture-library.org;
     server_tokens off;
@@ -52,8 +52,8 @@ server {
 
 # redirect HTTPS requests from www subdomain to main domain
 server {
-    listen 443 ssl;
-    listen [::]:443 ssl;
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
 
     server_name www.open-fixture-library.org;
     server_tokens off;
@@ -92,8 +92,8 @@ server {
 # requests to https://webhooks.open-fixture-library.org
 # proxied to http://localhost:40010
 server {
-    listen [::]:443 ssl;
-    listen 443 ssl;
+    listen [::]:443 ssl http2;
+    listen 443 ssl http2;
 
     server_name webhooks.open-fixture-library.org;
     server_tokens off;
@@ -112,8 +112,8 @@ server {
 # requests to https://embetty.open-fixture-library.org
 # proxied to http://localhost:6977
 server {
-    listen [::]:443 ssl;
-    listen 443 ssl;
+    listen [::]:443 ssl http2;
+    listen 443 ssl http2;
 
     server_name embetty.open-fixture-library.org;
     server_tokens off;
