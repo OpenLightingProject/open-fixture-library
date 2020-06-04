@@ -15,16 +15,24 @@
 # requests to https://open-fixture-library.org (without subdomain)
 # proxied to http://localhost:5000
 server {
-    listen 443 ssl;
-    listen [::]:443 ssl;
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
 
     server_name open-fixture-library.org;
     server_tokens off;
 
     ssl_certificate /etc/letsencrypt/live/open-fixture-library.org/fullchain.pem; # managed by Certbot
     ssl_certificate_key /etc/letsencrypt/live/open-fixture-library.org/privkey.pem; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    # include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+    # from https://github.com/certbot/certbot/blob/v1.5.0/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf
+    ssl_session_cache shared:le_nginx_SSL:10m;
+    ssl_session_timeout 1440m;
+    ssl_session_tickets off;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers off;
+    ssl_ciphers "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384";
 
     # drop connection for all subdomains (if not handled elsewhere anyway)
     if ($host != open-fixture-library.org) {
@@ -44,8 +52,8 @@ server {
 
 # redirect HTTPS requests from www subdomain to main domain
 server {
-    listen 443 ssl;
-    listen [::]:443 ssl;
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
 
     server_name www.open-fixture-library.org;
     server_tokens off;
@@ -84,8 +92,8 @@ server {
 # requests to https://webhooks.open-fixture-library.org
 # proxied to http://localhost:40010
 server {
-    listen [::]:443 ssl;
-    listen 443 ssl;
+    listen [::]:443 ssl http2;
+    listen 443 ssl http2;
 
     server_name webhooks.open-fixture-library.org;
     server_tokens off;
@@ -104,8 +112,8 @@ server {
 # requests to https://embetty.open-fixture-library.org
 # proxied to http://localhost:6977
 server {
-    listen [::]:443 ssl;
-    listen 443 ssl;
+    listen [::]:443 ssl http2;
+    listen 443 ssl http2;
 
     server_name embetty.open-fixture-library.org;
     server_tokens off;
