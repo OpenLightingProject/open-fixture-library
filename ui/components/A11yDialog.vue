@@ -10,20 +10,23 @@
       :id="`${id}-dialog`"
       :aria-labelledby="id + '-dialog-title'"
       :open="shown"
-      class="card">
+      class="card"
+      :class="{ wide }">
       <div>
 
-        <a
+        <button
           v-if="cancellable"
-          href="#close"
+          type="button"
           class="icon-button close"
           title="Close"
           @click.prevent="hide">
           Close
           <OflSvg name="close" />
-        </a>
+        </button>
 
-        <h2 :id="`${id}-dialog-title`" tabindex="-1" autofocus>{{ title }}</h2>
+        <h2 :id="`${id}-dialog-title`" tabindex="-1" autofocus>
+          <slot name="title">{{ title }}</slot>
+        </h2>
 
         <slot />
 
@@ -61,13 +64,17 @@ dialog {
   top: 50%;
   left: 50%;
   margin: 0;
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  box-sizing: border-box;
   min-width: 20rem;
   max-width: 90%;
   max-height: 90%;
   overflow: auto;
   overscroll-behavior: contain;
+
+  &.wide {
+    width: 1000px;
+  }
 
   &::backdrop {
     background-color: rgba(0, 0, 0, 0.66);
@@ -93,8 +100,9 @@ dialog.card {
 
 @media (max-width: $phone) {
   /* make dialogs cover the whole screen */
-  dialog {
-    box-sizing: border-box;
+  dialog,
+  dialog.wide {
+    min-width: none;
     max-width: none;
     max-height: none;
     width: 100%;
@@ -124,7 +132,13 @@ export default {
     },
     title: {
       type: String,
-      required: true,
+      required: false,
+      default: ``,
+    },
+    wide: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
   data() {

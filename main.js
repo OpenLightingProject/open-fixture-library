@@ -8,9 +8,9 @@ const readFile = promisify(require(`fs`).readFile);
 const path = require(`path`);
 const express = require(`express`);
 const compression = require(`compression`);
+const helmet = require(`helmet`);
 const { Nuxt, Builder } = require(`nuxt`);
 
-const redirectToHttps = require(`./ui/express-middleware/redirect-to-https.js`);
 const robotsTxtGenerator = require(`./ui/express-middleware/robots-txt.js`);
 
 const packageJson = require(`./package.json`);
@@ -31,10 +31,29 @@ if (!process.env.PORT) {
 }
 app.set(`port`, process.env.PORT);
 
-// redirect to HTTPS site version if environment forces HTTPS
-app.use(redirectToHttps);
+// set various security HTTP headers
+app.use(helmet({
+  contentSecurityPolicy: false, // set in Nuxt config, so inline scripts are allowed by their SHA hash
+  dnsPrefetchControl: true,
+  expectCt: false,
+  featurePolicy: false,
+  frameguard: true,
+  hidePoweredBy: true,
+  hsts: {
+    maxAge: 2 * 365 * 24 * 60 * 60,
+    includeSubDomains: true,
+    preload: true,
+  },
+  ieNoOpen: true,
+  noSniff: true,
+  permittedCrossDomainPolicies: false,
+  referrerPolicy: {
+    policy: `no-referrer`,
+  },
+  xssFilter: true,
+}));
 
-// support json encoded bodies
+// support JSON encoded bodies
 app.use(express.json({ limit: `50mb` }));
 
 // enable compression
@@ -180,21 +199,16 @@ else {
   startNuxt = nuxt.ready();
 }
 
-startNuxt.then(listen)
-  .catch(error => {
-    console.error(error);
-    process.exit(1);
-  });
+startNuxt.then(() => {
+  console.log(`Nuxt.js is ready.`);
+}).catch(error => {
+  console.error(error);
+  process.exit(1);
+});
 
-
-/**
- * Listen for incoming web requests on the port specified in process.env.PORT
- */
-function listen() {
-  app.listen(process.env.PORT, () => {
-    console.log(`Node app is running on port`, process.env.PORT);
-  });
-}
+app.listen(process.env.PORT, () => {
+  console.log(`Node app is running on port`, process.env.PORT);
+});
 
 /**
  * Instruct Express to initiate a download of one / multiple exported fixture files.
