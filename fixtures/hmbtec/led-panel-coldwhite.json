@@ -1,0 +1,44 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Panel ColdWhite",
+  "shortName": "LED P1",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["HMBTEC"],
+    "createDate": "2020-06-14",
+    "lastModifyDate": "2020-06-14"
+  },
+  "links": {
+    "video": [
+      "https://hmbtec.de"
+    ]
+  },
+  "physical": {
+    "dimensions": [500, 500, 100],
+    "weight": 5,
+    "power": 50,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 2700,
+      "lumens": 10000
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Dimmer",
+      "shortName": "DIM",
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}
