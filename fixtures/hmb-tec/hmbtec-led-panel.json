@@ -1,0 +1,77 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "HMBTEC LED Panel",
+  "shortName": "HMBTEC",
+  "categories": ["Matrix"],
+  "meta": {
+    "authors": ["HMBTEC"],
+    "createDate": "2020-06-14",
+    "lastModifyDate": "2020-06-14"
+  },
+  "links": {
+    "video": [
+      "https://www.hmbtec.de"
+    ]
+  },
+  "rdm": {
+    "modelId": 32097,
+    "softwareVersion": "1.0"
+  },
+  "physical": {
+    "dimensions": [500, 500, 100],
+    "weight": 2,
+    "power": 50,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "RGBW",
+      "shortName": "RGBW",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
