@@ -1,11 +1,5 @@
 name: Test
-on:
-  push:
-    branches:
-      - greenkeeper/**
-  pull_request:
-    branches-ignore:
-      - greenkeeper/**
+on: pull_request
 jobs:
   required:
     name: Required
