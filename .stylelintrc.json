@@ -5,5 +5,13 @@
   ],
   "extends": [
     "stylelint-config-recommended-scss"
-  ]
+  ],
+  "rules": {
+    "selector-pseudo-element-no-unknown": [true, {
+      "ignorePseudoElements": ["v-deep"]
+    }],
+
+    "scss/comment-no-loud": true,
+    "scss/no-global-function-names": true
+  }
 }

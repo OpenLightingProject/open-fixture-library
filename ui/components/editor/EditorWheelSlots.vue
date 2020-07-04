@@ -10,7 +10,7 @@
 </template>
 
 <style lang="scss" scoped>
-/deep/ details:nth-last-of-type(1):not([open]) {
+::v-deep details:nth-last-of-type(1):not([open]) {
   margin-bottom: 1rem;
 }
 </style>

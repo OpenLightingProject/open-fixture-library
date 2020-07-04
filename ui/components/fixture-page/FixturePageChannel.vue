@@ -145,7 +145,7 @@ ol.mode-channels {
   padding-left: 1.9em;
   min-height: 1em;
 
-  /* switched channels */
+  // switched channels
   & ol {
     list-style-type: lower-alpha;
     padding-left: 1.1em;
