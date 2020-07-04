@@ -70,22 +70,22 @@
 .fixture-usage,
 .file-locations,
 .additional-info {
-  & /deep/ h2,
-  & /deep/ h3 {
+  & ::v-deep h2,
+  & ::v-deep h3 {
     margin: 1.5rem 0 -0.5rem;
     line-height: 1.3;
   }
 
-  & /deep/ p {
+  & ::v-deep p {
     text-align: justify;
   }
 
-  & /deep/ code {
+  & ::v-deep code {
     background-color: theme-color(header-background);
     padding: 3px 5px;
   }
 
-  & /deep/ table {
+  & ::v-deep table {
     margin: 1rem 0;
     border: 1px solid theme-color(divider);
     border-collapse: collapse;

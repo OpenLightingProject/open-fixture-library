@@ -137,7 +137,7 @@
   border-top: 0.4rem solid transparent;
 }
 
-.comment /deep/ .value {
+.comment ::v-deep .value {
   white-space: pre-line;
 }
 

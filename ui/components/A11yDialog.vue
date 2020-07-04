@@ -89,7 +89,7 @@ dialog {
   }
 }
 
-/* fixes padding not being visible when scrollbar is present */
+// fixes padding not being visible when scrollbar is present
 dialog.card {
   padding: 0;
 
@@ -99,7 +99,7 @@ dialog.card {
 }
 
 @media (max-width: $phone) {
-  /* make dialogs cover the whole screen */
+  // make dialogs cover the whole screen
   dialog,
   dialog.wide {
     min-width: none;

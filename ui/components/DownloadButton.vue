@@ -125,7 +125,7 @@ select {
     box-shadow: 0 2px 2px rgba(#000, 0.2);
     transition: border-radius 0.2s, background-color 0.2s;
 
-    /* down arrow */
+    // down arrow
     &::before {
       content: '';
       display: block;
@@ -168,7 +168,7 @@ select {
     }
   }
 
-  /* separate rule since unsupporting browsers skip the whole rule */
+  // separate rule since unsupporting browsers skip the whole rule
   &:focus-within > ul {
     left: 0;
   }
@@ -200,7 +200,7 @@ select {
   position: relative;
 }
 
-/* move download button to the right */
+// move download button to the right
 @media (min-width: 650px) {
   .fixture-header {
     display: -ms-flexbox;

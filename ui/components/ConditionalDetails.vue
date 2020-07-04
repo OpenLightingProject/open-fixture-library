@@ -31,7 +31,7 @@ summary {
   }
 
   &::after {
-    /* chevron down */
+    // chevron down
     border-color: theme-color(icon);
     border-style: solid;
     border-width: 0.17em 0.17em 0 0;
@@ -59,20 +59,20 @@ summary {
 }
 
 details {
-  display: block; /* needed for Edge */
+  display: block; // needed for Edge
 
   &[open] {
     padding-bottom: 2ex;
 
     & > summary::after {
-      /* chevron up */
+      // chevron up
       top: 0;
       transform: rotate(315deg);
     }
   }
 }
 
-/* hide polyfilled arrow, as we use our own */
+// hide polyfilled arrow, as we use our own
 html.no-details details > summary::before {
   display: none;
 }
