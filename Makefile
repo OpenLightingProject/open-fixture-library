@@ -29,7 +29,7 @@ model-docs: docs/model-api.md
 api-docs: docs/rest-api.md
 
 nuxt-build:
-	$$(npm bin)/nuxt build
+	npx nuxt build
 
 clean:
 	rm -rf schemas/dereferenced
@@ -75,19 +75,13 @@ cli/make-dereferenced-schemas.js
 	@echo ""
 
 
-jsdoc2md := $(shell echo $$(npm bin)/jsdoc2md)
-jsdoc2md-cmd := $(jsdoc2md) --configure jsdoc-config.json --private --files lib/model/*.js > docs/model-api.md
-
 docs/model-api.md: \
 lib/model/*.js \
 jsdoc-config.json
-	@test -f $(jsdoc2md) && (echo "$(jsdoc2md-cmd)" && $(jsdoc2md-cmd)) || echo "$(jsdoc2md) not available"
+	npx jsdoc2md --configure jsdoc-config.json --private --files lib/model/*.js > docs/model-api.md
 	@echo ""
-
-widdershins := $(shell echo $$(npm bin)/widdershins)
-widdershins-cmd := $(widdershins) --code true --language_tabs --omitBody true --omitHeader true --resolve true --outfile docs/rest-api.md ui/api/openapi.json
 
 docs/rest-api.md: \
 ui/api/openapi.json
-	@test -f $(widdershins) && (echo "$(widdershins-cmd)" && $(widdershins-cmd)) || echo "$(widdershins) not available"
+	npx widdershins --code true --language_tabs --omitBody true --omitHeader true --resolve true --outfile docs/rest-api.md ui/api/openapi.json
 	@echo ""
