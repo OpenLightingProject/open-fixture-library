@@ -170,7 +170,7 @@
   margin: 1rem -1rem -1rem;
   padding: .1rem 1rem 1rem;
 
-  & /deep/ .help-wanted .actions {
+  & ::v-deep .help-wanted .actions {
     cursor: not-allowed;
 
     a {

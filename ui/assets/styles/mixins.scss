@@ -1,5 +1,6 @@
+$animation-number: 0 !default;
+
 @mixin animation-keyframes {
-  $animation-number: 0 !default !global;
   $animation-number: $animation-number + 1 !global;
   $name: unquote("ofl-animation-#{$animation-number}");
   animation-name: $name;
