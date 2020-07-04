@@ -75,11 +75,11 @@
   margin-top: 2rem;
 }
 
-.search /deep/ select[multiple] {
+.search ::v-deep select[multiple] {
   margin-right: 1ex;
 }
 
-.search /deep/ details {
+.search ::v-deep details {
   margin: 1rem 0;
 }
 </style>

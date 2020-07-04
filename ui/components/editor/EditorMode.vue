@@ -130,7 +130,7 @@
 </template>
 
 <style lang="scss" scoped>
-.fixture-mode /deep/ section {
+.fixture-mode ::v-deep section {
   flex-direction: column;
 
   & > .label {

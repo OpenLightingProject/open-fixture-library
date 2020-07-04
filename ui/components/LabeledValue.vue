@@ -25,7 +25,7 @@ section {
   }
 }
 
-/* move labels left of values */
+// move labels left of values
 @media (min-width: $phone-landscape) {
   section {
     display: flex;

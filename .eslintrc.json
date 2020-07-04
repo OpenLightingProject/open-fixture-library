@@ -66,6 +66,7 @@
     "jsdoc/require-description": "off",
     "jsdoc/require-description-complete-sentence": "off",
     "jsdoc/require-jsdoc": ["warn", {
+      "enableFixer": false,
       "require": {
         "FunctionDeclaration": true,
         "MethodDefinition": true,
@@ -191,6 +192,7 @@
   },
   "settings": {
     "jsdoc": {
+      "mode": "typescript",
       "tagNamePreference": {
         "augments": "extends",
         "class": "constructor",

@@ -1,3 +1,5 @@
+@use "sass:color";
+
 $font-stack-text: LatoLatin, 'Source Sans Pro', Helvetica, Arial, sans-serif;
 $font-stack-code: Inconsolata, 'Roboto Mono', 'Source Code Pro', monospace;
 
@@ -53,18 +55,18 @@ $icon-inactive-light:   rgba(255, 255, 255, 0.50);
 // from https://material.io/design/color/dark-theme.html#properties
 
 $dark-grey: #121212;
-$dark-grey-elevation-01dp: lighten($dark-grey, 5%);
-$dark-grey-elevation-02dp: lighten($dark-grey, 7%);
-$dark-grey-elevation-03dp: lighten($dark-grey, 8%);
-$dark-grey-elevation-04dp: lighten($dark-grey, 9%);
-$dark-grey-elevation-06dp: lighten($dark-grey, 11%);
-$dark-grey-elevation-08dp: lighten($dark-grey, 12%);
-$dark-grey-elevation-12dp: lighten($dark-grey, 14%);
-$dark-grey-elevation-16dp: lighten($dark-grey, 15%);
-$dark-grey-elevation-24dp: lighten($dark-grey, 16%);
+$dark-grey-elevation-01dp: color.adjust($dark-grey, $lightness: 5%);
+$dark-grey-elevation-02dp: color.adjust($dark-grey, $lightness: 7%);
+$dark-grey-elevation-03dp: color.adjust($dark-grey, $lightness: 8%);
+$dark-grey-elevation-04dp: color.adjust($dark-grey, $lightness: 9%);
+$dark-grey-elevation-06dp: color.adjust($dark-grey, $lightness: 11%);
+$dark-grey-elevation-08dp: color.adjust($dark-grey, $lightness: 12%);
+$dark-grey-elevation-12dp: color.adjust($dark-grey, $lightness: 14%);
+$dark-grey-elevation-16dp: color.adjust($dark-grey, $lightness: 15%);
+$dark-grey-elevation-24dp: color.adjust($dark-grey, $lightness: 16%);
 
 
-/* Width value for media queries */
+// Width value for media queries
 $tablet: 800px;
 $phone-landscape: 600px;
 $phone: 440px;
