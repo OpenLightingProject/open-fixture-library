@@ -1,5 +1,7 @@
 @use "sass:string";
 
+@use "./theming.scss";
+
 $animation-number: 0 !default;
 
 @mixin animation-keyframes {
@@ -50,7 +52,7 @@ $animation-number: 0 !default;
 
   #ofl-root.no-touch &:hover {
     @each $property, $color-name in $transition-map {
-      #{$property}: theme-color($color-name);
+      #{$property}: theming.theme-color($color-name);
     }
   }
 
@@ -62,7 +64,7 @@ $animation-number: 0 !default;
     @include animation-keyframes {
       from {
         @each $property, $color-name in $transition-map {
-          #{$property}: theme-color($color-name);
+          #{$property}: theming.theme-color($color-name);
         }
       }
       to {
