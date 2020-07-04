@@ -1,9 +1,10 @@
 const path = require(`path`);
 
-const importPlugins = require(`../../../plugins/plugins.json`).importPlugins;
-const { checkFixture } = require(`../../../tests/fixture-valid.js`);
+const importPlugins = require(`../../../../plugins/plugins.json`).importPlugins;
+const { checkFixture } = require(`../../../../tests/fixture-valid.js`);
 
-/** @typedef {import('../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
+/** @typedef {import('../../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
+/** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 
 /**
  * @typedef {Object} RequestBody
@@ -15,11 +16,12 @@ const { checkFixture } = require(`../../../tests/fixture-valid.js`);
 
 /**
  * Imports the uploaded fixture file and responds with a FixtureCreateResult.
+ * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
  * @param {Object} request Passed from Express.
  * @param {RequestBody} request.body Passed from Express.
  * @param {Object} response Passed from Express.
  */
-module.exports = async function importFixtureFile(request, response) {
+async function importFixtureFile(ctx, request, response) {
   try {
     const fixtureCreateResult = await importFixture(request.body);
     response.status(201).json(fixtureCreateResult);
@@ -29,7 +31,7 @@ module.exports = async function importFixtureFile(request, response) {
       error: error.message,
     });
   }
-};
+}
 
 
 /**
@@ -41,7 +43,7 @@ async function importFixture(body) {
     throw new Error(`'${body.plugin}' is not a valid import plugin.`);
   }
 
-  const plugin = require(path.join(__dirname, `../../../plugins`, body.plugin, `import.js`));
+  const plugin = require(path.join(__dirname, `../../../../plugins`, body.plugin, `import.js`));
   const { manufacturers, fixtures, warnings } = await plugin.import(
     Buffer.from(body.fileContentBase64, `base64`),
     body.fileName,
@@ -70,3 +72,5 @@ async function importFixture(body) {
 
   return result;
 }
+
+module.exports = { importFixtureFile };

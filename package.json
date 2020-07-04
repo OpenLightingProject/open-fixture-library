@@ -42,6 +42,7 @@
     "color-hash": "^1.0.3",
     "color-names": "^2.0.0",
     "compression": "^1.7.4",
+    "cors": "^2.8.5",
     "details-polyfill": "^1.1.0",
     "embetty-vue": "^1.3.1",
     "esm": "3.2.25",
@@ -50,6 +51,7 @@
     "jszip": "^3.5.0",
     "node-env-file": "^0.1.8",
     "nuxt": "~2.13.3",
+    "openapi-backend": "^2.4.1",
     "sanitize-filename": "^1.6.3",
     "sass": "^1.26.9",
     "sass-loader": "^9.0.1",
@@ -84,7 +86,8 @@
     "node-delete": "^0.1.2",
     "stylelint": "~13.6.1",
     "stylelint-config-recommended-scss": "~4.2.0",
-    "stylelint-scss": "~3.18.0"
+    "stylelint-scss": "~3.18.0",
+    "widdershins": "^4.0.1"
   },
   "homepage": "https://open-fixture-library.org/",
   "repository": {
