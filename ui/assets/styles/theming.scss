@@ -3,16 +3,14 @@
 
 @use './vars.scss';
 
-/**
- * Function to get a theme color CSS variable (with fallback to light themed color).
- *
- * Usage:
- *     background: linear-gradient(to top, red, theme-color(primary));
- *
- * Output:
- *     background: linear-gradient(to top, red, rgba(255, 127, 0, 1));
- *     background: linear-gradient(to top, red, rgba(var(--theme-primary, 255, 127, 0), 1));
- */
+// Function to get a theme color CSS variable (with fallback to light themed color).
+//
+// Usage:
+//     background: linear-gradient(to top, red, theme-color(primary));
+//
+// Output:
+//     background: linear-gradient(to top, red, rgba(255, 127, 0, 1));
+//     background: linear-gradient(to top, red, rgba(var(--theme-primary, 255, 127, 0), 1));
 @function theme-color($color-name, $alpha: 1) {
   $default-theme: map.get(vars.$themes, light);
 

@@ -24,7 +24,7 @@ html {
   overflow-y: scroll;
 }
 
-/* IE9 / IE10 does not do this automatically */
+// IE9 / IE10 does not do this automatically
 [hidden] {
   display: none;
 }
@@ -661,7 +661,7 @@ a.card, .link, .list a {
   font-size: 1.2rem;
 }
 
-/* display mode cards in a 2-col layout */
+// display mode cards in a 2-col layout
 @media (min-width: $tablet) {
   .fixture-mode {
     width: calc(50% - .5rem);

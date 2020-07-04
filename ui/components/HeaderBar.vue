@@ -171,7 +171,6 @@ header {
 }
 
 
-/* Tablet */
 @media (max-width: $tablet) {
   header {
     nav {
@@ -201,7 +200,6 @@ header {
   }
 }
 
-/* Phone */
 @media (max-width: $phone) {
   header {
     .home-logo {
