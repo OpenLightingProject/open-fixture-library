@@ -6,7 +6,6 @@ module.exports = {
     [`@nuxtjs/axios`, {
       browserBaseURL: `/`,
     }],
-    `@nuxtjs/style-resources`,
   ],
   plugins: [
     `~/plugins/embetty-vue.js`,
@@ -25,13 +24,6 @@ module.exports = {
     `~/assets/styles/style.scss`,
     `embetty-vue/dist/embetty-vue.css`,
   ],
-  styleResources: {
-    scss: [
-      `~/assets/styles/vars.scss`,
-      `~/assets/styles/theming.scss`,
-      `~/assets/styles/mixins.scss`,
-    ],
-  },
   build: {
     extend(config, ctx) {
       // exclude /assets/icons from url-loader
@@ -56,6 +48,17 @@ module.exports = {
         preserveWhitespace: false,
         whitespace: `condense`,
       };
+
+      // automatically `@use` SCSS partials
+      const scssRule = config.module.rules.find(rule => rule.test.toString() === `/\\.scss$/i`);
+      scssRule.oneOf.forEach(({ use }) => {
+        const sassLoader = use.find(({ loader }) => loader === `sass-loader`);
+        sassLoader.options.additionalData = `
+          @use "~/assets/styles/mixins.scss" as *;
+          @use "~/assets/styles/theming.scss" as *;
+          @use "~/assets/styles/vars.scss" as *;
+        `;
+      });
     },
   },
   render: {

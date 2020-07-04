@@ -1,8 +1,10 @@
+@use "sass:string";
+
 $animation-number: 0 !default;
 
 @mixin animation-keyframes {
   $animation-number: $animation-number + 1 !global;
-  $name: unquote("ofl-animation-#{$animation-number}");
+  $name: string.unquote("ofl-animation-#{$animation-number}");
   animation-name: $name;
   @at-root {
     @keyframes #{$name} {

@@ -1,4 +1,4 @@
-@import './fonts.scss';
+@use './fonts.scss';
 
 @each $theme-name, $theme in $themes {
   [data-theme="#{$theme-name}"] {

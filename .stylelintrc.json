@@ -9,6 +9,8 @@
   "rules": {
     "selector-pseudo-element-no-unknown": [true, {
       "ignorePseudoElements": ["v-deep"]
-    }]
+    }],
+
+    "scss/no-global-function-names": true
   }
 }
