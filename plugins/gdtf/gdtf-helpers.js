@@ -120,7 +120,22 @@ function getRgbColorFromGdtfColor(gdtfColorStr) {
   }
 }
 
+/**
+ * @param {Object} gdtfCapability The enhanced <ChannelSet> XML object.
+ */
+function normalizeAngularSpeedDirection(gdtfCapability) {
+  if (/CCW|counter[-\s]*clockwise/.test(gdtfCapability.$.Name)) {
+    gdtfCapability._physicalFrom = -Math.abs(gdtfCapability._physicalFrom);
+    gdtfCapability._physicalTo = -Math.abs(gdtfCapability._physicalTo);
+  }
+  else if (/CW|clockwise/.test(gdtfCapability.$.Name)) {
+    gdtfCapability._physicalFrom = Math.abs(gdtfCapability._physicalFrom);
+    gdtfCapability._physicalTo = Math.abs(gdtfCapability._physicalTo);
+  }
+}
+
 module.exports = {
   followXmlNodeReference,
   getRgbColorFromGdtfColor,
+  normalizeAngularSpeedDirection,
 };
