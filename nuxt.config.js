@@ -49,15 +49,11 @@ module.exports = {
         whitespace: `condense`,
       };
 
-      // automatically `@use` SCSS partials
+      // automatically `@use` global SCSS definitions
       const scssRule = config.module.rules.find(rule => rule.test.toString() === `/\\.scss$/i`);
       scssRule.oneOf.forEach(({ use }) => {
         const sassLoader = use.find(({ loader }) => loader === `sass-loader`);
-        sassLoader.options.additionalData = `
-          @use "~/assets/styles/mixins.scss" as *;
-          @use "~/assets/styles/theming.scss" as *;
-          @use "~/assets/styles/vars.scss" as *;
-        `;
+        sassLoader.options.additionalData = `@use "~/assets/styles/global.scss" as *;`;
       });
     },
   },
