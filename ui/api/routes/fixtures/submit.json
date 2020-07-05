@@ -14,10 +14,12 @@
                 "$ref": "../../openapi.json#/components/schemas/FixtureCreateResult"
               },
               "githubUsername": {
-                "type": "string"
+                "type": "string",
+                "nullable": true
               },
               "githubComment": {
-                "type": "string"
+                "type": "string",
+                "nullable": true
               }
             }
           }
