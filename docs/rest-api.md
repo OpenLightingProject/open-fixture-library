@@ -344,8 +344,8 @@ Creates a GitHub pull request with the given fixture data. Includes warnings, er
 |» fixtures|body|object|true|none|
 |» warnings|body|object|true|none|
 |» errors|body|object|true|none|
-|githubUsername|body|string|false|none|
-|githubComment|body|string|false|none|
+|githubUsername|body|string¦null|false|none|
+|githubComment|body|string¦null|false|none|
 
 > Example responses
 
