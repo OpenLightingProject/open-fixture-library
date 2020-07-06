@@ -10,6 +10,8 @@
 </template>
 
 <script>
+const storageKey = `theme`;
+
 export default {
   data() {
     return {
@@ -38,12 +40,16 @@ export default {
       return;
     }
 
+    window.addEventListener(`storage`, this.onStorageChange);
+
     this.prefersDarkMediaQuery = window.matchMedia(`(prefers-color-scheme: dark)`);
     this.prefersDarkMediaQuery.addListener(this.onMediaQueryMatchChange);
 
     this.onMediaQueryMatchChange();
   },
   beforeDestroy() {
+    window.removeEventListener(`storage`, this.onStorageChange);
+
     if (this.prefersDarkMediaQuery) {
       this.prefersDarkMediaQuery.removeListener(this.onMediaQueryMatchChange);
     }
@@ -53,17 +59,23 @@ export default {
       return this.prefersDarkMediaQuery.matches ? `dark` : `light`;
     },
     onMediaQueryMatchChange() {
-      const savedTheme = localStorage.getItem(`theme`);
+      const savedTheme = localStorage.getItem(storageKey);
       this.theme = savedTheme || this.getDefaultPreferredTheme();
+    },
+    onStorageChange({ key, newValue }) {
+      if (key === storageKey) {
+        // theme changed in another browser tab
+        this.theme = newValue || this.getDefaultPreferredTheme();
+      }
     },
     toggleTheme() {
       this.theme = this.otherTheme;
 
       if (this.theme === this.getDefaultPreferredTheme()) {
-        localStorage.removeItem(`theme`);
+        localStorage.removeItem(storageKey);
       }
       else {
-        localStorage.setItem(`theme`, this.theme);
+        localStorage.setItem(storageKey, this.theme);
       }
     },
   },
