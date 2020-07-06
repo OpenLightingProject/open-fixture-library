@@ -12,6 +12,19 @@
 <script>
 const storageKey = `theme`;
 
+let cookieName = `theme`;
+const cookieOptions = {
+  path: `/`,
+  maxAge: 60 * 60 * 24 * 7,
+  sameSite: true,
+};
+
+if (process.env.NODE_ENV === `production`) {
+  cookieName = `__Host-theme`;
+  cookieOptions.httpOnly = true;
+  cookieOptions.secure = true;
+}
+
 export default {
   data() {
     return {
@@ -31,13 +44,7 @@ export default {
         document.documentElement.setAttribute(`data-theme`, theme);
 
         // set cookie for server-side rendering
-        this.$cookies.set(storageKey, theme, {
-          path: `/`,
-          maxAge: 60 * 60 * 24 * 7,
-          sameSite: true,
-          httpOnly: process.env.NODE_ENV === `production`,
-          secure: process.env.NODE_ENV === `production`,
-        });
+        this.$cookies.set(cookieName, theme, cookieOptions);
       },
       immediate: true,
     },
