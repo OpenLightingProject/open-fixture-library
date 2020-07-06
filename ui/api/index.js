@@ -54,6 +54,9 @@ const api = new OpenAPIBackend({
       notFound(ctx, request, response) {
         return response.status(404).json({ error: `Not found` });
       },
+      methodNotAllowed(ctx, request, response) {
+        return response.status(405).json({ error: `Method not allowed` });
+      },
       notImplemented(ctx, request, response) {
         return response.status(501).json({ error: `No handler registered for operation` });
       },
