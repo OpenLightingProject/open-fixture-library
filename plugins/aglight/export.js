@@ -39,7 +39,6 @@ module.exports.export = async function exportAGLight(fixtures, options) {
 
         return jsonData;
     });
-
     return [{
         name: `aglight_fixture_library.json`,
         content: fixtureJsonStringify(library),
@@ -71,7 +70,7 @@ function transformSingleCapabilityToArray(content) {
  */
 // eslint-disable-next-line complexity
 function transformNonNumericValues(content) {
-    const units = [`K`, `deg`, `%`, `ms`, `Hz`, `m^3/min`];
+    const units = [`K`, `deg`, `%`, `ms`, `Hz`, `m^3/min`, `rpm`];
     const excludeKeys = [`comment`, `name`, `helpWanted`, `type`, `effectName`, `effectPreset`, `shutterEffect`, `wheel`, `isShaking`, `fogType`, `menuClick`];
     const replacements = {
         slow: 1,
@@ -89,13 +88,25 @@ function transformNonNumericValues(content) {
         long: 1,
         short: 0.1,
         big: 1,
-        short: 0.1,
         small: 0.1,
         instant: 0.01,
         wide: 1,
         narrow: 0.1,
         far: 1,
         near: 0.1,
+        bright: 1,
+        dark: 0.1,
+        default: 0,
+        warm: 1,
+        cold: 0,
+        center: 0,
+        CTO: 0,
+        CTB: 0,
+        right: 1,
+        left: -1,
+        center: 0,
+        top: 1,
+        bottom: -1,
         off: false,
         on: true,
         open: true,
