@@ -72,7 +72,7 @@ function transformSingleCapabilityToArray(content) {
 // eslint-disable-next-line complexity
 function transformNonNumericValues(content) {
     const units = [`K`, `deg`, `%`, `ms`, `Hz`, `m^3/min`];
-    const excludeKeys = [`comment`, `name`, `helpWanted`, `type`, `effectName`, `effectPreset`, `shutterEffect`, `wheel`];
+    const excludeKeys = [`comment`, `name`, `helpWanted`, `type`, `effectName`, `effectPreset`, `shutterEffect`, `wheel`, `isShaking`, `fogType`, `menuClick`];
     const replacements = {
         slow: 1,
         "slow CW": 1,
@@ -84,6 +84,8 @@ function transformNonNumericValues(content) {
         "fast reverse": -0.1,
         low: 0.1,
         high: 1,
+        weak: 0.1,
+        strong: 1,
         long: 1,
         short: 0.1,
         big: 1,
@@ -100,6 +102,8 @@ function transformNonNumericValues(content) {
         closed: false,
         out: false,
         in: true,
+        stop: false,
+        start: true,
 
     };
     if (content.availableChannels) {
@@ -135,9 +139,9 @@ function transformNonNumericValues(content) {
                 console.log(`#### color not found`, capability[k2]);
               }
             }
-            else {
-            // ToDo some more here
-              console.log(k2, capability[k2]);
+            else if (typeof capability[k2] !== `number`) {
+              // ToDo some more here
+              console.log(k2, capability[k2], typeof capability[k2]);
             }
           }
         }
