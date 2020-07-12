@@ -29,10 +29,12 @@ module.exports.export = async function exportAGLight(fixtures, options) {
     // one JSON file for each fixture
     library.fixtures = fixtures.map(fixture => {
 
-        const jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
+        let jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
         jsonData.fixtureKey = fixture.key;
         jsonData.manufacturer = manufacturers[fixture.manufacturer.key];
         jsonData.oflURL = `https://open-fixture-library.org/${fixture.manufacturer.key}/${fixture.key}`;
+
+        jsonData = transformSingleCapabilityToArray(jsonData);
 
         return jsonData;
     });
@@ -44,3 +46,20 @@ module.exports.export = async function exportAGLight(fixtures, options) {
         fixtures,
     }];
 };
+
+/**
+ * @param {Object} content The fixture data
+ * @returns {Object} The transformed fixture
+ */
+function transformSingleCapabilityToArray(content) {
+    if (content.availableChannels) {
+        for (const k of Object.keys(content.availableChannels)) {
+            if (content.availableChannels[k].capability) {
+                content.availableChannels[k].capabilities = [content.availableChannels[k].capability];
+                content.availableChannels[k].singleCapability = true;
+                delete content.availableChannels[k].capability;
+            }
+        }
+    }
+    return content;
+}
