@@ -1,92 +1,92 @@
 {
-    "importPlugins": [
-        "ecue",
-        "gdtf",
-        "qlcplus_4.12.2"
-    ],
-    "exportPlugins": [
-        "colorsource",
-        "d-light",
-        "ecue",
-        "millumin",
-        "ofl",
-        "op-z",
-        "qlcplus_4.12.2",
-        "aglight"
-    ],
-    "data": {
-        "aglight": {
-            "name": "AGLight",
-            "exportPluginVersion": "1.0.0",
-            "exportTests": []
-        },
-        "colorsource": {
-            "name": "ColorSource",
-            "exportPluginVersion": "0.1.0",
-            "exportTests": []
-        },
-        "d-light": {
-            "name": "D::Light",
-            "exportPluginVersion": "0.2.0",
-            "exportTests": [
-                "attributes-correctness"
-            ]
-        },
-        "ecue": {
-            "name": "e:cue",
-            "importPluginVersion": "0.3.1",
-            "exportPluginVersion": "0.3.0",
-            "exportTests": []
-        },
-        "gdtf": {
-            "name": "GDTF 1.0",
-            "importPluginVersion": "0.2.0"
-        },
-        "millumin": {
-            "name": "Millumin",
-            "exportPluginVersion": "0.4.0",
-            "exportTests": [
-                "json-schema-conformity"
-            ]
-        },
-        "ofl": {
-            "name": "Open Fixture Library JSON",
-            "exportPluginVersion": "12.2.1",
-            "exportTests": []
-        },
-        "op-z": {
-            "name": "OP-Z",
-            "exportPluginVersion": "0.1.0",
-            "exportTests": []
-        },
-        "qlcplus": {
-            "name": "QLC+",
-            "outdated": true,
-            "newPlugin": "qlcplus_4.12.2"
-        },
-        "qlcplus_4.11.2": {
-            "name": "QLC+ 4.11.2",
-            "outdated": true,
-            "newPlugin": "qlcplus_4.12.2"
-        },
-        "qlcplus_4.12.0": {
-            "name": "QLC+ 4.12.0",
-            "outdated": true,
-            "newPlugin": "qlcplus_4.12.2"
-        },
-        "qlcplus_4.12.1": {
-            "name": "QLC+ 4.12.1",
-            "outdated": true,
-            "newPlugin": "qlcplus_4.12.2"
-        },
-        "qlcplus_4.12.2": {
-            "name": "QLC+ 4.12.2",
-            "importPluginVersion": "1.1.0",
-            "exportPluginVersion": "1.3.0",
-            "exportTests": [
-                "fixture-tool-validation",
-                "xsd-schema-conformity"
-            ]
-        }
+  "importPlugins": [
+    "ecue",
+    "gdtf",
+    "qlcplus_4.12.2"
+  ],
+  "exportPlugins": [
+    "aglight",
+    "colorsource",
+    "d-light",
+    "ecue",
+    "millumin",
+    "ofl",
+    "op-z",
+    "qlcplus_4.12.2"
+  ],
+  "data": {
+    "aglight": {
+      "name": "AGLight v1.0.0",
+      "exportPluginVersion": "1.0.0",
+      "exportTests": []
+    },
+    "colorsource": {
+      "name": "ColorSource",
+      "exportPluginVersion": "0.1.0",
+      "exportTests": []
+    },
+    "d-light": {
+      "name": "D::Light",
+      "exportPluginVersion": "0.2.0",
+      "exportTests": [
+        "attributes-correctness"
+      ]
+    },
+    "ecue": {
+      "name": "e:cue",
+      "importPluginVersion": "0.3.1",
+      "exportPluginVersion": "0.3.0",
+      "exportTests": []
+    },
+    "gdtf": {
+      "name": "GDTF 1.0",
+      "importPluginVersion": "0.2.0"
+    },
+    "millumin": {
+      "name": "Millumin",
+      "exportPluginVersion": "0.4.0",
+      "exportTests": [
+        "json-schema-conformity"
+      ]
+    },
+    "ofl": {
+      "name": "Open Fixture Library JSON",
+      "exportPluginVersion": "12.2.1",
+      "exportTests": []
+    },
+    "op-z": {
+      "name": "OP-Z",
+      "exportPluginVersion": "0.1.0",
+      "exportTests": []
+    },
+    "qlcplus": {
+      "name": "QLC+",
+      "outdated": true,
+      "newPlugin": "qlcplus_4.12.2"
+    },
+    "qlcplus_4.11.2": {
+      "name": "QLC+ 4.11.2",
+      "outdated": true,
+      "newPlugin": "qlcplus_4.12.2"
+    },
+    "qlcplus_4.12.0": {
+      "name": "QLC+ 4.12.0",
+      "outdated": true,
+      "newPlugin": "qlcplus_4.12.2"
+    },
+    "qlcplus_4.12.1": {
+      "name": "QLC+ 4.12.1",
+      "outdated": true,
+      "newPlugin": "qlcplus_4.12.2"
+    },
+    "qlcplus_4.12.2": {
+      "name": "QLC+ 4.12.2",
+      "importPluginVersion": "1.1.0",
+      "exportPluginVersion": "1.3.0",
+      "exportTests": [
+        "fixture-tool-validation",
+        "xsd-schema-conformity"
+      ]
     }
+  }
 }
