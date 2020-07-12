@@ -72,7 +72,36 @@ function transformSingleCapabilityToArray(content) {
 // eslint-disable-next-line complexity
 function transformNonNumericValues(content) {
     const units = [`K`, `deg`, `%`, `ms`, `Hz`, `m^3/min`];
-    const excludeKeys = [`comment`, `name`, `helpWanted`, `type`, `effectName`, `effectPreset`, `shutterEffect`];
+    const excludeKeys = [`comment`, `name`, `helpWanted`, `type`, `effectName`, `effectPreset`, `shutterEffect`, `wheel`];
+    const replacements = {
+        slow: 1,
+        "slow CW": 1,
+        "slow CCW": -1,
+        "slow reverse": -1,
+        fast: 0.1,
+        "fast CW": 0.1,
+        "fast CCW": -0.1,
+        "fast reverse": -0.1,
+        low: 0.1,
+        high: 1,
+        long: 1,
+        short: 0.1,
+        big: 1,
+        short: 0.1,
+        small: 0.1,
+        instant: 0.01,
+        wide: 1,
+        narrow: 0.1,
+        far: 1,
+        near: 0.1,
+        off: false,
+        on: true,
+        open: true,
+        closed: false,
+        out: false,
+        in: true,
+
+    };
     if (content.availableChannels) {
         for (const k of Object.keys(content.availableChannels)) {
             for (const capability of content.availableChannels[k].capabilities) {
@@ -89,44 +118,9 @@ function transformNonNumericValues(content) {
                             capability[k2] = parseInt(capability[k2]) * 1000;
                         } else if (parseInt(capability[k2])) {
                             capability[k2] = parseInt(capability[k2]);
-                        } else if (capability[k2] === `slow`) {
-                            capability[k2] = 1;
-                        } else if (capability[k2] === `fast`) {
-                            capability[k2] = 0.1;
-                        } else if (capability[k2] === `low`) {
-                            capability[k2] = 0.1;
-                        } else if (capability[k2] === `high`) {
-                            capability[k2] = 1;
-                        } else if (capability[k2] === `long`) {
-                            capability[k2] = 1;
-                        } else if (capability[k2] === `short`) {
-                            capability[k2] = 0.1;
-                        } else if (capability[k2] === `big`) {
-                            capability[k2] = 1;
-                        } else if (capability[k2] === `small`) {
-                            capability[k2] = 0.1;
-                        } else if (capability[k2] === `instant`) {
-                            capability[k2] = 0.01;
-                        } else if (capability[k2] === `wide`) {
-                            capability[k2] = 1;
-                        } else if (capability[k2] === `narrow`) {
-                            capability[k2] = 0.1;
-                        } else if (capability[k2] === `far`) {
-                            capability[k2] = 1;
-                        } else if (capability[k2] === `near`) {
-                            capability[k2] = 0.1;
-                        } else if (capability[k2] === `off`) {
-                            capability[k2] = false;
-                        } else if (capability[k2] === `on`) {
-                            capability[k2] = true;
-                        } else if (capability[k2] === `closed`) {
-                            capability[k2] = false;
-                        } else if (capability[k2] === `open`) {
-                            capability[k2] = true;
-                        } else if (capability[k2] === `out`) {
-                            capability[k2] = false;
-                        } else if (capability[k2] === `in`) {
-                            capability[k2] = true;
+                        } else if (replacements[capability[k2]] !== undefined) {
+                            capability[`${k2}_comment`] = capability[k2];
+                            capability[k2] = replacements[capability[k2]];
                         } else if (k2 === `color`) {
                             if (colors[capability[k2].toLowerCase()]) {
                                 capability[k2] = colors[capability[k2].toLowerCase()];
@@ -135,20 +129,20 @@ function transformNonNumericValues(content) {
                             } else if (colors[`${capability[k2].toLowerCase()} 1`]) {
                                 capability[k2] = colors[`${capability[k2].toLowerCase()} 1`];
                             } else if (colors[`${capability[k2].toLowerCase().replace(/ /g, ``)} 1`]) {
-              capability[k2] = colors[`${capability[k2].toLowerCase().replace(/ /g, ``)} 1`];
+                capability[k2] = colors[`${capability[k2].toLowerCase().replace(/ /g, ``)} 1`];
+              }
+              else {
+                console.log(`#### color not found`, capability[k2]);
+              }
             }
             else {
-              console.log(`#### color not found`, capability[k2]);
-            }
-          }
-          else {
             // ToDo some more here
-            console.log(k2, capability[k2]);
+              console.log(k2, capability[k2]);
+            }
           }
         }
       }
     }
   }
-}
-return content;
+  return content;
 }
