@@ -11,6 +11,21 @@
         "Website": "https://github.com/hrueger/AGLight/"
     },
     "fixtureUsage": [
-        "<p>You don't need to download the fixtures, just click on the library button in the bottom statusbar and click update.</p>"
-    ]
+        "<p>You don't need to download the fixtures, just click on the library button in the bottom statusbar and click update.</p>",
+        "<p>However, if you the device you run AGLight on is not connected to the internet,",
+        "you can also copy the exported fixture library to that device.",
+        "See below for the directory paths. You need to rename the file to <code>library.json</code>.</p>"
+    ],
+    "fileLocations": {
+        "subDirectoriesAllowed": false,
+        "Windows": {
+            "user": "C:\\Users\\yourUsername\\AppData\\Roaming\\aglight\\library\\library.json"
+        },
+        "Mac OS": {
+            "user": "~/Library/Application Support/aglight/library/library.json"
+        },
+        "Linux": {
+            "user": "~/.config/aglight/library/library.json"
+        }
+    }
 }
