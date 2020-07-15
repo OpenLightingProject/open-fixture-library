@@ -1,7 +1,7 @@
 /* Based on the ofl export plugin */
 
 const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
-const colors = require(`./colors`);
+const colors = require(`./colors.js`);
 
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 
@@ -18,7 +18,6 @@ module.exports.version = `1.0.0`;
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
 module.exports.export = async function exportAGLight(fixtures, options) {
-  console.log(options);
   const displayedPluginVersion = options.displayedPluginVersion || module.exports.version;
 
   const library = {
