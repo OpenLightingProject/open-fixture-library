@@ -50,11 +50,11 @@ module.exports.export = async function exportAGLight(fixtures, options) {
  */
 function transformSingleCapabilityToArray(content) {
   if (content.availableChannels) {
-    for (const k of Object.keys(content.availableChannels)) {
-      if (content.availableChannels[k].capability) {
-        content.availableChannels[k].capabilities = [content.availableChannels[k].capability];
-        content.availableChannels[k].singleCapability = true;
-        delete content.availableChannels[k].capability;
+    for (const channel of Object.values(content.availableChannels)) {
+      if (channel.capability) {
+        channel.capabilities = [channel.capability];
+        channel.singleCapability = true;
+        delete channel.capability;
       }
     }
   }
