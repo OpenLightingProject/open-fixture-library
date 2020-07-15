@@ -1,0 +1,441 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LB-4390",
+  "categories": ["Stand", "Color Changer"],
+  "meta": {
+    "authors": ["Hannes Rüger"],
+    "createDate": "2020-07-15",
+    "lastModifyDate": "2020-07-15"
+  },
+  "links": {
+    "manual": [
+      "https://www.kirstein.de/docs/manuals/sl-lb4390-dt-0615.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [1032, 235, 71],
+    "weight": 10.2,
+    "power": 84,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 100
+    },
+    "lens": {
+      "degreesMinMax": [15, 15]
+    }
+  },
+  "availableChannels": {
+    "Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Intensity",
+          "brightness": "off",
+          "comment": "Blackout"
+        },
+        {
+          "dmxRange": [10, 50],
+          "type": "Effect",
+          "effectName": "Auto PAR show"
+        },
+        {
+          "dmxRange": [51, 90],
+          "type": "Effect",
+          "effectName": "Auto LED flash show"
+        },
+        {
+          "dmxRange": [91, 130],
+          "type": "Effect",
+          "effectName": "Mix auto show"
+        },
+        {
+          "dmxRange": [131, 170],
+          "type": "Effect",
+          "effectName": "Sound PAR show",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [171, 210],
+          "type": "Effect",
+          "effectName": "Sound LED flash show"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "Effect",
+          "effectName": "Mix sound show",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Show Config": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "Effect",
+          "effectName": "AUTO 1"
+        },
+        {
+          "dmxRange": [15, 29],
+          "type": "Effect",
+          "effectName": "AUTO 2"
+        },
+        {
+          "dmxRange": [30, 44],
+          "type": "Effect",
+          "effectName": "AUTO 3"
+        },
+        {
+          "dmxRange": [45, 59],
+          "type": "Effect",
+          "effectName": "AUTO 4"
+        },
+        {
+          "dmxRange": [60, 74],
+          "type": "Effect",
+          "effectName": "AUTO 5"
+        },
+        {
+          "dmxRange": [75, 89],
+          "type": "Effect",
+          "effectName": "AUTO 6"
+        },
+        {
+          "dmxRange": [90, 104],
+          "type": "Effect",
+          "effectName": "AUTO 7"
+        },
+        {
+          "dmxRange": [105, 119],
+          "type": "Effect",
+          "effectName": "AUTO 8"
+        },
+        {
+          "dmxRange": [120, 134],
+          "type": "Effect",
+          "effectName": "AUTO 9"
+        },
+        {
+          "dmxRange": [135, 149],
+          "type": "Effect",
+          "effectName": "AUTO 10"
+        },
+        {
+          "dmxRange": [150, 164],
+          "type": "Effect",
+          "effectName": "AUTO 11"
+        },
+        {
+          "dmxRange": [165, 179],
+          "type": "Effect",
+          "effectName": "AUTO 12"
+        },
+        {
+          "dmxRange": [180, 194],
+          "type": "Effect",
+          "effectName": "AUTO 13"
+        },
+        {
+          "dmxRange": [195, 209],
+          "type": "Effect",
+          "effectName": "AUTO 14"
+        },
+        {
+          "dmxRange": [210, 224],
+          "type": "Effect",
+          "effectName": "AUTO 15"
+        },
+        {
+          "dmxRange": [225, 239],
+          "type": "Effect",
+          "effectName": "AUTO 16"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "AUTO 17"
+        }
+      ]
+    },
+    "Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Dimmer": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Extra": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 191],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [192, 200],
+          "type": "Effect",
+          "effectName": "Sound Flash",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [201, 249],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Flash speed"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Intensity",
+          "brightness": "bright",
+          "comment": "All on"
+        }
+      ]
+    },
+    "Flash Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red Dimmer 2": {
+      "name": "Red Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Dimmer 2": {
+      "name": "Green Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Dimmer 2": {
+      "name": "Blue Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red Dimmer 3": {
+      "name": "Red Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Dimmer 3": {
+      "name": "Green Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Dimmer 3": {
+      "name": "Blue Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red Dimmer 4": {
+      "name": "Red Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Dimmer 4": {
+      "name": "Green Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Dimmer 4": {
+      "name": "Blue Dimmer",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Total Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Total Dimmer 2": {
+      "name": "Total Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Total Dimmer 3": {
+      "name": "Total Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Total Dimmer 4": {
+      "name": "Total Dimmer",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Flash Speed 2": {
+      "name": "Flash Speed",
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Flash Speed 3": {
+      "name": "Flash Speed",
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Flash Speed 4": {
+      "name": "Flash Speed",
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Flash Speed of 1st LED": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Flash Speed of 2nd LED": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Flash Speed of 3rd LED": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Flash Speed of 4th LED": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3ch",
+      "channels": [
+        "Mode",
+        "Show Config",
+        "Speed"
+      ]
+    },
+    {
+      "name": "5ch",
+      "channels": [
+        "Red Dimmer",
+        "Green Dimmer",
+        "Blue Dimmer",
+        "Extra",
+        "Flash Speed"
+      ]
+    },
+    {
+      "name": "12ch",
+      "channels": [
+        "Red Dimmer",
+        "Green Dimmer",
+        "Blue Dimmer",
+        "Red Dimmer 2",
+        "Green Dimmer 2",
+        "Blue Dimmer 2",
+        "Red Dimmer 3",
+        "Green Dimmer 3",
+        "Blue Dimmer 3",
+        "Red Dimmer 4",
+        "Green Dimmer 4",
+        "Blue Dimmer 4"
+      ]
+    },
+    {
+      "name": "12ch (LED on)",
+      "channels": [
+        "Red Dimmer",
+        "Green Dimmer",
+        "Blue Dimmer",
+        "Red Dimmer 2",
+        "Green Dimmer 2",
+        "Blue Dimmer 2",
+        "Red Dimmer 3",
+        "Green Dimmer 3",
+        "Blue Dimmer 3",
+        "Red Dimmer 4",
+        "Green Dimmer 4",
+        "Blue Dimmer 4"
+      ]
+    },
+    {
+      "name": "24ch",
+      "channels": [
+        "Red Dimmer",
+        "Green Dimmer",
+        "Blue Dimmer",
+        "Total Dimmer",
+        "Flash Speed 2",
+        "Red Dimmer 2",
+        "Green Dimmer 2",
+        "Blue Dimmer 2",
+        "Total Dimmer 2",
+        "Flash Speed",
+        "Red Dimmer 3",
+        "Green Dimmer 3",
+        "Blue Dimmer 3",
+        "Total Dimmer 3",
+        "Flash Speed 3",
+        "Red Dimmer 4",
+        "Green Dimmer 4",
+        "Blue Dimmer 4",
+        "Total Dimmer 4",
+        "Flash Speed 4",
+        "Flash Speed of 1st LED",
+        "Flash Speed of 2nd LED",
+        "Flash Speed of 3rd LED",
+        "Flash Speed of 4th LED"
+      ]
+    }
+  ]
+}
