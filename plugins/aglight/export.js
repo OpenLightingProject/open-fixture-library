@@ -22,21 +22,18 @@ module.exports.export = async function exportAGLight(fixtures, options) {
 
   const library = {
     version: displayedPluginVersion,
-    fixtures: [],
+    fixtures: fixtures.map(fixture => {
+      const jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
+      jsonData.fixtureKey = fixture.key;
+      jsonData.manufacturer = manufacturers[fixture.manufacturer.key];
+      jsonData.oflURL = `https://open-fixture-library.org/${fixture.manufacturer.key}/${fixture.key}`;
+
+      transformSingleCapabilityToArray(jsonData);
+      transformNonNumericValues(jsonData);
+
+      return jsonData;
+    }),
   };
-    // one JSON file for each fixture
-  library.fixtures = fixtures.map(fixture => {
-
-    const jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
-    jsonData.fixtureKey = fixture.key;
-    jsonData.manufacturer = manufacturers[fixture.manufacturer.key];
-    jsonData.oflURL = `https://open-fixture-library.org/${fixture.manufacturer.key}/${fixture.key}`;
-
-    transformSingleCapabilityToArray(jsonData);
-    transformNonNumericValues(jsonData);
-
-    return jsonData;
-  });
   return [{
     name: `aglight_fixture_library.json`,
     content: fixtureJsonStringify(library),
