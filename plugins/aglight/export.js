@@ -1,4 +1,3 @@
-/* eslint-disable radix */
 /* Based on the ofl export plugin */
 
 const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
@@ -124,15 +123,15 @@ function transformNonNumericValues(content) {
             for (const u of units) {
               if ((typeof capability[k2] === `string`) && capability[k2].endsWith(u)) {
                 capability[k2].replace(u, ``);
-                capability[k2] = parseInt(capability[k2]);
+                capability[k2] = parseInt(capability[k2], 10);
               }
             }
             if ((typeof capability[k2] === `string`) && capability[k2].endsWith(`s`)) {
               capability[k2].replace(`s`, ``);
-              capability[k2] = parseInt(capability[k2]) * 1000;
+              capability[k2] = parseInt(capability[k2], 10) * 1000;
             }
-            else if (parseInt(capability[k2])) {
-              capability[k2] = parseInt(capability[k2]);
+            else if (parseInt(capability[k2], 10)) {
+              capability[k2] = parseInt(capability[k2], 10);
             }
             else if (replacements[capability[k2]] !== undefined) {
               capability[`${k2}_comment`] = capability[k2];
