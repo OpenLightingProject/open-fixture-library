@@ -27,13 +27,13 @@ module.exports.export = async function exportAGLight(fixtures, options) {
     // one JSON file for each fixture
   library.fixtures = fixtures.map(fixture => {
 
-    let jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
+    const jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
     jsonData.fixtureKey = fixture.key;
     jsonData.manufacturer = manufacturers[fixture.manufacturer.key];
     jsonData.oflURL = `https://open-fixture-library.org/${fixture.manufacturer.key}/${fixture.key}`;
 
-    jsonData = transformSingleCapabilityToArray(jsonData);
-    jsonData = transformNonNumericValues(jsonData);
+    transformSingleCapabilityToArray(jsonData);
+    transformNonNumericValues(jsonData);
 
     return jsonData;
   });
@@ -47,7 +47,6 @@ module.exports.export = async function exportAGLight(fixtures, options) {
 
 /**
  * @param {Object} content The fixture data
- * @returns {Object} The transformed fixture
  */
 function transformSingleCapabilityToArray(content) {
   if (content.availableChannels) {
@@ -59,12 +58,10 @@ function transformSingleCapabilityToArray(content) {
       }
     }
   }
-  return content;
 }
 
 /**
  * @param {Object} content The fixture data
- * @returns {Object} The transformed fixture
  */
 // eslint-disable-next-line complexity
 function transformNonNumericValues(content) {
@@ -162,5 +159,4 @@ function transformNonNumericValues(content) {
       }
     }
   }
-  return content;
 }
