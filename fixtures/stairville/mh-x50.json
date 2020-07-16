@@ -119,6 +119,7 @@
   },
   "availableChannels": {
     "Pan": {
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -126,6 +127,7 @@
       }
     },
     "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -255,7 +257,7 @@
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "0Hz",
-          "speedEnd": "1Hz"
+          "speedEnd": "13Hz"
         },
         {
           "dmxRange": [216, 255],
@@ -426,40 +428,20 @@
     "Focus": {
       "capability": {
         "type": "Focus",
-        "distanceStart": "near",
-        "distanceEnd": "far"
-      }
-    },
-    "Pan 2": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 2 fine"],
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "540deg"
-      }
-    },
-    "Tilt 2": {
-      "name": "Tilt",
-      "fineChannelAliases": ["Tilt 2 fine"],
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "270deg"
+        "distanceStart": "far",
+        "distanceEnd": "near"
       }
     },
     "Speed": {
       "capability": {
         "type": "Speed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedStart": "fast",
+        "speedEnd": "slow"
       }
     },
     "Dimmer": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "type": "Intensity"
       }
     },
     "Special Functions": {
@@ -667,10 +649,10 @@
     {
       "name": "14ch",
       "channels": [
-        "Pan 2",
-        "Tilt 2",
-        "Pan 2 fine",
-        "Tilt 2 fine",
+        "Pan",
+        "Tilt",
+        "Pan fine",
+        "Tilt fine",
         "Speed",
         "Color Wheel",
         "Shutter",
