@@ -29,7 +29,7 @@
     }
   },
   "wheels": {
-    "Color": {
+    "Color Wheel": {
       "slots": [
         {
           "type": "Color",
@@ -75,63 +75,10 @@
           "type": "Color",
           "name": "Dark blue",
           "colors": ["#1e00ff"]
-        },
-        {
-          "type": "Color",
-          "name": "White + Yellow",
-          "colors": ["#ffffff", "#ffff00"]
-        },
-        {
-          "type": "Color",
-          "name": "Yellow + Pink",
-          "colors": ["#ffff00", "#ff00ff"]
-        },
-        {
-          "type": "Color",
-          "name": "Pink + Green",
-          "colors": ["#ff00ff", "#00ff00"]
-        },
-        {
-          "type": "Color",
-          "name": "Green + Peachblow",
-          "colors": ["#00ff00", "#d7735b"]
-        },
-        {
-          "type": "Color",
-          "name": "Peachblow + Blue",
-          "colors": ["#d7735b", "#00aeff"]
-        },
-        {
-          "type": "Color",
-          "name": "Blue + Kelly-Green",
-          "colors": ["#00aeff", "#4cbb17"]
-        },
-        {
-          "type": "Color",
-          "name": "Kelly-Green + Red",
-          "colors": ["#4cbb17", "#ff0000"]
-        },
-        {
-          "type": "Color",
-          "name": "Red + Dark blue",
-          "colors": ["#ff0000", "#0000ff"]
-        },
-        {
-          "type": "Color",
-          "name": "Dark blue + White",
-          "colors": ["#0000ff", "#ffffff"]
-        },
-        {
-          "type": "Color",
-          "name": "Rainbow CW"
-        },
-        {
-          "type": "Color",
-          "name": "Rainbow CCW"
         }
       ]
     },
-    "Gobo": {
+    "Gobo Wheel": {
       "slots": [
         {
           "type": "Open"
@@ -163,29 +110,6 @@
         {
           "type": "Gobo",
           "name": "Gobo 8"
-        },
-        {
-          "type": "Gobo",
-          "name": "Gobo 8 Shake"
-        },
-        {
-          "type": "Gobo",
-          "name": "Gobo 7 Shake"
-        },
-        {
-          "type": "Gobo",
-          "name": "Gobo 6 Shake"
-        },
-        {
-          "type": "Gobo",
-          "name": "Gobo 5 Shake"
-        },
-        {
-          "type": "Gobo",
-          "name": "Gobo 4 Shake"
-        },
-        {
-          "type": "Gobo"
         }
       ]
     }
@@ -195,7 +119,7 @@
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
-        "angleEnd": "0deg"
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
@@ -205,7 +129,7 @@
         "angleEnd": "270deg"
       }
     },
-    "Color": {
+    "Color Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 6],
@@ -255,47 +179,47 @@
         {
           "dmxRange": [64, 70],
           "type": "WheelSlot",
-          "slotNumber": 10
+          "slotNumber": 1.5
         },
         {
           "dmxRange": [71, 77],
           "type": "WheelSlot",
-          "slotNumber": 11
+          "slotNumber": 2.5
         },
         {
           "dmxRange": [78, 84],
           "type": "WheelSlot",
-          "slotNumber": 12
+          "slotNumber": 3.5
         },
         {
           "dmxRange": [85, 91],
           "type": "WheelSlot",
-          "slotNumber": 13
+          "slotNumber": 4.5
         },
         {
           "dmxRange": [92, 98],
           "type": "WheelSlot",
-          "slotNumber": 14
+          "slotNumber": 5.5
         },
         {
           "dmxRange": [99, 105],
           "type": "WheelSlot",
-          "slotNumber": 15
+          "slotNumber": 6.5
         },
         {
           "dmxRange": [106, 112],
           "type": "WheelSlot",
-          "slotNumber": 16
+          "slotNumber": 7.5
         },
         {
           "dmxRange": [113, 119],
           "type": "WheelSlot",
-          "slotNumber": 17
+          "slotNumber": 8.5
         },
         {
           "dmxRange": [120, 127],
           "type": "WheelSlot",
-          "slotNumber": 18
+          "slotNumber": 9.5
         },
         {
           "dmxRange": [128, 191],
@@ -337,7 +261,7 @@
         }
       ]
     },
-    "Gobo": {
+    "Gobo Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 7],
@@ -417,7 +341,9 @@
         {
           "dmxRange": [104, 111],
           "type": "WheelShake",
-          "slotNumber": 3
+          "slotNumber": 3,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [112, 119],
@@ -450,25 +376,28 @@
         {
           "dmxRange": [0, 63],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel",
           "speed": "stop"
         },
         {
           "dmxRange": [64, 147],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         },
         {
           "dmxRange": [148, 231],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         },
         {
           "dmxRange": [232, 255],
-          "type": "WheelSlotRotation",
-          "speed": "100%",
-          "comment": "Gobo Jumping"
+          "type": "WheelShake",
+          "wheel": "Gobo Wheel",
+          "isShaking": "slot"
         }
       ]
     },
@@ -724,9 +653,9 @@
       "channels": [
         "Pan",
         "Tilt",
-        "Color",
+        "Color Wheel",
         "Shutter",
-        "Gobo",
+        "Gobo Wheel",
         "Gobo Rotation",
         "Prism",
         "Focus"
@@ -740,10 +669,10 @@
         "Pan 2 fine",
         "Tilt 2 fine",
         "Speed",
-        "Color",
+        "Color Wheel",
         "Shutter",
         "Dimmer",
-        "Gobo",
+        "Gobo Wheel",
         "Gobo Rotation",
         "Special Functions",
         "Built-in Programs",
