@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "44563",
+  "shortName": "352121321",
+  "categories": ["Barrel Scanner", "Blinder", "Color Changer", "Matrix"],
+  "meta": {
+    "authors": ["JJJJ"],
+    "createDate": "2020-07-17",
+    "lastModifyDate": "2020-07-17"
+  },
+  "comment": "21312213",
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=S4MJ3meSvMQ"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [5, 5, 5],
+    "weight": 5,
+    "power": 30,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 3000,
+      "lumens": 300
+    },
+    "lens": {
+      "name": "50",
+      "degreesMinMax": [10, 10]
+    }
+  },
+  "availableChannels": {
+    "123123213": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "UNIQUE",
+      "shortName": "000",
+      "channels": [
+        "123123213"
+      ]
+    }
+  ]
+}
