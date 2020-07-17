@@ -21,7 +21,6 @@ const cookieOptions = {
 
 if (process.env.NODE_ENV === `production`) {
   cookieName = `__Host-theme`;
-  cookieOptions.httpOnly = true;
   cookieOptions.secure = true;
 }
 
