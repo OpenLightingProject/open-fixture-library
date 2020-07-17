@@ -30,139 +30,397 @@
   },
   "availableChannels": {
     "Mode": {
+      "defaultValue": 10,
       "capabilities": [
         {
           "dmxRange": [0, 9],
           "type": "Intensity",
           "brightness": "off",
-          "comment": "Blackout"
+          "comment": "Blackout",
+          "switchChannels": {
+            "Program": "Auto PAR Show"
+          }
         },
         {
           "dmxRange": [10, 50],
           "type": "Effect",
-          "effectName": "Auto PAR show"
+          "effectName": "Auto PAR Show",
+          "switchChannels": {
+            "Program": "Auto PAR Show"
+          }
         },
         {
           "dmxRange": [51, 90],
           "type": "Effect",
-          "effectName": "Auto LED flash show"
+          "effectName": "Auto LED Flash Show",
+          "switchChannels": {
+            "Program": "Auto LED Flash Show"
+          }
         },
         {
           "dmxRange": [91, 130],
           "type": "Effect",
-          "effectName": "Mix auto show"
+          "effectName": "Mix Auto Show",
+          "switchChannels": {
+            "Program": "Mix Auto Show"
+          }
         },
         {
           "dmxRange": [131, 170],
           "type": "Effect",
-          "effectName": "Sound PAR show",
-          "soundControlled": true
+          "effectName": "Sound PAR Show",
+          "soundControlled": true,
+          "switchChannels": {
+            "Program": "Sound PAR Show"
+          }
         },
         {
           "dmxRange": [171, 210],
           "type": "Effect",
-          "effectName": "Sound LED flash show"
+          "effectName": "Sound LED Flash Show",
+          "soundControlled": true,
+          "switchChannels": {
+            "Program": "Sound LED Flash Show"
+          }
         },
         {
           "dmxRange": [211, 255],
           "type": "Effect",
-          "effectName": "Mix sound show",
-          "soundControlled": true
+          "effectName": "Mix Sound Show",
+          "soundControlled": true,
+          "switchChannels": {
+            "Program": "Mix Sound Show"
+          }
         }
       ]
     },
-    "Show Config": {
+    "Auto PAR Show": {
       "capabilities": [
         {
           "dmxRange": [0, 14],
           "type": "Effect",
-          "effectName": "AUTO 1"
+          "effectName": "Auto PAR Show 1"
         },
         {
           "dmxRange": [15, 29],
           "type": "Effect",
-          "effectName": "AUTO 2"
+          "effectName": "Auto PAR Show 2"
         },
         {
           "dmxRange": [30, 44],
           "type": "Effect",
-          "effectName": "AUTO 3"
+          "effectName": "Auto PAR Show 3"
         },
         {
           "dmxRange": [45, 59],
           "type": "Effect",
-          "effectName": "AUTO 4"
+          "effectName": "Auto PAR Show 4"
         },
         {
           "dmxRange": [60, 74],
           "type": "Effect",
-          "effectName": "AUTO 5"
+          "effectName": "Auto PAR Show 5"
         },
         {
           "dmxRange": [75, 89],
           "type": "Effect",
-          "effectName": "AUTO 6"
+          "effectName": "Auto PAR Show 6"
         },
         {
           "dmxRange": [90, 104],
           "type": "Effect",
-          "effectName": "AUTO 7"
+          "effectName": "Auto PAR Show 7"
         },
         {
           "dmxRange": [105, 119],
           "type": "Effect",
-          "effectName": "AUTO 8"
+          "effectName": "Auto PAR Show 8"
         },
         {
           "dmxRange": [120, 134],
           "type": "Effect",
-          "effectName": "AUTO 9"
+          "effectName": "Auto PAR Show 9"
         },
         {
           "dmxRange": [135, 149],
           "type": "Effect",
-          "effectName": "AUTO 10"
+          "effectName": "Auto PAR Show 10"
         },
         {
           "dmxRange": [150, 164],
           "type": "Effect",
-          "effectName": "AUTO 11"
+          "effectName": "Auto PAR Show 11"
         },
         {
           "dmxRange": [165, 179],
           "type": "Effect",
-          "effectName": "AUTO 12"
+          "effectName": "Auto PAR Show 12"
         },
         {
           "dmxRange": [180, 194],
           "type": "Effect",
-          "effectName": "AUTO 13"
+          "effectName": "Auto PAR Show 13"
         },
         {
           "dmxRange": [195, 209],
           "type": "Effect",
-          "effectName": "AUTO 14"
+          "effectName": "Auto PAR Show 14"
         },
         {
           "dmxRange": [210, 224],
           "type": "Effect",
-          "effectName": "AUTO 15"
+          "effectName": "Auto PAR Show 15"
         },
         {
           "dmxRange": [225, 239],
           "type": "Effect",
-          "effectName": "AUTO 16"
+          "effectName": "Auto PAR Show 16"
         },
         {
           "dmxRange": [240, 255],
           "type": "Effect",
-          "effectName": "AUTO 17"
+          "effectName": "Auto PAR Show 17"
         }
       ]
     },
-    "Speed": {
+    "Auto LED Flash Show": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "Effect",
+          "effectName": "Auto LED Flash Show 1"
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "Effect",
+          "effectName": "Auto LED Flash Show 2"
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "Effect",
+          "effectName": "Auto LED Flash Show 3"
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "Effect",
+          "effectName": "Auto LED Flash Show 4"
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "Effect",
+          "effectName": "Auto LED Flash Show 5"
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "Effect",
+          "effectName": "Auto LED Flash Show 6"
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "Effect",
+          "effectName": "Auto LED Flash Show 7"
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "Effect",
+          "effectName": "Auto LED Flash Show 8"
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "Effect",
+          "effectName": "Auto LED Flash Show 9"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Effect",
+          "effectName": "Auto LED Flash Show 10"
+        }
+      ]
+    },
+    "Mix Auto Show": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 99],
+          "type": "Effect",
+          "effectName": "Mix Auto Show 1"
+        },
+        {
+          "dmxRange": [100, 199],
+          "type": "Effect",
+          "effectName": "Mix Auto Show 2"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "Mix Auto Show 3"
+        }
+      ]
+    },
+    "Sound PAR Show": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Effect",
+          "effectName": "Sound PAR Show 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Effect",
+          "effectName": "Sound PAR Show 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Effect",
+          "effectName": "Sound PAR Show 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Effect",
+          "effectName": "Sound PAR Show 4",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Effect",
+          "effectName": "Sound PAR Show 5",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Effect",
+          "effectName": "Sound PAR Show 6",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Effect",
+          "effectName": "Sound PAR Show 7",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Effect",
+          "effectName": "Sound PAR Show 8",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "Effect",
+          "effectName": "Sound PAR Show 9",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "Effect",
+          "effectName": "Sound PAR Show 10",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "Effect",
+          "effectName": "Sound PAR Show 11",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "Effect",
+          "effectName": "Sound PAR Show 12",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Sound LED Flash Show": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 24],
+          "type": "Effect",
+          "effectName": "Sound LED Flash Show 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [25, 49],
+          "type": "Effect",
+          "effectName": "Sound LED Flash Show 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [50, 74],
+          "type": "Effect",
+          "effectName": "Sound LED Flash Show 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [75, 99],
+          "type": "Effect",
+          "effectName": "Sound LED Flash Show 4",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [100, 124],
+          "type": "Effect",
+          "effectName": "Sound LED Flash Show 5",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [125, 149],
+          "type": "Effect",
+          "effectName": "Sound LED Flash Show 6",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [150, 174],
+          "type": "Effect",
+          "effectName": "Sound LED Flash Show 7",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [175, 199],
+          "type": "Effect",
+          "effectName": "Sound LED Flash Show 8",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [200, 224],
+          "type": "Effect",
+          "effectName": "Sound LED Flash Show 9",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "Effect",
+          "effectName": "Sound LED Flash Show 10",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Mix Sound Show": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 99],
+          "type": "Effect",
+          "effectName": "Mix Sound Show 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [100, 199],
+          "type": "Effect",
+          "effectName": "Mix Sound Show 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "Mix Sound Show 3",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Program Speed": {
       "capability": {
-        "type": "Speed",
+        "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
@@ -363,8 +621,8 @@
       "name": "3ch",
       "channels": [
         "Mode",
-        "Show Config",
-        "Speed"
+        "Program",
+        "Program Speed"
       ]
     },
     {
