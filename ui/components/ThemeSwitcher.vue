@@ -15,7 +15,7 @@ const storageKey = `theme`;
 let cookieName = `theme`;
 const cookieOptions = {
   path: `/`,
-  maxAge: 60 * 60 * 24 * 7,
+  maxAge: 60 * 60 * 24 * 7 * 4, // 4 weeks
   sameSite: true,
 };
 
