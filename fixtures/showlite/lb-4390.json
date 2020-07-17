@@ -28,6 +28,18 @@
       "degreesMinMax": [15, 15]
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["Flash 1", "Flash 2", "Flash 3", "Flash 4"],
+        [ "PAR 1",   "PAR 2",   "PAR 3",   "PAR 4" ]
+      ]
+    ],
+    "pixelGroups": {
+      "Flash LEDs": ["Flash 1", "Flash 2", "Flash 3", "Flash 4"],
+      "PAR LEDs": ["PAR 1", "PAR 2", "PAR 3", "PAR 4"]
+    }
+  },
   "availableChannels": {
     "Mode": {
       "defaultValue": 10,
@@ -425,25 +437,7 @@
         "speedEnd": "fast"
       }
     },
-    "Red Dimmer": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green Dimmer": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue Dimmer": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Extra": {
+    "Dimmer / Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 191],
@@ -453,14 +447,16 @@
           "dmxRange": [192, 200],
           "type": "Effect",
           "effectName": "Sound Flash",
-          "soundControlled": true
+          "soundControlled": true,
+          "helpWanted": "Does this capability control Strobe of the PAR LEDs or the Flash LEDs? Can the strobe speed be controlled?"
         },
         {
           "dmxRange": [201, 249],
-          "type": "EffectSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast",
-          "comment": "Flash speed"
+          "helpWanted": "Does this capability control Strobe of the PAR LEDs or the Flash LEDs?"
         },
         {
           "dmxRange": [250, 255],
@@ -470,149 +466,46 @@
         }
       ]
     },
-    "Flash Speed": {
+    "Sound LED Flash": {
       "capability": {
-        "type": "EffectSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "soundControlled": true,
+        "helpWanted": "At which DMX values is Strobe disabled? Does this channel control Strobe of the PAR LEDs or the Flash LEDs? Can the strobe speed be controlled?"
       }
-    },
-    "Red Dimmer 2": {
-      "name": "Red Dimmer",
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green Dimmer 2": {
-      "name": "Green Dimmer",
+    "Green $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue Dimmer 2": {
-      "name": "Blue Dimmer",
+    "Blue $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "Red Dimmer 3": {
-      "name": "Red Dimmer",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green Dimmer 3": {
-      "name": "Green Dimmer",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue Dimmer 3": {
-      "name": "Blue Dimmer",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red Dimmer 4": {
-      "name": "Red Dimmer",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green Dimmer 4": {
-      "name": "Green Dimmer",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue Dimmer 4": {
-      "name": "Blue Dimmer",
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Total Dimmer": {
+    "Dimmer $pixelKey": {
       "capability": {
         "type": "Intensity"
       }
     },
-    "Total Dimmer 2": {
-      "name": "Total Dimmer",
+    "Strobe $pixelKey": {
       "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Total Dimmer 3": {
-      "name": "Total Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Total Dimmer 4": {
-      "name": "Total Dimmer",
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Flash Speed 2": {
-      "name": "Flash Speed",
-      "capability": {
-        "type": "Speed",
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
         "speedStart": "slow",
-        "speedEnd": "fast"
-      }
-    },
-    "Flash Speed 3": {
-      "name": "Flash Speed",
-      "capability": {
-        "type": "Speed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
-      }
-    },
-    "Flash Speed 4": {
-      "name": "Flash Speed",
-      "capability": {
-        "type": "Speed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
-      }
-    },
-    "Flash Speed of 1st LED": {
-      "capability": {
-        "type": "Speed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
-      }
-    },
-    "Flash Speed of 2nd LED": {
-      "capability": {
-        "type": "Speed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
-      }
-    },
-    "Flash Speed of 3rd LED": {
-      "capability": {
-        "type": "Speed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
-      }
-    },
-    "Flash Speed of 4th LED": {
-      "capability": {
-        "type": "Speed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is Strobe disabled? Does this channel control Strobe of the PAR LEDs or the Flash LEDs?"
       }
     }
   },
@@ -628,74 +521,62 @@
     {
       "name": "5ch",
       "channels": [
-        "Red Dimmer",
-        "Green Dimmer",
-        "Blue Dimmer",
-        "Extra",
-        "Flash Speed"
+        "Red PAR LEDs",
+        "Green PAR LEDs",
+        "Blue PAR LEDs",
+        "Dimmer / Strobe",
+        "Sound LED Flash"
       ]
     },
     {
       "name": "12ch",
       "channels": [
-        "Red Dimmer",
-        "Green Dimmer",
-        "Blue Dimmer",
-        "Red Dimmer 2",
-        "Green Dimmer 2",
-        "Blue Dimmer 2",
-        "Red Dimmer 3",
-        "Green Dimmer 3",
-        "Blue Dimmer 3",
-        "Red Dimmer 4",
-        "Green Dimmer 4",
-        "Blue Dimmer 4"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["PAR 1", "PAR 2", "PAR 3", "PAR 4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     },
     {
       "name": "12ch (LED on)",
       "channels": [
-        "Red Dimmer",
-        "Green Dimmer",
-        "Blue Dimmer",
-        "Red Dimmer 2",
-        "Green Dimmer 2",
-        "Blue Dimmer 2",
-        "Red Dimmer 3",
-        "Green Dimmer 3",
-        "Blue Dimmer 3",
-        "Red Dimmer 4",
-        "Green Dimmer 4",
-        "Blue Dimmer 4"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["PAR 1", "PAR 2", "PAR 3", "PAR 4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     },
     {
       "name": "24ch",
       "channels": [
-        "Red Dimmer",
-        "Green Dimmer",
-        "Blue Dimmer",
-        "Total Dimmer",
-        "Flash Speed 2",
-        "Red Dimmer 2",
-        "Green Dimmer 2",
-        "Blue Dimmer 2",
-        "Total Dimmer 2",
-        "Flash Speed",
-        "Red Dimmer 3",
-        "Green Dimmer 3",
-        "Blue Dimmer 3",
-        "Total Dimmer 3",
-        "Flash Speed 3",
-        "Red Dimmer 4",
-        "Green Dimmer 4",
-        "Blue Dimmer 4",
-        "Total Dimmer 4",
-        "Flash Speed 4",
-        "Flash Speed of 1st LED",
-        "Flash Speed of 2nd LED",
-        "Flash Speed of 3rd LED",
-        "Flash Speed of 4th LED"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["PAR 1", "PAR 2", "PAR 3", "PAR 4"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "Dimmer $pixelKey",
+            "Strobe $pixelKey"
+          ]
+        },
+        "Strobe Flash 1",
+        "Strobe Flash 2",
+        "Strobe Flash 3",
+        "Strobe Flash 4"
       ]
     }
   ]
