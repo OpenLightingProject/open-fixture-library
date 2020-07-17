@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED_PAR",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Miroslav Mikeš"],
+    "createDate": "2020-07-17",
+    "lastModifyDate": "2020-07-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.ebay.com/itm/New-270W-RGBW-LED-DJ-Disco-Stage-Lighting-PAR64-DMX512-Party-Show-Beam-US-Plug/353094301957?hash=item52360f7905:g:EdgAAOSwuSZe1cb9"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Effect Duration": {
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Dimmer",
+      "shortName": "Dimm",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter / Strobe",
+        "Effect Duration"
+      ]
+    }
+  ]
+}
