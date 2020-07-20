@@ -445,10 +445,10 @@
         },
         {
           "dmxRange": [192, 200],
-          "type": "Effect",
-          "effectName": "Sound Flash",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "soundControlled": true,
-          "helpWanted": "Does this capability control Strobe of the PAR LEDs or the Flash LEDs? Can the strobe speed be controlled?"
+          "comment": "PAR LEDs"
         },
         {
           "dmxRange": [201, 249],
@@ -456,7 +456,7 @@
           "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast",
-          "helpWanted": "Does this capability control Strobe of the PAR LEDs or the Flash LEDs?"
+          "comment": "PAR LEDs"
         },
         {
           "dmxRange": [250, 255],
@@ -465,14 +465,6 @@
           "comment": "All on"
         }
       ]
-    },
-    "Sound LED Flash": {
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe",
-        "soundControlled": true,
-        "helpWanted": "At which DMX values is Strobe disabled? Does this channel control Strobe of the PAR LEDs or the Flash LEDs? Can the strobe speed be controlled?"
-      }
     }
   },
   "templateChannels": {
@@ -500,13 +492,52 @@
       }
     },
     "Strobe $pixelKey": {
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe",
-        "speedStart": "slow",
-        "speedEnd": "fast",
-        "helpWanted": "At which DMX values is Strobe disabled? Does this channel control Strobe of the PAR LEDs or the Flash LEDs?"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [3, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "$pixelKey Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [3, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "$pixelKey Sound Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [3, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true,
+          "helpWanted": "Can the strobe speed be controlled?"
+        }
+      ]
     }
   },
   "modes": [
@@ -525,7 +556,7 @@
         "Green PAR LEDs",
         "Blue PAR LEDs",
         "Dimmer / Strobe",
-        "Sound LED Flash"
+        "Flash LEDs Sound Strobe"
       ]
     },
     {
@@ -573,10 +604,10 @@
             "Strobe $pixelKey"
           ]
         },
-        "Strobe Flash 1",
-        "Strobe Flash 2",
-        "Strobe Flash 3",
-        "Strobe Flash 4"
+        "Flash 1 Strobe",
+        "Flash 2 Strobe",
+        "Flash 3 Strobe",
+        "Flash 4 Strobe"
       ]
     }
   ]
