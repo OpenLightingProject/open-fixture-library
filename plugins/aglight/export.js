@@ -64,50 +64,6 @@ function transformSingleCapabilityToArray(content) {
 function transformNonNumericValues(content) {
     const units = [`K`, `deg`, `%`, `ms`, `Hz`, `m^3/min`, `rpm`];
     const excludeKeys = [`comment`, `name`, `helpWanted`, `type`, `effectName`, `effectPreset`, `shutterEffect`, `wheel`, `isShaking`, `fogType`, `menuClick`];
-    const replacements = {
-        slow: 1,
-        "slow CW": 1,
-        "slow CCW": -1,
-        "slow reverse": -1,
-        fast: 0.1,
-        "fast CW": 0.1,
-        "fast CCW": -0.1,
-        "fast reverse": -0.1,
-        low: 0.1,
-        high: 1,
-        weak: 0.1,
-        strong: 1,
-        long: 1,
-        short: 0.1,
-        big: 1,
-        small: 0.1,
-        instant: 0.01,
-        wide: 1,
-        narrow: 0.1,
-        far: 1,
-        near: 0.1,
-        bright: 1,
-        dark: 0.1,
-        default: 0,
-        warm: 1,
-        cold: 0,
-        center: 0,
-        CTO: 0,
-        CTB: 0,
-        right: 1,
-        left: -1,
-        top: 1,
-        bottom: -1,
-        off: false,
-        on: true,
-        open: true,
-        closed: false,
-        out: false,
-        in: true,
-        stop: false,
-        start: true,
-
-    };
     if (content.availableChannels) {
         for (const k of Object.keys(content.availableChannels)) {
             for (const capability of content.availableChannels[k].capabilities) {
@@ -124,9 +80,6 @@ function transformNonNumericValues(content) {
                             capability[k2] = parseInt(capability[k2], 10) * 1000;
                         } else if (parseInt(capability[k2], 10)) {
                             capability[k2] = parseInt(capability[k2], 10);
-                        } else if (replacements[capability[k2]] !== undefined) {
-                            capability[`${k2}_comment`] = capability[k2];
-                            capability[k2] = replacements[capability[k2]];
                         } else if (k2 === `color`) {
                             const c = namedColors.find(color => color.name === capability[k2]);
                             if (c && c.hex) {
