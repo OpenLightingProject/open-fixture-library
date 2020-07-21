@@ -6,6 +6,7 @@ module.exports = {
     [`@nuxtjs/axios`, {
       browserBaseURL: `/`,
     }],
+    `cookie-universal-nuxt`,
   ],
   plugins: [
     `~/plugins/embetty-vue.js`,
@@ -82,6 +83,7 @@ module.exports = {
   head() {
     const htmlAttrs = {
       lang: `en`,
+      'data-theme': this.$cookies.get(`__Host-theme`) || this.$cookies.get(`theme`),
     };
 
     const titleTemplate = titleChunk => {

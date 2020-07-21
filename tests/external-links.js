@@ -46,8 +46,8 @@ if (isClimateStrike) {
     const externalUrlSet = new Set();
 
     crawler.on(`externalLinkFound`, url => {
-      // exclude canonical URLs
-      if (!url.startsWith(`https://open-fixture-library.org`)) {
+      // exclude canonical URLs and auto-generated ones pointing to the Open Lighting RDM site as the fixture may not exist
+      if (!url.startsWith(`https://open-fixture-library.org`) && !url.startsWith(`http://rdm.openlighting.org/model/display`)) {
         externalUrlSet.add(url);
         process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
       }
