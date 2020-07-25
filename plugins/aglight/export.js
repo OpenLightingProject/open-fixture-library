@@ -34,6 +34,7 @@ module.exports.export = async function exportAGLight(fixtures, options) {
 
       transformSingleCapabilityToArray(jsonData);
       transformNonNumericValues(jsonData);
+      transformMatrixChannels(jsonData);
 
       return jsonData;
     }),
@@ -86,6 +87,32 @@ function transformNonNumericValues(content) {
         processCapability(capability, excludeKeys);
       }
     }
+  }
+}
+
+/**
+ * @param {Object} content The fixture data
+ */
+function transformMatrixChannels(content) {
+  for (const mode of content.modes) {
+    mode.channels = mode.channels.map(channel => {
+      if (typeof channel === `object`) {
+        if (channel && channel.insert === `matrixChannels` && Array.isArray(channel.repeatFor)) {
+          channel = channel.repeatFor.flatMap(i => (
+            channel.templateChannels.map(t => {
+              const channelName = t.replace(`$pixelKey`, i);
+              if (!content.availableChannels) {
+                content.availableChannels = {};
+              }
+              content.availableChannels[channelName] = content.templateChannels[t];
+              return channelName;
+            })
+          ));
+        }
+      }
+      return channel;
+    });
+    mode.channels = mode.channels.flat();
   }
 }
 
