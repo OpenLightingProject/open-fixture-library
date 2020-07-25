@@ -104,7 +104,12 @@ function transformMatrixChannels(content) {
               if (!content.availableChannels) {
                 content.availableChannels = {};
               }
-              content.availableChannels[channelName] = content.templateChannels[t];
+              if (content.templateChannels[t]) {
+                content.availableChannels[channelName] = content.templateChannels[t];
+                content.availableChannels[channelName].matrixChannel = t;
+                content.availableChannels[channelName].matrixChannelKey = i;
+              }
+
               return channelName;
             })
           ));
