@@ -55,11 +55,23 @@ module.exports.export = async function exportAGLight(fixtures, options) {
 function transformSingleCapabilityToArray(content) {
   if (content.availableChannels) {
     for (const channel of Object.values(content.availableChannels)) {
-      if (channel.capability) {
-        channel.capabilities = [channel.capability];
-        channel.singleCapability = true;
-        delete channel.capability;
+      processCapabilities(channel);
+    }
+    if (content.templateChannels) {
+      for (const channel of Object.values(content.templateChannels)) {
+        processCapabilities(channel);
       }
+    }
+  }
+
+  /**
+   * @param {Object} channel The channel
+   */
+  function processCapabilities(channel) {
+    if (channel.capability) {
+      channel.capabilities = [channel.capability];
+      channel.singleCapability = true;
+      delete channel.capability;
     }
   }
 }
