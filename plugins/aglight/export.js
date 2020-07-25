@@ -151,7 +151,8 @@ function processColor(capability, k2) {
       capability[k2] = c.hex;
     }
     else {
-      console.log(`#### color not found`, capability[k2]);
+      // If the color was not found, just ignore it
+      // console.log(`#### color not found`, capability[k2]);
     }
   }
 }
@@ -177,12 +178,10 @@ function getGobos() {
   const extensions = [`svg`, `png`];
   const basePath = path.join(__dirname, `../../resources/gobos`);
   const files = fs.readdirSync(basePath);
-  console.log(files);
   for (const file of files) {
     if (file.endsWith(`.json`)) {
       for (const ext of extensions) {
         const resourceFile = path.join(basePath, file.replace(`.json`, `.${ext}`));
-        console.log(resourceFile);
         if (fs.existsSync(resourceFile)) {
           const goboName = file.split(`/`).pop().split(`.`)[0];
           gobos[goboName] = `data:image/${ext === `svg` ? `svg+xml` : ext};base64,${Buffer.from(fs.readFileSync(resourceFile)).toString(`base64`)}`;
