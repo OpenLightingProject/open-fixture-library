@@ -1,12 +1,12 @@
-const colorNames = require(`color-names`);
+const colorNameList = require(`color-name-list`);
 const xml2js = require(`xml2js`);
 const promisify = require(`util`).promisify;
 
 module.exports.version = `0.3.1`;
 
 const colors = {};
-for (const hex of Object.keys(colorNames)) {
-  colors[colorNames[hex].toLowerCase().replace(/\s/g, ``)] = hex;
+for (const color of colorNameList) {
+  colors[color.name.toLowerCase().replace(/\s/g, ``)] = color.hex;
 }
 
 /**
