@@ -5,7 +5,7 @@ const namedColors = require(`color-name-list`);
 const fs = require(`fs`);
 const path = require(`path`);
 
-const { TemplateChannel } = require(`../../lib/model.js`);
+const { Entity, TemplateChannel } = require(`../../lib/model.js`);
 
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 
@@ -95,46 +95,54 @@ function transformNonNumericValues(content) {
    */
   function processCapability(capability) {
     for (const [key, value] of Object.entries(capability)) {
-      if (typeof value === `string` && !excludeKeys.includes(key)) {
-        processUnit(capability, key);
-        if (typeof value === `string` && value.endsWith(`s`)) {
-          capability[key] = parseInt(value.replace(`s`, ``), 10) * 1000;
-        }
-        else if (parseInt(value, 10)) {
-          capability[key] = parseInt(value, 10);
-        }
-        processColor(capability, key);
+      if (key === `color`) {
+        processColor(capability);
+      }
+      else if (typeof value === `string` && !excludeKeys.includes(key)) {
+        capability[key] = getEntityNumber(value);
       }
     }
   }
 
   /**
    * @param {Object} capability The capability
-   * @param {String} key The key
    */
-  function processColor(capability, key) {
-    if (key === `color`) {
-      const namedColor = namedColors.find(color => color.name === capability.color);
-      if (namedColor && namedColor.hex) {
-        capability.color = namedColor.hex;
-      }
-      else {
-        // If the color was not found, just ignore it
-        // console.log(`#### color not found`, capability[k2]);
-      }
+  function processColor(capability) {
+    const namedColor = namedColors.find(color => color.name === capability.color);
+    if (namedColor && namedColor.hex) {
+      capability.color = namedColor.hex;
+    }
+    else {
+      // If the color was not found, just ignore it
+      // console.log(`#### color not found`, capability.color);
     }
   }
 
   /**
-   * @param {Object} capability The capability
-   * @param {String} key The key
+   * @param {String} entityString The property value where the entity number should be extracted from.
+   * @returns {Number|String} A unitless number, or the original property value if it can't be parsed as an entity.
    */
-  function processUnit(capability, key) {
-    for (const unit of units) {
-      if (typeof capability[key] === `string` && capability[key].endsWith(unit)) {
-        capability[key] = parseInt(capability[key].replace(unit, ``), 10);
+  function getEntityNumber(entityString) {
+    try {
+      const entity = Entity.createFromEntityString(entityString);
+
+      if (entity.keyword !== null) {
+        return entityString;
+      }
+
+      if (entity.unit === `s`) {
+        return entity.number * 1000;
+      }
+
+      if (units.includes(entity.unit)) {
+        return entity.number;
       }
     }
+    catch (error) {
+      // string could not be parsed as an entity
+    }
+
+    return entityString;
   }
 }
 
