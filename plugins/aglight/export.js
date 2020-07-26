@@ -123,8 +123,7 @@ function processCapability(capability) {
     if ((typeof value === `string`) && (!excludeKeys.includes(key))) {
       processUnit(capability, key);
       if ((typeof value === `string`) && value.endsWith(`s`)) {
-        value.replace(`s`, ``);
-        capability[key] = parseInt(value, 10) * 1000;
+        capability[key] = parseInt(value.replace(`s`, ``), 10) * 1000;
       }
       else if (parseInt(value, 10)) {
         capability[key] = parseInt(value, 10);
@@ -158,8 +157,7 @@ function processColor(capability, key) {
 function processUnit(capability, key) {
   for (const unit of units) {
     if ((typeof capability[key] === `string`) && capability[key].endsWith(unit)) {
-      capability[key].replace(unit, ``);
-      capability[key] = parseInt(capability[key], 10);
+      capability[key] = parseInt(capability[key].replace(unit, ``), 10);
     }
   }
 }
