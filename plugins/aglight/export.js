@@ -95,22 +95,21 @@ function transformNonNumericValues(content) {
 function transformMatrixChannels(content) {
   for (const mode of content.modes) {
     mode.channels = mode.channels.map(channel => {
-      if (typeof channel === `object`) {
-        if (channel && channel.insert === `matrixChannels` && Array.isArray(channel.repeatFor)) {
-          channel = channel.repeatFor.flatMap(pixelKey => (
-            channel.templateChannels.map(templateChannelKey => {
-              const channelName = templateChannelKey.replace(`$pixelKey`, pixelKey);
-              if (content.templateChannels[templateChannelKey]) {
-                content.availableChannels[channelName] = content.templateChannels[templateChannelKey];
-                content.availableChannels[channelName].matrixChannel = templateChannelKey;
-                content.availableChannels[channelName].matrixChannelKey = pixelKey;
-              }
+      if (typeof channel === `object` && channel !== null && channel.insert === `matrixChannels` && Array.isArray(channel.repeatFor)) {
+        return channel.repeatFor.flatMap(pixelKey => (
+          channel.templateChannels.map(templateChannelKey => {
+            const channelName = templateChannelKey.replace(`$pixelKey`, pixelKey);
+            if (content.templateChannels[templateChannelKey]) {
+              content.availableChannels[channelName] = content.templateChannels[templateChannelKey];
+              content.availableChannels[channelName].matrixChannel = templateChannelKey;
+              content.availableChannels[channelName].matrixChannelKey = pixelKey;
+            }
 
-              return channelName;
-            })
-          ));
-        }
+            return channelName;
+          })
+        ));
       }
+
       return channel;
     });
     mode.channels = mode.channels.flat();
