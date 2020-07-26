@@ -94,7 +94,7 @@ function transformNonNumericValues(content) {
  */
 function transformMatrixChannels(content) {
   for (const mode of content.modes) {
-    mode.channels = mode.channels.map(channel => {
+    mode.channels = mode.channels.flatMap(channel => {
       if (typeof channel === `object` && channel !== null && channel.insert === `matrixChannels` && Array.isArray(channel.repeatFor)) {
         return channel.repeatFor.flatMap(pixelKey => (
           channel.templateChannels.map(templateChannelKey => {
@@ -112,7 +112,6 @@ function transformMatrixChannels(content) {
 
       return channel;
     });
-    mode.channels = mode.channels.flat();
   }
 }
 
