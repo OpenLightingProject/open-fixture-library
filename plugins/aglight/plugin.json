@@ -1,30 +1,30 @@
 {
-    "$schema": "../../schemas/plugin.json",
+  "$schema": "../../schemas/plugin.json",
 
-    "name": "AGLight v1.0.0",
-    "description": [
-        "<p><em>AGLight</em> is a lighting software with a completely configurable UI.",
-        "You can add different widgets and build your own user interface with drag and drop.</p>"
-    ],
-    "links": {
-        "Website": "https://github.com/hrueger/AGLight/"
+  "name": "AGLight v1.0.0",
+  "description": [
+    "<p><em>AGLight</em> is a lighting software with a completely configurable UI.",
+    "You can add different widgets and build your own user interface with drag and drop.</p>"
+  ],
+  "links": {
+    "Website": "https://github.com/hrueger/AGLight/"
+  },
+  "fixtureUsage": [
+    "<p>You don't need to download the fixtures, just click on the library button in the bottom statusbar and click update.</p>",
+    "<p>However, if you the device you run AGLight on is not connected to the internet,",
+    "you can also copy the exported fixture library to that device.",
+    "See below for the directory paths. You need to rename the file to <code>library.json</code>.</p>"
+  ],
+  "fileLocations": {
+    "subDirectoriesAllowed": false,
+    "Windows": {
+      "user": "C:\\Users\\yourUsername\\AppData\\Roaming\\aglight\\library\\library.json"
     },
-    "fixtureUsage": [
-        "<p>You don't need to download the fixtures, just click on the library button in the bottom statusbar and click update.</p>",
-        "<p>However, if you the device you run AGLight on is not connected to the internet,",
-        "you can also copy the exported fixture library to that device.",
-        "See below for the directory paths. You need to rename the file to <code>library.json</code>.</p>"
-    ],
-    "fileLocations": {
-        "subDirectoriesAllowed": false,
-        "Windows": {
-            "user": "C:\\Users\\yourUsername\\AppData\\Roaming\\aglight\\library\\library.json"
-        },
-        "Mac OS": {
-            "user": "~/Library/Application Support/aglight/library/library.json"
-        },
-        "Linux": {
-            "user": "~/.config/aglight/library/library.json"
-        }
+    "Mac OS": {
+      "user": "~/Library/Application Support/aglight/library/library.json"
+    },
+    "Linux": {
+      "user": "~/.config/aglight/library/library.json"
     }
+  }
 }
