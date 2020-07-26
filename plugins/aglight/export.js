@@ -140,9 +140,9 @@ function processCapability(capability) {
  */
 function processColor(capability, key) {
   if (key === `color`) {
-    const namedColor = namedColors.find(color => color.name === capability[key]);
+    const namedColor = namedColors.find(color => color.name === capability.color);
     if (namedColor && namedColor.hex) {
-      capability[key] = namedColor.hex;
+      capability.color = namedColor.hex;
     }
     else {
       // If the color was not found, just ignore it
