@@ -5,6 +5,8 @@ const namedColors = require(`color-name-list`);
 const fs = require(`fs`);
 const path = require(`path`);
 
+const { TemplateChannel } = require(`../../lib/model.js`);
+
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 
 const manufacturers = require(`../../fixtures/manufacturers.json`);
@@ -98,7 +100,10 @@ function transformMatrixChannels(content) {
       if (typeof channel === `object` && channel !== null && channel.insert === `matrixChannels` && Array.isArray(channel.repeatFor)) {
         return channel.repeatFor.flatMap(pixelKey => (
           channel.templateChannels.map(templateChannelKey => {
-            const channelName = templateChannelKey.replace(`$pixelKey`, pixelKey);
+            const channelName = TemplateChannel.resolveTemplateString(templateChannelKey, {
+              pixelKey,
+            });
+
             if (content.templateChannels[templateChannelKey]) {
               content.availableChannels[channelName] = content.templateChannels[templateChannelKey];
               content.availableChannels[channelName].matrixChannel = templateChannelKey;
