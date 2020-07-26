@@ -97,13 +97,13 @@ function transformMatrixChannels(content) {
     mode.channels = mode.channels.map(channel => {
       if (typeof channel === `object`) {
         if (channel && channel.insert === `matrixChannels` && Array.isArray(channel.repeatFor)) {
-          channel = channel.repeatFor.flatMap(i => (
-            channel.templateChannels.map(t => {
-              const channelName = t.replace(`$pixelKey`, i);
-              if (content.templateChannels[t]) {
-                content.availableChannels[channelName] = content.templateChannels[t];
-                content.availableChannels[channelName].matrixChannel = t;
-                content.availableChannels[channelName].matrixChannelKey = i;
+          channel = channel.repeatFor.flatMap(pixelKey => (
+            channel.templateChannels.map(templateChannelKey => {
+              const channelName = templateChannelKey.replace(`$pixelKey`, pixelKey);
+              if (content.templateChannels[templateChannelKey]) {
+                content.availableChannels[channelName] = content.templateChannels[templateChannelKey];
+                content.availableChannels[channelName].matrixChannel = templateChannelKey;
+                content.availableChannels[channelName].matrixChannelKey = pixelKey;
               }
 
               return channelName;
@@ -138,13 +138,13 @@ function processCapability(capability) {
 
 /**
  * @param {Object} capability The capability
- * @param {String} k2 The key
+ * @param {String} key The key
  */
-function processColor(capability, k2) {
-  if (k2 === `color`) {
-    const c = namedColors.find(color => color.name === capability[k2]);
-    if (c && c.hex) {
-      capability[k2] = c.hex;
+function processColor(capability, key) {
+  if (key === `color`) {
+    const namedColor = namedColors.find(color => color.name === capability[key]);
+    if (namedColor && namedColor.hex) {
+      capability[key] = namedColor.hex;
     }
     else {
       // If the color was not found, just ignore it
@@ -155,13 +155,13 @@ function processColor(capability, k2) {
 
 /**
  * @param {Object} capability The capability
- * @param {String} k2 The key
+ * @param {String} key The key
  */
-function processUnit(capability, k2) {
-  for (const u of units) {
-    if ((typeof capability[k2] === `string`) && capability[k2].endsWith(u)) {
-      capability[k2].replace(u, ``);
-      capability[k2] = parseInt(capability[k2], 10);
+function processUnit(capability, key) {
+  for (const unit of units) {
+    if ((typeof capability[key] === `string`) && capability[key].endsWith(unit)) {
+      capability[key].replace(unit, ``);
+      capability[key] = parseInt(capability[key], 10);
     }
   }
 }
