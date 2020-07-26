@@ -61,10 +61,9 @@ function transformSingleCapabilityToArray(content) {
   for (const channel of Object.values(content.availableChannels)) {
     processCapabilities(channel);
   }
-  if (content.templateChannels) {
-    for (const channel of Object.values(content.templateChannels)) {
-      processCapabilities(channel);
-    }
+
+  for (const channel of Object.values(content.templateChannels || {})) {
+    processCapabilities(channel);
   }
 
   /**
@@ -83,8 +82,8 @@ function transformSingleCapabilityToArray(content) {
  * @param {Object} content The fixture data
  */
 function transformNonNumericValues(content) {
-  for (const k of Object.keys(content.availableChannels)) {
-    for (const capability of content.availableChannels[k].capabilities) {
+  for (const channel of Object.values(content.availableChannels)) {
+    for (const capability of channel.capabilities) {
       processCapability(capability, excludeKeys);
     }
   }
@@ -122,17 +121,17 @@ function transformMatrixChannels(content) {
  * @param {Object} capability The capability
  */
 function processCapability(capability) {
-  for (const k2 of Object.keys(capability)) {
-    if ((typeof capability[k2] === `string`) && (!excludeKeys.includes(k2))) {
-      processUnit(capability, k2);
-      if ((typeof capability[k2] === `string`) && capability[k2].endsWith(`s`)) {
-        capability[k2].replace(`s`, ``);
-        capability[k2] = parseInt(capability[k2], 10) * 1000;
+  for (const [key, value] of Object.entries(capability)) {
+    if ((typeof value === `string`) && (!excludeKeys.includes(key))) {
+      processUnit(capability, key);
+      if ((typeof value === `string`) && value.endsWith(`s`)) {
+        value.replace(`s`, ``);
+        capability[key] = parseInt(value, 10) * 1000;
       }
-      else if (parseInt(capability[k2], 10)) {
-        capability[k2] = parseInt(capability[k2], 10);
+      else if (parseInt(value, 10)) {
+        capability[key] = parseInt(value, 10);
       }
-      processColor(capability, k2);
+      processColor(capability, key);
     }
   }
 }
