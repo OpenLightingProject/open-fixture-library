@@ -32,6 +32,10 @@ module.exports.export = async function exportAGLight(fixtures, options) {
       jsonData.manufacturer = manufacturers[fixture.manufacturer.key];
       jsonData.oflURL = `https://open-fixture-library.org/${fixture.manufacturer.key}/${fixture.key}`;
 
+      if (!jsonData.availableChannels) {
+        jsonData.availableChannels = {};
+      }
+
       transformSingleCapabilityToArray(jsonData);
       transformNonNumericValues(jsonData);
       transformMatrixChannels(jsonData);
@@ -54,14 +58,12 @@ module.exports.export = async function exportAGLight(fixtures, options) {
  * @param {Object} content The fixture data
  */
 function transformSingleCapabilityToArray(content) {
-  if (content.availableChannels) {
-    for (const channel of Object.values(content.availableChannels)) {
+  for (const channel of Object.values(content.availableChannels)) {
+    processCapabilities(channel);
+  }
+  if (content.templateChannels) {
+    for (const channel of Object.values(content.templateChannels)) {
       processCapabilities(channel);
-    }
-    if (content.templateChannels) {
-      for (const channel of Object.values(content.templateChannels)) {
-        processCapabilities(channel);
-      }
     }
   }
 
@@ -81,11 +83,9 @@ function transformSingleCapabilityToArray(content) {
  * @param {Object} content The fixture data
  */
 function transformNonNumericValues(content) {
-  if (content.availableChannels) {
-    for (const k of Object.keys(content.availableChannels)) {
-      for (const capability of content.availableChannels[k].capabilities) {
-        processCapability(capability, excludeKeys);
-      }
+  for (const k of Object.keys(content.availableChannels)) {
+    for (const capability of content.availableChannels[k].capabilities) {
+      processCapability(capability, excludeKeys);
     }
   }
 }
@@ -101,9 +101,6 @@ function transformMatrixChannels(content) {
           channel = channel.repeatFor.flatMap(i => (
             channel.templateChannels.map(t => {
               const channelName = t.replace(`$pixelKey`, i);
-              if (!content.availableChannels) {
-                content.availableChannels = {};
-              }
               if (content.templateChannels[t]) {
                 content.availableChannels[channelName] = content.templateChannels[t];
                 content.availableChannels[channelName].matrixChannel = t;
