@@ -3,7 +3,7 @@
 const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
 const namedColors = require(`color-name-list`);
 
-const { Entity, TemplateChannel } = require(`../../lib/model.js`);
+const { Entity } = require(`../../lib/model.js`);
 
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 
@@ -36,7 +36,7 @@ module.exports.export = async function exportAGLight(fixtures, options) {
         jsonData.availableChannels = {};
       }
 
-      transformMatrixChannels(jsonData);
+      transformMatrixChannels(jsonData, fixture);
       transformSingleCapabilityToArray(jsonData);
       transformNonNumericValues(jsonData);
 
@@ -53,34 +53,29 @@ module.exports.export = async function exportAGLight(fixtures, options) {
 
 /**
  * Resolves matrix channels in modes' channel lists.
- * It also copies the properties from the template channel to `availableChannels` with the resolved name
- * and adds the `matrixChannel` and `matrixChannelKey` properties.
- * @param {Object} fixtureJson The fixture whose template channels should be resolved.
+ * It also adds the resolved channel to `availableChannels` and adds the `matrixChannelKey` property.
+ * @param {Object} fixtureJson The fixture JSON object where the resolved matrix channels should be saved to.
+ * @param {Fixture} fixture The fixture whose template channels should be resolved.
  */
-function transformMatrixChannels(fixtureJson) {
-  for (const mode of fixtureJson.modes) {
-    mode.channels = mode.channels.flatMap(channel => {
-      if (typeof channel === `object` && channel !== null && channel.insert === `matrixChannels` && Array.isArray(channel.repeatFor)) {
-        return channel.repeatFor.flatMap(pixelKey => (
-          channel.templateChannels.map(templateChannelKey => {
-            const channelName = TemplateChannel.resolveTemplateString(templateChannelKey, {
-              pixelKey,
-            });
+function transformMatrixChannels(fixtureJson, fixture) {
+  fixture.modes.forEach((mode, index) => {
+    fixtureJson.modes[index].channels = mode.channelKeys;
+  });
 
-            if (fixtureJson.templateChannels[templateChannelKey]) {
-              fixtureJson.availableChannels[channelName] = fixtureJson.templateChannels[templateChannelKey];
-              fixtureJson.availableChannels[channelName].matrixChannel = templateChannelKey;
-              fixtureJson.availableChannels[channelName].matrixChannelKey = pixelKey;
-            }
+  fixtureJson.availableChannels = Object.fromEntries(
+    fixture.coarseChannelKeys.map(chKey => {
+      const channel = fixture.getChannelByKey(chKey);
+      let channelJsonObject = channel.jsonObject;
 
-            return channelName;
-          })
-        ));
+      if (channel.pixelKey) {
+        channelJsonObject = Object.assign({}, channelJsonObject, {
+          matrixChannelKey: channel.pixelKey,
+        });
       }
 
-      return channel;
-    });
-  }
+      return [chKey, channelJsonObject];
+    }),
+  );
 
   delete fixtureJson.templateChannels;
 }
