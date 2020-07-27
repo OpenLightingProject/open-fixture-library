@@ -36,9 +36,9 @@ module.exports.export = async function exportAGLight(fixtures, options) {
         jsonData.availableChannels = {};
       }
 
+      transformMatrixChannels(jsonData);
       transformSingleCapabilityToArray(jsonData);
       transformNonNumericValues(jsonData);
-      transformMatrixChannels(jsonData);
 
       return jsonData;
     }),
@@ -52,15 +52,44 @@ module.exports.export = async function exportAGLight(fixtures, options) {
 };
 
 /**
+ * Resolves the template channels
+ * It also copies the capabilities from the template channel to `availableChannels` with the resolved name
+ * Then, it adds `matrixChannel` (the template channel key) and `matrixChannel` (the pixel key) to the new channel in `availableChannels`
+ * @param {Object} fixtureJson The fixture whose the template channels should be resolved
+ */
+function transformMatrixChannels(fixtureJson) {
+  for (const mode of fixtureJson.modes) {
+    mode.channels = mode.channels.flatMap(channel => {
+      if (typeof channel === `object` && channel !== null && channel.insert === `matrixChannels` && Array.isArray(channel.repeatFor)) {
+        return channel.repeatFor.flatMap(pixelKey => (
+          channel.templateChannels.map(templateChannelKey => {
+            const channelName = TemplateChannel.resolveTemplateString(templateChannelKey, {
+              pixelKey,
+            });
+
+            if (fixtureJson.templateChannels[templateChannelKey]) {
+              fixtureJson.availableChannels[channelName] = fixtureJson.templateChannels[templateChannelKey];
+              fixtureJson.availableChannels[channelName].matrixChannel = templateChannelKey;
+              fixtureJson.availableChannels[channelName].matrixChannelKey = pixelKey;
+            }
+
+            return channelName;
+          })
+        ));
+      }
+
+      return channel;
+    });
+  }
+}
+
+/**
  * All channels with a single capability are converted to `capabilities: [capability]`,
  * and a `singleCapability` attribute with the value true is added.
- * @param {Object} fixtureJson The fixture whose channels and templateChannels should be processed
+ * @param {Object} fixtureJson The fixture whose channels should be processed
  */
 function transformSingleCapabilityToArray(fixtureJson) {
-  const channels = Object.values(fixtureJson.availableChannels)
-    .concat(Object.values(fixtureJson.templateChannels || {}));
-
-  for (const channel of channels) {
+  for (const channel of Object.values(fixtureJson.availableChannels)) {
     if (channel.capability) {
       channel.capabilities = [channel.capability];
       channel.singleCapability = true;
@@ -127,37 +156,5 @@ function transformNonNumericValues(fixtureJson) {
     }
 
     return entityString;
-  }
-}
-
-/**
- * Resolves the template channels
- * It also copies the capabilities from the template channel to `availableChannels` with the resolved name
- * Then, it adds `matrixChannel` (the template channel key) and `matrixChannel` (the pixel key) to the new channel in `availableChannels`
- * @param {Object} fixtureJson The fixture whose the template channels should be resolved
- */
-function transformMatrixChannels(fixtureJson) {
-  for (const mode of fixtureJson.modes) {
-    mode.channels = mode.channels.flatMap(channel => {
-      if (typeof channel === `object` && channel !== null && channel.insert === `matrixChannels` && Array.isArray(channel.repeatFor)) {
-        return channel.repeatFor.flatMap(pixelKey => (
-          channel.templateChannels.map(templateChannelKey => {
-            const channelName = TemplateChannel.resolveTemplateString(templateChannelKey, {
-              pixelKey,
-            });
-
-            if (fixtureJson.templateChannels[templateChannelKey]) {
-              fixtureJson.availableChannels[channelName] = fixtureJson.templateChannels[templateChannelKey];
-              fixtureJson.availableChannels[channelName].matrixChannel = templateChannelKey;
-              fixtureJson.availableChannels[channelName].matrixChannelKey = pixelKey;
-            }
-
-            return channelName;
-          })
-        ));
-      }
-
-      return channel;
-    });
   }
 }
