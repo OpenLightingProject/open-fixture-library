@@ -2,8 +2,6 @@
 
 const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
 const namedColors = require(`color-name-list`);
-const fs = require(`fs`);
-const path = require(`path`);
 
 const { Entity, TemplateChannel } = require(`../../lib/model.js`);
 
@@ -44,9 +42,6 @@ module.exports.export = async function exportAGLight(fixtures, options) {
 
       return jsonData;
     }),
-    resources: {
-      gobos: getGobos(),
-    },
   };
   return [{
     name: `aglight_fixture_library.json`,
@@ -173,26 +168,4 @@ function transformMatrixChannels(content) {
       return channel;
     });
   }
-}
-
-/**
- * @returns {Object} The gobos
- */
-function getGobos() {
-  const gobos = {};
-  const extensions = [`svg`, `png`];
-  const basePath = path.join(__dirname, `../../resources/gobos`);
-  const files = fs.readdirSync(basePath);
-  for (const file of files) {
-    if (file.endsWith(`.json`)) {
-      for (const ext of extensions) {
-        const resourceFile = path.join(basePath, file.replace(`.json`, `.${ext}`));
-        if (fs.existsSync(resourceFile)) {
-          const goboName = file.split(`/`).pop().split(`.`)[0];
-          gobos[goboName] = `data:image/${ext === `svg` ? `svg+xml` : ext};base64,${Buffer.from(fs.readFileSync(resourceFile)).toString(`base64`)}`;
-        }
-      }
-    }
-  }
-  return gobos;
 }
