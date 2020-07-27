@@ -52,23 +52,15 @@ module.exports.export = async function exportAGLight(fixtures, options) {
 };
 
 /**
+ * All channels with a single capability are converted to `capabilities: [capability]`,
+ * and a `singleCapability` attribute with the value true is added.
  * @param {Object} fixtureJson The fixture whose channels and templateChannels should be processed
  */
 function transformSingleCapabilityToArray(fixtureJson) {
-  for (const channel of Object.values(fixtureJson.availableChannels)) {
-    processCapabilities(channel);
-  }
+  const channels = Object.values(fixtureJson.availableChannels)
+    .concat(Object.values(fixtureJson.templateChannels || {}));
 
-  for (const channel of Object.values(fixtureJson.templateChannels || {})) {
-    processCapabilities(channel);
-  }
-
-  /**
-   * It the channel has the `capability` attribute, it is converted to `capabilities: [capability]`
-   * Also, the `singleCapability` attribute with the value true is added
-   * @param {Object} channel The channel
-   */
-  function processCapabilities(channel) {
+  for (const channel of channels) {
     if (channel.capability) {
       channel.capabilities = [channel.capability];
       channel.singleCapability = true;
