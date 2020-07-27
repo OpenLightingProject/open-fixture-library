@@ -70,25 +70,20 @@ function transformSingleCapabilityToArray(fixtureJson) {
 }
 
 /**
+ * Replace capability properties' entity strings with unitless numbers, and
+ * ColorIntensity capabilities' color property with its hex value.
  * @param {Object} fixtureJson The fixture whose capabilities should be processed
  */
 function transformNonNumericValues(fixtureJson) {
   for (const channel of Object.values(fixtureJson.availableChannels)) {
     for (const capability of channel.capabilities) {
-      processCapability(capability, excludeKeys);
-    }
-  }
-
-  /**
-   * @param {Object} capability The capability where color names should be resolved and units from entities removed
-   */
-  function processCapability(capability) {
-    for (const [key, value] of Object.entries(capability)) {
-      if (key === `color`) {
-        processColor(capability);
-      }
-      else if (typeof value === `string` && !excludeKeys.includes(key)) {
-        capability[key] = getEntityNumber(value);
+      for (const [key, value] of Object.entries(capability)) {
+        if (key === `color`) {
+          processColor(capability);
+        }
+        else if (typeof value === `string` && !excludeKeys.includes(key)) {
+          capability[key] = getEntityNumber(value);
+        }
       }
     }
   }
