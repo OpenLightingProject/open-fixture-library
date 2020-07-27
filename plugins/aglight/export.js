@@ -81,6 +81,8 @@ function transformMatrixChannels(fixtureJson) {
       return channel;
     });
   }
+
+  delete fixtureJson.templateChannels;
 }
 
 /**
