@@ -52,14 +52,14 @@ module.exports.export = async function exportAGLight(fixtures, options) {
 };
 
 /**
- * @param {Object} content The fixture whose channels and templateChannels should be processed
+ * @param {Object} fixtureJson The fixture whose channels and templateChannels should be processed
  */
-function transformSingleCapabilityToArray(content) {
-  for (const channel of Object.values(content.availableChannels)) {
+function transformSingleCapabilityToArray(fixtureJson) {
+  for (const channel of Object.values(fixtureJson.availableChannels)) {
     processCapabilities(channel);
   }
 
-  for (const channel of Object.values(content.templateChannels || {})) {
+  for (const channel of Object.values(fixtureJson.templateChannels || {})) {
     processCapabilities(channel);
   }
 
@@ -78,10 +78,10 @@ function transformSingleCapabilityToArray(content) {
 }
 
 /**
- * @param {Object} content The fixture whose capabilities should be processed
+ * @param {Object} fixtureJson The fixture whose capabilities should be processed
  */
-function transformNonNumericValues(content) {
-  for (const channel of Object.values(content.availableChannels)) {
+function transformNonNumericValues(fixtureJson) {
+  for (const channel of Object.values(fixtureJson.availableChannels)) {
     for (const capability of channel.capabilities) {
       processCapability(capability, excludeKeys);
     }
@@ -147,10 +147,10 @@ function transformNonNumericValues(content) {
  * Resolves the template channels
  * It also copies the capabilities from the template channel to `availableChannels` with the resolved name
  * Then, it adds `matrixChannel` (the template channel key) and `matrixChannel` (the pixel key) to the new channel in `availableChannels`
- * @param {Object} content The fixture whose the template channels should be resolved
+ * @param {Object} fixtureJson The fixture whose the template channels should be resolved
  */
-function transformMatrixChannels(content) {
-  for (const mode of content.modes) {
+function transformMatrixChannels(fixtureJson) {
+  for (const mode of fixtureJson.modes) {
     mode.channels = mode.channels.flatMap(channel => {
       if (typeof channel === `object` && channel !== null && channel.insert === `matrixChannels` && Array.isArray(channel.repeatFor)) {
         return channel.repeatFor.flatMap(pixelKey => (
@@ -159,10 +159,10 @@ function transformMatrixChannels(content) {
               pixelKey,
             });
 
-            if (content.templateChannels[templateChannelKey]) {
-              content.availableChannels[channelName] = content.templateChannels[templateChannelKey];
-              content.availableChannels[channelName].matrixChannel = templateChannelKey;
-              content.availableChannels[channelName].matrixChannelKey = pixelKey;
+            if (fixtureJson.templateChannels[templateChannelKey]) {
+              fixtureJson.availableChannels[channelName] = fixtureJson.templateChannels[templateChannelKey];
+              fixtureJson.availableChannels[channelName].matrixChannel = templateChannelKey;
+              fixtureJson.availableChannels[channelName].matrixChannelKey = pixelKey;
             }
 
             return channelName;
