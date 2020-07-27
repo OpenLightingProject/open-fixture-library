@@ -52,7 +52,7 @@ module.exports.export = async function exportAGLight(fixtures, options) {
 };
 
 /**
- * @param {Object} content The fixture data
+ * @param {Object} content The fixture whose channels and templateChannels should be processed
  */
 function transformSingleCapabilityToArray(content) {
   for (const channel of Object.values(content.availableChannels)) {
@@ -64,6 +64,8 @@ function transformSingleCapabilityToArray(content) {
   }
 
   /**
+   * It the channel has the `capability` attribute, it is converted to `capabilities: [capability]`
+   * Also, the `singleCapability` attribute with the value true is added
    * @param {Object} channel The channel
    */
   function processCapabilities(channel) {
@@ -76,7 +78,7 @@ function transformSingleCapabilityToArray(content) {
 }
 
 /**
- * @param {Object} content The fixture data
+ * @param {Object} content The fixture whose capabilities should be processed
  */
 function transformNonNumericValues(content) {
   for (const channel of Object.values(content.availableChannels)) {
@@ -86,7 +88,7 @@ function transformNonNumericValues(content) {
   }
 
   /**
-   * @param {Object} capability The capability
+   * @param {Object} capability The capability where color names should be resolved and units from entities removed
    */
   function processCapability(capability) {
     for (const [key, value] of Object.entries(capability)) {
@@ -100,7 +102,7 @@ function transformNonNumericValues(content) {
   }
 
   /**
-   * @param {Object} capability The capability
+   * @param {Object} capability The capability where the color name in the color attribute should be replaced with its hex value
    */
   function processColor(capability) {
     const namedColor = namedColors.find(color => color.name === capability.color);
@@ -142,7 +144,10 @@ function transformNonNumericValues(content) {
 }
 
 /**
- * @param {Object} content The fixture data
+ * Resolves the template channels
+ * It also copies the capabilities from the template channel to `availableChannels` with the resolved name
+ * Then, it adds `matrixChannel` (the template channel key) and `matrixChannel` (the pixel key) to the new channel in `availableChannels`
+ * @param {Object} content The fixture whose the template channels should be resolved
  */
 function transformMatrixChannels(content) {
   for (const mode of content.modes) {
