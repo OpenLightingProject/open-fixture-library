@@ -3,7 +3,7 @@
 const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
 const namedColors = require(`color-name-list`);
 
-const { Entity } = require(`../../lib/model.js`);
+const { Entity, NullChannel } = require(`../../lib/model.js`);
 
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 
@@ -62,9 +62,12 @@ function transformMatrixChannels(fixtureJson, fixture) {
     fixtureJson.modes[index].channels = mode.channelKeys;
   });
 
+  const availableAndMatrixChannels = fixture.coarseChannels.filter(
+    channel => !(channel instanceof NullChannel),
+  );
+
   fixtureJson.availableChannels = Object.fromEntries(
-    fixture.coarseChannelKeys.map(chKey => {
-      const channel = fixture.getChannelByKey(chKey);
+    availableAndMatrixChannels.map(channel => {
       let channelJsonObject = channel.jsonObject;
 
       if (channel.pixelKey) {
@@ -73,7 +76,7 @@ function transformMatrixChannels(fixtureJson, fixture) {
         });
       }
 
-      return [chKey, channelJsonObject];
+      return [channel.key, channelJsonObject];
     }),
   );
 
