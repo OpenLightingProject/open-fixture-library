@@ -42,6 +42,8 @@ const api = new OpenAPIBackend({
     requireNoCacheInDev(`./routes/fixtures/from-editor.js`),
     requireNoCacheInDev(`./routes/fixtures/import.js`),
     requireNoCacheInDev(`./routes/fixtures/submit.js`),
+    requireNoCacheInDev(`./routes/plugins/index.js`),
+    requireNoCacheInDev(`./routes/plugins/_pluginKey.js`),
     {
       validationFail(ctx, request, response) {
         let error = ctx.validation.errors;

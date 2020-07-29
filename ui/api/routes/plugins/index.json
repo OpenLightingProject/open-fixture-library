@@ -1,0 +1,70 @@
+{
+  "get": {
+    "operationId": "getPlugins",
+    "description": "Returns general information about import and export plugins.",
+    "tags": ["plugins"],
+    "responses": {
+      "200": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "importPlugins",
+                "exportPlugins",
+                "data"
+              ],
+              "properties": {
+                "importPlugins": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "exportPlugins": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "data": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "object",
+                    "required": [
+                      "name",
+                      "exportTests"
+                    ],
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "outdated": {
+                        "constant": true
+                      },
+                      "newPlugin": {
+                        "type": "string"
+                      },
+                      "importPluginVersion": {
+                        "type": "string"
+                      },
+                      "exportPluginVersion": {
+                        "type": "string"
+                      },
+                      "exportTests": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
