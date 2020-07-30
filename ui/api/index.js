@@ -30,6 +30,7 @@ const base64Regex = /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3
 
 const api = new OpenAPIBackend({
   definition: `${__dirname}/openapi.json`,
+  strict: process.env.NODE_ENV !== `production`,
   ajvOpts: {
     formats: {
       base64: base64Regex,
