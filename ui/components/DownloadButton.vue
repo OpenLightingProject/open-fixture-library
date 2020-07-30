@@ -235,8 +235,6 @@ select {
 </style>
 
 <script>
-import plugins from '../../plugins/plugins.json';
-
 export default {
   props: {
     // how many fixtures will be downloaded, if !isSingle?
@@ -275,13 +273,17 @@ export default {
   },
   data() {
     return {
-      exportPlugins: plugins.exportPlugins.map(
-        pluginKey => ({
-          key: pluginKey,
-          name: plugins.data[pluginKey].name,
-        }),
-      ),
+      exportPlugins: [],
     };
+  },
+  async fetch() {
+    const plugins = await this.$axios.$get(`/api/v1/plugins`);
+    this.exportPlugins = plugins.exportPlugins.map(
+      pluginKey => ({
+        key: pluginKey,
+        name: plugins.data[pluginKey].name,
+      }),
+    );
   },
   computed: {
     // returns whether we're handling only one single fixture here
