@@ -53,7 +53,7 @@ module.exports.export = async function exportAGLight(fixtures, options) {
 
 /**
  * Resolves matrix channels in modes' channel lists.
- * It also adds the resolved channel to `availableChannels` and adds the `matrixChannelKey` property.
+ * It also adds the resolved channel to `availableChannels` and adds the `pixelKey` property.
  * @param {Object} fixtureJson The fixture JSON object where the resolved matrix channels should be saved to.
  * @param {Fixture} fixture The fixture whose template channels should be resolved.
  */
@@ -72,7 +72,7 @@ function transformMatrixChannels(fixtureJson, fixture) {
 
       if (channel.pixelKey) {
         channelJsonObject = Object.assign({}, channelJsonObject, {
-          matrixChannelKey: channel.pixelKey,
+          pixelKey: channel.pixelKey,
         });
       }
 
