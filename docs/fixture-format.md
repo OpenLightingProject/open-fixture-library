@@ -282,7 +282,7 @@ To reuse similar channels for each pixel or pixel group (like "Red&nbsp;1", Red&
 }
 ```
 
-Template channels can also introduce fine and switching channels. Specific resolved matrix channels can be overridden by available channels (e.g. if "Speed&nbsp;1" has different capabilities than "Speed&nbsp;2" until "Speed&nbsp;25"). See the [cameo Hydrabeam 300 RGBW](../fixtures/cameo/hydrambeam-300-rgbw.json) that uses these features.
+Template channels can also introduce fine and switching channels. Specific resolved matrix channels can be overridden by available channels (e.g. if "Speed&nbsp;1" has different capabilities than "Speed&nbsp;2" until "Speed&nbsp;25"). See the [cameo Hydrabeam 300 RGBW](../fixtures/cameo/hydrabeam-300-rgbw.json) that uses these features.
 
 Then, either use the resolved channel keys directly in a mode's channel list, or use a matrix channel insert block that repeats a list of template channels for a list of pixels:
 
