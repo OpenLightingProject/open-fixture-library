@@ -5,6 +5,7 @@
     "qlcplus_4.12.2"
   ],
   "exportPlugins": [
+    "aglight",
     "colorsource",
     "d-light",
     "ecue",
@@ -14,6 +15,11 @@
     "qlcplus_4.12.2"
   ],
   "data": {
+    "aglight": {
+      "name": "AGLight",
+      "exportPluginVersion": "1.0.0",
+      "exportTests": []
+    },
     "colorsource": {
       "name": "ColorSource",
       "exportPluginVersion": "0.1.0",
