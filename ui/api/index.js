@@ -30,6 +30,7 @@ const base64Regex = /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3
 
 const api = new OpenAPIBackend({
   definition: `${__dirname}/openapi.json`,
+  strict: process.env.NODE_ENV !== `production`,
   ajvOpts: {
     formats: {
       base64: base64Regex,
@@ -41,6 +42,8 @@ const api = new OpenAPIBackend({
     requireNoCacheInDev(`./routes/fixtures/from-editor.js`),
     requireNoCacheInDev(`./routes/fixtures/import.js`),
     requireNoCacheInDev(`./routes/fixtures/submit.js`),
+    requireNoCacheInDev(`./routes/plugins/index.js`),
+    requireNoCacheInDev(`./routes/plugins/_pluginKey.js`),
     {
       validationFail(ctx, request, response) {
         let error = ctx.validation.errors;

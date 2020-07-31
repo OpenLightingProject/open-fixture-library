@@ -1,6 +1,6 @@
 # Environment Variables
 
-We use environment variables for configuration and storing secret credentials. They are set by [the production / test servers](ui.md#deployment) and [Travis](tests.md) and can also be set locally; the easiest way is to edit the (gitignored) `.env` file in the project's root directory:
+We use environment variables for configuration and storing secret credentials. They are set by [the production / test servers](ui.md#deployment) and [Travis](testing.md) and can also be set locally; the easiest way is to edit the (gitignored) `.env` file in the project's root directory:
 
 ```bash
 MY_ENV_VARIABLE=hello

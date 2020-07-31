@@ -157,17 +157,6 @@ app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, async (request, response, next
   downloadFixtures(response, format, fixtures, zipName, errorDesc);
 });
 
-app.get(`/about/plugins/:plugin([a-z0-9_.-]+).json`, (request, response, next) => {
-  const { plugin } = request.params;
-
-  if (!(plugin in plugins.data)) {
-    next();
-    return;
-  }
-
-  response.json(requireNoCacheInDev(`./plugins/${plugin}/plugin.json`));
-});
-
 app.get(`/sitemap.xml`, (request, response) => {
   const generateSitemap = requireNoCacheInDev(`./lib/generate-sitemap.js`);
 

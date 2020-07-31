@@ -85,7 +85,6 @@
 <script>
 import packageJson from '../../../package.json';
 import register from '../../../fixtures/register.json';
-import plugins from '../../../plugins/plugins.json';
 
 import Fixture from '../../../lib/model/Fixture.js';
 
@@ -93,6 +92,11 @@ import ConditionalDetails from '../../components/ConditionalDetails.vue';
 import DownloadButton from '../../components/DownloadButton.vue';
 import FixturePage from '../../components/fixture-page/FixturePage.vue';
 import HelpWantedDialog from '../../components/HelpWantedDialog.vue';
+
+const redirectReasonExplanations = {
+  FixtureRenamed: `The fixture was renamed.`,
+  SameAsDifferentBrand: `The fixture is the same but sold under different brands / names.`,
+};
 
 export default {
   components: {
@@ -104,44 +108,46 @@ export default {
   validate({ params }) {
     return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
   },
-  async asyncData({ params, query, app, redirect }) {
+  async asyncData({ params, query, $axios, redirect, error }) {
     const manKey = params.manufacturerKey;
     const fixKey = params.fixtureKey;
 
     const redirectTo = register.filesystem[`${manKey}/${fixKey}`].redirectTo;
     if (redirectTo) {
-      redirect(302, `/${redirectTo}?redirectFrom=${manKey}/${fixKey}`);
-      return {};
+      return redirect(302, `/${redirectTo}?redirectFrom=${manKey}/${fixKey}`);
     }
 
-    const fixtureJson = await app.$axios.$get(`/${manKey}/${fixKey}.json`);
+    try {
+      const [fixtureJson, plugins] = await Promise.all([
+        $axios.$get(`/${manKey}/${fixKey}.json`),
+        $axios.$get(`/api/v1/plugins`),
+      ]);
 
-    let redirectObj = null;
-    if (query.redirectFrom) {
-      const redirectJson = await app.$axios.$get(`/${query.redirectFrom}.json`);
+      let redirectObj = null;
+      if (query.redirectFrom) {
+        const redirectJson = await $axios.$get(`/${query.redirectFrom}.json`);
 
-      const reasonExplanations = {
-        FixtureRenamed: `The fixture was renamed.`,
-        SameAsDifferentBrand: `The fixture is the same but sold under different brands / names.`,
-      };
+        redirectObj = {
+          from: query.redirectFrom,
+          reason: redirectReasonExplanations[redirectJson.reason],
+        };
+      }
 
-      redirectObj = {
-        from: query.redirectFrom,
-        reason: reasonExplanations[redirectJson.reason],
+      return {
+        isBrowser: false,
+        plugins,
+        manKey,
+        fixKey,
+        fixtureJson,
+        redirect: redirectObj,
+        loadAllModes: `loadAllModes` in query,
+        helpWantedContext: null,
+        helpWantedType: ``,
       };
     }
-
-    return {
-      isBrowser: false,
-      plugins,
-      manKey,
-      fixKey,
-      fixtureJson,
-      redirect: redirectObj,
-      loadAllModes: `loadAllModes` in query,
-      helpWantedContext: null,
-      helpWantedType: ``,
-    };
+    catch (requestError) {
+      return error(requestError);
+    }
   },
   computed: {
     fixture() {
