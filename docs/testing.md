@@ -1,6 +1,6 @@
 # Testing
 
-We try to develop unit tests wherever possible. They test specific components of our project by respecting the [F.I.R.S.T Principles of Unit Testing](https://github.com/ghsukumar/SFDC_Best_Practices/wiki/F.I.R.S.T-Principles-of-Unit-Testing):
+We try to develop unit tests wherever possible. They test specific components of our project by respecting the [F.I.R.S.T Principles of Unit Testing](https://howtodoinjava.com/best-practices/first-principles-for-good-tests/):
 
 * **Fast** – Tests that need too long time would annoy the workflow
 * **Isolated** – Tests should not affect each other. *Travis* helps a lot at fulfilling this principle.
