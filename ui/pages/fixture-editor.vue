@@ -260,7 +260,6 @@ import {
   getEmptyMode,
 } from '../assets/scripts/editor-utils.js';
 
-import manufacturers from '../../fixtures/manufacturers.json';
 import schemaProperties from '../../lib/schema-properties.js';
 
 import EditorCategoryChooser from '../components/editor/EditorCategoryChooser.vue';
@@ -304,7 +303,7 @@ export default {
       ],
     };
   },
-  asyncData({ query }) {
+  async asyncData({ query, $axios, error }) {
     const initFixture = getEmptyFixture();
 
     if (query.prefill) {
@@ -316,22 +315,29 @@ export default {
           }
         }
       }
-      catch (error) {
-        console.log(`prefill query could not be parsed:`, query.prefill, error);
+      catch (parseError) {
+        console.log(`prefill query could not be parsed:`, query.prefill, parseError);
       }
     }
 
-    return {
-      formstate: {},
-      readyToAutoSave: false,
-      restoredData: null,
-      fixture: initFixture,
-      channel: getEmptyChannel(),
-      githubUsername: ``,
-      honeypot: ``,
-      manufacturers,
-      properties: schemaProperties,
-    };
+    try {
+      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+
+      return {
+        formstate: {},
+        readyToAutoSave: false,
+        restoredData: null,
+        fixture: initFixture,
+        channel: getEmptyChannel(),
+        githubUsername: ``,
+        honeypot: ``,
+        manufacturers,
+        properties: schemaProperties,
+      };
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
   },
   computed: {
     fixtureNameIsWithoutManufacturer() {
@@ -344,7 +350,7 @@ export default {
           return true;
         }
 
-        manufacturerName = manufacturers[manKey].name;
+        manufacturerName = this.manufacturers[manKey].name;
       }
       else {
         manufacturerName = this.fixture.newManufacturerName;

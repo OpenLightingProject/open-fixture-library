@@ -28,6 +28,12 @@
     "/fixtures/submit": {
       "$ref": "routes/fixtures/submit.json"
     },
+    "/manufacturers": {
+      "$ref": "routes/manufacturers/index.json"
+    },
+    "/manufacturers/{manufacturerKey}": {
+      "$ref": "routes/manufacturers/_manufacturerKey.json"
+    },
     "/plugins": {
       "$ref": "routes/plugins/index.json"
     },

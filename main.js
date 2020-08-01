@@ -9,7 +9,7 @@ const path = require(`path`);
 const express = require(`express`);
 const compression = require(`compression`);
 const helmet = require(`helmet`);
-const { Nuxt, Builder } = require(`nuxt`);
+const { loadNuxt, build } = require(`nuxt`);
 
 const robotsTxtGenerator = require(`./ui/express-middleware/robots-txt.js`);
 
@@ -171,24 +171,16 @@ app.use(`/api/v1`, (request, response) => {
 
 
 // instantiate nuxt.js with the options
-const nuxtConfig = require(`./nuxt.config.js`);
-nuxtConfig.dev = process.argv[2] === `--dev`;
-const nuxt = new Nuxt(nuxtConfig);
+const isDev = process.argv[2] === `--dev`;
+loadNuxt(isDev ? `dev` : `start`).then(async nuxt => {
+  if (isDev) {
+    console.log(`Starting dev server with hot reloading...`);
+    await build(nuxt);
+  }
 
-// render every remaining route with Nuxt.js
-app.use(nuxt.render);
+  // render every remaining route with Nuxt.js
+  app.use(nuxt.render);
 
-let startNuxt;
-if (nuxtConfig.dev) {
-  console.log(`Starting dev server with hot reloading...`);
-  startNuxt = new Builder(nuxt).build();
-}
-else {
-  // build has been done already
-  startNuxt = nuxt.ready();
-}
-
-startNuxt.then(() => {
   console.log(`Nuxt.js is ready.`);
 }).catch(error => {
   console.error(error);

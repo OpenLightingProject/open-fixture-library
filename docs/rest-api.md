@@ -382,6 +382,128 @@ Status Code **400**
 This operation does not require authentication
 </aside>
 
+<h1 id="open-fixture-library-api-manufacturers">manufacturers</h1>
+
+## getManufacturers
+
+<a id="opIdgetManufacturers"></a>
+
+`GET /manufacturers`
+
+Returns general information about all manufacturers.
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "property1": {
+    "name": "string",
+    "fixtureCount": 0,
+    "color": "string"
+  },
+  "property2": {
+    "name": "string",
+    "fixtureCount": 0,
+    "color": "string"
+  }
+}
+```
+
+<h3 id="getmanufacturers-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+
+<h3 id="getmanufacturers-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» **additionalProperties**|object|false|none|none|
+|»» name|string|true|none|none|
+|»» fixtureCount|integer|true|none|none|
+|»» color|string|true|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## getManufacturerByKey
+
+<a id="opIdgetManufacturerByKey"></a>
+
+`GET /manufacturers/{manufacturerKey}`
+
+Returns information about a specific manufacturer.
+
+<h3 id="getmanufacturerbykey-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|manufacturerKey|path|string|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "key": "string",
+  "name": "string",
+  "comment": "string",
+  "website": "string",
+  "rdmId": 0,
+  "color": "string",
+  "fixtures": [
+    {
+      "key": "string",
+      "name": "string",
+      "categories": [
+        "string"
+      ]
+    }
+  ]
+}
+```
+
+<h3 id="getmanufacturerbykey-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|Inline|
+
+<h3 id="getmanufacturerbykey-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» key|string|false|none|none|
+|» name|string|true|none|none|
+|» comment|string|false|none|none|
+|» website|string|false|none|none|
+|» rdmId|integer|false|none|none|
+|» color|string|true|none|none|
+|» fixtures|[object]|true|none|none|
+|»» key|string|true|none|none|
+|»» name|string|true|none|none|
+|»» categories|[string]|false|none|none|
+
+Status Code **404**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» error|string|false|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
 <h1 id="open-fixture-library-api-plugins">plugins</h1>
 
 ## getPlugins

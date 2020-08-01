@@ -69,7 +69,6 @@
 
 <script>
 import register from '../../fixtures/register.json';
-import manufacturers from '../../fixtures/manufacturers.json';
 
 import LabeledInput from '../components/LabeledInput.vue';
 
@@ -90,12 +89,11 @@ export default {
       ],
     };
   },
-  async asyncData({ query, redirect }) {
+  async asyncData({ query, $axios, redirect, error }) {
     const { manufacturerId, modelId, personalityIndex } = query;
 
     const manufacturerIdNumber = parseInt(manufacturerId, 10);
     const modelIdNumber = parseInt(modelId, 10);
-    const personalityIndexNumber = parseInt(personalityIndex, 10);
 
     if (isEmpty(manufacturerId)) {
       return {
@@ -128,31 +126,30 @@ export default {
 
     const manufacturer = register.rdm[manufacturerId];
 
-    if (isEmpty(modelId)) {
-      redirect(301, `/${manufacturer.key}`);
-      return {};
+    if (isEmpty(modelId) || modelId in register.rdm[manufacturerId].models) {
+      return redirectToCorrectPage(manufacturer, modelId, personalityIndex, redirect);
     }
 
-    if (modelId in register.rdm[manufacturerId].models) {
-      const locationHash = isEmpty(personalityIndex) ? `` : `#rdm-personality-${personalityIndexNumber}`;
+    try {
+      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
 
-      redirect(301, `/${manufacturer.key}/${manufacturer.models[modelId]}${locationHash}`);
-      return {};
+      return {
+        notFound: `fixture`,
+        searchFor: `fixture`,
+        manufacturerId: manufacturerIdNumber,
+        manufacturerLink: `/${manufacturer.key}`,
+        manufacturerName: manufacturers[manufacturer.key].name,
+        modelId: modelIdNumber,
+        prefillQuery: encodeURIComponent(JSON.stringify({
+          useExistingManufacturer: true,
+          manufacturerKey: manufacturer.key,
+          rdmModelId: modelIdNumber,
+        })),
+      };
     }
-
-    return {
-      notFound: `fixture`,
-      searchFor: `fixture`,
-      manufacturerId: manufacturerIdNumber,
-      manufacturerLink: `/${manufacturer.key}`,
-      manufacturerName: manufacturers[manufacturer.key].name,
-      modelId: modelIdNumber,
-      prefillQuery: encodeURIComponent(JSON.stringify({
-        useExistingManufacturer: true,
-        manufacturerKey: manufacturer.key,
-        rdmModelId: modelIdNumber,
-      })),
-    };
+    catch (requestError) {
+      return error(requestError);
+    }
   },
 };
 
@@ -162,6 +159,25 @@ export default {
  */
 function isEmpty(queryParam) {
   return queryParam === undefined || queryParam === ``;
+}
+
+/**
+ * @param {Object} manufacturer The manufacturer object that matches the provided RDM manufacturer id.
+ * @param {String|undefined} modelId The provided RDM model id, or undefined.
+ * @param {String|undefined} personalityIndex The provided RDM personality index, or undefined.
+ * @param {Function} redirect The redirect function to be called.
+ */
+function redirectToCorrectPage(manufacturer, modelId, personalityIndex, redirect) {
+  if (isEmpty(modelId)) {
+    redirect(301, `/${manufacturer.key}`);
+    return;
+  }
+
+  const personalityIndexNumber = parseInt(personalityIndex, 10);
+  const locationHash = isEmpty(personalityIndex) ? `` : `#rdm-personality-${personalityIndexNumber}`;
+
+  redirect(301, `/${manufacturer.key}/${manufacturer.models[modelId]}${locationHash}`);
+  return;
 }
 
 
