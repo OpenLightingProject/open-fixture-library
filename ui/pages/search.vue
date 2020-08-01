@@ -17,10 +17,10 @@
             value="">Filter by manufacturer</option>
 
           <option
-            v-for="man in manufacturers"
-            :key="man.key"
-            :selected="manufacturersQuery.includes(man.key)"
-            :value="man.key">{{ man.name }}</option>
+            v-for="(man, manKey) in manufacturers"
+            :key="manKey"
+            :selected="manufacturersQuery.includes(manKey)"
+            :value="manKey">{{ man.name }}</option>
         </select>
 
         <select v-model="categoriesQuery" name="categories" multiple>
@@ -86,7 +86,6 @@
 
 <script>
 import register from '../../fixtures/register.json';
-import manufacturers from '../../fixtures/manufacturers.json';
 
 import ConditionalDetails from '../components/ConditionalDetails.vue';
 import LabeledInput from '../components/LabeledInput.vue';
@@ -109,31 +108,31 @@ export default {
       ],
     };
   },
-  async asyncData({ query, app }) {
+  async asyncData({ query, $axios, error }) {
     const sanitizedQuery = getSanitizedQuery(query);
 
-    return {
-      searchFor: sanitizedQuery.search,
-      searchQuery: sanitizedQuery.search,
-      manufacturersQuery: sanitizedQuery.manufacturers,
-      categoriesQuery: sanitizedQuery.categories,
-      detailsInitiallyOpen: sanitizedQuery.manufacturers.length > 0 || sanitizedQuery.categories.length > 0,
-      results: await getSearchResults(app.$axios, sanitizedQuery),
-    };
-  },
-  data() {
-    return {
-      manufacturers: Object.keys(register.manufacturers).sort((a, b) => a.localeCompare(b, `en`)).map(
-        manKey => ({
-          key: manKey,
-          name: manufacturers[manKey].name,
-          fixtureCount: register.manufacturers[manKey].length,
-        }),
-      ),
-      categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)),
-      loading: false,
-      isBrowser: false,
-    };
+    try {
+      const [results, manufacturers] = await Promise.all([
+        getSearchResults($axios, sanitizedQuery),
+        $axios.$get(`/api/v1/manufacturers`),
+      ]);
+
+      return {
+        searchFor: sanitizedQuery.search,
+        searchQuery: sanitizedQuery.search,
+        manufacturersQuery: sanitizedQuery.manufacturers,
+        categoriesQuery: sanitizedQuery.categories,
+        detailsInitiallyOpen: sanitizedQuery.manufacturers.length > 0 || sanitizedQuery.categories.length > 0,
+        results,
+        manufacturers,
+        categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)),
+        loading: false,
+        isBrowser: false,
+      };
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
   },
   computed: {
     fixtureResults() {
@@ -142,7 +141,7 @@ export default {
 
         return {
           key,
-          name: `${manufacturers[man].name} ${register.filesystem[key].name}`,
+          name: `${this.manufacturers[man].name} ${register.filesystem[key].name}`,
           color: register.colors[man],
         };
       });
