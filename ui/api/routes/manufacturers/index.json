@@ -1,0 +1,41 @@
+{
+  "get": {
+    "operationId": "getManufacturers",
+    "description": "Returns general information about all manufacturers.",
+    "tags": ["manufacturers"],
+    "responses": {
+      "200": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "propertyNames": {
+                "$ref": "../../openapi.json#/components/schemas/ManufacturerKey"
+              },
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "fixtureCount": {
+                    "type": "integer"
+                  },
+                  "color": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "fixtureCount",
+                  "color"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

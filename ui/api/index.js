@@ -42,6 +42,8 @@ const api = new OpenAPIBackend({
     requireNoCacheInDev(`./routes/fixtures/from-editor.js`),
     requireNoCacheInDev(`./routes/fixtures/import.js`),
     requireNoCacheInDev(`./routes/fixtures/submit.js`),
+    requireNoCacheInDev(`./routes/manufacturers/index.js`),
+    requireNoCacheInDev(`./routes/manufacturers/_manufacturerKey.js`),
     requireNoCacheInDev(`./routes/plugins/index.js`),
     requireNoCacheInDev(`./routes/plugins/_pluginKey.js`),
     {
