@@ -9,9 +9,6 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "propertyNames": {
-                "$ref": "../../openapi.json#/components/schemas/ManufacturerKey"
-              },
               "additionalProperties": {
                 "type": "object",
                 "properties": {

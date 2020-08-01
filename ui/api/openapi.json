@@ -98,14 +98,6 @@
         "example": {
           "error": "Some error message."
         }
-      },
-      "ManufacturerKey": {
-        "type": "string",
-        "pattern": "^[a-z0-9\\-]+$"
-      },
-      "FixtureKey": {
-        "type": "string",
-        "pattern": "^[a-z0-9\\-]+$"
       }
     },
     "responses": {

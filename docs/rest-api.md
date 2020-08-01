@@ -444,7 +444,7 @@ Returns information about a specific manufacturer.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|manufacturerKey|path|[#/paths/~1manufacturers/get/responses/200/content/application~1json/schema/propertyNames](#schema#/paths/~1manufacturers/get/responses/200/content/application~1json/schema/propertynames)|true|none|
+|manufacturerKey|path|string|true|none|
 
 > Example responses
 
@@ -483,7 +483,7 @@ Status Code **200**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» key|[#/paths/~1manufacturers/get/responses/200/content/application~1json/schema/propertyNames](#schema#/paths/~1manufacturers/get/responses/200/content/application~1json/schema/propertynames)|false|none|none|
+|» key|string|false|none|none|
 |» name|string|true|none|none|
 |» comment|string|false|none|none|
 |» website|string|false|none|none|
@@ -733,40 +733,4 @@ This operation does not require authentication
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |error|string|false|none|none|
-
-<h2 id="tocS_ManufacturerKey">ManufacturerKey</h2>
-<!-- backwards compatibility -->
-<a id="schemamanufacturerkey"></a>
-<a id="schema_ManufacturerKey"></a>
-<a id="tocSmanufacturerkey"></a>
-<a id="tocsmanufacturerkey"></a>
-
-```json
-"string"
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|string|false|none|none|
-
-<h2 id="tocS_FixtureKey">FixtureKey</h2>
-<!-- backwards compatibility -->
-<a id="schemafixturekey"></a>
-<a id="schema_FixtureKey"></a>
-<a id="tocSfixturekey"></a>
-<a id="tocsfixturekey"></a>
-
-```json
-"string"
-
-```
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|*anonymous*|string|false|none|none|
 
