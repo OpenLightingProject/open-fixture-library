@@ -109,21 +109,16 @@ export default {
     };
   },
   async asyncData({ query, $axios, error }) {
-    const sanitizedQuery = getSanitizedQuery(query);
-
     try {
-      const [results, manufacturers] = await Promise.all([
-        getSearchResults($axios, sanitizedQuery),
-        $axios.$get(`/api/v1/manufacturers`),
-      ]);
+      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
 
       return {
-        searchFor: sanitizedQuery.search,
-        searchQuery: sanitizedQuery.search,
-        manufacturersQuery: sanitizedQuery.manufacturers,
-        categoriesQuery: sanitizedQuery.categories,
-        detailsInitiallyOpen: sanitizedQuery.manufacturers.length > 0 || sanitizedQuery.categories.length > 0,
-        results,
+        searchFor: ``,
+        searchQuery: ``,
+        manufacturersQuery: [],
+        categoriesQuery: [],
+        detailsInitiallyOpen: null,
+        results: [],
         manufacturers,
         categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)),
         loading: false,
@@ -132,6 +127,33 @@ export default {
     }
     catch (requestError) {
       return error(requestError);
+    }
+  },
+  async fetch() {
+    this.loading = true;
+
+    const sanitizedQuery = getSanitizedQuery(this.$route.query);
+    this.searchQuery = sanitizedQuery.search;
+    this.manufacturersQuery = sanitizedQuery.manufacturers;
+    this.categoriesQuery = sanitizedQuery.categories;
+    this.searchFor = sanitizedQuery.search;
+
+    if (this.detailsInitiallyOpen === null) {
+      this.detailsInitiallyOpen = this.manufacturersQuery.length > 0 || this.categoriesQuery.length > 0;
+    }
+
+    try {
+      this.results = await this.$axios.$post(`/api/v1/get-search-results`, {
+        searchQuery: sanitizedQuery.search,
+        manufacturersQuery: sanitizedQuery.manufacturers,
+        categoriesQuery: sanitizedQuery.categories,
+      });
+    }
+    catch (requestError) {
+      this.results = [];
+    }
+    finally {
+      this.loading = false;
     }
   },
   computed: {
@@ -147,17 +169,11 @@ export default {
       });
     },
   },
+  watch: {
+    '$route.query': `$fetch`,
+  },
   mounted() {
     this.isBrowser = true;
-
-    this._removeSearchQueryChecker = this.$router.afterEach((to, from) => {
-      if (to.path === `/search`) {
-        this.updateResults();
-      }
-      else {
-        this._removeSearchQueryChecker();
-      }
-    });
   },
   methods: {
     onSubmit() {
@@ -173,18 +189,6 @@ export default {
           categories: this.categoriesQuery,
         },
       });
-    },
-    async updateResults() {
-      this.loading = true;
-
-      const sanitizedQuery = getSanitizedQuery(this.$router.history.current.query);
-      this.searchQuery = sanitizedQuery.search;
-      this.manufacturersQuery = sanitizedQuery.manufacturers;
-      this.categoriesQuery = sanitizedQuery.categories;
-      this.results = await getSearchResults(this.$axios, sanitizedQuery);
-      this.searchFor = sanitizedQuery.search;
-
-      this.loading = false;
     },
   },
 };
@@ -211,19 +215,5 @@ function getSanitizedQuery(query) {
     manufacturers: manufacturersQuery,
     categories: categoriesQuery,
   };
-}
-
-/**
- * Request search results from the backend.
- * @param {Object} axios The axios instance to use.
- * @param {Object} sanitizedQuery A query object like returned from {@link getSanitizedQuery}.
- * @returns {Promise} The request promise.
- */
-function getSearchResults(axios, sanitizedQuery) {
-  return axios.$post(`/api/v1/get-search-results`, {
-    searchQuery: sanitizedQuery.search,
-    manufacturersQuery: sanitizedQuery.manufacturers,
-    categoriesQuery: sanitizedQuery.categories,
-  });
 }
 </script>
