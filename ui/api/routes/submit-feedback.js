@@ -2,14 +2,14 @@ const createIssue = require(`../../../lib/create-github-issue.js`);
 const { fixtureFromRepository } = require(`../../../lib/model.js`);
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
+/** @typedef {import('../index.js').ApiResponse} ApiResponse */
 
 /**
  * Takes the input from the client side script and creates an issue with the given feedback.
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
- * @param {Object} request Passed from Express.
- * @param {Object} response Passed from Express.
+ * @returns {ApiResponse} The handled response.
  */
-async function createFeedbackIssue(ctx, request, response) {
+async function createFeedbackIssue({ request }) {
   const {
     type,
     context,
@@ -17,7 +17,7 @@ async function createFeedbackIssue(ctx, request, response) {
     helpWanted,
     message,
     githubUsername,
-  } = request.body;
+  } = request.requestBody;
 
   let title;
   const issueContentData = {};
@@ -63,10 +63,13 @@ async function createFeedbackIssue(ctx, request, response) {
     error = e.message;
   }
 
-  response.status(201).json({
-    issueUrl,
-    error,
-  });
+  return {
+    statusCode: 201,
+    body: {
+      issueUrl,
+      error,
+    },
+  };
 }
 
 module.exports = { createFeedbackIssue };

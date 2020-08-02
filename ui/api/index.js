@@ -3,6 +3,12 @@ const cors = require(`cors`);
 const OpenAPIBackend = require(`openapi-backend`).default;
 const getAjvErrorMessages = require(`../../lib/get-ajv-error-messages.js`);
 
+/**
+ * @typedef {Object} ApiResponse
+ * @property {Number} [statusCode=200] The HTTP status code set for the response.
+ * @property {Object} body The response body that should be sent as JSON back to the API client.
+ */
+
 const router = express.Router();
 
 const corsWhitelist = [
@@ -64,6 +70,15 @@ const api = new OpenAPIBackend({
       },
       notImplemented(ctx, request, response) {
         return response.status(501).json({ error: `No handler registered for operation` });
+      },
+      postResponseHandler(ctx, request, response) {
+        if (!ctx.response || !ctx.operation) {
+          return null;
+        }
+
+        const { statusCode = 200, body } = /** @type {ApiResponse} */ (ctx.response);
+
+        return response.status(statusCode).json(body);
       },
     },
   ),

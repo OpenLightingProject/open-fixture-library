@@ -1,20 +1,24 @@
-/** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
-
 const manufacturers = require(`../../../../fixtures/manufacturers.json`);
 const register = require(`../../../../fixtures/register.json`);
+
+/** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
+/** @typedef {import('../../index.js').ApiResponse} ApiResponse */
 
 /**
  * Returns information about a specific manufacturer.
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
- * @param {Object} request Passed from Express.
- * @param {Object} response Passed from Express.
+ * @returns {ApiResponse} The handled response.
  */
-function getManufacturerByKey(ctx, request, response) {
-  const { manufacturerKey } = ctx.request.params;
+function getManufacturerByKey({ request }) {
+  const { manufacturerKey } = request.params;
 
   if (!(manufacturerKey in manufacturers) || manufacturerKey === `$schema`) {
-    response.status(404).json({ error: `Manufacturer not found` });
-    return;
+    return {
+      statusCode: 404,
+      body: {
+        error: `Manufacturer not found`,
+      },
+    };
   }
 
   const manufacturer = Object.assign({}, manufacturers[manufacturerKey], {
@@ -31,7 +35,9 @@ function getManufacturerByKey(ctx, request, response) {
     ),
   });
 
-  response.json(manufacturer);
+  return {
+    body: manufacturer,
+  };
 }
 
 

@@ -2,29 +2,30 @@ const schemaProperties = require(`../../../../lib/schema-properties.js`).default
 const { checkFixture } = require(`../../../../tests/fixture-valid.js`);
 const { CoarseChannel } = require(`../../../../lib/model.js`);
 
-/** @typedef {import('../../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
-
-/**
- * @typedef {Array.<Object>} RequestBody Array of fixture objects used in the Fixture Editor.
- */
+/** @typedef {import('../../index.js').ApiResponse} ApiResponse */
+/** @typedef {import('../../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
 
 /**
  * Converts the given editor fixture data into OFL fixtures and responds with a FixtureCreateResult.
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
- * @param {Object} request Passed from Express.
- * @param {RequestBody} request.body The editor's fixture objects.
- * @param {Object} response Passed from Express.
+ * @returns {ApiResponse} The handled response.
  */
-function createFixtureFromEditor(ctx, request, response) {
+function createFixtureFromEditor({ request }) {
   try {
-    const fixtureCreateResult = getFixtureCreateResult(request.body);
-    response.status(201).json(fixtureCreateResult);
+    const fixtureCreateResult = getFixtureCreateResult(request.requestBody);
+    return {
+      statusCode: 201,
+      body: fixtureCreateResult,
+    };
   }
   catch (error) {
-    response.status(400).json({
-      error: error.message,
-    });
+    return {
+      statusCode: 400,
+      body: {
+        error: error.message,
+      },
+    };
   }
 }
 

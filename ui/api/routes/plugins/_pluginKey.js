@@ -1,41 +1,46 @@
-/** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
-
 const plugins = require(`../../../../plugins/plugins.json`);
+
+/** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
+/** @typedef {import('../../index.js').ApiResponse} ApiResponse */
 
 /**
  * Returns general information about import and export plugins.
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
- * @param {Object} request Passed from Express.
- * @param {Object} response Passed from Express.
+ * @returns {ApiResponse} The handled response.
  */
-function getPluginByKey(ctx, request, response) {
-  const { pluginKey } = ctx.request.params;
+function getPluginByKey({ request }) {
+  let { pluginKey } = request.params;
 
   if (!(pluginKey in plugins.data)) {
-    response.status(404).json({ error: `Plugin not found` });
-    return;
+    return {
+      statusCode: 404,
+      body: {
+        error: `Plugin not found`,
+      },
+    };
   }
 
   if (plugins.data[pluginKey].outdated) {
-    response.redirect(301, `./${plugins.data[pluginKey].newPlugin}`);
-    return;
+    pluginKey = plugins.data[pluginKey].newPlugin;
   }
 
   const pluginData = require(`../../../../plugins/${pluginKey}/plugin.json`);
 
-  response.json({
-    pluginKey,
-    name: pluginData.name,
-    previousVersions: pluginData.previousVersions || {},
-    description: pluginData.description.join(`\n`),
-    links: pluginData.links,
-    fixtureUsage: pluginData.fixtureUsage && pluginData.fixtureUsage.join(`\n`),
-    fileLocations: pluginData.fileLocations,
-    additionalInfo: pluginData.additionalInfo && pluginData.additionalInfo.join(`\n`),
-    helpWanted: pluginData.helpWanted,
-    exportPluginVersion: plugins.data[pluginKey].exportPluginVersion,
-    importPluginVersion: plugins.data[pluginKey].importPluginVersion,
-  });
+  return {
+    body: {
+      pluginKey,
+      name: pluginData.name,
+      previousVersions: pluginData.previousVersions || {},
+      description: pluginData.description.join(`\n`),
+      links: pluginData.links,
+      fixtureUsage: pluginData.fixtureUsage && pluginData.fixtureUsage.join(`\n`),
+      fileLocations: pluginData.fileLocations,
+      additionalInfo: pluginData.additionalInfo && pluginData.additionalInfo.join(`\n`),
+      helpWanted: pluginData.helpWanted,
+      exportPluginVersion: plugins.data[pluginKey].exportPluginVersion,
+      importPluginVersion: plugins.data[pluginKey].importPluginVersion,
+    },
+  };
 }
 
 
