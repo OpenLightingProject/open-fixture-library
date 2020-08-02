@@ -21,7 +21,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "pluginKey": {
+                "key": {
                   "type": "string"
                 },
                 "name": {
@@ -81,7 +81,7 @@
                 }
               },
               "required": [
-                "pluginKey",
+                "key",
                 "name",
                 "previousVersions",
                 "description",

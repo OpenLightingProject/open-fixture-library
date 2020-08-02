@@ -120,7 +120,7 @@ export default {
     }
 
     if (pluginKey in pluginData.previousVersions) {
-      const newPluginKey = pluginData.pluginKey;
+      const newPluginKey = pluginData.key;
       return redirect(301, `/about/plugins/${newPluginKey}`);
     }
 

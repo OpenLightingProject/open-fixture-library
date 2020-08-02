@@ -28,7 +28,7 @@ function getPluginByKey({ request }) {
 
   return {
     body: {
-      pluginKey,
+      key: pluginKey,
       name: pluginData.name,
       previousVersions: pluginData.previousVersions || {},
       description: pluginData.description.join(`\n`),
