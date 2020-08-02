@@ -23,7 +23,14 @@
               "author": {
                 "type": "string"
               }
-            }
+            },
+            "required": [
+              "plugin",
+              "fileName",
+              "fileContentBase64",
+              "author"
+            ],
+            "additionalProperties": false
           }
         }
       }

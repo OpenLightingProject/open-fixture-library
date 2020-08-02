@@ -9,11 +9,6 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "importPlugins",
-                "exportPlugins",
-                "data"
-              ],
               "properties": {
                 "importPlugins": {
                   "type": "array",
@@ -31,10 +26,6 @@
                   "type": "object",
                   "additionalProperties": {
                     "type": "object",
-                    "required": [
-                      "name",
-                      "exportTests"
-                    ],
                     "properties": {
                       "name": {
                         "type": "string"
@@ -57,10 +48,21 @@
                           "type": "string"
                         }
                       }
-                    }
+                    },
+                    "required": [
+                      "name",
+                      "exportTests"
+                    ],
+                    "additionalProperties": false
                   }
                 }
-              }
+              },
+              "required": [
+                "importPlugins",
+                "exportPlugins",
+                "data"
+              ],
+              "additionalProperties": false
             }
           }
         }

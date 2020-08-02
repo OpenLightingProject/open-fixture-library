@@ -20,13 +20,6 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "pluginKey",
-                "name",
-                "previousVersions",
-                "description",
-                "links"
-              ],
               "properties": {
                 "pluginKey": {
                   "type": "string"
@@ -86,7 +79,15 @@
                 "importPluginVersion": {
                   "type": "string"
                 }
-              }
+              },
+              "required": [
+                "pluginKey",
+                "name",
+                "previousVersions",
+                "description",
+                "links"
+              ],
+              "additionalProperties": false
             }
           }
         }
