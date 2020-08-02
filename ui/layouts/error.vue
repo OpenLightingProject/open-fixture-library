@@ -8,11 +8,17 @@
     <template v-else>
       <h1>{{ error.statusCode }} – An error occurred</h1>
 
-      <p>{{ error.message }}</p>
+      <p class="error">{{ errorMessage }}</p>
       <p>Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to help resolve this issue.</p>
     </template>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.error {
+  white-space: pre-wrap;
+}
+</style>
 
 <script>
 export default {
@@ -38,6 +44,15 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    errorMessage() {
+      if (this.error.response && this.error.response.data && this.error.response.data.error) {
+        return this.error.response.data.error;
+      }
+
+      return this.error.message;
+    },
   },
 };
 </script>
