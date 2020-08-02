@@ -1,4 +1,5 @@
 const express = require(`express`);
+const chalk = require(`chalk`);
 const cors = require(`cors`);
 const OpenAPIBackend = require(`openapi-backend`).default;
 const getAjvErrorMessages = require(`../../lib/get-ajv-error-messages.js`);
@@ -60,7 +61,14 @@ const api = new OpenAPIBackend({
           error = getAjvErrorMessages(Array.isArray(error) ? error : [error], `request`).join(`,\n`);
         }
 
-        return response.status(400).json({ error });
+        const errorDescription = `API request for ${request.originalUrl} (${ctx.operation.operationId}) doesn't match schema:`;
+
+        console.error(chalk.bgRed(errorDescription));
+        console.error(error);
+
+        return response.status(400).json({
+          error: `${errorDescription}\n${error}`,
+        });
       },
       notFound(ctx, request, response) {
         return response.status(404).json({ error: `Not found` });
@@ -77,6 +85,24 @@ const api = new OpenAPIBackend({
         }
 
         const { statusCode = 200, body } = /** @type {ApiResponse} */ (ctx.response);
+
+        // validate API responses in development mode
+        if (process.env.NODE_ENV !== `production`) {
+          const valid = api.validateResponse(body, ctx.operation, statusCode);
+
+          if (valid.errors) {
+            let error = valid.errors;
+
+            if (typeof error !== `string`) {
+              error = getAjvErrorMessages(Array.isArray(error) ? error : [error], `response`).join(`,\n`);
+            }
+
+            const errorDescription = `API response for ${request.originalUrl} (${ctx.operation.operationId}, status code ${statusCode}) doesn't match schema:`;
+
+            console.error(chalk.bgRed(errorDescription));
+            console.error(error);
+          }
+        }
 
         return response.status(statusCode).json(body);
       },
