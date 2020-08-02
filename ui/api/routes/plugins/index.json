@@ -50,9 +50,14 @@
                       }
                     },
                     "required": [
-                      "name",
-                      "exportTests"
+                      "name"
                     ],
+                    "dependencies": {
+                      "outdated": ["newPlugin"],
+                      "newPlugin": ["outdated"],
+                      "exportPluginVersion": ["exportTests"],
+                      "exportTests": ["exportPluginVersion"]
+                    },
                     "additionalProperties": false
                   }
                 }
