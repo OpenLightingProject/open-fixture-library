@@ -129,8 +129,8 @@ Status Code **201**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» issueUrl|string¦null|false|none|none|
-|» error|string¦null|false|none|none|
+|» issueUrl|string¦null|true|none|none|
+|» error|string¦null|true|none|none|
 
 <aside class="success">
 This operation does not require authentication
@@ -205,7 +205,7 @@ Status Code **400**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» error|string|false|none|none|
+|» error|string|true|none|none|
 
 <aside class="success">
 This operation does not require authentication
@@ -234,10 +234,10 @@ Imports the uploaded fixture file and responds with a FixtureCreateResult.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|plugin|body|string|false|none|
-|fileName|body|string|false|none|
-|fileContentBase64|body|string(base64)|false|none|
-|author|body|string|false|none|
+|plugin|body|string|true|none|
+|fileName|body|string|true|none|
+|fileContentBase64|body|string(base64)|true|none|
+|author|body|string|true|none|
 
 > Example responses
 
@@ -290,7 +290,7 @@ Status Code **400**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» error|string|false|none|none|
+|» error|string|true|none|none|
 
 <aside class="success">
 This operation does not require authentication
@@ -339,13 +339,13 @@ Creates a GitHub pull request with the given fixture data. Includes warnings, er
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|fixtureCreateResult|body|object|false|none|
+|fixtureCreateResult|body|object|true|none|
 |» manufacturers|body|object|true|none|
 |» fixtures|body|object|true|none|
 |» warnings|body|object|true|none|
 |» errors|body|object|true|none|
-|githubUsername|body|string¦null|false|none|
-|githubComment|body|string¦null|false|none|
+|githubUsername|body|string¦null|true|none|
+|githubComment|body|string¦null|true|none|
 
 > Example responses
 
@@ -370,13 +370,13 @@ Status Code **201**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» pullRequestUrl|string|false|none|none|
+|» pullRequestUrl|string|true|none|none|
 
 Status Code **400**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» error|string|false|none|none|
+|» error|string|true|none|none|
 
 <aside class="success">
 This operation does not require authentication
@@ -483,7 +483,7 @@ Status Code **200**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» key|string|false|none|none|
+|» key|string|true|none|none|
 |» name|string|true|none|none|
 |» comment|string|false|none|none|
 |» website|string|false|none|none|
@@ -498,7 +498,7 @@ Status Code **404**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» error|string|false|none|none|
+|» error|string|true|none|none|
 
 <aside class="success">
 This operation does not require authentication
@@ -572,7 +572,7 @@ Status Code **200**
 |»»» newPlugin|string|false|none|none|
 |»»» importPluginVersion|string|false|none|none|
 |»»» exportPluginVersion|string|false|none|none|
-|»»» exportTests|[string]|true|none|none|
+|»»» exportTests|[string]|false|none|none|
 
 <aside class="success">
 This operation does not require authentication
@@ -584,7 +584,7 @@ This operation does not require authentication
 
 `GET /plugins/{pluginKey}`
 
-Returns information about a specific import and export plugin.
+Returns information about a specific import and export plugin. If an outdated plugin is requested, the information for the renamed plugin is returned.
 
 <h3 id="getpluginbykey-parameters">Parameters</h3>
 
@@ -598,7 +598,7 @@ Returns information about a specific import and export plugin.
 
 ```json
 {
-  "pluginKey": "string",
+  "key": "string",
   "name": "string",
   "previousVersions": {
     "property1": "string",
@@ -633,7 +633,6 @@ Returns information about a specific import and export plugin.
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
-|301|[Moved Permanently](https://tools.ietf.org/html/rfc7231#section-6.4.2)|Plugin was renamed, request is redirected to the renamed plugin.|None|
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|Inline|
 
 <h3 id="getpluginbykey-responseschema">Response Schema</h3>
@@ -642,7 +641,7 @@ Status Code **200**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» pluginKey|string|true|none|none|
+|» key|string|true|none|none|
 |» name|string|true|none|none|
 |» previousVersions|object|true|none|none|
 |»» **additionalProperties**|string|false|none|none|
@@ -664,7 +663,7 @@ Status Code **404**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» error|string|false|none|none|
+|» error|string|true|none|none|
 
 <aside class="success">
 This operation does not require authentication
@@ -732,5 +731,5 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|error|string|false|none|none|
+|error|string|true|none|none|
 

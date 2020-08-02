@@ -1,7 +1,14 @@
 const express = require(`express`);
+const chalk = require(`chalk`);
 const cors = require(`cors`);
 const OpenAPIBackend = require(`openapi-backend`).default;
 const getAjvErrorMessages = require(`../../lib/get-ajv-error-messages.js`);
+
+/**
+ * @typedef {Object} ApiResponse
+ * @property {Number} [statusCode=200] The HTTP status code set for the response.
+ * @property {Object} body The response body that should be sent as JSON back to the API client.
+ */
 
 const router = express.Router();
 
@@ -54,7 +61,14 @@ const api = new OpenAPIBackend({
           error = getAjvErrorMessages(Array.isArray(error) ? error : [error], `request`).join(`,\n`);
         }
 
-        return response.status(400).json({ error });
+        const errorDescription = `API request for ${request.originalUrl} (${ctx.operation.operationId}) doesn't match schema:`;
+
+        console.error(chalk.bgRed(errorDescription));
+        console.error(error);
+
+        return response.status(400).json({
+          error: `${errorDescription}\n${error}`,
+        });
       },
       notFound(ctx, request, response) {
         return response.status(404).json({ error: `Not found` });
@@ -64,6 +78,33 @@ const api = new OpenAPIBackend({
       },
       notImplemented(ctx, request, response) {
         return response.status(501).json({ error: `No handler registered for operation` });
+      },
+      postResponseHandler(ctx, request, response) {
+        if (!ctx.response || !ctx.operation) {
+          return null;
+        }
+
+        const { statusCode = 200, body } = /** @type {ApiResponse} */ (ctx.response);
+
+        // validate API responses in development mode
+        if (process.env.NODE_ENV !== `production`) {
+          const valid = api.validateResponse(body, ctx.operation, statusCode);
+
+          if (valid.errors) {
+            let error = valid.errors;
+
+            if (typeof error !== `string`) {
+              error = getAjvErrorMessages(Array.isArray(error) ? error : [error], `response`).join(`,\n`);
+            }
+
+            const errorDescription = `API response for ${request.originalUrl} (${ctx.operation.operationId}, status code ${statusCode}) doesn't match schema:`;
+
+            console.error(chalk.bgRed(errorDescription));
+            console.error(error);
+          }
+        }
+
+        return response.status(statusCode).json(body);
       },
     },
   ),

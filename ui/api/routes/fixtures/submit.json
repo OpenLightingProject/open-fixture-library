@@ -21,7 +21,13 @@
                 "type": "string",
                 "nullable": true
               }
-            }
+            },
+            "required": [
+              "fixtureCreateResult",
+              "githubUsername",
+              "githubComment"
+            ],
+            "additionalProperties": false
           }
         }
       }
@@ -37,7 +43,9 @@
                 "pullRequestUrl": {
                   "type": "string"
                 }
-              }
+              },
+              "required": ["pullRequestUrl"],
+              "additionalProperties": false
             }
           }
         }

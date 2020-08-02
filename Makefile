@@ -82,6 +82,7 @@ jsdoc-config.json
 	@echo ""
 
 docs/rest-api.md: \
-ui/api/openapi.json
+ui/api/openapi.json \
+ui/api/routes/**/*.json
 	npx widdershins --code true --language_tabs --omitBody true --omitHeader true --resolve true --outfile docs/rest-api.md ui/api/openapi.json
 	@echo ""

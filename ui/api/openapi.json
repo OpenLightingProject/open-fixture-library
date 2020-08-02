@@ -65,6 +65,7 @@
           "warnings",
           "errors"
         ],
+        "additionalProperties": false,
         "example": {
           "manufacturers": {
             "man-key": {
@@ -95,6 +96,8 @@
             "type": "string"
           }
         },
+        "required": ["error"],
+        "additionalProperties": false,
         "example": {
           "error": "Some error message."
         }

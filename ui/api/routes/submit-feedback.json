@@ -40,7 +40,8 @@
               "helpWanted",
               "message",
               "githubUsername"
-            ]
+            ],
+            "additionalProperties": false
           }
         }
       }
@@ -61,7 +62,12 @@
                   "type": "string",
                   "nullable": true
                 }
-              }
+              },
+              "required": [
+                "issueUrl",
+                "error"
+              ],
+              "additionalProperties": false
             },
             "example": {
               "issueUrl": "https://github.com/OpenLightingProject/open-fixture-library/issues/1154"

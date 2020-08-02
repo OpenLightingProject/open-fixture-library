@@ -1,7 +1,8 @@
 const createPullRequest = require(`../../../../lib/create-github-pr.js`);
 
-/** @typedef {import('../../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
+/** @typedef {import('../../index.js').ApiResponse} ApiResponse */
+/** @typedef {import('../../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
 
 /**
  * @typedef {Object} RequestBody
@@ -14,25 +15,29 @@ const createPullRequest = require(`../../../../lib/create-github-pr.js`);
  * Creates a GitHub pull request with the given fixture data.
  * Includes warnings, errors, GitHub username and GitHub comment in the PR description.
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
- * @param {Object} request Passed from Express.
- * @param {RequestBody} request.body The fixture data to submit, along with additional info for the pull request.
- * @param {Object} response Passed from Express.
+ * @returns {ApiResponse} The handled response.
  */
-async function submitFixtures(ctx, request, response) {
+async function submitFixtures({ request }) {
   try {
     const pullRequestUrl = await createPullRequest(
-      request.body.fixtureCreateResult,
-      request.body.githubUsername,
-      request.body.githubComment,
+      request.requestBody.fixtureCreateResult,
+      request.requestBody.githubUsername,
+      request.requestBody.githubComment,
     );
-    response.status(201).json({
-      pullRequestUrl,
-    });
+    return {
+      statusCode: 201,
+      body: {
+        pullRequestUrl,
+      },
+    };
   }
   catch (error) {
-    response.status(500).json({
-      error: error.message,
-    });
+    return {
+      statusCode: 500,
+      body: {
+        error: error.message,
+      },
+    };
   }
 }
 

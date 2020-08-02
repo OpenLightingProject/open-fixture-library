@@ -30,7 +30,8 @@
               "searchQuery",
               "manufacturersQuery",
               "categoriesQuery"
-            ]
+            ],
+            "additionalProperties": false
           },
           "example": {
             "searchQuery": "showtec phantom",

@@ -12,7 +12,7 @@
   ],
   "get": {
     "operationId": "getPluginByKey",
-    "description": "Returns information about a specific import and export plugin.",
+    "description": "Returns information about a specific import and export plugin. If an outdated plugin is requested, the information for the renamed plugin is returned.",
     "tags": ["plugins"],
     "responses": {
       "200": {
@@ -20,15 +20,8 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "pluginKey",
-                "name",
-                "previousVersions",
-                "description",
-                "links"
-              ],
               "properties": {
-                "pluginKey": {
+                "key": {
                   "type": "string"
                 },
                 "name": {
@@ -86,13 +79,18 @@
                 "importPluginVersion": {
                   "type": "string"
                 }
-              }
+              },
+              "required": [
+                "key",
+                "name",
+                "previousVersions",
+                "description",
+                "links"
+              ],
+              "additionalProperties": false
             }
           }
         }
-      },
-      "301": {
-        "description": "Plugin was renamed, request is redirected to the renamed plugin."
       },
       "404": {
         "$ref": "../../openapi.json#/components/responses/404-NotFoundError"
