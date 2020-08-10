@@ -1,0 +1,2276 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MegaPointe",
+  "shortName": "MP",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Testing (sorry)"],
+    "createDate": "2020-08-10",
+    "lastModifyDate": "2020-08-10"
+  },
+  "comment": "Robe MegaPointe controll",
+  "links": {
+    "manual": [
+      "https://www.robe.cz/megapointe/download/#dmx-charts"
+    ],
+    "productPage": [
+      "https://www.robe.cz/megapointe/download/#dmx-charts"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [300, 671, 450],
+    "weight": 22,
+    "power": 679,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "Osram Sirius HRI 470W RO",
+      "colorTemperature": 6500
+    },
+    "lens": {
+      "name": "unknown",
+      "degreesMinMax": [1.8, 42]
+    }
+  },
+  "wheels": {
+    "Colour wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Deep Red"
+        },
+        {
+          "type": "Color",
+          "name": "Deep Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Light green"
+        },
+        {
+          "type": "Color",
+          "name": "Magenta"
+        },
+        {
+          "type": "Color",
+          "name": "Lavender"
+        },
+        {
+          "type": "Color",
+          "name": "Pink"
+        },
+        {
+          "type": "Color",
+          "name": "Dark green"
+        },
+        {
+          "type": "Color",
+          "name": "CTO 2700K"
+        },
+        {
+          "type": "Color",
+          "name": "Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Orange"
+        },
+        {
+          "type": "Color",
+          "name": "CTO 3200K"
+        },
+        {
+          "type": "Color",
+          "name": "UV (Kongo blue)"
+        },
+        {
+          "type": "Color",
+          "name": "White"
+        },
+        {
+          "type": "Color",
+          "name": "Deep Red"
+        },
+        {
+          "type": "Color",
+          "name": "Deep Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow"
+        },
+        {
+          "type": "Color",
+          "name": "Light green"
+        },
+        {
+          "type": "Color",
+          "name": "Magenta"
+        },
+        {
+          "type": "Color",
+          "name": "Lavender"
+        },
+        {
+          "type": "Color",
+          "name": "Pink"
+        },
+        {
+          "type": "Color",
+          "name": "Dark green"
+        },
+        {
+          "type": "Color",
+          "name": "CTO 2700K"
+        },
+        {
+          "type": "Color",
+          "name": "Blue"
+        },
+        {
+          "type": "Color",
+          "name": "Orange"
+        },
+        {
+          "type": "Color",
+          "name": "CTO 3200K"
+        },
+        {
+          "type": "Color",
+          "name": "UV (Kongo blue)"
+        }
+      ]
+    },
+    "Static gobo wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "265deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "PanTiltSpeed",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "PanTiltSpeed",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [2, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "max to min or 0.2 to 25.5 sec"
+        }
+      ]
+    },
+    "Power/SpecialFunctions": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "reserved"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Generic",
+          "comment": "Wired DMX *only active 10 after boot"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Generic",
+          "comment": "Wireless DMX *only active 10 after boot"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Generic",
+          "comment": "Display On"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Generic",
+          "comment": "Display Off"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "Generic",
+          "comment": "High CRI"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "Generic",
+          "comment": "Standard CRI"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "Generic",
+          "comment": "EcoMode"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "Generic",
+          "comment": "Standard Mode"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Generic",
+          "comment": "Close proximity mode On"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Generic",
+          "comment": "Close proximity mode Off"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Generic",
+          "comment": "Fans mode: auto "
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Generic",
+          "comment": "Fans mode: High"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Generic",
+          "comment": "Dimmer curve: Square law"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Generic",
+          "comment": "Dimmer curve: Linear"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Generic",
+          "comment": "AutoFocus On"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Generic",
+          "comment": "AutoFocus Off"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Generic",
+          "comment": "Pan/Tilt Speed mode"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Generic",
+          "comment": "Pan/Tilt Time mode"
+        },
+        {
+          "dmxRange": [100, 101],
+          "type": "Generic",
+          "comment": "Blackout while pan/tilt moving"
+        },
+        {
+          "dmxRange": [102, 103],
+          "type": "Generic",
+          "comment": "Disabled blackout while pan/tilt moving"
+        },
+        {
+          "dmxRange": [104, 105],
+          "type": "Generic",
+          "comment": "Blackout while prism wheel 1 (wheel 2) moving"
+        },
+        {
+          "dmxRange": [106, 107],
+          "type": "Generic",
+          "comment": "Disabled blackout while prism wheel 1 (wheel 2) moving"
+        },
+        {
+          "dmxRange": [108, 119],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "Generic",
+          "comment": "Parking position On"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "Generic",
+          "comment": "Parking position Off"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "Generic",
+          "comment": "Lamp On"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "Generic",
+          "comment": "Pan/Tilt reset"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "Generic",
+          "comment": "Colour system reset"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "Generic",
+          "comment": "Gobo wheels reset"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "Generic",
+          "comment": "Dimmer/Shutter/Hot Spot reset"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "Generic",
+          "comment": "Zoom/focus/frost/prism wheels reset"
+        },
+        {
+          "dmxRange": [190, 199],
+          "type": "Generic",
+          "comment": "Zoom/focus/frost/prism wheels reset"
+        },
+        {
+          "dmxRange": [200, 209],
+          "type": "Generic",
+          "comment": "Total reset"
+        },
+        {
+          "dmxRange": [210, 229],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Generic",
+          "comment": "Lamp Off"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "Generic",
+          "comment": "RoboSpot enabled"
+        },
+        {
+          "dmxRange": [245, 249],
+          "type": "Generic",
+          "comment": "RoboSpot disabled - except handle faders and pan/tilt"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "RoboSpot fully disabled except pan/tilt"
+        }
+      ]
+    },
+    "Cyan": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cyan",
+        "comment": "Cyan from min. saturation --> full cyan (0=default)"
+      }
+    },
+    "Magenta": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Magenta",
+        "comment": "Magenta from min. saturation --> full magenta (0=default)"
+      }
+    },
+    "Yellow": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow",
+        "comment": "Yellow from min. saturation --> full yellow (0=default)"
+      }
+    },
+    "Colour wheel": {
+      "fineChannelAliases": ["Colour wheel fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "White "
+        },
+        {
+          "dmxRange": [1, 9],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Deep Red"
+        },
+        {
+          "dmxRange": [10, 18],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [19, 27],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [28, 37],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [38, 46],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [47, 55],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [56, 64],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [65, 73],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [74, 82],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [83, 91],
+          "type": "WheelSlot",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [92, 101],
+          "type": "WheelSlot",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [102, 110],
+          "type": "WheelSlot",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [111, 119],
+          "type": "WheelSlot",
+          "slotNumber": 14
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "WheelSlot",
+          "slotNumber": 15
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "WheelSlot",
+          "slotNumber": 16
+        },
+        {
+          "dmxRange": [135, 138],
+          "type": "WheelSlot",
+          "slotNumber": 17
+        },
+        {
+          "dmxRange": [139, 143],
+          "type": "WheelSlot",
+          "slotNumber": 18
+        },
+        {
+          "dmxRange": [144, 147],
+          "type": "WheelSlot",
+          "slotNumber": 19
+        },
+        {
+          "dmxRange": [148, 152],
+          "type": "WheelSlot",
+          "slotNumber": 20
+        },
+        {
+          "dmxRange": [153, 157],
+          "type": "WheelSlot",
+          "slotNumber": 21
+        },
+        {
+          "dmxRange": [158, 161],
+          "type": "WheelSlot",
+          "slotNumber": 22
+        },
+        {
+          "dmxRange": [162, 166],
+          "type": "WheelSlot",
+          "slotNumber": 23
+        },
+        {
+          "dmxRange": [167, 171],
+          "type": "WheelSlot",
+          "slotNumber": 24
+        },
+        {
+          "dmxRange": [172, 176],
+          "type": "WheelSlot",
+          "slotNumber": 25
+        },
+        {
+          "dmxRange": [177, 180],
+          "type": "WheelSlot",
+          "slotNumber": 26
+        },
+        {
+          "dmxRange": [181, 185],
+          "type": "WheelSlot",
+          "slotNumber": 27
+        },
+        {
+          "dmxRange": [186, 189],
+          "type": "WheelSlot",
+          "slotNumber": 28
+        },
+        {
+          "dmxRange": [190, 215],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Forwards rainbow effect "
+        },
+        {
+          "dmxRange": [216, 217],
+          "type": "Generic",
+          "comment": "No rotation"
+        },
+        {
+          "dmxRange": [218, 243],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Backwards rainbow effect"
+        },
+        {
+          "dmxRange": [244, 249],
+          "type": "Effect",
+          "effectName": "audio random coller"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Auto random colour selection from fast to slow"
+        }
+      ]
+    },
+    "Virtual Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 132],
+          "type": "Effect",
+          "effectName": "a different color every 2 channels "
+        },
+        {
+          "dmxRange": [133, 255],
+          "type": "Generic",
+          "comment": "RawDMX"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "CMY & colour Wheel Time": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Time",
+          "timeStart": "instant",
+          "timeEnd": "instant",
+          "comment": "off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Time",
+          "timeStart": "short",
+          "timeEnd": "long"
+        }
+      ]
+    },
+    "Zoom & Focus & Frost & Prism time": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic",
+          "comment": "off"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Time",
+          "timeStart": "short",
+          "timeEnd": "long"
+        }
+      ]
+    },
+    "Effect wheel positioning": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Generic",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [20, 127],
+          "type": "Generic",
+          "comment": "Proportional indexing"
+        },
+        {
+          "dmxRange": [128, 170],
+          "type": "Generic",
+          "comment": "Ramping from open to full position ( max--->min. speed)"
+        },
+        {
+          "dmxRange": [171, 213],
+          "type": "Generic",
+          "comment": "Ramping from open to half position ( max. --->min. speed)"
+        },
+        {
+          "dmxRange": [214, 255],
+          "type": "Generic",
+          "comment": "Ramp. from half position to full position ( max. --->min. speed)"
+        }
+      ]
+    },
+    "Effect wheel rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "WheelRotation",
+          "speedStart": "stop",
+          "speedEnd": "stop"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "WheelRotation",
+          "speedStart": "stop",
+          "speedEnd": "stop"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        }
+      ]
+    },
+    "Effect wheel animations": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 43],
+          "type": "Effect",
+          "effectName": "animations each 2 steps "
+        },
+        {
+          "dmxRange": [44, 255],
+          "type": "Generic",
+          "comment": "RawDMX"
+        }
+      ]
+    },
+    "Static gobo wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "Generic",
+          "comment": "Gobos on heat step"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectName": "Auto gobo selection",
+          "soundControlled": true,
+          "comment": "set sound in menus"
+        }
+      ]
+    },
+    "Rotating gobo wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "Generic",
+          "comment": "rotating gobos "
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "auto gobos"
+        }
+      ]
+    },
+    "Rot. gobo indexing and rotation": {
+      "fineChannelAliases": ["Rot. gobo indexing and rotation fine"],
+      "capability": {
+        "type": "Generic",
+        "comment": "gobo indexing"
+      }
+    },
+    "Prism wheel 1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 27],
+          "type": "Prism",
+          "comment": "different prisems"
+        },
+        {
+          "dmxRange": [28, 255],
+          "type": "Generic",
+          "comment": "Raw dmx"
+        }
+      ]
+    },
+    "Prism wheel 1 indexing/rotation": {
+      "capability": {
+        "type": "Prism",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Prism wheel 2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 27],
+          "type": "Prism",
+          "comment": "prism weel index"
+        },
+        {
+          "dmxRange": [28, 255],
+          "type": "Generic",
+          "comment": "RAWDMX"
+        }
+      ]
+    },
+    "Prism wheel 2 indexing/rotation": {
+      "capability": {
+        "type": "PrismRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Pattern sellection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 67],
+          "type": "Effect",
+          "effectName": "Different patterns "
+        },
+        {
+          "dmxRange": [68, 255],
+          "type": "Generic",
+          "comment": "RAW DMX"
+        }
+      ]
+    },
+    "Pattern rotation and indexing": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": 0,
+        "parameterEnd": 255,
+        "comment": "Patern indezing"
+      }
+    },
+    "Beam shaper selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 35],
+          "type": "EffectParameter",
+          "parameterStart": 0,
+          "parameterEnd": 8
+        },
+        {
+          "dmxRange": [36, 255],
+          "type": "Generic",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Beam shaper rotation and indexing": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": 0,
+        "parameterEnd": 255,
+        "comment": "Shaper indexing"
+      }
+    },
+    "Frost": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 50],
+          "type": "Frost",
+          "frostIntensityStart": "off",
+          "frostIntensityEnd": "high"
+        },
+        {
+          "dmxRange": [51, 255],
+          "type": "FrostEffect",
+          "effectName": "different frost effects on index"
+        }
+      ]
+    },
+    "Zoom": {
+      "fineChannelAliases": ["Zoom fine"],
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "wide",
+        "angleEnd": "narrow"
+      }
+    },
+    "Focus": {
+      "fineChannelAliases": ["Focus fine"],
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "far",
+        "distanceEnd": "near"
+      }
+    },
+    "Hot-Spot control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic",
+          "comment": "Automatic hot spot"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Focus",
+          "distanceStart": "near",
+          "distanceEnd": "far"
+        }
+      ]
+    },
+    "Shutter/ strobe": {
+      "defaultValue": 32,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Opening Pulse"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Closing Pulse"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Shutter open, Full lamp power"
+        }
+      ]
+    },
+    "Dimmer intensity": {
+      "fineChannelAliases": ["Dimmer intensity fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "standard",
+      "shortName": "standard",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Power/SpecialFunctions",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Colour wheel",
+        "Colour wheel fine",
+        "Virtual Color Wheel",
+        "Effect Speed",
+        "CMY & colour Wheel Time",
+        "Zoom & Focus & Frost & Prism time",
+        "Effect wheel positioning",
+        "Effect wheel rotation",
+        "Effect wheel animations",
+        "Static gobo wheel",
+        "Rotating gobo wheel",
+        "Rot. gobo indexing and rotation",
+        "Rot. gobo indexing and rotation fine",
+        "Prism wheel 1",
+        "Prism wheel 1 indexing/rotation",
+        "Prism wheel 2",
+        "Prism wheel 2 indexing/rotation",
+        "Pattern sellection",
+        "Pattern rotation and indexing",
+        "Beam shaper selection",
+        "Beam shaper rotation and indexing",
+        "Frost",
+        "Zoom",
+        "Zoom fine",
+        "Focus",
+        "Focus fine",
+        "Hot-Spot control",
+        "Shutter/ strobe",
+        "Dimmer intensity",
+        "Dimmer intensity fine"
+      ]
+    },
+    {
+      "name": "Reduced 8-bit",
+      "shortName": "Reduced",
+      "rdmPersonalityIndex": 2,
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Power/SpecialFunctions",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "Colour wheel",
+        "Virtual Color Wheel",
+        "Effect Speed",
+        "CMY & colour Wheel Time",
+        "Zoom & Focus & Frost & Prism time",
+        "Effect wheel positioning",
+        "Effect wheel rotation",
+        "Effect wheel animations",
+        "Static gobo wheel",
+        "Rotating gobo wheel",
+        "Rot. gobo indexing and rotation",
+        "Prism wheel 1",
+        "Prism wheel 1 indexing/rotation",
+        "Prism wheel 2",
+        "Prism wheel 2 indexing/rotation",
+        "Pattern sellection",
+        "Pattern rotation and indexing",
+        "Beam shaper selection",
+        "Beam shaper rotation and indexing",
+        "Frost",
+        "Zoom",
+        "Focus",
+        "Hot-Spot control",
+        "Shutter/ strobe",
+        "Dimmer intensity"
+      ]
+    }
+  ]
+}
