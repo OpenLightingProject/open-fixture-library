@@ -1,0 +1,224 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "IOWA-70",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Alvaro"],
+    "createDate": "2020-08-13",
+    "lastModifyDate": "2020-08-13"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/1263324/Audibax-Iowa-70.html"
+    ],
+    "productPage": [
+      "https://www.madridhifi.com/p/audibax-iowa-70-cabeza-movil-wash/?utm_source=Google%20Shopping&utm_medium=Shopping&utm_campaign=Shopping&gclid=CjwKCAjwydP5BRBREiwA-qrCGmDj2K8tIqOYi_ZJ6yLPTUzMj5XBjpGlZxCsFuxPAs9R_Eqmi-WDHRoCaTIQAvD_BwE"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=jQjlw4vuJPw"
+    ]
+  },
+  "physical": {
+    "dimensions": [175, 175, 235],
+    "weight": 2.7,
+    "power": 100,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angle": "540%"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angle": "180deg"
+      }
+    },
+    "Master Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Intensity",
+          "brightnessStart": "off",
+          "brightnessEnd": "off"
+        },
+        {
+          "dmxRange": [8, 135],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [136, 240],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
+      }
+    },
+    "Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 149],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [150, 200],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "fineChannelAliases": ["Tilt 2 fine"],
+      "capability": {
+        "type": "Tilt",
+        "angle": "180deg"
+      }
+    },
+    "Tilt 3": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angle": "180deg"
+      }
+    },
+    "Master Control 2": {
+      "name": "Master Control",
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 134],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [135, 239],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Intensity",
+          "brightness": "bright"
+        }
+      ]
+    },
+    "Color Choose": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Color Speed": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperature": "default"
+      }
+    },
+    "Auto": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "9 Channels",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Master Control",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Speed",
+        "Reset"
+      ]
+    },
+    {
+      "name": "14 Chanel",
+      "channels": [
+        "Pan",
+        "Pan 2",
+        "Tilt 3",
+        "Tilt 2",
+        "Speed",
+        "Master Control 2",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Choose",
+        "Color Speed",
+        "Auto",
+        "Reset"
+      ]
+    }
+  ]
+}
