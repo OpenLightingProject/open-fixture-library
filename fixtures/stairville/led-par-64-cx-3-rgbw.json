@@ -1,0 +1,72 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Led Par 64 CX-3 RGBW",
+  "shortName": "Stairville Led Par 64",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Alvaro"],
+    "createDate": "2020-08-28",
+    "lastModifyDate": "2020-08-28"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/c_281569_281570_v2_r2_es_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/es/stairville_led_par_64_cx3_rgbw_18x8w_b.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=jBIvxDgHVf8"
+    ]
+  },
+  "physical": {
+    "dimensions": [275, 405, 275],
+    "weight": 3.4,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensidad": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Intensidad 2": {
+      "name": "Intensidad",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Intensidad 3": {
+      "name": "Intensidad",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensidad 4": {
+      "name": "Intensidad",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4 Chanels",
+      "shortName": "4CH",
+      "channels": [
+        "Intensidad",
+        "Intensidad 2",
+        "Intensidad 3",
+        "Intensidad 4"
+      ]
+    }
+  ]
+}
