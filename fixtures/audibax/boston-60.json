@@ -1,0 +1,165 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Boston 60",
+  "categories": ["Moving Head", "Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Saúl"],
+    "createDate": "2020-09-04",
+    "lastModifyDate": "2020-09-04"
+  },
+  "links": {
+    "manual": [
+      "https://www.madridhifi.com/crm/documents/produit/9/4/10157449/photos/pdf/1/Boston%2060.pdf"
+    ],
+    "productPage": [
+      "https://www.madridhifi.com/p/audibax-boston-60/"
+    ]
+  },
+  "physical": {
+    "dimensions": [155, 235, 145],
+    "weight": 3.5,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "0%",
+      "constant": true,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Color Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 139],
+          "type": "ColorPreset",
+          "comment": "Color Selection"
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "ColorPreset",
+          "comment": "Color Auto Change"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 1
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "comment": "Pattern Selection"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "Auto Pattern, Slow to Fast"
+        }
+      ]
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "20Hz"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Reset (5 Seconds)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "11CH",
+      "shortName": "11ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Strobe Speed",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Color Macros",
+        "Reset"
+      ]
+    }
+  ]
+}
