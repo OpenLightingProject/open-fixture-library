@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isClimateStrike" id="climate-strike">
+  <div v-if="isClimateStrike" id="climate-strike-overlay">
 
     <h1>
       The Open Fixture Library joins the
@@ -42,13 +42,16 @@
 </template>
 
 <style lang="scss" scoped>
-#climate-strike {
+#climate-strike-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  overflow: auto;
   background: #1b7340;
   color: #fff;
-  box-sizing: border-box;
-  min-height: 100vh;
-  padding-bottom: 30px;
-  overflow: hidden;
   text-shadow: 0 0 5px rgba(#1b7340, 0.5);
 
   h1 {
@@ -56,11 +59,10 @@
     text-align: center;
     padding: 0.5em 1em;
     box-sizing: border-box;
-    width: calc(100% + 1em);
-    margin: 2em -0.5em 1em;
+    margin: 2.5em 0 1em;
     font-weight: 700;
     line-height: 1.2;
-    transform: rotate(-2.5deg);
+    transform: skewY(-2.5deg);
 
     a {
       display: block;
@@ -99,7 +101,7 @@
   }
 
   .hashtags {
-    margin-top: 3em;
+    margin: 3em 0 30px;
     font-size: 1.5em;
 
     a {
@@ -151,6 +153,11 @@ export default {
     this.showClimateStrikeBanner = climateStrikeDate.getDate() >= today.getDate() &&
       climateStrikeDate.getMonth() >= today.getMonth() &&
       climateStrikeDate.getFullYear() >= today.getFullYear();
+  },
+  mounted() {
+    if (this.isClimateStrike) {
+      document.documentElement.style.overflow = `hidden`;
+    }
   },
 };
 </script>
