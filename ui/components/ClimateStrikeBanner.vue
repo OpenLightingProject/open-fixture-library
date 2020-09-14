@@ -3,13 +3,16 @@
 
     <h1>
       The Open Fixture Library joins the
-      <a href="https://globalclimatestrike.net/">Global Climate Strike</a>
+      <a href="https://fridaysforfuture.org/september25/">Global Day of Climate Action</a>
       and is therefore not available today.
     </h1>
 
     <div>
       <h2>Why should this affect me?</h2>
-      <p>Because climate change affects everyone.</p>
+      <p>
+        Because climate change affects everyone. Please read the
+        <a href="https://fridaysforfuture.org/take-action/reasons-to-strike/">reasons to strike</a>.
+      </p>
 
       <h2>When is OFL back again?</h2>
       <p>
@@ -18,12 +21,10 @@
       </p>
 
       <h2>Where can I learn more?</h2>
-      <p>
-        Go to <a href="https://globalclimatestrike.net/">globalclimatestrike.net</a>
-        or <a href="https://www.fridaysforfuture.org/">fridaysforfuture.org</a>.
-      </p>
+      <p>Please refer to the <a href="https://fridaysforfuture.org/">Fridays for Future website</a>.</p>
 
       <div class="hashtags">
+        <a href="https://twitter.com/hashtag/GlobalClimateAction2020">#GlobalClimateAction2020</a>
         <a href="https://twitter.com/hashtag/fridaysforfuture">#fridaysforfuture</a>
         <a href="https://twitter.com/hashtag/climatestrike">#climatestrike</a>
       </div>
@@ -32,11 +33,9 @@
   </div>
   <div v-else-if="showClimateStrikeBanner" id="climate-strike-banner">
 
-    We are joining the global climate strike, so this website will
-    not be available on {{ strikeDateString }}.<br>
-    Learn more at
-    <a href="https://globalclimatestrike.net/">globalclimatestrike.net</a>
-    or <a href="https://www.fridaysforfuture.org/">fridaysforfuture.org</a>.
+    We are joining the <a href="https://twitter.com/hashtag/GlobalClimateAction2020" target="_blank">#GlobalClimateAction2020</a>,
+    so this website will not be available on {{ strikeDateString }}.<br>
+    Learn more at <a href="https://www.fridaysforfuture.org/" target="_blank">fridaysforfuture.org</a>.
 
   </div>
 </template>
@@ -139,7 +138,7 @@ export default {
     return {
       isClimateStrike: false,
       showClimateStrikeBanner: false,
-      strikeDateString: `2019-11-29`,
+      strikeDateString: `2020-09-25`,
     };
   },
   created() {
