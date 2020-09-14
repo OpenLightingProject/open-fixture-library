@@ -130,16 +130,18 @@ export default {
     };
   },
   created() {
-    const climateStrikeDate = new Date(this.strikeDateString);
+    const strikeDate = new Date(this.strikeDateString);
+    strikeDate.setHours(0, 0, 0, 0);
+
     const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-    this.isClimateStrike = climateStrikeDate.getDate() === today.getDate() &&
-      climateStrikeDate.getMonth() === today.getMonth() &&
-      climateStrikeDate.getFullYear() === today.getFullYear();
+    const bannerStartDate = new Date(strikeDate);
+    bannerStartDate.setDate(strikeDate.getDate() - 14);
 
-    this.showClimateStrikeBanner = climateStrikeDate.getDate() >= today.getDate() &&
-      climateStrikeDate.getMonth() >= today.getMonth() &&
-      climateStrikeDate.getFullYear() >= today.getFullYear();
+
+    this.isClimateStrike = strikeDate.getTime() === today.getTime();
+    this.showClimateStrikeBanner = bannerStartDate.getTime() <= today.getTime() && today.getTime() < strikeDate.getTime();
   },
   mounted() {
     if (this.isClimateStrike) {
