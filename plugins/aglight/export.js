@@ -68,7 +68,7 @@ function transformMatrixChannels(fixtureJson, fixture) {
 
   fixtureJson.availableChannels = Object.fromEntries(
     availableAndMatrixChannels.map(channel => {
-      let channelJsonObject = channel.jsonObject;
+      let channelJsonObject = JSON.parse(JSON.stringify(channel.jsonObject));
 
       if (channel.pixelKey) {
         channelJsonObject = Object.assign({}, channelJsonObject, {
