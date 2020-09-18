@@ -35,7 +35,7 @@
 
     We are joining the <a href="https://twitter.com/hashtag/GlobalClimateAction2020" target="_blank">#GlobalClimateAction2020</a>,
     so this website will not be available on {{ strikeDateString }}.<br>
-    Learn more at <a href="https://www.fridaysforfuture.org/" target="_blank">fridaysforfuture.org</a>.
+    Learn more at <a href="https://fridaysforfuture.org/" target="_blank">fridaysforfuture.org</a>.
 
   </div>
 </template>
