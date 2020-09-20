@@ -359,6 +359,118 @@
           "speedEnd": "fast CW"
         }
       ]
+    },
+    "Color Wheel Split": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [16, 22],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 2.5
+        },
+        {
+          "dmxRange": [23, 30],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [31, 37],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [38, 45],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [46, 52],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [53, 60],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 6.5
+        },
+        {
+          "dmxRange": [61, 67],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [68, 75],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [76, 82],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [83, 90],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 9.5
+        },
+        {
+          "dmxRange": [91, 97],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [98, 105],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 10.5
+        },
+        {
+          "dmxRange": [106, 112],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [113, 120],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 11.5
+        },
+        {
+          "dmxRange": [121, 127],
+          "type": "WheelSlot",
+          "wheel": "Color Wheel",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
     }
   },
   "modes": [
@@ -371,6 +483,17 @@
         "Shutter / Shaking",
         "Gobo Wheel",
         "Color Wheel"
+      ]
+    },
+    {
+      "name": "Split Color",
+      "shortName": "SC",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Shutter / Shaking",
+        "Gobo Wheel",
+        "Color Wheel Split"
       ]
     }
   ]
