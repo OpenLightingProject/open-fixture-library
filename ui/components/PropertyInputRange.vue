@@ -37,66 +37,66 @@ import PropertyInputNumber from './PropertyInputNumber.vue';
 
 export default {
   components: {
-    PropertyInputNumber
+    PropertyInputNumber,
   },
   model: {
-    prop: `range`
+    prop: `range`,
   },
   props: {
     range: {
       type: Array,
       required: false,
-      default: null
+      default: null,
     },
     name: {
       type: String,
-      required: true
+      required: true,
     },
     startHint: {
       type: String,
       required: false,
-      default: `start`
+      default: `start`,
     },
     endHint: {
       type: String,
       required: false,
-      default: `end`
+      default: `end`,
     },
     rangeMin: {
       type: Number,
       required: false,
-      default: null
+      default: null,
     },
     rangeMax: {
       type: Number,
       required: false,
-      default: null
+      default: null,
     },
     schemaProperty: {
       type: Object,
-      required: true
+      required: true,
     },
     unit: {
       type: String,
       required: false,
-      default: null
+      default: null,
     },
     required: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     formstate: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       validationData: {
         'complete-range': ``,
-        'valid-range': ``
-      }
+        'valid-range': ``,
+      },
     };
   },
   computed: {
@@ -107,7 +107,7 @@ export default {
       set(startInput) {
         this.$emit(`input`, getRange(startInput, this.end));
         this.$emit(`start-updated`);
-      }
+      },
     },
     end: {
       get() {
@@ -116,11 +116,11 @@ export default {
       set(endInput) {
         this.$emit(`input`, getRange(this.start, endInput));
         this.$emit(`end-updated`);
-      }
+      },
     },
     rangeIncomplete() {
       return this.range && (this.start === null || this.end === null);
-    }
+    },
   },
   mounted() {
     this.$emit(`vf:validate`, this.validationData);
@@ -136,8 +136,8 @@ export default {
       if (!(event.target && event.relatedTarget) || event.target.closest(`.range`) !== event.relatedTarget.closest(`.range`)) {
         this.$emit(`blur`);
       }
-    }
-  }
+    },
+  },
 };
 
 /**

@@ -25,26 +25,26 @@ import PropertyInputEntity from '../../PropertyInputEntity.vue';
 export default {
   components: {
     LabeledInput,
-    PropertyInputEntity
+    PropertyInputEntity,
   },
   props: {
     wheelSlot: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
       properties: schemaProperties,
       defaultData: {
-        frostIntensity: ``
-      }
+        frostIntensity: ``,
+      },
     };
-  }
+  },
 };
 </script>

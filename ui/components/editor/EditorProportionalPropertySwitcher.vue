@@ -187,35 +187,35 @@ export default {
   components: {
     PropertyInputEntity,
     PropertyInputNumber,
-    PropertyInputText
+    PropertyInputText,
   },
   props: {
     capability: {
       type: Object,
-      required: true
+      required: true,
     },
     propertyName: {
       type: String,
-      required: true
+      required: true,
     },
     required: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     hint: {
       type: String,
       required: false,
-      default: null
+      default: null,
     },
     formstate: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      properties: schemaProperties
+      properties: schemaProperties,
     };
   },
   computed: {
@@ -245,7 +245,7 @@ export default {
       },
       set(newData) {
         this.capability.typeData[this.propertyName] = newData;
-      }
+      },
     },
     propertyDataStart: {
       get() {
@@ -253,7 +253,7 @@ export default {
       },
       set(newData) {
         this.capability.typeData[`${this.propertyName}Start`] = newData;
-      }
+      },
     },
     propertyDataEnd: {
       get() {
@@ -261,7 +261,7 @@ export default {
       },
       set(newData) {
         this.capability.typeData[`${this.propertyName}End`] = newData;
-      }
+      },
     },
     hasStartEnd: {
       get() {
@@ -284,7 +284,7 @@ export default {
           this.propertyDataStart = null;
           this.propertyDataEnd = null;
         }
-      }
+      },
     },
 
     // slotNumber entity requires a bit of special handling
@@ -298,7 +298,7 @@ export default {
       },
       set(newData) {
         this.capability.typeData[this.propertyName] = newData === null ? `` : newData;
-      }
+      },
     },
     slotNumberStart: {
       get() {
@@ -306,7 +306,7 @@ export default {
       },
       set(newData) {
         this.capability.typeData[`${this.propertyName}Start`] = newData === null ? `` : newData;
-      }
+      },
     },
     slotNumberEnd: {
       get() {
@@ -314,14 +314,14 @@ export default {
       },
       set(newData) {
         this.capability.typeData[`${this.propertyName}End`] = newData === null ? `` : newData;
-      }
+      },
     },
 
     swapButtonTabIndex() {
       return (this.propertyDataStart === this.propertyDataEnd ||
         this.propertyDataStart === `` ||
         this.propertyDataEnd === ``) ? `-1` : null;
-    }
+    },
   },
   methods: {
     focus() {
@@ -350,7 +350,7 @@ export default {
     },
     swapStartEnd() {
       [this.propertyDataStart, this.propertyDataEnd] = [this.propertyDataEnd, this.propertyDataStart];
-    }
-  }
+    },
+  },
 };
 </script>

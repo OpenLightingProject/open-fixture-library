@@ -43,9 +43,6 @@
 </style>
 
 <script>
-import register from '../../fixtures/register.json';
-import manufacturers from '../../fixtures/manufacturers.json';
-
 export default {
   head() {
     const title = `Manufacturers`;
@@ -55,39 +52,46 @@ export default {
       meta: [
         {
           hid: `title`,
-          content: title
-        }
-      ]
+          content: title,
+        },
+      ],
     };
   },
-  data() {
-    const letters = {};
+  async asyncData({ $axios, error }) {
+    try {
+      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
 
-    Object.keys(register.manufacturers).forEach(manKey => {
-      let letter = manKey.charAt(0).toUpperCase();
+      const letters = {};
 
-      if (!/^[A-Z]$/.test(letter)) {
-        letter = `#`;
-      }
+      Object.keys(manufacturers).forEach(manKey => {
+        let letter = manKey.charAt(0).toUpperCase();
 
-      if (!(letter in letters)) {
-        letters[letter] = {
-          id: letter === `#` ? `letter-numeric` : `letter-${letter.toLowerCase()}`,
-          manufacturers: []
-        };
-      }
+        if (!/^[A-Z]$/.test(letter)) {
+          letter = `#`;
+        }
 
-      letters[letter].manufacturers.push({
-        key: manKey,
-        name: manufacturers[manKey].name,
-        fixtureCount: register.manufacturers[manKey].length,
-        color: register.colors[manKey]
+        if (!(letter in letters)) {
+          letters[letter] = {
+            id: letter === `#` ? `letter-numeric` : `letter-${letter.toLowerCase()}`,
+            manufacturers: [],
+          };
+        }
+
+        letters[letter].manufacturers.push({
+          key: manKey,
+          name: manufacturers[manKey].name,
+          fixtureCount: manufacturers[manKey].fixtureCount,
+          color: manufacturers[manKey].color,
+        });
       });
-    });
 
-    return {
-      letters
-    };
-  }
+      return {
+        letters,
+      };
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
+  },
 };
 </script>

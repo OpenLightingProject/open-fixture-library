@@ -17,10 +17,10 @@
             value="">Filter by manufacturer</option>
 
           <option
-            v-for="man in manufacturers"
-            :key="man.key"
-            :selected="manufacturersQuery.includes(man.key)"
-            :value="man.key">{{ man.name }}</option>
+            v-for="(man, manKey) in manufacturers"
+            :key="manKey"
+            :selected="manufacturersQuery.includes(manKey)"
+            :value="manKey">{{ man.name }}</option>
         </select>
 
         <select v-model="categoriesQuery" name="categories" multiple>
@@ -75,18 +75,17 @@
   margin-top: 2rem;
 }
 
-.search /deep/ select[multiple] {
+.search ::v-deep select[multiple] {
   margin-right: 1ex;
 }
 
-.search /deep/ details {
+.search ::v-deep details {
   margin: 1rem 0;
 }
 </style>
 
 <script>
 import register from '../../fixtures/register.json';
-import manufacturers from '../../fixtures/manufacturers.json';
 
 import ConditionalDetails from '../components/ConditionalDetails.vue';
 import LabeledInput from '../components/LabeledInput.vue';
@@ -94,7 +93,7 @@ import LabeledInput from '../components/LabeledInput.vue';
 export default {
   components: {
     ConditionalDetails,
-    LabeledInput
+    LabeledInput,
   },
   head() {
     const title = this.searchFor ? `Search "${this.searchFor}"` : `Search`;
@@ -104,36 +103,58 @@ export default {
       meta: [
         {
           hid: `title`,
-          content: title
-        }
-      ]
+          content: title,
+        },
+      ],
     };
   },
-  async asyncData({ query, app }) {
-    const sanitizedQuery = getSanitizedQuery(query);
+  async asyncData({ query, $axios, error }) {
+    try {
+      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
 
-    return {
-      searchFor: sanitizedQuery.search,
-      searchQuery: sanitizedQuery.search,
-      manufacturersQuery: sanitizedQuery.manufacturers,
-      categoriesQuery: sanitizedQuery.categories,
-      detailsInitiallyOpen: sanitizedQuery.manufacturers.length > 0 || sanitizedQuery.categories.length > 0,
-      results: await getSearchResults(app.$axios, sanitizedQuery)
-    };
+      return {
+        searchFor: ``,
+        searchQuery: ``,
+        manufacturersQuery: [],
+        categoriesQuery: [],
+        detailsInitiallyOpen: null,
+        results: [],
+        manufacturers,
+        categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)),
+        loading: false,
+        isBrowser: false,
+      };
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
   },
-  data() {
-    return {
-      manufacturers: Object.keys(register.manufacturers).sort((a, b) => a.localeCompare(b, `en`)).map(
-        manKey => ({
-          key: manKey,
-          name: manufacturers[manKey].name,
-          fixtureCount: register.manufacturers[manKey].length
-        })
-      ),
-      categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)),
-      loading: false,
-      isBrowser: false
-    };
+  async fetch() {
+    this.loading = true;
+
+    const sanitizedQuery = getSanitizedQuery(this.$route.query);
+    this.searchQuery = sanitizedQuery.search;
+    this.manufacturersQuery = sanitizedQuery.manufacturers;
+    this.categoriesQuery = sanitizedQuery.categories;
+    this.searchFor = sanitizedQuery.search;
+
+    if (this.detailsInitiallyOpen === null) {
+      this.detailsInitiallyOpen = this.manufacturersQuery.length > 0 || this.categoriesQuery.length > 0;
+    }
+
+    try {
+      this.results = await this.$axios.$post(`/api/v1/get-search-results`, {
+        searchQuery: sanitizedQuery.search,
+        manufacturersQuery: sanitizedQuery.manufacturers,
+        categoriesQuery: sanitizedQuery.categories,
+      });
+    }
+    catch (requestError) {
+      this.results = [];
+    }
+    finally {
+      this.loading = false;
+    }
   },
   computed: {
     fixtureResults() {
@@ -142,23 +163,17 @@ export default {
 
         return {
           key,
-          name: `${manufacturers[man].name} ${register.filesystem[key].name}`,
-          color: register.colors[man]
+          name: `${this.manufacturers[man].name} ${register.filesystem[key].name}`,
+          color: register.colors[man],
         };
       });
-    }
+    },
+  },
+  watch: {
+    '$route.query': `$fetch`,
   },
   mounted() {
     this.isBrowser = true;
-
-    this._removeSearchQueryChecker = this.$router.afterEach((to, from) => {
-      if (to.path === `/search`) {
-        this.updateResults();
-      }
-      else {
-        this._removeSearchQueryChecker();
-      }
-    });
   },
   methods: {
     onSubmit() {
@@ -171,23 +186,11 @@ export default {
         query: {
           q: this.searchQuery,
           manufacturers: this.manufacturersQuery,
-          categories: this.categoriesQuery
-        }
+          categories: this.categoriesQuery,
+        },
       });
     },
-    async updateResults() {
-      this.loading = true;
-
-      const sanitizedQuery = getSanitizedQuery(this.$router.history.current.query);
-      this.searchQuery = sanitizedQuery.search;
-      this.manufacturersQuery = sanitizedQuery.manufacturers;
-      this.categoriesQuery = sanitizedQuery.categories;
-      this.results = await getSearchResults(this.$axios, sanitizedQuery);
-      this.searchFor = sanitizedQuery.search;
-
-      this.loading = false;
-    }
-  }
+  },
 };
 
 /**
@@ -210,21 +213,7 @@ function getSanitizedQuery(query) {
   return {
     search: searchQuery,
     manufacturers: manufacturersQuery,
-    categories: categoriesQuery
+    categories: categoriesQuery,
   };
-}
-
-/**
- * Request search results from the backend.
- * @param {Object} axios The axios instance to use.
- * @param {Object} sanitizedQuery A query object like returned from {@link getSanitizedQuery}.
- * @returns {Promise} The request promise.
- */
-function getSearchResults(axios, sanitizedQuery) {
-  return axios.$post(`/api/v1/get-search-results`, {
-    searchQuery: sanitizedQuery.search,
-    manufacturersQuery: sanitizedQuery.manufacturers,
-    categoriesQuery: sanitizedQuery.categories
-  });
 }
 </script>

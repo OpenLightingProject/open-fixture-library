@@ -108,8 +108,6 @@
 <script>
 import scrollIntoView from 'scroll-into-view';
 
-import plugins from '../../plugins/plugins.json';
-
 import EditorFileUpload from '../components/editor/EditorFileUpload.vue';
 import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';
 import LabeledInput from '../components/LabeledInput.vue';
@@ -118,7 +116,7 @@ export default {
   components: {
     EditorFileUpload,
     EditorSubmitDialog,
-    LabeledInput
+    LabeledInput,
   },
   head() {
     const title = `Import fixture`;
@@ -128,21 +126,31 @@ export default {
       meta: [
         {
           hid: `title`,
-          content: title
-        }
-      ]
+          content: title,
+        },
+      ],
     };
+  },
+  async asyncData({ $axios, error }) {
+    try {
+      const plugins = await $axios.$get(`/api/v1/plugins`);
+      return {
+        plugins,
+      };
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
   },
   data() {
     return {
       formstate: {},
-      plugins,
       plugin: ``,
       file: null,
       githubComment: ``,
       author: ``,
       githubUsername: ``,
-      honeypot: ``
+      honeypot: ``,
     };
   },
   mounted() {
@@ -158,9 +166,9 @@ export default {
           align: {
             top: 0,
             left: 0,
-            topOffset: 100
+            topOffset: 100,
           },
-          isScrollable: target => target === window
+          isScrollable: target => target === window,
         }, () => field.focus());
 
         return;
@@ -178,7 +186,7 @@ export default {
         plugin: this.plugin,
         fileName: this.file.name,
         fileContentBase64,
-        author: this.author
+        author: this.author,
       });
 
       /**
@@ -223,7 +231,7 @@ export default {
     storePrefillData() {
       localStorage.setItem(`prefillAuthor`, this.author);
       localStorage.setItem(`prefillGithubUsername`, this.githubUsername);
-    }
-  }
+    },
+  },
 };
 </script>

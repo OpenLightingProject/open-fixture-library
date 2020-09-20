@@ -12,12 +12,12 @@ for (const exportPluginKey of plugins.exportPlugins) {
   const plugin = plugins.data[exportPluginKey];
 
   exportTests.push(...plugin.exportTests.map(
-    testKey => [exportPluginKey, testKey]
+    testKey => [exportPluginKey, testKey],
   ));
 }
 
 const testFixtures = require(`../test-fixtures.json`).map(
-  fixture => [fixture.man, fixture.key]
+  fixture => [fixture.man, fixture.key],
 );
 
 let testErrored = false;
@@ -52,7 +52,7 @@ let testErrored = false;
           task.manKey === otherTask.manKey &&
           task.fixKey === otherTask.fixKey &&
           task.pluginKey === otherTask.pluginKey &&
-          task.testKey === otherTask.testKey
+          task.testKey === otherTask.testKey,
         );
 
         // remove duplicates
@@ -83,7 +83,7 @@ let testErrored = false;
       await pullRequest.updateComment({
         filename: path.relative(path.join(__dirname, `../../`), __filename),
         name: `Export files validity`,
-        lines: []
+        lines: [],
       });
       return;
     }
@@ -92,7 +92,7 @@ let testErrored = false;
       `Test the exported files of selected fixtures against the plugins' export tests.`,
       `You can run a plugin's export tests by executing:`,
       `\`$ node cli/run-export-test.js -p <plugin name> <fixtures>\``,
-      ``
+      ``,
     ];
 
     const tooLongMessage = `:warning: The output of the script is too long to fit in this comment, please run it yourself locally!`;
@@ -113,7 +113,7 @@ let testErrored = false;
     await pullRequest.updateComment({
       filename: path.relative(path.join(__dirname, `../../`), __filename),
       name: `Export files validity`,
-      lines
+      lines,
     });
 
     if (testErrored) {
@@ -143,7 +143,7 @@ function getTasksForModel(changedComponents) {
         manKey,
         fixKey,
         pluginKey,
-        testKey
+        testKey,
       })));
     }
   }
@@ -168,7 +168,7 @@ function getTasksForPlugins(changedComponents) {
         manKey,
         fixKey,
         pluginKey: changedPlugin,
-        testKey
+        testKey,
       })));
     }
   }
@@ -190,7 +190,7 @@ function getTasksForExportTests(changedComponents) {
       manKey,
       fixKey,
       pluginKey,
-      testKey
+      testKey,
     })));
   }
 
@@ -211,7 +211,7 @@ function getTasksForFixtures(changedComponents) {
       manKey,
       fixKey,
       pluginKey,
-      testKey
+      testKey,
     })));
   }
 
@@ -231,7 +231,7 @@ async function getTaskPromise(task) {
   try {
     const files = await plugin.export([fixtureFromRepository(task.manKey, task.fixKey)], {
       baseDir: path.join(__dirname, `../..`),
-      date: new Date()
+      date: new Date(),
     });
 
     const resultListItems = await Promise.all(files.map(async file => {
@@ -259,6 +259,6 @@ async function getTaskPromise(task) {
     `  <ul>`,
     ...detailListItems.map(listItem => `    <li>${listItem}</li>`),
     `  </ul>`,
-    `</details>`
+    `</details>`,
   ];
 }

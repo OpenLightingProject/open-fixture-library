@@ -1,12 +1,12 @@
-const colorNames = require(`color-names`);
+const colorNameList = require(`color-name-list`);
 const xml2js = require(`xml2js`);
 const promisify = require(`util`).promisify;
 
 module.exports.version = `0.3.1`;
 
 const colors = {};
-for (const hex of Object.keys(colorNames)) {
-  colors[colorNames[hex].toLowerCase().replace(/\s/g, ``)] = hex;
+for (const color of colorNameList) {
+  colors[color.name.toLowerCase().replace(/\s/g, ``)] = color.hex;
 }
 
 /**
@@ -22,7 +22,7 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
   const out = {
     manufacturers: {},
     fixtures: {},
-    warnings: {}
+    warnings: {},
   };
 
   const xml = await promisify(parser.parseString)(buffer.toString());
@@ -37,7 +37,7 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
     const manKey = slugify(manName);
 
     out.manufacturers[manKey] = {
-      name: manName
+      name: manName,
     };
 
     if (manufacturer.$.Comment !== ``) {
@@ -63,7 +63,7 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
   function addFixture(ecueFixture, manKey) {
     const fixture = {
       $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
-      name: ecueFixture.$.Name
+      name: ecueFixture.$.Name,
     };
 
     let fixKey = `${manKey}/${slugify(fixture.name)}`;
@@ -88,8 +88,8 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
       lastModifyDate: ecueFixture.$._ModifiedDate.replace(/#.*/, ``),
       importPlugin: {
         plugin: `ecue`,
-        date: timestamp
-      }
+        date: timestamp,
+      },
     };
 
     if (ecueFixture.$.Comment !== ``) {
@@ -107,7 +107,7 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
     fixture.modes = [{
       name: `${ecueFixture.$.AllocateDmxChannels}-channel`,
       shortName: `${ecueFixture.$.AllocateDmxChannels}ch`,
-      channels: []
+      channels: [],
     }];
 
     for (const ecueChannel of getCombinedEcueChannels(ecueFixture)) {
@@ -159,13 +159,7 @@ function getCombinedEcueChannels(ecueFixture) {
   }
 
   // sort channels by (coarse) DMX channel
-  channels.sort((a, b) => {
-    if (parseInt(a.$.DmxByte0) < parseInt(b.$.DmxByte0)) {
-      return -1;
-    }
-
-    return (parseInt(a.$.DmxByte0) > parseInt(b.$.DmxByte0)) ? 1 : 0;
-  });
+  channels.sort((a, b) => parseInt(a.$.DmxByte0, 10) - parseInt(b.$.DmxByte0, 10));
 
   return channels;
 }
@@ -193,7 +187,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
     const shortNameFine = `${channelKey} fine`;
     channel.fineChannelAliases = [shortNameFine];
     maxDmxValue = (256 * 256) - 1;
-    fixture.modes[0].channels[parseInt(ecueChannel.$.DmxByte1) - 1] = shortNameFine;
+    fixture.modes[0].channels[parseInt(ecueChannel.$.DmxByte1, 10) - 1] = shortNameFine;
   }
 
   addDmxValues();
@@ -205,8 +199,8 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
         End: maxDmxValue,
         Name: `0-100%`,
         AutoMenu: `1`,
-        Centre: `0`
-      }
+        Centre: `0`,
+      },
     }];
   }
 
@@ -219,7 +213,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
   }
 
   fixture.availableChannels[channelKey] = channel;
-  fixture.modes[0].channels[parseInt(ecueChannel.$.DmxByte0) - 1] = channelKey;
+  fixture.modes[0].channels[parseInt(ecueChannel.$.DmxByte0, 10) - 1] = channelKey;
 
 
   /**
@@ -227,11 +221,11 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
    */
   function addDmxValues() {
     if (ecueChannel.$.DefaultValue !== `0`) {
-      channel.defaultValue = parseInt(ecueChannel.$.DefaultValue);
+      channel.defaultValue = parseInt(ecueChannel.$.DefaultValue, 10);
     }
 
     if (ecueChannel.$.Highlight !== `0`) {
-      channel.highlightValue = parseInt(ecueChannel.$.Highlight);
+      channel.highlightValue = parseInt(ecueChannel.$.Highlight, 10);
     }
 
     if (ecueChannel.$.Constant === `1`) {
@@ -251,7 +245,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
    */
   function getCapability(ecueRange, index) {
     const cap = {
-      dmxRange: getDmxRange()
+      dmxRange: getDmxRange(),
     };
 
     const capabilityName = ecueRange.$.Name.trim();
@@ -262,7 +256,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
     const capabilityTypeParsers = {
       ColorIntensity() {
         cap.color = [`Red`, `Green`, `Blue`, `Cyan`, `Magenta`, `Yellow`, `Amber`, `Warm White`, `Cold White`, `White`, `UV`, `Lime`].find(
-          color => channelName.toLowerCase().includes(color.toLowerCase())
+          color => channelName.toLowerCase().includes(color.toLowerCase()),
         );
 
         cap.comment = capabilityName;
@@ -335,7 +329,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
       },
       NoFunction() {
         // don't even add a comment
-      }
+      },
     };
 
     if (cap.type in capabilityTypeParsers) {
@@ -364,11 +358,11 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
      * @returns {Array.<Number>} The DMX range of this capability.
      */
     function getDmxRange() {
-      const dmxRangeStart = parseInt(ecueRange.$.Start);
-      let dmxRangeEnd = parseInt(ecueRange.$.End);
+      const dmxRangeStart = parseInt(ecueRange.$.Start, 10);
+      let dmxRangeEnd = parseInt(ecueRange.$.End, 10);
 
       if (dmxRangeEnd === -1) {
-        dmxRangeEnd = (index + 1 < ecueChannel.Range.length) ? parseInt(ecueChannel.Range[index + 1].$.Start) - 1 : maxDmxValue;
+        dmxRangeEnd = (index + 1 < ecueChannel.Range.length) ? parseInt(ecueChannel.Range[index + 1].$.Start, 10) - 1 : maxDmxValue;
       }
 
       return [dmxRangeStart, dmxRangeEnd];
@@ -463,14 +457,14 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
             Rotation: /\brotation\b/,
             Speed: /\bspeed\b/,
             Time: /\btime\b/,
-            Maintenance: /\b(?:reset|maintenance)\b/
+            Maintenance: /\b(?:reset|maintenance)\b/,
           };
 
           return Object.keys(capabilityTypeRegexps).find(
             channelType => capabilityName.toLowerCase().match(capabilityTypeRegexps[channelType]) ||
-              channelName.toLowerCase().match(capabilityTypeRegexps[channelType])
+              channelName.toLowerCase().match(capabilityTypeRegexps[channelType]),
           ) || `Generic`;
-        }
+        },
       };
 
       return capabilityTypePerChannelType[ecueChannel._ecueChannelType]();

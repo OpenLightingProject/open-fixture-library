@@ -8,9 +8,9 @@ const readFile = promisify(require(`fs`).readFile);
 const path = require(`path`);
 const express = require(`express`);
 const compression = require(`compression`);
-const { Nuxt, Builder } = require(`nuxt`);
+const helmet = require(`helmet`);
+const { loadNuxt, build } = require(`nuxt`);
 
-const redirectToHttps = require(`./ui/express-middleware/redirect-to-https.js`);
 const robotsTxtGenerator = require(`./ui/express-middleware/robots-txt.js`);
 
 const packageJson = require(`./package.json`);
@@ -31,15 +31,22 @@ if (!process.env.PORT) {
 }
 app.set(`port`, process.env.PORT);
 
-// redirect to HTTPS site version if environment forces HTTPS
-app.use(redirectToHttps);
+// set various security HTTP headers
+app.use(helmet({
+  contentSecurityPolicy: false, // set in Nuxt config, so inline scripts are allowed by their SHA hash
+  expectCt: false,
+  hsts: {
+    maxAge: 2 * 365 * 24 * 60 * 60,
+    preload: true,
+  },
+}));
 
-// support json encoded bodies
+// support JSON encoded bodies
 app.use(express.json({ limit: `50mb` }));
 
 // enable compression
 app.use(compression({
-  threshold: `500B`
+  threshold: `500B`,
 }));
 
 
@@ -56,7 +63,7 @@ app.get(`/download.:format([a-z0-9_.-]+)`, (request, response, next) => {
   }
 
   const fixtures = Object.keys(register.filesystem).filter(
-    fixKey => !(`redirectTo` in register.filesystem[fixKey]) || register.filesystem[fixKey].reason === `SameAsDifferentBrand`
+    fixKey => !(`redirectTo` in register.filesystem[fixKey]) || register.filesystem[fixKey].reason === `SameAsDifferentBrand`,
   ).map(fixture => {
     const [man, key] = fixture.split(`/`);
     return fixtureFromRepository(man, key);
@@ -138,17 +145,6 @@ app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, async (request, response, next
   downloadFixtures(response, format, fixtures, zipName, errorDesc);
 });
 
-app.get(`/about/plugins/:plugin([a-z0-9_.-]+).json`, (request, response, next) => {
-  const { plugin } = request.params;
-
-  if (!(plugin in plugins.data)) {
-    next();
-    return;
-  }
-
-  response.json(requireNoCacheInDev(`./plugins/${plugin}/plugin.json`));
-});
-
 app.get(`/sitemap.xml`, (request, response) => {
   const generateSitemap = requireNoCacheInDev(`./lib/generate-sitemap.js`);
 
@@ -163,38 +159,25 @@ app.use(`/api/v1`, (request, response) => {
 
 
 // instantiate nuxt.js with the options
-const nuxtConfig = require(`./nuxt.config.js`);
-nuxtConfig.dev = process.argv[2] === `--dev`;
-const nuxt = new Nuxt(nuxtConfig);
+const isDev = process.argv[2] === `--dev`;
+loadNuxt(isDev ? `dev` : `start`).then(async nuxt => {
+  if (isDev) {
+    console.log(`Starting dev server with hot reloading...`);
+    await build(nuxt);
+  }
 
-// render every remaining route with Nuxt.js
-app.use(nuxt.render);
+  // render every remaining route with Nuxt.js
+  app.use(nuxt.render);
 
-let startNuxt;
-if (nuxtConfig.dev) {
-  console.log(`Starting dev server with hot reloading...`);
-  startNuxt = new Builder(nuxt).build();
-}
-else {
-  // build has been done already
-  startNuxt = nuxt.ready();
-}
+  console.log(`Nuxt.js is ready.`);
+}).catch(error => {
+  console.error(error);
+  process.exit(1);
+});
 
-startNuxt.then(listen)
-  .catch(error => {
-    console.error(error);
-    process.exit(1);
-  });
-
-
-/**
- * Listen for incoming web requests on the port specified in process.env.PORT
- */
-function listen() {
-  app.listen(process.env.PORT, () => {
-    console.log(`Node app is running on port`, process.env.PORT);
-  });
-}
+app.listen(process.env.PORT, () => {
+  console.log(`Node app is running on port`, process.env.PORT);
+});
 
 /**
  * Instruct Express to initiate a download of one / multiple exported fixture files.
@@ -211,7 +194,7 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
   try {
     const files = await plugin.export(fixtures, {
       baseDir: __dirname,
-      date: new Date()
+      date: new Date(),
     });
 
     if (files.length === 1) {
@@ -232,7 +215,7 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
 
     const zipBuffer = await archive.generateAsync({
       type: `nodebuffer`,
-      compression: `DEFLATE`
+      compression: `DEFLATE`,
     });
     response.status(200)
       .attachment(`ofl_export_${zipName}.zip`)

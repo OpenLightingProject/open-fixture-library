@@ -1,0 +1,58 @@
+{
+  "post": {
+    "operationId": "submitFixtures",
+    "description": "Creates a GitHub pull request with the given fixture data. Includes warnings, errors, GitHub username and GitHub comment in the PR description.",
+    "tags": ["fixtures"],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "fixtureCreateResult": {
+                "$ref": "../../openapi.json#/components/schemas/FixtureCreateResult"
+              },
+              "githubUsername": {
+                "type": "string",
+                "nullable": true
+              },
+              "githubComment": {
+                "type": "string",
+                "nullable": true
+              }
+            },
+            "required": [
+              "fixtureCreateResult",
+              "githubUsername",
+              "githubComment"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "description": "OK",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "pullRequestUrl": {
+                  "type": "string"
+                }
+              },
+              "required": ["pullRequestUrl"],
+              "additionalProperties": false
+            }
+          }
+        }
+      },
+      "400": {
+        "$ref": "../../openapi.json#/components/responses/400-BadRequestError"
+      }
+    }
+  }
+}

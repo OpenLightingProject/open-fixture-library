@@ -51,18 +51,18 @@ export default {
   components: {
     EditorProportionalPropertySwitcher,
     LabeledInput,
-    PropertyInputText
+    PropertyInputText,
   },
   props: {
     capability: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -75,8 +75,8 @@ export default {
         verticalAngle: null,
         verticalAngleStart: ``,
         verticalAngleEnd: ``,
-        comment: ``
-      }
+        comment: ``,
+      },
     };
   },
   methods: {
@@ -86,7 +86,7 @@ export default {
       const isProportionalEmpty = typeData[`${property}Start`] === null || typeData[`${property}Start`] === ``;
 
       return isSteppedEmpty && isProportionalEmpty;
-    }
-  }
+    },
+  },
 };
 </script>

@@ -94,39 +94,32 @@
 <script>
 import packageJson from '../../package.json';
 import register from '../../fixtures/register.json';
-import manufacturers from '../../fixtures/manufacturers.json';
 
 import DownloadButton from '../components/DownloadButton.vue';
 
 export default {
   components: {
-    DownloadButton
+    DownloadButton,
+  },
+  async asyncData({ $axios, error }) {
+    try {
+      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+
+      return {
+        manufacturers,
+      };
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
   },
   data() {
     return {
-      lastUpdated: register.lastUpdated.slice(0, 5).map(
-        fixtureKey => ({
-          key: fixtureKey,
-          name: getFixtureName(fixtureKey),
-          action: register.filesystem[fixtureKey].lastAction,
-          date: new Date(register.filesystem[fixtureKey].lastActionDate),
-          color: register.colors[fixtureKey.split(`/`)[0]]
-        })
-      ),
-      recentContributors: Object.keys(register.contributors).slice(0, 5).map(
-        contributor => {
-          const latestFixtureKey = getLatestFixtureKey(contributor);
+      lastUpdated: [],
+      recentContributors: [],
 
-          return {
-            name: contributor,
-            number: register.contributors[contributor].fixtures.length,
-            latestFixtureKey: latestFixtureKey,
-            latestFixtureName: getFixtureName(latestFixtureKey)
-          };
-        }
-      ),
       fixtureCount: Object.keys(register.filesystem).filter(
-        fixKey => !(`redirectTo` in register.filesystem[fixKey]) || register.filesystem[fixKey].reason === `SameAsDifferentBrand`
+        fixKey => !(`redirectTo` in register.filesystem[fixKey]) || register.filesystem[fixKey].reason === `SameAsDifferentBrand`,
       ).length,
 
       websiteStructuredData: {
@@ -137,8 +130,8 @@ export default {
         'potentialAction': {
           '@type': `SearchAction`,
           'target': `${packageJson.homepage}search?q={search_term_string}`,
-          'query-input': `required name=search_term_string`
-        }
+          'query-input': `required name=search_term_string`,
+        },
       },
       organizationStructuredData: {
         '@context': `http://schema.org`,
@@ -146,23 +139,49 @@ export default {
         'name': `Open Fixture Library`,
         'description': `Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!`,
         'url': packageJson.homepage,
-        'logo': `${packageJson.homepage}ofl-logo.svg`
-      }
+        'logo': `${packageJson.homepage}ofl-logo.svg`,
+      },
     };
-  }
+  },
+  created() {
+    this.lastUpdated = register.lastUpdated.slice(0, 5).map(
+      fixtureKey => ({
+        key: fixtureKey,
+        name: this.getFixtureName(fixtureKey),
+        action: register.filesystem[fixtureKey].lastAction,
+        date: new Date(register.filesystem[fixtureKey].lastActionDate),
+        color: register.colors[fixtureKey.split(`/`)[0]],
+      }),
+    );
+
+    this.recentContributors = Object.keys(register.contributors).slice(0, 5).map(
+      contributor => {
+        const latestFixtureKey = getLatestFixtureKey(contributor);
+
+        return {
+          name: contributor,
+          number: register.contributors[contributor].fixtures.length,
+          latestFixtureKey: latestFixtureKey,
+          latestFixtureName: this.getFixtureName(latestFixtureKey),
+        };
+      },
+    );
+  },
+  methods: {
+    /**
+     * @param {String} fixtureKey The combined manufacturer / fixture key.
+     * @returns {String} The manufacturer and fixture names, separated by a space.
+     */
+    getFixtureName(fixtureKey) {
+      const manKey = fixtureKey.split(`/`)[0];
+      const manufacturerName = this.manufacturers[manKey].name;
+      const fixtureName = register.filesystem[fixtureKey].name;
+
+      return `${manufacturerName} ${fixtureName}`;
+    },
+  },
 };
 
-/**
- * @param {String} fixtureKey The combined manufacturer / fixture key.
- * @returns {String} The manufacturer and fixture names, separated by a space.
- */
-function getFixtureName(fixtureKey) {
-  const manKey = fixtureKey.split(`/`)[0];
-  const manufacturerName = manufacturers[manKey].name;
-  const fixtureName = register.filesystem[fixtureKey].name;
-
-  return `${manufacturerName} ${fixtureName}`;
-}
 
 /**
  * @param {String} contributor The contributor name.
@@ -170,7 +189,7 @@ function getFixtureName(fixtureKey) {
  */
 function getLatestFixtureKey(contributor) {
   return register.lastUpdated.find(
-    key => register.contributors[contributor].fixtures.includes(key)
+    key => register.contributors[contributor].fixtures.includes(key),
   );
 }
 </script>

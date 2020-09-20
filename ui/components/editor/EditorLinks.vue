@@ -59,31 +59,31 @@ import PropertyInputText from '../PropertyInputText.vue';
 
 export default {
   components: {
-    PropertyInputText
+    PropertyInputText,
   },
   mixins: [fixtureLinksMixin],
   model: {
-    prop: `links`
+    prop: `links`,
   },
   props: {
     name: { // allow name prop just for vue-form; has no real use in here
       type: String,
       required: false,
-      default: ``
+      default: ``,
     },
     links: {
       type: Array,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       properties: schemaProperties,
-      linkTypes: Object.keys(schemaProperties.links)
+      linkTypes: Object.keys(schemaProperties.links),
     };
   },
   methods: {
@@ -96,8 +96,8 @@ export default {
     },
     removeLink(index) {
       this.$delete(this.links, index);
-    }
-  }
+    },
+  },
 };
 </script>
 

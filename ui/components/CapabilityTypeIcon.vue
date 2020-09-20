@@ -6,8 +6,8 @@ export default {
   props: {
     capability: {
       type: Capability,
-      required: true
-    }
+      required: true,
+    },
   },
   render(createElement, context) {
     const capability = context.props.capability;
@@ -20,9 +20,9 @@ export default {
         const data = Object.assign({}, context.data, {
           attrs: Object.assign({}, context.data.attrs, {
             src: resource.imageDataUrl,
-            title: `Capability type: ${capability.type}, slot ${capability.slotNumber[0]} (${wheelSlot[0].name})`
+            title: `Capability type: ${capability.type}, slot ${capability.slotNumber[0]} (${wheelSlot[0].name})`,
           }),
-          class: [context.data.class, `icon`, `gobo-icon`]
+          class: [context.data.class, `icon`, `gobo-icon`],
         });
 
         return createElement(`img`, data);
@@ -30,9 +30,9 @@ export default {
     }
 
     return createElement(`OflSvg`, Object.assign({}, context.data, {
-      props: getIconProps(capability)
+      props: getIconProps(capability),
     }));
-  }
+  },
 };
 
 const isAnimationGoboSlot = slot => slot.type.startsWith(`AnimationGobo`);
@@ -159,7 +159,7 @@ const specialIconFunctions = {
   },
   Generic(cap, iconProps) {
     iconProps.name = `other`;
-  }
+  },
 };
 
 /**
@@ -171,14 +171,14 @@ function getIconProps(cap) {
     return {
       type: `color-circle`,
       colors: cap.colors.allColors,
-      title: `Capability type: ${cap.type}, ${getColorDescription(cap)}`
+      title: `Capability type: ${cap.type}, ${getColorDescription(cap)}`,
     };
   }
 
   const iconProps = {
     type: `fixture`,
     name: cap.type,
-    title: `Capability type: ${cap.type}`
+    title: `Capability type: ${cap.type}`,
   };
 
   if (cap.isSoundControlled) {

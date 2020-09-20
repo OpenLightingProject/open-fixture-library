@@ -50,7 +50,7 @@ module.exports = async function testFixtureToolValidation(exportFile, allExportF
   // store used gobos in the gobos/ directory
   const qlcplusGobos = [`gobos/Others/open.svg`, `gobos/Others/rainbow.png`].concat(
     Object.keys(qlcplusGoboAliases).map(gobo => `gobos/${gobo}`),
-    allExportFiles.filter(file => file.name.startsWith(`gobos/`)).map(file => file.name)
+    allExportFiles.filter(file => file.name.startsWith(`gobos/`)).map(file => file.name),
   );
 
   for (const gobo of qlcplusGobos) {
@@ -63,7 +63,7 @@ module.exports = async function testFixtureToolValidation(exportFile, allExportF
 
   // call the fixture tool
   const output = await execFile(path.join(directory, FIXTURE_TOOL_PATH), [`--validate`, `.`], {
-    cwd: path.join(directory, `resources/fixtures`)
+    cwd: path.join(directory, `resources/fixtures`),
   });
 
   const lastLine = output.stdout.split(`\n`).filter(line => line !== ``).pop();
@@ -89,7 +89,7 @@ function downloadFixtureTool(directory) {
       res.on(`end`, async () => {
         try {
           await writeFile(path.join(directory, FIXTURE_TOOL_PATH), data, {
-            mode: 0o755
+            mode: 0o755,
           });
           resolve();
         }

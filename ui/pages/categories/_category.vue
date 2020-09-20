@@ -25,32 +25,27 @@
 
 <script>
 import register from '../../../fixtures/register.json';
-import manufacturers from '../../../fixtures/manufacturers.json';
 
 export default {
   validate({ params }) {
     return decodeURIComponent(params.category) in register.categories;
   },
-  asyncData({ params }) {
+  async asyncData({ params, $axios, error }) {
     const categoryName = decodeURIComponent(params.category);
 
-    return {
-      categoryName: categoryName,
-      categoryClass: categoryName.toLowerCase().replace(/[^\w]+/g, `-`),
-      fixtures: register.categories[categoryName].map(fixtureKey => {
-        const [manKey, fixKey] = fixtureKey.split(`/`);
+    try {
+      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
 
-        return {
-          key: fixtureKey,
-          link: `/${fixtureKey}`,
-          name: getFixtureName(manKey, fixKey),
-          categories: Object.keys(register.categories).filter(
-            cat => register.categories[cat].includes(fixtureKey)
-          ),
-          color: register.colors[manKey]
-        };
-      })
-    };
+      return {
+        categoryName: categoryName,
+        categoryClass: categoryName.toLowerCase().replace(/[^\w]+/g, `-`),
+        fixtures: [],
+        manufacturers,
+      };
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
   },
   head() {
     const title = this.categoryName;
@@ -60,22 +55,27 @@ export default {
       meta: [
         {
           hid: `title`,
-          content: title
-        }
-      ]
+          content: title,
+        },
+      ],
     };
-  }
+  },
+  created() {
+    this.fixtures = register.categories[this.categoryName].map(fixtureKey => {
+      const [manKey, fixKey] = fixtureKey.split(`/`);
+      const manufacturerName = this.manufacturers[manKey].name;
+      const fixtureName = register.filesystem[`${manKey}/${fixKey}`].name;
+
+      return {
+        key: fixtureKey,
+        link: `/${fixtureKey}`,
+        name: `${manufacturerName} ${fixtureName}`,
+        categories: Object.keys(register.categories).filter(
+          cat => register.categories[cat].includes(fixtureKey),
+        ),
+        color: this.manufacturers[manKey].color,
+      };
+    });
+  },
 };
-
-/**
- * @param {String} manKey The manufacturer key.
- * @param {String} fixKey The fixture key.
- * @returns {String} The manufacturer and fixture names, separated by a space.
- */
-function getFixtureName(manKey, fixKey) {
-  const manufacturerName = manufacturers[manKey].name;
-  const fixtureName = register.filesystem[`${manKey}/${fixKey}`].name;
-
-  return `${manufacturerName} ${fixtureName}`;
-}
 </script>

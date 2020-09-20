@@ -5,7 +5,7 @@ const { v5: uuidv5 } = require(`uuid`);
 const {
   CoarseChannel,
   FineChannel,
-  SwitchingChannel
+  SwitchingChannel,
 } = require(`../../lib/model.js`);
 const { scaleDmxValue } = require(`../../lib/scale-dmx-values.js`);
 
@@ -34,7 +34,7 @@ module.exports.export = function exportColorSource(fixtures, options) {
   const exportJson = {
     date: options.date.toISOString().replace(/\.\d\d\dZ$/, `Z`),
     editorVersion: EDITOR_VERSION,
-    personalities: []
+    personalities: [],
   };
 
   fixtures.forEach(fixture => {
@@ -54,7 +54,7 @@ module.exports.export = function exportColorSource(fixtures, options) {
         maxOffset: mode.channels.length - 1,
         modeName: mode.name,
         modelName: fixture.name,
-        parameters
+        parameters,
       };
 
       removeEmptyProperties(fixtureJson);
@@ -67,7 +67,7 @@ module.exports.export = function exportColorSource(fixtures, options) {
     name: `userlib.jlib`,
     content: JSON.stringify(exportJson, null, 2),
     mimetype: `application/json`,
-    fixtures
+    fixtures,
   }]);
 };
 
@@ -99,13 +99,13 @@ function getColorTable(colorSourceChannels) {
     "EF4970BA-2536-4725-9B0F-B2D7A021E139": [`Cyan`, `Magenta`, `Yellow`],
     "E6AC63D6-1349-4BFC-9A04-7548D1DB8E1F": [`CoolWhite`, `MediumWhite`, `WarmWhite`],
     "7B365530-A4DF-44AD-AEF5-225472BE02AE": [`CoolWhite`, `WarmWhite`],
-    "B074A2D3-0C40-45A7-844A-7C2721E0B267": [`Hue`, `Saturation`]
+    "B074A2D3-0C40-45A7-844A-7C2721E0B267": [`Hue`, `Saturation`],
   };
 
   let selectedColorTable = Object.keys(colorTables).find(
     colorTable => colorTables[colorTable].every(
-      color => colorChannels.some(ch => ch.name === color)
-    )
+      color => colorChannels.some(ch => ch.name === color),
+    ),
   );
 
   const has16bitHue = colorChannels.some(ch => ch.name === `Hue` && ch.size === 16);
@@ -137,18 +137,18 @@ function getCommands(mode) {
             {
               actions: [{
                 dmx: channelIndex,
-                value: cap.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT)
+                value: cap.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
               }],
-              wait: 0 // this is apparently the delay before this step is activated
+              wait: 0, // this is apparently the delay before this step is activated
             },
             {
               actions: [{
                 dmx: channelIndex,
-                value: -1
+                value: -1,
               }],
-              wait: cap.hold.getBaseUnitEntity().number
-            }
-          ]
+              wait: cap.hold.getBaseUnitEntity().number,
+            },
+          ],
         });
       }
     });
@@ -182,7 +182,7 @@ function getColorSourceChannels(mode, hasIntensity) {
       ranges: [],
       size: 8,
       snap: false,
-      type: getColorSourceChannelType(channel)
+      type: getColorSourceChannelType(channel),
     };
 
     if (channelJson.type === CHANNEL_TYPE_COLOR) {
@@ -233,12 +233,12 @@ function getColorSourceChannels(mode, hasIntensity) {
     channelJson.highlight = scaleDmxValue(
       channel.getHighlightValueWithResolution(channelResolution),
       channelResolution,
-      CoarseChannel.RESOLUTION_16BIT
+      CoarseChannel.RESOLUTION_16BIT,
     );
     channelJson.home = scaleDmxValue(
       channel.getDefaultValueWithResolution(channelResolution),
       channelResolution,
-      CoarseChannel.RESOLUTION_16BIT
+      CoarseChannel.RESOLUTION_16BIT,
     );
 
     channelJson.invert = channel.isInverted;
@@ -251,7 +251,7 @@ function getColorSourceChannels(mode, hasIntensity) {
           begin: dmxRange.start,
           default: cap.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
           end: dmxRange.end,
-          label: cap.name
+          label: cap.name,
         };
 
         if (cap.colors && cap.colors.allColors.length === 1) {
@@ -259,7 +259,7 @@ function getColorSourceChannels(mode, hasIntensity) {
           capJson.media = {
             r: parseInt(color.slice(1, 3), 16),
             g: parseInt(color.slice(3, 5), 16),
-            b: parseInt(color.slice(5, 7), 16)
+            b: parseInt(color.slice(5, 7), 16),
           };
         }
 

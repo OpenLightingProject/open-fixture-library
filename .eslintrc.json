@@ -37,8 +37,8 @@
     "vue/brace-style": ["error", "stroustrup"],
     "camelcase": "error",
     "vue/camelcase": "error",
-    "comma-dangle": ["error", "never"],
-    "vue/comma-dangle": ["error", "never"],
+    "comma-dangle": ["error", "always-multiline"],
+    "vue/comma-dangle": ["error", "always-multiline"],
     "comma-spacing": "error",
     "comma-style": "error",
     "complexity": ["warn", 7],
@@ -66,6 +66,7 @@
     "jsdoc/require-description": "off",
     "jsdoc/require-description-complete-sentence": "off",
     "jsdoc/require-jsdoc": ["warn", {
+      "enableFixer": false,
       "require": {
         "FunctionDeclaration": true,
         "MethodDefinition": true,
@@ -92,7 +93,6 @@
     "no-confusing-arrow": ["error", { "allowParens": true }],
     "no-bitwise": "error",
     "no-console": "off",
-    "no-dupe-else-if": "error",
     "no-else-return": ["error", { "allowElseIf": false }],
     "no-irregular-whitespace": "error",
     "vue/no-irregular-whitespace": "error",
@@ -115,6 +115,7 @@
     "prefer-rest-params": "error",
     "prefer-template": "error",
     "quotes": ["error", "backtick", { "allowTemplateLiterals": true }],
+    "radix": "error",
     "security/detect-child-process": "off",
     "security/detect-non-literal-fs-filename": "off",
     "security/detect-non-literal-require": "off",
@@ -191,6 +192,7 @@
   },
   "settings": {
     "jsdoc": {
+      "mode": "typescript",
       "tagNamePreference": {
         "augments": "extends",
         "class": "constructor",

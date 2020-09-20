@@ -125,7 +125,7 @@ select {
     box-shadow: 0 2px 2px rgba(#000, 0.2);
     transition: border-radius 0.2s, background-color 0.2s;
 
-    /* down arrow */
+    // down arrow
     &::before {
       content: '';
       display: block;
@@ -168,7 +168,7 @@ select {
     }
   }
 
-  /* separate rule since unsupporting browsers skip the whole rule */
+  // separate rule since unsupporting browsers skip the whole rule
   &:focus-within > ul {
     left: 0;
   }
@@ -200,7 +200,7 @@ select {
   position: relative;
 }
 
-/* move download button to the right */
+// move download button to the right
 @media (min-width: 650px) {
   .fixture-header {
     display: -ms-flexbox;
@@ -235,27 +235,25 @@ select {
 </style>
 
 <script>
-import plugins from '../../plugins/plugins.json';
-
 export default {
   props: {
     // how many fixtures will be downloaded, if !isSingle?
     fixtureCount: {
       type: Number,
       required: false,
-      default: 0
+      default: 0,
     },
     // fixtures from the editor, not yet submitted
     editorFixtures: {
       type: Object,
       required: false,
-      default: undefined
+      default: undefined,
     },
     // the manufacturer key and fixture key of a submitted fixture
     fixtureKey: {
       type: String,
       required: false,
-      default: undefined
+      default: undefined,
     },
     // the button style: default, 'home' or 'select'
     buttonStyle: {
@@ -264,24 +262,28 @@ export default {
       default: `default`,
       validator(buttonStyle) {
         return [`default`, `home`, `select`].includes(buttonStyle);
-      }
+      },
     },
     // show the help box
     showHelp: {
       type: Boolean,
       required: false,
-      default: true
-    }
+      default: true,
+    },
   },
   data() {
     return {
-      exportPlugins: plugins.exportPlugins.map(
-        pluginKey => ({
-          key: pluginKey,
-          name: plugins.data[pluginKey].name
-        })
-      )
+      exportPlugins: [],
     };
+  },
+  async fetch() {
+    const plugins = await this.$axios.$get(`/api/v1/plugins`);
+    this.exportPlugins = plugins.exportPlugins.map(
+      pluginKey => ({
+        key: pluginKey,
+        name: plugins.data[pluginKey].name,
+      }),
+    );
   },
   computed: {
     // returns whether we're handling only one single fixture here
@@ -306,7 +308,7 @@ export default {
       }
 
       return `/download`;
-    }
+    },
   },
   methods: {
     downloadDataAsFile(blob, filename = ``) {
@@ -345,7 +347,7 @@ export default {
       const response = await this.$axios.post(
         `${this.baseLink}.${pluginKey}`,
         this.editorFixtures,
-        { responseType: `blob` }
+        { responseType: `blob` },
       );
 
       if (response.data.error) {
@@ -395,7 +397,7 @@ export default {
 
       // download the (possibly not yet submitted) editor fixtures
       this.formattedDownload(pluginKey);
-    }
-  }
+    },
+  },
 };
 </script>

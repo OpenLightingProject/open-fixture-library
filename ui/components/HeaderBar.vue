@@ -171,7 +171,6 @@ header {
 }
 
 
-/* Tablet */
 @media (max-width: $tablet) {
   header {
     nav {
@@ -201,7 +200,6 @@ header {
   }
 }
 
-/* Phone */
 @media (max-width: $phone) {
   header {
     .home-logo {
@@ -229,12 +227,12 @@ import ThemeSwitcher from './ThemeSwitcher.vue';
 
 export default {
   components: {
-    ThemeSwitcher
+    ThemeSwitcher,
   },
   data() {
     return {
       searchQuery: this.$router.history.current.query.q || ``,
-      searchFieldFocused: false
+      searchFieldFocused: false,
     };
   },
   mounted() {
@@ -251,12 +249,12 @@ export default {
       this.$router.push({
         path: `/search`,
         query: {
-          q: this.searchQuery
-        }
+          q: this.searchQuery,
+        },
       });
       this.focusContent();
-    }
-  }
+    },
+  },
 };
 </script>
 

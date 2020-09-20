@@ -10,7 +10,7 @@
 </template>
 
 <style lang="scss" scoped>
-/deep/ details:nth-last-of-type(1):not([open]) {
+::v-deep details:nth-last-of-type(1):not([open]) {
   margin-bottom: 1rem;
 }
 </style>
@@ -20,29 +20,29 @@ import EditorWheelSlot from './EditorWheelSlot.vue';
 
 export default {
   components: {
-    EditorWheelSlot
+    EditorWheelSlot,
   },
   props: {
     capability: {
       type: Object,
-      required: true
+      required: true,
     },
     channel: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   computed: {
     slotDetailNumbers() {
       const slotNumbers = [
         this.capability.typeData.slotNumber,
         this.capability.typeData.slotNumberStart,
-        this.capability.typeData.slotNumberEnd
+        this.capability.typeData.slotNumberEnd,
       ].filter(slotNumber => typeof slotNumber === `number`);
 
       if (slotNumbers.length === 0) {
@@ -55,7 +55,7 @@ export default {
 
       // array of integers from min to max: [min, min+1, …, max-1, max]
       const slotNumbersInRange = Array.apply(null, Array(length)).map(
-        (item, index) => min + index
+        (item, index) => min + index,
       ).filter(slotNumber => slotNumber >= 1);
 
       if (slotNumbers[slotNumbers.length - 1] < slotNumbers[0]) {
@@ -63,7 +63,7 @@ export default {
       }
 
       return slotNumbersInRange;
-    }
-  }
+    },
+  },
 };
 </script>

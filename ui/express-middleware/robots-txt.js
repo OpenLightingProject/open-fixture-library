@@ -3,7 +3,7 @@ const packageJson = require(`../../package.json`);
 
 module.exports = function(req, res) {
   const lines = [
-    `User-agent: *`
+    `User-agent: *`,
   ];
 
   if (process.env.ALLOW_SEARCH_INDEXING === `allowed`) {
@@ -11,7 +11,7 @@ module.exports = function(req, res) {
       ...plugins.exportPlugins.map(pluginKey => `Disallow: /*.${pluginKey}$`),
       `Allow: /`,
       ``,
-      `Sitemap: ${packageJson.homepage}sitemap.xml`
+      `Sitemap: ${packageJson.homepage}sitemap.xml`,
     );
   }
   else {

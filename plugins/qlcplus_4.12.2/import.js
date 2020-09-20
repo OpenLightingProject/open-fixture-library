@@ -8,7 +8,7 @@ const {
   getCapabilityFromChannelPreset,
   getCapabilityFromCapabilityPreset,
   capabilityPresets,
-  importHelpers
+  importHelpers,
 } = require(`./presets.js`);
 
 module.exports.version = `1.1.0`;
@@ -26,7 +26,7 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
   const warnings = [];
 
   const fixture = {
-    $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`
+    $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
   };
 
   const xml = await promisify(parser.parseString)(buffer.toString());
@@ -40,7 +40,7 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
   const manufacturers = {};
   if (!(manKey in oflManufacturers)) {
     manufacturers[manKey] = {
-      name: qlcPlusFixture.Manufacturer[0]
+      name: qlcPlusFixture.Manufacturer[0],
     };
     warnings.push(`Please check if manufacturer is correct and add manufacturer URL.`);
   }
@@ -59,8 +59,8 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
     importPlugin: {
       plugin: `qlcplus_4.12.1`,
       date: timestamp,
-      comment: `created by ${qlcPlusFixture.Creator[0].Name[0]} (version ${qlcPlusFixture.Creator[0].Version[0]})`
-    }
+      comment: `created by ${qlcPlusFixture.Creator[0].Name[0]} (version ${qlcPlusFixture.Creator[0].Version[0]})`,
+    },
   };
 
   if (!(`Mode` in qlcPlusFixture)) {
@@ -90,11 +90,11 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
   return {
     manufacturers,
     fixtures: {
-      [fixKey]: fixture
+      [fixKey]: fixture,
     },
     warnings: {
-      [fixKey]: warnings
-    }
+      [fixKey]: warnings,
+    },
   };
 };
 
@@ -128,7 +128,7 @@ function addOflFixturePhysical(fixture, qlcPlusFixture) {
 
     if (qlcPlusFixture.Type[0] === `LED Bar (Pixels)`) {
       fixture.physical.matrixPixels = {
-        spacing: [0, 0, 0]
+        spacing: [0, 0, 0],
       };
     }
   }
@@ -146,8 +146,8 @@ function getOflMatrix(qlcPlusFixture) {
     .map(obj => obj.Physical[0].Layout[0]);
 
   if (physicalLayouts) {
-    const maxWidth = Math.max(...physicalLayouts.map(layout => parseInt(layout.$.Width)));
-    const maxHeight = Math.max(...physicalLayouts.map(layout => parseInt(layout.$.Height)));
+    const maxWidth = Math.max(...physicalLayouts.map(layout => parseInt(layout.$.Width, 10)));
+    const maxHeight = Math.max(...physicalLayouts.map(layout => parseInt(layout.$.Height, 10)));
 
     matrix.pixelCount = [maxWidth, maxHeight, 1];
   }
@@ -158,7 +158,7 @@ function getOflMatrix(qlcPlusFixture) {
 const slotTypeFunctions = {
   Open: {
     isSlotType: (cap, chGroup, capPreset) => cap._ === `Open` || cap.$.Res1 === `Others/open.svg` || cap.$.Res === `Others/open.svg`,
-    addSlotProperties: (cap, slot) => {}
+    addSlotProperties: (cap, slot) => {},
   },
   Gobo: {
     isSlotType: (cap, chGroup, capPreset) => (capPreset ? capPreset === `GoboMacro` : chGroup === `Gobo`),
@@ -186,7 +186,7 @@ const slotTypeFunctions = {
       if (!useResourceName) {
         slot.name = cap._;
       }
-    }
+    },
   },
   Color: {
     isSlotType: (cap, chGroup, capPreset) => (capPreset ? [`ColorMacro`, `ColorDoubleMacro`].includes(capPreset) : chGroup === `Colour`),
@@ -200,7 +200,7 @@ const slotTypeFunctions = {
       if (colors.length > 0) {
         slot.colors = colors;
       }
-    }
+    },
   },
   Prism: {
     isSlotType: (cap, chGroup, capPreset) => (capPreset ? capPreset === `PrismEffectOn` : chGroup === `Prism`),
@@ -208,9 +208,9 @@ const slotTypeFunctions = {
       slot.name = cap._;
 
       if (`Res1` in cap.$) {
-        slot.facets = parseInt(cap.$.Res1);
+        slot.facets = parseInt(cap.$.Res1, 10);
       }
-    }
+    },
   },
 
   // default (has to be the last element!)
@@ -218,8 +218,8 @@ const slotTypeFunctions = {
     isSlotType: (cap, chGroup, capPreset) => true,
     addSlotProperties: (cap, slot) => {
       slot.name = cap._;
-    }
-  }
+    },
+  },
 };
 
 /**
@@ -234,7 +234,7 @@ function getOflWheels(qlcPlusFixture) {
     const channelName = channel.$.Name;
 
     const hasGoboPresetCap = (channel.Capability || []).some(
-      cap => [`GoboMacro`, `GoboShakeMacro`].includes(cap.$.Preset)
+      cap => [`GoboMacro`, `GoboShakeMacro`].includes(cap.$.Preset),
     );
 
     const isWheelChannel = /wheel\b/i.test(channelName) || hasGoboPresetCap;
@@ -242,7 +242,7 @@ function getOflWheels(qlcPlusFixture) {
 
     if (isWheelChannel && !isRotationChannel) {
       wheels[channelName] = {
-        slots: getSlots(channel)
+        slots: getSlots(channel),
       };
     }
   });
@@ -270,11 +270,11 @@ function getOflWheels(qlcPlusFixture) {
       }
 
       const foundSlotType = Object.keys(slotTypeFunctions).find(
-        slotType => slotTypeFunctions[slotType].isSlotType(capability, qlcPlusChannel.Group[0]._, capabilityPreset)
+        slotType => slotTypeFunctions[slotType].isSlotType(capability, qlcPlusChannel.Group[0]._, capabilityPreset),
       );
 
       const slot = {
-        type: foundSlotType
+        type: foundSlotType,
       };
 
       slotTypeFunctions[foundSlotType].addSlotProperties(capability, slot);
@@ -289,7 +289,7 @@ function getOflWheels(qlcPlusFixture) {
 
 const parserPerChannelType = {
   Nothing: () => ({
-    type: `NoFunction`
+    type: `NoFunction`,
   }),
   Intensity: ({ qlcPlusChannel, capabilityName }) => {
     const cap = {};
@@ -345,7 +345,7 @@ const parserPerChannelType = {
 
     const cap = {
       type: `WheelSlot`,
-      slotNumber: index + 1
+      slotNumber: index + 1,
     };
 
     cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
@@ -360,7 +360,7 @@ const parserPerChannelType = {
   Effect: ({ capabilityName }) => {
     const cap = {
       type: `Effect`,
-      effectName: `` // set it first here so effectName is before speedStart/speedEnd
+      effectName: ``, // set it first here so effectName is before speedStart/speedEnd
     };
     cap.effectName = importHelpers.getSpeedGuessedComment(capabilityName, cap);
 
@@ -382,12 +382,12 @@ const parserPerChannelType = {
   },
   Maintenance: ({ capabilityName }) => ({
     type: `Maintenance`,
-    comment: capabilityName
+    comment: capabilityName,
   }),
   Pan: ({ channelName, capabilityName, panMax }) => {
     if (channelName.match(/continuous/i)) {
       const cap = {
-        type: `PanContinuous`
+        type: `PanContinuous`,
       };
       cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
 
@@ -401,13 +401,13 @@ const parserPerChannelType = {
     }
 
     return Object.assign(importHelpers.getPanTiltCap(`Pan`, panMax), {
-      comment: capabilityName
+      comment: capabilityName,
     });
   },
   Tilt: ({ channelName, capabilityName, tiltMax }) => {
     if (channelName.match(/continuous/i)) {
       const cap = {
-        type: `TiltContinuous`
+        type: `TiltContinuous`,
       };
       cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
 
@@ -421,16 +421,16 @@ const parserPerChannelType = {
     }
 
     return Object.assign(importHelpers.getPanTiltCap(`Tilt`, tiltMax), {
-      comment: capabilityName
+      comment: capabilityName,
     });
   },
   Prism: ({ capabilityName }) => ({
     type: `Prism`,
-    comment: capabilityName
+    comment: capabilityName,
   }),
   Shutter: ({ capabilityName }) => {
     const cap = {
-      type: `ShutterStrobe`
+      type: `ShutterStrobe`,
     };
 
     const shutterEffects = {
@@ -438,11 +438,11 @@ const parserPerChannelType = {
       Open: /^(?:(?:Shutter |Strobe )?Open|Full?)$/i,
       Pulse: /puls/i,
       RampUp: /ramp\s*up/i,
-      RampDown: /ramp\s*down/i
+      RampDown: /ramp\s*down/i,
     };
 
     cap.shutterEffect = Object.keys(shutterEffects).find(
-      shutterEffect => capabilityName.match(shutterEffects[shutterEffect])
+      shutterEffect => capabilityName.match(shutterEffects[shutterEffect]),
     ) || `Strobe`;
 
     if ([`Open`, `Closed`].includes(cap.shutterEffect)) {
@@ -492,7 +492,7 @@ const parserPerChannelType = {
     }
 
     return cap;
-  }
+  },
 };
 
 /**
@@ -505,7 +505,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
   const channel = {
     fineChannelAliases: [],
     dmxValueResolution: `8bit`,
-    defaultValue: parseInt(qlcPlusChannel.$.Default) || 0
+    defaultValue: parseInt(qlcPlusChannel.$.Default, 10) || 0,
   };
 
   const physicals = qlcPlusFixture.Mode.concat(qlcPlusFixture)
@@ -515,10 +515,10 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
   const [panMax, tiltMax] = [`PanMax`, `TiltMax`].map(
     prop => Math.max(...physicals.map(physical => {
       if (physical.Focus && prop in physical.Focus[0].$) {
-        return parseInt(physical.Focus[0].$[prop]) || 0;
+        return parseInt(physical.Focus[0].$[prop], 10) || 0;
       }
       return 0;
-    }))
+    })),
   );
 
   const channelName = qlcPlusChannel.$.Name;
@@ -529,7 +529,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
   }
   else if (`Capability` in qlcPlusChannel) {
     channel.capabilities = qlcPlusChannel.Capability.map(
-      cap => getOflCapability(cap)
+      cap => getOflCapability(cap),
     );
   }
   else {
@@ -537,8 +537,8 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
       _: `0-100%`,
       $: {
         Min: `0`,
-        Max: `255`
-      }
+        Max: `255`,
+      },
     })];
   }
 
@@ -551,8 +551,8 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
    */
   function getOflCapability(qlcPlusCapability) {
     const cap = {
-      dmxRange: [parseInt(qlcPlusCapability.$.Min), parseInt(qlcPlusCapability.$.Max)],
-      type: ``
+      dmxRange: [parseInt(qlcPlusCapability.$.Min, 10), parseInt(qlcPlusCapability.$.Max, 10)],
+      type: ``,
     };
 
     const trimmedChannelName = qlcPlusChannel.$.Name.trim();
@@ -570,7 +570,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
       res1: qlcPlusCapability.$.Res1,
       res2: qlcPlusCapability.$.Res2,
       panMax,
-      tiltMax
+      tiltMax,
     };
 
     const capPreset = qlcPlusCapability.$.Preset;
@@ -755,7 +755,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
  */
 function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
   const mode = {
-    name: qlcPlusMode.$.Name.replace(/\s+mode|mode\s+/ig, ``)
+    name: qlcPlusMode.$.Name.replace(/\s+mode|mode\s+/ig, ``),
   };
 
   const match = mode.name.match(/(\d+)(?:\s+|-)?(?:channels?|chan|ch)/i);
@@ -775,7 +775,7 @@ function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
 
   mode.channels = [];
   for (const ch of (qlcPlusMode.Channel || [])) {
-    mode.channels[parseInt(ch.$.Number)] = ch._;
+    mode.channels[parseInt(ch.$.Number, 10)] = ch._;
   }
 
   if (`Head` in qlcPlusMode) {
@@ -784,7 +784,7 @@ function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
         return;
       }
 
-      const channelList = head.Channel.map(ch => mode.channels[parseInt(ch)]).join(`, `);
+      const channelList = head.Channel.map(ch => mode.channels[parseInt(ch, 10)]).join(`, `);
 
       warningsArray.push(`Please add ${mode.name} mode's Head #${index + 1} to the fixture's matrix. The included channels were ${channelList}.`);
     });
@@ -802,7 +802,7 @@ function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
   const fineChannelRegex = /\s*fine\s*|\s*16[-_\s]*bit\s*/i;
 
   const fineChannels = qlcPlusFixture.Channel.filter(
-    channel => (`Group` in channel && channel.Group[0].$.Byte === `1`) || (`Preset` in channel.$ && channel.$.Preset.endsWith(`Fine`))
+    channel => (`Group` in channel && channel.Group[0].$.Byte === `1`) || (`Preset` in channel.$ && channel.$.Preset.endsWith(`Fine`)),
   );
 
   for (const qlcPlusFineChannel of fineChannels) {
@@ -841,7 +841,7 @@ function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
       const coarseChannelPreset = qlcPlusFineChannel.$.Preset.slice(0, -4);
 
       const coarseChannels = qlcPlusFixture.Channel.filter(
-        coarseChannel => coarseChannel.$.Preset === coarseChannelPreset
+        coarseChannel => coarseChannel.$.Preset === coarseChannelPreset,
       );
       if (coarseChannels.length === 1) {
         return coarseChannels[0].$.Name;
@@ -858,9 +858,9 @@ function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
         }
 
         const coarseChannelGroupName = coarseChannel.Group[0]._;
-        const coarseChannelGroupByte = parseInt(coarseChannel.Group[0].$.Byte);
+        const coarseChannelGroupByte = coarseChannel.Group[0].$.Byte;
 
-        return coarseChannelGroupName === fineChannelGroupName && coarseChannelGroupByte === 0;
+        return coarseChannelGroupName === fineChannelGroupName && coarseChannelGroupByte === `0`;
       });
 
       if (coarseChannels.length === 1) {
@@ -878,7 +878,7 @@ function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
     const coarseChannelKey = fineChannelKey.replace(fineChannelRegex, ``);
 
     return Object.keys(fixture.availableChannels).find(
-      key => key === coarseChannelKey || key.replace(fineChannelKey, ``).match(/^(?:\s+|\s+coarse)$/i)
+      key => key === coarseChannelKey || key.replace(fineChannelKey, ``).match(/^(?:\s+|\s+coarse)$/i),
     );
   }
 }
@@ -908,8 +908,8 @@ function addSwitchingChannels(fixture, qlcPlusFixture) {
             default: alias.$.Channel,
             modes: [alias.$.Mode],
             switchTo: {
-              [index]: alias.$.With
-            }
+              [index]: alias.$.With,
+            },
           });
         }
       });
@@ -928,7 +928,7 @@ function addSwitchingChannels(fixture, qlcPlusFixture) {
 
         const otherSwitchTo = otherSwitchChannel.switchTo;
         const switchToSame = switchToEntries.length === Object.keys(otherSwitchTo).length && switchToEntries.every(
-          ([capIndex, switchToChannel]) => otherSwitchTo[capIndex] === switchToChannel
+          ([capIndex, switchToChannel]) => otherSwitchTo[capIndex] === switchToChannel,
         );
 
         if (!switchToSame) {

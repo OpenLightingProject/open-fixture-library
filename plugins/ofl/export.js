@@ -35,13 +35,13 @@ module.exports.export = async function exportOfl(fixtures, options) {
       name: `${fixture.manufacturer.key}/${fixture.key}.json`,
       content: fixtureJsonStringify(jsonData),
       mimetype: `application/ofl-fixture`,
-      fixtures: [fixture]
+      fixtures: [fixture],
     };
   });
 
   // manufacturers.json file
   const usedManufacturerData = {
-    $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${displayedPluginVersion}/schemas/manufacturers.json`
+    $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${displayedPluginVersion}/schemas/manufacturers.json`,
   };
   for (const man of Object.keys(manufacturers).sort()) {
     if (usedManufacturers.has(man)) {
@@ -51,7 +51,7 @@ module.exports.export = async function exportOfl(fixtures, options) {
   files.push({
     name: `manufacturers.json`,
     content: `${JSON.stringify(usedManufacturerData, null, 2)}\n`,
-    mimetype: `application/ofl-manufacturers`
+    mimetype: `application/ofl-manufacturers`,
   });
 
   return files;

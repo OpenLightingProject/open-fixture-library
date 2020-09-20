@@ -11,7 +11,7 @@ const testFixtures = require(`../tests/test-fixtures.json`);
 const args = minimist(process.argv.slice(2), {
   string: [`p`],
   boolean: [`h`],
-  alias: { p: `plugin`, h: `help` }
+  alias: { p: `plugin`, h: `help` },
 });
 
 const helpMessage = [
@@ -20,7 +20,7 @@ const helpMessage = [
   `Usage: node ${path.relative(process.cwd(), __filename)} -p <plugin> [ <fixtures> ]`,
   `Options:`,
   `  --plugin,   -p: Key of the plugin whose export tests should be called`,
-  `  --help,     -h: Show this help message.`
+  `  --help,     -h: Show this help message.`,
 ].join(`\n`);
 
 if (args.help) {
@@ -48,12 +48,12 @@ if (pluginData.exportTests.length === 0) {
 let fixtures;
 if (args._.length === 0) {
   fixtures = testFixtures.map(
-    fixture => fixtureFromRepository(fixture.man, fixture.key)
+    fixture => fixtureFromRepository(fixture.man, fixture.key),
   );
 }
 else {
   fixtures = args._.map(
-    relativePath => fixtureFromFile(path.join(process.cwd(), relativePath))
+    relativePath => fixtureFromFile(path.join(process.cwd(), relativePath)),
   );
 }
 
@@ -63,7 +63,7 @@ const pluginExport = require(path.join(__dirname, `../plugins`, args.plugin, `ex
   try {
     const files = await pluginExport.export(fixtures, {
       baseDir: path.join(__dirname, `..`),
-      date: new Date()
+      date: new Date(),
     });
 
     await Promise.all(pluginData.exportTests.map(async testKey => {
@@ -78,7 +78,7 @@ const pluginExport = require(path.join(__dirname, `../plugins`, args.plugin, `ex
           const errors = Array.isArray(err) ? err : [err];
 
           return [`${chalk.red(`[FAIL]`)} ${file.name}`].concat(
-            errors.map(error => `- ${error}`)
+            errors.map(error => `- ${error}`),
           ).join(`\n`);
         }
       }));

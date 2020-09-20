@@ -21,7 +21,7 @@ const MAX_OPZ_FIXTURES = 16;
 module.exports.export = async function exportOpZ(fixtures, options) {
   const exportJson = {
     profiles: [],
-    config: []
+    config: [],
   };
 
   const usedKnobs = {};
@@ -35,14 +35,14 @@ module.exports.export = async function exportOpZ(fixtures, options) {
       // add profile
       exportJson.profiles.push({
         name: modeName,
-        channels: mode.channels.map(channel => getOpZChannelType(channel, fixtureKey))
+        channels: mode.channels.map(channel => getOpZChannelType(channel, fixtureKey)),
       });
 
       // add config
       if (modeIndex === 0 && exportJson.config.length < MAX_OPZ_FIXTURES) {
         exportJson.config.push({
           fixture: exportJson.config.length + 1,
-          profile: modeName
+          profile: modeName,
         });
       }
     });
@@ -53,7 +53,7 @@ module.exports.export = async function exportOpZ(fixtures, options) {
     name: `dmx.json`,
     content: JSON.stringify(exportJson, null, 2),
     mimetype: `application/json`,
-    fixtures
+    fixtures,
   }];
 
 
@@ -92,11 +92,11 @@ module.exports.export = async function exportOpZ(fixtures, options) {
       // 'knob7': () => false,
       // 'knob8': () => false,
       // 'on': () => false,
-      'off': () => channel.type === `Maintenance`
+      'off': () => channel.type === `Maintenance`,
     };
 
     const channelType = Object.keys(opZChannelTypes).find(
-      type => opZChannelTypes[type]()
+      type => opZChannelTypes[type](),
     );
     if (channelType) {
       return channelType;

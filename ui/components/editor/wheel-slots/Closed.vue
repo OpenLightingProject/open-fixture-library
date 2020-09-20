@@ -7,18 +7,18 @@ export default {
   props: {
     wheelSlot: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
-      defaultData: {}
+      defaultData: {},
     };
-  }
+  },
 };
 </script>

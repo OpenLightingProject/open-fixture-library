@@ -1,36 +1,5 @@
 <template>
   <div>
-    <header class="fixture-header">
-      <div class="title">
-        <h1>
-          <NuxtLink :to="`/${manKey}`">{{ fixture.manufacturer.name }}</NuxtLink>
-          {{ fixture.name }}
-          <code v-if="fixture.hasShortName">{{ fixture.shortName }}</code>
-        </h1>
-
-        <section class="fixture-meta">
-          <span class="last-modify-date">Last modified:&nbsp;<OflTime :date="fixture.meta.lastModifyDate" /></span>
-          <span class="create-date">Created:&nbsp;<OflTime :date="fixture.meta.createDate" /></span>
-          <span class="authors">Author{{ fixture.meta.authors.length === 1 ? `` : `s` }}:&nbsp;{{ fixture.meta.authors.join(`, `) }}</span>
-          <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manKey}/${fixKey}.json`">Source</a></span>
-          <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manKey}/${fixKey}.json`">Revisions</a></span>
-
-          <ConditionalDetails v-if="fixture.meta.importPlugin !== null">
-            <template #summary>
-              Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <OflTime :date="fixture.meta.importDate" />.
-            </template>
-            <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>
-          </ConditionalDetails>
-        </section>
-      </div>
-
-      <DownloadButton :fixture-key="`${manKey}/${fixKey}`" />
-    </header>
-
-    <section v-if="$scopedSlots.notice" class="card yellow">
-      <slot name="notice" />
-    </section>
-
     <section :style="{ borderTopColor: manufacturerColor }" class="fixture-info card">
 
       <LabeledValue
@@ -87,7 +56,7 @@
         v-if="fixture.isHelpWanted"
         type="fixture"
         :context="fixture"
-        @help-wanted-clicked="openHelpWantedDialog" />
+        @help-wanted-clicked="$emit(`help-wanted-clicked`, $event)" />
 
       <LabeledValue
         v-if="fixture.rdm !== null"
@@ -134,7 +103,7 @@
         :key="mode.name"
         :mode="mode"
         :index="index"
-        @help-wanted-clicked="openHelpWantedDialog" />
+        @help-wanted-clicked="$emit(`help-wanted-clicked`, $event)" />
       <div class="clearfix" />
     </section>
 
@@ -160,51 +129,15 @@
         </a>
       </div>
     </section>
-
-    <section id="contribute">
-      <h2>Something wrong with this fixture definition?</h2>
-      <p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>
-      <div class="grid-3">
-        <a
-          v-if="isBrowser"
-          href="#"
-          class="card slim"
-          @click.prevent="() => openHelpWantedDialog({
-            context: fixture,
-            type: `fixture`
-          })">
-          <OflSvg name="comment-alert" class="left" /><span>Send information</span>
-        </a>
-        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Abug" rel="nofollow" class="card slim">
-          <OflSvg name="bug" class="left" /><span>Create issue on GitHub</span>
-        </a>
-        <a :href="mailtoUrl" class="card slim">
-          <OflSvg name="email" class="left" /><span>Send email</span>
-        </a>
-      </div>
-    </section>
-
-    <HelpWantedDialog v-model="helpWantedContext" :type="helpWantedType" />
   </div>
 </template>
 
 <style lang="scss" scoped>
-.fixture-meta {
-  margin: -1.5rem 0 1rem;
-  font-size: 0.8rem;
-  color: theme-color(text-secondary);
-
-  & > span:not(:last-child)::after {
-    content: ' | ';
-    padding: 0 0.7ex;
-  }
-}
-
 .fixture-info {
   border-top: 0.4rem solid transparent;
 }
 
-.comment /deep/ .value {
+.comment ::v-deep .value {
   white-space: pre-line;
 }
 
@@ -255,7 +188,6 @@
 
 <script>
 import register from '../../../fixtures/register.json';
-import plugins from '../../../plugins/plugins.json';
 
 import schemaProperties from '../../../lib/schema-properties.js';
 import Fixture from '../../../lib/model/Fixture.js';
@@ -263,13 +195,10 @@ import Fixture from '../../../lib/model/Fixture.js';
 import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
 
 import CategoryBadge from '../../components/CategoryBadge.vue';
-import ConditionalDetails from '../../components/ConditionalDetails.vue';
-import DownloadButton from '../../components/DownloadButton.vue';
 import FixturePageMatrix from '../../components/fixture-page/FixturePageMatrix.vue';
 import FixturePageMode from '../../components/fixture-page/FixturePageMode.vue';
 import FixturePagePhysical from '../../components/fixture-page/FixturePagePhysical.vue';
 import FixturePageWheel from '../../components/fixture-page/FixturePageWheel.vue';
-import HelpWantedDialog from '../../components/HelpWantedDialog.vue';
 import HelpWantedMessage from '../../components/HelpWantedMessage.vue';
 import LabeledValue from '../../components/LabeledValue.vue';
 
@@ -278,38 +207,32 @@ const VIDEOS_TO_EMBED = 2;
 export default {
   components: {
     CategoryBadge,
-    ConditionalDetails,
-    DownloadButton,
     FixturePageMatrix,
     FixturePageMode,
     FixturePagePhysical,
     FixturePageWheel,
-    HelpWantedDialog,
     HelpWantedMessage,
-    LabeledValue
+    LabeledValue,
   },
   mixins: [fixtureLinksMixin],
   props: {
     fixture: {
       type: Fixture,
-      required: true
+      required: true,
     },
     loadAllModes: {
       type: Boolean,
       required: false,
-      default: true
-    }
+      default: false,
+    },
   },
   data() {
     return {
-      manufacturerColor: register.colors[this.fixKey] || null,
-      plugins,
+      manufacturerColor: register.colors[this.fixture.manufacturer.key] || null,
       isBrowser: false,
-      helpWantedContext: null,
-      helpWantedType: ``,
       modeNumberLoadLimit: this.loadAllModes ? undefined : 5, // initially displayed modes, if limited
       modeNumberLoadThreshold: 15, // fixtures with more modes will be limited
-      modeNumberLoadIncrement: 10 // how many modes a button click will load
+      modeNumberLoadIncrement: 10, // how many modes a button click will load
     };
   },
   computed: {
@@ -318,14 +241,6 @@ export default {
     },
     fixKey() {
       return this.fixture.key;
-    },
-    githubRepoPath() {
-      const slug = process.env.TRAVIS_PULL_REQUEST_SLUG || process.env.TRAVIS_REPO_SLUG || `OpenLightingProject/open-fixture-library`;
-
-      return `https://github.com/${slug}`;
-    },
-    branch() {
-      return process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || `master`;
     },
     modesLimited() {
       return this.fixture.modes.length > this.modeNumberLoadThreshold;
@@ -370,7 +285,7 @@ export default {
 
         if (linkType === `video`) {
           linksOfType = linksOfType.filter(
-            url => !this.videos.some(video => video.url === url)
+            url => !this.videos.some(video => video.url === url),
           );
           linkDisplayNumber += this.videos.length;
         }
@@ -392,7 +307,7 @@ export default {
             title,
             type: linkType,
             iconName: this.linkTypeIconNames[linkType],
-            hostname: getHostname(url)
+            hostname: getHostname(url),
           });
 
           linkDisplayNumber++;
@@ -401,22 +316,12 @@ export default {
 
       return links;
     },
-    mailtoUrl() {
-      const subject = `Feedback for fixture '${this.manKey}/${this.fixKey}'`;
-      return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}`;
-    }
   },
   mounted() {
     if (process.browser) {
       this.isBrowser = true;
     }
   },
-  methods: {
-    openHelpWantedDialog(event) {
-      this.helpWantedContext = event.context;
-      this.helpWantedType = event.type;
-    }
-  }
 };
 
 
@@ -426,7 +331,7 @@ const supportedVideoFormats = {
     regex: /\.(?:mp4|avi)$/,
     displayType: url => getHostname(url),
     videoId: (url, match) => url,
-    startAt: (url, match) => 0
+    startAt: (url, match) => 0,
   },
 
   youtube: {
@@ -438,7 +343,7 @@ const supportedVideoFormats = {
     regex: /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]t=([0-9hms]+))?/,
     displayType: url => `YouTube`,
     videoId: (url, match) => match[1],
-    startAt: (url, match) => match[2] || 0
+    startAt: (url, match) => match[2] || 0,
   },
 
   vimeo: {
@@ -451,7 +356,7 @@ const supportedVideoFormats = {
     regex: /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([0-9hms]+))?/,
     displayType: url => `Vimeo`,
     videoId: (url, match) => match[1],
-    startAt: (url, match) => match[2] || 0
+    startAt: (url, match) => match[2] || 0,
   },
 
   facebook: {
@@ -462,8 +367,8 @@ const supportedVideoFormats = {
     regex: /^https:\/\/www\.facebook\.com\/[^/]+\/videos\/[^/]+\/(\d+)\/$/,
     displayType: url => `Facebook`,
     videoId: (url, match) => match[1],
-    startAt: (url, match) => 0
-  }
+    startAt: (url, match) => 0,
+  },
 
 };
 
@@ -485,7 +390,7 @@ function getEmbettableVideoData(url) {
         type,
         displayType: format.displayType(url),
         videoId: format.videoId(url, match),
-        startAt: format.startAt(url, match)
+        startAt: format.startAt(url, match),
       };
     }
   }

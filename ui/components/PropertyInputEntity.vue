@@ -80,61 +80,61 @@ import PropertyInputNumber from './PropertyInputNumber.vue';
 
 export default {
   components: {
-    PropertyInputNumber
+    PropertyInputNumber,
   },
   props: {
     schemaProperty: {
       type: Object,
-      required: true
+      required: true,
     },
     required: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     hint: {
       type: String,
       required: false,
-      default: null
+      default: null,
     },
     autoFocus: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     value: {
       type: null,
       required: false,
-      default: ``
+      default: ``,
     },
     associatedEntity: {
       type: null,
       required: false,
-      default: ``
+      default: ``,
     },
     minNumber: {
       type: Number,
       required: false,
-      default: null
+      default: null,
     },
     maxNumber: {
       type: Number,
       required: false,
-      default: null
+      default: null,
     },
     name: {
       type: String,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
       properties: schemaProperties,
       validationData: {
         'entity-complete': ``,
-        'entities-have-same-units': ``
-      }
+        'entities-have-same-units': ``,
+      },
     };
   },
   computed: {
@@ -148,9 +148,9 @@ export default {
     },
     unitNames() {
       return this.subSchemas.filter(
-        subSchema => `$ref` in subSchema && subSchema.$ref.includes(`#/units/`)
+        subSchema => `$ref` in subSchema && subSchema.$ref.includes(`#/units/`),
       ).map(
-        subSchema => subSchema.$ref.replace(/^(?:definitions\.json)?#\/units\//, ``)
+        subSchema => subSchema.$ref.replace(/^(?:definitions\.json)?#\/units\//, ``),
       );
     },
     units() {
@@ -164,7 +164,7 @@ export default {
         units[unitName] = {
           unitStr,
           displayStr: getUnitDisplayString(unitStr),
-          numberSchema
+          numberSchema,
         };
       }
 
@@ -191,7 +191,7 @@ export default {
           this.update(this.selectedNumber + this.units[newUnit].unitStr);
           this.$emit(`unit-selected`, this.units[newUnit].unitStr);
         }
-      }
+      },
     },
     hasNumber() {
       return hasNumber(this.selectedUnit, this.enumValues);
@@ -222,7 +222,7 @@ export default {
         else {
           this.update(newNumber + this.units[this.selectedUnit].unitStr);
         }
-      }
+      },
     },
     hasSameUnit() {
       if (!this.associatedEntity) {
@@ -236,7 +236,7 @@ export default {
       }
 
       return this.selectedUnit === otherFieldSelectedUnit;
-    }
+    },
   },
   mounted() {
     if (this.autoFocus) {
@@ -259,7 +259,7 @@ export default {
       }
 
       this.selectedUnit = Object.keys(this.units).find(
-        unitName => this.units[unitName].unitStr === newUnitString
+        unitName => this.units[unitName].unitStr === newUnitString,
       );
     },
     unitSelected() {
@@ -273,8 +273,8 @@ export default {
       if (!(event.target && event.relatedTarget) || event.target.closest(`.entity-input`) !== event.relatedTarget.closest(`.entity-input`)) {
         this.$emit(`blur`);
       }
-    }
-  }
+    },
+  },
 };
 
 /**

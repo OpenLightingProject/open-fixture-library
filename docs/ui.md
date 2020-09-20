@@ -13,7 +13,7 @@ Locally, running `npm run dev` starts the development server at  `http://localho
 *Note: for non-UI-related folders, see [README.md](README.md).*
 
 * `ui/`
-  - `api/` – Handlers that respond to AJAX resquests from the frontend
+  - `api/` – Handlers that respond to AJAX resquests from the frontend (see the [REST API reference](rest-api.md))
   - `assets/` – Icons, scripts, stylesheets, etc.
   - `components/` – Reusable Vue components
   - `express-middleware/` – Functions that directly hook into Express.js (the server side router)
@@ -34,7 +34,7 @@ We aim to support modern browsers without having to include too much polyfills /
 
 Have a look at [caniuse.com](https://caniuse.com) to see with which browser versions a JS, CSS or HTML feature works.
 
-Please stick to the [code style guidelines](CONTRIBUTING.md#code-style). If a function or syntax feature is not supported in the browsers listed above and is not transpiled by the build process automatically (just search for the function name in the JavaScript file loaded by the browser), you can include a polyfill for it in [`ui/plugins/polyfills.js`](ui/plugins/polyfills.js).
+Please stick to the [code style guidelines](CONTRIBUTING.md#code-style). If a function or syntax feature is not supported in the browsers listed above and is not transpiled by the build process automatically (just search for the function name in the JavaScript file loaded by the browser), you can include a polyfill for it in [`ui/plugins/polyfills.js`](../ui/plugins/polyfills.js).
 
 
 ## Deployment

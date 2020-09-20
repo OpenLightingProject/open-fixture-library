@@ -96,12 +96,12 @@ export default {
       required: true,
       validator(type) {
         return [`fixture`, `capability`, `plugin`].includes(type);
-      }
+      },
     },
     context: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     location() {
@@ -173,7 +173,7 @@ export default {
       const body = bodyLines.join(`\n`);
 
       return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    }
-  }
+    },
+  },
 };
 </script>
