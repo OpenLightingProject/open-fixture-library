@@ -62,12 +62,9 @@
         },
         {
           "dmxRange": [1, 5],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "Sound control",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "helpWanted": "Are the automatically added speed values correct?"
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true
         },
         {
           "dmxRange": [6, 10],
@@ -78,63 +75,126 @@
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Strobe"
+          "speedEnd": "fast"
         }
       ]
     },
-    "CH5 Modes": {
+    "Effect": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 28],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Strobe"
+          }
         },
         {
           "dmxRange": [29, 57],
-          "type": "Effect",
-          "effectName": "White"
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Strobe"
+          }
         },
         {
           "dmxRange": [58, 82],
-          "type": "Effect",
-          "effectName": "Amber"
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffbf00"],
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Strobe"
+          }
         },
         {
           "dmxRange": [83, 87],
           "type": "Effect",
-          "effectName": "Color Dreaming 1"
+          "effectName": "Color Dreaming 1",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [88, 92],
           "type": "Effect",
-          "effectName": "Color Dreaming 2"
+          "effectName": "Color Dreaming 2",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [93, 97],
           "type": "Effect",
-          "effectName": "Color Dreaming 3"
+          "effectName": "Color Dreaming 3",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [98, 163],
+          "type": "NoFunction",
+          "helpWanted": "Which mode is selected in this DMX range?",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [164, 168],
           "type": "Effect",
-          "effectName": "Color Change"
+          "effectPreset": "ColorJump",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [169, 245],
+          "type": "NoFunction",
+          "helpWanted": "Which mode is selected in this DMX range?",
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Effect Speed"
+          }
         },
         {
           "dmxRange": [246, 255],
           "type": "Effect",
           "effectName": "Sound Active",
-          "soundControlled": true
+          "soundControlled": true,
+          "switchChannels": {
+            "Strobe / Speed / Sensitivity": "Sound Sensitivity"
+          }
         }
       ]
     },
-    "Strobe/Speed/Sensitivity": {
-      "defaultValue": 0,
+    "Strobe": {
       "capability": {
-        "type": "Effect",
-        "effectName": "Strobe, Color speed, Sound sensitivity (depends on CH5)",
-        "soundControlled": true
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "off"
+        },
+        {
+          "dmxRange": [32, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
     }
   },
   "modes": [
@@ -172,8 +232,8 @@
         "White",
         "Amber",
         "Dimmer",
-        "Strobe/Speed/Sensitivity",
-        "CH5 Modes"
+        "Strobe / Speed / Sensitivity",
+        "Effect"
       ]
     }
   ]
