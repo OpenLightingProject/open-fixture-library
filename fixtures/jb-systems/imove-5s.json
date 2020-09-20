@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "iMove 5s",
-  "categories": ["Moving Head"],
+  "name": "iMove 5S",
+  "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Duende AV"],
-    "createDate": "2020-04-15",
-    "lastModifyDate": "2020-04-15"
+    "createDate": "2020-09-20",
+    "lastModifyDate": "2020-09-20"
   },
   "links": {
     "manual": [
@@ -20,11 +20,14 @@
   },
   "physical": {
     "dimensions": [290, 330, 380],
-    "weight": 14.5,
+    "weight": 12,
     "power": 250,
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "ELC 250W/24V"
+    },
+    "lens": {
+      "degreesMinMax": [16, 16]
     }
   },
   "wheels": {
