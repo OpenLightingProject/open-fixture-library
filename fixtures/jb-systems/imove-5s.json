@@ -223,7 +223,7 @@
           "slotNumber": 3
         },
         {
-          "dmxRange": [25, 34],
+          "dmxRange": [26, 34],
           "type": "WheelSlot",
           "slotNumber": 4
         },
@@ -467,6 +467,7 @@
         {
           "dmxRange": [128, 255],
           "type": "WheelRotation",
+          "wheel": "Color Wheel",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         }
