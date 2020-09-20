@@ -1,35 +1,33 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "LED SLS-5 BCL",
+  "name": "LED SLS-12 BCL",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Christian Hollbjär", "darth62"],
+    "authors": ["Flo Edelmann"],
     "createDate": "2020-09-20",
-    "lastModifyDate": "2020-09-20",
-    "importPlugin": {
-      "plugin": "qlcplus_4.12.1",
-      "date": "2020-04-17",
-      "comment": "created by Q Light Controller Plus (version 4.10.5 GIT)"
-    }
+    "lastModifyDate": "2020-09-20"
   },
   "links": {
     "manual": [
-      "https://www.steinigke.de/download/51915390-Manual-80943-1.300-eurolite-led-sls-5-bcl-5x5w-floor-de_en.pdf"
+      "https://www.steinigke.de/download/51915395-Manual-80943-1.300-eurolite-led-sls-12-bcl-12x5w-floor-de_en.pdf"
     ],
     "productPage": [
-      "https://www.steinigke.de/en/mpn51915390-eurolite-led-sls-5-bcl-5x5w-floor.html"
+      "https://www.steinigke.de/en/mpn51915395-eurolite-led-sls-12-bcl-12x5w-floor.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=cwewR_yjDso"
     ]
   },
   "physical": {
-    "dimensions": [230, 270, 110],
-    "weight": 3,
-    "power": 24,
+    "dimensions": [270, 310, 110],
+    "weight": 3.5,
+    "power": 60,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "5× 5W BCL LED (White+Amber)"
+      "type": "12× 5W BCL LED (White+Amber)"
     },
     "lens": {
-      "degreesMinMax": [20, 20]
+      "degreesMinMax": [23, 23]
     }
   },
   "availableChannels": {
