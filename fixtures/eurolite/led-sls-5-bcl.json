@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "LED SLS 5 BCL",
+  "name": "LED SLS-5 BCL",
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["Christian Hollbjär", "darth62"],
-    "createDate": "2020-04-17",
-    "lastModifyDate": "2020-04-17",
+    "createDate": "2020-09-20",
+    "lastModifyDate": "2020-09-20",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
       "date": "2020-04-17",
@@ -18,10 +18,10 @@
     "power": 24,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "5× 5W BCL LED (White+Amber)"
     },
     "lens": {
-      "degreesMinMax": [0, 20]
+      "degreesMinMax": [20, 20]
     }
   },
   "availableChannels": {
