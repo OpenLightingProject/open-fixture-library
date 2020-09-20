@@ -15,28 +15,28 @@ export default {
   props: {
     schemaProperty: {
       type: Object,
-      required: true
+      required: true,
     },
     required: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     value: {
       type: Boolean,
       required: false,
-      default: null
+      default: null,
     },
     name: {
       type: String,
       required: false,
-      default: null
+      default: null,
     },
     label: {
       type: String,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   computed: {
     localValue: {
@@ -45,14 +45,14 @@ export default {
       },
       set(newValue) {
         this.$emit(`input`, newValue ? true : null);
-      }
-    }
+      },
+    },
   },
   methods: {
     focus() {
       this.$refs.input.focus();
-    }
-  }
+    },
+  },
 };
 </script>
 

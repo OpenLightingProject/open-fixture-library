@@ -34,23 +34,23 @@ export default {
     type: {
       type: String,
       required: false,
-      default: () => ``
+      default: () => ``,
     },
     name: {
       type: String,
       required: false,
-      default: () => ``
+      default: () => ``,
     },
     colors: {
       type: Array,
       required: false,
-      default: () => []
+      default: () => [],
     },
     title: {
       type: String,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   render(createElement, context) {
     let svgMarkup;
@@ -73,7 +73,7 @@ export default {
           'Cold White': `#edefff`,
           UV: `#8800ff`,
           Lime: `#bfff00`,
-          Indigo: `#4b0082`
+          Indigo: `#4b0082`,
         };
         colors = [colorLookup[context.props.name]];
       }
@@ -87,10 +87,10 @@ export default {
     return createElement(`span`, Object.assign({}, context.data, {
       class: [`icon`, context.data.class],
       domProps: {
-        innerHTML: svgMarkup
-      }
+        innerHTML: svgMarkup,
+      },
     }));
-  }
+  },
 };
 
 

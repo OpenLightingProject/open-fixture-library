@@ -7,7 +7,7 @@ const chalk = require(`chalk`);
 const plugins = {
   importPlugins: [],
   exportPlugins: [],
-  data: {}
+  data: {},
 };
 
 const allPreviousVersions = {};
@@ -22,7 +22,7 @@ for (const pluginKey of fs.readdirSync(pluginDir)) {
   }
 
   const data = {
-    name: null
+    name: null,
   };
   plugins.data[pluginKey] = data;
 
@@ -37,7 +37,7 @@ for (const pluginKey of fs.readdirSync(pluginDir)) {
         allPreviousVersions[key] = {
           name,
           outdated: true,
-          newPlugin: pluginKey
+          newPlugin: pluginKey,
         };
       });
     }

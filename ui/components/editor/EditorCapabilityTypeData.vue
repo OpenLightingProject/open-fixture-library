@@ -126,40 +126,40 @@ export default {
     CapabilitySpeed,
     CapabilityTime,
     CapabilityMaintenance,
-    CapabilityGeneric
+    CapabilityGeneric,
   },
   model: {
-    prop: `capability`
+    prop: `capability`,
   },
   props: {
     capability: {
       type: Object,
-      required: true
+      required: true,
     },
     channel: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
+      default: null,
     },
     required: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
       properties: schemaProperties,
-      capabilityTypeHint: null
+      capabilityTypeHint: null,
     };
   },
   computed: {
     capabilityTypes() {
       return this.properties.capability.type.enum;
-    }
+    },
   },
   methods: {
     /**
@@ -208,7 +208,7 @@ export default {
       }
 
       this.capability.open = false;
-    }
-  }
+    },
+  },
 };
 </script>

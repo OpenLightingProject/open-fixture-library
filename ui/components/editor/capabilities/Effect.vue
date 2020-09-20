@@ -132,18 +132,18 @@ export default {
     EditorProportionalPropertySwitcher,
     LabeledInput,
     PropertyInputBoolean,
-    PropertyInputText
+    PropertyInputText,
   },
   props: {
     capability: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -165,8 +165,8 @@ export default {
         soundSensitivity: ``,
         soundSensitivityStart: null,
         soundSensitivityEnd: null,
-        comment: ``
-      }
+        comment: ``,
+      },
     };
   },
   computed: {
@@ -181,13 +181,13 @@ export default {
       }
 
       return resetProps;
-    }
+    },
   },
   methods: {
     changeEffectNameOrPreset(newValue) {
       this.capability.typeData.effectNameOrPreset = newValue;
       this.$nextTick(() => this.$refs.effectNameOrPresetInput.focus());
-    }
-  }
+    },
+  },
 };
 </script>

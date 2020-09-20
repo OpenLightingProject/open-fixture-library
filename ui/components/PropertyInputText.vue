@@ -17,36 +17,36 @@ export default {
   props: {
     schemaProperty: {
       type: Object,
-      required: true
+      required: true,
     },
     required: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     hint: {
       type: String,
       required: false,
-      default: null
+      default: null,
     },
     autoFocus: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     value: {
       type: null,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     validationData() {
       return {
         pattern: `pattern` in this.schemaProperty ? `${this.schemaProperty.pattern}` : null,
         minlength: `minLength` in this.schemaProperty ? `${this.schemaProperty.minLength}` : null,
-        maxlength: `maxLength` in this.schemaProperty ? `${this.schemaProperty.maxLength}` : null
+        maxlength: `maxLength` in this.schemaProperty ? `${this.schemaProperty.maxLength}` : null,
       };
-    }
+    },
   },
   mounted() {
     if (this.autoFocus) {
@@ -57,7 +57,7 @@ export default {
       this.$emit(`vf:validate`, newValidationData);
     }, {
       deep: true,
-      immediate: true
+      immediate: true,
     });
   },
   methods: {
@@ -69,8 +69,8 @@ export default {
     },
     onBlur() {
       this.$emit(`blur`, this.$refs.input.value);
-    }
-  }
+    },
+  },
 };
 </script>
 

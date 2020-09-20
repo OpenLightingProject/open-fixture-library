@@ -56,18 +56,18 @@ export default {
   components: {
     EditorProportionalPropertySwitcher,
     LabeledInput,
-    PropertyInputText
+    PropertyInputText,
   },
   props: {
     capability: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -77,14 +77,14 @@ export default {
         fogOutput: ``,
         fogOutputStart: null,
         fogOutputEnd: null,
-        comment: ``
-      }
+        comment: ``,
+      },
     };
   },
   computed: {
     fogTypes() {
       return this.properties.capabilityTypes.Fog.properties.fogType.enum;
-    }
-  }
+    },
+  },
 };
 </script>

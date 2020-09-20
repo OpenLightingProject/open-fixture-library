@@ -1,0 +1,139 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Open Fixture Library API",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://open-fixture-library.org/api/v1"
+    },
+    {
+      "url": "http://localhost:5000/api/v1"
+    }
+  ],
+  "paths": {
+    "/get-search-results": {
+      "$ref": "routes/get-search-results.json"
+    },
+    "/submit-feedback": {
+      "$ref": "routes/submit-feedback.json"
+    },
+    "/fixtures/from-editor": {
+      "$ref": "routes/fixtures/from-editor.json"
+    },
+    "/fixtures/import": {
+      "$ref": "routes/fixtures/import.json"
+    },
+    "/fixtures/submit": {
+      "$ref": "routes/fixtures/submit.json"
+    },
+    "/manufacturers": {
+      "$ref": "routes/manufacturers/index.json"
+    },
+    "/manufacturers/{manufacturerKey}": {
+      "$ref": "routes/manufacturers/_manufacturerKey.json"
+    },
+    "/plugins": {
+      "$ref": "routes/plugins/index.json"
+    },
+    "/plugins/{pluginKey}": {
+      "$ref": "routes/plugins/_pluginKey.json"
+    }
+  },
+  "components": {
+    "schemas": {
+      "FixtureCreateResult": {
+        "type": "object",
+        "properties": {
+          "manufacturers": {
+            "type": "object"
+          },
+          "fixtures": {
+            "type": "object"
+          },
+          "warnings": {
+            "type": "object"
+          },
+          "errors": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "manufacturers",
+          "fixtures",
+          "warnings",
+          "errors"
+        ],
+        "additionalProperties": false,
+        "example": {
+          "manufacturers": {
+            "man-key": {
+              "name": "Manufacturer name",
+              "website": "https://example.org"
+            }
+          },
+          "fixtures": {
+            "man-key/fix-key": {
+              "name": "Fixture name",
+              "$comment": "…"
+            }
+          },
+          "warnings": {
+            "man-key/fix-key": [
+              "Some warning for fixture man-key/fix-key."
+            ]
+          },
+          "errors": {
+            "man-key/fix-key": []
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        },
+        "required": ["error"],
+        "additionalProperties": false,
+        "example": {
+          "error": "Some error message."
+        }
+      }
+    },
+    "responses": {
+      "201-FixtureCreateResult": {
+        "description": "Fixture successfully imported",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/FixtureCreateResult"
+            }
+          }
+        }
+      },
+      "400-BadRequestError": {
+        "description": "Bad request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "404-NotFoundError": {
+        "description": "Not Found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      }
+    }
+  }
+}

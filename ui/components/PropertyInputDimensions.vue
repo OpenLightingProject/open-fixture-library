@@ -42,50 +42,50 @@ import PropertyInputNumber from './PropertyInputNumber.vue';
 
 export default {
   components: {
-    PropertyInputNumber
+    PropertyInputNumber,
   },
   model: {
-    prop: `dimensions`
+    prop: `dimensions`,
   },
   props: {
     dimensions: {
       type: Array,
       required: false,
-      default: null
+      default: null,
     },
     hints: {
       type: Array,
       required: false,
-      default: () => [`x`, `y`, `z`]
+      default: () => [`x`, `y`, `z`],
     },
     schemaProperty: {
       type: Object,
-      required: true
+      required: true,
     },
     unit: {
       type: String,
       required: false,
-      default: null
+      default: null,
     },
     required: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     name: {
       type: String,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       validationData: {
-        'complete-dimensions': ``
-      }
+        'complete-dimensions': ``,
+      },
     };
   },
   computed: {
@@ -95,7 +95,7 @@ export default {
       },
       set(xInput) {
         this.$emit(`input`, getDimensionsArray(xInput, this.y, this.z));
-      }
+      },
     },
     y: {
       get() {
@@ -103,7 +103,7 @@ export default {
       },
       set(yInput) {
         this.$emit(`input`, getDimensionsArray(this.x, yInput, this.z));
-      }
+      },
     },
     z: {
       get() {
@@ -111,11 +111,11 @@ export default {
       },
       set(zInput) {
         this.$emit(`input`, getDimensionsArray(this.x, this.y, zInput));
-      }
+      },
     },
     dimensionsSpecified() {
       return this.dimensions !== null;
-    }
+    },
   },
   mounted() {
     this.$emit(`vf:validate`, this.validationData);
@@ -131,8 +131,8 @@ export default {
     },
     focus() {
       this.$refs.xInput.focus();
-    }
-  }
+    },
+  },
 };
 
 /**

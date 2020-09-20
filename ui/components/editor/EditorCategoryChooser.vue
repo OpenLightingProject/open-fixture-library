@@ -33,17 +33,17 @@ import CategoryBadge from '../CategoryBadge.vue';
 export default {
   components: {
     Draggable,
-    CategoryBadge
+    CategoryBadge,
   },
   props: {
     value: {
       type: Array,
-      required: true
+      required: true,
     },
     allCategories: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     selectedCategories: {
@@ -52,13 +52,13 @@ export default {
       },
       set(newSelectedCategories) {
         this.$emit(`input`, newSelectedCategories);
-      }
+      },
     },
     unselectedCategories() {
       return this.allCategories.filter(
-        cat => !this.value.includes(cat)
+        cat => !this.value.includes(cat),
       );
-    }
+    },
   },
   methods: {
     select(selectedCat) {
@@ -78,7 +78,7 @@ export default {
       if (!(event && event.target && event.relatedTarget) || event.target.parentNode !== event.relatedTarget.parentNode) {
         this.$emit(`blur`);
       }
-    }
-  }
+    },
+  },
 };
 </script>

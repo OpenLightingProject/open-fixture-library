@@ -1,20 +1,23 @@
-const createIssue = require(`../../lib/create-github-issue.js`);
-const { fixtureFromRepository } = require(`../../lib/model.js`);
+const createIssue = require(`../../../lib/create-github-issue.js`);
+const { fixtureFromRepository } = require(`../../../lib/model.js`);
+
+/** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
+/** @typedef {import('../index.js').ApiResponse} ApiResponse */
 
 /**
  * Takes the input from the client side script and creates an issue with the given feedback.
- * @param {Object} request Passed from Express.
- * @param {Object} response Passed from Express.
+ * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
+ * @returns {ApiResponse} The handled response.
  */
-module.exports = async function createFeedbackIssue(request, response) {
+async function createFeedbackIssue({ request }) {
   const {
     type,
     context,
     location,
     helpWanted,
     message,
-    githubUsername
-  } = request.body;
+    githubUsername,
+  } = request.requestBody;
 
   let title;
   const issueContentData = {};
@@ -40,9 +43,9 @@ module.exports = async function createFeedbackIssue(request, response) {
   issueContentData.Message = message;
 
   const lines = Object.entries(issueContentData).filter(
-    ([key, value]) => value !== null
+    ([key, value]) => value !== null,
   ).map(
-    ([key, value]) => `**${key}**:${value.includes(`\n`) ? `\n` : ` `}${value}`
+    ([key, value]) => `**${key}**:${value.includes(`\n`) ? `\n` : ` `}${value}`,
   );
 
   if (githubUsername) {
@@ -60,8 +63,13 @@ module.exports = async function createFeedbackIssue(request, response) {
     error = e.message;
   }
 
-  response.status(201).json({
-    issueUrl,
-    error
-  });
-};
+  return {
+    statusCode: 201,
+    body: {
+      issueUrl,
+      error,
+    },
+  };
+}
+
+module.exports = { createFeedbackIssue };

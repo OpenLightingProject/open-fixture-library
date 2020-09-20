@@ -1,30 +1,33 @@
-const schemaProperties = require(`../../../lib/schema-properties.js`).default;
-const { checkFixture } = require(`../../../tests/fixture-valid.js`);
-const { CoarseChannel } = require(`../../../lib/model.js`);
+const schemaProperties = require(`../../../../lib/schema-properties.js`).default;
+const { checkFixture } = require(`../../../../tests/fixture-valid.js`);
+const { CoarseChannel } = require(`../../../../lib/model.js`);
 
-/** @typedef {import('./types.js').FixtureCreateResult} FixtureCreateResult */
-
-/**
- * @typedef {Array.<Object>} RequestBody Array of fixture objects used in the Fixture Editor.
- */
+/** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
+/** @typedef {import('../../index.js').ApiResponse} ApiResponse */
+/** @typedef {import('../../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
 
 /**
  * Converts the given editor fixture data into OFL fixtures and responds with a FixtureCreateResult.
- * @param {Object} request Passed from Express.
- * @param {RequestBody} request.body The editor's fixture objects.
- * @param {Object} response Passed from Express.
+ * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
+ * @returns {ApiResponse} The handled response.
  */
-module.exports = function createFixtureFromEditor(request, response) {
+function createFixtureFromEditor({ request }) {
   try {
-    const fixtureCreateResult = getFixtureCreateResult(request.body);
-    response.status(201).json(fixtureCreateResult);
+    const fixtureCreateResult = getFixtureCreateResult(request.requestBody);
+    return {
+      statusCode: 201,
+      body: fixtureCreateResult,
+    };
   }
   catch (error) {
-    response.status(400).json({
-      error: error.message
-    });
+    return {
+      statusCode: 400,
+      body: {
+        error: error.message,
+      },
+    };
   }
-};
+}
 
 
 /**
@@ -36,7 +39,7 @@ function getFixtureCreateResult(fixtures) {
     manufacturers: {},
     fixtures: {},
     warnings: {},
-    errors: {}
+    errors: {},
   };
 
   // { 'uuid 1': 'new channel key 1', ... }
@@ -52,7 +55,7 @@ function getFixtureCreateResult(fixtures) {
     const key = `${manKey}/${fixKey}`;
 
     result.fixtures[key] = {
-      $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`
+      $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
     };
 
     for (const prop of Object.keys(schemaProperties.fixture)) {
@@ -68,7 +71,7 @@ function getFixtureCreateResult(fixtures) {
         result.fixtures[key].meta = {
           authors: [fixture.metaAuthor],
           createDate: now,
-          lastModifyDate: now
+          lastModifyDate: now,
         };
       }
       else if (prop === `links`) {
@@ -82,7 +85,7 @@ function getFixtureCreateResult(fixtures) {
       }
       else if (prop === `rdm` && propExistsIn(`rdmModelId`, fixture)) {
         result.fixtures[key].rdm = {
-          modelId: fixture.rdmModelId
+          modelId: fixture.rdmModelId,
         };
         if (propExistsIn(`rdmSoftwareVersion`, fixture)) {
           result.fixtures[key].rdm.softwareVersion = fixture.rdmSoftwareVersion;
@@ -123,7 +126,7 @@ function getFixtureCreateResult(fixtures) {
     const manKey = slugify(fixture.newManufacturerName);
 
     result.manufacturers[manKey] = {
-      name: fixture.newManufacturerName
+      name: fixture.newManufacturerName,
     };
 
     if (propExistsIn(`newManufacturerComment`, fixture)) {
@@ -154,7 +157,7 @@ function getFixtureCreateResult(fixtures) {
     let fixKey = slugify(fixture.name);
 
     const otherFixtureKeys = Object.keys(result.fixtures).filter(
-      key => key.startsWith(manKey)
+      key => key.startsWith(manKey),
     ).map(key => key.slice(manKey.length + 1));
 
     while (otherFixtureKeys.includes(fixKey)) {
@@ -200,7 +203,7 @@ function getFixtureCreateResult(fixtures) {
 
     for (const linkType of linkTypes) {
       const linksOfType = editorLinksArray.filter(
-        linkObj => linkObj.type === linkType
+        linkObj => linkObj.type === linkType,
       ).map(linkObj => linkObj.url);
 
       if (linksOfType.length) {
@@ -217,8 +220,8 @@ function getFixtureCreateResult(fixtures) {
   function addWheels(fixture, editorFixture) {
     const editorWheelChannels = Object.values(editorFixture.availableChannels).filter(
       editorChannel => editorChannel.wheel && editorChannel.wheel.slots.length > 0 && editorChannel.wheel.slots.some(
-        editorWheelSlot => editorWheelSlot !== null && editorWheelSlot.type !== ``
-      )
+        editorWheelSlot => editorWheelSlot !== null && editorWheelSlot.type !== ``,
+      ),
     );
 
     if (editorWheelChannels.length === 0) {
@@ -234,7 +237,7 @@ function getFixtureCreateResult(fixtures) {
         }
 
         const wheelSlot = {
-          type: editorWheelSlot.type
+          type: editorWheelSlot.type,
         };
 
         const wheelSlotSchema = schemaProperties.wheelSlotTypes[wheelSlot.type];
@@ -254,7 +257,7 @@ function getFixtureCreateResult(fixtures) {
       }
 
       fixture.wheels[editorChannel.name] = {
-        slots
+        slots,
       };
     });
   }
@@ -417,3 +420,5 @@ function getComboboxInput(prop, from) {
 function slugify(str) {
   return str.toLowerCase().replace(/[^a-z0-9-]+/g, ` `).trim().replace(/\s+/g, `-`);
 }
+
+module.exports = { createFixtureFromEditor };

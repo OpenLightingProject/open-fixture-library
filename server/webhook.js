@@ -16,7 +16,7 @@ const deploymentConfig = {
   action: ``,
   webhookPort: 40010,
   webhookPath: `/`,
-  webhookSecret: secrets.OFL_WEBHOOK_SECRET
+  webhookSecret: secrets.OFL_WEBHOOK_SECRET,
 };
 
 
@@ -111,7 +111,7 @@ function redeploy(webhookPayload) {
       cwd: `/home/flo`,
       env: Object.assign({}, process.env, deploymentConfig.env),
       encoding: `utf8`,
-      stdio: `pipe`
+      stdio: `pipe`,
     });
     console.log(`Successfully deployed.`);
   }
@@ -127,7 +127,7 @@ function redeploy(webhookPayload) {
     body += `\n\nwebhook payload: ${JSON.stringify(webhookPayload, null, 2)}`;
 
     execSync(`mail -s "${subject}" root`, {
-      input: body
+      input: body,
     });
   }
 }

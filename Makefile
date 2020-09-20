@@ -8,13 +8,13 @@ dereferenced-schema-files := $(schema-files:schemas/%=schemas/dereferenced/%)
 
 ### PHONY rules, see https://stackoverflow.com/a/2145605/451391
 
-.PHONY: all no-nuxt register plugin-data test-fixtures schemas model-docs nuxt-build clean
+.PHONY: all no-nuxt register plugin-data test-fixtures schemas model-docs api-docs nuxt-build clean
 
-no-nuxt: register plugin-data test-fixtures schemas model-docs
+no-nuxt: register plugin-data test-fixtures schemas model-docs api-docs
 
 only-gitignored-no-nuxt: register schemas
 
-all: register plugin-data test-fixtures schemas model-docs nuxt-build
+all: no-nuxt nuxt-build
 
 register: fixtures/register.json
 
@@ -26,8 +26,10 @@ schemas: $(dereferenced-schema-files)
 
 model-docs: docs/model-api.md
 
+api-docs: docs/rest-api.md
+
 nuxt-build:
-	$$(npm bin)/nuxt build
+	npx nuxt build
 
 clean:
 	rm -rf schemas/dereferenced
@@ -73,11 +75,14 @@ cli/make-dereferenced-schemas.js
 	@echo ""
 
 
-jsdoc2md := $(shell echo $$(npm bin)/jsdoc2md)
-jsdoc2md-cmd := $(jsdoc2md) --configure jsdoc-config.json --private --files lib/model/*.js > docs/model-api.md
-
 docs/model-api.md: \
 lib/model/*.js \
 jsdoc-config.json
-	@test -f $(jsdoc2md) && (echo "$(jsdoc2md-cmd)" && $(jsdoc2md-cmd)) || echo "$(jsdoc2md) not available"
+	npx jsdoc2md --configure jsdoc-config.json --private --files lib/model/*.js > docs/model-api.md
+	@echo ""
+
+docs/rest-api.md: \
+ui/api/openapi.json \
+ui/api/routes/**/*.json
+	npx widdershins --code true --language_tabs --omitBody true --omitHeader true --resolve true --outfile docs/rest-api.md ui/api/openapi.json
 	@echo ""

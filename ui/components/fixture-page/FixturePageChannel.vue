@@ -77,7 +77,7 @@
           name="channel-fineChannelAliases"
           label="Fine channels">
           {{ channel.fineChannels.slice(0, resolutionInMode - 1).map(
-            fineChannel => `${fineChannel.name} (channel&nbsp;${mode.getChannelIndex(fineChannel) + 1})`
+            fineChannel => `${fineChannel.name} (channel&nbsp;${mode.getChannelIndex(fineChannel) + 1})`,
           ).join(`, `) }}
         </LabeledValue>
 
@@ -145,7 +145,7 @@ ol.mode-channels {
   padding-left: 1.9em;
   min-height: 1em;
 
-  /* switched channels */
+  // switched channels
   & ol {
     list-style-type: lower-alpha;
     padding-left: 1.1em;
@@ -172,29 +172,29 @@ export default {
     ConditionalDetails,
     ChannelTypeIcon,
     FixturePageCapabilityTable,
-    LabeledValue
+    LabeledValue,
   },
   props: {
     channel: {
       type: AbstractChannel,
-      required: true
+      required: true,
     },
     mode: {
       type: Mode,
-      required: true
+      required: true,
     },
     appendToHeading: {
       type: String,
       required: false,
-      default: ``
-    }
+      default: ``,
+    },
   },
   data() {
     return {
       CoarseChannel,
       FineChannel,
       SwitchingChannel,
-      fixture: this.mode.fixture
+      fixture: this.mode.fixture,
     };
   },
   computed: {
@@ -211,7 +211,7 @@ export default {
     },
     resolutionInMode() {
       return this.channel.getResolutionInMode(this.mode);
-    }
-  }
+    },
+  },
 };
 </script>

@@ -14,12 +14,45 @@ As soon as an issue is assigned to somebody, it means that this person is respon
 
 ## Local installation
 
-1. Install [npm](https://www.npmjs.com/get-npm)
-2. [Clone](https://help.github.com/articles/cloning-a-repository/) the repository
-3. Navigate into your clone's directory (probably `open-fixture-library/`)
-4. Run `npm install`
+### Linux / macOS
 
-Now, everything's installed and should be working. To start the website server at [`http://localhost:5000/`](http://localhost:5000/), run `npm run dev` (see [UI docs](ui.md)).
+Make sure you have these dependencies installed:
+
+* `git`
+* `make`
+* [Node.js](https://nodejs.org/en/download/package-manager/)
+
+Then run
+
+```sh
+git clone https://github.com/OpenLightingProject/open-fixture-library.git
+cd open-fixture-library
+npm install
+```
+
+Continue with [UI docs](ui.md).
+
+### Windows
+
+Make sure you have these dependencies installed:
+
+* GNU make
+  - [Install Scoop](https://github.com/lukesampson/scoop/wiki/Quick-Start)
+  - Run `scoop install make`
+* [Git](https://gitforwindows.org/)
+* [Node.js](https://nodejs.org/en/download/)
+* [windows-build-tools](https://www.npmjs.com/package/windows-build-tools)
+  - [Open a Terminal as Administrator](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/) and run `npm install --global windows-build-tools --vs2015`
+
+Choose a project path that only contains ASCII characters and no spaces. Open a Terminal and run
+
+```bat
+git clone https://github.com/OpenLightingProject/open-fixture-library.git
+cd open-fixture-library
+npm install
+```
+
+Continue with [UI docs](ui.md).  
 
 ## Where you can help
 
@@ -48,9 +81,9 @@ We always aim to have clear, readable code. So please try to respect these princ
   - Be careful with arrays: Prefer the `Array.<String>` syntax over `String[]`
 * Use [self-describing variable names](https://wiki.c2.com/?GoodVariableNames) and prefer constant variables over literal values without explanation
 * Prefer code readability over [micro-optimisation](https://softwareengineering.stackexchange.com/questions/99445/is-micro-optimisation-important-when-coding)
-* Use new [ES2015 (ES6)](https://babeljs.io/learn-es2015/) features that improve code readability, for example:
+* Use [ES2015 (ES6)](https://babeljs.io/learn-es2015/) features that improve code readability, for example:
   - Instead of `var`, use [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) where possible, [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) in all other cases
-  - Prefer [Array iteration methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype#Iteration_methods) (like [`map(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), [`filter(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), [`some(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some), [`every(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every), [`find(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)) with arrow functions over loops
+  - Prefer [Array iteration methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Instance_methods) (like [`map(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), [`filter(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), [`some(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some), [`every(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every), [`find(...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)) with arrow functions over loops
   - Always use [template strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) (backticks instead of single or double quotes: ``const str = `My name is ${name}.`;``) as [they are strictly better strings](https://ponyfoo.com/articles/template-literals-strictly-better-strings) and make string concatenation (`const str = 'My name is ' + name + '.';`) more readable
 * Try to make a piece of code not too complex. That is, if a function contains lots of ifs and for-loops, extract some parts into helper functions. (For example, the `checkFixture()` function calls `checkPhysical()` and `checkChannels()`, `checkChannel()` calls `checkCapabilities()`, etc.)
 

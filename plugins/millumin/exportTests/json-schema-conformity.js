@@ -28,9 +28,9 @@ module.exports = async function testSchemaConformity(exportFile, allExportFiles)
     schemas,
     format: `full`,
     formats: {
-      'color-hex': ``
+      'color-hex': ``,
     },
-    verbose: true
+    verbose: true,
   });
   const schemaValidate = ajv.getSchema(`https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`);
 
@@ -45,7 +45,7 @@ module.exports = async function testSchemaConformity(exportFile, allExportFiles)
  */
 async function getSchemas() {
   const schemasJson = await Promise.all(SCHEMA_FILES.map(
-    filename => downloadSchema(SCHEMA_BASE_URL + filename)
+    filename => downloadSchema(SCHEMA_BASE_URL + filename),
   ));
 
   const fixtureSchema = schemasJson[SCHEMA_FILES.indexOf(`fixture.json`)];

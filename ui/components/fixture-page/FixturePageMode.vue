@@ -59,27 +59,27 @@ import FixturePagePhysical from './FixturePagePhysical.vue';
 export default {
   components: {
     FixturePageChannel,
-    FixturePagePhysical
+    FixturePagePhysical,
   },
   props: {
     mode: {
       type: Mode,
-      required: true
+      required: true,
     },
     index: {
       type: Number,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      hasDetails: true
+      hasDetails: true,
     };
   },
   computed: {
     showCollapseExpandButtons() {
       return this.mode.channels.length > 1 && this.hasDetails;
-    }
+    },
   },
   mounted() {
     // wait for all child components to render
@@ -99,7 +99,7 @@ export default {
       this.$el.querySelectorAll(`details`).forEach(details => {
         details.open = false;
       });
-    }
-  }
+    },
+  },
 };
 </script>

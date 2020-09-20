@@ -131,39 +131,39 @@ export default {
     PropertyInputNumber,
     PropertyInputRange,
     PropertyInputSelect,
-    PropertyInputText
+    PropertyInputText,
   },
   model: {
-    prop: `physical`
+    prop: `physical`,
   },
   props: {
     physical: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
-      required: true
+      required: true,
     },
     namePrefix: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      properties: schemaProperties
+      properties: schemaProperties,
     };
   },
   computed: {
     dimensionRequired() {
       return this.physical.dimensionsWidth !== null || this.physical.dimensionsHeight !== null || this.physical.dimensionsDepth !== null;
-    }
+    },
   },
   mounted: function() {
     if (this.$root._oflRestoreComplete) {
       this.$refs.firstInput.focus();
     }
-  }
+  },
 };
 </script>

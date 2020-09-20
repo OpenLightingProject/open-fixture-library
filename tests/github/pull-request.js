@@ -7,7 +7,7 @@ const requiredEnvVars = [
   `TRAVIS_REPO_SLUG`,
   `TRAVIS_PULL_REQUEST`,
   `TRAVIS_BRANCH`,
-  `TRAVIS_COMMIT`
+  `TRAVIS_COMMIT`,
 ];
 
 let githubClient;
@@ -39,13 +39,13 @@ module.exports.init = async function init() {
   repoName = process.env.TRAVIS_REPO_SLUG.split(`/`)[1];
 
   githubClient = new Octokit({
-    auth: `token ${process.env.GITHUB_USER_TOKEN}`
+    auth: `token ${process.env.GITHUB_USER_TOKEN}`,
   });
 
   const pr = await githubClient.pulls.get({
     owner: repoOwner,
     repo: repoName,
-    'pull_number': process.env.TRAVIS_PULL_REQUEST
+    'pull_number': process.env.TRAVIS_PULL_REQUEST,
   });
 
   // save PR for later use
@@ -63,7 +63,7 @@ module.exports.fetchChangedComponents = async function fetchChangedComponents() 
       repo: repoName,
       'pull_number': process.env.TRAVIS_PULL_REQUEST,
       'per_page': 100,
-      page: i + 1
+      page: i + 1,
     }));
   }
 
@@ -77,7 +77,7 @@ module.exports.fetchChangedComponents = async function fetchChangedComponents() 
       imports: [], // array of plugin keys
       exports: [], // array of plugin keys
       exportTests: [], // array of [plugin key, test key]
-      fixtures: [] // array of [man key, fix key]
+      fixtures: [], // array of [man key, fix key]
     },
     modified: {
       schema: false,
@@ -85,7 +85,7 @@ module.exports.fetchChangedComponents = async function fetchChangedComponents() 
       imports: [], // array of plugin keys
       exports: [], // array of plugin keys
       exportTests: [], // array of [plugin key, test key]
-      fixtures: [] // array of [man key, fix key]
+      fixtures: [], // array of [man key, fix key]
     },
     removed: {
       schema: false,
@@ -93,8 +93,8 @@ module.exports.fetchChangedComponents = async function fetchChangedComponents() 
       imports: [], // array of plugin keys
       exports: [], // array of plugin keys
       exportTests: [], // array of [plugin key, test key]
-      fixtures: [] // array of [man key, fix key]
-    }
+      fixtures: [], // array of [man key, fix key]
+    },
   };
 
   for (const block of fileBlocks) {
@@ -146,7 +146,7 @@ module.exports.fetchChangedComponents = async function fetchChangedComponents() 
     if (segments[0] === `plugins` && segments[2] === `exportTests`) {
       changeSummary.exportTests.push([
         segments[1], // plugin key
-        segments[3].split(`.`)[0] // test key
+        segments[3].split(`.`)[0], // test key
       ]);
       return;
     }
@@ -159,7 +159,7 @@ module.exports.fetchChangedComponents = async function fetchChangedComponents() 
     if (segments[0] === `fixtures` && segments.length === 3) {
       changeSummary.fixtures.push([
         segments[1], // man key
-        segments[2].split(`.`)[0] // fix key
+        segments[2].split(`.`)[0], // fix key
       ]);
     }
   }
@@ -180,7 +180,7 @@ module.exports.updateComment = async function updateComment(test) {
     `# ${test.name}`,
     `(Output of test script \`${test.filename}\`.)`,
     ``,
-    ...test.lines
+    ...test.lines,
   ];
   const message = lines.join(`\n`);
 
@@ -192,8 +192,8 @@ module.exports.updateComment = async function updateComment(test) {
         repo: repoName,
         'issue_number': process.env.TRAVIS_PULL_REQUEST,
         'per_page': 100,
-        page: i + 1
-      })
+        page: i + 1,
+      }),
     );
   }
 
@@ -218,7 +218,7 @@ module.exports.updateComment = async function updateComment(test) {
         promises.push(githubClient.issues.deleteComment({
           owner: repoOwner,
           repo: repoName,
-          'comment_id': comment.id
+          'comment_id': comment.id,
         }));
       }
     }
@@ -230,7 +230,7 @@ module.exports.updateComment = async function updateComment(test) {
       owner: repoOwner,
       repo: repoName,
       'issue_number': process.env.TRAVIS_PULL_REQUEST,
-      body: message
+      body: message,
     }));
   }
 
@@ -241,6 +241,6 @@ module.exports.getTestFixturesMessage = function getTestFixturesMessage(fixtures
   return [
     `Tested with the following minimal collection of [test fixtures](https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/fixture-features.md) that cover all fixture features:`,
     ...fixtures.map(fix => `- ${fix}`),
-    ``
+    ``,
   ];
 };

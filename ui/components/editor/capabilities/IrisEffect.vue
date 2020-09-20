@@ -49,18 +49,18 @@ export default {
   components: {
     EditorProportionalPropertySwitcher,
     LabeledInput,
-    PropertyInputText
+    PropertyInputText,
   },
   props: {
     capability: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -71,9 +71,9 @@ export default {
         speed: ``,
         speedStart: null,
         speedEnd: null,
-        comment: ``
-      }
+        comment: ``,
+      },
     };
-  }
+  },
 };
 </script>

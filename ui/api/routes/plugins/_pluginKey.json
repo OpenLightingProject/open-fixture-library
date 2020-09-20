@@ -1,0 +1,100 @@
+{
+  "parameters": [
+    {
+      "name": "pluginKey",
+      "in": "path",
+      "required": true,
+      "schema": {
+        "type": "string",
+        "pattern": "^[a-z0-9_.-]+$"
+      }
+    }
+  ],
+  "get": {
+    "operationId": "getPluginByKey",
+    "description": "Returns information about a specific import and export plugin. If an outdated plugin is requested, the information for the renamed plugin is returned.",
+    "tags": ["plugins"],
+    "responses": {
+      "200": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "previousVersions": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "description": {
+                  "type": "string"
+                },
+                "links": {
+                  "type": "object",
+                  "minProperties": 1,
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "fixtureUsage": {
+                  "type": "string"
+                },
+                "fileLocations": {
+                  "type": "object",
+                  "minProperties": 1,
+                  "properties": {
+                    "subDirectoriesAllowed": {
+                      "type": "boolean"
+                    }
+                  },
+                  "additionalProperties": {
+                    "type": "object",
+                    "minProperties": 1,
+                    "properties": {
+                      "main": {
+                        "type": "string"
+                      },
+                      "user": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "additionalInfo": {
+                  "type": "string"
+                },
+                "helpWanted": {
+                  "type": "string"
+                },
+                "exportPluginVersion": {
+                  "type": "string"
+                },
+                "importPluginVersion": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "key",
+                "name",
+                "previousVersions",
+                "description",
+                "links"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      },
+      "404": {
+        "$ref": "../../openapi.json#/components/responses/404-NotFoundError"
+      }
+    }
+  }
+}

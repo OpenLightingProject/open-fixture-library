@@ -1,4 +1,4 @@
-/* commented flavors are not included in the repository */
+// commented flavors are not included in the repository
 $lato-flavor-list: (
   // 'Hairline': 100,
   // 'Thin': 200,
@@ -35,7 +35,7 @@ $lato-flavor-list: (
   }
 }
 
-/* Font faces for both Inconsolata weights */
+// Font faces for both Inconsolata weights
 @font-face {
   font-family: Inconsolata;
   src: local('Inconsolata Regular'),

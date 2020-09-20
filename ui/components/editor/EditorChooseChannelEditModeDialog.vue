@@ -29,22 +29,22 @@ import A11yDialog from '../A11yDialog.vue';
 
 export default {
   components: {
-    A11yDialog
+    A11yDialog,
   },
   props: {
     channel: {
       type: Object,
-      required: true
+      required: true,
     },
     fixture: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   methods: {
     onChooseChannelEditModeDialogOpen() {
       const channelUsedElsewhere = this.fixture.modes.some(
-        mode => mode.uuid !== this.channel.modeId && mode.channels.includes(this.channel.uuid)
+        mode => mode.uuid !== this.channel.modeId && mode.channels.includes(this.channel.uuid),
       );
 
       if (channelUsedElsewhere) {
@@ -63,7 +63,7 @@ export default {
         // open channel dialog
         this.channel.editMode = editMode;
       });
-    }
-  }
+    },
+  },
 };
 </script>

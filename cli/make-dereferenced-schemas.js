@@ -3,7 +3,7 @@
 const fs = require(`fs`);
 const path = require(`path`);
 const chalk = require(`chalk`);
-const schemaRefParser = require(`json-schema-ref-parser`);
+const schemaRefParser = require(`@apidevtools/json-schema-ref-parser`);
 
 const schemaDir = path.join(__dirname, `../schemas/`);
 
@@ -13,7 +13,7 @@ if (process.argv.length > 2) {
 }
 else {
   schemaFiles = fs.readdirSync(schemaDir).filter(
-    schemaFile => path.extname(schemaFile) === `.json`
+    schemaFile => path.extname(schemaFile) === `.json`,
   );
 }
 
@@ -27,7 +27,7 @@ else {
       const dereferencedSchema = await schemaRefParser.dereference(schema);
       fs.writeFileSync(
         dereferencedSchemaFile,
-        `${JSON.stringify(dereferencedSchema, null, 2)}\n`
+        `${JSON.stringify(dereferencedSchema, null, 2)}\n`,
       );
       console.log(`${chalk.green(`[Success]`)} Updated dereferenced schema ${dereferencedSchemaFile}.`);
     }

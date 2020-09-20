@@ -56,8 +56,6 @@ h3 {
 </style>
 
 <script>
-import plugins from '../../../../plugins/plugins.json';
-
 export default {
   head() {
     const title = `Plugins`;
@@ -67,15 +65,21 @@ export default {
       meta: [
         {
           hid: `title`,
-          content: title
-        }
-      ]
+          content: title,
+        },
+      ],
     };
   },
-  data() {
-    return {
-      plugins
-    };
-  }
+  async asyncData({ $axios, error }) {
+    try {
+      const plugins = await $axios.$get(`/api/v1/plugins`);
+      return {
+        plugins,
+      };
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
+  },
 };
 </script>

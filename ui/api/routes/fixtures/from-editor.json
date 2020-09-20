@@ -1,0 +1,29 @@
+{
+  "post": {
+    "operationId": "createFixtureFromEditor",
+    "description": "Converts the given editor fixture data into OFL fixtures and responds with a FixtureCreateResult.",
+    "tags": ["fixtures"],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "description": "Fixture object used in the Fixture Editor"
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "201": {
+        "$ref": "../../openapi.json#/components/responses/201-FixtureCreateResult"
+      },
+      "400": {
+        "$ref": "../../openapi.json#/components/responses/400-BadRequestError"
+      }
+    }
+  }
+}

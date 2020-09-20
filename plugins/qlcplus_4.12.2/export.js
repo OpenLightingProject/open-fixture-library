@@ -5,7 +5,7 @@ const {
   getChannelPreset,
   getFineChannelPreset,
   getCapabilityPreset,
-  exportHelpers
+  exportHelpers,
 } = require(`./presets.js`);
 
 /** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
@@ -39,12 +39,12 @@ module.exports.export = async function exportQlcPlus(fixtures, options) {
           Creator: {
             Name: `OFL – ${fixture.url}`,
             Version: options.displayedPluginVersion || module.exports.version,
-            Author: fixture.meta.authors.join(`, `)
+            Author: fixture.meta.authors.join(`, `),
           },
           Manufacturer: fixture.manufacturer.name,
           Model: fixture.name,
-          Type: getFixtureType(fixture)
-        }
+          Type: getFixtureType(fixture),
+        },
       });
 
     for (const channel of fixture.coarseChannels) {
@@ -79,9 +79,9 @@ module.exports.export = async function exportQlcPlus(fixtures, options) {
       name: `fixtures/${sanitizedFileName}`,
       content: xml.end({
         pretty: true,
-        indent: ` `
+        indent: ` `,
       }),
-      mimetype: `application/x-qlc-fixture`
+      mimetype: `application/x-qlc-fixture`,
     };
   });
 
@@ -94,7 +94,7 @@ module.exports.export = async function exportQlcPlus(fixtures, options) {
     outFiles.push({
       name: `gobos/${qlcplusResName}`,
       content: fileContent,
-      mimeType: oflResource.imageMimeType
+      mimeType: oflResource.imageMimeType,
     });
   });
 
@@ -111,8 +111,8 @@ function addChannel(xml, channel, customGobos) {
 
   const xmlChannel = xml.element({
     Channel: {
-      '@Name': channel.uniqueName
-    }
+      '@Name': channel.uniqueName,
+    },
   });
 
   if (channel.defaultValue !== 0) {
@@ -127,13 +127,13 @@ function addChannel(xml, channel, customGobos) {
     xmlChannel.element({
       Group: {
         '@Byte': 0,
-        '#text': chType
-      }
+        '#text': chType,
+      },
     });
 
     if (chType === `Intensity`) {
       xmlChannel.element({
-        Colour: channel.color !== null ? channel.color.replace(/^(?:Warm|Cold) /, ``) : `Generic`
+        Colour: channel.color !== null ? channel.color.replace(/^(?:Warm|Cold) /, ``) : `Generic`,
       });
     }
 
@@ -153,8 +153,8 @@ function addChannel(xml, channel, customGobos) {
 function addFineChannel(xml, fineChannel, customGobos) {
   const xmlFineChannel = xml.element({
     Channel: {
-      '@Name': fineChannel.uniqueName
-    }
+      '@Name': fineChannel.uniqueName,
+    },
   });
 
   if (fineChannel.defaultValue !== 0) {
@@ -166,14 +166,14 @@ function addFineChannel(xml, fineChannel, customGobos) {
     xmlFineChannel.element({
       Group: {
         '@Byte': 0, // not a QLC+ fine channel
-        '#text': `Maintenance`
-      }
+        '#text': `Maintenance`,
+      },
     });
 
     addCapability(xmlFineChannel, new Capability({
       dmxRange: [0, 255],
       type: `Generic`,
-      comment: `Fine^${fineChannel.resolution - 1} adjustment for ${fineChannel.coarseChannel.uniqueName}`
+      comment: `Fine^${fineChannel.resolution - 1} adjustment for ${fineChannel.coarseChannel.uniqueName}`,
     }, CoarseChannel.RESOLUTION_8BIT, fineChannel.coarseChannel), customGobos);
 
     return;
@@ -191,20 +191,20 @@ function addFineChannel(xml, fineChannel, customGobos) {
   xmlFineChannel.element({
     Group: {
       '@Byte': 1,
-      '#text': chType
-    }
+      '#text': chType,
+    },
   });
 
   if (chType === `Intensity`) {
     xmlFineChannel.element({
-      Colour: fineChannel.coarseChannel.color !== null ? fineChannel.coarseChannel.color.replace(/^(?:Warm|Cold) /, ``) : `Generic`
+      Colour: fineChannel.coarseChannel.color !== null ? fineChannel.coarseChannel.color.replace(/^(?:Warm|Cold) /, ``) : `Generic`,
     });
   }
 
   addCapability(xmlFineChannel, new Capability({
     dmxRange: [0, 255],
     type: `Generic`,
-    comment: `Fine adjustment for ${fineChannel.coarseChannel.uniqueName}`
+    comment: `Fine adjustment for ${fineChannel.coarseChannel.uniqueName}`,
   }, CoarseChannel.RESOLUTION_8BIT, fineChannel.coarseChannel));
 }
 
@@ -220,14 +220,14 @@ function addCapability(xmlChannel, cap, customGobos) {
     Capability: {
       '@Min': dmxRange.start,
       '@Max': dmxRange.end,
-      '#text': cap.name
-    }
+      '#text': cap.name,
+    },
   });
 
   const preset = addCapabilityAliases(xmlCapability, cap) ? {
     presetName: `Alias`,
     res1: null,
-    res2: null
+    res2: null,
   } : getCapabilityPreset(cap);
 
   if (preset !== null) {
@@ -293,7 +293,7 @@ function addCapabilityAliases(xmlCapability, cap) {
     }
 
     const modesContainingSwitchingChannel = fixture.modes.filter(
-      mode => mode.getChannelIndex(switchingChannel) !== -1
+      mode => mode.getChannelIndex(switchingChannel) !== -1,
     );
 
     for (const mode of modesContainingSwitchingChannel) {
@@ -302,8 +302,8 @@ function addCapabilityAliases(xmlCapability, cap) {
         Alias: {
           '@Mode': mode.name,
           '@Channel': defaultChannel.uniqueName,
-          '@With': switchedChannel.uniqueName
-        }
+          '@With': switchedChannel.uniqueName,
+        },
       });
     }
   }
@@ -319,8 +319,8 @@ function addCapabilityAliases(xmlCapability, cap) {
 function addMode(xml, mode, createPhysical) {
   const xmlMode = xml.element({
     Mode: {
-      '@Name': mode.name
-    }
+      '@Name': mode.name,
+    },
   });
 
   if (createPhysical) {
@@ -335,8 +335,8 @@ function addMode(xml, mode, createPhysical) {
     xmlMode.element({
       Channel: {
         '@Number': index,
-        '#text': channel.uniqueName
-      }
+        '#text': channel.uniqueName,
+      },
     });
   });
 
@@ -367,9 +367,9 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
         return {
           Type: physical.bulbType || `Other`,
           Lumens: Math.round(physical.bulbLumens) || 0,
-          ColourTemperature: Math.round(physical.bulbColorTemperature) || 0
+          ColourTemperature: Math.round(physical.bulbColorTemperature) || 0,
         };
-      }
+      },
     },
     Dimensions: {
       required: true,
@@ -378,9 +378,9 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
           Weight: physical.weight || 0,
           Width: Math.round(physical.width) || 0,
           Height: Math.round(physical.height) || 0,
-          Depth: Math.round(physical.depth) || 0
+          Depth: Math.round(physical.depth) || 0,
         };
-      }
+      },
     },
     Lens: {
       required: true,
@@ -388,9 +388,9 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
         return {
           Name: physical.lensName || `Other`,
           DegreesMin: physical.lensDegreesMin || 0,
-          DegreesMax: physical.lensDegreesMax || 0
+          DegreesMax: physical.lensDegreesMax || 0,
         };
-      }
+      },
     },
     Focus: {
       required: true,
@@ -399,25 +399,25 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
           Mirror: fixture.categories.includes(`Scanner`),
           Barrel: fixture.categories.includes(`Barrel Scanner`),
           Head: fixture.categories.includes(`Moving Head`) || PanMax > 0 || TiltMax > 0,
-          Fixed: true
+          Fixed: true,
         };
         const Type = Object.keys(focusTypeConditions).find(focusType => focusTypeConditions[focusType] === true);
 
         return {
           Type,
           PanMax,
-          TiltMax
+          TiltMax,
         };
-      }
+      },
     },
     Layout: {
       required: fixture.matrix !== null,
       getAttributes() {
         return {
           Width: fixture.matrix.pixelCountX,
-          Height: fixture.matrix.pixelCountY * fixture.matrix.pixelCountZ
+          Height: fixture.matrix.pixelCountY * fixture.matrix.pixelCountZ,
         };
-      }
+      },
     },
     Technical: {
       required: physical.DMXconnector !== null || physical.power !== null,
@@ -427,10 +427,10 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
 
         return {
           DmxConnector: connector || `Other`,
-          PowerConsumption: Math.round(physical.power) || 0
+          PowerConsumption: Math.round(physical.power) || 0,
         };
-      }
-    }
+      },
+    },
   };
 
   const xmlPhysical = xmlParentNode.element(`Physical`);
@@ -478,7 +478,7 @@ function getPanTiltMax(panOrTilt, channels) {
  */
 function addHeads(xmlMode, mode) {
   const hasMatrixChannels = mode.channels.some(
-    ch => ch.pixelKey !== null || (ch instanceof SwitchingChannel && ch.defaultChannel.pixelKey !== null)
+    ch => ch.pixelKey !== null || (ch instanceof SwitchingChannel && ch.defaultChannel.pixelKey !== null),
   );
 
   if (hasMatrixChannels) {
@@ -489,7 +489,7 @@ function addHeads(xmlMode, mode) {
 
       for (const ch of channels) {
         xmlHead.element({
-          Channel: mode.getChannelIndex(ch.key)
+          Channel: mode.getChannelIndex(ch.key),
         });
       }
     }
@@ -527,14 +527,14 @@ function getFixtureType(fixture) {
     'Barrel Scanner': `Scanner`,
 
     // see https://github.com/OpenLightingProject/open-fixture-library/issues/581
-    'Pixel Bar': isBeamBar() ? `LED Bar (Beams)` : `LED Bar (Pixels)`
+    'Pixel Bar': isBeamBar() ? `LED Bar (Beams)` : `LED Bar (Pixels)`,
   };
   const ignoredCats = [`Blinder`, `Matrix`, `Stand`];
 
   return fixture.categories.map(
-    cat => (cat in replaceCats ? replaceCats[cat] : cat)
+    cat => (cat in replaceCats ? replaceCats[cat] : cat),
   ).find(
-    cat => !ignoredCats.includes(cat)
+    cat => !ignoredCats.includes(cat),
   ) || `Other`;
 
 
@@ -568,7 +568,7 @@ function getChannelType(type) {
     Speed: [`Speed`],
     Effect: [`Effect`, `Fog`],
     Maintenance: [`Maintenance`],
-    Nothing: [`NoFunction`]
+    Nothing: [`NoFunction`],
   };
 
   for (const qlcplusType of Object.keys(qlcplusChannelTypes)) {

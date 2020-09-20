@@ -3,7 +3,7 @@
   display: inline-block;
   padding: 4px 1.5ex 4px 1ex;
   margin: 0 4px 4px 0;
-  border-radius: 5000px; /* see https://stackoverflow.com/a/18795153/451391 */
+  border-radius: 5000px; // see https://stackoverflow.com/a/18795153/451391
   background: theme-color(hover-background);
 
   &:link,
@@ -44,32 +44,32 @@ export default {
   props: {
     category: {
       type: String,
-      required: true
+      required: true,
     },
     selected: {
       type: Boolean,
       required: false,
-      default: false
+      default: false,
     },
     selectable: {
       type: Boolean,
       required: false,
-      default: false
-    }
+      default: false,
+    },
   },
   render(createElement) {
     const classes = {
       'category-badge': true,
-      selected: this.selected
+      selected: this.selected,
     };
     const children = [
       createElement(`OflSvg`, {
         props: {
           type: `fixture`,
-          name: this.category
-        }
+          name: this.category,
+        },
       }),
-      this.category
+      this.category,
     ];
 
     if (this.selectable) {
@@ -77,23 +77,23 @@ export default {
       return createElement(`a`, {
         class: classes,
         attrs: {
-          href: `#${encodeURIComponent(this.category)}`
+          href: `#${encodeURIComponent(this.category)}`,
         },
         on: {
           click: $event => {
             this.$emit(`click`);
             $event.preventDefault();
-          }
-        }
+          },
+        },
       }, children);
     }
 
     return createElement(`NuxtLink`, {
       class: classes,
       props: {
-        to: `/categories/${encodeURIComponent(this.category)}`
-      }
+        to: `/categories/${encodeURIComponent(this.category)}`,
+      },
     }, children);
-  }
+  },
 };
 </script>

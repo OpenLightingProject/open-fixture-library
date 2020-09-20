@@ -65,7 +65,7 @@
     margin-bottom: 0.8rem;
   }
 
-  & /deep/ summary {
+  & ::v-deep summary {
     padding: 0.3rem 0.5rem;
   }
 }
@@ -98,7 +98,7 @@ a.remove {
 import schemaProperties from '../../../lib/schema-properties.js';
 import {
   getEmptyCapability,
-  isCapabilityChanged
+  isCapabilityChanged,
 } from '../../assets/scripts/editor-utils.js';
 
 import ConditionalDetails from '../ConditionalDetails.vue';
@@ -111,31 +111,31 @@ export default {
     ConditionalDetails,
     EditorCapabilityTypeData,
     LabeledInput,
-    PropertyInputRange
+    PropertyInputRange,
   },
   props: {
     channel: {
       type: Object,
-      required: true
+      required: true,
     },
     capIndex: {
       type: Number,
-      required: true
+      required: true,
     },
     resolution: {
       type: Number,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       dmxMin: 0,
       properties: schemaProperties,
-      capabilityTypeHint: null
+      capabilityTypeHint: null,
     };
   },
   computed: {
@@ -197,7 +197,7 @@ export default {
     },
     fieldState() {
       const fieldNames = Object.keys(this.formstate).filter(
-        fieldName => fieldName.startsWith(`capability${this.capability.uuid}-`)
+        fieldName => fieldName.startsWith(`capability${this.capability.uuid}-`),
       );
 
       for (const fieldName of fieldNames) {
@@ -214,7 +214,7 @@ export default {
       }
 
       return this.fieldState.$error;
-    }
+    },
   },
   methods: {
     // eslint-disable-next-line complexity
@@ -334,7 +334,7 @@ export default {
       }
 
       this.$refs.capabilityTypeData.cleanCapabilityData();
-    }
-  }
+    },
+  },
 };
 </script>

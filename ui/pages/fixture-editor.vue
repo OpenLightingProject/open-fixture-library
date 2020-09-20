@@ -257,10 +257,9 @@ import {
   constants,
   getEmptyFixture,
   getEmptyChannel,
-  getEmptyMode
+  getEmptyMode,
 } from '../assets/scripts/editor-utils.js';
 
-import manufacturers from '../../fixtures/manufacturers.json';
 import schemaProperties from '../../lib/schema-properties.js';
 
 import EditorCategoryChooser from '../components/editor/EditorCategoryChooser.vue';
@@ -289,7 +288,7 @@ export default {
     LabeledInput,
     PropertyInputNumber,
     PropertyInputText,
-    PropertyInputTextarea
+    PropertyInputTextarea,
   },
   head() {
     const title = `Fixture Editor`;
@@ -299,12 +298,12 @@ export default {
       meta: [
         {
           hid: `title`,
-          content: title
-        }
-      ]
+          content: title,
+        },
+      ],
     };
   },
-  asyncData({ query }) {
+  async asyncData({ query, $axios, error }) {
     const initFixture = getEmptyFixture();
 
     if (query.prefill) {
@@ -316,22 +315,29 @@ export default {
           }
         }
       }
-      catch (error) {
-        console.log(`prefill query could not be parsed:`, query.prefill, error);
+      catch (parseError) {
+        console.log(`prefill query could not be parsed:`, query.prefill, parseError);
       }
     }
 
-    return {
-      formstate: {},
-      readyToAutoSave: false,
-      restoredData: null,
-      fixture: initFixture,
-      channel: getEmptyChannel(),
-      githubUsername: ``,
-      honeypot: ``,
-      manufacturers,
-      properties: schemaProperties
-    };
+    try {
+      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+
+      return {
+        formstate: {},
+        readyToAutoSave: false,
+        restoredData: null,
+        fixture: initFixture,
+        channel: getEmptyChannel(),
+        githubUsername: ``,
+        honeypot: ``,
+        manufacturers,
+        properties: schemaProperties,
+      };
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
   },
   computed: {
     fixtureNameIsWithoutManufacturer() {
@@ -344,7 +350,7 @@ export default {
           return true;
         }
 
-        manufacturerName = manufacturers[manKey].name;
+        manufacturerName = this.manufacturers[manKey].name;
       }
       else {
         manufacturerName = this.fixture.newManufacturerName;
@@ -353,15 +359,15 @@ export default {
       manufacturerName = manufacturerName.trim().toLowerCase();
 
       return manufacturerName === `` || !this.fixture.name.trim().toLowerCase().startsWith(manufacturerName);
-    }
+    },
   },
   watch: {
     fixture: {
       handler: function() {
         this.autoSave(`fixture`);
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   beforeMount() {
     this.$root._oflRestoreComplete = false;
@@ -419,7 +425,7 @@ export default {
       const chName = this.getChannelName(channelUuid);
 
       return Object.keys(this.fixture.availableChannels).every(
-        uuid => chName !== this.getChannelName(uuid) || uuid === channelUuid
+        uuid => chName !== this.getChannelName(uuid) || uuid === channelUuid,
       );
     },
 
@@ -478,8 +484,8 @@ export default {
         {
           fixture: this.fixture,
           channel: this.channel,
-          timestamp: Date.now()
-        }
+          timestamp: Date.now(),
+        },
       ]));
     },
 
@@ -540,9 +546,9 @@ export default {
           align: {
             top: 0,
             left: 0,
-            topOffset: 100
+            topOffset: 100,
           },
-          isScrollable: target => target === window
+          isScrollable: target => target === window,
         }, () => field.focus());
 
         return;
@@ -569,7 +575,7 @@ export default {
 
       this.$router.push({
         path: this.$route.path,
-        query: {} // clear prefill query
+        query: {}, // clear prefill query
       });
 
       this.$nextTick(() => {
@@ -577,8 +583,8 @@ export default {
         this.$refs.existingManufacturerSelect.focus();
         window.scrollTo(0, 0);
       });
-    }
-  }
+    },
+  },
 };
 
 /**
@@ -591,7 +597,7 @@ function isPrefillable(prefillObject, key) {
     useExistingManufacturer: `boolean`,
     manufacturerKey: `string`,
     newManufacturerRdmId: `number`,
-    rdmModelId: `number`
+    rdmModelId: `number`,
   };
 
   return key in allowedPrefillValues && typeof prefillObject[key] === allowedPrefillValues[key];

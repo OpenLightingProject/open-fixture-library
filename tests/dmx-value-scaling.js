@@ -6,7 +6,7 @@ require = require(`esm`)(module); // eslint-disable-line no-global-assign
 
 const {
   scaleDmxValue,
-  scaleDmxRange
+  scaleDmxRange,
 } = require(`../lib/scale-dmx-values.js`);
 
 
@@ -46,7 +46,7 @@ function testScaleDmxValuesUp() {
     /* eslint-disable indent, no-multi-spaces, key-spacing */
       0:     0, // [  0] -> [  0,   0]
     127: 32639, // [127] -> [127, 127]
-    255: 65535  // [255] -> [255, 255] = 256^2 - 1
+    255: 65535, // [255] -> [255, 255] = 256^2 - 1
     /* eslint-enable indent, no-multi-spaces, key-spacing */
   };
   Object.keys(scale8to16).forEach(dmxValue => testScaleDmxValue(dmxValue, 1, 2, scale8to16[dmxValue]));
@@ -56,7 +56,7 @@ function testScaleDmxValuesUp() {
       0:        0, // [  0] -> [  0,   0,   0]
     127:  8355711, // [127] -> [127, 127, 127]
     128:  8421504, // [128] -> [128, 128, 128]
-    255: 16777215  // [255] -> [255, 255, 255] = 256^3 - 1
+    255: 16777215, // [255] -> [255, 255, 255] = 256^3 - 1
     /* eslint-enable indent, no-multi-spaces, key-spacing */
   };
   Object.keys(scale8to24).forEach(dmxValue => testScaleDmxValue(dmxValue, 1, 3, scale8to24[dmxValue]));
@@ -70,7 +70,7 @@ function testScaleDmxValuesUp() {
     32768:  8388608, // [128,   0] -> [128,   0,   0]
     65279: 16711679, // [254, 255] -> [254, 255, 255]
     65280: 16711680, // [255,   0] -> [255,   0,   0]
-    65535: 16777215  // [255, 255] -> [255, 255, 255]
+    65535: 16777215, // [255, 255] -> [255, 255, 255]
     /* eslint-enable indent, no-multi-spaces, key-spacing */
   };
   Object.keys(scale16to24).forEach(dmxValue => testScaleDmxValue(dmxValue, 2, 3, scale16to24[dmxValue]));
@@ -88,7 +88,7 @@ function testScaleDmxValuesDown() {
     32767: 127, // [127, 255] -> [127]
     32768: 128, // [128,   0] -> [128]
     65280: 255, // [255,   0] -> [255]
-    65535: 255  //  [255, 255] -> [255]
+    65535: 255, //  [255, 255] -> [255]
     /* eslint-enable indent, no-multi-spaces, key-spacing */
   };
   Object.keys(scale16to8).forEach(dmxValue => testScaleDmxValue(dmxValue, 2, 1, scale16to8[dmxValue]));
@@ -102,7 +102,7 @@ function testScaleDmxValuesDown() {
      8388608: 128, // [128,   0,   0] -> [128]
     16711679: 254, // [254, 255, 255] -> [254]
     16711680: 255, // [255,   0,   0] -> [255]
-    16777215: 255  // [255, 255, 255] -> [255]
+    16777215: 255, // [255, 255, 255] -> [255]
     /* eslint-enable indent, no-multi-spaces, key-spacing */
   };
   Object.keys(scale24to8).forEach(dmxValue => testScaleDmxValue(dmxValue, 3, 1, scale24to8[dmxValue]));
@@ -118,7 +118,7 @@ function testScaleDmxValuesDown() {
     16711679: 65279, // [254, 255, 255] -> [254, 255]
     16711680: 65280, // [255,   0,   0] -> [255,   0]
     16711935: 65280, // [255,   0, 255] -> [255,   0]
-    16777215: 65535  // [255, 255, 255] -> [255, 255]
+    16777215: 65535, // [255, 255, 255] -> [255, 255]
     /* eslint-enable indent, no-multi-spaces, key-spacing */
   };
   Object.keys(scale24to16).forEach(dmxValue => testScaleDmxValue(dmxValue, 3, 2, scale24to16[dmxValue]));
@@ -133,12 +133,12 @@ function testScaleDmxValuesDown() {
  * @param {Number} desiredDmxValue The correct value for dmxValue in the desired resolution.
  */
 function testScaleDmxValue(dmxValue, currentResolution, desiredResolution, desiredDmxValue) {
-  dmxValue = parseInt(dmxValue);
+  dmxValue = parseInt(dmxValue, 10);
 
   testEqual(
     `scaleDmxValue(${dmxValue}, ${currentResolution}, ${desiredResolution})`,
     scaleDmxValue(dmxValue, currentResolution, desiredResolution),
-    desiredDmxValue
+    desiredDmxValue,
   );
 }
 
@@ -152,7 +152,7 @@ function testScaleDmxRangesUp() {
     [[  0, 254], [    0, 65279]],
     [[  0, 255], [    0, 65535]],
     [[127, 127], [32512, 32767]],
-    [[255, 255], [65280, 65535]]
+    [[255, 255], [65280, 65535]],
     /* eslint-enable no-multi-spaces, array-bracket-spacing */
   ];
   scale8to16.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 1, 2, desiredDmxRange));
@@ -163,7 +163,7 @@ function testScaleDmxRangesUp() {
     [[  0, 254], [       0, 16711679]],
     [[  0, 255], [       0, 16777215]],
     [[127, 127], [ 8323072,  8388607]],
-    [[255, 255], [16711680, 16777215]]
+    [[255, 255], [16711680, 16777215]],
     /* eslint-enable no-multi-spaces, array-bracket-spacing */
   ];
   scale8to24.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 1, 3, desiredDmxRange));
@@ -183,7 +183,7 @@ function testScaleDmxRangesDown() {
     [[32512, 32767], [127, 127]],
     [[64000, 65279], [250, 254]],
     [[65279, 65535], [255, 255]],
-    [[65280, 65535], [255, 255]]
+    [[65280, 65535], [255, 255]],
     /* eslint-enable no-multi-spaces, array-bracket-spacing */
   ];
   scale16to8.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 2, 1, desiredDmxRange));
@@ -191,7 +191,7 @@ function testScaleDmxRangesDown() {
   const scale24to8 = [
     /* eslint-disable array-bracket-spacing */
     [[ 615605, 1683118], [10, 25]],
-    [[1683119, 2244792], [26, 34]]
+    [[1683119, 2244792], [26, 34]],
     /* eslint-enable array-bracket-spacing */
   ];
   scale24to8.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 3, 1, desiredDmxRange));
@@ -199,7 +199,7 @@ function testScaleDmxRangesDown() {
   const scale24to16 = [
     /* eslint-disable array-bracket-spacing */
     [[ 615605, 1683118], [2405, 6574]],
-    [[1683119, 2244792], [6575, 8768]]
+    [[1683119, 2244792], [6575, 8768]],
     /* eslint-enable array-bracket-spacing */
   ];
   scale24to16.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 3, 2, desiredDmxRange));
@@ -217,7 +217,7 @@ function testScaleDmxRange(dmxRange, currentResolution, desiredResolution, desir
   testArraysEqual(
     `scaleDmxRange(${dmxRange[0]}, ${dmxRange[1]}, ${currentResolution}, ${desiredResolution})`,
     scaleDmxRange(dmxRange[0], dmxRange[1], currentResolution, desiredResolution),
-    desiredDmxRange
+    desiredDmxRange,
   );
 }
 
@@ -230,17 +230,17 @@ function testScaleDmxRange(dmxRange, currentResolution, desiredResolution, desir
 function testRandomChannelDownscaling(resolution) {
   const capabilityRanges = getRandomCapabilityRanges();
   const scaledRanges = capabilityRanges.map(
-    ([start, end]) => scaleDmxRange(start, end, resolution, resolution - 1)
+    ([start, end]) => scaleDmxRange(start, end, resolution, resolution - 1),
   );
 
   const doRangesOverlap = scaledRanges.some(
-    ([start, end], index, arr) => index > 0 && start <= arr[index - 1][1]
+    ([start, end], index, arr) => index > 0 && start <= arr[index - 1][1],
   );
 
   parseTestResult(
     !doRangesOverlap,
     `Random capabilities, scaled down from ${resolution * 8}bit to ${(resolution - 1) * 8}bit, do not overlap:`,
-    `Random capabilities, scaled down from ${resolution * 8}bit to ${(resolution - 1) * 8}bit, do overlap:`
+    `Random capabilities, scaled down from ${resolution * 8}bit to ${(resolution - 1) * 8}bit, do overlap:`,
   );
   capabilityRanges.forEach(([start, end], index) => {
     const [scaledStart, scaledEnd] = scaledRanges[index];
@@ -284,7 +284,7 @@ function testEqual(description, value, desiredValue) {
   parseTestResult(
     value === desiredValue,
     `${description} should be ${desiredValue}.`,
-    `${description} should be ${desiredValue} but is ${value}.`
+    `${description} should be ${desiredValue} but is ${value}.`,
   );
 }
 
@@ -298,13 +298,13 @@ function testEqual(description, value, desiredValue) {
 function testArraysEqual(description, array, desiredArray) {
   const correctLengths = array.length === desiredArray.length;
   const desiredElementsInArray = desiredArray.every(
-    (value, index) => array[index] === value
+    (value, index) => array[index] === value,
   );
 
   parseTestResult(
     correctLengths && desiredElementsInArray,
     `${description} should be [${desiredArray.join(`, `)}].`,
-    `${description} should be [${desiredArray.join(`, `)}] but is [${array.join(`, `)}].`
+    `${description} should be [${desiredArray.join(`, `)}] but is [${array.join(`, `)}].`,
   );
 }
 

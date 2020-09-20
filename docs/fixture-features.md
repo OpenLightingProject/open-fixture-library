@@ -27,8 +27,8 @@ module.exports = [{
    * @returns {Boolean} true if the fixture uses the feature
    */
   hasFeature: fixture => fixture.coarseChannels.some(
-    channel => channel.fineChannelAliases.length === 1
-  )
+    channel => channel.fineChannelAliases.length === 1,
+  ),
 }];
 ```
 

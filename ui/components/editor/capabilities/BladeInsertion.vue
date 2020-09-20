@@ -52,18 +52,18 @@ export default {
     EditorProportionalPropertySwitcher,
     LabeledInput,
     PropertyInputEntity,
-    PropertyInputText
+    PropertyInputText,
   },
   props: {
     capability: {
       type: Object,
-      required: true
+      required: true,
     },
     formstate: {
       type: Object,
       required: false,
-      default: null
-    }
+      default: null,
+    },
   },
   data() {
     return {
@@ -73,14 +73,14 @@ export default {
         insertion: null,
         insertionStart: `out`,
         insertionEnd: `in`,
-        comment: ``
-      }
+        comment: ``,
+      },
     };
   },
   computed: {
     bladeSchema() {
       return this.properties.capabilityTypes.BladeInsertion.properties.blade;
-    }
-  }
+    },
+  },
 };
 </script>
