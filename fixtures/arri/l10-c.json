@@ -1,0 +1,423 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-12.2.1/schemas/fixture.json",
+  "name": "L10-CC",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2018-10-17",
+    "lastModifyDate": "2018-10-17"
+  },
+  "links": {
+    "manual": [
+      "https://www.arri.com/resource/blob/31168/649ca2ae2935bc75686e42fbe388e07f/l5-0006896-arri-l-series-l10-user-manual-en-nov2018-l03301-data.pdf"
+    ],
+    "productPage": [
+      "https://www.arri.com/en/lighting/led/l-series-c/l10-c"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=P5aUA5M-CXU"
+    ]
+  },
+  "physical": {
+    "dimensions": [428, 395, 745],
+    "weight": 19,
+    "power": 510,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [15, 50]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capabilities": [
+        {
+          "type": "Intensity"
+        }
+      ],
+      "singleCapability": true
+    },
+    "Color Temperature": {
+      "fineChannelAliases": ["Color Temperature fine"],
+      "capabilities": [
+        {
+          "type": "ColorTemperature",
+          "colorTemperatureStart": 2800,
+          "colorTemperatureEnd": 10000
+        }
+      ],
+      "singleCapability": true
+    },
+    "Green-Magenta Point 8bit": {
+      "name": "Green-Magenta Point",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [21, 119],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [120, 145],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [146, 244],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "Green-Magenta Point 16bit": {
+      "name": "Green-Magenta Point",
+      "fineChannelAliases": ["Green-Magenta Point 16bit fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4587],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [4588, 9830],
+          "type": "Generic",
+          "comment": "Full minus green"
+        },
+        {
+          "dmxRange": [9831, 30146],
+          "type": "Generic",
+          "comment": "-99%…-1%"
+        },
+        {
+          "dmxRange": [30147, 39976],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [39977, 60292],
+          "type": "Generic",
+          "comment": "1%…99%"
+        },
+        {
+          "dmxRange": [60293, 65535],
+          "type": "Generic",
+          "comment": "Full plus green"
+        }
+      ]
+    },
+    "Cross Fade to Color": {
+      "fineChannelAliases": ["Cross Fade to Color fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "type": "Generic",
+          "comment": "White … RGBW/HSI color"
+        }
+      ],
+      "singleCapability": true
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "type": "ColorIntensity",
+          "color": "#ff0000"
+        }
+      ],
+      "singleCapability": true
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "type": "ColorIntensity",
+          "color": "#00ff00"
+        }
+      ],
+      "singleCapability": true
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "type": "ColorIntensity",
+          "color": "#0000ff"
+        }
+      ],
+      "singleCapability": true
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "type": "ColorIntensity",
+          "color": "#ffffff"
+        }
+      ],
+      "singleCapability": true
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "type": "Generic",
+          "comment": "0…360°"
+        }
+      ],
+      "singleCapability": true
+    },
+    "Saturation": {
+      "fineChannelAliases": ["Saturation fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "type": "Generic",
+          "comment": "0…100%"
+        }
+      ],
+      "singleCapability": true
+    }
+  },
+  "modes": [
+    {
+      "name": "P01: CCT & RGBW 8bit",
+      "shortName": "P01",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Green-Magenta Point 8bit",
+        "Cross Fade to Color",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "P02: CCT 8bit",
+      "shortName": "P02",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Green-Magenta Point 8bit"
+      ]
+    },
+    {
+      "name": "P03: CCT & HSI 8bit",
+      "shortName": "P03",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Green-Magenta Point 8bit",
+        "Cross Fade to Color",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "P04: RGBW 8bit",
+      "shortName": "P04",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "P05: HSI 8bit",
+      "shortName": "P05",
+      "channels": [
+        "Dimmer",
+        "Hue",
+        "Saturation"
+      ]
+    },
+    {
+      "name": "P06: CCT & RGBW 16bit",
+      "shortName": "P06",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Color Temperature",
+        "Color Temperature fine",
+        "Green-Magenta Point 16bit",
+        "Green-Magenta Point 16bit fine",
+        "Cross Fade to Color",
+        "Cross Fade to Color fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine"
+      ]
+    },
+    {
+      "name": "P07: CCT 16bit",
+      "shortName": "P07",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Color Temperature",
+        "Color Temperature fine",
+        "Green-Magenta Point 16bit",
+        "Green-Magenta Point 16bit fine"
+      ]
+    },
+    {
+      "name": "P08: CCT & HSI 16bit",
+      "shortName": "P08",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Color Temperature",
+        "Color Temperature fine",
+        "Green-Magenta Point 16bit",
+        "Green-Magenta Point 16bit fine",
+        "Cross Fade to Color",
+        "Cross Fade to Color fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine"
+      ]
+    },
+    {
+      "name": "P09: RGBW 16bit",
+      "shortName": "P09",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine"
+      ]
+    },
+    {
+      "name": "P10: HSI 16bit",
+      "shortName": "P10",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine"
+      ]
+    },
+    {
+      "name": "P11: CCT & RGBW 8/16bit",
+      "shortName": "P11",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Color Temperature",
+        "Color Temperature fine",
+        "Green-Magenta Point 8bit",
+        "Cross Fade to Color",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine"
+      ]
+    },
+    {
+      "name": "P12: CCT 8/16bit",
+      "shortName": "P12",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Color Temperature",
+        "Color Temperature fine",
+        "Green-Magenta Point 8bit"
+      ]
+    },
+    {
+      "name": "P13: CCT & HSI 8/16bit",
+      "shortName": "P13",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Color Temperature",
+        "Color Temperature fine",
+        "Green-Magenta Point 8bit",
+        "Cross Fade to Color",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine"
+      ]
+    },
+    {
+      "name": "P14: RGBW 8/16bit",
+      "shortName": "P14",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine"
+      ]
+    },
+    {
+      "name": "P15: HSI 8/16bit",
+      "shortName": "P15",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Saturation fine"
+      ]
+    }
+  ],
+  "fixtureKey": "l10-c",
+  "manufacturerKey": "arri",
+  "oflURL": "https://open-fixture-library.org/arri/l10-c"
+}
