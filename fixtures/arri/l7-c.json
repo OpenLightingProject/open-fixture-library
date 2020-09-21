@@ -9,13 +9,15 @@
   },
   "links": {
     "manual": [
-      "https://www.arri.com/resource/blob/31174/a4c3f71a4eeba9381897ffee38676993/l5-31899-0-arri-l-series-l7-user-manual-en-nov2018-l03301-data.pdf"
+      "https://www.arri.com/resource/blob/31174/a4c3f71a4eeba9381897ffee38676993/l5-31899-0-arri-l-series-l7-user-manual-en-nov2018-l03301-data.pdf",
+      "https://www.arri.com/resource/blob/65926/3b71e4fe69caea09f657fa8d599a55ab/l5-0022935-arri-l-series-dmx-protocol-specification-v3-4-data.pdf"
     ],
     "productPage": [
       "https://www.arri.com/en/lighting/led/l-series-c/l7-c"
     ],
     "video": [
-      "https://www.youtube.com/watch?v=P5aUA5M-CXU"
+      "https://www.youtube.com/watch?v=RbUNbA0HPls",
+      "https://www.youtube.com/watch?v=FFqDdU5SHOs"
     ]
   },
   "physical": {
@@ -90,32 +92,32 @@
       "defaultValue": 0,
       "capabilities": [
         {
-          "dmxRange": [0, 4587],
+          "dmxRange": [0, 5000],
           "type": "Generic",
           "comment": "Neutral"
         },
         {
-          "dmxRange": [4588, 9830],
+          "dmxRange": [5001, 10000],
           "type": "Generic",
           "comment": "Full minus green"
         },
         {
-          "dmxRange": [9831, 30146],
+          "dmxRange": [10001, 29999],
           "type": "Generic",
           "comment": "-99%…-1%"
         },
         {
-          "dmxRange": [30147, 39976],
+          "dmxRange": [30000, 40000],
           "type": "Generic",
           "comment": "Neutral"
         },
         {
-          "dmxRange": [39977, 60292],
+          "dmxRange": [40001, 59999],
           "type": "Generic",
           "comment": "1%…99%"
         },
         {
-          "dmxRange": [60293, 65535],
+          "dmxRange": [60000, 65535],
           "type": "Generic",
           "comment": "Full plus green"
         }
