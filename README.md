@@ -1,11 +1,11 @@
-# Open Fixture Library – <a href="https://open-fixture-library.org/">open-fixture-library.org</a>
+# Open Fixture Library<br><a href="https://open-fixture-library.org/">open-fixture-library.org</a>
 
-[![GitHub Actions Status](https://github.com/OpenLightingProject/open-fixture-library/workflows/Test/badge.svg)](https://github.com/OpenLightingProject/open-fixture-library/actions)
 [![Travis Status](https://img.shields.io/travis/OpenLightingProject/open-fixture-library/master.svg?label=Travis&logo=travis-ci&logoColor=white)](https://travis-ci.org/OpenLightingProject/open-fixture-library/branches)
 [![Code Quality](https://api.codacy.com/project/badge/Grade/73096865e9f44a7bb246a318ffc8e68b)](https://www.codacy.com/app/FloEdelmann/open-fixture-library)
 [![David Dependency Manager](https://img.shields.io/david/OpenLightingProject/open-fixture-library.svg)](https://david-dm.org/OpenLightingProject/open-fixture-library)
 [![Known Vulnerabilities](https://snyk.io/test/github/FloEdelmann/open-fixture-library/badge.svg)](https://snyk.io/test/github/FloEdelmann/open-fixture-library)
 [![Mozilla HTTP Observatory Grade](https://img.shields.io/mozilla-observatory/grade-score/open-fixture-library.org?publish)](https://observatory.mozilla.org/analyze/open-fixture-library.org)
+[![Website Carbon](https://img.shields.io/badge/dynamic/json?color=yellowgreen&label=Website%20Carbon&query=%24.c&suffix=g%20CO%E2%82%82%2Fview&url=https%3A%2F%2Fapi.websitecarbon.com%2Fb%3Furl%3Dopen-fixture-library.org&cacheSeconds=604800)](https://www.websitecarbon.com/website/open-fixture-library-org/)
 
 [<img alt="OFL logo" src="https://cdn.rawgit.com/OpenLightingProject/open-fixture-library/master/ui/static/ofl-logo.svg" width="250" />](ui/static/ofl-logo.svg)
 
