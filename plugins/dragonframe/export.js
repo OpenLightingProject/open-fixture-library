@@ -14,6 +14,9 @@ module.exports.version = require(`../../schemas/fixture.json`).version;
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
+
+module.exports.version = `1.0.0`;
+
 module.exports.export = async function exportDragonframe(fixtures, options) {
   const displayedPluginVersion = options.displayedPluginVersion || module.exports.version;
 
