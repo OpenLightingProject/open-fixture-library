@@ -180,22 +180,23 @@
         {
           "dmxRange": [10, 19],
           "type": "Maintenance",
-          "comment": "Off"
+          "parameter": "off"
         },
         {
           "dmxRange": [20, 20],
           "type": "Maintenance",
-          "comment": "Slow"
+          "parameter": "slow"
         },
         {
           "dmxRange": [21, 248],
           "type": "Maintenance",
-          "comment": "Linear Increase In Speed"
+          "parameterStart": "slow",
+          "parameterEnd": "fast"
         },
         {
           "dmxRange": [249, 249],
           "type": "Maintenance",
-          "comment": "Fast"
+          "parameter": "fast"
         },
         {
           "dmxRange": [250, 255],
@@ -253,23 +254,28 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "Generic",
+          "type": "Maintenance",
+          "parameter": 0,
           "comment": "Neutral"
         },
         {
           "dmxRange": [1, 127],
-          "type": "Generic",
-          "comment": "Linear between +10 and 0"
+          "type": "Maintenance",
+          "parameterStart": 10,
+          "parameterEnd": 0
         },
         {
           "dmxRange": [128, 128],
-          "type": "Generic",
+          "type": "Maintenance",
+          "parameter": 0,
           "comment": "Neutral"
         },
         {
           "dmxRange": [129, 255],
           "type": "Generic",
-          "comment": "Linear between 0 and -10"
+          "type": "Maintenance",
+          "parameterStart": 0,
+          "parameterEnd": -10
         }
       ]
     },
