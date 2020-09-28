@@ -4,7 +4,7 @@ const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
 
 const manufacturers = require(`../../fixtures/manufacturers.json`);
 
-module.exports.version = require(`../../schemas/fixture.json`).version;
+module.exports.version = `1.0.0`;
 
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
