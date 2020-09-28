@@ -4,7 +4,10 @@ const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
 
 const manufacturers = require(`../../fixtures/manufacturers.json`);
 
-module.exports.version = require(`../../schemas/fixture.json`).version;
+// needed for export test
+module.exports.supportedOflVersion = `12.2.1`;
+
+module.exports.version = `1.0.0`;
 
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
@@ -14,9 +17,6 @@ module.exports.version = require(`../../schemas/fixture.json`).version;
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
-
-module.exports.version = `1.0.0`;
-
 module.exports.export = async function exportDragonframe(fixtures, options) {
   const displayedPluginVersion = options.displayedPluginVersion || module.exports.version;
 
@@ -28,7 +28,7 @@ module.exports.export = async function exportDragonframe(fixtures, options) {
 
 
     const jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
-    jsonData.$schema = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${displayedPluginVersion}/schemas/fixture.json`;
+    jsonData.$schema = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${module.exports.supportedOflVersion}/schemas/fixture.json`;
 
     jsonData.fixtureKey = fixture.key;
     jsonData.manufacturerKey = fixture.manufacturer.key;
