@@ -4,7 +4,7 @@ const getAjvErrorMessages = require(`../../../lib/get-ajv-error-messages.js`);
 
 const SUPPORTED_OFL_VERSION = require(`../export.js`).supportedOflVersion;
 const SCHEMA_BASE_URL = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${SUPPORTED_OFL_VERSION}/schemas/`;
-const SCHEMA_FILES = [`capability.json`, `channel.json`, `definitions.json`, `fixture.json`, `gobo.json`, `matrix.json`, `wheel-slot.json`];
+const SCHEMA_FILES = [`capability.json`, `channel.json`, `definitions.json`, `fixture.json`, `gobo.json`, `matrix.json`, `manufacturers.json`, `wheel-slot.json`];
 
 const schemaPromises = getSchemas();
 
@@ -32,7 +32,9 @@ module.exports = async function testJsonSchemaConformity(exportFile, allExportFi
     },
     verbose: true,
   });
-  const schemaValidate = ajv.getSchema(`https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`);
+
+  const schemaName = exportFile.name === `manufacturers.json` ? `manufacturers` : `fixture`;
+  const schemaValidate = ajv.getSchema(`https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/${schemaName}.json`);
 
   const schemaValid = schemaValidate(JSON.parse(exportFile.content));
   if (!schemaValid) {
@@ -49,15 +51,22 @@ async function getSchemas() {
   ));
 
   const fixtureSchema = schemasJson[SCHEMA_FILES.indexOf(`fixture.json`)];
+  const definitionsSchema = schemasJson[SCHEMA_FILES.indexOf(`definitions.json`)];
+  const manufacturersSchema = schemasJson[SCHEMA_FILES.indexOf(`manufacturers.json`)];
 
   // allow automatically added properties (but don't validate them)
   fixtureSchema.properties.fixtureKey = true;
   fixtureSchema.properties.manufacturerKey = true;
   fixtureSchema.properties.oflURL = true;
 
+  // allow resolved gobo resources
+  definitionsSchema.goboResourceString = { type: `object` };
+
   // allow changed schema property
   fixtureSchema.patternProperties[`^\\$schema$`].const = `${SCHEMA_BASE_URL}fixture.json`;
   fixtureSchema.patternProperties[`^\\$schema$`].enum = undefined;
+  manufacturersSchema.patternProperties[`^\\$schema$`].const = `${SCHEMA_BASE_URL}manufacturers.json`;
+  manufacturersSchema.patternProperties[`^\\$schema$`].enum = undefined;
 
   return schemasJson;
 }
