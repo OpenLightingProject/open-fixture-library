@@ -18,8 +18,6 @@ module.exports.version = `1.0.0`;
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
 module.exports.export = async function exportDragonframe(fixtures, options) {
-  const displayedPluginVersion = options.displayedPluginVersion || module.exports.version;
-
   const usedManufacturers = new Set();
 
   // one JSON file for each fixture
@@ -44,7 +42,7 @@ module.exports.export = async function exportDragonframe(fixtures, options) {
 
   // manufacturers.json file
   const usedManufacturerData = {
-    $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${displayedPluginVersion}/schemas/manufacturers.json`,
+    $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${module.exports.supportedOflVersion}/schemas/manufacturers.json`,
   };
   for (const man of Object.keys(manufacturers).sort()) {
     if (usedManufacturers.has(man)) {
