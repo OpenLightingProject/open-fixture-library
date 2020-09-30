@@ -3,14 +3,25 @@ const Ajv = require(`ajv`);
 const getAjvErrorMessages = require(`../../../lib/get-ajv-error-messages.js`);
 
 const SUPPORTED_OFL_VERSION = require(`../export.js`).supportedOflVersion;
-const SCHEMA_BASE_URL = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${SUPPORTED_OFL_VERSION}/schemas/`;
-const SCHEMA_FILES = [`capability.json`, `channel.json`, `definitions.json`, `fixture.json`, `gobo.json`, `matrix.json`, `manufacturers.json`, `wheel-slot.json`];
+const REPO_BASE_URL = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library`;
+const SCHEMA_BASE_URL = `${REPO_BASE_URL}/schema-${SUPPORTED_OFL_VERSION}/schemas/`;
+const SCHEMA_FILES = [
+  `capability.json`,
+  `channel.json`,
+  `definitions.json`,
+  `fixture.json`,
+  `gobo.json`,
+  `matrix.json`,
+  `manufacturers.json`,
+  `wheel-slot.json`,
+];
 
 const schemaPromises = getSchemas();
 
 /**
  * @typedef {Object} ExportFile
- * @property {String} name File name, may include slashes to provide a folder structure.
+ * @property {String} name File name,
+ * may include slashes to provide a folder structure.
  * @property {String} content File content.
  * @property {String} mimetype File mime type.
  * @property {Array.<Fixture>|null} fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
@@ -34,7 +45,7 @@ module.exports = async function testJsonSchemaConformity(exportFile, allExportFi
   });
 
   const schemaName = exportFile.name === `manufacturers.json` ? `manufacturers` : `fixture`;
-  const schemaValidate = ajv.getSchema(`https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/${schemaName}.json`);
+  const schemaValidate = ajv.getSchema(`${REPO_BASE_URL}/master/schemas/${schemaName}.json`);
 
   const schemaValid = schemaValidate(JSON.parse(exportFile.content));
   if (!schemaValid) {
