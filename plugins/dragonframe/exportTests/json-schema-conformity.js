@@ -49,7 +49,6 @@ async function getSchemas() {
   ));
 
   const fixtureSchema = schemasJson[SCHEMA_FILES.indexOf(`fixture.json`)];
-  const channelSchema = schemasJson[SCHEMA_FILES.indexOf(`channel.json`)];
 
   // allow automatically added properties (but don't validate them)
   fixtureSchema.properties.fixtureKey = true;
