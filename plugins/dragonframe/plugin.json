@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schemas/plugin.json",
+
+  "name": "Dragonframe",
+  "description": [
+    "<p><em>Dragonframe</em> is software for stop motion filmmaking, with DMX programming capabilities.",
+    "Dragonframe 5 will support lighting fixtures.",
+    "The fixture format is essentially",
+    "<a href=\"https://github.com/OpenLightingProject/open-fixture-library/blob/schema-12.2.1/docs/fixture-format.md\">",
+    "the OFL format at schema version 12.2.1</a></p>"
+  ],
+  "links": {
+    "Website": "https://www.dragonframe.com/"
+  },
+  "fixtureUsage": [
+    "<p>Dragonframe will include light fixture definitions.</p>",
+    "<p>If you need to add new ones, you can create them manually or via the OFL website",
+    "and place the JSON files in the user directory specified below.</p>"
+  ],
+  "fileLocations": {
+    "subDirectoriesAllowed": true,
+    "Windows": {
+      "user": "C:\\Users\\yourUsername\\Dragonframe\\LightFixtures"
+    },
+    "Mac OS": {
+      "user": "~/Dragonframe/LightFixtures"
+    },
+    "Linux": {
+      "user": "~/Dragonframe/LightFixtures"
+    }
+  }
+}

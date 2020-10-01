@@ -8,6 +8,7 @@
     "aglight",
     "colorsource",
     "d-light",
+    "dragonframe",
     "ecue",
     "millumin",
     "ofl",
@@ -30,6 +31,13 @@
       "exportPluginVersion": "0.2.0",
       "exportTests": [
         "attributes-correctness"
+      ]
+    },
+    "dragonframe": {
+      "name": "Dragonframe",
+      "exportPluginVersion": "1.0.0",
+      "exportTests": [
+        "json-schema-conformity"
       ]
     },
     "ecue": {
