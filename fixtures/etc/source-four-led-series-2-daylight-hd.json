@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Source Four LED Series 2 Lustr",
-  "shortName": "EtcSF2Lustr",
+  "name": "Source Four LED Series 2 Daylight HD",
+  "shortName": "EtcSF2DaylightHD",
   "categories": ["Dimmer", "Color Changer", "Strobe"],
   "meta": {
     "authors": ["Jeppe Cohrt", "Dyami Caliri"],
@@ -17,16 +17,17 @@
       "https://www.etcconnect.com/Products/Lighting-Fixtures/Source-Four-LED-Series-2/Features.aspx"
     ],
     "video": [
+      "https://www.youtube.com/watch?v=FXQDFq9jxI0",
       "https://www.youtube.com/watch?v=oEjG8XLzuvs"
     ]
   },
   "physical": {
     "dimensions": [338, 615, 631],
     "weight": 8.3,
-    "power": 171,
+    "power": 248,
     "DMXconnector": "5-pin",
     "bulb": {
-      "type": "Seven-color LED array"
+      "type": "Four-color LED array"
     }
   },
   "availableChannels": {
@@ -36,28 +37,10 @@
         "color": "Red"
       }
     },
-    "Lime": {
+    "Mint": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Lime"
-      }
-    },
-    "Amber": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
-    },
-    "Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Cyan": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Cyan"
       }
     },
     "Blue": {
@@ -202,13 +185,21 @@
   },
   "modes": [
     {
+      "name": "Studio",
+      "channels": [
+        "Intensity",
+        "Color Point",
+        "Tint",
+        null,
+        "Strobe",
+        "Fan Control"
+      ]
+    },
+    {
       "name": "Direct",
       "channels": [
         "Red",
-        "Lime",
-        "Amber",
-        "Green",
-        "Cyan",
+        "Mint",
         "Blue",
         "Indigo",
         "Intensity",
@@ -251,17 +242,6 @@
       ]
     },
     {
-      "name": "Studio",
-      "channels": [
-        "Intensity",
-        "Color Point",
-        "Tint",
-        null,
-        "Strobe",
-        "Fan Control"
-      ]
-    },
-    {
       "name": "HSI Plus 7",
       "shortName": "HSI+7",
       "channels": [
@@ -274,12 +254,12 @@
         null,
         "Plus 7 Control",
         "Red",
-        "Lime",
-        "Amber",
-        "Green",
-        "Cyan",
+        null,
+        "Mint",
         "Blue",
-        "Indigo"
+        "Indigo",
+        null,
+        null
       ]
     },
     {
@@ -296,12 +276,12 @@
         null,
         "Plus 7 Control",
         "Red",
-        "Lime",
-        "Amber",
-        "Green",
-        "Cyan",
+        null,
+        "Mint",
         "Blue",
-        "Indigo"
+        "Indigo",
+        null,
+        null
       ]
     },
     {
@@ -317,12 +297,12 @@
         null,
         "Plus 7 Control",
         "Red",
-        "Lime",
-        "Amber",
-        "Green",
-        "Cyan",
+        null,
+        "Mint",
         "Blue",
-        "Indigo"
+        "Indigo",
+        null,
+        null
       ]
     }
   ]
