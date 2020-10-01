@@ -175,33 +175,23 @@
         {
           "dmxRange": [0, 9],
           "type": "Maintenance",
-          "comment": "Auto"
+          "comment": "Fan auto"
         },
         {
           "dmxRange": [10, 19],
-          "type": "Maintenance",
-          "parameter": "off"
+          "type": "Rotation",
+          "speed": "stop"
         },
         {
-          "dmxRange": [20, 20],
-          "type": "Maintenance",
-          "parameter": "slow"
-        },
-        {
-          "dmxRange": [21, 248],
-          "type": "Maintenance",
-          "parameterStart": "slow",
-          "parameterEnd": "fast"
-        },
-        {
-          "dmxRange": [249, 249],
-          "type": "Maintenance",
-          "parameter": "fast"
+          "dmxRange": [20, 249],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         },
         {
           "dmxRange": [250, 255],
           "type": "Maintenance",
-          "comment": "Auto"
+          "comment": "Fan auto"
         }
       ]
     },
@@ -255,24 +245,26 @@
         {
           "dmxRange": [0, 0],
           "type": "Maintenance",
-          "parameter": 0,
-          "comment": "Neutral"
+          "comment": "Tint",
+          "parameter": 0
         },
         {
           "dmxRange": [1, 127],
           "type": "Maintenance",
+          "comment": "Tint",
           "parameterStart": 10,
           "parameterEnd": 0
         },
         {
           "dmxRange": [128, 128],
           "type": "Maintenance",
-          "parameter": 0,
-          "comment": "Neutral"
+          "comment": "Tint",
+          "parameter": 0
         },
         {
           "dmxRange": [129, 255],
           "type": "Maintenance",
+          "comment": "Tint",
           "parameterStart": 0,
           "parameterEnd": -10
         }
