@@ -24,7 +24,9 @@
       @help-wanted-clicked="openHelpWantedDialog" />
 
     <div v-if="`fixtureUsage` in pluginData" class="fixture-usage">
-      <h2 id="fixture-usage">Fixture usage</h2>
+      <h2 id="fixture-usage">Install fixture definitions</h2>
+
+      <p><NuxtLink to="/manufacturers">Browse to the fixture</NuxtLink> you want to download, then select <em>{{ pluginData.name }}</em> in the <em>Download as…</em> button.</p>
 
       <!-- eslint-disable-next-line vue/no-v-html -->
       <div v-html="pluginData.fixtureUsage" />
