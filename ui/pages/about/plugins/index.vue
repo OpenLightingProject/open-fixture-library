@@ -2,7 +2,7 @@
   <div>
     <h1>Plugins</h1>
 
-    <p>A plugin in <abbr title="Open Fixture Library">OFL</abbr> is a converter between our internal fixture definition format and an external format used by DMX lighting software or desks. Click on one of the plugins below to learn more about the corresponding fixture format and download instructions.</p>
+    <p>A plugin in <abbr title="Open Fixture Library">OFL</abbr> is a converter between our <a href="https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/fixture-format.md">internal fixture definition format</a> and an external format used by DMX lighting software or desks. Click on one of the plugins below to learn more about the corresponding fixture format and download instructions.</p>
 
     <div class="grid-3 centered">
       <div class="card">
