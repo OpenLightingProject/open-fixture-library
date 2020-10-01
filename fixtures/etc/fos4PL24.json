@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "fos/4 PL8",
-  "shortName": "fos/4 PL8",
+  "name": "fos/4 PL24",
+  "shortName": "fos/4 PL24",
   "categories": ["Dimmer", "Color Changer", "Strobe"],
   "meta": {
     "authors": ["Dyami Caliri"],
-    "createDate": "2020-09-28",
+    "createDate": "2020-10-01",
     "lastModifyDate": "2020-10-01"
   },
   "links": {
@@ -21,9 +21,9 @@
     ]
   },
   "physical": {
-    "dimensions": [203, 610, 631],
-    "weight": 14.5,
-    "power": 540,
+    "dimensions": [610, 610, 631],
+    "weight": 35.8,
+    "power": 1600,
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED"
