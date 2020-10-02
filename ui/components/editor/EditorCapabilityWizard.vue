@@ -59,7 +59,7 @@
         <th>Capability</th>
       </tr></thead>
       <tbody>
-        <tr v-for="capability in allCapabilities" :key="capability.uuid" :class="capability.source">
+        <tr v-for="capability of allCapabilities" :key="capability.uuid" :class="capability.source">
           <td class="capability-dmxRange0"><code>{{ capability.dmxRange[0] }}</code></td>
           <td class="capability-dmxRange-separator"><code>…</code></td>
           <td class="capability-dmxRange1"><code>{{ capability.dmxRange[1] }}</code></td>

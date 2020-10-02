@@ -6,7 +6,7 @@
     :class="{ empty: value === `` }">
     <option :disabled="required" value="">unknown</option>
     <option
-      v-for="item in schemaProperty.enum"
+      v-for="item of schemaProperty.enum"
       :key="item"
       :value="item">{{ item }}</option>
     <option

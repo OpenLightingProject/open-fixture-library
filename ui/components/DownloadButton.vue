@@ -5,7 +5,7 @@
       v-if="buttonStyle === `select`"
       @change="onDownloadSelect($event)">
       <option value="" disabled selected>{{ title }}</option>
-      <option v-for="plugin in exportPlugins" :key="plugin.key" :value="plugin.key">{{ plugin.name }}</option>
+      <option v-for="plugin of exportPlugins" :key="plugin.key" :value="plugin.key">{{ plugin.name }}</option>
     </select>
 
     <!-- Display the download button as hoverable div with real links in the dropdown -->
@@ -15,7 +15,7 @@
       :class="{ home: buttonStyle === `home` }">
       <a href="#" class="title" @click.prevent>{{ title }}</a>
       <ul>
-        <li v-for="plugin in exportPlugins" :key="plugin.key">
+        <li v-for="plugin of exportPlugins" :key="plugin.key">
           <a
             :href="`${baseLink}.${plugin.key}`"
             :title="`Download ${plugin.name} fixture definition${isSingle ? `` : `s`}`"

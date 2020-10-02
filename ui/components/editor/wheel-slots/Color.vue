@@ -25,7 +25,7 @@
 
     <LabeledInput v-if="colorPreview !== null" label="Color preview">
       <OflSvg
-        v-for="color in colorPreview"
+        v-for="color of colorPreview"
         :key="color"
         :colors="[color]"
         type="color-circle" />

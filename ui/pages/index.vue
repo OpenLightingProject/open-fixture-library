@@ -26,7 +26,7 @@
         <h2>Recently updated fixtures</h2>
 
         <ul class="list">
-          <li v-for="fixture in lastUpdated" :key="fixture.key">
+          <li v-for="fixture of lastUpdated" :key="fixture.key">
             <NuxtLink
               :to="`/${fixture.key}`"
               :style="{ borderLeftColor: fixture.color }"
@@ -56,7 +56,7 @@
         <h2>Recent contributors</h2>
 
         <ul class="list">
-          <li v-for="contributor in recentContributors" :key="contributor.name">
+          <li v-for="contributor of recentContributors" :key="contributor.name">
             <NuxtLink :to="`/${contributor.latestFixtureKey}`">
               {{ contributor.name }}
               <div class="hint">

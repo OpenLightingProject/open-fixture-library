@@ -27,14 +27,14 @@
 
       <optgroup v-if="enumValues.length" label="Keywords">
         <option
-          v-for="enumValue in enumValues"
+          v-for="enumValue of enumValues"
           :key="enumValue"
           :value="enumValue">{{ enumValue }}</option>
       </optgroup>
 
       <optgroup v-if="Object.keys(units).length" label="Units">
         <option
-          v-for="({ displayStr }, unitName) in units"
+          v-for="({ displayStr }, unitName) of units"
           :key="unitName"
           :value="unitName">{{ displayStr }}</option>
       </optgroup>

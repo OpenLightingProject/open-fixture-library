@@ -40,7 +40,7 @@
       </g>
 
       <g
-        v-for="(slot, index) in wheel.slots"
+        v-for="(slot, index) of wheel.slots"
         :key="`slot-${index}`"
         :transform="`rotate(${slotRotateAngle * index}, 0, 0)`"
         :class="{ slot: true, dim: highlightedSlot !== null && highlightedSlot !== index }">
@@ -144,7 +144,7 @@
         <table>
           <tbody>
             <tr
-              v-for="(slot, index) in wheel.slots"
+              v-for="(slot, index) of wheel.slots"
               :key="`slot-${index}`"
               @mouseover="highlightedSlot = (slot.type === `AnimationGoboEnd` ? index - 1 : index)"
               @mouseout="highlightedSlot = null">

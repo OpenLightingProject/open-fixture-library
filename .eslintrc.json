@@ -189,7 +189,8 @@
     "vue/component-definition-name-casing": "error",
     "vue/no-deprecated-slot-attribute": "error",
     "vue/no-deprecated-slot-scope-attribute": "error",
-    "vue/no-mutating-props": "warn"
+    "vue/no-mutating-props": "warn",
+    "vue/v-for-delimiter-style": ["error", "of"]
   },
   "settings": {
     "jsdoc": {

@@ -15,7 +15,7 @@
         <option value="" disabled>Please select a capability type</option>
 
         <option
-          v-for="type in capabilityTypes"
+          v-for="type of capabilityTypes"
           :key="type"
           :value="type">{{ type }}</option>
 

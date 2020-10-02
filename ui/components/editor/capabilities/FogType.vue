@@ -13,7 +13,7 @@
 
         <option value="" disabled>Please select a fog type</option>
         <option
-          v-for="fogType in fogTypes"
+          v-for="fogType of fogTypes"
           :key="fogType"
           :value="fogType">{{ fogType }}</option>
 

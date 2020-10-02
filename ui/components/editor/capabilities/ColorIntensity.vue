@@ -13,7 +13,7 @@
 
         <option value="" disabled>Please select a color</option>
         <option
-          v-for="color in colors"
+          v-for="color of colors"
           :key="color"
           :value="color">{{ color }}</option>
 

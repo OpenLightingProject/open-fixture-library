@@ -17,7 +17,7 @@
             value="">Filter by manufacturer</option>
 
           <option
-            v-for="(man, manKey) in manufacturers"
+            v-for="(man, manKey) of manufacturers"
             :key="manKey"
             :selected="manufacturersQuery.includes(manKey)"
             :value="manKey">{{ man.name }}</option>
@@ -29,7 +29,7 @@
             value="">Filter by category</option>
 
           <option
-            v-for="cat in categories"
+            v-for="cat of categories"
             :key="cat"
             :selected="categoriesQuery.includes(cat)"
             :value="cat">{{ cat }}</option>
@@ -51,7 +51,7 @@
       <div v-else-if="results.length > 0" class="card">
         <ul class="list fixtures">
           <li
-            v-for="fixture in fixtureResults"
+            v-for="fixture of fixtureResults"
             :key="fixture.key">
             <NuxtLink
               :to="`/${fixture.key}`"

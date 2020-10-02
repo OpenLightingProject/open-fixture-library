@@ -1,10 +1,10 @@
 <template>
   <div class="matrix">
     <section class="structure">
-      <div v-for="(zLevel, zIndex) in matrix.pixelKeyStructure" :key="zIndex" class="z-level">
-        <div v-for="(row, yIndex) in zLevel" :key="yIndex" class="row">
+      <div v-for="(zLevel, zIndex) of matrix.pixelKeyStructure" :key="zIndex" class="z-level">
+        <div v-for="(row, yIndex) of zLevel" :key="yIndex" class="row">
           <div
-            v-for="(pixelKey, xIndex) in row"
+            v-for="(pixelKey, xIndex) of row"
             :key="xIndex"
             :style="pixelSizing"
             :class="{ pixel: true, highlight: highlightedPixelKeys.includes(pixelKey) }">{{ pixelKey || '' }}</div>
@@ -19,7 +19,7 @@
 
       <div>
         <LabeledValue
-          v-for="[key, value] in pixelGroups"
+          v-for="[key, value] of pixelGroups"
           :key="key"
           :label="key"
           :value="value"

@@ -6,7 +6,7 @@
         name="categories"
         label="Categories">
         <CategoryBadge
-          v-for="cat in fixture.categories"
+          v-for="cat of fixture.categories"
           :key="cat"
           :category="cat" />
       </LabeledValue>
@@ -18,7 +18,7 @@
         label="Comment" />
 
       <section v-if="videos" class="fixture-videos">
-        <div v-for="video in videos" :key="video.url" class="fixture-video">
+        <div v-for="video of videos" :key="video.url" class="fixture-video">
           <EmbettyVideo
             :type="video.type"
             :video-id="video.videoId"
@@ -38,7 +38,7 @@
         name="links"
         label="Relevant links">
         <ul class="fixture-links">
-          <li v-for="link in links" :key="`${link.type}-${link.url}`" :class="`link-${link.type}`">
+          <li v-for="link of links" :key="`${link.type}-${link.url}`" :class="`link-${link.type}`">
             <a
               :href="link.url"
               :title="link.title"
@@ -91,7 +91,7 @@
       <template v-if="fixture.wheels.length > 0">
         <h3 class="wheels">Wheels</h3>
         <section class="wheels">
-          <FixturePageWheel v-for="wheel in fixture.wheels" :key="wheel.name" :wheel="wheel" />
+          <FixturePageWheel v-for="wheel of fixture.wheels" :key="wheel.name" :wheel="wheel" />
         </section>
       </template>
 
@@ -99,7 +99,7 @@
 
     <section class="fixture-modes">
       <FixturePageMode
-        v-for="(mode, index) in modes"
+        v-for="(mode, index) of modes"
         :key="mode.name"
         :mode="mode"
         :index="index"

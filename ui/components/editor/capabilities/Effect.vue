@@ -41,7 +41,7 @@
 
         <option value="" disabled>Please select an effect preset</option>
         <option
-          v-for="effect in effectPresets"
+          v-for="effect of effectPresets"
           :key="effect"
           :value="effect">{{ effect }}</option>
 

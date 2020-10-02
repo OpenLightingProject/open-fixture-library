@@ -27,7 +27,7 @@
 
         <ol>
           <FixturePageChannel
-            v-for="(ranges, switchToChannelKey) in channel.triggerRanges"
+            v-for="(ranges, switchToChannelKey) of channel.triggerRanges"
             :key="switchToChannelKey"
             :channel="fixture.getChannelByKey(switchToChannelKey)"
             :mode="mode"
@@ -37,7 +37,7 @@
               name="switchingChannel-triggerRanges"
               label="Activated when">
               Trigger channel is set to
-              <template v-for="(range, index) in ranges">
+              <template v-for="(range, index) of ranges">
                 {{ index > 0 ? ` or ` : `` }}
                 <span :key="range.toString()" style="white-space: nowrap;">
                   {{ range.toString() }}

@@ -1,9 +1,9 @@
 <template>
   <div class="links">
-    <div v-for="(link, index) in links" :key="link.uuid" class="linkRow">
+    <div v-for="(link, index) of links" :key="link.uuid" class="linkRow">
       <select ref="linkTypeSelect" v-model="link.type">
         <option
-          v-for="linkType in linkTypes"
+          v-for="linkType of linkTypes"
           :key="linkType"
           :value="linkType">{{ linkTypeNames[linkType] }}</option>
       </select>

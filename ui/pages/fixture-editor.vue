@@ -33,7 +33,7 @@
 
                 <option value="" disabled>Please select a manufacturer</option>
 
-                <template v-for="(manufacturer, manKey) in manufacturers">
+                <template v-for="(manufacturer, manKey) of manufacturers">
                   <option v-if="manKey !== `$schema`" :key="manKey" :value="manKey">
                     {{ manufacturer.name }}
                   </option>
@@ -165,7 +165,7 @@
 
         <section class="fixture-modes">
           <EditorMode
-            v-for="(mode, index) in fixture.modes"
+            v-for="(mode, index) of fixture.modes"
             :key="mode.uuid"
             v-model="fixture.modes[index]"
             :index="index"

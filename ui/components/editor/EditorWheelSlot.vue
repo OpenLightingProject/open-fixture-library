@@ -21,7 +21,7 @@
           <option value="" disabled>Please select a slot type</option>
 
           <option
-            v-for="type in slotTypes"
+            v-for="type of slotTypes"
             :key="type"
             :value="type">{{ type }}</option>
 

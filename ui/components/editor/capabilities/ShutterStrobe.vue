@@ -13,7 +13,7 @@
 
         <option value="" disabled>Please select a shutter effect</option>
         <option
-          v-for="effect in shutterEffects"
+          v-for="effect of shutterEffects"
           :key="effect"
           :value="effect">{{ effect }}</option>
 
