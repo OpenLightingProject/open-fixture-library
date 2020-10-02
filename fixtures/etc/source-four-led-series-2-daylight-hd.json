@@ -27,7 +27,11 @@
     "power": 248,
     "DMXconnector": "5-pin",
     "bulb": {
-      "type": "Four-color LED array"
+      "type": "60× 4-color Lumileds LUXEON® Rebel LED",
+      "lumens": 13060
+    },
+    "lens": {
+      "degreesMinMax": [5, 90]
     }
   },
   "availableChannels": {
