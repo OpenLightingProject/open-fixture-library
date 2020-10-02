@@ -94,14 +94,10 @@
           "comment": "Fan auto"
         },
         {
-          "dmxRange": [1, 254],
-          "type": "Maintenance",
-          "comment": "Fan low to high"
-        },
-        {
-          "dmxRange": [255, 255],
-          "type": "Maintenance",
-          "comment": "Fan high"
+          "dmxRange": [1, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
         }
       ]
     },
