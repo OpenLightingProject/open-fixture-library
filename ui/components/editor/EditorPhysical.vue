@@ -155,11 +155,6 @@ export default {
       properties: schemaProperties,
     };
   },
-  computed: {
-    dimensionRequired() {
-      return this.physical.dimensionsWidth !== null || this.physical.dimensionsHeight !== null || this.physical.dimensionsDepth !== null;
-    },
-  },
   mounted: function() {
     if (this.$root._oflRestoreComplete) {
       this.$refs.firstInput.focus();

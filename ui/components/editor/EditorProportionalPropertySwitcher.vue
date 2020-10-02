@@ -57,7 +57,6 @@
           :required="required"
           :schema-property="entitySchema"
           :associated-entity="propertyDataEnd"
-          hint="start"
           @unit-selected="onUnitSelected" />
 
         <PropertyInputText
@@ -110,7 +109,6 @@
           :required="required"
           :schema-property="entitySchema"
           :associated-entity="propertyDataStart"
-          hint="end"
           @unit-selected="onUnitSelected" />
 
         <PropertyInputText

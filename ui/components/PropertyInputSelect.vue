@@ -27,11 +27,6 @@ export default {
       required: false,
       default: false,
     },
-    hint: {
-      type: String,
-      required: false,
-      default: null,
-    },
     additionHint: {
       type: String,
       required: false,

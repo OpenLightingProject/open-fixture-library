@@ -87,9 +87,6 @@ export default {
     };
   },
   computed: {
-    shutterEffects() {
-      return this.properties.capabilityTypes.ShutterStrobe.properties.shutterEffect.enum;
-    },
     resetProps() {
       const resetProp = this.capability.typeData.speedOrDuration === `duration` ? `speed` : `duration`;
 

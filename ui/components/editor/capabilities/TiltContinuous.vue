@@ -62,10 +62,5 @@ export default {
       },
     };
   },
-  computed: {
-    colors() {
-      return this.properties.capabilityTypes.ColorIntensity.properties.color.enum;
-    },
-  },
 };
 </script>

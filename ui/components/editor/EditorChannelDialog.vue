@@ -155,7 +155,6 @@
           :wizard="channel.wizard"
           :channel="channel"
           :resolution="channel.dmxValueResolution"
-          :formstate="formstate"
           @close="onWizardClose" />
 
         <div v-else class="capability-editor">
@@ -197,7 +196,6 @@
         <LabeledInput :formstate="formstate" name="constant" label="Constant?">
           <PropertyInputBoolean
             v-model="channel.constant"
-            :schema-property="properties.channel.constant"
             name="constant"
             label="Channel is fixed to default DMX value" />
         </LabeledInput>

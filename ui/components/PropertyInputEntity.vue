@@ -92,11 +92,6 @@ export default {
       required: false,
       default: false,
     },
-    hint: {
-      type: String,
-      required: false,
-      default: null,
-    },
     autoFocus: {
       type: Boolean,
       required: false,

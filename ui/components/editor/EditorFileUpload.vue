@@ -10,7 +10,7 @@
 <script>
 export default {
   model: {
-    prop: `value`,
+    prop: `file`,
   },
   props: {
     required: {
@@ -22,10 +22,17 @@ export default {
       type: String,
       required: true,
     },
-    value: {
+    file: {
       type: null,
       required: false,
       default: null,
+    },
+  },
+  watch: {
+    file(newFile) {
+      if (!newFile) {
+        this.$refs.fileInput.value = ``;
+      }
     },
   },
   mounted() {
@@ -41,10 +48,6 @@ export default {
       }
 
       this.$emit(`input`, file);
-    },
-    clear() {
-      this.$refs.fileInput.value = ``;
-      this.onFileChanged();
     },
   },
 };

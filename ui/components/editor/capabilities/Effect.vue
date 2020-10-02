@@ -88,7 +88,6 @@
       label="Sound-controlled?">
       <PropertyInputBoolean
         v-model="capability.typeData.soundControlled"
-        :schema-property="properties.capabilityTypes.Effect.properties.soundControlled"
         :name="`capability${capability.uuid}-soundControlled`"
         label="Effect is sound-controlled" />
     </LabeledInput>

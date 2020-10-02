@@ -99,10 +99,9 @@
 
     <section class="fixture-modes">
       <FixturePageMode
-        v-for="(mode, index) of modes"
+        v-for="mode of modes"
         :key="mode.name"
         :mode="mode"
-        :index="index"
         @help-wanted-clicked="$emit(`help-wanted-clicked`, $event)" />
       <div class="clearfix" />
     </section>
@@ -236,12 +235,6 @@ export default {
     };
   },
   computed: {
-    manKey() {
-      return this.fixture.manufacturer.key;
-    },
-    fixKey() {
-      return this.fixture.key;
-    },
     modesLimited() {
       return this.fixture.modes.length > this.modeNumberLoadThreshold;
     },

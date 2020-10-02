@@ -13,10 +13,6 @@
 <script>
 export default {
   props: {
-    schemaProperty: {
-      type: Object,
-      required: true,
-    },
     required: {
       type: Boolean,
       required: false,

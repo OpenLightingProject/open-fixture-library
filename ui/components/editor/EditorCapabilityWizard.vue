@@ -152,10 +152,6 @@ export default {
       type: Number,
       required: true,
     },
-    formstate: {
-      type: Object,
-      required: true,
-    },
     wizard: {
       type: Object,
       required: true,

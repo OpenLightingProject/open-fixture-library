@@ -66,10 +66,6 @@ export default {
       type: Mode,
       required: true,
     },
-    index: {
-      type: Number,
-      required: true,
-    },
   },
   data() {
     return {

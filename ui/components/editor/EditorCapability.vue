@@ -135,7 +135,6 @@ export default {
     return {
       dmxMin: 0,
       properties: schemaProperties,
-      capabilityTypeHint: null,
     };
   },
   computed: {

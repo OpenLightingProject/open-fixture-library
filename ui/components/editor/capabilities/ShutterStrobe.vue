@@ -27,7 +27,6 @@
         label="Sound-controlled?">
         <PropertyInputBoolean
           v-model="capability.typeData.soundControlled"
-          :schema-property="properties.capabilityTypes.ShutterStrobe.properties.soundControlled"
           :name="`capability${capability.uuid}-soundControlled`"
           label="Strobe is sound-controlled" />
       </LabeledInput>
@@ -61,7 +60,6 @@
         label="Random timing?">
         <PropertyInputBoolean
           v-model="capability.typeData.randomTiming"
-          :schema-property="properties.capabilityTypes.ShutterStrobe.properties.randomTiming"
           :name="`capability${capability.uuid}-randomTiming`"
           :label="`Random ${strobeEffectName}`" />
       </LabeledInput>
