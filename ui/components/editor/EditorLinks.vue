@@ -66,7 +66,8 @@ export default {
     prop: `links`,
   },
   props: {
-    name: { // allow name prop just for vue-form; has no real use in here
+    // allow name prop just for vue-form; has no real use in here
+    name: { // eslint-disable-line vue/no-unused-properties
       type: String,
       required: false,
       default: ``,

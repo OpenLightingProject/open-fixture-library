@@ -126,7 +126,8 @@ export default {
     this.$emit(`vf:validate`, this.validationData);
   },
   methods: {
-    focus() {
+    // Called from parent component
+    focus() { // eslint-disable-line vue/no-unused-properties
       this.$refs.firstInput.focus();
     },
     onFocus(event) {

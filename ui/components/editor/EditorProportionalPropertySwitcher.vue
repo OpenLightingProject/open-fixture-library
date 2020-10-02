@@ -322,7 +322,8 @@ export default {
     },
   },
   methods: {
-    focus() {
+    // Called from parent component
+    focus() { // eslint-disable-line vue/no-unused-properties
       for (const field of [`steppedField`, `startField`, `endField`]) {
         if (this.$refs[field]) {
           this.$refs[field].focus();

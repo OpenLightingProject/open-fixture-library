@@ -40,7 +40,8 @@ export default {
     },
   },
   computed: {
-    validationData() {
+    // Used by vue-form
+    validationData() { // eslint-disable-line vue/no-unused-properties
       return {
         pattern: `pattern` in this.schemaProperty ? `${this.schemaProperty.pattern}` : null,
         minlength: `minLength` in this.schemaProperty ? `${this.schemaProperty.minLength}` : null,

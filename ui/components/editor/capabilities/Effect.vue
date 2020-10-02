@@ -147,7 +147,9 @@ export default {
   data() {
     return {
       properties: schemaProperties,
-      defaultData: {
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         effectNameOrPreset: `effectName`,
         effectName: ``,
         effectPreset: ``,
@@ -172,7 +174,12 @@ export default {
     effectPresets() {
       return this.properties.definitions.effectPreset.enum;
     },
-    resetProps() {
+
+    /**
+     * Called from {@link EditorCapabilityTypeData}
+     * @returns {Array.<String>} Array of all props to reset to default data when capability is saved.
+     */
+    resetProps() { // eslint-disable-line vue/no-unused-properties
       const resetProps = [this.capability.typeData.effectNameOrPreset === `effectName` ? `effectPreset` : `effectName`];
 
       if (!this.capability.typeData.soundControlled) {

@@ -68,7 +68,9 @@ export default {
   data() {
     return {
       properties: schemaProperties,
-      defaultData: {
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         blade: ``,
         angle: null,
         angleStart: `0deg`,

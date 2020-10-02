@@ -54,8 +54,11 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      // eslint-disable-next-line vue/no-unused-properties
       hint: `Master dimmer for the lamp's brightness. Use ColorIntensity for individual color components (e.g. Red, Green, Blue).`,
-      defaultData: {
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         brightness: null,
         brightnessStart: `off`,
         brightnessEnd: `bright`,

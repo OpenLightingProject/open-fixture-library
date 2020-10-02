@@ -74,8 +74,11 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      // eslint-disable-next-line vue/no-unused-properties
       hint: `Rotation of the whole wheel (i.e. over all wheel slots). Use WheelSlotRotation if only the slot itself (e.g. a Gobo) rotates in this capability. If the fixture doesn't have a physical color wheel, use Effect with ColorFade/ColorJump preset instead.`,
-      defaultData: {
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         speedOrAngle: `speed`,
         speed: null,
         speedStart: `slow CW`,
@@ -88,7 +91,11 @@ export default {
     };
   },
   computed: {
-    resetProps() {
+    /**
+     * Called from {@link EditorCapabilityTypeData}
+     * @returns {Array.<String>} Array of all props to reset to default data when capability is saved.
+     */
+    resetProps() { // eslint-disable-line vue/no-unused-properties
       const resetProp = this.capability.typeData.speedOrAngle === `speed` ? `angle` : `speed`;
 
       return [resetProp, `${resetProp}Start`, `${resetProp}End`];

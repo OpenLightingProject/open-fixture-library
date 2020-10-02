@@ -94,8 +94,11 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      // eslint-disable-next-line vue/no-unused-properties
       hint: `This capability enables a static predefined RGB/CMY color. Use WheelSlot for color wheel filters.`,
-      defaultData: {
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         comment: ``,
         colors: null,
         colorsStart: null,

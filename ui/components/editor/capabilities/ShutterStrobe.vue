@@ -108,7 +108,9 @@ export default {
   data() {
     return {
       properties: schemaProperties,
-      defaultData: {
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         shutterEffect: ``,
         soundControlled: null,
         speed: null,
@@ -134,7 +136,12 @@ export default {
         ? `Strobe`
         : `${this.capability.typeData.shutterEffect} Strobe`;
     },
-    resetProps() {
+
+    /**
+     * Called from {@link EditorCapabilityTypeData}
+     * @returns {Array.<String>} Array of all props to reset to default data when capability is saved.
+     */
+    resetProps() { // eslint-disable-line vue/no-unused-properties
       if (!this.isStrobeEffect) {
         return [
           `soundControlled`,

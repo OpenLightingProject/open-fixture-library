@@ -194,26 +194,6 @@ export default {
       }
       return max;
     },
-    fieldState() {
-      const fieldNames = Object.keys(this.formstate).filter(
-        fieldName => fieldName.startsWith(`capability${this.capability.uuid}-`),
-      );
-
-      for (const fieldName of fieldNames) {
-        if (this.formstate.$error[fieldName]) {
-          return this.formstate[fieldName];
-        }
-      }
-
-      return {};
-    },
-    fieldErrors() {
-      if (!(`$valid` in this.fieldState) || this.fieldState.$valid) {
-        return {};
-      }
-
-      return this.fieldState.$error;
-    },
   },
   methods: {
     // eslint-disable-next-line complexity
@@ -321,7 +301,7 @@ export default {
     removeNextCapability() {
       this.$delete(this.capabilities, this.capIndex + 1);
     },
-    cleanCapabilityData() {
+    cleanCapabilityData() { // eslint-disable-line vue/no-unused-properties
       if (this.capability.dmxRange === null) {
         this.capability.dmxRange = [null, null];
       }

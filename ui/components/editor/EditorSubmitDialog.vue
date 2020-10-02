@@ -340,7 +340,8 @@ export default {
     },
   },
   methods: {
-    async validate(requestBody) {
+    // Called from fixture editor to open the dialog
+    async validate(requestBody) { // eslint-disable-line vue/no-unused-properties
       this.requestBody = requestBody;
 
       console.log(`validate`, clone(this.requestBody));
