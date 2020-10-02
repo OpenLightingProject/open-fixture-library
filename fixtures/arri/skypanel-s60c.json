@@ -1,10 +1,10 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Skypanel S30C",
+  "name": "Skypanel S60C",
   "categories": ["Dimmer", "Color Changer", "Strobe"],
   "meta": {
     "authors": ["Jean-François Losson", "Dyami Caliri"],
-    "createDate": "2018-10-17",
+    "createDate": "2020-10-02",
     "lastModifyDate": "2020-10-02"
   },
   "links": {
@@ -13,20 +13,17 @@
       "https://www.arri.com/resource/blob/65958/560471fec7f8f2e186ef8ca9e6cdd489/arri-skypanel-dmx-protocol-specification-v4-4-en-okt2018-data.pdf"
     ],
     "productPage": [
-      "https://www.arri.com/en/lighting/led/skypanel/s30-c"
+      "https://www.arri.com/en/lighting/led/skypanel/s60-c"
     ],
     "video": [
-      "https://www.youtube.com/watch?v=Qq9xhKwpZqc"
+      "https://www.youtube.com/watch?v=dXyYn9xfGXY",
+      "https://www.youtube.com/watch?v=2xrOoLjaFfU"
     ]
   },
-  "rdm": {
-    "modelId": 514,
-    "softwareVersion": "4.1"
-  },
   "physical": {
-    "dimensions": [499, 133, 397],
-    "weight": 8,
-    "power": 220,
+    "dimensions": [688, 347, 133],
+    "weight": 12.8,
+    "power": 420,
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED"
