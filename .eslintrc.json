@@ -190,7 +190,10 @@
     "vue/no-deprecated-slot-attribute": "error",
     "vue/no-deprecated-slot-scope-attribute": "error",
     "vue/no-mutating-props": "warn",
-    "vue/v-for-delimiter-style": ["error", "of"]
+    "vue/v-for-delimiter-style": ["error", "of"],
+    "vue/no-unused-properties": ["error", {
+      "groups": ["props", "data", "computed", "methods", "setup"]
+    }]
   },
   "settings": {
     "jsdoc": {
