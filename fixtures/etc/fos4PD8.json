@@ -1,11 +1,11 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "fos/4 PL8",
-  "shortName": "fos/4 PL8",
+  "name": "fos/4 PD8",
+  "shortName": "fos/4 PD8",
   "categories": ["Dimmer", "Color Changer", "Strobe"],
   "meta": {
     "authors": ["Dyami Caliri"],
-    "createDate": "2020-09-28",
+    "createDate": "2020-10-01",
     "lastModifyDate": "2020-10-01"
   },
   "links": {
@@ -47,13 +47,7 @@
         "color": "Red"
       }
     },
-    "Amber": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
-    },
-    "Lime": {
+    "Mint": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Lime"
@@ -302,9 +296,7 @@
         "Intensity",
         "Deep Red",
         "Red",
-        "Amber",
-        "Lime",
-        "Green",
+        "Mint",
         "Cyan",
         "Blue",
         "Indigo",
