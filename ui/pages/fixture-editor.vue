@@ -33,7 +33,7 @@
 
                 <option value="" disabled>Please select a manufacturer</option>
 
-                <template v-for="(manufacturer, manKey) in manufacturers">
+                <template v-for="(manufacturer, manKey) of manufacturers">
                   <option v-if="manKey !== `$schema`" :key="manKey" :value="manKey">
                     {{ manufacturer.name }}
                   </option>
@@ -165,7 +165,7 @@
 
         <section class="fixture-modes">
           <EditorMode
-            v-for="(mode, index) in fixture.modes"
+            v-for="(mode, index) of fixture.modes"
             :key="mode.uuid"
             v-model="fixture.modes[index]"
             :index="index"
@@ -418,10 +418,11 @@ export default {
     },
 
     /**
+     * Called from {@link EditorMode}.
      * @param {String} channelUuid The channel's UUID.
      * @returns {Boolean} True if the channel's name is not used in another channel, too.
      */
-    isChannelNameUnique(channelUuid) {
+    isChannelNameUnique(channelUuid) { // eslint-disable-line vue/no-unused-properties
       const chName = this.getChannelName(channelUuid);
 
       return Object.keys(this.fixture.availableChannels).every(

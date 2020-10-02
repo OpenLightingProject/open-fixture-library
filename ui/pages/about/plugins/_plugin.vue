@@ -12,7 +12,7 @@
     <div class="plugin-description" v-html="pluginData.description" />
 
     <ul>
-      <li v-for="link in Object.keys(pluginData.links)" :key="link">
+      <li v-for="link of Object.keys(pluginData.links)" :key="link">
         <a :href="pluginData.links[link]" target="_blank" rel="nofollow">{{ link }}</a>
       </li>
     </ul>
@@ -39,11 +39,11 @@
         Fixture files in subdirectories are {{ pluginData.fileLocations.subDirectoriesAllowed ? `recognized` : `not recognized` }}.
       </p>
 
-      <div v-for="os in fileLocationOSes" :key="os">
+      <div v-for="os of fileLocationOSes" :key="os">
         <h3>{{ os }}</h3>
 
         <section>
-          <div v-for="library in Object.keys(pluginData.fileLocations[os])" :key="`${os}-${library}`">
+          <div v-for="library of Object.keys(pluginData.fileLocations[os])" :key="`${os}-${library}`">
             {{ libraryNames[library] }}: <code>{{ pluginData.fileLocations[os][library] }}</code>
           </div>
         </section>

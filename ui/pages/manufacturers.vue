@@ -5,7 +5,7 @@
     <div class="toc">
       Jump to:
       <a
-        v-for="(letterData, letter) in letters"
+        v-for="(letterData, letter) of letters"
         :key="letter"
         v-smooth-scroll
         :href="`#${letterData.id}`"
@@ -14,12 +14,12 @@
       </a>
     </div>
 
-    <div v-for="(letterData, letter) in letters" :key="letter">
+    <div v-for="(letterData, letter) of letters" :key="letter">
       <h2 :id="letterData.id">{{ letter }}</h2>
 
       <div class="manufacturers grid-4">
         <NuxtLink
-          v-for="manufacturer in letterData.manufacturers"
+          v-for="manufacturer of letterData.manufacturers"
           :key="manufacturer.key"
           :to="`/${manufacturer.key}`"
           :style="{ borderLeftColor: manufacturer.color }"

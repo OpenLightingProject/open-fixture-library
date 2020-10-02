@@ -14,7 +14,7 @@
         class="preview-fixture-chooser">
         <option disabled>Choose fixture to preview</option>
         <option
-          v-for="key in fixtureKeys"
+          v-for="key of fixtureKeys"
           :key="key"
           :value="key">{{ key }}</option>
       </select>
@@ -47,13 +47,13 @@
       </template>
 
       <ul>
-        <li v-for="key in fixtureKeys" :key="key">
+        <li v-for="key of fixtureKeys" :key="key">
           <strong>{{ key }}</strong>
           <ul>
-            <li v-for="message in fixtureCreateResult.errors[key]" :key="message">
+            <li v-for="message of fixtureCreateResult.errors[key]" :key="message">
               Error: {{ message }}
             </li>
-            <li v-for="message in fixtureCreateResult.warnings[key]" :key="message">
+            <li v-for="message of fixtureCreateResult.warnings[key]" :key="message">
               {{ message }}
             </li>
           </ul>
@@ -91,14 +91,14 @@
 
         <section v-if="previewFixtureResults.warnings.length > 0" class="card yellow">
           <strong>Warnings:<br></strong>
-          <span v-for="message in previewFixtureResults.warnings" :key="message">
+          <span v-for="message of previewFixtureResults.warnings" :key="message">
             {{ message }}<br>
           </span>
         </section>
 
         <section v-if="previewFixtureResults.errors.length > 0" class="card red">
           <strong>Errors (prevent showing the fixture preview):<br></strong>
-          <span v-for="message in previewFixtureResults.errors" :key="message">
+          <span v-for="message of previewFixtureResults.errors" :key="message">
             {{ message }}<br>
           </span>
         </section>
@@ -340,7 +340,8 @@ export default {
     },
   },
   methods: {
-    async validate(requestBody) {
+    // Called from fixture editor to open the dialog
+    async validate(requestBody) { // eslint-disable-line vue/no-unused-properties
       this.requestBody = requestBody;
 
       console.log(`validate`, clone(this.requestBody));

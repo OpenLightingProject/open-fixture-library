@@ -23,7 +23,7 @@
             style="width: 100%;"
             required>
             <option
-              v-for="channelUuid in currentModeUnchosenChannels"
+              v-for="channelUuid of currentModeUnchosenChannels"
               :key="channelUuid"
               :value="channelUuid">
               {{ getChannelName(channelUuid) }}
@@ -57,7 +57,7 @@
           <option>Strobe</option>
           <option>Strobe Speed</option>
           <option>Strobe Duration</option>
-          <option v-for="color in singleColors" :key="color">{{ color }}</option>
+          <option v-for="color of singleColors" :key="color">{{ color }}</option>
           <option>Color Macros</option>
           <option>Color Presets</option>
           <option>Color Wheel</option>
@@ -155,12 +155,11 @@
           :wizard="channel.wizard"
           :channel="channel"
           :resolution="channel.dmxValueResolution"
-          :formstate="formstate"
           @close="onWizardClose" />
 
         <div v-else class="capability-editor">
           <EditorCapability
-            v-for="(cap, index) in channel.capabilities"
+            v-for="(cap, index) of channel.capabilities"
             ref="capabilities"
             :key="cap.uuid"
             :channel="channel"
@@ -197,7 +196,6 @@
         <LabeledInput :formstate="formstate" name="constant" label="Constant?">
           <PropertyInputBoolean
             v-model="channel.constant"
-            :schema-property="properties.channel.constant"
             name="constant"
             label="Channel is fixed to default DMX value" />
         </LabeledInput>

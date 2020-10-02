@@ -11,7 +11,7 @@
         <div class="hint">for downloading OFL fixtures in various formats</div>
 
         <ul class="list">
-          <li v-for="plugin in plugins.exportPlugins" :key="plugin">
+          <li v-for="plugin of plugins.exportPlugins" :key="plugin">
             <NuxtLink :to="`/about/plugins/${plugin}`">
               <OflSvg name="puzzle" class="left" />
               <span class="name">{{ plugins.data[plugin].name }}</span>
@@ -26,7 +26,7 @@
         <div class="hint">for <NuxtLink to="/import-fixture-file">importing fixtures</NuxtLink> from other formats into OFL</div>
 
         <ul class="list">
-          <li v-for="plugin in plugins.importPlugins" :key="plugin">
+          <li v-for="plugin of plugins.importPlugins" :key="plugin">
             <NuxtLink :to="`/about/plugins/${plugin}`">
               <OflSvg name="puzzle" class="left" />
               <span class="name">{{ plugins.data[plugin].name }}</span>

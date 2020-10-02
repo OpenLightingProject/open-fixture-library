@@ -74,7 +74,9 @@ export default {
   data() {
     return {
       properties: schemaProperties,
-      defaultData: {
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         speedOrDuration: `speed`,
         speed: null,
         speedStart: `fast`,
@@ -87,10 +89,11 @@ export default {
     };
   },
   computed: {
-    shutterEffects() {
-      return this.properties.capabilityTypes.ShutterStrobe.properties.shutterEffect.enum;
-    },
-    resetProps() {
+    /**
+     * Called from {@link EditorCapabilityTypeData}
+     * @returns {Array.<String>} Array of all props to reset to default data when capability is saved.
+     */
+    resetProps() { // eslint-disable-line vue/no-unused-properties
       const resetProp = this.capability.typeData.speedOrDuration === `duration` ? `speed` : `duration`;
 
       return [resetProp, `${resetProp}Start`, `${resetProp}End`];

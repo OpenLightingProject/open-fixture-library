@@ -76,7 +76,7 @@
       <Draggable :list="mode.channels" v-bind="dragOptions">
         <TransitionGroup class="mode-channels" tag="ol">
           <li
-            v-for="channelUuid in mode.channels"
+            v-for="channelUuid of mode.channels"
             :key="channelUuid"
             :data-channel-uuid="channelUuid">
 

@@ -4,14 +4,14 @@
 
     <div class="card">
       <ul :class="[`list`, `fixtures`, `category-${categoryClass}`]">
-        <li v-for="fixture in fixtures" :key="fixture.key">
+        <li v-for="fixture of fixtures" :key="fixture.key">
           <NuxtLink
             :to="fixture.link"
             :style="{ borderLeftColor: fixture.color }"
             class="manufacturer-color">
             <span class="name">{{ fixture.name }}</span>
             <OflSvg
-              v-for="cat in fixture.categories"
+              v-for="cat of fixture.categories"
               :key="cat"
               :name="cat"
               :class="{ inactive: cat !== categoryName, right: true }"

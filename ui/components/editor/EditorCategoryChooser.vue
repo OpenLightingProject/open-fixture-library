@@ -2,7 +2,7 @@
   <div>
     <Draggable v-model="selectedCategories" tag="span">
       <CategoryBadge
-        v-for="cat in value"
+        v-for="cat of value"
         :key="cat"
         :category="cat"
         :selected="true"
@@ -13,7 +13,7 @@
     </Draggable>
 
     <CategoryBadge
-      v-for="cat in unselectedCategories"
+      v-for="cat of unselectedCategories"
       :key="cat"
       :category="cat"
       :selected="false"

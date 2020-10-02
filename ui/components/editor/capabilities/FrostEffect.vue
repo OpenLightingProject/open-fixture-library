@@ -65,8 +65,11 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      // eslint-disable-next-line vue/no-unused-properties
       hint: `This capability enables a non-static frost effect, e.g. pulse. Use the Frost type instead if a static frost intensity can be chosen.`,
-      defaultData: {
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         effectName: ``,
         speed: ``,
         speedStart: null,

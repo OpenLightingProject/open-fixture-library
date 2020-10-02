@@ -88,7 +88,9 @@ export default {
   data() {
     return {
       properties: schemaProperties,
-      defaultData: {
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         slotNumber: ``,
         slotNumberStart: null,
         slotNumberEnd: null,

@@ -54,8 +54,11 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      // eslint-disable-next-line vue/no-unused-properties
       hint: `Only use this if no other type is applicable. Note that some types like Effect, PanContinuous or Rotation also allow setting a speed value.`,
-      defaultData: {
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         speed: null,
         speedStart: `slow`,
         speedEnd: `fast`,

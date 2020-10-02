@@ -15,7 +15,7 @@
         <option value="" disabled>Please select a capability type</option>
 
         <option
-          v-for="type in capabilityTypes"
+          v-for="type of capabilityTypes"
           :key="type"
           :value="type">{{ type }}</option>
 
@@ -187,7 +187,7 @@ export default {
     /**
      * Called when the channel is saved. Removes all properties from capability.typeData that are not relevant for this capability type and sets open to false.
      */
-    cleanCapabilityData() {
+    cleanCapabilityData() { // eslint-disable-line vue/no-unused-properties
       const component = this.$refs.capabilityTypeData;
 
       const defaultData = component.defaultData;

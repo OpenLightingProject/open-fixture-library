@@ -13,7 +13,7 @@
 
         <option value="" disabled>Please select a color</option>
         <option
-          v-for="color in colors"
+          v-for="color of colors"
           :key="color"
           :value="color">{{ color }}</option>
 
@@ -73,7 +73,9 @@ export default {
   data() {
     return {
       properties: schemaProperties,
-      defaultData: {
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         color: ``,
         brightness: null,
         brightnessStart: `off`,

@@ -1,7 +1,7 @@
 <template>
   <div class="capability-wheel-slots">
     <EditorWheelSlot
-      v-for="slotNumber in slotDetailNumbers"
+      v-for="slotNumber of slotDetailNumbers"
       :key="slotNumber"
       :channel="channel"
       :slot-number="slotNumber"

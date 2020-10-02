@@ -30,7 +30,7 @@
 
               <option value="" disabled>Please select an import file type</option>
 
-              <template v-for="pluginKey in plugins.importPlugins">
+              <template v-for="pluginKey of plugins.importPlugins">
                 <option :key="pluginKey" :value="pluginKey">
                   {{ plugins.data[pluginKey].name }}
                 </option>
@@ -47,7 +47,6 @@
             label="Fixture definition file"
             hint="Maximum file size is 5MB.">
             <EditorFileUpload
-              ref="fileUpload"
               v-model="file"
               :required="true"
               name="file"
@@ -208,7 +207,7 @@ export default {
       }
     },
     reset() {
-      this.$refs.fileUpload.clear();
+      this.file = null;
       this.githubComment = ``;
 
       this.$nextTick(() => {

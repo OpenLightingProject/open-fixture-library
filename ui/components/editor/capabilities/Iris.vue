@@ -54,7 +54,9 @@ export default {
   data() {
     return {
       properties: schemaProperties,
-      defaultData: {
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         openPercent: null,
         openPercentStart: `open`,
         openPercentEnd: `closed`,

@@ -54,8 +54,11 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      // eslint-disable-next-line vue/no-unused-properties
       hint: `Doesn't activate strobe, only controls the strobe frequency when another channel is set to a ShutterStrobe capability with shutter effect 'Strobe'.`,
-      defaultData: {
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         speed: null,
         speedStart: `Hz`,
         speedEnd: `Hz`,

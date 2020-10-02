@@ -33,7 +33,7 @@
 
     <ol class="mode-channels">
       <FixturePageChannel
-        v-for="channel in mode.channels"
+        v-for="channel of mode.channels"
         :key="channel.key"
         :channel="channel"
         :mode="mode"
@@ -64,10 +64,6 @@ export default {
   props: {
     mode: {
       type: Mode,
-      required: true,
-    },
-    index: {
-      type: Number,
       required: true,
     },
   },

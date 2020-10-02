@@ -13,7 +13,7 @@
 
         <option value="" disabled>Please select a shutter effect</option>
         <option
-          v-for="effect in shutterEffects"
+          v-for="effect of shutterEffects"
           :key="effect"
           :value="effect">{{ effect }}</option>
 
@@ -27,7 +27,6 @@
         label="Sound-controlled?">
         <PropertyInputBoolean
           v-model="capability.typeData.soundControlled"
-          :schema-property="properties.capabilityTypes.ShutterStrobe.properties.soundControlled"
           :name="`capability${capability.uuid}-soundControlled`"
           label="Strobe is sound-controlled" />
       </LabeledInput>
@@ -61,7 +60,6 @@
         label="Random timing?">
         <PropertyInputBoolean
           v-model="capability.typeData.randomTiming"
-          :schema-property="properties.capabilityTypes.ShutterStrobe.properties.randomTiming"
           :name="`capability${capability.uuid}-randomTiming`"
           :label="`Random ${strobeEffectName}`" />
       </LabeledInput>
@@ -110,7 +108,9 @@ export default {
   data() {
     return {
       properties: schemaProperties,
-      defaultData: {
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         shutterEffect: ``,
         soundControlled: null,
         speed: null,
@@ -136,7 +136,12 @@ export default {
         ? `Strobe`
         : `${this.capability.typeData.shutterEffect} Strobe`;
     },
-    resetProps() {
+
+    /**
+     * Called from {@link EditorCapabilityTypeData}
+     * @returns {Array.<String>} Array of all props to reset to default data when capability is saved.
+     */
+    resetProps() { // eslint-disable-line vue/no-unused-properties
       if (!this.isStrobeEffect) {
         return [
           `soundControlled`,

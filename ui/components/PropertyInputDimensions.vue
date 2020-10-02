@@ -129,7 +129,8 @@ export default {
         this.$emit(`blur`);
       }
     },
-    focus() {
+    // Called from parent component
+    focus() { // eslint-disable-line vue/no-unused-properties
       this.$refs.xInput.focus();
     },
   },

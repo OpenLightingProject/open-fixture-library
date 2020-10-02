@@ -27,14 +27,14 @@
 
       <optgroup v-if="enumValues.length" label="Keywords">
         <option
-          v-for="enumValue in enumValues"
+          v-for="enumValue of enumValues"
           :key="enumValue"
           :value="enumValue">{{ enumValue }}</option>
       </optgroup>
 
       <optgroup v-if="Object.keys(units).length" label="Units">
         <option
-          v-for="({ displayStr }, unitName) in units"
+          v-for="({ displayStr }, unitName) of units"
           :key="unitName"
           :value="unitName">{{ displayStr }}</option>
       </optgroup>
@@ -91,11 +91,6 @@ export default {
       type: Boolean,
       required: false,
       default: false,
-    },
-    hint: {
-      type: String,
-      required: false,
-      default: null,
     },
     autoFocus: {
       type: Boolean,
@@ -224,7 +219,8 @@ export default {
         }
       },
     },
-    hasSameUnit() {
+    // Used by vue-form's `entities-have-same-units` validation rule
+    hasSameUnit() { // eslint-disable-line vue/no-unused-properties
       if (!this.associatedEntity) {
         return true;
       }
@@ -253,7 +249,12 @@ export default {
     update(newValue) {
       this.$emit(`input`, newValue);
     },
-    setUnitString(newUnitString) {
+
+    /**
+     * Called by {@link EditorProportionalPropertySwitcher}
+     * @param {String} newUnitString The unit string to set.
+     */
+    setUnitString(newUnitString) { // eslint-disable-line vue/no-unused-properties
       if (newUnitString === `[no unit]`) {
         newUnitString = ``;
       }

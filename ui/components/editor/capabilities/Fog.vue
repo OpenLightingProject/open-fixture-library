@@ -13,7 +13,7 @@
 
         <option value="" disabled>Please select a fog type</option>
         <option
-          v-for="fogType in fogTypes"
+          v-for="fogType of fogTypes"
           :key="fogType"
           :value="fogType">{{ fogType }}</option>
 
@@ -72,7 +72,9 @@ export default {
   data() {
     return {
       properties: schemaProperties,
-      defaultData: {
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         fogType: ``,
         fogOutput: ``,
         fogOutputStart: null,

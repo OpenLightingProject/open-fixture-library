@@ -25,7 +25,7 @@
 
     <LabeledInput v-if="colorPreview !== null" label="Color preview">
       <OflSvg
-        v-for="color in colorPreview"
+        v-for="color of colorPreview"
         :key="color"
         :colors="[color]"
         type="color-circle" />
@@ -74,7 +74,9 @@ export default {
   data() {
     return {
       properties: schemaProperties,
-      defaultData: {
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         name: ``,
         colors: null,
         colorsHexString: ``,

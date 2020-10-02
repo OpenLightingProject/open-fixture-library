@@ -57,7 +57,6 @@
           :required="required"
           :schema-property="entitySchema"
           :associated-entity="propertyDataEnd"
-          hint="start"
           @unit-selected="onUnitSelected" />
 
         <PropertyInputText
@@ -110,7 +109,6 @@
           :required="required"
           :schema-property="entitySchema"
           :associated-entity="propertyDataStart"
-          hint="end"
           @unit-selected="onUnitSelected" />
 
         <PropertyInputText
@@ -324,7 +322,8 @@ export default {
     },
   },
   methods: {
-    focus() {
+    // Called from parent component
+    focus() { // eslint-disable-line vue/no-unused-properties
       for (const field of [`steppedField`, `startField`, `endField`]) {
         if (this.$refs[field]) {
           this.$refs[field].focus();
