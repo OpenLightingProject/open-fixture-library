@@ -19,68 +19,10 @@
         class="only-js"
         @submit.prevent="onSubmit()">
 
-        <section class="manufacturer card">
-          <h2>Manufacturer</h2>
-
-          <section v-if="fixture.useExistingManufacturer">
-            <LabeledInput :formstate="formstate" name="manufacturerKey" label="Choose from list">
-              <select
-                ref="existingManufacturerSelect"
-                v-model="fixture.manufacturerKey"
-                :class="{ empty: fixture.manufacturerKey === `` }"
-                required
-                name="manufacturerKey">
-
-                <option value="" disabled>Please select a manufacturer</option>
-
-                <template v-for="(manufacturer, manKey) of manufacturers">
-                  <option v-if="manKey !== `$schema`" :key="manKey" :value="manKey">
-                    {{ manufacturer.name }}
-                  </option>
-                </template>
-
-              </select>
-            </LabeledInput>
-
-            <div>or <a href="#add-new-manufacturer" @click.prevent="switchManufacturer(false)">add a new manufacturer</a></div>
-          </section>
-
-          <div v-else>
-            <LabeledInput :formstate="formstate" name="new-manufacturer-name" label="Name">
-              <PropertyInputText
-                ref="newManufacturerNameInput"
-                v-model="fixture.newManufacturerName"
-                :schema-property="properties.manufacturer.name"
-                :required="true"
-                name="new-manufacturer-name" />
-            </LabeledInput>
-
-            <LabeledInput :formstate="formstate" name="new-manufacturer-website" label="Website">
-              <PropertyInputText
-                v-model="fixture.newManufacturerWebsite"
-                :schema-property="properties.manufacturer.website"
-                type="url"
-                name="new-manufacturer-website" />
-            </LabeledInput>
-
-            <LabeledInput :formstate="formstate" name="new-manufacturer-comment" label="Comment">
-              <PropertyInputTextarea
-                v-model="fixture.newManufacturerComment"
-                :schema-property="properties.manufacturer.comment"
-                name="new-manufacturer-comment" />
-            </LabeledInput>
-
-            <LabeledInput :formstate="formstate" name="new-manufacturer-rdmId">
-              <template #label><abbr title="Remote Device Management">RDM</abbr> manufacturer ID</template>
-              <PropertyInputNumber
-                v-model="fixture.newManufacturerRdmId"
-                :schema-property="properties.manufacturer.rdmId"
-                name="new-manufacturer-rdmId" />
-            </LabeledInput>
-
-            <div>or <a href="#use-existing-manufacturer" @click.prevent="switchManufacturer(true)">choose an existing manufacturer</a></div>
-          </div>
-        </section>
+        <EditorManufacturer
+          :fixture="fixture"
+          :formstate="formstate"
+          :manufacturers="manufacturers" />
 
         <section class="fixture-info card">
           <h2>Fixture info</h2>
@@ -266,6 +208,7 @@ import EditorCategoryChooser from '../components/editor/EditorCategoryChooser.vu
 import EditorChannelDialog from '../components/editor/EditorChannelDialog.vue';
 import EditorChooseChannelEditModeDialog from '../components/editor/EditorChooseChannelEditModeDialog.vue';
 import EditorLinks from '../components/editor/EditorLinks.vue';
+import EditorManufacturer from '../components/editor/EditorManufacturer.vue';
 import EditorMode from '../components/editor/EditorMode.vue';
 import EditorPhysical from '../components/editor/EditorPhysical.vue';
 import EditorRestoreDialog from '../components/editor/EditorRestoreDialog.vue';
@@ -281,6 +224,7 @@ export default {
     EditorChannelDialog,
     EditorChooseChannelEditModeDialog,
     EditorLinks,
+    EditorManufacturer,
     EditorMode,
     EditorPhysical,
     EditorRestoreDialog,
@@ -379,13 +323,6 @@ export default {
     this.$nextTick(() => this.restoreAutoSave());
   },
   methods: {
-    switchManufacturer(useExisting) {
-      this.fixture.useExistingManufacturer = useExisting;
-      this.$nextTick(() => {
-        this.$refs[useExisting ? `existingManufacturerSelect` : `newManufacturerNameInput`].focus();
-      });
-    },
-
     addNewMode() {
       this.fixture.modes.push(getEmptyMode());
     },
