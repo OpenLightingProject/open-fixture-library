@@ -62,7 +62,7 @@ function startServer() {
  * @param {String} body The JSON string from GitHub.
  * @param {Object.<String, String>} headers Headers of the request.
  */
-function processRequest(url, body, headers) { // eslint-disable-line complexity
+function processRequest(url, body, headers) {
   console.log(`Received webhook request at ${url}`);
 
   if (deploymentConfig.webhookPath !== url) {

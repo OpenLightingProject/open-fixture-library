@@ -11,13 +11,13 @@
       <button
         type="submit"
         class="discard secondary"
-        @click.prevent="discardRestored">
+        @click.prevent="discardRestored()">
         Discard data
       </button>
       <button
         type="submit"
         class="restore primary"
-        @click.prevent="applyRestored">
+        @click.prevent="applyRestored()">
         Restore to continue work
       </button>
     </div>

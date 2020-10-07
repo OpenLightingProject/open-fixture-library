@@ -6,7 +6,7 @@
     :minlength="schemaProperty.minLength"
     :maxlength="schemaProperty.maxLength"
     :value="value"
-    @input="update" />
+    @input="update()" />
 </template>
 
 <script>

@@ -4,7 +4,7 @@
     href="#theme"
     aria-hidden="true"
     :title="`Switch to ${otherTheme} theme`"
-    @click.prevent="toggleTheme">
+    @click.prevent="toggleTheme()">
     <OflSvg name="theme-light-dark" />
   </a>
 </template>

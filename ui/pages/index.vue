@@ -161,7 +161,7 @@ export default {
         return {
           name: contributor,
           number: register.contributors[contributor].fixtures.length,
-          latestFixtureKey: latestFixtureKey,
+          latestFixtureKey,
           latestFixtureName: this.getFixtureName(latestFixtureKey),
         };
       },

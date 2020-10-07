@@ -10,7 +10,7 @@
         :minimum="minNumber !== null ? minNumber : `invalid`"
         :maximum="maxNumber !== null ? maxNumber : `invalid`"
         :name="name ? `${name}-number` : null"
-        @focus.native="onFocus"
+        @focus.native="onFocus()"
         @blur.native="onBlur($event)" />
     </Validate>
 
@@ -19,8 +19,8 @@
       v-model="selectedUnit"
       :required="required"
       :class="{ empty: selectedUnit === `` }"
-      @input="unitSelected"
-      @focus="onFocus"
+      @input="unitSelected()"
+      @focus="onFocus()"
       @blur="onBlur($event)">
 
       <option :disabled="required" value="">unset</option>

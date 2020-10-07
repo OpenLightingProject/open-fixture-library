@@ -81,7 +81,7 @@ module.exports.export = async function exportECue(fixtures, options) {
       indent: `    `,
     }),
     mimetype: `application/xml`,
-    fixtures: fixtures,
+    fixtures,
   }];
 };
 

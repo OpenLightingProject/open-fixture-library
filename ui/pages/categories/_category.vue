@@ -37,7 +37,7 @@ export default {
       const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
 
       return {
-        categoryName: categoryName,
+        categoryName,
         categoryClass: categoryName.toLowerCase().replace(/[^\w]+/g, `-`),
         fixtures: [],
         manufacturers,

@@ -124,7 +124,7 @@
       </FieldMessages>
     </Validate>
 
-    <a href="#add-channel" class="button primary" @click.prevent="addChannel">add channel</a>
+    <a href="#add-channel" class="button primary" @click.prevent="addChannel()">add channel</a>
 
   </section>
 </template>
@@ -308,7 +308,7 @@ export default {
         uuid: channelUuid,
       });
     },
-    addChannel: function() {
+    addChannel() {
       this.$emit(`open-channel-editor`, {
         modeId: this.mode.uuid,
         editMode: `add-existing`,

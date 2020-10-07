@@ -17,7 +17,7 @@
         :state="formstate"
         action="#"
         class="only-js"
-        @submit.prevent="onSubmit">
+        @submit.prevent="onSubmit()">
 
         <section class="manufacturer card">
           <h2>Manufacturer</h2>
@@ -171,10 +171,10 @@
             :index="index"
             :fixture="fixture"
             :formstate="formstate"
-            @open-channel-editor="openChannelEditor"
+            @open-channel-editor="openChannelEditor($event)"
             @remove="fixture.modes.splice(index, 1)" />
 
-          <a class="fixture-mode card add-mode-link" href="#add-mode" @click.prevent="addNewMode">
+          <a class="fixture-mode card add-mode-link" href="#add-mode" @click.prevent="addNewMode()">
             <h2>+ Add mode</h2>
           </a>
 
@@ -219,22 +219,22 @@
       <EditorChannelDialog
         v-model="channel"
         :fixture="fixture"
-        @reset-channel="resetChannel"
+        @reset-channel="resetChannel()"
         @channel-changed="autoSave(`channel`)"
-        @remove-channel="removeChannel" />
+        @remove-channel="removeChannel($event)" />
 
       <EditorChooseChannelEditModeDialog
         :channel="channel"
         :fixture="fixture" />
 
-      <EditorRestoreDialog v-model="restoredData" @restore-complete="restoreComplete" />
+      <EditorRestoreDialog v-model="restoredData" @restore-complete="restoreComplete()" />
 
       <EditorSubmitDialog
         ref="submitDialog"
         endpoint="/api/v1/fixtures/from-editor"
         :github-username="githubUsername"
-        @success="onFixtureSubmitted"
-        @reset="reset" />
+        @success="onFixtureSubmitted()"
+        @reset="reset()" />
 
     </ClientOnly>
   </div>
@@ -363,7 +363,7 @@ export default {
   },
   watch: {
     fixture: {
-      handler: function() {
+      handler() {
         this.autoSave(`fixture`);
       },
       deep: true,

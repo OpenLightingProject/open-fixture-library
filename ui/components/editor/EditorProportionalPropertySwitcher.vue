@@ -57,7 +57,7 @@
           :required="required"
           :schema-property="entitySchema"
           :associated-entity="propertyDataEnd"
-          @unit-selected="onUnitSelected" />
+          @unit-selected="onUnitSelected($event)" />
 
         <PropertyInputText
           v-else
@@ -82,7 +82,7 @@
           href="#swap"
           class="swap"
           title="Swap start and end values"
-          @click.prevent="swapStartEnd">
+          @click.prevent="swapStartEnd()">
           <OflSvg name="swap-horizontal" />
         </a>
         …
@@ -109,7 +109,7 @@
           :required="required"
           :schema-property="entitySchema"
           :associated-entity="propertyDataStart"
-          @unit-selected="onUnitSelected" />
+          @unit-selected="onUnitSelected($event)" />
 
         <PropertyInputText
           v-else
@@ -131,7 +131,7 @@
 
     <section>
       <label>
-        <input v-model="hasStartEnd" type="checkbox" @change="focusEndField">
+        <input v-model="hasStartEnd" type="checkbox" @change="focusEndField()">
         Specify range instead of a single value
       </label>
     </section>

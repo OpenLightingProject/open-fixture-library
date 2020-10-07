@@ -4,7 +4,7 @@
     :required="required"
     :name="name"
     type="file"
-    @change="onFileChanged">
+    @change="onFileChanged()">
 </template>
 
 <script>

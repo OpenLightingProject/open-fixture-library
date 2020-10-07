@@ -61,17 +61,17 @@
       </ul>
 
       <div class="button-bar right">
-        <button type="button" class="secondary" @click.prevent="onCancel">Continue editing</button>
+        <button type="button" class="secondary" @click.prevent="onCancel()">Continue editing</button>
         <button
           v-if="hasPreview"
           type="button"
           class="primary"
-          @click.prevent="onPreview">Preview fixture{{ isPlural ? `s` : `` }}</button>
+          @click.prevent="onPreview()">Preview fixture{{ isPlural ? `s` : `` }}</button>
         <button
           v-else
           type="button"
           class="primary"
-          @click.prevent="onSubmit">Submit to OFL</button>
+          @click.prevent="onSubmit()">Submit to OFL</button>
       </div>
     </div>
 
@@ -109,8 +109,8 @@
       </div>
 
       <div class="button-bar right">
-        <button type="button" class="secondary" @click.prevent="onCancel">Continue editing</button>
-        <button type="button" class="primary" @click.prevent="onSubmit">Submit to OFL</button>
+        <button type="button" class="secondary" @click.prevent="onCancel()">Continue editing</button>
+        <button type="button" class="primary" @click.prevent="onSubmit()">Submit to OFL</button>
       </div>
     </div>
 
@@ -124,7 +124,7 @@
 
       <div class="button-bar right">
         <NuxtLink to="/" class="button secondary">Back to homepage</NuxtLink>
-        <button type="button" class="button secondary" @click.prevent="onReset">Close</button>
+        <button type="button" class="button secondary" @click.prevent="onReset()">Close</button>
         <DownloadButton
           v-if="!hasValidationErrors"
           button-style="select"
@@ -143,7 +143,7 @@
       <textarea v-model="rawData" readonly />
 
       <div class="button-bar right">
-        <button type="button" class="button secondary" @click.prevent="onCancel">Close</button>
+        <button type="button" class="button secondary" @click.prevent="onCancel()">Close</button>
         <a
           href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
           class="button primary"

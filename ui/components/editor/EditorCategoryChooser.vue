@@ -8,7 +8,7 @@
         :selected="true"
         :selectable="true"
         @click="deselect(cat)"
-        @focus.native="onFocus"
+        @focus.native="onFocus()"
         @blur.native="onBlur($event)" />
     </Draggable>
 
@@ -19,7 +19,7 @@
       :selected="false"
       :selectable="true"
       @click="select(cat)"
-      @focus.native="onFocus"
+      @focus.native="onFocus()"
       @blur.native="onBlur($event)" />
   </div>
 </template>

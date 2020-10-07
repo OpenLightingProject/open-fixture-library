@@ -8,8 +8,8 @@
     :maxlength="schemaProperty.maxLength"
     :value="value"
     type="text"
-    @input="update"
-    @blur="onBlur">
+    @input="update()"
+    @blur="onBlur()">
 </template>
 
 <script>

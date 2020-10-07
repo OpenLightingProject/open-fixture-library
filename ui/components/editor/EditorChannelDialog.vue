@@ -6,13 +6,13 @@
     :shown="channel.editMode !== `` && channel.editMode !== `edit-?`"
     :title="title"
     :class="`channel-dialog-${channel.editMode}`"
-    @show="onChannelDialogOpen"
-    @hide="onChannelDialogClose">
+    @show="onChannelDialogOpen()"
+    @hide="onChannelDialogClose()">
 
     <VueForm
       :state="formstate"
       action="#"
-      @submit.prevent="onSubmit">
+      @submit.prevent="onSubmit()">
 
       <div v-if="channel.editMode === `add-existing`">
         <LabeledInput :formstate="formstate" name="existingChannelUuid" label="Select an existing channel">
@@ -31,7 +31,7 @@
           </select>
         </LabeledInput>
 
-        <p>or <a href="#create-channel" @click.prevent="setEditModeCreate">create a new channel</a></p>
+        <p>or <a href="#create-channel" @click.prevent="setEditModeCreate()">create a new channel</a></p>
       </div>
 
       <div v-else>
@@ -46,7 +46,7 @@
             list="channel-name-suggestions"
             title="Please start with an uppercase letter or a number. Don't create fine channels here, set its resolution below instead."
             class="channelName"
-            @blur="onChannelNameChanged" />
+            @blur="onChannelNameChanged($event)" />
         </LabeledInput>
 
         <datalist id="channel-name-suggestions" hidden>
@@ -96,7 +96,7 @@
         </datalist>
 
         <LabeledInput :formstate="formstate" name="resolution" label="Channel resolution">
-          <select v-model="channel.resolution" name="resolution" @change="onResolutionChanged">
+          <select v-model="channel.resolution" name="resolution" @change="onResolutionChanged()">
             <option :value="constants.RESOLUTION_8BIT">8 bit (No fine channels)</option>
             <option :value="constants.RESOLUTION_16BIT">16 bit (1 fine channel)</option>
             <option :value="constants.RESOLUTION_24BIT">24 bit (2 fine channels)</option>
@@ -112,7 +112,7 @@
             v-model="channel.dmxValueResolution"
             name="dmxValueResolution"
             required
-            @change="onDmxValueResolutionChanged">
+            @change="onDmxValueResolutionChanged()">
             <option :value="constants.RESOLUTION_8BIT">8 bit (range 0…255)</option>
             <option v-if="channel.resolution >= constants.RESOLUTION_16BIT" :value="constants.RESOLUTION_16BIT">16 bit (range 0…65535)</option>
             <option v-if="channel.resolution >= constants.RESOLUTION_24BIT" :value="constants.RESOLUTION_24BIT">24 bit (range 0…16777215)</option>
@@ -138,14 +138,14 @@
             href="#expand-all"
             class="icon-button expand-all"
             title="Expand all capabilities"
-            @click.prevent="openDetails">
+            @click.prevent="openDetails()">
             <OflSvg name="chevron-double-down" />
           </a>
           <a
             href="#collapse-all"
             class="icon-button collapse-all"
             title="Collapse all capabilities"
-            @click.prevent="closeDetails">
+            @click.prevent="closeDetails()">
             <OflSvg name="chevron-double-up" />
           </a>
         </template></h3>
@@ -155,7 +155,7 @@
           :wizard="channel.wizard"
           :channel="channel"
           :resolution="channel.dmxValueResolution"
-          @close="onWizardClose" />
+          @close="onWizardClose($event)" />
 
         <div v-else class="capability-editor">
           <EditorCapability
@@ -387,7 +387,7 @@ export default {
   },
   watch: {
     channel: {
-      handler: function() {
+      handler() {
         if (isChannelChanged(this.channel)) {
           this.$emit(`channel-changed`);
           this.channelChanged = true;

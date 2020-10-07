@@ -10,7 +10,7 @@
 
     <a href="#content" class="accessibility">Skip to content</a>
 
-    <HeaderBar @focus-content="focusContent" />
+    <HeaderBar @focus-content="focusContent()" />
 
     <div id="content" ref="content" tabindex="-1">
       <ClimateStrikeBanner />

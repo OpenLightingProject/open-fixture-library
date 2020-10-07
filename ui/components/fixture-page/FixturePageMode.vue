@@ -19,14 +19,14 @@
         type="button"
         class="icon-button expand-all only-js"
         title="Expand all channels"
-        @click.prevent="openDetails">
+        @click.prevent="openDetails()">
         <OflSvg name="chevron-double-down" />
       </button>
       <button
         type="button"
         class="icon-button collapse-all only-js"
         title="Collapse all channels"
-        @click.prevent="closeDetails">
+        @click.prevent="closeDetails()">
         <OflSvg name="chevron-double-up" />
       </button>
     </template></h3>

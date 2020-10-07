@@ -16,7 +16,7 @@
           :class="{ empty: slot.type === `` }"
           :name="`wheel-slot${slot.uuid}-type`"
           required
-          @change="changeSlotType">
+          @change="changeSlotType()">
 
           <option value="" disabled>Please select a slot type</option>
 

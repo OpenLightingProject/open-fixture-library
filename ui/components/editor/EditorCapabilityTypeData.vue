@@ -10,7 +10,7 @@
         :class="{ empty: capability.type === `` }"
         :name="`capability${capability.uuid}-type`"
         :required="required"
-        @change="changeCapabilityType">
+        @change="changeCapabilityType()">
 
         <option value="" disabled>Please select a capability type</option>
 
