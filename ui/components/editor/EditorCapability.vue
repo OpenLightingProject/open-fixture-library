@@ -26,8 +26,8 @@
           :start-hint="capabilities.length === 1 ? `${min}` : `start`"
           :end-hint="capabilities.length === 1 ? `${max}` : `end`"
           :required="capabilities.length > 1"
-          @start-updated="onStartUpdated"
-          @end-updated="onEndUpdated" />
+          @start-updated="onStartUpdated()"
+          @end-updated="onEndUpdated()" />
 
       </LabeledInput>
 
@@ -36,7 +36,7 @@
         href="#remove"
         class="remove"
         title="Remove capability"
-        @click.prevent="clear">
+        @click.prevent="clear()">
         <OflSvg name="close" />
       </a>
 

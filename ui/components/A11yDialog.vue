@@ -3,7 +3,7 @@
     :aria-hidden="shown ? `false` : `true`"
     class="dialog-container"
     tabindex="-1"
-    @click="overlayClick">
+    @click="overlayClick($event)">
     <div class="dialog-overlay" tabindex="-1" />
 
     <dialog
@@ -19,7 +19,7 @@
           type="button"
           class="icon-button close"
           title="Close"
-          @click.prevent="hide">
+          @click.prevent="hide()">
           Close
           <OflSvg name="close" />
         </button>

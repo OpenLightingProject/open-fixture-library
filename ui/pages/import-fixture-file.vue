@@ -16,7 +16,7 @@
         :state="formstate"
         action="#"
         class="only-js"
-        @submit.prevent="onSubmit">
+        @submit.prevent="onSubmit()">
 
         <section class="card">
           <h2>File information</h2>
@@ -97,8 +97,8 @@
         endpoint="/api/v1/fixtures/import"
         :github-username="githubUsername"
         :github-comment="githubComment"
-        @success="storePrefillData"
-        @reset="reset" />
+        @success="storePrefillData()"
+        @reset="reset()" />
 
     </ClientOnly>
   </div>

@@ -5,9 +5,9 @@
     :cancellable="state !== `loading`"
     :shown="context !== null"
     :title="title"
-    @hide="onHide">
+    @hide="onHide()">
 
-    <form v-if="state === `ready` && context !== null" action="#" @submit.prevent="onSubmit">
+    <form v-if="state === `ready` && context !== null" action="#" @submit.prevent="onSubmit()">
       <LabeledValue
         v-if="location !== null"
         :value="location"
@@ -43,7 +43,7 @@
       Your information was successfully uploaded to GitHub (see the <a :href="issueUrl" target="_blank">issue</a>). The fixture will be updated as soon as your information has been reviewed. Thank you for your contribution!
 
       <div class="button-bar right">
-        <a href="#" class="button secondary" @click.prevent="hide">Close</a>
+        <a href="#" class="button secondary" @click.prevent="hide()">Close</a>
         <a :href="issueUrl" class="button primary" target="_blank">See issue</a>
       </div>
     </template>
@@ -54,7 +54,7 @@
       <textarea :value="errorData" readonly />
 
       <div class="button-bar right">
-        <a href="#" class="button secondary" @click.prevent="hide">Close</a>
+        <a href="#" class="button secondary" @click.prevent="hide()">Close</a>
         <a :href="mailtoUrl" class="button secondary" target="_blank">Send email</a>
         <a href="https://github.com/OpenLightingProject/open-fixture-library/issues/new" class="button primary" target="_blank">Create issue on GitHub</a>
       </div>

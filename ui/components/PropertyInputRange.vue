@@ -11,7 +11,7 @@
         :required="required || rangeIncomplete"
         :hint="startHint"
         :lazy="true"
-        @focus.native="onFocus"
+        @focus.native="onFocus($event)"
         @blur.native="onBlur($event)" />
     </Validate>
     …
@@ -25,7 +25,7 @@
         :required="required || rangeIncomplete"
         :hint="endHint"
         :lazy="true"
-        @focus.native="onFocus"
+        @focus.native="onFocus($event)"
         @blur.native="onBlur($event)" />
     </Validate>
     {{ unit }}

@@ -8,7 +8,7 @@
         :schema-property="schemaProperty.items"
         :required="required || dimensionsSpecified"
         :hint="hints[0]"
-        @focus.native="onFocus"
+        @focus.native="onFocus()"
         @blur.native="onBlur($event)" />
     </Validate>
     &times;
@@ -19,7 +19,7 @@
         :schema-property="schemaProperty.items"
         :required="required || dimensionsSpecified"
         :hint="hints[1]"
-        @focus.native="onFocus"
+        @focus.native="onFocus()"
         @blur.native="onBlur($event)" />
     </Validate>
     &times;
@@ -30,7 +30,7 @@
         :schema-property="schemaProperty.items"
         :required="required || dimensionsSpecified"
         :hint="hints[2]"
-        @focus.native="onFocus"
+        @focus.native="onFocus()"
         @blur.native="onBlur($event)" />
     </Validate>
     {{ unit }}
@@ -121,7 +121,7 @@ export default {
     this.$emit(`vf:validate`, this.validationData);
   },
   methods: {
-    onFocus(event) {
+    onFocus() {
       this.$emit(`focus`);
     },
     onBlur(event) {

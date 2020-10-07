@@ -40,7 +40,7 @@
     <FixturePage
       :fixture="fixture"
       :load-all-modes="loadAllModes"
-      @help-wanted-clicked="openHelpWantedDialog" />
+      @help-wanted-clicked="openHelpWantedDialog($event)" />
 
     <section id="contribute">
       <h2>Something wrong with this fixture definition?</h2>

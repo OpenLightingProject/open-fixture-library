@@ -7,11 +7,11 @@
           to="/"
           exact
           title="Home"
-          @click.native="focusContent">
+          @click.native="focusContent()">
           Open Fixture Library
         </NuxtLink>
 
-        <form action="/search" @submit.prevent="search">
+        <form action="/search" @submit.prevent="search()">
           <div>
             <input
               v-model="searchQuery"
@@ -33,33 +33,33 @@
         <NuxtLink
           to="/fixture-editor"
           title="Fixture editor"
-          @click.native="focusContent">
+          @click.native="focusContent()">
           Add fixture
         </NuxtLink>
 
         <NuxtLink
           to="/manufacturers"
           title="Browse fixtures by manufacturer"
-          @click.native="focusContent">
+          @click.native="focusContent()">
           Manufacturers
         </NuxtLink>
 
         <NuxtLink
           to="/categories"
           title="Browse fixtures by category"
-          @click.native="focusContent">
+          @click.native="focusContent()">
           Categories
         </NuxtLink>
 
         <NuxtLink
           to="/about"
           title="About the project"
-          @click.native="focusContent">
+          @click.native="focusContent()">
           About
         </NuxtLink>
 
         <ClientOnly>
-          <ThemeSwitcher @click.native="focusContent" />
+          <ThemeSwitcher @click.native="focusContent()" />
         </ClientOnly>
       </div>
     </nav>

@@ -3,7 +3,7 @@
     <h1 v-if="searchFor">Search <em>{{ searchFor }}</em></h1>
     <h1 v-else>Search</h1>
 
-    <form class="filter" action="/search" @submit.prevent="onSubmit">
+    <form class="filter" action="/search" @submit.prevent="onSubmit()">
       <LabeledInput label="Search query">
         <input v-model="searchQuery" type="search" name="q">
       </LabeledInput>

@@ -28,7 +28,7 @@
       </a>
     </div>
 
-    <a href="#add-link" @click.prevent="addLink">
+    <a href="#add-link" @click.prevent="addLink()">
       <OflSvg name="plus" />
       Add link
     </a>

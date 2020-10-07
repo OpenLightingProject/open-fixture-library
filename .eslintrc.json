@@ -175,7 +175,7 @@
     }],
     "vue/prop-name-casing": "error",
     "vue/require-direct-export": "error",
-    "vue/v-on-function-call": "error",
+    "vue/v-on-function-call": ["error", "always"],
     "vue/match-component-file-name": ["error", {
       "extensions": ["vue"],
       "shouldMatchCase": true

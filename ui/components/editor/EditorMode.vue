@@ -124,7 +124,7 @@
       </FieldMessages>
     </Validate>
 
-    <a href="#add-channel" class="button primary" @click.prevent="addChannel">add channel</a>
+    <a href="#add-channel" class="button primary" @click.prevent="addChannel()">add channel</a>
 
   </section>
 </template>

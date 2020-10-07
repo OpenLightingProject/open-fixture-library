@@ -21,7 +21,7 @@
       v-if="`helpWanted` in pluginData"
       type="plugin"
       :context="pluginData"
-      @help-wanted-clicked="openHelpWantedDialog" />
+      @help-wanted-clicked="openHelpWantedDialog($event)" />
 
     <div v-if="`fixtureUsage` in pluginData" class="fixture-usage">
       <h2 id="fixture-usage">Install fixture definitions</h2>

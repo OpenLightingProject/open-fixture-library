@@ -75,7 +75,7 @@
         type="submit"
         :disabled="error"
         class="restore primary"
-        @click.prevent="apply">
+        @click.prevent="apply()">
         Generate capabilities
       </button>
     </div>
