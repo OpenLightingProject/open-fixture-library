@@ -8,7 +8,7 @@
 
     <dialog
       :id="`${id}-dialog`"
-      :aria-labelledby="id + '-dialog-title'"
+      :aria-labelledby="`${id}-dialog-title`"
       :open="shown"
       class="card"
       :class="{ wide }">
