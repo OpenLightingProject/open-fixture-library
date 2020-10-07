@@ -43,26 +43,26 @@ else {
  */
 function testScaleDmxValuesUp() {
   const scale8to16 = {
-    /* eslint-disable indent, no-multi-spaces, key-spacing */
+    /* eslint-disable indent, key-spacing */
       0:     0, // [  0] -> [  0,   0]
     127: 32639, // [127] -> [127, 127]
     255: 65535, // [255] -> [255, 255] = 256^2 - 1
-    /* eslint-enable indent, no-multi-spaces, key-spacing */
+    /* eslint-enable indent, key-spacing */
   };
   Object.keys(scale8to16).forEach(dmxValue => testScaleDmxValue(dmxValue, 1, 2, scale8to16[dmxValue]));
 
   const scale8to24 = {
-    /* eslint-disable indent, no-multi-spaces, key-spacing */
+    /* eslint-disable indent, key-spacing */
       0:        0, // [  0] -> [  0,   0,   0]
     127:  8355711, // [127] -> [127, 127, 127]
     128:  8421504, // [128] -> [128, 128, 128]
     255: 16777215, // [255] -> [255, 255, 255] = 256^3 - 1
-    /* eslint-enable indent, no-multi-spaces, key-spacing */
+    /* eslint-enable indent, key-spacing */
   };
   Object.keys(scale8to24).forEach(dmxValue => testScaleDmxValue(dmxValue, 1, 3, scale8to24[dmxValue]));
 
   const scale16to24 = {
-    /* eslint-disable indent, no-multi-spaces, key-spacing */
+    /* eslint-disable indent, key-spacing */
         0:        0, // [  0,   0] -> [  0,   0,   0]
       255:    65535, // [  0, 255] -> [  0, 255, 255]
       256:    65536, // [  1,   0] -> [  1,   0,   0]
@@ -71,7 +71,7 @@ function testScaleDmxValuesUp() {
     65279: 16711679, // [254, 255] -> [254, 255, 255]
     65280: 16711680, // [255,   0] -> [255,   0,   0]
     65535: 16777215, // [255, 255] -> [255, 255, 255]
-    /* eslint-enable indent, no-multi-spaces, key-spacing */
+    /* eslint-enable indent, key-spacing */
   };
   Object.keys(scale16to24).forEach(dmxValue => testScaleDmxValue(dmxValue, 2, 3, scale16to24[dmxValue]));
 }
@@ -81,7 +81,7 @@ function testScaleDmxValuesUp() {
  */
 function testScaleDmxValuesDown() {
   const scale16to8 = {
-    /* eslint-disable indent, no-multi-spaces, key-spacing */
+    /* eslint-disable indent, key-spacing */
         0:   0, // [  0,   0] -> [  0]
     32512: 127, // [127,   0] -> [127]
     32639: 127, // [127, 127] -> [127]
@@ -89,12 +89,12 @@ function testScaleDmxValuesDown() {
     32768: 128, // [128,   0] -> [128]
     65280: 255, // [255,   0] -> [255]
     65535: 255, //  [255, 255] -> [255]
-    /* eslint-enable indent, no-multi-spaces, key-spacing */
+    /* eslint-enable indent, key-spacing */
   };
   Object.keys(scale16to8).forEach(dmxValue => testScaleDmxValue(dmxValue, 2, 1, scale16to8[dmxValue]));
 
   const scale24to8 = {
-    /* eslint-disable indent, no-multi-spaces, key-spacing */
+    /* eslint-disable indent, key-spacing */
            0:   0, // [  0,   0,   0] -> [  0]
        65535:   0, // [  0, 255, 255] -> [  0]
        65536:   1, // [  1,   0,   0] -> [  1]
@@ -103,12 +103,12 @@ function testScaleDmxValuesDown() {
     16711679: 254, // [254, 255, 255] -> [254]
     16711680: 255, // [255,   0,   0] -> [255]
     16777215: 255, // [255, 255, 255] -> [255]
-    /* eslint-enable indent, no-multi-spaces, key-spacing */
+    /* eslint-enable indent, key-spacing */
   };
   Object.keys(scale24to8).forEach(dmxValue => testScaleDmxValue(dmxValue, 3, 1, scale24to8[dmxValue]));
 
   const scale24to16 = {
-    /* eslint-disable indent, no-multi-spaces, key-spacing */
+    /* eslint-disable indent, key-spacing */
            0:     0, // [  0,   0,   0] -> [  0,   0]
        65535:   255, // [  0, 255, 255] -> [  0, 255]
        65536:   256, // [  1,   0,   0] -> [  1,   0]
@@ -119,7 +119,7 @@ function testScaleDmxValuesDown() {
     16711680: 65280, // [255,   0,   0] -> [255,   0]
     16711935: 65280, // [255,   0, 255] -> [255,   0]
     16777215: 65535, // [255, 255, 255] -> [255, 255]
-    /* eslint-enable indent, no-multi-spaces, key-spacing */
+    /* eslint-enable indent, key-spacing */
   };
   Object.keys(scale24to16).forEach(dmxValue => testScaleDmxValue(dmxValue, 3, 2, scale24to16[dmxValue]));
 }
