@@ -219,12 +219,17 @@
       }
     }
   },
-  "overrides": [{
-    "files": ["**/*.md"],
-    "rules": {
-      "no-undef": "off",
-      "no-unused-vars": "off",
-      "require-jsdoc": "off"
+  "overrides": [
+    {
+      "files": ["**/*.md"],
+      "rules": {
+        "no-undef": "off",
+        "no-unused-vars": "off",
+        "require-jsdoc": "off"
+      }
+    },
+    {
+      "files": ["**/*.vue", "**/*.json"]
     }
-  }]
+  ]
 }
