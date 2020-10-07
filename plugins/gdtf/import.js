@@ -527,7 +527,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     );
 
     const channel = {
-      name: name,
+      name,
       fineChannelAliases: [],
       dmxValueResolution: ``,
       defaultValue: null,
@@ -570,7 +570,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     gdtfChannel._oflChannelKey = channelKey;
     channelWrappers.push({
       key: channelKey,
-      channel: channel,
+      channel,
       maxResolution: getChannelResolution(),
       modeIndices: [modeIndex],
     });

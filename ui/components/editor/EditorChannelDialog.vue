@@ -387,7 +387,7 @@ export default {
   },
   watch: {
     channel: {
-      handler: function() {
+      handler() {
         if (isChannelChanged(this.channel)) {
           this.$emit(`channel-changed`);
           this.channelChanged = true;

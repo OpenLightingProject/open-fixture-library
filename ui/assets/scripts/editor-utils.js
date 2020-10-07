@@ -129,8 +129,8 @@ export function getEmptyChannel() {
 export function getEmptyFineChannel(coarseChannelId, resolution) {
   return {
     uuid: uuidv4(),
-    coarseChannelId: coarseChannelId,
-    resolution: resolution,
+    coarseChannelId,
+    resolution,
   };
 }
 

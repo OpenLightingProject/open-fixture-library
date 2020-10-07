@@ -172,7 +172,7 @@ async function testExternalLink(url) {
     return new Promise((resolve, reject) => {
       const request = httpModule.get(url, requestOptions, response => {
         resolve({
-          url: url,
+          url,
           message: `${response.statusCode} ${response.statusMessage}`,
           failed: ![200, 302, 307].includes(response.statusCode),
         });
@@ -180,7 +180,7 @@ async function testExternalLink(url) {
 
       request.on(`timeout`, () => {
         resolve({
-          url: url,
+          url,
           message: `Timeout of ${requestOptions.timeout}ms exceeded.`,
           failed: true,
         });
@@ -189,7 +189,7 @@ async function testExternalLink(url) {
 
       request.on(`error`, error => {
         resolve({
-          url: url,
+          url,
           message: error.message,
           failed: true,
         });

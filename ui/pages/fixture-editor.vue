@@ -363,7 +363,7 @@ export default {
   },
   watch: {
     fixture: {
-      handler: function() {
+      handler() {
         this.autoSave(`fixture`);
       },
       deep: true,

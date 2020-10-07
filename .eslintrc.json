@@ -132,6 +132,7 @@
     "vue/space-infix-ops": "error",
     "spaced-comment": ["error", "always"],
     "template-curly-spacing": "error",
+    "object-shorthand": ["error", "always", { "avoidQuotes": true }],
     "promise/always-return": "off",
     "promise/prefer-await-to-then": "error",
     "promise/no-nesting": "off",

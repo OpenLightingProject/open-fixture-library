@@ -53,7 +53,7 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
   }
 
   fixture.meta = {
-    authors: authors,
+    authors,
     createDate: timestamp,
     lastModifyDate: timestamp,
     importPlugin: {

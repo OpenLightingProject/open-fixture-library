@@ -308,7 +308,7 @@ export default {
         uuid: channelUuid,
       });
     },
-    addChannel: function() {
+    addChannel() {
       this.$emit(`open-channel-editor`, {
         modeId: this.mode.uuid,
         editMode: `add-existing`,

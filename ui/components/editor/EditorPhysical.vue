@@ -155,7 +155,7 @@ export default {
       properties: schemaProperties,
     };
   },
-  mounted: function() {
+  mounted() {
     if (this.$root._oflRestoreComplete) {
       this.$refs.firstInput.focus();
     }
