@@ -1,0 +1,39 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "mini led",
+  "categories": ["Moving Head", "Color Changer", "Strobe", "Flower", "Fan", "Effect", "Other"],
+  "meta": {
+    "authors": ["cesar hernandez"],
+    "createDate": "2020-10-09",
+    "lastModifyDate": "2020-10-09"
+  },
+  "links": {
+    "productPage": [
+      "https://www.lightkeyapp.com/en/fixtures"
+    ]
+  },
+  "physical": {
+    "dimensions": [13.5, 9.8, 19.48],
+    "weight": 4.9,
+    "power": 25,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Mini led sport": {
+      "fineChannelAliases": ["Mini led sport fine"],
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Mini ledsport",
+      "shortName": "Uking",
+      "channels": [
+        "Mini led sport",
+        "Mini led sport fine"
+      ]
+    }
+  ]
+}
