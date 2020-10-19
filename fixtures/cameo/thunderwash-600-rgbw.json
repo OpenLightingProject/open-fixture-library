@@ -1,0 +1,98 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Thunderwash 600 RGBW",
+  "categories": ["Strobe", "Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["Paolo"],
+    "createDate": "2020-10-19",
+    "lastModifyDate": "2020-10-19"
+  },
+  "links": {
+    "manual": [
+      "https://www.cameolight.com/en/downloads/file/id/-1911810176"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/en/solutions/dj-musicians/static-lighting/floodlights/20046/thunder-wash-600-rgbw"
+    ],
+    "video": [
+      "https://youtu.be/25oJ8szwaIg"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Duration": {
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "1ms",
+        "durationEnd": "510ms"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 Ch M 2",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Duration",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
