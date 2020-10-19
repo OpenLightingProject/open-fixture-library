@@ -1,0 +1,109 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Thunderwash 600 RGBW",
+  "categories": ["Dimmer", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["Paolo"],
+    "createDate": "2020-10-19",
+    "lastModifyDate": "2020-10-19"
+  },
+  "links": {
+    "manual": [
+      "https://www.cameolight.com/fr/downloads/file/id/-1911810176"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/fr/solutions/dj-musiciens/eclairage-statique/blinders-stroboscopes/20046/thunder-wash-600-rgbw"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=25oJ8szwaIg&feature=emb_title"
+    ]
+  },
+  "physical": {
+    "dimensions": [338, 197, 87],
+    "weight": 3.1,
+    "power": 160,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Led"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Duration": {
+      "capability": {
+        "type": "StrobeDuration",
+        "durationStart": "1ms",
+        "durationEnd": "510ms"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 Ch m 2",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Duration",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
