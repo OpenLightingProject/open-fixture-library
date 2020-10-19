@@ -1,0 +1,112 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "colors Sonicstrobe",
+  "shortName": "colors Sonicstrobe",
+  "categories": ["Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["Paolo"],
+    "createDate": "2020-10-19",
+    "lastModifyDate": "2020-10-19"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/472595_c_472595_r1_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/fr/varytec_colors_sonicstrobe.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=loksq55ijCU"
+    ]
+  },
+  "physical": {
+    "dimensions": [476, 159, 216],
+    "weight": 3.9,
+    "power": 130,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Led",
+      "colorTemperature": 6200
+    },
+    "lens": {
+      "degreesMinMax": [140, 140]
+    }
+  },
+  "availableChannels": {
+    "Strobe Led": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe Led 2": {
+      "name": "Strobe Led",
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Ambiant Led": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Ambiant LED": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [9, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Ambiant Led RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Ambiant Led Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Ambiant Led Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 Channel ",
+      "channels": [
+        "Strobe Led",
+        "Strobe Led 2",
+        "Ambiant Led",
+        "Ambiant LED",
+        "Ambiant Led RED",
+        "Ambiant Led Green",
+        "Ambiant Led Blue"
+      ]
+    }
+  ]
+}
