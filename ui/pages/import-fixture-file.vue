@@ -117,19 +117,6 @@ export default {
     EditorSubmitDialog,
     LabeledInput,
   },
-  head() {
-    const title = `Import fixture`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: `title`,
-          content: title,
-        },
-      ],
-    };
-  },
   async asyncData({ $axios, error }) {
     try {
       const plugins = await $axios.$get(`/api/v1/plugins`);
@@ -150,6 +137,19 @@ export default {
       author: ``,
       githubUsername: ``,
       honeypot: ``,
+    };
+  },
+  head() {
+    const title = `Import fixture`;
+
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
     };
   },
   mounted() {

@@ -57,6 +57,17 @@ h3 {
 
 <script>
 export default {
+  async asyncData({ $axios, error }) {
+    try {
+      const plugins = await $axios.$get(`/api/v1/plugins`);
+      return {
+        plugins,
+      };
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
+  },
   head() {
     const title = `Plugins`;
 
@@ -69,17 +80,6 @@ export default {
         },
       ],
     };
-  },
-  async asyncData({ $axios, error }) {
-    try {
-      const plugins = await $axios.$get(`/api/v1/plugins`);
-      return {
-        plugins,
-      };
-    }
-    catch (requestError) {
-      return error(requestError);
-    }
   },
 };
 </script>

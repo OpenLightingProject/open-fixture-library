@@ -76,19 +76,6 @@ export default {
   components: {
     LabeledInput,
   },
-  head() {
-    const title = `RDM Lookup`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: `title`,
-          content: title,
-        },
-      ],
-    };
-  },
   async asyncData({ query, $axios, redirect, error }) {
     const { manufacturerId, modelId, personalityIndex } = query;
 
@@ -150,6 +137,19 @@ export default {
     catch (requestError) {
       return error(requestError);
     }
+  },
+  head() {
+    const title = `RDM Lookup`;
+
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
+    };
   },
 };
 

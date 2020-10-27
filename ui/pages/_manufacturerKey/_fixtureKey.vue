@@ -149,6 +149,19 @@ export default {
       return error(requestError);
     }
   },
+  head() {
+    const title = `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`;
+
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
+    };
+  },
   computed: {
     fixture() {
       return new Fixture(this.manKey, this.fixKey, this.fixtureJson);
@@ -220,19 +233,6 @@ export default {
       const subject = `Feedback for fixture '${this.manKey}/${this.fixKey}'`;
       return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}`;
     },
-  },
-  head() {
-    const title = `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: `title`,
-          content: title,
-        },
-      ],
-    };
   },
   mounted() {
     if (process.browser) {

@@ -95,19 +95,6 @@ export default {
     ConditionalDetails,
     LabeledInput,
   },
-  head() {
-    const title = this.searchFor ? `Search "${this.searchFor}"` : `Search`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: `title`,
-          content: title,
-        },
-      ],
-    };
-  },
   async asyncData({ query, $axios, error }) {
     try {
       const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
@@ -155,6 +142,19 @@ export default {
     finally {
       this.loading = false;
     }
+  },
+  head() {
+    const title = this.searchFor ? `Search "${this.searchFor}"` : `Search`;
+
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
+    };
   },
   computed: {
     fixtureResults() {

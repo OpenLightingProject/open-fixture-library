@@ -160,19 +160,6 @@ export default {
     LabeledInput,
     PropertyInputText,
   },
-  head() {
-    const title = `Fixture Editor`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: `title`,
-          content: title,
-        },
-      ],
-    };
-  },
   async asyncData({ query, $axios, error }) {
     const initFixture = getEmptyFixture();
 
@@ -208,6 +195,19 @@ export default {
     catch (requestError) {
       return error(requestError);
     }
+  },
+  head() {
+    const title = `Fixture Editor`;
+
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
+    };
   },
   watch: {
     fixture: {

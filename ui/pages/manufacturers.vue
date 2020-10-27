@@ -44,19 +44,6 @@
 
 <script>
 export default {
-  head() {
-    const title = `Manufacturers`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: `title`,
-          content: title,
-        },
-      ],
-    };
-  },
   async asyncData({ $axios, error }) {
     try {
       const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
@@ -92,6 +79,19 @@ export default {
     catch (requestError) {
       return error(requestError);
     }
+  },
+  head() {
+    const title = `Manufacturers`;
+
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
+    };
   },
 };
 </script>
