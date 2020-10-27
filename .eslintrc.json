@@ -142,8 +142,9 @@
     "object-shorthand": ["error", "always", { "avoidQuotes": true }],
     "promise/always-return": "off",
     "promise/prefer-await-to-then": "error",
-    "promise/no-nesting": "off",
-    "promise/no-promise-in-callback": "off",
+    "promise/no-nesting": "error",
+    "promise/no-promise-in-callback": "error",
+    "promise/no-callback-in-promise": "error",
     "promise/no-return-in-finally": "error",
     "promise/valid-params": "error",
     "vue/component-name-in-template-casing": ["error", "PascalCase", {
