@@ -98,7 +98,7 @@ export default {
     };
   },
   watch: {
-    async 'fixture.useExistingManufacturer'(useExisting) {
+    'fixture.useExistingManufacturer': async function(useExisting) {
       await this.$nextTick();
       this.$refs[useExisting ? `existingManufacturerSelect` : `newManufacturerNameInput`].focus();
     },
