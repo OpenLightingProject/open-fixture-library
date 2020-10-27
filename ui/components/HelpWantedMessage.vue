@@ -61,12 +61,9 @@
   flex-wrap: wrap;
   font-size: 90%;
 
-  a, noscript {
+  a {
     flex-grow: 1;
     flex-basis: 10em;
-  }
-
-  a {
     display: inline-block;
     padding: 0.4em 0.6em;
     color: theme-color(text-primary);

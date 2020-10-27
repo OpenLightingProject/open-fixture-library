@@ -108,12 +108,6 @@
   </div>
 </template>
 
-<style lang="scss" scoped>
-.infinitePanTilt {
-  margin-left: 2ex;
-}
-</style>
-
 <script>
 import { clone } from '../../assets/scripts/editor-utils.js';
 import schemaProperties from '../../../lib/schema-properties.js';
