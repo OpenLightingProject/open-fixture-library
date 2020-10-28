@@ -99,6 +99,14 @@ const enabledRuleParams = {
   'promise/prefer-await-to-then': [],
   'promise/valid-params': [],
 
+  // eslint-plugin-unicorn
+  'unicorn/prevent-abbreviations': [{
+    replacements: {
+      ref: false,
+      env: false,
+    },
+  }],
+
   // eslint-plugin-vue
   'vue/component-definition-name-casing': [],
   'vue/component-name-in-template-casing': [`PascalCase`, {
@@ -185,6 +193,14 @@ const disabledRules = [
   `security/detect-non-literal-fs-filename`,
   `security/detect-non-literal-require`,
   `security/detect-object-injection`,
+  `unicorn/consistent-function-scoping`,
+  `unicorn/filename-case`,
+  `unicorn/no-abusive-eslint-disable`,
+  `unicorn/no-null`,
+  `unicorn/no-process-exit`,
+  `unicorn/no-reduce`,
+  `unicorn/no-useless-undefined`,
+  `unicorn/prefer-spread`,
   `vue/multiline-html-element-content-newline`,
   `vue/singleline-html-element-content-newline`,
 ];
@@ -211,6 +227,7 @@ module.exports = {
     `nuxt`,
     `promise`,
     `security`,
+    `unicorn`,
     `vue`,
   ],
   extends: [
@@ -221,6 +238,7 @@ module.exports = {
     `plugin:nuxt/recommended`,
     `plugin:promise/recommended`,
     `plugin:security/recommended`,
+    `plugin:unicorn/recommended`,
     `plugin:vue/recommended`,
   ],
   rules: {
@@ -268,6 +286,12 @@ module.exports = {
     },
     {
       files: [`**/*.vue`, `**/*.json`],
+    },
+    {
+      files: [`fixtures/**/*.json`],
+      rules: {
+        'unicorn/prevent-abbreviations': `off`,
+      },
     },
   ],
 };
