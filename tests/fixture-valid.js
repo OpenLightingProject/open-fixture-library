@@ -1,4 +1,4 @@
-const util = require(`util`);
+const { inspect } = require(`util`);
 const Ajv = require(`ajv`);
 
 // see https://github.com/standard-things/esm#getting-started
@@ -1210,7 +1210,7 @@ function getErrorString(description, error) {
     return `${description} ${error}`;
   }
 
-  return `${description} ${util.inspect(error, false, null)}`;
+  return `${description} ${inspect(error, false, null)}`;
 }
 
 /**
