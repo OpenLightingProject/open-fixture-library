@@ -261,9 +261,9 @@ function getDowngradedChannel(channelKey, jsonChannel, fixture) {
  * @param {Object} obj The object where the property should be created.
  * @param {String} property The name of the property added to obj.
  * @param {*} data If this is valid, the property is added to obj.
- * @param {*} [value=undefined] The property value, if data is valid. Defaults to data.
+ * @param {*} value The property value, if data is valid. Defaults to `data`.
  */
-function addIfValidData(obj, property, data, value = undefined) {
+function addIfValidData(obj, property, data, value) {
   if (value === undefined) {
     value = data;
   }
