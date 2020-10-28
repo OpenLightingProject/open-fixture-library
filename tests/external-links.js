@@ -109,7 +109,7 @@ async function fetchExternalUrls(externalUrls) {
   const urlResults = [];
 
   const BLOCK_SIZE = 25;
-  const urlBlocks = Array(Math.ceil(externalUrls.length / BLOCK_SIZE)).fill().map(
+  const urlBlocks = new Array(Math.ceil(externalUrls.length / BLOCK_SIZE)).fill().map(
     (_, index) => externalUrls.slice(index * BLOCK_SIZE, (index + 1) * BLOCK_SIZE),
   );
 
