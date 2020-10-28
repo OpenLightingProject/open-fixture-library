@@ -151,7 +151,7 @@ function transformNonNumericValues(fixtureJson) {
         return entity.number;
       }
     }
-    catch (error) {
+    catch {
       // string could not be parsed as an entity
     }
 

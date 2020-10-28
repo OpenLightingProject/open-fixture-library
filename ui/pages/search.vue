@@ -136,7 +136,7 @@ export default {
         categoriesQuery: sanitizedQuery.categories,
       });
     }
-    catch (requestError) {
+    catch {
       this.results = [];
     }
     finally {

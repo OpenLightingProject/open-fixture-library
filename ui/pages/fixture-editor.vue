@@ -346,7 +346,7 @@ export default {
           throw new Error(`this.restoredData is undefined.`);
         }
       }
-      catch (error) {
+      catch {
         this.restoredData = null;
         this.restoreComplete();
         return;

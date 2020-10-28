@@ -217,7 +217,7 @@ module.exports = {
     node: true,
   },
   parserOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: 2019,
   },
   plugins: [
     `array-func`,

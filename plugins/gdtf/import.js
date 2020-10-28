@@ -587,7 +587,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
           attribute => attribute.$.Name === channelAttribute,
         ).$.Pretty || channelAttribute;
       }
-      catch (error) {
+      catch {
         return channelAttribute;
       }
     }
@@ -899,7 +899,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
           try {
             capability.dmxRange = scaleDmxRangeIndividually(startValue, startResolution, endValue, endResolution, scaleToResolution);
           }
-          catch (valueOutsideResolutionError) {
+          catch {
             // will be caught by validation
             capability.dmxRange = [startValue, endValue];
           }
@@ -1298,7 +1298,7 @@ function getIsoDateFromGdtfDate(dateStr, fallbackDateStr) {
 
     return date.toISOString().replace(/T.*/, ``);
   }
-  catch (error) {
+  catch {
     return fallbackDateStr;
   }
 }
@@ -1312,7 +1312,7 @@ function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueStr) {
     const [, value, resolution] = dmxValueStr.match(/^(\d+)\/(\d)$/);
     return [Number.parseInt(value, 10), Number.parseInt(resolution, 10)];
   }
-  catch (error) {
+  catch {
     return [Number.parseInt(dmxValueStr, 10) || 0, 1];
   }
 }
