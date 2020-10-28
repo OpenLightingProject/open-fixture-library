@@ -38,7 +38,7 @@ export default {
 
       return {
         categoryName,
-        categoryClass: categoryName.toLowerCase().replace(/[^\w]+/g, `-`),
+        categoryClass: categoryName.toLowerCase().replace(/\W+/g, `-`),
         fixtures: [],
         manufacturers,
       };

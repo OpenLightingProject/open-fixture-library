@@ -258,7 +258,7 @@ function getOflWheels(qlcPlusFixture) {
     const slots = [];
 
     (qlcPlusChannel.Capability || []).forEach(capability => {
-      if (/\bC?CW\b|rainbow|stop|(?:counter|anti)?[ -]?clockwise|rotat|spin/i.test(capability._)) {
+      if (/\bc?cw\b|rainbow|stop|(?:counter|anti)?[ -]?clockwise|rotat|spin/i.test(capability._)) {
         // skip rotation capabilities
         return;
       }
@@ -434,8 +434,8 @@ const parserPerChannelType = {
     };
 
     const shutterEffects = {
-      Closed: /^(?:Blackout|(?:Shutter |Strobe )?Closed?)$/i,
-      Open: /^(?:(?:Shutter |Strobe )?Open|Full?)$/i,
+      Closed: /^(?:blackout|(?:shutter |strobe )?closed?)$/i,
+      Open: /^(?:(?:shutter |strobe )?open|full?)$/i,
       Pulse: /puls/i,
       RampUp: /ramp\s*up/i,
       RampDown: /ramp\s*down/i,
@@ -467,7 +467,7 @@ const parserPerChannelType = {
   Speed: ({ channelName, capabilityName }) => {
     const cap = {};
 
-    if (channelName.match(/pan(?:\/)?tilt/i)) {
+    if (channelName.match(/pan\/?tilt/i)) {
       cap.type = `PanTiltSpeed`;
     }
     else if (channelName.match(/strobe/i) || capabilityName.match(/strobe/i)) {
@@ -755,7 +755,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
  */
 function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
   const mode = {
-    name: qlcPlusMode.$.Name.replace(/\s+mode|mode\s+/ig, ``),
+    name: qlcPlusMode.$.Name.replace(/\s+mode|mode\s+/gi, ``),
   };
 
   const match = mode.name.match(/(\d+)(?:\s+|-|)(?:channels?|chan|ch)/i);
@@ -799,7 +799,7 @@ function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
  * @param {Array.<String>} warningsArray This fixture's warnings array in the `out` object.
  */
 function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
-  const fineChannelRegex = /\s*fine\s*|\s*16[-_\s]*bit\s*/i;
+  const fineChannelRegex = /\s*fine\s*|\s*16[\s_-]*bit\s*/i;
 
   const fineChannels = qlcPlusFixture.Channel.filter(
     channel => (`Group` in channel && channel.Group[0].$.Byte === `1`) || (`Preset` in channel.$ && channel.$.Preset.endsWith(`Fine`)),
@@ -1010,5 +1010,5 @@ function cleanUpFixture(fixture, qlcPlusFixture) {
  * @returns {String} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(str) {
-  return str.toLowerCase().replace(/[^a-z0-9-]+/g, ` `).trim().replace(/\s+/g, `-`);
+  return str.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
 }

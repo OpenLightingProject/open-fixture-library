@@ -388,7 +388,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   function checkChannel(channel) {
     checkTemplateVariables(channel.key, []);
 
-    if (/\bfine\b|\d+(?:\s|-|_)*bit/i.test(channel.name)) {
+    if (/\bfine\b|\d+[\s_-]*bit/i.test(channel.name)) {
       // channel name contains the word "fine" or "16bit" / "8 bit" / "32-bit" / "24_bit"
       result.errors.push(`Channel '${channel.key}' should rather be a fine channel alias of its corresponding coarse channel.`);
     }

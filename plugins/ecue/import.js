@@ -284,12 +284,12 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
         cap.comment = capabilityName;
       },
       ShutterStrobe() {
-        if (capabilityName.match(/^(?:Blackout|(?:Shutter )?Closed?)$/i)) {
+        if (capabilityName.match(/^(?:blackout|(?:shutter )?closed?)$/i)) {
           cap.shutterEffect = `Closed`;
           return;
         }
 
-        if (capabilityName.match(/^(?:(?:Shutter )?Open|Full?)$/i)) {
+        if (capabilityName.match(/^(?:(?:shutter )?open|full?)$/i)) {
           cap.shutterEffect = `Open`;
           return;
         }
@@ -375,7 +375,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
       // capability parsers can rely on the channel type as a first distinctive feature
       const capabilityTypePerChannelType = {
         ChannelColor() {
-          if (channelName.match(/\bCTO\b|\bCTB\b|temperature\b/i)) {
+          if (channelName.match(/\bcto\b|\bctb\b|temperature\b/i)) {
             return `ColorTemperature`;
           }
 
@@ -426,7 +426,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
             StrobeDuration: /\bstrobe duration\b/,
             ShutterStrobe: /\b(?:shutter|strobe|strb|strob|strobing)\b/,
             Intensity: /\b(?:intensity|dimmer)\b/,
-            PanTiltSpeed: /\b(?:pan[/ -]?tilt speed|p[/ -]?t speed)\b/,
+            PanTiltSpeed: /\b(?:pan[ /-]?tilt speed|p[ /-]?t speed)\b/,
             PanContinuous: /\bpan continuous\b/,
             TiltContinuous: /\btilt continuous\b/,
             EffectParameter: /\beffect param(?:eter)?\b/,
@@ -475,8 +475,8 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
      * @returns {String} The rest of the capabilityName.
      */
     function getSpeedGuessedComment() {
-      return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|C?CW)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*Hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*Hz)\)?$/i, (match, direction, start, end) => {
-        const directionStr = direction ? (direction.match(/^(?:clockwise|CW),?\s+$/i) ? ` CW` : ` CCW`) : ``;
+      return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|c?cw)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*hz)\)?$/i, (match, direction, start, end) => {
+        const directionStr = direction ? (direction.match(/^(?:clockwise|cw),?\s+$/i) ? ` CW` : ` CCW`) : ``;
 
         if (directionStr !== ``) {
           cap.type = `Rotation`;
@@ -507,5 +507,5 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
  * @returns {String} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(str) {
-  return str.toLowerCase().replace(/[^a-z0-9-]+/g, ` `).trim().replace(/\s+/g, `-`);
+  return str.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
 }

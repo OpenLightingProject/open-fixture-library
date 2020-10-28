@@ -13,8 +13,8 @@ const getAjvErrorMessages = require(`../../lib/get-ajv-error-messages.js`);
 const router = express.Router();
 
 const corsWhitelist = [
-  /[/.]open-fixture-library\.org(?::\d+|)$/,
-  /[/.]open-fixture-library-pr-\d+\.herokuapp\.com$/,
+  /[./]open-fixture-library\.org(?::\d+|)$/,
+  /[./]open-fixture-library-pr-\d+\.herokuapp\.com$/,
   /\/localhost(?::\d+|)$/,
 ];
 
@@ -33,7 +33,7 @@ router.use(cors({
 // The Regex is actually not unsafe, just in a more concise form than the one
 // that security/detect-unsafe-regex would not complain about.
 // eslint-disable-next-line security/detect-unsafe-regex
-const base64Regex = /^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/;
+const base64Regex = /^(?:[\d+/A-Za-z]{4})*(?:[\d+/A-Za-z]{2}==|[\d+/A-Za-z]{3}=)?$/;
 
 const api = new OpenAPIBackend({
   definition: `${__dirname}/openapi.json`,

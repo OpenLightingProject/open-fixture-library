@@ -418,7 +418,7 @@ function getComboboxInput(prop, from) {
  * @returns {String} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(str) {
-  return str.toLowerCase().replace(/[^a-z0-9-]+/g, ` `).trim().replace(/\s+/g, `-`);
+  return str.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
 }
 
 module.exports = { createFixtureFromEditor };

@@ -106,7 +106,7 @@ function getSvg(name, category = null, title) {
     return ``;
   }
 
-  const kebabName = name.replace(/([a-z])([A-Z])/g, `$1-$2`).toLowerCase().replace(/[^\w]+/g, `-`);
+  const kebabName = name.replace(/([a-z])([A-Z])/g, `$1-$2`).toLowerCase().replace(/\W+/g, `-`);
   const svgBasename = (category ? `${category}/` : ``) + kebabName;
   let svg = ``;
 

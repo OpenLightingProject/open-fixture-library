@@ -307,7 +307,7 @@ function getSelectedUnit(value, enumValues, unitNames, units) {
   }
 
   /* eslint-disable-next-line security/detect-unsafe-regex */ // because it's a bug in safe-regex
-  const unit = value.replace(/^-?[0-9]+(\.[0-9]+)?/, ``);
+  const unit = value.replace(/^-?\d+(\.\d+)?/, ``);
 
   return unitNames.find(name => units[name].unitStr === unit) || ``;
 }

@@ -49,7 +49,7 @@ async function createFeedbackIssue({ request }) {
   );
 
   if (githubUsername) {
-    const isValidUsername = /^[a-zA-Z0-9]+$/.test(githubUsername);
+    const isValidUsername = /^[\dA-Za-z]+$/.test(githubUsername);
     lines.push(`\nThank you ${isValidUsername ? `@${githubUsername}` : `**${githubUsername}**`}!`);
   }
 

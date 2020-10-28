@@ -217,7 +217,7 @@ export function colorsHexStringToArray(hexString) {
   }
 
   const hexArray = hexString.split(/\s*,\s*/).map(hex => hex.trim().toLowerCase()).filter(
-    hex => hex.match(/^#[0-9a-f]{6}$/),
+    hex => hex.match(/^#[\da-f]{6}$/),
   );
 
   if (hexArray.length === 0) {

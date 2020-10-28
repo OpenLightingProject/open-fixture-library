@@ -40,13 +40,13 @@ Vue.use(VueForm, {
       return dimensions === null || (dimensions[0] !== null && dimensions[1] !== null && dimensions[2] !== null);
     },
     'start-with-uppercase-or-number': function(value) {
-      return /^[A-Z0-9]/.test(value);
+      return /^[\dA-Z]/.test(value);
     },
     'no-mode-name': function(value) {
       return !/\bmode\b/i.test(value);
     },
     'no-fine-channel-name': function(value) {
-      if (/\bfine\b|\d+(?:\s|-|_)*bit/i.test(value)) {
+      if (/\bfine\b|\d+[\s_-]*bit/i.test(value)) {
         return false;
       }
 
@@ -65,7 +65,7 @@ Vue.use(VueForm, {
       return vnode.componentInstance.hasSameUnit;
     },
     'valid-color-hex-list': function(value) {
-      return /^\s*#[0-9a-f]{6}(?:\s*,\s*#[0-9a-f]{6})*\s*$/i.test(value);
+      return /^\s*#[\da-f]{6}(?:\s*,\s*#[\da-f]{6})*\s*$/i.test(value);
     },
     'max-file-size': function(file, attrValue) {
       if (typeof file === `object`) {
