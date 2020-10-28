@@ -206,7 +206,7 @@ function getFixtureCreateResult(fixtures) {
         linkObj => linkObj.type === linkType,
       ).map(linkObj => linkObj.url);
 
-      if (linksOfType.length) {
+      if (linksOfType.length > 0) {
         fixture.links[linkType] = linksOfType;
       }
     }
