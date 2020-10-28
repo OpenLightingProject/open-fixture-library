@@ -185,14 +185,14 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     const rdmData = (gdtfFixture.Protocols[0].FTRDM || gdtfFixture.Protocols[0].RDM)[0];
     const softwareVersion = getLatestSoftwareVersion();
 
-    manufacturer.rdmId = parseInt(rdmData.$.ManufacturerID, 16);
+    manufacturer.rdmId = Number.parseInt(rdmData.$.ManufacturerID, 16);
     fixture.rdm = {
-      modelId: parseInt(rdmData.$.DeviceModelID, 16),
+      modelId: Number.parseInt(rdmData.$.DeviceModelID, 16),
       softwareVersion: softwareVersion.name,
     };
 
     softwareVersion.personalities.forEach(personality => {
-      const index = parseInt(personality.$.Value.replace(`0x`, ``), 16);
+      const index = Number.parseInt(personality.$.Value.replace(`0x`, ``), 16);
       const mode = followXmlNodeReference(gdtfFixture.DMXModes[0].DMXMode, personality.$.DMXMode);
       mode._oflRdmPersonalityIndex = index;
     });
@@ -649,12 +649,12 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
             gdtfChannelSet._dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelSet.$.DMXFrom || `0/1`);
 
-            let physicalFrom = parseFloat(gdtfChannelSet.$.PhysicalFrom);
-            if (isNaN(physicalFrom)) {
+            let physicalFrom = Number.parseFloat(gdtfChannelSet.$.PhysicalFrom);
+            if (Number.isNaN(physicalFrom)) {
               physicalFrom = 0;
             }
-            let physicalTo = parseFloat(gdtfChannelSet.$.PhysicalTo);
-            if (isNaN(physicalTo)) {
+            let physicalTo = Number.parseFloat(gdtfChannelSet.$.PhysicalTo);
+            if (Number.isNaN(physicalTo)) {
               physicalTo = 1;
             }
 
@@ -1054,9 +1054,9 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       }
 
       channelOffsets.forEach((channelOffset, index) => {
-        const dmxChannelNumber = parseInt(channelOffset, 10);
+        const dmxChannelNumber = Number.parseInt(channelOffset, 10);
 
-        if (!isNaN(dmxChannelNumber)) {
+        if (!Number.isNaN(dmxChannelNumber)) {
           channels[dmxChannelNumber - 1] = channelKeys[index];
         }
       });
@@ -1248,7 +1248,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
      */
     function getChannelResolution(channel) {
       if (`dmxValueResolution` in channel) {
-        return parseInt(channel.dmxValueResolution, 10) * 8;
+        return Number.parseInt(channel.dmxValueResolution, 10) * 8;
       }
 
       if (`fineChannelAliases` in channel) {
@@ -1294,7 +1294,7 @@ function getIsoDateFromGdtfDate(dateStr, fallbackDateStr) {
 
   try {
     const [, day, month, year] = match;
-    const date = new Date(Date.UTC(parseInt(year, 10), parseInt(month, 10) - 1, day));
+    const date = new Date(Date.UTC(Number.parseInt(year, 10), Number.parseInt(month, 10) - 1, day));
 
     return date.toISOString().replace(/T.*/, ``);
   }
@@ -1310,10 +1310,10 @@ function getIsoDateFromGdtfDate(dateStr, fallbackDateStr) {
 function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueStr) {
   try {
     const [, value, resolution] = dmxValueStr.match(/^(\d+)\/(\d)$/);
-    return [parseInt(value, 10), parseInt(resolution, 10)];
+    return [Number.parseInt(value, 10), Number.parseInt(resolution, 10)];
   }
   catch (error) {
-    return [parseInt(dmxValueStr, 10) || 0, 1];
+    return [Number.parseInt(dmxValueStr, 10) || 0, 1];
   }
 }
 

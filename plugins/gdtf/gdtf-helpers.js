@@ -81,7 +81,7 @@ function getRgbColorFromGdtfColor(gdtfColorStr) {
 
   // parse starting values as array
   const [x, y, Y] = gdtfColorStr.split(/\s*,\s*/).map(
-    colorComponent => parseFloat(colorComponent),
+    colorComponent => Number.parseFloat(colorComponent),
   );
 
 

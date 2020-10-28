@@ -26,7 +26,7 @@ Vue.use(VueForm, {
         return true;
       }
 
-      if (isNaN(range[0]) || isNaN(range[1])) {
+      if (Number.isNaN(range[0]) || Number.isNaN(range[1])) {
         // let number validator handle this
         return true;
       }
@@ -69,7 +69,7 @@ Vue.use(VueForm, {
     },
     'max-file-size': function(file, attrValue) {
       if (typeof file === `object`) {
-        let maxSize = parseInt(attrValue, 10);
+        let maxSize = Number.parseInt(attrValue, 10);
 
         if (attrValue.includes(`M`)) {
           maxSize *= 1000 * 1000;

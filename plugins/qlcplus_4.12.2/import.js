@@ -146,8 +146,8 @@ function getOflMatrix(qlcPlusFixture) {
     .map(obj => obj.Physical[0].Layout[0]);
 
   if (physicalLayouts) {
-    const maxWidth = Math.max(...physicalLayouts.map(layout => parseInt(layout.$.Width, 10)));
-    const maxHeight = Math.max(...physicalLayouts.map(layout => parseInt(layout.$.Height, 10)));
+    const maxWidth = Math.max(...physicalLayouts.map(layout => Number.parseInt(layout.$.Width, 10)));
+    const maxHeight = Math.max(...physicalLayouts.map(layout => Number.parseInt(layout.$.Height, 10)));
 
     matrix.pixelCount = [maxWidth, maxHeight, 1];
   }
@@ -208,7 +208,7 @@ const slotTypeFunctions = {
       slot.name = cap._;
 
       if (`Res1` in cap.$) {
-        slot.facets = parseInt(cap.$.Res1, 10);
+        slot.facets = Number.parseInt(cap.$.Res1, 10);
       }
     },
   },
@@ -505,7 +505,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
   const channel = {
     fineChannelAliases: [],
     dmxValueResolution: `8bit`,
-    defaultValue: parseInt(qlcPlusChannel.$.Default, 10) || 0,
+    defaultValue: Number.parseInt(qlcPlusChannel.$.Default, 10) || 0,
   };
 
   const physicals = qlcPlusFixture.Mode.concat(qlcPlusFixture)
@@ -515,7 +515,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
   const [panMax, tiltMax] = [`PanMax`, `TiltMax`].map(
     prop => Math.max(...physicals.map(physical => {
       if (physical.Focus && prop in physical.Focus[0].$) {
-        return parseInt(physical.Focus[0].$[prop], 10) || 0;
+        return Number.parseInt(physical.Focus[0].$[prop], 10) || 0;
       }
       return 0;
     })),
@@ -551,7 +551,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
    */
   function getOflCapability(qlcPlusCapability) {
     const cap = {
-      dmxRange: [parseInt(qlcPlusCapability.$.Min, 10), parseInt(qlcPlusCapability.$.Max, 10)],
+      dmxRange: [Number.parseInt(qlcPlusCapability.$.Min, 10), Number.parseInt(qlcPlusCapability.$.Max, 10)],
       type: ``,
     };
 
@@ -648,10 +648,10 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
       return;
     }
 
-    const width = parseFloat(qlcPlusPhysical.Dimensions[0].$.Width);
-    const height = parseFloat(qlcPlusPhysical.Dimensions[0].$.Height);
-    const depth = parseFloat(qlcPlusPhysical.Dimensions[0].$.Depth);
-    const weight = parseFloat(qlcPlusPhysical.Dimensions[0].$.Weight);
+    const width = Number.parseFloat(qlcPlusPhysical.Dimensions[0].$.Width);
+    const height = Number.parseFloat(qlcPlusPhysical.Dimensions[0].$.Height);
+    const depth = Number.parseFloat(qlcPlusPhysical.Dimensions[0].$.Depth);
+    const weight = Number.parseFloat(qlcPlusPhysical.Dimensions[0].$.Weight);
 
     const dimensionsArray = [width, height, depth];
 
@@ -672,7 +672,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
       return;
     }
 
-    const power = parseFloat(qlcPlusPhysical.Technical[0].$.PowerConsumption);
+    const power = Number.parseFloat(qlcPlusPhysical.Technical[0].$.PowerConsumption);
     if (power !== 0 && oflFixPhysical.power !== power) {
       physical.power = power;
     }
@@ -700,12 +700,12 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
       physical.bulb.type = type;
     }
 
-    const colorTemp = parseFloat(qlcPlusPhysical.Bulb[0].$.ColourTemperature);
+    const colorTemp = Number.parseFloat(qlcPlusPhysical.Bulb[0].$.ColourTemperature);
     if (colorTemp && getOflFixPhysicalProperty(`bulb`, `colorTemperature`) !== colorTemp) {
       physical.bulb.colorTemperature = colorTemp;
     }
 
-    const lumens = parseFloat(qlcPlusPhysical.Bulb[0].$.Lumens);
+    const lumens = Number.parseFloat(qlcPlusPhysical.Bulb[0].$.Lumens);
     if (lumens && getOflFixPhysicalProperty(`bulb`, `lumens`) !== lumens) {
       physical.bulb.lumens = lumens;
     }
@@ -722,8 +722,8 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
       physical.lens.name = name;
     }
 
-    const degMin = parseFloat(qlcPlusPhysical.Lens[0].$.DegreesMin);
-    const degMax = parseFloat(qlcPlusPhysical.Lens[0].$.DegreesMax);
+    const degMin = Number.parseFloat(qlcPlusPhysical.Lens[0].$.DegreesMin);
+    const degMax = Number.parseFloat(qlcPlusPhysical.Lens[0].$.DegreesMax);
     const degreesMinMax = [degMin, degMax];
 
     if ((degMin !== 0 || degMax !== 0)
@@ -775,7 +775,7 @@ function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
 
   mode.channels = [];
   for (const ch of (qlcPlusMode.Channel || [])) {
-    mode.channels[parseInt(ch.$.Number, 10)] = ch._;
+    mode.channels[Number.parseInt(ch.$.Number, 10)] = ch._;
   }
 
   if (`Head` in qlcPlusMode) {
@@ -784,7 +784,7 @@ function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
         return;
       }
 
-      const channelList = head.Channel.map(ch => mode.channels[parseInt(ch, 10)]).join(`, `);
+      const channelList = head.Channel.map(ch => mode.channels[Number.parseInt(ch, 10)]).join(`, `);
 
       warningsArray.push(`Please add ${mode.name} mode's Head #${index + 1} to the fixture's matrix. The included channels were ${channelList}.`);
     });

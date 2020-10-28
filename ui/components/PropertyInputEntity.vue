@@ -178,7 +178,7 @@ export default {
             this.update(`[no unit]`);
           }
           else {
-            this.update(parseFloat(this.selectedNumber));
+            this.update(Number.parseFloat(this.selectedNumber));
           }
           this.$emit(`unit-selected`, `[no unit]`);
         }
@@ -197,9 +197,9 @@ export default {
           return this.value;
         }
 
-        const number = parseFloat(this.value.replace(this.selectedUnit, ``));
+        const number = Number.parseFloat(this.value.replace(this.selectedUnit, ``));
 
-        return isNaN(number) ? `` : number;
+        return Number.isNaN(number) ? `` : number;
       },
       set(newNumber) {
         if (newNumber === null || newNumber === `invalid`) {
@@ -211,7 +211,7 @@ export default {
             this.update(`[no unit]`);
           }
           else {
-            this.update(parseFloat(newNumber));
+            this.update(Number.parseFloat(newNumber));
           }
         }
         else {

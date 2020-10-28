@@ -79,8 +79,8 @@ export default {
   async asyncData({ query, $axios, redirect, error }) {
     const { manufacturerId, modelId, personalityIndex } = query;
 
-    const manufacturerIdNumber = parseInt(manufacturerId, 10);
-    const modelIdNumber = parseInt(modelId, 10);
+    const manufacturerIdNumber = Number.parseInt(manufacturerId, 10);
+    const modelIdNumber = Number.parseInt(modelId, 10);
 
     if (isEmpty(manufacturerId)) {
       return {
@@ -173,7 +173,7 @@ function redirectToCorrectPage(manufacturer, modelId, personalityIndex, redirect
     return;
   }
 
-  const personalityIndexNumber = parseInt(personalityIndex, 10);
+  const personalityIndexNumber = Number.parseInt(personalityIndex, 10);
   const locationHash = isEmpty(personalityIndex) ? `` : `#rdm-personality-${personalityIndexNumber}`;
 
   redirect(301, `/${manufacturer.key}/${manufacturer.models[modelId]}${locationHash}`);

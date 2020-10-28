@@ -126,15 +126,19 @@ function getPhysical(ecueFixture) {
   const physical = {};
 
   if (ecueFixture.$.DimWidth !== `10` && ecueFixture.$.DimHeight !== `10` && ecueFixture.$.DimDepth !== `10`) {
-    physical.dimensions = [parseFloat(ecueFixture.$.DimWidth), parseFloat(ecueFixture.$.DimHeight), parseFloat(ecueFixture.$.DimDepth)];
+    physical.dimensions = [
+      Number.parseFloat(ecueFixture.$.DimWidth),
+      Number.parseFloat(ecueFixture.$.DimHeight),
+      Number.parseFloat(ecueFixture.$.DimDepth),
+    ];
   }
 
   if (ecueFixture.$.Weight !== `0`) {
-    physical.weight = parseFloat(ecueFixture.$.Weight);
+    physical.weight = Number.parseFloat(ecueFixture.$.Weight);
   }
 
   if (ecueFixture.$.Power !== `0`) {
-    physical.power = parseFloat(ecueFixture.$.Power);
+    physical.power = Number.parseFloat(ecueFixture.$.Power);
   }
 
   return physical;
@@ -159,7 +163,7 @@ function getCombinedEcueChannels(ecueFixture) {
   }
 
   // sort channels by (coarse) DMX channel
-  channels.sort((a, b) => parseInt(a.$.DmxByte0, 10) - parseInt(b.$.DmxByte0, 10));
+  channels.sort((a, b) => Number.parseInt(a.$.DmxByte0, 10) - Number.parseInt(b.$.DmxByte0, 10));
 
   return channels;
 }
@@ -187,7 +191,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
     const shortNameFine = `${channelKey} fine`;
     channel.fineChannelAliases = [shortNameFine];
     maxDmxValue = (256 * 256) - 1;
-    fixture.modes[0].channels[parseInt(ecueChannel.$.DmxByte1, 10) - 1] = shortNameFine;
+    fixture.modes[0].channels[Number.parseInt(ecueChannel.$.DmxByte1, 10) - 1] = shortNameFine;
   }
 
   addDmxValues();
@@ -215,7 +219,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
   }
 
   fixture.availableChannels[channelKey] = channel;
-  fixture.modes[0].channels[parseInt(ecueChannel.$.DmxByte0, 10) - 1] = channelKey;
+  fixture.modes[0].channels[Number.parseInt(ecueChannel.$.DmxByte0, 10) - 1] = channelKey;
 
 
   /**
@@ -223,11 +227,11 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
    */
   function addDmxValues() {
     if (ecueChannel.$.DefaultValue !== `0`) {
-      channel.defaultValue = parseInt(ecueChannel.$.DefaultValue, 10);
+      channel.defaultValue = Number.parseInt(ecueChannel.$.DefaultValue, 10);
     }
 
     if (ecueChannel.$.Highlight !== `0`) {
-      channel.highlightValue = parseInt(ecueChannel.$.Highlight, 10);
+      channel.highlightValue = Number.parseInt(ecueChannel.$.Highlight, 10);
     }
 
     if (ecueChannel.$.Constant === `1`) {
@@ -360,11 +364,11 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
      * @returns {Array.<Number>} The DMX range of this capability.
      */
     function getDmxRange() {
-      const dmxRangeStart = parseInt(ecueRange.$.Start, 10);
-      let dmxRangeEnd = parseInt(ecueRange.$.End, 10);
+      const dmxRangeStart = Number.parseInt(ecueRange.$.Start, 10);
+      let dmxRangeEnd = Number.parseInt(ecueRange.$.End, 10);
 
       if (dmxRangeEnd === -1) {
-        dmxRangeEnd = (index + 1 < ecueChannel.Range.length) ? parseInt(ecueChannel.Range[index + 1].$.Start, 10) - 1 : maxDmxValue;
+        dmxRangeEnd = (index + 1 < ecueChannel.Range.length) ? Number.parseInt(ecueChannel.Range[index + 1].$.Start, 10) - 1 : maxDmxValue;
       }
 
       return [dmxRangeStart, dmxRangeEnd];
@@ -487,9 +491,9 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
         start = start.toLowerCase();
         end = end.toLowerCase();
 
-        const startNumber = parseFloat(start);
-        const endNumber = parseFloat(end);
-        if (!isNaN(startNumber) && !isNaN(endNumber)) {
+        const startNumber = Number.parseFloat(start);
+        const endNumber = Number.parseFloat(end);
+        if (!Number.isNaN(startNumber) && !Number.isNaN(endNumber)) {
           start = `${startNumber}Hz`;
           end = `${endNumber}Hz`;
         }

@@ -181,9 +181,9 @@ const importHelpers = {
         start = start.toLowerCase();
         end = end.toLowerCase();
 
-        const startNumber = parseFloat(start);
-        const endNumber = parseFloat(end);
-        if (!isNaN(startNumber) && !isNaN(endNumber)) {
+        const startNumber = Number.parseFloat(start);
+        const endNumber = Number.parseFloat(end);
+        if (!Number.isNaN(startNumber) && !Number.isNaN(endNumber)) {
           start = `${startNumber}Hz`;
           end = `${endNumber}Hz`;
         }

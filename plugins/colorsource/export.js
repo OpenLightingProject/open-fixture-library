@@ -257,9 +257,9 @@ function getColorSourceChannels(mode, hasIntensity) {
         if (cap.colors && cap.colors.allColors.length === 1) {
           const color = cap.colors.allColors[0]; // `#rrggbb`
           capJson.media = {
-            r: parseInt(color.slice(1, 3), 16),
-            g: parseInt(color.slice(3, 5), 16),
-            b: parseInt(color.slice(5, 7), 16),
+            r: Number.parseInt(color.slice(1, 3), 16),
+            g: Number.parseInt(color.slice(3, 5), 16),
+            b: Number.parseInt(color.slice(5, 7), 16),
           };
         }
 

@@ -723,7 +723,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     // "6ch" / "8-Channel" / "9 channels" mode names
     [`name`, `shortName`].forEach(nameProp => {
       if (mode[nameProp].match(/(\d+)(?:\s+|-|)(?:channels?|ch)/i)) {
-        const intendedLength = parseInt(RegExp.$1, 10);
+        const intendedLength = Number.parseInt(RegExp.$1, 10);
 
         if (mode.channels.length !== intendedLength) {
           result.errors.push(`Mode '${mode.name}' should have ${RegExp.$1} channels according to its ${nameProp} but actually has ${mode.channels.length}.`);
