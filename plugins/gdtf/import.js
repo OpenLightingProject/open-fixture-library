@@ -208,7 +208,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
       if (maxSoftwareVersion) {
         return {
-          name: maxSoftwareVersion.Value,
+          name: maxSoftwareVersion.$.Value,
           personalities: maxSoftwareVersion.DMXPersonality,
         };
       }
