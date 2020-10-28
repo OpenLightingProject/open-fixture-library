@@ -330,14 +330,14 @@ export default {
         else {
           anchorElement.href = downloadUrl;
           anchorElement.download = filename;
-          document.body.appendChild(anchorElement);
+          document.body.append(anchorElement);
           anchorElement.click();
         }
 
         // cleanup
         setTimeout(() => {
           URL.revokeObjectURL(downloadUrl);
-          document.body.removeChild(anchorElement);
+          anchorElement.remove();
         }, 100);
       }
     },
