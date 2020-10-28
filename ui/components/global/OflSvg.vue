@@ -169,7 +169,7 @@ export function getColorCircleSvgFragment(colors, radius) {
   const largeArcFlag = 0;
   const sweepFlag = 1;
 
-  for (let i = 0; i < colors.length; i++) {
+  for (const [i, color] of colors.entries()) {
     const [startX, startY] = getCoordinatesForPercent(i * slicePercent, radius);
     const [endX, endY] = getCoordinatesForPercent((i + 1) * slicePercent, radius);
 
@@ -177,7 +177,7 @@ export function getColorCircleSvgFragment(colors, radius) {
     const pathArc = `A ${radius} ${radius} ${xAxisRotation} ${largeArcFlag} ${sweepFlag} ${endX} ${endY}`;
     const pathLine = `L 0 0`;
 
-    svgStr += `<path d="${pathMove} ${pathArc} ${pathLine}" fill="${colors[i]}" />`;
+    svgStr += `<path d="${pathMove} ${pathArc} ${pathLine}" fill="${color}" />`;
   }
 
   return svgStr;

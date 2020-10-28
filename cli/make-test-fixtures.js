@@ -176,8 +176,8 @@ function getMarkdownCode() {
 
   // footnotes
   mdLines.push(`## Footnotes`, ``);
-  for (let i = 0; i < footnotes.length; i++) {
-    mdLines.push(`**<a id="user-content-footnote-${i + 1}">[${i + 1}]</a>**: ${footnotes[i]}  `);
+  for (const [i, footnote] of footnotes.entries()) {
+    mdLines.push(`**<a id="user-content-footnote-${i + 1}">[${i + 1}]</a>**: ${footnote}  `);
   }
   mdLines.push(``);
 
