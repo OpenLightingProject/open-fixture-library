@@ -42,7 +42,7 @@ module.exports = async function testAttributesCorrectness(exportFile, allExportF
       throw errors;
     }
   }
-  catch (parseErrors) {
-    throw `Error parsing XML: ${parseErrors.toString()}`;
+  catch (parseError) {
+    throw `Error parsing XML: ${parseError.toString()}`;
   }
 };

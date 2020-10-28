@@ -59,8 +59,8 @@ async function createFeedbackIssue({ request }) {
     issueUrl = await createIssue(title, lines.join(`\n`), labels);
     console.log(`Created issue at ${issueUrl}`);
   }
-  catch (e) {
-    error = e.message;
+  catch (createIssueError) {
+    error = createIssueError.message;
   }
 
   return {

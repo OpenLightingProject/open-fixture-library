@@ -93,8 +93,8 @@ function downloadFixtureTool(directory) {
           });
           resolve();
         }
-        catch (err) {
-          reject(err);
+        catch (error) {
+          reject(error);
         }
       });
     }).on(`error`, err => {

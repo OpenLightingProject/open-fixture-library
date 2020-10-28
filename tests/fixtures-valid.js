@@ -174,9 +174,9 @@ async function checkManufacturers() {
       result.errors.push(...uniquenessTestResults.errors);
     }
   }
-  catch (errors) {
-    const isIterable = typeof errors[Symbol.iterator] === `function`;
-    result.errors.push(...(isIterable ? errors : [errors]));
+  catch (error) {
+    const isIterable = typeof error[Symbol.iterator] === `function`;
+    result.errors.push(...(isIterable ? error : [error]));
   }
   return result;
 }

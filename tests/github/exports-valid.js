@@ -239,9 +239,9 @@ async function getTaskPromise(task) {
         await test(file, files);
         return `:heavy_check_mark: ${file.name}`;
       }
-      catch (err) {
+      catch (error) {
         emoji = `:x:`;
-        const errors = [].concat(err);
+        const errors = [].concat(error);
         return `<details><summary>:x: ${file.name}</summary>${errors.join(`<br />\n`)}</details>`;
       }
     }));
