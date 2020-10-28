@@ -659,7 +659,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
       physical.dimensions = dimensionsArray;
     }
 
-    if (weight !== 0.0 && oflFixPhysical.weight !== weight) {
+    if (weight !== 0 && oflFixPhysical.weight !== weight) {
       physical.weight = weight;
     }
   }
@@ -726,7 +726,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
     const degMax = parseFloat(qlcPlusPhysical.Lens[0].$.DegreesMax);
     const degreesMinMax = [degMin, degMax];
 
-    if ((degMin !== 0.0 || degMax !== 0.0)
+    if ((degMin !== 0 || degMax !== 0)
       && (JSON.stringify(getOflFixPhysicalProperty(`lens`, `degreesMinMax`)) !== JSON.stringify(degreesMinMax))) {
       physical.lens.degreesMinMax = degreesMinMax;
     }

@@ -52,7 +52,7 @@ function followXmlNodeReference(startNode, nodeReference) {
  * @returns {String} The RGB hex code string in the form "#rrggbb".
  */
 function getRgbColorFromGdtfColor(gdtfColorStr) {
-  /* eslint-disable camelcase, space-in-parens */
+  /* eslint-disable camelcase, space-in-parens, unicorn/no-zero-fractions */
 
   // functions ported from https://github.com/njsmith/colorspacious
   const xyY_to_XYZ = (([x, y, Y]) => {
@@ -109,7 +109,7 @@ function getRgbColorFromGdtfColor(gdtfColorStr) {
 
   return `#${getHexComponent(r)}${getHexComponent(g)}${getHexComponent(b)}`;
 
-  /* eslint-enable camelcase, space-in-parens */
+  /* eslint-enable camelcase, space-in-parens, unicorn/no-zero-fractions */
 
 
   /**

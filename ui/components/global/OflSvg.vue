@@ -163,7 +163,7 @@ export function getColorCircleSvgFragment(colors, radius) {
   }
 
   let svgStr = ``;
-  const slicePercent = 1.0 / colors.length;
+  const slicePercent = 1 / colors.length;
 
   const xAxisRotation = 0;
   const largeArcFlag = 0;
