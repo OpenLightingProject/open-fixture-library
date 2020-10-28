@@ -333,7 +333,7 @@ const supportedVideoFormats = {
      * - https://www.youtube.com/watch?v={videoId}&otherParameters
      * - https://youtu.be/{videoId]}?otherParameters
      */
-    regex: /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]t=([0-9hms]+))?/,
+    regex: /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]t=([0-9hms]+)|)/,
     displayType: url => `YouTube`,
     videoId: (url, match) => match[1],
     startAt: (url, match) => match[2] || 0,
@@ -397,7 +397,7 @@ function getEmbettableVideoData(url) {
  */
 function getHostname(url) {
   // adapted from https://stackoverflow.com/a/21553982/451391
-  const match = url.match(/^.*?\/\/(?:([^:/?#]*)(?::([0-9]+))?)/);
+  const match = url.match(/^.*?\/\/(?:([^:/?#]*)(?::([0-9]+)|))/);
   return match ? match[1] : url;
 }
 
