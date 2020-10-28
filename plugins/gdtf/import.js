@@ -862,8 +862,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
       // make unique by appending ' 2', ' 3', ... if necessary
       let duplicates = 1;
-      const hasChannelKey = ch => ch.key === key;
-      while (channelWrappers.some(hasChannelKey)) {
+      const keyExists = () => channelWrappers.some(ch => ch.key === key);
+      while (keyExists()) {
         duplicates++;
         key = `${name} ${duplicates}`;
       }

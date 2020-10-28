@@ -368,7 +368,9 @@ export default {
       return `Edit channel`;
     },
     areCapabilitiesChanged() {
-      return this.channel.capabilities.some(isCapabilityChanged);
+      return this.channel.capabilities.some(
+        capability => isCapabilityChanged(capability),
+      );
     },
     submitButtonTitle() {
       if (this.channel.editMode === `add-existing`) {

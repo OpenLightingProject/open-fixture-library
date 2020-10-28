@@ -148,7 +148,9 @@ export default {
       return Math.pow(256, this.resolution) - 1;
     },
     isChanged() {
-      return this.capabilities.some(isCapabilityChanged);
+      return this.capabilities.some(
+        capability => isCapabilityChanged(capability),
+      );
     },
     start() {
       return this.capability.dmxRange !== null ? this.capability.dmxRange[0] : null;

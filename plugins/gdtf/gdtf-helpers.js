@@ -80,7 +80,9 @@ function getRgbColorFromGdtfColor(gdtfColorStr) {
 
 
   // parse starting values as array
-  const [x, y, Y] = gdtfColorStr.split(/\s*,\s*/).map(parseFloat);
+  const [x, y, Y] = gdtfColorStr.split(/\s*,\s*/).map(
+    colorComponent => parseFloat(colorComponent),
+  );
 
 
   // ported from https://gitlab.com/petrvanek/gdtf-libraries/blob/e3194638c552321ad06af630ba83f49dcf5b0016/gdtf2json.py#L10-25

@@ -45,7 +45,7 @@ function getFixtureCreateResult(fixtures) {
   // { 'uuid 1': 'new channel key 1', ... }
   const channelKeyMapping = {};
 
-  fixtures.forEach(addFixture);
+  fixtures.forEach(fixture => addFixture(fixture));
 
   return result;
 
@@ -366,8 +366,6 @@ function getFixtureCreateResult(fixtures) {
   function addMode(fixKey, from) {
     const mode = {};
 
-    const uuidFromMapping = uuid => channelKeyMapping[uuid];
-
     for (const prop of Object.keys(schemaProperties.mode)) {
       if (prop === `physical`) {
         const physical = getPhysical(from.physical);
@@ -376,7 +374,7 @@ function getFixtureCreateResult(fixtures) {
         }
       }
       else if (prop === `channels`) {
-        mode.channels = from.channels.map(uuidFromMapping);
+        mode.channels = from.channels.map(uuid => channelKeyMapping[uuid]);
       }
       else if (propExistsIn(prop, from)) {
         mode[prop] = from[prop];

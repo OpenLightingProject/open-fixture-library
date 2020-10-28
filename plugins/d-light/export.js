@@ -115,7 +115,7 @@ function addAttribute(xml, mode, attribute, channels) {
         },
       });
 
-      caps.forEach(addCapability);
+      caps.forEach(cap => addCapability(cap));
     }
 
     /**

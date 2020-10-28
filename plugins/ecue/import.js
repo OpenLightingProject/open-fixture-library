@@ -204,7 +204,9 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
     }];
   }
 
-  channel.capabilities = ecueChannel.Range.map(getCapability);
+  channel.capabilities = ecueChannel.Range.map(
+    (ecueRange, index) => getCapability(ecueRange, index),
+  );
 
   if (channel.capabilities.length === 1) {
     channel.capability = channel.capabilities[0];

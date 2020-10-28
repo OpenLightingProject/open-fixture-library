@@ -180,7 +180,9 @@ export function isChannelChanged(channel) {
     }
 
     if (prop === `capabilities`) {
-      return channel.capabilities.some(isCapabilityChanged);
+      return channel.capabilities.some(
+        capability => isCapabilityChanged(capability),
+      );
     }
 
     return channel[prop] !== ``;
