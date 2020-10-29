@@ -1037,21 +1037,17 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
       const channels = dmxBreakWrappers[dmxBreakWrappers.length - 1].channels;
 
-      let channelOffsets;
       const channelKeys = [chKey].concat(oflChannel.fineChannelAliases);
 
       // The Offset attribute replaced the Coarse/Fine/Ultra/Uber attributes in GDTF v1.0
-      if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Offset`)) {
-        channelOffsets = gdtfChannel.$.Offset.split(`,`);
-      }
-      else {
-        channelOffsets = [
+      const channelOffsets = xmlNodeHasNotNoneAttribute(gdtfChannel, `Offset`)
+        ? gdtfChannel.$.Offset.split(`,`)
+        : [
           gdtfChannel.$.Coarse,
           gdtfChannel.$.Fine,
           gdtfChannel.$.Ultra,
           gdtfChannel.$.Uber,
         ];
-      }
 
       channelOffsets.forEach((channelOffset, index) => {
         const dmxChannelNumber = Number.parseInt(channelOffset, 10);

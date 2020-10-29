@@ -150,14 +150,9 @@ export default {
     },
 
     mailtoUrl() {
-      let subject;
-
-      if (this.fixture) {
-        subject = `Feedback for fixture '${this.fixture.manufacturer.key}/${this.fixture.key}'`;
-      }
-      else {
-        subject = `Feedback for ${this.type} '${this.context.key}'`;
-      }
+      const subject = this.fixture
+        ? `Feedback for fixture '${this.fixture.manufacturer.key}/${this.fixture.key}'`
+        : `Feedback for ${this.type} '${this.context.key}'`;
 
       const bodyLines = [];
       if (this.location) {

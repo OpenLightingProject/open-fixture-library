@@ -45,17 +45,9 @@ if (pluginData.exportTests.length === 0) {
   process.exit(0);
 }
 
-let fixtures;
-if (args._.length === 0) {
-  fixtures = testFixtures.map(
-    fixture => fixtureFromRepository(fixture.man, fixture.key),
-  );
-}
-else {
-  fixtures = args._.map(
-    relativePath => fixtureFromFile(path.join(process.cwd(), relativePath)),
-  );
-}
+const fixtures = args._.length === 0
+  ? testFixtures.map(fixture => fixtureFromRepository(fixture.man, fixture.key))
+  : args._.map(relativePath => fixtureFromFile(path.join(process.cwd(), relativePath)));
 
 const pluginExport = require(path.join(__dirname, `../plugins`, args.plugin, `export.js`));
 
