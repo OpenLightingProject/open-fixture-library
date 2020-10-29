@@ -131,8 +131,8 @@ async function fetchExternalUrls(externalUrls) {
   const failingUrlResults = urlResults.filter(result => result.failed);
 
   const fetchTime = new Date() - fetchStartTime;
-  const colorOrPeriod = failingUrlResults.length > 0 ? `:` : `.`;
-  console.log(`\nFetching done in ${fetchTime / 1000}s, ${failingUrlResults.length} of ${externalUrls.length} URLs have failed${colorOrPeriod}`);
+  const colonOrPeriod = failingUrlResults.length > 0 ? `:` : `.`;
+  console.log(`\nFetching done in ${fetchTime / 1000}s, ${failingUrlResults.length} of ${externalUrls.length} URLs have failed${colonOrPeriod}`);
   for (const { url, message } of failingUrlResults) {
     console.log(`- ${chalk.yellow(url)} (${chalk.redBright(message)})`);
   }
