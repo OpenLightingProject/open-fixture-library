@@ -29,19 +29,19 @@ if (cliArguments.help) {
 }
 
 if (!cliArguments.plugin) {
-  console.error(`${chalk.red(`[Error]`)} Plugin has to be specified using --plugin`);
+  console.error(chalk.red(`[Error]`), `Plugin has to be specified using --plugin`);
   console.log(helpMessage);
   process.exit(1);
 }
 
 if (!plugins.exportPlugins.includes(cliArguments.plugin)) {
-  console.error(`${chalk.red(`[Error]`)} Plugin '${cliArguments.plugin}' is not a valid export plugin.\nAvailable export plugins: ${plugins.exportPlugins.join(`, `)}`);
+  console.error(chalk.red(`[Error]`), `Plugin '${cliArguments.plugin}' is not a valid export plugin.\nAvailable export plugins:`, plugins.exportPlugins.join(`, `));
   process.exit(1);
 }
 
 const pluginData = plugins.data[cliArguments.plugin];
 if (pluginData.exportTests.length === 0) {
-  console.log(`${chalk.green(`[PASS]`)} Plugin '${cliArguments.plugin}' has no export tests.`);
+  console.log(chalk.green(`[PASS]`), `Plugin '${cliArguments.plugin}' has no export tests.`);
   process.exit(0);
 }
 
@@ -80,7 +80,7 @@ const pluginExport = require(path.join(__dirname, `../plugins`, cliArguments.plu
     }));
   }
   catch (error) {
-    console.error(`${chalk.red(`[Error]`)} Exporting failed:`, error);
+    console.error(chalk.red(`[Error]`), `Exporting failed:`, error);
     process.exit(1);
   }
 })();

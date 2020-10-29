@@ -29,11 +29,11 @@ testRandomChannelDownscaling(3);
 
 console.log();
 if (errorCount > 0) {
-  console.log(`${chalk.red(`[FAIL]`)} Test failed with ${errorCount} error${errorCount > 1 ? `s` : ``}.`);
+  console.log(chalk.red(`[FAIL]`), `Test failed with ${errorCount} error${errorCount > 1 ? `s` : ``}.`);
   process.exit(1);
 }
 else {
-  console.log(`${chalk.green(`[PASS]`)} Test passed.`);
+  console.log(chalk.green(`[PASS]`), `Test passed.`);
   process.exit(0);
 }
 
@@ -312,10 +312,10 @@ function testArraysEqual(description, array, desiredArray) {
  */
 function parseTestResult(passed, passString, failString) {
   if (passed) {
-    console.log(`${chalk.green(`[PASS]`)} ${passString}`);
+    console.log(chalk.green(`[PASS]`), passString);
   }
   else {
-    console.log(`${chalk.red(`[FAIL]`)} ${failString}`);
+    console.log(chalk.red(`[FAIL]`), failString);
     errorCount++;
   }
 }

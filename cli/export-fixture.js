@@ -31,17 +31,17 @@ if (cliArguments.help) {
 }
 
 if (!cliArguments.plugin) {
-  console.error(`${chalk.red(`[Error]`)} No plugin specified. See --help for usage.`);
+  console.error(chalk.red(`[Error]`), `No plugin specified. See --help for usage.`);
   process.exit(1);
 }
 
 if (cliArguments._.length === 0 && !cliArguments.a) {
-  console.error(`${chalk.red(`[Error]`)} No fixtures specified. See --help for usage.`);
+  console.error(chalk.red(`[Error]`), `No fixtures specified. See --help for usage.`);
   process.exit(1);
 }
 
 if (!plugins.exportPlugins.includes(cliArguments.plugin)) {
-  console.error(`${chalk.red(`[Error]`)} Plugin '${cliArguments.plugin}' does not exist or does not support exporting.\n\navailable plugins: ${Object.keys(plugins.exportPlugins).join(`, `)}`);
+  console.error(chalk.red(`[Error]`), `Plugin '${cliArguments.plugin}' does not exist or does not support exporting.\n\navailable plugins:`, Object.keys(plugins.exportPlugins).join(`, `));
   process.exit(1);
 }
 
@@ -88,7 +88,7 @@ const outDirectory = cliArguments.o ? path.resolve(process.cwd(), cliArguments.o
     }
   }
   catch (error) {
-    console.error(`${chalk.red(`[Error]`)} Exporting failed:`, error);
+    console.error(chalk.red(`[Error]`), `Exporting failed:`, error);
     process.exit(1);
   }
 })();

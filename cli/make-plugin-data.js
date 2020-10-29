@@ -106,9 +106,9 @@ plugins.data = sortedPluginData;
 const filename = path.join(pluginDirectory, `plugins.json`);
 fs.writeFile(filename, `${JSON.stringify(plugins, null, 2)}\n`, `utf8`, error => {
   if (error) {
-    console.error(`${chalk.red(`[Fail]`)} Could not write plugin data file.`, error);
+    console.error(chalk.red(`[Fail]`), `Could not write plugin data file.`, error);
     process.exit(1);
   }
-  console.log(`${chalk.green(`[Success]`)} Updated plugin data file ${filename}`);
+  console.log(chalk.green(`[Success]`), `Updated plugin data file`, filename);
   process.exit(0);
 });

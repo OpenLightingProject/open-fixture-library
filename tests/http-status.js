@@ -26,11 +26,11 @@ const SiteCrawler = require(`../lib/site-crawler.js`);
 
     crawler.on(`passingPage`, url => {
       passingLinks.push(url);
-      console.log(`${chalk.greenBright(`[PASS]`)} ${url}`);
+      console.log(chalk.greenBright(`[PASS]`), url);
     });
     crawler.on(`failingPage`, (url, error) => {
       failingLinks.push(`${url} (${chalk.redBright(error)})`);
-      console.log(`${chalk.redBright(`[FAIL]`)} ${url} (${chalk.redBright(error)})`);
+      console.log(chalk.redBright(`[FAIL]`), `${url} (${chalk.redBright(error)})`);
     });
 
     console.log(chalk.blue.bold(`Start crawling the website ...`));

@@ -38,7 +38,7 @@ for (const featureFile of fs.readdirSync(fixtureFeaturesDirectory)) {
 
       // check uniqueness of id
       if (fixtureFeature.id in featuresUsed) {
-        console.error(`${chalk.red(`[Error]`)} Fixture feature id '${fixtureFeature.id}' is used multiple times.`);
+        console.error(chalk.red(`[Error]`), `Fixture feature id '${fixtureFeature.id}' is used multiple times.`);
         process.exit(1);
       }
 
@@ -109,19 +109,19 @@ for (const fixture of fixtures) {
 
 fs.writeFile(jsonFile, `${JSON.stringify(fixtures, null, 2)}\n`, `utf8`, error => {
   if (error) {
-    console.error(`${chalk.red(`[Fail]`)} Could not write test-fixtures.json`, error);
+    console.error(chalk.red(`[Fail]`), `Could not write test-fixtures.json`, error);
   }
   else {
-    console.log(`${chalk.green(`[Success]`)} Updated ${jsonFile}`);
+    console.log(chalk.green(`[Success]`), `Updated ${jsonFile}`);
   }
 });
 
 fs.writeFile(markdownFile, getMarkdownCode(), `utf8`, error => {
   if (error) {
-    console.error(`${chalk.red(`[Fail]`)} Could not write test-fixtures.md`, error);
+    console.error(chalk.red(`[Fail]`), `Could not write test-fixtures.md`, error);
   }
   else {
-    console.log(`${chalk.green(`[Success]`)} Updated ${markdownFile}`);
+    console.log(chalk.green(`[Success]`), `Updated ${markdownFile}`);
   }
 });
 

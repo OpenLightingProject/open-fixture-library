@@ -25,7 +25,7 @@ const schemaFiles = process.argv.length > 2
         dereferencedSchemaFile,
         `${JSON.stringify(dereferencedSchema, null, 2)}\n`,
       );
-      console.log(`${chalk.green(`[Success]`)} Updated dereferenced schema ${dereferencedSchemaFile}.`);
+      console.log(chalk.green(`[Success]`), `Updated dereferenced schema ${dereferencedSchemaFile}.`);
     }
     catch (error) {
       console.error(chalk.red(`[Error]`), error);

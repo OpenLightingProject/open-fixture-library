@@ -54,9 +54,9 @@ const fileContents = `${JSON.stringify(register.getAsSortedObject(), null, 2)}\n
 
 fs.writeFile(filename, fileContents, `utf8`, error => {
   if (error) {
-    console.error(`${chalk.red(`[Fail]`)} Could not write register file.`, error);
+    console.error(chalk.red(`[Fail]`), `Could not write register file.`, error);
     process.exit(1);
   }
-  console.log(`${chalk.green(`[Success]`)} Updated register file ${filename}`);
+  console.log(chalk.green(`[Success]`), `Updated register file`, filename);
   process.exit(0);
 });
