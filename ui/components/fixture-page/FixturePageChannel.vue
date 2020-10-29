@@ -77,7 +77,7 @@
           name="channel-fineChannelAliases"
           label="Fine channels">
           {{ channel.fineChannels.slice(0, resolutionInMode - 1).map(
-            fineChannel => `${fineChannel.name} (channel&nbsp;${mode.getChannelIndex(fineChannel) + 1})`,
+            fineChannel => `${fineChannel.name} (channel&nbsp;${mode.getChannelIndex(fineChannel.key) + 1})`,
           ).join(`, `) }}
         </LabeledValue>
 

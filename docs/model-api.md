@@ -1619,7 +1619,7 @@ A fixture's configuration that enables a fixed set of channels and channel order
     * [.channels](#Mode+channels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
     * [._getMatrixChannelKeysFromInsertBlock(channelInsert)](#Mode+_getMatrixChannelKeysFromInsertBlock) ⇒ <code>Array.&lt;String&gt;</code> ℗
     * [._getRepeatForPixelKeys(repeatFor)](#Mode+_getRepeatForPixelKeys) ⇒ <code>Array.&lt;String&gt;</code> ℗
-    * [.getChannelIndex(channel, [switchingChannelBehavior])](#Mode+getChannelIndex) ⇒ <code>Number</code>
+    * [.getChannelIndex(channelKey, [switchingChannelBehavior])](#Mode+getChannelIndex) ⇒ <code>Number</code>
 
 <a name="new_Mode_new"></a>
 
@@ -1737,13 +1737,13 @@ Resolves `repeatFor` keywords into a list of pixel (group) keys or just returns 
 
 <a name="Mode+getChannelIndex"></a>
 
-### mode.getChannelIndex(channel, [switchingChannelBehavior]) ⇒ <code>Number</code>
+### mode.getChannelIndex(channelKey, [switchingChannelBehavior]) ⇒ <code>Number</code>
 **Kind**: instance method of [<code>Mode</code>](#Mode)  
 **Returns**: <code>Number</code> - The index of the given channel in this mode or -1 if not found.  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| channel | <code>String</code> \| [<code>AbstractChannel</code>](#AbstractChannel) |  | Either a channel key or a Channel object. |
+| channelKey | <code>String</code> |  | The key of the channel to get the index for. |
 | [switchingChannelBehavior] | [<code>SwitchingChannelBehavior</code>](#SwitchingChannelBehavior) | <code>&#x27;all&#x27;</code> | Controls how switching channels are counted, see [usesChannelKey](#SwitchingChannel+usesChannelKey) for possible values. |
 
 <a name="NullChannel"></a>

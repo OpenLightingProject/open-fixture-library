@@ -89,7 +89,7 @@ function addAttribute(xml, mode, attribute, channels) {
           '@id': getDefaultValue(getUsableChannel(channel)),
         },
         addressIndex: {
-          '@id': mode.getChannelIndex(channel),
+          '@id': mode.getChannelIndex(channel.key),
         },
         parameterName: {
           '@id': getParameterName(),

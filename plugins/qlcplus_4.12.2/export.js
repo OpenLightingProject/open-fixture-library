@@ -293,7 +293,7 @@ function addCapabilityAliases(xmlCapability, cap) {
     }
 
     const modesContainingSwitchingChannel = fixture.modes.filter(
-      mode => mode.getChannelIndex(switchingChannel) !== -1,
+      mode => mode.getChannelIndex(switchingChannel.key) !== -1,
     );
 
     for (const mode of modesContainingSwitchingChannel) {

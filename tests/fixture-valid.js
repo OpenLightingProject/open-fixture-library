@@ -812,7 +812,7 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
       }
 
       // if earliest occurrence (including switching channels) is not this one
-      if (mode.getChannelIndex(channel, `all`) < chIndex) {
+      if (mode.getChannelIndex(channel.key, `all`) < chIndex) {
         result.errors.push(`Channel '${channel.key}' is referenced more than once from mode '${mode.shortName}' (maybe through switching channels).`);
       }
 
@@ -828,7 +828,7 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
        */
       function checkSwitchingChannelReference() {
         // the mode must also contain the trigger channel
-        if (mode.getChannelIndex(channel.triggerChannel) === -1) {
+        if (mode.getChannelIndex(channel.triggerChannel.key) === -1) {
           result.errors.push(`mode '${mode.shortName}' uses switching channel '${channel.key}' but is missing its trigger channel '${channel.triggerChannel.key}'`);
         }
 
@@ -845,7 +845,7 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
           }
         }
 
-        for (let index = 0; index < mode.getChannelIndex(channel); index++) {
+        for (let index = 0; index < mode.getChannelIndex(channel.key); index++) {
           const otherChannel = mode.channels[index];
           checkSwitchingChannelReferenceDuplicate(otherChannel);
         }

@@ -223,7 +223,7 @@ function getColorSourceChannels(mode, hasIntensity) {
     channelJson.fadeWithIntensity = channel.type === `Single Color` && hasIntensity;
 
     const fineChannel16bit = channel.fineChannels[0];
-    const fineChannelIndex = mode.getChannelIndex(fineChannel16bit || {}, `default`);
+    const fineChannelIndex = fineChannel16bit ? mode.getChannelIndex(fineChannel16bit.key, `default`) : -1;
     if (fineChannelIndex !== -1) {
       channelJson.fine = fineChannelIndex;
       channelJson.size = 16;
