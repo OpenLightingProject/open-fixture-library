@@ -100,6 +100,7 @@ const enabledRuleParameters = {
   'promise/valid-params': [],
 
   // eslint-plugin-unicorn
+  'unicorn/numeric-separators-style': [],
   'unicorn/prevent-abbreviations': [{
     replacements: {
       ref: false,
@@ -222,7 +223,7 @@ module.exports = {
     node: true,
   },
   parserOptions: {
-    ecmaVersion: 2019,
+    ecmaVersion: 2021,
   },
   plugins: [
     `array-func`,

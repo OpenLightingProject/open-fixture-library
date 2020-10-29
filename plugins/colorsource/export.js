@@ -175,7 +175,7 @@ function getColorSourceChannels(mode, hasIntensity) {
       coarse: channelIndex,
       fadeWithIntensity: false,
       fine: null,
-      highlight: 65535,
+      highlight: 65_535,
       home: 0,
       invert: false,
       name,
