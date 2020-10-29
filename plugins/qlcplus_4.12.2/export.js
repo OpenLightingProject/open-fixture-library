@@ -529,12 +529,12 @@ function getFixtureType(fixture) {
     // see https://github.com/OpenLightingProject/open-fixture-library/issues/581
     'Pixel Bar': isBeamBar() ? `LED Bar (Beams)` : `LED Bar (Pixels)`,
   };
-  const ignoredCats = [`Blinder`, `Matrix`, `Stand`];
+  const ignoredCats = new Set([`Blinder`, `Matrix`, `Stand`]);
 
   return fixture.categories.map(
     cat => (cat in replaceCats ? replaceCats[cat] : cat),
   ).find(
-    cat => !ignoredCats.includes(cat),
+    cat => !ignoredCats.has(cat),
   ) || `Other`;
 
 

@@ -79,10 +79,10 @@ function getDowngradedCategories(categories) {
   const replaceCats = {
     'Barrel Scanner': `Effect`,
   };
-  const ignoredCats = [`Pixel Bar`, `Stand`];
+  const ignoredCats = new Set([`Pixel Bar`, `Stand`]);
 
   const downgradedCategories = categories.map(cat => {
-    if (ignoredCats.includes(cat)) {
+    if (ignoredCats.has(cat)) {
       return null;
     }
 

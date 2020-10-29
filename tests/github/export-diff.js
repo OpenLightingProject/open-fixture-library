@@ -86,8 +86,8 @@ const testFixtures = require(`../test-fixtures.json`).map(
  */
 function getDiffTasks(changedComponents) {
   const usablePlugins = exportPlugins.filter(plugin => !changedComponents.added.exports.includes(plugin));
-  const addedFixtures = changedComponents.added.fixtures.map(([man, key]) => `${man}/${key}`);
-  const usableTestFixtures = testFixtures.filter(testFixture => !addedFixtures.includes(testFixture));
+  const addedFixtures = new Set(changedComponents.added.fixtures.map(([man, key]) => `${man}/${key}`));
+  const usableTestFixtures = testFixtures.filter(testFixture => !addedFixtures.has(testFixture));
 
   /** @type {Array.<Task>} */
   return getTasksForModel().concat(getTasksForPlugins(), getTasksForFixtures())

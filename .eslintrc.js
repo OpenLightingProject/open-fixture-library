@@ -175,12 +175,12 @@ const vueCoreExtensionRules = [
   `template-curly-spacing`,
 ];
 
-const warnRules = [
+const warnRules = new Set([
   `complexity`,
   `no-loop-func`,
   `jsdoc/require-jsdoc`,
   `vue/no-mutating-props`,
-];
+]);
 
 const disabledRules = [
   `no-console`,
@@ -245,7 +245,7 @@ module.exports = {
     ...Object.fromEntries(
       Object.entries(enabledRuleParams).map(([ruleName, params]) => [
         ruleName,
-        [warnRules.includes(ruleName) ? `warn` : `error`, ...params],
+        [warnRules.has(ruleName) ? `warn` : `error`, ...params],
       ]),
     ),
     ...Object.fromEntries(

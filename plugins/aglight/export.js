@@ -8,8 +8,8 @@ const { Entity, NullChannel } = require(`../../lib/model.js`);
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 
 const manufacturers = require(`../../fixtures/manufacturers.json`);
-const units = [`K`, `deg`, `%`, `ms`, `Hz`, `m^3/min`, `rpm`];
-const excludeKeys = [`comment`, `name`, `helpWanted`, `type`, `effectName`, `effectPreset`, `shutterEffect`, `wheel`, `isShaking`, `fogType`, `menuClick`];
+const units = new Set([`K`, `deg`, `%`, `ms`, `Hz`, `m^3/min`, `rpm`]);
+const excludeKeys = new Set([`comment`, `name`, `helpWanted`, `type`, `effectName`, `effectPreset`, `shutterEffect`, `wheel`, `isShaking`, `fogType`, `menuClick`]);
 
 module.exports.version = `1.0.0`;
 
@@ -110,7 +110,7 @@ function transformNonNumericValues(fixtureJson) {
         if (key === `color`) {
           processColor(capability);
         }
-        else if (typeof value === `string` && !excludeKeys.includes(key)) {
+        else if (typeof value === `string` && !excludeKeys.has(key)) {
           capability[key] = getEntityNumber(value);
         }
       }
@@ -147,7 +147,7 @@ function transformNonNumericValues(fixtureJson) {
         return entity.number * 1000;
       }
 
-      if (units.includes(entity.unit)) {
+      if (units.has(entity.unit)) {
         return entity.number;
       }
     }

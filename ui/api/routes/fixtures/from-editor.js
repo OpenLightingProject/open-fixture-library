@@ -156,11 +156,11 @@ function getFixtureCreateResult(fixtures) {
 
     let fixKey = slugify(fixture.name);
 
-    const otherFixtureKeys = Object.keys(result.fixtures).filter(
+    const otherFixtureKeys = new Set(Object.keys(result.fixtures).filter(
       key => key.startsWith(manKey),
-    ).map(key => key.slice(manKey.length + 1));
+    ).map(key => key.slice(manKey.length + 1)));
 
-    while (otherFixtureKeys.includes(fixKey)) {
+    while (otherFixtureKeys.has(fixKey)) {
       fixKey += `-2`;
     }
 
