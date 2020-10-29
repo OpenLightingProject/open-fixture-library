@@ -18,8 +18,8 @@
           <span class="last-modify-date">Last modified:&nbsp;<OflTime :date="fixture.meta.lastModifyDate" /></span>
           <span class="create-date">Created:&nbsp;<OflTime :date="fixture.meta.createDate" /></span>
           <span class="authors">Author{{ fixture.meta.authors.length === 1 ? `` : `s` }}:&nbsp;{{ fixture.meta.authors.join(`, `) }}</span>
-          <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manufacturerKey}/${fixKey}.json`">Source</a></span>
-          <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manufacturerKey}/${fixKey}.json`">Revisions</a></span>
+          <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Source</a></span>
+          <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Revisions</a></span>
 
           <ConditionalDetails v-if="fixture.meta.importPlugin !== null">
             <template #summary>
@@ -30,7 +30,7 @@
         </section>
       </div>
 
-      <DownloadButton :fixture-key="`${manufacturerKey}/${fixKey}`" />
+      <DownloadButton :fixture-key="`${manufacturerKey}/${fixtureKey}`" />
     </header>
 
     <section v-if="redirect" class="card yellow">
@@ -110,16 +110,16 @@ export default {
   },
   async asyncData({ params, query, $axios, redirect, error }) {
     const manufacturerKey = params.manufacturerKey;
-    const fixKey = params.fixtureKey;
+    const fixtureKey = params.fixtureKey;
 
-    const redirectTo = register.filesystem[`${manufacturerKey}/${fixKey}`].redirectTo;
+    const redirectTo = register.filesystem[`${manufacturerKey}/${fixtureKey}`].redirectTo;
     if (redirectTo) {
-      return redirect(302, `/${redirectTo}?redirectFrom=${manufacturerKey}/${fixKey}`);
+      return redirect(302, `/${redirectTo}?redirectFrom=${manufacturerKey}/${fixtureKey}`);
     }
 
     try {
       const [fixtureJson, plugins] = await Promise.all([
-        $axios.$get(`/${manufacturerKey}/${fixKey}.json`),
+        $axios.$get(`/${manufacturerKey}/${fixtureKey}.json`),
         $axios.$get(`/api/v1/plugins`),
       ]);
 
@@ -137,7 +137,7 @@ export default {
         isBrowser: false,
         plugins,
         manufacturerKey,
-        fixKey,
+        fixtureKey,
         fixtureJson,
         redirect: redirectObject,
         loadAllModes: `loadAllModes` in query,
@@ -164,7 +164,7 @@ export default {
   },
   computed: {
     fixture() {
-      return new Fixture(this.manufacturerKey, this.fixKey, this.fixtureJson);
+      return new Fixture(this.manufacturerKey, this.fixtureKey, this.fixtureJson);
     },
     productModelStructuredData() {
       const data = {
@@ -230,7 +230,7 @@ export default {
       return process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || `master`;
     },
     mailtoUrl() {
-      const subject = `Feedback for fixture '${this.manufacturerKey}/${this.fixKey}'`;
+      const subject = `Feedback for fixture '${this.manufacturerKey}/${this.fixtureKey}'`;
       return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}`;
     },
   },

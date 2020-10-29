@@ -63,7 +63,7 @@ app.get(`/download.:format([a-z0-9_.-]+)`, (request, response, next) => {
   }
 
   const fixtures = Object.keys(register.filesystem).filter(
-    fixKey => !(`redirectTo` in register.filesystem[fixKey]) || register.filesystem[fixKey].reason === `SameAsDifferentBrand`,
+    fixtureKey => !(`redirectTo` in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === `SameAsDifferentBrand`,
   ).map(fixture => {
     const [manufacturer, key] = fixture.split(`/`);
     return fixtureFromRepository(manufacturer, key);
@@ -85,7 +85,7 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
 
   const outObject = request.body;
   const fixtures = Object.entries(outObject.fixtures).map(([key, jsonObject]) => {
-    const [manufacturerKey, fixKey] = key.split(`/`);
+    const [manufacturerKey, fixtureKey] = key.split(`/`);
 
     const manufacturer = manufacturerKey in outObject.manufacturers
       ? new Manufacturer(manufacturerKey, outObject.manufacturers[manufacturerKey])
@@ -93,7 +93,7 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
 
     embedResourcesIntoFixtureJson(jsonObject);
 
-    return new Fixture(manufacturer, fixKey, jsonObject);
+    return new Fixture(manufacturer, fixtureKey, jsonObject);
   });
 
   let zipName;
@@ -110,17 +110,17 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
   downloadFixtures(response, format, fixtures, zipName, errorDesc);
 });
 
-app.get(`/:manufacturerKey/:fixKey.:format([a-z0-9_.-]+)`, async (request, response, next) => {
-  const { manufacturerKey, fixKey, format } = request.params;
+app.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request, response, next) => {
+  const { manufacturerKey, fixtureKey, format } = request.params;
 
-  if (!(`${manufacturerKey}/${fixKey}` in register.filesystem)) {
+  if (!(`${manufacturerKey}/${fixtureKey}` in register.filesystem)) {
     next();
     return;
   }
 
   if (format === `json`) {
     try {
-      const data = await readFile(`./fixtures/${manufacturerKey}/${fixKey}.json`, `utf8`);
+      const data = await readFile(`./fixtures/${manufacturerKey}/${fixtureKey}.json`, `utf8`);
       const json = JSON.parse(data);
       embedResourcesIntoFixtureJson(json);
       response.json(json);
@@ -128,7 +128,7 @@ app.get(`/:manufacturerKey/:fixKey.:format([a-z0-9_.-]+)`, async (request, respo
     catch (error) {
       response
         .status(500)
-        .send(`Fetching ${manufacturerKey}/${fixKey}.json failed: ${error.toString()}`);
+        .send(`Fetching ${manufacturerKey}/${fixtureKey}.json failed: ${error.toString()}`);
     }
     return;
   }
@@ -138,9 +138,9 @@ app.get(`/:manufacturerKey/:fixKey.:format([a-z0-9_.-]+)`, async (request, respo
     return;
   }
 
-  const fixtures = [fixtureFromRepository(manufacturerKey, fixKey)];
-  const zipName = `${manufacturerKey}_${fixKey}_${format}`;
-  const errorDesc = `fixture ${manufacturerKey}/${fixKey}`;
+  const fixtures = [fixtureFromRepository(manufacturerKey, fixtureKey)];
+  const zipName = `${manufacturerKey}_${fixtureKey}_${format}`;
+  const errorDesc = `fixture ${manufacturerKey}/${fixtureKey}`;
 
   downloadFixtures(response, format, fixtures, zipName, errorDesc);
 });

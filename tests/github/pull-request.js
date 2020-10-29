@@ -240,7 +240,7 @@ module.exports.updateComment = async function updateComment(test) {
 module.exports.getTestFixturesMessage = function getTestFixturesMessage(fixtures) {
   return [
     `Tested with the following minimal collection of [test fixtures](https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/fixture-features.md) that cover all fixture features:`,
-    ...fixtures.map(fix => `- ${fix}`),
+    ...fixtures.map(fixture => `- ${fixture}`),
     ``,
   ];
 };

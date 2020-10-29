@@ -49,8 +49,8 @@ let fixtures;
 if (cliArguments.a) {
   const register = require(`../fixtures/register.json`);
   fixtures = Object.keys(register.filesystem).filter(
-    fixKey => !(`redirectTo` in register.filesystem[fixKey]) || register.filesystem[fixKey].reason === `SameAsDifferentBrand`,
-  ).map(fixKey => fixKey.split(`/`));
+    fixtureKey => !(`redirectTo` in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === `SameAsDifferentBrand`,
+  ).map(fixtureKey => fixtureKey.split(`/`));
 }
 else {
   fixtures = cliArguments._.map(relativePath => {
@@ -68,7 +68,7 @@ const outDirectory = cliArguments.o ? path.resolve(process.cwd(), cliArguments.o
   try {
     const plugin = require(path.join(__dirname, `../plugins`, cliArguments.plugin, `export.js`));
     const files = await plugin.export(
-      fixtures.map(([manufacturer, fix]) => fixtureFromRepository(manufacturer, fix)),
+      fixtures.map(([manufacturer, fixture]) => fixtureFromRepository(manufacturer, fixture)),
       {
         baseDirectory: path.join(__dirname, `..`),
         date: new Date(),

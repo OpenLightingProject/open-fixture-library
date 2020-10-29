@@ -66,13 +66,13 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
       name: ecueFixture.$.Name,
     };
 
-    let fixKey = `${manufacturerKey}/${slugify(fixture.name)}`;
-    if (fixKey in out.fixtures) {
-      fixKey += `-${Math.random().toString(36).slice(2, 7)}`;
-      out.warnings[fixKey] = [`Fixture key '${fixKey}' is not unique, appended random characters.`];
+    let fixtureKey = `${manufacturerKey}/${slugify(fixture.name)}`;
+    if (fixtureKey in out.fixtures) {
+      fixtureKey += `-${Math.random().toString(36).slice(2, 7)}`;
+      out.warnings[fixtureKey] = [`Fixture key '${fixtureKey}' is not unique, appended random characters.`];
     }
     else {
-      out.warnings[fixKey] = [];
+      out.warnings[fixtureKey] = [];
     }
 
     if (ecueFixture.$.NameShort !== ``) {
@@ -80,7 +80,7 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
     }
 
     fixture.categories = [`Other`];
-    out.warnings[fixKey].push(`Please specify categories.`);
+    out.warnings[fixtureKey].push(`Please specify categories.`);
 
     fixture.meta = {
       authors: [authorName],
@@ -111,10 +111,10 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
     }];
 
     for (const ecueChannel of getCombinedEcueChannels(ecueFixture)) {
-      addChannelToFixture(ecueChannel, fixture, out.warnings[fixKey]);
+      addChannelToFixture(ecueChannel, fixture, out.warnings[fixtureKey]);
     }
 
-    out.fixtures[fixKey] = fixture;
+    out.fixtures[fixtureKey] = fixture;
   }
 };
 

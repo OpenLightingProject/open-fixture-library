@@ -38,12 +38,12 @@ const redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
 /**
  * Checks that a given fixture JSON object is valid.
  * @param {String} manufacturerKey The manufacturer key.
- * @param {String} fixKey The fixture key.
+ * @param {String} fixtureKey The fixture key.
  * @param {Object|null} fixtureJson The fixture JSON object.
  * @param {UniqueValues|null} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
  * @returns {ResultData} The result object containing errors and warnings, if any.
  */
-function checkFixture(manufacturerKey, fixKey, fixtureJson, uniqueValues = null) {
+function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = null) {
   /**
    * @typedef {Object} ResultData
    * @property {Array.<String>} errors All errors of this fixture.
@@ -94,9 +94,9 @@ function checkFixture(manufacturerKey, fixKey, fixtureJson, uniqueValues = null)
   }
 
   try {
-    fixture = new Fixture(manufacturerKey, fixKey, fixtureJson);
+    fixture = new Fixture(manufacturerKey, fixtureKey, fixtureJson);
 
-    checkFixIdentifierUniqueness();
+    checkFixtureIdentifierUniqueness();
     checkMeta(fixture.meta);
     checkPhysical(fixture.physical);
     checkMatrix(fixture.matrix);
@@ -136,13 +136,13 @@ function checkFixture(manufacturerKey, fixKey, fixtureJson, uniqueValues = null)
       result.errors.push(`'redirectTo' is not a valid fixture.`);
     }
 
-    result.name = `${manufacturerKey}/${fixKey}.json (redirect)`;
+    result.name = `${manufacturerKey}/${fixtureKey}.json (redirect)`;
   }
 
   /**
    * Checks that fixture key, name and shortName are unique.
    */
-  function checkFixIdentifierUniqueness() {
+  function checkFixtureIdentifierUniqueness() {
     // test is called for a single fixture, e.g. when importing
     if (uniqueValues === null) {
       return;

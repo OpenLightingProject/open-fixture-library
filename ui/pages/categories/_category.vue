@@ -61,17 +61,17 @@ export default {
     };
   },
   created() {
-    this.fixtures = register.categories[this.categoryName].map(fixtureKey => {
-      const [manufacturerKey, fixKey] = fixtureKey.split(`/`);
+    this.fixtures = register.categories[this.categoryName].map(fullFixtureKey => {
+      const [manufacturerKey, fixtureKey] = fullFixtureKey.split(`/`);
       const manufacturerName = this.manufacturers[manufacturerKey].name;
-      const fixtureName = register.filesystem[`${manufacturerKey}/${fixKey}`].name;
+      const fixtureName = register.filesystem[`${manufacturerKey}/${fixtureKey}`].name;
 
       return {
-        key: fixtureKey,
-        link: `/${fixtureKey}`,
+        key: fullFixtureKey,
+        link: `/${fullFixtureKey}`,
         name: `${manufacturerName} ${fixtureName}`,
         categories: Object.keys(register.categories).filter(
-          cat => register.categories[cat].includes(fixtureKey),
+          cat => register.categories[cat].includes(fullFixtureKey),
         ),
         color: this.manufacturers[manufacturerKey].color,
       };

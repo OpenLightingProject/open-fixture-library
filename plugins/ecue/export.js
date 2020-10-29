@@ -22,15 +22,15 @@ module.exports.export = async function exportECue(fixtures, options) {
   const timestamp = dateToString(options.date);
 
   const manufacturers = {};
-  for (const fix of fixtures) {
-    const manufacturer = fix.manufacturer.key;
+  for (const fixture of fixtures) {
+    const manufacturer = fixture.manufacturer.key;
     if (!(manufacturer in manufacturers)) {
       manufacturers[manufacturer] = {
-        data: fix.manufacturer,
+        data: fixture.manufacturer,
         fixtures: [],
       };
     }
-    manufacturers[manufacturer].fixtures.push(fix);
+    manufacturers[manufacturer].fixtures.push(fixture);
   }
 
   const xml = xmlbuilder.create(
@@ -90,15 +90,15 @@ module.exports.export = async function exportECue(fixtures, options) {
  * @param {Fixture} fixture The OFL fixture object.
  */
 function addFixture(xmlManufacturer, fixture) {
-  const fixCreationDate = dateToString(fixture.meta.createDate);
-  const fixModifiedDate = dateToString(fixture.meta.lastModifyDate);
+  const fixtureCreationDate = dateToString(fixture.meta.createDate);
+  const fixtureModifiedDate = dateToString(fixture.meta.lastModifyDate);
 
   for (const mode of fixture.modes) {
     const physical = mode.physical || new Physical({});
 
     const xmlFixture = xmlManufacturer.element(`Fixture`, {
-      '_CreationDate': fixCreationDate,
-      '_ModifiedDate': fixModifiedDate,
+      '_CreationDate': fixtureCreationDate,
+      '_ModifiedDate': fixtureModifiedDate,
       'Name': fixture.name + (fixture.modes.length > 1 ? ` (${mode.shortName} mode)` : ``),
       'NameShort': fixture.shortName + (fixture.modes.length > 1 ? `-${mode.shortName}` : ``),
       'Comment': getFixtureComment(fixture),

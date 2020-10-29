@@ -62,18 +62,18 @@ const uniqueValues = {
 };
 
 const promises = [];
-const fixturePath = path.join(__dirname, `..`, `fixtures`);
+const fixtureDirectory = path.join(__dirname, `..`, `fixtures`);
 
 if (cliArguments.a) {
-  for (const manufacturerKey of fs.readdirSync(fixturePath)) {
-    const manufacturersDirectory = path.join(fixturePath, manufacturerKey);
+  for (const manufacturerKey of fs.readdirSync(fixtureDirectory)) {
+    const manufacturersDirectory = path.join(fixtureDirectory, manufacturerKey);
 
     // files in manufacturer directory
     if (fs.statSync(manufacturersDirectory).isDirectory()) {
       for (const file of fs.readdirSync(manufacturersDirectory)) {
         if (path.extname(file) === `.json`) {
-          const fixKey = path.basename(file, `.json`);
-          promises.push(checkFixtureFile(manufacturerKey, fixKey));
+          const fixtureKey = path.basename(file, `.json`);
+          promises.push(checkFixtureFile(manufacturerKey, fixtureKey));
         }
       }
     }
@@ -83,42 +83,42 @@ if (cliArguments.a) {
 else {
   // sanitize given path
   fixturePaths = fixturePaths.map(relativePath => path.resolve(relativePath));
-  for (const fixPath of fixturePaths) {
-    if (path.extname(fixPath) !== `.json`) {
+  for (const fixturePath of fixturePaths) {
+    if (path.extname(fixturePath) !== `.json`) {
       // TODO: only produce this warning at a higher verbosity level
       promises.push({
-        name: fixPath,
+        name: fixturePath,
         errors: [],
         warnings: [`specified file is not a .json document`],
       });
       continue;
     }
-    const fixKey = path.basename(fixPath, `.json`);
-    const manufacturerKey = path.dirname(fixPath).split(path.sep).pop();
-    promises.push(checkFixtureFile(manufacturerKey, fixKey));
+    const fixtureKey = path.basename(fixturePath, `.json`);
+    const manufacturerKey = path.dirname(fixturePath).split(path.sep).pop();
+    promises.push(checkFixtureFile(manufacturerKey, fixtureKey));
   }
 }
 
 /**
  * Checks (asynchronously) the given fixture.
  * @param {String} manufacturerKey The manufacturer key.
- * @param {String} fixKey The fixture key.
+ * @param {String} fixtureKey The fixture key.
  * @returns {Promise.<Object>} A Promise resolving to a result object.
  */
-async function checkFixtureFile(manufacturerKey, fixKey) {
-  const filename = `${manufacturerKey}/${fixKey}.json`;
+async function checkFixtureFile(manufacturerKey, fixtureKey) {
+  const filename = `${manufacturerKey}/${fixtureKey}.json`;
   const result = {
     name: filename,
     errors: [],
     warnings: [],
   };
 
-  const filepath = path.join(fixturePath, filename);
+  const filepath = path.join(fixtureDirectory, filename);
 
   try {
     const data = await readFile(filepath, `utf8`);
     const fixtureJson = JSON.parse(data);
-    Object.assign(result, checkFixture(manufacturerKey, fixKey, fixtureJson, uniqueValues));
+    Object.assign(result, checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues));
   }
   catch (error) {
     result.errors.push(error);
@@ -136,7 +136,7 @@ async function checkManufacturers() {
     warnings: [],
   };
 
-  const filename = path.join(fixturePath, result.name);
+  const filename = path.join(fixtureDirectory, result.name);
 
   try {
     const data = await readFile(filename, `utf8`);

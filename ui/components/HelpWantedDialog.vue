@@ -146,9 +146,9 @@ export default {
       }
       else {
         const manufacturerKey = this.fixture.manufacturer.key;
-        const fixKey = this.fixture.key;
+        const fixtureKey = this.fixture.key;
 
-        sendObject.context = `${manufacturerKey}/${fixKey}`;
+        sendObject.context = `${manufacturerKey}/${fixtureKey}`;
       }
 
       return sendObject;

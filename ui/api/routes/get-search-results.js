@@ -28,9 +28,9 @@ function getSearchResults({ request }) {
  */
 function queryMatch(searchQuery, fixtureKey) {
   const manufacturer = fixtureKey.split(`/`)[0];
-  const fixData = register.filesystem[fixtureKey];
+  const fixtureData = register.filesystem[fixtureKey];
 
-  return fixtureKey.includes(searchQuery.toLowerCase()) || `${manufacturers[manufacturer].name} ${fixData.name}`.toLowerCase().includes(searchQuery.toLowerCase());
+  return fixtureKey.includes(searchQuery.toLowerCase()) || `${manufacturers[manufacturer].name} ${fixtureData.name}`.toLowerCase().includes(searchQuery.toLowerCase());
 }
 
 /**

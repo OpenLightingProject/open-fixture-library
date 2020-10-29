@@ -51,8 +51,8 @@ function getFixtureCreateResult(fixtures) {
 
   function addFixture(fixture) {
     const manufacturerKey = getManufacturerKey(fixture);
-    const fixKey = getFixtureKey(fixture, manufacturerKey);
-    const key = `${manufacturerKey}/${fixKey}`;
+    const fixtureKey = getFixtureKey(fixture, manufacturerKey);
+    const key = `${manufacturerKey}/${fixtureKey}`;
 
     result.fixtures[key] = {
       $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
@@ -106,7 +106,7 @@ function getFixtureCreateResult(fixtures) {
     }
 
 
-    const checkResult = checkFixture(manufacturerKey, fixKey, result.fixtures[key]);
+    const checkResult = checkFixture(manufacturerKey, fixtureKey, result.fixtures[key]);
 
     result.warnings[key] = checkResult.warnings;
     result.errors[key] = checkResult.errors;
@@ -154,17 +154,17 @@ function getFixtureCreateResult(fixtures) {
       return fixture.key;
     }
 
-    let fixKey = slugify(fixture.name);
+    let fixtureKey = slugify(fixture.name);
 
     const otherFixtureKeys = new Set(Object.keys(result.fixtures).filter(
       key => key.startsWith(manufacturerKey),
     ).map(key => key.slice(manufacturerKey.length + 1)));
 
-    while (otherFixtureKeys.has(fixKey)) {
-      fixKey += `-2`;
+    while (otherFixtureKeys.has(fixtureKey)) {
+      fixtureKey += `-2`;
     }
 
-    return fixKey;
+    return fixtureKey;
   }
 
   function getPhysical(from) {
@@ -262,7 +262,7 @@ function getFixtureCreateResult(fixtures) {
     });
   }
 
-  function addAvailableChannel(fixKey, availableChannels, chId) {
+  function addAvailableChannel(fixtureKey, availableChannels, chId) {
     const from = availableChannels[chId];
 
     if (`coarseChannelId` in from) {
@@ -297,7 +297,7 @@ function getFixtureCreateResult(fixtures) {
       }
     }
 
-    const chKey = getChannelKey(channel, fixKey);
+    const chKey = getChannelKey(channel, fixtureKey);
 
     if (`fineChannelAliases` in channel) {
       // find all referencing fine channels
@@ -317,12 +317,12 @@ function getFixtureCreateResult(fixtures) {
     }
 
     channelKeyMapping[from.uuid] = chKey;
-    result.fixtures[fixKey].availableChannels[chKey] = channel;
+    result.fixtures[fixtureKey].availableChannels[chKey] = channel;
   }
 
-  function getChannelKey(channel, fixKey) {
+  function getChannelKey(channel, fixtureKey) {
     let chKey = channel.name;
-    const availableChannelKeys = Object.keys(result.fixtures[fixKey].availableChannels);
+    const availableChannelKeys = Object.keys(result.fixtures[fixtureKey].availableChannels);
 
     if (availableChannelKeys.includes(chKey)) {
       let appendNumber = 2;
@@ -363,7 +363,7 @@ function getFixtureCreateResult(fixtures) {
     });
   }
 
-  function addMode(fixKey, from) {
+  function addMode(fixtureKey, from) {
     const mode = {};
 
     for (const property of Object.keys(schemaProperties.mode)) {
@@ -381,7 +381,7 @@ function getFixtureCreateResult(fixtures) {
       }
     }
 
-    result.fixtures[fixKey].modes.push(mode);
+    result.fixtures[fixtureKey].modes.push(mode);
   }
 }
 

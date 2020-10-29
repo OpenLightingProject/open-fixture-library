@@ -29,16 +29,16 @@ try {
         continue;
       }
 
-      const fixKey = path.basename(filename, `.json`);
-      const fixData = JSON.parse(fs.readFileSync(path.join(fixturePath, manufacturerKey, filename), `utf8`));
+      const fixtureKey = path.basename(filename, `.json`);
+      const fixtureData = JSON.parse(fs.readFileSync(path.join(fixturePath, manufacturerKey, filename), `utf8`));
 
-      if (fixData.$schema.endsWith(`/fixture-redirect.json`)) {
-        const redirectToData = JSON.parse(fs.readFileSync(path.join(fixturePath, `${fixData.redirectTo}.json`), `utf8`));
+      if (fixtureData.$schema.endsWith(`/fixture-redirect.json`)) {
+        const redirectToData = JSON.parse(fs.readFileSync(path.join(fixturePath, `${fixtureData.redirectTo}.json`), `utf8`));
 
-        register.addFixtureRedirect(manufacturerKey, fixKey, fixData, redirectToData);
+        register.addFixtureRedirect(manufacturerKey, fixtureKey, fixtureData, redirectToData);
       }
       else {
-        register.addFixture(manufacturerKey, fixKey, fixData);
+        register.addFixture(manufacturerKey, fixtureKey, fixtureData);
       }
     }
   }

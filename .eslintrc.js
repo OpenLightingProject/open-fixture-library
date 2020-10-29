@@ -105,6 +105,7 @@ const enabledRuleParameters = {
       ref: false,
       env: false,
       man: { manufacturer: true },
+      fix: { fixture: true },
     },
   }],
 

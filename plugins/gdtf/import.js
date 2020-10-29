@@ -49,7 +49,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
   fixture.shortName = gdtfFixture.$.ShortName;
 
   const manufacturerKey = slugify(gdtfFixture.$.Manufacturer);
-  const fixKey = `${manufacturerKey}/${slugify(fixture.name)}`;
+  const fixtureKey = `${manufacturerKey}/${slugify(fixture.name)}`;
 
   let manufacturer;
   if (manufacturerKey in manufacturers) {
@@ -127,10 +127,10 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       [manufacturerKey]: manufacturer,
     },
     fixtures: {
-      [fixKey]: fixture,
+      [fixtureKey]: fixture,
     },
     warnings: {
-      [fixKey]: warnings,
+      [fixtureKey]: warnings,
     },
   };
 

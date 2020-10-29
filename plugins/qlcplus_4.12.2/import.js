@@ -35,7 +35,7 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
   fixture.name = qlcPlusFixture.Model[0];
 
   const manufacturerKey = slugify(qlcPlusFixture.Manufacturer[0]);
-  const fixKey = `${manufacturerKey}/${slugify(fixture.name)}`;
+  const fixtureKey = `${manufacturerKey}/${slugify(fixture.name)}`;
 
   const manufacturers = {};
   if (!(manufacturerKey in oflManufacturers)) {
@@ -90,10 +90,10 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
   return {
     manufacturers,
     fixtures: {
-      [fixKey]: fixture,
+      [fixtureKey]: fixture,
     },
     warnings: {
-      [fixKey]: warnings,
+      [fixtureKey]: warnings,
     },
   };
 };
@@ -614,10 +614,10 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
 
 /**
  * @param {Object} qlcPlusPhysical The QLC+ mode's physical object.
- * @param {Object|undefined} [oflFixPhysical={}] The OFL fixture's physical object.
+ * @param {Object|undefined} [oflFixturePhysical={}] The OFL fixture's physical object.
  * @returns {Object} The OFL mode's physical object.
  */
-function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
+function getOflPhysical(qlcPlusPhysical, oflFixturePhysical = {}) {
   const physical = {};
 
   addDimensions();
@@ -655,11 +655,11 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
 
     const dimensionsArray = [width, height, depth];
 
-    if (width + height + depth !== 0 && JSON.stringify(dimensionsArray) !== JSON.stringify(oflFixPhysical.dimensions)) {
+    if (width + height + depth !== 0 && JSON.stringify(dimensionsArray) !== JSON.stringify(oflFixturePhysical.dimensions)) {
       physical.dimensions = dimensionsArray;
     }
 
-    if (weight !== 0 && oflFixPhysical.weight !== weight) {
+    if (weight !== 0 && oflFixturePhysical.weight !== weight) {
       physical.weight = weight;
     }
   }
@@ -673,7 +673,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
     }
 
     const power = Number.parseFloat(qlcPlusPhysical.Technical[0].$.PowerConsumption);
-    if (power !== 0 && oflFixPhysical.power !== power) {
+    if (power !== 0 && oflFixturePhysical.power !== power) {
       physical.power = power;
     }
 
@@ -684,7 +684,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
       DMXconnector = `3.5mm stereo jack`;
     }
 
-    if (![``, `Other`, oflFixPhysical.DMXconnector].includes(DMXconnector)) {
+    if (![``, `Other`, oflFixturePhysical.DMXconnector].includes(DMXconnector)) {
       physical.DMXconnector = DMXconnector;
     }
   }
@@ -696,17 +696,17 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
     physical.bulb = {};
 
     const type = qlcPlusPhysical.Bulb[0].$.Type;
-    if (![``, `Other`, getOflFixPhysicalProperty(`bulb`, `type`)].includes(type)) {
+    if (![``, `Other`, getOflFixturePhysicalProperty(`bulb`, `type`)].includes(type)) {
       physical.bulb.type = type;
     }
 
     const colorTemperature = Number.parseFloat(qlcPlusPhysical.Bulb[0].$.ColourTemperature);
-    if (colorTemperature && getOflFixPhysicalProperty(`bulb`, `colorTemperature`) !== colorTemperature) {
+    if (colorTemperature && getOflFixturePhysicalProperty(`bulb`, `colorTemperature`) !== colorTemperature) {
       physical.bulb.colorTemperature = colorTemperature;
     }
 
     const lumens = Number.parseFloat(qlcPlusPhysical.Bulb[0].$.Lumens);
-    if (lumens && getOflFixPhysicalProperty(`bulb`, `lumens`) !== lumens) {
+    if (lumens && getOflFixturePhysicalProperty(`bulb`, `lumens`) !== lumens) {
       physical.bulb.lumens = lumens;
     }
   }
@@ -718,7 +718,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
     physical.lens = {};
 
     const name = qlcPlusPhysical.Lens[0].$.Name;
-    if (![``, `Other`, getOflFixPhysicalProperty(`lens`, `name`)].includes(name)) {
+    if (![``, `Other`, getOflFixturePhysicalProperty(`lens`, `name`)].includes(name)) {
       physical.lens.name = name;
     }
 
@@ -727,7 +727,7 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
     const degreesMinMax = [degMin, degMax];
 
     if ((degMin !== 0 || degMax !== 0)
-      && (JSON.stringify(getOflFixPhysicalProperty(`lens`, `degreesMinMax`)) !== JSON.stringify(degreesMinMax))) {
+      && (JSON.stringify(getOflFixturePhysicalProperty(`lens`, `degreesMinMax`)) !== JSON.stringify(degreesMinMax))) {
       physical.lens.degreesMinMax = degreesMinMax;
     }
   }
@@ -738,22 +738,22 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
    * @param {String} property The property name in the section,
    * @returns {*} The property data, or undefined.
    */
-  function getOflFixPhysicalProperty(section, property) {
-    if (!(section in oflFixPhysical)) {
+  function getOflFixturePhysicalProperty(section, property) {
+    if (!(section in oflFixturePhysical)) {
       return undefined;
     }
 
-    return oflFixPhysical[section][property];
+    return oflFixturePhysical[section][property];
   }
 }
 
 /**
  * @param {Object} qlcPlusMode The QLC+ mode object.
- * @param {Object|undefined} oflFixPhysical The OFL fixture's physical object.
+ * @param {Object|undefined} oflFixturePhysical The OFL fixture's physical object.
  * @param {Array.<String>} warningsArray This fixture's warnings array in the `out` object.
  * @returns {Object} The OFL mode object.
  */
-function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
+function getOflMode(qlcPlusMode, oflFixturePhysical, warningsArray) {
   const mode = {
     name: qlcPlusMode.$.Name.replace(/\s+mode|mode\s+/gi, ``),
   };
@@ -766,7 +766,7 @@ function getOflMode(qlcPlusMode, oflFixPhysical, warningsArray) {
   }
 
   if (`Physical` in qlcPlusMode) {
-    const physical = getOflPhysical(qlcPlusMode.Physical[0], oflFixPhysical);
+    const physical = getOflPhysical(qlcPlusMode.Physical[0], oflFixturePhysical);
 
     if (JSON.stringify(physical) !== `{}`) {
       mode.physical = physical;

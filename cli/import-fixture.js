@@ -46,9 +46,9 @@ if (cliArguments._.length !== 1 || !plugins.importPlugins.includes(cliArguments.
     };
 
     for (const key of Object.keys(result.fixtures)) {
-      const [manufacturerKey, fixKey] = key.split(`/`);
+      const [manufacturerKey, fixtureKey] = key.split(`/`);
 
-      const checkResult = checkFixture(manufacturerKey, fixKey, result.fixtures[key]);
+      const checkResult = checkFixture(manufacturerKey, fixtureKey, result.fixtures[key]);
 
       result.warnings[key] = result.warnings[key].concat(checkResult.warnings);
       result.errors[key] = checkResult.errors;

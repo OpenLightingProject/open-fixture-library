@@ -109,10 +109,10 @@ module.exports.import = async function importPluginName(buffer, fileName, author
 
   // just an example
   const manufacturerKey = `cameo`;
-  const fixKey = `thunder-wash-600-rgb`; // use a sanitized key as it's used as filename!
+  const fixtureKey = `thunder-wash-600-rgb`; // use a sanitized key as it's used as filename!
 
   const fixtureObject = {};
-  out.warnings[`${manufacturerKey}/${fixKey}`] = [];
+  out.warnings[`${manufacturerKey}/${fixtureKey}`] = [];
 
   const fileContent = buffer.toString();
   const couldNotParse = fileContent.includes(`Error`);
@@ -123,10 +123,10 @@ module.exports.import = async function importPluginName(buffer, fileName, author
   fixtureObject.name = `Thunder Wash 600 RGB`;
 
   // Add warning if a necessary property is not included in parsed file
-  out.warnings[`${manufacturerKey}/${fixKey}`].push(`Could not parse categories, please specify them manually.`);
+  out.warnings[`${manufacturerKey}/${fixtureKey}`].push(`Could not parse categories, please specify them manually.`);
 
   // That's the imported fixture
-  out.fixtures[`${manufacturerKey}/${fixKey}`] = fixtureObject;
+  out.fixtures[`${manufacturerKey}/${fixtureKey}`] = fixtureObject;
 
   return out;
 };

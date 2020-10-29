@@ -13,64 +13,64 @@ const { fixtureFromRepository } = require(`../lib/model.js`);
 const register = require(`../fixtures/register.json`);
 const manufacturers = require(`../fixtures/manufacturers.json`);
 
-const fixFeaturesDirectory = path.join(__dirname, `../lib/fixture-features`);
+const fixtureFeaturesDirectory = path.join(__dirname, `../lib/fixture-features`);
 const jsonFile = path.join(__dirname, `../tests/test-fixtures.json`);
 const markdownFile = path.join(__dirname, `../tests/test-fixtures.md`);
 
 
-const fixFeatures = [];
+const fixtureFeatures = [];
 const featuresUsed = {}; // feature id -> times used
-for (const featureFile of fs.readdirSync(fixFeaturesDirectory)) {
+for (const featureFile of fs.readdirSync(fixtureFeaturesDirectory)) {
   if (path.extname(featureFile) === `.js`) {
     // module exports array of fix features
-    const fixFeatureFile = require(path.join(fixFeaturesDirectory, featureFile));
+    const fixtureFeatureFile = require(path.join(fixtureFeaturesDirectory, featureFile));
 
-    for (let index = 0; index < fixFeatureFile.length; index++) {
-      const fixFeature = fixFeatureFile[index];
+    for (let index = 0; index < fixtureFeatureFile.length; index++) {
+      const fixtureFeature = fixtureFeatureFile[index];
 
       // default id
-      if (!(`id` in fixFeature)) {
-        fixFeature.id = path.basename(featureFile, `.js`);
-        if (fixFeatureFile.length > 1) {
-          fixFeature.id += `-${index}`;
+      if (!(`id` in fixtureFeature)) {
+        fixtureFeature.id = path.basename(featureFile, `.js`);
+        if (fixtureFeatureFile.length > 1) {
+          fixtureFeature.id += `-${index}`;
         }
       }
 
       // check uniqueness of id
-      if (fixFeature.id in featuresUsed) {
-        console.error(`${chalk.red(`[Error]`)} Fixture feature id '${fixFeature.id}' is used multiple times.`);
+      if (fixtureFeature.id in featuresUsed) {
+        console.error(`${chalk.red(`[Error]`)} Fixture feature id '${fixtureFeature.id}' is used multiple times.`);
         process.exit(1);
       }
 
-      fixFeatures.push(fixFeature);
-      featuresUsed[fixFeature.id] = 0;
+      fixtureFeatures.push(fixtureFeature);
+      featuresUsed[fixtureFeature.id] = 0;
     }
   }
 }
 
 // check which features each fixture supports
 let fixtures = [];
-for (const manufacturerFix of Object.keys(register.filesystem)) {
-  const [manufacturerKey, fixKey] = manufacturerFix.split(`/`);
+for (const manufacturerFixture of Object.keys(register.filesystem)) {
+  const [manufacturerKey, fixtureKey] = manufacturerFixture.split(`/`);
 
   // pre-process data
-  const fix = fixtureFromRepository(manufacturerKey, fixKey);
-  const fixResult = {
+  const fixture = fixtureFromRepository(manufacturerKey, fixtureKey);
+  const fixtureResult = {
     man: manufacturerKey,
-    key: fixKey,
-    name: fix.name,
+    key: fixtureKey,
+    name: fixture.name,
     features: [],
   };
 
   // check all features
-  for (const fixFeature of fixFeatures) {
-    if (fixFeature.hasFeature(fix)) {
-      fixResult.features.push(fixFeature.id);
-      featuresUsed[fixFeature.id]++;
+  for (const fixtureFeature of fixtureFeatures) {
+    if (fixtureFeature.hasFeature(fixture)) {
+      fixtureResult.features.push(fixtureFeature.id);
+      featuresUsed[fixtureFeature.id]++;
     }
   }
 
-  fixtures.push(fixResult);
+  fixtures.push(fixtureResult);
 }
 
 // first fixtures are more likely to be filtered out, so we start with the ones with the fewest features
@@ -152,17 +152,17 @@ function getMarkdownCode() {
 
   // table body
   const footnotes = [];
-  fixFeatures.forEach((fixFeature, index) => {
-    let line = `**${fixFeature.name}**`;
+  fixtureFeatures.forEach((fixtureFeature, index) => {
+    let line = `**${fixtureFeature.name}**`;
 
-    if (fixFeature.description) {
-      footnotes.push(fixFeature.description);
+    if (fixtureFeature.description) {
+      footnotes.push(fixtureFeature.description);
       const n = footnotes.length;
       line += ` [<sup>[${n}]</sup>](#user-content-footnote-${n})`;
     }
 
     for (const fixture of fixtures) {
-      line += fixture.features.includes(fixFeature.id) ? ` | ✅` : ` | ❌`;
+      line += fixture.features.includes(fixtureFeature.id) ? ` | ✅` : ` | ❌`;
     }
 
     mdLines.push(line);

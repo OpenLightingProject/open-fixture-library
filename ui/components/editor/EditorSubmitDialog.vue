@@ -301,14 +301,14 @@ export default {
         return null;
       }
 
-      const [manufacturerKey, fixKey] = this.previewFixtureKey.split(`/`);
+      const [manufacturerKey, fixtureKey] = this.previewFixtureKey.split(`/`);
 
       let manufacturer = manufacturerKey;
       if (manufacturerKey in this.fixtureCreateResult.manufacturers) {
         manufacturer = new Manufacturer(manufacturerKey, this.fixtureCreateResult.manufacturers[manufacturerKey]);
       }
 
-      return new Fixture(manufacturer, fixKey, this.fixtureCreateResult.fixtures[this.previewFixtureKey]);
+      return new Fixture(manufacturer, fixtureKey, this.fixtureCreateResult.fixtures[this.previewFixtureKey]);
     },
     previewFixtureResults() {
       if (this.previewFixtureKey === null) {
