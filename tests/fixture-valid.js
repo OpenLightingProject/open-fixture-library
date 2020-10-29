@@ -1089,15 +1089,15 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
      * @returns {Boolean} Whether the fixture has the given fog type.
      */
     function isFogType(fogType) {
-      const fogCaps = fixture.capabilities.filter(
+      const fogCapabilities = fixture.capabilities.filter(
         capability => capability.type.startsWith(`Fog`),
       );
 
-      if (fogCaps.length === 0) {
+      if (fogCapabilities.length === 0) {
         return false;
       }
 
-      return fogCaps.some(capability => capability.fogType === fogType) || fogCaps.every(capability => capability.fogType === null);
+      return fogCapabilities.some(capability => capability.fogType === fogType) || fogCapabilities.every(capability => capability.fogType === null);
     }
 
     /**

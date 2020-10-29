@@ -108,6 +108,7 @@ const enabledRuleParameters = {
       fix: { fixture: true },
       ch: { channel: true },
       cap: { capability: true },
+      caps: { capabilities: true },
     },
   }],
 
