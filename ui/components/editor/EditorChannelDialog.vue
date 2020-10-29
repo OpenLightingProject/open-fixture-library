@@ -326,12 +326,13 @@ export default {
           );
 
           const otherFineChannels = modeChannels.filter(
-            ch => `coarseChannelId` in ch && ch.coarseChannelId === channel.coarseChannelId,
+            otherChannel => `coarseChannelId` in otherChannel && otherChannel.coarseChannelId === channel.coarseChannelId,
           );
 
-          const maxFoundResolution = Math.max(constants.RESOLUTION_8BIT, ...otherFineChannels.map(
-            ch => ch.resolution,
-          ));
+          const maxFoundResolution = Math.max(
+            constants.RESOLUTION_8BIT,
+            ...otherFineChannels.map(otherFineChannel => otherFineChannel.resolution),
+          );
 
           if (maxFoundResolution !== channel.resolution - 1) {
             // the finest channel currently used is not its next coarser channel
@@ -586,10 +587,10 @@ export default {
       this.fixture.availableChannels[this.channel.uuid] = getSanitizedChannel(this.channel);
 
       if (previousResolution > this.channel.resolution) {
-        for (const chId of Object.keys(this.fixture.availableChannels)) {
-          const channel = this.fixture.availableChannels[chId];
+        for (const channelId of Object.keys(this.fixture.availableChannels)) {
+          const channel = this.fixture.availableChannels[channelId];
           if (channel.coarseChannelId === this.channel.uuid && channel.resolution > this.channel.resolution) {
-            this.$emit(`remove-channel`, chId);
+            this.$emit(`remove-channel`, channelId);
           }
         }
       }

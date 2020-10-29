@@ -1030,7 +1030,7 @@ A physical DMX device.
     * [.modes](#Fixture+modes) ⇒ [<code>Array.&lt;Mode&gt;</code>](#Mode)
     * [.getLinksOfType(type)](#Fixture+getLinksOfType) ⇒ <code>Array.&lt;String&gt;</code>
     * [.getWheelByName(wheelName)](#Fixture+getWheelByName) ⇒ [<code>Wheel</code>](#Wheel) \| <code>null</code>
-    * [.getTemplateChannelByKey(chKey)](#Fixture+getTemplateChannelByKey) ⇒ [<code>TemplateChannel</code>](#TemplateChannel) \| <code>null</code>
+    * [.getTemplateChannelByKey(channelKey)](#Fixture+getTemplateChannelByKey) ⇒ [<code>TemplateChannel</code>](#TemplateChannel) \| <code>null</code>
     * [.getChannelByKey(key)](#Fixture+getChannelByKey) ⇒ [<code>AbstractChannel</code>](#AbstractChannel) \| <code>null</code>
 
 <a name="new_Fixture_new"></a>
@@ -1296,7 +1296,7 @@ Template channels are used to automatically generate channels.
 
 <a name="Fixture+getTemplateChannelByKey"></a>
 
-### fixture.getTemplateChannelByKey(chKey) ⇒ [<code>TemplateChannel</code>](#TemplateChannel) \| <code>null</code>
+### fixture.getTemplateChannelByKey(channelKey) ⇒ [<code>TemplateChannel</code>](#TemplateChannel) \| <code>null</code>
 Searches the template channel with the given key. Fine and switching template channel aliases *can't* be found.
 
 **Kind**: instance method of [<code>Fixture</code>](#Fixture)  
@@ -1304,7 +1304,7 @@ Searches the template channel with the given key. Fine and switching template ch
 
 | Param | Type | Description |
 | --- | --- | --- |
-| chKey | <code>String</code> | The template channel's key |
+| channelKey | <code>String</code> | The template channel's key |
 
 <a name="Fixture+getChannelByKey"></a>
 
@@ -2373,7 +2373,7 @@ The different behaviors are implemented as different [CoarseChannel](#CoarseChan
     * [.name](#AbstractChannel+name) ⇒ <code>String</code>
     * [.uniqueName](#AbstractChannel+uniqueName) ⇒ <code>String</code>
     * [.pixelKey](#AbstractChannel+pixelKey) ⇒ <code>String</code>
-    * [.usesChannelKey(chKey, [switchingChannelBehavior])](#SwitchingChannel+usesChannelKey) ⇒ <code>Boolean</code>
+    * [.usesChannelKey(channelKey, [switchingChannelBehavior])](#SwitchingChannel+usesChannelKey) ⇒ <code>Boolean</code>
 
 <a name="new_SwitchingChannel_new"></a>
 
@@ -2463,13 +2463,13 @@ Override this method for more sensible implementation.
 **Returns**: <code>String</code> - The key of the pixel (group) that this channel is associated to. Defaults to null.  
 <a name="SwitchingChannel+usesChannelKey"></a>
 
-### switchingChannel.usesChannelKey(chKey, [switchingChannelBehavior]) ⇒ <code>Boolean</code>
+### switchingChannel.usesChannelKey(channelKey, [switchingChannelBehavior]) ⇒ <code>Boolean</code>
 **Kind**: instance method of [<code>SwitchingChannel</code>](#SwitchingChannel)  
 **Returns**: <code>Boolean</code> - Whether this SwitchingChannel contains the given channel key.  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| chKey | <code>String</code> |  | The channel key to search for. |
+| channelKey | <code>String</code> |  | The channel key to search for. |
 | [switchingChannelBehavior] | [<code>SwitchingChannelBehavior</code>](#SwitchingChannelBehavior) | <code>&#x27;all&#x27;</code> | Define which channels to include in the search. |
 
 <a name="TemplateChannel"></a>

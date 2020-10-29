@@ -40,15 +40,15 @@ module.exports.export = async function exportMillumin(fixtures, options) {
 
     if (oflJson.availableChannels) {
       milluminJson.availableChannels = {};
-      Object.entries(oflJson.availableChannels).forEach(([chKey, jsonChannel]) => {
-        milluminJson.availableChannels[chKey] = getDowngradedChannel(chKey, jsonChannel, fixture);
+      Object.entries(oflJson.availableChannels).forEach(([channelKey, jsonChannel]) => {
+        milluminJson.availableChannels[channelKey] = getDowngradedChannel(channelKey, jsonChannel, fixture);
       });
     }
 
     if (oflJson.templateChannels) {
       milluminJson.templateChannels = {};
-      Object.entries(oflJson.templateChannels).forEach(([chKey, jsonChannel]) => {
-        milluminJson.templateChannels[chKey] = getDowngradedChannel(chKey, jsonChannel, fixture);
+      Object.entries(oflJson.templateChannels).forEach(([channelKey, jsonChannel]) => {
+        milluminJson.templateChannels[channelKey] = getDowngradedChannel(channelKey, jsonChannel, fixture);
       });
     }
 
@@ -125,9 +125,9 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
 
   const [panMax, tiltMax] = [`Pan`, `Tilt`].map(panOrTilt => {
     const capabilities = [];
-    fixture.coarseChannels.forEach(ch => {
-      if (ch.capabilities) {
-        capabilities.push(...ch.capabilities);
+    fixture.coarseChannels.forEach(channel => {
+      if (channel.capabilities) {
+        capabilities.push(...channel.capabilities);
       }
     });
 

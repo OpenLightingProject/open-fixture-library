@@ -64,7 +64,7 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
   /** @type {Set.<String>} */
   const usedChannelKeys = new Set(); // and aliases
   /** @type {Set.<String>} */
-  const possibleMatrixChKeys = new Set(); // and aliases
+  const allPossibleMatrixChannelKeys = new Set(); // and aliases
   /** @type {Set.<String>} */
   const usedWheels = new Set();
   /** @type {Set.<String>} */
@@ -346,18 +346,18 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
       const possibleMatrixChannelKeys = templateChannel.possibleMatrixChannelKeys.get(templateKey);
 
       const templateChannelUsed = fixture.allChannelKeys.some(
-        chKey => possibleMatrixChannelKeys.includes(chKey),
+        channelKey => possibleMatrixChannelKeys.includes(channelKey),
       );
       if (!templateChannelUsed) {
         result.warnings.push(`Template channel '${templateKey}' is never used.`);
       }
 
-      for (const chKey of possibleMatrixChannelKeys) {
+      for (const channelKey of possibleMatrixChannelKeys) {
         checkUniqueness(
-          possibleMatrixChKeys,
-          chKey,
+          allPossibleMatrixChannelKeys,
+          channelKey,
           result,
-          `Generated channel key ${chKey} can be produced by multiple template channels (test is not case-sensitive).`,
+          `Generated channel key ${channelKey} can be produced by multiple template channels (test is not case-sensitive).`,
         );
       }
     }
@@ -544,11 +544,11 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
         }
         else {
           switchingChannelAliases.forEach(alias => {
-            const chKey = cap.switchChannels[alias];
-            usedChannelKeys.add(chKey.toLowerCase());
+            const channelKey = cap.switchChannels[alias];
+            usedChannelKeys.add(channelKey.toLowerCase());
 
-            if (channel.fixture.getChannelByKey(chKey) === null) {
-              result.errors.push(`${errorPrefix} references unknown channel '${chKey}'.`);
+            if (channel.fixture.getChannelByKey(channelKey) === null) {
+              result.errors.push(`${errorPrefix} references unknown channel '${channelKey}'.`);
             }
           });
         }
@@ -744,7 +744,7 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
       }
     }
 
-    mode.channelKeys.forEach((chKey, index) => checkModeChannelKey(index));
+    mode.channelKeys.forEach((channelKey, index) => checkModeChannelKey(index));
 
     /**
      * Checks if the given complex channel insert block is valid.
@@ -768,7 +768,7 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
         checkMatrixInsertBlockRepeatFor();
 
         for (const templateKey of matrixInsertBlock.templateChannels) {
-          const templateChannelExists = fixture.templateChannels.some(ch => ch.allTemplateKeys.includes(templateKey));
+          const templateChannelExists = fixture.templateChannels.some(channel => channel.allTemplateKeys.includes(templateKey));
           if (!templateChannelExists) {
             result.errors.push(`Template channel '${templateKey}' doesn't exist.`);
           }
@@ -794,25 +794,25 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
 
     /**
      * Check that a channel reference in a mode is valid.
-     * @param {Number} chIndex The mode's channel index.
+     * @param {Number} channelIndex The mode's channel index.
      */
-    function checkModeChannelKey(chIndex) {
-      const chKey = mode.channelKeys[chIndex];
+    function checkModeChannelKey(channelIndex) {
+      const channelKey = mode.channelKeys[channelIndex];
 
-      if (chKey === null) {
+      if (channelKey === null) {
         return;
       }
 
-      usedChannelKeys.add(chKey.toLowerCase());
+      usedChannelKeys.add(channelKey.toLowerCase());
 
-      const channel = mode.fixture.getChannelByKey(chKey);
+      const channel = mode.fixture.getChannelByKey(channelKey);
       if (channel === null) {
-        result.errors.push(`Channel '${chKey}' is referenced from mode '${mode.shortName}' but is not defined.`);
+        result.errors.push(`Channel '${channelKey}' is referenced from mode '${mode.shortName}' but is not defined.`);
         return;
       }
 
       // if earliest occurrence (including switching channels) is not this one
-      if (mode.getChannelIndex(channel.key, `all`) < chIndex) {
+      if (mode.getChannelIndex(channel.key, `all`) < channelIndex) {
         result.errors.push(`Channel '${channel.key}' is referenced more than once from mode '${mode.shortName}' (maybe through switching channels).`);
       }
 
@@ -883,7 +883,7 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
           else {
             // fail if one of this channel's switchToChannels appears anywhere
             const firstDuplicate = channel.switchToChannels.find(
-              ch => otherChannel.usesChannelKey(ch.key, `all`),
+              switchToChannel => otherChannel.usesChannelKey(switchToChannel.key, `all`),
             );
             if (firstDuplicate !== undefined) {
               result.errors.push(`Channel '${firstDuplicate.key}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
@@ -918,7 +918,7 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
    */
   function checkUnusedChannels() {
     const unused = Array.from(definedChannelKeys).filter(
-      chKey => !usedChannelKeys.has(chKey),
+      channelKey => !usedChannelKeys.has(channelKey),
     );
 
     if (unused.length > 0) {

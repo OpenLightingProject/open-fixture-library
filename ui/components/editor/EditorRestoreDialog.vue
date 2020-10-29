@@ -108,8 +108,8 @@ function getRestoredFixture(fixture) {
     restoredFixture.modes[index].physical = Object.assign(getEmptyPhysical(), mode.physical);
   });
 
-  Object.keys(restoredFixture.availableChannels).forEach(chKey => {
-    restoredFixture.availableChannels[chKey] = getRestoredChannel(restoredFixture.availableChannels[chKey], false);
+  Object.keys(restoredFixture.availableChannels).forEach(channelKey => {
+    restoredFixture.availableChannels[channelKey] = getRestoredChannel(restoredFixture.availableChannels[channelKey], false);
   });
 
   return restoredFixture;

@@ -157,11 +157,11 @@ function getOflMatrix(qlcPlusFixture) {
 
 const slotTypeFunctions = {
   Open: {
-    isSlotType: (cap, chGroup, capPreset) => cap._ === `Open` || cap.$.Res1 === `Others/open.svg` || cap.$.Res === `Others/open.svg`,
+    isSlotType: (cap, channelGroup, capPreset) => cap._ === `Open` || cap.$.Res1 === `Others/open.svg` || cap.$.Res === `Others/open.svg`,
     addSlotProperties: (cap, slot) => {},
   },
   Gobo: {
-    isSlotType: (cap, chGroup, capPreset) => (capPreset ? capPreset === `GoboMacro` : chGroup === `Gobo`),
+    isSlotType: (cap, channelGroup, capPreset) => (capPreset ? capPreset === `GoboMacro` : channelGroup === `Gobo`),
     addSlotProperties: (cap, slot) => {
       const goboResource = cap.$.Res1 || cap.$.Res || null;
       let useResourceName = false;
@@ -189,7 +189,7 @@ const slotTypeFunctions = {
     },
   },
   Color: {
-    isSlotType: (cap, chGroup, capPreset) => (capPreset ? [`ColorMacro`, `ColorDoubleMacro`].includes(capPreset) : chGroup === `Colour`),
+    isSlotType: (cap, channelGroup, capPreset) => (capPreset ? [`ColorMacro`, `ColorDoubleMacro`].includes(capPreset) : channelGroup === `Colour`),
     addSlotProperties: (cap, slot) => {
       slot.name = cap._;
 
@@ -203,7 +203,7 @@ const slotTypeFunctions = {
     },
   },
   Prism: {
-    isSlotType: (cap, chGroup, capPreset) => (capPreset ? capPreset === `PrismEffectOn` : chGroup === `Prism`),
+    isSlotType: (cap, channelGroup, capPreset) => (capPreset ? capPreset === `PrismEffectOn` : channelGroup === `Prism`),
     addSlotProperties: (cap, slot) => {
       slot.name = cap._;
 
@@ -215,7 +215,7 @@ const slotTypeFunctions = {
 
   // default (has to be the last element!)
   Unknown: {
-    isSlotType: (cap, chGroup, capPreset) => true,
+    isSlotType: (cap, channelGroup, capPreset) => true,
     addSlotProperties: (cap, slot) => {
       slot.name = cap._;
     },
@@ -774,8 +774,8 @@ function getOflMode(qlcPlusMode, oflFixturePhysical, warningsArray) {
   }
 
   mode.channels = [];
-  for (const ch of (qlcPlusMode.Channel || [])) {
-    mode.channels[Number.parseInt(ch.$.Number, 10)] = ch._;
+  for (const channel of (qlcPlusMode.Channel || [])) {
+    mode.channels[Number.parseInt(channel.$.Number, 10)] = channel._;
   }
 
   if (`Head` in qlcPlusMode) {
@@ -784,7 +784,7 @@ function getOflMode(qlcPlusMode, oflFixturePhysical, warningsArray) {
         return;
       }
 
-      const channelList = head.Channel.map(ch => mode.channels[Number.parseInt(ch, 10)]).join(`, `);
+      const channelList = head.Channel.map(channel => mode.channels[Number.parseInt(channel, 10)]).join(`, `);
 
       warningsArray.push(`Please add ${mode.name} mode's Head #${index + 1} to the fixture's matrix. The included channels were ${channelList}.`);
     });
@@ -806,7 +806,7 @@ function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
   );
 
   for (const qlcPlusFineChannel of fineChannels) {
-    const chKey = qlcPlusFineChannel.$.Name;
+    const channelKey = qlcPlusFineChannel.$.Name;
 
     try {
       const coarseChannelKey = getCoarseChannelKey(qlcPlusFineChannel);
@@ -814,17 +814,17 @@ function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
         throw new Error(`The corresponding coarse channel could not be detected.`);
       }
 
-      fixture.availableChannels[coarseChannelKey].fineChannelAliases.push(chKey);
+      fixture.availableChannels[coarseChannelKey].fineChannelAliases.push(channelKey);
 
-      const fineChannel = fixture.availableChannels[chKey];
+      const fineChannel = fixture.availableChannels[channelKey];
       if (fineChannel.capabilities.length > 1) {
         throw new Error(`Merge its capabilities into channel '${coarseChannelKey}'.`);
       }
 
-      delete fixture.availableChannels[chKey];
+      delete fixture.availableChannels[channelKey];
     }
     catch (error) {
-      warningsArray.push(`Please check 16bit channel '${chKey}': ${error.message}`);
+      warningsArray.push(`Please check 16bit channel '${channelKey}': ${error.message}`);
     }
   }
 
@@ -899,7 +899,7 @@ function addSwitchingChannels(fixture, qlcPlusFixture) {
     const switchChannels = [];
     qlcPlusChannel.Capability.forEach((cap, index) => {
       (cap.Alias || []).forEach(alias => {
-        const switchChannel = switchChannels.find(ch => ch.default === alias.$.Channel && ch.modes.includes(alias.$.Mode));
+        const switchChannel = switchChannels.find(channel => channel.default === alias.$.Channel && channel.modes.includes(alias.$.Mode));
         if (switchChannel) {
           switchChannel.switchTo[index] = alias.$.With;
         }
@@ -946,11 +946,11 @@ function addSwitchingChannels(fixture, qlcPlusFixture) {
 
     // append mode names to switching channel keys if necessary, update switching channels in modes
     switchChannels.forEach(switchChannel => {
-      const swChannelsWithSameKey = switchChannels.filter(ch => ch.key === switchChannel.key);
+      const swChannelsWithSameKey = switchChannels.filter(channel => channel.key === switchChannel.key);
 
       if (swChannelsWithSameKey.length > 1) {
-        swChannelsWithSameKey.forEach(ch => {
-          ch.key += ` (${ch.modes.join(`, `)})`;
+        swChannelsWithSameKey.forEach(channel => {
+          channel.key += ` (${channel.modes.join(`, `)})`;
         });
       }
 
@@ -979,8 +979,8 @@ function addSwitchingChannels(fixture, qlcPlusFixture) {
  */
 function cleanUpFixture(fixture, qlcPlusFixture) {
   // delete empty fineChannelAliases arrays and unnecessary dmxValueResolution properties
-  for (const chKey of Object.keys(fixture.availableChannels)) {
-    const channel = fixture.availableChannels[chKey];
+  for (const channelKey of Object.keys(fixture.availableChannels)) {
+    const channel = fixture.availableChannels[channelKey];
 
     if (channel.capabilities.length === 1) {
       channel.capability = channel.capabilities[0];

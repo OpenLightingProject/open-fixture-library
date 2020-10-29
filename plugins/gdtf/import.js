@@ -100,8 +100,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
   linkSwitchingChannels();
 
   if (`availableChannels` in fixture) {
-    Object.keys(fixture.availableChannels).forEach(chKey => {
-      const channel = fixture.availableChannels[chKey];
+    Object.keys(fixture.availableChannels).forEach(channelKey => {
+      const channel = fixture.availableChannels[channelKey];
       if (channel.defaultValue === null) {
         delete channel.defaultValue;
       }
@@ -111,8 +111,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
   if (`templateChannels` in fixture) {
     warnings.push(`Please fix the visual representation of the matrix.`);
 
-    Object.keys(fixture.templateChannels).forEach(chKey => {
-      const channel = fixture.templateChannels[chKey];
+    Object.keys(fixture.templateChannels).forEach(channelKey => {
+      const channel = fixture.templateChannels[channelKey];
       if (channel.defaultValue === null) {
         delete channel.defaultValue;
       }
@@ -471,9 +471,9 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     // remove unnecessary name and dmxValueResolution properties
     // and fill/remove fineChannelAliases
     availableChannels.concat(templateChannels).forEach(channelWrapper => {
-      const { key: chKey, channel, maxResolution } = channelWrapper;
+      const { key: channelKey, channel, maxResolution } = channelWrapper;
 
-      if (chKey === channel.name) {
+      if (channelKey === channel.name) {
         delete channel.name;
       }
 
@@ -482,10 +482,10 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       }
       else {
         // CoarseChannel.RESOLUTION_16BIT
-        channel.fineChannelAliases.push(`${chKey} fine`);
+        channel.fineChannelAliases.push(`${channelKey} fine`);
 
         for (let index = CoarseChannel.RESOLUTION_24BIT; index <= maxResolution; index++) {
-          channel.fineChannelAliases.push(`${chKey} fine^${index - 1}`);
+          channel.fineChannelAliases.push(`${channelKey} fine^${index - 1}`);
         }
       }
 
@@ -555,7 +555,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
     // check if we already added the same channel in another mode
     const sameChannel = channelWrappers.find(
-      ch => JSON.stringify(ch.channel) === JSON.stringify(channel) && !ch.modeIndices.includes(modeIndex),
+      channelWrapper => JSON.stringify(channelWrapper.channel) === JSON.stringify(channel) && !channelWrapper.modeIndices.includes(modeIndex),
     );
     if (sameChannel) {
       gdtfChannel._oflChannelKey = sameChannel.key;
@@ -862,7 +862,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
       // make unique by appending ' 2', ' 3', ... if necessary
       let duplicates = 1;
-      const keyExists = () => channelWrappers.some(ch => ch.key === key);
+      const keyExists = () => channelWrappers.some(channelWrapper => channelWrapper.key === key);
       while (keyExists()) {
         duplicates++;
         key = `${name} ${duplicates}`;
@@ -992,7 +992,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
           repeatFor: usedMatrixPixels,
           channelOrder: `perPixel`,
           templateChannels: channelWrapper.channels.map(
-            chKey => `${chKey} $pixelKey`,
+            channelKey => `${channelKey} $pixelKey`,
           ),
         });
       });
@@ -1032,12 +1032,12 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
      * @param {Array.<DmxBreakWrapper>} dmxBreakWrappers The DMXBreak wrapper array.
      */
     function addChannelKeyToDmxBreakWrapper(gdtfChannel, dmxBreakWrappers) {
-      const chKey = gdtfChannel._oflChannelKey;
-      const oflChannel = fixture.availableChannels[chKey];
+      const channelKey = gdtfChannel._oflChannelKey;
+      const oflChannel = fixture.availableChannels[channelKey];
 
       const channels = dmxBreakWrappers[dmxBreakWrappers.length - 1].channels;
 
-      const channelKeys = [chKey].concat(oflChannel.fineChannelAliases);
+      const channelKeys = [channelKey].concat(oflChannel.fineChannelAliases);
 
       // The Offset attribute replaced the Coarse/Fine/Ultra/Uber attributes in GDTF v1.0
       const channelOffsets = xmlNodeHasNotNoneAttribute(gdtfChannel, `Offset`)

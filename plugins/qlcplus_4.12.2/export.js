@@ -107,7 +107,7 @@ module.exports.export = async function exportQlcPlus(fixtures, options) {
  * @param {Object} customGobos An object where gobo resources not included in QLC+ can be added to.
  */
 function addChannel(xml, channel, customGobos) {
-  const chType = getChannelType(channel.type);
+  const channelType = getChannelType(channel.type);
 
   const xmlChannel = xml.element({
     Channel: {
@@ -127,11 +127,11 @@ function addChannel(xml, channel, customGobos) {
     xmlChannel.element({
       Group: {
         '@Byte': 0,
-        '#text': chType,
+        '#text': channelType,
       },
     });
 
-    if (chType === `Intensity`) {
+    if (channelType === `Intensity`) {
       xmlChannel.element({
         Colour: channel.color !== null ? channel.color.replace(/^(?:Warm|Cold) /, ``) : `Generic`,
       });
@@ -186,16 +186,16 @@ function addFineChannel(xml, fineChannel, customGobos) {
     return;
   }
 
-  const chType = getChannelType(fineChannel.coarseChannel.type);
+  const channelType = getChannelType(fineChannel.coarseChannel.type);
 
   xmlFineChannel.element({
     Group: {
       '@Byte': 1,
-      '#text': chType,
+      '#text': channelType,
     },
   });
 
-  if (chType === `Intensity`) {
+  if (channelType === `Intensity`) {
     xmlFineChannel.element({
       Colour: fineChannel.coarseChannel.color !== null ? fineChannel.coarseChannel.color.replace(/^(?:Warm|Cold) /, ``) : `Generic`,
     });
@@ -448,9 +448,9 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
  */
 function getPanTiltMax(panOrTilt, channels) {
   const capabilities = [];
-  channels.forEach(ch => {
-    if (ch.capabilities) {
-      capabilities.push(...ch.capabilities);
+  channels.forEach(channel => {
+    if (channel.capabilities) {
+      capabilities.push(...channel.capabilities);
     }
   });
 
@@ -478,7 +478,7 @@ function getPanTiltMax(panOrTilt, channels) {
  */
 function addHeads(xmlMode, mode) {
   const hasMatrixChannels = mode.channels.some(
-    ch => ch.pixelKey !== null || (ch instanceof SwitchingChannel && ch.defaultChannel.pixelKey !== null),
+    channel => channel.pixelKey !== null || (channel instanceof SwitchingChannel && channel.defaultChannel.pixelKey !== null),
   );
 
   if (hasMatrixChannels) {
@@ -487,9 +487,9 @@ function addHeads(xmlMode, mode) {
       const channels = mode.channels.filter(channel => controlsPixelKey(channel, pixelKey));
       const xmlHead = xmlMode.element(`Head`);
 
-      for (const ch of channels) {
+      for (const channel of channels) {
         xmlHead.element({
-          Channel: mode.getChannelIndex(ch.key),
+          Channel: mode.getChannelIndex(channel.key),
         });
       }
     }

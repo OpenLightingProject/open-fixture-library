@@ -42,7 +42,7 @@ module.exports.export = function exportColorSource(fixtures, options) {
 
     fixture.modes.forEach(mode => {
       const dcid = uuidv5(mode.name, fixtureUuidNamespace);
-      const hasIntensity = mode.channels.some(ch => ch.type === `Intensity`);
+      const hasIntensity = mode.channels.some(channel => channel.type === `Intensity`);
       const parameters = getColorSourceChannels(mode, hasIntensity);
 
       const fixtureJson = {
@@ -76,7 +76,7 @@ module.exports.export = function exportColorSource(fixtures, options) {
  * @returns {String|null} The UUID of a suitable color table or null if no color table fits.
  */
 function getColorTable(colorSourceChannels) {
-  const colorChannels = colorSourceChannels.filter(ch => ch.type === CHANNEL_TYPE_COLOR);
+  const colorChannels = colorSourceChannels.filter(channel => channel.type === CHANNEL_TYPE_COLOR);
 
   const colorTables = {
     "373673E3-571E-4CE2-B12D-CDD44085A1EB": [`Red`, `Green`, `Blue`, `Amber`, `Cyan`, `Indigo`, `RedOrange`],
@@ -104,11 +104,11 @@ function getColorTable(colorSourceChannels) {
 
   let selectedColorTable = Object.keys(colorTables).find(
     colorTable => colorTables[colorTable].every(
-      color => colorChannels.some(ch => ch.name === color),
+      color => colorChannels.some(channel => channel.name === color),
     ),
   );
 
-  const has16bitHue = colorChannels.some(ch => ch.name === `Hue` && ch.size === 16);
+  const has16bitHue = colorChannels.some(channel => channel.name === `Hue` && channel.size === 16);
   if (selectedColorTable === `B074A2D3-0C40-45A7-844A-7C2721E0B267` && has16bitHue) {
     // this is a special case; it refers to Hue / Hue fine / Saturation
     selectedColorTable = `B3D05F0E-FB45-4EEA-A8D5-61F545A922DE`;

@@ -79,8 +79,8 @@ function getFixtureCreateResult(fixtures) {
       }
       else if (property === `availableChannels`) {
         result.fixtures[key].availableChannels = {};
-        for (const chId of Object.keys(fixture.availableChannels)) {
-          addAvailableChannel(key, fixture.availableChannels, chId);
+        for (const channelId of Object.keys(fixture.availableChannels)) {
+          addAvailableChannel(key, fixture.availableChannels, channelId);
         }
       }
       else if (property === `rdm` && propertyExistsIn(`rdmModelId`, fixture)) {
@@ -262,8 +262,8 @@ function getFixtureCreateResult(fixtures) {
     });
   }
 
-  function addAvailableChannel(fixtureKey, availableChannels, chId) {
-    const from = availableChannels[chId];
+  function addAvailableChannel(fixtureKey, availableChannels, channelId) {
+    const from = availableChannels[channelId];
 
     if (`coarseChannelId` in from) {
       // we already handled this fine channel with its coarse channel
@@ -297,42 +297,40 @@ function getFixtureCreateResult(fixtures) {
       }
     }
 
-    const chKey = getChannelKey(channel, fixtureKey);
+    const channelKey = getChannelKey(channel, fixtureKey);
 
     if (`fineChannelAliases` in channel) {
       // find all referencing fine channels
-      for (const uuid of Object.keys(availableChannels)) {
-        const ch = availableChannels[uuid];
-
-        if (`coarseChannelId` in ch && ch.coarseChannelId === chId) {
-          const alias = getFineChannelAlias(chKey, ch.resolution);
-          channel.fineChannelAliases[ch.resolution - 2] = alias;
-          channelKeyMapping[ch.uuid] = alias;
+      for (const otherChannel of Object.values(availableChannels)) {
+        if (`coarseChannelId` in otherChannel && otherChannel.coarseChannelId === channelId) {
+          const alias = getFineChannelAlias(channelKey, otherChannel.resolution);
+          channel.fineChannelAliases[otherChannel.resolution - 2] = alias;
+          channelKeyMapping[otherChannel.uuid] = alias;
         }
       }
     }
 
-    if (channel.name === chKey) {
+    if (channel.name === channelKey) {
       delete channel.name;
     }
 
-    channelKeyMapping[from.uuid] = chKey;
-    result.fixtures[fixtureKey].availableChannels[chKey] = channel;
+    channelKeyMapping[from.uuid] = channelKey;
+    result.fixtures[fixtureKey].availableChannels[channelKey] = channel;
   }
 
   function getChannelKey(channel, fixtureKey) {
-    let chKey = channel.name;
+    let channelKey = channel.name;
     const availableChannelKeys = Object.keys(result.fixtures[fixtureKey].availableChannels);
 
-    if (availableChannelKeys.includes(chKey)) {
+    if (availableChannelKeys.includes(channelKey)) {
       let appendNumber = 2;
-      while (availableChannelKeys.includes(`${chKey} ${appendNumber}`)) {
+      while (availableChannelKeys.includes(`${channelKey} ${appendNumber}`)) {
         appendNumber++;
       }
-      chKey = `${chKey} ${appendNumber}`;
+      channelKey = `${channelKey} ${appendNumber}`;
     }
 
-    return chKey;
+    return channelKey;
   }
 
   function getFineChannelAlias(channelKey, resolution) {
