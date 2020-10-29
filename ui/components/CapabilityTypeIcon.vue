@@ -191,7 +191,7 @@ function getIconProps(cap) {
   else if (/(?:Speed|Duration|Time)$/.test(cap.type)) {
     specialIconFunctions.Speed(cap, iconProps);
   }
-  else if (/Rotation$/.test(cap.type)) {
+  else if (cap.type.endsWith(`Rotation`)) {
     specialIconFunctions.Rotation(cap, iconProps);
   }
 
