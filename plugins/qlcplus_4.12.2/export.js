@@ -137,8 +137,8 @@ function addChannel(xml, channel, customGobos) {
       });
     }
 
-    for (const cap of channel.capabilities) {
-      addCapability(xmlChannel, cap, customGobos);
+    for (const capability of channel.capabilities) {
+      addCapability(xmlChannel, capability, customGobos);
     }
   }
 
@@ -210,25 +210,25 @@ function addFineChannel(xml, fineChannel, customGobos) {
 
 /**
  * @param {Object} xmlChannel The xmlbuilder <Channel> object.
- * @param {Capability} cap The OFL capability object.
+ * @param {Capability} capability The OFL capability object.
  * @param {Object} customGobos An object where gobo resources not included in QLC+ can be added to.
  */
-function addCapability(xmlChannel, cap, customGobos) {
-  const dmxRange = cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
+function addCapability(xmlChannel, capability, customGobos) {
+  const dmxRange = capability.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
 
   const xmlCapability = xmlChannel.element({
     Capability: {
       '@Min': dmxRange.start,
       '@Max': dmxRange.end,
-      '#text': cap.name,
+      '#text': capability.name,
     },
   });
 
-  const preset = addCapabilityAliases(xmlCapability, cap) ? {
+  const preset = addCapabilityAliases(xmlCapability, capability) ? {
     presetName: `Alias`,
     res1: null,
     res2: null,
-  } : getCapabilityPreset(cap);
+  } : getCapabilityPreset(capability);
 
   if (preset !== null) {
     xmlCapability.attribute(`Preset`, preset.presetName);
@@ -237,7 +237,7 @@ function addCapability(xmlChannel, cap, customGobos) {
       xmlCapability.attribute(`Res1`, preset.res1);
 
       if (`${preset.res1}`.startsWith(`ofl/`)) {
-        customGobos[preset.res1] = cap.wheelSlot[0].resource;
+        customGobos[preset.res1] = capability.wheelSlot[0].resource;
       }
     }
 
@@ -246,47 +246,47 @@ function addCapability(xmlChannel, cap, customGobos) {
     }
   }
   else {
-    addCapabilityLegacyAttributes(xmlCapability, cap, customGobos);
+    addCapabilityLegacyAttributes(xmlCapability, capability, customGobos);
   }
 }
 
 /**
  * @param {Object} xmlCapability The xmlbuilder <Capability> object.
- * @param {Capability} cap The OFL capability object.
+ * @param {Capability} capability The OFL capability object.
  * @param {Object} customGobos An object where gobo resources not included in QLC+ can be added to.
  */
-function addCapabilityLegacyAttributes(xmlCapability, cap, customGobos) {
-  if (cap.colors !== null && cap.colors.allColors.length <= 2) {
-    xmlCapability.attribute(`Color`, cap.colors.allColors[0]);
+function addCapabilityLegacyAttributes(xmlCapability, capability, customGobos) {
+  if (capability.colors !== null && capability.colors.allColors.length <= 2) {
+    xmlCapability.attribute(`Color`, capability.colors.allColors[0]);
 
-    if (cap.colors.allColors.length > 1) {
-      xmlCapability.attribute(`Color2`, cap.colors.allColors[1]);
+    if (capability.colors.allColors.length > 1) {
+      xmlCapability.attribute(`Color2`, capability.colors.allColors[1]);
     }
   }
 
-  const goboResource = exportHelpers.getGoboResource(cap);
+  const goboResource = exportHelpers.getGoboResource(capability);
   if (goboResource) {
     xmlCapability.attribute(`Res`, goboResource);
 
     if (goboResource.startsWith(`ofl/`)) {
-      customGobos[goboResource] = cap.wheelSlot[0].resource;
+      customGobos[goboResource] = capability.wheelSlot[0].resource;
     }
   }
 }
 
 /**
  * @param {Object} xmlCapability The xmlbuilder <Capability> object.
- * @param {Capability} cap The OFL capability object.
+ * @param {Capability} capability The OFL capability object.
  * @returns {Boolean} True when one or more <Alias> elements were added to the capability, false otherwise.
  */
-function addCapabilityAliases(xmlCapability, cap) {
-  const fixture = cap._channel.fixture;
+function addCapabilityAliases(xmlCapability, capability) {
+  const fixture = capability._channel.fixture;
 
   let aliasAdded = false;
-  for (const alias of Object.keys(cap.switchChannels)) {
+  for (const alias of Object.keys(capability.switchChannels)) {
     const switchingChannel = fixture.getChannelByKey(alias);
     const defaultChannel = switchingChannel.defaultChannel;
-    const switchedChannel = fixture.getChannelByKey(cap.switchChannels[alias]);
+    const switchedChannel = fixture.getChannelByKey(capability.switchChannels[alias]);
 
     if (defaultChannel === switchedChannel) {
       continue;
@@ -454,13 +454,13 @@ function getPanTiltMax(panOrTilt, channels) {
     }
   });
 
-  const panTiltCapabilities = capabilities.filter(cap => cap.type === panOrTilt && cap.angle[0].unit === `deg`);
-  const minAngle = Math.min(...panTiltCapabilities.map(cap => Math.min(cap.angle[0].number, cap.angle[1].number)));
-  const maxAngle = Math.max(...panTiltCapabilities.map(cap => Math.max(cap.angle[0].number, cap.angle[1].number)));
+  const panTiltCapabilities = capabilities.filter(capability => capability.type === panOrTilt && capability.angle[0].unit === `deg`);
+  const minAngle = Math.min(...panTiltCapabilities.map(capability => Math.min(capability.angle[0].number, capability.angle[1].number)));
+  const maxAngle = Math.max(...panTiltCapabilities.map(capability => Math.max(capability.angle[0].number, capability.angle[1].number)));
   const panTiltMax = maxAngle - minAngle;
 
   if (panTiltMax === -Infinity) {
-    const hasContinuousCapability = capabilities.some(cap => cap.type === `${panOrTilt}Continuous`);
+    const hasContinuousCapability = capabilities.some(capability => capability.type === `${panOrTilt}Continuous`);
     if (hasContinuousCapability) {
       return 9999;
     }

@@ -154,31 +154,29 @@ export default {
   },
   computed: {
     capabilities() {
-      return this.channel.capabilities.map(
-        cap => {
-          const dmxRange = cap.getDmxRangeWithResolution(this.resolutionInMode);
-          const switchChannels = [];
+      return this.channel.capabilities.map(capability => {
+        const dmxRange = capability.getDmxRangeWithResolution(this.resolutionInMode);
+        const switchChannels = [];
 
-          for (const switchingChannelKey of Object.keys(cap.switchChannels)) {
-            const switchingChannelIndex = this.mode.getChannelIndex(switchingChannelKey);
+        for (const switchingChannelKey of Object.keys(capability.switchChannels)) {
+          const switchingChannelIndex = this.mode.getChannelIndex(switchingChannelKey);
 
-            if (switchingChannelIndex > -1) {
-              switchChannels.push({
-                key: switchingChannelKey,
-                index: switchingChannelIndex,
-                to: cap.switchChannels[switchingChannelKey],
-              });
-            }
+          if (switchingChannelIndex > -1) {
+            switchChannels.push({
+              key: switchingChannelKey,
+              index: switchingChannelIndex,
+              to: capability.switchChannels[switchingChannelKey],
+            });
           }
+        }
 
-          return {
-            model: cap,
-            dmxRangeStart: dmxRange.start,
-            dmxRangeEnd: dmxRange.end,
-            switchChannels: switchChannels.sort((a, b) => a.index - b.index), // ascending indices
-          };
-        },
-      );
+        return {
+          model: capability,
+          dmxRangeStart: dmxRange.start,
+          dmxRangeEnd: dmxRange.end,
+          switchChannels: switchChannels.sort((a, b) => a.index - b.index), // ascending indices
+        };
+      });
     },
   },
 };

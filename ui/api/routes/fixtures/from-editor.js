@@ -338,17 +338,17 @@ function getFixtureCreateResult(fixtures) {
   }
 
   function getCapabilities(channel) {
-    return channel.capabilities.map(cap => {
+    return channel.capabilities.map(editorCapability => {
       const capability = {};
 
-      const capabilitySchema = schemaProperties.capabilityTypes[cap.type];
+      const capabilitySchema = schemaProperties.capabilityTypes[editorCapability.type];
 
-      for (const capProperty of Object.keys(capabilitySchema.properties)) {
-        if (propertyExistsIn(capProperty, cap)) {
-          capability[capProperty] = cap[capProperty];
+      for (const capabilityProperty of Object.keys(capabilitySchema.properties)) {
+        if (propertyExistsIn(capabilityProperty, editorCapability)) {
+          capability[capabilityProperty] = editorCapability[capabilityProperty];
         }
-        else if (propertyExistsIn(capProperty, cap.typeData)) {
-          capability[capProperty] = cap.typeData[capProperty];
+        else if (propertyExistsIn(capabilityProperty, editorCapability.typeData)) {
+          capability[capabilityProperty] = editorCapability.typeData[capabilityProperty];
         }
       }
 

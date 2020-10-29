@@ -450,7 +450,7 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
       let dmxRangesInvalid = false;
 
       for (let index = 0; index < channel.capabilities.length; index++) {
-        const cap = channel.capabilities[index];
+        const capability = channel.capabilities[index];
 
         // if one of the previous capabilities had an invalid range,
         // it doesn't make sense to check later ranges
@@ -458,16 +458,16 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
           dmxRangesInvalid = !checkDmxRange(index);
         }
 
-        checkCapability(cap, `Capability '${cap.name}' (${cap.rawDmxRange}) in channel '${channel.key}'`);
+        checkCapability(capability, `Capability '${capability.name}' (${capability.rawDmxRange}) in channel '${channel.key}'`);
       }
 
       /**
        * Check that a capability's range is valid.
-       * @param {Number} capNumber The number of the capability in the channel, starting with 0.
+       * @param {Number} capabilityNumber The number of the capability in the channel, starting with 0.
        * @returns {Boolean} True if the range is valid, false otherwise. The global `result` object is updated then.
        */
-      function checkDmxRange(capNumber) {
-        const cap = channel.capabilities[capNumber];
+      function checkDmxRange(capabilityNumber) {
+        const capability = channel.capabilities[capabilityNumber];
 
         return checkFirstCapabilityRangeStart()
           && checkRangeValid()
@@ -480,8 +480,8 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
          * @returns {Boolean} True if this is not the first capability or it starts with 0, false otherwise.
          */
         function checkFirstCapabilityRangeStart() {
-          if (capNumber === 0 && cap.rawDmxRange.start !== 0) {
-            result.errors.push(`The first dmxRange has to start at 0 in capability '${cap.name}' (${cap.rawDmxRange}) in channel '${channel.key}'.`);
+          if (capabilityNumber === 0 && capability.rawDmxRange.start !== 0) {
+            result.errors.push(`The first dmxRange has to start at 0 in capability '${capability.name}' (${capability.rawDmxRange}) in channel '${channel.key}'.`);
             return false;
           }
 
@@ -492,8 +492,8 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
          * @returns {Boolean} True if this capability's DMX range is valid, i.e. the end is greater than or equal to the start, false otherwise.
          */
         function checkRangeValid() {
-          if (cap.rawDmxRange.start > cap.rawDmxRange.end) {
-            result.errors.push(`dmxRange invalid in capability '${cap.name}' (${cap.rawDmxRange}) in channel '${channel.key}'.`);
+          if (capability.rawDmxRange.start > capability.rawDmxRange.end) {
+            result.errors.push(`dmxRange invalid in capability '${capability.name}' (${capability.rawDmxRange}) in channel '${channel.key}'.`);
             return false;
           }
 
@@ -504,11 +504,11 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
          * @returns {Boolean} True if this capability's DMX range start is adjacent to the previous capability's DMX range end, false otherwise.
          */
         function checkRangesAdjacent() {
-          if (capNumber > 0) {
-            const previousCap = channel.capabilities[capNumber - 1];
+          if (capabilityNumber > 0) {
+            const previousCapability = channel.capabilities[capabilityNumber - 1];
 
-            if (cap.rawDmxRange.start !== previousCap.rawDmxRange.end + 1) {
-              result.errors.push(`dmxRanges must be adjacent in capabilities '${previousCap.name}' (${previousCap.rawDmxRange}) and '${cap.name}' (${cap.rawDmxRange}) in channel '${channel.key}'.`);
+            if (capability.rawDmxRange.start !== previousCapability.rawDmxRange.end + 1) {
+              result.errors.push(`dmxRanges must be adjacent in capabilities '${previousCapability.name}' (${previousCapability.rawDmxRange}) and '${capability.name}' (${capability.rawDmxRange}) in channel '${channel.key}'.`);
               return false;
             }
           }
@@ -521,9 +521,9 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
          * @returns {Boolean} True if this is not the last capability or it ends with an allowed value, false otherwise.
          */
         function checkLastCapabilityRangeEnd() {
-          if (capNumber === channel.capabilities.length - 1) {
-            if (channel.capabilities[capNumber].rawDmxRange.end !== maxDmxValue) {
-              result.errors.push(`The last dmxRange has to end at ${maxDmxValue} (or another channel.dmxValueResolution must be chosen) in capability '${cap.name}' (${cap.rawDmxRange}) in channel '${channel.key}'`);
+          if (capabilityNumber === channel.capabilities.length - 1) {
+            if (channel.capabilities[capabilityNumber].rawDmxRange.end !== maxDmxValue) {
+              result.errors.push(`The last dmxRange has to end at ${maxDmxValue} (or another channel.dmxValueResolution must be chosen) in capability '${capability.name}' (${capability.rawDmxRange}) in channel '${channel.key}'`);
               return false;
             }
           }
@@ -534,17 +534,17 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
 
       /**
        * Check that a capability is valid (except its DMX range).
-       * @param {Capability} cap The capability to check.
+       * @param {Capability} capability The capability to check.
        * @param {String} errorPrefix An identifier for the capability to use in errors and warnings.
        */
-      function checkCapability(cap, errorPrefix) {
-        const switchingChannelAliases = Object.keys(cap.switchChannels);
+      function checkCapability(capability, errorPrefix) {
+        const switchingChannelAliases = Object.keys(capability.switchChannels);
         if (!arraysEqual(switchingChannelAliases, channel.switchingChannelAliases)) {
           result.errors.push(`${errorPrefix} must define the same switching channel aliases as all other capabilities.`);
         }
         else {
           switchingChannelAliases.forEach(alias => {
-            const channelKey = cap.switchChannels[alias];
+            const channelKey = capability.switchChannels[alias];
             usedChannelKeys.add(channelKey.toLowerCase());
 
             if (channel.fixture.getChannelByKey(channelKey) === null) {
@@ -553,8 +553,8 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
           });
         }
 
-        cap.usedStartEndEntities.forEach(property => {
-          const [startEntity, endEntity] = cap[property];
+        capability.usedStartEndEntities.forEach(property => {
+          const [startEntity, endEntity] = capability[property];
 
           if ((startEntity.keyword === null) !== (endEntity.keyword === null)) {
             result.errors.push(`${errorPrefix} must use keywords for start and end value or for none of them in ${property}.`);
@@ -579,8 +579,8 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
           Effect: checkEffectCapability,
         };
 
-        if (Object.keys(capabilityTypeChecks).includes(cap.type)) {
-          capabilityTypeChecks[cap.type]();
+        if (Object.keys(capabilityTypeChecks).includes(capability.type)) {
+          capabilityTypeChecks[capability.type]();
         }
 
 
@@ -588,16 +588,16 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
          * Type-specific checks for ShutterStrobe capabilities.
          */
         function checkShutterStrobeCapability() {
-          if ([`Closed`, `Open`].includes(cap.shutterEffect)) {
-            if (cap.isSoundControlled) {
+          if ([`Closed`, `Open`].includes(capability.shutterEffect)) {
+            if (capability.isSoundControlled) {
               result.errors.push(`${errorPrefix}: Shutter open/closed can't be sound-controlled.`);
             }
 
-            if (cap.speed !== null || cap.duration !== null) {
+            if (capability.speed !== null || capability.duration !== null) {
               result.errors.push(`${errorPrefix}: Shutter open/closed can't define speed or duration.`);
             }
 
-            if (cap.randomTiming) {
+            if (capability.randomTiming) {
               result.errors.push(`${errorPrefix}: Shutter open/closed can't have random timing.`);
             }
           }
@@ -609,8 +609,8 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
         function checkWheelCapability() {
           let shouldCheckSlotNumbers = true;
 
-          if (`wheel` in cap.jsonObject) {
-            const wheelNames = [].concat(cap.jsonObject.wheel);
+          if (`wheel` in capability.jsonObject) {
+            const wheelNames = [].concat(capability.jsonObject.wheel);
 
             wheelNames.forEach(wheelName => {
               const wheel = fixture.getWheelByName(wheelName);
@@ -623,19 +623,19 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
               }
             });
 
-            if (wheelNames.length === 1 && wheelNames[0] === cap._channel.name) {
+            if (wheelNames.length === 1 && wheelNames[0] === capability._channel.name) {
               result.warnings.push(`${errorPrefix} explicitly references wheel '${wheelNames[0]}', which is the default anyway (through the channel name). Please remove the 'wheel' property.`);
             }
           }
-          else if (cap.wheels.includes(null)) {
-            result.errors.push(`${errorPrefix} does not explicitly reference any wheel, but the default wheel '${cap._channel.name}' (through the channel name) does not exist.`);
+          else if (capability.wheels.includes(null)) {
+            result.errors.push(`${errorPrefix} does not explicitly reference any wheel, but the default wheel '${capability._channel.name}' (through the channel name) does not exist.`);
             shouldCheckSlotNumbers = false;
           }
           else {
-            usedWheels.add(cap._channel.name);
+            usedWheels.add(capability._channel.name);
           }
 
-          if (cap.slotNumber !== null && shouldCheckSlotNumbers) {
+          if (capability.slotNumber !== null && shouldCheckSlotNumbers) {
             checkSlotNumbers();
           }
 
@@ -644,10 +644,10 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
            * Check that slot indices are used correctly for the specific wheel.
            */
           function checkSlotNumbers() {
-            const min = Math.min(cap.slotNumber[0], cap.slotNumber[1]);
-            const max = Math.max(cap.slotNumber[0], cap.slotNumber[1]);
+            const min = Math.min(capability.slotNumber[0], capability.slotNumber[1]);
+            const max = Math.max(capability.slotNumber[0], capability.slotNumber[1]);
             for (let index = Math.floor(min); index <= Math.ceil(max); index++) {
-              usedWheelSlots.add(`${cap.wheels[0].name} (slot ${index})`);
+              usedWheelSlots.add(`${capability.wheels[0].name} (slot ${index})`);
             }
 
             if (max - min > 1) {
@@ -655,23 +655,23 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
             }
 
             const minSlotNumber = 1;
-            const maxSlotNumber = cap.wheels[0].slots.length;
+            const maxSlotNumber = capability.wheels[0].slots.length;
 
             const isInRangeExclusive = (number, start, end) => number > start && number < end;
             const isInRangeInclusive = (number, start, end) => number >= start && number <= end;
 
-            if (cap.slotNumber[0].equals(cap.slotNumber[1])) {
-              if (!isInRangeExclusive(cap.slotNumber[0].number, minSlotNumber - 1, maxSlotNumber + 1)) {
-                result.errors.push(`${errorPrefix} references wheel slot ${cap.slotNumber[0].number} which is outside the allowed range ${minSlotNumber - 1}…${maxSlotNumber + 1} (exclusive).`);
+            if (capability.slotNumber[0].equals(capability.slotNumber[1])) {
+              if (!isInRangeExclusive(capability.slotNumber[0].number, minSlotNumber - 1, maxSlotNumber + 1)) {
+                result.errors.push(`${errorPrefix} references wheel slot ${capability.slotNumber[0].number} which is outside the allowed range ${minSlotNumber - 1}…${maxSlotNumber + 1} (exclusive).`);
               }
               return;
             }
 
-            if (!isInRangeInclusive(cap.slotNumber[0].number, minSlotNumber - 1, maxSlotNumber)) {
-              result.errors.push(`${errorPrefix} starts at wheel slot ${cap.slotNumber[0].number} which is outside the allowed range ${minSlotNumber - 1}…${maxSlotNumber} (inclusive).`);
+            if (!isInRangeInclusive(capability.slotNumber[0].number, minSlotNumber - 1, maxSlotNumber)) {
+              result.errors.push(`${errorPrefix} starts at wheel slot ${capability.slotNumber[0].number} which is outside the allowed range ${minSlotNumber - 1}…${maxSlotNumber} (inclusive).`);
             }
-            else if (!isInRangeInclusive(cap.slotNumber[1].number, minSlotNumber, maxSlotNumber + 1)) {
-              result.errors.push(`${errorPrefix} ends at wheel slot ${cap.slotNumber[1].number} which is outside the allowed range ${minSlotNumber}…${maxSlotNumber + 1} (inclusive).`);
+            else if (!isInRangeInclusive(capability.slotNumber[1].number, minSlotNumber, maxSlotNumber + 1)) {
+              result.errors.push(`${errorPrefix} ends at wheel slot ${capability.slotNumber[1].number} which is outside the allowed range ${minSlotNumber}…${maxSlotNumber + 1} (inclusive).`);
             }
           }
         }
@@ -680,7 +680,7 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
          * Type-specific checks for Pan and Tilt capabilities.
          */
         function checkPanTiltCapability() {
-          const usesPercentageAngle = cap.angle[0].unit === `%`;
+          const usesPercentageAngle = capability.angle[0].unit === `%`;
           if (usesPercentageAngle) {
             result.warnings.push(`${errorPrefix} defines an imprecise percentaged angle. Please to try find the value in degrees.`);
           }
@@ -690,11 +690,11 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
          * Type-specific checks for Effect capabilities.
          */
         function checkEffectCapability() {
-          if (cap.effectPreset === null && schemaProperties.definitions.effectPreset.enum.includes(cap.effectName)) {
-            result.errors.push(`${errorPrefix} must use effectPreset instead of effectName with '${cap.effectName}'.`);
+          if (capability.effectPreset === null && schemaProperties.definitions.effectPreset.enum.includes(capability.effectName)) {
+            result.errors.push(`${errorPrefix} must use effectPreset instead of effectName with '${capability.effectName}'.`);
           }
 
-          if (!cap.isSoundControlled && cap.soundSensitivity !== null) {
+          if (!capability.isSoundControlled && capability.soundSensitivity !== null) {
             result.errors.push(`${errorPrefix} can't set soundSensitivity if soundControlled is not true.`);
           }
         }
@@ -1080,7 +1080,7 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
      */
     function hasCapabilityOfType(type, minimum = 1) {
       return fixture.capabilities.filter(
-        cap => cap.type === type,
+        capability => capability.type === type,
       ).length >= minimum;
     }
 
@@ -1090,14 +1090,14 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
      */
     function isFogType(fogType) {
       const fogCaps = fixture.capabilities.filter(
-        cap => cap.type.startsWith(`Fog`),
+        capability => capability.type.startsWith(`Fog`),
       );
 
       if (fogCaps.length === 0) {
         return false;
       }
 
-      return fogCaps.some(cap => cap.fogType === fogType) || fogCaps.every(cap => cap.fogType === null);
+      return fogCaps.some(capability => capability.fogType === fogType) || fogCaps.every(capability => capability.fogType === null);
     }
 
     /**

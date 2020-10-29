@@ -114,9 +114,9 @@ export default {
     },
     location() {
       if (this.type === `capability`) {
-        const cap = this.context;
-        const channel = cap._channel;
-        return `Channel "${channel.key}" → Capability "${cap.name}" (${cap.rawDmxRange})`;
+        const capability = this.context;
+        const channel = capability._channel;
+        return `Channel "${channel.key}" → Capability "${capability.name}" (${capability.rawDmxRange})`;
       }
 
       return null;

@@ -164,7 +164,7 @@
             :key="cap.uuid"
             :channel="channel"
             :formstate="formstate"
-            :cap-index="index"
+            :capability-index="index"
             :resolution="channel.dmxValueResolution"
             @insert-capability-before="insertEmptyCapability(index)"
             @insert-capability-after="insertEmptyCapability(index + 1)" />
@@ -457,15 +457,15 @@ export default {
         return;
       }
 
-      const cap = this.channel.capabilities[0];
+      const capability = this.channel.capabilities[0];
       const changeCapabilityType = this.$refs.capabilities[0].$refs.capabilityTypeData.changeCapabilityType;
 
       const matchingColor = this.singleColors.find(
         color => channelName.toLowerCase().includes(color.toLowerCase()),
       );
       if (matchingColor) {
-        cap.type = `ColorIntensity`;
-        cap.typeData.color = matchingColor;
+        capability.type = `ColorIntensity`;
+        capability.typeData.color = matchingColor;
         changeCapabilityType();
         return;
       }
@@ -501,7 +501,7 @@ export default {
       );
 
       if (matchingType) {
-        cap.type = matchingType;
+        capability.type = matchingType;
         changeCapabilityType();
       }
     },
@@ -520,8 +520,8 @@ export default {
       this.$nextTick(() => {
         let index = this.channel.capabilities.length - 1;
         while (index >= 0) {
-          const cap = this.channel.capabilities[index];
-          if (cap.dmxRange !== null && cap.dmxRange[1] !== null && !this.channel.wizard.show) {
+          const capability = this.channel.capabilities[index];
+          if (capability.dmxRange !== null && capability.dmxRange[1] !== null && !this.channel.wizard.show) {
             this.$refs.capabilities[index].onEndUpdated();
             break;
           }
@@ -673,10 +673,10 @@ export default {
       this.setWizardVisibility(false);
 
       this.$nextTick(() => {
-        const firstNewCap = this.$refs.capabilities[insertIndex];
-        const scrollContainer = firstNewCap.$el.closest(`dialog`);
+        const firstNewCapability = this.$refs.capabilities[insertIndex];
+        const scrollContainer = firstNewCapability.$el.closest(`dialog`);
 
-        scrollIntoView(firstNewCap.$el, {
+        scrollIntoView(firstNewCapability.$el, {
           time: 0,
           align: {
             top: 0,
@@ -684,7 +684,7 @@ export default {
             topOffset: 100,
           },
           isScrollable: target => target === scrollContainer,
-        }, () => firstNewCap.$refs.firstInput.focus());
+        }, () => firstNewCapability.$refs.firstInput.focus());
       });
     },
 

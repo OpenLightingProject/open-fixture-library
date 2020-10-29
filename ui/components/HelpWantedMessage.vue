@@ -103,9 +103,9 @@ export default {
   computed: {
     location() {
       if (this.type === `capability`) {
-        const cap = this.context;
-        const channel = cap._channel;
-        return `Channel "${channel.name}" → Capability "${cap.name}" (${cap.rawDmxRange})`;
+        const capability = this.context;
+        const channel = capability._channel;
+        return `Channel "${channel.name}" → Capability "${capability.name}" (${capability.rawDmxRange})`;
       }
 
       return null;

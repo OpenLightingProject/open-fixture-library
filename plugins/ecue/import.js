@@ -250,114 +250,114 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
    * @returns {Object} The OFL capability object.
    */
   function getCapability(ecueRange, index) {
-    const cap = {
+    const capability = {
       dmxRange: getDmxRange(),
     };
 
     const capabilityName = ecueRange.$.Name.trim();
 
-    cap.type = getCapabilityType();
+    capability.type = getCapabilityType();
 
     // capability parsers can rely on the channel type as a first distinctive feature
     const capabilityTypeParsers = {
       ColorIntensity() {
-        cap.color = [`Red`, `Green`, `Blue`, `Cyan`, `Magenta`, `Yellow`, `Amber`, `Warm White`, `Cold White`, `White`, `UV`, `Lime`].find(
+        capability.color = [`Red`, `Green`, `Blue`, `Cyan`, `Magenta`, `Yellow`, `Amber`, `Warm White`, `Cold White`, `White`, `UV`, `Lime`].find(
           color => channelName.toLowerCase().includes(color.toLowerCase()),
         );
 
-        cap.comment = capabilityName;
+        capability.comment = capabilityName;
       },
       WheelSlot() {
         if (ecueChannel._ecueChannelType === `ChannelColor`) {
           const color = capabilityName.toLowerCase().replace(/\s/g, ``);
           if (color in colors) {
-            cap.colors = [colors[color]];
+            capability.colors = [colors[color]];
           }
         }
 
-        cap.comment = getSpeedGuessedComment();
+        capability.comment = getSpeedGuessedComment();
 
-        if (`speedStart` in cap) {
-          cap.type = ecueChannel._ecueChannelType === `ChannelColor` ? `WheelRotation` : `WheelSlotRotation`;
+        if (`speedStart` in capability) {
+          capability.type = ecueChannel._ecueChannelType === `ChannelColor` ? `WheelRotation` : `WheelSlotRotation`;
         }
       },
       ColorPreset() {
         const color = capabilityName.toLowerCase().replace(/\s/g, ``);
         if (color in colors) {
-          cap.color = colors[color];
+          capability.color = colors[color];
         }
 
-        cap.comment = capabilityName;
+        capability.comment = capabilityName;
       },
       ShutterStrobe() {
         if (capabilityName.match(/^(?:blackout|(?:shutter )?closed?)$/i)) {
-          cap.shutterEffect = `Closed`;
+          capability.shutterEffect = `Closed`;
           return;
         }
 
         if (capabilityName.match(/^(?:(?:shutter )?open|full?)$/i)) {
-          cap.shutterEffect = `Open`;
+          capability.shutterEffect = `Open`;
           return;
         }
 
         if (capabilityName.match(/puls/i)) {
-          cap.shutterEffect = `Pulse`;
+          capability.shutterEffect = `Pulse`;
         }
         else if (capabilityName.match(/ramp\s*up/i)) {
-          cap.shutterEffect = `RampUp`;
+          capability.shutterEffect = `RampUp`;
         }
         else if (capabilityName.match(/ramp\s*down/i)) {
-          cap.shutterEffect = `RampDown`;
+          capability.shutterEffect = `RampDown`;
         }
         else {
-          cap.shutterEffect = `Strobe`;
+          capability.shutterEffect = `Strobe`;
         }
 
         if (capabilityName.match(/random/i)) {
-          cap.shutterEffect += `Random`;
+          capability.shutterEffect += `Random`;
         }
 
-        cap.comment = getSpeedGuessedComment();
+        capability.comment = getSpeedGuessedComment();
       },
       Pan() {
-        cap.angleStart = `0%`;
-        cap.angleEnd = `100%`;
-        cap.comment = capabilityName;
+        capability.angleStart = `0%`;
+        capability.angleEnd = `100%`;
+        capability.comment = capabilityName;
       },
       Tilt() {
-        cap.angleStart = `0%`;
-        cap.angleEnd = `100%`;
-        cap.comment = capabilityName;
+        capability.angleStart = `0%`;
+        capability.angleEnd = `100%`;
+        capability.comment = capabilityName;
       },
       Effect() {
-        cap.effectName = ``; // set it first here so effectName is before speedStart/speedEnd
-        cap.effectName = getSpeedGuessedComment();
+        capability.effectName = ``; // set it first here so effectName is before speedStart/speedEnd
+        capability.effectName = getSpeedGuessedComment();
       },
       NoFunction() {
         // don't even add a comment
       },
     };
 
-    if (cap.type in capabilityTypeParsers) {
-      capabilityTypeParsers[cap.type]();
+    if (capability.type in capabilityTypeParsers) {
+      capabilityTypeParsers[capability.type]();
     }
     else {
-      cap.comment = getSpeedGuessedComment();
+      capability.comment = getSpeedGuessedComment();
     }
 
     // delete unnecessary comments
-    if (`comment` in cap && (cap.comment === channelName || cap.comment.match(/^$|^0%?\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*100%$/))) {
-      delete cap.comment;
+    if (`comment` in capability && (capability.comment === channelName || capability.comment.match(/^$|^0%?\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*100%$/))) {
+      delete capability.comment;
     }
 
     if (ecueRange.$.AutoMenu !== `1`) {
-      cap.menuClick = `hidden`;
+      capability.menuClick = `hidden`;
     }
     else if (ecueRange.$.Centre !== `0`) {
-      cap.menuClick = `center`;
+      capability.menuClick = `center`;
     }
 
-    return cap;
+    return capability;
 
 
     /**
@@ -485,7 +485,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
         const directionString = direction ? (direction.match(/^(?:clockwise|cw),?\s+$/i) ? ` CW` : ` CCW`) : ``;
 
         if (directionString !== ``) {
-          cap.type = `Rotation`;
+          capability.type = `Rotation`;
         }
 
         start = start.toLowerCase();
@@ -498,8 +498,8 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
           end = `${endNumber}Hz`;
         }
 
-        cap.speedStart = start + directionString;
-        cap.speedEnd = end + directionString;
+        capability.speedStart = start + directionString;
+        capability.speedEnd = end + directionString;
 
         // delete the parsed part
         return ``;

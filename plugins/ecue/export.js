@@ -234,14 +234,14 @@ function getChannelType(channel) {
  * @param {Number} resolution The resolution of the channel in the current mode.
  */
 function addCapabilities(xmlChannel, channel, resolution) {
-  for (const cap of channel.capabilities) {
-    const dmxRange = cap.getDmxRangeWithResolution(resolution);
+  for (const capability of channel.capabilities) {
+    const dmxRange = capability.getDmxRangeWithResolution(resolution);
     xmlChannel.element(`Range`, {
-      'Name': cap.name,
+      'Name': capability.name,
       'Start': dmxRange.start,
       'End': dmxRange.end,
-      'AutoMenu': cap.menuClick === `hidden` ? 0 : 1,
-      'Centre': cap.menuClick === `center` ? 1 : 0,
+      'AutoMenu': capability.menuClick === `hidden` ? 0 : 1,
+      'Centre': capability.menuClick === `center` ? 1 : 0,
     });
   }
 }

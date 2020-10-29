@@ -129,15 +129,15 @@ function getCommands(mode) {
       return;
     }
 
-    channel.capabilities.forEach(cap => {
-      if (cap.type === `Maintenance` && cap.hold) {
+    channel.capabilities.forEach(capability => {
+      if (capability.type === `Maintenance` && capability.hold) {
         commands.push({
-          name: cap.comment,
+          name: capability.comment,
           steps: [
             {
               actions: [{
                 dmx: channelIndex,
-                value: cap.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
+                value: capability.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
               }],
               wait: 0, // this is apparently the delay before this step is activated
             },
@@ -146,7 +146,7 @@ function getCommands(mode) {
                 dmx: channelIndex,
                 value: -1,
               }],
-              wait: cap.hold.getBaseUnitEntity().number,
+              wait: capability.hold.getBaseUnitEntity().number,
             },
           ],
         });
@@ -245,25 +245,25 @@ function getColorSourceChannels(mode, hasIntensity) {
     channelJson.snap = !channel.canCrossfade;
 
     if (channelJson.type !== CHANNEL_TYPE_NO_FUNCTION) {
-      channelJson.ranges = channel.capabilities.map(cap => {
-        const dmxRange = cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
-        const capJson = {
+      channelJson.ranges = channel.capabilities.map(capability => {
+        const dmxRange = capability.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
+        const capabilityJson = {
           begin: dmxRange.start,
-          default: cap.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
+          default: capability.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
           end: dmxRange.end,
-          label: cap.name,
+          label: capability.name,
         };
 
-        if (cap.colors && cap.colors.allColors.length === 1) {
-          const color = cap.colors.allColors[0]; // `#rrggbb`
-          capJson.media = {
+        if (capability.colors && capability.colors.allColors.length === 1) {
+          const color = capability.colors.allColors[0]; // `#rrggbb`
+          capabilityJson.media = {
             r: Number.parseInt(color.slice(1, 3), 16),
             g: Number.parseInt(color.slice(3, 5), 16),
             b: Number.parseInt(color.slice(5, 7), 16),
           };
         }
 
-        return capJson;
+        return capabilityJson;
       });
     }
   }
@@ -320,7 +320,7 @@ function getColorSourceChannelType(channel) {
       return true;
     }
 
-    if (channel.capabilities && channel.capabilities.some(cap => cap.type === `PanTiltSpeed`)) {
+    if (channel.capabilities && channel.capabilities.some(capability => capability.type === `PanTiltSpeed`)) {
       return true;
     }
 

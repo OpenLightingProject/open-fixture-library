@@ -131,14 +131,14 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
       }
     });
 
-    const hasContinuousCapability = capabilities.some(cap => cap.type === `${panOrTilt}Continuous`);
+    const hasContinuousCapability = capabilities.some(capability => capability.type === `${panOrTilt}Continuous`);
     if (hasContinuousCapability) {
       return `infinite`;
     }
 
-    const panTiltCapabilities = capabilities.filter(cap => cap.type === panOrTilt && cap.angle[0].unit === `deg`);
-    const minAngle = Math.min(...panTiltCapabilities.map(cap => Math.min(cap.angle[0].number, cap.angle[1].number)));
-    const maxAngle = Math.max(...panTiltCapabilities.map(cap => Math.max(cap.angle[0].number, cap.angle[1].number)));
+    const panTiltCapabilities = capabilities.filter(capability => capability.type === panOrTilt && capability.angle[0].unit === `deg`);
+    const minAngle = Math.min(...panTiltCapabilities.map(capability => Math.min(capability.angle[0].number, capability.angle[1].number)));
+    const maxAngle = Math.max(...panTiltCapabilities.map(capability => Math.max(capability.angle[0].number, capability.angle[1].number)));
     const panTiltMax = maxAngle - minAngle;
 
     if (panTiltMax > -Infinity) {
@@ -219,24 +219,24 @@ function getDowngradedChannel(channelKey, jsonChannel, fixture) {
   if (capabilitiesNeeded()) {
     downgradedChannel.capabilities = [];
 
-    channel.capabilities.forEach(cap => {
-      const downgradedCap = {
-        range: [cap.rawDmxRange.start, cap.rawDmxRange.end],
-        name: cap.name,
+    channel.capabilities.forEach(capability => {
+      const downgradedCapability = {
+        range: [capability.rawDmxRange.start, capability.rawDmxRange.end],
+        name: capability.name,
       };
 
-      addIfValidData(downgradedCap, `menuClick`, cap.jsonObject.menuClick);
-      if (cap.colors && cap.colors.allColors.length <= 2) {
-        downgradedCap.color = cap.colors.allColors[0];
+      addIfValidData(downgradedCapability, `menuClick`, capability.jsonObject.menuClick);
+      if (capability.colors && capability.colors.allColors.length <= 2) {
+        downgradedCapability.color = capability.colors.allColors[0];
 
-        if (cap.colors.allColors[1]) {
-          downgradedCap.color2 = cap.colors.allColors[1];
+        if (capability.colors.allColors[1]) {
+          downgradedCapability.color2 = capability.colors.allColors[1];
         }
       }
-      addIfValidData(downgradedCap, `helpWanted`, cap.jsonObject.helpWanted);
-      addIfValidData(downgradedCap, `switchChannels`, cap.jsonObject.switchChannels);
+      addIfValidData(downgradedCapability, `helpWanted`, capability.jsonObject.helpWanted);
+      addIfValidData(downgradedCapability, `switchChannels`, capability.jsonObject.switchChannels);
 
-      downgradedChannel.capabilities.push(downgradedCap);
+      downgradedChannel.capabilities.push(downgradedCapability);
     });
   }
 

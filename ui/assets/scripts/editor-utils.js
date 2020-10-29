@@ -191,21 +191,19 @@ export function isChannelChanged(channel) {
 
 
 /**
- * @param {Object} cap The capability object.
+ * @param {Object} capability The capability object.
  * @returns {Boolean} False if the capability object is still empty / unchanged, true otherwise.
  */
-export function isCapabilityChanged(cap) {
-  if (cap.dmxRange !== null) {
+export function isCapabilityChanged(capability) {
+  if (capability.dmxRange !== null) {
     return true;
   }
 
-  if (cap.type !== ``) {
+  if (capability.type !== ``) {
     return true;
   }
 
-  return Object.keys(cap.typeData).some(property => {
-    return cap.typeData[property] !== `` && cap.typeData[property] !== null;
-  });
+  return Object.values(capability.typeData).some(value => value !== `` && value !== null);
 }
 
 

@@ -132,10 +132,10 @@ function getRestoredChannel(channel, isChannelDialog) {
 
   const restoredChannel = Object.assign(emptyChannel, channel);
 
-  restoredChannel.capabilities.forEach((cap, index) => {
+  restoredChannel.capabilities.forEach((capability, index) => {
     restoredChannel.capabilities[index] = Object.assign(
       getEmptyCapability(),
-      cap,
+      capability,
     );
   });
 

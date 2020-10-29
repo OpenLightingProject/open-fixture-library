@@ -157,13 +157,13 @@ function getOflMatrix(qlcPlusFixture) {
 
 const slotTypeFunctions = {
   Open: {
-    isSlotType: (cap, channelGroup, capPreset) => cap._ === `Open` || cap.$.Res1 === `Others/open.svg` || cap.$.Res === `Others/open.svg`,
-    addSlotProperties: (cap, slot) => {},
+    isSlotType: (capability, channelGroup, capabilityPreset) => capability._ === `Open` || capability.$.Res1 === `Others/open.svg` || capability.$.Res === `Others/open.svg`,
+    addSlotProperties: (capability, slot) => {},
   },
   Gobo: {
-    isSlotType: (cap, channelGroup, capPreset) => (capPreset ? capPreset === `GoboMacro` : channelGroup === `Gobo`),
-    addSlotProperties: (cap, slot) => {
-      const goboResource = cap.$.Res1 || cap.$.Res || null;
+    isSlotType: (capability, channelGroup, capabilityPreset) => (capabilityPreset ? capabilityPreset === `GoboMacro` : channelGroup === `Gobo`),
+    addSlotProperties: (capability, slot) => {
+      const goboResource = capability.$.Res1 || capability.$.Res || null;
       let useResourceName = false;
 
       if (goboResource) {
@@ -174,7 +174,7 @@ const slotTypeFunctions = {
 
           const resource = require(`../../resources/gobos/${goboKey}.json`);
 
-          if (resource.name === cap._) {
+          if (resource.name === capability._) {
             useResourceName = true;
           }
         }
@@ -184,18 +184,18 @@ const slotTypeFunctions = {
       }
 
       if (!useResourceName) {
-        slot.name = cap._;
+        slot.name = capability._;
       }
     },
   },
   Color: {
-    isSlotType: (cap, channelGroup, capPreset) => (capPreset ? [`ColorMacro`, `ColorDoubleMacro`].includes(capPreset) : channelGroup === `Colour`),
-    addSlotProperties: (cap, slot) => {
-      slot.name = cap._;
+    isSlotType: (capability, channelGroup, capabilityPreset) => (capabilityPreset ? [`ColorMacro`, `ColorDoubleMacro`].includes(capabilityPreset) : channelGroup === `Colour`),
+    addSlotProperties: (capability, slot) => {
+      slot.name = capability._;
 
       const colors = [`Color`, `Color2`, `Res1`, `Res2`]
-        .filter(attribute => attribute in cap.$)
-        .map(attribute => cap.$[attribute]);
+        .filter(attribute => attribute in capability.$)
+        .map(attribute => capability.$[attribute]);
 
       if (colors.length > 0) {
         slot.colors = colors;
@@ -203,21 +203,21 @@ const slotTypeFunctions = {
     },
   },
   Prism: {
-    isSlotType: (cap, channelGroup, capPreset) => (capPreset ? capPreset === `PrismEffectOn` : channelGroup === `Prism`),
-    addSlotProperties: (cap, slot) => {
-      slot.name = cap._;
+    isSlotType: (capability, channelGroup, capabilityPreset) => (capabilityPreset ? capabilityPreset === `PrismEffectOn` : channelGroup === `Prism`),
+    addSlotProperties: (capability, slot) => {
+      slot.name = capability._;
 
-      if (`Res1` in cap.$) {
-        slot.facets = Number.parseInt(cap.$.Res1, 10);
+      if (`Res1` in capability.$) {
+        slot.facets = Number.parseInt(capability.$.Res1, 10);
       }
     },
   },
 
   // default (has to be the last element!)
   Unknown: {
-    isSlotType: (cap, channelGroup, capPreset) => true,
-    addSlotProperties: (cap, slot) => {
-      slot.name = cap._;
+    isSlotType: (capability, channelGroup, capabilityPreset) => true,
+    addSlotProperties: (capability, slot) => {
+      slot.name = capability._;
     },
   },
 };
@@ -233,11 +233,11 @@ function getOflWheels(qlcPlusFixture) {
   qlcPlusFixture.Channel.forEach(channel => {
     const channelName = channel.$.Name;
 
-    const hasGoboPresetCap = (channel.Capability || []).some(
-      cap => [`GoboMacro`, `GoboShakeMacro`].includes(cap.$.Preset),
+    const hasGoboPresetCapability = (channel.Capability || []).some(
+      capability => [`GoboMacro`, `GoboShakeMacro`].includes(capability.$.Preset),
     );
 
-    const isWheelChannel = /wheel\b/i.test(channelName) || hasGoboPresetCap;
+    const isWheelChannel = /wheel\b/i.test(channelName) || hasGoboPresetCapability;
     const isRotationChannel = /(rotation|index)/i.test(channelName) || (`Group` in channel && channel.Group[0]._ === `Speed`);
 
     if (isWheelChannel && !isRotationChannel) {
@@ -292,93 +292,93 @@ const parserPerChannelType = {
     type: `NoFunction`,
   }),
   Intensity: ({ qlcPlusChannel, capabilityName }) => {
-    const cap = {};
+    const capability = {};
 
     if (`Colour` in qlcPlusChannel && qlcPlusChannel.Colour[0] !== `Generic`) {
-      cap.type = `ColorIntensity`;
-      cap.color = qlcPlusChannel.Colour[0];
+      capability.type = `ColorIntensity`;
+      capability.color = qlcPlusChannel.Colour[0];
     }
     else {
-      cap.type = `Intensity`;
+      capability.type = `Intensity`;
     }
 
     if (!capabilityName.match(/^(?:intensity|dimmer)$/i)) {
-      cap.comment = capabilityName;
+      capability.comment = capabilityName;
     }
 
-    return cap;
+    return capability;
   },
   Colour: ({ channelName, qlcPlusCapability, capabilityName, index }) => {
-    const cap = {};
+    const capability = {};
 
     if (channelName.match(/wheel\b/i)) {
-      cap.type = `WheelSlot`;
-      cap.slotNumber = index + 1;
+      capability.type = `WheelSlot`;
+      capability.slotNumber = index + 1;
 
-      cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+      capability.comment = importHelpers.getSpeedGuessedComment(capabilityName, capability);
 
-      if (`speed` in cap || `speedStart` in cap) {
-        cap.type = `WheelRotation`;
-        delete cap.slotNumber;
+      if (`speed` in capability || `speedStart` in capability) {
+        capability.type = `WheelRotation`;
+        delete capability.slotNumber;
       }
 
-      return cap;
+      return capability;
     }
 
-    cap.type = `ColorPreset`;
-    cap.comment = capabilityName;
+    capability.type = `ColorPreset`;
+    capability.comment = capabilityName;
 
     if (`Color` in qlcPlusCapability.$) {
-      cap.colors = [qlcPlusCapability.$.Color];
+      capability.colors = [qlcPlusCapability.$.Color];
 
       if (`Color2` in qlcPlusCapability.$) {
-        cap.colors.push(qlcPlusCapability.$.Color2);
+        capability.colors.push(qlcPlusCapability.$.Color2);
       }
     }
 
-    return cap;
+    return capability;
   },
   Gobo: ({ capabilityName, channelNameInWheels, index }) => {
     if (/shake\b|shaking\b/i.test(capabilityName)) {
       return capabilityPresets.GoboShakeMacro.importCapability({ capabilityName, index });
     }
 
-    const cap = {
+    const capability = {
       type: `WheelSlot`,
       slotNumber: index + 1,
     };
 
-    cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+    capability.comment = importHelpers.getSpeedGuessedComment(capabilityName, capability);
 
-    if (`speed` in cap || `speedStart` in cap) {
-      cap.type = channelNameInWheels ? `WheelRotation` : `WheelSlotRotation`;
-      delete cap.slotNumber;
+    if (`speed` in capability || `speedStart` in capability) {
+      capability.type = channelNameInWheels ? `WheelRotation` : `WheelSlotRotation`;
+      delete capability.slotNumber;
     }
 
-    return cap;
+    return capability;
   },
   Effect: ({ capabilityName }) => {
-    const cap = {
+    const capability = {
       type: `Effect`,
       effectName: ``, // set it first here so effectName is before speedStart/speedEnd
     };
-    cap.effectName = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+    capability.effectName = importHelpers.getSpeedGuessedComment(capabilityName, capability);
 
-    if (cap.effectName === ``) {
-      delete cap.effectName;
-      if (cap.type === `Effect`) {
-        cap.type = `Speed`;
+    if (capability.effectName === ``) {
+      delete capability.effectName;
+      if (capability.type === `Effect`) {
+        capability.type = `Speed`;
       }
     }
-    else if (cap.type === `Rotation`) {
-      cap.comment = cap.effectName;
-      delete cap.effectName;
+    else if (capability.type === `Rotation`) {
+      capability.comment = capability.effectName;
+      delete capability.effectName;
     }
-    else if (/\bsound\b/i.test(cap.effectName)) {
-      cap.soundControlled = true;
+    else if (/\bsound\b/i.test(capability.effectName)) {
+      capability.soundControlled = true;
     }
 
-    return cap;
+    return capability;
   },
   Maintenance: ({ capabilityName }) => ({
     type: `Maintenance`,
@@ -386,18 +386,18 @@ const parserPerChannelType = {
   }),
   Pan: ({ channelName, capabilityName, panMax }) => {
     if (channelName.match(/continuous/i)) {
-      const cap = {
+      const capability = {
         type: `PanContinuous`,
       };
-      cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+      capability.comment = importHelpers.getSpeedGuessedComment(capabilityName, capability);
 
-      if (!(`speed` in cap || `speedStart` in cap)) {
-        cap.speedStart = `slow CW`;
-        cap.speedEnd = `fast CW`;
-        cap.helpWanted = `Are the automatically added speed values correct?`;
+      if (!(`speed` in capability || `speedStart` in capability)) {
+        capability.speedStart = `slow CW`;
+        capability.speedEnd = `fast CW`;
+        capability.helpWanted = `Are the automatically added speed values correct?`;
       }
 
-      return cap;
+      return capability;
     }
 
     return Object.assign(importHelpers.getPanTiltCap(`Pan`, panMax), {
@@ -406,18 +406,18 @@ const parserPerChannelType = {
   },
   Tilt: ({ channelName, capabilityName, tiltMax }) => {
     if (channelName.match(/continuous/i)) {
-      const cap = {
+      const capability = {
         type: `TiltContinuous`,
       };
-      cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+      capability.comment = importHelpers.getSpeedGuessedComment(capabilityName, capability);
 
-      if (!(`speed` in cap || `speedStart` in cap)) {
-        cap.speedStart = `slow CW`;
-        cap.speedEnd = `fast CW`;
-        cap.helpWanted = `Are the automatically added speed values correct?`;
+      if (!(`speed` in capability || `speedStart` in capability)) {
+        capability.speedStart = `slow CW`;
+        capability.speedEnd = `fast CW`;
+        capability.helpWanted = `Are the automatically added speed values correct?`;
       }
 
-      return cap;
+      return capability;
     }
 
     return Object.assign(importHelpers.getPanTiltCap(`Tilt`, tiltMax), {
@@ -429,7 +429,7 @@ const parserPerChannelType = {
     comment: capabilityName,
   }),
   Shutter: ({ capabilityName }) => {
-    const cap = {
+    const capability = {
       type: `ShutterStrobe`,
     };
 
@@ -441,57 +441,57 @@ const parserPerChannelType = {
       RampDown: /ramp\s*down/i,
     };
 
-    cap.shutterEffect = Object.keys(shutterEffects).find(
+    capability.shutterEffect = Object.keys(shutterEffects).find(
       shutterEffect => capabilityName.match(shutterEffects[shutterEffect]),
     ) || `Strobe`;
 
-    if ([`Open`, `Closed`].includes(cap.shutterEffect)) {
+    if ([`Open`, `Closed`].includes(capability.shutterEffect)) {
       // short circuit, there's no need to test for randomTiming or speed
-      return cap;
+      return capability;
     }
 
     if (capabilityName.match(/random/i)) {
-      cap.randomTiming = true;
+      capability.randomTiming = true;
     }
 
-    cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+    capability.comment = importHelpers.getSpeedGuessedComment(capabilityName, capability);
 
-    if (!(`speed` in cap || `speedStart` in cap)) {
-      cap.speedStart = `slow`;
-      cap.speedEnd = `fast`;
-      cap.helpWanted = `Are the automatically added speed values correct?`;
+    if (!(`speed` in capability || `speedStart` in capability)) {
+      capability.speedStart = `slow`;
+      capability.speedEnd = `fast`;
+      capability.helpWanted = `Are the automatically added speed values correct?`;
     }
 
-    return cap;
+    return capability;
   },
   Speed: ({ channelName, capabilityName }) => {
-    const cap = {};
+    const capability = {};
 
     if (channelName.match(/pan\/?tilt/i)) {
-      cap.type = `PanTiltSpeed`;
+      capability.type = `PanTiltSpeed`;
     }
     else if (channelName.match(/strobe/i) || capabilityName.match(/strobe/i)) {
       if (channelName.match(/speed|rate/i)) {
-        cap.type = `StrobeSpeed`;
+        capability.type = `StrobeSpeed`;
       }
       else {
-        cap.type = `ShutterStrobe`;
-        cap.shutterEffect = `Strobe`;
+        capability.type = `ShutterStrobe`;
+        capability.shutterEffect = `Strobe`;
       }
     }
     else {
-      cap.type = `Speed`;
+      capability.type = `Speed`;
     }
 
-    cap.comment = importHelpers.getSpeedGuessedComment(capabilityName, cap);
+    capability.comment = importHelpers.getSpeedGuessedComment(capabilityName, capability);
 
-    if (!(`speed` in cap || `speedStart` in cap)) {
-      cap.speedStart = `slow`;
-      cap.speedEnd = `fast`;
-      cap.helpWanted = `Are the automatically added speed values correct?`;
+    if (!(`speed` in capability || `speedStart` in capability)) {
+      capability.speedStart = `slow`;
+      capability.speedEnd = `fast`;
+      capability.helpWanted = `Are the automatically added speed values correct?`;
     }
 
-    return cap;
+    return capability;
   },
 };
 
@@ -529,7 +529,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
   }
   else if (`Capability` in qlcPlusChannel) {
     channel.capabilities = qlcPlusChannel.Capability.map(
-      cap => getOflCapability(cap),
+      capability => getOflCapability(capability),
     );
   }
   else {
@@ -550,7 +550,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
    * @returns {Object} The OFL capability object.
    */
   function getOflCapability(qlcPlusCapability) {
-    const cap = {
+    const capability = {
       dmxRange: [Number.parseInt(qlcPlusCapability.$.Min, 10), Number.parseInt(qlcPlusCapability.$.Max, 10)],
       type: ``,
     };
@@ -559,7 +559,7 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
     const channelType = qlcPlusChannel.Group[0]._;
     const capabilityName = (qlcPlusCapability._ || ``).trim();
 
-    const capData = {
+    const capabilityData = {
       qlcPlusChannel,
       channelName: trimmedChannelName,
       channelType,
@@ -573,40 +573,40 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
       tiltMax,
     };
 
-    const capPreset = qlcPlusCapability.$.Preset;
+    const capabilityPreset = qlcPlusCapability.$.Preset;
 
-    if (capPreset && capPreset !== `Alias`) {
-      Object.assign(cap, getCapabilityFromCapabilityPreset(capPreset, capData));
+    if (capabilityPreset && capabilityPreset !== `Alias`) {
+      Object.assign(capability, getCapabilityFromCapabilityPreset(capabilityPreset, capabilityData));
     }
     else if (/^(?:nothing|no func(?:tion)?|unused|not used|empty|no strobe|no prism|no frost)$/i.test(capabilityName)) {
-      cap.type = `NoFunction`;
+      capability.type = `NoFunction`;
     }
     else if (channelType in parserPerChannelType) {
       // try to parse capability based on channel type
-      Object.assign(cap, parserPerChannelType[channelType](capData));
+      Object.assign(capability, parserPerChannelType[channelType](capabilityData));
     }
     else {
-      cap.type = `Generic`,
-      cap.comment = capabilityName;
+      capability.type = `Generic`,
+      capability.comment = capabilityName;
     }
 
     deleteCommentIfUnnecessary();
 
-    return cap;
+    return capability;
 
 
     /**
      * Deletes the capability's comment if it adds no valuable information.
      */
     function deleteCommentIfUnnecessary() {
-      if (!(`comment` in cap)) {
+      if (!(`comment` in capability)) {
         return;
       }
 
       const zeroToHundredRegex = /^0%?\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*100%$/i;
 
-      if (cap.comment === trimmedChannelName || cap.comment.length === 0 || zeroToHundredRegex.test(cap.comment)) {
-        delete cap.comment;
+      if (capability.comment === trimmedChannelName || capability.comment.length === 0 || zeroToHundredRegex.test(capability.comment)) {
+        delete capability.comment;
       }
     }
   }
@@ -891,14 +891,14 @@ function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
  */
 function addSwitchingChannels(fixture, qlcPlusFixture) {
   qlcPlusFixture.Channel.forEach(qlcPlusChannel => {
-    const hasAliases = (qlcPlusChannel.Capability || []).some(cap => cap.$.Preset === `Alias`);
+    const hasAliases = (qlcPlusChannel.Capability || []).some(capability => capability.$.Preset === `Alias`);
     if (!hasAliases) {
       return;
     }
 
     const switchChannels = [];
-    qlcPlusChannel.Capability.forEach((cap, index) => {
-      (cap.Alias || []).forEach(alias => {
+    qlcPlusChannel.Capability.forEach((capability, index) => {
+      (capability.Alias || []).forEach(alias => {
         const switchChannel = switchChannels.find(channel => channel.default === alias.$.Channel && channel.modes.includes(alias.$.Mode));
         if (switchChannel) {
           switchChannel.switchTo[index] = alias.$.With;
@@ -928,7 +928,7 @@ function addSwitchingChannels(fixture, qlcPlusFixture) {
 
         const otherSwitchTo = otherSwitchChannel.switchTo;
         const switchToSame = switchToEntries.length === Object.keys(otherSwitchTo).length && switchToEntries.every(
-          ([capIndex, switchToChannel]) => otherSwitchTo[capIndex] === switchToChannel,
+          ([capabilityIndex, switchToChannel]) => otherSwitchTo[capabilityIndex] === switchToChannel,
         );
 
         if (!switchToSame) {
@@ -963,11 +963,11 @@ function addSwitchingChannels(fixture, qlcPlusFixture) {
     });
 
     // add switchChannels to capabilities
-    fixture.availableChannels[qlcPlusChannel.$.Name].capabilities.forEach((cap, index) => {
-      cap.switchChannels = {};
+    fixture.availableChannels[qlcPlusChannel.$.Name].capabilities.forEach((capability, index) => {
+      capability.switchChannels = {};
 
       switchChannels.forEach(switchChannel => {
-        cap.switchChannels[switchChannel.key] = switchChannel.switchTo[index] || switchChannel.default;
+        capability.switchChannels[switchChannel.key] = switchChannel.switchTo[index] || switchChannel.default;
       });
     });
   });

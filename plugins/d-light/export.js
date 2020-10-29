@@ -115,35 +115,35 @@ function addAttribute(xml, mode, attribute, channels) {
         },
       });
 
-      caps.forEach(cap => addCapability(cap));
+      caps.forEach(capability => addCapability(capability));
     }
 
     /**
      * Adds an XML element for the given capability to the XML capability container.
-     * @param {Capability} cap A capability of a channels capability list.
+     * @param {Capability} capability A capability of a channels capability list.
      */
-    function addCapability(cap) {
+    function addCapability(capability) {
       let hold = `0`;
 
-      if (cap.hold) {
-        if (cap.hold.unit === `ms`) {
-          hold = cap.hold.number;
+      if (capability.hold) {
+        if (capability.hold.unit === `ms`) {
+          hold = capability.hold.number;
         }
-        else if (cap.hold.unit === `s`) {
-          hold = cap.hold.number * 1000;
+        else if (capability.hold.unit === `s`) {
+          hold = capability.hold.number * 1000;
         }
       }
 
 
-      const dmxRange = cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
+      const dmxRange = capability.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
       xmlCapabilities.element({
         name: {
           '@min': dmxRange.start,
           '@max': dmxRange.end,
-          '@snap': cap.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
+          '@snap': capability.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
           '@timeHolder': hold,
           '@dummy': `0`,
-          '#text': cap.name,
+          '#text': capability.name,
         },
       });
     }

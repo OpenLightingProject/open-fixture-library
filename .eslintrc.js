@@ -107,6 +107,7 @@ const enabledRuleParameters = {
       man: { manufacturer: true },
       fix: { fixture: true },
       ch: { channel: true },
+      cap: { capability: true },
     },
   }],
 
