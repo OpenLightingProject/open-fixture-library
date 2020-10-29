@@ -34,12 +34,12 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
   const qlcPlusFixture = xml.FixtureDefinition;
   fixture.name = qlcPlusFixture.Model[0];
 
-  const manKey = slugify(qlcPlusFixture.Manufacturer[0]);
-  const fixKey = `${manKey}/${slugify(fixture.name)}`;
+  const manufacturerKey = slugify(qlcPlusFixture.Manufacturer[0]);
+  const fixKey = `${manufacturerKey}/${slugify(fixture.name)}`;
 
   const manufacturers = {};
-  if (!(manKey in oflManufacturers)) {
-    manufacturers[manKey] = {
+  if (!(manufacturerKey in oflManufacturers)) {
+    manufacturers[manufacturerKey] = {
       name: qlcPlusFixture.Manufacturer[0],
     };
     warnings.push(`Please check if manufacturer is correct and add manufacturer URL.`);

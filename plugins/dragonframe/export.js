@@ -44,9 +44,9 @@ module.exports.export = async function exportDragonframe(fixtures, options) {
   const usedManufacturerData = {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${module.exports.supportedOflVersion}/schemas/manufacturers.json`,
   };
-  for (const man of Object.keys(manufacturers).sort()) {
-    if (usedManufacturers.has(man)) {
-      usedManufacturerData[man] = manufacturers[man];
+  for (const manufacturer of Object.keys(manufacturers).sort()) {
+    if (usedManufacturers.has(manufacturer)) {
+      usedManufacturerData[manufacturer] = manufacturers[manufacturer];
     }
   }
   files.push({

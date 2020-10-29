@@ -173,8 +173,8 @@ export default {
      * @returns {String} The manufacturer and fixture names, separated by a space.
      */
     getFixtureName(fixtureKey) {
-      const manKey = fixtureKey.split(`/`)[0];
-      const manufacturerName = this.manufacturers[manKey].name;
+      const manufacturerKey = fixtureKey.split(`/`)[0];
+      const manufacturerName = this.manufacturers[manufacturerKey].name;
       const fixtureName = register.filesystem[fixtureKey].name;
 
       return `${manufacturerName} ${fixtureName}`;

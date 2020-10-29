@@ -37,13 +37,13 @@ const redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
 
 /**
  * Checks that a given fixture JSON object is valid.
- * @param {String} manKey The manufacturer key.
+ * @param {String} manufacturerKey The manufacturer key.
  * @param {String} fixKey The fixture key.
  * @param {Object|null} fixtureJson The fixture JSON object.
  * @param {UniqueValues|null} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
  * @returns {ResultData} The result object containing errors and warnings, if any.
  */
-function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
+function checkFixture(manufacturerKey, fixKey, fixtureJson, uniqueValues = null) {
   /**
    * @typedef {Object} ResultData
    * @property {Array.<String>} errors All errors of this fixture.
@@ -94,7 +94,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
   }
 
   try {
-    fixture = new Fixture(manKey, fixKey, fixtureJson);
+    fixture = new Fixture(manufacturerKey, fixKey, fixtureJson);
 
     checkFixIdentifierUniqueness();
     checkMeta(fixture.meta);
@@ -136,7 +136,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       result.errors.push(`'redirectTo' is not a valid fixture.`);
     }
 
-    result.name = `${manKey}/${fixKey}.json (redirect)`;
+    result.name = `${manufacturerKey}/${fixKey}.json (redirect)`;
   }
 
   /**
@@ -149,25 +149,25 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     // fixture.key
-    if (!(manKey in uniqueValues.fixKeysInMan)) {
-      uniqueValues.fixKeysInMan[manKey] = new Set();
+    if (!(manufacturerKey in uniqueValues.fixKeysInMan)) {
+      uniqueValues.fixKeysInMan[manufacturerKey] = new Set();
     }
     checkUniqueness(
-      uniqueValues.fixKeysInMan[manKey],
+      uniqueValues.fixKeysInMan[manufacturerKey],
       fixture.key,
       result,
-      `Fixture key '${fixture.key}' is not unique in manufacturer ${manKey} (test is not case-sensitive).`,
+      `Fixture key '${fixture.key}' is not unique in manufacturer ${manufacturerKey} (test is not case-sensitive).`,
     );
 
     // fixture.name
-    if (!(manKey in uniqueValues.fixNamesInMan)) {
-      uniqueValues.fixNamesInMan[manKey] = new Set();
+    if (!(manufacturerKey in uniqueValues.fixNamesInMan)) {
+      uniqueValues.fixNamesInMan[manufacturerKey] = new Set();
     }
     checkUniqueness(
-      uniqueValues.fixNamesInMan[manKey],
+      uniqueValues.fixNamesInMan[manufacturerKey],
       fixture.name,
       result,
-      `Fixture name '${fixture.name}' is not unique in manufacturer ${manKey} (test is not case-sensitive).`,
+      `Fixture name '${fixture.name}' is not unique in manufacturer ${manufacturerKey} (test is not case-sensitive).`,
     );
 
     // fixture.shortName
@@ -1138,14 +1138,14 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     }
 
     // fixture.rdm.modelId must be unique per manufacturer
-    if (!(manKey in uniqueValues.fixRdmIdsInMan)) {
-      uniqueValues.fixRdmIdsInMan[manKey] = new Set();
+    if (!(manufacturerKey in uniqueValues.fixRdmIdsInMan)) {
+      uniqueValues.fixRdmIdsInMan[manufacturerKey] = new Set();
     }
     checkUniqueness(
-      uniqueValues.fixRdmIdsInMan[manKey],
+      uniqueValues.fixRdmIdsInMan[manufacturerKey],
       `${fixture.rdm.modelId}`,
       result,
-      `Fixture RDM model ID '${fixture.rdm.modelId}' is not unique in manufacturer ${manKey}.`,
+      `Fixture RDM model ID '${fixture.rdm.modelId}' is not unique in manufacturer ${manufacturerKey}.`,
     );
 
     if (fixture.manufacturer.rdmId === null) {

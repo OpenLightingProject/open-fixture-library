@@ -23,14 +23,14 @@ module.exports.export = async function exportECue(fixtures, options) {
 
   const manufacturers = {};
   for (const fix of fixtures) {
-    const man = fix.manufacturer.key;
-    if (!(man in manufacturers)) {
-      manufacturers[man] = {
+    const manufacturer = fix.manufacturer.key;
+    if (!(manufacturer in manufacturers)) {
+      manufacturers[manufacturer] = {
         data: fix.manufacturer,
         fixtures: [],
       };
     }
-    manufacturers[man].fixtures.push(fix);
+    manufacturers[manufacturer].fixtures.push(fix);
   }
 
   const xml = xmlbuilder.create(
@@ -58,19 +58,19 @@ module.exports.export = async function exportECue(fixtures, options) {
     Tiles: {},
   });
 
-  for (const man of Object.keys(manufacturers)) {
-    const manAttributes = {
+  for (const manufacturer of Object.keys(manufacturers)) {
+    const manufacturerAttributes = {
       '_CreationDate': timestamp,
       '_ModifiedDate': timestamp,
-      'Name': manufacturers[man].data.name,
-      'Comment': manufacturers[man].data.comment,
-      'Web': manufacturers[man].data.website || ``,
+      'Name': manufacturers[manufacturer].data.name,
+      'Comment': manufacturers[manufacturer].data.comment,
+      'Web': manufacturers[manufacturer].data.website || ``,
     };
-    xmlTiles.element(`Manufacturer`, manAttributes);
+    xmlTiles.element(`Manufacturer`, manufacturerAttributes);
 
-    const xmlManFixtures = xmlFixtures.element(`Manufacturer`, manAttributes);
-    for (const fixture of manufacturers[man].fixtures) {
-      addFixture(xmlManFixtures, fixture);
+    const xmlManufacturerFixtures = xmlFixtures.element(`Manufacturer`, manufacturerAttributes);
+    for (const fixture of manufacturers[manufacturer].fixtures) {
+      addFixture(xmlManufacturerFixtures, fixture);
     }
   }
 
@@ -86,17 +86,17 @@ module.exports.export = async function exportECue(fixtures, options) {
 };
 
 /**
- * @param {Object} xmlMan The xmlbuilder <Manufacturer> object.
+ * @param {Object} xmlManufacturer The xmlbuilder <Manufacturer> object.
  * @param {Fixture} fixture The OFL fixture object.
  */
-function addFixture(xmlMan, fixture) {
+function addFixture(xmlManufacturer, fixture) {
   const fixCreationDate = dateToString(fixture.meta.createDate);
   const fixModifiedDate = dateToString(fixture.meta.lastModifyDate);
 
   for (const mode of fixture.modes) {
     const physical = mode.physical || new Physical({});
 
-    const xmlFixture = xmlMan.element(`Fixture`, {
+    const xmlFixture = xmlManufacturer.element(`Fixture`, {
       '_CreationDate': fixCreationDate,
       '_ModifiedDate': fixModifiedDate,
       'Name': fixture.name + (fixture.modes.length > 1 ? ` (${mode.shortName} mode)` : ``),

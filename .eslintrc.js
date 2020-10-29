@@ -104,6 +104,7 @@ const enabledRuleParameters = {
     replacements: {
       ref: false,
       env: false,
+      man: { manufacturer: true },
     },
   }],
 

@@ -68,7 +68,7 @@ const outDirectory = cliArguments.o ? path.resolve(process.cwd(), cliArguments.o
   try {
     const plugin = require(path.join(__dirname, `../plugins`, cliArguments.plugin, `export.js`));
     const files = await plugin.export(
-      fixtures.map(([man, fix]) => fixtureFromRepository(man, fix)),
+      fixtures.map(([manufacturer, fix]) => fixtureFromRepository(manufacturer, fix)),
       {
         baseDirectory: path.join(__dirname, `..`),
         date: new Date(),

@@ -145,10 +145,10 @@ export default {
         sendObject.context = this.context.key;
       }
       else {
-        const manKey = this.fixture.manufacturer.key;
+        const manufacturerKey = this.fixture.manufacturer.key;
         const fixKey = this.fixture.key;
 
-        sendObject.context = `${manKey}/${fixKey}`;
+        sendObject.context = `${manufacturerKey}/${fixKey}`;
       }
 
       return sendObject;

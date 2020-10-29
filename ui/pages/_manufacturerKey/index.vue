@@ -54,10 +54,10 @@ import packageJson from '../../../package.json';
 
 export default {
   async asyncData({ params, $axios, error }) {
-    const manKey = params.manufacturerKey;
+    const manufacturerKey = params.manufacturerKey;
 
     try {
-      const manufacturer = await $axios.$get(`/api/v1/manufacturers/${manKey}`);
+      const manufacturer = await $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`);
       const fixtures = manufacturer.fixtures;
 
       const organizationStructuredData = {

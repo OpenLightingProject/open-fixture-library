@@ -65,15 +65,15 @@ const promises = [];
 const fixturePath = path.join(__dirname, `..`, `fixtures`);
 
 if (cliArguments.a) {
-  for (const manKey of fs.readdirSync(fixturePath)) {
-    const manufacturersDirectory = path.join(fixturePath, manKey);
+  for (const manufacturerKey of fs.readdirSync(fixturePath)) {
+    const manufacturersDirectory = path.join(fixturePath, manufacturerKey);
 
     // files in manufacturer directory
     if (fs.statSync(manufacturersDirectory).isDirectory()) {
       for (const file of fs.readdirSync(manufacturersDirectory)) {
         if (path.extname(file) === `.json`) {
           const fixKey = path.basename(file, `.json`);
-          promises.push(checkFixtureFile(manKey, fixKey));
+          promises.push(checkFixtureFile(manufacturerKey, fixKey));
         }
       }
     }
@@ -94,19 +94,19 @@ else {
       continue;
     }
     const fixKey = path.basename(fixPath, `.json`);
-    const manKey = path.dirname(fixPath).split(path.sep).pop();
-    promises.push(checkFixtureFile(manKey, fixKey));
+    const manufacturerKey = path.dirname(fixPath).split(path.sep).pop();
+    promises.push(checkFixtureFile(manufacturerKey, fixKey));
   }
 }
 
 /**
  * Checks (asynchronously) the given fixture.
- * @param {String} manKey The manufacturer key.
+ * @param {String} manufacturerKey The manufacturer key.
  * @param {String} fixKey The fixture key.
  * @returns {Promise.<Object>} A Promise resolving to a result object.
  */
-async function checkFixtureFile(manKey, fixKey) {
-  const filename = `${manKey}/${fixKey}.json`;
+async function checkFixtureFile(manufacturerKey, fixKey) {
+  const filename = `${manufacturerKey}/${fixKey}.json`;
   const result = {
     name: filename,
     errors: [],
@@ -118,7 +118,7 @@ async function checkFixtureFile(manKey, fixKey) {
   try {
     const data = await readFile(filepath, `utf8`);
     const fixtureJson = JSON.parse(data);
-    Object.assign(result, checkFixture(manKey, fixKey, fixtureJson, uniqueValues));
+    Object.assign(result, checkFixture(manufacturerKey, fixKey, fixtureJson, uniqueValues));
   }
   catch (error) {
     result.errors.push(error);
@@ -147,8 +147,8 @@ async function checkManufacturers() {
       throw getAjvErrorMessages(validate.errors, `manufacturers`);
     }
 
-    for (const [manKey, manProperties] of Object.entries(manufacturers)) {
-      if (manKey.startsWith(`$`)) {
+    for (const [manufacturerKey, manufacturerProperties] of Object.entries(manufacturers)) {
+      if (manufacturerKey.startsWith(`$`)) {
         // JSON schema property
         continue;
       }
@@ -159,16 +159,16 @@ async function checkManufacturers() {
       };
       checkUniqueness(
         uniqueValues.manNames,
-        manProperties.name,
+        manufacturerProperties.name,
         uniquenessTestResults,
-        `Manufacturer name '${manProperties.name}' is not unique (test is not case-sensitive).`,
+        `Manufacturer name '${manufacturerProperties.name}' is not unique (test is not case-sensitive).`,
       );
-      if (`rdmId` in manProperties) {
+      if (`rdmId` in manufacturerProperties) {
         checkUniqueness(
           uniqueValues.manRdmIds,
-          `${manProperties.rdmId}`,
+          `${manufacturerProperties.rdmId}`,
           uniquenessTestResults,
-          `Manufacturer RDM ID '${manProperties.rdmId}' is not unique.`,
+          `Manufacturer RDM ID '${manufacturerProperties.rdmId}' is not unique.`,
         );
       }
       result.errors.push(...uniquenessTestResults.errors);

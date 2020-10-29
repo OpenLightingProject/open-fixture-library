@@ -50,9 +50,9 @@ function getFixtureCreateResult(fixtures) {
   return result;
 
   function addFixture(fixture) {
-    const manKey = getManufacturerKey(fixture);
-    const fixKey = getFixtureKey(fixture, manKey);
-    const key = `${manKey}/${fixKey}`;
+    const manufacturerKey = getManufacturerKey(fixture);
+    const fixKey = getFixtureKey(fixture, manufacturerKey);
+    const key = `${manufacturerKey}/${fixKey}`;
 
     result.fixtures[key] = {
       $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
@@ -106,7 +106,7 @@ function getFixtureCreateResult(fixtures) {
     }
 
 
-    const checkResult = checkFixture(manKey, fixKey, result.fixtures[key]);
+    const checkResult = checkFixture(manufacturerKey, fixKey, result.fixtures[key]);
 
     result.warnings[key] = checkResult.warnings;
     result.errors[key] = checkResult.errors;
@@ -123,33 +123,33 @@ function getFixtureCreateResult(fixtures) {
     }
 
     // add new manufacturer
-    const manKey = slugify(fixture.newManufacturerName);
+    const manufacturerKey = slugify(fixture.newManufacturerName);
 
-    result.manufacturers[manKey] = {
+    result.manufacturers[manufacturerKey] = {
       name: fixture.newManufacturerName,
     };
 
     if (propertyExistsIn(`newManufacturerComment`, fixture)) {
-      result.manufacturers[manKey].comment = fixture.newManufacturerComment;
+      result.manufacturers[manufacturerKey].comment = fixture.newManufacturerComment;
     }
 
     if (propertyExistsIn(`newManufacturerWebsite`, fixture)) {
-      result.manufacturers[manKey].website = fixture.newManufacturerWebsite;
+      result.manufacturers[manufacturerKey].website = fixture.newManufacturerWebsite;
     }
 
     if (propertyExistsIn(`newManufacturerRdmId`, fixture)) {
-      result.manufacturers[manKey].rdmId = fixture.newManufacturerRdmId;
+      result.manufacturers[manufacturerKey].rdmId = fixture.newManufacturerRdmId;
     }
 
-    return manKey;
+    return manufacturerKey;
   }
 
   /**
    * @param {Object} fixture The editor fixture object.
-   * @param {String} manKey The manufacturer key of the fixture.
+   * @param {String} manufacturerKey The manufacturer key of the fixture.
    * @returns {String} The fixture key.
    */
-  function getFixtureKey(fixture, manKey) {
+  function getFixtureKey(fixture, manufacturerKey) {
     if (`key` in fixture && fixture.key !== `[new]`) {
       return fixture.key;
     }
@@ -157,8 +157,8 @@ function getFixtureCreateResult(fixtures) {
     let fixKey = slugify(fixture.name);
 
     const otherFixtureKeys = new Set(Object.keys(result.fixtures).filter(
-      key => key.startsWith(manKey),
-    ).map(key => key.slice(manKey.length + 1)));
+      key => key.startsWith(manufacturerKey),
+    ).map(key => key.slice(manufacturerKey.length + 1)));
 
     while (otherFixtureKeys.has(fixKey)) {
       fixKey += `-2`;

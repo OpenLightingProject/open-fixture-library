@@ -50,13 +50,13 @@ for (const featureFile of fs.readdirSync(fixFeaturesDirectory)) {
 
 // check which features each fixture supports
 let fixtures = [];
-for (const manFix of Object.keys(register.filesystem)) {
-  const [manKey, fixKey] = manFix.split(`/`);
+for (const manufacturerFix of Object.keys(register.filesystem)) {
+  const [manufacturerKey, fixKey] = manufacturerFix.split(`/`);
 
   // pre-process data
-  const fix = fixtureFromRepository(manKey, fixKey);
+  const fix = fixtureFromRepository(manufacturerKey, fixKey);
   const fixResult = {
-    man: manKey,
+    man: manufacturerKey,
     key: fixKey,
     name: fix.name,
     features: [],

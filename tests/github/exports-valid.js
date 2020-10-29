@@ -24,7 +24,7 @@ let testErrored = false;
 
 /**
  * @typedef {Object} Task
- * @property {String} manKey The manufacturer key of the fixture that should be tested.
+ * @property {String} manufacturerKey The manufacturer key of the fixture that should be tested.
  * @property {String} fixKey The key of the fixture that should be tested.
  * @property {String} pluginKey The key of the export plugin whose output should be tested.
  * @property {String} testKey The key of the export test that should be executed.
@@ -49,7 +49,7 @@ let testErrored = false;
       .concat(getTasksForFixtures(changedComponents))
       .filter((task, index, array) => {
         const firstEqualTask = array.find(otherTask =>
-          task.manKey === otherTask.manKey &&
+          task.manufacturerKey === otherTask.manufacturerKey &&
           task.fixKey === otherTask.fixKey &&
           task.pluginKey === otherTask.pluginKey &&
           task.testKey === otherTask.testKey,
@@ -59,13 +59,13 @@ let testErrored = false;
         return task === firstEqualTask;
       })
       .sort((a, b) => {
-        const manCompare = a.manKey.localeCompare(b.manKey);
+        const manufacturerCompare = a.manufacturerKey.localeCompare(b.manufacturerKey);
         const fixCompare = a.fixKey.localeCompare(b.fixKey);
         const pluginCompare = a.pluginKey.localeCompare(b.pluginKey);
         const testCompare = a.testKey.localeCompare(b.testKey);
 
-        if (manCompare !== 0) {
-          return manCompare;
+        if (manufacturerCompare !== 0) {
+          return manufacturerCompare;
         }
 
         if (fixCompare !== 0) {
@@ -138,9 +138,9 @@ function getTasksForModel(changedComponents) {
     changedComponents.modified.model ||
     changedComponents.removed.model) {
 
-    for (const [manKey, fixKey] of testFixtures) {
+    for (const [manufacturerKey, fixKey] of testFixtures) {
       tasks.push(...exportTests.map(([pluginKey, testKey]) => ({
-        manKey,
+        manufacturerKey,
         fixKey,
         pluginKey,
         testKey,
@@ -163,9 +163,9 @@ function getTasksForPlugins(changedComponents) {
   for (const changedPlugin of changedPlugins) {
     const pluginExportTests = plugins.data[changedPlugin].exportTests;
 
-    for (const [manKey, fixKey] of testFixtures) {
+    for (const [manufacturerKey, fixKey] of testFixtures) {
       tasks.push(...pluginExportTests.map(testKey => ({
-        manKey,
+        manufacturerKey,
         fixKey,
         pluginKey: changedPlugin,
         testKey,
@@ -185,9 +185,9 @@ function getTasksForExportTests(changedComponents) {
 
   const changedExportTests = changedComponents.added.exportTests.concat(changedComponents.modified.exportTests);
 
-  for (const [manKey, fixKey] of testFixtures) {
+  for (const [manufacturerKey, fixKey] of testFixtures) {
     tasks.push(...changedExportTests.map(([pluginKey, testKey]) => ({
-      manKey,
+      manufacturerKey,
       fixKey,
       pluginKey,
       testKey,
@@ -206,9 +206,9 @@ function getTasksForFixtures(changedComponents) {
 
   const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures);
 
-  for (const [manKey, fixKey] of fixtures) {
+  for (const [manufacturerKey, fixKey] of fixtures) {
     tasks.push(...exportTests.map(([pluginKey, testKey]) => ({
-      manKey,
+      manufacturerKey,
       fixKey,
       pluginKey,
       testKey,
@@ -229,7 +229,7 @@ async function getTaskPromise(task) {
   const detailListItems = [];
 
   try {
-    const files = await plugin.export([fixtureFromRepository(task.manKey, task.fixKey)], {
+    const files = await plugin.export([fixtureFromRepository(task.manufacturerKey, task.fixKey)], {
       baseDirectory: path.join(__dirname, `../..`),
       date: new Date(),
     });
@@ -255,7 +255,7 @@ async function getTaskPromise(task) {
 
   return [
     `<details>`,
-    `  <summary>${emoji} <strong>${task.manKey} / ${task.fixKey}:</strong> ${task.pluginKey} / ${task.testKey}</summary>`,
+    `  <summary>${emoji} <strong>${task.manufacturerKey} / ${task.fixKey}:</strong> ${task.pluginKey} / ${task.testKey}</summary>`,
     `  <ul>`,
     ...detailListItems.map(listItem => `    <li>${listItem}</li>`),
     `  </ul>`,

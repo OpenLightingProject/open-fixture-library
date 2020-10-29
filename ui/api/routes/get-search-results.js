@@ -27,10 +27,10 @@ function getSearchResults({ request }) {
  * @returns {Boolean} True if the fixture matches the search query, false otherwise.
  */
 function queryMatch(searchQuery, fixtureKey) {
-  const man = fixtureKey.split(`/`)[0];
+  const manufacturer = fixtureKey.split(`/`)[0];
   const fixData = register.filesystem[fixtureKey];
 
-  return fixtureKey.includes(searchQuery.toLowerCase()) || `${manufacturers[man].name} ${fixData.name}`.toLowerCase().includes(searchQuery.toLowerCase());
+  return fixtureKey.includes(searchQuery.toLowerCase()) || `${manufacturers[manufacturer].name} ${fixData.name}`.toLowerCase().includes(searchQuery.toLowerCase());
 }
 
 /**
@@ -40,11 +40,11 @@ function queryMatch(searchQuery, fixtureKey) {
  * @returns {Boolean} True if the fixture matches the manufacturer query, false otherwise.
  */
 function manufacturerMatch(manufacturersQuery, fixtureKey) {
-  const man = fixtureKey.split(`/`)[0];
+  const manufacturer = fixtureKey.split(`/`)[0];
 
   return manufacturersQuery.length === 0 ||
     (manufacturersQuery.length === 1 && manufacturersQuery[0] === ``) ||
-    manufacturersQuery.includes(man);
+    manufacturersQuery.includes(manufacturer);
 }
 
 /**

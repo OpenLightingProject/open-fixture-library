@@ -985,7 +985,7 @@ A physical DMX device.
 **Kind**: global class  
 
 * [Fixture](#Fixture)
-    * [new Fixture(man, key, jsonObject)](#new_Fixture_new)
+    * [new Fixture(manufacturer, key, jsonObject)](#new_Fixture_new)
     * [.manufacturer](#Fixture+manufacturer) ⇒ [<code>Manufacturer</code>](#Manufacturer)
     * [.manufacturer](#Fixture+manufacturer)
     * [.key](#Fixture+key) ⇒ <code>String</code>
@@ -1035,13 +1035,13 @@ A physical DMX device.
 
 <a name="new_Fixture_new"></a>
 
-### new Fixture(man, key, jsonObject)
+### new Fixture(manufacturer, key, jsonObject)
 Create a new Fixture instance.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| man | <code>String</code> \| [<code>Manufacturer</code>](#Manufacturer) | Either the fixture's manufacturer's key or a Manufacturer instance. |
+| manufacturer | <code>String</code> \| [<code>Manufacturer</code>](#Manufacturer) | Either the fixture's manufacturer's key or a Manufacturer instance. |
 | key | <code>String</code> | The fixture's unique key. Equals to filename without '.json'. |
 | jsonObject | <code>Object</code> | The fixture's parsed JSON data. |
 
@@ -1057,7 +1057,7 @@ Create a new Fixture instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| newMan | <code>String</code> \| [<code>Manufacturer</code>](#Manufacturer) | Either the fixture's manufacturer's key or a Manufacturer instance. |
+| newManufacturer | <code>String</code> \| [<code>Manufacturer</code>](#Manufacturer) | Either the fixture's manufacturer's key or a Manufacturer instance. |
 
 <a name="Fixture+key"></a>
 

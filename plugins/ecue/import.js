@@ -33,22 +33,22 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
 
   const ecueManufacturers = xml.Document.Library[0].Fixtures[0].Manufacturer || [];
   ecueManufacturers.forEach(manufacturer => {
-    const manName = manufacturer.$.Name;
-    const manKey = slugify(manName);
+    const manufacturerName = manufacturer.$.Name;
+    const manufacturerKey = slugify(manufacturerName);
 
-    out.manufacturers[manKey] = {
-      name: manName,
+    out.manufacturers[manufacturerKey] = {
+      name: manufacturerName,
     };
 
     if (manufacturer.$.Comment !== ``) {
-      out.manufacturers[manKey].comment = manufacturer.$.Comment;
+      out.manufacturers[manufacturerKey].comment = manufacturer.$.Comment;
     }
     if (manufacturer.$.Web !== ``) {
-      out.manufacturers[manKey].website = manufacturer.$.Web;
+      out.manufacturers[manufacturerKey].website = manufacturer.$.Web;
     }
 
     for (const fixture of (manufacturer.Fixture || [])) {
-      addFixture(fixture, manKey);
+      addFixture(fixture, manufacturerKey);
     }
   });
 
@@ -58,15 +58,15 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
   /**
    * Parses the e:cue fixture and add it to out.fixtures.
    * @param {Object} ecueFixture The e:cue fixture object.
-   * @param {String} manKey The manufacturer key of the fixture.
+   * @param {String} manufacturerKey The manufacturer key of the fixture.
    */
-  function addFixture(ecueFixture, manKey) {
+  function addFixture(ecueFixture, manufacturerKey) {
     const fixture = {
       $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
       name: ecueFixture.$.Name,
     };
 
-    let fixKey = `${manKey}/${slugify(fixture.name)}`;
+    let fixKey = `${manufacturerKey}/${slugify(fixture.name)}`;
     if (fixKey in out.fixtures) {
       fixKey += `-${Math.random().toString(36).slice(2, 7)}`;
       out.warnings[fixKey] = [`Fixture key '${fixKey}' is not unique, appended random characters.`];

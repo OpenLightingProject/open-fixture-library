@@ -15,7 +15,7 @@ const testFixtures = require(`../test-fixtures.json`).map(
 
 /**
  * @typedef {Object} Task
- * @property {String} manFix The combined manufacturer / fixture key.
+ * @property {String} manufacturerFix The combined manufacturer / fixture key.
  * @property {String} currentPluginKey The plugin key in the current repo version.
  * @property {String} comparePluginKey The plugin key that should be compared against.
  */
@@ -86,14 +86,14 @@ const testFixtures = require(`../test-fixtures.json`).map(
  */
 function getDiffTasks(changedComponents) {
   const usablePlugins = exportPlugins.filter(plugin => !changedComponents.added.exports.includes(plugin));
-  const addedFixtures = new Set(changedComponents.added.fixtures.map(([man, key]) => `${man}/${key}`));
+  const addedFixtures = new Set(changedComponents.added.fixtures.map(([manufacturer, key]) => `${manufacturer}/${key}`));
   const usableTestFixtures = testFixtures.filter(testFixture => !addedFixtures.has(testFixture));
 
   /** @type {Array.<Task>} */
   return getTasksForModel().concat(getTasksForPlugins(), getTasksForFixtures())
     .filter((task, index, array) => {
       const firstEqualTask = array.find(otherTask =>
-        task.manFix === otherTask.manFix &&
+        task.manufacturerFix === otherTask.manufacturerFix &&
         task.currentPluginKey === otherTask.currentPluginKey &&
         task.comparePluginKey === otherTask.comparePluginKey,
       );
@@ -102,12 +102,12 @@ function getDiffTasks(changedComponents) {
       return task === firstEqualTask;
     })
     .sort((a, b) => {
-      const manFixCompare = a.manFix.localeCompare(b.manFix);
+      const manufacturerFixCompare = a.manufacturerFix.localeCompare(b.manufacturerFix);
       const currentPluginCompare = a.currentPluginKey.localeCompare(b.currentPluginKey);
       const comparePluginCompare = a.comparePluginKey.localeCompare(b.comparePluginKey);
 
-      if (manFixCompare !== 0) {
-        return manFixCompare;
+      if (manufacturerFixCompare !== 0) {
+        return manufacturerFixCompare;
       }
 
       if (currentPluginCompare !== 0) {
@@ -127,9 +127,9 @@ function getDiffTasks(changedComponents) {
       changedComponents.modified.model ||
       changedComponents.removed.model) {
 
-      for (const manFix of usableTestFixtures) {
+      for (const manufacturerFix of usableTestFixtures) {
         tasks.push(...usablePlugins.map(pluginKey => ({
-          manFix,
+          manufacturerFix,
           currentPluginKey: pluginKey,
           comparePluginKey: pluginKey,
         })));
@@ -147,8 +147,8 @@ function getDiffTasks(changedComponents) {
 
     const changedPlugins = changedComponents.modified.exports;
     for (const changedPlugin of changedPlugins) {
-      tasks.push(...usableTestFixtures.map(manFix => ({
-        manFix,
+      tasks.push(...usableTestFixtures.map(manufacturerFix => ({
+        manufacturerFix,
         currentPluginKey: changedPlugin,
         comparePluginKey: changedPlugin,
       })));
@@ -164,8 +164,8 @@ function getDiffTasks(changedComponents) {
         const lastVersion = previousVersions[previousVersions.length - 1];
 
         if (removedPlugins.includes(lastVersion) || (plugins.exportPlugins.includes(lastVersion) && !addedPlugins.includes(lastVersion))) {
-          tasks.push(...usableTestFixtures.map(manFix => ({
-            manFix,
+          tasks.push(...usableTestFixtures.map(manufacturerFix => ({
+            manufacturerFix,
             currentPluginKey: addedPlugin,
             comparePluginKey: lastVersion,
           })));
@@ -182,9 +182,9 @@ function getDiffTasks(changedComponents) {
   function getTasksForFixtures() {
     const tasks = [];
 
-    for (const [manKey, fixKey] of changedComponents.modified.fixtures) {
+    for (const [manufacturerKey, fixKey] of changedComponents.modified.fixtures) {
       tasks.push(...usablePlugins.map(pluginKey => ({
-        manFix: `${manKey}/${fixKey}`,
+        manufacturerFix: `${manufacturerKey}/${fixKey}`,
         currentPluginKey: pluginKey,
         comparePluginKey: pluginKey,
       })));
@@ -199,7 +199,7 @@ function getDiffTasks(changedComponents) {
  * @returns {Promise.<Array.<String>>} An array of message lines.
  */
 async function performTask(task) {
-  const output = await diffPluginOutputs(task.currentPluginKey, task.comparePluginKey, process.env.TRAVIS_BRANCH, [task.manFix]);
+  const output = await diffPluginOutputs(task.currentPluginKey, task.comparePluginKey, process.env.TRAVIS_BRANCH, [task.manufacturerFix]);
   const changeFlags = getChangeFlags(output);
   const emoji = getEmoji(changeFlags);
 
@@ -207,7 +207,7 @@ async function performTask(task) {
 
   const lines = [
     `<details>`,
-    `<summary>${emoji} <strong>${task.manFix}:</strong> ${pluginDisplayName}</summary>`,
+    `<summary>${emoji} <strong>${task.manufacturerFix}:</strong> ${pluginDisplayName}</summary>`,
   ];
 
   if (changeFlags.nothingChanged) {
