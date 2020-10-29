@@ -22,15 +22,15 @@ module.exports = async function testAttributesCorrectness(exportFile, allExportF
     const xml = await promisify(parser.parseString)(exportFile.content);
     const errors = [];
 
-    const attrDefs = xml.Device.Attributes[0].AttributesDefinition;
-    for (const attrDef of attrDefs) {
+    const attributeDefinitions = xml.Device.Attributes[0].AttributesDefinition;
+    for (const attributeDefinition of attributeDefinitions) {
       const usedNames = [];
-      const attrName = attrDef.$.id;
+      const attributeName = attributeDefinition.$.id;
 
-      for (const attr of attrDef.ThisAttribute) {
-        const name = attr.parameterName[0].$.id;
+      for (const attribute of attributeDefinition.ThisAttribute) {
+        const name = attribute.parameterName[0].$.id;
         if (usedNames.includes(name)) {
-          errors.push(`Duplicate parameter name: ${attrName}/${name}`);
+          errors.push(`Duplicate parameter name: ${attributeName}/${name}`);
         }
         else {
           usedNames.push(name);

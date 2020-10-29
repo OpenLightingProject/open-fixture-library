@@ -47,8 +47,8 @@ let testErrored = false;
       .concat(getTasksForPlugins(changedComponents))
       .concat(getTasksForExportTests(changedComponents))
       .concat(getTasksForFixtures(changedComponents))
-      .filter((task, index, arr) => {
-        const firstEqualTask = arr.find(otherTask =>
+      .filter((task, index, array) => {
+        const firstEqualTask = array.find(otherTask =>
           task.manKey === otherTask.manKey &&
           task.fixKey === otherTask.fixKey &&
           task.pluginKey === otherTask.pluginKey &&
@@ -230,7 +230,7 @@ async function getTaskPromise(task) {
 
   try {
     const files = await plugin.export([fixtureFromRepository(task.manKey, task.fixKey)], {
-      baseDir: path.join(__dirname, `../..`),
+      baseDirectory: path.join(__dirname, `../..`),
       date: new Date(),
     });
 

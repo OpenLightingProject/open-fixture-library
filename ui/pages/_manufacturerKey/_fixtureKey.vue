@@ -123,11 +123,11 @@ export default {
         $axios.$get(`/api/v1/plugins`),
       ]);
 
-      let redirectObj = null;
+      let redirectObject = null;
       if (query.redirectFrom) {
         const redirectJson = await $axios.$get(`/${query.redirectFrom}.json`);
 
-        redirectObj = {
+        redirectObject = {
           from: query.redirectFrom,
           reason: redirectReasonExplanations[redirectJson.reason],
         };
@@ -139,7 +139,7 @@ export default {
         manKey,
         fixKey,
         fixtureJson,
-        redirect: redirectObj,
+        redirect: redirectObject,
         loadAllModes: `loadAllModes` in query,
         helpWantedContext: null,
         helpWantedType: ``,

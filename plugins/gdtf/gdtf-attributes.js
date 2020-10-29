@@ -20,7 +20,7 @@ const gdtfUnits = {
     return `${value}kg`;
   },
   Time(value, otherValue) {
-    if (physicalValuesFulfillCondition(value, otherValue, val => Math.abs(val) < 1)) {
+    if (physicalValuesFulfillCondition(value, otherValue, number => Math.abs(number) < 1)) {
       return `${value * 1000}ms`;
     }
 

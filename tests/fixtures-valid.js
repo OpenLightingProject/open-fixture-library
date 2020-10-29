@@ -16,7 +16,7 @@ const manufacturerSchema = require(`../schemas/dereferenced/manufacturers.json`)
 const { checkFixture, checkUniqueness } = require(`./fixture-valid.js`);
 
 
-const args = minimist(process.argv.slice(2), {
+const cliArguments = minimist(process.argv.slice(2), {
   boolean: [`h`, `a`],
   alias: { h: `help`, a: `all-fixtures` },
 });
@@ -35,10 +35,10 @@ const helpMessage = [
   `     Show this help message.`,
 ].join(`\n`);
 
-let fixturePaths = args._;
+let fixturePaths = cliArguments._;
 
 // print help and exit on -h or no fixtures given.
-if (args.help || (fixturePaths.length === 0 && !args.a)) {
+if (cliArguments.help || (fixturePaths.length === 0 && !cliArguments.a)) {
   console.log(helpMessage);
   process.exit(0);
 }
@@ -64,13 +64,13 @@ const uniqueValues = {
 const promises = [];
 const fixturePath = path.join(__dirname, `..`, `fixtures`);
 
-if (args.a) {
+if (cliArguments.a) {
   for (const manKey of fs.readdirSync(fixturePath)) {
-    const manDir = path.join(fixturePath, manKey);
+    const manufacturersDirectory = path.join(fixturePath, manKey);
 
     // files in manufacturer directory
-    if (fs.statSync(manDir).isDirectory()) {
-      for (const file of fs.readdirSync(manDir)) {
+    if (fs.statSync(manufacturersDirectory).isDirectory()) {
+      for (const file of fs.readdirSync(manufacturersDirectory)) {
         if (path.extname(file) === `.json`) {
           const fixKey = path.basename(file, `.json`);
           promises.push(checkFixtureFile(manKey, fixKey));
@@ -147,7 +147,7 @@ async function checkManufacturers() {
       throw getAjvErrorMessages(validate.errors, `manufacturers`);
     }
 
-    for (const [manKey, manProps] of Object.entries(manufacturers)) {
+    for (const [manKey, manProperties] of Object.entries(manufacturers)) {
       if (manKey.startsWith(`$`)) {
         // JSON schema property
         continue;
@@ -159,16 +159,16 @@ async function checkManufacturers() {
       };
       checkUniqueness(
         uniqueValues.manNames,
-        manProps.name,
+        manProperties.name,
         uniquenessTestResults,
-        `Manufacturer name '${manProps.name}' is not unique (test is not case-sensitive).`,
+        `Manufacturer name '${manProperties.name}' is not unique (test is not case-sensitive).`,
       );
-      if (`rdmId` in manProps) {
+      if (`rdmId` in manProperties) {
         checkUniqueness(
           uniqueValues.manRdmIds,
-          `${manProps.rdmId}`,
+          `${manProperties.rdmId}`,
           uniquenessTestResults,
-          `Manufacturer RDM ID '${manProps.rdmId}' is not unique.`,
+          `Manufacturer RDM ID '${manProperties.rdmId}' is not unique.`,
         );
       }
       result.errors.push(...uniquenessTestResults.errors);

@@ -26,7 +26,7 @@ const UUID_NAMESPACE = `0de81b51-02b2-45e3-b53c-578f9eb31b77`; // seed for UUIDs
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
  * @param {Object} options Global options, including:
- * @param {String} options.baseDir Absolute path to OFL's root directory.
+ * @param {String} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date|null} options.date The current time.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
@@ -331,12 +331,12 @@ function getColorSourceChannelType(channel) {
 /**
  * Removes null values and empty arrays from the given object.
  * This function is destructive, i.e. it mutates the given object.
- * @param {Object} obj The object whose properties should be cleaned up.
+ * @param {Object} object The object whose properties should be cleaned up.
  */
-function removeEmptyProperties(obj) {
-  Object.entries(obj).forEach(([key, value]) => {
+function removeEmptyProperties(object) {
+  Object.entries(object).forEach(([key, value]) => {
     if (value === null || (Array.isArray(value) && value.length === 0)) {
-      delete obj[key];
+      delete object[key];
     }
   });
 }

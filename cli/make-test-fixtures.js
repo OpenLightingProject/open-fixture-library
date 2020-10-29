@@ -13,26 +13,26 @@ const { fixtureFromRepository } = require(`../lib/model.js`);
 const register = require(`../fixtures/register.json`);
 const manufacturers = require(`../fixtures/manufacturers.json`);
 
-const fixFeaturesDir = path.join(__dirname, `../lib/fixture-features`);
+const fixFeaturesDirectory = path.join(__dirname, `../lib/fixture-features`);
 const jsonFile = path.join(__dirname, `../tests/test-fixtures.json`);
 const markdownFile = path.join(__dirname, `../tests/test-fixtures.md`);
 
 
 const fixFeatures = [];
 const featuresUsed = {}; // feature id -> times used
-for (const featureFile of fs.readdirSync(fixFeaturesDir)) {
+for (const featureFile of fs.readdirSync(fixFeaturesDirectory)) {
   if (path.extname(featureFile) === `.js`) {
     // module exports array of fix features
-    const fixFeatureFile = require(path.join(fixFeaturesDir, featureFile));
+    const fixFeatureFile = require(path.join(fixFeaturesDirectory, featureFile));
 
-    for (let i = 0; i < fixFeatureFile.length; i++) {
-      const fixFeature = fixFeatureFile[i];
+    for (let index = 0; index < fixFeatureFile.length; index++) {
+      const fixFeature = fixFeatureFile[index];
 
       // default id
       if (!(`id` in fixFeature)) {
         fixFeature.id = path.basename(featureFile, `.js`);
         if (fixFeatureFile.length > 1) {
-          fixFeature.id += `-${i}`;
+          fixFeature.id += `-${index}`;
         }
       }
 
@@ -176,8 +176,8 @@ function getMarkdownCode() {
 
   // footnotes
   mdLines.push(`## Footnotes`, ``);
-  for (const [i, footnote] of footnotes.entries()) {
-    mdLines.push(`**<a id="user-content-footnote-${i + 1}">[${i + 1}]</a>**: ${footnote}  `);
+  for (const [index, footnote] of footnotes.entries()) {
+    mdLines.push(`**<a id="user-content-footnote-${index + 1}">[${index + 1}]</a>**: ${footnote}  `);
   }
   mdLines.push(``);
 

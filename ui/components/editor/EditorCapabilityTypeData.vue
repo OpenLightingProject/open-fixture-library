@@ -169,9 +169,9 @@ export default {
       this.$nextTick(() => {
         const defaultData = this.$refs.capabilityTypeData.defaultData;
 
-        for (const prop of Object.keys(defaultData)) {
-          if (!(prop in this.capability.typeData)) {
-            this.$set(this.capability.typeData, prop, defaultData[prop]);
+        for (const property of Object.keys(defaultData)) {
+          if (!(property in this.capability.typeData)) {
+            this.$set(this.capability.typeData, property, defaultData[property]);
           }
         }
 
@@ -192,18 +192,18 @@ export default {
 
       const defaultData = component.defaultData;
 
-      for (const prop of Object.keys(this.capability.typeData)) {
-        if (!(prop in defaultData)) {
-          delete this.capability.typeData[prop];
+      for (const property of Object.keys(this.capability.typeData)) {
+        if (!(property in defaultData)) {
+          delete this.capability.typeData[property];
         }
       }
 
-      if (component && `resetProps` in component) {
-        const resetProps = component.resetProps;
+      if (component && `resetProperties` in component) {
+        const resetProperties = component.resetProperties;
 
-        for (const prop of resetProps) {
-          const defaultPropData = defaultData[prop];
-          this.capability.typeData[prop] = typeof defaultPropData === `string` ? `` : defaultPropData;
+        for (const property of resetProperties) {
+          const defaultPropertyData = defaultData[property];
+          this.capability.typeData[property] = typeof defaultPropertyData === `string` ? `` : defaultPropertyData;
         }
       }
 

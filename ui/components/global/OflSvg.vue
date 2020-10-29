@@ -133,22 +133,22 @@ function getSvg(name, category = null, title) {
  */
 function getColorCircle(colors, title) {
   // viewBox customized to have the (0,0) coordinate in the center
-  let str = `<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" viewBox="-12 -12 24 24" class="icon color-circle">`;
+  let string = `<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" viewBox="-12 -12 24 24" class="icon color-circle">`;
 
   if (title) {
-    str += `<title>${title}</title>`;
+    string += `<title>${title}</title>`;
   }
 
   const radius = 9;
 
   // use current fill color as background / border
-  str += `<circle cx="0" cy="0" r="${radius + 1}" />`;
+  string += `<circle cx="0" cy="0" r="${radius + 1}" />`;
 
-  str += getColorCircleSvgFragment(colors, radius);
+  string += getColorCircleSvgFragment(colors, radius);
 
-  str += `</svg>`;
+  string += `</svg>`;
 
-  return str;
+  return string;
 }
 
 
@@ -162,25 +162,25 @@ export function getColorCircleSvgFragment(colors, radius) {
     return `<circle cx="0" cy="0" r="${radius}" fill="${colors[0]}" />`;
   }
 
-  let svgStr = ``;
+  let svgString = ``;
   const slicePercent = 1 / colors.length;
 
   const xAxisRotation = 0;
   const largeArcFlag = 0;
   const sweepFlag = 1;
 
-  for (const [i, color] of colors.entries()) {
-    const [startX, startY] = getCoordinatesForPercent(i * slicePercent, radius);
-    const [endX, endY] = getCoordinatesForPercent((i + 1) * slicePercent, radius);
+  for (const [index, color] of colors.entries()) {
+    const [startX, startY] = getCoordinatesForPercent(index * slicePercent, radius);
+    const [endX, endY] = getCoordinatesForPercent((index + 1) * slicePercent, radius);
 
     const pathMove = `M ${startX} ${startY}`;
     const pathArc = `A ${radius} ${radius} ${xAxisRotation} ${largeArcFlag} ${sweepFlag} ${endX} ${endY}`;
     const pathLine = `L 0 0`;
 
-    svgStr += `<path d="${pathMove} ${pathArc} ${pathLine}" fill="${color}" />`;
+    svgString += `<path d="${pathMove} ${pathArc} ${pathLine}" fill="${color}" />`;
   }
 
-  return svgStr;
+  return svgString;
 }
 
 

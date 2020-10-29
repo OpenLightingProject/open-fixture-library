@@ -40,7 +40,7 @@ module.exports.version = `0.1.0`; // semantic versioning of export plugin
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects, see our fixture model
  * @param {Object} options Some global options, for example:
- * @param {String} options.baseDir Absolute path to OFL's root directory
+ * @param {String} options.baseDirectory Absolute path to OFL's root directory
  * @param {Date} options.date The current time.
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} All generated files (see file schema above)

@@ -174,9 +174,9 @@ export default {
      */
     insertIndex() {
       // loop from inherited capabilities array end to start
-      for (let i = this.capabilities.length - 1; i >= 0; i--) {
-        if (this.capabilities[i].dmxRange !== null && this.capabilities[i].dmxRange[1] !== null && this.capabilities[i].dmxRange[1] < this.wizard.start) {
-          return i + 1;
+      for (let index = this.capabilities.length - 1; index >= 0; index--) {
+        if (this.capabilities[index].dmxRange !== null && this.capabilities[index].dmxRange[1] !== null && this.capabilities[index].dmxRange[1] < this.wizard.start) {
+          return index + 1;
         }
       }
 
@@ -189,21 +189,21 @@ export default {
     computedCapabilites() {
       const capabilities = [];
 
-      const prevCapability = this.capabilities[this.insertIndex - 1];
+      const previousCapability = this.capabilities[this.insertIndex - 1];
       if (
-        (!prevCapability && this.wizard.start > 0) ||
-        (prevCapability && prevCapability.dmxRange !== null && this.wizard.start > prevCapability.dmxRange[1] + 1)
+        (!previousCapability && this.wizard.start > 0) ||
+        (previousCapability && previousCapability.dmxRange !== null && this.wizard.start > previousCapability.dmxRange[1] + 1)
       ) {
         // empty capability filling the gap before generated capabilities
         capabilities.push(getEmptyCapability());
       }
 
-      for (let i = 0; i < this.wizard.count; i++) {
+      for (let index = 0; index < this.wizard.count; index++) {
         const cap = getEmptyCapability();
 
         cap.dmxRange = [
-          this.wizard.start + (i * this.wizard.width),
-          this.wizard.start + ((i + 1) * this.wizard.width) - 1,
+          this.wizard.start + (index * this.wizard.width),
+          this.wizard.start + ((index + 1) * this.wizard.width) - 1,
         ];
         cap.type = this.wizard.templateCapability.type;
         cap.typeData = clone(this.wizard.templateCapability.typeData);
@@ -211,7 +211,7 @@ export default {
         const textProperties = [`effectName`, `comment`];
         textProperties.forEach(textProperty => {
           if (textProperty in cap.typeData) {
-            cap.typeData[textProperty] = cap.typeData[textProperty].replace(/#/, i + 1);
+            cap.typeData[textProperty] = cap.typeData[textProperty].replace(/#/, index + 1);
           }
         });
 
@@ -327,8 +327,8 @@ export default {
     }
 
     let lastOccupied = -1;
-    for (let i = this.capabilities.length - 1; i >= 0; i--) {
-      const cap = this.capabilities[i];
+    for (let index = this.capabilities.length - 1; index >= 0; index--) {
+      const cap = this.capabilities[index];
 
       if (cap.dmxRange === null) {
         continue;

@@ -2,7 +2,7 @@ const { Octokit } = require(`@octokit/rest`);
 
 require(`../../lib/load-env-file.js`);
 
-const requiredEnvVars = [
+const requiredEnvironmentVariables = [
   `GITHUB_USER_TOKEN`,
   `TRAVIS_REPO_SLUG`,
   `TRAVIS_PULL_REQUEST`,
@@ -21,9 +21,9 @@ let prData;
  * @returns {Promise} Rejects an error message if the environment is not correct.
  */
 module.exports.checkEnv = async function checkEnv() {
-  for (const envVar of requiredEnvVars) {
-    if (!(envVar in process.env)) {
-      throw `Environment variable ${envVar} is required for this script. Please define it in your system or in the .env file.`;
+  for (const environmentVariable of requiredEnvironmentVariables) {
+    if (!(environmentVariable in process.env)) {
+      throw `Environment variable ${environmentVariable} is required for this script. Please define it in your system or in the .env file.`;
     }
   }
 
@@ -57,13 +57,13 @@ module.exports.init = async function init() {
 module.exports.fetchChangedComponents = async function fetchChangedComponents() {
   // fetch changed files in blocks of 100
   const filePromises = [];
-  for (let i = 0; i < prData.changed_files / 100; i++) {
+  for (let index = 0; index < prData.changed_files / 100; index++) {
     filePromises.push(githubClient.pulls.listFiles({
       owner: repoOwner,
       repo: repoName,
       'pull_number': process.env.TRAVIS_PULL_REQUEST,
       'per_page': 100,
-      page: i + 1,
+      page: index + 1,
     }));
   }
 
@@ -185,14 +185,14 @@ module.exports.updateComment = async function updateComment(test) {
   const message = lines.join(`\n`);
 
   const commentPromises = [];
-  for (let i = 0; i < prData.comments / 100; i++) {
+  for (let index = 0; index < prData.comments / 100; index++) {
     commentPromises.push(
       githubClient.issues.listComments({
         owner: repoOwner,
         repo: repoName,
         'issue_number': process.env.TRAVIS_PULL_REQUEST,
         'per_page': 100,
-        page: i + 1,
+        page: index + 1,
       }),
     );
   }

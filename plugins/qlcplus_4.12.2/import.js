@@ -142,8 +142,8 @@ function getOflMatrix(qlcPlusFixture) {
   const matrix = {};
 
   const physicalLayouts = qlcPlusFixture.Mode.concat(qlcPlusFixture)
-    .filter(obj => `Physical` in obj && `Layout` in obj.Physical[0])
-    .map(obj => obj.Physical[0].Layout[0]);
+    .filter(object => `Physical` in object && `Layout` in object.Physical[0])
+    .map(object => object.Physical[0].Layout[0]);
 
   if (physicalLayouts) {
     const maxWidth = Math.max(...physicalLayouts.map(layout => Number.parseInt(layout.$.Width, 10)));
@@ -163,11 +163,11 @@ const slotTypeFunctions = {
   Gobo: {
     isSlotType: (cap, chGroup, capPreset) => (capPreset ? capPreset === `GoboMacro` : chGroup === `Gobo`),
     addSlotProperties: (cap, slot) => {
-      const goboRes = cap.$.Res1 || cap.$.Res || null;
+      const goboResource = cap.$.Res1 || cap.$.Res || null;
       let useResourceName = false;
 
-      if (goboRes) {
-        const goboKey = qlcplusGoboAliases[goboRes];
+      if (goboResource) {
+        const goboKey = qlcplusGoboAliases[goboResource];
 
         if (goboKey) {
           slot.resource = `gobos/${goboKey}`;
@@ -179,7 +179,7 @@ const slotTypeFunctions = {
           }
         }
         else {
-          slot.resource = `gobos/aliases/qlcplus/${goboRes}`;
+          slot.resource = `gobos/aliases/qlcplus/${goboResource}`;
         }
       }
 
@@ -194,8 +194,8 @@ const slotTypeFunctions = {
       slot.name = cap._;
 
       const colors = [`Color`, `Color2`, `Res1`, `Res2`]
-        .filter(attr => attr in cap.$)
-        .map(attr => cap.$[attr]);
+        .filter(attribute => attribute in cap.$)
+        .map(attribute => cap.$[attribute]);
 
       if (colors.length > 0) {
         slot.colors = colors;
@@ -509,13 +509,13 @@ function addOflChannel(fixture, qlcPlusChannel, qlcPlusFixture) {
   };
 
   const physicals = qlcPlusFixture.Mode.concat(qlcPlusFixture)
-    .filter(obj => `Physical` in obj)
-    .map(obj => obj.Physical[0]);
+    .filter(object => `Physical` in object)
+    .map(object => object.Physical[0]);
 
   const [panMax, tiltMax] = [`PanMax`, `TiltMax`].map(
-    prop => Math.max(...physicals.map(physical => {
-      if (physical.Focus && prop in physical.Focus[0].$) {
-        return Number.parseInt(physical.Focus[0].$[prop], 10) || 0;
+    property => Math.max(...physicals.map(physical => {
+      if (physical.Focus && property in physical.Focus[0].$) {
+        return Number.parseInt(physical.Focus[0].$[property], 10) || 0;
       }
       return 0;
     })),
@@ -700,9 +700,9 @@ function getOflPhysical(qlcPlusPhysical, oflFixPhysical = {}) {
       physical.bulb.type = type;
     }
 
-    const colorTemp = Number.parseFloat(qlcPlusPhysical.Bulb[0].$.ColourTemperature);
-    if (colorTemp && getOflFixPhysicalProperty(`bulb`, `colorTemperature`) !== colorTemp) {
-      physical.bulb.colorTemperature = colorTemp;
+    const colorTemperature = Number.parseFloat(qlcPlusPhysical.Bulb[0].$.ColourTemperature);
+    if (colorTemperature && getOflFixPhysicalProperty(`bulb`, `colorTemperature`) !== colorTemperature) {
+      physical.bulb.colorTemperature = colorTemperature;
     }
 
     const lumens = Number.parseFloat(qlcPlusPhysical.Bulb[0].$.Lumens);
@@ -916,11 +916,11 @@ function addSwitchingChannels(fixture, qlcPlusFixture) {
     });
 
     // try to merge similar switchChannels
-    switchChannels.forEach((switchChannel, index) => {
+    switchChannels.forEach((switchChannel, switchChannelIndex) => {
       const switchToEntries = Object.entries(switchChannel.switchTo);
 
-      for (let i = index + 1; i < switchChannels.length; i++) {
-        const otherSwitchChannel = switchChannels[i];
+      for (let index = switchChannelIndex + 1; index < switchChannels.length; index++) {
+        const otherSwitchChannel = switchChannels[index];
 
         if (otherSwitchChannel.default !== switchChannel.default) {
           continue;
@@ -936,8 +936,8 @@ function addSwitchingChannels(fixture, qlcPlusFixture) {
         }
 
         switchChannel.modes.push(...otherSwitchChannel.modes);
-        switchChannels.splice(i, 1);
-        i--;
+        switchChannels.splice(index, 1);
+        index--;
       }
 
       const alternatives = new Set([switchChannel.default, ...Object.values(switchChannel.switchTo)]);
@@ -1006,9 +1006,9 @@ function cleanUpFixture(fixture, qlcPlusFixture) {
 }
 
 /**
- * @param {String} str The string to slugify.
+ * @param {String} string The string to slugify.
  * @returns {String} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
-function slugify(str) {
-  return str.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
+function slugify(string) {
+  return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
 }

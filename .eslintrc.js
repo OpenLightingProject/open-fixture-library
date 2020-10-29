@@ -1,4 +1,4 @@
-const enabledRuleParams = {
+const enabledRuleParameters = {
   // Core ESLint rules
   'accessor-pairs': [],
   'array-bracket-spacing': [],
@@ -206,8 +206,8 @@ const disabledRules = [
 ];
 
 for (const ruleName of vueCoreExtensionRules) {
-  if (ruleName in enabledRuleParams) {
-    enabledRuleParams[`vue/${ruleName}`] = enabledRuleParams[ruleName];
+  if (ruleName in enabledRuleParameters) {
+    enabledRuleParameters[`vue/${ruleName}`] = enabledRuleParameters[ruleName];
   }
 }
 
@@ -243,9 +243,9 @@ module.exports = {
   ],
   rules: {
     ...Object.fromEntries(
-      Object.entries(enabledRuleParams).map(([ruleName, params]) => [
+      Object.entries(enabledRuleParameters).map(([ruleName, parameters]) => [
         ruleName,
-        [warnRules.has(ruleName) ? `warn` : `error`, ...params],
+        [warnRules.has(ruleName) ? `warn` : `error`, ...parameters],
       ]),
     ),
     ...Object.fromEntries(

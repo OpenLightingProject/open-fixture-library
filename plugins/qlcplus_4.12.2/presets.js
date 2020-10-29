@@ -21,7 +21,7 @@ const exportHelpers = {
   isBeamAngle: cap => (cap.type === `BeamAngle` || cap.type === `Zoom`) && cap.angle !== null,
   isWheelChannel: channel => channel.capabilities.some(cap => [`WheelSlot`, `WheelRotation`].includes(cap.type)),
   isAllowedInWheels: cap => [`WheelSlot`, `WheelShake`, `WheelSlotRotation`, `WheelRotation`, `Effect`, `NoFunction`].includes(cap.type),
-  getGoboRes: cap => {
+  getGoboResource: cap => {
     if (cap.isSlotType(`Open`)) {
       return `Others/open.svg`;
     }
@@ -172,9 +172,9 @@ const importHelpers = {
     const speedRegex = /(?:^|,\s*|\s+)\(?((?:(?:counter\s?-?\s?)?clockwise|c?cw).*?(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*hz)\)?$/i;
     if (capabilityName.match(speedRegex)) {
       return capabilityName.replace(speedRegex, (_, direction, start, end) => {
-        const directionStr = direction ? (direction.match(/counter|ccw/i) ? ` CCW` : ` CW`) : ``;
+        const directionString = direction ? (direction.match(/counter|ccw/i) ? ` CCW` : ` CW`) : ``;
 
-        if (directionStr !== ``) {
+        if (directionString !== ``) {
           cap.type = `Rotation`;
         }
 
@@ -188,8 +188,8 @@ const importHelpers = {
           end = `${endNumber}Hz`;
         }
 
-        cap.speedStart = start + directionStr;
-        cap.speedEnd = end + directionStr;
+        cap.speedStart = start + directionString;
+        cap.speedEnd = end + directionString;
 
         // delete the parsed part
         return ``;
@@ -844,7 +844,7 @@ const capabilityPresets = {
   // TODO: import/export a gobo image as res1
   GoboShakeMacro: {
     isApplicable: cap => cap.type === `WheelShake` && cap.isSlotType(/Gobo|Iris|Frost|Open/),
-    exportRes1: exportHelpers.getGoboRes,
+    exportRes1: exportHelpers.getGoboResource,
     importCapability: ({ capabilityName, index }) => {
       const cap = {
         type: `WheelShake`,
@@ -871,7 +871,7 @@ const capabilityPresets = {
   },
   GoboMacro: {
     isApplicable: cap => cap.type === `WheelSlot` && cap.isSlotType(/Gobo|Iris|Frost|Open/),
-    exportRes1: exportHelpers.getGoboRes,
+    exportRes1: exportHelpers.getGoboResource,
     importCapability: ({ index }) => ({
       type: `WheelSlot`,
       slotNumber: index + 1,

@@ -34,9 +34,9 @@
 
       <optgroup v-if="Object.keys(units).length" label="Units">
         <option
-          v-for="({ displayStr }, unitName) of units"
+          v-for="({ displayString }, unitName) of units"
           :key="unitName"
-          :value="unitName">{{ displayStr }}</option>
+          :value="unitName">{{ displayString }}</option>
       </optgroup>
 
     </select>
@@ -153,12 +153,12 @@ export default {
       for (const unitName of this.unitNames) {
         const unitSchema = this.properties.units[unitName];
 
-        const unitStr = `pattern` in unitSchema ? unitSchema.pattern.replace(/^.*\)\??(.*?)\$$/, `$1`).replace(`\\`, ``) : ``;
+        const unitString = `pattern` in unitSchema ? unitSchema.pattern.replace(/^.*\)\??(.*?)\$$/, `$1`).replace(`\\`, ``) : ``;
         const numberSchema = `pattern` in unitSchema ? this.properties.units.number : unitSchema;
 
         units[unitName] = {
-          unitStr,
-          displayStr: getUnitDisplayString(unitStr),
+          unitString,
+          displayString: getUnitDisplayString(unitString),
           numberSchema,
         };
       }
@@ -173,7 +173,7 @@ export default {
         if (this.enumValues.includes(newUnit) || newUnit === ``) {
           this.update(newUnit);
         }
-        else if (this.units[newUnit].unitStr === ``) {
+        else if (this.units[newUnit].unitString === ``) {
           if (this.selectedNumber === ``) {
             this.update(`[no unit]`);
           }
@@ -183,8 +183,8 @@ export default {
           this.$emit(`unit-selected`, `[no unit]`);
         }
         else {
-          this.update(this.selectedNumber + this.units[newUnit].unitStr);
-          this.$emit(`unit-selected`, this.units[newUnit].unitStr);
+          this.update(this.selectedNumber + this.units[newUnit].unitString);
+          this.$emit(`unit-selected`, this.units[newUnit].unitString);
         }
       },
     },
@@ -206,7 +206,7 @@ export default {
           newNumber = ``;
         }
 
-        if (this.units[this.selectedUnit].unitStr === ``) {
+        if (this.units[this.selectedUnit].unitString === ``) {
           if (newNumber === ``) {
             this.update(`[no unit]`);
           }
@@ -215,7 +215,7 @@ export default {
           }
         }
         else {
-          this.update(newNumber + this.units[this.selectedUnit].unitStr);
+          this.update(newNumber + this.units[this.selectedUnit].unitString);
         }
       },
     },
@@ -260,7 +260,7 @@ export default {
       }
 
       this.selectedUnit = Object.keys(this.units).find(
-        unitName => this.units[unitName].unitStr === newUnitString,
+        unitName => this.units[unitName].unitString === newUnitString,
       );
     },
     unitSelected() {
@@ -303,13 +303,13 @@ function getSelectedUnit(value, enumValues, unitNames, units) {
   }
 
   if (value === `[no unit]` || typeof value !== `string`) {
-    return unitNames.find(name => units[name].unitStr === ``);
+    return unitNames.find(name => units[name].unitString === ``);
   }
 
   /* eslint-disable-next-line security/detect-unsafe-regex */ // because it's a bug in safe-regex
   const unit = value.replace(/^-?\d+(\.\d+)?/, ``);
 
-  return unitNames.find(name => units[name].unitStr === unit) || ``;
+  return unitNames.find(name => units[name].unitString === unit) || ``;
 }
 
 /**

@@ -44,24 +44,24 @@ const api = new OpenAPIBackend({
     },
   },
   handlers: Object.assign({},
-    requireNoCacheInDev(`./routes/get-search-results.js`),
-    requireNoCacheInDev(`./routes/submit-feedback.js`),
-    requireNoCacheInDev(`./routes/fixtures/from-editor.js`),
-    requireNoCacheInDev(`./routes/fixtures/import.js`),
-    requireNoCacheInDev(`./routes/fixtures/submit.js`),
-    requireNoCacheInDev(`./routes/manufacturers/index.js`),
-    requireNoCacheInDev(`./routes/manufacturers/_manufacturerKey.js`),
-    requireNoCacheInDev(`./routes/plugins/index.js`),
-    requireNoCacheInDev(`./routes/plugins/_pluginKey.js`),
+    requireNoCacheInDevelopment(`./routes/get-search-results.js`),
+    requireNoCacheInDevelopment(`./routes/submit-feedback.js`),
+    requireNoCacheInDevelopment(`./routes/fixtures/from-editor.js`),
+    requireNoCacheInDevelopment(`./routes/fixtures/import.js`),
+    requireNoCacheInDevelopment(`./routes/fixtures/submit.js`),
+    requireNoCacheInDevelopment(`./routes/manufacturers/index.js`),
+    requireNoCacheInDevelopment(`./routes/manufacturers/_manufacturerKey.js`),
+    requireNoCacheInDevelopment(`./routes/plugins/index.js`),
+    requireNoCacheInDevelopment(`./routes/plugins/_pluginKey.js`),
     {
-      validationFail(ctx, request, response) {
-        let error = ctx.validation.errors;
+      validationFail(context, request, response) {
+        let error = context.validation.errors;
 
         if (typeof error !== `string`) {
           error = getAjvErrorMessages(Array.isArray(error) ? error : [error], `request`).join(`,\n`);
         }
 
-        const errorDescription = `API request for ${request.originalUrl} (${ctx.operation.operationId}) doesn't match schema:`;
+        const errorDescription = `API request for ${request.originalUrl} (${context.operation.operationId}) doesn't match schema:`;
 
         console.error(chalk.bgRed(errorDescription));
         console.error(error);
@@ -70,25 +70,25 @@ const api = new OpenAPIBackend({
           error: `${errorDescription}\n${error}`,
         });
       },
-      notFound(ctx, request, response) {
+      notFound(context, request, response) {
         return response.status(404).json({ error: `Not found` });
       },
-      methodNotAllowed(ctx, request, response) {
+      methodNotAllowed(context, request, response) {
         return response.status(405).json({ error: `Method not allowed` });
       },
-      notImplemented(ctx, request, response) {
+      notImplemented(context, request, response) {
         return response.status(501).json({ error: `No handler registered for operation` });
       },
-      postResponseHandler(ctx, request, response) {
-        if (!ctx.response || !ctx.operation) {
+      postResponseHandler(context, request, response) {
+        if (!context.response || !context.operation) {
           return null;
         }
 
-        const { statusCode = 200, body } = /** @type {ApiResponse} */ (ctx.response);
+        const { statusCode = 200, body } = /** @type {ApiResponse} */ (context.response);
 
         // validate API responses in development mode
         if (process.env.NODE_ENV !== `production`) {
-          const valid = api.validateResponse(body, ctx.operation, statusCode);
+          const valid = api.validateResponse(body, context.operation, statusCode);
 
           if (valid.errors) {
             let error = valid.errors;
@@ -97,7 +97,7 @@ const api = new OpenAPIBackend({
               error = getAjvErrorMessages(Array.isArray(error) ? error : [error], `response`).join(`,\n`);
             }
 
-            const errorDescription = `API response for ${request.originalUrl} (${ctx.operation.operationId}, status code ${statusCode}) doesn't match schema:`;
+            const errorDescription = `API response for ${request.originalUrl} (${context.operation.operationId}, status code ${statusCode}) doesn't match schema:`;
 
             console.error(chalk.bgRed(errorDescription));
             console.error(error);
@@ -110,7 +110,7 @@ const api = new OpenAPIBackend({
   ),
 });
 
-router.use((req, res) => api.handleRequest(req, req, res));
+router.use((request, response) => api.handleRequest(request, request, response));
 
 module.exports = router;
 
@@ -119,7 +119,7 @@ module.exports = router;
  * @param {String} target The require path, like `./register.json`.
  * @returns {*} The result of standard require(target).
  */
-function requireNoCacheInDev(target) {
+function requireNoCacheInDevelopment(target) {
   if (process.env.NODE_ENV !== `production`) {
     delete require.cache[require.resolve(target)];
   }

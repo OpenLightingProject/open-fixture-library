@@ -201,16 +201,16 @@ export default {
     // eslint-disable-next-line complexity
     onStartUpdated() {
       if (this.start === null) {
-        const prevCap = this.capabilities[this.capIndex - 1];
-        if (prevCap && !isCapabilityChanged(prevCap)) {
+        const previousCap = this.capabilities[this.capIndex - 1];
+        if (previousCap && !isCapabilityChanged(previousCap)) {
           this.removePreviousCapability();
         }
         return;
       }
 
-      const prevCap = this.capabilities[this.capIndex - 1];
-      if (prevCap) {
-        if (isCapabilityChanged(prevCap)) {
+      const previousCap = this.capabilities[this.capIndex - 1];
+      if (previousCap) {
+        if (isCapabilityChanged(previousCap)) {
           if (this.start > this.min) {
             this.insertCapabilityBefore();
           }
@@ -258,16 +258,16 @@ export default {
     },
     clear() {
       const emptyCap = getEmptyCapability();
-      for (const prop of Object.keys(emptyCap)) {
-        this.capability[prop] = emptyCap[prop];
+      for (const property of Object.keys(emptyCap)) {
+        this.capability[property] = emptyCap[property];
       }
       this.collapseWithNeighbors();
     },
     collapseWithNeighbors() {
-      const prevCap = this.capabilities[this.capIndex - 1];
+      const previousCap = this.capabilities[this.capIndex - 1];
       const nextCap = this.capabilities[this.capIndex + 1];
 
-      if (prevCap && !isCapabilityChanged(prevCap)) {
+      if (previousCap && !isCapabilityChanged(previousCap)) {
         if (nextCap && !isCapabilityChanged(nextCap)) {
           this.removePreviousCapability();
           this.removeCurrentCapability();

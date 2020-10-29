@@ -146,22 +146,22 @@ app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, async (request, response, next
 });
 
 app.get(`/sitemap.xml`, (request, response) => {
-  const generateSitemap = requireNoCacheInDev(`./lib/generate-sitemap.js`);
+  const generateSitemap = requireNoCacheInDevelopment(`./lib/generate-sitemap.js`);
 
   response.type(`application/xml`);
   generateSitemap(packageJson.homepage).pipe(response);
 });
 
 app.use(`/api/v1`, (request, response) => {
-  requireNoCacheInDev(`./ui/api/index.js`)(request, response);
+  requireNoCacheInDevelopment(`./ui/api/index.js`)(request, response);
 });
 
 
 
 // instantiate nuxt.js with the options
-const isDev = process.argv[2] === `--dev`;
-loadNuxt(isDev ? `dev` : `start`).then(async nuxt => {
-  if (isDev) {
+const isDevelopment = process.argv[2] === `--dev`;
+loadNuxt(isDevelopment ? `dev` : `start`).then(async nuxt => {
+  if (isDevelopment) {
     console.log(`Starting dev server with hot reloading...`);
     await build(nuxt);
   }
@@ -189,11 +189,11 @@ app.listen(process.env.PORT, () => {
  * @returns {Promise} A Promise that is resolved when the response is sent.
  */
 async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDesc) {
-  const plugin = requireNoCacheInDev(path.join(__dirname, `plugins`, pluginKey, `export.js`));
+  const plugin = requireNoCacheInDevelopment(path.join(__dirname, `plugins`, pluginKey, `export.js`));
 
   try {
     const files = await plugin.export(fixtures, {
-      baseDir: __dirname,
+      baseDirectory: __dirname,
       date: new Date(),
     });
 
@@ -234,7 +234,7 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
  * @param {String} target The require path, like `./register.json`.
  * @returns {*} The result of standard require(target).
  */
-function requireNoCacheInDev(target) {
+function requireNoCacheInDevelopment(target) {
   if (process.env.NODE_ENV !== `production`) {
     delete require.cache[require.resolve(target)];
   }

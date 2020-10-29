@@ -91,8 +91,8 @@ function getDiffTasks(changedComponents) {
 
   /** @type {Array.<Task>} */
   return getTasksForModel().concat(getTasksForPlugins(), getTasksForFixtures())
-    .filter((task, index, arr) => {
-      const firstEqualTask = arr.find(otherTask =>
+    .filter((task, index, array) => {
+      const firstEqualTask = array.find(otherTask =>
         task.manFix === otherTask.manFix &&
         task.currentPluginKey === otherTask.currentPluginKey &&
         task.comparePluginKey === otherTask.comparePluginKey,

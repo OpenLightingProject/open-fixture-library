@@ -11,15 +11,15 @@ const testFixtures = require(`../tests/test-fixtures.json`).map(
   fixture => `${fixture.man}/${fixture.key}`,
 );
 
-const args = minimist(process.argv.slice(2), {
+const cliArguments = minimist(process.argv.slice(2), {
   string: [`p`, `c`, `r`],
   boolean: [`t`, `h`],
   alias: { p: `plugin`, c: `compare-plugin`, r: `ref`, t: `test-fix`, h: `help` },
   default: { r: `HEAD` },
 });
-args.comparePlugin = args[`compare-plugin`];
-args.testFix = args[`test-fix`];
-args.fixtures = args._;
+cliArguments.comparePlugin = cliArguments[`compare-plugin`];
+cliArguments.testFix = cliArguments[`test-fix`];
+cliArguments.fixtures = cliArguments._;
 
 const helpMessage = [
   `This script exports the given fixtures with the current version of the given plugin and diffs the results`,
@@ -37,24 +37,24 @@ const helpMessage = [
   `  --help,           -h: Show this help message.`,
 ].join(`\n`);
 
-if (args.help) {
+if (cliArguments.help) {
   console.log(helpMessage);
   process.exit(0);
 }
 
-if (!args.plugin) {
+if (!cliArguments.plugin) {
   console.error(`${chalk.red(`[Error]`)} Plugin has to be specified using --plugin`);
   console.log(helpMessage);
   process.exit(1);
 }
 
-if (!args.comparePlugin) {
-  args.comparePlugin = args.plugin;
-  args.c = args.p;
+if (!cliArguments.comparePlugin) {
+  cliArguments.comparePlugin = cliArguments.plugin;
+  cliArguments.c = cliArguments.p;
 }
 
-if (args.fixtures.length === 0 && !args.testFix) {
+if (cliArguments.fixtures.length === 0 && !cliArguments.testFix) {
   console.log(`${chalk.yellow(`[Warning]`)} No fixtures specified. See --help for usage.`);
 }
 
-diffPluginOutputs(args.plugin, args.comparePlugin, args.ref, args.testFix ? testFixtures : args.fixtures);
+diffPluginOutputs(cliArguments.plugin, cliArguments.comparePlugin, cliArguments.ref, cliArguments.testFix ? testFixtures : cliArguments.fixtures);

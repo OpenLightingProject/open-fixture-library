@@ -14,17 +14,17 @@ const fixturePath = path.join(__dirname, `../fixtures`);
 try {
   // add all fixture.json files to the register
   for (const manKey of fs.readdirSync(fixturePath)) {
-    const manDir = path.join(fixturePath, manKey);
+    const manDirectory = path.join(fixturePath, manKey);
 
     // only directories
-    if (!fs.statSync(manDir).isDirectory()) {
+    if (!fs.statSync(manDirectory).isDirectory()) {
       continue;
     }
 
 
     register.addManufacturer(manKey, manufacturers[manKey]);
 
-    for (const filename of fs.readdirSync(manDir)) {
+    for (const filename of fs.readdirSync(manDirectory)) {
       if (path.extname(filename) !== `.json`) {
         continue;
       }

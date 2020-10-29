@@ -12,9 +12,9 @@ const plugins = {
 
 const allPreviousVersions = {};
 
-const pluginDir = path.join(__dirname, `../plugins`);
-for (const pluginKey of fs.readdirSync(pluginDir)) {
-  const pluginPath = path.join(pluginDir, pluginKey);
+const pluginDirectory = path.join(__dirname, `../plugins`);
+for (const pluginKey of fs.readdirSync(pluginDirectory)) {
+  const pluginPath = path.join(pluginDirectory, pluginKey);
 
   // files are not plugins
   if (!fs.statSync(pluginPath).isDirectory()) {
@@ -103,7 +103,7 @@ const sortedPluginData = {};
 Object.keys(plugins.data).sort().forEach(key => (sortedPluginData[key] = plugins.data[key]));
 plugins.data = sortedPluginData;
 
-const filename = path.join(pluginDir, `plugins.json`);
+const filename = path.join(pluginDirectory, `plugins.json`);
 fs.writeFile(filename, `${JSON.stringify(plugins, null, 2)}\n`, `utf8`, error => {
   if (error) {
     console.error(`${chalk.red(`[Fail]`)} Could not write plugin data file.`, error);

@@ -482,9 +482,9 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
      */
     function getSpeedGuessedComment() {
       return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|c?cw)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*hz)\)?$/i, (match, direction, start, end) => {
-        const directionStr = direction ? (direction.match(/^(?:clockwise|cw),?\s+$/i) ? ` CW` : ` CCW`) : ``;
+        const directionString = direction ? (direction.match(/^(?:clockwise|cw),?\s+$/i) ? ` CW` : ` CCW`) : ``;
 
-        if (directionStr !== ``) {
+        if (directionString !== ``) {
           cap.type = `Rotation`;
         }
 
@@ -498,8 +498,8 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
           end = `${endNumber}Hz`;
         }
 
-        cap.speedStart = start + directionStr;
-        cap.speedEnd = end + directionStr;
+        cap.speedStart = start + directionString;
+        cap.speedEnd = end + directionString;
 
         // delete the parsed part
         return ``;
@@ -509,9 +509,9 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 }
 
 /**
- * @param {String} str The string to slugify.
+ * @param {String} string The string to slugify.
  * @returns {String} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
-function slugify(str) {
-  return str.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
+function slugify(string) {
+  return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
 }

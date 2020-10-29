@@ -204,7 +204,7 @@ A capability represents a range of a channel.
         * [.canCrossfadeTo(nextCapability)](#Capability+canCrossfadeTo) ⇒ <code>Boolean</code>
         * [.getMenuClickDmxValueWithResolution(desiredResolution)](#Capability+getMenuClickDmxValueWithResolution) ⇒ [<code>Range</code>](#Range)
         * [.isSlotType(slotType)](#Capability+isSlotType) ⇒ <code>Boolean</code>
-        * [._getStartEndArray(prop)](#Capability+_getStartEndArray) ⇒ <code>Array</code> \| <code>null</code> ℗
+        * [._getStartEndArray(property)](#Capability+_getStartEndArray) ⇒ <code>Array</code> \| <code>null</code> ℗
     * _static_
         * [.START_END_ENTITIES](#Capability.START_END_ENTITIES) ⇒ <code>Array.&lt;String&gt;</code>
 
@@ -498,7 +498,7 @@ Use only in `WheelShake` capabilities!
 
 <a name="Capability+_getStartEndArray"></a>
 
-### capability.\_getStartEndArray(prop) ⇒ <code>Array</code> \| <code>null</code> ℗
+### capability.\_getStartEndArray(property) ⇒ <code>Array</code> \| <code>null</code> ℗
 Parses a property that has start and end variants by generating an array with start and end value.
 
 **Kind**: instance method of [<code>Capability</code>](#Capability)  
@@ -507,7 +507,7 @@ Parses a property that has start and end variants by generating an array with st
 
 | Param | Type | Description |
 | --- | --- | --- |
-| prop | <code>String</code> | The base property name. 'Start' and 'End' will be appended to get the start/end variants. |
+| property | <code>String</code> | The base property name. 'Start' and 'End' will be appended to get the start/end variants. |
 
 <a name="Capability.START_END_ENTITIES"></a>
 
@@ -2487,8 +2487,8 @@ Currently used to create matrix channels.
         * [.possibleMatrixChannelKeys](#TemplateChannel+possibleMatrixChannelKeys) ⇒ <code>Map.&lt;String, Array.&lt;String&gt;&gt;</code>
         * [.createMatrixChannels()](#TemplateChannel+createMatrixChannels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
     * _static_
-        * [.resolveTemplateObject(obj, variables)](#TemplateChannel.resolveTemplateObject) ⇒ <code>Object</code>
-        * [.resolveTemplateString(str, variables)](#TemplateChannel.resolveTemplateString) ⇒ <code>String</code>
+        * [.resolveTemplateObject(object, variables)](#TemplateChannel.resolveTemplateObject) ⇒ <code>Object</code>
+        * [.resolveTemplateString(string, variables)](#TemplateChannel.resolveTemplateString) ⇒ <code>String</code>
 
 <a name="new_TemplateChannel_new"></a>
 
@@ -2521,7 +2521,7 @@ Creates matrix channels from this template channel (together with its fine and s
 **Returns**: [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel) - The generated channels associated to the given pixel key and its fine and switching channels.  
 <a name="TemplateChannel.resolveTemplateObject"></a>
 
-### TemplateChannel.resolveTemplateObject(obj, variables) ⇒ <code>Object</code>
+### TemplateChannel.resolveTemplateObject(object, variables) ⇒ <code>Object</code>
 Replaces the specified variables in the specified object by cloning the object.
 
 **Kind**: static method of [<code>TemplateChannel</code>](#TemplateChannel)  
@@ -2529,12 +2529,12 @@ Replaces the specified variables in the specified object by cloning the object.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| obj | <code>Object</code> | The object which has to be modified. |
+| object | <code>Object</code> | The object which has to be modified. |
 | variables | <code>Object.&lt;String, String&gt;</code> | Each variable (without $) pointing to its value. |
 
 <a name="TemplateChannel.resolveTemplateString"></a>
 
-### TemplateChannel.resolveTemplateString(str, variables) ⇒ <code>String</code>
+### TemplateChannel.resolveTemplateString(string, variables) ⇒ <code>String</code>
 Replaces the specified variables in the specified string.
 
 **Kind**: static method of [<code>TemplateChannel</code>](#TemplateChannel)  
@@ -2542,7 +2542,7 @@ Replaces the specified variables in the specified string.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| str | <code>String</code> | The string which has to be modified. |
+| string | <code>String</code> | The string which has to be modified. |
 | variables | <code>Object.&lt;String, String&gt;</code> | Each variable (without $) pointing to its value. |
 
 <a name="Wheel"></a>

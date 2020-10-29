@@ -8,7 +8,7 @@ const mkdirp = require(`mkdirp`);
 const plugins = require(`../plugins/plugins.json`);
 const { fixtureFromRepository } = require(`../lib/model.js`);
 
-const args = minimist(process.argv.slice(2), {
+const cliArguments = minimist(process.argv.slice(2), {
   string: [`p`, `o`],
   boolean: [`h`, `a`],
   alias: { p: `plugin`, h: `help`, a: `all-fixtures`, o: `output-dir` },
@@ -25,35 +25,35 @@ const helpMessage = [
   `  --help,         -h: Show this help message.`,
 ].join(`\n`);
 
-if (args.help) {
+if (cliArguments.help) {
   console.log(helpMessage);
   process.exit(0);
 }
 
-if (!args.plugin) {
+if (!cliArguments.plugin) {
   console.error(`${chalk.red(`[Error]`)} No plugin specified. See --help for usage.`);
   process.exit(1);
 }
 
-if (args._.length === 0 && !args.a) {
+if (cliArguments._.length === 0 && !cliArguments.a) {
   console.error(`${chalk.red(`[Error]`)} No fixtures specified. See --help for usage.`);
   process.exit(1);
 }
 
-if (!plugins.exportPlugins.includes(args.plugin)) {
-  console.error(`${chalk.red(`[Error]`)} Plugin '${args.plugin}' does not exist or does not support exporting.\n\navailable plugins: ${Object.keys(plugins.exportPlugins).join(`, `)}`);
+if (!plugins.exportPlugins.includes(cliArguments.plugin)) {
+  console.error(`${chalk.red(`[Error]`)} Plugin '${cliArguments.plugin}' does not exist or does not support exporting.\n\navailable plugins: ${Object.keys(plugins.exportPlugins).join(`, `)}`);
   process.exit(1);
 }
 
 let fixtures;
-if (args.a) {
+if (cliArguments.a) {
   const register = require(`../fixtures/register.json`);
   fixtures = Object.keys(register.filesystem).filter(
     fixKey => !(`redirectTo` in register.filesystem[fixKey]) || register.filesystem[fixKey].reason === `SameAsDifferentBrand`,
   ).map(fixKey => fixKey.split(`/`));
 }
 else {
-  fixtures = args._.map(relativePath => {
+  fixtures = cliArguments._.map(relativePath => {
     const absolutePath = path.join(process.cwd(), relativePath);
     return [
       path.basename(path.dirname(absolutePath)), // man key
@@ -62,21 +62,21 @@ else {
   });
 }
 
-const outDir = args.o ? path.resolve(process.cwd(), args.o) : null;
+const outDirectory = cliArguments.o ? path.resolve(process.cwd(), cliArguments.o) : null;
 
 (async () => {
   try {
-    const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `export.js`));
+    const plugin = require(path.join(__dirname, `../plugins`, cliArguments.plugin, `export.js`));
     const files = await plugin.export(
       fixtures.map(([man, fix]) => fixtureFromRepository(man, fix)),
       {
-        baseDir: path.join(__dirname, `..`),
+        baseDirectory: path.join(__dirname, `..`),
         date: new Date(),
       },
     );
     for (const file of files) {
-      if (args.o) {
-        const filePath = path.join(outDir, file.name);
+      if (cliArguments.o) {
+        const filePath = path.join(outDirectory, file.name);
         await mkdirp(path.dirname(filePath));
         fs.writeFileSync(filePath, file.content);
         console.log(`Created file ${filePath}`);

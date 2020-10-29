@@ -11,13 +11,13 @@ function followXmlNodeReference(startNode, nodeReference) {
   const nameParts = nodeReference.split(`.`);
   let currentNode = startNode;
 
-  for (const nameAttr of nameParts) {
-    const nodeWithNameAttr = getChildNodes(currentNode).find(
-      node => `$` in node && node.$.Name === nameAttr,
+  for (const nameAttribute of nameParts) {
+    const nodeWithNameAttribute = getChildNodes(currentNode).find(
+      node => `$` in node && node.$.Name === nameAttribute,
     );
 
-    if (nodeWithNameAttr) {
-      currentNode = nodeWithNameAttr;
+    if (nodeWithNameAttribute) {
+      currentNode = nodeWithNameAttribute;
     }
     else {
       return null;
@@ -48,10 +48,10 @@ function followXmlNodeReference(startNode, nodeReference) {
 /**
  * Convert from CIE color representation xyY 1931 to RGB.
  * See https://wolfcrow.com/blog/what-is-the-difference-between-cie-lab-cie-rgb-cie-xyy-and-cie-xyz/
- * @param {String} gdtfColorStr A string in the form "0.3127, 0.3290, 100.0", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-colorCIE
+ * @param {String} gdtfColorString A string in the form "0.3127, 0.3290, 100.0", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-colorCIE
  * @returns {String} The RGB hex code string in the form "#rrggbb".
  */
-function getRgbColorFromGdtfColor(gdtfColorStr) {
+function getRgbColorFromGdtfColor(gdtfColorString) {
   /* eslint-disable camelcase, space-in-parens, unicorn/no-zero-fractions */
 
   // functions ported from https://github.com/njsmith/colorspacious
@@ -80,7 +80,7 @@ function getRgbColorFromGdtfColor(gdtfColorStr) {
 
 
   // parse starting values as array
-  const [x, y, Y] = gdtfColorStr.split(/\s*,\s*/).map(
+  const [x, y, Y] = gdtfColorString.split(/\s*,\s*/).map(
     colorComponent => Number.parseFloat(colorComponent),
   );
 

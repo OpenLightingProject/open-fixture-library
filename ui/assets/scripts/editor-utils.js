@@ -166,26 +166,26 @@ export function getEmptyWheelSlot() {
  * @returns {Boolean} False if the channel object is still empty / unchanged, true otherwise.
  */
 export function isChannelChanged(channel) {
-  return Object.keys(channel).some(prop => {
-    if ([`uuid`, `editMode`, `modeId`, `wizard`].includes(prop)) {
+  return Object.keys(channel).some(property => {
+    if ([`uuid`, `editMode`, `modeId`, `wizard`].includes(property)) {
       return false;
     }
 
-    if ([`defaultValue`, `highlightValue`, `invert`, `constant`, `crossfade`].includes(prop)) {
-      return channel[prop] !== null;
+    if ([`defaultValue`, `highlightValue`, `invert`, `constant`, `crossfade`].includes(property)) {
+      return channel[property] !== null;
     }
 
-    if (prop === `resolution` || prop === `dmxValueResolution`) {
-      return channel[prop] !== constants.RESOLUTION_8BIT;
+    if (property === `resolution` || property === `dmxValueResolution`) {
+      return channel[property] !== constants.RESOLUTION_8BIT;
     }
 
-    if (prop === `capabilities`) {
+    if (property === `capabilities`) {
       return channel.capabilities.some(
         capability => isCapabilityChanged(capability),
       );
     }
 
-    return channel[prop] !== ``;
+    return channel[property] !== ``;
   });
 }
 
@@ -203,8 +203,8 @@ export function isCapabilityChanged(cap) {
     return true;
   }
 
-  return Object.keys(cap.typeData).some(prop => {
-    return cap.typeData[prop] !== `` && cap.typeData[prop] !== null;
+  return Object.keys(cap.typeData).some(property => {
+    return cap.typeData[property] !== `` && cap.typeData[property] !== null;
   });
 }
 
@@ -235,19 +235,19 @@ export function colorsHexStringToArray(hexString) {
  * @returns {Object} A clone of the channel object without properties that are just relevant for displaying it in the channel dialog.
  */
 export function getSanitizedChannel(channel) {
-  const retChannel = clone(channel);
-  delete retChannel.editMode;
-  delete retChannel.modeId;
-  delete retChannel.wizard;
+  const sanitizedChannel = clone(channel);
+  delete sanitizedChannel.editMode;
+  delete sanitizedChannel.modeId;
+  delete sanitizedChannel.wizard;
 
-  return retChannel;
+  return sanitizedChannel;
 }
 
 
 /**
- * @param {*} obj The object / array / ... to clone. Note: only JSON-stringifiable objects / properties are cloneable, i.e. no functions.
+ * @param {*} object The object / array / ... to clone. Note: only JSON-stringifiable objects / properties are cloneable, i.e. no functions.
  * @returns {*} A deep clone.
  */
-export function clone(obj) {
-  return JSON.parse(JSON.stringify(obj));
+export function clone(object) {
+  return JSON.parse(JSON.stringify(object));
 }

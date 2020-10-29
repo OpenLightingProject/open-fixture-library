@@ -423,8 +423,8 @@ export default {
       }
       else if (this.channel.editMode === `edit-all` || this.channel.editMode === `edit-duplicate`) {
         const channel = this.fixture.availableChannels[this.channel.uuid];
-        Object.keys(channel).forEach(prop => {
-          this.channel[prop] = clone(channel[prop]);
+        Object.keys(channel).forEach(property => {
+          this.channel[property] = clone(channel[property]);
         });
       }
 
@@ -533,14 +533,14 @@ export default {
       if (this.formstate.$invalid) {
         const invalidFields = document.querySelectorAll(`#channel-dialog .vf-field-invalid`);
 
-        for (let i = 0; i < invalidFields.length; i++) {
-          const enclosingDetails = invalidFields[i].closest(`details:not([open])`);
+        for (let index = 0; index < invalidFields.length; index++) {
+          const enclosingDetails = invalidFields[index].closest(`details:not([open])`);
 
           if (enclosingDetails) {
             enclosingDetails.open = true;
 
             // current field could be enclosed another time, so repeat
-            i--;
+            index--;
           }
         }
 
@@ -637,10 +637,10 @@ export default {
     addFineChannels(coarseChannel, offset, addToMode) {
       const addedFineChannelUuids = [];
 
-      for (let i = offset; i <= coarseChannel.resolution; i++) {
-        const fineChannel = getEmptyFineChannel(coarseChannel.uuid, i);
+      for (let index = offset; index <= coarseChannel.resolution; index++) {
+        const fineChannel = getEmptyFineChannel(coarseChannel.uuid, index);
         this.$set(this.fixture.availableChannels, fineChannel.uuid, getSanitizedChannel(fineChannel));
-        addedFineChannelUuids[i] = fineChannel.uuid;
+        addedFineChannelUuids[index] = fineChannel.uuid;
 
         if (addToMode) {
           this.currentMode.channels.push(fineChannel.uuid);

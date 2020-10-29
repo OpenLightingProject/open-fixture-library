@@ -241,12 +241,12 @@ export default {
         group: {
           name: `mode`,
           pull: `clone`,
-          put: (to, from, dragElem, event) => {
+          put: (to, from, dragElement, event) => {
             if (from === to) {
               return false;
             }
 
-            const channelUuid = dragElem.getAttribute(`data-channel-uuid`);
+            const channelUuid = dragElement.getAttribute(`data-channel-uuid`);
             const modeUuid = to.el.closest(`.fixture-mode`).getAttribute(`data-mode-uuid`);
             const targetMode = this.fixture.modes.find(mode => mode.uuid === modeUuid);
 

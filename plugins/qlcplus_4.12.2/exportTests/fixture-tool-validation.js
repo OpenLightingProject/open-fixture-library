@@ -81,12 +81,12 @@ module.exports = async function testFixtureToolValidation(exportFile, allExportF
  */
 function downloadFixtureTool(directory) {
   return new Promise((resolve, reject) => {
-    https.get(FIXTURE_TOOL_URL, res => {
+    https.get(FIXTURE_TOOL_URL, response => {
       let data = ``;
-      res.on(`data`, chunk => {
+      response.on(`data`, chunk => {
         data += chunk;
       });
-      res.on(`end`, async () => {
+      response.on(`end`, async () => {
         try {
           await writeFile(path.join(directory, FIXTURE_TOOL_PATH), data, {
             mode: 0o755,
@@ -97,8 +97,6 @@ function downloadFixtureTool(directory) {
           reject(error);
         }
       });
-    }).on(`error`, err => {
-      reject(err);
-    });
+    }).on(`error`, error => reject(error));
   });
 }

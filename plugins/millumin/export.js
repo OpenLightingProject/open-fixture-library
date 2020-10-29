@@ -11,7 +11,7 @@ module.exports.supportedOflVersion = `7.3.0`;
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
  * @param {Object} options Global options, including:
- * @param {String} options.baseDir Absolute path to OFL's root directory.
+ * @param {String} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
@@ -258,17 +258,17 @@ function getDowngradedChannel(channelKey, jsonChannel, fixture) {
 /**
  * Saves the given data (or value, if given) into obj[property] if data is valid,
  * i.e. it is neither undefined, nor null, nor false.
- * @param {Object} obj The object where the property should be created.
+ * @param {Object} object The object where the property should be created.
  * @param {String} property The name of the property added to obj.
  * @param {*} data If this is valid, the property is added to obj.
  * @param {*} value The property value, if data is valid. Defaults to `data`.
  */
-function addIfValidData(obj, property, data, value) {
+function addIfValidData(object, property, data, value) {
   if (value === undefined) {
     value = data;
   }
 
   if (data !== undefined && data !== null && data !== false) {
-    obj[property] = value;
+    object[property] = value;
   }
 }

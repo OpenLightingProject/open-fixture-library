@@ -205,16 +205,16 @@ async function testExternalLink(url) {
  * @returns {Promise} Promise that resolves when issue has been updated or rejects if the issue can't be updated.
  */
 async function updateGithubIssue(urlResults) {
-  const requiredEnvVars = [
+  const requiredEnvironmentVariables = [
     `GITHUB_USER_TOKEN`,
     `GITHUB_BROKEN_LINKS_ISSUE_NUMBER`,
     `TRAVIS_REPO_SLUG`,
     `TRAVIS_JOB_WEB_URL`,
   ];
 
-  for (const envVar of requiredEnvVars) {
-    if (!(envVar in process.env)) {
-      console.log(`For updating GitHub issue, environment variable ${envVar} is required. Please define it in your system or in the .env file.`);
+  for (const environmentVariable of requiredEnvironmentVariables) {
+    if (!(environmentVariable in process.env)) {
+      console.log(`For updating GitHub issue, environment variable ${environmentVariable} is required. Please define it in your system or in the .env file.`);
       return;
     }
   }

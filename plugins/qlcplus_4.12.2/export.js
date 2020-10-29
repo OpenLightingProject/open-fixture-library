@@ -22,7 +22,7 @@ module.exports.version = `1.3.0`;
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
  * @param {Object} options Global options, including:
- * @param {String} options.baseDir Absolute path to OFL's root directory.
+ * @param {String} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
@@ -86,13 +86,13 @@ module.exports.export = async function exportQlcPlus(fixtures, options) {
   });
 
   // add gobo images not included in QLC+ to exported files
-  Object.entries(customGobos).forEach(([qlcplusResName, oflResource]) => {
+  Object.entries(customGobos).forEach(([qlcplusResourceName, oflResource]) => {
     const fileContent = (oflResource.imageEncoding === `base64`)
       ? Buffer.from(oflResource.imageData, `base64`)
       : oflResource.imageData;
 
     outFiles.push({
-      name: `gobos/${qlcplusResName}`,
+      name: `gobos/${qlcplusResourceName}`,
       content: fileContent,
       mimeType: oflResource.imageMimeType,
     });
@@ -264,12 +264,12 @@ function addCapabilityLegacyAttributes(xmlCapability, cap, customGobos) {
     }
   }
 
-  const goboRes = exportHelpers.getGoboRes(cap);
-  if (goboRes) {
-    xmlCapability.attribute(`Res`, goboRes);
+  const goboResource = exportHelpers.getGoboResource(cap);
+  if (goboResource) {
+    xmlCapability.attribute(`Res`, goboResource);
 
-    if (goboRes.startsWith(`ofl/`)) {
-      customGobos[goboRes] = cap.wheelSlot[0].resource;
+    if (goboResource.startsWith(`ofl/`)) {
+      customGobos[goboResource] = cap.wheelSlot[0].resource;
     }
   }
 }

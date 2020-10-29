@@ -234,7 +234,7 @@ function testRandomChannelDownscaling(resolution) {
   );
 
   const doRangesOverlap = scaledRanges.some(
-    ([start, end], index, arr) => index > 0 && start <= arr[index - 1][1],
+    ([start, end], index, array) => index > 0 && start <= array[index - 1][1],
   );
 
   parseTestResult(

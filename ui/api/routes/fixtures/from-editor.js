@@ -58,14 +58,14 @@ function getFixtureCreateResult(fixtures) {
       $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
     };
 
-    for (const prop of Object.keys(schemaProperties.fixture)) {
-      if (prop === `physical`) {
+    for (const property of Object.keys(schemaProperties.fixture)) {
+      if (property === `physical`) {
         const physical = getPhysical(fixture.physical);
         if (!isEmptyObject(physical)) {
           result.fixtures[key].physical = physical;
         }
       }
-      else if (prop === `meta`) {
+      else if (property === `meta`) {
         const now = (new Date()).toISOString().replace(/T.*/, ``);
 
         result.fixtures[key].meta = {
@@ -74,34 +74,34 @@ function getFixtureCreateResult(fixtures) {
           lastModifyDate: now,
         };
       }
-      else if (prop === `links`) {
+      else if (property === `links`) {
         addLinks(result.fixtures[key], fixture.links);
       }
-      else if (prop === `availableChannels`) {
+      else if (property === `availableChannels`) {
         result.fixtures[key].availableChannels = {};
         for (const chId of Object.keys(fixture.availableChannels)) {
           addAvailableChannel(key, fixture.availableChannels, chId);
         }
       }
-      else if (prop === `rdm` && propExistsIn(`rdmModelId`, fixture)) {
+      else if (property === `rdm` && propertyExistsIn(`rdmModelId`, fixture)) {
         result.fixtures[key].rdm = {
           modelId: fixture.rdmModelId,
         };
-        if (propExistsIn(`rdmSoftwareVersion`, fixture)) {
+        if (propertyExistsIn(`rdmSoftwareVersion`, fixture)) {
           result.fixtures[key].rdm.softwareVersion = fixture.rdmSoftwareVersion;
         }
       }
-      else if (prop === `modes`) {
+      else if (property === `modes`) {
         result.fixtures[key].modes = [];
         for (const mode of fixture.modes) {
           addMode(key, mode);
         }
       }
-      else if (prop === `wheels`) {
+      else if (property === `wheels`) {
         addWheels(result.fixtures[key], fixture);
       }
-      else if (propExistsIn(prop, fixture)) {
-        result.fixtures[key][prop] = fixture[prop];
+      else if (propertyExistsIn(property, fixture)) {
+        result.fixtures[key][property] = fixture[property];
       }
     }
 
@@ -129,15 +129,15 @@ function getFixtureCreateResult(fixtures) {
       name: fixture.newManufacturerName,
     };
 
-    if (propExistsIn(`newManufacturerComment`, fixture)) {
+    if (propertyExistsIn(`newManufacturerComment`, fixture)) {
       result.manufacturers[manKey].comment = fixture.newManufacturerComment;
     }
 
-    if (propExistsIn(`newManufacturerWebsite`, fixture)) {
+    if (propertyExistsIn(`newManufacturerWebsite`, fixture)) {
       result.manufacturers[manKey].website = fixture.newManufacturerWebsite;
     }
 
-    if (propExistsIn(`newManufacturerRdmId`, fixture)) {
+    if (propertyExistsIn(`newManufacturerRdmId`, fixture)) {
       result.manufacturers[manKey].rdmId = fixture.newManufacturerRdmId;
     }
 
@@ -170,22 +170,22 @@ function getFixtureCreateResult(fixtures) {
   function getPhysical(from) {
     const physical = {};
 
-    for (const prop of Object.keys(schemaProperties.physical)) {
-      if (schemaProperties.physical[prop].type === `object`) {
-        physical[prop] = {};
+    for (const property of Object.keys(schemaProperties.physical)) {
+      if (schemaProperties.physical[property].type === `object`) {
+        physical[property] = {};
 
-        for (const subProp of Object.keys(schemaProperties.physical[prop].properties)) {
-          if (propExistsIn(subProp, from[prop])) {
-            physical[prop][subProp] = getComboboxInput(subProp, from[prop]);
+        for (const subProperty of Object.keys(schemaProperties.physical[property].properties)) {
+          if (propertyExistsIn(subProperty, from[property])) {
+            physical[property][subProperty] = getComboboxInput(subProperty, from[property]);
           }
         }
 
-        if (isEmptyObject(physical[prop])) {
-          delete physical[prop];
+        if (isEmptyObject(physical[property])) {
+          delete physical[property];
         }
       }
-      else if (propExistsIn(prop, from)) {
-        physical[prop] = getComboboxInput(prop, from);
+      else if (propertyExistsIn(property, from)) {
+        physical[property] = getComboboxInput(property, from);
       }
     }
 
@@ -203,8 +203,8 @@ function getFixtureCreateResult(fixtures) {
 
     for (const linkType of linkTypes) {
       const linksOfType = editorLinksArray.filter(
-        linkObj => linkObj.type === linkType,
-      ).map(linkObj => linkObj.url);
+        linkObject => linkObject.type === linkType,
+      ).map(linkObject => linkObject.url);
 
       if (linksOfType.length > 0) {
         fixture.links[linkType] = linksOfType;
@@ -242,9 +242,9 @@ function getFixtureCreateResult(fixtures) {
 
         const wheelSlotSchema = schemaProperties.wheelSlotTypes[wheelSlot.type];
 
-        for (const slotProp of Object.keys(wheelSlotSchema.properties)) {
-          if (propExistsIn(slotProp, editorWheelSlot.typeData)) {
-            wheelSlot[slotProp] = editorWheelSlot.typeData[slotProp];
+        for (const slotProperty of Object.keys(wheelSlotSchema.properties)) {
+          if (propertyExistsIn(slotProperty, editorWheelSlot.typeData)) {
+            wheelSlot[slotProperty] = editorWheelSlot.typeData[slotProperty];
           }
         }
 
@@ -272,8 +272,8 @@ function getFixtureCreateResult(fixtures) {
 
     const channel = {};
 
-    for (const prop of Object.keys(schemaProperties.channel)) {
-      if (prop === `capabilities`) {
+    for (const property of Object.keys(schemaProperties.channel)) {
+      if (property === `capabilities`) {
         const capabilities = getCapabilities(from);
 
         if (capabilities.length === 1) {
@@ -284,16 +284,16 @@ function getFixtureCreateResult(fixtures) {
           channel.capabilities = capabilities;
         }
       }
-      else if (prop === `fineChannelAliases` && from.resolution > CoarseChannel.RESOLUTION_8BIT) {
+      else if (property === `fineChannelAliases` && from.resolution > CoarseChannel.RESOLUTION_8BIT) {
         channel.fineChannelAliases = [];
       }
-      else if (prop === `dmxValueResolution`) {
+      else if (property === `dmxValueResolution`) {
         if (from.resolution !== from.dmxValueResolution && from.capabilities.length > 1) {
           channel.dmxValueResolution = `${from.dmxValueResolution * 8}bit`;
         }
       }
-      else if (propExistsIn(prop, from)) {
-        channel[prop] = getComboboxInput(prop, from);
+      else if (propertyExistsIn(property, from)) {
+        channel[property] = getComboboxInput(property, from);
       }
     }
 
@@ -345,12 +345,12 @@ function getFixtureCreateResult(fixtures) {
 
       const capabilitySchema = schemaProperties.capabilityTypes[cap.type];
 
-      for (const capProp of Object.keys(capabilitySchema.properties)) {
-        if (propExistsIn(capProp, cap)) {
-          capability[capProp] = cap[capProp];
+      for (const capProperty of Object.keys(capabilitySchema.properties)) {
+        if (propertyExistsIn(capProperty, cap)) {
+          capability[capProperty] = cap[capProperty];
         }
-        else if (propExistsIn(capProp, cap.typeData)) {
-          capability[capProp] = cap.typeData[capProp];
+        else if (propertyExistsIn(capProperty, cap.typeData)) {
+          capability[capProperty] = cap.typeData[capProperty];
         }
       }
 
@@ -366,18 +366,18 @@ function getFixtureCreateResult(fixtures) {
   function addMode(fixKey, from) {
     const mode = {};
 
-    for (const prop of Object.keys(schemaProperties.mode)) {
-      if (prop === `physical`) {
+    for (const property of Object.keys(schemaProperties.mode)) {
+      if (property === `physical`) {
         const physical = getPhysical(from.physical);
         if (!isEmptyObject(physical)) {
           mode.physical = physical;
         }
       }
-      else if (prop === `channels`) {
+      else if (property === `channels`) {
         mode.channels = from.channels.map(uuid => channelKeyMapping[uuid]);
       }
-      else if (propExistsIn(prop, from)) {
-        mode[prop] = from[prop];
+      else if (propertyExistsIn(property, from)) {
+        mode[property] = from[property];
       }
     }
 
@@ -397,26 +397,26 @@ function isEmptyObject(object) {
 }
 
 /**
- * @param {*} prop The property key to check.
+ * @param {*} property The property key to check.
  * @param {Object|null} object The object to check. If it's null, false is returned.
  * @returns {Boolean} Whether the given property key is present in the object and its value is non-null and non-empty.
  */
-function propExistsIn(prop, object) {
+function propertyExistsIn(property, object) {
   const objectValid = object !== undefined && object !== null;
-  const valueValid = objectValid && object[prop] !== undefined && object[prop] !== null && object[prop] !== ``;
+  const valueValid = objectValid && object[property] !== undefined && object[property] !== null && object[property] !== ``;
   return valueValid;
 }
 
-function getComboboxInput(prop, from) {
-  return (from[prop] === `[add-value]` && from[`${prop}New`] !== ``) ? from[`${prop}New`] : from[prop];
+function getComboboxInput(property, from) {
+  return (from[property] === `[add-value]` && from[`${property}New`] !== ``) ? from[`${property}New`] : from[property];
 }
 
 /**
- * @param {String} str The string to slugify.
+ * @param {String} string The string to slugify.
  * @returns {String} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
-function slugify(str) {
-  return str.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
+function slugify(string) {
+  return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
 }
 
 module.exports = { createFixtureFromEditor };

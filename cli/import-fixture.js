@@ -12,7 +12,7 @@ const createPullRequest = require(`../lib/create-github-pr.js`);
 
 /** @typedef {import('../lib/types.js').FixtureCreateResult} FixtureCreateResult */
 
-const args = minimist(process.argv.slice(2), {
+const cliArguments = minimist(process.argv.slice(2), {
   string: [`p`, `a`],
   boolean: `c`,
   alias: {
@@ -22,10 +22,10 @@ const args = minimist(process.argv.slice(2), {
   },
 });
 
-const filename = args._[0];
-const authorName = args[`author-name`];
+const filename = cliArguments._[0];
+const authorName = cliArguments[`author-name`];
 
-if (args._.length !== 1 || !plugins.importPlugins.includes(args.plugin) || !authorName) {
+if (cliArguments._.length !== 1 || !plugins.importPlugins.includes(cliArguments.plugin) || !authorName) {
   console.error(`Usage: ${process.argv[1]} -p <plugin> -a <author name> [--create-pull-request] <filename>\n\navailable plugins: ${plugins.importPlugins.join(`, `)}`);
   process.exit(1);
 }
@@ -34,7 +34,7 @@ if (args._.length !== 1 || !plugins.importPlugins.includes(args.plugin) || !auth
   try {
     const buffer = await readFile(filename);
 
-    const plugin = require(path.join(__dirname, `../plugins`, args.plugin, `import.js`));
+    const plugin = require(path.join(__dirname, `../plugins`, cliArguments.plugin, `import.js`));
     const { manufacturers, fixtures, warnings } = await plugin.import(buffer, filename, authorName);
 
     /** @type {FixtureCreateResult} */
@@ -54,7 +54,7 @@ if (args._.length !== 1 || !plugins.importPlugins.includes(args.plugin) || !auth
       result.errors[key] = checkResult.errors;
     }
 
-    if (args[`create-pull-request`]) {
+    if (cliArguments[`create-pull-request`]) {
       try {
         const pullRequestUrl = await createPullRequest(result);
         console.log(`URL: ${pullRequestUrl}`);

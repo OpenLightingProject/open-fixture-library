@@ -449,13 +449,13 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     function checkCapabilities() {
       let dmxRangesInvalid = false;
 
-      for (let i = 0; i < channel.capabilities.length; i++) {
-        const cap = channel.capabilities[i];
+      for (let index = 0; index < channel.capabilities.length; index++) {
+        const cap = channel.capabilities[index];
 
         // if one of the previous capabilities had an invalid range,
         // it doesn't make sense to check later ranges
         if (!dmxRangesInvalid) {
-          dmxRangesInvalid = !checkDmxRange(i);
+          dmxRangesInvalid = !checkDmxRange(index);
         }
 
         checkCapability(cap, `Capability '${cap.name}' (${cap.rawDmxRange}) in channel '${channel.key}'`);
@@ -505,10 +505,10 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
          */
         function checkRangesAdjacent() {
           if (capNumber > 0) {
-            const prevCap = channel.capabilities[capNumber - 1];
+            const previousCap = channel.capabilities[capNumber - 1];
 
-            if (cap.rawDmxRange.start !== prevCap.rawDmxRange.end + 1) {
-              result.errors.push(`dmxRanges must be adjacent in capabilities '${prevCap.name}' (${prevCap.rawDmxRange}) and '${cap.name}' (${cap.rawDmxRange}) in channel '${channel.key}'.`);
+            if (cap.rawDmxRange.start !== previousCap.rawDmxRange.end + 1) {
+              result.errors.push(`dmxRanges must be adjacent in capabilities '${previousCap.name}' (${previousCap.rawDmxRange}) and '${cap.name}' (${cap.rawDmxRange}) in channel '${channel.key}'.`);
               return false;
             }
           }
@@ -553,18 +553,18 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           });
         }
 
-        cap.usedStartEndEntities.forEach(prop => {
-          const [startEntity, endEntity] = cap[prop];
+        cap.usedStartEndEntities.forEach(property => {
+          const [startEntity, endEntity] = cap[property];
 
           if ((startEntity.keyword === null) !== (endEntity.keyword === null)) {
-            result.errors.push(`${errorPrefix} must use keywords for start and end value or for none of them in ${prop}.`);
+            result.errors.push(`${errorPrefix} must use keywords for start and end value or for none of them in ${property}.`);
           }
           else if (startEntity.unit !== endEntity.unit) {
-            result.errors.push(`${errorPrefix} uses different units for ${prop}.`);
+            result.errors.push(`${errorPrefix} uses different units for ${property}.`);
           }
 
-          if (prop === `speed` && startEntity.number * endEntity.number < 0) {
-            result.errors.push(`${errorPrefix} uses different signs (+ or –) in ${prop} (maybe behind a keyword). Consider splitting it into several capabilities.`);
+          if (property === `speed` && startEntity.number * endEntity.number < 0) {
+            result.errors.push(`${errorPrefix} uses different signs (+ or –) in ${property} (maybe behind a keyword). Consider splitting it into several capabilities.`);
           }
         });
 
@@ -646,8 +646,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           function checkSlotNumbers() {
             const min = Math.min(cap.slotNumber[0], cap.slotNumber[1]);
             const max = Math.max(cap.slotNumber[0], cap.slotNumber[1]);
-            for (let i = Math.floor(min); i <= Math.ceil(max); i++) {
-              usedWheelSlots.add(`${cap.wheels[0].name} (slot ${i})`);
+            for (let index = Math.floor(min); index <= Math.ceil(max); index++) {
+              usedWheelSlots.add(`${cap.wheels[0].name} (slot ${index})`);
             }
 
             if (max - min > 1) {
@@ -721,16 +721,16 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
     );
 
     // "6ch" / "8-Channel" / "9 channels" mode names
-    [`name`, `shortName`].forEach(nameProp => {
-      if (mode[nameProp].match(/(\d+)(?:\s+|-|)(?:channels?|ch)/i)) {
+    [`name`, `shortName`].forEach(nameProperty => {
+      if (mode[nameProperty].match(/(\d+)(?:\s+|-|)(?:channels?|ch)/i)) {
         const intendedLength = Number.parseInt(RegExp.$1, 10);
 
         if (mode.channels.length !== intendedLength) {
-          result.errors.push(`Mode '${mode.name}' should have ${RegExp.$1} channels according to its ${nameProp} but actually has ${mode.channels.length}.`);
+          result.errors.push(`Mode '${mode.name}' should have ${RegExp.$1} channels according to its ${nameProperty} but actually has ${mode.channels.length}.`);
         }
 
         const allowedShortNames = [`${intendedLength}ch`, `Ch${intendedLength}`, `Ch0${intendedLength}`];
-        if (mode[nameProp].length === RegExp.lastMatch.length && !allowedShortNames.includes(mode.shortName)) {
+        if (mode[nameProperty].length === RegExp.lastMatch.length && !allowedShortNames.includes(mode.shortName)) {
           result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
         }
       }
@@ -744,7 +744,7 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
       }
     }
 
-    mode.channelKeys.forEach((chKey, i) => checkModeChannelKey(i));
+    mode.channelKeys.forEach((chKey, index) => checkModeChannelKey(index));
 
     /**
      * Checks if the given complex channel insert block is valid.
@@ -845,8 +845,8 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
           }
         }
 
-        for (let j = 0; j < mode.getChannelIndex(channel); j++) {
-          const otherChannel = mode.channels[j];
+        for (let index = 0; index < mode.getChannelIndex(channel); index++) {
+          const otherChannel = mode.channels[index];
           checkSwitchingChannelReferenceDuplicate(otherChannel);
         }
 
@@ -1167,19 +1167,19 @@ function checkFixture(manKey, fixKey, fixtureJson, uniqueValues = null) {
 
   /**
    * Checks whether the specified string contains all allowed and no disallowed variables and pushes an error on wrong variable usage.
-   * @param {String} str The string to be checked.
+   * @param {String} string The string to be checked.
    * @param {Array.<String>} allowedVariables Variables that must be included in the string; all other variables are forbidden. Specify them with leading dollar sign ($var).
    */
-  function checkTemplateVariables(str, allowedVariables) {
-    const usedVariables = str.match(/\$\w+/g) || [];
+  function checkTemplateVariables(string, allowedVariables) {
+    const usedVariables = string.match(/\$\w+/g) || [];
     for (const usedVariable of usedVariables) {
       if (!allowedVariables.includes(usedVariable)) {
-        result.errors.push(`Variable ${usedVariable} not allowed in '${str}'`);
+        result.errors.push(`Variable ${usedVariable} not allowed in '${string}'`);
       }
     }
     for (const allowedVariable of allowedVariables) {
       if (!usedVariables.includes(allowedVariable)) {
-        result.errors.push(`Variable ${allowedVariable} missing in '${str}'`);
+        result.errors.push(`Variable ${allowedVariable} missing in '${string}'`);
       }
     }
   }
@@ -1227,7 +1227,7 @@ function arraysEqual(a, b) {
     return false;
   }
 
-  return a.every((val, index) => val === b[index]);
+  return a.every((value, index) => value === b[index]);
 }
 
 

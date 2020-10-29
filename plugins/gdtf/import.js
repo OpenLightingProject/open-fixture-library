@@ -28,7 +28,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
   const warnings = [];
 
-  let xmlStr = buffer.toString();
+  let xmlString = buffer.toString();
 
   if (filename.endsWith(`.gdtf`)) {
     // unzip the .gdtf (zip) file and check its description.xml file
@@ -39,10 +39,10 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       throw new Error(`The provided .gdtf (zip) file does not contain a 'description.xml' file in the root directory.`);
     }
 
-    xmlStr = descriptionFile.async(`string`);
+    xmlString = descriptionFile.async(`string`);
   }
 
-  const xml = await promisify(parser.parseString)(xmlStr);
+  const xml = await promisify(parser.parseString)(xmlString);
 
   const gdtfFixture = xml.GDTF.FixtureType[0];
   fixture.name = gdtfFixture.$.Name;
@@ -203,7 +203,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
      */
     function getLatestSoftwareVersion() {
       const maxSoftwareVersion = (rdmData.SoftwareVersionID || []).reduce(
-        (maxVersion, currVersion) => ((maxVersion && maxVersion.$.Value > currVersion.$.Value) ? maxVersion : currVersion),
+        (maxVersion, currentVersion) => ((maxVersion && maxVersion.$.Value > currentVersion.$.Value) ? maxVersion : currentVersion),
       );
 
       if (maxSoftwareVersion) {
@@ -484,8 +484,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
         // CoarseChannel.RESOLUTION_16BIT
         channel.fineChannelAliases.push(`${chKey} fine`);
 
-        for (let i = CoarseChannel.RESOLUTION_24BIT; i <= maxResolution; i++) {
-          channel.fineChannelAliases.push(`${chKey} fine^${i - 1}`);
+        for (let index = CoarseChannel.RESOLUTION_24BIT; index <= maxResolution; index++) {
+          channel.fineChannelAliases.push(`${chKey} fine^${index - 1}`);
         }
       }
 
@@ -732,20 +732,20 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       }
 
       /**
-       * @param {String} attrName The GDTF attribute name.
+       * @param {String} attributeName The GDTF attribute name.
        * @returns {Object} The capability type data from @file gdtf-attributes.js
        */
-      function getCapabilityTypeData(attrName) {
-        let capabilityTypeData = gdtfAttributes[attrName];
+      function getCapabilityTypeData(attributeName) {
+        let capabilityTypeData = gdtfAttributes[attributeName];
 
         if (!capabilityTypeData) {
-          const enumeratedAttributeName = attrName.replace(/\d+/, `(n)`).replace(/\d+/, `(m)`);
+          const enumeratedAttributeName = attributeName.replace(/\d+/, `(n)`).replace(/\d+/, `(m)`);
           capabilityTypeData = gdtfAttributes[enumeratedAttributeName];
         }
 
         if (!capabilityTypeData) {
           return {
-            oflType: `Unknown (${attrName})`, // will trigger an error in the validation
+            oflType: `Unknown (${attributeName})`, // will trigger an error in the validation
             oflProperty: `physical`, // will also trigger an error, but the information could be useful
           };
         }
@@ -755,24 +755,24 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
         }
 
         // save the inherited result for later access
-        gdtfAttributes[attrName] = Object.assign(
+        gdtfAttributes[attributeName] = Object.assign(
           {},
           getCapabilityTypeData(capabilityTypeData.inheritFrom),
           capabilityTypeData,
         );
-        delete gdtfAttributes[attrName].inheritFrom;
+        delete gdtfAttributes[attributeName].inheritFrom;
 
-        return gdtfAttributes[attrName];
+        return gdtfAttributes[attributeName];
       }
 
       /**
        * @param {Function|null} hook The hook function, or a falsy value.
-       * @param  {...*} args The arguments to pass to the hook.
+       * @param {...*} parameters The arguments to pass to the hook.
        * @returns {*} The return value of the hook, or null if no hook was called.
        */
-      function callHook(hook, ...args) {
+      function callHook(hook, ...parameters) {
         if (hook) {
-          return hook(...args);
+          return hook(...parameters);
         }
 
         return null;
@@ -1271,22 +1271,22 @@ function xmlNodeHasNotNoneAttribute(xmlNode, attribute) {
  * the form "dd.MM.yyyy HH:mm:ss", so those have to be converted to the ISO format.
  *
  * @see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-date
- * @param {String|undefined} dateStr An ISO date string or a date in the form "dd.MM.yyyy HH:mm:ss"
- * @param {String} fallbackDateStr A fallback date string to return if the parsed date is not valid.
+ * @param {String|undefined} dateString An ISO date string or a date in the form "dd.MM.yyyy HH:mm:ss"
+ * @param {String} fallbackDateString A fallback date string to return if the parsed date is not valid.
  * @returns {String} A date string in the form "YYYY-MM-DD" (may be the provided fallback date string).
  */
-function getIsoDateFromGdtfDate(dateStr, fallbackDateStr) {
-  if (!dateStr) {
-    return fallbackDateStr;
+function getIsoDateFromGdtfDate(dateString, fallbackDateString) {
+  if (!dateString) {
+    return fallbackDateString;
   }
 
   const isoDateRegex = /^(\d{4}-\d{2}-\d{2})T/;
-  if (dateStr.match(isoDateRegex)) {
+  if (dateString.match(isoDateRegex)) {
     return RegExp.$1;
   }
 
   const germanDateTimeRegex = /^([0-3]?\d)\.([01]?\d)\.(\d{4})\s+\d?\d:\d?\d:\d?\d$/;
-  const match = dateStr.match(germanDateTimeRegex);
+  const match = dateString.match(germanDateTimeRegex);
 
   try {
     const [, day, month, year] = match;
@@ -1295,28 +1295,28 @@ function getIsoDateFromGdtfDate(dateStr, fallbackDateStr) {
     return date.toISOString().replace(/T.*/, ``);
   }
   catch {
-    return fallbackDateStr;
+    return fallbackDateString;
   }
 }
 
 /**
- * @param {String} dmxValueStr GDTF DMX value in the form "128/2", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-DMXValue
+ * @param {String} dmxValueString GDTF DMX value in the form "128/2", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-DMXValue
  * @returns {[Number, Resolution]} Array containing DMX value and DMX resolution.
  */
-function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueStr) {
+function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueString) {
   try {
-    const [, value, resolution] = dmxValueStr.match(/^(\d+)\/(\d)$/);
+    const [, value, resolution] = dmxValueString.match(/^(\d+)\/(\d)$/);
     return [Number.parseInt(value, 10), Number.parseInt(resolution, 10)];
   }
   catch {
-    return [Number.parseInt(dmxValueStr, 10) || 0, 1];
+    return [Number.parseInt(dmxValueString, 10) || 0, 1];
   }
 }
 
 /**
- * @param {String} str The string to slugify.
+ * @param {String} string The string to slugify.
  * @returns {String} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
-function slugify(str) {
-  return str.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
+function slugify(string) {
+  return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
 }

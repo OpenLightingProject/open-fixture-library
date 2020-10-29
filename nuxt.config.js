@@ -26,7 +26,7 @@ export default {
     `embetty-vue/dist/embetty-vue.css`,
   ],
   build: {
-    extend(config, ctx) {
+    extend(config, context) {
       // exclude /assets/icons from url-loader
       const urlLoader = config.module.rules.find(rule => `use` in rule && rule.use[0].loader === `url-loader`);
       urlLoader.exclude = path.resolve(__dirname, `ui/assets/icons`);
@@ -81,7 +81,7 @@ export default {
     color: `#1e88e5`,
   },
   head() {
-    const htmlAttrs = {
+    const htmlAttributes = {
       lang: `en`,
       'data-theme': this.$cookies.get(`__Host-theme`) || this.$cookies.get(`theme`),
     };
@@ -222,7 +222,7 @@ export default {
     ];
 
     return {
-      htmlAttrs,
+      htmlAttrs: htmlAttributes,
       titleTemplate,
       meta,
       link,
