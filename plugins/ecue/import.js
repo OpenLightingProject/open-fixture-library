@@ -68,7 +68,7 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
 
     let fixKey = `${manKey}/${slugify(fixture.name)}`;
     if (fixKey in out.fixtures) {
-      fixKey += `-${Math.random().toString(36).substr(2, 5)}`;
+      fixKey += `-${Math.random().toString(36).slice(2, 7)}`;
       out.warnings[fixKey] = [`Fixture key '${fixKey}' is not unique, appended random characters.`];
     }
     else {
@@ -182,7 +182,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
   let channelKey = channelName;
   if (channelKey in fixture.availableChannels) {
     warningsArray.push(`Channel key '${channelKey}' is not unique, appended random characters.`);
-    channelKey += `-${Math.random().toString(36).substr(2, 5)}`;
+    channelKey += `-${Math.random().toString(36).slice(2, 7)}`;
     channel.name = channelName;
   }
 
