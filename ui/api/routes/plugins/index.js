@@ -5,10 +5,10 @@ const plugins = require(`../../../../plugins/plugins.json`);
 
 /**
  * Returns general information about import and export plugins.
- * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
+ * @param {OpenApiBackendContext} context Passed from OpenAPI Backend.
  * @returns {ApiResponse} The handled response.
  */
-function getPlugins(ctx) {
+function getPlugins(context) {
   return {
     body: plugins,
   };

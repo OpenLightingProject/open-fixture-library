@@ -11,10 +11,10 @@ All model classes are located in the [`lib/model/`](../lib/model) directory. Whe
 ```js
 const { fixtureFromRepository } = require(`./lib/model.js`);
 
-const myFix = fixtureFromRepository(`cameo`, `nanospot-120`); // instanceof Fixture
+const myFixture = fixtureFromRepository(`cameo`, `nanospot-120`); // instanceof Fixture
 
-const physicalData = myFix.physical; // instanceof Physical
-const panFine = myFix.getChannelByKey(`Pan fine`); // instanceof FineChannel
+const physicalData = myFixture.physical; // instanceof Physical
+const panFine = myFixture.getChannelByKey(`Pan fine`); // instanceof FineChannel
 
 if (panFine.coarseChannel.hasHighlightValue) {
   console.log(`Highlight at ${panFine.coarseChannel.highlightValue}`);

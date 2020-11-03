@@ -14,7 +14,7 @@ module.exports.version = `0.2.0`;
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
  * @param {Object} options Global options, including:
- * @param {String} options.baseDir Absolute path to OFL's root directory.
+ * @param {String} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
@@ -89,7 +89,7 @@ function addAttribute(xml, mode, attribute, channels) {
           '@id': getDefaultValue(getUsableChannel(channel)),
         },
         addressIndex: {
-          '@id': mode.getChannelIndex(channel),
+          '@id': mode.getChannelIndex(channel.key),
         },
         parameterName: {
           '@id': getParameterName(),
@@ -107,43 +107,43 @@ function addAttribute(xml, mode, attribute, channels) {
 
     let xmlCapabilities;
     if (channel instanceof CoarseChannel) {
-      const caps = channel.capabilities;
+      const capabilities = channel.capabilities;
 
       xmlCapabilities = xmlChannel.element({
         Definitions: {
-          '@index': caps.length,
+          '@index': capabilities.length,
         },
       });
 
-      caps.forEach(addCapability);
+      capabilities.forEach(capability => addCapability(capability));
     }
 
     /**
      * Adds an XML element for the given capability to the XML capability container.
-     * @param {Capability} cap A capability of a channels capability list.
+     * @param {Capability} capability A capability of a channels capability list.
      */
-    function addCapability(cap) {
+    function addCapability(capability) {
       let hold = `0`;
 
-      if (cap.hold) {
-        if (cap.hold.unit === `ms`) {
-          hold = cap.hold.number;
+      if (capability.hold) {
+        if (capability.hold.unit === `ms`) {
+          hold = capability.hold.number;
         }
-        else if (cap.hold.unit === `s`) {
-          hold = cap.hold.number * 1000;
+        else if (capability.hold.unit === `s`) {
+          hold = capability.hold.number * 1000;
         }
       }
 
 
-      const dmxRange = cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
+      const dmxRange = capability.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
       xmlCapabilities.element({
         name: {
           '@min': dmxRange.start,
           '@max': dmxRange.end,
-          '@snap': cap.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
+          '@snap': capability.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
           '@timeHolder': hold,
           '@dummy': `0`,
-          '#text': cap.name,
+          '#text': capability.name,
         },
       });
     }

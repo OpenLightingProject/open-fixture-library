@@ -330,14 +330,14 @@ export default {
         else {
           anchorElement.href = downloadUrl;
           anchorElement.download = filename;
-          document.body.appendChild(anchorElement);
+          document.body.append(anchorElement);
           anchorElement.click();
         }
 
         // cleanup
         setTimeout(() => {
           URL.revokeObjectURL(downloadUrl);
-          document.body.removeChild(anchorElement);
+          anchorElement.remove();
         }, 100);
       }
     },
@@ -357,10 +357,10 @@ export default {
       let filename = ``;
       const disposition = response.headers[`content-disposition`];
       if (disposition && disposition.includes(`attachment`)) {
-        const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+        const filenameRegex = /filename[^\n;=]*=((["']).*?\2|[^\n;]*)/;
         const matches = filenameRegex.exec(disposition);
         if (matches && matches[1]) {
-          filename = matches[1].replace(/['"]/g, ``);
+          filename = matches[1].replace(/["']/g, ``);
         }
       }
 

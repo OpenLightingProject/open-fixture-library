@@ -118,7 +118,7 @@ export default {
       type: Object,
       required: true,
     },
-    capIndex: {
+    capabilityIndex: {
       type: Number,
       required: true,
     },
@@ -142,13 +142,15 @@ export default {
       return this.channel.capabilities;
     },
     capability() {
-      return this.capabilities[this.capIndex];
+      return this.capabilities[this.capabilityIndex];
     },
     dmxMax() {
       return Math.pow(256, this.resolution) - 1;
     },
     isChanged() {
-      return this.capabilities.some(isCapabilityChanged);
+      return this.capabilities.some(
+        capability => isCapabilityChanged(capability),
+      );
     },
     start() {
       return this.capability.dmxRange !== null ? this.capability.dmxRange[0] : null;
@@ -158,16 +160,16 @@ export default {
     },
     min() {
       let min = this.dmxMin;
-      let index = this.capIndex - 1;
+      let index = this.capabilityIndex - 1;
       while (index >= 0) {
-        const cap = this.capabilities[index];
-        if (cap.dmxRange !== null) {
-          if (cap.dmxRange[1]) {
-            min = cap.dmxRange[1] + 1;
+        const capability = this.capabilities[index];
+        if (capability.dmxRange !== null) {
+          if (capability.dmxRange[1]) {
+            min = capability.dmxRange[1] + 1;
             break;
           }
-          if (cap.dmxRange[0] !== null) {
-            min = cap.dmxRange[0] + 1;
+          if (capability.dmxRange[0] !== null) {
+            min = capability.dmxRange[0] + 1;
             break;
           }
         }
@@ -177,16 +179,16 @@ export default {
     },
     max() {
       let max = this.dmxMax;
-      let index = this.capIndex + 1;
+      let index = this.capabilityIndex + 1;
       while (index < this.capabilities.length) {
-        const cap = this.capabilities[index];
-        if (cap.dmxRange !== null) {
-          if (cap.dmxRange[0] !== null) {
-            max = cap.dmxRange[0] - 1;
+        const capability = this.capabilities[index];
+        if (capability.dmxRange !== null) {
+          if (capability.dmxRange[0] !== null) {
+            max = capability.dmxRange[0] - 1;
             break;
           }
-          if (cap.dmxRange[1] !== null) {
-            max = cap.dmxRange[1] - 1;
+          if (capability.dmxRange[1] !== null) {
+            max = capability.dmxRange[1] - 1;
             break;
           }
         }
@@ -199,16 +201,16 @@ export default {
     // eslint-disable-next-line complexity
     onStartUpdated() {
       if (this.start === null) {
-        const prevCap = this.capabilities[this.capIndex - 1];
-        if (prevCap && !isCapabilityChanged(prevCap)) {
+        const previousCapability = this.capabilities[this.capabilityIndex - 1];
+        if (previousCapability && !isCapabilityChanged(previousCapability)) {
           this.removePreviousCapability();
         }
         return;
       }
 
-      const prevCap = this.capabilities[this.capIndex - 1];
-      if (prevCap) {
-        if (isCapabilityChanged(prevCap)) {
+      const previousCapability = this.capabilities[this.capabilityIndex - 1];
+      if (previousCapability) {
+        if (isCapabilityChanged(previousCapability)) {
           if (this.start > this.min) {
             this.insertCapabilityBefore();
           }
@@ -228,16 +230,16 @@ export default {
     // eslint-disable-next-line complexity
     onEndUpdated() {
       if (this.end === null) {
-        const nextCap = this.capabilities[this.capIndex + 1];
-        if (nextCap && !isCapabilityChanged(nextCap)) {
+        const nextCapability = this.capabilities[this.capabilityIndex + 1];
+        if (nextCapability && !isCapabilityChanged(nextCapability)) {
           this.removeNextCapability();
         }
         return;
       }
 
-      const nextCap = this.capabilities[this.capIndex + 1];
-      if (nextCap) {
-        if (isCapabilityChanged(nextCap)) {
+      const nextCapability = this.capabilities[this.capabilityIndex + 1];
+      if (nextCapability) {
+        if (isCapabilityChanged(nextCapability)) {
           if (this.end < this.max) {
             this.insertCapabilityAfter();
           }
@@ -255,18 +257,18 @@ export default {
       }
     },
     clear() {
-      const emptyCap = getEmptyCapability();
-      for (const prop of Object.keys(emptyCap)) {
-        this.capability[prop] = emptyCap[prop];
+      const emptyCapability = getEmptyCapability();
+      for (const property of Object.keys(emptyCapability)) {
+        this.capability[property] = emptyCapability[property];
       }
       this.collapseWithNeighbors();
     },
     collapseWithNeighbors() {
-      const prevCap = this.capabilities[this.capIndex - 1];
-      const nextCap = this.capabilities[this.capIndex + 1];
+      const previousCapability = this.capabilities[this.capabilityIndex - 1];
+      const nextCapability = this.capabilities[this.capabilityIndex + 1];
 
-      if (prevCap && !isCapabilityChanged(prevCap)) {
-        if (nextCap && !isCapabilityChanged(nextCap)) {
+      if (previousCapability && !isCapabilityChanged(previousCapability)) {
+        if (nextCapability && !isCapabilityChanged(nextCapability)) {
           this.removePreviousCapability();
           this.removeCurrentCapability();
           return;
@@ -276,7 +278,7 @@ export default {
         return;
       }
 
-      if (nextCap && !isCapabilityChanged(nextCap)) {
+      if (nextCapability && !isCapabilityChanged(nextCapability)) {
         this.removeNextCapability();
       }
     },
@@ -285,7 +287,7 @@ export default {
 
       const dialog = this.$el.closest(`dialog`);
       this.$nextTick(() => {
-        const newCapability = dialog.querySelector(`.capability-editor`).children[this.capIndex - 1];
+        const newCapability = dialog.querySelector(`.capability-editor`).children[this.capabilityIndex - 1];
         dialog.scrollTop += newCapability.clientHeight;
       });
     },
@@ -293,13 +295,13 @@ export default {
       this.$emit(`insert-capability-after`);
     },
     removePreviousCapability() {
-      this.$delete(this.capabilities, this.capIndex - 1);
+      this.$delete(this.capabilities, this.capabilityIndex - 1);
     },
     removeCurrentCapability() {
-      this.$delete(this.capabilities, this.capIndex);
+      this.$delete(this.capabilities, this.capabilityIndex);
     },
     removeNextCapability() {
-      this.$delete(this.capabilities, this.capIndex + 1);
+      this.$delete(this.capabilities, this.capabilityIndex + 1);
     },
     cleanCapabilityData() { // eslint-disable-line vue/no-unused-properties
       if (this.capability.dmxRange === null) {

@@ -160,19 +160,6 @@ export default {
     LabeledInput,
     PropertyInputText,
   },
-  head() {
-    const title = `Fixture Editor`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: `title`,
-          content: title,
-        },
-      ],
-    };
-  },
   async asyncData({ query, $axios, error }) {
     const initFixture = getEmptyFixture();
 
@@ -208,6 +195,19 @@ export default {
     catch (requestError) {
       return error(requestError);
     }
+  },
+  head() {
+    const title = `Fixture Editor`;
+
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
+    };
   },
   watch: {
     fixture: {
@@ -264,10 +264,10 @@ export default {
      * @returns {Boolean} True if the channel's name is not used in another channel, too.
      */
     isChannelNameUnique(channelUuid) { // eslint-disable-line vue/no-unused-properties
-      const chName = this.getChannelName(channelUuid);
+      const channelName = this.getChannelName(channelUuid);
 
       return Object.keys(this.fixture.availableChannels).every(
-        uuid => chName !== this.getChannelName(uuid) || uuid === channelUuid,
+        uuid => channelName !== this.getChannelName(uuid) || uuid === channelUuid,
       );
     },
 
@@ -289,8 +289,7 @@ export default {
       }
 
       // remove fine channels first
-      for (const chId of Object.keys(this.fixture.availableChannels)) {
-        const channel = this.fixture.availableChannels[chId];
+      for (const channel of Object.values(this.fixture.availableChannels)) {
         if (`coarseChannelId` in channel && channel.coarseChannelId === channelUuid) {
           this.removeChannel(channel.uuid);
         }
@@ -346,7 +345,7 @@ export default {
           throw new Error(`this.restoredData is undefined.`);
         }
       }
-      catch (error) {
+      catch {
         this.restoredData = null;
         this.restoreComplete();
         return;

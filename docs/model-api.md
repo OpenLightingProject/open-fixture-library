@@ -204,7 +204,7 @@ A capability represents a range of a channel.
         * [.canCrossfadeTo(nextCapability)](#Capability+canCrossfadeTo) ⇒ <code>Boolean</code>
         * [.getMenuClickDmxValueWithResolution(desiredResolution)](#Capability+getMenuClickDmxValueWithResolution) ⇒ [<code>Range</code>](#Range)
         * [.isSlotType(slotType)](#Capability+isSlotType) ⇒ <code>Boolean</code>
-        * [._getStartEndArray(prop)](#Capability+_getStartEndArray) ⇒ <code>Array</code> \| <code>null</code> ℗
+        * [._getStartEndArray(property)](#Capability+_getStartEndArray) ⇒ <code>Array</code> \| <code>null</code> ℗
     * _static_
         * [.START_END_ENTITIES](#Capability.START_END_ENTITIES) ⇒ <code>Array.&lt;String&gt;</code>
 
@@ -498,7 +498,7 @@ Use only in `WheelShake` capabilities!
 
 <a name="Capability+_getStartEndArray"></a>
 
-### capability.\_getStartEndArray(prop) ⇒ <code>Array</code> \| <code>null</code> ℗
+### capability.\_getStartEndArray(property) ⇒ <code>Array</code> \| <code>null</code> ℗
 Parses a property that has start and end variants by generating an array with start and end value.
 
 **Kind**: instance method of [<code>Capability</code>](#Capability)  
@@ -507,7 +507,7 @@ Parses a property that has start and end variants by generating an array with st
 
 | Param | Type | Description |
 | --- | --- | --- |
-| prop | <code>String</code> | The base property name. 'Start' and 'End' will be appended to get the start/end variants. |
+| property | <code>String</code> | The base property name. 'Start' and 'End' will be appended to get the start/end variants. |
 
 <a name="Capability.START_END_ENTITIES"></a>
 
@@ -985,7 +985,7 @@ A physical DMX device.
 **Kind**: global class  
 
 * [Fixture](#Fixture)
-    * [new Fixture(man, key, jsonObject)](#new_Fixture_new)
+    * [new Fixture(manufacturer, key, jsonObject)](#new_Fixture_new)
     * [.manufacturer](#Fixture+manufacturer) ⇒ [<code>Manufacturer</code>](#Manufacturer)
     * [.manufacturer](#Fixture+manufacturer)
     * [.key](#Fixture+key) ⇒ <code>String</code>
@@ -1030,18 +1030,18 @@ A physical DMX device.
     * [.modes](#Fixture+modes) ⇒ [<code>Array.&lt;Mode&gt;</code>](#Mode)
     * [.getLinksOfType(type)](#Fixture+getLinksOfType) ⇒ <code>Array.&lt;String&gt;</code>
     * [.getWheelByName(wheelName)](#Fixture+getWheelByName) ⇒ [<code>Wheel</code>](#Wheel) \| <code>null</code>
-    * [.getTemplateChannelByKey(chKey)](#Fixture+getTemplateChannelByKey) ⇒ [<code>TemplateChannel</code>](#TemplateChannel) \| <code>null</code>
+    * [.getTemplateChannelByKey(channelKey)](#Fixture+getTemplateChannelByKey) ⇒ [<code>TemplateChannel</code>](#TemplateChannel) \| <code>null</code>
     * [.getChannelByKey(key)](#Fixture+getChannelByKey) ⇒ [<code>AbstractChannel</code>](#AbstractChannel) \| <code>null</code>
 
 <a name="new_Fixture_new"></a>
 
-### new Fixture(man, key, jsonObject)
+### new Fixture(manufacturer, key, jsonObject)
 Create a new Fixture instance.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| man | <code>String</code> \| [<code>Manufacturer</code>](#Manufacturer) | Either the fixture's manufacturer's key or a Manufacturer instance. |
+| manufacturer | <code>String</code> \| [<code>Manufacturer</code>](#Manufacturer) | Either the fixture's manufacturer's key or a Manufacturer instance. |
 | key | <code>String</code> | The fixture's unique key. Equals to filename without '.json'. |
 | jsonObject | <code>Object</code> | The fixture's parsed JSON data. |
 
@@ -1057,7 +1057,7 @@ Create a new Fixture instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| newMan | <code>String</code> \| [<code>Manufacturer</code>](#Manufacturer) | Either the fixture's manufacturer's key or a Manufacturer instance. |
+| newManufacturer | <code>String</code> \| [<code>Manufacturer</code>](#Manufacturer) | Either the fixture's manufacturer's key or a Manufacturer instance. |
 
 <a name="Fixture+key"></a>
 
@@ -1296,7 +1296,7 @@ Template channels are used to automatically generate channels.
 
 <a name="Fixture+getTemplateChannelByKey"></a>
 
-### fixture.getTemplateChannelByKey(chKey) ⇒ [<code>TemplateChannel</code>](#TemplateChannel) \| <code>null</code>
+### fixture.getTemplateChannelByKey(channelKey) ⇒ [<code>TemplateChannel</code>](#TemplateChannel) \| <code>null</code>
 Searches the template channel with the given key. Fine and switching template channel aliases *can't* be found.
 
 **Kind**: instance method of [<code>Fixture</code>](#Fixture)  
@@ -1304,7 +1304,7 @@ Searches the template channel with the given key. Fine and switching template ch
 
 | Param | Type | Description |
 | --- | --- | --- |
-| chKey | <code>String</code> | The template channel's key |
+| channelKey | <code>String</code> | The template channel's key |
 
 <a name="Fixture+getChannelByKey"></a>
 
@@ -1619,7 +1619,7 @@ A fixture's configuration that enables a fixed set of channels and channel order
     * [.channels](#Mode+channels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
     * [._getMatrixChannelKeysFromInsertBlock(channelInsert)](#Mode+_getMatrixChannelKeysFromInsertBlock) ⇒ <code>Array.&lt;String&gt;</code> ℗
     * [._getRepeatForPixelKeys(repeatFor)](#Mode+_getRepeatForPixelKeys) ⇒ <code>Array.&lt;String&gt;</code> ℗
-    * [.getChannelIndex(channel, [switchingChannelBehavior])](#Mode+getChannelIndex) ⇒ <code>Number</code>
+    * [.getChannelIndex(channelKey, [switchingChannelBehavior])](#Mode+getChannelIndex) ⇒ <code>Number</code>
 
 <a name="new_Mode_new"></a>
 
@@ -1737,13 +1737,13 @@ Resolves `repeatFor` keywords into a list of pixel (group) keys or just returns 
 
 <a name="Mode+getChannelIndex"></a>
 
-### mode.getChannelIndex(channel, [switchingChannelBehavior]) ⇒ <code>Number</code>
+### mode.getChannelIndex(channelKey, [switchingChannelBehavior]) ⇒ <code>Number</code>
 **Kind**: instance method of [<code>Mode</code>](#Mode)  
 **Returns**: <code>Number</code> - The index of the given channel in this mode or -1 if not found.  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| channel | <code>String</code> \| [<code>AbstractChannel</code>](#AbstractChannel) |  | Either a channel key or a Channel object. |
+| channelKey | <code>String</code> |  | The key of the channel to get the index for. |
 | [switchingChannelBehavior] | [<code>SwitchingChannelBehavior</code>](#SwitchingChannelBehavior) | <code>&#x27;all&#x27;</code> | Controls how switching channels are counted, see [usesChannelKey](#SwitchingChannel+usesChannelKey) for possible values. |
 
 <a name="NullChannel"></a>
@@ -2373,7 +2373,7 @@ The different behaviors are implemented as different [CoarseChannel](#CoarseChan
     * [.name](#AbstractChannel+name) ⇒ <code>String</code>
     * [.uniqueName](#AbstractChannel+uniqueName) ⇒ <code>String</code>
     * [.pixelKey](#AbstractChannel+pixelKey) ⇒ <code>String</code>
-    * [.usesChannelKey(chKey, [switchingChannelBehavior])](#SwitchingChannel+usesChannelKey) ⇒ <code>Boolean</code>
+    * [.usesChannelKey(channelKey, [switchingChannelBehavior])](#SwitchingChannel+usesChannelKey) ⇒ <code>Boolean</code>
 
 <a name="new_SwitchingChannel_new"></a>
 
@@ -2463,13 +2463,13 @@ Override this method for more sensible implementation.
 **Returns**: <code>String</code> - The key of the pixel (group) that this channel is associated to. Defaults to null.  
 <a name="SwitchingChannel+usesChannelKey"></a>
 
-### switchingChannel.usesChannelKey(chKey, [switchingChannelBehavior]) ⇒ <code>Boolean</code>
+### switchingChannel.usesChannelKey(channelKey, [switchingChannelBehavior]) ⇒ <code>Boolean</code>
 **Kind**: instance method of [<code>SwitchingChannel</code>](#SwitchingChannel)  
 **Returns**: <code>Boolean</code> - Whether this SwitchingChannel contains the given channel key.  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| chKey | <code>String</code> |  | The channel key to search for. |
+| channelKey | <code>String</code> |  | The channel key to search for. |
 | [switchingChannelBehavior] | [<code>SwitchingChannelBehavior</code>](#SwitchingChannelBehavior) | <code>&#x27;all&#x27;</code> | Define which channels to include in the search. |
 
 <a name="TemplateChannel"></a>
@@ -2487,8 +2487,8 @@ Currently used to create matrix channels.
         * [.possibleMatrixChannelKeys](#TemplateChannel+possibleMatrixChannelKeys) ⇒ <code>Map.&lt;String, Array.&lt;String&gt;&gt;</code>
         * [.createMatrixChannels()](#TemplateChannel+createMatrixChannels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
     * _static_
-        * [.resolveTemplateObject(obj, variables)](#TemplateChannel.resolveTemplateObject) ⇒ <code>Object</code>
-        * [.resolveTemplateString(str, variables)](#TemplateChannel.resolveTemplateString) ⇒ <code>String</code>
+        * [.resolveTemplateObject(object, variables)](#TemplateChannel.resolveTemplateObject) ⇒ <code>Object</code>
+        * [.resolveTemplateString(string, variables)](#TemplateChannel.resolveTemplateString) ⇒ <code>String</code>
 
 <a name="new_TemplateChannel_new"></a>
 
@@ -2521,7 +2521,7 @@ Creates matrix channels from this template channel (together with its fine and s
 **Returns**: [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel) - The generated channels associated to the given pixel key and its fine and switching channels.  
 <a name="TemplateChannel.resolveTemplateObject"></a>
 
-### TemplateChannel.resolveTemplateObject(obj, variables) ⇒ <code>Object</code>
+### TemplateChannel.resolveTemplateObject(object, variables) ⇒ <code>Object</code>
 Replaces the specified variables in the specified object by cloning the object.
 
 **Kind**: static method of [<code>TemplateChannel</code>](#TemplateChannel)  
@@ -2529,12 +2529,12 @@ Replaces the specified variables in the specified object by cloning the object.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| obj | <code>Object</code> | The object which has to be modified. |
+| object | <code>Object</code> | The object which has to be modified. |
 | variables | <code>Object.&lt;String, String&gt;</code> | Each variable (without $) pointing to its value. |
 
 <a name="TemplateChannel.resolveTemplateString"></a>
 
-### TemplateChannel.resolveTemplateString(str, variables) ⇒ <code>String</code>
+### TemplateChannel.resolveTemplateString(string, variables) ⇒ <code>String</code>
 Replaces the specified variables in the specified string.
 
 **Kind**: static method of [<code>TemplateChannel</code>](#TemplateChannel)  
@@ -2542,7 +2542,7 @@ Replaces the specified variables in the specified string.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| str | <code>String</code> | The string which has to be modified. |
+| string | <code>String</code> | The string which has to be modified. |
 | variables | <code>Object.&lt;String, String&gt;</code> | Each variable (without $) pointing to its value. |
 
 <a name="Wheel"></a>

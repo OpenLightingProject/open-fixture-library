@@ -179,14 +179,14 @@ export default {
      * Called from {@link EditorCapabilityTypeData}
      * @returns {Array.<String>} Array of all props to reset to default data when capability is saved.
      */
-    resetProps() { // eslint-disable-line vue/no-unused-properties
-      const resetProps = [this.capability.typeData.effectNameOrPreset === `effectName` ? `effectPreset` : `effectName`];
+    resetProperties() { // eslint-disable-line vue/no-unused-properties
+      const resetProperties = [this.capability.typeData.effectNameOrPreset === `effectName` ? `effectPreset` : `effectName`];
 
       if (!this.capability.typeData.soundControlled) {
-        resetProps.push(`soundSensitivity`, `soundSensitivityStart`, `soundSensitivityEnd`);
+        resetProperties.push(`soundSensitivity`, `soundSensitivityStart`, `soundSensitivityEnd`);
       }
 
-      return resetProps;
+      return resetProperties;
     },
   },
   methods: {

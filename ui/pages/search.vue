@@ -17,10 +17,10 @@
             value="">Filter by manufacturer</option>
 
           <option
-            v-for="(man, manKey) of manufacturers"
-            :key="manKey"
-            :selected="manufacturersQuery.includes(manKey)"
-            :value="manKey">{{ man.name }}</option>
+            v-for="(man, manufacturerKey) of manufacturers"
+            :key="manufacturerKey"
+            :selected="manufacturersQuery.includes(manufacturerKey)"
+            :value="manufacturerKey">{{ man.name }}</option>
         </select>
 
         <select v-model="categoriesQuery" name="categories" multiple>
@@ -95,19 +95,6 @@ export default {
     ConditionalDetails,
     LabeledInput,
   },
-  head() {
-    const title = this.searchFor ? `Search "${this.searchFor}"` : `Search`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: `title`,
-          content: title,
-        },
-      ],
-    };
-  },
   async asyncData({ query, $axios, error }) {
     try {
       const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
@@ -149,22 +136,35 @@ export default {
         categoriesQuery: sanitizedQuery.categories,
       });
     }
-    catch (requestError) {
+    catch {
       this.results = [];
     }
     finally {
       this.loading = false;
     }
   },
+  head() {
+    const title = this.searchFor ? `Search "${this.searchFor}"` : `Search`;
+
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
+    };
+  },
   computed: {
     fixtureResults() {
       return this.results.map(key => {
-        const man = key.split(`/`)[0];
+        const manufacturer = key.split(`/`)[0];
 
         return {
           key,
-          name: `${this.manufacturers[man].name} ${register.filesystem[key].name}`,
-          color: register.colors[man],
+          name: `${this.manufacturers[manufacturer].name} ${register.filesystem[key].name}`,
+          color: register.colors[manufacturer],
         };
       });
     },

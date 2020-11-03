@@ -1,7 +1,7 @@
 const plugins = require(`../../plugins/plugins.json`);
 const packageJson = require(`../../package.json`);
 
-module.exports = function(req, res) {
+module.exports = function(request, response) {
   const lines = [
     `User-agent: *`,
   ];
@@ -18,6 +18,6 @@ module.exports = function(req, res) {
     lines.push(`Disallow: /`);
   }
 
-  res.set(`Content-Type`, `text/plain`);
-  res.send(Buffer.from(lines.join(`\n`)));
+  response.set(`Content-Type`, `text/plain`);
+  response.send(Buffer.from(lines.join(`\n`)));
 };

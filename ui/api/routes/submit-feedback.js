@@ -31,8 +31,8 @@ async function createFeedbackIssue({ request }) {
     title = `Feedback for fixture '${context}'`;
     labels.push(`component-fixture`);
 
-    const [manKey, fixKey] = context.split(`/`);
-    const fixture = fixtureFromRepository(manKey, fixKey);
+    const [manufacturerKey, fixtureKey] = context.split(`/`);
+    const fixture = fixtureFromRepository(manufacturerKey, fixtureKey);
 
     issueContentData.Manufacturer = fixture.manufacturer.name;
     issueContentData.Fixture = fixture.name;
@@ -49,7 +49,7 @@ async function createFeedbackIssue({ request }) {
   );
 
   if (githubUsername) {
-    const isValidUsername = /^[a-zA-Z0-9]+$/.test(githubUsername);
+    const isValidUsername = /^[\dA-Za-z]+$/.test(githubUsername);
     lines.push(`\nThank you ${isValidUsername ? `@${githubUsername}` : `**${githubUsername}**`}!`);
   }
 
@@ -59,8 +59,8 @@ async function createFeedbackIssue({ request }) {
     issueUrl = await createIssue(title, lines.join(`\n`), labels);
     console.log(`Created issue at ${issueUrl}`);
   }
-  catch (e) {
-    error = e.message;
+  catch (createIssueError) {
+    error = createIssueError.message;
   }
 
   return {

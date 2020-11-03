@@ -10,7 +10,7 @@ require(`../lib/load-env-file.js`);
 
 const USER_AGENT = require(`default-user-agent`)();
 const GITHUB_COMMENT_HEADING = `## Broken links update`;
-const TIMEOUT = 30000;
+const TIMEOUT = 30_000;
 
 const SiteCrawler = require(`../lib/site-crawler.js`);
 
@@ -109,7 +109,7 @@ async function fetchExternalUrls(externalUrls) {
   const urlResults = [];
 
   const BLOCK_SIZE = 25;
-  const urlBlocks = Array(Math.ceil(externalUrls.length / BLOCK_SIZE)).fill().map(
+  const urlBlocks = new Array(Math.ceil(externalUrls.length / BLOCK_SIZE)).fill().map(
     (_, index) => externalUrls.slice(index * BLOCK_SIZE, (index + 1) * BLOCK_SIZE),
   );
 
@@ -131,8 +131,8 @@ async function fetchExternalUrls(externalUrls) {
   const failingUrlResults = urlResults.filter(result => result.failed);
 
   const fetchTime = new Date() - fetchStartTime;
-  const colorOrPeriod = failingUrlResults.length > 0 ? `:` : `.`;
-  console.log(`\nFetching done in ${fetchTime / 1000}s, ${failingUrlResults.length} of ${externalUrls.length} URLs have failed${colorOrPeriod}`);
+  const colonOrPeriod = failingUrlResults.length > 0 ? `:` : `.`;
+  console.log(`\nFetching done in ${fetchTime / 1000}s, ${failingUrlResults.length} of ${externalUrls.length} URLs have failed${colonOrPeriod}`);
   for (const { url, message } of failingUrlResults) {
     console.log(`- ${chalk.yellow(url)} (${chalk.redBright(message)})`);
   }
@@ -205,16 +205,16 @@ async function testExternalLink(url) {
  * @returns {Promise} Promise that resolves when issue has been updated or rejects if the issue can't be updated.
  */
 async function updateGithubIssue(urlResults) {
-  const requiredEnvVars = [
+  const requiredEnvironmentVariables = [
     `GITHUB_USER_TOKEN`,
     `GITHUB_BROKEN_LINKS_ISSUE_NUMBER`,
     `TRAVIS_REPO_SLUG`,
     `TRAVIS_JOB_WEB_URL`,
   ];
 
-  for (const envVar of requiredEnvVars) {
-    if (!(envVar in process.env)) {
-      console.log(`For updating GitHub issue, environment variable ${envVar} is required. Please define it in your system or in the .env file.`);
+  for (const environmentVariable of requiredEnvironmentVariables) {
+    if (!(environmentVariable in process.env)) {
+      console.log(`For updating GitHub issue, environment variable ${environmentVariable} is required. Please define it in your system or in the .env file.`);
       return;
     }
   }

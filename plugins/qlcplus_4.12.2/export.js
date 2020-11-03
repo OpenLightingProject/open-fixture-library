@@ -22,7 +22,7 @@ module.exports.version = `1.3.0`;
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
  * @param {Object} options Global options, including:
- * @param {String} options.baseDir Absolute path to OFL's root directory.
+ * @param {String} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
@@ -86,13 +86,13 @@ module.exports.export = async function exportQlcPlus(fixtures, options) {
   });
 
   // add gobo images not included in QLC+ to exported files
-  Object.entries(customGobos).forEach(([qlcplusResName, oflResource]) => {
+  Object.entries(customGobos).forEach(([qlcplusResourceName, oflResource]) => {
     const fileContent = (oflResource.imageEncoding === `base64`)
       ? Buffer.from(oflResource.imageData, `base64`)
       : oflResource.imageData;
 
     outFiles.push({
-      name: `gobos/${qlcplusResName}`,
+      name: `gobos/${qlcplusResourceName}`,
       content: fileContent,
       mimeType: oflResource.imageMimeType,
     });
@@ -107,7 +107,7 @@ module.exports.export = async function exportQlcPlus(fixtures, options) {
  * @param {Object} customGobos An object where gobo resources not included in QLC+ can be added to.
  */
 function addChannel(xml, channel, customGobos) {
-  const chType = getChannelType(channel.type);
+  const channelType = getChannelType(channel.type);
 
   const xmlChannel = xml.element({
     Channel: {
@@ -127,18 +127,18 @@ function addChannel(xml, channel, customGobos) {
     xmlChannel.element({
       Group: {
         '@Byte': 0,
-        '#text': chType,
+        '#text': channelType,
       },
     });
 
-    if (chType === `Intensity`) {
+    if (channelType === `Intensity`) {
       xmlChannel.element({
         Colour: channel.color !== null ? channel.color.replace(/^(?:Warm|Cold) /, ``) : `Generic`,
       });
     }
 
-    for (const cap of channel.capabilities) {
-      addCapability(xmlChannel, cap, customGobos);
+    for (const capability of channel.capabilities) {
+      addCapability(xmlChannel, capability, customGobos);
     }
   }
 
@@ -186,16 +186,16 @@ function addFineChannel(xml, fineChannel, customGobos) {
     return;
   }
 
-  const chType = getChannelType(fineChannel.coarseChannel.type);
+  const channelType = getChannelType(fineChannel.coarseChannel.type);
 
   xmlFineChannel.element({
     Group: {
       '@Byte': 1,
-      '#text': chType,
+      '#text': channelType,
     },
   });
 
-  if (chType === `Intensity`) {
+  if (channelType === `Intensity`) {
     xmlFineChannel.element({
       Colour: fineChannel.coarseChannel.color !== null ? fineChannel.coarseChannel.color.replace(/^(?:Warm|Cold) /, ``) : `Generic`,
     });
@@ -210,25 +210,25 @@ function addFineChannel(xml, fineChannel, customGobos) {
 
 /**
  * @param {Object} xmlChannel The xmlbuilder <Channel> object.
- * @param {Capability} cap The OFL capability object.
+ * @param {Capability} capability The OFL capability object.
  * @param {Object} customGobos An object where gobo resources not included in QLC+ can be added to.
  */
-function addCapability(xmlChannel, cap, customGobos) {
-  const dmxRange = cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
+function addCapability(xmlChannel, capability, customGobos) {
+  const dmxRange = capability.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
 
   const xmlCapability = xmlChannel.element({
     Capability: {
       '@Min': dmxRange.start,
       '@Max': dmxRange.end,
-      '#text': cap.name,
+      '#text': capability.name,
     },
   });
 
-  const preset = addCapabilityAliases(xmlCapability, cap) ? {
+  const preset = addCapabilityAliases(xmlCapability, capability) ? {
     presetName: `Alias`,
     res1: null,
     res2: null,
-  } : getCapabilityPreset(cap);
+  } : getCapabilityPreset(capability);
 
   if (preset !== null) {
     xmlCapability.attribute(`Preset`, preset.presetName);
@@ -237,7 +237,7 @@ function addCapability(xmlChannel, cap, customGobos) {
       xmlCapability.attribute(`Res1`, preset.res1);
 
       if (`${preset.res1}`.startsWith(`ofl/`)) {
-        customGobos[preset.res1] = cap.wheelSlot[0].resource;
+        customGobos[preset.res1] = capability.wheelSlot[0].resource;
       }
     }
 
@@ -246,54 +246,54 @@ function addCapability(xmlChannel, cap, customGobos) {
     }
   }
   else {
-    addCapabilityLegacyAttributes(xmlCapability, cap, customGobos);
+    addCapabilityLegacyAttributes(xmlCapability, capability, customGobos);
   }
 }
 
 /**
  * @param {Object} xmlCapability The xmlbuilder <Capability> object.
- * @param {Capability} cap The OFL capability object.
+ * @param {Capability} capability The OFL capability object.
  * @param {Object} customGobos An object where gobo resources not included in QLC+ can be added to.
  */
-function addCapabilityLegacyAttributes(xmlCapability, cap, customGobos) {
-  if (cap.colors !== null && cap.colors.allColors.length <= 2) {
-    xmlCapability.attribute(`Color`, cap.colors.allColors[0]);
+function addCapabilityLegacyAttributes(xmlCapability, capability, customGobos) {
+  if (capability.colors !== null && capability.colors.allColors.length <= 2) {
+    xmlCapability.attribute(`Color`, capability.colors.allColors[0]);
 
-    if (cap.colors.allColors.length > 1) {
-      xmlCapability.attribute(`Color2`, cap.colors.allColors[1]);
+    if (capability.colors.allColors.length > 1) {
+      xmlCapability.attribute(`Color2`, capability.colors.allColors[1]);
     }
   }
 
-  const goboRes = exportHelpers.getGoboRes(cap);
-  if (goboRes) {
-    xmlCapability.attribute(`Res`, goboRes);
+  const goboResource = exportHelpers.getGoboResource(capability);
+  if (goboResource) {
+    xmlCapability.attribute(`Res`, goboResource);
 
-    if (goboRes.startsWith(`ofl/`)) {
-      customGobos[goboRes] = cap.wheelSlot[0].resource;
+    if (goboResource.startsWith(`ofl/`)) {
+      customGobos[goboResource] = capability.wheelSlot[0].resource;
     }
   }
 }
 
 /**
  * @param {Object} xmlCapability The xmlbuilder <Capability> object.
- * @param {Capability} cap The OFL capability object.
+ * @param {Capability} capability The OFL capability object.
  * @returns {Boolean} True when one or more <Alias> elements were added to the capability, false otherwise.
  */
-function addCapabilityAliases(xmlCapability, cap) {
-  const fixture = cap._channel.fixture;
+function addCapabilityAliases(xmlCapability, capability) {
+  const fixture = capability._channel.fixture;
 
   let aliasAdded = false;
-  for (const alias of Object.keys(cap.switchChannels)) {
+  for (const alias of Object.keys(capability.switchChannels)) {
     const switchingChannel = fixture.getChannelByKey(alias);
     const defaultChannel = switchingChannel.defaultChannel;
-    const switchedChannel = fixture.getChannelByKey(cap.switchChannels[alias]);
+    const switchedChannel = fixture.getChannelByKey(capability.switchChannels[alias]);
 
     if (defaultChannel === switchedChannel) {
       continue;
     }
 
     const modesContainingSwitchingChannel = fixture.modes.filter(
-      mode => mode.getChannelIndex(switchingChannel) !== -1,
+      mode => mode.getChannelIndex(switchingChannel.key) !== -1,
     );
 
     for (const mode of modesContainingSwitchingChannel) {
@@ -448,19 +448,19 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
  */
 function getPanTiltMax(panOrTilt, channels) {
   const capabilities = [];
-  channels.forEach(ch => {
-    if (ch.capabilities) {
-      capabilities.push(...ch.capabilities);
+  channels.forEach(channel => {
+    if (channel.capabilities) {
+      capabilities.push(...channel.capabilities);
     }
   });
 
-  const panTiltCapabilities = capabilities.filter(cap => cap.type === panOrTilt && cap.angle[0].unit === `deg`);
-  const minAngle = Math.min(...panTiltCapabilities.map(cap => Math.min(cap.angle[0].number, cap.angle[1].number)));
-  const maxAngle = Math.max(...panTiltCapabilities.map(cap => Math.max(cap.angle[0].number, cap.angle[1].number)));
+  const panTiltCapabilities = capabilities.filter(capability => capability.type === panOrTilt && capability.angle[0].unit === `deg`);
+  const minAngle = Math.min(...panTiltCapabilities.map(capability => Math.min(capability.angle[0].number, capability.angle[1].number)));
+  const maxAngle = Math.max(...panTiltCapabilities.map(capability => Math.max(capability.angle[0].number, capability.angle[1].number)));
   const panTiltMax = maxAngle - minAngle;
 
   if (panTiltMax === -Infinity) {
-    const hasContinuousCapability = capabilities.some(cap => cap.type === `${panOrTilt}Continuous`);
+    const hasContinuousCapability = capabilities.some(capability => capability.type === `${panOrTilt}Continuous`);
     if (hasContinuousCapability) {
       return 9999;
     }
@@ -478,7 +478,7 @@ function getPanTiltMax(panOrTilt, channels) {
  */
 function addHeads(xmlMode, mode) {
   const hasMatrixChannels = mode.channels.some(
-    ch => ch.pixelKey !== null || (ch instanceof SwitchingChannel && ch.defaultChannel.pixelKey !== null),
+    channel => channel.pixelKey !== null || (channel instanceof SwitchingChannel && channel.defaultChannel.pixelKey !== null),
   );
 
   if (hasMatrixChannels) {
@@ -487,9 +487,9 @@ function addHeads(xmlMode, mode) {
       const channels = mode.channels.filter(channel => controlsPixelKey(channel, pixelKey));
       const xmlHead = xmlMode.element(`Head`);
 
-      for (const ch of channels) {
+      for (const channel of channels) {
         xmlHead.element({
-          Channel: mode.getChannelIndex(ch.key),
+          Channel: mode.getChannelIndex(channel.key),
         });
       }
     }
@@ -529,12 +529,12 @@ function getFixtureType(fixture) {
     // see https://github.com/OpenLightingProject/open-fixture-library/issues/581
     'Pixel Bar': isBeamBar() ? `LED Bar (Beams)` : `LED Bar (Pixels)`,
   };
-  const ignoredCats = [`Blinder`, `Matrix`, `Stand`];
+  const ignoredCats = new Set([`Blinder`, `Matrix`, `Stand`]);
 
   return fixture.categories.map(
     cat => (cat in replaceCats ? replaceCats[cat] : cat),
   ).find(
-    cat => !ignoredCats.includes(cat),
+    cat => !ignoredCats.has(cat),
   ) || `Other`;
 
 

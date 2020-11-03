@@ -63,10 +63,10 @@ app.get(`/download.:format([a-z0-9_.-]+)`, (request, response, next) => {
   }
 
   const fixtures = Object.keys(register.filesystem).filter(
-    fixKey => !(`redirectTo` in register.filesystem[fixKey]) || register.filesystem[fixKey].reason === `SameAsDifferentBrand`,
+    fixtureKey => !(`redirectTo` in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === `SameAsDifferentBrand`,
   ).map(fixture => {
-    const [man, key] = fixture.split(`/`);
-    return fixtureFromRepository(man, key);
+    const [manufacturer, key] = fixture.split(`/`);
+    return fixtureFromRepository(manufacturer, key);
   });
 
   downloadFixtures(response, format, fixtures, format, `all fixtures`);
@@ -85,15 +85,15 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
 
   const outObject = request.body;
   const fixtures = Object.entries(outObject.fixtures).map(([key, jsonObject]) => {
-    const [manKey, fixKey] = key.split(`/`);
+    const [manufacturerKey, fixtureKey] = key.split(`/`);
 
-    const manufacturer = manKey in outObject.manufacturers
-      ? new Manufacturer(manKey, outObject.manufacturers[manKey])
-      : manKey;
+    const manufacturer = manufacturerKey in outObject.manufacturers
+      ? new Manufacturer(manufacturerKey, outObject.manufacturers[manufacturerKey])
+      : manufacturerKey;
 
     embedResourcesIntoFixtureJson(jsonObject);
 
-    return new Fixture(manufacturer, fixKey, jsonObject);
+    return new Fixture(manufacturer, fixtureKey, jsonObject);
   });
 
   let zipName;
@@ -110,17 +110,17 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
   downloadFixtures(response, format, fixtures, zipName, errorDesc);
 });
 
-app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, async (request, response, next) => {
-  const { manKey, fixKey, format } = request.params;
+app.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request, response, next) => {
+  const { manufacturerKey, fixtureKey, format } = request.params;
 
-  if (!(`${manKey}/${fixKey}` in register.filesystem)) {
+  if (!(`${manufacturerKey}/${fixtureKey}` in register.filesystem)) {
     next();
     return;
   }
 
   if (format === `json`) {
     try {
-      const data = await readFile(`./fixtures/${manKey}/${fixKey}.json`, `utf8`);
+      const data = await readFile(`./fixtures/${manufacturerKey}/${fixtureKey}.json`, `utf8`);
       const json = JSON.parse(data);
       embedResourcesIntoFixtureJson(json);
       response.json(json);
@@ -128,7 +128,7 @@ app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, async (request, response, next
     catch (error) {
       response
         .status(500)
-        .send(`Fetching ${manKey}/${fixKey}.json failed: ${error.toString()}`);
+        .send(`Fetching ${manufacturerKey}/${fixtureKey}.json failed: ${error.toString()}`);
     }
     return;
   }
@@ -138,30 +138,30 @@ app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, async (request, response, next
     return;
   }
 
-  const fixtures = [fixtureFromRepository(manKey, fixKey)];
-  const zipName = `${manKey}_${fixKey}_${format}`;
-  const errorDesc = `fixture ${manKey}/${fixKey}`;
+  const fixtures = [fixtureFromRepository(manufacturerKey, fixtureKey)];
+  const zipName = `${manufacturerKey}_${fixtureKey}_${format}`;
+  const errorDesc = `fixture ${manufacturerKey}/${fixtureKey}`;
 
   downloadFixtures(response, format, fixtures, zipName, errorDesc);
 });
 
 app.get(`/sitemap.xml`, (request, response) => {
-  const generateSitemap = requireNoCacheInDev(`./lib/generate-sitemap.js`);
+  const generateSitemap = requireNoCacheInDevelopment(`./lib/generate-sitemap.js`);
 
   response.type(`application/xml`);
   generateSitemap(packageJson.homepage).pipe(response);
 });
 
 app.use(`/api/v1`, (request, response) => {
-  requireNoCacheInDev(`./ui/api/index.js`)(request, response);
+  requireNoCacheInDevelopment(`./ui/api/index.js`)(request, response);
 });
 
 
 
 // instantiate nuxt.js with the options
-const isDev = process.argv[2] === `--dev`;
-loadNuxt(isDev ? `dev` : `start`).then(async nuxt => {
-  if (isDev) {
+const isDevelopment = process.argv[2] === `--dev`;
+loadNuxt(isDevelopment ? `dev` : `start`).then(async nuxt => {
+  if (isDevelopment) {
     console.log(`Starting dev server with hot reloading...`);
     await build(nuxt);
   }
@@ -189,11 +189,11 @@ app.listen(process.env.PORT, () => {
  * @returns {Promise} A Promise that is resolved when the response is sent.
  */
 async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDesc) {
-  const plugin = requireNoCacheInDev(path.join(__dirname, `plugins`, pluginKey, `export.js`));
+  const plugin = requireNoCacheInDevelopment(path.join(__dirname, `plugins`, pluginKey, `export.js`));
 
   try {
     const files = await plugin.export(fixtures, {
-      baseDir: __dirname,
+      baseDirectory: __dirname,
       date: new Date(),
     });
 
@@ -234,7 +234,7 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
  * @param {String} target The require path, like `./register.json`.
  * @returns {*} The result of standard require(target).
  */
-function requireNoCacheInDev(target) {
+function requireNoCacheInDevelopment(target) {
   if (process.env.NODE_ENV !== `production`) {
     delete require.cache[require.resolve(target)];
   }

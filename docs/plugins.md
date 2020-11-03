@@ -40,7 +40,7 @@ module.exports.version = `0.1.0`; // semantic versioning of export plugin
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects, see our fixture model
  * @param {Object} options Some global options, for example:
- * @param {String} options.baseDir Absolute path to OFL's root directory
+ * @param {String} options.baseDirectory Absolute path to OFL's root directory
  * @param {Date} options.date The current time.
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} All generated files (see file schema above)
@@ -108,11 +108,11 @@ module.exports.import = async function importPluginName(buffer, fileName, author
   };
 
   // just an example
-  const manKey = `cameo`;
-  const fixKey = `thunder-wash-600-rgb`; // use a sanitized key as it's used as filename!
+  const manufacturerKey = `cameo`;
+  const fixtureKey = `thunder-wash-600-rgb`; // use a sanitized key as it's used as filename!
 
   const fixtureObject = {};
-  out.warnings[`${manKey}/${fixKey}`] = [];
+  out.warnings[`${manufacturerKey}/${fixtureKey}`] = [];
 
   const fileContent = buffer.toString();
   const couldNotParse = fileContent.includes(`Error`);
@@ -123,10 +123,10 @@ module.exports.import = async function importPluginName(buffer, fileName, author
   fixtureObject.name = `Thunder Wash 600 RGB`;
 
   // Add warning if a necessary property is not included in parsed file
-  out.warnings[`${manKey}/${fixKey}`].push(`Could not parse categories, please specify them manually.`);
+  out.warnings[`${manufacturerKey}/${fixtureKey}`].push(`Could not parse categories, please specify them manually.`);
 
   // That's the imported fixture
-  out.fixtures[`${manKey}/${fixKey}`] = fixtureObject;
+  out.fixtures[`${manufacturerKey}/${fixtureKey}`] = fixtureObject;
 
   return out;
 };

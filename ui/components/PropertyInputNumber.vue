@@ -137,9 +137,9 @@ export default {
 
       let value;
       try {
-        value = parseFloat(input.value);
+        value = Number.parseFloat(input.value);
       }
-      catch (error) {
+      catch {
         value = `invalid`;
       }
 

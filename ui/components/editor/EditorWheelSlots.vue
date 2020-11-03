@@ -54,7 +54,7 @@ export default {
       const length = max - min + 1;
 
       // array of integers from min to max: [min, min+1, …, max-1, max]
-      const slotNumbersInRange = Array.apply(null, Array(length)).map(
+      const slotNumbersInRange = new Array(length).fill().map(
         (item, index) => min + index,
       ).filter(slotNumber => slotNumber >= 1);
 

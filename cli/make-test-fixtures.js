@@ -13,64 +13,64 @@ const { fixtureFromRepository } = require(`../lib/model.js`);
 const register = require(`../fixtures/register.json`);
 const manufacturers = require(`../fixtures/manufacturers.json`);
 
-const fixFeaturesDir = path.join(__dirname, `../lib/fixture-features`);
+const fixtureFeaturesDirectory = path.join(__dirname, `../lib/fixture-features`);
 const jsonFile = path.join(__dirname, `../tests/test-fixtures.json`);
 const markdownFile = path.join(__dirname, `../tests/test-fixtures.md`);
 
 
-const fixFeatures = [];
+const fixtureFeatures = [];
 const featuresUsed = {}; // feature id -> times used
-for (const featureFile of fs.readdirSync(fixFeaturesDir)) {
+for (const featureFile of fs.readdirSync(fixtureFeaturesDirectory)) {
   if (path.extname(featureFile) === `.js`) {
     // module exports array of fix features
-    const fixFeatureFile = require(path.join(fixFeaturesDir, featureFile));
+    const fixtureFeatureFile = require(path.join(fixtureFeaturesDirectory, featureFile));
 
-    for (let i = 0; i < fixFeatureFile.length; i++) {
-      const fixFeature = fixFeatureFile[i];
+    for (let index = 0; index < fixtureFeatureFile.length; index++) {
+      const fixtureFeature = fixtureFeatureFile[index];
 
       // default id
-      if (!(`id` in fixFeature)) {
-        fixFeature.id = path.basename(featureFile, `.js`);
-        if (fixFeatureFile.length > 1) {
-          fixFeature.id += `-${i}`;
+      if (!(`id` in fixtureFeature)) {
+        fixtureFeature.id = path.basename(featureFile, `.js`);
+        if (fixtureFeatureFile.length > 1) {
+          fixtureFeature.id += `-${index}`;
         }
       }
 
       // check uniqueness of id
-      if (fixFeature.id in featuresUsed) {
-        console.error(`${chalk.red(`[Error]`)} Fixture feature id '${fixFeature.id}' is used multiple times.`);
+      if (fixtureFeature.id in featuresUsed) {
+        console.error(chalk.red(`[Error]`), `Fixture feature id '${fixtureFeature.id}' is used multiple times.`);
         process.exit(1);
       }
 
-      fixFeatures.push(fixFeature);
-      featuresUsed[fixFeature.id] = 0;
+      fixtureFeatures.push(fixtureFeature);
+      featuresUsed[fixtureFeature.id] = 0;
     }
   }
 }
 
 // check which features each fixture supports
 let fixtures = [];
-for (const manFix of Object.keys(register.filesystem)) {
-  const [manKey, fixKey] = manFix.split(`/`);
+for (const manufacturerFixture of Object.keys(register.filesystem)) {
+  const [manufacturerKey, fixtureKey] = manufacturerFixture.split(`/`);
 
   // pre-process data
-  const fix = fixtureFromRepository(manKey, fixKey);
-  const fixResult = {
-    man: manKey,
-    key: fixKey,
-    name: fix.name,
+  const fixture = fixtureFromRepository(manufacturerKey, fixtureKey);
+  const fixtureResult = {
+    man: manufacturerKey,
+    key: fixtureKey,
+    name: fixture.name,
     features: [],
   };
 
   // check all features
-  for (const fixFeature of fixFeatures) {
-    if (fixFeature.hasFeature(fix)) {
-      fixResult.features.push(fixFeature.id);
-      featuresUsed[fixFeature.id]++;
+  for (const fixtureFeature of fixtureFeatures) {
+    if (fixtureFeature.hasFeature(fixture)) {
+      fixtureResult.features.push(fixtureFeature.id);
+      featuresUsed[fixtureFeature.id]++;
     }
   }
 
-  fixtures.push(fixResult);
+  fixtures.push(fixtureResult);
 }
 
 // first fixtures are more likely to be filtered out, so we start with the ones with the fewest features
@@ -109,19 +109,19 @@ for (const fixture of fixtures) {
 
 fs.writeFile(jsonFile, `${JSON.stringify(fixtures, null, 2)}\n`, `utf8`, error => {
   if (error) {
-    console.error(`${chalk.red(`[Fail]`)} Could not write test-fixtures.json`, error);
+    console.error(chalk.red(`[Fail]`), `Could not write test-fixtures.json`, error);
   }
   else {
-    console.log(`${chalk.green(`[Success]`)} Updated ${jsonFile}`);
+    console.log(chalk.green(`[Success]`), `Updated ${jsonFile}`);
   }
 });
 
 fs.writeFile(markdownFile, getMarkdownCode(), `utf8`, error => {
   if (error) {
-    console.error(`${chalk.red(`[Fail]`)} Could not write test-fixtures.md`, error);
+    console.error(chalk.red(`[Fail]`), `Could not write test-fixtures.md`, error);
   }
   else {
-    console.log(`${chalk.green(`[Success]`)} Updated ${markdownFile}`);
+    console.log(chalk.green(`[Success]`), `Updated ${markdownFile}`);
   }
 });
 
@@ -152,17 +152,17 @@ function getMarkdownCode() {
 
   // table body
   const footnotes = [];
-  fixFeatures.forEach((fixFeature, index) => {
-    let line = `**${fixFeature.name}**`;
+  fixtureFeatures.forEach((fixtureFeature, index) => {
+    let line = `**${fixtureFeature.name}**`;
 
-    if (fixFeature.description) {
-      footnotes.push(fixFeature.description);
+    if (fixtureFeature.description) {
+      footnotes.push(fixtureFeature.description);
       const n = footnotes.length;
       line += ` [<sup>[${n}]</sup>](#user-content-footnote-${n})`;
     }
 
     for (const fixture of fixtures) {
-      line += fixture.features.includes(fixFeature.id) ? ` | ✅` : ` | ❌`;
+      line += fixture.features.includes(fixtureFeature.id) ? ` | ✅` : ` | ❌`;
     }
 
     mdLines.push(line);
@@ -176,8 +176,8 @@ function getMarkdownCode() {
 
   // footnotes
   mdLines.push(`## Footnotes`, ``);
-  for (let i = 0; i < footnotes.length; i++) {
-    mdLines.push(`**<a id="user-content-footnote-${i + 1}">[${i + 1}]</a>**: ${footnotes[i]}  `);
+  for (const [index, footnote] of footnotes.entries()) {
+    mdLines.push(`**<a id="user-content-footnote-${index + 1}">[${index + 1}]</a>**: ${footnote}  `);
   }
   mdLines.push(``);
 

@@ -76,24 +76,11 @@ export default {
   components: {
     LabeledInput,
   },
-  head() {
-    const title = `RDM Lookup`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: `title`,
-          content: title,
-        },
-      ],
-    };
-  },
   async asyncData({ query, $axios, redirect, error }) {
     const { manufacturerId, modelId, personalityIndex } = query;
 
-    const manufacturerIdNumber = parseInt(manufacturerId, 10);
-    const modelIdNumber = parseInt(modelId, 10);
+    const manufacturerIdNumber = Number.parseInt(manufacturerId, 10);
+    const modelIdNumber = Number.parseInt(modelId, 10);
 
     if (isEmpty(manufacturerId)) {
       return {
@@ -151,14 +138,27 @@ export default {
       return error(requestError);
     }
   },
+  head() {
+    const title = `RDM Lookup`;
+
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
+    };
+  },
 };
 
 /**
- * @param {*} queryParam Vue Router's query parameter to check.
+ * @param {*} queryParameter Vue Router's query parameter to check.
  * @returns {Boolean} True if the query parameter is not specified or empty.
  */
-function isEmpty(queryParam) {
-  return queryParam === undefined || queryParam === ``;
+function isEmpty(queryParameter) {
+  return queryParameter === undefined || queryParameter === ``;
 }
 
 /**
@@ -173,7 +173,7 @@ function redirectToCorrectPage(manufacturer, modelId, personalityIndex, redirect
     return;
   }
 
-  const personalityIndexNumber = parseInt(personalityIndex, 10);
+  const personalityIndexNumber = Number.parseInt(personalityIndex, 10);
   const locationHash = isEmpty(personalityIndex) ? `` : `#rdm-personality-${personalityIndexNumber}`;
 
   redirect(301, `/${manufacturer.key}/${manufacturer.models[modelId]}${locationHash}`);

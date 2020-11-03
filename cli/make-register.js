@@ -13,32 +13,32 @@ const fixturePath = path.join(__dirname, `../fixtures`);
 
 try {
   // add all fixture.json files to the register
-  for (const manKey of fs.readdirSync(fixturePath)) {
-    const manDir = path.join(fixturePath, manKey);
+  for (const manufacturerKey of fs.readdirSync(fixturePath)) {
+    const manufacturerDirectory = path.join(fixturePath, manufacturerKey);
 
     // only directories
-    if (!fs.statSync(manDir).isDirectory()) {
+    if (!fs.statSync(manufacturerDirectory).isDirectory()) {
       continue;
     }
 
 
-    register.addManufacturer(manKey, manufacturers[manKey]);
+    register.addManufacturer(manufacturerKey, manufacturers[manufacturerKey]);
 
-    for (const filename of fs.readdirSync(manDir)) {
+    for (const filename of fs.readdirSync(manufacturerDirectory)) {
       if (path.extname(filename) !== `.json`) {
         continue;
       }
 
-      const fixKey = path.basename(filename, `.json`);
-      const fixData = JSON.parse(fs.readFileSync(path.join(fixturePath, manKey, filename), `utf8`));
+      const fixtureKey = path.basename(filename, `.json`);
+      const fixtureData = JSON.parse(fs.readFileSync(path.join(fixturePath, manufacturerKey, filename), `utf8`));
 
-      if (fixData.$schema.endsWith(`/fixture-redirect.json`)) {
-        const redirectToData = JSON.parse(fs.readFileSync(path.join(fixturePath, `${fixData.redirectTo}.json`), `utf8`));
+      if (fixtureData.$schema.endsWith(`/fixture-redirect.json`)) {
+        const redirectToData = JSON.parse(fs.readFileSync(path.join(fixturePath, `${fixtureData.redirectTo}.json`), `utf8`));
 
-        register.addFixtureRedirect(manKey, fixKey, fixData, redirectToData);
+        register.addFixtureRedirect(manufacturerKey, fixtureKey, fixtureData, redirectToData);
       }
       else {
-        register.addFixture(manKey, fixKey, fixData);
+        register.addFixture(manufacturerKey, fixtureKey, fixtureData);
       }
     }
   }
@@ -54,9 +54,9 @@ const fileContents = `${JSON.stringify(register.getAsSortedObject(), null, 2)}\n
 
 fs.writeFile(filename, fileContents, `utf8`, error => {
   if (error) {
-    console.error(`${chalk.red(`[Fail]`)} Could not write register file.`, error);
+    console.error(chalk.red(`[Fail]`), `Could not write register file.`, error);
     process.exit(1);
   }
-  console.log(`${chalk.green(`[Success]`)} Updated register file ${filename}`);
+  console.log(chalk.green(`[Success]`), `Updated register file`, filename);
   process.exit(0);
 });

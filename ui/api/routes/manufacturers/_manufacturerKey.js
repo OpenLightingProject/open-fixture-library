@@ -25,11 +25,11 @@ function getManufacturerByKey({ request }) {
     key: manufacturerKey,
     color: register.colors[manufacturerKey],
     fixtures: (register.manufacturers[manufacturerKey] || []).map(
-      fixKey => ({
-        key: fixKey,
-        name: register.filesystem[`${manufacturerKey}/${fixKey}`].name,
+      fixtureKey => ({
+        key: fixtureKey,
+        name: register.filesystem[`${manufacturerKey}/${fixtureKey}`].name,
         categories: Object.keys(register.categories).filter(
-          cat => register.categories[cat].includes(`${manufacturerKey}/${fixKey}`),
+          cat => register.categories[cat].includes(`${manufacturerKey}/${fixtureKey}`),
         ),
       }),
     ),

@@ -14,7 +14,7 @@ export default {
   },
   render(createElement, context) {
     return createElement(`OflSvg`, Object.assign({}, context.data, {
-      props: getIconProps(context.props.channel),
+      props: getIconProperties(context.props.channel),
     }));
   },
 };
@@ -29,7 +29,7 @@ const channelTypeIcons = {
  * @param {AbstractChannel} channel The channel to get an icon for.
  * @returns {Object} Object containing the props to pass to <OflSvg />
  */
-function getIconProps(channel) {
+function getIconProperties(channel) {
   if (channel instanceof NullChannel) {
     return {
       type: `fixture`,
@@ -39,7 +39,7 @@ function getIconProps(channel) {
   }
 
   if (channel instanceof FineChannel) {
-    return getIconProps(channel.coarseChannel);
+    return getIconProperties(channel.coarseChannel);
   }
 
   if (channel instanceof SwitchingChannel) {

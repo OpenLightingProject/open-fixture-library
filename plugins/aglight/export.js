@@ -8,15 +8,15 @@ const { Entity, NullChannel } = require(`../../lib/model.js`);
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 
 const manufacturers = require(`../../fixtures/manufacturers.json`);
-const units = [`K`, `deg`, `%`, `ms`, `Hz`, `m^3/min`, `rpm`];
-const excludeKeys = [`comment`, `name`, `helpWanted`, `type`, `effectName`, `effectPreset`, `shutterEffect`, `wheel`, `isShaking`, `fogType`, `menuClick`];
+const units = new Set([`K`, `deg`, `%`, `ms`, `Hz`, `m^3/min`, `rpm`]);
+const excludeKeys = new Set([`comment`, `name`, `helpWanted`, `type`, `effectName`, `effectPreset`, `shutterEffect`, `wheel`, `isShaking`, `fogType`, `menuClick`]);
 
 module.exports.version = `1.0.0`;
 
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
  * @param {Object} options Global options, including:
- * @param {String} options.baseDir Absolute path to OFL's root directory.
+ * @param {String} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
@@ -110,7 +110,7 @@ function transformNonNumericValues(fixtureJson) {
         if (key === `color`) {
           processColor(capability);
         }
-        else if (typeof value === `string` && !excludeKeys.includes(key)) {
+        else if (typeof value === `string` && !excludeKeys.has(key)) {
           capability[key] = getEntityNumber(value);
         }
       }
@@ -147,11 +147,11 @@ function transformNonNumericValues(fixtureJson) {
         return entity.number * 1000;
       }
 
-      if (units.includes(entity.unit)) {
+      if (units.has(entity.unit)) {
         return entity.number;
       }
     }
-    catch (error) {
+    catch {
       // string could not be parsed as an entity
     }
 

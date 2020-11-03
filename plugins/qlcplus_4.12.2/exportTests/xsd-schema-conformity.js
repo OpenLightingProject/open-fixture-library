@@ -23,23 +23,23 @@ module.exports = async function testSchemaConformity(exportFile, allExportFiles)
   }
 
   const schemaData = await new Promise((resolve, reject) => {
-    https.get(SCHEMA_URL, res => {
+    https.get(SCHEMA_URL, response => {
       let data = ``;
-      res.on(`data`, chunk => {
+      response.on(`data`, chunk => {
         data += chunk;
       });
-      res.on(`end`, () => {
+      response.on(`end`, () => {
         resolve(data);
       });
     });
   });
 
-  const xsdDoc = libxml.parseXml(schemaData);
-  const xmlDoc = libxml.parseXml(exportFile.content);
+  const xsdDocument = libxml.parseXml(schemaData);
+  const xmlDocument = libxml.parseXml(exportFile.content);
 
-  if (xmlDoc.validate(xsdDoc)) {
+  if (xmlDocument.validate(xsdDocument)) {
     return;
   }
 
-  throw xmlDoc.validationErrors.map(err => err.message.trim());
+  throw xmlDocument.validationErrors.map(error => error.message.trim());
 };

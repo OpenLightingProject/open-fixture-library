@@ -32,15 +32,9 @@ printVariables();
  */
 function printVariables() {
   for (const key of usedVariables) {
-    let str = chalk.yellow(key);
-
-    if (key in process.env) {
-      str += `=${chalk.green(process.env[key])}`;
-    }
-    else {
-      str += chalk.red(` is unset`);
-    }
-
-    console.log(str);
+    console.log(chalk.yellow(key) + (key in process.env
+      ? `=${chalk.green(process.env[key])}`
+      : chalk.red(` is unset`)
+    ));
   }
 }

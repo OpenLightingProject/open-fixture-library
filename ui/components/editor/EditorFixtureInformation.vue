@@ -117,13 +117,13 @@ export default {
         return this.fixture.newManufacturerName;
       }
 
-      const manKey = this.fixture.manufacturerKey;
+      const manufacturerKey = this.fixture.manufacturerKey;
 
-      if (manKey === ``) {
+      if (manufacturerKey === ``) {
         return ``;
       }
 
-      return this.manufacturers[manKey].name;
+      return this.manufacturers[manufacturerKey].name;
     },
     fixtureNameIsWithoutManufacturer() {
       const manufacturerName = this.manufacturerName.trim().toLowerCase();
