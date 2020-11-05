@@ -53,10 +53,13 @@ const pluginExport = require(path.join(__dirname, `../plugins`, cliArguments.plu
 
 (async () => {
   try {
-    const files = await pluginExport.export(fixtures, {
-      baseDirectory: path.join(__dirname, `..`),
-      date: new Date(),
-    });
+    const files = await pluginExport.export(
+      await Promise.all(fixtures),
+      {
+        baseDirectory: path.join(__dirname, `..`),
+        date: new Date(),
+      },
+    );
 
     await Promise.all(pluginData.exportTests.map(async testKey => {
       const exportTest = require(path.join(__dirname, `../plugins`, cliArguments.plugin, `exportTests/${testKey}.js`));

@@ -54,7 +54,7 @@ app.use(compression({
 
 app.get(`/robots.txt`, robotsTxtGenerator);
 
-app.get(`/download.:format([a-z0-9_.-]+)`, (request, response, next) => {
+app.get(`/download.:format([a-z0-9_.-]+)`, async (request, response, next) => {
   const { format } = request.params;
 
   if (!plugins.exportPlugins.includes(format)) {
@@ -62,17 +62,19 @@ app.get(`/download.:format([a-z0-9_.-]+)`, (request, response, next) => {
     return;
   }
 
-  const fixtures = Object.keys(register.filesystem).filter(
-    fixtureKey => !(`redirectTo` in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === `SameAsDifferentBrand`,
-  ).map(fixture => {
-    const [manufacturer, key] = fixture.split(`/`);
-    return fixtureFromRepository(manufacturer, key);
-  });
+  const fixtures = await Promise.all(
+    Object.keys(register.filesystem).filter(
+      fixtureKey => !(`redirectTo` in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === `SameAsDifferentBrand`,
+    ).map(fixture => {
+      const [manufacturer, key] = fixture.split(`/`);
+      return fixtureFromRepository(manufacturer, key);
+    }),
+  );
 
   downloadFixtures(response, format, fixtures, format, `all fixtures`);
 });
 
-app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
+app.post(`/download-editor.:format([a-z0-9_.-]+)`, async (request, response) => {
   const { format } = request.params;
 
   if (!plugins.exportPlugins.includes(format)) {
@@ -84,17 +86,17 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
   }
 
   const outObject = request.body;
-  const fixtures = Object.entries(outObject.fixtures).map(([key, jsonObject]) => {
+  const fixtures = await Promise.all(Object.entries(outObject.fixtures).map(async ([key, jsonObject]) => {
     const [manufacturerKey, fixtureKey] = key.split(`/`);
 
     const manufacturer = manufacturerKey in outObject.manufacturers
       ? new Manufacturer(manufacturerKey, outObject.manufacturers[manufacturerKey])
       : manufacturerKey;
 
-    embedResourcesIntoFixtureJson(jsonObject);
+    await embedResourcesIntoFixtureJson(jsonObject);
 
     return new Fixture(manufacturer, fixtureKey, jsonObject);
-  });
+  }));
 
   let zipName;
   let errorDesc;
@@ -122,7 +124,7 @@ app.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request, r
     try {
       const data = await readFile(`./fixtures/${manufacturerKey}/${fixtureKey}.json`, `utf8`);
       const json = JSON.parse(data);
-      embedResourcesIntoFixtureJson(json);
+      await embedResourcesIntoFixtureJson(json);
       response.json(json);
     }
     catch (error) {
@@ -138,18 +140,18 @@ app.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request, r
     return;
   }
 
-  const fixtures = [fixtureFromRepository(manufacturerKey, fixtureKey)];
+  const fixtures = [await fixtureFromRepository(manufacturerKey, fixtureKey)];
   const zipName = `${manufacturerKey}_${fixtureKey}_${format}`;
   const errorDesc = `fixture ${manufacturerKey}/${fixtureKey}`;
 
   downloadFixtures(response, format, fixtures, zipName, errorDesc);
 });
 
-app.get(`/sitemap.xml`, (request, response) => {
+app.get(`/sitemap.xml`, async (request, response) => {
   const generateSitemap = requireNoCacheInDevelopment(`./lib/generate-sitemap.js`);
 
   response.type(`application/xml`);
-  generateSitemap(packageJson.homepage).pipe(response);
+  (await generateSitemap(packageJson.homepage)).pipe(response);
 });
 
 app.use(`/api/v1`, (request, response) => {

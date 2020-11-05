@@ -121,7 +121,7 @@ async function checkFixtureFile(manufacturerKey, fixtureKey) {
   try {
     const data = await readFile(filepath, `utf8`);
     const fixtureJson = JSON.parse(data);
-    Object.assign(result, checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues));
+    Object.assign(result, await checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues));
   }
   catch (error) {
     result.errors.push(error);

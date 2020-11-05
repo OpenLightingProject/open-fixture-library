@@ -41,9 +41,9 @@ const redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
  * @param {String} fixtureKey The fixture key.
  * @param {Object|null} fixtureJson The fixture JSON object.
  * @param {UniqueValues|null} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
- * @returns {ResultData} The result object containing errors and warnings, if any.
+ * @returns {Promise.<ResultData>} A Promise that resolves to the result object containing errors and warnings, if any.
  */
-function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = null) {
+async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = null) {
   /**
    * @typedef {Object} ResultData
    * @property {Array.<String>} errors All errors of this fixture.
@@ -100,7 +100,7 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
     checkMeta(fixture.meta);
     checkPhysical(fixture.physical);
     checkMatrix(fixture.matrix);
-    checkWheels(fixture.wheels);
+    await checkWheels(fixture.wheels);
     checkTemplateChannels();
     checkChannels(fixtureJson);
 
@@ -289,7 +289,7 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
    * Checks if the fixture's wheels are correct.
    * @param {Array.<Wheel>} wheels The fixture's Wheel instances.
    */
-  function checkWheels(wheels) {
+  async function checkWheels(wheels) {
     for (const wheel of wheels) {
       if (!/\b(?:wheel|disk)\b/i.test(wheel.name)) {
         result.warnings.push(`Name of wheel '${wheel.name}' does not contain the word 'wheel' or 'disk', which could lead to confusing capability names.`);
@@ -298,7 +298,7 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
       const expectedAnimationGoboEndSlots = [];
       const foundAnimationGoboEndSlots = [];
 
-      wheel.slots.forEach((slot, index) => {
+      await Promise.all(wheel.slots.map(async (slot, index) => {
         if (slot.type === `AnimationGoboStart`) {
           expectedAnimationGoboEndSlots.push(index + 1);
         }
@@ -308,13 +308,13 @@ function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = n
 
         if (typeof slot.resource === `string`) {
           try {
-            getResourceFromString(slot.resource);
+            await getResourceFromString(slot.resource);
           }
           catch (error) {
             result.errors.push(error.message);
           }
         }
-      });
+      }));
 
       if (!arraysEqual(expectedAnimationGoboEndSlots, foundAnimationGoboEndSlots)) {
         result.errors.push(`An 'AnimationGoboEnd' slot must be used after an 'AnimationGoboStart' slot in wheel ${wheel.name}. (${expectedAnimationGoboEndSlots}; ${foundAnimationGoboEndSlots})`);

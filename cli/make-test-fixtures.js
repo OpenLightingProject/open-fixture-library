@@ -44,7 +44,7 @@ const markdownFile = path.join(__dirname, `../tests/test-fixtures.md`);
     const [manufacturerKey, fixtureKey] = manufacturerFixture.split(`/`);
 
     // pre-process data
-    const fixture = fixtureFromRepository(manufacturerKey, fixtureKey);
+    const fixture = await fixtureFromRepository(manufacturerKey, fixtureKey);
     const fixtureResult = {
       man: manufacturerKey,
       key: fixtureKey,

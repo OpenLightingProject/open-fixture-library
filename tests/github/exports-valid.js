@@ -229,10 +229,13 @@ async function getTaskPromise(task) {
   const detailListItems = [];
 
   try {
-    const files = await plugin.export([fixtureFromRepository(task.manufacturerKey, task.fixtureKey)], {
-      baseDirectory: path.join(__dirname, `../..`),
-      date: new Date(),
-    });
+    const files = await plugin.export(
+      [await fixtureFromRepository(task.manufacturerKey, task.fixtureKey)],
+      {
+        baseDirectory: path.join(__dirname, `../..`),
+        date: new Date(),
+      },
+    );
 
     const resultListItems = await Promise.all(files.map(async file => {
       try {
