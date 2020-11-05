@@ -1,19 +1,19 @@
 #!/usr/bin/node
 
-const fs = require(`fs`);
+const { readdir, writeFile } = require(`fs/promises`);
 const path = require(`path`);
 const chalk = require(`chalk`);
 const schemaRefParser = require(`@apidevtools/json-schema-ref-parser`);
 
 const schemaDirectory = path.join(__dirname, `../schemas/`);
 
-const schemaFiles = process.argv.length > 2
-  ? process.argv.slice(2)
-  : fs.readdirSync(schemaDirectory).filter(
-    schemaFile => path.extname(schemaFile) === `.json`,
-  );
-
 (async () => {
+  const schemaFiles = process.argv.length > 2
+    ? process.argv.slice(2)
+    : await readdir(schemaDirectory).filter(
+      schemaFile => path.extname(schemaFile) === `.json`,
+    );
+
   process.chdir(schemaDirectory);
   for (const schemaFile of schemaFiles) {
     const schema = require(path.join(schemaDirectory, schemaFile));
@@ -21,7 +21,7 @@ const schemaFiles = process.argv.length > 2
 
     try {
       const dereferencedSchema = await schemaRefParser.dereference(schema);
-      fs.writeFileSync(
+      await writeFile(
         dereferencedSchemaFile,
         `${JSON.stringify(dereferencedSchema, null, 2)}\n`,
       );

@@ -1,17 +1,12 @@
 #!/usr/bin/node
 
-const fs = require(`fs`);
+const { readdir, readFile } = require(`fs/promises`);
 const path = require(`path`);
 const chalk = require(`chalk`);
 const Ajv = require(`ajv`);
-const getAjvErrorMessages = require(`../lib/get-ajv-error-messages.js`);
-
-// interactive commandline support
 const minimist = require(`minimist`);
 
-const promisify = require(`util`).promisify;
-const readFile = promisify(fs.readFile);
-
+const getAjvErrorMessages = require(`../lib/get-ajv-error-messages.js`);
 const manufacturerSchema = require(`../schemas/dereferenced/manufacturers.json`);
 const { checkFixture, checkUniqueness } = require(`./fixture-valid.js`);
 
@@ -61,42 +56,50 @@ const uniqueValues = {
   fixShortNames: new Set(),
 };
 
-const promises = [];
 const fixtureDirectory = path.join(__dirname, `..`, `fixtures`);
 
-if (cliArguments.a) {
-  for (const manufacturerKey of fs.readdirSync(fixtureDirectory)) {
-    const manufacturersDirectory = path.join(fixtureDirectory, manufacturerKey);
+/**
+ * @returns {Promise.<Array.<Object>>} A Promise that resolves to an array of result objects.
+ */
+async function runTests() {
+  const promises = [];
 
-    // files in manufacturer directory
-    if (fs.statSync(manufacturersDirectory).isDirectory()) {
-      for (const file of fs.readdirSync(manufacturersDirectory)) {
+  if (cliArguments.a) {
+    const directoryEntries = await readdir(fixtureDirectory, { withFileTypes: true });
+    const manufacturerKeys = directoryEntries.filter(entry => entry.isDirectory()).map(entry => entry.name);
+
+    for (const manufacturerKey of manufacturerKeys) {
+      const manufacturersDirectory = path.join(fixtureDirectory, manufacturerKey);
+
+      for (const file of await readdir(manufacturersDirectory)) {
         if (path.extname(file) === `.json`) {
           const fixtureKey = path.basename(file, `.json`);
           promises.push(checkFixtureFile(manufacturerKey, fixtureKey));
         }
       }
     }
+    promises.push(checkManufacturers());
   }
-  promises.push(checkManufacturers());
-}
-else {
-  // sanitize given path
-  fixturePaths = fixturePaths.map(relativePath => path.resolve(relativePath));
-  for (const fixturePath of fixturePaths) {
-    if (path.extname(fixturePath) !== `.json`) {
-      // TODO: only produce this warning at a higher verbosity level
-      promises.push({
-        name: fixturePath,
-        errors: [],
-        warnings: [`specified file is not a .json document`],
-      });
-      continue;
+  else {
+    // sanitize given path
+    fixturePaths = fixturePaths.map(relativePath => path.resolve(relativePath));
+    for (const fixturePath of fixturePaths) {
+      if (path.extname(fixturePath) !== `.json`) {
+        // TODO: only produce this warning at a higher verbosity level
+        promises.push({
+          name: fixturePath,
+          errors: [],
+          warnings: [`specified file is not a .json document`],
+        });
+        continue;
+      }
+      const fixtureKey = path.basename(fixturePath, `.json`);
+      const manufacturerKey = path.dirname(fixturePath).split(path.sep).pop();
+      promises.push(checkFixtureFile(manufacturerKey, fixtureKey));
     }
-    const fixtureKey = path.basename(fixturePath, `.json`);
-    const manufacturerKey = path.dirname(fixturePath).split(path.sep).pop();
-    promises.push(checkFixtureFile(manufacturerKey, fixtureKey));
   }
+
+  return Promise.all(promises);
 }
 
 /**
@@ -125,6 +128,7 @@ async function checkFixtureFile(manufacturerKey, fixtureKey) {
   }
   return result;
 }
+
 /**
  * Checks Manufacturers file
  * @returns {Promise.<Object>} A Promise resolving to a result object.
@@ -183,7 +187,7 @@ async function checkManufacturers() {
 
 
 // print results
-Promise.all(promises).then(results => {
+runTests().then(results => {
   let totalFails = 0;
   let totalWarnings = 0;
 
