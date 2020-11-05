@@ -101,6 +101,19 @@ const enabledRuleParameters = {
   'promise/valid-params': [],
 
   // eslint-plugin-unicorn
+  'unicorn/import-style': [{
+    styles: {
+      fs: {
+        unassigned: false,
+        default: false,
+        namespace: false,
+        named: false,
+      },
+      'fs/promises': {
+        named: true,
+      },
+    },
+  }],
   'unicorn/numeric-separators-style': [],
   'unicorn/prevent-abbreviations': [{
     replacements: {
