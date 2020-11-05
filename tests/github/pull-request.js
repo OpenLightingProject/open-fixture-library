@@ -234,7 +234,7 @@ module.exports.updateComment = async function updateComment(test) {
     }));
   }
 
-  return await Promise.all(promises);
+  return Promise.all(promises);
 };
 
 module.exports.getTestFixturesMessage = function getTestFixturesMessage(fixtures) {

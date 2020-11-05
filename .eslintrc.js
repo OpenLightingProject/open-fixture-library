@@ -38,6 +38,7 @@ const enabledRuleParameters = {
   'no-new-object': [],
   'no-prototype-builtins': [],
   'no-return-assign': [],
+  'no-return-await': [],
   'no-shadow': [{ builtinGlobals: false }],
   'no-template-curly-in-string': [],
   'no-trailing-spaces': [],
