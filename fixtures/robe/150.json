@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "150",
+  "categories": ["Stand"],
+  "meta": {
+    "authors": ["wilss"],
+    "createDate": "2020-11-06",
+    "lastModifyDate": "2020-11-06"
+  },
+  "links": {
+    "manual": [
+      "http://www.a.com"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 128,
+      "capability": {
+        "type": "Pan",
+        "angle": "450deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angle": "228deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic",
+          "comment": "standard mode"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "Generic",
+          "comment": "max speed"
+        },
+        {
+          "dmxRange": [2, 255],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "22ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed"
+      ]
+    }
+  ]
+}
