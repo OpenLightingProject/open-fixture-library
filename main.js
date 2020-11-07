@@ -3,8 +3,7 @@
 // see https://github.com/standard-things/esm#getting-started
 require = require(`esm`)(module); // eslint-disable-line no-global-assign
 
-const promisify = require(`util`).promisify;
-const readFile = promisify(require(`fs`).readFile);
+const { readFile } = require(`fs/promises`);
 const path = require(`path`);
 const express = require(`express`);
 const compression = require(`compression`);

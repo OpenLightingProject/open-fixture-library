@@ -2,8 +2,7 @@
 
 const path = require(`path`);
 const minimist = require(`minimist`);
-const promisify = require(`util`).promisify;
-const readFile = promisify(require(`fs`).readFile);
+const { readFile } = require(`fs/promises`);
 
 const { checkFixture } = require(`../tests/fixture-valid.js`);
 const plugins = require(`../plugins/plugins.json`);
