@@ -36,7 +36,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       throw new Error(`The provided .gdtf (zip) file does not contain a 'description.xml' file in the root directory.`);
     }
 
-    xmlString = descriptionFile.async(`string`);
+    xmlString = await descriptionFile.async(`string`);
   }
 
   const xml = await xml2js.parseStringPromise(xmlString);
