@@ -19,8 +19,6 @@ module.exports.version = `0.2.0`;
  * @returns {Promise.<Object, Error>} A Promise resolving to an out object
  */
 module.exports.import = async function importGdtf(buffer, filename, authorName) {
-  const parser = new xml2js.Parser();
-
   const fixture = {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
   };
@@ -41,7 +39,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     xmlString = descriptionFile.async(`string`);
   }
 
-  const xml = await parser.parseStringPromise(xmlString);
+  const xml = await xml2js.parseStringPromise(xmlString);
 
   const gdtfFixture = xml.GDTF.FixtureType[0];
   fixture.name = gdtfFixture.$.Name;

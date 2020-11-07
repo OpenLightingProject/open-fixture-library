@@ -19,7 +19,6 @@ module.exports.version = `1.1.0`;
  * @returns {Promise.<Object, Error>} A Promise resolving to an out object
  */
 module.exports.import = async function importQlcPlus(buffer, filename, authorName) {
-  const parser = new xml2js.Parser();
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
   const warnings = [];
@@ -28,7 +27,7 @@ module.exports.import = async function importQlcPlus(buffer, filename, authorNam
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
   };
 
-  const xml = await parser.parseStringPromise(buffer.toString());
+  const xml = await xml2js.parseStringPromise(buffer.toString());
 
   const qlcPlusFixture = xml.FixtureDefinition;
   fixture.name = qlcPlusFixture.Model[0];

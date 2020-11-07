@@ -15,10 +15,8 @@ const xml2js = require(`xml2js`);
  * @returns {Promise.<undefined, Array.<String>|String>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
 module.exports = async function testAttributesCorrectness(exportFile, allExportFiles) {
-  const parser = new xml2js.Parser();
-
   try {
-    const xml = await parser.parseStringPromise(exportFile.content);
+    const xml = await xml2js.parseStringPromise(exportFile.content);
     const errors = [];
 
     const attributeDefinitions = xml.Device.Attributes[0].AttributesDefinition;
