@@ -211,8 +211,7 @@ async function updateGithubIssue(urlResults) {
     auth: `token ${process.env.GITHUB_USER_TOKEN}`,
   });
 
-  const repoOwner = process.env.TRAVIS_REPO_SLUG.split(`/`)[0];
-  const repoName = process.env.TRAVIS_REPO_SLUG.split(`/`)[1];
+  const [repoOwner, repoName] = process.env.TRAVIS_REPO_SLUG.split(`/`);
 
   let issue;
 
@@ -231,6 +230,7 @@ async function updateGithubIssue(urlResults) {
   const newFailingUrlResults = [];
   const fixedUrlResults = [];
   const newLinkData = getUpdatedLinkData();
+  const deletedUrls = Object.keys(oldLinkData).filter(url => !urlResults.some(result => result.url === url));
 
   console.log(`Updating GitHub issue body at https://github.com/${process.env.TRAVIS_REPO_SLUG}/issues/${process.env.GITHUB_BROKEN_LINKS_ISSUE_NUMBER}`);
   await githubClient.issues.update({
@@ -411,7 +411,7 @@ async function updateGithubIssue(urlResults) {
    * @returns {Promise} Promise that resolves as soon as the comment (or no comment) has been created.
    */
   async function createCommentIfNeeded() {
-    if (newFailingUrlResults.length === 0 && fixedUrlResults.length === 0) {
+    if (newFailingUrlResults.length === 0 && fixedUrlResults.length === 0 && deletedUrls.length === 0) {
       return;
     }
 
@@ -435,6 +435,12 @@ async function updateGithubIssue(urlResults) {
       lines.push(...fixedUrlResults.map(
         urlResult => `- ${urlResult.url} (${urlResult.message})`,
       ));
+      lines.push(``);
+    }
+
+    if (deletedUrls.length > 0) {
+      lines.push(`### :heavy_check_mark: Fixed URLs (failing URLs not included anymore)`);
+      lines.push(...deletedUrls.map(url => `- ${url}`));
       lines.push(``);
     }
 
