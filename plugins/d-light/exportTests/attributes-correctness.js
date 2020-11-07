@@ -1,5 +1,4 @@
 const xml2js = require(`xml2js`);
-const promisify = require(`util`).promisify;
 
 /**
  * @typedef {Object} ExportFile
@@ -19,7 +18,7 @@ module.exports = async function testAttributesCorrectness(exportFile, allExportF
   const parser = new xml2js.Parser();
 
   try {
-    const xml = await promisify(parser.parseString)(exportFile.content);
+    const xml = await parser.parseStringPromise(exportFile.content);
     const errors = [];
 
     const attributeDefinitions = xml.Device.Attributes[0].AttributesDefinition;

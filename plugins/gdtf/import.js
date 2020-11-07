@@ -1,6 +1,5 @@
 const xml2js = require(`xml2js`);
 const JSZip = require(`jszip`);
-const promisify = require(`util`).promisify;
 
 // see https://github.com/standard-things/esm#getting-started
 require = require(`esm`)(module); // eslint-disable-line no-global-assign
@@ -42,7 +41,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     xmlString = descriptionFile.async(`string`);
   }
 
-  const xml = await promisify(parser.parseString)(xmlString);
+  const xml = await parser.parseStringPromise(xmlString);
 
   const gdtfFixture = xml.GDTF.FixtureType[0];
   fixture.name = gdtfFixture.$.Name;
