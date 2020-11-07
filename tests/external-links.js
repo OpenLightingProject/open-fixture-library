@@ -15,18 +15,6 @@ const TIMEOUT = 30_000;
 const SiteCrawler = require(`../lib/site-crawler.js`);
 
 
-const climateStrikeDate = new Date(`2019-11-29`);
-const today = new Date();
-const isClimateStrike = climateStrikeDate.getDate() === today.getDate() &&
-  climateStrikeDate.getMonth() === today.getMonth() &&
-  climateStrikeDate.getFullYear() === today.getFullYear();
-
-if (isClimateStrike) {
-  // do nothing on strike day and return green :)
-  process.exit(0);
-}
-
-
 (async () => {
   const testStartTime = new Date();
   let errored = false;
