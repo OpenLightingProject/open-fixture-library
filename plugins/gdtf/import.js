@@ -36,7 +36,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       throw new Error(`The provided .gdtf (zip) file does not contain a 'description.xml' file in the root directory.`);
     }
 
-    xmlString = descriptionFile.async(`string`);
+    xmlString = await descriptionFile.async(`string`);
   }
 
   const xml = await xml2js.parseStringPromise(xmlString);
@@ -175,7 +175,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
    * Adds an RDM section to the OFL fixture and manufacturer if applicable.
    */
   function addRdmInfo() {
-    if (!(`Protocols` in gdtfFixture) || !(`FTRDM` in gdtfFixture.Protocols[0] || `RDM` in gdtfFixture.Protocols[0])) {
+    if (!(`Protocols` in gdtfFixture) || gdtfFixture.Protocols[0] === `` || !(`FTRDM` in gdtfFixture.Protocols[0] || `RDM` in gdtfFixture.Protocols[0])) {
       return;
     }
 
