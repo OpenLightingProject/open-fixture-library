@@ -175,7 +175,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
    * Adds an RDM section to the OFL fixture and manufacturer if applicable.
    */
   function addRdmInfo() {
-    if (!(`Protocols` in gdtfFixture) || !(`FTRDM` in gdtfFixture.Protocols[0] || `RDM` in gdtfFixture.Protocols[0])) {
+    if (!(`Protocols` in gdtfFixture) || gdtfFixture.Protocols[0] === `` || !(`FTRDM` in gdtfFixture.Protocols[0] || `RDM` in gdtfFixture.Protocols[0])) {
       return;
     }
 
