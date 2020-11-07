@@ -1,6 +1,5 @@
 const colorNameList = require(`color-name-list`);
 const xml2js = require(`xml2js`);
-const promisify = require(`util`).promisify;
 
 module.exports.version = `0.3.1`;
 
@@ -16,7 +15,6 @@ for (const color of colorNameList) {
  * @returns {Promise.<Object, Error>} A Promise resolving to an out object
  */
 module.exports.import = async function importECue(buffer, filename, authorName) {
-  const parser = new xml2js.Parser();
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
   const out = {
@@ -25,7 +23,7 @@ module.exports.import = async function importECue(buffer, filename, authorName) 
     warnings: {},
   };
 
-  const xml = await promisify(parser.parseString)(buffer.toString());
+  const xml = await xml2js.parseStringPromise(buffer.toString());
 
   if (!(`Library` in xml.Document) || !(`Fixtures` in xml.Document.Library[0]) || !(`Manufacturer` in xml.Document.Library[0].Fixtures[0])) {
     throw new Error(`Nothing to import.`);

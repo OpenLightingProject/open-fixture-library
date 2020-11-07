@@ -5,7 +5,7 @@
  * keeping the set as small as possible) and updates tests/test-fixtures.json and tests/test-fixtures.md.
  */
 
-const fs = require(`fs`);
+const { readdir, writeFile } = require(`fs/promises`);
 const path = require(`path`);
 const chalk = require(`chalk`);
 
@@ -17,17 +17,114 @@ const fixtureFeaturesDirectory = path.join(__dirname, `../lib/fixture-features`)
 const jsonFile = path.join(__dirname, `../tests/test-fixtures.json`);
 const markdownFile = path.join(__dirname, `../tests/test-fixtures.md`);
 
+/**
+ * @typedef {Object} FixtureFeature
+ * @property {String|undefined} id The fixture feature's ID
+ * @property {String} name A short name of the fixture feature.
+ * @property {String} description A longer description of the fixture feature.
+ * @property {Function} hasFeature A function that returns whether a given fixture supports this feature.
+ */
 
-const fixtureFeatures = [];
-const featuresUsed = {}; // feature id -> times used
-for (const featureFile of fs.readdirSync(fixtureFeaturesDirectory)) {
-  if (path.extname(featureFile) === `.js`) {
+/**
+ * @typedef {Object} FixtureFeatureResult
+ * @property {String} man The fixture manufacturer's name.
+ * @property {String} key The combined manufacturer/fixture key.
+ * @property {String} name The fixture name.
+ * @property {Array.<String>} features The IDs of all fixture features that the fixture supports.
+ */
+
+(async () => {
+  const fixtureFeatures = await getFixtureFeatures();
+  const featuresUsed = Object.fromEntries(fixtureFeatures.map(feature => [feature.id, 0]));// check which features each fixture supports
+
+  /** @type {Array.<FixtureFeatureResult>} */
+  let fixtures = [];
+
+  for (const manufacturerFixture of Object.keys(register.filesystem)) {
+    const [manufacturerKey, fixtureKey] = manufacturerFixture.split(`/`);
+
+    // pre-process data
+    const fixture = await fixtureFromRepository(manufacturerKey, fixtureKey);
+    const fixtureResult = {
+      man: manufacturerKey,
+      key: fixtureKey,
+      name: fixture.name,
+      features: [],
+    };
+
+    // check all features
+    for (const fixtureFeature of fixtureFeatures) {
+      if (fixtureFeature.hasFeature(fixture)) {
+        fixtureResult.features.push(fixtureFeature.id);
+        featuresUsed[fixtureFeature.id]++;
+      }
+    }
+
+    fixtures.push(fixtureResult);
+  }
+
+  // first fixtures are more likely to be filtered out, so we start with the ones with the fewest features
+  fixtures.sort((a, b) => {
+    if (a.features.length === b.features.length) {
+      return `${a.man}/${a.key}`.localeCompare(`${b.man}/${b.key}`, `en`);
+    }
+
+    return a.features.length - b.features.length;
+  });
+
+  // filter out
+  fixtures = fixtures.filter(fixture => {
+    for (const feature of fixture.features) {
+      // this is the only remaining fixture with that feature -> keep it
+      if (featuresUsed[feature] === 1) {
+        return true;
+      }
+    }
+    // has no new features -> filter out
+    for (const feature of fixture.features) {
+      featuresUsed[feature]--;
+    }
+    return false;
+  });
+
+  // original alphabetic ordering
+  fixtures.sort((a, b) => {
+    return `${a.man}/${a.key}`.localeCompare(`${b.man}/${b.key}`, `en`);
+  });
+
+  console.log(chalk.yellow(`Generated list of test fixtures:`));
+  for (const fixture of fixtures) {
+    console.log(` - ${fixture.man}/${fixture.key}`);
+  }
+
+  try {
+    await writeFile(jsonFile, `${JSON.stringify(fixtures, null, 2)}\n`, `utf8`);
+    console.log(chalk.green(`[Success]`), `Updated ${jsonFile}`);
+
+    await writeFile(markdownFile, getMarkdownCode(fixtures, fixtureFeatures), `utf8`);
+    console.log(chalk.green(`[Success]`), `Updated ${markdownFile}`);
+  }
+  catch (error) {
+    console.error(chalk.red(`[Fail]`), `Could not write test fixtures file:`, error);
+  }
+})();
+
+
+/**
+ * @returns {Promise.<Array.<FixtureFeature>>} A Promise that resolves to an array of all defined fixture features.
+ */
+async function getFixtureFeatures() {
+  const fixtureFeatures = [];
+
+  for (const featureFile of await readdir(fixtureFeaturesDirectory)) {
+    if (path.extname(featureFile) !== `.js`) {
+      continue;
+    }
+
     // module exports array of fix features
     const fixtureFeatureFile = require(path.join(fixtureFeaturesDirectory, featureFile));
 
-    for (let index = 0; index < fixtureFeatureFile.length; index++) {
-      const fixtureFeature = fixtureFeatureFile[index];
-
+    for (const [index, fixtureFeature] of fixtureFeatureFile.entries()) {
       // default id
       if (!(`id` in fixtureFeature)) {
         fixtureFeature.id = path.basename(featureFile, `.js`);
@@ -37,115 +134,40 @@ for (const featureFile of fs.readdirSync(fixtureFeaturesDirectory)) {
       }
 
       // check uniqueness of id
-      if (fixtureFeature.id in featuresUsed) {
+      const featureIdExists = fixtureFeatures.some(feature => feature.id === fixtureFeature.id);
+      if (featureIdExists) {
         console.error(chalk.red(`[Error]`), `Fixture feature id '${fixtureFeature.id}' is used multiple times.`);
         process.exit(1);
       }
 
       fixtureFeatures.push(fixtureFeature);
-      featuresUsed[fixtureFeature.id] = 0;
-    }
-  }
-}
-
-// check which features each fixture supports
-let fixtures = [];
-for (const manufacturerFixture of Object.keys(register.filesystem)) {
-  const [manufacturerKey, fixtureKey] = manufacturerFixture.split(`/`);
-
-  // pre-process data
-  const fixture = fixtureFromRepository(manufacturerKey, fixtureKey);
-  const fixtureResult = {
-    man: manufacturerKey,
-    key: fixtureKey,
-    name: fixture.name,
-    features: [],
-  };
-
-  // check all features
-  for (const fixtureFeature of fixtureFeatures) {
-    if (fixtureFeature.hasFeature(fixture)) {
-      fixtureResult.features.push(fixtureFeature.id);
-      featuresUsed[fixtureFeature.id]++;
     }
   }
 
-  fixtures.push(fixtureResult);
+  return fixtureFeatures;
 }
-
-// first fixtures are more likely to be filtered out, so we start with the ones with the fewest features
-fixtures.sort((a, b) => {
-  if (a.features.length === b.features.length) {
-    return `${a.man}/${a.key}`.localeCompare(`${b.man}/${b.key}`, `en`);
-  }
-
-  return a.features.length - b.features.length;
-});
-
-// filter out
-fixtures = fixtures.filter(fixture => {
-  for (const feature of fixture.features) {
-    // this is the only remaining fixture with that feature -> keep it
-    if (featuresUsed[feature] === 1) {
-      return true;
-    }
-  }
-  // has no new features -> filter out
-  for (const feature of fixture.features) {
-    featuresUsed[feature]--;
-  }
-  return false;
-});
-
-// original alphabetic ordering
-fixtures.sort((a, b) => {
-  return `${a.man}/${a.key}`.localeCompare(`${b.man}/${b.key}`, `en`);
-});
-
-console.log(chalk.yellow(`Generated list of test fixtures:`));
-for (const fixture of fixtures) {
-  console.log(` - ${fixture.man}/${fixture.key}`);
-}
-
-fs.writeFile(jsonFile, `${JSON.stringify(fixtures, null, 2)}\n`, `utf8`, error => {
-  if (error) {
-    console.error(chalk.red(`[Fail]`), `Could not write test-fixtures.json`, error);
-  }
-  else {
-    console.log(chalk.green(`[Success]`), `Updated ${jsonFile}`);
-  }
-});
-
-fs.writeFile(markdownFile, getMarkdownCode(), `utf8`, error => {
-  if (error) {
-    console.error(chalk.red(`[Fail]`), `Could not write test-fixtures.md`, error);
-  }
-  else {
-    console.log(chalk.green(`[Success]`), `Updated ${markdownFile}`);
-  }
-});
 
 /**
  * Generates a markdown table presenting the test fixtures and all fix features.
+ * @param {Array.<FixtureFeatureResult>} fixtures The fixture feature results.
+ * @param {Array.<FixtureFeature>} fixtureFeatures All fixture features.
  * @returns {String} The markdown code to be used in a markdown file.
  */
-function getMarkdownCode() {
+function getMarkdownCode(fixtures, fixtureFeatures) {
   const mdLines = [
     `# Test fixtures`,
     ``,
     `See the [fixture feature documentation](../docs/fixture-features.md). This file is automatically`,
     `generated by [\`cli/make-test-fixtures.js\`](../cli/make-test-fixtures.js).`,
     ``,
+    ...fixtures.map(
+      (fixture, index) => `${index + 1}. [*${manufacturers[fixture.man].name}* ${fixture.name}](../fixtures/${fixture.man}/${fixture.key}.json)`,
+    ),
+    ``,
   ];
 
-  // fixture list
-  fixtures.forEach((fixture, index) => {
-    mdLines.push(`${index + 1}. [*${manufacturers[fixture.man].name}* ${fixture.name}](../fixtures/${fixture.man}/${fixture.key}.json)`);
-  });
-  mdLines.push(``);
-
   // table head
-  const tableHead = [`*Fixture number*`].concat(fixtures.map((fixture, index) => index + 1)).join(` | `);
+  const tableHead = [`*Fixture number*`, ...fixtures.map((fixture, index) => index + 1)].join(` | `);
 
   mdLines.push(tableHead);
   mdLines.push(`|-`.repeat(fixtures.length + 1));

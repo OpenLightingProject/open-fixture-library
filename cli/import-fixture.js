@@ -2,8 +2,7 @@
 
 const path = require(`path`);
 const minimist = require(`minimist`);
-const promisify = require(`util`).promisify;
-const readFile = promisify(require(`fs`).readFile);
+const { readFile } = require(`fs/promises`);
 
 const { checkFixture } = require(`../tests/fixture-valid.js`);
 const plugins = require(`../plugins/plugins.json`);
@@ -48,7 +47,7 @@ if (cliArguments._.length !== 1 || !plugins.importPlugins.includes(cliArguments.
     for (const key of Object.keys(result.fixtures)) {
       const [manufacturerKey, fixtureKey] = key.split(`/`);
 
-      const checkResult = checkFixture(manufacturerKey, fixtureKey, result.fixtures[key]);
+      const checkResult = await checkFixture(manufacturerKey, fixtureKey, result.fixtures[key]);
 
       result.warnings[key] = result.warnings[key].concat(checkResult.warnings);
       result.errors[key] = checkResult.errors;

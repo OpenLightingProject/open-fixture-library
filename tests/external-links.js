@@ -151,7 +151,7 @@ async function testExternalLink(url) {
   const resultHEAD = await getResult(`HEAD`);
 
   if (resultHEAD.failed) {
-    return await getResult(`GET`);
+    return getResult(`GET`);
   }
   return resultHEAD;
 

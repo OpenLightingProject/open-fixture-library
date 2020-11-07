@@ -142,7 +142,6 @@ Each test module should be located at `plugins/<plugin-key>/exportTests/<export-
 
 ```js
 const xml2js = require(`xml2js`);
-const promisify = require(`util`).promisify;
 
 /**
  * @param {Object} exportFile The file returned by the plugins' export module.
@@ -154,9 +153,7 @@ const promisify = require(`util`).promisify;
  * @returns {Promise.<undefined, Array.<String>|String>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
 module.exports = async function testValueCorrectness(exportFile) {
-  const parser = new xml2js.Parser();
-
-  const xml = await promisify(parser.parseString)(exportFile.content);
+  const xml = await xml2js.parseStringPromise(exportFile.content);
 
   const errors = [];
 
