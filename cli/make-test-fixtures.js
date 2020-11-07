@@ -111,7 +111,7 @@ const markdownFile = path.join(__dirname, `../tests/test-fixtures.md`);
 
 
 /**
- * @returns {Array.<FixtureFeature>} An array of all defined fixture features.
+ * @returns {Promise.<Array.<FixtureFeature>>} A Promise that resolves to an array of all defined fixture features.
  */
 async function getFixtureFeatures() {
   const fixtureFeatures = [];
