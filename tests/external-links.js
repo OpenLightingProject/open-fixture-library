@@ -14,6 +14,12 @@ const TIMEOUT = 30_000;
 
 const SiteCrawler = require(`../lib/site-crawler.js`);
 
+const excludedUrls = [
+  `https://open-fixture-library.org`, // exclude canonical URLs
+  `http://rdm.openlighting.org/model/display`, // exclude auto-generated URLs pointing to the Open Lighting RDM site as the fixture may not exist
+  `https://github.com/OpenLightingProject/open-fixture-library/`, // exclude auto-generated URLs to GitHub as they are flaky and slow down the test
+];
+
 
 (async () => {
   const testStartTime = new Date();
@@ -34,8 +40,7 @@ const SiteCrawler = require(`../lib/site-crawler.js`);
     const externalUrlSet = new Set();
 
     crawler.on(`externalLinkFound`, url => {
-      // exclude canonical URLs and auto-generated ones pointing to the Open Lighting RDM site as the fixture may not exist
-      if (!url.startsWith(`https://open-fixture-library.org`) && !url.startsWith(`http://rdm.openlighting.org/model/display`)) {
+      if (!excludedUrls.some(excludedUrl => url.startsWith(excludedUrl))) {
         externalUrlSet.add(url);
         process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
       }
