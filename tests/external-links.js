@@ -14,17 +14,11 @@ const TIMEOUT = 30_000;
 
 const SiteCrawler = require(`../lib/site-crawler.js`);
 
-
-const climateStrikeDate = new Date(`2019-11-29`);
-const today = new Date();
-const isClimateStrike = climateStrikeDate.getDate() === today.getDate() &&
-  climateStrikeDate.getMonth() === today.getMonth() &&
-  climateStrikeDate.getFullYear() === today.getFullYear();
-
-if (isClimateStrike) {
-  // do nothing on strike day and return green :)
-  process.exit(0);
-}
+const excludedUrls = [
+  `https://open-fixture-library.org`, // exclude canonical URLs
+  `http://rdm.openlighting.org/model/display`, // exclude auto-generated URLs pointing to the Open Lighting RDM site as the fixture may not exist
+  `https://github.com/OpenLightingProject/open-fixture-library/`, // exclude auto-generated URLs to GitHub as they are flaky and slow down the test
+];
 
 
 (async () => {
@@ -46,8 +40,7 @@ if (isClimateStrike) {
     const externalUrlSet = new Set();
 
     crawler.on(`externalLinkFound`, url => {
-      // exclude canonical URLs and auto-generated ones pointing to the Open Lighting RDM site as the fixture may not exist
-      if (!url.startsWith(`https://open-fixture-library.org`) && !url.startsWith(`http://rdm.openlighting.org/model/display`)) {
+      if (!excludedUrls.some(excludedUrl => url.startsWith(excludedUrl))) {
         externalUrlSet.add(url);
         process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
       }
@@ -223,8 +216,7 @@ async function updateGithubIssue(urlResults) {
     auth: `token ${process.env.GITHUB_USER_TOKEN}`,
   });
 
-  const repoOwner = process.env.TRAVIS_REPO_SLUG.split(`/`)[0];
-  const repoName = process.env.TRAVIS_REPO_SLUG.split(`/`)[1];
+  const [repoOwner, repoName] = process.env.TRAVIS_REPO_SLUG.split(`/`);
 
   let issue;
 
@@ -243,6 +235,7 @@ async function updateGithubIssue(urlResults) {
   const newFailingUrlResults = [];
   const fixedUrlResults = [];
   const newLinkData = getUpdatedLinkData();
+  const deletedUrls = Object.keys(oldLinkData).filter(url => !urlResults.some(result => result.url === url));
 
   console.log(`Updating GitHub issue body at https://github.com/${process.env.TRAVIS_REPO_SLUG}/issues/${process.env.GITHUB_BROKEN_LINKS_ISSUE_NUMBER}`);
   await githubClient.issues.update({
@@ -423,7 +416,7 @@ async function updateGithubIssue(urlResults) {
    * @returns {Promise} Promise that resolves as soon as the comment (or no comment) has been created.
    */
   async function createCommentIfNeeded() {
-    if (newFailingUrlResults.length === 0 && fixedUrlResults.length === 0) {
+    if (newFailingUrlResults.length === 0 && fixedUrlResults.length === 0 && deletedUrls.length === 0) {
       return;
     }
 
@@ -447,6 +440,12 @@ async function updateGithubIssue(urlResults) {
       lines.push(...fixedUrlResults.map(
         urlResult => `- ${urlResult.url} (${urlResult.message})`,
       ));
+      lines.push(``);
+    }
+
+    if (deletedUrls.length > 0) {
+      lines.push(`### :heavy_check_mark: Fixed URLs (failing URLs not included anymore)`);
+      lines.push(...deletedUrls.map(url => `- ${url}`));
       lines.push(``);
     }
 
