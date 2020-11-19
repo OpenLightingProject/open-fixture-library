@@ -1,0 +1,107 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SlimPar RGBW",
+  "shortName": "SlimPar",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Basil"],
+    "createDate": "2020-11-19",
+    "lastModifyDate": "2020-11-19"
+  },
+  "links": {
+    "manual": [
+      "https://manualzz.com/doc/5687663/sg-slimpar3"
+    ],
+    "productPage": [
+      "https://www.sagitter.com"
+    ],
+    "other": [
+      "https://www.disantomusica.it/13592-sagitter-slimpar-3-par-led.html"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "R"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "G"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset",
+        "colorsStart": ["#ffffff"],
+        "colorsEnd": ["#000000"]
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "B"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "comment": "W"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Ch 1",
+      "shortName": "1",
+      "channels": [
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "Ch 4",
+      "shortName": "4",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "Ch 5",
+      "shortName": "5",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "Ch 8",
+      "shortName": "8",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
