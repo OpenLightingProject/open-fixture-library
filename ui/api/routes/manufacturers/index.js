@@ -6,18 +6,18 @@ import register from '../../../../fixtures/register.json';
 
 /**
  * Returns general information about all manufacturers.
- * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
+ * @param {OpenApiBackendContext} context Passed from OpenAPI Backend.
  * @returns {ApiResponse} The handled response.
  */
-function getManufacturers(ctx) {
+function getManufacturers(context) {
   const manufacturerData = {};
 
-  for (const manKey of Object.keys(manufacturers)) {
-    if (manKey !== `$schema`) {
-      manufacturerData[manKey] = {
-        name: manufacturers[manKey].name,
-        fixtureCount: register.manufacturers[manKey].length,
-        color: register.colors[manKey],
+  for (const manufacturerKey of Object.keys(manufacturers)) {
+    if (manufacturerKey !== `$schema`) {
+      manufacturerData[manufacturerKey] = {
+        name: manufacturers[manufacturerKey].name,
+        fixtureCount: register.manufacturers[manufacturerKey].length,
+        color: register.colors[manufacturerKey],
       };
     }
   }

@@ -333,7 +333,7 @@ const supportedVideoFormats = {
      * - https://www.youtube.com/watch?v={videoId}&otherParameters
      * - https://youtu.be/{videoId]}?otherParameters
      */
-    regex: /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]t=([0-9hms]+))?/,
+    regex: /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)(?:[&?]t=([\dhms]+)|)/,
     displayType: url => `YouTube`,
     videoId: (url, match) => match[1],
     startAt: (url, match) => match[2] || 0,
@@ -346,7 +346,7 @@ const supportedVideoFormats = {
      * - https://vimeo.com/channels/{channelName}/{videoId}
      * - https://vimeo.com/groups/{groupId}/videos/{videoId}
      */
-    regex: /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([0-9hms]+))?/,
+    regex: /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([\dhms]+))?/,
     displayType: url => `Vimeo`,
     videoId: (url, match) => match[1],
     startAt: (url, match) => match[2] || 0,
@@ -397,7 +397,7 @@ function getEmbettableVideoData(url) {
  */
 function getHostname(url) {
   // adapted from https://stackoverflow.com/a/21553982/451391
-  const match = url.match(/^.*?\/\/(?:([^:/?#]*)(?::([0-9]+))?)/);
+  const match = url.match(/^.*?\/\/([^#/:?]*)(?::(\d+)|)/);
   return match ? match[1] : url;
 }
 

@@ -100,6 +100,6 @@ function downloadSchema(url) {
       response.on(`end`, () => resolve(JSON.parse(body)));
     });
 
-    request.on(`error`, err => reject(err));
+    request.on(`error`, error => reject(error));
   });
 }

@@ -93,10 +93,10 @@ export default {
      * Called from {@link EditorCapabilityTypeData}
      * @returns {Array.<String>} Array of all props to reset to default data when capability is saved.
      */
-    resetProps() { // eslint-disable-line vue/no-unused-properties
-      const resetProp = this.capability.typeData.speedOrDuration === `duration` ? `speed` : `duration`;
+    resetProperties() { // eslint-disable-line vue/no-unused-properties
+      const resetProperty = this.capability.typeData.speedOrDuration === `duration` ? `speed` : `duration`;
 
-      return [resetProp, `${resetProp}Start`, `${resetProp}End`];
+      return [resetProperty, `${resetProperty}Start`, `${resetProperty}End`];
     },
   },
   methods: {

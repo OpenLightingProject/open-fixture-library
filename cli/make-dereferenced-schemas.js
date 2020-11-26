@@ -1,35 +1,31 @@
 #!/usr/bin/node
 
-const fs = require(`fs`);
+const { readdir, writeFile } = require(`fs/promises`);
 const path = require(`path`);
 const chalk = require(`chalk`);
 const schemaRefParser = require(`@apidevtools/json-schema-ref-parser`);
 
-const schemaDir = path.join(__dirname, `../schemas/`);
-
-let schemaFiles;
-if (process.argv.length > 2) {
-  schemaFiles = process.argv.slice(2);
-}
-else {
-  schemaFiles = fs.readdirSync(schemaDir).filter(
-    schemaFile => path.extname(schemaFile) === `.json`,
-  );
-}
+const schemaDirectory = path.join(__dirname, `../schemas/`);
 
 (async () => {
-  process.chdir(schemaDir);
+  const schemaFiles = process.argv.length > 2
+    ? process.argv.slice(2)
+    : await readdir(schemaDirectory).filter(
+      schemaFile => path.extname(schemaFile) === `.json`,
+    );
+
+  process.chdir(schemaDirectory);
   for (const schemaFile of schemaFiles) {
-    const schema = require(path.join(schemaDir, schemaFile));
-    const dereferencedSchemaFile = path.join(schemaDir, `dereferenced`, schemaFile);
+    const schema = require(path.join(schemaDirectory, schemaFile));
+    const dereferencedSchemaFile = path.join(schemaDirectory, `dereferenced`, schemaFile);
 
     try {
       const dereferencedSchema = await schemaRefParser.dereference(schema);
-      fs.writeFileSync(
+      await writeFile(
         dereferencedSchemaFile,
         `${JSON.stringify(dereferencedSchema, null, 2)}\n`,
       );
-      console.log(`${chalk.green(`[Success]`)} Updated dereferenced schema ${dereferencedSchemaFile}.`);
+      console.log(chalk.green(`[Success]`), `Updated dereferenced schema ${dereferencedSchemaFile}.`);
     }
     catch (error) {
       console.error(chalk.red(`[Error]`), error);

@@ -48,7 +48,7 @@ export default {
       immediate: true,
     },
   },
-  created() {
+  mounted() {
     this.cssVariablesSupported = window.CSS && CSS.supports(`color`, `var(--primary)`);
 
     if (!this.cssVariablesSupported) {

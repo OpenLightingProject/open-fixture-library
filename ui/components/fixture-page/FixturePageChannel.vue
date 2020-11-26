@@ -77,7 +77,7 @@
           name="channel-fineChannelAliases"
           label="Fine channels">
           {{ channel.fineChannels.slice(0, resolutionInMode - 1).map(
-            fineChannel => `${fineChannel.name} (channel&nbsp;${mode.getChannelIndex(fineChannel) + 1})`,
+            fineChannel => `${fineChannel.name} (channel&nbsp;${mode.getChannelIndex(fineChannel.key) + 1})`,
           ).join(`, `) }}
         </LabeledValue>
 
@@ -138,17 +138,6 @@ summary, .summary {
     fill: theme-color(yellow-background-hover);
     margin-left: 0.7ex;
     margin-right: 0;
-  }
-}
-
-ol.mode-channels {
-  padding-left: 1.9em;
-  min-height: 1em;
-
-  // switched channels
-  & ol {
-    list-style-type: lower-alpha;
-    padding-left: 1.1em;
   }
 }
 </style>

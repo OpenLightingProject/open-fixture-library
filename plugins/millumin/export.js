@@ -11,7 +11,7 @@ module.exports.supportedOflVersion = `7.3.0`;
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
  * @param {Object} options Global options, including:
- * @param {String} options.baseDir Absolute path to OFL's root directory.
+ * @param {String} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
@@ -40,15 +40,15 @@ module.exports.export = async function exportMillumin(fixtures, options) {
 
     if (oflJson.availableChannels) {
       milluminJson.availableChannels = {};
-      Object.entries(oflJson.availableChannels).forEach(([chKey, jsonChannel]) => {
-        milluminJson.availableChannels[chKey] = getDowngradedChannel(chKey, jsonChannel, fixture);
+      Object.entries(oflJson.availableChannels).forEach(([channelKey, jsonChannel]) => {
+        milluminJson.availableChannels[channelKey] = getDowngradedChannel(channelKey, jsonChannel, fixture);
       });
     }
 
     if (oflJson.templateChannels) {
       milluminJson.templateChannels = {};
-      Object.entries(oflJson.templateChannels).forEach(([chKey, jsonChannel]) => {
-        milluminJson.templateChannels[chKey] = getDowngradedChannel(chKey, jsonChannel, fixture);
+      Object.entries(oflJson.templateChannels).forEach(([channelKey, jsonChannel]) => {
+        milluminJson.templateChannels[channelKey] = getDowngradedChannel(channelKey, jsonChannel, fixture);
       });
     }
 
@@ -79,10 +79,10 @@ function getDowngradedCategories(categories) {
   const replaceCats = {
     'Barrel Scanner': `Effect`,
   };
-  const ignoredCats = [`Pixel Bar`, `Stand`];
+  const ignoredCats = new Set([`Pixel Bar`, `Stand`]);
 
   const downgradedCategories = categories.map(cat => {
-    if (ignoredCats.includes(cat)) {
+    if (ignoredCats.has(cat)) {
       return null;
     }
 
@@ -125,20 +125,20 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
 
   const [panMax, tiltMax] = [`Pan`, `Tilt`].map(panOrTilt => {
     const capabilities = [];
-    fixture.coarseChannels.forEach(ch => {
-      if (ch.capabilities) {
-        capabilities.push(...ch.capabilities);
+    fixture.coarseChannels.forEach(channel => {
+      if (channel.capabilities) {
+        capabilities.push(...channel.capabilities);
       }
     });
 
-    const hasContinuousCapability = capabilities.some(cap => cap.type === `${panOrTilt}Continuous`);
+    const hasContinuousCapability = capabilities.some(capability => capability.type === `${panOrTilt}Continuous`);
     if (hasContinuousCapability) {
       return `infinite`;
     }
 
-    const panTiltCapabilities = capabilities.filter(cap => cap.type === panOrTilt && cap.angle[0].unit === `deg`);
-    const minAngle = Math.min(...panTiltCapabilities.map(cap => Math.min(cap.angle[0].number, cap.angle[1].number)));
-    const maxAngle = Math.max(...panTiltCapabilities.map(cap => Math.max(cap.angle[0].number, cap.angle[1].number)));
+    const panTiltCapabilities = capabilities.filter(capability => capability.type === panOrTilt && capability.angle[0].unit === `deg`);
+    const minAngle = Math.min(...panTiltCapabilities.map(capability => Math.min(capability.angle[0].number, capability.angle[1].number)));
+    const maxAngle = Math.max(...panTiltCapabilities.map(capability => Math.max(capability.angle[0].number, capability.angle[1].number)));
     const panTiltMax = maxAngle - minAngle;
 
     if (panTiltMax > -Infinity) {
@@ -219,24 +219,24 @@ function getDowngradedChannel(channelKey, jsonChannel, fixture) {
   if (capabilitiesNeeded()) {
     downgradedChannel.capabilities = [];
 
-    channel.capabilities.forEach(cap => {
-      const downgradedCap = {
-        range: [cap.rawDmxRange.start, cap.rawDmxRange.end],
-        name: cap.name,
+    channel.capabilities.forEach(capability => {
+      const downgradedCapability = {
+        range: [capability.rawDmxRange.start, capability.rawDmxRange.end],
+        name: capability.name,
       };
 
-      addIfValidData(downgradedCap, `menuClick`, cap.jsonObject.menuClick);
-      if (cap.colors && cap.colors.allColors.length <= 2) {
-        downgradedCap.color = cap.colors.allColors[0];
+      addIfValidData(downgradedCapability, `menuClick`, capability.jsonObject.menuClick);
+      if (capability.colors && capability.colors.allColors.length <= 2) {
+        downgradedCapability.color = capability.colors.allColors[0];
 
-        if (cap.colors.allColors[1]) {
-          downgradedCap.color2 = cap.colors.allColors[1];
+        if (capability.colors.allColors[1]) {
+          downgradedCapability.color2 = capability.colors.allColors[1];
         }
       }
-      addIfValidData(downgradedCap, `helpWanted`, cap.jsonObject.helpWanted);
-      addIfValidData(downgradedCap, `switchChannels`, cap.jsonObject.switchChannels);
+      addIfValidData(downgradedCapability, `helpWanted`, capability.jsonObject.helpWanted);
+      addIfValidData(downgradedCapability, `switchChannels`, capability.jsonObject.switchChannels);
 
-      downgradedChannel.capabilities.push(downgradedCap);
+      downgradedChannel.capabilities.push(downgradedCapability);
     });
   }
 
@@ -258,17 +258,17 @@ function getDowngradedChannel(channelKey, jsonChannel, fixture) {
 /**
  * Saves the given data (or value, if given) into obj[property] if data is valid,
  * i.e. it is neither undefined, nor null, nor false.
- * @param {Object} obj The object where the property should be created.
+ * @param {Object} object The object where the property should be created.
  * @param {String} property The name of the property added to obj.
  * @param {*} data If this is valid, the property is added to obj.
- * @param {*} [value=undefined] The property value, if data is valid. Defaults to data.
+ * @param {*} value The property value, if data is valid. Defaults to `data`.
  */
-function addIfValidData(obj, property, data, value = undefined) {
+function addIfValidData(object, property, data, value) {
   if (value === undefined) {
     value = data;
   }
 
   if (data !== undefined && data !== null && data !== false) {
-    obj[property] = value;
+    object[property] = value;
   }
 }

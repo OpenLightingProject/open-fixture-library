@@ -141,7 +141,7 @@ export default {
      * Called from {@link EditorCapabilityTypeData}
      * @returns {Array.<String>} Array of all props to reset to default data when capability is saved.
      */
-    resetProps() { // eslint-disable-line vue/no-unused-properties
+    resetProperties() { // eslint-disable-line vue/no-unused-properties
       if (!this.isStrobeEffect) {
         return [
           `soundControlled`,

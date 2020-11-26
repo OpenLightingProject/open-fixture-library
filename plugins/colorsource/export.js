@@ -26,13 +26,13 @@ const UUID_NAMESPACE = `0de81b51-02b2-45e3-b53c-578f9eb31b77`; // seed for UUIDs
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
  * @param {Object} options Global options, including:
- * @param {String} options.baseDir Absolute path to OFL's root directory.
+ * @param {String} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date|null} options.date The current time.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
 module.exports.export = function exportColorSource(fixtures, options) {
   const exportJson = {
-    date: options.date.toISOString().replace(/\.\d\d\dZ$/, `Z`),
+    date: options.date.toISOString().replace(/\.\d{3}Z$/, `Z`),
     editorVersion: EDITOR_VERSION,
     personalities: [],
   };
@@ -42,7 +42,7 @@ module.exports.export = function exportColorSource(fixtures, options) {
 
     fixture.modes.forEach(mode => {
       const dcid = uuidv5(mode.name, fixtureUuidNamespace);
-      const hasIntensity = mode.channels.some(ch => ch.type === `Intensity`);
+      const hasIntensity = mode.channels.some(channel => channel.type === `Intensity`);
       const parameters = getColorSourceChannels(mode, hasIntensity);
 
       const fixtureJson = {
@@ -76,7 +76,7 @@ module.exports.export = function exportColorSource(fixtures, options) {
  * @returns {String|null} The UUID of a suitable color table or null if no color table fits.
  */
 function getColorTable(colorSourceChannels) {
-  const colorChannels = colorSourceChannels.filter(ch => ch.type === CHANNEL_TYPE_COLOR);
+  const colorChannels = colorSourceChannels.filter(channel => channel.type === CHANNEL_TYPE_COLOR);
 
   const colorTables = {
     "373673E3-571E-4CE2-B12D-CDD44085A1EB": [`Red`, `Green`, `Blue`, `Amber`, `Cyan`, `Indigo`, `RedOrange`],
@@ -104,11 +104,11 @@ function getColorTable(colorSourceChannels) {
 
   let selectedColorTable = Object.keys(colorTables).find(
     colorTable => colorTables[colorTable].every(
-      color => colorChannels.some(ch => ch.name === color),
+      color => colorChannels.some(channel => channel.name === color),
     ),
   );
 
-  const has16bitHue = colorChannels.some(ch => ch.name === `Hue` && ch.size === 16);
+  const has16bitHue = colorChannels.some(channel => channel.name === `Hue` && channel.size === 16);
   if (selectedColorTable === `B074A2D3-0C40-45A7-844A-7C2721E0B267` && has16bitHue) {
     // this is a special case; it refers to Hue / Hue fine / Saturation
     selectedColorTable = `B3D05F0E-FB45-4EEA-A8D5-61F545A922DE`;
@@ -129,15 +129,15 @@ function getCommands(mode) {
       return;
     }
 
-    channel.capabilities.forEach(cap => {
-      if (cap.type === `Maintenance` && cap.hold) {
+    channel.capabilities.forEach(capability => {
+      if (capability.type === `Maintenance` && capability.hold) {
         commands.push({
-          name: cap.comment,
+          name: capability.comment,
           steps: [
             {
               actions: [{
                 dmx: channelIndex,
-                value: cap.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
+                value: capability.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
               }],
               wait: 0, // this is apparently the delay before this step is activated
             },
@@ -146,7 +146,7 @@ function getCommands(mode) {
                 dmx: channelIndex,
                 value: -1,
               }],
-              wait: cap.hold.getBaseUnitEntity().number,
+              wait: capability.hold.getBaseUnitEntity().number,
             },
           ],
         });
@@ -175,7 +175,7 @@ function getColorSourceChannels(mode, hasIntensity) {
       coarse: channelIndex,
       fadeWithIntensity: false,
       fine: null,
-      highlight: 65535,
+      highlight: 65_535,
       home: 0,
       invert: false,
       name,
@@ -223,7 +223,7 @@ function getColorSourceChannels(mode, hasIntensity) {
     channelJson.fadeWithIntensity = channel.type === `Single Color` && hasIntensity;
 
     const fineChannel16bit = channel.fineChannels[0];
-    const fineChannelIndex = mode.getChannelIndex(fineChannel16bit || {}, `default`);
+    const fineChannelIndex = fineChannel16bit ? mode.getChannelIndex(fineChannel16bit.key, `default`) : -1;
     if (fineChannelIndex !== -1) {
       channelJson.fine = fineChannelIndex;
       channelJson.size = 16;
@@ -245,25 +245,25 @@ function getColorSourceChannels(mode, hasIntensity) {
     channelJson.snap = !channel.canCrossfade;
 
     if (channelJson.type !== CHANNEL_TYPE_NO_FUNCTION) {
-      channelJson.ranges = channel.capabilities.map(cap => {
-        const dmxRange = cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
-        const capJson = {
+      channelJson.ranges = channel.capabilities.map(capability => {
+        const dmxRange = capability.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
+        const capabilityJson = {
           begin: dmxRange.start,
-          default: cap.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
+          default: capability.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
           end: dmxRange.end,
-          label: cap.name,
+          label: capability.name,
         };
 
-        if (cap.colors && cap.colors.allColors.length === 1) {
-          const color = cap.colors.allColors[0]; // `#rrggbb`
-          capJson.media = {
-            r: parseInt(color.slice(1, 3), 16),
-            g: parseInt(color.slice(3, 5), 16),
-            b: parseInt(color.slice(5, 7), 16),
+        if (capability.colors && capability.colors.allColors.length === 1) {
+          const color = capability.colors.allColors[0]; // `#rrggbb`
+          capabilityJson.media = {
+            r: Number.parseInt(color.slice(1, 3), 16),
+            g: Number.parseInt(color.slice(3, 5), 16),
+            b: Number.parseInt(color.slice(5, 7), 16),
           };
         }
 
-        return capJson;
+        return capabilityJson;
       });
     }
   }
@@ -320,7 +320,7 @@ function getColorSourceChannelType(channel) {
       return true;
     }
 
-    if (channel.capabilities && channel.capabilities.some(cap => cap.type === `PanTiltSpeed`)) {
+    if (channel.capabilities && channel.capabilities.some(capability => capability.type === `PanTiltSpeed`)) {
       return true;
     }
 
@@ -331,12 +331,12 @@ function getColorSourceChannelType(channel) {
 /**
  * Removes null values and empty arrays from the given object.
  * This function is destructive, i.e. it mutates the given object.
- * @param {Object} obj The object whose properties should be cleaned up.
+ * @param {Object} object The object whose properties should be cleaned up.
  */
-function removeEmptyProperties(obj) {
-  Object.entries(obj).forEach(([key, value]) => {
+function removeEmptyProperties(object) {
+  Object.entries(object).forEach(([key, value]) => {
     if (value === null || (Array.isArray(value) && value.length === 0)) {
-      delete obj[key];
+      delete object[key];
     }
   });
 }

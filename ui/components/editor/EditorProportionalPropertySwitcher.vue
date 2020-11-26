@@ -1,10 +1,11 @@
 <template>
   <div class="proportional-capability-data">
 
-    <Validate
+    <Component
+      :is="formstate ? 'Validate' : 'span'"
       v-if="!hasStartEnd"
       :state="formstate"
-      tag="span">
+      :tag="formstate ? 'span' : null">
 
       <PropertyInputNumber
         v-if="entity === `slotNumber`"
@@ -33,12 +34,13 @@
 
       <span v-if="hint" class="hint">{{ hint }}</span>
 
-    </Validate>
+    </Component>
 
     <template v-else>
-      <Validate
+      <Component
+        :is="formstate ? 'Validate' : 'label'"
         :state="formstate"
-        tag="label"
+        :tag="formstate ? 'label' : null"
         class="entity-input">
 
         <PropertyInputNumber
@@ -74,7 +76,7 @@
           {{ capability.dmxRange && capability.dmxRange[0] !== null ? `DMX value ${capability.dmxRange[0]}` : `capability start` }}
         </span>
 
-      </Validate>
+      </Component>
 
       <span class="separator">
         <a
@@ -88,9 +90,10 @@
         …
       </span>
 
-      <Validate
+      <Component
+        :is="formstate ? 'Validate' : 'label'"
         :state="formstate"
-        tag="label"
+        :tag="formstate ? 'label' : null"
         class="entity-input">
 
         <PropertyInputNumber
@@ -126,7 +129,7 @@
           {{ capability.dmxRange && capability.dmxRange[1] !== null ? `DMX value ${capability.dmxRange[1]}` : `capability end` }}
         </span>
 
-      </Validate>
+      </Component>
     </template>
 
     <section>
@@ -208,7 +211,8 @@ export default {
     },
     formstate: {
       type: Object,
-      required: true,
+      required: false,
+      default: null,
     },
   },
   data() {

@@ -117,19 +117,6 @@ export default {
     EditorSubmitDialog,
     LabeledInput,
   },
-  head() {
-    const title = `Import fixture`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: `title`,
-          content: title,
-        },
-      ],
-    };
-  },
   async asyncData({ $axios, error }) {
     try {
       const plugins = await $axios.$get(`/api/v1/plugins`);
@@ -150,6 +137,19 @@ export default {
       author: ``,
       githubUsername: ``,
       honeypot: ``,
+    };
+  },
+  head() {
+    const title = `Import fixture`;
+
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
     };
   },
   mounted() {
@@ -196,11 +196,11 @@ export default {
         return new Promise((resolve, reject) => {
           const fileReader = new FileReader();
 
-          fileReader.onload = () => {
+          fileReader.addEventListener(`load`, () => {
             resolve(fileReader.result);
-          };
-          fileReader.onerror = reject;
-          fileReader.onabort = reject;
+          });
+          fileReader.addEventListener(`error`, reject);
+          fileReader.addEventListener(`abort`, reject);
 
           fileReader.readAsDataURL(file);
         });

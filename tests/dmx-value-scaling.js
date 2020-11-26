@@ -29,11 +29,11 @@ testRandomChannelDownscaling(3);
 
 console.log();
 if (errorCount > 0) {
-  console.log(`${chalk.red(`[FAIL]`)} Test failed with ${errorCount} error${errorCount > 1 ? `s` : ``}.`);
+  console.log(chalk.red(`[FAIL]`), `Test failed with ${errorCount} error${errorCount > 1 ? `s` : ``}.`);
   process.exit(1);
 }
 else {
-  console.log(`${chalk.green(`[PASS]`)} Test passed.`);
+  console.log(chalk.green(`[PASS]`), `Test passed.`);
   process.exit(0);
 }
 
@@ -44,33 +44,33 @@ else {
 function testScaleDmxValuesUp() {
   const scale8to16 = {
     /* eslint-disable indent, key-spacing */
-      0:     0, // [  0] -> [  0,   0]
-    127: 32639, // [127] -> [127, 127]
-    255: 65535, // [255] -> [255, 255] = 256^2 - 1
+      0:      0, // [  0] -> [  0,   0]
+    127: 32_639, // [127] -> [127, 127]
+    255: 65_535, // [255] -> [255, 255] = 256^2 - 1
     /* eslint-enable indent, key-spacing */
   };
   Object.keys(scale8to16).forEach(dmxValue => testScaleDmxValue(dmxValue, 1, 2, scale8to16[dmxValue]));
 
   const scale8to24 = {
     /* eslint-disable indent, key-spacing */
-      0:        0, // [  0] -> [  0,   0,   0]
-    127:  8355711, // [127] -> [127, 127, 127]
-    128:  8421504, // [128] -> [128, 128, 128]
-    255: 16777215, // [255] -> [255, 255, 255] = 256^3 - 1
+      0:          0, // [  0] -> [  0,   0,   0]
+    127:  8_355_711, // [127] -> [127, 127, 127]
+    128:  8_421_504, // [128] -> [128, 128, 128]
+    255: 16_777_215, // [255] -> [255, 255, 255] = 256^3 - 1
     /* eslint-enable indent, key-spacing */
   };
   Object.keys(scale8to24).forEach(dmxValue => testScaleDmxValue(dmxValue, 1, 3, scale8to24[dmxValue]));
 
   const scale16to24 = {
     /* eslint-disable indent, key-spacing */
-        0:        0, // [  0,   0] -> [  0,   0,   0]
-      255:    65535, // [  0, 255] -> [  0, 255, 255]
-      256:    65536, // [  1,   0] -> [  1,   0,   0]
-    32767:  8388607, // [127, 255] -> [127, 255, 255]
-    32768:  8388608, // [128,   0] -> [128,   0,   0]
-    65279: 16711679, // [254, 255] -> [254, 255, 255]
-    65280: 16711680, // [255,   0] -> [255,   0,   0]
-    65535: 16777215, // [255, 255] -> [255, 255, 255]
+         0:          0, // [  0,   0] -> [  0,   0,   0]
+       255:     65_535, // [  0, 255] -> [  0, 255, 255]
+       256:     65_536, // [  1,   0] -> [  1,   0,   0]
+    32_767:  8_388_607, // [127, 255] -> [127, 255, 255]
+    32_768:  8_388_608, // [128,   0] -> [128,   0,   0]
+    65_279: 16_711_679, // [254, 255] -> [254, 255, 255]
+    65_280: 16_711_680, // [255,   0] -> [255,   0,   0]
+    65_535: 16_777_215, // [255, 255] -> [255, 255, 255]
     /* eslint-enable indent, key-spacing */
   };
   Object.keys(scale16to24).forEach(dmxValue => testScaleDmxValue(dmxValue, 2, 3, scale16to24[dmxValue]));
@@ -82,43 +82,43 @@ function testScaleDmxValuesUp() {
 function testScaleDmxValuesDown() {
   const scale16to8 = {
     /* eslint-disable indent, key-spacing */
-        0:   0, // [  0,   0] -> [  0]
-    32512: 127, // [127,   0] -> [127]
-    32639: 127, // [127, 127] -> [127]
-    32767: 127, // [127, 255] -> [127]
-    32768: 128, // [128,   0] -> [128]
-    65280: 255, // [255,   0] -> [255]
-    65535: 255, //  [255, 255] -> [255]
+         0:   0, // [  0,   0] -> [  0]
+    32_512: 127, // [127,   0] -> [127]
+    32_639: 127, // [127, 127] -> [127]
+    32_767: 127, // [127, 255] -> [127]
+    32_768: 128, // [128,   0] -> [128]
+    65_280: 255, // [255,   0] -> [255]
+    65_535: 255, // [255, 255] -> [255]
     /* eslint-enable indent, key-spacing */
   };
   Object.keys(scale16to8).forEach(dmxValue => testScaleDmxValue(dmxValue, 2, 1, scale16to8[dmxValue]));
 
   const scale24to8 = {
     /* eslint-disable indent, key-spacing */
-           0:   0, // [  0,   0,   0] -> [  0]
-       65535:   0, // [  0, 255, 255] -> [  0]
-       65536:   1, // [  1,   0,   0] -> [  1]
-     8388607: 127, // [127, 255, 255] -> [127]
-     8388608: 128, // [128,   0,   0] -> [128]
-    16711679: 254, // [254, 255, 255] -> [254]
-    16711680: 255, // [255,   0,   0] -> [255]
-    16777215: 255, // [255, 255, 255] -> [255]
+             0:   0, // [  0,   0,   0] -> [  0]
+        65_535:   0, // [  0, 255, 255] -> [  0]
+        65_536:   1, // [  1,   0,   0] -> [  1]
+     8_388_607: 127, // [127, 255, 255] -> [127]
+     8_388_608: 128, // [128,   0,   0] -> [128]
+    16_711_679: 254, // [254, 255, 255] -> [254]
+    16_711_680: 255, // [255,   0,   0] -> [255]
+    16_777_215: 255, // [255, 255, 255] -> [255]
     /* eslint-enable indent, key-spacing */
   };
   Object.keys(scale24to8).forEach(dmxValue => testScaleDmxValue(dmxValue, 3, 1, scale24to8[dmxValue]));
 
   const scale24to16 = {
     /* eslint-disable indent, key-spacing */
-           0:     0, // [  0,   0,   0] -> [  0,   0]
-       65535:   255, // [  0, 255, 255] -> [  0, 255]
-       65536:   256, // [  1,   0,   0] -> [  1,   0]
-     8388352: 32767, // [127, 255,   0] -> [127, 255]
-     8388607: 32767, // [127, 255, 255] -> [127, 255]
-     8388608: 32768, // [128,   0,   0] -> [128,   0]
-    16711679: 65279, // [254, 255, 255] -> [254, 255]
-    16711680: 65280, // [255,   0,   0] -> [255,   0]
-    16711935: 65280, // [255,   0, 255] -> [255,   0]
-    16777215: 65535, // [255, 255, 255] -> [255, 255]
+             0:      0, // [  0,   0,   0] -> [  0,   0]
+        65_535:    255, // [  0, 255, 255] -> [  0, 255]
+        65_536:    256, // [  1,   0,   0] -> [  1,   0]
+     8_388_352: 32_767, // [127, 255,   0] -> [127, 255]
+     8_388_607: 32_767, // [127, 255, 255] -> [127, 255]
+     8_388_608: 32_768, // [128,   0,   0] -> [128,   0]
+    16_711_679: 65_279, // [254, 255, 255] -> [254, 255]
+    16_711_680: 65_280, // [255,   0,   0] -> [255,   0]
+    16_711_935: 65_280, // [255,   0, 255] -> [255,   0]
+    16_777_215: 65_535, // [255, 255, 255] -> [255, 255]
     /* eslint-enable indent, key-spacing */
   };
   Object.keys(scale24to16).forEach(dmxValue => testScaleDmxValue(dmxValue, 3, 2, scale24to16[dmxValue]));
@@ -133,7 +133,7 @@ function testScaleDmxValuesDown() {
  * @param {Number} desiredDmxValue The correct value for dmxValue in the desired resolution.
  */
 function testScaleDmxValue(dmxValue, currentResolution, desiredResolution, desiredDmxValue) {
-  dmxValue = parseInt(dmxValue, 10);
+  dmxValue = Number.parseInt(dmxValue, 10);
 
   testEqual(
     `scaleDmxValue(${dmxValue}, ${currentResolution}, ${desiredResolution})`,
@@ -148,22 +148,22 @@ function testScaleDmxValue(dmxValue, currentResolution, desiredResolution, desir
 function testScaleDmxRangesUp() {
   const scale8to16 = [
     /* eslint-disable no-multi-spaces, array-bracket-spacing */
-    [[  0,   0], [    0,   255]],
-    [[  0, 254], [    0, 65279]],
-    [[  0, 255], [    0, 65535]],
-    [[127, 127], [32512, 32767]],
-    [[255, 255], [65280, 65535]],
+    [[  0,   0], [     0,    255]],
+    [[  0, 254], [     0, 65_279]],
+    [[  0, 255], [     0, 65_535]],
+    [[127, 127], [32_512, 32_767]],
+    [[255, 255], [65_280, 65_535]],
     /* eslint-enable no-multi-spaces, array-bracket-spacing */
   ];
   scale8to16.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 1, 2, desiredDmxRange));
 
   const scale8to24 = [
     /* eslint-disable no-multi-spaces, array-bracket-spacing */
-    [[  0,   0], [       0,    65535]],
-    [[  0, 254], [       0, 16711679]],
-    [[  0, 255], [       0, 16777215]],
-    [[127, 127], [ 8323072,  8388607]],
-    [[255, 255], [16711680, 16777215]],
+    [[  0,   0], [         0,     65_535]],
+    [[  0, 254], [         0, 16_711_679]],
+    [[  0, 255], [         0, 16_777_215]],
+    [[127, 127], [ 8_323_072,  8_388_607]],
+    [[255, 255], [16_711_680, 16_777_215]],
     /* eslint-enable no-multi-spaces, array-bracket-spacing */
   ];
   scale8to24.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 1, 3, desiredDmxRange));
@@ -175,32 +175,32 @@ function testScaleDmxRangesUp() {
 function testScaleDmxRangesDown() {
   const scale16to8 = [
     /* eslint-disable no-multi-spaces, array-bracket-spacing */
-    [[    0,   255], [  0,   0]],
-    [[    0,   100], [  0,   0]],
-    [[  101,   200], [  0,   0]],
-    [[  201,   300], [  1,   1]],
-    [[    0, 65535], [  0, 255]],
-    [[32512, 32767], [127, 127]],
-    [[64000, 65279], [250, 254]],
-    [[65279, 65535], [255, 255]],
-    [[65280, 65535], [255, 255]],
+    [[     0,    255], [  0,   0]],
+    [[     0,    100], [  0,   0]],
+    [[   101,    200], [  0,   0]],
+    [[   201,    300], [  1,   1]],
+    [[     0, 65_535], [  0, 255]],
+    [[32_512, 32_767], [127, 127]],
+    [[64_000, 65_279], [250, 254]],
+    [[65_279, 65_535], [255, 255]],
+    [[65_280, 65_535], [255, 255]],
     /* eslint-enable no-multi-spaces, array-bracket-spacing */
   ];
   scale16to8.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 2, 1, desiredDmxRange));
 
   const scale24to8 = [
-    /* eslint-disable array-bracket-spacing */
-    [[ 615605, 1683118], [10, 25]],
-    [[1683119, 2244792], [26, 34]],
-    /* eslint-enable array-bracket-spacing */
+    /* eslint-disable no-multi-spaces, array-bracket-spacing */
+    [[  615_605, 1_683_118], [10, 25]],
+    [[1_683_119, 2_244_792], [26, 34]],
+    /* eslint-enable no-multi-spaces, array-bracket-spacing */
   ];
   scale24to8.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 3, 1, desiredDmxRange));
 
   const scale24to16 = [
-    /* eslint-disable array-bracket-spacing */
-    [[ 615605, 1683118], [2405, 6574]],
-    [[1683119, 2244792], [6575, 8768]],
-    /* eslint-enable array-bracket-spacing */
+    /* eslint-disable no-multi-spaces, array-bracket-spacing */
+    [[  615_605, 1_683_118], [2405, 6574]],
+    [[1_683_119, 2_244_792], [6575, 8768]],
+    /* eslint-enable no-multi-spaces, array-bracket-spacing */
   ];
   scale24to16.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 3, 2, desiredDmxRange));
 }
@@ -234,7 +234,7 @@ function testRandomChannelDownscaling(resolution) {
   );
 
   const doRangesOverlap = scaledRanges.some(
-    ([start, end], index, arr) => index > 0 && start <= arr[index - 1][1],
+    ([start, end], index, array) => index > 0 && start <= array[index - 1][1],
   );
 
   parseTestResult(
@@ -257,13 +257,9 @@ function testRandomChannelDownscaling(resolution) {
     const ranges = [];
     let remainingDmxValues = Math.pow(256, resolution);
     while (remainingDmxValues > 0) {
-      let rangeWidth;
-      if (remainingDmxValues > maximumRangeWidth) {
-        rangeWidth = Math.floor((Math.random() * (maximumRangeWidth - (2 * minimumRangeWidth))) + minimumRangeWidth);
-      }
-      else {
-        rangeWidth = remainingDmxValues;
-      }
+      const rangeWidth = remainingDmxValues > maximumRangeWidth
+        ? Math.floor((Math.random() * (maximumRangeWidth - (2 * minimumRangeWidth))) + minimumRangeWidth)
+        : remainingDmxValues;
 
       const lastDmxValue = ranges.length > 0 ? ranges[ranges.length - 1][1] : -1;
       ranges.push([lastDmxValue + 1, lastDmxValue + rangeWidth]);
@@ -316,10 +312,10 @@ function testArraysEqual(description, array, desiredArray) {
  */
 function parseTestResult(passed, passString, failString) {
   if (passed) {
-    console.log(`${chalk.green(`[PASS]`)} ${passString}`);
+    console.log(chalk.green(`[PASS]`), passString);
   }
   else {
-    console.log(`${chalk.red(`[FAIL]`)} ${failString}`);
+    console.log(chalk.red(`[FAIL]`), failString);
     errorCount++;
   }
 }

@@ -12,7 +12,7 @@ module.exports.version = `1.0.0`;
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
  * @param {Object} options Global options, including:
- * @param {String} options.baseDir Absolute path to OFL's root directory.
+ * @param {String} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
@@ -44,9 +44,9 @@ module.exports.export = async function exportDragonframe(fixtures, options) {
   const usedManufacturerData = {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${module.exports.supportedOflVersion}/schemas/manufacturers.json`,
   };
-  for (const man of Object.keys(manufacturers).sort()) {
-    if (usedManufacturers.has(man)) {
-      usedManufacturerData[man] = manufacturers[man];
+  for (const manufacturer of Object.keys(manufacturers).sort()) {
+    if (usedManufacturers.has(manufacturer)) {
+      usedManufacturerData[manufacturer] = manufacturers[manufacturer];
     }
   }
   files.push({

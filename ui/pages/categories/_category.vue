@@ -38,7 +38,7 @@ export default {
 
       return {
         categoryName,
-        categoryClass: categoryName.toLowerCase().replace(/[^\w]+/g, `-`),
+        categoryClass: categoryName.toLowerCase().replace(/\W+/g, `-`),
         fixtures: [],
         manufacturers,
       };
@@ -61,19 +61,19 @@ export default {
     };
   },
   created() {
-    this.fixtures = register.categories[this.categoryName].map(fixtureKey => {
-      const [manKey, fixKey] = fixtureKey.split(`/`);
-      const manufacturerName = this.manufacturers[manKey].name;
-      const fixtureName = register.filesystem[`${manKey}/${fixKey}`].name;
+    this.fixtures = register.categories[this.categoryName].map(fullFixtureKey => {
+      const [manufacturerKey, fixtureKey] = fullFixtureKey.split(`/`);
+      const manufacturerName = this.manufacturers[manufacturerKey].name;
+      const fixtureName = register.filesystem[`${manufacturerKey}/${fixtureKey}`].name;
 
       return {
-        key: fixtureKey,
-        link: `/${fixtureKey}`,
+        key: fullFixtureKey,
+        link: `/${fullFixtureKey}`,
         name: `${manufacturerName} ${fixtureName}`,
         categories: Object.keys(register.categories).filter(
-          cat => register.categories[cat].includes(fixtureKey),
+          cat => register.categories[cat].includes(fullFixtureKey),
         ),
-        color: this.manufacturers[manKey].color,
+        color: this.manufacturers[manufacturerKey].color,
       };
     });
   },

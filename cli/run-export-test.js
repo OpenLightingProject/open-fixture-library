@@ -8,7 +8,7 @@ const { fixtureFromFile, fixtureFromRepository } = require(`../lib/model.js`);
 
 const testFixtures = require(`../tests/test-fixtures.json`);
 
-const args = minimist(process.argv.slice(2), {
+const cliArguments = minimist(process.argv.slice(2), {
   string: [`p`],
   boolean: [`h`],
   alias: { p: `plugin`, h: `help` },
@@ -23,59 +23,54 @@ const helpMessage = [
   `  --help,     -h: Show this help message.`,
 ].join(`\n`);
 
-if (args.help) {
+if (cliArguments.help) {
   console.log(helpMessage);
   process.exit(0);
 }
 
-if (!args.plugin) {
-  console.error(`${chalk.red(`[Error]`)} Plugin has to be specified using --plugin`);
+if (!cliArguments.plugin) {
+  console.error(chalk.red(`[Error]`), `Plugin has to be specified using --plugin`);
   console.log(helpMessage);
   process.exit(1);
 }
 
-if (!plugins.exportPlugins.includes(args.plugin)) {
-  console.error(`${chalk.red(`[Error]`)} Plugin '${args.plugin}' is not a valid export plugin.\nAvailable export plugins: ${plugins.exportPlugins.join(`, `)}`);
+if (!plugins.exportPlugins.includes(cliArguments.plugin)) {
+  console.error(chalk.red(`[Error]`), `Plugin '${cliArguments.plugin}' is not a valid export plugin.\nAvailable export plugins:`, plugins.exportPlugins.join(`, `));
   process.exit(1);
 }
 
-const pluginData = plugins.data[args.plugin];
+const pluginData = plugins.data[cliArguments.plugin];
 if (pluginData.exportTests.length === 0) {
-  console.log(`${chalk.green(`[PASS]`)} Plugin '${args.plugin}' has no export tests.`);
+  console.log(chalk.green(`[PASS]`), `Plugin '${cliArguments.plugin}' has no export tests.`);
   process.exit(0);
 }
 
-let fixtures;
-if (args._.length === 0) {
-  fixtures = testFixtures.map(
-    fixture => fixtureFromRepository(fixture.man, fixture.key),
-  );
-}
-else {
-  fixtures = args._.map(
-    relativePath => fixtureFromFile(path.join(process.cwd(), relativePath)),
-  );
-}
+const fixtures = cliArguments._.length === 0
+  ? testFixtures.map(fixture => fixtureFromRepository(fixture.man, fixture.key))
+  : cliArguments._.map(relativePath => fixtureFromFile(path.join(process.cwd(), relativePath)));
 
-const pluginExport = require(path.join(__dirname, `../plugins`, args.plugin, `export.js`));
+const pluginExport = require(path.join(__dirname, `../plugins`, cliArguments.plugin, `export.js`));
 
 (async () => {
   try {
-    const files = await pluginExport.export(fixtures, {
-      baseDir: path.join(__dirname, `..`),
-      date: new Date(),
-    });
+    const files = await pluginExport.export(
+      await Promise.all(fixtures),
+      {
+        baseDirectory: path.join(__dirname, `..`),
+        date: new Date(),
+      },
+    );
 
     await Promise.all(pluginData.exportTests.map(async testKey => {
-      const exportTest = require(path.join(__dirname, `../plugins`, args.plugin, `exportTests/${testKey}.js`));
+      const exportTest = require(path.join(__dirname, `../plugins`, cliArguments.plugin, `exportTests/${testKey}.js`));
 
       const outputPerFile = await Promise.all(files.map(async file => {
         try {
           await exportTest(file, files);
           return `${chalk.green(`[PASS]`)} ${file.name}`;
         }
-        catch (err) {
-          const errors = Array.isArray(err) ? err : [err];
+        catch (testError) {
+          const errors = Array.isArray(testError) ? testError : [testError];
 
           return [`${chalk.red(`[FAIL]`)} ${file.name}`].concat(
             errors.map(error => `- ${error}`),
@@ -88,7 +83,7 @@ const pluginExport = require(path.join(__dirname, `../plugins`, args.plugin, `ex
     }));
   }
   catch (error) {
-    console.error(`${chalk.red(`[Error]`)} Exporting failed:`, error);
+    console.error(chalk.red(`[Error]`), `Exporting failed:`, error);
     process.exit(1);
   }
 })();

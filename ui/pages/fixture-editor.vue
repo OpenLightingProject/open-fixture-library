@@ -19,141 +19,15 @@
         class="only-js"
         @submit.prevent="onSubmit()">
 
-        <section class="manufacturer card">
-          <h2>Manufacturer</h2>
+        <EditorManufacturer
+          :fixture="fixture"
+          :formstate="formstate"
+          :manufacturers="manufacturers" />
 
-          <section v-if="fixture.useExistingManufacturer">
-            <LabeledInput :formstate="formstate" name="manufacturerKey" label="Choose from list">
-              <select
-                ref="existingManufacturerSelect"
-                v-model="fixture.manufacturerKey"
-                :class="{ empty: fixture.manufacturerKey === `` }"
-                required
-                name="manufacturerKey">
-
-                <option value="" disabled>Please select a manufacturer</option>
-
-                <template v-for="(manufacturer, manKey) of manufacturers">
-                  <option v-if="manKey !== `$schema`" :key="manKey" :value="manKey">
-                    {{ manufacturer.name }}
-                  </option>
-                </template>
-
-              </select>
-            </LabeledInput>
-
-            <div>or <a href="#add-new-manufacturer" @click.prevent="switchManufacturer(false)">add a new manufacturer</a></div>
-          </section>
-
-          <div v-else>
-            <LabeledInput :formstate="formstate" name="new-manufacturer-name" label="Name">
-              <PropertyInputText
-                ref="newManufacturerNameInput"
-                v-model="fixture.newManufacturerName"
-                :schema-property="properties.manufacturer.name"
-                :required="true"
-                name="new-manufacturer-name" />
-            </LabeledInput>
-
-            <LabeledInput :formstate="formstate" name="new-manufacturer-website" label="Website">
-              <PropertyInputText
-                v-model="fixture.newManufacturerWebsite"
-                :schema-property="properties.manufacturer.website"
-                type="url"
-                name="new-manufacturer-website" />
-            </LabeledInput>
-
-            <LabeledInput :formstate="formstate" name="new-manufacturer-comment" label="Comment">
-              <PropertyInputTextarea
-                v-model="fixture.newManufacturerComment"
-                :schema-property="properties.manufacturer.comment"
-                name="new-manufacturer-comment" />
-            </LabeledInput>
-
-            <LabeledInput :formstate="formstate" name="new-manufacturer-rdmId">
-              <template #label><abbr title="Remote Device Management">RDM</abbr> manufacturer ID</template>
-              <PropertyInputNumber
-                v-model="fixture.newManufacturerRdmId"
-                :schema-property="properties.manufacturer.rdmId"
-                name="new-manufacturer-rdmId" />
-            </LabeledInput>
-
-            <div>or <a href="#use-existing-manufacturer" @click.prevent="switchManufacturer(true)">choose an existing manufacturer</a></div>
-          </div>
-        </section>
-
-        <section class="fixture-info card">
-          <h2>Fixture info</h2>
-
-          <LabeledInput
-            :formstate="formstate"
-            :custom-validators="{ 'no-manufacturer-name': fixtureNameIsWithoutManufacturer }"
-            name="fixture-name"
-            label="Name">
-            <PropertyInputText
-              v-model="fixture.name"
-              :schema-property="properties.fixture.name"
-              :required="true"
-              name="fixture-name" />
-          </LabeledInput>
-
-          <LabeledInput :formstate="formstate" name="fixture-shortName" label="Unique short name">
-            <PropertyInputText
-              v-model="fixture.shortName"
-              :schema-property="properties.fixture.shortName"
-              name="fixture-shortName"
-              hint="defaults to name" />
-          </LabeledInput>
-
-          <LabeledInput
-            :formstate="formstate"
-            name="fixture-categories"
-            label="Categories"
-            hint="Select and reorder all applicable categories, the most suitable first.">
-            <EditorCategoryChooser
-              v-model="fixture.categories"
-              :all-categories="properties.fixture.categories.items.enum"
-              name="fixture-categories"
-              categories-not-empty />
-          </LabeledInput>
-
-          <LabeledInput :formstate="formstate" name="comment" label="Comment">
-            <PropertyInputTextarea
-              v-model="fixture.comment"
-              :schema-property="properties.fixture.comment"
-              name="comment" />
-          </LabeledInput>
-
-          <LabeledInput
-            :formstate="formstate"
-            :multiple-inputs="true"
-            name="links"
-            label="Relevant links">
-            <EditorLinks v-model="fixture.links" :formstate="formstate" name="links" />
-          </LabeledInput>
-
-          <LabeledInput
-            :formstate="formstate"
-            name="rdmModelId"
-            hint="The RDM manufacturer ID is saved per manufacturer.">
-            <template #label><abbr title="Remote Device Management">RDM</abbr> model ID</template>
-            <PropertyInputNumber
-              v-model="fixture.rdmModelId"
-              :schema-property="properties.fixture.rdm.properties.modelId"
-              name="rdmModelId" />
-          </LabeledInput>
-
-          <LabeledInput
-            v-if="fixture.rdmModelId !== null"
-            :formstate="formstate"
-            name="rdmSoftwareVersion"
-            label="RDM software version">
-            <PropertyInputText
-              v-model="fixture.rdmSoftwareVersion"
-              :schema-property="properties.fixture.rdm.properties.softwareVersion"
-              name="rdmSoftwareVersion" />
-          </LabeledInput>
-        </section>
+        <EditorFixtureInformation
+          :fixture="fixture"
+          :formstate="formstate"
+          :manufacturers="manufacturers" />
 
         <section class="physical card">
           <h2>Physical data</h2>
@@ -262,46 +136,29 @@ import {
 
 import schemaProperties from '../../lib/schema-properties.js';
 
-import EditorCategoryChooser from '../components/editor/EditorCategoryChooser.vue';
 import EditorChannelDialog from '../components/editor/EditorChannelDialog.vue';
 import EditorChooseChannelEditModeDialog from '../components/editor/EditorChooseChannelEditModeDialog.vue';
-import EditorLinks from '../components/editor/EditorLinks.vue';
+import EditorFixtureInformation from '../components/editor/EditorFixtureInformation.vue';
+import EditorManufacturer from '../components/editor/EditorManufacturer.vue';
 import EditorMode from '../components/editor/EditorMode.vue';
 import EditorPhysical from '../components/editor/EditorPhysical.vue';
 import EditorRestoreDialog from '../components/editor/EditorRestoreDialog.vue';
 import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';
 import LabeledInput from '../components/LabeledInput.vue';
-import PropertyInputNumber from '../components/PropertyInputNumber.vue';
 import PropertyInputText from '../components/PropertyInputText.vue';
-import PropertyInputTextarea from '../components/PropertyInputTextarea.vue';
 
 export default {
   components: {
-    EditorCategoryChooser,
     EditorChannelDialog,
     EditorChooseChannelEditModeDialog,
-    EditorLinks,
+    EditorFixtureInformation,
+    EditorManufacturer,
     EditorMode,
     EditorPhysical,
     EditorRestoreDialog,
     EditorSubmitDialog,
     LabeledInput,
-    PropertyInputNumber,
     PropertyInputText,
-    PropertyInputTextarea,
-  },
-  head() {
-    const title = `Fixture Editor`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: `title`,
-          content: title,
-        },
-      ],
-    };
   },
   async asyncData({ query, $axios, error }) {
     const initFixture = getEmptyFixture();
@@ -339,27 +196,18 @@ export default {
       return error(requestError);
     }
   },
-  computed: {
-    fixtureNameIsWithoutManufacturer() {
-      let manufacturerName;
+  head() {
+    const title = `Fixture Editor`;
 
-      if (this.fixture.useExistingManufacturer) {
-        const manKey = this.fixture.manufacturerKey;
-
-        if (manKey === ``) {
-          return true;
-        }
-
-        manufacturerName = this.manufacturers[manKey].name;
-      }
-      else {
-        manufacturerName = this.fixture.newManufacturerName;
-      }
-
-      manufacturerName = manufacturerName.trim().toLowerCase();
-
-      return manufacturerName === `` || !this.fixture.name.trim().toLowerCase().startsWith(manufacturerName);
-    },
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
+    };
   },
   watch: {
     fixture: {
@@ -379,13 +227,6 @@ export default {
     this.$nextTick(() => this.restoreAutoSave());
   },
   methods: {
-    switchManufacturer(useExisting) {
-      this.fixture.useExistingManufacturer = useExisting;
-      this.$nextTick(() => {
-        this.$refs[useExisting ? `existingManufacturerSelect` : `newManufacturerNameInput`].focus();
-      });
-    },
-
     addNewMode() {
       this.fixture.modes.push(getEmptyMode());
     },
@@ -423,10 +264,10 @@ export default {
      * @returns {Boolean} True if the channel's name is not used in another channel, too.
      */
     isChannelNameUnique(channelUuid) { // eslint-disable-line vue/no-unused-properties
-      const chName = this.getChannelName(channelUuid);
+      const channelName = this.getChannelName(channelUuid);
 
       return Object.keys(this.fixture.availableChannels).every(
-        uuid => chName !== this.getChannelName(uuid) || uuid === channelUuid,
+        uuid => channelName !== this.getChannelName(uuid) || uuid === channelUuid,
       );
     },
 
@@ -448,8 +289,7 @@ export default {
       }
 
       // remove fine channels first
-      for (const chId of Object.keys(this.fixture.availableChannels)) {
-        const channel = this.fixture.availableChannels[chId];
+      for (const channel of Object.values(this.fixture.availableChannels)) {
         if (`coarseChannelId` in channel && channel.coarseChannelId === channelUuid) {
           this.removeChannel(channel.uuid);
         }
@@ -505,7 +345,7 @@ export default {
           throw new Error(`this.restoredData is undefined.`);
         }
       }
-      catch (error) {
+      catch {
         this.restoredData = null;
         this.restoreComplete();
         return;

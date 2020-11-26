@@ -8,13 +8,15 @@ The model uses [ES2015 classes](https://developer.mozilla.org/en-US/docs/Web/Jav
 
 All model classes are located in the [`lib/model/`](../lib/model) directory. When using the model, it usually suffices to import the `fixtureFromRepository` function from `model.js` which returns a `Fixture` instance:
 
+<!-- While top level `await` is not supported by ESLint, skip parsing this code block. -->
+<!-- eslint-skip -->
 ```js
 const { fixtureFromRepository } = require(`./lib/model.js`);
 
-const myFix = fixtureFromRepository(`cameo`, `nanospot-120`); // instanceof Fixture
+const myFixture = await fixtureFromRepository(`cameo`, `nanospot-120`); // instanceof Fixture
 
-const physicalData = myFix.physical; // instanceof Physical
-const panFine = myFix.getChannelByKey(`Pan fine`); // instanceof FineChannel
+const physicalData = myFixture.physical; // instanceof Physical
+const panFine = myFixture.getChannelByKey(`Pan fine`); // instanceof FineChannel
 
 if (panFine.coarseChannel.hasHighlightValue) {
   console.log(`Highlight at ${panFine.coarseChannel.highlightValue}`);
