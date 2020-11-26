@@ -1,15 +1,16 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Thunder Wash 600 RGBW",
-  "categories": ["Strobe", "Color Changer", "Dimmer"],
+  "shortName": "CLTW600RGBW",
+  "categories": ["Strobe", "Blinder", "Color Changer"],
   "meta": {
-    "authors": ["Paolo"],
+    "authors": ["Paolo", "Flo Edelmann"],
     "createDate": "2020-10-19",
     "lastModifyDate": "2020-10-19"
   },
   "links": {
     "manual": [
-      "https://www.cameolight.com/en/downloads/file/id/-1911810176"
+      "https://www.cameolight.com/en/downloads/file/id/1645193924"
     ],
     "productPage": [
       "https://www.cameolight.com/en/solutions/dj-musicians/static-lighting/floodlights/20046/thunder-wash-600-rgbw"
