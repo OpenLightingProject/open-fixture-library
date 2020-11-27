@@ -129,8 +129,8 @@ Status Code **201**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» issueUrl|string¦null|false|none|none|
-|» error|string¦null|false|none|none|
+|» issueUrl|string¦null|true|none|none|
+|» error|string¦null|true|none|none|
 
 <aside class="success">
 This operation does not require authentication
@@ -205,7 +205,7 @@ Status Code **400**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» error|string|false|none|none|
+|» error|string|true|none|none|
 
 <aside class="success">
 This operation does not require authentication
@@ -234,10 +234,10 @@ Imports the uploaded fixture file and responds with a FixtureCreateResult.
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|plugin|body|string|false|none|
-|fileName|body|string|false|none|
-|fileContentBase64|body|string(base64)|false|none|
-|author|body|string|false|none|
+|plugin|body|string|true|none|
+|fileName|body|string|true|none|
+|fileContentBase64|body|string(base64)|true|none|
+|author|body|string|true|none|
 
 > Example responses
 
@@ -290,7 +290,7 @@ Status Code **400**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» error|string|false|none|none|
+|» error|string|true|none|none|
 
 <aside class="success">
 This operation does not require authentication
@@ -339,13 +339,13 @@ Creates a GitHub pull request with the given fixture data. Includes warnings, er
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|fixtureCreateResult|body|object|false|none|
+|fixtureCreateResult|body|object|true|none|
 |» manufacturers|body|object|true|none|
 |» fixtures|body|object|true|none|
 |» warnings|body|object|true|none|
 |» errors|body|object|true|none|
-|githubUsername|body|string|false|none|
-|githubComment|body|string|false|none|
+|githubUsername|body|string¦null|true|none|
+|githubComment|body|string¦null|true|none|
 
 > Example responses
 
@@ -370,13 +370,300 @@ Status Code **201**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» pullRequestUrl|string|false|none|none|
+|» pullRequestUrl|string|true|none|none|
 
 Status Code **400**
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|» error|string|false|none|none|
+|» error|string|true|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+<h1 id="open-fixture-library-api-manufacturers">manufacturers</h1>
+
+## getManufacturers
+
+<a id="opIdgetManufacturers"></a>
+
+`GET /manufacturers`
+
+Returns general information about all manufacturers.
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "property1": {
+    "name": "string",
+    "fixtureCount": 0,
+    "color": "string"
+  },
+  "property2": {
+    "name": "string",
+    "fixtureCount": 0,
+    "color": "string"
+  }
+}
+```
+
+<h3 id="getmanufacturers-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+
+<h3 id="getmanufacturers-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» **additionalProperties**|object|false|none|none|
+|»» name|string|true|none|none|
+|»» fixtureCount|integer|true|none|none|
+|»» color|string|true|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## getManufacturerByKey
+
+<a id="opIdgetManufacturerByKey"></a>
+
+`GET /manufacturers/{manufacturerKey}`
+
+Returns information about a specific manufacturer.
+
+<h3 id="getmanufacturerbykey-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|manufacturerKey|path|string|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "key": "string",
+  "name": "string",
+  "comment": "string",
+  "website": "string",
+  "rdmId": 0,
+  "color": "string",
+  "fixtures": [
+    {
+      "key": "string",
+      "name": "string",
+      "categories": [
+        "string"
+      ]
+    }
+  ]
+}
+```
+
+<h3 id="getmanufacturerbykey-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|Inline|
+
+<h3 id="getmanufacturerbykey-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» key|string|true|none|none|
+|» name|string|true|none|none|
+|» comment|string|false|none|none|
+|» website|string|false|none|none|
+|» rdmId|integer|false|none|none|
+|» color|string|true|none|none|
+|» fixtures|[object]|true|none|none|
+|»» key|string|true|none|none|
+|»» name|string|true|none|none|
+|»» categories|[string]|false|none|none|
+
+Status Code **404**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» error|string|true|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+<h1 id="open-fixture-library-api-plugins">plugins</h1>
+
+## getPlugins
+
+<a id="opIdgetPlugins"></a>
+
+`GET /plugins`
+
+Returns general information about import and export plugins.
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "importPlugins": [
+    "string"
+  ],
+  "exportPlugins": [
+    "string"
+  ],
+  "data": {
+    "property1": {
+      "name": "string",
+      "outdated": null,
+      "newPlugin": "string",
+      "importPluginVersion": "string",
+      "exportPluginVersion": "string",
+      "exportTests": [
+        "string"
+      ]
+    },
+    "property2": {
+      "name": "string",
+      "outdated": null,
+      "newPlugin": "string",
+      "importPluginVersion": "string",
+      "exportPluginVersion": "string",
+      "exportTests": [
+        "string"
+      ]
+    }
+  }
+}
+```
+
+<h3 id="getplugins-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+
+<h3 id="getplugins-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» importPlugins|[string]|true|none|none|
+|» exportPlugins|[string]|true|none|none|
+|» data|object|true|none|none|
+|»» **additionalProperties**|object|false|none|none|
+|»»» name|string|true|none|none|
+|»»» outdated|any|false|none|none|
+|»»» newPlugin|string|false|none|none|
+|»»» importPluginVersion|string|false|none|none|
+|»»» exportPluginVersion|string|false|none|none|
+|»»» exportTests|[string]|false|none|none|
+
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## getPluginByKey
+
+<a id="opIdgetPluginByKey"></a>
+
+`GET /plugins/{pluginKey}`
+
+Returns information about a specific import and export plugin. If an outdated plugin is requested, the information for the renamed plugin is returned.
+
+<h3 id="getpluginbykey-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|pluginKey|path|string|true|none|
+
+> Example responses
+
+> 200 Response
+
+```json
+{
+  "key": "string",
+  "name": "string",
+  "previousVersions": {
+    "property1": "string",
+    "property2": "string"
+  },
+  "description": "string",
+  "links": {
+    "property1": "string",
+    "property2": "string"
+  },
+  "fixtureUsage": "string",
+  "fileLocations": {
+    "subDirectoriesAllowed": true,
+    "property1": {
+      "main": "string",
+      "user": "string"
+    },
+    "property2": {
+      "main": "string",
+      "user": "string"
+    }
+  },
+  "additionalInfo": "string",
+  "helpWanted": "string",
+  "exportPluginVersion": "string",
+  "importPluginVersion": "string"
+}
+```
+
+<h3 id="getpluginbykey-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|none|Inline|
+|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|Inline|
+
+<h3 id="getpluginbykey-responseschema">Response Schema</h3>
+
+Status Code **200**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» key|string|true|none|none|
+|» name|string|true|none|none|
+|» previousVersions|object|true|none|none|
+|»» **additionalProperties**|string|false|none|none|
+|» description|string|true|none|none|
+|» links|object|true|none|none|
+|»» **additionalProperties**|string|false|none|none|
+|» fixtureUsage|string|false|none|none|
+|» fileLocations|object|false|none|none|
+|»» **additionalProperties**|object|false|none|none|
+|»»» main|string|false|none|none|
+|»»» user|string|false|none|none|
+|»» subDirectoriesAllowed|boolean|false|none|none|
+|» additionalInfo|string|false|none|none|
+|» helpWanted|string|false|none|none|
+|» exportPluginVersion|string|false|none|none|
+|» importPluginVersion|string|false|none|none|
+
+Status Code **404**
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|» error|string|true|none|none|
 
 <aside class="success">
 This operation does not require authentication
@@ -444,5 +731,5 @@ This operation does not require authentication
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|error|string|false|none|none|
+|error|string|true|none|none|
 

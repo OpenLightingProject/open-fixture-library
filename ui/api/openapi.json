@@ -27,6 +27,18 @@
     },
     "/fixtures/submit": {
       "$ref": "routes/fixtures/submit.json"
+    },
+    "/manufacturers": {
+      "$ref": "routes/manufacturers/index.json"
+    },
+    "/manufacturers/{manufacturerKey}": {
+      "$ref": "routes/manufacturers/_manufacturerKey.json"
+    },
+    "/plugins": {
+      "$ref": "routes/plugins/index.json"
+    },
+    "/plugins/{pluginKey}": {
+      "$ref": "routes/plugins/_pluginKey.json"
     }
   },
   "components": {
@@ -53,6 +65,7 @@
           "warnings",
           "errors"
         ],
+        "additionalProperties": false,
         "example": {
           "manufacturers": {
             "man-key": {
@@ -83,6 +96,8 @@
             "type": "string"
           }
         },
+        "required": ["error"],
+        "additionalProperties": false,
         "example": {
           "error": "Some error message."
         }
@@ -101,6 +116,16 @@
       },
       "400-BadRequestError": {
         "description": "Bad request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "404-NotFoundError": {
+        "description": "Not Found",
         "content": {
           "application/json": {
             "schema": {

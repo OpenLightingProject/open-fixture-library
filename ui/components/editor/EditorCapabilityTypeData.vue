@@ -10,12 +10,12 @@
         :class="{ empty: capability.type === `` }"
         :name="`capability${capability.uuid}-type`"
         :required="required"
-        @change="changeCapabilityType">
+        @change="changeCapabilityType()">
 
         <option value="" disabled>Please select a capability type</option>
 
         <option
-          v-for="type in capabilityTypes"
+          v-for="type of capabilityTypes"
           :key="type"
           :value="type">{{ type }}</option>
 
@@ -169,9 +169,9 @@ export default {
       this.$nextTick(() => {
         const defaultData = this.$refs.capabilityTypeData.defaultData;
 
-        for (const prop of Object.keys(defaultData)) {
-          if (!(prop in this.capability.typeData)) {
-            this.$set(this.capability.typeData, prop, defaultData[prop]);
+        for (const property of Object.keys(defaultData)) {
+          if (!(property in this.capability.typeData)) {
+            this.$set(this.capability.typeData, property, defaultData[property]);
           }
         }
 
@@ -187,23 +187,23 @@ export default {
     /**
      * Called when the channel is saved. Removes all properties from capability.typeData that are not relevant for this capability type and sets open to false.
      */
-    cleanCapabilityData() {
+    cleanCapabilityData() { // eslint-disable-line vue/no-unused-properties
       const component = this.$refs.capabilityTypeData;
 
       const defaultData = component.defaultData;
 
-      for (const prop of Object.keys(this.capability.typeData)) {
-        if (!(prop in defaultData)) {
-          delete this.capability.typeData[prop];
+      for (const property of Object.keys(this.capability.typeData)) {
+        if (!(property in defaultData)) {
+          delete this.capability.typeData[property];
         }
       }
 
-      if (component && `resetProps` in component) {
-        const resetProps = component.resetProps;
+      if (component && `resetProperties` in component) {
+        const resetProperties = component.resetProperties;
 
-        for (const prop of resetProps) {
-          const defaultPropData = defaultData[prop];
-          this.capability.typeData[prop] = typeof defaultPropData === `string` ? `` : defaultPropData;
+        for (const property of resetProperties) {
+          const defaultPropertyData = defaultData[property];
+          this.capability.typeData[property] = typeof defaultPropertyData === `string` ? `` : defaultPropertyData;
         }
       }
 

@@ -2,14 +2,14 @@ const createIssue = require(`../../../lib/create-github-issue.js`);
 const { fixtureFromRepository } = require(`../../../lib/model.js`);
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
+/** @typedef {import('../index.js').ApiResponse} ApiResponse */
 
 /**
  * Takes the input from the client side script and creates an issue with the given feedback.
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
- * @param {Object} request Passed from Express.
- * @param {Object} response Passed from Express.
+ * @returns {ApiResponse} The handled response.
  */
-async function createFeedbackIssue(ctx, request, response) {
+async function createFeedbackIssue({ request }) {
   const {
     type,
     context,
@@ -17,7 +17,7 @@ async function createFeedbackIssue(ctx, request, response) {
     helpWanted,
     message,
     githubUsername,
-  } = request.body;
+  } = request.requestBody;
 
   let title;
   const issueContentData = {};
@@ -31,8 +31,8 @@ async function createFeedbackIssue(ctx, request, response) {
     title = `Feedback for fixture '${context}'`;
     labels.push(`component-fixture`);
 
-    const [manKey, fixKey] = context.split(`/`);
-    const fixture = fixtureFromRepository(manKey, fixKey);
+    const [manufacturerKey, fixtureKey] = context.split(`/`);
+    const fixture = await fixtureFromRepository(manufacturerKey, fixtureKey);
 
     issueContentData.Manufacturer = fixture.manufacturer.name;
     issueContentData.Fixture = fixture.name;
@@ -49,7 +49,7 @@ async function createFeedbackIssue(ctx, request, response) {
   );
 
   if (githubUsername) {
-    const isValidUsername = /^[a-zA-Z0-9]+$/.test(githubUsername);
+    const isValidUsername = /^[\dA-Za-z]+$/.test(githubUsername);
     lines.push(`\nThank you ${isValidUsername ? `@${githubUsername}` : `**${githubUsername}**`}!`);
   }
 
@@ -59,14 +59,17 @@ async function createFeedbackIssue(ctx, request, response) {
     issueUrl = await createIssue(title, lines.join(`\n`), labels);
     console.log(`Created issue at ${issueUrl}`);
   }
-  catch (e) {
-    error = e.message;
+  catch (createIssueError) {
+    error = createIssueError.message;
   }
 
-  response.status(201).json({
-    issueUrl,
-    error,
-  });
+  return {
+    statusCode: 201,
+    body: {
+      issueUrl,
+      error,
+    },
+  };
 }
 
 module.exports = { createFeedbackIssue };

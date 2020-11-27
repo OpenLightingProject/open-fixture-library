@@ -13,10 +13,6 @@
 <script>
 export default {
   props: {
-    schemaProperty: {
-      type: Object,
-      required: true,
-    },
     required: {
       type: Boolean,
       required: false,
@@ -49,7 +45,8 @@ export default {
     },
   },
   methods: {
-    focus() {
+    // Called from parent component
+    focus() { // eslint-disable-line vue/no-unused-properties
       this.$refs.input.focus();
     },
   },

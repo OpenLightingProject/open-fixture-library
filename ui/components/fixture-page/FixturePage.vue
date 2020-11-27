@@ -6,7 +6,7 @@
         name="categories"
         label="Categories">
         <CategoryBadge
-          v-for="cat in fixture.categories"
+          v-for="cat of fixture.categories"
           :key="cat"
           :category="cat" />
       </LabeledValue>
@@ -18,7 +18,7 @@
         label="Comment" />
 
       <section v-if="videos" class="fixture-videos">
-        <div v-for="video in videos" :key="video.url" class="fixture-video">
+        <div v-for="video of videos" :key="video.url" class="fixture-video">
           <EmbettyVideo
             :type="video.type"
             :video-id="video.videoId"
@@ -38,7 +38,7 @@
         name="links"
         label="Relevant links">
         <ul class="fixture-links">
-          <li v-for="link in links" :key="`${link.type}-${link.url}`" :class="`link-${link.type}`">
+          <li v-for="link of links" :key="`${link.type}-${link.url}`" :class="`link-${link.type}`">
             <a
               :href="link.url"
               :title="link.title"
@@ -91,7 +91,7 @@
       <template v-if="fixture.wheels.length > 0">
         <h3 class="wheels">Wheels</h3>
         <section class="wheels">
-          <FixturePageWheel v-for="wheel in fixture.wheels" :key="wheel.name" :wheel="wheel" />
+          <FixturePageWheel v-for="wheel of fixture.wheels" :key="wheel.name" :wheel="wheel" />
         </section>
       </template>
 
@@ -99,10 +99,9 @@
 
     <section class="fixture-modes">
       <FixturePageMode
-        v-for="(mode, index) in modes"
+        v-for="mode of modes"
         :key="mode.name"
         :mode="mode"
-        :index="index"
         @help-wanted-clicked="$emit(`help-wanted-clicked`, $event)" />
       <div class="clearfix" />
     </section>
@@ -236,12 +235,6 @@ export default {
     };
   },
   computed: {
-    manKey() {
-      return this.fixture.manufacturer.key;
-    },
-    fixKey() {
-      return this.fixture.key;
-    },
     modesLimited() {
       return this.fixture.modes.length > this.modeNumberLoadThreshold;
     },
@@ -340,7 +333,7 @@ const supportedVideoFormats = {
      * - https://www.youtube.com/watch?v={videoId}&otherParameters
      * - https://youtu.be/{videoId]}?otherParameters
      */
-    regex: /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]t=([0-9hms]+))?/,
+    regex: /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)(?:[&?]t=([\dhms]+)|)/,
     displayType: url => `YouTube`,
     videoId: (url, match) => match[1],
     startAt: (url, match) => match[2] || 0,
@@ -353,7 +346,7 @@ const supportedVideoFormats = {
      * - https://vimeo.com/channels/{channelName}/{videoId}
      * - https://vimeo.com/groups/{groupId}/videos/{videoId}
      */
-    regex: /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([0-9hms]+))?/,
+    regex: /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([\dhms]+))?/,
     displayType: url => `Vimeo`,
     videoId: (url, match) => match[1],
     startAt: (url, match) => match[2] || 0,
@@ -404,7 +397,7 @@ function getEmbettableVideoData(url) {
  */
 function getHostname(url) {
   // adapted from https://stackoverflow.com/a/21553982/451391
-  const match = url.match(/^.*?\/\/(?:([^:/?#]*)(?::([0-9]+))?)/);
+  const match = url.match(/^.*?\/\/([^#/:?]*)(?::(\d+)|)/);
   return match ? match[1] : url;
 }
 

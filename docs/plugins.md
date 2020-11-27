@@ -40,7 +40,7 @@ module.exports.version = `0.1.0`; // semantic versioning of export plugin
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects, see our fixture model
  * @param {Object} options Some global options, for example:
- * @param {String} options.baseDir Absolute path to OFL's root directory
+ * @param {String} options.baseDirectory Absolute path to OFL's root directory
  * @param {Date} options.date The current time.
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} All generated files (see file schema above)
@@ -108,11 +108,11 @@ module.exports.import = async function importPluginName(buffer, fileName, author
   };
 
   // just an example
-  const manKey = `cameo`;
-  const fixKey = `thunder-wash-600-rgb`; // use a sanitized key as it's used as filename!
+  const manufacturerKey = `cameo`;
+  const fixtureKey = `thunder-wash-600-rgb`; // use a sanitized key as it's used as filename!
 
   const fixtureObject = {};
-  out.warnings[`${manKey}/${fixKey}`] = [];
+  out.warnings[`${manufacturerKey}/${fixtureKey}`] = [];
 
   const fileContent = buffer.toString();
   const couldNotParse = fileContent.includes(`Error`);
@@ -123,10 +123,10 @@ module.exports.import = async function importPluginName(buffer, fileName, author
   fixtureObject.name = `Thunder Wash 600 RGB`;
 
   // Add warning if a necessary property is not included in parsed file
-  out.warnings[`${manKey}/${fixKey}`].push(`Could not parse categories, please specify them manually.`);
+  out.warnings[`${manufacturerKey}/${fixtureKey}`].push(`Could not parse categories, please specify them manually.`);
 
   // That's the imported fixture
-  out.fixtures[`${manKey}/${fixKey}`] = fixtureObject;
+  out.fixtures[`${manufacturerKey}/${fixtureKey}`] = fixtureObject;
 
   return out;
 };
@@ -136,13 +136,12 @@ module.exports.import = async function importPluginName(buffer, fileName, author
 
 We want to run unit tests wherever possible (see [Testing](testing.md)), that's why it's possible to write plugin specific tests for exported fixtures, so called export tests. Of course they're only possible if the plugin provides an export module.
 
-A plugin's export test takes an exported file object as argument and evaluates it against plugin-specific requirements. For example, there is a [QLC+ export test](../plugins/qlcplus/exportTests/xsd-schema-conformity.js) that compares the generated XML file with the given QLC+ XSD fixture schema (if an official XML schema is available, it should definitely be used in an export test). We run these export tests automatically using the Travis CI.
+A plugin's export test takes an exported file object as argument and evaluates it against plugin-specific requirements. For example, there is a [QLC+ export test](../plugins/qlcplus_4.12.2/exportTests/xsd-schema-conformity.js) that compares the generated XML file with the given QLC+ XSD fixture schema (if an official XML schema is available, it should definitely be used in an export test). We run these export tests automatically using the Travis CI.
 
 Each test module should be located at `plugins/<plugin-key>/exportTests/<export-test-key>.js`. Here's a dummy test illustrating the structure:
 
 ```js
 const xml2js = require(`xml2js`);
-const promisify = require(`util`).promisify;
 
 /**
  * @param {Object} exportFile The file returned by the plugins' export module.
@@ -154,9 +153,7 @@ const promisify = require(`util`).promisify;
  * @returns {Promise.<undefined, Array.<String>|String>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
 module.exports = async function testValueCorrectness(exportFile) {
-  const parser = new xml2js.Parser();
-
-  const xml = await promisify(parser.parseString)(exportFile.content);
+  const xml = await xml2js.parseStringPromise(exportFile.content);
 
   const errors = [];
 

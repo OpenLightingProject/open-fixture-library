@@ -129,8 +129,8 @@ export function getEmptyChannel() {
 export function getEmptyFineChannel(coarseChannelId, resolution) {
   return {
     uuid: uuidv4(),
-    coarseChannelId: coarseChannelId,
-    resolution: resolution,
+    coarseChannelId,
+    resolution,
   };
 }
 
@@ -166,44 +166,44 @@ export function getEmptyWheelSlot() {
  * @returns {Boolean} False if the channel object is still empty / unchanged, true otherwise.
  */
 export function isChannelChanged(channel) {
-  return Object.keys(channel).some(prop => {
-    if ([`uuid`, `editMode`, `modeId`, `wizard`].includes(prop)) {
+  return Object.keys(channel).some(property => {
+    if ([`uuid`, `editMode`, `modeId`, `wizard`].includes(property)) {
       return false;
     }
 
-    if ([`defaultValue`, `highlightValue`, `invert`, `constant`, `crossfade`].includes(prop)) {
-      return channel[prop] !== null;
+    if ([`defaultValue`, `highlightValue`, `invert`, `constant`, `crossfade`].includes(property)) {
+      return channel[property] !== null;
     }
 
-    if (prop === `resolution` || prop === `dmxValueResolution`) {
-      return channel[prop] !== constants.RESOLUTION_8BIT;
+    if (property === `resolution` || property === `dmxValueResolution`) {
+      return channel[property] !== constants.RESOLUTION_8BIT;
     }
 
-    if (prop === `capabilities`) {
-      return channel.capabilities.some(isCapabilityChanged);
+    if (property === `capabilities`) {
+      return channel.capabilities.some(
+        capability => isCapabilityChanged(capability),
+      );
     }
 
-    return channel[prop] !== ``;
+    return channel[property] !== ``;
   });
 }
 
 
 /**
- * @param {Object} cap The capability object.
+ * @param {Object} capability The capability object.
  * @returns {Boolean} False if the capability object is still empty / unchanged, true otherwise.
  */
-export function isCapabilityChanged(cap) {
-  if (cap.dmxRange !== null) {
+export function isCapabilityChanged(capability) {
+  if (capability.dmxRange !== null) {
     return true;
   }
 
-  if (cap.type !== ``) {
+  if (capability.type !== ``) {
     return true;
   }
 
-  return Object.keys(cap.typeData).some(prop => {
-    return cap.typeData[prop] !== `` && cap.typeData[prop] !== null;
-  });
+  return Object.values(capability.typeData).some(value => value !== `` && value !== null);
 }
 
 
@@ -217,7 +217,7 @@ export function colorsHexStringToArray(hexString) {
   }
 
   const hexArray = hexString.split(/\s*,\s*/).map(hex => hex.trim().toLowerCase()).filter(
-    hex => hex.match(/^#[0-9a-f]{6}$/),
+    hex => hex.match(/^#[\da-f]{6}$/),
   );
 
   if (hexArray.length === 0) {
@@ -233,19 +233,19 @@ export function colorsHexStringToArray(hexString) {
  * @returns {Object} A clone of the channel object without properties that are just relevant for displaying it in the channel dialog.
  */
 export function getSanitizedChannel(channel) {
-  const retChannel = clone(channel);
-  delete retChannel.editMode;
-  delete retChannel.modeId;
-  delete retChannel.wizard;
+  const sanitizedChannel = clone(channel);
+  delete sanitizedChannel.editMode;
+  delete sanitizedChannel.modeId;
+  delete sanitizedChannel.wizard;
 
-  return retChannel;
+  return sanitizedChannel;
 }
 
 
 /**
- * @param {*} obj The object / array / ... to clone. Note: only JSON-stringifiable objects / properties are cloneable, i.e. no functions.
+ * @param {*} object The object / array / ... to clone. Note: only JSON-stringifiable objects / properties are cloneable, i.e. no functions.
  * @returns {*} A deep clone.
  */
-export function clone(obj) {
-  return JSON.parse(JSON.stringify(obj));
+export function clone(object) {
+  return JSON.parse(JSON.stringify(object));
 }

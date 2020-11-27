@@ -14,7 +14,7 @@ const pm2AppConfig = pm2config.apps.find(app => app.name === `ofl`);
 const deploymentConfig = {
   env: pm2AppConfig.env,
   action: ``,
-  webhookPort: 40010,
+  webhookPort: 40_010,
   webhookPath: `/`,
   webhookSecret: secrets.OFL_WEBHOOK_SECRET,
 };
@@ -62,7 +62,7 @@ function startServer() {
  * @param {String} body The JSON string from GitHub.
  * @param {Object.<String, String>} headers Headers of the request.
  */
-function processRequest(url, body, headers) { // eslint-disable-line complexity
+function processRequest(url, body, headers) {
   console.log(`Received webhook request at ${url}`);
 
   if (deploymentConfig.webhookPath !== url) {

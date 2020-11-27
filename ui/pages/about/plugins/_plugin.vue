@@ -9,10 +9,10 @@
     </div>
 
     <!-- eslint-disable-next-line vue/no-v-html -->
-    <div class="plugin-description" v-html="pluginData.description.join(`\n`)" />
+    <div class="plugin-description" v-html="pluginData.description" />
 
     <ul>
-      <li v-for="link in Object.keys(pluginData.links)" :key="link">
+      <li v-for="link of Object.keys(pluginData.links)" :key="link">
         <a :href="pluginData.links[link]" target="_blank" rel="nofollow">{{ link }}</a>
       </li>
     </ul>
@@ -21,13 +21,15 @@
       v-if="`helpWanted` in pluginData"
       type="plugin"
       :context="pluginData"
-      @help-wanted-clicked="openHelpWantedDialog" />
+      @help-wanted-clicked="openHelpWantedDialog($event)" />
 
     <div v-if="`fixtureUsage` in pluginData" class="fixture-usage">
-      <h2 id="fixture-usage">Fixture usage</h2>
+      <h2 id="fixture-usage">Install fixture definitions</h2>
+
+      <p><NuxtLink to="/manufacturers">Browse to the fixture</NuxtLink> you want to download, then select <em>{{ pluginData.name }}</em> in the <em>Download as…</em> button.</p>
 
       <!-- eslint-disable-next-line vue/no-v-html -->
-      <div v-html="pluginData.fixtureUsage.join(`\n`)" />
+      <div v-html="pluginData.fixtureUsage" />
     </div>
 
     <div v-if="`fileLocations` in pluginData" class="file-locations">
@@ -37,11 +39,11 @@
         Fixture files in subdirectories are {{ pluginData.fileLocations.subDirectoriesAllowed ? `recognized` : `not recognized` }}.
       </p>
 
-      <div v-for="os in fileLocationOSes" :key="os">
+      <div v-for="os of fileLocationOSes" :key="os">
         <h3>{{ os }}</h3>
 
         <section>
-          <div v-for="library in Object.keys(pluginData.fileLocations[os])" :key="`${os}-${library}`">
+          <div v-for="library of Object.keys(pluginData.fileLocations[os])" :key="`${os}-${library}`">
             {{ libraryNames[library] }}: <code>{{ pluginData.fileLocations[os][library] }}</code>
           </div>
         </section>
@@ -52,7 +54,7 @@
       <h2>Additional information</h2>
 
       <!-- eslint-disable-next-line vue/no-v-html -->
-      <div v-html="pluginData.additionalInfo.join(`\n`)" />
+      <div v-html="pluginData.additionalInfo" />
     </div>
 
     <p style="margin-top: 3rem;"><NuxtLink to="/about/plugins">Back to plugin overview</NuxtLink></p>
@@ -100,8 +102,6 @@
 </style>
 
 <script>
-import plugins from '../../../../plugins/plugins.json';
-
 import HelpWantedDialog from '../../../components/HelpWantedDialog.vue';
 import HelpWantedMessage from '../../../components/HelpWantedMessage.vue';
 
@@ -110,19 +110,21 @@ export default {
     HelpWantedDialog,
     HelpWantedMessage,
   },
-  validate({ params }) {
-    return decodeURIComponent(params.plugin) in plugins.data;
-  },
-  async asyncData({ params, query, app, redirect }) {
+  async asyncData({ params, $axios, redirect, error }) {
     const pluginKey = decodeURIComponent(params.plugin);
+    let pluginData;
 
-    if (plugins.data[pluginKey].outdated) {
-      redirect(301, `/about/plugins/${plugins.data[pluginKey].newPlugin}`);
-      return {};
+    try {
+      pluginData = await $axios.$get(`/api/v1/plugins/${pluginKey}`);
+    }
+    catch (requestError) {
+      return error(requestError);
     }
 
-    const pluginData = await app.$axios.$get(`/about/plugins/${pluginKey}.json`);
-    pluginData.key = pluginKey;
+    if (pluginKey in pluginData.previousVersions) {
+      const newPluginKey = pluginData.key;
+      return redirect(301, `/about/plugins/${newPluginKey}`);
+    }
 
     const fileLocationOSes = `fileLocations` in pluginData ? Object.keys(pluginData.fileLocations).filter(
       os => os !== `subDirectoriesAllowed`,
@@ -131,8 +133,8 @@ export default {
     return {
       pluginData,
       fileLocationOSes,
-      exportPluginVersion: plugins.data[pluginKey].exportPluginVersion,
-      importPluginVersion: plugins.data[pluginKey].importPluginVersion,
+      exportPluginVersion: pluginData.exportPluginVersion,
+      importPluginVersion: pluginData.importPluginVersion,
       libraryNames: {
         main: `Main (system) library`,
         user: `User library`,

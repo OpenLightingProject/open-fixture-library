@@ -1,11 +1,12 @@
-const path = require(`path`);
+import path from 'path';
 
-module.exports = {
+export default {
   srcDir: `./ui/`,
   modules: [
     [`@nuxtjs/axios`, {
       browserBaseURL: `/`,
     }],
+    `cookie-universal-nuxt`,
   ],
   plugins: [
     `~/plugins/embetty-vue.js`,
@@ -25,7 +26,7 @@ module.exports = {
     `embetty-vue/dist/embetty-vue.css`,
   ],
   build: {
-    extend(config, ctx) {
+    extend(config, context) {
       // exclude /assets/icons from url-loader
       const urlLoader = config.module.rules.find(rule => `use` in rule && rule.use[0].loader === `url-loader`);
       urlLoader.exclude = path.resolve(__dirname, `ui/assets/icons`);
@@ -80,8 +81,9 @@ module.exports = {
     color: `#1e88e5`,
   },
   head() {
-    const htmlAttrs = {
+    const htmlAttributes = {
       lang: `en`,
+      'data-theme': this.$cookies.get(`__Host-theme`) || this.$cookies.get(`theme`),
     };
 
     const titleTemplate = titleChunk => {
@@ -220,7 +222,7 @@ module.exports = {
     ];
 
     return {
-      htmlAttrs,
+      htmlAttrs: htmlAttributes,
       titleTemplate,
       meta,
       link,

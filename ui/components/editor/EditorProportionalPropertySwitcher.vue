@@ -1,10 +1,11 @@
 <template>
   <div class="proportional-capability-data">
 
-    <Validate
+    <Component
+      :is="formstate ? 'Validate' : 'span'"
       v-if="!hasStartEnd"
       :state="formstate"
-      tag="span">
+      :tag="formstate ? 'span' : null">
 
       <PropertyInputNumber
         v-if="entity === `slotNumber`"
@@ -33,12 +34,13 @@
 
       <span v-if="hint" class="hint">{{ hint }}</span>
 
-    </Validate>
+    </Component>
 
     <template v-else>
-      <Validate
+      <Component
+        :is="formstate ? 'Validate' : 'label'"
         :state="formstate"
-        tag="label"
+        :tag="formstate ? 'label' : null"
         class="entity-input">
 
         <PropertyInputNumber
@@ -57,8 +59,7 @@
           :required="required"
           :schema-property="entitySchema"
           :associated-entity="propertyDataEnd"
-          hint="start"
-          @unit-selected="onUnitSelected" />
+          @unit-selected="onUnitSelected($event)" />
 
         <PropertyInputText
           v-else
@@ -75,7 +76,7 @@
           {{ capability.dmxRange && capability.dmxRange[0] !== null ? `DMX value ${capability.dmxRange[0]}` : `capability start` }}
         </span>
 
-      </Validate>
+      </Component>
 
       <span class="separator">
         <a
@@ -83,15 +84,16 @@
           href="#swap"
           class="swap"
           title="Swap start and end values"
-          @click.prevent="swapStartEnd">
+          @click.prevent="swapStartEnd()">
           <OflSvg name="swap-horizontal" />
         </a>
         …
       </span>
 
-      <Validate
+      <Component
+        :is="formstate ? 'Validate' : 'label'"
         :state="formstate"
-        tag="label"
+        :tag="formstate ? 'label' : null"
         class="entity-input">
 
         <PropertyInputNumber
@@ -110,8 +112,7 @@
           :required="required"
           :schema-property="entitySchema"
           :associated-entity="propertyDataStart"
-          hint="end"
-          @unit-selected="onUnitSelected" />
+          @unit-selected="onUnitSelected($event)" />
 
         <PropertyInputText
           v-else
@@ -128,12 +129,12 @@
           {{ capability.dmxRange && capability.dmxRange[1] !== null ? `DMX value ${capability.dmxRange[1]}` : `capability end` }}
         </span>
 
-      </Validate>
+      </Component>
     </template>
 
     <section>
       <label>
-        <input v-model="hasStartEnd" type="checkbox" @change="focusEndField">
+        <input v-model="hasStartEnd" type="checkbox" @change="focusEndField()">
         Specify range instead of a single value
       </label>
     </section>
@@ -210,7 +211,8 @@ export default {
     },
     formstate: {
       type: Object,
-      required: true,
+      required: false,
+      default: null,
     },
   },
   data() {
@@ -324,7 +326,8 @@ export default {
     },
   },
   methods: {
-    focus() {
+    // Called from parent component
+    focus() { // eslint-disable-line vue/no-unused-properties
       for (const field of [`steppedField`, `startField`, `endField`]) {
         if (this.$refs[field]) {
           this.$refs[field].focus();

@@ -17,7 +17,7 @@
 
     <h3>Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!</h3>
 
-    <p><abbr title="Open Fixture Library">OFL</abbr> collects DMX fixture definitions in a JSON format and automatically exports them to the right format for every supported lighting software. Everybody can <a href="https://github.com/OpenLightingProject/open-fixture-library">contribute</a> and help to improve! Thanks!</p>
+    <p><abbr title="Open Fixture Library">OFL</abbr> collects DMX fixture definitions in a JSON format and automatically exports them to the right format for every <NuxtLink to="/about/plugins">supported lighting software</NuxtLink>. Everybody can <a href="https://github.com/OpenLightingProject/open-fixture-library">contribute</a> and help to improve! Thanks!</p>
 
 
     <div class="grid-3 centered">
@@ -26,7 +26,7 @@
         <h2>Recently updated fixtures</h2>
 
         <ul class="list">
-          <li v-for="fixture in lastUpdated" :key="fixture.key">
+          <li v-for="fixture of lastUpdated" :key="fixture.key">
             <NuxtLink
               :to="`/${fixture.key}`"
               :style="{ borderLeftColor: fixture.color }"
@@ -56,7 +56,7 @@
         <h2>Recent contributors</h2>
 
         <ul class="list">
-          <li v-for="contributor in recentContributors" :key="contributor.name">
+          <li v-for="contributor of recentContributors" :key="contributor.name">
             <NuxtLink :to="`/${contributor.latestFixtureKey}`">
               {{ contributor.name }}
               <div class="hint">
@@ -94,7 +94,6 @@
 <script>
 import packageJson from '../../package.json';
 import register from '../../fixtures/register.json';
-import manufacturers from '../../fixtures/manufacturers.json';
 
 import DownloadButton from '../components/DownloadButton.vue';
 
@@ -102,31 +101,25 @@ export default {
   components: {
     DownloadButton,
   },
+  async asyncData({ $axios, error }) {
+    try {
+      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+
+      return {
+        manufacturers,
+      };
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
+  },
   data() {
     return {
-      lastUpdated: register.lastUpdated.slice(0, 5).map(
-        fixtureKey => ({
-          key: fixtureKey,
-          name: getFixtureName(fixtureKey),
-          action: register.filesystem[fixtureKey].lastAction,
-          date: new Date(register.filesystem[fixtureKey].lastActionDate),
-          color: register.colors[fixtureKey.split(`/`)[0]],
-        }),
-      ),
-      recentContributors: Object.keys(register.contributors).slice(0, 5).map(
-        contributor => {
-          const latestFixtureKey = getLatestFixtureKey(contributor);
+      lastUpdated: [],
+      recentContributors: [],
 
-          return {
-            name: contributor,
-            number: register.contributors[contributor].fixtures.length,
-            latestFixtureKey: latestFixtureKey,
-            latestFixtureName: getFixtureName(latestFixtureKey),
-          };
-        },
-      ),
       fixtureCount: Object.keys(register.filesystem).filter(
-        fixKey => !(`redirectTo` in register.filesystem[fixKey]) || register.filesystem[fixKey].reason === `SameAsDifferentBrand`,
+        fixtureKey => !(`redirectTo` in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === `SameAsDifferentBrand`,
       ).length,
 
       websiteStructuredData: {
@@ -150,19 +143,45 @@ export default {
       },
     };
   },
+  created() {
+    this.lastUpdated = register.lastUpdated.slice(0, 5).map(
+      fixtureKey => ({
+        key: fixtureKey,
+        name: this.getFixtureName(fixtureKey),
+        action: register.filesystem[fixtureKey].lastAction,
+        date: new Date(register.filesystem[fixtureKey].lastActionDate),
+        color: register.colors[fixtureKey.split(`/`)[0]],
+      }),
+    );
+
+    this.recentContributors = Object.keys(register.contributors).slice(0, 5).map(
+      contributor => {
+        const latestFixtureKey = getLatestFixtureKey(contributor);
+
+        return {
+          name: contributor,
+          number: register.contributors[contributor].fixtures.length,
+          latestFixtureKey,
+          latestFixtureName: this.getFixtureName(latestFixtureKey),
+        };
+      },
+    );
+  },
+  methods: {
+    /**
+     * @param {String} fixtureKey The combined manufacturer / fixture key.
+     * @returns {String} The manufacturer and fixture names, separated by a space.
+     */
+    getFixtureName(fixtureKey) {
+      const manufacturerKey = fixtureKey.split(`/`)[0];
+      const manufacturerName = this.manufacturers[manufacturerKey].name;
+      const fixtureName = register.filesystem[fixtureKey].name;
+
+      return `${manufacturerName} ${fixtureName}`;
+    },
+  },
 };
 
-/**
- * @param {String} fixtureKey The combined manufacturer / fixture key.
- * @returns {String} The manufacturer and fixture names, separated by a space.
- */
-function getFixtureName(fixtureKey) {
-  const manKey = fixtureKey.split(`/`)[0];
-  const manufacturerName = manufacturers[manKey].name;
-  const fixtureName = register.filesystem[fixtureKey].name;
-
-  return `${manufacturerName} ${fixtureName}`;
-}
 
 /**
  * @param {String} contributor The contributor name.

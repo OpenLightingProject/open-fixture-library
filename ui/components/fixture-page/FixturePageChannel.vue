@@ -27,7 +27,7 @@
 
         <ol>
           <FixturePageChannel
-            v-for="(ranges, switchToChannelKey) in channel.triggerRanges"
+            v-for="(ranges, switchToChannelKey) of channel.triggerRanges"
             :key="switchToChannelKey"
             :channel="fixture.getChannelByKey(switchToChannelKey)"
             :mode="mode"
@@ -37,7 +37,7 @@
               name="switchingChannel-triggerRanges"
               label="Activated when">
               Trigger channel is set to
-              <template v-for="(range, index) in ranges">
+              <template v-for="(range, index) of ranges">
                 {{ index > 0 ? ` or ` : `` }}
                 <span :key="range.toString()" style="white-space: nowrap;">
                   {{ range.toString() }}
@@ -77,7 +77,7 @@
           name="channel-fineChannelAliases"
           label="Fine channels">
           {{ channel.fineChannels.slice(0, resolutionInMode - 1).map(
-            fineChannel => `${fineChannel.name} (channel&nbsp;${mode.getChannelIndex(fineChannel) + 1})`,
+            fineChannel => `${fineChannel.name} (channel&nbsp;${mode.getChannelIndex(fineChannel.key) + 1})`,
           ).join(`, `) }}
         </LabeledValue>
 
@@ -138,17 +138,6 @@ summary, .summary {
     fill: theme-color(yellow-background-hover);
     margin-left: 0.7ex;
     margin-right: 0;
-  }
-}
-
-ol.mode-channels {
-  padding-left: 1.9em;
-  min-height: 1em;
-
-  // switched channels
-  & ol {
-    list-style-type: lower-alpha;
-    padding-left: 1.1em;
   }
 }
 </style>

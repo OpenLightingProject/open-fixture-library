@@ -5,8 +5,10 @@
     "qlcplus_4.12.2"
   ],
   "exportPlugins": [
+    "aglight",
     "colorsource",
     "d-light",
+    "dragonframe",
     "ecue",
     "millumin",
     "ofl",
@@ -14,6 +16,11 @@
     "qlcplus_4.12.2"
   ],
   "data": {
+    "aglight": {
+      "name": "AGLight",
+      "exportPluginVersion": "1.0.0",
+      "exportTests": []
+    },
     "colorsource": {
       "name": "ColorSource",
       "exportPluginVersion": "0.1.0",
@@ -24,6 +31,13 @@
       "exportPluginVersion": "0.2.0",
       "exportTests": [
         "attributes-correctness"
+      ]
+    },
+    "dragonframe": {
+      "name": "Dragonframe",
+      "exportPluginVersion": "1.0.0",
+      "exportTests": [
+        "json-schema-conformity"
       ]
     },
     "ecue": {

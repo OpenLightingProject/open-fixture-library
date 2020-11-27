@@ -54,8 +54,11 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      // eslint-disable-next-line vue/no-unused-properties
       hint: `Doesn't activate an effect, only controls the duration of running effects.`,
-      defaultData: {
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         duration: null,
         durationStart: `short`,
         durationEnd: `long`,

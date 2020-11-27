@@ -28,7 +28,7 @@
       :name="`capability${capability.uuid}-colorsHexString`"
       label="Color preview">
       <OflSvg
-        v-for="color in colorPreview"
+        v-for="color of colorPreview"
         :key="color"
         :colors="[color]"
         type="color-circle" />
@@ -40,13 +40,13 @@
       :name="`capability${capability.uuid}-colorsHexString`"
       label="Color preview">
       <OflSvg
-        v-for="color in colorPreviewStart || []"
+        v-for="color of colorPreviewStart || []"
         :key="color"
         :colors="[color]"
         type="color-circle" />
       …
       <OflSvg
-        v-for="color in colorPreviewEnd || []"
+        v-for="color of colorPreviewEnd || []"
         :key="color"
         :colors="[color]"
         type="color-circle" />
@@ -94,8 +94,11 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      // eslint-disable-next-line vue/no-unused-properties
       hint: `This capability enables a static predefined RGB/CMY color. Use WheelSlot for color wheel filters.`,
-      defaultData: {
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         comment: ``,
         colors: null,
         colorsStart: null,

@@ -95,7 +95,8 @@ export default {
     step() {
       return this.schemaProperty.type === `integer` ? 1 : `any`;
     },
-    validationData() {
+    // Used by vue-form
+    validationData() { // eslint-disable-line vue/no-unused-properties
       return {
         min: this.min === null ? null : `${this.min}`,
         max: this.max === null ? null : `${this.max}`,
@@ -136,9 +137,9 @@ export default {
 
       let value;
       try {
-        value = parseFloat(input.value);
+        value = Number.parseFloat(input.value);
       }
-      catch (error) {
+      catch {
         value = `invalid`;
       }
 

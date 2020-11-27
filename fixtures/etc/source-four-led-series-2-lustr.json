@@ -4,13 +4,14 @@
   "shortName": "EtcSF2Lustr",
   "categories": ["Dimmer", "Color Changer", "Strobe"],
   "meta": {
-    "authors": ["Jeppe Cohrt"],
+    "authors": ["Jeppe Cohrt", "Dyami Caliri"],
     "createDate": "2019-07-11",
-    "lastModifyDate": "2019-07-11"
+    "lastModifyDate": "2020-10-02"
   },
   "links": {
     "manual": [
-      "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737483869"
+      "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737483869",
+      "https://www.etcconnect.com/WorkArea/DownloadAsset.aspx?id=10737501163"
     ],
     "productPage": [
       "https://www.etcconnect.com/Products/Lighting-Fixtures/Source-Four-LED-Series-2/Features.aspx"
@@ -25,7 +26,11 @@
     "power": 171,
     "DMXconnector": "5-pin",
     "bulb": {
-      "type": "Seven-color LED array"
+      "type": "60× 7-color Lumileds LUXEON® Rebel LED",
+      "lumens": 8667
+    },
+    "lens": {
+      "degreesMinMax": [5, 90]
     }
   },
   "availableChannels": {
@@ -93,10 +98,19 @@
       ]
     },
     "Fan Control": {
-      "capability": {
-        "type": "Maintenance",
-        "helpWanted": "Which capabilities can be selected at which DMX values?"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Maintenance",
+          "comment": "Fan auto"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
     },
     "Hue": {
       "fineChannelAliases": ["Hue fine"],
@@ -110,11 +124,24 @@
       }
     },
     "Color Point": {
-      "capability": {
-        "type": "ColorTemperature",
-        "colorTemperature": "default",
-        "helpWanted": "Which color temperatures can be selected at which DMX values?"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [2, 253],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2725K",
+          "colorTemperatureEnd": "6450K"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
+        }
+      ]
     },
     "Red Emulated": {
       "capability": {
@@ -135,10 +162,28 @@
       }
     },
     "Tint": {
-      "capability": {
-        "type": "Generic",
-        "helpWanted": "Which capabilities can be selected at which DMX values?"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 1],
+          "type": "Generic",
+          "comment": "Neutral white"
+        },
+        {
+          "dmxRange": [2, 127],
+          "type": "Generic",
+          "comment": "Full plus-green to neutral white"
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "Generic",
+          "comment": "Neutral white"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Generic",
+          "comment": "Neutral white to full magenta"
+        }
+      ]
     },
     "Plus 7 Control": {
       "capabilities": [

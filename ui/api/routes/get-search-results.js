@@ -2,20 +2,22 @@ const register = require(`../../../fixtures/register.json`);
 const manufacturers = require(`../../../fixtures/manufacturers.json`);
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
+/** @typedef {import('../index.js').ApiResponse} ApiResponse */
 
 /**
  * Return search results for given parameters. Very primitive match algorithm, maybe put more effort into it sometime.
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
- * @param {Object} request Passed from Express.
- * @param {Object} response Passed from Express.
+ * @returns {ApiResponse} The handled response.
  */
-function getSearchResults(ctx, request, response) {
-  const { searchQuery, manufacturersQuery, categoriesQuery } = request.body;
+function getSearchResults({ request }) {
+  const { searchQuery, manufacturersQuery, categoriesQuery } = request.requestBody;
 
   const results = Object.keys(register.filesystem).filter(
     key => queryMatch(searchQuery, key) && manufacturerMatch(manufacturersQuery, key) && categoryMatch(categoriesQuery, key),
   );
-  response.json(results);
+  return {
+    body: results,
+  };
 }
 
 /**
@@ -25,10 +27,10 @@ function getSearchResults(ctx, request, response) {
  * @returns {Boolean} True if the fixture matches the search query, false otherwise.
  */
 function queryMatch(searchQuery, fixtureKey) {
-  const man = fixtureKey.split(`/`)[0];
-  const fixData = register.filesystem[fixtureKey];
+  const manufacturer = fixtureKey.split(`/`)[0];
+  const fixtureData = register.filesystem[fixtureKey];
 
-  return fixtureKey.includes(searchQuery.toLowerCase()) || `${manufacturers[man].name} ${fixData.name}`.toLowerCase().includes(searchQuery.toLowerCase());
+  return fixtureKey.includes(searchQuery.toLowerCase()) || `${manufacturers[manufacturer].name} ${fixtureData.name}`.toLowerCase().includes(searchQuery.toLowerCase());
 }
 
 /**
@@ -38,11 +40,11 @@ function queryMatch(searchQuery, fixtureKey) {
  * @returns {Boolean} True if the fixture matches the manufacturer query, false otherwise.
  */
 function manufacturerMatch(manufacturersQuery, fixtureKey) {
-  const man = fixtureKey.split(`/`)[0];
+  const manufacturer = fixtureKey.split(`/`)[0];
 
   return manufacturersQuery.length === 0 ||
     (manufacturersQuery.length === 1 && manufacturersQuery[0] === ``) ||
-    manufacturersQuery.includes(man);
+    manufacturersQuery.includes(manufacturer);
 }
 
 /**

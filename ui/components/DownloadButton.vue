@@ -5,7 +5,7 @@
       v-if="buttonStyle === `select`"
       @change="onDownloadSelect($event)">
       <option value="" disabled selected>{{ title }}</option>
-      <option v-for="plugin in exportPlugins" :key="plugin.key" :value="plugin.key">{{ plugin.name }}</option>
+      <option v-for="plugin of exportPlugins" :key="plugin.key" :value="plugin.key">{{ plugin.name }}</option>
     </select>
 
     <!-- Display the download button as hoverable div with real links in the dropdown -->
@@ -15,7 +15,7 @@
       :class="{ home: buttonStyle === `home` }">
       <a href="#" class="title" @click.prevent>{{ title }}</a>
       <ul>
-        <li v-for="plugin in exportPlugins" :key="plugin.key">
+        <li v-for="plugin of exportPlugins" :key="plugin.key">
           <a
             :href="`${baseLink}.${plugin.key}`"
             :title="`Download ${plugin.name} fixture definition${isSingle ? `` : `s`}`"
@@ -235,8 +235,6 @@ select {
 </style>
 
 <script>
-import plugins from '../../plugins/plugins.json';
-
 export default {
   props: {
     // how many fixtures will be downloaded, if !isSingle?
@@ -275,13 +273,17 @@ export default {
   },
   data() {
     return {
-      exportPlugins: plugins.exportPlugins.map(
-        pluginKey => ({
-          key: pluginKey,
-          name: plugins.data[pluginKey].name,
-        }),
-      ),
+      exportPlugins: [],
     };
+  },
+  async fetch() {
+    const plugins = await this.$axios.$get(`/api/v1/plugins`);
+    this.exportPlugins = plugins.exportPlugins.map(
+      pluginKey => ({
+        key: pluginKey,
+        name: plugins.data[pluginKey].name,
+      }),
+    );
   },
   computed: {
     // returns whether we're handling only one single fixture here
@@ -328,14 +330,14 @@ export default {
         else {
           anchorElement.href = downloadUrl;
           anchorElement.download = filename;
-          document.body.appendChild(anchorElement);
+          document.body.append(anchorElement);
           anchorElement.click();
         }
 
         // cleanup
         setTimeout(() => {
           URL.revokeObjectURL(downloadUrl);
-          document.body.removeChild(anchorElement);
+          anchorElement.remove();
         }, 100);
       }
     },
@@ -355,10 +357,10 @@ export default {
       let filename = ``;
       const disposition = response.headers[`content-disposition`];
       if (disposition && disposition.includes(`attachment`)) {
-        const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+        const filenameRegex = /filename[^\n;=]*=((["']).*?\2|[^\n;]*)/;
         const matches = filenameRegex.exec(disposition);
         if (matches && matches[1]) {
-          filename = matches[1].replace(/['"]/g, ``);
+          filename = matches[1].replace(/["']/g, ``);
         }
       }
 

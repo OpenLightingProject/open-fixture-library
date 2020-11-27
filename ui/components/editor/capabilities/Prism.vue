@@ -73,7 +73,9 @@ export default {
   data() {
     return {
       properties: schemaProperties,
-      defaultData: {
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         speedOrAngle: `speed`,
         speed: ``,
         speedStart: null,
@@ -86,10 +88,14 @@ export default {
     };
   },
   computed: {
-    resetProps() {
-      const resetProp = this.capability.typeData.speedOrAngle === `speed` ? `angle` : `speed`;
+    /**
+     * Called from {@link EditorCapabilityTypeData}
+     * @returns {Array.<String>} Array of all props to reset to default data when capability is saved.
+     */
+    resetProperties() { // eslint-disable-line vue/no-unused-properties
+      const resetProperty = this.capability.typeData.speedOrAngle === `speed` ? `angle` : `speed`;
 
-      return [resetProp, `${resetProp}Start`, `${resetProp}End`];
+      return [resetProperty, `${resetProperty}Start`, `${resetProperty}End`];
     },
   },
   methods: {

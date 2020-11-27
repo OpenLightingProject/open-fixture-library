@@ -14,12 +14,20 @@
                 "$ref": "../../openapi.json#/components/schemas/FixtureCreateResult"
               },
               "githubUsername": {
-                "type": "string"
+                "type": "string",
+                "nullable": true
               },
               "githubComment": {
-                "type": "string"
+                "type": "string",
+                "nullable": true
               }
-            }
+            },
+            "required": [
+              "fixtureCreateResult",
+              "githubUsername",
+              "githubComment"
+            ],
+            "additionalProperties": false
           }
         }
       }
@@ -35,7 +43,9 @@
                 "pullRequestUrl": {
                   "type": "string"
                 }
-              }
+              },
+              "required": ["pullRequestUrl"],
+              "additionalProperties": false
             }
           }
         }
