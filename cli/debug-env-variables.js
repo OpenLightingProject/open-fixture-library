@@ -14,6 +14,9 @@ const usedVariables = [
   `TRAVIS_PULL_REQUEST`,
   `TRAVIS_PULL_REQUEST_SLUG`,
   `TRAVIS_REPO_SLUG`,
+  `GITHUB_REPOSITORY`,
+  `GITHUB_RUN_ID`,
+  `GITHUB_REF`,
 ];
 
 console.log(`This scripts lists all environment variables that are used in the Open Fixture Library.\n`);

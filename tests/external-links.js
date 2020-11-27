@@ -201,8 +201,8 @@ async function updateGithubIssue(urlResults) {
   const requiredEnvironmentVariables = [
     `GITHUB_USER_TOKEN`,
     `GITHUB_BROKEN_LINKS_ISSUE_NUMBER`,
-    `TRAVIS_REPO_SLUG`,
-    `TRAVIS_JOB_WEB_URL`,
+    `GITHUB_REPOSITORY`,
+    `GITHUB_RUN_ID`,
   ];
 
   for (const environmentVariable of requiredEnvironmentVariables) {
@@ -212,11 +212,13 @@ async function updateGithubIssue(urlResults) {
     }
   }
 
+  const workflowRunUrl = `https://github.com/${process.env.GITHUB_REPOSITORY}/runs/${process.env.GITHUB_RUN_ID}`;
+
   const githubClient = new Octokit({
     auth: `token ${process.env.GITHUB_USER_TOKEN}`,
   });
 
-  const [repoOwner, repoName] = process.env.TRAVIS_REPO_SLUG.split(`/`);
+  const [repoOwner, repoName] = process.env.GITHUB_REPOSITORY.split(`/`);
 
   let issue;
 
@@ -237,7 +239,7 @@ async function updateGithubIssue(urlResults) {
   const newLinkData = getUpdatedLinkData();
   const deletedUrls = Object.keys(oldLinkData).filter(url => !urlResults.some(result => result.url === url));
 
-  console.log(`Updating GitHub issue body at https://github.com/${process.env.TRAVIS_REPO_SLUG}/issues/${process.env.GITHUB_BROKEN_LINKS_ISSUE_NUMBER}`);
+  console.log(`Updating GitHub issue body at https://github.com/${process.env.GITHUB_REPOSITORY}/issues/${process.env.GITHUB_BROKEN_LINKS_ISSUE_NUMBER}`);
   await githubClient.issues.update({
     owner: repoOwner,
     repo: repoName,
@@ -256,7 +258,7 @@ async function updateGithubIssue(urlResults) {
    * @typedef {Object} LinkStatus
    * @property {Boolean} failed Whether the requested URL can be seen as broken.
    * @property {String|null} message User-visible information about the URL's status. May be null for passing links.
-   * @property {String|null} jobUrl Link to the travis job. May be null for passing links.
+   * @property {String|null} jobUrl Link to the workflow run page. May be null for passing links.
    */
 
   /**
@@ -317,7 +319,7 @@ async function updateGithubIssue(urlResults) {
         const currentStatus = {
           failed,
           message,
-          jobUrl: process.env.TRAVIS_JOB_WEB_URL,
+          jobUrl: workflowRunUrl,
         };
         const oldStatuses = oldLinkData[url];
 
@@ -343,7 +345,7 @@ async function updateGithubIssue(urlResults) {
         statuses[0] = {
           failed,
           message,
-          jobUrl: process.env.TRAVIS_JOB_WEB_URL,
+          jobUrl: workflowRunUrl,
         };
         linkData[url] = statuses;
 
@@ -423,7 +425,7 @@ async function updateGithubIssue(urlResults) {
     const lines = [
       `${GITHUB_COMMENT_HEADING} (${(new Date()).toISOString()})`,
       ``,
-      `[:page_with_curl: Travis job](${process.env.TRAVIS_JOB_WEB_URL})`,
+      `[:page_with_curl: Workflow run](${workflowRunUrl})`,
       ``,
     ];
 
