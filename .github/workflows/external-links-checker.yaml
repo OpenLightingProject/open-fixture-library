@@ -4,7 +4,7 @@ on:
     - cron: '30 18 * * *' # everyday 18:30 UTC
   workflow_dispatch:
 jobs:
-  required:
+  external-links:
     name: Check external links
     runs-on: ubuntu-latest
     steps:
