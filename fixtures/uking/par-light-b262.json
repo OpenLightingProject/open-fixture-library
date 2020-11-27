@@ -65,58 +65,87 @@
         },
         {
           "dmxRange": [8, 255],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         }
       ]
     },
     "Mode": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "Effect",
-          "effectName": "Manual",
-          "comment": "Controlled by CH1-CH5"
+          "type": "NoFunction",
+          "comment": "Manual mode",
+          "switchChannels": {
+            "Hue Selection / Speed": "Hue"
+          }
         },
         {
           "dmxRange": [11, 60],
           "type": "Effect",
           "effectName": "Hue Select",
-          "comment": "Hue is selected by CH7"
+          "switchChannels": {
+            "Hue Selection / Speed": "Hue"
+          }
         },
         {
           "dmxRange": [61, 110],
           "type": "Effect",
           "effectName": "Hue Shift",
-          "comment": "Hue shift speed is controlled by CH7"
+          "switchChannels": {
+            "Hue Selection / Speed": "Hue Shift Speed"
+          }
         },
         {
           "dmxRange": [111, 160],
           "type": "Effect",
           "effectName": "Hue Pulse Transform",
-          "comment": "Hue fades in and out, then shifts. Speed controlled by CH7."
+          "comment": "Hue fades in and out, then shifts",
+          "switchChannels": {
+            "Hue Selection / Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [161, 210],
           "type": "Effect",
           "effectName": "Hue Transition",
-          "comment": "Hue transitions to next in sequence. Speed controlled by CH7."
+          "comment": "Hue transitions to next in sequence",
+          "switchChannels": {
+            "Hue Selection / Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [211, 255],
           "type": "Effect",
           "effectName": "Sound Control",
-          "soundControlled": true
+          "soundControlled": true,
+          "switchChannels": {
+            "Hue Selection / Speed": "Effect Speed"
+          }
         }
       ]
     },
-    "Hue Selection / Speed": {
+    "Hue Selection": {
       "capability": {
-        "type": "Speed",
+        "type": "Generic",
+        "comment": "Hue selection"
+      }
+    },
+    "Hue Shift Speed": {
+      "capability": {
+        "type": "EffectSpeed",
         "speedStart": "slow",
-        "speedEnd": "fast",
-        "comment": "Mode specific. See CH6."
+        "speedEnd": "fast"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     }
   },
