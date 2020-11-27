@@ -28,7 +28,11 @@ Please update these docs and [`cli/debug-env-variables.js`](../cli/debug-env-var
 |`TRAVIS_PULL_REQUEST`              |                                            | [Set by Travis][travis-docs]       |
 |`TRAVIS_PULL_REQUEST_SLUG`         |                                            | [Set by Travis][travis-docs]       |
 |`TRAVIS_REPO_SLUG`                 |                                            | [Set by Travis][travis-docs]       |
+|`GITHUB_REPOSITORY`                |                                            | [Set by GitHub Actions][gh-actions-docs] |
+|`GITHUB_RUN_ID`                    |                                            | [Set by GitHub Actions][gh-actions-docs] |
+|`GITHUB_REF`                       |                                            | [Set by GitHub Actions][gh-actions-docs] |
 
 [gh-token]: <https://github.com/settings/tokens>
 [node-env-perf]: <https://www.dynatrace.com/blog/the-drastic-effects-of-omitting-node_env-in-your-express-js-applications/>
 [travis-docs]: <https://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables>
+[gh-actions-docs]: <https://docs.github.com/en/free-pro-team@latest/actions/reference/environment-variables>
