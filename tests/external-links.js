@@ -212,7 +212,9 @@ async function updateGithubIssue(urlResults) {
     }
   }
 
-  const workflowRunUrl = `https://github.com/${process.env.GITHUB_REPOSITORY}/runs/${process.env.GITHUB_RUN_ID}`;
+  const workflowRunUrl = `https://github.com/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`;
+  console.log(`GITHUB_RUN_ID: ${process.env.GITHUB_RUN_ID}`);
+  console.log(`GITHUB_ACTION: ${process.env.GITHUB_ACTION}`);
 
   const githubClient = new Octokit({
     auth: `token ${process.env.GITHUB_USER_TOKEN}`,
