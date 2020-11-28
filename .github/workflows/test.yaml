@@ -45,5 +45,5 @@ jobs:
         run: node tests/github/export-diff.js
       - name: Run exports-valid test
         run: node tests/github/exports-valid.js
-      - name: Remind about schema version updates
+      - name: Run schema-version-reminder
         run: node tests/github/schema-version-reminder.js
