@@ -28,6 +28,7 @@ jobs:
   status:
     name: Status
     runs-on: ubuntu-latest
+    continue-on-error: true
     env:
       GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
       GITHUB_PR_HEAD_REF: ${{ github.head_ref }}
@@ -46,10 +47,7 @@ jobs:
         run: npm ci
       - name: Run export-diff test
         run: node tests/github/export-diff.js
-        continue-on-error: true
       - name: Run exports-valid test
         run: node tests/github/exports-valid.js
-        continue-on-error: true
       - name: Run schema-version-reminder
         run: node tests/github/schema-version-reminder.js
-        continue-on-error: true
