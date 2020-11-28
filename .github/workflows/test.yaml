@@ -43,13 +43,14 @@ jobs:
         uses: actions/setup-node@v2.1.2
         with:
           node-version: 14
-      - name: Install dependencies
-        run: |
-          sudo apt-get install python-lxml # for QLC+ fixture-tool-validation export test
-          npm ci
-      - name: Run export-diff test
-        run: node tests/github/export-diff.js
-      - name: Run exports-valid test
-        run: node tests/github/exports-valid.js
-      - name: Run schema-version-reminder
-        run: node tests/github/schema-version-reminder.js
+      - run: git branch -r
+      # - name: Install dependencies
+      #   run: |
+      #     sudo apt-get install python-lxml # for QLC+ fixture-tool-validation export test
+      #     npm ci
+      # - name: Run export-diff test
+      #   run: node tests/github/export-diff.js
+      # - name: Run exports-valid test
+      #   run: node tests/github/exports-valid.js
+      # - name: Run schema-version-reminder
+      #   run: node tests/github/schema-version-reminder.js
