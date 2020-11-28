@@ -24,13 +24,6 @@ const testFixtures = require(`../test-fixtures.json`).map(
 (async () => {
   try {
     await pullRequest.checkEnv();
-  }
-  catch (error) {
-    console.error(error);
-    process.exit(0); // if the environment is not correct, just exit without failing
-  }
-
-  try {
     await pullRequest.init();
     const changedComponents = await pullRequest.fetchChangedComponents();
 
@@ -199,7 +192,7 @@ function getDiffTasks(changedComponents) {
  * @returns {Promise.<Array.<String>>} An array of message lines.
  */
 async function performTask(task) {
-  const output = await diffPluginOutputs(task.currentPluginKey, task.comparePluginKey, process.env.TRAVIS_BRANCH, [task.manufacturerFixture]);
+  const output = await diffPluginOutputs(task.currentPluginKey, task.comparePluginKey, process.env.GITHUB_PR_BASE_REF, [task.manufacturerFixture]);
   const changeFlags = getChangeFlags(output);
   const emoji = getEmoji(changeFlags);
 

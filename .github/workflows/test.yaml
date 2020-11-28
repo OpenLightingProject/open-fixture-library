@@ -25,3 +25,31 @@ jobs:
         run: npm run test:http-status
       - name: Run make-targets-updated test
         run: npm run test:make-targets-updated
+  status:
+    name: Status
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    env:
+      GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
+      GITHUB_PR_HEAD_REF: origin/${{ github.head_ref }}
+      GITHUB_PR_BASE_REF: origin/${{ github.base_ref }}
+      GITHUB_USER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+        with:
+          fetch-depth: 0 # complete history for all branches and tags
+      - name: Setup Node.js v14
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: |
+          sudo apt-get install python-lxml # for QLC+ fixture-tool-validation export test
+          npm ci
+      - name: Run export-diff test
+        run: node tests/github/export-diff.js
+      - name: Run exports-valid test
+        run: node tests/github/exports-valid.js
+      - name: Run schema-version-reminder
+        run: node tests/github/schema-version-reminder.js

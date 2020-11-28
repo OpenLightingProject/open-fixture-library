@@ -1,6 +1,5 @@
 # Open Fixture Library<br><a href="https://open-fixture-library.org/">open-fixture-library.org</a>
 
-[![Travis Status](https://img.shields.io/travis/OpenLightingProject/open-fixture-library/master.svg?label=Travis&logo=travis-ci&logoColor=white)](https://travis-ci.org/OpenLightingProject/open-fixture-library/branches)
 [![Code Quality](https://api.codacy.com/project/badge/Grade/73096865e9f44a7bb246a318ffc8e68b)](https://www.codacy.com/app/FloEdelmann/open-fixture-library)
 [![David Dependency Manager](https://img.shields.io/david/OpenLightingProject/open-fixture-library.svg)](https://david-dm.org/OpenLightingProject/open-fixture-library)
 [![Known Vulnerabilities](https://snyk.io/test/github/FloEdelmann/open-fixture-library/badge.svg)](https://snyk.io/test/github/FloEdelmann/open-fixture-library)
