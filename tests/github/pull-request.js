@@ -6,6 +6,8 @@ const requiredEnvironmentVariables = [
   `GITHUB_USER_TOKEN`,
   `GITHUB_REPOSITORY`,
   `GITHUB_PR_NUMBER`,
+  `GITHUB_PR_HEAD_REF`,
+  `GITHUB_PR_BASE_REF`,
 ];
 
 let githubClient;

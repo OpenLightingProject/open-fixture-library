@@ -226,8 +226,9 @@ export default {
       return `https://github.com/${slug}`;
     },
     branch() {
+      const gitRef = process.env.GITHUB_PR_BASE_REF || process.env.GITHUB_REF || `master`;
       // e.g. for `refs/heads/feature-branch-1`, return `feature-branch-1`
-      return process.env.GITHUB_REF?.split(`/`).pop() || `master`;
+      return gitRef.split(`/`).pop();
     },
     mailtoUrl() {
       const subject = `Feedback for fixture '${this.manufacturerKey}/${this.fixtureKey}'`;

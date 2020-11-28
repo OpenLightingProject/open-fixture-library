@@ -9,6 +9,8 @@ const usedVariables = [
   `NODE_ENV`,
   `PORT`,
   `GITHUB_PR_NUMBER`,
+  `GITHUB_PR_HEAD_REF`,
+  `GITHUB_PR_BASE_REF`,
   `GITHUB_REPOSITORY`,
   `GITHUB_RUN_ID`,
   `GITHUB_REF`,
