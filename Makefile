@@ -76,9 +76,8 @@ cli/make-dereferenced-schemas.js
 
 
 docs/model-api.md: \
-lib/model/*.js \
-jsdoc-config.json
-	npx jsdoc2md --configure jsdoc-config.json --private --files lib/model/*.js > docs/model-api.md
+lib/model/*.js
+	npx jsdoc2md --private --files lib/model/*.js > docs/model-api.md
 	@echo ""
 
 docs/rest-api.md: \
