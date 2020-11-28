@@ -222,20 +222,12 @@ export default {
       };
     },
     githubRepoPath() {
-      const slug = process.env.GITHUB_REPOSITORY
-        || process.env.TRAVIS_PULL_REQUEST_SLUG
-        || process.env.TRAVIS_REPO_SLUG
-        || `OpenLightingProject/open-fixture-library`;
-
+      const slug = process.env.GITHUB_REPOSITORY || `OpenLightingProject/open-fixture-library`;
       return `https://github.com/${slug}`;
     },
     branch() {
-      if (process.env.GITHUB_REF) {
-        // e.g. for `refs/heads/feature-branch-1`, return `feature-branch-1`
-        return process.env.GITHUB_REF.split(`/`).pop();
-      }
-
-      return process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || `master`;
+      // e.g. for `refs/heads/feature-branch-1`, return `feature-branch-1`
+      return process.env.GITHUB_REF?.split(`/`).pop() || `master`;
     },
     mailtoUrl() {
       const subject = `Feedback for fixture '${this.manufacturerKey}/${this.fixtureKey}'`;

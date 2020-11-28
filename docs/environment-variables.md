@@ -1,6 +1,6 @@
 # Environment Variables
 
-We use environment variables for configuration and storing secret credentials. They are set by [the production / test servers](ui.md#deployment) and [Travis](testing.md) and can also be set locally; the easiest way is to edit the (gitignored) `.env` file in the project's root directory:
+We use environment variables for configuration and storing secret credentials. They are set by [the production / test servers](ui.md#deployment) and [CI environments](testing.md) and can also be set locally; the easiest way is to edit the (gitignored) `.env` file in the project's root directory:
 
 ```bash
 MY_ENV_VARIABLE=hello
@@ -22,17 +22,11 @@ Please update these docs and [`cli/debug-env-variables.js`](../cli/debug-env-var
 |`GITHUB_BROKEN_LINKS_ISSUE_NUMBER` | A GitHub issue number                      | Used by [tests/external-links.js](../tests/external-links.js) |
 |`NODE_ENV`                         | `production` or `development` (default)    | Introduced by Express.js, `production` enables caching, minimizing and more optimizations [improving the performance a lot][node-env-perf]. |
 |`PORT`                             | A free port number, defaults to `5000`     | On which port to start the server. |
-|`TRAVIS_BRANCH`                    |                                            | [Set by Travis][travis-docs]       |
-|`TRAVIS_COMMIT`                    |                                            | [Set by Travis][travis-docs]       |
-|`TRAVIS_JOB_WEB_URL`               |                                            | [Set by Travis][travis-docs]       |
-|`TRAVIS_PULL_REQUEST`              |                                            | [Set by Travis][travis-docs]       |
-|`TRAVIS_PULL_REQUEST_SLUG`         |                                            | [Set by Travis][travis-docs]       |
-|`TRAVIS_REPO_SLUG`                 |                                            | [Set by Travis][travis-docs]       |
+|`GITHUB_PR_NUMBER`                 | A GitHub pull request number               | If set, specifies which in which PR this test is running. |
 |`GITHUB_REPOSITORY`                |                                            | [Set by GitHub Actions][gh-actions-docs] |
 |`GITHUB_RUN_ID`                    |                                            | [Set by GitHub Actions][gh-actions-docs] |
 |`GITHUB_REF`                       |                                            | [Set by GitHub Actions][gh-actions-docs] |
 
 [gh-token]: <https://github.com/settings/tokens>
 [node-env-perf]: <https://www.dynatrace.com/blog/the-drastic-effects-of-omitting-node_env-in-your-express-js-applications/>
-[travis-docs]: <https://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables>
 [gh-actions-docs]: <https://docs.github.com/en/free-pro-team@latest/actions/reference/environment-variables>

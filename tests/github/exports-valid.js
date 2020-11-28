@@ -33,13 +33,6 @@ let testErrored = false;
 (async () => {
   try {
     await pullRequest.checkEnv();
-  }
-  catch (error) {
-    console.error(error);
-    process.exit(0); // if the environment is not correct, just exit without failing
-  }
-
-  try {
     await pullRequest.init();
     const changedComponents = await pullRequest.fetchChangedComponents();
 

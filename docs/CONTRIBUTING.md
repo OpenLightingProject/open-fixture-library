@@ -92,5 +92,5 @@ We automatically check code style using [ESLint](https://eslint.org/). Maybe you
 ## Developer tips
 
 * To understand how OFL works, read the [Documentation Overview](README.md) and its related pages. We try to document every part of our software.
-* Run [tests](testing.md) in the `tests/` directory manually – that's way faster than waiting for the automated Travis tests in pull requests.
+* Run [tests](testing.md) in the `tests/` directory manually – that's way faster than waiting for the automated GitHub Actions tests in pull requests.
 * Run `make` to be sure that auto-generated contents are up-to-date.

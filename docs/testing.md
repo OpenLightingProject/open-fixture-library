@@ -3,14 +3,14 @@
 We try to develop unit tests wherever possible. They test specific components of our project by respecting the [F.I.R.S.T Principles of Unit Testing](https://howtodoinjava.com/best-practices/first-principles-for-good-tests/):
 
 * **Fast** – Tests that need too long time would annoy the workflow
-* **Isolated** – Tests should not affect each other. *Travis* helps a lot at fulfilling this principle.
+* **Isolated** – Tests should not affect each other. Continuous Integration testing helps a lot at fulfilling this principle.
 * **Repeatable** – Tests should be independent from the current environment and other side effects.
 * **Self-Validating** – A test should either pass or fail, no manual inspection is needed to determine the state.
 * **Timely** – With new features, also new tests have to be implemented
 
 Tests are located in the [`tests/`](../tests/) directory (surprise!), one test per file. They can be called manually except of the GitHub tests in [`tests/github/`](../tests/github/) (see below).
 
-We use [Travis](https://travis-ci.org/) for continuous integration (CI): It runs our specified tests with every GitHub commit. The [`.travis.yml`](../.travis.yml) file lists each test as a different environment, each of them is set up separately when being executed. The exit code returned by a test script tells Travis whether it has passed or failed: Tests with `0` exit code (in NodeJS: `process.exit(0);`) have passed, all others (non-zero exit codes) have failed.
+We use [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) for continuous integration (CI): It runs our specified tests with every GitHub commit. The exit code returned by a test script tells GitHub Actions whether it has passed or failed: Tests with `0` exit code (in Node.js: `process.exit(0);`) have passed, all others (non-zero exit codes) have failed.
 
 The GitHub repository is configured such that pull requests with failing tests can't be merged. To implement optional tests that don't prevent a PR from being merged, just make it always pass (with exit code `0`) and warn the developers via console output or a GitHub comment.
 
