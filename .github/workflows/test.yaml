@@ -44,7 +44,9 @@ jobs:
         with:
           node-version: 14
       - name: Install dependencies
-        run: npm ci
+        run: |
+          apt install python-lxml # for QLC+ fixture-tool-validation export test
+          npm ci
       - name: Run export-diff test
         run: node tests/github/export-diff.js
       - name: Run exports-valid test
