@@ -31,8 +31,8 @@ jobs:
     continue-on-error: true
     env:
       GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
-      GITHUB_PR_HEAD_REF: ${{ github.event.pull_request.head.ref }}
-      GITHUB_PR_BASE_REF: ${{ github.event.pull_request.base.ref }}
+      GITHUB_PR_HEAD_REF: ${{ github.head_ref }}
+      GITHUB_PR_BASE_REF: ${{ github.base_ref }}
       GITHUB_USER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Checkout
