@@ -211,6 +211,8 @@ module.exports.updateComment = async function updateComment(test) {
       }
       else {
         console.log(`Deleting old test comment at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
+        console.log(`new:`, message);
+        console.log(`old:`, comment.body);
         promises.push(githubClient.issues.deleteComment({
           owner: repoOwner,
           repo: repoName,
