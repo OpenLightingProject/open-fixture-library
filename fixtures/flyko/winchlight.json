@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "winchLight",
+  "shortName": "winchLight",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["NP"],
+    "createDate": "2020-11-30",
+    "lastModifyDate": "2020-11-30"
+  },
+  "comment": "rgb led on a winch",
+  "links": {
+    "manual": [
+      "https://www.flykostage.com/china-supplier-newest-light-kinetic-lights-installation-with-dmx512-winches-p00095p1.html"
+    ]
+  },
+  "physical": {
+    "weight": 10,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Height": {
+      "capability": {
+        "type": "Generic",
+        "comment": "height top--> bottom"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "BuildinProgram": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "BuildinProgram2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "ControllReset": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "standard",
+      "shortName": "Standard",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Strobe Speed",
+        "Height",
+        "Effect Speed",
+        "BuildinProgram",
+        "BuildinProgram2",
+        "ControllReset"
+      ]
+    }
+  ]
+}
