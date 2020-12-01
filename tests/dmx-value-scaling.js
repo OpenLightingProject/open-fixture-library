@@ -1,9 +1,6 @@
 #!/usr/bin/env node
 const chalk = require(`chalk`);
 
-// see https://github.com/standard-things/esm#getting-started
-require = require(`esm`)(module); // eslint-disable-line no-global-assign
-
 const {
   scaleDmxValue,
   scaleDmxRange,

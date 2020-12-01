@@ -1,8 +1,5 @@
 const { inspect } = require(`util`);
 
-// see https://github.com/standard-things/esm#getting-started
-require = require(`esm`)(module); // eslint-disable-line no-global-assign
-
 const getAjvValidator = require(`../lib/ajv-validator.js`);
 const schemaProperties = require(`../lib/schema-properties.js`).default;
 const { manufacturerFromRepository, getResourceFromString } = require(`../lib/model.js`);

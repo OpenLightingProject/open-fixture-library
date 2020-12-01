@@ -1,9 +1,6 @@
 const xml2js = require(`xml2js`);
 const JSZip = require(`jszip`);
 
-// see https://github.com/standard-things/esm#getting-started
-require = require(`esm`)(module); // eslint-disable-line no-global-assign
-
 const { CoarseChannel } = require(`../../lib/model.js`);
 const { scaleDmxValue, scaleDmxRangeIndividually } = require(`../../lib/scale-dmx-values.js`);
 const importJson = require(`../../lib/import-json.js`);

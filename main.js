@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 
-// see https://github.com/standard-things/esm#getting-started
-require = require(`esm`)(module); // eslint-disable-line no-global-assign
-
 const express = require(`express`);
 const compression = require(`compression`);
 const helmet = require(`helmet`);
