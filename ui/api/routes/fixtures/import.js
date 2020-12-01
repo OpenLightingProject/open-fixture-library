@@ -49,7 +49,7 @@ async function importFixture(body) {
   }
 
   const plugin = require(path.join(__dirname, `../../../../plugins`, body.plugin, `import.js`));
-  const { manufacturers, fixtures, warnings } = await plugin.import(
+  const { manufacturers, fixtures, warnings } = await plugin.importFixtures(
     Buffer.from(body.fileContentBase64, `base64`),
     body.fileName,
     body.author,

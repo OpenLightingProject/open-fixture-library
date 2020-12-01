@@ -27,7 +27,7 @@ module.exports.version = `1.3.0`;
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
-module.exports.export = async function exportQlcPlus(fixtures, options) {
+module.exports.exportFixtures = async function exportQlcPlus(fixtures, options) {
   const customGobos = {};
 
   const outFiles = fixtures.map(fixture => {

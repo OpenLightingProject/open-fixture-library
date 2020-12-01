@@ -14,7 +14,7 @@ for (const color of colorNameList) {
  * @param {String} authorName The importer's name.
  * @returns {Promise.<Object, Error>} A Promise resolving to an out object
  */
-module.exports.import = async function importECue(buffer, filename, authorName) {
+module.exports.importFixtures = async function importECue(buffer, filename, authorName) {
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
   const out = {

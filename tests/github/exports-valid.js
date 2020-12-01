@@ -222,7 +222,7 @@ async function getTaskPromise(task) {
   const detailListItems = [];
 
   try {
-    const files = await plugin.export(
+    const files = await plugin.exportFixtures(
       [await fixtureFromRepository(task.manufacturerKey, task.fixtureKey)],
       {
         baseDirectory: path.join(__dirname, `../..`),

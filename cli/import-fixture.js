@@ -34,7 +34,7 @@ if (cliArguments._.length !== 1 || !plugins.importPlugins.includes(cliArguments.
     const buffer = await readFile(filename);
 
     const plugin = require(path.join(__dirname, `../plugins`, cliArguments.plugin, `import.js`));
-    const { manufacturers, fixtures, warnings } = await plugin.import(buffer, filename, authorName);
+    const { manufacturers, fixtures, warnings } = await plugin.importFixtures(buffer, filename, authorName);
 
     /** @type {FixtureCreateResult} */
     const result = {

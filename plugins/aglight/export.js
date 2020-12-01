@@ -21,7 +21,7 @@ module.exports.version = `1.0.0`;
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
-module.exports.export = async function exportAGLight(fixtures, options) {
+module.exports.exportFixtures = async function exportAGLight(fixtures, options) {
   const displayedPluginVersion = options.displayedPluginVersion || module.exports.version;
 
   const library = {

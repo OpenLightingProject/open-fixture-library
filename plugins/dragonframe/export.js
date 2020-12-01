@@ -17,7 +17,7 @@ module.exports.version = `1.0.0`;
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
-module.exports.export = async function exportDragonframe(fixtures, options) {
+module.exports.exportFixtures = async function exportDragonframe(fixtures, options) {
   const usedManufacturers = new Set();
 
   // one JSON file for each fixture

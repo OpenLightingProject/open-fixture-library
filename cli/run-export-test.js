@@ -53,7 +53,7 @@ const pluginExport = require(path.join(__dirname, `../plugins`, cliArguments.plu
 
 (async () => {
   try {
-    const files = await pluginExport.export(
+    const files = await pluginExport.exportFixtures(
       await Promise.all(fixtures),
       {
         baseDirectory: path.join(__dirname, `..`),

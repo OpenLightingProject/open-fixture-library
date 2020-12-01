@@ -19,7 +19,7 @@ module.exports.version = `0.2.0`;
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
-module.exports.export = async function exportDLight(fixtures, options) {
+module.exports.exportFixtures = async function exportDLight(fixtures, options) {
   const deviceFiles = [];
 
   for (const fixture of fixtures) {

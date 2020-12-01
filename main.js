@@ -177,7 +177,7 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
   const plugin = require(path.join(__dirname, `plugins`, pluginKey, `export.js`));
 
   try {
-    const files = await plugin.export(fixtures, {
+    const files = await plugin.exportFixtures(fixtures, {
       baseDirectory: __dirname,
       date: new Date(),
     });

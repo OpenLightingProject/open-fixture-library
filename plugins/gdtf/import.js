@@ -18,7 +18,7 @@ module.exports.version = `0.2.0`;
  * @param {String} authorName The importer's name.
  * @returns {Promise.<Object, Error>} A Promise resolving to an out object
  */
-module.exports.import = async function importGdtf(buffer, filename, authorName) {
+module.exports.importFixtures = async function importGdtf(buffer, filename, authorName) {
   const fixture = {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
   };

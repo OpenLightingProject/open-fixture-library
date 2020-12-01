@@ -18,7 +18,7 @@ module.exports.version = `1.1.0`;
  * @param {String} authorName The importer's name.
  * @returns {Promise.<Object, Error>} A Promise resolving to an out object
  */
-module.exports.import = async function importQlcPlus(buffer, filename, authorName) {
+module.exports.importFixtures = async function importQlcPlus(buffer, filename, authorName) {
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
   const warnings = [];
