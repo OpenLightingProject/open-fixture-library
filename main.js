@@ -138,7 +138,7 @@ app.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request, r
 });
 
 app.use(`/api/v1`, (request, response) => {
-  requireNoCacheInDevelopment(`./ui/api/index.js`)(request, response);
+  require(`./ui/api/index.js`)(request, response);
 });
 
 
@@ -174,7 +174,7 @@ app.listen(process.env.PORT, () => {
  * @returns {Promise} A Promise that is resolved when the response is sent.
  */
 async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDesc) {
-  const plugin = requireNoCacheInDevelopment(path.join(__dirname, `plugins`, pluginKey, `export.js`));
+  const plugin = require(path.join(__dirname, `plugins`, pluginKey, `export.js`));
 
   try {
     const files = await plugin.export(fixtures, {
@@ -212,17 +212,4 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
       .status(500)
       .send(`Exporting ${errorDesc} with ${pluginKey} failed: ${error.toString()}`);
   }
-}
-
-/**
- * Like standard require(...), but invalidates cache first (if not in production environment).
- * @param {String} target The require path, like `./register.json`.
- * @returns {*} The result of standard require(target).
- */
-function requireNoCacheInDevelopment(target) {
-  if (process.env.NODE_ENV !== `production`) {
-    delete require.cache[require.resolve(target)];
-  }
-
-  return require(target);
 }
