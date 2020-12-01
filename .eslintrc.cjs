@@ -1,5 +1,6 @@
 const pluginPresets = {
   'array-func': `all`,
+  import: `recommended`,
   jsdoc: `recommended`,
   markdown: `recommended`,
   nuxt: `recommended`,
@@ -76,6 +77,14 @@ const enabledRuleParameters = {
   'space-infix-ops': [],
   'spaced-comment': [`always`],
   'template-curly-spacing': [],
+
+  // eslint-plugin-import
+  'import/extensions': [`ignorePackages`],
+  'import/no-commonjs': [{ allowConditionalRequire: false }],
+  'import/no-dynamic-require': [],
+  'import/no-unresolved': [{
+    ignore: [`^fs/promises$`],
+  }],
 
   // eslint-plugin-jsdoc
   'jsdoc/check-alignment': [],
@@ -225,6 +234,7 @@ const warnRules = new Set([
 
 const disabledRules = [
   `no-console`,
+  `import/no-duplicates`,
   `jsdoc/newline-after-description`,
   `jsdoc/no-undefined-types`,
   `jsdoc/require-description`,
@@ -306,6 +316,15 @@ module.exports = {
       files: [`**/*.md/*.js`],
       rules: {
         'jsdoc/require-jsdoc': `off`,
+      },
+    },
+    {
+      files: [`**/*.cjs`, `server/**.js`],
+      parserOptions: {
+        sourceType: `script`,
+      },
+      rules: {
+        'import/no-commonjs': `off`,
       },
     },
     {
