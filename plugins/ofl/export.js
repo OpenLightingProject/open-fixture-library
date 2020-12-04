@@ -1,8 +1,7 @@
 const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
+const importJson = require(`../../lib/import-json.js`);
 
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
-
-const manufacturers = require(`../../fixtures/manufacturers.json`);
 
 module.exports.version = require(`../../schemas/fixture.json`).version;
 
@@ -38,6 +37,8 @@ module.exports.exportFixtures = async function exportOfl(fixtures, options) {
       fixtures: [fixture],
     };
   });
+
+  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, __dirname);
 
   // manufacturers.json file
   const usedManufacturerData = {

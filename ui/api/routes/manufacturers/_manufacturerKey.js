@@ -1,5 +1,4 @@
-const manufacturers = require(`../../../../fixtures/manufacturers.json`);
-const register = require(`../../../../fixtures/register.json`);
+const importJson = require(`../../../../lib/import-json.js`);
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 /** @typedef {import('../../index.js').ApiResponse} ApiResponse */
@@ -7,11 +6,12 @@ const register = require(`../../../../fixtures/register.json`);
 /**
  * Returns information about a specific manufacturer.
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
- * @returns {ApiResponse} The handled response.
+ * @returns {Promise.<ApiResponse>} The handled response.
  */
-function getManufacturerByKey({ request }) {
+async function getManufacturerByKey({ request }) {
   const { manufacturerKey } = request.params;
 
+  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, __dirname);
   if (!(manufacturerKey in manufacturers) || manufacturerKey === `$schema`) {
     return {
       statusCode: 404,
@@ -21,6 +21,7 @@ function getManufacturerByKey({ request }) {
     };
   }
 
+  const register = await importJson(`../../../../fixtures/register.json`, __dirname);
   const manufacturer = Object.assign({}, manufacturers[manufacturerKey], {
     key: manufacturerKey,
     color: register.colors[manufacturerKey],

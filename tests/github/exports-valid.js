@@ -3,22 +3,12 @@
 const path = require(`path`);
 
 const { fixtureFromRepository } = require(`../../lib/model.js`);
+const importJson = require(`../../lib/import-json.js`);
 const pullRequest = require(`./pull-request.js`);
 
-const plugins = require(`../../plugins/plugins.json`);
-
-const exportTests = [];
-for (const exportPluginKey of plugins.exportPlugins) {
-  const plugin = plugins.data[exportPluginKey];
-
-  exportTests.push(...plugin.exportTests.map(
-    testKey => [exportPluginKey, testKey],
-  ));
-}
-
-const testFixtures = require(`../test-fixtures.json`).map(
-  fixture => [fixture.man, fixture.key],
-);
+let plugins;
+let exportTests;
+let testFixtures;
 
 let testErrored = false;
 
@@ -35,6 +25,21 @@ let testErrored = false;
     await pullRequest.checkEnv();
     await pullRequest.init();
     const changedComponents = await pullRequest.fetchChangedComponents();
+
+    plugins = await importJson(`../../plugins/plugins.json`, __dirname);
+
+    exportTests = [];
+    for (const exportPluginKey of plugins.exportPlugins) {
+      const plugin = plugins.data[exportPluginKey];
+
+      exportTests.push(...plugin.exportTests.map(
+        testKey => [exportPluginKey, testKey],
+      ));
+    }
+
+    testFixtures = await importJson(`../test-fixtures.json`, __dirname).map(
+      fixture => [fixture.man, fixture.key],
+    );
 
     const tasks = getTasksForModel(changedComponents)
       .concat(getTasksForPlugins(changedComponents))

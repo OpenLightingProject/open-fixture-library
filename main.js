@@ -10,11 +10,13 @@ const compression = require(`compression`);
 const helmet = require(`helmet`);
 const { loadNuxt, build } = require(`nuxt`);
 
-const plugins = require(`./plugins/plugins.json`);
 const { fixtureFromRepository, embedResourcesIntoFixtureJson } = require(`./lib/model.js`);
-const register = require(`./fixtures/register.json`);
+const importJson = require(`./lib/import-json.js`);
 const Fixture = require(`./lib/model/Fixture.js`).default;
 const Manufacturer = require(`./lib/model/Manufacturer.js`).default;
+
+const pluginsPromise = importJson(`./plugins/plugins.json`, __dirname);
+const registerPromise = importJson(`./fixtures/register.json`, __dirname);
 
 // setup environment variables
 require(`./lib/load-env-file.js`);
@@ -47,11 +49,13 @@ app.use(compression({
 app.get(`/download.:format([a-z0-9_.-]+)`, async (request, response, next) => {
   const { format } = request.params;
 
+  const plugins = await pluginsPromise;
   if (!plugins.exportPlugins.includes(format)) {
     next();
     return;
   }
 
+  const register = await registerPromise;
   const fixtures = await Promise.all(
     Object.keys(register.filesystem).filter(
       fixtureKey => !(`redirectTo` in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === `SameAsDifferentBrand`,
@@ -67,6 +71,7 @@ app.get(`/download.:format([a-z0-9_.-]+)`, async (request, response, next) => {
 app.post(`/download-editor.:format([a-z0-9_.-]+)`, async (request, response) => {
   const { format } = request.params;
 
+  const plugins = await pluginsPromise;
   if (!plugins.exportPlugins.includes(format)) {
     response
       .status(500)
@@ -105,6 +110,7 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, async (request, response) => 
 app.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request, response, next) => {
   const { manufacturerKey, fixtureKey, format } = request.params;
 
+  const register = await registerPromise;
   if (!(`${manufacturerKey}/${fixtureKey}` in register.filesystem)) {
     next();
     return;
@@ -125,6 +131,7 @@ app.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request, r
     return;
   }
 
+  const plugins = await pluginsPromise;
   if (!plugins.exportPlugins.includes(format)) {
     next();
     return;

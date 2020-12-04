@@ -10,8 +10,7 @@ const path = require(`path`);
 const chalk = require(`chalk`);
 
 const { fixtureFromRepository } = require(`../lib/model.js`);
-const register = require(`../fixtures/register.json`);
-const manufacturers = require(`../fixtures/manufacturers.json`);
+const importJson = require(`../lib/import-json.js`);
 
 const fixtureFeaturesDirectory = path.join(__dirname, `../lib/fixture-features`);
 const jsonFile = path.join(__dirname, `../tests/test-fixtures.json`);
@@ -34,6 +33,8 @@ const markdownFile = path.join(__dirname, `../tests/test-fixtures.md`);
  */
 
 (async () => {
+  const register = await importJson(`../fixtures/register.json`, __dirname);
+
   const fixtureFeatures = await getFixtureFeatures();
   const featuresUsed = Object.fromEntries(fixtureFeatures.map(feature => [feature.id, 0]));// check which features each fixture supports
 
@@ -101,7 +102,7 @@ const markdownFile = path.join(__dirname, `../tests/test-fixtures.md`);
     await writeFile(jsonFile, `${JSON.stringify(fixtures, null, 2)}\n`, `utf8`);
     console.log(chalk.green(`[Success]`), `Updated ${jsonFile}`);
 
-    await writeFile(markdownFile, getMarkdownCode(fixtures, fixtureFeatures), `utf8`);
+    await writeFile(markdownFile, await getMarkdownCode(fixtures, fixtureFeatures), `utf8`);
     console.log(chalk.green(`[Success]`), `Updated ${markdownFile}`);
   }
   catch (error) {
@@ -151,9 +152,11 @@ async function getFixtureFeatures() {
  * Generates a markdown table presenting the test fixtures and all fix features.
  * @param {Array.<FixtureFeatureResult>} fixtures The fixture feature results.
  * @param {Array.<FixtureFeature>} fixtureFeatures All fixture features.
- * @returns {String} The markdown code to be used in a markdown file.
+ * @returns {Promise.<String>} A Promise that resolves to the markdown code to be used in a markdown file.
  */
-function getMarkdownCode(fixtures, fixtureFeatures) {
+async function getMarkdownCode(fixtures, fixtureFeatures) {
+  const manufacturers = await importJson(`../fixtures/manufacturers.json`, __dirname);
+
   const mdLines = [
     `# Test fixtures`,
     ``,

@@ -1,6 +1,7 @@
 const xml2js = require(`xml2js`);
 
-const oflManufacturers = require(`../../fixtures/manufacturers.json`);
+const importJson = require(`../../lib/import-json.js`);
+
 const qlcplusGoboAliases = require(`../../resources/gobos/aliases/qlcplus.json`);
 
 const {
@@ -34,6 +35,8 @@ module.exports.importFixtures = async function importQlcPlus(buffer, filename, a
 
   const manufacturerKey = slugify(qlcPlusFixture.Manufacturer[0]);
   const fixtureKey = `${manufacturerKey}/${slugify(fixture.name)}`;
+
+  const oflManufacturers = await importJson(`../../fixtures/manufacturers.json`, __dirname);
 
   const manufacturers = {};
   if (!(manufacturerKey in oflManufacturers)) {

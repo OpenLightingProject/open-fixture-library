@@ -7,8 +7,8 @@ const Ajv = require(`ajv`);
 const minimist = require(`minimist`);
 
 const getAjvErrorMessages = require(`../lib/get-ajv-error-messages.js`);
-const manufacturerSchema = require(`../schemas/dereferenced/manufacturers.json`);
 const { checkFixture, checkUniqueness } = require(`./fixture-valid.js`);
+const importJson = require(`../lib/import-json.js`);
 
 
 const cliArguments = minimist(process.argv.slice(2), {
@@ -145,6 +145,7 @@ async function checkManufacturers() {
   try {
     const data = await readFile(filename, `utf8`);
     const manufacturers = JSON.parse(data);
+    const manufacturerSchema = await importJson(`../schemas/dereferenced/manufacturers.json`, __dirname);
     const validate = (new Ajv({ verbose: true })).compile(manufacturerSchema);
     const valid = validate(manufacturers);
     if (!valid) {

@@ -4,9 +4,9 @@ const JSZip = require(`jszip`);
 // see https://github.com/standard-things/esm#getting-started
 require = require(`esm`)(module); // eslint-disable-line no-global-assign
 
-const manufacturers = require(`../../fixtures/manufacturers.json`);
 const { CoarseChannel } = require(`../../lib/model.js`);
 const { scaleDmxValue, scaleDmxRangeIndividually } = require(`../../lib/scale-dmx-values.js`);
+const importJson = require(`../../lib/import-json.js`);
 const { gdtfAttributes, gdtfUnits } = require(`./gdtf-attributes.js`);
 const { getRgbColorFromGdtfColor, followXmlNodeReference } = require(`./gdtf-helpers.js`);
 
@@ -47,6 +47,8 @@ module.exports.importFixtures = async function importGdtf(buffer, filename, auth
 
   const manufacturerKey = slugify(gdtfFixture.$.Manufacturer);
   const fixtureKey = `${manufacturerKey}/${slugify(fixture.name)}`;
+
+  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, __dirname);
 
   let manufacturer;
   if (manufacturerKey in manufacturers) {

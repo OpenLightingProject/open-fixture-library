@@ -1,5 +1,4 @@
-const manufacturers = require(`../../../../fixtures/manufacturers.json`);
-import register from '../../../../fixtures/register.json';
+const importJson = require(`../../../../lib/import-json.js`);
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 /** @typedef {import('../../index.js').ApiResponse} ApiResponse */
@@ -7,9 +6,12 @@ import register from '../../../../fixtures/register.json';
 /**
  * Returns general information about all manufacturers.
  * @param {OpenApiBackendContext} context Passed from OpenAPI Backend.
- * @returns {ApiResponse} The handled response.
+ * @returns {Promise.<ApiResponse>} The handled response.
  */
-function getManufacturers(context) {
+async function getManufacturers(context) {
+  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, __dirname);
+  const register = await importJson(`../../../../fixtures/register.json`, __dirname);
+
   const manufacturerData = {};
 
   for (const manufacturerKey of Object.keys(manufacturers)) {

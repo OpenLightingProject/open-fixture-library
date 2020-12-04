@@ -9,14 +9,18 @@ const path = require(`path`);
 const chalk = require(`chalk`);
 
 const { Register } = require(`../lib/register.js`);
-const manufacturers = require(`../fixtures/manufacturers.json`);
+const importJson = require(`../lib/import-json.js`);
 
-const register = new Register(manufacturers);
+let register;
+let manufacturers;
 
 const fixturesPath = path.join(__dirname, `../fixtures`);
 
 (async () => {
   try {
+    manufacturers = await importJson(`../fixtures/manufacturers.json`, __dirname);
+    register = new Register(manufacturers);
+
     await addFixturesToRegister();
   }
   catch (readError) {

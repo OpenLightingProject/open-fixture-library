@@ -3,15 +3,10 @@
 const path = require(`path`);
 
 const diffPluginOutputs = require(`../../lib/diff-plugin-outputs.js`);
-const plugins = require(`../../plugins/plugins.json`);
-const exportPlugins = plugins.exportPlugins.filter(pluginKey => pluginKey !== `ofl`); // don't diff (essentially) the source files
+const importJson = require(`../../lib/import-json.js`);
 const pullRequest = require(`./pull-request.js`);
 
 require(`../../lib/load-env-file.js`);
-
-const testFixtures = require(`../test-fixtures.json`).map(
-  fixture => `${fixture.man}/${fixture.key}`,
-);
 
 /**
  * @typedef {Object} Task
@@ -27,7 +22,7 @@ const testFixtures = require(`../test-fixtures.json`).map(
     await pullRequest.init();
     const changedComponents = await pullRequest.fetchChangedComponents();
 
-    const tasks = getDiffTasks(changedComponents);
+    const tasks = await getDiffTasks(changedComponents);
 
     if (tasks.length === 0) {
       await pullRequest.updateComment({
@@ -75,15 +70,23 @@ const testFixtures = require(`../test-fixtures.json`).map(
 
 /**
  * @param {Object} changedComponents The PR's changed OFL components.
- * @returns {Array.<Task>} An array of diff tasks to perform.
+ * @returns {Promise.<Array.<Task>>} A Promise that resolves to an array of diff tasks to perform.
  */
-function getDiffTasks(changedComponents) {
-  const usablePlugins = exportPlugins.filter(plugin => !changedComponents.added.exports.includes(plugin));
+async function getDiffTasks(changedComponents) {
+  const testFixtures = (await importJson(`../test-fixtures.json`, __dirname)).map(
+    fixture => `${fixture.man}/${fixture.key}`,
+  );
+
+  const plugins = await importJson(`../../plugins/plugins.json`, __dirname);
+  const usablePlugins = plugins.exportPlugins.filter(
+    // don't diff new plugins and the ofl plugin (which essentially exports the source files)
+    pluginKey => !changedComponents.added.exports.includes(pluginKey) && pluginKey !== `ofl`,
+  );
   const addedFixtures = new Set(changedComponents.added.fixtures.map(([manufacturer, key]) => `${manufacturer}/${key}`));
   const usableTestFixtures = testFixtures.filter(testFixture => !addedFixtures.has(testFixture));
 
   /** @type {Array.<Task>} */
-  return getTasksForModel().concat(getTasksForPlugins(), getTasksForFixtures())
+  return getTasksForModel().concat(await getTasksForPlugins(), getTasksForFixtures())
     .filter((task, index, array) => {
       const firstEqualTask = array.find(otherTask =>
         task.manufacturerFixture === otherTask.manufacturerFixture &&
@@ -133,9 +136,9 @@ function getDiffTasks(changedComponents) {
   }
 
   /**
-   * @returns {Array.<Task>} What export diff tasks have to be done due to changes in plugins. May be empty.
+   * @returns {Promise.<Array.<Task>>} A Promise that resolves to what export diff tasks have to be done due to changes in plugins. May be empty.
    */
-  function getTasksForPlugins() {
+  async function getTasksForPlugins() {
     const tasks = [];
 
     const changedPlugins = changedComponents.modified.exports;
@@ -150,7 +153,7 @@ function getDiffTasks(changedComponents) {
     const addedPlugins = changedComponents.added.exports;
     const removedPlugins = changedComponents.removed.exports;
     for (const addedPlugin of addedPlugins) {
-      const pluginData = require(`../../plugins/${addedPlugin}/plugin.json`);
+      const pluginData = await importJson(`../../plugins/${addedPlugin}/plugin.json`, __dirname);
 
       if (pluginData.previousVersions) {
         const previousVersions = Object.keys(pluginData.previousVersions);

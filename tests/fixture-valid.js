@@ -4,13 +4,10 @@ const Ajv = require(`ajv`);
 // see https://github.com/standard-things/esm#getting-started
 require = require(`esm`)(module); // eslint-disable-line no-global-assign
 
-const register = require(`../fixtures/register.json`);
-const plugins = require(`../plugins/plugins.json`);
-const fixtureSchema = require(`../schemas/dereferenced/fixture.json`);
-const fixtureRedirectSchema = require(`../schemas/dereferenced/fixture-redirect.json`);
 const schemaProperties = require(`../lib/schema-properties.js`).default;
 const { getResourceFromString } = require(`../lib/model.js`);
 const getAjvErrorMessages = require(`../lib/get-ajv-error-messages.js`);
+const importJson = require(`../lib/import-json.js`);
 
 /** @typedef {import('../lib/model/AbstractChannel.js').default} AbstractChannel */
 /** @typedef {import('../lib/model/Capability.js').default} Capability */
@@ -32,8 +29,14 @@ const ajv = new Ajv({
   },
   verbose: true,
 });
-const schemaValidate = ajv.compile(fixtureSchema);
-const redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
+
+let initialized = false;
+let register;
+let plugins;
+let fixtureSchema;
+let fixtureRedirectSchema;
+let schemaValidate;
+let redirectSchemaValidate;
 
 /**
  * Checks that a given fixture JSON object is valid.
@@ -44,6 +47,18 @@ const redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
  * @returns {Promise.<ResultData>} A Promise that resolves to the result object containing errors and warnings, if any.
  */
 async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = null) {
+  if (!initialized) {
+    register = await importJson(`../fixtures/register.json`, __dirname);
+    plugins = await importJson(`../plugins/plugins.json`, __dirname);
+    fixtureSchema = await importJson(`../schemas/dereferenced/fixture.json`, __dirname);
+    fixtureRedirectSchema = await importJson(`../schemas/dereferenced/fixture-redirect.json`, __dirname);
+
+    schemaValidate = ajv.compile(fixtureSchema);
+    redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
+
+    initialized = true;
+  }
+
   /**
    * @typedef {Object} ResultData
    * @property {Array.<String>} errors All errors of this fixture.
