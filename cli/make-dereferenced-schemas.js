@@ -5,6 +5,8 @@ const path = require(`path`);
 const chalk = require(`chalk`);
 const schemaRefParser = require(`@apidevtools/json-schema-ref-parser`);
 
+const importJson = require(`../lib/import-json.js`);
+
 const schemaDirectory = path.join(__dirname, `../schemas/`);
 
 (async () => {
@@ -16,7 +18,7 @@ const schemaDirectory = path.join(__dirname, `../schemas/`);
 
   process.chdir(schemaDirectory);
   for (const schemaFile of schemaFiles) {
-    const schema = require(path.join(schemaDirectory, schemaFile));
+    const schema = await importJson(schemaFile, schemaDirectory);
     const dereferencedSchemaFile = path.join(schemaDirectory, `dereferenced`, schemaFile);
 
     try {
