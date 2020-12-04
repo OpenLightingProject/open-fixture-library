@@ -2,7 +2,9 @@
  * @fileoverview Channel and capability presets, together with functions to export or import them.
  */
 
-const qlcplusGoboAliases = require(`../../resources/gobos/aliases/qlcplus.json`);
+const importJson = require(`../../lib/import-json.js`);
+
+const qlcplusGoboAliasesPromise = importJson(`../../resources/gobos/aliases/qlcplus.json`, __dirname);
 
 
 // ########## Helper functions ##########
@@ -21,7 +23,7 @@ const exportHelpers = {
   isBeamAngle: capability => (capability.type === `BeamAngle` || capability.type === `Zoom`) && capability.angle !== null,
   isWheelChannel: channel => channel.capabilities.some(capability => [`WheelSlot`, `WheelRotation`].includes(capability.type)),
   isAllowedInWheels: capability => [`WheelSlot`, `WheelShake`, `WheelSlotRotation`, `WheelRotation`, `Effect`, `NoFunction`].includes(capability.type),
-  getGoboResource: capability => {
+  getGoboResource: async capability => {
     if (capability.isSlotType(`Open`)) {
       return `Others/open.svg`;
     }
@@ -30,6 +32,7 @@ const exportHelpers = {
       const resource = capability.wheelSlot[0].resource;
 
       if (resource) {
+        const qlcplusGoboAliases = await qlcplusGoboAliasesPromise;
         const qlcplusGoboAlias = Object.keys(qlcplusGoboAliases).find(
           alias => qlcplusGoboAliases[alias] === resource.key,
         );
@@ -1028,9 +1031,9 @@ const capabilityPresets = {
 
 /**
  * @param {Capability} capability The OFL capability object.
- * @returns {CapabilityPreset|null} The QLC+ capability preset or null, if there is no suitable one.
+ * @returns {Promise.<CapabilityPreset|null>} A Promise that resolves to the QLC+ capability preset or null, if there is no suitable one.
  */
-function getCapabilityPreset(capability) {
+async function getCapabilityPreset(capability) {
   const foundPresetName = Object.keys(capabilityPresets).find(
     presetName => capabilityPresets[presetName].isApplicable(capability),
   );
@@ -1042,7 +1045,7 @@ function getCapabilityPreset(capability) {
   const preset = capabilityPresets[foundPresetName];
   return {
     presetName: foundPresetName,
-    res1: `exportRes1` in preset ? preset.exportRes1(capability) : null,
+    res1: `exportRes1` in preset ? await preset.exportRes1(capability) : null,
     res2: `exportRes2` in preset ? preset.exportRes2(capability) : null,
   };
 }

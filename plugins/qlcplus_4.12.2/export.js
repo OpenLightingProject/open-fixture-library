@@ -30,7 +30,7 @@ module.exports.version = `1.3.0`;
 module.exports.exportFixtures = async function exportQlcPlus(fixtures, options) {
   const customGobos = {};
 
-  const outFiles = fixtures.map(fixture => {
+  const outFilePromises = fixtures.map(async fixture => {
     const xml = xmlbuilder.begin()
       .declaration(`1.0`, `UTF-8`)
       .element({
@@ -48,7 +48,7 @@ module.exports.exportFixtures = async function exportQlcPlus(fixtures, options) 
       });
 
     for (const channel of fixture.coarseChannels) {
-      addChannel(xml, channel, customGobos);
+      await addChannel(xml, channel, customGobos);
     }
 
     const panMax = getPanTiltMax(`Pan`, fixture.coarseChannels);
@@ -91,14 +91,14 @@ module.exports.exportFixtures = async function exportQlcPlus(fixtures, options) 
       ? Buffer.from(oflResource.imageData, `base64`)
       : oflResource.imageData;
 
-    outFiles.push({
+    outFilePromises.push(Promise.resolve({
       name: `gobos/${qlcplusResourceName}`,
       content: fileContent,
       mimeType: oflResource.imageMimeType,
-    });
+    }));
   });
 
-  return outFiles;
+  return Promise.all(outFilePromises);
 };
 
 /**
@@ -106,7 +106,7 @@ module.exports.exportFixtures = async function exportQlcPlus(fixtures, options) 
  * @param {CoarseChannel} channel The OFL channel object.
  * @param {Object} customGobos An object where gobo resources not included in QLC+ can be added to.
  */
-function addChannel(xml, channel, customGobos) {
+async function addChannel(xml, channel, customGobos) {
   const channelType = getChannelType(channel.type);
 
   const xmlChannel = xml.element({
@@ -138,11 +138,13 @@ function addChannel(xml, channel, customGobos) {
     }
 
     for (const capability of channel.capabilities) {
-      addCapability(xmlChannel, capability, customGobos);
+      await addCapability(xmlChannel, capability, customGobos);
     }
   }
 
-  channel.fineChannels.forEach(fineChannel => addFineChannel(xml, fineChannel, customGobos));
+  for (const fineChannel of channel.fineChannels) {
+    await addFineChannel(xml, fineChannel, customGobos);
+  }
 }
 
 /**
@@ -150,7 +152,7 @@ function addChannel(xml, channel, customGobos) {
  * @param {FineChannel} fineChannel The OFL fine channel object.
  * @param {Object} customGobos An object where gobo resources not included in QLC+ can be added to.
  */
-function addFineChannel(xml, fineChannel, customGobos) {
+async function addFineChannel(xml, fineChannel, customGobos) {
   const xmlFineChannel = xml.element({
     Channel: {
       '@Name': fineChannel.uniqueName,
@@ -170,7 +172,7 @@ function addFineChannel(xml, fineChannel, customGobos) {
       },
     });
 
-    addCapability(xmlFineChannel, new Capability({
+    await addCapability(xmlFineChannel, new Capability({
       dmxRange: [0, 255],
       type: `Generic`,
       comment: `Fine^${fineChannel.resolution - 1} adjustment for ${fineChannel.coarseChannel.uniqueName}`,
@@ -201,7 +203,7 @@ function addFineChannel(xml, fineChannel, customGobos) {
     });
   }
 
-  addCapability(xmlFineChannel, new Capability({
+  await addCapability(xmlFineChannel, new Capability({
     dmxRange: [0, 255],
     type: `Generic`,
     comment: `Fine adjustment for ${fineChannel.coarseChannel.uniqueName}`,
@@ -213,7 +215,7 @@ function addFineChannel(xml, fineChannel, customGobos) {
  * @param {Capability} capability The OFL capability object.
  * @param {Object} customGobos An object where gobo resources not included in QLC+ can be added to.
  */
-function addCapability(xmlChannel, capability, customGobos) {
+async function addCapability(xmlChannel, capability, customGobos) {
   const dmxRange = capability.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
 
   const xmlCapability = xmlChannel.element({
@@ -228,7 +230,7 @@ function addCapability(xmlChannel, capability, customGobos) {
     presetName: `Alias`,
     res1: null,
     res2: null,
-  } : getCapabilityPreset(capability);
+  } : await getCapabilityPreset(capability);
 
   if (preset !== null) {
     xmlCapability.attribute(`Preset`, preset.presetName);
@@ -246,7 +248,7 @@ function addCapability(xmlChannel, capability, customGobos) {
     }
   }
   else {
-    addCapabilityLegacyAttributes(xmlCapability, capability, customGobos);
+    await addCapabilityLegacyAttributes(xmlCapability, capability, customGobos);
   }
 }
 
@@ -255,7 +257,7 @@ function addCapability(xmlChannel, capability, customGobos) {
  * @param {Capability} capability The OFL capability object.
  * @param {Object} customGobos An object where gobo resources not included in QLC+ can be added to.
  */
-function addCapabilityLegacyAttributes(xmlCapability, capability, customGobos) {
+async function addCapabilityLegacyAttributes(xmlCapability, capability, customGobos) {
   if (capability.colors !== null && capability.colors.allColors.length <= 2) {
     xmlCapability.attribute(`Color`, capability.colors.allColors[0]);
 
@@ -264,7 +266,7 @@ function addCapabilityLegacyAttributes(xmlCapability, capability, customGobos) {
     }
   }
 
-  const goboResource = exportHelpers.getGoboResource(capability);
+  const goboResource = await exportHelpers.getGoboResource(capability);
   if (goboResource) {
     xmlCapability.attribute(`Res`, goboResource);
 

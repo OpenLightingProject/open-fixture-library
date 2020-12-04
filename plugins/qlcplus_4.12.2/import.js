@@ -2,7 +2,7 @@ const xml2js = require(`xml2js`);
 
 const importJson = require(`../../lib/import-json.js`);
 
-const qlcplusGoboAliases = require(`../../resources/gobos/aliases/qlcplus.json`);
+const qlcplusGoboAliasesPromise = importJson(`../../resources/gobos/aliases/qlcplus.json`, __dirname);
 
 const {
   getCapabilityFromChannelPreset,
@@ -74,7 +74,7 @@ module.exports.importFixtures = async function importQlcPlus(buffer, filename, a
   addOflFixturePhysical(fixture, qlcPlusFixture);
 
   fixture.matrix = getOflMatrix(qlcPlusFixture);
-  fixture.wheels = getOflWheels(qlcPlusFixture);
+  fixture.wheels = await getOflWheels(qlcPlusFixture);
   fixture.availableChannels = {};
   fixture.templateChannels = {};
 
@@ -163,17 +163,18 @@ const slotTypeFunctions = {
   },
   Gobo: {
     isSlotType: (capability, channelGroup, capabilityPreset) => (capabilityPreset ? capabilityPreset === `GoboMacro` : channelGroup === `Gobo`),
-    addSlotProperties: (capability, slot) => {
+    addSlotProperties: async (capability, slot) => {
       const goboResource = capability.$.Res1 || capability.$.Res || null;
       let useResourceName = false;
 
       if (goboResource) {
+        const qlcplusGoboAliases = await qlcplusGoboAliasesPromise;
         const goboKey = qlcplusGoboAliases[goboResource];
 
         if (goboKey) {
           slot.resource = `gobos/${goboKey}`;
 
-          const resource = require(`../../resources/gobos/${goboKey}.json`);
+          const resource = await importJson(`../../resources/gobos/${goboKey}.json`, __dirname);
 
           if (resource.name === capability._) {
             useResourceName = true;
@@ -226,12 +227,12 @@ const slotTypeFunctions = {
 /**
  * Try to extract (guessed) wheels from all channels / capabilities.
  * @param {Object} qlcPlusFixture The QLC+ fixture object.
- * @returns {Object|undefined} The OFL wheels object or undefined if there are no wheels.
+ * @returns {Promise.<Object|undefined>} A Promise that resolves to the OFL wheels object or undefined if there are no wheels.
  */
-function getOflWheels(qlcPlusFixture) {
+async function getOflWheels(qlcPlusFixture) {
   const wheels = {};
 
-  qlcPlusFixture.Channel.forEach(channel => {
+  const wheelChannels = qlcPlusFixture.Channel.filter(channel => {
     const channelName = channel.$.Name;
 
     const hasGoboPresetCapability = (channel.Capability || []).some(
@@ -241,33 +242,35 @@ function getOflWheels(qlcPlusFixture) {
     const isWheelChannel = /wheel\b/i.test(channelName) || hasGoboPresetCapability;
     const isRotationChannel = /(rotation|index)/i.test(channelName) || (`Group` in channel && channel.Group[0]._ === `Speed`);
 
-    if (isWheelChannel && !isRotationChannel) {
-      wheels[channelName] = {
-        slots: getSlots(channel),
-      };
-    }
+    return isWheelChannel && !isRotationChannel;
   });
+
+  for (const channel of wheelChannels) {
+    wheels[channel.$.Name] = {
+      slots: await getSlots(channel),
+    };
+  }
 
   return Object.keys(wheels).length > 0 ? wheels : undefined;
 
 
   /**
    * @param {Object} qlcPlusChannel The QLC+ channel object.
-   * @returns {Array.<Object>} An array of OFL slot objects.
+   * @returns {Promise.<Array.<Object>>} A Promise that resolves to an array of OFL slot objects.
    */
-  function getSlots(qlcPlusChannel) {
+  async function getSlots(qlcPlusChannel) {
     const slots = [];
 
-    (qlcPlusChannel.Capability || []).forEach(capability => {
+    for (const capability of (qlcPlusChannel.Capability || [])) {
       if (/\bc?cw\b|rainbow|stop|(?:counter|anti)?[ -]?clockwise|rotat|spin/i.test(capability._)) {
         // skip rotation capabilities
-        return;
+        continue;
       }
 
       const capabilityPreset = capability.$.Preset || ``;
 
       if (/^(GoboShakeMacro|ColorWheelIndex)$|^Rotation/.test(capabilityPreset)) {
-        return;
+        continue;
       }
 
       const foundSlotType = Object.keys(slotTypeFunctions).find(
@@ -278,10 +281,10 @@ function getOflWheels(qlcPlusFixture) {
         type: foundSlotType,
       };
 
-      slotTypeFunctions[foundSlotType].addSlotProperties(capability, slot);
+      await slotTypeFunctions[foundSlotType].addSlotProperties(capability, slot);
 
       slots.push(slot);
-    });
+    }
 
     return slots;
   }
