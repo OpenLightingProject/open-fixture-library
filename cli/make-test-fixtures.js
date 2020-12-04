@@ -55,7 +55,7 @@ const markdownFile = path.join(__dirname, `../tests/test-fixtures.md`);
 
     // check all features
     for (const fixtureFeature of fixtureFeatures) {
-      if (fixtureFeature.hasFeature(fixture)) {
+      if (await fixtureFeature.hasFeature(fixture)) {
         fixtureResult.features.push(fixtureFeature.id);
         featuresUsed[fixtureFeature.id]++;
       }
