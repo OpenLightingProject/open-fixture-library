@@ -8,11 +8,13 @@ const express = require(`express`);
 const compression = require(`compression`);
 const helmet = require(`helmet`);
 const { loadNuxt, build } = require(`nuxt`);
+const JSZip = require(`jszip`);
 
 const { fixtureFromRepository, embedResourcesIntoFixtureJson } = require(`./lib/model.js`);
 const importJson = require(`./lib/import-json.js`);
 const Fixture = require(`./lib/model/Fixture.js`).default;
 const Manufacturer = require(`./lib/model/Manufacturer.js`).default;
+const apiRouter = require(`./ui/api/index.js`);
 
 const pluginsPromise = importJson(`./plugins/plugins.json`, __dirname);
 const registerPromise = importJson(`./fixtures/register.json`, __dirname);
@@ -142,9 +144,7 @@ app.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request, r
   downloadFixtures(response, format, fixtures, zipName, errorDesc);
 });
 
-app.use(`/api/v1`, (request, response) => {
-  require(`./ui/api/index.js`)(request, response);
-});
+app.use(`/api/v1`, apiRouter);
 
 
 
@@ -197,7 +197,6 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
     }
 
     // else zip all together
-    const JSZip = require(`jszip`);
     const archive = new JSZip();
     for (const file of files) {
       archive.file(file.name, file.content);
