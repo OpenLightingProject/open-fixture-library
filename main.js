@@ -10,8 +10,6 @@ const compression = require(`compression`);
 const helmet = require(`helmet`);
 const { loadNuxt, build } = require(`nuxt`);
 
-const robotsTxtGenerator = require(`./ui/express-middleware/robots-txt.js`);
-
 const packageJson = require(`./package.json`);
 const plugins = require(`./plugins/plugins.json`);
 const { fixtureFromRepository, embedResourcesIntoFixtureJson } = require(`./lib/model.js`);
@@ -50,8 +48,6 @@ app.use(compression({
 
 
 // ROUTES
-
-app.get(`/robots.txt`, robotsTxtGenerator);
 
 app.get(`/download.:format([a-z0-9_.-]+)`, async (request, response, next) => {
   const { format } = request.params;

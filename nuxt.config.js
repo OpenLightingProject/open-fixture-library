@@ -1,5 +1,8 @@
 import path from 'path';
 
+import plugins from './plugins/plugins.json';
+import packageJson from './package.json';
+
 export default {
   srcDir: `./ui/`,
   modules: [
@@ -7,6 +10,7 @@ export default {
       browserBaseURL: `/`,
     }],
     `cookie-universal-nuxt`,
+    `@nuxtjs/robots`,
   ],
   plugins: [
     `~/plugins/embetty-vue.js`,
@@ -226,6 +230,21 @@ export default {
       titleTemplate,
       meta,
       link,
+    };
+  },
+  robots() {
+    if (process.env.ALLOW_SEARCH_INDEXING !== `allowed`) {
+      return {
+        UserAgent: `*`,
+        Disallow: `/`,
+      };
+    }
+
+    return {
+      UserAgent: `*`,
+      Disallow: plugins.exportPlugins.map(pluginKey => `/*.${pluginKey}$`),
+      Allow: `/`,
+      Sitemap: `${packageJson.homepage}sitemap.xml`,
     };
   },
 };
