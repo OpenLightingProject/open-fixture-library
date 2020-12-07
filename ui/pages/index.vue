@@ -92,7 +92,6 @@
 </template>
 
 <script>
-import packageJson from '../../package.json';
 import register from '../../fixtures/register.json';
 
 import DownloadButton from '../components/DownloadButton.vue';
@@ -126,10 +125,10 @@ export default {
         '@context': `http://schema.org`,
         '@type': `WebSite`,
         'name': `Open Fixture Library`,
-        'url': packageJson.homepage,
+        'url': process.env.WEBSITE_URL,
         'potentialAction': {
           '@type': `SearchAction`,
-          'target': `${packageJson.homepage}search?q={search_term_string}`,
+          'target': `${process.env.WEBSITE_URL}search?q={search_term_string}`,
           'query-input': `required name=search_term_string`,
         },
       },
@@ -138,8 +137,8 @@ export default {
         '@type': `Organization`,
         'name': `Open Fixture Library`,
         'description': `Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!`,
-        'url': packageJson.homepage,
-        'logo': `${packageJson.homepage}ofl-logo.svg`,
+        'url': process.env.WEBSITE_URL,
+        'logo': `${process.env.WEBSITE_URL}ofl-logo.svg`,
       },
     };
   },

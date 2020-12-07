@@ -16,16 +16,12 @@ const register = require(`./fixtures/register.json`);
 const Fixture = require(`./lib/model/Fixture.js`).default;
 const Manufacturer = require(`./lib/model/Manufacturer.js`).default;
 
-
+// setup environment variables
 require(`./lib/load-env-file.js`);
+process.env.PORT = process.env.PORT || 5000;
+process.env.WEBSITE_URL = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT}/`;
 
 const app = express();
-
-// setup port
-if (!process.env.PORT) {
-  process.env.PORT = 5000;
-}
-app.set(`port`, process.env.PORT);
 
 // set various security HTTP headers
 app.use(helmet({
