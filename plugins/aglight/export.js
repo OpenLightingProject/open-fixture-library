@@ -30,7 +30,7 @@ module.exports.export = async function exportAGLight(fixtures, options) {
       const jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
       jsonData.fixtureKey = fixture.key;
       jsonData.manufacturer = manufacturers[fixture.manufacturer.key];
-      jsonData.oflURL = `https://open-fixture-library.org/${fixture.manufacturer.key}/${fixture.key}`;
+      jsonData.oflURL = fixture.url;
 
       if (!jsonData.availableChannels) {
         jsonData.availableChannels = {};

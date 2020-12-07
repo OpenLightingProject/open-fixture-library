@@ -30,7 +30,7 @@ module.exports.export = async function exportDragonframe(fixtures, options) {
 
     jsonData.fixtureKey = fixture.key;
     jsonData.manufacturerKey = fixture.manufacturer.key;
-    jsonData.oflURL = `https://open-fixture-library.org/${fixture.manufacturer.key}/${fixture.key}`;
+    jsonData.oflURL = fixture.url;
 
     return {
       name: `${fixture.manufacturer.key}/${fixture.key}.json`,

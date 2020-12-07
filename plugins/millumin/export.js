@@ -56,7 +56,7 @@ module.exports.export = async function exportMillumin(fixtures, options) {
 
     milluminJson.fixtureKey = fixture.key;
     milluminJson.manufacturerKey = fixture.manufacturer.key;
-    milluminJson.oflURL = `https://open-fixture-library.org/${fixture.manufacturer.key}/${fixture.key}`;
+    milluminJson.oflURL = fixture.url;
 
     return {
       name: `${fixture.manufacturer.key}/${fixture.key}.json`,
