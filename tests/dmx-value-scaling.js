@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-const chalk = require(`chalk`);
+import chalk from 'chalk';
 
-const {
+import {
   scaleDmxValue,
   scaleDmxRange,
-} = require(`../lib/scale-dmx-values.js`);
+} from '../lib/scale-dmx-values.js';
 
 
 let errorCount = 0;

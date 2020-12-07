@@ -1,13 +1,9 @@
 #!/usr/bin/env node
 
-const path = require(`path`);
-const {
-  readdir,
-  stat,
-  writeFile,
-} = require(`fs/promises`);
-const chalk = require(`chalk`);
-const importJson = require(`../lib/import-json.js`);
+import path from 'path';
+import { readdir, writeFile } from 'fs/promises';
+import chalk from 'chalk';
+import importJson from '../lib/import-json.js';
 
 const plugins = {
   importPlugins: [],
@@ -17,10 +13,10 @@ const plugins = {
 
 const allPreviousVersions = {};
 
-const pluginDirectory = path.join(__dirname, `../plugins/`);
+const pluginDirectoryUrl = new URL(`../plugins/`, import.meta.url);
 
 (async () => {
-  const directoryEntries = await readdir(pluginDirectory, { withFileTypes: true });
+  const directoryEntries = await readdir(pluginDirectoryUrl, { withFileTypes: true });
   const pluginKeys = directoryEntries.filter(entry => entry.isDirectory()).map(entry => entry.name);
 
   for (const pluginKey of pluginKeys) {
@@ -46,11 +42,11 @@ const pluginDirectory = path.join(__dirname, `../plugins/`);
     Object.keys(plugins.data).sort().map(key => [key, plugins.data[key]]),
   );
 
-  const filename = path.join(pluginDirectory, `plugins.json`);
+  const fileUrl = new URL(`plugins.json`, pluginDirectoryUrl);
 
   try {
-    await writeFile(filename, `${JSON.stringify(plugins, null, 2)}\n`, `utf8`);
-    console.log(chalk.green(`[Success]`), `Updated plugin data file`, filename);
+    await writeFile(fileUrl, `${JSON.stringify(plugins, null, 2)}\n`, `utf8`);
+    console.log(chalk.green(`[Success]`), `Updated plugin data file`, fileUrl.pathname);
     process.exit(0);
   }
   catch (error) {
@@ -66,7 +62,7 @@ const pluginDirectory = path.join(__dirname, `../plugins/`);
  */
 async function readPluginJson(pluginKey) {
   try {
-    const pluginJson = await importJson(`${pluginKey}/plugin.json`, pluginDirectory);
+    const pluginJson = await importJson(`${pluginKey}/plugin.json`, pluginDirectoryUrl);
     plugins.data[pluginKey].name = pluginJson.name;
 
     if (pluginJson.previousVersions) {
@@ -90,20 +86,18 @@ async function readPluginJson(pluginKey) {
  * @param {String} pluginKey The plugin key.
  */
 async function readPluginImport(pluginKey) {
-  const importPath = path.join(pluginDirectory, pluginKey, `import.js`);
   try {
-    await stat(importPath);
-    const importPlugin = require(importPath);
+    const importPlugin = await import(new URL(`${pluginKey}/import.js`, pluginDirectoryUrl));
     plugins.importPlugins.push(pluginKey);
     plugins.data[pluginKey].importPluginVersion = importPlugin.version;
   }
   catch (error) {
-    if (error.code === `ENOENT`) {
+    if (error.code === `ERR_MODULE_NOT_FOUND`) {
       // ignore non-existing file
       return;
     }
 
-    console.error(error.message);
+    console.error(`Import plugin ${pluginKey} could not be parsed:`, error.message);
     process.exit(1);
   }
 }
@@ -113,21 +107,19 @@ async function readPluginImport(pluginKey) {
  * @param {String} pluginKey The plugin key.
  */
 async function readPluginExport(pluginKey) {
-  const exportPath = path.join(pluginDirectory, pluginKey, `export.js`);
   try {
-    await stat(exportPath);
-    const exportPlugin = require(exportPath);
+    const exportPlugin = await import(new URL(`${pluginKey}/export.js`, pluginDirectoryUrl));
     plugins.exportPlugins.push(pluginKey);
     plugins.data[pluginKey].exportPluginVersion = exportPlugin.version;
     plugins.data[pluginKey].exportTests = [];
   }
   catch (error) {
-    if (error.code === `ENOENT`) {
+    if (error.code === `ERR_MODULE_NOT_FOUND`) {
       // ignore non-existing file
       return;
     }
 
-    console.error(error.message);
+    console.error(`Export plugin ${pluginKey} could not be parsed:`, error.message);
     process.exit(1);
   }
 }
@@ -137,9 +129,8 @@ async function readPluginExport(pluginKey) {
  * @param {String} pluginKey The plugin key.
  */
 async function readPluginExportTests(pluginKey) {
-  const exportTestsPath = path.join(pluginDirectory, pluginKey, `exportTests`);
   try {
-    const exportTestFiles = await readdir(exportTestsPath);
+    const exportTestFiles = await readdir(new URL(`${pluginKey}/exportTests/`, pluginDirectoryUrl));
     for (const test of exportTestFiles) {
       const testKey = path.basename(test, path.extname(test));
       plugins.data[pluginKey].exportTests.push(testKey);
@@ -151,7 +142,7 @@ async function readPluginExportTests(pluginKey) {
       return;
     }
 
-    console.error(error.message);
+    console.error(`Export tests for plugin ${pluginKey} could not be read:`, error.message);
     process.exit(1);
   }
 }

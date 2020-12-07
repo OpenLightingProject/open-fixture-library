@@ -1,15 +1,15 @@
 #!/usr/bin/env node
-const path = require(`path`);
-const minimist = require(`minimist`);
-const chalk = require(`chalk`);
+import path from 'path';
+import minimist from 'minimist';
+import chalk from 'chalk';
 
-const { fixtureFromFile, fixtureFromRepository } = require(`../lib/model.js`);
-const importJson = require(`../lib/import-json.js`);
+import { fixtureFromFile, fixtureFromRepository } from '../lib/model.js';
+import importJson from '../lib/import-json.js';
 
 (async () => {
   try {
-    const plugins = await importJson(`../plugins/plugins.json`, __dirname);
-    const testFixtures = await importJson(`../tests/test-fixtures.json`, __dirname);
+    const plugins = await importJson(`../plugins/plugins.json`, import.meta.url);
+    const testFixtures = await importJson(`../tests/test-fixtures.json`, import.meta.url);
 
     const cliArguments = minimist(process.argv.slice(2), {
       string: [`p`],
@@ -17,10 +17,12 @@ const importJson = require(`../lib/import-json.js`);
       alias: { p: `plugin`, h: `help` },
     });
 
+    const scriptName = import.meta.url.split(`/`).pop();
+
     const helpMessage = [
       `Run the plugin's export tests against the specified fixtures`,
       `(or the test fixtures, if no fixtures are specified).`,
-      `Usage: node ${path.relative(process.cwd(), __filename)} -p <plugin> [ <fixtures> ]`,
+      `Usage: node ${scriptName} -p <plugin> [ <fixtures> ]`,
       `Options:`,
       `  --plugin,   -p: Key of the plugin whose export tests should be called`,
       `  --help,     -h: Show this help message.`,
@@ -52,18 +54,18 @@ const importJson = require(`../lib/import-json.js`);
       ? testFixtures.map(fixture => fixtureFromRepository(fixture.man, fixture.key))
       : cliArguments._.map(relativePath => fixtureFromFile(path.join(process.cwd(), relativePath)));
 
-    const pluginExport = require(`../plugins/${cliArguments.plugin}/export.js`);
+    const exportPlugin = await import(`../plugins/${cliArguments.plugin}/export.js`);
 
-    const files = await pluginExport.exportFixtures(
+    const files = await exportPlugin.exportFixtures(
       await Promise.all(fixtures),
       {
-        baseDirectory: path.join(__dirname, `..`),
+        baseDirectory: new URL(`../`, import.meta.url).pathname,
         date: new Date(),
       },
     );
 
     await Promise.all(pluginData.exportTests.map(async testKey => {
-      const exportTest = require(`../plugins/${cliArguments.plugin}/exportTests/${testKey}.js`);
+      const exportTest = await import(`../plugins/${cliArguments.plugin}/exportTests/${testKey}.js`);
 
       const outputPerFile = await Promise.all(files.map(async file => {
         try {

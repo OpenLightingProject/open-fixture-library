@@ -1,18 +1,18 @@
 #!/usr/bin/env node
 
-const http = require(`http`);
-const https = require(`https`);
-const path = require(`path`);
-const chalk = require(`chalk`);
-const { Octokit } = require(`@octokit/rest`);
+import http from 'http';
+import https from 'https';
+import chalk from 'chalk';
+import userAgent from 'default-user-agent';
+import { Octokit } from '@octokit/rest';
 
-require(`../lib/load-env-file.js`);
+import '../lib/load-env-file.js';
 
-const USER_AGENT = require(`default-user-agent`)();
+const USER_AGENT = userAgent();
 const GITHUB_COMMENT_HEADING = `## Broken links update`;
 const TIMEOUT = 30_000;
 
-const SiteCrawler = require(`../lib/site-crawler.js`);
+import SiteCrawler from '../lib/site-crawler.js';
 
 const excludedUrls = [
   `https://open-fixture-library.org`, // exclude canonical URLs
@@ -368,8 +368,9 @@ async function updateGithubIssue(urlResults) {
    * @returns {String} The new issue body (in Markdown and HTML) from the given link data.
    */
   function getBodyFromLinkData(linkData) {
+    const scriptName = import.meta.url.split(`/`).slice(-2).join(`/`);
     const lines = [
-      `*Auto-generated content by \`${path.relative(path.join(__dirname, `..`), __filename)}\`.*`,
+      `*Auto-generated content by \`${scriptName}\`.*`,
       ``,
       `**Last updated:** ${new Date().toISOString()}`,
       ``,

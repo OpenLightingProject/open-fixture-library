@@ -1,5 +1,3 @@
-import path from 'path';
-
 import plugins from './plugins/plugins.json';
 import register from './fixtures/register.json';
 import { fixtureFromRepository } from './lib/model.js';
@@ -51,7 +49,7 @@ export default {
     },
     extend(config, context) {
       // exclude /assets/icons from url-loader
-      const iconsPath = path.resolve(__dirname, `ui/assets/icons`);
+      const iconsPath = new URL(`ui/assets/icons/`, import.meta.url).pathname;
       const urlLoader = config.module.rules.find(rule => rule.test.toString().includes(`|svg|`));
       urlLoader.exclude = iconsPath;
 
