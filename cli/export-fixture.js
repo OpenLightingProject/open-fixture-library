@@ -1,9 +1,8 @@
 #!/usr/bin/node
-const { writeFile } = require(`fs/promises`);
+const { mkdir, writeFile } = require(`fs/promises`);
 const path = require(`path`);
 const minimist = require(`minimist`);
 const chalk = require(`chalk`);
-const mkdirp = require(`mkdirp`);
 
 const plugins = require(`../plugins/plugins.json`);
 const { fixtureFromRepository } = require(`../lib/model.js`);
@@ -79,7 +78,7 @@ const outDirectory = cliArguments.o ? path.resolve(process.cwd(), cliArguments.o
     for (const file of files) {
       if (cliArguments.o) {
         const filePath = path.join(outDirectory, file.name);
-        await mkdirp(path.dirname(filePath));
+        await mkdir(path.dirname(filePath), { recursive: true });
         await writeFile(filePath, file.content);
         console.log(`Created file ${filePath}`);
       }
