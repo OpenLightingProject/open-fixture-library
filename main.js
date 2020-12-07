@@ -10,7 +10,6 @@ const compression = require(`compression`);
 const helmet = require(`helmet`);
 const { loadNuxt, build } = require(`nuxt`);
 
-const packageJson = require(`./package.json`);
 const plugins = require(`./plugins/plugins.json`);
 const { fixtureFromRepository, embedResourcesIntoFixtureJson } = require(`./lib/model.js`);
 const register = require(`./fixtures/register.json`);
@@ -140,13 +139,6 @@ app.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request, r
   const errorDesc = `fixture ${manufacturerKey}/${fixtureKey}`;
 
   downloadFixtures(response, format, fixtures, zipName, errorDesc);
-});
-
-app.get(`/sitemap.xml`, async (request, response) => {
-  const generateSitemap = requireNoCacheInDevelopment(`./lib/generate-sitemap.js`);
-
-  response.type(`application/xml`);
-  (await generateSitemap(packageJson.homepage)).pipe(response);
 });
 
 app.use(`/api/v1`, (request, response) => {
