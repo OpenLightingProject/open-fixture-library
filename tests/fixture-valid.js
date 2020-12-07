@@ -5,7 +5,7 @@ const Ajv = require(`ajv`);
 require = require(`esm`)(module); // eslint-disable-line no-global-assign
 
 const schemaProperties = require(`../lib/schema-properties.js`).default;
-const { getResourceFromString } = require(`../lib/model.js`);
+const { manufacturerFromRepository, getResourceFromString } = require(`../lib/model.js`);
 const getAjvErrorMessages = require(`../lib/get-ajv-error-messages.js`);
 const importJson = require(`../lib/import-json.js`);
 
@@ -109,7 +109,8 @@ async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValu
   }
 
   try {
-    fixture = new Fixture(manufacturerKey, fixtureKey, fixtureJson);
+    const manufacturer = await manufacturerFromRepository(manufacturerKey);
+    fixture = new Fixture(manufacturer, fixtureKey, fixtureJson);
 
     checkFixtureIdentifierUniqueness();
     checkMeta(fixture.meta);
