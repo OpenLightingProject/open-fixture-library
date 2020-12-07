@@ -37,7 +37,7 @@ let testErrored = false;
       ));
     }
 
-    testFixtures = await importJson(`../test-fixtures.json`, __dirname).map(
+    testFixtures = (await importJson(`../test-fixtures.json`, __dirname)).map(
       fixture => [fixture.man, fixture.key],
     );
 

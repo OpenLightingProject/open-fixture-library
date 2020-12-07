@@ -12,7 +12,7 @@ const schemaDirectory = path.join(__dirname, `../schemas/`);
 (async () => {
   const schemaFiles = process.argv.length > 2
     ? process.argv.slice(2)
-    : await readdir(schemaDirectory).filter(
+    : (await readdir(schemaDirectory)).filter(
       schemaFile => path.extname(schemaFile) === `.json`,
     );
 
