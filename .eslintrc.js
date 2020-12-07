@@ -42,6 +42,7 @@ const enabledRuleParameters = {
   'no-shadow': [{ builtinGlobals: false }],
   'no-template-curly-in-string': [],
   'no-trailing-spaces': [],
+  'no-unsafe-optional-chaining': [{ 'disallowArithmeticOperators': true }],
   'no-unused-vars': [{ args: `none` }],
   'no-var': [],
   'object-curly-spacing': [`always`],
