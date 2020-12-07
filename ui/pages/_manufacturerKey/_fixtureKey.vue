@@ -83,7 +83,6 @@
 </style>
 
 <script>
-import packageJson from '../../../package.json';
 import register from '../../../fixtures/register.json';
 
 import Fixture from '../../../lib/model/Fixture.js';
@@ -173,7 +172,7 @@ export default {
         'name': this.fixture.name,
         'category': this.fixture.mainCategory,
         'manufacturer': {
-          'url': `${packageJson.homepage}${this.manufacturerKey}`,
+          'url': `${process.env.WEBSITE_URL}${this.manufacturerKey}`,
         },
       };
 
@@ -198,7 +197,7 @@ export default {
             '@type': `ListItem`,
             'position': 1,
             'item': {
-              '@id': `${packageJson.homepage}manufacturers`,
+              '@id': `${process.env.WEBSITE_URL}manufacturers`,
               'name': `Manufacturers`,
             },
           },
@@ -206,7 +205,7 @@ export default {
             '@type': `ListItem`,
             'position': 2,
             'item': {
-              '@id': `${packageJson.homepage}${this.manufacturerKey}`,
+              '@id': `${process.env.WEBSITE_URL}${this.manufacturerKey}`,
               'name': this.fixture.manufacturer.name,
             },
           },

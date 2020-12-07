@@ -1,10 +1,8 @@
 import path from 'path';
 
 import plugins from './plugins/plugins.json';
-import packageJson from './package.json';
 import register from './fixtures/register.json';
 import { fixtureFromRepository } from './lib/model.js';
-
 
 export default {
   srcDir: `./ui/`,
@@ -248,11 +246,11 @@ export default {
       UserAgent: `*`,
       Disallow: plugins.exportPlugins.map(pluginKey => `/*.${pluginKey}$`),
       Allow: `/`,
-      Sitemap: `${packageJson.homepage}sitemap.xml`,
+      Sitemap: `${process.env.WEBSITE_URL}sitemap.xml`,
     };
   },
   sitemap: {
-    hostname: packageJson.homepage,
+    hostname: process.env.WEBSITE_URL,
     gzip: true,
     async routes() {
       const staticUrls = [

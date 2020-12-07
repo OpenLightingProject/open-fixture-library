@@ -50,8 +50,6 @@
 </template>
 
 <script>
-import packageJson from '../../../package.json';
-
 export default {
   async asyncData({ params, $axios, error }) {
     const manufacturerKey = params.manufacturerKey;
@@ -77,7 +75,7 @@ export default {
         'itemListElement': fixtures.map((fixture, index) => ({
           '@type': `ListItem`,
           'position': index + 1,
-          'url': `${packageJson.homepage}/${manufacturer.key}/${fixture.key}`,
+          'url': `${process.env.WEBSITE_URL}/${manufacturer.key}/${fixture.key}`,
         })),
       };
 
