@@ -66,14 +66,20 @@ async function importFixture(body) {
     errors: {},
   };
 
-  Object.keys(result.fixtures).forEach(key => {
+  const oflManufacturers = await importJson(`../../../../fixture/manufacturer.json`);
+
+  for (const [key, fixture] of Object.keys(result.fixtures)) {
     const [manufacturerKey, fixtureKey] = key.split(`/`);
 
-    const checkResult = checkFixture(manufacturerKey, fixtureKey, result.fixtures[key]);
+    const checkResult = await checkFixture(manufacturerKey, fixtureKey, fixture);
+
+    if (!(manufacturerKey in result.manufacturers)) {
+      result.manufacturers[manufacturerKey] = oflManufacturers[manufacturerKey];
+    }
 
     result.warnings[key] = result.warnings[key].concat(checkResult.warnings);
     result.errors[key] = checkResult.errors;
-  });
+  }
 
   return result;
 }

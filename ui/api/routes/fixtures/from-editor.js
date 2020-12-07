@@ -1,6 +1,7 @@
 const schemaProperties = require(`../../../../lib/schema-properties.js`).default;
 const { checkFixture } = require(`../../../../tests/fixture-valid.js`);
 const { CoarseChannel } = require(`../../../../lib/model.js`);
+const importJson = require(`../../../../lib/import-json.js`);
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 /** @typedef {import('../../index.js').ApiResponse} ApiResponse */
@@ -9,11 +10,11 @@ const { CoarseChannel } = require(`../../../../lib/model.js`);
 /**
  * Converts the given editor fixture data into OFL fixtures and responds with a FixtureCreateResult.
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
- * @returns {ApiResponse} The handled response.
+ * @returns {Promise.<ApiResponse>} The handled response.
  */
-function createFixtureFromEditor({ request }) {
+async function createFixtureFromEditor({ request }) {
   try {
-    const fixtureCreateResult = getFixtureCreateResult(request.requestBody);
+    const fixtureCreateResult = await getFixtureCreateResult(request.requestBody);
     return {
       statusCode: 201,
       body: fixtureCreateResult,
@@ -32,9 +33,9 @@ function createFixtureFromEditor({ request }) {
 
 /**
  * @param {Array.<Object>} fixtures The raw fixture data from the Fixture Editor.
- * @returns {FixtureCreateResult} The created OFL fixtures (and manufacturers) with warnings and errors.
+ * @returns {Promise.<FixtureCreateResult>} A Promise that resolves to the created OFL fixtures (and manufacturers) with warnings and errors.
  */
-function getFixtureCreateResult(fixtures) {
+async function getFixtureCreateResult(fixtures) {
   const result = {
     manufacturers: {},
     fixtures: {},
@@ -42,14 +43,16 @@ function getFixtureCreateResult(fixtures) {
     errors: {},
   };
 
+  const manufacturers = await importJson(`../../../../fixture/manufacturer.json`);
+
   // { 'uuid 1': 'new channel key 1', ... }
   const channelKeyMapping = {};
 
-  fixtures.forEach(fixture => addFixture(fixture));
+  await Promise.all(fixtures.map(fixture => addFixture(fixture)));
 
   return result;
 
-  function addFixture(fixture) {
+  async function addFixture(fixture) {
     const manufacturerKey = getManufacturerKey(fixture);
     const fixtureKey = getFixtureKey(fixture, manufacturerKey);
     const key = `${manufacturerKey}/${fixtureKey}`;
@@ -106,7 +109,7 @@ function getFixtureCreateResult(fixtures) {
     }
 
 
-    const checkResult = checkFixture(manufacturerKey, fixtureKey, result.fixtures[key]);
+    const checkResult = await checkFixture(manufacturerKey, fixtureKey, result.fixtures[key]);
 
     result.warnings[key] = checkResult.warnings;
     result.errors[key] = checkResult.errors;
@@ -119,6 +122,7 @@ function getFixtureCreateResult(fixtures) {
    */
   function getManufacturerKey(fixture) {
     if (fixture.useExistingManufacturer) {
+      result.manufacturers[fixture.manufacturerKey] = manufacturers[fixture.manufacturerKey];
       return fixture.manufacturerKey;
     }
 
