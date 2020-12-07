@@ -3,7 +3,6 @@
 // see https://github.com/standard-things/esm#getting-started
 require = require(`esm`)(module); // eslint-disable-line no-global-assign
 
-const { readFile } = require(`fs/promises`);
 const path = require(`path`);
 const express = require(`express`);
 const compression = require(`compression`);
@@ -118,8 +117,7 @@ app.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request, r
 
   if (format === `json`) {
     try {
-      const data = await readFile(`./fixtures/${manufacturerKey}/${fixtureKey}.json`, `utf8`);
-      const json = JSON.parse(data);
+      const json = await importJson(`./fixtures/${manufacturerKey}/${fixtureKey}.json`, __dirname);
       await embedResourcesIntoFixtureJson(json);
       response.json(json);
     }

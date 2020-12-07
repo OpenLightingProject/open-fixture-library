@@ -3,11 +3,11 @@
 const path = require(`path`);
 const {
   readdir,
-  readFile,
   stat,
   writeFile,
 } = require(`fs/promises`);
 const chalk = require(`chalk`);
+const importJson = require(`../lib/import-json.js`);
 
 const plugins = {
   importPlugins: [],
@@ -17,7 +17,7 @@ const plugins = {
 
 const allPreviousVersions = {};
 
-const pluginDirectory = path.join(__dirname, `../plugins`);
+const pluginDirectory = path.join(__dirname, `../plugins/`);
 
 (async () => {
   const directoryEntries = await readdir(pluginDirectory, { withFileTypes: true });
@@ -67,9 +67,8 @@ const pluginDirectory = path.join(__dirname, `../plugins`);
  * @param {String} pluginKey The plugin key.
  */
 async function readPluginJson(pluginKey) {
-  const pluginJsonPath = path.join(pluginDirectory, pluginKey, `plugin.json`);
   try {
-    const pluginJson = JSON.parse(await readFile(pluginJsonPath));
+    const pluginJson = await importJson(`${pluginKey}/plugin.json`, pluginDirectory);
     plugins.data[pluginKey].name = pluginJson.name;
 
     if (pluginJson.previousVersions) {

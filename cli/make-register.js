@@ -1,10 +1,6 @@
 #!/usr/bin/node
 
-const {
-  readdir,
-  readFile,
-  writeFile,
-} = require(`fs/promises`);
+const { readdir, writeFile } = require(`fs/promises`);
 const path = require(`path`);
 const chalk = require(`chalk`);
 
@@ -14,7 +10,7 @@ const importJson = require(`../lib/import-json.js`);
 let register;
 let manufacturers;
 
-const fixturesPath = path.join(__dirname, `../fixtures`);
+const fixturesPath = path.join(__dirname, `../fixtures/`);
 
 (async () => {
   try {
@@ -61,10 +57,10 @@ async function addFixturesToRegister() {
       }
 
       const fixtureKey = path.basename(filename, `.json`);
-      const fixtureData = JSON.parse(await readFile(path.join(fixturesPath, manufacturerKey, filename), `utf8`));
+      const fixtureData = await importJson(`${manufacturerKey}/${filename}`, fixturesPath);
 
       if (fixtureData.$schema.endsWith(`/fixture-redirect.json`)) {
-        const redirectToData = JSON.parse(await readFile(path.join(fixturesPath, `${fixtureData.redirectTo}.json`), `utf8`));
+        const redirectToData = await importJson(`${fixtureData.redirectTo}.json`, fixturesPath);
 
         register.addFixtureRedirect(manufacturerKey, fixtureKey, fixtureData, redirectToData);
       }
