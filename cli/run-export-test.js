@@ -52,7 +52,7 @@ const importJson = require(`../lib/import-json.js`);
       ? testFixtures.map(fixture => fixtureFromRepository(fixture.man, fixture.key))
       : cliArguments._.map(relativePath => fixtureFromFile(path.join(process.cwd(), relativePath)));
 
-    const pluginExport = require(path.join(__dirname, `../plugins`, cliArguments.plugin, `export.js`));
+    const pluginExport = require(`../plugins/${cliArguments.plugin}/export.js`);
 
     const files = await pluginExport.exportFixtures(
       await Promise.all(fixtures),
@@ -63,7 +63,7 @@ const importJson = require(`../lib/import-json.js`);
     );
 
     await Promise.all(pluginData.exportTests.map(async testKey => {
-      const exportTest = require(path.join(__dirname, `../plugins`, cliArguments.plugin, `exportTests/${testKey}.js`));
+      const exportTest = require(`../plugins/${cliArguments.plugin}/exportTests/${testKey}.js`);
 
       const outputPerFile = await Promise.all(files.map(async file => {
         try {

@@ -3,7 +3,6 @@
 // see https://github.com/standard-things/esm#getting-started
 require = require(`esm`)(module); // eslint-disable-line no-global-assign
 
-const path = require(`path`);
 const express = require(`express`);
 const compression = require(`compression`);
 const helmet = require(`helmet`);
@@ -179,7 +178,7 @@ app.listen(process.env.PORT, () => {
  * @returns {Promise} A Promise that is resolved when the response is sent.
  */
 async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDesc) {
-  const plugin = require(path.join(__dirname, `plugins`, pluginKey, `export.js`));
+  const plugin = require(`./plugins/${pluginKey}/export.js`);
 
   try {
     const files = await plugin.exportFixtures(fixtures, {

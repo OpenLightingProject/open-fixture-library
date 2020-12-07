@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-const path = require(`path`);
 const minimist = require(`minimist`);
 const { readFile } = require(`fs/promises`);
 
@@ -29,7 +28,7 @@ const importJson = require(`../lib/import-json.js`);
   try {
     const buffer = await readFile(filename);
 
-    const plugin = require(path.join(__dirname, `../plugins`, cliArguments.plugin, `import.js`));
+    const plugin = require(`../plugins/${cliArguments.plugin}/import.js`);
     const { manufacturers, fixtures, warnings } = await plugin.importFixtures(buffer, filename, cliArguments[`author-name`]);
 
     /** @type {FixtureCreateResult} */

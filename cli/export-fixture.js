@@ -36,7 +36,7 @@ const importJson = require(`../lib/import-json.js`);
 
     const outDirectory = cliArguments.o ? path.resolve(process.cwd(), cliArguments.o) : null;
 
-    const plugin = require(path.join(__dirname, `../plugins`, cliArguments.plugin, `export.js`));
+    const plugin = require(`../plugins/${cliArguments.plugin}/export.js`);
     const files = await plugin.exportFixtures(
       await Promise.all(fixtures.map(
         ([manufacturer, fixture]) => fixtureFromRepository(manufacturer, fixture),

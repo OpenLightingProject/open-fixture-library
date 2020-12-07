@@ -221,8 +221,8 @@ function getTasksForFixtures(changedComponents) {
  * @returns {Promise} A promise resolving with an array of message lines.
  */
 async function getTaskPromise(task) {
-  const plugin = require(path.join(__dirname, `../../plugins/${task.pluginKey}/export.js`));
-  const test = require(path.join(__dirname, `../../plugins/${task.pluginKey}/exportTests/${task.testKey}.js`));
+  const plugin = require(`../../plugins/${task.pluginKey}/export.js`);
+  const test = require(`../../plugins/${task.pluginKey}/exportTests/${task.testKey}.js`);
   let emoji = `:heavy_check_mark:`;
   const detailListItems = [];
 
