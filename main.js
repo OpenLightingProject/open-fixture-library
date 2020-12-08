@@ -84,10 +84,7 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, async (request, response) => 
   const fixtures = await Promise.all(Object.entries(outObject.fixtures).map(async ([key, jsonObject]) => {
     const [manufacturerKey, fixtureKey] = key.split(`/`);
 
-    const manufacturer = manufacturerKey in outObject.manufacturers
-      ? new Manufacturer(manufacturerKey, outObject.manufacturers[manufacturerKey])
-      : manufacturerKey;
-
+    const manufacturer = new Manufacturer(manufacturerKey, outObject.manufacturers[manufacturerKey]);
     await embedResourcesIntoFixtureJson(jsonObject);
 
     return new Fixture(manufacturer, fixtureKey, jsonObject);

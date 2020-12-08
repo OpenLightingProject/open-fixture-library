@@ -1041,7 +1041,7 @@ Create a new Fixture instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| manufacturer | <code>String</code> \| [<code>Manufacturer</code>](#Manufacturer) | Either the fixture's manufacturer's key or a Manufacturer instance. |
+| manufacturer | [<code>Manufacturer</code>](#Manufacturer) | A Manufacturer instance. |
 | key | <code>String</code> | The fixture's unique key. Equals to filename without '.json'. |
 | jsonObject | <code>Object</code> | The fixture's parsed JSON data. |
 
@@ -1057,7 +1057,7 @@ Create a new Fixture instance.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| newManufacturer | <code>String</code> \| [<code>Manufacturer</code>](#Manufacturer) | Either the fixture's manufacturer's key or a Manufacturer instance. |
+| newManufacturer | [<code>Manufacturer</code>](#Manufacturer) | A Manufacturer instance. |
 
 <a name="Fixture+key"></a>
 
@@ -1340,7 +1340,7 @@ Creates a new Manufacturer instance.
 | Param | Type | Description |
 | --- | --- | --- |
 | key | <code>String</code> | The manufacturer key. Equals to directory name in the fixtures directory. |
-| jsonObject | <code>Object</code> \| <code>null</code> | The manufacturer's JSON object. If omitted, the one from `manufacturers.json` will be used. |
+| jsonObject | <code>Object</code> | The manufacturer's JSON object. |
 
 <a name="Manufacturer+name"></a>
 

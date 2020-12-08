@@ -86,6 +86,7 @@
 import register from '../../../fixtures/register.json';
 
 import Fixture from '../../../lib/model/Fixture.js';
+import Manufacturer from '../../../lib/model/Manufacturer.js';
 
 import ConditionalDetails from '../../components/ConditionalDetails.vue';
 import DownloadButton from '../../components/DownloadButton.vue';
@@ -108,8 +109,7 @@ export default {
     return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
   },
   async asyncData({ params, query, $axios, redirect, error }) {
-    const manufacturerKey = params.manufacturerKey;
-    const fixtureKey = params.fixtureKey;
+    const { manufacturerKey, fixtureKey } = params;
 
     const redirectTo = register.filesystem[`${manufacturerKey}/${fixtureKey}`].redirectTo;
     if (redirectTo) {
@@ -117,8 +117,9 @@ export default {
     }
 
     try {
-      const [fixtureJson, plugins] = await Promise.all([
+      const [fixtureJson, manufacturerJson, plugins] = await Promise.all([
         $axios.$get(`/${manufacturerKey}/${fixtureKey}.json`),
+        $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`),
         $axios.$get(`/api/v1/plugins`),
       ]);
 
@@ -136,6 +137,7 @@ export default {
         isBrowser: false,
         plugins,
         manufacturerKey,
+        manufacturerJson,
         fixtureKey,
         fixtureJson,
         redirect: redirectObject,
@@ -163,7 +165,8 @@ export default {
   },
   computed: {
     fixture() {
-      return new Fixture(this.manufacturerKey, this.fixtureKey, this.fixtureJson);
+      const manufacturer = new Manufacturer(this.manufacturerKey, this.manufacturerJson);
+      return new Fixture(manufacturer, this.fixtureKey, this.fixtureJson);
     },
     productModelStructuredData() {
       const data = {
