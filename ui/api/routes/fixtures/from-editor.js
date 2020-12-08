@@ -43,7 +43,7 @@ async function getFixtureCreateResult(fixtures) {
     errors: {},
   };
 
-  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`);
+  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, __dirname);
 
   // { 'uuid 1': 'new channel key 1', ... }
   const channelKeyMapping = {};
