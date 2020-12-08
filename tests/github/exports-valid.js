@@ -3,22 +3,12 @@
 const path = require(`path`);
 
 const { fixtureFromRepository } = require(`../../lib/model.js`);
+const importJson = require(`../../lib/import-json.js`);
 const pullRequest = require(`./pull-request.js`);
 
-const plugins = require(`../../plugins/plugins.json`);
-
-const exportTests = [];
-for (const exportPluginKey of plugins.exportPlugins) {
-  const plugin = plugins.data[exportPluginKey];
-
-  exportTests.push(...plugin.exportTests.map(
-    testKey => [exportPluginKey, testKey],
-  ));
-}
-
-const testFixtures = require(`../test-fixtures.json`).map(
-  fixture => [fixture.man, fixture.key],
-);
+let plugins;
+let exportTests;
+let testFixtures;
 
 let testErrored = false;
 
@@ -35,6 +25,21 @@ let testErrored = false;
     await pullRequest.checkEnv();
     await pullRequest.init();
     const changedComponents = await pullRequest.fetchChangedComponents();
+
+    plugins = await importJson(`../../plugins/plugins.json`, __dirname);
+
+    exportTests = [];
+    for (const exportPluginKey of plugins.exportPlugins) {
+      const plugin = plugins.data[exportPluginKey];
+
+      exportTests.push(...plugin.exportTests.map(
+        testKey => [exportPluginKey, testKey],
+      ));
+    }
+
+    testFixtures = (await importJson(`../test-fixtures.json`, __dirname)).map(
+      fixture => [fixture.man, fixture.key],
+    );
 
     const tasks = getTasksForModel(changedComponents)
       .concat(getTasksForPlugins(changedComponents))
@@ -216,13 +221,13 @@ function getTasksForFixtures(changedComponents) {
  * @returns {Promise} A promise resolving with an array of message lines.
  */
 async function getTaskPromise(task) {
-  const plugin = require(path.join(__dirname, `../../plugins/${task.pluginKey}/export.js`));
-  const test = require(path.join(__dirname, `../../plugins/${task.pluginKey}/exportTests/${task.testKey}.js`));
+  const plugin = require(`../../plugins/${task.pluginKey}/export.js`);
+  const test = require(`../../plugins/${task.pluginKey}/exportTests/${task.testKey}.js`);
   let emoji = `:heavy_check_mark:`;
   const detailListItems = [];
 
   try {
-    const files = await plugin.export(
+    const files = await plugin.exportFixtures(
       [await fixtureFromRepository(task.manufacturerKey, task.fixtureKey)],
       {
         baseDirectory: path.join(__dirname, `../..`),

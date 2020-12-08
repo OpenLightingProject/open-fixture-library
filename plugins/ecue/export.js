@@ -18,7 +18,7 @@ module.exports.version = `0.3.0`;
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
-module.exports.export = async function exportECue(fixtures, options) {
+module.exports.exportFixtures = async function exportECue(fixtures, options) {
   const timestamp = dateToString(options.date);
 
   const manufacturers = {};

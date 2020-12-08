@@ -3,18 +3,20 @@
 // see https://github.com/standard-things/esm#getting-started
 require = require(`esm`)(module); // eslint-disable-line no-global-assign
 
-const { readFile } = require(`fs/promises`);
-const path = require(`path`);
 const express = require(`express`);
 const compression = require(`compression`);
 const helmet = require(`helmet`);
 const { loadNuxt, build } = require(`nuxt`);
+const JSZip = require(`jszip`);
 
-const plugins = require(`./plugins/plugins.json`);
 const { fixtureFromRepository, embedResourcesIntoFixtureJson } = require(`./lib/model.js`);
-const register = require(`./fixtures/register.json`);
+const importJson = require(`./lib/import-json.js`);
 const Fixture = require(`./lib/model/Fixture.js`).default;
 const Manufacturer = require(`./lib/model/Manufacturer.js`).default;
+const apiRouter = require(`./ui/api/index.js`);
+
+const pluginsPromise = importJson(`./plugins/plugins.json`, __dirname);
+const registerPromise = importJson(`./fixtures/register.json`, __dirname);
 
 // setup environment variables
 require(`./lib/load-env-file.js`);
@@ -47,11 +49,13 @@ app.use(compression({
 app.get(`/download.:format([a-z0-9_.-]+)`, async (request, response, next) => {
   const { format } = request.params;
 
+  const plugins = await pluginsPromise;
   if (!plugins.exportPlugins.includes(format)) {
     next();
     return;
   }
 
+  const register = await registerPromise;
   const fixtures = await Promise.all(
     Object.keys(register.filesystem).filter(
       fixtureKey => !(`redirectTo` in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === `SameAsDifferentBrand`,
@@ -67,6 +71,7 @@ app.get(`/download.:format([a-z0-9_.-]+)`, async (request, response, next) => {
 app.post(`/download-editor.:format([a-z0-9_.-]+)`, async (request, response) => {
   const { format } = request.params;
 
+  const plugins = await pluginsPromise;
   if (!plugins.exportPlugins.includes(format)) {
     response
       .status(500)
@@ -105,6 +110,7 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, async (request, response) => 
 app.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request, response, next) => {
   const { manufacturerKey, fixtureKey, format } = request.params;
 
+  const register = await registerPromise;
   if (!(`${manufacturerKey}/${fixtureKey}` in register.filesystem)) {
     next();
     return;
@@ -112,8 +118,7 @@ app.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request, r
 
   if (format === `json`) {
     try {
-      const data = await readFile(`./fixtures/${manufacturerKey}/${fixtureKey}.json`, `utf8`);
-      const json = JSON.parse(data);
+      const json = await importJson(`./fixtures/${manufacturerKey}/${fixtureKey}.json`, __dirname);
       await embedResourcesIntoFixtureJson(json);
       response.json(json);
     }
@@ -125,6 +130,7 @@ app.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request, r
     return;
   }
 
+  const plugins = await pluginsPromise;
   if (!plugins.exportPlugins.includes(format)) {
     next();
     return;
@@ -137,9 +143,7 @@ app.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request, r
   downloadFixtures(response, format, fixtures, zipName, errorDesc);
 });
 
-app.use(`/api/v1`, (request, response) => {
-  requireNoCacheInDevelopment(`./ui/api/index.js`)(request, response);
-});
+app.use(`/api/v1`, apiRouter);
 
 
 
@@ -174,10 +178,10 @@ app.listen(process.env.PORT, () => {
  * @returns {Promise} A Promise that is resolved when the response is sent.
  */
 async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDesc) {
-  const plugin = requireNoCacheInDevelopment(path.join(__dirname, `plugins`, pluginKey, `export.js`));
+  const plugin = require(`./plugins/${pluginKey}/export.js`);
 
   try {
-    const files = await plugin.export(fixtures, {
+    const files = await plugin.exportFixtures(fixtures, {
       baseDirectory: __dirname,
       date: new Date(),
     });
@@ -192,7 +196,6 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
     }
 
     // else zip all together
-    const JSZip = require(`jszip`);
     const archive = new JSZip();
     for (const file of files) {
       archive.file(file.name, file.content);
@@ -212,17 +215,4 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
       .status(500)
       .send(`Exporting ${errorDesc} with ${pluginKey} failed: ${error.toString()}`);
   }
-}
-
-/**
- * Like standard require(...), but invalidates cache first (if not in production environment).
- * @param {String} target The require path, like `./register.json`.
- * @returns {*} The result of standard require(target).
- */
-function requireNoCacheInDevelopment(target) {
-  if (process.env.NODE_ENV !== `production`) {
-    delete require.cache[require.resolve(target)];
-  }
-
-  return require(target);
 }

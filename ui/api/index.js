@@ -44,15 +44,15 @@ const api = new OpenAPIBackend({
     },
   },
   handlers: Object.assign({},
-    requireNoCacheInDevelopment(`./routes/get-search-results.js`),
-    requireNoCacheInDevelopment(`./routes/submit-feedback.js`),
-    requireNoCacheInDevelopment(`./routes/fixtures/from-editor.js`),
-    requireNoCacheInDevelopment(`./routes/fixtures/import.js`),
-    requireNoCacheInDevelopment(`./routes/fixtures/submit.js`),
-    requireNoCacheInDevelopment(`./routes/manufacturers/index.js`),
-    requireNoCacheInDevelopment(`./routes/manufacturers/_manufacturerKey.js`),
-    requireNoCacheInDevelopment(`./routes/plugins/index.js`),
-    requireNoCacheInDevelopment(`./routes/plugins/_pluginKey.js`),
+    require(`./routes/get-search-results.js`),
+    require(`./routes/submit-feedback.js`),
+    require(`./routes/fixtures/from-editor.js`),
+    require(`./routes/fixtures/import.js`),
+    require(`./routes/fixtures/submit.js`),
+    require(`./routes/manufacturers/index.js`),
+    require(`./routes/manufacturers/_manufacturerKey.js`),
+    require(`./routes/plugins/index.js`),
+    require(`./routes/plugins/_pluginKey.js`),
     {
       validationFail(context, request, response) {
         let error = context.validation.errors;
@@ -113,16 +113,3 @@ const api = new OpenAPIBackend({
 router.use((request, response) => api.handleRequest(request, request, response));
 
 module.exports = router;
-
-/**
- * Like standard require(...), but invalidates cache first (if not in production environment).
- * @param {String} target The require path, like `./register.json`.
- * @returns {*} The result of standard require(target).
- */
-function requireNoCacheInDevelopment(target) {
-  if (process.env.NODE_ENV !== `production`) {
-    delete require.cache[require.resolve(target)];
-  }
-
-  return require(target);
-}

@@ -4,10 +4,10 @@ const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
 const namedColors = require(`color-name-list`);
 
 const { Entity, NullChannel } = require(`../../lib/model.js`);
+const importJson = require(`../../lib/import-json.js`);
 
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 
-const manufacturers = require(`../../fixtures/manufacturers.json`);
 const units = new Set([`K`, `deg`, `%`, `ms`, `Hz`, `m^3/min`, `rpm`]);
 const excludeKeys = new Set([`comment`, `name`, `helpWanted`, `type`, `effectName`, `effectPreset`, `shutterEffect`, `wheel`, `isShaking`, `fogType`, `menuClick`]);
 
@@ -21,8 +21,10 @@ module.exports.version = `1.0.0`;
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
-module.exports.export = async function exportAGLight(fixtures, options) {
+module.exports.exportFixtures = async function exportAGLight(fixtures, options) {
   const displayedPluginVersion = options.displayedPluginVersion || module.exports.version;
+
+  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, __dirname);
 
   const library = {
     version: displayedPluginVersion,

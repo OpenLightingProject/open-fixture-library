@@ -45,7 +45,7 @@ module.exports.version = `0.1.0`; // semantic versioning of export plugin
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} All generated files (see file schema above)
  */
-module.exports.export = async function exportPluginName(fixtures, options) {
+module.exports.exportFixtures = async function exportPluginName(fixtures, options) {
   const outfiles = [];
 
   for (const fixture of fixtures) {
@@ -100,7 +100,7 @@ module.exports.version = `0.1.0`; // semantic versioning of import plugin
  * @param {String} authorName The importer's name.
  * @returns {Promise.<Object, Error>} A Promise that resolves to an out object (see above) or rejects with an error.
  */
-module.exports.import = async function importPluginName(buffer, fileName, authorName) {
+module.exports.importFixtures = async function importPluginName(buffer, fileName, authorName) {
   const out = {
     manufacturers: {},
     fixtures: {},

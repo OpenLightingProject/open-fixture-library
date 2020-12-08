@@ -30,7 +30,7 @@ const UUID_NAMESPACE = `0de81b51-02b2-45e3-b53c-578f9eb31b77`; // seed for UUIDs
  * @param {Date|null} options.date The current time.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
-module.exports.export = function exportColorSource(fixtures, options) {
+module.exports.exportFixtures = function exportColorSource(fixtures, options) {
   const exportJson = {
     date: options.date.toISOString().replace(/\.\d{3}Z$/, `Z`),
     editorVersion: EDITOR_VERSION,

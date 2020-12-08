@@ -1,8 +1,7 @@
 const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
+const importJson = require(`../../lib/import-json.js`);
 
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
-
-const manufacturers = require(`../../fixtures/manufacturers.json`);
 
 // needed for export test
 module.exports.supportedOflVersion = `12.2.1`;
@@ -17,7 +16,7 @@ module.exports.version = `1.0.0`;
  * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
-module.exports.export = async function exportDragonframe(fixtures, options) {
+module.exports.exportFixtures = async function exportDragonframe(fixtures, options) {
   const usedManufacturers = new Set();
 
   // one JSON file for each fixture
@@ -39,6 +38,8 @@ module.exports.export = async function exportDragonframe(fixtures, options) {
       fixtures: [fixture],
     };
   });
+
+  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, __dirname);
 
   // manufacturers.json file
   const usedManufacturerData = {

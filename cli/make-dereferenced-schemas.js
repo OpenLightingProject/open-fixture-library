@@ -5,18 +5,20 @@ const path = require(`path`);
 const chalk = require(`chalk`);
 const schemaRefParser = require(`@apidevtools/json-schema-ref-parser`);
 
+const importJson = require(`../lib/import-json.js`);
+
 const schemaDirectory = path.join(__dirname, `../schemas/`);
 
 (async () => {
   const schemaFiles = process.argv.length > 2
     ? process.argv.slice(2)
-    : await readdir(schemaDirectory).filter(
+    : (await readdir(schemaDirectory)).filter(
       schemaFile => path.extname(schemaFile) === `.json`,
     );
 
   process.chdir(schemaDirectory);
   for (const schemaFile of schemaFiles) {
-    const schema = require(path.join(schemaDirectory, schemaFile));
+    const schema = await importJson(schemaFile, schemaDirectory);
     const dereferencedSchemaFile = path.join(schemaDirectory, `dereferenced`, schemaFile);
 
     try {
