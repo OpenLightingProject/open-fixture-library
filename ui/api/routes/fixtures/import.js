@@ -66,7 +66,7 @@ async function importFixture(body) {
     errors: {},
   };
 
-  const oflManufacturers = await importJson(`../../../../fixture/manufacturer.json`);
+  const oflManufacturers = await importJson(`../../../../fixtures/manufacturers.json`);
 
   for (const [key, fixture] of Object.keys(result.fixtures)) {
     const [manufacturerKey, fixtureKey] = key.split(`/`);
