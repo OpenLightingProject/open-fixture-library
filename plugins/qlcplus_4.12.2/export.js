@@ -30,7 +30,7 @@ module.exports.version = `1.3.0`;
 module.exports.exportFixtures = async function exportQlcPlus(fixtures, options) {
   const customGobos = {};
 
-  const outFilePromises = fixtures.map(async fixture => {
+  const outFiles = await Promise.all(fixtures.map(async fixture => {
     const xml = xmlbuilder.begin()
       .declaration(`1.0`, `UTF-8`)
       .element({
@@ -83,7 +83,7 @@ module.exports.exportFixtures = async function exportQlcPlus(fixtures, options) 
       }),
       mimetype: `application/x-qlc-fixture`,
     };
-  });
+  }));
 
   // add gobo images not included in QLC+ to exported files
   Object.entries(customGobos).forEach(([qlcplusResourceName, oflResource]) => {
@@ -91,14 +91,14 @@ module.exports.exportFixtures = async function exportQlcPlus(fixtures, options) 
       ? Buffer.from(oflResource.imageData, `base64`)
       : oflResource.imageData;
 
-    outFilePromises.push(Promise.resolve({
+    outFiles.push({
       name: `gobos/${qlcplusResourceName}`,
       content: fileContent,
       mimeType: oflResource.imageMimeType,
-    }));
+    });
   });
 
-  return Promise.all(outFilePromises);
+  return outFiles;
 };
 
 /**
