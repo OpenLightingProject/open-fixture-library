@@ -3,8 +3,7 @@ import importJson from '../../lib/import-json.js';
 
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 
-// eslint-disable-next-line import/no-commonjs
-const fixtureSchema = require(`../../schemas/fixture.json`);
+import { fixtureSchema } from '../../lib/esm-shim.cjs';
 export const version = fixtureSchema.version;
 
 /**
