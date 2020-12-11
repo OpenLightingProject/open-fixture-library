@@ -152,7 +152,7 @@ export default {
     shown: `update`,
   },
   async mounted() {
-    const A11yDialog = await import(`a11y-dialog`).default;
+    const { default: A11yDialog } = await import(`a11y-dialog`);
 
     this.dialog = new A11yDialog(this.$el);
 

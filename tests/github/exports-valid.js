@@ -220,7 +220,7 @@ function getTasksForFixtures(changedComponents) {
  */
 async function getTaskPromise(task) {
   const plugin = await import(`../../plugins/${task.pluginKey}/export.js`);
-  const test = await import(`../../plugins/${task.pluginKey}/exportTests/${task.testKey}.js`);
+  const { default: test } = await import(`../../plugins/${task.pluginKey}/exportTests/${task.testKey}.js`);
 
   let emoji = `:heavy_check_mark:`;
   const detailListItems = [];

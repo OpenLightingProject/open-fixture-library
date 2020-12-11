@@ -65,7 +65,7 @@ import importJson from '../lib/import-json.js';
     );
 
     await Promise.all(pluginData.exportTests.map(async testKey => {
-      const exportTest = await import(`../plugins/${cliArguments.plugin}/exportTests/${testKey}.js`);
+      const { default: exportTest } = await import(`../plugins/${cliArguments.plugin}/exportTests/${testKey}.js`);
 
       const outputPerFile = await Promise.all(files.map(async file => {
         try {
