@@ -1,0 +1,269 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Boston 60",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Saúl", "Flo Edelmann"],
+    "createDate": "2020-12-12",
+    "lastModifyDate": "2020-12-12"
+  },
+  "links": {
+    "manual": [
+      "https://www.madridhifi.com/crm/documents/produit/9/4/10157449/photos/pdf/1/Boston%2060.pdf"
+    ],
+    "productPage": [
+      "https://www.audibax.es/iluminacion-discotecas/10157449-audibax-boston-60.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [155, 235, 145],
+    "weight": 3.5,
+    "power": 80,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "60W White LED"
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "0%",
+      "constant": true,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Color Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 139],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 8,
+          "helpWanted": "Which colors can be selected at which DMX values?"
+        },
+        {
+          "dmxRange": [140, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 1
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 8,
+          "helpWanted": "Which gobos can be selected at which DMX values?"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "1Hz",
+        "speedEnd": "20Hz",
+        "helpWanted": "At which DMX values is the lamp constantly on/off?"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Auto Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [60, 84],
+          "type": "Effect",
+          "effectName": "Auto Mode 3"
+        },
+        {
+          "dmxRange": [85, 109],
+          "type": "Effect",
+          "effectName": "Auto Mode 2"
+        },
+        {
+          "dmxRange": [110, 134],
+          "type": "Effect",
+          "effectName": "Auto Mode 1"
+        },
+        {
+          "dmxRange": [135, 159],
+          "type": "Effect",
+          "effectName": "Auto Mode 0"
+        },
+        {
+          "dmxRange": [160, 184],
+          "type": "Effect",
+          "effectName": "Sound Mode 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [185, 209],
+          "type": "Effect",
+          "effectName": "Sound Mode 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [210, 234],
+          "type": "Effect",
+          "effectName": "Sound Mode 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [235, 255],
+          "type": "Effect",
+          "effectName": "Sound Mode 0",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Strobe Speed",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Auto Programs",
+        "Reset"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Strobe Speed",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Auto Programs",
+        "Reset"
+      ]
+    }
+  ]
+}
