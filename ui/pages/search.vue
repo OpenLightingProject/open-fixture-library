@@ -3,7 +3,7 @@
     <h1 v-if="searchFor">Search <em>{{ searchFor }}</em></h1>
     <h1 v-else>Search</h1>
 
-    <form class="filter" action="/search" @submit.prevent="onSubmit">
+    <form class="filter" action="/search" @submit.prevent="onSubmit()">
       <LabeledInput label="Search query">
         <input v-model="searchQuery" type="search" name="q">
       </LabeledInput>
@@ -17,10 +17,10 @@
             value="">Filter by manufacturer</option>
 
           <option
-            v-for="(man, manKey) in manufacturers"
-            :key="manKey"
-            :selected="manufacturersQuery.includes(manKey)"
-            :value="manKey">{{ man.name }}</option>
+            v-for="(man, manufacturerKey) of manufacturers"
+            :key="manufacturerKey"
+            :selected="manufacturersQuery.includes(manufacturerKey)"
+            :value="manufacturerKey">{{ man.name }}</option>
         </select>
 
         <select v-model="categoriesQuery" name="categories" multiple>
@@ -29,7 +29,7 @@
             value="">Filter by category</option>
 
           <option
-            v-for="cat in categories"
+            v-for="cat of categories"
             :key="cat"
             :selected="categoriesQuery.includes(cat)"
             :value="cat">{{ cat }}</option>
@@ -51,7 +51,7 @@
       <div v-else-if="results.length > 0" class="card">
         <ul class="list fixtures">
           <li
-            v-for="fixture in fixtureResults"
+            v-for="fixture of fixtureResults"
             :key="fixture.key">
             <NuxtLink
               :to="`/${fixture.key}`"
@@ -95,19 +95,6 @@ export default {
     ConditionalDetails,
     LabeledInput,
   },
-  head() {
-    const title = this.searchFor ? `Search "${this.searchFor}"` : `Search`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: `title`,
-          content: title,
-        },
-      ],
-    };
-  },
   async asyncData({ query, $axios, error }) {
     try {
       const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
@@ -149,22 +136,35 @@ export default {
         categoriesQuery: sanitizedQuery.categories,
       });
     }
-    catch (requestError) {
+    catch {
       this.results = [];
     }
     finally {
       this.loading = false;
     }
   },
+  head() {
+    const title = this.searchFor ? `Search "${this.searchFor}"` : `Search`;
+
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
+    };
+  },
   computed: {
     fixtureResults() {
       return this.results.map(key => {
-        const man = key.split(`/`)[0];
+        const manufacturer = key.split(`/`)[0];
 
         return {
           key,
-          name: `${this.manufacturers[man].name} ${register.filesystem[key].name}`,
-          color: register.colors[man],
+          name: `${this.manufacturers[manufacturer].name} ${register.filesystem[key].name}`,
+          color: register.colors[manufacturer],
         };
       });
     },

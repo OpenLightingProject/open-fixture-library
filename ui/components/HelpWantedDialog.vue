@@ -5,9 +5,9 @@
     :cancellable="state !== `loading`"
     :shown="context !== null"
     :title="title"
-    @hide="onHide">
+    @hide="onHide()">
 
-    <form v-if="state === `ready` && context !== null" action="#" @submit.prevent="onSubmit">
+    <form v-if="state === `ready` && context !== null" action="#" @submit.prevent="onSubmit()">
       <LabeledValue
         v-if="location !== null"
         :value="location"
@@ -43,7 +43,7 @@
       Your information was successfully uploaded to GitHub (see the <a :href="issueUrl" target="_blank">issue</a>). The fixture will be updated as soon as your information has been reviewed. Thank you for your contribution!
 
       <div class="button-bar right">
-        <a href="#" class="button secondary" @click.prevent="hide">Close</a>
+        <a href="#" class="button secondary" @click.prevent="hide()">Close</a>
         <a :href="issueUrl" class="button primary" target="_blank">See issue</a>
       </div>
     </template>
@@ -54,7 +54,7 @@
       <textarea :value="errorData" readonly />
 
       <div class="button-bar right">
-        <a href="#" class="button secondary" @click.prevent="hide">Close</a>
+        <a href="#" class="button secondary" @click.prevent="hide()">Close</a>
         <a :href="mailtoUrl" class="button secondary" target="_blank">Send email</a>
         <a href="https://github.com/OpenLightingProject/open-fixture-library/issues/new" class="button primary" target="_blank">Create issue on GitHub</a>
       </div>
@@ -114,9 +114,9 @@ export default {
     },
     location() {
       if (this.type === `capability`) {
-        const cap = this.context;
-        const channel = cap._channel;
-        return `Channel "${channel.key}" → Capability "${cap.name}" (${cap.rawDmxRange})`;
+        const capability = this.context;
+        const channel = capability._channel;
+        return `Channel "${channel.key}" → Capability "${capability.name}" (${capability.rawDmxRange})`;
       }
 
       return null;
@@ -145,10 +145,10 @@ export default {
         sendObject.context = this.context.key;
       }
       else {
-        const manKey = this.fixture.manufacturer.key;
-        const fixKey = this.fixture.key;
+        const manufacturerKey = this.fixture.manufacturer.key;
+        const fixtureKey = this.fixture.key;
 
-        sendObject.context = `${manKey}/${fixKey}`;
+        sendObject.context = `${manufacturerKey}/${fixtureKey}`;
       }
 
       return sendObject;

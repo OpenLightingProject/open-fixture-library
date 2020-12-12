@@ -16,7 +16,7 @@
         :state="formstate"
         action="#"
         class="only-js"
-        @submit.prevent="onSubmit">
+        @submit.prevent="onSubmit()">
 
         <section class="card">
           <h2>File information</h2>
@@ -30,7 +30,7 @@
 
               <option value="" disabled>Please select an import file type</option>
 
-              <template v-for="pluginKey in plugins.importPlugins">
+              <template v-for="pluginKey of plugins.importPlugins">
                 <option :key="pluginKey" :value="pluginKey">
                   {{ plugins.data[pluginKey].name }}
                 </option>
@@ -47,7 +47,6 @@
             label="Fixture definition file"
             hint="Maximum file size is 5MB.">
             <EditorFileUpload
-              ref="fileUpload"
               v-model="file"
               :required="true"
               name="file"
@@ -98,8 +97,8 @@
         endpoint="/api/v1/fixtures/import"
         :github-username="githubUsername"
         :github-comment="githubComment"
-        @success="storePrefillData"
-        @reset="reset" />
+        @success="storePrefillData()"
+        @reset="reset()" />
 
     </ClientOnly>
   </div>
@@ -117,19 +116,6 @@ export default {
     EditorFileUpload,
     EditorSubmitDialog,
     LabeledInput,
-  },
-  head() {
-    const title = `Import fixture`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: `title`,
-          content: title,
-        },
-      ],
-    };
   },
   async asyncData({ $axios, error }) {
     try {
@@ -151,6 +137,19 @@ export default {
       author: ``,
       githubUsername: ``,
       honeypot: ``,
+    };
+  },
+  head() {
+    const title = `Import fixture`;
+
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
     };
   },
   mounted() {
@@ -197,18 +196,18 @@ export default {
         return new Promise((resolve, reject) => {
           const fileReader = new FileReader();
 
-          fileReader.onload = () => {
+          fileReader.addEventListener(`load`, () => {
             resolve(fileReader.result);
-          };
-          fileReader.onerror = reject;
-          fileReader.onabort = reject;
+          });
+          fileReader.addEventListener(`error`, reject);
+          fileReader.addEventListener(`abort`, reject);
 
           fileReader.readAsDataURL(file);
         });
       }
     },
     reset() {
-      this.$refs.fileUpload.clear();
+      this.file = null;
       this.githubComment = ``;
 
       this.$nextTick(() => {

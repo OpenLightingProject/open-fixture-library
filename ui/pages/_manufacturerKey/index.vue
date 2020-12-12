@@ -30,14 +30,14 @@
 
     <div class="card">
       <ul class="list fixtures">
-        <li v-for="fixture in fixtures" :key="fixture.key">
+        <li v-for="fixture of fixtures" :key="fixture.key">
           <NuxtLink
             :to="`/${manufacturer.key}/${fixture.key}`"
             :style="{ borderLeftColor: manufacturer.color }"
             class="manufacturer-color">
             <span class="name">{{ fixture.name }}</span>
             <OflSvg
-              v-for="cat in fixture.categories"
+              v-for="cat of fixture.categories"
               :key="cat"
               :name="cat"
               type="fixture"
@@ -50,14 +50,12 @@
 </template>
 
 <script>
-import packageJson from '../../../package.json';
-
 export default {
   async asyncData({ params, $axios, error }) {
-    const manKey = params.manufacturerKey;
+    const manufacturerKey = params.manufacturerKey;
 
     try {
-      const manufacturer = await $axios.$get(`/api/v1/manufacturers/${manKey}`);
+      const manufacturer = await $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`);
       const fixtures = manufacturer.fixtures;
 
       const organizationStructuredData = {
@@ -77,7 +75,7 @@ export default {
         'itemListElement': fixtures.map((fixture, index) => ({
           '@type': `ListItem`,
           'position': index + 1,
-          'url': `${packageJson.homepage}/${manufacturer.key}/${fixture.key}`,
+          'url': `${process.env.WEBSITE_URL}/${manufacturer.key}/${fixture.key}`,
         })),
       };
 

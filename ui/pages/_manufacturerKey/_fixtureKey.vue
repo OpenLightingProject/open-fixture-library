@@ -9,7 +9,7 @@
     <header class="fixture-header">
       <div class="title">
         <h1>
-          <NuxtLink :to="`/${manKey}`">{{ fixture.manufacturer.name }}</NuxtLink>
+          <NuxtLink :to="`/${manufacturerKey}`">{{ fixture.manufacturer.name }}</NuxtLink>
           {{ fixture.name }}
           <code v-if="fixture.hasShortName">{{ fixture.shortName }}</code>
         </h1>
@@ -18,8 +18,8 @@
           <span class="last-modify-date">Last modified:&nbsp;<OflTime :date="fixture.meta.lastModifyDate" /></span>
           <span class="create-date">Created:&nbsp;<OflTime :date="fixture.meta.createDate" /></span>
           <span class="authors">Author{{ fixture.meta.authors.length === 1 ? `` : `s` }}:&nbsp;{{ fixture.meta.authors.join(`, `) }}</span>
-          <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manKey}/${fixKey}.json`">Source</a></span>
-          <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manKey}/${fixKey}.json`">Revisions</a></span>
+          <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Source</a></span>
+          <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Revisions</a></span>
 
           <ConditionalDetails v-if="fixture.meta.importPlugin !== null">
             <template #summary>
@@ -30,7 +30,7 @@
         </section>
       </div>
 
-      <DownloadButton :fixture-key="`${manKey}/${fixKey}`" />
+      <DownloadButton :fixture-key="`${manufacturerKey}/${fixtureKey}`" />
     </header>
 
     <section v-if="redirect" class="card yellow">
@@ -40,7 +40,7 @@
     <FixturePage
       :fixture="fixture"
       :load-all-modes="loadAllModes"
-      @help-wanted-clicked="openHelpWantedDialog" />
+      @help-wanted-clicked="openHelpWantedDialog($event)" />
 
     <section id="contribute">
       <h2>Something wrong with this fixture definition?</h2>
@@ -83,10 +83,10 @@
 </style>
 
 <script>
-import packageJson from '../../../package.json';
 import register from '../../../fixtures/register.json';
 
 import Fixture from '../../../lib/model/Fixture.js';
+import Manufacturer from '../../../lib/model/Manufacturer.js';
 
 import ConditionalDetails from '../../components/ConditionalDetails.vue';
 import DownloadButton from '../../components/DownloadButton.vue';
@@ -109,25 +109,25 @@ export default {
     return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
   },
   async asyncData({ params, query, $axios, redirect, error }) {
-    const manKey = params.manufacturerKey;
-    const fixKey = params.fixtureKey;
+    const { manufacturerKey, fixtureKey } = params;
 
-    const redirectTo = register.filesystem[`${manKey}/${fixKey}`].redirectTo;
+    const redirectTo = register.filesystem[`${manufacturerKey}/${fixtureKey}`].redirectTo;
     if (redirectTo) {
-      return redirect(302, `/${redirectTo}?redirectFrom=${manKey}/${fixKey}`);
+      return redirect(302, `/${redirectTo}?redirectFrom=${manufacturerKey}/${fixtureKey}`);
     }
 
     try {
-      const [fixtureJson, plugins] = await Promise.all([
-        $axios.$get(`/${manKey}/${fixKey}.json`),
+      const [fixtureJson, manufacturerJson, plugins] = await Promise.all([
+        $axios.$get(`/${manufacturerKey}/${fixtureKey}.json`),
+        $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`),
         $axios.$get(`/api/v1/plugins`),
       ]);
 
-      let redirectObj = null;
+      let redirectObject = null;
       if (query.redirectFrom) {
         const redirectJson = await $axios.$get(`/${query.redirectFrom}.json`);
 
-        redirectObj = {
+        redirectObject = {
           from: query.redirectFrom,
           reason: redirectReasonExplanations[redirectJson.reason],
         };
@@ -136,10 +136,11 @@ export default {
       return {
         isBrowser: false,
         plugins,
-        manKey,
-        fixKey,
+        manufacturerKey,
+        manufacturerJson,
+        fixtureKey,
         fixtureJson,
-        redirect: redirectObj,
+        redirect: redirectObject,
         loadAllModes: `loadAllModes` in query,
         helpWantedContext: null,
         helpWantedType: ``,
@@ -149,9 +150,23 @@ export default {
       return error(requestError);
     }
   },
+  head() {
+    const title = `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`;
+
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
+    };
+  },
   computed: {
     fixture() {
-      return new Fixture(this.manKey, this.fixKey, this.fixtureJson);
+      const manufacturer = new Manufacturer(this.manufacturerKey, this.manufacturerJson);
+      return new Fixture(manufacturer, this.fixtureKey, this.fixtureJson);
     },
     productModelStructuredData() {
       const data = {
@@ -160,7 +175,7 @@ export default {
         'name': this.fixture.name,
         'category': this.fixture.mainCategory,
         'manufacturer': {
-          'url': `${packageJson.homepage}${this.manKey}`,
+          'url': `${process.env.WEBSITE_URL}${this.manufacturerKey}`,
         },
       };
 
@@ -185,7 +200,7 @@ export default {
             '@type': `ListItem`,
             'position': 1,
             'item': {
-              '@id': `${packageJson.homepage}manufacturers`,
+              '@id': `${process.env.WEBSITE_URL}manufacturers`,
               'name': `Manufacturers`,
             },
           },
@@ -193,7 +208,7 @@ export default {
             '@type': `ListItem`,
             'position': 2,
             'item': {
-              '@id': `${packageJson.homepage}${this.manKey}`,
+              '@id': `${process.env.WEBSITE_URL}${this.manufacturerKey}`,
               'name': this.fixture.manufacturer.name,
             },
           },
@@ -209,30 +224,18 @@ export default {
       };
     },
     githubRepoPath() {
-      const slug = process.env.TRAVIS_PULL_REQUEST_SLUG || process.env.TRAVIS_REPO_SLUG || `OpenLightingProject/open-fixture-library`;
-
+      const slug = process.env.GITHUB_REPOSITORY || `OpenLightingProject/open-fixture-library`;
       return `https://github.com/${slug}`;
     },
     branch() {
-      return process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || `master`;
+      const gitRef = process.env.GITHUB_PR_BASE_REF || process.env.GITHUB_REF || `master`;
+      // e.g. for `refs/heads/feature-branch-1`, return `feature-branch-1`
+      return gitRef.split(`/`).pop();
     },
     mailtoUrl() {
-      const subject = `Feedback for fixture '${this.manKey}/${this.fixKey}'`;
+      const subject = `Feedback for fixture '${this.manufacturerKey}/${this.fixtureKey}'`;
       return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}`;
     },
-  },
-  head() {
-    const title = `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: `title`,
-          content: title,
-        },
-      ],
-    };
   },
   mounted() {
     if (process.browser) {

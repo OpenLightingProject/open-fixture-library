@@ -1,72 +1,38 @@
 <template>
   <div class="links">
-    <div v-for="(link, index) in links" :key="link.uuid" class="linkRow">
-      <select ref="linkTypeSelect" v-model="link.type">
-        <option
-          v-for="linkType in linkTypes"
-          :key="linkType"
-          :value="linkType">{{ linkTypeNames[linkType] }}</option>
-      </select>
+    <EditorLink
+      v-for="link of links"
+      :key="link.uuid"
+      ref="links"
+      :link="link"
+      :can-remove="links.length > 1"
+      :formstate="formstate"
+      @set-type="updateLinkProperty(link, `type`, $event)"
+      @set-url="updateLinkProperty(link, `url`, $event)"
+      @remove="removeLink(link)" />
 
-      <OflSvg :name="linkTypeIconNames[link.type]" />
-
-      <Validate :state="formstate" tag="span">
-        <PropertyInputText
-          v-model="link.url"
-          :name="`links-${link.uuid}`"
-          :schema-property="properties.definitions.urlString"
-          type="url"
-          required />
-      </Validate>
-
-      <a
-        v-if="links.length > 1"
-        href="#remove-link"
-        title="Remove link"
-        @click.prevent="removeLink(index)">
-        <OflSvg name="close" />
-      </a>
-    </div>
-
-    <a href="#add-link" @click.prevent="addLink">
+    <a href="#add-link" @click.prevent="addLink()">
       <OflSvg name="plus" />
       Add link
     </a>
   </div>
 </template>
 
-<style lang="scss" scoped>
-.linkRow {
-  margin-bottom: 4px;
-}
-
-select {
-  width: 17ex;
-  margin-right: 1ex;
-}
-
-.icon {
-  margin-right: 0.5ex;
-}
-</style>
-
 <script>
-import schemaProperties from '../../../lib/schema-properties.js';
 import { getEmptyLink } from '../../assets/scripts/editor-utils.js';
-import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
 
-import PropertyInputText from '../PropertyInputText.vue';
+import EditorLink from './EditorLink.vue';
 
 export default {
   components: {
-    PropertyInputText,
+    EditorLink,
   },
-  mixins: [fixtureLinksMixin],
   model: {
     prop: `links`,
   },
   props: {
-    name: { // allow name prop just for vue-form; has no real use in here
+    // allow name prop just for vue-form; has no real use in here
+    name: { // eslint-disable-line vue/no-unused-properties
       type: String,
       required: false,
       default: ``,
@@ -80,22 +46,28 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      properties: schemaProperties,
-      linkTypes: Object.keys(schemaProperties.links),
-    };
-  },
   methods: {
-    addLink() {
-      const newLength = this.links.push(getEmptyLink());
+    async addLink() {
+      const newLinks = [...this.links, getEmptyLink()];
+      this.$emit(`input`, newLinks);
 
-      this.$nextTick(() => {
-        this.$refs.linkTypeSelect[newLength - 1].focus();
-      });
+      await this.$nextTick();
+      this.$refs.links[newLinks.length - 1].focus();
     },
-    removeLink(index) {
-      this.$delete(this.links, index);
+    updateLinkProperty(updateLink, key, value) {
+      const updatedLink = {
+        ...updateLink,
+        [key]: value,
+      };
+
+      this.$emit(`input`, this.links.map(
+        link => (link !== updateLink ? link : updatedLink),
+      ));
+    },
+    removeLink(removeLink) {
+      this.$emit(`input`, this.links.filter(
+        link => link !== removeLink,
+      ));
     },
   },
 };

@@ -10,21 +10,15 @@ require(`../lib/load-env-file.js`);
 
 const USER_AGENT = require(`default-user-agent`)();
 const GITHUB_COMMENT_HEADING = `## Broken links update`;
-const TIMEOUT = 30000;
+const TIMEOUT = 30_000;
 
 const SiteCrawler = require(`../lib/site-crawler.js`);
 
-
-const climateStrikeDate = new Date(`2019-11-29`);
-const today = new Date();
-const isClimateStrike = climateStrikeDate.getDate() === today.getDate() &&
-  climateStrikeDate.getMonth() === today.getMonth() &&
-  climateStrikeDate.getFullYear() === today.getFullYear();
-
-if (isClimateStrike) {
-  // do nothing on strike day and return green :)
-  process.exit(0);
-}
+const excludedUrls = [
+  `https://open-fixture-library.org`, // exclude canonical URLs
+  `http://rdm.openlighting.org/model/display`, // exclude auto-generated URLs pointing to the Open Lighting RDM site as the fixture may not exist
+  `https://github.com/OpenLightingProject/open-fixture-library/`, // exclude auto-generated URLs to GitHub as they are flaky and slow down the test
+];
 
 
 (async () => {
@@ -46,8 +40,7 @@ if (isClimateStrike) {
     const externalUrlSet = new Set();
 
     crawler.on(`externalLinkFound`, url => {
-      // exclude canonical URLs and auto-generated ones pointing to the Open Lighting RDM site as the fixture may not exist
-      if (!url.startsWith(`https://open-fixture-library.org`) && !url.startsWith(`http://rdm.openlighting.org/model/display`)) {
+      if (!excludedUrls.some(excludedUrl => url.startsWith(excludedUrl))) {
         externalUrlSet.add(url);
         process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
       }
@@ -109,7 +102,7 @@ async function fetchExternalUrls(externalUrls) {
   const urlResults = [];
 
   const BLOCK_SIZE = 25;
-  const urlBlocks = Array(Math.ceil(externalUrls.length / BLOCK_SIZE)).fill().map(
+  const urlBlocks = new Array(Math.ceil(externalUrls.length / BLOCK_SIZE)).fill().map(
     (_, index) => externalUrls.slice(index * BLOCK_SIZE, (index + 1) * BLOCK_SIZE),
   );
 
@@ -131,8 +124,8 @@ async function fetchExternalUrls(externalUrls) {
   const failingUrlResults = urlResults.filter(result => result.failed);
 
   const fetchTime = new Date() - fetchStartTime;
-  const colorOrPeriod = failingUrlResults.length > 0 ? `:` : `.`;
-  console.log(`\nFetching done in ${fetchTime / 1000}s, ${failingUrlResults.length} of ${externalUrls.length} URLs have failed${colorOrPeriod}`);
+  const colonOrPeriod = failingUrlResults.length > 0 ? `:` : `.`;
+  console.log(`\nFetching done in ${fetchTime / 1000}s, ${failingUrlResults.length} of ${externalUrls.length} URLs have failed${colonOrPeriod}`);
   for (const { url, message } of failingUrlResults) {
     console.log(`- ${chalk.yellow(url)} (${chalk.redBright(message)})`);
   }
@@ -151,7 +144,7 @@ async function testExternalLink(url) {
   const resultHEAD = await getResult(`HEAD`);
 
   if (resultHEAD.failed) {
-    return await getResult(`GET`);
+    return getResult(`GET`);
   }
   return resultHEAD;
 
@@ -172,7 +165,7 @@ async function testExternalLink(url) {
     return new Promise((resolve, reject) => {
       const request = httpModule.get(url, requestOptions, response => {
         resolve({
-          url: url,
+          url,
           message: `${response.statusCode} ${response.statusMessage}`,
           failed: ![200, 302, 307].includes(response.statusCode),
         });
@@ -180,7 +173,7 @@ async function testExternalLink(url) {
 
       request.on(`timeout`, () => {
         resolve({
-          url: url,
+          url,
           message: `Timeout of ${requestOptions.timeout}ms exceeded.`,
           failed: true,
         });
@@ -189,7 +182,7 @@ async function testExternalLink(url) {
 
       request.on(`error`, error => {
         resolve({
-          url: url,
+          url,
           message: error.message,
           failed: true,
         });
@@ -205,26 +198,27 @@ async function testExternalLink(url) {
  * @returns {Promise} Promise that resolves when issue has been updated or rejects if the issue can't be updated.
  */
 async function updateGithubIssue(urlResults) {
-  const requiredEnvVars = [
+  const requiredEnvironmentVariables = [
     `GITHUB_USER_TOKEN`,
     `GITHUB_BROKEN_LINKS_ISSUE_NUMBER`,
-    `TRAVIS_REPO_SLUG`,
-    `TRAVIS_JOB_WEB_URL`,
+    `GITHUB_REPOSITORY`,
+    `GITHUB_RUN_ID`,
   ];
 
-  for (const envVar of requiredEnvVars) {
-    if (!(envVar in process.env)) {
-      console.log(`For updating GitHub issue, environment variable ${envVar} is required. Please define it in your system or in the .env file.`);
+  for (const environmentVariable of requiredEnvironmentVariables) {
+    if (!(environmentVariable in process.env)) {
+      console.log(`For updating GitHub issue, environment variable ${environmentVariable} is required. Please define it in your system or in the .env file.`);
       return;
     }
   }
+
+  const workflowRunUrl = `https://github.com/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`;
 
   const githubClient = new Octokit({
     auth: `token ${process.env.GITHUB_USER_TOKEN}`,
   });
 
-  const repoOwner = process.env.TRAVIS_REPO_SLUG.split(`/`)[0];
-  const repoName = process.env.TRAVIS_REPO_SLUG.split(`/`)[1];
+  const [repoOwner, repoName] = process.env.GITHUB_REPOSITORY.split(`/`);
 
   let issue;
 
@@ -243,8 +237,9 @@ async function updateGithubIssue(urlResults) {
   const newFailingUrlResults = [];
   const fixedUrlResults = [];
   const newLinkData = getUpdatedLinkData();
+  const deletedUrls = Object.keys(oldLinkData).filter(url => !urlResults.some(result => result.url === url));
 
-  console.log(`Updating GitHub issue body at https://github.com/${process.env.TRAVIS_REPO_SLUG}/issues/${process.env.GITHUB_BROKEN_LINKS_ISSUE_NUMBER}`);
+  console.log(`Updating GitHub issue body at https://github.com/${process.env.GITHUB_REPOSITORY}/issues/${process.env.GITHUB_BROKEN_LINKS_ISSUE_NUMBER}`);
   await githubClient.issues.update({
     owner: repoOwner,
     repo: repoName,
@@ -263,7 +258,7 @@ async function updateGithubIssue(urlResults) {
    * @typedef {Object} LinkStatus
    * @property {Boolean} failed Whether the requested URL can be seen as broken.
    * @property {String|null} message User-visible information about the URL's status. May be null for passing links.
-   * @property {String|null} jobUrl Link to the travis job. May be null for passing links.
+   * @property {String|null} jobUrl Link to the workflow run page. May be null for passing links.
    */
 
   /**
@@ -324,7 +319,7 @@ async function updateGithubIssue(urlResults) {
         const currentStatus = {
           failed,
           message,
-          jobUrl: process.env.TRAVIS_JOB_WEB_URL,
+          jobUrl: workflowRunUrl,
         };
         const oldStatuses = oldLinkData[url];
 
@@ -350,7 +345,7 @@ async function updateGithubIssue(urlResults) {
         statuses[0] = {
           failed,
           message,
-          jobUrl: process.env.TRAVIS_JOB_WEB_URL,
+          jobUrl: workflowRunUrl,
         };
         linkData[url] = statuses;
 
@@ -423,14 +418,14 @@ async function updateGithubIssue(urlResults) {
    * @returns {Promise} Promise that resolves as soon as the comment (or no comment) has been created.
    */
   async function createCommentIfNeeded() {
-    if (newFailingUrlResults.length === 0 && fixedUrlResults.length === 0) {
+    if (newFailingUrlResults.length === 0 && fixedUrlResults.length === 0 && deletedUrls.length === 0) {
       return;
     }
 
     const lines = [
       `${GITHUB_COMMENT_HEADING} (${(new Date()).toISOString()})`,
       ``,
-      `[:page_with_curl: Travis job](${process.env.TRAVIS_JOB_WEB_URL})`,
+      `[:page_with_curl: Workflow run](${workflowRunUrl})`,
       ``,
     ];
 
@@ -447,6 +442,12 @@ async function updateGithubIssue(urlResults) {
       lines.push(...fixedUrlResults.map(
         urlResult => `- ${urlResult.url} (${urlResult.message})`,
       ));
+      lines.push(``);
+    }
+
+    if (deletedUrls.length > 0) {
+      lines.push(`### :heavy_check_mark: Fixed URLs (failing URLs not included anymore)`);
+      lines.push(...deletedUrls.map(url => `- ${url}`));
       lines.push(``);
     }
 

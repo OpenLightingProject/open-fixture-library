@@ -1,13 +1,12 @@
 const xml2js = require(`xml2js`);
 const JSZip = require(`jszip`);
-const promisify = require(`util`).promisify;
 
 // see https://github.com/standard-things/esm#getting-started
 require = require(`esm`)(module); // eslint-disable-line no-global-assign
 
-const manufacturers = require(`../../fixtures/manufacturers.json`);
 const { CoarseChannel } = require(`../../lib/model.js`);
 const { scaleDmxValue, scaleDmxRangeIndividually } = require(`../../lib/scale-dmx-values.js`);
+const importJson = require(`../../lib/import-json.js`);
 const { gdtfAttributes, gdtfUnits } = require(`./gdtf-attributes.js`);
 const { getRgbColorFromGdtfColor, followXmlNodeReference } = require(`./gdtf-helpers.js`);
 
@@ -19,16 +18,14 @@ module.exports.version = `0.2.0`;
  * @param {String} authorName The importer's name.
  * @returns {Promise.<Object, Error>} A Promise resolving to an out object
  */
-module.exports.import = async function importGdtf(buffer, filename, authorName) {
-  const parser = new xml2js.Parser();
-
+module.exports.importFixtures = async function importGdtf(buffer, filename, authorName) {
   const fixture = {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
   };
 
   const warnings = [];
 
-  let xmlStr = buffer.toString();
+  let xmlString = buffer.toString();
 
   if (filename.endsWith(`.gdtf`)) {
     // unzip the .gdtf (zip) file and check its description.xml file
@@ -39,21 +36,23 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       throw new Error(`The provided .gdtf (zip) file does not contain a 'description.xml' file in the root directory.`);
     }
 
-    xmlStr = descriptionFile.async(`string`);
+    xmlString = await descriptionFile.async(`string`);
   }
 
-  const xml = await promisify(parser.parseString)(xmlStr);
+  const xml = await xml2js.parseStringPromise(xmlString);
 
   const gdtfFixture = xml.GDTF.FixtureType[0];
   fixture.name = gdtfFixture.$.Name;
   fixture.shortName = gdtfFixture.$.ShortName;
 
-  const manKey = slugify(gdtfFixture.$.Manufacturer);
-  const fixKey = `${manKey}/${slugify(fixture.name)}`;
+  const manufacturerKey = slugify(gdtfFixture.$.Manufacturer);
+  const fixtureKey = `${manufacturerKey}/${slugify(fixture.name)}`;
+
+  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, __dirname);
 
   let manufacturer;
-  if (manKey in manufacturers) {
-    manufacturer = manufacturers[manKey];
+  if (manufacturerKey in manufacturers) {
+    manufacturer = manufacturers[manufacturerKey];
   }
   else {
     manufacturer = {
@@ -100,8 +99,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
   linkSwitchingChannels();
 
   if (`availableChannels` in fixture) {
-    Object.keys(fixture.availableChannels).forEach(chKey => {
-      const channel = fixture.availableChannels[chKey];
+    Object.keys(fixture.availableChannels).forEach(channelKey => {
+      const channel = fixture.availableChannels[channelKey];
       if (channel.defaultValue === null) {
         delete channel.defaultValue;
       }
@@ -111,8 +110,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
   if (`templateChannels` in fixture) {
     warnings.push(`Please fix the visual representation of the matrix.`);
 
-    Object.keys(fixture.templateChannels).forEach(chKey => {
-      const channel = fixture.templateChannels[chKey];
+    Object.keys(fixture.templateChannels).forEach(channelKey => {
+      const channel = fixture.templateChannels[channelKey];
       if (channel.defaultValue === null) {
         delete channel.defaultValue;
       }
@@ -124,13 +123,13 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
   return {
     manufacturers: {
-      [manKey]: manufacturer,
+      [manufacturerKey]: manufacturer,
     },
     fixtures: {
-      [fixKey]: fixture,
+      [fixtureKey]: fixture,
     },
     warnings: {
-      [fixKey]: warnings,
+      [fixtureKey]: warnings,
     },
   };
 
@@ -178,21 +177,21 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
    * Adds an RDM section to the OFL fixture and manufacturer if applicable.
    */
   function addRdmInfo() {
-    if (!(`Protocols` in gdtfFixture) || !(`FTRDM` in gdtfFixture.Protocols[0] || `RDM` in gdtfFixture.Protocols[0])) {
+    if (!(`Protocols` in gdtfFixture) || gdtfFixture.Protocols[0] === `` || !(`FTRDM` in gdtfFixture.Protocols[0] || `RDM` in gdtfFixture.Protocols[0])) {
       return;
     }
 
     const rdmData = (gdtfFixture.Protocols[0].FTRDM || gdtfFixture.Protocols[0].RDM)[0];
     const softwareVersion = getLatestSoftwareVersion();
 
-    manufacturer.rdmId = parseInt(rdmData.$.ManufacturerID, 16);
+    manufacturer.rdmId = Number.parseInt(rdmData.$.ManufacturerID, 16);
     fixture.rdm = {
-      modelId: parseInt(rdmData.$.DeviceModelID, 16),
+      modelId: Number.parseInt(rdmData.$.DeviceModelID, 16),
       softwareVersion: softwareVersion.name,
     };
 
     softwareVersion.personalities.forEach(personality => {
-      const index = parseInt(personality.$.Value.replace(`0x`, ``), 16);
+      const index = Number.parseInt(personality.$.Value.replace(`0x`, ``), 16);
       const mode = followXmlNodeReference(gdtfFixture.DMXModes[0].DMXMode, personality.$.DMXMode);
       mode._oflRdmPersonalityIndex = index;
     });
@@ -203,12 +202,12 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
      */
     function getLatestSoftwareVersion() {
       const maxSoftwareVersion = (rdmData.SoftwareVersionID || []).reduce(
-        (maxVersion, currVersion) => ((maxVersion && maxVersion.$.Value > currVersion.$.Value) ? maxVersion : currVersion),
+        (maxVersion, currentVersion) => ((maxVersion && maxVersion.$.Value > currentVersion.$.Value) ? maxVersion : currentVersion),
       );
 
       if (maxSoftwareVersion) {
         return {
-          name: maxSoftwareVersion.Value,
+          name: maxSoftwareVersion.$.Value,
           personalities: maxSoftwareVersion.DMXPersonality,
         };
       }
@@ -471,9 +470,9 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     // remove unnecessary name and dmxValueResolution properties
     // and fill/remove fineChannelAliases
     availableChannels.concat(templateChannels).forEach(channelWrapper => {
-      const { key: chKey, channel, maxResolution } = channelWrapper;
+      const { key: channelKey, channel, maxResolution } = channelWrapper;
 
-      if (chKey === channel.name) {
+      if (channelKey === channel.name) {
         delete channel.name;
       }
 
@@ -482,10 +481,10 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       }
       else {
         // CoarseChannel.RESOLUTION_16BIT
-        channel.fineChannelAliases.push(`${chKey} fine`);
+        channel.fineChannelAliases.push(`${channelKey} fine`);
 
-        for (let i = CoarseChannel.RESOLUTION_24BIT; i <= maxResolution; i++) {
-          channel.fineChannelAliases.push(`${chKey} fine^${i - 1}`);
+        for (let index = CoarseChannel.RESOLUTION_24BIT; index <= maxResolution; index++) {
+          channel.fineChannelAliases.push(`${channelKey} fine^${index - 1}`);
         }
       }
 
@@ -527,7 +526,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     );
 
     const channel = {
-      name: name,
+      name,
       fineChannelAliases: [],
       dmxValueResolution: ``,
       defaultValue: null,
@@ -555,7 +554,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
     // check if we already added the same channel in another mode
     const sameChannel = channelWrappers.find(
-      ch => JSON.stringify(ch.channel) === JSON.stringify(channel) && !ch.modeIndices.includes(modeIndex),
+      channelWrapper => JSON.stringify(channelWrapper.channel) === JSON.stringify(channel) && !channelWrapper.modeIndices.includes(modeIndex),
     );
     if (sameChannel) {
       gdtfChannel._oflChannelKey = sameChannel.key;
@@ -570,7 +569,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
     gdtfChannel._oflChannelKey = channelKey;
     channelWrappers.push({
       key: channelKey,
-      channel: channel,
+      channel,
       maxResolution: getChannelResolution(),
       modeIndices: [modeIndex],
     });
@@ -587,7 +586,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
           attribute => attribute.$.Name === channelAttribute,
         ).$.Pretty || channelAttribute;
       }
-      catch (error) {
+      catch {
         return channelAttribute;
       }
     }
@@ -649,12 +648,12 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
             gdtfChannelSet._dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelSet.$.DMXFrom || `0/1`);
 
-            let physicalFrom = parseFloat(gdtfChannelSet.$.PhysicalFrom);
-            if (isNaN(physicalFrom)) {
+            let physicalFrom = Number.parseFloat(gdtfChannelSet.$.PhysicalFrom);
+            if (Number.isNaN(physicalFrom)) {
               physicalFrom = 0;
             }
-            let physicalTo = parseFloat(gdtfChannelSet.$.PhysicalTo);
-            if (isNaN(physicalTo)) {
+            let physicalTo = Number.parseFloat(gdtfChannelSet.$.PhysicalTo);
+            if (Number.isNaN(physicalTo)) {
               physicalTo = 1;
             }
 
@@ -732,20 +731,20 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
       }
 
       /**
-       * @param {String} attrName The GDTF attribute name.
+       * @param {String} attributeName The GDTF attribute name.
        * @returns {Object} The capability type data from @file gdtf-attributes.js
        */
-      function getCapabilityTypeData(attrName) {
-        let capabilityTypeData = gdtfAttributes[attrName];
+      function getCapabilityTypeData(attributeName) {
+        let capabilityTypeData = gdtfAttributes[attributeName];
 
         if (!capabilityTypeData) {
-          const enumeratedAttributeName = attrName.replace(/\d+/, `(n)`).replace(/\d+/, `(m)`);
+          const enumeratedAttributeName = attributeName.replace(/\d+/, `(n)`).replace(/\d+/, `(m)`);
           capabilityTypeData = gdtfAttributes[enumeratedAttributeName];
         }
 
         if (!capabilityTypeData) {
           return {
-            oflType: `Unknown (${attrName})`, // will trigger an error in the validation
+            oflType: `Unknown (${attributeName})`, // will trigger an error in the validation
             oflProperty: `physical`, // will also trigger an error, but the information could be useful
           };
         }
@@ -755,24 +754,24 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
         }
 
         // save the inherited result for later access
-        gdtfAttributes[attrName] = Object.assign(
+        gdtfAttributes[attributeName] = Object.assign(
           {},
           getCapabilityTypeData(capabilityTypeData.inheritFrom),
           capabilityTypeData,
         );
-        delete gdtfAttributes[attrName].inheritFrom;
+        delete gdtfAttributes[attributeName].inheritFrom;
 
-        return gdtfAttributes[attrName];
+        return gdtfAttributes[attributeName];
       }
 
       /**
        * @param {Function|null} hook The hook function, or a falsy value.
-       * @param  {...*} args The arguments to pass to the hook.
+       * @param {...*} parameters The arguments to pass to the hook.
        * @returns {*} The return value of the hook, or null if no hook was called.
        */
-      function callHook(hook, ...args) {
+      function callHook(hook, ...parameters) {
         if (hook) {
-          return hook(...args);
+          return hook(...parameters);
         }
 
         return null;
@@ -862,8 +861,8 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
 
       // make unique by appending ' 2', ' 3', ... if necessary
       let duplicates = 1;
-      const hasChannelKey = ch => ch.key === key;
-      while (channelWrappers.some(hasChannelKey)) {
+      const keyExists = () => channelWrappers.some(channelWrapper => channelWrapper.key === key);
+      while (keyExists()) {
         duplicates++;
         key = `${name} ${duplicates}`;
       }
@@ -899,7 +898,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
           try {
             capability.dmxRange = scaleDmxRangeIndividually(startValue, startResolution, endValue, endResolution, scaleToResolution);
           }
-          catch (valueOutsideResolutionError) {
+          catch {
             // will be caught by validation
             capability.dmxRange = [startValue, endValue];
           }
@@ -992,7 +991,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
           repeatFor: usedMatrixPixels,
           channelOrder: `perPixel`,
           templateChannels: channelWrapper.channels.map(
-            chKey => `${chKey} $pixelKey`,
+            channelKey => `${channelKey} $pixelKey`,
           ),
         });
       });
@@ -1032,31 +1031,27 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
      * @param {Array.<DmxBreakWrapper>} dmxBreakWrappers The DMXBreak wrapper array.
      */
     function addChannelKeyToDmxBreakWrapper(gdtfChannel, dmxBreakWrappers) {
-      const chKey = gdtfChannel._oflChannelKey;
-      const oflChannel = fixture.availableChannels[chKey];
+      const channelKey = gdtfChannel._oflChannelKey;
+      const oflChannel = fixture.availableChannels[channelKey];
 
       const channels = dmxBreakWrappers[dmxBreakWrappers.length - 1].channels;
 
-      let channelOffsets;
-      const channelKeys = [chKey].concat(oflChannel.fineChannelAliases);
+      const channelKeys = [channelKey].concat(oflChannel.fineChannelAliases);
 
       // The Offset attribute replaced the Coarse/Fine/Ultra/Uber attributes in GDTF v1.0
-      if (xmlNodeHasNotNoneAttribute(gdtfChannel, `Offset`)) {
-        channelOffsets = gdtfChannel.$.Offset.split(`,`);
-      }
-      else {
-        channelOffsets = [
+      const channelOffsets = xmlNodeHasNotNoneAttribute(gdtfChannel, `Offset`)
+        ? gdtfChannel.$.Offset.split(`,`)
+        : [
           gdtfChannel.$.Coarse,
           gdtfChannel.$.Fine,
           gdtfChannel.$.Ultra,
           gdtfChannel.$.Uber,
         ];
-      }
 
       channelOffsets.forEach((channelOffset, index) => {
-        const dmxChannelNumber = parseInt(channelOffset, 10);
+        const dmxChannelNumber = Number.parseInt(channelOffset, 10);
 
-        if (!isNaN(dmxChannelNumber)) {
+        if (!Number.isNaN(dmxChannelNumber)) {
           channels[dmxChannelNumber - 1] = channelKeys[index];
         }
       });
@@ -1248,7 +1243,7 @@ module.exports.import = async function importGdtf(buffer, filename, authorName) 
      */
     function getChannelResolution(channel) {
       if (`dmxValueResolution` in channel) {
-        return parseInt(channel.dmxValueResolution, 10) * 8;
+        return Number.parseInt(channel.dmxValueResolution, 10) * 8;
       }
 
       if (`fineChannelAliases` in channel) {
@@ -1275,52 +1270,52 @@ function xmlNodeHasNotNoneAttribute(xmlNode, attribute) {
  * the form "dd.MM.yyyy HH:mm:ss", so those have to be converted to the ISO format.
  *
  * @see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-date
- * @param {String|undefined} dateStr An ISO date string or a date in the form "dd.MM.yyyy HH:mm:ss"
- * @param {String} fallbackDateStr A fallback date string to return if the parsed date is not valid.
+ * @param {String|undefined} dateString An ISO date string or a date in the form "dd.MM.yyyy HH:mm:ss"
+ * @param {String} fallbackDateString A fallback date string to return if the parsed date is not valid.
  * @returns {String} A date string in the form "YYYY-MM-DD" (may be the provided fallback date string).
  */
-function getIsoDateFromGdtfDate(dateStr, fallbackDateStr) {
-  if (!dateStr) {
-    return fallbackDateStr;
+function getIsoDateFromGdtfDate(dateString, fallbackDateString) {
+  if (!dateString) {
+    return fallbackDateString;
   }
 
   const isoDateRegex = /^(\d{4}-\d{2}-\d{2})T/;
-  if (dateStr.match(isoDateRegex)) {
+  if (dateString.match(isoDateRegex)) {
     return RegExp.$1;
   }
 
   const germanDateTimeRegex = /^([0-3]?\d)\.([01]?\d)\.(\d{4})\s+\d?\d:\d?\d:\d?\d$/;
-  const match = dateStr.match(germanDateTimeRegex);
+  const match = dateString.match(germanDateTimeRegex);
 
   try {
     const [, day, month, year] = match;
-    const date = new Date(Date.UTC(parseInt(year, 10), parseInt(month, 10) - 1, day));
+    const date = new Date(Date.UTC(Number.parseInt(year, 10), Number.parseInt(month, 10) - 1, day));
 
     return date.toISOString().replace(/T.*/, ``);
   }
-  catch (error) {
-    return fallbackDateStr;
+  catch {
+    return fallbackDateString;
   }
 }
 
 /**
- * @param {String} dmxValueStr GDTF DMX value in the form "128/2", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-DMXValue
+ * @param {String} dmxValueString GDTF DMX value in the form "128/2", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-DMXValue
  * @returns {[Number, Resolution]} Array containing DMX value and DMX resolution.
  */
-function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueStr) {
+function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueString) {
   try {
-    const [, value, resolution] = dmxValueStr.match(/^(\d+)\/(\d)$/);
-    return [parseInt(value, 10), parseInt(resolution, 10)];
+    const [, value, resolution] = dmxValueString.match(/^(\d+)\/(\d)$/);
+    return [Number.parseInt(value, 10), Number.parseInt(resolution, 10)];
   }
-  catch (error) {
-    return [parseInt(dmxValueStr, 10) || 0, 1];
+  catch {
+    return [Number.parseInt(dmxValueString, 10) || 0, 1];
   }
 }
 
 /**
- * @param {String} str The string to slugify.
+ * @param {String} string The string to slugify.
  * @returns {String} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
-function slugify(str) {
-  return str.toLowerCase().replace(/[^a-z0-9-]+/g, ` `).trim().replace(/\s+/g, `-`);
+function slugify(string) {
+  return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
 }

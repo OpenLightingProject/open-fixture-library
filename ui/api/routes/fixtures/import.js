@@ -1,6 +1,4 @@
-const path = require(`path`);
-
-const importPlugins = require(`../../../../plugins/plugins.json`).importPlugins;
+const importJson = require(`../../../../lib/import-json.js`);
 const { checkFixture } = require(`../../../../tests/fixture-valid.js`);
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
@@ -44,12 +42,14 @@ async function importFixtureFile({ request }) {
  * @returns {FixtureCreateResult} The imported fixtures (and manufacturers) with warnings and errors.
  */
 async function importFixture(body) {
+  const { importPlugins } = await importJson(`../../../../plugins/plugins.json`, __dirname);
+
   if (!body.plugin || !importPlugins.includes(body.plugin)) {
     throw new Error(`'${body.plugin}' is not a valid import plugin.`);
   }
 
-  const plugin = require(path.join(__dirname, `../../../../plugins`, body.plugin, `import.js`));
-  const { manufacturers, fixtures, warnings } = await plugin.import(
+  const plugin = require(`../../../../plugins/${body.plugin}/import.js`);
+  const { manufacturers, fixtures, warnings } = await plugin.importFixtures(
     Buffer.from(body.fileContentBase64, `base64`),
     body.fileName,
     body.author,
@@ -66,14 +66,20 @@ async function importFixture(body) {
     errors: {},
   };
 
-  Object.keys(result.fixtures).forEach(key => {
-    const [manKey, fixKey] = key.split(`/`);
+  const oflManufacturers = await importJson(`../../../../fixtures/manufacturers.json`, __dirname);
 
-    const checkResult = checkFixture(manKey, fixKey, result.fixtures[key]);
+  for (const [key, fixture] of Object.entries(result.fixtures)) {
+    const [manufacturerKey, fixtureKey] = key.split(`/`);
+
+    const checkResult = await checkFixture(manufacturerKey, fixtureKey, fixture);
+
+    if (!(manufacturerKey in result.manufacturers)) {
+      result.manufacturers[manufacturerKey] = oflManufacturers[manufacturerKey];
+    }
 
     result.warnings[key] = result.warnings[key].concat(checkResult.warnings);
     result.errors[key] = checkResult.errors;
-  });
+  }
 
   return result;
 }

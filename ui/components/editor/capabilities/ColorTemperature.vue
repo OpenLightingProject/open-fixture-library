@@ -54,18 +54,15 @@ export default {
   data() {
     return {
       properties: schemaProperties,
-      defaultData: {
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         colorTemperature: null,
         colorTemperatureStart: ``,
         colorTemperatureEnd: ``,
         comment: ``,
       },
     };
-  },
-  computed: {
-    colors() {
-      return this.properties.capabilityTypes.ColorIntensity.properties.color.enum;
-    },
   },
 };
 </script>

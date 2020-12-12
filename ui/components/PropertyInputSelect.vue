@@ -6,7 +6,7 @@
     :class="{ empty: value === `` }">
     <option :disabled="required" value="">unknown</option>
     <option
-      v-for="item in schemaProperty.enum"
+      v-for="item of schemaProperty.enum"
       :key="item"
       :value="item">{{ item }}</option>
     <option
@@ -26,11 +26,6 @@ export default {
       type: Boolean,
       required: false,
       default: false,
-    },
-    hint: {
-      type: String,
-      required: false,
-      default: null,
     },
     additionHint: {
       type: String,

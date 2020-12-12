@@ -6,13 +6,13 @@
     :shown="channel.editMode !== `` && channel.editMode !== `edit-?`"
     :title="title"
     :class="`channel-dialog-${channel.editMode}`"
-    @show="onChannelDialogOpen"
-    @hide="onChannelDialogClose">
+    @show="onChannelDialogOpen()"
+    @hide="onChannelDialogClose()">
 
     <VueForm
       :state="formstate"
       action="#"
-      @submit.prevent="onSubmit">
+      @submit.prevent="onSubmit()">
 
       <div v-if="channel.editMode === `add-existing`">
         <LabeledInput :formstate="formstate" name="existingChannelUuid" label="Select an existing channel">
@@ -23,7 +23,7 @@
             style="width: 100%;"
             required>
             <option
-              v-for="channelUuid in currentModeUnchosenChannels"
+              v-for="channelUuid of currentModeUnchosenChannels"
               :key="channelUuid"
               :value="channelUuid">
               {{ getChannelName(channelUuid) }}
@@ -31,7 +31,7 @@
           </select>
         </LabeledInput>
 
-        <p>or <a href="#create-channel" @click.prevent="setEditModeCreate">create a new channel</a></p>
+        <p>or <a href="#create-channel" @click.prevent="setEditModeCreate()">create a new channel</a></p>
       </div>
 
       <div v-else>
@@ -46,7 +46,7 @@
             list="channel-name-suggestions"
             title="Please start with an uppercase letter or a number. Don't create fine channels here, set its resolution below instead."
             class="channelName"
-            @blur="onChannelNameChanged" />
+            @blur="onChannelNameChanged($event)" />
         </LabeledInput>
 
         <datalist id="channel-name-suggestions" hidden>
@@ -57,7 +57,7 @@
           <option>Strobe</option>
           <option>Strobe Speed</option>
           <option>Strobe Duration</option>
-          <option v-for="color in singleColors" :key="color">{{ color }}</option>
+          <option v-for="color of singleColors" :key="color">{{ color }}</option>
           <option>Color Macros</option>
           <option>Color Presets</option>
           <option>Color Wheel</option>
@@ -96,7 +96,7 @@
         </datalist>
 
         <LabeledInput :formstate="formstate" name="resolution" label="Channel resolution">
-          <select v-model="channel.resolution" name="resolution" @change="onResolutionChanged">
+          <select v-model="channel.resolution" name="resolution" @change="onResolutionChanged()">
             <option :value="constants.RESOLUTION_8BIT">8 bit (No fine channels)</option>
             <option :value="constants.RESOLUTION_16BIT">16 bit (1 fine channel)</option>
             <option :value="constants.RESOLUTION_24BIT">24 bit (2 fine channels)</option>
@@ -112,7 +112,7 @@
             v-model="channel.dmxValueResolution"
             name="dmxValueResolution"
             required
-            @change="onDmxValueResolutionChanged">
+            @change="onDmxValueResolutionChanged()">
             <option :value="constants.RESOLUTION_8BIT">8 bit (range 0…255)</option>
             <option v-if="channel.resolution >= constants.RESOLUTION_16BIT" :value="constants.RESOLUTION_16BIT">16 bit (range 0…65535)</option>
             <option v-if="channel.resolution >= constants.RESOLUTION_24BIT" :value="constants.RESOLUTION_24BIT">24 bit (range 0…16777215)</option>
@@ -138,14 +138,14 @@
             href="#expand-all"
             class="icon-button expand-all"
             title="Expand all capabilities"
-            @click.prevent="openDetails">
+            @click.prevent="openDetails()">
             <OflSvg name="chevron-double-down" />
           </a>
           <a
             href="#collapse-all"
             class="icon-button collapse-all"
             title="Collapse all capabilities"
-            @click.prevent="closeDetails">
+            @click.prevent="closeDetails()">
             <OflSvg name="chevron-double-up" />
           </a>
         </template></h3>
@@ -155,17 +155,16 @@
           :wizard="channel.wizard"
           :channel="channel"
           :resolution="channel.dmxValueResolution"
-          :formstate="formstate"
-          @close="onWizardClose" />
+          @close="onWizardClose($event)" />
 
         <div v-else class="capability-editor">
           <EditorCapability
-            v-for="(cap, index) in channel.capabilities"
+            v-for="(cap, index) of channel.capabilities"
             ref="capabilities"
             :key="cap.uuid"
             :channel="channel"
             :formstate="formstate"
-            :cap-index="index"
+            :capability-index="index"
             :resolution="channel.dmxValueResolution"
             @insert-capability-before="insertEmptyCapability(index)"
             @insert-capability-after="insertEmptyCapability(index + 1)" />
@@ -197,7 +196,6 @@
         <LabeledInput :formstate="formstate" name="constant" label="Constant?">
           <PropertyInputBoolean
             v-model="channel.constant"
-            :schema-property="properties.channel.constant"
             name="constant"
             label="Channel is fixed to default DMX value" />
         </LabeledInput>
@@ -328,12 +326,13 @@ export default {
           );
 
           const otherFineChannels = modeChannels.filter(
-            ch => `coarseChannelId` in ch && ch.coarseChannelId === channel.coarseChannelId,
+            otherChannel => `coarseChannelId` in otherChannel && otherChannel.coarseChannelId === channel.coarseChannelId,
           );
 
-          const maxFoundResolution = Math.max(constants.RESOLUTION_8BIT, ...otherFineChannels.map(
-            ch => ch.resolution,
-          ));
+          const maxFoundResolution = Math.max(
+            constants.RESOLUTION_8BIT,
+            ...otherFineChannels.map(otherFineChannel => otherFineChannel.resolution),
+          );
 
           if (maxFoundResolution !== channel.resolution - 1) {
             // the finest channel currently used is not its next coarser channel
@@ -370,7 +369,9 @@ export default {
       return `Edit channel`;
     },
     areCapabilitiesChanged() {
-      return this.channel.capabilities.some(isCapabilityChanged);
+      return this.channel.capabilities.some(
+        capability => isCapabilityChanged(capability),
+      );
     },
     submitButtonTitle() {
       if (this.channel.editMode === `add-existing`) {
@@ -389,7 +390,7 @@ export default {
   },
   watch: {
     channel: {
-      handler: function() {
+      handler() {
         if (isChannelChanged(this.channel)) {
           this.$emit(`channel-changed`);
           this.channelChanged = true;
@@ -423,8 +424,8 @@ export default {
       }
       else if (this.channel.editMode === `edit-all` || this.channel.editMode === `edit-duplicate`) {
         const channel = this.fixture.availableChannels[this.channel.uuid];
-        Object.keys(channel).forEach(prop => {
-          this.channel[prop] = clone(channel[prop]);
+        Object.keys(channel).forEach(property => {
+          this.channel[property] = clone(channel[property]);
         });
       }
 
@@ -456,43 +457,43 @@ export default {
         return;
       }
 
-      const cap = this.channel.capabilities[0];
+      const capability = this.channel.capabilities[0];
       const changeCapabilityType = this.$refs.capabilities[0].$refs.capabilityTypeData.changeCapabilityType;
 
       const matchingColor = this.singleColors.find(
         color => channelName.toLowerCase().includes(color.toLowerCase()),
       );
       if (matchingColor) {
-        cap.type = `ColorIntensity`;
-        cap.typeData.color = matchingColor;
+        capability.type = `ColorIntensity`;
+        capability.typeData.color = matchingColor;
         changeCapabilityType();
         return;
       }
 
       const capabilityTypeSuggestions = {
-        NoFunction: /^(?:No function|Nothing|Reserved)$/i,
-        StrobeSpeed: /^(?:Strobe Speed|Strobe Rate)$/i,
-        StrobeDuration: /^(?:Strobe Duration|Flash Duration)$/i,
-        Intensity: /^(?:Intensity|Dimmer|Master Dimmer)$/i,
-        ColorTemperature: /^(?:Colou?r Temperature(?: Correction)?|CTC|CTO|CTB)$/i,
-        Pan: /^(?:Pan|Horizontal Movement)$/i,
-        Tilt: /^(?:Tilt|Vertical Movement)$/i,
-        PanTiltSpeed: /^(?:Pan ?\/? ?Tilt|Movement) (?:Speed|Time|Duration)$/i,
-        WheelShake: /\bShake\b/i,
-        WheelSlotRotation: /Gobo ?\d* (?:Rotation|Index)/i,
-        WheelRotation: /Wheels? ?\d* (?:Rotation|Index)/i,
-        WheelSlot: /Wheel|Dis[ck]|Gobos? ?\d*$/i,
-        EffectSpeed: /^(?:Effect|Program|Macro) Speed$/i,
-        EffectDuration: /^(?:Effect|Program|Macro) (?:Time|Duration)$/i,
-        SoundSensitivity: /^(?:Sound|Mic|Microphone) Sensitivity$/i,
-        Focus: /^Focus$/i,
-        Zoom: /^Zoom$/i,
-        Iris: /^Iris$/i,
-        Frost: /^Frost$/i,
-        Fog: /^(?:Fog|Haze)$/i,
-        FogOutput: /^(?:Fog (?:Output|Intensity|Emission)|Pump)$/i,
-        Speed: /^.*?Speed$/i,
-        Time: /^.*?(?:Time|Duration)$/i,
+        NoFunction: /^(?:no function|nothing|reserved)$/i,
+        StrobeSpeed: /^(?:strobe speed|strobe rate)$/i,
+        StrobeDuration: /^(?:strobe duration|flash duration)$/i,
+        Intensity: /^(?:intensity|dimmer|master dimmer)$/i,
+        ColorTemperature: /^(?:colou?r temperature(?: correction)?|ctc|cto|ctb)$/i,
+        Pan: /^(?:pan|horizontal movement)$/i,
+        Tilt: /^(?:tilt|vertical movement)$/i,
+        PanTiltSpeed: /^(?:pan ?\/? ?tilt|movement) (?:speed|time|duration)$/i,
+        WheelShake: /\bshake\b/i,
+        WheelSlotRotation: /gobo ?\d* (?:rotation|index)/i,
+        WheelRotation: /wheels? ?\d* (?:rotation|index)/i,
+        WheelSlot: /wheel|dis[ck]|gobos? ?\d*$/i,
+        EffectSpeed: /^(?:effect|program|macro) speed$/i,
+        EffectDuration: /^(?:effect|program|macro) (?:time|duration)$/i,
+        SoundSensitivity: /^(?:sound|mic|microphone) sensitivity$/i,
+        Focus: /^focus$/i,
+        Zoom: /^zoom$/i,
+        Iris: /^iris$/i,
+        Frost: /^frost$/i,
+        Fog: /^(?:fog|haze)$/i,
+        FogOutput: /^(?:fog (?:output|intensity|emission)|pump)$/i,
+        Speed: /^.*?speed$/i,
+        Time: /^.*?(?:time|duration)$/i,
       };
 
       const matchingType = Object.keys(capabilityTypeSuggestions).find(
@@ -500,7 +501,7 @@ export default {
       );
 
       if (matchingType) {
-        cap.type = matchingType;
+        capability.type = matchingType;
         changeCapabilityType();
       }
     },
@@ -519,8 +520,8 @@ export default {
       this.$nextTick(() => {
         let index = this.channel.capabilities.length - 1;
         while (index >= 0) {
-          const cap = this.channel.capabilities[index];
-          if (cap.dmxRange !== null && cap.dmxRange[1] !== null && !this.channel.wizard.show) {
+          const capability = this.channel.capabilities[index];
+          if (capability.dmxRange !== null && capability.dmxRange[1] !== null && !this.channel.wizard.show) {
             this.$refs.capabilities[index].onEndUpdated();
             break;
           }
@@ -533,14 +534,14 @@ export default {
       if (this.formstate.$invalid) {
         const invalidFields = document.querySelectorAll(`#channel-dialog .vf-field-invalid`);
 
-        for (let i = 0; i < invalidFields.length; i++) {
-          const enclosingDetails = invalidFields[i].closest(`details:not([open])`);
+        for (let index = 0; index < invalidFields.length; index++) {
+          const enclosingDetails = invalidFields[index].closest(`details:not([open])`);
 
           if (enclosingDetails) {
             enclosingDetails.open = true;
 
             // current field could be enclosed another time, so repeat
-            i--;
+            index--;
           }
         }
 
@@ -586,10 +587,10 @@ export default {
       this.fixture.availableChannels[this.channel.uuid] = getSanitizedChannel(this.channel);
 
       if (previousResolution > this.channel.resolution) {
-        for (const chId of Object.keys(this.fixture.availableChannels)) {
-          const channel = this.fixture.availableChannels[chId];
+        for (const channelId of Object.keys(this.fixture.availableChannels)) {
+          const channel = this.fixture.availableChannels[channelId];
           if (channel.coarseChannelId === this.channel.uuid && channel.resolution > this.channel.resolution) {
-            this.$emit(`remove-channel`, chId);
+            this.$emit(`remove-channel`, channelId);
           }
         }
       }
@@ -637,10 +638,10 @@ export default {
     addFineChannels(coarseChannel, offset, addToMode) {
       const addedFineChannelUuids = [];
 
-      for (let i = offset; i <= coarseChannel.resolution; i++) {
-        const fineChannel = getEmptyFineChannel(coarseChannel.uuid, i);
+      for (let index = offset; index <= coarseChannel.resolution; index++) {
+        const fineChannel = getEmptyFineChannel(coarseChannel.uuid, index);
         this.$set(this.fixture.availableChannels, fineChannel.uuid, getSanitizedChannel(fineChannel));
-        addedFineChannelUuids[i] = fineChannel.uuid;
+        addedFineChannelUuids[index] = fineChannel.uuid;
 
         if (addToMode) {
           this.currentMode.channels.push(fineChannel.uuid);
@@ -672,10 +673,10 @@ export default {
       this.setWizardVisibility(false);
 
       this.$nextTick(() => {
-        const firstNewCap = this.$refs.capabilities[insertIndex];
-        const scrollContainer = firstNewCap.$el.closest(`dialog`);
+        const firstNewCapability = this.$refs.capabilities[insertIndex];
+        const scrollContainer = firstNewCapability.$el.closest(`dialog`);
 
-        scrollIntoView(firstNewCap.$el, {
+        scrollIntoView(firstNewCapability.$el, {
           time: 0,
           align: {
             top: 0,
@@ -683,7 +684,7 @@ export default {
             topOffset: 100,
           },
           isScrollable: target => target === scrollContainer,
-        }, () => firstNewCap.$refs.firstInput.focus());
+        }, () => firstNewCapability.$refs.firstInput.focus());
       });
     },
 

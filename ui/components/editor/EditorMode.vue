@@ -76,7 +76,7 @@
       <Draggable :list="mode.channels" v-bind="dragOptions">
         <TransitionGroup class="mode-channels" tag="ol">
           <li
-            v-for="channelUuid in mode.channels"
+            v-for="channelUuid of mode.channels"
             :key="channelUuid"
             :data-channel-uuid="channelUuid">
 
@@ -124,7 +124,7 @@
       </FieldMessages>
     </Validate>
 
-    <a href="#add-channel" class="button primary" @click.prevent="addChannel">add channel</a>
+    <a href="#add-channel" class="button primary" @click.prevent="addChannel()">add channel</a>
 
   </section>
 </template>
@@ -241,12 +241,12 @@ export default {
         group: {
           name: `mode`,
           pull: `clone`,
-          put: (to, from, dragElem, event) => {
+          put: (to, from, dragElement, event) => {
             if (from === to) {
               return false;
             }
 
-            const channelUuid = dragElem.getAttribute(`data-channel-uuid`);
+            const channelUuid = dragElement.getAttribute(`data-channel-uuid`);
             const modeUuid = to.el.closest(`.fixture-mode`).getAttribute(`data-mode-uuid`);
             const targetMode = this.fixture.modes.find(mode => mode.uuid === modeUuid);
 
@@ -308,7 +308,7 @@ export default {
         uuid: channelUuid,
       });
     },
-    addChannel: function() {
+    addChannel() {
       this.$emit(`open-channel-editor`, {
         modeId: this.mode.uuid,
         editMode: `add-existing`,
@@ -331,11 +331,9 @@ export default {
         resolution = channel.resolution;
       }
 
-      for (const chId of Object.keys(this.fixture.availableChannels)) {
-        const ch = this.fixture.availableChannels[chId];
-        if (`coarseChannelId` in ch && ch.coarseChannelId === coarseChannelId
-          && ch.resolution > resolution) {
-          this.fixtureEditor.removeChannel(ch.uuid, this.mode.uuid);
+      for (const otherChannel of Object.value(this.fixture.availableChannels)) {
+        if (otherChannel.coarseChannelId === coarseChannelId && otherChannel.resolution > resolution) {
+          this.fixtureEditor.removeChannel(otherChannel.uuid, this.mode.uuid);
         }
       }
 

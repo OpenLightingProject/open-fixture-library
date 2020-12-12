@@ -1,12 +1,18 @@
-const path = require(`path`);
+import path from 'path';
 
-module.exports = {
+import plugins from './plugins/plugins.json';
+import register from './fixtures/register.json';
+import { fixtureFromRepository } from './lib/model.js';
+
+export default {
   srcDir: `./ui/`,
   modules: [
     [`@nuxtjs/axios`, {
       browserBaseURL: `/`,
     }],
     `cookie-universal-nuxt`,
+    `@nuxtjs/robots`,
+    `@nuxtjs/sitemap`,
   ],
   plugins: [
     `~/plugins/embetty-vue.js`,
@@ -26,7 +32,7 @@ module.exports = {
     `embetty-vue/dist/embetty-vue.css`,
   ],
   build: {
-    extend(config, ctx) {
+    extend(config, context) {
       // exclude /assets/icons from url-loader
       const urlLoader = config.module.rules.find(rule => `use` in rule && rule.use[0].loader === `url-loader`);
       urlLoader.exclude = path.resolve(__dirname, `ui/assets/icons`);
@@ -81,7 +87,7 @@ module.exports = {
     color: `#1e88e5`,
   },
   head() {
-    const htmlAttrs = {
+    const htmlAttributes = {
       lang: `en`,
       'data-theme': this.$cookies.get(`__Host-theme`) || this.$cookies.get(`theme`),
     };
@@ -222,10 +228,71 @@ module.exports = {
     ];
 
     return {
-      htmlAttrs,
+      htmlAttrs: htmlAttributes,
       titleTemplate,
       meta,
       link,
     };
+  },
+  robots() {
+    if (process.env.ALLOW_SEARCH_INDEXING !== `allowed`) {
+      return {
+        UserAgent: `*`,
+        Disallow: `/`,
+      };
+    }
+
+    return {
+      UserAgent: `*`,
+      Disallow: plugins.exportPlugins.map(pluginKey => `/*.${pluginKey}$`),
+      Allow: `/`,
+      Sitemap: `${process.env.WEBSITE_URL}sitemap.xml`,
+    };
+  },
+  sitemap: {
+    hostname: process.env.WEBSITE_URL,
+    gzip: true,
+    async routes() {
+      const staticUrls = [
+        { url: `/`, changefreq: `daily` },
+        { url: `/fixture-editor`, changefreq: `monthly` },
+        { url: `/import-fixture-file`, changefreq: `monthly` },
+        { url: `/manufacturers`, changefreq: `monthly` },
+        { url: `/categories`, changefreq: `monthly` },
+        { url: `/about`, changefreq: `monthly` },
+        { url: `/about/plugins`, changefreq: `monthly` },
+        { url: `/rdm`, changefreq: `yearly` },
+        { url: `/search`, changefreq: `yearly` },
+      ];
+
+      const manufacturerUrlPromises = Object.keys(register.manufacturers).flatMap(manufacturerKey => [
+        Promise.resolve({ url: `/${manufacturerKey}`, changefreq: `weekly` }),
+
+        // fixture URLs
+        ...register.manufacturers[manufacturerKey].map(async fixtureKey => {
+          const fixture = await fixtureFromRepository(manufacturerKey, fixtureKey);
+          return {
+            url: `/${manufacturerKey}/${fixtureKey}`,
+            changefreq: `monthly`,
+            lastmod: fixture.meta.lastModifyDate.toISOString(),
+          };
+        }),
+      ]);
+
+      const categoryUrls = Object.keys(register.categories).map(
+        category => ({ url: `/categories/${category}`, changefreq: `weekly` }),
+      );
+
+      const pluginUrls = Object.keys(plugins.data).filter(key => !plugins.data[key].outdated).map(
+        pluginKey => ({ url: `/about/plugins/${pluginKey}`, changefreq: `monthly` }),
+      );
+
+      return [
+        ...staticUrls,
+        ...await Promise.all(manufacturerUrlPromises),
+        ...categoryUrls,
+        ...pluginUrls,
+      ];
+    },
   },
 };

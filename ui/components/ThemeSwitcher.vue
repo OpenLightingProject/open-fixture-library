@@ -4,7 +4,7 @@
     href="#theme"
     aria-hidden="true"
     :title="`Switch to ${otherTheme} theme`"
-    @click.prevent="toggleTheme">
+    @click.prevent="toggleTheme()">
     <OflSvg name="theme-light-dark" />
   </a>
 </template>
@@ -48,7 +48,7 @@ export default {
       immediate: true,
     },
   },
-  created() {
+  mounted() {
     this.cssVariablesSupported = window.CSS && CSS.supports(`color`, `var(--primary)`);
 
     if (!this.cssVariablesSupported) {

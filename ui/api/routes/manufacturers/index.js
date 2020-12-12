@@ -1,23 +1,25 @@
-const manufacturers = require(`../../../../fixtures/manufacturers.json`);
-import register from '../../../../fixtures/register.json';
+const importJson = require(`../../../../lib/import-json.js`);
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 /** @typedef {import('../../index.js').ApiResponse} ApiResponse */
 
 /**
  * Returns general information about all manufacturers.
- * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
- * @returns {ApiResponse} The handled response.
+ * @param {OpenApiBackendContext} context Passed from OpenAPI Backend.
+ * @returns {Promise.<ApiResponse>} The handled response.
  */
-function getManufacturers(ctx) {
+async function getManufacturers(context) {
+  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, __dirname);
+  const register = await importJson(`../../../../fixtures/register.json`, __dirname);
+
   const manufacturerData = {};
 
-  for (const manKey of Object.keys(manufacturers)) {
-    if (manKey !== `$schema`) {
-      manufacturerData[manKey] = {
-        name: manufacturers[manKey].name,
-        fixtureCount: register.manufacturers[manKey].length,
-        color: register.colors[manKey],
+  for (const manufacturerKey of Object.keys(manufacturers)) {
+    if (manufacturerKey !== `$schema`) {
+      manufacturerData[manufacturerKey] = {
+        name: manufacturers[manufacturerKey].name,
+        fixtureCount: register.manufacturers[manufacturerKey].length,
+        color: register.colors[manufacturerKey],
       };
     }
   }

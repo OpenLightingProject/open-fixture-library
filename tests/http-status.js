@@ -26,11 +26,11 @@ const SiteCrawler = require(`../lib/site-crawler.js`);
 
     crawler.on(`passingPage`, url => {
       passingLinks.push(url);
-      console.log(`${chalk.greenBright(`[PASS]`)} ${url}`);
+      console.log(chalk.greenBright(`[PASS]`), url);
     });
     crawler.on(`failingPage`, (url, error) => {
       failingLinks.push(`${url} (${chalk.redBright(error)})`);
-      console.log(`${chalk.redBright(`[FAIL]`)} ${url} (${chalk.redBright(error)})`);
+      console.log(chalk.redBright(`[FAIL]`), `${url} (${chalk.redBright(error)})`);
     });
 
     console.log(chalk.blue.bold(`Start crawling the website ...`));
@@ -48,15 +48,15 @@ const SiteCrawler = require(`../lib/site-crawler.js`);
     }
     console.log();
 
-    let statusStr = chalk.greenBright(`[PASS]`);
+    let statusString = chalk.greenBright(`[PASS]`);
     let exitCode = 0;
     let periodOrColon = `.`;
     if (failingLinks.length > 0) {
-      statusStr = chalk.redBright(`[FAIL]`);
+      statusString = chalk.redBright(`[FAIL]`);
       exitCode = 1;
       periodOrColon = `:`;
     }
-    console.log(statusStr, `${failingLinks.length} of ${passingLinks.length + failingLinks.length} tested internal links failed${periodOrColon}`);
+    console.log(statusString, `${failingLinks.length} of ${passingLinks.length + failingLinks.length} tested internal links failed${periodOrColon}`);
     failingLinks.forEach(link => console.log(`- ${link}`));
     console.log();
 

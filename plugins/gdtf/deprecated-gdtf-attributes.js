@@ -79,7 +79,7 @@ const deprecatedGdtfAttributes = {
     oflProperty: `brightness`,
     defaultPhysicalEntity: `ColorComponent`,
     beforePhysicalPropertyHook(capability, gdtfCapability, attributeName) {
-      const rgbNumber = parseInt(attributeName.slice(8), 10);
+      const rgbNumber = Number.parseInt(attributeName.slice(8), 10);
 
       if (rgbNumber === 1) {
         capability.color = guessColorComponentName(gdtfCapability, `Red`, `Cyan`);

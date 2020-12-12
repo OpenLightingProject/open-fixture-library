@@ -2,24 +2,24 @@
   <div>
     <Draggable v-model="selectedCategories" tag="span">
       <CategoryBadge
-        v-for="cat in value"
+        v-for="cat of value"
         :key="cat"
         :category="cat"
         :selected="true"
         :selectable="true"
         @click="deselect(cat)"
-        @focus.native="onFocus"
+        @focus.native="onFocus()"
         @blur.native="onBlur($event)" />
     </Draggable>
 
     <CategoryBadge
-      v-for="cat in unselectedCategories"
+      v-for="cat of unselectedCategories"
       :key="cat"
       :category="cat"
       :selected="false"
       :selectable="true"
       @click="select(cat)"
-      @focus.native="onFocus"
+      @focus.native="onFocus()"
       @blur.native="onBlur($event)" />
   </div>
 </template>

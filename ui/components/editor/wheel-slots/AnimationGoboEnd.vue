@@ -5,11 +5,11 @@
 <script>
 export default {
   props: {
-    wheelSlot: {
+    wheelSlot: { // eslint-disable-line vue/no-unused-properties
       type: Object,
       required: true,
     },
-    formstate: {
+    formstate: { // eslint-disable-line vue/no-unused-properties
       type: Object,
       required: false,
       default: null,
@@ -17,7 +17,8 @@ export default {
   },
   data() {
     return {
-      defaultData: {},
+      /** Used in {@link EditorCapabilityTypeData} */
+      defaultData: {}, // eslint-disable-line vue/no-unused-properties
     };
   },
 };

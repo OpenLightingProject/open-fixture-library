@@ -3,19 +3,14 @@
 const path = require(`path`);
 
 const diffPluginOutputs = require(`../../lib/diff-plugin-outputs.js`);
-const plugins = require(`../../plugins/plugins.json`);
-const exportPlugins = plugins.exportPlugins.filter(pluginKey => pluginKey !== `ofl`); // don't diff (essentially) the source files
+const importJson = require(`../../lib/import-json.js`);
 const pullRequest = require(`./pull-request.js`);
 
 require(`../../lib/load-env-file.js`);
 
-const testFixtures = require(`../test-fixtures.json`).map(
-  fixture => `${fixture.man}/${fixture.key}`,
-);
-
 /**
  * @typedef {Object} Task
- * @property {String} manFix The combined manufacturer / fixture key.
+ * @property {String} manufacturerFixture The combined manufacturer / fixture key.
  * @property {String} currentPluginKey The plugin key in the current repo version.
  * @property {String} comparePluginKey The plugin key that should be compared against.
  */
@@ -24,17 +19,10 @@ const testFixtures = require(`../test-fixtures.json`).map(
 (async () => {
   try {
     await pullRequest.checkEnv();
-  }
-  catch (error) {
-    console.error(error);
-    process.exit(0); // if the environment is not correct, just exit without failing
-  }
-
-  try {
     await pullRequest.init();
     const changedComponents = await pullRequest.fetchChangedComponents();
 
-    const tasks = getDiffTasks(changedComponents);
+    const tasks = await getDiffTasks(changedComponents);
 
     if (tasks.length === 0) {
       await pullRequest.updateComment({
@@ -56,9 +44,9 @@ const testFixtures = require(`../test-fixtures.json`).map(
     for (const task of tasks) {
       const taskResultLines = await performTask(task);
 
-      // GitHub's official maximum comment length is 2^16=65536, but it's actually 2^18=262144.
+      // GitHub's official maximum comment length is 2**16 = 65_536, but it's actually 2**18 = 262_144.
       // We keep 2144 characters extra space as we don't count the comment header (added by our pull request module).
-      if (lines.concat(taskResultLines, tooLongMessage).join(`\r\n`).length > 260000) {
+      if (lines.concat(taskResultLines, tooLongMessage).join(`\r\n`).length > 260_000) {
         lines.push(tooLongMessage);
         break;
       }
@@ -82,18 +70,26 @@ const testFixtures = require(`../test-fixtures.json`).map(
 
 /**
  * @param {Object} changedComponents The PR's changed OFL components.
- * @returns {Array.<Task>} An array of diff tasks to perform.
+ * @returns {Promise.<Array.<Task>>} A Promise that resolves to an array of diff tasks to perform.
  */
-function getDiffTasks(changedComponents) {
-  const usablePlugins = exportPlugins.filter(plugin => !changedComponents.added.exports.includes(plugin));
-  const addedFixtures = changedComponents.added.fixtures.map(([man, key]) => `${man}/${key}`);
-  const usableTestFixtures = testFixtures.filter(testFixture => !addedFixtures.includes(testFixture));
+async function getDiffTasks(changedComponents) {
+  const testFixtures = (await importJson(`../test-fixtures.json`, __dirname)).map(
+    fixture => `${fixture.man}/${fixture.key}`,
+  );
+
+  const plugins = await importJson(`../../plugins/plugins.json`, __dirname);
+  const usablePlugins = plugins.exportPlugins.filter(
+    // don't diff new plugins and the ofl plugin (which essentially exports the source files)
+    pluginKey => !changedComponents.added.exports.includes(pluginKey) && pluginKey !== `ofl`,
+  );
+  const addedFixtures = new Set(changedComponents.added.fixtures.map(([manufacturer, key]) => `${manufacturer}/${key}`));
+  const usableTestFixtures = testFixtures.filter(testFixture => !addedFixtures.has(testFixture));
 
   /** @type {Array.<Task>} */
-  return getTasksForModel().concat(getTasksForPlugins(), getTasksForFixtures())
-    .filter((task, index, arr) => {
-      const firstEqualTask = arr.find(otherTask =>
-        task.manFix === otherTask.manFix &&
+  return getTasksForModel().concat(await getTasksForPlugins(), getTasksForFixtures())
+    .filter((task, index, array) => {
+      const firstEqualTask = array.find(otherTask =>
+        task.manufacturerFixture === otherTask.manufacturerFixture &&
         task.currentPluginKey === otherTask.currentPluginKey &&
         task.comparePluginKey === otherTask.comparePluginKey,
       );
@@ -102,12 +98,12 @@ function getDiffTasks(changedComponents) {
       return task === firstEqualTask;
     })
     .sort((a, b) => {
-      const manFixCompare = a.manFix.localeCompare(b.manFix);
+      const manufacturerFixtureCompare = a.manufacturerFixture.localeCompare(b.manufacturerFixture);
       const currentPluginCompare = a.currentPluginKey.localeCompare(b.currentPluginKey);
       const comparePluginCompare = a.comparePluginKey.localeCompare(b.comparePluginKey);
 
-      if (manFixCompare !== 0) {
-        return manFixCompare;
+      if (manufacturerFixtureCompare !== 0) {
+        return manufacturerFixtureCompare;
       }
 
       if (currentPluginCompare !== 0) {
@@ -127,9 +123,9 @@ function getDiffTasks(changedComponents) {
       changedComponents.modified.model ||
       changedComponents.removed.model) {
 
-      for (const manFix of usableTestFixtures) {
+      for (const manufacturerFixture of usableTestFixtures) {
         tasks.push(...usablePlugins.map(pluginKey => ({
-          manFix,
+          manufacturerFixture,
           currentPluginKey: pluginKey,
           comparePluginKey: pluginKey,
         })));
@@ -140,15 +136,15 @@ function getDiffTasks(changedComponents) {
   }
 
   /**
-   * @returns {Array.<Task>} What export diff tasks have to be done due to changes in plugins. May be empty.
+   * @returns {Promise.<Array.<Task>>} A Promise that resolves to what export diff tasks have to be done due to changes in plugins. May be empty.
    */
-  function getTasksForPlugins() {
+  async function getTasksForPlugins() {
     const tasks = [];
 
     const changedPlugins = changedComponents.modified.exports;
     for (const changedPlugin of changedPlugins) {
-      tasks.push(...usableTestFixtures.map(manFix => ({
-        manFix,
+      tasks.push(...usableTestFixtures.map(manufacturerFixture => ({
+        manufacturerFixture,
         currentPluginKey: changedPlugin,
         comparePluginKey: changedPlugin,
       })));
@@ -157,15 +153,15 @@ function getDiffTasks(changedComponents) {
     const addedPlugins = changedComponents.added.exports;
     const removedPlugins = changedComponents.removed.exports;
     for (const addedPlugin of addedPlugins) {
-      const pluginData = require(`../../plugins/${addedPlugin}/plugin.json`);
+      const pluginData = await importJson(`../../plugins/${addedPlugin}/plugin.json`, __dirname);
 
       if (pluginData.previousVersions) {
         const previousVersions = Object.keys(pluginData.previousVersions);
         const lastVersion = previousVersions[previousVersions.length - 1];
 
         if (removedPlugins.includes(lastVersion) || (plugins.exportPlugins.includes(lastVersion) && !addedPlugins.includes(lastVersion))) {
-          tasks.push(...usableTestFixtures.map(manFix => ({
-            manFix,
+          tasks.push(...usableTestFixtures.map(manufacturerFixture => ({
+            manufacturerFixture,
             currentPluginKey: addedPlugin,
             comparePluginKey: lastVersion,
           })));
@@ -182,9 +178,9 @@ function getDiffTasks(changedComponents) {
   function getTasksForFixtures() {
     const tasks = [];
 
-    for (const [manKey, fixKey] of changedComponents.modified.fixtures) {
+    for (const [manufacturerKey, fixtureKey] of changedComponents.modified.fixtures) {
       tasks.push(...usablePlugins.map(pluginKey => ({
-        manFix: `${manKey}/${fixKey}`,
+        manufacturerFixture: `${manufacturerKey}/${fixtureKey}`,
         currentPluginKey: pluginKey,
         comparePluginKey: pluginKey,
       })));
@@ -199,7 +195,7 @@ function getDiffTasks(changedComponents) {
  * @returns {Promise.<Array.<String>>} An array of message lines.
  */
 async function performTask(task) {
-  const output = await diffPluginOutputs(task.currentPluginKey, task.comparePluginKey, process.env.TRAVIS_BRANCH, [task.manFix]);
+  const output = await diffPluginOutputs(task.currentPluginKey, task.comparePluginKey, process.env.GITHUB_PR_BASE_REF, [task.manufacturerFixture]);
   const changeFlags = getChangeFlags(output);
   const emoji = getEmoji(changeFlags);
 
@@ -207,7 +203,7 @@ async function performTask(task) {
 
   const lines = [
     `<details>`,
-    `<summary>${emoji} <strong>${task.manFix}:</strong> ${pluginDisplayName}</summary>`,
+    `<summary>${emoji} <strong>${task.manufacturerFixture}:</strong> ${pluginDisplayName}</summary>`,
   ];
 
   if (changeFlags.nothingChanged) {

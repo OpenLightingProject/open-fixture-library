@@ -16,12 +16,12 @@
           :class="{ empty: slot.type === `` }"
           :name="`wheel-slot${slot.uuid}-type`"
           required
-          @change="changeSlotType">
+          @change="changeSlotType()">
 
           <option value="" disabled>Please select a slot type</option>
 
           <option
-            v-for="type in slotTypes"
+            v-for="type of slotTypes"
             :key="type"
             :value="type">{{ type }}</option>
 
@@ -111,8 +111,8 @@ export default {
       return this.channel.wheel.slots[this.slotNumber - 1];
     },
     suggestedType() {
-      const prevSlot = this.channel.wheel.slots[this.slotNumber - 2];
-      if (prevSlot && prevSlot.type === `AnimationGoboStart`) {
+      const previousSlot = this.channel.wheel.slots[this.slotNumber - 2];
+      if (previousSlot && previousSlot.type === `AnimationGoboStart`) {
         return `AnimationGoboEnd`;
       }
 
@@ -131,12 +131,12 @@ export default {
         return false;
       }
 
-      const prevSlot = this.channel.wheel.slots[this.slotNumber - 2];
-      return !prevSlot || prevSlot.type === `AnimationGoboStart`;
+      const previousSlot = this.channel.wheel.slots[this.slotNumber - 2];
+      return !previousSlot || previousSlot.type === `AnimationGoboStart`;
     },
     animationGoboEndValid() {
-      const prevSlot = this.channel.wheel.slots[this.slotNumber - 2];
-      return !prevSlot || prevSlot.type !== `AnimationGoboStart` || this.slot.type === `AnimationGoboEnd`;
+      const previousSlot = this.channel.wheel.slots[this.slotNumber - 2];
+      return !previousSlot || previousSlot.type !== `AnimationGoboStart` || this.slot.type === `AnimationGoboEnd`;
     },
   },
   created() {
@@ -161,9 +161,9 @@ export default {
       this.$nextTick(() => {
         const defaultData = this.$refs.typeData.defaultData;
 
-        for (const prop of Object.keys(defaultData)) {
-          if (!(prop in this.slot.typeData)) {
-            this.$set(this.slot.typeData, prop, defaultData[prop]);
+        for (const property of Object.keys(defaultData)) {
+          if (!(property in this.slot.typeData)) {
+            this.$set(this.slot.typeData, property, defaultData[property]);
           }
         }
       });

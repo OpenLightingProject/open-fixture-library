@@ -3,33 +3,27 @@
 // see https://github.com/standard-things/esm#getting-started
 require = require(`esm`)(module); // eslint-disable-line no-global-assign
 
-const promisify = require(`util`).promisify;
-const readFile = promisify(require(`fs`).readFile);
-const path = require(`path`);
 const express = require(`express`);
 const compression = require(`compression`);
 const helmet = require(`helmet`);
 const { loadNuxt, build } = require(`nuxt`);
+const JSZip = require(`jszip`);
 
-const robotsTxtGenerator = require(`./ui/express-middleware/robots-txt.js`);
-
-const packageJson = require(`./package.json`);
-const plugins = require(`./plugins/plugins.json`);
 const { fixtureFromRepository, embedResourcesIntoFixtureJson } = require(`./lib/model.js`);
-const register = require(`./fixtures/register.json`);
+const importJson = require(`./lib/import-json.js`);
 const Fixture = require(`./lib/model/Fixture.js`).default;
 const Manufacturer = require(`./lib/model/Manufacturer.js`).default;
+const apiRouter = require(`./ui/api/index.js`);
 
+const pluginsPromise = importJson(`./plugins/plugins.json`, __dirname);
+const registerPromise = importJson(`./fixtures/register.json`, __dirname);
 
+// setup environment variables
 require(`./lib/load-env-file.js`);
+process.env.PORT = process.env.PORT || 5000;
+process.env.WEBSITE_URL = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT}/`;
 
 const app = express();
-
-// setup port
-if (!process.env.PORT) {
-  process.env.PORT = 5000;
-}
-app.set(`port`, process.env.PORT);
 
 // set various security HTTP headers
 app.use(helmet({
@@ -52,29 +46,32 @@ app.use(compression({
 
 // ROUTES
 
-app.get(`/robots.txt`, robotsTxtGenerator);
-
-app.get(`/download.:format([a-z0-9_.-]+)`, (request, response, next) => {
+app.get(`/download.:format([a-z0-9_.-]+)`, async (request, response, next) => {
   const { format } = request.params;
 
+  const plugins = await pluginsPromise;
   if (!plugins.exportPlugins.includes(format)) {
     next();
     return;
   }
 
-  const fixtures = Object.keys(register.filesystem).filter(
-    fixKey => !(`redirectTo` in register.filesystem[fixKey]) || register.filesystem[fixKey].reason === `SameAsDifferentBrand`,
-  ).map(fixture => {
-    const [man, key] = fixture.split(`/`);
-    return fixtureFromRepository(man, key);
-  });
+  const register = await registerPromise;
+  const fixtures = await Promise.all(
+    Object.keys(register.filesystem).filter(
+      fixtureKey => !(`redirectTo` in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === `SameAsDifferentBrand`,
+    ).map(fixture => {
+      const [manufacturer, key] = fixture.split(`/`);
+      return fixtureFromRepository(manufacturer, key);
+    }),
+  );
 
   downloadFixtures(response, format, fixtures, format, `all fixtures`);
 });
 
-app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
+app.post(`/download-editor.:format([a-z0-9_.-]+)`, async (request, response) => {
   const { format } = request.params;
 
+  const plugins = await pluginsPromise;
   if (!plugins.exportPlugins.includes(format)) {
     response
       .status(500)
@@ -84,17 +81,14 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
   }
 
   const outObject = request.body;
-  const fixtures = Object.entries(outObject.fixtures).map(([key, jsonObject]) => {
-    const [manKey, fixKey] = key.split(`/`);
+  const fixtures = await Promise.all(Object.entries(outObject.fixtures).map(async ([key, jsonObject]) => {
+    const [manufacturerKey, fixtureKey] = key.split(`/`);
 
-    const manufacturer = manKey in outObject.manufacturers
-      ? new Manufacturer(manKey, outObject.manufacturers[manKey])
-      : manKey;
+    const manufacturer = new Manufacturer(manufacturerKey, outObject.manufacturers[manufacturerKey]);
+    await embedResourcesIntoFixtureJson(jsonObject);
 
-    embedResourcesIntoFixtureJson(jsonObject);
-
-    return new Fixture(manufacturer, fixKey, jsonObject);
-  });
+    return new Fixture(manufacturer, fixtureKey, jsonObject);
+  }));
 
   let zipName;
   let errorDesc;
@@ -110,58 +104,50 @@ app.post(`/download-editor.:format([a-z0-9_.-]+)`, (request, response) => {
   downloadFixtures(response, format, fixtures, zipName, errorDesc);
 });
 
-app.get(`/:manKey/:fixKey.:format([a-z0-9_.-]+)`, async (request, response, next) => {
-  const { manKey, fixKey, format } = request.params;
+app.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request, response, next) => {
+  const { manufacturerKey, fixtureKey, format } = request.params;
 
-  if (!(`${manKey}/${fixKey}` in register.filesystem)) {
+  const register = await registerPromise;
+  if (!(`${manufacturerKey}/${fixtureKey}` in register.filesystem)) {
     next();
     return;
   }
 
   if (format === `json`) {
     try {
-      const data = await readFile(`./fixtures/${manKey}/${fixKey}.json`, `utf8`);
-      const json = JSON.parse(data);
-      embedResourcesIntoFixtureJson(json);
+      const json = await importJson(`./fixtures/${manufacturerKey}/${fixtureKey}.json`, __dirname);
+      await embedResourcesIntoFixtureJson(json);
       response.json(json);
     }
     catch (error) {
       response
         .status(500)
-        .send(`Fetching ${manKey}/${fixKey}.json failed: ${error.toString()}`);
+        .send(`Fetching ${manufacturerKey}/${fixtureKey}.json failed: ${error.toString()}`);
     }
     return;
   }
 
+  const plugins = await pluginsPromise;
   if (!plugins.exportPlugins.includes(format)) {
     next();
     return;
   }
 
-  const fixtures = [fixtureFromRepository(manKey, fixKey)];
-  const zipName = `${manKey}_${fixKey}_${format}`;
-  const errorDesc = `fixture ${manKey}/${fixKey}`;
+  const fixtures = [await fixtureFromRepository(manufacturerKey, fixtureKey)];
+  const zipName = `${manufacturerKey}_${fixtureKey}_${format}`;
+  const errorDesc = `fixture ${manufacturerKey}/${fixtureKey}`;
 
   downloadFixtures(response, format, fixtures, zipName, errorDesc);
 });
 
-app.get(`/sitemap.xml`, (request, response) => {
-  const generateSitemap = requireNoCacheInDev(`./lib/generate-sitemap.js`);
-
-  response.type(`application/xml`);
-  generateSitemap(packageJson.homepage).pipe(response);
-});
-
-app.use(`/api/v1`, (request, response) => {
-  requireNoCacheInDev(`./ui/api/index.js`)(request, response);
-});
+app.use(`/api/v1`, apiRouter);
 
 
 
 // instantiate nuxt.js with the options
-const isDev = process.argv[2] === `--dev`;
-loadNuxt(isDev ? `dev` : `start`).then(async nuxt => {
-  if (isDev) {
+const isDevelopment = process.argv[2] === `--dev`;
+loadNuxt(isDevelopment ? `dev` : `start`).then(async nuxt => {
+  if (isDevelopment) {
     console.log(`Starting dev server with hot reloading...`);
     await build(nuxt);
   }
@@ -189,11 +175,11 @@ app.listen(process.env.PORT, () => {
  * @returns {Promise} A Promise that is resolved when the response is sent.
  */
 async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDesc) {
-  const plugin = requireNoCacheInDev(path.join(__dirname, `plugins`, pluginKey, `export.js`));
+  const plugin = require(`./plugins/${pluginKey}/export.js`);
 
   try {
-    const files = await plugin.export(fixtures, {
-      baseDir: __dirname,
+    const files = await plugin.exportFixtures(fixtures, {
+      baseDirectory: __dirname,
       date: new Date(),
     });
 
@@ -207,7 +193,6 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
     }
 
     // else zip all together
-    const JSZip = require(`jszip`);
     const archive = new JSZip();
     for (const file of files) {
       archive.file(file.name, file.content);
@@ -227,17 +212,4 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
       .status(500)
       .send(`Exporting ${errorDesc} with ${pluginKey} failed: ${error.toString()}`);
   }
-}
-
-/**
- * Like standard require(...), but invalidates cache first (if not in production environment).
- * @param {String} target The require path, like `./register.json`.
- * @returns {*} The result of standard require(target).
- */
-function requireNoCacheInDev(target) {
-  if (process.env.NODE_ENV !== `production`) {
-    delete require.cache[require.resolve(target)];
-  }
-
-  return require(target);
 }

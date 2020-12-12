@@ -3,29 +3,19 @@
 const path = require(`path`);
 
 const { fixtureFromRepository } = require(`../../lib/model.js`);
+const importJson = require(`../../lib/import-json.js`);
 const pullRequest = require(`./pull-request.js`);
 
-const plugins = require(`../../plugins/plugins.json`);
-
-const exportTests = [];
-for (const exportPluginKey of plugins.exportPlugins) {
-  const plugin = plugins.data[exportPluginKey];
-
-  exportTests.push(...plugin.exportTests.map(
-    testKey => [exportPluginKey, testKey],
-  ));
-}
-
-const testFixtures = require(`../test-fixtures.json`).map(
-  fixture => [fixture.man, fixture.key],
-);
+let plugins;
+let exportTests;
+let testFixtures;
 
 let testErrored = false;
 
 /**
  * @typedef {Object} Task
- * @property {String} manKey The manufacturer key of the fixture that should be tested.
- * @property {String} fixKey The key of the fixture that should be tested.
+ * @property {String} manufacturerKey The manufacturer key of the fixture that should be tested.
+ * @property {String} fixtureKey The key of the fixture that should be tested.
  * @property {String} pluginKey The key of the export plugin whose output should be tested.
  * @property {String} testKey The key of the export test that should be executed.
  */
@@ -33,24 +23,32 @@ let testErrored = false;
 (async () => {
   try {
     await pullRequest.checkEnv();
-  }
-  catch (error) {
-    console.error(error);
-    process.exit(0); // if the environment is not correct, just exit without failing
-  }
-
-  try {
     await pullRequest.init();
     const changedComponents = await pullRequest.fetchChangedComponents();
+
+    plugins = await importJson(`../../plugins/plugins.json`, __dirname);
+
+    exportTests = [];
+    for (const exportPluginKey of plugins.exportPlugins) {
+      const plugin = plugins.data[exportPluginKey];
+
+      exportTests.push(...plugin.exportTests.map(
+        testKey => [exportPluginKey, testKey],
+      ));
+    }
+
+    testFixtures = (await importJson(`../test-fixtures.json`, __dirname)).map(
+      fixture => [fixture.man, fixture.key],
+    );
 
     const tasks = getTasksForModel(changedComponents)
       .concat(getTasksForPlugins(changedComponents))
       .concat(getTasksForExportTests(changedComponents))
       .concat(getTasksForFixtures(changedComponents))
-      .filter((task, index, arr) => {
-        const firstEqualTask = arr.find(otherTask =>
-          task.manKey === otherTask.manKey &&
-          task.fixKey === otherTask.fixKey &&
+      .filter((task, index, array) => {
+        const firstEqualTask = array.find(otherTask =>
+          task.manufacturerKey === otherTask.manufacturerKey &&
+          task.fixtureKey === otherTask.fixtureKey &&
           task.pluginKey === otherTask.pluginKey &&
           task.testKey === otherTask.testKey,
         );
@@ -59,17 +57,17 @@ let testErrored = false;
         return task === firstEqualTask;
       })
       .sort((a, b) => {
-        const manCompare = a.manKey.localeCompare(b.manKey);
-        const fixCompare = a.fixKey.localeCompare(b.fixKey);
+        const manufacturerCompare = a.manufacturerKey.localeCompare(b.manufacturerKey);
+        const fixtureCompare = a.fixtureKey.localeCompare(b.fixtureKey);
         const pluginCompare = a.pluginKey.localeCompare(b.pluginKey);
         const testCompare = a.testKey.localeCompare(b.testKey);
 
-        if (manCompare !== 0) {
-          return manCompare;
+        if (manufacturerCompare !== 0) {
+          return manufacturerCompare;
         }
 
-        if (fixCompare !== 0) {
-          return fixCompare;
+        if (fixtureCompare !== 0) {
+          return fixtureCompare;
         }
 
         if (pluginCompare !== 0) {
@@ -100,9 +98,9 @@ let testErrored = false;
     for (const task of tasks) {
       const taskResultLines = await getTaskPromise(task);
 
-      // GitHub's official maximum comment length is 2^16=65536, but it's actually 2^18=262144.
+      // GitHub's official maximum comment length is 2**16 = 65_536, but it's actually 2**18 = 262_144.
       // We keep 2144 characters extra space as we don't count the comment header (added by our pull request module).
-      if (lines.concat(taskResultLines, tooLongMessage).join(`\r\n`).length > 260000) {
+      if (lines.concat(taskResultLines, tooLongMessage).join(`\r\n`).length > 260_000) {
         lines.push(tooLongMessage);
         break;
       }
@@ -138,10 +136,10 @@ function getTasksForModel(changedComponents) {
     changedComponents.modified.model ||
     changedComponents.removed.model) {
 
-    for (const [manKey, fixKey] of testFixtures) {
+    for (const [manufacturerKey, fixtureKey] of testFixtures) {
       tasks.push(...exportTests.map(([pluginKey, testKey]) => ({
-        manKey,
-        fixKey,
+        manufacturerKey,
+        fixtureKey,
         pluginKey,
         testKey,
       })));
@@ -163,10 +161,10 @@ function getTasksForPlugins(changedComponents) {
   for (const changedPlugin of changedPlugins) {
     const pluginExportTests = plugins.data[changedPlugin].exportTests;
 
-    for (const [manKey, fixKey] of testFixtures) {
+    for (const [manufacturerKey, fixtureKey] of testFixtures) {
       tasks.push(...pluginExportTests.map(testKey => ({
-        manKey,
-        fixKey,
+        manufacturerKey,
+        fixtureKey,
         pluginKey: changedPlugin,
         testKey,
       })));
@@ -185,10 +183,10 @@ function getTasksForExportTests(changedComponents) {
 
   const changedExportTests = changedComponents.added.exportTests.concat(changedComponents.modified.exportTests);
 
-  for (const [manKey, fixKey] of testFixtures) {
+  for (const [manufacturerKey, fixtureKey] of testFixtures) {
     tasks.push(...changedExportTests.map(([pluginKey, testKey]) => ({
-      manKey,
-      fixKey,
+      manufacturerKey,
+      fixtureKey,
       pluginKey,
       testKey,
     })));
@@ -206,10 +204,10 @@ function getTasksForFixtures(changedComponents) {
 
   const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures);
 
-  for (const [manKey, fixKey] of fixtures) {
+  for (const [manufacturerKey, fixtureKey] of fixtures) {
     tasks.push(...exportTests.map(([pluginKey, testKey]) => ({
-      manKey,
-      fixKey,
+      manufacturerKey,
+      fixtureKey,
       pluginKey,
       testKey,
     })));
@@ -223,25 +221,28 @@ function getTasksForFixtures(changedComponents) {
  * @returns {Promise} A promise resolving with an array of message lines.
  */
 async function getTaskPromise(task) {
-  const plugin = require(path.join(__dirname, `../../plugins/${task.pluginKey}/export.js`));
-  const test = require(path.join(__dirname, `../../plugins/${task.pluginKey}/exportTests/${task.testKey}.js`));
+  const plugin = require(`../../plugins/${task.pluginKey}/export.js`);
+  const test = require(`../../plugins/${task.pluginKey}/exportTests/${task.testKey}.js`);
   let emoji = `:heavy_check_mark:`;
   const detailListItems = [];
 
   try {
-    const files = await plugin.export([fixtureFromRepository(task.manKey, task.fixKey)], {
-      baseDir: path.join(__dirname, `../..`),
-      date: new Date(),
-    });
+    const files = await plugin.exportFixtures(
+      [await fixtureFromRepository(task.manufacturerKey, task.fixtureKey)],
+      {
+        baseDirectory: path.join(__dirname, `../..`),
+        date: new Date(),
+      },
+    );
 
     const resultListItems = await Promise.all(files.map(async file => {
       try {
         await test(file, files);
         return `:heavy_check_mark: ${file.name}`;
       }
-      catch (err) {
+      catch (error) {
         emoji = `:x:`;
-        const errors = [].concat(err);
+        const errors = [].concat(error);
         return `<details><summary>:x: ${file.name}</summary>${errors.join(`<br />\n`)}</details>`;
       }
     }));
@@ -255,7 +256,7 @@ async function getTaskPromise(task) {
 
   return [
     `<details>`,
-    `  <summary>${emoji} <strong>${task.manKey} / ${task.fixKey}:</strong> ${task.pluginKey} / ${task.testKey}</summary>`,
+    `  <summary>${emoji} <strong>${task.manufacturerKey} / ${task.fixtureKey}:</strong> ${task.pluginKey} / ${task.testKey}</summary>`,
     `  <ul>`,
     ...detailListItems.map(listItem => `    <li>${listItem}</li>`),
     `  </ul>`,

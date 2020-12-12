@@ -19,21 +19,21 @@
         type="button"
         class="icon-button expand-all only-js"
         title="Expand all channels"
-        @click.prevent="openDetails">
+        @click.prevent="openDetails()">
         <OflSvg name="chevron-double-down" />
       </button>
       <button
         type="button"
         class="icon-button collapse-all only-js"
         title="Collapse all channels"
-        @click.prevent="closeDetails">
+        @click.prevent="closeDetails()">
         <OflSvg name="chevron-double-up" />
       </button>
     </template></h3>
 
     <ol class="mode-channels">
       <FixturePageChannel
-        v-for="channel in mode.channels"
+        v-for="channel of mode.channels"
         :key="channel.key"
         :channel="channel"
         :mode="mode"
@@ -47,6 +47,17 @@
 .expand-all,
 .collapse-all {
   margin-left: 1ex;
+}
+
+ol.mode-channels {
+  padding-left: 1.9em;
+  min-height: 1em;
+
+  // switched channels
+  ::v-deep ol {
+    list-style-type: lower-alpha;
+    padding-left: 1.1em;
+  }
 }
 </style>
 
@@ -64,10 +75,6 @@ export default {
   props: {
     mode: {
       type: Mode,
-      required: true,
-    },
-    index: {
-      type: Number,
       required: true,
     },
   },

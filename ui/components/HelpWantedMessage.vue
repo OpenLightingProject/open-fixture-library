@@ -61,12 +61,9 @@
   flex-wrap: wrap;
   font-size: 90%;
 
-  a, noscript {
+  a {
     flex-grow: 1;
     flex-basis: 10em;
-  }
-
-  a {
     display: inline-block;
     padding: 0.4em 0.6em;
     color: theme-color(text-primary);
@@ -106,9 +103,9 @@ export default {
   computed: {
     location() {
       if (this.type === `capability`) {
-        const cap = this.context;
-        const channel = cap._channel;
-        return `Channel "${channel.name}" → Capability "${cap.name}" (${cap.rawDmxRange})`;
+        const capability = this.context;
+        const channel = capability._channel;
+        return `Channel "${channel.name}" → Capability "${capability.name}" (${capability.rawDmxRange})`;
       }
 
       return null;
@@ -153,14 +150,9 @@ export default {
     },
 
     mailtoUrl() {
-      let subject;
-
-      if (this.fixture) {
-        subject = `Feedback for fixture '${this.fixture.manufacturer.key}/${this.fixture.key}'`;
-      }
-      else {
-        subject = `Feedback for ${this.type} '${this.context.key}'`;
-      }
+      const subject = this.fixture
+        ? `Feedback for fixture '${this.fixture.manufacturer.key}/${this.fixture.key}'`
+        : `Feedback for ${this.type} '${this.context.key}'`;
 
       const bodyLines = [];
       if (this.location) {

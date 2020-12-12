@@ -1,15 +1,10 @@
 const https = require(`https`);
 const path = require(`path`);
-const fs = require(`fs`);
+const { mkdir, mkdtemp, writeFile } = require(`fs/promises`);
 const os = require(`os`);
-const mkdirp = require(`mkdirp`);
-const { promisify } = require(`util`);
+const execFile = require(`util`).promisify(require(`child_process`).execFile);
 
-const mkdtemp = promisify(fs.mkdtemp);
-const writeFile = promisify(fs.writeFile);
-const execFile = promisify(require(`child_process`).execFile);
-
-const qlcplusGoboAliases = require(`../../../resources/gobos/aliases/qlcplus.json`);
+const importJson = require(`../../../lib/import-json.js`);
 
 
 const FIXTURE_TOOL_URL = `https://raw.githubusercontent.com/mcallegari/qlcplus/master/resources/fixtures/scripts/fixtures-tool.py`;
@@ -40,14 +35,15 @@ module.exports = async function testFixtureToolValidation(exportFile, allExportF
   const directory = await mkdtemp(FIXTURE_TOOL_DIR_PREFIX);
 
   // download fixtures-tool.py into fixtures/scripts directory
-  await mkdirp(path.join(directory, `resources/fixtures/scripts`));
+  await mkdir(path.join(directory, `resources/fixtures/scripts`), { recursive: true });
   await downloadFixtureTool(directory);
 
   // write exported fixture.qxf into fixtures/manufacturer directory
-  await mkdirp(path.join(directory, `resources/fixtures/manufacturer`));
+  await mkdir(path.join(directory, `resources/fixtures/manufacturer`), { recursive: true });
   await writeFile(path.join(directory, EXPORTED_FIXTURE_PATH), exportFile.content);
 
   // store used gobos in the gobos/ directory
+  const qlcplusGoboAliases = await importJson(`../../../resources/gobos/aliases/qlcplus.json`, __dirname);
   const qlcplusGobos = [`gobos/Others/open.svg`, `gobos/Others/rainbow.png`].concat(
     Object.keys(qlcplusGoboAliases).map(gobo => `gobos/${gobo}`),
     allExportFiles.filter(file => file.name.startsWith(`gobos/`)).map(file => file.name),
@@ -57,7 +53,7 @@ module.exports = async function testFixtureToolValidation(exportFile, allExportF
     const goboPath = path.join(directory, `resources`, gobo);
     const goboDirectory = path.dirname(goboPath);
 
-    await mkdirp(goboDirectory);
+    await mkdir(goboDirectory, { recursive: true });
     await writeFile(goboPath, ``);
   }
 
@@ -81,24 +77,22 @@ module.exports = async function testFixtureToolValidation(exportFile, allExportF
  */
 function downloadFixtureTool(directory) {
   return new Promise((resolve, reject) => {
-    https.get(FIXTURE_TOOL_URL, res => {
+    https.get(FIXTURE_TOOL_URL, response => {
       let data = ``;
-      res.on(`data`, chunk => {
+      response.on(`data`, chunk => {
         data += chunk;
       });
-      res.on(`end`, async () => {
+      response.on(`end`, async () => {
         try {
           await writeFile(path.join(directory, FIXTURE_TOOL_PATH), data, {
             mode: 0o755,
           });
           resolve();
         }
-        catch (err) {
-          reject(err);
+        catch (error) {
+          reject(error);
         }
       });
-    }).on(`error`, err => {
-      reject(err);
-    });
+    }).on(`error`, error => reject(error));
   });
 }

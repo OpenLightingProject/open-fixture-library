@@ -2,12 +2,12 @@ const { Octokit } = require(`@octokit/rest`);
 
 require(`../../lib/load-env-file.js`);
 
-const requiredEnvVars = [
+const requiredEnvironmentVariables = [
   `GITHUB_USER_TOKEN`,
-  `TRAVIS_REPO_SLUG`,
-  `TRAVIS_PULL_REQUEST`,
-  `TRAVIS_BRANCH`,
-  `TRAVIS_COMMIT`,
+  `GITHUB_REPOSITORY`,
+  `GITHUB_PR_NUMBER`,
+  `GITHUB_PR_HEAD_REF`,
+  `GITHUB_PR_BASE_REF`,
 ];
 
 let githubClient;
@@ -21,22 +21,18 @@ let prData;
  * @returns {Promise} Rejects an error message if the environment is not correct.
  */
 module.exports.checkEnv = async function checkEnv() {
-  for (const envVar of requiredEnvVars) {
-    if (!(envVar in process.env)) {
-      throw `Environment variable ${envVar} is required for this script. Please define it in your system or in the .env file.`;
+  for (const environmentVariable of requiredEnvironmentVariables) {
+    if (!(environmentVariable in process.env)) {
+      throw `Environment variable ${environmentVariable} is required for this script. Please define it in your system or in the .env file.`;
     }
-  }
-
-  if (process.env.TRAVIS_PULL_REQUEST === `false`) {
-    throw `Github tests can only be run in pull request builds.`;
   }
 };
 
 module.exports.init = async function init() {
   await module.exports.checkEnv();
 
-  repoOwner = process.env.TRAVIS_REPO_SLUG.split(`/`)[0];
-  repoName = process.env.TRAVIS_REPO_SLUG.split(`/`)[1];
+  repoOwner = process.env.GITHUB_REPOSITORY.split(`/`)[0];
+  repoName = process.env.GITHUB_REPOSITORY.split(`/`)[1];
 
   githubClient = new Octokit({
     auth: `token ${process.env.GITHUB_USER_TOKEN}`,
@@ -45,7 +41,7 @@ module.exports.init = async function init() {
   const pr = await githubClient.pulls.get({
     owner: repoOwner,
     repo: repoName,
-    'pull_number': process.env.TRAVIS_PULL_REQUEST,
+    'pull_number': process.env.GITHUB_PR_NUMBER,
   });
 
   // save PR for later use
@@ -57,13 +53,13 @@ module.exports.init = async function init() {
 module.exports.fetchChangedComponents = async function fetchChangedComponents() {
   // fetch changed files in blocks of 100
   const filePromises = [];
-  for (let i = 0; i < prData.changed_files / 100; i++) {
+  for (let index = 0; index < prData.changed_files / 100; index++) {
     filePromises.push(githubClient.pulls.listFiles({
       owner: repoOwner,
       repo: repoName,
-      'pull_number': process.env.TRAVIS_PULL_REQUEST,
+      'pull_number': process.env.GITHUB_PR_NUMBER,
       'per_page': 100,
-      page: i + 1,
+      page: index + 1,
     }));
   }
 
@@ -98,7 +94,7 @@ module.exports.fetchChangedComponents = async function fetchChangedComponents() 
   };
 
   for (const block of fileBlocks) {
-    block.data.forEach(handleFileData);
+    block.data.forEach(fileData => handleFileData(fileData));
   }
 
   return changedComponents;
@@ -185,14 +181,14 @@ module.exports.updateComment = async function updateComment(test) {
   const message = lines.join(`\n`);
 
   const commentPromises = [];
-  for (let i = 0; i < prData.comments / 100; i++) {
+  for (let index = 0; index < prData.comments / 100; index++) {
     commentPromises.push(
       githubClient.issues.listComments({
         owner: repoOwner,
         repo: repoName,
-        'issue_number': process.env.TRAVIS_PULL_REQUEST,
+        'issue_number': process.env.GITHUB_PR_NUMBER,
         'per_page': 100,
-        page: i + 1,
+        page: index + 1,
       }),
     );
   }
@@ -211,10 +207,10 @@ module.exports.updateComment = async function updateComment(test) {
     if (lines[0] === comment.body.split(`\n`)[0]) {
       if (!equalFound && message === comment.body && test.lines.length > 0) {
         equalFound = true;
-        console.log(`Test comment with same content already exists at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
+        console.log(`Test comment with same content already exists at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
       }
       else {
-        console.log(`Deleting old test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
+        console.log(`Deleting old test comment at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
         promises.push(githubClient.issues.deleteComment({
           owner: repoOwner,
           repo: repoName,
@@ -225,22 +221,22 @@ module.exports.updateComment = async function updateComment(test) {
   });
 
   if (!equalFound && test.lines.length > 0) {
-    console.log(`Creating test comment at ${process.env.TRAVIS_REPO_SLUG}#${process.env.TRAVIS_PULL_REQUEST}.`);
+    console.log(`Creating test comment at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
     promises.push(githubClient.issues.createComment({
       owner: repoOwner,
       repo: repoName,
-      'issue_number': process.env.TRAVIS_PULL_REQUEST,
+      'issue_number': process.env.GITHUB_PR_NUMBER,
       body: message,
     }));
   }
 
-  return await Promise.all(promises);
+  return Promise.all(promises);
 };
 
 module.exports.getTestFixturesMessage = function getTestFixturesMessage(fixtures) {
   return [
     `Tested with the following minimal collection of [test fixtures](https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/fixture-features.md) that cover all fixture features:`,
-    ...fixtures.map(fix => `- ${fix}`),
+    ...fixtures.map(fixture => `- ${fixture}`),
     ``,
   ];
 };

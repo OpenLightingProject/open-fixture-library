@@ -11,7 +11,7 @@
         :required="required || rangeIncomplete"
         :hint="startHint"
         :lazy="true"
-        @focus.native="onFocus"
+        @focus.native="onFocus($event)"
         @blur.native="onBlur($event)" />
     </Validate>
     …
@@ -25,7 +25,7 @@
         :required="required || rangeIncomplete"
         :hint="endHint"
         :lazy="true"
-        @focus.native="onFocus"
+        @focus.native="onFocus($event)"
         @blur.native="onBlur($event)" />
     </Validate>
     {{ unit }}
@@ -126,7 +126,8 @@ export default {
     this.$emit(`vf:validate`, this.validationData);
   },
   methods: {
-    focus() {
+    // Called from parent component
+    focus() { // eslint-disable-line vue/no-unused-properties
       this.$refs.firstInput.focus();
     },
     onFocus(event) {

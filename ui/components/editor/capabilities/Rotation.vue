@@ -74,8 +74,11 @@ export default {
   data() {
     return {
       properties: schemaProperties,
+
+      /** Used in {@link EditorCapabilityTypeData} */
+      // eslint-disable-next-line vue/no-unused-properties
       hint: `Only use this if no other type is applicable. Note that some types like WheelSlot and Prism also allow setting a rotation angle / speed value.`,
-      defaultData: {
+      defaultData: { // eslint-disable-line vue/no-unused-properties
         speedOrAngle: `speed`,
         speed: ``,
         speedStart: null,
@@ -88,10 +91,14 @@ export default {
     };
   },
   computed: {
-    resetProps() {
-      const resetProp = this.capability.typeData.speedOrAngle === `speed` ? `angle` : `speed`;
+    /**
+     * Called from {@link EditorCapabilityTypeData}
+     * @returns {Array.<String>} Array of all props to reset to default data when capability is saved.
+     */
+    resetProperties() { // eslint-disable-line vue/no-unused-properties
+      const resetProperty = this.capability.typeData.speedOrAngle === `speed` ? `angle` : `speed`;
 
-      return [resetProp, `${resetProp}Start`, `${resetProp}End`];
+      return [resetProperty, `${resetProperty}Start`, `${resetProperty}End`];
     },
   },
   methods: {

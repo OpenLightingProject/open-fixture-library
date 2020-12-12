@@ -17,7 +17,7 @@
 
     <h3>Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!</h3>
 
-    <p><abbr title="Open Fixture Library">OFL</abbr> collects DMX fixture definitions in a JSON format and automatically exports them to the right format for every supported lighting software. Everybody can <a href="https://github.com/OpenLightingProject/open-fixture-library">contribute</a> and help to improve! Thanks!</p>
+    <p><abbr title="Open Fixture Library">OFL</abbr> collects DMX fixture definitions in a JSON format and automatically exports them to the right format for every <NuxtLink to="/about/plugins">supported lighting software</NuxtLink>. Everybody can <a href="https://github.com/OpenLightingProject/open-fixture-library">contribute</a> and help to improve! Thanks!</p>
 
 
     <div class="grid-3 centered">
@@ -26,7 +26,7 @@
         <h2>Recently updated fixtures</h2>
 
         <ul class="list">
-          <li v-for="fixture in lastUpdated" :key="fixture.key">
+          <li v-for="fixture of lastUpdated" :key="fixture.key">
             <NuxtLink
               :to="`/${fixture.key}`"
               :style="{ borderLeftColor: fixture.color }"
@@ -56,7 +56,7 @@
         <h2>Recent contributors</h2>
 
         <ul class="list">
-          <li v-for="contributor in recentContributors" :key="contributor.name">
+          <li v-for="contributor of recentContributors" :key="contributor.name">
             <NuxtLink :to="`/${contributor.latestFixtureKey}`">
               {{ contributor.name }}
               <div class="hint">
@@ -92,7 +92,6 @@
 </template>
 
 <script>
-import packageJson from '../../package.json';
 import register from '../../fixtures/register.json';
 
 import DownloadButton from '../components/DownloadButton.vue';
@@ -119,17 +118,17 @@ export default {
       recentContributors: [],
 
       fixtureCount: Object.keys(register.filesystem).filter(
-        fixKey => !(`redirectTo` in register.filesystem[fixKey]) || register.filesystem[fixKey].reason === `SameAsDifferentBrand`,
+        fixtureKey => !(`redirectTo` in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === `SameAsDifferentBrand`,
       ).length,
 
       websiteStructuredData: {
         '@context': `http://schema.org`,
         '@type': `WebSite`,
         'name': `Open Fixture Library`,
-        'url': packageJson.homepage,
+        'url': process.env.WEBSITE_URL,
         'potentialAction': {
           '@type': `SearchAction`,
-          'target': `${packageJson.homepage}search?q={search_term_string}`,
+          'target': `${process.env.WEBSITE_URL}search?q={search_term_string}`,
           'query-input': `required name=search_term_string`,
         },
       },
@@ -138,8 +137,8 @@ export default {
         '@type': `Organization`,
         'name': `Open Fixture Library`,
         'description': `Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!`,
-        'url': packageJson.homepage,
-        'logo': `${packageJson.homepage}ofl-logo.svg`,
+        'url': process.env.WEBSITE_URL,
+        'logo': `${process.env.WEBSITE_URL}ofl-logo.svg`,
       },
     };
   },
@@ -161,7 +160,7 @@ export default {
         return {
           name: contributor,
           number: register.contributors[contributor].fixtures.length,
-          latestFixtureKey: latestFixtureKey,
+          latestFixtureKey,
           latestFixtureName: this.getFixtureName(latestFixtureKey),
         };
       },
@@ -173,8 +172,8 @@ export default {
      * @returns {String} The manufacturer and fixture names, separated by a space.
      */
     getFixtureName(fixtureKey) {
-      const manKey = fixtureKey.split(`/`)[0];
-      const manufacturerName = this.manufacturers[manKey].name;
+      const manufacturerKey = fixtureKey.split(`/`)[0];
+      const manufacturerName = this.manufacturers[manufacturerKey].name;
       const fixtureName = register.filesystem[fixtureKey].name;
 
       return `${manufacturerName} ${fixtureName}`;
