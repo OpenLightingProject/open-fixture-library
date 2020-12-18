@@ -120,7 +120,7 @@ function redeploy(webhookPayload) {
     console.log(`Notify admin via email about failed deployment...`);
 
     const subject = `OFL Deployment failed`;
-    let body = (new Date()).toISOString();
+    let body = new Date().toISOString();
     body += `\n\nsubprocess status: ${error.status}, signal: ${error.signal}`;
     body += `\n\nsubprocess stdout:\n${error.stdout}`;
     body += `\n\nsubprocess stderr:\n${error.stderr}`;

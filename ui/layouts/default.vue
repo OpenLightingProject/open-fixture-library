@@ -100,7 +100,7 @@ export default {
 
     onMouseMove() {
       // filter emulated events coming from touch events
-      if (new Date() - this.lastTouchTime < 500) {
+      if (Date.now() - this.lastTouchTime < 500) {
         return;
       }
 
@@ -109,7 +109,7 @@ export default {
 
     onTouchStart() {
       this.isTouchScreen = true;
-      this.lastTouchTime = new Date();
+      this.lastTouchTime = Date.now();
     },
   },
 };

@@ -461,7 +461,7 @@ function getPanTiltMax(panOrTilt, channels) {
   const maxAngle = Math.max(...panTiltCapabilities.map(capability => Math.max(capability.angle[0].number, capability.angle[1].number)));
   const panTiltMax = maxAngle - minAngle;
 
-  if (panTiltMax === -Infinity) {
+  if (panTiltMax === Number.NEGATIVE_INFINITY) {
     const hasContinuousCapability = capabilities.some(capability => capability.type === `${panOrTilt}Continuous`);
     if (hasContinuousCapability) {
       return 9999;
