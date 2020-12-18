@@ -537,11 +537,9 @@ async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValu
          * @returns {Boolean} True if this is not the last capability or it ends with an allowed value, false otherwise.
          */
         function checkLastCapabilityRangeEnd() {
-          if (capabilityNumber === channel.capabilities.length - 1) {
-            if (channel.capabilities[capabilityNumber].rawDmxRange.end !== maxDmxValue) {
-              result.errors.push(`The last dmxRange has to end at ${maxDmxValue} (or another channel.dmxValueResolution must be chosen) in capability '${capability.name}' (${capability.rawDmxRange}) in channel '${channel.key}'`);
-              return false;
-            }
+          if (capabilityNumber === channel.capabilities.length - 1 && channel.capabilities[capabilityNumber].rawDmxRange.end !== maxDmxValue) {
+            result.errors.push(`The last dmxRange has to end at ${maxDmxValue} (or another channel.dmxValueResolution must be chosen) in capability '${capability.name}' (${capability.rawDmxRange}) in channel '${channel.key}'`);
+            return false;
           }
 
           return true;

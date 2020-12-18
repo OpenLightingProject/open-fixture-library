@@ -69,7 +69,7 @@ async function getFixtureCreateResult(fixtures) {
         }
       }
       else if (property === `meta`) {
-        const now = (new Date()).toISOString().replace(/T.*/, ``);
+        const now = new Date().toISOString().replace(/T.*/, ``);
 
         result.fixtures[key].meta = {
           authors: [fixture.metaAuthor],

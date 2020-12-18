@@ -22,7 +22,7 @@ const excludedUrls = [
 
 
 (async () => {
-  const testStartTime = new Date();
+  const testStartTime = Date.now();
   let errored = false;
 
   try {
@@ -46,11 +46,11 @@ const excludedUrls = [
       }
     });
 
-    const crawlStartTime = new Date();
+    const crawlStartTime = Date.new();
     console.log(chalk.blue.bold(`Start crawling the website for external links ...`));
     await crawler.crawl();
 
-    const crawlTime = new Date() - crawlStartTime;
+    const crawlTime = Date.now() - crawlStartTime;
     console.log(`Crawling finished after ${crawlTime / 1000}s.`);
     console.log();
 
@@ -75,7 +75,7 @@ const excludedUrls = [
     errored = true;
   }
 
-  const testTime = new Date() - testStartTime;
+  const testTime = Date.now() - testStartTime;
   console.log();
   console.log(chalk.greenBright.bold(`Test took ${testTime / 1000}s.`));
   process.exit(errored ? 1 : 0);
@@ -107,7 +107,7 @@ async function fetchExternalUrls(externalUrls) {
   );
 
   console.log(chalk.blue.bold(`Start fetching ${externalUrls.length} external links in blocks of ${BLOCK_SIZE} URLs ...\n`));
-  const fetchStartTime = new Date();
+  const fetchStartTime = Date.now();
   for (const urlBlock of urlBlocks) {
     await Promise.all(urlBlock.map(async url => {
       const result = await testExternalLink(url);
@@ -123,7 +123,7 @@ async function fetchExternalUrls(externalUrls) {
 
   const failingUrlResults = urlResults.filter(result => result.failed);
 
-  const fetchTime = new Date() - fetchStartTime;
+  const fetchTime = Date.now() - fetchStartTime;
   const colonOrPeriod = failingUrlResults.length > 0 ? `:` : `.`;
   console.log(`\nFetching done in ${fetchTime / 1000}s, ${failingUrlResults.length} of ${externalUrls.length} URLs have failed${colonOrPeriod}`);
   for (const { url, message } of failingUrlResults) {
@@ -364,7 +364,7 @@ async function updateGithubIssue(urlResults) {
     const lines = [
       `*Auto-generated content by \`${path.relative(path.join(__dirname, `..`), __filename)}\`.*`,
       ``,
-      `**Last updated:** ${(new Date()).toISOString()}`,
+      `**Last updated:** ${new Date().toISOString()}`,
       ``,
       `| URL <th nowrap>today … 6 days ago</th>`,
       `|--------------------------------------|`,
@@ -423,7 +423,7 @@ async function updateGithubIssue(urlResults) {
     }
 
     const lines = [
-      `${GITHUB_COMMENT_HEADING} (${(new Date()).toISOString()})`,
+      `${GITHUB_COMMENT_HEADING} (${new Date().toISOString()})`,
       ``,
       `[:page_with_curl: Workflow run](${workflowRunUrl})`,
       ``,

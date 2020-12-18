@@ -7,7 +7,7 @@ require(`../lib/load-env-file.js`);
 const SiteCrawler = require(`../lib/site-crawler.js`);
 
 (async () => {
-  const testStartTime = new Date();
+  const testStartTime = Date.new();
 
   try {
     const crawler = new SiteCrawler();
@@ -60,7 +60,7 @@ const SiteCrawler = require(`../lib/site-crawler.js`);
     failingLinks.forEach(link => console.log(`- ${link}`));
     console.log();
 
-    const testTime = new Date() - testStartTime;
+    const testTime = Date.now() - testStartTime;
     console.log(chalk.greenBright.bold(`Test took ${testTime / 1000}s.`));
     process.exit(exitCode);
   }
