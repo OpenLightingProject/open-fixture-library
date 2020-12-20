@@ -329,7 +329,7 @@ const supportedVideoFormats = {
 
   youtube: {
     /**
-     * YouTube videos can be in one of the following formats:
+     * YouTube videos can be in the following format:
      * - https://www.youtube.com/watch?v={videoId}&otherParameters
      */
     regex: /^https:\/\/www\.youtube\.com\/watch\?v=([\w-]+)(?:&t=([\dhms]+)|)/,
