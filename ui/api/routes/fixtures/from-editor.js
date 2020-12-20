@@ -203,12 +203,17 @@ async function getFixtureCreateResult(fixtures) {
   function addLinks(fixture, editorLinksArray) {
     fixture.links = {};
 
+    const resolveShortenedYouTubeUrl = url => url.replace(
+      /^https:\/\/youtu\.be\/([\w-]+)(\?.*|)$/,
+      (match, videoId, query) => `https://www.youtube.com/watch?v=${videoId}${query.replace(/^\?/, `&`)}`,
+    );
+
     const linkTypes = Object.keys(schemaProperties.links);
 
     for (const linkType of linkTypes) {
-      const linksOfType = editorLinksArray.filter(
-        linkObject => linkObject.type === linkType,
-      ).map(linkObject => linkObject.url);
+      const linksOfType = editorLinksArray
+        .filter(({ type }) => type === linkType)
+        .map(({ url }) => resolveShortenedYouTubeUrl(url));
 
       if (linksOfType.length > 0) {
         fixture.links[linkType] = linksOfType;
