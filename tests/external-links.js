@@ -46,7 +46,7 @@ const excludedUrls = [
       }
     });
 
-    const crawlStartTime = Date.new();
+    const crawlStartTime = Date.now();
     console.log(chalk.blue.bold(`Start crawling the website for external links ...`));
     await crawler.crawl();
 

@@ -7,7 +7,7 @@ require(`../lib/load-env-file.js`);
 const SiteCrawler = require(`../lib/site-crawler.js`);
 
 (async () => {
-  const testStartTime = Date.new();
+  const testStartTime = Date.now();
 
   try {
     const crawler = new SiteCrawler();
