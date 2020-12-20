@@ -331,9 +331,8 @@ const supportedVideoFormats = {
     /**
      * YouTube videos can be in one of the following formats:
      * - https://www.youtube.com/watch?v={videoId}&otherParameters
-     * - https://youtu.be/{videoId]}?otherParameters
      */
-    regex: /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)(?:[&?]t=([\dhms]+)|)/,
+    regex: /^https:\/\/www\.youtube\.com\/watch\?v=([\w-]+)(?:&t=([\dhms]+)|)/,
     displayType: url => `YouTube`,
     videoId: (url, match) => match[1],
     startAt: (url, match) => match[2] || 0,
