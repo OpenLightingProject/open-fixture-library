@@ -34,6 +34,10 @@ export default {
       path: `/api/v1`,
       handler: `~/api/index.js`,
     },
+    {
+      path: `/`,
+      handler: `~/api/download.js`,
+    },
   ],
   css: [
     `~/assets/styles/style.scss`,
