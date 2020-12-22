@@ -29,6 +29,12 @@ export default {
       ssr: false,
     },
   ],
+  serverMiddleware: [
+    {
+      path: `/api/v1`,
+      handler: `~/api/index.js`,
+    },
+  ],
   css: [
     `~/assets/styles/style.scss`,
     `embetty-vue/dist/embetty-vue.css`,

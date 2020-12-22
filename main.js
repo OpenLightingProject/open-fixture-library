@@ -13,7 +13,6 @@ const { fixtureFromRepository, embedResourcesIntoFixtureJson } = require(`./lib/
 const importJson = require(`./lib/import-json.js`);
 const Fixture = require(`./lib/model/Fixture.js`).default;
 const Manufacturer = require(`./lib/model/Manufacturer.js`).default;
-const apiRouter = require(`./ui/api/index.js`);
 
 const pluginsPromise = importJson(`./plugins/plugins.json`, __dirname);
 const registerPromise = importJson(`./fixtures/register.json`, __dirname);
@@ -139,8 +138,6 @@ app.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request, r
 
   downloadFixtures(response, format, fixtures, zipName, errorDesc);
 });
-
-app.use(`/api/v1`, apiRouter);
 
 
 
