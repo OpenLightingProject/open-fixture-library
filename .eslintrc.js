@@ -219,7 +219,7 @@ const disabledRules = [
   `unicorn/no-abusive-eslint-disable`,
   `unicorn/no-null`,
   `unicorn/no-process-exit`,
-  `unicorn/no-reduce`,
+  `unicorn/no-array-reduce`,
   `unicorn/no-useless-undefined`,
   `unicorn/prefer-spread`,
   `vue/multiline-html-element-content-newline`,
