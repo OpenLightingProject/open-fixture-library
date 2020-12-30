@@ -282,14 +282,14 @@ export default {
         this.removeNextCapability();
       }
     },
-    insertCapabilityBefore() {
+    async insertCapabilityBefore() {
       this.$emit(`insert-capability-before`);
 
       const dialog = this.$el.closest(`dialog`);
-      this.$nextTick(() => {
-        const newCapability = dialog.querySelector(`.capability-editor`).children[this.capabilityIndex - 1];
-        dialog.scrollTop += newCapability.clientHeight;
-      });
+      await this.$nextTick();
+
+      const newCapability = dialog.querySelector(`.capability-editor`).children[this.capabilityIndex - 1];
+      dialog.scrollTop += newCapability.clientHeight;
     },
     insertCapabilityAfter() {
       this.$emit(`insert-capability-after`);

@@ -335,13 +335,13 @@ export default {
         }
       }
     },
-    focusEndField() {
-      this.$nextTick(() => {
-        if (this.hasStartEnd) {
-          const focusField = this.propertyDataStart === `` ? this.$refs.startField : this.$refs.endField;
-          focusField.focus();
-        }
-      });
+    async focusEndField() {
+      await this.$nextTick();
+
+      if (this.hasStartEnd) {
+        const focusField = this.propertyDataStart === `` ? this.$refs.startField : this.$refs.endField;
+        focusField.focus();
+      }
     },
     onUnitSelected(newUnit) {
       if (!this.propertyDataStart.endsWith(newUnit)) {

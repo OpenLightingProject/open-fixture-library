@@ -220,11 +220,13 @@ export default {
   beforeMount() {
     this.$root._oflRestoreComplete = false;
   },
-  mounted() {
+  async mounted() {
     this.applyStoredPrefillData();
 
     // let all components initialize without auto-focus
-    this.$nextTick(() => this.restoreAutoSave());
+    await this.$nextTick();
+
+    this.restoreAutoSave();
   },
   methods: {
     addNewMode() {
@@ -408,7 +410,7 @@ export default {
       this.clearAutoSave();
     },
 
-    reset() {
+    async reset() {
       this.fixture = getEmptyFixture();
       this.channel = getEmptyChannel();
       this.honeypot = ``;
@@ -419,11 +421,11 @@ export default {
         query: {}, // clear prefill query
       });
 
-      this.$nextTick(() => {
-        this.formstate._reset();
-        this.$refs.existingManufacturerSelect.focus();
-        window.scrollTo(0, 0);
-      });
+      await this.$nextTick();
+
+      this.formstate._reset();
+      this.$refs.existingManufacturerSelect.focus();
+      window.scrollTo(0, 0);
     },
   },
 };

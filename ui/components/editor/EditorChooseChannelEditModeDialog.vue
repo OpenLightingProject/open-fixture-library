@@ -55,14 +55,14 @@ export default {
       // else duplicate makes no sense here -> continue directly
       this.chooseChannelEditMode(`edit-all`);
     },
-    chooseChannelEditMode(editMode) {
+    async chooseChannelEditMode(editMode) {
       // close this dialog
       this.channel.editMode = ``;
 
-      this.$nextTick(() => {
-        // open channel dialog
-        this.channel.editMode = editMode;
-      });
+      await this.$nextTick();
+
+      // open channel dialog
+      this.channel.editMode = editMode;
     },
   },
 };
