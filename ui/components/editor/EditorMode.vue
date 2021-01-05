@@ -331,7 +331,7 @@ export default {
         resolution = channel.resolution;
       }
 
-      for (const otherChannel of Object.value(this.fixture.availableChannels)) {
+      for (const otherChannel of Object.values(this.fixture.availableChannels)) {
         if (otherChannel.coarseChannelId === coarseChannelId && otherChannel.resolution > resolution) {
           this.fixtureEditor.removeChannel(otherChannel.uuid, this.mode.uuid);
         }
