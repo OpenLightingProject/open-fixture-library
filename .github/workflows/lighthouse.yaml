@@ -12,6 +12,7 @@ jobs:
     if: ${{ github.event_name }} == 'push'
     runs-on: ubuntu-latest
     steps:
+      - run: echo $GITHUB_EVENT_NAME
       - name: Checkout
         uses: actions/checkout@v2.3.4
       - name: Setup Node.js v14
@@ -36,6 +37,7 @@ jobs:
     if: ${{ github.event_name }} != 'push'
     runs-on: ubuntu-latest
     steps:
+      - run: echo $GITHUB_EVENT_NAME
       - name: Checkout
         uses: actions/checkout@v2.3.4
       - name: Run the Lighthouse CI
