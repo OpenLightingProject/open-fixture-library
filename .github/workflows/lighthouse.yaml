@@ -28,7 +28,7 @@ jobs:
             http://localhost:5000/chroma-q/color-force-ii-72
             http://localhost:5000/categories/Color%20Changer
           runs: 3
-          configPath: '.github/lighthouserc.json'
+          configPath: '.github/lighthouserc.js'
           uploadArtifacts: true
           temporaryPublicStorage: true
   production:
