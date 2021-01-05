@@ -1,9 +1,12 @@
 name: Lighthouse
-on: pull_request
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
 jobs:
   review:
     name: Review
     runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'component-ui')
     env:
       NODE_ENV: production
       ALLOW_SEARCH_INDEXING: allowed
