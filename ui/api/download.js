@@ -5,6 +5,8 @@ const { fixtureFromRepository, embedResourcesIntoFixtureJson } = require(`../../
 const importJson = require(`../../lib/import-json.js`);
 const Fixture = require(`../../lib/model/Fixture.js`).default;
 const Manufacturer = require(`../../lib/model/Manufacturer.js`).default;
+const { sendJson, sendAttachment } = require(`../../lib/server-response-helpers.js`);
+/** @typedef {import('http').ServerResponse} ServerResponse */
 
 const pluginsPromise = importJson(`../../plugins/plugins.json`, __dirname);
 const registerPromise = importJson(`../../fixtures/register.json`, __dirname);
@@ -12,7 +14,7 @@ const registerPromise = importJson(`../../fixtures/register.json`, __dirname);
 
 /**
  * Instruct Express to initiate a download of one / multiple exported fixture files.
- * @param {express.Response} response Express Response object
+ * @param {ServerResponse} response The Node ServerResponse object.
  * @param {String} pluginKey Key of the export plugin to use.
  * @param {Array.<Fixture>} fixtures Array of fixtures to export.
  * @param {String} zipName Name of the zip file (if multiple files should be downloaded).
@@ -29,11 +31,8 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
     });
 
     if (files.length === 1) {
-      response
-        .status(200)
-        .attachment(files[0].name)
-        .type(files[0].mimetype)
-        .send(Buffer.from(files[0].content));
+      response.statusCode = 200;
+      sendAttachment(response, files[0]);
       return;
     }
 
@@ -47,15 +46,17 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
       type: `nodebuffer`,
       compression: `DEFLATE`,
     });
-    response.status(200)
-      .attachment(`ofl_export_${zipName}.zip`)
-      .type(`application/zip`)
-      .send(zipBuffer);
+    response.statusCode = 200;
+    sendAttachment(response, {
+      name: `ofl_export_${zipName}.zip`,
+      mimetype: `application/zip`,
+      content: zipBuffer,
+    });
   }
   catch (error) {
-    response
-      .status(500)
-      .send(`Exporting ${errorDesc} with ${pluginKey} failed: ${error.toString()}`);
+    response.statusCode = 500;
+    response.write(`Exporting ${errorDesc} with ${pluginKey} failed: ${error.toString()}`);
+    response.end();
   }
 }
 
@@ -89,9 +90,9 @@ router.post(`/download-editor.:format([a-z0-9_.-]+)`, async (request, response) 
 
   const plugins = await pluginsPromise;
   if (!plugins.exportPlugins.includes(format)) {
-    response
-      .status(500)
-      .send(`Exporting fixture with ${format} failed: Plugin is not supported.`);
+    response.statusCode = 500;
+    response.write(`Exporting fixture with ${format} failed: Plugin is not supported.`);
+    response.end();
 
     return;
   }
@@ -133,12 +134,12 @@ router.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request
     try {
       const json = await importJson(`../../fixtures/${manufacturerKey}/${fixtureKey}.json`, __dirname);
       await embedResourcesIntoFixtureJson(json);
-      response.json(json);
+      sendJson(response, json);
     }
     catch (error) {
-      response
-        .status(500)
-        .send(`Fetching ${manufacturerKey}/${fixtureKey}.json failed: ${error.toString()}`);
+      response.statusCode = 500;
+      response.write(`Fetching ${manufacturerKey}/${fixtureKey}.json failed: ${error.toString()}`);
+      response.end();
     }
     return;
   }
