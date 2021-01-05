@@ -20,3 +20,8 @@ jobs:
           runs: 3
           uploadArtifacts: true
           temporaryPublicStorage: true
+      - name: Post Lighthouse Status
+        uses: manrueda/lighthouse-report-action@v1.0.1
+        with:
+          reports: '.lighthouseci'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
