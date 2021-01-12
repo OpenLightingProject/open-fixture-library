@@ -306,7 +306,7 @@ const parserPerChannelType = {
       capability.type = `Intensity`;
     }
 
-    if (!capabilityName.match(/^(?:intensity|dimmer)$/i)) {
+    if (!/^(?:intensity|dimmer)$/i.test(capabilityName)) {
       capability.comment = capabilityName;
     }
 
@@ -315,7 +315,7 @@ const parserPerChannelType = {
   Colour: ({ channelName, qlcPlusCapability, capabilityName, index }) => {
     const capability = {};
 
-    if (channelName.match(/wheel\b/i)) {
+    if (/wheel\b/i.test(channelName)) {
       capability.type = `WheelSlot`;
       capability.slotNumber = index + 1;
 
@@ -389,7 +389,7 @@ const parserPerChannelType = {
     comment: capabilityName,
   }),
   Pan: ({ channelName, capabilityName, panMax }) => {
-    if (channelName.match(/continuous/i)) {
+    if (/continuous/i.test(channelName)) {
       const capability = {
         type: `PanContinuous`,
       };
@@ -409,7 +409,7 @@ const parserPerChannelType = {
     });
   },
   Tilt: ({ channelName, capabilityName, tiltMax }) => {
-    if (channelName.match(/continuous/i)) {
+    if (/continuous/i.test(channelName)) {
       const capability = {
         type: `TiltContinuous`,
       };
@@ -454,7 +454,7 @@ const parserPerChannelType = {
       return capability;
     }
 
-    if (capabilityName.match(/random/i)) {
+    if (/random/i.test(capabilityName)) {
       capability.randomTiming = true;
     }
 
@@ -471,11 +471,11 @@ const parserPerChannelType = {
   Speed: ({ channelName, capabilityName }) => {
     const capability = {};
 
-    if (channelName.match(/pan\/?tilt/i)) {
+    if (/pan\/?tilt/i.test(channelName)) {
       capability.type = `PanTiltSpeed`;
     }
-    else if (channelName.match(/strobe/i) || capabilityName.match(/strobe/i)) {
-      if (channelName.match(/speed|rate/i)) {
+    else if (/strobe/i.test(channelName) || /strobe/i.test(capabilityName)) {
+      if (/speed|rate/i.test(channelName)) {
         capability.type = `StrobeSpeed`;
       }
       else {

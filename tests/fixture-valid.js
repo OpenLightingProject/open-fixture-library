@@ -736,15 +736,16 @@ async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValu
 
     // "6ch" / "8-Channel" / "9 channels" mode names
     [`name`, `shortName`].forEach(nameProperty => {
-      if (mode[nameProperty].match(/(\d+)(?:\s+|-|)(?:channels?|ch)/i)) {
-        const intendedLength = Number.parseInt(RegExp.$1, 10);
+      const match = mode[nameProperty].match(/(\d+)(?:\s+|-|)(?:channels?|ch)/i);
+      if (match !== null) {
+        const intendedLength = Number.parseInt(match[1], 10);
 
         if (mode.channels.length !== intendedLength) {
-          result.errors.push(`Mode '${mode.name}' should have ${RegExp.$1} channels according to its ${nameProperty} but actually has ${mode.channels.length}.`);
+          result.errors.push(`Mode '${mode.name}' should have ${intendedLength} channels according to its ${nameProperty} but actually has ${mode.channels.length}.`);
         }
 
         const allowedShortNames = [`${intendedLength}ch`, `Ch${intendedLength}`, `Ch0${intendedLength}`];
-        if (mode[nameProperty].length === RegExp.lastMatch.length && !allowedShortNames.includes(mode.shortName)) {
+        if (mode[nameProperty].length === match[0].length && !allowedShortNames.includes(mode.shortName)) {
           result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
         }
       }
