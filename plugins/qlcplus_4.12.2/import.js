@@ -240,7 +240,7 @@ async function getOflWheels(qlcPlusFixture) {
     );
 
     const isWheelChannel = /wheel\b/i.test(channelName) || hasGoboPresetCapability;
-    const isRotationChannel = /(rotation|index)/i.test(channelName) || (`Group` in channel && channel.Group[0]._ === `Speed`);
+    const isRotationChannel = /rotation|index/i.test(channelName) || (`Group` in channel && channel.Group[0]._ === `Speed`);
 
     return isWheelChannel && !isRotationChannel;
   });
@@ -269,7 +269,7 @@ async function getOflWheels(qlcPlusFixture) {
 
       const capabilityPreset = capability.$.Preset || ``;
 
-      if (/^(GoboShakeMacro|ColorWheelIndex)$|^Rotation/.test(capabilityPreset)) {
+      if (/^(?:GoboShakeMacro|ColorWheelIndex)$|^Rotation/.test(capabilityPreset)) {
         continue;
       }
 
