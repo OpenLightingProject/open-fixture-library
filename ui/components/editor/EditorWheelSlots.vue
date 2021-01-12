@@ -54,9 +54,7 @@ export default {
       const length = max - min + 1;
 
       // array of integers from min to max: [min, min+1, …, max-1, max]
-      const slotNumbersInRange = new Array(length).fill().map(
-        (item, index) => min + index,
-      ).filter(slotNumber => slotNumber >= 1);
+      const slotNumbersInRange = Array.from({ length }, (item, index) => min + index).filter(slotNumber => slotNumber >= 1);
 
       if (slotNumbers[slotNumbers.length - 1] < slotNumbers[0]) {
         slotNumbersInRange.reverse();
