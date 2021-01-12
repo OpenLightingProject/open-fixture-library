@@ -173,9 +173,9 @@ const importHelpers = {
    */
   getSpeedGuessedComment(capabilityName, capability) {
     const speedRegex = /(?:^|,\s*|\s+)\(?((?:(?:counter\s?-?\s?)?clockwise|c?cw).*?(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*hz)\)?$/i;
-    if (capabilityName.match(speedRegex)) {
+    if (speedRegex.test(capabilityName)) {
       return capabilityName.replace(speedRegex, (_, direction, start, end) => {
-        const directionString = direction ? (direction.match(/counter|ccw/i) ? ` CCW` : ` CW`) : ``;
+        const directionString = direction ? (/counter|ccw/i.test(direction) ? ` CCW` : ` CW`) : ``;
 
         if (directionString !== ``) {
           capability.type = `Rotation`;
@@ -200,7 +200,7 @@ const importHelpers = {
     }
 
     const stopRegex = /\s*\b(?:stop(?:ped)?|no rotation|no rotate)\b\s*/gi;
-    if (capabilityName.match(stopRegex)) {
+    if (stopRegex.test(capabilityName)) {
       return capabilityName.replace(stopRegex, () => {
         capability.speed = `stop`;
         return ``;
@@ -812,7 +812,7 @@ const capabilityPresets = {
     exportRes1: capability => capability.colors.allColors[0],
     exportRes2: capability => capability.colors.allColors[1],
     importCapability: ({ channelName, res1, res2, index }) => {
-      if (channelName.match(/wheel\b/i)) {
+      if (/wheel\b/i.test(channelName)) {
         return {
           type: `WheelSlot`,
           slotNumber: index + 1,
