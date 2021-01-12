@@ -166,7 +166,7 @@ function addAttribute(xml, mode, attribute, channels) {
           return channel.type.toUpperCase(); // PAN or TILT
 
         case `INTENSITY`:
-          if (indexInAttribute === 0 && /dimmer|intensity/.test(uniqueName.toLowerCase())) {
+          if (indexInAttribute === 0 && /dimmer|intensity/i.test(uniqueName)) {
             return `DIMMER`;
           }
           break;
