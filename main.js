@@ -3,7 +3,7 @@
 import express from 'express';
 import compression from 'compression';
 import helmet from 'helmet';
-import { loadNuxt, build } from 'nuxt';
+import nuxt from 'nuxt';
 import JSZip from 'jszip';
 
 import { fixtureFromRepository, embedResourcesIntoFixtureJson } from './lib/model.js';
@@ -143,13 +143,13 @@ app.use(`/api/v1`, apiRouter);
 
 // instantiate nuxt.js with the options
 const isDevelopment = process.argv[2] === `--dev`;
-loadNuxt(isDevelopment ? `dev` : `start`).then(async nuxt => {
+nuxt.loadNuxt(isDevelopment ? `dev` : `start`).then(async nuxtInstance => {
   // render every remaining route with Nuxt.js
-  app.use(nuxt.render);
+  app.use(nuxtInstance.render);
 
   if (isDevelopment) {
     console.log(`Starting dev server with hot reloading...`);
-    await build(nuxt);
+    await nuxt.build(nuxtInstance);
   }
 
   console.log(`Nuxt.js is ready.`);

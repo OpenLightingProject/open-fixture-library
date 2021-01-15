@@ -1,4 +1,4 @@
-import colorNameList from 'color-name-list';
+import colorNameList from 'color-name-list/dist/colornames.esm.mjs';
 import xml2js from 'xml2js';
 
 export const version = `0.3.1`;

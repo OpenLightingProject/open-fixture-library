@@ -1,7 +1,7 @@
 import express from 'express';
 import chalk from 'chalk';
 import cors from 'cors';
-import OpenAPIBackend from 'openapi-backend';
+import { OpenAPIBackend } from 'openapi-backend';
 import getAjvErrorMessages from '../../lib/get-ajv-error-messages.js';
 
 import * as routeHandlers from './routes.js';
