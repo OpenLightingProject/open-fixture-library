@@ -1,62 +1,45 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "FP1 Titan Tube",
-  "shortName": "AsteraFP1Titan",
-  "categories": ["Pixel Bar", "Color Changer", "Blinder", "Strobe"],
+  "name": "FP5 NYX Bulb",
+  "shortName": "AsteraFP5NYX",
+  "categories": ["Color Changer", "Blinder", "Strobe"],
   "meta": {
     "authors": ["Jack Crombie", "Felix Edelmann", "Dyami Caliri"],
-    "createDate": "2019-07-09",
-    "lastModifyDate": "2021-01-11"
+    "createDate": "2021-01-12",
+    "lastModifyDate": "2021-01-12"
   },
   "links": {
     "manual": [
-      "https://astera-led.com/Downloads/manual/Titan%20Manual.pdf"
+      "https://astera-led.com/Downloads/Profile/NYX%20Bulb%20DMX%20Profiles.pdf"
     ],
     "productPage": [
-      "https://astera-led.com/titan/"
+      "https://astera-led.com/nyx/"
     ],
     "video": [
-      "https://www.youtube.com/watch?v=V83BQca2MDY"
+      "https://www.youtube.com/watch?v=CiSduB4M5RU"
     ]
   },
   "physical": {
-    "dimensions": [1035, 42, 42],
-    "weight": 1.35,
-    "power": 48,
+    "dimensions": [130, 70, 70],
+    "weight": 0.24,
+    "power": 10,
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED",
-      "lumens": 2900
+      "lumens": 750
     },
     "lens": {
       "degreesMinMax": [120, 120]
-    },
-    "matrixPixels": {
-      "dimensions": [64, 42, 42],
-      "spacing": [0, 0, 0]
     }
   },
   "matrix": {
-    "pixelCount": [16, 1, 1],
-    "pixelGroups": {
-      "Master": "all",
-      "1/4": { "x": ["<=4"] },
-      "2/4": { "x": [">=5", "<=8"] },
-      "3/4": { "x": [">=9", "<=12"] },
-      "4/4": { "x": [">=13"] },
-      "Effect Color 1": "all",
-      "Effect Color 2": "all",
-      "Effect Color 3": "all",
-      "Effect Color 4": "all"
-    }
+    "pixelKeys": [
+      [
+        [ "Master", "Effect Color 1", "Effect Color 2", "Effect Color 3", "Effect Color 4" ]
+      ]
+    ]
   },
   "templateChannels": {
-    "Dimmer $pixelKey": {
-      "fineChannelAliases": ["Dimmer $pixelKey fine"],
-      "capability": {
-        "type": "Intensity"
-      }
-    },
     "Red $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
@@ -73,78 +56,6 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
-      }
-    },
-    "Amber $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Amber"
-      }
-    },
-    "Emulated White $pixelKey": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "Color Temperature $pixelKey": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 4],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [5, 255],
-          "type": "ColorTemperature",
-          "colorTemperatureStart": "2100K",
-          "colorTemperatureEnd": "7100K",
-          "helpWanted": "Does this capability already begin at DMX value 4 (with 2080K)?"
-        }
-      ]
-    },
-    "CCT $pixelKey": {
-      "capability":
-        {
-          "type": "ColorTemperature",
-          "colorTemperatureStart": "1750K",
-          "colorTemperatureEnd": "9910K"
-        }
-    },
-    "Crossfade $pixelKey": {
-      "capability":
-        {
-          "type": "Generic",
-          "comment": "CCT crossfade to RGB"
-        }
-    },
-    "Green-Magenta Point $pixelKey": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 4],
-          "type": "Generic",
-          "comment": "Neutral"
-        },
-        {
-          "dmxRange": [5, 255],
-          "type": "Generic",
-          "comment": "-99%…100%"
-        }
-      ]
-    },
-    "Hue $pixelKey": {
-      "fineChannelAliases": ["Hue $pixelKey fine"],
-      "defaultValue": 0,
-      "capability": {
-        "type": "Generic",
-        "comment": "0…360°"
-      }
-    },
-    "Saturation $pixelKey": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Generic",
-        "comment": "0…100%"
       }
     },
     "LEE Color Gel $pixelKey": {
@@ -1301,8 +1212,89 @@
           "helpWanted": "What is the RGB color mixing?"
         }
       ]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
     },
-    "Strobe $pixelKey": {
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Emulated White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2100K",
+          "colorTemperatureEnd": "7100K",
+          "helpWanted": "Does this capability already begin at DMX value 4 (with 2080K)?"
+        }
+      ]
+    },
+    "CCT": {
+      "capability":
+        {
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "1750K",
+          "colorTemperatureEnd": "9910K"
+        }
+    },
+    "Crossfade": {
+      "capability":
+        {
+          "type": "Generic",
+          "comment": "CCT crossfade to RGB"
+        }
+    },
+    "Green-Magenta Point": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Generic",
+          "comment": "Neutral"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "Generic",
+          "comment": "-99%…100%"
+        }
+      ]
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    },
+
+    "Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 3],
@@ -1324,9 +1316,7 @@
           "speedEnd": "25Hz"
         }
       ]
-    }
-  },
-  "availableChannels": {
+    },
     "Programs": {
       "capabilities": [
         {
@@ -1528,7 +1518,7 @@
         "Red Master",
         "Green Master",
         "Blue Master",
-        "Emulated White Master"
+        "Emulated White"
       ]
     },
     {
@@ -1537,14 +1527,14 @@
         "Red Master",
         "Green Master",
         "Blue Master",
-        "Amber Master",
-        "Emulated White Master"
+        "Amber",
+        "Emulated White"
       ]
     },
     {
       "name": "4: Dim RGB",
       "channels": [
-        "Dimmer Master",
+        "Dimmer",
         "Red Master",
         "Green Master",
         "Blue Master"
@@ -1553,22 +1543,22 @@
     {
       "name": "5: Dim RGBW",
       "channels": [
-        "Dimmer Master",
+        "Dimmer",
         "Red Master",
         "Green Master",
         "Blue Master",
-        "Emulated White Master"
+        "Emulated White"
       ]
     },
     {
       "name": "6: Dim RGBAW",
       "channels": [
-        "Dimmer Master",
+        "Dimmer",
         "Red Master",
         "Green Master",
         "Blue Master",
-        "Amber Master",
-        "Emulated White Master"
+        "Amber",
+        "Emulated White"
       ]
     },
     {
@@ -1577,8 +1567,8 @@
         "Red Master",
         "Green Master",
         "Blue Master",
-        "Color Temperature Master",
-        "Dimmer Master",
+        "Color Temperature",
+        "Dimmer",
         "LEE Color Gel Master"
       ]
     },
@@ -1588,7 +1578,7 @@
         "Red Master",
         "Green Master",
         "Blue Master",
-        "Strobe Master"
+        "Strobe"
       ]
     },
     {
@@ -1597,8 +1587,8 @@
         "Red Master",
         "Green Master",
         "Blue Master",
-        "Emulated White Master",
-        "Strobe Master"
+        "Emulated White",
+        "Strobe"
       ]
     },
     {
@@ -1607,42 +1597,42 @@
         "Red Master",
         "Green Master",
         "Blue Master",
-        "Amber Master",
-        "Emulated White Master",
-        "Strobe Master"
+        "Amber",
+        "Emulated White",
+        "Strobe"
       ]
     },
     {
       "name": "11: Dim RGBS",
       "channels": [
-        "Dimmer Master",
+        "Dimmer",
         "Red Master",
         "Green Master",
         "Blue Master",
-        "Strobe Master"
+        "Strobe"
       ]
     },
     {
       "name": "12: Dim RGBWS",
       "channels": [
-        "Dimmer Master",
+        "Dimmer",
         "Red Master",
         "Green Master",
         "Blue Master",
-        "Emulated White Master",
-        "Strobe Master"
+        "Emulated White",
+        "Strobe"
       ]
     },
     {
       "name": "13: Dim RGBAWS",
       "channels": [
-        "Dimmer Master",
+        "Dimmer",
         "Red Master",
         "Green Master",
         "Blue Master",
-        "Amber Master",
-        "Emulated White Master",
-        "Strobe Master"
+        "Amber",
+        "Emulated White",
+        "Strobe"
       ]
     },
     {
@@ -1651,17 +1641,17 @@
         "Red Master",
         "Green Master",
         "Blue Master",
-        "Color Temperature Master",
-        "Dimmer Master",
+        "Color Temperature",
+        "Dimmer",
         "LEE Color Gel Master",
-        "Strobe Master"
+        "Strobe"
       ]
     },
     {
       "name": "15: Effect Fix",
       "channels": [
-        "Dimmer Master",
-        "Strobe Master",
+        "Dimmer",
+        "Strobe",
         "Programs",
         "Program Speed",
         "Program Fade Time",
@@ -1678,8 +1668,8 @@
     {
       "name": "16: Effect RGB",
       "channels": [
-        "Dimmer Master",
-        "Strobe Master",
+        "Dimmer",
+        "Strobe",
         "Programs",
         "Program Speed",
         "Program Fade Time",
@@ -1700,964 +1690,12 @@
       ]
     },
     {
-      "name": "17: RGB.RGB. 4pix",
-      "channels": [
-        "Red 1/4",
-        "Green 1/4",
-        "Blue 1/4",
-        null,
-        "Red 2/4",
-        "Green 2/4",
-        "Blue 2/4",
-        null,
-        "Red 3/4",
-        "Green 3/4",
-        "Blue 3/4",
-        null,
-        "Red 4/4",
-        "Green 4/4",
-        "Blue 4/4"
-      ]
-    },
-    {
-      "name": "18: RGB RGB 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "19: RGBW RGBW 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Emulated White $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "20: RGBAW RGBAW 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Amber $pixelKey",
-            "Emulated White $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "21: Dim RGB Dim RGB 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "22: Dim RGBW Dim RGBW 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Emulated White $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "23: Dim RGBAW Dim RGBAW 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Amber $pixelKey",
-            "Emulated White $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "24: RGB CCT Dim Ind 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Color Temperature $pixelKey",
-            "Dimmer $pixelKey",
-            "LEE Color Gel $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "25: RGB.RGBS 4pix",
-      "channels": [
-        "Red 1/4",
-        "Green 1/4",
-        "Blue 1/4",
-        "Strobe Master",
-        "Red 2/4",
-        "Green 2/4",
-        "Blue 2/4",
-        null,
-        "Red 3/4",
-        "Green 3/4",
-        "Blue 3/4",
-        null,
-        "Red 4/4",
-        "Green 4/4",
-        "Blue 4/4"
-      ]
-    },
-    {
-      "name": "26: RGB RGB .. S 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey"
-          ]
-        },
-        "Strobe Master"
-      ]
-    },
-    {
-      "name": "27: RGBW RGBW .. S 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Emulated White $pixelKey"
-          ]
-        },
-        "Strobe Master"
-      ]
-    },
-    {
-      "name": "28: RGBAW RGBAW .. S 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Amber $pixelKey",
-            "Emulated White $pixelKey"
-          ]
-        },
-        "Strobe Master"
-      ]
-    },
-    {
-      "name": "29: Dim RGB Dim RGB .. S 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey"
-          ]
-        },
-        "Strobe Master"
-      ]
-    },
-    {
-      "name": "30: Dim RGBW Dim RGBW .. S 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Emulated White $pixelKey"
-          ]
-        },
-        "Strobe Master"
-      ]
-    },
-    {
-      "name": "31: Dim RGBAW Dim RGBAW .. S 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Amber $pixelKey",
-            "Emulated White $pixelKey"
-          ]
-        },
-        "Strobe Master"
-      ]
-    },
-    {
-      "name": "32: RGB CCT Dim Ind S 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Color Temperature $pixelKey",
-            "Dimmer $pixelKey",
-            "LEE Color Gel $pixelKey"
-          ]
-        },
-        "Strobe Master"
-      ]
-    },
-    {
-      "name": "33: RGBSRGBS 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Strobe $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "34: RGB RGB .. SS 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey"
-          ]
-        },
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Strobe $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "35: RGBWS RGBWS 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Emulated White $pixelKey",
-            "Strobe $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "36: RGBAWS RGBAWS 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Amber $pixelKey",
-            "Emulated White $pixelKey",
-            "Strobe $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "37: Dim RGBS Dim RGBS 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Strobe $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "38: Dim RGBWS Dim RGBWS 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Emulated White $pixelKey",
-            "Strobe $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "39: Dim RGBAWS Dim RGBAWS 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Amber $pixelKey",
-            "Emulated White $pixelKey",
-            "Strobe $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "40: RGB CCT Dim Ind S 4pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Color Temperature $pixelKey",
-            "Dimmer $pixelKey",
-            "LEE Color Gel $pixelKey",
-            "Strobe $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "41: RGB.RGB. 16pix",
-      "channels": [
-        "Red 1",
-        "Green 1",
-        "Blue 1",
-        null,
-        "Red 2",
-        "Green 2",
-        "Blue 2",
-        null,
-        "Red 3",
-        "Green 3",
-        "Blue 3",
-        null,
-        "Red 4",
-        "Green 4",
-        "Blue 4",
-        null,
-        "Red 5",
-        "Green 5",
-        "Blue 5",
-        null,
-        "Red 6",
-        "Green 6",
-        "Blue 6",
-        null,
-        "Red 7",
-        "Green 7",
-        "Blue 7",
-        null,
-        "Red 8",
-        "Green 8",
-        "Blue 8",
-        null,
-        "Red 9",
-        "Green 9",
-        "Blue 9",
-        null,
-        "Red 10",
-        "Green 10",
-        "Blue 10",
-        null,
-        "Red 11",
-        "Green 11",
-        "Blue 11",
-        null,
-        "Red 12",
-        "Green 12",
-        "Blue 12",
-        null,
-        "Red 13",
-        "Green 13",
-        "Blue 13",
-        null,
-        "Red 14",
-        "Green 14",
-        "Blue 14",
-        null,
-        "Red 15",
-        "Green 15",
-        "Blue 15",
-        null,
-        "Red 16",
-        "Green 16",
-        "Blue 16"
-      ]
-    },
-    {
-      "name": "42: RGB RGB 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "43: RGBW RGBW 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Emulated White $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "44: RGBAW RGBAW 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Amber $pixelKey",
-            "Emulated White $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "45: Dim RGB Dim RGB 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "46: Dim RGBW Dim RGBW 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Emulated White $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "47: Dim RGBAW Dim RGBAW 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Amber $pixelKey",
-            "Emulated White $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "48: RGB CCT Dim Ind 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Color Temperature $pixelKey",
-            "Dimmer $pixelKey",
-            "LEE Color Gel $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "49: RGB.RGBS 16pix",
-      "channels": [
-        "Red 1",
-        "Green 1",
-        "Blue 1",
-        "Strobe Master",
-        "Red 2",
-        "Green 2",
-        "Blue 2",
-        null,
-        "Red 3",
-        "Green 3",
-        "Blue 3",
-        null,
-        "Red 4",
-        "Green 4",
-        "Blue 4",
-        null,
-        "Red 5",
-        "Green 5",
-        "Blue 5",
-        null,
-        "Red 6",
-        "Green 6",
-        "Blue 6",
-        null,
-        "Red 7",
-        "Green 7",
-        "Blue 7",
-        null,
-        "Red 8",
-        "Green 8",
-        "Blue 8",
-        null,
-        "Red 9",
-        "Green 9",
-        "Blue 9",
-        null,
-        "Red 10",
-        "Green 10",
-        "Blue 10",
-        null,
-        "Red 11",
-        "Green 11",
-        "Blue 11",
-        null,
-        "Red 12",
-        "Green 12",
-        "Blue 12",
-        null,
-        "Red 13",
-        "Green 13",
-        "Blue 13",
-        null,
-        "Red 14",
-        "Green 14",
-        "Blue 14",
-        null,
-        "Red 15",
-        "Green 15",
-        "Blue 15",
-        null,
-        "Red 16",
-        "Green 16",
-        "Blue 16"
-      ]
-    },
-    {
-      "name": "50: RGB RGB .. S 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey"
-          ]
-        },
-        "Strobe Master"
-      ]
-    },
-    {
-      "name": "51: RGBW RGBW .. S 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Emulated White $pixelKey"
-          ]
-        },
-        "Strobe Master"
-      ]
-    },
-    {
-      "name": "52: RGBAW RGBAW .. S 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Amber $pixelKey",
-            "Emulated White $pixelKey"
-          ]
-        },
-        "Strobe Master"
-      ]
-    },
-    {
-      "name": "53: Dim RGB Dim RGB .. S 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey"
-          ]
-        },
-        "Strobe Master"
-      ]
-    },
-    {
-      "name": "54: Dim RGBW Dim RGBW .. S 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Emulated White $pixelKey"
-          ]
-        },
-        "Strobe Master"
-      ]
-    },
-    {
-      "name": "55: Dim RGBAW Dim RGBAW .. S 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Amber $pixelKey",
-            "Emulated White $pixelKey"
-          ]
-        },
-        "Strobe Master"
-      ]
-    },
-    {
-      "name": "56: RGB CCT Dim Ind S 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Color Temperature $pixelKey",
-            "Dimmer $pixelKey",
-            "LEE Color Gel $pixelKey"
-          ]
-        },
-        "Strobe Master"
-      ]
-    },
-    {
-      "name": "57: RGBSRGBS 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Strobe $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "58: RGB RGB .. SS 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey"
-          ]
-        },
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Strobe $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "59: RGBWS RGBWS 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Emulated White $pixelKey",
-            "Strobe $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "60: RGBAWS RGBAWS 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Amber $pixelKey",
-            "Emulated White $pixelKey",
-            "Strobe $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "61: Dim RGBS Dim RGBS 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Strobe $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "62: Dim RGBWS Dim RGBWS 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Emulated White $pixelKey",
-            "Strobe $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "63: Dim RGBAWS Dim RGBAWS 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Dimmer $pixelKey",
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Amber $pixelKey",
-            "Emulated White $pixelKey",
-            "Strobe $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "64: RGB CCT Dim Ind S 16pix",
-      "channels": [
-        {
-          "insert": "matrixChannels",
-          "repeatFor": "eachPixelABC",
-          "channelOrder": "perPixel",
-          "templateChannels": [
-            "Red $pixelKey",
-            "Green $pixelKey",
-            "Blue $pixelKey",
-            "Color Temperature $pixelKey",
-            "Dimmer $pixelKey",
-            "LEE Color Gel $pixelKey",
-            "Strobe $pixelKey"
-          ]
-        }
-      ]
-    },
-    {
       "name": "89: D CCT GM CRO RGB",
       "channels": [
-        "Dimmer Master",
-        "CCT Master",
-        "Green-Magenta Point Master",
-        "Crossfade Master",
+        "Dimmer",
+        "CCT",
+        "Green-Magenta Point",
+        "Crossfade",
         "Red Master",
         "Green Master",
         "Blue Master"
@@ -2666,21 +1704,21 @@
     {
       "name": "90: D CCT GM HUE SAT",
       "channels": [
-        "Dimmer Master",
-        "CCT Master",
-        "Green-Magenta Point Master",
-        "Hue Master",
-        "Saturation Master"
+        "Dimmer",
+        "CCT",
+        "Green-Magenta Point",
+        "Hue",
+        "Saturation"
       ]
     },
     {
       "name": "91: D16 CCT GM CRO RGB",
       "channels": [
-        "Dimmer Master",
-        "Dimmer Master fine",
-        "CCT Master",
-        "Green-Magenta Point Master",
-        "Crossfade Master",
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "Green-Magenta Point",
+        "Crossfade",
         "Red Master",
         "Green Master",
         "Blue Master"
@@ -2689,13 +1727,13 @@
     {
       "name": "92: D16 CCT GM H SAT",
       "channels": [
-        "Dimmer Master",
-        "Dimmer Master fine",
-        "CCT Master",
-        "Green-Magenta Point Master",
-        "Hue Master",
-        "Hue Master fine",
-        "Saturation Master"
+        "Dimmer",
+        "Dimmer fine",
+        "CCT",
+        "Green-Magenta Point",
+        "Hue",
+        "Hue fine",
+        "Saturation"
       ]
     }
   ]

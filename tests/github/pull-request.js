@@ -1,3 +1,4 @@
+const chalk = require(`chalk`);
 const { Octokit } = require(`@octokit/rest`);
 
 require(`../../lib/load-env-file.js`);
@@ -10,6 +11,7 @@ const requiredEnvironmentVariables = [
   `GITHUB_PR_BASE_REF`,
 ];
 
+/** @type {Octokit} */
 let githubClient;
 
 let repoOwner;
@@ -171,6 +173,11 @@ module.exports.fetchChangedComponents = async function fetchChangedComponents() 
  * @returns {Promise} A Promise that is fulfilled as soon as all GitHub operations have finished
  */
 module.exports.updateComment = async function updateComment(test) {
+  if (prData.head.repo.full_name !== prData.base.repo.full_name) {
+    console.warn(chalk.yellow(`Warning:`), `This PR is created from a forked repository, so there is no write permission for the repo.`);
+    return undefined;
+  }
+
   const lines = [
     `<!-- GITHUB-TEST: ${test.filename} -->`,
     `# ${test.name}`,

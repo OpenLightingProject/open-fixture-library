@@ -1,32 +1,32 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "FP1 Titan Tube",
-  "shortName": "AsteraFP1Titan",
+  "name": "FP3 Hyperion Tube",
+  "shortName": "AsteraFP3Hyperion",
   "categories": ["Pixel Bar", "Color Changer", "Blinder", "Strobe"],
   "meta": {
     "authors": ["Jack Crombie", "Felix Edelmann", "Dyami Caliri"],
-    "createDate": "2019-07-09",
+    "createDate": "2021-01-11",
     "lastModifyDate": "2021-01-11"
   },
   "links": {
     "manual": [
-      "https://astera-led.com/Downloads/manual/Titan%20Manual.pdf"
+      "https://astera-led.com/Downloads/Profile/Hyperion%20Tube%20DMX%20Profiles.pdf"
     ],
     "productPage": [
-      "https://astera-led.com/titan/"
+      "https://astera-led.com/hyperion/"
     ],
     "video": [
-      "https://www.youtube.com/watch?v=V83BQca2MDY"
+      "https://www.youtube.com/watch?v=ZEkDgApXaDg"
     ]
   },
   "physical": {
-    "dimensions": [1035, 42, 42],
-    "weight": 1.35,
-    "power": 48,
+    "dimensions": [2031, 42, 42],
+    "weight": 2.9,
+    "power": 92,
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "LED",
-      "lumens": 2900
+      "lumens": 5800
     },
     "lens": {
       "degreesMinMax": [120, 120]
@@ -37,13 +37,17 @@
     }
   },
   "matrix": {
-    "pixelCount": [16, 1, 1],
+    "pixelCount": [32, 1, 1],
     "pixelGroups": {
       "Master": "all",
-      "1/4": { "x": ["<=4"] },
-      "2/4": { "x": [">=5", "<=8"] },
-      "3/4": { "x": [">=9", "<=12"] },
-      "4/4": { "x": [">=13"] },
+      "1/8": { "x": ["<=4"] },
+      "2/8": { "x": [">=5", "<=8"] },
+      "3/8": { "x": [">=9", "<=12"] },
+      "4/8": { "x": [">=13", "<=16"] },
+      "5/8": { "x": [">=17", "<=20"] },
+      "6/8": { "x": [">=21", "<=24"] },
+      "7/8": { "x": [">=25", "<=28"] },
+      "8/8": { "x": ["<=32"] },
       "Effect Color 1": "all",
       "Effect Color 2": "all",
       "Effect Color 3": "all",
@@ -1700,31 +1704,47 @@
       ]
     },
     {
-      "name": "17: RGB.RGB. 4pix",
+      "name": "17: RGB.RGB. 8pix",
       "channels": [
-        "Red 1/4",
-        "Green 1/4",
-        "Blue 1/4",
+        "Red 1/8",
+        "Green 1/8",
+        "Blue 1/8",
         null,
-        "Red 2/4",
-        "Green 2/4",
-        "Blue 2/4",
+        "Red 2/8",
+        "Green 2/8",
+        "Blue 2/8",
         null,
-        "Red 3/4",
-        "Green 3/4",
-        "Blue 3/4",
+        "Red 3/8",
+        "Green 3/8",
+        "Blue 3/8",
         null,
-        "Red 4/4",
-        "Green 4/4",
-        "Blue 4/4"
+        "Red 4/8",
+        "Green 4/8",
+        "Blue 4/8",
+        null,
+        "Red 5/8",
+        "Green 5/8",
+        "Blue 5/8",
+        null,
+        "Red 6/8",
+        "Green 6/8",
+        "Blue 6/8",
+        null,
+        "Red 7/8",
+        "Green 7/8",
+        "Blue 7/8",
+        null,
+        "Red 8/8",
+        "Green 8/8",
+        "Blue 8/8"
       ]
     },
     {
-      "name": "18: RGB RGB 4pix",
+      "name": "18: RGB RGB 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1735,11 +1755,11 @@
       ]
     },
     {
-      "name": "19: RGBW RGBW 4pix",
+      "name": "19: RGBW RGBW 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1751,11 +1771,11 @@
       ]
     },
     {
-      "name": "20: RGBAW RGBAW 4pix",
+      "name": "20: RGBAW RGBAW 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1768,11 +1788,11 @@
       ]
     },
     {
-      "name": "21: Dim RGB Dim RGB 4pix",
+      "name": "21: Dim RGB Dim RGB 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Dimmer $pixelKey",
@@ -1784,11 +1804,11 @@
       ]
     },
     {
-      "name": "22: Dim RGBW Dim RGBW 4pix",
+      "name": "22: Dim RGBW Dim RGBW 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Dimmer $pixelKey",
@@ -1801,11 +1821,11 @@
       ]
     },
     {
-      "name": "23: Dim RGBAW Dim RGBAW 4pix",
+      "name": "23: Dim RGBAW Dim RGBAW 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Dimmer $pixelKey",
@@ -1819,11 +1839,11 @@
       ]
     },
     {
-      "name": "24: RGB CCT Dim Ind 4pix",
+      "name": "24: RGB CCT Dim Ind 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1837,31 +1857,47 @@
       ]
     },
     {
-      "name": "25: RGB.RGBS 4pix",
+      "name": "25: RGB.RGBS 8pix",
       "channels": [
-        "Red 1/4",
-        "Green 1/4",
-        "Blue 1/4",
+        "Red 1/8",
+        "Green 1/8",
+        "Blue 1/8",
         "Strobe Master",
-        "Red 2/4",
-        "Green 2/4",
-        "Blue 2/4",
+        "Red 2/8",
+        "Green 2/8",
+        "Blue 2/8",
         null,
-        "Red 3/4",
-        "Green 3/4",
-        "Blue 3/4",
+        "Red 3/8",
+        "Green 3/8",
+        "Blue 3/8",
         null,
-        "Red 4/4",
-        "Green 4/4",
-        "Blue 4/4"
+        "Red 4/8",
+        "Green 4/8",
+        "Blue 4/8",
+        null,
+        "Red 5/8",
+        "Green 5/8",
+        "Blue 5/8",
+        null,
+        "Red 6/8",
+        "Green 6/8",
+        "Blue 6/8",
+        null,
+        "Red 7/8",
+        "Green 7/8",
+        "Blue 7/8",
+        null,
+        "Red 8/8",
+        "Green 8/8",
+        "Blue 8/8"
       ]
     },
     {
-      "name": "26: RGB RGB .. S 4pix",
+      "name": "26: RGB RGB .. S 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1873,11 +1909,11 @@
       ]
     },
     {
-      "name": "27: RGBW RGBW .. S 4pix",
+      "name": "27: RGBW RGBW .. S 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1890,11 +1926,11 @@
       ]
     },
     {
-      "name": "28: RGBAW RGBAW .. S 4pix",
+      "name": "28: RGBAW RGBAW .. S 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1908,11 +1944,11 @@
       ]
     },
     {
-      "name": "29: Dim RGB Dim RGB .. S 4pix",
+      "name": "29: Dim RGB Dim RGB .. S 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Dimmer $pixelKey",
@@ -1925,11 +1961,11 @@
       ]
     },
     {
-      "name": "30: Dim RGBW Dim RGBW .. S 4pix",
+      "name": "30: Dim RGBW Dim RGBW .. S 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Dimmer $pixelKey",
@@ -1943,11 +1979,11 @@
       ]
     },
     {
-      "name": "31: Dim RGBAW Dim RGBAW .. S 4pix",
+      "name": "31: Dim RGBAW Dim RGBAW .. S 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Dimmer $pixelKey",
@@ -1962,11 +1998,11 @@
       ]
     },
     {
-      "name": "32: RGB CCT Dim Ind S 4pix",
+      "name": "32: RGB CCT Dim Ind S 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1981,11 +2017,11 @@
       ]
     },
     {
-      "name": "33: RGBSRGBS 4pix",
+      "name": "33: RGBSRGBS 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -1997,11 +2033,11 @@
       ]
     },
     {
-      "name": "34: RGB RGB .. SS 4pix",
+      "name": "34: RGB RGB .. SS 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2011,7 +2047,7 @@
         },
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Strobe $pixelKey"
@@ -2020,11 +2056,11 @@
       ]
     },
     {
-      "name": "35: RGBWS RGBWS 4pix",
+      "name": "35: RGBWS RGBWS 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2037,11 +2073,11 @@
       ]
     },
     {
-      "name": "36: RGBAWS RGBAWS 4pix",
+      "name": "36: RGBAWS RGBAWS 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2055,11 +2091,11 @@
       ]
     },
     {
-      "name": "37: Dim RGBS Dim RGBS 4pix",
+      "name": "37: Dim RGBS Dim RGBS 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Dimmer $pixelKey",
@@ -2072,11 +2108,11 @@
       ]
     },
     {
-      "name": "38: Dim RGBWS Dim RGBWS 4pix",
+      "name": "38: Dim RGBWS Dim RGBWS 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Dimmer $pixelKey",
@@ -2090,11 +2126,11 @@
       ]
     },
     {
-      "name": "39: Dim RGBAWS Dim RGBAWS 4pix",
+      "name": "39: Dim RGBAWS Dim RGBAWS 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Dimmer $pixelKey",
@@ -2109,11 +2145,11 @@
       ]
     },
     {
-      "name": "40: RGB CCT Dim Ind S 4pix",
+      "name": "40: RGB CCT Dim Ind S 8pix",
       "channels": [
         {
           "insert": "matrixChannels",
-          "repeatFor": ["1/4", "2/4", "3/4", "4/4"],
+          "repeatFor": ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "8/8"],
           "channelOrder": "perPixel",
           "templateChannels": [
             "Red $pixelKey",
@@ -2128,7 +2164,7 @@
       ]
     },
     {
-      "name": "41: RGB.RGB. 16pix",
+      "name": "41: RGB.RGB. 32pix",
       "channels": [
         "Red 1",
         "Green 1",
@@ -2192,11 +2228,75 @@
         null,
         "Red 16",
         "Green 16",
-        "Blue 16"
+        "Blue 16",
+        null,
+        "Red 17",
+        "Green 17",
+        "Blue 17",
+        null,
+        "Red 18",
+        "Green 18",
+        "Blue 18",
+        null,
+        "Red 19",
+        "Green 19",
+        "Blue 19",
+        null,
+        "Red 20",
+        "Green 20",
+        "Blue 20",
+        null,
+        "Red 21",
+        "Green 21",
+        "Blue 21",
+        null,
+        "Red 22",
+        "Green 22",
+        "Blue 22",
+        null,
+        "Red 23",
+        "Green 23",
+        "Blue 23",
+        null,
+        "Red 24",
+        "Green 24",
+        "Blue 24",
+        null,
+        "Red 25",
+        "Green 25",
+        "Blue 25",
+        null,
+        "Red 26",
+        "Green 26",
+        "Blue 26",
+        null,
+        "Red 27",
+        "Green 27",
+        "Blue 27",
+        null,
+        "Red 28",
+        "Green 28",
+        "Blue 28",
+        null,
+        "Red 29",
+        "Green 29",
+        "Blue 29",
+        null,
+        "Red 30",
+        "Green 30",
+        "Blue 30",
+        null,
+        "Red 31",
+        "Green 31",
+        "Blue 31",
+        null,
+        "Red 32",
+        "Green 32",
+        "Blue 32"
       ]
     },
     {
-      "name": "42: RGB RGB 16pix",
+      "name": "42: RGB RGB 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2211,7 +2311,7 @@
       ]
     },
     {
-      "name": "43: RGBW RGBW 16pix",
+      "name": "43: RGBW RGBW 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2227,7 +2327,7 @@
       ]
     },
     {
-      "name": "44: RGBAW RGBAW 16pix",
+      "name": "44: RGBAW RGBAW 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2244,7 +2344,7 @@
       ]
     },
     {
-      "name": "45: Dim RGB Dim RGB 16pix",
+      "name": "45: Dim RGB Dim RGB 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2260,7 +2360,7 @@
       ]
     },
     {
-      "name": "46: Dim RGBW Dim RGBW 16pix",
+      "name": "46: Dim RGBW Dim RGBW 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2277,7 +2377,7 @@
       ]
     },
     {
-      "name": "47: Dim RGBAW Dim RGBAW 16pix",
+      "name": "47: Dim RGBAW Dim RGBAW 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2295,7 +2395,7 @@
       ]
     },
     {
-      "name": "48: RGB CCT Dim Ind 16pix",
+      "name": "48: RGB CCT Dim Ind 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2313,7 +2413,7 @@
       ]
     },
     {
-      "name": "49: RGB.RGBS 16pix",
+      "name": "49: RGB.RGBS 32pix",
       "channels": [
         "Red 1",
         "Green 1",
@@ -2377,11 +2477,75 @@
         null,
         "Red 16",
         "Green 16",
-        "Blue 16"
+        "Blue 16",
+        null,
+        "Red 17",
+        "Green 17",
+        "Blue 17",
+        null,
+        "Red 18",
+        "Green 18",
+        "Blue 18",
+        null,
+        "Red 19",
+        "Green 19",
+        "Blue 19",
+        null,
+        "Red 20",
+        "Green 20",
+        "Blue 20",
+        null,
+        "Red 21",
+        "Green 21",
+        "Blue 21",
+        null,
+        "Red 22",
+        "Green 22",
+        "Blue 22",
+        null,
+        "Red 23",
+        "Green 23",
+        "Blue 23",
+        null,
+        "Red 24",
+        "Green 24",
+        "Blue 24",
+        null,
+        "Red 25",
+        "Green 25",
+        "Blue 25",
+        null,
+        "Red 26",
+        "Green 26",
+        "Blue 26",
+        null,
+        "Red 27",
+        "Green 27",
+        "Blue 27",
+        null,
+        "Red 28",
+        "Green 28",
+        "Blue 28",
+        null,
+        "Red 29",
+        "Green 29",
+        "Blue 29",
+        null,
+        "Red 30",
+        "Green 30",
+        "Blue 30",
+        null,
+        "Red 31",
+        "Green 31",
+        "Blue 31",
+        null,
+        "Red 32",
+        "Green 32",
+        "Blue 32"
       ]
     },
     {
-      "name": "50: RGB RGB .. S 16pix",
+      "name": "50: RGB RGB .. S 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2397,7 +2561,7 @@
       ]
     },
     {
-      "name": "51: RGBW RGBW .. S 16pix",
+      "name": "51: RGBW RGBW .. S 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2414,7 +2578,7 @@
       ]
     },
     {
-      "name": "52: RGBAW RGBAW .. S 16pix",
+      "name": "52: RGBAW RGBAW .. S 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2432,7 +2596,7 @@
       ]
     },
     {
-      "name": "53: Dim RGB Dim RGB .. S 16pix",
+      "name": "53: Dim RGB Dim RGB .. S 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2449,7 +2613,7 @@
       ]
     },
     {
-      "name": "54: Dim RGBW Dim RGBW .. S 16pix",
+      "name": "54: Dim RGBW Dim RGBW .. S 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2467,7 +2631,7 @@
       ]
     },
     {
-      "name": "55: Dim RGBAW Dim RGBAW .. S 16pix",
+      "name": "55: Dim RGBAW Dim RGBAW .. S 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2486,7 +2650,7 @@
       ]
     },
     {
-      "name": "56: RGB CCT Dim Ind S 16pix",
+      "name": "56: RGB CCT Dim Ind S 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2505,7 +2669,7 @@
       ]
     },
     {
-      "name": "57: RGBSRGBS 16pix",
+      "name": "57: RGBSRGBS 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2521,7 +2685,7 @@
       ]
     },
     {
-      "name": "58: RGB RGB .. SS 16pix",
+      "name": "58: RGB RGB .. SS 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2544,7 +2708,7 @@
       ]
     },
     {
-      "name": "59: RGBWS RGBWS 16pix",
+      "name": "59: RGBWS RGBWS 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2561,7 +2725,7 @@
       ]
     },
     {
-      "name": "60: RGBAWS RGBAWS 16pix",
+      "name": "60: RGBAWS RGBAWS 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2579,7 +2743,7 @@
       ]
     },
     {
-      "name": "61: Dim RGBS Dim RGBS 16pix",
+      "name": "61: Dim RGBS Dim RGBS 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2596,7 +2760,7 @@
       ]
     },
     {
-      "name": "62: Dim RGBWS Dim RGBWS 16pix",
+      "name": "62: Dim RGBWS Dim RGBWS 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2614,7 +2778,7 @@
       ]
     },
     {
-      "name": "63: Dim RGBAWS Dim RGBAWS 16pix",
+      "name": "63: Dim RGBAWS Dim RGBAWS 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
@@ -2633,7 +2797,7 @@
       ]
     },
     {
-      "name": "64: RGB CCT Dim Ind S 16pix",
+      "name": "64: RGB CCT Dim Ind S 32pix",
       "channels": [
         {
           "insert": "matrixChannels",
