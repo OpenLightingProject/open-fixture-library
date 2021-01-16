@@ -153,6 +153,10 @@ async function addChannel(xml, channel, customGobos) {
  * @param {Object} customGobos An object where gobo resources not included in QLC+ can be added to.
  */
 async function addFineChannel(xml, fineChannel, customGobos) {
+  if (!fineChannel.fixture.allChannels.includes(fineChannel)) {
+    return;
+  }
+
   const xmlFineChannel = xml.element({
     Channel: {
       '@Name': fineChannel.uniqueName,
