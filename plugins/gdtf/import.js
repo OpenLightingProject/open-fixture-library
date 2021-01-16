@@ -1279,9 +1279,9 @@ function getIsoDateFromGdtfDate(dateString, fallbackDateString) {
     return fallbackDateString;
   }
 
-  const isoDateRegex = /^(\d{4}-\d{2}-\d{2})T/;
-  if (dateString.match(isoDateRegex)) {
-    return RegExp.$1;
+  const isoDateMatch = dateString.match(/^(\d{4}-\d{2}-\d{2})T/);
+  if (isoDateMatch !== null) {
+    return isoDateMatch[1];
   }
 
   const germanDateTimeRegex = /^([0-3]?\d)\.([01]?\d)\.(\d{4})\s+\d?\d:\d?\d:\d?\d$/;
