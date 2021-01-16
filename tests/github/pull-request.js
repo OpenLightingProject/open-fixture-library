@@ -1,3 +1,4 @@
+const chalk = require(`chalk`);
 const { Octokit } = require(`@octokit/rest`);
 
 require(`../../lib/load-env-file.js`);
@@ -173,7 +174,8 @@ module.exports.fetchChangedComponents = async function fetchChangedComponents() 
  */
 module.exports.updateComment = async function updateComment(test) {
   if (prData.head.repo.full_name !== prData.base.repo.full_name) {
-    throw new Error(`This PR is created from a forked repository, so there is no write permission for the repo.`);
+    console.error(chalk(`Error:`), `This PR is created from a forked repository, so there is no write permission for the repo.`);
+    return undefined;
   }
 
   const lines = [
