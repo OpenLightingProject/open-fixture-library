@@ -146,6 +146,7 @@ const enabledRuleParameters = {
     shouldMatchCase: true,
   }],
   'vue/max-attributes-per-line': [{ singleline: 3 }],
+  'vue/next-tick-style': [],
   'vue/no-deprecated-scope-attribute': [],
   'vue/no-deprecated-slot-attribute': [],
   'vue/no-deprecated-slot-scope-attribute': [],
@@ -160,6 +161,7 @@ const enabledRuleParameters = {
   'vue/v-on-function-call': [`always`],
   'vue/v-slot-style': [`shorthand`],
   'vue/valid-v-slot': [],
+  'vue/valid-next-tick': [],
 };
 
 const vueCoreExtensionRules = [
@@ -179,6 +181,7 @@ const vueCoreExtensionRules = [
   `key-spacing`,
   `keyword-spacing`,
   `max-len`,
+  `no-constant-condition`,
   `no-empty-pattern`,
   `no-extra-parens`,
   `no-irregular-whitespace`,
