@@ -165,23 +165,22 @@ export default {
     /**
      * Add all properties to capability.typeData that are required by the current capability type and are not yet in there.
      */
-    changeCapabilityType() {
-      this.$nextTick(() => {
-        const defaultData = this.$refs.capabilityTypeData.defaultData;
+    async changeCapabilityType() {
+      await this.$nextTick();
 
-        for (const property of Object.keys(defaultData)) {
-          if (!(property in this.capability.typeData)) {
-            this.$set(this.capability.typeData, property, defaultData[property]);
-          }
+      const defaultData = this.$refs.capabilityTypeData.defaultData;
+      for (const property of Object.keys(defaultData)) {
+        if (!(property in this.capability.typeData)) {
+          this.$set(this.capability.typeData, property, defaultData[property]);
         }
+      }
 
-        if (`hint` in this.$refs.capabilityTypeData) {
-          this.capabilityTypeHint = this.$refs.capabilityTypeData.hint;
-        }
-        else {
-          this.capabilityTypeHint = null;
-        }
-      });
+      if (`hint` in this.$refs.capabilityTypeData) {
+        this.capabilityTypeHint = this.$refs.capabilityTypeData.hint;
+      }
+      else {
+        this.capabilityTypeHint = null;
+      }
     },
 
     /**

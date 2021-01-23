@@ -311,9 +311,7 @@ export default {
     },
   },
   mounted() {
-    if (process.browser) {
-      this.isBrowser = true;
-    }
+    this.isBrowser = true;
   },
 };
 
