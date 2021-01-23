@@ -102,7 +102,8 @@ async function fetchExternalUrls(externalUrls) {
   const urlResults = [];
 
   const BLOCK_SIZE = 25;
-  const urlBlocks = new Array(Math.ceil(externalUrls.length / BLOCK_SIZE)).fill().map(
+  const urlBlocks = Array.from(
+    { length: Math.ceil(externalUrls.length / BLOCK_SIZE) },
     (_, index) => externalUrls.slice(index * BLOCK_SIZE, (index + 1) * BLOCK_SIZE),
   );
 
@@ -337,11 +338,14 @@ async function updateGithubIssue(urlResults) {
       else if (failed) {
         // new broken link -> update table and create comment
 
-        const statuses = new Array(7).fill({
-          failed: false,
-          message: null,
-          jobUrl: null,
-        });
+        const statuses = Array.from(
+          { length: 7 },
+          () => ({
+            failed: false,
+            message: null,
+            jobUrl: null,
+          }),
+        );
         statuses[0] = {
           failed,
           message,

@@ -288,30 +288,30 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
         capability.comment = capabilityName;
       },
       ShutterStrobe() {
-        if (capabilityName.match(/^(?:blackout|(?:shutter )?closed?)$/i)) {
+        if (/^(?:blackout|(?:shutter )?closed?)$/i.test(capabilityName)) {
           capability.shutterEffect = `Closed`;
           return;
         }
 
-        if (capabilityName.match(/^(?:(?:shutter )?open|full?)$/i)) {
+        if (/^(?:(?:shutter )?open|full?)$/i.test(capabilityName)) {
           capability.shutterEffect = `Open`;
           return;
         }
 
-        if (capabilityName.match(/puls/i)) {
+        if (/puls/i.test(capabilityName)) {
           capability.shutterEffect = `Pulse`;
         }
-        else if (capabilityName.match(/ramp\s*up/i)) {
+        else if (/ramp\s*up/i.test(capabilityName)) {
           capability.shutterEffect = `RampUp`;
         }
-        else if (capabilityName.match(/ramp\s*down/i)) {
+        else if (/ramp\s*down/i.test(capabilityName)) {
           capability.shutterEffect = `RampDown`;
         }
         else {
           capability.shutterEffect = `Strobe`;
         }
 
-        if (capabilityName.match(/random/i)) {
+        if (/random/i.test(capabilityName)) {
           capability.shutterEffect += `Random`;
         }
 
@@ -344,7 +344,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
     }
 
     // delete unnecessary comments
-    if (`comment` in capability && (capability.comment === channelName || capability.comment.match(/^$|^0%?\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*100%$/))) {
+    if (`comment` in capability && (capability.comment === channelName || /^$|^0%?\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*100%$/.test(capability.comment))) {
       delete capability.comment;
     }
 
@@ -379,15 +379,15 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
       // capability parsers can rely on the channel type as a first distinctive feature
       const capabilityTypePerChannelType = {
         ChannelColor() {
-          if (channelName.match(/\bcto\b|\bctb\b|temperature\b/i)) {
+          if (/\bcto\b|\bctb\b|temperature\b/i.test(channelName)) {
             return `ColorTemperature`;
           }
 
-          if (ecueChannel.Range.length === 1 && !channelName.match(/macro|wheel\b/i)) {
+          if (ecueChannel.Range.length === 1 && !/macro|wheel\b/i.test(channelName)) {
             return `ColorIntensity`;
           }
 
-          if (channelName.match(/wheel\b/i)) {
+          if (/wheel\b/i.test(channelName)) {
             return `WheelSlot`;
           }
 
@@ -398,7 +398,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
           return capabilityTypePerChannelType.ChannelBeam();
         },
         ChannelFocus() {
-          if (channelName.match(/speed/i)) {
+          if (/speed/i.test(channelName)) {
             return `PanTiltSpeed`;
           }
 
@@ -417,7 +417,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
             return capabilityTypePerChannelType.ChannelBeam();
           }
 
-          if (channelName.match(/continuous/i)) {
+          if (/continuous/i.test(channelName)) {
             return `${panOrTilt}Continuous`;
           }
 
@@ -480,7 +480,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
      */
     function getSpeedGuessedComment() {
       return capabilityName.replace(/(?:^|,\s*|\s+)\(?((?:(?:counter-?)?clockwise|c?cw)(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*hz)\)?$/i, (match, direction, start, end) => {
-        const directionString = direction ? (direction.match(/^(?:clockwise|cw),?\s+$/i) ? ` CW` : ` CCW`) : ``;
+        const directionString = direction ? (/^(?:clockwise|cw),?\s+$/i.test(direction) ? ` CW` : ` CCW`) : ``;
 
         if (directionString !== ``) {
           capability.type = `Rotation`;
