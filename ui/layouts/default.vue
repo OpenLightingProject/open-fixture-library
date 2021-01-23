@@ -79,19 +79,15 @@ export default {
     };
   },
   mounted() {
-    if (process.browser) {
-      this.isBrowser = true;
+    this.isBrowser = true;
 
-      // adapted from https://stackoverflow.com/a/30303898/451391
-      document.addEventListener(`touchstart`, this.onTouchStart, true);
-      document.addEventListener(`mousemove`, this.onMouseMove, true);
-    }
+    // adapted from https://stackoverflow.com/a/30303898/451391
+    document.addEventListener(`touchstart`, this.onTouchStart, true);
+    document.addEventListener(`mousemove`, this.onMouseMove, true);
   },
   beforeDestroy() {
-    if (process.browser) {
-      document.removeEventListener(`touchstart`, this.onTouchStart, true);
-      document.removeEventListener(`mousemove`, this.onMouseMove, true);
-    }
+    document.removeEventListener(`touchstart`, this.onTouchStart, true);
+    document.removeEventListener(`mousemove`, this.onMouseMove, true);
   },
   methods: {
     focusContent() {

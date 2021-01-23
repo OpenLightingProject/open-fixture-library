@@ -206,13 +206,12 @@ export default {
         });
       }
     },
-    reset() {
+    async reset() {
       this.file = null;
       this.githubComment = ``;
 
-      this.$nextTick(() => {
-        this.formstate._reset();
-      });
+      await this.$nextTick();
+      this.formstate._reset();
     },
     applyStoredPrefillData() {
       if (!localStorage) {

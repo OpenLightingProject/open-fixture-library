@@ -147,13 +147,13 @@ app.use(`/api/v1`, apiRouter);
 // instantiate nuxt.js with the options
 const isDevelopment = process.argv[2] === `--dev`;
 loadNuxt(isDevelopment ? `dev` : `start`).then(async nuxt => {
+  // render every remaining route with Nuxt.js
+  app.use(nuxt.render);
+
   if (isDevelopment) {
     console.log(`Starting dev server with hot reloading...`);
     await build(nuxt);
   }
-
-  // render every remaining route with Nuxt.js
-  app.use(nuxt.render);
 
   console.log(`Nuxt.js is ready.`);
 }).catch(error => {

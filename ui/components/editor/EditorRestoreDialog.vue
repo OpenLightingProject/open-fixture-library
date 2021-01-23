@@ -71,21 +71,20 @@ export default {
       this.$emit(`restore-complete`);
     },
 
-    applyRestored() {
+    async applyRestored() {
       const restoredData = clone(this.restoredData);
 
       // closes dialog
       this.$emit(`input`, null);
 
       // restoring could open another dialog -> wait for DOM being up-to-date
-      this.$nextTick(() => {
-        this.$parent.fixture = getRestoredFixture(restoredData.fixture);
-        this.$parent.channel = getRestoredChannel(restoredData.channel, true);
+      await this.$nextTick();
 
-        this.$nextTick(() => {
-          this.$emit(`restore-complete`);
-        });
-      });
+      this.$parent.fixture = getRestoredFixture(restoredData.fixture);
+      this.$parent.channel = getRestoredChannel(restoredData.channel, true);
+
+      await this.$nextTick();
+      this.$emit(`restore-complete`);
     },
   },
 };
