@@ -88,13 +88,13 @@ export default {
       return this.mode.channels.length > 1 && this.hasDetails;
     },
   },
-  mounted() {
+  async mounted() {
     // wait for all child components to render
-    this.$nextTick(() => {
-      if (!this.$el.querySelector(`details`)) {
-        this.hasDetails = false;
-      }
-    });
+    await this.$nextTick();
+
+    if (!this.$el.querySelector(`details`)) {
+      this.hasDetails = false;
+    }
   },
   methods: {
     openDetails() {

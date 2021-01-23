@@ -410,7 +410,7 @@ export default {
       return fixtureEditor.getChannelName(channelUuid);
     },
 
-    onChannelDialogOpen() {
+    async onChannelDialogOpen() {
       if (this.restored) {
         this.restored = false;
         return;
@@ -430,22 +430,20 @@ export default {
       }
 
       // after dialog is opened
-      this.$nextTick(() => {
-        this.channelChanged = false;
-      });
+      await this.$nextTick();
+      this.channelChanged = false;
     },
 
-    onChannelDialogClose() {
+    async onChannelDialogClose() {
       if (this.channel.editMode === ``) {
         // saving did already manage everything
         return;
       }
 
       if (this.channelChanged && !window.confirm(`Do you want to lose the entered channel data?`)) {
-        this.$nextTick(() => {
-          this.restored = true;
-          this.$refs.channelDialog.show();
-        });
+        await this.$nextTick();
+        this.restored = true;
+        this.$refs.channelDialog.show();
         return;
       }
 
@@ -516,18 +514,18 @@ export default {
      * Call onEndUpdated() on the last capability component with non-empty
      * DMX end value to add / remove an empty capability at the end.
      */
-    onDmxValueResolutionChanged() {
-      this.$nextTick(() => {
-        let index = this.channel.capabilities.length - 1;
-        while (index >= 0) {
-          const capability = this.channel.capabilities[index];
-          if (capability.dmxRange !== null && capability.dmxRange[1] !== null && !this.channel.wizard.show) {
-            this.$refs.capabilities[index].onEndUpdated();
-            break;
-          }
-          index--;
+    async onDmxValueResolutionChanged() {
+      await this.$nextTick();
+
+      let index = this.channel.capabilities.length - 1;
+      while (index >= 0) {
+        const capability = this.channel.capabilities[index];
+        if (capability.dmxRange !== null && capability.dmxRange[1] !== null && !this.channel.wizard.show) {
+          this.$refs.capabilities[index].onEndUpdated();
+          break;
         }
-      });
+        index--;
+      }
     },
 
     onSubmit() {
@@ -651,11 +649,11 @@ export default {
       return addedFineChannelUuids;
     },
 
-    resetChannelForm() {
+    async resetChannelForm() {
       this.$emit(`reset-channel`);
-      this.$nextTick(() => {
-        this.formstate._reset(); // resets validation status
-      });
+
+      await this.$nextTick();
+      this.formstate._reset(); // resets validation status
     },
 
     /**
@@ -669,23 +667,22 @@ export default {
       }
     },
 
-    onWizardClose(insertIndex) {
+    async onWizardClose(insertIndex) {
       this.setWizardVisibility(false);
 
-      this.$nextTick(() => {
-        const firstNewCapability = this.$refs.capabilities[insertIndex];
-        const scrollContainer = firstNewCapability.$el.closest(`dialog`);
+      await this.$nextTick();
+      const firstNewCapability = this.$refs.capabilities[insertIndex];
+      const scrollContainer = firstNewCapability.$el.closest(`dialog`);
 
-        scrollIntoView(firstNewCapability.$el, {
-          time: 0,
-          align: {
-            top: 0,
-            left: 0,
-            topOffset: 100,
-          },
-          isScrollable: target => target === scrollContainer,
-        }, () => firstNewCapability.$refs.firstInput.focus());
-      });
+      scrollIntoView(firstNewCapability.$el, {
+        time: 0,
+        align: {
+          top: 0,
+          left: 0,
+          topOffset: 100,
+        },
+        isScrollable: target => target === scrollContainer,
+      }, () => firstNewCapability.$refs.firstInput.focus());
     },
 
     openDetails() {

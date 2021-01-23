@@ -100,9 +100,11 @@ export default {
     },
   },
   methods: {
-    changeSpeedOrDuration(newValue) {
+    async changeSpeedOrDuration(newValue) {
       this.capability.typeData.speedOrDuration = newValue;
-      this.$nextTick(() => this.$refs.speedOrDurationInput.focus());
+
+      await this.$nextTick();
+      this.$refs.speedOrDurationInput.focus();
     },
   },
 };

@@ -190,9 +190,11 @@ export default {
     },
   },
   methods: {
-    changeEffectNameOrPreset(newValue) {
+    async changeEffectNameOrPreset(newValue) {
       this.capability.typeData.effectNameOrPreset = newValue;
-      this.$nextTick(() => this.$refs.effectNameOrPresetInput.focus());
+
+      await this.$nextTick();
+      this.$refs.effectNameOrPresetInput.focus();
     },
   },
 };

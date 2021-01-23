@@ -127,9 +127,11 @@ export default {
     },
   },
   methods: {
-    changeSpeedOrAngle(newValue) {
+    async changeSpeedOrAngle(newValue) {
       this.capability.typeData.speedOrAngle = newValue;
-      this.$nextTick(() => this.$refs.speedOrAngleInput.focus());
+
+      await this.$nextTick();
+      this.$refs.speedOrAngleInput.focus();
     },
   },
 };

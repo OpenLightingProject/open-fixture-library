@@ -263,9 +263,14 @@ export default {
         unitName => this.units[unitName].unitString === newUnitString,
       );
     },
-    unitSelected() {
-      // 1st nextTick for data change locally (emits event), 2nd nextTick for new value from props
-      this.$nextTick(() => this.$nextTick(() => this.focus()));
+    async unitSelected() {
+      // wait for data to change locally (emits event)
+      await this.$nextTick();
+
+      // wait for new value from props
+      await this.$nextTick();
+
+      this.focus();
     },
     onFocus() {
       this.$emit(`focus`);
