@@ -129,7 +129,6 @@ const enabledRuleParameters = {
   }],
 
   // eslint-plugin-vue
-  'vue/component-definition-name-casing': [],
   'vue/component-name-in-template-casing': [`PascalCase`, {
     registeredComponentsOnly: false,
   }],
@@ -140,7 +139,6 @@ const enabledRuleParameters = {
     singleline: `never`,
     multiline: `never`,
   }],
-  'vue/html-closing-bracket-spacing': [],
   'vue/match-component-file-name': [{
     extensions: [`vue`],
     shouldMatchCase: true,
@@ -151,17 +149,17 @@ const enabledRuleParameters = {
   'vue/no-deprecated-slot-attribute': [],
   'vue/no-deprecated-slot-scope-attribute': [],
   'vue/no-empty-component-block': [],
-  'vue/no-mutating-props': [],
   'vue/no-unused-properties': [{
     groups: [`props`, `data`, `computed`, `methods`, `setup`],
   }],
-  'vue/prop-name-casing': [],
   'vue/require-direct-export': [],
   'vue/v-for-delimiter-style': [`of`],
   'vue/v-on-function-call': [`always`],
   'vue/v-slot-style': [`shorthand`],
-  'vue/valid-v-slot': [],
   'vue/valid-next-tick': [],
+
+  // already included in `vue/essential` preset, but needed here because we reduce it's severity to `warn`
+  'vue/no-mutating-props': [],
 };
 
 const vueCoreExtensionRules = [
