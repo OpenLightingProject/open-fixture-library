@@ -1,0 +1,106 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LiteTile Plus 4",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2021-01-17",
+    "lastModifyDate": "2021-01-17"
+  },
+  "comment": "DMX controllable via separate LiteGear control device.",
+  "links": {
+    "manual": [
+      "https://www.litegear.com/download/301/litetile/10008/litetile-plus-4-data-sheet.pdf",
+      "https://www.litegear.com/download/340/litedimmer-plus-duo/3042/litedimmer-plus-dc200-ac400-user-guide-2.pdf"
+    ],
+    "productPage": [
+      "https://www.litegear.com/litetile/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=-pmiFjAFt_U"
+    ]
+  },
+  "physical": {
+    "dimensions": [1182, 610, 14],
+    "weight": 2,
+    "power": 200,
+    "bulb": {
+      "type": "LED",
+      "lumens": 10192
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "fineChannelAliases": ["Color Temperature fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2600K",
+        "colorTemperatureEnd": "6200K"
+      }
+    },
+    "Color Temperature 2": {
+      "fineChannelAliases": ["Color Temperature 2 fine"],
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2600K",
+        "colorTemperatureEnd": "6200K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Single 8bit",
+      "shortName": "1x8bit",
+      "channels": [
+        "Dimmer",
+        "Color Temperature"
+      ]
+    },
+    {
+      "name": "Single 16bit",
+      "shortName": "1x16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Color Temperature",
+        "Color Temperature fine"
+      ]
+    },
+    {
+      "name": "Double 8bit",
+      "shortName": "2x8bit",
+      "channels": [
+        "Dimmer",
+        "Color Temperature",
+        "Dimmer 2",
+        "Color Temperature 2"
+      ]
+    },
+    {
+      "name": "Double 16bit",
+      "shortName": "2x16bit",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Color Temperature",
+        "Color Temperature fine",
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Color Temperature 2",
+        "Color Temperature 2 fine"
+      ]
+    }
+  ]
+}
