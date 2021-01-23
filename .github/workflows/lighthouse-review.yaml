@@ -1,0 +1,37 @@
+name: Lighthouse
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+jobs:
+  review:
+    name: Review
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'component-ui')
+    env:
+      NODE_ENV: production
+      ALLOW_SEARCH_INDEXING: allowed
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Setup Node.js v14
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: npm ci --dev
+      - name: Run the Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v3
+        with:
+          urls: |
+            http://localhost:5000/
+            http://localhost:5000/chroma-q/color-force-ii-72
+            http://localhost:5000/categories/Color%20Changer
+          runs: 1
+          configPath: '.github/lighthouserc.js'
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+        env:
+          LHCI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_PR_NUMBER: ${{ github.event.number }}

@@ -1,0 +1,22 @@
+name: Lighthouse
+on:
+  schedule:
+    - cron: '30 18 * * *' # everyday 18:30 UTC
+  workflow_dispatch:
+jobs:
+  production:
+    name: Production
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.4
+      - name: Run the Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v3
+        with:
+          urls: |
+            https://open-fixture-library.org/
+            https://open-fixture-library.org/chroma-q/color-force-ii-72
+            https://open-fixture-library.org/categories/Color%20Changer
+          runs: 3
+          uploadArtifacts: true
+          temporaryPublicStorage: true

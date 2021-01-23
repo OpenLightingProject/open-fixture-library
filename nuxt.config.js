@@ -97,8 +97,8 @@ export default {
       return titleChunk ? `${titleChunk} – Open Fixture Library` : `Open Fixture Library`;
     };
 
-    const websitePath = this.$route.path.replace(/\/$/, ``); // remove trailing slash
-    const canonicalUrl = `https://open-fixture-library.org${websitePath}`;
+    const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT}/`;
+    const canonicalUrl = websiteUrl.slice(0, -1) + this.$route.path.replace(/\/$/, ``); // remove trailing slash
 
     const meta = [
       {
