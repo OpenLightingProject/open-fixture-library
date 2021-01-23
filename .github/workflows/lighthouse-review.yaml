@@ -32,3 +32,4 @@ jobs:
           temporaryPublicStorage: true
         env:
           LHCI_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_PR_NUMBER: ${{ github.event.number }}
