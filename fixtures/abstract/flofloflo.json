@@ -1,0 +1,34 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Flofloflo",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["Flofloflo"],
+    "createDate": "2021-01-24",
+    "lastModifyDate": "2021-01-24"
+  },
+  "comment": "Hmm",
+  "links": {
+    "productPage": [
+      "https://www.thomann.de/de/eurolite_next_comp._light_set.htm"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Floflo",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    }
+  ]
+}
