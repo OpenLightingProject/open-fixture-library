@@ -115,7 +115,9 @@ function addAttribute(xml, mode, attribute, channels) {
         },
       });
 
-      capabilities.forEach(capability => addCapability(capability));
+      for (const capability of capabilities) {
+        addCapability(capability);
+      }
     }
 
     /**

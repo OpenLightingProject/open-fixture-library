@@ -190,11 +190,11 @@ module.exports.importFixtures = async function importGdtf(buffer, filename, auth
       softwareVersion: softwareVersion.name,
     };
 
-    softwareVersion.personalities.forEach(personality => {
+    for (const personality of softwareVersion.personalities) {
       const index = Number.parseInt(personality.$.Value.replace(`0x`, ``), 16);
       const mode = followXmlNodeReference(gdtfFixture.DMXModes[0].DMXMode, personality.$.DMXMode);
       mode._oflRdmPersonalityIndex = index;
-    });
+    }
 
 
     /**
@@ -238,7 +238,7 @@ module.exports.importFixtures = async function importGdtf(buffer, filename, auth
 
     fixture.wheels = {};
 
-    gdtfWheels.forEach(gdtfWheel => {
+    for (const gdtfWheel of gdtfWheels) {
       fixture.wheels[gdtfWheel.$.Name] = {
         slots: gdtfWheel.Slot.map(gdtfSlot => {
           const name = gdtfSlot.$.Name;
@@ -274,7 +274,7 @@ module.exports.importFixtures = async function importGdtf(buffer, filename, auth
           return slot;
         }),
       };
-    });
+    }
   }
 
 
@@ -284,26 +284,26 @@ module.exports.importFixtures = async function importGdtf(buffer, filename, auth
    * already defined.
    */
   function autoGenerateGdtfNameAttributes() {
-    gdtfFixture.DMXModes[0].DMXMode.forEach((gdtfMode, modeIndex) => {
+    for (const gdtfMode of gdtfFixture.DMXModes[0].DMXMode) {
       // add default Name attributes, so that the references work later
-      gdtfMode.DMXChannels[0].DMXChannel.forEach(gdtfChannel => {
+      for (const gdtfChannel of gdtfMode.DMXChannels[0].DMXChannel) {
         // auto-generate <DMXChannel> Name attribute
         const geometry = gdtfChannel.$.Geometry.split(`.`).pop();
         gdtfChannel.$.Name = `${geometry}_${gdtfChannel.LogicalChannel[0].$.Attribute}`;
 
-        gdtfChannel.LogicalChannel.forEach(gdtfLogicalChannel => {
+        for (const gdtfLogicalChannel of gdtfChannel.LogicalChannel) {
           // auto-generate <LogicalChannel> Name attribute
           gdtfLogicalChannel.$.Name = gdtfLogicalChannel.$.Attribute;
 
-          gdtfLogicalChannel.ChannelFunction.forEach((gdtfChannelFunction, channelFunctionIndex) => {
+          for (const [channelFunctionIndex, gdtfChannelFunction] of gdtfLogicalChannel.ChannelFunction.entries()) {
             // auto-generate <ChannelFunction> Name attribute if not already defined
             if (!(`Name` in gdtfChannelFunction.$)) {
               gdtfChannelFunction.$.Name = `${gdtfChannelFunction.$.Attribute} ${channelFunctionIndex + 1}`;
             }
-          });
-        });
-      });
-    });
+          }
+        }
+      }
+    }
   }
 
   /**
@@ -328,7 +328,7 @@ module.exports.importFixtures = async function importGdtf(buffer, filename, auth
       addLegacyRelations();
     }
 
-    relations.forEach(relation => {
+    for (const relation of relations) {
       const followerChannel = relation.followerGdtfChannel;
 
       // if channel was already split, skip splitting it again, else
@@ -352,7 +352,7 @@ module.exports.importFixtures = async function importGdtf(buffer, filename, auth
       }
 
       delete relation.followerChannelFunction;
-    });
+    }
 
     return relations;
 
@@ -889,7 +889,7 @@ module.exports.importFixtures = async function importGdtf(buffer, filename, auth
       }
 
       if (channel.capabilities) {
-        channel.capabilities.forEach(capability => {
+        for (const capability of channel.capabilities) {
           const startValue = capability.dmxRange[0][0];
           const startResolution = capability.dmxRange[0][1];
           const endValue = capability.dmxRange[1][0];
@@ -902,7 +902,7 @@ module.exports.importFixtures = async function importGdtf(buffer, filename, auth
             // will be caught by validation
             capability.dmxRange = [startValue, endValue];
           }
-        });
+        }
       }
 
       if (maxDmxValueResolution !== 0) {
@@ -925,9 +925,9 @@ module.exports.importFixtures = async function importGdtf(buffer, filename, auth
         }
 
         if (channel.capabilities) {
-          channel.capabilities.forEach(capability => {
+          for (const capability of channel.capabilities) {
             dmxValues.push(capability.dmxRange[0], capability.dmxRange[1]);
-          });
+          }
         }
 
         return Math.max(0, ...dmxValues.map(
@@ -955,7 +955,7 @@ module.exports.importFixtures = async function importGdtf(buffer, filename, auth
       /** @type {Array.<DmxBreakWrapper>} */
       const dmxBreakWrappers = [];
 
-      gdtfMode.DMXChannels[0].DMXChannel.forEach(gdtfChannel => {
+      for (const gdtfChannel of gdtfMode.DMXChannels[0].DMXChannel) {
         if (dmxBreakWrappers.length === 0 || dmxBreakWrappers[dmxBreakWrappers.length - 1].dmxBreak !== gdtfChannel.$.DMXBreak) {
           dmxBreakWrappers.push({
             dmxBreak: gdtfChannel.$.DMXBreak,
@@ -965,15 +965,15 @@ module.exports.importFixtures = async function importGdtf(buffer, filename, auth
         }
 
         addChannelKeyToDmxBreakWrapper(gdtfChannel, dmxBreakWrappers);
-      });
+      }
 
       const channels = [];
 
-      dmxBreakWrappers.forEach(channelWrapper => {
+      for (const channelWrapper of dmxBreakWrappers) {
         if (channelWrapper.dmxBreak !== `Overwrite`) {
           // just append the channels
           channels.push(...channelWrapper.channels);
-          return;
+          continue;
         }
 
         // append a matrix channel insert block
@@ -983,7 +983,9 @@ module.exports.importFixtures = async function importGdtf(buffer, filename, auth
           (gdtfGeoRef, index) => gdtfGeoRef.$.Name || `${channelWrapper.geometry} ${index + 1}`,
         );
 
-        usedMatrixPixels.forEach(pixelKey => matrixPixels.add(pixelKey));
+        for (const pixelKey of usedMatrixPixels) {
+          matrixPixels.add(pixelKey);
+        }
 
         channels.push({
           insert: `matrixChannels`,
@@ -993,7 +995,7 @@ module.exports.importFixtures = async function importGdtf(buffer, filename, auth
             channelKey => `${channelKey} $pixelKey`,
           ),
         });
-      });
+      }
 
       return {
         name: gdtfMode.$.Name,
@@ -1013,14 +1015,14 @@ module.exports.importFixtures = async function importGdtf(buffer, filename, auth
     };
 
     // try to simplify matrix channel insert blocks
-    fixture.modes.forEach(mode => {
-      mode.channels.forEach(channel => {
+    for (const mode of fixture.modes) {
+      for (const channel of mode.channels) {
         if (typeof channel === `object` && channel.insert === `matrixChannels`
           && JSON.stringify(matrixPixelList) === JSON.stringify(channel.repeatFor)) {
           channel.repeatFor = `eachPixelXYZ`;
         }
-      });
-    });
+      }
+    }
 
 
     /**
@@ -1047,13 +1049,13 @@ module.exports.importFixtures = async function importGdtf(buffer, filename, auth
           gdtfChannel.$.Uber,
         ];
 
-      channelOffsets.forEach((channelOffset, index) => {
+      for (const [index, channelOffset] of channelOffsets.entries()) {
         const dmxChannelNumber = Number.parseInt(channelOffset, 10);
 
         if (!Number.isNaN(dmxChannelNumber)) {
           channels[dmxChannelNumber - 1] = channelKeys[index];
         }
-      });
+      }
     }
 
     /**

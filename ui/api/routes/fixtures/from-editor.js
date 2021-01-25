@@ -239,7 +239,7 @@ async function getFixtureCreateResult(fixtures) {
 
     fixture.wheels = {};
 
-    editorWheelChannels.forEach(editorChannel => {
+    for (const editorChannel of editorWheelChannels) {
       const slots = editorChannel.wheel.slots.map(editorWheelSlot => {
         if (editorWheelSlot === null || editorWheelSlot.type === ``) {
           return null;
@@ -268,7 +268,7 @@ async function getFixtureCreateResult(fixtures) {
       fixture.wheels[editorChannel.name] = {
         slots,
       };
-    });
+    }
   }
 
   function addAvailableChannel(fixtureKey, availableChannels, channelId) {

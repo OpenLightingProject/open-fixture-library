@@ -98,14 +98,14 @@ export default {
   },
   methods: {
     openDetails() {
-      this.$el.querySelectorAll(`details`).forEach(details => {
+      for (const details of this.$el.querySelectorAll(`details`)) {
         details.open = true;
-      });
+      }
     },
     closeDetails() {
-      this.$el.querySelectorAll(`details`).forEach(details => {
+      for (const details of this.$el.querySelectorAll(`details`)) {
         details.open = false;
-      });
+      }
     },
   },
 };

@@ -124,12 +124,7 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
   ) || null;
 
   const [panMax, tiltMax] = [`Pan`, `Tilt`].map(panOrTilt => {
-    const capabilities = [];
-    fixture.coarseChannels.forEach(channel => {
-      if (channel.capabilities) {
-        capabilities.push(...channel.capabilities);
-      }
-    });
+    const capabilities = fixture.coarseChannels.flatMap(channel => channel.capabilities || []);
 
     const hasContinuousCapability = capabilities.some(capability => capability.type === `${panOrTilt}Continuous`);
     if (hasContinuousCapability) {
@@ -155,11 +150,11 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
   };
 
   // remove null properties
-  Object.entries(focus).filter(
-    ([key, value]) => value === null,
-  ).forEach(
-    ([key, value]) => delete focus[key],
-  );
+  for (const [key, value] of Object.entries(focus)) {
+    if (value === null) {
+      delete focus[key];
+    }
+  }
 
   if (Object.keys(focus).length > 0) {
     jsonPhysical.focus = focus;
@@ -186,9 +181,9 @@ function getDowngradedFixturePhysical(jsonPhysical, fixture) {
  */
 function getDowngradedMatrix(jsonMatrix, fixture) {
   if (jsonMatrix && jsonMatrix.pixelGroups) {
-    Object.keys(jsonMatrix.pixelGroups).forEach(groupKey => {
+    for (const groupKey of Object.keys(jsonMatrix.pixelGroups)) {
       jsonMatrix.pixelGroups[groupKey] = fixture.matrix.pixelGroups[groupKey];
-    });
+    }
   }
 
   return jsonMatrix;
@@ -219,7 +214,7 @@ function getDowngradedChannel(channelKey, jsonChannel, fixture) {
   if (capabilitiesNeeded()) {
     downgradedChannel.capabilities = [];
 
-    channel.capabilities.forEach(capability => {
+    for (const capability of channel.capabilities) {
       const downgradedCapability = {
         range: [capability.rawDmxRange.start, capability.rawDmxRange.end],
         name: capability.name,
@@ -237,7 +232,7 @@ function getDowngradedChannel(channelKey, jsonChannel, fixture) {
       addIfValidData(downgradedCapability, `switchChannels`, capability.jsonObject.switchChannels);
 
       downgradedChannel.capabilities.push(downgradedCapability);
-    });
+    }
   }
 
   return downgradedChannel;

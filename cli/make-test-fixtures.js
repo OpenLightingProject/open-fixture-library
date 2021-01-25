@@ -179,7 +179,7 @@ async function getMarkdownCode(fixtures, fixtureFeatures) {
 
   // table body
   const footnotes = [];
-  fixtureFeatures.forEach((fixtureFeature, index) => {
+  for (const [index, fixtureFeature] of fixtureFeatures.entries()) {
     let line = `**${fixtureFeature.name}**`;
 
     if (fixtureFeature.description) {
@@ -198,7 +198,7 @@ async function getMarkdownCode(fixtures, fixtureFeatures) {
     if ((index + 1) % 15 === 0) {
       mdLines.push(tableHead);
     }
-  });
+  }
 
   // footnotes
   mdLines.push(``, `## Footnotes`, ``);

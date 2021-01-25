@@ -26,10 +26,10 @@ module.exports.exportFixtures = async function exportOpZ(fixtures, options) {
 
   const usedKnobs = {};
 
-  fixtures.forEach(fixture => {
+  for (const fixture of fixtures) {
     const fixtureKey = `${fixture.manufacturer.key}/${fixture.key}`;
 
-    fixture.modes.forEach((mode, modeIndex) => {
+    for (const [modeIndex, mode] of fixture.modes.entries()) {
       const modeName = `${fixtureKey}/${mode.shortName}`;
 
       // add profile
@@ -45,8 +45,8 @@ module.exports.exportFixtures = async function exportOpZ(fixtures, options) {
           profile: modeName,
         });
       }
-    });
-  });
+    }
+  }
 
 
   return [{
