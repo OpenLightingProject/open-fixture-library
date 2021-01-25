@@ -62,8 +62,7 @@ async function getSchemas() {
 
   // allow new colors from schema version 11.1.0
   // see https://github.com/OpenLightingProject/open-fixture-library/pull/763
-  channelSchema.properties.color.enum.push(`Warm White`);
-  channelSchema.properties.color.enum.push(`Cold White`);
+  channelSchema.properties.color.enum.push(`Warm White`, `Cold White`);
 
   return schemasJson;
 }

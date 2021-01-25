@@ -172,8 +172,10 @@ async function getMarkdownCode(fixtures, fixtureFeatures) {
   // table head
   const tableHead = [`*Fixture number*`, ...fixtures.map((fixture, index) => index + 1)].join(` | `);
 
-  mdLines.push(tableHead);
-  mdLines.push(`|-`.repeat(fixtures.length + 1));
+  mdLines.push(
+    tableHead,
+    `|-`.repeat(fixtures.length + 1),
+  );
 
   // table body
   const footnotes = [];
@@ -197,10 +199,9 @@ async function getMarkdownCode(fixtures, fixtureFeatures) {
       mdLines.push(tableHead);
     }
   });
-  mdLines.push(``);
 
   // footnotes
-  mdLines.push(`## Footnotes`, ``);
+  mdLines.push(``, `## Footnotes`, ``);
   for (const [index, footnote] of footnotes.entries()) {
     mdLines.push(`**<a id="user-content-footnote-${index + 1}">[${index + 1}]</a>**: ${footnote}  `);
   }

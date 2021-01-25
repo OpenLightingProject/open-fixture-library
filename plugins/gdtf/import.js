@@ -926,8 +926,7 @@ module.exports.importFixtures = async function importGdtf(buffer, filename, auth
 
         if (channel.capabilities) {
           channel.capabilities.forEach(capability => {
-            dmxValues.push(capability.dmxRange[0]);
-            dmxValues.push(capability.dmxRange[1]);
+            dmxValues.push(capability.dmxRange[0], capability.dmxRange[1]);
           });
         }
 
