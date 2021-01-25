@@ -14,7 +14,7 @@ const enabledRuleParameters = {
   'consistent-return': [],
   'curly': [`all`],
   'dot-location': [`property`],
-  'dot-notation': [{ allowPattern: `^(if|then)$` }],
+  'dot-notation': [],
   'eol-last': [`always`],
   'eqeqeq': [`always`, { null: `ignore` }],
   'func-call-spacing': [],
