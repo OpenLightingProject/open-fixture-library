@@ -199,7 +199,6 @@ const vueCoreExtensionRules = [
 
 const warnRules = new Set([
   `complexity`,
-  `no-loop-func`,
   `jsdoc/require-jsdoc`,
   `vue/no-mutating-props`,
 ]);
