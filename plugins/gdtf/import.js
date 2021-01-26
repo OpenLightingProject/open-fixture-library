@@ -134,7 +134,7 @@ export async function importFixtures(buffer, filename, authorName) {
    * @returns {[String|undefined, String|undefined]} An array with the earliest and latest revision dates of the GDTF fixture, if they are defined in <Revision> tag.
    */
   function getRevisionDates() {
-    if (!(`Revisions` in gdtfFixture) || !(`Revision` in gdtfFixture.Revisions[0])) {
+    if (!gdtfFixture.Revisions?.[0]?.Revision) {
       return [undefined, undefined];
     }
 
@@ -237,7 +237,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
     for (const gdtfWheel of gdtfWheels) {
       fixture.wheels[gdtfWheel.$.Name] = {
-        slots: gdtfWheel.Slot.map(gdtfSlot => {
+        slots: (gdtfWheel.Slot || []).map(gdtfSlot => {
           const name = gdtfSlot.$.Name;
 
           const slot = {
