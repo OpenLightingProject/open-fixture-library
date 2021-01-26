@@ -408,63 +408,37 @@ export async function importFixtures(buffer, filename, authorName) {
     const availableChannels = [];
     const templateChannels = [];
 
-    gdtfFixture.DMXModes[0].DMXMode.forEach(gdtfMode => {
-      gdtfMode.DMXChannels[0].DMXChannel.forEach(gdtfChannel => {
+    for (const gdtfMode of gdtfFixture.DMXModes[0].DMXMode) {
+      for (const gdtfChannel of gdtfMode.DMXChannels[0].DMXChannel) {
         if (gdtfChannel.$.DMXBreak === `Overwrite`) {
           addChannel(templateChannels, gdtfChannel);
         }
         else {
           addChannel(availableChannels, gdtfChannel);
         }
-      });
-    });
+      }
+    }
 
     // append $pixelKey to templateChannels' keys and names
-    templateChannels.forEach(channelWrapper => {
+    for (const channelWrapper of templateChannels) {
       channelWrapper.key += ` $pixelKey`;
       channelWrapper.channel.name += ` $pixelKey`;
-    });
+    }
 
-    // remove unnecessary name and dmxValueResolution properties
-    // and fill/remove fineChannelAliases
-    availableChannels.concat(templateChannels).forEach(channelWrapper => {
-      const { key: channelKey, channel, maxResolution } = channelWrapper;
-
-      if (channelKey === channel.name) {
-        delete channel.name;
-      }
-
-      if (maxResolution === CoarseChannel.RESOLUTION_8BIT) {
-        delete channel.fineChannelAliases;
-      }
-      else {
-        // CoarseChannel.RESOLUTION_16BIT
-        channel.fineChannelAliases.push(`${channelKey} fine`);
-
-        for (let index = CoarseChannel.RESOLUTION_24BIT; index <= maxResolution; index++) {
-          channel.fineChannelAliases.push(`${channelKey} fine^${index - 1}`);
-        }
-      }
-
-      if (channel.dmxValueResolution === `${maxResolution * 8}bit` || channel.dmxValueResolution === ``) {
-        delete channel.dmxValueResolution;
-      }
-    });
+    cleanUpChannelWrappers([...availableChannels, ...templateChannels]);
 
     // convert availableChannels array to object and add it to fixture
     if (availableChannels.length > 0) {
-      fixture.availableChannels = {};
-      availableChannels.forEach(channelWrapper => {
-        fixture.availableChannels[channelWrapper.key] = channelWrapper.channel;
-      });
+      fixture.availableChannels = Object.fromEntries(
+        availableChannels.map(channelWrapper => [channelWrapper.key, channelWrapper.channel]),
+      );
     }
 
     // convert templateChannels array to object and add it to fixture
     if (templateChannels.length > 0) {
-      fixture.templateChannels = {};
-      templateChannels.forEach(channelWrapper => {
-        fixture.templateChannels[channelWrapper.key] = channelWrapper.channel;
-      });
+      fixture.templateChannels = Object.fromEntries(
+        templateChannels.map(channelWrapper => [channelWrapper.key, channelWrapper.channel]),
+      );
     }
   }
 
@@ -1236,6 +1210,37 @@ async function getGdtfXml(buffer, filename) {
   }
 
   return xml2js.parseStringPromise(xmlString);
+}
+
+/**
+ * Remove unnecessary `name` and `dmxValueResolution` properties and fill/remove
+ * `fineChannelAliases`.
+ * @param {Array.<ChannelWrapper>} channelWrappers The OFL availableChannels or templateChannels objects.
+ */
+function cleanUpChannelWrappers(channelWrappers) {
+  for (const channelWrapper of channelWrappers) {
+    const { key: channelKey, channel, maxResolution } = channelWrapper;
+
+    if (channelKey === channel.name) {
+      delete channel.name;
+    }
+
+    if (maxResolution === CoarseChannel.RESOLUTION_8BIT) {
+      delete channel.fineChannelAliases;
+    }
+    else {
+      // CoarseChannel.RESOLUTION_16BIT
+      channel.fineChannelAliases.push(`${channelKey} fine`);
+
+      for (let index = CoarseChannel.RESOLUTION_24BIT; index <= maxResolution; index++) {
+        channel.fineChannelAliases.push(`${channelKey} fine^${index - 1}`);
+      }
+    }
+
+    if (channel.dmxValueResolution === `${maxResolution * 8}bit` || channel.dmxValueResolution === ``) {
+      delete channel.dmxValueResolution;
+    }
+  }
 }
 
 /**
