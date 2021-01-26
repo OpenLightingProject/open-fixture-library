@@ -527,42 +527,28 @@ export async function importFixtures(buffer, filename, authorName) {
      * @returns {Array.<Object>} Array of OFL capability objects (but with GDTF DMX values).
      */
     function getCapabilities() {
-      // save all <ChannelSet> XML nodes in a flat list
-      const gdtfCapabilities = [];
-
       let minPhysicalValue = Number.POSITIVE_INFINITY;
       let maxPhysicalValue = Number.NEGATIVE_INFINITY;
 
-      gdtfChannel.LogicalChannel.forEach(gdtfLogicalChannel => {
+      // save all <ChannelSet> XML nodes in a flat list
+      const gdtfCapabilities = gdtfChannel.LogicalChannel.flatMap(gdtfLogicalChannel => {
         if (!gdtfLogicalChannel.ChannelFunction) {
           throw new Error(`LogicalChannel does not contain any ChannelFunction children in DMXChannel ${JSON.stringify(gdtfChannel, null, 2)}`);
         }
 
-        gdtfLogicalChannel.ChannelFunction.forEach(gdtfChannelFunction => {
+        return gdtfLogicalChannel.ChannelFunction.flatMap(gdtfChannelFunction => {
           if (!gdtfChannelFunction.ChannelSet) {
             // add an empty <ChannelSet />
-            gdtfChannelFunction.ChannelSet = [
-              {
-                $: {},
-              },
-            ];
+            gdtfChannelFunction.ChannelSet = [{ $: {} }];
           }
 
           // save GDTF attribute for later
           gdtfChannelFunction._attribute = followXmlNodeReference(
             gdtfFixture.AttributeDefinitions[0].Attributes[0],
             gdtfChannelFunction.$.Attribute,
-          );
+          ) || { $: { Name: `NoFeature` } };
 
-          if (!gdtfChannelFunction._attribute) {
-            gdtfChannelFunction._attribute = {
-              $: {
-                Name: `NoFeature`,
-              },
-            };
-          }
-
-          gdtfChannelFunction.ChannelSet.forEach(gdtfChannelSet => {
+          return gdtfChannelFunction.ChannelSet.map(gdtfChannelSet => {
             // save parent nodes for future use
             gdtfChannelSet._logicalChannel = gdtfLogicalChannel;
             gdtfChannelSet._channelFunction = gdtfChannelFunction;
@@ -589,7 +575,7 @@ export async function importFixtures(buffer, filename, authorName) {
             minPhysicalValue = Math.min(minPhysicalValue, physicalFrom, physicalTo);
             maxPhysicalValue = Math.max(maxPhysicalValue, physicalFrom, physicalTo);
 
-            gdtfCapabilities.push(gdtfChannelSet);
+            return gdtfChannelSet;
           });
         });
       });
