@@ -163,8 +163,7 @@ function getCommands(mode) {
  * @returns {Array.<Object>} ColorSource channel objects of all mode channels.
  */
 function getColorSourceChannels(mode, hasIntensity) {
-  const channels = [];
-  mode.channels.forEach((channel, channelIndex) => {
+  return mode.channels.flatMap((channel, channelIndex) => {
     const name = channel.name;
 
     if (channel instanceof SwitchingChannel) {
@@ -197,7 +196,7 @@ function getColorSourceChannels(mode, hasIntensity) {
     if (channel instanceof FineChannel) {
       if (channel.resolution === CoarseChannel.RESOLUTION_16BIT) {
         // already handled by "fine" attribute of coarse channel
-        return;
+        return [];
       }
 
       channelJson.type = CHANNEL_TYPE_BEAM;
@@ -209,10 +208,8 @@ function getColorSourceChannels(mode, hasIntensity) {
 
     removeEmptyProperties(channelJson);
 
-    channels.push(channelJson);
+    return [channelJson];
   });
-
-  return channels;
 
   /**
    * Adds information to given channel JSON that is specific to (and only makes sense for) coarse channels.
