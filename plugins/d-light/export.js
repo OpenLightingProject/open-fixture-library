@@ -81,7 +81,7 @@ function addAttribute(xml, mode, attribute, channels) {
     },
   });
 
-  channels.forEach((channel, indexInAttribute) => {
+  for (let [indexInAttribute, channel] of channels.entries()) {
     const xmlChannel = xmlAttribute.element({
       ThisAttribute: {
         '@id': indexInAttribute,
@@ -92,7 +92,7 @@ function addAttribute(xml, mode, attribute, channels) {
           '@id': mode.getChannelIndex(channel.key),
         },
         parameterName: {
-          '@id': getParameterName(),
+          '@id': getParameterName(channel, indexInAttribute),
         },
         minLevel: {
           '@id': 0,
@@ -105,84 +105,86 @@ function addAttribute(xml, mode, attribute, channels) {
 
     channel = getUsableChannel(channel);
 
-    let xmlCapabilities;
     if (channel instanceof CoarseChannel) {
       const capabilities = channel.capabilities;
 
-      xmlCapabilities = xmlChannel.element({
+      const xmlCapabilities = xmlChannel.element({
         Definitions: {
           '@index': capabilities.length,
         },
       });
 
       for (const capability of capabilities) {
-        addCapability(capability);
+        addCapability(capability, xmlCapabilities);
+      }
+    }
+  }
+
+
+  /**
+   * Adds an XML element for the given capability to the XML capability container.
+   * @param {Capability} capability A capability of a channels capability list.
+   * @param {XMLElement} xmlCapabilities The XML element to add capabilities to.
+   */
+  function addCapability(capability, xmlCapabilities) {
+    let hold = `0`;
+
+    if (capability.hold) {
+      if (capability.hold.unit === `ms`) {
+        hold = capability.hold.number;
+      }
+      else if (capability.hold.unit === `s`) {
+        hold = capability.hold.number * 1000;
       }
     }
 
-    /**
-     * Adds an XML element for the given capability to the XML capability container.
-     * @param {Capability} capability A capability of a channels capability list.
-     */
-    function addCapability(capability) {
-      let hold = `0`;
+    const dmxRange = capability.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
+    xmlCapabilities.element({
+      name: {
+        '@min': dmxRange.start,
+        '@max': dmxRange.end,
+        '@snap': capability.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
+        '@timeHolder': hold,
+        '@dummy': `0`,
+        '#text': capability.name,
+      },
+    });
+  }
 
-      if (capability.hold) {
-        if (capability.hold.unit === `ms`) {
-          hold = capability.hold.number;
+  /**
+   * @param {CoarseChannel} channel The channel to get the name for.
+   * @param {Number} indexInAttribute The index of this channel in the list of all channels related to the attribute.
+   * @returns {String} The parameter name (i. e. channel name) that should be used for this channel in D::Light.
+   */
+  function getParameterName(channel, indexInAttribute) {
+    const uniqueName = channel.uniqueName;
+
+    channel = getUsableChannel(channel);
+
+    if (channel instanceof FineChannel) {
+      // for fine channels, this is simply the coarse channel's index
+      return `${mode.getChannelIndex(channel.coarseChannel.key) + 1}`;
+    }
+
+    switch (attribute) {
+      case `FOCUS`:
+        return channel.type.toUpperCase(); // PAN or TILT
+
+      case `INTENSITY`:
+        if (indexInAttribute === 0 && /dimmer|intensity/i.test(uniqueName)) {
+          return `DIMMER`;
         }
-        else if (capability.hold.unit === `s`) {
-          hold = capability.hold.number * 1000;
-        }
-      }
-
-
-      const dmxRange = capability.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT);
-      xmlCapabilities.element({
-        name: {
-          '@min': dmxRange.start,
-          '@max': dmxRange.end,
-          '@snap': capability.getMenuClickDmxValueWithResolution(CoarseChannel.RESOLUTION_8BIT),
-          '@timeHolder': hold,
-          '@dummy': `0`,
-          '#text': capability.name,
-        },
-      });
+        break;
     }
 
-    /**
-     * @returns {String} The parameter name (i. e. channel name) that should be used for this channel in D::Light.
-     */
-    function getParameterName() {
-      const uniqueName = channel.uniqueName;
-
-      channel = getUsableChannel(channel);
-
-      if (channel instanceof FineChannel) {
-        // for fine channels, this is simply the coarse channel's index
-        return `${mode.getChannelIndex(channel.coarseChannel.key) + 1}`;
-      }
-
-      switch (attribute) {
-        case `FOCUS`:
-          return channel.type.toUpperCase(); // PAN or TILT
-
-        case `INTENSITY`:
-          if (indexInAttribute === 0 && /dimmer|intensity/i.test(uniqueName)) {
-            return `DIMMER`;
-          }
-          break;
-      }
-
-      // in all other attributes, custom text is allowed
-      // but we need to use another name syntax
-      return uniqueName
-        .toUpperCase()
-        .replace(/ /g, `_`)
-        .replace(/\//g, `|`)
-        .replace(/COLOR/g, `COLOUR`);
-    }
-  });
+    // in all other attributes, custom text is allowed
+    // but we need to use another name syntax
+    return uniqueName
+      .toUpperCase()
+      .replace(/ /g, `_`)
+      .replace(/\//g, `|`)
+      .replace(/COLOR/g, `COLOUR`);
+  }
 }
 
 /**
