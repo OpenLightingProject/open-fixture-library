@@ -1122,7 +1122,7 @@ export async function importFixtures(buffer, filename, authorName) {
     function simplifySwitchingChannelRelations(triggerChannelKey) {
       const simplifiedRelations = {};
 
-      Object.keys(relationsPerMaster[triggerChannelKey]).forEach(switchingChannelKey => {
+      for (const switchingChannelKey of Object.keys(relationsPerMaster[triggerChannelKey])) {
         const relations = relationsPerMaster[triggerChannelKey][switchingChannelKey];
 
         // were this switching channel's relations already added?
@@ -1133,19 +1133,19 @@ export async function importFixtures(buffer, filename, authorName) {
         if (addedSwitchingChannelKey) {
           // already added switching channel has the same relations, so we don't need to add it
           // but we need to update modeChannelReplacements
-          modeChannelReplacements.forEach(mode => {
-            Object.keys(mode).forEach(channelKey => {
+          for (const mode of modeChannelReplacements) {
+            for (const channelKey of Object.keys(mode)) {
               if (mode[channelKey] === switchingChannelKey) {
                 mode[channelKey] = addedSwitchingChannelKey;
               }
-            });
-          });
+            }
+          }
         }
         else {
           // add the new switching channel
           simplifiedRelations[switchingChannelKey] = relations;
         }
-      });
+      }
 
       return simplifiedRelations;
     }
