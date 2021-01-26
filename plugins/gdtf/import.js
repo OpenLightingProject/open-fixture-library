@@ -282,12 +282,10 @@ export async function importFixtures(buffer, filename, authorName) {
    * @returns {Array.<Relation>} An array of relations.
    */
   function splitSwitchingChannels() {
-    const relations = [];
-
-    addModeMasterRelations();
+    let relations = getModeMasterRelations();
 
     if (relations.length === 0) {
-      addLegacyRelations();
+      relations = getLegacyRelations();
     }
 
     for (const relation of relations) {
@@ -320,16 +318,17 @@ export async function importFixtures(buffer, filename, authorName) {
 
 
     /**
-     * Adds <ChannelFunction ModeMaster="…">'s relation data to the array.
+     * Parses <ChannelFunction ModeMaster="…">'s relation data.
      * This way of specifying relations was added in GDTF v0.88.
+     * @returns {Array.<Relation>} An array of relations, may be empty.
      */
-    function addModeMasterRelations() {
-      gdtfFixture.DMXModes[0].DMXMode.forEach((gdtfMode, modeIndex) => {
-        gdtfMode.DMXChannels[0].DMXChannel.forEach(gdtfDmxChannel => {
-          gdtfDmxChannel.LogicalChannel.forEach(gdtfLogicalChannel => {
-            gdtfLogicalChannel.ChannelFunction.forEach(gdtfChannelFunction => {
+    function getModeMasterRelations() {
+      return gdtfFixture.DMXModes[0].DMXMode.flatMap((gdtfMode, modeIndex) => {
+        return gdtfMode.DMXChannels[0].DMXChannel.flatMap(gdtfDmxChannel => {
+          return gdtfDmxChannel.LogicalChannel.flatMap(gdtfLogicalChannel => {
+            return gdtfLogicalChannel.ChannelFunction.flatMap(gdtfChannelFunction => {
               if (!(`ModeMaster` in gdtfChannelFunction.$)) {
-                return;
+                return [];
               }
 
               const masterChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfChannelFunction.$.ModeMaster.split(`.`)[0]);
@@ -338,7 +337,7 @@ export async function importFixtures(buffer, filename, authorName) {
               const maxDmxValue = Math.pow(256, dmxFrom[1]) - 1;
               const dmxTo = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelFunction.$.ModeTo || `${maxDmxValue}/${dmxFrom[1]}`);
 
-              const relation = {
+              return [{
                 modeIndex,
                 masterGdtfChannel: masterChannel,
                 switchingChannelName: gdtfDmxChannel.$.Name,
@@ -346,9 +345,7 @@ export async function importFixtures(buffer, filename, authorName) {
                 followerChannelFunction: gdtfChannelFunction,
                 dmxFrom,
                 dmxTo,
-              };
-
-              relations.push(relation);
+              }];
             });
           });
         });
@@ -356,18 +353,19 @@ export async function importFixtures(buffer, filename, authorName) {
     }
 
     /**
-     * Adds <Relation Type="Mode">'s relation data to the array.
+     * Parses <Relation Type="Mode">'s relation data.
      * This behavior is deprecated since GDTF v0.88, but still supported as a fallback.
+     * @returns {Array.<Relation>} An array of relations, may be empty.
      */
-    function addLegacyRelations() {
-      gdtfFixture.DMXModes[0].DMXMode.forEach((gdtfMode, modeIndex) => {
+    function getLegacyRelations() {
+      return gdtfFixture.DMXModes[0].DMXMode.flatMap((gdtfMode, modeIndex) => {
         if (!(`Relations` in gdtfMode) || typeof gdtfMode.Relations[0] !== `object`) {
-          return;
+          return [];
         }
 
-        gdtfMode.Relations[0].Relation.forEach(gdtfRelation => {
+        return gdtfMode.Relations[0].Relation.flatMap(gdtfRelation => {
           if (gdtfRelation.$.Type !== `Mode`) {
-            return;
+            return [];
           }
 
           const masterChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfRelation.$.Master);
@@ -381,7 +379,7 @@ export async function importFixtures(buffer, filename, authorName) {
           const maxDmxValue = Math.pow(256, dmxFrom[1]) - 1;
           const dmxTo = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXTo || `${maxDmxValue}/${dmxFrom[1]}`);
 
-          const relation = {
+          return [{
             modeIndex,
             masterGdtfChannel: masterChannel,
             switchingChannelName: followerChannel.$.Name,
@@ -389,9 +387,7 @@ export async function importFixtures(buffer, filename, authorName) {
             followerChannelFunction,
             dmxFrom,
             dmxTo,
-          };
-
-          relations.push(relation);
+          }];
         });
       });
     }
