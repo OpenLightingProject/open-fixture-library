@@ -10,6 +10,16 @@ import { getRgbColorFromGdtfColor, followXmlNodeReference } from './gdtf-helpers
 export const version = `0.2.0`;
 
 /**
+ * @typedef {Object} Relation
+ * @property {Number} modeIndex The zero-based index of the mode this relation applies to.
+ * @property {Object} masterGdtfChannel The GDTF channel that triggers switching.
+ * @property {String} switchingChannelName The name of the switching channel (containing multiple default channels).
+ * @property {Object} followerGdtfChannel The GDTF channel that is switched by the master.
+ * @property {Number} dmxFrom The start of the DMX range triggering this relation.
+ * @property {Number} dmxTo The end of the DMX range triggering this relation.
+ */
+
+/**
  * @param {Buffer} buffer The imported file.
  * @param {String} filename The imported file's name.
  * @param {String} authorName The importer's name.
@@ -267,16 +277,6 @@ export async function importFixtures(buffer, filename, authorName) {
       }
     }
   }
-
-  /**
-   * @typedef {Object} Relation
-   * @property {Number} modeIndex The zero-based index of the mode this relation applies to.
-   * @property {Object} masterGdtfChannel The GDTF channel that triggers switching.
-   * @property {String} switchingChannelName The name of the switching channel (containing multiple default channels).
-   * @property {Object} followerGdtfChannel The GDTF channel that is switched by the master.
-   * @property {Number} dmxFrom The start of the DMX range triggering this relation.
-   * @property {Number} dmxTo The end of the DMX range triggering this relation.
-   */
 
   /**
    * @returns {Array.<Relation>} An array of relations.
@@ -1012,59 +1012,7 @@ export async function importFixtures(buffer, filename, authorName) {
    * the switching channel key in modes' channel lists.
    */
   function linkSwitchingChannels() {
-    const relationsPerMaster = {};
-    const modeChannelReplacements = [];
-
-    // bring relations into a structure we can work with
-    switchingChannelRelations.forEach(relation => {
-      const masterKey = relation.masterGdtfChannel._oflChannelKey;
-
-      if (!(masterKey in relationsPerMaster)) {
-        relationsPerMaster[masterKey] = {};
-      }
-
-      const modeIndex = relation.modeIndex;
-      const switchingChannelKey = `${modeIndex}_${relation.switchingChannelName}`;
-      const switchToChannelKey = relation.followerGdtfChannel._oflChannelKey;
-
-      if (!(switchingChannelKey in relationsPerMaster[masterKey])) {
-        relationsPerMaster[masterKey][switchingChannelKey] = [];
-      }
-
-      relationsPerMaster[masterKey][switchingChannelKey].push({
-        dmxFrom: relation.dmxFrom,
-        dmxTo: relation.dmxTo,
-        switchToChannelKey,
-      });
-
-      if (!modeChannelReplacements[modeIndex]) {
-        modeChannelReplacements[modeIndex] = {};
-      }
-
-      modeChannelReplacements[modeIndex][switchToChannelKey] = switchingChannelKey;
-
-      const switchToChannel = fixture.availableChannels[switchToChannelKey];
-
-      if (switchToChannel && `fineChannelAliases` in switchToChannel) {
-        switchToChannel.fineChannelAliases.forEach((fineChannelAlias, fineness) => {
-          let switchingFineChannelKey = `${switchingChannelKey} fine`;
-          if (fineness > 0) {
-            switchingFineChannelKey += `^${fineness + 1}`;
-          }
-
-          if (!(switchingFineChannelKey in relationsPerMaster[masterKey])) {
-            relationsPerMaster[masterKey][switchingFineChannelKey] = [];
-          }
-
-          relationsPerMaster[masterKey][switchingFineChannelKey].push({
-            dmxFrom: relation.dmxFrom,
-            dmxTo: relation.dmxTo,
-            switchToChannelKey: fineChannelAlias,
-          });
-          modeChannelReplacements[modeIndex][fineChannelAlias] = switchingFineChannelKey;
-        });
-      }
-    });
+    const { relationsPerMaster, modeChannelReplacements } = transformRelations(fixture, switchingChannelRelations);
 
     // switch channels in trigger channels' capabilities
     Object.keys(relationsPerMaster).forEach(triggerChannelKey => {
@@ -1221,6 +1169,83 @@ function cleanUpChannelWrappers(channelWrappers) {
       delete channel.dmxValueResolution;
     }
   }
+}
+
+/**
+ * @typedef {Object} SwitchToChannelInfo
+ * @property {Number} dmxFrom The start of the DMX range triggering this relation.
+ * @property {Number} dmxTo The end of the DMX range triggering this relation.
+ * @property {String} switchToChannelKey The key of the channel to switch to.
+ */
+
+/**
+ * @typedef {Object} TransformedRelations
+ * @property {Record.<String, Record.<String, SwitchToChannelInfo>>} relationsPerMaster An Object mapping a master channel key and a switching channel key to the switch to channel information.
+ * @property {Record.<Number, Record.<String, String>>} modeChannelReplacements An Object mapping a mode index and a switch to channel key to the switching channel key.
+ */
+
+/**
+ * Bring relations into a structure we can work with.
+ * @param {Object} fixture The OFL fixture object.
+ * @param {Array.<Relation>} switchingChannelRelations An array of relations.
+ * @returns {TransformedRelations} The transformed relations.
+ */
+function transformRelations(fixture, switchingChannelRelations) {
+  const relationsPerMaster = {};
+  const modeChannelReplacements = {};
+
+  // bring relations into a structure we can work with
+  switchingChannelRelations.forEach(relation => {
+    const masterKey = relation.masterGdtfChannel._oflChannelKey;
+
+    if (!(masterKey in relationsPerMaster)) {
+      relationsPerMaster[masterKey] = {};
+    }
+
+    const modeIndex = relation.modeIndex;
+    const switchingChannelKey = `${modeIndex}_${relation.switchingChannelName}`;
+    const switchToChannelKey = relation.followerGdtfChannel._oflChannelKey;
+
+    if (!(switchingChannelKey in relationsPerMaster[masterKey])) {
+      relationsPerMaster[masterKey][switchingChannelKey] = [];
+    }
+
+    relationsPerMaster[masterKey][switchingChannelKey].push({
+      dmxFrom: relation.dmxFrom,
+      dmxTo: relation.dmxTo,
+      switchToChannelKey,
+    });
+
+    if (!modeChannelReplacements[modeIndex]) {
+      modeChannelReplacements[modeIndex] = {};
+    }
+
+    modeChannelReplacements[modeIndex][switchToChannelKey] = switchingChannelKey;
+
+    const switchToChannel = fixture.availableChannels[switchToChannelKey];
+
+    if (switchToChannel && `fineChannelAliases` in switchToChannel) {
+      switchToChannel.fineChannelAliases.forEach((fineChannelAlias, fineness) => {
+        let switchingFineChannelKey = `${switchingChannelKey} fine`;
+        if (fineness > 0) {
+          switchingFineChannelKey += `^${fineness + 1}`;
+        }
+
+        if (!(switchingFineChannelKey in relationsPerMaster[masterKey])) {
+          relationsPerMaster[masterKey][switchingFineChannelKey] = [];
+        }
+
+        relationsPerMaster[masterKey][switchingFineChannelKey].push({
+          dmxFrom: relation.dmxFrom,
+          dmxTo: relation.dmxTo,
+          switchToChannelKey: fineChannelAlias,
+        });
+        modeChannelReplacements[modeIndex][fineChannelAlias] = switchingFineChannelKey;
+      });
+    }
+  });
+
+  return { relationsPerMaster, modeChannelReplacements };
 }
 
 /**
