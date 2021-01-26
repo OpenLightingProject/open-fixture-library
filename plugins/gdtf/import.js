@@ -22,21 +22,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
   const warnings = [];
 
-  let xmlString = buffer.toString();
-
-  if (filename.endsWith(`.gdtf`)) {
-    // unzip the .gdtf (zip) file and check its description.xml file
-    const zip = await JSZip.loadAsync(buffer);
-
-    const descriptionFile = zip.file(`description.xml`);
-    if (descriptionFile === null) {
-      throw new Error(`The provided .gdtf (zip) file does not contain a 'description.xml' file in the root directory.`);
-    }
-
-    xmlString = await descriptionFile.async(`string`);
-  }
-
-  const xml = await xml2js.parseStringPromise(xmlString);
+  const xml = await getGdtfXml(buffer, filename);
 
   const gdtfFixture = xml.GDTF.FixtureType[0];
   fixture.name = gdtfFixture.$.Name;
@@ -95,28 +81,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
   linkSwitchingChannels();
 
-  if (`availableChannels` in fixture) {
-    Object.keys(fixture.availableChannels).forEach(channelKey => {
-      const channel = fixture.availableChannels[channelKey];
-      if (channel.defaultValue === null) {
-        delete channel.defaultValue;
-      }
-    });
-  }
-
-  if (`templateChannels` in fixture) {
-    warnings.push(`Please fix the visual representation of the matrix.`);
-
-    Object.keys(fixture.templateChannels).forEach(channelKey => {
-      const channel = fixture.templateChannels[channelKey];
-      if (channel.defaultValue === null) {
-        delete channel.defaultValue;
-      }
-    });
-  }
-  else {
-    delete fixture.matrix;
-  }
+  cleanUpFixture(fixture, warnings);
 
   return {
     manufacturers: {
@@ -1253,6 +1218,59 @@ export async function importFixtures(buffer, filename, authorName) {
   }
 }
 
+
+/**
+ * @param {Buffer} buffer The imported file.
+ * @param {String} filename The imported file's name.
+ * @returns {Promise.<Object>} A Promise that resolves to the parsed XML object.
+ */
+async function getGdtfXml(buffer, filename) {
+  let xmlString = buffer.toString();
+
+  if (filename.endsWith(`.gdtf`)) {
+    // unzip the .gdtf (zip) file and check its description.xml file
+    const zip = await JSZip.loadAsync(buffer);
+
+    const descriptionFile = zip.file(`description.xml`);
+    if (descriptionFile === null) {
+      throw new Error(`The provided .gdtf (zip) file does not contain a 'description.xml' file in the root directory.`);
+    }
+
+    xmlString = await descriptionFile.async(`string`);
+  }
+
+  return xml2js.parseStringPromise(xmlString);
+}
+
+/**
+ * Removes `defaultValue`s and fixture matrix if they're unneeded.
+ * @param {Object} fixture The OFL fixture object.
+ * @param {Array.<String>} warnings An array to add warnings to.
+ */
+function cleanUpFixture(fixture, warnings) {
+  if (`availableChannels` in fixture) {
+    for (const channelKey of Object.keys(fixture.availableChannels)) {
+      const channel = fixture.availableChannels[channelKey];
+      if (channel.defaultValue === null) {
+        delete channel.defaultValue;
+      }
+    }
+  }
+
+  if (`templateChannels` in fixture) {
+    warnings.push(`Please fix the visual representation of the matrix.`);
+
+    for (const channelKey of Object.keys(fixture.templateChannels)) {
+      const channel = fixture.templateChannels[channelKey];
+      if (channel.defaultValue === null) {
+        delete channel.defaultValue;
+      }
+    }
+  }
+  else {
+    delete fixture.matrix;
+  }
+}
 
 /**
  * @param {Object} xmlNode An XML node object.
