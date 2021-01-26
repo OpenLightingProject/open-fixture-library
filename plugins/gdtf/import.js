@@ -580,14 +580,8 @@ export async function importFixtures(buffer, filename, authorName) {
 
             gdtfChannelSet._dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelSet.$.DMXFrom, 0);
 
-            let physicalFrom = Number.parseFloat(gdtfChannelSet.$.PhysicalFrom);
-            if (Number.isNaN(physicalFrom)) {
-              physicalFrom = 0;
-            }
-            let physicalTo = Number.parseFloat(gdtfChannelSet.$.PhysicalTo);
-            if (Number.isNaN(physicalTo)) {
-              physicalTo = 1;
-            }
+            const physicalFrom = parseFloatWithFallback(gdtfChannelSet.$.PhysicalFrom, 0);
+            const physicalTo = parseFloatWithFallback(gdtfChannelSet.$.PhysicalTo, 1);
 
             gdtfChannelSet._physicalFrom = physicalFrom;
             gdtfChannelSet._physicalTo = physicalTo;
@@ -1333,6 +1327,16 @@ function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueString, fallbackValue
   catch {
     return [Number.parseInt(dmxValueString, 10) || 0, 1];
   }
+}
+
+/**
+ * @param {String} value The string to parse.
+ * @param {Number} fallback The number to use if the string can't be parsed.
+ * @returns {Number} The parsed number.
+ */
+function parseFloatWithFallback(value, fallback) {
+  const number = Number.parseFloat(value);
+  return Number.isNaN(number) ? fallback : number;
 }
 
 /**
