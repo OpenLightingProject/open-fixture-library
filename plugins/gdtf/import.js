@@ -991,18 +991,18 @@ export async function importFixtures(buffer, filename, authorName) {
        */
       function traverseGeometries(xmlNode) {
         // add all suitable GeometryReference child nodes
-        (xmlNode.GeometryReference || []).forEach(gdtfGeoRef => {
-          if (gdtfGeoRef.$.Geometry === geometryName) {
-            geometryReferences.push(gdtfGeoRef);
-          }
-        });
+        geometryReferences.push(
+          ...(xmlNode.GeometryReference || []).filter(gdtfGeoRef => gdtfGeoRef.$.Geometry === geometryName),
+        );
 
         // traverse all other child nodes
-        Object.keys(xmlNode).forEach(tagName => {
+        for (const [tagName, childNodes] of Object.entries(xmlNode)) {
           if (tagName !== `$` && tagName !== `GeometryReference`) {
-            xmlNode[tagName].forEach(childNode => traverseGeometries(childNode));
+            for (const childNode of childNodes) {
+              traverseGeometries(childNode);
+            }
           }
-        });
+        }
       }
     }
   }
