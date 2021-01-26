@@ -15,8 +15,8 @@ export const version = `0.2.0`;
  * @property {Object} masterGdtfChannel The GDTF channel that triggers switching.
  * @property {String} switchingChannelName The name of the switching channel (containing multiple default channels).
  * @property {Object} followerGdtfChannel The GDTF channel that is switched by the master.
- * @property {Number} dmxFrom The start of the DMX range triggering this relation.
- * @property {Number} dmxTo The end of the DMX range triggering this relation.
+ * @property {[Number, Resolution]} dmxFrom The DMX value and DMX resolution of the start of the DMX range triggering this relation.
+ * @property {[Number, Resolution]} dmxTo The DMX value and DMX resolution of the end of the DMX range triggering this relation.
  */
 
 /**
@@ -627,7 +627,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
       /**
        * @param {Number} index The index of the capability.
-       * @returns {Array.<Number>} The GDTF DMX value for this capability's range end.
+       * @returns {[Number, Resolution]} The GDTF DMX value for this capability's range end.
        */
       function getDmxRangeEnd(index) {
         const dmxFrom = gdtfCapabilities[index]._dmxFrom;
@@ -1173,8 +1173,8 @@ function cleanUpChannelWrappers(channelWrappers) {
 
 /**
  * @typedef {Object} SwitchToChannelInfo
- * @property {Number} dmxFrom The start of the DMX range triggering this relation.
- * @property {Number} dmxTo The end of the DMX range triggering this relation.
+ * @property {[Number, Resolution]} dmxFrom The DMX value and DMX resolution of the start of the DMX range triggering this relation.
+ * @property {[Number, Resolution]} dmxTo The DMX value and DMX resolution of the end of the DMX range triggering this relation.
  * @property {String} switchToChannelKey The key of the channel to switch to.
  */
 
