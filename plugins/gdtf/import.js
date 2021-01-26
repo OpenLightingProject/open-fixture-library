@@ -333,9 +333,9 @@ export async function importFixtures(buffer, filename, authorName) {
 
               const masterChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], gdtfChannelFunction.$.ModeMaster.split(`.`)[0]);
 
-              const dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelFunction.$.ModeFrom || `0/1`);
+              const dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelFunction.$.ModeFrom, 0);
               const maxDmxValue = Math.pow(256, dmxFrom[1]) - 1;
-              const dmxTo = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelFunction.$.ModeTo || `${maxDmxValue}/${dmxFrom[1]}`);
+              const dmxTo = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelFunction.$.ModeTo, maxDmxValue, dmxFrom[1]);
 
               return [{
                 modeIndex,
@@ -375,9 +375,9 @@ export async function importFixtures(buffer, filename, authorName) {
           const followerChannel = followXmlNodeReference(gdtfMode.DMXChannels[0], followerChannelReference.split(`.`)[0]);
           const followerChannelFunction = followXmlNodeReference(gdtfMode.DMXChannels[0], followerChannelReference);
 
-          const dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXFrom || `0/1`);
+          const dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXFrom, 0);
           const maxDmxValue = Math.pow(256, dmxFrom[1]) - 1;
-          const dmxTo = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXTo || `${maxDmxValue}/${dmxFrom[1]}`);
+          const dmxTo = getDmxValueWithResolutionFromGdtfDmxValue(gdtfRelation.$.DMXTo, maxDmxValue, dmxFrom[1]);
 
           return [{
             modeIndex,
@@ -578,7 +578,7 @@ export async function importFixtures(buffer, filename, authorName) {
               gdtfChannelSet.$.Name = ``;
             }
 
-            gdtfChannelSet._dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelSet.$.DMXFrom || `0/1`);
+            gdtfChannelSet._dmxFrom = getDmxValueWithResolutionFromGdtfDmxValue(gdtfChannelSet.$.DMXFrom, 0);
 
             let physicalFrom = Number.parseFloat(gdtfChannelSet.$.PhysicalFrom);
             if (Number.isNaN(physicalFrom)) {
@@ -1316,10 +1316,16 @@ function getIsoDateFromGdtfDate(dateString, fallbackDateString) {
 }
 
 /**
- * @param {String} dmxValueString GDTF DMX value in the form "128/2", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-DMXValue
+ * @param {String|undefined} dmxValueString GDTF DMX value in the form "128/2", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-DMXValue
+ * @param {Number|undefined} fallbackValue DMX value that is used if `dmxValueString` is falsy.
+ * @param {Number} [fallbackResolution=1] DMX value resolution that is used if `dmxValueString` is falsy.
  * @returns {[Number, Resolution]} Array containing DMX value and DMX resolution.
  */
-function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueString) {
+function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueString, fallbackValue, fallbackResolution = 1) {
+  if (!dmxValueString && fallbackValue !== undefined) {
+    return [fallbackValue, fallbackResolution];
+  }
+
   try {
     const [, value, resolution] = dmxValueString.match(/^(\d+)\/(\d)$/);
     return [Number.parseInt(value, 10), Number.parseInt(resolution, 10)];
