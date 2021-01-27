@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "VDPLP64SL",
+  "shortName": "PAR64LED",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Suesty"],
+    "createDate": "2021-01-27",
+    "lastModifyDate": "2021-01-27"
+  },
+  "comment": "led",
+  "links": {
+    "manual": [
+      "https://www.velleman.eu/downloads/4/vdplp64slgbnlfresd.pdf"
+    ],
+    "productPage": [
+      "https://www.velleman.eu/products/view/?country=ch&lang=es&id=386160"
+    ]
+  },
+  "physical": {
+    "lens": {
+      "name": "no lens"
+    }
+  },
+  "availableChannels": {
+    "4": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "5": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "6": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "PARLED64",
+      "shortName": "PL64",
+      "channels": [
+        "RED",
+        "GREEN",
+        "BLUE",
+        "4",
+        "5",
+        "6",
+        "Intensity"
+      ]
+    }
+  ]
+}
