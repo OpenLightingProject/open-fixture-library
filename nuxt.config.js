@@ -4,6 +4,8 @@ import plugins from './plugins/plugins.json';
 import register from './fixtures/register.json';
 import { fixtureFromRepository } from './lib/model.js';
 
+const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT}/`;
+
 export default {
   srcDir: `./ui/`,
   modules: [
@@ -31,6 +33,9 @@ export default {
     `~/assets/styles/style.scss`,
     `embetty-vue/dist/embetty-vue.css`,
   ],
+  publicRuntimeConfig: {
+    websiteUrl,
+  },
   build: {
     extend(config, context) {
       // exclude /assets/icons from url-loader
@@ -97,8 +102,7 @@ export default {
       return titleChunk ? `${titleChunk} – Open Fixture Library` : `Open Fixture Library`;
     };
 
-    const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT}/`;
-    const canonicalUrl = websiteUrl.slice(0, -1) + this.$route.path.replace(/\/$/, ``); // remove trailing slash
+    const canonicalUrl = this.$config.websiteUrl.slice(0, -1) + this.$route.path.replace(/\/$/, ``); // remove trailing slash
 
     const meta = [
       {
@@ -246,11 +250,11 @@ export default {
       UserAgent: `*`,
       Disallow: plugins.exportPlugins.map(pluginKey => `/*.${pluginKey}$`),
       Allow: `/`,
-      Sitemap: `${process.env.WEBSITE_URL}sitemap.xml`,
+      Sitemap: `${websiteUrl}sitemap.xml`,
     };
   },
   sitemap: {
-    hostname: process.env.WEBSITE_URL,
+    hostname: websiteUrl,
     gzip: true,
     async routes() {
       const staticUrls = [

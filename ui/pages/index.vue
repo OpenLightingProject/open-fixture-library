@@ -125,10 +125,10 @@ export default {
         '@context': `http://schema.org`,
         '@type': `WebSite`,
         'name': `Open Fixture Library`,
-        'url': process.env.WEBSITE_URL,
+        'url': this.$config.websiteUrl,
         'potentialAction': {
           '@type': `SearchAction`,
-          'target': `${process.env.WEBSITE_URL}search?q={search_term_string}`,
+          'target': `${this.$config.websiteUrl}search?q={search_term_string}`,
           'query-input': `required name=search_term_string`,
         },
       },
@@ -137,8 +137,8 @@ export default {
         '@type': `Organization`,
         'name': `Open Fixture Library`,
         'description': `Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!`,
-        'url': process.env.WEBSITE_URL,
-        'logo': `${process.env.WEBSITE_URL}ofl-logo.svg`,
+        'url': this.$config.websiteUrl,
+        'logo': `${this.$config.websiteUrl}ofl-logo.svg`,
       },
     };
   },
