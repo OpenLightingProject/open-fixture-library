@@ -3,7 +3,7 @@
 
     <h1>
       The Open Fixture Library joins the
-      <a href="https://fridaysforfuture.org/september25/">Global Day of Climate Action</a>
+      <a href="https://fridaysforfuture.org/march19/">Global Climate Strike</a>
       and is therefore not available today.
     </h1>
 
@@ -24,7 +24,7 @@
       <p>Please refer to the <a href="https://fridaysforfuture.org/">Fridays for Future website</a>.</p>
 
       <div class="hashtags">
-        <a href="https://twitter.com/hashtag/GlobalClimateAction2020">#GlobalClimateAction2020</a>
+        <a href="https://twitter.com/hashtag/NoMoreEmptyPromises">#NoMoreEmptyPromises</a>
         <a href="https://twitter.com/hashtag/fridaysforfuture">#fridaysforfuture</a>
         <a href="https://twitter.com/hashtag/climatestrike">#climatestrike</a>
       </div>
@@ -33,7 +33,7 @@
   </div>
   <div v-else-if="showClimateStrikeBanner" id="climate-strike-banner" class="climate-strike">
 
-    We are joining the <a href="https://twitter.com/hashtag/GlobalClimateAction2020" target="_blank">#GlobalClimateAction2020</a>,
+    We are joining the <a href="https://fridaysforfuture.org/march19/" target="_blank">Global Climate Strike</a>,
     so this website will not be available on {{ strikeDateString }}.<br>
     Learn more at <a href="https://fridaysforfuture.org/" target="_blank">fridaysforfuture.org</a>.
 
@@ -126,7 +126,7 @@ export default {
     return {
       isClimateStrike: false,
       showClimateStrikeBanner: false,
-      strikeDateString: `2020-09-25`,
+      strikeDateString: `2021-03-19`,
     };
   },
   created() {
