@@ -1,0 +1,179 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Rush MH 5 Profile",
+  "shortName": "Rush-MH-5-Profile",
+  "categories": ["Dimmer", "Effect", "Moving Head", "Strobe"],
+  "meta": {
+    "authors": ["François Bouffard"],
+    "createDate": "2021-02-02",
+    "lastModifyDate": "2021-02-02"
+  },
+  "links": {
+    "manual": [
+      "https://www.martin.com/en/products/rush-mh-5-profile#specifications"
+    ],
+    "productPage": [
+      "https://www.martin.com/en/products/rush-mh-5-profile#specifications"
+    ],
+    "video": [
+      "https://www.martin.com/en/products/rush-mh-5-profile#specifications"
+    ]
+  },
+  "physical": {
+    "dimensions": [290, 416, 187],
+    "weight": 9,
+    "power": 165,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 131],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        },
+        {
+          "dmxRange": [132, 167],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown"
+        },
+        {
+          "dmxRange": [168, 203],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown"
+        },
+        {
+          "dmxRange": [204, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse"
+        },
+        {
+          "dmxRange": [240, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Spikes"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Color Wheel 1": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Wheel 2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Gobo Wheel 1": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Gobo Wheel 1 Indexation": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Gobo Wheel 2": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Prism"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "PrismRotation",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "far",
+        "distanceEnd": "near"
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt 2": {
+      "name": "Tilt",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Programms": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "16_Channel",
+      "shortName": "16_ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Strobe",
+        "Color Wheel 1",
+        "Color Wheel 2",
+        "Gobo Wheel 1",
+        "Gobo Wheel 1 Indexation",
+        "Gobo Wheel 2",
+        "Prism",
+        "Prism Rotation",
+        "Focus",
+        "Pan",
+        "Pan 2",
+        "Tilt",
+        "Tilt 2",
+        "Programms"
+      ]
+    }
+  ]
+}
