@@ -285,7 +285,7 @@ async function updateGithubIssue(urlResults) {
             };
           }
 
-          const [, jobUrl, message] = item.match(/<a href="(.*)" title="(.*)">:x:<\/a>/);
+          const [, jobUrl, message] = item.match(/<a href="(.*)" title="(.*)">:\w+:<\/a>/);
 
           return {
             failed: true,
@@ -379,7 +379,8 @@ async function updateGithubIssue(urlResults) {
           }
 
           const message = status.message.replace(`\n`, ` `).replace(`"`, `&quot;`);
-          return `<a href="${status.jobUrl}" title="${message}">:x:</a>`;
+          const emoji = getFailedEmoji(status.message);
+          return `<a href="${status.jobUrl}" title="${message}">${emoji}</a>`;
         }).join(`&nbsp;`);
 
         return `| ${url} <td nowrap>${statusIcons}</td>`;
@@ -465,4 +466,25 @@ async function updateGithubIssue(urlResults) {
       body: lines.join(`\n`),
     });
   }
+}
+
+/**
+ * @param {String} message The error message.
+ * @returns {String} The emoji to display for that error message.
+ */
+function getFailedEmoji(message) {
+  const emojis = {
+    '301': `:fast_forward`,
+    '301 Moved Permanently': `:fast_forward`,
+
+    '403': `:no_entry:`,
+    '403 Forbidden': `:no_entry:`,
+
+    '429': `:sos`,
+    '429 Too Many Requests': `:sos`,
+
+    [`Timeout of ${TIMEOUT}ms exceeded.`]: `:hourglass:`,
+  };
+
+  return emojis[message.trim()] || `:x:`;
 }
