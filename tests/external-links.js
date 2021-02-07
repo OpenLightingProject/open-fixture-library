@@ -474,14 +474,14 @@ async function updateGithubIssue(urlResults) {
  */
 function getFailedEmoji(message) {
   const emojis = {
-    '301': `:fast_forward`,
-    '301 Moved Permanently': `:fast_forward`,
+    '301': `:fast_forward:`,
+    '301 Moved Permanently': `:fast_forward:`,
 
     '403': `:no_entry:`,
     '403 Forbidden': `:no_entry:`,
 
-    '429': `:sos`,
-    '429 Too Many Requests': `:sos`,
+    '429': `:sos:`,
+    '429 Too Many Requests': `:sos:`,
 
     [`Timeout of ${TIMEOUT}ms exceeded.`]: `:hourglass:`,
   };
