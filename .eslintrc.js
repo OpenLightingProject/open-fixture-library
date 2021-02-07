@@ -158,7 +158,8 @@ const enabledRuleParameters = {
   'vue/v-slot-style': [`shorthand`],
   'vue/valid-next-tick': [],
 
-  // already included in `vue/essential` preset, but needed here because we reduce its severity to `warn`
+  // already included in presets, but needed here because we reduce severity to `warn`
+  'unicorn/no-array-for-each': [],
   'vue/no-mutating-props': [],
 };
 
