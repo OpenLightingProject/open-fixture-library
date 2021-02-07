@@ -200,6 +200,7 @@ const vueCoreExtensionRules = [
 const warnRules = new Set([
   `complexity`,
   `jsdoc/require-jsdoc`,
+  `unicorn/no-array-for-each`,
   `vue/no-mutating-props`,
 ]);
 
