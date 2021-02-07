@@ -959,7 +959,7 @@ async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValu
    */
   function checkUnusedWheelSlots() {
     const slotsOfUsedWheels = [];
-    for (const wheelName of Array.from(usedWheels)) {
+    for (const wheelName of usedWheels) {
       const wheel = fixture.getWheelByName(wheelName);
 
       if (wheel.type !== `AnimationGobo`) {
