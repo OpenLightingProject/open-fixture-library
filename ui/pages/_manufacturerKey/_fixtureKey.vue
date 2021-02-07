@@ -175,7 +175,7 @@ export default {
         'name': this.fixture.name,
         'category': this.fixture.mainCategory,
         'manufacturer': {
-          'url': `${process.env.WEBSITE_URL}${this.manufacturerKey}`,
+          'url': `${this.$config.websiteUrl}${this.manufacturerKey}`,
         },
       };
 
@@ -200,7 +200,7 @@ export default {
             '@type': `ListItem`,
             'position': 1,
             'item': {
-              '@id': `${process.env.WEBSITE_URL}manufacturers`,
+              '@id': `${this.$config.websiteUrl}manufacturers`,
               'name': `Manufacturers`,
             },
           },
@@ -208,7 +208,7 @@ export default {
             '@type': `ListItem`,
             'position': 2,
             'item': {
-              '@id': `${process.env.WEBSITE_URL}${this.manufacturerKey}`,
+              '@id': `${this.$config.websiteUrl}${this.manufacturerKey}`,
               'name': this.fixture.manufacturer.name,
             },
           },

@@ -51,7 +51,7 @@
 
 <script>
 export default {
-  async asyncData({ params, $axios, error }) {
+  async asyncData({ params, $axios, $config, error }) {
     const manufacturerKey = params.manufacturerKey;
 
     try {
@@ -75,7 +75,7 @@ export default {
         'itemListElement': fixtures.map((fixture, index) => ({
           '@type': `ListItem`,
           'position': index + 1,
-          'url': `${process.env.WEBSITE_URL}/${manufacturer.key}/${fixture.key}`,
+          'url': `${$config.websiteUrl}${manufacturer.key}/${fixture.key}`,
         })),
       };
 
