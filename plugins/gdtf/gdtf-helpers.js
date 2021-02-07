@@ -32,15 +32,9 @@ function followXmlNodeReference(startNode, nodeReference) {
    * @returns {Array.<Object>} The XML objects of this node's child nodes.
    */
   function getChildNodes(node) {
-    const childNodes = [];
-
-    Object.keys(node).forEach(tagName => {
-      if (tagName !== `$`) {
-        childNodes.push(...node[tagName]);
-      }
-    });
-
-    return childNodes;
+    return Object.entries(node).flatMap(
+      ([tagName, nodes]) => (tagName === `$` ? [] : nodes),
+    );
   }
 }
 

@@ -435,25 +435,27 @@ async function updateGithubIssue(urlResults) {
     ];
 
     if (newFailingUrlResults.length > 0) {
-      lines.push(`### :x: New failing URLs`);
-      lines.push(...newFailingUrlResults.map(
-        urlResult => `- ${urlResult.url} (${urlResult.message})`,
-      ));
-      lines.push(``);
+      lines.push(
+        `### :x: New failing URLs`,
+        ...newFailingUrlResults.map(urlResult => `- ${urlResult.url} (${urlResult.message})`),
+        ``,
+      );
     }
 
     if (fixedUrlResults.length > 0) {
-      lines.push(`### :heavy_check_mark: Fixed URLs (no fails in the last seven days)`);
-      lines.push(...fixedUrlResults.map(
-        urlResult => `- ${urlResult.url} (${urlResult.message})`,
-      ));
-      lines.push(``);
+      lines.push(
+        `### :heavy_check_mark: Fixed URLs (no fails in the last seven days)`,
+        ...fixedUrlResults.map(urlResult => `- ${urlResult.url} (${urlResult.message})`),
+        ``,
+      );
     }
 
     if (deletedUrls.length > 0) {
-      lines.push(`### :heavy_check_mark: Fixed URLs (failing URLs not included anymore)`);
-      lines.push(...deletedUrls.map(url => `- ${url}`));
-      lines.push(``);
+      lines.push(
+        `### :heavy_check_mark: Fixed URLs (failing URLs not included anymore)`,
+        ...deletedUrls.map(url => `- ${url}`),
+        ``,
+      );
     }
 
     console.log(`Creating GitHub comment.`);

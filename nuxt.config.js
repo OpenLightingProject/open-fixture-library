@@ -63,10 +63,10 @@ export default {
 
       // automatically `@use` global SCSS definitions
       const scssRule = config.module.rules.find(rule => rule.test.toString() === `/\\.scss$/i`);
-      scssRule.oneOf.forEach(({ use }) => {
+      for (const { use } of scssRule.oneOf) {
         const sassLoader = use.find(({ loader }) => loader === `sass-loader`);
         sassLoader.options.additionalData = `@use "~/assets/styles/global.scss" as *;`;
-      });
+      }
     },
   },
   render: {

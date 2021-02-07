@@ -213,22 +213,33 @@ async function performTask(task) {
     lines.push(`<blockquote>`);
 
     if (changeFlags.hasRemoved) {
-      lines.push(`<strong>Removed files</strong>`);
-      lines.push(`<ul>`, ...output.removedFiles.map(file => `<li>${file}</li>`), `</ul>`);
+      lines.push(
+        `<strong>Removed files</strong>`,
+        `<ul>`,
+        ...output.removedFiles.map(file => `<li>${file}</li>`),
+        `</ul>`,
+      );
     }
 
     if (changeFlags.hasAdded) {
-      lines.push(`<strong>Added files</strong>`);
-      lines.push(`<ul>`, ...output.addedFiles.map(file => `<li>${file}</li>`), `</ul>`);
+      lines.push(
+        `<strong>Added files</strong>`,
+        `<ul>`,
+        ...output.addedFiles.map(file => `<li>${file}</li>`),
+        `</ul>`,
+      );
     }
 
     for (const file of Object.keys(output.changedFiles)) {
-      lines.push(`<details>`);
-      lines.push(`<summary><strong>Changed outputted file <code>${file}</code></strong></summary>`, ``);
-      lines.push(`\`\`\`diff`);
-      lines.push(output.changedFiles[file]);
-      lines.push(`\`\`\``);
-      lines.push(`</details>`);
+      lines.push(
+        `<details>`,
+        `<summary><strong>Changed outputted file <code>${file}</code></strong></summary>`,
+        ``,
+        `\`\`\`diff`,
+        output.changedFiles[file],
+        `\`\`\``,
+        `</details>`,
+      );
     }
 
     lines.push(`</blockquote>`);

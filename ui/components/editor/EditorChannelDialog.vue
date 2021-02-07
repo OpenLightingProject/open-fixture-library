@@ -557,7 +557,9 @@ export default {
         return;
       }
 
-      this.$refs.capabilities.forEach(capability => capability.cleanCapabilityData());
+      for (const capability of this.$refs.capabilities) {
+        capability.cleanCapabilityData();
+      }
 
       const actions = {
         'create': this.saveCreatedChannel,
@@ -686,15 +688,15 @@ export default {
     },
 
     openDetails() {
-      this.$el.querySelectorAll(`details`).forEach(details => {
+      for (const details of this.$el.querySelectorAll(`details`)) {
         details.open = true;
-      });
+      }
     },
 
     closeDetails() {
-      this.$el.querySelectorAll(`details`).forEach(details => {
+      for (const details of this.$el.querySelectorAll(`details`)) {
         details.open = false;
-      });
+      }
     },
 
     insertEmptyCapability(index) {

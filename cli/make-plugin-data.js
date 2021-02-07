@@ -42,11 +42,9 @@ const pluginDirectory = path.join(__dirname, `../plugins/`);
   }
 
   // sort plugin data object by key
-  const sortedPluginData = {};
-  Object.keys(plugins.data).sort().forEach(key => {
-    sortedPluginData[key] = plugins.data[key];
-  });
-  plugins.data = sortedPluginData;
+  plugins.data = Object.fromEntries(
+    Object.keys(plugins.data).sort().map(key => [key, plugins.data[key]]),
+  );
 
   const filename = path.join(pluginDirectory, `plugins.json`);
 
@@ -72,13 +70,13 @@ async function readPluginJson(pluginKey) {
     plugins.data[pluginKey].name = pluginJson.name;
 
     if (pluginJson.previousVersions) {
-      Object.entries(pluginJson.previousVersions).forEach(([key, name]) => {
+      for (const [key, name] of Object.entries(pluginJson.previousVersions)) {
         allPreviousVersions[key] = {
           name,
           outdated: true,
           newPlugin: pluginKey,
         };
-      });
+      }
     }
   }
   catch (error) {

@@ -30,27 +30,37 @@ module.exports.importFixtures = async function importECue(buffer, filename, auth
   }
 
   const ecueManufacturers = xml.Document.Library[0].Fixtures[0].Manufacturer || [];
-  ecueManufacturers.forEach(manufacturer => {
-    const manufacturerName = manufacturer.$.Name;
+  for (const manufacturer of ecueManufacturers) {
+    addManufacturer(manufacturer);
+  }
+
+  return out;
+
+
+  /**
+   * Parses the e:cue manufacturer and adds it to `out.manufacturers`.
+   * Calls {@link addFixture} for all contained fixtures.
+   * @param {Object} ecueManufacturer The e:cue manufacturer object.
+   */
+  function addManufacturer(ecueManufacturer) {
+    const manufacturerName = ecueManufacturer.$.Name;
     const manufacturerKey = slugify(manufacturerName);
 
     out.manufacturers[manufacturerKey] = {
       name: manufacturerName,
     };
 
-    if (manufacturer.$.Comment !== ``) {
-      out.manufacturers[manufacturerKey].comment = manufacturer.$.Comment;
+    if (ecueManufacturer.$.Comment !== ``) {
+      out.manufacturers[manufacturerKey].comment = ecueManufacturer.$.Comment;
     }
-    if (manufacturer.$.Web !== ``) {
-      out.manufacturers[manufacturerKey].website = manufacturer.$.Web;
+    if (ecueManufacturer.$.Web !== ``) {
+      out.manufacturers[manufacturerKey].website = ecueManufacturer.$.Web;
     }
 
-    for (const fixture of (manufacturer.Fixture || [])) {
+    for (const fixture of (ecueManufacturer.Fixture || [])) {
       addFixture(fixture, manufacturerKey);
     }
-  });
-
-  return out;
+  }
 
 
   /**

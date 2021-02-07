@@ -37,10 +37,10 @@ module.exports.exportFixtures = function exportColorSource(fixtures, options) {
     personalities: [],
   };
 
-  fixtures.forEach(fixture => {
+  for (const fixture of fixtures) {
     const fixtureUuidNamespace = uuidv5(`${fixture.manufacturer.key}/${fixture.key}`, UUID_NAMESPACE);
 
-    fixture.modes.forEach(mode => {
+    for (const mode of fixture.modes) {
       const dcid = uuidv5(mode.name, fixtureUuidNamespace);
       const hasIntensity = mode.channels.some(channel => channel.type === `Intensity`);
       const parameters = getColorSourceChannels(mode, hasIntensity);
@@ -60,8 +60,8 @@ module.exports.exportFixtures = function exportColorSource(fixtures, options) {
       removeEmptyProperties(fixtureJson);
 
       exportJson.personalities.push(fixtureJson);
-    });
-  });
+    }
+  }
 
   return Promise.resolve([{
     name: `userlib.jlib`,
@@ -123,13 +123,13 @@ function getColorTable(colorSourceChannels) {
  */
 function getCommands(mode) {
   const commands = [];
-  mode.channels.forEach((channel, channelIndex) => {
+  for (const [channelIndex, channel] of mode.channels.entries()) {
     if (!channel.capabilities) {
       // e. g. fine channels
-      return;
+      continue;
     }
 
-    channel.capabilities.forEach(capability => {
+    for (const capability of channel.capabilities) {
       if (capability.type === `Maintenance` && capability.hold) {
         commands.push({
           name: capability.comment,
@@ -151,8 +151,8 @@ function getCommands(mode) {
           ],
         });
       }
-    });
-  });
+    }
+  }
 
   return commands;
 }
@@ -163,8 +163,7 @@ function getCommands(mode) {
  * @returns {Array.<Object>} ColorSource channel objects of all mode channels.
  */
 function getColorSourceChannels(mode, hasIntensity) {
-  const channels = [];
-  mode.channels.forEach((channel, channelIndex) => {
+  return mode.channels.flatMap((channel, channelIndex) => {
     const name = channel.name;
 
     if (channel instanceof SwitchingChannel) {
@@ -197,7 +196,7 @@ function getColorSourceChannels(mode, hasIntensity) {
     if (channel instanceof FineChannel) {
       if (channel.resolution === CoarseChannel.RESOLUTION_16BIT) {
         // already handled by "fine" attribute of coarse channel
-        return;
+        return [];
       }
 
       channelJson.type = CHANNEL_TYPE_BEAM;
@@ -209,10 +208,8 @@ function getColorSourceChannels(mode, hasIntensity) {
 
     removeEmptyProperties(channelJson);
 
-    channels.push(channelJson);
+    return [channelJson];
   });
-
-  return channels;
 
   /**
    * Adds information to given channel JSON that is specific to (and only makes sense for) coarse channels.
@@ -334,9 +331,9 @@ function getColorSourceChannelType(channel) {
  * @param {Object} object The object whose properties should be cleaned up.
  */
 function removeEmptyProperties(object) {
-  Object.entries(object).forEach(([key, value]) => {
+  for (const [key, value] of Object.entries(object)) {
     if (value === null || (Array.isArray(value) && value.length === 0)) {
       delete object[key];
     }
-  });
+  }
 }

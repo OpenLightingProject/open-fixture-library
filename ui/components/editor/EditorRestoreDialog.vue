@@ -96,20 +96,20 @@ export default {
 function getRestoredFixture(fixture) {
   const restoredFixture = Object.assign(getEmptyFixture(), fixture);
 
-  restoredFixture.links.forEach((link, index) => {
+  for (const [index, link] of restoredFixture.links.entries()) {
     restoredFixture.links[index] = Object.assign(getEmptyLink(), link);
-  });
+  }
 
   restoredFixture.physical = Object.assign(getEmptyPhysical(), restoredFixture.physical);
 
-  restoredFixture.modes.forEach((mode, index) => {
+  for (const [index, mode] of restoredFixture.modes.entries()) {
     restoredFixture.modes[index] = Object.assign(getEmptyMode(), mode);
     restoredFixture.modes[index].physical = Object.assign(getEmptyPhysical(), mode.physical);
-  });
+  }
 
-  Object.keys(restoredFixture.availableChannels).forEach(channelKey => {
+  for (const channelKey of Object.keys(restoredFixture.availableChannels)) {
     restoredFixture.availableChannels[channelKey] = getRestoredChannel(restoredFixture.availableChannels[channelKey], false);
-  });
+  }
 
   return restoredFixture;
 }
@@ -131,12 +131,12 @@ function getRestoredChannel(channel, isChannelDialog) {
 
   const restoredChannel = Object.assign(emptyChannel, channel);
 
-  restoredChannel.capabilities.forEach((capability, index) => {
+  for (const [index, capability] of restoredChannel.capabilities.entries()) {
     restoredChannel.capabilities[index] = Object.assign(
       getEmptyCapability(),
       capability,
     );
-  });
+  }
 
   if (isChannelDialog) {
     restoredChannel.wizard.templateCapability = Object.assign(

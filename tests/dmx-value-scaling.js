@@ -49,7 +49,9 @@ function testScaleDmxValuesUp() {
     255: 65_535, // [255] -> [255, 255] = 256^2 - 1
     /* eslint-enable indent, key-spacing */
   };
-  Object.keys(scale8to16).forEach(dmxValue => testScaleDmxValue(dmxValue, 1, 2, scale8to16[dmxValue]));
+  for (const dmxValue of Object.keys(scale8to16)) {
+    testScaleDmxValue(dmxValue, 1, 2, scale8to16[dmxValue]);
+  }
 
   const scale8to24 = {
     /* eslint-disable indent, key-spacing */
@@ -59,7 +61,9 @@ function testScaleDmxValuesUp() {
     255: 16_777_215, // [255] -> [255, 255, 255] = 256^3 - 1
     /* eslint-enable indent, key-spacing */
   };
-  Object.keys(scale8to24).forEach(dmxValue => testScaleDmxValue(dmxValue, 1, 3, scale8to24[dmxValue]));
+  for (const dmxValue of Object.keys(scale8to24)) {
+    testScaleDmxValue(dmxValue, 1, 3, scale8to24[dmxValue]);
+  }
 
   const scale16to24 = {
     /* eslint-disable indent, key-spacing */
@@ -73,7 +77,9 @@ function testScaleDmxValuesUp() {
     65_535: 16_777_215, // [255, 255] -> [255, 255, 255]
     /* eslint-enable indent, key-spacing */
   };
-  Object.keys(scale16to24).forEach(dmxValue => testScaleDmxValue(dmxValue, 2, 3, scale16to24[dmxValue]));
+  for (const dmxValue of Object.keys(scale16to24)) {
+    testScaleDmxValue(dmxValue, 2, 3, scale16to24[dmxValue]);
+  }
 }
 
 /**
@@ -91,7 +97,9 @@ function testScaleDmxValuesDown() {
     65_535: 255, // [255, 255] -> [255]
     /* eslint-enable indent, key-spacing */
   };
-  Object.keys(scale16to8).forEach(dmxValue => testScaleDmxValue(dmxValue, 2, 1, scale16to8[dmxValue]));
+  for (const dmxValue of Object.keys(scale16to8)) {
+    testScaleDmxValue(dmxValue, 2, 1, scale16to8[dmxValue]);
+  }
 
   const scale24to8 = {
     /* eslint-disable indent, key-spacing */
@@ -105,7 +113,9 @@ function testScaleDmxValuesDown() {
     16_777_215: 255, // [255, 255, 255] -> [255]
     /* eslint-enable indent, key-spacing */
   };
-  Object.keys(scale24to8).forEach(dmxValue => testScaleDmxValue(dmxValue, 3, 1, scale24to8[dmxValue]));
+  for (const dmxValue of Object.keys(scale24to8)) {
+    testScaleDmxValue(dmxValue, 3, 1, scale24to8[dmxValue]);
+  }
 
   const scale24to16 = {
     /* eslint-disable indent, key-spacing */
@@ -121,7 +131,9 @@ function testScaleDmxValuesDown() {
     16_777_215: 65_535, // [255, 255, 255] -> [255, 255]
     /* eslint-enable indent, key-spacing */
   };
-  Object.keys(scale24to16).forEach(dmxValue => testScaleDmxValue(dmxValue, 3, 2, scale24to16[dmxValue]));
+  for (const dmxValue of Object.keys(scale24to16)) {
+    testScaleDmxValue(dmxValue, 3, 2, scale24to16[dmxValue]);
+  }
 }
 
 /**
@@ -155,7 +167,9 @@ function testScaleDmxRangesUp() {
     [[255, 255], [65_280, 65_535]],
     /* eslint-enable no-multi-spaces, array-bracket-spacing */
   ];
-  scale8to16.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 1, 2, desiredDmxRange));
+  for (const [dmxRange, desiredDmxRange] of scale8to16) {
+    testScaleDmxRange(dmxRange, 1, 2, desiredDmxRange);
+  }
 
   const scale8to24 = [
     /* eslint-disable no-multi-spaces, array-bracket-spacing */
@@ -166,7 +180,9 @@ function testScaleDmxRangesUp() {
     [[255, 255], [16_711_680, 16_777_215]],
     /* eslint-enable no-multi-spaces, array-bracket-spacing */
   ];
-  scale8to24.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 1, 3, desiredDmxRange));
+  for (const [dmxRange, desiredDmxRange] of scale8to24) {
+    testScaleDmxRange(dmxRange, 1, 3, desiredDmxRange);
+  }
 }
 
 /**
@@ -186,7 +202,9 @@ function testScaleDmxRangesDown() {
     [[65_280, 65_535], [255, 255]],
     /* eslint-enable no-multi-spaces, array-bracket-spacing */
   ];
-  scale16to8.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 2, 1, desiredDmxRange));
+  for (const [dmxRange, desiredDmxRange] of scale16to8) {
+    testScaleDmxRange(dmxRange, 2, 1, desiredDmxRange);
+  }
 
   const scale24to8 = [
     /* eslint-disable no-multi-spaces, array-bracket-spacing */
@@ -194,7 +212,9 @@ function testScaleDmxRangesDown() {
     [[1_683_119, 2_244_792], [26, 34]],
     /* eslint-enable no-multi-spaces, array-bracket-spacing */
   ];
-  scale24to8.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 3, 1, desiredDmxRange));
+  for (const [dmxRange, desiredDmxRange] of scale24to8) {
+    testScaleDmxRange(dmxRange, 3, 1, desiredDmxRange);
+  }
 
   const scale24to16 = [
     /* eslint-disable no-multi-spaces, array-bracket-spacing */
@@ -202,7 +222,9 @@ function testScaleDmxRangesDown() {
     [[1_683_119, 2_244_792], [6575, 8768]],
     /* eslint-enable no-multi-spaces, array-bracket-spacing */
   ];
-  scale24to16.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 3, 2, desiredDmxRange));
+  for (const [dmxRange, desiredDmxRange] of scale24to16) {
+    testScaleDmxRange(dmxRange, 3, 2, desiredDmxRange);
+  }
 }
 
 /**
@@ -242,10 +264,10 @@ function testRandomChannelDownscaling(resolution) {
     `Random capabilities, scaled down from ${resolution * 8}bit to ${(resolution - 1) * 8}bit, do not overlap:`,
     `Random capabilities, scaled down from ${resolution * 8}bit to ${(resolution - 1) * 8}bit, do overlap:`,
   );
-  capabilityRanges.forEach(([start, end], index) => {
+  for (const [index, [start, end]] of capabilityRanges.entries()) {
     const [scaledStart, scaledEnd] = scaledRanges[index];
     console.log(`  ${start}…${end} -> ${scaledStart}…${scaledEnd}`);
-  });
+  }
 
   /**
    * @returns {Array.<[Number, Number]>} Random list of adjacent capability [start, end] ranges. Together, they fill a whole channel.
