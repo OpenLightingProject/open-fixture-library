@@ -264,7 +264,7 @@ function testRandomChannelDownscaling(resolution) {
     `Random capabilities, scaled down from ${resolution * 8}bit to ${(resolution - 1) * 8}bit, do not overlap:`,
     `Random capabilities, scaled down from ${resolution * 8}bit to ${(resolution - 1) * 8}bit, do overlap:`,
   );
-  for (const [index, [start, end]] of capabilityRanges) {
+  for (const [index, [start, end]] of capabilityRanges.entries()) {
     const [scaledStart, scaledEnd] = scaledRanges[index];
     console.log(`  ${start}…${end} -> ${scaledStart}…${scaledEnd}`);
   }
