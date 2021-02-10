@@ -1,0 +1,547 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Hornet 200-C",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2021-02-09",
+    "lastModifyDate": "2021-02-09"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/1pJK6BaAhvOGTwMP1VhfO8GH25YicCDwS/view"
+    ],
+    "productPage": [
+      "https://hivelighting.com/c-series/hornet-200-c/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=B9-TKGy25mQ"
+    ]
+  },
+  "physical": {
+    "dimensions": [100, 100, 224],
+    "weight": 2.6,
+    "power": 150,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [19, 180]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "1650K",
+        "colorTemperatureEnd": "8025K"
+      }
+    },
+    "Hue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Sources": {
+      "name": "Pre-Mixed Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "Generic",
+          "comment": "Violet Glow Stick"
+        },
+        {
+          "dmxRange": [16, 21],
+          "type": "Generic",
+          "comment": "Pink Glow Stick"
+        },
+        {
+          "dmxRange": [22, 27],
+          "type": "Generic",
+          "comment": "Yellow Glow Stick"
+        },
+        {
+          "dmxRange": [28, 34],
+          "type": "Generic",
+          "comment": "Red Glow Stick"
+        },
+        {
+          "dmxRange": [35, 41],
+          "type": "Generic",
+          "comment": "Green Glow Stick"
+        },
+        {
+          "dmxRange": [42, 46],
+          "type": "Generic",
+          "comment": "Blue Glow Stick"
+        },
+        {
+          "dmxRange": [47, 52],
+          "type": "Generic",
+          "comment": "Red Traffic Light"
+        },
+        {
+          "dmxRange": [53, 58],
+          "type": "Generic",
+          "comment": "Yellow Traffic Light"
+        },
+        {
+          "dmxRange": [59, 64],
+          "type": "Generic",
+          "comment": "Green Traffic Light"
+        },
+        {
+          "dmxRange": [65, 70],
+          "type": "Generic",
+          "comment": "Amber Caution"
+        },
+        {
+          "dmxRange": [71, 76],
+          "type": "Generic",
+          "comment": "Road Flare"
+        },
+        {
+          "dmxRange": [77, 82],
+          "type": "Generic",
+          "comment": "Blowtorch"
+        },
+        {
+          "dmxRange": [83, 88],
+          "type": "Generic",
+          "comment": "Luminescence"
+        },
+        {
+          "dmxRange": [89, 94],
+          "type": "Generic",
+          "comment": "Computer Monitor"
+        },
+        {
+          "dmxRange": [95, 100],
+          "type": "Generic",
+          "comment": "Mobile Phone"
+        },
+        {
+          "dmxRange": [101, 106],
+          "type": "Generic",
+          "comment": "Sun Blue Hour"
+        },
+        {
+          "dmxRange": [107, 112],
+          "type": "Generic",
+          "comment": "Sun Overcast"
+        },
+        {
+          "dmxRange": [113, 123],
+          "type": "Generic",
+          "comment": "Sun Direct"
+        },
+        {
+          "dmxRange": [124, 130],
+          "type": "Generic",
+          "comment": "Gas Light"
+        },
+        {
+          "dmxRange": [131, 136],
+          "type": "Generic",
+          "comment": "Candlelight"
+        },
+        {
+          "dmxRange": [137, 142],
+          "type": "Generic",
+          "comment": "Antique Bulb"
+        },
+        {
+          "dmxRange": [143, 148],
+          "type": "Generic",
+          "comment": "Warm Antique Bulb"
+        },
+        {
+          "dmxRange": [149, 154],
+          "type": "Generic",
+          "comment": "Christmas Lights"
+        },
+        {
+          "dmxRange": [155, 160],
+          "type": "Generic",
+          "comment": "Night Light"
+        },
+        {
+          "dmxRange": [161, 166],
+          "type": "Generic",
+          "comment": "Heat Lamp"
+        },
+        {
+          "dmxRange": [167, 177],
+          "type": "Generic",
+          "comment": "Grow Light"
+        },
+        {
+          "dmxRange": [178, 184],
+          "type": "Generic",
+          "comment": "Tungsten Bulb"
+        },
+        {
+          "dmxRange": [185, 190],
+          "type": "Generic",
+          "comment": "Incandescent"
+        },
+        {
+          "dmxRange": [191, 196],
+          "type": "Generic",
+          "comment": "Halogen"
+        },
+        {
+          "dmxRange": [197, 202],
+          "type": "Generic",
+          "comment": "HMI"
+        },
+        {
+          "dmxRange": [203, 208],
+          "type": "Generic",
+          "comment": "High Pressure Sodium Vapor"
+        },
+        {
+          "dmxRange": [209, 214],
+          "type": "Generic",
+          "comment": "Low Pressure Sodium Vapor"
+        },
+        {
+          "dmxRange": [215, 220],
+          "type": "Generic",
+          "comment": "Mercury Vapor"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "Generic",
+          "comment": "Metal Halide"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "Generic",
+          "comment": "Ceramic"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "Generic",
+          "comment": "Carbon Arc"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "Generic",
+          "comment": "Xenon"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "Generic",
+          "comment": "Blacklight"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "Generic",
+          "comment": "Cool White Fluorescent"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Generic",
+          "comment": "Warm White Fluorescent"
+        }
+      ]
+    },
+    "Corrective": {
+      "name": "Gel Color",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Full +Green Daylight"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Generic",
+          "comment": "1/2 +Green Daylight"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Generic",
+          "comment": "1/4 +Green Daylight"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Generic",
+          "comment": "1/8 +Green Daylight"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Generic",
+          "comment": "Full +Green Tungsten"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Generic",
+          "comment": "1/2 +Green Tungsten"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Generic",
+          "comment": "1/4 +Green Tungsten"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Generic",
+          "comment": "1/8 +Green Tungsten"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "Generic",
+          "comment": "Full -Green Daylight"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "Generic",
+          "comment": "1/2 -Green Daylight"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "Generic",
+          "comment": "1/4 -Green Daylight"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "Generic",
+          "comment": "1/8 -Green Daylight"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "Generic",
+          "comment": "Full -Green Tungsten"
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "Generic",
+          "comment": "1/2 -Green Tungsten"
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "Generic",
+          "comment": "1/4 -Green Tungsten"
+        },
+        {
+          "dmxRange": [161, 170],
+          "type": "Generic",
+          "comment": "1/8 -Green Tungsten"
+        },
+        {
+          "dmxRange": [171, 180],
+          "type": "Generic",
+          "comment": "Full CTS Daylight"
+        },
+        {
+          "dmxRange": [181, 190],
+          "type": "Generic",
+          "comment": "1/2 CTS Daylight"
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "Generic",
+          "comment": "1/4 CTS Daylight"
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "Generic",
+          "comment": "1/8 CTS Daylight"
+        },
+        {
+          "dmxRange": [211, 220],
+          "type": "Generic",
+          "comment": "Full CTS Tungsten"
+        },
+        {
+          "dmxRange": [221, 230],
+          "type": "Generic",
+          "comment": "1/2 CTS Tungsten"
+        },
+        {
+          "dmxRange": [231, 240],
+          "type": "Generic",
+          "comment": "1/4 CTS Tungsten"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Generic",
+          "comment": "1/8 CTS Tungsten"
+        }
+      ]
+    },
+    "EFX": {
+      "name": "Effect",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "Generic",
+          "comment": "OFF"
+        },
+        {
+          "dmxRange": [11, 28],
+          "type": "Generic",
+          "comment": "Police Car 1"
+        },
+        {
+          "dmxRange": [29, 46],
+          "type": "Generic",
+          "comment": "Police Car 2"
+        },
+        {
+          "dmxRange": [47, 64],
+          "type": "Generic",
+          "comment": "Emergency 1"
+        },
+        {
+          "dmxRange": [65, 82],
+          "type": "Generic",
+          "comment": "Emergency 2"
+        },
+        {
+          "dmxRange": [83, 100],
+          "type": "Generic",
+          "comment": "Emergency 3"
+        },
+        {
+          "dmxRange": [101, 118],
+          "type": "Generic",
+          "comment": "Club Lights"
+        },
+        {
+          "dmxRange": [119, 136],
+          "type": "Generic",
+          "comment": "Paparazzi"
+        },
+        {
+          "dmxRange": [137, 154],
+          "type": "Generic",
+          "comment": "Color Chase"
+        },
+        {
+          "dmxRange": [155, 172],
+          "type": "Generic",
+          "comment": "Fire"
+        },
+        {
+          "dmxRange": [173, 190],
+          "type": "Generic",
+          "comment": "Fireworks"
+        },
+        {
+          "dmxRange": [191, 208],
+          "type": "Generic",
+          "comment": "Pulsing"
+        },
+        {
+          "dmxRange": [209, 226],
+          "type": "Generic",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [227, 255],
+          "type": "Generic",
+          "comment": "Lightning"
+        }
+      ]
+    },
+    "EFX Speed": {
+      "name": "Effect Speed",
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "HSI",
+      "shortName": "HSI",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "Saturation",
+        "Hue"
+      ]
+    },
+    {
+      "name": "RGB+CCT",
+      "shortName": "RGB+CCT",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "FX+",
+      "shortName": "FX+",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "Saturation",
+        "Hue",
+        "Sources",
+        "Corrective",
+        "EFX",
+        "EFX Speed"
+      ]
+    }
+  ]
+}
