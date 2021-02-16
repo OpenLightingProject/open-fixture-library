@@ -1,5 +1,7 @@
 {
   "defaultSeverity": "warning",
+  "reportNeedlessDisables": true,
+  "reportInvalidScopeDisables": true,
   "plugins": [
     "stylelint-scss"
   ],
