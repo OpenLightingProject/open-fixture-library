@@ -1,0 +1,149 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Kinetic led winch",
+  "shortName": "winchled",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["ValOne"],
+    "createDate": "2020-06-26",
+    "lastModifyDate": "2020-06-26"
+  },
+  "links": {
+    "video": [
+      "https://www.aliexpress.com/item/32944585771.html"
+    ]
+  },
+  "physical": {
+    "weight": 12.5,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightness": "off"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "slow"
+      }
+    },
+    "WinchHeight": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Movement  up --> down"
+      }
+    },
+    "WinchSpeed": {
+      "capability": {
+        "type": "Speed",
+        "speed": "fast"
+      }
+    },
+    "BuildInProgram": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 60],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [61, 255],
+          "type": "Generic",
+          "comment": "effects"
+        }
+      ]
+    },
+    "BuildinProgramSpeed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Functions": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 64],
+          "type": "Maintenance",
+          "comment": "No Function"
+        },
+        {
+          "dmxRange": [65, 128],
+          "type": "Generic",
+          "comment": "Auto"
+        },
+        {
+          "dmxRange": [129, 192],
+          "type": "Generic",
+          "comment": "SoundControll"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "Generic",
+          "comment": "reset fixture"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6h",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Strobe Speed",
+        "WinchHeight"
+      ]
+    },
+    {
+      "name": "10ch",
+      "shortName": "10ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Strobe Speed",
+        "WinchHeight",
+        "WinchSpeed",
+        "BuildInProgram",
+        "BuildinProgramSpeed",
+        "Functions"
+      ]
+    }
+  ]
+}
