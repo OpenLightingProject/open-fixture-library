@@ -23,7 +23,14 @@
     "dimensions": [290, 416, 187],
     "weight": 9,
     "power": 165,
-    "DMXconnector": "5-pin"
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "75W LED",
+      "lumens": 1800
+    },
+    "lens": {
+      "degreesMinMax": [14, 16]
+    }
   },
   "availableChannels": {
     "Dimmer": {
