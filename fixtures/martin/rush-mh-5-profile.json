@@ -1039,16 +1039,70 @@
       ]
     },
     "Prism": {
-      "capability": {
-        "type": "Prism"
-      }
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Prism Indexing / Rotation": "Prism Indexing"
+          }
+        },
+        {
+          "dmxRange": [11, 138],
+          "type": "Prism",
+          "comment": "3-facet, indexing",
+          "switchChannels": {
+            "Prism Indexing / Rotation": "Prism Indexing"
+          }
+        },
+        {
+          "dmxRange": [139, 255],
+          "type": "Prism",
+          "comment": "3-facet, rotating",
+          "switchChannels": {
+            "Prism Indexing / Rotation": "Prism Rotation"
+          }
+        }
+      ]
     },
-    "Prism Rotation": {
+    "Prism Indexing": {
       "capability": {
         "type": "PrismRotation",
         "angleStart": "0deg",
         "angleEnd": "180deg"
       }
+    },
+    "Prism Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "PrismRotation",
+          "angle": "0deg"
+        },
+        {
+          "dmxRange": [3, 126],
+          "type": "PrismRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [127, 129],
+          "type": "PrismRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [130, 253],
+          "type": "PrismRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "PrismRotation",
+          "speed": "stop"
+        }
+      ]
     },
     "Focus": {
       "capability": {
@@ -1093,7 +1147,7 @@
         "Gobo Indexing / Rotation",
         "Static Gobo Wheel",
         "Prism",
-        "Prism Rotation",
+        "Prism Indexing / Rotation",
         "Focus",
         "Pan",
         "Pan fine",
