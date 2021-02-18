@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "iRock 5C",
-  "categories": ["Scanner"],
+  "categories": ["Effect", "Color Changer"],
   "meta": {
     "authors": ["Andres Robles", "Duende AV"],
     "createDate": "2020-04-17",
@@ -12,11 +12,19 @@
       "comment": "created by Q Light Controller Plus (version 4.11.1 GIT)"
     }
   },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/1117275/Jb-Systems-Irock-5c.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=1kusKMALR0w"
+    ]
+  },
   "physical": {
     "dimensions": [340, 360, 250],
     "weight": 9.2,
     "power": 300,
-    "DMXconnector": "5-pin",
+    "DMXconnector": "3-pin",
     "bulb": {
       "type": "HSD 250W",
       "colorTemperature": 7200,
@@ -25,6 +33,96 @@
     "lens": {
       "name": "PC",
       "degreesMinMax": [17, 17]
+    }
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/10-circles"
+        },
+        {
+          "type": "Gobo",
+          "name": "Shattered"
+        },
+        {
+          "type": "Frost"
+        },
+        {
+          "type": "Gobo",
+          "name": "3D Donut"
+        },
+        {
+          "type": "Gobo",
+          "resource": "gobos/glass-raindrops-on-window"
+        },
+        {
+          "type": "Color",
+          "colorTemperature": "3200K",
+          "colors": ["#ffb84e"]
+        },
+        {
+          "type": "Color",
+          "colorTemperature": "5600K",
+          "colors": ["#ffd6a1"]
+        }
+      ]
+    },
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "Dark Green",
+          "colors": ["#005500"]
+        },
+        {
+          "type": "Color",
+          "name": "Dark Magenta",
+          "colors": ["#55007f"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Blue",
+          "colors": ["#00aaff"]
+        },
+        {
+          "type": "Color",
+          "name": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "type": "Color",
+          "name": "Orange",
+          "colors": ["#ffaa00"]
+        },
+        {
+          "type": "Color",
+          "name": "Dark Blue",
+          "colors": ["#00007f"]
+        },
+        {
+          "type": "Color",
+          "name": "Purple",
+          "colors": ["#aa55ff"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Green",
+          "colors": ["#aaff7f"]
+        },
+        {
+          "type": "Color",
+          "name": "Light Magenta",
+          "colors": ["#ffaaff"]
+        }
+      ]
     }
   },
   "availableChannels": {
@@ -45,19 +143,15 @@
           "dmxRange": [16, 131],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "comment": "slow to fast shutter",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "helpWanted": "Are the automatically added speed values correct?"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [132, 247],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "comment": "slow to fast shaking",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "helpWanted": "Are the automatically added speed values correct?"
+          "type": "WheelShake",
+          "wheel": "Gobo Wheel",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
         },
         {
           "dmxRange": [248, 255],
@@ -66,206 +160,193 @@
         }
       ]
     },
-    "Gobo": {
+    "Gobo Wheel": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 15],
           "type": "WheelSlot",
-          "slotNumber": 1,
-          "comment": "Open"
+          "slotNumber": 1
         },
         {
           "dmxRange": [16, 31],
           "type": "WheelSlot",
-          "slotNumber": 2,
-          "comment": "Gobo 1"
+          "slotNumber": 2
         },
         {
           "dmxRange": [32, 47],
           "type": "WheelSlot",
-          "slotNumber": 3,
-          "comment": "Gobo 2"
+          "slotNumber": 3
         },
         {
           "dmxRange": [48, 63],
           "type": "WheelSlot",
-          "slotNumber": 4,
-          "comment": "Frost"
+          "slotNumber": 4
         },
         {
           "dmxRange": [64, 79],
           "type": "WheelSlot",
-          "slotNumber": 5,
-          "comment": "Gobo 4"
+          "slotNumber": 5
         },
         {
           "dmxRange": [80, 95],
           "type": "WheelSlot",
-          "slotNumber": 6,
-          "comment": "Gobo 5"
+          "slotNumber": 6
         },
         {
           "dmxRange": [96, 111],
           "type": "WheelSlot",
-          "slotNumber": 7,
-          "comment": "3200k"
+          "slotNumber": 7
         },
         {
           "dmxRange": [112, 127],
           "type": "WheelSlot",
-          "slotNumber": 8,
-          "comment": "5600k"
+          "slotNumber": 8
         },
         {
           "dmxRange": [128, 255],
-          "type": "WheelSlot",
-          "slotNumber": 9,
-          "comment": "fastest speed gobo change"
+          "type": "WheelRotation",
+          "speedStart":"slow CW",
+          "speedEnd": "fast CW"
         }
       ]
     },
-    "Color": {
+    "Color Wheel": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "ColorPreset",
-          "comment": "White",
-          "colors": ["#ffffff"]
+          "type": "WheelSlot",
+          "slotNumber": 1
         },
         {
           "dmxRange": [8, 15],
-          "type": "ColorPreset",
-          "comment": "Dark green",
-          "colors": ["#005500"]
+          "type": "WheelSlot",
+          "slotNumber": 2
         },
         {
           "dmxRange": [16, 22],
-          "type": "ColorPreset",
-          "comment": "Dark green/Magenta",
-          "colors": ["#005500", "#ff00ff"]
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 3
         },
         {
           "dmxRange": [23, 30],
-          "type": "ColorPreset",
-          "comment": "Dark magenta",
-          "colors": ["#55007f"]
+          "type": "WheelSlot",
+          "slotNumber": 3
         },
         {
           "dmxRange": [31, 37],
-          "type": "ColorPreset",
-          "comment": "Dark magenta/Blue",
-          "colors": ["#55007f", "#0000ff"]
+          "type": "WheelSlot",
+          "slotNumberStart": 3,
+          "slotNumberEnd": 4
         },
         {
           "dmxRange": [38, 45],
-          "type": "ColorPreset",
-          "comment": "Light blue",
-          "colors": ["#00aaff"]
+          "type": "WheelSlot",
+          "slotNumber": 4
         },
         {
           "dmxRange": [46, 52],
-          "type": "ColorPreset",
-          "comment": "Light blue/yellow",
-          "colors": ["#00aaff", "#ffff00"]
+          "type": "WheelSlot",
+          "slotNumberStart": 4,
+          "slotNumberEnd": 5
         },
         {
           "dmxRange": [53, 60],
-          "type": "ColorPreset",
-          "comment": "Yellow",
-          "colors": ["#ffff00"]
+          "type": "WheelSlot",
+          "slotNumber": 5
         },
         {
           "dmxRange": [61, 67],
-          "type": "ColorPreset",
-          "comment": "Orange/Yellow",
-          "colors": ["#ffaa00", "#ffff00"]
+          "type": "WheelSlot",
+          "slotNumberStart": 5,
+          "slotNumberEnd": 6
         },
         {
           "dmxRange": [68, 75],
-          "type": "ColorPreset",
-          "comment": "Orange",
-          "colors": ["#ffaa00"]
+          "type": "WheelSlot",
+          "slotNumber": 6
         },
         {
           "dmxRange": [76, 82],
-          "type": "ColorPreset",
-          "comment": "Dark blue/Orange",
-          "colors": ["#00007f", "#ffaa00"]
+          "type": "WheelSlot",
+          "slotNumberStart": 6,
+          "slotNumberEnd": 7
         },
         {
           "dmxRange": [83, 90],
-          "type": "ColorPreset",
-          "comment": "Dark blue",
-          "colors": ["#00007f"]
+          "type": "WheelSlot",
+          "slotNumber": 7
         },
         {
           "dmxRange": [91, 97],
-          "type": "ColorPreset",
-          "comment": "Dark blue/Purple",
-          "colors": ["#00007f", "#aa55ff"]
+          "type": "WheelSlot",
+          "slotNumberStart": 7,
+          "slotNumberEnd": 8
         },
         {
           "dmxRange": [98, 105],
-          "type": "ColorPreset",
-          "comment": "Purple",
-          "colors": ["#aa55ff"]
+          "type": "WheelSlot",
+          "slotNumber": 8
         },
         {
           "dmxRange": [106, 112],
-          "type": "ColorPreset",
-          "comment": "Light green/Purple",
-          "colors": ["#aaff7f", "#aa55ff"]
+          "type": "WheelSlot",
+          "slotNumberStart": 8,
+          "slotNumberEnd": 9
         },
         {
           "dmxRange": [113, 120],
-          "type": "ColorPreset",
-          "comment": "Light green",
-          "colors": ["#aaff7f"]
+          "type": "WheelSlot",
+          "slotNumber": 9
         },
         {
           "dmxRange": [121, 127],
-          "type": "ColorPreset",
-          "comment": "Light magenta",
-          "colors": ["#ffaaff"]
+          "type": "WheelSlot",
+          "slotNumber": 10
         },
         {
           "dmxRange": [128, 255],
-          "type": "ColorPreset",
-          "comment": "Slowest speed rainbow effect"
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd":"fast CW"
         }
       ]
     },
-    "Rotating gobo": {
+    "Gobo Rotation": {
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 9],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel",
           "speed": "stop"
         },
         {
           "dmxRange": [10, 120],
-          "type": "WheelSlot",
-          "slotNumber": 2,
-          "comment": "fastest to slowest counter clockwise"
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel",
+          "speedStart":"fast CCW",
+          "speedEnd":"slow CCW"
         },
         {
           "dmxRange": [121, 134],
-          "type": "WheelSlot",
-          "slotNumber": 3,
-          "comment": "stoped"
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel",
+          "speed": "stop"
         },
         {
           "dmxRange": [135, 245],
-          "type": "WheelSlot",
-          "slotNumber": 4,
-          "comment": "slowest to fastest speed clockwise"
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel",
+          "speedStart":"slow CW",
+          "speedEnd": "fast CW"
         },
         {
           "dmxRange": [246, 255],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel",
           "speed": "stop"
         }
       ]
@@ -274,7 +355,8 @@
       "defaultValue": 0,
       "capability": {
         "type": "Intensity",
-        "comment": "Dimmer (Bright to dark)"
+        "brightnessStart": "bright",
+        "brightnessEnd": "off"
       }
     }
   },
@@ -284,9 +366,9 @@
       "shortName": "5ch",
       "channels": [
         "Shutter/Shaking",
-        "Gobo",
-        "Color",
-        "Rotating gobo",
+        "Gobo Wheel",
+        "Color Wheel",
+        "Gobo Rotation",
         "Dimmer"
       ]
     }
