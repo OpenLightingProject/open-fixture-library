@@ -290,29 +290,15 @@
       }
     },
     "Pan": {
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
         "angleEnd": "540deg"
       }
     },
-    "Pan 2": {
-      "name": "Pan",
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "180deg"
-      }
-    },
     "Tilt": {
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "270deg"
-      }
-    },
-    "Tilt 2": {
-      "name": "Tilt",
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -342,9 +328,9 @@
         "Prism Rotation",
         "Focus",
         "Pan",
-        "Pan 2",
+        "Pan fine",
         "Tilt",
-        "Tilt 2",
+        "Tilt fine",
         "Programms"
       ]
     }
