@@ -135,6 +135,7 @@ const enabledRuleParameters = {
   'vue/component-tags-order': [{
     order: [`template`, `style`, `script`],
   }],
+  'vue/html-button-has-type': [],
   'vue/html-closing-bracket-newline': [{
     singleline: `never`,
     multiline: `never`,
