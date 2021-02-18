@@ -60,9 +60,9 @@ module.exports.exportFixtures = async function exportAGLight(fixtures, options) 
  * @param {Fixture} fixture The fixture whose template channels should be resolved.
  */
 function transformMatrixChannels(fixtureJson, fixture) {
-  fixture.modes.forEach((mode, index) => {
+  for (const [index, mode] of fixture.modes.entries()) {
     fixtureJson.modes[index].channels = mode.channelKeys;
-  });
+  }
 
   const availableAndMatrixChannels = fixture.coarseChannels.filter(
     channel => !(channel instanceof NullChannel),

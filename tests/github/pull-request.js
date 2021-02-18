@@ -96,7 +96,9 @@ module.exports.fetchChangedComponents = async function fetchChangedComponents() 
   };
 
   for (const block of fileBlocks) {
-    block.data.forEach(fileData => handleFileData(fileData));
+    for (const fileData of block.data) {
+      handleFileData(fileData);
+    }
   }
 
   return changedComponents;

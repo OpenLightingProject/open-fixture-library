@@ -57,7 +57,9 @@ const SiteCrawler = require(`../lib/site-crawler.js`);
       periodOrColon = `:`;
     }
     console.log(statusString, `${failingLinks.length} of ${passingLinks.length + failingLinks.length} tested internal links failed${periodOrColon}`);
-    failingLinks.forEach(link => console.log(`- ${link}`));
+    for (const link of failingLinks) {
+      console.log(`- ${link}`);
+    }
     console.log();
 
     const testTime = Date.now() - testStartTime;

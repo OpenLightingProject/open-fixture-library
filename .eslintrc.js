@@ -14,7 +14,7 @@ const enabledRuleParameters = {
   'consistent-return': [],
   'curly': [`all`],
   'dot-location': [`property`],
-  'dot-notation': [{ allowPattern: `^(if|then)$` }],
+  'dot-notation': [],
   'eol-last': [`always`],
   'eqeqeq': [`always`, { null: `ignore` }],
   'func-call-spacing': [],
@@ -135,6 +135,7 @@ const enabledRuleParameters = {
   'vue/component-tags-order': [{
     order: [`template`, `style`, `script`],
   }],
+  'vue/html-button-has-type': [],
   'vue/html-closing-bracket-newline': [{
     singleline: `never`,
     multiline: `never`,
@@ -158,7 +159,8 @@ const enabledRuleParameters = {
   'vue/v-slot-style': [`shorthand`],
   'vue/valid-next-tick': [],
 
-  // already included in `vue/essential` preset, but needed here because we reduce its severity to `warn`
+  // already included in presets, but needed here because we reduce severity to `warn`
+  'unicorn/no-array-for-each': [],
   'vue/no-mutating-props': [],
 };
 
@@ -199,8 +201,8 @@ const vueCoreExtensionRules = [
 
 const warnRules = new Set([
   `complexity`,
-  `no-loop-func`,
   `jsdoc/require-jsdoc`,
+  `unicorn/no-array-for-each`,
   `vue/no-mutating-props`,
 ]);
 
@@ -257,6 +259,7 @@ module.exports = {
     `plugin:array-func/all`,
     `plugin:jsdoc/recommended`,
     `plugin:json/recommended`,
+    `plugin:markdown/recommended`,
     `plugin:nuxt/recommended`,
     `plugin:promise/recommended`,
     `plugin:security/recommended`,
@@ -299,10 +302,8 @@ module.exports = {
   },
   overrides: [
     {
-      files: [`**/*.md`],
+      files: [`**/*.md/*.js`],
       rules: {
-        'no-undef': `off`,
-        'no-unused-vars': `off`,
         'require-jsdoc': `off`,
       },
     },

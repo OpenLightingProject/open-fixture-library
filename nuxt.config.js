@@ -37,35 +37,32 @@ export default {
     websiteUrl,
   },
   build: {
+    loaders: {
+      // condense whitespace in Vue templates
+      vue: {
+        compilerOptions: {
+          whitespace: `condense`,
+        },
+      },
+      // automatically `@use` global SCSS definitions
+      scss: {
+        additionalData: `@use "~/assets/styles/global.scss" as *;`,
+      },
+    },
     extend(config, context) {
       // exclude /assets/icons from url-loader
-      const urlLoader = config.module.rules.find(rule => `use` in rule && rule.use[0].loader === `url-loader`);
-      urlLoader.exclude = path.resolve(__dirname, `ui/assets/icons`);
+      const iconsPath = path.resolve(__dirname, `ui/assets/icons`);
+      const urlLoader = config.module.rules.find(rule => rule.test.toString().includes(`|svg|`));
+      urlLoader.exclude = iconsPath;
 
       // include /assets/icons for svg-inline-loader
       config.module.rules.push({
         test: /\.svg$/,
-        include: [
-          path.resolve(__dirname, `ui/assets/icons`),
-        ],
+        include: [iconsPath],
         loader: `svg-inline-loader`,
         options: {
           removeSVGTagAttrs: false,
         },
-      });
-
-      // condense whitespace in Vue templates
-      const vueLoader = config.module.rules.find(rule => rule.loader === `vue-loader`);
-      vueLoader.options.compilerOptions = {
-        preserveWhitespace: false,
-        whitespace: `condense`,
-      };
-
-      // automatically `@use` global SCSS definitions
-      const scssRule = config.module.rules.find(rule => rule.test.toString() === `/\\.scss$/i`);
-      scssRule.oneOf.forEach(({ use }) => {
-        const sassLoader = use.find(({ loader }) => loader === `sass-loader`);
-        sassLoader.options.additionalData = `@use "~/assets/styles/global.scss" as *;`;
       });
     },
   },

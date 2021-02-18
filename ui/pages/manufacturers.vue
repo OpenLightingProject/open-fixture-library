@@ -50,7 +50,7 @@ export default {
 
       const letters = {};
 
-      Object.keys(manufacturers).forEach(manufacturerKey => {
+      for (const manufacturerKey of Object.keys(manufacturers)) {
         let letter = manufacturerKey.charAt(0).toUpperCase();
 
         if (!/^[A-Z]$/.test(letter)) {
@@ -70,7 +70,7 @@ export default {
           fixtureCount: manufacturers[manufacturerKey].fixtureCount,
           color: manufacturers[manufacturerKey].color,
         });
-      });
+      }
 
       return {
         letters,

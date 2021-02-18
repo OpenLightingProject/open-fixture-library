@@ -78,7 +78,9 @@ module.exports.importFixtures = async function importQlcPlus(buffer, filename, a
   fixture.availableChannels = {};
   fixture.templateChannels = {};
 
-  qlcPlusFixture.Channel.forEach(channel => addOflChannel(fixture, channel, qlcPlusFixture));
+  for (const channel of qlcPlusFixture.Channel) {
+    addOflChannel(fixture, channel, qlcPlusFixture);
+  }
 
   mergeFineChannels(fixture, qlcPlusFixture, warnings);
 

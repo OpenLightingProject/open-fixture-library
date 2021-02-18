@@ -86,7 +86,7 @@ module.exports.exportFixtures = async function exportQlcPlus(fixtures, options) 
   }));
 
   // add gobo images not included in QLC+ to exported files
-  Object.entries(customGobos).forEach(([qlcplusResourceName, oflResource]) => {
+  for (const [qlcplusResourceName, oflResource] of Object.entries(customGobos)) {
     const fileContent = (oflResource.imageEncoding === `base64`)
       ? Buffer.from(oflResource.imageData, `base64`)
       : oflResource.imageData;
@@ -96,7 +96,7 @@ module.exports.exportFixtures = async function exportQlcPlus(fixtures, options) 
       content: fileContent,
       mimeType: oflResource.imageMimeType,
     });
-  });
+  }
 
   return outFiles;
 };
@@ -333,18 +333,18 @@ function addMode(xml, mode, createPhysical) {
     addPhysical(xmlMode, mode.physical || new Physical({}), mode.fixture, mode);
   }
 
-  mode.channels.forEach((channel, index) => {
-    if (channel instanceof SwitchingChannel) {
-      channel = channel.defaultChannel;
-    }
+  for (const [index, channel] of mode.channels.entries()) {
+    const uniqueName = channel instanceof SwitchingChannel
+      ? channel.defaultChannel.uniqueName
+      : channel.uniqueName;
 
     xmlMode.element({
       Channel: {
         '@Number': index,
-        '#text': channel.uniqueName,
+        '#text': uniqueName,
       },
     });
-  });
+  }
 
   if (mode.fixture.matrix !== null) {
     addHeads(xmlMode, mode);
@@ -453,12 +453,7 @@ function addPhysical(xmlParentNode, physical, fixture, mode) {
  * @returns {Number} The maximum pan/tilt range in the given channels, i.e. highest angle - lowest angle. If only continous pan/tilt is used, the return value is 9999. Defaults to 0.
  */
 function getPanTiltMax(panOrTilt, channels) {
-  const capabilities = [];
-  channels.forEach(channel => {
-    if (channel.capabilities) {
-      capabilities.push(...channel.capabilities);
-    }
-  });
+  const capabilities = channels.flatMap(channel => channel.capabilities || []);
 
   const panTiltCapabilities = capabilities.filter(capability => capability.type === panOrTilt && capability.angle[0].unit === `deg`);
   const minAngle = Math.min(...panTiltCapabilities.map(capability => Math.min(capability.angle[0].number, capability.angle[1].number)));

@@ -276,7 +276,7 @@ async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValu
     function checkPixelGroups() {
       const pixelGroupKeys = Object.keys(matrix.jsonObject.pixelGroups);
 
-      pixelGroupKeys.forEach(pixelGroupKey => {
+      for (const pixelGroupKey of pixelGroupKeys) {
         const usedMatrixChannels = new Set();
 
         if (matrix.pixelKeys.includes(pixelGroupKey)) {
@@ -297,7 +297,7 @@ async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValu
           }
           usedMatrixChannels.add(pixelKey);
         }
-      });
+      }
     }
   }
 
@@ -415,7 +415,7 @@ async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValu
     }
 
     // Fine channels
-    channel.fineChannelAliases.forEach(alias => {
+    for (const alias of channel.fineChannelAliases) {
       checkTemplateVariables(alias, []);
       checkUniqueness(
         definedChannelKeys,
@@ -423,10 +423,10 @@ async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValu
         result,
         `Fine channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`,
       );
-    });
+    }
 
     // Switching channels
-    channel.switchingChannelAliases.forEach(alias => {
+    for (const alias of channel.switchingChannelAliases) {
       checkTemplateVariables(alias, []);
       checkUniqueness(
         definedChannelKeys,
@@ -434,7 +434,7 @@ async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValu
         result,
         `Switching channel alias '${alias}' in channel '${channel.key}' is already defined (maybe in another letter case).`,
       );
-    });
+    }
 
     const maxDmxValue = Math.pow(256, channel.dmxValueResolution) - 1;
 
@@ -959,7 +959,7 @@ async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValu
    */
   function checkUnusedWheelSlots() {
     const slotsOfUsedWheels = [];
-    Array.from(usedWheels).forEach(wheelName => {
+    for (const wheelName of usedWheels) {
       const wheel = fixture.getWheelByName(wheelName);
 
       if (wheel.type !== `AnimationGobo`) {
@@ -967,7 +967,7 @@ async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValu
           (slot, slotIndex) => `${wheelName} (slot ${slotIndex + 1})`,
         )));
       }
-    });
+    }
 
     const unusedWheelSlots = slotsOfUsedWheels.filter(
       slot => !usedWheelSlots.has(slot),
