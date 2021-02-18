@@ -1127,10 +1127,168 @@
         "angleEnd": "270deg"
       }
     },
-    "Programms": {
-      "capability": {
-        "type": "NoFunction"
-      }
+    "Functions": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "Maintenance",
+          "comment": "Reset all"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Maintenance",
+          "comment": "Reset color"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Maintenance",
+          "comment": "Reset gobo"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Maintenance",
+          "comment": "Reset focus"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "Maintenance",
+          "comment": "Reset prism"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "Maintenance",
+          "comment": "Reset pan/tilt"
+        },
+        {
+          "dmxRange": [40, 54],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Maintenance",
+          "comment": "Enable calibration"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Maintenance",
+          "comment": "Pan/tilt speed = Normal"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Maintenance",
+          "comment": "Pan/tilt speed = Fast (default setting)"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "Maintenance",
+          "comment": "Pan/tilt speed = Slow"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "Maintenance",
+          "comment": "Parameter shortcuts = On (default setting)"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "Maintenance",
+          "comment": "Parameter shortcuts = Off"
+        },
+        {
+          "dmxRange": [105, 144],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "Maintenance",
+          "comment": "Blackout during pan/tilt movement = On"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "Maintenance",
+          "comment": "Blackout during pan/tilt movement = Off (default setting)"
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "Maintenance",
+          "comment": "Illuminate control panel display"
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "Maintenance",
+          "comment": "Turn off control panel display"
+        },
+        {
+          "dmxRange": [165, 194],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [195, 199],
+          "type": "Maintenance",
+          "comment": "Store color wheel 1 calibration"
+        },
+        {
+          "dmxRange": [200, 204],
+          "type": "Maintenance",
+          "comment": "Store color wheel 2 calibration"
+        },
+        {
+          "dmxRange": [205, 209],
+          "type": "Maintenance",
+          "comment": "Store gobo wheel 1 wheel calibration"
+        },
+        {
+          "dmxRange": [210, 214],
+          "type": "Maintenance",
+          "comment": "Store gobo wheel 1 gobo calibration"
+        },
+        {
+          "dmxRange": [215, 219],
+          "type": "Maintenance",
+          "comment": "Store gobo wheel 2 calibration"
+        },
+        {
+          "dmxRange": [220, 224],
+          "type": "Maintenance",
+          "comment": "Store focus calibration"
+        },
+        {
+          "dmxRange": [225, 229],
+          "type": "Maintenance",
+          "comment": "Store prism calibration"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "Maintenance",
+          "comment": "Store prism rotation calibration"
+        },
+        {
+          "dmxRange": [235, 239],
+          "type": "Maintenance",
+          "comment": "Store pan calibration"
+        },
+        {
+          "dmxRange": [240, 244],
+          "type": "Maintenance",
+          "comment": "Store tilt calibration"
+        },
+        {
+          "dmxRange": [245, 249],
+          "type": "Maintenance",
+          "comment": "Reset all calibration settings to factory defaults"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
     }
   },
   "modes": [
@@ -1153,7 +1311,7 @@
         "Pan fine",
         "Tilt",
         "Tilt fine",
-        "Programms"
+        "Functions"
       ]
     }
   ]
