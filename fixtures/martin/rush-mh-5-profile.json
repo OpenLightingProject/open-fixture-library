@@ -32,6 +32,172 @@
       "degreesMinMax": [14, 16]
     }
   },
+  "wheels": {
+    "Color Wheel 1": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "colors": ["#ff0000"],
+          "name": "Red"
+        },
+        {
+          "type": "Color",
+          "colors": ["#0000aa"],
+          "name": "Deep Blue"
+        },
+        {
+          "type": "Color",
+          "colors": ["#ffbfff"],
+          "name": "Lavender"
+        },
+        {
+          "type": "Color",
+          "colors": ["#c900c9"],
+          "name": "Magenta"
+        },
+        {
+          "type": "Color",
+          "colors": ["#ffff00"],
+          "name": "Yellow"
+        },
+        {
+          "type": "Color",
+          "colors": ["#ffaa00"],
+          "name": "Orange"
+        },
+        {
+          "type": "Color",
+          "colors": ["#55ee55"],
+          "name": "Light Green"
+        },
+        {
+          "type": "Color",
+          "colors": ["#55ccff"],
+          "name": "Light Blue"
+        }
+      ]
+    },
+    "Color Wheel 2": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "colors": ["#ff4ef6"],
+          "name": "Pink"
+        },
+        {
+          "type": "Color",
+          "colors": ["#ffc548"],
+          "colorTemperature": "3200K",
+          "name": "CTO"
+        },
+        {
+          "type": "Color",
+          "colors": ["#680c68"],
+          "name": "UV Purple"
+        },
+        {
+          "type": "Color",
+          "colors": ["#fcff55"],
+          "name": "Light Yellow"
+        },
+        {
+          "type": "Color",
+          "colors": ["#038f0a"],
+          "name": "Green"
+        },
+        {
+          "type": "Color",
+          "colors": ["#0fc08b"],
+          "name": "Aquamarine"
+        },
+        {
+          "type": "Color",
+          "colors": ["#ffebaa"],
+          "colorTemperature": "5600K",
+          "name": "CTO"
+        },
+        {
+          "type": "Color",
+          "colors": ["#2f75d1"],
+          "name": "Blue"
+        }
+      ]
+    },
+    "Rotating Gobo Wheel": {
+      "direction": "CCW",
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Line"
+        },
+        {
+          "type": "Gobo",
+          "name": "Square of 8 triangles"
+        },
+        {
+          "type": "Gobo",
+          "name": "Axe blade"
+        },
+        {
+          "type": "Gobo",
+          "name": "2 rotating scythes"
+        },
+        {
+          "type": "Gobo",
+          "name": "Sunrise rays"
+        },
+        {
+          "type": "Gobo",
+          "name": "Stripes"
+        }
+      ]
+    },
+    "Static Gobo Wheel": {
+      "direction": "CCW",
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo",
+          "name": "Quartered circle outline"
+        },
+        {
+          "type": "Gobo",
+          "name": "3 nested square outlines"
+        },
+        {
+          "type": "Gobo",
+          "name": "Bubbles"
+        },
+        {
+          "type": "Gobo",
+          "name": "2 dashes"
+        },
+        {
+          "type": "Gobo",
+          "name": "Pointy star in octagon"
+        },
+        {
+          "type": "Gobo",
+          "name": "4-fold swirl"
+        },
+        {
+          "type": "Gobo",
+          "name": "Swirly stars"
+        }
+      ]
+    }
+  },
   "availableChannels": {
     "Dimmer": {
       "fineChannelAliases": ["Dimmer fine"],
