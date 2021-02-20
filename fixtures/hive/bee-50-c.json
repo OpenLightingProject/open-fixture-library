@@ -86,207 +86,246 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "Generic",
-          "comment": "OFF"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [11, 15],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#f20dcc"],
           "comment": "Violet Glow Stick"
         },
         {
           "dmxRange": [16, 21],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#f9066b"],
           "comment": "Pink Glow Stick"
         },
         {
           "dmxRange": [22, 27],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#daec13"],
           "comment": "Yellow Glow Stick"
         },
         {
           "dmxRange": [28, 34],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#ff0000"],
           "comment": "Red Glow Stick"
         },
         {
           "dmxRange": [35, 41],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#00fff7"],
           "comment": "Green Glow Stick"
         },
         {
           "dmxRange": [42, 46],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#0055ff"],
           "comment": "Blue Glow Stick"
         },
         {
           "dmxRange": [47, 52],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#f2330d"],
           "comment": "Red Traffic Light"
         },
         {
           "dmxRange": [53, 58],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#b9f20d"],
           "comment": "Yellow Traffic Light"
         },
         {
           "dmxRange": [59, 64],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#03fcf4"],
           "comment": "Green Traffic Light"
         },
         {
           "dmxRange": [65, 70],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#f2cc0d"],
           "comment": "Amber Caution"
         },
         {
           "dmxRange": [71, 76],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#ec1313"],
           "comment": "Road Flare"
         },
         {
           "dmxRange": [77, 82],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#0da6f2"],
           "comment": "Blowtorch"
         },
         {
           "dmxRange": [83, 88],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#04f3fb"],
           "comment": "Luminescence"
         },
         {
           "dmxRange": [89, 94],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#99666f"],
           "comment": "Computer Monitor"
         },
         {
           "dmxRange": [95, 100],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#7b738c"],
           "comment": "Mobile Phone"
         },
         {
           "dmxRange": [101, 106],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#667f99"],
           "comment": "Sun Blue Hour"
         },
         {
           "dmxRange": [107, 112],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#8c8073"],
           "comment": "Sun Overcast"
         },
         {
           "dmxRange": [113, 123],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#808080"],
           "comment": "Sun Direct"
         },
         {
           "dmxRange": [124, 130],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#8c737b"],
           "comment": "Gas Light"
         },
         {
           "dmxRange": [131, 136],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#aabf40"],
           "comment": "Candlelight"
         },
         {
           "dmxRange": [137, 142],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#919966"],
           "comment": "Antique Bulb"
         },
         {
           "dmxRange": [143, 148],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#889966"],
           "comment": "Warm Antique Bulb"
         },
         {
           "dmxRange": [149, 154],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#848c73"],
           "comment": "Christmas Lights"
         },
         {
           "dmxRange": [155, 160],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#69705c"],
           "comment": "Night Light"
         },
         {
           "dmxRange": [161, 166],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#cc2200"],
           "comment": "Heat Lamp"
         },
         {
           "dmxRange": [167, 177],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#26d9bb"],
           "comment": "Grow Light"
         },
         {
           "dmxRange": [178, 184],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#86797b"],
           "comment": "Tungsten Bulb"
         },
         {
           "dmxRange": [185, 190],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#808080"],
           "comment": "Incandescent"
         },
         {
           "dmxRange": [191, 196],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#867d79"],
           "comment": "Halogen"
         },
         {
           "dmxRange": [197, 202],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#666f99"],
           "comment": "HMI"
         },
         {
           "dmxRange": [203, 208],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#dbf20d"],
           "comment": "High Pressure Sodium Vapor"
         },
         {
           "dmxRange": [209, 214],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#e5e619"],
           "comment": "Low Pressure Sodium Vapor"
         },
         {
           "dmxRange": [215, 220],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#59a6a6"],
           "comment": "Mercury Vapor"
         },
         {
           "dmxRange": [221, 225],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#59a699"],
           "comment": "Metal Halide"
         },
         {
           "dmxRange": [226, 230],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#996666"],
           "comment": "Ceramic"
         },
         {
           "dmxRange": [231, 235],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#84738c"],
           "comment": "Carbon Arc"
         },
         {
           "dmxRange": [236, 240],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#84738c"],
           "comment": "Xenon"
         },
         {
           "dmxRange": [241, 245],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#5500ff"],
           "comment": "Blacklight"
         },
         {
           "dmxRange": [246, 250],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#609f67"],
           "comment": "Cool White Fluorescent"
         },
         {
           "dmxRange": [251, 255],
-          "type": "Generic",
+          "type": "ColorPreset",
+          "colors": ["#609f67"],
           "comment": "Warm White Fluorescent"
         }
       ]
@@ -297,8 +336,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "Generic",
-          "comment": "OFF"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [11, 20],
@@ -428,73 +466,72 @@
       "capabilities": [
         {
           "dmxRange": [0, 10],
-          "type": "Generic",
-          "comment": "OFF"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [11, 28],
-          "type": "Generic",
-          "comment": "Police Car 1"
+          "type": "Effect",
+          "effectName": "Police Car 1"
         },
         {
           "dmxRange": [29, 46],
-          "type": "Generic",
-          "comment": "Police Car 2"
+          "type": "Effect",
+          "effectName": "Police Car 2"
         },
         {
           "dmxRange": [47, 64],
-          "type": "Generic",
-          "comment": "Emergency 1"
+          "type": "Effect",
+          "effectName": "Emergency 1"
         },
         {
           "dmxRange": [65, 82],
-          "type": "Generic",
-          "comment": "Emergency 2"
+          "type": "Effect",
+          "effectName": "Emergency 2"
         },
         {
           "dmxRange": [83, 100],
-          "type": "Generic",
-          "comment": "Emergency 3"
+          "type": "Effect",
+          "effectName": "Emergency 3"
         },
         {
           "dmxRange": [101, 118],
-          "type": "Generic",
-          "comment": "Club Lights"
+          "type": "Effect",
+          "effectName": "Club Lights"
         },
         {
           "dmxRange": [119, 136],
-          "type": "Generic",
-          "comment": "Paparazzi"
+          "type": "Effect",
+          "effectName": "Paparazzi"
         },
         {
           "dmxRange": [137, 154],
-          "type": "Generic",
-          "comment": "Color Chase"
+          "type": "Effect",
+          "effectName": "Color Chase"
         },
         {
           "dmxRange": [155, 172],
-          "type": "Generic",
-          "comment": "Fire"
+          "type": "Effect",
+          "effectName": "Fire"
         },
         {
           "dmxRange": [173, 190],
-          "type": "Generic",
-          "comment": "Fireworks"
+          "type": "Effect",
+          "effectName": "Fireworks"
         },
         {
           "dmxRange": [191, 208],
-          "type": "Generic",
-          "comment": "Pulsing"
+          "type": "Effect",
+          "effectName": "Pulsing"
         },
         {
           "dmxRange": [209, 226],
-          "type": "Generic",
-          "comment": "TV"
+          "type": "Effect",
+          "effectName": "TV"
         },
         {
           "dmxRange": [227, 255],
-          "type": "Generic",
-          "comment": "Lightning"
+          "type": "Effect",
+          "effectName": "Lightning"
         }
       ]
     },
@@ -502,8 +539,9 @@
       "name": "Effect Speed",
       "defaultValue": 0,
       "capability": {
-        "type": "Generic",
-        "comment": "0…100%"
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
       }
     }
   },
