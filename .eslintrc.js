@@ -135,6 +135,7 @@ const enabledRuleParameters = {
   'vue/component-tags-order': [{
     order: [`template`, `style`, `script`],
   }],
+  'vue/html-button-has-type': [],
   'vue/html-closing-bracket-newline': [{
     singleline: `never`,
     multiline: `never`,
@@ -258,6 +259,7 @@ module.exports = {
     `plugin:array-func/all`,
     `plugin:jsdoc/recommended`,
     `plugin:json/recommended`,
+    `plugin:markdown/recommended`,
     `plugin:nuxt/recommended`,
     `plugin:promise/recommended`,
     `plugin:security/recommended`,
@@ -300,10 +302,8 @@ module.exports = {
   },
   overrides: [
     {
-      files: [`**/*.md`],
+      files: [`**/*.md/*.js`],
       rules: {
-        'no-undef': `off`,
-        'no-unused-vars': `off`,
         'require-jsdoc': `off`,
       },
     },
