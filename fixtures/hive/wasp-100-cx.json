@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Wasp 100-CX",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Dyami Caliri"],
+    "createDate": "2021-02-20",
+    "lastModifyDate": "2021-02-20"
+  },
+  "links": {
+    "manual": [
+      "https://drive.google.com/file/d/1pJK6BaAhvOGTwMP1VhfO8GH25YicCDwS/view"
+    ],
+    "productPage": [
+      "https://hivelighting.com/wasp-100-cx/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=5JuWHXsTSXI&t=22s"
+    ]
+  },
+  "physical": {
+    "dimensions": [100, 100, 199],
+    "weight": 0.9,
+    "power": 75,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [13, 180]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "highlightValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "1650K",
+        "colorTemperatureEnd": "8025K"
+      }
+    },
+    "Hue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…360°"
+      }
+    },
+    "Saturation": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "0…100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "HSI",
+      "shortName": "HSI",
+      "channels": [
+        "Intensity",
+        "CCT",
+        "Saturation",
+        "Hue"
+      ]
+    }
+  ]
+}
