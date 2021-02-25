@@ -101,6 +101,9 @@ const excludedUrls = [
 async function fetchExternalUrls(externalUrls) {
   const urlResults = [];
 
+  // shuffle URLs so all requests to one domain are spread out in time
+  externalUrls.sort(() => Math.random() - 0.5);
+
   const BLOCK_SIZE = 25;
   const urlBlocks = Array.from(
     { length: Math.ceil(externalUrls.length / BLOCK_SIZE) },
