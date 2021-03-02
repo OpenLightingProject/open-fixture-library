@@ -219,8 +219,13 @@ export default {
         }
       },
     },
-    // Used by vue-form's `entities-have-same-units` validation rule
-    hasSameUnit() { // eslint-disable-line vue/no-unused-properties
+
+    /**
+     * Used by vue-form's `entities-have-same-units` validation rule.
+     * @public
+     * @returns {Boolean} True if this and the associated entity have the same unit.
+     */
+    hasSameUnit() {
       if (!this.associatedEntity) {
         return true;
       }
@@ -253,8 +258,9 @@ export default {
     /**
      * Called by {@link EditorProportionalPropertySwitcher}
      * @param {String} newUnitString The unit string to set.
+     * @public
      */
-    setUnitString(newUnitString) { // eslint-disable-line vue/no-unused-properties
+    setUnitString(newUnitString) {
       if (newUnitString === `[no unit]`) {
         newUnitString = ``;
       }

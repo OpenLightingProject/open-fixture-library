@@ -185,8 +185,9 @@ export default {
 
     /**
      * Called when the channel is saved. Removes all properties from capability.typeData that are not relevant for this capability type and sets open to false.
+     * @public
      */
-    cleanCapabilityData() { // eslint-disable-line vue/no-unused-properties
+    cleanCapabilityData() {
       const component = this.$refs.capabilityTypeData;
 
       const defaultData = component.defaultData;

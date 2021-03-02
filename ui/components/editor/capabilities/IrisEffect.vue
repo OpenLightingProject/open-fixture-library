@@ -66,10 +66,17 @@ export default {
     return {
       properties: schemaProperties,
 
-      /** Used in {@link EditorCapabilityTypeData} */
-      // eslint-disable-next-line vue/no-unused-properties
+      /**
+       * Used in {@link EditorCapabilityTypeData}
+       * @public
+       */
       hint: `This capability enables a non-static iris effect, e.g. pulse. Use the Iris type instead if a static degree of opening can be chosen.`,
-      defaultData: { // eslint-disable-line vue/no-unused-properties
+
+      /**
+       * Used in {@link EditorCapabilityTypeData}
+       * @public
+       */
+      defaultData: {
         effectName: ``,
         speed: ``,
         speedStart: null,

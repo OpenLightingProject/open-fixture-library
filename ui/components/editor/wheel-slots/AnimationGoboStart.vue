@@ -41,8 +41,11 @@ export default {
     return {
       properties: schemaProperties,
 
-      /** Used in {@link EditorCapabilityTypeData} */
-      defaultData: { // eslint-disable-line vue/no-unused-properties
+      /**
+       * Used in {@link EditorCapabilityTypeData}
+       * @public
+       */
+      defaultData: {
         name: ``,
       },
     };

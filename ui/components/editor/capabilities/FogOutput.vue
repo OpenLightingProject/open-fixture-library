@@ -55,10 +55,17 @@ export default {
     return {
       properties: schemaProperties,
 
-      /** Used in {@link EditorCapabilityTypeData} */
-      // eslint-disable-next-line vue/no-unused-properties
+      /**
+       * Used in {@link EditorCapabilityTypeData}
+       * @public
+       */
       hint: `Doesn't activate fog, only controls the intensity of the fog output.`,
-      defaultData: { // eslint-disable-line vue/no-unused-properties
+
+      /**
+       * Used in {@link EditorCapabilityTypeData}
+       * @public
+       */
+      defaultData: {
         fogOutput: null,
         fogOutputStart: `weak`,
         fogOutputEnd: `strong`,

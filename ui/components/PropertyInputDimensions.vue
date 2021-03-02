@@ -129,8 +129,9 @@ export default {
         this.$emit(`blur`);
       }
     },
-    // Called from parent component
-    focus() { // eslint-disable-line vue/no-unused-properties
+
+    /** @public */
+    focus() {
       this.$refs.xInput.focus();
     },
   },
@@ -150,4 +151,3 @@ function getDimensionsArray(x, y, z) {
   return [x, y, z];
 }
 </script>
-

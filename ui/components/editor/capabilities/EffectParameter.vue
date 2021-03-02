@@ -55,10 +55,17 @@ export default {
     return {
       properties: schemaProperties,
 
-      /** Used in {@link EditorCapabilityTypeData} */
-      // eslint-disable-next-line vue/no-unused-properties
+      /**
+       * Used in {@link EditorCapabilityTypeData}
+       * @public
+       */
       hint: `Doesn't activate an effect, only controls a generic parameter of running effects.`,
-      defaultData: { // eslint-disable-line vue/no-unused-properties
+
+      /**
+       * Used in {@link EditorCapabilityTypeData}
+       * @public
+       */
+      defaultData: {
         parameter: null,
         parameterStart: `low`,
         parameterEnd: `high`,

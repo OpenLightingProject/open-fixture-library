@@ -93,11 +93,10 @@ export default {
     },
   },
   methods: {
-    // Called from parent
-    focus() { // eslint-disable-line vue/no-unused-properties
+    /** @public */
+    focus() {
       this.$refs.linkTypeSelect.focus();
     },
   },
 };
 </script>
-

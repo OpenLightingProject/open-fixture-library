@@ -152,6 +152,7 @@ const enabledRuleParameters = {
   'vue/no-empty-component-block': [],
   'vue/no-unused-properties': [{
     groups: [`props`, `data`, `computed`, `methods`, `setup`],
+    ignorePublicMembers: true,
   }],
   'vue/require-direct-export': [],
   'vue/v-for-delimiter-style': [`of`],
