@@ -18,7 +18,7 @@ export default {
   data() {
     return {
       /**
-       * Used in {@link EditorCapabilityTypeData}
+       * Used in {@link EditorWheelSlot}
        * @public
        */
       defaultData: {},

@@ -76,7 +76,7 @@ export default {
       properties: schemaProperties,
 
       /**
-       * Used in {@link EditorCapabilityTypeData}
+       * Used in {@link EditorWheelSlot}
        * @public
        */
       defaultData: {
