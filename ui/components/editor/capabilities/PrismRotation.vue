@@ -75,10 +75,17 @@ export default {
     return {
       properties: schemaProperties,
 
-      /** Used in {@link EditorCapabilityTypeData} */
-      // eslint-disable-next-line vue/no-unused-properties
+      /**
+       * Used in {@link EditorCapabilityTypeData}
+       * @public
+       */
       hint: `Doesn't activate the prism, only controls the prism rotation.`,
-      defaultData: { // eslint-disable-line vue/no-unused-properties
+
+      /**
+       * Used in {@link EditorCapabilityTypeData}
+       * @public
+       */
+      defaultData: {
         speedOrAngle: `speed`,
         speed: ``,
         speedStart: null,
@@ -93,9 +100,10 @@ export default {
   computed: {
     /**
      * Called from {@link EditorCapabilityTypeData}
+     * @public
      * @returns {Array.<String>} Array of all props to reset to default data when capability is saved.
      */
-    resetProperties() { // eslint-disable-line vue/no-unused-properties
+    resetProperties() {
       const resetProperty = this.capability.typeData.speedOrAngle === `speed` ? `angle` : `speed`;
 
       return [resetProperty, `${resetProperty}Start`, `${resetProperty}End`];

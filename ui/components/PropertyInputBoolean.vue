@@ -45,11 +45,10 @@ export default {
     },
   },
   methods: {
-    // Called from parent component
-    focus() { // eslint-disable-line vue/no-unused-properties
+    /** @public */
+    focus() {
       this.$refs.input.focus();
     },
   },
 };
 </script>
-

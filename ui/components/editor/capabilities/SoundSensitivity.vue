@@ -55,10 +55,17 @@ export default {
     return {
       properties: schemaProperties,
 
-      /** Used in {@link EditorCapabilityTypeData} */
-      // eslint-disable-next-line vue/no-unused-properties
+      /**
+       * Used in {@link EditorCapabilityTypeData}
+       * @public
+       */
       hint: `Doesn't activate sound controlled mode (use Effect for this), only controls the microphone sensitivity.`,
-      defaultData: { // eslint-disable-line vue/no-unused-properties
+
+      /**
+       * Used in {@link EditorCapabilityTypeData}
+       * @public
+       */
+      defaultData: {
         soundSensitivity: null,
         soundSensitivityStart: `low`,
         soundSensitivityEnd: `high`,

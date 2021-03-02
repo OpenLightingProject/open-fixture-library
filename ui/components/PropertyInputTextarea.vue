@@ -37,8 +37,11 @@ export default {
     },
   },
   computed: {
-    // Used by vue-form
-    validationData() { // eslint-disable-line vue/no-unused-properties
+    /**
+     * @public
+     * @returns {Record.<String, String | null>} Validation data for vue-form
+     */
+    validationData() {
       return {
         minlength: `minLength` in this.schemaProperty ? `${this.schemaProperty.minLength}` : null,
         maxlength: `maxLength` in this.schemaProperty ? `${this.schemaProperty.maxLength}` : null,
@@ -67,4 +70,3 @@ export default {
   },
 };
 </script>
-

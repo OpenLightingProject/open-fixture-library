@@ -95,8 +95,12 @@ export default {
     step() {
       return this.schemaProperty.type === `integer` ? 1 : `any`;
     },
-    // Used by vue-form
-    validationData() { // eslint-disable-line vue/no-unused-properties
+
+    /**
+     * @public
+     * @returns {Record.<String, String | null>} Validation data for vue-form
+     */
+    validationData() {
       return {
         min: this.min === null ? null : `${this.min}`,
         max: this.max === null ? null : `${this.max}`,
@@ -148,4 +152,3 @@ export default {
   },
 };
 </script>
-

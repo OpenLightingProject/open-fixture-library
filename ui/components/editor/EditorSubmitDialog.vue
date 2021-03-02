@@ -337,8 +337,12 @@ export default {
     },
   },
   methods: {
-    // Called from fixture editor to open the dialog
-    async validate(requestBody) { // eslint-disable-line vue/no-unused-properties
+    /**
+     * Called from fixture editor to open the dialog.
+     * @public
+     * @param {*} requestBody The data to pass to the API endpoint.
+     */
+    async validate(requestBody) {
       this.requestBody = requestBody;
 
       console.log(`validate`, clone(this.requestBody));

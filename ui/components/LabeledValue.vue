@@ -50,7 +50,7 @@ section {
 </style>
 
 <script>
-/* eslint-disable vue/no-unused-properties */ // not supported in functional components
+/* eslint-disable vue/no-unused-properties -- https://github.com/vuejs/eslint-plugin-vue/issues/1312 */
 
 export default {
   props: {

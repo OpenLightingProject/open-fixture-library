@@ -303,7 +303,9 @@ export default {
     removeNextCapability() {
       this.$delete(this.capabilities, this.capabilityIndex + 1);
     },
-    cleanCapabilityData() { // eslint-disable-line vue/no-unused-properties
+
+    /** @public */
+    cleanCapabilityData() {
       if (this.capability.dmxRange === null) {
         this.capability.dmxRange = [null, null];
       }

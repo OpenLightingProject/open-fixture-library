@@ -15,6 +15,7 @@
         :name="`links-${link.uuid}`"
         :schema-property="properties.definitions.urlString"
         type="url"
+        :hint="placeholder"
         required />
     </Validate>
 
@@ -48,6 +49,13 @@ import schemaProperties from '../../../lib/schema-properties.js';
 import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
 
 import PropertyInputText from '../PropertyInputText.vue';
+
+const placeholders = {
+  manual: `e.g. https://example.org/fixture/manual.pdf`,
+  productPage: `e.g. https://example.org/fixture`,
+  video: `e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ`,
+  other: `e.g. https://example.org/relevant-page`,
+};
 
 export default {
   components: {
@@ -91,13 +99,15 @@ export default {
         this.$emit(`set-url`, url);
       },
     },
+    placeholder() {
+      return placeholders[this.type];
+    },
   },
   methods: {
-    // Called from parent
-    focus() { // eslint-disable-line vue/no-unused-properties
+    /** @public */
+    focus() {
       this.$refs.linkTypeSelect.focus();
     },
   },
 };
 </script>
-

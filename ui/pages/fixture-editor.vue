@@ -262,10 +262,11 @@ export default {
 
     /**
      * Called from {@link EditorMode}.
+     * @public
      * @param {String} channelUuid The channel's UUID.
      * @returns {Boolean} True if the channel's name is not used in another channel, too.
      */
-    isChannelNameUnique(channelUuid) { // eslint-disable-line vue/no-unused-properties
+    isChannelNameUnique(channelUuid) {
       const channelName = this.getChannelName(channelUuid);
 
       return Object.keys(this.fixture.availableChannels).every(
