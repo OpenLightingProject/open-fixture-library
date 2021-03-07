@@ -4,7 +4,7 @@ const cors = require(`cors`);
 const OpenAPIBackend = require(`openapi-backend`).default;
 const getAjvErrorMessages = require(`../../lib/get-ajv-error-messages.js`);
 
-const routeHandlers = require('./routes.js');
+const routeHandlers = require(`./routes.js`);
 
 /**
  * @typedef {Object} ApiResponse
