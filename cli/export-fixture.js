@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 const { mkdir, writeFile } = require(`fs/promises`);
 const path = require(`path`);
 const minimist = require(`minimist`);

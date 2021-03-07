@@ -4,6 +4,8 @@ const cors = require(`cors`);
 const OpenAPIBackend = require(`openapi-backend`).default;
 const getAjvErrorMessages = require(`../../lib/get-ajv-error-messages.js`);
 
+const routeHandlers = require(`./routes.js`);
+
 /**
  * @typedef {Object} ApiResponse
  * @property {Number} [statusCode=200] The HTTP status code set for the response.
@@ -43,71 +45,61 @@ const api = new OpenAPIBackend({
       base64: base64Regex,
     },
   },
-  handlers: Object.assign({},
-    require(`./routes/get-search-results.js`),
-    require(`./routes/submit-feedback.js`),
-    require(`./routes/fixtures/from-editor.js`),
-    require(`./routes/fixtures/import.js`),
-    require(`./routes/fixtures/submit.js`),
-    require(`./routes/manufacturers/index.js`),
-    require(`./routes/manufacturers/_manufacturerKey.js`),
-    require(`./routes/plugins/index.js`),
-    require(`./routes/plugins/_pluginKey.js`),
-    {
-      validationFail(context, request, response) {
-        let error = context.validation.errors;
+  handlers: {
+    ...routeHandlers,
+    validationFail(context, request, response) {
+      let error = context.validation.errors;
 
-        if (typeof error !== `string`) {
-          error = getAjvErrorMessages(Array.isArray(error) ? error : [error], `request`).join(`,\n`);
-        }
+      if (typeof error !== `string`) {
+        error = getAjvErrorMessages(Array.isArray(error) ? error : [error], `request`).join(`,\n`);
+      }
 
-        const errorDescription = `API request for ${request.originalUrl} (${context.operation.operationId}) doesn't match schema:`;
+      const errorDescription = `API request for ${request.originalUrl} (${context.operation.operationId}) doesn't match schema:`;
 
-        console.error(chalk.bgRed(errorDescription));
-        console.error(error);
+      console.error(chalk.bgRed(errorDescription));
+      console.error(error);
 
-        return response.status(400).json({
-          error: `${errorDescription}\n${error}`,
-        });
-      },
-      notFound(context, request, response) {
-        return response.status(404).json({ error: `Not found` });
-      },
-      methodNotAllowed(context, request, response) {
-        return response.status(405).json({ error: `Method not allowed` });
-      },
-      notImplemented(context, request, response) {
-        return response.status(501).json({ error: `No handler registered for operation` });
-      },
-      postResponseHandler(context, request, response) {
-        if (!context.response || !context.operation) {
-          return null;
-        }
-
-        const { statusCode = 200, body } = /** @type {ApiResponse} */ (context.response);
-
-        // validate API responses in development mode
-        if (process.env.NODE_ENV !== `production`) {
-          const valid = api.validateResponse(body, context.operation, statusCode);
-
-          if (valid.errors) {
-            let error = valid.errors;
-
-            if (typeof error !== `string`) {
-              error = getAjvErrorMessages(Array.isArray(error) ? error : [error], `response`).join(`,\n`);
-            }
-
-            const errorDescription = `API response for ${request.originalUrl} (${context.operation.operationId}, status code ${statusCode}) doesn't match schema:`;
-
-            console.error(chalk.bgRed(errorDescription));
-            console.error(error);
-          }
-        }
-
-        return response.status(statusCode).json(body);
-      },
+      return response.status(400).json({
+        error: `${errorDescription}\n${error}`,
+      });
     },
-  ),
+    notFound(context, request, response) {
+      return response.status(404).json({ error: `Not found` });
+    },
+    methodNotAllowed(context, request, response) {
+      return response.status(405).json({ error: `Method not allowed` });
+    },
+    notImplemented(context, request, response) {
+      return response.status(501).json({ error: `No handler registered for operation` });
+    },
+    postResponseHandler(context, request, response) {
+      if (!context.response || !context.operation) {
+        return null;
+      }
+
+      const { statusCode = 200, body } = /** @type {ApiResponse} */ (context.response);
+
+      // validate API responses in development mode
+      if (process.env.NODE_ENV !== `production`) {
+        const valid = api.validateResponse(body, context.operation, statusCode);
+
+        if (valid.errors) {
+          let error = valid.errors;
+
+          if (typeof error !== `string`) {
+            error = getAjvErrorMessages(Array.isArray(error) ? error : [error], `response`).join(`,\n`);
+          }
+
+          const errorDescription = `API response for ${request.originalUrl} (${context.operation.operationId}, status code ${statusCode}) doesn't match schema:`;
+
+          console.error(chalk.bgRed(errorDescription));
+          console.error(error);
+        }
+      }
+
+      return response.status(statusCode).json(body);
+    },
+  },
 });
 
 router.use((request, response) => api.handleRequest(request, request, response));
