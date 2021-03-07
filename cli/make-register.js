@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 const { readdir, writeFile } = require(`fs/promises`);
 const path = require(`path`);

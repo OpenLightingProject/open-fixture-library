@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 const chalk = require(`chalk`);
 
 // see https://github.com/standard-things/esm#getting-started

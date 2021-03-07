@@ -1,4 +1,4 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
 /**
  * @fileoverview This script generates a set of test fixtures that cover all defined fixture features (while
