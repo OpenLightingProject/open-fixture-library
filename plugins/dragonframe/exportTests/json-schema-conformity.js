@@ -1,5 +1,6 @@
 const https = require(`https`);
-const Ajv = require(`ajv`);
+const Ajv = require(`ajv`).default;
+const addFormats = require(`ajv-formats`);
 const getAjvErrorMessages = require(`../../../lib/get-ajv-error-messages.js`);
 
 const SUPPORTED_OFL_VERSION = require(`../export.js`).supportedOflVersion;
@@ -37,12 +38,11 @@ module.exports = async function testJsonSchemaConformity(exportFile, allExportFi
   const schemas = await schemaPromises;
   const ajv = new Ajv({
     schemas,
-    format: `full`,
-    formats: {
-      'color-hex': ``,
-    },
+    strict: false,
     verbose: true,
   });
+  addFormats(ajv);
+  ajv.addFormat(`color-hex`, true);
 
   const schemaName = exportFile.name === `manufacturers.json` ? `manufacturers` : `fixture`;
   const schemaValidate = ajv.getSchema(`${REPO_BASE_URL}/master/schemas/${schemaName}.json`);

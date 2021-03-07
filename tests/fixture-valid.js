@@ -1,9 +1,9 @@
 const { inspect } = require(`util`);
-const Ajv = require(`ajv`);
 
 // see https://github.com/standard-things/esm#getting-started
 require = require(`esm`)(module); // eslint-disable-line no-global-assign
 
+const getAjvValidator = require(`../lib/ajv-validator.js`);
 const schemaProperties = require(`../lib/schema-properties.js`).default;
 const { manufacturerFromRepository, getResourceFromString } = require(`../lib/model.js`);
 const getAjvErrorMessages = require(`../lib/get-ajv-error-messages.js`);
@@ -22,21 +22,9 @@ const { NullChannel } = require(`../lib/model.js`);
 const { SwitchingChannel } = require(`../lib/model.js`);
 /** @typedef {import('../lib/model/Wheel.js').default} Wheel */
 
-const ajv = new Ajv({
-  format: `full`,
-  formats: {
-    'color-hex': ``,
-  },
-  verbose: true,
-});
-
 let initialized = false;
 let register;
 let plugins;
-let fixtureSchema;
-let fixtureRedirectSchema;
-let schemaValidate;
-let redirectSchemaValidate;
 
 /**
  * Checks that a given fixture JSON object is valid.
@@ -50,11 +38,6 @@ async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValu
   if (!initialized) {
     register = await importJson(`../fixtures/register.json`, __dirname);
     plugins = await importJson(`../plugins/plugins.json`, __dirname);
-    fixtureSchema = await importJson(`../schemas/dereferenced/fixture.json`, __dirname);
-    fixtureRedirectSchema = await importJson(`../schemas/dereferenced/fixture-redirect.json`, __dirname);
-
-    schemaValidate = ajv.compile(fixtureSchema);
-    redirectSchemaValidate = ajv.compile(fixtureRedirectSchema);
 
     initialized = true;
   }
@@ -96,11 +79,12 @@ async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValu
   }
 
   if (fixtureJson.$schema.endsWith(`/fixture-redirect.json`)) {
-    checkFixtureRedirect();
+    await checkFixtureRedirect();
     return result;
   }
 
 
+  const schemaValidate = await getAjvValidator(`fixture`);
   const schemaValid = schemaValidate(fixtureJson);
   if (!schemaValid) {
     const errorMessages = getAjvErrorMessages(schemaValidate.errors, `fixture`);
@@ -141,7 +125,8 @@ async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValu
   /**
    * Checks that a fixture redirect file is valid and redirecting to a fixture correctly.
    */
-  function checkFixtureRedirect() {
+  async function checkFixtureRedirect() {
+    const redirectSchemaValidate = await getAjvValidator(`fixture-redirect`);
     const redirectSchemaValid = redirectSchemaValidate(fixtureJson);
 
     if (!redirectSchemaValid) {

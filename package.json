@@ -32,14 +32,14 @@
     }
   },
   "dependencies": {
-    "@apidevtools/json-schema-ref-parser": "^9.0.7",
     "@heise/embetty-server": "^2.0.3",
     "@nuxtjs/axios": "^5.13.1",
     "@nuxtjs/robots": "^2.4.2",
     "@nuxtjs/sitemap": "^2.4.0",
     "@octokit/rest": "~18.3.3",
     "a11y-dialog": "^5.4.2",
-    "ajv": "^6.12.6",
+    "ajv": "^7.2.0",
+    "ajv-formats": "^1.5.1",
     "chalk": "^4.1.0",
     "color-hash": "^1.0.3",
     "color-name-list": "^7.31.0",

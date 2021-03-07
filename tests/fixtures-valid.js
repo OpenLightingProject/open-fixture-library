@@ -3,9 +3,9 @@
 const { readdir } = require(`fs/promises`);
 const path = require(`path`);
 const chalk = require(`chalk`);
-const Ajv = require(`ajv`);
 const minimist = require(`minimist`);
 
+const getAjvValidator = require(`../lib/ajv-validator.js`);
 const getAjvErrorMessages = require(`../lib/get-ajv-error-messages.js`);
 const { checkFixture, checkUniqueness } = require(`./fixture-valid.js`);
 const importJson = require(`../lib/import-json.js`);
@@ -139,8 +139,7 @@ async function checkManufacturers() {
 
   try {
     const manufacturers = await importJson(result.name, fixtureDirectory);
-    const manufacturerSchema = await importJson(`../schemas/dereferenced/manufacturers.json`, __dirname);
-    const validate = (new Ajv({ verbose: true })).compile(manufacturerSchema);
+    const validate = await getAjvValidator(`manufacturers`);
     const valid = validate(manufacturers);
     if (!valid) {
       throw getAjvErrorMessages(validate.errors, `manufacturers`);

@@ -1,5 +1,6 @@
 const https = require(`https`);
-const Ajv = require(`ajv`);
+const Ajv = require(`ajv`).default;
+const addFormats = require(`ajv-formats`);
 const getAjvErrorMessages = require(`../../../lib/get-ajv-error-messages.js`);
 
 const SUPPORTED_OFL_VERSION = require(`../export.js`).supportedOflVersion;
@@ -26,12 +27,12 @@ module.exports = async function testSchemaConformity(exportFile, allExportFiles)
   const schemas = await schemaPromises;
   const ajv = new Ajv({
     schemas,
-    format: `full`,
-    formats: {
-      'color-hex': ``,
-    },
+    strict: false,
     verbose: true,
   });
+  addFormats(ajv);
+  ajv.addFormat(`color-hex`, true);
+
   const schemaValidate = ajv.getSchema(`https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`);
 
   const schemaValid = schemaValidate(JSON.parse(exportFile.content));
