@@ -222,7 +222,6 @@ const disabledRules = [
   `security/detect-object-injection`,
   `unicorn/consistent-function-scoping`,
   `unicorn/filename-case`,
-  `unicorn/no-abusive-eslint-disable`,
   `unicorn/no-null`,
   `unicorn/no-process-exit`,
   `unicorn/no-array-reduce`,
