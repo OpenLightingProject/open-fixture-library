@@ -307,7 +307,7 @@ module.exports = {
     {
       files: [`**/*.md/*.js`],
       rules: {
-        'require-jsdoc': `off`,
+        'jsdoc/require-jsdoc': `off`,
       },
     },
     {
