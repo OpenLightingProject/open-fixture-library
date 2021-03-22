@@ -175,12 +175,9 @@ export default {
         }
       }
 
-      if (`hint` in this.$refs.capabilityTypeData) {
-        this.capabilityTypeHint = this.$refs.capabilityTypeData.hint;
-      }
-      else {
-        this.capabilityTypeHint = null;
-      }
+      this.capabilityTypeHint = `hint` in this.$refs.capabilityTypeData
+        ? this.$refs.capabilityTypeData.hint
+        : null;
     },
 
     /**
