@@ -1,3 +1,15 @@
+const pluginPresets = {
+  'array-func': `all`,
+  jsdoc: `recommended`,
+  json: `recommended`,
+  markdown: `recommended`,
+  nuxt: `recommended`,
+  promise: `recommended`,
+  security: `recommended`,
+  unicorn: `recommended`,
+  vue: `recommended`,
+};
+
 const enabledRuleParameters = {
   // Core ESLint rules
   'accessor-pairs': [],
@@ -116,6 +128,8 @@ const enabledRuleParameters = {
     },
   }],
   'unicorn/numeric-separators-style': [],
+  'unicorn/prefer-array-flat': [],
+  'unicorn/prefer-array-flat-map': [],
   'unicorn/prevent-abbreviations': [{
     replacements: {
       ref: false,
@@ -220,7 +234,6 @@ const disabledRules = [
   `security/detect-object-injection`,
   `unicorn/consistent-function-scoping`,
   `unicorn/filename-case`,
-  `unicorn/no-abusive-eslint-disable`,
   `unicorn/no-null`,
   `unicorn/no-process-exit`,
   `unicorn/no-array-reduce`,
@@ -244,28 +257,10 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2021,
   },
-  plugins: [
-    `array-func`,
-    `jsdoc`,
-    `json`,
-    `markdown`,
-    `nuxt`,
-    `promise`,
-    `security`,
-    `unicorn`,
-    `vue`,
-  ],
+  plugins: Object.keys(pluginPresets),
   extends: [
     `eslint:recommended`,
-    `plugin:array-func/all`,
-    `plugin:jsdoc/recommended`,
-    `plugin:json/recommended`,
-    `plugin:markdown/recommended`,
-    `plugin:nuxt/recommended`,
-    `plugin:promise/recommended`,
-    `plugin:security/recommended`,
-    `plugin:unicorn/recommended`,
-    `plugin:vue/recommended`,
+    ...Object.entries(pluginPresets).map(([plugin, preset]) => `plugin:${plugin}/${preset}`),
   ],
   rules: {
     ...Object.fromEntries(
@@ -305,7 +300,7 @@ module.exports = {
     {
       files: [`**/*.md/*.js`],
       rules: {
-        'require-jsdoc': `off`,
+        'jsdoc/require-jsdoc': `off`,
       },
     },
     {

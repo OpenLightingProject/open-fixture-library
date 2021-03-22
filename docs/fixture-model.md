@@ -29,7 +29,6 @@ Model properties are always implemented using getters and setters. To store data
 
 Avoid returning `undefined` by returning smart default values if necessary. If the default value is not `null`, also provide a `hasXY` boolean getter function. Properties that need further computation or create other objects should be cached in an internal `_cache` object.
 
-<!-- eslint-disable jsdoc/require-jsdoc -->
 ```js
 export default class Fixture {
   // returns backing field to avoid accessing _jsonObject from outside
