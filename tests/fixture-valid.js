@@ -609,7 +609,7 @@ async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValu
           let shouldCheckSlotNumbers = true;
 
           if (`wheel` in capability.jsonObject) {
-            const wheelNames = [].concat(capability.jsonObject.wheel);
+            const wheelNames = [capability.jsonObject.wheel].flat();
 
             wheelNames.forEach(wheelName => {
               const wheel = fixture.getWheelByName(wheelName);

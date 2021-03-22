@@ -116,6 +116,7 @@ const enabledRuleParameters = {
     },
   }],
   'unicorn/numeric-separators-style': [],
+  'unicorn/prefer-array-flat': [],
   'unicorn/prevent-abbreviations': [{
     replacements: {
       ref: false,

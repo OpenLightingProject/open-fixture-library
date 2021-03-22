@@ -242,7 +242,7 @@ async function getTaskPromise(task) {
       }
       catch (error) {
         emoji = `:x:`;
-        const errors = [].concat(error);
+        const errors = [error].flat();
         return `<details><summary>:x: ${file.name}</summary>${errors.join(`<br />\n`)}</details>`;
       }
     }));
