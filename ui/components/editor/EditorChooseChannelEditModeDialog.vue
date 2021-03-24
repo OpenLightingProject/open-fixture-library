@@ -1,7 +1,7 @@
 <template>
   <A11yDialog
-    id="chooseChannelEditMode"
-    :cancellable="false"
+    id="choose-channel-edit-mode-dialog"
+    is-alert-dialog
     :shown="channel.editMode === `edit-?`"
     title="Edit channel in all modes or just in this one?"
     @show="onChooseChannelEditModeDialogOpen()">

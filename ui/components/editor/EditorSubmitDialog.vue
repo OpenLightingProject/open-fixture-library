@@ -1,7 +1,7 @@
 <template>
   <A11yDialog
-    id="submit"
-    :cancellable="false"
+    id="submit-dialog"
+    is-alert-dialog
     :shown="state !== `closed`"
     :title="title"
     :wide="state === `preview`">

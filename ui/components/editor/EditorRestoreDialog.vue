@@ -1,7 +1,7 @@
 <template>
   <A11yDialog
-    id="restore"
-    :cancellable="false"
+    id="restore-dialog"
+    is-alert-dialog
     :shown="restoredData !== null"
     title="Auto-saved fixture data found">
 

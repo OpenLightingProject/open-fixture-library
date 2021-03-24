@@ -2,7 +2,7 @@
   <A11yDialog
     id="help-wanted"
     ref="dialog"
-    :cancellable="state !== `loading`"
+    :is-alert-dialog="state === `loading`"
     :shown="context !== null"
     :title="title"
     @hide="onHide()">

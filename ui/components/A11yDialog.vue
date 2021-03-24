@@ -1,21 +1,21 @@
 <template>
   <div
-    :aria-hidden="shown ? `false` : `true`"
+    :id="id"
     class="dialog-container"
-    tabindex="-1"
+    :aria-hidden="shown ? `false` : `true`"
+    :aria-labelledby="`${id}-dialog-title`"
+    :role="isAlertDialog ? `alertdialog` : undefined"
     @click="overlayClick($event)">
-    <div class="dialog-overlay" tabindex="-1" />
 
-    <dialog
-      :id="`${id}-dialog`"
-      :aria-labelledby="`${id}-dialog-title`"
-      :open="shown"
-      class="card"
+    <div
+      ref="dialog"
+      role="document"
+      class="dialog card"
       :class="{ wide }">
       <div>
 
         <button
-          v-if="cancellable"
+          v-if="!isAlertDialog"
           type="button"
           class="icon-button close"
           title="Close"
@@ -31,40 +31,31 @@
         <slot />
 
       </div>
-    </dialog>
+    </div>
+
   </div>
 </template>
 
 <style lang="scss" scoped>
 .dialog-container {
-  outline: none;
-}
-
-.dialog-overlay {
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.66);
   position: fixed;
+  z-index: 1000;
   top: 0;
-  left: 0;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.66);
+  display: flex;
 }
 
-.dialog-container[aria-hidden=true],
-[data-a11y-dialog-native] > .dialog-overlay {
+.dialog-container[aria-hidden='true'] {
   display: none;
 }
 
-dialog {
+.dialog {
   background-color: theme-color(dialog-background);
   color: theme-color(text-primary);
-  border: 0;
-  z-index: 1010;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  margin: 0;
-  transform: translate(-50%, -50%);
+  margin: auto;
   box-sizing: border-box;
   min-width: 20rem;
   max-width: 90%;
@@ -76,32 +67,24 @@ dialog {
     width: 1000px;
   }
 
-  &::backdrop {
-    background-color: rgba(0, 0, 0, 0.66);
-  }
 
-  &[open] {
-    display: block;
-  }
-
-  & h2:focus {
+  h2:focus {
     outline: none;
   }
-}
+  // fixes padding not being visible when scrollbar is present
+  &.card {
+    padding: 0;
 
-// fixes padding not being visible when scrollbar is present
-dialog.card {
-  padding: 0;
-
-  & > div {
-    padding: 1rem;
+    & > div {
+      padding: 1rem;
+    }
   }
 }
 
 @media (max-width: $phone) {
   // make dialogs cover the whole screen
-  dialog,
-  dialog.wide {
+  .dialog,
+  .dialog.wide {
     min-width: none;
     max-width: none;
     max-height: none;
@@ -113,18 +96,19 @@ dialog.card {
 
 
 <script>
-const A11yDialog = process.browser ? require(`a11y-dialog`) : null;
-
 export default {
   props: {
     id: {
       type: String,
       required: true,
+      validator(id) {
+        return id.endsWith(`-dialog`);
+      },
     },
-    cancellable: {
+    isAlertDialog: {
       type: Boolean,
       required: false,
-      default: true,
+      default: false,
     },
     shown: {
       type: Boolean,
@@ -150,18 +134,21 @@ export default {
     shown: `update`,
   },
   mounted() {
-    if (A11yDialog) {
-      this.dialog = new A11yDialog(this.$el, `#header, #fixture-editor > form`);
+    const A11yDialog = require(`a11y-dialog`).default;
 
-      this.dialog.on(`show`, node => {
-        this.dialog.dialog.scrollTop = 0;
-        this.$emit(`show`);
-      });
+    this.dialog = new A11yDialog(this.$el);
 
-      this.dialog.on(`hide`, node => this.$emit(`hide`));
+    this.dialog.on(`show`, () => {
+      this.$refs.dialog.scrollTop = 0;
+      this.$emit(`show`);
+    });
 
-      this.update();
-    }
+    this.dialog.on(`hide`, () => this.$emit(`hide`));
+
+    this.update();
+  },
+  beforeDestroy() {
+    this.dialog.destroy();
   },
   methods: {
     update() {
@@ -183,7 +170,7 @@ export default {
       }
     },
     overlayClick(event) {
-      if (this.cancellable && event.target.matches(`dialog, .dialog-overlay`)) {
+      if (!this.isAlertDialog && !event.target.closest(`.dialog`)) {
         this.hide();
       }
     },

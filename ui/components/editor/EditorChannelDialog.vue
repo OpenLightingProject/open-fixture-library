@@ -1,8 +1,7 @@
 <template>
   <A11yDialog
-    id="channel"
+    id="channel-dialog"
     ref="channelDialog"
-    :cancellable="true"
     :shown="channel.editMode !== `` && channel.editMode !== `edit-?`"
     :title="title"
     :class="`channel-dialog-${channel.editMode}`"
@@ -227,7 +226,7 @@
 </style>
 
 <style lang="scss">
-#channel-dialog {
+#channel-dialog .dialog {
   .existingChannelUuid {
     display: block;
   }
@@ -543,7 +542,7 @@ export default {
           }
         }
 
-        const scrollContainer = invalidFields[0].closest(`dialog`);
+        const scrollContainer = invalidFields[0].closest(`.dialog`);
         scrollIntoView(invalidFields[0], {
           time: 300,
           align: {
@@ -674,7 +673,7 @@ export default {
 
       await this.$nextTick();
       const firstNewCapability = this.$refs.capabilities[insertIndex];
-      const scrollContainer = firstNewCapability.$el.closest(`dialog`);
+      const scrollContainer = firstNewCapability.$el.closest(`.dialog`);
 
       scrollIntoView(firstNewCapability.$el, {
         time: 0,
