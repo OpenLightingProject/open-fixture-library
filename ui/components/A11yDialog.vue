@@ -37,6 +37,20 @@
 </template>
 
 <style lang="scss" scoped>
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes scale-up {
+  from {
+    transform: scale(0.9);
+  }
+}
+
+$container-fade-duration: 200ms;
+
 .dialog-container {
   position: fixed;
   z-index: 1000;
@@ -46,6 +60,7 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.66);
   display: flex;
+  animation: fade-in $container-fade-duration both;
 }
 
 .dialog-container[aria-hidden='true'] {
@@ -62,6 +77,9 @@
   max-height: 90%;
   overflow: auto;
   overscroll-behavior: contain;
+  animation:
+    fade-in 200ms $container-fade-duration both,
+    scale-up 200ms $container-fade-duration both;
 
   &.wide {
     width: 1000px;
