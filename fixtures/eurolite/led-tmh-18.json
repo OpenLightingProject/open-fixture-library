@@ -571,29 +571,29 @@
       "name": "48-channel",
       "shortName": "48ch",
       "channels": [
-          "Pan",
-          "Pan fine",
-          "Tilt",
-          "Tilt fine",
-          "Pan/Tilt Speed",
-          "Macros",
-          "Macro Speed",
-          "Function",
-          "Dimmer",
-          "Strobe",
-          {
-            "insert": "matrixChannels",
-            "repeatFor": "eachPixelYXZ",
-            "channelOrder": "perPixel",
-            "templateChannels": [
-              "Red $pixelKey",
-              "Green $pixelKey",
-              "Blue $pixelKey",
-              "White $pixelKey"
-            ]
-          },
-          "Color Macros",
-          "Color Macro Speed"
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Macros",
+        "Macro Speed",
+        "Function",
+        "Dimmer",
+        "Strobe",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelYXZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey",
+            "White $pixelKey"
+          ]
+        },
+        "Color Macros",
+        "Color Macro Speed"
       ]
     }
   ]
