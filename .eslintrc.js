@@ -1,13 +1,13 @@
 const pluginPresets = {
   'array-func': `all`,
   jsdoc: `recommended`,
-  json: `recommended`,
   markdown: `recommended`,
   nuxt: `recommended`,
   promise: `recommended`,
   security: `recommended`,
   unicorn: `recommended`,
   vue: `recommended`,
+  jsonc: `recommended-with-json`, // has to be after `vue` and `nuxt`
 };
 
 const enabledRuleParameters = {
@@ -104,6 +104,9 @@ const enabledRuleParameters = {
   'jsdoc/require-returns-description': [],
   'jsdoc/require-returns-type': [],
   'jsdoc/valid-types': [],
+
+  // eslint-plugin-jsonc
+  'jsonc/auto': [],
 
   // eslint-plugin-promise
   'promise/no-callback-in-promise': [],
@@ -296,6 +299,7 @@ module.exports = {
       },
     },
   },
+  ignorePatterns: [`package-lock.json`],
   overrides: [
     {
       files: [`**/*.md/*.js`],
@@ -304,11 +308,19 @@ module.exports = {
       },
     },
     {
-      files: [`**/*.vue`, `**/*.json`],
+      files: [`**/*.vue`],
     },
     {
       files: [`fixtures/**/*.json`],
       rules: {
+        // allow alignment of pixel keys in matrix
+        'no-multi-spaces': [`error`, {
+          exceptions: {
+            JSONArrayExpression: true,
+          },
+        }],
+        'jsonc/array-bracket-spacing': `off`,
+
         'unicorn/prevent-abbreviations': `off`,
       },
     },
