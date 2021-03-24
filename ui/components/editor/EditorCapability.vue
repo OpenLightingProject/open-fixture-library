@@ -285,7 +285,7 @@ export default {
     async insertCapabilityBefore() {
       this.$emit(`insert-capability-before`);
 
-      const dialog = this.$el.closest(`dialog`);
+      const dialog = this.$el.closest(`.dialog`);
       await this.$nextTick();
 
       const newCapability = dialog.querySelector(`.capability-editor`).children[this.capabilityIndex - 1];
