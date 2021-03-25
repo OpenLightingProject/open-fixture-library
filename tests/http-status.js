@@ -17,7 +17,7 @@ const SiteCrawler = require(`../lib/site-crawler.js`);
       await crawler.startServer();
     }
     catch (error) {
-      throw `${chalk.redBright(`Failed to start OFL server. Maybe you forgot running 'make all' or there is already a running server?`)} ${error.message}`;
+      throw `${chalk.redBright(`Failed to start OFL server. Maybe you forgot running 'npm run build' or there is already a running server?`)} ${error.message}`;
     }
     console.log();
 

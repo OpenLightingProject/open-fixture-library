@@ -12,12 +12,25 @@
   "main": "main.js",
   "scripts": {
     "dev": "node --max-old-space-size=4096 main.js --dev",
-    "postinstall": "make all",
+    "postinstall": "npm run build",
     "start": "node --max-old-space-size=4096 main.js",
+
+    "build": "npm run build-without-nuxt && npm run build:nuxt",
+    "build-without-nuxt": "npm run build:register && npm run build:plugin-data && npm run build:test-fixtures && npm run build:model-docs && npm run build:api-docs",
+    "build:nuxt": "nuxt build",
+    "build:register": "node cli/make-register.js",
+    "build:plugin-data": "node cli/make-plugin-data.js",
+    "build:test-fixtures": "node cli/make-test-fixtures.js",
+    "build:model-docs": "jsdoc2md --private --files lib/model/*.js > docs/model-api.md",
+    "build:api-docs": "widdershins --code true --language_tabs --omitBody true --omitHeader true --resolve true --outfile docs/rest-api.md ui/api/openapi.json",
+
+    "clean": "rm -rf .nuxt tmp",
+
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "eslint .",
     "lint:eslint-errors-only": "eslint --quiet --format codeframe .",
     "lint:stylelint": "stylelint **/*.scss **/*.vue",
+
     "test": "npm run lint && npm run test:fixtures-valid",
     "test:dmx-value-scaling": "node tests/dmx-value-scaling.js",
     "test:fixtures-valid": "node tests/fixtures-valid.js -a",

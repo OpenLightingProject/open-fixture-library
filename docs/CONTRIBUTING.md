@@ -19,7 +19,6 @@ As soon as an issue is assigned to somebody, it means that this person is respon
 Make sure you have these dependencies installed:
 
 * `git`
-* `make`
 * [Node.js](https://nodejs.org/en/download/package-manager/)
 
 Then run
@@ -36,9 +35,6 @@ Continue with [UI docs](ui.md).
 
 Make sure you have these dependencies installed:
 
-* GNU make
-  - [Install Scoop](https://github.com/lukesampson/scoop/wiki/Quick-Start)
-  - Run `scoop install make`
 * [Git](https://gitforwindows.org/)
 * [Node.js](https://nodejs.org/en/download/)
 * [windows-build-tools](https://www.npmjs.com/package/windows-build-tools)
@@ -93,4 +89,4 @@ We automatically check code style using [ESLint](https://eslint.org/). Maybe you
 
 * To understand how OFL works, read the [Documentation Overview](README.md) and its related pages. We try to document every part of our software.
 * Run [tests](testing.md) in the `tests/` directory manually – that's way faster than waiting for the automated GitHub Actions tests in pull requests.
-* Run `make` to be sure that auto-generated contents are up-to-date.
+* Run `npm run build` to be sure that auto-generated contents are up-to-date.
