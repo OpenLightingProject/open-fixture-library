@@ -13,6 +13,8 @@ jobs:
           node-version: 14
       - name: Install dependencies
         run: npm ci
+      - name: Build
+        run: npm run build
       - name: Run ESLint
         run: npm run lint:eslint
       - name: Run Stylelint
@@ -23,8 +25,8 @@ jobs:
         run: npm run test:fixtures-valid
       - name: Run http-status test
         run: npm run test:http-status
-      - name: Run make-targets-updated test
-        run: npm run test:make-targets-updated
+      - name: Run built-files-committed test
+        run: npm run test:built-files-committed
   status:
     name: Status
     runs-on: ubuntu-latest
@@ -47,6 +49,8 @@ jobs:
         run: |
           sudo pip install lxml # for QLC+ fixture-tool-validation export test
           npm ci
+      - name: Build
+        run: npm run build
       - name: Run export-diff test
         run: node tests/github/export-diff.js
       - name: Run exports-valid test

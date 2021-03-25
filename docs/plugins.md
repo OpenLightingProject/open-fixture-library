@@ -4,7 +4,7 @@ The aim of the *Open Fixture Library* is to import and export our fixture defini
 
 Each plugin has its own directory `plugins/<plugin-key>/` which contains all information, methods and tests about the external format. You have to provide a `plugin.json` file in that directory, containing at least the plugin name, description and one or more links. See the [schema](../schemas/plugin.json) or other plugins' `plugin.json` files as a reference. This data is also used to create the about page for this plugin in the UI.
 
-Be sure to always run `make` after editing `plugin.json` or adding export/import scripts and export tests.
+Be sure to always run `npm run build` after editing `plugin.json` or adding export/import scripts and export tests.
 
 You can try plugins from the command line:
 

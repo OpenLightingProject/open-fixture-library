@@ -16,6 +16,8 @@ jobs:
           node-version: 14
       - name: Install dependencies
         run: npm ci
+      - name: Build
+        run: npm run build
       - name: Check external links
         run: node --tls-min-v1.0 tests/external-links.js
         env:
