@@ -26,9 +26,9 @@ console.log(`\n`);
 
 
 if (result.status !== 0) {
-  console.error(chalk.red(`[FAIL]`), `Make targets are not up-to-date or there are other unstaged changes. Please run \`npm run build\` and stage (git add) all changes.`);
+  console.error(chalk.red(`[FAIL]`), `Built files (or other changes) are not committed. Please run \`npm run build\` and stage (git add) all changes.`);
   process.exit(1);
 }
 
-console.log(chalk.green(`[PASS]`), `Make targets are up-to-date.`);
+console.log(chalk.green(`[PASS]`), `Built files are committed.`);
 process.exit(0);
