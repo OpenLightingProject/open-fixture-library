@@ -24,13 +24,6 @@
     "test:http-status": "NODE_ENV=production node --tls-min-v1.0 tests/http-status.js",
     "test:make-targets-updated": "node tests/make-targets-updated.js"
   },
-  "husky": {
-    "hooks": {
-      "post-checkout": "make only-gitignored-no-nuxt",
-      "post-merge": "make only-gitignored-no-nuxt",
-      "pre-commit": "if [ \"$(git rev-parse --abbrev-ref HEAD)\" = \"master\" ]; then echo \"You can't commit directly to master branch\"; exit 1; fi"
-    }
-  },
   "dependencies": {
     "@heise/embetty-server": "^2.0.3",
     "@nuxtjs/axios": "^5.13.1",
@@ -82,7 +75,6 @@
     "eslint-plugin-security": "github:vtky/eslint-plugin-security#87c26935e19867d9c43a9e774ee8af2698236fbb",
     "eslint-plugin-unicorn": "^29.0.0",
     "eslint-plugin-vue": "~7.8.0",
-    "husky": "^4.3.8",
     "jsdoc-to-markdown": "^7.0.0",
     "libxmljs": "^0.19.7",
     "minimist": "^1.2.5",
