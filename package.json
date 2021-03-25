@@ -12,7 +12,6 @@
   "main": "main.js",
   "scripts": {
     "dev": "node --max-old-space-size=4096 main.js --dev",
-    "postinstall": "npm run build",
     "start": "node --max-old-space-size=4096 main.js",
 
     "build": "npm run build-without-nuxt && npm run build:nuxt",

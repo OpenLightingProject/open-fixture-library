@@ -27,6 +27,7 @@ Then run
 git clone https://github.com/OpenLightingProject/open-fixture-library.git
 cd open-fixture-library
 npm install
+npm run build
 ```
 
 Continue with [UI docs](ui.md).
@@ -46,6 +47,7 @@ Choose a project path that only contains ASCII characters and no spaces. Open a 
 git clone https://github.com/OpenLightingProject/open-fixture-library.git
 cd open-fixture-library
 npm install
+npm run build
 ```
 
 Continue with [UI docs](ui.md).  
