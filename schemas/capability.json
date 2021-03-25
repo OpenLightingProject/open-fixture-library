@@ -1233,10 +1233,12 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "blade": { "oneOf": [
-            { "enum": ["Top", "Right", "Bottom", "Left"] },
-            { "$ref": "definitions.json#/units/positiveInteger" }
-          ]},
+          "blade": {
+            "oneOf": [
+              { "enum": ["Top", "Right", "Bottom", "Left"] },
+              { "$ref": "definitions.json#/units/positiveInteger" }
+            ]
+          },
           "insertion": { "$ref": "definitions.json#/entities/insertion" },
           "insertionStart": { "$ref": "definitions.json#/entities/insertion" },
           "insertionEnd": { "$ref": "definitions.json#/entities/insertion" },
@@ -1267,10 +1269,12 @@
         "properties": {
           "dmxRange": {},
           "type": {},
-          "blade": { "oneOf": [
-            { "enum": ["Top", "Right", "Bottom", "Left"] },
-            { "$ref": "definitions.json#/units/positiveInteger" }
-          ]},
+          "blade": {
+            "oneOf": [
+              { "enum": ["Top", "Right", "Bottom", "Left"] },
+              { "$ref": "definitions.json#/units/positiveInteger" }
+            ]
+          },
           "angle": { "$ref": "definitions.json#/entities/rotationAngle" },
           "angleStart": { "$ref": "definitions.json#/entities/rotationAngle" },
           "angleEnd": { "$ref": "definitions.json#/entities/rotationAngle" },
