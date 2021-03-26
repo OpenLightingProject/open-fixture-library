@@ -40,7 +40,7 @@ module.exports.init = async function init() {
     auth: `token ${process.env.GITHUB_USER_TOKEN}`,
   });
 
-  const pr = await githubClient.pulls.get({
+  const pr = await githubClient.rest.pulls.get({
     owner: repoOwner,
     repo: repoName,
     'pull_number': process.env.GITHUB_PR_NUMBER,
@@ -56,7 +56,7 @@ module.exports.fetchChangedComponents = async function fetchChangedComponents() 
   // fetch changed files in blocks of 100
   const filePromises = [];
   for (let index = 0; index < prData.changed_files / 100; index++) {
-    filePromises.push(githubClient.pulls.listFiles({
+    filePromises.push(githubClient.rest.pulls.listFiles({
       owner: repoOwner,
       repo: repoName,
       'pull_number': process.env.GITHUB_PR_NUMBER,
@@ -192,7 +192,7 @@ module.exports.updateComment = async function updateComment(test) {
   const commentPromises = [];
   for (let index = 0; index < prData.comments / 100; index++) {
     commentPromises.push(
-      githubClient.issues.listComments({
+      githubClient.rest.issues.listComments({
         owner: repoOwner,
         repo: repoName,
         'issue_number': process.env.GITHUB_PR_NUMBER,
@@ -220,7 +220,7 @@ module.exports.updateComment = async function updateComment(test) {
       }
       else {
         console.log(`Deleting old test comment at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
-        promises.push(githubClient.issues.deleteComment({
+        promises.push(githubClient.rest.issues.deleteComment({
           owner: repoOwner,
           repo: repoName,
           'comment_id': comment.id,
@@ -231,7 +231,7 @@ module.exports.updateComment = async function updateComment(test) {
 
   if (!equalFound && test.lines.length > 0) {
     console.log(`Creating test comment at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
-    promises.push(githubClient.issues.createComment({
+    promises.push(githubClient.rest.issues.createComment({
       owner: repoOwner,
       repo: repoName,
       'issue_number': process.env.GITHUB_PR_NUMBER,
