@@ -1,5 +1,5 @@
 const https = require(`https`);
-const Ajv = require(`ajv`).default;
+const Ajv = require(`ajv`);
 const addFormats = require(`ajv-formats`);
 const getAjvErrorMessages = require(`../../../lib/get-ajv-error-messages.js`);
 
