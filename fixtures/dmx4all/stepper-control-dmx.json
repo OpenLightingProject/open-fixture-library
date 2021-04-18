@@ -1,0 +1,79 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Stepper Control DMX",
+  "shortName": "Stepper",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Bram Delafonteyne"],
+    "createDate": "2021-04-18",
+    "lastModifyDate": "2021-04-18"
+  },
+  "links": {
+    "manual": [
+      "https://www.dmx4all.de/produkte/dmx-stepper-control/#toggle-id-3"
+    ],
+    "productPage": [
+      "https://www.dmx4all.de/produkte/dmx-stepper-control/"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "1"
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Intensity": {
+      "fineChannelAliases": ["Intensity fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": "60%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 59],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [60, 255],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "defaultValue": "100%",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Control": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Initialize Stop"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Initialize Start"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Modus 7",
+      "channels": [
+        "Intensity",
+        "Intensity fine",
+        "Effect Speed",
+        "Control"
+      ]
+    }
+  ]
+}
