@@ -62,49 +62,57 @@ async function getFixtureCreateResult(fixtures) {
     };
 
     for (const property of Object.keys(schemaProperties.fixture)) {
-      if (property === `physical`) {
-        const physical = getPhysical(fixture.physical);
-        if (!isEmptyObject(physical)) {
-          result.fixtures[key].physical = physical;
+      switch (property) {
+        case `physical`: {
+          const physical = getPhysical(fixture.physical);
+          if (!isEmptyObject(physical)) {
+            result.fixtures[key].physical = physical;
+          }
+          break;
         }
-      }
-      else if (property === `meta`) {
-        const now = new Date().toISOString().replace(/T.*/, ``);
+        case `meta`: {
+          const now = new Date().toISOString().replace(/T.*/, ``);
 
-        result.fixtures[key].meta = {
-          authors: [fixture.metaAuthor],
-          createDate: now,
-          lastModifyDate: now,
-        };
-      }
-      else if (property === `links`) {
-        addLinks(result.fixtures[key], fixture.links);
-      }
-      else if (property === `availableChannels`) {
-        result.fixtures[key].availableChannels = {};
-        for (const channelId of Object.keys(fixture.availableChannels)) {
-          addAvailableChannel(key, fixture.availableChannels, channelId);
+          result.fixtures[key].meta = {
+            authors: [fixture.metaAuthor],
+            createDate: now,
+            lastModifyDate: now,
+          };
+          break;
         }
-      }
-      else if (property === `rdm` && propertyExistsIn(`rdmModelId`, fixture)) {
-        result.fixtures[key].rdm = {
-          modelId: fixture.rdmModelId,
-        };
-        if (propertyExistsIn(`rdmSoftwareVersion`, fixture)) {
-          result.fixtures[key].rdm.softwareVersion = fixture.rdmSoftwareVersion;
+        case `links`: {
+          addLinks(result.fixtures[key], fixture.links);
+          break;
         }
-      }
-      else if (property === `modes`) {
-        result.fixtures[key].modes = [];
-        for (const mode of fixture.modes) {
-          addMode(key, mode);
+        case `availableChannels`: {
+          result.fixtures[key].availableChannels = {};
+          for (const channelId of Object.keys(fixture.availableChannels)) {
+            addAvailableChannel(key, fixture.availableChannels, channelId);
+          }
+          break;
         }
-      }
-      else if (property === `wheels`) {
-        addWheels(result.fixtures[key], fixture);
-      }
-      else if (propertyExistsIn(property, fixture)) {
-        result.fixtures[key][property] = fixture[property];
+        default: {
+          if (property === `rdm` && propertyExistsIn(`rdmModelId`, fixture)) {
+            result.fixtures[key].rdm = {
+              modelId: fixture.rdmModelId,
+            };
+            if (propertyExistsIn(`rdmSoftwareVersion`, fixture)) {
+              result.fixtures[key].rdm.softwareVersion = fixture.rdmSoftwareVersion;
+            }
+          }
+          else if (property === `modes`) {
+            result.fixtures[key].modes = [];
+            for (const mode of fixture.modes) {
+              addMode(key, mode);
+            }
+          }
+          else if (property === `wheels`) {
+            addWheels(result.fixtures[key], fixture);
+          }
+          else if (propertyExistsIn(property, fixture)) {
+            result.fixtures[key][property] = fixture[property];
+          }
+        }
       }
     }
 
