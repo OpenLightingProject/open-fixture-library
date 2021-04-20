@@ -167,10 +167,12 @@ const enabledRuleParameters = {
   'vue/no-deprecated-slot-attribute': [],
   'vue/no-deprecated-slot-scope-attribute': [],
   'vue/no-empty-component-block': [],
+  'vue/no-invalid-model-keys': [],
   'vue/no-unused-properties': [{
     groups: [`props`, `data`, `computed`, `methods`, `setup`],
     ignorePublicMembers: true,
   }],
+  'vue/no-unused-refs': [],
   'vue/require-direct-export': [],
   'vue/v-for-delimiter-style': [`of`],
   'vue/v-on-function-call': [`always`],
