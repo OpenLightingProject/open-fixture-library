@@ -16,7 +16,6 @@
         label="DMX range">
 
         <PropertyInputRange
-          ref="firstInput"
           v-model="capability.dmxRange"
           :formstate="formstate"
           :name="`capability${capability.uuid}-dmxRange`"
