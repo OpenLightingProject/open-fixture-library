@@ -339,16 +339,16 @@
         "comment": "-20…20"
       }
     },
-    "X Position": {
-      "fineChannelAliases": ["X Position fine"],
+    "Colorspace X Position": {
+      "fineChannelAliases": ["Colorspace X Position fine"],
       "defaultValue": 0,
       "capability": {
         "type": "Generic",
         "comment": "0.0…0.8"
       }
     },
-    "Y Position": {
-      "fineChannelAliases": ["Y Position fine"],
+    "Colorspace Y Position": {
+      "fineChannelAliases": ["Colorspace Y Position fine"],
       "defaultValue": 0,
       "capability": {
         "type": "Generic",
@@ -562,8 +562,8 @@
         "Hue Gel",
         "Saturation Gel",
         "Effects Speed",
-        "X Position",
-        "Y Position",
+        "Colorspace X Position",
+        "Colorspace Y Position",
         "Strobe",
         "Control"
       ]
@@ -586,10 +586,10 @@
         "Hue Gel",
         "Saturation Gel",
         "Effects Speed",
-        "X Position",
-        "X Position fine",
-        "Y Position",
-        "Y Position fine",
+        "Colorspace X Position",
+        "Colorspace X Position fine",
+        "Colorspace Y Position",
+        "Colorspace Y Position fine",
         "Strobe",
         "Control"
       ]
