@@ -69,7 +69,6 @@
       ]
     },
     "Green-Magenta Point": {
-      "name": "Green-Magenta Point",
       "defaultValue": 0,
       "capabilities": [
         {
@@ -105,24 +104,21 @@
       ]
     },
     "White Base Color": {
-      "name": "White Base Color",
       "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 127],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "3200K",
-          "colorTemperatureEnd": "3200K"
+          "colorTemperature": "3200K"
         },
         {
           "dmxRange": [128, 255],
           "type": "ColorTemperature",
-          "colorTemperatureStart": "5600K",
-          "colorTemperatureEnd": "5600K"
+          "colorTemperature": "5600K"
         }
       ]
     },
-    "MemHundreds": {
+    "Memory # Hundreds": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -177,7 +173,7 @@
         }
       ]
     },
-    "MemTens": {
+    "Memory # Tens": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -232,7 +228,7 @@
         }
       ]
     },
-    "MemSingles": {
+    "Memory # Singles": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -287,30 +283,9 @@
         }
       ]
     },
-    "Hue 8bit": {
+    "Hue": {
       "name": "Hue",
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 37],
-          "type": "Generic",
-          "comment": "0°"
-        },
-        {
-          "dmxRange": [38, 218],
-          "type": "Generic",
-          "comment": "0-360°"
-        },
-        {
-          "dmxRange": [219, 255],
-          "type": "Generic",
-          "comment": "360°"
-        }
-      ]
-    },
-    "Hue 16bit": {
-      "name": "Hue",
-      "fineChannelAliases": ["Hue 16bit fine"],
+      "fineChannelAliases": ["Hue fine"],
       "defaultValue": 0,
       "capabilities": [
         {
@@ -364,16 +339,16 @@
         "comment": "-20…20"
       }
     },
-    "x position": {
-      "fineChannelAliases": ["x position fine"],
+    "X Position": {
+      "fineChannelAliases": ["X Position fine"],
       "defaultValue": 0,
       "capability": {
         "type": "Generic",
         "comment": "0.0…0.8"
       }
     },
-    "y position": {
-      "fineChannelAliases": ["y position fine"],
+    "Y Position": {
+      "fineChannelAliases": ["Y Position fine"],
       "defaultValue": 0,
       "capability": {
         "type": "Generic",
@@ -429,23 +404,23 @@
         },
         {
           "dmxRange": [11, 20],
-          "type": "Generic",
-          "comment": "Dim curve linear"
+          "type": "Maintenance",
+          "comment": "Dimmer curve linear"
         },
         {
           "dmxRange": [21, 30],
-          "type": "Generic",
-          "comment": "Dim curve square"
+          "type": "Maintenance",
+          "comment": "Dimmer curve square"
         },
         {
           "dmxRange": [31, 40],
-          "type": "Generic",
-          "comment": "Dim curve s curve"
+          "type": "Maintenance",
+          "comment": "Dimmer curve s curve"
         },
         {
           "dmxRange": [41, 50],
-          "type": "Generic",
-          "comment": "Dim curve Tungsten"
+          "type": "Maintenance",
+          "comment": "Dimmer curve Tungsten"
         },
         {
           "dmxRange": [51, 60],
@@ -453,7 +428,7 @@
         },
         {
           "dmxRange": [61, 80],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "CRMX unlink"
         },
         {
@@ -462,12 +437,12 @@
         },
         {
           "dmxRange": [91, 100],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Bluetooth on"
         },
         {
           "dmxRange": [101, 110],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Bluetooth off"
         },
         {
@@ -476,27 +451,27 @@
         },
         {
           "dmxRange": [121, 130],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "RDM off"
         },
         {
           "dmxRange": [131, 140],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "RDM on"
         },
         {
           "dmxRange": [141, 150],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Slew Off"
         },
         {
           "dmxRange": [151, 160],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Slew Set"
         },
         {
           "dmxRange": [161, 170],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Save in myMIX"
         },
         {
@@ -506,7 +481,6 @@
       ]
     },
     "Effects Speed": {
-      "name": "Effects Speed",
       "defaultValue": 0,
       "capability": {
         "type": "EffectSpeed",
@@ -541,7 +515,7 @@
   },
   "modes": [
     {
-      "name": "1: White 8 bits",
+      "name": "1: White 8-bit",
       "shortName": "White",
       "channels": [
         "Dimmer",
@@ -550,78 +524,78 @@
       ]
     },
     {
-      "name": "2: Color 8 bits",
+      "name": "2: Color 8-bit",
       "shortName": "Color",
       "channels": [
         "Dimmer",
         "White Base Color",
-        "Hue 8bit",
+        "Hue",
         "Saturation"
       ]
     },
     {
-      "name": "3: Gel 8 bits",
+      "name": "3: Gel 8-bit",
       "shortName": "Gel",
       "channels": [
         "Dimmer",
-        "MemHundreds",
-        "MemTens",
-        "MemSingles",
+        "Memory # Hundreds",
+        "Memory # Tens",
+        "Memory # Singles",
         "White Base Color",
         "Hue Gel",
         "Saturation Gel"
       ]
     },
     {
-      "name": "4: Pro 8 bits",
+      "name": "4: Pro 8-bit",
       "shortName": "Pro8",
       "channels": [
         "Dimmer",
-        "MemHundreds",
-        "MemTens",
-        "MemSingles",
+        "Memory # Hundreds",
+        "Memory # Tens",
+        "Memory # Singles",
         "Color Temperature",
         "Green-Magenta Point",
-        "Hue 8bit",
+        "Hue",
         "Saturation",
         "White Base Color",
         "Hue Gel",
         "Saturation Gel",
         "Effects Speed",
-        "x position",
-        "y position",
+        "X Position",
+        "Y Position",
         "Strobe",
         "Control"
       ]
     },
     {
-      "name": "5: Pro 16 bits",
+      "name": "5: Pro 16-bit",
       "shortName": "Pro16",
       "channels": [
         "Dimmer",
         "Dimmer fine",
-        "MemHundreds",
-        "MemTens",
-        "MemSingles",
+        "Memory # Hundreds",
+        "Memory # Tens",
+        "Memory # Singles",
         "Color Temperature",
         "Green-Magenta Point",
-        "Hue 16bit",
-        "Hue 16bit fine",
+        "Hue",
+        "Hue fine",
         "Saturation",
         "White Base Color",
         "Hue Gel",
         "Saturation Gel",
         "Effects Speed",
-        "x position",
-        "x position fine",
-        "y position",
-        "y position fine",
+        "X Position",
+        "X Position fine",
+        "Y Position",
+        "Y Position fine",
         "Strobe",
         "Control"
       ]
     },
     {
-      "name": "6: Full 8 bits",
+      "name": "6: Full 8-bit",
       "shortName": "Full8",
       "channels": [
         "Dimmer",
@@ -639,7 +613,7 @@
       ]
     },
     {
-      "name": "7: Full 16 bits",
+      "name": "7: Full 16-bit",
       "shortName": "Full16",
       "channels": [
         "Dimmer",
