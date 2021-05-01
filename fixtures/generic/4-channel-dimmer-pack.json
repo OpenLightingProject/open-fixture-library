@@ -1,0 +1,94 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "4-Channel Dimmer Pack",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Goetz"],
+    "createDate": "2021-05-01",
+    "lastModifyDate": "2021-05-01"
+  },
+  "comment": "Your usual off the shelf generic 4 Channel Dimmer Pack from Botec, Stairville, Lightmaxx, EuroLite, ShowTex, Varytec etc",
+  "links": {
+    "other": [
+      "https://open-fixture-library.org/"
+    ]
+  },
+  "availableChannels": {
+    "All Channels": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 1/2": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 3/4": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 1": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 2": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 3": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Channel 4": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-Channel",
+      "shortName": "1ch",
+      "channels": [
+        "All Channels"
+      ]
+    },
+    {
+      "name": "2-Channel",
+      "shortName": "2ch",
+      "channels": [
+        "Channel 1/2",
+        "Channel 3/4"
+      ]
+    },
+    {
+      "name": "4-Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Channel 1",
+        "Channel 2",
+        "Channel 3",
+        "Channel 4"
+      ]
+    }
+  ]
+}
