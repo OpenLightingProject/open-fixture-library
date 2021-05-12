@@ -1,23 +1,16 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Stage Wash 7x10W LED Moving Head",
-  "shortName": "StageRightWash7x10W-MH",
-  "categories": ["Moving Head", "Color Changer"],
+  "categories": ["Moving Head"],
   "meta": {
-    "authors": ["Felix Edelmann"],
-    "createDate": "2019-03-29",
-    "lastModifyDate": "2019-10-30"
-  },
-  "links": {
-    "manual": [
-      "https://downloads.monoprice.com/files/manuals/612870_Manual_170822.pdf"
-    ],
-    "productPage": [
-      "https://www.monoprice.com/product?p_id=612870"
-    ],
-    "video": [
-      "https://www.youtube.com/watch?v=GOy2Memx1qQ"
-    ]
+    "authors": ["Felix Edelmann", "fede"],
+    "createDate": "2021-05-12",
+    "lastModifyDate": "2021-05-12",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2021-05-12",
+      "comment": "created by OFL – https://open-fixture-library.org/stage-right/stage-wash-7x10w-led-moving-head (version 1.3.0)"
+    }
   },
   "physical": {
     "dimensions": [240, 300, 240],
@@ -31,7 +24,7 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -40,7 +33,7 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -56,23 +49,33 @@
       }
     },
     "Dimmer / Strobe": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 134],
-          "type": "Intensity"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Intensity off…bright",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
         },
         {
           "dmxRange": [135, 239],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedEnd": "fast",
+          "comment": "Strobe slow…fast"
         },
         {
           "dmxRange": [240, 255],
-          "type": "Intensity",
-          "brightness": "bright",
-          "helpWanted": "Is this capability correct?"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Intensity bright",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "helpWanted": "Are the automatically added speed values correct?"
         }
       ]
     },
@@ -119,13 +122,16 @@
       ]
     },
     "Color Effect Speed": {
+      "defaultValue": 0,
       "capability": {
         "type": "EffectSpeed",
         "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "comment": "Effect speed slow…fast"
       }
     },
     "Auto / Sound Mode": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 7],
@@ -134,14 +140,12 @@
         {
           "dmxRange": [8, 63],
           "type": "Effect",
-          "effectName": "Auto Mode",
-          "speed": "fast"
+          "effectName": "Auto Mode fast"
         },
         {
           "dmxRange": [64, 127],
           "type": "Effect",
-          "effectName": "Auto Mode",
-          "speed": "slow"
+          "effectName": "Auto Mode slow"
         },
         {
           "dmxRange": [128, 191],
@@ -158,9 +162,10 @@
       ]
     },
     "Reset": {
+      "defaultValue": 0,
       "capability": {
         "type": "Maintenance",
-        "helpWanted": "At which DMX value is a reset done? How many seconds must that DMX value be set?"
+        "comment": "Maintenance"
       }
     },
     "Master Dimmer": {
