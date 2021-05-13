@@ -1,7 +1,7 @@
-import schemaProperties from '../../../../lib/schema-properties.js';
-import { checkFixture } from '../../../../tests/fixture-valid.js';
-import { CoarseChannel } from '../../../../lib/model.js';
-import importJson from '../../../../lib/import-json.js';
+const schemaProperties = require(`../../../../lib/schema-properties.js`).default;
+const { checkFixture } = require(`../../../../tests/fixture-valid.js`);
+const { CoarseChannel } = require(`../../../../lib/model.js`);
+const importJson = require(`../../../../lib/import-json.js`);
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 /** @typedef {import('../../index.js').ApiResponse} ApiResponse */
@@ -12,7 +12,7 @@ import importJson from '../../../../lib/import-json.js';
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
  * @returns {Promise.<ApiResponse>} The handled response.
  */
-export async function createFixtureFromEditor({ request }) {
+async function createFixtureFromEditor({ request }) {
   try {
     const fixtureCreateResult = await getFixtureCreateResult(request.requestBody);
     return {
@@ -43,7 +43,7 @@ async function getFixtureCreateResult(fixtures) {
     errors: {},
   };
 
-  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, import.meta.url);
+  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, __dirname);
 
   // { 'uuid 1': 'new channel key 1', ... }
   const channelKeyMapping = {};
@@ -433,3 +433,5 @@ function getComboboxInput(property, from) {
 function slugify(string) {
   return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
 }
+
+module.exports = { createFixtureFromEditor };

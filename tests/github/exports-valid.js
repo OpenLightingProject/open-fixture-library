@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import { fileURLToPath } from 'url';
+const path = require(`path`);
 
-import { fixtureFromRepository } from '../../lib/model.js';
-import importJson from '../../lib/import-json.js';
-import * as pullRequest from './pull-request.js';
+const { fixtureFromRepository } = require(`../../lib/model.js`);
+const importJson = require(`../../lib/import-json.js`);
+const pullRequest = require(`./pull-request.js`);
 
 let plugins;
 let exportTests;
@@ -26,7 +26,7 @@ let testErrored = false;
     await pullRequest.init();
     const changedComponents = await pullRequest.fetchChangedComponents();
 
-    plugins = await importJson(`../../plugins/plugins.json`, import.meta.url);
+    plugins = await importJson(`../../plugins/plugins.json`, __dirname);
 
     exportTests = [];
     for (const exportPluginKey of plugins.exportPlugins) {
@@ -37,7 +37,7 @@ let testErrored = false;
       ));
     }
 
-    testFixtures = (await importJson(`../test-fixtures.json`, import.meta.url)).map(
+    testFixtures = (await importJson(`../test-fixtures.json`, __dirname)).map(
       fixture => [fixture.man, fixture.key],
     );
 
@@ -79,7 +79,7 @@ let testErrored = false;
 
     if (tasks.length === 0) {
       await pullRequest.updateComment({
-        fileUrl: new URL(import.meta.url),
+        filename: path.relative(path.join(__dirname, `../../`), __filename),
         name: `Export files validity`,
         lines: [],
       });
@@ -109,7 +109,7 @@ let testErrored = false;
     }
 
     await pullRequest.updateComment({
-      fileUrl: new URL(import.meta.url),
+      filename: path.relative(path.join(__dirname, `../../`), __filename),
       name: `Export files validity`,
       lines,
     });
@@ -221,9 +221,8 @@ function getTasksForFixtures(changedComponents) {
  * @returns {Promise} A promise resolving with an array of message lines.
  */
 async function getTaskPromise(task) {
-  const plugin = await import(`../../plugins/${task.pluginKey}/export.js`);
-  const { default: test } = await import(`../../plugins/${task.pluginKey}/exportTests/${task.testKey}.js`);
-
+  const plugin = require(`../../plugins/${task.pluginKey}/export.js`);
+  const test = require(`../../plugins/${task.pluginKey}/exportTests/${task.testKey}.js`);
   let emoji = `:heavy_check_mark:`;
   const detailListItems = [];
 
@@ -231,7 +230,7 @@ async function getTaskPromise(task) {
     const files = await plugin.exportFixtures(
       [await fixtureFromRepository(task.manufacturerKey, task.fixtureKey)],
       {
-        baseDirectory: fileURLToPath(new URL(`../../`, import.meta.url)),
+        baseDirectory: path.join(__dirname, `../..`),
         date: new Date(),
       },
     );

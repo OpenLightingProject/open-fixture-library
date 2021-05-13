@@ -2,14 +2,14 @@
  * @fileoverview Channel and capability presets, together with functions to export or import them.
  */
 
-import importJson from '../../lib/import-json.js';
+const importJson = require(`../../lib/import-json.js`);
 
-const qlcplusGoboAliasesPromise = importJson(`../../resources/gobos/aliases/qlcplus.json`, import.meta.url);
+const qlcplusGoboAliasesPromise = importJson(`../../resources/gobos/aliases/qlcplus.json`, __dirname);
 
 
 // ########## Helper functions ##########
 
-export const exportHelpers = {
+const exportHelpers = {
   isIncreasingSpeed: capability => capability.speed !== null && Math.abs(capability.speed[0].number) < Math.abs(capability.speed[1].number),
   isDecreasingSpeed: capability => capability.speed !== null && Math.abs(capability.speed[0].number) > Math.abs(capability.speed[1].number),
   isStopped: capability => capability.speed !== null && capability.speed[0].number === 0 && capability.speed[1].number === 0,
@@ -49,7 +49,7 @@ export const exportHelpers = {
   },
 };
 
-export const importHelpers = {
+const importHelpers = {
   getColorIntensityCap: color => ({
     type: `ColorIntensity`,
     color,
@@ -215,7 +215,7 @@ export const importHelpers = {
 
 // ########## Channel presets ##########
 
-export const channelPresets = {
+const channelPresets = {
   IntensityMasterDimmer: {
     isApplicable: capability => {
       const channel = capability._channel;
@@ -539,7 +539,7 @@ export const channelPresets = {
  * @param {CoarseChannel} channel The OFL channel object.
  * @returns {String|null} The QLC+ channel preset name or null, if there is no suitable one.
  */
-export function getChannelPreset(channel) {
+function getChannelPreset(channel) {
   if (channel.capabilities.length > 1) {
     return null;
   }
@@ -556,7 +556,7 @@ export function getChannelPreset(channel) {
  * @param {Number} tiltMax The maximum tilt angle, or 0.
  * @returns {Object} The OFL capability object.
  */
-export function getCapabilityFromChannelPreset(preset, channelName, panMax, tiltMax) {
+function getCapabilityFromChannelPreset(preset, channelName, panMax, tiltMax) {
   if (preset in channelPresets) {
     return channelPresets[preset].importCapability({
       channelName,
@@ -575,7 +575,7 @@ export function getCapabilityFromChannelPreset(preset, channelName, panMax, tilt
 
 // ########## Fine channel presets ##########
 
-export const fineChannelPresets = {
+const fineChannelPresets = {
   IntensityMasterDimmerFine: {
     isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `IntensityMasterDimmer`,
   },
@@ -668,7 +668,7 @@ export const fineChannelPresets = {
  * @param {FineChannel} fineChannel The OFL fine channel object.
  * @returns {String|null} The QLC+ channel preset name or null, if there is no suitable one.
  */
-export function getFineChannelPreset(fineChannel) {
+function getFineChannelPreset(fineChannel) {
   const coarseChannel = fineChannel.coarseChannel;
   const coarseChannelPreset = getChannelPreset(coarseChannel);
 
@@ -684,7 +684,7 @@ export function getFineChannelPreset(fineChannel) {
 
 // ########## Capability presets ##########
 
-export const capabilityPresets = {
+const capabilityPresets = {
 
   // shutter capabilities
 
@@ -1033,7 +1033,7 @@ export const capabilityPresets = {
  * @param {Capability} capability The OFL capability object.
  * @returns {Promise.<CapabilityPreset|null>} A Promise that resolves to the QLC+ capability preset or null, if there is no suitable one.
  */
-export async function getCapabilityPreset(capability) {
+async function getCapabilityPreset(capability) {
   const foundPresetName = Object.keys(capabilityPresets).find(
     presetName => capabilityPresets[presetName].isApplicable(capability),
   );
@@ -1055,7 +1055,7 @@ export async function getCapabilityPreset(capability) {
  * @param {Object} capabilityData Additional data about capability and channel.
  * @returns {Object} The OFL capability object.
  */
-export function getCapabilityFromCapabilityPreset(preset, capabilityData) {
+function getCapabilityFromCapabilityPreset(preset, capabilityData) {
   if (preset in capabilityPresets) {
     const capability = capabilityPresets[preset].importCapability(capabilityData);
 
@@ -1075,3 +1075,20 @@ export function getCapabilityFromCapabilityPreset(preset, capabilityData) {
     helpWanted: `Unknown QLC+ capability preset ${preset}, Res1="${capabilityData.res1}", Res2="${capabilityData.res2}".`,
   };
 }
+
+
+module.exports = {
+  channelPresets,
+  getChannelPreset,
+  getCapabilityFromChannelPreset,
+
+  fineChannelPresets,
+  getFineChannelPreset,
+
+  capabilityPresets,
+  getCapabilityPreset,
+  getCapabilityFromCapabilityPreset,
+
+  importHelpers,
+  exportHelpers,
+};

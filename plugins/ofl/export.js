@@ -1,21 +1,20 @@
-import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
-import importJson from '../../lib/import-json.js';
+const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
+const importJson = require(`../../lib/import-json.js`);
 
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 
-import { fixtureSchema } from '../../lib/esm-shim.cjs';
-export const version = fixtureSchema.version;
+module.exports.version = require(`../../schemas/fixture.json`).version;
 
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
  * @param {Object} options Global options, including:
  * @param {String} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {String|undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
-export async function exportFixtures(fixtures, options) {
-  const displayedPluginVersion = options.displayedPluginVersion || version;
+module.exports.exportFixtures = async function exportOfl(fixtures, options) {
+  const displayedPluginVersion = options.displayedPluginVersion || module.exports.version;
 
   const usedManufacturers = new Set();
 
@@ -39,7 +38,7 @@ export async function exportFixtures(fixtures, options) {
     };
   });
 
-  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, import.meta.url);
+  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, __dirname);
 
   // manufacturers.json file
   const usedManufacturerData = {
@@ -57,4 +56,4 @@ export async function exportFixtures(fixtures, options) {
   });
 
   return files;
-}
+};

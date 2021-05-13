@@ -5,17 +5,16 @@
  * keeping the set as small as possible) and updates tests/test-fixtures.json and tests/test-fixtures.md.
  */
 
-import { fileURLToPath } from 'url';
-import { readdir, writeFile } from 'fs/promises';
-import path from 'path';
-import chalk from 'chalk';
+const { readdir, writeFile } = require(`fs/promises`);
+const path = require(`path`);
+const chalk = require(`chalk`);
 
-import { fixtureFromRepository } from '../lib/model.js';
-import importJson from '../lib/import-json.js';
+const { fixtureFromRepository } = require(`../lib/model.js`);
+const importJson = require(`../lib/import-json.js`);
 
-const fixtureFeaturesDirectoryUrl = new URL(`../lib/fixture-features/`, import.meta.url);
-const jsonPath = fileURLToPath(new URL(`../tests/test-fixtures.json`, import.meta.url));
-const markdownPath = fileURLToPath(new URL(`../tests/test-fixtures.md`, import.meta.url));
+const fixtureFeaturesDirectory = path.join(__dirname, `../lib/fixture-features`);
+const jsonFile = path.join(__dirname, `../tests/test-fixtures.json`);
+const markdownFile = path.join(__dirname, `../tests/test-fixtures.md`);
 
 /**
  * @typedef {Object} FixtureFeature
@@ -34,7 +33,7 @@ const markdownPath = fileURLToPath(new URL(`../tests/test-fixtures.md`, import.m
  */
 
 (async () => {
-  const register = await importJson(`../fixtures/register.json`, import.meta.url);
+  const register = await importJson(`../fixtures/register.json`, __dirname);
 
   const fixtureFeatures = await getFixtureFeatures();
   const featuresUsed = Object.fromEntries(fixtureFeatures.map(feature => [feature.id, 0]));// check which features each fixture supports
@@ -100,11 +99,11 @@ const markdownPath = fileURLToPath(new URL(`../tests/test-fixtures.md`, import.m
   }
 
   try {
-    await writeFile(jsonPath, `${JSON.stringify(fixtures, null, 2)}\n`, `utf8`);
-    console.log(chalk.green(`[Success]`), `Updated ${jsonPath}`);
+    await writeFile(jsonFile, `${JSON.stringify(fixtures, null, 2)}\n`, `utf8`);
+    console.log(chalk.green(`[Success]`), `Updated ${jsonFile}`);
 
-    await writeFile(markdownPath, await getMarkdownCode(fixtures, fixtureFeatures), `utf8`);
-    console.log(chalk.green(`[Success]`), `Updated ${markdownPath}`);
+    await writeFile(markdownFile, await getMarkdownCode(fixtures, fixtureFeatures), `utf8`);
+    console.log(chalk.green(`[Success]`), `Updated ${markdownFile}`);
   }
   catch (error) {
     console.error(chalk.red(`[Fail]`), `Could not write test fixtures file:`, error);
@@ -118,19 +117,18 @@ const markdownPath = fileURLToPath(new URL(`../tests/test-fixtures.md`, import.m
 async function getFixtureFeatures() {
   const fixtureFeatures = [];
 
-  for (const fileName of await readdir(fixtureFeaturesDirectoryUrl)) {
-    if (path.extname(fileName) !== `.js`) {
+  for (const featureFile of await readdir(fixtureFeaturesDirectory)) {
+    if (path.extname(featureFile) !== `.js`) {
       continue;
     }
 
     // module exports array of fix features
-    const fixtureFeatureFileUrl = new URL(fileName, fixtureFeaturesDirectoryUrl);
-    const { default: fixtureFeatureFile } = await import(fixtureFeatureFileUrl);
+    const fixtureFeatureFile = require(path.join(fixtureFeaturesDirectory, featureFile));
 
     for (const [index, fixtureFeature] of fixtureFeatureFile.entries()) {
       // default id
       if (!(`id` in fixtureFeature)) {
-        fixtureFeature.id = path.basename(fileName, `.js`);
+        fixtureFeature.id = path.basename(featureFile, `.js`);
         if (fixtureFeatureFile.length > 1) {
           fixtureFeature.id += `-${index}`;
         }
@@ -157,7 +155,7 @@ async function getFixtureFeatures() {
  * @returns {Promise.<String>} A Promise that resolves to the markdown code to be used in a markdown file.
  */
 async function getMarkdownCode(fixtures, fixtureFeatures) {
-  const manufacturers = await importJson(`../fixtures/manufacturers.json`, import.meta.url);
+  const manufacturers = await importJson(`../fixtures/manufacturers.json`, __dirname);
 
   const mdLines = [
     `# Test fixtures`,

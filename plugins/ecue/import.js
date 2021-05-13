@@ -1,7 +1,7 @@
-import colorNameList from 'color-name-list/dist/colornames.esm.mjs';
-import xml2js from 'xml2js';
+const colorNameList = require(`color-name-list`);
+const xml2js = require(`xml2js`);
 
-export const version = `0.3.1`;
+module.exports.version = `0.3.1`;
 
 const colors = {};
 for (const color of colorNameList) {
@@ -14,7 +14,7 @@ for (const color of colorNameList) {
  * @param {String} authorName The importer's name.
  * @returns {Promise.<Object, Error>} A Promise resolving to an out object
  */
-export async function importFixtures(buffer, filename, authorName) {
+module.exports.importFixtures = async function importECue(buffer, filename, authorName) {
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
   const out = {
@@ -124,7 +124,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
     out.fixtures[fixtureKey] = fixture;
   }
-}
+};
 
 /**
  * @param {Object} ecueFixture The e:cue fixture object.

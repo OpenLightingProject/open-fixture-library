@@ -3,7 +3,7 @@
  * @param {String} nodeReference A string of the form "Name.Name.Name…", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-node
  * @returns {Object|null} The referenced XML node object, or null if it could not be found.
  */
-export function followXmlNodeReference(startNode, nodeReference) {
+function followXmlNodeReference(startNode, nodeReference) {
   if (!startNode || !nodeReference) {
     return null;
   }
@@ -45,7 +45,7 @@ export function followXmlNodeReference(startNode, nodeReference) {
  * @param {String} gdtfColorString A string in the form "0.3127, 0.3290, 100.0", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-colorCIE
  * @returns {String} The RGB hex code string in the form "#rrggbb".
  */
-export function getRgbColorFromGdtfColor(gdtfColorString) {
+function getRgbColorFromGdtfColor(gdtfColorString) {
   /* eslint-disable camelcase, space-in-parens, unicorn/no-zero-fractions */
 
   // functions ported from https://github.com/njsmith/colorspacious
@@ -119,7 +119,7 @@ export function getRgbColorFromGdtfColor(gdtfColorString) {
 /**
  * @param {Object} gdtfCapability The enhanced <ChannelSet> XML object.
  */
-export function normalizeAngularSpeedDirection(gdtfCapability) {
+function normalizeAngularSpeedDirection(gdtfCapability) {
   if (/CCW|counter[\s-]*clockwise/.test(gdtfCapability.$.Name)) {
     gdtfCapability._physicalFrom = -Math.abs(gdtfCapability._physicalFrom);
     gdtfCapability._physicalTo = -Math.abs(gdtfCapability._physicalTo);
@@ -129,3 +129,9 @@ export function normalizeAngularSpeedDirection(gdtfCapability) {
     gdtfCapability._physicalTo = Math.abs(gdtfCapability._physicalTo);
   }
 }
+
+module.exports = {
+  followXmlNodeReference,
+  getRgbColorFromGdtfColor,
+  normalizeAngularSpeedDirection,
+};

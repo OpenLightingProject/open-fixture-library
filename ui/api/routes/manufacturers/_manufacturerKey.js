@@ -1,4 +1,4 @@
-import importJson from '../../../../lib/import-json.js';
+const importJson = require(`../../../../lib/import-json.js`);
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 /** @typedef {import('../../index.js').ApiResponse} ApiResponse */
@@ -8,10 +8,10 @@ import importJson from '../../../../lib/import-json.js';
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
  * @returns {Promise.<ApiResponse>} The handled response.
  */
-export async function getManufacturerByKey({ request }) {
+async function getManufacturerByKey({ request }) {
   const { manufacturerKey } = request.params;
 
-  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, import.meta.url);
+  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, __dirname);
   if (!(manufacturerKey in manufacturers) || manufacturerKey === `$schema`) {
     return {
       statusCode: 404,
@@ -21,7 +21,7 @@ export async function getManufacturerByKey({ request }) {
     };
   }
 
-  const register = await importJson(`../../../../fixtures/register.json`, import.meta.url);
+  const register = await importJson(`../../../../fixtures/register.json`, __dirname);
   const manufacturer = Object.assign({}, manufacturers[manufacturerKey], {
     key: manufacturerKey,
     color: register.colors[manufacturerKey],
@@ -40,3 +40,6 @@ export async function getManufacturerByKey({ request }) {
     body: manufacturer,
   };
 }
+
+
+module.exports = { getManufacturerByKey };

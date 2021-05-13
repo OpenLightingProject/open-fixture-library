@@ -151,8 +151,8 @@ export default {
   watch: {
     shown: `update`,
   },
-  async mounted() {
-    const { default: A11yDialog } = await import(`a11y-dialog`);
+  mounted() {
+    const A11yDialog = require(`a11y-dialog`).default;
 
     this.dialog = new A11yDialog(this.$el);
 

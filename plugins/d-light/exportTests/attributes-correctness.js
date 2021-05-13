@@ -1,4 +1,4 @@
-import xml2js from 'xml2js';
+const xml2js = require(`xml2js`);
 
 /**
  * @typedef {Object} ExportFile
@@ -14,7 +14,7 @@ import xml2js from 'xml2js';
  * @param {Array.<ExportFile>} allExportFiles An array of all export files.
  * @returns {Promise.<undefined, Array.<String>|String>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
-export default async function testAttributesCorrectness(exportFile, allExportFiles) {
+module.exports = async function testAttributesCorrectness(exportFile, allExportFiles) {
   try {
     const xml = await xml2js.parseStringPromise(exportFile.content);
     const errors = [];
@@ -42,4 +42,4 @@ export default async function testAttributesCorrectness(exportFile, allExportFil
   catch (parseError) {
     throw `Error parsing XML: ${parseError.toString()}`;
   }
-}
+};

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import chalk from 'chalk';
+const chalk = require(`chalk`);
 
 const usedVariables = [
   `ALLOW_SEARCH_INDEXING`,
@@ -23,12 +23,10 @@ console.log(`Process environment variables:`);
 printVariables();
 console.log();
 
-import(`../lib/load-env-file.js`).then(() => {
-  console.log(`Environment variables after reading .env:`);
-  printVariables();
-}).catch(error => {
-  throw error;
-});
+require(`../lib/load-env-file`);
+
+console.log(`Environment variables after reading .env:`);
+printVariables();
 
 /**
  * Prints all used environment variables and their values / unset

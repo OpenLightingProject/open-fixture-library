@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import chalk from 'chalk';
-import childProcess from 'child_process';
-import { fileURLToPath } from 'url';
+const path = require(`path`);
+const chalk = require(`chalk`);
+const childProcess = require(`child_process`);
 
-const projectDirectory = fileURLToPath(new URL(`../`, import.meta.url));
+const projectDirectory = path.join(__dirname, `..`);
 
 try {
   childProcess.execSync(`npm run build`, {

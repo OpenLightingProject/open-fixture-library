@@ -1,21 +1,20 @@
 #!/usr/bin/env node
 
-import { fileURLToPath } from 'url';
-import { readdir, writeFile } from 'fs/promises';
-import path from 'path';
-import chalk from 'chalk';
+const { readdir, writeFile } = require(`fs/promises`);
+const path = require(`path`);
+const chalk = require(`chalk`);
 
-import { Register } from '../lib/register.js';
-import importJson from '../lib/import-json.js';
+const { Register } = require(`../lib/register.js`);
+const importJson = require(`../lib/import-json.js`);
 
 let register;
 let manufacturers;
 
-const fixturesPath = fileURLToPath(new URL(`../fixtures/`, import.meta.url));
+const fixturesPath = path.join(__dirname, `../fixtures/`);
 
 (async () => {
   try {
-    manufacturers = await importJson(`../fixtures/manufacturers.json`, import.meta.url);
+    manufacturers = await importJson(`../fixtures/manufacturers.json`, __dirname);
     register = new Register(manufacturers);
 
     await addFixturesToRegister();
