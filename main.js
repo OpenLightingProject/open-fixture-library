@@ -1,25 +1,23 @@
 #!/usr/bin/env node
 
-// see https://github.com/standard-things/esm#getting-started
-require = require(`esm`)(module); // eslint-disable-line no-global-assign
+import express from 'express';
+import compression from 'compression';
+import helmet from 'helmet';
+import nuxt from 'nuxt';
+import JSZip from 'jszip';
+import { fileURLToPath } from 'url';
 
-const express = require(`express`);
-const compression = require(`compression`);
-const helmet = require(`helmet`);
-const { loadNuxt, build } = require(`nuxt`);
-const JSZip = require(`jszip`);
+import { fixtureFromRepository, embedResourcesIntoFixtureJson } from './lib/model.js';
+import importJson from './lib/import-json.js';
+import Fixture from './lib/model/Fixture.js';
+import Manufacturer from './lib/model/Manufacturer.js';
+import apiRouter from './ui/api/index.js';
 
-const { fixtureFromRepository, embedResourcesIntoFixtureJson } = require(`./lib/model.js`);
-const importJson = require(`./lib/import-json.js`);
-const Fixture = require(`./lib/model/Fixture.js`).default;
-const Manufacturer = require(`./lib/model/Manufacturer.js`).default;
-const apiRouter = require(`./ui/api/index.js`);
-
-const pluginsPromise = importJson(`./plugins/plugins.json`, __dirname);
-const registerPromise = importJson(`./fixtures/register.json`, __dirname);
+const pluginsPromise = importJson(`./plugins/plugins.json`, import.meta.url);
+const registerPromise = importJson(`./fixtures/register.json`, import.meta.url);
 
 // setup environment variables
-require(`./lib/load-env-file.js`);
+import './lib/load-env-file.js';
 process.env.PORT = process.env.PORT || 5000;
 process.env.WEBSITE_URL = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT}/`;
 
@@ -115,7 +113,7 @@ app.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request, r
 
   if (format === `json`) {
     try {
-      const json = await importJson(`./fixtures/${manufacturerKey}/${fixtureKey}.json`, __dirname);
+      const json = await importJson(`./fixtures/${manufacturerKey}/${fixtureKey}.json`, import.meta.url);
       await embedResourcesIntoFixtureJson(json);
       response.json(json);
     }
@@ -146,13 +144,13 @@ app.use(`/api/v1`, apiRouter);
 
 // instantiate nuxt.js with the options
 const isDevelopment = process.argv[2] === `--dev`;
-loadNuxt(isDevelopment ? `dev` : `start`).then(async nuxt => {
+nuxt.loadNuxt(isDevelopment ? `dev` : `start`).then(async nuxtInstance => {
   // render every remaining route with Nuxt.js
-  app.use(nuxt.render);
+  app.use(nuxtInstance.render);
 
   if (isDevelopment) {
     console.log(`Starting dev server with hot reloading...`);
-    await build(nuxt);
+    await nuxt.build(nuxtInstance);
   }
 
   console.log(`Nuxt.js is ready.`);
@@ -175,11 +173,11 @@ app.listen(process.env.PORT, () => {
  * @returns {Promise} A Promise that is resolved when the response is sent.
  */
 async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDesc) {
-  const plugin = require(`./plugins/${pluginKey}/export.js`);
+  const plugin = await import(`./plugins/${pluginKey}/export.js`);
 
   try {
     const files = await plugin.exportFixtures(fixtures, {
-      baseDirectory: __dirname,
+      baseDirectory: fileURLToPath(new URL(`./`, import.meta.url)),
       date: new Date(),
     });
 

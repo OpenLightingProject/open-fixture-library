@@ -1,25 +1,25 @@
-const xmlbuilder = require(`xmlbuilder`);
-const sanitize = require(`sanitize-filename`);
+import xmlbuilder from 'xmlbuilder';
+import sanitize from 'sanitize-filename';
 
 /** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
 /** @typedef {import('../../lib/model/Capability.js').default} Capability */
-const { CoarseChannel } = require(`../../lib/model.js`);
-const { FineChannel } = require(`../../lib/model.js`);
+import { CoarseChannel } from '../../lib/model.js';
+import { FineChannel } from '../../lib/model.js';
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 /** @typedef {import('../../lib/model/Mode.js').default} Mode */
-const { SwitchingChannel } = require(`../../lib/model.js`);
+import { SwitchingChannel } from '../../lib/model.js';
 
-module.exports.version = `0.2.0`;
+export const version = `0.2.0`;
 
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
  * @param {Object} options Global options, including:
  * @param {String} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
+ * @param {String|undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
-module.exports.exportFixtures = async function exportDLight(fixtures, options) {
+export async function exportFixtures(fixtures, options) {
   const deviceFiles = [];
 
   for (const fixture of fixtures) {
@@ -30,7 +30,7 @@ module.exports.exportFixtures = async function exportDLight(fixtures, options) {
         .element({
           Device: {
             'OFL_Export': {
-              '@id': options.displayedPluginVersion || module.exports.version,
+              '@id': options.displayedPluginVersion || version,
               '#text': fixture.url,
             },
             frames: {
@@ -63,7 +63,7 @@ module.exports.exportFixtures = async function exportDLight(fixtures, options) {
   }
 
   return deviceFiles;
-};
+}
 
 /**
  * Channels are grouped in attributes in D::Light.

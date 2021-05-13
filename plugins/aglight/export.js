@@ -1,30 +1,30 @@
 /* Based on the ofl export plugin */
 
-const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
-const namedColors = require(`color-name-list`);
+import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
+import namedColors from 'color-name-list/dist/colornames.esm.mjs';
 
-const { Entity, NullChannel } = require(`../../lib/model.js`);
-const importJson = require(`../../lib/import-json.js`);
+import { Entity, NullChannel } from '../../lib/model.js';
+import importJson from '../../lib/import-json.js';
 
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 
 const units = new Set([`K`, `deg`, `%`, `ms`, `Hz`, `m^3/min`, `rpm`]);
 const excludeKeys = new Set([`comment`, `name`, `helpWanted`, `type`, `effectName`, `effectPreset`, `shutterEffect`, `wheel`, `isShaking`, `fogType`, `menuClick`]);
 
-module.exports.version = `1.0.0`;
+export const version = `1.0.0`;
 
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
  * @param {Object} options Global options, including:
  * @param {String} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
+ * @param {String|undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
-module.exports.exportFixtures = async function exportAGLight(fixtures, options) {
-  const displayedPluginVersion = options.displayedPluginVersion || module.exports.version;
+export async function exportFixtures(fixtures, options) {
+  const displayedPluginVersion = options.displayedPluginVersion || version;
 
-  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, __dirname);
+  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, import.meta.url);
 
   const library = {
     version: displayedPluginVersion,
@@ -51,7 +51,7 @@ module.exports.exportFixtures = async function exportAGLight(fixtures, options) 
     mimetype: `application/aglight-fixture-library`,
     fixtures,
   }];
-};
+}
 
 /**
  * Resolves matrix channels in modes' channel lists.

@@ -9,6 +9,7 @@
   "engines": {
     "node": "14.15.0"
   },
+  "type": "module",
   "main": "main.js",
   "scripts": {
     "dev": "node --max-old-space-size=4096 main.js --dev",
@@ -79,6 +80,7 @@
     "disparity": "^3.2.0",
     "eslint": "~7.26.0",
     "eslint-plugin-array-func": "~3.1.7",
+    "eslint-plugin-import": "~2.22.1",
     "eslint-plugin-jsdoc": "~34.0.2",
     "eslint-plugin-jsonc": "~1.2.1",
     "eslint-plugin-markdown": "~2.1.0",

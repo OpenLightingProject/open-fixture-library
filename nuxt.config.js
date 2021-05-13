@@ -1,4 +1,4 @@
-import path from 'path';
+import { fileURLToPath } from 'url';
 
 import plugins from './plugins/plugins.json';
 import register from './fixtures/register.json';
@@ -51,7 +51,7 @@ export default {
     },
     extend(config, context) {
       // exclude /assets/icons from url-loader
-      const iconsPath = path.resolve(__dirname, `ui/assets/icons`);
+      const iconsPath = fileURLToPath(new URL(`ui/assets/icons/`, import.meta.url));
       const urlLoader = config.module.rules.find(rule => rule.test.toString().includes(`|svg|`));
       urlLoader.exclude = iconsPath;
 

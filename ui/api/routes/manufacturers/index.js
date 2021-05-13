@@ -1,4 +1,4 @@
-const importJson = require(`../../../../lib/import-json.js`);
+import importJson from '../../../../lib/import-json.js';
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 /** @typedef {import('../../index.js').ApiResponse} ApiResponse */
@@ -8,9 +8,9 @@ const importJson = require(`../../../../lib/import-json.js`);
  * @param {OpenApiBackendContext} context Passed from OpenAPI Backend.
  * @returns {Promise.<ApiResponse>} The handled response.
  */
-async function getManufacturers(context) {
-  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, __dirname);
-  const register = await importJson(`../../../../fixtures/register.json`, __dirname);
+export async function getManufacturers(context) {
+  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, import.meta.url);
+  const register = await importJson(`../../../../fixtures/register.json`, import.meta.url);
 
   const manufacturerData = {};
 
@@ -28,6 +28,3 @@ async function getManufacturers(context) {
     body: manufacturerData,
   };
 }
-
-
-module.exports = { getManufacturers };
