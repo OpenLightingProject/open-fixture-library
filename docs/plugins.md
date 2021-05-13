@@ -35,17 +35,17 @@ If exporting is supported, create a `plugins/<plugin-key>/export.js` module that
 A very simple export plugin looks like this:
 
 ```js
-export const version = `0.1.0`; // semantic versioning of export plugin
+module.exports.version = `0.1.0`; // semantic versioning of export plugin
 
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects, see our fixture model
  * @param {Object} options Some global options, for example:
  * @param {String} options.baseDirectory Absolute path to OFL's root directory
  * @param {Date} options.date The current time.
- * @param {String|undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} All generated files (see file schema above)
  */
-export async function exportFixtures(fixtures, options) {
+module.exports.exportFixtures = async function exportPluginName(fixtures, options) {
   const outfiles = [];
 
   for (const fixture of fixtures) {
@@ -62,7 +62,7 @@ export async function exportFixtures(fixtures, options) {
   }
 
   return outfiles;
-}
+};
 ```
 
 ## Importing
@@ -92,7 +92,7 @@ If the file can not be parsed by the import plugin or contains errors, the retur
 Example:
 
 ```js
-export const version = `0.1.0`; // semantic versioning of import plugin
+module.exports.version = `0.1.0`; // semantic versioning of import plugin
 
 /**
  * @param {Buffer} buffer The imported file.
@@ -100,7 +100,7 @@ export const version = `0.1.0`; // semantic versioning of import plugin
  * @param {String} authorName The importer's name.
  * @returns {Promise.<Object, Error>} A Promise that resolves to an out object (see above) or rejects with an error.
  */
-export async function importFixtures(buffer, fileName, authorName) {
+module.exports.importFixtures = async function importPluginName(buffer, fileName, authorName) {
   const out = {
     manufacturers: {},
     fixtures: {},
@@ -129,7 +129,7 @@ export async function importFixtures(buffer, fileName, authorName) {
   out.fixtures[`${manufacturerKey}/${fixtureKey}`] = fixtureObject;
 
   return out;
-}
+};
 ```
 
 ## Export tests
@@ -141,7 +141,7 @@ A plugin's export test takes an exported file object as argument and evaluates i
 Each test module should be located at `plugins/<plugin-key>/exportTests/<export-test-key>.js`. Here's a dummy test illustrating the structure:
 
 ```js
-import xml2js from 'xml2js';
+const xml2js = require(`xml2js`);
 
 /**
  * @param {Object} exportFile The file returned by the plugins' export module.
@@ -152,7 +152,7 @@ import xml2js from 'xml2js';
  * @param {String|null} exportFile.mode Mode's shortName if given file only describes a single mode.
  * @returns {Promise.<undefined, Array.<String>|String>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
-export default async function testValueCorrectness(exportFile) {
+module.exports = async function testValueCorrectness(exportFile) {
   const xml = await xml2js.parseStringPromise(exportFile.content);
 
   const errors = [];
@@ -168,7 +168,7 @@ export default async function testValueCorrectness(exportFile) {
   }
 
   // everything's ok
-}
+};
 ```
 
 You can execute an export test from the command line:

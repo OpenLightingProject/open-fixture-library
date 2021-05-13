@@ -1,5 +1,5 @@
-import importJson from '../../../../lib/import-json.js';
-import { checkFixture } from '../../../../tests/fixture-valid.js';
+const importJson = require(`../../../../lib/import-json.js`);
+const { checkFixture } = require(`../../../../tests/fixture-valid.js`);
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 /** @typedef {import('../../index.js').ApiResponse} ApiResponse */
@@ -18,7 +18,7 @@ import { checkFixture } from '../../../../tests/fixture-valid.js';
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
  * @returns {ApiResponse} The handled response.
  */
-export async function importFixtureFile({ request }) {
+async function importFixtureFile({ request }) {
   try {
     const fixtureCreateResult = await importFixture(request.requestBody);
     return {
@@ -42,13 +42,13 @@ export async function importFixtureFile({ request }) {
  * @returns {FixtureCreateResult} The imported fixtures (and manufacturers) with warnings and errors.
  */
 async function importFixture(body) {
-  const { importPlugins } = await importJson(`../../../../plugins/plugins.json`, import.meta.url);
+  const { importPlugins } = await importJson(`../../../../plugins/plugins.json`, __dirname);
 
   if (!body.plugin || !importPlugins.includes(body.plugin)) {
     throw new Error(`'${body.plugin}' is not a valid import plugin.`);
   }
 
-  const plugin = await import(`../../../../plugins/${body.plugin}/import.js`);
+  const plugin = require(`../../../../plugins/${body.plugin}/import.js`);
   const { manufacturers, fixtures, warnings } = await plugin.importFixtures(
     Buffer.from(body.fileContentBase64, `base64`),
     body.fileName,
@@ -66,7 +66,7 @@ async function importFixture(body) {
     errors: {},
   };
 
-  const oflManufacturers = await importJson(`../../../../fixtures/manufacturers.json`, import.meta.url);
+  const oflManufacturers = await importJson(`../../../../fixtures/manufacturers.json`, __dirname);
 
   for (const [key, fixture] of Object.entries(result.fixtures)) {
     const [manufacturerKey, fixtureKey] = key.split(`/`);
@@ -83,3 +83,5 @@ async function importFixture(body) {
 
   return result;
 }
+
+module.exports = { importFixtureFile };

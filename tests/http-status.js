@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import chalk from 'chalk';
+const chalk = require(`chalk`);
 
-import '../lib/load-env-file.js';
+require(`../lib/load-env-file.js`);
 
-import SiteCrawler from '../lib/site-crawler.js';
+const SiteCrawler = require(`../lib/site-crawler.js`);
 
 (async () => {
   const testStartTime = Date.now();

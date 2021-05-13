@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
-import { readdir } from 'fs/promises';
-import path from 'path';
-import chalk from 'chalk';
-import minimist from 'minimist';
+const { readdir } = require(`fs/promises`);
+const path = require(`path`);
+const chalk = require(`chalk`);
+const minimist = require(`minimist`);
 
-import getAjvValidator from '../lib/ajv-validator.js';
-import getAjvErrorMessages from '../lib/get-ajv-error-messages.js';
-import { checkFixture, checkUniqueness } from './fixture-valid.js';
-import importJson from '../lib/import-json.js';
+const getAjvValidator = require(`../lib/ajv-validator.js`);
+const getAjvErrorMessages = require(`../lib/get-ajv-error-messages.js`);
+const { checkFixture, checkUniqueness } = require(`./fixture-valid.js`);
+const importJson = require(`../lib/import-json.js`);
 
 
 const cliArguments = minimist(process.argv.slice(2), {
@@ -16,11 +16,10 @@ const cliArguments = minimist(process.argv.slice(2), {
   alias: { h: `help`, a: `all-fixtures` },
 });
 
-const scriptName = import.meta.url.split(`/`).pop();
 
 const helpMessage = [
   `Check validity of some/all fixtures`,
-  `Usage: node ${scriptName} -a | -h | fixtures [...]`,
+  `Usage: node ${path.relative(process.cwd(), __filename)} -a | -h | fixtures [...]`,
   `Options:`,
   `  fixtures: a list of fixtures contained in the fixtures/ directory.`,
   `     has to resolve to the form 'manufacturer/fixture'`,
@@ -57,7 +56,7 @@ const uniqueValues = {
   fixShortNames: new Set(),
 };
 
-const fixtureDirectoryUrl = new URL(`../fixtures/`, import.meta.url);
+const fixtureDirectory = path.join(__dirname, `..`, `fixtures/`);
 
 /**
  * @returns {Promise.<Array.<Object>>} A Promise that resolves to an array of result objects.
@@ -66,13 +65,13 @@ async function runTests() {
   const promises = [];
 
   if (cliArguments.a) {
-    const directoryEntries = await readdir(fixtureDirectoryUrl, { withFileTypes: true });
+    const directoryEntries = await readdir(fixtureDirectory, { withFileTypes: true });
     const manufacturerKeys = directoryEntries.filter(entry => entry.isDirectory()).map(entry => entry.name);
 
     for (const manufacturerKey of manufacturerKeys) {
-      const manufacturersDirectoryUrl = new URL(manufacturerKey, fixtureDirectoryUrl);
+      const manufacturersDirectory = path.join(fixtureDirectory, manufacturerKey);
 
-      for (const file of await readdir(manufacturersDirectoryUrl)) {
+      for (const file of await readdir(manufacturersDirectory)) {
         if (path.extname(file) === `.json`) {
           const fixtureKey = path.basename(file, `.json`);
           promises.push(checkFixtureFile(manufacturerKey, fixtureKey));
@@ -118,7 +117,7 @@ async function checkFixtureFile(manufacturerKey, fixtureKey) {
   };
 
   try {
-    const fixtureJson = await importJson(filename, fixtureDirectoryUrl);
+    const fixtureJson = await importJson(filename, fixtureDirectory);
     Object.assign(result, await checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues));
   }
   catch (error) {
@@ -139,7 +138,7 @@ async function checkManufacturers() {
   };
 
   try {
-    const manufacturers = await importJson(result.name, fixtureDirectoryUrl);
+    const manufacturers = await importJson(result.name, fixtureDirectory);
     const validate = await getAjvValidator(`manufacturers`);
     const valid = validate(manufacturers);
     if (!valid) {

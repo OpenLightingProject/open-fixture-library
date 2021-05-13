@@ -1,4 +1,4 @@
-import importJson from '../../../../lib/import-json.js';
+const importJson = require(`../../../../lib/import-json.js`);
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 /** @typedef {import('../../index.js').ApiResponse} ApiResponse */
@@ -8,10 +8,13 @@ import importJson from '../../../../lib/import-json.js';
  * @param {OpenApiBackendContext} context Passed from OpenAPI Backend.
  * @returns {Promise.<ApiResponse>} The handled response.
  */
-export async function getPlugins(context) {
-  const plugins = await importJson(`../../../../plugins/plugins.json`, import.meta.url);
+async function getPlugins(context) {
+  const plugins = await importJson(`../../../../plugins/plugins.json`, __dirname);
 
   return {
     body: plugins,
   };
 }
+
+
+module.exports = { getPlugins };

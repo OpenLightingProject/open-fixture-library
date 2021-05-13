@@ -1,11 +1,10 @@
-import express from 'express';
-import chalk from 'chalk';
-import cors from 'cors';
-import { fileURLToPath } from 'url';
-import { OpenAPIBackend } from 'openapi-backend';
-import getAjvErrorMessages from '../../lib/get-ajv-error-messages.js';
+const express = require(`express`);
+const chalk = require(`chalk`);
+const cors = require(`cors`);
+const OpenAPIBackend = require(`openapi-backend`).default;
+const getAjvErrorMessages = require(`../../lib/get-ajv-error-messages.js`);
 
-import * as routeHandlers from './routes.js';
+const routeHandlers = require(`./routes.js`);
 
 /**
  * @typedef {Object} ApiResponse
@@ -39,7 +38,7 @@ router.use(cors({
 const base64Regex = /^(?:[\d+/A-Za-z]{4})*(?:[\d+/A-Za-z]{2}==|[\d+/A-Za-z]{3}=)?$/;
 
 const api = new OpenAPIBackend({
-  definition: fileURLToPath(new URL(`openapi.json`, import.meta.url)),
+  definition: `${__dirname}/openapi.json`,
   strict: process.env.NODE_ENV !== `production`,
   ajvOpts: {
     formats: {
@@ -105,4 +104,4 @@ const api = new OpenAPIBackend({
 
 router.use((request, response) => api.handleRequest(request, request, response));
 
-export default router;
+module.exports = router;

@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
-import diffPluginOutputs from '../../lib/diff-plugin-outputs.js';
-import importJson from '../../lib/import-json.js';
-import * as pullRequest from './pull-request.js';
+const path = require(`path`);
 
-import '../../lib/load-env-file.js';
+const diffPluginOutputs = require(`../../lib/diff-plugin-outputs.js`);
+const importJson = require(`../../lib/import-json.js`);
+const pullRequest = require(`./pull-request.js`);
+
+require(`../../lib/load-env-file.js`);
 
 /**
  * @typedef {Object} Task
@@ -24,7 +26,7 @@ import '../../lib/load-env-file.js';
 
     if (tasks.length === 0) {
       await pullRequest.updateComment({
-        fileUrl: new URL(import.meta.url),
+        filename: path.relative(path.join(__dirname, `../../`), __filename),
         name: `Plugin export diff`,
         lines: [],
       });
@@ -53,7 +55,7 @@ import '../../lib/load-env-file.js';
     }
 
     await pullRequest.updateComment({
-      fileUrl: new URL(import.meta.url),
+      filename: path.relative(path.join(__dirname, `../../`), __filename),
       name: `Plugin export diff`,
       lines,
     });
@@ -71,11 +73,11 @@ import '../../lib/load-env-file.js';
  * @returns {Promise.<Array.<Task>>} A Promise that resolves to an array of diff tasks to perform.
  */
 async function getDiffTasks(changedComponents) {
-  const testFixtures = (await importJson(`../test-fixtures.json`, import.meta.url)).map(
+  const testFixtures = (await importJson(`../test-fixtures.json`, __dirname)).map(
     fixture => `${fixture.man}/${fixture.key}`,
   );
 
-  const plugins = await importJson(`../../plugins/plugins.json`, import.meta.url);
+  const plugins = await importJson(`../../plugins/plugins.json`, __dirname);
   const usablePlugins = plugins.exportPlugins.filter(
     // don't diff new plugins and the ofl plugin (which essentially exports the source files)
     pluginKey => !changedComponents.added.exports.includes(pluginKey) && pluginKey !== `ofl`,
@@ -151,7 +153,7 @@ async function getDiffTasks(changedComponents) {
     const addedPlugins = changedComponents.added.exports;
     const removedPlugins = changedComponents.removed.exports;
     for (const addedPlugin of addedPlugins) {
-      const pluginData = await importJson(`../../plugins/${addedPlugin}/plugin.json`, import.meta.url);
+      const pluginData = await importJson(`../../plugins/${addedPlugin}/plugin.json`, __dirname);
 
       if (pluginData.previousVersions) {
         const previousVersions = Object.keys(pluginData.previousVersions);

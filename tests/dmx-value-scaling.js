@@ -1,10 +1,13 @@
 #!/usr/bin/env node
-import chalk from 'chalk';
+const chalk = require(`chalk`);
 
-import {
+// see https://github.com/standard-things/esm#getting-started
+require = require(`esm`)(module); // eslint-disable-line no-global-assign
+
+const {
   scaleDmxValue,
   scaleDmxRange,
-} from '../lib/scale-dmx-values.js';
+} = require(`../lib/scale-dmx-values.js`);
 
 
 let errorCount = 0;
