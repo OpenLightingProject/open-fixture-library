@@ -1,17 +1,17 @@
-const xml2js = require(`xml2js`);
+import xml2js from 'xml2js';
 
-const importJson = require(`../../lib/import-json.js`);
+import importJson from '../../lib/import-json.js';
 
-const qlcplusGoboAliasesPromise = importJson(`../../resources/gobos/aliases/qlcplus.json`, __dirname);
+const qlcplusGoboAliasesPromise = importJson(`../../resources/gobos/aliases/qlcplus.json`, import.meta.url);
 
-const {
+import {
   getCapabilityFromChannelPreset,
   getCapabilityFromCapabilityPreset,
   capabilityPresets,
   importHelpers,
-} = require(`./presets.js`);
+} from './presets.js';
 
-module.exports.version = `1.1.0`;
+export const version = `1.1.0`;
 
 /**
  * @param {Buffer} buffer The imported file.
@@ -19,7 +19,7 @@ module.exports.version = `1.1.0`;
  * @param {String} authorName The importer's name.
  * @returns {Promise.<Object, Error>} A Promise resolving to an out object
  */
-module.exports.importFixtures = async function importQlcPlus(buffer, filename, authorName) {
+export async function importFixtures(buffer, filename, authorName) {
   const timestamp = new Date().toISOString().replace(/T.*/, ``);
 
   const warnings = [];
@@ -36,7 +36,7 @@ module.exports.importFixtures = async function importQlcPlus(buffer, filename, a
   const manufacturerKey = slugify(qlcPlusFixture.Manufacturer[0]);
   const fixtureKey = `${manufacturerKey}/${slugify(fixture.name)}`;
 
-  const oflManufacturers = await importJson(`../../fixtures/manufacturers.json`, __dirname);
+  const oflManufacturers = await importJson(`../../fixtures/manufacturers.json`, import.meta.url);
 
   const manufacturers = {};
   if (!(manufacturerKey in oflManufacturers)) {
@@ -99,7 +99,7 @@ module.exports.importFixtures = async function importQlcPlus(buffer, filename, a
       [fixtureKey]: warnings,
     },
   };
-};
+}
 
 /**
  * @param {Object} qlcPlusFixture The QLC+ fixture object.
@@ -176,7 +176,7 @@ const slotTypeFunctions = {
         if (goboKey) {
           slot.resource = `gobos/${goboKey}`;
 
-          const resource = await importJson(`../../resources/gobos/${goboKey}.json`, __dirname);
+          const resource = await importJson(`../../resources/gobos/${goboKey}.json`, import.meta.url);
 
           if (resource.name === capability._) {
             useResourceName = true;

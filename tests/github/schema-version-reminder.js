@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 
-const path = require(`path`);
+import * as pullRequest from './pull-request.js';
 
-const pullRequest = require(`./pull-request.js`);
-
-require(`../../lib/load-env-file.js`);
+import '../../lib/load-env-file.js';
 
 (async () => {
   try {
@@ -21,7 +19,7 @@ require(`../../lib/load-env-file.js`);
     }
 
     await pullRequest.updateComment({
-      filename: path.relative(path.join(__dirname, `../../`), __filename),
+      fileUrl: new URL(import.meta.url),
       name: `Schema has changed`,
       lines,
     });

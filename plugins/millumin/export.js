@@ -1,28 +1,28 @@
-const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
+import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 
-const { CoarseChannel } = require(`../../lib/model.js`);
+import { CoarseChannel } from '../../lib/model.js';
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 
-module.exports.version = `0.4.0`;
+export const version = `0.4.0`;
 
 // needed for export test
-module.exports.supportedOflVersion = `7.3.0`;
+export const supportedOflVersion = `7.3.0`;
 
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
  * @param {Object} options Global options, including:
  * @param {String} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
+ * @param {String|undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
-module.exports.exportFixtures = async function exportMillumin(fixtures, options) {
+export async function exportFixtures(fixtures, options) {
   // one JSON file for each fixture
   const outFiles = fixtures.map(fixture => {
     const oflJson = JSON.parse(JSON.stringify(fixture.jsonObject));
     const milluminJson = {};
 
-    milluminJson.$schema = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${module.exports.supportedOflVersion}/schemas/fixture.json`;
+    milluminJson.$schema = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${supportedOflVersion}/schemas/fixture.json`;
     milluminJson.name = oflJson.name;
     addIfValidData(milluminJson, `shortName`, oflJson.shortName);
     milluminJson.categories = getDowngradedCategories(oflJson.categories);
@@ -67,7 +67,7 @@ module.exports.exportFixtures = async function exportMillumin(fixtures, options)
   });
 
   return outFiles;
-};
+}
 
 /**
  * Replaces the fixture's categories array with one that only includes categories

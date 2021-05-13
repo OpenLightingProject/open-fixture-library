@@ -1,5 +1,5 @@
-const createIssue = require(`../../../lib/create-github-issue.js`);
-const { fixtureFromRepository } = require(`../../../lib/model.js`);
+import createIssue from '../../../lib/create-github-issue.js';
+import { fixtureFromRepository } from '../../../lib/model.js';
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 /** @typedef {import('../index.js').ApiResponse} ApiResponse */
@@ -9,7 +9,7 @@ const { fixtureFromRepository } = require(`../../../lib/model.js`);
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
  * @returns {ApiResponse} The handled response.
  */
-async function createFeedbackIssue({ request }) {
+export async function createFeedbackIssue({ request }) {
   const {
     type,
     context,
@@ -71,5 +71,3 @@ async function createFeedbackIssue({ request }) {
     },
   };
 }
-
-module.exports = { createFeedbackIssue };

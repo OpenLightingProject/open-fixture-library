@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/no-abusive-eslint-disable */
 /* eslint-disable */
 
-require('details-polyfill');
+import 'details-polyfill';
 
 // https://tc39.github.io/ecma262/#sec-array.prototype.findIndex
 if (!Array.prototype.findIndex) {

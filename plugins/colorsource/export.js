@@ -1,16 +1,13 @@
-// see https://github.com/standard-things/esm#getting-started
-require = require(`esm`)(module); // eslint-disable-line no-global-assign
-const { v5: uuidv5 } = require(`uuid`);
+import { v5 as uuidv5 } from 'uuid';
 
-const {
+import {
   CoarseChannel,
   FineChannel,
   SwitchingChannel,
-} = require(`../../lib/model.js`);
-const { scaleDmxValue } = require(`../../lib/scale-dmx-values.js`);
+} from '../../lib/model.js';
+import { scaleDmxValue } from '../../lib/scale-dmx-values.js';
 
-module.exports.name = `ColorSource`;
-module.exports.version = `0.1.0`;
+export const version = `0.1.0`;
 
 const EDITOR_VERSION = `1.1.1.9.0.4`;
 
@@ -30,7 +27,7 @@ const UUID_NAMESPACE = `0de81b51-02b2-45e3-b53c-578f9eb31b77`; // seed for UUIDs
  * @param {Date|null} options.date The current time.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
-module.exports.exportFixtures = function exportColorSource(fixtures, options) {
+export async function exportFixtures(fixtures, options) {
   const exportJson = {
     date: options.date.toISOString().replace(/\.\d{3}Z$/, `Z`),
     editorVersion: EDITOR_VERSION,
@@ -69,7 +66,7 @@ module.exports.exportFixtures = function exportColorSource(fixtures, options) {
     mimetype: `application/json`,
     fixtures,
   }]);
-};
+}
 
 /**
  * @param {Array.<Object>} colorSourceChannels A ColorSource fixture's parameter property.
