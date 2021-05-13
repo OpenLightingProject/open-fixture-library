@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { readdir, writeFile } from 'fs/promises';
 import chalk from 'chalk';
 import importJson from '../lib/import-json.js';
@@ -42,11 +43,11 @@ const pluginDirectoryUrl = new URL(`../plugins/`, import.meta.url);
     Object.keys(plugins.data).sort().map(key => [key, plugins.data[key]]),
   );
 
-  const fileUrl = new URL(`plugins.json`, pluginDirectoryUrl);
+  const filePath = fileURLToPath(new URL(`plugins.json`, pluginDirectoryUrl));
 
   try {
-    await writeFile(fileUrl, `${JSON.stringify(plugins, null, 2)}\n`, `utf8`);
-    console.log(chalk.green(`[Success]`), `Updated plugin data file`, fileUrl.pathname);
+    await writeFile(filePath, `${JSON.stringify(plugins, null, 2)}\n`, `utf8`);
+    console.log(chalk.green(`[Success]`), `Updated plugin data file`, filePath);
     process.exit(0);
   }
   catch (error) {

@@ -2,8 +2,9 @@
 
 import chalk from 'chalk';
 import childProcess from 'child_process';
+import { fileURLToPath } from 'url';
 
-const projectDirectory = new URL(`../`, import.meta.url).pathname;
+const projectDirectory = fileURLToPath(new URL(`../`, import.meta.url));
 
 try {
   childProcess.execSync(`npm run build`, {

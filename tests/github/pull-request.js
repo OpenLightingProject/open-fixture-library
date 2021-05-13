@@ -1,6 +1,7 @@
 import path from 'path';
 import chalk from 'chalk';
 import { Octokit } from '@octokit/rest';
+import { fileURLToPath } from 'url';
 
 import '../../lib/load-env-file.js';
 
@@ -188,8 +189,8 @@ export async function updateComment(test) {
     return undefined;
   }
 
-  const oflRootUrl = new URL(`../../`, import.meta.url);
-  const relativeFilePath = path.relative(oflRootUrl.pathname, test.fileUrl.pathname);
+  const oflRootPath = fileURLToPath(new URL(`../../`, import.meta.url));
+  const relativeFilePath = path.relative(oflRootPath, fileURLToPath(test.fileUrl));
 
   const lines = [
     `<!-- GITHUB-TEST: ${relativeFilePath} -->`,

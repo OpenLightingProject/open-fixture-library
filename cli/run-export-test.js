@@ -2,6 +2,7 @@
 import path from 'path';
 import minimist from 'minimist';
 import chalk from 'chalk';
+import { fileURLToPath } from 'url';
 
 import { fixtureFromFile, fixtureFromRepository } from '../lib/model.js';
 import importJson from '../lib/import-json.js';
@@ -59,7 +60,7 @@ import importJson from '../lib/import-json.js';
     const files = await exportPlugin.exportFixtures(
       await Promise.all(fixtures),
       {
-        baseDirectory: new URL(`../`, import.meta.url).pathname,
+        baseDirectory: fileURLToPath(new URL(`../`, import.meta.url)),
         date: new Date(),
       },
     );

@@ -5,6 +5,7 @@
  * keeping the set as small as possible) and updates tests/test-fixtures.json and tests/test-fixtures.md.
  */
 
+import { fileURLToPath } from 'url';
 import { readdir, writeFile } from 'fs/promises';
 import path from 'path';
 import chalk from 'chalk';
@@ -13,8 +14,8 @@ import { fixtureFromRepository } from '../lib/model.js';
 import importJson from '../lib/import-json.js';
 
 const fixtureFeaturesDirectoryUrl = new URL(`../lib/fixture-features/`, import.meta.url);
-const jsonUrl = new URL(`../tests/test-fixtures.json`, import.meta.url);
-const markdownUrl = new URL(`../tests/test-fixtures.md`, import.meta.url);
+const jsonPath = fileURLToPath(new URL(`../tests/test-fixtures.json`, import.meta.url));
+const markdownPath = fileURLToPath(new URL(`../tests/test-fixtures.md`, import.meta.url));
 
 /**
  * @typedef {Object} FixtureFeature
@@ -99,11 +100,11 @@ const markdownUrl = new URL(`../tests/test-fixtures.md`, import.meta.url);
   }
 
   try {
-    await writeFile(jsonUrl, `${JSON.stringify(fixtures, null, 2)}\n`, `utf8`);
-    console.log(chalk.green(`[Success]`), `Updated ${jsonUrl.pathname}`);
+    await writeFile(jsonPath, `${JSON.stringify(fixtures, null, 2)}\n`, `utf8`);
+    console.log(chalk.green(`[Success]`), `Updated ${jsonPath}`);
 
-    await writeFile(markdownUrl, await getMarkdownCode(fixtures, fixtureFeatures), `utf8`);
-    console.log(chalk.green(`[Success]`), `Updated ${markdownUrl.pathname}`);
+    await writeFile(markdownPath, await getMarkdownCode(fixtures, fixtureFeatures), `utf8`);
+    console.log(chalk.green(`[Success]`), `Updated ${markdownPath}`);
   }
   catch (error) {
     console.error(chalk.red(`[Fail]`), `Could not write test fixtures file:`, error);

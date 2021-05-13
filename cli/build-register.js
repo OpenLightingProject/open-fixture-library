@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { fileURLToPath } from 'url';
 import { readdir, writeFile } from 'fs/promises';
 import path from 'path';
 import chalk from 'chalk';
@@ -10,7 +11,7 @@ import importJson from '../lib/import-json.js';
 let register;
 let manufacturers;
 
-const fixturesPath = new URL(`../fixtures/`, import.meta.url).pathname;
+const fixturesPath = fileURLToPath(new URL(`../fixtures/`, import.meta.url));
 
 (async () => {
   try {

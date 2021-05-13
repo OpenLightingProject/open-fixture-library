@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { fileURLToPath } from 'url';
 import { mkdir, writeFile } from 'fs/promises';
 import path from 'path';
 import minimist from 'minimist';
@@ -42,7 +43,7 @@ import importJson from '../lib/import-json.js';
         ([manufacturer, fixture]) => fixtureFromRepository(manufacturer, fixture),
       )),
       {
-        baseDirectory: new URL(`../`, import.meta.url).pathname,
+        baseDirectory: fileURLToPath(new URL(`../`, import.meta.url)),
         date: new Date(),
       },
     );

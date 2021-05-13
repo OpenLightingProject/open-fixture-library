@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import { fileURLToPath } from 'url';
+
 import { fixtureFromRepository } from '../../lib/model.js';
 import importJson from '../../lib/import-json.js';
 import * as pullRequest from './pull-request.js';
@@ -229,7 +231,7 @@ async function getTaskPromise(task) {
     const files = await plugin.exportFixtures(
       [await fixtureFromRepository(task.manufacturerKey, task.fixtureKey)],
       {
-        baseDirectory: new URL(`../../`, import.meta.url).pathname,
+        baseDirectory: fileURLToPath(new URL(`../../`, import.meta.url)),
         date: new Date(),
       },
     );

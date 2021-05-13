@@ -5,6 +5,7 @@ import compression from 'compression';
 import helmet from 'helmet';
 import nuxt from 'nuxt';
 import JSZip from 'jszip';
+import { fileURLToPath } from 'url';
 
 import { fixtureFromRepository, embedResourcesIntoFixtureJson } from './lib/model.js';
 import importJson from './lib/import-json.js';
@@ -176,7 +177,7 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
 
   try {
     const files = await plugin.exportFixtures(fixtures, {
-      baseDirectory: new URL(`./`, import.meta.url).pathname,
+      baseDirectory: fileURLToPath(new URL(`./`, import.meta.url)),
       date: new Date(),
     });
 

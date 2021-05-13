@@ -1,6 +1,7 @@
 import express from 'express';
 import chalk from 'chalk';
 import cors from 'cors';
+import { fileURLToPath } from 'url';
 import { OpenAPIBackend } from 'openapi-backend';
 import getAjvErrorMessages from '../../lib/get-ajv-error-messages.js';
 
@@ -38,7 +39,7 @@ router.use(cors({
 const base64Regex = /^(?:[\d+/A-Za-z]{4})*(?:[\d+/A-Za-z]{2}==|[\d+/A-Za-z]{3}=)?$/;
 
 const api = new OpenAPIBackend({
-  definition: new URL(`openapi.json`, import.meta.url).pathname,
+  definition: fileURLToPath(new URL(`openapi.json`, import.meta.url)),
   strict: process.env.NODE_ENV !== `production`,
   ajvOpts: {
     formats: {
