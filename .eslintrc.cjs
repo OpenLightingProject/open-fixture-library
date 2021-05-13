@@ -251,7 +251,6 @@ const disabledRules = [
   `unicorn/no-array-reduce`,
   `unicorn/no-useless-undefined`,
   `unicorn/prefer-node-protocol`,
-  `unicorn/prefer-module`,
   `unicorn/prefer-spread`,
   `vue/multiline-html-element-content-newline`,
   `vue/singleline-html-element-content-newline`,
@@ -325,6 +324,7 @@ module.exports = {
       },
       rules: {
         'import/no-commonjs': `off`,
+        'unicorn/prefer-module': `off`,
       },
     },
     {
