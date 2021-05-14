@@ -12,6 +12,7 @@ export default {
     [`@nuxtjs/axios`, {
       browserBaseURL: `/`,
     }],
+    `nuxt-helmet`,
     `cookie-universal-nuxt`,
     `@nuxtjs/robots`,
     `@nuxtjs/sitemap`,
@@ -39,6 +40,13 @@ export default {
       handler: `~/api/download.js`,
     },
   ],
+  helmet: {
+    expectCt: false,
+    hsts: {
+      maxAge: 2 * 365 * 24 * 60 * 60,
+      preload: true,
+    },
+  },
   css: [
     `~/assets/styles/style.scss`,
     `embetty-vue/dist/embetty-vue.css`,

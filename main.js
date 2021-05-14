@@ -5,7 +5,6 @@ require = require(`esm`)(module); // eslint-disable-line no-global-assign
 
 const express = require(`express`);
 const compression = require(`compression`);
-const helmet = require(`helmet`);
 const { loadNuxt, build } = require(`nuxt`);
 
 // setup environment variables
@@ -14,16 +13,6 @@ process.env.PORT = process.env.PORT || 5000;
 process.env.WEBSITE_URL = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT}/`;
 
 const app = express();
-
-// set various security HTTP headers
-app.use(helmet({
-  contentSecurityPolicy: false, // set in Nuxt config, so inline scripts are allowed by their SHA hash
-  expectCt: false,
-  hsts: {
-    maxAge: 2 * 365 * 24 * 60 * 60,
-    preload: true,
-  },
-}));
 
 // support JSON encoded bodies
 app.use(express.json({ limit: `50mb` }));
