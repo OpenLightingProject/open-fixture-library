@@ -21,7 +21,6 @@ Locally, running `npm run dev` starts the development server at  `http://localho
   - `pages/` – All website pages (in the [correct directory structure](https://nuxtjs.org/guide/routing)) as Vue components
   - `plugins/` – [Nuxt plugins](https://nuxtjs.org/guide/plugins) that load and instantiate external modules
   - `static/` – Resources that don't need processing before being served
-* `main.js`
 * `nuxt.config.js`
 
 

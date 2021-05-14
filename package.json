@@ -9,10 +9,9 @@
   "engines": {
     "node": "14.15.0"
   },
-  "main": "main.js",
   "scripts": {
-    "dev": "node --max-old-space-size=4096 main.js --dev",
-    "start": "node --max-old-space-size=4096 main.js",
+    "dev": "nuxt dev",
+    "start": "nuxt start",
 
     "build": "npm run build-without-nuxt && npm run build:nuxt",
     "build-without-nuxt": "npm run build:register && npm run build:plugin-data && npm run build:test-fixtures && npm run build:model-docs && npm run build:api-docs",
