@@ -21,7 +21,8 @@ Please update these docs and [`cli/debug-env-variables.js`](../cli/debug-env-var
 |`GITHUB_USER_TOKEN`                | A 40-digit [GitHub access token][gh-token] | Used to create pull request when adding fixtures and create/delete comments after running [GitHub tests](testing.md) |
 |`GITHUB_BROKEN_LINKS_ISSUE_NUMBER` | A GitHub issue number                      | Used by [tests/external-links.js](../tests/external-links.js) |
 |`NODE_ENV`                         | `production` or `development` (default)    | Introduced by Express.js, `production` enables caching, minimizing and more optimizations [improving the performance a lot][node-env-perf]. |
-|`PORT`                             | A free port number, defaults to `5000`     | On which port to start the server. |
+|`PORT`                             | A free port number, defaults to `3000`     | On which port to start the Nuxt.js server. |
+|`HOST`                             | A string, defaults to `localhost`          | On which host name or IP address to start the Nuxt.js server. |
 |`WEBSITE_URL`                      | An absolute URL with a trailing slash.     | The public URL of the website. Defaults to `http://localhost:${PORT}/`. |
 |`GITHUB_PR_NUMBER`                 | A GitHub pull request number               | In a pull request, the PR number. |
 |`GITHUB_PR_HEAD_REF`               | A git ref                                  | In a pull request, the PR head ref (e.g. `feature-branch`). |
