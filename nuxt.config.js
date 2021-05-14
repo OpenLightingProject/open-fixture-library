@@ -7,6 +7,7 @@ import { fixtureFromRepository } from './lib/model.js';
 const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT}/`;
 
 export default {
+  telemetry: true,
   srcDir: `./ui/`,
   modules: [
     [`@nuxtjs/axios`, {
