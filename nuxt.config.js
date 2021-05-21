@@ -56,6 +56,7 @@ export default {
     websiteUrl,
   },
   build: {
+    quiet: false,
     loaders: {
       // condense whitespace in Vue templates
       vue: {
