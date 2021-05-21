@@ -4,14 +4,16 @@ import plugins from './plugins/plugins.json';
 import register from './fixtures/register.json';
 import { fixtureFromRepository } from './lib/model.js';
 
-const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT}/`;
+const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT || 3000}/`;
 
 export default {
+  telemetry: true,
   srcDir: `./ui/`,
   modules: [
     [`@nuxtjs/axios`, {
       browserBaseURL: `/`,
     }],
+    `nuxt-helmet`,
     `cookie-universal-nuxt`,
     `@nuxtjs/robots`,
     `@nuxtjs/sitemap`,
@@ -29,6 +31,23 @@ export default {
       ssr: false,
     },
   ],
+  serverMiddleware: [
+    {
+      path: `/api/v1`,
+      handler: `~/api/index.js`,
+    },
+    {
+      path: `/`,
+      handler: `~/api/download.js`,
+    },
+  ],
+  helmet: {
+    expectCt: false,
+    hsts: {
+      maxAge: 2 * 365 * 24 * 60 * 60,
+      preload: true,
+    },
+  },
   css: [
     `~/assets/styles/style.scss`,
     `embetty-vue/dist/embetty-vue.css`,
@@ -37,6 +56,7 @@ export default {
     websiteUrl,
   },
   build: {
+    quiet: false,
     loaders: {
       // condense whitespace in Vue templates
       vue: {

@@ -371,7 +371,7 @@ By setting the property `isShaking` to `slot`, one can specify that only the cur
 
 We link to [Open Lighting's RDM database](http://rdm.openlighting.org) if possible. Thus, we need to specify the RDM manufacturer ID per manufacturer and the RDM model ID per fixture. Additionally, each mode is mapped to the respective RDM personality via the `rdmPersonalityIndex` property. To ensure compatibility, we also track, for which RDM fixture software (firmware) version the mode indices are specified.
 
-If RDM manufacturer and model ID are known, we open the respective fixture page when going to `/rdm` (handled in [`main.js`](../main.js) and `views/pages/rdm-*.js`).
+If RDM manufacturer and model ID are known, we open the respective fixture page when going to `/rdm` (handled in [`ui/pages/rdm.vue`](../ui/pages/rdm.vue)).
 
 
 ## Fixture redirects
