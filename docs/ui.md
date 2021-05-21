@@ -5,7 +5,7 @@ Our website [open-fixture-library.org/](https://open-fixture-library.org/) is a 
 
 ## Local development server
 
-Locally, running `npm run dev` starts the development server at  `http://localhost:5000/` with hot module reloading, i.e. a changed Vue component file patches only that component without having to reload the whole page. Port 5000 can be changed with the environment variable `PORT`.
+Locally, running `npm run dev` starts the development server at `http://localhost:3000/` with hot module reloading, i.e. a changed Vue component file automatically patches only that component without having to reload the whole page. The port can be changed with the environment variable `PORT`, e.g. in the `.env` file.
 
 
 ## Folder structure
@@ -21,7 +21,6 @@ Locally, running `npm run dev` starts the development server at  `http://localho
   - `pages/` – All website pages (in the [correct directory structure](https://nuxtjs.org/guide/routing)) as Vue components
   - `plugins/` – [Nuxt plugins](https://nuxtjs.org/guide/plugins) that load and instantiate external modules
   - `static/` – Resources that don't need processing before being served
-* `main.js`
 * `nuxt.config.js`
 
 
