@@ -4,7 +4,7 @@ import plugins from './plugins/plugins.json';
 import register from './fixtures/register.json';
 import { fixtureFromRepository } from './lib/model.js';
 
-const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT}/`;
+const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT || 3000}/`;
 
 export default {
   telemetry: true,
