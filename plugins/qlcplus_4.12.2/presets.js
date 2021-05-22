@@ -215,7 +215,7 @@ export const importHelpers = {
 
 // ########## Channel presets ##########
 
-export const channelPresets = {
+const channelPresets = {
   IntensityMasterDimmer: {
     isApplicable: capability => {
       const channel = capability._channel;
@@ -575,7 +575,7 @@ export function getCapabilityFromChannelPreset(preset, channelName, panMax, tilt
 
 // ########## Fine channel presets ##########
 
-export const fineChannelPresets = {
+const fineChannelPresets = {
   IntensityMasterDimmerFine: {
     isApplicable: ({ coarseChannelPreset }) => coarseChannelPreset === `IntensityMasterDimmer`,
   },

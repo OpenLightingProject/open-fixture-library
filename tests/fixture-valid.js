@@ -1201,7 +1201,7 @@ export function checkUniqueness(set, value, result, messageIfNotUnique) {
  * @param {*} error An error object to append to the message.
  * @returns {String} A string containing the message and a deep inspection of the given error object.
  */
-export function getErrorString(description, error) {
+function getErrorString(description, error) {
   if (typeof error === `string`) {
     return `${description} ${error}`;
   }
