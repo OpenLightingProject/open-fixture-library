@@ -50,6 +50,10 @@ const enabledRuleParameters = {
   'no-multi-spaces': [],
   'no-new-object': [],
   'no-prototype-builtins': [],
+  'no-restricted-imports': [{
+    name: `fs`,
+    message: `Please use 'fs/promises' instead.`,
+  }],
   'no-return-assign': [],
   'no-return-await': [],
   'no-shadow': [{ builtinGlobals: false }],
@@ -135,19 +139,6 @@ const enabledRuleParameters = {
   'promise/valid-params': [],
 
   // eslint-plugin-unicorn
-  'unicorn/import-style': [{
-    styles: {
-      fs: {
-        unassigned: false,
-        default: false,
-        namespace: false,
-        named: false,
-      },
-      'fs/promises': {
-        named: true,
-      },
-    },
-  }],
   'unicorn/prevent-abbreviations': [{
     replacements: {
       ref: false,
