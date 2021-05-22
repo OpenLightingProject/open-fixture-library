@@ -9,14 +9,14 @@ import importJson from '../lib/import-json.js';
 /** @typedef {import('../lib/model/AbstractChannel.js').default} AbstractChannel */
 /** @typedef {import('../lib/model/Capability.js').default} Capability */
 /** @typedef {import('../lib/model/CoarseChannel.js').default} CoarseChannel */
-import { FineChannel } from '../lib/model.js';
-import { Fixture } from '../lib/model.js';
+import FineChannel from '../lib/model/FineChannel.js';
+import Fixture from '../lib/model/Fixture.js';
 /** @typedef {import('../lib/model/Matrix.js').default} Matrix */
 /** @typedef {import('../lib/model/Meta.js').default} Meta */
-import { NullChannel } from '../lib/model.js';
+import NullChannel from '../lib/model/NullChannel.js';
 /** @typedef {import('../lib/model/Physical.js').default} Physical */
 /** @typedef {import('../lib/model/TemplateChannel.js').default} TemplateChannel */
-import { SwitchingChannel } from '../lib/model.js';
+import SwitchingChannel from '../lib/model/SwitchingChannel.js';
 /** @typedef {import('../lib/model/Wheel.js').default} Wheel */
 
 let initialized = false;

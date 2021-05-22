@@ -1,6 +1,6 @@
 import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 
-import { CoarseChannel } from '../../lib/model.js';
+import CoarseChannel from '../../lib/model/CoarseChannel.js';
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 
 export const version = `0.4.0`;

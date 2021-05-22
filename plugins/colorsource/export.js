@@ -1,10 +1,8 @@
 import { v5 as uuidv5 } from 'uuid';
 
-import {
-  CoarseChannel,
-  FineChannel,
-  SwitchingChannel,
-} from '../../lib/model.js';
+import CoarseChannel from '../../lib/model/CoarseChannel.js';
+import FineChannel from '../../lib/model/FineChannel.js';
+import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 import { scaleDmxValue } from '../../lib/scale-dmx-values.js';
 
 export const version = `0.1.0`;

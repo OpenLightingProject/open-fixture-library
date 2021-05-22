@@ -234,7 +234,6 @@ const warnRules = new Set([
 
 const disabledRules = [
   `no-console`,
-  `import/no-duplicates`,
   `jsdoc/newline-after-description`,
   `jsdoc/no-undefined-types`,
   `jsdoc/require-description`,

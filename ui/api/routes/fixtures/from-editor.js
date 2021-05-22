@@ -1,6 +1,6 @@
 import schemaProperties from '../../../../lib/schema-properties.js';
 import { checkFixture } from '../../../../tests/fixture-valid.js';
-import { CoarseChannel } from '../../../../lib/model.js';
+import CoarseChannel from '../../../../lib/model/CoarseChannel.js';
 import importJson from '../../../../lib/import-json.js';
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */

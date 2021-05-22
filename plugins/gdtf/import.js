@@ -1,7 +1,7 @@
 import xml2js from 'xml2js';
 import JSZip from 'jszip';
 
-import { CoarseChannel } from '../../lib/model.js';
+import CoarseChannel from '../../lib/model/CoarseChannel.js';
 import { scaleDmxValue, scaleDmxRangeIndividually } from '../../lib/scale-dmx-values.js';
 import importJson from '../../lib/import-json.js';
 import gdtfAttributes, { gdtfUnits } from './gdtf-attributes.js';

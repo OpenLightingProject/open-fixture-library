@@ -9,13 +9,13 @@ import {
 } from './presets.js';
 
 /** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
-import { Capability } from '../../lib/model.js';
-import { CoarseChannel } from '../../lib/model.js';
+import Capability from '../../lib/model/Capability.js';
+import CoarseChannel from '../../lib/model/CoarseChannel.js';
 /** @typedef {import('../../lib/model/FineChannel.js').default} FineChannel */
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 /** @typedef {import('../../lib/model/Mode.js').default} Mode */
-import { Physical } from '../../lib/model.js';
-import { SwitchingChannel } from '../../lib/model.js';
+import Physical from '../../lib/model/Physical.js';
+import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 
 export const version = `1.3.0`;
 
