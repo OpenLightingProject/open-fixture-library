@@ -28,7 +28,7 @@
         v-model="capability.typeData.effectName"
         :formstate="formstate"
         :name="`capability${capability.uuid}-effectName`"
-        :schema-property="properties.definitions.nonEmptyString"
+        :schema-property="schemaDefinitions.nonEmptyString"
         :required="true" />
 
       <select
@@ -112,14 +112,14 @@
         v-model="capability.typeData.comment"
         :formstate="formstate"
         :name="`capability${capability.uuid}-comment`"
-        :schema-property="properties.definitions.nonEmptyString" />
+        :schema-property="schemaDefinitions.nonEmptyString" />
     </LabeledInput>
 
   </div>
 </template>
 
 <script>
-import schemaProperties from '../../../../lib/schema-properties.js';
+import { schemaDefinitions } from '../../../../lib/schema-properties.js';
 
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputBoolean from '../../PropertyInputBoolean.vue';
@@ -146,7 +146,8 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties,
+      schemaDefinitions,
+      effectPresets: schemaDefinitions.effectPreset.enum,
 
       /**
        * Used in {@link EditorCapabilityTypeData}
@@ -174,10 +175,6 @@ export default {
     };
   },
   computed: {
-    effectPresets() {
-      return this.properties.definitions.effectPreset.enum;
-    },
-
     /**
      * Called from {@link EditorCapabilityTypeData}
      * @public

@@ -9,7 +9,7 @@
         v-model="wheelSlot.typeData.name"
         :formstate="formstate"
         :name="`wheel-slot${wheelSlot.uuid}-name`"
-        :schema-property="properties.definitions.nonEmptyString" />
+        :schema-property="schemaDefinitions.nonEmptyString" />
     </LabeledInput>
 
     <LabeledInput
@@ -19,7 +19,7 @@
       <PropertyInputText
         v-model="wheelSlot.typeData.colorsHexString"
         :name="`wheel-slot${wheelSlot.uuid}-colorsHexString`"
-        :schema-property="properties.definitions.nonEmptyString"
+        :schema-property="schemaDefinitions.nonEmptyString"
         valid-color-hex-list />
     </LabeledInput>
 
@@ -40,14 +40,14 @@
         v-model="wheelSlot.typeData.colorTemperature"
         :formstate="formstate"
         :name="`wheel-slot${wheelSlot.uuid}-colorTemperature`"
-        :schema-property="properties.entities.colorTemperature" />
+        :schema-property="entitiesSchema.colorTemperature" />
     </LabeledInput>
 
   </div>
 </template>
 
 <script>
-import schemaProperties from '../../../../lib/schema-properties.js';
+import { schemaDefinitions, entitiesSchema } from '../../../../lib/schema-properties.js';
 import { colorsHexStringToArray } from '../../../assets/scripts/editor-utils.js';
 
 import LabeledInput from '../../LabeledInput.vue';
@@ -73,7 +73,8 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties,
+      schemaDefinitions,
+      entitiesSchema,
 
       /**
        * Used in {@link EditorWheelSlot}

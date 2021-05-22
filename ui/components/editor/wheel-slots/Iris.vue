@@ -10,14 +10,14 @@
         v-model="wheelSlot.typeData.openPercent"
         :formstate="formstate"
         :name="`wheel-slot${wheelSlot.uuid}-openPercent`"
-        :schema-property="properties.entities.irisPercent" />
+        :schema-property="entitiesSchema.irisPercent" />
     </LabeledInput>
 
   </div>
 </template>
 
 <script>
-import schemaProperties from '../../../../lib/schema-properties.js';
+import { entitiesSchema } from '../../../../lib/schema-properties.js';
 
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputEntity from '../../PropertyInputEntity.vue';
@@ -40,7 +40,7 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties,
+      entitiesSchema,
 
       /**
        * Used in {@link EditorWheelSlot}

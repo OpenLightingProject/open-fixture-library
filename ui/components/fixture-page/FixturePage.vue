@@ -189,7 +189,7 @@
 import register from '../../../fixtures/register.json';
 
 import Fixture from '../../../lib/model/Fixture.js';
-import schemaProperties from '../../../lib/schema-properties.js';
+import { linksProperties } from '../../../lib/schema-properties.js';
 
 import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
 
@@ -272,7 +272,7 @@ export default {
     links() {
       const links = [];
 
-      for (const linkType of Object.keys(schemaProperties.links)) {
+      for (const linkType of Object.keys(linksProperties)) {
         let linkDisplayNumber = 1;
         let linksOfType = this.fixture.getLinksOfType(linkType);
 

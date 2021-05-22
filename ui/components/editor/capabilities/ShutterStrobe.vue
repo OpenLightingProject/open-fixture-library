@@ -73,14 +73,14 @@
         v-model="capability.typeData.comment"
         :formstate="formstate"
         :name="`capability${capability.uuid}-comment`"
-        :schema-property="properties.definitions.nonEmptyString" />
+        :schema-property="schemaDefinitions.nonEmptyString" />
     </LabeledInput>
 
   </div>
 </template>
 
 <script>
-import schemaProperties from '../../../../lib/schema-properties.js';
+import { schemaDefinitions, capabilityTypes } from '../../../../lib/schema-properties.js';
 
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputBoolean from '../../PropertyInputBoolean.vue';
@@ -107,7 +107,8 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties,
+      schemaDefinitions,
+      shutterEffects: capabilityTypes.ShutterStrobe.properties.shutterEffect.enum,
 
       /**
        * Used in {@link EditorCapabilityTypeData}
@@ -128,9 +129,6 @@ export default {
     };
   },
   computed: {
-    shutterEffects() {
-      return this.properties.capabilityTypes.ShutterStrobe.properties.shutterEffect.enum;
-    },
     isStrobeEffect() {
       return ![``, `Open`, `Closed`].includes(this.capability.typeData.shutterEffect);
     },

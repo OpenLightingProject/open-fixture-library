@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import schemaProperties from '../../../lib/schema-properties.js';
+import { capabilityProperties } from '../../../lib/schema-properties.js';
 
 import LabeledInput from '../LabeledInput.vue';
 
@@ -152,14 +152,9 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties,
+      capabilityTypes: capabilityProperties.type.enum,
       capabilityTypeHint: null,
     };
-  },
-  computed: {
-    capabilityTypes() {
-      return this.properties.capability.type.enum;
-    },
   },
   methods: {
     /**

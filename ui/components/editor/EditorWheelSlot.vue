@@ -45,7 +45,7 @@
 </style>
 
 <script>
-import schemaProperties from '../../../lib/schema-properties.js';
+import { wheelSlotProperties } from '../../../lib/schema-properties.js';
 import { getEmptyWheelSlot } from '../../assets/scripts/editor-utils.js';
 
 import ConditionalDetails from '../ConditionalDetails.vue';
@@ -99,14 +99,11 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties,
+      slotTypes: wheelSlotProperties.type.enum,
       open: false,
     };
   },
   computed: {
-    slotTypes() {
-      return this.properties.wheelSlot.type.enum;
-    },
     slot() {
       return this.channel.wheel.slots[this.slotNumber - 1];
     },

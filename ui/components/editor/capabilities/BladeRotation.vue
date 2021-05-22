@@ -33,14 +33,14 @@
         v-model="capability.typeData.comment"
         :formstate="formstate"
         :name="`capability${capability.uuid}-comment`"
-        :schema-property="properties.definitions.nonEmptyString" />
+        :schema-property="schemaDefinitions.nonEmptyString" />
     </LabeledInput>
 
   </div>
 </template>
 
 <script>
-import schemaProperties from '../../../../lib/schema-properties.js';
+import { schemaDefinitions, capabilityTypes } from '../../../../lib/schema-properties.js';
 
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputEntity from '../../PropertyInputEntity.vue';
@@ -67,7 +67,8 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties,
+      schemaDefinitions,
+      bladeSchema: capabilityTypes.BladeInsertion.properties.blade,
 
       /**
        * Used in {@link EditorCapabilityTypeData}
@@ -81,11 +82,6 @@ export default {
         comment: ``,
       },
     };
-  },
-  computed: {
-    bladeSchema() {
-      return this.properties.capabilityTypes.BladeInsertion.properties.blade;
-    },
   },
 };
 </script>

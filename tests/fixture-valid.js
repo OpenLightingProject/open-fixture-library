@@ -16,7 +16,7 @@ import NullChannel from '../lib/model/NullChannel.js';
 /** @typedef {import('../lib/model/TemplateChannel.js').default} TemplateChannel */
 import SwitchingChannel from '../lib/model/SwitchingChannel.js';
 /** @typedef {import('../lib/model/Wheel.js').default} Wheel */
-import schemaProperties from '../lib/schema-properties.js';
+import { schemaDefinitions } from '../lib/schema-properties.js';
 
 let initialized = false;
 let register;
@@ -685,7 +685,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
          * Type-specific checks for Effect capabilities.
          */
         function checkEffectCapability() {
-          if (capability.effectPreset === null && schemaProperties.definitions.effectPreset.enum.includes(capability.effectName)) {
+          if (capability.effectPreset === null && schemaDefinitions.effectPreset.enum.includes(capability.effectName)) {
             result.errors.push(`${errorPrefix} must use effectPreset instead of effectName with '${capability.effectName}'.`);
           }
 

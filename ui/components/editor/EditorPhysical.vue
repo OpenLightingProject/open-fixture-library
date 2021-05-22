@@ -10,7 +10,7 @@
         ref="firstInput"
         v-model="localPhysical.dimensions"
         :name="`${namePrefix}-physical-dimensions`"
-        :schema-property="properties.dimensionsXYZ"
+        :schema-property="schemaDefinitions.dimensionsXYZ"
         :hints="[`width`, `height`, `depth`]"
         :formstate="formstate"
         unit="mm" />
@@ -20,14 +20,14 @@
       <PropertyInputNumber
         v-model="localPhysical.weight"
         :name="`${namePrefix}-physical-weight`"
-        :schema-property="properties.physical.weight" /> kg
+        :schema-property="physicalProperties.weight" /> kg
     </LabeledInput>
 
     <LabeledInput :formstate="formstate" :name="`${namePrefix}-physical-power`" label="Power">
       <PropertyInputNumber
         v-model="localPhysical.power"
         :name="`${namePrefix}-physical-power`"
-        :schema-property="properties.physical.power" /> W
+        :schema-property="physicalProperties.power" /> W
     </LabeledInput>
 
     <LabeledInput
@@ -38,7 +38,7 @@
       <PropertyInputSelect
         v-model="localPhysical.DMXconnector"
         :name="`${namePrefix}-physical-DMXconnector`"
-        :schema-property="properties.physical.DMXconnector"
+        :schema-property="physicalProperties.DMXconnector"
         addition-hint="other DMX connector" />
       <Validate
         v-if="physical.DMXconnector === `[add-value]`"
@@ -47,7 +47,7 @@
         <PropertyInputText
           v-model="localPhysical.DMXconnectorNew"
           :name="`${namePrefix}-physical-DMXconnectorNew`"
-          :schema-property="properties.definitions.nonEmptyString"
+          :schema-property="schemaDefinitions.nonEmptyString"
           :required="true"
           :auto-focus="true"
           hint="other DMX connector"
@@ -62,7 +62,7 @@
       <PropertyInputText
         v-model="localPhysical.bulb.type"
         :name="`${namePrefix}-physical-bulb-type`"
-        :schema-property="properties.physicalBulb.type"
+        :schema-property="physicalBulbProperties.type"
         hint="e.g. LED" />
     </LabeledInput>
 
@@ -70,14 +70,14 @@
       <PropertyInputNumber
         v-model="localPhysical.bulb.colorTemperature"
         :name="`${namePrefix}-physical-bulb-colorTemperature`"
-        :schema-property="properties.physicalBulb.colorTemperature" /> K
+        :schema-property="physicalBulbProperties.colorTemperature" /> K
     </LabeledInput>
 
     <LabeledInput :formstate="formstate" :name="`${namePrefix}-physical-bulb-lumens`" label="Lumens">
       <PropertyInputNumber
         v-model="localPhysical.bulb.lumens"
         :name="`${namePrefix}-physical-bulb-lumens`"
-        :schema-property="properties.physicalBulb.lumens" /> lm
+        :schema-property="physicalBulbProperties.lumens" /> lm
     </LabeledInput>
 
 
@@ -87,7 +87,7 @@
       <PropertyInputText
         v-model="localPhysical.lens.name"
         :name="`${namePrefix}-physical-lens-name`"
-        :schema-property="properties.physicalLens.name" />
+        :schema-property="physicalLensProperties.name" />
     </LabeledInput>
 
     <LabeledInput
@@ -98,7 +98,7 @@
       <PropertyInputRange
         v-model="localPhysical.lens.degreesMinMax"
         :name="`${namePrefix}-physical-lens-degreesMinMax`"
-        :schema-property="properties.physicalLens.degreesMinMax"
+        :schema-property="physicalLensProperties.degreesMinMax"
         :formstate="formstate"
         start-hint="min"
         end-hint="max"
@@ -109,7 +109,12 @@
 </template>
 
 <script>
-import schemaProperties from '../../../lib/schema-properties.js';
+import {
+  schemaDefinitions,
+  physicalProperties,
+  physicalBulbProperties,
+  physicalLensProperties,
+} from '../../../lib/schema-properties.js';
 import { clone } from '../../assets/scripts/editor-utils.js';
 
 import LabeledInput from '../LabeledInput.vue';
@@ -147,7 +152,10 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties,
+      schemaDefinitions,
+      physicalProperties,
+      physicalBulbProperties,
+      physicalLensProperties,
       localPhysical: clone(this.physical),
     };
   },
