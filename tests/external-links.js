@@ -6,13 +6,13 @@ import { Octokit } from '@octokit/rest';
 import chalk from 'chalk';
 import userAgent from 'default-user-agent';
 
+import SiteCrawler from '../lib/site-crawler.js';
+
 import '../lib/load-env-file.js';
 
 const USER_AGENT = userAgent();
 const GITHUB_COMMENT_HEADING = `## Broken links update`;
 const TIMEOUT = 30_000;
-
-import SiteCrawler from '../lib/site-crawler.js';
 
 const excludedUrls = [
   `https://open-fixture-library.org`, // exclude canonical URLs

@@ -80,6 +80,7 @@ const enabledRuleParameters = {
 
   // eslint-plugin-import
   'import/extensions': [`ignorePackages`],
+  'import/first': [],
   'import/no-commonjs': [{ allowConditionalRequire: false }],
   'import/no-dynamic-require': [],
   'import/no-unresolved': [{
