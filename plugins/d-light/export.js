@@ -1,5 +1,5 @@
-import xmlbuilder from 'xmlbuilder';
 import sanitize from 'sanitize-filename';
+import xmlbuilder from 'xmlbuilder';
 
 /** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
 /** @typedef {import('../../lib/model/Capability.js').default} Capability */

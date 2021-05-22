@@ -1,9 +1,9 @@
+import deprecatedGdtfAttributes from './deprecated-gdtf-attributes.js';
 import {
   followXmlNodeReference,
   getRgbColorFromGdtfColor,
   normalizeAngularSpeedDirection,
 } from './gdtf-helpers.js';
-import deprecatedGdtfAttributes from './deprecated-gdtf-attributes.js';
 
 // see https://gdtf-share.com/wiki/GDTF_File_Description#Attribute
 export const gdtfUnits = {

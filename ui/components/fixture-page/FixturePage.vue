@@ -188,8 +188,8 @@
 <script>
 import register from '../../../fixtures/register.json';
 
-import schemaProperties from '../../../lib/schema-properties.js';
 import Fixture from '../../../lib/model/Fixture.js';
+import schemaProperties from '../../../lib/schema-properties.js';
 
 import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
 

@@ -1,8 +1,8 @@
 import { fileURLToPath } from 'url';
 
-import plugins from './plugins/plugins.json';
 import register from './fixtures/register.json';
 import { fixtureFromRepository } from './lib/model.js';
+import plugins from './plugins/plugins.json';
 
 const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT || 3000}/`;
 

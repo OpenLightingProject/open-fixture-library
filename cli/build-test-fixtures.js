@@ -5,13 +5,13 @@
  * keeping the set as small as possible) and updates tests/test-fixtures.json and tests/test-fixtures.md.
  */
 
-import { fileURLToPath } from 'url';
 import { readdir, writeFile } from 'fs/promises';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import chalk from 'chalk';
 
-import { fixtureFromRepository } from '../lib/model.js';
 import importJson from '../lib/import-json.js';
+import { fixtureFromRepository } from '../lib/model.js';
 
 const fixtureFeaturesDirectoryUrl = new URL(`../lib/fixture-features/`, import.meta.url);
 const jsonPath = fileURLToPath(new URL(`../tests/test-fixtures.json`, import.meta.url));

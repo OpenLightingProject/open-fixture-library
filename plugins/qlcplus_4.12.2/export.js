@@ -1,12 +1,5 @@
-import xmlbuilder from 'xmlbuilder';
 import sanitize from 'sanitize-filename';
-
-import {
-  getChannelPreset,
-  getFineChannelPreset,
-  getCapabilityPreset,
-  exportHelpers,
-} from './presets.js';
+import xmlbuilder from 'xmlbuilder';
 
 /** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
 import Capability from '../../lib/model/Capability.js';
@@ -16,6 +9,13 @@ import CoarseChannel from '../../lib/model/CoarseChannel.js';
 /** @typedef {import('../../lib/model/Mode.js').default} Mode */
 import Physical from '../../lib/model/Physical.js';
 import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
+
+import {
+  getChannelPreset,
+  getFineChannelPreset,
+  getCapabilityPreset,
+  exportHelpers,
+} from './presets.js';
 
 export const version = `1.3.0`;
 

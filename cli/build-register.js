@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-import { fileURLToPath } from 'url';
 import { readdir, writeFile } from 'fs/promises';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import chalk from 'chalk';
 
-import { Register } from '../lib/register.js';
 import importJson from '../lib/import-json.js';
+import { Register } from '../lib/register.js';
 
 let register;
 let manufacturers;

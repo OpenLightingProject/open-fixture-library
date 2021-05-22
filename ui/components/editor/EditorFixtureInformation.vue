@@ -76,12 +76,12 @@
 <script>
 import schemaProperties from '../../../lib/schema-properties.js';
 
-import EditorCategoryChooser from './EditorCategoryChooser.vue';
-import EditorLinks from './EditorLinks.vue';
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputNumber from '../PropertyInputNumber.vue';
 import PropertyInputText from '../PropertyInputText.vue';
 import PropertyInputTextarea from '../PropertyInputTextarea.vue';
+import EditorCategoryChooser from './EditorCategoryChooser.vue';
+import EditorLinks from './EditorLinks.vue';
 
 export default {
   components: {

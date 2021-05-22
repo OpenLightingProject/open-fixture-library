@@ -109,8 +109,8 @@
 </template>
 
 <script>
-import { clone } from '../../assets/scripts/editor-utils.js';
 import schemaProperties from '../../../lib/schema-properties.js';
+import { clone } from '../../assets/scripts/editor-utils.js';
 
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputDimensions from '../PropertyInputDimensions.vue';

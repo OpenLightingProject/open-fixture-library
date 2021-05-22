@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import minimist from 'minimist';
 import chalk from 'chalk';
+import minimist from 'minimist';
 
 import diffPluginOutputs from '../lib/diff-plugin-outputs.js';
 import importJson from '../lib/import-json.js';

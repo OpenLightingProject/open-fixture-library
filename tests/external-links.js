@@ -2,9 +2,9 @@
 
 import http from 'http';
 import https from 'https';
+import { Octokit } from '@octokit/rest';
 import chalk from 'chalk';
 import userAgent from 'default-user-agent';
-import { Octokit } from '@octokit/rest';
 
 import '../lib/load-env-file.js';
 

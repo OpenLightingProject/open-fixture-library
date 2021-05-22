@@ -194,15 +194,15 @@
 
 
 <script>
+import Draggable from 'vuedraggable';
+
 import schemaProperties from '../../../lib/schema-properties.js';
 import { constants } from '../../assets/scripts/editor-utils.js';
 
-import Draggable from 'vuedraggable';
-
-import EditorPhysical from './EditorPhysical.vue';
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputNumber from '../PropertyInputNumber.vue';
 import PropertyInputText from '../PropertyInputText.vue';
+import EditorPhysical from './EditorPhysical.vue';
 
 export default {
   components: {

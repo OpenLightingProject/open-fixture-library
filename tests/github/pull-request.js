@@ -1,7 +1,7 @@
 import path from 'path';
-import chalk from 'chalk';
-import { Octokit } from '@octokit/rest';
 import { fileURLToPath } from 'url';
+import { Octokit } from '@octokit/rest';
+import chalk from 'chalk';
 
 import '../../lib/load-env-file.js';
 

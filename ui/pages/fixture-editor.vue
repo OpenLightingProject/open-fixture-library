@@ -127,14 +127,14 @@ noscript.card {
 
 <script>
 import scrollIntoView from 'scroll-into-view';
+
+import schemaProperties from '../../lib/schema-properties.js';
 import {
   constants,
   getEmptyFixture,
   getEmptyChannel,
   getEmptyMode,
 } from '../assets/scripts/editor-utils.js';
-
-import schemaProperties from '../../lib/schema-properties.js';
 
 import EditorChannelDialog from '../components/editor/EditorChannelDialog.vue';
 import EditorChooseChannelEditModeDialog from '../components/editor/EditorChooseChannelEditModeDialog.vue';

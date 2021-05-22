@@ -85,6 +85,13 @@ const enabledRuleParameters = {
   'import/no-unresolved': [{
     ignore: [`^fs/promises$`],
   }],
+  'import/order': [{
+    groups: [`builtin`, `external`, `internal`, `parent`, `sibling`],
+    alphabetize: {
+      order: `asc`,
+      caseInsensitive: true,
+    },
+  }],
 
   // eslint-plugin-jsdoc
   'jsdoc/check-alignment': [],
