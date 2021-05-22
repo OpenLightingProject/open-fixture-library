@@ -139,6 +139,11 @@ const enabledRuleParameters = {
   'promise/valid-params': [],
 
   // eslint-plugin-unicorn
+  'unicorn/import-style': [{
+    styles: {
+      'fs/promises': { named: true },
+    },
+  }],
   'unicorn/prevent-abbreviations': [{
     replacements: {
       ref: false,
