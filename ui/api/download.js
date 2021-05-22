@@ -12,11 +12,6 @@ import { sendJson, sendAttachment } from '../../lib/server-response-helpers.js';
 const pluginsPromise = importJson(`../../plugins/plugins.json`, import.meta.url);
 const registerPromise = importJson(`../../fixtures/register.json`, import.meta.url);
 
-// setup environment variables
-import '../../lib/load-env-file.js';
-process.env.PORT = process.env.PORT || 5000;
-process.env.WEBSITE_URL = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT}/`;
-
 /**
  * Instruct Express to initiate a download of one / multiple exported fixture files.
  * @param {ServerResponse} response The Node ServerResponse object.
