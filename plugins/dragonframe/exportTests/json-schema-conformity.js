@@ -4,6 +4,7 @@ import addFormats from 'ajv-formats';
 import getAjvErrorMessages from '../../../lib/get-ajv-error-messages.js';
 
 import { supportedOflVersion as SUPPORTED_OFL_VERSION } from '../export.js';
+
 const REPO_BASE_URL = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library`;
 const SCHEMA_BASE_URL = `${REPO_BASE_URL}/schema-${SUPPORTED_OFL_VERSION}/schemas/`;
 const SCHEMA_FILES = [
