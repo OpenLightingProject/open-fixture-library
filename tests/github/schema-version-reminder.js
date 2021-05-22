@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import * as pullRequest from './pull-request.js';
-
 import '../../lib/load-env-file.js';
+
+import * as pullRequest from './pull-request.js';
 
 (async () => {
   try {

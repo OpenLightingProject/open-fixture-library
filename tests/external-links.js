@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import '../lib/load-env-file.js';
+
 import http from 'http';
 import https from 'https';
 import { Octokit } from '@octokit/rest';
@@ -8,7 +10,6 @@ import userAgent from 'default-user-agent';
 
 import SiteCrawler from '../lib/site-crawler.js';
 
-import '../lib/load-env-file.js';
 
 const USER_AGENT = userAgent();
 const GITHUB_COMMENT_HEADING = `## Broken links update`;

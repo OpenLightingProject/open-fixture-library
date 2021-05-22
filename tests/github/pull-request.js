@@ -1,9 +1,10 @@
+import '../../lib/load-env-file.js';
+
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { Octokit } from '@octokit/rest';
 import chalk from 'chalk';
 
-import '../../lib/load-env-file.js';
 
 const requiredEnvironmentVariables = [
   `GITHUB_USER_TOKEN`,
