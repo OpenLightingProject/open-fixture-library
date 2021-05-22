@@ -1,4 +1,4 @@
-const importJson = require(`../../../lib/import-json.js`);
+import importJson from '../../../lib/import-json.js';
 
 let register;
 let manufacturers;
@@ -11,11 +11,11 @@ let manufacturers;
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
  * @returns {Promise.<ApiResponse>} The handled response.
  */
-async function getSearchResults({ request }) {
+export async function getSearchResults({ request }) {
   const { searchQuery, manufacturersQuery, categoriesQuery } = request.requestBody;
 
-  register = await importJson(`../../../fixtures/register.json`, __dirname);
-  manufacturers = await importJson(`../../../fixtures/manufacturers.json`, __dirname);
+  register = await importJson(`../../../fixtures/register.json`, import.meta.url);
+  manufacturers = await importJson(`../../../fixtures/manufacturers.json`, import.meta.url);
 
   const results = Object.keys(register.filesystem).filter(
     key => queryMatch(searchQuery, key) && manufacturerMatch(manufacturersQuery, key) && categoryMatch(categoriesQuery, key),
@@ -65,5 +65,3 @@ function categoryMatch(categoriesQuery, fixtureKey) {
       cat => cat in register.categories && register.categories[cat].includes(fixtureKey),
     );
 }
-
-module.exports = { getSearchResults };

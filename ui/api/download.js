@@ -1,16 +1,16 @@
-const express = require(`express`);
-const JSZip = require(`jszip`);
+import express from 'express';
+import JSZip from 'jszip';
+import { fileURLToPath } from 'url';
 
-const { fixtureFromRepository, embedResourcesIntoFixtureJson } = require(`../../lib/model.js`);
-const importJson = require(`../../lib/import-json.js`);
-const Fixture = require(`../../lib/model/Fixture.js`).default;
-const Manufacturer = require(`../../lib/model/Manufacturer.js`).default;
-const { sendJson, sendAttachment } = require(`../../lib/server-response-helpers.js`);
+import { fixtureFromRepository, embedResourcesIntoFixtureJson } from '../../lib/model.js';
+import importJson from '../../lib/import-json.js';
+import Fixture from '../../lib/model/Fixture.js';
+import Manufacturer from '../../lib/model/Manufacturer.js';
+import { sendJson, sendAttachment } from '../../lib/server-response-helpers.js';
 /** @typedef {import('http').ServerResponse} ServerResponse */
 
-const pluginsPromise = importJson(`../../plugins/plugins.json`, __dirname);
-const registerPromise = importJson(`../../fixtures/register.json`, __dirname);
-
+const pluginsPromise = importJson(`../../plugins/plugins.json`, import.meta.url);
+const registerPromise = importJson(`../../fixtures/register.json`, import.meta.url);
 
 /**
  * Instruct Express to initiate a download of one / multiple exported fixture files.
@@ -22,11 +22,11 @@ const registerPromise = importJson(`../../fixtures/register.json`, __dirname);
  * @returns {Promise} A Promise that is resolved when the response is sent.
  */
 async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDesc) {
-  const plugin = require(`../../plugins/${pluginKey}/export.js`);
+  const plugin = await import(`../../plugins/${pluginKey}/export.js`);
 
   try {
     const files = await plugin.exportFixtures(fixtures, {
-      baseDirectory: __dirname,
+      baseDirectory: fileURLToPath(new URL(`../../`, import.meta.url)),
       date: new Date(),
     });
 
@@ -132,7 +132,7 @@ router.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request
 
   if (format === `json`) {
     try {
-      const json = await importJson(`../../fixtures/${manufacturerKey}/${fixtureKey}.json`, __dirname);
+      const json = await importJson(`../../fixtures/${manufacturerKey}/${fixtureKey}.json`, import.meta.url);
       await embedResourcesIntoFixtureJson(json);
       sendJson(response, json);
     }
@@ -157,4 +157,4 @@ router.get(`/:manufacturerKey/:fixtureKey.:format([a-z0-9_.-]+)`, async (request
   downloadFixtures(response, format, fixtures, zipName, errorDesc);
 });
 
-module.exports = router;
+export default router;

@@ -193,8 +193,8 @@
 <script>
 import { clone } from '../../assets/scripts/editor-utils.js';
 
-import Manufacturer from '../../../lib/model/Manufacturer';
-import Fixture from '../../../lib/model/Fixture';
+import Manufacturer from '../../../lib/model/Manufacturer.js';
+import Fixture from '../../../lib/model/Fixture.js';
 
 import A11yDialog from '../A11yDialog.vue';
 import DownloadButton from '../DownloadButton.vue';

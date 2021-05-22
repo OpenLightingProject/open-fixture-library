@@ -9,7 +9,7 @@ MY_ENV_VARIABLE=hello
 NODE_ENV=production
 ```
 
-Every script that uses environment variables must require [`lib/load-env-file.js`](../lib/load-env-file.js) first (usually placed right after all the other `require` calls). Note that `require(...)` takes a relative path beginning with `./` or `../`.
+Every script that uses environment variables must import [`lib/load-env-file.js`](../lib/load-env-file.js) first (usually placed right after all the other `import` calls).
 
 Please update these docs and [`cli/debug-env-variables.js`](../cli/debug-env-variables.js) after introducing new variables.
 
