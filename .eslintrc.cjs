@@ -50,6 +50,10 @@ const enabledRuleParameters = {
   'no-multi-spaces': [],
   'no-new-object': [],
   'no-prototype-builtins': [],
+  'no-restricted-imports': [{
+    name: `fs`,
+    message: `Please use 'fs/promises' instead.`,
+  }],
   'no-return-assign': [],
   'no-return-await': [],
   'no-shadow': [{ builtinGlobals: false }],
@@ -80,10 +84,19 @@ const enabledRuleParameters = {
 
   // eslint-plugin-import
   'import/extensions': [`ignorePackages`],
+  'import/first': [],
+  'import/newline-after-import': [],
   'import/no-commonjs': [{ allowConditionalRequire: false }],
   'import/no-dynamic-require': [],
   'import/no-unresolved': [{
     ignore: [`^fs/promises$`],
+  }],
+  'import/order': [{
+    groups: [`builtin`, `external`, `internal`, `parent`, `sibling`],
+    alphabetize: {
+      order: `asc`,
+      caseInsensitive: true,
+    },
   }],
 
   // eslint-plugin-jsdoc
@@ -128,15 +141,7 @@ const enabledRuleParameters = {
   // eslint-plugin-unicorn
   'unicorn/import-style': [{
     styles: {
-      fs: {
-        unassigned: false,
-        default: false,
-        namespace: false,
-        named: false,
-      },
-      'fs/promises': {
-        named: true,
-      },
+      'fs/promises': { named: true },
     },
   }],
   'unicorn/prevent-abbreviations': [{
@@ -234,7 +239,6 @@ const warnRules = new Set([
 
 const disabledRules = [
   `no-console`,
-  `import/no-duplicates`,
   `jsdoc/newline-after-description`,
   `jsdoc/no-undefined-types`,
   `jsdoc/require-description`,

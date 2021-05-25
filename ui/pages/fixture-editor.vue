@@ -61,7 +61,7 @@
           <LabeledInput :formstate="formstate" name="author" label="Your name">
             <PropertyInputText
               v-model="fixture.metaAuthor"
-              :schema-property="properties.definitions.nonEmptyString"
+              :schema-property="schemaDefinitions.nonEmptyString"
               :required="true"
               name="author"
               hint="e.g. Anonymous" />
@@ -74,7 +74,7 @@
             hint="If you want to be mentioned in the pull request.">
             <PropertyInputText
               v-model="githubUsername"
-              :schema-property="properties.definitions.nonEmptyString"
+              :schema-property="schemaDefinitions.nonEmptyString"
               name="github-username" />
           </LabeledInput>
 
@@ -127,14 +127,14 @@ noscript.card {
 
 <script>
 import scrollIntoView from 'scroll-into-view';
+
+import { schemaDefinitions } from '../../lib/schema-properties.js';
 import {
   constants,
   getEmptyFixture,
   getEmptyChannel,
   getEmptyMode,
 } from '../assets/scripts/editor-utils.js';
-
-import schemaProperties from '../../lib/schema-properties.js';
 
 import EditorChannelDialog from '../components/editor/EditorChannelDialog.vue';
 import EditorChooseChannelEditModeDialog from '../components/editor/EditorChooseChannelEditModeDialog.vue';
@@ -189,7 +189,7 @@ export default {
         githubUsername: ``,
         honeypot: ``,
         manufacturers,
-        properties: schemaProperties,
+        schemaDefinitions,
       };
     }
     catch (requestError) {

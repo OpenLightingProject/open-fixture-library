@@ -19,7 +19,7 @@
           v-model="capability.dmxRange"
           :formstate="formstate"
           :name="`capability${capability.uuid}-dmxRange`"
-          :schema-property="properties.capability.dmxRange"
+          :schema-property="capabilityProperties.dmxRange"
           :range-min="min"
           :range-max="max"
           :start-hint="capabilities.length === 1 ? `${min}` : `start`"
@@ -94,16 +94,13 @@ a.remove {
 </style>
 
 <script>
-import schemaProperties from '../../../lib/schema-properties.js';
-import {
-  getEmptyCapability,
-  isCapabilityChanged,
-} from '../../assets/scripts/editor-utils.js';
+import { capabilityProperties } from '../../../lib/schema-properties.js';
+import { getEmptyCapability, isCapabilityChanged } from '../../assets/scripts/editor-utils.js';
 
 import ConditionalDetails from '../ConditionalDetails.vue';
-import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputRange from '../PropertyInputRange.vue';
+import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
 
 export default {
   components: {
@@ -133,7 +130,7 @@ export default {
   data() {
     return {
       dmxMin: 0,
-      properties: schemaProperties,
+      capabilityProperties,
     };
   },
   computed: {

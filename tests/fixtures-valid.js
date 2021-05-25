@@ -7,8 +7,8 @@ import minimist from 'minimist';
 
 import getAjvValidator from '../lib/ajv-validator.js';
 import getAjvErrorMessages from '../lib/get-ajv-error-messages.js';
-import { checkFixture, checkUniqueness } from './fixture-valid.js';
 import importJson from '../lib/import-json.js';
+import { checkFixture, checkUniqueness } from './fixture-valid.js';
 
 
 const cliArguments = minimist(process.argv.slice(2), {

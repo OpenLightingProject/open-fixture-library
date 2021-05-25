@@ -1,12 +1,12 @@
 import xmlbuilder from 'xmlbuilder';
 
-import { CoarseChannel } from '../../lib/model.js';
-import { FineChannel } from '../../lib/model.js';
+import CoarseChannel from '../../lib/model/CoarseChannel.js';
+import FineChannel from '../../lib/model/FineChannel.js';
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 /** @typedef {import('../../lib/model/Mode.js').default} Mode */
-import { NullChannel } from '../../lib/model.js';
-import { Physical } from '../../lib/model.js';
-import { SwitchingChannel } from '../../lib/model.js';
+import NullChannel from '../../lib/model/NullChannel.js';
+import Physical from '../../lib/model/Physical.js';
+import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 
 export const version = `0.3.0`;
 

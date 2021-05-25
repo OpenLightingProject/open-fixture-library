@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-import minimist from 'minimist';
 import { readFile } from 'fs/promises';
+import minimist from 'minimist';
 
-import { checkFixture } from '../tests/fixture-valid.js';
-import fixtureJsonStringify from '../lib/fixture-json-stringify.js';
 import createPullRequest from '../lib/create-github-pr.js';
+import fixtureJsonStringify from '../lib/fixture-json-stringify.js';
 import importJson from '../lib/import-json.js';
+import { checkFixture } from '../tests/fixture-valid.js';
 
 /** @typedef {import('../lib/types.js').FixtureCreateResult} FixtureCreateResult */
 

@@ -23,8 +23,6 @@ if (panFine.coarseChannel.hasHighlightValue) {
 }
 ```
 
-If you want to use a model class directly, also import it via `model.js` (like this: `import { Meta } from './lib/model.js';`).
-
 Model properties are always implemented using getters and setters. To store data, we use backing fields (an internal property prefixed with underscore, e.g. `_jsonObject`) to hold the data. The backing field should never be accessed directly, but only through its getter and setter functions (without underscore).
 
 Avoid returning `undefined` by returning smart default values if necessary. If the default value is not `null`, also provide a `hasXY` boolean getter function. Properties that need further computation or create other objects should be cached in an internal `_cache` object.

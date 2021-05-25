@@ -1,9 +1,9 @@
 /** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
-import { CoarseChannel } from '../../lib/model.js';
-import { FineChannel } from '../../lib/model.js';
+import CoarseChannel from '../../lib/model/CoarseChannel.js';
+import FineChannel from '../../lib/model/FineChannel.js';
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
-import { NullChannel } from '../../lib/model.js';
-import { SwitchingChannel } from '../../lib/model.js';
+import NullChannel from '../../lib/model/NullChannel.js';
+import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 
 export const version = `0.1.0`;
 

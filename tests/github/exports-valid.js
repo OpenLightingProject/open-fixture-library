@@ -2,8 +2,8 @@
 
 import { fileURLToPath } from 'url';
 
-import { fixtureFromRepository } from '../../lib/model.js';
 import importJson from '../../lib/import-json.js';
+import { fixtureFromRepository } from '../../lib/model.js';
 import * as pullRequest from './pull-request.js';
 
 let plugins;

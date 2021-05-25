@@ -29,7 +29,7 @@
         v-model="propertyDataStepped"
         :name="`capability${capability.uuid}-${propertyName}`"
         :required="required"
-        :schema-property="properties.definitions.nonEmptyString"
+        :schema-property="schemaDefinitions.nonEmptyString"
         :valid-color-hex-list="propertyName === `colorsHexString`" />
 
       <span v-if="hint" class="hint">{{ hint }}</span>
@@ -67,7 +67,7 @@
           v-model="propertyDataStart"
           :name="`capability${capability.uuid}-${propertyName}Start`"
           :required="required"
-          :schema-property="properties.definitions.nonEmptyString"
+          :schema-property="schemaDefinitions.nonEmptyString"
           :valid-color-hex-list="propertyName === `colorsHexString`"
           hint="start" />
 
@@ -120,7 +120,7 @@
           v-model="propertyDataEnd"
           :name="`capability${capability.uuid}-${propertyName}End`"
           :required="required"
-          :schema-property="properties.definitions.nonEmptyString"
+          :schema-property="schemaDefinitions.nonEmptyString"
           :valid-color-hex-list="propertyName === `colorsHexString`"
           hint="end" />
 
@@ -178,7 +178,12 @@
 </style>
 
 <script>
-import schemaProperties from '../../../lib/schema-properties.js';
+import {
+  schemaDefinitions,
+  capabilityTypes,
+  entitiesSchema,
+  unitsSchema,
+} from '../../../lib/schema-properties.js';
 
 import PropertyInputEntity from '../PropertyInputEntity.vue';
 import PropertyInputNumber from '../PropertyInputNumber.vue';
@@ -216,13 +221,16 @@ export default {
     },
   },
   data() {
+    const slotNumberUnit = entitiesSchema.slotNumber.$ref.replace(`#/units/`, ``);
+
     return {
-      properties: schemaProperties,
+      schemaDefinitions,
+      slotNumberSchema: unitsSchema.units[slotNumberUnit],
     };
   },
   computed: {
     entity() {
-      const capabilitySchema = this.properties.capabilityTypes[this.capability.type];
+      const capabilitySchema = capabilityTypes[this.capability.type];
       if (!capabilitySchema) {
         return ``;
       }
@@ -239,7 +247,7 @@ export default {
         return null;
       }
 
-      return this.properties.entities[this.entity];
+      return entitiesSchema[this.entity];
     },
     propertyDataStepped: {
       get() {
@@ -290,10 +298,6 @@ export default {
     },
 
     // slotNumber entity requires a bit of special handling
-    slotNumberSchema() {
-      const unit = this.properties.entities.slotNumber.$ref.replace(`#/units/`, ``);
-      return this.properties.units[unit];
-    },
     slotNumberStepped: {
       get() {
         return this.capability.typeData[this.propertyName];

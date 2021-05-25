@@ -1,9 +1,9 @@
+import { fileURLToPath } from 'url';
 import express from 'express';
 import JSZip from 'jszip';
-import { fileURLToPath } from 'url';
 
-import { fixtureFromRepository, embedResourcesIntoFixtureJson } from '../../lib/model.js';
 import importJson from '../../lib/import-json.js';
+import { fixtureFromRepository, embedResourcesIntoFixtureJson } from '../../lib/model.js';
 import Fixture from '../../lib/model/Fixture.js';
 import Manufacturer from '../../lib/model/Manufacturer.js';
 import { sendJson, sendAttachment } from '../../lib/server-response-helpers.js';

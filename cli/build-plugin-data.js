@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
+import { readdir, writeFile } from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { readdir, writeFile } from 'fs/promises';
 import chalk from 'chalk';
 import importJson from '../lib/import-json.js';
 

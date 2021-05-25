@@ -1,9 +1,9 @@
-import https from 'https';
-import path from 'path';
-import { mkdir, mkdtemp, writeFile } from 'fs/promises';
-import os from 'os';
-import { promisify } from 'util';
 import { execFile as execFileAsync } from 'child_process';
+import { mkdir, mkdtemp, writeFile } from 'fs/promises';
+import https from 'https';
+import os from 'os';
+import path from 'path';
+import { promisify } from 'util';
 import importJson from '../../../lib/import-json.js';
 
 const execFile = promisify(execFileAsync);

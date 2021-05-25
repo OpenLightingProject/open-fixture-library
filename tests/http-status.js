@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import chalk from 'chalk';
-
 import '../lib/load-env-file.js';
+
+import chalk from 'chalk';
 
 import SiteCrawler from '../lib/site-crawler.js';
 

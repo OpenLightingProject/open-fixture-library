@@ -1,13 +1,13 @@
-import xmlbuilder from 'xmlbuilder';
 import sanitize from 'sanitize-filename';
+import xmlbuilder from 'xmlbuilder';
 
 /** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
 /** @typedef {import('../../lib/model/Capability.js').default} Capability */
-import { CoarseChannel } from '../../lib/model.js';
-import { FineChannel } from '../../lib/model.js';
+import CoarseChannel from '../../lib/model/CoarseChannel.js';
+import FineChannel from '../../lib/model/FineChannel.js';
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 /** @typedef {import('../../lib/model/Mode.js').default} Mode */
-import { SwitchingChannel } from '../../lib/model.js';
+import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 
 export const version = `0.2.0`;
 

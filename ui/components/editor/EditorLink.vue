@@ -13,7 +13,7 @@
       <PropertyInputText
         v-model="url"
         :name="`links-${link.uuid}`"
-        :schema-property="properties.definitions.urlString"
+        :schema-property="schemaDefinitions.urlString"
         type="url"
         :hint="placeholder"
         required />
@@ -45,7 +45,7 @@ select {
 </style>
 
 <script>
-import schemaProperties from '../../../lib/schema-properties.js';
+import { schemaDefinitions, linksProperties } from '../../../lib/schema-properties.js';
 import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
 
 import PropertyInputText from '../PropertyInputText.vue';
@@ -78,8 +78,8 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties,
-      linkTypes: Object.keys(schemaProperties.links),
+      schemaDefinitions,
+      linkTypes: Object.keys(linksProperties),
     };
   },
   computed: {

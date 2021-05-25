@@ -1,18 +1,19 @@
 #!/usr/bin/env node
 
+import '../lib/load-env-file.js';
+
 import http from 'http';
 import https from 'https';
+import { Octokit } from '@octokit/rest';
 import chalk from 'chalk';
 import userAgent from 'default-user-agent';
-import { Octokit } from '@octokit/rest';
 
-import '../lib/load-env-file.js';
+import SiteCrawler from '../lib/site-crawler.js';
+
 
 const USER_AGENT = userAgent();
 const GITHUB_COMMENT_HEADING = `## Broken links update`;
 const TIMEOUT = 30_000;
-
-import SiteCrawler from '../lib/site-crawler.js';
 
 const excludedUrls = [
   `https://open-fixture-library.org`, // exclude canonical URLs

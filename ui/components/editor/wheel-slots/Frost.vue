@@ -10,14 +10,14 @@
         v-model="wheelSlot.typeData.frostIntensity"
         :formstate="formstate"
         :name="`wheel-slot${wheelSlot.uuid}-frostIntensity`"
-        :schema-property="properties.entities.percent" />
+        :schema-property="entitiesSchema.percent" />
     </LabeledInput>
 
   </div>
 </template>
 
 <script>
-import schemaProperties from '../../../../lib/schema-properties.js';
+import { entitiesSchema } from '../../../../lib/schema-properties.js';
 
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputEntity from '../../PropertyInputEntity.vue';
@@ -40,7 +40,7 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties,
+      entitiesSchema,
 
       /**
        * Used in {@link EditorWheelSlot}

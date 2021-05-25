@@ -1,15 +1,14 @@
 import xml2js from 'xml2js';
 
 import importJson from '../../lib/import-json.js';
-
-const qlcplusGoboAliasesPromise = importJson(`../../resources/gobos/aliases/qlcplus.json`, import.meta.url);
-
 import {
   getCapabilityFromChannelPreset,
   getCapabilityFromCapabilityPreset,
   capabilityPresets,
   importHelpers,
 } from './presets.js';
+
+const qlcplusGoboAliasesPromise = importJson(`../../resources/gobos/aliases/qlcplus.json`, import.meta.url);
 
 export const version = `1.1.0`;
 

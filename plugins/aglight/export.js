@@ -1,10 +1,11 @@
 /* Based on the ofl export plugin */
 
-import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 import namedColors from 'color-name-list/dist/colornames.esm.mjs';
+import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
 
-import { Entity, NullChannel } from '../../lib/model.js';
 import importJson from '../../lib/import-json.js';
+import Entity from '../../lib/model/Entity.js';
+import NullChannel from '../../lib/model/NullChannel.js';
 
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 

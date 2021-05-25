@@ -1,23 +1,22 @@
 import { inspect } from 'util';
 
 import getAjvValidator from '../lib/ajv-validator.js';
-import schemaProperties from '../lib/schema-properties.js';
-import { manufacturerFromRepository, getResourceFromString } from '../lib/model.js';
 import getAjvErrorMessages from '../lib/get-ajv-error-messages.js';
 import importJson from '../lib/import-json.js';
-
+import { manufacturerFromRepository, getResourceFromString } from '../lib/model.js';
 /** @typedef {import('../lib/model/AbstractChannel.js').default} AbstractChannel */
 /** @typedef {import('../lib/model/Capability.js').default} Capability */
 /** @typedef {import('../lib/model/CoarseChannel.js').default} CoarseChannel */
-import { FineChannel } from '../lib/model.js';
-import { Fixture } from '../lib/model.js';
+import FineChannel from '../lib/model/FineChannel.js';
+import Fixture from '../lib/model/Fixture.js';
 /** @typedef {import('../lib/model/Matrix.js').default} Matrix */
 /** @typedef {import('../lib/model/Meta.js').default} Meta */
-import { NullChannel } from '../lib/model.js';
+import NullChannel from '../lib/model/NullChannel.js';
 /** @typedef {import('../lib/model/Physical.js').default} Physical */
 /** @typedef {import('../lib/model/TemplateChannel.js').default} TemplateChannel */
-import { SwitchingChannel } from '../lib/model.js';
+import SwitchingChannel from '../lib/model/SwitchingChannel.js';
 /** @typedef {import('../lib/model/Wheel.js').default} Wheel */
+import { schemaDefinitions } from '../lib/schema-properties.js';
 
 let initialized = false;
 let register;
@@ -686,7 +685,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
          * Type-specific checks for Effect capabilities.
          */
         function checkEffectCapability() {
-          if (capability.effectPreset === null && schemaProperties.definitions.effectPreset.enum.includes(capability.effectName)) {
+          if (capability.effectPreset === null && schemaDefinitions.effectPreset.enum.includes(capability.effectName)) {
             result.errors.push(`${errorPrefix} must use effectPreset instead of effectName with '${capability.effectName}'.`);
           }
 
@@ -1202,7 +1201,7 @@ export function checkUniqueness(set, value, result, messageIfNotUnique) {
  * @param {*} error An error object to append to the message.
  * @returns {String} A string containing the message and a deep inspection of the given error object.
  */
-export function getErrorString(description, error) {
+function getErrorString(description, error) {
   if (typeof error === `string`) {
     return `${description} ${error}`;
   }

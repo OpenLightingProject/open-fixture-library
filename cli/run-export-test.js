@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 import path from 'path';
-import minimist from 'minimist';
-import chalk from 'chalk';
 import { fileURLToPath } from 'url';
+import chalk from 'chalk';
+import minimist from 'minimist';
 
-import { fixtureFromFile, fixtureFromRepository } from '../lib/model.js';
 import importJson from '../lib/import-json.js';
+import { fixtureFromFile, fixtureFromRepository } from '../lib/model.js';
 
 (async () => {
   try {

@@ -1,12 +1,13 @@
 #!/usr/bin/env node
-import { fileURLToPath } from 'url';
 import { mkdir, writeFile } from 'fs/promises';
 import path from 'path';
-import minimist from 'minimist';
-import chalk from 'chalk';
+import { fileURLToPath } from 'url';
 
-import { fixtureFromRepository } from '../lib/model.js';
+import chalk from 'chalk';
+import minimist from 'minimist';
+
 import importJson from '../lib/import-json.js';
+import { fixtureFromRepository } from '../lib/model.js';
 
 (async () => {
   try {

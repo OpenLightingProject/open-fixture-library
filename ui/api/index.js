@@ -1,7 +1,7 @@
-import express from 'express';
+import { fileURLToPath } from 'url';
 import chalk from 'chalk';
 import cors from 'cors';
-import { fileURLToPath } from 'url';
+import express from 'express';
 import { OpenAPIBackend } from 'openapi-backend';
 import getAjvErrorMessages from '../../lib/get-ajv-error-messages.js';
 import { sendJson } from '../../lib/server-response-helpers.js';

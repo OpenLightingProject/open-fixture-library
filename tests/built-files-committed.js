@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import chalk from 'chalk';
 import childProcess from 'child_process';
 import { fileURLToPath } from 'url';
+import chalk from 'chalk';
 
 const projectDirectory = fileURLToPath(new URL(`../`, import.meta.url));
 
