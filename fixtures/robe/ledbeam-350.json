@@ -1,0 +1,76 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Ledbeam 350",
+  "categories": ["Dimmer", "Color Changer", "Fan", "Moving Head", "Strobe", "Effect"],
+  "meta": {
+    "authors": ["MikA"],
+    "createDate": "2021-06-08",
+    "lastModifyDate": "2021-06-08"
+  },
+  "links": {
+    "manual": [
+      "https://www.robe.cz/"
+    ],
+    "productPage": [
+      "https://www.robe.cz/"
+    ],
+    "video": [
+      "https://www.robe.cz/"
+    ]
+  },
+  "physical": {
+    "bulb": {
+      "type": "Led"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "540deg",
+        "angleEnd": "450deg"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "540deg",
+        "angleEnd": "450deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "228deg",
+        "angleEnd": "228deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 22,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Pan",
+        "Pan 2",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Dimmer"
+      ]
+    }
+  ]
+}
