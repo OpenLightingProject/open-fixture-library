@@ -35,7 +35,7 @@ export async function submitFixtures({ request }) {
     return {
       statusCode: 500,
       body: {
-        error: error.message,
+        error: `${error.toString()}\n${error.stack}`,
       },
     };
   }
