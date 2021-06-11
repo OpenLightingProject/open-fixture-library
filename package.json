@@ -24,6 +24,7 @@
     "build:api-docs": "widdershins --code true --language_tabs --omitBody true --omitHeader true --resolve true --outfile docs/rest-api.md ui/api/openapi.json",
 
     "clean": "rm -rf .nuxt tmp",
+    "update-package-lock": "rm package-lock.json && npm install && npm audit fix && npx browserslist@latest --update-db",
 
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "eslint .",
