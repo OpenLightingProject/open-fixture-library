@@ -176,7 +176,8 @@
           "properties": {
             "dimensions": { "$ref": "definitions.json#/dimensionsXYZ" },
             "spacing": { "$ref": "definitions.json#/dimensionsXYZ" }
-          }
+          },
+          "additionalProperties": false
         }
       },
       "additionalProperties": false

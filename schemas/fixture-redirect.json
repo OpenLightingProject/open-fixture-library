@@ -24,5 +24,6 @@
       ]
     }
   },
+  "required": ["$schema", "name", "redirectTo", "reason"],
   "additionalProperties": false
 }
