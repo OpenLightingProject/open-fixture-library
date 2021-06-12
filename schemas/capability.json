@@ -4,14 +4,44 @@
 
   "$comment": "This file is used by another schema file and should not be used directly as a JSON schema.",
 
-  "type": "object",
-  "properties": {
+  "definitions": {
     "dmxRange": {
       "type": "array",
       "minItems": 2,
       "maxItems": 2,
       "items": { "$ref": "definitions.json#/units/dmxValue" }
     },
+    "menuClick": {
+      "enum": ["start", "center", "end", "hidden"]
+    },
+    "switchChannels": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "$comment": "switching channel alias keys",
+        "oneOf": [
+          { "$ref": "definitions.json#/noVariablesString" },
+          { "$ref": "definitions.json#/variablePixelKeyString" }
+        ]
+      },
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "$comment": "channel key or channel alias key",
+            "$ref": "definitions.json#/noVariablesString"
+          },
+          {
+            "$comment": "template channel key or template channel alias key",
+            "$ref": "definitions.json#/variablePixelKeyString"
+          }
+        ]
+      }
+    }
+  },
+
+  "type": "object",
+  "properties": {
+    "dmxRange": { "$ref": "#/definitions/dmxRange" },
     "type": { "enum": [
       "NoFunction",
       "ShutterStrobe",
@@ -59,30 +89,8 @@
     ] },
     "comment": { "$ref": "definitions.json#/nonEmptyString" },
     "helpWanted": { "$ref": "definitions.json#/nonEmptyString" },
-    "menuClick": { "enum": ["start", "center", "end", "hidden"] },
-    "switchChannels": {
-      "type": "object",
-      "minProperties": 1,
-      "propertyNames": {
-        "$comment": "switching channel alias keys",
-        "oneOf": [
-          { "$ref": "definitions.json#/noVariablesString" },
-          { "$ref": "definitions.json#/variablePixelKeyString" }
-        ]
-      },
-      "additionalProperties": {
-        "oneOf": [
-          {
-            "$comment": "channel key or channel alias key",
-            "$ref": "definitions.json#/noVariablesString"
-          },
-          {
-            "$comment": "template channel key or template channel alias key",
-            "$ref": "definitions.json#/variablePixelKeyString"
-          }
-        ]
-      }
-    }
+    "menuClick": { "$ref": "#/definitions/menuClick" },
+    "switchChannels": { "$ref": "#/definitions/switchChannels" }
   },
   "required": ["type"],
   "allOf": [
