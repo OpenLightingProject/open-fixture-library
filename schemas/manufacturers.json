@@ -5,6 +5,12 @@
   "version": "12.2.1",
 
   "type": "object",
+  "properties": {
+    "$schema": {
+      "const": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/manufacturers.json"
+    }
+  },
+  "required": ["$schema"],
   "propertyNames": {
     "$comment": "manufacturer key",
     "type": "string",
@@ -24,11 +30,5 @@
     },
     "required": ["name"],
     "additionalProperties": false
-  },
-  "required": ["$schema"],
-  "patternProperties": {
-    "^\\$schema$": {
-      "const": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/manufacturers.json"
-    }
   }
 }

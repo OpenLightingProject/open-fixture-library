@@ -28,6 +28,7 @@
 
   "type": "object",
   "properties": {
+    "$schema": { "const": "../../schemas/plugin.json" },
     "name": {
       "type": "string"
     },
@@ -66,11 +67,6 @@
     "additionalInfo": { "$ref": "#/definitions/htmlStringLines" },
     "helpWanted": { "type": "string" }
   },
-  "required": ["name", "description", "links"],
-  "patternProperties": {
-    "^\\$schema$": {
-      "const": "../../schemas/plugin.json"
-    }
-  },
+  "required": ["$schema", "name", "description", "links"],
   "additionalProperties": false
 }

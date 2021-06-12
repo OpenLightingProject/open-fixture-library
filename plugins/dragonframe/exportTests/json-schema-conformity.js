@@ -75,10 +75,10 @@ async function getSchemas() {
   definitionsSchema.goboResourceString = { type: `object` };
 
   // allow changed schema property
-  fixtureSchema.patternProperties[`^\\$schema$`].const = `${SCHEMA_BASE_URL}fixture.json`;
-  fixtureSchema.patternProperties[`^\\$schema$`].enum = undefined;
-  manufacturersSchema.patternProperties[`^\\$schema$`].const = `${SCHEMA_BASE_URL}manufacturers.json`;
-  manufacturersSchema.patternProperties[`^\\$schema$`].enum = undefined;
+  fixtureSchema.properties.$schema = { const: `${SCHEMA_BASE_URL}fixture.json` };
+  fixtureSchema.patternProperties = undefined;
+  manufacturersSchema.properties.$schema = { const: `${SCHEMA_BASE_URL}manufacturers.json` };
+  manufacturersSchema.patternProperties = undefined;
 
   return schemasJson;
 }

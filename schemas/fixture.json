@@ -6,6 +6,9 @@
 
   "type": "object",
   "properties": {
+    "$schema": {
+      "const": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json"
+    },
     "name": {
       "$comment": "unique in manufacturer",
       "$ref": "definitions.json#/nonEmptyString"
@@ -325,10 +328,5 @@
       ]
     }
   ],
-  "patternProperties": {
-    "^\\$schema$": {
-      "const": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json"
-    }
-  },
   "additionalProperties": false
 }
