@@ -281,20 +281,20 @@
         }
       ]
     },
-    "Sound Sensitivity": {
+    "Sound Control": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "SoundSensitivity",
-          "soundSensitivity": "off",
-          "comment": "triggers Strobe, Color Jumping & Fading"
+          "type": "NoFunction",
+          "comment": "Sound control off"
         },
         {
           "dmxRange": [6, 255],
-          "type": "SoundSensitivity",
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true,
           "soundSensitivityStart": "low",
-          "soundSensitivityEnd": "high",
-          "comment": "triggers Strobe, Color Jumping & Fading"
+          "soundSensitivityEnd": "high"
         }
       ]
     },
@@ -656,7 +656,7 @@
         "Dimmer",
         "Strobe Multifuntional",
         "Color Presets",
-        "Sound Sensitivity",
+        "Sound Control",
         "DMX Delay"
       ]
     },
@@ -725,7 +725,7 @@
         "Amber",
         "UV",
         "Color Presets",
-        "Sound Sensitivity",
+        "Sound Control",
         "DMX Delay"
       ]
     }
