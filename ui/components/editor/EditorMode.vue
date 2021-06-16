@@ -17,7 +17,7 @@
         ref="firstInput"
         v-model="mode.name"
         :name="`mode-${index}-name`"
-        :schema-property="properties.definitions.modeNameString.allOf[1]"
+        :schema-property="schemaDefinitions.modeNameString.allOf[1]"
         :required="true"
         no-mode-name
         hint="e.g. Extended"
@@ -28,7 +28,7 @@
       <PropertyInputText
         v-model="mode.shortName"
         :name="`mode-${index}-shortName`"
-        :schema-property="properties.definitions.modeNameString.allOf[1]"
+        :schema-property="schemaDefinitions.modeNameString.allOf[1]"
         no-mode-name
         hint="e.g. ext; defaults to name"
         title="The short name must not contain the word 'mode'." />
@@ -42,7 +42,7 @@
       <PropertyInputNumber
         v-model="mode.rdmPersonalityIndex"
         :name="`mode-${index}-rdmPersonalityIndex`"
-        :schema-property="properties.mode.rdmPersonalityIndex" />
+        :schema-property="modeProperties.rdmPersonalityIndex" />
     </LabeledInput>
 
 
@@ -194,15 +194,15 @@
 
 
 <script>
-import schemaProperties from '../../../lib/schema-properties.js';
-import { constants } from '../../assets/scripts/editor-utils.js';
-
 import Draggable from 'vuedraggable';
 
-import EditorPhysical from './EditorPhysical.vue';
+import { schemaDefinitions, modeProperties } from '../../../lib/schema-properties.js';
+import { constants } from '../../assets/scripts/editor-utils.js';
+
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputNumber from '../PropertyInputNumber.vue';
 import PropertyInputText from '../PropertyInputText.vue';
+import EditorPhysical from './EditorPhysical.vue';
 
 export default {
   components: {
@@ -235,7 +235,8 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties,
+      schemaDefinitions,
+      modeProperties,
       dragOptions: {
         handle: `.drag-handle`,
         group: {

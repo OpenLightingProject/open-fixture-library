@@ -9,7 +9,7 @@
         v-model="wheelSlot.typeData.name"
         :formstate="formstate"
         :name="`wheel-slot${wheelSlot.uuid}-name`"
-        :schema-property="properties.definitions.nonEmptyString" />
+        :schema-property="schemaDefinitions.nonEmptyString" />
     </LabeledInput>
 
     <LabeledInput
@@ -20,14 +20,14 @@
         v-model="wheelSlot.typeData.facets"
         :formstate="formstate"
         :name="`wheel-slot${wheelSlot.uuid}-facets`"
-        :schema-property="properties.wheelSlotTypes.Prism.properties.facets" />
+        :schema-property="facetsSchema" />
     </LabeledInput>
 
   </div>
 </template>
 
 <script>
-import schemaProperties from '../../../../lib/schema-properties.js';
+import { schemaDefinitions, wheelSlotTypes } from '../../../../lib/schema-properties.js';
 
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputNumber from '../../PropertyInputNumber.vue';
@@ -52,7 +52,8 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties,
+      schemaDefinitions,
+      facetsSchema: wheelSlotTypes.Prism.properties.facets,
 
       /**
        * Used in {@link EditorWheelSlot}

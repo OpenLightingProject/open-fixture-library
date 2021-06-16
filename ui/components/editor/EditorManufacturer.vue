@@ -30,7 +30,7 @@
         <PropertyInputText
           ref="newManufacturerNameInput"
           v-model="fixture.newManufacturerName"
-          :schema-property="properties.manufacturer.name"
+          :schema-property="manufacturerProperties.name"
           :required="true"
           name="new-manufacturer-name" />
       </LabeledInput>
@@ -38,7 +38,7 @@
       <LabeledInput :formstate="formstate" name="new-manufacturer-website" label="Website">
         <PropertyInputText
           v-model="fixture.newManufacturerWebsite"
-          :schema-property="properties.manufacturer.website"
+          :schema-property="manufacturerProperties.website"
           type="url"
           name="new-manufacturer-website" />
       </LabeledInput>
@@ -46,7 +46,7 @@
       <LabeledInput :formstate="formstate" name="new-manufacturer-comment" label="Comment">
         <PropertyInputTextarea
           v-model="fixture.newManufacturerComment"
-          :schema-property="properties.manufacturer.comment"
+          :schema-property="manufacturerProperties.comment"
           name="new-manufacturer-comment" />
       </LabeledInput>
 
@@ -54,7 +54,7 @@
         <template #label><abbr title="Remote Device Management">RDM</abbr> manufacturer ID</template>
         <PropertyInputNumber
           v-model="fixture.newManufacturerRdmId"
-          :schema-property="properties.manufacturer.rdmId"
+          :schema-property="manufacturerProperties.rdmId"
           name="new-manufacturer-rdmId" />
       </LabeledInput>
 
@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import schemaProperties from '../../../lib/schema-properties.js';
+import { manufacturerProperties } from '../../../lib/schema-properties.js';
 
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputNumber from '../PropertyInputNumber.vue';
@@ -94,7 +94,7 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties,
+      manufacturerProperties,
     };
   },
   watch: {

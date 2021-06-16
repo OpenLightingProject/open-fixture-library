@@ -39,18 +39,18 @@
         v-model="capability.typeData.comment"
         :formstate="formstate"
         :name="`capability${capability.uuid}-comment`"
-        :schema-property="properties.definitions.nonEmptyString" />
+        :schema-property="schemaDefinitions.nonEmptyString" />
     </LabeledInput>
 
   </div>
 </template>
 
 <script>
-import schemaProperties from '../../../../lib/schema-properties.js';
+import { schemaDefinitions, capabilityTypes } from '../../../../lib/schema-properties.js';
 
-import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputText from '../../PropertyInputText.vue';
+import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
 
 export default {
   components: {
@@ -71,7 +71,8 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties,
+      schemaDefinitions,
+      fogTypes: capabilityTypes.Fog.properties.fogType.enum,
 
       /**
        * Used in {@link EditorCapabilityTypeData}
@@ -85,11 +86,6 @@ export default {
         comment: ``,
       },
     };
-  },
-  computed: {
-    fogTypes() {
-      return this.properties.capabilityTypes.Fog.properties.fogType.enum;
-    },
   },
 };
 </script>

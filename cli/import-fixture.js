@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-const minimist = require(`minimist`);
-const { readFile } = require(`fs/promises`);
+import { readFile } from 'fs/promises';
+import minimist from 'minimist';
 
-const { checkFixture } = require(`../tests/fixture-valid.js`);
-const fixtureJsonStringify = require(`../lib/fixture-json-stringify.js`);
-const createPullRequest = require(`../lib/create-github-pr.js`);
-const importJson = require(`../lib/import-json.js`);
+import createPullRequest from '../lib/create-github-pr.js';
+import fixtureJsonStringify from '../lib/fixture-json-stringify.js';
+import importJson from '../lib/import-json.js';
+import { checkFixture } from '../tests/fixture-valid.js';
 
 /** @typedef {import('../lib/types.js').FixtureCreateResult} FixtureCreateResult */
 
@@ -28,7 +28,7 @@ const importJson = require(`../lib/import-json.js`);
   try {
     const buffer = await readFile(filename);
 
-    const plugin = require(`../plugins/${cliArguments.plugin}/import.js`);
+    const plugin = await import(`../plugins/${cliArguments.plugin}/import.js`);
     const { manufacturers, fixtures, warnings } = await plugin.importFixtures(buffer, filename, cliArguments[`author-name`]);
 
     /** @type {FixtureCreateResult} */
@@ -74,7 +74,7 @@ const importJson = require(`../lib/import-json.js`);
  * @param {Object.<String, *>} cliArguments Command line interface arguments parsed by minimist.
  */
 async function checkCliArguments(cliArguments) {
-  const plugins = await importJson(`../plugins/plugins.json`, __dirname);
+  const plugins = await importJson(`../plugins/plugins.json`, import.meta.url);
 
   if (cliArguments._.length !== 1 || !plugins.importPlugins.includes(cliArguments.plugin) || !cliArguments[`author-name`]) {
     console.error(`Usage: ${process.argv[1]} -p <plugin> -a <author name> [--create-pull-request] <filename>\n\navailable plugins: ${plugins.importPlugins.join(`, `)}`);

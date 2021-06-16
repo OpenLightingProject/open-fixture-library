@@ -31,19 +31,19 @@
         v-model="capability.typeData.comment"
         :formstate="formstate"
         :name="`capability${capability.uuid}-comment`"
-        :schema-property="properties.definitions.nonEmptyString" />
+        :schema-property="schemaDefinitions.nonEmptyString" />
     </LabeledInput>
 
   </div>
 </template>
 
 <script>
-import schemaProperties from '../../../../lib/schema-properties.js';
+import { schemaDefinitions, capabilityTypes, entitiesSchema } from '../../../../lib/schema-properties.js';
 
-import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputEntity from '../../PropertyInputEntity.vue';
 import PropertyInputText from '../../PropertyInputText.vue';
+import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
 
 export default {
   components: {
@@ -64,8 +64,12 @@ export default {
     },
   },
   data() {
+    const holdPropertySchema = capabilityTypes.Maintenance.properties.hold;
+    const holdEntityName = holdPropertySchema.$ref.replace(`definitions.json#/entities/`, ``);
+
     return {
-      properties: schemaProperties,
+      schemaDefinitions,
+      holdSchema: entitiesSchema[holdEntityName],
 
       /**
        * Used in {@link EditorCapabilityTypeData}
@@ -79,14 +83,6 @@ export default {
         comment: ``,
       },
     };
-  },
-  computed: {
-    holdSchema() {
-      const propertySchema = this.properties.capabilityTypes.Maintenance.properties.hold;
-      const entityName = propertySchema.$ref.replace(`definitions.json#/entities/`, ``);
-
-      return this.properties.entities[entityName];
-    },
   },
 };
 </script>

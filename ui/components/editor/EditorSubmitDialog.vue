@@ -191,10 +191,10 @@
 </style>
 
 <script>
+import Fixture from '../../../lib/model/Fixture.js';
+import Manufacturer from '../../../lib/model/Manufacturer.js';
 import { clone } from '../../assets/scripts/editor-utils.js';
 
-import Manufacturer from '../../../lib/model/Manufacturer';
-import Fixture from '../../../lib/model/Fixture';
 
 import A11yDialog from '../A11yDialog.vue';
 import DownloadButton from '../DownloadButton.vue';
@@ -267,8 +267,8 @@ export default {
       const rawData = JSON.stringify(this.requestBody, null, 2);
 
       if (this.state === `error`) {
-        // eslint-disable-next-line quotes, prefer-template
-        return '```json\n' + rawData + '\n```\n\n' + this.error;
+        const backticks = '```'; // eslint-disable-line quotes
+        return `${backticks}json\n${rawData}\n\n${this.error}\n${backticks}`;
       }
 
       return rawData;

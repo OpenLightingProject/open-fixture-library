@@ -1,4 +1,4 @@
-const { normalizeAngularSpeedDirection } = require(`./gdtf-helpers.js`);
+import { normalizeAngularSpeedDirection } from './gdtf-helpers.js';
 
 const deprecatedGdtfAttributes = {
   ActiveZone: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -525,4 +525,4 @@ function guessColorComponentName(gdtfCapability, primaryColor, secondaryColor) {
   return primaryColor;
 }
 
-module.exports = deprecatedGdtfAttributes;
+export default deprecatedGdtfAttributes;

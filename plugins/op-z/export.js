@@ -1,11 +1,11 @@
 /** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
-const { CoarseChannel } = require(`../../lib/model.js`);
-const { FineChannel } = require(`../../lib/model.js`);
+import CoarseChannel from '../../lib/model/CoarseChannel.js';
+import FineChannel from '../../lib/model/FineChannel.js';
 /** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
-const { NullChannel } = require(`../../lib/model.js`);
-const { SwitchingChannel } = require(`../../lib/model.js`);
+import NullChannel from '../../lib/model/NullChannel.js';
+import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 
-module.exports.version = `0.1.0`;
+export const version = `0.1.0`;
 
 const MAX_KNOBS = 8;
 const MAX_OPZ_FIXTURES = 16;
@@ -15,10 +15,10 @@ const MAX_OPZ_FIXTURES = 16;
  * @param {Object} options Global options, including:
  * @param {String} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
+ * @param {String|undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
-module.exports.exportFixtures = async function exportOpZ(fixtures, options) {
+export async function exportFixtures(fixtures, options) {
   const exportJson = {
     profiles: [],
     config: [],
@@ -127,4 +127,4 @@ module.exports.exportFixtures = async function exportOpZ(fixtures, options) {
       return null;
     }
   }
-};
+}

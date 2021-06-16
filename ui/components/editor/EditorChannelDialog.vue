@@ -37,7 +37,7 @@
         <LabeledInput :formstate="formstate" name="name" label="Name">
           <PropertyInputText
             v-model="channel.name"
-            :schema-property="properties.channel.name"
+            :schema-property="channelProperties.name"
             :required="true"
             name="name"
             start-with-uppercase-or-number
@@ -125,7 +125,7 @@
           label="Default DMX value">
           <PropertyInputEntity
             v-model="channel.defaultValue"
-            :schema-property="properties.channel.defaultValue"
+            :schema-property="channelProperties.defaultValue"
             :min-number="0"
             :max-number="(typeof channel.defaultValue) === `string` ? 100 : dmxMax"
             class="wide"
@@ -185,7 +185,7 @@
           label="Highlight DMX value">
           <PropertyInputEntity
             v-model="channel.highlightValue"
-            :schema-property="properties.channel.highlightValue"
+            :schema-property="channelProperties.highlightValue"
             :min-number="0"
             :max-number="(typeof channel.highlightValue) === `string` ? 100 : dmxMax"
             class="wide"
@@ -202,7 +202,7 @@
         <LabeledInput :formstate="formstate" name="precedence" label="Precedence">
           <PropertyInputSelect
             v-model="channel.precedence"
-            :schema-property="properties.channel.precedence"
+            :schema-property="channelProperties.precedence"
             name="precedence" />
         </LabeledInput>
 
@@ -242,7 +242,7 @@
 import scrollIntoView from 'scroll-into-view';
 import { v4 as uuidv4 } from 'uuid';
 
-import schemaProperties from '../../../lib/schema-properties.js';
+import { capabilityTypes, channelProperties } from '../../../lib/schema-properties.js';
 import {
   constants,
   getEmptyCapability,
@@ -254,13 +254,13 @@ import {
 } from '../../assets/scripts/editor-utils.js';
 
 import A11yDialog from '../A11yDialog.vue';
-import EditorCapability from './EditorCapability.vue';
-import EditorCapabilityWizard from './EditorCapabilityWizard.vue';
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputBoolean from '../PropertyInputBoolean.vue';
 import PropertyInputEntity from '../PropertyInputEntity.vue';
 import PropertyInputSelect from '../PropertyInputSelect.vue';
 import PropertyInputText from '../PropertyInputText.vue';
+import EditorCapability from './EditorCapability.vue';
+import EditorCapabilityWizard from './EditorCapabilityWizard.vue';
 
 export default {
   components: {
@@ -291,7 +291,8 @@ export default {
       formstate: {},
       restored: false,
       channelChanged: false,
-      properties: schemaProperties,
+      channelProperties,
+      singleColors: capabilityTypes.ColorIntensity.properties.color.enum,
       constants,
     };
   },
@@ -382,9 +383,6 @@ export default {
       }
 
       return `Save changes`;
-    },
-    singleColors() {
-      return this.properties.capabilityTypes.ColorIntensity.properties.color.enum;
     },
   },
   watch: {

@@ -1,11 +1,12 @@
-const https = require(`https`);
-const path = require(`path`);
-const { mkdir, mkdtemp, writeFile } = require(`fs/promises`);
-const os = require(`os`);
-const execFile = require(`util`).promisify(require(`child_process`).execFile);
+import { execFile as execFileAsync } from 'child_process';
+import { mkdir, mkdtemp, writeFile } from 'fs/promises';
+import https from 'https';
+import os from 'os';
+import path from 'path';
+import { promisify } from 'util';
+import importJson from '../../../lib/import-json.js';
 
-const importJson = require(`../../../lib/import-json.js`);
-
+const execFile = promisify(execFileAsync);
 
 const FIXTURE_TOOL_URL = `https://raw.githubusercontent.com/mcallegari/qlcplus/master/resources/fixtures/scripts/fixtures-tool.py`;
 const FIXTURE_TOOL_DIR_PREFIX = path.join(os.tmpdir(), `ofl-qlcplus5-fixture-tool-`);
@@ -26,7 +27,7 @@ const EXPORTED_FIXTURE_PATH = `resources/fixtures/manufacturer/fixture.qxf`;
  * @param {Array.<ExportFile>} allExportFiles An array of all export files.
  * @returns {Promise.<undefined, Array.<String>|String>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
-module.exports = async function testFixtureToolValidation(exportFile, allExportFiles) {
+export default async function testFixtureToolValidation(exportFile, allExportFiles) {
   if (exportFile.name.startsWith(`gobos/`)) {
     return;
   }
@@ -43,7 +44,7 @@ module.exports = async function testFixtureToolValidation(exportFile, allExportF
   await writeFile(path.join(directory, EXPORTED_FIXTURE_PATH), exportFile.content);
 
   // store used gobos in the gobos/ directory
-  const qlcplusGoboAliases = await importJson(`../../../resources/gobos/aliases/qlcplus.json`, __dirname);
+  const qlcplusGoboAliases = await importJson(`../../../resources/gobos/aliases/qlcplus.json`, import.meta.url);
   const qlcplusGobos = [`gobos/Others/open.svg`, `gobos/Others/rainbow.png`].concat(
     Object.keys(qlcplusGoboAliases).map(gobo => `gobos/${gobo}`),
     allExportFiles.filter(file => file.name.startsWith(`gobos/`)).map(file => file.name),
@@ -67,7 +68,7 @@ module.exports = async function testFixtureToolValidation(exportFile, allExportF
   if (lastLine !== `1 definitions processed. 0 errors detected`) {
     throw output.stdout;
   }
-};
+}
 
 
 /**

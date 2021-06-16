@@ -1,16 +1,13 @@
-const xml2js = require(`xml2js`);
-const JSZip = require(`jszip`);
+import JSZip from 'jszip';
+import xml2js from 'xml2js';
 
-// see https://github.com/standard-things/esm#getting-started
-require = require(`esm`)(module); // eslint-disable-line no-global-assign
+import importJson from '../../lib/import-json.js';
+import CoarseChannel from '../../lib/model/CoarseChannel.js';
+import { scaleDmxValue, scaleDmxRangeIndividually } from '../../lib/scale-dmx-values.js';
+import gdtfAttributes, { gdtfUnits } from './gdtf-attributes.js';
+import { getRgbColorFromGdtfColor, followXmlNodeReference } from './gdtf-helpers.js';
 
-const { CoarseChannel } = require(`../../lib/model.js`);
-const { scaleDmxValue, scaleDmxRangeIndividually } = require(`../../lib/scale-dmx-values.js`);
-const importJson = require(`../../lib/import-json.js`);
-const { gdtfAttributes, gdtfUnits } = require(`./gdtf-attributes.js`);
-const { getRgbColorFromGdtfColor, followXmlNodeReference } = require(`./gdtf-helpers.js`);
-
-module.exports.version = `0.2.0`;
+export const version = `0.2.0`;
 
 /**
  * @param {Buffer} buffer The imported file.
@@ -18,7 +15,7 @@ module.exports.version = `0.2.0`;
  * @param {String} authorName The importer's name.
  * @returns {Promise.<Object, Error>} A Promise resolving to an out object
  */
-module.exports.importFixtures = async function importGdtf(buffer, filename, authorName) {
+export async function importFixtures(buffer, filename, authorName) {
   const fixture = {
     $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
   };
@@ -48,7 +45,7 @@ module.exports.importFixtures = async function importGdtf(buffer, filename, auth
   const manufacturerKey = slugify(gdtfFixture.$.Manufacturer);
   const fixtureKey = `${manufacturerKey}/${slugify(fixture.name)}`;
 
-  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, __dirname);
+  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, import.meta.url);
 
   let manufacturer;
   if (manufacturerKey in manufacturers) {
@@ -1254,7 +1251,7 @@ module.exports.importFixtures = async function importGdtf(buffer, filename, auth
       return CoarseChannel.RESOLUTION_8BIT;
     }
   }
-};
+}
 
 
 /**

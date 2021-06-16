@@ -1,15 +1,14 @@
 #!/usr/bin/env node
 
-const path = require(`path`);
-const minimist = require(`minimist`);
-const chalk = require(`chalk`);
+import chalk from 'chalk';
+import minimist from 'minimist';
 
-const diffPluginOutputs = require(`../lib/diff-plugin-outputs.js`);
-const importJson = require(`../lib/import-json.js`);
+import diffPluginOutputs from '../lib/diff-plugin-outputs.js';
+import importJson from '../lib/import-json.js';
 
 (async () => {
-  const plugins = await importJson(`../plugins/plugins.json`, __dirname);
-  const testFixtures = (await importJson(`../tests/test-fixtures.json`, __dirname)).map(
+  const plugins = await importJson(`../plugins/plugins.json`, import.meta.url);
+  const testFixtures = (await importJson(`../tests/test-fixtures.json`, import.meta.url)).map(
     fixture => `${fixture.man}/${fixture.key}`,
   );
 
@@ -23,11 +22,13 @@ const importJson = require(`../lib/import-json.js`);
   cliArguments.testFix = cliArguments[`test-fix`];
   cliArguments.fixtures = cliArguments._;
 
+  const scriptName = import.meta.url.split(`/`).slice(-2).join(`/`);
+
   const helpMessage = [
     `This script exports the given fixtures with the current version of the given plugin and diffs the results`,
     `against the files exported with the comparePlugin at the state of the given Git reference.`,
     `Fixtures have to be declared with the path to its file in the fixtures/ directory.`,
-    `Usage: node ${path.relative(process.cwd(), __filename)} -p <plugin-key> [-c <compare-plugin-key>] [-r <git-ref>] [ -t | <fixture> [<more fixtures>] ]`,
+    `Usage: node ${scriptName} -p <plugin-key> [-c <compare-plugin-key>] [-r <git-ref>] [ -t | <fixture> [<more fixtures>] ]`,
     `Options:`,
     `  --plugin,         -p: Which plugin should be used to output fixtures. Allowed values:`,
     `                        ${plugins.exportPlugins.join(`, `)}`,

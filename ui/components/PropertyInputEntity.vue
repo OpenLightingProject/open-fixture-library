@@ -74,7 +74,7 @@
 </style>
 
 <script>
-import schemaProperties from '../../lib/schema-properties.js';
+import { unitsSchema } from '../../lib/schema-properties.js';
 
 import PropertyInputNumber from './PropertyInputNumber.vue';
 
@@ -125,7 +125,6 @@ export default {
   },
   data() {
     return {
-      properties: schemaProperties,
       validationData: {
         'entity-complete': ``,
         'entities-have-same-units': ``,
@@ -151,10 +150,10 @@ export default {
     units() {
       const units = {};
       for (const unitName of this.unitNames) {
-        const unitSchema = this.properties.units[unitName];
+        const unitSchema = unitsSchema[unitName];
 
         const unitString = `pattern` in unitSchema ? unitSchema.pattern.replace(/^.*\)\??(.*?)\$$/, `$1`).replace(`\\`, ``) : ``;
-        const numberSchema = `pattern` in unitSchema ? this.properties.units.number : unitSchema;
+        const numberSchema = `pattern` in unitSchema ? unitsSchema.number : unitSchema;
 
         units[unitName] = {
           unitString,
