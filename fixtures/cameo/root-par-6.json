@@ -129,17 +129,25 @@
         },
         {
           "dmxRange": [126, 127],
-          "type": "ColorPreset",
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "stop",
           "comment": "Color Jumping Stop"
         },
         {
           "dmxRange": [128, 164],
-          "type": "ColorPreset",
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast",
           "comment": "Color Jumping speed slow -> fast / Color  1 -> 12"
         },
         {
           "dmxRange": [165, 201],
-          "type": "ColorPreset",
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast",
           "comment": "Color Fading speed slow -> fast / Color  1 -> 12"
         },
         {
