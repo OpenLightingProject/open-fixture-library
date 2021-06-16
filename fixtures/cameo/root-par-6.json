@@ -39,6 +39,7 @@
   },
   "availableChannels": {
     "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
       "capability": {
         "type": "Intensity",
         "brightnessStart": "0%",
@@ -194,14 +195,6 @@
         }
       ]
     },
-    "Dimmer 2": {
-      "name": "Dimmer",
-      "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
     "Strobe Multifuntional": {
       "capabilities": [
         {
@@ -327,14 +320,6 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
-      }
-    },
-    "Dimmer 3": {
-      "name": "Dimmer",
-      "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
       }
     },
     "Strobe": {
@@ -652,19 +637,6 @@
           "speedEnd": "20Hz"
         }
       ]
-    },
-    "Dimmer 4": {
-      "name": "Dimmer",
-      "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Dimmer fein": {
-      "capability": {
-        "type": "Intensity"
-      }
     }
   },
   "modes": [
@@ -681,7 +653,7 @@
       "name": "5-Channel #1",
       "shortName": "5ch#1",
       "channels": [
-        "Dimmer 2",
+        "Dimmer",
         "Strobe Multifuntional",
         "Color Presets",
         "Sound Sensitivity",
@@ -703,7 +675,7 @@
       "name": "6-Channel",
       "shortName": "6ch",
       "channels": [
-        "Dimmer 3",
+        "Dimmer",
         "Strobe",
         "Chase",
         "Color Presets 1",
@@ -729,7 +701,7 @@
       "shortName": "9ch",
       "channels": [
         "Dimmer",
-        "Strobe 2",
+        "Strobe fine",
         "Red",
         "Green",
         "Blue",
@@ -743,8 +715,8 @@
       "name": "12-Channel",
       "shortName": "12ch",
       "channels": [
-        "Dimmer 4",
-        "Dimmer fein",
+        "Dimmer",
+        "Dimmer fine",
         "Strobe Multifuntional",
         "Red",
         "Green",
