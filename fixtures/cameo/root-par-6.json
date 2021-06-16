@@ -181,13 +181,13 @@
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "EffectParameter",
+          "type": "Maintenance",
           "parameter": "off",
           "comment": "No Delay"
         },
         {
           "dmxRange": [6, 255],
-          "type": "EffectParameter",
+          "type": "Maintenance",
           "parameterStart": 0.1,
           "parameterEnd": 2,
           "comment": "Delay in seconds"
