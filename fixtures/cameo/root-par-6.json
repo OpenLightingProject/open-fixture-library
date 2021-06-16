@@ -621,22 +621,6 @@
         "type": "ColorIntensity",
         "color": "UV"
       }
-    },
-    "Strobe 2": {
-      "name": "Strobe",
-      "capabilities": [
-        {
-          "dmxRange": [0, 5],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [6, 255],
-          "type": "StrobeSpeed",
-          "speedStart": "1Hz",
-          "speedEnd": "20Hz"
-        }
-      ]
     }
   },
   "modes": [
@@ -701,7 +685,7 @@
       "shortName": "9ch",
       "channels": [
         "Dimmer",
-        "Strobe fine",
+        "Strobe",
         "Red",
         "Green",
         "Blue",
