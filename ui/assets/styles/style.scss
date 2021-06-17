@@ -95,6 +95,7 @@ template {
 code {
   font-family: $font-stack-code;
   color: theme-color(text-secondary);
+  font-weight: 400;
 }
 
 h1 code,
@@ -178,6 +179,7 @@ textarea[readonly] {
   line-height: 1.3;
   font-size: 0.9em;
   font-family: $font-stack-code;
+  font-weight: 400;
   white-space: pre-wrap;
   background: theme-color(header-background);
   color: theme-color(text-primary);

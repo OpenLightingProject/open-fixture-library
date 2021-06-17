@@ -115,6 +115,7 @@
       padding: 0 4px;
       margin: 4px;
       font-family: $font-stack-code;
+      font-weight: 400;
     }
   }
 }

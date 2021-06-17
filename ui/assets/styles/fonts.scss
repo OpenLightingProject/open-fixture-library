@@ -34,22 +34,12 @@ $lato-flavor-list: (
   }
 }
 
-// Font faces for both Inconsolata weights
 @font-face {
   font-family: Inconsolata;
   src: local('Inconsolata Regular'),
        local('Inconsolata-Regular'),
        url('/fonts/Inconsolata/Inconsolata-Regular.ttf')  format('truetype');
   font-weight: 400;
-  text-rendering: optimizeLegibility;
-  font-display: fallback;
-}
-@font-face {
-  font-family: Inconsolata;
-  src: local('Inconsolata Bold'),
-       local('Inconsolata-Bold'),
-       url('/fonts/Inconsolata/Inconsolata-Bold.ttf')  format('truetype');
-  font-weight: 700;
   text-rendering: optimizeLegibility;
   font-display: fallback;
 }
