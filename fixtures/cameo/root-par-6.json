@@ -46,7 +46,7 @@
         "brightnessEnd": "100%"
       }
     },
-    "Color Presets": {
+    "Color Preset": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -377,7 +377,7 @@
         }
       ]
     },
-    "Color Presets 1": {
+    "Color Preset 1": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -490,7 +490,7 @@
         }
       ]
     },
-    "Color Presets 2": {
+    "Color Preset 2": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
@@ -622,7 +622,7 @@
       "shortName": "3ch",
       "channels": [
         "Dimmer",
-        "Color Presets",
+        "Color Preset",
         "DMX Delay"
       ]
     },
@@ -632,7 +632,7 @@
       "channels": [
         "Dimmer",
         "Strobe Multifuntional",
-        "Color Presets",
+        "Color Preset",
         "Sound Control",
         "DMX Delay"
       ]
@@ -655,8 +655,8 @@
         "Dimmer",
         "Strobe",
         "Chase",
-        "Color Presets 1",
-        "Color Presets 2",
+        "Color Preset 1",
+        "Color Preset 2",
         "DMX Delay"
       ]
     },
@@ -701,7 +701,7 @@
         "White",
         "Amber",
         "UV",
-        "Color Presets",
+        "Color Preset",
         "Sound Control",
         "DMX Delay"
       ]
