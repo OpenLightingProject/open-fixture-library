@@ -97,7 +97,8 @@ export default {
     },
     physical: {
       type: Physical,
-      required: true,
+      required: false,
+      default: null,
     },
   },
   data() {
