@@ -261,7 +261,9 @@
           "dmxRange": [103, 127],
           "type": "ShutterStrobe",
           "shutterEffect": "Lightning",
-          "comment": "Strobe Break effect, 5s…..1s (short burst with break)"
+          "durationStart": "5s",
+          "durationEnd": "1s",
+          "comment": "Break effect (short burst with break)"
         },
         {
           "dmxRange": [128, 250],
