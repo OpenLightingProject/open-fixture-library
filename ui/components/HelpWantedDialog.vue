@@ -1,6 +1,6 @@
 <template>
   <A11yDialog
-    id="help-wanted"
+    id="help-wanted-dialog"
     ref="dialog"
     :is-alert-dialog="state === `loading`"
     :shown="context !== null"
