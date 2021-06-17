@@ -30,71 +30,75 @@
   },
   "availableChannels": {
     "Pan": {
-      "defaultValue": 255,
-      "highlightValue": 255,
-      "constant": true,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
-        "angleEnd": "360deg"
+        "angleEnd": "540deg"
       }
     },
     "Tilt": {
-      "defaultValue": 255,
-      "highlightValue": 255,
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
         "angleEnd": "180deg"
       }
     },
-    "Dimmer": {
-      "defaultValue": 255,
-      "highlightValue": 255,
-      "capability": {
-        "type": "Intensity"
-      }
+    "Dimmer & Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [8, 134],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        },
+        {
+          "dmxRange": [135, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "40Hz"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
     },
     "Red": {
-      "defaultValue": 255,
       "highlightValue": 255,
-      "constant": true,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Green": {
-      "defaultValue": 255,
       "highlightValue": 255,
-      "constant": true,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blue": {
-      "defaultValue": 255,
       "highlightValue": 255,
-      "constant": true,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "White": {
-      "defaultValue": 255,
       "highlightValue": 255,
-      "constant": true,
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
     "Pan/Tilt Speed": {
-      "defaultValue": 255,
-      "highlightValue": 255,
-      "constant": true,
       "capability": {
         "type": "PanTiltSpeed",
         "speedStart": "fast",
@@ -104,12 +108,12 @@
   },
   "modes": [
     {
-      "name": "8-channel DMX ",
-      "shortName": "8 DMX",
+      "name": "8-channel",
+      "shortName": "8ch",
       "channels": [
         "Pan",
         "Tilt",
-        "Dimmer",
+        "Dimmer & Strobe",
         "Red",
         "Green",
         "Blue",
