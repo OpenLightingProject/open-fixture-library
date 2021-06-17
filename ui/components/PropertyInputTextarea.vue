@@ -1,6 +1,5 @@
 <template>
   <textarea
-    ref="input"
     v-model.trim="localValue"
     :required="required"
     :placeholder="hint"
@@ -67,7 +66,7 @@ export default {
   },
   methods: {
     focus() {
-      this.$refs.input.focus();
+      this.$el.focus();
     },
     update() {
       this.$emit(`input`, this.localValue);

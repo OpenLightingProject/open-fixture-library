@@ -1,6 +1,5 @@
 <template>
   <input
-    ref="input"
     :required="required"
     :min="min"
     :max="max"
@@ -125,10 +124,10 @@ export default {
   },
   methods: {
     focus() {
-      this.$refs.input.focus();
+      this.$el.focus();
     },
     update() {
-      const input = this.$refs.input;
+      const input = this.$el;
       if (input.validity && input.validity.badInput) {
         this.$emit(`input`, `invalid`);
         return;

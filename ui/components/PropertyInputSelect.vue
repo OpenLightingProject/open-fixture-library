@@ -1,6 +1,5 @@
 <template>
   <select
-    ref="input"
     v-model="localValue"
     :required="required"
     :class="{ empty: value === `` }">
@@ -59,7 +58,7 @@ export default {
   },
   methods: {
     focus() {
-      this.$refs.input.focus();
+      this.$el.focus();
     },
   },
 };
