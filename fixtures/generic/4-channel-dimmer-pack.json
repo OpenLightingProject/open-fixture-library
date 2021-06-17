@@ -4,59 +4,20 @@
   "categories": ["Dimmer"],
   "meta": {
     "authors": ["Goetz"],
-    "createDate": "2021-05-01",
-    "lastModifyDate": "2021-05-01"
+    "createDate": "2021-06-17",
+    "lastModifyDate": "2021-06-17"
   },
-  "comment": "Your usual off the shelf generic 4 Channel Dimmer Pack from Botec, Stairville, Lightmaxx, EuroLite, ShowTex, Varytec etc",
-  "links": {
-    "other": [
-      "https://open-fixture-library.org/"
-    ]
+  "comment": "Your usual off-the-shelf generic 4 Channel Dimmer Pack from Botec, Stairville, Lightmaxx, EuroLite, ShowTex, Varytec etc.",
+  "matrix": {
+    "pixelCount": [4, 1, 1],
+    "pixelGroups": {
+      "Master": "all",
+      "1/2": ["1", "2"],
+      "3/4": ["3", "4"]
+    }
   },
-  "availableChannels": {
-    "All Channels": {
-      "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Channel 1/2": {
-      "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Channel 3/4": {
-      "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Channel 1": {
-      "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Channel 2": {
-      "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Channel 3": {
-      "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
-      }
-    },
-    "Channel 4": {
+  "templateChannels": {
+    "Dimmer $pixelKey": {
       "capability": {
         "type": "Intensity",
         "brightnessStart": "0%",
@@ -66,28 +27,28 @@
   },
   "modes": [
     {
-      "name": "1-Channel",
+      "name": "1-channel",
       "shortName": "1ch",
       "channels": [
-        "All Channels"
+        "Dimmer Master"
       ]
     },
     {
-      "name": "2-Channel",
+      "name": "2-channel",
       "shortName": "2ch",
       "channels": [
-        "Channel 1/2",
-        "Channel 3/4"
+        "Dimmer 1/2",
+        "Dimmer 3/4"
       ]
     },
     {
-      "name": "4-Channel",
+      "name": "4-channel",
       "shortName": "4ch",
       "channels": [
-        "Channel 1",
-        "Channel 2",
-        "Channel 3",
-        "Channel 4"
+        "Dimmer 1",
+        "Dimmer 2",
+        "Dimmer 3",
+        "Dimmer 4"
       ]
     }
   ]
