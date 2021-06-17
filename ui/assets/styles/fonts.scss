@@ -34,12 +34,12 @@ $lato-flavor-list: (
   }
 }
 
+// v21 from https://google-webfonts-helper.herokuapp.com/fonts/inconsolata
 @font-face {
   font-family: Inconsolata;
   src: local('Inconsolata Regular'),
        local('Inconsolata-Regular'),
-       url('/fonts/Inconsolata/Inconsolata-Regular.ttf')  format('truetype');
+       url('/fonts/Inconsolata/Inconsolata-Regular.woff2') format('woff2');
   font-weight: 400;
-  text-rendering: optimizeLegibility;
   font-display: fallback;
 }
