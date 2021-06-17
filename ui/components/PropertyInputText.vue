@@ -1,12 +1,12 @@
 <template>
   <input
     ref="input"
+    v-model.trim="localValue"
     :required="required"
     :placeholder="hint"
     :pattern="schemaProperty.pattern"
     :minlength="schemaProperty.minLength"
     :maxlength="schemaProperty.maxLength"
-    :value="value"
     type="text"
     @input="update()"
     @blur="onBlur()">
@@ -39,6 +39,11 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      localValue: String(this.value),
+    };
+  },
   computed: {
     /**
      * @public
@@ -69,10 +74,10 @@ export default {
       this.$refs.input.focus();
     },
     update() {
-      this.$emit(`input`, this.$refs.input.value);
+      this.$emit(`input`, this.localValue);
     },
     onBlur() {
-      this.$emit(`blur`, this.$refs.input.value);
+      this.$emit(`blur`, this.localValue);
     },
   },
 };
