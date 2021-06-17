@@ -1,17 +1,19 @@
-import path from 'path';
+import { fileURLToPath } from 'url';
 
-import plugins from './plugins/plugins.json';
 import register from './fixtures/register.json';
 import { fixtureFromRepository } from './lib/model.js';
+import plugins from './plugins/plugins.json';
 
-const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT}/`;
+const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT || 3000}/`;
 
 export default {
+  telemetry: true,
   srcDir: `./ui/`,
   modules: [
     [`@nuxtjs/axios`, {
       browserBaseURL: `/`,
     }],
+    `nuxt-helmet`,
     `cookie-universal-nuxt`,
     `@nuxtjs/robots`,
     `@nuxtjs/sitemap`,
@@ -29,6 +31,23 @@ export default {
       ssr: false,
     },
   ],
+  serverMiddleware: [
+    {
+      path: `/api/v1`,
+      handler: `~/api/index.js`,
+    },
+    {
+      path: `/`,
+      handler: `~/api/download.js`,
+    },
+  ],
+  helmet: {
+    expectCt: false,
+    hsts: {
+      maxAge: 2 * 365 * 24 * 60 * 60,
+      preload: true,
+    },
+  },
   css: [
     `~/assets/styles/style.scss`,
     `embetty-vue/dist/embetty-vue.css`,
@@ -37,6 +56,7 @@ export default {
     websiteUrl,
   },
   build: {
+    quiet: false,
     loaders: {
       // condense whitespace in Vue templates
       vue: {
@@ -51,7 +71,7 @@ export default {
     },
     extend(config, context) {
       // exclude /assets/icons from url-loader
-      const iconsPath = path.resolve(__dirname, `ui/assets/icons`);
+      const iconsPath = fileURLToPath(new URL(`ui/assets/icons/`, import.meta.url));
       const urlLoader = config.module.rules.find(rule => rule.test.toString().includes(`|svg|`));
       urlLoader.exclude = iconsPath;
 

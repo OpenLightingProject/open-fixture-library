@@ -1,33 +1,33 @@
-const xmlbuilder = require(`xmlbuilder`);
-const sanitize = require(`sanitize-filename`);
+import sanitize from 'sanitize-filename';
+import xmlbuilder from 'xmlbuilder';
 
-const {
+/** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
+import Capability from '../../lib/model/Capability.js';
+import CoarseChannel from '../../lib/model/CoarseChannel.js';
+/** @typedef {import('../../lib/model/FineChannel.js').default} FineChannel */
+/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
+/** @typedef {import('../../lib/model/Mode.js').default} Mode */
+import Physical from '../../lib/model/Physical.js';
+import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
+
+import {
   getChannelPreset,
   getFineChannelPreset,
   getCapabilityPreset,
   exportHelpers,
-} = require(`./presets.js`);
+} from './presets.js';
 
-/** @typedef {import('../../lib/model/AbstractChannel.js').default} AbstractChannel */
-const { Capability } = require(`../../lib/model.js`);
-const { CoarseChannel } = require(`../../lib/model.js`);
-/** @typedef {import('../../lib/model/FineChannel.js').default} FineChannel */
-/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
-/** @typedef {import('../../lib/model/Mode.js').default} Mode */
-const { Physical } = require(`../../lib/model.js`);
-const { SwitchingChannel } = require(`../../lib/model.js`);
-
-module.exports.version = `1.3.0`;
+export const version = `1.3.0`;
 
 /**
  * @param {Array.<Fixture>} fixtures An array of Fixture objects.
  * @param {Object} options Global options, including:
  * @param {String} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {String|undefined} options.displayedPluginVersion Replacement for module.exports.version if the plugin version is used in export.
+ * @param {String|undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
  * @returns {Promise.<Array.<Object>, Error>} The generated files.
  */
-module.exports.exportFixtures = async function exportQlcPlus(fixtures, options) {
+export async function exportFixtures(fixtures, options) {
   const customGobos = {};
 
   const outFiles = await Promise.all(fixtures.map(async fixture => {
@@ -38,7 +38,7 @@ module.exports.exportFixtures = async function exportQlcPlus(fixtures, options) 
           '@xmlns': `http://www.qlcplus.org/FixtureDefinition`,
           Creator: {
             Name: `OFL – ${fixture.url}`,
-            Version: options.displayedPluginVersion || module.exports.version,
+            Version: options.displayedPluginVersion || version,
             Author: fixture.meta.authors.join(`, `),
           },
           Manufacturer: fixture.manufacturer.name,
@@ -99,7 +99,7 @@ module.exports.exportFixtures = async function exportQlcPlus(fixtures, options) 
   }
 
   return outFiles;
-};
+}
 
 /**
  * @param {Object} xml The xmlbuilder <FixtureDefinition> object.

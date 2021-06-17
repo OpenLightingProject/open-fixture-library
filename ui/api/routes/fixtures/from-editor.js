@@ -1,7 +1,15 @@
-const schemaProperties = require(`../../../../lib/schema-properties.js`).default;
-const { checkFixture } = require(`../../../../tests/fixture-valid.js`);
-const { CoarseChannel } = require(`../../../../lib/model.js`);
-const importJson = require(`../../../../lib/import-json.js`);
+import importJson from '../../../../lib/import-json.js';
+import CoarseChannel from '../../../../lib/model/CoarseChannel.js';
+import {
+  fixtureProperties,
+  physicalProperties,
+  linksProperties,
+  wheelSlotTypes,
+  channelProperties,
+  capabilityTypes,
+  modeProperties,
+} from '../../../../lib/schema-properties.js';
+import { checkFixture } from '../../../../tests/fixture-valid.js';
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 /** @typedef {import('../../index.js').ApiResponse} ApiResponse */
@@ -12,7 +20,7 @@ const importJson = require(`../../../../lib/import-json.js`);
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
  * @returns {Promise.<ApiResponse>} The handled response.
  */
-async function createFixtureFromEditor({ request }) {
+export async function createFixtureFromEditor({ request }) {
   try {
     const fixtureCreateResult = await getFixtureCreateResult(request.requestBody);
     return {
@@ -43,7 +51,7 @@ async function getFixtureCreateResult(fixtures) {
     errors: {},
   };
 
-  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, __dirname);
+  const manufacturers = await importJson(`../../../../fixtures/manufacturers.json`, import.meta.url);
 
   // { 'uuid 1': 'new channel key 1', ... }
   const channelKeyMapping = {};
@@ -61,7 +69,7 @@ async function getFixtureCreateResult(fixtures) {
       $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json`,
     };
 
-    for (const property of Object.keys(schemaProperties.fixture)) {
+    for (const property of Object.keys(fixtureProperties)) {
       switch (property) {
         case `physical`: {
           const physical = getPhysical(fixture.physical);
@@ -182,11 +190,11 @@ async function getFixtureCreateResult(fixtures) {
   function getPhysical(from) {
     const physical = {};
 
-    for (const property of Object.keys(schemaProperties.physical)) {
-      if (schemaProperties.physical[property].type === `object`) {
+    for (const property of Object.keys(physicalProperties)) {
+      if (physicalProperties[property].type === `object`) {
         physical[property] = {};
 
-        for (const subProperty of Object.keys(schemaProperties.physical[property].properties)) {
+        for (const subProperty of Object.keys(physicalProperties[property].properties)) {
           if (propertyExistsIn(subProperty, from[property])) {
             physical[property][subProperty] = getComboboxInput(subProperty, from[property]);
           }
@@ -216,7 +224,7 @@ async function getFixtureCreateResult(fixtures) {
       (match, videoId, query) => `https://www.youtube.com/watch?v=${videoId}${query.replace(/^\?/, `&`)}`,
     );
 
-    const linkTypes = Object.keys(schemaProperties.links);
+    const linkTypes = Object.keys(linksProperties);
 
     for (const linkType of linkTypes) {
       const linksOfType = editorLinksArray
@@ -257,7 +265,7 @@ async function getFixtureCreateResult(fixtures) {
           type: editorWheelSlot.type,
         };
 
-        const wheelSlotSchema = schemaProperties.wheelSlotTypes[wheelSlot.type];
+        const wheelSlotSchema = wheelSlotTypes[wheelSlot.type];
 
         for (const slotProperty of Object.keys(wheelSlotSchema.properties)) {
           if (propertyExistsIn(slotProperty, editorWheelSlot.typeData)) {
@@ -289,7 +297,7 @@ async function getFixtureCreateResult(fixtures) {
 
     const channel = {};
 
-    for (const property of Object.keys(schemaProperties.channel)) {
+    for (const property of Object.keys(channelProperties)) {
       if (property === `capabilities`) {
         const capabilities = getCapabilities(from);
 
@@ -358,7 +366,7 @@ async function getFixtureCreateResult(fixtures) {
     return channel.capabilities.map(editorCapability => {
       const capability = {};
 
-      const capabilitySchema = schemaProperties.capabilityTypes[editorCapability.type];
+      const capabilitySchema = capabilityTypes[editorCapability.type];
 
       for (const capabilityProperty of Object.keys(capabilitySchema.properties)) {
         if (propertyExistsIn(capabilityProperty, editorCapability)) {
@@ -381,7 +389,7 @@ async function getFixtureCreateResult(fixtures) {
   function addMode(fixtureKey, from) {
     const mode = {};
 
-    for (const property of Object.keys(schemaProperties.mode)) {
+    for (const property of Object.keys(modeProperties)) {
       if (property === `physical`) {
         const physical = getPhysical(from.physical);
         if (!isEmptyObject(physical)) {
@@ -433,5 +441,3 @@ function getComboboxInput(property, from) {
 function slugify(string) {
   return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);
 }
-
-module.exports = { createFixtureFromEditor };

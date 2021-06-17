@@ -1,4 +1,4 @@
-const createPullRequest = require(`../../../../lib/create-github-pr.js`);
+import createPullRequest from '../../../../lib/create-github-pr.js';
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 /** @typedef {import('../../index.js').ApiResponse} ApiResponse */
@@ -17,7 +17,7 @@ const createPullRequest = require(`../../../../lib/create-github-pr.js`);
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
  * @returns {ApiResponse} The handled response.
  */
-async function submitFixtures({ request }) {
+export async function submitFixtures({ request }) {
   try {
     const pullRequestUrl = await createPullRequest(
       request.requestBody.fixtureCreateResult,
@@ -35,10 +35,8 @@ async function submitFixtures({ request }) {
     return {
       statusCode: 500,
       body: {
-        error: error.message,
+        error: `${error.toString()}\n${error.stack}`,
       },
     };
   }
 }
-
-module.exports = { submitFixtures };

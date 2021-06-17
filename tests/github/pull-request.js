@@ -1,7 +1,10 @@
-const chalk = require(`chalk`);
-const { Octokit } = require(`@octokit/rest`);
+import '../../lib/load-env-file.js';
 
-require(`../../lib/load-env-file.js`);
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { Octokit } from '@octokit/rest';
+import chalk from 'chalk';
+
 
 const requiredEnvironmentVariables = [
   `GITHUB_USER_TOKEN`,
@@ -22,16 +25,20 @@ let prData;
  * Checks if the environment variables for GitHub operations are correct.
  * @returns {Promise} Rejects an error message if the environment is not correct.
  */
-module.exports.checkEnv = async function checkEnv() {
+export async function checkEnv() {
   for (const environmentVariable of requiredEnvironmentVariables) {
     if (!(environmentVariable in process.env)) {
       throw `Environment variable ${environmentVariable} is required for this script. Please define it in your system or in the .env file.`;
     }
   }
-};
+}
 
-module.exports.init = async function init() {
-  await module.exports.checkEnv();
+/**
+ * Fetch data about the current pull request from the GitHub API.
+ * @returns {Promise} A Promise that resolves to the returned pull request data.
+ */
+export async function init() {
+  await checkEnv();
 
   repoOwner = process.env.GITHUB_REPOSITORY.split(`/`)[0];
   repoName = process.env.GITHUB_REPOSITORY.split(`/`)[1];
@@ -50,9 +57,12 @@ module.exports.init = async function init() {
   prData = pr.data;
 
   return pr.data;
-};
+}
 
-module.exports.fetchChangedComponents = async function fetchChangedComponents() {
+/**
+ * @returns {Promise} A Promise that resolves to an object which describes the OFL components changed in this pull request.
+ */
+export async function fetchChangedComponents() {
   // fetch changed files in blocks of 100
   const filePromises = [];
   for (let index = 0; index < prData.changed_files / 100; index++) {
@@ -163,27 +173,30 @@ module.exports.fetchChangedComponents = async function fetchChangedComponents() 
       ]);
     }
   }
-};
+}
 
 /**
  * Creates a new comment in the PR if test.lines is not empty and if there is not already an exactly equal comment.
- * Deletes old comments from the same test (determined by test.filename).
+ * Deletes old comments from the same test (determined by test.fileUrl).
  * @param {Object} test Information about the test script that wants to update the comment.
- * @param {String} test.filename Relative path from OFL root dir to test file: 'tests/github/test-file-name.js'
+ * @param {URL} test.fileUrl URL of the test file.
  * @param {String} test.name Heading to be used in the comment
  * @param {Array.<String>} test.lines The comment's lines of text
  * @returns {Promise} A Promise that is fulfilled as soon as all GitHub operations have finished
  */
-module.exports.updateComment = async function updateComment(test) {
+export async function updateComment(test) {
   if (prData.head.repo.full_name !== prData.base.repo.full_name) {
     console.warn(chalk.yellow(`Warning:`), `This PR is created from a forked repository, so there is no write permission for the repo.`);
     return undefined;
   }
 
+  const oflRootPath = fileURLToPath(new URL(`../../`, import.meta.url));
+  const relativeFilePath = path.relative(oflRootPath, fileURLToPath(test.fileUrl));
+
   const lines = [
-    `<!-- GITHUB-TEST: ${test.filename} -->`,
+    `<!-- GITHUB-TEST: ${relativeFilePath} -->`,
     `# ${test.name}`,
-    `(Output of test script \`${test.filename}\`.)`,
+    `(Output of test script \`${relativeFilePath}\`.)`,
     ``,
     ...test.lines,
   ];
@@ -240,12 +253,4 @@ module.exports.updateComment = async function updateComment(test) {
   }
 
   return Promise.all(promises);
-};
-
-module.exports.getTestFixturesMessage = function getTestFixturesMessage(fixtures) {
-  return [
-    `Tested with the following minimal collection of [test fixtures](https://github.com/OpenLightingProject/open-fixture-library/blob/master/docs/fixture-features.md) that cover all fixture features:`,
-    ...fixtures.map(fixture => `- ${fixture}`),
-    ``,
-  ];
-};
+}

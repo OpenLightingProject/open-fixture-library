@@ -1,11 +1,10 @@
 <template>
   <textarea
-    ref="input"
+    v-model.trim="localValue"
     :required="required"
     :placeholder="hint"
     :minlength="schemaProperty.minLength"
     :maxlength="schemaProperty.maxLength"
-    :value="value"
     @input="update()" />
 </template>
 
@@ -36,6 +35,11 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      localValue: String(this.value),
+    };
+  },
   computed: {
     /**
      * @public
@@ -62,10 +66,10 @@ export default {
   },
   methods: {
     focus() {
-      this.$refs.input.focus();
+      this.$el.focus();
     },
     update() {
-      this.$emit(`input`, this.$refs.input.value);
+      this.$emit(`input`, this.localValue);
     },
   },
 };

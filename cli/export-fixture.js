@@ -1,11 +1,13 @@
 #!/usr/bin/env node
-const { mkdir, writeFile } = require(`fs/promises`);
-const path = require(`path`);
-const minimist = require(`minimist`);
-const chalk = require(`chalk`);
+import { mkdir, writeFile } from 'fs/promises';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const { fixtureFromRepository } = require(`../lib/model.js`);
-const importJson = require(`../lib/import-json.js`);
+import chalk from 'chalk';
+import minimist from 'minimist';
+
+import importJson from '../lib/import-json.js';
+import { fixtureFromRepository } from '../lib/model.js';
 
 (async () => {
   try {
@@ -19,7 +21,7 @@ const importJson = require(`../lib/import-json.js`);
 
     let fixtures;
     if (cliArguments.a) {
-      const register = await importJson(`../fixtures/register.json`, __dirname);
+      const register = await importJson(`../fixtures/register.json`, import.meta.url);
       fixtures = Object.keys(register.filesystem).filter(
         fixtureKey => !(`redirectTo` in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === `SameAsDifferentBrand`,
       ).map(fixtureKey => fixtureKey.split(`/`));
@@ -36,13 +38,13 @@ const importJson = require(`../lib/import-json.js`);
 
     const outDirectory = cliArguments.o ? path.resolve(process.cwd(), cliArguments.o) : null;
 
-    const plugin = require(`../plugins/${cliArguments.plugin}/export.js`);
+    const plugin = await import(`../plugins/${cliArguments.plugin}/export.js`);
     const files = await plugin.exportFixtures(
       await Promise.all(fixtures.map(
         ([manufacturer, fixture]) => fixtureFromRepository(manufacturer, fixture),
       )),
       {
-        baseDirectory: path.join(__dirname, `..`),
+        baseDirectory: fileURLToPath(new URL(`../`, import.meta.url)),
         date: new Date(),
       },
     );
@@ -96,7 +98,7 @@ async function checkCliArguments(cliArguments) {
     process.exit(1);
   }
 
-  const plugins = await importJson(`../plugins/plugins.json`, __dirname);
+  const plugins = await importJson(`../plugins/plugins.json`, import.meta.url);
 
   if (!plugins.exportPlugins.includes(cliArguments.plugin)) {
     console.error(chalk.red(`[Error]`), `Plugin '${cliArguments.plugin}' does not exist or does not support exporting.\n\navailable plugins:`, Object.keys(plugins.exportPlugins).join(`, `));

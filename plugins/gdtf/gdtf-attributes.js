@@ -1,12 +1,12 @@
-const {
+import deprecatedGdtfAttributes from './deprecated-gdtf-attributes.js';
+import {
   followXmlNodeReference,
   getRgbColorFromGdtfColor,
   normalizeAngularSpeedDirection,
-} = require(`./gdtf-helpers.js`);
-const deprecatedGdtfAttributes = require(`./deprecated-gdtf-attributes.js`);
+} from './gdtf-helpers.js';
 
 // see https://gdtf-share.com/wiki/GDTF_File_Description#Attribute
-const gdtfUnits = {
+export const gdtfUnits = {
   None(value) {
     return value;
   },
@@ -1250,7 +1250,7 @@ function guessSpeedOrDuration(gdtfCapability) {
   return gdtfCapability._channelFunction._attribute.$.PhysicalUnit === `Time` ? `duration` : `speed`;
 }
 
-module.exports = {
-  gdtfUnits,
-  gdtfAttributes: Object.assign({}, deprecatedGdtfAttributes, gdtfAttributes),
+export default {
+  ...deprecatedGdtfAttributes,
+  ...gdtfAttributes,
 };

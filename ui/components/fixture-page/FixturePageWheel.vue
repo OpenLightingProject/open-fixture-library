@@ -224,10 +224,9 @@ figcaption table {
 </style>
 
 <script>
-import { getColorCircleSvgFragment } from '../global/OflSvg.vue';
 import Wheel from '../../../lib/model/Wheel.js';
-
 import ConditionalDetails from '../ConditionalDetails.vue';
+import { getColorCircleSvgFragment } from '../global/OflSvg.vue';
 
 export default {
   components: {

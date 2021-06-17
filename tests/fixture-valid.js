@@ -1,26 +1,22 @@
-const { inspect } = require(`util`);
+import { inspect } from 'util';
 
-// see https://github.com/standard-things/esm#getting-started
-require = require(`esm`)(module); // eslint-disable-line no-global-assign
-
-const getAjvValidator = require(`../lib/ajv-validator.js`);
-const schemaProperties = require(`../lib/schema-properties.js`).default;
-const { manufacturerFromRepository, getResourceFromString } = require(`../lib/model.js`);
-const getAjvErrorMessages = require(`../lib/get-ajv-error-messages.js`);
-const importJson = require(`../lib/import-json.js`);
-
+import getAjvValidator from '../lib/ajv-validator.js';
+import getAjvErrorMessages from '../lib/get-ajv-error-messages.js';
+import importJson from '../lib/import-json.js';
+import { manufacturerFromRepository, getResourceFromString } from '../lib/model.js';
 /** @typedef {import('../lib/model/AbstractChannel.js').default} AbstractChannel */
 /** @typedef {import('../lib/model/Capability.js').default} Capability */
 /** @typedef {import('../lib/model/CoarseChannel.js').default} CoarseChannel */
-const { FineChannel } = require(`../lib/model.js`);
-const { Fixture } = require(`../lib/model.js`);
+import FineChannel from '../lib/model/FineChannel.js';
+import Fixture from '../lib/model/Fixture.js';
 /** @typedef {import('../lib/model/Matrix.js').default} Matrix */
 /** @typedef {import('../lib/model/Meta.js').default} Meta */
-const { NullChannel } = require(`../lib/model.js`);
+import NullChannel from '../lib/model/NullChannel.js';
 /** @typedef {import('../lib/model/Physical.js').default} Physical */
 /** @typedef {import('../lib/model/TemplateChannel.js').default} TemplateChannel */
-const { SwitchingChannel } = require(`../lib/model.js`);
+import SwitchingChannel from '../lib/model/SwitchingChannel.js';
 /** @typedef {import('../lib/model/Wheel.js').default} Wheel */
+import { schemaDefinitions } from '../lib/schema-properties.js';
 
 let initialized = false;
 let register;
@@ -34,10 +30,10 @@ let plugins;
  * @param {UniqueValues|null} [uniqueValues=null] Values that have to be unique are checked and all new occurrences are appended.
  * @returns {Promise.<ResultData>} A Promise that resolves to the result object containing errors and warnings, if any.
  */
-async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = null) {
+export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValues = null) {
   if (!initialized) {
-    register = await importJson(`../fixtures/register.json`, __dirname);
-    plugins = await importJson(`../plugins/plugins.json`, __dirname);
+    register = await importJson(`../fixtures/register.json`, import.meta.url);
+    plugins = await importJson(`../plugins/plugins.json`, import.meta.url);
 
     initialized = true;
   }
@@ -689,7 +685,7 @@ async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValu
          * Type-specific checks for Effect capabilities.
          */
         function checkEffectCapability() {
-          if (capability.effectPreset === null && schemaProperties.definitions.effectPreset.enum.includes(capability.effectName)) {
+          if (capability.effectPreset === null && schemaDefinitions.effectPreset.enum.includes(capability.effectName)) {
             result.errors.push(`${errorPrefix} must use effectPreset instead of effectName with '${capability.effectName}'.`);
           }
 
@@ -1192,7 +1188,7 @@ async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uniqueValu
  * @param {ResultData} result The object to add the error message to (if any).
  * @param {String} messageIfNotUnique If the value is not unique, add this message to errors.
  */
-function checkUniqueness(set, value, result, messageIfNotUnique) {
+export function checkUniqueness(set, value, result, messageIfNotUnique) {
   if (set.has(value.toLowerCase())) {
     result.errors.push(messageIfNotUnique);
   }
@@ -1229,10 +1225,3 @@ function arraysEqual(a, b) {
 
   return a.every((value, index) => value === b[index]);
 }
-
-
-module.exports = {
-  checkFixture,
-  checkUniqueness,
-  getErrorString,
-};

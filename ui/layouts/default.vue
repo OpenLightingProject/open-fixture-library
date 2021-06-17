@@ -63,8 +63,8 @@
 
 
 <script>
-import HeaderBar from '../components/HeaderBar.vue';
 import ClimateStrikeBanner from '../components/ClimateStrikeBanner.vue';
+import HeaderBar from '../components/HeaderBar.vue';
 
 export default {
   components: {

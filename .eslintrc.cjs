@@ -1,5 +1,6 @@
 const pluginPresets = {
   'array-func': `all`,
+  import: `recommended`,
   jsdoc: `recommended`,
   markdown: `recommended`,
   nuxt: `recommended`,
@@ -49,6 +50,10 @@ const enabledRuleParameters = {
   'no-multi-spaces': [],
   'no-new-object': [],
   'no-prototype-builtins': [],
+  'no-restricted-imports': [{
+    name: `fs`,
+    message: `Please use 'fs/promises' instead.`,
+  }],
   'no-return-assign': [],
   'no-return-await': [],
   'no-shadow': [{ builtinGlobals: false }],
@@ -76,6 +81,23 @@ const enabledRuleParameters = {
   'space-infix-ops': [],
   'spaced-comment': [`always`],
   'template-curly-spacing': [],
+
+  // eslint-plugin-import
+  'import/extensions': [`ignorePackages`],
+  'import/first': [],
+  'import/newline-after-import': [],
+  'import/no-commonjs': [{ allowConditionalRequire: false }],
+  'import/no-dynamic-require': [],
+  'import/no-unresolved': [{
+    ignore: [`^fs/promises$`],
+  }],
+  'import/order': [{
+    groups: [`builtin`, `external`, `internal`, `parent`, `sibling`],
+    alphabetize: {
+      order: `asc`,
+      caseInsensitive: true,
+    },
+  }],
 
   // eslint-plugin-jsdoc
   'jsdoc/check-alignment': [],
@@ -119,20 +141,9 @@ const enabledRuleParameters = {
   // eslint-plugin-unicorn
   'unicorn/import-style': [{
     styles: {
-      fs: {
-        unassigned: false,
-        default: false,
-        namespace: false,
-        named: false,
-      },
-      'fs/promises': {
-        named: true,
-      },
+      'fs/promises': { named: true },
     },
   }],
-  'unicorn/numeric-separators-style': [],
-  'unicorn/prefer-array-flat': [],
-  'unicorn/prefer-array-flat-map': [],
   'unicorn/prevent-abbreviations': [{
     replacements: {
       ref: false,
@@ -244,7 +255,6 @@ const disabledRules = [
   `unicorn/no-array-reduce`,
   `unicorn/no-useless-undefined`,
   `unicorn/prefer-node-protocol`,
-  `unicorn/prefer-module`,
   `unicorn/prefer-spread`,
   `vue/multiline-html-element-content-newline`,
   `vue/singleline-html-element-content-newline`,
@@ -309,6 +319,16 @@ module.exports = {
       files: [`**/*.md/*.js`],
       rules: {
         'jsdoc/require-jsdoc': `off`,
+      },
+    },
+    {
+      files: [`**/*.cjs`, `server/**.js`],
+      parserOptions: {
+        sourceType: `script`,
+      },
+      rules: {
+        'import/no-commonjs': `off`,
+        'unicorn/prefer-module': `off`,
       },
     },
     {

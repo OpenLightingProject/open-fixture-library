@@ -10,7 +10,7 @@ We use fixture features for the following purposes:
 Fixture features are saved in the the [`lib/fixture-features/`](../lib/fixture-features/) directory as JS modules that export an array of features. It is advised to put similar features into one module. A sample module looks like this:
 
 ```js
-module.exports = [{
+export default [{
   // Optional, default is the filename (without '.js', succeeded by `-${i}` if
   // multiple features per module are provided). Must be unique!
   id: `fine-channel-alias`,
