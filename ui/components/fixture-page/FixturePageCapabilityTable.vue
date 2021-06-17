@@ -70,7 +70,7 @@
 }
 
 th {
-  font-weight: normal;
+  font-weight: 400;
   color: theme-color(text-secondary);
 }
 
