@@ -8,7 +8,7 @@
     "createDate": "2021-05-01",
     "lastModifyDate": "2021-05-01"
   },
-  "comment": "Made to the best of my knowledge.\nThe DMX Delay channel is only activated in DMX modes when menu item DMX Delay is set to by DMX? Yes.",
+  "comment": "The DMX Delay channel is only activated in DMX modes when menu item \"DMX Delay\" is set to \"by DMX? Yes\".",
   "links": {
     "manual": [
       "https://www.cameolight.com/en/downloads/file/id/-1174744700"
@@ -132,24 +132,21 @@
           "dmxRange": [126, 127],
           "type": "Effect",
           "effectPreset": "ColorJump",
-          "speed": "stop",
-          "comment": "Color Jumping Stop"
+          "speed": "stop"
         },
         {
           "dmxRange": [128, 164],
           "type": "Effect",
           "effectPreset": "ColorJump",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Color Jumping speed slow -> fast / Color  1 -> 12"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [165, 201],
           "type": "Effect",
           "effectPreset": "ColorFade",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Color Fading speed slow -> fast / Color  1 -> 12"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [202, 207],
@@ -258,8 +255,7 @@
           "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast",
-          "randomTiming": true,
-          "comment": "Random Strobe effect"
+          "randomTiming": true
         },
         {
           "dmxRange": [103, 127],
@@ -271,8 +267,7 @@
           "dmxRange": [128, 250],
           "type": "StrobeSpeed",
           "speedStart": "1Hz",
-          "speedEnd": "20Hz",
-          "comment": "Strobe slow -> fast <1Hz - 20Hz"
+          "speedEnd": "20Hz"
         },
         {
           "dmxRange": [251, 255],
@@ -350,7 +345,7 @@
           "effectPreset": "ColorJump",
           "durationStart": "10s",
           "durationEnd": "4s",
-          "comment": " Chase of Ch 4 and Ch 5"
+          "comment": "Chase of Color Presets 1 and 2"
         },
         {
           "dmxRange": [27, 127],
@@ -358,7 +353,7 @@
           "effectPreset": "ColorJump",
           "durationStart": "4s",
           "durationEnd": "0.1s",
-          "comment": " Chase of Ch 4 and Ch 5"
+          "comment": "Chase of Color Presets 1 and 2"
         },
         {
           "dmxRange": [128, 148],
@@ -366,7 +361,7 @@
           "effectPreset": "ColorFade",
           "durationStart": "10s",
           "durationEnd": "4s",
-          "comment": " Chase of Ch 4 and Ch 5"
+          "comment": "Chase of Color Presets 1 and 2"
         },
         {
           "dmxRange": [149, 255],
