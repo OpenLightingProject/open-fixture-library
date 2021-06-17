@@ -11,14 +11,14 @@ $lato-flavor-list: (
   // 'Black': 900
 );
 
+// v2.015 from https://www.latofonts.com/lato-free-fonts/
 @each $flavor, $weight in $lato-flavor-list {
   $url: '/fonts/LatoLatin/LatoLatin-' + $flavor;
   @font-face {
     font-family: 'LatoLatin';
     src: local("Lato #{$flavor}"),
          local("Lato-#{$flavor}"),
-         url($url + '.woff2') format('woff2'),
-         url($url + '.woff')  format('woff');
+         url($url + '.woff2') format('woff2');
     font-style: normal;
     font-weight: $weight;
     font-display: fallback;
@@ -27,8 +27,7 @@ $lato-flavor-list: (
     font-family: 'LatoLatin';
     src: local("Lato #{$flavor} Italic"),
          local("Lato-#{$flavor}Italic"),
-         url($url + 'Italic.woff2') format('woff2'),
-         url($url + 'Italic.woff')  format('woff');
+         url($url + 'Italic.woff2') format('woff2');
     font-style: italic;
     font-weight: $weight;
     font-display: fallback;

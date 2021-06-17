@@ -240,12 +240,6 @@ export default {
         as: `font`,
         type: `font/woff2`,
       },
-      {
-        rel: `preload`,
-        href: `/fonts/LatoLatin/LatoLatin-Regular.woff`,
-        as: `font`,
-        type: `font/woff`,
-      },
     ];
 
     return {
