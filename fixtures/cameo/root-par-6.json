@@ -615,8 +615,90 @@
   },
   "modes": [
     {
-      "name": "3-Channel",
-      "shortName": "3ch",
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer",
+        "Color Preset"
+      ]
+    },
+    {
+      "name": "4-channel 1",
+      "shortName": "4ch1",
+      "channels": [
+        "Dimmer",
+        "Strobe Multifunctional",
+        "Color Preset",
+        "Sound Control"
+      ]
+    },
+    {
+      "name": "4-channel 2",
+      "shortName": "4ch2",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Chase",
+        "Color Preset 1",
+        "Color Preset 2"
+      ]
+    },
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Strobe Multifunctional",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Color Preset",
+        "Sound Control"
+      ]
+    },
+    {
+      "name": "3-channel (with delay)",
+      "shortName": "D3ch",
       "channels": [
         "Dimmer",
         "Color Preset",
@@ -624,8 +706,8 @@
       ]
     },
     {
-      "name": "5-Channel #1",
-      "shortName": "5ch#1",
+      "name": "5-channel 1 (with delay)",
+      "shortName": "D5ch1",
       "channels": [
         "Dimmer",
         "Strobe Multifunctional",
@@ -635,8 +717,8 @@
       ]
     },
     {
-      "name": "5-Channel #2 (compatibility for ROOT PAR 4)",
-      "shortName": "5ch#2",
+      "name": "5-channel 2 (with delay)",
+      "shortName": "D5ch2",
       "channels": [
         "Red",
         "Green",
@@ -646,8 +728,8 @@
       ]
     },
     {
-      "name": "6-Channel",
-      "shortName": "6ch",
+      "name": "6-channel (with delay)",
+      "shortName": "D6ch",
       "channels": [
         "Dimmer",
         "Strobe",
@@ -658,8 +740,8 @@
       ]
     },
     {
-      "name": "7-Channel",
-      "shortName": "7ch",
+      "name": "7-channel (with delay)",
+      "shortName": "D7ch",
       "channels": [
         "Red",
         "Green",
@@ -671,8 +753,8 @@
       ]
     },
     {
-      "name": "9-Channel",
-      "shortName": "9ch",
+      "name": "9-channel (with delay)",
+      "shortName": "D9ch",
       "channels": [
         "Dimmer",
         "Strobe",
@@ -686,8 +768,8 @@
       ]
     },
     {
-      "name": "12-Channel",
-      "shortName": "12ch",
+      "name": "12-channel (with delay)",
+      "shortName": "D12ch",
       "channels": [
         "Dimmer",
         "Dimmer fine",
