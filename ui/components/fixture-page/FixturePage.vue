@@ -25,8 +25,8 @@
             :start-at="video.startAt" />
           <a
             :href="video.url"
-            rel="nofollow"
-            target="_blank">
+            target="_blank"
+            rel="nofollow noopener">
             <OflSvg name="youtube" />
             Watch video at {{ video.displayType }}
           </a>
@@ -42,8 +42,8 @@
             <a
               :href="link.url"
               :title="link.title"
-              rel="nofollow"
-              target="_blank">
+              target="_blank"
+              rel="nofollow noopener">
               <OflSvg :name="link.iconName" />
               {{ link.name }}
               <span v-if="link.type !== `other`" class="hostname">({{ link.hostname }})</span>
