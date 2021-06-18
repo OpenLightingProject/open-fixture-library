@@ -54,6 +54,7 @@ export default {
   ],
   publicRuntimeConfig: {
     websiteUrl,
+    searchIndexingIsAllowed: process.env.ALLOW_SEARCH_INDEXING === `allowed`,
   },
   build: {
     quiet: false,
@@ -202,7 +203,7 @@ export default {
       },
     ];
 
-    if (process.env.ALLOW_SEARCH_INDEXING !== `allowed`) {
+    if (!this.$config.searchIndexingIsAllowed) {
       meta.push({
         name: `robots`,
         content: `noindex, nofollow, none, noodp, noarchive, nosnippet, noimageindex, noydir, nocache`,
