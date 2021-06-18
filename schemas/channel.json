@@ -58,14 +58,8 @@
     "dmxValueResolution": ["fineChannelAliases"]
   },
   "oneOf": [
-    {
-      "required": ["capability"],
-      "not": { "required": ["capabilities"] }
-    },
-    {
-      "not": { "required": ["capability"] },
-      "required": ["capabilities"]
-    }
+    { "required": ["capability"] },
+    { "required": ["capabilities"] }
   ],
   "allOf": [
     {
