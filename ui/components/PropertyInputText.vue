@@ -40,7 +40,7 @@ export default {
   },
   data() {
     return {
-      localValue: String(this.value),
+      localValue: this.value ? String(this.value) : ``,
     };
   },
   computed: {
