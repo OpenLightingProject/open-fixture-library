@@ -77,7 +77,7 @@ async function getSchemas() {
   // allow changed schema property
   fixtureSchema.properties.$schema = { const: `${SCHEMA_BASE_URL}fixture.json` };
   fixtureSchema.patternProperties = undefined;
-  manufacturersSchema.properties.$schema = { const: `${SCHEMA_BASE_URL}manufacturers.json` };
+  manufacturersSchema.properties = { $schema: { const: `${SCHEMA_BASE_URL}manufacturers.json` } };
   manufacturersSchema.patternProperties = undefined;
 
   return schemasJson;
