@@ -48,7 +48,7 @@
     "format": "color-hex"
   },
   "dimensionsXYZ": {
-    "$comment": "width, height, depth (in mm)",
+    "description": "width, height, depth (in mm)",
     "type": "array",
     "minItems": 3,
     "maxItems": 3,

@@ -7,7 +7,7 @@
   "type": "object",
   "properties": {
     "name": {
-      "$comment": "if not set: use channel key",
+      "description": "if not set: use channel key",
       "$ref": "definitions.json#/nonEmptyString"
     },
     "fineChannelAliases": {

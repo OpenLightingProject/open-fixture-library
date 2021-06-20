@@ -10,7 +10,7 @@
       "const": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture-redirect.json"
     },
     "name": {
-      "$comment": "unique in manufacturer",
+      "description": "unique in manufacturer",
       "$ref": "definitions.json#/nonEmptyString"
     },
     "redirectTo": {

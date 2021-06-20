@@ -10,16 +10,16 @@
       "const": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json"
     },
     "name": {
-      "$comment": "unique in manufacturer",
+      "description": "unique in manufacturer",
       "$ref": "definitions.json#/nonEmptyString"
     },
     "shortName": {
-      "$comment": "unique globally; if not set: use name",
+      "description": "unique globally; if not set: use name",
       "$ref": "definitions.json#/nonEmptyString"
     },
     "categories": {
       "type": "array",
-      "$comment": "most important category first",
+      "description": "most important category first",
       "minItems": 1,
       "uniqueItems": true,
       "items": {
@@ -108,12 +108,12 @@
           "$ref": "definitions.json#/dimensionsXYZ"
         },
         "weight": {
-          "$comment": "in kg",
+          "description": "in kg",
           "type": "number",
           "exclusiveMinimum": 0
         },
         "power": {
-          "$comment": "in W",
+          "description": "in W",
           "type": "number",
           "exclusiveMinimum": 0
         },
@@ -134,11 +134,11 @@
           "minProperties": 1,
           "properties": {
             "type": {
-              "$comment": "e.g. 'LED'",
+              "description": "e.g. 'LED'",
               "$ref": "definitions.json#/nonEmptyString"
             },
             "colorTemperature": {
-              "$comment": "in K",
+              "description": "in K",
               "type": "number",
               "exclusiveMinimum": 0
             },
@@ -154,7 +154,7 @@
           "minProperties": 1,
           "properties": {
             "name": {
-              "$comment": "e.g. 'PC', 'Fresnel'",
+              "description": "e.g. 'PC', 'Fresnel'",
               "$ref": "definitions.json#/nonEmptyString"
             },
             "degreesMinMax": {
