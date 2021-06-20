@@ -12,26 +12,30 @@
       "items": { "$ref": "#/definitions/pixelNumberConstraint" }
     },
     "pixelNumberConstraint": {
-      "type": "string",
       "oneOf": [
         {
           "$comment": "exact position",
+          "type": "string",
           "pattern": "^=[1-9][0-9]*$"
         },
         {
           "$comment": "minimum position",
+          "type": "string",
           "pattern": "^>=[1-9][0-9]*$"
         },
         {
           "$comment": "maximum position",
+          "type": "string",
           "pattern": "^<=[1-9][0-9]*$"
         },
         {
           "$comment": "position divisible by number",
+          "type": "string",
           "pattern": "^[1-9][0-9]*n$"
         },
         {
           "$comment": "position divisible by number with remainder",
+          "type": "string",
           "pattern": "^[1-9][0-9]*n\\+[1-9][0-9]*$"
         },
         {
@@ -47,7 +51,7 @@
   "type": "object",
   "properties": {
     "pixelCount": {
-      "$comment": "amount of pixels in X, Y and Z directions",
+      "description": "amount of pixels in X, Y and Z directions",
       "type": "array",
       "minItems": 3,
       "maxItems": 3,
@@ -57,7 +61,7 @@
       }
     },
     "pixelKeys": {
-      "$comment": "pixelKeys in a structure of arrays for the Z, Y and X directions",
+      "description": "pixelKeys in a structure of arrays for the Z, Y and X directions",
       "type": "array",
       "minItems": 1,
       "items": {
@@ -115,7 +119,8 @@
                   "format": "regex"
                 }
               }
-            }
+            },
+            "additionalProperties": false
           }
         ]
       }
