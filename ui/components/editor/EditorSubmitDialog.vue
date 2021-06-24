@@ -118,7 +118,7 @@
 
     <div v-else-if="state === `success`">
       Your fixture was successfully uploaded to GitHub (see the
-      <a :href="pullRequestUrl" target="_blank">pull request</a>).
+      <a :href="pullRequestUrl" target="_blank" rel="noopener">pull request</a>).
       It will be now reviewed and then published on the website (this may take a few days).
       Thank you for your contribution!
 
@@ -130,7 +130,13 @@
           button-style="select"
           :show-help="false"
           :editor-fixtures="fixtureCreateResult" />
-        <a :href="pullRequestUrl" class="button primary" target="_blank">See pull request</a>
+        <a
+          :href="pullRequestUrl"
+          class="button primary"
+          target="_blank"
+          rel="noopener">
+          See pull request
+        </a>
       </div>
     </div>
 
@@ -138,7 +144,10 @@
       Unfortunately, there was an error while uploading. Please copy the following data and
       <a
         href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
-        target="_blank">manually submit them to GitHub</a>.
+        target="_blank"
+        rel="noopener">
+        manually submit them to GitHub
+      </a>.
 
       <textarea v-model="rawData" readonly />
 
@@ -147,7 +156,10 @@
         <a
           href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
           class="button primary"
-          target="_blank">Submit manually</a>
+          target="_blank"
+          rel="noopener">
+          Submit manually
+        </a>
       </div>
     </div>
 

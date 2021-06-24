@@ -1,6 +1,6 @@
 <template>
   <A11yDialog
-    id="help-wanted"
+    id="help-wanted-dialog"
     ref="dialog"
     :is-alert-dialog="state === `loading`"
     :shown="context !== null"
@@ -40,7 +40,7 @@
     </template>
 
     <template v-else-if="state === `success`">
-      Your information was successfully uploaded to GitHub (see the <a :href="issueUrl" target="_blank">issue</a>). The fixture will be updated as soon as your information has been reviewed. Thank you for your contribution!
+      Your information was successfully uploaded to GitHub (see the <a :href="issueUrl" target="_blank" rel="noopener">issue</a>). The fixture will be updated as soon as your information has been reviewed. Thank you for your contribution!
 
       <div class="button-bar right">
         <a href="#" class="button secondary" @click.prevent="hide()">Close</a>
@@ -56,7 +56,13 @@
       <div class="button-bar right">
         <a href="#" class="button secondary" @click.prevent="hide()">Close</a>
         <a :href="mailtoUrl" class="button secondary" target="_blank">Send email</a>
-        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues/new" class="button primary" target="_blank">Create issue on GitHub</a>
+        <a
+          href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
+          class="button primary"
+          target="_blank"
+          rel="noopener">
+          Create issue on GitHub
+        </a>
       </div>
     </template>
 

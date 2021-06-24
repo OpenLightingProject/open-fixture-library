@@ -7,7 +7,7 @@
   "type": "object",
   "properties": {
     "name": {
-      "$comment": "if not set: use channel key",
+      "description": "if not set: use channel key",
       "$ref": "definitions.json#/nonEmptyString"
     },
     "fineChannelAliases": {
@@ -58,14 +58,8 @@
     "dmxValueResolution": ["fineChannelAliases"]
   },
   "oneOf": [
-    {
-      "required": ["capability"],
-      "not": { "required": ["capabilities"] }
-    },
-    {
-      "not": { "required": ["capability"] },
-      "required": ["capabilities"]
-    }
+    { "required": ["capability"] },
+    { "required": ["capabilities"] }
   ],
   "allOf": [
     {

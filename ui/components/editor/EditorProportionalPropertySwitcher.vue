@@ -225,7 +225,7 @@ export default {
 
     return {
       schemaDefinitions,
-      slotNumberSchema: unitsSchema.units[slotNumberUnit],
+      slotNumberSchema: unitsSchema[slotNumberUnit],
     };
   },
   computed: {

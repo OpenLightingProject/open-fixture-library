@@ -1,0 +1,55 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "4-Channel Dimmer Pack",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Goetz"],
+    "createDate": "2021-06-17",
+    "lastModifyDate": "2021-06-17"
+  },
+  "comment": "Your usual off-the-shelf generic 4 Channel Dimmer Pack from Botec, Stairville, Lightmaxx, EuroLite, ShowTex, Varytec etc.",
+  "matrix": {
+    "pixelCount": [4, 1, 1],
+    "pixelGroups": {
+      "Master": "all",
+      "1/2": ["1", "2"],
+      "3/4": ["3", "4"]
+    }
+  },
+  "templateChannels": {
+    "Dimmer $pixelKey": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer Master"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer 1/2",
+        "Dimmer 3/4"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer 1",
+        "Dimmer 2",
+        "Dimmer 3",
+        "Dimmer 4"
+      ]
+    }
+  ]
+}

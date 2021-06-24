@@ -193,7 +193,7 @@ svg {
 }
 
 figcaption ::v-deep summary {
-  font-weight: bold;
+  font-weight: 700;
   text-align: center;
   position: sticky;
   top: 0;

@@ -5,156 +5,87 @@
   "$comment": "This file is used by another schema file and should not be used directly as a JSON schema.",
 
   "type": "object",
-  "properties": {
-    "type": {
-      "enum": [
-        "Open",
-        "Closed",
-        "Color",
-        "Gobo",
-        "Prism",
-        "Iris",
-        "Frost",
-        "AnimationGoboStart",
-        "AnimationGoboEnd"
-      ]
+  "discriminator": { "propertyName": "type" },
+  "oneOf": [
+    {
+      "properties": {
+        "type": { "const": "Open" }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "type": { "const": "Closed" }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "type": { "const": "Color" },
+        "name": { "$ref": "definitions.json#/nonEmptyString" },
+        "colors": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "definitions.json#/colorString" }
+        },
+        "colorTemperature": { "$ref": "definitions.json#/entities/colorTemperature" }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "type": { "const": "Gobo" },
+        "resource": { "$ref": "definitions.json#/goboResourceString" },
+        "name": { "$ref": "definitions.json#/nonEmptyString" }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "type": { "const": "Prism" },
+        "name": { "$ref": "definitions.json#/nonEmptyString" },
+        "facets": {
+          "type": "integer",
+          "minimum": 2
+        }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "type": { "const": "Iris" },
+        "openPercent": { "$ref": "definitions.json#/entities/irisPercent" }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "type": { "const": "Frost" },
+        "frostIntensity": { "$ref": "definitions.json#/entities/percent" }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "type": { "const": "AnimationGoboStart" },
+        "name": { "$ref": "definitions.json#/nonEmptyString" }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    {
+      "properties": {
+        "type": { "const": "AnimationGoboEnd" }
+      },
+      "required": ["type"],
+      "additionalProperties": false
     }
-  },
-  "allOf": [
-    {
-      "if": {
-        "properties": {
-          "type": { "const": "Open" }
-        }
-      },
-      "then": {
-        "properties": {
-          "type": {}
-        },
-        "additionalProperties": false
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "type": { "const": "Closed" }
-        }
-      },
-      "then": {
-        "properties": {
-          "type": {}
-        },
-        "additionalProperties": false
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "type": { "const": "Color" }
-        }
-      },
-      "then": {
-        "properties": {
-          "type": {},
-          "name": { "$ref": "definitions.json#/nonEmptyString" },
-          "colors": {
-            "type": "array",
-            "minItems": 1,
-            "items": { "$ref": "definitions.json#/colorString" }
-          },
-          "colorTemperature": { "$ref": "definitions.json#/entities/colorTemperature" }
-        },
-        "additionalProperties": false
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "type": { "const": "Gobo" }
-        }
-      },
-      "then": {
-        "properties": {
-          "type": {},
-          "resource": { "$ref": "definitions.json#/goboResourceString" },
-          "name": { "$ref": "definitions.json#/nonEmptyString" }
-        },
-        "additionalProperties": false
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "type": { "const": "Prism" }
-        }
-      },
-      "then": {
-        "properties": {
-          "type": {},
-          "name": { "$ref": "definitions.json#/nonEmptyString" },
-          "facets": {
-            "type": "integer",
-            "minimum": 2
-          }
-        },
-        "additionalProperties": false
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "type": { "const": "Iris" }
-        }
-      },
-      "then": {
-        "properties": {
-          "type": {},
-          "openPercent": { "$ref": "definitions.json#/entities/irisPercent" }
-        },
-        "additionalProperties": false
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "type": { "const": "Frost" }
-        }
-      },
-      "then": {
-        "properties": {
-          "type": {},
-          "frostIntensity": { "$ref": "definitions.json#/entities/percent" }
-        },
-        "additionalProperties": false
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "type": { "const": "AnimationGoboStart" }
-        }
-      },
-      "then": {
-        "properties": {
-          "type": {},
-          "name": { "$ref": "definitions.json#/nonEmptyString" }
-        },
-        "additionalProperties": false
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "type": { "const": "AnimationGoboEnd" }
-        }
-      },
-      "then": {
-        "properties": {
-          "type": {}
-        },
-        "additionalProperties": false
-      }
-    }
-  ],
-  "required": ["type"]
+  ]
 }
