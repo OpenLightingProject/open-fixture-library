@@ -1,11 +1,5 @@
 <template>
   <div>
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <script type="application/ld+json" v-html="organizationStructuredData" />
-
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <script type="application/ld+json" v-html="itemListStructuredData" />
-
     <h1>{{ manufacturer.name }} fixtures</h1>
 
     <div v-if="`website` in manufacturer || `rdmId` in manufacturer" class="grid-3">
@@ -99,6 +93,18 @@ export default {
         {
           hid: `title`,
           content: title,
+        },
+      ],
+      script: [
+        {
+          hid: `organizationStructuredData`,
+          type: `application/ld+json`,
+          json: this.organizationStructuredData,
+        },
+        {
+          hid: `itemListStructuredData`,
+          type: `application/ld+json`,
+          json: this.itemListStructuredData,
         },
       ],
     };

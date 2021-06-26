@@ -1,11 +1,5 @@
 <template>
   <div>
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <script type="application/ld+json" v-html="websiteStructuredData" />
-
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <script type="application/ld+json" v-html="organizationStructuredData" />
-
     <header class="fixture-header">
       <div class="title">
         <h1>Open Fixture Library</h1>
@@ -120,26 +114,39 @@ export default {
       fixtureCount: Object.keys(register.filesystem).filter(
         fixtureKey => !(`redirectTo` in register.filesystem[fixtureKey]) || register.filesystem[fixtureKey].reason === `SameAsDifferentBrand`,
       ).length,
-
-      websiteStructuredData: {
-        '@context': `http://schema.org`,
-        '@type': `WebSite`,
-        'name': `Open Fixture Library`,
-        'url': this.$config.websiteUrl,
-        'potentialAction': {
-          '@type': `SearchAction`,
-          'target': `${this.$config.websiteUrl}search?q={search_term_string}`,
-          'query-input': `required name=search_term_string`,
+    };
+  },
+  head() {
+    return {
+      script: [
+        {
+          hid: `websiteStructuredData`,
+          type: `application/ld+json`,
+          json: {
+            '@context': `http://schema.org`,
+            '@type': `WebSite`,
+            name: `Open Fixture Library`,
+            url: this.$config.websiteUrl,
+            potentialAction: {
+              '@type': `SearchAction`,
+              target: `${this.$config.websiteUrl}search?q={search_term_string}`,
+              'query-input': `required name=search_term_string`,
+            },
+          },
         },
-      },
-      organizationStructuredData: {
-        '@context': `http://schema.org`,
-        '@type': `Organization`,
-        'name': `Open Fixture Library`,
-        'description': `Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!`,
-        'url': this.$config.websiteUrl,
-        'logo': `${this.$config.websiteUrl}ofl-logo.svg`,
-      },
+        {
+          hid: `organizationStructuredData`,
+          type: `application/ld+json`,
+          json: {
+            '@context': `http://schema.org`,
+            '@type': `Organization`,
+            name: `Open Fixture Library`,
+            description: `Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!`,
+            url: this.$config.websiteUrl,
+            logo: `${this.$config.websiteUrl}ofl-logo.svg`,
+          },
+        },
+      ],
     };
   },
   created() {
