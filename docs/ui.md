@@ -41,3 +41,16 @@ Please stick to the [code style guidelines](CONTRIBUTING.md#code-style). If a fu
 Every time a new pull request is merged into the master branch, the new version is automatically deployed to <https://open-fixture-library.org/> (see the [`server/` directory](../server/)).
 
 Each **pull request** `#xyz` (e.g. [#223](https://github.com/OpenLightingProject/open-fixture-library/pull/223)) is automatically deployed as a review app to `https://open-fixture-library-pr-xyz.herokuapp.com/` on [Heroku](https://www.heroku.com/) (configurable with [`app.json`](../app.json)). It is refreshed with each commit to the feature branch without waiting for any tests to pass.
+
+## Troubleshooting
+
+### Cannot find module './fixtures/register.json'
+This file is an index to make searching specific attributes possible without having to read the whole directory structure. It's gitignored, thus you'll need to generate it before you can run `npm run dev`. 
+
+To generate `./fixtures/register.json` you should run the following: 
+
+`npm run build-without-nuxt`
+
+You should then be ready to retry `npm run dev`.
+
+
