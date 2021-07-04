@@ -19,7 +19,7 @@
     ]
   },
   "physical": {
-    "dimensions": [310,125,310],
+    "dimensions": [310, 125, 310],
     "weight": 6,
     "DMXconnector": "3-pin",
     "power": 216,
@@ -120,18 +120,18 @@
           "dmxRange": [246, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speed":"100%"
+          "speed": "100%"
         }
       ]
     },
     "Color Walking": {
-      "capabilities":[
+      "capabilities": [
         {
-          "dmxRange": [0,7],
-          "type":"NoFunction"
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
         },
         {
-          "dmxRange": [8,255],
+          "dmxRange": [8, 255],
           "type": "Effect",
           "effectPreset": "ColorJump",
           "comment": "White - Red - Yellow - Pink - Green - Orange - Blue - Light salmon pink"
@@ -141,20 +141,20 @@
     "Effect/Sound Controll": {
       "capabilities": [
         {
-          "dmxRange": [0,7],
+          "dmxRange": [0, 7],
           "type": "NoFunction"
         },
         {
-          "dmxRange": [8,199],
+          "dmxRange": [8, 199],
           "type": "EffectSpeed",
-          "speedStart":"slow",
-          "speedEnd":"fast"
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
-          "dmxRange": [200,255],
+          "dmxRange": [200, 255],
           "type": "SoundSensitivity",
-          "soundSensitivityStart":"low",
-          "soundSensitivityEnd":"high",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
           "helpWanted": "The manual doesn't specify the exact behavior."
         }
       ]
