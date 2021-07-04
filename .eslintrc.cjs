@@ -37,7 +37,7 @@ const enabledRuleParameters = {
   'indent': [2, { SwitchCase: 1 }],
   'key-spacing': [],
   'keyword-spacing': [],
-  'linebreak-style': [],
+  'linebreak-style': [`unix`],
   'new-parens': [],
   'no-array-constructor': [],
   'no-bitwise': [],
