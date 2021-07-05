@@ -4,3 +4,17 @@ fixtures/*/*.json linguist-detectable=true
 plugins/*/plugin.json linguist-detectable=true
 schemas/*.json linguist-detectable=true
 *.md linguist-detectable=true
+
+# enable automatic line ending handling
+# see https://rehansaeed.com/gitattributes-best-practices/
+* text=auto
+*.sh text eol=lf
+
+# explicitly set unix line endings for files that are checked by ESLint
+# see https://eslint.org/docs/rules/linebreak-style#using-this-rule-with-version-control-systems
+*.cjs text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.ts text eol=lf
+*.vue text eol=lf
