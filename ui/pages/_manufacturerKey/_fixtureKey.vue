@@ -1,11 +1,5 @@
 <template>
   <div>
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <script type="application/ld+json" v-html="productModelStructuredData" />
-
-    <!-- eslint-disable-next-line vue/no-v-html -->
-    <script type="application/ld+json" v-html="breadcrumbListStructuredData" />
-
     <header class="fixture-header">
       <div class="title">
         <h1>
@@ -159,6 +153,18 @@ export default {
         {
           hid: `title`,
           content: title,
+        },
+      ],
+      script: [
+        {
+          hid: `productModelStructuredData`,
+          type: `application/ld+json`,
+          json: this.productModelStructuredData,
+        },
+        {
+          hid: `breadcrumbListStructuredData`,
+          type: `application/ld+json`,
+          json: this.breadcrumbListStructuredData,
         },
       ],
     };

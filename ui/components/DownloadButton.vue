@@ -94,7 +94,7 @@ select {
   background: theme-color(button-secondary-background);
 
   color: theme-color(button-secondary-text);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.9em;
 
   border-color: theme-color(button-secondary-border);
@@ -119,7 +119,7 @@ select {
     padding: 0.5ex 2ex;
     border-radius: 2px;
     background: theme-color(orange-background);
-    font-weight: 600;
+    font-weight: 700;
     color: $primary-text-light;
     cursor: pointer;
     box-shadow: 0 2px 2px rgba(#000, 0.2);
@@ -203,20 +203,16 @@ select {
 // move download button to the right
 @media (min-width: 650px) {
   .fixture-header {
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-direction: row;
     flex-direction: row;
     align-items: baseline;
 
     & > .title {
-      -ms-flex: 1 1 auto;
       flex-grow: 1;
       flex-shrink: 1;
     }
 
     & .download-button {
-      -ms-flex: 0 0 auto;
       flex-grow: 0;
       flex-shrink: 0;
       margin: 1.5rem 0 0;

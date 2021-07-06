@@ -6,12 +6,11 @@ import http from 'http';
 import https from 'https';
 import { Octokit } from '@octokit/rest';
 import chalk from 'chalk';
-import userAgent from 'default-user-agent';
 
 import SiteCrawler from '../lib/site-crawler.js';
 
 
-const USER_AGENT = userAgent();
+const USER_AGENT = `Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0`;
 const GITHUB_COMMENT_HEADING = `## Broken links update`;
 const TIMEOUT = 30_000;
 

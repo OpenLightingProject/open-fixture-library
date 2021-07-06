@@ -13,7 +13,7 @@
 
     <ul>
       <li v-for="link of Object.keys(pluginData.links)" :key="link">
-        <a :href="pluginData.links[link]" target="_blank" rel="nofollow">{{ link }}</a>
+        <a :href="pluginData.links[link]" target="_blank" rel="nofollow noopener">{{ link }}</a>
       </li>
     </ul>
 

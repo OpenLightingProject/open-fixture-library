@@ -48,12 +48,8 @@
 }
 
 .pixel {
-  display: inline-block;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -ms-flex-pack: center;
   justify-content: center;
-  -ms-flex-align: center;
   align-items: center;
   line-height: 1.4em;
   text-align: center;
@@ -97,7 +93,8 @@ export default {
     },
     physical: {
       type: Physical,
-      required: true,
+      required: false,
+      default: null,
     },
   },
   data() {

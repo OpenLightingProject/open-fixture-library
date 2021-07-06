@@ -33,9 +33,9 @@
   </div>
   <div v-else-if="showClimateStrikeBanner" id="climate-strike-banner" class="climate-strike">
 
-    We are joining the <a href="https://fridaysforfuture.org/march19/" target="_blank">Global Climate Strike</a>,
+    We are joining the <a href="https://fridaysforfuture.org/march19/" target="_blank" rel="noopener">Global Climate Strike</a>,
     so this website will not be available on {{ strikeDateString }}.<br>
-    Learn more at <a href="https://fridaysforfuture.org/" target="_blank">fridaysforfuture.org</a>.
+    Learn more at <a href="https://fridaysforfuture.org/" target="_blank" rel="noopener">fridaysforfuture.org</a>.
 
   </div>
 </template>
@@ -115,6 +115,7 @@
       padding: 0 4px;
       margin: 4px;
       font-family: $font-stack-code;
+      font-weight: 400;
     }
   }
 }
