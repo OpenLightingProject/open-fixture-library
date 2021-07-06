@@ -82,7 +82,7 @@
         "type": "ColorPreset"
       }
     },
-    "Strobe/Strobe Effect": {
+    "Strobe Effect": {
       "capabilities": [
         {
           "dmxRange": [0, 7],
@@ -106,14 +106,16 @@
         },
         {
           "dmxRange": [150, 199],
-          "type": "Effect",
-          "effectName": "Strobe effect 1",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe effect 1",
           "helpWanted": "The manual doesn't specify the exact behavior."
         },
         {
           "dmxRange": [200, 245],
-          "type": "Effect",
-          "effectName": "Strobe effect 2",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "comment": "Strobe effect 2",
           "helpWanted": "The manual doesn't specify the exact behavior."
         },
         {
@@ -185,7 +187,7 @@
         "UV",
         "Amber",
         "Color",
-        "Strobe/Strobe Effect",
+        "Strobe Effect",
         "Color Walking",
         "Effect/Sound Controll"
       ]
