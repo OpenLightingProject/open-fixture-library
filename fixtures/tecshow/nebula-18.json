@@ -38,7 +38,8 @@
       "capability": {
         "type": "Speed",
         "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled? When is the light constantly on or off?"
       }
     },
     "Red": {
@@ -79,7 +80,8 @@
     },
     "Color": {
       "capability": {
-        "type": "ColorPreset"
+        "type": "ColorPreset",
+        "helpWanted": "Which colors can be selected at which DMX values?"
       }
     },
     "Strobe Effect": {
