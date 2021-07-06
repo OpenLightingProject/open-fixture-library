@@ -19,6 +19,7 @@ jobs:
         uses: actions/setup-node@v2.2.0
         with:
           node-version: 14
+          cache: 'npm'
       - name: Install dependencies
         run: npm ci --also=dev
       - name: Build
