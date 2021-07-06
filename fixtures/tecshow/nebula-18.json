@@ -140,7 +140,7 @@
         }
       ]
     },
-    "Effect/Sound Controll": {
+    "Effect Speed / Sound Sensitivity": {
       "capabilities": [
         {
           "dmxRange": [0, 7],
@@ -157,7 +157,7 @@
           "type": "SoundSensitivity",
           "soundSensitivityStart": "low",
           "soundSensitivityEnd": "high",
-          "helpWanted": "The manual doesn't specify the exact behavior."
+          "helpWanted": "Is this capability low…high or high…low?"
         }
       ]
     }
@@ -189,7 +189,7 @@
         "Color",
         "Strobe Effect",
         "Color Walking",
-        "Effect/Sound Controll"
+        "Effect Speed / Sound Sensitivity"
       ]
     }
   ]
