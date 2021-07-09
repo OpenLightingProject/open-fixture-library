@@ -734,22 +734,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       `Mode shortName '${mode.shortName}' is not unique (test is not case-sensitive).`,
     );
 
-    // "6ch" / "8-Channel" / "9 channels" mode names
-    [`name`, `shortName`].forEach(nameProperty => {
-      const match = mode[nameProperty].match(/(\d+)(?:\s+|-|)(?:channels?|ch)/i);
-      if (match !== null) {
-        const intendedLength = Number.parseInt(match[1], 10);
-
-        if (mode.channels.length !== intendedLength) {
-          result.errors.push(`Mode '${mode.name}' should have ${intendedLength} channels according to its ${nameProperty} but actually has ${mode.channels.length}.`);
-        }
-
-        const allowedShortNames = [`${intendedLength}ch`, `Ch${intendedLength}`, `Ch0${intendedLength}`];
-        if (mode[nameProperty].length === match[0].length && !allowedShortNames.includes(mode.shortName)) {
-          result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
-        }
-      }
-    });
+    checkModeName();
 
     checkPhysical(mode.physicalOverride, ` in mode '${mode.shortName}'`);
 
@@ -759,7 +744,32 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       }
     }
 
-    mode.channelKeys.forEach((channelKey, index) => checkModeChannelKey(index));
+    for (let channelIndex = 0; channelIndex < mode.channelKeys.length; channelIndex++) {
+      checkModeChannelKey(channelIndex);
+    }
+
+
+    /**
+     * Check that mode names comply with the channel count.
+     */
+    function checkModeName() {
+      // "6ch" / "8-Channel" / "9 channels" mode names
+      for (const nameProperty of [`name`, `shortName`]) {
+        const match = mode[nameProperty].match(/(\d+)(?:\s+|-|)(?:channels?|ch)/i);
+        if (match !== null) {
+          const intendedLength = Number.parseInt(match[1], 10);
+
+          if (mode.channels.length !== intendedLength) {
+            result.errors.push(`Mode '${mode.name}' should have ${intendedLength} channels according to its ${nameProperty} but actually has ${mode.channels.length}.`);
+          }
+
+          const allowedShortNames = [`${intendedLength}ch`, `Ch${intendedLength}`, `Ch0${intendedLength}`];
+          if (mode[nameProperty].length === match[0].length && !allowedShortNames.includes(mode.shortName)) {
+            result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
+          }
+        }
+      }
+    }
 
     /**
      * Checks if the given complex channel insert block is valid.
