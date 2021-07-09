@@ -1015,16 +1015,10 @@ export async function importFixtures(buffer, filename, authorName) {
     const { relationsPerMaster, modeChannelReplacements } = transformRelations(fixture, switchingChannelRelations);
 
     // switch channels in trigger channels' capabilities
-    Object.keys(relationsPerMaster).forEach(triggerChannelKey => {
+    for (const triggerChannelKey of Object.keys(relationsPerMaster)) {
       const triggerChannelRelations = simplifySwitchingChannelRelations(triggerChannelKey);
 
-      let triggerChannel;
-      if (fixture.availableChannels && triggerChannelKey in fixture.availableChannels) {
-        triggerChannel = fixture.availableChannels[triggerChannelKey];
-      }
-      else if (fixture.templateChannels && `${triggerChannelKey} $pixelKey` in fixture.templateChannels) {
-        triggerChannel = fixture.templateChannels[`${triggerChannelKey} $pixelKey`];
-      }
+      const triggerChannel = fixture.availableChannels?.[triggerChannelKey] ?? fixture.templateChannels[`${triggerChannelKey} $pixelKey`];
 
       if (triggerChannel.defaultValue === null) {
         triggerChannel.defaultValue = 0;
@@ -1032,35 +1026,19 @@ export async function importFixtures(buffer, filename, authorName) {
 
       const channelResolution = getChannelResolution(triggerChannel);
 
-      triggerChannel.capabilities.forEach(capability => {
-        capability.switchChannels = {};
-
-        Object.keys(triggerChannelRelations).forEach(switchingChannelKey => {
-          triggerChannelRelations[switchingChannelKey].forEach(relation => {
-            const [dmxFrom, dmxTo] = scaleDmxRangeIndividually(...relation.dmxFrom, ...relation.dmxTo, channelResolution);
-
-            if (capability.dmxRange[0] >= dmxFrom && capability.dmxRange[1] <= dmxTo) {
-              capability.switchChannels[switchingChannelKey] = relation.switchToChannelKey;
-            }
-          });
-        });
-      });
-    });
-
-    // replace normal channels with switching channels in modes
-    fixture.modes.forEach((mode, modeIndex) => {
-      if (!(modeIndex in modeChannelReplacements)) {
-        return;
+      for (const capability of triggerChannel.capabilities) {
+        capability.switchChannels = Object.fromEntries(Object.entries(triggerChannelRelations).flatMap(
+          ([switchingChannelKey, relations]) => relations
+            .filter(relation => {
+              const [dmxFrom, dmxTo] = scaleDmxRangeIndividually(...relation.dmxFrom, ...relation.dmxTo, channelResolution);
+              return capability.dmxRange[0] >= dmxFrom && capability.dmxRange[1] <= dmxTo;
+            })
+            .map(relation => [switchingChannelKey, relation.switchToChannelKey]),
+        ));
       }
+    }
 
-      Object.keys(modeChannelReplacements[modeIndex]).forEach(switchToChannelKey => {
-        const channelIndex = mode.channels.indexOf(switchToChannelKey);
-
-        if (channelIndex !== -1) {
-          mode.channels[channelIndex] = modeChannelReplacements[modeIndex][switchToChannelKey];
-        }
-      });
-    });
+    replaceSwitchingChannelsInModes(fixture, modeChannelReplacements);
 
 
     /**
@@ -1070,9 +1048,7 @@ export async function importFixtures(buffer, filename, authorName) {
     function simplifySwitchingChannelRelations(triggerChannelKey) {
       const simplifiedRelations = {};
 
-      for (const switchingChannelKey of Object.keys(relationsPerMaster[triggerChannelKey])) {
-        const relations = relationsPerMaster[triggerChannelKey][switchingChannelKey];
-
+      for (const [switchingChannelKey, relations] of Object.entries(relationsPerMaster[triggerChannelKey])) {
         // were this switching channel's relations already added?
         const addedSwitchingChannelKey = Object.keys(simplifiedRelations).find(
           otherKey => JSON.stringify(relationsPerMaster[triggerChannelKey][otherKey]) === JSON.stringify(relations),
@@ -1180,8 +1156,13 @@ function cleanUpChannelWrappers(channelWrappers) {
 
 /**
  * @typedef {Object} TransformedRelations
- * @property {Record.<String, Record.<String, SwitchToChannelInfo>>} relationsPerMaster An Object mapping a master channel key and a switching channel key to the switch to channel information.
- * @property {Record.<Number, Record.<String, String>>} modeChannelReplacements An Object mapping a mode index and a switch to channel key to the switching channel key.
+ * @property {Record.<String, Record.<String, SwitchToChannelInfo>>} relationsPerMaster An object mapping a master channel key and a switching channel key to the switch to channel information.
+ * @property {ModeChannelReplacements} modeChannelReplacements An object mapping a mode index and a switch to channel key to the switching channel key.
+ */
+
+/**
+ * @typedef {Record.<Number, Record.<String, String>>} ModeChannelReplacements
+ * An object mapping a mode index and a switch to channel key to the switching channel key.
  */
 
 /**
@@ -1246,6 +1227,27 @@ function transformRelations(fixture, switchingChannelRelations) {
   });
 
   return { relationsPerMaster, modeChannelReplacements };
+}
+
+/**
+ * Replaces normal channels with switching channels in fixture's modes.
+ * @param {Object} fixture The OFL fixture object.
+ * @param {ModeChannelReplacements} modeChannelReplacements An object mapping a mode index and a switch to channel key to the switching channel key.
+ */
+function replaceSwitchingChannelsInModes(fixture, modeChannelReplacements) {
+  for (const [modeIndex, mode] of fixture.modes.entries()) {
+    if (!(modeIndex in modeChannelReplacements)) {
+      continue;
+    }
+
+    for (const switchToChannelKey of Object.keys(modeChannelReplacements[modeIndex])) {
+      const channelIndex = mode.channels.indexOf(switchToChannelKey);
+
+      if (channelIndex !== -1) {
+        mode.channels[channelIndex] = modeChannelReplacements[modeIndex][switchToChannelKey];
+      }
+    }
+  }
 }
 
 /**
