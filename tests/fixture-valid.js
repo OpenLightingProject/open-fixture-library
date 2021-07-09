@@ -210,16 +210,22 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       result.errors.push(`physical.lens.degreesMinMax${modeDescription} is an invalid range.`);
     }
 
-    if (physical.hasMatrixPixels) {
-      if (fixture.matrix === null) {
-        result.errors.push(`physical.matrixPixels is set but fixture.matrix is missing.`);
-      }
-      else if (physical.matrixPixelsSpacing !== null) {
-        [`X`, `Y`, `Z`].forEach((axis, index) => {
-          if (physical.matrixPixelsSpacing[index] !== 0 && !fixture.matrix.definedAxes.includes(axis)) {
-            result.errors.push(`physical.matrixPixels.spacing is nonzero for ${axis} axis, but no pixels are defined in that axis.`);
-          }
-        });
+    if (physical.hasMatrixPixels && fixture.matrix === null) {
+      result.errors.push(`physical.matrixPixels is set but fixture.matrix is missing.`);
+    }
+    else if (physical.matrixPixelsSpacing !== null) {
+      checkPhysicalMatrixPixelsSpacing(physical.matrixPixelsSpacing);
+    }
+  }
+
+  /**
+   * Checks if the given physical.matrixPixels.spacing array is valid.
+   * @param {Array.<Number>} matrixPixelsSpacing The physical.matrixPixels.spacing array to check.
+   */
+  function checkPhysicalMatrixPixelsSpacing(matrixPixelsSpacing) {
+    for (const [index, axis] of [`X`, `Y`, `Z`].entries()) {
+      if (matrixPixelsSpacing[index] !== 0 && !fixture.matrix.definedAxes.includes(axis)) {
+        result.errors.push(`physical.matrixPixels.spacing is nonzero for ${axis} axis, but no pixels are defined in that axis.`);
       }
     }
   }
