@@ -612,41 +612,47 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         }
 
         /**
-         * Check that referenced wheels exist in the fixture.
+         * Check that references to wheels are valid.
          */
         function checkWheelCapability() {
           let shouldCheckSlotNumbers = true;
 
-          if (`wheel` in capability.jsonObject) {
-            const wheelNames = [capability.jsonObject.wheel].flat();
-
-            wheelNames.forEach(wheelName => {
-              const wheel = fixture.getWheelByName(wheelName);
-              if (wheel) {
-                usedWheels.add(wheelName);
-              }
-              else {
-                result.errors.push(`${errorPrefix} references wheel '${wheelName}' which is not defined in the fixture.`);
-                shouldCheckSlotNumbers = false;
-              }
-            });
-
-            if (wheelNames.length === 1 && wheelNames[0] === capability._channel.name) {
-              result.warnings.push(`${errorPrefix} explicitly references wheel '${wheelNames[0]}', which is the default anyway (through the channel name). Please remove the 'wheel' property.`);
-            }
-          }
-          else if (capability.wheels.includes(null)) {
-            result.errors.push(`${errorPrefix} does not explicitly reference any wheel, but the default wheel '${capability._channel.name}' (through the channel name) does not exist.`);
-            shouldCheckSlotNumbers = false;
-          }
-          else {
-            usedWheels.add(capability._channel.name);
-          }
+          checkReferencedWheels();
 
           if (capability.slotNumber !== null && shouldCheckSlotNumbers) {
             checkSlotNumbers();
           }
 
+          /**
+           * Check that referenced wheels exist in the fixture.
+           */
+          function checkReferencedWheels() {
+            if (`wheel` in capability.jsonObject) {
+              const wheelNames = [capability.jsonObject.wheel].flat();
+
+              for (const wheelName of wheelNames) {
+                const wheel = fixture.getWheelByName(wheelName);
+                if (wheel) {
+                  usedWheels.add(wheelName);
+                }
+                else {
+                  result.errors.push(`${errorPrefix} references wheel '${wheelName}' which is not defined in the fixture.`);
+                  shouldCheckSlotNumbers = false;
+                }
+              }
+
+              if (wheelNames.length === 1 && wheelNames[0] === capability._channel.name) {
+                result.warnings.push(`${errorPrefix} explicitly references wheel '${wheelNames[0]}', which is the default anyway (through the channel name). Please remove the 'wheel' property.`);
+              }
+            }
+            else if (capability.wheels.includes(null)) {
+              result.errors.push(`${errorPrefix} does not explicitly reference any wheel, but the default wheel '${capability._channel.name}' (through the channel name) does not exist.`);
+              shouldCheckSlotNumbers = false;
+            }
+            else {
+              usedWheels.add(capability._channel.name);
+            }
+          }
 
           /**
            * Check that slot indices are used correctly for the specific wheel.
