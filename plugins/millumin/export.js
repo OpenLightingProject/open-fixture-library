@@ -39,17 +39,15 @@ export async function exportFixtures(fixtures, options) {
     addIfValidData(milluminJson, `matrix`, getDowngradedMatrix(oflJson.matrix, fixture));
 
     if (oflJson.availableChannels) {
-      milluminJson.availableChannels = {};
-      Object.entries(oflJson.availableChannels).forEach(([channelKey, jsonChannel]) => {
-        milluminJson.availableChannels[channelKey] = getDowngradedChannel(channelKey, jsonChannel, fixture);
-      });
+      milluminJson.availableChannels = Object.fromEntries(Object.entries(oflJson.availableChannels).map(
+        ([channelKey, jsonChannel]) => [channelKey, getDowngradedChannel(channelKey, jsonChannel, fixture)],
+      ));
     }
 
     if (oflJson.templateChannels) {
-      milluminJson.templateChannels = {};
-      Object.entries(oflJson.templateChannels).forEach(([channelKey, jsonChannel]) => {
-        milluminJson.templateChannels[channelKey] = getDowngradedChannel(channelKey, jsonChannel, fixture);
-      });
+      milluminJson.templateChannels = Object.fromEntries(Object.entries(oflJson.templateChannels).map(
+        ([channelKey, jsonChannel]) => [channelKey, getDowngradedChannel(channelKey, jsonChannel, fixture)],
+      ));
     }
 
     milluminJson.modes = oflJson.modes;
