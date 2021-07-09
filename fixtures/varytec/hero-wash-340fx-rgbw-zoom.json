@@ -28,7 +28,7 @@
     "power": 134,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED",
+      "type": "3× 40W RGBW LED",
       "colorTemperature": 6461
     },
     "lens": {
@@ -397,7 +397,7 @@
   },
   "modes": [
     {
-      "name": "8 Channel",
+      "name": "8-channel",
       "shortName": "8ch",
       "channels": [
         "Pan",
@@ -411,7 +411,7 @@
       ]
     },
     {
-      "name": "16 Channel",
+      "name": "16-channel",
       "shortName": "16ch",
       "channels": [
         "Pan 3",
