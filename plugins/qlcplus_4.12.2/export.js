@@ -358,93 +358,79 @@ function addMode(xml, mode, createPhysical) {
  * @param {Mode|null} mode The OFL mode object this physical data section belongs to. Only provide this if panMax and tiltMax should be read from this mode's Pan / Tilt channels, otherwise they are read from all channels.
  */
 function addPhysical(xmlParentNode, physical, fixture, mode) {
-  const PanMax = getPanTiltMax(`Pan`, mode ? mode.channels : fixture.coarseChannels);
-  const TiltMax = getPanTiltMax(`Tilt`, mode ? mode.channels : fixture.coarseChannels);
+  const panMax = getPanTiltMax(`Pan`, mode?.channels ?? fixture.coarseChannels);
+  const tiltMax = getPanTiltMax(`Tilt`, mode?.channels ?? fixture.coarseChannels);
 
-  if (Object.keys(physical.jsonObject).length === 0 && PanMax === 0 && TiltMax === 0) {
+  if (Object.keys(physical.jsonObject).length === 0 && panMax === 0 && tiltMax === 0) {
     // empty physical data
     return;
   }
 
   const physicalSections = {
-    Bulb: {
-      required: true,
-      getAttributes() {
-        return {
-          Type: physical.bulbType || `Other`,
-          Lumens: Math.round(physical.bulbLumens) || 0,
-          ColourTemperature: Math.round(physical.bulbColorTemperature) || 0,
-        };
-      },
-    },
-    Dimensions: {
-      required: true,
-      getAttributes() {
-        return {
-          Weight: physical.weight || 0,
-          Width: Math.round(physical.width) || 0,
-          Height: Math.round(physical.height) || 0,
-          Depth: Math.round(physical.depth) || 0,
-        };
-      },
-    },
-    Lens: {
-      required: true,
-      getAttributes() {
-        return {
-          Name: physical.lensName || `Other`,
-          DegreesMin: physical.lensDegreesMin || 0,
-          DegreesMax: physical.lensDegreesMax || 0,
-        };
-      },
-    },
-    Focus: {
-      required: true,
-      getAttributes() {
-        const focusTypeConditions = {
-          Mirror: fixture.categories.includes(`Scanner`),
-          Barrel: fixture.categories.includes(`Barrel Scanner`),
-          Head: fixture.categories.includes(`Moving Head`) || PanMax > 0 || TiltMax > 0,
-          Fixed: true,
-        };
-        const Type = Object.keys(focusTypeConditions).find(focusType => focusTypeConditions[focusType] === true);
+    Bulb: () => ({
+      Type: physical.bulbType || `Other`,
+      Lumens: Math.round(physical.bulbLumens) || 0,
+      ColourTemperature: Math.round(physical.bulbColorTemperature) || 0,
+    }),
+    Dimensions: () => ({
+      Weight: physical.weight || 0,
+      Width: Math.round(physical.width) || 0,
+      Height: Math.round(physical.height) || 0,
+      Depth: Math.round(physical.depth) || 0,
+    }),
+    Lens: () => ({
+      Name: physical.lensName || `Other`,
+      DegreesMin: physical.lensDegreesMin || 0,
+      DegreesMax: physical.lensDegreesMax || 0,
+    }),
+    Focus: () => {
+      const focusTypeConditions = {
+        Mirror: fixture.categories.includes(`Scanner`),
+        Barrel: fixture.categories.includes(`Barrel Scanner`),
+        Head: fixture.categories.includes(`Moving Head`) || panMax > 0 || tiltMax > 0,
+        Fixed: true,
+      };
+      const focusType = Object.keys(focusTypeConditions).find(type => focusTypeConditions[type] === true);
 
-        return {
-          Type,
-          PanMax,
-          TiltMax,
-        };
-      },
+      return {
+        Type: focusType,
+        PanMax: panMax,
+        TiltMax: tiltMax,
+      };
     },
-    Layout: {
-      required: fixture.matrix !== null,
-      getAttributes() {
-        return {
-          Width: fixture.matrix.pixelCountX,
-          Height: fixture.matrix.pixelCountY * fixture.matrix.pixelCountZ,
-        };
-      },
-    },
-    Technical: {
-      required: physical.DMXconnector !== null || physical.power !== null,
-      getAttributes() {
-        // add whitespace
-        const connector = physical.DMXconnector === `3.5mm stereo jack` ? `3.5 mm stereo jack` : physical.DMXconnector;
+    Layout: () => {
+      if (fixture.matrix === null) {
+        return undefined;
+      }
 
-        return {
-          DmxConnector: connector || `Other`,
-          PowerConsumption: Math.round(physical.power) || 0,
-        };
-      },
+      return {
+        Width: fixture.matrix.pixelCountX,
+        Height: fixture.matrix.pixelCountY * fixture.matrix.pixelCountZ,
+      };
+    },
+    Technical: () => {
+      if (physical.DMXconnector === null && physical.power === null) {
+        return undefined;
+      }
+
+      // add whitespace
+      const connector = physical.DMXconnector === `3.5mm stereo jack` ? `3.5 mm stereo jack` : physical.DMXconnector;
+
+      return {
+        DmxConnector: connector || `Other`,
+        PowerConsumption: Math.round(physical.power) || 0,
+      };
     },
   };
 
+  const physicalSectionProperties = Object.entries(physicalSections)
+    .map(([name, getProperties]) => [name, getProperties()])
+    .filter(([name, properties]) => properties !== undefined);
+
   const xmlPhysical = xmlParentNode.element(`Physical`);
-  Object.entries(physicalSections).forEach(([name, section]) => {
-    if (section.required) {
-      xmlPhysical.element(name, section.getAttributes());
-    }
-  });
+  for (const [name, properties] of physicalSectionProperties) {
+    xmlPhysical.element(name, properties);
+  }
 }
 
 /**
