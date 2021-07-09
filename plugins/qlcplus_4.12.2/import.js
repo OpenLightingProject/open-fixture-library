@@ -783,19 +783,28 @@ function getOflMode(qlcPlusMode, oflFixturePhysical, warningsArray) {
     mode.channels[Number.parseInt(channel.$.Number, 10)] = channel._;
   }
 
+  addHeadWarnings(qlcPlusMode, mode, warningsArray);
+
+  return mode;
+}
+
+/**
+ * @param {Object} qlcPlusMode The QLC+ mode object.
+ * @param {Object} mode The corresponding OFL mode object.
+ * @param {Array.<String>} warningsArray This fixture's warnings array in the `out` object.
+ */
+function addHeadWarnings(qlcPlusMode, mode, warningsArray) {
   if (`Head` in qlcPlusMode) {
-    qlcPlusMode.Head.forEach((head, index) => {
+    for (const [index, head] of qlcPlusMode.Head.entries()) {
       if (head.Channel === undefined) {
-        return;
+        continue;
       }
 
       const channelList = head.Channel.map(channel => mode.channels[Number.parseInt(channel, 10)]).join(`, `);
 
       warningsArray.push(`Please add ${mode.name} mode's Head #${index + 1} to the fixture's matrix. The included channels were ${channelList}.`);
-    });
+    }
   }
-
-  return mode;
 }
 
 /**
