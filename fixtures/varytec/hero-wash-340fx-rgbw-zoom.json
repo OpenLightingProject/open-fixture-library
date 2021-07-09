@@ -65,18 +65,20 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "NoFunction"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [10, 250],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUp",
+          "shutterEffect": "Strobe",
           "speedStart": "0Hz",
           "speedEnd": "20Hz"
         },
         {
           "dmxRange": [251, 255],
-          "type": "NoFunction"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         }
       ]
     },
@@ -161,16 +163,14 @@
           "type": "Effect",
           "effectPreset": "ColorJump",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Colour sequence, increasing speed"
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [201, 255],
           "type": "Effect",
           "effectPreset": "ColorFade",
           "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Colour transition, increasing speed"
+          "speedEnd": "fast"
         }
       ]
     },
@@ -213,7 +213,7 @@
         }
       ]
     },
-    "Program Speed": {
+    "Auto Programs": {
       "capabilities": [
         {
           "dmxRange": [0, 10],
@@ -371,7 +371,7 @@
         "Color Macros",
         "Zoom",
         "Effect",
-        "Program Speed"
+        "Auto Programs"
       ]
     },
     {
@@ -393,7 +393,7 @@
         "Color Macros",
         "Zoom",
         "Effect",
-        "Program Speed"
+        "Auto Programs"
       ]
     }
   ]
