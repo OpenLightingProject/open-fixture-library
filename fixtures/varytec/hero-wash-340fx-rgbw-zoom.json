@@ -35,6 +35,18 @@
       "degreesMinMax": [4, 45]
     }
   },
+  "wheels": {
+    "Beam Split Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
@@ -181,35 +193,36 @@
         "angleEnd": "wide"
       }
     },
-    "Effect": {
+    "Beam Split Effect": {
       "capabilities": [
         {
           "dmxRange": [0, 100],
-          "type": "EffectParameter",
-          "parameterStart": "off",
-          "parameterEnd": "big",
-          "comment": "Beam split"
+          "type": "WheelSlot",
+          "wheel": "Beam Split Wheel",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 1.5
         },
         {
           "dmxRange": [101, 133],
-          "type": "EffectParameter",
-          "parameterStart": "slow",
-          "parameterEnd": "fast",
-          "comment": "Yo-Yo-Effect"
+          "type": "WheelShake",
+          "wheel": "Beam Split Wheel",
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast",
+          "comment": "Yo-Yo Effect"
         },
         {
           "dmxRange": [134, 194],
-          "type": "EffectParameter",
-          "parameterStart": "fast",
-          "parameterEnd": "slow",
-          "comment": "Rotation Clockwise"
+          "type": "WheelRotation",
+          "wheel": "Beam Split Wheel",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [195, 255],
-          "type": "EffectParameter",
-          "parameterStart": "slow",
-          "parameterEnd": "fast",
-          "comment": "Rotation Clockwise"
+          "type": "WheelRotation",
+          "wheel": "Beam Split Wheel",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -370,7 +383,7 @@
         "Shutter / Strobe",
         "Color Macros",
         "Zoom",
-        "Effect",
+        "Beam Split Effect",
         "Auto Programs"
       ]
     },
@@ -392,7 +405,7 @@
         "Color Temperature",
         "Color Macros",
         "Zoom",
-        "Effect",
+        "Beam Split Effect",
         "Auto Programs"
       ]
     }
