@@ -544,30 +544,17 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           result.errors.push(`${errorPrefix} must define the same switching channel aliases as all other capabilities.`);
         }
         else {
-          switchingChannelAliases.forEach(alias => {
+          for (const alias of switchingChannelAliases) {
             const channelKey = capability.switchChannels[alias];
             usedChannelKeys.add(channelKey.toLowerCase());
 
             if (channel.fixture.getChannelByKey(channelKey) === null) {
               result.errors.push(`${errorPrefix} references unknown channel '${channelKey}'.`);
             }
-          });
+          }
         }
 
-        capability.usedStartEndEntities.forEach(property => {
-          const [startEntity, endEntity] = capability[property];
-
-          if ((startEntity.keyword === null) !== (endEntity.keyword === null)) {
-            result.errors.push(`${errorPrefix} must use keywords for start and end value or for none of them in ${property}.`);
-          }
-          else if (startEntity.unit !== endEntity.unit) {
-            result.errors.push(`${errorPrefix} uses different units for ${property}.`);
-          }
-
-          if (property === `speed` && startEntity.number * endEntity.number < 0) {
-            result.errors.push(`${errorPrefix} uses different signs (+ or –) in ${property} (maybe behind a keyword). Consider splitting it into several capabilities.`);
-          }
-        });
+        checkStartEndEntities();
 
         const capabilityTypeChecks = {
           ShutterStrobe: checkShutterStrobeCapability,
@@ -584,6 +571,26 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           capabilityTypeChecks[capability.type]();
         }
 
+
+        /**
+         * Check all used start/end entities in the capability.
+         */
+        function checkStartEndEntities() {
+          for (const property of capability.usedStartEndEntities) {
+            const [startEntity, endEntity] = capability[property];
+
+            if ((startEntity.keyword === null) !== (endEntity.keyword === null)) {
+              result.errors.push(`${errorPrefix} must use keywords for both start and end value or for neither in ${property}.`);
+            }
+            else if (startEntity.unit !== endEntity.unit) {
+              result.errors.push(`${errorPrefix} uses different units for ${property}.`);
+            }
+
+            if (property === `speed` && startEntity.number * endEntity.number < 0) {
+              result.errors.push(`${errorPrefix} uses different signs (+ or –) in ${property} (maybe behind a keyword). Consider splitting it into several capabilities.`);
+            }
+          }
+        }
 
         /**
          * Type-specific checks for ShutterStrobe capabilities.
