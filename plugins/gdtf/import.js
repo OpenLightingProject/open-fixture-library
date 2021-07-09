@@ -1176,7 +1176,7 @@ function transformRelations(fixture, switchingChannelRelations) {
   const modeChannelReplacements = {};
 
   // bring relations into a structure we can work with
-  switchingChannelRelations.forEach(relation => {
+  for (const relation of switchingChannelRelations) {
     const masterKey = relation.masterGdtfChannel._oflChannelKey;
 
     if (!(masterKey in relationsPerMaster)) {
@@ -1203,10 +1203,25 @@ function transformRelations(fixture, switchingChannelRelations) {
 
     modeChannelReplacements[modeIndex][switchToChannelKey] = switchingChannelKey;
 
-    const switchToChannel = fixture.availableChannels[switchToChannelKey];
+    transformRelationFineChannels(relation, switchingChannelKey, switchToChannelKey);
+  }
 
+  return { relationsPerMaster, modeChannelReplacements };
+
+
+  /**
+   * Adds all implicit fine channel relations for a given relation.
+   * @param {Relation} relation The relation for the coarse channel.
+   * @param {String} switchingChannelKey The switching channel key of the coarse channel.
+   * @param {String} switchToChannelKey The switch to channel key of the coarse channel.
+   */
+  function transformRelationFineChannels(relation, switchingChannelKey, switchToChannelKey) {
+    const masterKey = relation.masterGdtfChannel._oflChannelKey;
+    const modeIndex = relation.modeIndex;
+
+    const switchToChannel = fixture.availableChannels[switchToChannelKey];
     if (switchToChannel && `fineChannelAliases` in switchToChannel) {
-      switchToChannel.fineChannelAliases.forEach((fineChannelAlias, fineness) => {
+      for (const [fineness, fineChannelAlias] of switchToChannel.fineChannelAliases.entries()) {
         let switchingFineChannelKey = `${switchingChannelKey} fine`;
         if (fineness > 0) {
           switchingFineChannelKey += `^${fineness + 1}`;
@@ -1222,11 +1237,9 @@ function transformRelations(fixture, switchingChannelRelations) {
           switchToChannelKey: fineChannelAlias,
         });
         modeChannelReplacements[modeIndex][fineChannelAlias] = switchingFineChannelKey;
-      });
+      }
     }
-  });
-
-  return { relationsPerMaster, modeChannelReplacements };
+  }
 }
 
 /**
