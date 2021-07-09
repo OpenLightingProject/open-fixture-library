@@ -37,6 +37,8 @@
   },
   "availableChannels": {
     "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "dmxValueResolution": "8bit",
       "defaultValue": 128,
       "capability": {
         "type": "Pan",
@@ -45,6 +47,8 @@
       }
     },
     "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "dmxValueResolution": "8bit",
       "defaultValue": 128,
       "capability": {
         "type": "Tilt",
@@ -275,46 +279,6 @@
         }
       ]
     },
-    "Pan 2": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 2 fine"],
-      "defaultValue": "50%",
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "540deg"
-      }
-    },
-    "Tilt 2": {
-      "name": "Tilt",
-      "fineChannelAliases": ["Tilt 2 fine"],
-      "defaultValue": "50%",
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "210deg"
-      }
-    },
-    "Pan 3": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 3 fine"],
-      "defaultValue": 128,
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "540deg"
-      }
-    },
-    "Tilt 3": {
-      "name": "Tilt",
-      "fineChannelAliases": ["Tilt 3 fine"],
-      "defaultValue": 128,
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "210deg"
-      }
-    },
     "Pan/Tilt Speed": {
       "capability": {
         "type": "PanTiltSpeed",
@@ -414,10 +378,10 @@
       "name": "16-channel",
       "shortName": "16ch",
       "channels": [
-        "Pan 3",
-        "Pan 3 fine",
-        "Tilt 3",
-        "Tilt 3 fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
         "Pan/Tilt Speed",
         "Dimmer",
         "Shutter / Strobe",
