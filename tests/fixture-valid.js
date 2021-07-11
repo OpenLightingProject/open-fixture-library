@@ -995,86 +995,89 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       [`Pixel Bar`, `Stand`],
     ];
 
+    const fixtureIsColorChanger = isColorChanger();
+    const fixtureHasBothPanTiltChannels = hasPanTiltChannels(true);
+    const fixtureHasPanOrTiltChannels = hasPanTiltChannels(false);
+    const isFogTypeFog = isFogType(`Fog`);
+    const isFogTypeHaze = isFogType(`Haze`);
+    const fixtureIsNotMatrix = isNotMatrix();
+    const fixtureIsPixelBar = isPixelBar();
+    const fixtureIsNotPixelBar = isNotPixelBar();
+
     const categories = {
       'Color Changer': {
-        isSuggested: isColorChanger(),
+        isSuggested: fixtureIsColorChanger,
+        isInvalid: !fixtureIsColorChanger,
         suggestedPhrase: `there are ColorPreset or ColorIntensity capabilities or Color wheel slots`,
         invalidPhrase: `there are no ColorPreset and less than two ColorIntensity capabilities and no Color wheel slots`,
       },
       'Moving Head': {
-        isSuggested: hasPanTiltChannels(true),
-        isInvalid: !hasPanTiltChannels(true),
+        isSuggested: fixtureHasBothPanTiltChannels,
+        isInvalid: !fixtureHasBothPanTiltChannels,
         suggestedPhrase: `there are pan and tilt channels`,
         invalidPhrase: `there are not both pan and tilt channels`,
       },
       'Scanner': {
-        isSuggested: hasPanTiltChannels(true),
-        isInvalid: !hasPanTiltChannels(false),
+        isSuggested: fixtureHasBothPanTiltChannels,
+        isInvalid: !fixtureHasPanOrTiltChannels,
         suggestedPhrase: `there are pan and tilt channels`,
         invalidPhrase: `there are no pan or tilt channels`,
       },
       'Barrel Scanner': {
-        isSuggested: hasPanTiltChannels(true),
-        isInvalid: !hasPanTiltChannels(false),
+        isSuggested: fixtureHasBothPanTiltChannels,
+        isInvalid: !fixtureHasPanOrTiltChannels,
         suggestedPhrase: `there are pan and tilt channels`,
         invalidPhrase: `there are no pan or tilt channels`,
       },
       'Smoke': {
-        isSuggested: isFogType(`Fog`),
+        isSuggested: isFogTypeFog,
+        isInvalid: !isFogTypeFog,
         suggestedPhrase: `there are Fog/FogType capabilities with no fogType or fogType 'Fog'`,
         invalidPhrase: `there are no Fog/FogType capabilities or none has fogType 'Fog'`,
       },
       'Hazer': {
-        isSuggested: isFogType(`Haze`),
+        isSuggested: isFogTypeHaze,
+        isInvalid: !isFogTypeHaze,
         suggestedPhrase: `there are Fog/FogType capabilities with no fogType or fogType 'Haze'`,
         invalidPhrase: `there are no Fog/FogType capabilities or none has fogType 'Haze'`,
       },
       'Matrix': {
-        isInvalid: isNotMatrix(),
+        isInvalid: fixtureIsNotMatrix,
         invalidPhrase: `fixture does not define a matrix`,
       },
       'Pixel Bar': {
-        isSuggested: isPixelBar(),
-        isInvalid: isNotPixelBar(),
+        isSuggested: fixtureIsPixelBar,
+        isInvalid: fixtureIsNotPixelBar,
         suggestedPhrase: `matrix pixels are horizontally aligned`,
         invalidPhrase: `no horizontally aligned matrix is defined`,
       },
     };
 
-    Object.entries(categories).forEach(([categoryName, category]) => {
+    for (const [categoryName, category] of Object.entries(categories)) {
       const isCategoryUsed = fixture.categories.includes(categoryName);
 
-      if (!(`isInvalid` in category)) {
-        category.isInvalid = !category.isSuggested;
-      }
+      // don't suggest this category if another mutually exclusive category is used
+      const exclusiveGroups = mutuallyExclusiveGroups.filter(
+        group => group.includes(categoryName) && group.some(
+          cat => cat !== categoryName && fixture.categories.includes(cat),
+        ),
+      );
 
-      if (!isCategoryUsed && category.isSuggested) {
-        // don't suggest this category if another mutually exclusive category is used
-        const exclusiveGroups = mutuallyExclusiveGroups.filter(
-          group => group.includes(categoryName),
-        );
-        const isForbiddenByGroup = exclusiveGroups.some(
-          group => group.some(
-            cat => fixture.categories.includes(cat),
-          ),
-        );
-
-        if (!isForbiddenByGroup) {
+      if (!isCategoryUsed) {
+        if (category.isSuggested && exclusiveGroups.length === 0) {
           result.warnings.push(`Category '${categoryName}' suggested since ${category.suggestedPhrase}.`);
         }
       }
-      else if (isCategoryUsed && category.isInvalid) {
+      else if (category.isInvalid) {
         result.errors.push(`Category '${categoryName}' invalid since ${category.invalidPhrase}.`);
       }
-    });
-
-    mutuallyExclusiveGroups.forEach(group => {
-      const usedCategories = group.filter(cat => fixture.categories.includes(cat));
-
-      if (usedCategories.length >= 2) {
-        result.errors.push(`Categories '${usedCategories.join(`', '`)}' can't be used together.`);
+      else if (exclusiveGroups.length > 0) {
+        result.errors.push(...exclusiveGroups.map(group => {
+          const usedCategories = group.filter(cat => fixture.categories.includes(cat));
+          return `Categories '${usedCategories.join(`', '`)}' can't be used together.`;
+        }));
       }
-    });
+    }
 
     /**
      * @returns {Boolean} Whether the 'Color Changer' category is suggested.
