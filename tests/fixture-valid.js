@@ -892,18 +892,15 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
           if (otherChannel.triggerChannel === channel.triggerChannel) {
             // compare ranges
-            channel.switchToChannelKeys.forEach(switchToChannelKey => {
-              if (!otherChannel.switchToChannelKeys.includes(switchToChannelKey)) {
-                return;
-              }
-
+            for (const switchToChannelKey of channel.switchToChannelKeys) {
               const overlap = channel.triggerRanges[switchToChannelKey].some(
-                range => range.overlapsWithOneOf(otherChannel.triggerRanges[switchToChannelKey]),
+                // `?? []` because otherChannel.switchToChannelKeys may not include switchToChannelKey
+                range => range.overlapsWithOneOf(otherChannel.triggerRanges[switchToChannelKey] ?? []),
               );
               if (overlap) {
                 result.errors.push(`Channel '${switchToChannelKey}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
               }
-            });
+            }
           }
           else {
             // fail if one of this channel's switchToChannels appears anywhere
