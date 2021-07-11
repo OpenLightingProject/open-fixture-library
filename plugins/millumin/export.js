@@ -74,27 +74,27 @@ export async function exportFixtures(fixtures, options) {
  * @returns {Array.<String>} A filtered categories array.
  */
 function getDowngradedCategories(categories) {
-  const replaceCats = {
+  const replaceCategories = {
     'Barrel Scanner': `Effect`,
   };
-  const ignoredCats = new Set([`Pixel Bar`, `Stand`]);
+  const ignoredCategories = new Set([`Pixel Bar`, `Stand`]);
 
-  const downgradedCategories = categories.map(cat => {
-    if (ignoredCats.has(cat)) {
-      return null;
+  const downgradedCategories = categories.flatMap(category => {
+    if (ignoredCategories.has(category)) {
+      return [];
     }
 
-    if (cat in replaceCats) {
-      cat = replaceCats[cat];
+    if (category in replaceCategories) {
+      category = replaceCategories[category];
 
-      if (categories.includes(cat)) {
+      if (categories.includes(category)) {
         // replaced category is already used
-        return null;
+        return [];
       }
     }
 
-    return cat;
-  }).filter(cat => cat !== null);
+    return category;
+  });
 
   if (downgradedCategories.length === 0) {
     downgradedCategories.push(`Other`);

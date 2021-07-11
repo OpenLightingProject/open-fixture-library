@@ -1053,27 +1053,27 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       },
     };
 
-    for (const [categoryName, category] of Object.entries(categories)) {
+    for (const [categoryName, categoryProperties] of Object.entries(categories)) {
       const isCategoryUsed = fixture.categories.includes(categoryName);
 
       // don't suggest this category if another mutually exclusive category is used
       const exclusiveGroups = mutuallyExclusiveGroups.filter(
         group => group.includes(categoryName) && group.some(
-          cat => cat !== categoryName && fixture.categories.includes(cat),
+          category => category !== categoryName && fixture.categories.includes(category),
         ),
       );
 
       if (!isCategoryUsed) {
-        if (category.isSuggested && exclusiveGroups.length === 0) {
-          result.warnings.push(`Category '${categoryName}' suggested since ${category.suggestedPhrase}.`);
+        if (categoryProperties.isSuggested && exclusiveGroups.length === 0) {
+          result.warnings.push(`Category '${categoryName}' suggested since ${categoryProperties.suggestedPhrase}.`);
         }
       }
-      else if (category.isInvalid) {
-        result.errors.push(`Category '${categoryName}' invalid since ${category.invalidPhrase}.`);
+      else if (categoryProperties.isInvalid) {
+        result.errors.push(`Category '${categoryName}' invalid since ${categoryProperties.invalidPhrase}.`);
       }
       else if (exclusiveGroups.length > 0) {
         result.errors.push(...exclusiveGroups.map(group => {
-          const usedCategories = group.filter(cat => fixture.categories.includes(cat));
+          const usedCategories = group.filter(category => fixture.categories.includes(category));
           return `Categories '${usedCategories.join(`', '`)}' can't be used together.`;
         }));
       }

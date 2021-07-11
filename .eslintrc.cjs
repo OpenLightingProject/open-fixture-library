@@ -153,6 +153,8 @@ const enabledRuleParameters = {
       ch: { channel: true },
       cap: { capability: true },
       caps: { capabilities: true },
+      cat: { category: true },
+      cats: { categories: true },
     },
   }],
 
