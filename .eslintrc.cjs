@@ -37,7 +37,7 @@ const enabledRuleParameters = {
   'indent': [2, { SwitchCase: 1 }],
   'key-spacing': [],
   'keyword-spacing': [],
-  'linebreak-style': [],
+  'linebreak-style': [`unix`],
   'new-parens': [],
   'no-array-constructor': [],
   'no-bitwise': [],
@@ -153,6 +153,8 @@ const enabledRuleParameters = {
       ch: { channel: true },
       cap: { capability: true },
       caps: { capabilities: true },
+      cat: { category: true },
+      cats: { categories: true },
     },
   }],
 
@@ -233,7 +235,6 @@ const vueCoreExtensionRules = [
 const warnRules = new Set([
   `complexity`,
   `jsdoc/require-jsdoc`,
-  `unicorn/no-array-for-each`,
   `vue/no-mutating-props`,
 ]);
 

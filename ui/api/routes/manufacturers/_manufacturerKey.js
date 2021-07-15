@@ -30,7 +30,7 @@ export async function getManufacturerByKey({ request }) {
         key: fixtureKey,
         name: register.filesystem[`${manufacturerKey}/${fixtureKey}`].name,
         categories: Object.keys(register.categories).filter(
-          cat => register.categories[cat].includes(`${manufacturerKey}/${fixtureKey}`),
+          category => register.categories[category].includes(`${manufacturerKey}/${fixtureKey}`),
         ),
       }),
     ),
