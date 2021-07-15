@@ -153,6 +153,8 @@ const enabledRuleParameters = {
       ch: { channel: true },
       cap: { capability: true },
       caps: { capabilities: true },
+      cat: { category: true },
+      cats: { categories: true },
     },
   }],
 
@@ -233,7 +235,6 @@ const vueCoreExtensionRules = [
 const warnRules = new Set([
   `complexity`,
   `jsdoc/require-jsdoc`,
-  `unicorn/no-array-for-each`,
   `vue/no-mutating-props`,
 ]);
 
