@@ -277,7 +277,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
       },
       WheelSlot() {
         if (ecueChannel._ecueChannelType === `ChannelColor`) {
-          const color = capabilityName.toLowerCase().replace(/\s/g, ``);
+          const color = capabilityName.toLowerCase().replace(/\bgray\b/, `grey`).replace(/\s/g, ``);
           if (color in colors) {
             capability.colors = [colors[color]];
           }
@@ -290,7 +290,7 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
         }
       },
       ColorPreset() {
-        const color = capabilityName.toLowerCase().replace(/\s/g, ``);
+        const color = capabilityName.toLowerCase().replace(/\bgray\b/, `grey`).replace(/\s/g, ``);
         if (color in colors) {
           capability.color = colors[color];
         }
