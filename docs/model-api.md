@@ -803,7 +803,7 @@ A physical entity with numerical value and unit information.
         * [.number](#Entity+number) ⇒ <code>Number</code>
         * [.unit](#Entity+unit) ⇒ <code>String</code>
         * [.keyword](#Entity+keyword) ⇒ <code>String</code> \| <code>null</code>
-        * [.getBaseUnitEntity()](#Entity+getBaseUnitEntity) ⇒ [<code>Entity</code>](#Entity)
+        * [.baseUnitEntity](#Entity+baseUnitEntity) ⇒ [<code>Entity</code>](#Entity)
         * [.valueOf()](#Entity+valueOf) ⇒ <code>Number</code>
         * [.toString()](#Entity+toString) ⇒ <code>String</code>
         * [.equals(anotherEntity)](#Entity+equals) ⇒ <code>Boolean</code>
@@ -837,10 +837,10 @@ Creates a new Entity instance.
 ### entity.keyword ⇒ <code>String</code> \| <code>null</code>
 **Kind**: instance property of [<code>Entity</code>](#Entity)  
 **Returns**: <code>String</code> \| <code>null</code> - The used keyword, or null if no keyword was used.  
-<a name="Entity+getBaseUnitEntity"></a>
+<a name="Entity+baseUnitEntity"></a>
 
-### entity.getBaseUnitEntity() ⇒ [<code>Entity</code>](#Entity)
-**Kind**: instance method of [<code>Entity</code>](#Entity)  
+### entity.baseUnitEntity ⇒ [<code>Entity</code>](#Entity)
+**Kind**: instance property of [<code>Entity</code>](#Entity)  
 **Returns**: [<code>Entity</code>](#Entity) - An entity of the same value, but scaled to the base unit. Returns the entity itself if it is already in the base unit.  
 <a name="Entity+valueOf"></a>
 
