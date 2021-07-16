@@ -1,0 +1,115 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RevueLED 120 COB True White",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Hannes Rüger"],
+    "createDate": "2021-07-16",
+    "lastModifyDate": "2021-07-16"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/443734_c_443734_v2_de_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_revueled_120_cob_true_white.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [440, 250, 160],
+    "weight": 5.5,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 7000
+    },
+    "lens": {
+      "degreesMinMax": [50, 50]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "7800K",
+          "comment": "follows dimmer value"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "2800K",
+          "colorTemperatureEnd": "7800K"
+        }
+      ]
+    },
+    "Intensity Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Intensity Cold White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "30Hz"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "2ch",
+      "channels": [
+        "Dimmer",
+        "Color Temperature"
+      ]
+    },
+    {
+      "name": "2ch 2",
+      "channels": [
+        "Intensity Warm White",
+        "Intensity Cold White"
+      ]
+    },
+    {
+      "name": "3ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Color Temperature"
+      ]
+    },
+    {
+      "name": "4ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Intensity Warm White",
+        "Intensity Cold White"
+      ]
+    }
+  ]
+}
