@@ -320,6 +320,7 @@ module.exports = {
       files: [`**/*.md/*.js`],
       rules: {
         'jsdoc/require-jsdoc': `off`,
+        'import/no-unresolved': `off`,
       },
     },
     {
