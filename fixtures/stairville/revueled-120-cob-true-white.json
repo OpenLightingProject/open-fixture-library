@@ -81,27 +81,31 @@
   },
   "modes": [
     {
-      "name": "1ch",
+      "name": "1-channel",
+      "shortName": "1ch",
       "channels": [
         "Dimmer"
       ]
     },
     {
-      "name": "2ch",
+      "name": "2-channel 1",
+      "shortName": "2ch-1",
       "channels": [
         "Dimmer",
         "Color Temperature"
       ]
     },
     {
-      "name": "2ch 2",
+      "name": "2-channel 2",
+      "shortName": "2ch-2",
       "channels": [
         "Intensity Warm White",
         "Intensity Cold White"
       ]
     },
     {
-      "name": "3ch",
+      "name": "3-channel",
+      "shortName": "3ch",
       "channels": [
         "Dimmer",
         "Strobe",
@@ -109,7 +113,8 @@
       ]
     },
     {
-      "name": "4ch",
+      "name": "4-channel",
+      "shortName": "4ch",
       "channels": [
         "Dimmer",
         "Strobe",
