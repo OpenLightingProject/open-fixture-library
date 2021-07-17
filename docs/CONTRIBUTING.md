@@ -16,13 +16,45 @@ As soon as an issue is assigned to somebody, it means that this person is respon
 
 See [README.md](README.md#local-installation).
 
-## Where you can help
+## How you can help
 
-* Add new fixtures (either via the Fixture Editor or by manually writing a [fixture format JSON](fixture-format.md))
-* Browse the [`good-first-issues` tag](https://github.com/OpenLightingProject/open-fixture-library/issues?q=is:open+is:issue+label:%22good+first+issue%22) to find some easy tasks
-* Improve the [documentation](README.md)
-* Add new [plugins](https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Anew-plugin) (use existing ones as reference and look at the [plugin documentation](plugins.md))
-* Implement your own idea (please create a new issue first if it's no bugfix or very minor change)
+### Fixtures
+
+* **Add new fixtures**  
+  Either add fixtures via the online [Fixture Editor](https://open-fixture-library.org/fixture-editor) or by manually writing a [fixture format JSON](fixture-format.md).
+
+* **Answer questions in existing fixtures**  
+  Go through the fixtures on the [website](https://open-fixture-library.org/manufacturers) that you have access to, and see if there is a yellow "Help wanted" box there with a question you can answer.
+
+* **Review fixtures that are not yet merged**  
+  These are the steps that take the longest when reviewing a fixture:
+
+  > 1. Checking whether at least 3 links are present. Otherwise, finding suitable links.
+  >     * link to a manual PDF containing all DMX modes
+  >     * link to a product page on the official manufacturer website
+  >     * link to a YouTube or Vimeo video that showcases or explains the fixture
+  > 2. Checking whether all DMX modes from the manual are included in the fixture definition.  
+  > 3. Checking whether all DMX modes' channels from the manual are included in the fixture definition.  
+  > 4. Checking whether all DMX channels' capabilities from the manual are included in the fixture definition.
+
+  If you could go through some [PRs with the `new-fixture` label](https://github.com/OpenLightingProject/open-fixture-library/pulls?q=is%3Apr+is%3Aopen+label%3Anew-fixture) and comment on them with the results of those checks, that would help immensely. Thank you already :)
+
+* **Add links and colors to existing fixtures**  
+  See [#578](https://github.com/OpenLightingProject/open-fixture-library/issues/578) and [#723](https://github.com/OpenLightingProject/open-fixture-library/issues/723). There are also some broken links (see [#999](https://github.com/OpenLightingProject/open-fixture-library/issues/999)), maybe you can find some alternative links to replace them.
+
+### Code
+
+* **Work on easy issues**  
+  Browse the [`good-first-issues` tag](https://github.com/OpenLightingProject/open-fixture-library/issues?q=is:open+is:issue+label:%22good+first+issue%22) to find some easy tasks.
+
+* **Implement your own idea**  
+  Please create a new issue first if it's a bigger change.
+
+* **Create new import/export plugins**  
+  This is a bit more involved. See the [list of new plugins](https://github.com/OpenLightingProject/open-fixture-library/projects/5) for inspiration. Use existing plugins as reference and look at the [plugin documentation](plugins.md).
+
+* **Improve the [documentation](README.md)**  
+  Especially after you have made other changes, there is likely something you've been missing in the documentation. Help others find it there!
 
 ## Workflow: How to implement a feature
 
