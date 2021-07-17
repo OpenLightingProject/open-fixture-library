@@ -38,10 +38,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "ColorTemperature",
-          "colorTemperatureStart": "2800K",
-          "colorTemperatureEnd": "7800K",
-          "comment": "follows dimmer value"
+          "type": "NoFunction",
+          "comment": "Color temperature adjustment (2800K…7800K) follows dimmer value"
         },
         {
           "dmxRange": [6, 255],
