@@ -26,13 +26,9 @@ See [README.md](README.md#local-installation).
 
 ## Workflow: How to implement a feature
 
-1. [Fork](https://help.github.com/articles/fork-a-repo/) the repository
-2. Setup your local installation (see above) with your fork
-3. [Create a new branch](https://help.github.com/articles/creating-and-deleting-branches-within-your-repository/) for your feature
-4. Do the needed changes, commit and push them
-5. Create a [pull request](https://github.com/OpenLightingProject/open-fixture-library/compare) to merge your changes back into our project
+After [forking](https://help.github.com/articles/fork-a-repo/) the repository, follow the [GitHub flow](https://guides.github.com/introduction/flow/) to implement your changes.
 
-You can also create the pull request if you're not done yet to involve the reviewers into the development process and get help if you're stuck. Please include *WIP* (work in progress) in the pull request title in this case.
+You can also create a (draft) pull request if you're not done yet to involve the reviewers into the development process and get help if you're stuck.
 
 ## Code style
 
