@@ -12,8 +12,19 @@ To use lighting control software like [QLC+](https://www.qlcplus.org/), [DMXCont
 The *Open Fixture Library* tries to solve this problem by collecting fixture definitions and making them downloadable in various formats. Internally, it uses a [JSON format](docs/fixture-format.md) that tries to bundle as much information as possible for all the different output formats.
 
 
-## Contribute
+## Contribute without coding
 
-If you are a **user** and want to help, head over to the [Fixture Editor](https://open-fixture-library.org/fixture-editor) and add your favorite fixture that is not yet included in our library!
+The easiest way to help: Head over to the online [Fixture Editor](https://open-fixture-library.org/fixture-editor) and add your favorite fixture that is not yet included in our library!
 
-If you are a **developer**, see [CONTRIBUTING.md](docs/CONTRIBUTING.md) and our [Developer Documentation](docs/README.md).
+Other ways you can help without coding:
+
+* Answer questions in existing fixtures
+* Review fixtures that are not yet merged *(this is highly appreciated!)*
+* Add links and colors to existing fixtures
+
+See [CONTRIBUTING.md](docs/CONTRIBUTING.md#how-you-can-help) for details.
+
+
+## Contribute with coding
+
+See [CONTRIBUTING.md](docs/CONTRIBUTING.md) and our [Developer Documentation](docs/README.md).
