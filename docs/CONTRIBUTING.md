@@ -14,43 +14,7 @@ As soon as an issue is assigned to somebody, it means that this person is respon
 
 ## Local installation
 
-### Linux / macOS
-
-Make sure you have these dependencies installed:
-
-* `git`
-* [Node.js](https://nodejs.org/en/download/package-manager/)
-
-Then run
-
-```sh
-git clone https://github.com/OpenLightingProject/open-fixture-library.git
-cd open-fixture-library
-npm install
-npm run build
-```
-
-Continue with [UI docs](ui.md).
-
-### Windows
-
-Make sure you have these dependencies installed:
-
-* [Git](https://gitforwindows.org/)
-* [Node.js](https://nodejs.org/en/download/)
-* [windows-build-tools](https://www.npmjs.com/package/windows-build-tools)
-  - [Open a Terminal as Administrator](https://www.howtogeek.com/194041/how-to-open-the-command-prompt-as-administrator-in-windows-8.1/) and run `npm install --global windows-build-tools --vs2015`
-
-Choose a project path that only contains ASCII characters and no spaces. Open a Terminal and run
-
-```bat
-git clone https://github.com/OpenLightingProject/open-fixture-library.git
-cd open-fixture-library
-npm install
-npm run build
-```
-
-Continue with [UI docs](ui.md).  
+See [README.md](README.md#local-installation).
 
 ## Where you can help
 

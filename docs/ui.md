@@ -5,7 +5,7 @@ Our website [open-fixture-library.org/](https://open-fixture-library.org/) is a 
 
 ## Local development server
 
-Locally, running `npm run dev` (after the [initial setup](CONTRIBUTING.md#local-installation)) starts the development server at `http://localhost:3000/` with hot module reloading, i.e. a changed Vue component file automatically patches only that component without having to reload the whole page. The port can be changed with the environment variable `PORT`, e.g. in the `.env` file.
+Locally, running `npm run dev` (after the [initial setup](README.md#local-installation)) starts the development server at `http://localhost:3000/` with hot module reloading, i.e. a changed Vue component file automatically patches only that component without having to reload the whole page. The port can be changed with the environment variable `PORT`, e.g. in the `.env` file.
 
 
 ## Folder structure
