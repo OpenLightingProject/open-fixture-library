@@ -12,10 +12,6 @@ You have an idea about a new feature or you spotted a mistake? Feel free to crea
 
 As soon as an issue is assigned to somebody, it means that this person is responsible for fixing it.
 
-## Local installation
-
-See [README.md](README.md#local-installation).
-
 ## How you can help
 
 ### Fixtures
@@ -24,7 +20,7 @@ See [README.md](README.md#local-installation).
   Either add fixtures via the online [Fixture Editor](https://open-fixture-library.org/fixture-editor) or by manually writing a [fixture format JSON](fixture-format.md).
 
 * **Answer questions in existing fixtures**  
-  Go through the fixtures on the [website](https://open-fixture-library.org/manufacturers) that you have access to, and see if there is a yellow "Help wanted" box there with a question you can answer.
+  Go through fixtures you know on the [website](https://open-fixture-library.org/manufacturers) and look for yellow "Help wanted" boxes with questions you can answer.
 
 * **Review fixtures that are not yet merged**  
   These are the steps that take the longest when reviewing a fixture:
@@ -45,7 +41,7 @@ See [README.md](README.md#local-installation).
 ### Code
 
 * **Work on easy issues**  
-  Browse the [`good-first-issues` tag](https://github.com/OpenLightingProject/open-fixture-library/issues?q=is:open+is:issue+label:%22good+first+issue%22) to find some easy tasks.
+  Browse the [`good-first-issues` label](https://github.com/OpenLightingProject/open-fixture-library/issues?q=is:open+is:issue+label:%22good+first+issue%22) to find some easy tasks.
 
 * **Implement your own idea**  
   Please create a new issue first if it's a bigger change.
@@ -56,11 +52,13 @@ See [README.md](README.md#local-installation).
 * **Improve the [documentation](README.md)**  
   Especially after you have made other changes, there is likely something you've been missing in the documentation. Help others find it there!
 
-## Workflow: How to implement a feature
+## Local installation
 
 After [forking](https://help.github.com/articles/fork-a-repo/) the repository, follow the [GitHub flow](https://guides.github.com/introduction/flow/) to implement your changes.
 
 You can also create a (draft) pull request if you're not done yet to involve the reviewers into the development process and get help if you're stuck.
+
+See [README.md](README.md#local-installation) for how to setup and test run the code locally.
 
 ## Code style
 
@@ -79,5 +77,5 @@ We automatically check code style using [ESLint](https://eslint.org/). Maybe you
 ## Developer tips
 
 * To understand how OFL works, read the [Documentation Overview](README.md) and its related pages. We try to document every part of our software.
-* Run [tests](testing.md) in the `tests/` directory manually – that's way faster than waiting for the automated GitHub Actions tests in pull requests.
+* Run [tests](testing.md) in the `tests/` directory locally before pushing – that's faster than waiting for the automated GitHub Actions tests in pull requests.
 * Run `npm run build` to be sure that auto-generated contents are up-to-date.

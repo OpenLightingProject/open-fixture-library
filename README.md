@@ -25,6 +25,6 @@ Other ways you can help without coding:
 See [CONTRIBUTING.md](docs/CONTRIBUTING.md#how-you-can-help) for details.
 
 
-## Contribute with coding
+## Contribute code
 
 See [CONTRIBUTING.md](docs/CONTRIBUTING.md) and our [Developer Documentation](docs/README.md).
