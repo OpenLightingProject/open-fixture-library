@@ -2,6 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "P3 Color",
   "categories": ["Dimmer", "Color Changer"],
+  "helpWanted": "Please add the missing modes 6, 8, 14, 16, 40-49, 55-62, 68-77.",
   "meta": {
     "authors": ["Dyami Caliri"],
     "createDate": "2021-06-30",
@@ -132,17 +133,17 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Use current setting in fixture"
         },
         {
           "dmxRange": [10, 99],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Sharp dimming"
         },
         {
           "dmxRange": [100, 255],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Smooth dimming"
         }
       ]
