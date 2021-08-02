@@ -1,0 +1,36 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "600XB",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2021-08-02",
+    "lastModifyDate": "2021-08-02"
+  },
+  "links": {
+    "productPage": [
+      "https://www.fovitec.com/products/600xb-bi-color-led-panel-with-dmx"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic",
+      "channels": [
+        "Intensity",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
