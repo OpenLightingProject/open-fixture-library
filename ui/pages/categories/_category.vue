@@ -71,7 +71,7 @@ export default {
         link: `/${fullFixtureKey}`,
         name: `${manufacturerName} ${fixtureName}`,
         categories: Object.keys(register.categories).filter(
-          cat => register.categories[cat].includes(fullFixtureKey),
+          category => register.categories[category].includes(fullFixtureKey),
         ),
         color: this.manufacturers[manufacturerKey].color,
       };

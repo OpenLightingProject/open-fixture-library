@@ -138,6 +138,19 @@ import {
 import LabeledValue from '../LabeledValue.vue';
 import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
 
+/**
+ * @param {Object} capabilityTypeData The generated capability's type data.
+ * @param {Number} index The index of the generated capability.
+ */
+function replaceHashWithIndex(capabilityTypeData, index) {
+  if (`effectName` in capabilityTypeData) {
+    capabilityTypeData.effectName = capabilityTypeData.effectName.replace(/#/, index + 1);
+  }
+  if (`comment` in capabilityTypeData) {
+    capabilityTypeData.comment = capabilityTypeData.comment.replace(/#/, index + 1);
+  }
+}
+
 export default {
   components: {
     LabeledValue,
@@ -207,13 +220,7 @@ export default {
         ];
         capability.type = this.wizard.templateCapability.type;
         capability.typeData = clone(this.wizard.templateCapability.typeData);
-
-        const textProperties = [`effectName`, `comment`];
-        textProperties.forEach(textProperty => {
-          if (textProperty in capability.typeData) {
-            capability.typeData[textProperty] = capability.typeData[textProperty].replace(/#/, index + 1);
-          }
-        });
+        replaceHashWithIndex(capability.typeData, index);
 
         capabilities.push(capability);
       }

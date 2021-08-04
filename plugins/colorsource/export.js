@@ -141,7 +141,7 @@ function getCommands(mode) {
                 dmx: channelIndex,
                 value: -1,
               }],
-              wait: capability.hold.getBaseUnitEntity().number,
+              wait: capability.hold.baseUnitEntity.number,
             },
           ],
         });
