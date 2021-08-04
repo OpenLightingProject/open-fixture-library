@@ -159,6 +159,11 @@ const enabledRuleParameters = {
   }],
 
   // eslint-plugin-vue
+  'vue/block-lang': [{
+    script: { allowNoLang: true },
+    style: { lang: `scss` },
+    template: { allowNoLang: true },
+  }],
   'vue/component-name-in-template-casing': [`PascalCase`, {
     registeredComponentsOnly: false,
   }],
