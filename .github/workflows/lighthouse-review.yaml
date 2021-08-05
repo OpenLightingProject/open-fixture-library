@@ -16,7 +16,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Setup Node.js v14
-        uses: actions/setup-node@v2.2.0
+        uses: actions/setup-node@v2.3.0
         with:
           node-version: 14
           cache: 'npm'
@@ -25,7 +25,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Run the Lighthouse CI
-        uses: treosh/lighthouse-ci-action@7.0.0
+        uses: treosh/lighthouse-ci-action@8.0.0
         with:
           urls: |
             http://localhost:3000/
