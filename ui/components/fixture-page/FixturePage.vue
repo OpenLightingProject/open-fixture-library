@@ -34,7 +34,7 @@
       </section>
 
       <LabeledValue
-        v-if="links.length"
+        v-if="links.length > 0"
         name="links"
         label="Relevant links">
         <ul class="fixture-links">

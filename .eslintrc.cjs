@@ -37,7 +37,7 @@ const enabledRuleParameters = {
   'indent': [2, { SwitchCase: 1 }],
   'key-spacing': [],
   'keyword-spacing': [],
-  'linebreak-style': [],
+  'linebreak-style': [`unix`],
   'new-parens': [],
   'no-array-constructor': [],
   'no-bitwise': [],
@@ -153,10 +153,17 @@ const enabledRuleParameters = {
       ch: { channel: true },
       cap: { capability: true },
       caps: { capabilities: true },
+      cat: { category: true },
+      cats: { categories: true },
     },
   }],
 
   // eslint-plugin-vue
+  'vue/block-lang': [{
+    script: { allowNoLang: true },
+    style: { lang: `scss` },
+    template: { allowNoLang: true },
+  }],
   'vue/component-name-in-template-casing': [`PascalCase`, {
     registeredComponentsOnly: false,
   }],
@@ -233,7 +240,6 @@ const vueCoreExtensionRules = [
 const warnRules = new Set([
   `complexity`,
   `jsdoc/require-jsdoc`,
-  `unicorn/no-array-for-each`,
   `vue/no-mutating-props`,
 ]);
 
@@ -319,6 +325,7 @@ module.exports = {
       files: [`**/*.md/*.js`],
       rules: {
         'jsdoc/require-jsdoc': `off`,
+        'import/no-unresolved': `off`,
       },
     },
     {

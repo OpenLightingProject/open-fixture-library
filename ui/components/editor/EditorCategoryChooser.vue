@@ -56,18 +56,18 @@ export default {
     },
     unselectedCategories() {
       return this.allCategories.filter(
-        cat => !this.value.includes(cat),
+        category => !this.value.includes(category),
       );
     },
   },
   methods: {
-    select(selectedCat) {
-      const updatedCategoryList = [...this.value, selectedCat];
+    select(selectedCategory) {
+      const updatedCategoryList = [...this.value, selectedCategory];
       this.$emit(`input`, updatedCategoryList);
       this.onBlur();
     },
-    deselect(deselectedCat) {
-      const updatedCategoryList = this.value.filter(cat => cat !== deselectedCat);
+    deselect(deselectedCategory) {
+      const updatedCategoryList = this.value.filter(category => category !== deselectedCategory);
       this.$emit(`input`, updatedCategoryList);
       this.onBlur();
     },
