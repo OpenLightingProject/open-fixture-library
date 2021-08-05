@@ -1,18 +1,18 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Led Par 56",
+  "name": "LED Par 56",
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["Hannes Rüger"],
-    "createDate": "2021-07-20",
-    "lastModifyDate": "2021-07-20"
+    "createDate": "2021-08-05",
+    "lastModifyDate": "2021-08-05"
   },
   "links": {
     "manual": [
       "https://www.scherloc.com/_media/notice-par56led-10mm.pdf"
     ],
     "productPage": [
-      "https://www.musicstore.de/en_US/USD/lightmaXX-LED-Par-56-RGB-Short-Polish-10mm-LEDs/art-LIG0002658-000;pgid=G5DgGZqm6ZhSRpOuA8.4nmNI0000jBb-eVsI"
+      "https://www.musicstore.de/en_US/USD/lightmaXX-LED-Par-56-RGB-Short-Polish-10mm-LEDs/art-LIG0002658-000"
     ]
   },
   "physical": {
@@ -51,7 +51,8 @@
         },
         {
           "dmxRange": [190, 250],
-          "type": "StrobeSpeed",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
@@ -64,7 +65,8 @@
   },
   "modes": [
     {
-      "name": "4ch",
+      "name": "4-channel",
+      "shortName": "4ch",
       "channels": [
         "Red",
         "Green",
