@@ -4,8 +4,8 @@
   "categories": ["Smoke"],
   "meta": {
     "authors": ["coffeeholic"],
-    "createDate": "2021-06-23",
-    "lastModifyDate": "2021-06-23"
+    "createDate": "2021-08-05",
+    "lastModifyDate": "2021-08-05"
   },
   "comment": "Low fog machine with CO2 cooling.",
   "links": {
@@ -24,42 +24,42 @@
   },
   "availableChannels": {
     "Fog Intensity": {
-      "defaultValue": "0%",
       "capability": {
-        "type": "FogOutput",
+        "type": "Fog",
+        "fogType": "Fog",
         "fogOutputStart": "off",
         "fogOutputEnd": "strong"
       }
     },
     "Fan": {
-      "defaultValue": "0%",
       "capability": {
-        "type": "Generic"
+        "type": "Rotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
       }
     },
     "Cooling": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "Generic",
-          "comment": "No Cooling"
+          "type": "Maintenance",
+          "comment": "Cooling valve closed"
         },
         {
           "dmxRange": [1, 254],
-          "type": "NoFunction",
-          "comment": "Valve destruction mode"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [255, 255],
-          "type": "Generic",
-          "comment": "Cooling"
+          "type": "Maintenance",
+          "comment": "Cooling valve open"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "Normal",
+      "name": "3-channel",
       "shortName": "3ch",
       "channels": [
         "Fog Intensity",
