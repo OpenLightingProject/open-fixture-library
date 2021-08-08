@@ -67,7 +67,8 @@
           "RampDown",
           "RampUpDown",
           "Lightning",
-          "Spikes"
+          "Spikes",
+          "Burst"
         ] },
         "soundControlled": { "type": "boolean" },
         "speed": { "$ref": "definitions.json#/entities/speed" },
