@@ -97,16 +97,6 @@
           "name": "Gobo 7"
         }
       ]
-    },
-    "Gobo Rotation": {
-      "slots": [
-        {
-          "type": "Open"
-        },
-        {
-          "type": "Gobo"
-        }
-      ]
     }
   },
   "availableChannels": {
@@ -264,18 +254,21 @@
       "capabilities": [
         {
           "dmxRange": [0, 15],
-          "type": "NoFunction",
-          "comment": "No rotation"
+          "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel",
+          "speed": "stop"
         },
         {
           "dmxRange": [16, 135],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         },
         {
           "dmxRange": [136, 255],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel",
           "speedStart": "slow CCW",
           "speedEnd": "fast CCW"
         }
