@@ -1,0 +1,210 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "nebula6",
+  "shortName": "nebula",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Esteban Zallocco"],
+    "createDate": "2021-08-18",
+    "lastModifyDate": "2021-08-18"
+  },
+  "links": {
+    "manual": [
+      "http://amproweb.com/_admin/files/02b55bNebula%206%20B.pdf"
+    ],
+    "productPage": [
+      "http://tecshow.amproweb.com/es/nebula6"
+    ],
+    "other": [
+      "http://amproweb.com/_admin/files/6a5bd4Nebula6.zip"
+    ]
+  },
+  "physical": {
+    "dimensions": [260, 260, 360],
+    "weight": 1,
+    "power": 80,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "highlightValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "highlightValue": "100%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Amber": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "UV": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "highlightValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 99],
+          "type": "StrobeSpeed",
+          "speedStart": "0Hz",
+          "speedEnd": "100Hz"
+        },
+        {
+          "dmxRange": [100, 149],
+          "type": "StrobeSpeed",
+          "speedStart": "100Hz",
+          "speedEnd": "0Hz"
+        },
+        {
+          "dmxRange": [150, 199],
+          "type": "Effect",
+          "effectName": "strobe1"
+        },
+        {
+          "dmxRange": [200, 245],
+          "type": "Effect",
+          "effectName": "strobe2"
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "200Hz",
+          "speedEnd": "200Hz"
+        }
+      ]
+    },
+    "Color Wheel Rotation": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 255],
+          "type": "ColorPreset",
+          "comment": "red,yellow,magenta,green,orange,cyan,pink",
+          "colors": ["#ff0000", "#ffff00", "#ff00ff", "#00ff00", "#ff5500", "#008888", "#ff3355"]
+        }
+      ]
+    },
+    "Color Macros": {
+      "defaultValue": "0%",
+      "highlightValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 199],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [200, 255],
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6ch",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "10ch",
+      "shortName": "10ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Dimmer",
+        "Strobe",
+        "Color Wheel Rotation",
+        "Color Macros"
+      ]
+    }
+  ]
+}
