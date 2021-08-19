@@ -191,6 +191,7 @@ const enabledRuleParameters = {
     ignorePublicMembers: true,
   }],
   'vue/no-unused-refs': [],
+  'vue/no-use-computed-property-like-method': [],
   'vue/require-direct-export': [],
   'vue/v-for-delimiter-style': [`of`],
   'vue/v-on-function-call': [`always`],
