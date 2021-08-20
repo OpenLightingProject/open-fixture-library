@@ -45,12 +45,21 @@
         "color": "White"
       }
     },
-    "Strobe Speed": {
-      "capability": {
-        "type": "StrobeSpeed",
-        "speedStart": "11Hz",
-        "speedEnd": "255Hz"
-      }
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     }
   },
   "modes": [
@@ -63,7 +72,7 @@
         "Green",
         "Blue",
         "White",
-        "Strobe Speed"
+        "Strobe"
       ]
     }
   ]
