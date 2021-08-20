@@ -783,19 +783,28 @@ function getOflMode(qlcPlusMode, oflFixturePhysical, warningsArray) {
     mode.channels[Number.parseInt(channel.$.Number, 10)] = channel._;
   }
 
+  addHeadWarnings(qlcPlusMode, mode, warningsArray);
+
+  return mode;
+}
+
+/**
+ * @param {Object} qlcPlusMode The QLC+ mode object.
+ * @param {Object} mode The corresponding OFL mode object.
+ * @param {Array.<String>} warningsArray This fixture's warnings array in the `out` object.
+ */
+function addHeadWarnings(qlcPlusMode, mode, warningsArray) {
   if (`Head` in qlcPlusMode) {
-    qlcPlusMode.Head.forEach((head, index) => {
+    for (const [index, head] of qlcPlusMode.Head.entries()) {
       if (head.Channel === undefined) {
-        return;
+        continue;
       }
 
       const channelList = head.Channel.map(channel => mode.channels[Number.parseInt(channel, 10)]).join(`, `);
 
       warningsArray.push(`Please add ${mode.name} mode's Head #${index + 1} to the fixture's matrix. The included channels were ${channelList}.`);
-    });
+    }
   }
-
-  return mode;
 }
 
 /**
@@ -895,15 +904,14 @@ function mergeFineChannels(fixture, qlcPlusFixture, warningsArray) {
  * @param {Object} qlcPlusFixture The QCL+ fixture object.
  */
 function addSwitchingChannels(fixture, qlcPlusFixture) {
-  qlcPlusFixture.Channel.forEach(qlcPlusChannel => {
-    const hasAliases = (qlcPlusChannel.Capability || []).some(capability => capability.$.Preset === `Alias`);
-    if (!hasAliases) {
-      return;
+  for (const qlcPlusChannel of qlcPlusFixture.Channel) {
+    if (!hasAliases(qlcPlusChannel)) {
+      continue;
     }
 
     const switchChannels = [];
-    qlcPlusChannel.Capability.forEach((capability, index) => {
-      (capability.Alias || []).forEach(alias => {
+    for (const [index, capability] of qlcPlusChannel.Capability.entries()) {
+      for (const alias of (capability.Alias || [])) {
         const switchChannel = switchChannels.find(channel => channel.default === alias.$.Channel && channel.modes.includes(alias.$.Mode));
         if (switchChannel) {
           switchChannel.switchTo[index] = alias.$.With;
@@ -917,65 +925,92 @@ function addSwitchingChannels(fixture, qlcPlusFixture) {
             },
           });
         }
-      });
-    });
+      }
+    }
 
-    // try to merge similar switchChannels
-    switchChannels.forEach((switchChannel, switchChannelIndex) => {
-      const switchToEntries = Object.entries(switchChannel.switchTo);
+    mergeSimilarSwitchChannels(switchChannels);
+    replaceSwitchingChannelsInModes(switchChannels, fixture.modes);
+    addSwitchChannelsToCapabilities(switchChannels, fixture.availableChannels[qlcPlusChannel.$.Name]);
+  }
+}
 
-      for (let index = switchChannelIndex + 1; index < switchChannels.length; index++) {
-        const otherSwitchChannel = switchChannels[index];
+/**
+ * @param {Object} qlcPlusChannel The QLC+ channel object to check.
+ * @returns {Boolean} True if there is at least one capability with an Alias attribute, false otherwise.
+ */
+function hasAliases(qlcPlusChannel) {
+  return (qlcPlusChannel.Capability || []).some(capability => capability.$.Preset === `Alias`);
+}
 
-        if (otherSwitchChannel.default !== switchChannel.default) {
-          continue;
-        }
+/**
+ * @param {Array.<Object>} switchChannels The array of switch channels.
+ */
+function mergeSimilarSwitchChannels(switchChannels) {
+  for (const [switchChannelIndex, switchChannel] of switchChannels.entries()) {
+    const switchToEntries = Object.entries(switchChannel.switchTo);
 
-        const otherSwitchTo = otherSwitchChannel.switchTo;
-        const switchToSame = switchToEntries.length === Object.keys(otherSwitchTo).length && switchToEntries.every(
-          ([capabilityIndex, switchToChannel]) => otherSwitchTo[capabilityIndex] === switchToChannel,
-        );
+    for (let index = switchChannelIndex + 1; index < switchChannels.length; index++) {
+      const otherSwitchChannel = switchChannels[index];
 
-        if (!switchToSame) {
-          continue;
-        }
-
-        switchChannel.modes.push(...otherSwitchChannel.modes);
-        switchChannels.splice(index, 1);
-        index--;
+      if (otherSwitchChannel.default !== switchChannel.default) {
+        continue;
       }
 
-      const alternatives = new Set([switchChannel.default, ...Object.values(switchChannel.switchTo)]);
-      switchChannel.key = Array.from(alternatives).join(` / `);
-    });
+      const otherSwitchTo = otherSwitchChannel.switchTo;
+      const switchToSame = switchToEntries.length === Object.keys(otherSwitchTo).length && switchToEntries.every(
+        ([capabilityIndex, switchToChannel]) => otherSwitchTo[capabilityIndex] === switchToChannel,
+      );
 
-    // append mode names to switching channel keys if necessary, update switching channels in modes
-    switchChannels.forEach(switchChannel => {
-      const swChannelsWithSameKey = switchChannels.filter(channel => channel.key === switchChannel.key);
-
-      if (swChannelsWithSameKey.length > 1) {
-        swChannelsWithSameKey.forEach(channel => {
-          channel.key += ` (${channel.modes.join(`, `)})`;
-        });
+      if (!switchToSame) {
+        continue;
       }
 
-      const usingModes = fixture.modes.filter(mode => switchChannel.modes.includes(mode.name));
-      usingModes.forEach(mode => {
-        const index = mode.channels.indexOf(switchChannel.default);
+      switchChannel.modes.push(...otherSwitchChannel.modes);
+      switchChannels.splice(index, 1);
+      index--;
+    }
 
-        mode.channels[index] = switchChannel.key;
-      });
-    });
+    const alternatives = new Set([switchChannel.default, ...Object.values(switchChannel.switchTo)]);
+    switchChannel.key = Array.from(alternatives).join(` / `);
+  }
+}
 
-    // add switchChannels to capabilities
-    fixture.availableChannels[qlcPlusChannel.$.Name].capabilities.forEach((capability, index) => {
-      capability.switchChannels = {};
+/**
+ * Replaces references to all switch channels' default channels with the switch
+ * channel itself. If multiple switch channels have the same key, appends the
+ * mode names to make them unique.
+ * @param {Array.<Object>} switchChannels The array of switch channels.
+ * @param {Array.<Object>} oflModes The array of OFL modes.
+ */
+function replaceSwitchingChannelsInModes(switchChannels, oflModes) {
+  for (const switchChannel of switchChannels) {
+    const swChannelsWithSameKey = switchChannels.filter(channel => channel.key === switchChannel.key);
 
-      switchChannels.forEach(switchChannel => {
-        capability.switchChannels[switchChannel.key] = switchChannel.switchTo[index] || switchChannel.default;
-      });
-    });
-  });
+    if (swChannelsWithSameKey.length > 1) {
+      for (const channel of swChannelsWithSameKey) {
+        channel.key += ` (${channel.modes.join(`, `)})`;
+      }
+    }
+
+    const usingModes = oflModes.filter(mode => switchChannel.modes.includes(mode.name));
+    for (const mode of usingModes) {
+      const index = mode.channels.indexOf(switchChannel.default);
+
+      mode.channels[index] = switchChannel.key;
+    }
+  }
+}
+
+/**
+ * @param {Array.<Object>} switchChannels The array of switch channels.
+ * @param {Object} oflTriggerChannel The OFL trigger channel.
+ */
+function addSwitchChannelsToCapabilities(switchChannels, oflTriggerChannel) {
+  for (const [index, capability] of oflTriggerChannel.capabilities.entries()) {
+    capability.switchChannels = Object.fromEntries(switchChannels.map(
+      switchChannel => [switchChannel.key, switchChannel.switchTo[index] || switchChannel.default],
+    ));
+  }
 }
 
 /**

@@ -216,30 +216,31 @@ export async function updateComment(test) {
   }
 
   const commentBlocks = await Promise.all(commentPromises);
+  const comments = commentBlocks.flatMap(block => block.data);
 
   let equalFound = false;
-  const promises = [];
-
-  const comments = commentBlocks.flatMap(block => block.data);
-  comments.forEach(comment => {
+  const promises = comments.flatMap(comment => {
     // get rid of \r linebreaks
     comment.body = comment.body.replace(/\r/g, ``);
 
-    // the comment was created by this test script
-    if (lines[0] === comment.body.split(`\n`)[0]) {
-      if (!equalFound && message === comment.body && test.lines.length > 0) {
-        equalFound = true;
-        console.log(`Test comment with same content already exists at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
-      }
-      else {
-        console.log(`Deleting old test comment at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
-        promises.push(githubClient.rest.issues.deleteComment({
-          owner: repoOwner,
-          repo: repoName,
-          'comment_id': comment.id,
-        }));
-      }
+    if (lines[0] !== comment.body.split(`\n`)[0]) {
+      // the comment was not created by this test script
+      return [];
     }
+
+    if (!equalFound && message === comment.body && test.lines.length > 0) {
+      equalFound = true;
+      console.log(`Test comment with same content already exists at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
+      return [];
+    }
+
+    console.log(`Deleting old test comment at ${process.env.GITHUB_REPOSITORY}#${process.env.GITHUB_PR_NUMBER}.`);
+
+    return githubClient.rest.issues.deleteComment({
+      owner: repoOwner,
+      repo: repoName,
+      'comment_id': comment.id,
+    });
   });
 
   if (!equalFound && test.lines.length > 0) {

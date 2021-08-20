@@ -155,7 +155,6 @@ A capability represents a range of a channel.
     * [new Capability(jsonObject, resolution, channel)](#new_Capability_new)
     * _instance_
         * [.jsonObject](#Capability+jsonObject) ⇒ <code>Object</code>
-        * [.jsonObject](#Capability+jsonObject)
         * [.dmxRange](#Capability+dmxRange) ⇒ [<code>Range</code>](#Range)
         * [.rawDmxRange](#Capability+rawDmxRange) ⇒ [<code>Range</code>](#Range)
         * [.type](#Capability+type) ⇒ <code>String</code>
@@ -225,15 +224,6 @@ Create a new Capability instance.
 ### capability.jsonObject ⇒ <code>Object</code>
 **Kind**: instance property of [<code>Capability</code>](#Capability)  
 **Returns**: <code>Object</code> - The capability data from the channel's JSON.  
-<a name="Capability+jsonObject"></a>
-
-### capability.jsonObject
-**Kind**: instance property of [<code>Capability</code>](#Capability)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| jsonObject | <code>Object</code> | The capability data from the channel's JSON. |
-
 <a name="Capability+dmxRange"></a>
 
 ### capability.dmxRange ⇒ [<code>Range</code>](#Range)
@@ -527,11 +517,10 @@ Only the MSB (most significant byte) channel if it's a multi-byte channel.
     * [new CoarseChannel(key, jsonObject, fixture)](#new_CoarseChannel_new)
     * _instance_
         * [.jsonObject](#CoarseChannel+jsonObject) ⇒ <code>Object</code>
-        * [.jsonObject](#CoarseChannel+jsonObject)
         * [.fixture](#CoarseChannel+fixture) ⇒ [<code>Fixture</code>](#Fixture)
         * [.name](#CoarseChannel+name) ⇒ <code>String</code>
         * [.type](#CoarseChannel+type) ⇒ <code>String</code>
-        * [.color](#CoarseChannel+color) ⇒ <code>String</code>
+        * [.color](#CoarseChannel+color) ⇒ <code>String</code> \| <code>null</code>
         * [.fineChannelAliases](#CoarseChannel+fineChannelAliases) ⇒ <code>Array.&lt;String&gt;</code>
         * [.fineChannels](#CoarseChannel+fineChannels) ⇒ [<code>Array.&lt;FineChannel&gt;</code>](#FineChannel)
         * [.maxResolution](#CoarseChannel+maxResolution) ⇒ [<code>Resolution</code>](#Resolution)
@@ -539,8 +528,10 @@ Only the MSB (most significant byte) channel if it's a multi-byte channel.
         * [.maxDmxBound](#CoarseChannel+maxDmxBound) ⇒ <code>Number</code>
         * [.hasDefaultValue](#CoarseChannel+hasDefaultValue) ⇒ <code>Boolean</code>
         * [.defaultValue](#CoarseChannel+defaultValue) ⇒ <code>Number</code>
+        * [._defaultValuePerResolution](#CoarseChannel+_defaultValuePerResolution) ⇒ <code>Record.&lt;Resolution, Number&gt;</code> ℗
         * [.hasHighlightValue](#CoarseChannel+hasHighlightValue) ⇒ <code>Boolean</code>
         * [.highlightValue](#CoarseChannel+highlightValue) ⇒ <code>Number</code>
+        * [._highlightValuePerResolution](#CoarseChannel+_highlightValuePerResolution) ⇒ <code>Record.&lt;Resolution, Number&gt;</code> ℗
         * [.isInverted](#CoarseChannel+isInverted) ⇒ <code>Boolean</code>
         * [.isConstant](#CoarseChannel+isConstant) ⇒ <code>Boolean</code>
         * [.canCrossfade](#CoarseChannel+canCrossfade) ⇒ <code>Boolean</code>
@@ -580,15 +571,6 @@ Create a new CoarseChannel instance.
 ### coarseChannel.jsonObject ⇒ <code>Object</code>
 **Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
 **Returns**: <code>Object</code> - The channel data from the fixture's JSON.  
-<a name="CoarseChannel+jsonObject"></a>
-
-### coarseChannel.jsonObject
-**Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| jsonObject | <code>Object</code> | The channel data from the fixture's JSON. |
-
 <a name="CoarseChannel+fixture"></a>
 
 ### coarseChannel.fixture ⇒ [<code>Fixture</code>](#Fixture)
@@ -612,9 +594,9 @@ Overrides [`AbstractChannel.name`](#AbstractChannel+name).
 **Returns**: <code>String</code> - The channel type, derived from the channel's capability types.  
 <a name="CoarseChannel+color"></a>
 
-### coarseChannel.color ⇒ <code>String</code>
+### coarseChannel.color ⇒ <code>String</code> \| <code>null</code>
 **Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
-**Returns**: <code>String</code> - The color of an included ColorIntensity capability, null if there's no such capability.  
+**Returns**: <code>String</code> \| <code>null</code> - The color of an included ColorIntensity capability, null if there's no such capability.  
 <a name="CoarseChannel+fineChannelAliases"></a>
 
 ### coarseChannel.fineChannelAliases ⇒ <code>Array.&lt;String&gt;</code>
@@ -650,6 +632,12 @@ Overrides [`AbstractChannel.name`](#AbstractChannel+name).
 ### coarseChannel.defaultValue ⇒ <code>Number</code>
 **Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
 **Returns**: <code>Number</code> - The DMX value this channel initially should be set to. Specified in the finest possible resolution. Defaults to 0.  
+<a name="CoarseChannel+_defaultValuePerResolution"></a>
+
+### coarseChannel.\_defaultValuePerResolution ⇒ <code>Record.&lt;Resolution, Number&gt;</code> ℗
+**Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
+**Returns**: <code>Record.&lt;Resolution, Number&gt;</code> - The default DMX value of this channel in the given resolution, for all resolutions up to the channel's maximum resolution.  
+**Access**: private  
 <a name="CoarseChannel+hasHighlightValue"></a>
 
 ### coarseChannel.hasHighlightValue ⇒ <code>Boolean</code>
@@ -660,6 +648,12 @@ Overrides [`AbstractChannel.name`](#AbstractChannel+name).
 ### coarseChannel.highlightValue ⇒ <code>Number</code>
 **Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
 **Returns**: <code>Number</code> - A DMX value that "highlights" the function of this channel. Specified in the finest possible resolution. Defaults to the highest possible DMX value.  
+<a name="CoarseChannel+_highlightValuePerResolution"></a>
+
+### coarseChannel.\_highlightValuePerResolution ⇒ <code>Record.&lt;Resolution, Number&gt;</code> ℗
+**Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
+**Returns**: <code>Record.&lt;Resolution, Number&gt;</code> - The highlight DMX value of this channel in the given resolution, for all resolutions up to the channel's maximum resolution.  
+**Access**: private  
 <a name="CoarseChannel+isInverted"></a>
 
 ### coarseChannel.isInverted ⇒ <code>Boolean</code>
@@ -803,7 +797,7 @@ A physical entity with numerical value and unit information.
         * [.number](#Entity+number) ⇒ <code>Number</code>
         * [.unit](#Entity+unit) ⇒ <code>String</code>
         * [.keyword](#Entity+keyword) ⇒ <code>String</code> \| <code>null</code>
-        * [.getBaseUnitEntity()](#Entity+getBaseUnitEntity) ⇒ [<code>Entity</code>](#Entity)
+        * [.baseUnitEntity](#Entity+baseUnitEntity) ⇒ [<code>Entity</code>](#Entity)
         * [.valueOf()](#Entity+valueOf) ⇒ <code>Number</code>
         * [.toString()](#Entity+toString) ⇒ <code>String</code>
         * [.equals(anotherEntity)](#Entity+equals) ⇒ <code>Boolean</code>
@@ -837,10 +831,10 @@ Creates a new Entity instance.
 ### entity.keyword ⇒ <code>String</code> \| <code>null</code>
 **Kind**: instance property of [<code>Entity</code>](#Entity)  
 **Returns**: <code>String</code> \| <code>null</code> - The used keyword, or null if no keyword was used.  
-<a name="Entity+getBaseUnitEntity"></a>
+<a name="Entity+baseUnitEntity"></a>
 
-### entity.getBaseUnitEntity() ⇒ [<code>Entity</code>](#Entity)
-**Kind**: instance method of [<code>Entity</code>](#Entity)  
+### entity.baseUnitEntity ⇒ [<code>Entity</code>](#Entity)
+**Kind**: instance property of [<code>Entity</code>](#Entity)  
 **Returns**: [<code>Entity</code>](#Entity) - An entity of the same value, but scaled to the base unit. Returns the entity itself if it is already in the base unit.  
 <a name="Entity+valueOf"></a>
 
@@ -890,7 +884,6 @@ Also called LSB (least significant byte) channel.
 * [FineChannel](#FineChannel) ⇐ [<code>AbstractChannel</code>](#AbstractChannel)
     * [new FineChannel(key, coarseChannel)](#new_FineChannel_new)
     * [.coarseChannel](#FineChannel+coarseChannel) ⇒ [<code>CoarseChannel</code>](#CoarseChannel)
-    * [.coarseChannel](#FineChannel+coarseChannel)
     * [.coarserChannel](#FineChannel+coarserChannel) ⇒ [<code>CoarseChannel</code>](#CoarseChannel) \| [<code>FineChannel</code>](#FineChannel)
     * [.name](#FineChannel+name) ⇒ <code>String</code>
     * [.fixture](#FineChannel+fixture) ⇒ [<code>Fixture</code>](#Fixture)
@@ -916,17 +909,6 @@ Creates a new FineChannel instance.
 ### fineChannel.coarseChannel ⇒ [<code>CoarseChannel</code>](#CoarseChannel)
 **Kind**: instance property of [<code>FineChannel</code>](#FineChannel)  
 **Returns**: [<code>CoarseChannel</code>](#CoarseChannel) - The coarse (MSB) channel.  
-<a name="FineChannel+coarseChannel"></a>
-
-### fineChannel.coarseChannel
-Sets a new coarse channel and clears the cache.
-
-**Kind**: instance property of [<code>FineChannel</code>](#FineChannel)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| coarseChannel | [<code>CoarseChannel</code>](#CoarseChannel) | The new coarse channel. |
-
 <a name="FineChannel+coarserChannel"></a>
 
 ### fineChannel.coarserChannel ⇒ [<code>CoarseChannel</code>](#CoarseChannel) \| [<code>FineChannel</code>](#FineChannel)
@@ -987,10 +969,8 @@ A physical DMX device.
 * [Fixture](#Fixture)
     * [new Fixture(manufacturer, key, jsonObject)](#new_Fixture_new)
     * [.manufacturer](#Fixture+manufacturer) ⇒ [<code>Manufacturer</code>](#Manufacturer)
-    * [.manufacturer](#Fixture+manufacturer)
     * [.key](#Fixture+key) ⇒ <code>String</code>
     * [.jsonObject](#Fixture+jsonObject) ⇒ <code>Object</code>
-    * [.jsonObject](#Fixture+jsonObject)
     * [.url](#Fixture+url) ⇒ <code>String</code>
     * [.name](#Fixture+name) ⇒ <code>String</code>
     * [.hasShortName](#Fixture+hasShortName) ⇒ <code>Boolean</code>
@@ -1008,6 +988,7 @@ A physical DMX device.
     * [.physical](#Fixture+physical) ⇒ [<code>Physical</code>](#Physical) \| <code>null</code>
     * [.matrix](#Fixture+matrix) ⇒ [<code>Matrix</code>](#Matrix) \| <code>null</code>
     * [.wheels](#Fixture+wheels) ⇒ [<code>Array.&lt;Wheel&gt;</code>](#Wheel)
+    * [._wheelByName](#Fixture+_wheelByName) ⇒ <code>Record.&lt;String, Wheel&gt;</code> ℗
     * [.uniqueChannelNames](#Fixture+uniqueChannelNames) ⇒ <code>Object.&lt;String, String&gt;</code>
     * [.availableChannelKeys](#Fixture+availableChannelKeys) ⇒ <code>Array.&lt;String&gt;</code>
     * [.availableChannels](#Fixture+availableChannels) ⇒ [<code>Array.&lt;CoarseChannel&gt;</code>](#CoarseChannel)
@@ -1019,6 +1000,7 @@ A physical DMX device.
     * [.switchingChannels](#Fixture+switchingChannels) ⇒ [<code>Array.&lt;SwitchingChannel&gt;</code>](#SwitchingChannel)
     * [.templateChannelKeys](#Fixture+templateChannelKeys) ⇒ <code>Array.&lt;String&gt;</code>
     * [.templateChannels](#Fixture+templateChannels) ⇒ [<code>Array.&lt;TemplateChannel&gt;</code>](#TemplateChannel)
+    * [._templateChannelByKey](#Fixture+_templateChannelByKey) ⇒ <code>Record.&lt;String, TemplateChannel&gt;</code> ℗
     * [.matrixChannelKeys](#Fixture+matrixChannelKeys) ⇒ <code>Array.&lt;String&gt;</code>
     * [.matrixChannels](#Fixture+matrixChannels) ⇒ [<code>Array.&lt;AbstractChannel&gt;</code>](#AbstractChannel)
     * [.nullChannelKeys](#Fixture+nullChannelKeys) ⇒ <code>Array.&lt;String&gt;</code>
@@ -1050,15 +1032,6 @@ Create a new Fixture instance.
 ### fixture.manufacturer ⇒ [<code>Manufacturer</code>](#Manufacturer)
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
 **Returns**: [<code>Manufacturer</code>](#Manufacturer) - The fixture's manufacturer.  
-<a name="Fixture+manufacturer"></a>
-
-### fixture.manufacturer
-**Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| newManufacturer | [<code>Manufacturer</code>](#Manufacturer) | A Manufacturer instance. |
-
 <a name="Fixture+key"></a>
 
 ### fixture.key ⇒ <code>String</code>
@@ -1069,15 +1042,6 @@ Create a new Fixture instance.
 ### fixture.jsonObject ⇒ <code>Object</code>
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
 **Returns**: <code>Object</code> - The fixture's parsed JSON data.  
-<a name="Fixture+jsonObject"></a>
-
-### fixture.jsonObject
-**Kind**: instance property of [<code>Fixture</code>](#Fixture)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| jsonObject | <code>Object</code> | The fixture's parsed JSON data. |
-
 <a name="Fixture+url"></a>
 
 ### fixture.url ⇒ <code>String</code>
@@ -1170,6 +1134,12 @@ Create a new Fixture instance.
 ### fixture.wheels ⇒ [<code>Array.&lt;Wheel&gt;</code>](#Wheel)
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
 **Returns**: [<code>Array.&lt;Wheel&gt;</code>](#Wheel) - The fixture's wheels as [Wheel](#Wheel) instances.  
+<a name="Fixture+_wheelByName"></a>
+
+### fixture.\_wheelByName ⇒ <code>Record.&lt;String, Wheel&gt;</code> ℗
+**Kind**: instance property of [<code>Fixture</code>](#Fixture)  
+**Returns**: <code>Record.&lt;String, Wheel&gt;</code> - This fixture's wheel names pointing to the respective Wheel instance.  
+**Access**: private  
 <a name="Fixture+uniqueChannelNames"></a>
 
 ### fixture.uniqueChannelNames ⇒ <code>Object.&lt;String, String&gt;</code>
@@ -1229,6 +1199,12 @@ Template channels are used to automatically generate channels.
 
 **Kind**: instance property of [<code>Fixture</code>](#Fixture)  
 **Returns**: [<code>Array.&lt;TemplateChannel&gt;</code>](#TemplateChannel) - TemplateChannel instances for all template channels from the fixture definition's `templateChannels` section. Ordered by appearance.  
+<a name="Fixture+_templateChannelByKey"></a>
+
+### fixture.\_templateChannelByKey ⇒ <code>Record.&lt;String, TemplateChannel&gt;</code> ℗
+**Kind**: instance property of [<code>Fixture</code>](#Fixture)  
+**Returns**: <code>Record.&lt;String, TemplateChannel&gt;</code> - This fixture's template channel keys pointing to the respective template channel.  
+**Access**: private  
 <a name="Fixture+matrixChannelKeys"></a>
 
 ### fixture.matrixChannelKeys ⇒ <code>Array.&lt;String&gt;</code>
@@ -1377,7 +1353,6 @@ Contains information of how the pixels in a 1-, 2- or 3-dimensional space are ar
 * [Matrix](#Matrix)
     * [new Matrix(jsonObject)](#new_Matrix_new)
     * [.jsonObject](#Matrix+jsonObject) ⇒ <code>Object</code>
-    * [.jsonObject](#Matrix+jsonObject)
     * [.pixelCount](#Matrix+pixelCount) ⇒ <code>Array.&lt;Number&gt;</code>
     * [.pixelCountX](#Matrix+pixelCountX) ⇒ <code>Number</code>
     * [.pixelCountY](#Matrix+pixelCountY) ⇒ <code>Number</code>
@@ -1406,17 +1381,6 @@ Contains information of how the pixels in a 1-, 2- or 3-dimensional space are ar
 ### matrix.jsonObject ⇒ <code>Object</code>
 **Kind**: instance property of [<code>Matrix</code>](#Matrix)  
 **Returns**: <code>Object</code> - The fixture's JSON object containing the matrix information.  
-<a name="Matrix+jsonObject"></a>
-
-### matrix.jsonObject
-Updates the JSON object and clears the cache used for expensive parameters.
-
-**Kind**: instance property of [<code>Matrix</code>](#Matrix)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| jsonObject | <code>Object</code> | The fixture's JSON object containing the matrix information. |
-
 <a name="Matrix+pixelCount"></a>
 
 ### matrix.pixelCount ⇒ <code>Array.&lt;Number&gt;</code>
@@ -1605,9 +1569,7 @@ A fixture's configuration that enables a fixed set of channels and channel order
 * [Mode](#Mode)
     * [new Mode(jsonObject, fixture)](#new_Mode_new)
     * [.jsonObject](#Mode+jsonObject) ⇒ <code>Object</code>
-    * [.jsonObject](#Mode+jsonObject)
     * [.fixture](#Mode+fixture) ⇒ [<code>Fixture</code>](#Fixture)
-    * [.fixture](#Mode+fixture)
     * [.name](#Mode+name) ⇒ <code>String</code>
     * [.shortName](#Mode+shortName) ⇒ <code>String</code>
     * [.hasShortName](#Mode+hasShortName) ⇒ <code>Boolean</code>
@@ -1637,33 +1599,11 @@ Creates a new Mode instance
 ### mode.jsonObject ⇒ <code>Object</code>
 **Kind**: instance property of [<code>Mode</code>](#Mode)  
 **Returns**: <code>Object</code> - The JSON data representing this mode. It's a fragment of a fixture's JSON data.  
-<a name="Mode+jsonObject"></a>
-
-### mode.jsonObject
-Sets a new JSON object and resets the cache.
-
-**Kind**: instance property of [<code>Mode</code>](#Mode)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| jsonObject | <code>Object</code> | The mode's new JSON object. |
-
 <a name="Mode+fixture"></a>
 
 ### mode.fixture ⇒ [<code>Fixture</code>](#Fixture)
 **Kind**: instance property of [<code>Mode</code>](#Mode)  
 **Returns**: [<code>Fixture</code>](#Fixture) - The fixture this mode belongs to.  
-<a name="Mode+fixture"></a>
-
-### mode.fixture
-Sets a new fixture and resets the cache.
-
-**Kind**: instance property of [<code>Mode</code>](#Mode)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| fixture | [<code>Fixture</code>](#Fixture) | The new fixture. |
-
 <a name="Mode+name"></a>
 
 ### mode.name ⇒ <code>String</code>
@@ -1760,7 +1700,7 @@ Dummy channel used to represent `null` in a mode's channel list.
     * [.fixture](#CoarseChannel+fixture) ⇒ [<code>Fixture</code>](#Fixture)
     * [.name](#CoarseChannel+name) ⇒ <code>String</code>
     * [.type](#CoarseChannel+type) ⇒ <code>String</code>
-    * [.color](#CoarseChannel+color) ⇒ <code>String</code>
+    * [.color](#CoarseChannel+color) ⇒ <code>String</code> \| <code>null</code>
     * [.fineChannelAliases](#CoarseChannel+fineChannelAliases) ⇒ <code>Array.&lt;String&gt;</code>
     * [.fineChannels](#CoarseChannel+fineChannels) ⇒ [<code>Array.&lt;FineChannel&gt;</code>](#FineChannel)
     * [.maxResolution](#CoarseChannel+maxResolution) ⇒ [<code>Resolution</code>](#Resolution)
@@ -1768,8 +1708,10 @@ Dummy channel used to represent `null` in a mode's channel list.
     * [.maxDmxBound](#CoarseChannel+maxDmxBound) ⇒ <code>Number</code>
     * [.hasDefaultValue](#CoarseChannel+hasDefaultValue) ⇒ <code>Boolean</code>
     * [.defaultValue](#CoarseChannel+defaultValue) ⇒ <code>Number</code>
+    * [._defaultValuePerResolution](#CoarseChannel+_defaultValuePerResolution) ⇒ <code>Record.&lt;Resolution, Number&gt;</code> ℗
     * [.hasHighlightValue](#CoarseChannel+hasHighlightValue) ⇒ <code>Boolean</code>
     * [.highlightValue](#CoarseChannel+highlightValue) ⇒ <code>Number</code>
+    * [._highlightValuePerResolution](#CoarseChannel+_highlightValuePerResolution) ⇒ <code>Record.&lt;Resolution, Number&gt;</code> ℗
     * [.isInverted](#CoarseChannel+isInverted) ⇒ <code>Boolean</code>
     * [.isConstant](#CoarseChannel+isConstant) ⇒ <code>Boolean</code>
     * [.canCrossfade](#CoarseChannel+canCrossfade) ⇒ <code>Boolean</code>
@@ -1828,10 +1770,10 @@ Overrides [`AbstractChannel.name`](#AbstractChannel+name).
 **Returns**: <code>String</code> - The channel type, derived from the channel's capability types.  
 <a name="CoarseChannel+color"></a>
 
-### nullChannel.color ⇒ <code>String</code>
+### nullChannel.color ⇒ <code>String</code> \| <code>null</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
 **Overrides**: [<code>color</code>](#CoarseChannel+color)  
-**Returns**: <code>String</code> - The color of an included ColorIntensity capability, null if there's no such capability.  
+**Returns**: <code>String</code> \| <code>null</code> - The color of an included ColorIntensity capability, null if there's no such capability.  
 <a name="CoarseChannel+fineChannelAliases"></a>
 
 ### nullChannel.fineChannelAliases ⇒ <code>Array.&lt;String&gt;</code>
@@ -1874,6 +1816,13 @@ Overrides [`AbstractChannel.name`](#AbstractChannel+name).
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
 **Overrides**: [<code>defaultValue</code>](#CoarseChannel+defaultValue)  
 **Returns**: <code>Number</code> - The DMX value this channel initially should be set to. Specified in the finest possible resolution. Defaults to 0.  
+<a name="CoarseChannel+_defaultValuePerResolution"></a>
+
+### nullChannel.\_defaultValuePerResolution ⇒ <code>Record.&lt;Resolution, Number&gt;</code> ℗
+**Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>\_defaultValuePerResolution</code>](#CoarseChannel+_defaultValuePerResolution)  
+**Returns**: <code>Record.&lt;Resolution, Number&gt;</code> - The default DMX value of this channel in the given resolution, for all resolutions up to the channel's maximum resolution.  
+**Access**: private  
 <a name="CoarseChannel+hasHighlightValue"></a>
 
 ### nullChannel.hasHighlightValue ⇒ <code>Boolean</code>
@@ -1886,6 +1835,13 @@ Overrides [`AbstractChannel.name`](#AbstractChannel+name).
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
 **Overrides**: [<code>highlightValue</code>](#CoarseChannel+highlightValue)  
 **Returns**: <code>Number</code> - A DMX value that "highlights" the function of this channel. Specified in the finest possible resolution. Defaults to the highest possible DMX value.  
+<a name="CoarseChannel+_highlightValuePerResolution"></a>
+
+### nullChannel.\_highlightValuePerResolution ⇒ <code>Record.&lt;Resolution, Number&gt;</code> ℗
+**Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
+**Overrides**: [<code>\_highlightValuePerResolution</code>](#CoarseChannel+_highlightValuePerResolution)  
+**Returns**: <code>Record.&lt;Resolution, Number&gt;</code> - The highlight DMX value of this channel in the given resolution, for all resolutions up to the channel's maximum resolution.  
+**Access**: private  
 <a name="CoarseChannel+isInverted"></a>
 
 ### nullChannel.isInverted ⇒ <code>Boolean</code>

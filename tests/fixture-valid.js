@@ -210,16 +210,22 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       result.errors.push(`physical.lens.degreesMinMax${modeDescription} is an invalid range.`);
     }
 
-    if (physical.hasMatrixPixels) {
-      if (fixture.matrix === null) {
-        result.errors.push(`physical.matrixPixels is set but fixture.matrix is missing.`);
-      }
-      else if (physical.matrixPixelsSpacing !== null) {
-        [`X`, `Y`, `Z`].forEach((axis, index) => {
-          if (physical.matrixPixelsSpacing[index] !== 0 && !fixture.matrix.definedAxes.includes(axis)) {
-            result.errors.push(`physical.matrixPixels.spacing is nonzero for ${axis} axis, but no pixels are defined in that axis.`);
-          }
-        });
+    if (physical.hasMatrixPixels && fixture.matrix === null) {
+      result.errors.push(`physical.matrixPixels is set but fixture.matrix is missing.`);
+    }
+    else if (physical.matrixPixelsSpacing !== null) {
+      checkPhysicalMatrixPixelsSpacing(physical.matrixPixelsSpacing);
+    }
+  }
+
+  /**
+   * Checks if the given physical.matrixPixels.spacing array is valid.
+   * @param {Array.<Number>} matrixPixelsSpacing The physical.matrixPixels.spacing array to check.
+   */
+  function checkPhysicalMatrixPixelsSpacing(matrixPixelsSpacing) {
+    for (const [index, axis] of [`X`, `Y`, `Z`].entries()) {
+      if (matrixPixelsSpacing[index] !== 0 && !fixture.matrix.definedAxes.includes(axis)) {
+        result.errors.push(`physical.matrixPixels.spacing is nonzero for ${axis} axis, but no pixels are defined in that axis.`);
       }
     }
   }
@@ -538,30 +544,17 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           result.errors.push(`${errorPrefix} must define the same switching channel aliases as all other capabilities.`);
         }
         else {
-          switchingChannelAliases.forEach(alias => {
+          for (const alias of switchingChannelAliases) {
             const channelKey = capability.switchChannels[alias];
             usedChannelKeys.add(channelKey.toLowerCase());
 
             if (channel.fixture.getChannelByKey(channelKey) === null) {
               result.errors.push(`${errorPrefix} references unknown channel '${channelKey}'.`);
             }
-          });
+          }
         }
 
-        capability.usedStartEndEntities.forEach(property => {
-          const [startEntity, endEntity] = capability[property];
-
-          if ((startEntity.keyword === null) !== (endEntity.keyword === null)) {
-            result.errors.push(`${errorPrefix} must use keywords for start and end value or for none of them in ${property}.`);
-          }
-          else if (startEntity.unit !== endEntity.unit) {
-            result.errors.push(`${errorPrefix} uses different units for ${property}.`);
-          }
-
-          if (property === `speed` && startEntity.number * endEntity.number < 0) {
-            result.errors.push(`${errorPrefix} uses different signs (+ or –) in ${property} (maybe behind a keyword). Consider splitting it into several capabilities.`);
-          }
-        });
+        checkStartEndEntities();
 
         const capabilityTypeChecks = {
           ShutterStrobe: checkShutterStrobeCapability,
@@ -578,6 +571,26 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           capabilityTypeChecks[capability.type]();
         }
 
+
+        /**
+         * Check all used start/end entities in the capability.
+         */
+        function checkStartEndEntities() {
+          for (const property of capability.usedStartEndEntities) {
+            const [startEntity, endEntity] = capability[property];
+
+            if ((startEntity.keyword === null) !== (endEntity.keyword === null)) {
+              result.errors.push(`${errorPrefix} must use keywords for both start and end value or for neither in ${property}.`);
+            }
+            else if (startEntity.unit !== endEntity.unit) {
+              result.errors.push(`${errorPrefix} uses different units for ${property}.`);
+            }
+
+            if (property === `speed` && startEntity.number * endEntity.number < 0) {
+              result.errors.push(`${errorPrefix} uses different signs (+ or –) in ${property} (maybe behind a keyword). Consider splitting it into several capabilities.`);
+            }
+          }
+        }
 
         /**
          * Type-specific checks for ShutterStrobe capabilities.
@@ -599,41 +612,47 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
         }
 
         /**
-         * Check that referenced wheels exist in the fixture.
+         * Check that references to wheels are valid.
          */
         function checkWheelCapability() {
           let shouldCheckSlotNumbers = true;
 
-          if (`wheel` in capability.jsonObject) {
-            const wheelNames = [capability.jsonObject.wheel].flat();
-
-            wheelNames.forEach(wheelName => {
-              const wheel = fixture.getWheelByName(wheelName);
-              if (wheel) {
-                usedWheels.add(wheelName);
-              }
-              else {
-                result.errors.push(`${errorPrefix} references wheel '${wheelName}' which is not defined in the fixture.`);
-                shouldCheckSlotNumbers = false;
-              }
-            });
-
-            if (wheelNames.length === 1 && wheelNames[0] === capability._channel.name) {
-              result.warnings.push(`${errorPrefix} explicitly references wheel '${wheelNames[0]}', which is the default anyway (through the channel name). Please remove the 'wheel' property.`);
-            }
-          }
-          else if (capability.wheels.includes(null)) {
-            result.errors.push(`${errorPrefix} does not explicitly reference any wheel, but the default wheel '${capability._channel.name}' (through the channel name) does not exist.`);
-            shouldCheckSlotNumbers = false;
-          }
-          else {
-            usedWheels.add(capability._channel.name);
-          }
+          checkReferencedWheels();
 
           if (capability.slotNumber !== null && shouldCheckSlotNumbers) {
             checkSlotNumbers();
           }
 
+          /**
+           * Check that referenced wheels exist in the fixture.
+           */
+          function checkReferencedWheels() {
+            if (`wheel` in capability.jsonObject) {
+              const wheelNames = [capability.jsonObject.wheel].flat();
+
+              for (const wheelName of wheelNames) {
+                const wheel = fixture.getWheelByName(wheelName);
+                if (wheel) {
+                  usedWheels.add(wheelName);
+                }
+                else {
+                  result.errors.push(`${errorPrefix} references wheel '${wheelName}' which is not defined in the fixture.`);
+                  shouldCheckSlotNumbers = false;
+                }
+              }
+
+              if (wheelNames.length === 1 && wheelNames[0] === capability._channel.name) {
+                result.warnings.push(`${errorPrefix} explicitly references wheel '${wheelNames[0]}', which is the default anyway (through the channel name). Please remove the 'wheel' property.`);
+              }
+            }
+            else if (capability.wheels.includes(null)) {
+              result.errors.push(`${errorPrefix} does not explicitly reference any wheel, but the default wheel '${capability._channel.name}' (through the channel name) does not exist.`);
+              shouldCheckSlotNumbers = false;
+            }
+            else {
+              usedWheels.add(capability._channel.name);
+            }
+          }
 
           /**
            * Check that slot indices are used correctly for the specific wheel.
@@ -715,22 +734,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       `Mode shortName '${mode.shortName}' is not unique (test is not case-sensitive).`,
     );
 
-    // "6ch" / "8-Channel" / "9 channels" mode names
-    [`name`, `shortName`].forEach(nameProperty => {
-      const match = mode[nameProperty].match(/(\d+)(?:\s+|-|)(?:channels?|ch)/i);
-      if (match !== null) {
-        const intendedLength = Number.parseInt(match[1], 10);
-
-        if (mode.channels.length !== intendedLength) {
-          result.errors.push(`Mode '${mode.name}' should have ${intendedLength} channels according to its ${nameProperty} but actually has ${mode.channels.length}.`);
-        }
-
-        const allowedShortNames = [`${intendedLength}ch`, `Ch${intendedLength}`, `Ch0${intendedLength}`];
-        if (mode[nameProperty].length === match[0].length && !allowedShortNames.includes(mode.shortName)) {
-          result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
-        }
-      }
-    });
+    checkModeName();
 
     checkPhysical(mode.physicalOverride, ` in mode '${mode.shortName}'`);
 
@@ -740,7 +744,32 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       }
     }
 
-    mode.channelKeys.forEach((channelKey, index) => checkModeChannelKey(index));
+    for (let channelIndex = 0; channelIndex < mode.channelKeys.length; channelIndex++) {
+      checkModeChannelKey(channelIndex);
+    }
+
+
+    /**
+     * Check that mode names comply with the channel count.
+     */
+    function checkModeName() {
+      // "6ch" / "8-Channel" / "9 channels" mode names
+      for (const nameProperty of [`name`, `shortName`]) {
+        const match = mode[nameProperty].match(/(\d+)(?:\s+|-|)(?:channels?|ch)/i);
+        if (match !== null) {
+          const intendedLength = Number.parseInt(match[1], 10);
+
+          if (mode.channels.length !== intendedLength) {
+            result.errors.push(`Mode '${mode.name}' should have ${intendedLength} channels according to its ${nameProperty} but actually has ${mode.channels.length}.`);
+          }
+
+          const allowedShortNames = [`${intendedLength}ch`, `Ch${intendedLength}`, `Ch0${intendedLength}`];
+          if (mode[nameProperty].length === match[0].length && !allowedShortNames.includes(mode.shortName)) {
+            result.warnings.push(`Mode '${mode.name}' should have shortName '${intendedLength}ch' instead of '${mode.shortName}'.`);
+          }
+        }
+      }
+    }
 
     /**
      * Checks if the given complex channel insert block is valid.
@@ -863,18 +892,15 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
           if (otherChannel.triggerChannel === channel.triggerChannel) {
             // compare ranges
-            channel.switchToChannelKeys.forEach(switchToChannelKey => {
-              if (!otherChannel.switchToChannelKeys.includes(switchToChannelKey)) {
-                return;
-              }
-
+            for (const switchToChannelKey of channel.switchToChannelKeys) {
               const overlap = channel.triggerRanges[switchToChannelKey].some(
-                range => range.overlapsWithOneOf(otherChannel.triggerRanges[switchToChannelKey]),
+                // `?? []` because otherChannel.switchToChannelKeys may not include switchToChannelKey
+                range => range.overlapsWithOneOf(otherChannel.triggerRanges[switchToChannelKey] ?? []),
               );
               if (overlap) {
                 result.errors.push(`Channel '${switchToChannelKey}' is referenced more than once from mode '${mode.shortName}' through switching channels '${otherChannel.key}' and ${channel.key}'.`);
               }
-            });
+            }
           }
           else {
             // fail if one of this channel's switchToChannels appears anywhere
@@ -969,86 +995,89 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       [`Pixel Bar`, `Stand`],
     ];
 
+    const fixtureIsColorChanger = isColorChanger();
+    const fixtureHasBothPanTiltChannels = hasPanTiltChannels(true);
+    const fixtureHasPanOrTiltChannels = hasPanTiltChannels(false);
+    const isFogTypeFog = isFogType(`Fog`);
+    const isFogTypeHaze = isFogType(`Haze`);
+    const fixtureIsNotMatrix = isNotMatrix();
+    const fixtureIsPixelBar = isPixelBar();
+    const fixtureIsNotPixelBar = isNotPixelBar();
+
     const categories = {
       'Color Changer': {
-        isSuggested: isColorChanger(),
+        isSuggested: fixtureIsColorChanger,
+        isInvalid: !fixtureIsColorChanger,
         suggestedPhrase: `there are ColorPreset or ColorIntensity capabilities or Color wheel slots`,
         invalidPhrase: `there are no ColorPreset and less than two ColorIntensity capabilities and no Color wheel slots`,
       },
       'Moving Head': {
-        isSuggested: hasPanTiltChannels(true),
-        isInvalid: !hasPanTiltChannels(true),
+        isSuggested: fixtureHasBothPanTiltChannels,
+        isInvalid: !fixtureHasBothPanTiltChannels,
         suggestedPhrase: `there are pan and tilt channels`,
         invalidPhrase: `there are not both pan and tilt channels`,
       },
       'Scanner': {
-        isSuggested: hasPanTiltChannels(true),
-        isInvalid: !hasPanTiltChannels(false),
+        isSuggested: fixtureHasBothPanTiltChannels,
+        isInvalid: !fixtureHasPanOrTiltChannels,
         suggestedPhrase: `there are pan and tilt channels`,
         invalidPhrase: `there are no pan or tilt channels`,
       },
       'Barrel Scanner': {
-        isSuggested: hasPanTiltChannels(true),
-        isInvalid: !hasPanTiltChannels(false),
+        isSuggested: fixtureHasBothPanTiltChannels,
+        isInvalid: !fixtureHasPanOrTiltChannels,
         suggestedPhrase: `there are pan and tilt channels`,
         invalidPhrase: `there are no pan or tilt channels`,
       },
       'Smoke': {
-        isSuggested: isFogType(`Fog`),
+        isSuggested: isFogTypeFog,
+        isInvalid: !isFogTypeFog,
         suggestedPhrase: `there are Fog/FogType capabilities with no fogType or fogType 'Fog'`,
         invalidPhrase: `there are no Fog/FogType capabilities or none has fogType 'Fog'`,
       },
       'Hazer': {
-        isSuggested: isFogType(`Haze`),
+        isSuggested: isFogTypeHaze,
+        isInvalid: !isFogTypeHaze,
         suggestedPhrase: `there are Fog/FogType capabilities with no fogType or fogType 'Haze'`,
         invalidPhrase: `there are no Fog/FogType capabilities or none has fogType 'Haze'`,
       },
       'Matrix': {
-        isInvalid: isNotMatrix(),
+        isInvalid: fixtureIsNotMatrix,
         invalidPhrase: `fixture does not define a matrix`,
       },
       'Pixel Bar': {
-        isSuggested: isPixelBar(),
-        isInvalid: isNotPixelBar(),
+        isSuggested: fixtureIsPixelBar,
+        isInvalid: fixtureIsNotPixelBar,
         suggestedPhrase: `matrix pixels are horizontally aligned`,
         invalidPhrase: `no horizontally aligned matrix is defined`,
       },
     };
 
-    Object.entries(categories).forEach(([categoryName, category]) => {
+    for (const [categoryName, categoryProperties] of Object.entries(categories)) {
       const isCategoryUsed = fixture.categories.includes(categoryName);
 
-      if (!(`isInvalid` in category)) {
-        category.isInvalid = !category.isSuggested;
-      }
+      // don't suggest this category if another mutually exclusive category is used
+      const exclusiveGroups = mutuallyExclusiveGroups.filter(
+        group => group.includes(categoryName) && group.some(
+          category => category !== categoryName && fixture.categories.includes(category),
+        ),
+      );
 
-      if (!isCategoryUsed && category.isSuggested) {
-        // don't suggest this category if another mutually exclusive category is used
-        const exclusiveGroups = mutuallyExclusiveGroups.filter(
-          group => group.includes(categoryName),
-        );
-        const isForbiddenByGroup = exclusiveGroups.some(
-          group => group.some(
-            cat => fixture.categories.includes(cat),
-          ),
-        );
-
-        if (!isForbiddenByGroup) {
-          result.warnings.push(`Category '${categoryName}' suggested since ${category.suggestedPhrase}.`);
+      if (!isCategoryUsed) {
+        if (categoryProperties.isSuggested && exclusiveGroups.length === 0) {
+          result.warnings.push(`Category '${categoryName}' suggested since ${categoryProperties.suggestedPhrase}.`);
         }
       }
-      else if (isCategoryUsed && category.isInvalid) {
-        result.errors.push(`Category '${categoryName}' invalid since ${category.invalidPhrase}.`);
+      else if (categoryProperties.isInvalid) {
+        result.errors.push(`Category '${categoryName}' invalid since ${categoryProperties.invalidPhrase}.`);
       }
-    });
-
-    mutuallyExclusiveGroups.forEach(group => {
-      const usedCategories = group.filter(cat => fixture.categories.includes(cat));
-
-      if (usedCategories.length >= 2) {
-        result.errors.push(`Categories '${usedCategories.join(`', '`)}' can't be used together.`);
+      else if (exclusiveGroups.length > 0) {
+        result.errors.push(...exclusiveGroups.map(group => {
+          const usedCategories = group.filter(category => fixture.categories.includes(category));
+          return `Categories '${usedCategories.join(`', '`)}' can't be used together.`;
+        }));
       }
-    });
+    }
 
     /**
      * @returns {Boolean} Whether the 'Color Changer' category is suggested.

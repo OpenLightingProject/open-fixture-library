@@ -25,18 +25,19 @@ if (panFine.coarseChannel.hasHighlightValue) {
 
 Model properties are always implemented using getters and setters. To store data, we use backing fields (an internal property prefixed with underscore, e.g. `_jsonObject`) to hold the data. The backing field should never be accessed directly, but only through its getter and setter functions (without underscore).
 
-Avoid returning `undefined` by returning smart default values if necessary. If the default value is not `null`, also provide a `hasXY` boolean getter function. Properties that need further computation or create other objects should be cached in an internal `_cache` object.
+Avoid returning `undefined` by returning smart default values if necessary. If the default value is not `null`, also provide a `hasXY` boolean getter function. Properties that need further computation or create other objects should be cached using the [lazy-loading property pattern](https://humanwhocodes.com/blog/2021/04/lazy-loading-property-pattern-javascript/) using the [`cacheResult` function](../lib/cache-result.js).
 
 ```js
+import cacheResult from '../lib/cache-result.js';
+
 export default class Fixture {
+  constructor(jsonObject) {
+    this._jsonObject = jsonObject;
+  }
+
   // returns backing field to avoid accessing _jsonObject from outside
   get jsonObject() {
     return this._jsonObject;
-  }
-
-  set jsonObject(jsonObject) {
-    this._jsonObject = jsonObject;
-    this._cache = {};
   }
 
   // required, no default needed
@@ -53,13 +54,9 @@ export default class Fixture {
     return `shortName` in this._jsonObject;
   }
 
-  // it's not good to create a Meta object with each property access, so we cache it
+  // avoid creating a new Meta object for each property access by caching it
   get meta() {
-    if (!(`meta` in this._cache)) {
-      this._cache.meta = new Meta(this._jsonObject.meta);
-    }
-
-    return this._cache.meta;
+    return cacheResult(this, `meta`, new Meta(this._jsonObject.meta));
   }
 
   // defaults to null as there is no meaningful other default

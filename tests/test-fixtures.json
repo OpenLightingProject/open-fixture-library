@@ -539,8 +539,8 @@
   },
   {
     "man": "stairville",
-    "key": "mh-x50",
-    "name": "MH-X50+",
+    "key": "mh-x60",
+    "name": "MH-X60",
     "features": [
       "capability-type-NoFunction",
       "capability-type-ShutterStrobe",
@@ -567,6 +567,34 @@
       "wheel-slot-type-Color",
       "wheel-slot-type-Gobo",
       "wheel-slot-uses-resource"
+    ]
+  },
+  {
+    "man": "varytec",
+    "key": "hero-wash-340fx-rgbw-zoom",
+    "name": "Hero Wash 340FX RGBW Zoom",
+    "features": [
+      "capability-type-NoFunction",
+      "capability-type-ShutterStrobe",
+      "capability-type-Intensity",
+      "capability-type-ColorIntensity",
+      "capability-type-ColorPreset",
+      "capability-type-ColorTemperature",
+      "capability-type-Pan",
+      "capability-type-Tilt",
+      "capability-type-PanTiltSpeed",
+      "capability-type-WheelSlot",
+      "capability-type-WheelShake",
+      "capability-type-WheelRotation",
+      "capability-type-Effect",
+      "capability-type-Zoom",
+      "capability-type-Maintenance",
+      "fine-channel-alias",
+      "floating-point-weight",
+      "multiple-categories",
+      "reused-channels",
+      "wheel-type-Open",
+      "wheel-slot-type-Open"
     ]
   }
 ]
