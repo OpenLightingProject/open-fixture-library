@@ -12,6 +12,17 @@
       "https://www.fovitec.com/products/600xb-bi-color-led-panel-with-dmx"
     ]
   },
+  "physical": {
+    "dimensions": [394, 399, 76],
+    "power": 36,
+    "bulb": {
+      "type": "600× LED",
+      "lumens": 1420
+    },
+    "lens": {
+      "degreesMinMax": [45, 45]
+    }
+  },
   "availableChannels": {
     "Intensity": {
       "capability": {
@@ -21,8 +32,8 @@
     "Color Temperature": {
       "capability": {
         "type": "ColorTemperature",
-        "colorTemperatureStart": "cold",
-        "colorTemperatureEnd": "warm"
+        "colorTemperatureStart": "3200K",
+        "colorTemperatureEnd": "5600K"
       }
     }
   },
