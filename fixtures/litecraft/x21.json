@@ -356,7 +356,17 @@
   },
   "modes": [
     {
-      "name": "6 CH",
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6-channel",
       "shortName": "6ch",
       "channels": [
         "Master Dimmer",
@@ -365,6 +375,23 @@
         "Blue",
         "White",
         "Strobe"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Master Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Extended Strobe",
+        "Color Macro",
+        "Color Temperature",
+        "Auto Program",
+        "Program Speed",
+        "Dimmer Mode"
       ]
     }
   ]
