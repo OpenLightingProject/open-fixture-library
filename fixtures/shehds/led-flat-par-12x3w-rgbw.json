@@ -55,20 +55,13 @@
       }
     },
     "Strobe": {
-      "capabilities": [
+      "capability":
         {
-          "dmxRange": [0, 0],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [1, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "0Hz",
           "speedEnd": "10Hz"
         }
-      ]
     },
     "Program": {
       "capabilities": [
@@ -101,7 +94,7 @@
     },
     "Function speed": {
       "capability": {
-        "type": "Speed",
+        "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
