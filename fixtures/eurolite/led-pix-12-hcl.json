@@ -428,7 +428,7 @@
           "dmxRange": [60, 69],
           "type": "ColorPreset",
           "comment": "UV",
-          "colors": ["#3e0694"]
+          "colors": ["#8800ff"]
         },
         {
           "dmxRange": [70, 79],
@@ -458,7 +458,7 @@
           "dmxRange": [110, 119],
           "type": "ColorPreset",
           "comment": "Red + UV",
-          "colors": ["#9f034a"]
+          "colors": ["#ff0000", "#8800ff"]
         },
         {
           "dmxRange": [120, 129],
@@ -470,79 +470,79 @@
           "dmxRange": [130, 139],
           "type": "ColorPreset",
           "comment": "Green + White",
-          "colors": ["#80c080"]
+          "colors": ["#80ff80"]
         },
         {
           "dmxRange": [140, 149],
           "type": "ColorPreset",
           "comment": "Green + Amber",
-          "colors": ["#80a000"]
+          "colors": ["#80df00"]
         },
         {
           "dmxRange": [150, 159],
           "type": "ColorPreset",
           "comment": "Green + UV",
-          "colors": ["#1f434a"]
+          "colors": ["#00ff00", "#8800ff"]
         },
         {
           "dmxRange": [160, 169],
           "type": "ColorPreset",
-          "comment": "Red + Green + Blue",
-          "colors": ["#552b55"]
+          "comment": "Red + Green + Blue aka White",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [170, 179],
           "type": "ColorPreset",
           "comment": "Green + Blue + White",
-          "colors": ["#5580aa"]
+          "colors": ["#80ffff"]
         },
         {
           "dmxRange": [180, 189],
           "type": "ColorPreset",
           "comment": "Blue + White + Amber",
-          "colors": ["#aa95aa"]
+          "colors": ["#bf9f80"]
         },
         {
           "dmxRange": [190, 199],
           "type": "ColorPreset",
           "comment": "White + Amber + UV",
-          "colors": ["#bf9786"]
+          "colors": ["#ffdf80", "#8800ff"]
         },
         {
           "dmxRange": [200, 209],
           "type": "ColorPreset",
-          "comment": "Amber + UV + Red",
-          "colors": ["#bf4231"]
+          "comment": "Amber + Red + UV",
+          "colors": ["#ff6060", "#8800ff"]
         },
         {
           "dmxRange": [210, 219],
           "type": "ColorPreset",
           "comment": "Red + Blue + White + UV",
-          "colors": ["#8f41a5"]
+          "colors": ["#ff80ff", "#8800ff"]
         },
         {
           "dmxRange": [220, 229],
           "type": "ColorPreset",
           "comment": "Red + Green + White + UV",
-          "colors": ["#8f41a5"]
+          "colors": ["#ffff80", "#8800ff"]
         },
         {
           "dmxRange": [230, 239],
           "type": "ColorPreset",
           "comment": "Red + Green + White + Amber",
-          "colors": ["#bfaf42"]
+          "colors": ["#ffdf40"]
         },
         {
           "dmxRange": [240, 249],
           "type": "ColorPreset",
           "comment": "Green + Blue + Amber + UV",
-          "colors": ["#807042"]
+          "colors": ["#80df80", "#8800ff"]
         },
         {
           "dmxRange": [250, 255],
           "type": "ColorPreset",
           "comment": "Red + Green + Blue + White + Amber + UV",
-          "colors": ["#8a766f"]
+          "colors": ["#ffdf80", "#8800ff"]
         }
       ]
     }
