@@ -1,0 +1,242 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "mini gobo moving head",
+  "categories": ["Color Changer", "Moving Head", "Dimmer"],
+  "meta": {
+    "authors": ["William"],
+    "createDate": "2021-09-03",
+    "lastModifyDate": "2021-09-03"
+  },
+  "comment": "sorry for the false link but i needed a fixture\n",
+  "links": {
+    "other": [
+      "https://www.tomshine.com/"
+    ]
+  },
+  "rdm": {
+    "modelId": 1
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Color"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        },
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "constant": true,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan continuous": {
+      "fineChannelAliases": ["Pan continuous fine"],
+      "capability": {
+        "type": "PanContinuous",
+        "speed": "slow CW"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "200deg"
+      }
+    },
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanContinuous",
+        "speed": "slow CW"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Tilt Continuous": {
+      "fineChannelAliases": ["Tilt Continuous fine"],
+      "capability": {
+        "type": "TiltContinuous",
+        "speed": "slow CW"
+      }
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "fineChannelAliases": ["Shutter / Strobe fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 130],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "51%"
+        },
+        {
+          "dmxRange": [131, 237],
+          "type": "StrobeDuration",
+          "durationStart": "10ms",
+          "durationEnd": "100ms"
+        },
+        {
+          "dmxRange": [238, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Burst"
+        }
+      ]
+    },
+    "Color Wheel": {
+      "fineChannelAliases": ["Color Wheel fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "HALF COLOR"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "fineChannelAliases": ["Gobo Wheel fine"],
+      "dmxValueResolution": "8bit",
+      "capabilities": [
+        {
+          "dmxRange": [0, 61],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [62, 127],
+          "type": "WheelShake"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "GAUCHE DROITE"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW",
+          "comment": "DROITE GAUCHE"
+        }
+      ]
+    },
+    "Reserved": {
+      "fineChannelAliases": ["Reserved fine"],
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "11 ch",
+      "rdmPersonalityIndex": 11,
+      "channels": [
+        "Pan",
+        "Pan continuous",
+        "Tilt",
+        "Tilt Continuous",
+        "Dimmer",
+        "Shutter / Strobe",
+        "Color Wheel",
+        "Gobo Wheel",
+        "Reserved",
+        "Reserved fine"
+      ]
+    }
+  ]
+}
