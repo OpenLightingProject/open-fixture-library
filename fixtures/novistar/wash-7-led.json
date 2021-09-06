@@ -1,0 +1,126 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Wash 7 Led",
+  "shortName": "Novi",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["b"],
+    "createDate": "2021-09-06",
+    "lastModifyDate": "2021-09-06"
+  },
+  "links": {
+    "manual": [
+      "https://www.electrodepot.fr/media/wysiwyg/page/notice/pdf/fr/N962049.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "1deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan/Tilt Duration": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan/Tilt Duration 2": {
+      "name": "Pan/Tilt Duration",
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "No function 2": {
+      "name": "No function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "14 canaux",
+      "shortName": "14",
+      "channels": [
+        "Pan",
+        "Pan/Tilt Duration",
+        "Tilt",
+        "Pan/Tilt Duration 2",
+        "No function",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Strobe",
+        "Sound Sensitivity",
+        "No function 2"
+      ]
+    }
+  ]
+}
