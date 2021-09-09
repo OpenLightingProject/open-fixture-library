@@ -1,0 +1,104 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Vesuvio RGBA",
+  "shortName": "Chauvet Jet",
+  "categories": ["Smoke", "Color Changer"],
+  "meta": {
+    "authors": ["Beerady"],
+    "createDate": "2021-09-09",
+    "lastModifyDate": "2021-09-09"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetprofessional.com/wp-content/uploads/2015/06/Vesuvio-RGBA_UM_Rev4_WO.pdf"
+    ]
+  },
+  "rdm": {
+    "modelId": 37266,
+    "softwareVersion": "2016"
+  },
+  "physical": {
+    "weight": 30,
+    "power": 1590,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Fog": {
+      "capability": {
+        "type": "Fog",
+        "fogType": "Fog"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightness": "off"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightness": "off"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightness": "off"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightness": "off"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "brightness": "off"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speed": "0Hz"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speed": "slow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "9 Channel",
+      "shortName": "9ch",
+      "channels": [
+        "Fog",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "Strobe",
+        "Color Macros",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
