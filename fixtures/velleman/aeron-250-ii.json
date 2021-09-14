@@ -182,15 +182,13 @@
           "dmxRange": [128, 191],
           "type": "WheelRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW",
-          "comment": "Forwards rainbow effect with increasing speed"
+          "speedEnd": "fast CW"
         },
         {
           "dmxRange": [192, 255],
           "type": "WheelRotation",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CCW",
-          "comment": "Backwards rainbow effect with increasing speed"
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -240,15 +238,13 @@
           "dmxRange": [128, 191],
           "type": "WheelRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW",
-          "comment": "Forwards gobo change with increasing speed"
+          "speedEnd": "fast CW"
         },
         {
           "dmxRange": [192, 255],
           "type": "WheelRotation",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CCW",
-          "comment": "Backwards gobo change with increasing speed"
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -277,6 +273,7 @@
       ]
     },
     "Pan": {
+      "defaultValue": 128,
       "capability": {
         "type": "Pan",
         "angleStart": "0%",
@@ -284,6 +281,7 @@
       }
     },
     "Tilt": {
+      "defaultValue": 128,
       "capability": {
         "type": "Tilt",
         "angleStart": "0%",
