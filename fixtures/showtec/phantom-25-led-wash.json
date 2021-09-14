@@ -179,8 +179,9 @@
     },
     "LED Color Saturation": {
       "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
       }
     },
     "Pan 2": {
