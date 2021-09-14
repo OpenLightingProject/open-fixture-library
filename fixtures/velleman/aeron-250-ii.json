@@ -1,16 +1,22 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Aeron 250 II",
-  "categories": ["Barrel Scanner", "Color Changer"],
+  "categories": ["Scanner", "Color Changer"],
   "meta": {
     "authors": ["Max Jöhnk"],
     "createDate": "2021-08-17",
     "lastModifyDate": "2021-08-17"
   },
-  "comment": "vdp250sc8m2",
+  "comment": "VDP250SC8M2",
   "links": {
     "manual": [
-      "http://www.farnell.com/datasheets/1442582.pdf"
+      "https://www.velleman.eu/downloads/4/vdp250sc8m2gbnlfresd.pdf"
+    ],
+    "productPage": [
+      "https://www.velleman.eu/products/view/?id=371050"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=K54gwldy2_8"
     ]
   },
   "physical": {
