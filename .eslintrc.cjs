@@ -159,6 +159,11 @@ const enabledRuleParameters = {
   }],
 
   // eslint-plugin-vue
+  'vue/block-lang': [{
+    script: { allowNoLang: true },
+    style: { lang: `scss` },
+    template: { allowNoLang: true },
+  }],
   'vue/component-name-in-template-casing': [`PascalCase`, {
     registeredComponentsOnly: false,
   }],
@@ -186,6 +191,8 @@ const enabledRuleParameters = {
     ignorePublicMembers: true,
   }],
   'vue/no-unused-refs': [],
+  'vue/no-use-computed-property-like-method': [],
+  'vue/no-v-text': [],
   'vue/require-direct-export': [],
   'vue/v-for-delimiter-style': [`of`],
   'vue/v-on-function-call': [`always`],
