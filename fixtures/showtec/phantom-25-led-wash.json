@@ -48,6 +48,13 @@
         "angleEnd": "270deg"
       }
     },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
     "Shutter / Strobe": {
       "capabilities": [
         {
@@ -78,10 +85,35 @@
         }
       ]
     },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
     "White": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
+      }
+    },
+    "LED Color Saturation": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright"
       }
     },
     "Macro": {
@@ -181,38 +213,6 @@
           "effectName": "Rainbow"
         }
       ]
-    },
-    "LED Color Saturation": {
-      "capability": {
-        "type": "Intensity",
-        "brightnessStart": "dark",
-        "brightnessEnd": "bright"
-      }
-    },
-    "Pan/Tilt Speed": {
-      "capability": {
-        "type": "PanTiltSpeed",
-        "speedStart": "fast",
-        "speedEnd": "slow"
-      }
-    },
-    "Red": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
     },
     "LED Speed": {
       "capability": {
