@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "DJ-Scan 250",
-  "categories": ["Barrel Scanner", "Color Changer"],
+  "categories": ["Scanner", "Color Changer"],
   "meta": {
     "authors": ["Max Jöhnk"],
     "createDate": "2021-08-18",
@@ -10,6 +10,9 @@
   "links": {
     "manual": [
       "https://www.manualslib.com/manual/55802/Future-Light-Dj-Scan-250.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=8GOpwwclPAc"
     ]
   },
   "physical": {
@@ -85,6 +88,7 @@
   },
   "availableChannels": {
     "Pan": {
+      "defaultValue": 128,
       "capability": {
         "type": "Pan",
         "angleStart": "0%",
@@ -92,6 +96,7 @@
       }
     },
     "Tilt": {
+      "defaultValue": 128,
       "capability": {
         "type": "Tilt",
         "angleStart": "0%",
@@ -144,15 +149,13 @@
           "dmxRange": [128, 191],
           "type": "WheelRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW",
-          "comment": "Forwards rainbow effect with increasing speed"
+          "speedEnd": "fast CW"
         },
         {
           "dmxRange": [192, 255],
           "type": "WheelRotation",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CCW",
-          "comment": "Backwards rainbow effect with increasing speed"
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -202,15 +205,13 @@
           "dmxRange": [128, 191],
           "type": "WheelRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW",
-          "comment": "Forwards gobo-change with increasing speed"
+          "speedEnd": "fast CW"
         },
         {
           "dmxRange": [192, 255],
           "type": "WheelRotation",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CCW",
-          "comment": "Backwards gobo-change with increasing speed"
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -219,21 +220,22 @@
         {
           "dmxRange": [0, 15],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel",
           "speed": "stop"
         },
         {
           "dmxRange": [16, 135],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel",
           "speedStart": "fast CW",
-          "speedEnd": "slow CW",
-          "comment": "Forwards gobo rotation with decreasing speed"
+          "speedEnd": "slow CW"
         },
         {
           "dmxRange": [136, 255],
           "type": "WheelSlotRotation",
+          "wheel": "Gobo Wheel",
           "speedStart": "slow CCW",
-          "speedEnd": "fast CCW",
-          "comment": "Backwards gobo rotation with increasing speed"
+          "speedEnd": "fast CCW"
         }
       ]
     },
@@ -246,9 +248,7 @@
         },
         {
           "dmxRange": [6, 128],
-          "type": "Intensity",
-          "brightnessStart": "dark",
-          "brightnessEnd": "bright"
+          "type": "Intensity"
         },
         {
           "dmxRange": [129, 131],
@@ -265,15 +265,15 @@
           "dmxRange": [140, 199],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "1Hz",
+          "speedEnd": "10Hz"
         },
         {
           "dmxRange": [200, 249],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast",
+          "speedStart": "1Hz",
+          "speedEnd": "10Hz",
           "randomTiming": true
         },
         {
