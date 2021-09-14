@@ -22,15 +22,18 @@
   "physical": {
     "dimensions": [535, 295, 180],
     "weight": 13.95,
-    "power": 350
+    "power": 350,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "lamp not included"
+    }
   },
   "wheels": {
     "Color Wheel": {
       "slots": [
         {
           "type": "Color",
-          "name": "White",
-          "colors": ["#ffffff"]
+          "name": "Open"
         },
         {
           "type": "Color",
@@ -75,32 +78,25 @@
           "type": "Open"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 1"
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 2"
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 3"
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 4"
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 5"
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 6"
+          "type": "Gobo"
         },
         {
-          "type": "Gobo",
-          "name": "Gobo 7"
+          "type": "Gobo"
         }
       ]
     }
@@ -324,7 +320,7 @@
   },
   "modes": [
     {
-      "name": "8 Channel",
+      "name": "8-channel",
       "shortName": "8ch",
       "channels": [
         "Shutter / Strobe",
