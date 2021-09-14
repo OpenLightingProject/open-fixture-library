@@ -229,22 +229,22 @@
         },
         {
           "dmxRange": [8, 27],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Blackout during Pan/Tilt movement"
         },
         {
           "dmxRange": [28, 147],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Disable blackout during Pan/Tilt movement"
         },
         {
           "dmxRange": [148, 167],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Reset Pan"
         },
         {
           "dmxRange": [168, 187],
-          "type": "Generic",
+          "type": "Maintenance",
           "comment": "Reset Tilt"
         },
         {
@@ -253,8 +253,8 @@
         },
         {
           "dmxRange": [228, 247],
-          "type": "Generic",
-          "comment": "Reset All channels"
+          "type": "Maintenance",
+          "comment": "Reset all channels"
         },
         {
           "dmxRange": [248, 255],
