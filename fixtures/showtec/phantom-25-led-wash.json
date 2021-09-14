@@ -85,14 +85,13 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "Intensity",
-          "brightness": "off"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [8, 21],
-          "type": "Intensity",
-          "brightness": "bright",
-          "comment": "RGBW full on"
+          "type": "ColorPreset",
+          "comment": "RGBW full on",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [22, 35],
