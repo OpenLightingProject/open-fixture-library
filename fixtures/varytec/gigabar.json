@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "GIGABAR",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["SUSO"],
+    "createDate": "2021-09-15",
+    "lastModifyDate": "2021-09-15"
+  },
+  "links": {
+    "manual": [
+      "https://www.thomann.de/es/varytec.html?gclid=EAIaIQobChMI_syi0-mB8wIVxbvVCh3B4QVTEAMYAyAAEgIDzfD_BwE"
+    ],
+    "productPage": [
+      "https://www.thomann.de/es/varytec.html?gclid=EAIaIQobChMI_syi0-mB8wIVxbvVCh3B4QVTEAMYAyAAEgIDzfD_BwE"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=rTsAx3rvfOQ"
+    ]
+  },
+  "physical": {
+    "dimensions": [100, 9, 7],
+    "weight": 2,
+    "power": 120,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Color Macros": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5 CANALES",
+      "channels": [
+        "Color Macros",
+        "Effect Speed",
+        "Red",
+        "Green",
+        "BLUE"
+      ]
+    }
+  ]
+}
