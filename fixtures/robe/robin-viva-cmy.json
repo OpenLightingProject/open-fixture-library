@@ -4,9 +4,9 @@
   "shortName": "VivaCMY",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Felix Edelmann"],
+    "authors": ["Felix Edelmann", "JonahKr"],
     "createDate": "2018-10-12",
-    "lastModifyDate": "2018-10-24",
+    "lastModifyDate": "2021-09-13",
     "importPlugin": {
       "plugin": "gdtf",
       "date": "2018-10-24",
@@ -549,332 +549,398 @@
         {
           "dmxRange": [1, 2],
           "type": "ColorPreset",
-          "comment": "LEE 4 (Medium Bastard Amber)"
+          "comment": "LEE 4 (Medium Bastard Amber)",
+          "colors": ["#ffc8b4"]
         },
         {
           "dmxRange": [3, 4],
           "type": "ColorPreset",
-          "comment": "LEE 10 (Medium Yellow)"
+          "comment": "LEE 10 (Medium Yellow)",
+          "colors": ["#ffff00"]
         },
         {
           "dmxRange": [5, 6],
           "type": "ColorPreset",
-          "comment": "LEE 19 (Fire)"
+          "comment": "LEE 19 (Fire)",
+          "colors": ["#ff4600"]
         },
         {
           "dmxRange": [7, 8],
           "type": "ColorPreset",
-          "comment": "LEE 24 (Scarlet)"
+          "comment": "LEE 24 (Scarlet)",
+          "colors": ["#ff5a64"]
         },
         {
           "dmxRange": [9, 10],
           "type": "ColorPreset",
-          "comment": "LEE 58 (Lavender)"
+          "comment": "LEE 58 (Lavender)",
+          "colors": ["#b46ef0"]
         },
         {
           "dmxRange": [11, 12],
           "type": "ColorPreset",
-          "comment": "LEE 68 (Sky Blue)"
+          "comment": "LEE 68 (Sky Blue)",
+          "colors": ["#46b4f0"]
         },
         {
           "dmxRange": [13, 14],
           "type": "ColorPreset",
-          "comment": "LEE 71 (Tokyo Blue)"
+          "comment": "LEE 71 (Tokyo Blue)",
+          "colors": ["#0000b4"]
         },
         {
           "dmxRange": [15, 16],
           "type": "ColorPreset",
-          "comment": "LEE 79 (Just Blue)"
+          "comment": "LEE 79 (Just Blue)",
+          "colors": ["#3c8cd2"]
         },
         {
           "dmxRange": [17, 18],
           "type": "ColorPreset",
-          "comment": "LEE 88 (Lime Green)"
+          "comment": "LEE 88 (Lime Green)",
+          "colors": ["#dcff64"]
         },
         {
           "dmxRange": [19, 20],
           "type": "ColorPreset",
-          "comment": "LEE 90 (Dark Yellow Green)"
+          "comment": "LEE 90 (Dark Yellow Green)",
+          "colors": ["#00be00"]
         },
         {
           "dmxRange": [21, 22],
           "type": "ColorPreset",
-          "comment": "LEE 100 (Spring Yellow)"
+          "comment": "LEE 100 (Spring Yellow)",
+          "colors": ["#f5ff00"]
         },
         {
           "dmxRange": [23, 24],
           "type": "ColorPreset",
-          "comment": "LEE 101 (Yellow)"
+          "comment": "LEE 101 (Yellow)",
+          "colors": ["#fff500"]
         },
         {
           "dmxRange": [25, 26],
           "type": "ColorPreset",
-          "comment": "LEE 102 (Light Amber)"
+          "comment": "LEE 102 (Light Amber)",
+          "colors": ["#ffdc5f"]
         },
         {
           "dmxRange": [27, 28],
           "type": "ColorPreset",
-          "comment": "LEE 103 (Straw)"
+          "comment": "LEE 103 (Straw)",
+          "colors": ["#fceacc"]
         },
         {
           "dmxRange": [29, 30],
           "type": "ColorPreset",
-          "comment": "Lee 104 (Deep Amber)"
+          "comment": "Lee 104 (Deep Amber)",
+          "colors": ["#ffdc00"]
         },
         {
           "dmxRange": [31, 32],
           "type": "ColorPreset",
-          "comment": "LEE 105 (Orange)"
+          "comment": "LEE 105 (Orange)",
+          "colors": ["#ffa000"]
         },
         {
           "dmxRange": [33, 34],
           "type": "ColorPreset",
-          "comment": "LEE 781 (Terry Red)"
+          "comment": "LEE 781 (Terry Red)",
+          "colors": ["#ff5000"]
         },
         {
           "dmxRange": [35, 36],
           "type": "ColorPreset",
-          "comment": "LEE 111 (Dark Pink)"
+          "comment": "LEE 111 (Dark Pink)",
+          "colors": ["#ff8cbe"]
         },
         {
           "dmxRange": [37, 38],
           "type": "ColorPreset",
-          "comment": "LEE 115 (Peacock Blue)"
+          "comment": "LEE 115 (Peacock Blue)",
+          "colors": ["#00ebc8"]
         },
         {
           "dmxRange": [39, 40],
           "type": "ColorPreset",
-          "comment": "LEE 505 (Sally Green)"
+          "comment": "LEE 505 (Sally Green)",
+          "colors": ["#e3ff5a"]
         },
         {
           "dmxRange": [41, 42],
           "type": "ColorPreset",
-          "comment": "LEE 117 (Steel Blue)"
+          "comment": "LEE 117 (Steel Blue)",
+          "colors": ["#b4faf5"]
         },
         {
           "dmxRange": [43, 44],
           "type": "ColorPreset",
-          "comment": "LEE 118 (Light Blue)"
+          "comment": "LEE 118 (Light Blue)",
+          "colors": ["#00e1eb"]
         },
         {
           "dmxRange": [45, 46],
           "type": "ColorPreset",
-          "comment": "LEE 724 (Ocean Blue)"
+          "comment": "LEE 724 (Ocean Blue)",
+          "colors": ["#69e1eb"]
         },
         {
           "dmxRange": [47, 48],
           "type": "ColorPreset",
-          "comment": "LEE 725 (Old Steel Blue"
+          "comment": "LEE 725 (Old Steel Blue",
+          "colors": ["#bef2f3"]
         },
         {
           "dmxRange": [49, 50],
           "type": "ColorPreset",
-          "comment": "LEE 121 (LEE Green)"
+          "comment": "LEE 121 (LEE Green)",
+          "colors": ["#b4ff64"]
         },
         {
           "dmxRange": [51, 52],
           "type": "ColorPreset",
-          "comment": "LEE 128 (Bright Pink)"
+          "comment": "LEE 128 (Bright Pink)",
+          "colors": ["#ff50b4"]
         },
         {
           "dmxRange": [53, 54],
           "type": "ColorPreset",
-          "comment": "LEE 131 (Marine Blue)"
+          "comment": "LEE 131 (Marine Blue)",
+          "colors": ["#64fad2"]
         },
         {
           "dmxRange": [55, 56],
           "type": "ColorPreset",
-          "comment": "LEE 132 (Medium Blue)"
+          "comment": "LEE 132 (Medium Blue)",
+          "colors": ["#00a0dc"]
         },
         {
           "dmxRange": [57, 58],
           "type": "ColorPreset",
-          "comment": "LEE 134 (Golden Amber)"
+          "comment": "LEE 134 (Golden Amber)",
+          "colors": ["#faa873"]
         },
         {
           "dmxRange": [59, 60],
           "type": "ColorPreset",
-          "comment": "LEE 135 (Deep Golden Amber)"
+          "comment": "LEE 135 (Deep Golden Amber)",
+          "colors": ["#ff5f00"]
         },
         {
           "dmxRange": [61, 62],
           "type": "ColorPreset",
-          "comment": "LEE 136 (Pale Lavender)"
+          "comment": "LEE 136 (Pale Lavender)",
+          "colors": ["#f0bee6"]
         },
         {
           "dmxRange": [63, 64],
           "type": "ColorPreset",
-          "comment": "LEE 137 (Special Lavender)"
+          "comment": "LEE 137 (Special Lavender)",
+          "colors": ["#c8b4e6"]
         },
         {
           "dmxRange": [65, 66],
           "type": "ColorPreset",
-          "comment": "LEE 138 (Pale Green)"
+          "comment": "LEE 138 (Pale Green)",
+          "colors": ["#dcffa0"]
         },
         {
           "dmxRange": [67, 68],
           "type": "ColorPreset",
-          "comment": "LEE 139 (Primary Green)"
+          "comment": "LEE 139 (Primary Green)",
+          "colors": ["#4bc300"]
         },
         {
           "dmxRange": [69, 70],
           "type": "ColorPreset",
-          "comment": "LEE 141 (Bright Blue)"
+          "comment": "LEE 141 (Bright Blue)",
+          "colors": ["#00d2e6"]
         },
         {
           "dmxRange": [71, 72],
           "type": "ColorPreset",
-          "comment": "LEE 147 (Apricot)"
+          "comment": "LEE 147 (Apricot)",
+          "colors": ["#fcb98c"]
         },
         {
           "dmxRange": [73, 74],
           "type": "ColorPreset",
-          "comment": "LEE 148 (Bright Rose)"
+          "comment": "LEE 148 (Bright Rose)",
+          "colors": ["#ff507d"]
         },
         {
           "dmxRange": [75, 76],
           "type": "ColorPreset",
-          "comment": "LEE 152 (Pale Gold)"
+          "comment": "LEE 152 (Pale Gold)",
+          "colors": ["#ffd2c1"]
         },
         {
           "dmxRange": [77, 78],
           "type": "ColorPreset",
-          "comment": "LEE 154 (Pale Rose)"
+          "comment": "LEE 154 (Pale Rose)",
+          "colors": ["#ffd5cf"]
         },
         {
           "dmxRange": [79, 80],
           "type": "ColorPreset",
-          "comment": "LEE 157 (Pink)"
+          "comment": "LEE 157 (Pink)",
+          "colors": ["#ff92a3"]
         },
         {
           "dmxRange": [81, 82],
           "type": "ColorPreset",
-          "comment": "LEE 158 (Deep Orange)"
+          "comment": "LEE 158 (Deep Orange)",
+          "colors": ["#ff8700"]
         },
         {
           "dmxRange": [83, 84],
           "type": "ColorPreset",
-          "comment": "LEE 162 (Bastard Amber)"
+          "comment": "LEE 162 (Bastard Amber)",
+          "colors": ["#fcded8"]
         },
         {
           "dmxRange": [85, 86],
           "type": "ColorPreset",
-          "comment": "LEE 164 (Flame Red)"
+          "comment": "LEE 164 (Flame Red)",
+          "colors": ["#ff3200"]
         },
         {
           "dmxRange": [87, 88],
           "type": "ColorPreset",
-          "comment": "LEE 165 (Daylight Blue)"
+          "comment": "LEE 165 (Daylight Blue)",
+          "colors": ["#5ac8eb"]
         },
         {
           "dmxRange": [89, 90],
           "type": "ColorPreset",
-          "comment": "LEE 169 (Lilac Tint)"
+          "comment": "LEE 169 (Lilac Tint)",
+          "colors": ["#fadcf0"]
         },
         {
           "dmxRange": [91, 92],
           "type": "ColorPreset",
-          "comment": "LEE 170 (Deep Lavender)"
+          "comment": "LEE 170 (Deep Lavender)",
+          "colors": ["#e6aadc"]
         },
         {
           "dmxRange": [93, 94],
           "type": "ColorPreset",
-          "comment": "LEE 172 (Lagoon Blue)"
+          "comment": "LEE 172 (Lagoon Blue)",
+          "colors": ["#00dcdc"]
         },
         {
           "dmxRange": [95, 96],
           "type": "ColorPreset",
-          "comment": "LEE 179 (Chrome Orange)"
+          "comment": "LEE 179 (Chrome Orange)",
+          "colors": ["#ffbe00"]
         },
         {
           "dmxRange": [97, 98],
           "type": "ColorPreset",
-          "comment": "LEE 180 (Dark Lavender)"
+          "comment": "LEE 180 (Dark Lavender)",
+          "colors": ["#a064e6"]
         },
         {
           "dmxRange": [99, 100],
           "type": "ColorPreset",
-          "comment": "LEE 181 (Congo Blue)"
+          "comment": "LEE 181 (Congo Blue)",
+          "colors": ["#5000aa"]
         },
         {
           "dmxRange": [101, 102],
           "type": "ColorPreset",
-          "comment": "LEE 197 (Alice Blue)"
+          "comment": "LEE 197 (Alice Blue)",
+          "colors": ["#82aae6"]
         },
         {
           "dmxRange": [103, 104],
           "type": "ColorPreset",
-          "comment": "LEE 201 (Full CT Blue)"
+          "comment": "LEE 201 (Full CT Blue)",
+          "colors": ["#c3e1fa"]
         },
         {
           "dmxRange": [105, 106],
           "type": "ColorPreset",
-          "comment": "LEE 202 (Half CT Blue)"
+          "comment": "LEE 202 (Half CT Blue)",
+          "colors": ["#d7f0ff"]
         },
         {
           "dmxRange": [107, 108],
           "type": "ColorPreset",
-          "comment": "LEE 203 (Quarter CT Blue)"
+          "comment": "LEE 203 (Quarter CT Blue)",
+          "colors": ["#ebfcff"]
         },
         {
           "dmxRange": [109, 110],
           "type": "ColorPreset",
-          "comment": "LEE 204 (Full CT Orange)"
+          "comment": "LEE 204 (Full CT Orange)",
+          "colors": ["#fac387"]
         },
         {
           "dmxRange": [111, 112],
           "type": "ColorPreset",
-          "comment": "LEE 205 (Half CT Orange)"
+          "comment": "LEE 205 (Half CT Orange)",
+          "colors": ["#fcd9b1"]
         },
         {
           "dmxRange": [113, 114],
           "type": "ColorPreset",
-          "comment": "LEE 206 (Quarter CT Orange)"
+          "comment": "LEE 206 (Quarter CT Orange)",
+          "colors": ["#fcead6"]
         },
         {
           "dmxRange": [115, 116],
           "type": "ColorPreset",
-          "comment": "LEE 247 (LEE Minus Green)"
+          "comment": "LEE 247 (LEE Minus Green)",
+          "colors": ["#fac3d7"]
         },
         {
           "dmxRange": [117, 118],
           "type": "ColorPreset",
-          "comment": "LEE 248 (Half Minus Green)"
+          "comment": "LEE 248 (Half Minus Green)",
+          "colors": ["#ffe2e4"]
         },
         {
           "dmxRange": [119, 120],
           "type": "ColorPreset",
-          "comment": "LEE 281 (Three Quarter CT Blue)"
+          "comment": "LEE 281 (Three Quarter CT Blue)",
+          "colors": ["#cde6fa"]
         },
         {
           "dmxRange": [121, 122],
           "type": "ColorPreset",
-          "comment": "LEE 285 (Three Quarter CT Orange)"
+          "comment": "LEE 285 (Three Quarter CT Orange)",
+          "colors": ["#fccd94"]
         },
         {
           "dmxRange": [123, 124],
           "type": "ColorPreset",
-          "comment": "LEE 352 (Glacier Blue)"
+          "comment": "LEE 352 (Glacier Blue)",
+          "colors": ["#5ac8e1"]
         },
         {
           "dmxRange": [125, 126],
           "type": "ColorPreset",
-          "comment": "LEE 353 (Lighter Blue)"
+          "comment": "LEE 353 (Lighter Blue)",
+          "colors": ["#61e8e3"]
         },
         {
           "dmxRange": [127, 128],
           "type": "ColorPreset",
-          "comment": "LEE 715 (Cabana Blue)"
+          "comment": "LEE 715 (Cabana Blue)",
+          "colors": ["#3c6edc"]
         },
         {
           "dmxRange": [129, 130],
           "type": "ColorPreset",
-          "comment": "LEE 778 (Millennium Gold)"
+          "comment": "LEE 778 (Millennium Gold)",
+          "colors": ["#ff7600"]
         },
         {
           "dmxRange": [131, 132],
           "type": "ColorPreset",
-          "comment": "LEE 328 (Follies Pink)"
+          "comment": "LEE 328 (Follies Pink)",
+          "colors": ["#ff64c8"]
         },
         {
           "dmxRange": [133, 255],
