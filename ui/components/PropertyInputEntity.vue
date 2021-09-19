@@ -25,14 +25,14 @@
 
       <option :disabled="required" value="">unset</option>
 
-      <optgroup v-if="enumValues.length" label="Keywords">
+      <optgroup v-if="enumValues.length > 0" label="Keywords">
         <option
           v-for="enumValue of enumValues"
           :key="enumValue"
           :value="enumValue">{{ enumValue }}</option>
       </optgroup>
 
-      <optgroup v-if="Object.keys(units).length" label="Units">
+      <optgroup v-if="Object.keys(units).length > 0" label="Units">
         <option
           v-for="({ displayString }, unitName) of units"
           :key="unitName"

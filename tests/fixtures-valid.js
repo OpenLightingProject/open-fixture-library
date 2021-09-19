@@ -187,24 +187,13 @@ runTests().then(results => {
   let totalWarnings = 0;
 
   // each file
-  results.forEach(result => {
+  for (const result of results) {
     const failed = result.errors.length > 0;
-
-    console.log(
-      failed ? chalk.red(`[FAIL]`) : chalk.green(`[PASS]`),
-      result.name,
-    );
-
     totalFails += failed ? 1 : 0;
-    for (const error of result.errors) {
-      console.log(`└`, chalk.red(`Error:`), error);
-    }
-
     totalWarnings += result.warnings.length;
-    for (const warning of result.warnings) {
-      console.log(`└`, chalk.yellow(`Warning:`), warning);
-    }
-  });
+
+    printFileResult(result);
+  }
 
   // newline
   console.log();
@@ -222,3 +211,24 @@ runTests().then(results => {
   console.error(chalk.red(`[FAIL]`), `${totalFails} of ${results.length} tested files failed.`);
   process.exit(1);
 }).catch(error => console.error(chalk.red(`[Error]`), `Test errored:`, error));
+
+
+/**
+ * @param {Object} result The result object for a single file.
+ */
+function printFileResult(result) {
+  const failed = result.errors.length > 0;
+
+  console.log(
+    failed ? chalk.red(`[FAIL]`) : chalk.green(`[PASS]`),
+    result.name,
+  );
+
+  for (const error of result.errors) {
+    console.log(`└`, chalk.red(`Error:`), error);
+  }
+
+  for (const warning of result.warnings) {
+    console.log(`└`, chalk.yellow(`Warning:`), warning);
+  }
+}

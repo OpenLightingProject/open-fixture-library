@@ -62,6 +62,6 @@ function categoryMatch(categoriesQuery, fixtureKey) {
   return categoriesQuery.length === 0 ||
     (categoriesQuery.length === 1 && categoriesQuery[0] === ``) ||
     categoriesQuery.some(
-      cat => cat in register.categories && register.categories[cat].includes(fixtureKey),
+      category => register.categories[category]?.includes(fixtureKey),
     );
 }

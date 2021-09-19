@@ -420,15 +420,18 @@ export default {
         this.channel.uuid = ``;
       }
       else if (this.channel.editMode === `edit-all` || this.channel.editMode === `edit-duplicate`) {
-        const channel = this.fixture.availableChannels[this.channel.uuid];
-        Object.keys(channel).forEach(property => {
-          this.channel[property] = clone(channel[property]);
-        });
+        this.copyPropertiesFromChannel(this.fixture.availableChannels[this.channel.uuid]);
       }
 
       // after dialog is opened
       await this.$nextTick();
       this.channelChanged = false;
+    },
+
+    copyPropertiesFromChannel(channel) {
+      for (const property of Object.keys(channel)) {
+        this.channel[property] = clone(channel[property]);
+      }
     },
 
     async onChannelDialogClose() {

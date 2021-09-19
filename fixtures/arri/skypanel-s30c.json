@@ -3,9 +3,9 @@
   "name": "Skypanel S30C",
   "categories": ["Dimmer", "Color Changer", "Strobe"],
   "meta": {
-    "authors": ["Jean-François Losson"],
+    "authors": ["Jean-François Losson", "JonahKr"],
     "createDate": "2018-10-17",
-    "lastModifyDate": "2018-10-17"
+    "lastModifyDate": "2021-09-13"
   },
   "links": {
     "manual": [
@@ -287,25 +287,29 @@
           "dmxRange": [132, 143],
           "type": "ColorPreset",
           "colorTemperature": "2900K",
-          "comment": "Preset 01"
+          "comment": "Preset 01",
+          "colors": ["#ffb165"]
         },
         {
           "dmxRange": [144, 155],
           "type": "ColorPreset",
           "colorTemperature": "3200K",
-          "comment": "Preset 02"
+          "comment": "Preset 02",
+          "colors": ["#ffbb78"]
         },
         {
           "dmxRange": [156, 167],
           "type": "ColorPreset",
           "colorTemperature": "5600K",
-          "comment": "Preset 03"
+          "comment": "Preset 03",
+          "colors": ["#ffe8d5"]
         },
         {
           "dmxRange": [168, 179],
           "type": "ColorPreset",
           "colorTemperature": "6500K",
-          "comment": "Preset 04"
+          "comment": "Preset 04",
+          "colors": ["#fff9fd"]
         },
         {
           "dmxRange": [180, 191],
@@ -321,25 +325,29 @@
           "dmxRange": [204, 215],
           "type": "ColorPreset",
           "comment": "Preset 07 - Rosco 3408",
-          "colorTemperature": "5600K"
+          "colorTemperature": "5600K",
+          "colors": ["#fcc286"]
         },
         {
           "dmxRange": [216, 227],
           "type": "ColorPreset",
           "comment": "Preset 08 - Lee 187",
-          "colorTemperature": "3200K"
+          "colorTemperature": "3200K",
+          "colors": ["#f5e4d7"]
         },
         {
           "dmxRange": [228, 239],
           "type": "ColorPreset",
           "comment": "Preset 09 - Rosco 3152",
-          "colorTemperature": "3200K"
+          "colorTemperature": "3200K",
+          "colors": ["#f5802c"]
         },
         {
           "dmxRange": [240, 255],
           "type": "ColorPreset",
           "comment": "Preset 10 - Lee 162",
-          "colorTemperature": "3200K"
+          "colorTemperature": "3200K",
+          "colors": ["#fcded8"]
         }
       ]
     },

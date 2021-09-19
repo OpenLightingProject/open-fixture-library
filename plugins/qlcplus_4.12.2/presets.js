@@ -708,46 +708,46 @@ export const capabilityPresets = {
 
   StrobeFrequency: {
     isApplicable: capability => exportHelpers.isShutterEffect(capability, `Strobe`) && exportHelpers.hasFrequency(capability) && capability.isStep,
-    exportRes1: capability => capability.speed[0].getBaseUnitEntity().number,
+    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
     importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`Strobe`, `${res1}Hz`),
   },
   StrobeFreqRange: {
     isApplicable: capability => exportHelpers.isShutterEffect(capability, `Strobe`) && exportHelpers.hasFrequency(capability),
-    exportRes1: capability => capability.speed[0].getBaseUnitEntity().number,
-    exportRes2: capability => capability.speed[1].getBaseUnitEntity().number,
+    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
+    exportRes2: capability => capability.speed[1].baseUnitEntity.number,
     importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`Strobe`, `${res1}Hz`, `${res2}Hz`),
   },
   PulseFrequency: {
     isApplicable: capability => exportHelpers.isShutterEffect(capability, `Pulse`) && exportHelpers.hasFrequency(capability) && capability.isStep,
-    exportRes1: capability => capability.speed[0].getBaseUnitEntity().number,
+    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
     importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`Pulse`, `${res1}Hz`),
   },
   PulseFreqRange: {
     isApplicable: capability => exportHelpers.isShutterEffect(capability, `Pulse`) && exportHelpers.hasFrequency(capability),
-    exportRes1: capability => capability.speed[0].getBaseUnitEntity().number,
-    exportRes2: capability => capability.speed[1].getBaseUnitEntity().number,
+    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
+    exportRes2: capability => capability.speed[1].baseUnitEntity.number,
     importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`Pulse`, `${res1}Hz`, `${res2}Hz`),
   },
   RampUpFrequency: {
     isApplicable: capability => exportHelpers.isShutterEffect(capability, `RampUp`) && exportHelpers.hasFrequency(capability) && capability.isStep,
-    exportRes1: capability => capability.speed[0].getBaseUnitEntity().number,
+    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
     importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`RampUp`, `${res1}Hz`),
   },
   RampUpFreqRange: {
     isApplicable: capability => exportHelpers.isShutterEffect(capability, `RampUp`) && exportHelpers.hasFrequency(capability),
-    exportRes1: capability => capability.speed[0].getBaseUnitEntity().number,
-    exportRes2: capability => capability.speed[1].getBaseUnitEntity().number,
+    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
+    exportRes2: capability => capability.speed[1].baseUnitEntity.number,
     importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`RampUp`, `${res1}Hz`, `${res2}Hz`),
   },
   RampDownFrequency: {
     isApplicable: capability => exportHelpers.isShutterEffect(capability, `RampDown`) && exportHelpers.hasFrequency(capability) && capability.isStep,
-    exportRes1: capability => capability.speed[0].getBaseUnitEntity().number,
+    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
     importCapability: ({ res1 }) => importHelpers.getShutterStrobeCap(`RampDown`, `${res1}Hz`),
   },
   RampDownFreqRange: {
     isApplicable: capability => exportHelpers.isShutterEffect(capability, `RampDown`) && exportHelpers.hasFrequency(capability),
-    exportRes1: capability => capability.speed[0].getBaseUnitEntity().number,
-    exportRes2: capability => capability.speed[1].getBaseUnitEntity().number,
+    exportRes1: capability => capability.speed[0].baseUnitEntity.number,
+    exportRes2: capability => capability.speed[1].baseUnitEntity.number,
     importCapability: ({ res1, res2 }) => importHelpers.getShutterStrobeCap(`RampDown`, `${res1}Hz`, `${res2}Hz`),
   },
 
