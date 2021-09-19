@@ -71,10 +71,12 @@
     },
     "Strobe": {
       "capability": {
-        "type": "NoFunction"
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "helpWanted": "At which DMX values is the light constantly on or off? Is the strobe frequence increasing or decreasing?"
       }
     },
-    "Reserved": {
+    "Auto Programs": {
       "capabilities": [
         {
           "dmxRange": [0, 10],
@@ -82,19 +84,23 @@
         },
         {
           "dmxRange": [11, 100],
-          "type": "EffectSpeed",
+          "type": "Effect",
+          "effectPreset": "ColorFade",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [101, 200],
-          "type": "Speed",
+          "type": "Effect",
+          "effectPreset": "ColorJump",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [201, 255],
-          "type": "SoundSensitivity",
+          "type": "Effect",
+          "effectName": "Sound control",
+          "soundControlled": true,
           "soundSensitivityStart": "low",
           "soundSensitivityEnd": "high"
         }
@@ -103,7 +109,7 @@
   },
   "modes": [
     {
-      "name": "9-Channel",
+      "name": "9-channel",
       "shortName": "9ch",
       "channels": [
         "Red",
@@ -114,7 +120,7 @@
         "UV",
         "Intensity",
         "Strobe",
-        "Reserved"
+        "Auto Programs"
       ]
     }
   ]
