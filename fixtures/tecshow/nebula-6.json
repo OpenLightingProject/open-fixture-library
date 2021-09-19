@@ -36,76 +36,47 @@
   },
   "availableChannels": {
     "Red": {
-      "defaultValue": "0%",
-      "highlightValue": "0%",
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Red"
       }
     },
     "Green": {
-      "defaultValue": "0%",
-      "highlightValue": "0%",
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Green"
       }
     },
     "Blue": {
-      "defaultValue": 0,
-      "highlightValue": "0%",
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Blue"
       }
     },
     "White": {
-      "defaultValue": 0,
-      "highlightValue": "100%",
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "White"
       }
     },
     "Amber": {
-      "defaultValue": "0%",
-      "highlightValue": "0%",
       "capability": {
         "type": "ColorIntensity",
-        "color": "Amber",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Amber"
       }
     },
     "UV": {
-      "defaultValue": "0%",
-      "highlightValue": "0%",
       "capability": {
         "type": "ColorIntensity",
-        "color": "UV",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "UV"
       }
     },
     "Dimmer": {
-      "defaultValue": "0%",
-      "highlightValue": "100%",
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "type": "Intensity"
       }
     },
     "Strobe": {
-      "highlightValue": "0%",
       "capabilities": [
         {
           "dmxRange": [0, 7],
@@ -142,8 +113,6 @@
       ]
     },
     "Color Wheel Rotation": {
-      "defaultValue": "0%",
-      "highlightValue": "0%",
       "capabilities": [
         {
           "dmxRange": [0, 7],
@@ -158,8 +127,6 @@
       ]
     },
     "Color Macros": {
-      "defaultValue": "0%",
-      "highlightValue": "0%",
       "capabilities": [
         {
           "dmxRange": [0, 7],
