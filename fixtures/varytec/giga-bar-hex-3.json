@@ -113,7 +113,7 @@
           "dmxRange": [0, 10],
           "type": "NoFunction",
           "switchChannels": {
-            "Program Speed/Sensitivity": "Program Speed"
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -121,7 +121,7 @@
           "type": "Effect",
           "effectPreset": "ColorFade",
           "switchChannels": {
-            "Program Speed/Sensitivity": "Program Speed"
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -129,7 +129,7 @@
           "type": "Effect",
           "effectPreset": "ColorJump",
           "switchChannels": {
-            "Program Speed/Sensitivity": "Program Speed"
+            "Program Speed / Sound Sensitivity": "Program Speed"
           }
         },
         {
@@ -138,7 +138,7 @@
           "effectName": "Sound control",
           "soundControlled": true,
           "switchChannels": {
-            "Program Speed/Sensitivity": "Program Sensitivity"
+            "Program Speed / Sound Sensitivity": "Sound Sensitivity"
           }
         }
       ]
@@ -150,7 +150,7 @@
         "speedEnd": "fast"
       }
     },
-    "Program Sensitivity": {
+    "Sound Sensitivity": {
       "capability": {
         "type": "SoundSensitivity",
         "soundSensitivityStart": "low",
@@ -231,7 +231,7 @@
         "Intensity",
         "Strobe",
         "Auto Program Selection",
-        "Program Speed/Sensitivity",
+        "Program Speed / Sound Sensitivity",
         "Color Macros"
       ]
     }
