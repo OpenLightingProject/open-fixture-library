@@ -1,0 +1,76 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED CHINA PAR",
+  "shortName": "LED",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["Qasim Moosvi"],
+    "createDate": "2021-09-19",
+    "lastModifyDate": "2021-09-19"
+  },
+  "links": {
+    "other": [
+      "http://www.google.com"
+    ]
+  },
+  "rdm": {
+    "modelId": 10,
+    "softwareVersion": "11"
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 1,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Auto": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Red": {
+      "defaultValue": 4,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 7,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "A",
+      "shortName": "a",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Auto",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
