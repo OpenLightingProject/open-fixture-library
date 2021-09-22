@@ -1,0 +1,64 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Alladin 5ch",
+  "categories": ["Matrix"],
+  "meta": {
+    "authors": ["AleBi"],
+    "createDate": "2021-09-22",
+    "lastModifyDate": "2021-09-22"
+  },
+  "links": {
+    "productPage": [
+      "https://aladdin-lights.com/"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2900K",
+        "colorTemperatureEnd": "6100K"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5ch",
+      "channels": [
+        "Intensity",
+        "Color Temperature",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
