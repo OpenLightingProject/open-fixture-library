@@ -1,0 +1,91 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Fusionpar HXII",
+  "categories": ["Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["SJF"],
+    "createDate": "2021-09-23",
+    "lastModifyDate": "2021-09-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.showtech.com.au/webdata/LEDPAR123/downloads/LEDPAR123%20-%20LED%20Fusion%20Par%20Hex%2012%20Manual.pdf"
+    ],
+    "productPage": [
+      "https://www.showtech.com.au/product/fusionpar-h-xii/"
+    ]
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8-CH",
+      "shortName": "8ch",
+      "channels": [
+        "Master Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Amber",
+        "White",
+        "UV",
+        "Strobe"
+      ]
+    }
+  ]
+}
