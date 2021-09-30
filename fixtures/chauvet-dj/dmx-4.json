@@ -1,0 +1,59 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DMX-4",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["JEM"],
+    "createDate": "2021-09-30",
+    "lastModifyDate": "2021-09-30"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2015/12/DMX-4_QRG_Rev3_WO.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/dmx-4/"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer 1": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer 2": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer 3": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer 4": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch",
+      "channels": [
+        "Dimmer 1",
+        "Dimmer 2",
+        "Dimmer 3",
+        "Dimmer 4"
+      ]
+    }
+  ]
+}
