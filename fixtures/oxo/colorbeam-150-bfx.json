@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "COLORBEAM 150 BFX",
+  "shortName": "150BFX",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["CLEMENT"],
+    "createDate": "2021-10-07",
+    "lastModifyDate": "2021-10-07"
+  },
+  "links": {
+    "productPage": [
+      "https://www.axente.fr/colorbeam-150-bfx.html#"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer couronne Led": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Macros couronne led": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7Chnd",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer couronne Led",
+        "Color Macros couronne led",
+        "Program Speed"
+      ]
+    }
+  ]
+}
