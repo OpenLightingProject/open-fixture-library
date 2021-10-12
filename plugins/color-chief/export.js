@@ -93,18 +93,18 @@ function getFilesForMode(mode) {
  */
 function getModeChannels(mode) {
   const channelsByPixelKey = groupModeChannelsByPixelKey(mode);
-  const segments = channelsByPixelKey.map(channels => {
-    return {
-      red: channels.find(channel => isColorChannel(channel, `Red`)),
-      green: channels.find(channel => isColorChannel(channel, `Green`)),
-      blue: channels.find(channel => isColorChannel(channel, `Blue`)),
-      white: channels.find(channel => isColorChannel(channel, `White`) || isColorChannel(channel, `Cold White`) || isColorChannel(channel, `Warm White`)),
-      amber: channels.find(channel => isColorChannel(channel, `Amber`) || isColorChannel(channel, `Warm White`)),
-      uv: channels.find(channel => isColorChannel(channel, `UV`)),
-      dimmer: channels.find(channel => isChannelOfType(channel, `Intensity`)),
-      shutter: channels.find(channel => isChannelOfType(channel, `Strobe`) || isChannelOfType(channel, `Shutter`)),
-    };
-  });
+  const segments = channelsByPixelKey.map(channels => ({
+    red: channels.find(channel => isColorChannel(channel, `Red`)),
+    green: channels.find(channel => isColorChannel(channel, `Green`)),
+    blue: channels.find(channel => isColorChannel(channel, `Blue`)),
+    white: channels.find(channel => isColorChannel(channel, `White`) || isColorChannel(channel, `Cold White`) || isColorChannel(channel, `Warm White`)),
+    amber: channels.find(channel => isColorChannel(channel, `Amber`) || isColorChannel(channel, `Warm White`)),
+    uv: channels.find(channel => isColorChannel(channel, `UV`)),
+    dimmer: channels.find(channel => isChannelOfType(channel, `Intensity`)),
+    shutter: channels.find(channel => isChannelOfType(channel, `Strobe`) || isChannelOfType(channel, `Shutter`)),
+  }));
+
+  mergeDisjunctSegments(segments);
 
   return {
     segments,
@@ -128,6 +128,35 @@ function groupModeChannelsByPixelKey(mode) {
   }
 
   return Object.values(channelsByPixelKey);
+}
+
+/**
+ * Try to merge consecutive segments with disjunctly defined control elements.
+ * @param {SegmentChannels[]} segments The segments to merge.
+ */
+function mergeDisjunctSegments(segments) {
+  let segmentIndex = 1;
+
+  while (segmentIndex < segments.length) {
+    const currentSegment = segments[segmentIndex];
+    const previousSegment = segments[segmentIndex - 1];
+    const definedControlElements = Object.keys(currentSegment).filter(
+      controlElement => currentSegment[controlElement] !== undefined,
+    );
+    const canBeMerged = definedControlElements.every(
+      controlElement => previousSegment[controlElement] === undefined,
+    );
+
+    if (canBeMerged) {
+      for (const controlElement of definedControlElements) {
+        previousSegment[controlElement] = currentSegment[controlElement];
+      }
+      segments.splice(segmentIndex, 1);
+    }
+    else {
+      segmentIndex++;
+    }
+  }
 }
 
 /**
