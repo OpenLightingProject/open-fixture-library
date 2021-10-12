@@ -121,6 +121,9 @@ function getModeChannels(mode) {
       ...mode.channels.filter(channel => isChannelOfType(channel, `Iris`)),
       ...mode.channels.filter(channel => isChannelOfType(channel, `Color Temperature`)),
       ...mode.channels.filter(channel => isChannelOfType(channel, `Maintenance`)),
+      ...mode.channels.filter(channel => isChannelOfType(channel, `Shutter`) && segments.every(
+        segment => segment.shutter !== channel,
+      )),
     ],
   };
 }
