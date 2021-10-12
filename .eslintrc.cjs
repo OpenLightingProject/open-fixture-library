@@ -56,7 +56,10 @@ const enabledRuleParameters = {
   }],
   'no-return-assign': [],
   'no-return-await': [],
-  'no-shadow': [{ builtinGlobals: false }],
+  'no-shadow': [{
+    builtinGlobals: false,
+    allow: [`_`], // allow placeholder paramters that aren't used anyway
+  }],
   'no-template-curly-in-string': [],
   'no-trailing-spaces': [],
   'no-unsafe-optional-chaining': [{ 'disallowArithmeticOperators': true }],
