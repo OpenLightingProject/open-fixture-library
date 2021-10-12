@@ -108,8 +108,20 @@ function getModeChannels(mode) {
 
   return {
     segments,
-    colorWheels: [],
-    freePatchChannels: [],
+    colorWheels: mode.channels.filter(channel => isChannelOfType(channel, `Multi-Color`)),
+    freePatchChannels: [
+      ...mode.channels.filter(channel => isChannelOfType(channel, `Pan`)),
+      ...mode.channels.filter(channel => isChannelOfType(channel, `Tilt`)),
+      ...mode.channels.filter(channel => isChannelOfType(channel, `Effect`)),
+      ...mode.channels.filter(channel => isChannelOfType(channel, `Gobo`)),
+      ...mode.channels.filter(channel => isChannelOfType(channel, `Speed`)),
+      ...mode.channels.filter(channel => isChannelOfType(channel, `Prism`)),
+      ...mode.channels.filter(channel => isChannelOfType(channel, `WheelSlotRotation`)),
+      ...mode.channels.filter(channel => isChannelOfType(channel, `Zoom`)),
+      ...mode.channels.filter(channel => isChannelOfType(channel, `Iris`)),
+      ...mode.channels.filter(channel => isChannelOfType(channel, `Color Temperature`)),
+      ...mode.channels.filter(channel => isChannelOfType(channel, `Maintenance`)),
+    ],
   };
 }
 
