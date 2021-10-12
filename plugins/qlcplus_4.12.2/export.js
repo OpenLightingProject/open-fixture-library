@@ -459,7 +459,7 @@ function getPanTiltMax(panOrTilt, channels) {
 }
 
 /**
- * Adds Head tags for all used pixels in the given mode, ordered by XYZ direction (pixel groups by appearence in JSON).
+ * Adds Head tags for all used pixels in the given mode, ordered by XYZ direction (pixel groups by appearance in JSON).
  * @param {XMLElement} xmlMode The Mode tag to which the Head tags should be added
  * @param {Mode} mode The fixture's mode whose pixels should be determined.
  */
