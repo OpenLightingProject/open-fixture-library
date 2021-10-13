@@ -28,7 +28,7 @@
 
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "eslint .",
-    "lint:eslint-errors-only": "eslint --quiet --format codeframe .",
+    "lint:eslint-errors-only": "eslint --quiet --format unix .",
     "lint:stylelint": "stylelint **/*.scss **/*.vue",
 
     "test": "npm run lint && npm run test:fixtures-valid",
