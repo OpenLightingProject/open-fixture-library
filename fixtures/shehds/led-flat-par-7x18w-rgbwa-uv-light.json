@@ -1,0 +1,145 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Flat Par 7x18W RGBWA+UV Light",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["JMS", "le 11/10/2021", "jms27000"],
+    "createDate": "2021-10-16",
+    "lastModifyDate": "2021-10-16",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2021-10-16",
+      "comment": "created by Q Light Controller Plus (version 4.12.4)"
+    }
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Master dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Violet": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Function": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 1],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [2, 2],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [3, 3],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [4, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Function Speed Adjustment CH9": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Speed"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Violet"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Master dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "Violet",
+        "Strobe",
+        "Function",
+        "Function Speed Adjustment CH9"
+      ]
+    }
+  ]
+}
