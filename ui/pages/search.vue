@@ -194,8 +194,8 @@ export default {
 };
 
 /**
- * @param {Object} query The raw query returned by Vue Router
- * @returns {Object} Object with properties "search" (string), "manufacturers" and "categories" (arrays of strings).
+ * @param {object} query The raw query returned by Vue Router
+ * @returns {object} Object with properties "search" (string), "manufacturers" and "categories" (arrays of strings).
  */
 function getSanitizedQuery(query) {
   const searchQuery = (query.q || ``).trim();

@@ -249,7 +249,7 @@ export default {
     },
 
     /**
-     * @returns {Array.<Object>} Array of videos that can be embetted.
+     * @returns {object[]} Array of videos that can be embetted.
      */
     videos() {
       const videoUrls = this.fixture.getLinksOfType(`video`);
@@ -364,8 +364,8 @@ const supportedVideoFormats = {
 
 
 /**
- * @param {String} url The video URL.
- * @returns {Object|null} The embettable video data for the URL, or null if the video can not be embetted.
+ * @param {string} url The video URL.
+ * @returns {object | null} The embettable video data for the URL, or null if the video can not be embetted.
  */
 function getEmbettableVideoData(url) {
   const videoTypes = Object.keys(supportedVideoFormats);
@@ -389,8 +389,8 @@ function getEmbettableVideoData(url) {
 }
 
 /**
- * @param {String} url The URL to extract the hostname from.
- * @returns {String} The hostname of the provided URL, or the whole URL if the hostname could not be determined.
+ * @param {string} url The URL to extract the hostname from.
+ * @returns {string} The hostname of the provided URL, or the whole URL if the hostname could not be determined.
  */
 function getHostname(url) {
   // adapted from https://stackoverflow.com/a/21553982/451391

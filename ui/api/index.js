@@ -9,9 +9,9 @@ import { sendJson } from '../../lib/server-response-helpers.js';
 import * as routeHandlers from './routes.js';
 
 /**
- * @typedef {Object} ApiResponse
- * @property {Number} [statusCode=200] The HTTP status code set for the response.
- * @property {Object} body The response body that should be sent as JSON back to the API client.
+ * @typedef {object} ApiResponse
+ * @property {number} [statusCode=200] The HTTP status code set for the response.
+ * @property {object} body The response body that should be sent as JSON back to the API client.
  */
 
 const app = express();

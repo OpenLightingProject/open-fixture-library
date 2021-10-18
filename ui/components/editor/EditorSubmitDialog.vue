@@ -352,7 +352,7 @@ export default {
     /**
      * Called from fixture editor to open the dialog.
      * @public
-     * @param {*} requestBody The data to pass to the API endpoint.
+     * @param {any} requestBody The data to pass to the API endpoint.
      */
     async validate(requestBody) {
       this.requestBody = requestBody;

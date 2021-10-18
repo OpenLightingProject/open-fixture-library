@@ -13,11 +13,11 @@ let testFixtures;
 let testErrored = false;
 
 /**
- * @typedef {Object} Task
- * @property {String} manufacturerKey The manufacturer key of the fixture that should be tested.
- * @property {String} fixtureKey The key of the fixture that should be tested.
- * @property {String} pluginKey The key of the export plugin whose output should be tested.
- * @property {String} testKey The key of the export test that should be executed.
+ * @typedef {object} Task
+ * @property {string} manufacturerKey The manufacturer key of the fixture that should be tested.
+ * @property {string} fixtureKey The key of the fixture that should be tested.
+ * @property {string} pluginKey The key of the export plugin whose output should be tested.
+ * @property {string} testKey The key of the export test that should be executed.
  */
 
 (async () => {
@@ -126,8 +126,8 @@ let testErrored = false;
 
 
 /**
- * @param {Object} changedComponents What components have been changed in this PR.
- * @returns {Array.<Task>} What export valid tasks have to be done due to changes in the model. May be empty.
+ * @param {object} changedComponents What components have been changed in this PR.
+ * @returns {Task[]} What export valid tasks have to be done due to changes in the model. May be empty.
  */
 function getTasksForModel(changedComponents) {
   const tasks = [];
@@ -150,8 +150,8 @@ function getTasksForModel(changedComponents) {
 }
 
 /**
- * @param {Object} changedComponents What components have been changed in this PR.
- * @returns {Array.<Task>} What export valid tasks have to be done due to changes in plugins. May be empty.
+ * @param {object} changedComponents What components have been changed in this PR.
+ * @returns {Task[]} What export valid tasks have to be done due to changes in plugins. May be empty.
  */
 function getTasksForPlugins(changedComponents) {
   const tasks = [];
@@ -175,8 +175,8 @@ function getTasksForPlugins(changedComponents) {
 }
 
 /**
- * @param {Object} changedComponents What components have been changed in this PR.
- * @returns {Array.<Task>} What export valid tasks have to be done due to changes in export tests. May be empty.
+ * @param {object} changedComponents What components have been changed in this PR.
+ * @returns {Task[]} What export valid tasks have to be done due to changes in export tests. May be empty.
  */
 function getTasksForExportTests(changedComponents) {
   const tasks = [];
@@ -196,8 +196,8 @@ function getTasksForExportTests(changedComponents) {
 }
 
 /**
- * @param {Object} changedComponents What components have been changed in this PR.
- * @returns {Array.<Task>} What export valid tasks have to be done due to changes in fixtures. May be empty.
+ * @param {object} changedComponents What components have been changed in this PR.
+ * @returns {Task[]} What export valid tasks have to be done due to changes in fixtures. May be empty.
  */
 function getTasksForFixtures(changedComponents) {
   const tasks = [];

@@ -154,17 +154,17 @@ export default {
 };
 
 /**
- * @param {*} queryParameter Vue Router's query parameter to check.
- * @returns {Boolean} True if the query parameter is not specified or empty.
+ * @param {any} queryParameter Vue Router's query parameter to check.
+ * @returns {boolean} True if the query parameter is not specified or empty.
  */
 function isEmpty(queryParameter) {
   return queryParameter === undefined || queryParameter === ``;
 }
 
 /**
- * @param {Object} manufacturer The manufacturer object that matches the provided RDM manufacturer id.
- * @param {String|undefined} modelId The provided RDM model id, or undefined.
- * @param {String|undefined} personalityIndex The provided RDM personality index, or undefined.
+ * @param {object} manufacturer The manufacturer object that matches the provided RDM manufacturer id.
+ * @param {string | undefined} modelId The provided RDM model id, or undefined.
+ * @param {string | undefined} personalityIndex The provided RDM personality index, or undefined.
  * @param {Function} redirect The redirect function to be called.
  */
 function redirectToCorrectPage(manufacturer, modelId, personalityIndex, redirect) {

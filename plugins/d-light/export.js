@@ -12,12 +12,12 @@ import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 export const version = `0.2.0`;
 
 /**
- * @param {Array.<Fixture>} fixtures An array of Fixture objects.
- * @param {Object} options Global options, including:
- * @param {String} options.baseDirectory Absolute path to OFL's root directory.
+ * @param {Fixture[]} fixtures An array of Fixture objects.
+ * @param {object} options Global options, including:
+ * @param {string} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {String|undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
- * @returns {Promise.<Array.<Object>, Error>} The generated files.
+ * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @returns {Promise<object[], Error>} The generated files.
  */
 export async function exportFixtures(fixtures, options) {
   const deviceFiles = [];
@@ -70,8 +70,8 @@ export async function exportFixtures(fixtures, options) {
  * This function adds the given attribute group along with its channels to the given XML.
  * @param {XMLElement} xml The XML parent element.
  * @param {Mode} mode The fixture's mode that this definition is representing.
- * @param {String} attribute A D::Light attribute name.
- * @param {Array.<AbstractChannel>} channels All channels of the mode that are associated to the given attribute name.
+ * @param {string} attribute A D::Light attribute name.
+ * @param {AbstractChannel[]} channels All channels of the mode that are associated to the given attribute name.
  */
 function addAttribute(xml, mode, attribute, channels) {
   const xmlAttribute = xml.element({
@@ -153,8 +153,8 @@ function addAttribute(xml, mode, attribute, channels) {
 
   /**
    * @param {CoarseChannel} channel The channel to get the name for.
-   * @param {Number} indexInAttribute The index of this channel in the list of all channels related to the attribute.
-   * @returns {String} The parameter name (i. e. channel name) that should be used for this channel in D::Light.
+   * @param {number} indexInAttribute The index of this channel in the list of all channels related to the attribute.
+   * @returns {string} The parameter name (i. e. channel name) that should be used for this channel in D::Light.
    */
   function getParameterName(channel, indexInAttribute) {
     const uniqueName = channel.uniqueName;
@@ -188,8 +188,8 @@ function addAttribute(xml, mode, attribute, channels) {
 }
 
 /**
- * @param {CoarseChannel|FineChannel} channel A usable channel, i. e. no switching channel.
- * @returns {Number} The DMX value this channel should be set to as default.
+ * @param {CoarseChannel | FineChannel} channel A usable channel, i. e. no switching channel.
+ * @returns {number} The DMX value this channel should be set to as default.
  */
 function getDefaultValue(channel) {
   if (channel instanceof FineChannel) {
@@ -201,7 +201,7 @@ function getDefaultValue(channel) {
 
 /**
  * @param {AbstractChannel} channel Any kind of channel, e.g. an item of a mode's channel list.
- * @returns {CoarseChannel|FineChannel} Switching channels resolved to their default channel.
+ * @returns {CoarseChannel | FineChannel} Switching channels resolved to their default channel.
  */
 function getUsableChannel(channel) {
   if (channel instanceof SwitchingChannel) {
@@ -212,8 +212,8 @@ function getUsableChannel(channel) {
 }
 
 /**
- * @param {Array.<AbstractChannel>} channels List of channels, e.g. from a mode's channel list.
- * @returns {Object.<String, AbstractChannel>} D::Light attribute names mapped to the corresponding channels of the given list. All channels are included once.
+ * @param {AbstractChannel[]} channels List of channels, e.g. from a mode's channel list.
+ * @returns {Record<string, AbstractChannel>} D::Light attribute names mapped to the corresponding channels of the given list. All channels are included once.
  */
 function getChannelsByAttribute(channels) {
   const channelsByAttribute = {
@@ -242,8 +242,8 @@ function getChannelsByAttribute(channels) {
   return channelsByAttribute;
 
   /**
-   * @param {CoarseChannel|FineChannel} channel A usable channel, i. e. no matrix or switching channels.
-   * @returns {String} The proper D::Light attribute name for this channel.
+   * @param {CoarseChannel | FineChannel} channel A usable channel, i. e. no matrix or switching channels.
+   * @returns {string} The proper D::Light attribute name for this channel.
    */
   function getChannelAttribute(channel) {
     if (channel instanceof FineChannel) {

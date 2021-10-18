@@ -175,8 +175,8 @@ export default {
   },
   methods: {
     /**
-     * @param {String} fixtureKey The combined manufacturer / fixture key.
-     * @returns {String} The manufacturer and fixture names, separated by a space.
+     * @param {string} fixtureKey The combined manufacturer / fixture key.
+     * @returns {string} The manufacturer and fixture names, separated by a space.
      */
     getFixtureName(fixtureKey) {
       const manufacturerKey = fixtureKey.split(`/`)[0];
@@ -190,8 +190,8 @@ export default {
 
 
 /**
- * @param {String} contributor The contributor name.
- * @returns {String} The combined key of the latest fixture contributed to by this contributor.
+ * @param {string} contributor The contributor name.
+ * @returns {string} The combined key of the latest fixture contributed to by this contributor.
  */
 function getLatestFixtureKey(contributor) {
   return register.lastUpdated.find(

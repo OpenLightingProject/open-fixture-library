@@ -46,7 +46,7 @@ export default {
   computed: {
     /**
      * @public
-     * @returns {Record.<String, String | null>} Validation data for vue-form
+     * @returns {Record<string, string | null>} Validation data for vue-form
      */
     validationData() {
       return {
