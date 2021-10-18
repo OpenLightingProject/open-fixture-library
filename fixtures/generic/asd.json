@@ -1,0 +1,41 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "asd",
+  "shortName": "ads",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["brian"],
+    "createDate": "2021-10-18",
+    "lastModifyDate": "2021-10-18"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2015/12/Hurricane_1600_UM_Rev2_WO.pdf"
+    ]
+  },
+  "physical": {
+    "weight": 2,
+    "power": 3,
+    "bulb": {
+      "colorTemperature": 2500,
+      "lumens": 200
+    }
+  },
+  "availableChannels": {
+    "Color Presets": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Yellow"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "thigh",
+      "shortName": "gif",
+      "channels": [
+        "Color Presets"
+      ]
+    }
+  ]
+}
