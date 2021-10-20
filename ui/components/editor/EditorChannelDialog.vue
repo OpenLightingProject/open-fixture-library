@@ -630,10 +630,10 @@ export default {
     },
 
     /**
-     * @param {Object} coarseChannel The channel object of the coarse channel.
-     * @param {Number} offset At which resolution should be started.
-     * @param {Boolean} [addToMode] If true, the fine channel is pushed to the current mode's channels.
-     * @returns {Array.<String>} Array of added fine channel UUIDs (at the index of their resolution).
+     * @param {object} coarseChannel The channel object of the coarse channel.
+     * @param {number} offset At which resolution should be started.
+     * @param {boolean} [addToMode] If true, the fine channel is pushed to the current mode's channels.
+     * @returns {string[]} Array of added fine channel UUIDs (at the index of their resolution).
      */
     addFineChannels(coarseChannel, offset, addToMode) {
       const addedFineChannelUuids = [];
@@ -659,7 +659,7 @@ export default {
     },
 
     /**
-     * @param {Boolean} show Whether to show or hide the Capability Wizard.
+     * @param {boolean} show Whether to show or hide the Capability Wizard.
      */
     setWizardVisibility(show) {
       this.channel.wizard.show = show;

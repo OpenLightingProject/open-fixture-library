@@ -141,7 +141,7 @@ export default {
     /**
      * Called from {@link EditorCapabilityTypeData}
      * @public
-     * @returns {Array.<String>} Array of all props to reset to default data when capability is saved.
+     * @returns {string[]} Array of all props to reset to default data when capability is saved.
      */
     resetProperties() {
       if (!this.isStrobeEffect) {

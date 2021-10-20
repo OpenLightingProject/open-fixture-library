@@ -139,8 +139,8 @@ import LabeledValue from '../LabeledValue.vue';
 import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
 
 /**
- * @param {Object} capabilityTypeData The generated capability's type data.
- * @param {Number} index The index of the generated capability.
+ * @param {object} capabilityTypeData The generated capability's type data.
+ * @param {number} index The index of the generated capability.
  */
 function replaceHashWithIndex(capabilityTypeData, index) {
   if (`effectName` in capabilityTypeData) {
@@ -176,14 +176,14 @@ export default {
     },
 
     /**
-     * @returns {Number} Maximum allowed DMX value.
+     * @returns {number} Maximum allowed DMX value.
      */
     dmxMax() {
       return Math.pow(256, this.resolution) - 1;
     },
 
     /**
-     * @returns {Number} Index in capabilities array where the generated capabilities need to be inserted.
+     * @returns {number} Index in capabilities array where the generated capabilities need to be inserted.
      */
     insertIndex() {
       // loop from inherited capabilities array end to start
@@ -197,7 +197,7 @@ export default {
     },
 
     /**
-     * @returns {Array.<Object>} Generated capabilities. An empty capability is prepended to fill the gap if neccessary.
+     * @returns {object[]} Generated capabilities. An empty capability is prepended to fill the gap if neccessary.
      */
     computedCapabilites() {
       const capabilities = [];
@@ -229,7 +229,7 @@ export default {
     },
 
     /**
-     * @returns {Number} Number of (empty) capabilities to remove after the generated ones.
+     * @returns {number} Number of (empty) capabilities to remove after the generated ones.
      */
     removeCount() {
       const nextCapability = this.capabilities[this.insertIndex];
@@ -251,7 +251,7 @@ export default {
     },
 
     /**
-     * @returns {Number} DMX value range end of the last generated capability.
+     * @returns {number} DMX value range end of the last generated capability.
      */
     end() {
       return this.computedCapabilites.length === 0 ? -1 : this.computedCapabilites[this.computedCapabilites.length - 1].dmxRange[1];
@@ -259,7 +259,7 @@ export default {
 
     /**
      * @see {@link getCapabilityWithSource}
-     * @returns {Array.<Object>} Array of all capabilities (generated and inherited), combined with their source.
+     * @returns {object[]} Array of all capabilities (generated and inherited), combined with their source.
      */
     allCapabilities() {
       const inheritedCapabilities = this.capabilities.map(
@@ -280,7 +280,7 @@ export default {
 
     /**
      * Performs validation of the user input.
-     * @returns {String|null} A string with an validation error, or null if there is no error.
+     * @returns {string | null} A string with an validation error, or null if there is no error.
      */
     validationError() {
       if (this.wizard.start < 0) {
@@ -299,7 +299,7 @@ export default {
     },
 
     /**
-     * @returns {String|null} A string with an error that prevents the generated capabilities from being saved, or null if there is no error.
+     * @returns {string | null} A string with an error that prevents the generated capabilities from being saved, or null if there is no error.
      */
     error() {
       if (this.validationError) {
@@ -379,9 +379,9 @@ export default {
 };
 
 /**
- * @param {Object} capability The "full" capability object.
- * @param {String} source The source of the capability (inherited or computed).
- * @returns {Object} A capability object that additionally contains the specified source.
+ * @param {object} capability The "full" capability object.
+ * @param {string} source The source of the capability (inherited or computed).
+ * @returns {object} A capability object that additionally contains the specified source.
  */
 function getCapabilityWithSource(capability, source) {
   return Object.assign({}, capability, { source });

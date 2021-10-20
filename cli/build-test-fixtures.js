@@ -18,19 +18,19 @@ const jsonPath = fileURLToPath(new URL(`../tests/test-fixtures.json`, import.met
 const markdownPath = fileURLToPath(new URL(`../tests/test-fixtures.md`, import.meta.url));
 
 /**
- * @typedef {Object} FixtureFeature
- * @property {String|undefined} id The fixture feature's ID
- * @property {String} name A short name of the fixture feature.
- * @property {String} description A longer description of the fixture feature.
+ * @typedef {object} FixtureFeature
+ * @property {string | undefined} id The fixture feature's ID
+ * @property {string} name A short name of the fixture feature.
+ * @property {string} description A longer description of the fixture feature.
  * @property {Function} hasFeature A function that returns whether a given fixture supports this feature.
  */
 
 /**
- * @typedef {Object} FixtureFeatureResult
- * @property {String} man The fixture manufacturer's name.
- * @property {String} key The combined manufacturer/fixture key.
- * @property {String} name The fixture name.
- * @property {Array.<String>} features The IDs of all fixture features that the fixture supports.
+ * @typedef {object} FixtureFeatureResult
+ * @property {string} man The fixture manufacturer's name.
+ * @property {string} key The combined manufacturer/fixture key.
+ * @property {string} name The fixture name.
+ * @property {string[]} features The IDs of all fixture features that the fixture supports.
  */
 
 (async () => {
@@ -39,7 +39,7 @@ const markdownPath = fileURLToPath(new URL(`../tests/test-fixtures.md`, import.m
   const fixtureFeatures = await getFixtureFeatures();
   const featuresUsed = Object.fromEntries(fixtureFeatures.map(feature => [feature.id, 0]));// check which features each fixture supports
 
-  /** @type {Array.<FixtureFeatureResult>} */
+  /** @type {FixtureFeatureResult[]} */
   let fixtures = [];
 
   for (const manufacturerFixture of Object.keys(register.filesystem)) {
@@ -113,7 +113,7 @@ const markdownPath = fileURLToPath(new URL(`../tests/test-fixtures.md`, import.m
 
 
 /**
- * @returns {Promise.<Array.<FixtureFeature>>} A Promise that resolves to an array of all defined fixture features.
+ * @returns {Promise<FixtureFeature[]>} A Promise that resolves to an array of all defined fixture features.
  */
 async function getFixtureFeatures() {
   const fixtureFeatures = [];
@@ -152,9 +152,9 @@ async function getFixtureFeatures() {
 
 /**
  * Generates a markdown table presenting the test fixtures and all fix features.
- * @param {Array.<FixtureFeatureResult>} fixtures The fixture feature results.
- * @param {Array.<FixtureFeature>} fixtureFeatures All fixture features.
- * @returns {Promise.<String>} A Promise that resolves to the markdown code to be used in a markdown file.
+ * @param {FixtureFeatureResult[]} fixtures The fixture feature results.
+ * @param {FixtureFeature[]} fixtureFeatures All fixture features.
+ * @returns {Promise<string>} A Promise that resolves to the markdown code to be used in a markdown file.
  */
 async function getMarkdownCode(fixtures, fixtureFeatures) {
   const manufacturers = await importJson(`../fixtures/manufacturers.json`, import.meta.url);

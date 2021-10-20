@@ -71,7 +71,7 @@ import { checkFixture } from '../tests/fixture-valid.js';
 
 
 /**
- * @param {Object.<String, *>} cliArguments Command line interface arguments parsed by minimist.
+ * @param {Record<string, any>} cliArguments Command line interface arguments parsed by minimist.
  */
 async function checkCliArguments(cliArguments) {
   const plugins = await importJson(`../plugins/plugins.json`, import.meta.url);

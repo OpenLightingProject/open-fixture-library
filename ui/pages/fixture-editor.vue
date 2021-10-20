@@ -242,8 +242,8 @@ export default {
     },
 
     /**
-     * @param {String} channelUuid The channel's UUID.
-     * @returns {String} The channel's name.
+     * @param {string} channelUuid The channel's UUID.
+     * @returns {string} The channel's name.
      */
     getChannelName(channelUuid) {
       const channel = this.fixture.availableChannels[channelUuid];
@@ -263,8 +263,8 @@ export default {
     /**
      * Called from {@link EditorMode}.
      * @public
-     * @param {String} channelUuid The channel's UUID.
-     * @returns {Boolean} True if the channel's name is not used in another channel, too.
+     * @param {string} channelUuid The channel's UUID.
+     * @returns {boolean} True if the channel's name is not used in another channel, too.
      */
     isChannelNameUnique(channelUuid) {
       const channelName = this.getChannelName(channelUuid);
@@ -275,8 +275,8 @@ export default {
     },
 
     /**
-     * @param {String} channelUuid The channel's UUID.
-     * @param {String|null} [modeUuid] The mode's UUID. If not supplied, remove channel everywhere.
+     * @param {string} channelUuid The channel's UUID.
+     * @param {string | null} [modeUuid] The mode's UUID. If not supplied, remove channel everywhere.
      */
     removeChannel(channelUuid, modeUuid) {
       if (modeUuid) {
@@ -309,7 +309,7 @@ export default {
 
     /**
      * Saves the entered user data to the browser's local storage if available.
-     * @param {'fixture'|'channel'} objectName The object to save.
+     * @param {'fixture' | 'channel'} objectName The object to save.
      */
     autoSave(objectName) {
       if (!this.readyToAutoSave) {
@@ -432,9 +432,9 @@ export default {
 };
 
 /**
- * @param {Object} prefillObject The object supplied in the page query.
- * @param {String} key The key to check.
- * @returns {Boolean} True if the value prefillObject[key] is prefillable, false otherwise.
+ * @param {object} prefillObject The object supplied in the page query.
+ * @param {string} key The key to check.
+ * @returns {boolean} True if the value prefillObject[key] is prefillable, false otherwise.
  */
 function isPrefillable(prefillObject, key) {
   const allowedPrefillValues = {
