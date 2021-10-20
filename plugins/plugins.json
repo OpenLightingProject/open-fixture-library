@@ -6,6 +6,7 @@
   ],
   "exportPlugins": [
     "aglight",
+    "color-chief",
     "colorsource",
     "d-light",
     "dragonframe",
@@ -18,6 +19,11 @@
   "data": {
     "aglight": {
       "name": "AGLight",
+      "exportPluginVersion": "1.0.0",
+      "exportTests": []
+    },
+    "color-chief": {
+      "name": "Eurolite Color Chief 2.0",
       "exportPluginVersion": "1.0.0",
       "exportTests": []
     },

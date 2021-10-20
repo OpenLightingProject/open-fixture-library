@@ -86,7 +86,7 @@ Base class for channels.
     * *[.key](#AbstractChannel+key) ⇒ <code>string</code>*
     * *[.name](#AbstractChannel+name) ⇒ <code>string</code>*
     * *[.uniqueName](#AbstractChannel+uniqueName) ⇒ <code>string</code>*
-    * *[.pixelKey](#AbstractChannel+pixelKey) ⇒ <code>string</code>*
+    * *[.pixelKey](#AbstractChannel+pixelKey) ⇒ <code>string</code> \| <code>null</code>*
     * *[.pixelKey](#AbstractChannel+pixelKey)*
 
 <a name="new_AbstractChannel_new"></a>
@@ -132,9 +132,9 @@ Override this method for more sensible implementation.
 **See**: [uniqueChannelNames](#Fixture+uniqueChannelNames)  
 <a name="AbstractChannel+pixelKey"></a>
 
-### *abstractChannel.pixelKey ⇒ <code>string</code>*
+### *abstractChannel.pixelKey ⇒ <code>string</code> \| <code>null</code>*
 **Kind**: instance property of [<code>AbstractChannel</code>](#AbstractChannel)  
-**Returns**: <code>string</code> - The key of the pixel (group) that this channel is associated to. Defaults to null.  
+**Returns**: <code>string</code> \| <code>null</code> - The key of the pixel (group) that this channel is associated to. Defaults to null.  
 <a name="AbstractChannel+pixelKey"></a>
 
 ### *abstractChannel.pixelKey*
@@ -142,7 +142,7 @@ Override this method for more sensible implementation.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| pixelKey | <code>string</code> | The key of the pixel (group) that this channel is associated to. Set to null to dereference a channel from a pixel (group). |
+| pixelKey | <code>string</code> \| <code>null</code> | The key of the pixel (group) that this channel is associated to. Set to null to dereference a channel from a pixel (group). |
 
 <a name="Capability"></a>
 
@@ -543,7 +543,7 @@ Only the MSB (most significant byte) channel if it's a multi-byte channel.
         * [.isHelpWanted](#CoarseChannel+isHelpWanted) ⇒ <code>boolean</code>
         * [.key](#AbstractChannel+key) ⇒ <code>string</code>
         * [.uniqueName](#AbstractChannel+uniqueName) ⇒ <code>string</code>
-        * [.pixelKey](#AbstractChannel+pixelKey) ⇒ <code>string</code>
+        * [.pixelKey](#AbstractChannel+pixelKey) ⇒ <code>string</code> \| <code>null</code>
         * [.ensureProperResolution(uncheckedResolution)](#CoarseChannel+ensureProperResolution)
         * [.getResolutionInMode(mode, switchingChannelBehavior)](#CoarseChannel+getResolutionInMode) ⇒ [<code>Resolution</code>](#Resolution)
         * [.getDefaultValueWithResolution(desiredResolution)](#CoarseChannel+getDefaultValueWithResolution) ⇒ <code>number</code>
@@ -714,10 +714,10 @@ Overrides [`AbstractChannel.name`](#AbstractChannel+name).
 **See**: [uniqueChannelNames](#Fixture+uniqueChannelNames)  
 <a name="AbstractChannel+pixelKey"></a>
 
-### coarseChannel.pixelKey ⇒ <code>string</code>
+### coarseChannel.pixelKey ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance property of [<code>CoarseChannel</code>](#CoarseChannel)  
 **Overrides**: [<code>pixelKey</code>](#AbstractChannel+pixelKey)  
-**Returns**: <code>string</code> - The key of the pixel (group) that this channel is associated to. Defaults to null.  
+**Returns**: <code>string</code> \| <code>null</code> - The key of the pixel (group) that this channel is associated to. Defaults to null.  
 <a name="CoarseChannel+ensureProperResolution"></a>
 
 ### coarseChannel.ensureProperResolution(uncheckedResolution)
@@ -891,7 +891,7 @@ Also called LSB (least significant byte) channel.
     * [.defaultValue](#FineChannel+defaultValue) ⇒ <code>number</code>
     * [.key](#AbstractChannel+key) ⇒ <code>string</code>
     * [.uniqueName](#AbstractChannel+uniqueName) ⇒ <code>string</code>
-    * [.pixelKey](#AbstractChannel+pixelKey) ⇒ <code>string</code>
+    * [.pixelKey](#AbstractChannel+pixelKey) ⇒ <code>string</code> \| <code>null</code>
 
 <a name="new_FineChannel_new"></a>
 
@@ -955,10 +955,10 @@ Overrides [`AbstractChannel.fixture`](#AbstractChannel+fixture).
 **See**: [uniqueChannelNames](#Fixture+uniqueChannelNames)  
 <a name="AbstractChannel+pixelKey"></a>
 
-### fineChannel.pixelKey ⇒ <code>string</code>
+### fineChannel.pixelKey ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance property of [<code>FineChannel</code>](#FineChannel)  
 **Overrides**: [<code>pixelKey</code>](#AbstractChannel+pixelKey)  
-**Returns**: <code>string</code> - The key of the pixel (group) that this channel is associated to. Defaults to null.  
+**Returns**: <code>string</code> \| <code>null</code> - The key of the pixel (group) that this channel is associated to. Defaults to null.  
 <a name="Fixture"></a>
 
 ## Fixture
@@ -1723,7 +1723,7 @@ Dummy channel used to represent `null` in a mode's channel list.
     * [.isHelpWanted](#CoarseChannel+isHelpWanted) ⇒ <code>boolean</code>
     * [.key](#AbstractChannel+key) ⇒ <code>string</code>
     * [.uniqueName](#AbstractChannel+uniqueName) ⇒ <code>string</code>
-    * [.pixelKey](#AbstractChannel+pixelKey) ⇒ <code>string</code>
+    * [.pixelKey](#AbstractChannel+pixelKey) ⇒ <code>string</code> \| <code>null</code>
     * [.ensureProperResolution(uncheckedResolution)](#CoarseChannel+ensureProperResolution)
     * [.getResolutionInMode(mode, switchingChannelBehavior)](#CoarseChannel+getResolutionInMode) ⇒ [<code>Resolution</code>](#Resolution)
     * [.getDefaultValueWithResolution(desiredResolution)](#CoarseChannel+getDefaultValueWithResolution) ⇒ <code>number</code>
@@ -1911,10 +1911,10 @@ Overrides [`AbstractChannel.name`](#AbstractChannel+name).
 **See**: [uniqueChannelNames](#Fixture+uniqueChannelNames)  
 <a name="AbstractChannel+pixelKey"></a>
 
-### nullChannel.pixelKey ⇒ <code>string</code>
+### nullChannel.pixelKey ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance property of [<code>NullChannel</code>](#NullChannel)  
 **Overrides**: [<code>pixelKey</code>](#AbstractChannel+pixelKey)  
-**Returns**: <code>string</code> - The key of the pixel (group) that this channel is associated to. Defaults to null.  
+**Returns**: <code>string</code> \| <code>null</code> - The key of the pixel (group) that this channel is associated to. Defaults to null.  
 <a name="CoarseChannel+ensureProperResolution"></a>
 
 ### nullChannel.ensureProperResolution(uncheckedResolution)
@@ -2328,7 +2328,7 @@ The different behaviors are implemented as different [CoarseChannel](#CoarseChan
     * [.key](#AbstractChannel+key) ⇒ <code>string</code>
     * [.name](#AbstractChannel+name) ⇒ <code>string</code>
     * [.uniqueName](#AbstractChannel+uniqueName) ⇒ <code>string</code>
-    * [.pixelKey](#AbstractChannel+pixelKey) ⇒ <code>string</code>
+    * [.pixelKey](#AbstractChannel+pixelKey) ⇒ <code>string</code> \| <code>null</code>
     * [.usesChannelKey(channelKey, [switchingChannelBehavior])](#SwitchingChannel+usesChannelKey) ⇒ <code>boolean</code>
 
 <a name="new_SwitchingChannel_new"></a>
@@ -2413,10 +2413,10 @@ Override this method for more sensible implementation.
 **See**: [uniqueChannelNames](#Fixture+uniqueChannelNames)  
 <a name="AbstractChannel+pixelKey"></a>
 
-### switchingChannel.pixelKey ⇒ <code>string</code>
+### switchingChannel.pixelKey ⇒ <code>string</code> \| <code>null</code>
 **Kind**: instance property of [<code>SwitchingChannel</code>](#SwitchingChannel)  
 **Overrides**: [<code>pixelKey</code>](#AbstractChannel+pixelKey)  
-**Returns**: <code>string</code> - The key of the pixel (group) that this channel is associated to. Defaults to null.  
+**Returns**: <code>string</code> \| <code>null</code> - The key of the pixel (group) that this channel is associated to. Defaults to null.  
 <a name="SwitchingChannel+usesChannelKey"></a>
 
 ### switchingChannel.usesChannelKey(channelKey, [switchingChannelBehavior]) ⇒ <code>boolean</code>
