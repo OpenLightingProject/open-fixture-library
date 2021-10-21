@@ -9,7 +9,7 @@
         v-model="capability.typeData.effectName"
         :formstate="formstate"
         :name="`capability${capability.uuid}-effectName`"
-        :schema-property="properties.definitions.nonEmptyString"
+        :schema-property="schemaDefinitions.nonEmptyString"
         :required="true" />
     </LabeledInput>
 
