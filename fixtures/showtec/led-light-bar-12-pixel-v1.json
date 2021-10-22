@@ -1,0 +1,48 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Light Bar 12 Pixel V1",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["Centre Jules Verne"],
+    "createDate": "2021-10-22",
+    "lastModifyDate": "2021-10-22"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/954244/Showtec-Pixel-Bar-12.html#manual"
+    ],
+    "productPage": [
+      "https://www.highlite.com/fr/"
+    ],
+    "video": [
+      "https://vimeo.com/174633120"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [1012, 88, 65],
+    "weight": 2.14,
+    "power": 20,
+    "DMXconnector": "3-pin",
+    "lens": {
+      "degreesMinMax": [0, 30]
+    }
+  },
+  "availableChannels": {
+    "LED Light Bar 12 Pixel V1": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "xxx",
+      "channels": [
+        "LED Light Bar 12 Pixel V1"
+      ]
+    }
+  ]
+}
