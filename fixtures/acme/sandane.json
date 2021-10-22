@@ -1,0 +1,34 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "sandane",
+  "categories": ["Color Changer", "Dimmer", "Strobe", "Effect"],
+  "meta": {
+    "authors": ["a"],
+    "createDate": "2021-10-22",
+    "lastModifyDate": "2021-10-22"
+  },
+  "links": {
+    "manual": [
+      "https://en.acme.com.cn/Info/productdetail/cat_id/272/id/5871"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "availableChannels": {
+    "1": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "sandame",
+      "channels": [
+        "1"
+      ]
+    }
+  ]
+}
