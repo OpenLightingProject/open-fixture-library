@@ -1,0 +1,290 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TMH-46",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Djé"],
+    "createDate": "2021-10-24",
+    "lastModifyDate": "2021-10-24"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/1580023/Eurolite-Led-Tmh-46.html"
+    ],
+    "productPage": [
+      "https://www.thomann.de/fr/eurolite_led_tmh_46_moving_head_wash.htm"
+    ],
+    "other": [
+      "https://www.thomann.de/fr/eurolite_led_tmh_46_moving_head_wash.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [145, 180, 140],
+    "weight": 1.5,
+    "power": 45,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Pan 16": {
+      "capability": {
+        "type": "Pan",
+        "angle": "540deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angle": "220deg"
+      }
+    },
+    "Tilt 16": {
+      "capability": {
+        "type": "Tilt",
+        "angle": "220deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 249],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Motion Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 44],
+          "type": "Generic",
+          "comment": "Internal program 1"
+        },
+        {
+          "dmxRange": [45, 74],
+          "type": "Generic",
+          "comment": "Internal program 2"
+        },
+        {
+          "dmxRange": [75, 104],
+          "type": "Generic",
+          "comment": "Internal program 3"
+        },
+        {
+          "dmxRange": [105, 128],
+          "type": "Generic",
+          "comment": "Internal program 4"
+        },
+        {
+          "dmxRange": [129, 157],
+          "type": "Generic",
+          "comment": "Sound controlled Internal program 1"
+        },
+        {
+          "dmxRange": [158, 187],
+          "type": "Generic",
+          "comment": "Sound controlled Internal program 2"
+        },
+        {
+          "dmxRange": [188, 217],
+          "type": "Generic",
+          "comment": "Sound controlled Internal program 3"
+        },
+        {
+          "dmxRange": [218, 255],
+          "type": "Generic",
+          "comment": "Sound controlled Internal program 4"
+        }
+      ]
+    },
+    "Speed Motion Macros": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Effect",
+          "effectName": "Color Fade"
+        },
+        {
+          "dmxRange": [1, 7],
+          "type": "Effect",
+          "effectName": "Color Fade",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        },
+        {
+          "dmxRange": [8, 39],
+          "type": "Generic",
+          "comment": "Internal program 1"
+        },
+        {
+          "dmxRange": [40, 72],
+          "type": "Generic",
+          "comment": "Internal program 2"
+        },
+        {
+          "dmxRange": [73, 105],
+          "type": "Generic",
+          "comment": "Internal program 3"
+        },
+        {
+          "dmxRange": [106, 138],
+          "type": "Generic",
+          "comment": "Internal program 4"
+        },
+        {
+          "dmxRange": [139, 140],
+          "type": "Generic",
+          "comment": "Internal program 5"
+        },
+        {
+          "dmxRange": [141, 167],
+          "type": "Generic",
+          "comment": "Sound controlled Internal program 1"
+        },
+        {
+          "dmxRange": [168, 195],
+          "type": "Generic",
+          "comment": "Sound controlled Internal program 2"
+        },
+        {
+          "dmxRange": [196, 223],
+          "type": "Generic",
+          "comment": "Sound controlled Internal program 3"
+        },
+        {
+          "dmxRange": [224, 251],
+          "type": "Generic",
+          "comment": "Sound controlled Internal program 4"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Generic",
+          "comment": "Sound controlled Internal program 5"
+        }
+      ]
+    },
+    "Speed Color Macros": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Generic",
+          "comment": "Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "extended",
+      "channels": [
+        "Pan",
+        "Pan 16",
+        "Tilt",
+        "Tilt 16",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Motion Macros",
+        "Speed Motion Macros",
+        "Color Macros",
+        "Speed Color Macros",
+        "Reset"
+      ]
+    }
+  ]
+}
