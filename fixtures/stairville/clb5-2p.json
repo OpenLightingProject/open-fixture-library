@@ -1,0 +1,92 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CLB5 2P",
+  "categories": ["Stand", "Color Changer"],
+  "meta": {
+    "authors": ["Murphy"],
+    "createDate": "2021-10-27",
+    "lastModifyDate": "2021-10-27"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/448711_c_448711_v3_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomannmusic.ch/stairville_clb5_2p_rgb_ww_compact_led_bar.htm"
+    ]
+  },
+  "physical": {
+    "dimensions": [473, 253, 67],
+    "weight": 3.5,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red Spot 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red Spot 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green Spot 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green Spot 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue Spot 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue Spot 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White Spot 2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "White Spot 1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8ch",
+      "channels": [
+        "Red Spot 1",
+        "Green Spot 1",
+        "Blue Spot 1",
+        "White Spot 1",
+        "Red Spot 2",
+        "Green Spot 2",
+        "Blue Spot 2",
+        "White Spot 2"
+      ]
+    }
+  ]
+}
