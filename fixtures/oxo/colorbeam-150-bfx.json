@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ColorBeam 150 BFX",
+  "shortName": "ColorBeam 150",
+  "categories": ["Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["Aurelien W"],
+    "createDate": "2021-10-28",
+    "lastModifyDate": "2021-10-28"
+  },
+  "links": {
+    "manual": [
+      "https://docs.wixstatic.com/ugd/7e664f_c854553a934e4fc280960b079d6992c4.pdf"
+    ],
+    "productPage": [
+      "https://www.oxolight.com/product-page/colorbeam-150-bfx-1"
+    ]
+  },
+  "physical": {
+    "dimensions": [250, 210, 245],
+    "weight": 2.35,
+    "power": 210,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED ring Dimmer 1 thru 24": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Macros Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "White LED Ring Macros": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 Channels",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White LED ring Dimmer 1 thru 24",
+        "White LED Ring Macros",
+        "Macros Speed"
+      ]
+    }
+  ]
+}
