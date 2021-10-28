@@ -1,0 +1,221 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED TL-4 QCL",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Clemens Mair"],
+    "createDate": "2021-10-28",
+    "lastModifyDate": "2021-10-28"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/51915448-Manual-122742-1.000-eurolite-led-tl-4-qcl-rgb+uv-trusslight-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn51915448-eurolite-led-tl-4-qcl-rgb+uv-trusslight.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=FZe4SH3rlaQ"
+    ]
+  },
+  "physical": {
+    "dimensions": [145, 130, 155],
+    "weight": 1.56,
+    "power": 15,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "4x 8W 4in1 QCL RGB+UV LED"
+    },
+    "lens": {
+      "degreesMinMax": [13, 30]
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "Red"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "comment": "Green"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "comment": "Blue"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "UV"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "Yellow"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "Magenta"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "Cyan"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "Dark orange"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Green yellow"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Salmon"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Turquoise"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "Light green"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "Orange"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "comment": "Lavender"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorPreset",
+          "comment": "Light blue"
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorPreset",
+          "comment": "Dark blue"
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "ColorPreset",
+          "comment": "Pink"
+        },
+        {
+          "dmxRange": [180, 255],
+          "type": "ColorPreset",
+          "comment": "White"
+        }
+      ]
+    },
+    "Auto mode/Sound control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 69],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Automatic color fade"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Automatic color change"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound-controlled color fade"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high",
+          "comment": "Sound-controlled color change"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8-channel",
+      "shortName": "8ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe Speed",
+        "Red",
+        "Green",
+        "Blue",
+        "UV",
+        "Color Presets",
+        "Auto mode/Sound control"
+      ]
+    }
+  ]
+}
