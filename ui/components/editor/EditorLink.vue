@@ -46,7 +46,7 @@ select {
 
 <script>
 import { schemaDefinitions, linksProperties } from '../../../lib/schema-properties.js';
-import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
+import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
 
 import PropertyInputText from '../PropertyInputText.vue';
 
@@ -61,7 +61,6 @@ export default {
   components: {
     PropertyInputText,
   },
-  mixins: [fixtureLinksMixin],
   props: {
     link: {
       type: Object,
@@ -77,9 +76,12 @@ export default {
     },
   },
   data() {
+    const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
     return {
       schemaDefinitions,
       linkTypes: Object.keys(linksProperties),
+      linkTypeIconNames,
+      linkTypeNames,
     };
   },
   computed: {
