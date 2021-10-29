@@ -189,7 +189,7 @@ const enabledRuleParameters = {
   'vue/no-deprecated-slot-scope-attribute': [],
   'vue/no-empty-component-block': [],
   'vue/no-invalid-model-keys': [],
-  // 'vue/no-undef-properties': [], // blocked by https://github.com/vuejs/eslint-plugin-vue/issues/1668 and https://github.com/vuejs/eslint-plugin-vue/issues/1669
+  'vue/no-undef-properties': [],
   'vue/no-unused-properties': [{
     groups: [`props`, `data`, `computed`, `methods`, `setup`],
     ignorePublicMembers: true,
