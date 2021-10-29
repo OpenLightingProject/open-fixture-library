@@ -183,9 +183,7 @@ const enabledRuleParameters = {
     shouldMatchCase: true,
   }],
   'vue/max-attributes-per-line': [{ singleline: 3 }],
-  'vue/multi-word-component-names': [],
   'vue/next-tick-style': [],
-  'vue/no-computed-properties-in-data': [],
   'vue/no-deprecated-scope-attribute': [],
   'vue/no-deprecated-slot-attribute': [],
   'vue/no-deprecated-slot-scope-attribute': [],
@@ -203,7 +201,6 @@ const enabledRuleParameters = {
   'vue/v-for-delimiter-style': [`of`],
   'vue/v-on-function-call': [`always`],
   'vue/v-slot-style': [`shorthand`],
-  'vue/valid-next-tick': [],
 
   // already included in presets, but needed here because we reduce severity to `warn`
   'unicorn/no-array-for-each': [],
@@ -231,6 +228,7 @@ const vueCoreExtensionRules = [
   `no-empty-pattern`,
   `no-extra-parens`,
   `no-irregular-whitespace`,
+  `no-loss-of-precision`,
   `no-restricted-syntax`,
   `no-sparse-arrays`,
   `no-useless-concat`,
