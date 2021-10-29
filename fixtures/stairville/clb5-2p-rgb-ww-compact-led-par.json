@@ -24,74 +24,36 @@
       "type": "LED"
     }
   },
-  "availableChannels": {
-    "Red": {
+  "matrix": {
+    "pixelKeys": [
+      [
+        ["Spot 1", "Spot 2"]
+      ]
+    ],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green": {
+    "Green $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue": {
+    "Blue $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "Warm White": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Warm White"
-      }
-    },
-    "Red Spot 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Red Spot 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green Spot 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Green Spot 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue Spot 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Blue Spot 2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Warm White Spot 1": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Warm White"
-      }
-    },
-    "Warm White Spot 2": {
+    "Warm White $pixelKey": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Warm White"
@@ -100,16 +62,18 @@
   },
   "modes": [
     {
-      "name": "4ch",
+      "name": "4-channel",
+      "shortName": "4ch",
       "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "Warm White"
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Warm White Master"
       ]
     },
     {
-      "name": "8ch",
+      "name": "8-channel",
+      "shortName": "8ch",
       "channels": [
         "Red Spot 1",
         "Green Spot 1",
