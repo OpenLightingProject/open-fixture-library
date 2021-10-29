@@ -107,6 +107,7 @@
 <script>
 import scrollIntoView from 'scroll-into-view';
 
+import { getEmptyFormState } from '../assets/scripts/editor-utils.js';
 import EditorFileUpload from '../components/editor/EditorFileUpload.vue';
 import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';
 import LabeledInput from '../components/LabeledInput.vue';
@@ -118,19 +119,18 @@ export default {
     LabeledInput,
   },
   async asyncData({ $axios, error }) {
+    let plugins;
     try {
-      const plugins = await $axios.$get(`/api/v1/plugins`);
-      return {
-        plugins,
-      };
+      plugins = await $axios.$get(`/api/v1/plugins`);
     }
     catch (requestError) {
       return error(requestError);
     }
+    return { plugins };
   },
   data() {
     return {
-      formstate: {},
+      formstate: getEmptyFormState(),
       plugin: ``,
       file: null,
       githubComment: ``,

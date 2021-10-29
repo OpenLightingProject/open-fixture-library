@@ -1,3 +1,5 @@
+<!-- eslint-disable vue/no-undef-properties -- https://github.com/vuejs/eslint-plugin-vue/issues/1669 -->
+
 <template functional>
   <time :datetime="props.date.toISOString()" :title="props.date.toISOString()">{{
     props.date.toISOString().replace(/T.*?$/, ``)

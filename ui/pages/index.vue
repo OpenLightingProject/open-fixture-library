@@ -95,16 +95,14 @@ export default {
     DownloadButton,
   },
   async asyncData({ $axios, error }) {
+    let manufacturers;
     try {
-      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
-
-      return {
-        manufacturers,
-      };
+      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
     }
     catch (requestError) {
       return error(requestError);
     }
+    return { manufacturers };
   },
   data() {
     return {

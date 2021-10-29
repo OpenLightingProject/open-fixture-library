@@ -245,6 +245,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { capabilityTypes, channelProperties } from '../../../lib/schema-properties.js';
 import {
   constants,
+  getEmptyFormState,
   getEmptyCapability,
   getEmptyFineChannel,
   getSanitizedChannel,
@@ -288,7 +289,7 @@ export default {
   },
   data() {
     return {
-      formstate: {},
+      formstate: getEmptyFormState(),
       restored: false,
       channelChanged: false,
       channelProperties,
