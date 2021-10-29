@@ -30,8 +30,7 @@ export default {
   validate({ params }) {
     return decodeURIComponent(params.category) in register.categories;
   },
-  async asyncData({ params, $axios, error }) {
-    const categoryName = decodeURIComponent(params.category);
+  async asyncData({ $axios, error }) {
     let manufacturers;
     try {
       manufacturers = await $axios.$get(`/api/v1/manufacturers`);
@@ -39,13 +38,7 @@ export default {
     catch (requestError) {
       return error(requestError);
     }
-
-    return {
-      categoryName,
-      categoryClass: categoryName.toLowerCase().replace(/\W+/g, `-`),
-      fixtures: [],
-      manufacturers,
-    };
+    return { manufacturers };
   },
   head() {
     const title = this.categoryName;
@@ -60,22 +53,30 @@ export default {
       ],
     };
   },
-  created() {
-    this.fixtures = register.categories[this.categoryName].map(fullFixtureKey => {
-      const [manufacturerKey, fixtureKey] = fullFixtureKey.split(`/`);
-      const manufacturerName = this.manufacturers[manufacturerKey].name;
-      const fixtureName = register.filesystem[`${manufacturerKey}/${fixtureKey}`].name;
+  computed: {
+    categoryName() {
+      return this.$route.params.category;
+    },
+    categoryClass() {
+      return this.categoryName.toLowerCase().replace(/\W+/g, `-`);
+    },
+    fixtures() {
+      return register.categories[this.categoryName].map(fullFixtureKey => {
+        const [manufacturerKey, fixtureKey] = fullFixtureKey.split(`/`);
+        const manufacturerName = this.manufacturers[manufacturerKey].name;
+        const fixtureName = register.filesystem[`${manufacturerKey}/${fixtureKey}`].name;
 
-      return {
-        key: fullFixtureKey,
-        link: `/${fullFixtureKey}`,
-        name: `${manufacturerName} ${fixtureName}`,
-        categories: Object.keys(register.categories).filter(
-          category => register.categories[category].includes(fullFixtureKey),
-        ),
-        color: this.manufacturers[manufacturerKey].color,
-      };
-    });
+        return {
+          key: fullFixtureKey,
+          link: `/${fullFixtureKey}`,
+          name: `${manufacturerName} ${fixtureName}`,
+          categories: Object.keys(register.categories).filter(
+            category => register.categories[category].includes(fullFixtureKey),
+          ),
+          color: this.manufacturers[manufacturerKey].color,
+        };
+      });
+    },
   },
 };
 </script>

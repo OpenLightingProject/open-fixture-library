@@ -33,7 +33,7 @@
 
     <FixturePage
       :fixture="fixture"
-      :load-all-modes="loadAllModes"
+      :load-all-modes="`loadAllModes` in $route.query"
       @help-wanted-clicked="openHelpWantedDialog($event)" />
 
     <section id="contribute">
@@ -141,14 +141,17 @@ export default {
     }
 
     return {
-      isBrowser: false,
       plugins,
       manufacturerKey,
       manufacturerJson,
       fixtureKey,
       fixtureJson,
       redirect: redirectObject,
-      loadAllModes: `loadAllModes` in query,
+    };
+  },
+  data() {
+    return {
+      isBrowser: false,
       helpWantedContext: null,
       helpWantedType: ``,
     };

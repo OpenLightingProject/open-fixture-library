@@ -95,7 +95,7 @@ export default {
     ConditionalDetails,
     LabeledInput,
   },
-  async asyncData({ query, $axios, error }) {
+  async asyncData({ $axios, error }) {
     let manufacturers;
     try {
       manufacturers = await $axios.$get(`/api/v1/manufacturers`);
@@ -103,7 +103,9 @@ export default {
     catch (requestError) {
       return error(requestError);
     }
-
+    return { manufacturers };
+  },
+  data() {
     return {
       searchFor: ``,
       searchQuery: ``,
@@ -111,7 +113,6 @@ export default {
       categoriesQuery: [],
       detailsInitiallyOpen: null,
       results: [],
-      manufacturers,
       categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)),
       loading: false,
       isBrowser: false,

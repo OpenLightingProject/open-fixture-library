@@ -161,23 +161,7 @@ export default {
     LabeledInput,
     PropertyInputText,
   },
-  async asyncData({ query, $axios, error }) {
-    const initFixture = getEmptyFixture();
-
-    if (query.prefill) {
-      try {
-        const prefillObject = JSON.parse(query.prefill);
-        for (const key of Object.keys(prefillObject)) {
-          if (isPrefillable(prefillObject, key)) {
-            initFixture[key] = prefillObject[key];
-          }
-        }
-      }
-      catch (parseError) {
-        console.log(`prefill query could not be parsed:`, query.prefill, parseError);
-      }
-    }
-
+  async asyncData({ $axios, error }) {
     let manufacturers;
     try {
       manufacturers = await $axios.$get(`/api/v1/manufacturers`);
@@ -185,16 +169,17 @@ export default {
     catch (requestError) {
       return error(requestError);
     }
-
+    return { manufacturers };
+  },
+  data() {
     return {
       formstate: getEmptyFormState(),
       readyToAutoSave: false,
       restoredData: null,
-      fixture: initFixture,
+      fixture: getEmptyFixture(),
       channel: getEmptyChannel(),
       githubUsername: ``,
       honeypot: ``,
-      manufacturers,
       schemaDefinitions,
     };
   },
@@ -223,6 +208,7 @@ export default {
     this.$root._oflRestoreComplete = false;
   },
   async mounted() {
+    this.applyQueryPrefillData();
     this.applyStoredPrefillData();
 
     // let all components initialize without auto-focus
@@ -366,6 +352,24 @@ export default {
       this.readyToAutoSave = true;
       this.$root._oflRestoreComplete = true;
       window.scrollTo(0, 0);
+    },
+
+    applyQueryPrefillData() {
+      if (!this.$route.query.prefill) {
+        return;
+      }
+
+      try {
+        const prefillObject = JSON.parse(this.$route.query.prefill);
+        for (const key of Object.keys(prefillObject)) {
+          if (isPrefillable(prefillObject, key)) {
+            this.fixture[key] = prefillObject[key];
+          }
+        }
+      }
+      catch (parseError) {
+        console.log(`prefill query could not be parsed:`, this.$route.query.prefill, parseError);
+      }
     },
 
     applyStoredPrefillData() {

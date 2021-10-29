@@ -52,32 +52,7 @@ export default {
     catch (requestError) {
       return error(requestError);
     }
-
-    const letters = {};
-
-    for (const manufacturerKey of Object.keys(manufacturers)) {
-      let letter = manufacturerKey.charAt(0).toUpperCase();
-
-      if (!/^[A-Z]$/.test(letter)) {
-        letter = `#`;
-      }
-
-      if (!(letter in letters)) {
-        letters[letter] = {
-          id: letter === `#` ? `letter-numeric` : `letter-${letter.toLowerCase()}`,
-          manufacturers: [],
-        };
-      }
-
-      letters[letter].manufacturers.push({
-        key: manufacturerKey,
-        name: manufacturers[manufacturerKey].name,
-        fixtureCount: manufacturers[manufacturerKey].fixtureCount,
-        color: manufacturers[manufacturerKey].color,
-      });
-    }
-
-    return { letters };
+    return { manufacturers };
   },
   head() {
     const title = `Manufacturers`;
@@ -91,6 +66,35 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    letters() {
+      const letters = {};
+
+      for (const manufacturerKey of Object.keys(this.manufacturers)) {
+        let letter = manufacturerKey.charAt(0).toUpperCase();
+
+        if (!/^[A-Z]$/.test(letter)) {
+          letter = `#`;
+        }
+
+        if (!(letter in letters)) {
+          letters[letter] = {
+            id: letter === `#` ? `letter-numeric` : `letter-${letter.toLowerCase()}`,
+            manufacturers: [],
+          };
+        }
+
+        letters[letter].manufacturers.push({
+          key: manufacturerKey,
+          name: this.manufacturers[manufacturerKey].name,
+          fixtureCount: this.manufacturers[manufacturerKey].fixtureCount,
+          color: this.manufacturers[manufacturerKey].color,
+        });
+      }
+
+      return letters;
+    },
   },
 };
 </script>

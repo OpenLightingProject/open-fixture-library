@@ -45,45 +45,15 @@
 
 <script>
 export default {
-  async asyncData({ params, $axios, $config, error }) {
-    const manufacturerKey = params.manufacturerKey;
+  async asyncData({ params, $axios, error }) {
     let manufacturer;
     try {
-      manufacturer = await $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`);
+      manufacturer = await $axios.$get(`/api/v1/manufacturers/${params.manufacturerKey}`);
     }
     catch (requestError) {
       return error(requestError);
     }
-
-    const fixtures = manufacturer.fixtures;
-
-    const organizationStructuredData = {
-      '@context': `http://schema.org`,
-      '@type': `Organization`,
-      'name': manufacturer.name,
-      'brand': manufacturer.name,
-    };
-
-    if (`website` in manufacturer) {
-      organizationStructuredData.sameAs = manufacturer.website;
-    }
-
-    const itemListStructuredData = {
-      '@context': `http://schema.org`,
-      '@type': `ItemList`,
-      'itemListElement': fixtures.map((fixture, index) => ({
-        '@type': `ListItem`,
-        'position': index + 1,
-        'url': `${$config.websiteUrl}${manufacturer.key}/${fixture.key}`,
-      })),
-    };
-
-    return {
-      manufacturer,
-      fixtures,
-      organizationStructuredData,
-      itemListStructuredData,
-    };
+    return { manufacturer };
   },
   head() {
     const title = this.manufacturer.name;
@@ -109,6 +79,31 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    fixtures() {
+      return this.manufacturer.fixtures;
+    },
+    organizationStructuredData() {
+      return {
+        '@context': `http://schema.org`,
+        '@type': `Organization`,
+        name: this.manufacturer.name,
+        brand: this.manufacturer.name,
+        sameAs: `website` in this.manufacturer ? this.manufacturer.website : undefined,
+      };
+    },
+    itemListStructuredData() {
+      return {
+        '@context': `http://schema.org`,
+        '@type': `ItemList`,
+        itemListElement: this.fixtures.map((fixture, index) => ({
+          '@type': `ListItem`,
+          position: index + 1,
+          url: `${this.$config.websiteUrl}${this.manufacturer.key}/${fixture.key}`,
+        })),
+      };
+    },
   },
 };
 </script>

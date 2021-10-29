@@ -111,7 +111,7 @@ export default {
     HelpWantedMessage,
   },
   async asyncData({ params, $axios, redirect, error }) {
-    const pluginKey = decodeURIComponent(params.plugin);
+    const pluginKey = params.plugin;
     let pluginData;
     try {
       pluginData = await $axios.$get(`/api/v1/plugins/${pluginKey}`);
@@ -125,24 +125,15 @@ export default {
       return redirect(301, `/about/plugins/${newPluginKey}`);
     }
 
-    const fileLocationOSes = `fileLocations` in pluginData ? Object.keys(pluginData.fileLocations).filter(
-      os => os !== `subDirectoriesAllowed`,
-    ) : null;
-
-    return {
-      pluginData,
-      fileLocationOSes,
-      exportPluginVersion: pluginData.exportPluginVersion,
-      importPluginVersion: pluginData.importPluginVersion,
-      libraryNames: {
-        main: `Main (system) library`,
-        user: `User library`,
-      },
-    };
+    return { pluginData };
   },
   data() {
     return {
       helpWantedContext: null,
+      libraryNames: {
+        main: `Main (system) library`,
+        user: `User library`,
+      },
     };
   },
   head() {
@@ -157,6 +148,19 @@ export default {
         },
       ],
     };
+  },
+  computed: {
+    exportPluginVersion() {
+      return this.pluginData.exportPluginVersion;
+    },
+    importPluginVersion() {
+      return this.pluginData.importPluginVersion;
+    },
+    fileLocationOSes() {
+      return `fileLocations` in this.pluginData ? Object.keys(this.pluginData.fileLocations).filter(
+        os => os !== `subDirectoriesAllowed`,
+      ) : null;
+    },
   },
   methods: {
     openHelpWantedDialog(event) {

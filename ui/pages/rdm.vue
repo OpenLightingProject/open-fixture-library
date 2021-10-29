@@ -49,13 +49,13 @@
       <h1>RDM {{ searchFor }} not found</h1>
 
       <template v-if="notFound === `fixture`">
-        <p>The requested <a :href="manufacturerLink">{{ manufacturerName }}</a> fixture was not found in the Open Fixture Library. Maybe a fixture in the library is missing the RDM ID? It may be included in the <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${manufacturerId}&amp;model=${modelId}`">Open Lighting RDM database</a>.</p>
-        <p>Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <NuxtLink :to="`/fixture-editor?prefill=${prefillQuery}`">add it yourself</NuxtLink>!</p>
+        <p>The requested <a :href="`/${manufacturerKey}`">{{ manufacturerName }}</a> fixture was not found in the Open Fixture Library. Maybe a fixture in the library is missing the RDM ID? It may be included in the <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${manufacturerId}&amp;model=${modelId}`">Open Lighting RDM database</a>.</p>
+        <p>Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <NuxtLink :to="prefilledFixtureEditorUrl">add it yourself</NuxtLink>!</p>
         <p>Thank you either way!</p>
       </template>
 
       <template v-else-if="searchFor === `fixture`">
-        <p>The manufacturer of the requested fixture was not found in the Open Fixture Library. The fixture may be included in the <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${manufacturerId}&amp;model=${modelId}`">Open Lighting RDM database</a>. Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name and manufacturer of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <NuxtLink :to="`/fixture-editor?prefill=${prefillQuery}`">add it yourself</NuxtLink>!</p>
+        <p>The manufacturer of the requested fixture was not found in the Open Fixture Library. The fixture may be included in the <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${manufacturerId}&amp;model=${modelId}`">Open Lighting RDM database</a>. Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to suggest adding the fixture. Include the name and manufacturer of the requested fixture and mention RDM IDs <b>{{ manufacturerId }} / {{ modelId }}</b>. Or you can <NuxtLink :to="prefilledFixtureEditorUrl">add it yourself</NuxtLink>!</p>
         <p>Thank you either way!</p>
       </template>
 
@@ -77,44 +77,30 @@ export default {
     LabeledInput,
   },
   async asyncData({ query, $axios, redirect, error }) {
-    const { manufacturerId, modelId, personalityIndex } = query;
+    const manufacturerId = parseIntOrUndefined(query.manufacturerId);
+    const modelId = parseIntOrUndefined(query.modelId);
+    const personalityIndex = parseIntOrUndefined(query.personalityIndex);
 
-    const manufacturerIdNumber = Number.parseInt(manufacturerId, 10);
-    const modelIdNumber = Number.parseInt(modelId, 10);
-
-    if (isEmpty(manufacturerId)) {
+    if (manufacturerId === undefined) {
       return {
         notFound: null,
         searchFor: `nothing`,
       };
     }
 
-    if (!(manufacturerId in register.rdm)) {
-      if (isEmpty(modelId)) {
-        return {
-          notFound: `manufacturer`,
-          searchFor: `manufacturer`,
-          manufacturerId: manufacturerIdNumber,
-        };
-      }
-
+    if (!(String(manufacturerId) in register.rdm)) {
       return {
         notFound: `manufacturer`,
-        searchFor: `fixture`,
-        manufacturerId: manufacturerIdNumber,
-        modelId: modelIdNumber,
-        prefillQuery: encodeURIComponent(JSON.stringify({
-          useExistingManufacturer: false,
-          newManufacturerRdmId: manufacturerIdNumber,
-          rdmModelId: modelIdNumber,
-        })),
+        searchFor: modelId === undefined ? `manufacturer` : `fixture`,
+        manufacturerId,
+        modelId,
       };
     }
 
-    const manufacturer = register.rdm[manufacturerId];
+    const rdmManufacturer = register.rdm[String(manufacturerId)];
 
-    if (isEmpty(modelId) || modelId in register.rdm[manufacturerId].models) {
-      return redirectToCorrectPage(manufacturer, modelId, personalityIndex, redirect);
+    if (modelId === undefined || String(modelId) in rdmManufacturer.models) {
+      return redirectToCorrectPage(rdmManufacturer, modelId, personalityIndex, redirect);
     }
 
     let manufacturers;
@@ -128,15 +114,10 @@ export default {
     return {
       notFound: `fixture`,
       searchFor: `fixture`,
-      manufacturerId: manufacturerIdNumber,
-      manufacturerLink: `/${manufacturer.key}`,
-      manufacturerName: manufacturers[manufacturer.key].name,
-      modelId: modelIdNumber,
-      prefillQuery: encodeURIComponent(JSON.stringify({
-        useExistingManufacturer: true,
-        manufacturerKey: manufacturer.key,
-        rdmModelId: modelIdNumber,
-      })),
+      manufacturerId,
+      manufacturerKey: rdmManufacturer.key,
+      manufacturerName: manufacturers[rdmManufacturer.key].name,
+      modelId,
     };
   },
   head() {
@@ -152,34 +133,50 @@ export default {
       ],
     };
   },
+  computed: {
+    prefilledFixtureEditorUrl() {
+      if (this.searchFor !== `fixture`) {
+        return `/fixture-editor`;
+      }
+
+      const useExistingManufacturer = this.manufacturerKey !== undefined;
+
+      const prefillObject = {
+        useExistingManufacturer,
+        manufacturerKey: useExistingManufacturer ? this.manufacturerKey : undefined,
+        newManufacturerRdmId: useExistingManufacturer ? undefined : this.manufacturerId,
+        rdmModelId: this.modelId,
+      };
+
+      return `/fixture-editor?prefill=${encodeURIComponent(JSON.stringify(prefillObject))}`;
+    },
+  },
 };
 
 /**
- * @param {any} queryParameter Vue Router's query parameter to check.
- * @returns {boolean} True if the query parameter is not specified or empty.
+ * @param {string | undefined} string The string to parse.
+ * @returns {number | undefined} The parsed number, or undefined if the string can't be parsed.
  */
-function isEmpty(queryParameter) {
-  return queryParameter === undefined || queryParameter === ``;
+function parseIntOrUndefined(string) {
+  const number = Number.parseInt(string, 10);
+  return Number.isNaN(number) ? undefined : number;
 }
 
 /**
- * @param {object} manufacturer The manufacturer object that matches the provided RDM manufacturer id.
- * @param {string | undefined} modelId The provided RDM model id, or undefined.
- * @param {string | undefined} personalityIndex The provided RDM personality index, or undefined.
+ * @param {object} rdmManufacturer The manufacturer object that matches the provided RDM manufacturer id.
+ * @param {number | undefined} modelId The provided RDM model id, or undefined.
+ * @param {number | undefined} personalityIndex The provided RDM personality index, or undefined.
  * @param {Function} redirect The redirect function to be called.
  */
-function redirectToCorrectPage(manufacturer, modelId, personalityIndex, redirect) {
-  if (isEmpty(modelId)) {
-    redirect(301, `/${manufacturer.key}`);
+function redirectToCorrectPage(rdmManufacturer, modelId, personalityIndex, redirect) {
+  if (modelId === undefined) {
+    redirect(301, `/${rdmManufacturer.key}`);
     return;
   }
 
-  const personalityIndexNumber = Number.parseInt(personalityIndex, 10);
-  const locationHash = isEmpty(personalityIndex) ? `` : `#rdm-personality-${personalityIndexNumber}`;
+  const locationHash = personalityIndex === undefined ? `` : `#rdm-personality-${personalityIndex}`;
 
-  redirect(301, `/${manufacturer.key}/${manufacturer.models[modelId]}${locationHash}`);
+  redirect(301, `/${rdmManufacturer.key}/${rdmManufacturer.models[String(modelId)]}${locationHash}`);
   return;
 }
-
-
 </script>
