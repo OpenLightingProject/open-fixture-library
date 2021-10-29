@@ -60,6 +60,29 @@
       }
     }
   },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    }
+  },
   "modes": [
     {
       "name": "4-channel",
@@ -83,6 +106,22 @@
         "Green Spot 2",
         "Blue Spot 2",
         "Warm White Spot 2"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Red Spot 1",
+        "Green Spot 1",
+        "Blue Spot 1",
+        "Warm White Spot 1",
+        "Red Spot 2",
+        "Green Spot 2",
+        "Blue Spot 2",
+        "Warm White Spot 2",
+        "Strobe"
       ]
     }
   ]
