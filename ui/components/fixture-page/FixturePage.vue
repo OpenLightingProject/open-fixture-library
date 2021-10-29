@@ -191,7 +191,7 @@ import register from '../../../fixtures/register.json';
 import Fixture from '../../../lib/model/Fixture.js';
 import { linksProperties } from '../../../lib/schema-properties.js';
 
-import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
+import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
 
 import CategoryBadge from '../../components/CategoryBadge.vue';
 import FixturePageMatrix from '../../components/fixture-page/FixturePageMatrix.vue';
@@ -213,7 +213,6 @@ export default {
     HelpWantedMessage,
     LabeledValue,
   },
-  mixins: [fixtureLinksMixin],
   props: {
     fixture: {
       type: Fixture,
@@ -226,12 +225,15 @@ export default {
     },
   },
   data() {
+    const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
     return {
       manufacturerColor: register.colors[this.fixture.manufacturer.key] || null,
       isBrowser: false,
       modeNumberLoadLimit: this.loadAllModes ? undefined : 5, // initially displayed modes, if limited
       modeNumberLoadThreshold: 15, // fixtures with more modes will be limited
       modeNumberLoadIncrement: 10, // how many modes a button click will load
+      linkTypeIconNames,
+      linkTypeNames,
     };
   },
   computed: {
