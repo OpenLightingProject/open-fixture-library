@@ -36,7 +36,7 @@
         "type": "Intensity"
       }
     },
-    "Strobe Speed": {
+    "Strobe": {
       "capability": {
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
@@ -185,7 +185,7 @@
         }
       ]
     },
-    "Auto mode/Sound control": {
+    "Auto Mode / Sound Control": {
       "capabilities": [
         {
           "dmxRange": [0, 9],
@@ -226,17 +226,46 @@
   },
   "modes": [
     {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4-channel 1",
+      "shortName": "4ch1",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "UV"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Master Dimmer",
+        "Strobe",
+        "Color Presets",
+        "Auto Mode / Sound Control"
+      ]
+    },
+    {
       "name": "8-channel",
       "shortName": "8ch",
       "channels": [
         "Master Dimmer",
-        "Strobe Speed",
+        "Strobe",
         "Red",
         "Green",
         "Blue",
         "UV",
         "Color Presets",
-        "Auto mode/Sound control"
+        "Auto Mode / Sound Control"
       ]
     }
   ]
