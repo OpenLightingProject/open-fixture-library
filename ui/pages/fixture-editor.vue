@@ -131,6 +131,7 @@ import scrollIntoView from 'scroll-into-view';
 import { schemaDefinitions } from '../../lib/schema-properties.js';
 import {
   constants,
+  getEmptyFormState,
   getEmptyFixture,
   getEmptyChannel,
   getEmptyMode,
@@ -181,7 +182,7 @@ export default {
       const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
 
       return {
-        formstate: {},
+        formstate: getEmptyFormState(),
         readyToAutoSave: false,
         restoredData: null,
         fixture: initFixture,

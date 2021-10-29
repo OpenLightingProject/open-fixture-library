@@ -107,6 +107,7 @@
 <script>
 import scrollIntoView from 'scroll-into-view';
 
+import { getEmptyFormState } from '../assets/scripts/editor-utils.js';
 import EditorFileUpload from '../components/editor/EditorFileUpload.vue';
 import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';
 import LabeledInput from '../components/LabeledInput.vue';
@@ -130,7 +131,7 @@ export default {
   },
   data() {
     return {
-      formstate: {},
+      formstate: getEmptyFormState(),
       plugin: ``,
       file: null,
       githubComment: ``,
