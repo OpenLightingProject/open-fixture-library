@@ -117,26 +117,27 @@ export default {
       return redirectToCorrectPage(manufacturer, modelId, personalityIndex, redirect);
     }
 
+    let manufacturers;
     try {
-      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
-
-      return {
-        notFound: `fixture`,
-        searchFor: `fixture`,
-        manufacturerId: manufacturerIdNumber,
-        manufacturerLink: `/${manufacturer.key}`,
-        manufacturerName: manufacturers[manufacturer.key].name,
-        modelId: modelIdNumber,
-        prefillQuery: encodeURIComponent(JSON.stringify({
-          useExistingManufacturer: true,
-          manufacturerKey: manufacturer.key,
-          rdmModelId: modelIdNumber,
-        })),
-      };
+      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
     }
     catch (requestError) {
       return error(requestError);
     }
+
+    return {
+      notFound: `fixture`,
+      searchFor: `fixture`,
+      manufacturerId: manufacturerIdNumber,
+      manufacturerLink: `/${manufacturer.key}`,
+      manufacturerName: manufacturers[manufacturer.key].name,
+      modelId: modelIdNumber,
+      prefillQuery: encodeURIComponent(JSON.stringify({
+        useExistingManufacturer: true,
+        manufacturerKey: manufacturer.key,
+        rdmModelId: modelIdNumber,
+      })),
+    };
   },
   head() {
     const title = `RDM Lookup`;

@@ -47,42 +47,43 @@
 export default {
   async asyncData({ params, $axios, $config, error }) {
     const manufacturerKey = params.manufacturerKey;
-
+    let manufacturer;
     try {
-      const manufacturer = await $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`);
-      const fixtures = manufacturer.fixtures;
-
-      const organizationStructuredData = {
-        '@context': `http://schema.org`,
-        '@type': `Organization`,
-        'name': manufacturer.name,
-        'brand': manufacturer.name,
-      };
-
-      if (`website` in manufacturer) {
-        organizationStructuredData.sameAs = manufacturer.website;
-      }
-
-      const itemListStructuredData = {
-        '@context': `http://schema.org`,
-        '@type': `ItemList`,
-        'itemListElement': fixtures.map((fixture, index) => ({
-          '@type': `ListItem`,
-          'position': index + 1,
-          'url': `${$config.websiteUrl}${manufacturer.key}/${fixture.key}`,
-        })),
-      };
-
-      return {
-        manufacturer,
-        fixtures,
-        organizationStructuredData,
-        itemListStructuredData,
-      };
+      manufacturer = await $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`);
     }
     catch (requestError) {
       return error(requestError);
     }
+
+    const fixtures = manufacturer.fixtures;
+
+    const organizationStructuredData = {
+      '@context': `http://schema.org`,
+      '@type': `Organization`,
+      'name': manufacturer.name,
+      'brand': manufacturer.name,
+    };
+
+    if (`website` in manufacturer) {
+      organizationStructuredData.sameAs = manufacturer.website;
+    }
+
+    const itemListStructuredData = {
+      '@context': `http://schema.org`,
+      '@type': `ItemList`,
+      'itemListElement': fixtures.map((fixture, index) => ({
+        '@type': `ListItem`,
+        'position': index + 1,
+        'url': `${$config.websiteUrl}${manufacturer.key}/${fixture.key}`,
+      })),
+    };
+
+    return {
+      manufacturer,
+      fixtures,
+      organizationStructuredData,
+      itemListStructuredData,
+    };
   },
   head() {
     const title = this.manufacturer.name;

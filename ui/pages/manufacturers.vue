@@ -45,40 +45,39 @@
 <script>
 export default {
   async asyncData({ $axios, error }) {
+    let manufacturers;
     try {
-      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
-
-      const letters = {};
-
-      for (const manufacturerKey of Object.keys(manufacturers)) {
-        let letter = manufacturerKey.charAt(0).toUpperCase();
-
-        if (!/^[A-Z]$/.test(letter)) {
-          letter = `#`;
-        }
-
-        if (!(letter in letters)) {
-          letters[letter] = {
-            id: letter === `#` ? `letter-numeric` : `letter-${letter.toLowerCase()}`,
-            manufacturers: [],
-          };
-        }
-
-        letters[letter].manufacturers.push({
-          key: manufacturerKey,
-          name: manufacturers[manufacturerKey].name,
-          fixtureCount: manufacturers[manufacturerKey].fixtureCount,
-          color: manufacturers[manufacturerKey].color,
-        });
-      }
-
-      return {
-        letters,
-      };
+      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
     }
     catch (requestError) {
       return error(requestError);
     }
+
+    const letters = {};
+
+    for (const manufacturerKey of Object.keys(manufacturers)) {
+      let letter = manufacturerKey.charAt(0).toUpperCase();
+
+      if (!/^[A-Z]$/.test(letter)) {
+        letter = `#`;
+      }
+
+      if (!(letter in letters)) {
+        letters[letter] = {
+          id: letter === `#` ? `letter-numeric` : `letter-${letter.toLowerCase()}`,
+          manufacturers: [],
+        };
+      }
+
+      letters[letter].manufacturers.push({
+        key: manufacturerKey,
+        name: manufacturers[manufacturerKey].name,
+        fixtureCount: manufacturers[manufacturerKey].fixtureCount,
+        color: manufacturers[manufacturerKey].color,
+      });
+    }
+
+    return { letters };
   },
   head() {
     const title = `Manufacturers`;

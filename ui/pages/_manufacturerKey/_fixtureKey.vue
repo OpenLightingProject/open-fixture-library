@@ -110,39 +110,48 @@ export default {
       return redirect(302, `/${redirectTo}?redirectFrom=${manufacturerKey}/${fixtureKey}`);
     }
 
+    let fixtureJson;
+    let manufacturerJson;
+    let plugins;
     try {
-      const [fixtureJson, manufacturerJson, plugins] = await Promise.all([
+      [fixtureJson, manufacturerJson, plugins] = await Promise.all([
         $axios.$get(`/${manufacturerKey}/${fixtureKey}.json`),
         $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`),
         $axios.$get(`/api/v1/plugins`),
       ]);
-
-      let redirectObject = null;
-      if (query.redirectFrom) {
-        const redirectJson = await $axios.$get(`/${query.redirectFrom}.json`);
-
-        redirectObject = {
-          from: query.redirectFrom,
-          reason: redirectReasonExplanations[redirectJson.reason],
-        };
-      }
-
-      return {
-        isBrowser: false,
-        plugins,
-        manufacturerKey,
-        manufacturerJson,
-        fixtureKey,
-        fixtureJson,
-        redirect: redirectObject,
-        loadAllModes: `loadAllModes` in query,
-        helpWantedContext: null,
-        helpWantedType: ``,
-      };
     }
     catch (requestError) {
       return error(requestError);
     }
+
+    let redirectObject;
+    if (query.redirectFrom) {
+      let redirectJson;
+      try {
+        redirectJson = await $axios.$get(`/${query.redirectFrom}.json`);
+      }
+      catch (requestError) {
+        return error(requestError);
+      }
+
+      redirectObject = {
+        from: query.redirectFrom,
+        reason: redirectReasonExplanations[redirectJson.reason],
+      };
+    }
+
+    return {
+      isBrowser: false,
+      plugins,
+      manufacturerKey,
+      manufacturerJson,
+      fixtureKey,
+      fixtureJson,
+      redirect: redirectObject,
+      loadAllModes: `loadAllModes` in query,
+      helpWantedContext: null,
+      helpWantedType: ``,
+    };
   },
   head() {
     const title = `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`;

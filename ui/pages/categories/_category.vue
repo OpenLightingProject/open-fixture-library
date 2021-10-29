@@ -32,20 +32,20 @@ export default {
   },
   async asyncData({ params, $axios, error }) {
     const categoryName = decodeURIComponent(params.category);
-
+    let manufacturers;
     try {
-      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
-
-      return {
-        categoryName,
-        categoryClass: categoryName.toLowerCase().replace(/\W+/g, `-`),
-        fixtures: [],
-        manufacturers,
-      };
+      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
     }
     catch (requestError) {
       return error(requestError);
     }
+
+    return {
+      categoryName,
+      categoryClass: categoryName.toLowerCase().replace(/\W+/g, `-`),
+      fixtures: [],
+      manufacturers,
+    };
   },
   head() {
     const title = this.categoryName;

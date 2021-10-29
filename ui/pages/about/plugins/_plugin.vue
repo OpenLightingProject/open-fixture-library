@@ -113,7 +113,6 @@ export default {
   async asyncData({ params, $axios, redirect, error }) {
     const pluginKey = decodeURIComponent(params.plugin);
     let pluginData;
-
     try {
       pluginData = await $axios.$get(`/api/v1/plugins/${pluginKey}`);
     }

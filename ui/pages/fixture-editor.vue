@@ -178,24 +178,25 @@ export default {
       }
     }
 
+    let manufacturers;
     try {
-      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
-
-      return {
-        formstate: getEmptyFormState(),
-        readyToAutoSave: false,
-        restoredData: null,
-        fixture: initFixture,
-        channel: getEmptyChannel(),
-        githubUsername: ``,
-        honeypot: ``,
-        manufacturers,
-        schemaDefinitions,
-      };
+      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
     }
     catch (requestError) {
       return error(requestError);
     }
+
+    return {
+      formstate: getEmptyFormState(),
+      readyToAutoSave: false,
+      restoredData: null,
+      fixture: initFixture,
+      channel: getEmptyChannel(),
+      githubUsername: ``,
+      honeypot: ``,
+      manufacturers,
+      schemaDefinitions,
+    };
   },
   head() {
     const title = `Fixture Editor`;
