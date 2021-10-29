@@ -189,6 +189,7 @@ const enabledRuleParameters = {
   'vue/no-deprecated-slot-scope-attribute': [],
   'vue/no-empty-component-block': [],
   'vue/no-invalid-model-keys': [],
+  'vue/no-undef-properties': [],
   'vue/no-unused-properties': [{
     groups: [`props`, `data`, `computed`, `methods`, `setup`],
     ignorePublicMembers: true,
@@ -200,7 +201,6 @@ const enabledRuleParameters = {
   'vue/v-for-delimiter-style': [`of`],
   'vue/v-on-function-call': [`always`],
   'vue/v-slot-style': [`shorthand`],
-  'vue/valid-next-tick': [],
 
   // already included in presets, but needed here because we reduce severity to `warn`
   'unicorn/no-array-for-each': [],
@@ -228,6 +228,7 @@ const vueCoreExtensionRules = [
   `no-empty-pattern`,
   `no-extra-parens`,
   `no-irregular-whitespace`,
+  `no-loss-of-precision`,
   `no-restricted-syntax`,
   `no-sparse-arrays`,
   `no-useless-concat`,

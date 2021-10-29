@@ -8,6 +8,13 @@ export const constants = {
 };
 
 /**
+ * @returns {object} An empty object to be used as a form state for `vue-form`.
+ */
+export function getEmptyFormState() {
+  return {};
+}
+
+/**
  * @returns {object} An empty fixture object.
  */
 export function getEmptyFixture() {
