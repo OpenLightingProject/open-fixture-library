@@ -113,31 +113,17 @@ export default {
     let fixtureJson;
     let manufacturerJson;
     let plugins;
+    let redirectObject;
     try {
-      [fixtureJson, manufacturerJson, plugins] = await Promise.all([
+      [fixtureJson, manufacturerJson, plugins, redirectObject] = await Promise.all([
         $axios.$get(`/${manufacturerKey}/${fixtureKey}.json`),
         $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`),
         $axios.$get(`/api/v1/plugins`),
+        fetchRedirectObject($axios, query.redirectFrom),
       ]);
     }
     catch (requestError) {
       return error(requestError);
-    }
-
-    let redirectObject;
-    if (query.redirectFrom) {
-      let redirectJson;
-      try {
-        redirectJson = await $axios.$get(`/${query.redirectFrom}.json`);
-      }
-      catch (requestError) {
-        return error(requestError);
-      }
-
-      redirectObject = {
-        from: query.redirectFrom,
-        reason: redirectReasonExplanations[redirectJson.reason],
-      };
     }
 
     return {
@@ -266,4 +252,21 @@ export default {
   },
 };
 
+/**
+ * @param {any} axios The Axios instance.
+ * @param {string | undefined} redirectFrom The query parameter with the original request's fixture key.
+ * @returns {object} The redirect object.
+ */
+async function fetchRedirectObject(axios, redirectFrom) {
+  if (!redirectFrom) {
+    return undefined;
+  }
+
+  const redirectJson = await axios.$get(`/${redirectFrom}.json`);
+
+  return {
+    from: redirectFrom,
+    reason: redirectReasonExplanations[redirectJson.reason],
+  };
+}
 </script>
