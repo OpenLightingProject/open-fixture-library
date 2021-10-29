@@ -20,7 +20,7 @@
   },
   "physical": {
     "dimensions": [145, 130, 155],
-    "weight": 1.56,
+    "weight": 1.3,
     "power": 15,
     "DMXconnector": "3-pin",
     "bulb": {
@@ -40,8 +40,8 @@
       "capability": {
         "type": "ShutterStrobe",
         "shutterEffect": "Strobe",
-        "speedStart": "slow",
-        "speedEnd": "fast",
+        "speedStart": "0Hz",
+        "speedEnd": "20Hz",
         "helpWanted": "At which DMX value is the light constantly on or off?"
       }
     },
