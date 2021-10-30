@@ -42,127 +42,147 @@
         },
         {
           "dmxRange": [11, 50],
-          "type": "ColorPreset",
-          "comment": "Static Colors (Choose with Ch 2)"
+          "type": "Maintenance",
+          "comment": "Static Colors",
+          "helpWanted": "What does channel 2 control exactly when not in static colors mode?"
         },
         {
           "dmxRange": [51, 100],
-          "type": "ColorPreset",
-          "comment": "Color Jump"
+          "type": "Effect",
+          "effectPreset": "ColorJump"
         },
         {
           "dmxRange": [101, 150],
-          "type": "ColorPreset",
-          "comment": "Color Fade (Choose Prog. with Ch 2"
+          "type": "Effect",
+          "effectPreset": "ColorFade"
         },
         {
           "dmxRange": [151, 200],
-          "type": "EffectParameter",
-          "parameter": "instant"
+          "type": "Effect",
+          "effectName": "Sound Flash",
+          "soundControlled": true
         },
         {
           "dmxRange": [201, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open"
+          "shutterEffect": "Strobe"
         }
       ]
     },
-    "Color Programm": {
+    "Color Program": {
       "capabilities": [
         {
           "dmxRange": [0, 39],
-          "type": "ColorPreset",
-          "comment": "Color Chase"
+          "type": "Effect",
+          "effectName": "Color Chase"
         },
         {
           "dmxRange": [40, 49],
           "type": "ColorPreset",
-          "comment": "Red"
+          "comment": "Red",
+          "colors": ["#ff0000"]
         },
         {
           "dmxRange": [50, 59],
           "type": "ColorPreset",
-          "comment": "Green"
+          "comment": "Green",
+          "colors": ["#00ff00"]
         },
         {
           "dmxRange": [60, 69],
           "type": "ColorPreset",
-          "comment": "Blue"
+          "comment": "Blue",
+          "colors": ["#0000ff"]
         },
         {
           "dmxRange": [70, 79],
           "type": "ColorPreset",
-          "comment": "Yellow"
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
         },
         {
           "dmxRange": [80, 89],
           "type": "ColorPreset",
-          "comment": "Cyan"
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
         },
         {
           "dmxRange": [90, 99],
           "type": "ColorPreset",
-          "comment": "Purple"
+          "comment": "Purple",
+          "colors": ["#ff00ff"]
         },
         {
           "dmxRange": [100, 109],
           "type": "ColorPreset",
-          "comment": "White"
+          "comment": "White",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [110, 119],
           "type": "ColorPreset",
-          "comment": "Red + Green"
+          "comment": "Red + Green",
+          "colors": ["#00ff00", "#ff0000"]
         },
         {
           "dmxRange": [120, 129],
           "type": "ColorPreset",
-          "comment": "Red + Blue"
+          "comment": "Red + Blue",
+          "colors": ["#ff0000", "#0000ff"]
         },
         {
           "dmxRange": [130, 139],
           "type": "ColorPreset",
-          "comment": "Red + White"
+          "comment": "Red + White",
+          "colors": ["#ff0000", "#ffffff"]
         },
         {
           "dmxRange": [140, 149],
           "type": "ColorPreset",
-          "comment": "Green + Blue"
+          "comment": "Green + Blue",
+          "colors": ["#00ff00", "#0000ff"]
         },
         {
           "dmxRange": [150, 159],
           "type": "ColorPreset",
-          "comment": "Green + White"
+          "comment": "Green + White",
+          "colors": ["#00ff00", "#ffffff"]
         },
         {
           "dmxRange": [160, 169],
           "type": "ColorPreset",
-          "comment": "Blue + White"
+          "comment": "Blue + White",
+          "colors": ["#0000ff", "#ffffff"]
         },
         {
           "dmxRange": [170, 179],
           "type": "ColorPreset",
-          "comment": "Red + Green + White"
+          "comment": "Red + Green + White",
+          "colors": ["#ff0000", "#00ff00", "#ffffff"]
         },
         {
           "dmxRange": [180, 189],
           "type": "ColorPreset",
-          "comment": "Red + Blue + White"
+          "comment": "Red + Blue + White",
+          "colors": ["#ff0000", "#0000ff", "#ffffff"]
         },
         {
           "dmxRange": [190, 199],
           "type": "ColorPreset",
-          "comment": "Green + Blue + White"
+          "comment": "Green + Blue + White",
+          "colors": ["#00ff00", "#0000ff", "#ffffff"]
         },
         {
           "dmxRange": [200, 209],
           "type": "ColorPreset",
-          "comment": "Red + Green + Blue"
+          "comment": "Red + Green + Blue",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"]
         },
         {
           "dmxRange": [210, 255],
           "type": "ColorPreset",
-          "comment": "Red + Green + Blue + White"
+          "comment": "Red + Green + Blue + White",
+          "colors": ["#ff0000", "#00ff00", "#0000ff", "#ffffff"]
         }
       ]
     },
@@ -170,55 +190,46 @@
       "capability": {
         "type": "EffectSpeed",
         "speedStart": "slow",
-        "speedEnd": "fast",
-        "comment": "in combination with ch 1+2"
+        "speedEnd": "fast"
       }
     },
     "Dimmer": {
       "capability": {
-        "type": "Intensity",
-        "comment": "in combination with ch 1+2"
+        "type": "Intensity"
       }
     },
     "Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Red"
       }
     },
     "Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Green"
       }
     },
     "Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Blue"
       }
     },
     "White": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "White"
       }
     }
   },
   "modes": [
     {
-      "name": "DMX-512",
+      "name": "8-channel",
+      "shortName": "8ch",
       "channels": [
         "Program",
-        "Color Programm",
+        "Color Program",
         "Program Speed",
         "Dimmer",
         "Red",
