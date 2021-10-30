@@ -20,13 +20,12 @@
     ]
   },
   "physical": {
-    "dimensions": [150, 115, 140],
+    "dimensions": [150, 140, 115],
     "weight": 0.4,
     "power": 15,
-    "DMXconnector": "3-pin XLR IP65",
+    "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED",
-      "lumens": 1020
+      "type": "12× 1W LED"
     },
     "lens": {
       "name": "15mm Edison EDOL 25",
