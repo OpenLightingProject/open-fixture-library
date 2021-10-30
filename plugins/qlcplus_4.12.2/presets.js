@@ -167,9 +167,9 @@ export const importHelpers = {
   /**
    * Try to guess speedStart / speedEnd from the capability name and set them
    * to the capability. It may also set cap.type to "Rotation".
-   * @param {String} capabilityName The capability name to extract information from.
-   * @param {Object} capability The OFL capability object to add found properties to.
-   * @returns {String} The rest of the capabilityName.
+   * @param {string} capabilityName The capability name to extract information from.
+   * @param {object} capability The OFL capability object to add found properties to.
+   * @returns {string} The rest of the capabilityName.
    */
   getSpeedGuessedComment(capabilityName, capability) {
     const speedRegex = /(?:^|,\s*|\s+)\(?((?:(?:counter\s?-?\s?)?clockwise|c?cw).*?(?:,\s*|\s+))?\(?(slow|fast|\d+|\d+\s*hz)\s*(?:-|to|–|…|\.{2,}|->|<->|→)\s*(fast|slow|\d+\s*hz)\)?$/i;
@@ -537,7 +537,7 @@ const channelPresets = {
 
 /**
  * @param {CoarseChannel} channel The OFL channel object.
- * @returns {String|null} The QLC+ channel preset name or null, if there is no suitable one.
+ * @returns {string | null} The QLC+ channel preset name or null, if there is no suitable one.
  */
 export function getChannelPreset(channel) {
   if (channel.capabilities.length > 1) {
@@ -550,11 +550,11 @@ export function getChannelPreset(channel) {
 }
 
 /**
- * @param {String} preset The channel preset to import.
- * @param {String} channelName The channel name.
- * @param {Number} panMax The maximum pan angle, or 0.
- * @param {Number} tiltMax The maximum tilt angle, or 0.
- * @returns {Object} The OFL capability object.
+ * @param {string} preset The channel preset to import.
+ * @param {string} channelName The channel name.
+ * @param {number} panMax The maximum pan angle, or 0.
+ * @param {number} tiltMax The maximum tilt angle, or 0.
+ * @returns {object} The OFL capability object.
  */
 export function getCapabilityFromChannelPreset(preset, channelName, panMax, tiltMax) {
   if (preset in channelPresets) {
@@ -666,7 +666,7 @@ const fineChannelPresets = {
 
 /**
  * @param {FineChannel} fineChannel The OFL fine channel object.
- * @returns {String|null} The QLC+ channel preset name or null, if there is no suitable one.
+ * @returns {string | null} The QLC+ channel preset name or null, if there is no suitable one.
  */
 export function getFineChannelPreset(fineChannel) {
   const coarseChannel = fineChannel.coarseChannel;
@@ -1023,15 +1023,15 @@ export const capabilityPresets = {
 };
 
 /**
- * @typedef {Object} CapabilityPreset
- * @property {String} presetName The name of the QLC+ capability preset.
- * @property {String|null} res1 A value for the QLC+ capability element's Res1 attribute, or null if the attribute should not be added.
- * @property {String|null} res2 A value for the QLC+ capability element's Res2 attribute, or null if the attribute should not be added.
+ * @typedef {object} CapabilityPreset
+ * @property {string} presetName The name of the QLC+ capability preset.
+ * @property {string | null} res1 A value for the QLC+ capability element's Res1 attribute, or null if the attribute should not be added.
+ * @property {string | null} res2 A value for the QLC+ capability element's Res2 attribute, or null if the attribute should not be added.
  */
 
 /**
  * @param {Capability} capability The OFL capability object.
- * @returns {Promise.<CapabilityPreset|null>} A Promise that resolves to the QLC+ capability preset or null, if there is no suitable one.
+ * @returns {Promise<CapabilityPreset | null>} A Promise that resolves to the QLC+ capability preset or null, if there is no suitable one.
  */
 export async function getCapabilityPreset(capability) {
   const foundPresetName = Object.keys(capabilityPresets).find(
@@ -1051,9 +1051,9 @@ export async function getCapabilityPreset(capability) {
 }
 
 /**
- * @param {String} preset The capability preset to import.
- * @param {Object} capabilityData Additional data about capability and channel.
- * @returns {Object} The OFL capability object.
+ * @param {string} preset The capability preset to import.
+ * @param {object} capabilityData Additional data about capability and channel.
+ * @returns {object} The OFL capability object.
  */
 export function getCapabilityFromCapabilityPreset(preset, capabilityData) {
   if (preset in capabilityPresets) {

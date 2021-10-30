@@ -56,7 +56,10 @@ const enabledRuleParameters = {
   }],
   'no-return-assign': [],
   'no-return-await': [],
-  'no-shadow': [{ builtinGlobals: false }],
+  'no-shadow': [{
+    builtinGlobals: false,
+    allow: [`_`], // allow placeholder paramters that aren't used anyway
+  }],
   'no-template-curly-in-string': [],
   'no-trailing-spaces': [],
   'no-unsafe-optional-chaining': [{ 'disallowArithmeticOperators': true }],
@@ -186,6 +189,7 @@ const enabledRuleParameters = {
   'vue/no-deprecated-slot-scope-attribute': [],
   'vue/no-empty-component-block': [],
   'vue/no-invalid-model-keys': [],
+  'vue/no-undef-properties': [],
   'vue/no-unused-properties': [{
     groups: [`props`, `data`, `computed`, `methods`, `setup`],
     ignorePublicMembers: true,
@@ -197,7 +201,6 @@ const enabledRuleParameters = {
   'vue/v-for-delimiter-style': [`of`],
   'vue/v-on-function-call': [`always`],
   'vue/v-slot-style': [`shorthand`],
-  'vue/valid-next-tick': [],
 
   // already included in presets, but needed here because we reduce severity to `warn`
   'unicorn/no-array-for-each': [],
@@ -225,6 +228,7 @@ const vueCoreExtensionRules = [
   `no-empty-pattern`,
   `no-extra-parens`,
   `no-irregular-whitespace`,
+  `no-loss-of-precision`,
   `no-restricted-syntax`,
   `no-sparse-arrays`,
   `no-useless-concat`,
@@ -247,6 +251,7 @@ const warnRules = new Set([
 
 const disabledRules = [
   `no-console`,
+  `jsdoc/empty-tags`,
   `jsdoc/newline-after-description`,
   `jsdoc/no-undefined-types`,
   `jsdoc/require-description`,
@@ -311,13 +316,16 @@ module.exports = {
         overview: `fileoverview`,
       },
       preferredTypes: {
+        '*': `any`,
         array: `Array`,
-        boolean: `Boolean`,
-        number: `Number`,
-        object: `Object`,
-        string: `String`,
-        '<>': `.<>`,
-        '[]': `Array.<>`,
+        Boolean: `boolean`,
+        Number: `number`,
+        Object: `object`,
+        String: `string`,
+        '.<>': `<>`,
+        'Array<>': `[]`,
+        'object<>': `Record<>`,
+        'Object<>': `Record<>`,
       },
     },
   },

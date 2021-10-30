@@ -1,3 +1,5 @@
+<!-- eslint-disable vue/no-undef-properties -- https://github.com/vuejs/eslint-plugin-vue/issues/1669 -->
+
 <template functional>
   <section
     :ref="data.ref"

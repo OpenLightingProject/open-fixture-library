@@ -58,15 +58,14 @@ h3 {
 <script>
 export default {
   async asyncData({ $axios, error }) {
+    let plugins;
     try {
-      const plugins = await $axios.$get(`/api/v1/plugins`);
-      return {
-        plugins,
-      };
+      plugins = await $axios.$get(`/api/v1/plugins`);
     }
     catch (requestError) {
       return error(requestError);
     }
+    return { plugins };
   },
   head() {
     const title = `Plugins`;
