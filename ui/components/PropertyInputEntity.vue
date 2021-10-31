@@ -222,7 +222,7 @@ export default {
     /**
      * Used by vue-form's `entities-have-same-units` validation rule.
      * @public
-     * @returns {Boolean} True if this and the associated entity have the same unit.
+     * @returns {boolean} True if this and the associated entity have the same unit.
      */
     hasSameUnit() {
       if (!this.associatedEntity) {
@@ -256,7 +256,7 @@ export default {
 
     /**
      * Called by {@link EditorProportionalPropertySwitcher}
-     * @param {String} newUnitString The unit string to set.
+     * @param {string} newUnitString The unit string to set.
      * @public
      */
     setUnitString(newUnitString) {
@@ -289,8 +289,8 @@ export default {
 };
 
 /**
- * @param {String} unitString The unit string, as required by the schema.
- * @returns {String} The unitString if it is not empty, `number` otherwise.
+ * @param {string} unitString The unit string, as required by the schema.
+ * @returns {string} The unitString if it is not empty, `number` otherwise.
  */
 function getUnitDisplayString(unitString) {
   if (unitString === ``) {
@@ -301,11 +301,11 @@ function getUnitDisplayString(unitString) {
 }
 
 /**
- * @param {String|Number|null} value The value to get the unit from.
- * @param {Array.<String>} enumValues List of allowed keywords.
- * @param {Array.<String>} unitNames List of names of allowed units.
- * @param {Object.<String, Object>} units Unit data by unit name.
- * @returns {String} The name of value's unit.
+ * @param {string | number | null} value The value to get the unit from.
+ * @param {string[]} enumValues List of allowed keywords.
+ * @param {string[]} unitNames List of names of allowed units.
+ * @param {Record<string, object>} units Unit data by unit name.
+ * @returns {string} The name of value's unit.
  */
 function getSelectedUnit(value, enumValues, unitNames, units) {
   if (enumValues.includes(value) || value === ``) {
@@ -323,9 +323,9 @@ function getSelectedUnit(value, enumValues, unitNames, units) {
 }
 
 /**
- * @param {String} unitName A unit name or keyword.
- * @param {Array.<String>} enumValues List of allowed keywords.
- * @returns {Boolean} True if unitName indicates that a number is required.
+ * @param {string} unitName A unit name or keyword.
+ * @param {string[]} enumValues List of allowed keywords.
+ * @returns {boolean} True if unitName indicates that a number is required.
  */
 function hasNumber(unitName, enumValues) {
   return unitName !== `` && !enumValues.includes(unitName);

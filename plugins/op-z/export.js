@@ -11,12 +11,12 @@ const MAX_KNOBS = 8;
 const MAX_OPZ_FIXTURES = 16;
 
 /**
- * @param {Array.<Fixture>} fixtures An array of Fixture objects.
- * @param {Object} options Global options, including:
- * @param {String} options.baseDirectory Absolute path to OFL's root directory.
+ * @param {Fixture[]} fixtures An array of Fixture objects.
+ * @param {object} options Global options, including:
+ * @param {string} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {String|undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
- * @returns {Promise.<Array.<Object>, Error>} The generated files.
+ * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @returns {Promise<object[], Error>} The generated files.
  */
 export async function exportFixtures(fixtures, options) {
   const exportJson = {
@@ -60,8 +60,8 @@ export async function exportFixtures(fixtures, options) {
 
   /**
    * @param {AbstractChannel} channel The OFL channel object.
-   * @param {String} fixtureKey The OFL fixture key.
-   * @returns {String} The OP-Z channel type.
+   * @param {string} fixtureKey The OFL fixture key.
+   * @returns {string} The OP-Z channel type.
    */
   function getOpZChannelType(channel, fixtureKey) {
     if (channel instanceof SwitchingChannel) {
@@ -109,7 +109,7 @@ export async function exportFixtures(fixtures, options) {
      * Try to use a `knobX` OP-Z channel type for this channel. A channel used
      * across different modes will get the same knob again. null is returned
      * for all channels after all knobs are already assigned.
-     * @returns {String|null} The OP-Z channel type `knobX` if applicable, null otherwise.
+     * @returns {string | null} The OP-Z channel type `knobX` if applicable, null otherwise.
      */
     function getKnobType() {
       const channelKey = `${fixtureKey}/${channel.key}`;

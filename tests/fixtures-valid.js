@@ -40,12 +40,12 @@ if (cliArguments.help || (fixturePaths.length === 0 && !cliArguments.a)) {
 }
 
 /**
- * @typedef {Object} UniqueValues
- * @property {Set.<String>} manNames All manufacturer names
- * @property {Object.<String, Set.<String>>} fixKeysInMan All fixture keys by manufacturer key
- * @property {Object.<String, Set.<String>>} fixNamesInMan All fixture names by manufacturer key
- * @property {Object.<String, Set.<String>>} fixRdmIdsInMan All RDM ids by manufacturer key
- * @property {Set.<String>} fixShortNames All fixture short names
+ * @typedef {object} UniqueValues
+ * @property {Set<string>} manNames All manufacturer names
+ * @property {Record<string, Set<string>>} fixKeysInMan All fixture keys by manufacturer key
+ * @property {Record<string, Set<string>>} fixNamesInMan All fixture names by manufacturer key
+ * @property {Record<string, Set<string>>} fixRdmIdsInMan All RDM ids by manufacturer key
+ * @property {Set<string>} fixShortNames All fixture short names
  */
 /** @type {UniqueValues} */
 const uniqueValues = {
@@ -60,7 +60,7 @@ const uniqueValues = {
 const fixtureDirectoryUrl = new URL(`../fixtures/`, import.meta.url);
 
 /**
- * @returns {Promise.<Array.<Object>>} A Promise that resolves to an array of result objects.
+ * @returns {Promise<object[]>} A Promise that resolves to an array of result objects.
  */
 async function runTests() {
   const promises = [];
@@ -105,9 +105,9 @@ async function runTests() {
 
 /**
  * Checks (asynchronously) the given fixture.
- * @param {String} manufacturerKey The manufacturer key.
- * @param {String} fixtureKey The fixture key.
- * @returns {Promise.<Object>} A Promise resolving to a result object.
+ * @param {string} manufacturerKey The manufacturer key.
+ * @param {string} fixtureKey The fixture key.
+ * @returns {Promise<object>} A Promise resolving to a result object.
  */
 async function checkFixtureFile(manufacturerKey, fixtureKey) {
   const filename = `${manufacturerKey}/${fixtureKey}.json`;
@@ -129,7 +129,7 @@ async function checkFixtureFile(manufacturerKey, fixtureKey) {
 
 /**
  * Checks Manufacturers file
- * @returns {Promise.<Object>} A Promise resolving to a result object.
+ * @returns {Promise<object>} A Promise resolving to a result object.
  */
 async function checkManufacturers() {
   const result = {
@@ -214,7 +214,7 @@ runTests().then(results => {
 
 
 /**
- * @param {Object} result The result object for a single file.
+ * @param {object} result The result object for a single file.
  */
 function printFileResult(result) {
   const failed = result.errors.length > 0;

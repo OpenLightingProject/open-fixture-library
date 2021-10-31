@@ -69,7 +69,7 @@ import { fixtureFromRepository } from '../lib/model.js';
 
 
 /**
- * @param {Object.<String, *>} cliArguments Command line interface arguments parsed by minimist.
+ * @param {Record<string, any>} cliArguments Command line interface arguments parsed by minimist.
  */
 async function checkCliArguments(cliArguments) {
   const helpMessage = [
@@ -101,7 +101,7 @@ async function checkCliArguments(cliArguments) {
   const plugins = await importJson(`../plugins/plugins.json`, import.meta.url);
 
   if (!plugins.exportPlugins.includes(cliArguments.plugin)) {
-    console.error(chalk.red(`[Error]`), `Plugin '${cliArguments.plugin}' does not exist or does not support exporting.\n\navailable plugins:`, Object.keys(plugins.exportPlugins).join(`, `));
+    console.error(chalk.red(`[Error]`), `Plugin '${cliArguments.plugin}' does not exist or does not support exporting.\n\navailable plugins:`, plugins.exportPlugins.join(`, `));
     process.exit(1);
   }
 }

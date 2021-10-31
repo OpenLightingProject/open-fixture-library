@@ -59,7 +59,7 @@ const pluginDirectoryUrl = new URL(`../plugins/`, import.meta.url);
 
 /**
  * Reads information from the plugin's `plugin.json` file into `plugins` and `allPreviousVersions`.
- * @param {String} pluginKey The plugin key.
+ * @param {string} pluginKey The plugin key.
  */
 async function readPluginJson(pluginKey) {
   try {
@@ -84,7 +84,7 @@ async function readPluginJson(pluginKey) {
 
 /**
  * Reads information from the plugin's `import.js` file (if it exists) into `plugins`.
- * @param {String} pluginKey The plugin key.
+ * @param {string} pluginKey The plugin key.
  */
 async function readPluginImport(pluginKey) {
   try {
@@ -105,7 +105,7 @@ async function readPluginImport(pluginKey) {
 
 /**
  * Reads information from the plugin's `export.js` file (if it exists) into `plugins`.
- * @param {String} pluginKey The plugin key.
+ * @param {string} pluginKey The plugin key.
  */
 async function readPluginExport(pluginKey) {
   try {
@@ -127,7 +127,7 @@ async function readPluginExport(pluginKey) {
 
 /**
  * Adds the plugin's export tests (if any) to `plugins`.
- * @param {String} pluginKey The plugin key.
+ * @param {string} pluginKey The plugin key.
  */
 async function readPluginExportTests(pluginKey) {
   try {

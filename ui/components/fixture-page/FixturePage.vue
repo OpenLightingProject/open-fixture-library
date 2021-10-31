@@ -191,7 +191,7 @@ import register from '../../../fixtures/register.json';
 import Fixture from '../../../lib/model/Fixture.js';
 import { linksProperties } from '../../../lib/schema-properties.js';
 
-import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
+import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
 
 import CategoryBadge from '../../components/CategoryBadge.vue';
 import FixturePageMatrix from '../../components/fixture-page/FixturePageMatrix.vue';
@@ -213,7 +213,6 @@ export default {
     HelpWantedMessage,
     LabeledValue,
   },
-  mixins: [fixtureLinksMixin],
   props: {
     fixture: {
       type: Fixture,
@@ -226,12 +225,15 @@ export default {
     },
   },
   data() {
+    const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
     return {
       manufacturerColor: register.colors[this.fixture.manufacturer.key] || null,
       isBrowser: false,
       modeNumberLoadLimit: this.loadAllModes ? undefined : 5, // initially displayed modes, if limited
       modeNumberLoadThreshold: 15, // fixtures with more modes will be limited
       modeNumberLoadIncrement: 10, // how many modes a button click will load
+      linkTypeIconNames,
+      linkTypeNames,
     };
   },
   computed: {
@@ -249,7 +251,7 @@ export default {
     },
 
     /**
-     * @returns {Array.<Object>} Array of videos that can be embetted.
+     * @returns {object[]} Array of videos that can be embetted.
      */
     videos() {
       const videoUrls = this.fixture.getLinksOfType(`video`);
@@ -364,8 +366,8 @@ const supportedVideoFormats = {
 
 
 /**
- * @param {String} url The video URL.
- * @returns {Object|null} The embettable video data for the URL, or null if the video can not be embetted.
+ * @param {string} url The video URL.
+ * @returns {object | null} The embettable video data for the URL, or null if the video can not be embetted.
  */
 function getEmbettableVideoData(url) {
   const videoTypes = Object.keys(supportedVideoFormats);
@@ -389,8 +391,8 @@ function getEmbettableVideoData(url) {
 }
 
 /**
- * @param {String} url The URL to extract the hostname from.
- * @returns {String} The hostname of the provided URL, or the whole URL if the hostname could not be determined.
+ * @param {string} url The URL to extract the hostname from.
+ * @returns {string} The hostname of the provided URL, or the whole URL if the hostname could not be determined.
  */
 function getHostname(url) {
   // adapted from https://stackoverflow.com/a/21553982/451391

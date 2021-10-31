@@ -6,7 +6,7 @@ import importJson from '../../../../lib/import-json.js';
 /**
  * Returns general information about import and export plugins.
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
- * @returns {Promise.<ApiResponse>} The handled response.
+ * @returns {Promise<ApiResponse>} The handled response.
  */
 export async function getPluginByKey({ request }) {
   let { pluginKey } = request.params;
