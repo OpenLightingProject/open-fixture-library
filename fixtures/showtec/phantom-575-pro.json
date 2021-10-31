@@ -1,0 +1,108 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "phantom 575 pro",
+  "shortName": "phantom 575 pro",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Ttz"],
+    "createDate": "2021-10-31",
+    "lastModifyDate": "2021-10-31"
+  },
+  "links": {
+    "manual": [
+      "https://manualzz.com/doc/1153903/showtec-phantom-575-pro-eb-product-guide"
+    ]
+  },
+  "availableChannels": {
+    "Colours": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Rotating Gobo": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Rotating Gobo"
+      }
+    },
+    "Rotating Gobo Rotation": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Rotating Gobo Rotation"
+      }
+    },
+    "Statig Gobos": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Static Gobos"
+      }
+    },
+    "Effect Wheel": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Effect Wheel"
+      }
+    },
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "X/Y": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "XY controllable with decreasing speed"
+      }
+    },
+    "Pan 2": {
+      "name": "Pan",
+      "fineChannelAliases": ["Pan 2 fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "12ch",
+      "channels": [
+        "Colours",
+        "Rotating Gobo",
+        "Rotating Gobo Rotation",
+        "Statig Gobos",
+        "Pan 2",
+        "Tilt",
+        "Effect Wheel",
+        "Focus",
+        "Shutter / Strobe",
+        "X/Y",
+        "Pan 2 fine",
+        "Tilt fine"
+      ]
+    }
+  ]
+}
