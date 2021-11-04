@@ -352,6 +352,12 @@ module.exports = {
       files: [`**/*.vue`],
     },
     {
+      files: [`ui/pages/**/*.vue`],
+      rules: {
+        'vue/multi-word-component-names': `off`,
+      },
+    },
+    {
       files: [`fixtures/**/*.json`],
       rules: {
         // allow alignment of pixel keys in matrix
