@@ -28,7 +28,7 @@
 
     "lint": "npm run lint:eslint && npm run lint:stylelint",
     "lint:eslint": "eslint .",
-    "lint:eslint-errors-only": "eslint --quiet --format codeframe .",
+    "lint:eslint-errors-only": "eslint --quiet --format unix .",
     "lint:stylelint": "stylelint **/*.scss **/*.vue",
 
     "test": "npm run lint && npm run test:fixtures-valid",
@@ -49,7 +49,6 @@
     "chalk": "^4.1.2",
     "color-hash": "^2.0.1",
     "color-name-list": "^8.31.0",
-    "compression": "^1.7.4",
     "cookie-universal-nuxt": "^2.1.5",
     "cors": "^2.8.5",
     "details-polyfill": "^1.2.0",
@@ -76,7 +75,7 @@
     "broken-link-checker": "^0.7.8",
     "dir-compare": "^3.3.0",
     "disparity": "^3.2.0",
-    "eslint": "~7.32.0",
+    "eslint": "~8.1.0",
     "eslint-plugin-array-func": "~3.1.7",
     "eslint-plugin-import": "~2.25.2",
     "eslint-plugin-jsdoc": "~37.0.3",
