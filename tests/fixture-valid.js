@@ -866,7 +866,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           // if the channel can be switched to a fine channel, the mode must also contain coarser channels
           if (switchToChannel instanceof FineChannel) {
             checkCoarserChannelsInMode(switchToChannel);
-            continue;
           }
         }
 
