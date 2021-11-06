@@ -376,7 +376,7 @@ async function updateGithubIssue(urlResults) {
             return `:heavy_check_mark:`;
           }
 
-          const message = status.message.replace(`\n`, ` `).replace(`"`, `&quot;`);
+          const message = status.message.replace(/\n/g, ` `).replace(/"/g, `&quot;`);
           const emoji = getFailedEmoji(status.message);
           return `<a href="${status.jobUrl}" title="${message}">${emoji}</a>`;
         }).join(`&nbsp;`);
