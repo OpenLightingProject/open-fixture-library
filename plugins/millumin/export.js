@@ -18,7 +18,7 @@ export const supportedOflVersion = `7.3.0`;
  */
 export async function exportFixtures(fixtures, options) {
   // one JSON file for each fixture
-  const outFiles = fixtures.map(fixture => {
+  return fixtures.map(fixture => {
     const oflJson = JSON.parse(JSON.stringify(fixture.jsonObject));
     const milluminJson = {};
 
@@ -63,8 +63,6 @@ export async function exportFixtures(fixtures, options) {
       fixtures: [fixture],
     };
   });
-
-  return outFiles;
 }
 
 /**

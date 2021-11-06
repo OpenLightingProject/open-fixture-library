@@ -426,8 +426,7 @@ function isEmptyObject(object) {
  */
 function propertyExistsIn(property, object) {
   const objectValid = object !== undefined && object !== null;
-  const valueValid = objectValid && object[property] !== undefined && object[property] !== null && object[property] !== ``;
-  return valueValid;
+  return objectValid && object[property] !== undefined && object[property] !== null && object[property] !== ``;
 }
 
 function getComboboxInput(property, from) {
