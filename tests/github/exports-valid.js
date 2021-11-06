@@ -124,6 +124,21 @@ catch (error) {
 
 
 /**
+ * @param {[pluginKey: string, testKey: string][]} tests An array of export tests.
+ * @param {string} manufacturerKey The manufacturer key of the fixture that should be tested.
+ * @param {string} fixtureKey The key of the fixture that should be tested.
+ * @returns {Task[]} An array of export valid tasks.
+ */
+function mapExportTestsToTasks(tests, manufacturerKey, fixtureKey) {
+  return tests.map(([pluginKey, testKey]) => ({
+    manufacturerKey,
+    fixtureKey,
+    pluginKey,
+    testKey,
+  }));
+}
+
+/**
  * @param {object} changedComponents What components have been changed in this PR.
  * @returns {Task[]} What export valid tasks have to be done due to changes in the model. May be empty.
  */
@@ -135,12 +150,7 @@ function getTasksForModel(changedComponents) {
     changedComponents.removed.model) {
 
     for (const [manufacturerKey, fixtureKey] of testFixtures) {
-      tasks.push(...exportTests.map(([pluginKey, testKey]) => ({
-        manufacturerKey,
-        fixtureKey,
-        pluginKey,
-        testKey,
-      })));
+      tasks.push(...mapExportTestsToTasks(exportTests, manufacturerKey, fixtureKey));
     }
   }
 
@@ -182,12 +192,7 @@ function getTasksForExportTests(changedComponents) {
   const changedExportTests = changedComponents.added.exportTests.concat(changedComponents.modified.exportTests);
 
   for (const [manufacturerKey, fixtureKey] of testFixtures) {
-    tasks.push(...changedExportTests.map(([pluginKey, testKey]) => ({
-      manufacturerKey,
-      fixtureKey,
-      pluginKey,
-      testKey,
-    })));
+    tasks.push(...mapExportTestsToTasks(changedExportTests, manufacturerKey, fixtureKey));
   }
 
   return tasks;
@@ -203,12 +208,7 @@ function getTasksForFixtures(changedComponents) {
   const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures);
 
   for (const [manufacturerKey, fixtureKey] of fixtures) {
-    tasks.push(...exportTests.map(([pluginKey, testKey]) => ({
-      manufacturerKey,
-      fixtureKey,
-      pluginKey,
-      testKey,
-    })));
+    tasks.push(...mapExportTestsToTasks(exportTests, manufacturerKey, fixtureKey));
   }
 
   return tasks;

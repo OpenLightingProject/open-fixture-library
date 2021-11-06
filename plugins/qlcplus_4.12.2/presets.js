@@ -211,6 +211,24 @@ export const importHelpers = {
   },
 };
 
+const createWheelRotationCapability = () => ({
+  type: `WheelRotation`,
+  wheel: ``,
+  speedStart: `slow`,
+  speedEnd: `fast`,
+});
+
+const createFocusNearToFarCapability = () => ({
+  type: `Focus`,
+  distanceStart: `near`,
+  distanceEnd: `far`,
+});
+
+const createFocusFarToNearCapability = () => ({
+  type: `Focus`,
+  distanceStart: `far`,
+  distanceEnd: `near`,
+});
 
 
 // ########## Channel presets ##########
@@ -383,12 +401,7 @@ const channelPresets = {
   },
   ColorWheel: {
     isApplicable: capability => capability.type === `WheelRotation` && capability.wheels[0].type === `Color`,
-    importCapability: () => ({
-      type: `WheelRotation`,
-      wheel: ``,
-      speedStart: `slow`,
-      speedEnd: `fast`,
-    }),
+    importCapability: createWheelRotationCapability,
   },
   ColorRGBMixer: {
     isApplicable: capability => channelPresets.IntensityHue.isApplicable(capability),
@@ -424,12 +437,7 @@ const channelPresets = {
 
   GoboWheel: {
     isApplicable: capability => capability.type === `WheelRotation` && capability.wheels[0].type === `Gobo`,
-    importCapability: () => ({
-      type: `WheelRotation`,
-      wheel: ``,
-      speedStart: `slow`,
-      speedEnd: `fast`,
-    }),
+    importCapability: createWheelRotationCapability,
   },
   GoboIndex: {
     isApplicable: capability => capability.type === `WheelSlotRotation` && capability.wheels[0].type === `Gobo`,
@@ -480,19 +488,11 @@ const channelPresets = {
 
   BeamFocusNearFar: {
     isApplicable: capability => capability.type === `Focus` && capability.distance[0].number < capability.distance[1].number,
-    importCapability: () => ({
-      type: `Focus`,
-      distanceStart: `near`,
-      distanceEnd: `far`,
-    }),
+    importCapability: createFocusNearToFarCapability,
   },
   BeamFocusFarNear: {
     isApplicable: capability => capability.type === `Focus` && capability.distance[0].number > capability.distance[1].number,
-    importCapability: () => ({
-      type: `Focus`,
-      distanceStart: `far`,
-      distanceEnd: `near`,
-    }),
+    importCapability: createFocusFarToNearCapability,
   },
   BeamZoomSmallBig: {
     isApplicable: capability => capability.type === `Zoom` && capability.angle[0].number < capability.angle[1].number,
@@ -998,19 +998,11 @@ export const capabilityPresets = {
   },
   NearToFar: {
     isApplicable: capability => capability.distance !== null && capability.distance[0].number < capability.distance[1].number,
-    importCapability: () => ({
-      type: `Focus`,
-      distanceStart: `near`,
-      distanceEnd: `far`,
-    }),
+    importCapability: createFocusNearToFarCapability,
   },
   FarToNear: {
     isApplicable: capability => capability.distance !== null && capability.distance[0].number > capability.distance[1].number,
-    importCapability: () => ({
-      type: `Focus`,
-      distanceStart: `far`,
-      distanceEnd: `near`,
-    }),
+    importCapability: createFocusFarToNearCapability,
   },
   SmallToBig: {
     isApplicable: capability => (exportHelpers.isBeamAngle(capability) && capability.angle[0].number < capability.angle[1].number) || (capability.parameter !== null && capability.parameter[0].keyword === `small` && capability.parameter[1].keyword === `big`),

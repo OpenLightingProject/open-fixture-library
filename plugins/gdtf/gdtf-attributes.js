@@ -181,25 +181,14 @@ const gdtfAttributes = {
   },
   'Blade(n)B': {
     // 2 of 2 shutters that shape the top/right/bottom/left of the beam.
-    oflType: `BladeInsertion`,
-    oflProperty: `insertion`,
-    defaultPhysicalEntity: `Percent`, // Angle is also common
-    beforePhysicalPropertyHook(capability, gdtfCapability, attributeName) {
-      const positions = [`Top`, `Right`, `Bottom`, `Left`];
-      const bladeNumber = Number.parseInt(attributeName.slice(5), 10);
-      capability.blade = positions[bladeNumber - 1] || bladeNumber;
-    },
+    inheritFrom: `Blade(n)A`,
   },
   'Blade(n)Rot': {
     // Rotates position of blade(n).
+    inheritFrom: `Blade(n)A`,
     oflType: `BladeRotation`,
     oflProperty: `angle`,
     defaultPhysicalEntity: `Angle`,
-    beforePhysicalPropertyHook(capability, gdtfCapability, attributeName) {
-      const positions = [`Top`, `Right`, `Bottom`, `Left`];
-      const bladeNumber = Number.parseInt(attributeName.slice(5), 10);
-      capability.blade = positions[bladeNumber - 1] || bladeNumber;
-    },
   },
   'Blower(n)': undefined, // Fog or hazer‘s blower feature.
   ChromaticMode: undefined, // Selects chromatic behavior of the device.
@@ -728,43 +717,7 @@ const gdtfAttributes = {
   },
   'Gobo(n)': {
     // The fixture’s gobo wheel (n). This is the main attribute of gobo wheel’s (n) wheel control. Selects gobos in gobo wheel (n). A different channel function sets the angle of the indexed position in the selected gobo or the angular speed of its continuous rotation.
-    oflType: `WheelSlot`,
-    oflProperty: `slotNumber`,
-    defaultPhysicalEntity: `None`,
-    beforePhysicalPropertyHook(capability, gdtfCapability) {
-      const gdtfSlotNumber = Number.parseInt(gdtfCapability.$.WheelSlotIndex, 10);
-
-      let slotNumberStart = gdtfSlotNumber;
-      let slotNumberEnd = gdtfSlotNumber;
-
-      const physicalFrom = gdtfCapability._physicalFrom;
-      const physicalTo = gdtfCapability._physicalTo;
-
-      if (physicalFrom !== 0 || physicalTo !== 1) {
-        slotNumberStart += physicalFrom;
-        slotNumberEnd += physicalTo;
-      }
-
-      // write back physical values so that they can be assigned to slotNumber or slotNumberStart/slotNumberEnd
-      gdtfCapability._physicalFrom = slotNumberStart;
-      gdtfCapability._physicalTo = slotNumberEnd;
-
-      capability.wheel = gdtfCapability._channelFunction.$.Wheel || `Unknown`;
-    },
-    afterPhysicalPropertyHook(capability, gdtfCapability) {
-      const gdtfSlotIndex = Number.parseInt(gdtfCapability.$.WheelSlotIndex, 10) - 1;
-
-      if (`Wheel` in gdtfCapability._channelFunction.$) {
-        const wheelReference = gdtfCapability._channelFunction.$.Wheel;
-        const gdtfWheel = followXmlNodeReference(gdtfCapability._fixture.Wheels[0], wheelReference);
-        const gdtfSlot = gdtfWheel.Slot[gdtfSlotIndex];
-
-        if (gdtfSlot && gdtfCapability.$.Name === gdtfSlot.$.Name) {
-          // clear comment
-          gdtfCapability.$.Name = ``;
-        }
-      }
-    },
+    inheritFrom: `Color(n)`,
   },
   'Gobo(n)Pos': {
     // Controls angle of indexed rotation of gobos in gobo wheel (n). This is the main attribute of gobo wheel’s (n) wheel slot control.
