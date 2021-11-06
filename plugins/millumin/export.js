@@ -20,10 +20,11 @@ export async function exportFixtures(fixtures, options) {
   // one JSON file for each fixture
   return fixtures.map(fixture => {
     const oflJson = JSON.parse(JSON.stringify(fixture.jsonObject));
-    const milluminJson = {};
+    const milluminJson = {
+      $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${supportedOflVersion}/schemas/fixture.json`,
+      name: oflJson.name,
+    };
 
-    milluminJson.$schema = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${supportedOflVersion}/schemas/fixture.json`;
-    milluminJson.name = oflJson.name;
     addIfValidData(milluminJson, `shortName`, oflJson.shortName);
     milluminJson.categories = getDowngradedCategories(oflJson.categories);
     milluminJson.meta = oflJson.meta;
