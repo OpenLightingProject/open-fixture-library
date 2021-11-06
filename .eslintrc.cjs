@@ -6,6 +6,7 @@ const pluginPresets = {
   nuxt: `recommended`,
   promise: `recommended`,
   security: `recommended`,
+  sonarjs: `recommended`,
   unicorn: `recommended`,
   vue: `recommended`,
   jsonc: `recommended-with-json`, // has to be after `vue` and `nuxt`
@@ -203,6 +204,7 @@ const enabledRuleParameters = {
   'vue/v-slot-style': [`shorthand`],
 
   // already included in presets, but needed here because we reduce severity to `warn`
+  'sonarjs/cognitive-complexity': [],
   'unicorn/no-array-for-each': [],
   'vue/no-mutating-props': [],
 };
@@ -246,6 +248,7 @@ const vueCoreExtensionRules = [
 const warnRules = new Set([
   `complexity`,
   `jsdoc/require-jsdoc`,
+  `sonarjs/cognitive-complexity`,
   `vue/no-mutating-props`,
 ]);
 
