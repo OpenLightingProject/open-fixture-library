@@ -98,7 +98,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     checkMatrix(fixture.matrix);
     await checkWheels(fixture.wheels);
     checkTemplateChannels();
-    checkChannels(fixtureJson);
+    checkChannels();
 
     for (const mode of fixture.modes) {
       checkMode(mode);
@@ -740,7 +740,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
     for (const rawReference of mode.jsonObject.channels) {
       if (rawReference !== null && typeof rawReference !== `string`) {
-        checkChannelInsertBlock(rawReference, mode);
+        checkChannelInsertBlock(rawReference);
       }
     }
 
