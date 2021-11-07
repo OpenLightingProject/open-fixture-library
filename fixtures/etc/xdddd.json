@@ -1,0 +1,38 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "xdddd",
+  "shortName": "dddddd",
+  "categories": ["Blinder"],
+  "meta": {
+    "authors": ["Ernestas"],
+    "createDate": "2021-11-07",
+    "lastModifyDate": "2021-11-07"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=dVctlH99SXw&ab_channel=%C5%A0ventinisbankuchenas"
+    ]
+  },
+  "rdm": {
+    "modelId": 3,
+    "softwareVersion": "3.1"
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "xddddd",
+      "shortName": "ddd",
+      "channels": [
+        "Red"
+      ]
+    }
+  ]
+}
