@@ -16,45 +16,43 @@ const allPreviousVersions = {};
 
 const pluginDirectoryUrl = new URL(`../plugins/`, import.meta.url);
 
-(async () => {
-  const directoryEntries = await readdir(pluginDirectoryUrl, { withFileTypes: true });
-  const pluginKeys = directoryEntries.filter(entry => entry.isDirectory()).map(entry => entry.name);
+const directoryEntries = await readdir(pluginDirectoryUrl, { withFileTypes: true });
+const pluginKeys = directoryEntries.filter(entry => entry.isDirectory()).map(entry => entry.name);
 
-  for (const pluginKey of pluginKeys) {
-    plugins.data[pluginKey] = {};
+for (const pluginKey of pluginKeys) {
+  plugins.data[pluginKey] = {};
 
-    await readPluginJson(pluginKey);
-    await readPluginImport(pluginKey);
-    await readPluginExport(pluginKey);
-    await readPluginExportTests(pluginKey);
+  await readPluginJson(pluginKey);
+  await readPluginImport(pluginKey);
+  await readPluginExport(pluginKey);
+  await readPluginExportTests(pluginKey);
+}
+
+for (const [key, data] of Object.entries(allPreviousVersions)) {
+  if (key in plugins.data) {
+    plugins.data[key].newPlugin = data.newPlugin;
   }
-
-  for (const [key, data] of Object.entries(allPreviousVersions)) {
-    if (key in plugins.data) {
-      plugins.data[key].newPlugin = data.newPlugin;
-    }
-    else {
-      plugins.data[key] = data;
-    }
+  else {
+    plugins.data[key] = data;
   }
+}
 
-  // sort plugin data object by key
-  plugins.data = Object.fromEntries(
-    Object.keys(plugins.data).sort().map(key => [key, plugins.data[key]]),
-  );
+// sort plugin data object by key
+plugins.data = Object.fromEntries(
+  Object.keys(plugins.data).sort().map(key => [key, plugins.data[key]]),
+);
 
-  const filePath = fileURLToPath(new URL(`plugins.json`, pluginDirectoryUrl));
+const filePath = fileURLToPath(new URL(`plugins.json`, pluginDirectoryUrl));
 
-  try {
-    await writeFile(filePath, `${JSON.stringify(plugins, null, 2)}\n`, `utf8`);
-    console.log(chalk.green(`[Success]`), `Updated plugin data file`, filePath);
-    process.exit(0);
-  }
-  catch (error) {
-    console.error(chalk.red(`[Fail]`), `Could not write plugin data file.`, error);
-    process.exit(1);
-  }
-})();
+try {
+  await writeFile(filePath, `${JSON.stringify(plugins, null, 2)}\n`, `utf8`);
+  console.log(chalk.green(`[Success]`), `Updated plugin data file`, filePath);
+  process.exit(0);
+}
+catch (error) {
+  console.error(chalk.red(`[Fail]`), `Could not write plugin data file.`, error);
+  process.exit(1);
+}
 
 
 /**
