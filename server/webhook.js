@@ -74,7 +74,8 @@ function processRequest(url, body, headers) {
 
   const xub = `X-Hub-Signature`;
   const received = headers[xub] || headers[xub.toLowerCase()];
-  const expected = `sha1=${hmac.digest(`hex`)}`;
+  const digest = hmac.digest(`hex`);
+  const expected = `sha1=${digest}`;
 
   if (received !== expected) {
     console.error(`Wrong secret: Expected '${expected}', received '${received}'`);

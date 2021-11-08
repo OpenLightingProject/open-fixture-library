@@ -7,6 +7,9 @@ import minimist from 'minimist';
 import importJson from '../lib/import-json.js';
 import { fixtureFromFile, fixtureFromRepository } from '../lib/model.js';
 
+const failLabel = chalk.red(`[FAIL]`);
+const passLabel = chalk.green(`[PASS]`);
+
 try {
   const plugins = await importJson(`../plugins/plugins.json`, import.meta.url);
   const testFixtures = await importJson(`../tests/test-fixtures.json`, import.meta.url);
@@ -70,18 +73,19 @@ try {
     const outputPerFile = await Promise.all(files.map(async file => {
       try {
         await exportTest(file, files);
-        return `${chalk.green(`[PASS]`)} ${file.name}`;
+        return `${passLabel} ${file.name}`;
       }
       catch (testError) {
         const errors = Array.isArray(testError) ? testError : [testError];
 
-        return [`${chalk.red(`[FAIL]`)} ${file.name}`].concat(
+        return [`${failLabel} ${file.name}`].concat(
           errors.map(error => `- ${error}`),
         ).join(`\n`);
       }
     }));
 
-    console.log(`\n${chalk.yellow(`Test ${testKey}`)}`);
+    console.log();
+    console.log(chalk.yellow(`Test ${testKey}`));
     console.log(outputPerFile.join(`\n`));
   }));
 }

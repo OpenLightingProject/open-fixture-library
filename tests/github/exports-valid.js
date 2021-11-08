@@ -241,8 +241,8 @@ async function getTaskPromise(task) {
       }
       catch (error) {
         emoji = `:x:`;
-        const errors = [error].flat();
-        return `<details><summary>:x: ${file.name}</summary>${errors.join(`<br />\n`)}</details>`;
+        const errors = [error].flat().join(`<br />\n`);
+        return `<details><summary>:x: ${file.name}</summary>${errors}</details>`;
       }
     }));
     detailListItems.push(...resultListItems);

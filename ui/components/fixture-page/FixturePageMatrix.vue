@@ -139,15 +139,15 @@ export default {
           return [groupKey, resolvedPixelsKeys.join(`, `)];
         }
 
-        const constraintTexts = constraintAxes.map(axis => {
+        const constraintText = constraintAxes.map(axis => {
           const axisConstraints = group[axis].map(
             constraint => constraint.replace(`>=`, `≥ `).replace(`<=`, `≤ `).replace(`=`, ``),
-          );
+          ).join(`, `);
 
-          return `${axis.toUpperCase()} coordinate is ${axisConstraints.join(`, `)}`;
-        });
+          return `${axis.toUpperCase()} coordinate is ${axisConstraints}`;
+        }).join(` and `);
 
-        return [groupKey, `Pixels where ${constraintTexts.join(` and `)}`];
+        return [groupKey, `Pixels where ${constraintText}`];
       });
     },
   },

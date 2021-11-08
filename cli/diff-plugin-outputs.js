@@ -22,6 +22,7 @@ cliArguments.testFix = cliArguments[`test-fix`];
 cliArguments.fixtures = cliArguments._;
 
 const scriptName = import.meta.url.split(`/`).slice(-2).join(`/`);
+const exportPlugins = plugins.exportPlugins.join(`, `);
 
 const helpMessage = [
   `This script exports the given fixtures with the current version of the given plugin and diffs the results`,
@@ -30,7 +31,7 @@ const helpMessage = [
   `Usage: node ${scriptName} -p <plugin-key> [-c <compare-plugin-key>] [-r <git-ref>] [ -t | <fixture> [<more fixtures>] ]`,
   `Options:`,
   `  --plugin,         -p: Which plugin should be used to output fixtures. Allowed values:`,
-  `                        ${plugins.exportPlugins.join(`, `)}`,
+  `                        ${exportPlugins}`,
   `  --compare-plugin, -c: A plugin from the given git reference (may not exist anymore). Defaults to --plugin.`,
   `  --ref,            -r: The Git reference with which the current repo should be compared.`,
   `                        E. g. 02ba13, HEAD~1 or master.`,

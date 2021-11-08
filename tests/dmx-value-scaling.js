@@ -26,7 +26,8 @@ testRandomChannelDownscaling(3);
 
 console.log();
 if (errorCount > 0) {
-  console.log(chalk.red(`[FAIL]`), `Test failed with ${errorCount} error${errorCount > 1 ? `s` : ``}.`);
+  const message = errorCount === 1 ? `Test failed with 1 error.` : `Test failed with ${errorCount} errors.`;
+  console.log(chalk.red(`[FAIL]`), message);
   process.exit(1);
 }
 else {
@@ -316,10 +317,13 @@ function testArraysEqual(description, array, desiredArray) {
     (value, index) => array[index] === value,
   );
 
+  const arrayString = array.join(`, `);
+  const desiredArrayString = desiredArray.join(`, `);
+
   parseTestResult(
     correctLengths && desiredElementsInArray,
-    `${description} should be [${desiredArray.join(`, `)}].`,
-    `${description} should be [${desiredArray.join(`, `)}] but is [${array.join(`, `)}].`,
+    `${description} should be [${desiredArrayString}].`,
+    `${description} should be [${desiredArrayString}] but is [${arrayString}].`,
   );
 }
 

@@ -16,7 +16,8 @@ try {
     await crawler.startServer();
   }
   catch (error) {
-    throw `${chalk.redBright(`Failed to start OFL server. Maybe you forgot running 'npm run build' or there is already a running server?`)} ${error.message}`;
+    const header = chalk.redBright(`Failed to start OFL server. Maybe you forgot running 'npm run build' or there is already a running server?`);
+    throw `${header} ${error.message}`;
   }
   console.log();
 

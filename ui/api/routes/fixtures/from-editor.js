@@ -219,10 +219,24 @@ async function getFixtureCreateResult(fixtures) {
   function addLinks(fixture, editorLinksArray) {
     fixture.links = {};
 
-    const resolveShortenedYouTubeUrl = url => url.replace(
-      /^https:\/\/youtu\.be\/([\w-]+)(\?.*|)$/,
-      (match, videoId, query) => `https://www.youtube.com/watch?v=${videoId}${query.replace(/^\?/, `&`)}`,
-    );
+    const resolveShortenedYouTubeUrl = url => {
+      if (url.startsWith(`https://youtu.be/`)) {
+        const urlObject = new URL(url);
+
+        const videoId = urlObject.pathname.slice(1);
+        const queryParameters = Array.from(urlObject.searchParams);
+        queryParameters.unshift([`v`, videoId]);
+        const queryParameterString = new URLSearchParams(Object.fromEntries(queryParameters));
+
+        urlObject.host = `www.youtube.com`;
+        urlObject.pathname = `watch`;
+        urlObject.search = `?${queryParameterString}`;
+
+        return urlObject.toString();
+      }
+
+      return url;
+    };
 
     const linkTypes = Object.keys(linksProperties);
 
@@ -359,7 +373,8 @@ async function getFixtureCreateResult(fixtures) {
   }
 
   function getFineChannelAlias(channelKey, resolution) {
-    return `${channelKey} fine${resolution > CoarseChannel.RESOLUTION_16BIT ? `^${resolution - 1}` : ``}`;
+    const suffix = resolution > CoarseChannel.RESOLUTION_16BIT ? `^${resolution - 1}` : ``;
+    return `${channelKey} fine${suffix}`;
   }
 
   function getCapabilities(channel) {
