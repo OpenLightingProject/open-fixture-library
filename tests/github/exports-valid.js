@@ -20,109 +20,107 @@ let testErrored = false;
  * @property {string} testKey The key of the export test that should be executed.
  */
 
-(async () => {
-  try {
-    await pullRequest.checkEnv();
-    await pullRequest.init();
-    const changedComponents = await pullRequest.fetchChangedComponents();
+try {
+  await pullRequest.checkEnv();
+  await pullRequest.init();
+  const changedComponents = await pullRequest.fetchChangedComponents();
 
-    plugins = await importJson(`../../plugins/plugins.json`, import.meta.url);
+  plugins = await importJson(`../../plugins/plugins.json`, import.meta.url);
 
-    exportTests = [];
-    for (const exportPluginKey of plugins.exportPlugins) {
-      const plugin = plugins.data[exportPluginKey];
+  exportTests = [];
+  for (const exportPluginKey of plugins.exportPlugins) {
+    const plugin = plugins.data[exportPluginKey];
 
-      exportTests.push(...plugin.exportTests.map(
-        testKey => [exportPluginKey, testKey],
-      ));
-    }
+    exportTests.push(...plugin.exportTests.map(
+      testKey => [exportPluginKey, testKey],
+    ));
+  }
 
-    testFixtures = (await importJson(`../test-fixtures.json`, import.meta.url)).map(
-      fixture => [fixture.man, fixture.key],
-    );
+  testFixtures = (await importJson(`../test-fixtures.json`, import.meta.url)).map(
+    fixture => [fixture.man, fixture.key],
+  );
 
-    const tasks = getTasksForModel(changedComponents)
-      .concat(getTasksForPlugins(changedComponents))
-      .concat(getTasksForExportTests(changedComponents))
-      .concat(getTasksForFixtures(changedComponents))
-      .filter((task, index, array) => {
-        const firstEqualTask = array.find(otherTask =>
-          task.manufacturerKey === otherTask.manufacturerKey &&
-          task.fixtureKey === otherTask.fixtureKey &&
-          task.pluginKey === otherTask.pluginKey &&
-          task.testKey === otherTask.testKey,
-        );
+  const tasks = getTasksForModel(changedComponents)
+    .concat(getTasksForPlugins(changedComponents))
+    .concat(getTasksForExportTests(changedComponents))
+    .concat(getTasksForFixtures(changedComponents))
+    .filter((task, index, array) => {
+      const firstEqualTask = array.find(otherTask =>
+        task.manufacturerKey === otherTask.manufacturerKey &&
+        task.fixtureKey === otherTask.fixtureKey &&
+        task.pluginKey === otherTask.pluginKey &&
+        task.testKey === otherTask.testKey,
+      );
 
-        // remove duplicates
-        return task === firstEqualTask;
-      })
-      .sort((a, b) => {
-        const manufacturerCompare = a.manufacturerKey.localeCompare(b.manufacturerKey);
-        const fixtureCompare = a.fixtureKey.localeCompare(b.fixtureKey);
-        const pluginCompare = a.pluginKey.localeCompare(b.pluginKey);
-        const testCompare = a.testKey.localeCompare(b.testKey);
+      // remove duplicates
+      return task === firstEqualTask;
+    })
+    .sort((a, b) => {
+      const manufacturerCompare = a.manufacturerKey.localeCompare(b.manufacturerKey);
+      const fixtureCompare = a.fixtureKey.localeCompare(b.fixtureKey);
+      const pluginCompare = a.pluginKey.localeCompare(b.pluginKey);
+      const testCompare = a.testKey.localeCompare(b.testKey);
 
-        if (manufacturerCompare !== 0) {
-          return manufacturerCompare;
-        }
-
-        if (fixtureCompare !== 0) {
-          return fixtureCompare;
-        }
-
-        if (pluginCompare !== 0) {
-          return pluginCompare;
-        }
-
-        return testCompare;
-      });
-
-    if (tasks.length === 0) {
-      await pullRequest.updateComment({
-        fileUrl: new URL(import.meta.url),
-        name: `Export files validity`,
-        lines: [],
-      });
-      return;
-    }
-
-    const lines = [
-      `Test the exported files of selected fixtures against the plugins' export tests.`,
-      `You can run a plugin's export tests by executing:`,
-      `\`$ node cli/run-export-test.js -p <plugin name> <fixtures>\``,
-      ``,
-    ];
-
-    const tooLongMessage = `:warning: The output of the script is too long to fit in this comment, please run it yourself locally!`;
-
-    for (const task of tasks) {
-      const taskResultLines = await getTaskPromise(task);
-
-      // GitHub's official maximum comment length is 2**16 = 65_536, but it's actually 2**18 = 262_144.
-      // We keep 2144 characters extra space as we don't count the comment header (added by our pull request module).
-      if (lines.concat(taskResultLines, tooLongMessage).join(`\r\n`).length > 260_000) {
-        lines.push(tooLongMessage);
-        break;
+      if (manufacturerCompare !== 0) {
+        return manufacturerCompare;
       }
 
-      lines.push(...taskResultLines);
-    }
+      if (fixtureCompare !== 0) {
+        return fixtureCompare;
+      }
 
+      if (pluginCompare !== 0) {
+        return pluginCompare;
+      }
+
+      return testCompare;
+    });
+
+  if (tasks.length === 0) {
     await pullRequest.updateComment({
       fileUrl: new URL(import.meta.url),
       name: `Export files validity`,
-      lines,
+      lines: [],
     });
+    process.exit(0);
+  }
 
-    if (testErrored) {
-      throw new Error(`Unable to export some fixtures.`);
+  const lines = [
+    `Test the exported files of selected fixtures against the plugins' export tests.`,
+    `You can run a plugin's export tests by executing:`,
+    `\`$ node cli/run-export-test.js -p <plugin name> <fixtures>\``,
+    ``,
+  ];
+
+  const tooLongMessage = `:warning: The output of the script is too long to fit in this comment, please run it yourself locally!`;
+
+  for (const task of tasks) {
+    const taskResultLines = await getTaskPromise(task);
+
+    // GitHub's official maximum comment length is 2**16 = 65_536, but it's actually 2**18 = 262_144.
+    // We keep 2144 characters extra space as we don't count the comment header (added by our pull request module).
+    if (lines.concat(taskResultLines, tooLongMessage).join(`\r\n`).length > 260_000) {
+      lines.push(tooLongMessage);
+      break;
     }
+
+    lines.push(...taskResultLines);
   }
-  catch (error) {
-    console.error(error);
-    process.exit(1);
+
+  await pullRequest.updateComment({
+    fileUrl: new URL(import.meta.url),
+    name: `Export files validity`,
+    lines,
+  });
+
+  if (testErrored) {
+    throw new Error(`Unable to export some fixtures.`);
   }
-})();
+}
+catch (error) {
+  console.error(error);
+  process.exit(1);
+}
 
 
 /**

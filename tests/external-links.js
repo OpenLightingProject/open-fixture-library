@@ -21,67 +21,63 @@ const excludedUrls = [
 ];
 
 
-(async () => {
-  const testStartTime = Date.now();
-  let errored = false;
+const testStartTime = Date.now();
+let errored = false;
 
+try {
+  const crawler = new SiteCrawler();
+
+  console.log(chalk.blue.bold(`Starting OFL server ...`));
   try {
-    const crawler = new SiteCrawler();
-
-    console.log(chalk.blue.bold(`Starting OFL server ...`));
-    try {
-      await crawler.startServer();
-    }
-    catch (error) {
-      throw `${chalk.redBright(`Failed to start OFL server. Maybe you forgot running 'npm run build' or there is already a running server?`)} ${error.message}`;
-    }
-    console.log();
-
-    const externalUrlSet = new Set();
-
-    crawler.on(`externalLinkFound`, url => {
-      if (!excludedUrls.some(excludedUrl => url.startsWith(excludedUrl))) {
-        externalUrlSet.add(url);
-        process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
-      }
-    });
-
-    const crawlStartTime = Date.now();
-    console.log(chalk.blue.bold(`Start crawling the website for external links ...`));
-    await crawler.crawl();
-
-    const crawlTime = Date.now() - crawlStartTime;
-    console.log(`Crawling finished after ${crawlTime / 1000}s.`);
-    console.log();
-
-    const { stdout, stderr } = await crawler.stopServer();
-    if (stdout) {
-      console.log(chalk.blueBright(`Server output (stdout):`));
-      console.log(stdout);
-    }
-    if (stderr) {
-      console.log(chalk.blueBright(`Server errors (stderr):`));
-      console.log(stderr);
-    }
-
-    const urlResults = await fetchExternalUrls(Array.from(externalUrlSet));
-    console.log();
-
-    console.log(chalk.blue.bold(`Updating GitHub issue ...`));
-    await updateGithubIssue(urlResults);
+    await crawler.startServer();
   }
   catch (error) {
-    console.error(error);
-    errored = true;
+    throw `${chalk.redBright(`Failed to start OFL server. Maybe you forgot running 'npm run build' or there is already a running server?`)} ${error.message}`;
+  }
+  console.log();
+
+  const externalUrlSet = new Set();
+
+  crawler.on(`externalLinkFound`, url => {
+    if (!excludedUrls.some(excludedUrl => url.startsWith(excludedUrl))) {
+      externalUrlSet.add(url);
+      process.stdout.write(`\r${externalUrlSet.size} link(s) found.`);
+    }
+  });
+
+  const crawlStartTime = Date.now();
+  console.log(chalk.blue.bold(`Start crawling the website for external links ...`));
+  await crawler.crawl();
+
+  const crawlTime = Date.now() - crawlStartTime;
+  console.log(`Crawling finished after ${crawlTime / 1000}s.`);
+  console.log();
+
+  const { stdout, stderr } = await crawler.stopServer();
+  if (stdout) {
+    console.log(chalk.blueBright(`Server output (stdout):`));
+    console.log(stdout);
+  }
+  if (stderr) {
+    console.log(chalk.blueBright(`Server errors (stderr):`));
+    console.log(stderr);
   }
 
-  const testTime = Date.now() - testStartTime;
+  const urlResults = await fetchExternalUrls(Array.from(externalUrlSet));
   console.log();
-  console.log(chalk.greenBright.bold(`Test took ${testTime / 1000}s.`));
-  process.exit(errored ? 1 : 0);
-})();
 
+  console.log(chalk.blue.bold(`Updating GitHub issue ...`));
+  await updateGithubIssue(urlResults);
+}
+catch (error) {
+  console.error(error);
+  errored = true;
+}
 
+const testTime = Date.now() - testStartTime;
+console.log();
+console.log(chalk.greenBright.bold(`Test took ${testTime / 1000}s.`));
+process.exit(errored ? 1 : 0);
 
 
 /**

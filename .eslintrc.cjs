@@ -285,7 +285,7 @@ module.exports = {
     node: true,
   },
   parserOptions: {
-    ecmaVersion: 2021,
+    ecmaVersion: 2022,
   },
   plugins: Object.keys(pluginPresets),
   extends: [
@@ -334,6 +334,7 @@ module.exports = {
     {
       files: [`**/*.md/*.js`],
       rules: {
+        'no-unused-vars': `off`,
         'jsdoc/require-jsdoc': `off`,
         'import/no-unresolved': `off`,
       },
