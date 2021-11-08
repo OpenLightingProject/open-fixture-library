@@ -1,0 +1,278 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "S",
+  "shortName": "alien-s",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Yéred Zabdiel"],
+    "createDate": "2021-11-08",
+    "lastModifyDate": "2021-11-08"
+  },
+  "comment": "LED bar",
+  "links": {
+    "manual": [
+      "http://alienpro.com.mx/wp-content/uploads/Manual-Bar-Alien-S.pdf"
+    ],
+    "productPage": [
+      "http://alienpro.com.mx/"
+    ]
+  },
+  "physical": {
+    "dimensions": [1070, 65, 80],
+    "weight": 2.6,
+    "power": 30,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Red1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Master Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Red3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Flash Speed": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Blue4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Red7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Red8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-Channels",
+      "shortName": "3ch",
+      "channels": [
+        "Red1",
+        "Green1",
+        "Blue1"
+      ]
+    },
+    {
+      "name": "4-Channels",
+      "shortName": "4ch",
+      "channels": [
+        "Red1",
+        "Green1",
+        "Blue1",
+        "Master Dimmer"
+      ]
+    },
+    {
+      "name": "14-Channels",
+      "shortName": "14ch",
+      "channels": [
+        "Red1",
+        "Green1",
+        "Blue1",
+        "Red2",
+        "Green2",
+        "Blue2",
+        "Red3",
+        "Green3",
+        "Blue3",
+        "Red4",
+        "Green4",
+        "Blue4",
+        "Flash Speed",
+        "Master Dimmer"
+      ]
+    },
+    {
+      "name": "26-Channels",
+      "shortName": "26ch",
+      "channels": [
+        "Red1",
+        "Green1",
+        "Blue1",
+        "Red2",
+        "Green2",
+        "Blue2",
+        "Red3",
+        "Green3",
+        "Blue3",
+        "Red4",
+        "Green4",
+        "Blue4",
+        "Red5",
+        "Green5",
+        "Blue5",
+        "Red6",
+        "Green6",
+        "Blue6",
+        "Red7",
+        "Green7",
+        "Blue7",
+        "Red8",
+        "Green8",
+        "Blue8",
+        "Flash Speed",
+        "Master Dimmer"
+      ]
+    }
+  ]
+}
