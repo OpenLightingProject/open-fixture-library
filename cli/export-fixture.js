@@ -55,7 +55,8 @@ try {
       console.log(`Created file ${filePath}`);
     }
     else {
-      console.log(`\n${chalk.yellow(`File name: '${file.name}'`)}`);
+      console.log();
+      console.log(chalk.yellow(`File name: '${file.name}'`));
       console.log(file.content);
     }
   }

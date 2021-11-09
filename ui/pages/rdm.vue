@@ -177,6 +177,5 @@ function redirectToCorrectPage(rdmManufacturer, modelId, personalityIndex, redir
   const locationHash = personalityIndex === undefined ? `` : `#rdm-personality-${personalityIndex}`;
 
   redirect(301, `/${rdmManufacturer.key}/${rdmManufacturer.models[String(modelId)]}${locationHash}`);
-  return;
 }
 </script>

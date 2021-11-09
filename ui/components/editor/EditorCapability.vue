@@ -194,7 +194,6 @@ export default {
     },
   },
   methods: {
-    // eslint-disable-next-line complexity
     onStartUpdated() {
       if (this.start === null) {
         const previousCapability = this.capabilities[this.capabilityIndex - 1];
@@ -223,7 +222,6 @@ export default {
         this.insertCapabilityBefore();
       }
     },
-    // eslint-disable-next-line complexity
     onEndUpdated() {
       if (this.end === null) {
         const nextCapability = this.capabilities[this.capabilityIndex + 1];

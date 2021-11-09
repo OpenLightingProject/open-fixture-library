@@ -98,7 +98,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
     checkMatrix(fixture.matrix);
     await checkWheels(fixture.wheels);
     checkTemplateChannels();
-    checkChannels(fixtureJson);
+    checkChannels();
 
     for (const mode of fixture.modes) {
       checkMode(mode);
@@ -740,7 +740,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
     for (const rawReference of mode.jsonObject.channels) {
       if (rawReference !== null && typeof rawReference !== `string`) {
-        checkChannelInsertBlock(rawReference, mode);
+        checkChannelInsertBlock(rawReference);
       }
     }
 
@@ -866,7 +866,6 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
           // if the channel can be switched to a fine channel, the mode must also contain coarser channels
           if (switchToChannel instanceof FineChannel) {
             checkCoarserChannelsInMode(switchToChannel);
-            continue;
           }
         }
 
@@ -941,10 +940,10 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
   function checkUnusedChannels() {
     const unused = Array.from(definedChannelKeys).filter(
       channelKey => !usedChannelKeys.has(channelKey),
-    );
+    ).join(`, `);
 
     if (unused.length > 0) {
-      result.warnings.push(`Unused channel(s): ${unused.join(`, `)}`);
+      result.warnings.push(`Unused channel(s): ${unused}`);
     }
   }
 
@@ -954,10 +953,10 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
   function checkUnusedWheels() {
     const unusedWheels = fixture.wheels.filter(
       wheel => !usedWheels.has(wheel.name),
-    ).map(wheel => wheel.name);
+    ).map(wheel => wheel.name).join(`, `);
 
     if (unusedWheels.length > 0) {
-      result.warnings.push(`Unused wheel(s): ${unusedWheels.join(`, `)}`);
+      result.warnings.push(`Unused wheel(s): ${unusedWheels}`);
     }
   }
 
@@ -978,10 +977,10 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
 
     const unusedWheelSlots = slotsOfUsedWheels.filter(
       slot => !usedWheelSlots.has(slot),
-    );
+    ).join(`, `);
 
     if (unusedWheelSlots.length > 0) {
-      result.warnings.push(`Unused wheel slot(s): ${unusedWheelSlots.join(`, `)}`);
+      result.warnings.push(`Unused wheel slot(s): ${unusedWheelSlots}`);
     }
   }
 
@@ -1073,8 +1072,11 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
       }
       else if (exclusiveGroups.length > 0) {
         result.errors.push(...exclusiveGroups.map(group => {
-          const usedCategories = group.filter(category => fixture.categories.includes(category));
-          return `Categories '${usedCategories.join(`', '`)}' can't be used together.`;
+          const usedCategories = group
+            .filter(category => fixture.categories.includes(category))
+            .map(category => `'${category}'`)
+            .join(`, `);
+          return `Categories ${usedCategories} can't be used together.`;
         }));
       }
     }

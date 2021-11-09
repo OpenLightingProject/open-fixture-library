@@ -32,7 +32,8 @@ try {
     await crawler.startServer();
   }
   catch (error) {
-    throw `${chalk.redBright(`Failed to start OFL server. Maybe you forgot running 'npm run build' or there is already a running server?`)} ${error.message}`;
+    const header = chalk.redBright(`Failed to start OFL server. Maybe you forgot running 'npm run build' or there is already a running server?`);
+    throw `${header} ${error.message}`;
   }
   console.log();
 
@@ -376,7 +377,7 @@ async function updateGithubIssue(urlResults) {
             return `:heavy_check_mark:`;
           }
 
-          const message = status.message.replace(`\n`, ` `).replace(`"`, `&quot;`);
+          const message = status.message.replace(/\n/g, ` `).replace(/"/g, `&quot;`);
           const emoji = getFailedEmoji(status.message);
           return `<a href="${status.jobUrl}" title="${message}">${emoji}</a>`;
         }).join(`&nbsp;`);

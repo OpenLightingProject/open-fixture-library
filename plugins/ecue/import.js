@@ -266,6 +266,12 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
     capability.type = getCapabilityType();
 
+    const setPanTiltAngles = () => {
+      capability.angleStart = `0%`;
+      capability.angleEnd = `100%`;
+      capability.comment = capabilityName;
+    };
+
     // capability parsers can rely on the channel type as a first distinctive feature
     const capabilityTypeParsers = {
       ColorIntensity() {
@@ -327,16 +333,8 @@ function addChannelToFixture(ecueChannel, fixture, warningsArray) {
 
         capability.comment = getSpeedGuessedComment();
       },
-      Pan() {
-        capability.angleStart = `0%`;
-        capability.angleEnd = `100%`;
-        capability.comment = capabilityName;
-      },
-      Tilt() {
-        capability.angleStart = `0%`;
-        capability.angleEnd = `100%`;
-        capability.comment = capabilityName;
-      },
+      Pan: setPanTiltAngles,
+      Tilt: setPanTiltAngles,
       Effect() {
         capability.effectName = ``; // set it first here so effectName is before speedStart/speedEnd
         capability.effectName = getSpeedGuessedComment();

@@ -272,12 +272,11 @@ export default {
               return true;
             }
 
-            const nextCoarserChannelFound = targetMode.channels.some(uuid => {
+            // return whether next coarser channel can be found in target mode
+            return targetMode.channels.some(uuid => {
               const otherChannel = this.fixture.availableChannels[uuid];
               return otherChannel.coarseChannelId === channel.coarseChannelId && otherChannel.resolution === channel.resolution - 1;
             });
-
-            return nextCoarserChannelFound;
           },
           revertClone: true,
         },

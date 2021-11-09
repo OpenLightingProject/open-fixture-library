@@ -207,9 +207,12 @@ function getColorDescription(capability) {
 
   if (capability.colors.isStep) {
     const plural = capability.colors.allColors.length > 1 ? `colors` : `color`;
-    return `${plural}: ${capability.colors.allColors.join(`, `)}`;
+    const allColors = capability.colors.allColors.join(`, `);
+    return `${plural}: ${allColors}`;
   }
 
-  return `transition from ${capability.colors.startColors.join(`, `)} to ${capability.colors.endColors.join(`, `)}`;
+  const startColors = capability.colors.startColors.join(`, `);
+  const endColors = capability.colors.endColors.join(`, `);
+  return `transition from ${startColors} to ${endColors}`;
 }
 </script>
