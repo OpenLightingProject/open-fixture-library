@@ -24,7 +24,6 @@ const enabledRuleParameters = {
   'comma-dangle': [`always-multiline`],
   'comma-spacing': [],
   'comma-style': [],
-  'complexity': [7],
   'consistent-return': [],
   'curly': [`all`],
   'dot-location': [`property`],
@@ -246,7 +245,6 @@ const vueCoreExtensionRules = [
 ];
 
 const warnRules = new Set([
-  `complexity`,
   `jsdoc/require-jsdoc`,
   `sonarjs/cognitive-complexity`,
   `vue/no-mutating-props`,
