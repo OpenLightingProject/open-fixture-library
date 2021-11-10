@@ -474,16 +474,19 @@ async function updateGithubIssue(urlResults) {
 function getFailedEmoji(message) {
   const emojis = {
     '301': `:fast_forward:`,
-    '301 Moved Permanently': `:fast_forward:`,
+    '301 moved permanently': `:fast_forward:`,
 
     '403': `:no_entry:`,
-    '403 Forbidden': `:no_entry:`,
+    '403 forbidden': `:no_entry:`,
 
     '429': `:sos:`,
-    '429 Too Many Requests': `:sos:`,
+    '429 too many requests': `:sos:`,
 
-    [`Timeout of ${TIMEOUT}ms exceeded.`]: `:hourglass:`,
+    'certificate has expired': `:lock:`,
+    'unable to verify the first certificate': `:lock:`,
+
+    [`timeout of ${TIMEOUT}ms exceeded.`]: `:hourglass:`,
   };
 
-  return emojis[message.trim()] || `:x:`;
+  return emojis[message.trim().toLowerCase()] || `:x:`;
 }
