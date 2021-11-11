@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BEL6 IP Bar HEX",
+  "categories": ["Stand", "Color Changer"],
+  "meta": {
+    "authors": ["B the pulp"],
+    "createDate": "2021-11-11",
+    "lastModifyDate": "2021-11-11"
+  },
+  "links": {
+    "manual": [
+      "https://www.manualslib.com/manual/1811961/Thomann-Stairville-Bel6-Ip-Bar-Hex.html?page=1#manual"
+    ],
+    "productPage": [
+      "https://www.thomann.de/fr/stairville_bel6_ip_bar_hex.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=h0eIBvguIfk"
+    ]
+  },
+  "physical": {
+    "dimensions": [521, 200, 126],
+    "weight": 4.5,
+    "power": 70,
+    "DMXconnector": "3-pin XLR IP65",
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    }
+  ]
+}
