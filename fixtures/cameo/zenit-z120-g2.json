@@ -1,0 +1,176 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Zenit Z120 G2",
+  "shortName": "Cameo Zenit Z120 G2",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["stevebrush"],
+    "createDate": "2021-11-15",
+    "lastModifyDate": "2021-11-15"
+  },
+  "comment": "9 ch configuration",
+  "links": {
+    "manual": [
+      "https://www.cameolight.com/fr/downloads/file/id/1607174864"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/fr/solutions/prestataires/eclairage-exterieur/projecteur-d-exterieur/20016/zenit-z120-g2"
+    ]
+  },
+  "physical": {
+    "power": 180,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [7, 55]
+    }
+  },
+  "wheels": {
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Color"
+        },
+        {
+          "type": "Color",
+          "name": "Different colors"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [11, 33],
+          "type": "StrobeSpeed",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [34, 56],
+          "type": "StrobeSpeed",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [57, 79],
+          "type": "StrobeSpeed",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [80, 102],
+          "type": "StrobeSpeed",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [103, 127],
+          "type": "StrobeSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [128, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "comment": "Colour Off"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Device Settings": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "NoFunction",
+          "comment": "many things to setup"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "9ch",
+      "shortName": "9ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Wheel",
+        "Zoom",
+        "Device Settings"
+      ]
+    }
+  ]
+}
