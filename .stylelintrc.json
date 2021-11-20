@@ -3,7 +3,7 @@
   "reportNeedlessDisables": true,
   "reportInvalidScopeDisables": true,
   "extends": [
-    "stylelint-config-recommended-scss"
+    "stylelint-config-standard-scss"
   ],
   "rules": {
     "selector-pseudo-element-no-unknown": [true, {
