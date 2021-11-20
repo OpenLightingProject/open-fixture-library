@@ -1,0 +1,10 @@
+defaultSeverity: warning
+reportNeedlessDisables: true
+reportInvalidScopeDisables: true
+extends:
+  - stylelint-config-standard-scss
+rules:
+  selector-pseudo-element-no-unknown:
+    - true
+    - ignorePseudoElements: ["v-deep"]
+  scss/comment-no-loud: true
