@@ -3,6 +3,7 @@ reportNeedlessDisables: true
 reportInvalidScopeDisables: true
 extends:
   - stylelint-config-standard-scss
+  - stylelint-config-html/vue
 rules:
   selector-pseudo-element-no-unknown:
     - true
