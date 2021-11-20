@@ -184,6 +184,7 @@ const enabledRuleParameters = {
   }],
   'vue/max-attributes-per-line': [{ singleline: 3 }],
   'vue/next-tick-style': [],
+  'vue/no-child-content': [],
   'vue/no-deprecated-scope-attribute': [],
   'vue/no-deprecated-slot-attribute': [],
   'vue/no-deprecated-slot-scope-attribute': [],
