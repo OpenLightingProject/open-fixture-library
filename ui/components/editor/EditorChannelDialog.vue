@@ -227,11 +227,9 @@
 .existing-channel-input-container ::v-deep section {
   display: block;
 }
-</style>
 
-<style lang="scss">
 @media (min-width: $phone) {
-  #channel-dialog .dialog {
+  #channel-dialog ::v-deep .dialog {
     width: 80%;
     max-width: 700px;
   }
