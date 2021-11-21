@@ -56,8 +56,8 @@ $animation-number: 0 !default;
   }
 
   #ofl-root.touch &:hover {
-    animation-delay: $mobile-hover-delay;
     animation-duration: $transition-duration;
+    animation-delay: $mobile-hover-delay;
     animation-fill-mode: both;
 
     @include animation-keyframes {

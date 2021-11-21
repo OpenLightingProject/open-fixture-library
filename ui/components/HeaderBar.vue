@@ -77,33 +77,33 @@
 
 header {
   position: fixed;
+  z-index: 100;
   width: 100%;
+  text-align: center;
   background: theme-color(header-background);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 40%);
-  text-align: center;
-  z-index: 100;
   transition: background-color 0.3s;
 
   nav {
-    max-width: 1000px;
-    margin: 0 auto;
     display: flex;
     flex-direction: row;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
   .right-nav {
     flex-shrink: 0;
-    white-space: nowrap;
     overflow: auto;
+    white-space: nowrap;
   }
 
   a {
     display: inline-block;
     height: 4.5em;
-    line-height: 4.5em;
     padding: 0 1ex;
-    text-decoration: none;
+    line-height: 4.5em;
     color: inherit;
+    text-decoration: none;
 
     &:active,
     &:focus {
@@ -117,49 +117,49 @@ header {
   }
 
   form {
-    flex-grow: 1;
     display: flex;
-    justify-content: center;
+    flex-grow: 1;
     align-items: center;
+    justify-content: center;
   }
 
   input {
+    width: 100%;
     font-size: 1.05em;
     line-height: 1.2;
-    width: 100%;
   }
 
   button {
-    margin-left: 4px;
     box-sizing: content-box;
+    margin-left: 4px;
     font-size: 1.05em;
     line-height: 1.2;
   }
 
   .left-nav {
-    flex-grow: 1;
     display: flex;
+    flex-grow: 1;
     align-items: center;
     justify-content: center;
   }
 
   .home-logo {
+    position: relative;
     display: inline-block;
     width: 0;
     padding: 0;
     overflow: hidden;
-    position: relative;
     transition: background-color 0.2s, padding 0.2s;
 
     @include home-logo-sizing(122px, 2ex);
 
     &::before {
-      content: "";
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
+      content: "";
       background-image: url("~static/ofl-logo.svg");
       background-repeat: no-repeat;
       background-position: center;
@@ -184,8 +184,8 @@ header {
     .home-logo {
       @include home-logo-sizing(92px, 0.5ex);
 
-      line-height: 3em;
       height: 3em;
+      line-height: 3em;
     }
 
     form {
@@ -194,8 +194,8 @@ header {
     }
 
     .right-nav > a {
-      line-height: 2.7em;
       height: 2.7em;
+      line-height: 2.7em;
     }
   }
 }
@@ -205,8 +205,8 @@ header {
     .home-logo {
       @include home-logo-sizing(82px, 0.5ex);
 
-      line-height: 2.8em;
       height: 2.8em;
+      line-height: 2.8em;
 
       &.hidden-by-search-field {
         padding: 0;
@@ -215,8 +215,8 @@ header {
 
     form,
     form div {
-      flex-grow: 1;
       flex-basis: 0;
+      flex-grow: 1;
     }
   }
 }

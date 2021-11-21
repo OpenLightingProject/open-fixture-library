@@ -40,8 +40,8 @@
 
 <style lang="scss" scoped>
 .climate-strike {
-  text-align: center;
   color: #ffffff;
+  text-align: center;
 
   a {
     color: #ffffff;
@@ -56,31 +56,31 @@
 }
 
 #climate-strike-banner {
-  border: 0.5em solid #1da64a;
-  background: #1b7340;
   padding: 0.5em;
   line-height: 1.7;
+  background: #1b7340;
+  border: 0.5em solid #1da64a;
 }
 
 #climate-strike-overlay {
   position: fixed;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
+  left: 0;
   z-index: 1000;
   overflow: auto;
   background: #1b7340;
 
   h1 {
-    background: #1da64a;
-    padding: 0.5em 1em;
     box-sizing: border-box;
+    padding: 0.5em 1em;
     margin: 2.5em 0 1em;
     font-weight: 700;
     line-height: 1.2;
-    transform: skewY(-2.5deg);
     text-shadow: 0 0 5px rgba(#1b7340, 50%);
+    background: #1da64a;
+    transform: skewY(-2.5deg);
 
     a {
       display: block;
@@ -95,8 +95,8 @@
 
   & > div {
     h2 {
-      font-weight: 700;
       margin: 2em 10px 10px;
+      font-weight: 700;
       line-height: 1.2;
     }
 

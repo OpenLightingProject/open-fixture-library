@@ -32,12 +32,12 @@
 <style lang="scss" scoped>
 .help-wanted {
   position: relative;
-  margin: 1ex 0;
-  background: theme-color(yellow-background);
-  border-radius: 2px;
   min-height: 32px;
   padding: 0;
+  margin: 1ex 0;
   line-height: 1.6;
+  background: theme-color(yellow-background);
+  border-radius: 2px;
 }
 
 .information {
@@ -48,10 +48,10 @@
   border-bottom: 2px solid theme-color(yellow-background-hover);
 
   & > .icon {
-    margin-left: -$icon-width - $text-margin;
+    float: left;
     padding-right: $text-margin;
     margin-top: 0.2em;
-    float: left;
+    margin-left: -$icon-width - $text-margin;
   }
 }
 
@@ -62,20 +62,20 @@
   font-size: 90%;
 
   a {
-    flex-grow: 1;
-    flex-basis: 10em;
+    box-sizing: border-box;
     display: inline-block;
+    flex-basis: 10em;
+    flex-grow: 1;
+    width: 100%;
     padding: 0.4em 0.6em;
     color: theme-color(text-primary);
     text-align: center;
-    width: 100%;
-    box-sizing: border-box;
 
     &:hover,
     &:focus {
       background: theme-color(yellow-background-hover);
-      fill: theme-color(text-primary);
       outline: 0;
+      fill: theme-color(text-primary);
     }
 
     & > .icon {

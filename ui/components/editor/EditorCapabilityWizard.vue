@@ -88,8 +88,8 @@
 
 .capabilities-table {
   margin-top: 1em;
-  border-collapse: collapse;
   table-layout: fixed;
+  border-collapse: collapse;
 }
 
 th {
@@ -104,19 +104,19 @@ th {
 }
 
 .capability-dmx-range-start {
-  text-align: right;
   padding-right: 2px;
+  text-align: right;
 }
 
 .capability-dmx-range-separator {
-  text-align: center;
-  padding-left: 0;
   padding-right: 0;
+  padding-left: 0;
+  text-align: center;
 }
 
 .capability-dmx-range-end {
-  text-align: left;
   padding-left: 2px;
+  text-align: left;
 }
 
 .inherited,

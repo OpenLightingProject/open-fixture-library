@@ -53,13 +53,13 @@ $container-fade-duration: 200ms;
 
 .dialog-container {
   position: fixed;
-  z-index: 1000;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 66%);
+  z-index: 1000;
   display: flex;
+  background-color: rgba(0, 0, 0, 66%);
   animation: fade-in $container-fade-duration both;
 }
 
@@ -68,15 +68,15 @@ $container-fade-duration: 200ms;
 }
 
 .dialog {
-  background-color: theme-color(dialog-background);
-  color: theme-color(text-primary);
-  margin: auto;
   box-sizing: border-box;
   min-width: 20rem;
   max-width: 90%;
   max-height: 90%;
+  margin: auto;
   overflow: auto;
   overscroll-behavior: contain;
+  color: theme-color(text-primary);
+  background-color: theme-color(dialog-background);
   animation:
     fade-in 200ms $container-fade-duration both,
     scale-up 200ms $container-fade-duration both;
@@ -103,11 +103,11 @@ $container-fade-duration: 200ms;
   // make dialogs cover the whole screen
   .dialog,
   .dialog.wide {
+    width: 100%;
     min-width: none;
     max-width: none;
-    max-height: none;
-    width: 100%;
     height: 100%;
+    max-height: none;
   }
 }
 </style>

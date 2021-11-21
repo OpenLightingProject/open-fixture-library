@@ -40,9 +40,9 @@ section {
 
     & > .value {
       // take up the remaining space
-      min-width: 0;
       flex-grow: 1;
       flex-shrink: 1;
+      min-width: 0;
     }
   }
 }

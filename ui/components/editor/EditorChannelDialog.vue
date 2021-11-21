@@ -232,8 +232,8 @@
 <style lang="scss">
 @media (min-width: $phone) {
   #channel-dialog .dialog {
-    max-width: 700px;
     width: 80%;
+    max-width: 700px;
   }
 }
 </style>

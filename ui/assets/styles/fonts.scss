@@ -17,23 +17,23 @@ $lato-flavor-list: (
 
   @font-face {
     font-family: LatoLatin;
+    font-style: normal;
+    font-weight: $weight;
     src:
       local("Lato #{$flavor}"),
       local("Lato-#{$flavor}"),
       url("#{$url}.woff2") format("woff2");
-    font-style: normal;
-    font-weight: $weight;
     font-display: fallback;
   }
 
   @font-face {
     font-family: LatoLatin;
+    font-style: italic;
+    font-weight: $weight;
     src:
       local("Lato #{$flavor} Italic"),
       local("Lato-#{$flavor}Italic"),
       url("#{$url}Italic.woff2") format("woff2");
-    font-style: italic;
-    font-weight: $weight;
     font-display: fallback;
   }
 }
@@ -41,10 +41,10 @@ $lato-flavor-list: (
 // v21 from https://google-webfonts-helper.herokuapp.com/fonts/inconsolata
 @font-face {
   font-family: Inconsolata;
+  font-weight: 400;
   src:
     local("Inconsolata Regular"),
     local("Inconsolata-Regular"),
     url("/fonts/Inconsolata/Inconsolata-Regular.woff2") format("woff2");
-  font-weight: 400;
   font-display: fallback;
 }

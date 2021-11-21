@@ -83,19 +83,19 @@
   }
 
   & ::v-deep code {
-    background-color: theme-color(header-background);
     padding: 3px 5px;
+    background-color: theme-color(header-background);
   }
 
   & ::v-deep table {
     margin: 1rem 0;
-    border: 1px solid theme-color(divider);
     border-collapse: collapse;
+    border: 1px solid theme-color(divider);
 
     th,
     td {
-      border: 1px solid theme-color(divider);
       padding: 1px 1ex;
+      border: 1px solid theme-color(divider);
     }
   }
 }

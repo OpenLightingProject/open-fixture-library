@@ -64,9 +64,9 @@
 
 <style lang="scss" scoped>
 .capabilities-table {
-  border-collapse: collapse;
-  table-layout: fixed;
   width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
 }
 
 th {
@@ -86,29 +86,29 @@ th {
 }
 
 .capability-range0 {
-  text-align: right;
   padding-right: 2px;
+  text-align: right;
 }
 
 .capability-range-separator {
-  text-align: center;
-  padding-left: 0;
   padding-right: 0;
+  padding-left: 0;
+  text-align: center;
 }
 
 .capability-range1 {
-  text-align: left;
   padding-left: 2px;
+  text-align: left;
 }
 
 .capability-icon .gobo-icon {
-  transition: transform 0.4s;
   pointer-events: none;
+  transition: transform 0.4s;
 }
 
 .capability-icon:hover .gobo-icon {
-  transform: scale(4);
   z-index: 1;
+  transform: scale(4);
 }
 
 .capability-menu-click {
@@ -116,9 +116,9 @@ th {
 }
 
 .switch-to-channel > td {
-  line-height: 1rem;
   padding-bottom: 4px;
   font-size: 82%;
+  line-height: 1rem;
 
   & > .switching-channel-key {
     color: theme-color(text-secondary);

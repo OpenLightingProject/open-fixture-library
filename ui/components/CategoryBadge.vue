@@ -3,8 +3,8 @@
   display: inline-block;
   padding: 4px 1.5ex 4px 1ex;
   margin: 0 4px 4px 0;
-  border-radius: 5000px; // see https://stackoverflow.com/a/18795153/451391
   background: theme-color(hover-background);
+  border-radius: 5000px; // see https://stackoverflow.com/a/18795153/451391
 
   &:link,
   &:visited {
@@ -18,8 +18,8 @@
   }
 
   &.selected {
-    background-color: theme-color(blue-background-active);
     cursor: move;
+    background-color: theme-color(blue-background-active);
 
     &:link,
     &:visited {
@@ -34,8 +34,8 @@
   }
 
   & > .icon {
-    height: 1.7em;
     width: 1.7em;
+    height: 1.7em;
     margin-right: 4px;
   }
 }

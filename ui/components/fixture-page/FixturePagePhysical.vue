@@ -113,9 +113,9 @@
   column-gap: 3rem;
 
   & > section {
-    break-inside: avoid;
-    overflow: hidden;
     padding: 0 0 1.2ex;
+    overflow: hidden;
+    break-inside: avoid;
 
     &:empty {
       display: none;

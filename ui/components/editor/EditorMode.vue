@@ -139,9 +139,9 @@
 }
 
 .mode-channels {
-  margin: 0 0 1ex;
   padding-top: 4px;
   padding-bottom: 4px;
+  margin: 0 0 1ex;
 
   & li {
     position: relative;
@@ -159,9 +159,9 @@
     transition: background-color 0.1s, box-shadow 0.1s;
 
     & a {
+      padding: 0.3em;
       opacity: 0;
       transition: opacity 0.1s;
-      padding: 0.3em;
     }
   }
 

@@ -11,14 +11,14 @@
 
 html,
 body {
-  margin: 0;
   padding: 0;
+  margin: 0;
   font: 12pt/2 $font-stack-text;
   color: theme-color(text-primary);
-  background-color: theme-color(page-background);
   word-wrap: break-word;
-  text-rendering: optimizeLegibility;
+  background-color: theme-color(page-background);
   transition: background-color 0.3s, color 0.3s;
+  text-rendering: optimizeLegibility;
 }
 
 html {
@@ -31,28 +31,28 @@ html {
 }
 
 h1 {
-  font-weight: 300;
-  font-size: 2rem;
-  line-height: 2.5rem;
   margin: 1.5rem 0;
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 2.5rem;
 }
 
 h2 {
-  font-weight: 400;
   margin: 0;
   font-size: 1.5rem;
+  font-weight: 400;
 }
 
 h3 {
-  font-weight: 700;
-  font-size: 1.2rem;
   margin: 1rem 0 0;
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
 h4 {
-  font-weight: 700;
-  font-size: 1rem;
   margin: 0.8rem 0 0;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 p {
@@ -77,9 +77,9 @@ label {
 
 .hint {
   display: block;
-  color: theme-color(text-secondary);
   font-size: 0.8rem;
   line-height: 1.5;
+  color: theme-color(text-secondary);
 }
 
 template {
@@ -96,8 +96,8 @@ template {
 
 code {
   font-family: $font-stack-code;
-  color: theme-color(text-secondary);
   font-weight: 400;
+  color: theme-color(text-secondary);
 }
 
 h1 code,
@@ -108,8 +108,8 @@ code.channel-key {
 }
 
 a {
-  text-decoration: none;
   color: theme-color(link);
+  text-decoration: none;
   fill: theme-color(icon);
   transition: color 0.1s, fill 0.1s, background-color 0.1s;
 
@@ -151,12 +151,12 @@ input[type="number"] {
   box-sizing: border-box;
   max-width: 100%;
   padding: 0.4em;
+  font-family: $font-stack-text;
+  font-size: 0.95em;
+  color: theme-color(text-primary);
   background: theme-color(form-field-background);
   border: 1px solid theme-color(form-field-border);
-  color: theme-color(text-primary);
   border-radius: 3px;
-  font-size: 0.95em;
-  font-family: $font-stack-text;
   transition: background-color 0.2s, border-color 0.2s;
 
   &:focus {
@@ -180,19 +180,19 @@ input[type="number"] {
 }
 
 textarea[readonly] {
-  line-height: 1.3;
-  font-size: 0.9em;
-  font-family: $font-stack-code;
-  font-weight: 400;
-  white-space: pre-wrap;
-  background: theme-color(header-background);
-  color: theme-color(text-primary);
-  padding: 1em;
-  border: none;
   width: 100%;
   height: 15em;
+  padding: 1em;
   overflow: auto;
+  font-family: $font-stack-code;
+  font-size: 0.9em;
+  font-weight: 400;
+  line-height: 1.3;
+  color: theme-color(text-primary);
+  white-space: pre-wrap;
   resize: none;
+  background: theme-color(header-background);
+  border: none;
 }
 
 .error-message {
@@ -200,18 +200,18 @@ textarea[readonly] {
   color: red;
 
   & div::before {
-    content: "!";
     display: inline-block;
-    height: 1em;
-    line-height: 1em;
     width: 1em;
+    height: 1em;
     margin: -2px 1ex 0 0;
+    font-weight: 700;
+    line-height: 1em;
+    color: white;
     text-align: center;
+    vertical-align: middle;
+    content: "!";
     background: red;
     border-radius: 9999px;
-    color: white;
-    font-weight: 700;
-    vertical-align: middle;
   }
 }
 
@@ -220,18 +220,18 @@ input.addition {
 }
 
 select.empty {
-  color: theme-color(text-secondary);
   font-style: italic;
+  color: theme-color(text-secondary);
 
   & > option {
-    color: theme-color(text-primary);
     font-style: normal;
+    color: theme-color(text-primary);
   }
 }
 
 input::placeholder {
-  color: theme-color(text-secondary);
   font-style: italic;
+  color: theme-color(text-secondary);
   opacity: 1; // Firefox sets a default opacity
 }
 
@@ -239,19 +239,19 @@ button,
 a.button {
   &.primary,
   &.secondary {
-    border-radius: 2px;
-    border: 1px solid;
     display: inline-block;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 0.9em;
-    line-height: 1.4;
     padding: 0.5em 3ex;
+    font-size: 0.9em;
+    font-weight: 700;
+    line-height: 1.4;
+    cursor: pointer;
+    border: 1px solid;
+    border-radius: 2px;
     transition: 0.2s background-color;
 
     &.inline {
-      font-size: 0.85em;
       padding: 4px 6px;
+      font-size: 0.85em;
     }
 
     &:disabled {
@@ -266,9 +266,9 @@ a.button {
   }
 
   &.primary {
+    color: theme-color(button-primary-text);
     background-color: theme-color(button-primary-background);
     border-color: theme-color(button-primary-border);
-    color: theme-color(button-primary-text);
 
     &:not(:disabled):hover,
     &:not(:disabled):focus {
@@ -278,9 +278,9 @@ a.button {
   }
 
   &.secondary {
+    color: theme-color(button-secondary-text);
     background-color: theme-color(button-secondary-background);
     border-color: theme-color(button-secondary-border);
-    color: theme-color(button-secondary-text);
 
     &:not(:disabled):hover,
     &:not(:disabled):focus {
@@ -321,29 +321,29 @@ a.button {
   $icon-size: 1.4em;
   $padding: 0.3em;
 
-  display: inline-block;
   position: relative;
-  padding: 0 0 0 #{$icon-size + 2 * $padding};
+  display: inline-block;
   width: 0;
   height: #{$icon-size + 2 * $padding};
+  padding: 0 0 0 #{$icon-size + 2 * $padding};
   overflow: hidden;
+  color: theme-color(icon);
+  vertical-align: middle;
+  cursor: pointer;
   border: 1px solid;
   border-radius: 3px;
-  cursor: pointer;
-  vertical-align: middle;
-  color: theme-color(icon);
 
   &::-moz-focus-inner {
     border: 0;
   }
 
   & > .icon {
-    display: block;
     position: absolute;
-    width: $icon-size;
-    height: $icon-size;
     top: $padding;
     left: $padding;
+    display: block;
+    width: $icon-size;
+    height: $icon-size;
     fill: currentColor;
   }
 
@@ -362,9 +362,9 @@ a.button {
     }
 
     &:active {
+      color: $primary-text-light;
       background-color: theme-color(blue-background-active);
       border-color: rgba($blue-300, 0%);
-      color: $primary-text-light;
     }
   }
 
@@ -373,20 +373,20 @@ a.button {
     border-color: rgba($red-700, 0%);
 
     &:focus {
-      border-color: $red-700;
       color: theme-color(icon);
+      border-color: $red-700;
       outline: none;
     }
 
     &:hover {
-      background-color: $red-700;
       color: $primary-text-light;
+      background-color: $red-700;
     }
 
     &:active {
+      color: $primary-text-light;
       background-color: $red-300;
       border-color: rgba($red-700, 0%);
-      color: $primary-text-light;
     }
   }
 }
@@ -394,14 +394,14 @@ a.button {
 .card {
   $card-spacing: 1rem;
 
-  text-align: left;
+  position: relative;
+  box-sizing: border-box;
   padding: 1rem;
   margin-bottom: $card-spacing;
-  box-shadow: 0 2px 4px theme-color(divider);
-  box-sizing: border-box;
+  text-align: left;
   background-color: theme-color(card-background);
   border-radius: 3px;
-  position: relative;
+  box-shadow: 0 2px 4px theme-color(divider);
   fill: theme-color(icon);
   transition: background-color 0.3s;
 
@@ -441,10 +441,10 @@ a.button {
   }
 
   &:target {
-    animation-delay: 0.5s;
     animation-duration: 1.2s;
-    animation-fill-mode: backwards;
     animation-timing-function: ease;
+    animation-delay: 0.5s;
+    animation-fill-mode: backwards;
 
     @include animation-keyframes {
       from {
@@ -461,9 +461,9 @@ a.button {
 
       & > h2,
       & > .name {
-        white-space: nowrap;
-        text-overflow: ellipsis;
         overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       &:nth-child(2n) {
@@ -493,9 +493,9 @@ a.button {
 
       & > h2,
       & > .name {
-        white-space: nowrap;
-        text-overflow: ellipsis;
         overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       &:nth-child(2n) {
@@ -550,8 +550,8 @@ a.button {
     }
 
     & li:last-child a {
-      border-bottom-left-radius: 3px;
       border-bottom-right-radius: 3px;
+      border-bottom-left-radius: 3px;
     }
   }
 
@@ -570,17 +570,17 @@ a.button {
 
 .list a,
 a.card.slim {
-  margin-top: 1px;
   padding: 0.5rem 1rem;
+  margin-top: 1px;
 }
 
 .list,
 .card.slim {
   a,
   a .hint {
-    white-space: nowrap;
-    text-overflow: ellipsis;
     overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .icon {
@@ -600,17 +600,17 @@ a.card.slim {
 a.card,
 .link,
 .list a {
-  transition: background-color 0.2s, fill 0.2s;
-  text-decoration: none;
-  color: theme-color(text-primary);
   display: block;
+  color: theme-color(text-primary);
+  text-decoration: none;
   cursor: pointer;
+  transition: background-color 0.2s, fill 0.2s;
 
   &:hover,
   &:focus {
     background-color: theme-color(hover-background);
-    fill: theme-color(text-primary);
     outline: none;
+    fill: theme-color(text-primary);
 
     &.dark {
       fill: $primary-text-light;
@@ -640,8 +640,8 @@ a.card,
 
 .card-category,
 .big-button {
-  padding-left: 5rem;
   min-height: 5rem;
+  padding-left: 5rem;
 
   & > .icon {
     position: absolute;
@@ -666,14 +666,14 @@ a.card,
     width: calc(50% - 0.5rem);
 
     &:nth-child(odd) {
-      margin-right: 0.5rem;
       float: left;
+      margin-right: 0.5rem;
       clear: left;
     }
 
     &:nth-child(even) {
-      margin-left: 0.5rem;
       float: right;
+      margin-left: 0.5rem;
       clear: right;
     }
   }
