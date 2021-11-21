@@ -133,11 +133,10 @@ select {
   }
 
   & > ul {
-    position: absolute;
-    top: 100%;
-
     // just move the list to the left outside of the screen but don't hide it,
     // to still allow screenreaders reading it
+    position: absolute;
+    top: 100%;
     left: -9999px;
     z-index: 90;
     width: 100%;
