@@ -58,12 +58,12 @@ $container-fade-duration: 200ms;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.66);
+  background-color: rgba(0, 0, 0, 66%);
   display: flex;
   animation: fade-in $container-fade-duration both;
 }
 
-.dialog-container[aria-hidden='true'] {
+.dialog-container[aria-hidden="true"] {
   display: none;
 }
 
@@ -85,10 +85,10 @@ $container-fade-duration: 200ms;
     width: 1000px;
   }
 
-
   h2:focus {
     outline: none;
   }
+
   // fixes padding not being visible when scrollbar is present
   &.card {
     padding: 0;

@@ -35,7 +35,7 @@ summary {
     border-color: theme-color(icon);
     border-style: solid;
     border-width: 0.17em 0.17em 0 0;
-    content: '';
+    content: "";
     display: inline-block;
     height: 0.4em;
     left: 1.2ex;
@@ -48,7 +48,8 @@ summary {
     width: 0.4em;
   }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: theme-color(hover-background);
     outline: none;
 

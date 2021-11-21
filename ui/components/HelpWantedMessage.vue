@@ -43,6 +43,7 @@
 .information {
   $icon-width: 1.4em;
   $text-margin: 0.5em;
+
   padding: 0.6em 0.7em 0.6em (0.7em + $icon-width + $text-margin);
   border-bottom: 2px solid theme-color(yellow-background-hover);
 
@@ -56,9 +57,8 @@
 
 .actions {
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   justify-content: space-evenly;
-  flex-wrap: wrap;
   font-size: 90%;
 
   a {

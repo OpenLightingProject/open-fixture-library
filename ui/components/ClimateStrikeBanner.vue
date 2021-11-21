@@ -41,14 +41,15 @@
 <style lang="scss" scoped>
 .climate-strike {
   text-align: center;
-  color: #fff;
+  color: #ffffff;
 
   a {
-    color: #fff;
+    color: #ffffff;
     text-decoration: underline;
-    text-decoration-color: rgba(#fff, 0.6);
+    text-decoration-color: rgba(#ffffff, 0.6);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       opacity: 0.8;
     }
   }

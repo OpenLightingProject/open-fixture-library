@@ -20,7 +20,7 @@
 
 <style lang="scss" scoped>
 section {
-  padding: .5ex 0;
+  padding: 0.5ex 0;
 
   & > .label {
     color: theme-color(text-secondary);
@@ -31,14 +31,11 @@ section {
 @media (min-width: $phone-landscape) {
   section {
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    flex-flow: row nowrap;
     align-items: flex-start;
 
     & > .label {
-      flex-basis: 10rem;
-      flex-grow: 0;
-      flex-shrink: 0;
+      flex: 0 0 10rem;
     }
 
     & > .value {

@@ -129,7 +129,8 @@
 </template>
 
 <style lang="scss" scoped>
-summary, .summary {
+summary,
+.summary {
   & > .icon {
     margin-right: 1.2ex;
   }

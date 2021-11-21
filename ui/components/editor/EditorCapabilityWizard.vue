@@ -49,20 +49,20 @@
 
     <table class="capabilities-table">
       <colgroup>
-        <col style="width: 5.8ex">
-        <col style="width: 1ex">
-        <col style="width: 5.8ex">
+        <col style="width: 5.8ex;">
+        <col style="width: 1ex;">
+        <col style="width: 5.8ex;">
         <col>
       </colgroup>
       <thead><tr>
-        <th colspan="3" style="text-align: center">DMX values</th>
+        <th colspan="3" style="text-align: center;">DMX values</th>
         <th>Capability</th>
       </tr></thead>
       <tbody>
         <tr v-for="capability of allCapabilities" :key="capability.uuid" :class="capability.source">
-          <td class="capability-dmxRange0"><code>{{ capability.dmxRange[0] }}</code></td>
-          <td class="capability-dmxRange-separator"><code>…</code></td>
-          <td class="capability-dmxRange1"><code>{{ capability.dmxRange[1] }}</code></td>
+          <td class="capability-dmx-range-start"><code>{{ capability.dmxRange[0] }}</code></td>
+          <td class="capability-dmx-range-separator"><code>…</code></td>
+          <td class="capability-dmx-range-end"><code>{{ capability.dmxRange[1] }}</code></td>
           <td class="capability-type">{{ capability.type }}</td>
         </tr>
       </tbody>
@@ -97,23 +97,24 @@ th {
   color: theme-color(text-secondary);
 }
 
-td, th {
+td,
+th {
   padding: 0 4px;
   vertical-align: top;
 }
 
-.capability-dmxRange0 {
+.capability-dmx-range-start {
   text-align: right;
   padding-right: 2px;
 }
 
-.capability-dmxRange-separator {
+.capability-dmx-range-separator {
   text-align: center;
   padding-left: 0;
   padding-right: 0;
 }
 
-.capability-dmxRange1 {
+.capability-dmx-range-end {
   text-align: left;
   padding-left: 2px;
 }
@@ -122,6 +123,7 @@ td, th {
 .inherited code {
   color: theme-color(text-disabled);
 }
+
 .computed,
 .computed code {
   color: theme-color(text-primary);

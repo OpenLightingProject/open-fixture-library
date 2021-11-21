@@ -68,10 +68,10 @@
 
 <style lang="scss" scoped>
 @mixin home-logo-sizing($width, $padding) {
-  padding-left: calc(#{$width} + #{2*$padding});
+  padding-left: calc(#{$width} + #{2 * $padding});
 
   &::before {
-    background-size: calc(100% - #{2*$padding}) auto;
+    background-size: calc(100% - #{2 * $padding}) auto;
   }
 }
 
@@ -79,7 +79,7 @@ header {
   position: fixed;
   width: 100%;
   background: theme-color(header-background);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 40%);
   text-align: center;
   z-index: 100;
   transition: background-color 0.3s;
@@ -105,7 +105,8 @@ header {
     text-decoration: none;
     color: inherit;
 
-    &:active, &:focus {
+    &:active,
+    &:focus {
       background-color: theme-color(hover-background);
       outline: 0;
     }
@@ -153,13 +154,13 @@ header {
     @include home-logo-sizing(122px, 2ex);
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
-      background-image: url('~static/ofl-logo.svg');
+      background-image: url("~static/ofl-logo.svg");
       background-repeat: no-repeat;
       background-position: center;
     }
@@ -167,9 +168,8 @@ header {
 }
 
 [data-theme="dark"] header .home-logo::before {
-  filter: #{'brightness(0.4) invert() brightness(0.9)'};
+  filter: #{"brightness(0.4) invert() brightness(0.9)"};
 }
-
 
 @media (max-width: $tablet) {
   header {
@@ -182,7 +182,7 @@ header {
     }
 
     .home-logo {
-      @include home-logo-sizing(92px, .5ex);
+      @include home-logo-sizing(92px, 0.5ex);
 
       line-height: 3em;
       height: 3em;
@@ -190,7 +190,7 @@ header {
 
     form {
       flex-grow: 0;
-      padding: 0 .5ex;
+      padding: 0 0.5ex;
     }
 
     .right-nav > a {
@@ -203,7 +203,7 @@ header {
 @media (max-width: $phone) {
   header {
     .home-logo {
-      @include home-logo-sizing(82px, .5ex);
+      @include home-logo-sizing(82px, 0.5ex);
 
       line-height: 2.8em;
       height: 2.8em;

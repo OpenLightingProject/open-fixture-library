@@ -70,7 +70,7 @@
   color: theme-color(text-secondary);
 
   & > span:not(:last-child)::after {
-    content: ' | ';
+    content: " | ";
     padding: 0 0.7ex;
   }
 }

@@ -180,7 +180,7 @@
 .fixture-page {
   background: theme-color(page-background);
   margin: 1rem -1rem -1rem;
-  padding: .1rem 1rem 1rem;
+  padding: 0.1rem 1rem 1rem;
 
   & ::v-deep .help-wanted .actions {
     cursor: not-allowed;

@@ -78,10 +78,7 @@
 }
 
 select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
-
   display: inline-block;
   box-sizing: content-box;
   line-height: 1.4;
@@ -90,16 +87,12 @@ select {
   margin-left: 1ex;
   margin-top: 1ex;
   padding: 0.5em 3ex;
-
   background: theme-color(button-secondary-background);
-
   color: theme-color(button-secondary-text);
   font-weight: 700;
   font-size: 0.9em;
-
   border-color: theme-color(button-secondary-border);
   border-radius: 2px;
-
   transition: 0.1s background-color;
   cursor: pointer;
 
@@ -122,18 +115,18 @@ select {
     font-weight: 700;
     color: $primary-text-light;
     cursor: pointer;
-    box-shadow: 0 2px 2px rgba(#000, 0.2);
+    box-shadow: 0 2px 2px rgba(#000000, 0.2);
     transition: border-radius 0.2s, background-color 0.2s;
 
     // down arrow
     &::before {
-      content: '';
+      content: "";
       display: block;
       width: 0;
       height: 0;
       border-width: 0.4em 0.4em 0;
       border-style: solid;
-      border-color: currentcolor transparent transparent;
+      border-color: currentColor transparent transparent;
       float: right;
       margin: 0.8em 0 0 1ex;
     }
@@ -141,6 +134,7 @@ select {
 
   & > ul {
     position: absolute;
+
     // just move the list to the left outside of the screen but don't hide it,
     // to still allow screenreaders reading it
     left: -9999px;
@@ -151,7 +145,7 @@ select {
     list-style: none;
     background-color: theme-color(header-background);
     border-radius: 0 0 2px 2px;
-    box-shadow: 0 2px 2px rgba(#000, 0.2);
+    box-shadow: 0 2px 2px rgba(#000000, 0.2);
     z-index: 90;
 
     & a {
@@ -178,7 +172,6 @@ select {
   & > .title:active + ul {
     left: 0;
   }
-
 
   &:hover > .title,
   & > .title:focus,

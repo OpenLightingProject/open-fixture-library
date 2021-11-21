@@ -11,6 +11,7 @@
     color: theme-color(text-primary);
     fill: theme-color(icon);
   }
+
   &:hover,
   &:focus {
     background-color: theme-color(active-background);
@@ -25,6 +26,7 @@
       color: $primary-text-light;
       fill: $icon-light;
     }
+
     &:hover,
     &:focus {
       background-color: $blue-300;

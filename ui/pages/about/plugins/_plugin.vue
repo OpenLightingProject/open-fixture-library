@@ -92,13 +92,13 @@
     border: 1px solid theme-color(divider);
     border-collapse: collapse;
 
-    th, td {
+    th,
+    td {
       border: 1px solid theme-color(divider);
       padding: 1px 1ex;
     }
   }
 }
-
 </style>
 
 <script>

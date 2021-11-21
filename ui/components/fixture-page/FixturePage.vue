@@ -146,6 +146,7 @@
   margin: 1rem 0 0;
   padding: 0;
 }
+
 .fixture-video {
   margin-bottom: 1rem;
 

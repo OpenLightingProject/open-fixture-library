@@ -39,7 +39,7 @@
     height: auto;
     overflow: visible;
     background: red;
-    color: #fff;
+    color: #ffffff;
     padding: 4px;
   }
 }
@@ -56,6 +56,7 @@
     padding-top: 6.2em;
   }
 }
+
 #content:focus {
   outline: 0;
 }

@@ -1,15 +1,16 @@
-@use './fonts.scss';
+@use "./fonts.scss";
 
 @each $theme-name, $theme in $themes {
   [data-theme="#{$theme-name}"] {
     @each $color-name, $color in $theme {
-      --theme-#{$color-name}: #{colorToRgbString($color)};
+      // stylelint-disable-next-line custom-property-pattern -- It is in kebab-case
+      --theme-#{$color-name}: #{color-to-rgb-string($color)};
     }
   }
 }
 
-
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   font: 12pt/2 $font-stack-text;
@@ -33,7 +34,7 @@ h1 {
   font-weight: 300;
   font-size: 2rem;
   line-height: 2.5rem;
-  margin: 1.5rem 0 1.5rem;
+  margin: 1.5rem 0;
 }
 
 h2 {
@@ -88,6 +89,7 @@ template {
 #ofl-root.js .no-js {
   display: none;
 }
+
 #ofl-root.no-js .only-js {
   display: none;
 }
@@ -126,24 +128,26 @@ textarea {
 select {
   width: 30ex;
 }
-input[type=number] {
+
+input[type="number"] {
   width: 10ex;
 }
+
 textarea,
-input[type=text],
-input[type=email],
-input[type=search],
-input[type=url] {
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="url"] {
   width: 40ex;
 }
 
 select,
 textarea,
-input[type=text],
-input[type=email],
-input[type=search],
-input[type=url],
-input[type=number] {
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="url"],
+input[type="number"] {
   box-sizing: border-box;
   max-width: 100%;
   padding: 0.4em;
@@ -166,12 +170,12 @@ input[type=number] {
 
   &.vf-touched.vf-invalid,
   &.vf-submitted.vf-invalid,
-  &.vf-touched[class^=vf-invalid-],
+  &.vf-touched[class^="vf-invalid-"],
   .vf-touched.vf-invalid &,
   .vf-submitted.vf-invalid &,
-  .vf-touched[class^=vf-invalid-] & {
+  .vf-touched[class^="vf-invalid-"] & {
     border-color: red;
-    box-shadow: 0 0 4px rgba(255, 0, 0, 0.4);
+    box-shadow: 0 0 4px rgba(255, 0, 0, 40%);
   }
 }
 
@@ -196,7 +200,7 @@ textarea[readonly] {
   color: red;
 
   & div::before {
-    content: '!';
+    content: "!";
     display: inline-block;
     height: 1em;
     line-height: 1em;
@@ -225,27 +229,16 @@ select.empty {
   }
 }
 
-input::-webkit-input-placeholder {
-  color: theme-color(text-secondary);
-  font-style: italic;
-}
-input::-moz-placeholder {
-  color: theme-color(text-secondary);
-  font-style: italic;
-  opacity: 1;
-}
-input:-ms-input-placeholder {
-  color: theme-color(text-secondary);
-  font-style: italic;
-}
 input::placeholder {
   color: theme-color(text-secondary);
   font-style: italic;
-  opacity: 1;
+  opacity: 1; // Firefox sets a default opacity
 }
 
-button, a.button {
-  &.primary, &.secondary {
+button,
+a.button {
+  &.primary,
+  &.secondary {
     border-radius: 2px;
     border: 1px solid;
     display: inline-block;
@@ -317,13 +310,12 @@ button, a.button {
   }
 }
 
-
 @media (max-width: $tablet) {
-  html, body {
+  html,
+  body {
     font-size: 14px;
   }
 }
-
 
 .icon-button {
   $icon-size: 1.4em;
@@ -331,9 +323,9 @@ button, a.button {
 
   display: inline-block;
   position: relative;
-  padding: 0 0 0 #{$icon-size + 2*$padding};
+  padding: 0 0 0 #{$icon-size + 2 * $padding};
   width: 0;
-  height: #{$icon-size + 2*$padding};
+  height: #{$icon-size + 2 * $padding};
   overflow: hidden;
   border: 1px solid;
   border-radius: 3px;
@@ -352,7 +344,7 @@ button, a.button {
     height: $icon-size;
     top: $padding;
     left: $padding;
-    fill: currentcolor;
+    fill: currentColor;
   }
 
   &:not(.close) {
@@ -485,6 +477,7 @@ button, a.button {
       &:nth-child(3n+1) {
         margin-left: 0;
       }
+
       &:nth-child(3n+2),
       &:nth-child(3n) {
         margin-left: $card-spacing;
@@ -516,6 +509,7 @@ button, a.button {
       &:nth-child(3n+1) {
         margin-left: 0;
       }
+
       &:nth-child(3n+2),
       &:nth-child(3n) {
         margin-left: $card-spacing;
@@ -528,6 +522,7 @@ button, a.button {
       &:nth-child(4n+1) {
         margin-left: 0;
       }
+
       &:nth-child(4n+2),
       &:nth-child(4n+3),
       &:nth-child(4n) {
@@ -550,7 +545,6 @@ button, a.button {
 
     & li:first-child a {
       margin-top: 0;
-
       border-top-left-radius: 3px;
       border-top-right-radius: 3px;
     }
@@ -596,14 +590,17 @@ a.card.slim {
     &.left {
       margin-right: 1em;
     }
+
     &.right {
       margin-left: 1em;
     }
   }
 }
 
-a.card, .link, .list a {
-  transition: background-color .2s, fill .2s;
+a.card,
+.link,
+.list a {
+  transition: background-color 0.2s, fill 0.2s;
   text-decoration: none;
   color: theme-color(text-primary);
   display: block;
@@ -666,15 +663,16 @@ a.card, .link, .list a {
 // display mode cards in a 2-col layout
 @media (min-width: $tablet) {
   .fixture-mode {
-    width: calc(50% - .5rem);
+    width: calc(50% - 0.5rem);
 
     &:nth-child(odd) {
-      margin-right: .5rem;
+      margin-right: 0.5rem;
       float: left;
       clear: left;
     }
+
     &:nth-child(even) {
-      margin-left: .5rem;
+      margin-left: 0.5rem;
       float: right;
       clear: right;
     }
@@ -687,10 +685,11 @@ a.card, .link, .list a {
     height: 24px;
 
     &.left {
-      margin-right: .6em;
+      margin-right: 0.6em;
     }
+
     &.right {
-      margin-left: .6em;
+      margin-left: 0.6em;
     }
   }
 }

@@ -1,16 +1,16 @@
 <template>
   <table class="capabilities-table">
     <colgroup>
-      <col style="width: 5.8ex">
-      <col style="width: 1ex">
-      <col style="width: 5.8ex">
-      <col style="width: 1.8em">
+      <col style="width: 5.8ex;">
+      <col style="width: 1ex;">
+      <col style="width: 5.8ex;">
+      <col style="width: 1.8em;">
       <col>
-      <col style="width: 1.8em">
+      <col style="width: 1.8em;">
     </colgroup>
     <thead>
       <tr>
-        <th colspan="3" style="text-align: center">DMX values</th>
+        <th colspan="3" style="text-align: center;">DMX values</th>
         <th /> <!-- icon -->
         <th>Capability</th>
         <th /> <!-- menuClick -->
@@ -18,7 +18,7 @@
     </thead>
     <tbody>
       <template v-for="(cap, index) of capabilities">
-        <tr :key="`cap-${index}`" :class="`capability capability-${cap.model.type}`">
+        <tr :key="`cap-${index}`" class="capability" :data-capability-type="cap.model.type">
           <td class="capability-range0"><code>{{ cap.dmxRangeStart }} </code></td>
           <td class="capability-range-separator"><code>…</code></td>
           <td class="capability-range1"><code>{{ cap.dmxRangeEnd }}</code></td>
@@ -31,7 +31,7 @@
 
           <td
             :title="cap.model.menuClick === `hidden` ? `this capability is hidden in quick menus` : `choosing this capability in a quick menu snaps to ${cap.model.menuClick} of capability`"
-            class="capability-menuClick">
+            class="capability-menu-click">
             <OflSvg :name="`capability-${cap.model.menuClick}`" />
           </td>
         </tr>
@@ -74,13 +74,14 @@ th {
   color: theme-color(text-secondary);
 }
 
-td, th {
+td,
+th {
   padding: 0 4px;
   vertical-align: top;
 }
 
-.capability-NoFunction,
-.capability-NoFunction + .switch-to-channel {
+.capability[data-capability-type="NoFunction"],
+.capability[data-capability-type="NoFunction"] + .switch-to-channel {
   opacity: 0.6;
 }
 
@@ -110,8 +111,7 @@ td, th {
   z-index: 1;
 }
 
-
-.capability-menuClick {
+.capability-menu-click {
   text-align: right;
 }
 
