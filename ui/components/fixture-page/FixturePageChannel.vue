@@ -129,15 +129,16 @@
 </template>
 
 <style lang="scss" scoped>
-summary, .summary {
+summary,
+.summary {
   & > .icon {
     margin-right: 1.2ex;
   }
 
   & > .help-wanted-icon {
-    fill: theme-color(yellow-background-hover);
-    margin-left: 0.7ex;
     margin-right: 0;
+    margin-left: 0.7ex;
+    fill: theme-color(yellow-background-hover);
   }
 }
 </style>

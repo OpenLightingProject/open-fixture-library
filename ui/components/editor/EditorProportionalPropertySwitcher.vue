@@ -150,8 +150,8 @@
 
 .separator {
   position: relative;
-  vertical-align: -8px;
   margin: 0 1ex;
+  vertical-align: -8px;
 
   a.swap {
     position: absolute;

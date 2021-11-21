@@ -48,6 +48,7 @@
   & select {
     width: 20ex;
   }
+
   &.wide select {
     width: 30ex;
   }
@@ -56,15 +57,18 @@
     & select {
       width: 10ex;
     }
+
     & input {
       width: 9ex;
       margin-right: 1ex;
     }
   }
+
   &.wide.has-number {
     & select {
       width: 15ex;
     }
+
     & input {
       width: 14ex;
       margin-right: 1ex;

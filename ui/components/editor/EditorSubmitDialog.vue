@@ -172,15 +172,15 @@
 }
 
 .preview-fixture-chooser {
-  vertical-align: middle;
-  font-size: 1rem;
   width: 350px;
+  font-size: 1rem;
+  vertical-align: middle;
 }
 
 .fixture-page {
-  background: theme-color(page-background);
+  padding: 0.1rem 1rem 1rem;
   margin: 1rem -1rem -1rem;
-  padding: .1rem 1rem 1rem;
+  background: theme-color(page-background);
 
   & ::v-deep .help-wanted .actions {
     cursor: not-allowed;
@@ -195,9 +195,9 @@
 .button-bar {
   position: sticky;
   bottom: 0;
-  background: theme-color(dialog-background);
   padding: 0.6rem 1rem 1rem;
   margin: 1rem -1rem -1rem;
+  background: theme-color(dialog-background);
   box-shadow: 0 0 4px theme-color(icon-inactive);
 }
 </style>

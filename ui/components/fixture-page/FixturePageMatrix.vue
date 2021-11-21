@@ -33,12 +33,12 @@
 
 <style lang="scss" scoped>
 .z-level {
-  border-collapse: collapse;
-  border-spacing: 0;
-  overflow: auto;
   padding-top: 1px;
   padding-left: 1px;
   margin-bottom: 8px;
+  overflow: auto;
+  border-spacing: 0;
+  border-collapse: collapse;
 }
 
 .row {
@@ -49,20 +49,20 @@
 
 .pixel {
   display: inline-flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  margin-left: -1px;
+  font-size: 90%;
   line-height: 1.4em;
   text-align: center;
-  margin-left: -1px;
-  vertical-align: top;
-  font-size: 90%;
-  border: 1px solid transparent;
   white-space: normal;
+  vertical-align: top;
+  border: 1px solid transparent;
   transition: background-color 0.2s;
 
   &:not(:empty) {
-    border-color: theme-color(icon-inactive);
     background-color: theme-color(card-background);
+    border-color: theme-color(icon-inactive);
   }
 
   &.highlight {

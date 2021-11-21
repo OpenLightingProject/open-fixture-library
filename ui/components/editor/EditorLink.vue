@@ -1,5 +1,5 @@
 <template>
-  <div class="linkRow">
+  <div class="link-row">
     <select ref="linkTypeSelect" v-model="type">
       <option
         v-for="linkType of linkTypes"
@@ -30,7 +30,7 @@
 </template>
 
 <style lang="scss" scoped>
-.linkRow {
+.link-row {
   margin-bottom: 4px;
 }
 

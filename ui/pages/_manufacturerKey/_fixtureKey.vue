@@ -70,8 +70,8 @@
   color: theme-color(text-secondary);
 
   & > span:not(:last-child)::after {
-    content: ' | ';
     padding: 0 0.7ex;
+    content: " | ";
   }
 }
 </style>

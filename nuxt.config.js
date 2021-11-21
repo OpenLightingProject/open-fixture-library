@@ -18,6 +18,9 @@ export default {
     `@nuxtjs/robots`,
     `@nuxtjs/sitemap`,
   ],
+  buildModules: [
+    `@nuxt/postcss8`,
+  ],
   plugins: [
     `~/plugins/embetty-vue.js`,
     `~/plugins/global-components.js`,

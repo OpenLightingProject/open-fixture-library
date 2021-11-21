@@ -162,13 +162,13 @@
 <style lang="scss" scoped>
 figure {
   box-sizing: border-box;
-  padding: 0 1rem;
-  margin: 0 0 0.5rem;
   display: inline-block;
   width: 32%;
   min-width: 18rem;
-  vertical-align: top;
+  padding: 0 1rem;
+  margin: 0 0 0.5rem;
   white-space: normal;
+  vertical-align: top;
 }
 
 svg {
@@ -178,9 +178,9 @@ svg {
 
 .slot {
   & text {
-    fill: $primary-text-dark;
-    pointer-events: none;
     font-weight: 400;
+    pointer-events: none;
+    fill: $primary-text-dark;
   }
 
   &:hover {
@@ -193,13 +193,13 @@ svg {
 }
 
 figcaption ::v-deep summary {
-  font-weight: 700;
-  text-align: center;
   position: sticky;
   top: 0;
+  font-weight: 700;
+  text-align: center;
 
   &:not(:hover):not(:focus) {
-    background: theme-color(card-background, 0.8);
+    background: theme-color(card-background, 80%);
   }
 }
 

@@ -32,23 +32,24 @@ summary {
 
   &::after {
     // chevron down
+    position: relative;
+    top: -0.2em;
+    left: 1.2ex;
+    display: inline-block;
+    width: 0.4em;
+    height: 0.4em;
+    vertical-align: middle;
+    content: "";
     border-color: theme-color(icon);
     border-style: solid;
     border-width: 0.17em 0.17em 0 0;
-    content: '';
-    display: inline-block;
-    height: 0.4em;
-    left: 1.2ex;
-    position: relative;
-    top: -0.2em;
-    transform: rotate(135deg);
     transition-duration: 0.2s;
     transition-property: transform, top, border-color;
-    vertical-align: middle;
-    width: 0.4em;
+    transform: rotate(135deg);
   }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: theme-color(hover-background);
     outline: none;
 

@@ -1,8 +1,8 @@
 <style lang="scss">
 .icon {
   display: inline-block;
-  height: 1.4em;
   width: 1.4em;
+  height: 1.4em;
   vertical-align: middle;
 
   &.inactive {
@@ -10,17 +10,17 @@
   }
 
   &.gobo-icon {
+    box-sizing: border-box;
+    padding: 2px;
     background-color: white;
     background-clip: content-box;
     border-radius: 50%;
-    padding: 2px;
-    box-sizing: border-box;
   }
 
   & svg {
+    display: block;
     width: 100%;
     height: 100%;
-    display: block;
   }
 }
 </style>

@@ -141,11 +141,12 @@
 }
 
 .fixture-videos {
-  text-align: center;
-  line-height: 1;
-  margin: 1rem 0 0;
   padding: 0;
+  margin: 1rem 0 0;
+  line-height: 1;
+  text-align: center;
 }
+
 .fixture-video {
   margin-bottom: 1rem;
 
@@ -161,27 +162,27 @@
 }
 
 .fixture-links {
-  margin: 0;
   padding: 0;
+  margin: 0;
   list-style: none;
 
   .hostname {
-    color: theme-color(text-secondary);
-    font-size: 0.9em;
     padding-left: 1ex;
+    font-size: 0.9em;
+    color: theme-color(text-secondary);
   }
 
   .link-other {
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
 .wheels {
-  white-space: nowrap;
   overflow: hidden;
   overflow-x: auto;
+  white-space: nowrap;
 }
 </style>
 
