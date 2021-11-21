@@ -1,5 +1,5 @@
 <template>
-  <span :class="{ 'entity-input': true, 'has-number': hasNumber }">
+  <span class="entity-input" :class="{ 'has-number': hasNumber, wide }">
 
     <Validate v-if="hasNumber" tag="span">
       <PropertyInputNumber
@@ -125,6 +125,11 @@ export default {
       type: String,
       required: false,
       default: null,
+    },
+    wide: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
   data() {

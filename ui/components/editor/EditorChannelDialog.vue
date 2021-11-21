@@ -128,7 +128,7 @@
             :schema-property="channelProperties.defaultValue"
             :min-number="0"
             :max-number="(typeof channel.defaultValue) === `string` ? 100 : dmxMax"
-            class="wide"
+            wide
             name="defaultValue" />
         </LabeledInput>
 
@@ -188,7 +188,7 @@
             :schema-property="channelProperties.highlightValue"
             :min-number="0"
             :max-number="(typeof channel.highlightValue) === `string` ? 100 : dmxMax"
-            class="wide"
+            wide
             name="highlightValue" />
         </LabeledInput>
 
