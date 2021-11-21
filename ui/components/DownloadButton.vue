@@ -115,7 +115,7 @@ select {
     font-weight: 700;
     color: $primary-text-light;
     cursor: pointer;
-    box-shadow: 0 2px 2px rgba(#000000, 0.2);
+    box-shadow: 0 2px 2px rgba(#000000, 20%);
     transition: border-radius 0.2s, background-color 0.2s;
 
     // down arrow
@@ -145,7 +145,7 @@ select {
     list-style: none;
     background-color: theme-color(header-background);
     border-radius: 0 0 2px 2px;
-    box-shadow: 0 2px 2px rgba(#000000, 0.2);
+    box-shadow: 0 2px 2px rgba(#000000, 20%);
     z-index: 90;
 
     & a {

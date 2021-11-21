@@ -348,8 +348,8 @@ a.button {
   }
 
   &:not(.close) {
-    background-color: theme-color(button-primary-background, 0);
-    border-color: theme-color(button-primary-background, 0);
+    background-color: theme-color(button-primary-background, 0%);
+    border-color: theme-color(button-primary-background, 0%);
 
     @include mobile-hover-emulation((
       background-color: button-primary-background-hover,
@@ -363,14 +363,14 @@ a.button {
 
     &:active {
       background-color: theme-color(blue-background-active);
-      border-color: rgba($blue-300, 0);
+      border-color: rgba($blue-300, 0%);
       color: $primary-text-light;
     }
   }
 
   &.close {
-    background-color: rgba($red-700, 0);
-    border-color: rgba($red-700, 0);
+    background-color: rgba($red-700, 0%);
+    border-color: rgba($red-700, 0%);
 
     &:focus {
       border-color: $red-700;
@@ -385,7 +385,7 @@ a.button {
 
     &:active {
       background-color: $red-300;
-      border-color: rgba($red-700, 0);
+      border-color: rgba($red-700, 0%);
       color: $primary-text-light;
     }
   }

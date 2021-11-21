@@ -199,7 +199,7 @@ figcaption ::v-deep summary {
   top: 0;
 
   &:not(:hover):not(:focus) {
-    background: theme-color(card-background, 0.8);
+    background: theme-color(card-background, 80%);
   }
 }
 

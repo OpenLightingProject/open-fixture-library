@@ -46,7 +46,7 @@
   a {
     color: #ffffff;
     text-decoration: underline;
-    text-decoration-color: rgba(#ffffff, 0.6);
+    text-decoration-color: rgba(#ffffff, 60%);
 
     &:hover,
     &:focus {
@@ -80,7 +80,7 @@
     font-weight: 700;
     line-height: 1.2;
     transform: skewY(-2.5deg);
-    text-shadow: 0 0 5px rgba(#1b7340, 0.5);
+    text-shadow: 0 0 5px rgba(#1b7340, 50%);
 
     a {
       display: block;
