@@ -5,6 +5,7 @@
       <PropertyInputNumber
         ref="input"
         v-model="selectedNumber"
+        class="property-input-number"
         :schema-property="units[selectedUnit].numberSchema"
         :required="true"
         :minimum="minNumber !== null ? minNumber : `invalid`"
@@ -58,7 +59,7 @@
       width: 10ex;
     }
 
-    & input {
+    & .property-input-number {
       width: 9ex;
       margin-right: 1ex;
     }
@@ -69,7 +70,7 @@
       width: 15ex;
     }
 
-    & input {
+    & .property-input-number {
       width: 14ex;
       margin-right: 1ex;
     }
