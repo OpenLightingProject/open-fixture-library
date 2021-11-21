@@ -3,6 +3,7 @@ reportInvalidScopeDisables: true
 extends:
   - stylelint-config-standard-scss
   - stylelint-config-html/vue
+  - stylelint-config-recess-order
 rules:
   # `modern` not supported by Sass
   color-function-notation: legacy
