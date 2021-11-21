@@ -1,4 +1,3 @@
-defaultSeverity: warning
 reportNeedlessDisables: true
 reportInvalidScopeDisables: true
 extends:
@@ -10,6 +9,11 @@ rules:
 
   # always long to be consistent
   color-hex-length: long
+
+  # decrease severity for this rule only
+  no-descending-specificity:
+    - true
+    - severity: warning
 
   # allow Vue pseudo elements
   selector-pseudo-element-no-unknown:
