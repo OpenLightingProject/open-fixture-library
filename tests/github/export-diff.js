@@ -70,9 +70,8 @@ catch (error) {
  * @returns {Promise<Task[]>} A Promise that resolves to an array of diff tasks to perform.
  */
 async function getDiffTasks(changedComponents) {
-  const testFixtures = (await importJson(`../test-fixtures.json`, import.meta.url)).map(
-    fixture => `${fixture.man}/${fixture.key}`,
-  );
+  const testFixtures = await importJson(`../test-fixtures.json`, import.meta.url);
+  const testFixtureKeys = testFixtures.map(fixture => `${fixture.man}/${fixture.key}`);
 
   const plugins = await importJson(`../../plugins/plugins.json`, import.meta.url);
   const usablePlugins = plugins.exportPlugins.filter(
@@ -80,7 +79,7 @@ async function getDiffTasks(changedComponents) {
     pluginKey => !changedComponents.added.exports.includes(pluginKey) && pluginKey !== `ofl`,
   );
   const addedFixtures = new Set(changedComponents.added.fixtures.map(([manufacturer, key]) => `${manufacturer}/${key}`));
-  const usableTestFixtures = testFixtures.filter(testFixture => !addedFixtures.has(testFixture));
+  const usableTestFixtures = testFixtureKeys.filter(testFixture => !addedFixtures.has(testFixture));
 
   /** @type {Task[]} */
   return getTasksForModel().concat(await getTasksForPlugins(), getTasksForFixtures())

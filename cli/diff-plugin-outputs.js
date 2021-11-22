@@ -7,9 +7,8 @@ import diffPluginOutputs from '../lib/diff-plugin-outputs.js';
 import importJson from '../lib/import-json.js';
 
 const plugins = await importJson(`../plugins/plugins.json`, import.meta.url);
-const testFixtures = (await importJson(`../tests/test-fixtures.json`, import.meta.url)).map(
-  fixture => `${fixture.man}/${fixture.key}`,
-);
+const testFixtures = await importJson(`../tests/test-fixtures.json`, import.meta.url);
+const testFixtureKeys = testFixtures.map(fixture => `${fixture.man}/${fixture.key}`);
 
 const cliArguments = minimist(process.argv.slice(2), {
   string: [`p`, `c`, `r`],
@@ -60,4 +59,4 @@ if (cliArguments.fixtures.length === 0 && !cliArguments.testFix) {
   console.log(chalk.yellow(`[Warning]`), `No fixtures specified. See --help for usage.`);
 }
 
-diffPluginOutputs(cliArguments.plugin, cliArguments.comparePlugin, cliArguments.ref, cliArguments.testFix ? testFixtures : cliArguments.fixtures);
+diffPluginOutputs(cliArguments.plugin, cliArguments.comparePlugin, cliArguments.ref, cliArguments.testFix ? testFixtureKeys : cliArguments.fixtures);

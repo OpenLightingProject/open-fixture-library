@@ -147,6 +147,7 @@ const enabledRuleParameters = {
       'fs/promises': { named: true },
     },
   }],
+  'unicorn/prefer-export-from': [{ ignoreUsedVariables: true }],
   'unicorn/prevent-abbreviations': [{
     replacements: {
       ref: false,
