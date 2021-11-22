@@ -8,7 +8,7 @@ import * as pullRequest from './pull-request.js';
 
 let plugins;
 let exportTests;
-let testFixtures;
+let testFixtureKeys;
 
 let testErrored = false;
 
@@ -36,9 +36,8 @@ try {
     ));
   }
 
-  testFixtures = (await importJson(`../test-fixtures.json`, import.meta.url)).map(
-    fixture => [fixture.man, fixture.key],
-  );
+  const testFixtures = await importJson(`../test-fixtures.json`, import.meta.url);
+  testFixtureKeys = testFixtures.map(fixture => [fixture.man, fixture.key]);
 
   const tasks = getTasksForModel(changedComponents)
     .concat(getTasksForPlugins(changedComponents))
@@ -149,7 +148,7 @@ function getTasksForModel(changedComponents) {
     changedComponents.modified.model ||
     changedComponents.removed.model) {
 
-    for (const [manufacturerKey, fixtureKey] of testFixtures) {
+    for (const [manufacturerKey, fixtureKey] of testFixtureKeys) {
       tasks.push(...mapExportTestsToTasks(exportTests, manufacturerKey, fixtureKey));
     }
   }
@@ -169,7 +168,7 @@ function getTasksForPlugins(changedComponents) {
   for (const changedPlugin of changedPlugins) {
     const pluginExportTests = plugins.data[changedPlugin].exportTests;
 
-    for (const [manufacturerKey, fixtureKey] of testFixtures) {
+    for (const [manufacturerKey, fixtureKey] of testFixtureKeys) {
       tasks.push(...pluginExportTests.map(testKey => ({
         manufacturerKey,
         fixtureKey,
@@ -191,7 +190,7 @@ function getTasksForExportTests(changedComponents) {
 
   const changedExportTests = changedComponents.added.exportTests.concat(changedComponents.modified.exportTests);
 
-  for (const [manufacturerKey, fixtureKey] of testFixtures) {
+  for (const [manufacturerKey, fixtureKey] of testFixtureKeys) {
     tasks.push(...mapExportTestsToTasks(changedExportTests, manufacturerKey, fixtureKey));
   }
 
