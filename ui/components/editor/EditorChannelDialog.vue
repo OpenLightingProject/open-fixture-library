@@ -128,7 +128,7 @@
             :schema-property="channelProperties.defaultValue"
             :min-number="0"
             :max-number="(typeof channel.defaultValue) === `string` ? 100 : dmxMax"
-            class="wide"
+            wide
             name="defaultValue" />
         </LabeledInput>
 
@@ -188,7 +188,7 @@
             :schema-property="channelProperties.highlightValue"
             :min-number="0"
             :max-number="(typeof channel.highlightValue) === `string` ? 100 : dmxMax"
-            class="wide"
+            wide
             name="highlightValue" />
         </LabeledInput>
 
@@ -227,11 +227,9 @@
 .existing-channel-input-container ::v-deep section {
   display: block;
 }
-</style>
 
-<style lang="scss">
 @media (min-width: $phone) {
-  #channel-dialog .dialog {
+  #channel-dialog ::v-deep .dialog {
     width: 80%;
     max-width: 700px;
   }

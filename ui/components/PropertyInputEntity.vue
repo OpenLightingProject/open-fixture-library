@@ -1,10 +1,11 @@
 <template>
-  <span :class="{ 'entity-input': true, 'has-number': hasNumber }">
+  <span class="entity-input" :class="{ 'has-number': hasNumber, wide }">
 
     <Validate v-if="hasNumber" tag="span">
       <PropertyInputNumber
         ref="input"
         v-model="selectedNumber"
+        class="property-input-number"
         :schema-property="units[selectedUnit].numberSchema"
         :required="true"
         :minimum="minNumber !== null ? minNumber : `invalid`"
@@ -58,7 +59,7 @@
       width: 10ex;
     }
 
-    & input {
+    & .property-input-number {
       width: 9ex;
       margin-right: 1ex;
     }
@@ -69,7 +70,7 @@
       width: 15ex;
     }
 
-    & input {
+    & .property-input-number {
       width: 14ex;
       margin-right: 1ex;
     }
@@ -125,6 +126,11 @@ export default {
       type: String,
       required: false,
       default: null,
+    },
+    wide: {
+      type: Boolean,
+      required: false,
+      default: false,
     },
   },
   data() {

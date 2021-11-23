@@ -1,12 +1,12 @@
 <template>
   <div>
-    <header class="fixture-header">
-      <div class="title">
+    <FixtureHeader>
+      <template #title>
         <h1>Open Fixture Library</h1>
-      </div>
+      </template>
 
       <DownloadButton :fixture-count="fixtureCount" button-style="home" />
-    </header>
+    </FixtureHeader>
 
 
     <h3>Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!</h3>
@@ -89,10 +89,12 @@
 import register from '../../fixtures/register.json';
 
 import DownloadButton from '../components/DownloadButton.vue';
+import FixtureHeader from '../components/FixtureHeader.vue';
 
 export default {
   components: {
     DownloadButton,
+    FixtureHeader,
   },
   async asyncData({ $axios, error }) {
     let manufacturers;

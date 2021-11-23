@@ -77,17 +77,19 @@
 
     <div v-else-if="state === `preview`">
       <div v-if="previewFixture" class="fixture-page">
-        <header class="fixture-header">
-          <h1 class="title">
-            {{ previewFixture.manufacturer.name }} {{ previewFixture.name }}
-            <code v-if="previewFixture.hasShortName">{{ previewFixture.shortName }}</code>
-          </h1>
+        <FixtureHeader>
+          <template #title>
+            <h1>
+              {{ previewFixture.manufacturer.name }} {{ previewFixture.name }}
+              <code v-if="previewFixture.hasShortName">{{ previewFixture.shortName }}</code>
+            </h1>
+          </template>
 
           <DownloadButton
             v-if="previewFixtureResults.errors.length === 0"
             :show-help="false"
             :editor-fixtures="previewFixtureCreateResult" />
-        </header>
+        </FixtureHeader>
 
         <section v-if="previewFixtureResults.warnings.length > 0" class="card yellow">
           <strong>Warnings:<br></strong>
@@ -207,10 +209,10 @@ import Fixture from '../../../lib/model/Fixture.js';
 import Manufacturer from '../../../lib/model/Manufacturer.js';
 import { clone } from '../../assets/scripts/editor-utils.js';
 
-
 import A11yDialog from '../A11yDialog.vue';
 import DownloadButton from '../DownloadButton.vue';
 import FixturePage from '../fixture-page/FixturePage.vue';
+import FixtureHeader from '../FixtureHeader.vue';
 
 const stateTitles = {
   closed: `Closed`,
@@ -231,6 +233,7 @@ export default {
     A11yDialog,
     DownloadButton,
     FixturePage,
+    FixtureHeader,
   },
   props: {
     endpoint: {
