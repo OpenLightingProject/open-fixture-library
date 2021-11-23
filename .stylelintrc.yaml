@@ -1,5 +1,6 @@
 reportNeedlessDisables: true
 reportInvalidScopeDisables: true
+reportDescriptionlessDisables: true
 extends:
   - stylelint-config-standard-scss
   - stylelint-config-html/vue
