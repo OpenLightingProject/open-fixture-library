@@ -186,42 +186,6 @@ select {
 }
 </style>
 
-<style lang="scss">
-.fixture-header .download-button {
-  position: relative;
-  display: block;
-}
-
-// move download button to the right
-@media (min-width: 650px) {
-  .fixture-header {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-
-    & > .title {
-      flex-grow: 1;
-      flex-shrink: 1;
-    }
-
-    & .download-button {
-      flex-grow: 0;
-      flex-shrink: 0;
-      width: 14em;
-      margin: 1.5rem 0 0;
-
-      &.home {
-        width: 19em;
-
-        & .title {
-          font-size: 1.1em;
-        }
-      }
-    }
-  }
-}
-</style>
-
 <script>
 export default {
   props: {
