@@ -1,0 +1,203 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Pointe",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["test"],
+    "createDate": "2021-11-26",
+    "lastModifyDate": "2021-11-26"
+  },
+  "links": {
+    "manual": [
+      "https://www.robe.cz/pointe"
+    ],
+    "productPage": [
+      "https://www.robe.cz/pointe"
+    ],
+    "video": [
+      "https://www.robe.cz/pointe"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Pan_Fine": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Pan Fine"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt_Fine": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Tilt fine"
+      }
+    },
+    "Pan/Tilt speed , Pan/Tilt time": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Pan/Tilt speed , Pan/Tilt time"
+      }
+    },
+    "Power/Special functions": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Power/Special functions"
+      }
+    },
+    "Colour wheel": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Colour wheel"
+      }
+    },
+    "Colour wheel - fine_positioning": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Colour wheel - fine positioning"
+      }
+    },
+    "Prism rotation and indexing": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Prism rotation and indexing"
+      }
+    },
+    "Prism": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Prism"
+      }
+    },
+    "Rot. gobo indexing and rotation - _fine": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Rot. gobo indexing and rotation - fine"
+      }
+    },
+    "Rot. gobo indexing and rotation": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Rot. gobo indexing and rotation"
+      }
+    },
+    "Prism time": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Prism time"
+      }
+    },
+    "Rotating gobo wheel": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Rotating gobo wheel"
+      }
+    },
+    "Static gobo wheel": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Static gobo wheel"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Zoom -_fine": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Zoom - fine"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far",
+        "comment": "Focus"
+      }
+    },
+    "Focus - _fine": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Focus fine"
+      }
+    },
+    "Autofocus (priority & distance selection)": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Autofocus (priority & distance selection)"
+      }
+    },
+    "Shutter/ strobe": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Shutter/ strobe"
+      }
+    },
+    "Dimmer intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer intensity - _fine": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Dimmer intensity - fine"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Pointe v1",
+      "channels": [
+        "Pan",
+        "Pan_Fine",
+        "Tilt",
+        "Tilt_Fine",
+        "Pan/Tilt speed , Pan/Tilt time",
+        "Power/Special functions",
+        "Colour wheel",
+        "Colour wheel - fine_positioning",
+        "Prism time",
+        "Static gobo wheel",
+        "Rotating gobo wheel",
+        "Rot. gobo indexing and rotation",
+        "Rot. gobo indexing and rotation - _fine",
+        "Prism",
+        "Prism rotation and indexing",
+        "Frost",
+        "Zoom",
+        "Zoom -_fine",
+        "Focus",
+        "Focus - _fine",
+        "Autofocus (priority & distance selection)",
+        "Shutter/ strobe",
+        "Dimmer intensity",
+        "Dimmer intensity - _fine"
+      ]
+    }
+  ]
+}
