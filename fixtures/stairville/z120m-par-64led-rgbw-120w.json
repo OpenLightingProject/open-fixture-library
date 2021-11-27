@@ -1,0 +1,46 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Z120M Par 64LED RGBW 120W",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["youri fernandez"],
+    "createDate": "2021-11-27",
+    "lastModifyDate": "2021-11-27"
+  },
+  "links": {
+    "manual": [
+      "https://www.thomann.de/fr/stairville_z120m_par_64_led_rgbw_120w.htm"
+    ],
+    "productPage": [
+      "https://www.thomann.de/fr/stairville_z120m_par_64_led_rgbw_120w.htm"
+    ],
+    "video": [
+      "https://www.thomann.de/fr/stairville_z120m_par_64_led_rgbw_120w.htm"
+    ]
+  },
+  "physical": {
+    "weight": 3.24,
+    "power": 125,
+    "DMXconnector": "3-pin",
+    "lens": {
+      "degreesMinMax": [9.5, 43]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
