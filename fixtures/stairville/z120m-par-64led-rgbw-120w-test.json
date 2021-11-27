@@ -1,0 +1,152 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Z120M Par 64LED RGBW 120W test",
+  "categories": ["Dimmer", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["youri fernandez"],
+    "createDate": "2021-11-27",
+    "lastModifyDate": "2021-11-27"
+  },
+  "links": {
+    "manual": [
+      "https://www.thomann.de/fr/stairville_z120m_par_64_led_rgbw_120w.htm"
+    ],
+    "productPage": [
+      "https://www.thomann.de/fr/stairville_z120m_par_64_led_rgbw_120w.htm"
+    ],
+    "video": [
+      "https://www.thomann.de/fr/stairville_z120m_par_64_led_rgbw_120w.htm"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 95],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [96, 175],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [176, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 17],
+          "type": "ColorPreset",
+          "comment": "color macro red"
+        },
+        {
+          "dmxRange": [18, 29],
+          "type": "ColorPreset",
+          "comment": "color macro amber"
+        },
+        {
+          "dmxRange": [30, 41],
+          "type": "ColorPreset",
+          "comment": "color macro warm yellow",
+          "colorTemperature": "warm"
+        },
+        {
+          "dmxRange": [42, 255],
+          "type": "ColorPreset",
+          "comment": "rest"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2800K",
+        "colorTemperatureEnd": "7200K",
+        "comment": "à finir"
+      }
+    },
+    "Automatic show": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high",
+        "comment": "provisoire nimp"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "0%",
+        "soundSensitivityEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10-channel",
+      "channels": [
+        "Intensity",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Color Temperature",
+        "Automatic show",
+        "Sound Sensitivity"
+      ]
+    }
+  ]
+}
