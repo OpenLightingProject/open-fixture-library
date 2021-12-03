@@ -19,16 +19,16 @@
     ]
   },
   "availableChannels": {
-    "Green": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
     "Red": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
       }
     },
     "Blue": {
@@ -58,7 +58,8 @@
   },
   "modes": [
     {
-      "name": "cameo/flat-pro-flood-600",
+      "name": "6-channel",
+      "shortName": "6ch",
       "channels": [
         "Red",
         "Green",
