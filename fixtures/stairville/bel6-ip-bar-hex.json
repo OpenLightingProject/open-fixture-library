@@ -81,7 +81,20 @@
   },
   "modes": [
     {
-      "name": "10ch",
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
       "channels": [
         "Dimmer",
         "Strobe",
