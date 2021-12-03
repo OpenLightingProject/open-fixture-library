@@ -18,6 +18,19 @@
       "https://www.youtube.com/watch?v=Pg6MJoBzkoI"
     ]
   },
+  "physical": {
+    "dimensions": [180, 180, 120],
+    "weight": 4,
+    "power": 90,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "9× 12W RGBWAUV 6in1 LEDs",
+      "lumens": 2119
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
   "availableChannels": {
     "Dimmer": {
       "capability": {
