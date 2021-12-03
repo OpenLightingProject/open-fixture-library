@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BP9Z",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Nicolas Roux SLP EVENEMENTS"],
+    "createDate": "2021-12-03",
+    "lastModifyDate": "2021-12-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.luxibel.com/sites/default/files/2018-05/DMX%20Chart%20Luxibel%20B%20P9Z.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Luxibel/BP9Z-5ch",
+      "channels": [
+        "Zoom",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
