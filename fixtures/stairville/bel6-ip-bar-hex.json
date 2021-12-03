@@ -18,6 +18,18 @@
       "https://video2.thomann.de/vidiot/02591c1c/video_i8892p10_yd59vqpa.mp4"
     ]
   },
+  "physical": {
+    "dimensions": [510, 100, 90],
+    "weight": 4.5,
+    "power": 70,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "6× 15W RGBAWUV LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
   "availableChannels": {
     "Dimmer": {
       "capability": {
