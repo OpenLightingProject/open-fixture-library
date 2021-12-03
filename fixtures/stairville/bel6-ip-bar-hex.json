@@ -25,10 +25,20 @@
       }
     },
     "Strobe": {
-      "capability": {
-        "type": "StrobeSpeed",
-        "speed": "0Hz"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     },
     "Red": {
       "capability": {
@@ -66,12 +76,36 @@
         "color": "UV"
       }
     },
-    "No function": {
-      "capability": {
-        "type": "NoFunction"
-      }
+    "Function Selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 80],
+          "type": "ColorPreset",
+          "helpWanted": "Which color can be selected at which DMX value?"
+        },
+        {
+          "dmxRange": [81, 150],
+          "type": "Effect",
+          "effectPreset": "ColorJump"
+        },
+        {
+          "dmxRange": [151, 220],
+          "type": "Effect",
+          "effectPreset": "ColorFade"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "Effect",
+          "effectName": "Automatic sound-controlled show",
+          "soundControlled": true
+        }
+      ]
     },
-    "Effect Speed": {
+    "Function Speed": {
       "capability": {
         "type": "EffectSpeed",
         "speedStart": "slow",
@@ -104,8 +138,8 @@
         "White",
         "Amber",
         "UV",
-        "No function",
-        "Effect Speed"
+        "Function Selection",
+        "Function Speed"
       ]
     }
   ]
