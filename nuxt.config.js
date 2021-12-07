@@ -24,10 +24,6 @@ export default {
   plugins: [
     `~/plugins/embetty-vue.js`,
     `~/plugins/global-components.js`,
-    {
-      src: `~/plugins/polyfills.js`,
-      ssr: false,
-    },
     `~/plugins/vue-form.js`,
     {
       src: `~/plugins/vue-smooth-scroll.js`,
