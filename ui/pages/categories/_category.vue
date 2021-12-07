@@ -3,7 +3,7 @@
     <h1>{{ categoryName }} fixtures</h1>
 
     <div class="card">
-      <ul :class="[`list`, `fixtures`, `category-${categoryClass}`]">
+      <ul class="list fixtures" :class="`category-${categoryClass}`">
         <li v-for="fixture of fixtures" :key="fixture.key">
           <NuxtLink
             :to="fixture.link"
@@ -14,7 +14,8 @@
               v-for="cat of fixture.categories"
               :key="cat"
               :name="cat"
-              :class="{ inactive: cat !== categoryName, right: true }"
+              class="right"
+              :class="{ inactive: cat !== categoryName }"
               type="fixture" />
           </NuxtLink>
         </li>

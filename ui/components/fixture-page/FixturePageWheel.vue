@@ -43,7 +43,8 @@
         v-for="(slot, index) of wheel.slots"
         :key="`slot-${index}`"
         :transform="`rotate(${slotRotateAngle * index}, 0, 0)`"
-        :class="{ slot: true, dim: highlightedSlot !== null && highlightedSlot !== index }">
+        class="slot"
+        :class="{ dim: highlightedSlot !== null && highlightedSlot !== index }">
 
         <title>{{ slotTitles[index] }}</title>
 
