@@ -7,7 +7,8 @@
             v-for="(pixelKey, xIndex) of row"
             :key="xIndex"
             :style="pixelSizing"
-            :class="{ pixel: true, highlight: highlightedPixelKeys.includes(pixelKey) }">{{ pixelKey || '' }}</div>
+            class="pixel"
+            :class="{ highlight: highlightedPixelKeys.includes(pixelKey) }">{{ pixelKey || '' }}</div>
         </div>
       </div>
       <span class="hint">Front view</span>

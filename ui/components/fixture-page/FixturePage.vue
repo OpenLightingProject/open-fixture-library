@@ -121,7 +121,8 @@
         </a>
         <a
           href="?loadAllModes"
-          :class="[`button`, isBrowser ? `secondary` : `primary`]"
+          class="button"
+          :class="isBrowser ? `secondary` : `primary`"
           rel="nofollow noindex"
           @click.prevent="modeNumberLoadLimit = undefined">
           Load all {{ fixture.modes.length }} modes
