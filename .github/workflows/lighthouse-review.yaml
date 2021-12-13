@@ -25,14 +25,14 @@ jobs:
       - name: Build
         run: npm run build
       - name: Run the Lighthouse CI
-        uses: treosh/lighthouse-ci-action@8.0.0
+        uses: treosh/lighthouse-ci-action@8.2.0
         with:
           urls: |
             http://localhost:3000/
             http://localhost:3000/chroma-q/color-force-ii-72
             http://localhost:3000/categories/Color%20Changer
           runs: 1
-          configPath: '.github/lighthouserc.js'
+          configPath: '.github/lighthouserc.json'
           uploadArtifacts: true
           temporaryPublicStorage: true
         env:
