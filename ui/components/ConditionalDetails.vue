@@ -72,11 +72,6 @@ details {
     }
   }
 }
-
-// hide polyfilled arrow, as we use our own
-html.no-details details > summary::before {
-  display: none;
-}
 </style>
 
 <script>

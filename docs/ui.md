@@ -24,18 +24,6 @@ Locally, running `npm run dev` (after the [initial setup](README.md#local-instal
 * `nuxt.config.js`
 
 
-## Browser compatibility
-
-We aim to support modern browsers without having to include too much polyfills / workarounds for legacy browsers:
-
-- Firefox, Chrome, Edge, Safari, Opera: the 3 newest major releases each
-- Internet Explorer 11
-
-Have a look at [caniuse.com](https://caniuse.com) to see with which browser versions a JS, CSS or HTML feature works.
-
-Please stick to the [code style guidelines](CONTRIBUTING.md#code-style). If a function or syntax feature is not supported in the browsers listed above and is not transpiled by the build process automatically (just search for the function name in the JavaScript file loaded by the browser), you can include a polyfill for it in [`ui/plugins/polyfills.js`](../ui/plugins/polyfills.js).
-
-
 ## Deployment
 
 Every time a new pull request is merged into the master branch, the new version is automatically deployed to <https://open-fixture-library.org/> (see the [`server/` directory](../server/)).
