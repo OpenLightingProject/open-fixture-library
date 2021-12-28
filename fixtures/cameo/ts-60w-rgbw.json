@@ -1,0 +1,258 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "TS 60W RGBW",
+  "shortName": "TS 60W RGBW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["XH"],
+    "createDate": "2021-12-28",
+    "lastModifyDate": "2021-12-28"
+  },
+  "links": {
+    "manual": [
+      "https://www.cameolight.com/fr/downloads/file/id/1201324186"
+    ],
+    "productPage": [
+      "https://www.cameolight.com/fr/solutions/dj-musiciens/eclairage-statique/projecteurs-de-theatre/11911/ts-60-w-rgbw?c=2074"
+    ]
+  },
+  "physical": {
+    "dimensions": [145, 205, 240],
+    "weight": 3.8,
+    "power": 65,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 907
+    },
+    "lens": {
+      "degreesMinMax": [10, 41]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Dimmer 3": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 3 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 4": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 4 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "No function": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Color Temperature": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7200K",
+          "colorTemperatureEnd": "3200K"
+        }
+      ]
+    },
+    "No function 2": {
+      "name": "No function",
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function 3": {
+      "name": "No function",
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer Curve": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction",
+          "comment": "Dimmer Curve OFF"
+        },
+        {
+          "dmxRange": [6, 63],
+          "type": "Generic",
+          "comment": "Linear Dimmer Curve"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Exponential Dimmer Curve"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Logarithmic Dimmer Curve"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "S-Curve Dimmer Curve"
+        }
+      ]
+    },
+    "Device Settings": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 63],
+          "type": "Generic",
+          "comment": "Dimmer Response LED (Hold 3s)"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Dimmer Response Halogen (Hold 3s)"
+        },
+        {
+          "dmxRange": [128, 191],
+          "type": "Generic",
+          "comment": "Silent Fan ON (Hold 3s)"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Silent Fan OFF (Hold 3s)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3ch RGB",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4ch RGBW",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "5ch DRGBW",
+      "shortName": "5ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "7ch DimFine Str RGBW",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer 2",
+        "Dimmer 2 fine",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "13ch",
+      "shortName": "13ch",
+      "channels": [
+        "Dimmer 4",
+        "Dimmer 4 fine",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "No function",
+        "Color Temperature",
+        "No function 2",
+        "No function 3",
+        "Dimmer Curve",
+        "Device Settings"
+      ]
+    }
+  ]
+}
