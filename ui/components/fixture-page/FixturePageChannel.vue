@@ -2,7 +2,7 @@
   <li>
     <ConditionalDetails class="channel">
       <template #summary>
-        <ChannelTypeIcon :channel="channel" />{{ channel.name }}<code v-if="channelKey" class="channel-key">{{ channelKey }}</code>{{ appendToHeading ? ` ${appendToHeading}` : `` }}
+        <ChannelTypeIcon class="channel-type-icon" :channel="channel" />{{ channel.name }}<code v-if="channelKey" class="channel-key">{{ channelKey }}</code>{{ appendToHeading ? ` ${appendToHeading}` : `` }}
         <OflSvg
           v-if="channel.isHelpWanted"
           class="help-wanted-icon"
@@ -129,16 +129,13 @@
 </template>
 
 <style lang="scss" scoped>
-summary, .summary {
-  & > .icon {
-    margin-right: 1.2ex;
-  }
+.channel-type-icon {
+  margin-right: 1.2ex;
+}
 
-  & > .help-wanted-icon {
-    fill: theme-color(yellow-background-hover);
-    margin-left: 0.7ex;
-    margin-right: 0;
-  }
+.help-wanted-icon {
+  margin-left: 0.7ex;
+  fill: theme-color(yellow-background-hover);
 }
 </style>
 

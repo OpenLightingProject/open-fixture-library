@@ -1,12 +1,12 @@
 <template>
   <div>
-    <header class="fixture-header">
-      <div class="title">
+    <FixtureHeader>
+      <template #title>
         <h1>Open Fixture Library</h1>
-      </div>
+      </template>
 
       <DownloadButton :fixture-count="fixtureCount" button-style="home" />
-    </header>
+    </FixtureHeader>
 
 
     <h3>Create and browse fixture definitions for lighting equipment online and download them in the right format for your DMX control software!</h3>
@@ -89,22 +89,22 @@
 import register from '../../fixtures/register.json';
 
 import DownloadButton from '../components/DownloadButton.vue';
+import FixtureHeader from '../components/FixtureHeader.vue';
 
 export default {
   components: {
     DownloadButton,
+    FixtureHeader,
   },
   async asyncData({ $axios, error }) {
+    let manufacturers;
     try {
-      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
-
-      return {
-        manufacturers,
-      };
+      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
     }
     catch (requestError) {
       return error(requestError);
     }
+    return { manufacturers };
   },
   data() {
     return {
@@ -175,8 +175,8 @@ export default {
   },
   methods: {
     /**
-     * @param {String} fixtureKey The combined manufacturer / fixture key.
-     * @returns {String} The manufacturer and fixture names, separated by a space.
+     * @param {string} fixtureKey The combined manufacturer / fixture key.
+     * @returns {string} The manufacturer and fixture names, separated by a space.
      */
     getFixtureName(fixtureKey) {
       const manufacturerKey = fixtureKey.split(`/`)[0];
@@ -190,8 +190,8 @@ export default {
 
 
 /**
- * @param {String} contributor The contributor name.
- * @returns {String} The combined key of the latest fixture contributed to by this contributor.
+ * @param {string} contributor The contributor name.
+ * @returns {string} The combined key of the latest fixture contributed to by this contributor.
  */
 function getLatestFixtureKey(contributor) {
   return register.lastUpdated.find(

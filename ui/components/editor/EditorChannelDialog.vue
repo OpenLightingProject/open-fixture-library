@@ -13,7 +13,7 @@
       action="#"
       @submit.prevent="onSubmit()">
 
-      <div v-if="channel.editMode === `add-existing`">
+      <div v-if="channel.editMode === `add-existing`" class="existing-channel-input-container">
         <LabeledInput :formstate="formstate" name="existingChannelUuid" label="Select an existing channel">
           <select
             v-model="channel.uuid"
@@ -128,7 +128,7 @@
             :schema-property="channelProperties.defaultValue"
             :min-number="0"
             :max-number="(typeof channel.defaultValue) === `string` ? 100 : dmxMax"
-            class="wide"
+            wide
             name="defaultValue" />
         </LabeledInput>
 
@@ -188,7 +188,7 @@
             :schema-property="channelProperties.highlightValue"
             :min-number="0"
             :max-number="(typeof channel.highlightValue) === `string` ? 100 : dmxMax"
-            class="wide"
+            wide
             name="highlightValue" />
         </LabeledInput>
 
@@ -223,17 +223,15 @@
   margin-left: 1ex;
   font-size: 0.8rem;
 }
-</style>
 
-<style lang="scss">
-#channel-dialog .dialog {
-  .existingChannelUuid {
-    display: block;
-  }
+.existing-channel-input-container ::v-deep section {
+  display: block;
+}
 
-  @media (min-width: $phone) {
-    max-width: 700px;
+@media (min-width: $phone) {
+  #channel-dialog ::v-deep .dialog {
     width: 80%;
+    max-width: 700px;
   }
 }
 </style>
@@ -245,6 +243,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { capabilityTypes, channelProperties } from '../../../lib/schema-properties.js';
 import {
   constants,
+  getEmptyFormState,
   getEmptyCapability,
   getEmptyFineChannel,
   getSanitizedChannel,
@@ -288,7 +287,7 @@ export default {
   },
   data() {
     return {
-      formstate: {},
+      formstate: getEmptyFormState(),
       restored: false,
       channelChanged: false,
       channelProperties,
@@ -630,10 +629,10 @@ export default {
     },
 
     /**
-     * @param {Object} coarseChannel The channel object of the coarse channel.
-     * @param {Number} offset At which resolution should be started.
-     * @param {Boolean} [addToMode] If true, the fine channel is pushed to the current mode's channels.
-     * @returns {Array.<String>} Array of added fine channel UUIDs (at the index of their resolution).
+     * @param {object} coarseChannel The channel object of the coarse channel.
+     * @param {number} offset At which resolution should be started.
+     * @param {boolean} [addToMode] If true, the fine channel is pushed to the current mode's channels.
+     * @returns {string[]} Array of added fine channel UUIDs (at the index of their resolution).
      */
     addFineChannels(coarseChannel, offset, addToMode) {
       const addedFineChannelUuids = [];
@@ -659,7 +658,7 @@ export default {
     },
 
     /**
-     * @param {Boolean} show Whether to show or hide the Capability Wizard.
+     * @param {boolean} show Whether to show or hide the Capability Wizard.
      */
     setWizardVisibility(show) {
       this.channel.wizard.show = show;

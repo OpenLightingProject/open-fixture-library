@@ -4,9 +4,9 @@
   "shortName": "StageRightWash7x10W-MH",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Felix Edelmann"],
+    "authors": ["Felix Edelmann", "martin3000"],
     "createDate": "2019-03-29",
-    "lastModifyDate": "2019-10-30"
+    "lastModifyDate": "2021-11-20"
   },
   "links": {
     "manual": [
@@ -51,8 +51,8 @@
       "defaultValue": 0,
       "capability": {
         "type": "PanTiltSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedStart": "fast",
+        "speedEnd": "slow"
       }
     },
     "Dimmer / Strobe": {

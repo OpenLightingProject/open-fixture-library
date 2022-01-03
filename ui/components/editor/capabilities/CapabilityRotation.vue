@@ -9,7 +9,7 @@
       <template #label>
         <template v-if="capability.typeData.speedOrAngle === `speed`">
           Speed / <a
-            href="#anglr"
+            href="#angle"
             class="button secondary inline"
             title="Specify angle instead of speed"
             @click.prevent="changeSpeedOrAngle(`angle`)">Angle</a>
@@ -28,7 +28,8 @@
         ref="speedOrAngleInput"
         :capability="capability"
         :formstate="formstate"
-        :property-name="capability.typeData.speedOrAngle" />
+        :property-name="capability.typeData.speedOrAngle"
+        :required="true" />
 
     </LabeledInput>
 
@@ -78,6 +79,12 @@ export default {
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
+      hint: `Only use this if no other type is applicable. Note that some types like WheelSlot and Prism also allow setting a rotation angle / speed value.`,
+
+      /**
+       * Used in {@link EditorCapabilityTypeData}
+       * @public
+       */
       defaultData: {
         speedOrAngle: `speed`,
         speed: ``,
@@ -94,7 +101,7 @@ export default {
     /**
      * Called from {@link EditorCapabilityTypeData}
      * @public
-     * @returns {Array.<String>} Array of all props to reset to default data when capability is saved.
+     * @returns {string[]} Array of all props to reset to default data when capability is saved.
      */
     resetProperties() {
       const resetProperty = this.capability.typeData.speedOrAngle === `speed` ? `angle` : `speed`;

@@ -52,8 +52,8 @@
 
 <style lang="scss" scoped>
 .capability {
-  margin: 0 -0.5rem;
   position: relative;
+  margin: 0 -0.5rem;
 
   &:not(:last-child) {
     border-bottom: 1px solid theme-color(divider);
@@ -78,13 +78,13 @@
 }
 
 a.remove {
-  display: inline-block;
   position: absolute;
-  right: 0;
   top: 0;
-  padding: 0.3rem;
+  right: 0;
+  display: inline-block;
   width: 1.4rem;
   height: 1.4rem;
+  padding: 0.3rem;
   vertical-align: middle;
 
   & > .icon {
@@ -194,7 +194,6 @@ export default {
     },
   },
   methods: {
-    // eslint-disable-next-line complexity
     onStartUpdated() {
       if (this.start === null) {
         const previousCapability = this.capabilities[this.capabilityIndex - 1];
@@ -223,7 +222,6 @@ export default {
         this.insertCapabilityBefore();
       }
     },
-    // eslint-disable-next-line complexity
     onEndUpdated() {
       if (this.end === null) {
         const nextCapability = this.capabilities[this.capabilityIndex + 1];

@@ -3,9 +3,9 @@
   "name": "LED Flat Par 12x3W RGBW",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Potatoe"],
+    "authors": ["Potatoe", "JonahKr"],
     "createDate": "2018-11-11",
-    "lastModifyDate": "2018-11-11"
+    "lastModifyDate": "2021-10-31"
   },
   "links": {
     "manual": [
@@ -101,7 +101,7 @@
     },
     "Function speed": {
       "capability": {
-        "type": "Speed",
+        "type": "EffectSpeed",
         "speedStart": "slow",
         "speedEnd": "fast"
       }
@@ -109,7 +109,8 @@
   },
   "modes": [
     {
-      "name": "Basic",
+      "name": "8-channel",
+      "shortName": "8-ch",
       "channels": [
         "Dimmer",
         "Red",

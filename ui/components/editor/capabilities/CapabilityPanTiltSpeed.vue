@@ -4,31 +4,31 @@
     <LabeledInput
       :formstate="formstate"
       :multiple-inputs="true"
-      :name="`capability${capability.uuid}-${capability.typeData.speedOrAngle}`">
+      :name="`capability${capability.uuid}-${capability.typeData.speedOrDuration}`">
 
       <template #label>
-        <template v-if="capability.typeData.speedOrAngle === `speed`">
-          Speed / <a
-            href="#angle"
-            class="button secondary inline"
-            title="Specify angle instead of speed"
-            @click.prevent="changeSpeedOrAngle(`angle`)">Angle</a>
-        </template>
-        <template v-else>
-          Angle / <a
+        <template v-if="capability.typeData.speedOrDuration === `duration`">
+          Duration / <a
             href="#speed"
             class="button secondary inline"
-            title="Specify speed instead of angle"
-            @click.prevent="changeSpeedOrAngle(`speed`)">Speed</a>
+            title="Specify speed instead of duration"
+            @click.prevent="changeSpeedOrDuration(`speed`)">Speed</a>
+        </template>
+        <template v-else>
+          Speed / <a
+            href="#duration"
+            class="button secondary inline"
+            title="Specify duration instead of speed"
+            @click.prevent="changeSpeedOrDuration(`duration`)">Duration</a>
         </template>
       </template>
 
       <EditorProportionalPropertySwitcher
-        v-if="capability.typeData.speedOrAngle"
-        ref="speedOrAngleInput"
+        v-if="capability.typeData.speedOrDuration"
+        ref="speedOrDurationInput"
         :capability="capability"
         :formstate="formstate"
-        :property-name="capability.typeData.speedOrAngle"
+        :property-name="capability.typeData.speedOrDuration"
         :required="true" />
 
     </LabeledInput>
@@ -79,20 +79,14 @@ export default {
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
-      hint: `Rotation of the whole wheel (i.e. over all wheel slots). Use WheelSlotRotation if only the slot itself (e.g. a Gobo) rotates in this capability. If the fixture doesn't have a physical color wheel, use Effect with ColorFade/ColorJump preset instead.`,
-
-      /**
-       * Used in {@link EditorCapabilityTypeData}
-       * @public
-       */
       defaultData: {
-        speedOrAngle: `speed`,
+        speedOrDuration: `speed`,
         speed: null,
-        speedStart: `slow CW`,
-        speedEnd: `fast CW`,
-        angle: null,
-        angleStart: `0deg`,
-        angleEnd: `360deg`,
+        speedStart: `fast`,
+        speedEnd: `slow`,
+        duration: ``,
+        durationStart: null,
+        durationEnd: null,
         comment: ``,
       },
     };
@@ -101,20 +95,20 @@ export default {
     /**
      * Called from {@link EditorCapabilityTypeData}
      * @public
-     * @returns {Array.<String>} Array of all props to reset to default data when capability is saved.
+     * @returns {string[]} Array of all props to reset to default data when capability is saved.
      */
     resetProperties() {
-      const resetProperty = this.capability.typeData.speedOrAngle === `speed` ? `angle` : `speed`;
+      const resetProperty = this.capability.typeData.speedOrDuration === `duration` ? `speed` : `duration`;
 
       return [resetProperty, `${resetProperty}Start`, `${resetProperty}End`];
     },
   },
   methods: {
-    async changeSpeedOrAngle(newValue) {
-      this.capability.typeData.speedOrAngle = newValue;
+    async changeSpeedOrDuration(newValue) {
+      this.capability.typeData.speedOrDuration = newValue;
 
       await this.$nextTick();
-      this.$refs.speedOrAngleInput.focus();
+      this.$refs.speedOrDurationInput.focus();
     },
   },
 };

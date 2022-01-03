@@ -18,13 +18,12 @@ export default {
     `@nuxtjs/robots`,
     `@nuxtjs/sitemap`,
   ],
+  buildModules: [
+    `@nuxt/postcss8`,
+  ],
   plugins: [
     `~/plugins/embetty-vue.js`,
     `~/plugins/global-components.js`,
-    {
-      src: `~/plugins/polyfills.js`,
-      ssr: false,
-    },
     `~/plugins/vue-form.js`,
     {
       src: `~/plugins/vue-smooth-scroll.js`,

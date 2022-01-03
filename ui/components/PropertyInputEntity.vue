@@ -1,10 +1,11 @@
 <template>
-  <span :class="{ 'entity-input': true, 'has-number': hasNumber }">
+  <span class="entity-input" :class="{ 'has-number': hasNumber, wide }">
 
     <Validate v-if="hasNumber" tag="span">
       <PropertyInputNumber
         ref="input"
         v-model="selectedNumber"
+        class="property-input-number"
         :schema-property="units[selectedUnit].numberSchema"
         :required="true"
         :minimum="minNumber !== null ? minNumber : `invalid`"
@@ -48,6 +49,7 @@
   & select {
     width: 20ex;
   }
+
   &.wide select {
     width: 30ex;
   }
@@ -56,16 +58,19 @@
     & select {
       width: 10ex;
     }
-    & input {
+
+    & .property-input-number {
       width: 9ex;
       margin-right: 1ex;
     }
   }
+
   &.wide.has-number {
     & select {
       width: 15ex;
     }
-    & input {
+
+    & .property-input-number {
       width: 14ex;
       margin-right: 1ex;
     }
@@ -122,6 +127,11 @@ export default {
       required: false,
       default: null,
     },
+    wide: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   data() {
     return {
@@ -152,7 +162,7 @@ export default {
       for (const unitName of this.unitNames) {
         const unitSchema = unitsSchema[unitName];
 
-        const unitString = `pattern` in unitSchema ? unitSchema.pattern.replace(/^.*\)\??(.*?)\$$/, `$1`).replace(`\\`, ``) : ``;
+        const unitString = `pattern` in unitSchema ? parseUnitFromPattern(unitSchema.pattern) : ``;
         const numberSchema = `pattern` in unitSchema ? unitsSchema.number : unitSchema;
 
         units[unitName] = {
@@ -222,7 +232,7 @@ export default {
     /**
      * Used by vue-form's `entities-have-same-units` validation rule.
      * @public
-     * @returns {Boolean} True if this and the associated entity have the same unit.
+     * @returns {boolean} True if this and the associated entity have the same unit.
      */
     hasSameUnit() {
       if (!this.associatedEntity) {
@@ -256,7 +266,7 @@ export default {
 
     /**
      * Called by {@link EditorProportionalPropertySwitcher}
-     * @param {String} newUnitString The unit string to set.
+     * @param {string} newUnitString The unit string to set.
      * @public
      */
     setUnitString(newUnitString) {
@@ -289,8 +299,21 @@ export default {
 };
 
 /**
- * @param {String} unitString The unit string, as required by the schema.
- * @returns {String} The unitString if it is not empty, `number` otherwise.
+ * @param {string} pattern The pattern string to parse.
+ * @returns {string} The unit string.
+ */
+function parseUnitFromPattern(pattern) {
+  if (!pattern.endsWith(`$`)) {
+    throw new Error(`Pattern does not end with '$': ${pattern}`);
+  }
+
+  const lastNumberPartIndex = Math.max(pattern.lastIndexOf(`)`), pattern.lastIndexOf(`?`));
+  return pattern.slice(lastNumberPartIndex + 1, -1).replace(/\\/g, ``);
+}
+
+/**
+ * @param {string} unitString The unit string, as required by the schema.
+ * @returns {string} The unitString if it is not empty, `number` otherwise.
  */
 function getUnitDisplayString(unitString) {
   if (unitString === ``) {
@@ -301,11 +324,11 @@ function getUnitDisplayString(unitString) {
 }
 
 /**
- * @param {String|Number|null} value The value to get the unit from.
- * @param {Array.<String>} enumValues List of allowed keywords.
- * @param {Array.<String>} unitNames List of names of allowed units.
- * @param {Object.<String, Object>} units Unit data by unit name.
- * @returns {String} The name of value's unit.
+ * @param {string | number | null} value The value to get the unit from.
+ * @param {string[]} enumValues List of allowed keywords.
+ * @param {string[]} unitNames List of names of allowed units.
+ * @param {Record<string, object>} units Unit data by unit name.
+ * @returns {string} The name of value's unit.
  */
 function getSelectedUnit(value, enumValues, unitNames, units) {
   if (enumValues.includes(value) || value === ``) {
@@ -323,9 +346,9 @@ function getSelectedUnit(value, enumValues, unitNames, units) {
 }
 
 /**
- * @param {String} unitName A unit name or keyword.
- * @param {Array.<String>} enumValues List of allowed keywords.
- * @returns {Boolean} True if unitName indicates that a number is required.
+ * @param {string} unitName A unit name or keyword.
+ * @param {string[]} enumValues List of allowed keywords.
+ * @returns {boolean} True if unitName indicates that a number is required.
  */
 function hasNumber(unitName, enumValues) {
   return unitName !== `` && !enumValues.includes(unitName);

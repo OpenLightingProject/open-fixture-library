@@ -4,19 +4,6 @@
     <LabeledInput
       :formstate="formstate"
       :multiple-inputs="true"
-      :name="`capability${capability.uuid}-slotNumber`"
-      label="Slot number"
-      hint="Leave the slot number empty if this capability doesn't select a wheel slot, but only activates wheel slot rotation for a WheelSlot capability in another channel."
-      style="display: inline-block; margin-bottom: 12px;">
-      <EditorProportionalPropertySwitcher
-        :capability="capability"
-        :formstate="formstate"
-        property-name="slotNumber" />
-    </LabeledInput>
-
-    <LabeledInput
-      :formstate="formstate"
-      :multiple-inputs="true"
       :name="`capability${capability.uuid}-${capability.typeData.speedOrAngle}`">
 
       <template #label>
@@ -46,11 +33,6 @@
 
     </LabeledInput>
 
-    <EditorWheelSlots
-      :channel="channel"
-      :capability="capability"
-      :formstate="formstate" />
-
     <LabeledInput
       :formstate="formstate"
       :name="`capability${capability.uuid}-comment`"
@@ -71,21 +53,15 @@ import { schemaDefinitions } from '../../../../lib/schema-properties.js';
 import LabeledInput from '../../LabeledInput.vue';
 import PropertyInputText from '../../PropertyInputText.vue';
 import EditorProportionalPropertySwitcher from '../EditorProportionalPropertySwitcher.vue';
-import EditorWheelSlots from '../EditorWheelSlots.vue';
 
 export default {
   components: {
     EditorProportionalPropertySwitcher,
-    EditorWheelSlots,
     LabeledInput,
     PropertyInputText,
   },
   props: {
     capability: {
-      type: Object,
-      required: true,
-    },
-    channel: {
       type: Object,
       required: true,
     },
@@ -103,10 +79,13 @@ export default {
        * Used in {@link EditorCapabilityTypeData}
        * @public
        */
+      hint: `Doesn't activate the prism, only controls the prism rotation.`,
+
+      /**
+       * Used in {@link EditorCapabilityTypeData}
+       * @public
+       */
       defaultData: {
-        slotNumber: ``,
-        slotNumberStart: null,
-        slotNumberEnd: null,
         speedOrAngle: `speed`,
         speed: ``,
         speedStart: null,
@@ -122,7 +101,7 @@ export default {
     /**
      * Called from {@link EditorCapabilityTypeData}
      * @public
-     * @returns {Array.<String>} Array of all props to reset to default data when capability is saved.
+     * @returns {string[]} Array of all props to reset to default data when capability is saved.
      */
     resetProperties() {
       const resetProperty = this.capability.typeData.speedOrAngle === `speed` ? `angle` : `speed`;

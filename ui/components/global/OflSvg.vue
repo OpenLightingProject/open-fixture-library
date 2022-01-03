@@ -1,8 +1,8 @@
 <style lang="scss">
 .icon {
   display: inline-block;
-  height: 1.4em;
   width: 1.4em;
+  height: 1.4em;
   vertical-align: middle;
 
   &.inactive {
@@ -10,17 +10,17 @@
   }
 
   &.gobo-icon {
+    box-sizing: border-box;
+    padding: 2px;
     background-color: white;
     background-clip: content-box;
     border-radius: 50%;
-    padding: 2px;
-    box-sizing: border-box;
   }
 
   & svg {
+    display: block;
     width: 100%;
     height: 100%;
-    display: block;
   }
 }
 </style>
@@ -96,10 +96,10 @@ export default {
 
 /**
  * Returns the contents of the provided SVG file as an inline SVG.
- * @param {String} name Name of the icon (without extension).
- * @param {String|null} category The category (directory) of the icon.
- * @param {String|null} title An optional (tooltip) title for the icon.
- * @returns {String} The inline <svg> tag or an empty string if the file was not found.
+ * @param {string} name Name of the icon (without extension).
+ * @param {string | null} category The category (directory) of the icon.
+ * @param {string | null} title An optional (tooltip) title for the icon.
+ * @returns {string} The inline <svg> tag or an empty string if the file was not found.
  */
 function getSvg(name, category = null, title) {
   if (name === ``) {
@@ -127,9 +127,9 @@ function getSvg(name, category = null, title) {
 
 /**
  * Get inline SVG for a color circle (like a pie chart with equally-sized pies).
- * @param {Array.<String>} colors Array of color strings to display.
- * @param {String|null} [title] Text for the title tag. If this parameter is not given, no title tag will be added.
- * @returns {String} The HTML for displaying the color circle.
+ * @param {string[]} colors Array of color strings to display.
+ * @param {string | null} [title] Text for the title tag. If this parameter is not given, no title tag will be added.
+ * @returns {string} The HTML for displaying the color circle.
  */
 function getColorCircle(colors, title) {
   // viewBox customized to have the (0,0) coordinate in the center
@@ -153,9 +153,9 @@ function getColorCircle(colors, title) {
 
 
 /**
- * @param {Array.<String>} colors An array of hex colors to fill into the circle.
- * @param {Number} radius The radius of the circle.
- * @returns {String} A string containing one SVG <circle> element or multiple SVG <path> elements.
+ * @param {string[]} colors An array of hex colors to fill into the circle.
+ * @param {number} radius The radius of the circle.
+ * @returns {string} A string containing one SVG <circle> element or multiple SVG <path> elements.
  */
 export function getColorCircleSvgFragment(colors, radius) {
   if (colors.length === 1) {
@@ -186,9 +186,9 @@ export function getColorCircleSvgFragment(colors, radius) {
 
 /**
  * Get x and y coordinates of the point that is `percent` percent of the way around a circle. Note that 37.5% are added to start at a 135deg angle.
- * @param {Number} percent Percent of the whole circle.
- * @param {Number} radius Radius of the circle.
- * @returns {[Number, Number]} Array with x and y coordinate.
+ * @param {number} percent Percent of the whole circle.
+ * @param {number} radius Radius of the circle.
+ * @returns {[number, number]} Array with x and y coordinate.
  */
 function getCoordinatesForPercent(percent, radius) {
   percent += 0.375;

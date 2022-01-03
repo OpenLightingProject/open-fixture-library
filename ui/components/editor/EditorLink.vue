@@ -1,5 +1,5 @@
 <template>
-  <div class="linkRow">
+  <div class="link-row">
     <select ref="linkTypeSelect" v-model="type">
       <option
         v-for="linkType of linkTypes"
@@ -30,7 +30,7 @@
 </template>
 
 <style lang="scss" scoped>
-.linkRow {
+.link-row {
   margin-bottom: 4px;
 }
 
@@ -46,7 +46,7 @@ select {
 
 <script>
 import { schemaDefinitions, linksProperties } from '../../../lib/schema-properties.js';
-import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
+import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
 
 import PropertyInputText from '../PropertyInputText.vue';
 
@@ -61,7 +61,6 @@ export default {
   components: {
     PropertyInputText,
   },
-  mixins: [fixtureLinksMixin],
   props: {
     link: {
       type: Object,
@@ -77,9 +76,12 @@ export default {
     },
   },
   data() {
+    const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
     return {
       schemaDefinitions,
       linkTypes: Object.keys(linksProperties),
+      linkTypeIconNames,
+      linkTypeNames,
     };
   },
   computed: {

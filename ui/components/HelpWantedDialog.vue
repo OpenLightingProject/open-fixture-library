@@ -116,7 +116,11 @@ export default {
         return `Failed to send message`;
       }
 
-      return `Improve ${this.type === `plugin` ? `plugin` : `fixture`}`;
+      if (this.type === `plugin`) {
+        return `Improve plugin`;
+      }
+
+      return `Improve fixture`;
     },
     location() {
       if (this.type === `capability`) {
@@ -173,9 +177,10 @@ export default {
 
       const body = Object.entries(mailBodyData).filter(
         ([key, value]) => value !== null,
-      ).map(
-        ([key, value]) => `${key}:${value.includes(`\n`) ? `\n` : ` `}${value}`,
-      ).join(`\n`);
+      ).map(([key, value]) => {
+        const separator = value.includes(`\n`) ? `\n` : ` `;
+        return `${key}:${separator}${value}`;
+      }).join(`\n`);
 
       return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     },
