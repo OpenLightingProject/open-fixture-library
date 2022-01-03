@@ -58,12 +58,12 @@ export async function exportFixtures(fixtures, options) {
     }
   }
 
-  return Promise.resolve([{
+  return [{
     name: `userlib.jlib`,
     content: JSON.stringify(exportJson, null, 2),
     mimetype: `application/json`,
     fixtures,
-  }]);
+  }];
 }
 
 /**
