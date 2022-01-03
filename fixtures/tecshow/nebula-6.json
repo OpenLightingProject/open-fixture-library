@@ -92,7 +92,8 @@
           "dmxRange": [100, 149],
           "type": "StrobeSpeed",
           "speedStart": "100Hz",
-          "speedEnd": "0Hz"
+          "speedEnd": "0Hz",
+          "helpWanted": "A strobe speed of 100Hz is highly unlikely. Is there really an increasing strobe speed between DMX values 8 and 99 and then a decreasing strobe speed between DMX values 100 and 149?"
         },
         {
           "dmxRange": [150, 199],
@@ -102,13 +103,15 @@
         {
           "dmxRange": [200, 245],
           "type": "Effect",
-          "effectName": "strobe2"
+          "effectName": "strobe2",
+          "helpWanted": "What are these two strobe effects exactly?"
         },
         {
           "dmxRange": [246, 255],
           "type": "StrobeSpeed",
           "speedStart": "200Hz",
-          "speedEnd": "200Hz"
+          "speedEnd": "200Hz",
+          "helpWanted": "What can be selected here? A strobe speed of 200Hz is highly unlikely. Is the fastest strobe speed at DMX values 246 to 255 the same as between DMX values 99 and 100?"
         }
       ]
     },
@@ -122,7 +125,8 @@
           "dmxRange": [8, 255],
           "type": "ColorPreset",
           "comment": "red,yellow,magenta,green,orange,cyan,pink",
-          "colors": ["#ff0000", "#ffff00", "#ff00ff", "#00ff00", "#ff5500", "#008888", "#ff3355"]
+          "colors": ["#ff0000", "#ffff00", "#ff00ff", "#00ff00", "#ff5500", "#008888", "#ff3355"],
+          "helpWanted": "Is this the activation of an auto color change effect? Is there a smooth or hard transition between those colors? Are there any differences between the DMX values?"
         }
       ]
     },
