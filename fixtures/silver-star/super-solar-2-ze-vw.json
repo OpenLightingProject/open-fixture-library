@@ -1,0 +1,120 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SUPER SOLAR-2 ze/VW",
+  "shortName": "Ar2.Z mode",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["KAILASH"],
+    "createDate": "2022-01-11",
+    "lastModifyDate": "2022-01-11"
+  },
+  "links": {
+    "manual": [
+      "https://e-spec.jp/manual/silverstar/ss_sup_solar2zeetz_mk3_mnl.pdf"
+    ],
+    "productPage": [
+      "http://www.yajiang.cn/english.php/Product/detail/cat_id/155/id/771"
+    ]
+  },
+  "physical": {
+    "dimensions": [283, 330, 236],
+    "weight": 8.6,
+    "power": 170,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "14x15W (WW+CW)"
+    },
+    "lens": {
+      "degreesMinMax": [8, 40]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Red": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Zoom": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Zoom Reset": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Generic",
+        "comment": "Zoom reset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Ar2.Z",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom",
+        "Zoom Reset"
+      ]
+    }
+  ]
+}
