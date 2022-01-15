@@ -1,0 +1,274 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RockOn-7",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["ARTchitecture.com"],
+    "createDate": "2022-01-15",
+    "lastModifyDate": "2022-01-15"
+  },
+  "comment": "Mini 4x10 RGBW LED Moving Head Light",
+  "links": {
+    "manual": [
+      "https://www.rockvilleaudio.com/content/Manuals/RockOn7_Manual_HR.pdf"
+    ],
+    "productPage": [
+      "https://www.rockvilleaudio.com/rockon-7/"
+    ],
+    "video": [
+      "https://player.vimeo.com/external/519187537.hd.mp4?s=cfde565f0f31c43f7554f53eeda81b17ae682c76&profile_id=175"
+    ]
+  },
+  "physical": {
+    "dimensions": [230, 160, 200],
+    "weight": 2,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Pan Coarse": {
+      "defaultValue": 128,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-270deg",
+        "angleEnd": "270deg",
+        "comment": "Pan 540 Degrees"
+      }
+    },
+    "Tilt Coarse": {
+      "defaultValue": 128,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-135deg",
+        "angleEnd": "135deg",
+        "comment": "Tilt 270 degrees"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 128,
+      "precedence": "LTP",
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "comment": "X/Y Speed"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 255,
+      "highlightValue": "50%",
+      "precedence": "HTP",
+      "capability": {
+        "type": "Intensity",
+        "comment": "Dimmer"
+      }
+    },
+    "Strobe": {
+      "defaultValue": "0%",
+      "highlightValue": "50%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "25Hz",
+        "comment": "Strobe 0-25Hz"
+      }
+    },
+    "Red": {
+      "defaultValue": "0%",
+      "highlightValue": "50%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red Dimmer"
+      }
+    },
+    "Green": {
+      "defaultValue": "0%",
+      "highlightValue": "50%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green Dimmer"
+      }
+    },
+    "White": {
+      "defaultValue": "0%",
+      "highlightValue": "50%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Auto Motor Move": {
+      "defaultValue": 0,
+      "highlightValue": 16,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction",
+          "comment": "No Effects"
+        },
+        {
+          "dmxRange": [16, 128],
+          "type": "Effect",
+          "effectName": "Automatic Motor Movement",
+          "comment": "Automatic Motor Movement"
+        },
+        {
+          "dmxRange": [129, 255],
+          "type": "Effect",
+          "effectName": "Sound Activated Motor Movement",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Auto Motor Move Speed": {
+      "defaultValue": "50%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Auto Color Change": {
+      "defaultValue": 0,
+      "precedence": "LTP",
+      "capabilities": [
+        {
+          "dmxRange": [0, 140],
+          "type": "Effect",
+          "effectName": "Automatic Color Change"
+        },
+        {
+          "dmxRange": [141, 255],
+          "type": "Effect",
+          "effectName": "Sound Activated Color Change",
+          "soundControlled": true,
+          "comment": "Sound Activated Color Change"
+        }
+      ]
+    },
+    "Blue": {
+      "defaultValue": "0%",
+      "highlightValue": "50%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue Dimmer"
+      }
+    },
+    "Auto Color Change Speed": {
+      "defaultValue": "50%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Automatic Color Change Speed Adjust"
+      }
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 249],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Maintenance",
+          "parameter": 255,
+          "hold": "301s",
+          "comment": "Reset"
+        }
+      ]
+    },
+    "Pan 2": {
+      "fineChannelAliases": ["Pan 2 fine"],
+      "defaultValue": 128,
+      "precedence": "LTP",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-270deg",
+        "angleEnd": "270deg",
+        "comment": "Pan 540 Degrees"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "precedence": "LTP",
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-270deg",
+        "angleEnd": "270deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": "50%",
+      "precedence": "LTP",
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-135deg",
+        "angleEnd": "135deg",
+        "comment": "Tilt Fine"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "14 Channel",
+      "shortName": "14ch",
+      "channels": [
+        "Pan Coarse",
+        "Tilt Coarse",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Auto Motor Move",
+        "Auto Motor Move Speed",
+        "Auto Color Change",
+        "Auto Color Change Speed",
+        "Reset"
+      ]
+    },
+    {
+      "name": "16 Channel",
+      "shortName": "16ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Auto Motor Move",
+        "Auto Motor Move Speed",
+        "Auto Color Change",
+        "Auto Color Change Speed",
+        "Reset"
+      ]
+    }
+  ]
+}
