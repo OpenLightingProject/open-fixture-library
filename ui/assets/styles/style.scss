@@ -18,7 +18,7 @@ body {
   word-wrap: break-word;
   background-color: theme-color(page-background);
   transition: background-color 0.3s, color 0.3s;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
 }
 
 html {
@@ -344,7 +344,7 @@ a.button {
     display: block;
     width: $icon-size;
     height: $icon-size;
-    fill: currentColor;
+    fill: currentcolor;
   }
 
   &:not(.close) {
