@@ -126,7 +126,7 @@ select {
       height: 0;
       margin: 0.8em 0 0 1ex;
       content: "";
-      border-color: currentColor transparent transparent;
+      border-color: currentcolor transparent transparent;
       border-style: solid;
       border-width: 0.4em 0.4em 0;
     }
