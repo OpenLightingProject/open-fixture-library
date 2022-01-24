@@ -1,0 +1,103 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ULTRA PAR LED",
+  "shortName": "UPLED",
+  "categories": ["Color Changer", "Dimmer", "Strobe", "Other"],
+  "meta": {
+    "authors": ["ANONYMOUS"],
+    "createDate": "2022-01-24",
+    "lastModifyDate": "2022-01-24"
+  },
+  "links": {
+    "video": [
+      "https://www.youtube.com/watch?v=ki_bDZOkwiE"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "1"
+  },
+  "availableChannels": {
+    "DIMMER": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Closed"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "Effect",
+        "effectPreset": "ColorJump",
+        "speed": "fast",
+        "duration": "long",
+        "parameter": "long"
+      }
+    },
+    "MACRO SPEED": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "AMBER": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "ULTRA PAR LED",
+      "shortName": "UPLED",
+      "channels": [
+        "DIMMER",
+        "Shutter",
+        "Color Macros",
+        "MACRO SPEED",
+        "RED",
+        "GREEN",
+        "BLUE",
+        "White",
+        "AMBER",
+        "UV"
+      ]
+    }
+  ]
+}
