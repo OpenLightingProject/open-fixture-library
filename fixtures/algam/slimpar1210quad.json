@@ -1,0 +1,75 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SlimPar1210Quad",
+  "shortName": "SlimPar Algam",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Bobbi"],
+    "createDate": "2022-01-25",
+    "lastModifyDate": "2022-01-25"
+  },
+  "links": {
+    "manual": [
+      "https://cdn.algam.net/pub/collections//documents_AE/ALGLIG/SLIMPAR_510-710-1210_HEX_MANUAL.pdf"
+    ],
+    "productPage": [
+      "https://cdn.algam.net/pub/collections//documents_AE/ALGLIG/SLIMPAR_510-710-1210_HEX_MANUAL.pdf"
+    ],
+    "video": [
+      "https://cdn.algam.net/pub/collections//documents_AE/ALGLIG/SLIMPAR_510-710-1210_HEX_MANUAL.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Red",
+        "colors": ["#ff0000"]
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorPreset",
+        "colors": ["#00ff00"]
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorPreset",
+        "colors": ["#0000ff"]
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "White",
+        "colors": ["#ffffff"]
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "100Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Classic",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe Speed"
+      ]
+    }
+  ]
+}
