@@ -26,6 +26,7 @@
         </LabeledValue>
 
         <ol>
+          <!-- eslint-disable-next-line vue/no-undef-components -- https://github.com/vuejs/eslint-plugin-vue/pull/1782 -->
           <FixturePageChannel
             v-for="(ranges, switchToChannelKey) of channel.triggerRanges"
             :key="switchToChannelKey"

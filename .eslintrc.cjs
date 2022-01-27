@@ -192,6 +192,14 @@ const enabledRuleParameters = {
   'vue/no-deprecated-slot-scope-attribute': [],
   'vue/no-empty-component-block': [],
   'vue/no-invalid-model-keys': [],
+  'vue/no-undef-components': [{
+    ignorePatterns: [
+      `^Ofl(Svg|Time)$`, // global components
+      `^Nuxt(Link)?$`, `^ClientOnly$`, // Nuxt components
+      `^VueForm$`, `^Validate$`, `^FieldMessages$`, // VueForm components
+      `^EmbettyVideo$`, // Embetty components
+    ],
+  }],
   'vue/no-undef-properties': [],
   'vue/no-unused-properties': [{
     groups: [`props`, `data`, `computed`, `methods`, `setup`],
@@ -240,8 +248,10 @@ const vueCoreExtensionRules = [
   `object-curly-newline`,
   `object-curly-spacing`,
   `object-property-newline`,
+  `object-shorthand`,
   `operator-linebreak`,
   `prefer-template`,
+  `quote-props`,
   `space-in-parens`,
   `space-infix-ops`,
   `space-unary-ops`,
