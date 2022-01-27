@@ -22,7 +22,8 @@
           <EmbettyVideo
             :type="video.type"
             :video-id="video.videoId"
-            :start-at="video.startAt" />
+            :start-at="video.startAt"
+            server-url="https://embetty.open-fixture-library.org" />
           <a
             :href="video.url"
             target="_blank"
@@ -188,6 +189,7 @@
 </style>
 
 <script>
+import { EmbettyVideo } from 'embetty-vue';
 import register from '../../../fixtures/register.json';
 
 import Fixture from '../../../lib/model/Fixture.js';
@@ -208,6 +210,7 @@ const VIDEOS_TO_EMBED = 2;
 export default {
   components: {
     CategoryBadge,
+    EmbettyVideo,
     FixturePageMatrix,
     FixturePageMode,
     FixturePagePhysical,

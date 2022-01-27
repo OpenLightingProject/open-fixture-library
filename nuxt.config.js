@@ -22,7 +22,6 @@ export default {
     `@nuxt/postcss8`,
   ],
   plugins: [
-    `~/plugins/embetty-vue.js`,
     `~/plugins/global-components.js`,
     `~/plugins/vue-form.js`,
     {
@@ -46,6 +45,7 @@ export default {
       maxAge: 2 * 365 * 24 * 60 * 60,
       preload: true,
     },
+    crossOriginEmbedderPolicy: false, // needed for Embetty poster images and video iframes
   },
   css: [
     `~/assets/styles/style.scss`,
