@@ -46,6 +46,7 @@ export default {
       maxAge: 2 * 365 * 24 * 60 * 60,
       preload: true,
     },
+    crossOriginEmbedderPolicy: false, // needed for Embetty poster images and video iframes
   },
   css: [
     `~/assets/styles/style.scss`,
