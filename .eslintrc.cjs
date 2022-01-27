@@ -197,7 +197,6 @@ const enabledRuleParameters = {
       `^Ofl(Svg|Time)$`, // global components
       `^Nuxt(Link)?$`, `^ClientOnly$`, // Nuxt components
       `^VueForm$`, `^Validate$`, `^FieldMessages$`, // VueForm components
-      `^EmbettyVideo$`, // Embetty components
     ],
   }],
   'vue/no-undef-properties': [],

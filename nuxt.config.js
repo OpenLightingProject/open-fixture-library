@@ -22,7 +22,6 @@ export default {
     `@nuxt/postcss8`,
   ],
   plugins: [
-    `~/plugins/embetty-vue.js`,
     `~/plugins/global-components.js`,
     `~/plugins/vue-form.js`,
     {
