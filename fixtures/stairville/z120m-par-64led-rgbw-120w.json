@@ -1,0 +1,104 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Z120M Par 64LED RGBW 120W",
+  "categories": ["Dimmer", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["youri fernandez"],
+    "createDate": "2022-01-28",
+    "lastModifyDate": "2022-01-28"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/451128_c_451128_r3_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/fr/stairville_z120m_par_64_led_rgbw_120w.htm"
+    ],
+    "video": [
+      "https://www.bing.com/videos/search?q=strairville+z120m&&view=detail&mid=8C22E65002999EE32FEE8C22E65002999EE32FEE&&FORM=VRDGAR&ru=%2Fvideos%2Fsearch%3Fq%3Dstrairville%2Bz120m%26FORM%3DHDRSC3"
+    ]
+  },
+  "physical": {
+    "dimensions": [491, 275, 224],
+    "weight": 3.4,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED COB"
+    },
+    "lens": {
+      "degreesMinMax": [9.5, 43]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 95],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [96, 175],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "1Hz"
+        },
+        {
+          "dmxRange": [176, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "25Hz",
+          "speedEnd": "25Hz"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6 channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
