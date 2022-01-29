@@ -28,178 +28,32 @@
       "degreesMinMax": [30, 30]
     }
   },
-  "availableChannels": {
-    "Red1": {
+  "matrix": {
+    "pixelCount": [8, 1, 1],
+    "pixelGroups": {
+      "Master": "all",
+      "1/4": ["1", "2"],
+      "2/4": ["3", "4"],
+      "3/4": ["5", "6"],
+      "4/4": ["7", "8"]
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green1": {
+    "Green $pixelKey": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue1": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Master Dimmer": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Red2": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Blue2": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Green2": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Red3": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green3": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue3": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red4": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green4": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Flash Speed": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Blue4": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red5": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green5": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue5": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red6": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Blue6": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Green6": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Red7": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green7": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue7": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "Red8": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "Green8": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "Blue8": {
+    "Blue $pixelKey": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
@@ -207,74 +61,76 @@
       }
     }
   },
+  "availableChannels": {
+    "Master Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Flash Speed": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
   "modes": [
     {
-      "name": "3-Channels",
-      "shortName": "3ch",
+      "name": "3-channel d-P1",
+      "shortName": "d-P1",
       "channels": [
-        "Red1",
-        "Green1",
-        "Blue1"
+        "Red Master",
+        "Green Master",
+        "Blue Master"
       ]
     },
     {
-      "name": "4-Channels",
-      "shortName": "4ch",
+      "name": "4-channel d-P2",
+      "shortName": "d-P2",
       "channels": [
-        "Red1",
-        "Green1",
-        "Blue1",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
         "Master Dimmer"
       ]
     },
     {
-      "name": "14-Channels",
-      "shortName": "14ch",
+      "name": "14-channel d-P3",
+      "shortName": "d-P3",
       "channels": [
-        "Red1",
-        "Green1",
-        "Blue1",
-        "Red2",
-        "Green2",
-        "Blue2",
-        "Red3",
-        "Green3",
-        "Blue3",
-        "Red4",
-        "Green4",
-        "Blue4",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": [
+            "1/4",
+            "2/4",
+            "3/4",
+            "4/4"
+          ],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
         "Flash Speed",
         "Master Dimmer"
       ]
     },
     {
-      "name": "26-Channels",
-      "shortName": "26ch",
+      "name": "26-channel d-P4",
+      "shortName": "d-P4",
       "channels": [
-        "Red1",
-        "Green1",
-        "Blue1",
-        "Red2",
-        "Green2",
-        "Blue2",
-        "Red3",
-        "Green3",
-        "Blue3",
-        "Red4",
-        "Green4",
-        "Blue4",
-        "Red5",
-        "Green5",
-        "Blue5",
-        "Red6",
-        "Green6",
-        "Blue6",
-        "Red7",
-        "Green7",
-        "Blue7",
-        "Red8",
-        "Green8",
-        "Blue8",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        },
         "Flash Speed",
         "Master Dimmer"
       ]
