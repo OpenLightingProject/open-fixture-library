@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Alien S",
-  "categories": ["Color Changer"],
+  "categories": ["Pixel Bar", "Color Changer"],
   "meta": {
     "authors": ["Yéred Zabdiel"],
     "createDate": "2021-11-08",
@@ -12,15 +12,21 @@
     "manual": [
       "http://alienpro.com.mx/wp-content/uploads/Manual-Bar-Alien-S.pdf"
     ],
-    "productPage": [
-      "http://alienpro.com.mx/"
+    "video": [
+      "https://www.youtube.com/watch?v=iuyEvc5mtj4"
     ]
   },
   "physical": {
-    "dimensions": [1070, 65, 80],
+    "dimensions": [1070, 65, 88],
     "weight": 2.6,
     "power": 30,
-    "DMXconnector": "3-pin"
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "240× 10mm LED (96 red, 72 green, 72 blue)"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
   },
   "availableChannels": {
     "Red1": {
