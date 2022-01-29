@@ -22,7 +22,8 @@
           <EmbettyVideo
             :type="video.type"
             :video-id="video.videoId"
-            :start-at="video.startAt" />
+            :start-at="video.startAt"
+            server-url="https://embetty.open-fixture-library.org" />
           <a
             :href="video.url"
             target="_blank"
@@ -121,7 +122,8 @@
         </a>
         <a
           href="?loadAllModes"
-          :class="[`button`, isBrowser ? `secondary` : `primary`]"
+          class="button"
+          :class="isBrowser ? `secondary` : `primary`"
           rel="nofollow noindex"
           @click.prevent="modeNumberLoadLimit = undefined">
           Load all {{ fixture.modes.length }} modes
@@ -141,11 +143,12 @@
 }
 
 .fixture-videos {
-  text-align: center;
-  line-height: 1;
-  margin: 1rem 0 0;
   padding: 0;
+  margin: 1rem 0 0;
+  line-height: 1;
+  text-align: center;
 }
+
 .fixture-video {
   margin-bottom: 1rem;
 
@@ -161,31 +164,32 @@
 }
 
 .fixture-links {
-  margin: 0;
   padding: 0;
+  margin: 0;
   list-style: none;
 
   .hostname {
-    color: theme-color(text-secondary);
-    font-size: 0.9em;
     padding-left: 1ex;
+    font-size: 0.9em;
+    color: theme-color(text-secondary);
   }
 
   .link-other {
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
 .wheels {
-  white-space: nowrap;
   overflow: hidden;
   overflow-x: auto;
+  white-space: nowrap;
 }
 </style>
 
 <script>
+import { EmbettyVideo } from 'embetty-vue';
 import register from '../../../fixtures/register.json';
 
 import Fixture from '../../../lib/model/Fixture.js';
@@ -206,6 +210,7 @@ const VIDEOS_TO_EMBED = 2;
 export default {
   components: {
     CategoryBadge,
+    EmbettyVideo,
     FixturePageMatrix,
     FixturePageMode,
     FixturePagePhysical,

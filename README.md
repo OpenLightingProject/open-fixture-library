@@ -1,9 +1,7 @@
 # Open Fixture Library<br><a href="https://open-fixture-library.org/">open-fixture-library.org</a>
 
-[![Code Quality](https://api.codacy.com/project/badge/Grade/73096865e9f44a7bb246a318ffc8e68b)](https://www.codacy.com/app/FloEdelmann/open-fixture-library)
-[![David Dependency Manager](https://img.shields.io/david/OpenLightingProject/open-fixture-library.svg)](https://david-dm.org/OpenLightingProject/open-fixture-library)
 [![Mozilla HTTP Observatory Grade](https://img.shields.io/mozilla-observatory/grade-score/open-fixture-library.org?publish)](https://observatory.mozilla.org/analyze/open-fixture-library.org)
-[![Website Carbon](https://img.shields.io/badge/dynamic/json?color=yellowgreen&label=Website%20Carbon&query=%24.c&suffix=g%20CO%E2%82%82%2Fview&url=https%3A%2F%2Fapi.websitecarbon.com%2Fb%3Furl%3Dopen-fixture-library.org&cacheSeconds=604800)](https://www.websitecarbon.com/website/open-fixture-library-org/)
+[![Beacon](https://img.shields.io/badge/dynamic/json?color=blue&label=Beacon&query=%24.co2&suffix=%20CO%E2%82%82%2Fview&url=https%3A%2F%2Fdigitalbeacon.co%2Fbadge%3Furl%3Dhttps%253A%252F%252Fopen-fixture-library.org&cacheSeconds=604800)](https://digitalbeacon.co/report/open-fixture-library-org)
 
 [<img alt="OFL logo" src="https://cdn.rawgit.com/OpenLightingProject/open-fixture-library/master/ui/static/ofl-logo.svg" width="250" />](ui/static/ofl-logo.svg)
 

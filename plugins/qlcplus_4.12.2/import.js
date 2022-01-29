@@ -988,7 +988,8 @@ function replaceSwitchingChannelsInModes(switchChannels, oflModes) {
 
     if (swChannelsWithSameKey.length > 1) {
       for (const channel of swChannelsWithSameKey) {
-        channel.key += ` (${channel.modes.join(`, `)})`;
+        const channelModes = channel.modes.join(`, `);
+        channel.key += ` (${channelModes})`;
       }
     }
 

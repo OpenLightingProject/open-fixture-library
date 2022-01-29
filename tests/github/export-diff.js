@@ -15,55 +15,53 @@ import * as pullRequest from './pull-request.js';
  */
 
 // generate diff tasks describing the diffed plugins, fixtures and the reason for diffing (which component has changed)
-(async () => {
-  try {
-    await pullRequest.checkEnv();
-    await pullRequest.init();
-    const changedComponents = await pullRequest.fetchChangedComponents();
+try {
+  await pullRequest.checkEnv();
+  await pullRequest.init();
+  const changedComponents = await pullRequest.fetchChangedComponents();
 
-    const tasks = await getDiffTasks(changedComponents);
+  const tasks = await getDiffTasks(changedComponents);
 
-    if (tasks.length === 0) {
-      await pullRequest.updateComment({
-        fileUrl: new URL(import.meta.url),
-        name: `Plugin export diff`,
-        lines: [],
-      });
-      return;
-    }
-
-    const lines = [
-      `You can view your uncommitted changes in plugin exports manually by executing:`,
-      `\`$ node cli/diff-plugin-outputs.js -p <plugin-key> [-c <compare-plugin-key>] <fixtures>\``,
-      ``,
-    ];
-
-    const tooLongMessage = `:warning: The output of the script is too long to fit in this comment, please run it yourself locally!`;
-
-    for (const task of tasks) {
-      const taskResultLines = await performTask(task);
-
-      // GitHub's official maximum comment length is 2**16 = 65_536, but it's actually 2**18 = 262_144.
-      // We keep 2144 characters extra space as we don't count the comment header (added by our pull request module).
-      if (lines.concat(taskResultLines, tooLongMessage).join(`\r\n`).length > 260_000) {
-        lines.push(tooLongMessage);
-        break;
-      }
-
-      lines.push(...taskResultLines);
-    }
-
+  if (tasks.length === 0) {
     await pullRequest.updateComment({
       fileUrl: new URL(import.meta.url),
       name: `Plugin export diff`,
-      lines,
+      lines: [],
     });
+    process.exit(0);
   }
-  catch (error) {
-    console.error(error);
-    process.exit(1);
+
+  const lines = [
+    `You can view your uncommitted changes in plugin exports manually by executing:`,
+    `\`$ node cli/diff-plugin-outputs.js -p <plugin-key> [-c <compare-plugin-key>] <fixtures>\``,
+    ``,
+  ];
+
+  const tooLongMessage = `:warning: The output of the script is too long to fit in this comment, please run it yourself locally!`;
+
+  for (const task of tasks) {
+    const taskResultLines = await performTask(task);
+
+    // GitHub's official maximum comment length is 2**16 = 65_536, but it's actually 2**18 = 262_144.
+    // We keep 2144 characters extra space as we don't count the comment header (added by our pull request module).
+    if (lines.concat(taskResultLines, tooLongMessage).join(`\r\n`).length > 260_000) {
+      lines.push(tooLongMessage);
+      break;
+    }
+
+    lines.push(...taskResultLines);
   }
-})();
+
+  await pullRequest.updateComment({
+    fileUrl: new URL(import.meta.url),
+    name: `Plugin export diff`,
+    lines,
+  });
+}
+catch (error) {
+  console.error(error);
+  process.exit(1);
+}
 
 
 
@@ -72,9 +70,8 @@ import * as pullRequest from './pull-request.js';
  * @returns {Promise<Task[]>} A Promise that resolves to an array of diff tasks to perform.
  */
 async function getDiffTasks(changedComponents) {
-  const testFixtures = (await importJson(`../test-fixtures.json`, import.meta.url)).map(
-    fixture => `${fixture.man}/${fixture.key}`,
-  );
+  const testFixtures = await importJson(`../test-fixtures.json`, import.meta.url);
+  const testFixtureKeys = testFixtures.map(fixture => `${fixture.man}/${fixture.key}`);
 
   const plugins = await importJson(`../../plugins/plugins.json`, import.meta.url);
   const usablePlugins = plugins.exportPlugins.filter(
@@ -82,7 +79,7 @@ async function getDiffTasks(changedComponents) {
     pluginKey => !changedComponents.added.exports.includes(pluginKey) && pluginKey !== `ofl`,
   );
   const addedFixtures = new Set(changedComponents.added.fixtures.map(([manufacturer, key]) => `${manufacturer}/${key}`));
-  const usableTestFixtures = testFixtures.filter(testFixture => !addedFixtures.has(testFixture));
+  const usableTestFixtures = testFixtureKeys.filter(testFixture => !addedFixtures.has(testFixture));
 
   /** @type {Task[]} */
   return getTasksForModel().concat(await getTasksForPlugins(), getTasksForFixtures())

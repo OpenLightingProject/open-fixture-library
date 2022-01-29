@@ -64,9 +64,10 @@ function getFilesForMode(mode) {
       ...padding,
     ]);
 
-    const descriptionFileContent = Object.entries(channels).map(
-      ([controlElement, channel]) => `${controlElement}: ${channel?.name ?? `–`}`,
-    ).join(`\n`);
+    const descriptionFileContent = Object.entries(channels).map(([controlElement, channel]) => {
+      const channelName = channel?.name ?? `–`;
+      return `${controlElement}: ${channelName}`;
+    }).join(`\n`);
 
     return [
       {

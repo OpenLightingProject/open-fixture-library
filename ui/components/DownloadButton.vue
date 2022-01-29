@@ -39,8 +39,8 @@
 
 <style lang="scss" scoped>
 .container {
-  text-align: center;
   margin: 0 0 1em;
+  text-align: center;
 
   @media (min-width: 650px) {
     margin: 0;
@@ -54,11 +54,11 @@
 
 .help-link {
   display: inline-block;
-  color: theme-color(text-secondary);
+  margin-left: -1ex;
   font-size: 0.9rem;
   line-height: 1.2;
+  color: theme-color(text-secondary);
   transition: opacity 0.15s;
-  margin-left: -1ex;
 
   .icon {
     width: 1.2rem;
@@ -67,8 +67,8 @@
   }
 
   .name {
-    vertical-align: middle;
     margin-left: 0.5ex;
+    vertical-align: middle;
   }
 
   &:hover,
@@ -78,30 +78,23 @@
 }
 
 select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-
-  display: inline-block;
   box-sizing: content-box;
-  line-height: 1.4;
-  height: 1.4em;
+  display: inline-block;
   width: 12.5ex;
-  margin-left: 1ex;
-  margin-top: 1ex;
+  height: 1.4em;
   padding: 0.5em 3ex;
-
-  background: theme-color(button-secondary-background);
-
-  color: theme-color(button-secondary-text);
-  font-weight: 700;
+  margin-top: 1ex;
+  margin-left: 1ex;
   font-size: 0.9em;
-
+  font-weight: 700;
+  line-height: 1.4;
+  color: theme-color(button-secondary-text);
+  cursor: pointer;
+  background: theme-color(button-secondary-background);
   border-color: theme-color(button-secondary-border);
   border-radius: 2px;
-
   transition: 0.1s background-color;
-  cursor: pointer;
+  appearance: none;
 
   &:not(:disabled):hover,
   &:not(:disabled):focus {
@@ -113,46 +106,46 @@ select {
   text-align: left;
 
   & > .title {
-    display: block;
     box-sizing: border-box;
+    display: block;
     width: 100%;
     padding: 0.5ex 2ex;
-    border-radius: 2px;
-    background: theme-color(orange-background);
     font-weight: 700;
     color: $primary-text-light;
     cursor: pointer;
-    box-shadow: 0 2px 2px rgba(#000, 0.2);
+    background: theme-color(orange-background);
+    border-radius: 2px;
+    box-shadow: 0 2px 2px rgba(#000000, 20%);
     transition: border-radius 0.2s, background-color 0.2s;
 
     // down arrow
     &::before {
-      content: '';
       display: block;
+      float: right;
       width: 0;
       height: 0;
-      border-width: 0.4em 0.4em 0;
-      border-style: solid;
-      border-color: currentcolor transparent transparent;
-      float: right;
       margin: 0.8em 0 0 1ex;
+      content: "";
+      border-color: currentcolor transparent transparent;
+      border-style: solid;
+      border-width: 0.4em 0.4em 0;
     }
   }
 
   & > ul {
-    position: absolute;
     // just move the list to the left outside of the screen but don't hide it,
     // to still allow screenreaders reading it
-    left: -9999px;
+    position: absolute;
     top: 100%;
+    left: -9999px;
+    z-index: 90;
+    width: 100%;
     padding: 0.7em 0;
     margin: 0;
-    width: 100%;
     list-style: none;
     background-color: theme-color(header-background);
     border-radius: 0 0 2px 2px;
-    box-shadow: 0 2px 2px rgba(#000, 0.2);
-    z-index: 90;
+    box-shadow: 0 2px 2px rgba(#000000, 20%);
 
     & a {
       display: block;
@@ -179,53 +172,16 @@ select {
     left: 0;
   }
 
-
   &:hover > .title,
   & > .title:focus,
   & > .title:active {
-    border-radius: 2px 2px 0 0;
     background: theme-color(orange-background-hover);
+    border-radius: 2px 2px 0 0;
   }
 
   &:focus-within > .title {
-    border-radius: 2px 2px 0 0;
     background: theme-color(orange-background-hover);
-  }
-}
-</style>
-
-<style lang="scss">
-.fixture-header .download-button {
-  display: block;
-  position: relative;
-}
-
-// move download button to the right
-@media (min-width: 650px) {
-  .fixture-header {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-
-    & > .title {
-      flex-grow: 1;
-      flex-shrink: 1;
-    }
-
-    & .download-button {
-      flex-grow: 0;
-      flex-shrink: 0;
-      margin: 1.5rem 0 0;
-      width: 14em;
-
-      &.home {
-        width: 19em;
-
-        & .title {
-          font-size: 1.1em;
-        }
-      }
-    }
+    border-radius: 2px 2px 0 0;
   }
 }
 </style>

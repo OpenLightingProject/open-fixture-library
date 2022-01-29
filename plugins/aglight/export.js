@@ -119,45 +119,46 @@ function transformNonNumericValues(fixtureJson) {
       }
     }
   }
+}
 
-  /**
-   * @param {object} capability The capability where the color name in the color attribute should be replaced with its hex value
-   */
-  function processColor(capability) {
-    const namedColor = namedColors.find(color => color.name === capability.color);
-    if (namedColor && namedColor.hex) {
-      capability.color = namedColor.hex;
+
+/**
+ * @param {object} capability The capability where the color name in the color attribute should be replaced with its hex value
+ */
+function processColor(capability) {
+  const namedColor = namedColors.find(color => color.name === capability.color);
+  if (namedColor && namedColor.hex) {
+    capability.color = namedColor.hex;
+  }
+  else {
+    // If the color was not found, just ignore it
+    // console.log(`#### color not found`, capability.color);
+  }
+}
+
+/**
+ * @param {string} entityString The property value where the entity number should be extracted from.
+ * @returns {number | string} A unitless number, or the original property value if it can't be parsed as an entity.
+ */
+function getEntityNumber(entityString) {
+  try {
+    const entity = Entity.createFromEntityString(entityString);
+
+    if (entity.keyword !== null) {
+      return entityString;
     }
-    else {
-      // If the color was not found, just ignore it
-      // console.log(`#### color not found`, capability.color);
+
+    if (entity.unit === `s`) {
+      return entity.number * 1000;
+    }
+
+    if (units.has(entity.unit)) {
+      return entity.number;
     }
   }
-
-  /**
-   * @param {string} entityString The property value where the entity number should be extracted from.
-   * @returns {number | string} A unitless number, or the original property value if it can't be parsed as an entity.
-   */
-  function getEntityNumber(entityString) {
-    try {
-      const entity = Entity.createFromEntityString(entityString);
-
-      if (entity.keyword !== null) {
-        return entityString;
-      }
-
-      if (entity.unit === `s`) {
-        return entity.number * 1000;
-      }
-
-      if (units.has(entity.unit)) {
-        return entity.number;
-      }
-    }
-    catch {
-      // string could not be parsed as an entity
-    }
-
-    return entityString;
+  catch {
+    // string could not be parsed as an entity
   }
+
+  return entityString;
 }

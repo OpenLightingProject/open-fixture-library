@@ -1,10 +1,11 @@
 <template>
-  <span :class="{ 'entity-input': true, 'has-number': hasNumber }">
+  <span class="entity-input" :class="{ 'has-number': hasNumber, wide }">
 
     <Validate v-if="hasNumber" tag="span">
       <PropertyInputNumber
         ref="input"
         v-model="selectedNumber"
+        class="property-input-number"
         :schema-property="units[selectedUnit].numberSchema"
         :required="true"
         :minimum="minNumber !== null ? minNumber : `invalid`"
@@ -48,6 +49,7 @@
   & select {
     width: 20ex;
   }
+
   &.wide select {
     width: 30ex;
   }
@@ -56,16 +58,19 @@
     & select {
       width: 10ex;
     }
-    & input {
+
+    & .property-input-number {
       width: 9ex;
       margin-right: 1ex;
     }
   }
+
   &.wide.has-number {
     & select {
       width: 15ex;
     }
-    & input {
+
+    & .property-input-number {
       width: 14ex;
       margin-right: 1ex;
     }
@@ -122,6 +127,11 @@ export default {
       required: false,
       default: null,
     },
+    wide: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
   data() {
     return {
@@ -152,7 +162,7 @@ export default {
       for (const unitName of this.unitNames) {
         const unitSchema = unitsSchema[unitName];
 
-        const unitString = `pattern` in unitSchema ? unitSchema.pattern.replace(/^.*\)\??(.*?)\$$/, `$1`).replace(`\\`, ``) : ``;
+        const unitString = `pattern` in unitSchema ? parseUnitFromPattern(unitSchema.pattern) : ``;
         const numberSchema = `pattern` in unitSchema ? unitsSchema.number : unitSchema;
 
         units[unitName] = {
@@ -287,6 +297,19 @@ export default {
     },
   },
 };
+
+/**
+ * @param {string} pattern The pattern string to parse.
+ * @returns {string} The unit string.
+ */
+function parseUnitFromPattern(pattern) {
+  if (!pattern.endsWith(`$`)) {
+    throw new Error(`Pattern does not end with '$': ${pattern}`);
+  }
+
+  const lastNumberPartIndex = Math.max(pattern.lastIndexOf(`)`), pattern.lastIndexOf(`?`));
+  return pattern.slice(lastNumberPartIndex + 1, -1).replace(/\\/g, ``);
+}
 
 /**
  * @param {string} unitString The unit string, as required by the schema.

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <header class="fixture-header">
-      <div class="title">
+    <FixtureHeader>
+      <template #title>
         <h1>
           <NuxtLink :to="`/${manufacturerKey}`">{{ fixture.manufacturer.name }}</NuxtLink>
           {{ fixture.name }}
@@ -22,10 +22,10 @@
             <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>
           </ConditionalDetails>
         </section>
-      </div>
+      </template>
 
       <DownloadButton :fixture-key="`${manufacturerKey}/${fixtureKey}`" />
-    </header>
+    </FixtureHeader>
 
     <section v-if="redirect" class="card yellow">
       Redirected from <code>{{ redirect.from }}</code>: {{ redirect.reason }}
@@ -70,8 +70,8 @@
   color: theme-color(text-secondary);
 
   & > span:not(:last-child)::after {
-    content: ' | ';
     padding: 0 0.7ex;
+    content: " | ";
   }
 }
 </style>
@@ -85,6 +85,7 @@ import Manufacturer from '../../../lib/model/Manufacturer.js';
 import ConditionalDetails from '../../components/ConditionalDetails.vue';
 import DownloadButton from '../../components/DownloadButton.vue';
 import FixturePage from '../../components/fixture-page/FixturePage.vue';
+import FixtureHeader from '../../components/FixtureHeader.vue';
 import HelpWantedDialog from '../../components/HelpWantedDialog.vue';
 
 const redirectReasonExplanations = {
@@ -97,6 +98,7 @@ export default {
     ConditionalDetails,
     DownloadButton,
     FixturePage,
+    FixtureHeader,
     HelpWantedDialog,
   },
   validate({ params }) {

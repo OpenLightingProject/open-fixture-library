@@ -13,7 +13,7 @@
       action="#"
       @submit.prevent="onSubmit()">
 
-      <div v-if="channel.editMode === `add-existing`">
+      <div v-if="channel.editMode === `add-existing`" class="existing-channel-input-container">
         <LabeledInput :formstate="formstate" name="existingChannelUuid" label="Select an existing channel">
           <select
             v-model="channel.uuid"
@@ -128,7 +128,7 @@
             :schema-property="channelProperties.defaultValue"
             :min-number="0"
             :max-number="(typeof channel.defaultValue) === `string` ? 100 : dmxMax"
-            class="wide"
+            wide
             name="defaultValue" />
         </LabeledInput>
 
@@ -188,7 +188,7 @@
             :schema-property="channelProperties.highlightValue"
             :min-number="0"
             :max-number="(typeof channel.highlightValue) === `string` ? 100 : dmxMax"
-            class="wide"
+            wide
             name="highlightValue" />
         </LabeledInput>
 
@@ -223,17 +223,15 @@
   margin-left: 1ex;
   font-size: 0.8rem;
 }
-</style>
 
-<style lang="scss">
-#channel-dialog .dialog {
-  .existingChannelUuid {
-    display: block;
-  }
+.existing-channel-input-container ::v-deep section {
+  display: block;
+}
 
-  @media (min-width: $phone) {
-    max-width: 700px;
+@media (min-width: $phone) {
+  #channel-dialog ::v-deep .dialog {
     width: 80%;
+    max-width: 700px;
   }
 }
 </style>

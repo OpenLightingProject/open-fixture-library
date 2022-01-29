@@ -6,6 +6,7 @@ const pluginPresets = {
   nuxt: `recommended`,
   promise: `recommended`,
   security: `recommended`,
+  sonarjs: `recommended`,
   unicorn: `recommended`,
   vue: `recommended`,
   jsonc: `recommended-with-json`, // has to be after `vue` and `nuxt`
@@ -23,7 +24,6 @@ const enabledRuleParameters = {
   'comma-dangle': [`always-multiline`],
   'comma-spacing': [],
   'comma-style': [],
-  'complexity': [7],
   'consistent-return': [],
   'curly': [`all`],
   'dot-location': [`property`],
@@ -92,7 +92,7 @@ const enabledRuleParameters = {
   'import/no-commonjs': [{ allowConditionalRequire: false }],
   'import/no-dynamic-require': [],
   'import/no-unresolved': [{
-    ignore: [`^fs/promises$`],
+    ignore: [`^chalk$`],
   }],
   'import/order': [{
     groups: [`builtin`, `external`, `internal`, `parent`, `sibling`],
@@ -147,6 +147,7 @@ const enabledRuleParameters = {
       'fs/promises': { named: true },
     },
   }],
+  'unicorn/prefer-export-from': [{ ignoreUsedVariables: true }],
   'unicorn/prevent-abbreviations': [{
     replacements: {
       ref: false,
@@ -167,6 +168,7 @@ const enabledRuleParameters = {
     style: { lang: `scss` },
     template: { allowNoLang: true },
   }],
+  'vue/component-options-name-casing': [],
   'vue/component-name-in-template-casing': [`PascalCase`, {
     registeredComponentsOnly: false,
   }],
@@ -184,11 +186,19 @@ const enabledRuleParameters = {
   }],
   'vue/max-attributes-per-line': [{ singleline: 3 }],
   'vue/next-tick-style': [],
+  'vue/no-child-content': [],
   'vue/no-deprecated-scope-attribute': [],
   'vue/no-deprecated-slot-attribute': [],
   'vue/no-deprecated-slot-scope-attribute': [],
   'vue/no-empty-component-block': [],
   'vue/no-invalid-model-keys': [],
+  'vue/no-undef-components': [{
+    ignorePatterns: [
+      `^Ofl(Svg|Time)$`, // global components
+      `^Nuxt(Link)?$`, `^ClientOnly$`, // Nuxt components
+      `^VueForm$`, `^Validate$`, `^FieldMessages$`, // VueForm components
+    ],
+  }],
   'vue/no-undef-properties': [],
   'vue/no-unused-properties': [{
     groups: [`props`, `data`, `computed`, `methods`, `setup`],
@@ -197,12 +207,14 @@ const enabledRuleParameters = {
   'vue/no-unused-refs': [],
   'vue/no-use-computed-property-like-method': [],
   'vue/no-v-text': [],
+  'vue/prefer-separate-static-class': [],
   'vue/require-direct-export': [],
   'vue/v-for-delimiter-style': [`of`],
   'vue/v-on-function-call': [`always`],
   'vue/v-slot-style': [`shorthand`],
 
   // already included in presets, but needed here because we reduce severity to `warn`
+  'sonarjs/cognitive-complexity': [],
   'unicorn/no-array-for-each': [],
   'vue/no-mutating-props': [],
 };
@@ -235,8 +247,10 @@ const vueCoreExtensionRules = [
   `object-curly-newline`,
   `object-curly-spacing`,
   `object-property-newline`,
+  `object-shorthand`,
   `operator-linebreak`,
   `prefer-template`,
+  `quote-props`,
   `space-in-parens`,
   `space-infix-ops`,
   `space-unary-ops`,
@@ -244,8 +258,8 @@ const vueCoreExtensionRules = [
 ];
 
 const warnRules = new Set([
-  `complexity`,
   `jsdoc/require-jsdoc`,
+  `sonarjs/cognitive-complexity`,
   `vue/no-mutating-props`,
 ]);
 
@@ -285,7 +299,7 @@ module.exports = {
     node: true,
   },
   parserOptions: {
-    ecmaVersion: 2021,
+    ecmaVersion: 2022,
   },
   plugins: Object.keys(pluginPresets),
   extends: [
@@ -334,6 +348,7 @@ module.exports = {
     {
       files: [`**/*.md/*.js`],
       rules: {
+        'no-unused-vars': `off`,
         'jsdoc/require-jsdoc': `off`,
         'import/no-unresolved': `off`,
       },
