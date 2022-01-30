@@ -1,0 +1,309 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FivePiece",
+  "categories": ["Color Changer", "Other"],
+  "meta": {
+    "authors": ["BrightBeats, LLC"],
+    "createDate": "2022-01-30",
+    "lastModifyDate": "2022-01-30"
+  },
+  "comment": "Triggered LED controller for drums",
+  "links": {
+    "manual": [
+      "https://www.usabrightbeats.com/resources/manuals/"
+    ],
+    "productPage": [
+      "https://www.usabrightbeats.com/fivepiece/"
+    ]
+  },
+  "rdm": {
+    "modelId": 5
+  },
+  "physical": {
+    "dimensions": [175, 40, 135],
+    "power": 250,
+    "bulb": {
+      "type": "RGB LED 12 volt"
+    }
+  },
+  "availableChannels": {
+    "CH1 R Strike Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "CH1 G Strike Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "CH1 B Strike Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CH2 R Strike Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "CH2 G Strike Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "CH2 B Strike Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CH3 R Strike Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "CH3 G Strike Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "CH3 B Strike Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CH4 R Strike Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "CH4 G Strike Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "CH4 B Strike Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CH5 R Strike Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "CH5 G Strike Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "CH5 B Strike Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CH1 Trigger Enable": {
+      "constant": true,
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "CH2 Trigger Enable": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "CH3 Trigger Enable": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "CH4 Trigger Enable": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "CH5 Trigger Enable": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "CH1 Fade Enable": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "CH2 Fade Enable": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "CH3 Fade Enable": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "CH4 Fade Enable": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "CH5 Fade Enable": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "CH1 R Constant Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "CH1 G Constant Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "CH1 B Constant Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CH2 R Constant Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "CH2 G Constant Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "CH2 B Constant Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CH3 R Constant Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "CH3 G Constant Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "CH3 B Constant Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CH4 R Constant Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "CH4 G Constant Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "CH4 B Constant Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "CH5 R Constant Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "CH5 G Constant Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "CH5 B Constant Level": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "FivePiece",
+      "channels": [
+        "CH1 R Strike Level",
+        "CH1 G Strike Level",
+        "CH1 B Strike Level",
+        "CH2 R Strike Level",
+        "CH2 G Strike Level",
+        "CH2 B Strike Level",
+        "CH3 R Strike Level",
+        "CH3 G Strike Level",
+        "CH3 B Strike Level",
+        "CH4 R Strike Level",
+        "CH4 G Strike Level",
+        "CH4 B Strike Level",
+        "CH5 R Strike Level",
+        "CH5 G Strike Level",
+        "CH5 B Strike Level",
+        "CH1 Trigger Enable",
+        "CH2 Trigger Enable",
+        "CH3 Trigger Enable",
+        "CH4 Trigger Enable",
+        "CH5 Trigger Enable",
+        "CH1 Fade Enable",
+        "CH2 Fade Enable",
+        "CH3 Fade Enable",
+        "CH4 Fade Enable",
+        "CH5 Fade Enable",
+        "CH1 R Constant Level",
+        "CH1 G Constant Level",
+        "CH1 B Constant Level",
+        "CH2 R Constant Level",
+        "CH2 G Constant Level",
+        "CH2 B Constant Level",
+        "CH3 R Constant Level",
+        "CH3 G Constant Level",
+        "CH3 B Constant Level",
+        "CH4 R Constant Level",
+        "CH4 G Constant Level",
+        "CH4 B Constant Level",
+        "CH5 R Constant Level",
+        "CH5 G Constant Level",
+        "CH5 B Constant Level"
+      ]
+    }
+  ]
+}
