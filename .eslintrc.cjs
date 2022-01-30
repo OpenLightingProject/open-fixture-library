@@ -269,7 +269,6 @@ const disabledRules = [
   `jsdoc/no-undefined-types`,
   `jsdoc/require-description`,
   `jsdoc/require-description-complete-sentence`,
-  `promise/always-return`,
   `unicorn/consistent-function-scoping`,
   `unicorn/filename-case`,
   `unicorn/no-null`,
