@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "F200 C6 colour RGBACL",
+  "shortName": "Lites F200",
+  "categories": ["Dimmer", "Effect", "Color Changer"],
+  "meta": {
+    "authors": ["Emma"],
+    "createDate": "2022-02-07",
+    "lastModifyDate": "2022-02-07"
+  },
+  "links": {
+    "manual": [
+      "https://www.litessrl.com/wp-content/uploads/2021/04/Brochure-f200-C6-colour-en.pdf"
+    ],
+    "productPage": [
+      "https://www.litessrl.com/lites-f200-c6-colour-rgbacl/"
+    ]
+  },
+  "physical": {
+    "dimensions": [235, 612, 415],
+    "weight": 6.9,
+    "power": 200,
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Hue": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2300K",
+        "colorTemperatureEnd": "10000K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "HSI STUDIO",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Dimmer",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
