@@ -1,0 +1,310 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Hero Wash 712 Z RGBW Zoom",
+  "shortName": "Wall E",
+  "categories": ["Moving Head", "Color Changer", "Dimmer"],
+  "meta": {
+    "authors": ["TIC ET TAC"],
+    "createDate": "2022-02-09",
+    "lastModifyDate": "2022-02-09"
+  },
+  "links": {
+    "productPage": [
+      "https://www.thomann.de/fr/varytec_hero_wash_712_z_rgbw_zoom.htm"
+    ]
+  },
+  "wheels": {
+    "Programme AUTO": {
+      "slots": [
+        {
+          "type": "Open"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Précision Pan": {
+      "fineChannelAliases": ["Précision Pan fine"],
+      "capability": {
+        "type": "PanContinuous",
+        "speed": "1%"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0%",
+        "angleEnd": "190%"
+      }
+    },
+    "Precision Tilt": {
+      "fineChannelAliases": ["Precision Tilt fine"],
+      "capability": {
+        "type": "TiltContinuous",
+        "speed": "1%"
+      }
+    },
+    "WHeel": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 250],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "RED": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "1%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "GREEN": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "1%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "BLUE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "1%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "WHITE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "1%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Temp Color": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "0%",
+        "colorTemperatureEnd": "100%"
+      }
+    },
+    "Macro Color": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "ColorIntensity",
+          "color": "Red"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "ColorIntensity",
+          "color": "Green"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "ColorIntensity",
+          "color": "Blue"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "ColorIntensity",
+          "color": "White"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "ColorIntensity",
+          "color": "UV"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "ColorIntensity",
+          "color": "Lime"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "ColorIntensity",
+          "color": "Cyan"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "ColorIntensity",
+          "color": "Amber"
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "ColorIntensity",
+          "color": "Warm White"
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "ColorIntensity",
+          "color": "Indigo"
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "ColorIntensity",
+          "color": "Cold White"
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "ColorIntensity",
+          "color": "Yellow"
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "ColorIntensity",
+          "color": "Magenta"
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "ColorIntensity",
+          "color": "Warm White"
+        },
+        {
+          "dmxRange": [151, 200],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "ZOOM": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "6deg",
+        "angleEnd": "36deg"
+      }
+    },
+    "Programme AUTO": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 20],
+          "type": "Generic",
+          "comment": "Pre Programm Show 1"
+        },
+        {
+          "dmxRange": [21, 30],
+          "type": "Generic",
+          "comment": "Pre Programm Show 2"
+        },
+        {
+          "dmxRange": [31, 40],
+          "type": "Generic",
+          "comment": "Pre Programm Show 3"
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Generic",
+          "comment": "Pre Programm Show 4"
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Generic",
+          "comment": "Pre Programm Show 5"
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Generic",
+          "comment": "Pre Programm Show 6"
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Generic",
+          "comment": "Pre Programm Show 7"
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Generic",
+          "comment": "Pre Programm Show 8"
+        },
+        {
+          "dmxRange": [91, 230],
+          "type": "Generic",
+          "comment": "Music"
+        },
+        {
+          "dmxRange": [231, 240],
+          "type": "Generic",
+          "comment": "Reset"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Generic",
+          "comment": "No Fonction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "16 Channel",
+      "shortName": "16CH",
+      "channels": [
+        "Pan",
+        "Précision Pan",
+        "Tilt",
+        "Precision Tilt",
+        "WHeel",
+        "Dimmer",
+        "Strobe",
+        "RED",
+        "GREEN",
+        "BLUE",
+        "WHITE",
+        "Temp Color",
+        "Macro Color",
+        "ZOOM",
+        "Programme AUTO"
+      ]
+    }
+  ]
+}
