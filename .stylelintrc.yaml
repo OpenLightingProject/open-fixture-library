@@ -17,6 +17,7 @@ rules:
     - true
     - ignoreFunctions:
       - theme-color
+      - color-to-rgb-string
       - /^[a-z]+\.[a-z\-]+$/ # all `@use`d Sass functions
 
   # decrease severity for this rule only
