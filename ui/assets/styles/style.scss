@@ -3,8 +3,7 @@
 @each $theme-name, $theme in $themes {
   [data-theme="#{$theme-name}"] {
     @each $color-name, $color in $theme {
-      // stylelint-disable-next-line custom-property-pattern -- It is in kebab-case
-      --theme-#{$color-name}: #{color-to-rgb-string($color)};
+      --theme-#{$color-name}: #{ color-to-rgb-string($color) };
     }
   }
 }
