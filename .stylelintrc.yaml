@@ -12,6 +12,13 @@ rules:
   # always long to be consistent
   color-hex-length: long
 
+  # avoid using non-global functions
+  function-no-unknown:
+    - true
+    - ignoreFunctions:
+      - theme-color
+      - /^[a-z]+\.[a-z]+$/ # all Sass functions
+
   # decrease severity for this rule only
   no-descending-specificity:
     - true
