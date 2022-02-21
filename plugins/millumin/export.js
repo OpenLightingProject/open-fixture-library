@@ -239,11 +239,7 @@ function getDowngradedChannel(channelKey, jsonChannel, fixture) {
    */
   function capabilitiesNeeded() {
     const trivialCapabilityTypes = [`Intensity`, `ColorIntensity`, `Pan`, `Tilt`, `NoFunction`];
-    if (channel.capabilities.length === 1 && trivialCapabilityTypes.includes(channel.capabilities[0].type)) {
-      return false;
-    }
-
-    return true;
+    return channel.capabilities.length !== 1 || !trivialCapabilityTypes.includes(channel.capabilities[0].type);
   }
 }
 
