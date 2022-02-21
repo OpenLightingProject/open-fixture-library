@@ -312,11 +312,7 @@ function getColorSourceChannelType(channel) {
       return true;
     }
 
-    if (channel.capabilities && channel.capabilities.some(capability => capability.type === `PanTiltSpeed`)) {
-      return true;
-    }
-
-    return false;
+    return (channel.capabilities || []).some(capability => capability.type === `PanTiltSpeed`);
   }
 }
 
