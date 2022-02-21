@@ -140,6 +140,9 @@ const enabledRuleParameters = {
   'promise/prefer-await-to-then': [],
   'promise/valid-params': [],
 
+  // eslint-plugin-sonar
+  'sonarjs/no-inverted-boolean-check': [],
+
   // eslint-plugin-unicorn
   'unicorn/import-style': [{
     styles: {
