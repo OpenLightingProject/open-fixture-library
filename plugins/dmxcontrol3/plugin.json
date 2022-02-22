@@ -31,5 +31,6 @@
     "need to be unique (<code>Devices\\manA\\fix123.xml</code> and",
     "<code>Devices\\manB\\fix123.xml</code> doesn't work). Note that the",
     "DDFCreator software doesn't recognize subfolders.</p>"
-  ]
+  ],
+  "helpWanted": "Note that this plugin does not produce very reliable DDF3 fixture definitions yet, so please double-check the output and report any issues. Code contributions via pull requests are of course very welcome!"
 }
