@@ -21,7 +21,7 @@ export default {
     value: {
       type: Boolean,
       required: false,
-      default: null,
+      default: false,
     },
     name: {
       type: String,
