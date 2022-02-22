@@ -9,6 +9,7 @@
     "color-chief",
     "colorsource",
     "d-light",
+    "dmxcontrol3",
     "dragonframe",
     "ecue",
     "millumin",
@@ -37,6 +38,13 @@
       "exportPluginVersion": "0.2.0",
       "exportTests": [
         "attributes-correctness"
+      ]
+    },
+    "dmxcontrol3": {
+      "name": "DMXControl 3 (DDF3)",
+      "exportPluginVersion": "0.1.0",
+      "exportTests": [
+        "channel-numbers"
       ]
     },
     "dragonframe": {
