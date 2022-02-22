@@ -14,13 +14,9 @@ The *Open Fixture Library* tries to solve this problem by collecting fixture def
 
 The easiest way to help: Head over to the online [Fixture Editor](https://open-fixture-library.org/fixture-editor) and add your favorite fixture that is not yet included in our library!
 
-Other ways you can help without coding:
+There are also [other ways you can help without coding](docs/CONTRIBUTING.md#how-you-can-help).
 
-* Answer questions in existing fixtures
-* Review fixtures that are not yet merged *(this is highly appreciated!)*
-* Add links and colors to existing fixtures
-
-See [CONTRIBUTING.md](docs/CONTRIBUTING.md#how-you-can-help) for details.
+**🙏 Help wanted!** There are [a lot of pull requests](https://github.com/OpenLightingProject/open-fixture-library/pulls?q=is%3Apr+is%3Aopen+label%3Anew-fixture+sort%3Aupdated-desc) for new fixtures that are not yet reviewed and merged. Reviewing them (and maybe fixing smaller issues) helps get this number down and the number of fixtures in OFL up! See the [step-by-step instructions for fixture reviews](docs/CONTRIBUTING.md#fixtures).
 
 
 ## Contribute code
