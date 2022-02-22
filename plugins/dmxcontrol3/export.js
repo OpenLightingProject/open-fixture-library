@@ -90,7 +90,7 @@ function addFunctions(xml, mode) {
 
   for (const [pixelKey, pixelChannels] of channelsPerPixel) {
     const xmlChannelFunctions = [];
-    pixelChannels.forEach(ch => xmlChannelFunctions.push(...getXmlFunctionsFromChannel(ch)));
+    pixelChannels.forEach(channel => xmlChannelFunctions.push(...getXmlFunctionsFromChannel(channel)));
 
     groupXmlFunctions(xmlChannelFunctions);
     xmlFunctionsPerPixel.set(pixelKey, xmlChannelFunctions);
@@ -125,9 +125,9 @@ function addFunctions(xml, mode) {
     }
 
     const channels = mode.channels.map(
-      ch => (ch instanceof SwitchingChannel ? ch.defaultChannel : ch),
+      channel => (channel instanceof SwitchingChannel ? channel.defaultChannel : channel),
     ).filter(
-      ch => !(ch instanceof FineChannel || ch instanceof NullChannel),
+      channel => !(channel instanceof FineChannel || channel instanceof NullChannel),
     );
     for (const channel of channels) {
       channelsPerPixel.get(channel.pixelKey).push(channel);
@@ -143,25 +143,25 @@ function addFunctions(xml, mode) {
   function getXmlFunctionsFromChannel(channel) {
     const functionToCapabilities = {};
 
-    for (const cap of channel.capabilities) {
+    for (const capability of channel.capabilities) {
       const properFunction = Object.keys(ddf3Functions).find(
-        key => ddf3Functions[key].isCapSuitable(cap),
+        key => ddf3Functions[key].isCapSuitable(capability),
       );
 
       if (properFunction) {
         if (!Object.keys(functionToCapabilities).includes(properFunction)) {
           functionToCapabilities[properFunction] = [];
         }
-        functionToCapabilities[properFunction].push(cap);
+        functionToCapabilities[properFunction].push(capability);
       }
     }
 
     let xmlFunctions = [];
     Object.keys(functionToCapabilities).forEach(functionKey => {
-      const caps = functionToCapabilities[functionKey];
-      xmlFunctions = xmlFunctions.concat(ddf3Functions[functionKey].create(channel, caps));
+      const capabilities = functionToCapabilities[functionKey];
+      xmlFunctions = xmlFunctions.concat(ddf3Functions[functionKey].create(channel, capabilities));
     });
-    xmlFunctions.forEach(xmlFunc => addChannelAttributes(xmlFunc, mode, channel));
+    xmlFunctions.forEach(xmlFunction => addChannelAttributes(xmlFunction, mode, channel));
 
     return xmlFunctions;
   }
@@ -184,16 +184,16 @@ function addFunctions(xml, mode) {
       }
 
       const completeGroups = Math.min(...Object.values(foundFunctions).map(items => items.length));
-      for (let i = 0; i < completeGroups; i++) {
+      for (let index = 0; index < completeGroups; index++) {
         // take i-th function from each function type
-        const groupFunctions = Object.values(foundFunctions).map(items => items[i]);
+        const groupFunctions = Object.values(foundFunctions).map(items => items[index]);
         const xmlGroup = group.getXmlGroup(...groupFunctions);
 
         // insert xml group at the position of the first grouped function
         xmlFunctions.splice(xmlFunctions.indexOf(groupFunctions[0]), 0, xmlGroup);
 
         // remove grouped functions from list
-        groupFunctions.forEach(func => xmlFunctions.splice(xmlFunctions.indexOf(func), 1));
+        groupFunctions.forEach(function_ => xmlFunctions.splice(xmlFunctions.indexOf(function_), 1));
       }
     });
   }
@@ -304,7 +304,7 @@ function addChannelAttributes(xmlElement, mode, channel) {
   xmlElement.attribute(`dmxchannel`, index);
 
   const fineIndices = channel.fineChannels.map(
-    fineCh => mode.getChannelIndex(fineCh),
+    fineChannel => mode.getChannelIndex(fineChannel),
   );
 
   if (fineIndices.length > 0 && fineIndices[0] !== -1) {

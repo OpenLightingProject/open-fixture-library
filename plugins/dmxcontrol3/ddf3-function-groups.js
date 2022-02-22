@@ -10,17 +10,17 @@ export default [
       const xmlStrobeType = xmlStrobe.element(`strobetype`);
       xmlStrobeType.attributes = strobe.attributes;
 
-      strobespeed.children.forEach(speedCap => {
-        strobe.children.forEach(strobeCap => {
-          if (strobeCap.attributes.type.value !== `open`) {
+      strobespeed.children.forEach(speedCapability => {
+        strobe.children.forEach(strobeCapability => {
+          if (strobeCapability.attributes.type.value !== `open`) {
             const xmlSpeedRange = xmlStrobe.element(`range`);
-            xmlSpeedRange.attributes = Object.assign({}, speedCap.attributes);
-            xmlSpeedRange.attributes.type = strobeCap.attributes.type;
+            xmlSpeedRange.attributes = Object.assign({}, speedCapability.attributes);
+            xmlSpeedRange.attributes.type = strobeCapability.attributes.type;
 
             xmlSpeedRange.element(`step`, {
               handler: `strobetype`,
-              mindmx: strobeCap.attributes.mindmx.value,
-              maxdmx: strobeCap.attributes.maxdmx.value,
+              mindmx: strobeCapability.attributes.mindmx.value,
+              maxdmx: strobeCapability.attributes.maxdmx.value,
             });
           }
         });

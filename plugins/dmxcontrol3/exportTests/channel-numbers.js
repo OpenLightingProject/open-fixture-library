@@ -48,19 +48,19 @@ export default async function testChannelNumbers(exportFile) {
   function findChannels(xmlNode, currentChannelIndex) {
     if (xmlNode.$) {
       const indexAttributes = [`dmxchannel`, `finedmxchannel`, `ultradmxchannel`, `ultrafinedmxchannel`];
-      indexAttributes.filter(attr => attr in xmlNode.$).forEach(attr => {
-        const channelIndex = parseInt(xmlNode.$[attr]);
+      indexAttributes.filter(attribute => attribute in xmlNode.$).forEach(attribute => {
+        const channelIndex = parseInt(xmlNode.$[attribute]);
 
         if (!(channelIndex in usedChannelRanges)) {
           usedChannelRanges[channelIndex] = [];
         }
 
-        if (attr === `dmxchannel`) {
+        if (attribute === `dmxchannel`) {
           currentChannelIndex = channelIndex;
         }
 
         if (channelIndex >= channelCount) {
-          errors.push(`${attr}=${channelIndex} is out of range (maximum: ${channelCount - 1}).`);
+          errors.push(`${attribute}=${channelIndex} is out of range (maximum: ${channelCount - 1}).`);
         }
       });
 
