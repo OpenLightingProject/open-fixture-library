@@ -211,6 +211,7 @@ const enabledRuleParameters = {
   'vue/no-v-text': [],
   'vue/prefer-separate-static-class': [],
   'vue/require-direct-export': [],
+  'vue/prefer-true-attribute-shorthand': [],
   'vue/v-for-delimiter-style': [`of`],
   'vue/v-on-function-call': [`always`],
   'vue/v-slot-style': [`shorthand`],
