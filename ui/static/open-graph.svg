@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="64" version="1.1" viewBox="0 0 128 64" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <rect x="4.5" y="4.5" width="119" height="55" ry=".7" fill="#fff" filter="url(#filter1134)" stroke-width="1.0036"/>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <filter id="filter1134" x="-.03" y="-.06" width="1.06" height="1.12" color-interpolation-filters="sRGB">
+   <feFlood flood-color="rgb(153,153,153)" result="flood"/>
+   <feComposite in="flood" in2="SourceGraphic" operator="in" result="composite1"/>
+   <feGaussianBlur in="composite1" result="blur" stdDeviation="2"/>
+   <feOffset dx="0" dy="0" result="offset"/>
+   <feComposite in="SourceGraphic" in2="offset" result="composite2"/>
+  </filter>
+ </defs>
+<!-- knob ticks --><!-- knob --><!-- button --><!-- slider ticks --><!-- slider handle --><!-- slider -->
+ <g transform="matrix(.64576 0 0 .64956 42.494 .26317)">
+  <g stroke="#bbb">
+   <path d="m13.678 32.387v2.6162"/>
+   <path d="m10.011 31.507-1.1521 2.322"/>
+   <path d="m6.8111 28.937-2.0148 1.652"/>
+   <path d="m4.9621 25.327-2.5101 0.616"/>
+   <path d="m5.0211 21.357-2.4915-0.6856"/>
+   <path d="m6.9661 17.787-1.9749-1.701"/>
+   <path d="m10.224 15.297-1.0909-2.3489"/>
+   <path d="m13.678 14.527v-2.6162"/>
+  </g>
+  <circle cx="13.678" cy="23.457" r="6.5" fill="none" stroke="#000" stroke-width="1.8981"/>
+  <path d="m12.178 21.957-2-2" stroke="#000"/>
+  <rect x="24.678" y="12.457" width="22" height="22" ry="2" fill="none" stroke="#bbb"/>
+  <path d="m31.178 15.957v15h2v-6h7v-2h-7v-5h7v-2h-7z"/>
+  <g fill="#bbb">
+   <rect x="53.178" y="29.957" width="5" height="1"/>
+   <rect x="53.178" y="27.657" width="2" height="1"/>
+   <rect x="53.178" y="25.257" width="2" height="1"/>
+   <rect x="53.178" y="22.957" width="5" height="1"/>
+   <rect x="53.178" y="20.657" width="2" height="1"/>
+   <rect x="53.178" y="18.257" width="2" height="1"/>
+   <rect x="53.178" y="15.957" width="5" height="1"/>
+  </g>
+  <rect x="52.178" y="27.957" width="9" height="3" fill="#555"/>
+  <rect x="52.178" y="28.957" width="9" height="1" fill="#aaa"/>
+  <rect x="51.178" y="15.957" width="2" height="15"/>
+ </g>
+ <text x="27.50075" y="33.628006" fill="#000000" font-family="Lato" font-size="8px" letter-spacing="0px" stroke-width="1px" word-spacing="0px" style="line-height:125%" xml:space="preserve"><tspan x="27.50075" y="33.628006">Open Fixture Library</tspan></text>
+ <text x="63.92675" y="43.293999" fill="#666666" font-family="Lato" font-size="4px" letter-spacing="0px" stroke-width="1px" text-align="center" text-anchor="middle" word-spacing="0px" style="line-height:144%" xml:space="preserve"><tspan x="63.92675" y="43.293999">Create and browse fixture definitions for lighting equipment</tspan><tspan x="63.92675" y="49.054001">online and download them in the right format</tspan><tspan x="63.92675" y="54.814007">for your DMX control software!</tspan></text>
+</svg>

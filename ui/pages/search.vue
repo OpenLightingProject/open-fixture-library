@@ -3,13 +3,13 @@
     <h1 v-if="searchFor">Search <em>{{ searchFor }}</em></h1>
     <h1 v-else>Search</h1>
 
-    <form class="filter" action="/search" @submit.prevent="onSubmit">
-      <app-labeled-input label="Search query">
+    <form class="filter" action="/search" @submit.prevent="onSubmit()">
+      <LabeledInput label="Search query">
         <input v-model="searchQuery" type="search" name="q">
-      </app-labeled-input>
+      </LabeledInput>
 
-      <app-conditional-details :open="detailsInitiallyOpen">
-        <template slot="summary">Filter results</template>
+      <ConditionalDetails :open="detailsInitiallyOpen">
+        <template #summary>Filter results</template>
 
         <select v-model="manufacturersQuery" name="manufacturers" multiple>
           <option
@@ -17,10 +17,10 @@
             value="">Filter by manufacturer</option>
 
           <option
-            v-for="man in manufacturers"
-            :key="man.key"
-            :selected="manufacturersQuery.includes(man.key)"
-            :value="man.key">{{ man.name }}</option>
+            v-for="(man, manufacturerKey) of manufacturers"
+            :key="manufacturerKey"
+            :selected="manufacturersQuery.includes(manufacturerKey)"
+            :value="manufacturerKey">{{ man.name }}</option>
         </select>
 
         <select v-model="categoriesQuery" name="categories" multiple>
@@ -29,12 +29,12 @@
             value="">Filter by category</option>
 
           <option
-            v-for="cat in categories"
+            v-for="cat of categories"
             :key="cat"
             :selected="categoriesQuery.includes(cat)"
             :value="cat">{{ cat }}</option>
         </select>
-      </app-conditional-details>
+      </ConditionalDetails>
 
       <button :disabled="searchQuery === `` && isBrowser" type="submit" class="primary">Search</button>
     </form>
@@ -48,21 +48,23 @@
         Loading…
       </div>
 
-      <ul v-else-if="results.length > 0" class="card list fixtures">
-        <li
-          v-for="fixture in fixtureResults"
-          :key="fixture.key">
-          <nuxt-link
-            :to="`/${fixture.key}`"
-            :style="{ borderLeftColor: fixture.color }"
-            class="manufacturer-color">
-            <span class="name">{{ fixture.name }}</span>
-          </nuxt-link>
-        </li>
-      </ul>
+      <div v-else-if="results.length > 0" class="card">
+        <ul class="list fixtures">
+          <li
+            v-for="fixture of fixtureResults"
+            :key="fixture.key">
+            <NuxtLink
+              :to="`/${fixture.key}`"
+              :style="{ borderLeftColor: fixture.color }"
+              class="manufacturer-color">
+              <span class="name">{{ fixture.name }}</span>
+            </NuxtLink>
+          </li>
+        </ul>
+      </div>
 
       <div v-else class="card">
-        Your search for <em>{{ searchFor }}</em> did not match any fixtures. Try using another query or browse by <nuxt-link to="/manufacturers">manufacturer</nuxt-link> or <nuxt-link to="/categories">category</nuxt-link>.
+        Your search for <em>{{ searchFor }}</em> did not match any fixtures. Try using another query or browse by <NuxtLink to="/manufacturers">manufacturer</NuxtLink> or <NuxtLink to="/categories">category</NuxtLink>.
       </div>
     </div>
   </div>
@@ -73,82 +75,107 @@
   margin-top: 2rem;
 }
 
-.search /deep/ select[multiple] {
+.search ::v-deep select[multiple] {
   margin-right: 1ex;
 }
 
-.search /deep/ details {
+.search ::v-deep details {
   margin: 1rem 0;
 }
 </style>
 
 <script>
-import register from '~~/fixtures/register.json';
-import manufacturers from '~~/fixtures/manufacturers.json';
+import register from '../../fixtures/register.json';
 
-import conditionalDetailsVue from '~/components/conditional-details.vue';
-import labeledInputVue from '~/components/labeled-input.vue';
+import ConditionalDetails from '../components/ConditionalDetails.vue';
+import LabeledInput from '../components/LabeledInput.vue';
 
 export default {
   components: {
-    'app-conditional-details': conditionalDetailsVue,
-    'app-labeled-input': labeledInputVue
+    ConditionalDetails,
+    LabeledInput,
   },
-  head() {
-    return {
-      title: this.searchFor ? `Search "${this.searchFor}"` : `Search`
-    };
-  },
-  async asyncData({ query, app }) {
-    const sanitizedQuery = getSanitizedQuery(query);
-
-    return {
-      searchFor: sanitizedQuery.search,
-      searchQuery: sanitizedQuery.search,
-      manufacturersQuery: sanitizedQuery.manufacturers,
-      categoriesQuery: sanitizedQuery.categories,
-      detailsInitiallyOpen: sanitizedQuery.manufacturers.length > 0 || sanitizedQuery.categories.length > 0,
-      results: await getSearchResults(app.$axios, sanitizedQuery)
-    };
+  async asyncData({ $axios, error }) {
+    let manufacturers;
+    try {
+      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
+    return { manufacturers };
   },
   data() {
     return {
-      manufacturers: Object.keys(register.manufacturers).sort((a, b) => a.localeCompare(b, `en`)).map(
-        manKey => ({
-          key: manKey,
-          name: manufacturers[manKey].name,
-          fixtureCount: register.manufacturers[manKey].length
-        })
-      ),
+      searchFor: ``,
+      searchQuery: ``,
+      manufacturersQuery: [],
+      categoriesQuery: [],
+      detailsInitiallyOpen: null,
+      results: [],
       categories: Object.keys(register.categories).sort((a, b) => a.localeCompare(b, `en`)),
       loading: false,
-      isBrowser: false
+      isBrowser: false,
+    };
+  },
+  async fetch() {
+    this.loading = true;
+
+    const sanitizedQuery = getSanitizedQuery(this.$route.query);
+    this.searchQuery = sanitizedQuery.search;
+    this.manufacturersQuery = sanitizedQuery.manufacturers;
+    this.categoriesQuery = sanitizedQuery.categories;
+    this.searchFor = sanitizedQuery.search;
+
+    if (this.detailsInitiallyOpen === null) {
+      this.detailsInitiallyOpen = this.manufacturersQuery.length > 0 || this.categoriesQuery.length > 0;
+    }
+
+    try {
+      this.results = await this.$axios.$post(`/api/v1/get-search-results`, {
+        searchQuery: sanitizedQuery.search,
+        manufacturersQuery: sanitizedQuery.manufacturers,
+        categoriesQuery: sanitizedQuery.categories,
+      });
+    }
+    catch {
+      this.results = [];
+    }
+    finally {
+      this.loading = false;
+    }
+  },
+  head() {
+    const title = this.searchFor ? `Search "${this.searchFor}"` : `Search`;
+
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
     };
   },
   computed: {
     fixtureResults() {
       return this.results.map(key => {
-        const man = key.split(`/`)[0];
+        const manufacturer = key.split(`/`)[0];
 
         return {
           key,
-          name: `${manufacturers[man].name} ${register.filesystem[key].name}`,
-          color: register.colors[man]
+          name: `${this.manufacturers[manufacturer].name} ${register.filesystem[key].name}`,
+          color: register.colors[manufacturer],
         };
       });
-    }
+    },
+  },
+  watch: {
+    '$route.query': `$fetch`,
   },
   mounted() {
     this.isBrowser = true;
-
-    this._removeSearchQueryChecker = this.$router.afterEach((to, from) => {
-      if (to.path === `/search`) {
-        this.updateResults();
-      }
-      else {
-        this._removeSearchQueryChecker();
-      }
-    });
   },
   methods: {
     onSubmit() {
@@ -161,23 +188,11 @@ export default {
         query: {
           q: this.searchQuery,
           manufacturers: this.manufacturersQuery,
-          categories: this.categoriesQuery
-        }
+          categories: this.categoriesQuery,
+        },
       });
     },
-    async updateResults() {
-      this.loading = true;
-
-      const sanitizedQuery = getSanitizedQuery(this.$router.history.current.query);
-      this.searchQuery = sanitizedQuery.search;
-      this.manufacturersQuery = sanitizedQuery.manufacturers;
-      this.categoriesQuery = sanitizedQuery.categories;
-      this.results = await getSearchResults(this.$axios, sanitizedQuery);
-      this.searchFor = sanitizedQuery.search;
-
-      this.loading = false;
-    }
-  }
+  },
 };
 
 /**
@@ -200,21 +215,7 @@ function getSanitizedQuery(query) {
   return {
     search: searchQuery,
     manufacturers: manufacturersQuery,
-    categories: categoriesQuery
+    categories: categoriesQuery,
   };
-}
-
-/**
- * Request search results from the backend.
- * @param {object} axios The axios instance to use.
- * @param {object} sanitizedQuery A query object like returned from {@link getSanitizedQuery}.
- * @returns {Promise} The request promise.
- */
-function getSearchResults(axios, sanitizedQuery) {
-  return axios.$post(`/ajax/get-search-results`, {
-    searchQuery: sanitizedQuery.search,
-    manufacturersQuery: sanitizedQuery.manufacturers,
-    categoriesQuery: sanitizedQuery.categories
-  });
 }
 </script>

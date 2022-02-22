@@ -1,0 +1,241 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Bar 240/8",
+  "shortName": "StairvilleLedBar240/8",
+  "categories": ["Pixel Bar", "Color Changer"],
+  "meta": {
+    "authors": ["kiki"],
+    "createDate": "2019-05-14",
+    "lastModifyDate": "2019-05-14"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/294835_c_294835_v3_r3_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/intl/stairville_led_bar_2408_rgb_dmx_30.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=n5rRgpYDY7M"
+    ]
+  },
+  "physical": {
+    "dimensions": [1064, 65, 88],
+    "weight": 2.6,
+    "power": 36,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "240× 10mm LEDs (96× red, 72× green, 72× blue)"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    },
+    "matrixPixels": {
+      "dimensions": [125, 60, 0],
+      "spacing": [0, 0, 0]
+    }
+  },
+  "matrix": {
+    "pixelCount": [8, 1, 1],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "availableChannels": {
+    "Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ColorPreset",
+          "comment": "Blackout",
+          "colors": ["#000000"],
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Pattern red",
+          "colors": ["#ff0000"],
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Pattern red/green",
+          "colors": ["#ff0000", "#00ff00"],
+          "helpWanted": "Does this pattern mix to yellow? (The same applies to following multi-color patterns).",
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Pattern green",
+          "colors": ["#00ff00"],
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Pattern green/blue",
+          "colors": ["#00ff00", "#0000ff"],
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Pattern blue",
+          "colors": ["#0000ff"],
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Pattern blue/red",
+          "colors": ["#0000ff", "#ff0000"],
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Pattern red/green/blue",
+          "colors": ["#ff0000", "#00ff00", "#0000ff"],
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [64, 231],
+          "type": "Effect",
+          "effectName": "Preprogrammed shows",
+          "helpWanted": "Which shows can be selected at which DMX values?",
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Show Speed"
+          }
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "Effect",
+          "effectName": "Sound-controlled shows",
+          "soundControlled": true,
+          "helpWanted": "Which shows can be selected at which DMX values?",
+          "switchChannels": {
+            "Show Speed / Sound Sensitivity": "Sound Sensitivity"
+          }
+        }
+      ]
+    },
+    "Show Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
+      }
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Programs",
+        "Show Speed / Sound Sensitivity"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "24-channel",
+      "shortName": "24ch",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}

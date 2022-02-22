@@ -1,0 +1,179 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini Beam RGBW",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2019-12-23",
+    "lastModifyDate": "2019-12-23"
+  },
+  "links": {
+    "manual": [
+      "https://downloads.monoprice.com/files/manuals/612980_Manual_180122.pdf"
+    ],
+    "productPage": [
+      "https://www.monoprice.com/product?p_id=612980",
+      "https://www.lixada.com/p-l1239eu.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [200, 127, 122],
+    "weight": 2,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "RGBW LED"
+    },
+    "lens": {
+      "name": "Fresnel"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "230deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "0Hz",
+        "speedEnd": "18Hz",
+        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
+      }
+    },
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Colors": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [31, 125],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [126, 249],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speed": "slow"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true
+        }
+      ]
+    },
+    "Reset": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 149],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [150, 255],
+          "type": "Maintenance",
+          "comment": "Reset"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Colors",
+        "Reset"
+      ]
+    }
+  ]
+}

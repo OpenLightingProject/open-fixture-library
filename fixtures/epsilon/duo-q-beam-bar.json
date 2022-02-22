@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Duo Q-Beam Bar",
-  "categories": ["Pixel Bar", "Moving Head", "Color Changer"],
+  "categories": ["Pixel Bar", "Color Changer"],
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2018-11-09",
@@ -12,7 +12,7 @@
       "https://www.dropbox.com/s/xi9w0jebel81c8q/Epsilon%20-%20DUO%20Q-BEAM%20BAR.pdf"
     ],
     "productPage": [
-      "http://www.epsilon-pro.com/lights-duo-q-beam-bar.html"
+      "https://www.epsilon-pro.com/lights-duo-q-beam-bar.html"
     ],
     "video": [
       "https://www.youtube.com/watch?v=NIiO0SIy4qU",
@@ -29,10 +29,6 @@
     },
     "lens": {
       "degreesMinMax": [3, 3]
-    },
-    "focus": {
-      "type": "Head",
-      "tiltMax": 180
     }
   },
   "matrix": {

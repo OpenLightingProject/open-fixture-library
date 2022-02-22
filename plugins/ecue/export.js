@@ -1,36 +1,36 @@
-const xmlbuilder = require(`xmlbuilder`);
+import xmlbuilder from 'xmlbuilder';
 
-const {
-  CoarseChannel,
-  FineChannel,
-  NullChannel,
-  Physical,
-  SwitchingChannel
-} = require(`../../lib/model.js`);
+import CoarseChannel from '../../lib/model/CoarseChannel.js';
+import FineChannel from '../../lib/model/FineChannel.js';
+/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
+/** @typedef {import('../../lib/model/Mode.js').default} Mode */
+import NullChannel from '../../lib/model/NullChannel.js';
+import Physical from '../../lib/model/Physical.js';
+import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 
-module.exports.name = `e:cue`;
-module.exports.version = `0.3.0`;
+export const version = `0.3.0`;
 
 /**
- * @param {array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {Fixture[]} fixtures An array of Fixture objects.
  * @param {object} options Global options, including:
- * @param {string} options.baseDir Absolute path to OFL's root directory.
- * @param {Date|null} options.date The current time.
- * @returns {Promise.<array.<object>, Error>} The generated files.
-*/
-module.exports.export = function exportECue(fixtures, options) {
+ * @param {string} options.baseDirectory Absolute path to OFL's root directory.
+ * @param {Date} options.date The current time.
+ * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @returns {Promise<object[], Error>} The generated files.
+ */
+export async function exportFixtures(fixtures, options) {
   const timestamp = dateToString(options.date);
 
   const manufacturers = {};
-  for (const fix of fixtures) {
-    const man = fix.manufacturer.key;
-    if (!(man in manufacturers)) {
-      manufacturers[man] = {
-        data: fix.manufacturer,
-        fixtures: []
+  for (const fixture of fixtures) {
+    const manufacturer = fixture.manufacturer.key;
+    if (!(manufacturer in manufacturers)) {
+      manufacturers[manufacturer] = {
+        data: fixture.manufacturer,
+        fixtures: [],
       };
     }
-    manufacturers[man].fixtures.push(fix);
+    manufacturers[manufacturer].fixtures.push(fixture);
   }
 
   const xml = xmlbuilder.create(
@@ -38,67 +38,67 @@ module.exports.export = function exportECue(fixtures, options) {
       Document: {
         '@Owner': `user`,
         '@TypeVersion': 2,
-        '@SaveTimeStamp': timestamp
-      }
+        '@SaveTimeStamp': timestamp,
+      },
     },
     {
       version: `1.0`,
       encoding: `UTF-8`,
-      standalone: true
-    }
+      standalone: true,
+    },
   );
 
   const xmlLibrary = xml.element({
-    Library: {}
+    Library: {},
   });
   const xmlFixtures = xmlLibrary.element({
-    Fixtures: {}
+    Fixtures: {},
   });
   const xmlTiles = xmlLibrary.element({
-    Tiles: {}
+    Tiles: {},
   });
 
-  for (const man of Object.keys(manufacturers)) {
-    const manAttributes = {
+  for (const manufacturer of Object.keys(manufacturers)) {
+    const manufacturerAttributes = {
       '_CreationDate': timestamp,
       '_ModifiedDate': timestamp,
-      'Name': manufacturers[man].data.name,
-      'Comment': manufacturers[man].data.comment,
-      'Web': manufacturers[man].data.website || ``
+      'Name': manufacturers[manufacturer].data.name,
+      'Comment': manufacturers[manufacturer].data.comment,
+      'Web': manufacturers[manufacturer].data.website || ``,
     };
-    xmlTiles.element(`Manufacturer`, manAttributes);
+    xmlTiles.element(`Manufacturer`, manufacturerAttributes);
 
-    const xmlManFixtures = xmlFixtures.element(`Manufacturer`, manAttributes);
-    for (const fixture of manufacturers[man].fixtures) {
-      addFixture(xmlManFixtures, fixture);
+    const xmlManufacturerFixtures = xmlFixtures.element(`Manufacturer`, manufacturerAttributes);
+    for (const fixture of manufacturers[manufacturer].fixtures) {
+      addFixture(xmlManufacturerFixtures, fixture);
     }
   }
 
-  return Promise.resolve([{
+  return [{
     name: `UserLibrary.xml`,
     content: xml.end({
       pretty: true,
-      indent: `    `
+      indent: `    `,
     }),
     mimetype: `application/xml`,
-    fixtures: fixtures
-  }]);
-};
+    fixtures,
+  }];
+}
 
 /**
- * @param {object} xmlMan The xmlbuilder <Manufacturer> object.
+ * @param {object} xmlManufacturer The xmlbuilder <Manufacturer> object.
  * @param {Fixture} fixture The OFL fixture object.
  */
-function addFixture(xmlMan, fixture) {
-  const fixCreationDate = dateToString(fixture.meta.createDate);
-  const fixModifiedDate = dateToString(fixture.meta.lastModifyDate);
+function addFixture(xmlManufacturer, fixture) {
+  const fixtureCreationDate = dateToString(fixture.meta.createDate);
+  const fixtureModifiedDate = dateToString(fixture.meta.lastModifyDate);
 
   for (const mode of fixture.modes) {
     const physical = mode.physical || new Physical({});
 
-    const xmlFixture = xmlMan.element(`Fixture`, {
-      '_CreationDate': fixCreationDate,
-      '_ModifiedDate': fixModifiedDate,
+    const xmlFixture = xmlManufacturer.element(`Fixture`, {
+      '_CreationDate': fixtureCreationDate,
+      '_ModifiedDate': fixtureModifiedDate,
       'Name': fixture.name + (fixture.modes.length > 1 ? ` (${mode.shortName} mode)` : ``),
       'NameShort': fixture.shortName + (fixture.modes.length > 1 ? `-${mode.shortName}` : ``),
       'Comment': getFixtureComment(fixture),
@@ -107,7 +107,7 @@ function addFixture(xmlMan, fixture) {
       'Power': physical.power || 0,
       'DimWidth': physical.width || 10,
       'DimHeight': physical.height || 10,
-      'DimDepth': physical.depth || 10
+      'DimDepth': physical.depth || 10,
     });
 
     handleMode(xmlFixture, mode);
@@ -170,7 +170,7 @@ function handleMode(xmlFixture, mode) {
       'Crossfade': channel.canCrossfade ? 1 : 0,
       'Invert': channel.isInverted ? 1 : 0,
       'Precedence': channel.precedence,
-      'ClassicPos': viewPosCount
+      'ClassicPos': viewPosCount,
     });
 
     if (fineChannelKey === null) {
@@ -234,14 +234,14 @@ function getChannelType(channel) {
  * @param {number} resolution The resolution of the channel in the current mode.
  */
 function addCapabilities(xmlChannel, channel, resolution) {
-  for (const cap of channel.capabilities) {
-    const dmxRange = cap.getDmxRangeWithResolution(resolution);
+  for (const capability of channel.capabilities) {
+    const dmxRange = capability.getDmxRangeWithResolution(resolution);
     xmlChannel.element(`Range`, {
-      'Name': cap.name,
+      'Name': capability.name,
       'Start': dmxRange.start,
       'End': dmxRange.end,
-      'AutoMenu': cap.menuClick === `hidden` ? 0 : 1,
-      'Centre': cap.menuClick === `center` ? 1 : 0
+      'AutoMenu': capability.menuClick === `hidden` ? 0 : 1,
+      'Centre': capability.menuClick === `center` ? 1 : 0,
     });
   }
 }

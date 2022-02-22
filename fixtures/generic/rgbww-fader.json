@@ -1,0 +1,98 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "RGBWW Fader",
+  "shortName": "RGBWW",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["ameisso"],
+    "createDate": "2019-01-21",
+    "lastModifyDate": "2019-01-21"
+  },
+  "availableChannels": {
+    "Red": {
+      "fineChannelAliases": ["Red fine", "Red fine^2"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine", "Green fine^2"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine", "Blue fine^2"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White": {
+      "fineChannelAliases": ["Warm White fine", "Warm White fine^2"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Cold White": {
+      "fineChannelAliases": ["Cold White fine", "Cold White fine^2"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 bit",
+      "shortName": "8bit",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Warm White",
+        "Cold White"
+      ]
+    },
+    {
+      "name": "16 Bit",
+      "shortName": "16bit",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "Warm White",
+        "Warm White fine",
+        "Cold White",
+        "Cold White fine"
+      ]
+    },
+    {
+      "name": "24 Bit",
+      "shortName": "24bit",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Red fine^2",
+        "Green",
+        "Green fine",
+        "Green fine^2",
+        "Blue",
+        "Blue fine",
+        "Blue fine^2",
+        "Warm White",
+        "Warm White fine",
+        "Warm White fine^2",
+        "Cold White",
+        "Cold White fine",
+        "Cold White fine^2"
+      ]
+    }
+  ]
+}

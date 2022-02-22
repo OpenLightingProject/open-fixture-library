@@ -1,15 +1,22 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "JDC1",
-  "categories": ["Strobe", "Blinder", "Matrix", "Color Changer", "Moving Head"],
+  "categories": ["Strobe", "Blinder", "Matrix", "Color Changer"],
   "meta": {
     "authors": ["Flo Edelmann"],
     "createDate": "2018-06-14",
-    "lastModifyDate": "2018-09-04"
+    "lastModifyDate": "2019-12-03"
   },
   "links": {
-    "manual": ["https://www.glp.de/de/produkte?format=raw&task=download&fid=151"],
-    "video": ["https://www.youtube.com/watch?v=fUEht-I-nZ4"]
+    "manual": [
+      "https://www.glp.de/en/products?format=raw&task=download&fid=571"
+    ],
+    "productPage": [
+      "https://www.glp.de/en/products/strobes-led/jdc1"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=fUEht-I-nZ4"
+    ]
   },
   "physical": {
     "dimensions": [390, 284, 154],
@@ -21,10 +28,6 @@
     },
     "lens": {
       "degreesMinMax": [86, 148]
-    },
-    "focus": {
-      "type": "Head",
-      "tiltMax": 185
     }
   },
   "matrix": {
@@ -57,7 +60,7 @@
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
-        "angleEnd": "183.2deg"
+        "angleEnd": "185deg"
       }
     },
     "Beam Intensity": {
@@ -1164,6 +1167,12 @@
         "color": "Blue"
       }
     },
+    "Plate White Intensity": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
     "Color Set 2 Red Intensity": {
       "capability": {
         "type": "ColorIntensity",
@@ -1422,6 +1431,23 @@
         "Color Set 2 Red Intensity",
         "Color Set 2 Green Intensity",
         "Color Set 2 Blue Intensity"
+      ]
+    },
+    {
+      "name": "Easy 11-channel",
+      "shortName": "M6",
+      "channels": [
+        "Tilt",
+        "Tilt fine",
+        "Beam Intensity",
+        "Beam Duration",
+        "Beam Rate",
+        "Beam FX Shutter",
+        "Special / Control",
+        "Plate Red Intensity",
+        "Plate Green Intensity",
+        "Plate Blue Intensity",
+        "Plate White Intensity"
       ]
     }
   ]

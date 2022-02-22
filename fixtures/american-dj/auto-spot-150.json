@@ -8,10 +8,12 @@
     "createDate": "2018-01-18",
     "lastModifyDate": "2018-07-21"
   },
-  "links": {
-    "manual": ["http://cdb-cdn.adj.com/ItemRelatedFiles/7650/Auto%20Spot%20150.pdf"]
-  },
   "comment": "The different modes refer to the 'Color Mode' setting: no (Full Color) or SC (Split Color)",
+  "links": {
+    "manual": [
+      "https://cdb.s3-us-west-1.amazonaws.com/ItemRelatedFiles/7650/Auto%20Spot%20150.pdf"
+    ]
+  },
   "physical": {
     "dimensions": [295, 451, 373],
     "weight": 13,
@@ -21,11 +23,6 @@
     },
     "lens": {
       "degreesMinMax": [13, 13]
-    },
-    "focus": {
-      "type": "Head",
-      "panMax": 540,
-      "tiltMax": 270
     }
   },
   "wheels": {

@@ -1,7 +1,6 @@
 # Node build artifacts
 node_modules/
 npm-debug.log
-package-lock.json
 
 # Local development
 *.env
@@ -16,7 +15,7 @@ docker-compose.yml
 
 # Generated files
 .nuxt/
-schemas/dereferenced/*.json
+fixtures/register.json
 
 # Temporary files
 tmp/

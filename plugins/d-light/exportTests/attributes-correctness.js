@@ -1,43 +1,45 @@
-const xml2js = require(`xml2js`);
-const promisify = require(`util`).promisify;
+import xml2js from 'xml2js';
 
 /**
- * @param {object} exportFile The file returned by the plugins' export module.
- * @param {string} exportFile.name File name, may include slashes to provide a folder structure.
- * @param {string} exportFile.content File content.
- * @param {string} exportFile.mimetype File mime type.
- * @param {array.<Fixture>|null} exportFile.fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
- * @param {string|null} exportFile.mode Mode's shortName if given file only describes a single mode.
- * @returns {Promise.<undefined, array.<string>|!string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
-**/
-module.exports = function testAttributesCorrectness(exportFile) {
-  const parser = new xml2js.Parser();
+ * @typedef {object} ExportFile
+ * @property {string} name File name, may include slashes to provide a folder structure.
+ * @property {string} content File content.
+ * @property {string} mimetype File mime type.
+ * @property {Fixture[] | null} fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @property {string | null} mode Mode's shortName if given file only describes a single mode.
+ */
 
-  return promisify(parser.parseString)(exportFile.content)
-    .then(xml => {
-      const errors = [];
+/**
+ * @param {ExportFile} exportFile The file returned by the plugins' export module.
+ * @param {ExportFile[]} allExportFiles An array of all export files.
+ * @returns {Promise<void, string[] | string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
+ */
+export default async function testAttributesCorrectness(exportFile, allExportFiles) {
+  try {
+    const xml = await xml2js.parseStringPromise(exportFile.content);
+    const errors = [];
 
-      const attrDefs = xml.Device.Attributes[0].AttributesDefinition;
-      for (const attrDef of attrDefs) {
-        const usedNames = [];
-        const attrName = attrDef.$.id;
+    const attributeDefinitions = xml.Device.Attributes[0].AttributesDefinition;
+    for (const attributeDefinition of attributeDefinitions) {
+      const usedNames = [];
+      const attributeName = attributeDefinition.$.id;
 
-        for (const attr of attrDef.ThisAttribute) {
-          const name = attr.parameterName[0].$.id;
-          if (usedNames.includes(name)) {
-            errors.push(`Duplicate parameter name: ${attrName}/${name}`);
-          }
-          else {
-            usedNames.push(name);
-          }
+      for (const attribute of attributeDefinition.ThisAttribute) {
+        const name = attribute.parameterName[0].$.id;
+        if (usedNames.includes(name)) {
+          errors.push(`Duplicate parameter name: ${attributeName}/${name}`);
+        }
+        else {
+          usedNames.push(name);
         }
       }
+    }
 
-      if (errors.length > 0) {
-        return Promise.reject(errors);
-      }
-
-      return Promise.resolve();
-    })
-    .catch(parseError => Promise.reject(`Error parsing XML: ${parseError.toString()}`));
-};
+    if (errors.length > 0) {
+      throw errors;
+    }
+  }
+  catch (parseError) {
+    throw `Error parsing XML: ${parseError.toString()}`;
+  }
+}

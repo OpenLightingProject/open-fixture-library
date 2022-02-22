@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Theater Spot 100",
+  "shortName": "VarytecThSpot100",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["benni"],
+    "createDate": "2019-03-16",
+    "lastModifyDate": "2019-03-16"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/414220_c_414220_427226_r5_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/intl/varytec_led_theater_spot_100_3000k.htm"
+    ],
+    "video": [
+      "https://www.thomann.de/gb/thomanntv_video_varytec_led_theater_spot_100_3000k_5959.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [160, 185, 260],
+    "weight": 5,
+    "power": 115,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "100W COB LED",
+      "colorTemperature": 3000
+    },
+    "lens": {
+      "degreesMinMax": [15, 45]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX value is strobe disabled? When is the lamp constantly on/off?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}

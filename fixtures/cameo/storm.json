@@ -37,59 +37,8 @@
       ]
     ],
     "pixelGroups": {
-      "White Strobe": ["S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8"],
-      "Derby": ["D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8"]
-    }
-  },
-  "templateChannels": {
-    "$pixelKey Strobe": {
-      "defaultValue": 0,
-      "capabilities": [
-        {
-          "dmxRange": [0, 4],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [5, 249],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        },
-        {
-          "dmxRange": [250, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "soundControlled": true
-        }
-      ]
-    },
-    "$pixelKey Rotation": {
-      "defaultValue": 130,
-      "capabilities": [
-        {
-          "dmxRange": [0, 4],
-          "type": "Rotation",
-          "speed": "stop"
-        },
-        {
-          "dmxRange": [5, 127],
-          "type": "Rotation",
-          "speedStart": "fast CW",
-          "speedEnd": "slow CW"
-        },
-        {
-          "dmxRange": [128, 133],
-          "type": "Rotation",
-          "speed": "stop"
-        },
-        {
-          "dmxRange": [134, 255],
-          "type": "Rotation",
-          "speedStart": "slow CCW",
-          "speedEnd": "fast CCW"
-        }
-      ]
+      "White Strobe": { "name": ["^S[1-8]$"] },
+      "Derby": { "name": ["^D[1-8]$"] }
     }
   },
   "availableChannels": {
@@ -535,6 +484,57 @@
           "dmxRange": [235, 255],
           "type": "Effect",
           "effectName": "Blackout"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "$pixelKey Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [5, 249],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "soundControlled": true
+        }
+      ]
+    },
+    "$pixelKey Rotation": {
+      "defaultValue": 130,
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [5, 127],
+          "type": "Rotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [128, 133],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [134, 255],
+          "type": "Rotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
         }
       ]
     }

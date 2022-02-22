@@ -1,0 +1,102 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Big PARty TCL Spot",
+  "shortName": "EuroliteBigPARtyTCLSpot",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Felix Edelmann"],
+    "createDate": "2019-04-07",
+    "lastModifyDate": "2019-04-07"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/42110196-Manual-102442-1.00-eurolite-led-big-party-tcl-spot-en_de.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn42110196-eurolite-led-big-party-tcl-spot.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=2zlm7RiVOKY"
+    ]
+  },
+  "physical": {
+    "dimensions": [150, 245, 255],
+    "weight": 1,
+    "power": 50,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "54x 3W TCL RGB LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [12, 12]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Effects": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 5],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "5-Channel",
+      "shortName": "5ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Effects"
+      ]
+    }
+  ]
+}

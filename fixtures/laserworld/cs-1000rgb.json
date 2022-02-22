@@ -8,8 +8,15 @@
     "lastModifyDate": "2018-09-04"
   },
   "links": {
-    "manual": ["https://www.laserworld.com/en/support/downloads/download/79-laserworld-club-series/52-laserworld-manual-club-series-2016-02.html"],
-    "video": ["https://www.youtube.com/watch?v=u9m3_SWDQeU"]
+    "manual": [
+      "https://www.laserworld.com/en/download-file-49-CS_1000RGB_D_E_F_MKIII_web.html"
+    ],
+    "productPage": [
+      "https://www.laserworld.com/en/laserworld-cs/laserworld-cs-1000rgb.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=u9m3_SWDQeU"
+    ]
   },
   "helpWanted": "Most information about the capabilities of the channels are missing.",
   "physical": {
@@ -18,11 +25,6 @@
     "power": 60,
     "bulb": {
       "type": "650nm / 532nm / 445nm RGB Laser diodes"
-    },
-    "focus": {
-      "type": "Fixed",
-      "panMax": 40,
-      "tiltMax": 40
     }
   },
   "availableChannels": {
@@ -54,17 +56,17 @@
     "Horizontal Movement": {
       "defaultValue": "50%",
       "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "40deg"
+        "type": "BeamPosition",
+        "horizontalAngleStart": "0deg",
+        "horizontalAngleEnd": "40deg"
       }
     },
     "Vertical Movement": {
       "defaultValue": "50%",
       "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "40deg"
+        "type": "BeamPosition",
+        "verticalAngleStart": "0deg",
+        "verticalAngleEnd": "40deg"
       }
     },
     "Manual Zoom": {

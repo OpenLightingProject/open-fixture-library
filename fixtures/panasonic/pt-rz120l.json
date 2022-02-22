@@ -1,0 +1,942 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PT-RZ120L",
+  "categories": ["Other", "Laser"],
+  "meta": {
+    "authors": ["Walter Ponce", "Flo Edelmann"],
+    "createDate": "2020-03-30",
+    "lastModifyDate": "2020-03-30"
+  },
+  "comment": "Single Chip Laser 12k Projector",
+  "links": {
+    "manual": [
+      "https://eww.pavc.panasonic.co.jp/projector/extranet/main/products/rz120/manual.html"
+    ],
+    "productPage": [
+      "https://panasonic.net/cns/projector/products/rz120/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=2DrfjBJxjYA"
+    ]
+  },
+  "physical": {
+    "dimensions": [498, 200, 538],
+    "weight": 22.8,
+    "power": 1100,
+    "bulb": {
+      "type": "Laser Diode",
+      "lumens": 12000
+    }
+  },
+  "availableChannels": {
+    "Light Output": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Input Select (1)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Maintenance",
+          "comment": "RGB1"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Maintenance",
+          "comment": "RGB2"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Maintenance",
+          "comment": "DVI-D"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Maintenance",
+          "comment": "HDMI"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Maintenance",
+          "comment": "Digital Link"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Maintenance",
+          "comment": "SDI"
+        },
+        {
+          "dmxRange": [64, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Input Select (2 / User)": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Maintenance",
+          "comment": "RGB1"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Maintenance",
+          "comment": "RGB2"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Maintenance",
+          "comment": "DVI-D"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Maintenance",
+          "comment": "HDMI"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Maintenance",
+          "comment": "Digital Link"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Maintenance",
+          "comment": "SDI"
+        },
+        {
+          "dmxRange": [56, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Lens Position": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Maintenance",
+          "comment": "Move to home position"
+        },
+        {
+          "dmxRange": [64, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Lens H Shift": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "EffectParameter",
+          "parameterStart": "-100%",
+          "parameterEnd": "-50%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "EffectParameter",
+          "parameterStart": "-50%",
+          "parameterEnd": "-1%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "EffectParameter",
+          "parameterStart": "-1%",
+          "parameterEnd": "-0.1%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [96, 159],
+          "type": "EffectParameter",
+          "parameter": "0%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "EffectParameter",
+          "parameterStart": "0.1%",
+          "parameterEnd": "1%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "EffectParameter",
+          "parameterStart": "1%",
+          "parameterEnd": "50%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "EffectParameter",
+          "parameterStart": "50%",
+          "parameterEnd": "100%",
+          "comment": "Lens adjustment"
+        }
+      ]
+    },
+    "Lens V Shift": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "EffectParameter",
+          "parameterStart": "-100%",
+          "parameterEnd": "-50%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "EffectParameter",
+          "parameterStart": "-50%",
+          "parameterEnd": "-1%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "EffectParameter",
+          "parameterStart": "-1%",
+          "parameterEnd": "-0.1%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [96, 159],
+          "type": "EffectParameter",
+          "parameter": "0%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "EffectParameter",
+          "parameterStart": "0.1%",
+          "parameterEnd": "1%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "EffectParameter",
+          "parameterStart": "1%",
+          "parameterEnd": "50%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "EffectParameter",
+          "parameterStart": "50%",
+          "parameterEnd": "100%",
+          "comment": "Lens adjustment"
+        }
+      ]
+    },
+    "Lens Focus": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "EffectParameter",
+          "parameterStart": "-100%",
+          "parameterEnd": "-50%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "EffectParameter",
+          "parameterStart": "-50%",
+          "parameterEnd": "-1%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "EffectParameter",
+          "parameterStart": "-1%",
+          "parameterEnd": "-0.1%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [96, 159],
+          "type": "EffectParameter",
+          "parameter": "0%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "EffectParameter",
+          "parameterStart": "0.1%",
+          "parameterEnd": "1%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "EffectParameter",
+          "parameterStart": "1%",
+          "parameterEnd": "50%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "EffectParameter",
+          "parameterStart": "50%",
+          "parameterEnd": "100%",
+          "comment": "Lens adjustment"
+        }
+      ]
+    },
+    "Lens Zoom": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "EffectParameter",
+          "parameterStart": "-100%",
+          "parameterEnd": "-50%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "EffectParameter",
+          "parameterStart": "-50%",
+          "parameterEnd": "-1%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "EffectParameter",
+          "parameterStart": "-1%",
+          "parameterEnd": "-0.1%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [96, 159],
+          "type": "EffectParameter",
+          "parameter": "0%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "EffectParameter",
+          "parameterStart": "0.1%",
+          "parameterEnd": "1%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "EffectParameter",
+          "parameterStart": "1%",
+          "parameterEnd": "50%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "EffectParameter",
+          "parameterStart": "50%",
+          "parameterEnd": "100%",
+          "comment": "Lens adjustment"
+        }
+      ]
+    },
+    "Lens Function Select": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Maintenance",
+          "comment": "Lens H Shift"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Maintenance",
+          "comment": "Lens V Shift"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Maintenance",
+          "comment": "Lens Focus"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Maintenance",
+          "comment": "Lens Zoom"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Maintenance",
+          "comment": "Move to home position"
+        },
+        {
+          "dmxRange": [96, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Lens Control": {
+      "defaultValue": 100,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "EffectParameter",
+          "parameterStart": "-100%",
+          "parameterEnd": "-50%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "EffectParameter",
+          "parameterStart": "-50%",
+          "parameterEnd": "-1%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "EffectParameter",
+          "parameterStart": "-1%",
+          "parameterEnd": "-0.1%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "EffectParameter",
+          "parameter": "0%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "EffectParameter",
+          "parameterStart": "0.1%",
+          "parameterEnd": "1%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "EffectParameter",
+          "parameterStart": "1%",
+          "parameterEnd": "50%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "EffectParameter",
+          "parameterStart": "50%",
+          "parameterEnd": "100%",
+          "comment": "Lens adjustment"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Maintenance",
+          "comment": "Execute command action"
+        }
+      ]
+    },
+    "Power": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Maintenance",
+          "comment": "Standby"
+        },
+        {
+          "dmxRange": [64, 191],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Maintenance",
+          "comment": "Power on"
+        }
+      ]
+    },
+    "Shutter": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 191],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        }
+      ]
+    },
+    "Fade in": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "EffectDuration",
+          "duration": "instant"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "EffectDuration",
+          "duration": "0.5s"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "EffectDuration",
+          "duration": "1s"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "EffectDuration",
+          "duration": "1.5s"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "EffectDuration",
+          "duration": "2s"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "EffectDuration",
+          "duration": "2.5s"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "EffectDuration",
+          "duration": "3s"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "EffectDuration",
+          "duration": "3.5s"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "EffectDuration",
+          "duration": "4s"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "EffectDuration",
+          "duration": "5s"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "EffectDuration",
+          "duration": "7s"
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "EffectDuration",
+          "duration": "10s"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Fade out": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "EffectDuration",
+          "duration": "instant"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "EffectDuration",
+          "duration": "0.5s"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "EffectDuration",
+          "duration": "1s"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "EffectDuration",
+          "duration": "1.5s"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "EffectDuration",
+          "duration": "2s"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "EffectDuration",
+          "duration": "2.5s"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "EffectDuration",
+          "duration": "3s"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "EffectDuration",
+          "duration": "3.5s"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "EffectDuration",
+          "duration": "4s"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "EffectDuration",
+          "duration": "5s"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "EffectDuration",
+          "duration": "7s"
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "EffectDuration",
+          "duration": "10s"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Geometry": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Maintenance",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Maintenance",
+          "comment": "Keystone"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Maintenance",
+          "comment": "Curved correction"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Maintenance",
+          "comment": "PC-1"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Maintenance",
+          "comment": "PC-2"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Maintenance",
+          "comment": "PC-3"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Maintenance",
+          "comment": "Corner correction"
+        },
+        {
+          "dmxRange": [112, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Custom Masking": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Maintenance",
+          "comment": "off"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Maintenance",
+          "comment": "PC-1"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Maintenance",
+          "comment": "PC-2"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Maintenance",
+          "comment": "PC-3"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Freeze": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 95],
+          "type": "Maintenance",
+          "comment": "off"
+        },
+        {
+          "dmxRange": [96, 159],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [160, 223],
+          "type": "Maintenance",
+          "comment": "off"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Color": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Maintenance",
+          "comment": "Factory default setting"
+        },
+        {
+          "dmxRange": [64, 65],
+          "type": "Maintenance",
+          "parameter": -31
+        },
+        {
+          "dmxRange": [66, 127],
+          "type": "Maintenance",
+          "parameterStart": -30,
+          "parameterEnd": -1
+        },
+        {
+          "dmxRange": [128, 129],
+          "type": "Maintenance",
+          "parameter": 0
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Maintenance",
+          "parameterStart": 1,
+          "parameterEnd": 30
+        },
+        {
+          "dmxRange": [190, 191],
+          "type": "Maintenance",
+          "parameter": 31
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Tint": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Maintenance",
+          "comment": "Factory default setting"
+        },
+        {
+          "dmxRange": [64, 65],
+          "type": "Maintenance",
+          "parameter": -31
+        },
+        {
+          "dmxRange": [66, 127],
+          "type": "Maintenance",
+          "parameterStart": -30,
+          "parameterEnd": -1
+        },
+        {
+          "dmxRange": [128, 129],
+          "type": "Maintenance",
+          "parameter": 0
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Maintenance",
+          "parameterStart": 1,
+          "parameterEnd": 30
+        },
+        {
+          "dmxRange": [190, 191],
+          "type": "Maintenance",
+          "parameter": 31
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Raster Pattern": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Maintenance",
+          "comment": "off"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Maintenance",
+          "comment": "white"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Maintenance",
+          "comment": "yellow"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Maintenance",
+          "comment": "cyan"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Maintenance",
+          "comment": "green"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Maintenance",
+          "comment": "magenta"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "Maintenance",
+          "comment": "red"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Maintenance",
+          "comment": "blue"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Maintenance",
+          "comment": "black"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Maintenance",
+          "comment": "User logo"
+        },
+        {
+          "dmxRange": [176, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Enable/Disable": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Maintenance",
+          "comment": "Disable"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "Enable"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Shutter",
+        "Input Select (1)",
+        "Lens Function Select",
+        "Lens Control",
+        "Power",
+        "Light Output",
+        "Enable/Disable",
+        "Fade in",
+        "Fade out",
+        "Custom Masking",
+        "Geometry"
+      ]
+    },
+    {
+      "name": "2",
+      "channels": [
+        "Light Output",
+        "Input Select (2 / User)",
+        "Lens Position",
+        "Lens H Shift",
+        "Lens V Shift",
+        "Lens Focus",
+        "Lens Zoom",
+        "Power",
+        "Geometry",
+        "Custom Masking",
+        "Enable/Disable"
+      ]
+    },
+    {
+      "name": "Additional user channels",
+      "channels": [
+        "Freeze",
+        "Color",
+        "Tint",
+        "Raster Pattern"
+      ]
+    }
+  ]
+}

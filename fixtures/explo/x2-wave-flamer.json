@@ -1,0 +1,540 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "X2 Wave Flamer",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Gloryfire"],
+    "createDate": "2019-07-20",
+    "lastModifyDate": "2019-07-20"
+  },
+  "links": {
+    "manual": [
+      "https://www.explo.at/_Resources/Persistent/354c199da6815d6c3da601b8359861aed2250b07/X2%20Wave%20Flamer%20v1.3.pdf"
+    ],
+    "productPage": [
+      "https://www.explo.at/en/effektgeraete/liquid/x2-wave-flamer-1.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=yjR-8Thzh50"
+    ]
+  },
+  "physical": {
+    "dimensions": [335, 365, 560],
+    "weight": 27,
+    "power": 350,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Angle": {
+      "defaultValue": 128,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "-105deg",
+        "angleEnd": "105deg"
+      }
+    },
+    "Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "stop",
+        "speedEnd": "fast"
+      }
+    },
+    "Ignition": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 253],
+          "type": "NoFunction",
+          "comment": "No ignition"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "Effect",
+          "effectName": "Single ignition"
+        }
+      ]
+    },
+    "Opening Time": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 254],
+          "type": "Time",
+          "timeStart": "0ms",
+          "timeEnd": "2540ms"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Time",
+          "time": "long",
+          "comment": "permanent, stops at the latest of 2500ms"
+        }
+      ]
+    },
+    "Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "Effect",
+          "effectName": "No function"
+        },
+        {
+          "dmxRange": [3, 5],
+          "type": "Effect",
+          "effectName": "-105°, single ignition short flame",
+          "duration": "110ms"
+        },
+        {
+          "dmxRange": [6, 7],
+          "type": "Effect",
+          "effectName": "-90°, single ignition short flame",
+          "duration": "110ms"
+        },
+        {
+          "dmxRange": [8, 10],
+          "type": "Effect",
+          "effectName": "-75°, single ignition short flame",
+          "duration": "110ms"
+        },
+        {
+          "dmxRange": [11, 12],
+          "type": "Effect",
+          "effectName": "-60°, single ignition short flame",
+          "duration": "110ms"
+        },
+        {
+          "dmxRange": [13, 15],
+          "type": "Effect",
+          "effectName": "-45°, single ignition short flame",
+          "duration": "110ms"
+        },
+        {
+          "dmxRange": [16, 17],
+          "type": "Effect",
+          "effectName": "-30°, single ignition short flame",
+          "duration": "110ms"
+        },
+        {
+          "dmxRange": [18, 20],
+          "type": "Effect",
+          "effectName": "-15°, single ignition short flame",
+          "duration": "110ms"
+        },
+        {
+          "dmxRange": [21, 22],
+          "type": "Effect",
+          "effectName": "0°, single ignition short flame",
+          "duration": "110ms"
+        },
+        {
+          "dmxRange": [23, 25],
+          "type": "Effect",
+          "effectName": "15°, single ignition short flame",
+          "duration": "110ms"
+        },
+        {
+          "dmxRange": [26, 28],
+          "type": "Effect",
+          "effectName": "30°, single ignition short flame",
+          "duration": "110ms"
+        },
+        {
+          "dmxRange": [29, 30],
+          "type": "Effect",
+          "effectName": "45°, single ignition short flame",
+          "duration": "110ms"
+        },
+        {
+          "dmxRange": [31, 33],
+          "type": "Effect",
+          "effectName": "60°, single ignition short flame",
+          "duration": "110ms"
+        },
+        {
+          "dmxRange": [34, 35],
+          "type": "Effect",
+          "effectName": "75°, single ignition short flame",
+          "duration": "110ms"
+        },
+        {
+          "dmxRange": [36, 38],
+          "type": "Effect",
+          "effectName": "90°, single ignition short flame",
+          "duration": "110ms"
+        },
+        {
+          "dmxRange": [39, 40],
+          "type": "Effect",
+          "effectName": "105°, single ignition short flame",
+          "duration": "110ms"
+        },
+        {
+          "dmxRange": [41, 43],
+          "type": "Effect",
+          "effectName": "-105°, single ignition long flame",
+          "duration": "410ms"
+        },
+        {
+          "dmxRange": [44, 45],
+          "type": "Effect",
+          "effectName": "-90°, single ignition long flame",
+          "duration": "410ms"
+        },
+        {
+          "dmxRange": [46, 48],
+          "type": "Effect",
+          "effectName": "-75°, single ignition long flame",
+          "duration": "410ms"
+        },
+        {
+          "dmxRange": [49, 50],
+          "type": "Effect",
+          "effectName": "-60°, single ignition long flame",
+          "duration": "410ms"
+        },
+        {
+          "dmxRange": [51, 53],
+          "type": "Effect",
+          "effectName": "-45°, single ignition long flame",
+          "duration": "410ms"
+        },
+        {
+          "dmxRange": [54, 56],
+          "type": "Effect",
+          "effectName": "-30°, single ignition long flame",
+          "duration": "410ms"
+        },
+        {
+          "dmxRange": [57, 58],
+          "type": "Effect",
+          "effectName": "-15°, single ignition long flame",
+          "duration": "410ms"
+        },
+        {
+          "dmxRange": [59, 61],
+          "type": "Effect",
+          "effectName": "0°, single ignition long flame",
+          "duration": "410ms"
+        },
+        {
+          "dmxRange": [62, 63],
+          "type": "Effect",
+          "effectName": "15°, single ignition long flame",
+          "duration": "410ms"
+        },
+        {
+          "dmxRange": [64, 66],
+          "type": "Effect",
+          "effectName": "30°, single ignition long flame",
+          "duration": "410ms"
+        },
+        {
+          "dmxRange": [67, 68],
+          "type": "Effect",
+          "effectName": "45°, single ignition long flame",
+          "duration": "410ms"
+        },
+        {
+          "dmxRange": [69, 71],
+          "type": "Effect",
+          "effectName": "60°, single ignition long flame",
+          "duration": "410ms"
+        },
+        {
+          "dmxRange": [72, 73],
+          "type": "Effect",
+          "effectName": "75°, single ignition long flame",
+          "duration": "410ms"
+        },
+        {
+          "dmxRange": [74, 76],
+          "type": "Effect",
+          "effectName": "90°, single ignition long flame",
+          "duration": "410ms"
+        },
+        {
+          "dmxRange": [77, 79],
+          "type": "Effect",
+          "effectName": "105°, single ignition long flame",
+          "duration": "410ms"
+        },
+        {
+          "dmxRange": [80, 81],
+          "type": "Effect",
+          "effectName": "Step sequence from 1-15, short flame",
+          "duration": "2.4s"
+        },
+        {
+          "dmxRange": [82, 84],
+          "type": "Effect",
+          "effectName": "Step sequence from 15-1, short flame",
+          "duration": "2.4s"
+        },
+        {
+          "dmxRange": [85, 86],
+          "type": "Effect",
+          "effectName": "Step sequence 5>8>11, short flame",
+          "duration": "0.58s"
+        },
+        {
+          "dmxRange": [87, 89],
+          "type": "Effect",
+          "effectName": "Step sequence 11>8>5, short flame",
+          "duration": "0.58s"
+        },
+        {
+          "dmxRange": [90, 91],
+          "type": "Effect",
+          "effectName": "Step sequence 6>10, short flame",
+          "duration": "0.39s"
+        },
+        {
+          "dmxRange": [92, 94],
+          "type": "Effect",
+          "effectName": "Step sequence 10>6, short flame",
+          "duration": "0.39s"
+        },
+        {
+          "dmxRange": [95, 96],
+          "type": "Effect",
+          "effectName": "Step sequence 4>6>8>10>12, short flame",
+          "duration": "0.9s"
+        },
+        {
+          "dmxRange": [97, 99],
+          "type": "Effect",
+          "effectName": "Step sequence 12>10>8>6>4, short flame",
+          "duration": "0.9s"
+        },
+        {
+          "dmxRange": [100, 101],
+          "type": "Effect",
+          "effectName": "Step sequence 8>6>10>4>12, short flame",
+          "duration": "1s"
+        },
+        {
+          "dmxRange": [102, 104],
+          "type": "Effect",
+          "effectName": "Step sequence 8>10>6>12>4, short flame",
+          "duration": "1s"
+        },
+        {
+          "dmxRange": [105, 107],
+          "type": "Effect",
+          "effectName": "Step sequence from 1-15, long flame",
+          "duration": "6.89s"
+        },
+        {
+          "dmxRange": [108, 109],
+          "type": "Effect",
+          "effectName": "Step sequence from 15-1, long flame",
+          "duration": "6.89s"
+        },
+        {
+          "dmxRange": [110, 112],
+          "type": "Effect",
+          "effectName": "Step sequence 5>8>11, long flame",
+          "duration": "1.48s"
+        },
+        {
+          "dmxRange": [113, 114],
+          "type": "Effect",
+          "effectName": "Step sequence 11>8>5, long flame",
+          "duration": "1.48s"
+        },
+        {
+          "dmxRange": [115, 117],
+          "type": "Effect",
+          "effectName": "Step sequence 6>10, long flame",
+          "duration": "0.99s"
+        },
+        {
+          "dmxRange": [118, 119],
+          "type": "Effect",
+          "effectName": "Step sequence 10>6, long flame",
+          "duration": "0.99s"
+        },
+        {
+          "dmxRange": [120, 122],
+          "type": "Effect",
+          "effectName": "Step sequence 4>6>8>10>12, long flame",
+          "duration": "2.4s"
+        },
+        {
+          "dmxRange": [123, 124],
+          "type": "Effect",
+          "effectName": "Step sequence 12>10>8>6>4, long flame",
+          "duration": "2.4s"
+        },
+        {
+          "dmxRange": [125, 127],
+          "type": "Effect",
+          "effectName": "Step sequence 8>6>10>4>12, long flame",
+          "duration": "2.53s"
+        },
+        {
+          "dmxRange": [128, 130],
+          "type": "Effect",
+          "effectName": "Step sequence 8>16>12>4, long flame",
+          "duration": "2.53s"
+        },
+        {
+          "dmxRange": [131, 132],
+          "type": "Effect",
+          "effectName": "Wave sequence 5>11, middle",
+          "duration": "1.79s"
+        },
+        {
+          "dmxRange": [133, 135],
+          "type": "Effect",
+          "effectName": "Wave sequence 11>5, middle",
+          "duration": "1.79s"
+        },
+        {
+          "dmxRange": [136, 137],
+          "type": "Effect",
+          "effectName": "BIG wave sequence 1>15, long",
+          "duration": "3.93s"
+        },
+        {
+          "dmxRange": [138, 140],
+          "type": "Effect",
+          "effectName": "BIG wave sequence 15>1, long",
+          "duration": "3.93s"
+        },
+        {
+          "dmxRange": [141, 142],
+          "type": "Effect",
+          "effectName": "Wave sequence 8>1, middle",
+          "duration": "2.26s"
+        },
+        {
+          "dmxRange": [143, 145],
+          "type": "Effect",
+          "effectName": "Wave sequence 8>15, middle",
+          "duration": "2.26s"
+        },
+        {
+          "dmxRange": [146, 147],
+          "type": "Effect",
+          "effectName": "Wave sequence 1>8, middle",
+          "duration": "2.26s"
+        },
+        {
+          "dmxRange": [148, 150],
+          "type": "Effect",
+          "effectName": "Wave sequence 15>8, middle",
+          "duration": "2.26s"
+        },
+        {
+          "dmxRange": [151, 152],
+          "type": "Effect",
+          "effectName": "Wave sequence 8>11, short",
+          "duration": "1.19s"
+        },
+        {
+          "dmxRange": [153, 155],
+          "type": "Effect",
+          "effectName": "Wave sequence 8>5, short",
+          "duration": "1.19s"
+        },
+        {
+          "dmxRange": [156, 158],
+          "type": "Effect",
+          "effectName": "Wave sequence 5>8, short",
+          "duration": "1.19s"
+        },
+        {
+          "dmxRange": [159, 160],
+          "type": "Effect",
+          "effectName": "Wave sequence 11>8, short",
+          "duration": "1.19s"
+        },
+        {
+          "dmxRange": [161, 163],
+          "type": "Effect",
+          "effectName": "Step sequence 2>14, short flame",
+          "duration": "0.48s"
+        },
+        {
+          "dmxRange": [164, 165],
+          "type": "Effect",
+          "effectName": "Step sequence 14>2, short flame",
+          "duration": "0.48s"
+        },
+        {
+          "dmxRange": [166, 168],
+          "type": "Effect",
+          "effectName": "Step sequence 2>14, long flame",
+          "duration": "1.23s"
+        },
+        {
+          "dmxRange": [169, 170],
+          "type": "Effect",
+          "effectName": "Step sequence 14>2, long flame",
+          "duration": "1.23s"
+        },
+        {
+          "dmxRange": [171, 173],
+          "type": "Effect",
+          "effectName": "Unknown",
+          "helpWanted": "Which effect is this (program 67)?"
+        },
+        {
+          "dmxRange": [174, 175],
+          "type": "Effect",
+          "effectName": "Unknown",
+          "helpWanted": "Which effect is this (program 68)?"
+        },
+        {
+          "dmxRange": [176, 178],
+          "type": "Effect",
+          "effectName": "Unknown",
+          "helpWanted": "Which effect is this (program 69)?"
+        },
+        {
+          "dmxRange": [179, 181],
+          "type": "Effect",
+          "effectName": "Unknown",
+          "helpWanted": "Which effect is this (program 70)?"
+        },
+        {
+          "dmxRange": [182, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 49],
+          "type": "Maintenance",
+          "comment": "Test Mode"
+        },
+        {
+          "dmxRange": [50, 200],
+          "type": "Maintenance",
+          "comment": "Armed Mode"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "Maintenance",
+          "comment": "Test Mode"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "6-Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Angle",
+        "Speed",
+        "Ignition",
+        "Opening Time",
+        "Programs",
+        "Mode"
+      ]
+    }
+  ]
+}

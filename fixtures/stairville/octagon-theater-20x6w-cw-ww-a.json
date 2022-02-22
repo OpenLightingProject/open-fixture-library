@@ -1,0 +1,592 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Octagon Theater 20x6W CW/WW/A",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["SK", "Felix Edelmann"],
+    "createDate": "2019-06-08",
+    "lastModifyDate": "2019-06-08"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/367135_c_367135_v3_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/gb/stairville_octagon_theater_20x6w_cw_ww_a.htm"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=c_UDU4X6i6c"
+    ]
+  },
+  "physical": {
+    "dimensions": [295, 340, 200],
+    "weight": 6.9,
+    "power": 120,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "20x 6W CW/WW/A LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [36, 36]
+    }
+  },
+  "availableChannels": {
+    "IntensityColdWhite": {
+      "name": "Cold White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "SoundControlColdWhite": {
+      "name": "Sound Control",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Sound Control",
+        "soundControlled": true,
+        "helpWanted": "What does this channel do? Isn't sound control already activated from 'Programs Cold White' channel?"
+      }
+    },
+    "SoundControl2ColdWhite": {
+      "name": "Sound Control Mode 2",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Sound Control Mode 2",
+        "soundControlled": true,
+        "helpWanted": "What does this channel do? Isn't sound control mode 2 already activated from Programs channel?"
+      }
+    },
+    "ProgramSelColdWhite": {
+      "name": "Program Selection",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Program Selection",
+        "helpWanted": "Can one select individual programs per color? If so, at which DMX value can which programs be selected?"
+      }
+    },
+    "FadeSpeedColdWhite": {
+      "name": "Fade Speed",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "StrobeColdWhite": {
+      "name": "Strobe Intensity",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White",
+        "helpWanted": "How does this channel differ from normal 'Cold White Intensity'?"
+      }
+    },
+    "ProgramsColdWhite": {
+      "name": "Programs Cold White",
+      "defaultValue": 31,
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Cold White Intensity / Sound Control": "NoFunction1",
+            "Cold White Fade Speed / Strobe Intensity": "NoFunction2"
+          }
+        },
+        {
+          "dmxRange": [31, 70],
+          "type": "Effect",
+          "effectName": "Intensity",
+          "helpWanted": "Does this capability directly control Cold White intensity or only activate the Intensity channel?",
+          "switchChannels": {
+            "Cold White Intensity / Sound Control": "IntensityColdWhite",
+            "Cold White Fade Speed / Strobe Intensity": "NoFunction2"
+          }
+        },
+        {
+          "dmxRange": [71, 110],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true,
+          "switchChannels": {
+            "Cold White Intensity / Sound Control": "SoundControlColdWhite",
+            "Cold White Fade Speed / Strobe Intensity": "NoFunction2"
+          }
+        },
+        {
+          "dmxRange": [111, 150],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "switchChannels": {
+            "Cold White Intensity / Sound Control": "NoFunction1",
+            "Cold White Fade Speed / Strobe Intensity": "FadeSpeedColdWhite"
+          }
+        },
+        {
+          "dmxRange": [151, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "switchChannels": {
+            "Cold White Intensity / Sound Control": "NoFunction1",
+            "Cold White Fade Speed / Strobe Intensity": "FadeSpeedColdWhite"
+          }
+        },
+        {
+          "dmxRange": [191, 230],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "switchChannels": {
+            "Cold White Intensity / Sound Control": "NoFunction1",
+            "Cold White Fade Speed / Strobe Intensity": "FadeSpeedColdWhite"
+          }
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "switchChannels": {
+            "Cold White Intensity / Sound Control": "IntensityColdWhite",
+            "Cold White Fade Speed / Strobe Intensity": "StrobeColdWhite"
+          }
+        }
+      ]
+    },
+    "IntensityWarmWhite": {
+      "name": "Warm White",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "SoundControlWarmWhite": {
+      "name": "Sound Control",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Sound Control",
+        "soundControlled": true,
+        "helpWanted": "What does this channel do? Isn't sound control already activated from 'Programs Warm White' channel?"
+      }
+    },
+    "SoundControl2WarmWhite": {
+      "name": "Sound Control Mode 2",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Sound Control Mode 2",
+        "soundControlled": true,
+        "helpWanted": "What does this channel do? Isn't sound control mode 2 already activated from Programs channel?"
+      }
+    },
+    "ProgramSelWarmWhite": {
+      "name": "Program Selection",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Program Selection",
+        "helpWanted": "Can one select individual programs per color? If so, at which DMX value can which programs be selected?"
+      }
+    },
+    "FadeSpeedWarmWhite": {
+      "name": "Fade Speed",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "StrobeWarmWhite": {
+      "name": "Strobe Intensity",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White",
+        "helpWanted": "How does this channel differ from normal 'Warm White Intensity'?"
+      }
+    },
+    "ProgramsWarmWhite": {
+      "name": "Programs Warm White",
+      "defaultValue": 31,
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Warm White Intensity / Sound Control": "NoFunction3",
+            "Warm White Fade Speed / Strobe Intensity": "NoFunction4"
+          }
+        },
+        {
+          "dmxRange": [31, 70],
+          "type": "Effect",
+          "effectName": "Intensity",
+          "helpWanted": "Does this capability directly control Warm White intensity or only activate the Intensity channel?",
+          "switchChannels": {
+            "Warm White Intensity / Sound Control": "IntensityWarmWhite",
+            "Warm White Fade Speed / Strobe Intensity": "NoFunction4"
+          }
+        },
+        {
+          "dmxRange": [71, 110],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true,
+          "switchChannels": {
+            "Warm White Intensity / Sound Control": "SoundControlWarmWhite",
+            "Warm White Fade Speed / Strobe Intensity": "NoFunction4"
+          }
+        },
+        {
+          "dmxRange": [111, 150],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "switchChannels": {
+            "Warm White Intensity / Sound Control": "NoFunction3",
+            "Warm White Fade Speed / Strobe Intensity": "FadeSpeedWarmWhite"
+          }
+        },
+        {
+          "dmxRange": [151, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "switchChannels": {
+            "Warm White Intensity / Sound Control": "NoFunction3",
+            "Warm White Fade Speed / Strobe Intensity": "FadeSpeedWarmWhite"
+          }
+        },
+        {
+          "dmxRange": [191, 230],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "switchChannels": {
+            "Warm White Intensity / Sound Control": "NoFunction3",
+            "Warm White Fade Speed / Strobe Intensity": "FadeSpeedWarmWhite"
+          }
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "switchChannels": {
+            "Warm White Intensity / Sound Control": "IntensityWarmWhite",
+            "Warm White Fade Speed / Strobe Intensity": "StrobeWarmWhite"
+          }
+        }
+      ]
+    },
+    "IntensityAmber": {
+      "name": "Amber",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "SoundControlAmber": {
+      "name": "Sound Control",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Sound Control",
+        "soundControlled": true,
+        "helpWanted": "What does this channel do? Isn't sound control already activated from 'Programs Amber' channel?"
+      }
+    },
+    "SoundControl2Amber": {
+      "name": "Sound Control Mode 2",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Sound Control Mode 2",
+        "soundControlled": true,
+        "helpWanted": "What does this channel do? Isn't sound control mode 2 already activated from Programs channel?"
+      }
+    },
+    "ProgramSelAmber": {
+      "name": "Program Selection",
+      "capability": {
+        "type": "Effect",
+        "effectName": "Program Selection",
+        "helpWanted": "Can one select individual programs per color? If so, at which DMX value can which programs be selected?"
+      }
+    },
+    "FadeSpeedAmber": {
+      "name": "Fade Speed",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "StrobeAmber": {
+      "name": "Strobe Intensity",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber",
+        "helpWanted": "How does this channel differ from normal 'Amber Intensity'?"
+      }
+    },
+    "ProgramsAmber": {
+      "name": "Programs Amber",
+      "defaultValue": 31,
+      "capabilities": [
+        {
+          "dmxRange": [0, 30],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Amber Intensity / Sound Control": "NoFunction5",
+            "Amber Fade Speed / Strobe Intensity": "NoFunction6"
+          }
+        },
+        {
+          "dmxRange": [31, 70],
+          "type": "Effect",
+          "effectName": "Intensity",
+          "helpWanted": "Does this capability directly control Amber intensity or only activate the Intensity channel?",
+          "switchChannels": {
+            "Amber Intensity / Sound Control": "IntensityAmber",
+            "Amber Fade Speed / Strobe Intensity": "NoFunction6"
+          }
+        },
+        {
+          "dmxRange": [71, 110],
+          "type": "Effect",
+          "effectName": "Sound Control",
+          "soundControlled": true,
+          "switchChannels": {
+            "Amber Intensity / Sound Control": "SoundControlAmber",
+            "Amber Fade Speed / Strobe Intensity": "NoFunction6"
+          }
+        },
+        {
+          "dmxRange": [111, 150],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "switchChannels": {
+            "Amber Intensity / Sound Control": "NoFunction5",
+            "Amber Fade Speed / Strobe Intensity": "FadeSpeedAmber"
+          }
+        },
+        {
+          "dmxRange": [151, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "switchChannels": {
+            "Amber Intensity / Sound Control": "NoFunction5",
+            "Amber Fade Speed / Strobe Intensity": "FadeSpeedAmber"
+          }
+        },
+        {
+          "dmxRange": [191, 230],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "switchChannels": {
+            "Amber Intensity / Sound Control": "NoFunction5",
+            "Amber Fade Speed / Strobe Intensity": "FadeSpeedAmber"
+          }
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "switchChannels": {
+            "Amber Intensity / Sound Control": "IntensityAmber",
+            "Amber Fade Speed / Strobe Intensity": "StrobeAmber"
+          }
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Program / Fade speed"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Hue": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Fade / Program color hue"
+      }
+    },
+    "Sound Control Mode 1": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Sound Control Mode 1",
+        "soundControlled": true,
+        "helpWanted": "What does this channel do? Isn't sound control mode 1 already activated from Programs channel?"
+      }
+    },
+    "Programs": {
+      "defaultValue": 11,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Warm White": "NoFunction1",
+            "Cold White": "NoFunction2",
+            "Amber": "NoFunction3",
+            "Speed": "NoFunction4",
+            "Sound Control Mode 1 / Hue": "NoFunction5"
+          }
+        },
+        {
+          "dmxRange": [11, 50],
+          "type": "Intensity",
+          "helpWanted": "Does this also control general intensity or only activate the color intensity channels?",
+          "switchChannels": {
+            "Warm White": "IntensityWarmWhite",
+            "Cold White": "IntensityColdWhite",
+            "Amber": "IntensityAmber",
+            "Speed": "Program Speed",
+            "Sound Control Mode 1 / Hue": "Sound Control Mode 1"
+          }
+        },
+        {
+          "dmxRange": [51, 90],
+          "type": "Effect",
+          "effectName": "Sound control mode 1",
+          "soundControlled": true,
+          "switchChannels": {
+            "Warm White": "NoFunction1",
+            "Cold White": "NoFunction2",
+            "Amber": "NoFunction3",
+            "Speed": "NoFunction4",
+            "Sound Control Mode 1 / Hue": "Sound Control Mode 1"
+          }
+        },
+        {
+          "dmxRange": [91, 130],
+          "type": "Effect",
+          "effectName": "Sound control mode 2",
+          "soundControlled": true,
+          "switchChannels": {
+            "Warm White": "SoundControl2WarmWhite",
+            "Cold White": "SoundControl2ColdWhite",
+            "Amber": "SoundControl2Amber",
+            "Speed": "NoFunction4",
+            "Sound Control Mode 1 / Hue": "NoFunction5"
+          }
+        },
+        {
+          "dmxRange": [131, 170],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "switchChannels": {
+            "Warm White": "NoFunction1",
+            "Cold White": "NoFunction2",
+            "Amber": "NoFunction3",
+            "Speed": "Program Speed",
+            "Sound Control Mode 1 / Hue": "Hue"
+          }
+        },
+        {
+          "dmxRange": [171, 210],
+          "type": "Effect",
+          "effectName": "Program selection",
+          "helpWanted": "At which DMX value can which program be selected?",
+          "switchChannels": {
+            "Warm White": "ProgramSelWarmWhite",
+            "Cold White": "ProgramSelColdWhite",
+            "Amber": "ProgramSelAmber",
+            "Speed": "Program Speed",
+            "Sound Control Mode 1 / Hue": "Hue"
+          }
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "switchChannels": {
+            "Warm White": "StrobeWarmWhite",
+            "Cold White": "StrobeColdWhite",
+            "Amber": "StrobeAmber",
+            "Speed": "Strobe Speed",
+            "Sound Control Mode 1 / Hue": "NoFunction5"
+          }
+        }
+      ]
+    },
+    "NoFunction1": {
+      "name": "No Function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "NoFunction2": {
+      "name": "No Function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "NoFunction3": {
+      "name": "No Function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "NoFunction4": {
+      "name": "No Function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "NoFunction5": {
+      "name": "No Function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "NoFunction6": {
+      "name": "No Function",
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-Channel",
+      "shortName": "4ch",
+      "channels": [
+        "IntensityColdWhite",
+        "IntensityWarmWhite",
+        "IntensityAmber",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "6-Channel",
+      "shortName": "6ch",
+      "channels": [
+        "Cold White",
+        "Warm White",
+        "Amber",
+        "Speed",
+        "Sound Control Mode 1 / Hue",
+        "Programs"
+      ]
+    },
+    {
+      "name": "9-Channel",
+      "shortName": "9ch",
+      "channels": [
+        "Cold White Intensity / Sound Control",
+        "Cold White Fade Speed / Strobe Intensity",
+        "ProgramsColdWhite",
+        "Warm White Intensity / Sound Control",
+        "Warm White Fade Speed / Strobe Intensity",
+        "ProgramsWarmWhite",
+        "Amber Intensity / Sound Control",
+        "Amber Fade Speed / Strobe Intensity",
+        "ProgramsAmber"
+      ]
+    }
+  ]
+}

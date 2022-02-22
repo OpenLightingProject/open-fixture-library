@@ -1,18 +1,20 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
-const colors = require(`colors`);
+import chalk from 'chalk';
 
 const usedVariables = [
   `ALLOW_SEARCH_INDEXING`,
   `GITHUB_USER_TOKEN`,
+  `GITHUB_BROKEN_LINKS_ISSUE_NUMBER`,
   `NODE_ENV`,
   `PORT`,
-  `TRAVIS_BRANCH`,
-  `TRAVIS_COMMIT`,
-  `TRAVIS_EVENT_TYPE`,
-  `TRAVIS_PULL_REQUEST`,
-  `TRAVIS_PULL_REQUEST_SLUG`,
-  `TRAVIS_REPO_SLUG`
+  `WEBSITE_URL`,
+  `GITHUB_PR_NUMBER`,
+  `GITHUB_PR_HEAD_REF`,
+  `GITHUB_PR_BASE_REF`,
+  `GITHUB_REPOSITORY`,
+  `GITHUB_RUN_ID`,
+  `GITHUB_REF`,
 ];
 
 console.log(`This scripts lists all environment variables that are used in the Open Fixture Library.\n`);
@@ -21,7 +23,7 @@ console.log(`Process environment variables:`);
 printVariables();
 console.log();
 
-require(`../lib/load-env-file`);
+await import(`../lib/load-env-file.js`);
 
 console.log(`Environment variables after reading .env:`);
 printVariables();
@@ -31,15 +33,9 @@ printVariables();
  */
 function printVariables() {
   for (const key of usedVariables) {
-    let str = colors.yellow(key);
-
-    if (key in process.env) {
-      str += `=${colors.blue(process.env[key])}`;
-    }
-    else {
-      str += colors.red(` is unset`);
-    }
-
-    console.log(str);
+    console.log(chalk.yellow(key) + (key in process.env
+      ? `=${chalk.green(process.env[key])}`
+      : chalk.red(` is unset`)
+    ));
   }
 }

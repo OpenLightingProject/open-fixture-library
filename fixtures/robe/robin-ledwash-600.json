@@ -9,7 +9,12 @@
     "lastModifyDate": "2018-08-09"
   },
   "links": {
-    "manual": ["https://www.robe.cz/index.php?type=10898&tx_odproducts_f%5baction%5d=downloadFile&tx_odproducts_f%5bfile%5d=robe/downloads/user_manuals/User_manual_Robin_600_LEDWash.pdf"],
+    "manual": [
+      "https://www.robe.cz/api/support-files/download/downloads/user_manuals/User_manual_Robin_600_LEDWash.pdf"
+    ],
+    "productPage": [
+      "https://www.robe.cz/ledwash-600"
+    ],
     "video": [
       "https://www.youtube.com/watch?v=Q-vweXSfuUg"
     ]
@@ -28,11 +33,6 @@
     },
     "lens": {
       "degreesMinMax": [15, 63]
-    },
-    "focus": {
-      "type": "Head",
-      "panMax": 450,
-      "tiltMax": 300
     }
   },
   "matrix": {
@@ -54,10 +54,10 @@
       ]
     ],
     "pixelGroups": {
-      "Inner": ["I1", "I2", "I3", "I4", "I5", "I6", "I7"],
-      "Middle": ["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12"],
-      "Outer": ["O1", "O2", "O3", "O4", "O5", "O6", "O7", "O8", "O9", "O10", "O11", "O12", "O13", "O14", "O15", "O16", "O17"],
-      "All Zones": ["I1", "I2", "I3", "I4", "I5", "I6", "I7", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10", "M11", "M12", "O1", "O2", "O3", "O4", "O5", "O6", "O7", "O8", "O9", "O10", "O11", "O12", "O13", "O14", "O15", "O16", "O17"]
+      "Inner": { "name": ["^I[1-7]$"] },
+      "Middle": { "name": ["^M\\d+$"] },
+      "Outer": { "name": ["^O\\d+$"] },
+      "All Zones": "all"
     }
   },
   "availableChannels": {

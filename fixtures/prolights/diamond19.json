@@ -3,12 +3,17 @@
   "name": "DIAMOND19",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["fueller","ameisso"],
+    "authors": ["fueller", "ameisso"],
     "createDate": "2017-08-16",
     "lastModifyDate": "2018-08-09"
   },
   "links": {
-    "manual": ["http://prolights.it/download.php?id=2882"],
+    "manual": [
+      "https://www.musiclights.it/download.php?id=3932"
+    ],
+    "productPage": [
+      "https://www.prolights.it/product/DIAMOND19BK"
+    ],
     "video": [
       "https://www.youtube.com/watch?v=F5nu7TYshPA",
       "https://www.youtube.com/watch?v=WFtywtM_Kqg"
@@ -25,11 +30,6 @@
     "lens": {
       "name": "Honey-Comb gapless plano convex optics",
       "degreesMinMax": [6, 66]
-    },
-    "focus": {
-      "type": "Head",
-      "panMax": 630,
-      "tiltMax": 265
     }
   },
   "matrix": {
@@ -47,9 +47,9 @@
       ]
     ],
     "pixelGroups": {
-      "Center":  ["1"],
-      "Middle ring": ["2", "3", "4", "5", "6", "7"],
-      "Outer ring":  ["8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"]
+      "Center": ["1"],
+      "Middle ring": { "name": ["^[2-7]$"] },
+      "Outer ring": { "name": ["^(8|9|1\\d)$"] }
     }
   },
   "availableChannels": {

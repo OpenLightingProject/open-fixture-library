@@ -1,0 +1,42 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Strobe",
+  "categories": ["Strobe"],
+  "meta": {
+    "authors": ["Mikey Rowlands"],
+    "createDate": "2019-11-01",
+    "lastModifyDate": "2019-11-01"
+  },
+  "availableChannels": {
+    "Frequency": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Frequency + Dimmer",
+      "channels": [
+        "Frequency",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "Dimmer + Frequency",
+      "channels": [
+        "Dimmer",
+        "Frequency"
+      ]
+    }
+  ]
+}

@@ -1,53 +1,77 @@
-@mixin icon-button($hover-color, $active-color) {
-  $icon-size: 1.4em;
-  $padding: 0.3em;
+@use "sass:string";
+@use "./theming.scss";
 
-  display: block;
-  position: relative;
-  padding: 0 0 0 calc(#{$icon-size} + #{2*$padding});
-  width: 0;
-  height: calc(#{$icon-size} + #{2*$padding});
-  overflow: hidden;
-  border: 1px solid rgba($hover-color, 0);
-  border-radius: 3px;
-  background-color: rgba($hover-color, 0);
-  cursor: pointer;
-  color: $secondary-text-dark;
-  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+$animation-number: 0 !default;
 
-  &::-moz-focus-inner {
-    border: 0;
-  }
+@mixin animation-keyframes {
+  $animation-number: $animation-number + 1 !global;
+  $name: string.unquote("ofl-animation-#{$animation-number}");
 
-  & > .icon {
-    display: block;
-    position: absolute;
-    width: $icon-size;
-    height: $icon-size;
-    top: $padding;
-    left: $padding;
-    fill: currentcolor;
-  }
+  animation-name: $name;
 
-  &:focus {
-    border-color: $hover-color;
-    outline: none;
-  }
-
-  &:hover {
-    background-color: $hover-color;
-    color: $primary-text-light;
-  }
-
-  &:active {
-    background-color: $active-color;
-    border-color: transparent;
-    color: $primary-text-light;
+  @at-root {
+    // stylelint-disable-next-line keyframes-name-pattern -- It is in kebab-case
+    @keyframes #{$name} {
+      @content;
+    }
   }
 }
 
-@mixin home-logo-sizing($width, $padding) {
-  padding-left: calc(#{$width} + #{2*$padding});
-  background-position: $padding center;
-  background-size: calc(100% - #{2*$padding}) auto;
+/// Usage:
+///   @include mobile-hover-emulation((
+///     background-color: <hover theme color name>,
+///     // ...
+///   ), 0.1s, 0.3s);
+///
+/// Result:
+///   & {
+///     transition-duration: 0.1s;
+///   }
+///
+///   #ofl-root.no-touch &:hover {
+///     background-color: <themed hover color>;
+///   }
+///   #ofl-root.touch &:hover {
+///     animation-delay: 0.3s;
+///     animation-duration: 0.1s;
+///     animation-fill-mode: both;
+///     animation-name: ofl-animation-1;
+///   }
+///
+///   @keyframes ofl-animation-1 {
+///     from {
+///       background-color: <themed hover color>;
+///     }
+///     to {
+///       background-color: unset;
+///     }
+///   }
+@mixin mobile-hover-emulation($transition-map, $transition-duration: 0.2s, $mobile-hover-delay: 0.2s) {
+  transition-duration: $transition-duration;
+
+  #ofl-root.no-touch &:hover {
+    @each $property, $color-name in $transition-map {
+      #{$property}: theming.theme-color($color-name);
+    }
+  }
+
+  #ofl-root.touch &:hover {
+    animation-duration: $transition-duration;
+    animation-delay: $mobile-hover-delay;
+    animation-fill-mode: both;
+
+    @include animation-keyframes {
+      from {
+        @each $property, $color-name in $transition-map {
+          #{$property}: theming.theme-color($color-name);
+        }
+      }
+
+      to {
+        @each $property, $color-name in $transition-map {
+          #{$property}: unset;
+        }
+      }
+    }
+  }
 }

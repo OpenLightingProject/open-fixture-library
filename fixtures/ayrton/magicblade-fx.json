@@ -27,11 +27,6 @@
     "lens": {
       "degreesMinMax": [3.6, 53]
     },
-    "focus": {
-      "type": "Head",
-      "panMax": "infinite",
-      "tiltMax": "infinite"
-    },
     "matrixPixels": {
       "dimensions": [64, 64, 0],
       "spacing": [2.8, 0, 0]
@@ -40,7 +35,7 @@
   "matrix": {
     "pixelCount": [7, 1, 1],
     "pixelGroups": {
-      "Master": ["1", "2", "3", "4", "5", "6", "7"]
+      "Master": "all"
     }
   },
   "availableChannels": {

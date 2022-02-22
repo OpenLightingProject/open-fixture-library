@@ -21,10 +21,6 @@
     "DMXconnector": "5-pin",
     "bulb": {
       "type": "Laser"
-    },
-    "focus": {
-      "panMax": 360,
-      "tiltMax": 360
     }
   },
   "availableChannels": {
@@ -133,8 +129,8 @@
       "defaultValue": 0,
       "capability": {
         "type": "Tilt",
-          "angleStart": "0deg",
-          "angleEnd": "360deg"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Tilt 2": {
@@ -142,8 +138,8 @@
       "defaultValue": 0,
       "capability": {
         "type": "Tilt",
-          "angleStart": "0deg",
-          "angleEnd": "360deg"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Tilt 3": {
@@ -151,8 +147,8 @@
       "defaultValue": 0,
       "capability": {
         "type": "Tilt",
-          "angleStart": "0deg",
-          "angleEnd": "360deg"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Tilt 4": {
@@ -160,8 +156,8 @@
       "defaultValue": 0,
       "capability": {
         "type": "Tilt",
-          "angleStart": "0deg",
-          "angleEnd": "360deg"
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
       }
     },
     "Gobo All": {

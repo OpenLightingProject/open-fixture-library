@@ -1,0 +1,694 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PRO BEAMER ZOOM INDOOR",
+  "shortName": "BriteqProBeamerZoom",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Artilom"],
+    "createDate": "2019-04-02",
+    "lastModifyDate": "2019-04-02"
+  },
+  "comment": "This fixture also applies to its Mk2 and Mk3 successors.",
+  "links": {
+    "manual": [
+      "https://briteq-lighting.com/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1435914288.pdf",
+      "https://briteq-lighting.com/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1462951425.pdf",
+      "https://briteq-lighting.com/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1497009663.pdf"
+    ],
+    "productPage": [
+      "https://briteq-lighting.com/pro-beamer-zoom-indoor",
+      "https://briteq-lighting.com/pro-beamer-zoom-mk2-indoor",
+      "https://briteq-lighting.com/pro-beamer-zoom-mk3-indoor"
+    ]
+  },
+  "helpWanted": "In FULL mode, is Center/Outer correct? Is Step Time and Fade Time also used in other modes than TOUR?",
+  "physical": {
+    "dimensions": [236, 191, 290],
+    "weight": 6.6,
+    "power": 128,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "7x 12W RGBW LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [8, 40]
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [null, "O1", null,     "O2", null],
+        [null, null, null,     null, null],
+        ["O6", null, "Center", null, "O3"],
+        [null, null, null,     null, null],
+        [null, "O5", null,     "O4", null]
+      ]
+    ],
+    "pixelGroups": {
+      "Master": "all",
+      "Outer": { "name": ["^O[1-6]$"] }
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "fineChannelAliases": ["Master Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Macro": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "ColorPreset",
+          "comment": "Red … Yellow",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffff00"]
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "ColorPreset",
+          "comment": "Yellow … Green",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#00ff00"]
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "ColorPreset",
+          "comment": "Green … Cyan",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#00ffff"]
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "ColorPreset",
+          "comment": "Cyan … Blue",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "ColorPreset",
+          "comment": "Blue … Magenta",
+          "colorsStart": ["#0000ff"],
+          "colorsEnd": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "ColorPreset",
+          "comment": "Magenta … Red",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#ff0000"]
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "ColorPreset",
+          "comment": "Red … White",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffffff"]
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "ColorPreset",
+          "comment": "White … Blue",
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#0000ff"]
+        },
+        {
+          "dmxRange": [171, 200],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "colorTemperature": "3200K"
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "colorTemperature": "3400K"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "colorTemperature": "4200K"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "colorTemperature": "4900K"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "colorTemperature": "5600K"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "colorTemperature": "5900K"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "colorTemperature": "6500K"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "colorTemperature": "7200K"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "colorTemperature": "8000K"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "colorTemperature": "8500K"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"],
+          "colorTemperature": "10000K"
+        }
+      ]
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
+    },
+    "Auto Programs": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 40],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
+        },
+        {
+          "dmxRange": [41, 50],
+          "type": "Generic",
+          "comment": "Auto 1",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
+        },
+        {
+          "dmxRange": [51, 60],
+          "type": "Generic",
+          "comment": "Auto 2",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
+        },
+        {
+          "dmxRange": [61, 70],
+          "type": "Generic",
+          "comment": "Auto 3",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
+        },
+        {
+          "dmxRange": [71, 80],
+          "type": "Generic",
+          "comment": "Auto 4",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
+        },
+        {
+          "dmxRange": [81, 90],
+          "type": "Generic",
+          "comment": "Auto 5",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
+        },
+        {
+          "dmxRange": [91, 100],
+          "type": "Generic",
+          "comment": "Auto 6",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
+        },
+        {
+          "dmxRange": [101, 110],
+          "type": "Generic",
+          "comment": "Auto 7",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
+        },
+        {
+          "dmxRange": [111, 120],
+          "type": "Generic",
+          "comment": "Auto 8",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
+        },
+        {
+          "dmxRange": [121, 130],
+          "type": "Generic",
+          "comment": "Auto 9",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
+        },
+        {
+          "dmxRange": [131, 140],
+          "type": "Generic",
+          "comment": "Auto 10",
+          "switchChannels": {
+            "Red Master / Step Time": "Red Master",
+            "Green Master / Fade Time": "Green Master"
+          }
+        },
+        {
+          "dmxRange": [141, 150],
+          "type": "Generic",
+          "comment": "PR.01",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
+        },
+        {
+          "dmxRange": [151, 160],
+          "type": "Generic",
+          "comment": "PR.02",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
+        },
+        {
+          "dmxRange": [161, 170],
+          "type": "Generic",
+          "comment": "PR.03",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
+        },
+        {
+          "dmxRange": [171, 180],
+          "type": "Generic",
+          "comment": "PR.04",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
+        },
+        {
+          "dmxRange": [181, 190],
+          "type": "Generic",
+          "comment": "PR.05",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
+        },
+        {
+          "dmxRange": [191, 200],
+          "type": "Generic",
+          "comment": "PR.06",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
+        },
+        {
+          "dmxRange": [201, 210],
+          "type": "Generic",
+          "comment": "PR.07",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
+        },
+        {
+          "dmxRange": [211, 220],
+          "type": "Generic",
+          "comment": "PR.08",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
+        },
+        {
+          "dmxRange": [221, 230],
+          "type": "Generic",
+          "comment": "PR.09",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "Generic",
+          "comment": "PR.10",
+          "switchChannels": {
+            "Red Master / Step Time": "Step Time",
+            "Green Master / Fade Time": "Fade Time"
+          }
+        }
+      ]
+    },
+    "Step Time": {
+      "capability": {
+        "type": "Time",
+        "timeStart": "short",
+        "timeEnd": "long",
+        "comment": "Is short…long correct?"
+      }
+    },
+    "Fade Time": {
+      "capability": {
+        "type": "Time",
+        "timeStart": "short",
+        "timeEnd": "long",
+        "comment": "Is short…long correct?"
+      }
+    },
+    "Auto Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Dimmer Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Maintenance",
+          "comment": "Use preset from menu"
+        },
+        {
+          "dmxRange": [10, 29],
+          "type": "Maintenance",
+          "comment": "Linear dimmer"
+        },
+        {
+          "dmxRange": [30, 69],
+          "type": "Maintenance",
+          "comment": "Non-linear dimmer speed",
+          "parameter": "fast"
+        },
+        {
+          "dmxRange": [70, 129],
+          "type": "Maintenance",
+          "comment": "Non-linear dimmer speed",
+          "parameter": "66%"
+        },
+        {
+          "dmxRange": [130, 189],
+          "type": "Maintenance",
+          "comment": "Non-linear dimmer speed",
+          "parameter": "33%"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "Maintenance",
+          "comment": "Non-linear dimmer speed",
+          "parameter": "slow"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "8deg",
+        "angleEnd": "40deg",
+        "helpWanted": "Is it 8…40° or 40…8°?"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 200],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [201, 220],
+          "type": "Maintenance",
+          "comment": "Reset zoom"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Hue": {
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "Which DMX values correspond to which color?"
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Value": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
+      "fineChannelAliases": ["Red $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green $pixelKey": {
+      "fineChannelAliases": ["Green $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue $pixelKey": {
+      "fineChannelAliases": ["Blue $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White $pixelKey": {
+      "fineChannelAliases": ["White $pixelKey fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Tour 8bit",
+      "shortName": "TOUR",
+      "channels": [
+        "Master Dimmer",
+        "Red Master / Step Time",
+        "Green Master / Fade Time",
+        "Blue Master",
+        "White Master",
+        "Color Macro",
+        "Strobe",
+        "Auto Programs",
+        "Auto Program Speed",
+        "Dimmer Speed",
+        "Zoom",
+        "Reset"
+      ]
+    },
+    {
+      "name": "Tour 16bit",
+      "shortName": "TR16",
+      "channels": [
+        "Master Dimmer",
+        "Master Dimmer fine",
+        "Red Master",
+        "Red Master fine",
+        "Green Master",
+        "Green Master fine",
+        "Blue Master",
+        "Blue Master fine",
+        "White Master",
+        "White Master fine",
+        "Color Macro",
+        "Strobe",
+        "Auto Programs",
+        "Auto Program Speed",
+        "Dimmer Speed",
+        "Zoom",
+        "Reset"
+      ]
+    },
+    {
+      "name": "RGB",
+      "shortName": "ARC.1",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "DRGB",
+      "shortName": "AR1.D",
+      "channels": [
+        "Master Dimmer",
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
+    },
+    {
+      "name": "RGBW",
+      "shortName": "ARC.2",
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master"
+      ]
+    },
+    {
+      "name": "DRGBW",
+      "shortName": "AR2.D",
+      "channels": [
+        "Master Dimmer",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master"
+      ]
+    },
+    {
+      "name": "DRGBW + Strobe",
+      "shortName": "AR2.S",
+      "channels": [
+        "Master Dimmer",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "HSV",
+      "shortName": "HSV",
+      "channels": [
+        "Hue",
+        "Saturation",
+        "Value"
+      ]
+    },
+    {
+      "name": "DRGBW + Zoom",
+      "shortName": "AR2.Z",
+      "channels": [
+        "Master Dimmer",
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "White Master",
+        "Zoom",
+        "Reset"
+      ]
+    },
+    {
+      "name": "Full",
+      "shortName": "FULL",
+      "channels": [
+        "Master Dimmer",
+        "Master Dimmer fine",
+        {
+          "insert": "matrixChannels",
+          "repeatFor": ["Center", "Outer"],
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Red $pixelKey fine",
+            "Green $pixelKey",
+            "Green $pixelKey fine",
+            "Blue $pixelKey",
+            "Blue $pixelKey fine",
+            "White $pixelKey",
+            "White $pixelKey fine"
+          ]
+        },
+        "Color Macro",
+        "Strobe",
+        "Auto Programs",
+        "Auto Program Speed",
+        "Dimmer Speed",
+        "Zoom",
+        "Reset"
+      ]
+    }
+  ]
+}

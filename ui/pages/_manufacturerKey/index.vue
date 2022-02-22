@@ -1,112 +1,109 @@
 <template>
   <div>
-    <script type="application/ld+json" v-html="organizationStructuredData" />
-    <script type="application/ld+json" v-html="itemListStructuredData" />
-
     <h1>{{ manufacturer.name }} fixtures</h1>
 
-    <div v-if="`website` in manufacturer || `rdmId` in manufacturer" class="grid-3 list">
+    <div v-if="`website` in manufacturer || `rdmId` in manufacturer" class="grid-3">
       <a
         v-if="`website` in manufacturer"
         :href="manufacturer.website"
-        class="card blue dark">
-        <app-svg name="web" class="left" />
+        class="card slim blue dark">
+        <OflSvg name="web" class="left" />
         <span>Manufacturer website</span>
       </a>
       <a
         v-if="`rdmId` in manufacturer"
         :href="`http://rdm.openlighting.org/manufacturer/display?manufacturer=${manufacturer.rdmId}`"
         rel="nofollow"
-        class="card">
-        <app-svg name="ola" class="left" />
+        class="card slim">
+        <OflSvg name="ola" class="left" />
         <span>Open Lighting RDM database</span>
       </a>
     </div>
 
     <p v-if="`comment` in manufacturer" class="comment" style="white-space: pre-wrap;">{{ manufacturer.comment }}</p>
 
-    <ul :class="[`card`, `list`, `fixtures`]">
-      <li v-for="fixture in fixtures" :key="fixture.key">
-        <nuxt-link
-          :to="fixture.link"
-          :style="{ borderLeftColor: manufacturer.color }"
-          class="manufacturer-color">
-          <span class="name">{{ fixture.name }}</span>
-          <app-svg
-            v-for="cat in fixture.categories"
-            :key="cat"
-            :name="cat"
-            type="category"
-            class="right inactive" />
-        </nuxt-link>
-      </li>
-    </ul>
+    <div class="card">
+      <ul class="list fixtures">
+        <li v-for="fixture of fixtures" :key="fixture.key">
+          <NuxtLink
+            :to="`/${manufacturer.key}/${fixture.key}`"
+            :style="{ borderLeftColor: manufacturer.color }"
+            class="manufacturer-color">
+            <span class="name">{{ fixture.name }}</span>
+            <OflSvg
+              v-for="cat of fixture.categories"
+              :key="cat"
+              :name="cat"
+              type="fixture"
+              class="right inactive" />
+          </NuxtLink>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-import svg from '~/components/svg.vue';
-
-import packageJson from '~~/package.json';
-import register from '~~/fixtures/register.json';
-import manufacturers from '~~/fixtures/manufacturers.json';
-
 export default {
-  components: {
-    'app-svg': svg
-  },
-  validate({ params }) {
-    return params.manufacturerKey in manufacturers && params.manufacturerKey !== `$schema`;
-  },
-  async asyncData({ params }) {
-    const manKey = params.manufacturerKey;
-    const manufacturer = manufacturers[manKey];
-
-    const fixtures = (register.manufacturers[manKey] || []).map(
-      fixKey => ({
-        key: fixKey,
-        link: `/${manKey}/${fixKey}`,
-        name: register.filesystem[`${manKey}/${fixKey}`].name,
-        categories: Object.keys(register.categories).filter(
-          cat => register.categories[cat].includes(`${manKey}/${fixKey}`)
-        )
-      })
-    );
-
-    const organizationStructuredData = {
-      '@context': `http://schema.org`,
-      '@type': `Organization`,
-      'name': manufacturer.name,
-      'brand': manufacturer.name
-    };
-
-    if (`website` in manufacturer) {
-      organizationStructuredData.sameAs = manufacturer.website;
+  async asyncData({ params, $axios, error }) {
+    let manufacturer;
+    try {
+      manufacturer = await $axios.$get(`/api/v1/manufacturers/${params.manufacturerKey}`);
     }
-
-    const itemListStructuredData = {
-      '@context': `http://schema.org`,
-      '@type': `ItemList`,
-      'itemListElement': fixtures.map((fix, index) => ({
-        '@type': `ListItem`,
-        'position': index + 1,
-        'url': `${packageJson.homepage}${fix.link}`
-      }))
-    };
-
-    return {
-      manufacturer: Object.assign({}, manufacturer, {
-        color: register.colors[manKey]
-      }),
-      fixtures,
-      organizationStructuredData,
-      itemListStructuredData
-    };
+    catch (requestError) {
+      return error(requestError);
+    }
+    return { manufacturer };
   },
   head() {
+    const title = this.manufacturer.name;
+
     return {
-      title: this.manufacturer.name
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
+      script: [
+        {
+          hid: `organizationStructuredData`,
+          type: `application/ld+json`,
+          json: this.organizationStructuredData,
+        },
+        {
+          hid: `itemListStructuredData`,
+          type: `application/ld+json`,
+          json: this.itemListStructuredData,
+        },
+      ],
     };
-  }
+  },
+  computed: {
+    fixtures() {
+      return this.manufacturer.fixtures;
+    },
+    organizationStructuredData() {
+      return {
+        '@context': `http://schema.org`,
+        '@type': `Organization`,
+        name: this.manufacturer.name,
+        brand: this.manufacturer.name,
+        sameAs: `website` in this.manufacturer ? this.manufacturer.website : undefined,
+      };
+    },
+    itemListStructuredData() {
+      return {
+        '@context': `http://schema.org`,
+        '@type': `ItemList`,
+        itemListElement: this.fixtures.map((fixture, index) => ({
+          '@type': `ListItem`,
+          position: index + 1,
+          url: `${this.$config.websiteUrl}${this.manufacturer.key}/${fixture.key}`,
+        })),
+      };
+    },
+  },
 };
 </script>

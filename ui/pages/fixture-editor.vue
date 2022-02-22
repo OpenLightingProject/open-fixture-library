@@ -4,226 +4,113 @@
 
     <section class="card">
       <h2>Import fixture</h2>
-      Instead of creating a new fixture definition in the editor below, you can also <nuxt-link to="/import-fixture-file">import an existing fixture definition file</nuxt-link>.
+      Instead of creating a new fixture definition in the editor below, you can also <NuxtLink to="/import-fixture-file">import an existing fixture definition file</NuxtLink>.
     </section>
 
     <noscript class="card yellow">
       Please enable JavaScript to use the Fixture Editor!
     </noscript>
 
-    <vue-form
-      :state="formstate"
-      action="#"
-      class="only-js"
-      @submit.prevent="onSubmit">
+    <ClientOnly placeholder="Fixture editor is loading...">
 
-      <section class="manufacturer card">
-        <h2>Manufacturer</h2>
+      <VueForm
+        :state="formstate"
+        action="#"
+        class="only-js"
+        @submit.prevent="onSubmit()">
 
-        <section v-if="fixture.useExistingManufacturer">
-          <app-labeled-input :formstate="formstate" name="manufacturerKey" label="Choose from list">
-            <select
-              ref="existingManufacturerSelect"
-              v-model="fixture.manufacturerKey"
-              :class="{ empty: fixture.manufacturerKey === `` }"
-              required
-              name="manufacturerKey">
-
-              <option value="" disabled>Please select a manufacturer</option>
-
-              <template v-for="(manufacturer, manKey) in manufacturers">
-                <option v-if="manKey !== `$schema`" :key="manKey" :value="manKey">
-                  {{ manufacturer.name }}
-                </option>
-              </template>
-
-            </select>
-          </app-labeled-input>
-
-          <div>or <a href="#add-new-manufacturer" @click.prevent="switchManufacturer(false)">add a new manufacturer</a></div>
-        </section>
-
-        <div v-else>
-          <app-labeled-input :formstate="formstate" name="new-manufacturer-name" label="Name">
-            <app-property-input-text
-              ref="newManufacturerNameInput"
-              v-model="fixture.newManufacturerName"
-              :schema-property="properties.manufacturer.name"
-              :required="true"
-              name="new-manufacturer-name" />
-          </app-labeled-input>
-
-          <app-labeled-input :formstate="formstate" name="new-manufacturer-website" label="Website">
-            <app-property-input-text
-              v-model="fixture.newManufacturerWebsite"
-              :schema-property="properties.manufacturer.website"
-              type="url"
-              name="new-manufacturer-website" />
-          </app-labeled-input>
-
-          <app-labeled-input :formstate="formstate" name="new-manufacturer-comment" label="Comment">
-            <app-property-input-textarea
-              v-model="fixture.newManufacturerComment"
-              :schema-property="properties.manufacturer.comment"
-              name="new-manufacturer-comment" />
-          </app-labeled-input>
-
-          <app-labeled-input :formstate="formstate" name="new-manufacturer-rdmId">
-            <template slot="label"><abbr title="Remote Device Management">RDM</abbr> model ID</template>
-            <app-property-input-number
-              v-model="fixture.newManufacturerRdmId"
-              :schema-property="properties.manufacturer.rdmId"
-              name="new-manufacturer-rdmId" />
-          </app-labeled-input>
-
-          <div>or <a href="#use-existing-manufacturer" @click.prevent="switchManufacturer(true)">choose an existing manufacturer</a></div>
-        </div>
-      </section>
-
-      <section class="fixture-info card">
-        <h2>Fixture info</h2>
-
-        <app-labeled-input
-          :formstate="formstate"
-          :custom-validators="{'no-manufacturer-name': fixtureNameIsWithoutManufacturer}"
-          name="fixture-name"
-          label="Name">
-          <app-property-input-text
-            v-model="fixture.name"
-            :schema-property="properties.fixture.name"
-            :required="true"
-            name="fixture-name" />
-        </app-labeled-input>
-
-        <app-labeled-input :formstate="formstate" name="fixture-shortName" label="Unique short name">
-          <app-property-input-text
-            v-model="fixture.shortName"
-            :schema-property="properties.fixture.shortName"
-            name="fixture-shortName"
-            hint="defaults to name" />
-        </app-labeled-input>
-
-        <app-labeled-input
-          :formstate="formstate"
-          name="fixture-categories"
-          label="Categories"
-          hint="Select and reorder all applicable categories, the most suitable first.">
-          <app-category-chooser
-            v-model="fixture.categories"
-            :all-categories="properties.fixture.categories.items.enum"
-            name="fixture-categories"
-            categories-not-empty />
-        </app-labeled-input>
-
-        <app-labeled-input :formstate="formstate" name="comment" label="Comment">
-          <app-property-input-textarea
-            v-model="fixture.comment"
-            :schema-property="properties.fixture.comment"
-            name="comment" />
-        </app-labeled-input>
-
-        <app-labeled-input :formstate="formstate" name="links" label="Relevant links">
-          <app-editor-links v-model="fixture.links" :formstate="formstate" />
-        </app-labeled-input>
-
-        <app-labeled-input
-          :formstate="formstate"
-          name="rdmModelId"
-          hint="The RDM manufacturer ID is saved per manufacturer.">
-          <template slot="label"><abbr title="Remote Device Management">RDM</abbr> model ID</template>
-          <app-property-input-number
-            v-model="fixture.rdmModelId"
-            :schema-property="properties.fixture.rdm.properties.modelId"
-            name="rdmModelId" />
-        </app-labeled-input>
-
-        <app-labeled-input
-          v-if="fixture.rdmModelId !== null"
-          :formstate="formstate"
-          name="rdmSoftwareVersion"
-          label="RDM software version">
-          <app-property-input-text
-            v-model="fixture.rdmSoftwareVersion"
-            :schema-property="properties.fixture.rdm.properties.softwareVersion"
-            name="rdmSoftwareVersion" />
-        </app-labeled-input>
-      </section>
-
-      <section class="physical card">
-        <h2>Physical data</h2>
-        <app-editor-physical
-          v-model="fixture.physical"
-          :formstate="formstate"
-          name-prefix="fixture" />
-      </section>
-
-      <section class="fixture-modes">
-        <app-editor-mode
-          v-for="(mode, index) in fixture.modes"
-          :key="mode.uuid"
-          v-model="fixture.modes[index]"
-          :index="index"
+        <EditorManufacturer
           :fixture="fixture"
           :formstate="formstate"
-          @open-channel-editor="openChannelEditor"
-          @remove="fixture.modes.splice(index, 1)" />
+          :manufacturers="manufacturers" />
 
-        <a class="fixture-mode card add-mode-link" href="#add-mode" @click.prevent="addNewMode">
-          <h2>+ Add mode</h2>
-        </a>
-
-        <div class="clearfix" />
-      </section>
-
-      <section class="user card">
-        <h2>Author data</h2>
-
-        <app-labeled-input :formstate="formstate" name="author" label="Your name">
-          <app-property-input-text
-            v-model="fixture.metaAuthor"
-            :schema-property="properties.definitions.nonEmptyString"
-            :required="true"
-            name="author"
-            hint="e.g. Anonymous" />
-        </app-labeled-input>
-
-        <app-labeled-input
+        <EditorFixtureInformation
+          :fixture="fixture"
           :formstate="formstate"
-          name="github-username"
-          label="GitHub username"
-          hint="If you want to be mentioned in the pull request.">
-          <app-property-input-text
-            v-model="fixture.metaGithubUsername"
-            :schema-property="properties.definitions.nonEmptyString"
-            name="github-username" />
-        </app-labeled-input>
+          :manufacturers="manufacturers" />
 
-        <app-labeled-input hidden name="honeypot" label="Ignore this!">
-          <input v-model="honeypot" type="text">
-          <div class="hint">Spammers are likely to fill this field. Leave it empty to show that you're a human.</div>
-        </app-labeled-input>
-      </section>
+        <section class="physical card">
+          <h2>Physical data</h2>
+          <EditorPhysical
+            v-model="fixture.physical"
+            :formstate="formstate"
+            name-prefix="fixture" />
+        </section>
 
-      <div class="button-bar right">
-        <button type="submit" class="save-fixture primary">Create fixture</button>
-      </div>
+        <section class="fixture-modes">
+          <EditorMode
+            v-for="(mode, index) of fixture.modes"
+            :key="mode.uuid"
+            v-model="fixture.modes[index]"
+            :index="index"
+            :fixture="fixture"
+            :formstate="formstate"
+            @open-channel-editor="openChannelEditor($event)"
+            @remove="fixture.modes.splice(index, 1)" />
 
-    </vue-form>
+          <a class="fixture-mode card add-mode-link" href="#add-mode" @click.prevent="addNewMode()">
+            <h2>+ Add mode</h2>
+          </a>
 
-    <app-editor-channel-dialog
-      v-model="channel"
-      :fixture="fixture"
-      @reset-channel="resetChannel"
-      @channel-changed="autoSave(`channel`)"
-      @remove-channel="removeChannel" />
+          <div class="clearfix" />
+        </section>
 
-    <app-editor-choose-channel-edit-mode-dialog
-      :channel="channel"
-      :fixture="fixture" />
+        <section class="user card">
+          <h2>Author data</h2>
 
-    <app-editor-restore-dialog v-model="restoredData" @restore-complete="restoreComplete" />
+          <LabeledInput :formstate="formstate" name="author" label="Your name">
+            <PropertyInputText
+              v-model="fixture.metaAuthor"
+              :schema-property="schemaDefinitions.nonEmptyString"
+              required
+              name="author"
+              hint="e.g. Anonymous" />
+          </LabeledInput>
 
-    <app-editor-submit-dialog :submit="submit" @reset="reset" />
+          <LabeledInput
+            :formstate="formstate"
+            name="github-username"
+            label="GitHub username"
+            hint="If you want to be mentioned in the pull request.">
+            <PropertyInputText
+              v-model="githubUsername"
+              :schema-property="schemaDefinitions.nonEmptyString"
+              name="github-username" />
+          </LabeledInput>
+
+          <LabeledInput hidden name="honeypot" label="Ignore this!">
+            <input v-model="honeypot" type="text">
+            <div class="hint">Spammers are likely to fill this field. Leave it empty to show that you're a human.</div>
+          </LabeledInput>
+        </section>
+
+        <div class="button-bar right">
+          <button type="submit" class="save-fixture primary">Create fixture</button>
+        </div>
+
+      </VueForm>
+
+      <EditorChannelDialog
+        v-model="channel"
+        :fixture="fixture"
+        @reset-channel="resetChannel()"
+        @channel-changed="autoSave(`channel`)"
+        @remove-channel="removeChannel($event)" />
+
+      <EditorChooseChannelEditModeDialog
+        :channel="channel"
+        :fixture="fixture" />
+
+      <EditorRestoreDialog v-model="restoredData" @restore-complete="restoreComplete()" />
+
+      <EditorSubmitDialog
+        ref="submitDialog"
+        endpoint="/api/v1/fixtures/from-editor"
+        :github-username="githubUsername"
+        @success="onFixtureSubmitted()"
+        @reset="reset()" />
+
+    </ClientOnly>
   </div>
 </template>
 
@@ -238,143 +125,98 @@ noscript.card {
 }
 </style>
 
-
 <script>
 import scrollIntoView from 'scroll-into-view';
+
+import { schemaDefinitions } from '../../lib/schema-properties.js';
 import {
   constants,
+  getEmptyFormState,
   getEmptyFixture,
   getEmptyChannel,
   getEmptyMode,
-  clone
-} from '~/assets/scripts/editor-utils.mjs';
+} from '../assets/scripts/editor-utils.js';
 
-import manufacturers from '~~/fixtures/manufacturers.json';
-import schemaProperties from '~~/lib/schema-properties.js';
-
-import labeledInputVue from '~/components/labeled-input.vue';
-import propertyInputNumberVue from '~/components/property-input-number.vue';
-import propertyInputTextVue from '~/components/property-input-text.vue';
-import propertyInputTextareaVue from '~/components/property-input-textarea.vue';
-import categoryChooserVue from '~/components/category-chooser.vue';
-import editorLinksVue from '~/components/editor-links.vue';
-import editorPhysicalVue from '~/components/editor-physical.vue';
-import editorModeVue from '~/components/editor-mode.vue';
-import editorChannelDialogVue from '~/components/editor-channel-dialog.vue';
-import editorChooseChannelEditModeDialogVue from '~/components/editor-choose-channel-edit-mode-dialog.vue';
-import editorRestoreDialogVue from '~/components/editor-restore-dialog.vue';
-import editorSubmitDialogVue from '~/components/editor-submit-dialog.vue';
-
-const storageAvailable = (function() {
-  try {
-    const x = `__storage_test__`;
-    localStorage.setItem(x, x);
-    localStorage.removeItem(x);
-    return true;
-  }
-  catch (e) {
-    return false;
-  }
-})();
+import EditorChannelDialog from '../components/editor/EditorChannelDialog.vue';
+import EditorChooseChannelEditModeDialog from '../components/editor/EditorChooseChannelEditModeDialog.vue';
+import EditorFixtureInformation from '../components/editor/EditorFixtureInformation.vue';
+import EditorManufacturer from '../components/editor/EditorManufacturer.vue';
+import EditorMode from '../components/editor/EditorMode.vue';
+import EditorPhysical from '../components/editor/EditorPhysical.vue';
+import EditorRestoreDialog from '../components/editor/EditorRestoreDialog.vue';
+import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';
+import LabeledInput from '../components/LabeledInput.vue';
+import PropertyInputText from '../components/PropertyInputText.vue';
 
 export default {
   components: {
-    'app-labeled-input': labeledInputVue,
-    'app-property-input-number': propertyInputNumberVue,
-    'app-property-input-text': propertyInputTextVue,
-    'app-property-input-textarea': propertyInputTextareaVue,
-    'app-category-chooser': categoryChooserVue,
-    'app-editor-physical': editorPhysicalVue,
-    'app-editor-links': editorLinksVue,
-    'app-editor-mode': editorModeVue,
-    'app-editor-channel-dialog': editorChannelDialogVue,
-    'app-editor-choose-channel-edit-mode-dialog': editorChooseChannelEditModeDialogVue,
-    'app-editor-restore-dialog': editorRestoreDialogVue,
-    'app-editor-submit-dialog': editorSubmitDialogVue
+    EditorChannelDialog,
+    EditorChooseChannelEditModeDialog,
+    EditorFixtureInformation,
+    EditorManufacturer,
+    EditorMode,
+    EditorPhysical,
+    EditorRestoreDialog,
+    EditorSubmitDialog,
+    LabeledInput,
+    PropertyInputText,
   },
-  head() {
-    return {
-      title: `Fixture Editor`
-    };
-  },
-  asyncData({ query }) {
-    const initFixture = getEmptyFixture();
-
-    if (query.prefill) {
-      try {
-        const prefillObject = JSON.parse(query.prefill);
-        for (const key of Object.keys(prefillObject)) {
-          if (isPrefillable(prefillObject, key)) {
-            initFixture[key] = prefillObject[key];
-          }
-        }
-      }
-      catch (error) {
-        console.log(`prefill query could not be parsed:`, query.prefill, error);
-      }
+  async asyncData({ $axios, error }) {
+    let manufacturers;
+    try {
+      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
     }
-
+    catch (requestError) {
+      return error(requestError);
+    }
+    return { manufacturers };
+  },
+  data() {
     return {
-      formstate: {},
+      formstate: getEmptyFormState(),
       readyToAutoSave: false,
       restoredData: null,
-      fixture: initFixture,
+      fixture: getEmptyFixture(),
       channel: getEmptyChannel(),
+      githubUsername: ``,
       honeypot: ``,
-      submit: {
-        state: `closed`,
-        pullRequestUrl: ``,
-        rawData: ``
-      },
-      manufacturers,
-      properties: schemaProperties
+      schemaDefinitions,
     };
   },
-  computed: {
-    fixtureNameIsWithoutManufacturer() {
-      let manufacturerName;
+  head() {
+    const title = `Fixture Editor`;
 
-      if (this.fixture.useExistingManufacturer) {
-        const manKey = this.fixture.manufacturerKey;
-
-        if (manKey === ``) {
-          return true;
-        }
-
-        manufacturerName = manufacturers[manKey].name;
-      }
-      else {
-        manufacturerName = this.fixture.newManufacturerName;
-      }
-
-      manufacturerName = manufacturerName.trim().toLowerCase();
-
-      return manufacturerName === `` || !this.fixture.name.trim().toLowerCase().startsWith(manufacturerName);
-    }
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
+    };
   },
   watch: {
     fixture: {
-      handler: function() {
+      handler() {
         this.autoSave(`fixture`);
       },
-      deep: true
-    }
+      deep: true,
+    },
   },
   beforeMount() {
     this.$root._oflRestoreComplete = false;
   },
-  mounted() {
+  async mounted() {
+    this.applyQueryPrefillData();
+    this.applyStoredPrefillData();
+
     // let all components initialize without auto-focus
-    this.$nextTick(() => this.restoreAutoSave());
+    await this.$nextTick();
+
+    this.restoreAutoSave();
   },
   methods: {
-    switchManufacturer(useExisting) {
-      this.fixture.useExistingManufacturer = useExisting;
-      this.$nextTick(() => {
-        this.$refs[useExisting ? `existingManufacturerSelect` : `newManufacturerNameInput`].focus();
-      });
-    },
-
     addNewMode() {
       this.fixture.modes.push(getEmptyMode());
     },
@@ -407,37 +249,38 @@ export default {
     },
 
     /**
+     * Called from {@link EditorMode}.
+     * @public
      * @param {string} channelUuid The channel's UUID.
      * @returns {boolean} True if the channel's name is not used in another channel, too.
      */
     isChannelNameUnique(channelUuid) {
-      const chName = this.getChannelName(channelUuid);
+      const channelName = this.getChannelName(channelUuid);
 
       return Object.keys(this.fixture.availableChannels).every(
-        uuid => chName !== this.getChannelName(uuid) || uuid === channelUuid
+        uuid => channelName !== this.getChannelName(uuid) || uuid === channelUuid,
       );
     },
 
     /**
      * @param {string} channelUuid The channel's UUID.
-     * @param {string|null} [modeUuid] The mode's UUID. If not supplied, remove channel everywhere.
+     * @param {string | null} [modeUuid] The mode's UUID. If not supplied, remove channel everywhere.
      */
     removeChannel(channelUuid, modeUuid) {
       if (modeUuid) {
-        const mode = this.fixture.modes.find(mode => mode.uuid === modeUuid);
+        const channelMode = this.fixture.modes.find(mode => mode.uuid === modeUuid);
 
-        const channelPosition = mode.channels.indexOf(channelUuid);
+        const channelPosition = channelMode.channels.indexOf(channelUuid);
         if (channelPosition > -1) {
           // remove channel reference from mode
-          mode.channels.splice(channelPosition, 1);
+          channelMode.channels.splice(channelPosition, 1);
         }
 
         return;
       }
 
       // remove fine channels first
-      for (const chId of Object.keys(this.fixture.availableChannels)) {
-        const channel = this.fixture.availableChannels[chId];
+      for (const channel of Object.values(this.fixture.availableChannels)) {
         if (`coarseChannelId` in channel && channel.coarseChannelId === channelUuid) {
           this.removeChannel(channel.uuid);
         }
@@ -454,10 +297,10 @@ export default {
 
     /**
      * Saves the entered user data to the browser's local storage if available.
-     * @param {'fixture'|'channel'} objectName The object to save.
+     * @param {'fixture' | 'channel'} objectName The object to save.
      */
     autoSave(objectName) {
-      if (!storageAvailable || !this.readyToAutoSave) {
+      if (!this.readyToAutoSave) {
         return;
       }
 
@@ -473,16 +316,12 @@ export default {
         {
           fixture: this.fixture,
           channel: this.channel,
-          timestamp: Date.now()
-        }
+          timestamp: Date.now(),
+        },
       ]));
     },
 
     clearAutoSave() {
-      if (!storageAvailable) {
-        return;
-      }
-
       localStorage.removeItem(`autoSave`);
     },
 
@@ -490,11 +329,6 @@ export default {
      * Loads auto-saved data from browser's local storage into this component's `restoredData` property, such that a dialog is opened that lets the user choose if they want to apply or discard it.
      */
     restoreAutoSave() {
-      if (!storageAvailable) {
-        this.$root._oflRestoreComplete = true;
-        return;
-      }
-
       try {
         this.restoredData = JSON.parse(localStorage.getItem(`autoSave`)).pop();
 
@@ -502,7 +336,7 @@ export default {
           throw new Error(`this.restoredData is undefined.`);
         }
       }
-      catch (error) {
+      catch {
         this.restoredData = null;
         this.restoreComplete();
         return;
@@ -520,7 +354,40 @@ export default {
       window.scrollTo(0, 0);
     },
 
-    async onSubmit() {
+    applyQueryPrefillData() {
+      if (!this.$route.query.prefill) {
+        return;
+      }
+
+      try {
+        const prefillObject = JSON.parse(this.$route.query.prefill);
+        for (const key of Object.keys(prefillObject)) {
+          if (isPrefillable(prefillObject, key)) {
+            this.fixture[key] = prefillObject[key];
+          }
+        }
+      }
+      catch (parseError) {
+        console.log(`prefill query could not be parsed:`, this.$route.query.prefill, parseError);
+      }
+    },
+
+    applyStoredPrefillData() {
+      if (this.fixture.metaAuthor === ``) {
+        this.fixture.metaAuthor = localStorage.getItem(`prefillAuthor`) || ``;
+      }
+
+      if (this.githubUsername === ``) {
+        this.githubUsername = localStorage.getItem(`prefillGithubUsername`) || ``;
+      }
+    },
+
+    storePrefillData() {
+      localStorage.setItem(`prefillAuthor`, this.fixture.metaAuthor);
+      localStorage.setItem(`prefillGithubUsername`, this.githubUsername);
+    },
+
+    onSubmit() {
       if (this.formstate.$invalid) {
         const field = document.querySelector(`.vf-field-invalid`);
 
@@ -529,9 +396,9 @@ export default {
           align: {
             top: 0,
             left: 0,
-            topOffset: 100
+            topOffset: 100,
           },
-          isScrollable: target => target === window
+          isScrollable: target => target === window,
         }, () => field.focus());
 
         return;
@@ -542,57 +409,32 @@ export default {
         return;
       }
 
-      const sendObject = {
-        fixtures: [this.fixture]
-      };
-
-      console.log(`submit`, clone(sendObject));
-
-      // eslint-disable-next-line quotes, prefer-template
-      this.submit.rawData = '```json\n' + JSON.stringify(sendObject, null, 2) + '\n```';
-      this.submit.state = `loading`;
-
-      try {
-        const response = await this.$axios.post(`/ajax/submit-editor`, sendObject);
-
-        if (response.data.error) {
-          throw new Error(response.data.error);
-        }
-
-        this.submit.pullRequestUrl = response.data.pullRequestUrl;
-        this.submit.state = `success`;
-        this.clearAutoSave();
-      }
-      catch (error) {
-        console.error(`There was a problem with the request.`, error);
-
-        this.submit.rawData += `\n\n${error.message}`;
-        this.submit.state = `error`;
-      }
+      this.$refs.submitDialog.validate([this.fixture]);
     },
 
-    reset() {
+    onFixtureSubmitted() {
+      this.storePrefillData();
+      this.clearAutoSave();
+    },
+
+    async reset() {
       this.fixture = getEmptyFixture();
       this.channel = getEmptyChannel();
       this.honeypot = ``;
-      this.submit = {
-        state: `closed`,
-        pullRequestUrl: ``,
-        rawData: ``
-      };
+      this.applyStoredPrefillData();
 
       this.$router.push({
         path: this.$route.path,
-        query: {} // clear prefill query
+        query: {}, // clear prefill query
       });
 
-      this.$nextTick(() => {
-        this.formstate._reset();
-        this.$refs.existingManufacturerSelect.focus();
-        window.scrollTo(0, 0);
-      });
-    }
-  }
+      await this.$nextTick();
+
+      this.formstate._reset();
+      this.$refs.existingManufacturerSelect.focus();
+      window.scrollTo(0, 0);
+    },
+  },
 };
 
 /**
@@ -605,7 +447,7 @@ function isPrefillable(prefillObject, key) {
     useExistingManufacturer: `boolean`,
     manufacturerKey: `string`,
     newManufacturerRdmId: `number`,
-    rdmModelId: `number`
+    rdmModelId: `number`,
   };
 
   return key in allowedPrefillValues && typeof prefillObject[key] === allowedPrefillValues[key];

@@ -34,11 +34,6 @@
     "lens": {
       "name": "beam&aura",
       "degreesMinMax": [11, 58]
-    },
-    "focus": {
-      "type": "Head",
-      "panMax": 540,
-      "tiltMax": 232
     }
   },
   "availableChannels": {
@@ -144,10 +139,9 @@
         {
           "dmxRange": [170, 184],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
+          "shutterEffect": "Burst",
           "speedStart": "fast",
           "speedEnd": "slow",
-          "comment": "Burst",
           "menuClick": "center"
         },
         {
@@ -159,11 +153,10 @@
         {
           "dmxRange": [190, 204],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
+          "shutterEffect": "Burst",
           "speedStart": "fast",
           "speedEnd": "slow",
           "randomTiming": true,
-          "comment": "Burst",
           "menuClick": "center"
         },
         {
@@ -190,10 +183,9 @@
         {
           "dmxRange": [230, 244],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
+          "shutterEffect": "Burst",
           "speedStart": "fast",
           "speedEnd": "slow",
-          "comment": "Burst",
           "menuClick": "center"
         },
         {
@@ -1482,10 +1474,9 @@
         {
           "dmxRange": [170, 184],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
+          "shutterEffect": "Burst",
           "speedStart": "fast",
           "speedEnd": "slow",
-          "comment": "Burst",
           "menuClick": "center"
         },
         {
@@ -1497,11 +1488,10 @@
         {
           "dmxRange": [190, 204],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
+          "shutterEffect": "Burst",
           "speedStart": "fast",
           "speedEnd": "slow",
           "randomTiming": true,
-          "comment": "Burst",
           "menuClick": "center"
         },
         {
@@ -1528,10 +1518,9 @@
         {
           "dmxRange": [230, 244],
           "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
+          "shutterEffect": "Burst",
           "speedStart": "fast",
           "speedEnd": "slow",
-          "comment": "Burst",
           "menuClick": "center"
         },
         {

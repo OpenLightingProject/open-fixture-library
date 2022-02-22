@@ -1,18 +1,22 @@
-const fixtureJsonStringify = require(`../../lib/fixture-json-stringify.js`);
+import { fixtureSchema } from '../../lib/esm-shim.cjs';
+import fixtureJsonStringify from '../../lib/fixture-json-stringify.js';
+import importJson from '../../lib/import-json.js';
 
-const manufacturers = require(`../../fixtures/manufacturers.json`);
+/** @typedef {import('../../lib/model/Fixture.js').default} Fixture */
 
-module.exports.name = `Open Fixture Library JSON`;
-module.exports.version = require(`../../schemas/fixture.json`).version;
+export const version = fixtureSchema.version;
 
 /**
- * @param {array.<Fixture>} fixtures An array of Fixture objects.
+ * @param {Fixture[]} fixtures An array of Fixture objects.
  * @param {object} options Global options, including:
- * @param {string} options.baseDir Absolute path to OFL's root directory.
- * @param {Date|null} options.date The current time.
- * @returns {Promise.<array.<object>, Error>} The generated files.
-*/
-module.exports.export = function exportOfl(fixtures, options) {
+ * @param {string} options.baseDirectory Absolute path to OFL's root directory.
+ * @param {Date} options.date The current time.
+ * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @returns {Promise<object[], Error>} The generated files.
+ */
+export async function exportFixtures(fixtures, options) {
+  const displayedPluginVersion = options.displayedPluginVersion || version;
+
   const usedManufacturers = new Set();
 
   // one JSON file for each fixture
@@ -21,34 +25,36 @@ module.exports.export = function exportOfl(fixtures, options) {
 
 
     const jsonData = JSON.parse(JSON.stringify(fixture.jsonObject));
-    jsonData.$schema = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${module.exports.version}/schemas/fixture.json`;
+    jsonData.$schema = `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${displayedPluginVersion}/schemas/fixture.json`;
 
     jsonData.fixtureKey = fixture.key;
     jsonData.manufacturerKey = fixture.manufacturer.key;
-    jsonData.oflURL = `https://open-fixture-library.org/${fixture.manufacturer.key}/${fixture.key}`;
+    jsonData.oflURL = fixture.url;
 
     return {
       name: `${fixture.manufacturer.key}/${fixture.key}.json`,
       content: fixtureJsonStringify(jsonData),
       mimetype: `application/ofl-fixture`,
-      fixtures: [fixture]
+      fixtures: [fixture],
     };
   });
 
+  const manufacturers = await importJson(`../../fixtures/manufacturers.json`, import.meta.url);
+
   // manufacturers.json file
   const usedManufacturerData = {
-    $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${module.exports.version}/schemas/manufacturers.json`
+    $schema: `https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/schema-${displayedPluginVersion}/schemas/manufacturers.json`,
   };
-  for (const man of Object.keys(manufacturers).sort()) {
-    if (usedManufacturers.has(man)) {
-      usedManufacturerData[man] = manufacturers[man];
+  for (const manufacturer of Object.keys(manufacturers).sort()) {
+    if (usedManufacturers.has(manufacturer)) {
+      usedManufacturerData[manufacturer] = manufacturers[manufacturer];
     }
   }
   files.push({
     name: `manufacturers.json`,
     content: `${JSON.stringify(usedManufacturerData, null, 2)}\n`,
-    mimetype: `application/ofl-manufacturers`
+    mimetype: `application/ofl-manufacturers`,
   });
 
-  return Promise.resolve(files);
-};
+  return files;
+}

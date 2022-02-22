@@ -1,0 +1,134 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/matrix.json",
+
+  "$comment": "This file is used by another schema file and should not be used directly as a JSON schema.",
+
+  "definitions": {
+    "pixelNumberConstraintArray": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/definitions/pixelNumberConstraint" }
+    },
+    "pixelNumberConstraint": {
+      "oneOf": [
+        {
+          "$comment": "exact position",
+          "type": "string",
+          "pattern": "^=[1-9][0-9]*$"
+        },
+        {
+          "$comment": "minimum position",
+          "type": "string",
+          "pattern": "^>=[1-9][0-9]*$"
+        },
+        {
+          "$comment": "maximum position",
+          "type": "string",
+          "pattern": "^<=[1-9][0-9]*$"
+        },
+        {
+          "$comment": "position divisible by number",
+          "type": "string",
+          "pattern": "^[1-9][0-9]*n$"
+        },
+        {
+          "$comment": "position divisible by number with remainder",
+          "type": "string",
+          "pattern": "^[1-9][0-9]*n\\+[1-9][0-9]*$"
+        },
+        {
+          "const": "even"
+        },
+        {
+          "const": "odd"
+        }
+      ]
+    }
+  },
+
+  "type": "object",
+  "properties": {
+    "pixelCount": {
+      "description": "amount of pixels in X, Y and Z directions",
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "integer",
+        "minimum": 1
+      }
+    },
+    "pixelKeys": {
+      "description": "pixelKeys in a structure of arrays for the Z, Y and X directions",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              { "$ref": "definitions.json#/noVariablesString" },
+              { "type": "null" }
+            ]
+          }
+        }
+      }
+    },
+    "pixelGroups": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "$comment": "pixel group keys",
+        "$ref": "definitions.json#/noVariablesString"
+      },
+      "additionalProperties": {
+        "oneOf": [
+          {
+            "$comment": "specify pixel keys directly",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "$ref": "definitions.json#/noVariablesString"
+            }
+          },
+          {
+            "const": "all"
+          },
+          {
+            "$comment": "pixel key constraints",
+            "type": "object",
+            "minProperties": 1,
+            "properties": {
+              "x": { "$ref": "#/definitions/pixelNumberConstraintArray" },
+              "y": { "$ref": "#/definitions/pixelNumberConstraintArray" },
+              "z": { "$ref": "#/definitions/pixelNumberConstraintArray" },
+              "name": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "$comment": "pattern that pixel keys should match",
+                  "type": "string",
+                  "minLength": 1,
+                  "format": "regex"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  },
+  "oneOf": [
+    { "required": ["pixelCount"] },
+    { "required": ["pixelKeys"] }
+  ],
+  "additionalProperties": false
+}

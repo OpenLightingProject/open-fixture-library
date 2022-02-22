@@ -9,7 +9,9 @@
     "lastModifyDate": "2018-08-24"
   },
   "links": {
-    "manual": ["http://venuelightingeffects.com/wp-content/uploads/2016/03/Venue_by_Proline_TriStrip3Z_Manual.pdf"]
+    "manual": [
+      "https://venuelightingeffects.com/wp-content/uploads/2016/03/Venue_by_Proline_TriStrip3Z_Manual.pdf"
+    ]
   },
   "physical": {
     "dimensions": [1042, 60, 138],
@@ -22,9 +24,6 @@
     },
     "lens": {
       "degreesMinMax": [27, 27]
-    },
-    "focus": {
-      "type": "Fixed"
     }
   },
   "matrix": {
@@ -34,7 +33,7 @@
       ]
     ],
     "pixelGroups": {
-      "All Zones": ["Zone 1", "Zone 2", "Zone 3"]
+      "All Zones": "all"
     }
   },
   "availableChannels": {

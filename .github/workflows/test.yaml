@@ -1,0 +1,82 @@
+name: Test
+on: pull_request
+jobs:
+  required:
+    name: Required
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+      - name: Setup Node.js v14
+        uses: actions/setup-node@v2.5.1
+        with:
+          node-version: 14
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Run ESLint
+        run: npm run lint:eslint
+      - name: Run Stylelint
+        run: npm run lint:stylelint -- --formatter compact
+      - name: Run dmx-value-scaling test
+        run: npm run test:dmx-value-scaling
+      - name: Run fixtures-valid test
+        run: npm run test:fixtures-valid
+      - name: Run http-status test
+        run: npm run test:http-status
+      - name: Run built-files-committed test
+        run: npm run test:built-files-committed
+  status:
+    name: Status
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    env:
+      GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
+      GITHUB_PR_HEAD_REF: origin/${{ github.head_ref }}
+      GITHUB_PR_BASE_REF: origin/${{ github.base_ref }}
+      GITHUB_USER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: 0 # complete history for all branches and tags
+      - name: Setup Node.js v14
+        uses: actions/setup-node@v2.5.1
+        with:
+          node-version: 14
+          cache: 'npm'
+      - name: Install dependencies
+        run: |
+          sudo pip install lxml # for QLC+ fixture-tool-validation export test
+          npm ci
+      - name: Build
+        run: npm run build
+      - name: Run export-diff test
+        run: node tests/github/export-diff.js
+      - name: Run exports-valid test
+        run: node tests/github/exports-valid.js
+      - name: Run schema-version-reminder
+        run: node tests/github/schema-version-reminder.js
+  markdown-link-check:
+    name: Markdown Links
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+      - name: Check Markdown Links in modified files
+        uses: gaurav-nelson/github-action-markdown-link-check@1.0.13
+        with:
+          use-verbose-mode: 'yes'
+          check-modified-files-only: 'yes'
+          base-branch: 'master'

@@ -1,0 +1,127 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED THA-100F",
+  "shortName": "EuroliteTHA100F",
+  "categories": ["Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["RAZAKANIRINA"],
+    "createDate": "2019-04-15",
+    "lastModifyDate": "2019-04-15"
+  },
+  "links": {
+    "manual": [
+      "https://www.steinigke.de/download/41602125-Manual-90256-1.10-eurolite-led-tha-100f-theatre-spot-de_en.pdf"
+    ],
+    "productPage": [
+      "https://www.steinigke.de/en/mpn41602125-eurolite-led-tha-100f-theatre-spot.html"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=EByMlz4lq94"
+    ]
+  },
+  "physical": {
+    "dimensions": [305.0, 369.5, 387.3],
+    "weight": 5.5,
+    "power": 120,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "COB warm white 100W LED",
+      "colorTemperature": 3200
+    },
+    "lens": {
+      "degreesMinMax": [10, 50]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Dimmer Curve": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Maintenance",
+          "comment": "Control Board setting"
+        },
+        {
+          "dmxRange": [16, 45],
+          "type": "Maintenance",
+          "comment": "Linear (halogen)"
+        },
+        {
+          "dmxRange": [46, 75],
+          "type": "Maintenance",
+          "comment": "Square (halogen)"
+        },
+        {
+          "dmxRange": [76, 105],
+          "type": "Maintenance",
+          "comment": "Inverse (halogen)"
+        },
+        {
+          "dmxRange": [106, 135],
+          "type": "Maintenance",
+          "comment": "S-shaped (halogen)"
+        },
+        {
+          "dmxRange": [136, 165],
+          "type": "Maintenance",
+          "comment": "Linear (LED)"
+        },
+        {
+          "dmxRange": [166, 195],
+          "type": "Maintenance",
+          "comment": "Square (LED)"
+        },
+        {
+          "dmxRange": [196, 225],
+          "type": "Maintenance",
+          "comment": "Inverse (LED)"
+        },
+        {
+          "dmxRange": [226, 255],
+          "type": "Maintenance",
+          "comment": "S-shaped (LED)"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Dimmer Curve"
+      ]
+    },
+    {
+      "name": "1-channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}

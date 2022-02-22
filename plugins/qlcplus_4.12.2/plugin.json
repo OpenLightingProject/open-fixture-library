@@ -1,0 +1,40 @@
+{
+  "$schema": "../../schemas/plugin.json",
+
+  "name": "QLC+ 4.12.2",
+  "previousVersions": {
+    "qlcplus": "QLC+",
+    "qlcplus_4.11.2": "QLC+ 4.11.2",
+    "qlcplus_4.12.0": "QLC+ 4.12.0",
+    "qlcplus_4.12.1": "QLC+ 4.12.1"
+  },
+  "description": [
+    "<p><em>Q Light Controller+</em> is a feature-rich open-source lighting",
+    "software. This plugin works with QLC+ version 4.12.2 and above.",
+    "It is already future-proof for upcoming version 5 (alpha).</p>"
+  ],
+  "links": {
+    "Website": "https://www.qlcplus.org/",
+    "Fixture library download": "https://github.com/mcallegari/qlcplus/tree/master/resources/fixtures",
+    "User fixtures in the forum": "https://www.qlcplus.org/forum/viewforum.php?f=3"
+  },
+  "fixtureUsage": [
+    "<p>Copy the <code>.qxf</code> files into the <code>fixtures</code>",
+    "subdirectory of the user library directory.</p>"
+  ],
+  "fileLocations": {
+    "subDirectoriesAllowed": false,
+    "Windows": {
+      "main": "C:\\QLC+",
+      "user": "C:\\Users\\[user name]\\QLC+"
+    },
+    "Mac OS": {
+      "main": "/Applications/QLC+.app/Contents/Resources",
+      "user": "~/Library/Application Support/QLC+"
+    },
+    "Linux": {
+      "main": "/usr/share/qlcplus",
+      "user": "~/.qlcplus"
+    }
+  }
+}

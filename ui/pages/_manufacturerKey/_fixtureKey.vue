@@ -1,160 +1,65 @@
 <template>
   <div>
-    <script type="application/ld+json" v-html="productModelStructuredData" />
-    <script type="application/ld+json" v-html="breadcrumbListStructuredData" />
-
-    <header class="fixture-header">
-      <div class="title">
+    <FixtureHeader>
+      <template #title>
         <h1>
-          <nuxt-link :to="`/${fixture.manufacturer.key}`">{{ fixture.manufacturer.name }}</nuxt-link>
+          <NuxtLink :to="`/${manufacturerKey}`">{{ fixture.manufacturer.name }}</NuxtLink>
           {{ fixture.name }}
           <code v-if="fixture.hasShortName">{{ fixture.shortName }}</code>
         </h1>
 
         <section class="fixture-meta">
-          <span class="last-modify-date">Last modified:&nbsp;<span v-html="lastModifyDate" /></span>
-          <span class="create-date">Created:&nbsp;<span v-html="createDate" /></span>
+          <span class="last-modify-date">Last modified:&nbsp;<OflTime :date="fixture.meta.lastModifyDate" /></span>
+          <span class="create-date">Created:&nbsp;<OflTime :date="fixture.meta.createDate" /></span>
           <span class="authors">Author{{ fixture.meta.authors.length === 1 ? `` : `s` }}:&nbsp;{{ fixture.meta.authors.join(`, `) }}</span>
-          <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manKey}/${fixKey}.json`">Source</a></span>
-          <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manKey}/${fixKey}.json`">Revisions</a></span>
+          <span class="source"><a :href="`${githubRepoPath}/blob/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Source</a></span>
+          <span class="revisions"><a :href="`${githubRepoPath}/commits/${branch}/fixtures/${manufacturerKey}/${fixtureKey}.json`">Revisions</a></span>
 
-          <app-conditional-details v-if="fixture.meta.importPlugin !== null">
-            <template slot="summary">Imported using the {{ plugins.data[fixture.meta.importPlugin].name }} plugin on <span v-html="getDateHtml(fixture.meta.importDate)" />.</template>
+          <ConditionalDetails v-if="fixture.meta.importPlugin !== null">
+            <template #summary>
+              Imported using the <NuxtLink :to="`/about/plugins/${fixture.meta.importPlugin}`">{{ plugins.data[fixture.meta.importPlugin].name }} plugin</NuxtLink> on <OflTime :date="fixture.meta.importDate" />.
+            </template>
             <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>
-          </app-conditional-details>
+          </ConditionalDetails>
         </section>
-      </div>
+      </template>
 
-      <app-download-button :download="`${manKey}/${fixKey}`" />
-    </header>
+      <DownloadButton :fixture-key="`${manufacturerKey}/${fixtureKey}`" show-help />
+    </FixtureHeader>
 
     <section v-if="redirect" class="card yellow">
       Redirected from <code>{{ redirect.from }}</code>: {{ redirect.reason }}
     </section>
 
-    <section :style="{ borderTopColor: manufacturerColor }" class="fixture-info card">
-
-      <app-labeled-value
-        name="categories"
-        label="Categories">
-        <app-category-badge
-          v-for="cat in fixture.categories"
-          :key="cat"
-          :category="cat" />
-      </app-labeled-value>
-
-      <app-labeled-value
-        v-if="fixture.hasComment"
-        :value="fixture.comment"
-        name="comment"
-        label="Comment" />
-
-      <section v-if="videos" class="fixture-videos">
-        <div v-for="video in videos" :key="video.url" class="fixture-video">
-          <embetty-video
-            :type="video.type"
-            :video-id="video.videoId"
-            :start-at="video.startAt" />
-          <a
-            :href="video.url"
-            rel="nofollow"
-            target="_blank">
-            <app-svg name="youtube" />
-            Watch video at {{ video.displayType }}
-          </a>
-        </div>
-      </section>
-
-      <app-labeled-value
-        v-if="fixture.links !== null"
-        name="links"
-        label="Relevant links">
-        <ul class="fixture-links">
-          <li v-for="link in links" :key="`${link.type}-${link.url}`" :class="`link-${link.type}`">
-            <a
-              :href="link.url"
-              :title="link.title"
-              rel="nofollow"
-              target="_blank">
-              <app-svg :name="link.iconName" />
-              {{ link.name }}
-              <span v-if="link.type !== `other`" class="hostname">({{ link.hostname }})</span>
-            </a>
-          </li>
-        </ul>
-      </app-labeled-value>
-
-      <app-fixture-help-wanted
-        v-if="fixture.isHelpWanted"
-        :context="fixture"
-        @helpWantedClicked="helpWantedContext = $event" />
-
-      <app-labeled-value
-        v-if="fixture.rdm !== null"
-        name="rdm">
-        <template slot="label">
-          <abbr title="Remote Device Management">RDM</abbr> data
-        </template>
-
-        {{ fixture.manufacturer.rdmId }} /
-        {{ fixture.rdm.modelId }} /
-        {{ `softwareVersion` in fixture.rdm ? fixture.rdm.softwareVersion : `?` }} –
-        <a :href="`http://rdm.openlighting.org/model/display?manufacturer=${fixture.manufacturer.rdmId}&model=${fixture.rdm.modelId}`" rel="nofollow">
-          <app-svg name="ola" /> View in Open Lighting RDM database
-        </a>
-        <span class="hint">manufacturer ID / model ID / software version</span>
-      </app-labeled-value>
-
-      <template v-if="fixture.physical !== null">
-        <h3 class="physical">Physical data</h3>
-        <section class="physical">
-          <app-fixture-physical :physical="fixture.physical" />
-        </section>
-      </template>
-
-      <template v-if="fixture.matrix !== null">
-        <h3 class="matrix">Matrix</h3>
-        <section class="matrix">
-          <app-fixture-matrix :matrix="fixture.matrix" :physical="fixture.physical" />
-        </section>
-      </template>
-
-      <template v-if="fixture.wheels.length > 0">
-        <h3 class="wheels">Wheels</h3>
-        <section class="wheels">
-          <app-fixture-wheel v-for="wheel in fixture.wheels" :key="wheel.name" :wheel="wheel" />
-        </section>
-      </template>
-
-    </section>
-
-    <section class="fixture-modes">
-      <app-fixture-mode
-        v-for="(mode, index) in fixture.modes"
-        :key="mode.name"
-        :mode="mode"
-        :index="index"
-        @helpWantedClicked="helpWantedContext = $event" />
-      <div class="clearfix" />
-    </section>
+    <FixturePage
+      :fixture="fixture"
+      :load-all-modes="`loadAllModes` in $route.query"
+      @help-wanted-clicked="openHelpWantedDialog($event)" />
 
     <section id="contribute">
       <h2>Something wrong with this fixture definition?</h2>
       <p>It does not work in your lighting software or you see another problem? Then please help correct it!</p>
-      <div class="grid-3 list">
+      <div class="grid-3">
         <a
           v-if="isBrowser"
           href="#"
-          class="card"
-          @click.prevent="helpWantedContext = fixture">
-          <app-svg name="comment-alert" class="left" /><span>Send information</span>
+          class="card slim"
+          @click.prevent="() => openHelpWantedDialog({
+            context: fixture,
+            type: `fixture`,
+          })">
+          <OflSvg name="comment-alert" class="left" /><span>Send information</span>
         </a>
-        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Atype-bug" rel="nofollow" class="card"><app-svg name="bug" class="left" /><span>Create issue on GitHub</span></a>
-        <a :href="mailtoUrl" class="card"><app-svg name="email" class="left" /><span>Send email</span></a>
+        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues?q=is%3Aopen+is%3Aissue+label%3Abug" rel="nofollow" class="card slim">
+          <OflSvg name="bug" class="left" /><span>Create issue on GitHub</span>
+        </a>
+        <a :href="mailtoUrl" class="card slim">
+          <OflSvg name="email" class="left" /><span>Send email</span>
+        </a>
       </div>
     </section>
 
-    <app-fixture-help-wanted-dialog v-model="helpWantedContext" />
+    <HelpWantedDialog v-model="helpWantedContext" :type="helpWantedType" />
   </div>
 </template>
 
@@ -162,189 +67,112 @@
 .fixture-meta {
   margin: -1.5rem 0 1rem;
   font-size: 0.8rem;
-  color: $secondary-text-dark;
+  color: theme-color(text-secondary);
 
   & > span:not(:last-child)::after {
-    content: ' | ';
     padding: 0 0.7ex;
-  }
-}
-
-.fixture-info {
-  border-top: 0.4rem solid transparent;
-}
-
-.comment /deep/ .value {
-  white-space: pre-line;
-}
-
-.fixture-videos {
-  text-align: center;
-  line-height: 1;
-  margin: 1rem 0 0;
-  padding: 0;
-}
-.fixture-video {
-  margin-bottom: 1rem;
-
-  @media screen and (min-width: $phone-landscape) {
-    display: inline-block;
-    width: 50%;
-  }
-
-  & a {
-    display: inline-block;
-    margin-top: 4px;
-  }
-}
-
-.fixture-links {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-
-  .hostname {
-    color: $secondary-text-dark;
-    font-size: 0.9em;
-    padding-left: 1ex;
-  }
-
-  .link-other {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
-
-.wheels {
-  white-space: nowrap;
-  overflow: hidden;
-  overflow-x: auto;
-}
-
-#contribute:target {
-  animation: contribute-highlight 1.5s ease;
-  animation-delay: 0.5s;
-  animation-fill-mode: backwards;
-}
-
-@keyframes contribute-highlight {
-  0% {
-    background-color: $blue-100;
-    box-shadow: 0 0 3px 5px $blue-100;
-  }
-  35% {
-    background-color: $blue-100;
-    box-shadow: 0 0 3px 5px $blue-100;
-  }
-  100% {
-    background-color: $grey-200; // page background color
-    box-shadow: 0 0 3px 5px $grey-200;
+    content: " | ";
   }
 }
 </style>
 
 <script>
-import packageJson from '~~/package.json';
-import register from '~~/fixtures/register.json';
-import plugins from '~~/plugins/plugins.json';
+import register from '../../../fixtures/register.json';
 
-import schemaProperties from '~~/lib/schema-properties.js';
-import Fixture from '~~/lib/model/Fixture.mjs';
+import Fixture from '../../../lib/model/Fixture.js';
+import Manufacturer from '../../../lib/model/Manufacturer.js';
 
-import svg from '~/components/svg.vue';
-import categoryBadge from '~/components/category-badge.vue';
-import conditionalDetailsVue from '~/components/conditional-details.vue';
-import downloadButtonVue from '~/components/download-button.vue';
-import fixturePhysical from '~/components/fixture-physical.vue';
-import fixtureHelpWanted from '~/components/fixture-help-wanted.vue';
-import fixtureHelpWantedDialog from '~/components/fixture-help-wanted-dialog.vue';
-import fixtureMatrix from '~/components/fixture-matrix.vue';
-import fixtureWheel from '~/components/fixture-wheel.vue';
-import fixtureMode from '~/components/fixture-mode.vue';
-import labeledValueVue from '~/components/labeled-value.vue';
+import ConditionalDetails from '../../components/ConditionalDetails.vue';
+import DownloadButton from '../../components/DownloadButton.vue';
+import FixturePage from '../../components/fixture-page/FixturePage.vue';
+import FixtureHeader from '../../components/FixtureHeader.vue';
+import HelpWantedDialog from '../../components/HelpWantedDialog.vue';
 
-import fixtureLinksMixin from '~/assets/scripts/fixture-links-mixin.mjs';
-
-const VIDEOS_TO_EMBED = 2;
+const redirectReasonExplanations = {
+  FixtureRenamed: `The fixture was renamed.`,
+  SameAsDifferentBrand: `The fixture is the same but sold under different brands / names.`,
+};
 
 export default {
   components: {
-    'app-svg': svg,
-    'app-category-badge': categoryBadge,
-    'app-conditional-details': conditionalDetailsVue,
-    'app-download-button': downloadButtonVue,
-    'app-fixture-physical': fixturePhysical,
-    'app-fixture-help-wanted': fixtureHelpWanted,
-    'app-fixture-help-wanted-dialog': fixtureHelpWantedDialog,
-    'app-fixture-matrix': fixtureMatrix,
-    'app-fixture-wheel': fixtureWheel,
-    'app-fixture-mode': fixtureMode,
-    'app-labeled-value': labeledValueVue
+    ConditionalDetails,
+    DownloadButton,
+    FixturePage,
+    FixtureHeader,
+    HelpWantedDialog,
   },
-  mixins: [fixtureLinksMixin],
   validate({ params }) {
     return `${params.manufacturerKey}/${params.fixtureKey}` in register.filesystem;
   },
-  async asyncData({ params, query, app, redirect }) {
-    const manKey = params.manufacturerKey;
-    const fixKey = params.fixtureKey;
+  async asyncData({ params, query, $axios, redirect, error }) {
+    const { manufacturerKey, fixtureKey } = params;
 
-    const redirectTo = register.filesystem[`${manKey}/${fixKey}`].redirectTo;
+    const redirectTo = register.filesystem[`${manufacturerKey}/${fixtureKey}`].redirectTo;
     if (redirectTo) {
-      redirect(301, `/${redirectTo}?redirectFrom=${manKey}/${fixKey}`);
-      return {};
+      return redirect(302, `/${redirectTo}?redirectFrom=${manufacturerKey}/${fixtureKey}`);
     }
 
-    const fixtureJson = await app.$axios.$get(`/${manKey}/${fixKey}.json`);
-
-    let redirectObj = null;
-    if (query.redirectFrom) {
-      const redirectJson = await app.$axios.$get(`/${query.redirectFrom}.json`);
-
-      const reasonExplanations = {
-        FixtureRenamed: `The fixture was renamed by the manufacturer.`,
-        SameAsDifferentBrand: `The fixture is the same but sold under different brands / names.`
-      };
-
-      redirectObj = {
-        from: query.redirectFrom,
-        reason: reasonExplanations[redirectJson.reason]
-      };
+    let fixtureJson;
+    let manufacturerJson;
+    let plugins;
+    let redirectObject;
+    try {
+      [fixtureJson, manufacturerJson, plugins, redirectObject] = await Promise.all([
+        $axios.$get(`/${manufacturerKey}/${fixtureKey}.json`),
+        $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`),
+        $axios.$get(`/api/v1/plugins`),
+        fetchRedirectObject($axios, query.redirectFrom),
+      ]);
+    }
+    catch (requestError) {
+      return error(requestError);
     }
 
     return {
-      manKey,
-      manufacturerColor: register.colors[manKey],
-      fixKey,
+      plugins,
+      manufacturerKey,
+      manufacturerJson,
+      fixtureKey,
       fixtureJson,
-      redirect: redirectObj
+      redirect: redirectObject,
     };
   },
   data() {
     return {
-      plugins,
       isBrowser: false,
-      helpWantedContext: null
+      helpWantedContext: null,
+      helpWantedType: ``,
+    };
+  },
+  head() {
+    const title = `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`;
+
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
+      script: [
+        {
+          hid: `productModelStructuredData`,
+          type: `application/ld+json`,
+          json: this.productModelStructuredData,
+        },
+        {
+          hid: `breadcrumbListStructuredData`,
+          type: `application/ld+json`,
+          json: this.breadcrumbListStructuredData,
+        },
+      ],
     };
   },
   computed: {
     fixture() {
-      return new Fixture(this.manKey, this.fixKey, this.fixtureJson);
-    },
-    lastModifyDate() {
-      return this.getDateHtml(this.fixture.meta.lastModifyDate);
-    },
-    createDate() {
-      return this.getDateHtml(this.fixture.meta.createDate);
-    },
-    githubRepoPath() {
-      const slug = process.env.TRAVIS_PULL_REQUEST_SLUG || process.env.TRAVIS_REPO_SLUG || `OpenLightingProject/open-fixture-library`;
-
-      return `https://github.com/${slug}`;
-    },
-    branch() {
-      return process.env.TRAVIS_PULL_REQUEST_BRANCH || process.env.TRAVIS_BRANCH || `master`;
+      const manufacturer = new Manufacturer(this.manufacturerKey, this.manufacturerJson);
+      return new Fixture(manufacturer, this.fixtureKey, this.fixtureJson);
     },
     productModelStructuredData() {
       const data = {
@@ -353,8 +181,8 @@ export default {
         'name': this.fixture.name,
         'category': this.fixture.mainCategory,
         'manufacturer': {
-          'url': `${packageJson.homepage}${this.fixture.manufacturer.key}`
-        }
+          'url': `${this.$config.websiteUrl}${this.manufacturerKey}`,
+        },
       };
 
       if (this.fixture.hasComment) {
@@ -378,156 +206,69 @@ export default {
             '@type': `ListItem`,
             'position': 1,
             'item': {
-              '@id': `${packageJson.homepage}manufacturers`,
-              'name': `Manufacturers`
-            }
+              '@id': `${this.$config.websiteUrl}manufacturers`,
+              'name': `Manufacturers`,
+            },
           },
           {
             '@type': `ListItem`,
             'position': 2,
             'item': {
-              '@id': `${packageJson.homepage}${this.fixture.manufacturer.key}`,
-              'name': this.fixture.manufacturer.name
-            }
+              '@id': `${this.$config.websiteUrl}${this.manufacturerKey}`,
+              'name': this.fixture.manufacturer.name,
+            },
           },
           {
             '@type': `ListItem`,
             'position': 3,
             'item': {
               '@id': this.fixture.url,
-              'name': this.fixture.name
-            }
-          }
-        ]
+              'name': this.fixture.name,
+            },
+          },
+        ],
       };
     },
-
-    /**
-     * @returns {array.<object>} Array of videos that can be embetted.
-     */
-    videos() {
-      const videoUrls = this.fixture.getLinksOfType(`video`);
-      const embettableVideoData = [];
-
-      /**
-       * YouTube videos can be in one of the following formats:
-       * - https://www.youtube.com/watch?v={videoId}&otherParameters
-       * - https://youtu.be/{videoId]}?otherParameters
-       */
-      const youtubeRegex = /^https:\/\/(?:www\.youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]t=([0-9hms]+))?/;
-
-      /**
-       * Vimeo videos can be in one of the following formats:
-       * - https://vimeo.com/{videoId}
-       * - https://vimeo.com/channels/{channelName}/{videoId}
-       * - https://vimeo.com/groups/{groupId}/videos/{videoId}
-       */
-      const vimeoRegex = /^https:\/\/vimeo.com\/(?:channels\/[^/]+\/|groups\/[^/]+\/videos\/)?(\d+)(?:#t=([0-9hms]+))?/;
-
-      for (const url of videoUrls) {
-        if (embettableVideoData.length === VIDEOS_TO_EMBED) {
-          break;
-        }
-
-        let match = url.match(youtubeRegex);
-        if (match !== null) {
-          embettableVideoData.push({
-            url,
-            type: `youtube`,
-            displayType: `YouTube`,
-            videoId: match[1],
-            startAt: match[2] || 0
-          });
-          continue;
-        }
-
-        match = url.match(vimeoRegex);
-        if (match !== null) {
-          embettableVideoData.push({
-            url,
-            type: `vimeo`,
-            displayType: `Vimeo`,
-            videoId: match[1],
-            startAt: match[2] || 0
-          });
-          continue;
-        }
-      }
-
-      return embettableVideoData;
+    githubRepoPath() {
+      const slug = process.env.GITHUB_REPOSITORY || `OpenLightingProject/open-fixture-library`;
+      return `https://github.com/${slug}`;
     },
-
-    links() {
-      const links = [];
-
-      for (const linkType of Object.keys(schemaProperties.links)) {
-        let linkDisplayNumber = 1;
-        let linksOfType = this.fixture.getLinksOfType(linkType);
-
-        if (linkType === `video`) {
-          linksOfType = linksOfType.filter(
-            url => !this.videos.some(video => video.url === url)
-          );
-          linkDisplayNumber += this.videos.length;
-        }
-
-        for (const url of linksOfType) {
-          let name = this.linkTypeNames[linkType];
-          const title = `${name} at ${url}`;
-
-          if (linkType === `other`) {
-            name = url;
-          }
-          else if (linkDisplayNumber > 1) {
-            name += ` ${linkDisplayNumber}`;
-          }
-
-          links.push({
-            url,
-            name,
-            title,
-            type: linkType,
-            iconName: this.linkTypeIconNames[linkType],
-            hostname: this.getHostname(url)
-          });
-
-          linkDisplayNumber++;
-        }
-      }
-
-      return links;
+    branch() {
+      const gitRef = process.env.GITHUB_PR_BASE_REF || process.env.GITHUB_REF || `master`;
+      // e.g. for `refs/heads/feature-branch-1`, return `feature-branch-1`
+      return gitRef.split(`/`).pop();
     },
     mailtoUrl() {
-      const subject = `Feedback for fixture '${this.manKey}/${this.fixKey}'`;
+      const subject = `Feedback for fixture '${this.manufacturerKey}/${this.fixtureKey}'`;
       return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}`;
-    }
-  },
-  head() {
-    return {
-      title: `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`
-    };
+    },
   },
   mounted() {
-    if (process.browser) {
-      this.isBrowser = true;
-    }
+    this.isBrowser = true;
   },
   methods: {
-    getHostname(url) {
-      // adapted from https://stackoverflow.com/a/21553982/451391
-      const match = url.match(/^.*?\/\/(?:([^:/?#]*)(?::([0-9]+))?)/);
-      return match ? match[1] : url;
+    openHelpWantedDialog(event) {
+      this.helpWantedContext = event.context;
+      this.helpWantedType = event.type;
     },
-
-    /**
-     * Format a date to display as a <time> HTML tag.
-     * @param {Date} date The Date object to format.
-     * @returns {string} The <time> HTML tag.
-     */
-    getDateHtml(date) {
-      return `<time datetime="${date.toISOString()}" title="${date.toISOString()}">${date.toISOString().replace(/T.*?$/, ``)}</time>`;
-    }
-  }
+  },
 };
 
+/**
+ * @param {any} axios The Axios instance.
+ * @param {string | undefined} redirectFrom The query parameter with the original request's fixture key.
+ * @returns {object} The redirect object.
+ */
+async function fetchRedirectObject(axios, redirectFrom) {
+  if (!redirectFrom) {
+    return undefined;
+  }
+
+  const redirectJson = await axios.$get(`/${redirectFrom}.json`);
+
+  return {
+    from: redirectFrom,
+    reason: redirectReasonExplanations[redirectJson.reason],
+  };
+}
 </script>

@@ -1,0 +1,197 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Box LEDs Batterie 6x15W",
+  "shortName": "PL-BOXBHF6X15W",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["STUDIO5", "Flo Edelmann"],
+    "createDate": "2020-03-24",
+    "lastModifyDate": "2020-03-24"
+  },
+  "links": {
+    "manual": [
+      "https://www.phocealight.fr/index.php?controller=attachment&id_attachment=6"
+    ],
+    "productPage": [
+      "https://www.phocealight.fr/pars-leds-batterie/25-77-box-batterie-6x15w.html#/30-couleur-noir"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=RMeX3Y-FwzA"
+    ]
+  },
+  "physical": {
+    "dimensions": [170, 230, 170],
+    "weight": 2.4,
+    "power": 110,
+    "bulb": {
+      "type": "6× 15W RGBWA+UV LEDs"
+    },
+    "lens": {
+      "degreesMinMax": [30, 35]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Color / Program Speed": "Color"
+          }
+        },
+        {
+          "dmxRange": [10, 49],
+          "type": "Maintenance",
+          "comment": "Color selection",
+          "switchChannels": {
+            "Color / Program Speed": "Color"
+          }
+        },
+        {
+          "dmxRange": [50, 99],
+          "type": "NoFunction",
+          "helpWanted": "What does happen in this DMX range?",
+          "switchChannels": {
+            "Color / Program Speed": "Color"
+          }
+        },
+        {
+          "dmxRange": [100, 169],
+          "type": "NoFunction",
+          "helpWanted": "What does happen in this DMX range?",
+          "switchChannels": {
+            "Color / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [170, 209],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "soundControlled": true,
+          "switchChannels": {
+            "Color / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [210, 239],
+          "type": "Effect",
+          "effectName": "Sound pulse + strobe",
+          "soundControlled": true,
+          "switchChannels": {
+            "Color / Program Speed": "Program Speed"
+          }
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Sound strobe",
+          "soundControlled": true,
+          "switchChannels": {
+            "Color / Program Speed": "Program Speed"
+          }
+        }
+      ]
+    },
+    "Color": {
+      "capability": {
+        "type": "ColorPreset",
+        "helpWanted": "Which colors can be selected at which DMX values?"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    },
+    {
+      "name": "10-channel",
+      "shortName": "10ch",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Mode",
+        "Color / Program Speed"
+      ]
+    }
+  ]
+}

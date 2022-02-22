@@ -1,0 +1,1894 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "A.leda B-EYE K20",
+  "shortName": "A.leda B-EYE K20",
+  "categories": ["Moving Head", "Color Changer"],
+  "meta": {
+    "authors": ["Sebastian Portilla", "Felix Edelmann"],
+    "createDate": "2019-09-10",
+    "lastModifyDate": "2019-09-10"
+  },
+  "links": {
+    "manual": [
+      "https://www.claypaky.it/media/documents/HR_A.leda_B-Eye_K10-K20_Manual_08.2016_EN.pdf"
+    ],
+    "productPage": [
+      "https://www.claypaky.it/en/products/b-eye-k20"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=8pmvT2FVHec"
+    ]
+  },
+  "physical": {
+    "dimensions": [395, 476, 330],
+    "weight": 21,
+    "power": 555,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "Osram Ostar 15W RGBW LED",
+      "lumens": 9800
+    },
+    "lens": {
+      "degreesMinMax": [4, 60]
+    }
+  },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [null, null, null, null, null, null, "28", null, "29", null, null, null, null, null, null],
+        [null, null, null, null, "27", null, null, null, null, null, "30", null, null, null, null],
+        [null, null, "26", null, null, null, "13", null, "14", null, null, null, "31", null, null],
+        [null, null, null, null, "12", null, null, null, null, null, "15", null, null, null, null],
+        [null, "25", null, null, null, null,  "4", null,  "5", null, null, null, null, "32", null],
+        [null, null, null, "11", null, null, null, null, null, null, null, "16", null, null, null],
+        ["24", null, null, null, null,  "3", null,  "1", null,  "6", null, null, null, null, "33"],
+        [null, null, null, "10", null, null, null, null, null, null, null, "17", null, null, null],
+        [null, "23", null, null, null, null,  "2", null,  "7", null, null, null, null, "34", null],
+        [null, null, null, null,  "9", null, null, null, null, null, "18", null, null, null, null],
+        [null, null, "22", null, null, null,  "8", null, "19", null, null, null, "35", null, null],
+        [null, null, null, null, "21", null, null, null, null, null, "36", null, null, null, null],
+        [null, null, null, null, null, null, "20", null, "37", null, null, null, null, null, null]
+      ]
+    ],
+    "pixelGroups": {
+      "Master": "all",
+      "Shape": "all",
+      "Foreground": "all",
+      "Background": "all"
+    }
+  },
+  "availableChannels": {
+    "Linear CTO": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8000K",
+          "colorTemperatureEnd": "2500K"
+        }
+      ]
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#f4ffa4"],
+          "colorTemperature": "7000K"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffe48c"],
+          "colorTemperature": "3700K"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffbc6e"],
+          "colorTemperature": "5000K"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "ColorPreset",
+          "comment": "Black",
+          "colors": ["#000000"]
+        },
+        {
+          "dmxRange": [20, 22],
+          "type": "ColorPreset",
+          "comment": "LEE 10 Medium Yellow",
+          "colors": ["#9c7e00"]
+        },
+        {
+          "dmxRange": [23, 26],
+          "type": "ColorPreset",
+          "comment": "LEE 13 Straw Tint",
+          "colors": ["#987309"]
+        },
+        {
+          "dmxRange": [27, 28],
+          "type": "ColorPreset",
+          "comment": "LEE 17 Surprise Peach",
+          "colors": ["#c67209"]
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "ColorPreset",
+          "comment": "LEE 19 Fire",
+          "colors": ["#ff3800"]
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "ColorPreset",
+          "comment": "LEE 20 Medium Amber",
+          "colors": ["#ff8700"]
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "ColorPreset",
+          "comment": "LEE 21 Gold Amber",
+          "colors": ["#ff6400"]
+        },
+        {
+          "dmxRange": [32, 34],
+          "type": "ColorPreset",
+          "comment": "LEE 22 Dark Amber",
+          "colors": ["#ff4100"]
+        },
+        {
+          "dmxRange": [35, 44],
+          "type": "ColorPreset",
+          "comment": "LEE 25 Sunrise Red",
+          "colors": ["#ff5302"]
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "ColorPreset",
+          "comment": "LEE 35 Light Pink",
+          "colors": ["#ffa35b"]
+        },
+        {
+          "dmxRange": [46, 48],
+          "type": "ColorPreset",
+          "comment": "LEE 36 Medium Pink",
+          "colors": ["#ff894b"]
+        },
+        {
+          "dmxRange": [49, 61],
+          "type": "ColorPreset",
+          "comment": "LEE 39 Pink Carnation",
+          "colors": ["#ff9d56"]
+        },
+        {
+          "dmxRange": [62, 67],
+          "type": "ColorPreset",
+          "comment": "LEE 52 Light Lavender",
+          "colors": ["#ffb689"]
+        },
+        {
+          "dmxRange": [68, 77],
+          "type": "ColorPreset",
+          "comment": "LEE 58 Lavender",
+          "colors": ["#ffb6c0"]
+        },
+        {
+          "dmxRange": [78, 88],
+          "type": "ColorPreset",
+          "comment": "LEE 68 Sky Blue",
+          "colors": ["#00ff87"]
+        },
+        {
+          "dmxRange": [89, 99],
+          "type": "ColorPreset",
+          "comment": "LEE 79 Just Blue",
+          "colors": ["#00c282"]
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "LEE 90 Dark Yellow Green",
+          "colors": ["#29db00"]
+        },
+        {
+          "dmxRange": [110, 111],
+          "type": "ColorPreset",
+          "comment": "LEE 100 Spring Yellow",
+          "colors": ["#f5ca00"]
+        },
+        {
+          "dmxRange": [112, 112],
+          "type": "ColorPreset",
+          "comment": "LEE 102 Light Amber",
+          "colors": ["#eda300"]
+        },
+        {
+          "dmxRange": [113, 113],
+          "type": "ColorPreset",
+          "comment": "LEE 103 Straw",
+          "colors": ["#ffc33b"]
+        },
+        {
+          "dmxRange": [114, 114],
+          "type": "ColorPreset",
+          "comment": "LEE 104 Deep Amber",
+          "colors": ["#ffa600"]
+        },
+        {
+          "dmxRange": [115, 116],
+          "type": "ColorPreset",
+          "comment": "LEE 105 Orange",
+          "colors": ["#ff7a00"]
+        },
+        {
+          "dmxRange": [117, 117],
+          "type": "ColorPreset",
+          "comment": "LEE 107 Light Rose",
+          "colors": ["#ff8d1f"]
+        },
+        {
+          "dmxRange": [118, 118],
+          "type": "ColorPreset",
+          "comment": "LEE 108 English Rose",
+          "colors": ["#ff9417"]
+        },
+        {
+          "dmxRange": [119, 119],
+          "type": "ColorPreset",
+          "comment": "LEE 109 Light Salmon",
+          "colors": ["#ff8a1f"]
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "ColorPreset",
+          "comment": "LEE 110 Middle Rose",
+          "colors": ["#d9821c"]
+        },
+        {
+          "dmxRange": [121, 122],
+          "type": "ColorPreset",
+          "comment": "LEE 111 Dark Pink",
+          "colors": ["#ff6d21"]
+        },
+        {
+          "dmxRange": [123, 124],
+          "type": "ColorPreset",
+          "comment": "LEE 113 Magenta",
+          "colors": ["#ff140f"]
+        },
+        {
+          "dmxRange": [125, 125],
+          "type": "ColorPreset",
+          "comment": "LEE 115 Peacock Blue",
+          "colors": ["#33ff33"]
+        },
+        {
+          "dmxRange": [126, 126],
+          "type": "ColorPreset",
+          "comment": "LEE 116 Med Blue Green",
+          "colors": ["#ceff38"]
+        },
+        {
+          "dmxRange": [127, 127],
+          "type": "ColorPreset",
+          "comment": "LEE 117 Steel Blue",
+          "colors": ["#ceff38"]
+        },
+        {
+          "dmxRange": [128, 128],
+          "type": "ColorPreset",
+          "comment": "LEE 118 Light Blue",
+          "colors": ["#4aff52"]
+        },
+        {
+          "dmxRange": [129, 130],
+          "type": "ColorPreset",
+          "comment": "LEE 119 Dark Blue",
+          "colors": ["#00baff"]
+        },
+        {
+          "dmxRange": [131, 133],
+          "type": "ColorPreset",
+          "comment": "LEE 121 Leaf Green",
+          "colors": ["#ceff00"]
+        },
+        {
+          "dmxRange": [134, 135],
+          "type": "ColorPreset",
+          "comment": "LEE 124 Dark Green",
+          "colors": ["#54ff0d"]
+        },
+        {
+          "dmxRange": [136, 137],
+          "type": "ColorPreset",
+          "comment": "LEE 126 Mauve",
+          "colors": ["#e32938"]
+        },
+        {
+          "dmxRange": [138, 141],
+          "type": "ColorPreset",
+          "comment": "Bright Pink",
+          "colors": ["#ff3524"]
+        },
+        {
+          "dmxRange": [142, 144],
+          "type": "ColorPreset",
+          "comment": "LEE 132 Medium Blue",
+          "colors": ["#00ff8f"]
+        },
+        {
+          "dmxRange": [145, 145],
+          "type": "ColorPreset",
+          "comment": "LEE 135 Deep Golden Amber",
+          "colors": ["#ff3a00"]
+        },
+        {
+          "dmxRange": [146, 146],
+          "type": "ColorPreset",
+          "comment": "LEE 136 Pale Lavender",
+          "colors": ["#ffc53d"]
+        },
+        {
+          "dmxRange": [147, 148],
+          "type": "ColorPreset",
+          "comment": "LEE 137 Special Lavender",
+          "colors": ["#dbc54f"]
+        },
+        {
+          "dmxRange": [149, 150],
+          "type": "ColorPreset",
+          "comment": "LEE 139 Primary Green",
+          "colors": ["#4dff00"]
+        },
+        {
+          "dmxRange": [151, 156],
+          "type": "ColorPreset",
+          "comment": "LEE 141 Bright Blue",
+          "colors": ["#00ff57"]
+        },
+        {
+          "dmxRange": [157, 161],
+          "type": "ColorPreset",
+          "comment": "LEE 147 Apricot",
+          "colors": ["#ff8f0d"]
+        },
+        {
+          "dmxRange": [162, 167],
+          "type": "ColorPreset",
+          "comment": "LEE 152 Pale Gold",
+          "colors": ["#fdab1a"]
+        },
+        {
+          "dmxRange": [168, 171],
+          "type": "ColorPreset",
+          "comment": "LEE 158 Deep Orange",
+          "colors": ["#de5400"]
+        },
+        {
+          "dmxRange": [172, 173],
+          "type": "ColorPreset",
+          "comment": "LEE 162 Bastard Amber",
+          "colors": ["#ffb51c"]
+        },
+        {
+          "dmxRange": [174, 174],
+          "type": "ColorPreset",
+          "comment": "LEE 164 Flame Red",
+          "colors": ["#ff2e02"]
+        },
+        {
+          "dmxRange": [175, 178],
+          "type": "ColorPreset",
+          "comment": "LEE 165 Daylight Blue",
+          "colors": ["#52d65a"]
+        },
+        {
+          "dmxRange": [179, 179],
+          "type": "ColorPreset",
+          "comment": "LEE 169 Lilac Tint",
+          "colors": ["#ffc731"]
+        },
+        {
+          "dmxRange": [180, 183],
+          "type": "ColorPreset",
+          "comment": "LEE 170 Deep Lavender",
+          "colors": ["#ffa840"]
+        },
+        {
+          "dmxRange": [184, 190],
+          "type": "ColorPreset",
+          "comment": "LEE 174 Dark Steel Blue",
+          "colors": ["#ffe756"]
+        },
+        {
+          "dmxRange": [191, 206],
+          "type": "ColorPreset",
+          "comment": "LEE 181 Congo Blue",
+          "colors": ["#4d00ff"]
+        },
+        {
+          "dmxRange": [207, 207],
+          "type": "ColorPreset",
+          "comment": "LEE 197 Alice Blue",
+          "colors": ["#80ff8f"]
+        },
+        {
+          "dmxRange": [208, 208],
+          "type": "ColorPreset",
+          "comment": "Dirty White",
+          "colors": ["#ffffbd"]
+        },
+        {
+          "dmxRange": [209, 255],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#fff5a1"]
+        }
+      ]
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "210deg"
+      }
+    },
+    "Maintenance": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 11],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [12, 24],
+          "type": "Maintenance",
+          "comment": "Pan Tilt Fast (Default)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [25, 37],
+          "type": "Maintenance",
+          "comment": "Pan Tilt Normal",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [38, 42],
+          "type": "Maintenance",
+          "comment": "Dimmer Curve 1",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [43, 47],
+          "type": "Maintenance",
+          "comment": "Dimmer Curve 2",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [48, 52],
+          "type": "Maintenance",
+          "comment": "Dimmer Curve 3 (Default)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [53, 57],
+          "type": "Maintenance",
+          "comment": "Dimmer Curve 4",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [58, 62],
+          "type": "Maintenance",
+          "comment": "RGBW Gamma curve 1 – gamma = 1.0",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [63, 67],
+          "type": "Maintenance",
+          "comment": "RGBW Gamma curve 2 – gamma = 1.5 (Default)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [68, 72],
+          "type": "Maintenance",
+          "comment": "RGBW Gamma curve 3 – gamma = 2.0",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [73, 77],
+          "type": "Maintenance",
+          "comment": "Halogen Lamp Simulation OFF (Default)",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [78, 82],
+          "type": "Maintenance",
+          "comment": "Halogen Lamp Simulation - Linear CTO @ 0 bit - 750 W",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [83, 87],
+          "type": "Maintenance",
+          "comment": "Halogen Lamp Simulation - Linear CTO @ 0 bit - 1000 W",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [88, 92],
+          "type": "Maintenance",
+          "comment": "Halogen Lamp Simulation - Linear CTO @ 0 bit - 1200 W",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [93, 97],
+          "type": "Maintenance",
+          "comment": "Halogen Lamp Simulation - Linear CTO @ 0 bit - 2000 W",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [98, 102],
+          "type": "Maintenance",
+          "comment": "Halogen Lamp Simulation - Linear CTO @ 0 bit - 2500 W",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [103, 105],
+          "type": "Maintenance",
+          "comment": "Pixel map enabled"
+        },
+        {
+          "dmxRange": [106, 255],
+          "type": "NoFunction",
+          "comment": "Reserved"
+        }
+      ]
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 25],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [26, 76],
+          "type": "Maintenance",
+          "comment": "Zoom reset",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [77, 127],
+          "type": "Maintenance",
+          "comment": "Pan/tilt reset",
+          "hold": "5s"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Maintenance",
+          "comment": "Complete reset",
+          "hold": "5s"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 254],
+          "type": "Zoom",
+          "angleStart": "4deg",
+          "angleEnd": "59.8deg",
+          "switchChannels": {
+            "Lens Rotation / Rotation Offset": "Lens Rotation"
+          }
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Zoom",
+          "angle": "60deg",
+          "switchChannels": {
+            "Lens Rotation / Rotation Offset": "Lens Rotation Offset"
+          }
+        }
+      ]
+    },
+    "Lens Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "60deg"
+        },
+        {
+          "dmxRange": [128, 190],
+          "type": "Rotation",
+          "speedStart": "10rpm",
+          "speedEnd": "3rpm"
+        },
+        {
+          "dmxRange": [191, 192],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [193, 255],
+          "type": "Rotation",
+          "speedStart": "-3rpm",
+          "speedEnd": "-10rpm"
+        }
+      ]
+    },
+    "Lens Rotation Offset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "4deg",
+          "comment": "Offset"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Rotation",
+          "angle": "0deg",
+          "comment": "Offset"
+        }
+      ]
+    },
+    "Shape Selection": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Effect",
+          "effectName": "Pixel 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Effect",
+          "effectName": "Ring 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Effect",
+          "effectName": "Ring 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Effect",
+          "effectName": "Ring 3",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 3",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Effect",
+          "effectName": "Single ring (ramp –/+)",
+          "switchChannels": {
+            "Shape Speed": "Shape Size Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Flash Distribution"
+          }
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Effect",
+          "effectName": "Filled rings (ramp –/+)",
+          "switchChannels": {
+            "Shape Speed": "Shape Size Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Flash Distribution"
+          }
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Effect",
+          "effectName": "Open/Close 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Size Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Flash Distribution"
+          }
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Effect",
+          "effectName": "Open/Close 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Size Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Flash Distribution"
+          }
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Effect",
+          "effectName": "Random pixels 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Speed With Fade",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Random Distribution"
+          }
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Effect",
+          "effectName": "Random pixels 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Speed With Fade",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Pixel Density"
+          }
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Effect",
+          "effectName": "Rainbow 1 (variable speed)",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Effect",
+          "effectName": "Rainbow 2 (variable color offset)",
+          "switchChannels": {
+            "Shape Speed": "Shape Color Offset",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Effect",
+          "effectName": "Fan",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Effect",
+          "effectName": "Bar 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Effect",
+          "effectName": "Half moon",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Effect",
+          "effectName": "Triangle",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Effect",
+          "effectName": "Segment 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Effect",
+          "effectName": "Arc 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Effect",
+          "effectName": "Arc 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Effect",
+          "effectName": "Bar 2 (variable size)",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Effect",
+          "effectName": "Random explosion",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Random Distribution"
+          }
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Effect",
+          "effectName": "Segment 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Effect",
+          "effectName": "X Bump",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Effect",
+          "effectName": "Image",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Effect",
+          "effectName": "Bumping section",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Effect",
+          "effectName": "Ramp by 6",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Effect",
+          "effectName": "Ramp by 4",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Effect",
+          "effectName": "Left/right scrolling bar",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "Effect",
+          "effectName": "Up/down scrolling bar",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Effect",
+          "effectName": "Bar 3",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Effect",
+          "effectName": "Vertical arc 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "Effect",
+          "effectName": "Vertical arc 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "Effect",
+          "effectName": "Horizontal arc 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "Effect",
+          "effectName": "Horizontal arc 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "Effect",
+          "effectName": "Mirrored pixel",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "Effect",
+          "effectName": "Pixel animation 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "Effect",
+          "effectName": "Pixel animation 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "Effect",
+          "effectName": "Pixel animation 3",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "Effect",
+          "effectName": "Pixel animation 4",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "Effect",
+          "effectName": "Pixel animation 5",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Effect",
+          "effectName": "Semi arc (ramp –/+)",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Effect",
+          "effectName": "Bumping arc section",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Effect",
+          "effectName": "Pixel animation 6",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Effect",
+          "effectName": "Vertical ramp by 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "Effect",
+          "effectName": "Following pixel by 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "Effect",
+          "effectName": "Syncopation",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "Effect",
+          "effectName": "Bumping 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "Effect",
+          "effectName": "Bumping 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [59, 59],
+          "type": "Effect",
+          "effectName": "Bumping 3",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Macro Offset"
+          }
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "Effect",
+          "effectName": "Vertical pixel scrolling",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "Effect",
+          "effectName": "Random vertical section",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Random Distribution"
+          }
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "Effect",
+          "effectName": "Random central section",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Random Distribution"
+          }
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "Effect",
+          "effectName": "Random ring 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Random Distribution"
+          }
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Effect",
+          "effectName": "Random ring 3",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Random Distribution"
+          }
+        },
+        {
+          "dmxRange": [65, 65],
+          "type": "Effect",
+          "effectName": "Random ring 1+3",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Random Distribution"
+          }
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "Effect",
+          "effectName": "Random ring 2+3",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade",
+            "Shape Offset": "Shape Random Distribution"
+          }
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "Effect",
+          "effectName": "Single pixel ring 1",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Number of Rotating"
+          }
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "Effect",
+          "effectName": "Single pixel ring 2",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Number of Rotating"
+          }
+        },
+        {
+          "dmxRange": [69, 69],
+          "type": "Effect",
+          "effectName": "Single pixel ring 3",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Number of Rotating"
+          }
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "Effect",
+          "effectName": "Spiral",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Linear Fade and Wake Length",
+            "Shape Offset": "Shape Width"
+          }
+        },
+        {
+          "dmxRange": [71, 255],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Shape Speed": "Shape Rotation Speed",
+            "Shape Fade": "Shape Fade Gamma",
+            "Shape Offset": "Shape Angle Offset"
+          }
+        }
+      ]
+    },
+    "Shape Size Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "EffectParameter",
+          "parameterStart": "small",
+          "parameterEnd": "big",
+          "comment": "Radius size"
+        },
+        {
+          "dmxRange": [64, 158],
+          "type": "EffectSpeed",
+          "speedStart": "fast reverse",
+          "speedEnd": "slow reverse",
+          "comment": "Closing"
+        },
+        {
+          "dmxRange": [159, 160],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [161, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Opening"
+        }
+      ]
+    },
+    "Shape Speed With Fade": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [64, 158],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "fade out"
+        },
+        {
+          "dmxRange": [159, 160],
+          "type": "EffectSpeed",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [161, 255],
+          "type": "EffectSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "fade in/out"
+        }
+      ]
+    },
+    "Shape Rotation Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Rotation",
+          "angleStart": "0deg",
+          "angleEnd": "360deg"
+        },
+        {
+          "dmxRange": [64, 158],
+          "type": "Rotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
+        },
+        {
+          "dmxRange": [159, 160],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [161, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Shape Color Offset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [64, 158],
+          "type": "Rotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
+        },
+        {
+          "dmxRange": [159, 160],
+          "type": "Rotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [161, 255],
+          "type": "Rotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        }
+      ]
+    },
+    "Shape Flash Distribution": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "EffectParameter",
+          "parameterStart": "0%",
+          "parameterEnd": "100%",
+          "comment": "Continuous flash distribution"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "Effect",
+          "effectName": "Random flash distribution"
+        }
+      ]
+    },
+    "Shape Random Distribution": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": 2,
+        "parameterEnd": 20,
+        "comment": "Pixels"
+      }
+    },
+    "Shape Pixel Density": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "low",
+        "parameterEnd": "high",
+        "helpWanted": "Is this the same as \"Shape Random Distribution\"?"
+      }
+    },
+    "Shape Angle Offset": {
+      "capability": {
+        "type": "Rotation",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Shape Width": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
+    },
+    "Shape Macro Offset": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "0%",
+        "parameterEnd": "100%"
+      }
+    },
+    "Shape Number of Rotating": {
+      "capability": {
+        "type": "EffectParameter",
+        "parameterStart": "0%",
+        "parameterEnd": "100%",
+        "helpWanted": "What number is this? The number of rotating rings maybe?"
+      }
+    },
+    "Shape Fade Gamma": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Effect",
+          "effectName": "Snap"
+        },
+        {
+          "dmxRange": [16, 245],
+          "type": "Effect",
+          "effectName": "Smooth, fading curve gamma",
+          "parameterStart": 0.5,
+          "parameterEnd": 2
+        },
+        {
+          "dmxRange": [246, 255],
+          "type": "Effect",
+          "effectName": "Smooth, fading curve with automatic gamma"
+        }
+      ]
+    },
+    "Shape Linear Fade": {
+      "capability": {
+        "type": "Time",
+        "timeStart": "instant",
+        "timeEnd": "long",
+        "helpWanted": "Is this really a time unit? What is the difference to Shape Transition then?"
+      }
+    },
+    "Shape Linear Fade and Wake Length": {
+      "capability": {
+        "type": "Time",
+        "timeStart": "instant",
+        "timeEnd": "long",
+        "helpWanted": "Is this really a time unit? What is the difference to Shape Transition then?"
+      }
+    },
+    "Shape Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Shape Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Shape Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Shape White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Shape Transition": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "Time",
+          "time": "instant"
+        },
+        {
+          "dmxRange": [5, 255],
+          "type": "Time",
+          "timeStart": "100ms",
+          "timeEnd": "4000ms"
+        }
+      ]
+    },
+    "Background Select": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 8],
+          "type": "NoFunction",
+          "comment": "No selection (wash)"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Effect",
+          "effectName": "Pixel 1"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Effect",
+          "effectName": "Ring 2"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Effect",
+          "effectName": "Ring 3"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Effect",
+          "effectName": "Ring 4"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 2"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 2 + Ring 3"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 2 + Ring 3 + Ring 4"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Effect",
+          "effectName": "Ring 2 + Ring 3 + Ring 4"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Effect",
+          "effectName": "Ring 3 + Ring 4"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 4"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Effect",
+          "effectName": "Ring 2 + Ring 3"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 3"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Effect",
+          "effectName": "Ring 2 + Ring 4"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 3 + Ring 4"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Effect",
+          "effectName": "Pixel 1 + Ring 2 + Ring 4"
+        },
+        {
+          "dmxRange": [24, 254],
+          "type": "NoFunction",
+          "comment": "No selection (wash)"
+        },
+        {
+          "dmxRange": [255, 255],
+          "type": "Effect",
+          "effectName": "Mirror effect"
+        }
+      ]
+    }
+  },
+  "templateChannels": {
+    "$pixelKey Red": {
+      "fineChannelAliases": ["$pixelKey Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "$pixelKey Green": {
+      "fineChannelAliases": ["$pixelKey Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "$pixelKey Blue": {
+      "fineChannelAliases": ["$pixelKey Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "$pixelKey White": {
+      "fineChannelAliases": ["$pixelKey White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "$pixelKey Dimmer": {
+      "fineChannelAliases": ["$pixelKey Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "$pixelKey Strobe": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 3],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [4, 103],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [104, 107],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [108, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "0.5Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [208, 212],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [213, 251],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Red LED $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green LED $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue LED $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White LED $pixelKey": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard",
+      "channels": [
+        "Master Red",
+        "Master Red fine",
+        "Master Green",
+        "Master Green fine",
+        "Master Blue",
+        "Master Blue fine",
+        "Master White",
+        "Master White fine",
+        "Linear CTO",
+        "Color Presets",
+        "Master Strobe",
+        "Master Dimmer",
+        "Master Dimmer fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Maintenance",
+        "Reset",
+        "Zoom",
+        "Lens Rotation / Rotation Offset"
+      ]
+    },
+    {
+      "name": "Shapes",
+      "channels": [
+        "Master Red",
+        "Master Red fine",
+        "Master Green",
+        "Master Green fine",
+        "Master Blue",
+        "Master Blue fine",
+        "Master White",
+        "Master White fine",
+        "Linear CTO",
+        "Color Presets",
+        "Master Strobe",
+        "Master Dimmer",
+        "Master Dimmer fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Maintenance",
+        "Reset",
+        "Zoom",
+        "Lens Rotation / Rotation Offset",
+        "Shape Selection",
+        "Shape Speed",
+        "Shape Fade",
+        "Shape Red",
+        "Shape Green",
+        "Shape Blue",
+        "Shape White",
+        "Shape Dimmer",
+        "Background Dimmer",
+        "Shape Transition",
+        "Shape Offset",
+        "Foreground Strobe",
+        "Background Strobe",
+        "Background Select"
+      ]
+    },
+    {
+      "name": "Pixel RGB",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red LED $pixelKey",
+            "Green LED $pixelKey",
+            "Blue LED $pixelKey"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pixel RGBW",
+      "channels": [
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red LED $pixelKey",
+            "Green LED $pixelKey",
+            "Blue LED $pixelKey",
+            "White LED $pixelKey"
+          ]
+        }
+      ]
+    }
+  ]
+}

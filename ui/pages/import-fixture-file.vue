@@ -6,172 +6,157 @@
       <strong>Warning:</strong> The fixture can not be edited after importing, so please provide as much information as possible in the comment.
     </section>
 
-    <vue-form
-      :state="formstate"
-      action="/ajax/import-fixture-file"
-      method="post"
-      enctype="multipart/form-data"
-      @submit.prevent="onSubmit($event.target)">
+    <noscript class="card yellow">
+      Please enable JavaScript to use the Fixture Importer!
+    </noscript>
 
-      <section class="card">
-        <h2>File information</h2>
+    <ClientOnly placeholder="Fixture Importer is loading...">
 
-        <app-labeled-input :formstate="formstate" name="plugin" label="Import file type">
-          <select
-            v-model="plugin"
-            :class="{ empty: plugin === `` }"
-            required
-            name="plugin">
+      <VueForm
+        :state="formstate"
+        action="#"
+        class="only-js"
+        @submit.prevent="onSubmit()">
 
-            <option value="" disabled>Please select an import file type</option>
+        <section class="card">
+          <h2>File information</h2>
 
-            <template v-for="pluginKey in plugins.importPlugins">
-              <option :key="pluginKey" :value="pluginKey">
-                {{ plugins.data[pluginKey].name }}
-              </option>
-            </template>
+          <LabeledInput :formstate="formstate" name="plugin" label="Import file type">
+            <select
+              v-model="plugin"
+              :class="{ empty: plugin === `` }"
+              required
+              name="plugin">
 
-          </select>
-        </app-labeled-input>
+              <option value="" disabled>Please select an import file type</option>
 
-        <app-labeled-input
-          :formstate="formstate"
-          name="file"
-          label="Fixture definition file"
-          hint="Maximum file size is 5MB.">
-          <app-editor-file-upload
-            v-model="file"
-            :required="true"
+              <template v-for="pluginKey of plugins.importPlugins">
+                <option :key="pluginKey" :value="pluginKey">
+                  {{ plugins.data[pluginKey].name }}
+                </option>
+              </template>
+
+            </select>
+
+            <div class="hint">See <a href="/about/plugins" target="_blank">supported import plugins</a>.</div>
+          </LabeledInput>
+
+          <LabeledInput
+            :formstate="formstate"
             name="file"
-            max-file-size="5MB" />
-        </app-labeled-input>
+            label="Fixture definition file"
+            hint="Maximum file size is 5MB.">
+            <EditorFileUpload
+              v-model="file"
+              required
+              name="file"
+              max-file-size="5MB" />
+          </LabeledInput>
 
-        <app-labeled-input :formstate="formstate" name="comment" label="Comment">
-          <textarea v-model="comment" name="comment" />
-        </app-labeled-input>
-      </section>
+          <LabeledInput :formstate="formstate" name="githubComment" label="Comment">
+            <textarea v-model="githubComment" name="githubComment" />
+          </LabeledInput>
+        </section>
 
-      <section class="user card">
-        <h2>Author data</h2>
+        <section class="user card">
+          <h2>Author data</h2>
 
-        <app-labeled-input :formstate="formstate" name="author" label="Your name">
-          <input
-            v-model="author"
-            type="text"
-            required
-            name="author"
-            placeholder="e.g. Anonymous">
-        </app-labeled-input>
+          <LabeledInput :formstate="formstate" name="author" label="Your name">
+            <input
+              v-model="author"
+              type="text"
+              required
+              name="author"
+              placeholder="e.g. Anonymous">
+          </LabeledInput>
 
-        <app-labeled-input
-          :formstate="formstate"
-          name="githubUsername"
-          label="GitHub username"
-          hint="If you want to be mentioned in the pull request.">
-          <input
-            v-model="githubUsername"
-            type="text"
-            name="githubUsername">
-        </app-labeled-input>
+          <LabeledInput
+            :formstate="formstate"
+            name="githubUsername"
+            label="GitHub username"
+            hint="If you want to be mentioned in the pull request.">
+            <input
+              v-model="githubUsername"
+              type="text"
+              name="githubUsername">
+          </LabeledInput>
 
-        <app-labeled-input hidden name="honeypot" label="Ignore this!">
-          <input v-model="honeypot" type="text" name="honeypot">
-          <div class="hint">Spammers are likely to fill this field. Leave it empty to show that you're a human.</div>
-        </app-labeled-input>
-      </section>
-
-      <div class="button-bar">
-        <button type="submit" class="primary">Import fixture</button>
-      </div>
-    </vue-form>
-
-    <app-a11y-dialog
-      id="submit"
-      :cancellable="false"
-      :shown="uploading || pullRequestUrl !== null || error !== null"
-      :title="dialogTitle">
-
-      <div v-if="uploading">Uploading…</div>
-
-      <div v-else-if="pullRequestUrl">
-        Your fixture was successfully uploaded to GitHub (see the <a :href="pullRequestUrl" target="_blank">pull request</a>). It will be now reviewed and then merged into the library. Thank you for your contribution!
+          <LabeledInput hidden name="honeypot" label="Ignore this!">
+            <input v-model="honeypot" type="text" name="honeypot">
+            <div class="hint">Spammers are likely to fill this field. Leave it empty to show that you're a human.</div>
+          </LabeledInput>
+        </section>
 
         <div class="button-bar right">
-          <nuxt-link to="/" class="button secondary">Back to homepage</nuxt-link>
-          <a href="/import-fixture-file" class="button secondary" @click.prevent="reset">Import another fixture</a>
-          <a :href="pullRequestUrl" class="button primary" target="_blank">See pull request</a>
+          <button type="submit" class="primary">Import fixture</button>
         </div>
-      </div>
+      </VueForm>
 
-      <div v-else-if="error">
-        <span>Unfortunately, there was an error while uploading: {{ error }}</span>
+      <EditorSubmitDialog
+        ref="submitDialog"
+        endpoint="/api/v1/fixtures/import"
+        :github-username="githubUsername"
+        :github-comment="githubComment"
+        @success="storePrefillData()"
+        @reset="reset()" />
 
-        <div class="button-bar right">
-          <nuxt-link to="/" class="button secondary">Back to homepage</nuxt-link>
-          <a href="/import-fixture-file" class="button primary" @click.prevent="reset">Try again</a>
-        </div>
-      </div>
-
-    </app-a11y-dialog>
+    </ClientOnly>
   </div>
 </template>
 
 <script>
 import scrollIntoView from 'scroll-into-view';
 
-import plugins from '~~/plugins/plugins.json';
-
-import a11yDialogVue from '~/components/a11y-dialog.vue';
-import editorFileUploadVue from '~/components/editor-file-upload.vue';
-import labeledInputVue from '~/components/labeled-input.vue';
+import { getEmptyFormState } from '../assets/scripts/editor-utils.js';
+import EditorFileUpload from '../components/editor/EditorFileUpload.vue';
+import EditorSubmitDialog from '../components/editor/EditorSubmitDialog.vue';
+import LabeledInput from '../components/LabeledInput.vue';
 
 export default {
   components: {
-    'app-a11y-dialog': a11yDialogVue,
-    'app-editor-file-upload': editorFileUploadVue,
-    'app-labeled-input': labeledInputVue
+    EditorFileUpload,
+    EditorSubmitDialog,
+    LabeledInput,
   },
-  head() {
-    return {
-      title: `Import fixture`
-    };
-  },
-  asyncData({ query }) {
-    let pullRequestUrl = query.pullRequestUrl;
-
-    if (pullRequestUrl === `null`) {
-      pullRequestUrl = null;
+  async asyncData({ $axios, error }) {
+    let plugins;
+    try {
+      plugins = await $axios.$get(`/api/v1/plugins`);
     }
-
+    catch (requestError) {
+      return error(requestError);
+    }
+    return { plugins };
+  },
+  data() {
     return {
-      formstate: {},
-      plugins,
+      formstate: getEmptyFormState(),
       plugin: ``,
       file: null,
-      comment: ``,
+      githubComment: ``,
       author: ``,
       githubUsername: ``,
       honeypot: ``,
-      pullRequestUrl: pullRequestUrl || null,
-      error: query.error || null,
-      uploading: false
     };
   },
-  computed: {
-    dialogTitle() {
-      if (this.uploading) {
-        return `Submitting fixture definition file…`;
-      }
+  head() {
+    const title = `Import fixture`;
 
-      if (this.pullRequestUrl) {
-        return `Upload complete`;
-      }
-
-      return `Upload failed`;
-    }
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
+    };
+  },
+  mounted() {
+    this.applyStoredPrefillData();
   },
   methods: {
-    async onSubmit(formElement) {
+    async onSubmit() {
       if (this.formstate.$invalid) {
         const field = document.querySelector(`.vf-field-invalid`);
 
@@ -180,9 +165,9 @@ export default {
           align: {
             top: 0,
             left: 0,
-            topOffset: 100
+            topOffset: 100,
           },
-          isScrollable: target => target === window
+          isScrollable: target => target === window,
         }, () => field.focus());
 
         return;
@@ -193,50 +178,58 @@ export default {
         return;
       }
 
-      if (!(`FormData` in window)) {
-        // submit manually (with page reloading)
-        formElement.submit();
+      const fileDataUrl = await getFileDataUrl(this.file);
+      const [, fileContentBase64] = fileDataUrl.match(/base64,(.+)$/);
+
+      this.$refs.submitDialog.validate({
+        plugin: this.plugin,
+        fileName: this.file.name,
+        fileContentBase64,
+        author: this.author,
+      });
+
+      /**
+       * @param {File} file A File object from an HTML5 file input.
+       * @returns {Promise<string>} Resolves with the file contents as dataURL string.
+       */
+      function getFileDataUrl(file) {
+        return new Promise((resolve, reject) => {
+          const fileReader = new FileReader();
+
+          fileReader.addEventListener(`load`, () => {
+            resolve(fileReader.result);
+          });
+          fileReader.addEventListener(`error`, reject);
+          fileReader.addEventListener(`abort`, reject);
+
+          fileReader.readAsDataURL(file);
+        });
+      }
+    },
+    async reset() {
+      this.file = null;
+      this.githubComment = ``;
+
+      await this.$nextTick();
+      this.formstate._reset();
+    },
+    applyStoredPrefillData() {
+      if (!localStorage) {
         return;
       }
 
-      // submit via AJAX
-
-      this.uploading = true;
-
-      const formData = new FormData(formElement);
-      formData.append(`isAjax`, `true`);
-
-      try {
-        const response = await this.$axios.post(`/ajax/import-fixture-file`, formData);
-
-        if (response.data.error) {
-          throw new Error(response.data.error);
-        }
-
-        this.pullRequestUrl = response.data.pullRequestUrl;
-        this.uploading = false;
+      if (this.author === ``) {
+        this.author = localStorage.getItem(`prefillAuthor`) || ``;
       }
-      catch (error) {
-        console.error(error);
-        this.error = error.message;
-        this.uploading = false;
+
+      if (this.githubUsername === ``) {
+        this.githubUsername = localStorage.getItem(`prefillGithubUsername`) || ``;
       }
     },
-    reset() {
-      this.pullRequestUrl = null;
-      this.error = null;
-      this.uploading = false;
-
-      // clear query
-      this.$router.push({
-        path: this.$route.path,
-        query: {}
-      });
-
-      this.$nextTick(() => {
-        this.formstate._reset();
-      });
-    }
-  }
+    storePrefillData() {
+      localStorage.setItem(`prefillAuthor`, this.author);
+      localStorage.setItem(`prefillGithubUsername`, this.githubUsername);
+    },
+  },
 };
 </script>

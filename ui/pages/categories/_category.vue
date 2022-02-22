@@ -2,75 +2,82 @@
   <div>
     <h1>{{ categoryName }} fixtures</h1>
 
-    <ul :class="[`card`, `list`, `fixtures`, `category-${categoryClass}`]">
-      <li v-for="fixture in fixtures" :key="fixture.key">
-        <nuxt-link
-          :to="fixture.link"
-          :style="{ borderLeftColor: fixture.color }"
-          class="manufacturer-color">
-          <span class="name">{{ fixture.name }}</span>
-          <app-svg
-            v-for="cat in fixture.categories"
-            :key="cat"
-            :name="cat"
-            :class="{ inactive: cat !== categoryName, right: true }"
-            type="category" />
-        </nuxt-link>
-      </li>
-    </ul>
+    <div class="card">
+      <ul class="list fixtures" :class="`category-${categoryClass}`">
+        <li v-for="fixture of fixtures" :key="fixture.key">
+          <NuxtLink
+            :to="fixture.link"
+            :style="{ borderLeftColor: fixture.color }"
+            class="manufacturer-color">
+            <span class="name">{{ fixture.name }}</span>
+            <OflSvg
+              v-for="cat of fixture.categories"
+              :key="cat"
+              :name="cat"
+              class="right"
+              :class="{ inactive: cat !== categoryName }"
+              type="fixture" />
+          </NuxtLink>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-import svg from '~/components/svg.vue';
-
-import register from '~~/fixtures/register.json';
-import manufacturers from '~~/fixtures/manufacturers.json';
+import register from '../../../fixtures/register.json';
 
 export default {
-  components: {
-    'app-svg': svg
-  },
   validate({ params }) {
     return decodeURIComponent(params.category) in register.categories;
   },
-  asyncData({ params }) {
-    const categoryName = decodeURIComponent(params.category);
-
-    return {
-      categoryName: categoryName,
-      categoryClass: categoryName.toLowerCase().replace(/[^\w]+/g, `-`),
-      fixtures: register.categories[categoryName].map(fixtureKey => {
-        const [manKey, fixKey] = fixtureKey.split(`/`);
-
-        return {
-          key: fixtureKey,
-          link: `/${fixtureKey}`,
-          name: getFixtureName(manKey, fixKey),
-          categories: Object.keys(register.categories).filter(
-            cat => register.categories[cat].includes(fixtureKey)
-          ),
-          color: register.colors[manKey]
-        };
-      })
-    };
+  async asyncData({ $axios, error }) {
+    let manufacturers;
+    try {
+      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
+    return { manufacturers };
   },
   head() {
+    const title = this.categoryName;
+
     return {
-      title: this.categoryName
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
     };
-  }
+  },
+  computed: {
+    categoryName() {
+      return this.$route.params.category;
+    },
+    categoryClass() {
+      return this.categoryName.toLowerCase().replace(/\W+/g, `-`);
+    },
+    fixtures() {
+      return register.categories[this.categoryName].map(fullFixtureKey => {
+        const [manufacturerKey, fixtureKey] = fullFixtureKey.split(`/`);
+        const manufacturerName = this.manufacturers[manufacturerKey].name;
+        const fixtureName = register.filesystem[`${manufacturerKey}/${fixtureKey}`].name;
+
+        return {
+          key: fullFixtureKey,
+          link: `/${fullFixtureKey}`,
+          name: `${manufacturerName} ${fixtureName}`,
+          categories: Object.keys(register.categories).filter(
+            category => register.categories[category].includes(fullFixtureKey),
+          ),
+          color: this.manufacturers[manufacturerKey].color,
+        };
+      });
+    },
+  },
 };
-
-/**
- * @param {string} manKey The manufacturer key.
- * @param {string} fixKey The fixture key.
- * @returns {string} The manufacturer and fixture names, separated by a space.
- */
-function getFixtureName(manKey, fixKey) {
-  const manufacturerName = manufacturers[manKey].name;
-  const fixtureName = register.filesystem[`${manKey}/${fixKey}`].name;
-
-  return `${manufacturerName} ${fixtureName}`;
-}
 </script>

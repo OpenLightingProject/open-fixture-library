@@ -4,22 +4,24 @@
   "shortName": "wash84w",
   "categories": ["Color Changer", "Moving Head"],
   "meta": {
-    "authors": ["Millumin"],
+    "authors": ["Millumin", "CypGit"],
     "createDate": "2018-04-04",
-    "lastModifyDate": "2018-09-04"
+    "lastModifyDate": "2019-05-17"
+  },
+  "comment": "There exist different variants of this fixture. Most retailers only state 13 channels, but there's also a manual with 9/14 channel modes. The physical data is also inconsistent.",
+  "links": {
+    "other": [
+      "https://github.com/OpenLightingProject/open-fixture-library/pull/461",
+      "https://github.com/OpenLightingProject/open-fixture-library/issues/792"
+    ]
   },
   "physical": {
     "dimensions": [177, 230, 177],
-    "weight": 4.5,
-    "power": 115,
+    "weight": 2.7,
+    "power": 90,
     "DMXconnector": "3-pin",
     "bulb": {
       "type": "LED"
-    },
-    "focus": {
-      "type": "Head",
-      "panMax": 540,
-      "tiltMax": 180
     }
   },
   "availableChannels": {
@@ -38,7 +40,8 @@
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
-        "angleEnd": "180deg"
+        "angleEnd": "270deg",
+        "helpWanted": "Is 270° the correct tilt maximum for all fixture variants?"
       }
     },
     "Movement Speed": {
@@ -54,6 +57,32 @@
       "capability": {
         "type": "Intensity"
       }
+    },
+    "Dimmer / Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [8, 134],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [135, 239],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "40Hz"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        }
+      ]
     },
     "Red": {
       "defaultValue": 0,
@@ -83,7 +112,7 @@
         "color": "White"
       }
     },
-    "RGBW preset": {
+    "RGBW Presets": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -93,7 +122,8 @@
         {
           "dmxRange": [5, 44],
           "type": "ColorPreset",
-          "comment": "static"
+          "comment": "static",
+          "helpWanted": "Is this a single color? At which DMX value can which colors be selected?"
         },
         {
           "dmxRange": [45, 49],
@@ -101,7 +131,8 @@
         },
         {
           "dmxRange": [50, 94],
-          "type": "ColorPreset",
+          "type": "Effect",
+          "effectPreset": "ColorJump",
           "comment": "cut"
         },
         {
@@ -110,7 +141,8 @@
         },
         {
           "dmxRange": [100, 149],
-          "type": "ColorPreset",
+          "type": "Effect",
+          "effectPreset": "ColorFade",
           "comment": "smooth"
         },
         {
@@ -119,10 +151,26 @@
         },
         {
           "dmxRange": [155, 255],
-          "type": "ColorPreset",
-          "comment": "soft"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "comment": "soft",
+          "helpWanted": "Where is the difference to 'smooth'?"
         }
       ]
+    },
+    "RGBW Presets / Chase": {
+      "capability": {
+        "type": "Effect",
+        "effectPreset": "ColorFade",
+        "helpWanted": "At which DMX values can which colors be selected and at which DMX values is the chase effect active?"
+      }
+    },
+    "Chase Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
     },
     "Strobe": {
       "defaultValue": 0,
@@ -181,12 +229,52 @@
           "soundSensitivity": "high"
         }
       ]
+    },
+    "Sound Effects": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "Music controlled programs",
+        "helpWanted": "How many programs are there and at which DMX values can you select them?"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 149],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [150, 200],
+          "type": "Maintenance",
+          "comment": "Reset",
+          "helpWanted": "Does one need to hold this capability for a certain amount of seconds?"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "NoFunction"
+        }
+      ]
     }
   },
   "modes": [
     {
-      "name": "default",
-      "shortName": "default",
+      "name": "9-channel",
+      "shortName": "9ch",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Dimmer / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Movement Speed",
+        "Reset"
+      ]
+    },
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
       "channels": [
         "Pan",
         "Pan fine",
@@ -198,9 +286,29 @@
         "Green",
         "Blue",
         "White",
-        "RGBW preset",
+        "RGBW Presets",
         "Strobe",
         "Music control"
+      ]
+    },
+    {
+      "name": "14-channel",
+      "shortName": "14ch",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Movement Speed",
+        "Dimmer / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "RGBW Presets / Chase",
+        "Chase Speed",
+        "Sound Effects",
+        "Reset"
       ]
     }
   ]

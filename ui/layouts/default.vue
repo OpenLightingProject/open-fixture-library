@@ -1,16 +1,22 @@
 <template>
-  <div>
+  <div
+    id="ofl-root"
+    :class="{
+      js: isBrowser,
+      'no-js': !isBrowser,
+      touch: isTouchScreen,
+      'no-touch': !isTouchScreen,
+    }">
+
     <a href="#content" class="accessibility">Skip to content</a>
 
-    <app-header @focus-content="focusContent" />
+    <HeaderBar @focus-content="focusContent()" />
 
-    <div
-      id="content"
-      ref="content"
-      :class="{ js: isBrowser, 'no-js': !isBrowser }"
-      tabindex="-1">
-      <nuxt />
+    <div id="content" ref="content" tabindex="-1">
+      <ClimateStrikeBanner />
+      <Nuxt />
     </div>
+
   </div>
 </template>
 
@@ -19,32 +25,38 @@
   position: absolute;
   top: -1000px;
   left: -1000px;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   z-index: 9999;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 
   &:active,
   &:focus,
   &:hover {
-    left: 0;
     top: 0;
+    left: 0;
     width: auto;
     height: auto;
-    overflow: visible;
-    background: red;
-    color: #fff;
     padding: 4px;
+    overflow: visible;
+    color: #ffffff;
+    background: red;
   }
 }
 
 #content {
+  box-sizing: border-box;
   max-width: 1000px;
-  margin: 0 auto;
-  min-height: calc(100vh - 5em - 10px);
-  overflow: hidden;
+  min-height: 100vh;
   padding: 5em 10px 10px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  @media (max-width: $tablet) {
+    padding-top: 6.2em;
+  }
 }
+
 #content:focus {
   outline: 0;
 }
@@ -52,26 +64,50 @@
 
 
 <script>
-import header from '~/components/header';
+import ClimateStrikeBanner from '../components/ClimateStrikeBanner.vue';
+import HeaderBar from '../components/HeaderBar.vue';
 
 export default {
   components: {
-    'app-header': header
+    HeaderBar,
+    ClimateStrikeBanner,
   },
   data() {
     return {
-      isBrowser: false
+      isBrowser: false,
+      isTouchScreen: false,
+      lastTouchTime: 0,
     };
   },
   mounted() {
-    if (process.browser) {
-      this.isBrowser = true;
-    }
+    this.isBrowser = true;
+
+    // adapted from https://stackoverflow.com/a/30303898/451391
+    document.addEventListener(`touchstart`, this.onTouchStart, true);
+    document.addEventListener(`mousemove`, this.onMouseMove, true);
+  },
+  beforeDestroy() {
+    document.removeEventListener(`touchstart`, this.onTouchStart, true);
+    document.removeEventListener(`mousemove`, this.onMouseMove, true);
   },
   methods: {
     focusContent() {
       this.$refs.content.focus();
-    }
-  }
+    },
+
+    onMouseMove() {
+      // filter emulated events coming from touch events
+      if (Date.now() - this.lastTouchTime < 500) {
+        return;
+      }
+
+      this.isTouchScreen = false;
+    },
+
+    onTouchStart() {
+      this.isTouchScreen = true;
+      this.lastTouchTime = Date.now();
+    },
+  },
 };
 </script>

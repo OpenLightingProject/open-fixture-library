@@ -8,28 +8,51 @@
     <template v-else>
       <h1>{{ error.statusCode }} – An error occurred</h1>
 
-      <p>{{ error.message }}</p>
+      <p class="error">{{ errorMessage }}</p>
       <p>Please consider <a href="https://github.com/OpenLightingProject/open-fixture-library/issues">filing a bug</a> to help resolve this issue.</p>
     </template>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.error {
+  white-space: pre-wrap;
+}
+</style>
 
 <script>
 export default {
   props: {
     error: {
       type: [Object, Error],
-      required: true
-    }
+      required: true,
+    },
   },
   head() {
     if (this.error.statusCode !== 404) {
       console.error(`Nuxt rendering error:`, this.error);
     }
 
+    const title = this.error.statusCode === 404 ? `Not Found` : `Error`;
+
     return {
-      title: this.error.statusCode === 404 ? `Not Found` : `Error`
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
     };
-  }
+  },
+  computed: {
+    errorMessage() {
+      if (this.error.response && this.error.response.data && this.error.response.data.error) {
+        return this.error.response.data.error;
+      }
+
+      return this.error.message;
+    },
+  },
 };
 </script>

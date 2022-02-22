@@ -1,47 +1,62 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 
-const path = require(`path`);
-const minimist = require(`minimist`);
-const colors = require(`colors`);
+import chalk from 'chalk';
+import minimist from 'minimist';
 
-const testFixtures = require(`../tests/test-fixtures.json`).map(
-  fixture => `${fixture.man}/${fixture.key}`
-);
+import diffPluginOutputs from '../lib/diff-plugin-outputs.js';
+import importJson from '../lib/import-json.js';
 
-const args = minimist(process.argv.slice(2), {
-  string: [`p`, `r`],
-  boolean: [`h`, `t`],
-  alias: { p: `plugin`, r: `ref`, h: `help`, t: `test-fix` },
-  default: { r: `HEAD` }
+const plugins = await importJson(`../plugins/plugins.json`, import.meta.url);
+const testFixtures = await importJson(`../tests/test-fixtures.json`, import.meta.url);
+const testFixtureKeys = testFixtures.map(fixture => `${fixture.man}/${fixture.key}`);
+
+const cliArguments = minimist(process.argv.slice(2), {
+  string: [`p`, `c`, `r`],
+  boolean: [`t`, `h`],
+  alias: { p: `plugin`, c: `compare-plugin`, r: `ref`, t: `test-fix`, h: `help` },
+  default: { r: `HEAD` },
 });
+cliArguments.comparePlugin = cliArguments[`compare-plugin`];
+cliArguments.testFix = cliArguments[`test-fix`];
+cliArguments.fixtures = cliArguments._;
+
+const scriptName = import.meta.url.split(`/`).slice(-2).join(`/`);
+const exportPlugins = plugins.exportPlugins.join(`, `);
 
 const helpMessage = [
-  `This script compares the output of the given fixtures with another version in the current repository.`,
+  `This script exports the given fixtures with the current version of the given plugin and diffs the results`,
+  `against the files exported with the comparePlugin at the state of the given Git reference.`,
   `Fixtures have to be declared with the path to its file in the fixtures/ directory.`,
-  `Usage: node ${path.relative(process.cwd(), __filename)} -p <plugin name> [-r <git reference>] [ -t | <fixture> [<more fixtures>] ]`,
+  `Usage: node ${scriptName} -p <plugin-key> [-c <compare-plugin-key>] [-r <git-ref>] [ -t | <fixture> [<more fixtures>] ]`,
   `Options:`,
-  `  --plugin,   -p: Which plugin should be used to output fixtures.`,
-  `                  E. g. ecue or qlcplus`,
-  `  --ref,      -r: The Git reference with which the current repo should be compared.`,
-  `                  E. g. 02ba13, HEAD~1 or master.`,
-  `                  Defaults to HEAD.`,
-  `  --test-fix, -t: Use the test fixtures instead of specifing custom fixtures.`,
-  `  --help,     -h: Show this help message.`
+  `  --plugin,         -p: Which plugin should be used to output fixtures. Allowed values:`,
+  `                        ${exportPlugins}`,
+  `  --compare-plugin, -c: A plugin from the given git reference (may not exist anymore). Defaults to --plugin.`,
+  `  --ref,            -r: The Git reference with which the current repo should be compared.`,
+  `                        E. g. 02ba13, HEAD~1 or master.`,
+  `                        Defaults to HEAD.`,
+  `  --test-fix,       -t: Use the test fixtures instead of specifing custom fixtures.`,
+  `  --help,           -h: Show this help message.`,
 ].join(`\n`);
 
-if (args.help) {
+if (cliArguments.help) {
   console.log(helpMessage);
   process.exit(0);
 }
 
-if (!args.plugin) {
-  console.error(`${colors.red(`[Error]`)} Plugin has to be specified using --plugin`);
+if (!cliArguments.plugin) {
+  console.error(chalk.red(`[Error]`), `Plugin has to be specified using --plugin`);
   console.log(helpMessage);
   process.exit(1);
 }
 
-if (args._.length === 0 && !args.t) {
-  console.log(`${colors.yellow(`[Warning]`)} No fixtures specified. See --help for usage.`);
+if (!cliArguments.comparePlugin) {
+  cliArguments.comparePlugin = cliArguments.plugin;
+  cliArguments.c = cliArguments.p;
 }
 
-require(`../lib/diff-plugin-outputs.js`)(args.plugin, args.ref, args.t ? testFixtures : args._);
+if (cliArguments.fixtures.length === 0 && !cliArguments.testFix) {
+  console.log(chalk.yellow(`[Warning]`), `No fixtures specified. See --help for usage.`);
+}
+
+diffPluginOutputs(cliArguments.plugin, cliArguments.comparePlugin, cliArguments.ref, cliArguments.testFix ? testFixtureKeys : cliArguments.fixtures);

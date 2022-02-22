@@ -1,0 +1,112 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "18LEDs Par Light",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Anomes"],
+    "createDate": "2019-09-21",
+    "lastModifyDate": "2019-09-21"
+  },
+  "links": {
+    "manual": [
+      "https://images-na.ssl-images-amazon.com/images/I/B1vDZm6YD0S.pdf"
+    ],
+    "productPage": [
+      "https://www.amazon.com/dp/B00WU5OM5M/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=tXqQy4PfIeA"
+    ]
+  },
+  "physical": {
+    "dimensions": [175, 175, 99],
+    "weight": 0.8,
+    "power": 21,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "18× 1W LEDs (6× red, 6× green, 6× blue)"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Master": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "RGB": {
+      "capability": {
+        "type": "ColorPreset",
+        "helpWanted": "Which color can be selected at which DMX values?"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "helpWanted": "Is this really fast…slow or slow…fast?"
+        }
+      ]
+    },
+    "Mode": {
+      "capability": {
+        "type": "Generic",
+        "helpWanted": "What does this channel do? Which modes can be selected at which DMX values?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Master",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Master",
+        "Red",
+        "Green",
+        "Blue",
+        "RGB",
+        "Strobe",
+        "Mode"
+      ]
+    }
+  ]
+}
