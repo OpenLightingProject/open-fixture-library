@@ -29,8 +29,8 @@ export async function exportFixtures(fixtures, options) {
             '@type': `DMXDevice`,
             '@dmxaddresscount': mode.channelKeys.length,
             '@dmxcversion': 3,
-            '@ddfversion': version
-          }
+            '@ddfversion': version,
+          },
         });
 
       addInformation(xml, mode);
@@ -41,11 +41,11 @@ export async function exportFixtures(fixtures, options) {
         name: sanitize(`${fixture.manufacturer.key}-${fixture.key}-${(mode.shortName)}.xml`).replace(/\s+/g, `-`),
         content: xml.end({
           pretty: true,
-          indent: `  `
+          indent: `  `,
         }),
         mimetype: `application/xml`,
         fixtures: [fixture],
-        mode: mode.shortName
+        mode: mode.shortName,
       });
     }
   }
@@ -125,9 +125,9 @@ function addFunctions(xml, mode) {
     }
 
     const channels = mode.channels.map(
-      ch => (ch instanceof SwitchingChannel ? ch.defaultChannel : ch)
+      ch => (ch instanceof SwitchingChannel ? ch.defaultChannel : ch),
     ).filter(
-      ch => !(ch instanceof FineChannel || ch instanceof NullChannel)
+      ch => !(ch instanceof FineChannel || ch instanceof NullChannel),
     );
     for (const channel of channels) {
       channelsPerPixel.get(channel.pixelKey).push(channel);
@@ -145,7 +145,7 @@ function addFunctions(xml, mode) {
 
     for (const cap of channel.capabilities) {
       const properFunction = Object.keys(ddf3Functions).find(
-        key => ddf3Functions[key].isCapSuitable(cap)
+        key => ddf3Functions[key].isCapSuitable(cap),
       );
 
       if (properFunction) {
@@ -217,7 +217,7 @@ function addProcedures(xml, mode) {
     }
 
     maintenanceCapabilities.push(...channel.capabilities.filter(
-      capability => capability.type === `Maintenance` && capability.isStep
+      capability => capability.type === `Maintenance` && capability.isStep,
     ));
   });
 
@@ -231,21 +231,21 @@ function addProcedures(xml, mode) {
     const channelIndex = mode.getChannelIndex(capability._channel);
 
     const xmlProcedure = xmlProcedures.element(`procedure`, {
-      name: capability.comment
+      name: capability.comment,
     });
 
     xmlProcedure.element(`set`, {
       dmxchannel: channelIndex,
-      value: capability.dmxRange.start
+      value: capability.dmxRange.start,
     });
 
     if (capability.hold) {
       xmlProcedure.element(`hold`, {
-        value: capability.hold.baseUnitEntity.number * 1000
+        value: capability.hold.baseUnitEntity.number * 1000,
       });
 
       xmlProcedure.element(`restore`, {
-        dmxchannel: channelIndex
+        dmxchannel: channelIndex,
       });
     }
   });
@@ -304,7 +304,7 @@ function addChannelAttributes(xmlElement, mode, channel) {
   xmlElement.attribute(`dmxchannel`, index);
 
   const fineIndices = channel.fineChannels.map(
-    fineCh => mode.getChannelIndex(fineCh)
+    fineCh => mode.getChannelIndex(fineCh),
   );
 
   if (fineIndices.length > 0 && fineIndices[0] !== -1) {

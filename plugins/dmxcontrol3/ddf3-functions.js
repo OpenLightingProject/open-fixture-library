@@ -10,7 +10,7 @@ export default {
       const xmlConst = xmlbuilder.create(`const`);
       xmlConst.attribute(`val`, channel.getDefaultValueWithResolution(CoarseChannel.RESOLUTION_8BIT));
       return xmlConst;
-    }
+    },
   },
   dimmer: {
     isCapSuitable: cap => cap.type === `Intensity`,
@@ -27,7 +27,7 @@ export default {
       }
 
       return xmlDimmer;
-    }
+    },
   },
   shutter: {
     isCapSuitable: cap => {
@@ -46,7 +46,7 @@ export default {
       });
 
       return xmlShutter;
-    }
+    },
   },
   strobe: {
     isCapSuitable: cap =>
@@ -88,11 +88,11 @@ export default {
           RampDown: `ramp down`,
           RampUpDown: `ramp up/down`,
           Lightning: `lightning`,
-          Spikes: `spikes`
+          Spikes: `spikes`,
         };
         return typePerShutterEffect[cap.shutterEffect];
       }
-    }
+    },
   },
   strobeSpeed: {
     isCapSuitable: cap => cap.type === `StrobeSpeed`,
@@ -106,7 +106,7 @@ export default {
       });
 
       return xmlSpeed;
-    }
+    },
   },
   strobeDuration: {
     isCapSuitable: cap => cap.type === `StrobeDuration`,
@@ -120,7 +120,7 @@ export default {
       });
 
       return xmlDuration;
-    }
+    },
   },
   pan: {
     isCapSuitable: cap => cap.type === `Pan`,
@@ -129,12 +129,12 @@ export default {
 
       caps.forEach(cap => {
         xmlPan.element(`range`, {
-          range: cap.angle[1].number - cap.angle[0].number
+          range: cap.angle[1].number - cap.angle[0].number,
         });
       });
 
       return xmlPan;
-    }
+    },
   },
   tilt: {
     isCapSuitable: cap => [`Pan`, `Tilt`].includes(cap.type),
@@ -143,12 +143,12 @@ export default {
 
       caps.forEach(cap => {
         xmlTilt.element(`range`, {
-          range: cap.angle[1].number - cap.angle[0].number
+          range: cap.angle[1].number - cap.angle[0].number,
         });
       });
 
       return xmlTilt;
-    }
+    },
   },
   panTiltSpeed: {
     isCapSuitable: cap => cap.type === `PanTiltSpeed`,
@@ -156,10 +156,10 @@ export default {
       const xmlPanTiltSpeed = xmlbuilder.create(`ptspeed`);
 
       const speedCaps = getSingleUnitCapabilities(
-        caps.filter(cap => cap.speed !== null), `speed`, `%`
+        caps.filter(cap => cap.speed !== null), `speed`, `%`,
       );
       const durationCaps = getSingleUnitCapabilities(
-        caps.filter(cap => cap.duration !== null), `duration`, `%`
+        caps.filter(cap => cap.duration !== null), `duration`, `%`,
       );
 
       speedCaps.forEach(cap => {
@@ -176,7 +176,7 @@ export default {
       });
 
       return xmlPanTiltSpeed;
-    }
+    },
   },
   color: {
     isCapSuitable: cap => cap.type === `ColorIntensity` || (cap.type === `NoFunction` && cap._channel.type === `Single Color`),
@@ -207,7 +207,7 @@ export default {
 
         return xmlColor;
       });
-    }
+    },
   },
   colorWheel: {
     isCapSuitable: cap => cap.isSlotType(`Color`) || cap.type === `ColorPreset` || (cap.type === `WheelRotation` && cap.speed && cap.wheels.some(wheel => wheel.type === `Color`)),
@@ -250,13 +250,13 @@ export default {
           val: getColor(cap),
           mindmx: cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT).start,
           maxdmx: cap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT).end,
-          caption: cap.name
+          caption: cap.name,
         });
       });
 
 
       const rotationCaps = getSingleUnitCapabilities(
-        caps.filter(cap => cap.type === `WheelRotation`), `speed`, `Hz`, 0, 15
+        caps.filter(cap => cap.type === `WheelRotation`), `speed`, `Hz`, 0, 15,
       );
       if (rotationCaps.length > 0) {
         const xmlWheelRotation = xmlColorWheel.element(`wheelrotation`);
@@ -272,15 +272,15 @@ export default {
       function getSplittedCapabilities(cap) {
         const startCapJson = {
           dmxRange: [cap.rawDmxRange.start, cap.rawDmxRange.start],
-          _splitted: true
+          _splitted: true,
         };
         const centerCapJson = {
           dmxRange: [cap.rawDmxRange.center, cap.rawDmxRange.center],
-          _splitted: true
+          _splitted: true,
         };
         const endCapJson = {
           dmxRange: [cap.rawDmxRange.end, cap.rawDmxRange.end],
-          _splitted: true
+          _splitted: true,
         };
 
         Object.entries(cap.jsonObject).forEach(([key, value]) => {
@@ -322,7 +322,7 @@ export default {
         }
 
         const [startCap, centerCap, endCap] = [startCapJson, centerCapJson, endCapJson].map(
-          capJson => new Capability(capJson, cap._resolution, cap._channel)
+          capJson => new Capability(capJson, cap._resolution, cap._channel),
         );
 
         if (cap.slotNumber) {
@@ -384,7 +384,7 @@ export default {
         const hex = (greyValue--).toString(16);
         return `#${hex}${hex}${hex}`;
       }
-    }
+    },
   },
   colorTemperature: {
     isCapSuitable: cap => cap.type === `ColorTemperature`,
@@ -400,7 +400,7 @@ export default {
       });
 
       return xmlColorTemp;
-    }
+    },
   },
   goboWheel: {
     isCapSuitable: cap => cap.isSlotType(`Gobo`) || (cap.type === `WheelRotation` && cap.speed && cap.wheels.some(wheel => wheel.type === `Gobo`)),
@@ -418,7 +418,7 @@ export default {
         if (!(slotNumber in capsPerSlot)) {
           capsPerSlot[slotNumber] = {
             normalCap: null,
-            shakingCap: null
+            shakingCap: null,
           };
         }
 
@@ -461,7 +461,7 @@ export default {
       });
 
       const rotationCaps = getSingleUnitCapabilities(
-        caps.filter(cap => cap.type === `WheelRotation`), `speed`, `Hz`, 0, 15
+        caps.filter(cap => cap.type === `WheelRotation`), `speed`, `Hz`, 0, 15,
       );
       if (rotationCaps.length > 0) {
         const xmlWheelRotation = xmlGoboWheel.element(`wheelrotation`);
@@ -469,7 +469,7 @@ export default {
       }
 
       return xmlGoboWheel;
-    }
+    },
   },
   goboIndex: { // gobo stencil rotation angle
     isCapSuitable: cap => cap.type === `WheelSlotRotation` && cap.wheels.some(wheel => wheel.type === `Gobo`) && cap.angle !== null,
@@ -483,7 +483,7 @@ export default {
       });
 
       return xmlGoboIndex;
-    }
+    },
   },
   goboRotation: { // gobo stencil rotation speed
     isCapSuitable: cap => cap.type === `WheelSlotRotation` && cap.wheels.some(wheel => wheel.type === `Gobo`) && cap.speed !== null,
@@ -496,7 +496,7 @@ export default {
       });
 
       return xmlGoboRotation;
-    }
+    },
   },
   goboShake: { // gobo shake speed
     isCapSuitable: cap => cap.type === `WheelShake` && cap.wheels.some(wheel => wheel.type === `Gobo`) && cap.wheelSlot === null && cap.shakeSpeed !== null,
@@ -509,7 +509,7 @@ export default {
       });
 
       return xmlGoboShake;
-    }
+    },
   },
   focus: {
     isCapSuitable: cap => cap.type === `Focus`,
@@ -524,7 +524,7 @@ export default {
       });
 
       return xmlFocus;
-    }
+    },
   },
   frost: {
     isCapSuitable: cap => cap.type === `Frost`,
@@ -552,7 +552,7 @@ export default {
       }
 
       return xmlFrost;
-    }
+    },
   },
   iris: {
     isCapSuitable: cap => cap.type === `Iris`,
@@ -567,7 +567,7 @@ export default {
       });
 
       return xmlIris;
-    }
+    },
   },
   zoom: {
     isCapSuitable: cap => cap.type === `Zoom`,
@@ -582,7 +582,7 @@ export default {
       });
 
       return xmlZoom;
-    }
+    },
   },
   prism: {
     isCapSuitable: cap => cap.type === `Prism` || (cap.type === `NoFunction` && cap._channel.type === `Prism`),
@@ -624,7 +624,7 @@ export default {
           type: firstCap.type === `NoFunction` ? `open` : `prism`,
           mindmx: firstCap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT).start,
           maxdmx: lastCap.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT).end,
-          caption: firstCap.name
+          caption: firstCap.name,
         });
 
         // add ranges for capabilities without rotation speed
@@ -646,7 +646,7 @@ export default {
 
 
       return xmlPrism;
-    }
+    },
   },
   prismIndex: { // rotation angle
     isCapSuitable: cap => cap.type === `PrismRotation` && cap.angle !== null,
@@ -660,7 +660,7 @@ export default {
       });
 
       return xmlPrismIndex;
-    }
+    },
   },
   prismRotation: { // rotation speed
     isCapSuitable: cap => cap.type === `PrismRotation` && cap.speed !== null,
@@ -673,7 +673,7 @@ export default {
       });
 
       return xmlPrismRotation;
-    }
+    },
   },
   fog: {
     isCapSuitable: cap => cap.type === `Fog` || (cap.type === `NoFunction` && cap._channel.type === `Fog`),
@@ -702,7 +702,7 @@ export default {
       }
 
       return xmlFog;
-    }
+    },
   },
   fan: {
     isCapSuitable: cap => (cap.speed !== null || cap.type === `NoFunction`) && /\bfan\b/i.test(cap._channel.name),
@@ -731,7 +731,7 @@ export default {
       }
 
       return xmlFan;
-    }
+    },
   },
   index: { // rotation angle
     isCapSuitable: cap => cap.angle && cap.type.includes(`Rotation`),
@@ -745,7 +745,7 @@ export default {
       });
 
       return xmlIndex;
-    }
+    },
   },
   rotation: { // rotation speed
     isCapSuitable: cap => cap.speed !== null && cap.type.match(/(Rotation|Continuous)/),
@@ -756,7 +756,7 @@ export default {
       dmxControlCaps.forEach(cap => xmlRotation.importDocument(getRotationSpeedXmlCapability(cap)));
 
       return xmlRotation;
-    }
+    },
   },
   rawStep: { // only steps
     isCapSuitable: cap => cap._channel.type !== `NoFunction` && (cap._channel.capabilities.every(cap => cap.isStep) || cap.usedStartEndEntities.length === 0),
@@ -770,7 +770,7 @@ export default {
       });
 
       return xmlRawStep;
-    }
+    },
   },
   raw: { // steps and ranges
     isCapSuitable: cap => cap._channel.type !== `NoFunction` && cap.usedStartEndEntities.length > 0,
@@ -786,8 +786,8 @@ export default {
       });
 
       return xmlRaw;
-    }
-  }
+    },
+  },
 };
 
 /**
@@ -815,7 +815,7 @@ function getSingleUnitCapabilities(caps, property, allowedUnit, zeroPercentValue
       capObject: cap,
       unit: startEntity.unit,
       startValue: startEntity.number,
-      endValue: endEntity.number
+      endValue: endEntity.number,
     };
   });
 
@@ -914,6 +914,6 @@ function arraysEqual(arr1, arr2) {
   }
 
   return arr1.length === arr2.length && arr1.every(
-    (item, index) => item === arr2[index]
+    (item, index) => item === arr2[index],
   );
 }

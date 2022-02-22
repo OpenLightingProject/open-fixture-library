@@ -29,9 +29,9 @@ export default async function testChannelNumbers(exportFile) {
   const xml = await parseString(exportFile.content);
   xml.device.functions.filter(
     // filter out tags without content
-    xmlFunction => typeof xmlFunction === `object`
+    xmlFunction => typeof xmlFunction === `object`,
   ).forEach(
-    xmlFunction => findChannels(xmlFunction, -1)
+    xmlFunction => findChannels(xmlFunction, -1),
   );
 
   checkUsedChannels();

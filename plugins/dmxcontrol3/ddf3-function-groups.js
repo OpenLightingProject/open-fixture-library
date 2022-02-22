@@ -20,14 +20,14 @@ export default [
             xmlSpeedRange.element(`step`, {
               handler: `strobetype`,
               mindmx: strobeCap.attributes.mindmx.value,
-              maxdmx: strobeCap.attributes.maxdmx.value
+              maxdmx: strobeCap.attributes.maxdmx.value,
             });
           }
         });
       });
 
       return xmlStrobe;
-    }
+    },
   },
   {
     functions: [`strobespeed`],
@@ -36,88 +36,88 @@ export default [
       strobespeed.children.forEach(child => child.attribute(`type`, `linear`));
 
       return strobespeed;
-    }
+    },
   },
   {
     functions: [`strobe`, `duration`],
-    getXmlGroup: mergeIntoFirst
+    getXmlGroup: mergeIntoFirst,
   },
   {
     functions: [`pan`, `tilt`],
-    getXmlGroup: mergeIntoNew(`position`)
+    getXmlGroup: mergeIntoNew(`position`),
   },
   {
     functions: [`pan`],
-    getXmlGroup: rename(`index`)
+    getXmlGroup: rename(`index`),
   },
   {
     functions: [`tilt`],
-    getXmlGroup: rename(`index`)
+    getXmlGroup: rename(`index`),
   },
   {
     functions: [`red`, `green`, `blue`],
-    getXmlGroup: mergeIntoNew(`rgb`)
+    getXmlGroup: mergeIntoNew(`rgb`),
   },
   {
     functions: [`cyan`, `magenta`, `yellow`],
-    getXmlGroup: mergeIntoNew(`cmy`)
+    getXmlGroup: mergeIntoNew(`cmy`),
   },
   {
     functions: [`rgb`, `white`],
-    getXmlGroup: mergeIntoFirst
+    getXmlGroup: mergeIntoFirst,
   },
   {
     functions: [`rgb`, `amber`],
-    getXmlGroup: mergeIntoFirst
+    getXmlGroup: mergeIntoFirst,
   },
   {
     functions: [`rgb`, `uv`],
-    getXmlGroup: mergeIntoFirst
+    getXmlGroup: mergeIntoFirst,
   },
   {
     functions: [`rgb`, `cyan`],
-    getXmlGroup: mergeIntoFirst
+    getXmlGroup: mergeIntoFirst,
   },
   {
     functions: [`rgb`, `yellow`],
-    getXmlGroup: mergeIntoFirst
+    getXmlGroup: mergeIntoFirst,
   },
   {
     functions: [`rgb`, `lime`],
-    getXmlGroup: mergeIntoFirst
+    getXmlGroup: mergeIntoFirst,
   },
   {
     functions: [`rgb`, `indigo`],
-    getXmlGroup: mergeIntoFirst
+    getXmlGroup: mergeIntoFirst,
   },
   {
     functions: [`gobowheel`, `goboindex`],
-    getXmlGroup: mergeIntoFirst
+    getXmlGroup: mergeIntoFirst,
   },
   {
     functions: [`goboindex`],
-    getXmlGroup: rename(`index`)
+    getXmlGroup: rename(`index`),
   },
   {
     functions: [`gobowheel`, `goborotation`],
-    getXmlGroup: mergeIntoFirst
+    getXmlGroup: mergeIntoFirst,
   },
   {
     functions: [`goborotation`],
-    getXmlGroup: rename(`rotation`)
+    getXmlGroup: rename(`rotation`),
   },
   {
     functions: [`gobowheel`, `goboshake`],
-    getXmlGroup: mergeIntoFirst
+    getXmlGroup: mergeIntoFirst,
   },
   {
     functions: [`prism`, `prismindex`],
-    getXmlGroup: mergeIntoFirst
+    getXmlGroup: mergeIntoFirst,
   },
   {
     functions: [`prism`, `prismrotation`],
-    getXmlGroup: mergeIntoFirst
-  }
+    getXmlGroup: mergeIntoFirst,
+  },
 ];
 
 /**
