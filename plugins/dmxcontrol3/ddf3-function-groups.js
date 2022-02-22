@@ -5,22 +5,22 @@ export default [
     functions: [`strobe`, `strobespeed`],
     getXmlGroup: (strobe, strobespeed) => {
       const xmlStrobe = xmlbuilder.create(`strobe`);
-      xmlStrobe.attributes = strobespeed.attributes;
+      xmlStrobe.attribs = strobespeed.attribs;
 
       const xmlStrobeType = xmlStrobe.element(`strobetype`);
-      xmlStrobeType.attributes = strobe.attributes;
+      xmlStrobeType.attribs = strobe.attribs;
 
       for (const speedCapability of strobespeed.children) {
         for (const strobeCapability of strobe.children) {
-          if (strobeCapability.attributes.type.value !== `open`) {
+          if (strobeCapability.attribs.type.value !== `open`) {
             const xmlSpeedRange = xmlStrobe.element(`range`);
-            xmlSpeedRange.attributes = Object.assign({}, speedCapability.attributes);
-            xmlSpeedRange.attributes.type = strobeCapability.attributes.type;
+            xmlSpeedRange.attribs = Object.assign({}, speedCapability.attribs);
+            xmlSpeedRange.attribs.type = strobeCapability.attribs.type;
 
             xmlSpeedRange.element(`step`, {
               handler: `strobetype`,
-              mindmx: strobeCapability.attributes.mindmx.value,
-              maxdmx: strobeCapability.attributes.maxdmx.value,
+              mindmx: strobeCapability.attribs.mindmx.value,
+              maxdmx: strobeCapability.attribs.maxdmx.value,
             });
           }
         }
