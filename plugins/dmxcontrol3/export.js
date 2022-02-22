@@ -84,7 +84,7 @@ function addInformation(xml, mode) {
  * @param {Mode} mode The definition's mode.
  */
 function addFunctions(xml, mode) {
-  const channelsPerPixel = getChannelsPerPixel();
+  const channelsPerPixel = getChannelsPerPixel(mode);
   /** @type {XmlFunctionsPerPixel} */
   const xmlFunctionsPerPixel = new Map();
 
@@ -112,34 +112,6 @@ function addFunctions(xml, mode) {
         xmlFunctionsContainer.importDocument(xmlFunction);
       }
     }
-  }
-
-  /**
-   * @returns {ChannelsPerPixel} Each pixel key pointing to its unwrapped matrix channels. null points to all non-matrix channels.
-   */
-  function getChannelsPerPixel() {
-    const channelsPerPixel = new Map();
-
-    channelsPerPixel.set(null, []);
-
-    const matrix = mode.fixture.matrix;
-    if (matrix !== null) {
-      const pixelKeys = matrix.pixelGroupKeys.concat(matrix.getPixelKeysByOrder(`X`, `Y`, `Z`));
-      for (const key of pixelKeys) {
-        channelsPerPixel.set(key, []);
-      }
-    }
-
-    const channels = mode.channels.map(
-      channel => (channel instanceof SwitchingChannel ? channel.defaultChannel : channel),
-    ).filter(
-      channel => !(channel instanceof FineChannel || channel instanceof NullChannel),
-    );
-    for (const channel of channels) {
-      channelsPerPixel.get(channel.pixelKey).push(channel);
-    }
-
-    return channelsPerPixel;
   }
 
   /**
@@ -207,6 +179,35 @@ function addFunctions(xml, mode) {
       }
     }
   }
+}
+
+/**
+ * @param {Mode} mode The definition's mode.
+ * @returns {ChannelsPerPixel} Each pixel key pointing to its unwrapped matrix channels. null points to all non-matrix channels.
+ */
+function getChannelsPerPixel(mode) {
+  const channelsPerPixel = new Map();
+
+  channelsPerPixel.set(null, []);
+
+  const matrix = mode.fixture.matrix;
+  if (matrix !== null) {
+    const pixelKeys = matrix.pixelGroupKeys.concat(matrix.getPixelKeysByOrder(`X`, `Y`, `Z`));
+    for (const key of pixelKeys) {
+      channelsPerPixel.set(key, []);
+    }
+  }
+
+  const channels = mode.channels.map(
+    channel => (channel instanceof SwitchingChannel ? channel.defaultChannel : channel),
+  ).filter(
+    channel => !(channel instanceof FineChannel || channel instanceof NullChannel),
+  );
+  for (const channel of channels) {
+    channelsPerPixel.get(channel.pixelKey).push(channel);
+  }
+
+  return channelsPerPixel;
 }
 
 /**

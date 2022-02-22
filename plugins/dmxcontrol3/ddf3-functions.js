@@ -32,8 +32,8 @@ export default {
   shutter: {
     isCapSuitable: capability => {
       const isShutterCapability = capability.type === `ShutterStrobe` && [`Open`, `Closed`].includes(capability.shutterEffect);
-      const channelHasOpen = capability._channel.capabilities.some(capability_ => capability_.shutterEffect === `Open`);
-      const channelHasClosed = capability._channel.capabilities.some(capability => capability.shutterEffect === `Closed`);
+      const channelHasOpen = capability._channel.capabilities.some(otherCapability => otherCapability.shutterEffect === `Open`);
+      const channelHasClosed = capability._channel.capabilities.some(otherCapability => otherCapability.shutterEffect === `Closed`);
       return isShutterCapability && channelHasOpen && channelHasClosed;
     },
     create: (channel, capabilities) => {
@@ -632,7 +632,8 @@ export default {
         });
 
         // add ranges for capabilities without rotation speed
-        for (const capability of commentGroup.filter(capability => capability.angle !== null)) {
+        const rotationAngleCapabilities = commentGroup.filter(capability => capability.angle !== null);
+        for (const capability of rotationAngleCapabilities) {
           const xmlRange = getBaseXmlCapability(capability, capability.angle[0].number, capability.angle[1].number);
           xmlRange.attribute(`range`, capability.angle[1].number - capability.angle[0].number);
           xmlRange.attribute(`handler`, `prismindex`);

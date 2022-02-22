@@ -18,8 +18,8 @@ export default async function testChannelNumbers(exportFile) {
   const parseString = promisify(parser.parseString);
 
   const fixture = exportFile.fixtures[0];
-  const mode = fixture.modes.find(mode => mode.shortName === exportFile.mode);
-  const channelCount = mode.channels.length;
+  const exportMode = fixture.modes.find(mode => mode.shortName === exportFile.mode);
+  const channelCount = exportMode.channels.length;
 
   /** @type {Record<number, Range[]>} */
   const usedChannelRanges = {};
@@ -48,8 +48,13 @@ export default async function testChannelNumbers(exportFile) {
    */
   function findChannels(xmlNode, currentChannelIndex) {
     if (xmlNode.$) {
-      const indexAttributes = [`dmxchannel`, `finedmxchannel`, `ultradmxchannel`, `ultrafinedmxchannel`];
-      for (const attribute of indexAttributes.filter(attribute => attribute in xmlNode.$)) {
+      const indexAttributes = [
+        `dmxchannel`,
+        `finedmxchannel`,
+        `ultradmxchannel`,
+        `ultrafinedmxchannel`,
+      ].filter(attribute => attribute in xmlNode.$);
+      for (const attribute of indexAttributes) {
         const channelIndex = Number.parseInt(xmlNode.$[attribute], 10);
 
         if (!(channelIndex in usedChannelRanges)) {
@@ -124,7 +129,7 @@ export default async function testChannelNumbers(exportFile) {
    * - Each channel has either no capability at all or its ranges span the whole 0…255 range.
    */
   function checkUsedChannels() {
-    for (const [index, channel] of mode.channels.entries()) {
+    for (const [index, channel] of exportMode.channels.entries()) {
       const isUsed = index in usedChannelRanges;
       const isNoFunction = isNoFunctionChannel(channel);
 
