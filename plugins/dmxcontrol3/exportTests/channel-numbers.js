@@ -136,7 +136,8 @@ export default async function testChannelNumbers(exportFile) {
           const mergedRanges = Range.getMergedRanges(usedChannelRanges[index]);
 
           if (!areRangesComplete(mergedRanges)) {
-            errors.push(`Channel ${index + 1} "${channel.name}" is missing capabilities. Used ranges: ${mergedRanges.join(`, `)}`);
+            const usedRanges = mergedRanges.join(`, `);
+            errors.push(`Channel ${index + 1} "${channel.name}" is missing capabilities. Used ranges: ${usedRanges}`);
           }
         }
       }
