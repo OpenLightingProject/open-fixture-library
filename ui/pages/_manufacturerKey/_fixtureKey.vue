@@ -24,7 +24,7 @@
         </section>
       </template>
 
-      <DownloadButton :fixture-key="`${manufacturerKey}/${fixtureKey}`" />
+      <DownloadButton :fixture-key="`${manufacturerKey}/${fixtureKey}`" show-help />
     </FixtureHeader>
 
     <section v-if="redirect" class="card yellow">

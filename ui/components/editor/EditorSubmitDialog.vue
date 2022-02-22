@@ -87,7 +87,6 @@
 
           <DownloadButton
             v-if="previewFixtureResults.errors.length === 0"
-            :show-help="false"
             :editor-fixtures="previewFixtureCreateResult" />
         </FixtureHeader>
 
@@ -130,7 +129,6 @@
         <DownloadButton
           v-if="!hasValidationErrors"
           button-style="select"
-          :show-help="false"
           :editor-fixtures="fixtureCreateResult" />
         <a
           :href="pullRequestUrl"
