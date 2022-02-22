@@ -239,7 +239,7 @@ function addProcedures(xml, mode) {
   const xmlProcedures = xml.element(`procedures`);
 
   for (const capability of maintenanceCapabilities) {
-    const channelIndex = mode.getChannelIndex(capability._channel);
+    const channelIndex = mode.getChannelIndex(capability._channel.key);
 
     const xmlProcedure = xmlProcedures.element(`procedure`, {
       name: capability.comment,
@@ -311,11 +311,11 @@ function addMatrix(mode, xmlFunctionsPerPixel) {
 function addChannelAttributes(xmlElement, mode, channel) {
   xmlElement.attribute(`name`, channel.name);
 
-  const index = mode.getChannelIndex(channel);
+  const index = mode.getChannelIndex(channel.key);
   xmlElement.attribute(`dmxchannel`, index);
 
   const fineIndices = channel.fineChannels.map(
-    fineChannel => mode.getChannelIndex(fineChannel),
+    fineChannel => mode.getChannelIndex(fineChannel.key),
   );
 
   if (fineIndices.length > 0 && fineIndices[0] !== -1) {
