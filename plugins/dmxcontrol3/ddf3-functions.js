@@ -19,11 +19,11 @@ export default {
 
       if (channel.capabilities.length > 1 || capabilities[0].brightness[0].number !== 0) {
         const dmxControlCapabilities = getSingleUnitCapabilities(capabilities, `brightness`, `%`);
-        dmxControlCapabilities.forEach(capability => {
+        for (const capability of dmxControlCapabilities) {
           const xmlCapability = getBaseXmlCapability(capability.capObject, capability.startValue, capability.endValue);
           xmlCapability.attribute(`type`, `linear`);
           xmlDimmer.importDocument(xmlCapability);
-        });
+        }
       }
 
       return xmlDimmer;
@@ -39,11 +39,11 @@ export default {
     create: (channel, capabilities) => {
       const xmlShutter = xmlbuilder.create(`shutter`);
 
-      capabilities.forEach(capability => {
+      for (const capability of capabilities) {
         const xmlCapability = getBaseXmlCapability(capability);
         xmlCapability.attribute(`type`, capability.shutterEffect.toLowerCase());
         xmlShutter.importDocument(xmlCapability);
-      });
+      }
 
       return xmlShutter;
     },
@@ -55,7 +55,7 @@ export default {
     create: (channel, capabilities) => {
       const xmlStrobe = xmlbuilder.create(`strobe`);
 
-      capabilities.forEach(capability => {
+      for (const capability of capabilities) {
         let xmlCapability;
 
         if (capability.speed) {
@@ -68,7 +68,7 @@ export default {
 
         xmlCapability.attribute(`type`, getStrobeType(capability));
         xmlStrobe.importDocument(xmlCapability);
-      });
+      }
 
       return xmlStrobe;
 
@@ -100,10 +100,10 @@ export default {
       const xmlSpeed = xmlbuilder.create(`strobespeed`);
 
       const dmxControlCapabilities = getSingleUnitCapabilities(capabilities, `speed`, `Hz`, 0, 50);
-      dmxControlCapabilities.forEach(capability => {
+      for (const capability of dmxControlCapabilities) {
         const xmlCapability = getBaseXmlCapability(capability.capObject, capability.startValue, capability.endValue);
         xmlSpeed.importDocument(xmlCapability);
-      });
+      }
 
       return xmlSpeed;
     },
@@ -113,11 +113,11 @@ export default {
     create: (channel, capabilities) => {
       const xmlDuration = xmlbuilder.create(`duration`);
 
-      getSingleUnitCapabilities(capabilities, `duration`, `s`, 0, 2).forEach(capability => {
+      for (const capability of getSingleUnitCapabilities(capabilities, `duration`, `s`, 0, 2)) {
         const xmlCapability = getBaseXmlCapability(capability.capObject, capability.startValue * 1000, capability.endValue * 1000);
         xmlCapability.attribute(`type`, `linear`);
         xmlDuration.importDocument(xmlCapability);
-      });
+      }
 
       return xmlDuration;
     },
@@ -127,11 +127,11 @@ export default {
     create: (channel, capabilities) => {
       const xmlPan = xmlbuilder.create(`pan`);
 
-      capabilities.forEach(capability => {
+      for (const capability of capabilities) {
         xmlPan.element(`range`, {
           range: capability.angle[1].number - capability.angle[0].number,
         });
-      });
+      }
 
       return xmlPan;
     },
@@ -141,11 +141,11 @@ export default {
     create: (channel, capabilities) => {
       const xmlTilt = xmlbuilder.create(`tilt`);
 
-      capabilities.forEach(capability => {
+      for (const capability of capabilities) {
         xmlTilt.element(`range`, {
           range: capability.angle[1].number - capability.angle[0].number,
         });
-      });
+      }
 
       return xmlTilt;
     },
@@ -162,18 +162,18 @@ export default {
         capabilities.filter(capability => capability.duration !== null), `duration`, `%`,
       );
 
-      speedCapabilities.forEach(capability => {
+      for (const capability of speedCapabilities) {
         const xmlCapability = getBaseXmlCapability(capability.capObject, capability.startValue, capability.endValue);
         xmlCapability.attribute(`type`, `linear`);
         xmlPanTiltSpeed.importDocument(xmlCapability);
-      });
+      }
 
-      durationCapabilities.forEach(capability => {
+      for (const capability of durationCapabilities) {
         // 100% duration means low speed, so we need to invert this
         const xmlCapability = getBaseXmlCapability(capability.capObject, 100 - capability.startValue, 100 - capability.endValue);
         xmlCapability.attribute(`type`, `linear`);
         xmlPanTiltSpeed.importDocument(xmlCapability);
-      });
+      }
 
       return xmlPanTiltSpeed;
     },
@@ -198,11 +198,11 @@ export default {
 
         if (Object.keys(capabilitiesPerColor).length > 1) {
           const dmxControlCapabilities = getSingleUnitCapabilities(colorCapabilities, `brightness`, `%`);
-          dmxControlCapabilities.forEach(capability => {
+          for (const capability of dmxControlCapabilities) {
             const xmlCapability = getBaseXmlCapability(capability.capObject, capability.startValue, capability.endValue);
             xmlCapability.attribute(`type`, `linear`);
             xmlColor.importDocument(xmlCapability);
-          });
+          }
         }
 
         return xmlColor;
@@ -244,7 +244,7 @@ export default {
         }
       }
 
-      presetCapabilities.forEach(capability => {
+      for (const capability of presetCapabilities) {
         xmlColorWheel.element(`step`, {
           type: `color`,
           val: getColor(capability),
@@ -252,7 +252,7 @@ export default {
           maxdmx: capability.getDmxRangeWithResolution(CoarseChannel.RESOLUTION_8BIT).end,
           caption: capability.name,
         });
-      });
+      }
 
 
       const rotationCapabilities = getSingleUnitCapabilities(
@@ -260,7 +260,9 @@ export default {
       );
       if (rotationCapabilities.length > 0) {
         const xmlWheelRotation = xmlColorWheel.element(`wheelrotation`);
-        rotationCapabilities.forEach(capability => xmlWheelRotation.importDocument(getRotationSpeedXmlCapability(capability)));
+        for (const capability of rotationCapabilities) {
+          xmlWheelRotation.importDocument(getRotationSpeedXmlCapability(capability));
+        }
       }
 
       return xmlColorWheel;
@@ -283,9 +285,9 @@ export default {
           _splitted: true,
         };
 
-        Object.entries(capability.jsonObject).forEach(([key, value]) => {
+        for (let [key, value] of Object.entries(capability.jsonObject)) {
           if (key === `dmxRange`) {
-            return;
+            continue;
           }
 
           if (key.includes(`Start`)) {
@@ -301,7 +303,7 @@ export default {
             centerCapabilityJson[key] = value;
             endCapabilityJson[key] = value;
           }
-        });
+        }
 
         if (capability.hasComment) {
           const startEndRegex = /^([a-z0-9 ]+?) *(?:…|->?|\bto\b) *([a-z0-9 ]+?)$/i; // Red…Blue, Red to Blue, Red -> Blue, Red-Blue, ...
@@ -362,9 +364,9 @@ export default {
 
         const capabilityJson = {};
         const preferredJsonObject = !capability1.jsonObject._splitted ? capability1.jsonObject : capability2.jsonObject; // we prefer unsplitted caps
-        Object.entries(preferredJsonObject).forEach(([key, value]) => {
+        for (const [key, value] of Object.entries(preferredJsonObject)) {
           capabilityJson[key] = value;
-        });
+        }
 
         const dmxRange = capability1.rawDmxRange.getRangeMergedWith(capability2.rawDmxRange);
         capabilityJson.dmxRange = [dmxRange.start, dmxRange.end];
@@ -393,11 +395,11 @@ export default {
 
       const zeroPercentValue = 8000 - ((8000 - 2500) / 2);
       const dmxControlCapabilities = getSingleUnitCapabilities(capabilities, `colorTemperature`, `K`, zeroPercentValue, 8000);
-      dmxControlCapabilities.forEach(capability => {
+      for (const capability of dmxControlCapabilities) {
         const xmlCapability = getBaseXmlCapability(capability.capObject, capability.startValue, capability.endValue);
         xmlCapability.attribute(`type`, `linear`);
         xmlColorTemporary.importDocument(xmlCapability);
-      });
+      }
 
       return xmlColorTemporary;
     },
@@ -412,7 +414,7 @@ export default {
       // search for first normal cap and first shaking cap per index
       // further caps of the same index will be ignored (for now)
       const slotCapabilities = capabilities.filter(capability => capability.isSlotType(`Gobo`));
-      slotCapabilities.forEach(capability => {
+      for (const capability of slotCapabilities) {
         const slotNumber = `${capability.slotNumber[0]}…${capability.slotNumber[1]}`;
 
         if (!(slotNumber in capabilitiesPerSlot)) {
@@ -428,14 +430,14 @@ export default {
         else if (capability.type === `WheelShake` && !capabilitiesPerSlot[slotNumber].shakingCap) {
           capabilitiesPerSlot[slotNumber].shakingCap = capability;
         }
-      });
+      }
 
       const usesShake = Object.values(capabilitiesPerSlot).some(({ shakingCap }) => shakingCap !== null);
       if (usesShake) {
         xmlGoboWheel.element(`goboshake`);
       }
 
-      Object.values(capabilitiesPerSlot).forEach(({ normalCap, shakingCap }) => {
+      for (const { normalCap, shakingCap } of Object.values(capabilitiesPerSlot)) {
         if (normalCap) {
           const xmlCapability = getBaseXmlCapability(normalCap);
           xmlCapability.attribute(`type`, normalCap.isSlotType(`Open`) ? `open` : `gobo`);
@@ -458,14 +460,16 @@ export default {
 
           xmlGoboWheel.importDocument(xmlCapability);
         }
-      });
+      }
 
       const rotationCapabilities = getSingleUnitCapabilities(
         capabilities.filter(capability => capability.type === `WheelRotation`), `speed`, `Hz`, 0, 15,
       );
       if (rotationCapabilities.length > 0) {
         const xmlWheelRotation = xmlGoboWheel.element(`wheelrotation`);
-        rotationCapabilities.forEach(capability => xmlWheelRotation.importDocument(getRotationSpeedXmlCapability(capability)));
+        for (const capability of rotationCapabilities) {
+          xmlWheelRotation.importDocument(getRotationSpeedXmlCapability(capability));
+        }
       }
 
       return xmlGoboWheel;
@@ -476,11 +480,11 @@ export default {
     create: (channel, capabilities) => {
       const xmlGoboIndex = xmlbuilder.create(`goboindex`);
 
-      getSingleUnitCapabilities(capabilities, `angle`, `deg`, 0, 360).forEach(capability => {
+      for (const capability of getSingleUnitCapabilities(capabilities, `angle`, `deg`, 0, 360)) {
         const xmlCapability = getBaseXmlCapability(capability.capObject, capability.startValue, capability.endValue);
         xmlCapability.attribute(`range`, Math.abs(capability.endValue - capability.startValue));
         xmlGoboIndex.importDocument(xmlCapability);
-      });
+      }
 
       return xmlGoboIndex;
     },
@@ -490,10 +494,10 @@ export default {
     create: (channel, capabilities) => {
       const xmlGoboRotation = xmlbuilder.create(`goborotation`);
 
-      getSingleUnitCapabilities(capabilities, `speed`, `Hz`, 0, 5).forEach(capability => {
+      for (const capability of getSingleUnitCapabilities(capabilities, `speed`, `Hz`, 0, 5)) {
         const xmlCapability = getRotationSpeedXmlCapability(capability);
         xmlGoboRotation.importDocument(xmlCapability);
-      });
+      }
 
       return xmlGoboRotation;
     },
@@ -503,10 +507,10 @@ export default {
     create: (channel, capabilities) => {
       const xmlGoboShake = xmlbuilder.create(`goboshake`);
 
-      getSingleUnitCapabilities(capabilities, `shakeSpeed`, `Hz`, 0, 20).forEach(capability => {
+      for (const capability of getSingleUnitCapabilities(capabilities, `shakeSpeed`, `Hz`, 0, 20)) {
         const xmlCapability = getBaseXmlCapability(capability.capObject, capability.startValue, capability.endValue);
         xmlGoboShake.importDocument(xmlCapability);
-      });
+      }
 
       return xmlGoboShake;
     },
@@ -517,11 +521,11 @@ export default {
       const xmlFocus = xmlbuilder.create(`focus`);
 
       const dmxControlCapabilities = getSingleUnitCapabilities(capabilities, `distance`, `%`);
-      dmxControlCapabilities.forEach(capability => {
+      for (const capability of dmxControlCapabilities) {
         const xmlCapability = getBaseXmlCapability(capability.capObject, capability.startValue, capability.endValue);
         xmlCapability.attribute(`type`, `linear`);
         xmlFocus.importDocument(xmlCapability);
-      });
+      }
 
       return xmlFocus;
     },
@@ -532,7 +536,7 @@ export default {
       const xmlFrost = xmlbuilder.create(`frost`);
 
       if (capabilities.length > 1) {
-        capabilities.forEach(capability => {
+        for (const capability of capabilities) {
           let xmlCapability;
 
           if (capability.frostIntensity[0].number !== capability.frostIntensity[1].number) {
@@ -548,7 +552,7 @@ export default {
           }
 
           xmlFrost.importDocument(xmlCapability);
-        });
+        }
       }
 
       return xmlFrost;
@@ -560,11 +564,11 @@ export default {
       const xmlIris = xmlbuilder.create(`iris`);
 
       const dmxControlCapabilities = getSingleUnitCapabilities(capabilities, `openPercent`, `%`);
-      dmxControlCapabilities.forEach(capability => {
+      for (const capability of dmxControlCapabilities) {
         const xmlCapability = getBaseXmlCapability(capability.capObject, capability.startValue, capability.endValue);
         xmlCapability.attribute(`type`, `linear`);
         xmlIris.importDocument(xmlCapability);
-      });
+      }
 
       return xmlIris;
     },
@@ -575,11 +579,11 @@ export default {
       const xmlZoom = xmlbuilder.create(`zoom`);
 
       const dmxControlCapabilities = getSingleUnitCapabilities(capabilities, `angle`, `deg`, 0, 90);
-      dmxControlCapabilities.forEach(capability => {
+      for (const capability of dmxControlCapabilities) {
         const xmlCapability = getBaseXmlCapability(capability.capObject, capability.startValue, capability.endValue);
         xmlCapability.attribute(`type`, `linear`);
         xmlZoom.importDocument(xmlCapability);
-      });
+      }
 
       return xmlZoom;
     },
@@ -603,7 +607,7 @@ export default {
 
       // group adjacent capabilities by comment
       const capabilitiesGroupedByComment = [];
-      capabilities.forEach(capability => {
+      for (const capability of capabilities) {
         const lastGroup = capabilitiesGroupedByComment[capabilitiesGroupedByComment.length - 1];
 
         if (lastGroup && lastGroup[0].type === capability.type && lastGroup[0].comment === capability.comment) {
@@ -614,9 +618,9 @@ export default {
           // push new group
           capabilitiesGroupedByComment.push([capability]);
         }
-      });
+      }
 
-      capabilitiesGroupedByComment.forEach(commentGroup => {
+      for (const commentGroup of capabilitiesGroupedByComment) {
         const firstCapability = commentGroup[0];
         const lastCapability = commentGroup[commentGroup.length - 1];
 
@@ -628,21 +632,21 @@ export default {
         });
 
         // add ranges for capabilities without rotation speed
-        commentGroup.filter(capability => capability.angle !== null).forEach(capability => {
+        for (const capability of commentGroup.filter(capability => capability.angle !== null)) {
           const xmlRange = getBaseXmlCapability(capability, capability.angle[0].number, capability.angle[1].number);
           xmlRange.attribute(`range`, capability.angle[1].number - capability.angle[0].number);
           xmlRange.attribute(`handler`, `prismindex`);
           xmlStep.importDocument(xmlRange);
-        });
+        }
 
         // add ranges/steps for rotation speed dmx control capabilities
         const rotationSpeedCapabilities = commentGroup.filter(capability => capability.speed !== null);
-        getSingleUnitCapabilities(rotationSpeedCapabilities, `speed`, `Hz`, 0, 5).forEach(capability => {
+        for (const capability of getSingleUnitCapabilities(rotationSpeedCapabilities, `speed`, `Hz`, 0, 5)) {
           const xmlCapability = getRotationSpeedXmlCapability(capability);
           xmlCapability.attribute(`handler`, `prismrotation`);
           xmlStep.importDocument(xmlCapability);
-        });
-      });
+        }
+      }
 
 
       return xmlPrism;
@@ -653,11 +657,11 @@ export default {
     create: (channel, capabilities) => {
       const xmlPrismIndex = xmlbuilder.create(`prismindex`);
 
-      getSingleUnitCapabilities(capabilities, `angle`, `deg`, 0, 360).forEach(capability => {
+      for (const capability of getSingleUnitCapabilities(capabilities, `angle`, `deg`, 0, 360)) {
         const xmlCapability = getBaseXmlCapability(capability.capObject, capability.startValue, capability.endValue);
         xmlCapability.attribute(`range`, Math.abs(capability.endValue - capability.startValue));
         xmlPrismIndex.importDocument(xmlCapability);
-      });
+      }
 
       return xmlPrismIndex;
     },
@@ -667,10 +671,10 @@ export default {
     create: (channel, capabilities) => {
       const xmlPrismRotation = xmlbuilder.create(`prismrotation`);
 
-      getSingleUnitCapabilities(capabilities, `speed`, `Hz`, 0, 5).forEach(capability => {
+      for (const capability of getSingleUnitCapabilities(capabilities, `speed`, `Hz`, 0, 5)) {
         const xmlCapability = getRotationSpeedXmlCapability(capability);
         xmlPrismRotation.importDocument(xmlCapability);
-      });
+      }
 
       return xmlPrismRotation;
     },
@@ -682,7 +686,7 @@ export default {
 
       if (capabilities.length > 1) {
 
-        capabilities.forEach(capability => {
+        for (const capability of capabilities) {
           let xmlCapability;
 
           if (capability.fogOutput !== null && capability.fogOutput[0].number !== capability.fogOutput[1].number) {
@@ -698,7 +702,7 @@ export default {
           }
 
           xmlFog.importDocument(xmlCapability);
-        });
+        }
       }
 
       return xmlFog;
@@ -711,7 +715,7 @@ export default {
 
       if (capabilities.length > 1) {
 
-        capabilities.forEach(capability => {
+        for (const capability of capabilities) {
           let xmlCapability;
 
           if (capability.speed !== null && capability.speed[0].number !== capability.speed[1].number) {
@@ -727,7 +731,7 @@ export default {
           }
 
           xmlFan.importDocument(xmlCapability);
-        });
+        }
       }
 
       return xmlFan;
@@ -738,11 +742,11 @@ export default {
     create: (channel, capabilities) => {
       const xmlIndex = xmlbuilder.create(`index`);
 
-      getSingleUnitCapabilities(capabilities, `angle`, `deg`, 0, 360).forEach(capability => {
+      for (const capability of getSingleUnitCapabilities(capabilities, `angle`, `deg`, 0, 360)) {
         const xmlCapability = getBaseXmlCapability(capability.capObject, capability.startValue, capability.endValue);
         xmlCapability.attribute(`range`, Math.abs(capability.endValue - capability.startValue));
         xmlIndex.importDocument(xmlCapability);
-      });
+      }
 
       return xmlIndex;
     },
@@ -753,7 +757,9 @@ export default {
       const xmlRotation = xmlbuilder.create(`rotation`);
 
       const dmxControlCapabilities = getSingleUnitCapabilities(capabilities, `speed`, `Hz`, 0, 5);
-      dmxControlCapabilities.forEach(capability => xmlRotation.importDocument(getRotationSpeedXmlCapability(capability)));
+      for (const capability of dmxControlCapabilities) {
+        xmlRotation.importDocument(getRotationSpeedXmlCapability(capability));
+      }
 
       return xmlRotation;
     },
@@ -763,11 +769,11 @@ export default {
     create: (channel, capabilities) => {
       const xmlRawStep = xmlbuilder.create(`rawstep`);
 
-      capabilities.forEach(capability => {
+      for (const capability of capabilities) {
         const xmlCapability = getBaseXmlCapability(capability);
         xmlCapability.attribute(`caption`, capability.name);
         xmlRawStep.importDocument(xmlCapability);
-      });
+      }
 
       return xmlRawStep;
     },
@@ -777,13 +783,13 @@ export default {
     create: (channel, capabilities) => {
       const xmlRaw = xmlbuilder.create(`raw`);
 
-      capabilities.forEach(capability => {
+      for (const capability of capabilities) {
         const [startEntity, endEntity] = capability[capability.usedStartEndEntities[0]];
         const xmlCapability = getBaseXmlCapability(capability, startEntity.number, endEntity.number);
         xmlCapability.attribute(`caption`, capability.name);
         xmlCapability.attribute(`type`, capability.usedStartEndEntities[0] === `speed` && startEntity.number === endEntity.number ? `stop` : `linear`);
         xmlRaw.importDocument(xmlCapability);
-      });
+      }
 
       return xmlRaw;
     },
@@ -829,23 +835,23 @@ function getSingleUnitCapabilities(capabilities, property, allowedUnit, zeroPerc
     const t = zeroPercentValue; // f(0) = m * 0 + t = t
     const percentToUnit = (x => (m * x) + t);
 
-    capabilitiesWithWrongUnit.forEach(capability => {
+    for (const capability of capabilitiesWithWrongUnit) {
       capability.unit = allowedUnit;
       capability.startValue = percentToUnit(capability.startValue);
       capability.endValue = percentToUnit(capability.endValue);
-    });
+    }
   }
   else if (maxValueWithWrongUnit !== 0) {
-    capabilitiesWithWrongUnit.forEach(capability => {
+    for (const capability of capabilitiesWithWrongUnit) {
       capability.unit = allowedUnit;
       capability.startValue = capability.startValue / maxValueWithWrongUnit * 100;
       capability.endValue = capability.endValue / maxValueWithWrongUnit * 100;
-    });
+    }
   }
 
-  dmxControlCapabilities.forEach(capability => {
+  for (const capability of dmxControlCapabilities) {
     delete capability.unit;
-  });
+  }
 
   return dmxControlCapabilities;
 }

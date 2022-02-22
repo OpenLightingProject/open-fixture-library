@@ -27,12 +27,13 @@ export default async function testChannelNumbers(exportFile) {
   const errors = [];
 
   const xml = await parseString(exportFile.content);
-  xml.device.functions.filter(
+  const xmlFunctions = xml.device.functions.filter(
     // filter out tags without content
     xmlFunction => typeof xmlFunction === `object`,
-  ).forEach(
-    xmlFunction => findChannels(xmlFunction, -1),
   );
+  for (const xmlFunction of xmlFunctions) {
+    findChannels(xmlFunction, -1);
+  }
 
   checkUsedChannels();
 
@@ -48,7 +49,7 @@ export default async function testChannelNumbers(exportFile) {
   function findChannels(xmlNode, currentChannelIndex) {
     if (xmlNode.$) {
       const indexAttributes = [`dmxchannel`, `finedmxchannel`, `ultradmxchannel`, `ultrafinedmxchannel`];
-      indexAttributes.filter(attribute => attribute in xmlNode.$).forEach(attribute => {
+      for (const attribute of indexAttributes.filter(attribute => attribute in xmlNode.$)) {
         const channelIndex = parseInt(xmlNode.$[attribute]);
 
         if (!(channelIndex in usedChannelRanges)) {
@@ -62,7 +63,7 @@ export default async function testChannelNumbers(exportFile) {
         if (channelIndex >= channelCount) {
           errors.push(`${attribute}=${channelIndex} is out of range (maximum: ${channelCount - 1}).`);
         }
-      });
+      }
 
       if (`mindmx` in xmlNode.$) {
         // xmlNode is a capability
@@ -70,13 +71,13 @@ export default async function testChannelNumbers(exportFile) {
       }
     }
 
-    Object.keys(xmlNode).forEach(tagname => {
+    for (const tagname of Object.keys(xmlNode)) {
       if (tagname !== `$`) {
         for (const child of xmlNode[tagname]) {
           findChannels(child, currentChannelIndex);
         }
       }
-    });
+    }
   }
 
   /**
@@ -123,7 +124,7 @@ export default async function testChannelNumbers(exportFile) {
    * - Each channel has either no capability at all or its ranges span the whole 0…255 range.
    */
   function checkUsedChannels() {
-    mode.channels.forEach((channel, index) => {
+    for (const [index, channel] of mode.channels.entries()) {
       const isUsed = index in usedChannelRanges;
       const isNoFunction = isNoFunctionChannel(channel);
 
@@ -142,7 +143,7 @@ export default async function testChannelNumbers(exportFile) {
       else if (!isNoFunction) {
         errors.push(`Channel ${index + 1} "${channel.name}" is missing.`);
       }
-    });
+    }
 
     /**
      * @param {AbstractChannel} channel The channel to check.

@@ -90,7 +90,9 @@ function addFunctions(xml, mode) {
 
   for (const [pixelKey, pixelChannels] of channelsPerPixel) {
     const xmlChannelFunctions = [];
-    pixelChannels.forEach(channel => xmlChannelFunctions.push(...getXmlFunctionsFromChannel(channel)));
+    for (const channel of pixelChannels) {
+      xmlChannelFunctions.push(...getXmlFunctionsFromChannel(channel));
+    }
 
     groupXmlFunctions(xmlChannelFunctions);
     xmlFunctionsPerPixel.set(pixelKey, xmlChannelFunctions);
@@ -106,7 +108,9 @@ function addFunctions(xml, mode) {
         xmlFunctionsContainer.comment(pixelKey);
       }
 
-      xmlFunctions.forEach(xmlFunction => xmlFunctionsContainer.importDocument(xmlFunction));
+      for (const xmlFunction of xmlFunctions) {
+        xmlFunctionsContainer.importDocument(xmlFunction);
+      }
     }
   }
 
@@ -121,7 +125,9 @@ function addFunctions(xml, mode) {
     const matrix = mode.fixture.matrix;
     if (matrix !== null) {
       const pixelKeys = matrix.pixelGroupKeys.concat(matrix.getPixelKeysByOrder(`X`, `Y`, `Z`));
-      pixelKeys.forEach(key => channelsPerPixel.set(key, []));
+      for (const key of pixelKeys) {
+        channelsPerPixel.set(key, []);
+      }
     }
 
     const channels = mode.channels.map(
@@ -157,11 +163,13 @@ function addFunctions(xml, mode) {
     }
 
     let xmlFunctions = [];
-    Object.keys(functionToCapabilities).forEach(functionKey => {
+    for (const functionKey of Object.keys(functionToCapabilities)) {
       const capabilities = functionToCapabilities[functionKey];
       xmlFunctions = xmlFunctions.concat(ddf3Functions[functionKey].create(channel, capabilities));
-    });
-    xmlFunctions.forEach(xmlFunction => addChannelAttributes(xmlFunction, mode, channel));
+    }
+    for (const xmlFunction of xmlFunctions) {
+      addChannelAttributes(xmlFunction, mode, channel);
+    }
 
     return xmlFunctions;
   }
@@ -171,11 +179,11 @@ function addFunctions(xml, mode) {
    * @param {array.<XMLElement>} xmlFunctions Channel-level XML functions.
    */
   function groupXmlFunctions(xmlFunctions) {
-    ddf3FunctionGroups.forEach(group => {
+    for (const group of ddf3FunctionGroups) {
       const foundFunctions = {};
-      group.functions.forEach(functionName => {
+      for (const functionName of group.functions) {
         foundFunctions[functionName] = [];
-      });
+      }
 
       for (const xmlFunction of xmlFunctions) {
         if (xmlFunction.name in foundFunctions) {
@@ -193,9 +201,11 @@ function addFunctions(xml, mode) {
         xmlFunctions.splice(xmlFunctions.indexOf(groupFunctions[0]), 0, xmlGroup);
 
         // remove grouped functions from list
-        groupFunctions.forEach(function_ => xmlFunctions.splice(xmlFunctions.indexOf(function_), 1));
+        for (const function_ of groupFunctions) {
+          xmlFunctions.splice(xmlFunctions.indexOf(function_), 1);
+        }
       }
-    });
+    }
   }
 }
 
@@ -207,19 +217,19 @@ function addFunctions(xml, mode) {
 function addProcedures(xml, mode) {
   const maintenanceCapabilities = [];
 
-  mode.channels.forEach(channel => {
+  for (let channel of mode.channels) {
     if (channel instanceof SwitchingChannel) {
       channel = channel.defaultChannel;
     }
 
     if (channel instanceof FineChannel) {
-      return;
+      continue;
     }
 
     maintenanceCapabilities.push(...channel.capabilities.filter(
       capability => capability.type === `Maintenance` && capability.isStep,
     ));
-  });
+  }
 
   if (maintenanceCapabilities.length === 0) {
     return;
@@ -227,7 +237,7 @@ function addProcedures(xml, mode) {
 
   const xmlProcedures = xml.element(`procedures`);
 
-  maintenanceCapabilities.forEach(capability => {
+  for (const capability of maintenanceCapabilities) {
     const channelIndex = mode.getChannelIndex(capability._channel);
 
     const xmlProcedure = xmlProcedures.element(`procedure`, {
@@ -248,7 +258,7 @@ function addProcedures(xml, mode) {
         dmxchannel: channelIndex,
       });
     }
-  });
+  }
 }
 
 /**
@@ -284,9 +294,9 @@ function addMatrix(mode, xmlFunctionsPerPixel) {
   xmlMatrix.attribute(`rows`, matrix.pixelCountY);
   xmlMatrix.attribute(`columns`, matrix.pixelCountX);
 
-  pixelKeys.forEach(pixelKey => {
+  for (const pixelKey of pixelKeys) {
     xmlMatrix.importDocument(xmlFunctionsPerPixel.get(pixelKey).shift());
-  });
+  }
 
   xmlFunctionsPerPixel.get(null).push(xmlMatrix);
 }

@@ -10,8 +10,8 @@ export default [
       const xmlStrobeType = xmlStrobe.element(`strobetype`);
       xmlStrobeType.attributes = strobe.attributes;
 
-      strobespeed.children.forEach(speedCapability => {
-        strobe.children.forEach(strobeCapability => {
+      for (const speedCapability of strobespeed.children) {
+        for (const strobeCapability of strobe.children) {
           if (strobeCapability.attributes.type.value !== `open`) {
             const xmlSpeedRange = xmlStrobe.element(`range`);
             xmlSpeedRange.attributes = Object.assign({}, speedCapability.attributes);
@@ -23,8 +23,8 @@ export default [
               maxdmx: strobeCapability.attributes.maxdmx.value,
             });
           }
-        });
-      });
+        }
+      }
 
       return xmlStrobe;
     },
@@ -33,7 +33,9 @@ export default [
     functions: [`strobespeed`],
     getXmlGroup: strobespeed => {
       strobespeed.name = `strobe`;
-      strobespeed.children.forEach(child => child.attribute(`type`, `linear`));
+      for (const child of strobespeed.children) {
+        child.attribute(`type`, `linear`);
+      }
 
       return strobespeed;
     },
@@ -127,7 +129,9 @@ export default [
 function mergeIntoNew(tagName) {
   return (...xmlElements) => {
     const xmlParent = xmlbuilder.create(tagName);
-    xmlElements.forEach(ele => xmlParent.importDocument(ele));
+    for (const ele of xmlElements) {
+      xmlParent.importDocument(ele);
+    }
     return xmlParent;
   };
 }
@@ -138,7 +142,9 @@ function mergeIntoNew(tagName) {
  * @returns {XMLElement} The first element with the other elements as children.
  */
 function mergeIntoFirst(firstElement, ...xmlElements) {
-  xmlElements.forEach(ele => firstElement.importDocument(ele));
+  for (const ele of xmlElements) {
+    firstElement.importDocument(ele);
+  }
   return firstElement;
 }
 
