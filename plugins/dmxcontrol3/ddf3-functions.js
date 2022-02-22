@@ -878,11 +878,11 @@ function getBaseXmlCapability(capability, startValue = null, endValue = null) {
 
   if (startValue !== null) {
     if (startValue === endValue) {
-      xmlCapability.attribute(`val`, parseFloat(startValue.toFixed(3)));
+      xmlCapability.attribute(`val`, Number.parseFloat(startValue.toFixed(3)));
     }
     else {
-      xmlCapability.attribute(`minval`, parseFloat(startValue.toFixed(3)));
-      xmlCapability.attribute(`maxval`, parseFloat(endValue.toFixed(3)));
+      xmlCapability.attribute(`minval`, Number.parseFloat(startValue.toFixed(3)));
+      xmlCapability.attribute(`maxval`, Number.parseFloat(endValue.toFixed(3)));
     }
   }
 

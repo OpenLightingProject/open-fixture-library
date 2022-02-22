@@ -50,7 +50,7 @@ export default async function testChannelNumbers(exportFile) {
     if (xmlNode.$) {
       const indexAttributes = [`dmxchannel`, `finedmxchannel`, `ultradmxchannel`, `ultrafinedmxchannel`];
       for (const attribute of indexAttributes.filter(attribute => attribute in xmlNode.$)) {
-        const channelIndex = parseInt(xmlNode.$[attribute]);
+        const channelIndex = Number.parseInt(xmlNode.$[attribute], 10);
 
         if (!(channelIndex in usedChannelRanges)) {
           usedChannelRanges[channelIndex] = [];
@@ -86,8 +86,8 @@ export default async function testChannelNumbers(exportFile) {
    * @param {number} channelIndex The index of the channel that contains this capability.
    */
   function addCapability(xmlNode, channelIndex) {
-    const mindmx = parseInt(xmlNode.$.mindmx);
-    const maxdmx = parseInt(xmlNode.$.maxdmx);
+    const mindmx = Number.parseInt(xmlNode.$.mindmx, 10);
+    const maxdmx = Number.parseInt(xmlNode.$.maxdmx, 10);
     const range = new Range([Math.min(mindmx, maxdmx), Math.max(mindmx, maxdmx)]);
 
     if (channelIndex === -1) {
@@ -108,8 +108,8 @@ export default async function testChannelNumbers(exportFile) {
     }
 
     if (`minval` in xmlNode.$) {
-      const minval = parseInt(xmlNode.$.minval);
-      const maxval = parseInt(xmlNode.$.maxval);
+      const minval = Number.parseInt(xmlNode.$.minval, 10);
+      const maxval = Number.parseInt(xmlNode.$.maxval, 10);
 
       if (minval > maxval) {
         errors.push(`Capability ${range} in channel ${channelIndex + 1} must not use a greater minval (${minval}) than maxval (${maxval}). Instead, swap mindmx and maxdmx.`);
