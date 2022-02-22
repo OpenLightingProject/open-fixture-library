@@ -12,9 +12,9 @@ export const name = `DMXControl 3 (DDF3)`;
 export const version = `0.1.0`;
 
 /**
- * @param {array.<Fixture>} fixtures The fixtures to convert into DMXControl device definitions
+ * @param {Fixture[]} fixtures The fixtures to convert into DMXControl device definitions
  * @param {options} options Some global options
- * @returns {Promise.<array.<object>, Error>} The generated files
+ * @returns {Promise<object[], Error>} The generated files
  */
 export async function exportFixtures(fixtures, options) {
   const deviceDefinitions = [];
@@ -71,11 +71,11 @@ function addInformation(xml, mode) {
 }
 
 /**
- * @typedef {Map.<(string|null), Array.<CoarseChannel>>} ChannelsPerPixel
+ * @typedef {Map<string | null, CoarseChannel[]>} ChannelsPerPixel
  */
 
 /**
- * @typedef {Map.<(string|null), Array.<XMLElement>>} XmlFunctionsPerPixel
+ * @typedef {Map<string | null, XMLElement[]>} XmlFunctionsPerPixel
  */
 
 /**
@@ -144,7 +144,7 @@ function addFunctions(xml, mode) {
 
   /**
    * @param {CoarseChannel} channel The channel that should be represented as one or more DMXControl functions.
-   * @returns {array.<XMLElement>} Functions created by this channel. They are not automatically grouped together.
+   * @returns {XMLElement[]} Functions created by this channel. They are not automatically grouped together.
    */
   function getXmlFunctionsFromChannel(channel) {
     const functionToCapabilities = {};
@@ -176,7 +176,7 @@ function addFunctions(xml, mode) {
 
   /**
    * Merges and renames the given XML functions. Modifies the array.
-   * @param {array.<XMLElement>} xmlFunctions Channel-level XML functions.
+   * @param {XMLElement[]} xmlFunctions Channel-level XML functions.
    */
   function groupXmlFunctions(xmlFunctions) {
     for (const group of ddf3FunctionGroups) {

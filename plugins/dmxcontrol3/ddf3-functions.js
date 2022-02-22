@@ -269,7 +269,7 @@ export default {
 
       /**
        * @param {Capability} capability A capability with different start/end values.
-       * @returns {array.<Capability>} One capability representing the start value and one representing the end value.
+       * @returns {Capability[]} One capability representing the start value and one representing the end value.
        */
       function getSplittedCapabilities(capability) {
         const startCapabilityJson = {
@@ -805,12 +805,12 @@ export default {
 
 /**
  * Converts all property values to the allowed unit.
- * @param {array.<Capability>} capabilities Array of capabilities that use the given property.
+ * @param {Capability[]} capabilities Array of capabilities that use the given property.
  * @param {string} property Name of the property whose values should be normalized.
  * @param {string} allowedUnit The unit all capabilities should be converted to. Must be a base unit (i. e. no `ms` but `s`) or `%`.
  * @param {number} zeroPercentValue The equivalent of 0% in the allowed unit. Must be used if allowedUnit is not percent.
  * @param {number} hundredPercentValue The equivalent of 100% in the allowed unit. Must be used if allowedUnit is not percent.
- * @returns {array.<DmxControlCapability>} Array of objects wrapping the original capabilities.
+ * @returns {DmxControlCapability[]} Array of objects wrapping the original capabilities.
  */
 function getSingleUnitCapabilities(capabilities, property, allowedUnit, zeroPercentValue, hundredPercentValue) {
   const dmxControlCapabilities = capabilities.map(capability => {
@@ -906,8 +906,8 @@ function getRotationSpeedXmlCapability(capability) {
 }
 
 /**
- * @param {array} array1 First array to compare.
- * @param {array} array2 Second array to compare.
+ * @param {Array} array1 First array to compare.
+ * @param {Array} array2 Second array to compare.
  * @returns {boolean} Whether both arrays have equal size and their items do strictly equal.
  */
 function arraysEqual(array1, array2) {
