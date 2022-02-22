@@ -3,7 +3,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-slotNumber`"
       label="Slot number"
       hint="Leave the slot number empty if this capability doesn't select a wheel slot, but only activates wheel slot rotation for a WheelSlot capability in another channel."
@@ -16,7 +16,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-${capability.typeData.speedOrAngle}`">
 
       <template #label>
@@ -42,7 +42,7 @@
         :capability="capability"
         :formstate="formstate"
         :property-name="capability.typeData.speedOrAngle"
-        :required="true" />
+        required />
 
     </LabeledInput>
 

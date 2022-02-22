@@ -3,25 +3,25 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-blade`"
       label="Blade">
       <PropertyInputEntity
         v-model="capability.typeData.blade"
         :name="`capability${capability.uuid}-blade`"
         :schema-property="bladeSchema"
-        :required="true" />
+        required />
     </LabeledInput>
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-angle`"
       label="Angle">
       <EditorProportionalPropertySwitcher
         :capability="capability"
         :formstate="formstate"
-        :required="true"
+        required
         property-name="angle" />
     </LabeledInput>
 

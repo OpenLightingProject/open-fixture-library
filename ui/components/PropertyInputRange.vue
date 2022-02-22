@@ -10,7 +10,7 @@
         :maximum="end !== `invalid` ? end : rangeMax"
         :required="required || rangeIncomplete"
         :hint="startHint"
-        :lazy="true"
+        lazy
         @focus.native="onFocus($event)"
         @blur.native="onBlur($event)" />
     </Validate>
@@ -24,7 +24,7 @@
         :maximum="rangeMax"
         :required="required || rangeIncomplete"
         :hint="endHint"
-        :lazy="true"
+        lazy
         @focus.native="onFocus($event)"
         @blur.native="onBlur($event)" />
     </Validate>

@@ -3,7 +3,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-parameter`"
       label="Parameter">
       <EditorProportionalPropertySwitcher
@@ -14,7 +14,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-hold`"
       label="Hold">
       <PropertyInputEntity

@@ -7,7 +7,7 @@
         v-model="selectedNumber"
         class="property-input-number"
         :schema-property="units[selectedUnit].numberSchema"
-        :required="true"
+        required
         :minimum="minNumber !== null ? minNumber : `invalid`"
         :maximum="maxNumber !== null ? maxNumber : `invalid`"
         :name="name ? `${name}-number` : null"

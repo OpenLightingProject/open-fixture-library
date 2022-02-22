@@ -3,7 +3,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-${capability.typeData.speedOrAngle}`">
 
       <template #label>

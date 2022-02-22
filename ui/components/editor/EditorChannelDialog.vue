@@ -38,7 +38,7 @@
           <PropertyInputText
             v-model="channel.name"
             :schema-property="channelProperties.name"
-            :required="true"
+            required
             name="name"
             start-with-uppercase-or-number
             no-fine-channel-name
@@ -120,7 +120,7 @@
 
         <LabeledInput
           :formstate="formstate"
-          :multiple-inputs="true"
+          multiple-inputs
           name="defaultValue"
           label="Default DMX value">
           <PropertyInputEntity
@@ -180,7 +180,7 @@
 
         <LabeledInput
           :formstate="formstate"
-          :multiple-inputs="true"
+          multiple-inputs
           name="highlightValue"
           label="Highlight DMX value">
           <PropertyInputEntity

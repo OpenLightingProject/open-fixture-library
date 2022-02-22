@@ -3,13 +3,13 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-speed`"
       label="Speed">
       <EditorProportionalPropertySwitcher
         :capability="capability"
         :formstate="formstate"
-        :required="true"
+        required
         property-name="speed" />
     </LabeledInput>
 

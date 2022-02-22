@@ -10,12 +10,12 @@
         :formstate="formstate"
         :name="`capability${capability.uuid}-effectName`"
         :schema-property="schemaDefinitions.nonEmptyString"
-        :required="true" />
+        required />
     </LabeledInput>
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-speed`"
       label="Speed">
       <EditorProportionalPropertySwitcher

@@ -13,7 +13,7 @@
     </LabeledInput>
 
     <LabeledInput
-      :multiple-inputs="true"
+      multiple-inputs
       label="Color hex code(s)">
       <EditorProportionalPropertySwitcher
         :capability="capability"
@@ -54,7 +54,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-colorTemperature`"
       label="Color temperature">
       <EditorProportionalPropertySwitcher

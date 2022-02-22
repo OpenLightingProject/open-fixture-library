@@ -3,13 +3,13 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-soundSensitivity`"
       label="Sound sensitivity">
       <EditorProportionalPropertySwitcher
         :capability="capability"
         :formstate="formstate"
-        :required="true"
+        required
         property-name="soundSensitivity" />
     </LabeledInput>
 

@@ -29,7 +29,7 @@
         :formstate="formstate"
         :name="`capability${capability.uuid}-effectName`"
         :schema-property="schemaDefinitions.nonEmptyString"
-        :required="true" />
+        required />
 
       <select
         v-else
@@ -51,7 +51,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-speed`"
       label="Speed">
       <EditorProportionalPropertySwitcher
@@ -62,7 +62,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-duration`"
       label="Duration">
       <EditorProportionalPropertySwitcher
@@ -73,7 +73,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-parameter`"
       label="Parameter">
       <EditorProportionalPropertySwitcher
@@ -95,7 +95,7 @@
     <LabeledInput
       v-if="capability.typeData.soundControlled"
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-soundSensitivity`"
       label="Sound sensitivity">
       <EditorProportionalPropertySwitcher

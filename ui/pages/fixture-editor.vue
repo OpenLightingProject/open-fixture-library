@@ -62,7 +62,7 @@
             <PropertyInputText
               v-model="fixture.metaAuthor"
               :schema-property="schemaDefinitions.nonEmptyString"
-              :required="true"
+              required
               name="author"
               hint="e.g. Anonymous" />
           </LabeledInput>
