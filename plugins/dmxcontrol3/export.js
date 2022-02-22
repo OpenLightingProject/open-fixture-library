@@ -51,7 +51,7 @@ export async function exportFixtures(fixtures, options) {
   }
 
   return deviceDefinitions;
-};
+}
 
 /**
  * Adds the information block to the specified XML file.

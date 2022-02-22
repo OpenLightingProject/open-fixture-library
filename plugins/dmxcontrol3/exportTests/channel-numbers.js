@@ -180,4 +180,4 @@ export default async function testChannelNumbers(exportFile) {
     const range = ranges[0];
     return range.start === 0 && range.end === 255;
   }
-};
+}
