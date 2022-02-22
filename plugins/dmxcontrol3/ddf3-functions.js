@@ -808,8 +808,8 @@ export default {
  */
 function getSingleUnitCapabilities(caps, property, allowedUnit, zeroPercentValue, hundredPercentValue) {
   const dmxControlCaps = caps.map(cap => {
-    const startEntity = cap[property][0].getBaseUnitEntity();
-    const endEntity = cap[property][1].getBaseUnitEntity();
+    const startEntity = cap[property][0].baseUnitEntity;
+    const endEntity = cap[property][1].baseUnitEntity;
 
     return {
       capObject: cap,

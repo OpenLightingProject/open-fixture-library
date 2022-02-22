@@ -241,7 +241,7 @@ function addProcedures(xml, mode) {
 
     if (capability.hold) {
       xmlProcedure.element(`hold`, {
-        value: capability.hold.getBaseUnitEntity().number * 1000
+        value: capability.hold.baseUnitEntity.number * 1000
       });
 
       xmlProcedure.element(`restore`, {
