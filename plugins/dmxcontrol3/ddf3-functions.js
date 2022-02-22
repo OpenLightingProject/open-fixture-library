@@ -306,7 +306,7 @@ export default {
         }
 
         if (capability.hasComment) {
-          const startEndRegex = /^([a-z0-9 ]+?) *(?:…|->?|\bto\b) *([a-z0-9 ]+?)$/i; // Red…Blue, Red to Blue, Red -> Blue, Red-Blue, ...
+          const startEndRegex = /^([\d a-z]+?) *(?:…|->?|\bto\b) *([\d a-z]+?)$/i; // Red…Blue, Red to Blue, Red -> Blue, Red-Blue, ...
           const match = startEndRegex.exec(capability.comment);
 
           if (match) {
