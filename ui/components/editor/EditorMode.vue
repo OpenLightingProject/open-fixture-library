@@ -18,7 +18,7 @@
         v-model="mode.name"
         :name="`mode-${index}-name`"
         :schema-property="schemaDefinitions.modeNameString.allOf[1]"
-        :required="true"
+        required
         no-mode-name
         hint="e.g. Extended"
         title="The name must not contain the word 'mode'." />

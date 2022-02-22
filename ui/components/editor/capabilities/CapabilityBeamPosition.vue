@@ -4,7 +4,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-horizontalAngle`"
       label="Horizontal angle">
       <EditorProportionalPropertySwitcher
@@ -16,7 +16,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-verticalAngle`"
       label="Vertical angle">
       <EditorProportionalPropertySwitcher

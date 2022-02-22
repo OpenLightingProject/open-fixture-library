@@ -3,7 +3,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`${namePrefix}-physical-dimensions`"
       label="Dimensions">
       <PropertyInputDimensions
@@ -32,7 +32,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`${namePrefix}-physical-DMXconnector`"
       label="DMX connector">
       <PropertyInputSelect
@@ -48,8 +48,8 @@
           v-model="localPhysical.DMXconnectorNew"
           :name="`${namePrefix}-physical-DMXconnectorNew`"
           :schema-property="schemaDefinitions.nonEmptyString"
-          :required="true"
-          :auto-focus="true"
+          required
+          auto-focus
           hint="other DMX connector"
           class="addition" />
       </Validate>
@@ -92,7 +92,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`${namePrefix}-physical-lens-degreesMinMax`"
       label="Beam angle">
       <PropertyInputRange

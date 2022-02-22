@@ -10,7 +10,7 @@
       <PropertyInputText
         v-model="fixture.name"
         :schema-property="fixtureProperties.name"
-        :required="true"
+        required
         name="fixture-name" />
     </LabeledInput>
 
@@ -43,7 +43,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       name="links"
       label="Relevant links">
       <EditorLinks v-model="fixture.links" :formstate="formstate" />

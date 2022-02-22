@@ -48,7 +48,7 @@
             hint="Maximum file size is 5MB.">
             <EditorFileUpload
               v-model="file"
-              :required="true"
+              required
               name="file"
               max-file-size="5MB" />
           </LabeledInput>

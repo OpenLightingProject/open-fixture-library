@@ -3,7 +3,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`capability${capability.uuid}-${capability.typeData.speedOrDuration}`">
 
       <template #label>
@@ -29,7 +29,7 @@
         :capability="capability"
         :formstate="formstate"
         :property-name="capability.typeData.speedOrDuration"
-        :required="true" />
+        required />
 
     </LabeledInput>
 

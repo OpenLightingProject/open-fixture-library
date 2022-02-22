@@ -3,7 +3,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`wheel-slot${wheelSlot.uuid}-frostIntensity`"
       label="Frost intensity">
       <PropertyInputEntity

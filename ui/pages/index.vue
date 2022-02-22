@@ -5,7 +5,7 @@
         <h1>Open Fixture Library</h1>
       </template>
 
-      <DownloadButton :fixture-count="fixtureCount" button-style="home" />
+      <DownloadButton :fixture-count="fixtureCount" button-style="home" show-help />
     </FixtureHeader>
 
 
