@@ -1,8 +1,9 @@
-const xmlbuilder = require(`xmlbuilder`);
+import xmlbuilder from 'xmlbuilder';
 
-const { Capability, CoarseChannel } = require(`../../lib/model.js`);
+import Capability from '../../lib/model/Capability.js';
+import CoarseChannel from '../../lib/model/CoarseChannel.js';
 
-module.exports = {
+export default {
   const: {
     isCapSuitable: cap => cap._channel.isConstant,
     create: (channel, caps) => {

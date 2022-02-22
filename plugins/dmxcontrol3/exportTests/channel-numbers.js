@@ -1,7 +1,8 @@
-const promisify = require(`util`).promisify;
-const xml2js = require(`xml2js`);
+import { promisify } from 'util';
+import xml2js from 'xml2js';
 
-const { Range, SwitchingChannel } = require(`../../../lib/model.js`);
+import Range from '../../../lib/model/Range.js';
+import SwitchingChannel from '../../../lib/model/SwitchingChannel.js';
 
 /**
  * @param {object} exportFile The file returned by the plugins' export module.
@@ -12,7 +13,7 @@ const { Range, SwitchingChannel } = require(`../../../lib/model.js`);
  * @param {?string} exportFile.mode Mode's shortName if given file only describes a single mode.
  * @returns {!Promise} Resolve when the test passes or reject with an error or an array of errors if the test fails.
 **/
-module.exports = async function testChannelNumbers(exportFile) {
+export default async function testChannelNumbers(exportFile) {
   const parser = new xml2js.Parser();
   const parseString = promisify(parser.parseString);
 

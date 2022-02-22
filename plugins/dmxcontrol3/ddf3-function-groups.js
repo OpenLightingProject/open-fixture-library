@@ -1,6 +1,6 @@
-const xmlbuilder = require(`xmlbuilder`);
+import xmlbuilder from 'xmlbuilder';
 
-module.exports = [
+export default [
   {
     functions: [`strobe`, `strobespeed`],
     getXmlGroup: (strobe, strobespeed) => {

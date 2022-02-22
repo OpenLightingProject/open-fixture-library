@@ -1,39 +1,22 @@
-const xmlbuilder = require(`xmlbuilder`);
-const sanitize = require(`sanitize-filename`);
+import sanitize from 'sanitize-filename';
+import xmlbuilder from 'xmlbuilder';
 
-const ddf3Functions = require(`./ddf3-functions.js`);
-const ddf3FunctionGroups = require(`./ddf3-function-groups.js`);
+import FineChannel from '../../lib/model/FineChannel.js';
+import NullChannel from '../../lib/model/NullChannel.js';
+import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 
-/* eslint-disable no-unused-vars */
-const {
-  AbstractChannel,
-  Capability,
-  CoarseChannel,
-  FineChannel,
-  Fixture,
-  Manufacturer,
-  Matrix,
-  MatrixChannel,
-  MatrixChannelReference,
-  Meta,
-  Mode,
-  NullChannel,
-  Physical,
-  Range,
-  SwitchingChannel,
-  TemplateChannel
-} = require(`../../lib/model.js`);
-/* eslint-enable no-unused-vars */
+import ddf3FunctionGroups from './ddf3-function-groups.js';
+import ddf3Functions from './ddf3-functions.js';
 
-module.exports.name = `DMXControl 3 (DDF3)`;
-module.exports.version = `0.1.0`;
+export const name = `DMXControl 3 (DDF3)`;
+export const version = `0.1.0`;
 
 /**
  * @param {array.<Fixture>} fixtures The fixtures to convert into DMXControl device definitions
  * @param {options} options Some global options
  * @returns {Promise.<array.<object>, Error>} The generated files
  */
-module.exports.export = async function exportDMXControl3(fixtures, options) {
+export async function exportFixtures(fixtures, options) {
   const deviceDefinitions = [];
 
   for (const fixture of fixtures) {
@@ -46,7 +29,7 @@ module.exports.export = async function exportDMXControl3(fixtures, options) {
             '@type': `DMXDevice`,
             '@dmxaddresscount': mode.channelKeys.length,
             '@dmxcversion': 3,
-            '@ddfversion': module.exports.version
+            '@ddfversion': version
           }
         });
 
