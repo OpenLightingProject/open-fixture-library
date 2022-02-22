@@ -8,7 +8,6 @@ import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 import ddf3FunctionGroups from './ddf3-function-groups.js';
 import ddf3Functions from './ddf3-functions.js';
 
-export const name = `DMXControl 3 (DDF3)`;
 export const version = `0.1.0`;
 
 /**
