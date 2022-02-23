@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SUPRAKOLOR",
+  "shortName": "SUPRAKOLOR",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Anonymous"],
+    "createDate": "2022-02-23",
+    "lastModifyDate": "2022-02-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.star-way.com/suprakolor-hd-3"
+    ],
+    "productPage": [
+      "https://www.star-way.com/suprakolor-hd-3"
+    ],
+    "video": [
+      "https://www.star-way.com/suprakolor-hd-3"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "AR2Z",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom"
+      ]
+    }
+  ]
+}
