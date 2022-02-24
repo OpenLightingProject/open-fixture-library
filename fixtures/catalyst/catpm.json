@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "CatPM",
+  "shortName": "camp",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Fariddin haapov"],
+    "createDate": "2022-02-24",
+    "lastModifyDate": "2022-02-24"
+  },
+  "links": {
+    "other": [
+      "http://mail.ru"
+    ]
+  },
+  "physical": {
+    "dimensions": [1, 1, 1],
+    "weight": 1,
+    "power": 1,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "colorTemperature": 7000,
+      "lumens": 7000
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "dmxValueResolution": "8bit",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 40],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [41, 80],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [81, 120],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [121, 160],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [161, 200],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [201, 240],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [241, 255],
+          "type": "Intensity"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "catalyst-1",
+      "shortName": "c1",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    }
+  ]
+}
