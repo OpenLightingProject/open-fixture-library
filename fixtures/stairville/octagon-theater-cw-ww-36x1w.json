@@ -1,0 +1,84 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Octagon Theater CW/WW 36x1W",
+  "shortName": "Octagon",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["sd"],
+    "createDate": "2022-02-24",
+    "lastModifyDate": "2022-02-24"
+  },
+  "links": {
+    "manual": [
+      "https://www.modesdemploi.fr/stairville/octagon-theatre-cwww-36x1w/mode-d-emploi"
+    ]
+  },
+  "physical": {
+    "weight": 2.3,
+    "power": 51,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [36, 36]
+    }
+  },
+  "availableChannels": {
+    "Intensity cold white": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "Intensity warm white": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Strobe Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "1bpm",
+          "speedEnd": "240bpm"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "default",
+      "channels": [
+        "Intensity cold white",
+        "Intensity warm white",
+        "Strobe Speed",
+        "Color Macros",
+        "Intensity"
+      ]
+    }
+  ]
+}
