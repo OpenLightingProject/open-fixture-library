@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PARKOLOR",
+  "shortName": "PARKOLOR",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["PLANTEC"],
+    "createDate": "2022-02-24",
+    "lastModifyDate": "2022-02-24"
+  },
+  "links": {
+    "other": [
+      "https://open-fixture-library.org/fixture-editor"
+    ]
+  },
+  "availableChannels": {
+    "DIMMER": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "SHUTTER": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "ROUGE": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "VERT": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "BLEU": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "BLANC": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "ZOOM": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7_CHANNEL",
+      "channels": [
+        "DIMMER",
+        "SHUTTER",
+        "ROUGE",
+        "VERT",
+        "BLEU",
+        "BLANC",
+        "ZOOM"
+      ]
+    }
+  ]
+}
