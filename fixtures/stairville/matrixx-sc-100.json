@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "maTrixx SC-100",
+  "shortName": "SC100",
+  "categories": ["Scanner"],
+  "meta": {
+    "authors": ["PLANET_XYZ"],
+    "createDate": "2022-02-25",
+    "lastModifyDate": "2022-02-25"
+  },
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/119950_c_119950_v2_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/de/stairville_matrixx_sc100_dmx_led_effect.htm"
+    ]
+  },
+  "availableChannels": {
+    "Pan": {
+      "defaultValue": 90,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "1deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Tilt": {
+      "defaultValue": 45,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "1deg",
+        "angleEnd": "90deg"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX",
+      "shortName": "DMX",
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Intensity",
+        "Strobe"
+      ]
+    }
+  ]
+}
