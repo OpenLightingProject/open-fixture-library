@@ -1,0 +1,108 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "B117 Par Can 4in1 RGBW 18 LEDs",
+  "shortName": "b117-par-can",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Ken Harris"],
+    "createDate": "2022-02-27",
+    "lastModifyDate": "2022-02-27"
+  },
+  "comment": "This is an unbranded fixture bought online, but the appearance and user manual match the UKing B117 exactly.\n\nThe B117 webpage isn't even internally consistent, so I've done the best I could here.",
+  "links": {
+    "manual": [
+      "https://www.uking-online.com/wp-content/uploads/2020/10/ZQ-B117.pdf"
+    ],
+    "productPage": [
+      "https://www.uking-online.com/product/b117-par-can-4in1-rgbw-18-leds/"
+    ]
+  },
+  "physical": {
+    "dimensions": [225, 225, 115],
+    "weight": 3.2,
+    "power": 200,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Function": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Generic",
+        "comment": "Choose among 6 functions (see manual)"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "100Hz",
+        "comment": "Speed range unspecified: \"from slow to fast\""
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8 channel",
+      "shortName": "8ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe Speed",
+        "Function",
+        "Effect Speed"
+      ]
+    },
+    {
+      "name": "4 channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
