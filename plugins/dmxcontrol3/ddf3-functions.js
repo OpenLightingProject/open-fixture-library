@@ -184,10 +184,15 @@ export default {
       const capabilitiesPerColor = {};
 
       for (const capability of capabilities) {
-        if (!(capability.color in capabilitiesPerColor)) {
-          capabilitiesPerColor[capability.color] = [];
+        let color = capability.color;
+        if (color === `Warm White` || color === `Cold White`) {
+          color = `White`;
         }
-        capabilitiesPerColor[capability.color].push(capability);
+
+        if (!(color in capabilitiesPerColor)) {
+          capabilitiesPerColor[color] = [];
+        }
+        capabilitiesPerColor[color].push(capability);
       }
 
       delete capabilitiesPerColor.null; // NoFunction caps will be ignored
