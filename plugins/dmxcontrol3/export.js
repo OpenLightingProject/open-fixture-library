@@ -8,7 +8,7 @@ import SwitchingChannel from '../../lib/model/SwitchingChannel.js';
 import ddf3FunctionGroups from './ddf3-function-groups.js';
 import ddf3Functions from './ddf3-functions.js';
 
-export const version = `0.1.0`;
+export const version = `0.1.1`;
 
 /**
  * @param {Fixture[]} fixtures The fixtures to convert into DMXControl device definitions
