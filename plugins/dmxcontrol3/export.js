@@ -11,9 +11,12 @@ import ddf3Functions from './ddf3-functions.js';
 export const version = `0.1.1`;
 
 /**
- * @param {Fixture[]} fixtures The fixtures to convert into DMXControl device definitions
- * @param {options} options Some global options
- * @returns {Promise<object[], Error>} The generated files
+ * @param {Fixture[]} fixtures An array of Fixture objects.
+ * @param {object} options Global options, including:
+ * @param {string} options.baseDirectory Absolute path to OFL's root directory.
+ * @param {Date} options.date The current time.
+ * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @returns {Promise<object[], Error>} The generated files.
  */
 export async function exportFixtures(fixtures, options) {
   const deviceDefinitions = [];
@@ -28,7 +31,7 @@ export async function exportFixtures(fixtures, options) {
             '@type': `DMXDevice`,
             '@dmxaddresscount': mode.channelKeys.length,
             '@dmxcversion': 3,
-            '@ddfversion': version,
+            '@ddfversion': options.displayedPluginVersion ?? version,
           },
         });
 
