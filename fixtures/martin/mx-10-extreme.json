@@ -1,0 +1,654 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "MX-10 Extreme",
+  "categories": ["Scanner", "Color Changer"],
+  "meta": {
+    "authors": ["Ken Harris"],
+    "createDate": "2022-03-06",
+    "lastModifyDate": "2022-03-06"
+  },
+  "links": {
+    "manual": [
+      "https://www.martin.com/en/site_elements/user-manual-a456d8e8-ed18-4ca8-8c6e-be905dc53b83"
+    ],
+    "productPage": [
+      "https://www.martin.com/en/products/mx-10-extreme"
+    ]
+  },
+  "physical": {
+    "dimensions": [340, 315, 735],
+    "weight": 22,
+    "power": 340,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "Discharge",
+      "colorTemperature": 8500,
+      "lumens": 3757
+    }
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "Eclipse"
+        },
+        {
+          "type": "Gobo",
+          "name": "Shark bar"
+        },
+        {
+          "type": "Gobo",
+          "name": "Phat fan"
+        },
+        {
+          "type": "Gobo",
+          "name": "Tail spin"
+        },
+        {
+          "type": "Gobo",
+          "name": "Sun"
+        },
+        {
+          "type": "Gobo",
+          "name": "Triangle"
+        },
+        {
+          "type": "Gobo",
+          "name": "Oriental fire"
+        },
+        {
+          "type": "Gobo",
+          "name": "Paint mix"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [20, 49],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [50, 72],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [73, 79],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Opening pulse"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "Closing pulse"
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 147],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "fast",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [148, 167],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "fast",
+          "randomTiming": true,
+          "comment": "Medium"
+        },
+        {
+          "dmxRange": [168, 187],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "slow",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [188, 190],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [191, 193],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speed": "fast",
+          "randomTiming": true,
+          "comment": "Opening pulse"
+        },
+        {
+          "dmxRange": [194, 196],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speed": "slow",
+          "randomTiming": true,
+          "comment": "Opening pulse"
+        },
+        {
+          "dmxRange": [197, 199],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speed": "fast",
+          "randomTiming": true,
+          "comment": "Closing pulse"
+        },
+        {
+          "dmxRange": [200, 202],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speed": "slow",
+          "randomTiming": true,
+          "comment": "Closing pulse"
+        },
+        {
+          "dmxRange": [203, 207],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [208, 217],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Reset; if this command is disabled in the menu, it can be executed only if the CTC filter, prism with no rotation, and open gobo are selected"
+        },
+        {
+          "dmxRange": [218, 227],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [228, 237],
+          "type": "Maintenance",
+          "comment": "Lamp on"
+        },
+        {
+          "dmxRange": [238, 247],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [248, 255],
+          "type": "Maintenance",
+          "hold": "5s",
+          "comment": "Lamp off; if this command is disabled in the menu, it can be executed only if the CTC filter, prism with no rotation, and open gobo are selected"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ColorPreset",
+          "comment": "White"
+        },
+        {
+          "dmxRange": [1, 11],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "ColorPreset",
+          "comment": "CTC"
+        },
+        {
+          "dmxRange": [13, 23],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "ColorPreset",
+          "comment": "Yellow 603"
+        },
+        {
+          "dmxRange": [25, 35],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "ColorPreset",
+          "comment": "Blue 104"
+        },
+        {
+          "dmxRange": [37, 47],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "ColorPreset",
+          "comment": "Pink 312"
+        },
+        {
+          "dmxRange": [49, 59],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "ColorPreset",
+          "comment": "Green 206"
+        },
+        {
+          "dmxRange": [61, 71],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [72, 72],
+          "type": "ColorPreset",
+          "comment": "Blue 108"
+        },
+        {
+          "dmxRange": [73, 83],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [84, 84],
+          "type": "ColorPreset",
+          "comment": "Red 301"
+        },
+        {
+          "dmxRange": [85, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Gobo Wheel": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [5, 9],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "WheelSlotRotation",
+          "speed": "fast CW",
+          "comment": "(Should be \"unset\" but online editor doesn't allow that to be chosen)"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "WheelSlotRotation",
+          "slotNumber": 1,
+          "speed": "stop",
+          "comment": "(Should be \"unset\" but online editor doesn't allow that to be chosen)"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "WheelSlotRotation",
+          "slotNumber": 2,
+          "speed": "stop",
+          "comment": "(Should be \"unset\" but online editor doesn't allow that to be chosen)"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "WheelSlotRotation",
+          "slotNumber": 3,
+          "speed": "stop",
+          "comment": "(Should be \"unset\" but online editor doesn't allow that to be chosen)"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "WheelSlotRotation",
+          "slotNumber": 4,
+          "speed": "stop",
+          "comment": "(Should be \"unset\" but online editor doesn't allow that to be chosen)"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "WheelSlotRotation",
+          "slotNumber": 5,
+          "speed": "stop",
+          "comment": "(Should be \"unset\" but online editor doesn't allow that to be chosen)"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "WheelSlotRotation",
+          "slotNumber": 6,
+          "speed": "stop",
+          "comment": "(Should be \"unset\" but online editor doesn't allow that to be chosen)"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "WheelSlotRotation",
+          "slotNumber": 7,
+          "speed": "stop",
+          "comment": "(Should be \"unset\" but online editor doesn't allow that to be chosen)"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "WheelSlotRotation",
+          "slotNumber": 8,
+          "speed": "stop",
+          "comment": "(Should be \"unset\" but online editor doesn't allow that to be chosen)"
+        },
+        {
+          "dmxRange": [90, 104],
+          "type": "WheelShake",
+          "slotNumber": 8,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [105, 119],
+          "type": "WheelShake",
+          "slotNumber": 7,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [120, 134],
+          "type": "WheelShake",
+          "slotNumber": 6,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [135, 149],
+          "type": "WheelShake",
+          "slotNumber": 5,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [150, 164],
+          "type": "WheelShake",
+          "slotNumber": 4,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [165, 179],
+          "type": "WheelShake",
+          "slotNumber": 3,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [180, 194],
+          "type": "WheelShake",
+          "slotNumber": 2,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [195, 209],
+          "type": "WheelShake",
+          "slotNumber": 1,
+          "shakeSpeedStart": "slow",
+          "shakeSpeedEnd": "fast"
+        },
+        {
+          "dmxRange": [210, 232],
+          "type": "WheelRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [233, 255],
+          "type": "WheelRotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
+        }
+      ]
+    },
+    "Gobo Wheel Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "angleStart": "0deg",
+        "angleEnd": "395deg",
+        "comment": "FIXME: when ch4 is 210-255 (continuous scroll), this controls rotation speed"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "20m",
+        "distanceEnd": "2m"
+      }
+    },
+    "Prism": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Prism",
+          "comment": "TODO: \"Prism off\"?"
+        },
+        {
+          "dmxRange": [20, 79],
+          "type": "PrismRotation",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "PrismRotation",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [90, 149],
+          "type": "PrismRotation",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [150, 215],
+          "type": "Prism",
+          "comment": "TODO: \"Prism off\""
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "Effect",
+          "effectName": "Macro 1"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "Effect",
+          "effectName": "Macro 2"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "Effect",
+          "effectName": "Macro 3"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "Effect",
+          "effectName": "Macro 4"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "Effect",
+          "effectName": "Macro 5"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "Effect",
+          "effectName": "Macro 6"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "Effect",
+          "effectName": "Macro 7"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "Effect",
+          "effectName": "Macro 8"
+        }
+      ]
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "-115deg",
+        "angleEnd": "115deg",
+        "comment": "Left to right"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "75deg",
+        "comment": "Up to down"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "PanTiltSpeed",
+          "speed": "fast",
+          "comment": "Tracking"
+        },
+        {
+          "dmxRange": [3, 245],
+          "type": "PanTiltSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
+        },
+        {
+          "dmxRange": [246, 248],
+          "type": "PanTiltSpeed",
+          "speed": "slow",
+          "comment": "Tracking, PTSP NORM (menu override)"
+        },
+        {
+          "dmxRange": [249, 251],
+          "type": "PanTiltSpeed",
+          "speed": "fast",
+          "comment": "Tracking, PTSP FAST (menu override)"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Maintenance",
+          "comment": "Blackout while moving"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "EffectSpeed",
+          "speed": "fast",
+          "comment": "Tracking mode"
+        },
+        {
+          "dmxRange": [3, 245],
+          "type": "EffectSpeed",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "TODO: for gobo (esp.), this is a switched channel"
+        },
+        {
+          "dmxRange": [246, 251],
+          "type": "EffectSpeed",
+          "speed": "fast",
+          "comment": "Tracking"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "EffectSpeed",
+          "speed": "fast",
+          "comment": "Maximum speed"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "13-channel",
+      "shortName": "13ch",
+      "channels": [
+        "Shutter / Strobe",
+        "Dimmer",
+        "Color Presets",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Focus",
+        "Prism",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Effect Speed"
+      ]
+    }
+  ]
+}
