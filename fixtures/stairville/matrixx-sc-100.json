@@ -22,7 +22,7 @@
     "power": 40,
     "weight": 3.1,
     "bulb": {
-      "type": "LED" 
+      "type": "LED"
     }
   },
   "availableChannels": {
@@ -45,9 +45,9 @@
     "PatternsAndShows": {
       "capabilities": [
         {
-          "dmxRange":[0, 9],
+          "dmxRange": [0, 9],
           "type": "Intensity",
-          "brightness" : "off",
+          "brightness": "off",
           "comment": "blackout"
         },
         {
