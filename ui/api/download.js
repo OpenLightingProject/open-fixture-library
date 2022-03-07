@@ -63,6 +63,9 @@ async function downloadFixtures(response, pluginKey, fixtures, zipName, errorDes
 
 const router = express.Router();
 
+// support JSON encoded bodies
+router.use(express.json({ limit: `50mb` }));
+
 router.get(`/download.:format([a-z0-9_.-]+)`, async (request, response, next) => {
   const { format } = request.params;
 
