@@ -10,7 +10,7 @@ jobs:
         with:
           access_token: ${{ github.token }}
       - name: Checkout
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
       - name: Setup Node.js v14
         uses: actions/setup-node@v3.0.0
         with:
@@ -47,7 +47,7 @@ jobs:
         with:
           access_token: ${{ github.token }}
       - name: Checkout
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0 # complete history for all branches and tags
       - name: Setup Node.js v14
@@ -73,7 +73,7 @@ jobs:
     continue-on-error: true
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.4.0
+        uses: actions/checkout@v3
       - name: Check Markdown Links in modified files
         uses: gaurav-nelson/github-action-markdown-link-check@1.0.13
         with:
