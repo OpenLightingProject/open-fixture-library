@@ -25,33 +25,36 @@
     "power": 40,
     "weight": 3.1,
     "bulb": {
-      "type": "LED"
+      "type": "LED matrix (16× red, 12× green, 12× blue, 12× white)"
+    },
+    "lens": {
+      "degreesMinMax": [21, 21]
     }
   },
   "availableChannels": {
     "Pan": {
-      "defaultValue": 90,
+      "defaultValue": "50%",
       "capability": {
         "type": "Pan",
-        "angleStart": "1deg",
+        "angleStart": "0deg",
         "angleEnd": "180deg"
       }
     },
     "Tilt": {
-      "defaultValue": 45,
+      "defaultValue": "50%",
       "capability": {
         "type": "Tilt",
-        "angleStart": "1deg",
+        "angleStart": "0deg",
         "angleEnd": "90deg"
       }
     },
-    "PatternsAndShows": {
+    "Patterns / Shows": {
       "capabilities": [
         {
           "dmxRange": [0, 9],
           "type": "Intensity",
           "brightness": "off",
-          "comment": "blackout"
+          "comment": "Blackout"
         },
         {
           "dmxRange": [10, 19],
@@ -197,9 +200,8 @@
         {
           "dmxRange": [250, 255],
           "type": "Effect",
-          "effectName": "SoundControlled",
-          "soundControlled": true,
-          "comment": "Switch to sound-control (stand-alone mode without DMX control)"
+          "effectName": "Sound control",
+          "soundControlled": true
         }
       ]
     }
@@ -211,7 +213,7 @@
       "channels": [
         "Pan",
         "Tilt",
-        "PatternsAndShows",
+        "Patterns / Shows",
         "Strobe"
       ]
     }
