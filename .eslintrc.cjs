@@ -285,6 +285,8 @@ const disabledRules = [
   `unicorn/prefer-spread`,
   `vue/multiline-html-element-content-newline`,
   `vue/singleline-html-element-content-newline`,
+  `vuejs-accessibility/form-control-has-label`,
+  `vuejs-accessibility/label-has-for`,
 ];
 
 for (const ruleName of vueCoreExtensionRules) {
