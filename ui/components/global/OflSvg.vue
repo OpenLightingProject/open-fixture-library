@@ -54,6 +54,7 @@ export default {
   },
   render(createElement, context) {
     let svgMarkup;
+    let hasTitle = Boolean(context.props.title);
 
     if (context.props.type === `color-circle`) {
       let colors = context.props.colors;
@@ -78,7 +79,9 @@ export default {
         colors = [colorLookup[context.props.name]];
       }
 
-      svgMarkup = getColorCircle(colors, context.props.title || context.props.name);
+      const title = context.props.title || context.props.name;
+      hasTitle = Boolean(title);
+      svgMarkup = getColorCircle(colors, title);
     }
     else {
       svgMarkup = getSvg(context.props.name, context.props.type, context.props.title);
@@ -86,6 +89,7 @@ export default {
 
     return createElement(`span`, Object.assign({}, context.data, {
       class: [`icon`, context.data.class],
+      attrs: hasTitle ? {} : { 'aria-hidden': `true` },
       domProps: {
         innerHTML: svgMarkup,
       },
@@ -117,6 +121,8 @@ function getSvg(name, category = null, title) {
     console.error(`Icon '${svgBasename}' not found`);
   }
 
+  svg = svg.replace(`<svg`, `<svg role="img"`);
+
   if (title) {
     svg = svg.replace(/(<svg[^>]*)>/, `$1 aria-label="${title}"><title>${title}</title>`);
   }
@@ -133,7 +139,7 @@ function getSvg(name, category = null, title) {
  */
 function getColorCircle(colors, title) {
   // viewBox customized to have the (0,0) coordinate in the center
-  let string = `<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" viewBox="-12 -12 24 24" class="icon color-circle">`;
+  let string = `<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" viewBox="-12 -12 24 24" class="icon color-circle" role="img">`;
 
   if (title) {
     string += `<title>${title}</title>`;
