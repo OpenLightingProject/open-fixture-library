@@ -87,8 +87,10 @@
             <span class="channel-buttons">
               <button
                 type="button"
-                title="Drag or to change channel order"
+                title="Drag or press ↓↑ to change channel order"
                 class="drag-handle icon-button"
+                @keyup.up.prevent="moveChannel(channelUuid, -1)"
+                @keyup.down.prevent="moveChannel(channelUuid, 1)"
                 @click.prevent>
                 <OflSvg name="move" />
               </button>
@@ -191,7 +193,7 @@
   }
 
   & .drag-handle {
-    cursor: move;
+    cursor: grab;
   }
 }
 </style>
@@ -323,6 +325,16 @@ export default {
     },
     isFineChannel(channelUuid) {
       return `coarseChannelId` in this.fixture.availableChannels[channelUuid];
+    },
+    moveChannel(channelUuid, delta) {
+      const channelIndex = this.mode.channels.indexOf(channelUuid);
+      const newIndex = channelIndex + delta;
+      if (newIndex < 0 || newIndex >= this.mode.channels.length) {
+        return;
+      }
+
+      this.mode.channels.splice(channelIndex, 1);
+      this.mode.channels.splice(newIndex, 0, channelUuid);
     },
     removeChannel(channelUuid) {
       const channel = this.fixture.availableChannels[channelUuid];
