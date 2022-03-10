@@ -24,7 +24,7 @@
           <OflSvg name="close" />
         </button>
 
-        <h2 :id="`${id}-dialog-title`" tabindex="-1" autofocus>
+        <h2 :id="`${id}-dialog-title`" tabindex="-1">
           <slot name="title">{{ title }}</slot>
         </h2>
 
