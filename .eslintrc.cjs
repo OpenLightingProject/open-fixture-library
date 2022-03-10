@@ -8,6 +8,7 @@ const pluginPresets = {
   sonarjs: `recommended`,
   unicorn: `recommended`,
   vue: `recommended`,
+  'vuejs-accessibility': `recommended`,
   jsonc: `recommended-with-json`, // has to be after `vue` and `nuxt`
 };
 
