@@ -30,14 +30,14 @@
 
       </LabeledInput>
 
-      <a
+      <button
         v-if="isChanged"
-        href="#remove"
-        class="remove"
+        type="button"
+        class="close icon-button"
         title="Remove capability"
         @click.prevent="clear()">
         <OflSvg name="close" />
-      </a>
+      </button>
 
       <EditorCapabilityTypeData
         ref="capabilityTypeData"
@@ -77,19 +77,10 @@
   color: theme-color(text-disabled);
 }
 
-a.remove {
+.icon-button.close {
   position: absolute;
   top: 0;
   right: 0;
-  display: inline-block;
-  width: 1.4rem;
-  height: 1.4rem;
-  padding: 0.3rem;
-  vertical-align: middle;
-
-  & > .icon {
-    vertical-align: unset;
-  }
 }
 </style>
 

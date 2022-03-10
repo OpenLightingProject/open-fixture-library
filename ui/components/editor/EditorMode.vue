@@ -85,28 +85,30 @@
             <code v-if="!isChannelNameUnique(channelUuid)" class="channel-uuid"> {{ channelUuid }}</code>
 
             <span class="channel-buttons">
-              <a
-                href="#move"
-                title="Drag to change channel order"
-                class="drag-handle"
+              <button
+                type="button"
+                title="Drag or to change channel order"
+                class="drag-handle icon-button"
                 @click.prevent>
                 <OflSvg name="move" />
-              </a>
+              </button>
 
-              <a
+              <button
                 v-if="!isFineChannel(channelUuid)"
-                href="#channel-editor"
+                type="button"
+                class="icon-button"
                 title="Edit channel"
                 @click.prevent="editChannel(channelUuid)">
                 <OflSvg name="pencil" />
-              </a>
+              </button>
 
-              <a
-                href="#remove"
+              <button
+                type="button"
+                class="icon-button"
                 title="Remove channel"
                 @click.prevent="removeChannel(channelUuid)">
                 <OflSvg name="close" />
-              </a>
+              </button>
             </span>
 
           </li>
@@ -147,7 +149,7 @@
     position: relative;
   }
 
-  & a:focus {
+  & button:focus {
     opacity: 1;
   }
 
@@ -155,11 +157,13 @@
     position: absolute;
     top: 0;
     right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
     background-color: theme-color(card-background, 0%);
     transition: background-color 0.1s, box-shadow 0.1s;
 
-    & a {
-      padding: 0.3em;
+    & button {
       opacity: 0;
       transition: opacity 0.1s;
     }
@@ -170,7 +174,7 @@
     background-color: theme-color(card-background);
     box-shadow: -1ex 0 1ex 0.5ex theme-color(card-background);
 
-    & a {
+    & button {
       opacity: 1;
     }
   }
@@ -181,7 +185,7 @@
     background-color: theme-color(card-background);
     box-shadow: -1ex 0 1ex 0.5ex theme-color(card-background);
 
-    & a {
+    & button {
       opacity: 1;
     }
   }

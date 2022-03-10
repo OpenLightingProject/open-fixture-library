@@ -60,7 +60,7 @@
         </NuxtLink>
 
         <ClientOnly>
-          <ThemeSwitcher @click.native="focusContent()" />
+          <ThemeSwitcher class="theme-switcher" @click.native="focusContent()" />
         </ClientOnly>
       </div>
     </nav>
@@ -98,25 +98,6 @@ header {
     white-space: nowrap;
   }
 
-  a {
-    display: inline-block;
-    height: 4.5em;
-    padding: 0 1ex;
-    line-height: 4.5em;
-    color: inherit;
-    text-decoration: none;
-
-    &:active,
-    &:focus {
-      background-color: theme-color(hover-background);
-      outline: 0;
-    }
-
-    @include mobile-hover-emulation((
-      background-color: hover-background,
-    ));
-  }
-
   form {
     display: flex;
     flex-grow: 1;
@@ -135,6 +116,35 @@ header {
     margin-left: 4px;
     font-size: 1.05em;
     line-height: 1.2;
+  }
+
+  a,
+  .theme-switcher {
+    box-sizing: border-box;
+    display: inline-block;
+    height: 4.5em;
+    padding: 0 1ex;
+    margin: 0;
+    font-size: 1em;
+    line-height: 4.5em;
+    color: inherit;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    fill: theme-color(icon);
+
+    &:active,
+    &:focus {
+      background-color: theme-color(hover-background);
+      outline: 0;
+    }
+
+    @include mobile-hover-emulation((
+      background-color: hover-background,
+      fill: icon-hover,
+    ));
   }
 
   .left-nav {

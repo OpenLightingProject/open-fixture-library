@@ -135,20 +135,20 @@
         </LabeledInput>
 
         <h3>Capabilities<template v-if="!channel.wizard.show && channel.capabilities.length > 1">
-          <a
-            href="#expand-all"
+          <button
+            type="button"
             class="icon-button expand-all"
-            title="Expand all capabilities"
+            title="Expand all channels"
             @click.prevent="openDetails()">
             <OflSvg name="chevron-double-down" />
-          </a>
-          <a
-            href="#collapse-all"
+          </button>
+          <button
+            type="button"
             class="icon-button collapse-all"
-            title="Collapse all capabilities"
+            title="Collapse all channels"
             @click.prevent="closeDetails()">
             <OflSvg name="chevron-double-up" />
-          </a>
+          </button>
         </template></h3>
 
         <EditorCapabilityWizard
