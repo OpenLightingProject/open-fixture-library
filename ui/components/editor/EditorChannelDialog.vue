@@ -452,7 +452,7 @@ export default {
     },
 
     onChannelNameChanged(channelName) {
-      if (this.areCapabilitiesChanged) {
+      if (this.areCapabilitiesChanged || channelName === ``) {
         return;
       }
 
@@ -527,6 +527,10 @@ export default {
     },
 
     onSubmit() {
+      if (this.channel.wizard.show) {
+        return;
+      }
+
       if (this.formstate.$invalid) {
         const invalidFields = document.querySelectorAll(`#channel-dialog .vf-field-invalid`);
 
@@ -682,7 +686,7 @@ export default {
           topOffset: 100,
         },
         isScrollable: target => target === scrollContainer,
-      }, () => firstNewCapability.$refs.firstInput.focus());
+      }, () => firstNewCapability.focus());
     },
 
     openDetails() {

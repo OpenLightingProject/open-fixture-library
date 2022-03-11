@@ -18,7 +18,7 @@
   }
 
   &.selected {
-    cursor: move;
+    cursor: grab;
     background-color: theme-color(blue-background-active);
 
     &:link,

@@ -97,11 +97,6 @@ export default {
       required: false,
       default: false,
     },
-    autoFocus: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
     value: {
       type: null,
       required: false,
@@ -249,15 +244,12 @@ export default {
     },
   },
   mounted() {
-    if (this.autoFocus) {
-      this.focus();
-    }
-
     this.$emit(`vf:validate`, this.validationData);
   },
   methods: {
+    /** @public */
     focus() {
-      const focusField = this.$refs.input ? this.$refs.input : this.$refs.select;
+      const focusField = this.$refs.input ?? this.$refs.select;
       focusField.focus();
     },
     update(newValue) {
