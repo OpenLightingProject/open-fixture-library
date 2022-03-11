@@ -95,6 +95,7 @@
         </datalist>
 
         <LabeledInput :formstate="formstate" name="resolution" label="Channel resolution">
+          <!-- eslint-disable-next-line vuejs-accessibility/no-onchange -- @change is fine here, as the action is non-destructive -->
           <select v-model="channel.resolution" name="resolution" @change="onResolutionChanged()">
             <option :value="constants.RESOLUTION_8BIT">8 bit (No fine channels)</option>
             <option :value="constants.RESOLUTION_16BIT">16 bit (1 fine channel)</option>
@@ -107,6 +108,7 @@
           :formstate="formstate"
           name="dmxValueResolution"
           label="DMX value resolution">
+          <!-- eslint-disable-next-line vuejs-accessibility/no-onchange -- @change is fine here, as the action is non-destructive -->
           <select
             v-model="channel.dmxValueResolution"
             name="dmxValueResolution"
@@ -133,20 +135,20 @@
         </LabeledInput>
 
         <h3>Capabilities<template v-if="!channel.wizard.show && channel.capabilities.length > 1">
-          <a
-            href="#expand-all"
+          <button
+            type="button"
             class="icon-button expand-all"
-            title="Expand all capabilities"
+            title="Expand all channels"
             @click.prevent="openDetails()">
             <OflSvg name="chevron-double-down" />
-          </a>
-          <a
-            href="#collapse-all"
+          </button>
+          <button
+            type="button"
             class="icon-button collapse-all"
-            title="Collapse all capabilities"
+            title="Collapse all channels"
             @click.prevent="closeDetails()">
             <OflSvg name="chevron-double-up" />
-          </a>
+          </button>
         </template></h3>
 
         <EditorCapabilityWizard
@@ -455,7 +457,6 @@ export default {
       }
 
       const capability = this.channel.capabilities[0];
-      const changeCapabilityType = this.$refs.capabilities[0].$refs.capabilityTypeData.changeCapabilityType;
 
       const matchingColor = this.singleColors.find(
         color => channelName.toLowerCase().includes(color.toLowerCase()),
@@ -463,7 +464,6 @@ export default {
       if (matchingColor) {
         capability.type = `ColorIntensity`;
         capability.typeData.color = matchingColor;
-        changeCapabilityType();
         return;
       }
 
@@ -499,7 +499,6 @@ export default {
 
       if (matchingType) {
         capability.type = matchingType;
-        changeCapabilityType();
       }
     },
 

@@ -8,6 +8,7 @@ const pluginPresets = {
   sonarjs: `recommended`,
   unicorn: `recommended`,
   vue: `recommended`,
+  'vuejs-accessibility': `recommended`,
   jsonc: `recommended-with-json`, // has to be after `vue` and `nuxt`
 };
 
@@ -284,6 +285,8 @@ const disabledRules = [
   `unicorn/prefer-spread`,
   `vue/multiline-html-element-content-newline`,
   `vue/singleline-html-element-content-newline`,
+  `vuejs-accessibility/form-control-has-label`,
+  `vuejs-accessibility/label-has-for`,
 ];
 
 for (const ruleName of vueCoreExtensionRules) {
