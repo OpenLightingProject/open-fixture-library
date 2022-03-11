@@ -452,7 +452,7 @@ export default {
     },
 
     onChannelNameChanged(channelName) {
-      if (this.areCapabilitiesChanged) {
+      if (this.areCapabilitiesChanged || channelName === ``) {
         return;
       }
 

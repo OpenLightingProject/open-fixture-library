@@ -74,7 +74,8 @@ export default {
     update() {
       this.$emit(`input`, this.localValue);
     },
-    onBlur() {
+    async onBlur() {
+      await this.$nextTick();
       this.$emit(`blur`, this.localValue);
     },
   },
