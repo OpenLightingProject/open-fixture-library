@@ -99,10 +99,11 @@
     },
     "Strobe Speed": {
       "capability": {
-        "type": "StrobeSpeed",
-        "speedStart": "1Hz",
-        "speedEnd": "100Hz",
-        "comment": "Speed range unspecified: \"from slow to fast\""
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled? When is the light constantly on or off?"
       }
     }
   },
