@@ -772,10 +772,10 @@
     "Zoom": {
       "defaultValue": 0,
       "capability": {
-        "type": "Zoom",
-        "angleStart": "narrow",
-        "angleEnd": "wide",
-        "helpWanted": "Or is this focus? If so, is it near…far or far…near?"
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far",
+        "helpWanted": "Is the focus point near…far or far…near?"
       }
     },
     "Reset": {
