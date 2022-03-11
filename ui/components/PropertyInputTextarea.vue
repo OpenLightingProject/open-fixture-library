@@ -25,11 +25,6 @@ export default {
       required: false,
       default: null,
     },
-    autoFocus: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
     value: {
       type: null,
       required: true,
@@ -52,19 +47,17 @@ export default {
       };
     },
   },
-  mounted() {
-    if (this.autoFocus) {
-      this.focus();
-    }
-
-    this.$watch(`validationData`, function(newValidationData) {
-      this.$emit(`vf:validate`, newValidationData);
-    }, {
+  watch: {
+    validationData: {
+      handler(newValidationData) {
+        this.$emit(`vf:validate`, newValidationData);
+      },
       deep: true,
       immediate: true,
-    });
+    },
   },
   methods: {
+    /** @public */
     focus() {
       this.$el.focus();
     },
