@@ -76,8 +76,9 @@
       <Draggable :list="mode.channels" v-bind="dragOptions">
         <TransitionGroup class="mode-channels" tag="ol">
           <li
-            v-for="channelUuid of mode.channels"
+            v-for="(channelUuid, channelIndex) of mode.channels"
             :key="channelUuid"
+            :value="channelIndex + 1"
             :data-channel-uuid="channelUuid">
 
             <span class="channel-name">{{ getChannelName(channelUuid) }}</span>
@@ -198,7 +199,6 @@
 }
 </style>
 
-
 <script>
 import Draggable from 'vuedraggable';
 
@@ -244,7 +244,9 @@ export default {
       schemaDefinitions,
       modeProperties,
       dragOptions: {
+        animation: 200,
         handle: `.drag-handle`,
+        emptyInsertThreshold: 20,
         group: {
           name: `mode`,
           pull: `clone`,
