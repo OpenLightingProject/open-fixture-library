@@ -527,6 +527,10 @@ export default {
     },
 
     onSubmit() {
+      if (this.channel.wizard.show) {
+        return;
+      }
+
       if (this.formstate.$invalid) {
         const invalidFields = document.querySelectorAll(`#channel-dialog .vf-field-invalid`);
 
