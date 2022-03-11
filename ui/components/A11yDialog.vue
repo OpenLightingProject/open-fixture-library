@@ -5,7 +5,7 @@
     :aria-hidden="shown ? `false` : `true`"
     :aria-labelledby="`${id}-dialog-title`"
     :role="isAlertDialog ? `alertdialog` : undefined"
-    @click="overlayClick($event)">
+    @click.self="overlayClick($event)">
 
     <div
       ref="dialog"
@@ -178,17 +178,13 @@ export default {
       }
     },
     show() {
-      if (this.dialog) {
-        this.dialog.show();
-      }
+      this.dialog?.show();
     },
     hide() {
-      if (this.dialog) {
-        this.dialog.hide();
-      }
+      this.dialog?.hide();
     },
-    overlayClick(event) {
-      if (!this.isAlertDialog && !event.target.closest(`.dialog`)) {
+    overlayClick() {
+      if (!this.isAlertDialog) {
         this.hide();
       }
     },
