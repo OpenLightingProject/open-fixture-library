@@ -32,7 +32,7 @@ export default {
   },
   data() {
     return {
-      localValue: this.value ? String(this.value) : ``,
+      localValue: ``,
     };
   },
   computed: {
@@ -48,6 +48,12 @@ export default {
     },
   },
   watch: {
+    value: {
+      handler(newValue) {
+        this.localValue = newValue ? String(newValue) : ``;
+      },
+      immediate: true,
+    },
     validationData: {
       handler(newValidationData) {
         this.$emit(`vf:validate`, newValidationData);
