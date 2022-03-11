@@ -28,11 +28,6 @@ export default {
       required: false,
       default: null,
     },
-    autoFocus: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
     value: {
       type: null,
       required: true,
@@ -40,7 +35,7 @@ export default {
   },
   data() {
     return {
-      localValue: this.value ? String(this.value) : ``,
+      localValue: ``,
     };
   },
   computed: {
@@ -56,26 +51,31 @@ export default {
       };
     },
   },
-  mounted() {
-    if (this.autoFocus) {
-      this.focus();
-    }
-
-    this.$watch(`validationData`, function(newValidationData) {
-      this.$emit(`vf:validate`, newValidationData);
-    }, {
+  watch: {
+    value: {
+      handler(newValue) {
+        this.localValue = newValue ? String(newValue) : ``;
+      },
+      immediate: true,
+    },
+    validationData: {
+      handler(newValidationData) {
+        this.$emit(`vf:validate`, newValidationData);
+      },
       deep: true,
       immediate: true,
-    });
+    },
   },
   methods: {
+    /** @public */
     focus() {
       this.$el.focus();
     },
     update() {
       this.$emit(`input`, this.localValue);
     },
-    onBlur() {
+    async onBlur() {
+      await this.$nextTick();
       this.$emit(`blur`, this.localValue);
     },
   },

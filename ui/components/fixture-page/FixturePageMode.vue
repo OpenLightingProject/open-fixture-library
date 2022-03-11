@@ -47,6 +47,7 @@
 .expand-all,
 .collapse-all {
   margin-left: 1ex;
+  font-size: 0.8rem;
 }
 
 ol.mode-channels {

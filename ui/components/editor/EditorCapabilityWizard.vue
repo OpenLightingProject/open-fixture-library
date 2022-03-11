@@ -72,8 +72,8 @@
 
     <div class="button-bar right">
       <button
-        type="submit"
-        :disabled="error"
+        type="button"
+        :disabled="error || !wizard.templateCapability.type"
         class="restore primary"
         @click.prevent="apply()">
         Generate capabilities

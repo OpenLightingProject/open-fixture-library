@@ -25,8 +25,11 @@
           :label="key"
           :value="value"
           name="pixel-group"
+          tabindex="0"
           @mouseover="highlightedPixelKeys = matrix.pixelGroups[key]"
-          @mouseout="highlightedPixelKeys = []" />
+          @focusin="highlightedPixelKeys = matrix.pixelGroups[key]"
+          @mouseout="highlightedPixelKeys = []"
+          @focusout="highlightedPixelKeys = []" />
       </div>
     </section>
   </div>
