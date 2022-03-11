@@ -16,6 +16,7 @@
         label="DMX range">
 
         <PropertyInputRange
+          ref="firstInput"
           v-model="capability.dmxRange"
           :formstate="formstate"
           :name="`capability${capability.uuid}-dmxRange`"
@@ -302,6 +303,11 @@ export default {
       }
 
       this.$refs.capabilityTypeData.cleanCapabilityData();
+    },
+
+    /** @public */
+    focus() {
+      this.$refs.firstInput.focus();
     },
   },
 };

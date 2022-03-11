@@ -682,7 +682,7 @@ export default {
           topOffset: 100,
         },
         isScrollable: target => target === scrollContainer,
-      }, () => firstNewCapability.$refs.firstInput.focus());
+      }, () => firstNewCapability.focus());
     },
 
     openDetails() {
