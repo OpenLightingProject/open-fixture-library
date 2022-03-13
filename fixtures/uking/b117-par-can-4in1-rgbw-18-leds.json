@@ -98,14 +98,21 @@
         "speedEnd": "fast"
       }
     },
-    "Strobe Speed": {
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe",
-        "speedStart": "slow",
-        "speedEnd": "fast",
-        "helpWanted": "At which DMX values is strobe disabled? When is the light constantly on or off?"
-      }
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [1, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
     }
   },
   "modes": [
@@ -118,7 +125,7 @@
         "Green",
         "Blue",
         "White",
-        "Strobe Speed",
+        "Strobe",
         "Effect",
         "Effect Speed"
       ]
