@@ -133,6 +133,9 @@ const enabledRuleParameters = {
   // eslint-plugin-jsonc
   'jsonc/auto': [],
 
+  // eslint-plugin-nuxt
+  'nuxt/require-func-head': [],
+
   // eslint-plugin-promise
   'promise/no-callback-in-promise': [],
   'promise/no-nesting': [],
