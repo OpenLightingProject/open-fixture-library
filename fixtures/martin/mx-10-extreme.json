@@ -878,11 +878,11 @@
     },
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
+      "defaultValue": "50%",
       "capability": {
         "type": "Pan",
-        "angleStart": "-115deg",
-        "angleEnd": "115deg",
-        "comment": "Left to right"
+        "angleStart": "0deg",
+        "angleEnd": "230deg"
       }
     },
     "Tilt": {
@@ -890,8 +890,7 @@
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
-        "angleEnd": "75deg",
-        "comment": "Up to down"
+        "angleEnd": "75deg"
       }
     },
     "Pan/Tilt Speed": {
