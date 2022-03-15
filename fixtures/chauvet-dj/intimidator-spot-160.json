@@ -24,7 +24,7 @@
     "power": 60,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "1× 32W cool white LED"
     },
     "lens": {
       "degreesMinMax": [17, 17]
@@ -393,8 +393,8 @@
           "dmxRange": [8, 76],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
         },
         {
           "dmxRange": [77, 145],
