@@ -62,6 +62,61 @@
           "name": "Paint mix"
         }
       ]
+    },
+    "Color Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        {
+          "type": "Color",
+          "name": "CTC"
+        },
+        {
+          "type": "Color",
+          "name": "Yellow 603"
+        },
+        {
+          "type": "Color",
+          "name": "Blue 104"
+        },
+        {
+          "type": "Color",
+          "name": "Pink 312"
+        },
+        {
+          "type": "Color",
+          "name": "Green 206"
+        },
+        {
+          "type": "Color",
+          "name": "Blue 108"
+        },
+        {
+          "type": "Color",
+          "name": "Red 301"
+        },
+        {
+          "type": "Color",
+          "name": "Magenta 507"
+        },
+        {
+          "type": "Color",
+          "name": "Blue 101"
+        },
+        {
+          "type": "Color",
+          "name": "Orange 306"
+        },
+        {
+          "type": "Color",
+          "name": "Dark green"
+        },
+        {
+          "type": "Color",
+          "name": "Purple 502"
+        }
+      ]
     }
   },
   "availableChannels": {
@@ -121,9 +176,8 @@
           "dmxRange": [148, 167],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speed": "fast",
-          "randomTiming": true,
-          "comment": "Medium"
+          "speed": "50%",
+          "randomTiming": true
         },
         {
           "dmxRange": [168, 187],
@@ -208,79 +262,245 @@
         "type": "Intensity"
       }
     },
-    "Color Presets": {
+    "Color Wheel": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "ColorPreset",
-          "comment": "White"
+          "type": "WheelSlot",
+          "slotNumber": 1
         },
         {
           "dmxRange": [1, 11],
-          "type": "NoFunction"
+          "type": "WheelSlot",
+          "slotNumberStart": 1,
+          "slotNumberEnd": 2
         },
         {
           "dmxRange": [12, 12],
-          "type": "ColorPreset",
-          "comment": "CTC"
+          "type": "WheelSlot",
+          "slotNumber": 2
         },
         {
           "dmxRange": [13, 23],
-          "type": "NoFunction"
+          "type": "WheelSlot",
+          "slotNumberStart": 2,
+          "slotNumberEnd": 3
         },
         {
           "dmxRange": [24, 24],
-          "type": "ColorPreset",
-          "comment": "Yellow 603"
+          "type": "WheelSlot",
+          "slotNumber": 3
         },
         {
           "dmxRange": [25, 35],
-          "type": "NoFunction"
+          "type": "WheelSlot",
+          "slotNumberStart": 3,
+          "slotNumberEnd": 4
         },
         {
           "dmxRange": [36, 36],
-          "type": "ColorPreset",
-          "comment": "Blue 104"
+          "type": "WheelSlot",
+          "slotNumber": 4
         },
         {
           "dmxRange": [37, 47],
-          "type": "NoFunction"
+          "type": "WheelSlot",
+          "slotNumberStart": 4,
+          "slotNumberEnd": 5
         },
         {
           "dmxRange": [48, 48],
-          "type": "ColorPreset",
-          "comment": "Pink 312"
+          "type": "WheelSlot",
+          "slotNumber": 5
         },
         {
           "dmxRange": [49, 59],
-          "type": "NoFunction"
+          "type": "WheelSlot",
+          "slotNumberStart": 5,
+          "slotNumberEnd": 6
         },
         {
           "dmxRange": [60, 60],
-          "type": "ColorPreset",
-          "comment": "Green 206"
+          "type": "WheelSlot",
+          "slotNumber": 6
         },
         {
           "dmxRange": [61, 71],
-          "type": "NoFunction"
+          "type": "WheelSlot",
+          "slotNumberStart": 6,
+          "slotNumberEnd": 7
         },
         {
           "dmxRange": [72, 72],
-          "type": "ColorPreset",
-          "comment": "Blue 108"
+          "type": "WheelSlot",
+          "slotNumber": 7
         },
         {
           "dmxRange": [73, 83],
-          "type": "NoFunction"
+          "type": "WheelSlot",
+          "slotNumberStart": 7,
+          "slotNumberEnd": 8
         },
         {
           "dmxRange": [84, 84],
-          "type": "ColorPreset",
-          "comment": "Red 301"
+          "type": "WheelSlot",
+          "slotNumber": 8
         },
         {
-          "dmxRange": [85, 255],
-          "type": "NoFunction"
+          "dmxRange": [85, 95],
+          "type": "WheelSlot",
+          "slotNumberStart": 8,
+          "slotNumberEnd": 9
+        },
+        {
+          "dmxRange": [96, 96],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [97, 107],
+          "type": "WheelSlot",
+          "slotNumberStart": 9,
+          "slotNumberEnd": 10
+        },
+        {
+          "dmxRange": [108, 108],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [109, 119],
+          "type": "WheelSlot",
+          "slotNumberStart": 10,
+          "slotNumberEnd": 11
+        },
+        {
+          "dmxRange": [120, 120],
+          "type": "WheelSlot",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [121, 131],
+          "type": "WheelSlot",
+          "slotNumberStart": 11,
+          "slotNumberEnd": 12
+        },
+        {
+          "dmxRange": [132, 132],
+          "type": "WheelSlot",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [133, 143],
+          "type": "WheelSlot",
+          "slotNumberStart": 12,
+          "slotNumberEnd": 13
+        },
+        {
+          "dmxRange": [144, 144],
+          "type": "WheelSlot",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [145, 155],
+          "type": "WheelSlot",
+          "slotNumberStart": 13,
+          "slotNumberEnd": 14
+        },
+        {
+          "dmxRange": [156, 159],
+          "type": "WheelSlot",
+          "slotNumber": 13
+        },
+        {
+          "dmxRange": [160, 163],
+          "type": "WheelSlot",
+          "slotNumber": 12
+        },
+        {
+          "dmxRange": [164, 167],
+          "type": "WheelSlot",
+          "slotNumber": 11
+        },
+        {
+          "dmxRange": [168, 171],
+          "type": "WheelSlot",
+          "slotNumber": 10
+        },
+        {
+          "dmxRange": [172, 175],
+          "type": "WheelSlot",
+          "slotNumber": 9
+        },
+        {
+          "dmxRange": [176, 179],
+          "type": "WheelSlot",
+          "slotNumber": 8
+        },
+        {
+          "dmxRange": [180, 183],
+          "type": "WheelSlot",
+          "slotNumber": 7
+        },
+        {
+          "dmxRange": [184, 187],
+          "type": "WheelSlot",
+          "slotNumber": 6
+        },
+        {
+          "dmxRange": [188, 191],
+          "type": "WheelSlot",
+          "slotNumber": 5
+        },
+        {
+          "dmxRange": [192, 195],
+          "type": "WheelSlot",
+          "slotNumber": 4
+        },
+        {
+          "dmxRange": [196, 199],
+          "type": "WheelSlot",
+          "slotNumber": 3
+        },
+        {
+          "dmxRange": [200, 203],
+          "type": "WheelSlot",
+          "slotNumber": 2
+        },
+        {
+          "dmxRange": [204, 207],
+          "type": "WheelSlot",
+          "slotNumber": 1
+        },
+        {
+          "dmxRange": [208, 226],
+          "type": "WheelRotation",
+          "speedStart": "fast CW",
+          "speedEnd": "slow CW"
+        },
+        {
+          "dmxRange": [227, 245],
+          "type": "WheelRotation",
+          "speedStart": "slow CCW",
+          "speedEnd": "fast CCW"
+        },
+        {
+          "dmxRange": [246, 248],
+          "type": "Effect",
+          "effectName": "Random color",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [249, 251],
+          "type": "Effect",
+          "effectName": "Random color",
+          "speed": "50%"
+        },
+        {
+          "dmxRange": [252, 255],
+          "type": "Effect",
+          "effectName": "Random color",
+          "speed": "slow"
         }
       ]
     },
@@ -637,7 +857,7 @@
       "channels": [
         "Shutter / Strobe",
         "Dimmer",
-        "Color Presets",
+        "Color Wheel",
         "Gobo Wheel",
         "Gobo Wheel Rotation",
         "Focus",
