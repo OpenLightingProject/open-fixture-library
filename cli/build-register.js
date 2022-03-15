@@ -13,31 +13,29 @@ let manufacturers;
 
 const fixturesPath = fileURLToPath(new URL(`../fixtures/`, import.meta.url));
 
-(async () => {
-  try {
-    manufacturers = await importJson(`../fixtures/manufacturers.json`, import.meta.url);
-    register = new Register(manufacturers);
+try {
+  manufacturers = await importJson(`../fixtures/manufacturers.json`, import.meta.url);
+  register = new Register(manufacturers);
 
-    await addFixturesToRegister();
-  }
-  catch (readError) {
-    console.error(`Read error:`, readError);
-    process.exit(1);
-  }
+  await addFixturesToRegister();
+}
+catch (readError) {
+  console.error(`Read error:`, readError);
+  process.exit(1);
+}
 
-  const filename = path.join(fixturesPath, (process.argv.length === 3 ? process.argv[2] : `register.json`));
-  const fileContents = `${JSON.stringify(register.getAsSortedObject(), null, 2)}\n`;
+const registerFilename = path.join(fixturesPath, (process.argv.length === 3 ? process.argv[2] : `register.json`));
+const fileContents = `${JSON.stringify(register.getAsSortedObject(), null, 2)}\n`;
 
-  try {
-    await writeFile(filename, fileContents, `utf8`);
-    console.log(chalk.green(`[Success]`), `Updated register file`, filename);
-    process.exit(0);
-  }
-  catch (error) {
-    console.error(chalk.red(`[Fail]`), `Could not write register file.`, error);
-    process.exit(1);
-  }
-})();
+try {
+  await writeFile(registerFilename, fileContents, `utf8`);
+  console.log(chalk.green(`[Success]`), `Updated register file`, registerFilename);
+  process.exit(0);
+}
+catch (error) {
+  console.error(chalk.red(`[Fail]`), `Could not write register file.`, error);
+  process.exit(1);
+}
 
 
 /**

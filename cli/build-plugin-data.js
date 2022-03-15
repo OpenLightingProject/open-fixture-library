@@ -16,50 +16,48 @@ const allPreviousVersions = {};
 
 const pluginDirectoryUrl = new URL(`../plugins/`, import.meta.url);
 
-(async () => {
-  const directoryEntries = await readdir(pluginDirectoryUrl, { withFileTypes: true });
-  const pluginKeys = directoryEntries.filter(entry => entry.isDirectory()).map(entry => entry.name);
+const directoryEntries = await readdir(pluginDirectoryUrl, { withFileTypes: true });
+const pluginKeys = directoryEntries.filter(entry => entry.isDirectory()).map(entry => entry.name);
 
-  for (const pluginKey of pluginKeys) {
-    plugins.data[pluginKey] = {};
+for (const pluginKey of pluginKeys) {
+  plugins.data[pluginKey] = {};
 
-    await readPluginJson(pluginKey);
-    await readPluginImport(pluginKey);
-    await readPluginExport(pluginKey);
-    await readPluginExportTests(pluginKey);
+  await readPluginJson(pluginKey);
+  await readPluginImport(pluginKey);
+  await readPluginExport(pluginKey);
+  await readPluginExportTests(pluginKey);
+}
+
+for (const [key, data] of Object.entries(allPreviousVersions)) {
+  if (key in plugins.data) {
+    plugins.data[key].newPlugin = data.newPlugin;
   }
-
-  for (const [key, data] of Object.entries(allPreviousVersions)) {
-    if (key in plugins.data) {
-      plugins.data[key].newPlugin = data.newPlugin;
-    }
-    else {
-      plugins.data[key] = data;
-    }
+  else {
+    plugins.data[key] = data;
   }
+}
 
-  // sort plugin data object by key
-  plugins.data = Object.fromEntries(
-    Object.keys(plugins.data).sort().map(key => [key, plugins.data[key]]),
-  );
+// sort plugin data object by key
+plugins.data = Object.fromEntries(
+  Object.keys(plugins.data).sort().map(key => [key, plugins.data[key]]),
+);
 
-  const filePath = fileURLToPath(new URL(`plugins.json`, pluginDirectoryUrl));
+const filePath = fileURLToPath(new URL(`plugins.json`, pluginDirectoryUrl));
 
-  try {
-    await writeFile(filePath, `${JSON.stringify(plugins, null, 2)}\n`, `utf8`);
-    console.log(chalk.green(`[Success]`), `Updated plugin data file`, filePath);
-    process.exit(0);
-  }
-  catch (error) {
-    console.error(chalk.red(`[Fail]`), `Could not write plugin data file.`, error);
-    process.exit(1);
-  }
-})();
+try {
+  await writeFile(filePath, `${JSON.stringify(plugins, null, 2)}\n`, `utf8`);
+  console.log(chalk.green(`[Success]`), `Updated plugin data file`, filePath);
+  process.exit(0);
+}
+catch (error) {
+  console.error(chalk.red(`[Fail]`), `Could not write plugin data file.`, error);
+  process.exit(1);
+}
 
 
 /**
  * Reads information from the plugin's `plugin.json` file into `plugins` and `allPreviousVersions`.
- * @param {String} pluginKey The plugin key.
+ * @param {string} pluginKey The plugin key.
  */
 async function readPluginJson(pluginKey) {
   try {
@@ -84,7 +82,7 @@ async function readPluginJson(pluginKey) {
 
 /**
  * Reads information from the plugin's `import.js` file (if it exists) into `plugins`.
- * @param {String} pluginKey The plugin key.
+ * @param {string} pluginKey The plugin key.
  */
 async function readPluginImport(pluginKey) {
   try {
@@ -105,7 +103,7 @@ async function readPluginImport(pluginKey) {
 
 /**
  * Reads information from the plugin's `export.js` file (if it exists) into `plugins`.
- * @param {String} pluginKey The plugin key.
+ * @param {string} pluginKey The plugin key.
  */
 async function readPluginExport(pluginKey) {
   try {
@@ -127,7 +125,7 @@ async function readPluginExport(pluginKey) {
 
 /**
  * Adds the plugin's export tests (if any) to `plugins`.
- * @param {String} pluginKey The plugin key.
+ * @param {string} pluginKey The plugin key.
  */
 async function readPluginExportTests(pluginKey) {
   try {

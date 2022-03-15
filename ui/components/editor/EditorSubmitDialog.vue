@@ -77,17 +77,18 @@
 
     <div v-else-if="state === `preview`">
       <div v-if="previewFixture" class="fixture-page">
-        <header class="fixture-header">
-          <h1 class="title">
-            {{ previewFixture.manufacturer.name }} {{ previewFixture.name }}
-            <code v-if="previewFixture.hasShortName">{{ previewFixture.shortName }}</code>
-          </h1>
+        <FixtureHeader>
+          <template #title>
+            <h1>
+              {{ previewFixture.manufacturer.name }} {{ previewFixture.name }}
+              <code v-if="previewFixture.hasShortName">{{ previewFixture.shortName }}</code>
+            </h1>
+          </template>
 
           <DownloadButton
             v-if="previewFixtureResults.errors.length === 0"
-            :show-help="false"
             :editor-fixtures="previewFixtureCreateResult" />
-        </header>
+        </FixtureHeader>
 
         <section v-if="previewFixtureResults.warnings.length > 0" class="card yellow">
           <strong>Warnings:<br></strong>
@@ -128,7 +129,6 @@
         <DownloadButton
           v-if="!hasValidationErrors"
           button-style="select"
-          :show-help="false"
           :editor-fixtures="fixtureCreateResult" />
         <a
           :href="pullRequestUrl"
@@ -172,15 +172,15 @@
 }
 
 .preview-fixture-chooser {
-  vertical-align: middle;
-  font-size: 1rem;
   width: 350px;
+  font-size: 1rem;
+  vertical-align: middle;
 }
 
 .fixture-page {
-  background: theme-color(page-background);
+  padding: 0.1rem 1rem 1rem;
   margin: 1rem -1rem -1rem;
-  padding: .1rem 1rem 1rem;
+  background: theme-color(page-background);
 
   & ::v-deep .help-wanted .actions {
     cursor: not-allowed;
@@ -195,9 +195,9 @@
 .button-bar {
   position: sticky;
   bottom: 0;
-  background: theme-color(dialog-background);
   padding: 0.6rem 1rem 1rem;
   margin: 1rem -1rem -1rem;
+  background: theme-color(dialog-background);
   box-shadow: 0 0 4px theme-color(icon-inactive);
 }
 </style>
@@ -207,10 +207,10 @@ import Fixture from '../../../lib/model/Fixture.js';
 import Manufacturer from '../../../lib/model/Manufacturer.js';
 import { clone } from '../../assets/scripts/editor-utils.js';
 
-
 import A11yDialog from '../A11yDialog.vue';
 import DownloadButton from '../DownloadButton.vue';
 import FixturePage from '../fixture-page/FixturePage.vue';
+import FixtureHeader from '../FixtureHeader.vue';
 
 const stateTitles = {
   closed: `Closed`,
@@ -231,6 +231,7 @@ export default {
     A11yDialog,
     DownloadButton,
     FixturePage,
+    FixtureHeader,
   },
   props: {
     endpoint: {
@@ -352,7 +353,7 @@ export default {
     /**
      * Called from fixture editor to open the dialog.
      * @public
-     * @param {*} requestBody The data to pass to the API endpoint.
+     * @param {any} requestBody The data to pass to the API endpoint.
      */
     async validate(requestBody) {
       this.requestBody = requestBody;

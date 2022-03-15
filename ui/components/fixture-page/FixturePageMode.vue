@@ -47,16 +47,17 @@
 .expand-all,
 .collapse-all {
   margin-left: 1ex;
+  font-size: 0.8rem;
 }
 
 ol.mode-channels {
-  padding-left: 1.9em;
   min-height: 1em;
+  padding-left: 1.9em;
 
   // switched channels
   ::v-deep ol {
-    list-style-type: lower-alpha;
     padding-left: 1.1em;
+    list-style-type: lower-alpha;
   }
 }
 </style>

@@ -21,19 +21,19 @@ const SCHEMA_FILES = [
 const schemaPromises = getSchemas();
 
 /**
- * @typedef {Object} ExportFile
- * @property {String} name File name,
+ * @typedef {object} ExportFile
+ * @property {string} name File name,
  * may include slashes to provide a folder structure.
- * @property {String} content File content.
- * @property {String} mimetype File mime type.
- * @property {Array.<Fixture>|null} fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
- * @property {String|null} mode Mode's shortName if given file only describes a single mode.
+ * @property {string} content File content.
+ * @property {string} mimetype File mime type.
+ * @property {Fixture[] | null} fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @property {string | null} mode Mode's shortName if given file only describes a single mode.
  */
 
 /**
  * @param {ExportFile} exportFile The file returned by the plugins' export module.
- * @param {Array.<ExportFile>} allExportFiles An array of all export files.
- * @returns {Promise.<undefined, Array.<String>|String>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
+ * @param {ExportFile[]} allExportFiles An array of all export files.
+ * @returns {Promise<void, string[] | string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
 export default async function testJsonSchemaConformity(exportFile, allExportFiles) {
   const schemas = await schemaPromises;
@@ -55,7 +55,7 @@ export default async function testJsonSchemaConformity(exportFile, allExportFile
 }
 
 /**
- * @returns {Promise.<Array.<Object>>} Asynchronously downloaded and JSON parsed schemas.
+ * @returns {Promise<object[]>} Asynchronously downloaded and JSON parsed schemas.
  */
 async function getSchemas() {
   const schemasJson = await Promise.all(SCHEMA_FILES.map(
@@ -84,8 +84,8 @@ async function getSchemas() {
 }
 
 /**
- * @param {String} url The schema URL to fetch
- * @returns {Promise.<Object>} A promise resolving to the JSON Schema object.
+ * @param {string} url The schema URL to fetch
+ * @returns {Promise<object>} A promise resolving to the JSON Schema object.
  */
 function downloadSchema(url) {
   return new Promise((resolve, reject) => {
