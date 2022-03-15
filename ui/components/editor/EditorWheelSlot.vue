@@ -11,6 +11,7 @@
         }"
         :name="`wheel-slot${slot.uuid}-type`"
         label="Slot type">
+        <!-- eslint-disable-next-line vuejs-accessibility/no-onchange -- @change is fine here, as the action is non-destructive -->
         <select
           v-model="slot.type"
           :class="{ empty: slot.type === `` }"

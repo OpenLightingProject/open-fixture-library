@@ -147,8 +147,11 @@
             <tr
               v-for="(slot, index) of wheel.slots"
               :key="`slot-${index}`"
+              tabindex="0"
               @mouseover="highlightedSlot = (slot.type === `AnimationGoboEnd` ? index - 1 : index)"
-              @mouseout="highlightedSlot = null">
+              @focusin="highlightedSlot = (slot.type === `AnimationGoboEnd` ? index - 1 : index)"
+              @mouseout="highlightedSlot = null"
+              @focusout="highlightedSlot = null">
               <th scope="row">Slot {{ index + 1 }}</th>
               <td>{{ slot.name }}</td>
             </tr>

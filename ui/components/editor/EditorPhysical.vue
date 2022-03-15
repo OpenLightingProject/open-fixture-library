@@ -45,11 +45,11 @@
         :state="formstate"
         tag="span">
         <PropertyInputText
+          ref="newDmxConnectorInput"
           v-model="localPhysical.DMXconnectorNew"
           :name="`${namePrefix}-physical-DMXconnectorNew`"
           :schema-property="schemaDefinitions.nonEmptyString"
           required
-          auto-focus
           hint="other DMX connector"
           class="addition" />
       </Validate>
@@ -165,6 +165,12 @@ export default {
         this.$emit(`input`, clone(this.localPhysical));
       },
       deep: true,
+    },
+    'physical.DMXconnector': async function(newValue) {
+      if (newValue === `[add-value]` && this.$root._oflRestoreComplete) {
+        await this.$nextTick();
+        this.$refs.newDmxConnectorInput.focus();
+      }
     },
   },
   mounted() {

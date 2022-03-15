@@ -19,28 +19,33 @@
         required />
     </Validate>
 
-    <a
+    <button
       v-if="canRemove"
-      href="#remove-link"
+      type="button"
+      class="icon-button"
       title="Remove link"
       @click.prevent="$emit(`remove`)">
       <OflSvg name="close" />
-    </a>
+    </button>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .link-row {
   margin-bottom: 4px;
+
+  select {
+    width: 17ex;
+    margin-right: 1ex;
+  }
+
+  & > .icon {
+    margin-right: 0.5ex;
+  }
 }
 
-select {
-  width: 17ex;
-  margin-right: 1ex;
-}
-
-.icon {
-  margin-right: 0.5ex;
+.icon-button {
+  margin-left: 0.5ex;
 }
 </style>
 

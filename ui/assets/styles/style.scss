@@ -326,6 +326,7 @@ a.button {
   height: #{$icon-size + 2 * $padding};
   padding: 0 0 0 #{$icon-size + 2 * $padding};
   overflow: hidden;
+  font-size: 1em;
   color: theme-color(icon);
   vertical-align: middle;
   cursor: pointer;

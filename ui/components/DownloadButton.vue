@@ -3,7 +3,10 @@
     <!-- Display the download button as a select to make it work inside modals as well -->
     <select
       v-if="buttonStyle === `select`"
-      @change="onDownloadSelect($event)">
+      @click="selectClicked = true"
+      @keyup.enter="$event.target.blur()"
+      @change="onDownloadSelectChange($event)"
+      @blur="onDownloadSelectBlur($event)">
       <option value="" disabled selected>{{ title }}</option>
       <option v-for="plugin of exportPlugins" :key="plugin.key" :value="plugin.key">{{ plugin.name }}</option>
     </select>
@@ -226,6 +229,7 @@ export default {
   data() {
     return {
       exportPlugins: [],
+      selectClicked: false,
     };
   },
   async fetch() {
@@ -330,7 +334,12 @@ export default {
       event.preventDefault();
       this.formattedDownload(pluginKey);
     },
-    onDownloadSelect(event) {
+    onDownloadSelectChange(event) {
+      if (this.selectClicked) {
+        event.target.blur(); // trigger download
+      }
+    },
+    onDownloadSelectBlur(event) {
       if (event.target.value === ``) {
         // no plugin has been selected
         return;
@@ -340,6 +349,7 @@ export default {
 
       // reset the select value to make it feel more like a button
       event.target.value = ``;
+      this.selectClicked = false;
 
       if (!this.editorFixtures) {
         // download an already submitted fixture

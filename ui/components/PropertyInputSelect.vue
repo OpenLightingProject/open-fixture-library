@@ -31,11 +31,6 @@ export default {
       required: false,
       default: null,
     },
-    autoFocus: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
     value: {
       type: null,
       required: true,
@@ -51,12 +46,8 @@ export default {
       },
     },
   },
-  mounted() {
-    if (this.autoFocus) {
-      this.focus();
-    }
-  },
   methods: {
+    /** @public */
     focus() {
       this.$el.focus();
     },
