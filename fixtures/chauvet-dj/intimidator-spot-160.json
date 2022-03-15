@@ -34,44 +34,52 @@
     "Color Wheel": {
       "slots": [
         {
-          "type": "Color",
-          "name": "White"
+          "type": "Open"
         },
         {
           "type": "Color",
-          "name": "Orange"
+          "name": "Orange",
+          "colors": ["#ffa500"]
         },
         {
           "type": "Color",
-          "name": "Lime green"
+          "name": "Lime green",
+          "colors": ["#66f83a"]
         },
         {
           "type": "Color",
-          "name": "Cyan"
+          "name": "Cyan",
+          "colors": ["#00ffff"]
         },
         {
           "type": "Color",
-          "name": "Red"
+          "name": "Red",
+          "colors": ["#ff0000"]
         },
         {
           "type": "Color",
-          "name": "Green"
+          "name": "Green",
+          "colors": ["#16b116"]
         },
         {
           "type": "Color",
-          "name": "Magenta"
+          "name": "Magenta",
+          "colors": ["#ff00ff"]
         },
         {
           "type": "Color",
-          "name": "Yellow"
+          "name": "Yellow",
+          "colors": ["#ffff00"]
         },
         {
           "type": "Color",
-          "name": "Dark blue"
+          "name": "Dark blue",
+          "colors": ["#00008b"]
         },
         {
           "type": "Color",
-          "name": "White"
+          "name": "White",
+          "colors": ["#ffffff"]
         }
       ]
     },
@@ -82,7 +90,8 @@
         },
         {
           "type": "Gobo",
-          "name": "Gobo 1"
+          "name": "Gobo 1",
+          "resource": "gobos/10-circles"
         },
         {
           "type": "Gobo",
@@ -106,7 +115,8 @@
         },
         {
           "type": "Gobo",
-          "name": "Gobo 7"
+          "name": "Gobo 7",
+          "resource": "gobos/biohazard"
         },
         {
           "type": "Gobo",
@@ -115,9 +125,6 @@
         {
           "type": "Gobo",
           "name": "Gobo 9"
-        },
-        {
-          "type": "Gobo"
         }
       ]
     }
@@ -197,14 +204,14 @@
           "dmxRange": [63, 64],
           "type": "WheelSlot",
           "slotNumber": 10,
-          "comment": "The specs say \"9 + open\", but the docs list white+8+white, so possibly one of the whites is different, but it doesn't say."
+          "helpWanted": "The specs on the product website say \"9 + open\" colors, but the manual lists \"white + 8 + white\", so possibly one of the whites is different, but it doesn't say."
         },
         {
           "dmxRange": [65, 189],
           "type": "WheelRotation",
           "angleStart": "0deg",
           "angleEnd": "360deg",
-          "comment": "This range is described as \"Color indexing\", with no explanation.  The Intimidator Spot 260 is the same, and the OFL JSON uses this encoding for it (with a help-wanted note)."
+          "helpWanted": "Are these the correct angles?"
         },
         {
           "dmxRange": [190, 221],
