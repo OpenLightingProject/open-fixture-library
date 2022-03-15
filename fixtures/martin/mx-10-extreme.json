@@ -811,70 +811,68 @@
       "capabilities": [
         {
           "dmxRange": [0, 19],
-          "type": "Prism",
-          "comment": "TODO: \"Prism off\"?"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [20, 79],
-          "type": "PrismRotation",
+          "type": "Prism",
           "speedStart": "fast CCW",
           "speedEnd": "slow CCW"
         },
         {
           "dmxRange": [80, 89],
-          "type": "PrismRotation",
+          "type": "Prism",
           "speed": "stop"
         },
         {
           "dmxRange": [90, 149],
-          "type": "PrismRotation",
+          "type": "Prism",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         },
         {
           "dmxRange": [150, 215],
-          "type": "Prism",
-          "comment": "TODO: \"Prism off\""
+          "type": "NoFunction"
         },
         {
           "dmxRange": [216, 220],
           "type": "Effect",
-          "effectName": "Macro 1"
+          "effectName": "Prism Macro 1"
         },
         {
           "dmxRange": [221, 225],
           "type": "Effect",
-          "effectName": "Macro 2"
+          "effectName": "Prism Macro 2"
         },
         {
           "dmxRange": [226, 230],
           "type": "Effect",
-          "effectName": "Macro 3"
+          "effectName": "Prism Macro 3"
         },
         {
           "dmxRange": [231, 235],
           "type": "Effect",
-          "effectName": "Macro 4"
+          "effectName": "Prism Macro 4"
         },
         {
           "dmxRange": [236, 240],
           "type": "Effect",
-          "effectName": "Macro 5"
+          "effectName": "Prism Macro 5"
         },
         {
           "dmxRange": [241, 245],
           "type": "Effect",
-          "effectName": "Macro 6"
+          "effectName": "Prism Macro 6"
         },
         {
           "dmxRange": [246, 250],
           "type": "Effect",
-          "effectName": "Macro 7"
+          "effectName": "Prism Macro 7"
         },
         {
           "dmxRange": [251, 255],
           "type": "Effect",
-          "effectName": "Macro 8"
+          "effectName": "Prism Macro 8"
         }
       ]
     },
