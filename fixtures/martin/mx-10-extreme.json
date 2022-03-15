@@ -30,6 +30,9 @@
     "Gobo Wheel": {
       "slots": [
         {
+          "type": "Open"
+        },
+        {
           "type": "Gobo",
           "name": "Eclipse"
         },
@@ -505,191 +508,297 @@
       ]
     },
     "Gobo Wheel": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 4],
           "type": "WheelSlot",
-          "slotNumber": 1
+          "slotNumber": 1,
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing"
+          }
         },
         {
           "dmxRange": [5, 9],
           "type": "WheelSlot",
-          "slotNumber": 1
+          "slotNumber": 2,
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing"
+          }
         },
         {
           "dmxRange": [10, 14],
           "type": "WheelSlot",
-          "slotNumber": 2
+          "slotNumber": 3,
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing"
+          }
         },
         {
           "dmxRange": [15, 19],
           "type": "WheelSlot",
-          "slotNumber": 3
+          "slotNumber": 4,
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing"
+          }
         },
         {
           "dmxRange": [20, 24],
           "type": "WheelSlot",
-          "slotNumber": 4
+          "slotNumber": 5,
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing"
+          }
         },
         {
           "dmxRange": [25, 29],
           "type": "WheelSlot",
-          "slotNumber": 5
+          "slotNumber": 6,
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing"
+          }
         },
         {
           "dmxRange": [30, 34],
           "type": "WheelSlot",
-          "slotNumber": 6
+          "slotNumber": 7,
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing"
+          }
         },
         {
           "dmxRange": [35, 39],
           "type": "WheelSlot",
-          "slotNumber": 7
+          "slotNumber": 8,
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing"
+          }
         },
         {
           "dmxRange": [40, 44],
           "type": "WheelSlot",
-          "slotNumber": 8
+          "slotNumber": 9,
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Indexing"
+          }
         },
         {
           "dmxRange": [45, 49],
-          "type": "WheelSlotRotation",
-          "speed": "fast CW",
-          "comment": "(Should be \"unset\" but online editor doesn't allow that to be chosen)"
+          "type": "WheelSlot",
+          "slotNumber": 1,
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation"
+          }
         },
         {
           "dmxRange": [50, 54],
-          "type": "WheelSlotRotation",
-          "slotNumber": 1,
-          "speed": "stop",
-          "comment": "(Should be \"unset\" but online editor doesn't allow that to be chosen)"
+          "type": "WheelSlot",
+          "slotNumber": 2,
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation"
+          }
         },
         {
           "dmxRange": [55, 59],
-          "type": "WheelSlotRotation",
-          "slotNumber": 2,
-          "speed": "stop",
-          "comment": "(Should be \"unset\" but online editor doesn't allow that to be chosen)"
+          "type": "WheelSlot",
+          "slotNumber": 3,
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation"
+          }
         },
         {
           "dmxRange": [60, 64],
-          "type": "WheelSlotRotation",
-          "slotNumber": 3,
-          "speed": "stop",
-          "comment": "(Should be \"unset\" but online editor doesn't allow that to be chosen)"
+          "type": "WheelSlot",
+          "slotNumber": 4,
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation"
+          }
         },
         {
           "dmxRange": [65, 69],
-          "type": "WheelSlotRotation",
-          "slotNumber": 4,
-          "speed": "stop",
-          "comment": "(Should be \"unset\" but online editor doesn't allow that to be chosen)"
+          "type": "WheelSlot",
+          "slotNumber": 5,
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation"
+          }
         },
         {
           "dmxRange": [70, 74],
-          "type": "WheelSlotRotation",
-          "slotNumber": 5,
-          "speed": "stop",
-          "comment": "(Should be \"unset\" but online editor doesn't allow that to be chosen)"
+          "type": "WheelSlot",
+          "slotNumber": 6,
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation"
+          }
         },
         {
           "dmxRange": [75, 79],
-          "type": "WheelSlotRotation",
-          "slotNumber": 6,
-          "speed": "stop",
-          "comment": "(Should be \"unset\" but online editor doesn't allow that to be chosen)"
+          "type": "WheelSlot",
+          "slotNumber": 7,
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation"
+          }
         },
         {
           "dmxRange": [80, 84],
-          "type": "WheelSlotRotation",
-          "slotNumber": 7,
-          "speed": "stop",
-          "comment": "(Should be \"unset\" but online editor doesn't allow that to be chosen)"
+          "type": "WheelSlot",
+          "slotNumber": 8,
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation"
+          }
         },
         {
           "dmxRange": [85, 89],
-          "type": "WheelSlotRotation",
-          "slotNumber": 8,
-          "speed": "stop",
-          "comment": "(Should be \"unset\" but online editor doesn't allow that to be chosen)"
+          "type": "WheelSlot",
+          "slotNumber": 9,
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation"
+          }
         },
         {
           "dmxRange": [90, 104],
           "type": "WheelShake",
+          "isShaking": "wheel",
           "slotNumber": 8,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation"
+          }
         },
         {
           "dmxRange": [105, 119],
           "type": "WheelShake",
+          "isShaking": "wheel",
           "slotNumber": 7,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation"
+          }
         },
         {
           "dmxRange": [120, 134],
           "type": "WheelShake",
+          "isShaking": "wheel",
           "slotNumber": 6,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation"
+          }
         },
         {
           "dmxRange": [135, 149],
           "type": "WheelShake",
+          "isShaking": "wheel",
           "slotNumber": 5,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation"
+          }
         },
         {
           "dmxRange": [150, 164],
           "type": "WheelShake",
+          "isShaking": "wheel",
           "slotNumber": 4,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation"
+          }
         },
         {
           "dmxRange": [165, 179],
           "type": "WheelShake",
+          "isShaking": "wheel",
           "slotNumber": 3,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation"
+          }
         },
         {
           "dmxRange": [180, 194],
           "type": "WheelShake",
+          "isShaking": "wheel",
           "slotNumber": 2,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation"
+          }
         },
         {
           "dmxRange": [195, 209],
           "type": "WheelShake",
+          "isShaking": "wheel",
           "slotNumber": 1,
           "shakeSpeedStart": "slow",
-          "shakeSpeedEnd": "fast"
+          "shakeSpeedEnd": "fast",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation"
+          }
         },
         {
           "dmxRange": [210, 232],
           "type": "WheelRotation",
           "speedStart": "slow CW",
-          "speedEnd": "fast CW"
+          "speedEnd": "fast CW",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation"
+          }
         },
         {
           "dmxRange": [233, 255],
           "type": "WheelRotation",
           "speedStart": "fast CCW",
-          "speedEnd": "slow CCW"
+          "speedEnd": "slow CCW",
+          "switchChannels": {
+            "Gobo Indexing / Rotation": "Gobo Rotation"
+          }
         }
       ]
     },
-    "Gobo Wheel Rotation": {
+    "Gobo Indexing": {
       "capability": {
         "type": "WheelRotation",
+        "wheel": "Gobo Wheel",
         "angleStart": "0deg",
-        "angleEnd": "395deg",
-        "comment": "FIXME: when ch4 is 210-255 (continuous scroll), this controls rotation speed"
+        "angleEnd": "395deg"
       }
+    },
+    "Gobo Rotation": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 2],
+          "type": "WheelRotation",
+          "wheel": "Gobo Wheel",
+          "speed": "stop"
+        },
+        {
+          "dmxRange": [3, 127],
+          "type": "WheelRotation",
+          "wheel": "Gobo Wheel",
+          "speedStart": "slow CW",
+          "speedEnd": "fast CW"
+        },
+        {
+          "dmxRange": [128, 253],
+          "type": "WheelRotation",
+          "wheel": "Gobo Wheel",
+          "speedStart": "fast CCW",
+          "speedEnd": "slow CCW"
+        },
+        {
+          "dmxRange": [254, 255],
+          "type": "WheelRotation",
+          "wheel": "Gobo Wheel",
+          "speed": "stop"
+        }
+      ]
     },
     "Focus": {
       "capability": {
@@ -859,7 +968,7 @@
         "Dimmer",
         "Color Wheel",
         "Gobo Wheel",
-        "Gobo Wheel Rotation",
+        "Gobo Indexing / Rotation",
         "Focus",
         "Prism",
         "Pan",
