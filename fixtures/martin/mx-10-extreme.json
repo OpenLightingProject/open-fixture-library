@@ -18,12 +18,15 @@
   "physical": {
     "dimensions": [340, 315, 735],
     "weight": 22,
-    "power": 340,
+    "power": 350,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "Discharge",
+      "type": "Philips MSD 250/2 (250W discharge lamp)",
       "colorTemperature": 8500,
       "lumens": 3757
+    },
+    "lens": {
+      "degreesMinMax": [18, 18]
     }
   },
   "wheels": {
@@ -817,17 +820,20 @@
         {
           "dmxRange": [20, 79],
           "type": "Prism",
+          "comment": "3-facet",
           "speedStart": "fast CCW",
           "speedEnd": "slow CCW"
         },
         {
           "dmxRange": [80, 89],
           "type": "Prism",
+          "comment": "3-facet",
           "speed": "stop"
         },
         {
           "dmxRange": [90, 149],
           "type": "Prism",
+          "comment": "3-facet",
           "speedStart": "slow CW",
           "speedEnd": "fast CW"
         },
