@@ -67,6 +67,7 @@
       ]
     },
     "Color Wheel": {
+      "direction": "CW",
       "slots": [
         {
           "type": "Open"
@@ -930,28 +931,30 @@
       "capabilities": [
         {
           "dmxRange": [0, 2],
-          "type": "EffectSpeed",
-          "speed": "fast",
-          "comment": "Tracking mode"
+          "type": "Maintenance",
+          "comment": "Tracking mode; only for Dimmer, Focus, Color, Gobo Indexing"
         },
         {
           "dmxRange": [3, 245],
-          "type": "EffectSpeed",
-          "speedStart": "fast",
-          "speedEnd": "slow",
-          "comment": "TODO: for gobo (esp.), this is a switched channel"
+          "type": "Maintenance",
+          "comment": "Speed; only for Dimmer, Focus, Color, Gobo Indexing",
+          "parameterStart": "fast",
+          "parameterEnd": "slow"
         },
         {
-          "dmxRange": [246, 251],
-          "type": "EffectSpeed",
-          "speed": "fast",
-          "comment": "Tracking"
+          "dmxRange": [246, 248],
+          "type": "Maintenance",
+          "comment": "Tracking/Normal, SCUT OFF (menu override); only for Color, Gobo Selection"
+        },
+        {
+          "dmxRange": [249, 251],
+          "type": "Maintenance",
+          "comment": "Tracking/Normal, SCUT ON (menu override); only for Color, Gobo Selection"
         },
         {
           "dmxRange": [252, 255],
-          "type": "EffectSpeed",
-          "speed": "fast",
-          "comment": "Maximum speed"
+          "type": "Maintenance",
+          "comment": "Blackout while moving"
         }
       ]
     }
