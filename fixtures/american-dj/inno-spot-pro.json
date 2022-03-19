@@ -24,7 +24,7 @@
     "power": 140,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED"
+      "type": "1× 80W White LED"
     },
     "lens": {
       "degreesMinMax": [12, 17]
@@ -327,7 +327,8 @@
         },
         {
           "dmxRange": [8, 255],
-          "type": "Prism"
+          "type": "Prism",
+          "comment": "3-facet"
         }
       ]
     },
@@ -381,8 +382,8 @@
           "dmxRange": [16, 131],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "speedStart": "0.3Hz",
+          "speedEnd": "12Hz"
         },
         {
           "dmxRange": [132, 139],
