@@ -133,7 +133,8 @@
         {
           "dmxRange": [0, 7],
           "type": "WheelSlot",
-          "slotNumber": 1
+          "slotNumber": 1,
+          "helpWanted": "The colors in the manual don't match the color wheel on the product page."
         },
         {
           "dmxRange": [8, 14],
@@ -178,7 +179,8 @@
         {
           "dmxRange": [64, 127],
           "type": "Effect",
-          "effectName": "Color Mixing"
+          "effectName": "Color Mixing",
+          "helpWanted": "How does this effect look?"
         },
         {
           "dmxRange": [128, 189],
@@ -276,7 +278,7 @@
           "type": "WheelRotation",
           "speedStart": "slow CW",
           "speedEnd": "fast CW",
-          "comment": "Assuming this is CW, analogous to the color wheel (but speed is backward?)"
+          "helpWanted": "Assuming this is CW, analogous to the color wheel (but speed is backward?)"
         },
         {
           "dmxRange": [190, 193],
@@ -288,7 +290,7 @@
           "type": "WheelRotation",
           "speedStart": "fast CCW",
           "speedEnd": "slow CCW",
-          "comment": "Assuming this is CCW, analogous to the color wheel (but speed is backward?)"
+          "helpWanted": "Assuming this is CCW, analogous to the color wheel (but speed is backward?)"
         }
       ]
     },
