@@ -399,8 +399,7 @@
         {
           "dmxRange": [140, 181],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampDown",
-          "comment": "\"Shutter slow open - fast close\"?"
+          "shutterEffect": "RampUp"
         },
         {
           "dmxRange": [182, 189],
@@ -410,8 +409,7 @@
         {
           "dmxRange": [190, 231],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUp",
-          "comment": "\"Shutter slow close - fast open\"?"
+          "shutterEffect": "RampDown"
         },
         {
           "dmxRange": [232, 239],
