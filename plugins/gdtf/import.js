@@ -10,20 +10,20 @@ import { getRgbColorFromGdtfColor, followXmlNodeReference } from './gdtf-helpers
 export const version = `0.2.0`;
 
 /**
- * @typedef {Object} Relation
- * @property {Number} modeIndex The zero-based index of the mode this relation applies to.
- * @property {Object} masterGdtfChannel The GDTF channel that triggers switching.
- * @property {String} switchingChannelName The name of the switching channel (containing multiple default channels).
- * @property {Object} followerGdtfChannel The GDTF channel that is switched by the master.
- * @property {[Number, Resolution]} dmxFrom The DMX value and DMX resolution of the start of the DMX range triggering this relation.
- * @property {[Number, Resolution]} dmxTo The DMX value and DMX resolution of the end of the DMX range triggering this relation.
+ * @typedef {object} Relation
+ * @property {number} modeIndex The zero-based index of the mode this relation applies to.
+ * @property {object} masterGdtfChannel The GDTF channel that triggers switching.
+ * @property {string} switchingChannelName The name of the switching channel (containing multiple default channels).
+ * @property {object} followerGdtfChannel The GDTF channel that is switched by the master.
+ * @property {[number, Resolution]} dmxFrom The DMX value and DMX resolution of the start of the DMX range triggering this relation.
+ * @property {[number, Resolution]} dmxTo The DMX value and DMX resolution of the end of the DMX range triggering this relation.
  */
 
 /**
  * @param {Buffer} buffer The imported file.
- * @param {String} filename The imported file's name.
- * @param {String} authorName The importer's name.
- * @returns {Promise.<Object, Error>} A Promise resolving to an out object
+ * @param {string} filename The imported file's name.
+ * @param {string} authorName The importer's name.
+ * @returns {Promise<object, Error>} A Promise resolving to an out object
  */
 export async function importFixtures(buffer, filename, authorName) {
   const fixture = {
@@ -106,7 +106,7 @@ export async function importFixtures(buffer, filename, authorName) {
   };
 
   /**
-   * @returns {[String|undefined, String|undefined]} An array with the earliest and latest revision dates of the GDTF fixture, if they are defined in <Revision> tag.
+   * @returns {[string | undefined, string | undefined]} An array with the earliest and latest revision dates of the GDTF fixture, if they are defined in <Revision> tag.
    */
   function getRevisionDates() {
     if (!gdtfFixture.Revisions?.[0]?.Revision) {
@@ -121,7 +121,7 @@ export async function importFixtures(buffer, filename, authorName) {
   }
 
   /**
-   * @returns {String|undefined} The comment to add to the fixture.
+   * @returns {string | undefined} The comment to add to the fixture.
    */
   function getFixtureComment() {
     const { Name, LongName, Manufacturer, Description } = gdtfFixture.$;
@@ -170,7 +170,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
 
     /**
-     * @returns {Object} Name and DMX personalities of the latest RDM software version(both may be undefined).
+     * @returns {object} Name and DMX personalities of the latest RDM software version(both may be undefined).
      */
     function getLatestSoftwareVersion() {
       const maxSoftwareVersion = (rdmData.SoftwareVersionID || []).reduce(
@@ -279,7 +279,7 @@ export async function importFixtures(buffer, filename, authorName) {
   }
 
   /**
-   * @returns {Array.<Relation>} An array of relations.
+   * @returns {Relation[]} An array of relations.
    */
   function splitSwitchingChannels() {
     let relations = getModeMasterRelations();
@@ -320,7 +320,7 @@ export async function importFixtures(buffer, filename, authorName) {
     /**
      * Parses <ChannelFunction ModeMaster="…">'s relation data.
      * This way of specifying relations was added in GDTF v0.88.
-     * @returns {Array.<Relation>} An array of relations, may be empty.
+     * @returns {Relation[]} An array of relations, may be empty.
      */
     function getModeMasterRelations() {
       return gdtfFixture.DMXModes[0].DMXMode.flatMap((gdtfMode, modeIndex) => {
@@ -355,7 +355,7 @@ export async function importFixtures(buffer, filename, authorName) {
     /**
      * Parses <Relation Type="Mode">'s relation data.
      * This behavior is deprecated since GDTF v0.88, but still supported as a fallback.
-     * @returns {Array.<Relation>} An array of relations, may be empty.
+     * @returns {Relation[]} An array of relations, may be empty.
      */
     function getLegacyRelations() {
       return gdtfFixture.DMXModes[0].DMXMode.flatMap((gdtfMode, modeIndex) => {
@@ -394,11 +394,11 @@ export async function importFixtures(buffer, filename, authorName) {
   }
 
   /**
-   * @typedef {Object} ChannelWrapper
-   * @property {String} key The channel key.
-   * @property {Object} channel The OFL channel object.
-   * @property {Number} maxResolution The highest used resolution of this channel.
-   * @property {Array.<Number>} modeIndices The indices of the modes that this channel is used in.
+   * @typedef {object} ChannelWrapper
+   * @property {string} key The channel key.
+   * @property {object} channel The OFL channel object.
+   * @property {number} maxResolution The highest used resolution of this channel.
+   * @property {number[]} modeIndices The indices of the modes that this channel is used in.
    */
 
   /**
@@ -443,8 +443,8 @@ export async function importFixtures(buffer, filename, authorName) {
   }
 
   /**
-   * @param {Array.<ChannelWrapper>} channelWrappers The OFL availableChannels or templateChannels object.
-   * @param {Object} gdtfChannel The GDTF <DMXChannel> XML object.
+   * @param {ChannelWrapper[]} channelWrappers The OFL availableChannels or templateChannels object.
+   * @param {object} gdtfChannel The GDTF <DMXChannel> XML object.
    */
   function addChannel(channelWrappers, gdtfChannel) {
     const name = getChannelName();
@@ -508,7 +508,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
 
     /**
-     * @returns {String} The channel name.
+     * @returns {string} The channel name.
      */
     function getChannelName() {
       const channelAttribute = gdtfChannel.LogicalChannel[0].$.Attribute;
@@ -524,7 +524,7 @@ export async function importFixtures(buffer, filename, authorName) {
     }
 
     /**
-     * @returns {Array.<Object>} Array of OFL capability objects (but with GDTF DMX values).
+     * @returns {object[]} Array of OFL capability objects (but with GDTF DMX values).
      */
     function getCapabilities() {
       let minPhysicalValue = Number.POSITIVE_INFINITY;
@@ -626,8 +626,8 @@ export async function importFixtures(buffer, filename, authorName) {
 
 
       /**
-       * @param {Number} index The index of the capability.
-       * @returns {[Number, Resolution]} The GDTF DMX value for this capability's range end.
+       * @param {number} index The index of the capability.
+       * @returns {[number, Resolution]} The GDTF DMX value for this capability's range end.
        */
       function getDmxRangeEnd(index) {
         const dmxFrom = gdtfCapabilities[index]._dmxFrom;
@@ -643,8 +643,8 @@ export async function importFixtures(buffer, filename, authorName) {
       }
 
       /**
-       * @param {String} attributeName The GDTF attribute name.
-       * @returns {Object} The capability type data from @file gdtf-attributes.js
+       * @param {string} attributeName The GDTF attribute name.
+       * @returns {object} The capability type data from @file gdtf-attributes.js
        */
       function getCapabilityTypeData(attributeName) {
         let capabilityTypeData = gdtfAttributes[attributeName];
@@ -677,9 +677,9 @@ export async function importFixtures(buffer, filename, authorName) {
       }
 
       /**
-       * @param {Function|null} hook The hook function, or a falsy value.
-       * @param {...*} parameters The arguments to pass to the hook.
-       * @returns {*} The return value of the hook, or null if no hook was called.
+       * @param {Function | null} hook The hook function, or a falsy value.
+       * @param {any[]} parameters The arguments to pass to the hook.
+       * @returns {any} The return value of the hook, or null if no hook was called.
        */
       function callHook(hook, ...parameters) {
         if (hook) {
@@ -690,9 +690,9 @@ export async function importFixtures(buffer, filename, authorName) {
       }
 
       /**
-       * @param {Object} capabilityTypeData The capability type data from @file gdtf-attributes.js
-       * @param {Object} gdtfCapability The enhanced <ChannelSet> XML object.
-       * @returns {String|null} The OFL property name, or null.
+       * @param {object} capabilityTypeData The capability type data from @file gdtf-attributes.js
+       * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
+       * @returns {string | null} The OFL property name, or null.
        */
       function getOflProperty(capabilityTypeData, gdtfCapability) {
         if (!(`oflProperty` in capabilityTypeData)) {
@@ -707,7 +707,7 @@ export async function importFixtures(buffer, filename, authorName) {
       }
 
       /**
-       * @param {Object} gdtfCapability The enhanced <ChannelSet> XML object.
+       * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
        * @returns {Function} The function to turn a physical value into an entity string with the correct unit.
        */
       function getPhysicalUnit(gdtfCapability) {
@@ -742,7 +742,7 @@ export async function importFixtures(buffer, filename, authorName) {
     }
 
     /**
-     * @returns {Number} The resolution of this channel.
+     * @returns {number} The resolution of this channel.
      */
     function getChannelResolution() {
       // The Offset attribute replaced the Coarse/Fine/Ultra/Uber attributes in GDTF v1.0
@@ -766,7 +766,7 @@ export async function importFixtures(buffer, filename, authorName) {
     }
 
     /**
-     * @returns {String} The channel key, derived from the name and made unique.
+     * @returns {string} The channel key, derived from the name and made unique.
      */
     function getChannelKey() {
       let key = name;
@@ -823,7 +823,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
 
       /**
-       * @returns {Number} The highest DMX value resolution used in this channel, or 0 if no DMX value is used at all.
+       * @returns {number} The highest DMX value resolution used in this channel, or 0 if no DMX value is used at all.
        */
       function getMaxDmxValueResolution() {
         const dmxValues = [];
@@ -850,10 +850,10 @@ export async function importFixtures(buffer, filename, authorName) {
   }
 
   /**
-   * @typedef {Object} DmxBreakWrapper Holds a list of OFL channel keys belonging to consecutive GDTF channels with the same DMXBreak attribute.
-   * @property {String|undefined} dmxBreak The DMXBreak attribute of consecutive DMXChannel nodes.
-   * @property {String} geometry The Geometry attribute of consecutive DMXChannel nodes.
-   * @property {Array.<String>} channels The OFL channel keys in this DMX break.
+   * @typedef {object} DmxBreakWrapper Holds a list of OFL channel keys belonging to consecutive GDTF channels with the same DMXBreak attribute.
+   * @property {string | undefined} dmxBreak The DMXBreak attribute of consecutive DMXChannel nodes.
+   * @property {string} geometry The Geometry attribute of consecutive DMXChannel nodes.
+   * @property {string[]} channels The OFL channel keys in this DMX break.
    */
 
   /**
@@ -864,7 +864,7 @@ export async function importFixtures(buffer, filename, authorName) {
     const matrixPixels = new Set();
 
     fixture.modes = gdtfFixture.DMXModes[0].DMXMode.map(gdtfMode => {
-      /** @type {Array.<DmxBreakWrapper>} */
+      /** @type {DmxBreakWrapper[]} */
       const dmxBreakWrappers = [];
 
       for (const gdtfChannel of gdtfMode.DMXChannels[0].DMXChannel) {
@@ -940,8 +940,8 @@ export async function importFixtures(buffer, filename, authorName) {
     /**
      * Adds the OFL channel key (and fine channel keys) to dmxBreakWrappers'
      * last entry's channels array.
-     * @param {Object} gdtfChannel The GDTF channel object.
-     * @param {Array.<DmxBreakWrapper>} dmxBreakWrappers The DMXBreak wrapper array.
+     * @param {object} gdtfChannel The GDTF channel object.
+     * @param {DmxBreakWrapper[]} dmxBreakWrappers The DMXBreak wrapper array.
      */
     function addChannelKeyToDmxBreakWrapper(gdtfChannel, dmxBreakWrappers) {
       const channelKey = gdtfChannel._oflChannelKey;
@@ -972,8 +972,8 @@ export async function importFixtures(buffer, filename, authorName) {
 
     /**
      * Find all <GeometryReference> XML nodes with a given Geometry attribute.
-     * @param {String} geometryName The name of the geometry reference.
-     * @returns {Array.<Object>} An array of all geometry reference XML objects.
+     * @param {string} geometryName The name of the geometry reference.
+     * @returns {object[]} An array of all geometry reference XML objects.
      */
     function findGeometryReferences(geometryName) {
       const geometryReferences = [];
@@ -987,7 +987,7 @@ export async function importFixtures(buffer, filename, authorName) {
        * Recursively go through the child nodes of a given XML node and add
        * <GeometryReference> nodes with the correct Geometry attribute to the
        * geometryReferences array.
-       * @param {Object} xmlNode The XML node object to start traversing at.
+       * @param {object} xmlNode The XML node object to start traversing at.
        */
       function traverseGeometries(xmlNode) {
         // add all suitable GeometryReference child nodes
@@ -1042,8 +1042,8 @@ export async function importFixtures(buffer, filename, authorName) {
 
 
     /**
-     * @param {String} triggerChannelKey Key of the trigger channel, whose relations should be simplified.
-     * @returns {Object} Simplified switching channel's relations.
+     * @param {string} triggerChannelKey Key of the trigger channel, whose relations should be simplified.
+     * @returns {object} Simplified switching channel's relations.
      */
     function simplifySwitchingChannelRelations(triggerChannelKey) {
       const simplifiedRelations = {};
@@ -1076,7 +1076,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
     /**
      * @param {CoarseChannel} channel The OFL channel object.
-     * @returns {Number} The fineness of the channel.
+     * @returns {number} The fineness of the channel.
      */
     function getChannelResolution(channel) {
       if (`dmxValueResolution` in channel) {
@@ -1095,8 +1095,8 @@ export async function importFixtures(buffer, filename, authorName) {
 
 /**
  * @param {Buffer} buffer The imported file.
- * @param {String} filename The imported file's name.
- * @returns {Promise.<Object>} A Promise that resolves to the parsed XML object.
+ * @param {string} filename The imported file's name.
+ * @returns {Promise<object>} A Promise that resolves to the parsed XML object.
  */
 async function getGdtfXml(buffer, filename) {
   let xmlString = buffer.toString();
@@ -1119,7 +1119,7 @@ async function getGdtfXml(buffer, filename) {
 /**
  * Remove unnecessary `name` and `dmxValueResolution` properties and fill/remove
  * `fineChannelAliases`.
- * @param {Array.<ChannelWrapper>} channelWrappers The OFL availableChannels or templateChannels objects.
+ * @param {ChannelWrapper[]} channelWrappers The OFL availableChannels or templateChannels objects.
  */
 function cleanUpChannelWrappers(channelWrappers) {
   for (const channelWrapper of channelWrappers) {
@@ -1148,27 +1148,27 @@ function cleanUpChannelWrappers(channelWrappers) {
 }
 
 /**
- * @typedef {Object} SwitchToChannelInfo
- * @property {[Number, Resolution]} dmxFrom The DMX value and DMX resolution of the start of the DMX range triggering this relation.
- * @property {[Number, Resolution]} dmxTo The DMX value and DMX resolution of the end of the DMX range triggering this relation.
- * @property {String} switchToChannelKey The key of the channel to switch to.
+ * @typedef {object} SwitchToChannelInfo
+ * @property {[number, Resolution]} dmxFrom The DMX value and DMX resolution of the start of the DMX range triggering this relation.
+ * @property {[number, Resolution]} dmxTo The DMX value and DMX resolution of the end of the DMX range triggering this relation.
+ * @property {string} switchToChannelKey The key of the channel to switch to.
  */
 
 /**
- * @typedef {Object} TransformedRelations
- * @property {Record.<String, Record.<String, SwitchToChannelInfo>>} relationsPerMaster An object mapping a master channel key and a switching channel key to the switch to channel information.
+ * @typedef {object} TransformedRelations
+ * @property {Record<string, Record<string, SwitchToChannelInfo>>} relationsPerMaster An object mapping a master channel key and a switching channel key to the switch to channel information.
  * @property {ModeChannelReplacements} modeChannelReplacements An object mapping a mode index and a switch to channel key to the switching channel key.
  */
 
 /**
- * @typedef {Record.<Number, Record.<String, String>>} ModeChannelReplacements
+ * @typedef {Record<number, Record<string, string>>} ModeChannelReplacements
  * An object mapping a mode index and a switch to channel key to the switching channel key.
  */
 
 /**
  * Bring relations into a structure we can work with.
- * @param {Object} fixture The OFL fixture object.
- * @param {Array.<Relation>} switchingChannelRelations An array of relations.
+ * @param {object} fixture The OFL fixture object.
+ * @param {Relation[]} switchingChannelRelations An array of relations.
  * @returns {TransformedRelations} The transformed relations.
  */
 function transformRelations(fixture, switchingChannelRelations) {
@@ -1212,8 +1212,8 @@ function transformRelations(fixture, switchingChannelRelations) {
   /**
    * Adds all implicit fine channel relations for a given relation.
    * @param {Relation} relation The relation for the coarse channel.
-   * @param {String} switchingChannelKey The switching channel key of the coarse channel.
-   * @param {String} switchToChannelKey The switch to channel key of the coarse channel.
+   * @param {string} switchingChannelKey The switching channel key of the coarse channel.
+   * @param {string} switchToChannelKey The switch to channel key of the coarse channel.
    */
   function transformRelationFineChannels(relation, switchingChannelKey, switchToChannelKey) {
     const masterKey = relation.masterGdtfChannel._oflChannelKey;
@@ -1244,7 +1244,7 @@ function transformRelations(fixture, switchingChannelRelations) {
 
 /**
  * Replaces normal channels with switching channels in fixture's modes.
- * @param {Object} fixture The OFL fixture object.
+ * @param {object} fixture The OFL fixture object.
  * @param {ModeChannelReplacements} modeChannelReplacements An object mapping a mode index and a switch to channel key to the switching channel key.
  */
 function replaceSwitchingChannelsInModes(fixture, modeChannelReplacements) {
@@ -1265,8 +1265,8 @@ function replaceSwitchingChannelsInModes(fixture, modeChannelReplacements) {
 
 /**
  * Removes `defaultValue`s and fixture matrix if they're unneeded.
- * @param {Object} fixture The OFL fixture object.
- * @param {Array.<String>} warnings An array to add warnings to.
+ * @param {object} fixture The OFL fixture object.
+ * @param {string[]} warnings An array to add warnings to.
  */
 function cleanUpFixture(fixture, warnings) {
   if (`availableChannels` in fixture) {
@@ -1294,9 +1294,9 @@ function cleanUpFixture(fixture, warnings) {
 }
 
 /**
- * @param {Object} xmlNode An XML node object.
- * @param {String} attribute The attribute name to check.
- * @returns {Boolean} True if the node has the attribute and its value is not "None", false otherwise.
+ * @param {object} xmlNode An XML node object.
+ * @param {string} attribute The attribute name to check.
+ * @returns {boolean} True if the node has the attribute and its value is not "None", false otherwise.
  */
 function xmlNodeHasNotNoneAttribute(xmlNode, attribute) {
   return attribute in xmlNode.$ && xmlNode.$[attribute] !== `None`;
@@ -1307,9 +1307,9 @@ function xmlNodeHasNotNoneAttribute(xmlNode, attribute) {
  * the form "dd.MM.yyyy HH:mm:ss", so those have to be converted to the ISO format.
  *
  * @see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-date
- * @param {String|undefined} dateString An ISO date string or a date in the form "dd.MM.yyyy HH:mm:ss"
- * @param {String} fallbackDateString A fallback date string to return if the parsed date is not valid.
- * @returns {String} A date string in the form "YYYY-MM-DD" (may be the provided fallback date string).
+ * @param {string | undefined} dateString An ISO date string or a date in the form "dd.MM.yyyy HH:mm:ss"
+ * @param {string} fallbackDateString A fallback date string to return if the parsed date is not valid.
+ * @returns {string} A date string in the form "YYYY-MM-DD" (may be the provided fallback date string).
  */
 function getIsoDateFromGdtfDate(dateString, fallbackDateString) {
   if (!dateString) {
@@ -1336,10 +1336,10 @@ function getIsoDateFromGdtfDate(dateString, fallbackDateString) {
 }
 
 /**
- * @param {String|undefined} dmxValueString GDTF DMX value in the form "128/2", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-DMXValue
- * @param {Number|undefined} fallbackValue DMX value that is used if `dmxValueString` is falsy.
- * @param {Number} [fallbackResolution=1] DMX value resolution that is used if `dmxValueString` is falsy.
- * @returns {[Number, Resolution]} Array containing DMX value and DMX resolution.
+ * @param {string | undefined} dmxValueString GDTF DMX value in the form "128/2", see https://gdtf-share.com/wiki/GDTF_File_Description#attrType-DMXValue
+ * @param {number | undefined} fallbackValue DMX value that is used if `dmxValueString` is falsy.
+ * @param {number} [fallbackResolution=1] DMX value resolution that is used if `dmxValueString` is falsy.
+ * @returns {[number, Resolution]} Array containing DMX value and DMX resolution.
  */
 function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueString, fallbackValue, fallbackResolution = 1) {
   if (!dmxValueString && fallbackValue !== undefined) {
@@ -1356,9 +1356,9 @@ function getDmxValueWithResolutionFromGdtfDmxValue(dmxValueString, fallbackValue
 }
 
 /**
- * @param {String} value The string to parse.
- * @param {Number} fallback The number to use if the string can't be parsed.
- * @returns {Number} The parsed number.
+ * @param {string} value The string to parse.
+ * @param {number} fallback The number to use if the string can't be parsed.
+ * @returns {number} The parsed number.
  */
 function parseFloatWithFallback(value, fallback) {
   const number = Number.parseFloat(value);
@@ -1366,8 +1366,8 @@ function parseFloatWithFallback(value, fallback) {
 }
 
 /**
- * @param {String} string The string to slugify.
- * @returns {String} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
+ * @param {string} string The string to slugify.
+ * @returns {string} A slugified version of the string, i.e. only containing lowercase letters, numbers and dashes.
  */
 function slugify(string) {
   return string.toLowerCase().replace(/[^\da-z-]+/g, ` `).trim().replace(/\s+/g, `-`);

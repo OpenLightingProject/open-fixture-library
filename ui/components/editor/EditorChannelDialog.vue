@@ -13,7 +13,7 @@
       action="#"
       @submit.prevent="onSubmit()">
 
-      <div v-if="channel.editMode === `add-existing`">
+      <div v-if="channel.editMode === `add-existing`" class="existing-channel-input-container">
         <LabeledInput :formstate="formstate" name="existingChannelUuid" label="Select an existing channel">
           <select
             v-model="channel.uuid"
@@ -38,7 +38,7 @@
           <PropertyInputText
             v-model="channel.name"
             :schema-property="channelProperties.name"
-            :required="true"
+            required
             name="name"
             start-with-uppercase-or-number
             no-fine-channel-name
@@ -95,6 +95,7 @@
         </datalist>
 
         <LabeledInput :formstate="formstate" name="resolution" label="Channel resolution">
+          <!-- eslint-disable-next-line vuejs-accessibility/no-onchange -- @change is fine here, as the action is non-destructive -->
           <select v-model="channel.resolution" name="resolution" @change="onResolutionChanged()">
             <option :value="constants.RESOLUTION_8BIT">8 bit (No fine channels)</option>
             <option :value="constants.RESOLUTION_16BIT">16 bit (1 fine channel)</option>
@@ -107,6 +108,7 @@
           :formstate="formstate"
           name="dmxValueResolution"
           label="DMX value resolution">
+          <!-- eslint-disable-next-line vuejs-accessibility/no-onchange -- @change is fine here, as the action is non-destructive -->
           <select
             v-model="channel.dmxValueResolution"
             name="dmxValueResolution"
@@ -120,7 +122,7 @@
 
         <LabeledInput
           :formstate="formstate"
-          :multiple-inputs="true"
+          multiple-inputs
           name="defaultValue"
           label="Default DMX value">
           <PropertyInputEntity
@@ -128,25 +130,25 @@
             :schema-property="channelProperties.defaultValue"
             :min-number="0"
             :max-number="(typeof channel.defaultValue) === `string` ? 100 : dmxMax"
-            class="wide"
+            wide
             name="defaultValue" />
         </LabeledInput>
 
         <h3>Capabilities<template v-if="!channel.wizard.show && channel.capabilities.length > 1">
-          <a
-            href="#expand-all"
+          <button
+            type="button"
             class="icon-button expand-all"
-            title="Expand all capabilities"
+            title="Expand all channels"
             @click.prevent="openDetails()">
             <OflSvg name="chevron-double-down" />
-          </a>
-          <a
-            href="#collapse-all"
+          </button>
+          <button
+            type="button"
             class="icon-button collapse-all"
-            title="Collapse all capabilities"
+            title="Collapse all channels"
             @click.prevent="closeDetails()">
             <OflSvg name="chevron-double-up" />
-          </a>
+          </button>
         </template></h3>
 
         <EditorCapabilityWizard
@@ -180,7 +182,7 @@
 
         <LabeledInput
           :formstate="formstate"
-          :multiple-inputs="true"
+          multiple-inputs
           name="highlightValue"
           label="Highlight DMX value">
           <PropertyInputEntity
@@ -188,7 +190,7 @@
             :schema-property="channelProperties.highlightValue"
             :min-number="0"
             :max-number="(typeof channel.highlightValue) === `string` ? 100 : dmxMax"
-            class="wide"
+            wide
             name="highlightValue" />
         </LabeledInput>
 
@@ -223,17 +225,15 @@
   margin-left: 1ex;
   font-size: 0.8rem;
 }
-</style>
 
-<style lang="scss">
-#channel-dialog .dialog {
-  .existingChannelUuid {
-    display: block;
-  }
+.existing-channel-input-container ::v-deep section {
+  display: block;
+}
 
-  @media (min-width: $phone) {
-    max-width: 700px;
+@media (min-width: $phone) {
+  #channel-dialog ::v-deep .dialog {
     width: 80%;
+    max-width: 700px;
   }
 }
 </style>
@@ -245,6 +245,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { capabilityTypes, channelProperties } from '../../../lib/schema-properties.js';
 import {
   constants,
+  getEmptyFormState,
   getEmptyCapability,
   getEmptyFineChannel,
   getSanitizedChannel,
@@ -288,7 +289,7 @@ export default {
   },
   data() {
     return {
-      formstate: {},
+      formstate: getEmptyFormState(),
       restored: false,
       channelChanged: false,
       channelProperties,
@@ -451,12 +452,11 @@ export default {
     },
 
     onChannelNameChanged(channelName) {
-      if (this.areCapabilitiesChanged) {
+      if (this.areCapabilitiesChanged || channelName === ``) {
         return;
       }
 
       const capability = this.channel.capabilities[0];
-      const changeCapabilityType = this.$refs.capabilities[0].$refs.capabilityTypeData.changeCapabilityType;
 
       const matchingColor = this.singleColors.find(
         color => channelName.toLowerCase().includes(color.toLowerCase()),
@@ -464,7 +464,6 @@ export default {
       if (matchingColor) {
         capability.type = `ColorIntensity`;
         capability.typeData.color = matchingColor;
-        changeCapabilityType();
         return;
       }
 
@@ -500,7 +499,6 @@ export default {
 
       if (matchingType) {
         capability.type = matchingType;
-        changeCapabilityType();
       }
     },
 
@@ -529,6 +527,10 @@ export default {
     },
 
     onSubmit() {
+      if (this.channel.wizard.show) {
+        return;
+      }
+
       if (this.formstate.$invalid) {
         const invalidFields = document.querySelectorAll(`#channel-dialog .vf-field-invalid`);
 
@@ -630,10 +632,10 @@ export default {
     },
 
     /**
-     * @param {Object} coarseChannel The channel object of the coarse channel.
-     * @param {Number} offset At which resolution should be started.
-     * @param {Boolean} [addToMode] If true, the fine channel is pushed to the current mode's channels.
-     * @returns {Array.<String>} Array of added fine channel UUIDs (at the index of their resolution).
+     * @param {object} coarseChannel The channel object of the coarse channel.
+     * @param {number} offset At which resolution should be started.
+     * @param {boolean} [addToMode] If true, the fine channel is pushed to the current mode's channels.
+     * @returns {string[]} Array of added fine channel UUIDs (at the index of their resolution).
      */
     addFineChannels(coarseChannel, offset, addToMode) {
       const addedFineChannelUuids = [];
@@ -659,7 +661,7 @@ export default {
     },
 
     /**
-     * @param {Boolean} show Whether to show or hide the Capability Wizard.
+     * @param {boolean} show Whether to show or hide the Capability Wizard.
      */
     setWizardVisibility(show) {
       this.channel.wizard.show = show;
@@ -684,7 +686,7 @@ export default {
           topOffset: 100,
         },
         isScrollable: target => target === scrollContainer,
-      }, () => firstNewCapability.$refs.firstInput.focus());
+      }, () => firstNewCapability.focus());
     },
 
     openDetails() {

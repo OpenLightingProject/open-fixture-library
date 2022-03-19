@@ -29,11 +29,6 @@ export default {
       required: false,
       default: null,
     },
-    autoFocus: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
     minimum: {
       type: [Number, String], // can be the string `invalid`
       required: false,
@@ -97,7 +92,7 @@ export default {
 
     /**
      * @public
-     * @returns {Record.<String, String | null>} Validation data for vue-form
+     * @returns {Record<string, string | null>} Validation data for vue-form
      */
     validationData() {
       return {
@@ -110,19 +105,17 @@ export default {
       };
     },
   },
-  mounted() {
-    if (this.autoFocus) {
-      this.focus();
-    }
-
-    this.$watch(`validationData`, function(newValidationData) {
-      this.$emit(`vf:validate`, newValidationData);
-    }, {
+  watch: {
+    validationData: {
+      handler(newValidationData) {
+        this.$emit(`vf:validate`, newValidationData);
+      },
       deep: true,
       immediate: true,
-    });
+    },
   },
   methods: {
+    /** @public */
     focus() {
       this.$el.focus();
     },

@@ -6,11 +6,11 @@ import { checkFixture } from '../../../../tests/fixture-valid.js';
 /** @typedef {import('../../../../lib/types.js').FixtureCreateResult} FixtureCreateResult */
 
 /**
- * @typedef {Object} RequestBody
- * @property {String} plugin Import plugin key.
- * @property {String} fileName Imported file's name.
- * @property {String} fileContentBase64 Imported file's content, as base64 encoded string.
- * @property {String} author Author's name.
+ * @typedef {object} RequestBody
+ * @property {string} plugin Import plugin key.
+ * @property {string} fileName Imported file's name.
+ * @property {string} fileContentBase64 Imported file's content, as base64 encoded string.
+ * @property {string} author Author's name.
  */
 
 /**

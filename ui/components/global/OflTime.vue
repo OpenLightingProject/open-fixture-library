@@ -5,8 +5,6 @@
 </template>
 
 <script>
-/* eslint-disable vue/no-unused-properties -- https://github.com/vuejs/eslint-plugin-vue/issues/1312 */
-
 export default {
   props: {
     date: {

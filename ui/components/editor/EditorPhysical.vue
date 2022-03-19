@@ -3,7 +3,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`${namePrefix}-physical-dimensions`"
       label="Dimensions">
       <PropertyInputDimensions
@@ -32,7 +32,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`${namePrefix}-physical-DMXconnector`"
       label="DMX connector">
       <PropertyInputSelect
@@ -45,11 +45,11 @@
         :state="formstate"
         tag="span">
         <PropertyInputText
+          ref="newDmxConnectorInput"
           v-model="localPhysical.DMXconnectorNew"
           :name="`${namePrefix}-physical-DMXconnectorNew`"
           :schema-property="schemaDefinitions.nonEmptyString"
-          :required="true"
-          :auto-focus="true"
+          required
           hint="other DMX connector"
           class="addition" />
       </Validate>
@@ -92,7 +92,7 @@
 
     <LabeledInput
       :formstate="formstate"
-      :multiple-inputs="true"
+      multiple-inputs
       :name="`${namePrefix}-physical-lens-degreesMinMax`"
       label="Beam angle">
       <PropertyInputRange
@@ -165,6 +165,12 @@ export default {
         this.$emit(`input`, clone(this.localPhysical));
       },
       deep: true,
+    },
+    'physical.DMXconnector': async function(newValue) {
+      if (newValue === `[add-value]` && this.$root._oflRestoreComplete) {
+        await this.$nextTick();
+        this.$refs.newDmxConnectorInput.focus();
+      }
     },
   },
   mounted() {

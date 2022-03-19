@@ -90,8 +90,8 @@ export default {
 };
 
 /**
- * @param {Object} fixture The fixture object from the saved user data.
- * @returns {Object} A fixture editor fixture object with all required properties.
+ * @param {object} fixture The fixture object from the saved user data.
+ * @returns {object} A fixture editor fixture object with all required properties.
  */
 function getRestoredFixture(fixture) {
   const restoredFixture = Object.assign(getEmptyFixture(), fixture);
@@ -115,9 +115,9 @@ function getRestoredFixture(fixture) {
 }
 
 /**
- * @param {Object} channel The channel object from the saved user data.
+ * @param {object} channel The channel object from the saved user data.
  * @param {booelan} isChannelDialog True if the channel object is used in the channel dialog and should therefore not be sanitized.
- * @returns {Object} A fixture editor channel object with all required properties.
+ * @returns {object} A fixture editor channel object with all required properties.
  */
 function getRestoredChannel(channel, isChannelDialog) {
   if (`coarseChannelId` in channel) {

@@ -5,9 +5,10 @@ const pluginPresets = {
   markdown: `recommended`,
   nuxt: `recommended`,
   promise: `recommended`,
-  security: `recommended`,
+  sonarjs: `recommended`,
   unicorn: `recommended`,
   vue: `recommended`,
+  'vuejs-accessibility': `recommended`,
   jsonc: `recommended-with-json`, // has to be after `vue` and `nuxt`
 };
 
@@ -23,7 +24,6 @@ const enabledRuleParameters = {
   'comma-dangle': [`always-multiline`],
   'comma-spacing': [],
   'comma-style': [],
-  'complexity': [7],
   'consistent-return': [],
   'curly': [`all`],
   'dot-location': [`property`],
@@ -56,7 +56,10 @@ const enabledRuleParameters = {
   }],
   'no-return-assign': [],
   'no-return-await': [],
-  'no-shadow': [{ builtinGlobals: false }],
+  'no-shadow': [{
+    builtinGlobals: false,
+    allow: [`_`], // allow placeholder paramters that aren't used anyway
+  }],
   'no-template-curly-in-string': [],
   'no-trailing-spaces': [],
   'no-unsafe-optional-chaining': [{ 'disallowArithmeticOperators': true }],
@@ -89,7 +92,7 @@ const enabledRuleParameters = {
   'import/no-commonjs': [{ allowConditionalRequire: false }],
   'import/no-dynamic-require': [],
   'import/no-unresolved': [{
-    ignore: [`^fs/promises$`],
+    ignore: [`^chalk$`],
   }],
   'import/order': [{
     groups: [`builtin`, `external`, `internal`, `parent`, `sibling`],
@@ -130,6 +133,9 @@ const enabledRuleParameters = {
   // eslint-plugin-jsonc
   'jsonc/auto': [],
 
+  // eslint-plugin-nuxt
+  'nuxt/require-func-head': [],
+
   // eslint-plugin-promise
   'promise/no-callback-in-promise': [],
   'promise/no-nesting': [],
@@ -138,12 +144,16 @@ const enabledRuleParameters = {
   'promise/prefer-await-to-then': [],
   'promise/valid-params': [],
 
+  // eslint-plugin-sonarjs
+  'sonarjs/no-inverted-boolean-check': [],
+
   // eslint-plugin-unicorn
   'unicorn/import-style': [{
     styles: {
       'fs/promises': { named: true },
     },
   }],
+  'unicorn/prefer-export-from': [{ ignoreUsedVariables: true }],
   'unicorn/prevent-abbreviations': [{
     replacements: {
       ref: false,
@@ -164,6 +174,7 @@ const enabledRuleParameters = {
     style: { lang: `scss` },
     template: { allowNoLang: true },
   }],
+  'vue/component-options-name-casing': [],
   'vue/component-name-in-template-casing': [`PascalCase`, {
     registeredComponentsOnly: false,
   }],
@@ -181,11 +192,21 @@ const enabledRuleParameters = {
   }],
   'vue/max-attributes-per-line': [{ singleline: 3 }],
   'vue/next-tick-style': [],
+  'vue/no-boolean-default': [`default-false`],
+  'vue/no-child-content': [],
   'vue/no-deprecated-scope-attribute': [],
   'vue/no-deprecated-slot-attribute': [],
   'vue/no-deprecated-slot-scope-attribute': [],
   'vue/no-empty-component-block': [],
   'vue/no-invalid-model-keys': [],
+  'vue/no-undef-components': [{
+    ignorePatterns: [
+      `^Ofl(Svg|Time)$`, // global components
+      `^Nuxt(Link)?$`, `^ClientOnly$`, // Nuxt components
+      `^VueForm$`, `^Validate$`, `^FieldMessages$`, // VueForm components
+    ],
+  }],
+  'vue/no-undef-properties': [],
   'vue/no-unused-properties': [{
     groups: [`props`, `data`, `computed`, `methods`, `setup`],
     ignorePublicMembers: true,
@@ -193,13 +214,15 @@ const enabledRuleParameters = {
   'vue/no-unused-refs': [],
   'vue/no-use-computed-property-like-method': [],
   'vue/no-v-text': [],
+  'vue/prefer-separate-static-class': [],
+  'vue/prefer-true-attribute-shorthand': [],
   'vue/require-direct-export': [],
   'vue/v-for-delimiter-style': [`of`],
   'vue/v-on-function-call': [`always`],
   'vue/v-slot-style': [`shorthand`],
-  'vue/valid-next-tick': [],
 
   // already included in presets, but needed here because we reduce severity to `warn`
+  'sonarjs/cognitive-complexity': [],
   'unicorn/no-array-for-each': [],
   'vue/no-mutating-props': [],
 };
@@ -225,14 +248,17 @@ const vueCoreExtensionRules = [
   `no-empty-pattern`,
   `no-extra-parens`,
   `no-irregular-whitespace`,
+  `no-loss-of-precision`,
   `no-restricted-syntax`,
   `no-sparse-arrays`,
   `no-useless-concat`,
   `object-curly-newline`,
   `object-curly-spacing`,
   `object-property-newline`,
+  `object-shorthand`,
   `operator-linebreak`,
   `prefer-template`,
+  `quote-props`,
   `space-in-parens`,
   `space-infix-ops`,
   `space-unary-ops`,
@@ -240,22 +266,18 @@ const vueCoreExtensionRules = [
 ];
 
 const warnRules = new Set([
-  `complexity`,
   `jsdoc/require-jsdoc`,
+  `sonarjs/cognitive-complexity`,
   `vue/no-mutating-props`,
 ]);
 
 const disabledRules = [
   `no-console`,
+  `jsdoc/empty-tags`,
   `jsdoc/newline-after-description`,
   `jsdoc/no-undefined-types`,
   `jsdoc/require-description`,
   `jsdoc/require-description-complete-sentence`,
-  `promise/always-return`,
-  `security/detect-child-process`,
-  `security/detect-non-literal-fs-filename`,
-  `security/detect-non-literal-require`,
-  `security/detect-object-injection`,
   `unicorn/consistent-function-scoping`,
   `unicorn/filename-case`,
   `unicorn/no-null`,
@@ -266,6 +288,8 @@ const disabledRules = [
   `unicorn/prefer-spread`,
   `vue/multiline-html-element-content-newline`,
   `vue/singleline-html-element-content-newline`,
+  `vuejs-accessibility/form-control-has-label`,
+  `vuejs-accessibility/label-has-for`,
 ];
 
 for (const ruleName of vueCoreExtensionRules) {
@@ -280,7 +304,7 @@ module.exports = {
     node: true,
   },
   parserOptions: {
-    ecmaVersion: 2021,
+    ecmaVersion: 2022,
   },
   plugins: Object.keys(pluginPresets),
   extends: [
@@ -311,13 +335,16 @@ module.exports = {
         overview: `fileoverview`,
       },
       preferredTypes: {
+        '*': `any`,
         array: `Array`,
-        boolean: `Boolean`,
-        number: `Number`,
-        object: `Object`,
-        string: `String`,
-        '<>': `.<>`,
-        '[]': `Array.<>`,
+        Boolean: `boolean`,
+        Number: `number`,
+        Object: `object`,
+        String: `string`,
+        '.<>': `<>`,
+        'Array<>': `[]`,
+        'object<>': `Record<>`,
+        'Object<>': `Record<>`,
       },
     },
   },
@@ -326,6 +353,7 @@ module.exports = {
     {
       files: [`**/*.md/*.js`],
       rules: {
+        'no-unused-vars': `off`,
         'jsdoc/require-jsdoc': `off`,
         'import/no-unresolved': `off`,
       },
@@ -342,6 +370,12 @@ module.exports = {
     },
     {
       files: [`**/*.vue`],
+    },
+    {
+      files: [`ui/layouts/*.vue`, `ui/pages/**/*.vue`],
+      rules: {
+        'vue/multi-word-component-names': `off`,
+      },
     },
     {
       files: [`fixtures/**/*.json`],
