@@ -170,12 +170,16 @@ export async function importFixtures(buffer, filename, authorName) {
 
 
     /**
-     * @returns {object} Name and DMX personalities of the latest RDM software version(both may be undefined).
+     * @returns {object} Name and DMX personalities of the latest RDM software version (both may be undefined).
      */
     function getLatestSoftwareVersion() {
-      const maxSoftwareVersion = (rdmData.SoftwareVersionID || []).reduce(
-        (maxVersion, currentVersion) => ((maxVersion && maxVersion.$.Value > currentVersion.$.Value) ? maxVersion : currentVersion),
-      );
+      let maxSoftwareVersion = undefined;
+
+      for (const rdmVersion of rdmData.SoftwareVersionID || []) {
+        if (!maxSoftwareVersion || rdmVersion.$.Value > maxSoftwareVersion.$.Value) {
+          maxSoftwareVersion = rdmVersion;
+        }
+      }
 
       if (maxSoftwareVersion) {
         return {

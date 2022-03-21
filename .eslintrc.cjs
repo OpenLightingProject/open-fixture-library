@@ -282,7 +282,6 @@ const disabledRules = [
   `unicorn/filename-case`,
   `unicorn/no-null`,
   `unicorn/no-process-exit`,
-  `unicorn/no-array-reduce`,
   `unicorn/no-useless-undefined`,
   `unicorn/prefer-node-protocol`,
   `unicorn/prefer-spread`,
