@@ -282,9 +282,9 @@ const disabledRules = [
   `unicorn/filename-case`,
   `unicorn/no-null`,
   `unicorn/no-process-exit`,
-  `unicorn/no-useless-undefined`,
-  `unicorn/prefer-node-protocol`,
-  `unicorn/prefer-spread`,
+  `unicorn/no-useless-undefined`, // conflicts with `consistent-return`
+  `unicorn/prefer-node-protocol`, // not supported by Nuxt yet
+  `unicorn/prefer-spread`, // conflicts with `array-func/prefer-array-from`
   `vue/multiline-html-element-content-newline`,
   `vue/singleline-html-element-content-newline`,
   `vuejs-accessibility/form-control-has-label`,
