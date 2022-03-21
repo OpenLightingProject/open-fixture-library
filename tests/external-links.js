@@ -64,7 +64,7 @@ try {
     console.log(stderr);
   }
 
-  const urlResults = await fetchExternalUrls(Array.from(externalUrlSet));
+  const urlResults = await fetchExternalUrls([...externalUrlSet]);
   console.log();
 
   console.log(chalk.blue.bold(`Updating GitHub issue ...`));
@@ -250,7 +250,7 @@ async function updateGithubIssue(urlResults) {
   await createCommentIfNeeded();
 
   /**
-   * @typedef {Record<string, LinkStatus>} LinkData URLs pointing to the last seven statuses.
+   * @typedef {Record<string, LinkStatus[]>} LinkData URLs pointing to the last seven statuses.
    */
 
   /**
@@ -322,7 +322,7 @@ async function updateGithubIssue(urlResults) {
         };
         const oldStatuses = oldLinkData[url];
 
-        const statuses = [currentStatus].concat(oldStatuses.slice(0, 6));
+        const statuses = [currentStatus, ...oldStatuses.slice(0, 6)];
 
         if (statuses.every(status => !status.failed)) {
           // passing for seven days -> don't add to new table but create comment

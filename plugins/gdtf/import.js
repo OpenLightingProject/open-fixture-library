@@ -920,7 +920,7 @@ export async function importFixtures(buffer, filename, authorName) {
       };
     });
 
-    const matrixPixelList = Array.from(matrixPixels);
+    const matrixPixelList = [...matrixPixels];
 
     fixture.matrix = {
       pixelKeys: [
@@ -953,7 +953,7 @@ export async function importFixtures(buffer, filename, authorName) {
 
       const channels = dmxBreakWrappers[dmxBreakWrappers.length - 1].channels;
 
-      const channelKeys = [channelKey].concat(oflChannel.fineChannelAliases);
+      const channelKeys = [channelKey, ...oflChannel.fineChannelAliases];
 
       // The Offset attribute replaced the Coarse/Fine/Ultra/Uber attributes in GDTF v1.0
       const channelOffsets = xmlNodeHasNotNoneAttribute(gdtfChannel, `Offset`)

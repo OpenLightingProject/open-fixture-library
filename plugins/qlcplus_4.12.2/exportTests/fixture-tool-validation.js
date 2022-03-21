@@ -45,10 +45,12 @@ export default async function testFixtureToolValidation(exportFile, allExportFil
 
   // store used gobos in the gobos/ directory
   const qlcplusGoboAliases = await importJson(`../../../resources/gobos/aliases/qlcplus.json`, import.meta.url);
-  const qlcplusGobos = [`gobos/Others/open.svg`, `gobos/Others/rainbow.png`].concat(
-    Object.keys(qlcplusGoboAliases).map(gobo => `gobos/${gobo}`),
-    allExportFiles.filter(file => file.name.startsWith(`gobos/`)).map(file => file.name),
-  );
+  const qlcplusGobos = [
+    `gobos/Others/open.svg`,
+    `gobos/Others/rainbow.png`,
+    ...Object.keys(qlcplusGoboAliases).map(gobo => `gobos/${gobo}`),
+    ...allExportFiles.filter(file => file.name.startsWith(`gobos/`)).map(file => file.name),
+  ];
 
   for (const gobo of qlcplusGobos) {
     const goboPath = path.join(directory, `resources`, gobo);

@@ -919,9 +919,9 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
        */
       function checkCoarserChannelsInMode(fineChannel) {
         const coarseChannel = fineChannel.coarseChannel;
-        const coarserChannelKeys = coarseChannel.fineChannelAliases.filter(
+        const coarserChannelKeys = [...coarseChannel.fineChannelAliases.filter(
           (alias, index) => index < fineChannel.resolution - 2,
-        ).concat(coarseChannel.key);
+        ), coarseChannel.key];
 
         const notInMode = coarserChannelKeys.filter(
           coarseChannelKey => mode.getChannelIndex(coarseChannelKey) === -1,
@@ -938,7 +938,7 @@ export async function checkFixture(manufacturerKey, fixtureKey, fixtureJson, uni
    * Add a warning if there are unused channels.
    */
   function checkUnusedChannels() {
-    const unused = Array.from(definedChannelKeys).filter(
+    const unused = [...definedChannelKeys].filter(
       channelKey => !usedChannelKeys.has(channelKey),
     ).join(`, `);
 

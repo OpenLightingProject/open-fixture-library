@@ -136,10 +136,16 @@ function addFunctions(xml, mode) {
       }
     }
 
-    let xmlFunctions = [];
+    const xmlFunctions = [];
     for (const functionKey of Object.keys(functionToCapabilities)) {
       const capabilities = functionToCapabilities[functionKey];
-      xmlFunctions = xmlFunctions.concat(ddf3Functions[functionKey].create(channel, capabilities));
+      const functions = ddf3Functions[functionKey].create(channel, capabilities);
+      if (Array.isArray(functions)) {
+        xmlFunctions.push(...functions);
+      }
+      else {
+        xmlFunctions.push(functions);
+      }
     }
     for (const xmlFunction of xmlFunctions) {
       addChannelAttributes(xmlFunction, mode, channel);
@@ -194,7 +200,7 @@ function getChannelsPerPixel(mode) {
 
   const matrix = mode.fixture.matrix;
   if (matrix !== null) {
-    const pixelKeys = matrix.pixelGroupKeys.concat(matrix.getPixelKeysByOrder(`X`, `Y`, `Z`));
+    const pixelKeys = [...matrix.pixelGroupKeys, ...matrix.getPixelKeysByOrder(`X`, `Y`, `Z`)];
     for (const key of pixelKeys) {
       channelsPerPixel.set(key, []);
     }
