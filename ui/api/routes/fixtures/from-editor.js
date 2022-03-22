@@ -224,7 +224,7 @@ async function getFixtureCreateResult(fixtures) {
         const urlObject = new URL(url);
 
         const videoId = urlObject.pathname.slice(1);
-        const queryParameters = Array.from(urlObject.searchParams);
+        const queryParameters = [...urlObject.searchParams];
         queryParameters.unshift([`v`, videoId]);
         const queryParameterString = new URLSearchParams(Object.fromEntries(queryParameters));
 

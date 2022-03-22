@@ -1,22 +1,19 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Flat Par QA12XS",
-  "shortName": "QA12XS",
+  "name": "Flat Par QA12",
+  "shortName": "QA12",
   "categories": ["Color Changer"],
   "meta": {
     "authors": ["TAKU", "Flo Edelmann", "Ken Harris"],
-    "createDate": "2018-08-05",
+    "createDate": "2022-03-20",
     "lastModifyDate": "2022-03-20"
   },
   "links": {
     "manual": [
-      "https://cdb.s3-us-west-1.amazonaws.com/ItemRelatedFiles/8308/flat_par_qa12xs.pdf"
-    ],
-    "video": [
-      "https://www.youtube.com/watch?v=JklRIKHLV3Y"
+      "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/7028/flat_par_qa12.pdf"
     ],
     "productPage": [
-      "https://www.adj.com/flat-par-qa12xs"
+      "https://www.adj.com/flat-par-qa12"
     ]
   },
   "physical": {
@@ -28,7 +25,7 @@
       "type": "12× 5W RGBA LED"
     },
     "lens": {
-      "degreesMinMax": [25, 25]
+      "degreesMinMax": [40, 40]
     }
   },
   "availableChannels": {
