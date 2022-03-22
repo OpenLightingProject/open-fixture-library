@@ -25,8 +25,7 @@
     "power": 39,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "12 LEDs (tri-color RGB) 3 W (1 A)",
-      "lumens": 817
+      "type": "12× 3W RGB LED"
     },
     "lens": {
       "degreesMinMax": [15, 15]
@@ -63,7 +62,7 @@
         {
           "dmxRange": [16, 255],
           "type": "ColorPreset",
-          "comment": "Color Macros"
+          "helpWanted": "Which colors can be selected at which DMX values?"
         }
       ]
     },
@@ -76,9 +75,10 @@
         },
         {
           "dmxRange": [16, 255],
-          "type": "Speed",
-          "speedStart": "slow",
-          "speedEnd": "fast",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz",
           "comment": "When CH6 032-223"
         }
       ]
@@ -128,7 +128,8 @@
         {
           "dmxRange": [224, 255],
           "type": "Effect",
-          "effectName": "Sound Active Mode"
+          "effectName": "Sound Active Mode",
+          "soundControlled": true
         }
       ]
     },
@@ -141,39 +142,40 @@
       "capabilities": [
         {
           "dmxRange": [0, 51],
-          "type": "Effect",
-          "effectName": "Default Dimmer Speed Set From Menu"
+          "type": "NoFunction",
+          "comment": "Default Dimmer Speed Set From Menu"
         },
         {
           "dmxRange": [52, 101],
-          "type": "Effect",
-          "effectName": "Dimmer speed mode OFF"
+          "type": "Maintenance",
+          "comment": "Dimmer speed mode",
+          "parameter": "off"
         },
         {
           "dmxRange": [102, 152],
-          "type": "Speed",
-          "speedStart": "fast",
-          "speedEnd": "fast"
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": "fast"
         },
         {
           "dmxRange": [153, 203],
-          "type": "Effect",
-          "effectName": "Speed medium",
-          "speed": "slow"
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": "50%"
         },
         {
           "dmxRange": [204, 255],
-          "type": "Speed",
-          "speedStart": "slow",
-          "speedEnd": "slow"
+          "type": "Maintenance",
+          "comment": "Dimmer speed",
+          "parameter": "slow"
         }
       ]
     }
   },
   "modes": [
     {
-      "name": "3-Channel",
-      "shortName": "3-CH",
+      "name": "3-channel",
+      "shortName": "3ch",
       "channels": [
         "Red",
         "Green",
@@ -181,8 +183,8 @@
       ]
     },
     {
-      "name": "8-Channel",
-      "shortName": "8-CH",
+      "name": "8-channel",
+      "shortName": "8ch",
       "channels": [
         "Red",
         "Green",
