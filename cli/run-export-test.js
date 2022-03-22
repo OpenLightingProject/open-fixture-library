@@ -78,9 +78,10 @@ try {
       catch (testError) {
         const errors = Array.isArray(testError) ? testError : [testError];
 
-        return [`${failLabel} ${file.name}`].concat(
-          errors.map(error => `- ${error}`),
-        ).join(`\n`);
+        return [
+          `${failLabel} ${file.name}`,
+          ...errors.map(error => `- ${error}`),
+        ].join(`\n`);
       }
     }));
 

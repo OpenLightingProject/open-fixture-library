@@ -39,10 +39,12 @@ try {
   const testFixtures = await importJson(`../test-fixtures.json`, import.meta.url);
   testFixtureKeys = testFixtures.map(fixture => [fixture.man, fixture.key]);
 
-  const tasks = getTasksForModel(changedComponents)
-    .concat(getTasksForPlugins(changedComponents))
-    .concat(getTasksForExportTests(changedComponents))
-    .concat(getTasksForFixtures(changedComponents))
+  const tasks = [
+    ...getTasksForModel(changedComponents),
+    ...getTasksForPlugins(changedComponents),
+    ...getTasksForExportTests(changedComponents),
+    ...getTasksForFixtures(changedComponents),
+  ]
     .filter((task, index, array) => {
       const firstEqualTask = array.find(otherTask =>
         task.manufacturerKey === otherTask.manufacturerKey &&
@@ -98,7 +100,7 @@ try {
 
     // GitHub's official maximum comment length is 2**16 = 65_536, but it's actually 2**18 = 262_144.
     // We keep 2144 characters extra space as we don't count the comment header (added by our pull request module).
-    if (lines.concat(taskResultLines, tooLongMessage).join(`\r\n`).length > 260_000) {
+    if ([...lines, ...taskResultLines, tooLongMessage].join(`\r\n`).length > 260_000) {
       lines.push(tooLongMessage);
       break;
     }
@@ -163,7 +165,7 @@ function getTasksForModel(changedComponents) {
 function getTasksForPlugins(changedComponents) {
   const tasks = [];
 
-  const changedPlugins = changedComponents.added.exports.concat(changedComponents.modified.exports);
+  const changedPlugins = [...changedComponents.added.exports, ...changedComponents.modified.exports];
 
   for (const changedPlugin of changedPlugins) {
     const pluginExportTests = plugins.data[changedPlugin].exportTests;
@@ -188,7 +190,7 @@ function getTasksForPlugins(changedComponents) {
 function getTasksForExportTests(changedComponents) {
   const tasks = [];
 
-  const changedExportTests = changedComponents.added.exportTests.concat(changedComponents.modified.exportTests);
+  const changedExportTests = [...changedComponents.added.exportTests, ...changedComponents.modified.exportTests];
 
   for (const [manufacturerKey, fixtureKey] of testFixtureKeys) {
     tasks.push(...mapExportTestsToTasks(changedExportTests, manufacturerKey, fixtureKey));
@@ -204,7 +206,7 @@ function getTasksForExportTests(changedComponents) {
 function getTasksForFixtures(changedComponents) {
   const tasks = [];
 
-  const fixtures = changedComponents.added.fixtures.concat(changedComponents.modified.fixtures);
+  const fixtures = [...changedComponents.added.fixtures, ...changedComponents.modified.fixtures];
 
   for (const [manufacturerKey, fixtureKey] of fixtures) {
     tasks.push(...mapExportTestsToTasks(exportTests, manufacturerKey, fixtureKey));
