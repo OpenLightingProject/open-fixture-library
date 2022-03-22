@@ -87,7 +87,7 @@
         "speedEnd": "fast"
       }
     },
-    "Sensitivity": {
+    "Sound Sensitivity": {
       "capabilities": [
         {
           "dmxRange": [0, 10],
@@ -95,7 +95,7 @@
           "soundSensitivity": "off"
         },
         {
-          "dmxRange": [16, 255],
+          "dmxRange": [11, 255],
           "type": "SoundSensitivity",
           "soundSensitivityStart": "low",
           "soundSensitivityEnd": "high"
