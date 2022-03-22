@@ -31,7 +31,7 @@
           ref="newManufacturerNameInput"
           v-model="fixture.newManufacturerName"
           :schema-property="manufacturerProperties.name"
-          :required="true"
+          required
           name="new-manufacturer-name" />
       </LabeledInput>
 

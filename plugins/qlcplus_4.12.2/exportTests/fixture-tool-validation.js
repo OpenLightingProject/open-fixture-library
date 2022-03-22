@@ -14,18 +14,18 @@ const FIXTURE_TOOL_PATH = `resources/fixtures/scripts/fixtures-tool.py`;
 const EXPORTED_FIXTURE_PATH = `resources/fixtures/manufacturer/fixture.qxf`;
 
 /**
- * @typedef {Object} ExportFile
- * @property {String} name File name, may include slashes to provide a folder structure.
- * @property {String} content File content.
- * @property {String} mimetype File mime type.
- * @property {Array.<Fixture>|null} fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
- * @property {String|null} mode Mode's shortName if given file only describes a single mode.
+ * @typedef {object} ExportFile
+ * @property {string} name File name, may include slashes to provide a folder structure.
+ * @property {string} content File content.
+ * @property {string} mimetype File mime type.
+ * @property {Fixture[] | null} fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @property {string | null} mode Mode's shortName if given file only describes a single mode.
  */
 
 /**
  * @param {ExportFile} exportFile The file returned by the plugins' export module.
- * @param {Array.<ExportFile>} allExportFiles An array of all export files.
- * @returns {Promise.<undefined, Array.<String>|String>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
+ * @param {ExportFile[]} allExportFiles An array of all export files.
+ * @returns {Promise<void, string[] | string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
 export default async function testFixtureToolValidation(exportFile, allExportFiles) {
   if (exportFile.name.startsWith(`gobos/`)) {
@@ -45,10 +45,12 @@ export default async function testFixtureToolValidation(exportFile, allExportFil
 
   // store used gobos in the gobos/ directory
   const qlcplusGoboAliases = await importJson(`../../../resources/gobos/aliases/qlcplus.json`, import.meta.url);
-  const qlcplusGobos = [`gobos/Others/open.svg`, `gobos/Others/rainbow.png`].concat(
-    Object.keys(qlcplusGoboAliases).map(gobo => `gobos/${gobo}`),
-    allExportFiles.filter(file => file.name.startsWith(`gobos/`)).map(file => file.name),
-  );
+  const qlcplusGobos = [
+    `gobos/Others/open.svg`,
+    `gobos/Others/rainbow.png`,
+    ...Object.keys(qlcplusGoboAliases).map(gobo => `gobos/${gobo}`),
+    ...allExportFiles.filter(file => file.name.startsWith(`gobos/`)).map(file => file.name),
+  ];
 
   for (const gobo of qlcplusGobos) {
     const goboPath = path.join(directory, `resources`, gobo);
@@ -73,7 +75,7 @@ export default async function testFixtureToolValidation(exportFile, allExportFil
 
 /**
  * Download the QLC+ fixture tool from GitHub, or use local version if already present.
- * @param {String} directory The absolute path of the temporary directory.
+ * @param {string} directory The absolute path of the temporary directory.
  * @returns {Promise} A Promise that resolves when the fixture tool is usable.
  */
 function downloadFixtureTool(directory) {

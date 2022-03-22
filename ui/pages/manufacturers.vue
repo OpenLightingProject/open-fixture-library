@@ -45,12 +45,33 @@
 <script>
 export default {
   async asyncData({ $axios, error }) {
+    let manufacturers;
     try {
-      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
+    }
+    catch (requestError) {
+      return error(requestError);
+    }
+    return { manufacturers };
+  },
+  head() {
+    const title = `Manufacturers`;
 
+    return {
+      title,
+      meta: [
+        {
+          hid: `title`,
+          content: title,
+        },
+      ],
+    };
+  },
+  computed: {
+    letters() {
       const letters = {};
 
-      for (const manufacturerKey of Object.keys(manufacturers)) {
+      for (const manufacturerKey of Object.keys(this.manufacturers)) {
         let letter = manufacturerKey.charAt(0).toUpperCase();
 
         if (!/^[A-Z]$/.test(letter)) {
@@ -66,32 +87,14 @@ export default {
 
         letters[letter].manufacturers.push({
           key: manufacturerKey,
-          name: manufacturers[manufacturerKey].name,
-          fixtureCount: manufacturers[manufacturerKey].fixtureCount,
-          color: manufacturers[manufacturerKey].color,
+          name: this.manufacturers[manufacturerKey].name,
+          fixtureCount: this.manufacturers[manufacturerKey].fixtureCount,
+          color: this.manufacturers[manufacturerKey].color,
         });
       }
 
-      return {
-        letters,
-      };
-    }
-    catch (requestError) {
-      return error(requestError);
-    }
-  },
-  head() {
-    const title = `Manufacturers`;
-
-    return {
-      title,
-      meta: [
-        {
-          hid: `title`,
-          content: title,
-        },
-      ],
-    };
+      return letters;
+    },
   },
 };
 </script>

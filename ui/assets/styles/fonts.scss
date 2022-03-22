@@ -1,35 +1,39 @@
 // commented flavors are not included in the repository
 $lato-flavor-list: (
-  // 'Hairline': 100,
-  // 'Thin': 200,
-  'Light': 300,
-  'Regular': 400,
-  // 'Medium': 500,
-  // 'Semibold': 600,
-  'Bold': 700,
-  // 'Heavy': 800,
-  // 'Black': 900
+  // "Hairline": 100,
+  // "Thin": 200,
+  "Light": 300,
+  "Regular": 400,
+  // "Medium": 500,
+  // "Semibold": 600,
+  "Bold": 700,
+  // "Heavy": 800,
+  // "Black": 900
 );
 
 // v2.015 from https://www.latofonts.com/lato-free-fonts/
 @each $flavor, $weight in $lato-flavor-list {
-  $url: '/fonts/LatoLatin/LatoLatin-' + $flavor;
+  $url: "/fonts/LatoLatin/LatoLatin-#{$flavor}";
+
   @font-face {
-    font-family: 'LatoLatin';
-    src: local("Lato #{$flavor}"),
-         local("Lato-#{$flavor}"),
-         url($url + '.woff2') format('woff2');
+    font-family: LatoLatin;
     font-style: normal;
     font-weight: $weight;
+    src:
+      local("Lato #{$flavor}"),
+      local("Lato-#{$flavor}"),
+      url("#{$url}.woff2") format("woff2");
     font-display: fallback;
   }
+
   @font-face {
-    font-family: 'LatoLatin';
-    src: local("Lato #{$flavor} Italic"),
-         local("Lato-#{$flavor}Italic"),
-         url($url + 'Italic.woff2') format('woff2');
+    font-family: LatoLatin;
     font-style: italic;
     font-weight: $weight;
+    src:
+      local("Lato #{$flavor} Italic"),
+      local("Lato-#{$flavor}Italic"),
+      url("#{$url}Italic.woff2") format("woff2");
     font-display: fallback;
   }
 }
@@ -37,9 +41,10 @@ $lato-flavor-list: (
 // v21 from https://google-webfonts-helper.herokuapp.com/fonts/inconsolata
 @font-face {
   font-family: Inconsolata;
-  src: local('Inconsolata Regular'),
-       local('Inconsolata-Regular'),
-       url('/fonts/Inconsolata/Inconsolata-Regular.woff2') format('woff2');
   font-weight: 400;
+  src:
+    local("Inconsolata Regular"),
+    local("Inconsolata-Regular"),
+    url("/fonts/Inconsolata/Inconsolata-Regular.woff2") format("woff2");
   font-display: fallback;
 }

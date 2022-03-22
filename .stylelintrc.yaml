@@ -1,0 +1,37 @@
+reportNeedlessDisables: true
+reportInvalidScopeDisables: true
+reportDescriptionlessDisables: true
+extends:
+  - stylelint-config-standard-scss
+  - stylelint-config-html/vue
+  - stylelint-config-recess-order
+rules:
+  # `modern` not supported by Sass
+  color-function-notation: legacy
+
+  # always long to be consistent
+  color-hex-length: long
+
+  # avoid using non-global functions
+  function-no-unknown:
+    - true
+    - ignoreFunctions:
+      - theme-color
+      - color-to-rgb-string
+      - /^[a-z]+\.[a-z\-]+$/ # all `@use`d Sass functions
+
+  # decrease severity for this rule only
+  no-descending-specificity:
+    - true
+    - severity: warning
+
+  # allow Vue pseudo elements
+  selector-pseudo-element-no-unknown:
+    - true
+    - ignorePseudoElements: ["v-deep"]
+
+  # allow grouping in Sass lists
+  value-list-max-empty-lines: 1
+
+  # prevent comments in generated CSS
+  scss/comment-no-loud: true

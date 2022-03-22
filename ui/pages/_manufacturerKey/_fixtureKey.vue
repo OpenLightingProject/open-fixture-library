@@ -1,7 +1,7 @@
 <template>
   <div>
-    <header class="fixture-header">
-      <div class="title">
+    <FixtureHeader>
+      <template #title>
         <h1>
           <NuxtLink :to="`/${manufacturerKey}`">{{ fixture.manufacturer.name }}</NuxtLink>
           {{ fixture.name }}
@@ -22,10 +22,10 @@
             <span v-if="fixture.meta.hasImportComment">{{ fixture.meta.importComment }}</span>
           </ConditionalDetails>
         </section>
-      </div>
+      </template>
 
-      <DownloadButton :fixture-key="`${manufacturerKey}/${fixtureKey}`" />
-    </header>
+      <DownloadButton :fixture-key="`${manufacturerKey}/${fixtureKey}`" show-help />
+    </FixtureHeader>
 
     <section v-if="redirect" class="card yellow">
       Redirected from <code>{{ redirect.from }}</code>: {{ redirect.reason }}
@@ -33,7 +33,7 @@
 
     <FixturePage
       :fixture="fixture"
-      :load-all-modes="loadAllModes"
+      :load-all-modes="`loadAllModes` in $route.query"
       @help-wanted-clicked="openHelpWantedDialog($event)" />
 
     <section id="contribute">
@@ -70,8 +70,8 @@
   color: theme-color(text-secondary);
 
   & > span:not(:last-child)::after {
-    content: ' | ';
     padding: 0 0.7ex;
+    content: " | ";
   }
 }
 </style>
@@ -85,6 +85,7 @@ import Manufacturer from '../../../lib/model/Manufacturer.js';
 import ConditionalDetails from '../../components/ConditionalDetails.vue';
 import DownloadButton from '../../components/DownloadButton.vue';
 import FixturePage from '../../components/fixture-page/FixturePage.vue';
+import FixtureHeader from '../../components/FixtureHeader.vue';
 import HelpWantedDialog from '../../components/HelpWantedDialog.vue';
 
 const redirectReasonExplanations = {
@@ -97,6 +98,7 @@ export default {
     ConditionalDetails,
     DownloadButton,
     FixturePage,
+    FixtureHeader,
     HelpWantedDialog,
   },
   validate({ params }) {
@@ -110,39 +112,37 @@ export default {
       return redirect(302, `/${redirectTo}?redirectFrom=${manufacturerKey}/${fixtureKey}`);
     }
 
+    let fixtureJson;
+    let manufacturerJson;
+    let plugins;
+    let redirectObject;
     try {
-      const [fixtureJson, manufacturerJson, plugins] = await Promise.all([
+      [fixtureJson, manufacturerJson, plugins, redirectObject] = await Promise.all([
         $axios.$get(`/${manufacturerKey}/${fixtureKey}.json`),
         $axios.$get(`/api/v1/manufacturers/${manufacturerKey}`),
         $axios.$get(`/api/v1/plugins`),
+        fetchRedirectObject($axios, query.redirectFrom),
       ]);
-
-      let redirectObject = null;
-      if (query.redirectFrom) {
-        const redirectJson = await $axios.$get(`/${query.redirectFrom}.json`);
-
-        redirectObject = {
-          from: query.redirectFrom,
-          reason: redirectReasonExplanations[redirectJson.reason],
-        };
-      }
-
-      return {
-        isBrowser: false,
-        plugins,
-        manufacturerKey,
-        manufacturerJson,
-        fixtureKey,
-        fixtureJson,
-        redirect: redirectObject,
-        loadAllModes: `loadAllModes` in query,
-        helpWantedContext: null,
-        helpWantedType: ``,
-      };
     }
     catch (requestError) {
       return error(requestError);
     }
+
+    return {
+      plugins,
+      manufacturerKey,
+      manufacturerJson,
+      fixtureKey,
+      fixtureJson,
+      redirect: redirectObject,
+    };
+  },
+  data() {
+    return {
+      isBrowser: false,
+      helpWantedContext: null,
+      helpWantedType: ``,
+    };
   },
   head() {
     const title = `${this.fixture.manufacturer.name} ${this.fixture.name} DMX fixture definition`;
@@ -254,4 +254,21 @@ export default {
   },
 };
 
+/**
+ * @param {any} axios The Axios instance.
+ * @param {string | undefined} redirectFrom The query parameter with the original request's fixture key.
+ * @returns {object} The redirect object.
+ */
+async function fetchRedirectObject(axios, redirectFrom) {
+  if (!redirectFrom) {
+    return undefined;
+  }
+
+  const redirectJson = await axios.$get(`/${redirectFrom}.json`);
+
+  return {
+    from: redirectFrom,
+    reason: redirectReasonExplanations[redirectJson.reason],
+  };
+}
 </script>

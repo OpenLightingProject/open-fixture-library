@@ -5,8 +5,8 @@
         v-for="cat of value"
         :key="cat"
         :category="cat"
-        :selected="true"
-        :selectable="true"
+        selected
+        selectable
         @click="deselect(cat)"
         @focus.native="onFocus()"
         @blur.native="onBlur($event)" />
@@ -16,8 +16,7 @@
       v-for="cat of unselectedCategories"
       :key="cat"
       :category="cat"
-      :selected="false"
-      :selectable="true"
+      selectable
       @click="select(cat)"
       @focus.native="onFocus()"
       @blur.native="onBlur($event)" />

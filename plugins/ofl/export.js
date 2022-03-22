@@ -7,12 +7,12 @@ import importJson from '../../lib/import-json.js';
 export const version = fixtureSchema.version;
 
 /**
- * @param {Array.<Fixture>} fixtures An array of Fixture objects.
- * @param {Object} options Global options, including:
- * @param {String} options.baseDirectory Absolute path to OFL's root directory.
+ * @param {Fixture[]} fixtures An array of Fixture objects.
+ * @param {object} options Global options, including:
+ * @param {string} options.baseDirectory Absolute path to OFL's root directory.
  * @param {Date} options.date The current time.
- * @param {String|undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
- * @returns {Promise.<Array.<Object>, Error>} The generated files.
+ * @param {string | undefined} options.displayedPluginVersion Replacement for plugin version if the plugin version is used in export.
+ * @returns {Promise<object[], Error>} The generated files.
  */
 export async function exportFixtures(fixtures, options) {
   const displayedPluginVersion = options.displayedPluginVersion || version;

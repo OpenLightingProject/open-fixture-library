@@ -9,9 +9,9 @@ import { sendJson } from '../../lib/server-response-helpers.js';
 import * as routeHandlers from './routes.js';
 
 /**
- * @typedef {Object} ApiResponse
- * @property {Number} [statusCode=200] The HTTP status code set for the response.
- * @property {Object} body The response body that should be sent as JSON back to the API client.
+ * @typedef {object} ApiResponse
+ * @property {number} [statusCode=200] The HTTP status code set for the response.
+ * @property {object} body The response body that should be sent as JSON back to the API client.
  */
 
 const app = express();
@@ -37,9 +37,6 @@ app.use(cors({
 }));
 
 
-// The Regex is actually not unsafe, just in a more concise form than the one
-// that security/detect-unsafe-regex would not complain about.
-// eslint-disable-next-line security/detect-unsafe-regex
 const base64Regex = /^(?:[\d+/A-Za-z]{4})*(?:[\d+/A-Za-z]{2}==|[\d+/A-Za-z]{3}=)?$/;
 
 const api = new OpenAPIBackend({

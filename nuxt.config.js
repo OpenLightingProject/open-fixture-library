@@ -18,13 +18,11 @@ export default {
     `@nuxtjs/robots`,
     `@nuxtjs/sitemap`,
   ],
+  buildModules: [
+    `@nuxt/postcss8`,
+  ],
   plugins: [
-    `~/plugins/embetty-vue.js`,
     `~/plugins/global-components.js`,
-    {
-      src: `~/plugins/polyfills.js`,
-      ssr: false,
-    },
     `~/plugins/vue-form.js`,
     {
       src: `~/plugins/vue-smooth-scroll.js`,
@@ -47,6 +45,7 @@ export default {
       maxAge: 2 * 365 * 24 * 60 * 60,
       preload: true,
     },
+    crossOriginEmbedderPolicy: false, // needed for Embetty poster images and video iframes
   },
   css: [
     `~/assets/styles/style.scss`,
