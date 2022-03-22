@@ -1,0 +1,182 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Wash 7x18WRGBWA+UV",
+  "shortName": "LED Wash 7",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["Bas"],
+    "createDate": "2022-03-22",
+    "lastModifyDate": "2022-03-22"
+  },
+  "links": {
+    "manual": [
+      "https://www.shehds.com/u_file/1912/file/cffb00b834.pdf"
+    ],
+    "productPage": [
+      "https://www.shehds.com/products/factory-outlet-led-7x18w-moving-head-light-6in1-rgbwauv-professional-for-effect-stage-for-disco-dj-music-party-club-dance-1"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=unaYqm4xatY"
+    ]
+  },
+  "physical": {
+    "dimensions": [176, 175, 145],
+    "weight": 3.5,
+    "power": 126,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "X-axis": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Y-axis": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "220deg"
+      }
+    },
+    "Dimmer": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 134],
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
+        },
+        {
+          "dmxRange": [135, 239],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Generic"
+        }
+      ]
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "X-axis-finetune": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Y-axis-finetuning": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Axis-finetuning": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "0%",
+        "speedEnd": "100%"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Color Preset speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10 Channels",
+      "shortName": "10ch",
+      "channels": [
+        "X-axis",
+        "Y-axis",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Pan/Tilt Speed"
+      ]
+    },
+    {
+      "name": "15 Channels",
+      "shortName": "15ch",
+      "channels": [
+        "X-axis",
+        "X-axis-finetune",
+        "Y-axis",
+        "Y-axis-finetuning",
+        "Axis-finetuning",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Color Presets",
+        "Color Preset speed",
+        "Pan/Tilt Speed"
+      ]
+    }
+  ]
+}
