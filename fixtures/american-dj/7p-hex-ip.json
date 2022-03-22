@@ -7,7 +7,7 @@
     "createDate": "2022-03-20",
     "lastModifyDate": "2022-03-20"
   },
-  "comment": "Color presets 1-32 are defined in the user manual, but have a White component, so it's not as simple as an RGB hex value.\n\nThe webpage claims \"6, 6+, 9, 9+, 10, & 12-channel\" modes, but this seems to be completely false.",
+  "comment": "The webpage claims \"6, 6+, 9, 9+, 10, & 12-channel\" modes, but this seems to be completely false.",
   "links": {
     "manual": [
       "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/11448/ADJ%207P%20Hex%20IP%20-%20User%20Manual%20.pdf"
@@ -143,168 +143,199 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [1, 4],
           "type": "ColorPreset",
-          "comment": "Color 1"
+          "comment": "Color 1",
+          "colors": ["#88fff1"]
         },
         {
           "dmxRange": [5, 8],
           "type": "ColorPreset",
-          "comment": "Color 2"
+          "comment": "Color 2",
+          "colors": ["#88ffc1"]
         },
         {
           "dmxRange": [9, 12],
           "type": "ColorPreset",
-          "comment": "Color 3"
+          "comment": "Color 3",
+          "colors": ["#84ff9c"]
         },
         {
           "dmxRange": [13, 16],
           "type": "ColorPreset",
-          "comment": "Color 4"
+          "comment": "Color 4",
+          "colors": ["#a2ff8b"]
         },
         {
           "dmxRange": [17, 20],
           "type": "ColorPreset",
-          "comment": "Color 5"
+          "comment": "Color 5",
+          "colors": ["#bdff84"]
         },
         {
           "dmxRange": [21, 24],
           "type": "ColorPreset",
-          "comment": "Color 6"
+          "comment": "Color 6",
+          "colors": ["#e9ff8b"]
         },
         {
           "dmxRange": [25, 28],
           "type": "ColorPreset",
-          "comment": "Color 7"
+          "comment": "Color 7",
+          "colors": ["#fff784"]
         },
         {
           "dmxRange": [29, 32],
           "type": "ColorPreset",
-          "comment": "Color 8"
+          "comment": "Color 8",
+          "colors": ["#ffd880"]
         },
         {
           "dmxRange": [33, 36],
           "type": "ColorPreset",
-          "comment": "Color 9"
+          "comment": "Color 9",
+          "colors": ["#ffc184"]
         },
         {
           "dmxRange": [37, 40],
           "type": "ColorPreset",
-          "comment": "Color 10"
+          "comment": "Color 10",
+          "colors": ["#ffa480"]
         },
         {
           "dmxRange": [41, 44],
           "type": "ColorPreset",
-          "comment": "Color 11"
+          "comment": "Color 11",
+          "colors": ["#ff9082"]
         },
         {
           "dmxRange": [45, 48],
           "type": "ColorPreset",
-          "comment": "Color 12"
+          "comment": "Color 12",
+          "colors": ["#ff7c80"]
         },
         {
           "dmxRange": [49, 52],
           "type": "ColorPreset",
-          "comment": "Color 13"
+          "comment": "Color 13",
+          "colors": ["#ff8bae"]
         },
         {
           "dmxRange": [53, 56],
           "type": "ColorPreset",
-          "comment": "Color 14"
+          "comment": "Color 14",
+          "colors": ["#ff97d0"]
         },
         {
           "dmxRange": [57, 60],
           "type": "ColorPreset",
-          "comment": "Color 15"
+          "comment": "Color 15",
+          "colors": ["#ff9af3"]
         },
         {
           "dmxRange": [61, 64],
           "type": "ColorPreset",
-          "comment": "Color 16"
+          "comment": "Color 16",
+          "colors": ["#f497ff"]
         },
         {
           "dmxRange": [65, 68],
           "type": "ColorPreset",
-          "comment": "Color 17"
+          "comment": "Color 17",
+          "colors": ["#d890ff"]
         },
         {
           "dmxRange": [69, 72],
           "type": "ColorPreset",
-          "comment": "Color 18"
+          "comment": "Color 18",
+          "colors": ["#bb94ff"]
         },
         {
           "dmxRange": [73, 76],
           "type": "ColorPreset",
-          "comment": "Color 19"
+          "comment": "Color 19",
+          "colors": ["#9484ff"]
         },
         {
           "dmxRange": [77, 80],
           "type": "ColorPreset",
-          "comment": "Color 20"
+          "comment": "Color 20",
+          "colors": ["#8494ff"]
         },
         {
           "dmxRange": [81, 84],
           "type": "ColorPreset",
-          "comment": "Color 21"
+          "comment": "Color 21",
+          "colors": ["#76b1ff"]
         },
         {
           "dmxRange": [85, 88],
           "type": "ColorPreset",
-          "comment": "Color 22"
+          "comment": "Color 22",
+          "colors": ["#84d5ff"]
         },
         {
           "dmxRange": [89, 92],
           "type": "ColorPreset",
-          "comment": "Color 23"
+          "comment": "Color 23",
+          "colors": ["#84f0ff"]
         },
         {
           "dmxRange": [93, 96],
           "type": "ColorPreset",
-          "comment": "Color 24"
+          "comment": "Color 24",
+          "colors": ["#cdffc6"]
         },
         {
           "dmxRange": [97, 100],
           "type": "ColorPreset",
-          "comment": "Color 25"
+          "comment": "Color 25",
+          "colors": ["#fffdcc"]
         },
         {
           "dmxRange": [101, 104],
           "type": "ColorPreset",
-          "comment": "Color 26"
+          "comment": "Color 26",
+          "colors": ["#ffd6c8"]
         },
         {
           "dmxRange": [105, 108],
           "type": "ColorPreset",
-          "comment": "Color 27"
+          "comment": "Color 27",
+          "colors": ["#ffc1db"]
         },
         {
           "dmxRange": [109, 112],
           "type": "ColorPreset",
-          "comment": "Color 28"
+          "comment": "Color 28",
+          "colors": ["#ffc8fd"]
         },
         {
           "dmxRange": [113, 116],
           "type": "ColorPreset",
-          "comment": "Color 29"
+          "comment": "Color 29",
+          "colors": ["#c8c1ff"]
         },
         {
           "dmxRange": [117, 120],
           "type": "ColorPreset",
-          "comment": "Color 30"
+          "comment": "Color 30",
+          "colors": ["#adc1ff"]
         },
         {
           "dmxRange": [121, 124],
           "type": "ColorPreset",
-          "comment": "Color 31"
+          "comment": "Color 31",
+          "colors": ["#c1d2ff"]
         },
         {
           "dmxRange": [125, 128],
           "type": "ColorPreset",
-          "comment": "Color 32 = Full White"
+          "comment": "Color 32 = Full White",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [129, 132],
@@ -465,19 +496,19 @@
         {
           "dmxRange": [233, 236],
           "type": "ColorPreset",
-          "comment": "Color 59",
+          "comment": "Color 59 = Red",
           "colors": ["#ff0000"]
         },
         {
           "dmxRange": [237, 240],
           "type": "ColorPreset",
-          "comment": "Color 60",
+          "comment": "Color 60 = Green",
           "colors": ["#00ff00"]
         },
         {
           "dmxRange": [241, 244],
           "type": "ColorPreset",
-          "comment": "Color 61",
+          "comment": "Color 61 = Blue",
           "colors": ["#0000ff"]
         },
         {
@@ -489,12 +520,14 @@
         {
           "dmxRange": [249, 252],
           "type": "ColorPreset",
-          "comment": "Color 63 = Amber"
+          "comment": "Color 63 = Amber",
+          "colors": ["#ffbf00"]
         },
         {
           "dmxRange": [253, 255],
           "type": "ColorPreset",
-          "comment": "Color 64 = UV"
+          "comment": "UV",
+          "colors": ["#8800ff"]
         }
       ]
     },
