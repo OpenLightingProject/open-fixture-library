@@ -1,5 +1,4 @@
 const pluginPresets = {
-  'array-func': `all`,
   import: `recommended`,
   jsdoc: `recommended`,
   markdown: `recommended`,
@@ -282,10 +281,8 @@ const disabledRules = [
   `unicorn/filename-case`,
   `unicorn/no-null`,
   `unicorn/no-process-exit`,
-  `unicorn/no-array-reduce`,
-  `unicorn/no-useless-undefined`,
-  `unicorn/prefer-node-protocol`,
-  `unicorn/prefer-spread`,
+  `unicorn/no-useless-undefined`, // conflicts with `consistent-return`
+  `unicorn/prefer-node-protocol`, // not supported by Nuxt yet
   `vue/multiline-html-element-content-newline`,
   `vue/singleline-html-element-content-newline`,
   `vuejs-accessibility/form-control-has-label`,
