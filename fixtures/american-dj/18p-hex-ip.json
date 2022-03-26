@@ -1,0 +1,87 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "18P HEX IP",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Ken Harris"],
+    "createDate": "2022-03-26",
+    "lastModifyDate": "2022-03-26"
+  },
+  "links": {
+    "manual": [
+      "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/11452/ADJ%2018P%20Hex%20IP%20-%20User%20Manual%20.pdf"
+    ],
+    "productPage": [
+      "https://www.adj.com/18p-hex-ip"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=NOuPRgtXDfg",
+      "https://www.youtube.com/watch?v=K5_n1dv_9Ps",
+      "https://www.youtube.com/watch?v=IHHHL4Xzoy8"
+    ]
+  },
+  "physical": {
+    "dimensions": [336, 233, 279],
+    "weight": 6.1,
+    "power": 155.5,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "type": "18× 12W RGBAW+UV LED"
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "6-channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    }
+  ]
+}
