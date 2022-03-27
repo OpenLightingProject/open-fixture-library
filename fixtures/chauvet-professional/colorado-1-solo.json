@@ -2,11 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "COLORado 1 Solo",
   "shortName": "Solo 1",
-  "categories": ["Dimmer", "Color Changer", "Strobe"],
+  "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Da Graca Neves Eric"],
+    "authors": ["Da Graca Neves Eric", "Ken Harris"],
     "createDate": "2021-01-17",
-    "lastModifyDate": "2021-01-17"
+    "lastModifyDate": "2022-03-27"
   },
   "links": {
     "productPage": [
@@ -20,7 +20,7 @@
     "dimensions": [242, 176, 346],
     "weight": 5.4,
     "power": 65,
-    "DMXconnector": "5-pin",
+    "DMXconnector": "5-pin XLR IP65",
     "bulb": {
       "type": "LED",
       "lumens": 780
@@ -31,11 +31,10 @@
     }
   },
   "availableChannels": {
-    "Intensity": {
-      "fineChannelAliases": ["Intensity fine"],
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
       "defaultValue": "0%",
       "highlightValue": "100%",
-      "precedence": "LTP",
       "capability": {
         "type": "Intensity"
       }
@@ -43,7 +42,6 @@
     "Red": {
       "fineChannelAliases": ["Red fine"],
       "defaultValue": "0%",
-      "precedence": "LTP",
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
@@ -52,7 +50,6 @@
     "Green": {
       "fineChannelAliases": ["Green fine"],
       "defaultValue": "0%",
-      "precedence": "LTP",
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
@@ -61,7 +58,6 @@
     "Blue": {
       "fineChannelAliases": ["Blue fine"],
       "defaultValue": "0%",
-      "precedence": "LTP",
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
@@ -71,7 +67,6 @@
       "fineChannelAliases": ["White fine"],
       "defaultValue": "0%",
       "highlightValue": "100%",
-      "precedence": "LTP",
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
@@ -87,47 +82,63 @@
         {
           "dmxRange": [11, 30],
           "type": "ColorPreset",
-          "comment": "R: 100% G: 0-100% B: 0 "
+          "comment": "Red ... Yellow",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffff00"]
         },
         {
           "dmxRange": [31, 50],
           "type": "ColorPreset",
-          "comment": "R: 100%-0 G: 100% B: 0"
+          "comment": "Yellow ... Green",
+          "colorsStart": ["#ffff00"],
+          "colorsEnd": ["#00ff00"]
         },
         {
           "dmxRange": [51, 70],
           "type": "ColorPreset",
-          "comment": "R: 0 G: 100% B: 0-100%"
+          "comment": "Green ... Cyan",
+          "colorsStart": ["#00ff00"],
+          "colorsEnd": ["#00ffff"]
         },
         {
           "dmxRange": [71, 90],
           "type": "ColorPreset",
-          "comment": "R: 0 G: 100%-0 B: 100%"
+          "comment": "Cyan ... Blue",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#0000ff"]
         },
         {
           "dmxRange": [91, 110],
           "type": "ColorPreset",
-          "comment": "R: 0-100% G: 0 B: 100%"
+          "comment": "Blue ... Magenta",
+          "colorsStart": ["#00ffff"],
+          "colorsEnd": ["#ff00ff"]
         },
         {
           "dmxRange": [111, 130],
           "type": "ColorPreset",
-          "comment": "R: 100% G: 0 B: 100%"
+          "comment": "Magenta ... Red",
+          "colorsStart": ["#ff00ff"],
+          "colorsEnd": ["#ff0000"]
         },
         {
           "dmxRange": [131, 150],
           "type": "ColorPreset",
-          "comment": "R: 100% G: 0-100% B: 0-100%"
+          "comment": "Red ... White",
+          "colorsStart": ["#ff0000"],
+          "colorsEnd": ["#ffffff"]
         },
         {
           "dmxRange": [151, 170],
           "type": "ColorPreset",
-          "comment": "R: 100%-0 G: 100%-0 B: 100% "
+          "comment": "White ... Blue",
+          "colorsStart": ["#ffffff"],
+          "colorsEnd": ["#0000ff"]
         },
         {
           "dmxRange": [171, 195],
           "type": "ColorPreset",
-          "comment": "R: 100% G: 100%-0 B: 100%"
+          "comment": "Full White"
         },
         {
           "dmxRange": [196, 200],
@@ -191,6 +202,75 @@
         }
       ]
     },
+    "Color Macros 2": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "ColorPreset",
+          "comment": "White 1"
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "ColorPreset",
+          "comment": "White 2"
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "ColorPreset",
+          "comment": "White 3"
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "ColorPreset",
+          "comment": "White 4"
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "ColorPreset",
+          "comment": "White 5"
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "ColorPreset",
+          "comment": "White 6"
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "ColorPreset",
+          "comment": "White 7"
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "ColorPreset",
+          "comment": "White  8"
+        },
+        {
+          "dmxRange": [171, 190],
+          "type": "ColorPreset",
+          "comment": "White 9"
+        },
+        {
+          "dmxRange": [191, 210],
+          "type": "ColorPreset",
+          "comment": "White 10"
+        },
+        {
+          "dmxRange": [211, 230],
+          "type": "ColorPreset",
+          "comment": "White 11"
+        },
+        {
+          "dmxRange": [231, 255],
+          "type": "ColorPreset",
+          "comment": "White 12"
+        }
+      ]
+    },
     "Strobe": {
       "capabilities": [
         {
@@ -226,7 +306,7 @@
         }
       ]
     },
-    "Color Presets": {
+    "Programs": {
       "capabilities": [
         {
           "dmxRange": [0, 40],
@@ -334,7 +414,7 @@
         }
       ]
     },
-    "Effect Speed": {
+    "Auto Speed": {
       "capability": {
         "type": "EffectSpeed",
         "speedStart": "slow",
@@ -344,16 +424,14 @@
     "Zoom": {
       "defaultValue": "0%",
       "highlightValue": "0%",
-      "precedence": "LTP",
       "capability": {
         "type": "Zoom",
         "angleStart": "4deg",
         "angleEnd": "40deg"
       }
     },
-    "Zoom 2": {
+    "Zoom Control": {
       "name": "Zoom",
-      "defaultValue": "0%",
       "capabilities": [
         {
           "dmxRange": [0, 200],
@@ -361,8 +439,7 @@
         },
         {
           "dmxRange": [201, 220],
-          "type": "Zoom",
-          "angle": "4deg",
+          "type": "Maintenance",
           "comment": "Reset Zoom"
         },
         {
@@ -371,7 +448,7 @@
         }
       ]
     },
-    "Dimmer": {
+    "Dimmer Speed": {
       "capabilities": [
         {
           "dmxRange": [0, 9],
@@ -380,43 +457,49 @@
         },
         {
           "dmxRange": [10, 29],
-          "type": "Speed",
-          "speed": "stop",
+          "type": "Maintenance",
           "comment": "Linear Dimmer"
         },
         {
           "dmxRange": [30, 69],
-          "type": "Speed",
-          "speed": "fast",
+          "type": "Maintenance",
           "comment": "NonLinear Dimmer Curve 1 (Fastest)"
         },
         {
           "dmxRange": [70, 129],
-          "type": "Speed",
-          "speed": "fast",
+          "type": "Maintenance",
           "comment": "NonLinear Dimmer Curve 2"
         },
         {
           "dmxRange": [130, 189],
-          "type": "Speed",
-          "speed": "slow",
+          "type": "Maintenance",
           "comment": "NonLinear Dimmer Curve 3"
         },
         {
           "dmxRange": [190, 255],
-          "type": "Speed",
-          "speed": "slow",
+          "type": "Maintenance",
           "comment": "NonLinear Dimmer Curve 4 (Slowest)"
         }
       ]
+    },
+    "Hue": {
+      "fineChannelAliases": ["Hue fine"],
+      "capability": {
+        "type": "Generic",
+      }
+    },
+    "Saturation": {
+      "capability": {
+        "type": "Generic",
+      }
     }
   },
   "modes": [
     {
       "name": "Std. Y",
       "channels": [
-        "Intensity",
-        "Intensity fine",
+        "Dimmer",
+        "Dimmer fine",
         "Red",
         "Red fine",
         "Green",
@@ -427,11 +510,78 @@
         "White fine",
         "Color Macros",
         "Strobe",
-        "Color Presets",
-        "Effect Speed",
+        "Programs",
+        "Auto Speed",
         "Zoom",
-        "Zoom 2",
-        "Dimmer"
+        "Zoom Control",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "TR16",
+      "channels": [
+        "Dimmer",
+        "Dimmer fine",
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "Color Macros",
+        "Strobe",
+        "Programs",
+        "Auto Speed",
+        "Zoom",
+        "Zoom Control",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "TOUR",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Strobe",
+        "Programs",
+        "Auto Speed",
+        "Zoom",
+        "Zoom Control",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "SSP",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Zoom",
+        "Zoom Control",
+        "Dimmer Speed"
+      ]
+    },
+    {
+      "name": "HSIC",
+      "channels": [
+        "Dimmer",
+        "Hue",
+        "Hue fine",
+        "Saturation",
+        "Color Macros 2",
+        "Strobe",
+        "Zoom",
+        "Zoom Control",
+        "Dimmer Speed"
       ]
     }
   ]
