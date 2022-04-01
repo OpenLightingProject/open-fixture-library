@@ -1,0 +1,961 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "BTX-Cirrus II",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["rem5"],
+    "createDate": "2022-04-01",
+    "lastModifyDate": "2022-04-01"
+  },
+  "links": {
+    "manual": [
+      "https://briteq-lighting.com/fr/fileuploader/download/download/?d=0&file=custom%2Fupload%2FFile-1581693398.pdf"
+    ],
+    "productPage": [
+      "https://briteq-lighting.com/fr/btx-cirrus-ii"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=RfdWRn76I-Q"
+    ]
+  },
+  "physical": {
+    "dimensions": [391, 495, 286],
+    "weight": 16,
+    "power": 650,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 8000,
+      "lumens": 20600
+    },
+    "lens": {
+      "degreesMinMax": [4, 60]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "fineChannelAliases": ["Red fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "fineChannelAliases": ["Green fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "fineChannelAliases": ["Blue fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "fineChannelAliases": ["White fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CTO": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "UNUSED RANGE"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K"
+        },
+        {
+          "dmxRange": [11, 54],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8000K",
+          "colorTemperatureEnd": "7000K"
+        },
+        {
+          "dmxRange": [55, 99],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7000K",
+          "colorTemperatureEnd": "6000K"
+        },
+        {
+          "dmxRange": [100, 117],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6000K",
+          "colorTemperatureEnd": "5600K"
+        },
+        {
+          "dmxRange": [118, 144],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5600K",
+          "colorTemperatureEnd": "5000K"
+        },
+        {
+          "dmxRange": [145, 188],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5000K",
+          "colorTemperatureEnd": "4000K"
+        },
+        {
+          "dmxRange": [189, 224],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4000K",
+          "colorTemperatureEnd": "3200K"
+        },
+        {
+          "dmxRange": [225, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3200K",
+          "colorTemperatureEnd": "2500K"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "CMY color mixing using channels 8 to 10"
+        },
+        {
+          "dmxRange": [10, 14],
+          "type": "ColorPreset",
+          "comment": "LEE 790 - Moroccan pink"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "ColorPreset",
+          "comment": "LEE 157 - Pink"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "ColorPreset",
+          "comment": "LEE 332 - Special Rose Pink"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "ColorPreset",
+          "comment": "LEE 328 - Follies Pink"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "ColorPreset",
+          "comment": "LEE 345 - Fuchsia Pink"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "ColorPreset",
+          "comment": "LEE 194 - Surprise Pink"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "ColorPreset",
+          "comment": "LEE 181 - Congo Blue"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "ColorPreset",
+          "comment": "LEE 071 - Tokyo Blue"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "ColorPreset",
+          "comment": "LEE 120 - Deep Blue"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "ColorPreset",
+          "comment": "LEE 079 - Just Blue"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "ColorPreset",
+          "comment": "LEE 132 - Medium Blue"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "ColorPreset",
+          "comment": "LEE 200 - Double CT Blue"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "ColorPreset",
+          "comment": "LEE 161 - Slate Blue"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "ColorPreset",
+          "comment": "LEE 201 - Full CT Blue"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "ColorPreset",
+          "comment": "LEE 202 - Half CT Blue"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "ColorPreset",
+          "comment": "LEE 117 - Steel Blue"
+        },
+        {
+          "dmxRange": [90, 94],
+          "type": "ColorPreset",
+          "comment": "LEE 353 - Lighter Blue"
+        },
+        {
+          "dmxRange": [95, 99],
+          "type": "ColorPreset",
+          "comment": "LEE 118 - Light Blue"
+        },
+        {
+          "dmxRange": [100, 104],
+          "type": "ColorPreset",
+          "comment": "LEE 116 - Medium Blue Green"
+        },
+        {
+          "dmxRange": [105, 109],
+          "type": "ColorPreset",
+          "comment": "LEE 124 - Dark Green"
+        },
+        {
+          "dmxRange": [110, 114],
+          "type": "ColorPreset",
+          "comment": "LEE 139 - Primary Green"
+        },
+        {
+          "dmxRange": [115, 119],
+          "type": "ColorPreset",
+          "comment": "LEE 089 - Moss Green"
+        },
+        {
+          "dmxRange": [120, 124],
+          "type": "ColorPreset",
+          "comment": "LEE 122 - Fem Green"
+        },
+        {
+          "dmxRange": [125, 129],
+          "type": "ColorPreset",
+          "comment": "LEE 738 - JAS Green"
+        },
+        {
+          "dmxRange": [130, 134],
+          "type": "ColorPreset",
+          "comment": "LEE 088 - Lime Green"
+        },
+        {
+          "dmxRange": [135, 139],
+          "type": "ColorPreset",
+          "comment": "LEE 100 - Spring Yellow"
+        },
+        {
+          "dmxRange": [140, 144],
+          "type": "ColorPreset",
+          "comment": "LEE 104 - Deep Amber"
+        },
+        {
+          "dmxRange": [145, 149],
+          "type": "ColorPreset",
+          "comment": "LEE 179 - Chrome Orange"
+        },
+        {
+          "dmxRange": [150, 154],
+          "type": "ColorPreset",
+          "comment": "LEE 105 - Orange"
+        },
+        {
+          "dmxRange": [155, 159],
+          "type": "ColorPreset",
+          "comment": "LEE 021 - Gold Amber"
+        },
+        {
+          "dmxRange": [160, 164],
+          "type": "ColorPreset",
+          "comment": "LEE 778 - Millenium Gold"
+        },
+        {
+          "dmxRange": [165, 169],
+          "type": "ColorPreset",
+          "comment": "LEE 135 - Deep Golden Amber"
+        },
+        {
+          "dmxRange": [170, 174],
+          "type": "ColorPreset",
+          "comment": "LEE 164 - Flame Red"
+        },
+        {
+          "dmxRange": [175, 179],
+          "type": "ColorPreset",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [180, 201],
+          "type": "ColorPreset",
+          "comment": "Clockwise color macro rotation (fast -> slow)"
+        },
+        {
+          "dmxRange": [202, 207],
+          "type": "ColorPreset",
+          "comment": "Stop (this will stop wherever the color is at the time)"
+        },
+        {
+          "dmxRange": [208, 229],
+          "type": "ColorPreset",
+          "comment": "Counter-clockwise color macro rotation (slow -> fast)"
+        },
+        {
+          "dmxRange": [230, 234],
+          "type": "ColorPreset",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [235, 249],
+          "type": "ColorPreset",
+          "comment": "Random color macro (fast -> slow)"
+        },
+        {
+          "dmxRange": [250, 255],
+          "type": "ColorPreset",
+          "comment": "Open"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Opening pulse in sequence from slow to fast"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "comment": "Closing pulse in sequence from fast to slow"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "25Hz",
+          "randomTiming": true,
+          "comment": "Random strobe from slow to fast"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "540deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "210deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow",
+        "comment": "fast to slow"
+      }
+    },
+    "Special Functions": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic",
+          "comment": "Function off - rearmed"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "Generic",
+          "comment": "Blackout when pan/tilt moving"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "Generic",
+          "comment": "Disabled blackout when pan/tilt moving"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "Generic",
+          "comment": "Linear Dimmer Curve"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "Generic",
+          "comment": "Inv. Square Dimmer Curve"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "Generic",
+          "comment": "Square Dimmer Curve"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "Generic",
+          "comment": "S-Dimmer Curve"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "Generic",
+          "comment": "Fast Dimmer Speed (halogen lamp simulation off)"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "Generic",
+          "comment": "Smooth Dimmer Speed (halogen lamp simulation off)"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "Generic",
+          "comment": "Enable silence mode"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "Generic",
+          "comment": "Disable silence mode"
+        },
+        {
+          "dmxRange": [110, 219],
+          "type": "Generic",
+          "comment": "Reserved"
+        },
+        {
+          "dmxRange": [220, 229],
+          "type": "Generic",
+          "comment": "Zoom reset"
+        },
+        {
+          "dmxRange": [230, 239],
+          "type": "Generic",
+          "comment": "Pan/Tilt reset"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Generic",
+          "comment": "Complete reset"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Shape selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Generic",
+          "comment": "unused range"
+        },
+        {
+          "dmxRange": [8, 8],
+          "type": "Generic",
+          "comment": "Dot (static)"
+        },
+        {
+          "dmxRange": [9, 9],
+          "type": "Generic",
+          "comment": "Ring 1 (static)"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "Generic",
+          "comment": "Ring 2 (static)"
+        },
+        {
+          "dmxRange": [11, 11],
+          "type": "Generic",
+          "comment": "Dot + ring 1 (static)"
+        },
+        {
+          "dmxRange": [12, 12],
+          "type": "Generic",
+          "comment": "Dot + ring 2 (static)"
+        },
+        {
+          "dmxRange": [13, 13],
+          "type": "Generic",
+          "comment": "Ring 1 + ring 2 (static)"
+        },
+        {
+          "dmxRange": [14, 14],
+          "type": "Generic",
+          "comment": "Dot + ring 1 + ring 2 (static)"
+        },
+        {
+          "dmxRange": [15, 15],
+          "type": "Generic",
+          "comment": "Shape 6"
+        },
+        {
+          "dmxRange": [16, 16],
+          "type": "Generic",
+          "comment": "Shape 7"
+        },
+        {
+          "dmxRange": [17, 17],
+          "type": "Generic",
+          "comment": "Shape 8"
+        },
+        {
+          "dmxRange": [18, 18],
+          "type": "Generic",
+          "comment": "Shape 9"
+        },
+        {
+          "dmxRange": [19, 19],
+          "type": "Generic",
+          "comment": "Shape 10"
+        },
+        {
+          "dmxRange": [20, 20],
+          "type": "Generic",
+          "comment": "Shape 11"
+        },
+        {
+          "dmxRange": [21, 21],
+          "type": "Generic",
+          "comment": "Shape 12"
+        },
+        {
+          "dmxRange": [22, 22],
+          "type": "Generic",
+          "comment": "Shape 13"
+        },
+        {
+          "dmxRange": [23, 23],
+          "type": "Generic",
+          "comment": "Shape 14"
+        },
+        {
+          "dmxRange": [24, 24],
+          "type": "Generic",
+          "comment": "Shape 15"
+        },
+        {
+          "dmxRange": [25, 25],
+          "type": "Generic",
+          "comment": "Shape 16"
+        },
+        {
+          "dmxRange": [26, 26],
+          "type": "Generic",
+          "comment": "Shape 17"
+        },
+        {
+          "dmxRange": [27, 27],
+          "type": "Generic",
+          "comment": "Shape 18"
+        },
+        {
+          "dmxRange": [28, 28],
+          "type": "Generic",
+          "comment": "Shape 19"
+        },
+        {
+          "dmxRange": [29, 29],
+          "type": "Generic",
+          "comment": "Shape 20"
+        },
+        {
+          "dmxRange": [30, 30],
+          "type": "Generic",
+          "comment": "Shape 21"
+        },
+        {
+          "dmxRange": [31, 31],
+          "type": "Generic",
+          "comment": "Shape 22"
+        },
+        {
+          "dmxRange": [32, 32],
+          "type": "Generic",
+          "comment": "Shape 23"
+        },
+        {
+          "dmxRange": [33, 33],
+          "type": "Generic",
+          "comment": "UNUSED RANGE"
+        },
+        {
+          "dmxRange": [34, 34],
+          "type": "Generic",
+          "comment": "UNUSED RANGE"
+        },
+        {
+          "dmxRange": [35, 35],
+          "type": "Generic",
+          "comment": "Shape 24"
+        },
+        {
+          "dmxRange": [36, 36],
+          "type": "Generic",
+          "comment": "Shape 25"
+        },
+        {
+          "dmxRange": [37, 37],
+          "type": "Generic",
+          "comment": "Shape 26"
+        },
+        {
+          "dmxRange": [38, 38],
+          "type": "Generic",
+          "comment": "Shape 27"
+        },
+        {
+          "dmxRange": [39, 39],
+          "type": "Generic",
+          "comment": "Shape 28"
+        },
+        {
+          "dmxRange": [40, 40],
+          "type": "Generic",
+          "comment": "Shape 29"
+        },
+        {
+          "dmxRange": [41, 41],
+          "type": "Generic",
+          "comment": "UNUSED RANGE"
+        },
+        {
+          "dmxRange": [42, 42],
+          "type": "Generic",
+          "comment": "Shape 30"
+        },
+        {
+          "dmxRange": [43, 43],
+          "type": "Generic",
+          "comment": "UNUSED RANGE"
+        },
+        {
+          "dmxRange": [44, 44],
+          "type": "Generic",
+          "comment": "Shape 31"
+        },
+        {
+          "dmxRange": [45, 45],
+          "type": "Generic",
+          "comment": "Shape 32"
+        },
+        {
+          "dmxRange": [46, 46],
+          "type": "Generic",
+          "comment": "Shape 33"
+        },
+        {
+          "dmxRange": [47, 47],
+          "type": "Generic",
+          "comment": "Shape 34"
+        },
+        {
+          "dmxRange": [48, 48],
+          "type": "Generic",
+          "comment": "Shape 35"
+        },
+        {
+          "dmxRange": [49, 49],
+          "type": "Generic",
+          "comment": "Shape 36"
+        },
+        {
+          "dmxRange": [50, 50],
+          "type": "Generic",
+          "comment": "Shape 37"
+        },
+        {
+          "dmxRange": [51, 51],
+          "type": "Generic",
+          "comment": "Shape 38"
+        },
+        {
+          "dmxRange": [52, 52],
+          "type": "Generic",
+          "comment": "Shape 39"
+        },
+        {
+          "dmxRange": [53, 53],
+          "type": "Generic",
+          "comment": "Shape 40"
+        },
+        {
+          "dmxRange": [54, 54],
+          "type": "Generic",
+          "comment": "Shape 41"
+        },
+        {
+          "dmxRange": [55, 55],
+          "type": "Generic",
+          "comment": "Shape 42"
+        },
+        {
+          "dmxRange": [56, 56],
+          "type": "Generic",
+          "comment": "Shape 43"
+        },
+        {
+          "dmxRange": [57, 57],
+          "type": "Generic",
+          "comment": "Shape 44"
+        },
+        {
+          "dmxRange": [58, 58],
+          "type": "Generic",
+          "comment": "Shape 45"
+        },
+        {
+          "dmxRange": [59, 59],
+          "type": "Generic",
+          "comment": "Shape 46"
+        },
+        {
+          "dmxRange": [60, 60],
+          "type": "Generic",
+          "comment": "Shape 47"
+        },
+        {
+          "dmxRange": [61, 61],
+          "type": "Generic",
+          "comment": "Shape 48"
+        },
+        {
+          "dmxRange": [62, 62],
+          "type": "Generic",
+          "comment": "Shape 49"
+        },
+        {
+          "dmxRange": [63, 63],
+          "type": "Generic",
+          "comment": "Shape 50"
+        },
+        {
+          "dmxRange": [64, 64],
+          "type": "Generic",
+          "comment": "UNUSED RANGE"
+        },
+        {
+          "dmxRange": [65, 65],
+          "type": "Generic",
+          "comment": "Shape 51"
+        },
+        {
+          "dmxRange": [66, 66],
+          "type": "Generic",
+          "comment": "Shape 52"
+        },
+        {
+          "dmxRange": [67, 67],
+          "type": "Generic",
+          "comment": "Shape 53"
+        },
+        {
+          "dmxRange": [68, 68],
+          "type": "Generic",
+          "comment": "Shape 54"
+        },
+        {
+          "dmxRange": [69, 69],
+          "type": "Generic",
+          "comment": "UNUSED RANGE"
+        },
+        {
+          "dmxRange": [70, 70],
+          "type": "Generic",
+          "comment": "Shape 55"
+        },
+        {
+          "dmxRange": [71, 255],
+          "type": "Generic",
+          "comment": "UNUSED RANGE"
+        }
+      ]
+    },
+    "Shape speed": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "Radius size, Static"
+        },
+        {
+          "dmxRange": [64, 158],
+          "type": "Generic",
+          "comment": "Max to Min speed"
+        },
+        {
+          "dmxRange": [159, 160],
+          "type": "Generic",
+          "comment": "Stop"
+        },
+        {
+          "dmxRange": [161, 255],
+          "type": "Generic",
+          "comment": "Min to Max speed"
+        }
+      ]
+    },
+    "Shape Fade 0-100%": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Shape Fade 0-100%"
+      }
+    },
+    "Shape R": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Shape R"
+      }
+    },
+    "Shape G": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Shape G"
+      }
+    },
+    "Shape B": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Shape B"
+      }
+    },
+    "Shape W": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Shape W"
+      }
+    },
+    "Shape Dimmer 0-100%": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Shape Dimmer 0-100%"
+      }
+    },
+    "Shape Offset": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Shape Offset"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Standard (20 channels)",
+      "shortName": "Standard",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "CTO",
+        "Color Macros",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Special Functions",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "Shapes (29 channels)",
+      "shortName": "Shapes",
+      "channels": [
+        "Red",
+        "Red fine",
+        "Green",
+        "Green fine",
+        "Blue",
+        "Blue fine",
+        "White",
+        "White fine",
+        "CTO",
+        "Color Macros",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Special Functions",
+        "Zoom",
+        "Shape selection",
+        "Shape speed",
+        "Shape Fade 0-100%",
+        "Shape R",
+        "Shape G",
+        "Shape B",
+        "Shape W",
+        "Shape Dimmer 0-100%",
+        "Shape Offset"
+      ]
+    }
+  ]
+}
