@@ -35,8 +35,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 15],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Closed"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [16, 31],
@@ -143,6 +142,28 @@
         }
       ]
     },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Sound Sensitivity": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "SoundSensitivity",
+          "soundSensitivity": "off"
+        },
+        {
+          "dmxRange": [32, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
     "Red": {
       "capability": {
         "type": "ColorIntensity",
@@ -167,53 +188,158 @@
         "color": "Amber"
       }
     },
-    "Strobing / Program Speed / Sound Sensitivity": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 15],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [16, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "TODO: switch based on ch7 (Mode)"
-        }
-      ]
-    },
     "Mode": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 51],
           "type": "Maintenance",
-          "comment": "Dimmer mode"
+          "comment": "Dimmer mode",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Strobe",
+            "Color Macros & Modes": "Color Macros"
+          }
         },
         {
           "dmxRange": [52, 102],
           "type": "Maintenance",
-          "comment": "Color macro mode"
+          "comment": "Color macro mode",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Strobe",
+            "Color Macros & Modes": "Color Macros"
+          }
         },
         {
           "dmxRange": [103, 153],
           "type": "Maintenance",
-          "comment": "Color change mode"
+          "comment": "Color change mode",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed",
+            "Color Macros & Modes": "Color Change Programs"
+          }
         },
         {
           "dmxRange": [154, 204],
           "type": "Maintenance",
-          "comment": "Color fade mode"
+          "comment": "Color fade mode",
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Program Speed",
+            "Color Macros & Modes": "Color Fade Programs"
+          }
         },
         {
           "dmxRange": [205, 255],
           "type": "Effect",
           "effectName": "Sound active mode",
-          "soundControlled": true
+          "soundControlled": true,
+          "switchChannels": {
+            "Strobe / Program Speed / Sound Sensitivity": "Sound Sensitivity",
+            "Color Macros & Modes": "Sound Active Programs"
+          }
         }
       ]
     },
-    "Color Macros & Modes": {
+    "Color Change Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color change 1"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color change 2"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color change 3"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color change 4"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color change 5"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color change 6"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color change 7"
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color change 8"
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color change 9"
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color change 10"
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color change 11"
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color change 12"
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color change 13"
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color change 14"
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color change 15"
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "Color change 16"
+        }
+      ]
+    },
+    "Color Fade Programs": {
       "capabilities": [
         {
           "dmxRange": [0, 15],
@@ -312,6 +438,106 @@
           "comment": "Color fade 16"
         }
       ]
+    },
+    "Sound Active Programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Effect",
+          "effectName": "Sound active mode 1",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Effect",
+          "effectName": "Sound active mode 2",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Effect",
+          "effectName": "Sound active mode 3",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Effect",
+          "effectName": "Sound active mode 4",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Effect",
+          "effectName": "Sound active mode 5",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Effect",
+          "effectName": "Sound active mode 6",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Effect",
+          "effectName": "Sound active mode 7",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [112, 127],
+          "type": "Effect",
+          "effectName": "Sound active mode 8",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [128, 143],
+          "type": "Effect",
+          "effectName": "Sound active mode 9",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [144, 159],
+          "type": "Effect",
+          "effectName": "Sound active mode 10",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [160, 175],
+          "type": "Effect",
+          "effectName": "Sound active mode 11",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [176, 191],
+          "type": "Effect",
+          "effectName": "Sound active mode 12",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [192, 207],
+          "type": "Effect",
+          "effectName": "Sound active mode 13",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [208, 223],
+          "type": "Effect",
+          "effectName": "Sound active mode 14",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [224, 239],
+          "type": "Effect",
+          "effectName": "Sound active mode 15",
+          "soundControlled": true
+        },
+        {
+          "dmxRange": [240, 255],
+          "type": "Effect",
+          "effectName": "Sound active mode 16",
+          "soundControlled": true
+        }
+      ]
     }
   },
   "modes": [
@@ -394,7 +620,7 @@
         "Blue",
         "Amber",
         "Dimmer",
-        "Strobing / Program Speed / Sound Sensitivity",
+        "Strobe / Program Speed / Sound Sensitivity",
         "Mode",
         "Color Macros & Modes"
       ]
