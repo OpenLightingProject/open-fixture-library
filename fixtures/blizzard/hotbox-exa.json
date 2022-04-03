@@ -30,57 +30,43 @@
   "availableChannels": {
     "Dimmer": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "type": "Intensity"
       }
     },
     "Red": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Red",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Red"
       }
     },
     "Green": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Green",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Green"
       }
     },
     "Blue": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Blue",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Blue"
       }
     },
     "Amber": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "Amber",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "Amber"
       }
     },
     "White": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "White",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "White"
       }
     },
     "UV": {
       "capability": {
         "type": "ColorIntensity",
-        "color": "UV",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%"
+        "color": "UV"
       }
     },
     "Strobe": {
