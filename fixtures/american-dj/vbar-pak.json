@@ -58,7 +58,8 @@
         {
           "dmxRange": [64, 79],
           "type": "ColorPreset",
-          "comment": "Amber"
+          "comment": "Amber",
+          "colors": ["#ffbf00"]
         },
         {
           "dmxRange": [80, 95],
@@ -75,7 +76,8 @@
         {
           "dmxRange": [112, 127],
           "type": "ColorPreset",
-          "comment": "Red & Amber"
+          "comment": "Red & Amber",
+          "colors": ["#ff6000"]
         },
         {
           "dmxRange": [128, 143],
@@ -86,12 +88,14 @@
         {
           "dmxRange": [144, 159],
           "type": "ColorPreset",
-          "comment": "Green & Amber"
+          "comment": "Green & Amber",
+          "colors": ["#9fff00"]
         },
         {
           "dmxRange": [160, 175],
           "type": "ColorPreset",
-          "comment": "Blue & Amber"
+          "comment": "Blue & Amber",
+          "colors": ["#00ff95"]
         },
         {
           "dmxRange": [176, 191],
@@ -102,22 +106,26 @@
         {
           "dmxRange": [192, 207],
           "type": "ColorPreset",
-          "comment": "Red & Green & Amber"
+          "comment": "Red & Green & Amber",
+          "colors": ["#ffdf00"]
         },
         {
           "dmxRange": [208, 223],
           "type": "ColorPreset",
-          "comment": "Red & Blue & Amber"
+          "comment": "Red & Blue & Amber",
+          "colors": ["#ff0020"]
         },
         {
           "dmxRange": [224, 239],
           "type": "ColorPreset",
-          "comment": "Green & Blue & Amber"
+          "comment": "Green & Blue & Amber",
+          "colors": ["#20ff00"]
         },
         {
           "dmxRange": [240, 255],
           "type": "ColorPreset",
-          "comment": "Red & Green & Blue & Amber"
+          "comment": "Red & Green & Blue & Amber",
+          "colors": ["#ffda6b"]
         }
       ]
     },
