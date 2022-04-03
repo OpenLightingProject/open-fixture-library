@@ -73,8 +73,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 14],
-          "type": "NoFunction",
-          "comment": "\"Dimming\""
+          "type": "NoFunction"
         },
         {
           "dmxRange": [15, 255],
@@ -113,9 +112,8 @@
         },
         {
           "dmxRange": [165, 191],
-          "type": "ShutterStrobe",
-          "shutterEffect": "RampUpDown",
-          "comment": "Fade In / Fade Out, Auto Run"
+          "type": "Effect",
+          "effectName": "Fade In / Fade Out, Auto Run"
         },
         {
           "dmxRange": [192, 223],
@@ -171,22 +169,6 @@
         }
       ]
     },
-    "Dimmer / Strobe Speed": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 14],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Open"
-        },
-        {
-          "dmxRange": [15, 255],
-          "type": "ShutterStrobe",
-          "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
-        }
-      ]
-    },
     "Hue": {
       "capability": {
         "type": "Generic",
@@ -239,7 +221,7 @@
         "Amber",
         "White",
         "UV",
-        "Dimmer / Strobe Speed"
+        "Strobe"
       ]
     },
     {
