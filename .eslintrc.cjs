@@ -213,6 +213,7 @@ const enabledRuleParameters = {
   'vue/no-unused-refs': [],
   'vue/no-use-computed-property-like-method': [],
   'vue/no-v-text': [],
+  'vue/prefer-prop-type-boolean-first': [],
   'vue/prefer-separate-static-class': [],
   'vue/prefer-true-attribute-shorthand': [],
   'vue/require-direct-export': [],
@@ -281,6 +282,7 @@ const disabledRules = [
   `unicorn/filename-case`,
   `unicorn/no-null`,
   `unicorn/no-process-exit`,
+  `unicorn/no-useless-switch-case`, // explicit "useless" switch chases are documentation
   `unicorn/no-useless-undefined`, // conflicts with `consistent-return`
   `unicorn/prefer-node-protocol`, // not supported by Nuxt yet
   `vue/multiline-html-element-content-newline`,
