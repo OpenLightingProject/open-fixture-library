@@ -39,10 +39,14 @@
         "type": "Generic"
       }
     },
+    "Value": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
     "Dimmer": {
       "capability": {
-        "type": "Intensity",
-        "comment": "CHECKME: \"Value\" (of \"HSV\") in lighting is the same as intensity, right?"
+        "type": "Intensity"
       }
     },
     "Red": {
@@ -182,7 +186,7 @@
       "channels": [
         "Hue",
         "Saturation",
-        "Dimmer"
+        "Value"
       ]
     },
     {
