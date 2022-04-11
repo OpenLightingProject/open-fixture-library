@@ -213,6 +213,7 @@ const enabledRuleParameters = {
   'vue/no-unused-refs': [],
   'vue/no-use-computed-property-like-method': [],
   'vue/no-v-text': [],
+  'vue/prefer-prop-type-boolean-first': [],
   'vue/prefer-separate-static-class': [],
   'vue/prefer-true-attribute-shorthand': [],
   'vue/require-direct-export': [],
