@@ -46,31 +46,31 @@
     ]
   },
   "templateChannels": {
-    "LED$pixelKey - Red 0-100%": {
+    "LED $pixelKey - Red": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "LED$pixelKey - Green 0-100%": {
+    "LED $pixelKey - Green": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "LED$pixelKey - Blue 0-100%": {
+    "LED $pixelKey - Blue": {
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
-    "LED$pixelKey - White 0-100%": {
+    "LED $pixelKey - White": {
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
       }
     },
-    "LED$pixelKey - Dimmer 0-100%": {
+    "LED $pixelKey - Dimmer": {
       "capability": {
         "type": "Intensity"
       }
@@ -109,8 +109,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "NoFunction",
-          "comment": "UNUSED RANGE"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [10, 10],
@@ -165,8 +164,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "Generic",
-          "comment": "CMY color mixing using channels 8 to 10"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [10, 14],
@@ -369,22 +367,28 @@
         {
           "dmxRange": [175, 179],
           "type": "ColorPreset",
-          "comment": "Open"
+          "comment": "Open",
+          "helpWanted": "What happens at these \"Open\" capabilities?"
         },
         {
           "dmxRange": [180, 201],
-          "type": "ColorPreset",
-          "comment": "Clockwise color macro rotation (fast -> slow)"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [202, 207],
-          "type": "ColorPreset",
-          "comment": "Stop (this will stop wherever the color is at the time)"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speed": "stop"
         },
         {
           "dmxRange": [208, 229],
-          "type": "ColorPreset",
-          "comment": "Counter-clockwise color macro rotation (slow -> fast)"
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "speedStart": "slow reverse",
+          "speedEnd": "fast reverse"
         },
         {
           "dmxRange": [230, 234],
@@ -393,8 +397,11 @@
         },
         {
           "dmxRange": [235, 249],
-          "type": "ColorPreset",
-          "comment": "Random color macro (fast -> slow)"
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "speedStart": "fast",
+          "speedEnd": "slow",
+          "comment": "random color macros"
         },
         {
           "dmxRange": [250, 255],
@@ -430,14 +437,16 @@
         {
           "dmxRange": [128, 143],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
-          "comment": "Opening pulse in sequence from slow to fast"
+          "shutterEffect": "RampUp",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [144, 159],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
-          "comment": "Closing pulse in sequence from fast to slow"
+          "shutterEffect": "RampDown",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [160, 191],
@@ -450,8 +459,7 @@
           "shutterEffect": "Strobe",
           "speedStart": "1Hz",
           "speedEnd": "25Hz",
-          "randomTiming": true,
-          "comment": "Random strobe from slow to fast"
+          "randomTiming": true
         },
         {
           "dmxRange": [224, 255],
@@ -486,8 +494,7 @@
       "capability": {
         "type": "PanTiltSpeed",
         "speedStart": "fast",
-        "speedEnd": "slow",
-        "comment": "fast to slow"
+        "speedEnd": "slow"
       }
     },
     "Special Functions": {
@@ -549,7 +556,7 @@
         },
         {
           "dmxRange": [110, 219],
-          "type": "Generic",
+          "type": "NoFunction",
           "comment": "Reserved"
         },
         {
@@ -580,8 +587,7 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "Generic",
-          "comment": "unused range"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [8, 8],
@@ -710,13 +716,11 @@
         },
         {
           "dmxRange": [33, 33],
-          "type": "Generic",
-          "comment": "UNUSED RANGE"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [34, 34],
-          "type": "Generic",
-          "comment": "UNUSED RANGE"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [35, 35],
@@ -750,8 +754,7 @@
         },
         {
           "dmxRange": [41, 41],
-          "type": "Generic",
-          "comment": "UNUSED RANGE"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [42, 42],
@@ -760,8 +763,7 @@
         },
         {
           "dmxRange": [43, 43],
-          "type": "Generic",
-          "comment": "UNUSED RANGE"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [44, 44],
@@ -865,8 +867,7 @@
         },
         {
           "dmxRange": [64, 64],
-          "type": "Generic",
-          "comment": "UNUSED RANGE"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [65, 65],
@@ -890,8 +891,7 @@
         },
         {
           "dmxRange": [69, 69],
-          "type": "Generic",
-          "comment": "UNUSED RANGE"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [70, 70],
@@ -900,8 +900,7 @@
         },
         {
           "dmxRange": [71, 255],
-          "type": "Generic",
-          "comment": "UNUSED RANGE"
+          "type": "NoFunction"
         }
       ]
     },
@@ -914,55 +913,57 @@
         },
         {
           "dmxRange": [64, 158],
-          "type": "Generic",
-          "comment": "Max to Min speed"
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "slow"
         },
         {
           "dmxRange": [159, 160],
-          "type": "Generic",
-          "comment": "Stop"
+          "type": "Speed",
+          "speed": "stop"
         },
         {
           "dmxRange": [161, 255],
-          "type": "Generic",
-          "comment": "Min to Max speed"
+          "type": "Speed",
+          "speedStart": "slow reverse",
+          "speedEnd": "fast reverse"
         }
       ]
     },
-    "Shape Fade 0-100%": {
+    "Shape Fade": {
       "capability": {
-        "type": "Generic",
-        "comment": "Shape Fade 0-100%"
+        "type": "EffectDuration",
+        "durationStart": "instant",
+        "durationEnd": "long"
       }
     },
-    "Shape R": {
+    "Shape Red": {
       "capability": {
-        "type": "Generic",
-        "comment": "Shape R"
+        "type": "ColorIntensity",
+        "color": "Red"
       }
     },
-    "Shape G": {
+    "Shape Green": {
       "capability": {
-        "type": "Generic",
-        "comment": "Shape G"
+        "type": "ColorIntensity",
+        "color": "Green"
       }
     },
-    "Shape B": {
+    "Shape Blue": {
       "capability": {
-        "type": "Generic",
-        "comment": "Shape B"
+        "type": "ColorIntensity",
+        "color": "Blue"
       }
     },
-    "Shape W": {
+    "Shape White": {
       "capability": {
-        "type": "Generic",
-        "comment": "Shape W"
+        "type": "ColorIntensity",
+        "color": "White"
       }
     },
-    "Shape Dimmer 0-100%": {
+    "Shape Dimmer": {
       "capability": {
-        "type": "Generic",
-        "comment": "Shape Dimmer 0-100%"
+        "type": "Intensity"
       }
     },
     "Shape Offset": {
@@ -1025,12 +1026,12 @@
         "Zoom",
         "Shape selection",
         "Shape speed",
-        "Shape Fade 0-100%",
-        "Shape R",
-        "Shape G",
-        "Shape B",
-        "Shape W",
-        "Shape Dimmer 0-100%",
+        "Shape Fade",
+        "Shape Red",
+        "Shape Green",
+        "Shape Blue",
+        "Shape White",
+        "Shape Dimmer",
         "Shape Offset"
       ]
     },
@@ -1063,9 +1064,9 @@
           "repeatFor": "eachPixelABC",
           "channelOrder": "perPixel",
           "templateChannels": [
-            "LED$pixelKey - Red 0-100%",
-            "LED$pixelKey - Green 0-100%",
-            "LED$pixelKey - Blue 0-100%"
+            "LED $pixelKey - Red",
+            "LED $pixelKey - Green",
+            "LED $pixelKey - Blue"
           ]
         }
       ]
@@ -1099,10 +1100,10 @@
           "repeatFor": "eachPixelABC",
           "channelOrder": "perPixel",
           "templateChannels": [
-            "LED$pixelKey - Red 0-100%",
-            "LED$pixelKey - Green 0-100%",
-            "LED$pixelKey - Blue 0-100%",
-            "LED$pixelKey - White 0-100%"
+            "LED $pixelKey - Red",
+            "LED $pixelKey - Green",
+            "LED $pixelKey - Blue",
+            "LED $pixelKey - White"
           ]
         }
       ]
@@ -1133,21 +1134,21 @@
         "Zoom",
         "Shape selection",
         "Shape speed",
-        "Shape Fade 0-100%",
-        "Shape R",
-        "Shape G",
-        "Shape B",
-        "Shape W",
-        "Shape Dimmer 0-100%",
+        "Shape Fade",
+        "Shape Red",
+        "Shape Green",
+        "Shape Blue",
+        "Shape White",
+        "Shape Dimmer",
         "Shape Offset",
         {
           "insert": "matrixChannels",
           "repeatFor": "eachPixelABC",
           "channelOrder": "perPixel",
           "templateChannels": [
-            "LED$pixelKey - Red 0-100%",
-            "LED$pixelKey - Green 0-100%",
-            "LED$pixelKey - Blue 0-100%"
+            "LED $pixelKey - Red",
+            "LED $pixelKey - Green",
+            "LED $pixelKey - Blue"
           ]
         }
       ]
@@ -1178,19 +1179,19 @@
         "Zoom",
         "Shape selection",
         "Shape speed",
-        "Shape Fade 0-100%",
-        "Shape R",
-        "Shape G",
-        "Shape B",
-        "Shape W",
-        "Shape Dimmer 0-100%",
+        "Shape Fade",
+        "Shape Red",
+        "Shape Green",
+        "Shape Blue",
+        "Shape White",
+        "Shape Dimmer",
         "Shape Offset",
         {
           "insert": "matrixChannels",
           "repeatFor": "eachPixelABC",
           "channelOrder": "perPixel",
           "templateChannels": [
-            "LED$pixelKey - Dimmer 0-100%"
+            "LED $pixelKey - Dimmer"
           ]
         }
       ]
