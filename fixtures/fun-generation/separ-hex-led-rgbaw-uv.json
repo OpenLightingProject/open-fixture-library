@@ -3,14 +3,25 @@
   "name": "SePar Hex LED RGBAW UV",
   "categories": ["Color Changer"],
   "meta": {
-    "authors": ["Christian Kuster", "based on Felix Edelmann"],
-    "createDate": "2022-04-07",
-    "lastModifyDate": "2022-04-07",
+    "authors": ["Felix Edelmann", "Christian Kuster"],
+    "createDate": "2022-04-11",
+    "lastModifyDate": "2022-04-11",
     "importPlugin": {
       "plugin": "qlcplus_4.12.1",
       "date": "2022-04-07",
-      "comment": "created by OFL – https://open-fixture-library.org/fun-generation/separ-hex-led-rgbawuv (version 1.3.0)"
+      "comment": "created by OFL – https://open-fixture-library.org/fun-generation/separ-quad-led-rgbw (version 1.3.0)"
     }
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_440827_v2_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/intl/fun_generation_separ_hex_led_rgbaw_uv_ir.htm"
+    ],
+    "video": [
+      "https://video2.thomann.de/vidiot/02591c1c/video_i7285p10_yd59vqpa.mp4"
+    ]
   },
   "physical": {
     "dimensions": [180, 175, 115],
