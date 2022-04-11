@@ -7,7 +7,6 @@
     "createDate": "2022-04-06",
     "lastModifyDate": "2022-04-06"
   },
-  "comment": "The documentation splits 8-ch and 9-ch modes into \"A\" and \"B\" variants, where the only difference is the max strobe speed.  For OFL, I've encoded only a single variant of each, and used keywords \"slow\"/\"fast\" rather than absolute frequencies.",
   "links": {
     "manual": [
       "https://api.blizzard.lighting/public/Products/hotbox%20rgbw/downloads/hotbox-manual-rev-b.pdf"
@@ -73,7 +72,7 @@
         "color": "White"
       }
     },
-    "Strobe": {
+    "12Hz Strobe": {
       "capabilities": [
         {
           "dmxRange": [0, 14],
@@ -86,9 +85,26 @@
           "dmxRange": [15, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "Depending on configuration, 0…12 Hz (\"A\") or 0…20 Hz (\"B\")"
+          "speedStart": "0Hz",
+          "speedEnd": "12Hz"
+        }
+      ]
+    },
+    "20Hz Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 14],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speed": "stop",
+          "randomTiming": true
+        },
+        {
+          "dmxRange": [15, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
         }
       ]
     },
@@ -211,29 +227,58 @@
       ]
     },
     {
-      "name": "8-channel",
-      "shortName": "8ch",
+      "name": "8-channel A",
+      "shortName": "8ACh",
       "channels": [
         "Dimmer",
         "Red",
         "Green",
         "Blue",
         "White",
-        "Strobe",
+        "12Hz Strobe",
         "Fade, Color Change, Sound Active",
         "Fade Speed"
       ]
     },
     {
-      "name": "9-channel",
-      "shortName": "9ch",
+      "name": "8-channel B",
+      "shortName": "8bCh",
       "channels": [
         "Dimmer",
         "Red",
         "Green",
         "Blue",
         "White",
-        "Strobe",
+        "20Hz Strobe",
+        "Fade, Color Change, Sound Active",
+        "Fade Speed"
+      ]
+    },
+    {
+      "name": "9-channel A",
+      "shortName": "9ACh",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "12Hz Strobe",
+        "Fade, Color Change, Sound Active",
+        "Fade Speed",
+        "Dimmer Control"
+      ]
+    },
+    {
+      "name": "9-channel B",
+      "shortName": "9bCh",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "20Hz Strobe",
         "Fade, Color Change, Sound Active",
         "Fade Speed",
         "Dimmer Control"
