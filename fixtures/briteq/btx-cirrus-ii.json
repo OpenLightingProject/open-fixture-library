@@ -32,6 +32,50 @@
       "degreesMinMax": [4, 60]
     }
   },
+  "matrix": {
+    "pixelKeys": [
+      [
+        [null, null, "13", null, "14", null, null],
+        [null, "12", null, null, null, "15", null],
+        ["11", null,  "4", null,  "5", null, "16"],
+        [null,  "3", null,  "1", null,  "6", null],
+        ["10", null,  "2", null,  "7", null, "17"],
+        [null,  "9", null, null, null, "18", null],
+        [null, null,  "8", null, "19", null, null]
+      ]
+    ]
+  },
+  "templateChannels": {
+    "LED$pixelKey - Red 0-100%": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "LED$pixelKey - Green 0-100%": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "LED$pixelKey - Blue 0-100%": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "LED$pixelKey - White 0-100%": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "LED$pixelKey - Dimmer 0-100%": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
   "availableChannels": {
     "Red": {
       "fineChannelAliases": ["Red fine"],
@@ -926,557 +970,6 @@
         "type": "Generic",
         "comment": "Shape Offset"
       }
-    },
-    "LED1 - Red 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED1 - Green 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED1 - Blue 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED1 - White 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED1 - Dimmer 0-100%": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "LED2 - Red 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED2 - Green 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED2 - Blue 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED2 - White 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED2 - Dimmer 0-100%": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "LED3 - Red 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED3 - Green 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED3 - Blue 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED3 - White 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED3 - Dimmer 0-100%": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "LED4 - Red 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED4 - Green 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED4 - Blue 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED4 - White 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED4 - Dimmer 0-100%": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "LED5 - Red 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED5 - Green 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED5 - Blue 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED5 - White 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED5 - Dimmer 0-100%": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "LED6 - Red 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED6 - Green 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED6 - Blue 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED6 - White 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED6 - Dimmer 0-100%": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "LED7 - Red 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED7 - Green 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED7 - Blue 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED7 - White 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED7 - Dimmer 0-100%": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "LED8 - Red 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED8 - Green 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED8 - Blue 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED8 - White 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED8 - Dimmer 0-100%": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "LED9 - Red 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED9 - Green 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED9 - Blue 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED9 - White 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED9 - Dimmer 0-100%": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "LED10 - Red 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED10 - Green 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED10 - Blue 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED10 - White 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED10 - Dimmer 0-100%": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "LED11 - Red 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED11 - Green 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED11 - Blue 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED11 - White 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED11 - Dimmer 0-100%": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "LED12 - Red 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED12 - Green 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED12 - Blue 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED12 - White 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED12 - Dimmer 0-100%": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "LED13 - Red 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED13 - Green 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED13 - Blue 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED13 - White 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED13 - Dimmer 0-100%": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "LED14 - Red 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED14 - Green 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED14 - Blue 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED14 - White 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED14 - Dimmer 0-100%": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "LED15 - Red 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED15 - Green 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED15 - Blue 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED15 - White 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED15 - Dimmer 0-100%": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "LED16 - Red 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED16 - Green 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED16 - Blue 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED16 - White 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED16 - Dimmer 0-100%": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "LED17 - Red 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED17 - Green 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED17 - Blue 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED17 - White 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED17 - Dimmer 0-100%": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "LED18 - Red 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED18 - Green 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED18 - Blue 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED18 - White 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED18 - Dimmer 0-100%": {
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "LED19 - Red 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red"
-      }
-    },
-    "LED19 - Green 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green"
-      }
-    },
-    "LED19 - Blue 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue"
-      }
-    },
-    "LED19 - White 0-100%": {
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "White"
-      }
-    },
-    "LED19 - Dimmer 0-100%": {
-      "capability": {
-        "type": "Intensity"
-      }
     }
   },
   "modes": [
@@ -1565,63 +1058,16 @@
         "Pan/Tilt Speed",
         "Special Functions",
         "Zoom",
-        "LED1 - Red 0-100%",
-        "LED1 - Green 0-100%",
-        "LED1 - Blue 0-100%",
-        "LED2 - Red 0-100%",
-        "LED2 - Green 0-100%",
-        "LED2 - Blue 0-100%",
-        "LED3 - Red 0-100%",
-        "LED3 - Green 0-100%",
-        "LED3 - Blue 0-100%",
-        "LED4 - Red 0-100%",
-        "LED4 - Green 0-100%",
-        "LED4 - Blue 0-100%",
-        "LED5 - Red 0-100%",
-        "LED5 - Green 0-100%",
-        "LED5 - Blue 0-100%",
-        "LED6 - Red 0-100%",
-        "LED6 - Green 0-100%",
-        "LED6 - Blue 0-100%",
-        "LED7 - Red 0-100%",
-        "LED7 - Green 0-100%",
-        "LED7 - Blue 0-100%",
-        "LED8 - Red 0-100%",
-        "LED8 - Green 0-100%",
-        "LED8 - Blue 0-100%",
-        "LED9 - Red 0-100%",
-        "LED9 - Green 0-100%",
-        "LED9 - Blue 0-100%",
-        "LED10 - Red 0-100%",
-        "LED10 - Green 0-100%",
-        "LED10 - Blue 0-100%",
-        "LED11 - Red 0-100%",
-        "LED11 - Green 0-100%",
-        "LED11 - Blue 0-100%",
-        "LED12 - Red 0-100%",
-        "LED12 - Green 0-100%",
-        "LED12 - Blue 0-100%",
-        "LED13 - Red 0-100%",
-        "LED13 - Green 0-100%",
-        "LED13 - Blue 0-100%",
-        "LED14 - Red 0-100%",
-        "LED14 - Green 0-100%",
-        "LED14 - Blue 0-100%",
-        "LED15 - Red 0-100%",
-        "LED15 - Green 0-100%",
-        "LED15 - Blue 0-100%",
-        "LED16 - Red 0-100%",
-        "LED16 - Green 0-100%",
-        "LED16 - Blue 0-100%",
-        "LED17 - Red 0-100%",
-        "LED17 - Green 0-100%",
-        "LED17 - Blue 0-100%",
-        "LED18 - Red 0-100%",
-        "LED18 - Green 0-100%",
-        "LED18 - Blue 0-100%",
-        "LED19 - Red 0-100%",
-        "LED19 - Green 0-100%",
-        "LED19 - Blue 0-100%"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "LED$pixelKey - Red 0-100%",
+            "LED$pixelKey - Green 0-100%",
+            "LED$pixelKey - Blue 0-100%"
+          ]
+        }
       ]
     },
     {
@@ -1648,82 +1094,17 @@
         "Pan/Tilt Speed",
         "Special Functions",
         "Zoom",
-        "LED1 - Red 0-100%",
-        "LED1 - Green 0-100%",
-        "LED1 - Blue 0-100%",
-        "LED1 - White 0-100%",
-        "LED2 - Red 0-100%",
-        "LED2 - Green 0-100%",
-        "LED2 - Blue 0-100%",
-        "LED2 - White 0-100%",
-        "LED3 - Red 0-100%",
-        "LED3 - Green 0-100%",
-        "LED3 - Blue 0-100%",
-        "LED3 - White 0-100%",
-        "LED4 - Red 0-100%",
-        "LED4 - Green 0-100%",
-        "LED4 - Blue 0-100%",
-        "LED4 - White 0-100%",
-        "LED5 - Red 0-100%",
-        "LED5 - Green 0-100%",
-        "LED5 - Blue 0-100%",
-        "LED5 - White 0-100%",
-        "LED6 - Red 0-100%",
-        "LED6 - Green 0-100%",
-        "LED6 - Blue 0-100%",
-        "LED6 - White 0-100%",
-        "LED7 - Red 0-100%",
-        "LED7 - Green 0-100%",
-        "LED7 - Blue 0-100%",
-        "LED7 - White 0-100%",
-        "LED8 - Red 0-100%",
-        "LED8 - Green 0-100%",
-        "LED8 - Blue 0-100%",
-        "LED8 - White 0-100%",
-        "LED9 - Red 0-100%",
-        "LED9 - Green 0-100%",
-        "LED9 - Blue 0-100%",
-        "LED9 - White 0-100%",
-        "LED10 - Red 0-100%",
-        "LED10 - Green 0-100%",
-        "LED10 - Blue 0-100%",
-        "LED10 - White 0-100%",
-        "LED11 - Red 0-100%",
-        "LED11 - Green 0-100%",
-        "LED11 - Blue 0-100%",
-        "LED11 - White 0-100%",
-        "LED12 - Red 0-100%",
-        "LED12 - Green 0-100%",
-        "LED12 - Blue 0-100%",
-        "LED12 - White 0-100%",
-        "LED13 - Red 0-100%",
-        "LED13 - Green 0-100%",
-        "LED13 - Blue 0-100%",
-        "LED13 - White 0-100%",
-        "LED14 - Red 0-100%",
-        "LED14 - Green 0-100%",
-        "LED14 - Blue 0-100%",
-        "LED14 - White 0-100%",
-        "LED15 - Red 0-100%",
-        "LED15 - Green 0-100%",
-        "LED15 - Blue 0-100%",
-        "LED15 - White 0-100%",
-        "LED16 - Red 0-100%",
-        "LED16 - Green 0-100%",
-        "LED16 - Blue 0-100%",
-        "LED16 - White 0-100%",
-        "LED17 - Red 0-100%",
-        "LED17 - Green 0-100%",
-        "LED17 - Blue 0-100%",
-        "LED17 - White 0-100%",
-        "LED18 - Red 0-100%",
-        "LED18 - Green 0-100%",
-        "LED18 - Blue 0-100%",
-        "LED18 - White 0-100%",
-        "LED19 - Red 0-100%",
-        "LED19 - Green 0-100%",
-        "LED19 - Blue 0-100%",
-        "LED19 - White 0-100%"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "LED$pixelKey - Red 0-100%",
+            "LED$pixelKey - Green 0-100%",
+            "LED$pixelKey - Blue 0-100%",
+            "LED$pixelKey - White 0-100%"
+          ]
+        }
       ]
     },
     {
@@ -1759,63 +1140,16 @@
         "Shape W",
         "Shape Dimmer 0-100%",
         "Shape Offset",
-        "LED1 - Red 0-100%",
-        "LED1 - Green 0-100%",
-        "LED1 - Blue 0-100%",
-        "LED2 - Red 0-100%",
-        "LED2 - Green 0-100%",
-        "LED2 - Blue 0-100%",
-        "LED3 - Red 0-100%",
-        "LED3 - Green 0-100%",
-        "LED3 - Blue 0-100%",
-        "LED4 - Red 0-100%",
-        "LED4 - Green 0-100%",
-        "LED4 - Blue 0-100%",
-        "LED5 - Red 0-100%",
-        "LED5 - Green 0-100%",
-        "LED5 - Blue 0-100%",
-        "LED6 - Red 0-100%",
-        "LED6 - Green 0-100%",
-        "LED6 - Blue 0-100%",
-        "LED7 - Red 0-100%",
-        "LED7 - Green 0-100%",
-        "LED7 - Blue 0-100%",
-        "LED8 - Red 0-100%",
-        "LED8 - Green 0-100%",
-        "LED8 - Blue 0-100%",
-        "LED9 - Red 0-100%",
-        "LED9 - Green 0-100%",
-        "LED9 - Blue 0-100%",
-        "LED10 - Red 0-100%",
-        "LED10 - Green 0-100%",
-        "LED10 - Blue 0-100%",
-        "LED11 - Red 0-100%",
-        "LED11 - Green 0-100%",
-        "LED11 - Blue 0-100%",
-        "LED12 - Red 0-100%",
-        "LED12 - Green 0-100%",
-        "LED12 - Blue 0-100%",
-        "LED13 - Red 0-100%",
-        "LED13 - Green 0-100%",
-        "LED13 - Blue 0-100%",
-        "LED14 - Red 0-100%",
-        "LED14 - Green 0-100%",
-        "LED14 - Blue 0-100%",
-        "LED15 - Red 0-100%",
-        "LED15 - Green 0-100%",
-        "LED15 - Blue 0-100%",
-        "LED16 - Red 0-100%",
-        "LED16 - Green 0-100%",
-        "LED16 - Blue 0-100%",
-        "LED17 - Red 0-100%",
-        "LED17 - Green 0-100%",
-        "LED17 - Blue 0-100%",
-        "LED18 - Red 0-100%",
-        "LED18 - Green 0-100%",
-        "LED18 - Blue 0-100%",
-        "LED19 - Red 0-100%",
-        "LED19 - Green 0-100%",
-        "LED19 - Blue 0-100%"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "LED$pixelKey - Red 0-100%",
+            "LED$pixelKey - Green 0-100%",
+            "LED$pixelKey - Blue 0-100%"
+          ]
+        }
       ]
     },
     {
@@ -1851,25 +1185,14 @@
         "Shape W",
         "Shape Dimmer 0-100%",
         "Shape Offset",
-        "LED1 - Dimmer 0-100%",
-        "LED2 - Dimmer 0-100%",
-        "LED3 - Dimmer 0-100%",
-        "LED4 - Dimmer 0-100%",
-        "LED5 - Dimmer 0-100%",
-        "LED6 - Dimmer 0-100%",
-        "LED7 - Dimmer 0-100%",
-        "LED8 - Dimmer 0-100%",
-        "LED9 - Dimmer 0-100%",
-        "LED10 - Dimmer 0-100%",
-        "LED11 - Dimmer 0-100%",
-        "LED12 - Dimmer 0-100%",
-        "LED13 - Dimmer 0-100%",
-        "LED14 - Dimmer 0-100%",
-        "LED15 - Dimmer 0-100%",
-        "LED16 - Dimmer 0-100%",
-        "LED17 - Dimmer 0-100%",
-        "LED18 - Dimmer 0-100%",
-        "LED19 - Dimmer 0-100%"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelABC",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "LED$pixelKey - Dimmer 0-100%"
+          ]
+        }
       ]
     }
   ]
