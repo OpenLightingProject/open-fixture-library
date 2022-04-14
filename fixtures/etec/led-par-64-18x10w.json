@@ -1,0 +1,263 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PAR 64 18x10W",
+  "shortName": "ETEC PAR 64",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Chris"],
+    "createDate": "2022-04-14",
+    "lastModifyDate": "2022-04-14"
+  },
+  "comment": "LED PAR 64",
+  "links": {
+    "manual": [
+      "https://www.elcotec-electronic.de/media/products/0285344001536863548.pdf"
+    ],
+    "productPage": [
+      "https://www.elcotec-electronic.de/LED-Lichttechnik/Statische-Scheinwerfer/LED-PAR-Scheinwerfer/ETEC-LED-PAR-64-18x10W-RGBWA-5in1-Scheinwerfer-Floorspot::978.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [270, 270, 300],
+    "weight": 2.5,
+    "power": 190,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber1": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Strobe1": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [64, 233],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "10Hz"
+        },
+        {
+          "dmxRange": [234, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Red2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber2": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Strobe2": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [64, 233],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "10Hz"
+        },
+        {
+          "dmxRange": [234, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Red3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber3": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Strobe3": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [64, 233],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "10Hz"
+        },
+        {
+          "dmxRange": [234, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    },
+    "Red4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber4": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "Strobe4": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [64, 233],
+          "type": "StrobeSpeed",
+          "speedStart": "1Hz",
+          "speedEnd": "10Hz"
+        },
+        {
+          "dmxRange": [234, 255],
+          "type": "SoundSensitivity",
+          "soundSensitivityStart": "low",
+          "soundSensitivityEnd": "high"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4 X 6 channel",
+      "shortName": "6ch",
+      "channels": [
+        "Red1",
+        "Green1",
+        "Blue1",
+        "White1",
+        "Amber1",
+        "Strobe1",
+        "Red2",
+        "Green2",
+        "Blue2",
+        "White2",
+        "Amber2",
+        "Strobe2",
+        "Red3",
+        "Green3",
+        "Blue3",
+        "White3",
+        "Amber3",
+        "Strobe3",
+        "Red4",
+        "Green4",
+        "Blue4",
+        "White4",
+        "Amber4",
+        "Strobe4"
+      ]
+    }
+  ]
+}
