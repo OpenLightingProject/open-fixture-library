@@ -1,0 +1,225 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Spider 8 x 3w",
+  "shortName": "LED Mini Spider",
+  "categories": ["Effect"],
+  "meta": {
+    "authors": ["Keysplayer"],
+    "createDate": "2022-04-15",
+    "lastModifyDate": "2022-04-15"
+  },
+  "links": {
+    "productPage": [
+      "https://www.bing.com/images/search?view=detailV2&ccid=JwI0uBhL&id=6DB1BFD06317EEB8364B09C51CCD2B848DE630C1&thid=OIP.JwI0uBhLJE-HQtW9r4BAgAHaHa&mediaurl=https%3a%2f%2fae01.alicdn.com%2fkf%2fHTB1rjSfXh_rK1RkHFqDq6yJAFXaz%2fMini-LED-Spider-8x6W-RGBW-Moving-Head-Light-Strobe-Stage-Dj-Disco-Mini-Spider-Moving-Head.jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.270234b8184b244f8742d5bdaf804080%3frik%3dwTDmjYQrzRzFCQ%26pid%3dImgRaw%26r%3d0&exph=800&expw=800&q=spider+mini+led&simid=608018879497657344&FORM=IRPRST&ck=34DFE9D34BED34E74EC7579F54CC376D&selectedIndex=1&ajaxhist=0&ajaxserp=0"
+    ]
+  },
+  "rdm": {
+    "modelId": 3
+  },
+  "physical": {
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [60, 150]
+    }
+  },
+  "availableChannels": {
+    "Tilt 1": {
+      "defaultValue": 1,
+      "constant": true,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "135deg"
+      }
+    },
+    "Tilt 2": {
+      "defaultValue": 2,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "135deg"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 3,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 4,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Generic"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "9%"
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "StrobeSpeed",
+          "speedStart": "10%",
+          "speedEnd": "15%"
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "StrobeSpeed",
+          "speedStart": "16%",
+          "speedEnd": "21%"
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "StrobeSpeed",
+          "speedStart": "22%",
+          "speedEnd": "27%"
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "StrobeSpeed",
+          "speedStart": "28%",
+          "speedEnd": "33%"
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "StrobeSpeed",
+          "speedStart": "34Hz",
+          "speedEnd": "39Hz"
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "StrobeSpeed",
+          "speedStart": "40%",
+          "speedEnd": "45%"
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "StrobeSpeed",
+          "speedStart": "46%",
+          "speedEnd": "51%"
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "StrobeSpeed",
+          "speedStart": "52%",
+          "speedEnd": "57%"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "StrobeSpeed",
+          "speedStart": "58%",
+          "speedEnd": "63%"
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "StrobeSpeed",
+          "speedStart": "64%",
+          "speedEnd": "69%"
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "StrobeSpeed",
+          "speedStart": "70%",
+          "speedEnd": "75%"
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "StrobeSpeed",
+          "speedStart": "76%",
+          "speedEnd": "81%"
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "StrobeSpeed",
+          "speedStart": "82%",
+          "speedEnd": "87%"
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "StrobeSpeed",
+          "speedStart": "88%",
+          "speedEnd": "92%"
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "93%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "Color Macros": {
+      "defaultValue": 5,
+      "capability": {
+        "type": "Effect",
+        "effectPreset": "ColorFade"
+      }
+    },
+    "Color Macros 2": {
+      "name": "Color Macros",
+      "highlightValue": 5,
+      "constant": true,
+      "capability": {
+        "type": "Effect",
+        "effectPreset": "ColorJump"
+      }
+    },
+    "Color Macros 3": {
+      "name": "Color Macros",
+      "defaultValue": 5,
+      "capability": {
+        "type": "Effect",
+        "effectPreset": "ColorJump"
+      }
+    },
+    "Effect Speed": {
+      "defaultValue": 6,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Reserved": {
+      "capability": {
+        "type": "Maintenance"
+      }
+    },
+    "Color Macros 4": {
+      "name": "Color Macros",
+      "defaultValue": 5,
+      "capability": {
+        "type": "Effect",
+        "effectPreset": "ColorFade"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7 channel",
+      "shortName": "7ch",
+      "channels": [
+        "Tilt 1",
+        "Tilt 2",
+        "Dimmer",
+        "Strobe",
+        "Color Macros",
+        "Effect Speed",
+        "Reserved"
+      ]
+    },
+    {
+      "name": "Effects by sound",
+      "channels": [
+        "Color Macros 4"
+      ]
+    }
+  ]
+}
