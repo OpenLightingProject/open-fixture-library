@@ -1,0 +1,268 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Stage Light LM30M",
+  "shortName": "LM30M",
+  "categories": ["Moving Head", "Dimmer"],
+  "meta": {
+    "authors": ["smmerwave"],
+    "createDate": "2022-04-17",
+    "lastModifyDate": "2022-04-17"
+  },
+  "links": {
+    "productPage": [
+      "https://betopperdj.com/products/betopper-45w-rgbw-spider-moving-head-lights?_pos=2&_sid=244652f13&_ss=r"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=FCGKK-Um0zY&t=8s"
+    ]
+  },
+  "physical": {
+    "power": 45
+  },
+  "availableChannels": {
+    "Y axis motor1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "135deg"
+      }
+    },
+    "Y axis motor2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "135deg"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction",
+          "comment": "No strobe"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Effect": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Effect",
+          "effectName": "No effect"
+        },
+        {
+          "dmxRange": [8, 17],
+          "type": "Effect",
+          "effectName": "1"
+        },
+        {
+          "dmxRange": [18, 27],
+          "type": "Effect",
+          "effectName": "2"
+        },
+        {
+          "dmxRange": [28, 37],
+          "type": "Effect",
+          "effectName": "3"
+        },
+        {
+          "dmxRange": [38, 47],
+          "type": "Effect",
+          "effectName": "4"
+        },
+        {
+          "dmxRange": [48, 57],
+          "type": "Effect",
+          "effectName": "5"
+        },
+        {
+          "dmxRange": [58, 67],
+          "type": "Effect",
+          "effectName": "6"
+        },
+        {
+          "dmxRange": [68, 77],
+          "type": "Effect",
+          "effectName": "7"
+        },
+        {
+          "dmxRange": [78, 87],
+          "type": "Effect",
+          "effectName": "8"
+        },
+        {
+          "dmxRange": [88, 97],
+          "type": "Effect",
+          "effectName": "9"
+        },
+        {
+          "dmxRange": [98, 107],
+          "type": "Effect",
+          "effectName": "10"
+        },
+        {
+          "dmxRange": [108, 117],
+          "type": "Effect",
+          "effectName": "11"
+        },
+        {
+          "dmxRange": [118, 127],
+          "type": "Effect",
+          "effectName": "12",
+          "speed": "fast"
+        },
+        {
+          "dmxRange": [128, 136],
+          "type": "Effect",
+          "effectName": "13",
+          "speed": "fast",
+          "duration": "instant",
+          "parameter": "off"
+        },
+        {
+          "dmxRange": [137, 146],
+          "type": "Effect",
+          "effectName": "14",
+          "speed": "slow",
+          "duration": "instant",
+          "parameter": "off"
+        },
+        {
+          "dmxRange": [147, 156],
+          "type": "Effect",
+          "effectName": "15",
+          "speed": "fast",
+          "duration": "instant",
+          "parameter": "off"
+        },
+        {
+          "dmxRange": [157, 166],
+          "type": "Effect",
+          "effectName": "16",
+          "speed": "fast",
+          "duration": "instant",
+          "parameter": "off"
+        },
+        {
+          "dmxRange": [167, 176],
+          "type": "Effect",
+          "effectName": "17",
+          "speed": "fast",
+          "duration": "instant",
+          "parameter": "off"
+        },
+        {
+          "dmxRange": [177, 186],
+          "type": "Effect",
+          "effectName": "18",
+          "speed": "fast",
+          "duration": "instant",
+          "parameter": "off"
+        },
+        {
+          "dmxRange": [187, 196],
+          "type": "Effect",
+          "effectName": "19",
+          "speed": "fast",
+          "duration": "instant",
+          "parameter": "off"
+        },
+        {
+          "dmxRange": [197, 206],
+          "type": "Effect",
+          "effectName": "20",
+          "speed": "fast",
+          "duration": "instant",
+          "parameter": "off"
+        },
+        {
+          "dmxRange": [207, 216],
+          "type": "Effect",
+          "effectName": "21",
+          "speed": "fast",
+          "duration": "instant",
+          "parameter": "off"
+        },
+        {
+          "dmxRange": [217, 226],
+          "type": "Effect",
+          "effectName": "22",
+          "speed": "fast",
+          "duration": "instant",
+          "parameter": "off"
+        },
+        {
+          "dmxRange": [227, 236],
+          "type": "Effect",
+          "effectName": "23",
+          "speed": "slow",
+          "duration": "instant",
+          "parameter": "off"
+        },
+        {
+          "dmxRange": [237, 246],
+          "type": "Effect",
+          "effectName": "24",
+          "speed": "slow",
+          "duration": "instant",
+          "parameter": "off"
+        },
+        {
+          "dmxRange": [247, 255],
+          "type": "Effect",
+          "effectName": "25",
+          "speed": "slow",
+          "duration": "0s",
+          "parameter": 0
+        }
+      ]
+    },
+    "Effect Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "No function": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX 7ch",
+      "shortName": "7ch",
+      "channels": [
+        "Y axis motor1",
+        "Y axis motor2",
+        "Dimmer",
+        "Strobe",
+        "Effect",
+        "Effect Speed",
+        "No function"
+      ]
+    }
+  ]
+}
