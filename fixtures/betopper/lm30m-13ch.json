@@ -1,0 +1,150 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "lm30m 13ch",
+  "shortName": "lm30m 13ch",
+  "categories": ["Color Changer", "Dimmer", "Moving Head"],
+  "meta": {
+    "authors": ["smmerwave"],
+    "createDate": "2022-04-17",
+    "lastModifyDate": "2022-04-17"
+  },
+  "links": {
+    "productPage": [
+      "https://betopperdj.com/products/betopper-45w-rgbw-spider-moving-head-lights?_pos=2&_sid=244652f13&_ss=r"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Y Axis motor1": {
+      "defaultValue": 10,
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "135deg"
+      }
+    },
+    "Y axis motor2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "135deg",
+        "angleEnd": "0deg"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "defaultValue": "0%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "0%",
+          "speedEnd": "100%"
+        }
+      ]
+    },
+    "1Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "1Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "1Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "1White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "2Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "2Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "2Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "2White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "13ch",
+      "channels": [
+        "Y Axis motor1",
+        "Y axis motor2",
+        "Dimmer",
+        "Strobe",
+        "1Red",
+        "1Green",
+        "1Blue",
+        "1White",
+        "2Red",
+        "2Green",
+        "2Blue",
+        "2White",
+        "No function"
+      ]
+    }
+  ]
+}
