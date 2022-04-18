@@ -202,7 +202,7 @@ figcaption ::v-deep summary {
   font-weight: 700;
   text-align: center;
 
-  &:not(:hover):not(:focus) {
+  &:not(:hover, :focus) {
     background: theme-color(card-background, 80%);
   }
 }
