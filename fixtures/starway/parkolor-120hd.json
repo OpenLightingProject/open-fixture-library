@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ParKolor 120HD",
+  "shortName": "ParKolor 120HD",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["PLDL"],
+    "createDate": "2022-04-19",
+    "lastModifyDate": "2022-04-19"
+  },
+  "links": {
+    "manual": [
+      "https://www.star-way.com/parkolor-120hd-3?cat=218840"
+    ],
+    "productPage": [
+      "https://www.star-way.com/parkolor-120hd-3?cat=218840"
+    ],
+    "video": [
+      "https://www.star-way.com/parkolor-120hd-3?cat=218840"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DIMMER",
+      "channels": [
+        "Dimmer",
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Zoom"
+      ]
+    }
+  ]
+}
