@@ -11,6 +11,12 @@
   "links": {
     "productPage": [
       "https://www.chauvetprofessional.eu/products/colorado-1-solo/"
+    ],
+    "manual": [
+      "https://www.chauvetprofessional.eu/wp-content/uploads//2018/01/COLORado_1_Solo_UM_Rev8.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=0hqRufKRupk"
     ]
   },
   "rdm": {
@@ -202,7 +208,7 @@
         }
       ]
     },
-    "Color Macros 2": {
+    "White Color Macros": {
       "defaultValue": "0%",
       "capabilities": [
         {
@@ -281,7 +287,7 @@
           "dmxRange": [10, 99],
           "type": "StrobeSpeed",
           "speedStart": "0Hz",
-          "speedEnd": "20Hz"
+          "speedEnd": "25Hz"
         },
         {
           "dmxRange": [100, 109],
@@ -623,12 +629,16 @@
     },
     "Step Duration": {
       "capability": {
-        "type": "EffectDuration"
+        "type": "EffectDuration",
+        "durationStart": "long",
+        "durationEnd": "short"
       }
     },
     "Fade Duration": {
       "capability": {
-        "type": "EffectDuration"
+        "type": "EffectDuration",
+        "durationStart": "long",
+        "durationEnd": "short"
       }
     }
   },
@@ -715,7 +725,7 @@
         "Hue",
         "Hue fine",
         "Saturation",
-        "Color Macros 2",
+        "White Color Macros",
         "Strobe",
         "Zoom",
         "Zoom Control",
