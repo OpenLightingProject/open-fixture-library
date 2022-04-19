@@ -628,14 +628,16 @@
       "capability": {
         "type": "EffectDuration",
         "durationStart": "long",
-        "durationEnd": "short"
+        "durationEnd": "short",
+        "helpWanted": "Is this the correct direction (same as menu control)?"
       }
     },
     "Fade Duration": {
       "capability": {
         "type": "EffectDuration",
         "durationStart": "long",
-        "durationEnd": "short"
+        "durationEnd": "short",
+        "helpWanted": "Is this the correct direction (same as menu control)?"
       }
     }
   },
