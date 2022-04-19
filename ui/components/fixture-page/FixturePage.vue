@@ -22,11 +22,12 @@
           <EmbettyVideo
             :type="video.type"
             :video-id="video.videoId"
-            :start-at="video.startAt" />
+            :start-at="video.startAt"
+            server-url="https://embetty.open-fixture-library.org" />
           <a
             :href="video.url"
-            rel="nofollow"
-            target="_blank">
+            target="_blank"
+            rel="nofollow noopener">
             <OflSvg name="youtube" />
             Watch video at {{ video.displayType }}
           </a>
@@ -34,7 +35,7 @@
       </section>
 
       <LabeledValue
-        v-if="links.length"
+        v-if="links.length > 0"
         name="links"
         label="Relevant links">
         <ul class="fixture-links">
@@ -42,8 +43,8 @@
             <a
               :href="link.url"
               :title="link.title"
-              rel="nofollow"
-              target="_blank">
+              target="_blank"
+              rel="nofollow noopener">
               <OflSvg :name="link.iconName" />
               {{ link.name }}
               <span v-if="link.type !== `other`" class="hostname">({{ link.hostname }})</span>
@@ -121,7 +122,8 @@
         </a>
         <a
           href="?loadAllModes"
-          :class="[`button`, isBrowser ? `secondary` : `primary`]"
+          class="button"
+          :class="isBrowser ? `secondary` : `primary`"
           rel="nofollow noindex"
           @click.prevent="modeNumberLoadLimit = undefined">
           Load all {{ fixture.modes.length }} modes
@@ -141,11 +143,12 @@
 }
 
 .fixture-videos {
-  text-align: center;
-  line-height: 1;
-  margin: 1rem 0 0;
   padding: 0;
+  margin: 1rem 0 0;
+  line-height: 1;
+  text-align: center;
 }
+
 .fixture-video {
   margin-bottom: 1rem;
 
@@ -161,37 +164,38 @@
 }
 
 .fixture-links {
-  margin: 0;
   padding: 0;
+  margin: 0;
   list-style: none;
 
   .hostname {
-    color: theme-color(text-secondary);
-    font-size: 0.9em;
     padding-left: 1ex;
+    font-size: 0.9em;
+    color: theme-color(text-secondary);
   }
 
   .link-other {
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
 .wheels {
-  white-space: nowrap;
   overflow: hidden;
   overflow-x: auto;
+  white-space: nowrap;
 }
 </style>
 
 <script>
+import { EmbettyVideo } from 'embetty-vue';
 import register from '../../../fixtures/register.json';
 
-import schemaProperties from '../../../lib/schema-properties.js';
 import Fixture from '../../../lib/model/Fixture.js';
+import { linksProperties } from '../../../lib/schema-properties.js';
 
-import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
+import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
 
 import CategoryBadge from '../../components/CategoryBadge.vue';
 import FixturePageMatrix from '../../components/fixture-page/FixturePageMatrix.vue';
@@ -206,6 +210,7 @@ const VIDEOS_TO_EMBED = 2;
 export default {
   components: {
     CategoryBadge,
+    EmbettyVideo,
     FixturePageMatrix,
     FixturePageMode,
     FixturePagePhysical,
@@ -213,7 +218,6 @@ export default {
     HelpWantedMessage,
     LabeledValue,
   },
-  mixins: [fixtureLinksMixin],
   props: {
     fixture: {
       type: Fixture,
@@ -226,12 +230,15 @@ export default {
     },
   },
   data() {
+    const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
     return {
       manufacturerColor: register.colors[this.fixture.manufacturer.key] || null,
       isBrowser: false,
       modeNumberLoadLimit: this.loadAllModes ? undefined : 5, // initially displayed modes, if limited
       modeNumberLoadThreshold: 15, // fixtures with more modes will be limited
       modeNumberLoadIncrement: 10, // how many modes a button click will load
+      linkTypeIconNames,
+      linkTypeNames,
     };
   },
   computed: {
@@ -249,7 +256,7 @@ export default {
     },
 
     /**
-     * @returns {Array.<Object>} Array of videos that can be embetted.
+     * @returns {object[]} Array of videos that can be embetted.
      */
     videos() {
       const videoUrls = this.fixture.getLinksOfType(`video`);
@@ -272,7 +279,7 @@ export default {
     links() {
       const links = [];
 
-      for (const linkType of Object.keys(schemaProperties.links)) {
+      for (const linkType of Object.keys(linksProperties)) {
         let linkDisplayNumber = 1;
         let linksOfType = this.fixture.getLinksOfType(linkType);
 
@@ -311,9 +318,7 @@ export default {
     },
   },
   mounted() {
-    if (process.browser) {
-      this.isBrowser = true;
-    }
+    this.isBrowser = true;
   },
 };
 
@@ -366,8 +371,8 @@ const supportedVideoFormats = {
 
 
 /**
- * @param {String} url The video URL.
- * @returns {Object|null} The embettable video data for the URL, or null if the video can not be embetted.
+ * @param {string} url The video URL.
+ * @returns {object | null} The embettable video data for the URL, or null if the video can not be embetted.
  */
 function getEmbettableVideoData(url) {
   const videoTypes = Object.keys(supportedVideoFormats);
@@ -391,8 +396,8 @@ function getEmbettableVideoData(url) {
 }
 
 /**
- * @param {String} url The URL to extract the hostname from.
- * @returns {String} The hostname of the provided URL, or the whole URL if the hostname could not be determined.
+ * @param {string} url The URL to extract the hostname from.
+ * @returns {string} The hostname of the provided URL, or the whole URL if the hostname could not be determined.
  */
 function getHostname(url) {
   // adapted from https://stackoverflow.com/a/21553982/451391

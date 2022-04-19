@@ -1,8 +1,8 @@
 <template>
   <A11yDialog
-    id="help-wanted"
+    id="help-wanted-dialog"
     ref="dialog"
-    :cancellable="state !== `loading`"
+    :is-alert-dialog="state === `loading`"
     :shown="context !== null"
     :title="title"
     @hide="onHide()">
@@ -40,7 +40,7 @@
     </template>
 
     <template v-else-if="state === `success`">
-      Your information was successfully uploaded to GitHub (see the <a :href="issueUrl" target="_blank">issue</a>). The fixture will be updated as soon as your information has been reviewed. Thank you for your contribution!
+      Your information was successfully uploaded to GitHub (see the <a :href="issueUrl" target="_blank" rel="noopener">issue</a>). The fixture will be updated as soon as your information has been reviewed. Thank you for your contribution!
 
       <div class="button-bar right">
         <a href="#" class="button secondary" @click.prevent="hide()">Close</a>
@@ -56,7 +56,13 @@
       <div class="button-bar right">
         <a href="#" class="button secondary" @click.prevent="hide()">Close</a>
         <a :href="mailtoUrl" class="button secondary" target="_blank">Send email</a>
-        <a href="https://github.com/OpenLightingProject/open-fixture-library/issues/new" class="button primary" target="_blank">Create issue on GitHub</a>
+        <a
+          href="https://github.com/OpenLightingProject/open-fixture-library/issues/new"
+          class="button primary"
+          target="_blank"
+          rel="noopener">
+          Create issue on GitHub
+        </a>
       </div>
     </template>
 
@@ -110,7 +116,11 @@ export default {
         return `Failed to send message`;
       }
 
-      return `Improve ${this.type === `plugin` ? `plugin` : `fixture`}`;
+      if (this.type === `plugin`) {
+        return `Improve plugin`;
+      }
+
+      return `Improve fixture`;
     },
     location() {
       if (this.type === `capability`) {
@@ -167,9 +177,10 @@ export default {
 
       const body = Object.entries(mailBodyData).filter(
         ([key, value]) => value !== null,
-      ).map(
-        ([key, value]) => `${key}:${value.includes(`\n`) ? `\n` : ` `}${value}`,
-      ).join(`\n`);
+      ).map(([key, value]) => {
+        const separator = value.includes(`\n`) ? `\n` : ` `;
+        return `${key}:${separator}${value}`;
+      }).join(`\n`);
 
       return `mailto:florian-edelmann@online.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     },

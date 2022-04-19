@@ -7,7 +7,7 @@ const environmentVariablesOfl = {
   'GITHUB_USER_TOKEN': secrets.OFL_GITHUB_USER_TOKEN,
   'NODE_ENV': `production`,
   'PORT': `5000`,
-  'WEBSITE_URL': `https://open-fixture-library.org`,
+  'WEBSITE_URL': `https://open-fixture-library.org/`,
 };
 
 const environmentVariablesEmbetty = {
@@ -23,7 +23,8 @@ module.exports = {
   apps: [
     {
       name: `ofl`,
-      script: `main.js`,
+      script: `./node_modules/nuxt/bin/nuxt.js`,
+      args: `start`,
       cwd: `/home/flo/open-fixture-library`,
       'log_date_format': `YYYY-MM-DD HH:mm:ss Z`,
       env: environmentVariablesOfl,

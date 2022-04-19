@@ -3,16 +3,16 @@
   "name": "Stealth Wash Zoom",
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
-    "authors": ["Anonymous"],
+    "authors": ["Anonymous", "JonahKr"],
     "createDate": "2019-01-05",
-    "lastModifyDate": "2019-05-17"
+    "lastModifyDate": "2021-09-13"
   },
   "links": {
     "manual": [
-      "https://cdb.s3.amazonaws.com/ItemRelatedFiles/11254/Stealth%20Wash%20Zoom%20User%20Manual%20Revised%20092018.pdf"
+      "https://cdb.s3.amazonaws.com/ItemRelatedFiles/13274/Stealth%20Wash%20Zoom%20User%20Manual%20Revised%20092018.pdf"
     ],
     "productPage": [
-      "https://www.eliminatorlighting.com/stealth-wash-zoom"
+      "https://www.adj.com/stealth-wash-zoom"
     ],
     "video": [
       "https://www.youtube.com/watch?v=M7ALeJ3_jGc",
@@ -57,72 +57,86 @@
         {
           "dmxRange": [6, 10],
           "type": "ColorPreset",
-          "comment": "Red"
+          "comment": "Red",
+          "colors": ["#ff0000"]
         },
         {
           "dmxRange": [11, 15],
           "type": "ColorPreset",
-          "comment": "Green"
+          "comment": "Green",
+          "colors": ["#00ff00"]
         },
         {
           "dmxRange": [16, 20],
           "type": "ColorPreset",
-          "comment": "Blue"
+          "comment": "Blue",
+          "colors": ["#0000ff"]
         },
         {
           "dmxRange": [21, 25],
           "type": "ColorPreset",
-          "comment": "White"
+          "comment": "White",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [26, 30],
           "type": "ColorPreset",
-          "comment": "Red + Green"
+          "comment": "Red + Green aka Yellow",
+          "colors": ["#ffff00"]
         },
         {
           "dmxRange": [31, 35],
           "type": "ColorPreset",
-          "comment": "Green + Blue"
+          "comment": "Green + Blue aka Cyan",
+          "colors": ["#00ffff"]
         },
         {
           "dmxRange": [36, 40],
           "type": "ColorPreset",
-          "comment": "Blue + White"
+          "comment": "Blue + White",
+          "colors": ["#8080ff"]
         },
         {
           "dmxRange": [41, 45],
           "type": "ColorPreset",
-          "comment": "Red + Blue"
+          "comment": "Red + Blue aka Magenta",
+          "colors": ["#ff00ff"]
         },
         {
           "dmxRange": [46, 50],
           "type": "ColorPreset",
-          "comment": "Green + White"
+          "comment": "Green + White",
+          "colors": ["#80ff80"]
         },
         {
           "dmxRange": [51, 55],
           "type": "ColorPreset",
-          "comment": "Red + White"
+          "comment": "Red + White",
+          "colors": ["#ff8080"]
         },
         {
           "dmxRange": [56, 60],
           "type": "ColorPreset",
-          "comment": "Red + Green + Blue"
+          "comment": "Red + Green + Blue aka White",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [61, 65],
           "type": "ColorPreset",
-          "comment": "Red + Green + White"
+          "comment": "Red + Green + White",
+          "colors": ["#ffff55"]
         },
         {
           "dmxRange": [66, 70],
           "type": "ColorPreset",
-          "comment": "Green + Blue + White"
+          "comment": "Green + Blue + White",
+          "colors": ["#80ffff"]
         },
         {
           "dmxRange": [71, 75],
           "type": "ColorPreset",
-          "comment": "Red + Green + Blue + White"
+          "comment": "Red + Green + Blue + White aka brighter White",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [76, 127],
@@ -272,72 +286,86 @@
         {
           "dmxRange": [11, 20],
           "type": "ColorPreset",
-          "comment": "Red"
+          "comment": "Red",
+          "colors": ["#ff0000"]
         },
         {
           "dmxRange": [21, 30],
           "type": "ColorPreset",
-          "comment": "Green"
+          "comment": "Green",
+          "colors": ["#00ff00"]
         },
         {
           "dmxRange": [31, 40],
           "type": "ColorPreset",
-          "comment": "Blue"
+          "comment": "Blue",
+          "colors": ["#0000ff"]
         },
         {
           "dmxRange": [41, 50],
           "type": "ColorPreset",
-          "comment": "White"
+          "comment": "White",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [51, 60],
           "type": "ColorPreset",
-          "comment": "Red + Green"
+          "comment": "Red + Green aka Yellow",
+          "colors": ["#ffff00"]
         },
         {
           "dmxRange": [61, 70],
           "type": "ColorPreset",
-          "comment": "Green + Blue"
+          "comment": "Green + Blue aka Cyan",
+          "colors": ["#00ffff"]
         },
         {
           "dmxRange": [71, 80],
           "type": "ColorPreset",
-          "comment": "Blue + White"
+          "comment": "Blue + White",
+          "colors": ["#8080ff"]
         },
         {
           "dmxRange": [81, 90],
           "type": "ColorPreset",
-          "comment": "Red + Blue"
+          "comment": "Red + Blue aka Magenta",
+          "colors": ["#ff00ff"]
         },
         {
           "dmxRange": [91, 100],
           "type": "ColorPreset",
-          "comment": "Green + White"
+          "comment": "Green + White",
+          "colors": ["#80ff80"]
         },
         {
           "dmxRange": [101, 110],
           "type": "ColorPreset",
-          "comment": "Red + White"
+          "comment": "Red + White",
+          "colors": ["#ff8080"]
         },
         {
           "dmxRange": [111, 120],
           "type": "ColorPreset",
-          "comment": "Red + Green + Blue"
+          "comment": "Red + Green + Blue aka White",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [121, 130],
           "type": "ColorPreset",
-          "comment": "Red + Green + White"
+          "comment": "Red + Green + White",
+          "colors": ["#ffff55"]
         },
         {
           "dmxRange": [131, 140],
           "type": "ColorPreset",
-          "comment": "Green + Blue + White"
+          "comment": "Green + Blue + White",
+          "colors": ["#55ffff"]
         },
         {
           "dmxRange": [141, 150],
           "type": "ColorPreset",
-          "comment": "Red + Green + Blue + White"
+          "comment": "Red + Green + Blue + White aka brighter White",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [151, 255],

@@ -44,6 +44,7 @@ h2 {
 
 .monospaced {
   font-family: $font-stack-code;
+  font-weight: 400;
 }
 </style>
 

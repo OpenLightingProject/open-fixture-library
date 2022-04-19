@@ -1,4 +1,4 @@
-const { normalizeAngularSpeedDirection } = require(`./gdtf-helpers.js`);
+import { normalizeAngularSpeedDirection } from './gdtf-helpers.js';
 
 const deprecatedGdtfAttributes = {
   ActiveZone: undefined, // From https://gitlab.com/petrvanek/gdtf-libraries/blob/master/gdtf.xsd
@@ -81,24 +81,31 @@ const deprecatedGdtfAttributes = {
     beforePhysicalPropertyHook(capability, gdtfCapability, attributeName) {
       const rgbNumber = Number.parseInt(attributeName.slice(8), 10);
 
-      if (rgbNumber === 1) {
-        capability.color = guessColorComponentName(gdtfCapability, `Red`, `Cyan`);
-      }
-      else if (rgbNumber === 2) {
-        capability.color = guessColorComponentName(gdtfCapability, `Green`, `Magenta`);
-      }
-      else if (rgbNumber === 3) {
-        capability.color = guessColorComponentName(gdtfCapability, `Blue`, `Yellow`);
-      }
-      else if (rgbNumber === 4) {
-        capability.color = `Amber`;
-      }
-      else if (rgbNumber === 5) {
-        capability.color = `White`;
-      }
-      else {
+      switch (rgbNumber) {
+        case 1: {
+          capability.color = guessColorComponentName(gdtfCapability, `Red`, `Cyan`);
+          break;
+        }
+        case 2: {
+          capability.color = guessColorComponentName(gdtfCapability, `Green`, `Magenta`);
+          break;
+        }
+        case 3: {
+          capability.color = guessColorComponentName(gdtfCapability, `Blue`, `Yellow`);
+          break;
+        }
+        case 4: {
+          capability.color = `Amber`;
+          break;
+        }
+        case 5: {
+          capability.color = `White`;
+          break;
+        }
+        default: {
         // This is most likely wrong but enables the user to make an informed choice.
-        capability.color = gdtfCapability._channelFunction._attribute.$.Pretty || `Unknown`;
+          capability.color = gdtfCapability._channelFunction._attribute.$.Pretty || `Unknown`;
+        }
       }
     },
   },
@@ -495,10 +502,10 @@ const deprecatedGdtfAttributes = {
 };
 
 /**
- * @param {Object} gdtfCapability The enhanced <ChannelSet> XML object.
- * @param {String} primaryColor The color that this capability is most likely.
- * @param {String} secondaryColor The color that this capability is second most likely.
- * @returns {String} Either the primary, or the secondary color.
+ * @param {object} gdtfCapability The enhanced <ChannelSet> XML object.
+ * @param {string} primaryColor The color that this capability is most likely.
+ * @param {string} secondaryColor The color that this capability is second most likely.
+ * @returns {string} Either the primary, or the secondary color.
  */
 function guessColorComponentName(gdtfCapability, primaryColor, secondaryColor) {
   const name = (gdtfCapability._channelFunction._attribute.$.Pretty || ``).toLowerCase();
@@ -518,4 +525,4 @@ function guessColorComponentName(gdtfCapability, primaryColor, secondaryColor) {
   return primaryColor;
 }
 
-module.exports = deprecatedGdtfAttributes;
+export default deprecatedGdtfAttributes;

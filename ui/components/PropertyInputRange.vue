@@ -10,7 +10,7 @@
         :maximum="end !== `invalid` ? end : rangeMax"
         :required="required || rangeIncomplete"
         :hint="startHint"
-        :lazy="true"
+        lazy
         @focus.native="onFocus($event)"
         @blur.native="onBlur($event)" />
     </Validate>
@@ -24,7 +24,7 @@
         :maximum="rangeMax"
         :required="required || rangeIncomplete"
         :hint="endHint"
-        :lazy="true"
+        lazy
         @focus.native="onFocus($event)"
         @blur.native="onBlur($event)" />
     </Validate>
@@ -126,8 +126,8 @@ export default {
     this.$emit(`vf:validate`, this.validationData);
   },
   methods: {
-    // Called from parent component
-    focus() { // eslint-disable-line vue/no-unused-properties
+    /** @public */
+    focus() {
       this.$refs.firstInput.focus();
     },
     onFocus(event) {
@@ -142,9 +142,9 @@ export default {
 };
 
 /**
- * @param {Number|null} start Start value of the range or null.
- * @param {Number|null} end End value of the range or null.
- * @returns {[Number, Number]|null} Range array with the inputs or null if both inputs were null.
+ * @param {number | null} start Start value of the range or null.
+ * @param {number | null} end End value of the range or null.
+ * @returns {[number, number] | null} Range array with the inputs or null if both inputs were null.
  */
 function getRange(start, end) {
   if (start === null && end === null) {
@@ -154,4 +154,3 @@ function getRange(start, end) {
   return [start, end];
 }
 </script>
-

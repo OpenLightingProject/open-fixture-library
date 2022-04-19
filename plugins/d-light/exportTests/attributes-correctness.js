@@ -1,20 +1,20 @@
-const xml2js = require(`xml2js`);
+import xml2js from 'xml2js';
 
 /**
- * @typedef {Object} ExportFile
- * @property {String} name File name, may include slashes to provide a folder structure.
- * @property {String} content File content.
- * @property {String} mimetype File mime type.
- * @property {Array.<Fixture>|null} fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
- * @property {String|null} mode Mode's shortName if given file only describes a single mode.
+ * @typedef {object} ExportFile
+ * @property {string} name File name, may include slashes to provide a folder structure.
+ * @property {string} content File content.
+ * @property {string} mimetype File mime type.
+ * @property {Fixture[] | null} fixtures Fixture objects that are described in given file; may be omitted if the file doesn't belong to any fixture (e.g. manufacturer information).
+ * @property {string | null} mode Mode's shortName if given file only describes a single mode.
  */
 
 /**
  * @param {ExportFile} exportFile The file returned by the plugins' export module.
- * @param {Array.<ExportFile>} allExportFiles An array of all export files.
- * @returns {Promise.<undefined, Array.<String>|String>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
+ * @param {ExportFile[]} allExportFiles An array of all export files.
+ * @returns {Promise<void, string[] | string>} Resolve when the test passes or reject with an array of errors or one error if the test fails.
  */
-module.exports = async function testAttributesCorrectness(exportFile, allExportFiles) {
+export default async function testAttributesCorrectness(exportFile, allExportFiles) {
   try {
     const xml = await xml2js.parseStringPromise(exportFile.content);
     const errors = [];
@@ -42,4 +42,4 @@ module.exports = async function testAttributesCorrectness(exportFile, allExportF
   catch (parseError) {
     throw `Error parsing XML: ${parseError.toString()}`;
   }
-};
+}

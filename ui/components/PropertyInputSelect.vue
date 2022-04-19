@@ -1,6 +1,5 @@
 <template>
   <select
-    ref="input"
     v-model="localValue"
     :required="required"
     :class="{ empty: value === `` }">
@@ -32,11 +31,6 @@ export default {
       required: false,
       default: null,
     },
-    autoFocus: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
     value: {
       type: null,
       required: true,
@@ -52,14 +46,10 @@ export default {
       },
     },
   },
-  mounted() {
-    if (this.autoFocus) {
-      this.focus();
-    }
-  },
   methods: {
+    /** @public */
     focus() {
-      this.$refs.input.focus();
+      this.$el.focus();
     },
   },
 };

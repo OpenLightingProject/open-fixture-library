@@ -5,8 +5,8 @@
         v-for="cat of value"
         :key="cat"
         :category="cat"
-        :selected="true"
-        :selectable="true"
+        selected
+        selectable
         @click="deselect(cat)"
         @focus.native="onFocus()"
         @blur.native="onBlur($event)" />
@@ -16,8 +16,7 @@
       v-for="cat of unselectedCategories"
       :key="cat"
       :category="cat"
-      :selected="false"
-      :selectable="true"
+      selectable
       @click="select(cat)"
       @focus.native="onFocus()"
       @blur.native="onBlur($event)" />
@@ -56,18 +55,18 @@ export default {
     },
     unselectedCategories() {
       return this.allCategories.filter(
-        cat => !this.value.includes(cat),
+        category => !this.value.includes(category),
       );
     },
   },
   methods: {
-    select(selectedCat) {
-      const updatedCategoryList = [...this.value, selectedCat];
+    select(selectedCategory) {
+      const updatedCategoryList = [...this.value, selectedCategory];
       this.$emit(`input`, updatedCategoryList);
       this.onBlur();
     },
-    deselect(deselectedCat) {
-      const updatedCategoryList = this.value.filter(cat => cat !== deselectedCat);
+    deselect(deselectedCategory) {
+      const updatedCategoryList = this.value.filter(category => category !== deselectedCategory);
       this.$emit(`input`, updatedCategoryList);
       this.onBlur();
     },

@@ -1,6 +1,5 @@
 <template>
   <input
-    ref="input"
     :required="required"
     :min="min"
     :max="max"
@@ -29,11 +28,6 @@ export default {
       type: String,
       required: false,
       default: null,
-    },
-    autoFocus: {
-      type: Boolean,
-      required: false,
-      default: false,
     },
     minimum: {
       type: [Number, String], // can be the string `invalid`
@@ -95,8 +89,12 @@ export default {
     step() {
       return this.schemaProperty.type === `integer` ? 1 : `any`;
     },
-    // Used by vue-form
-    validationData() { // eslint-disable-line vue/no-unused-properties
+
+    /**
+     * @public
+     * @returns {Record<string, string | null>} Validation data for vue-form
+     */
+    validationData() {
       return {
         min: this.min === null ? null : `${this.min}`,
         max: this.max === null ? null : `${this.max}`,
@@ -107,24 +105,22 @@ export default {
       };
     },
   },
-  mounted() {
-    if (this.autoFocus) {
-      this.focus();
-    }
-
-    this.$watch(`validationData`, function(newValidationData) {
-      this.$emit(`vf:validate`, newValidationData);
-    }, {
+  watch: {
+    validationData: {
+      handler(newValidationData) {
+        this.$emit(`vf:validate`, newValidationData);
+      },
       deep: true,
       immediate: true,
-    });
+    },
   },
   methods: {
+    /** @public */
     focus() {
-      this.$refs.input.focus();
+      this.$el.focus();
     },
     update() {
-      const input = this.$refs.input;
+      const input = this.$el;
       if (input.validity && input.validity.badInput) {
         this.$emit(`input`, `invalid`);
         return;
@@ -148,4 +144,3 @@ export default {
   },
 };
 </script>
-

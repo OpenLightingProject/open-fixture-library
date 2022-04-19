@@ -1,4 +1,4 @@
-const importJson = require(`../../../../lib/import-json.js`);
+import importJson from '../../../../lib/import-json.js';
 
 /** @typedef {import('openapi-backend').Context} OpenApiBackendContext */
 /** @typedef {import('../../index.js').ApiResponse} ApiResponse */
@@ -6,12 +6,12 @@ const importJson = require(`../../../../lib/import-json.js`);
 /**
  * Returns general information about import and export plugins.
  * @param {OpenApiBackendContext} ctx Passed from OpenAPI Backend.
- * @returns {Promise.<ApiResponse>} The handled response.
+ * @returns {Promise<ApiResponse>} The handled response.
  */
-async function getPluginByKey({ request }) {
+export async function getPluginByKey({ request }) {
   let { pluginKey } = request.params;
 
-  const plugins = await importJson(`../../../../plugins/plugins.json`, __dirname);
+  const plugins = await importJson(`../../../../plugins/plugins.json`, import.meta.url);
 
   if (!(pluginKey in plugins.data)) {
     return {
@@ -26,7 +26,7 @@ async function getPluginByKey({ request }) {
     pluginKey = plugins.data[pluginKey].newPlugin;
   }
 
-  const pluginData = await importJson(`../../../../plugins/${pluginKey}/plugin.json`, __dirname);
+  const pluginData = await importJson(`../../../../plugins/${pluginKey}/plugin.json`, import.meta.url);
 
   return {
     body: {
@@ -44,6 +44,3 @@ async function getPluginByKey({ request }) {
     },
   };
 }
-
-
-module.exports = { getPluginByKey };

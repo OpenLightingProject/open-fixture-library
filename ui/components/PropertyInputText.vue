@@ -1,12 +1,11 @@
 <template>
   <input
-    ref="input"
+    v-model.trim="localValue"
     :required="required"
     :placeholder="hint"
     :pattern="schemaProperty.pattern"
     :minlength="schemaProperty.minLength"
     :maxlength="schemaProperty.maxLength"
-    :value="value"
     type="text"
     @input="update()"
     @blur="onBlur()">
@@ -29,19 +28,22 @@ export default {
       required: false,
       default: null,
     },
-    autoFocus: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
     value: {
       type: null,
       required: true,
     },
   },
+  data() {
+    return {
+      localValue: ``,
+    };
+  },
   computed: {
-    // Used by vue-form
-    validationData() { // eslint-disable-line vue/no-unused-properties
+    /**
+     * @public
+     * @returns {Record<string, string | null>} Validation data for vue-form
+     */
+    validationData() {
       return {
         pattern: `pattern` in this.schemaProperty ? `${this.schemaProperty.pattern}` : null,
         minlength: `minLength` in this.schemaProperty ? `${this.schemaProperty.minLength}` : null,
@@ -49,29 +51,33 @@ export default {
       };
     },
   },
-  mounted() {
-    if (this.autoFocus) {
-      this.focus();
-    }
-
-    this.$watch(`validationData`, function(newValidationData) {
-      this.$emit(`vf:validate`, newValidationData);
-    }, {
+  watch: {
+    value: {
+      handler(newValue) {
+        this.localValue = newValue ? String(newValue) : ``;
+      },
+      immediate: true,
+    },
+    validationData: {
+      handler(newValidationData) {
+        this.$emit(`vf:validate`, newValidationData);
+      },
       deep: true,
       immediate: true,
-    });
+    },
   },
   methods: {
+    /** @public */
     focus() {
-      this.$refs.input.focus();
+      this.$el.focus();
     },
     update() {
-      this.$emit(`input`, this.$refs.input.value);
+      this.$emit(`input`, this.localValue);
     },
-    onBlur() {
-      this.$emit(`blur`, this.$refs.input.value);
+    async onBlur() {
+      await this.$nextTick();
+      this.$emit(`blur`, this.localValue);
     },
   },
 };
 </script>
-

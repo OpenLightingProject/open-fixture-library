@@ -1,5 +1,5 @@
 <template>
-  <div class="linkRow">
+  <div class="link-row">
     <select ref="linkTypeSelect" v-model="type">
       <option
         v-for="linkType of linkTypes"
@@ -13,47 +13,59 @@
       <PropertyInputText
         v-model="url"
         :name="`links-${link.uuid}`"
-        :schema-property="properties.definitions.urlString"
+        :schema-property="schemaDefinitions.urlString"
         type="url"
+        :hint="placeholder"
         required />
     </Validate>
 
-    <a
+    <button
       v-if="canRemove"
-      href="#remove-link"
+      type="button"
+      class="icon-button"
       title="Remove link"
       @click.prevent="$emit(`remove`)">
       <OflSvg name="close" />
-    </a>
+    </button>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.linkRow {
+.link-row {
   margin-bottom: 4px;
+
+  select {
+    width: 17ex;
+    margin-right: 1ex;
+  }
+
+  & > .icon {
+    margin-right: 0.5ex;
+  }
 }
 
-select {
-  width: 17ex;
-  margin-right: 1ex;
-}
-
-.icon {
-  margin-right: 0.5ex;
+.icon-button {
+  margin-left: 0.5ex;
 }
 </style>
 
 <script>
-import schemaProperties from '../../../lib/schema-properties.js';
-import fixtureLinksMixin from '../../assets/scripts/fixture-links-mixin.js';
+import { schemaDefinitions, linksProperties } from '../../../lib/schema-properties.js';
+import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
 
 import PropertyInputText from '../PropertyInputText.vue';
+
+const placeholders = {
+  manual: `e.g. https://example.org/fixture/manual.pdf`,
+  productPage: `e.g. https://example.org/fixture`,
+  video: `e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ`,
+  other: `e.g. https://example.org/relevant-page`,
+};
 
 export default {
   components: {
     PropertyInputText,
   },
-  mixins: [fixtureLinksMixin],
   props: {
     link: {
       type: Object,
@@ -69,9 +81,12 @@ export default {
     },
   },
   data() {
+    const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
     return {
-      properties: schemaProperties,
-      linkTypes: Object.keys(schemaProperties.links),
+      schemaDefinitions,
+      linkTypes: Object.keys(linksProperties),
+      linkTypeIconNames,
+      linkTypeNames,
     };
   },
   computed: {
@@ -91,13 +106,15 @@ export default {
         this.$emit(`set-url`, url);
       },
     },
+    placeholder() {
+      return placeholders[this.type];
+    },
   },
   methods: {
-    // Called from parent
-    focus() { // eslint-disable-line vue/no-unused-properties
+    /** @public */
+    focus() {
       this.$refs.linkTypeSelect.focus();
     },
   },
 };
 </script>
-

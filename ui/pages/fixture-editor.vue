@@ -61,8 +61,8 @@
           <LabeledInput :formstate="formstate" name="author" label="Your name">
             <PropertyInputText
               v-model="fixture.metaAuthor"
-              :schema-property="properties.definitions.nonEmptyString"
-              :required="true"
+              :schema-property="schemaDefinitions.nonEmptyString"
+              required
               name="author"
               hint="e.g. Anonymous" />
           </LabeledInput>
@@ -74,7 +74,7 @@
             hint="If you want to be mentioned in the pull request.">
             <PropertyInputText
               v-model="githubUsername"
-              :schema-property="properties.definitions.nonEmptyString"
+              :schema-property="schemaDefinitions.nonEmptyString"
               name="github-username" />
           </LabeledInput>
 
@@ -127,14 +127,15 @@ noscript.card {
 
 <script>
 import scrollIntoView from 'scroll-into-view';
+
+import { schemaDefinitions } from '../../lib/schema-properties.js';
 import {
   constants,
+  getEmptyFormState,
   getEmptyFixture,
   getEmptyChannel,
   getEmptyMode,
 } from '../assets/scripts/editor-utils.js';
-
-import schemaProperties from '../../lib/schema-properties.js';
 
 import EditorChannelDialog from '../components/editor/EditorChannelDialog.vue';
 import EditorChooseChannelEditModeDialog from '../components/editor/EditorChooseChannelEditModeDialog.vue';
@@ -160,41 +161,27 @@ export default {
     LabeledInput,
     PropertyInputText,
   },
-  async asyncData({ query, $axios, error }) {
-    const initFixture = getEmptyFixture();
-
-    if (query.prefill) {
-      try {
-        const prefillObject = JSON.parse(query.prefill);
-        for (const key of Object.keys(prefillObject)) {
-          if (isPrefillable(prefillObject, key)) {
-            initFixture[key] = prefillObject[key];
-          }
-        }
-      }
-      catch (parseError) {
-        console.log(`prefill query could not be parsed:`, query.prefill, parseError);
-      }
-    }
-
+  async asyncData({ $axios, error }) {
+    let manufacturers;
     try {
-      const manufacturers = await $axios.$get(`/api/v1/manufacturers`);
-
-      return {
-        formstate: {},
-        readyToAutoSave: false,
-        restoredData: null,
-        fixture: initFixture,
-        channel: getEmptyChannel(),
-        githubUsername: ``,
-        honeypot: ``,
-        manufacturers,
-        properties: schemaProperties,
-      };
+      manufacturers = await $axios.$get(`/api/v1/manufacturers`);
     }
     catch (requestError) {
       return error(requestError);
     }
+    return { manufacturers };
+  },
+  data() {
+    return {
+      formstate: getEmptyFormState(),
+      readyToAutoSave: false,
+      restoredData: null,
+      fixture: getEmptyFixture(),
+      channel: getEmptyChannel(),
+      githubUsername: ``,
+      honeypot: ``,
+      schemaDefinitions,
+    };
   },
   head() {
     const title = `Fixture Editor`;
@@ -220,11 +207,14 @@ export default {
   beforeMount() {
     this.$root._oflRestoreComplete = false;
   },
-  mounted() {
+  async mounted() {
+    this.applyQueryPrefillData();
     this.applyStoredPrefillData();
 
     // let all components initialize without auto-focus
-    this.$nextTick(() => this.restoreAutoSave());
+    await this.$nextTick();
+
+    this.restoreAutoSave();
   },
   methods: {
     addNewMode() {
@@ -240,8 +230,8 @@ export default {
     },
 
     /**
-     * @param {String} channelUuid The channel's UUID.
-     * @returns {String} The channel's name.
+     * @param {string} channelUuid The channel's UUID.
+     * @returns {string} The channel's name.
      */
     getChannelName(channelUuid) {
       const channel = this.fixture.availableChannels[channelUuid];
@@ -260,10 +250,11 @@ export default {
 
     /**
      * Called from {@link EditorMode}.
-     * @param {String} channelUuid The channel's UUID.
-     * @returns {Boolean} True if the channel's name is not used in another channel, too.
+     * @public
+     * @param {string} channelUuid The channel's UUID.
+     * @returns {boolean} True if the channel's name is not used in another channel, too.
      */
-    isChannelNameUnique(channelUuid) { // eslint-disable-line vue/no-unused-properties
+    isChannelNameUnique(channelUuid) {
       const channelName = this.getChannelName(channelUuid);
 
       return Object.keys(this.fixture.availableChannels).every(
@@ -272,8 +263,8 @@ export default {
     },
 
     /**
-     * @param {String} channelUuid The channel's UUID.
-     * @param {String|null} [modeUuid] The mode's UUID. If not supplied, remove channel everywhere.
+     * @param {string} channelUuid The channel's UUID.
+     * @param {string | null} [modeUuid] The mode's UUID. If not supplied, remove channel everywhere.
      */
     removeChannel(channelUuid, modeUuid) {
       if (modeUuid) {
@@ -306,7 +297,7 @@ export default {
 
     /**
      * Saves the entered user data to the browser's local storage if available.
-     * @param {'fixture'|'channel'} objectName The object to save.
+     * @param {'fixture' | 'channel'} objectName The object to save.
      */
     autoSave(objectName) {
       if (!this.readyToAutoSave) {
@@ -363,6 +354,24 @@ export default {
       window.scrollTo(0, 0);
     },
 
+    applyQueryPrefillData() {
+      if (!this.$route.query.prefill) {
+        return;
+      }
+
+      try {
+        const prefillObject = JSON.parse(this.$route.query.prefill);
+        for (const key of Object.keys(prefillObject)) {
+          if (isPrefillable(prefillObject, key)) {
+            this.fixture[key] = prefillObject[key];
+          }
+        }
+      }
+      catch (parseError) {
+        console.log(`prefill query could not be parsed:`, this.$route.query.prefill, parseError);
+      }
+    },
+
     applyStoredPrefillData() {
       if (this.fixture.metaAuthor === ``) {
         this.fixture.metaAuthor = localStorage.getItem(`prefillAuthor`) || ``;
@@ -408,7 +417,7 @@ export default {
       this.clearAutoSave();
     },
 
-    reset() {
+    async reset() {
       this.fixture = getEmptyFixture();
       this.channel = getEmptyChannel();
       this.honeypot = ``;
@@ -419,19 +428,19 @@ export default {
         query: {}, // clear prefill query
       });
 
-      this.$nextTick(() => {
-        this.formstate._reset();
-        this.$refs.existingManufacturerSelect.focus();
-        window.scrollTo(0, 0);
-      });
+      await this.$nextTick();
+
+      this.formstate._reset();
+      this.$refs.existingManufacturerSelect.focus();
+      window.scrollTo(0, 0);
     },
   },
 };
 
 /**
- * @param {Object} prefillObject The object supplied in the page query.
- * @param {String} key The key to check.
- * @returns {Boolean} True if the value prefillObject[key] is prefillable, false otherwise.
+ * @param {object} prefillObject The object supplied in the page query.
+ * @param {string} key The key to check.
+ * @returns {boolean} True if the value prefillObject[key] is prefillable, false otherwise.
  */
 function isPrefillable(prefillObject, key) {
   const allowedPrefillValues = {

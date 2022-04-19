@@ -47,16 +47,17 @@
 .expand-all,
 .collapse-all {
   margin-left: 1ex;
+  font-size: 0.8rem;
 }
 
 ol.mode-channels {
-  padding-left: 1.9em;
   min-height: 1em;
+  padding-left: 1.9em;
 
   // switched channels
   ::v-deep ol {
-    list-style-type: lower-alpha;
     padding-left: 1.1em;
+    list-style-type: lower-alpha;
   }
 }
 </style>
@@ -88,24 +89,24 @@ export default {
       return this.mode.channels.length > 1 && this.hasDetails;
     },
   },
-  mounted() {
+  async mounted() {
     // wait for all child components to render
-    this.$nextTick(() => {
-      if (!this.$el.querySelector(`details`)) {
-        this.hasDetails = false;
-      }
-    });
+    await this.$nextTick();
+
+    if (!this.$el.querySelector(`details`)) {
+      this.hasDetails = false;
+    }
   },
   methods: {
     openDetails() {
-      this.$el.querySelectorAll(`details`).forEach(details => {
+      for (const details of this.$el.querySelectorAll(`details`)) {
         details.open = true;
-      });
+      }
     },
     closeDetails() {
-      this.$el.querySelectorAll(`details`).forEach(details => {
+      for (const details of this.$el.querySelectorAll(`details`)) {
         details.open = false;
-      });
+      }
     },
   },
 };

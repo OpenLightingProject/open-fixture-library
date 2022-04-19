@@ -1,66 +1,88 @@
-import path from 'path';
+import { fileURLToPath } from 'url';
 
-import plugins from './plugins/plugins.json';
 import register from './fixtures/register.json';
 import { fixtureFromRepository } from './lib/model.js';
+import plugins from './plugins/plugins.json';
+
+const websiteUrl = process.env.WEBSITE_URL || `http://localhost:${process.env.PORT || 3000}/`;
 
 export default {
+  telemetry: true,
   srcDir: `./ui/`,
   modules: [
     [`@nuxtjs/axios`, {
       browserBaseURL: `/`,
     }],
+    `nuxt-helmet`,
     `cookie-universal-nuxt`,
     `@nuxtjs/robots`,
     `@nuxtjs/sitemap`,
   ],
+  buildModules: [
+    `@nuxt/postcss8`,
+  ],
   plugins: [
-    `~/plugins/embetty-vue.js`,
     `~/plugins/global-components.js`,
-    {
-      src: `~/plugins/polyfills.js`,
-      ssr: false,
-    },
     `~/plugins/vue-form.js`,
     {
       src: `~/plugins/vue-smooth-scroll.js`,
       ssr: false,
     },
   ],
+  serverMiddleware: [
+    {
+      path: `/api/v1`,
+      handler: `~/api/index.js`,
+    },
+    {
+      path: `/`,
+      handler: `~/api/download.js`,
+    },
+  ],
+  helmet: {
+    expectCt: false,
+    hsts: {
+      maxAge: 2 * 365 * 24 * 60 * 60,
+      preload: true,
+    },
+    crossOriginEmbedderPolicy: false, // needed for Embetty poster images and video iframes
+  },
   css: [
     `~/assets/styles/style.scss`,
     `embetty-vue/dist/embetty-vue.css`,
   ],
+  publicRuntimeConfig: {
+    websiteUrl,
+    searchIndexingIsAllowed: process.env.ALLOW_SEARCH_INDEXING === `allowed`,
+  },
   build: {
+    quiet: false,
+    loaders: {
+      // condense whitespace in Vue templates
+      vue: {
+        compilerOptions: {
+          whitespace: `condense`,
+        },
+      },
+      // automatically `@use` global SCSS definitions
+      scss: {
+        additionalData: `@use "~/assets/styles/global.scss" as *;`,
+      },
+    },
     extend(config, context) {
       // exclude /assets/icons from url-loader
-      const urlLoader = config.module.rules.find(rule => `use` in rule && rule.use[0].loader === `url-loader`);
-      urlLoader.exclude = path.resolve(__dirname, `ui/assets/icons`);
+      const iconsPath = fileURLToPath(new URL(`ui/assets/icons/`, import.meta.url));
+      const urlLoader = config.module.rules.find(rule => rule.test.toString().includes(`|svg|`));
+      urlLoader.exclude = iconsPath;
 
       // include /assets/icons for svg-inline-loader
       config.module.rules.push({
         test: /\.svg$/,
-        include: [
-          path.resolve(__dirname, `ui/assets/icons`),
-        ],
+        include: [iconsPath],
         loader: `svg-inline-loader`,
         options: {
           removeSVGTagAttrs: false,
         },
-      });
-
-      // condense whitespace in Vue templates
-      const vueLoader = config.module.rules.find(rule => rule.loader === `vue-loader`);
-      vueLoader.options.compilerOptions = {
-        preserveWhitespace: false,
-        whitespace: `condense`,
-      };
-
-      // automatically `@use` global SCSS definitions
-      const scssRule = config.module.rules.find(rule => rule.test.toString() === `/\\.scss$/i`);
-      scssRule.oneOf.forEach(({ use }) => {
-        const sassLoader = use.find(({ loader }) => loader === `sass-loader`);
-        sassLoader.options.additionalData = `@use "~/assets/styles/global.scss" as *;`;
       });
     },
   },
@@ -87,9 +109,10 @@ export default {
     color: `#1e88e5`,
   },
   head() {
+    const theme = this.$cookies.get(`__Host-theme`) || this.$cookies.get(`theme`);
     const htmlAttributes = {
       lang: `en`,
-      'data-theme': this.$cookies.get(`__Host-theme`) || this.$cookies.get(`theme`),
+      'data-theme': theme,
     };
 
     const titleTemplate = titleChunk => {
@@ -97,8 +120,7 @@ export default {
       return titleChunk ? `${titleChunk} – Open Fixture Library` : `Open Fixture Library`;
     };
 
-    const websitePath = this.$route.path.replace(/\/$/, ``); // remove trailing slash
-    const canonicalUrl = `https://open-fixture-library.org${websitePath}`;
+    const canonicalUrl = this.$config.websiteUrl.slice(0, -1) + this.$route.path.replace(/\/$/, ``); // remove trailing slash
 
     const meta = [
       {
@@ -111,6 +133,11 @@ export default {
       {
         name: `mobile-web-app-capable`,
         content: `yes`,
+      },
+      {
+        hid: `theme-color`,
+        name: `theme-color`,
+        content: theme === `dark` ? `#383838` : `#fafafa`, // SCSS: theme-color(header-background)
       },
       {
         // this enables Twitter link previews
@@ -175,7 +202,7 @@ export default {
       },
     ];
 
-    if (process.env.ALLOW_SEARCH_INDEXING !== `allowed`) {
+    if (!this.$config.searchIndexingIsAllowed) {
       meta.push({
         name: `robots`,
         content: `noindex, nofollow, none, noodp, noarchive, nosnippet, noimageindex, noydir, nocache`,
@@ -219,12 +246,6 @@ export default {
         as: `font`,
         type: `font/woff2`,
       },
-      {
-        rel: `preload`,
-        href: `/fonts/LatoLatin/LatoLatin-Regular.woff`,
-        as: `font`,
-        type: `font/woff`,
-      },
     ];
 
     return {
@@ -246,11 +267,11 @@ export default {
       UserAgent: `*`,
       Disallow: plugins.exportPlugins.map(pluginKey => `/*.${pluginKey}$`),
       Allow: `/`,
-      Sitemap: `${process.env.WEBSITE_URL}sitemap.xml`,
+      Sitemap: `${websiteUrl}sitemap.xml`,
     };
   },
   sitemap: {
-    hostname: process.env.WEBSITE_URL,
+    hostname: websiteUrl,
     gzip: true,
     async routes() {
       const staticUrls = [

@@ -1,13 +1,10 @@
-#!/usr/bin/node
-const chalk = require(`chalk`);
+#!/usr/bin/env node
+import chalk from 'chalk';
 
-// see https://github.com/standard-things/esm#getting-started
-require = require(`esm`)(module); // eslint-disable-line no-global-assign
-
-const {
+import {
   scaleDmxValue,
   scaleDmxRange,
-} = require(`../lib/scale-dmx-values.js`);
+} from '../lib/scale-dmx-values.js';
 
 
 let errorCount = 0;
@@ -29,7 +26,8 @@ testRandomChannelDownscaling(3);
 
 console.log();
 if (errorCount > 0) {
-  console.log(chalk.red(`[FAIL]`), `Test failed with ${errorCount} error${errorCount > 1 ? `s` : ``}.`);
+  const message = errorCount === 1 ? `Test failed with 1 error.` : `Test failed with ${errorCount} errors.`;
+  console.log(chalk.red(`[FAIL]`), message);
   process.exit(1);
 }
 else {
@@ -49,7 +47,9 @@ function testScaleDmxValuesUp() {
     255: 65_535, // [255] -> [255, 255] = 256^2 - 1
     /* eslint-enable indent, key-spacing */
   };
-  Object.keys(scale8to16).forEach(dmxValue => testScaleDmxValue(dmxValue, 1, 2, scale8to16[dmxValue]));
+  for (const dmxValue of Object.keys(scale8to16)) {
+    testScaleDmxValue(dmxValue, 1, 2, scale8to16[dmxValue]);
+  }
 
   const scale8to24 = {
     /* eslint-disable indent, key-spacing */
@@ -59,7 +59,9 @@ function testScaleDmxValuesUp() {
     255: 16_777_215, // [255] -> [255, 255, 255] = 256^3 - 1
     /* eslint-enable indent, key-spacing */
   };
-  Object.keys(scale8to24).forEach(dmxValue => testScaleDmxValue(dmxValue, 1, 3, scale8to24[dmxValue]));
+  for (const dmxValue of Object.keys(scale8to24)) {
+    testScaleDmxValue(dmxValue, 1, 3, scale8to24[dmxValue]);
+  }
 
   const scale16to24 = {
     /* eslint-disable indent, key-spacing */
@@ -73,7 +75,9 @@ function testScaleDmxValuesUp() {
     65_535: 16_777_215, // [255, 255] -> [255, 255, 255]
     /* eslint-enable indent, key-spacing */
   };
-  Object.keys(scale16to24).forEach(dmxValue => testScaleDmxValue(dmxValue, 2, 3, scale16to24[dmxValue]));
+  for (const dmxValue of Object.keys(scale16to24)) {
+    testScaleDmxValue(dmxValue, 2, 3, scale16to24[dmxValue]);
+  }
 }
 
 /**
@@ -91,7 +95,9 @@ function testScaleDmxValuesDown() {
     65_535: 255, // [255, 255] -> [255]
     /* eslint-enable indent, key-spacing */
   };
-  Object.keys(scale16to8).forEach(dmxValue => testScaleDmxValue(dmxValue, 2, 1, scale16to8[dmxValue]));
+  for (const dmxValue of Object.keys(scale16to8)) {
+    testScaleDmxValue(dmxValue, 2, 1, scale16to8[dmxValue]);
+  }
 
   const scale24to8 = {
     /* eslint-disable indent, key-spacing */
@@ -105,7 +111,9 @@ function testScaleDmxValuesDown() {
     16_777_215: 255, // [255, 255, 255] -> [255]
     /* eslint-enable indent, key-spacing */
   };
-  Object.keys(scale24to8).forEach(dmxValue => testScaleDmxValue(dmxValue, 3, 1, scale24to8[dmxValue]));
+  for (const dmxValue of Object.keys(scale24to8)) {
+    testScaleDmxValue(dmxValue, 3, 1, scale24to8[dmxValue]);
+  }
 
   const scale24to16 = {
     /* eslint-disable indent, key-spacing */
@@ -121,16 +129,18 @@ function testScaleDmxValuesDown() {
     16_777_215: 65_535, // [255, 255, 255] -> [255, 255]
     /* eslint-enable indent, key-spacing */
   };
-  Object.keys(scale24to16).forEach(dmxValue => testScaleDmxValue(dmxValue, 3, 2, scale24to16[dmxValue]));
+  for (const dmxValue of Object.keys(scale24to16)) {
+    testScaleDmxValue(dmxValue, 3, 2, scale24to16[dmxValue]);
+  }
 }
 
 /**
  * Tests if scaling the given DMX value from the current resolution to the desired resolution
  * actually returns the desired DMX value.
- * @param {Number} dmxValue The original DMX value in the current resolution.
- * @param {Number} currentResolution The resolution of dmxValue.
- * @param {Number} desiredResolution The resolution that dmxValue should be scaled to.
- * @param {Number} desiredDmxValue The correct value for dmxValue in the desired resolution.
+ * @param {number} dmxValue The original DMX value in the current resolution.
+ * @param {number} currentResolution The resolution of dmxValue.
+ * @param {number} desiredResolution The resolution that dmxValue should be scaled to.
+ * @param {number} desiredDmxValue The correct value for dmxValue in the desired resolution.
  */
 function testScaleDmxValue(dmxValue, currentResolution, desiredResolution, desiredDmxValue) {
   dmxValue = Number.parseInt(dmxValue, 10);
@@ -155,7 +165,9 @@ function testScaleDmxRangesUp() {
     [[255, 255], [65_280, 65_535]],
     /* eslint-enable no-multi-spaces, array-bracket-spacing */
   ];
-  scale8to16.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 1, 2, desiredDmxRange));
+  for (const [dmxRange, desiredDmxRange] of scale8to16) {
+    testScaleDmxRange(dmxRange, 1, 2, desiredDmxRange);
+  }
 
   const scale8to24 = [
     /* eslint-disable no-multi-spaces, array-bracket-spacing */
@@ -166,7 +178,9 @@ function testScaleDmxRangesUp() {
     [[255, 255], [16_711_680, 16_777_215]],
     /* eslint-enable no-multi-spaces, array-bracket-spacing */
   ];
-  scale8to24.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 1, 3, desiredDmxRange));
+  for (const [dmxRange, desiredDmxRange] of scale8to24) {
+    testScaleDmxRange(dmxRange, 1, 3, desiredDmxRange);
+  }
 }
 
 /**
@@ -186,7 +200,9 @@ function testScaleDmxRangesDown() {
     [[65_280, 65_535], [255, 255]],
     /* eslint-enable no-multi-spaces, array-bracket-spacing */
   ];
-  scale16to8.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 2, 1, desiredDmxRange));
+  for (const [dmxRange, desiredDmxRange] of scale16to8) {
+    testScaleDmxRange(dmxRange, 2, 1, desiredDmxRange);
+  }
 
   const scale24to8 = [
     /* eslint-disable no-multi-spaces, array-bracket-spacing */
@@ -194,7 +210,9 @@ function testScaleDmxRangesDown() {
     [[1_683_119, 2_244_792], [26, 34]],
     /* eslint-enable no-multi-spaces, array-bracket-spacing */
   ];
-  scale24to8.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 3, 1, desiredDmxRange));
+  for (const [dmxRange, desiredDmxRange] of scale24to8) {
+    testScaleDmxRange(dmxRange, 3, 1, desiredDmxRange);
+  }
 
   const scale24to16 = [
     /* eslint-disable no-multi-spaces, array-bracket-spacing */
@@ -202,16 +220,18 @@ function testScaleDmxRangesDown() {
     [[1_683_119, 2_244_792], [6575, 8768]],
     /* eslint-enable no-multi-spaces, array-bracket-spacing */
   ];
-  scale24to16.forEach(([dmxRange, desiredDmxRange]) => testScaleDmxRange(dmxRange, 3, 2, desiredDmxRange));
+  for (const [dmxRange, desiredDmxRange] of scale24to16) {
+    testScaleDmxRange(dmxRange, 3, 2, desiredDmxRange);
+  }
 }
 
 /**
  * Tests if scaling the given DMX value from the current resolution to the desired resolution
  * actually returns the desired DMX value.
- * @param {Number} dmxRange The original DMX value in the current resolution.
- * @param {Number} currentResolution The resolution of dmxValue.
- * @param {Number} desiredResolution The resolution that dmxValue should be scaled to.
- * @param {Number} desiredDmxRange The correct value for dmxValue in the desired resolution.
+ * @param {number} dmxRange The original DMX value in the current resolution.
+ * @param {number} currentResolution The resolution of dmxValue.
+ * @param {number} desiredResolution The resolution that dmxValue should be scaled to.
+ * @param {number} desiredDmxRange The correct value for dmxValue in the desired resolution.
  */
 function testScaleDmxRange(dmxRange, currentResolution, desiredResolution, desiredDmxRange) {
   testArraysEqual(
@@ -225,7 +245,7 @@ function testScaleDmxRange(dmxRange, currentResolution, desiredResolution, desir
  * Creates random capability ranges in the given resolution, scales them down to the next-lower resolution
  * and checks for overlaps in the scaled ranges.
  * Original ranges always span more than 1 DMX value in the lowest resolution.
- * @param {Number} resolution The resolution of the original ranges. Must be 2 or higher.
+ * @param {number} resolution The resolution of the original ranges. Must be 2 or higher.
  */
 function testRandomChannelDownscaling(resolution) {
   const capabilityRanges = getRandomCapabilityRanges();
@@ -242,13 +262,13 @@ function testRandomChannelDownscaling(resolution) {
     `Random capabilities, scaled down from ${resolution * 8}bit to ${(resolution - 1) * 8}bit, do not overlap:`,
     `Random capabilities, scaled down from ${resolution * 8}bit to ${(resolution - 1) * 8}bit, do overlap:`,
   );
-  capabilityRanges.forEach(([start, end], index) => {
+  for (const [index, [start, end]] of capabilityRanges.entries()) {
     const [scaledStart, scaledEnd] = scaledRanges[index];
     console.log(`  ${start}…${end} -> ${scaledStart}…${scaledEnd}`);
-  });
+  }
 
   /**
-   * @returns {Array.<[Number, Number]>} Random list of adjacent capability [start, end] ranges. Together, they fill a whole channel.
+   * @returns {[number, number][]} Random list of adjacent capability [start, end] ranges. Together, they fill a whole channel.
    */
   function getRandomCapabilityRanges() {
     const minimumRangeWidth = Math.pow(256, resolution - 1) - 1; // without a minimum, overlaps would not be avoidable
@@ -272,9 +292,9 @@ function testRandomChannelDownscaling(resolution) {
 
 /**
  * The test passes if the given value equals the desired value. The description is used to log the test result to console.
- * @param {String} description A string describing the given value. Probably a description of a function call.
- * @param {*} value The value with unknown correctness. Probably the return value of a function call.
- * @param {*} desiredValue The correct value. Probably a hardcoded value.
+ * @param {string} description A string describing the given value. Probably a description of a function call.
+ * @param {any} value The value with unknown correctness. Probably the return value of a function call.
+ * @param {any} desiredValue The correct value. Probably a hardcoded value.
  */
 function testEqual(description, value, desiredValue) {
   parseTestResult(
@@ -287,9 +307,9 @@ function testEqual(description, value, desiredValue) {
 /**
  * The test passes if the given array equals the desired array (not the identity, but the elements are compared).
  * The description is used to log the test result to console.
- * @param {String} description A string describing the given value. Probably a description of a function call.
- * @param {Array.<*>} array The array with unknown correctness. Probably the return value of a function call.
- * @param {Array.<*>} desiredArray The correct array. Probably filled with hardcoded values.
+ * @param {string} description A string describing the given value. Probably a description of a function call.
+ * @param {any[]} array The array with unknown correctness. Probably the return value of a function call.
+ * @param {any[]} desiredArray The correct array. Probably filled with hardcoded values.
  */
 function testArraysEqual(description, array, desiredArray) {
   const correctLengths = array.length === desiredArray.length;
@@ -297,18 +317,21 @@ function testArraysEqual(description, array, desiredArray) {
     (value, index) => array[index] === value,
   );
 
+  const arrayString = array.join(`, `);
+  const desiredArrayString = desiredArray.join(`, `);
+
   parseTestResult(
     correctLengths && desiredElementsInArray,
-    `${description} should be [${desiredArray.join(`, `)}].`,
-    `${description} should be [${desiredArray.join(`, `)}] but is [${array.join(`, `)}].`,
+    `${description} should be [${desiredArrayString}].`,
+    `${description} should be [${desiredArrayString}] but is [${arrayString}].`,
   );
 }
 
 /**
  * Prints the test result (pass or fail) to the console and increase errorCount if needed.
- * @param {Boolean} passed Whether the test didn't error.
- * @param {String} passString The message if the test passed.
- * @param {String} failString The message if the test failed.
+ * @param {boolean} passed Whether the test didn't error.
+ * @param {string} passString The message if the test passed.
+ * @param {string} failString The message if the test failed.
  */
 function parseTestResult(passed, passString, failString) {
   if (passed) {

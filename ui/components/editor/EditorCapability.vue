@@ -11,7 +11,7 @@
 
       <LabeledInput
         :formstate="formstate"
-        :multiple-inputs="true"
+        multiple-inputs
         :name="`capability${capability.uuid}-dmxRange`"
         label="DMX range">
 
@@ -20,7 +20,7 @@
           v-model="capability.dmxRange"
           :formstate="formstate"
           :name="`capability${capability.uuid}-dmxRange`"
-          :schema-property="properties.capability.dmxRange"
+          :schema-property="capabilityDmxRange"
           :range-min="min"
           :range-max="max"
           :start-hint="capabilities.length === 1 ? `${min}` : `start`"
@@ -31,14 +31,14 @@
 
       </LabeledInput>
 
-      <a
+      <button
         v-if="isChanged"
-        href="#remove"
-        class="remove"
+        type="button"
+        class="close icon-button"
         title="Remove capability"
         @click.prevent="clear()">
         <OflSvg name="close" />
-      </a>
+      </button>
 
       <EditorCapabilityTypeData
         ref="capabilityTypeData"
@@ -53,8 +53,8 @@
 
 <style lang="scss" scoped>
 .capability {
-  margin: 0 -0.5rem;
   position: relative;
+  margin: 0 -0.5rem;
 
   &:not(:last-child) {
     border-bottom: 1px solid theme-color(divider);
@@ -78,33 +78,21 @@
   color: theme-color(text-disabled);
 }
 
-a.remove {
-  display: inline-block;
+.icon-button.close {
   position: absolute;
-  right: 0;
   top: 0;
-  padding: 0.3rem;
-  width: 1.4rem;
-  height: 1.4rem;
-  vertical-align: middle;
-
-  & > .icon {
-    vertical-align: unset;
-  }
+  right: 0;
 }
 </style>
 
 <script>
-import schemaProperties from '../../../lib/schema-properties.js';
-import {
-  getEmptyCapability,
-  isCapabilityChanged,
-} from '../../assets/scripts/editor-utils.js';
+import { capabilityDmxRange } from '../../../lib/schema-properties.js';
+import { getEmptyCapability, isCapabilityChanged } from '../../assets/scripts/editor-utils.js';
 
 import ConditionalDetails from '../ConditionalDetails.vue';
-import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
 import LabeledInput from '../LabeledInput.vue';
 import PropertyInputRange from '../PropertyInputRange.vue';
+import EditorCapabilityTypeData from './EditorCapabilityTypeData.vue';
 
 export default {
   components: {
@@ -134,7 +122,7 @@ export default {
   data() {
     return {
       dmxMin: 0,
-      properties: schemaProperties,
+      capabilityDmxRange,
     };
   },
   computed: {
@@ -198,7 +186,6 @@ export default {
     },
   },
   methods: {
-    // eslint-disable-next-line complexity
     onStartUpdated() {
       if (this.start === null) {
         const previousCapability = this.capabilities[this.capabilityIndex - 1];
@@ -227,7 +214,6 @@ export default {
         this.insertCapabilityBefore();
       }
     },
-    // eslint-disable-next-line complexity
     onEndUpdated() {
       if (this.end === null) {
         const nextCapability = this.capabilities[this.capabilityIndex + 1];
@@ -282,14 +268,14 @@ export default {
         this.removeNextCapability();
       }
     },
-    insertCapabilityBefore() {
+    async insertCapabilityBefore() {
       this.$emit(`insert-capability-before`);
 
-      const dialog = this.$el.closest(`dialog`);
-      this.$nextTick(() => {
-        const newCapability = dialog.querySelector(`.capability-editor`).children[this.capabilityIndex - 1];
-        dialog.scrollTop += newCapability.clientHeight;
-      });
+      const dialog = this.$el.closest(`.dialog`);
+      await this.$nextTick();
+
+      const newCapability = dialog.querySelector(`.capability-editor`).children[this.capabilityIndex - 1];
+      dialog.scrollTop += newCapability.clientHeight;
     },
     insertCapabilityAfter() {
       this.$emit(`insert-capability-after`);
@@ -303,7 +289,9 @@ export default {
     removeNextCapability() {
       this.$delete(this.capabilities, this.capabilityIndex + 1);
     },
-    cleanCapabilityData() { // eslint-disable-line vue/no-unused-properties
+
+    /** @public */
+    cleanCapabilityData() {
       if (this.capability.dmxRange === null) {
         this.capability.dmxRange = [null, null];
       }
@@ -315,6 +303,11 @@ export default {
       }
 
       this.$refs.capabilityTypeData.cleanCapabilityData();
+    },
+
+    /** @public */
+    focus() {
+      this.$refs.firstInput.focus();
     },
   },
 };
