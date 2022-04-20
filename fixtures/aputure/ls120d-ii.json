@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LS120D ii",
+  "shortName": "LS120D ii",
+  "categories": ["Fan", "Dimmer"],
+  "meta": {
+    "authors": ["Joe P"],
+    "createDate": "2022-04-20",
+    "lastModifyDate": "2022-04-20"
+  },
+  "links": {
+    "manual": [
+      "https://www.aputure.com/wp-content/uploads/2019/10/LS-C120d-II_Product_Manual_EN.pdf"
+    ],
+    "productPage": [
+      "https://www.aputure.com/products/ls-120d-ii/"
+    ]
+  },
+  "physical": {
+    "dimensions": [300, 193, 124],
+    "power": 180,
+    "DMXconnector": "5-pin XLR IP65",
+    "bulb": {
+      "colorTemperature": 5500
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Intensity": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Dimmer",
+      "channels": [
+        "Dimmer",
+        "Intensity"
+      ]
+    }
+  ]
+}
