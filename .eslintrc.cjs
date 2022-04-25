@@ -179,7 +179,7 @@ const enabledRuleParameters = {
     registeredComponentsOnly: false,
   }],
   'vue/component-tags-order': [{
-    order: [`template`, `style`, `script`],
+    order: [`template`, `style[scoped]`, `style:not([scoped])`, `script`],
   }],
   'vue/html-button-has-type': [],
   'vue/html-closing-bracket-newline': [{
@@ -190,6 +190,7 @@ const enabledRuleParameters = {
     extensions: [`vue`],
     shouldMatchCase: true,
   }],
+  'vue/match-component-import-name': [],
   'vue/max-attributes-per-line': [{ singleline: 3 }],
   'vue/next-tick-style': [],
   'vue/no-boolean-default': [`default-false`],
