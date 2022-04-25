@@ -1,0 +1,30 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "beam",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["maeio"],
+    "createDate": "2022-04-25",
+    "lastModifyDate": "2022-04-25"
+  },
+  "links": {
+    "manual": [
+      "https://www.google.it"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1",
+      "channels": [
+        "Intensity"
+      ]
+    }
+  ]
+}
