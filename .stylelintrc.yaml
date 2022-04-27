@@ -20,6 +20,9 @@ rules:
       - color-to-rgb-string
       - /^[a-z]+\.[a-z\-]+$/ # all `@use`d Sass functions
 
+  # prevent copy/paste mistakes
+  keyframe-block-no-duplicate-selectors: true
+
   # decrease severity for this rule only
   no-descending-specificity:
     - true
