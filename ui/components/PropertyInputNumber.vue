@@ -19,15 +19,15 @@ export default {
   props: {
     schemaProperty: objectProp().required,
     required: booleanProp().withDefault(false),
-    hint: stringProp().withDefault(null),
-    minimum: oneOfTypesProp([Number, String]).withDefault(null), // can be the string `invalid`
-    maximum: oneOfTypesProp([Number, String]).withDefault(null), // can be the string `invalid`
+    hint: stringProp().optional,
+    minimum: oneOfTypesProp([Number, String]).optional, // can be the string `invalid`
+    maximum: oneOfTypesProp([Number, String]).optional, // can be the string `invalid`
     value: anyProp().required,
     lazy: booleanProp().withDefault(false),
   },
   computed: {
     min() {
-      if (this.minimum !== null && this.minimum !== `invalid`) {
+      if (this.minimum !== undefined && this.minimum !== `invalid`) {
         return this.minimum;
       }
 
@@ -38,7 +38,7 @@ export default {
       return this.exclusiveMinimum;
     },
     max() {
-      if (this.maximum !== null && this.maximum !== `invalid`) {
+      if (this.maximum !== undefined && this.maximum !== `invalid`) {
         return this.maximum;
       }
 

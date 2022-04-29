@@ -17,8 +17,8 @@ export default {
   props: {
     required: booleanProp().withDefault(false),
     value: booleanProp().withDefault(false),
-    name: stringProp().withDefault(null),
-    label: stringProp().withDefault(null),
+    name: stringProp().required,
+    label: stringProp().required,
   },
   computed: {
     localValue: {

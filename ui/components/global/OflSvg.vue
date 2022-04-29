@@ -32,10 +32,10 @@ import icons from '../../assets/icons/icons.js';
 export default {
   functional: true,
   props: {
-    type: stringProp().withDefault(``),
-    name: stringProp().withDefault(``),
+    type: stringProp().optional,
+    name: stringProp().optional,
     colors: arrayProp().withDefault(() => []),
-    title: stringProp().withDefault(null),
+    title: stringProp().optional,
   },
   render(createElement, context) {
     let svgMarkup;
@@ -44,7 +44,7 @@ export default {
     if (context.props.type === `color-circle`) {
       let colors = context.props.colors;
 
-      if (context.props.colors.length === 0 && context.props.name !== ``) {
+      if (context.props.colors.length === 0 && context.props.name !== undefined) {
         // hex colors for ColorIntensity capabilities
         const colorLookup = {
           Red: `#ff0000`,
@@ -85,13 +85,13 @@ export default {
 
 /**
  * Returns the contents of the provided SVG file as an inline SVG.
- * @param {string} name Name of the icon (without extension).
- * @param {string | null} category The category (directory) of the icon.
- * @param {string | null} title An optional (tooltip) title for the icon.
+ * @param {string | undefined} name Name of the icon (without extension).
+ * @param {string | undefined} category The category (directory) of the icon.
+ * @param {string | undefined} title An optional (tooltip) title for the icon.
  * @returns {string} The inline <svg> tag or an empty string if the file was not found.
  */
-function getSvg(name, category = null, title) {
-  if (name === ``) {
+function getSvg(name, category = undefined, title) {
+  if (name === undefined) {
     return ``;
   }
 
@@ -119,7 +119,7 @@ function getSvg(name, category = null, title) {
 /**
  * Get inline SVG for a color circle (like a pie chart with equally-sized pies).
  * @param {string[]} colors Array of color strings to display.
- * @param {string | null} [title] Text for the title tag. If this parameter is not given, no title tag will be added.
+ * @param {string | undefined} [title] Text for the title tag. If this parameter is not given, no title tag will be added.
  * @returns {string} The HTML for displaying the color circle.
  */
 function getColorCircle(colors, title) {

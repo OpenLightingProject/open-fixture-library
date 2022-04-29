@@ -55,7 +55,7 @@ export default {
   },
   props: {
     capability: objectProp().required,
-    formstate: objectProp().withDefault(null),
+    formstate: objectProp().optional,
   },
   data() {
     const holdPropertySchema = capabilityTypes.Maintenance.properties.hold;

@@ -122,7 +122,7 @@ export default {
     ).required,
     isAlertDialog: booleanProp().withDefault(false),
     shown: booleanProp().withDefault(true),
-    title: stringProp().withDefault(``),
+    title: stringProp().required,
     wide: booleanProp().withDefault(false),
   },
   data() {

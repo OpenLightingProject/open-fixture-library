@@ -56,7 +56,7 @@ export default {
   },
   props: {
     capability: objectProp().required,
-    formstate: objectProp().withDefault(null),
+    formstate: objectProp().optional,
   },
   data() {
     return {

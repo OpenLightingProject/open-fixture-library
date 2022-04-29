@@ -18,7 +18,7 @@ export default {
   props: {
     schemaProperty: objectProp().required,
     required: booleanProp().withDefault(false),
-    hint: stringProp().withDefault(null),
+    hint: stringProp().optional,
     value: anyProp().required,
   },
   data() {

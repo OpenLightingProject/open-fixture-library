@@ -76,11 +76,11 @@ export default {
     LabeledValue,
   },
   props: {
-    name: stringProp().withDefault(null), // TODO: make this required
-    label: stringProp().withDefault(null),
-    hint: stringProp().withDefault(``),
-    formstate: objectProp().withDefault(null), // TODO: make this required
-    customValidators: objectProp().withDefault(null),
+    name: stringProp().optional, // TODO: make this required
+    label: stringProp().optional,
+    hint: stringProp().optional,
+    formstate: objectProp().optional, // TODO: make this required
+    customValidators: objectProp().optional,
     // avoid a label tag for multiple inputs, because it's not
     // supported by Safari
     multipleInputs: booleanProp().withDefault(false),

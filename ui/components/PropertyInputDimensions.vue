@@ -52,7 +52,7 @@ export default {
     dimensions: arrayProp().withDefault(null),
     hints: arrayProp().withDefault(() => [`x`, `y`, `z`]),
     schemaProperty: objectProp().required,
-    unit: stringProp().withDefault(null),
+    unit: stringProp().optional,
     required: booleanProp().withDefault(false),
     name: stringProp().required,
     formstate: objectProp().required,

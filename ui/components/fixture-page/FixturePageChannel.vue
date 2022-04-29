@@ -164,7 +164,7 @@ export default {
   props: {
     channel: instanceOfProp(AbstractChannel).required,
     mode: instanceOfProp(Mode).required,
-    appendToHeading: stringProp().withDefault(``),
+    appendToHeading: stringProp().optional,
   },
   data() {
     return {

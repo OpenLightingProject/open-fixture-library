@@ -51,9 +51,9 @@ import { stringProp } from 'vue-ts-types';
 
 export default {
   props: {
-    name: stringProp().withDefault(null),
-    label: stringProp().withDefault(null),
-    value: stringProp().withDefault(null),
+    name: stringProp().optional,
+    label: stringProp().optional,
+    value: stringProp().optional,
   },
 };
 </script>

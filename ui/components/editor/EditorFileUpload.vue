@@ -17,7 +17,7 @@ export default {
   props: {
     required: booleanProp().withDefault(false),
     name: stringProp().required,
-    file: anyProp().withDefault(null),
+    file: anyProp().optional,
   },
   watch: {
     file(newFile) {
@@ -34,7 +34,7 @@ export default {
       const file = this.$refs.fileInput.files[0];
 
       if (!file) {
-        this.$emit(`input`, null);
+        this.$emit(`input`, undefined);
         return;
       }
 

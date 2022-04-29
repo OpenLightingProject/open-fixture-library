@@ -132,7 +132,7 @@ export default {
     return {
       formstate: getEmptyFormState(),
       plugin: ``,
-      file: null,
+      file: undefined,
       githubComment: ``,
       author: ``,
       githubUsername: ``,
@@ -207,7 +207,7 @@ export default {
       }
     },
     async reset() {
-      this.file = null;
+      this.file = undefined;
       this.githubComment = ``;
 
       await this.$nextTick();

@@ -3,11 +3,11 @@
     id="help-wanted-dialog"
     ref="dialog"
     :is-alert-dialog="state === `loading`"
-    :shown="context !== null"
+    :shown="context !== undefined"
     :title="title"
     @hide="onHide()">
 
-    <form v-if="state === `ready` && context !== null" action="#" @submit.prevent="onSubmit()">
+    <form v-if="state === `ready` && context !== undefined" action="#" @submit.prevent="onSubmit()">
       <LabeledValue
         v-if="location !== null"
         :value="location"
@@ -86,7 +86,7 @@ export default {
   },
   props: {
     type: stringProp().required,
-    context: objectProp().withDefault(null),
+    context: objectProp().optional,
   },
   data: () => {
     return {
@@ -217,7 +217,7 @@ export default {
       this.state = `ready`;
       this.issueUrl = null;
       this.error = null;
-      this.$emit(`input`, null);
+      this.$emit(`input`, undefined);
     },
   },
 };

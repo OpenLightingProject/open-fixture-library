@@ -203,8 +203,8 @@ export default {
     capability: objectProp().required,
     propertyName: stringProp().required,
     required: booleanProp().withDefault(false),
-    hint: stringProp().withDefault(null),
-    formstate: objectProp().withDefault(null),
+    hint: stringProp().optional,
+    formstate: objectProp().optional,
   },
   data() {
     const slotNumberUnit = entitiesSchema.slotNumber.$ref.replace(`#/units/`, ``);

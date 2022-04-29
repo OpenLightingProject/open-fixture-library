@@ -26,7 +26,7 @@ export default {
   props: {
     capability: objectProp().required,
     channel: objectProp().required,
-    formstate: objectProp().withDefault(null),
+    formstate: objectProp().optional,
   },
   computed: {
     slotDetailNumbers() {

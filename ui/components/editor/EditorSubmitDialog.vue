@@ -236,8 +236,8 @@ export default {
   },
   props: {
     endpoint: stringProp().required,
-    githubUsername: stringProp().withDefault(null),
-    githubComment: stringProp().withDefault(null),
+    githubUsername: stringProp().optional,
+    githubComment: stringProp().optional,
   },
   data() {
     return {
@@ -379,8 +379,8 @@ export default {
     async onSubmit() {
       this.requestBody = {
         fixtureCreateResult: this.fixtureCreateResult,
-        githubUsername: this.githubUsername,
-        githubComment: this.githubComment,
+        githubUsername: this.githubUsername ?? null,
+        githubComment: this.githubComment ?? null,
       };
 
       console.log(`submit`, clone(this.requestBody));

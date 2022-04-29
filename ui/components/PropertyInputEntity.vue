@@ -8,8 +8,8 @@
         class="property-input-number"
         :schema-property="units[selectedUnit].numberSchema"
         required
-        :minimum="minNumber !== null ? minNumber : `invalid`"
-        :maximum="maxNumber !== null ? maxNumber : `invalid`"
+        :minimum="minNumber !== undefined ? minNumber : `invalid`"
+        :maximum="maxNumber !== undefined ? maxNumber : `invalid`"
         :name="name ? `${name}-number` : null"
         @focus.native="onFocus()"
         @blur.native="onBlur($event)" />
@@ -92,10 +92,10 @@ export default {
     schemaProperty: objectProp().required,
     required: booleanProp().withDefault(false),
     value: anyProp().withDefault(``),
-    associatedEntity: anyProp().withDefault(``),
-    minNumber: numberProp().withDefault(null),
-    maxNumber: numberProp().withDefault(null),
-    name: stringProp().withDefault(null),
+    associatedEntity: anyProp().optional,
+    minNumber: numberProp().optional,
+    maxNumber: numberProp().optional,
+    name: stringProp().required,
     wide: booleanProp().withDefault(false),
   },
   data() {

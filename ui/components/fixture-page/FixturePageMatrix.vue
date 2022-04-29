@@ -93,7 +93,7 @@ export default {
   },
   props: {
     matrix: instanceOfProp(Matrix).required,
-    physical: instanceOfProp(Physical).withDefault(null),
+    physical: instanceOfProp(Physical).optional,
   },
   data() {
     return {
@@ -105,7 +105,7 @@ export default {
     pixelSizing() {
       let sizing = `height: ${this.baseHeight}em; `;
 
-      if (this.physical !== null && this.physical.hasMatrixPixels) {
+      if (this.physical?.hasMatrixPixels) {
         const scale = this.baseHeight / this.physical.matrixPixelsDimensions[1];
         sizing += `width: ${this.physical.matrixPixelsDimensions[0] * scale}em; `;
         sizing += `margin-right: ${this.physical.matrixPixelsSpacing[0] * scale}em; `;
