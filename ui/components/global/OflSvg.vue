@@ -26,31 +26,16 @@
 </style>
 
 <script>
+import { arrayProp, stringProp } from 'vue-ts-types';
 import icons from '../../assets/icons/icons.js';
 
 export default {
   functional: true,
   props: {
-    type: {
-      type: String,
-      required: false,
-      default: () => ``,
-    },
-    name: {
-      type: String,
-      required: false,
-      default: () => ``,
-    },
-    colors: {
-      type: Array,
-      required: false,
-      default: () => [],
-    },
-    title: {
-      type: String,
-      required: false,
-      default: null,
-    },
+    type: stringProp().withDefault(``),
+    name: stringProp().withDefault(``),
+    colors: arrayProp().withDefault(() => []),
+    title: stringProp().withDefault(null),
   },
   render(createElement, context) {
     let svgMarkup;

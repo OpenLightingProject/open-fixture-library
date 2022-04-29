@@ -8,25 +8,16 @@
 </template>
 
 <script>
+import { anyProp, booleanProp, stringProp } from 'vue-ts-types';
+
 export default {
   model: {
     prop: `file`,
   },
   props: {
-    required: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    file: {
-      type: null,
-      required: false,
-      default: null,
-    },
+    required: booleanProp().withDefault(false),
+    name: stringProp().required,
+    file: anyProp().withDefault(null),
   },
   watch: {
     file(newFile) {

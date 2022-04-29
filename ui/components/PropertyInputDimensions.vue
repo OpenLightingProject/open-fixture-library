@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import { arrayProp, booleanProp, objectProp, stringProp } from 'vue-ts-types';
 import PropertyInputNumber from './PropertyInputNumber.vue';
 
 export default {
@@ -48,38 +49,13 @@ export default {
     prop: `dimensions`,
   },
   props: {
-    dimensions: {
-      type: Array,
-      required: false,
-      default: null,
-    },
-    hints: {
-      type: Array,
-      required: false,
-      default: () => [`x`, `y`, `z`],
-    },
-    schemaProperty: {
-      type: Object,
-      required: true,
-    },
-    unit: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    required: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    name: {
-      type: String,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: true,
-    },
+    dimensions: arrayProp().withDefault(null),
+    hints: arrayProp().withDefault(() => [`x`, `y`, `z`]),
+    schemaProperty: objectProp().required,
+    unit: stringProp().withDefault(null),
+    required: booleanProp().withDefault(false),
+    name: stringProp().required,
+    formstate: objectProp().required,
   },
   data() {
     return {

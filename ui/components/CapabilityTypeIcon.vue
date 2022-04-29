@@ -1,13 +1,11 @@
 <script>
+import { instanceOfProp } from 'vue-ts-types';
 import Capability from '../../lib/model/Capability.js';
 
 export default {
   functional: true,
   props: {
-    capability: {
-      type: Capability,
-      required: true,
-    },
+    capability: instanceOfProp(Capability).required,
   },
   render(createElement, context) {
     const capability = context.props.capability;

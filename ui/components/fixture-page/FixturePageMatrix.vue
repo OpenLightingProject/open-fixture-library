@@ -81,6 +81,7 @@
 </style>
 
 <script>
+import { instanceOfProp } from 'vue-ts-types';
 import Matrix from '../../../lib/model/Matrix.js';
 import Physical from '../../../lib/model/Physical.js';
 
@@ -91,15 +92,8 @@ export default {
     LabeledValue,
   },
   props: {
-    matrix: {
-      type: Matrix,
-      required: true,
-    },
-    physical: {
-      type: Physical,
-      required: false,
-      default: null,
-    },
+    matrix: instanceOfProp(Matrix).required,
+    physical: instanceOfProp(Physical).withDefault(null),
   },
   data() {
     return {

@@ -70,6 +70,7 @@
 </template>
 
 <script>
+import { objectProp, stringProp } from 'vue-ts-types';
 import A11yDialog from './A11yDialog.vue';
 import LabeledInput from './LabeledInput.vue';
 import LabeledValue from './LabeledValue.vue';
@@ -84,14 +85,8 @@ export default {
     prop: `context`,
   },
   props: {
-    type: {
-      type: String,
-      required: true,
-    },
-    context: {
-      type: Object,
-      default: null,
-    },
+    type: stringProp().required,
+    context: objectProp().withDefault(null),
   },
   data: () => {
     return {

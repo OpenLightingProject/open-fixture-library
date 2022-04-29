@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import { booleanProp, objectProp } from 'vue-ts-types';
 import { capabilityTypes } from '../../../lib/schema-properties.js';
 
 import LabeledInput from '../LabeledInput.vue';
@@ -131,23 +132,10 @@ export default {
     prop: `capability`,
   },
   props: {
-    capability: {
-      type: Object,
-      required: true,
-    },
-    channel: {
-      type: Object,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: false,
-      default: null,
-    },
-    required: {
-      type: Boolean,
-      default: false,
-    },
+    capability: objectProp().required,
+    channel: objectProp().required,
+    formstate: objectProp().withDefault(null),
+    required: booleanProp().withDefault(false),
   },
   data() {
     return {

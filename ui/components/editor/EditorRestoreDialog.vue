@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { objectProp } from 'vue-ts-types';
 import {
   getEmptyFixture,
   getEmptyLink,
@@ -48,11 +49,7 @@ export default {
     prop: `restoredData`,
   },
   props: {
-    restoredData: {
-      type: Object,
-      required: false,
-      default: null,
-    },
+    restoredData: objectProp().withDefault(null),
   },
   computed: {
     restoredDate() {

@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import { objectProp } from 'vue-ts-types';
 import { schemaDefinitions, capabilityTypes } from '../../../../lib/schema-properties.js';
 
 import LabeledInput from '../../LabeledInput.vue';
@@ -59,15 +60,8 @@ export default {
     PropertyInputText,
   },
   props: {
-    capability: {
-      type: Object,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: false,
-      default: null,
-    },
+    capability: objectProp().required,
+    formstate: objectProp().withDefault(null),
   },
   data() {
     return {

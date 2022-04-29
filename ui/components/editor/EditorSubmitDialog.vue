@@ -203,6 +203,7 @@
 </style>
 
 <script>
+import { stringProp } from 'vue-ts-types';
 import Fixture from '../../../lib/model/Fixture.js';
 import Manufacturer from '../../../lib/model/Manufacturer.js';
 import { clone } from '../../assets/scripts/editor-utils.js';
@@ -234,20 +235,9 @@ export default {
     FixtureHeader,
   },
   props: {
-    endpoint: {
-      type: String,
-      required: true,
-    },
-    githubUsername: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    githubComment: {
-      type: String,
-      required: false,
-      default: null,
-    },
+    endpoint: stringProp().required,
+    githubUsername: stringProp().withDefault(null),
+    githubComment: stringProp().withDefault(null),
   },
   data() {
     return {

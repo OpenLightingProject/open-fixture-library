@@ -79,6 +79,7 @@
 </style>
 
 <script>
+import { anyProp, booleanProp, numberProp, objectProp, stringProp } from 'vue-ts-types';
 import { unitsSchema } from '../../lib/schema-properties.js';
 
 import PropertyInputNumber from './PropertyInputNumber.vue';
@@ -88,45 +89,14 @@ export default {
     PropertyInputNumber,
   },
   props: {
-    schemaProperty: {
-      type: Object,
-      required: true,
-    },
-    required: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    value: {
-      type: null,
-      required: false,
-      default: ``,
-    },
-    associatedEntity: {
-      type: null,
-      required: false,
-      default: ``,
-    },
-    minNumber: {
-      type: Number,
-      required: false,
-      default: null,
-    },
-    maxNumber: {
-      type: Number,
-      required: false,
-      default: null,
-    },
-    name: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    wide: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
+    schemaProperty: objectProp().required,
+    required: booleanProp().withDefault(false),
+    value: anyProp().withDefault(``),
+    associatedEntity: anyProp().withDefault(``),
+    minNumber: numberProp().withDefault(null),
+    maxNumber: numberProp().withDefault(null),
+    name: stringProp().withDefault(null),
+    wide: booleanProp().withDefault(false),
   },
   data() {
     return {
