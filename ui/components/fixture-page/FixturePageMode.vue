@@ -63,6 +63,7 @@ ol.mode-channels {
 </style>
 
 <script>
+import { instanceOfProp } from 'vue-ts-types';
 import Mode from '../../../lib/model/Mode.js';
 
 import FixturePageChannel from './FixturePageChannel.vue';
@@ -74,10 +75,7 @@ export default {
     FixturePagePhysical,
   },
   props: {
-    mode: {
-      type: Mode,
-      required: true,
-    },
+    mode: instanceOfProp(Mode).required,
   },
   data() {
     return {

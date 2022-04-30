@@ -50,6 +50,7 @@
 </style>
 
 <script>
+import { booleanProp, objectProp } from 'vue-ts-types';
 import { schemaDefinitions, linksProperties } from '../../../lib/schema-properties.js';
 import fixtureLinkTypes from '../../assets/scripts/fixture-link-types.js';
 
@@ -67,18 +68,9 @@ export default {
     PropertyInputText,
   },
   props: {
-    link: {
-      type: Object,
-      required: true,
-    },
-    canRemove: {
-      type: Boolean,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: true,
-    },
+    link: objectProp().required,
+    canRemove: booleanProp().required,
+    formstate: objectProp().required,
   },
   data() {
     const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;

@@ -47,23 +47,13 @@ section {
 </style>
 
 <script>
+import { stringProp } from 'vue-ts-types';
+
 export default {
   props: {
-    name: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    label: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    value: {
-      type: String,
-      required: false,
-      default: null,
-    },
+    name: stringProp().optional,
+    label: stringProp().optional,
+    value: stringProp().optional,
   },
 };
 </script>
