@@ -87,7 +87,7 @@ const specialIconFunctions = {
       iconProperties.title += `, slot ${capability.slotNumber[0]} (${capability.wheelSlot[0].name})`;
     }
     else {
-      iconProperties.name = ``;
+      iconProperties.name = undefined;
     }
   },
   WheelShake(capability, iconProperties) {
@@ -95,7 +95,7 @@ const specialIconFunctions = {
       iconProperties.name = `animation-gobo`;
     }
     else if (capability.wheelSlot && capability.wheelSlot[0] !== capability.wheelSlot[1]) {
-      iconProperties.name = ``;
+      iconProperties.name = undefined;
     }
     else {
       iconProperties.name = capability.isShaking === `slot` ? `slot-shake` : `wheel-shake`;
