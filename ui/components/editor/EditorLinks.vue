@@ -28,6 +28,7 @@ export default {
   components: {
     EditorLink,
   },
+  inheritAttrs: false,
   model: {
     prop: `links`,
   },

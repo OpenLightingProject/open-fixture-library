@@ -46,7 +46,7 @@
       multiple-inputs
       name="links"
       label="Relevant links">
-      <EditorLinks v-model="fixture.links" :formstate="formstate" />
+      <EditorLinks v-model="fixture.links" name="links" :formstate="formstate" />
     </LabeledInput>
 
     <LabeledInput
