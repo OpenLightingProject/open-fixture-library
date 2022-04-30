@@ -103,7 +103,7 @@ function getSvg(name, category = undefined, title) {
     svg = icons[svgBasename].trim();
   }
   else {
-    console.error(`Icon '${svgBasename}' not found`);
+    throw new Error(`Icon '${svgBasename}' not found`);
   }
 
   svg = svg.replace(`<svg`, `<svg role="img"`);
