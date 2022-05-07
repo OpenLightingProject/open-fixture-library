@@ -1,0 +1,404 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LS 300X",
+  "categories": ["Dimmer", "Color Changer", "Effect"],
+  "meta": {
+    "authors": ["Peter Zuiderent"],
+    "createDate": "2022-05-01",
+    "lastModifyDate": "2022-05-01"
+  },
+  "links": {
+    "manual": [
+      "https://www.aputure.com/wp-content/uploads/2020/04/LS_300x-Product_Manual_EN.pdf"
+    ],
+    "other": [
+      "https://www.aputure.com",
+      "https://www.aputure.com/wp-content/uploads/2021/02/LS-300x-DMX-Table.xlsx"
+    ]
+  },
+  "physical": {
+    "dimensions": [298, 216, 345],
+    "weight": 11.4,
+    "power": 300,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": "50%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "Generic",
+          "comment": "2700K"
+        },
+        {
+          "dmxRange": [6, 10],
+          "type": "Generic",
+          "comment": "2800K"
+        },
+        {
+          "dmxRange": [11, 15],
+          "type": "Generic",
+          "comment": "2900K"
+        },
+        {
+          "dmxRange": [16, 20],
+          "type": "Generic",
+          "comment": "3000K"
+        },
+        {
+          "dmxRange": [21, 25],
+          "type": "Generic",
+          "comment": "3100K"
+        },
+        {
+          "dmxRange": [26, 30],
+          "type": "Generic",
+          "comment": "3200K"
+        },
+        {
+          "dmxRange": [31, 35],
+          "type": "Generic",
+          "comment": "3300K"
+        },
+        {
+          "dmxRange": [36, 40],
+          "type": "Generic",
+          "comment": "3400K"
+        },
+        {
+          "dmxRange": [41, 45],
+          "type": "Generic",
+          "comment": "3500K"
+        },
+        {
+          "dmxRange": [46, 50],
+          "type": "Generic",
+          "comment": "3600K"
+        },
+        {
+          "dmxRange": [51, 55],
+          "type": "Generic",
+          "comment": "3700K"
+        },
+        {
+          "dmxRange": [56, 60],
+          "type": "Generic",
+          "comment": "3800K"
+        },
+        {
+          "dmxRange": [61, 65],
+          "type": "Generic",
+          "comment": "3900K"
+        },
+        {
+          "dmxRange": [66, 70],
+          "type": "Generic",
+          "comment": "4000K"
+        },
+        {
+          "dmxRange": [71, 75],
+          "type": "Generic",
+          "comment": "4100K"
+        },
+        {
+          "dmxRange": [76, 80],
+          "type": "Generic",
+          "comment": "4200K"
+        },
+        {
+          "dmxRange": [81, 85],
+          "type": "Generic",
+          "comment": "4300K"
+        },
+        {
+          "dmxRange": [86, 90],
+          "type": "Generic",
+          "comment": "4400K"
+        },
+        {
+          "dmxRange": [91, 95],
+          "type": "Generic",
+          "comment": "4500K"
+        },
+        {
+          "dmxRange": [96, 100],
+          "type": "Generic",
+          "comment": "4600K"
+        },
+        {
+          "dmxRange": [101, 105],
+          "type": "Generic",
+          "comment": "4700K"
+        },
+        {
+          "dmxRange": [106, 110],
+          "type": "Generic",
+          "comment": "4800K"
+        },
+        {
+          "dmxRange": [111, 115],
+          "type": "Generic",
+          "comment": "4900K"
+        },
+        {
+          "dmxRange": [116, 120],
+          "type": "Generic",
+          "comment": "5000K"
+        },
+        {
+          "dmxRange": [121, 125],
+          "type": "Generic",
+          "comment": "5100K"
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "Generic",
+          "comment": "5200K"
+        },
+        {
+          "dmxRange": [131, 135],
+          "type": "Generic",
+          "comment": "5300K"
+        },
+        {
+          "dmxRange": [136, 140],
+          "type": "Generic",
+          "comment": "5400K"
+        },
+        {
+          "dmxRange": [141, 145],
+          "type": "Generic",
+          "comment": "5500K"
+        },
+        {
+          "dmxRange": [146, 150],
+          "type": "Generic",
+          "comment": "5600K"
+        },
+        {
+          "dmxRange": [151, 155],
+          "type": "Generic",
+          "comment": "5700K"
+        },
+        {
+          "dmxRange": [156, 160],
+          "type": "Generic",
+          "comment": "5800K"
+        },
+        {
+          "dmxRange": [161, 165],
+          "type": "Generic",
+          "comment": "5900K"
+        },
+        {
+          "dmxRange": [166, 170],
+          "type": "Generic",
+          "comment": "6000K"
+        },
+        {
+          "dmxRange": [171, 175],
+          "type": "Generic",
+          "comment": "6100K"
+        },
+        {
+          "dmxRange": [176, 180],
+          "type": "Generic",
+          "comment": "6200K"
+        },
+        {
+          "dmxRange": [181, 185],
+          "type": "Generic",
+          "comment": "6300K"
+        },
+        {
+          "dmxRange": [186, 190],
+          "type": "Generic",
+          "comment": "6400K"
+        },
+        {
+          "dmxRange": [191, 195],
+          "type": "Generic",
+          "comment": "6500K"
+        },
+        {
+          "dmxRange": [196, 255],
+          "type": "Generic",
+          "comment": "Undefined"
+        }
+      ]
+    },
+    "Frequency Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Generic",
+          "comment": "1"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Generic",
+          "comment": "2"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Generic",
+          "comment": "3"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Generic",
+          "comment": "4"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Generic",
+          "comment": "5"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Generic",
+          "comment": "6"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Generic",
+          "comment": "7"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Generic",
+          "comment": "8"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "Generic",
+          "comment": "9"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "Generic",
+          "comment": "10"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "Generic",
+          "comment": "R"
+        },
+        {
+          "dmxRange": [220, 155],
+          "type": "Generic",
+          "comment": "Undefined"
+        }
+      ]
+    },
+    "Mode Selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Manual Mode"
+        },
+        {
+          "dmxRange": [127, 255],
+          "type": "Generic",
+          "comment": "FX Mode"
+        }
+      ]
+    },
+    "FX Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Generic",
+          "comment": "Paperazzi"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Generic",
+          "comment": "Fireworks"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Generic",
+          "comment": "Faulty Bulb"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Generic",
+          "comment": "Lightning"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Generic",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Generic",
+          "comment": "Pulsing"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Generic",
+          "comment": "Strobe"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Generic",
+          "comment": "Explosion"
+        },
+        {
+          "dmxRange": [160, 178],
+          "type": "Generic",
+          "comment": "Fire"
+        },
+        {
+          "dmxRange": [180, 255],
+          "type": "Generic",
+          "comment": "Undefined"
+        }
+      ]
+    },
+    "Start - Trigger": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Generic",
+          "comment": "Lightning-mode: Start Point"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Generic",
+          "comment": "Single Trigger"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Cycle Mode"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Default",
+      "channels": [
+        "Intensity",
+        "CCT Control",
+        "Frequency Control",
+        "Mode Selection",
+        "FX Control",
+        "Start - Trigger"
+      ]
+    }
+  ]
+}
