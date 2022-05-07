@@ -47,13 +47,13 @@
       "capabilities": [
         {
           "dmxRange": [0, 126],
-          "type": "Generic",
-          "comment": "3200K"
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
         },
         {
           "dmxRange": [127, 255],
-          "type": "Generic",
-          "comment": "5600K"
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
         }
       ]
     },
@@ -125,9 +125,7 @@
     },
     "CCT <-> HSI": {
       "capability": {
-        "type": "Intensity",
-        "brightnessStart": "0%",
-        "brightnessEnd": "100%",
+        "type": "Generic",
         "comment": "Cross Fade To Color"
       }
     },
@@ -434,12 +432,13 @@
     "X": {
       "capability": {
         "type": "Generic",
-        "comment": "0 -0,8"
+        "comment": "0 … 0.8"
       }
     },
     "Y": {
       "capability": {
-        "type": "Generic"
+        "type": "Generic",
+        "comment": "0 … 0.8"
       }
     },
     "Effect": {
