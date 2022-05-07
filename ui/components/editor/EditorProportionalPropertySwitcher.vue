@@ -181,6 +181,7 @@
 </style>
 
 <script>
+import { booleanProp, objectProp, stringProp } from 'vue-ts-types';
 import {
   schemaDefinitions,
   capabilityTypes,
@@ -199,29 +200,11 @@ export default {
     PropertyInputText,
   },
   props: {
-    capability: {
-      type: Object,
-      required: true,
-    },
-    propertyName: {
-      type: String,
-      required: true,
-    },
-    required: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    hint: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    formstate: {
-      type: Object,
-      required: false,
-      default: null,
-    },
+    capability: objectProp().required,
+    propertyName: stringProp().required,
+    required: booleanProp().withDefault(false),
+    hint: stringProp().optional,
+    formstate: objectProp().optional,
   },
   data() {
     const slotNumberUnit = entitiesSchema.slotNumber.$ref.replace(`#/units/`, ``);

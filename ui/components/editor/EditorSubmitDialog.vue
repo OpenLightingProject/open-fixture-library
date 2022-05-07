@@ -203,6 +203,7 @@
 </style>
 
 <script>
+import { stringProp } from 'vue-ts-types';
 import Fixture from '../../../lib/model/Fixture.js';
 import Manufacturer from '../../../lib/model/Manufacturer.js';
 import { clone } from '../../assets/scripts/editor-utils.js';
@@ -234,20 +235,9 @@ export default {
     FixtureHeader,
   },
   props: {
-    endpoint: {
-      type: String,
-      required: true,
-    },
-    githubUsername: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    githubComment: {
-      type: String,
-      required: false,
-      default: null,
-    },
+    endpoint: stringProp().required,
+    githubUsername: stringProp().optional,
+    githubComment: stringProp().optional,
   },
   data() {
     return {
@@ -389,8 +379,8 @@ export default {
     async onSubmit() {
       this.requestBody = {
         fixtureCreateResult: this.fixtureCreateResult,
-        githubUsername: this.githubUsername,
-        githubComment: this.githubComment,
+        githubUsername: this.githubUsername ?? null,
+        githubComment: this.githubComment ?? null,
       };
 
       console.log(`submit`, clone(this.requestBody));

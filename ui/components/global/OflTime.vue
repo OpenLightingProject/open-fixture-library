@@ -5,12 +5,11 @@
 </template>
 
 <script>
+import { instanceOfProp } from 'vue-ts-types';
+
 export default {
   props: {
-    date: {
-      type: Date,
-      required: true,
-    },
+    date: instanceOfProp(Date).required,
   },
 };
 </script>
