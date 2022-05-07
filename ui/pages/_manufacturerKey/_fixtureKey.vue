@@ -140,7 +140,7 @@ export default {
   data() {
     return {
       isBrowser: false,
-      helpWantedContext: null,
+      helpWantedContext: undefined,
       helpWantedType: ``,
     };
   },

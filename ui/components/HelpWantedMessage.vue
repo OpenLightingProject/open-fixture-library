@@ -86,19 +86,12 @@
 </style>
 
 <script>
+import { objectProp, oneOfProp } from 'vue-ts-types';
+
 export default {
   props: {
-    type: {
-      type: String,
-      required: true,
-      validator(type) {
-        return [`fixture`, `capability`, `plugin`].includes(type);
-      },
-    },
-    context: {
-      type: Object,
-      required: true,
-    },
+    type: oneOfProp([`fixture`, `capability`, `plugin`]).required,
+    context: objectProp().required,
   },
   computed: {
     location() {
