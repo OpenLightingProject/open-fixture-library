@@ -88,7 +88,7 @@
         "color": "Blue"
       }
     },
-    "Green - Magenta point": {
+    "Green/Magenta Point": {
       "defaultValue": 0,
       "capabilities": [
         {
@@ -198,7 +198,7 @@
         }
       ]
     },
-    "HUE": {
+    "Hue": {
       "capabilities": [
         {
           "dmxRange": [0, 0],
@@ -1482,7 +1482,7 @@
         }
       ]
     },
-    "SAT": {
+    "Saturation": {
       "defaultValue": "50%",
       "capability": {
         "type": "Intensity",
@@ -1499,7 +1499,7 @@
         "comment": "Cross Fade To Color"
       }
     },
-    "R/L": {
+    "Gel R/L": {
       "capabilities": [
         {
           "dmxRange": [0, 9],
@@ -1522,7 +1522,7 @@
         }
       ]
     },
-    "Series": {
+    "Gel Series": {
       "capabilities": [
         {
           "dmxRange": [0, 9],
@@ -1969,7 +1969,7 @@
       "channels": [
         "Intensity",
         "CCT",
-        "Green - Magenta point",
+        "Green/Magenta Point",
         "CCT <-> RGB",
         "Red",
         "Green",
@@ -1981,7 +1981,7 @@
       "channels": [
         "Intensity",
         "CCT",
-        "Green - Magenta point"
+        "Green/Magenta Point"
       ]
     },
     {
@@ -1989,10 +1989,10 @@
       "channels": [
         "Intensity",
         "CCT",
-        "Green - Magenta point",
+        "Green/Magenta Point",
         "CCT <-> HSI",
-        "HUE",
-        "SAT"
+        "Hue",
+        "Saturation"
       ]
     },
     {
@@ -2000,16 +2000,16 @@
       "channels": [
         "Intensity",
         "Gel CCT",
-        "R/L",
-        "Series"
+        "Gel R/L",
+        "Gel Series"
       ]
     },
     {
       "name": "HSI",
       "channels": [
         "Intensity",
-        "HUE",
-        "SAT"
+        "Hue",
+        "Saturation"
       ]
     },
     {
