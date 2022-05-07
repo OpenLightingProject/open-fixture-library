@@ -32,13 +32,11 @@
   },
   "availableChannels": {
     "Intensity": {
-      "defaultValue": "50%",
       "capability": {
         "type": "Intensity"
       }
     },
     "CCT": {
-      "defaultValue": 126,
       "capability": {
         "type": "ColorTemperature",
         "colorTemperatureStart": "2000K",
@@ -46,7 +44,6 @@
       }
     },
     "Gel CCT": {
-      "defaultValue": "52%",
       "capabilities": [
         {
           "dmxRange": [0, 126],
@@ -61,35 +58,30 @@
       ]
     },
     "CCT <-> RGB": {
-      "defaultValue": "50%",
       "capability": {
         "type": "Generic",
         "comment": "crossfade to color"
       }
     },
     "Red": {
-      "defaultValue": "50%",
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
     "Green": {
-      "defaultValue": "50%",
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
     "Blue": {
-      "defaultValue": "50%",
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
     },
     "Green/Magenta Point": {
-      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 11],
@@ -1483,7 +1475,6 @@
       ]
     },
     "Saturation": {
-      "defaultValue": "50%",
       "capability": {
         "type": "Intensity",
         "brightnessStart": "0%",
@@ -1491,7 +1482,6 @@
       }
     },
     "CCT <-> HSI": {
-      "defaultValue": "50%",
       "capability": {
         "type": "Intensity",
         "brightnessStart": "0%",
@@ -1796,14 +1786,12 @@
       ]
     },
     "X": {
-      "defaultValue": "50%",
       "capability": {
         "type": "Generic",
         "comment": "0 -0,8"
       }
     },
     "Y": {
-      "defaultValue": "50%",
       "capability": {
         "type": "Generic"
       }
