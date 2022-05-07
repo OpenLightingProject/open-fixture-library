@@ -526,75 +526,53 @@
         }
       ]
     },
-    "Colors": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 9],
-          "type": "Generic",
-          "comment": "Function 3"
-        },
-        {
-          "dmxRange": [10, 19],
-          "type": "Generic",
-          "comment": "Function 6"
-        },
-        {
-          "dmxRange": [20, 29],
-          "type": "Generic",
-          "comment": "Function 9"
-        },
-        {
-          "dmxRange": [30, 39],
-          "type": "Generic",
-          "comment": "Function 12"
-        },
-        {
-          "dmxRange": [40, 49],
-          "type": "Generic",
-          "comment": "Function 15"
-        },
-        {
-          "dmxRange": [50, 59],
-          "type": "Generic",
-          "comment": "Function 18"
-        },
-        {
-          "dmxRange": [60, 69],
-          "type": "Generic",
-          "comment": "Function 24"
-        },
-        {
-          "dmxRange": [70, 79],
-          "type": "Generic",
-          "comment": "Function 36"
-        },
-        {
-          "dmxRange": [80, 255],
-          "type": "Generic",
-          "comment": "Backup"
-        }
-      ]
-    },
-    "Speed": {
+    "Effect Parameter 1": {
       "capability": {
-        "type": "Speed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
+        "type": "Generic",
+        "comment": "Dependent on Effect"
       }
     },
-    "Stop - Loop": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 127],
-          "type": "Generic",
-          "comment": "Stop"
-        },
-        {
-          "dmxRange": [128, 255],
-          "type": "Generic",
-          "comment": "Loop"
-        }
-      ]
+    "Effect Parameter 2": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Dependent on Effect"
+      }
+    },
+    "Effect Parameter 3": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Dependent on Effect"
+      }
+    },
+    "Effect Parameter 4": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Dependent on Effect"
+      }
+    },
+    "Effect Parameter 5": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Dependent on Effect"
+      }
+    },
+    "Effect Parameter 6": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Dependent on Effect"
+      }
+    },
+    "Effect Parameter 7": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Dependent on Effect"
+      }
+    },
+    "Effect Parameter 8": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Dependent on Effect"
+      }
     }
   },
   "modes": [
@@ -675,7 +653,15 @@
       "name": "Effect",
       "channels": [
         "Effect",
-        "Intensity"
+        "Intensity",
+        "Effect Parameter 1",
+        "Effect Parameter 2",
+        "Effect Parameter 3",
+        "Effect Parameter 4",
+        "Effect Parameter 5",
+        "Effect Parameter 6",
+        "Effect Parameter 7",
+        "Effect Parameter 8"
       ]
     }
   ]
