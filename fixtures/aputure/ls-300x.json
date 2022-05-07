@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "LS 300x",
-  "categories": ["Dimmer", "Color Changer", "Effect"],
+  "categories": ["Dimmer", "Effect"],
   "meta": {
     "authors": ["Peter Zuiderent", "Flo Edelmann"],
     "createDate": "2022-05-07",
@@ -105,7 +105,7 @@
           "comment": "R"
         },
         {
-          "dmxRange": [220, 155],
+          "dmxRange": [220, 255],
           "type": "NoFunction"
         }
       ]
@@ -118,7 +118,7 @@
           "comment": "Manual Mode"
         },
         {
-          "dmxRange": [127, 255],
+          "dmxRange": [128, 255],
           "type": "Generic",
           "comment": "FX Mode"
         }
@@ -167,7 +167,7 @@
           "effectName": "Explosion"
         },
         {
-          "dmxRange": [160, 178],
+          "dmxRange": [160, 179],
           "type": "Effect",
           "effectName": "Fire"
         },
