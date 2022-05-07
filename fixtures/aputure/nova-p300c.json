@@ -149,8 +149,7 @@
         },
         {
           "dmxRange": [60, 255],
-          "type": "Generic",
-          "comment": "Backup"
+          "type": "NoFunction"
         }
       ]
     },
@@ -183,10 +182,15 @@
         },
         {
           "dmxRange": [50, 255],
-          "type": "Generic",
-          "comment": "Backup"
+          "type": "NoFunction"
         }
       ]
+    },
+    "Gel Model": {
+      "capability": {
+        "type": "Generic",
+        "comment": "Gel Model selection (dependent on Gel R/L and Gel Series)"
+      }
     },
     "Source": {
       "capabilities": [
@@ -631,7 +635,8 @@
         "Intensity",
         "Gel CCT",
         "Gel R/L",
-        "Gel Series"
+        "Gel Series",
+        "Gel Model"
       ]
     },
     {
