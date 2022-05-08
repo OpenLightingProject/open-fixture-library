@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "k2015",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["Anonymus"],
+    "createDate": "2022-05-08",
+    "lastModifyDate": "2022-05-08"
+  },
+  "links": {
+    "manual": [
+      "https://test.com"
+    ]
+  },
+  "availableChannels": {
+    "Music": {
+      "capability": {
+        "type": "Effect",
+        "effectName": "sound"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Basic",
+      "channels": [
+        "Music",
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
