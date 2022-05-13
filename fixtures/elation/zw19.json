@@ -7,7 +7,6 @@
     "createDate": "2022-04-27",
     "lastModifyDate": "2022-04-27"
   },
-  "comment": "Not entirely sure what all the Shutter/Strobe descriptions mean.\nNo documentation of Color Macros 1-64 that I could find.",
   "links": {
     "manual": [
       "https://d295jznhem2tn9.cloudfront.net/ItemRelatedFiles/9786/elation_ZW19_user_manual_ver%201-092015.pdf"
@@ -93,7 +92,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "helpWanted": "Which colors can be selected at which DMX values?"
         },
         {
           "dmxRange": [1, 4],
@@ -476,8 +476,7 @@
           "dmxRange": [130, 144],
           "type": "ShutterStrobe",
           "shutterEffect": "RampUp",
-          "randomTiming": true,
-          "comment": "\"Random Opening Pulse\" = RampUp?"
+          "randomTiming": true
         },
         {
           "dmxRange": [145, 149],
@@ -488,8 +487,7 @@
           "dmxRange": [150, 164],
           "type": "ShutterStrobe",
           "shutterEffect": "RampDown",
-          "randomTiming": true,
-          "comment": "\"Random Closing Pulse\" = RampDown?"
+          "randomTiming": true
         },
         {
           "dmxRange": [165, 169],
@@ -499,8 +497,7 @@
         {
           "dmxRange": [170, 184],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
-          "comment": "\"Random Burst Pulse\" = Pulse?"
+          "shutterEffect": "Pulse"
         },
         {
           "dmxRange": [185, 189],
