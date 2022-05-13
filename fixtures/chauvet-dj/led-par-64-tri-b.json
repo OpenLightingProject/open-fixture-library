@@ -88,53 +88,73 @@
       ]
     },
     "Operating Mode": {
+      "defaultValue": 0,
       "capabilities": [
         {
           "dmxRange": [0, 31],
-          "type": "NoFunction"
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Strobe"
+          }
         },
         {
           "dmxRange": [32, 63],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
-          "durationStart": "0%",
-          "durationEnd": "100%"
+          "shutterEffect": "RampUp",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [64, 95],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
-          "durationStart": "100%",
-          "durationEnd": "0%"
+          "shutterEffect": "RampDown",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [96, 127],
           "type": "ShutterStrobe",
-          "shutterEffect": "Pulse",
-          "comment": "100%~0%~100%"
+          "shutterEffect": "RampUpDown",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [128, 159],
           "type": "Effect",
-          "effectPreset": "ColorFade"
+          "effectPreset": "ColorFade",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [160, 191],
           "type": "Effect",
           "effectPreset": "ColorJump",
-          "comment": "3 colors"
+          "comment": "3 colors",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [192, 223],
           "type": "Effect",
           "effectPreset": "ColorJump",
-          "comment": "7 colors"
+          "comment": "7 colors",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
         },
         {
           "dmxRange": [224, 255],
           "type": "Effect",
           "effectName": "Sound triggering mode",
-          "soundControlled": true
+          "soundControlled": true,
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
         }
       ]
     },
@@ -155,7 +175,7 @@
         "Green",
         "Blue",
         "Color Macros",
-        "Effect Speed",
+        "Strobe / Effect Speed",
         "Operating Mode",
         "Dimmer"
       ]
