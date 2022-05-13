@@ -86,6 +86,7 @@
 </style>
 
 <script>
+import { numberProp, objectProp } from 'vue-ts-types';
 import { capabilityDmxRange } from '../../../lib/schema-properties.js';
 import { getEmptyCapability, isCapabilityChanged } from '../../assets/scripts/editor-utils.js';
 
@@ -102,22 +103,10 @@ export default {
     PropertyInputRange,
   },
   props: {
-    channel: {
-      type: Object,
-      required: true,
-    },
-    capabilityIndex: {
-      type: Number,
-      required: true,
-    },
-    resolution: {
-      type: Number,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: true,
-    },
+    channel: objectProp().required,
+    capabilityIndex: numberProp().required,
+    resolution: numberProp().required,
+    formstate: objectProp().required,
   },
   data() {
     return {

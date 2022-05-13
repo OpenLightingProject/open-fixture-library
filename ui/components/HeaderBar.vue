@@ -204,7 +204,8 @@ header {
       padding: 0 0.5ex;
     }
 
-    .right-nav > a {
+    .right-nav > a,
+    .right-nav > button {
       height: 2.7em;
       line-height: 2.7em;
     }

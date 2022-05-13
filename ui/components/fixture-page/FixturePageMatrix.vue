@@ -81,6 +81,7 @@
 </style>
 
 <script>
+import { instanceOfProp } from 'vue-ts-types';
 import Matrix from '../../../lib/model/Matrix.js';
 import Physical from '../../../lib/model/Physical.js';
 
@@ -91,15 +92,8 @@ export default {
     LabeledValue,
   },
   props: {
-    matrix: {
-      type: Matrix,
-      required: true,
-    },
-    physical: {
-      type: Physical,
-      required: false,
-      default: null,
-    },
+    matrix: instanceOfProp(Matrix).required,
+    physical: instanceOfProp(Physical).optional,
   },
   data() {
     return {
@@ -111,7 +105,7 @@ export default {
     pixelSizing() {
       let sizing = `height: ${this.baseHeight}em; `;
 
-      if (this.physical !== null && this.physical.hasMatrixPixels) {
+      if (this.physical?.hasMatrixPixels) {
         const scale = this.baseHeight / this.physical.matrixPixelsDimensions[1];
         sizing += `width: ${this.physical.matrixPixelsDimensions[0] * scale}em; `;
         sizing += `margin-right: ${this.physical.matrixPixelsSpacing[0] * scale}em; `;

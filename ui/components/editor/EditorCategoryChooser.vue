@@ -25,6 +25,7 @@
 
 
 <script>
+import { arrayProp } from 'vue-ts-types';
 import Draggable from 'vuedraggable';
 
 import CategoryBadge from '../CategoryBadge.vue';
@@ -35,14 +36,8 @@ export default {
     CategoryBadge,
   },
   props: {
-    value: {
-      type: Array,
-      required: true,
-    },
-    allCategories: {
-      type: Array,
-      required: true,
-    },
+    value: arrayProp().required,
+    allCategories: arrayProp().required,
   },
   computed: {
     selectedCategories: {

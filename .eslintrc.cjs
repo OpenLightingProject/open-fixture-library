@@ -41,6 +41,7 @@ const enabledRuleParameters = {
   'no-array-constructor': [],
   'no-bitwise': [],
   'no-confusing-arrow': [{ allowParens: true }],
+  'no-constant-binary-expression': [],
   'no-else-return': [{ allowElseIf: false }],
   'no-irregular-whitespace': [],
   'no-lonely-if': [],
@@ -178,7 +179,7 @@ const enabledRuleParameters = {
     registeredComponentsOnly: false,
   }],
   'vue/component-tags-order': [{
-    order: [`template`, `style`, `script`],
+    order: [`template`, `style[scoped]`, `style:not([scoped])`, `script`],
   }],
   'vue/html-button-has-type': [],
   'vue/html-closing-bracket-newline': [{
@@ -189,6 +190,7 @@ const enabledRuleParameters = {
     extensions: [`vue`],
     shouldMatchCase: true,
   }],
+  'vue/match-component-import-name': [],
   'vue/max-attributes-per-line': [{ singleline: 3 }],
   'vue/next-tick-style': [],
   'vue/no-boolean-default': [`default-false`],
@@ -213,6 +215,7 @@ const enabledRuleParameters = {
   'vue/no-unused-refs': [],
   'vue/no-use-computed-property-like-method': [],
   'vue/no-v-text': [],
+  'vue/prefer-prop-type-boolean-first': [],
   'vue/prefer-separate-static-class': [],
   'vue/prefer-true-attribute-shorthand': [],
   'vue/require-direct-export': [],
@@ -281,6 +284,7 @@ const disabledRules = [
   `unicorn/filename-case`,
   `unicorn/no-null`,
   `unicorn/no-process-exit`,
+  `unicorn/no-useless-switch-case`, // explicit "useless" switch chases are documentation
   `unicorn/no-useless-undefined`, // conflicts with `consistent-return`
   `unicorn/prefer-node-protocol`, // not supported by Nuxt yet
   `vue/multiline-html-element-content-newline`,

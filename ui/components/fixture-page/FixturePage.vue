@@ -190,6 +190,7 @@
 
 <script>
 import { EmbettyVideo } from 'embetty-vue';
+import { booleanProp, instanceOfProp } from 'vue-ts-types';
 import register from '../../../fixtures/register.json';
 
 import Fixture from '../../../lib/model/Fixture.js';
@@ -219,15 +220,8 @@ export default {
     LabeledValue,
   },
   props: {
-    fixture: {
-      type: Fixture,
-      required: true,
-    },
-    loadAllModes: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
+    fixture: instanceOfProp(Fixture).required,
+    loadAllModes: booleanProp().withDefault(false),
   },
   data() {
     const { linkTypeIconNames, linkTypeNames } = fixtureLinkTypes;
