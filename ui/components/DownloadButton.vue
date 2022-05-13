@@ -190,41 +190,20 @@ select {
 </style>
 
 <script>
+import { booleanProp, integerProp, objectProp, oneOfProp, stringProp } from 'vue-ts-types';
+
 export default {
   props: {
     // how many fixtures will be downloaded, if !isSingle?
-    fixtureCount: {
-      type: Number,
-      required: false,
-      default: 0,
-    },
+    fixtureCount: integerProp().withDefault(0),
     // fixtures from the editor, not yet submitted
-    editorFixtures: {
-      type: Object,
-      required: false,
-      default: undefined,
-    },
+    editorFixtures: objectProp().optional,
     // the manufacturer key and fixture key of a submitted fixture
-    fixtureKey: {
-      type: String,
-      required: false,
-      default: undefined,
-    },
+    fixtureKey: stringProp().optional,
     // the button style: default, 'home' or 'select'
-    buttonStyle: {
-      type: String,
-      required: false,
-      default: `default`,
-      validator(buttonStyle) {
-        return [`default`, `home`, `select`].includes(buttonStyle);
-      },
-    },
+    buttonStyle: oneOfProp([`default`, `home`, `select`]).withDefault(`default`),
     // show the help box
-    showHelp: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
+    showHelp: booleanProp().withDefault(false),
   },
   data() {
     return {

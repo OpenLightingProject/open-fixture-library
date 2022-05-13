@@ -242,6 +242,7 @@
 import scrollIntoView from 'scroll-into-view';
 import { v4 as uuidv4 } from 'uuid';
 
+import { objectProp } from 'vue-ts-types';
 import { capabilityTypes, channelProperties } from '../../../lib/schema-properties.js';
 import {
   constants,
@@ -278,14 +279,8 @@ export default {
     prop: `channel`,
   },
   props: {
-    channel: {
-      type: Object,
-      required: true,
-    },
-    fixture: {
-      type: Object,
-      required: true,
-    },
+    channel: objectProp().required,
+    fixture: objectProp().required,
   },
   data() {
     return {

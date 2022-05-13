@@ -1,0 +1,193 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED PAR 64 TRI-B",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Ken Harris"],
+    "createDate": "2022-05-13",
+    "lastModifyDate": "2022-05-13"
+  },
+  "links": {
+    "manual": [
+      "https://www.chauvetdj.com/wp-content/uploads/2016/02/LED_PAR_64_Tri-B_-_UM_Rev4_WO-1.pdf"
+    ],
+    "productPage": [
+      "https://www.chauvetdj.com/products/led-par-64-tri-b/"
+    ]
+  },
+  "physical": {
+    "dimensions": [302, 251, 383],
+    "weight": 2.9,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "18× 3W RGB LED"
+    },
+    "lens": {
+      "degreesMinMax": [22, 22]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ColorPreset"
+        }
+      ]
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "6Hz",
+          "speedEnd": "18Hz"
+        }
+      ]
+    },
+    "Operating Mode": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "NoFunction",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Strobe"
+          }
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUp",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampDown",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "RampUpDown",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Effect",
+          "effectPreset": "ColorFade",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "3 colors",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Effect",
+          "effectPreset": "ColorJump",
+          "comment": "7 colors",
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Effect",
+          "effectName": "Sound triggering mode",
+          "soundControlled": true,
+          "switchChannels": {
+            "Strobe / Effect Speed": "Effect Speed"
+          }
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Color Macros",
+        "Strobe / Effect Speed",
+        "Operating Mode",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}

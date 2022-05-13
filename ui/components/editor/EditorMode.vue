@@ -200,6 +200,7 @@
 </style>
 
 <script>
+import { numberProp, objectProp } from 'vue-ts-types';
 import Draggable from 'vuedraggable';
 
 import { schemaDefinitions, modeProperties } from '../../../lib/schema-properties.js';
@@ -222,22 +223,10 @@ export default {
     prop: `mode`,
   },
   props: {
-    mode: {
-      type: Object,
-      required: true,
-    },
-    index: {
-      type: Number,
-      required: true,
-    },
-    fixture: {
-      type: Object,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: true,
-    },
+    mode: objectProp().required,
+    index: numberProp().required,
+    fixture: objectProp().required,
+    formstate: objectProp().required,
   },
   data() {
     return {
