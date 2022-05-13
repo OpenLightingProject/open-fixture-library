@@ -421,7 +421,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 19],
-          "type": "NoFunction"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [20, 24],
