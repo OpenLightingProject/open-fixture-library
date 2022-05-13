@@ -46,6 +46,7 @@
 </style>
 
 <script>
+import { integerProp, objectProp } from 'vue-ts-types';
 import { wheelSlotTypes } from '../../../lib/schema-properties.js';
 import { getEmptyWheelSlot } from '../../assets/scripts/editor-utils.js';
 
@@ -80,23 +81,9 @@ export default {
     prop: `capability`,
   },
   props: {
-    channel: {
-      type: Object,
-      required: true,
-    },
-    slotNumber: {
-      type: Number,
-      required: true,
-      valid(slotNumber) {
-        // only integer slot numbers are allowed
-        return slotNumber % 1 === 0;
-      },
-    },
-    formstate: {
-      type: Object,
-      required: false,
-      default: null,
-    },
+    channel: objectProp().required,
+    slotNumber: integerProp().required,
+    formstate: objectProp().optional,
   },
   data() {
     return {

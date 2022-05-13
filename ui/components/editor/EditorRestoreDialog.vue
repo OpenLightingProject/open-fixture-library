@@ -2,7 +2,7 @@
   <A11yDialog
     id="restore-dialog"
     is-alert-dialog
-    :shown="restoredData !== null"
+    :shown="restoredData !== undefined"
     title="Auto-saved fixture data found">
 
     Do you want to restore the data (auto-saved <time>{{ restoredDate }}</time>) to continue to create the fixture?
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { objectProp } from 'vue-ts-types';
 import {
   getEmptyFixture,
   getEmptyLink,
@@ -48,16 +49,12 @@ export default {
     prop: `restoredData`,
   },
   props: {
-    restoredData: {
-      type: Object,
-      required: false,
-      default: null,
-    },
+    restoredData: objectProp().optional,
   },
   computed: {
     restoredDate() {
-      if (this.restoredData === null) {
-        return null;
+      if (this.restoredData === undefined) {
+        return undefined;
       }
       return (new Date(this.restoredData.timestamp)).toISOString().replace(/\..*$/, ``).replace(`T`, `, `);
     },
@@ -67,7 +64,7 @@ export default {
       // put all items except the last one back
       localStorage.setItem(`autoSave`, JSON.stringify(JSON.parse(localStorage.getItem(`autoSave`)).slice(0, -1)));
 
-      this.$emit(`input`, null);
+      this.$emit(`input`, undefined);
       this.$emit(`restore-complete`);
     },
 
@@ -75,7 +72,7 @@ export default {
       const restoredData = clone(this.restoredData);
 
       // closes dialog
-      this.$emit(`input`, null);
+      this.$emit(`input`, undefined);
 
       // restoring could open another dialog -> wait for DOM being up-to-date
       await this.$nextTick();

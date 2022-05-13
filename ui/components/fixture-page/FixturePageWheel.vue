@@ -228,6 +228,7 @@ figcaption table {
 </style>
 
 <script>
+import { instanceOfProp } from 'vue-ts-types';
 import Wheel from '../../../lib/model/Wheel.js';
 import ConditionalDetails from '../ConditionalDetails.vue';
 import { getColorCircleSvgFragment } from '../global/OflSvg.vue';
@@ -237,10 +238,7 @@ export default {
     ConditionalDetails,
   },
   props: {
-    wheel: {
-      type: Wheel,
-      required: true,
-    },
+    wheel: instanceOfProp(Wheel).required,
   },
   data() {
     return {

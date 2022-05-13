@@ -9,26 +9,14 @@
 </template>
 
 <script>
+import { anyProp, booleanProp, objectProp, stringProp } from 'vue-ts-types';
+
 export default {
   props: {
-    schemaProperty: {
-      type: Object,
-      required: true,
-    },
-    required: {
-      type: Boolean,
-      required: false,
-      default: false,
-    },
-    hint: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    value: {
-      type: null,
-      required: true,
-    },
+    schemaProperty: objectProp().required,
+    required: booleanProp().withDefault(false),
+    hint: stringProp().optional,
+    value: anyProp().required,
   },
   data() {
     return {

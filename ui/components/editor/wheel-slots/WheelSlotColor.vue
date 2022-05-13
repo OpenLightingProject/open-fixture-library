@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import { objectProp } from 'vue-ts-types';
 import { schemaDefinitions, entitiesSchema } from '../../../../lib/schema-properties.js';
 import { colorsHexStringToArray } from '../../../assets/scripts/editor-utils.js';
 
@@ -61,15 +62,8 @@ export default {
     PropertyInputText,
   },
   props: {
-    wheelSlot: {
-      type: Object,
-      required: true,
-    },
-    formstate: {
-      type: Object,
-      required: false,
-      default: null,
-    },
+    wheelSlot: objectProp().required,
+    formstate: objectProp().optional,
   },
   data() {
     return {
