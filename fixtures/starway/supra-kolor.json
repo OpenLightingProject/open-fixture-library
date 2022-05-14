@@ -1,0 +1,128 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Supra Kolor",
+  "shortName": "Suprakolor HD",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Jacques-Yves LAFONTAINE"],
+    "createDate": "2022-05-14",
+    "lastModifyDate": "2022-05-14"
+  },
+  "links": {
+    "manual": [
+      "https://www.star-way.com/suprakolor-hd"
+    ],
+    "productPage": [
+      "https://www.star-way.com/suprakolor-hd"
+    ],
+    "video": [
+      "https://www.star-way.com/suprakolor-hd"
+    ]
+  },
+  "physical": {
+    "dimensions": [283, 236, 324],
+    "weight": 8.6,
+    "power": 235,
+    "DMXconnector": "3-pin XLR IP65",
+    "bulb": {
+      "type": "LED: 14 x 15 w LED (4 en 1, RGBW)",
+      "lumens": 2441
+    },
+    "lens": {
+      "name": "Optical",
+      "degreesMinMax": [8, 40]
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue 3": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Blue 4": {
+      "name": "Blue",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Reset Zoom": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 200],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [201, 220],
+          "type": "Zoom",
+          "angleStart": "closed",
+          "angleEnd": "closed"
+        },
+        {
+          "dmxRange": [221, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "AR2Z",
+      "shortName": "AR2Z",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue 4",
+        "White",
+        "Zoom",
+        "Reset Zoom"
+      ]
+    }
+  ]
+}
