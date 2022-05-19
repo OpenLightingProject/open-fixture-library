@@ -194,12 +194,10 @@ const enabledRuleParameters = {
   'vue/max-attributes-per-line': [{ singleline: 3 }],
   'vue/next-tick-style': [],
   'vue/no-boolean-default': [`default-false`],
-  'vue/no-child-content': [],
   'vue/no-deprecated-scope-attribute': [],
   'vue/no-deprecated-slot-attribute': [],
   'vue/no-deprecated-slot-scope-attribute': [],
   'vue/no-empty-component-block': [],
-  'vue/no-invalid-model-keys': [],
   'vue/no-undef-components': [{
     ignorePatterns: [
       `^Ofl(Svg|Time)$`, // global components
@@ -213,7 +211,6 @@ const enabledRuleParameters = {
     ignorePublicMembers: true,
   }],
   'vue/no-unused-refs': [],
-  'vue/no-use-computed-property-like-method': [],
   'vue/no-v-text': [],
   'vue/prefer-prop-type-boolean-first': [],
   'vue/prefer-separate-static-class': [],
