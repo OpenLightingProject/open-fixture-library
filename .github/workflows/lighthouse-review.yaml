@@ -2,6 +2,9 @@ name: Lighthouse
 on:
   pull_request:
     types: [opened, synchronize, reopened, labeled]
+concurrency:
+  group: lighthouse-review-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   review:
     name: Review
