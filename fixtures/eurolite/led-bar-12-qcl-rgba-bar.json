@@ -33,11 +33,13 @@
   "availableChannels": {
     "Dimmer": {
       "defaultValue": 0,
+      "highlightValue": 255,
       "capability": {
         "type": "Intensity"
       }
     },
     "Red": {
+      "defaultValue": 0,
       "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
@@ -45,6 +47,7 @@
       }
     },
     "Green": {
+      "defaultValue": 0,
       "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
@@ -52,6 +55,7 @@
       }
     },
     "Blue": {
+      "defaultValue": 0,
       "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
@@ -59,6 +63,7 @@
       }
     },
     "Amber": {
+      "defaultValue": 0,
       "highlightValue": 255,
       "capability": {
         "type": "ColorIntensity",
@@ -249,7 +254,7 @@
         "Green",
         "Blue",
         "Amber",
-        "XXX",
+        "Color Temperature",
         "Dimmer",
         "Strobe",
         "Auto Program",
