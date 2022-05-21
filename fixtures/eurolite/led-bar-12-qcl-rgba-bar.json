@@ -100,6 +100,128 @@
         "speedEnd": "fast"
       }
     },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 19],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [20, 29],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#00ff00"]
+        },
+        {
+          "dmxRange": [30, 39],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [40, 49],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [50, 59],
+          "type": "ColorPreset",
+          "comment": "Amber",
+          "colors": ["#ffbf00"]
+        },
+        {
+          "dmxRange": [60, 69],
+          "type": "ColorPreset",
+          "comment": "UV",
+          "colors": ["#8800ff"]
+        },
+        {
+          "dmxRange": [70, 79],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [80, 89],
+          "type": "ColorPreset",
+          "comment": "Magenta",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [90, 99],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00ffff"]
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "ColorPreset",
+          "comment": "Dark Orange",
+          "colors": ["#be6500"]
+        },
+        {
+          "dmxRange": [110, 119],
+          "type": "ColorPreset",
+          "comment": "Green Yellow",
+          "colors": ["#8cff00"]
+        },
+        {
+          "dmxRange": [120, 129],
+          "type": "ColorPreset",
+          "comment": "Salmon",
+          "colors": ["#ff8c8c"]
+        },
+        {
+          "dmxRange": [130, 139],
+          "type": "ColorPreset",
+          "comment": "Turquoise",
+          "colors": ["#8cffff"]
+        },
+        {
+          "dmxRange": [140, 149],
+          "type": "ColorPreset",
+          "comment": "Light Green",
+          "colors": ["#8cff8c"]
+        },
+        {
+          "dmxRange": [150, 159],
+          "type": "ColorPreset",
+          "comment": "Orange",
+          "colors": ["#ff8c00"]
+        },
+        {
+          "dmxRange": [160, 169],
+          "type": "ColorPreset",
+          "comment": "Lavender",
+          "colors": ["#ccbfff"]
+        },
+        {
+          "dmxRange": [170, 179],
+          "type": "ColorPreset",
+          "comment": "Light Blue",
+          "colors": ["#8c8cff"]
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "ColorPreset",
+          "comment": "Dark Blue",
+          "colors": ["#00008c"]
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "ColorPreset",
+          "comment": "Pink",
+          "colors": ["#ff008c"]
+        }
+      ]
+    },
     "Strobe Program": {
       "capabilities": [
         {
