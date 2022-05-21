@@ -236,13 +236,20 @@
       ]
     },
     "Strobe": {
-      "capability": {
-        "type": "ShutterStrobe",
-        "shutterEffect": "Strobe",
-        "speedStart": "0Hz",
-        "speedEnd": "20Hz",
-        "helpWanted": "At which DMX values is strobe disabled?"
-      }
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [10, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0.5Hz",
+          "speedEnd": "20Hz"
+        }
+      ]
     }
   },
   "modes": [
