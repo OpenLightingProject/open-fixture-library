@@ -1,0 +1,89 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "XBrick Quad I6xBWRGBW",
+  "shortName": "Bricks",
+  "categories": ["Dimmer", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["unknown"],
+    "createDate": "2022-06-01",
+    "lastModifyDate": "2022-06-01"
+  },
+  "links": {
+    "manual": [
+      "https://www.thomann.de/gb/thomanntv_video_stairville_xbrick_quad_16x8w_rgbw_5704.html"
+    ],
+    "productPage": [
+      "https://www.thomann.de/ie/stairville_xbrick_quad_16x8w_rgbw.htm"
+    ],
+    "video": [
+      "https://www.thomann.de/gb/thomanntv_video_stairville_xbrick_quad_16x8w_rgbw_5704.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [315, 88, 195],
+    "weight": 4.3,
+    "power": 125,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "x-in-1"
+    },
+    "lens": {
+      "name": "x-in-1",
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Blue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Burst",
+        "soundControlled": true,
+        "speedStart": "0Hz",
+        "speedEnd": "1000Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "show time",
+      "channels": [
+        "Red",
+        "Blue",
+        "Green",
+        "White",
+        "Dimmer",
+        "Strobe"
+      ]
+    }
+  ]
+}
