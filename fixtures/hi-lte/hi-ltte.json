@@ -1,0 +1,148 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "hi-ltte",
+  "shortName": "beam280",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["enis akın"],
+    "createDate": "2022-06-02",
+    "lastModifyDate": "2022-06-02"
+  },
+  "links": {
+    "other": [
+      "http://www.hi-light.com.cn/e_prodece.php"
+    ]
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Open"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "fineChannelAliases": ["Pan fine"],
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "255deg"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "WheelSlot",
+        "slotNumber": 8
+      }
+    },
+    "Gobo Wheel Rotation": {
+      "fineChannelAliases": ["Gobo Wheel Rotation fine"],
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Color Wheel": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "0%",
+        "colorTemperatureEnd": "100%"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Effect Speed": {
+      "fineChannelAliases": ["Effect Speed fine"],
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Frost": {
+      "capability": {
+        "type": "Frost",
+        "frostIntensityStart": "off",
+        "frostIntensityEnd": "high"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "NoFunction"
+      }
+    },
+    "No function": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "17 dmx",
+      "shortName": "beam 280 17dmx",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Gobo Wheel",
+        "Gobo Wheel Rotation",
+        "Gobo Wheel Rotation fine",
+        "Color Wheel",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Effect Speed",
+        "Effect Speed fine",
+        "Frost",
+        "Focus",
+        "No function",
+        "White"
+      ]
+    }
+  ]
+}
