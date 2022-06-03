@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Smart led rgb",
+  "shortName": "VDPL1203RGB",
+  "categories": ["Color Changer", "Pixel Bar"],
+  "meta": {
+    "authors": ["Rocheteau"],
+    "createDate": "2022-06-03",
+    "lastModifyDate": "2022-06-03"
+  },
+  "links": {
+    "manual": [
+      "https://www.velleman.eu/downloads/4/vdpl1203rgbgbnlfresd.pdf"
+    ]
+  },
+  "physical": {
+    "dimensions": [1000, 60, 150],
+    "weight": 3.5,
+    "power": 47,
+    "DMXconnector": "3-pin and 5-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 1360
+    },
+    "lens": {
+      "degreesMinMax": [0, 42]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 36,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "tri-colour LED wash effect",
+      "shortName": "RGB control via max. 36 channels",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
