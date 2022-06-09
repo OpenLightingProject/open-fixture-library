@@ -33,6 +33,7 @@
   },
   "availableChannels": {
     "Pan": {
+      "fineChannelAliases": ["Pan fine"],
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -40,6 +41,7 @@
       }
     },
     "Tilt": {
+      "fineChannelAliases": ["Tilt fine"],
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -102,41 +104,6 @@
       "capability": {
         "type": "ColorIntensity",
         "color": "White"
-      }
-    },
-    "Maintenance": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 149],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [150, 200],
-          "type": "Maintenance",
-          "comment": "Reset"
-        },
-        {
-          "dmxRange": [201, 255],
-          "type": "NoFunction"
-        }
-      ]
-    },
-    "Pan 2": {
-      "name": "Pan",
-      "fineChannelAliases": ["Pan 2 fine"],
-      "capability": {
-        "type": "Pan",
-        "angleStart": "0deg",
-        "angleEnd": "540deg"
-      }
-    },
-    "Tilt 2": {
-      "name": "Tilt",
-      "fineChannelAliases": ["Tilt 2 fine"],
-      "capability": {
-        "type": "Tilt",
-        "angleStart": "0deg",
-        "angleEnd": "190deg"
       }
     },
     "Internal programs": {
@@ -238,17 +205,17 @@
         "Green",
         "Blue",
         "White",
-        "Maintenance"
+        "Reset"
       ]
     },
     {
       "name": "17-channel",
       "shortName": "17ch",
       "channels": [
-        "Pan 2",
-        "Pan 2 fine",
-        "Tilt 2",
-        "Tilt 2 fine",
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
         "Pan/Tilt Speed",
         "Strobe",
         "Dimmer",
