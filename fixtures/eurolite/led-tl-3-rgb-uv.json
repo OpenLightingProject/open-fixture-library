@@ -44,7 +44,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 9],
-          "type": "NoFunction"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [10, 255],
@@ -187,23 +188,27 @@
         {
           "dmxRange": [10, 69],
           "type": "Effect",
-          "effectName": "Automatic colour fade with increasing speed"
+          "effectPreset": "ColorFade",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [70, 129],
           "type": "Effect",
-          "effectName": "Automatic colour change with increasing speed"
+          "effectPreset": "ColorJump",
+          "speedStart": "slow",
+          "speedEnd": "fast"
         },
         {
           "dmxRange": [130, 189],
           "type": "Effect",
-          "effectName": "Sound-controlled colour fade",
+          "effectPreset": "ColorFade",
           "soundControlled": true
         },
         {
           "dmxRange": [190, 255],
           "type": "Effect",
-          "effectName": "Sound-controlled colour change",
+          "effectPreset": "ColorJump",
           "soundControlled": true
         }
       ]
