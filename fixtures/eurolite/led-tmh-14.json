@@ -14,12 +14,12 @@
     ]
   },
   "physical": {
-    "dimensions": [invalid, 200, 280],
+    "dimensions": [145, 200, 280],
     "weight": 3.25,
     "power": 65,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "LED: 12-W-COB, RGBW"
+      "type": "3× 12W COB RGBW LEDs"
     },
     "lens": {
       "degreesMinMax": [4, 32]
@@ -56,9 +56,9 @@
         {
           "dmxRange": [1, 255],
           "type": "ShutterStrobe",
-          "shutterEffect": "RampUp",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "shutterEffect": "Strobe",
+          "speedStart": "1Hz",
+          "speedEnd": "18Hz"
         }
       ]
     },
