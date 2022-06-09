@@ -62,22 +62,22 @@
           "dmxRange": [30, 119],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "durationStart": "3.27s",
+          "durationEnd": "0.03s"
         },
         {
           "dmxRange": [120, 149],
           "type": "ShutterStrobe",
           "shutterEffect": "RampUp",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "durationStart": "42.6s",
+          "durationEnd": "0.12s"
         },
         {
           "dmxRange": [150, 179],
           "type": "ShutterStrobe",
           "shutterEffect": "RampDown",
-          "speedStart": "slow",
-          "speedEnd": "fast"
+          "durationStart": "42.6s",
+          "durationEnd": "0.12s"
         },
         {
           "dmxRange": [180, 229],
@@ -106,9 +106,9 @@
         },
         {
           "dmxRange": [16, 255],
-          "type": "Effect",
-          "effectName": "Zoom reset",
-          "comment": "after 3 sec."
+          "type": "Maintenance",
+          "comment": "Reset Zoom",
+          "hold": "3s"
         }
       ]
     },
@@ -120,430 +120,431 @@
         },
         {
           "dmxRange": [15, 24],
-          "type": "Effect",
-          "effectName": "SMOOTH OFF"
+          "type": "Maintenance",
+          "comment": "Smooth: off",
+          "hold": "5s"
         },
         {
           "dmxRange": [25, 26],
-          "type": "Effect",
-          "effectName": "SMOOTH 1",
-          "comment": "25 ms"
+          "type": "Maintenance",
+          "comment": "Smooth: 1 (25ms)",
+          "hold": "5s"
         },
         {
           "dmxRange": [27, 28],
-          "type": "Effect",
-          "effectName": "SMOOTH 2",
-          "soundControlled": true,
-          "comment": "50 ms"
+          "type": "Maintenance",
+          "comment": "Smooth: 2 (50ms)",
+          "hold": "5s"
         },
         {
           "dmxRange": [29, 30],
-          "type": "Effect",
-          "effectName": "SMOOTH 3",
-          "comment": "75 ms"
+          "type": "Maintenance",
+          "comment": "Smooth: 3 (75ms)",
+          "hold": "5s"
         },
         {
           "dmxRange": [31, 32],
-          "type": "Effect",
-          "effectName": "SMOOTH 4",
-          "comment": "100 ms (default)"
+          "type": "Maintenance",
+          "comment": "Smooth: 4 (100ms, default)",
+          "hold": "5s"
         },
         {
           "dmxRange": [33, 34],
-          "type": "Effect",
-          "effectName": "SMOOTH 5",
-          "comment": "125 ms"
+          "type": "Maintenance",
+          "comment": "Smooth: 5 (125ms)",
+          "hold": "5s"
         },
         {
           "dmxRange": [35, 36],
-          "type": "Effect",
-          "effectName": "SMOOTH 6",
-          "comment": "150 ms"
+          "type": "Maintenance",
+          "comment": "Smooth: 6 (150ms)",
+          "hold": "5s"
         },
         {
           "dmxRange": [37, 38],
-          "type": "Effect",
-          "effectName": "SMOOTH 7",
-          "comment": "175 ms"
+          "type": "Maintenance",
+          "comment": "Smooth: 7 (175ms)",
+          "hold": "5s"
         },
         {
           "dmxRange": [39, 40],
-          "type": "Effect",
-          "effectName": "SMOOTH 8",
-          "comment": "200 ms"
+          "type": "Maintenance",
+          "comment": "Smooth: 8 (200ms)",
+          "hold": "5s"
         },
         {
           "dmxRange": [41, 42],
-          "type": "Effect",
-          "effectName": "SMOOTH 9",
-          "comment": "225 ms"
+          "type": "Maintenance",
+          "comment": "Smooth: 9 (225ms)",
+          "hold": "5s"
         },
         {
           "dmxRange": [43, 44],
-          "type": "Effect",
-          "effectName": "SMOOTH 10",
-          "comment": "250 ms"
+          "type": "Maintenance",
+          "comment": "Smooth: 10 (250ms)",
+          "hold": "5s"
         },
         {
           "dmxRange": [45, 46],
-          "type": "Effect",
-          "effectName": "SMOOTH 11",
-          "comment": "275 ms"
+          "type": "Maintenance",
+          "comment": "Smooth: 11 (275ms)",
+          "hold": "5s"
         },
         {
           "dmxRange": [47, 48],
-          "type": "Effect",
-          "effectName": "SMOOTH 12",
-          "comment": "300 ms"
+          "type": "Maintenance",
+          "comment": "Smooth: 12 (300ms)",
+          "hold": "5s"
         },
         {
           "dmxRange": [49, 50],
-          "type": "Effect",
-          "effectName": "SMOOTH 13",
-          "comment": "325 ms"
+          "type": "Maintenance",
+          "comment": "Smooth: 13 (325ms)",
+          "hold": "5s"
         },
         {
           "dmxRange": [51, 52],
-          "type": "Effect",
-          "effectName": "SMOOTH 14",
-          "comment": "350 ms"
+          "type": "Maintenance",
+          "comment": "Smooth: 14 (350ms)",
+          "hold": "5s"
         },
         {
           "dmxRange": [53, 54],
-          "type": "Effect",
-          "effectName": "SMOOTH 15",
-          "comment": "375 ms"
+          "type": "Maintenance",
+          "comment": "Smooth: 15 (375ms)",
+          "hold": "5s"
         },
         {
           "dmxRange": [55, 56],
-          "type": "Effect",
-          "effectName": "SMOOTH 16",
-          "comment": "400 ms"
+          "type": "Maintenance",
+          "comment": "Smooth: 16 (400ms)",
+          "hold": "5s"
         },
         {
           "dmxRange": [57, 58],
-          "type": "Effect",
-          "effectName": "SMOOTH 17",
-          "comment": "425 ms"
+          "type": "Maintenance",
+          "comment": "Smooth: 17 (425ms)",
+          "hold": "5s"
         },
         {
           "dmxRange": [59, 60],
-          "type": "Effect",
-          "effectName": "SMOOTH 18",
-          "comment": "450 ms"
+          "type": "Maintenance",
+          "comment": "Smooth: 18 (450ms)",
+          "hold": "5s"
         },
         {
           "dmxRange": [61, 62],
-          "type": "Effect",
-          "effectName": "SMOOTH 19",
-          "comment": "475 ms"
+          "type": "Maintenance",
+          "comment": "Smooth: 19 (475ms)",
+          "hold": "5s"
         },
         {
           "dmxRange": [63, 64],
-          "type": "Effect",
-          "effectName": "SMOOTH 20",
-          "comment": "500 ms"
+          "type": "Maintenance",
+          "comment": "Smooth: 20 (500ms)",
+          "hold": "5s"
         },
         {
           "dmxRange": [65, 74],
-          "type": "Effect",
-          "effectName": "GAMMA CORRECTION QUADRATIC",
-          "comment": "default"
+          "type": "Maintenance",
+          "comment": "Gamma correction: quadratic (default)",
+          "hold": "5s"
         },
         {
           "dmxRange": [75, 84],
-          "type": "Effect",
-          "effectName": "GAMMA CORRECTION LINEAR"
+          "type": "Maintenance",
+          "comment": "Gamma correction: linear",
+          "hold": "5s"
         },
         {
           "dmxRange": [85, 104],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY 610 Hz",
-          "comment": "default"
+          "type": "Maintenance",
+          "comment": "Output frequency: 610Hz (default)",
+          "hold": "5s"
         },
         {
           "dmxRange": [105, 105],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "800Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 800Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [106, 106],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "1000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 1000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [107, 107],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "1500Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 1500Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [108, 108],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "2000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 2000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [109, 109],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "2500Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 2500Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [110, 110],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "3000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 3000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [111, 111],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "3500Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 3500Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [112, 112],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "4000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 4000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [113, 113],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "4500Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 4500Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [114, 114],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "5000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 5000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [115, 115],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "5500Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 5500Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [116, 116],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "6000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 6000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [117, 117],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "6500Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 6500Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [118, 118],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "7000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 7000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [119, 119],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "7500Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 7500Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [120, 120],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "8000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 8000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [121, 121],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "8500Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 8500Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [122, 122],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "9000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 9000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [123, 123],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "9500Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 9500Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [124, 124],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "10000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 10000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [125, 125],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "11000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 11000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [126, 126],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "12000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 12000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [127, 127],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "13000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 13000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [128, 128],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "14000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 14000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [129, 129],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "15000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 15000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [130, 130],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "16000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 16000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [131, 131],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "17000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 17000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [132, 132],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "18000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 18000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [133, 133],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "19000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 19000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [134, 134],
-          "type": "Effect",
-          "effectName": "OUTPUT FREQUENCY",
-          "speed": "20000Hz"
+          "type": "Maintenance",
+          "comment": "Output frequency: 20000Hz",
+          "hold": "5s"
         },
         {
           "dmxRange": [135, 144],
-          "type": "Effect",
-          "effectName": "BOOST ON",
-          "comment": "default"
+          "type": "Maintenance",
+          "comment": "Boost: on (default)",
+          "hold": "5s"
         },
         {
           "dmxRange": [145, 154],
-          "type": "Effect",
-          "effectName": "BOOST OFF"
+          "type": "Maintenance",
+          "comment": "Boost: off",
+          "hold": "5s"
         },
         {
           "dmxRange": [155, 164],
-          "type": "Effect",
-          "effectName": "DISPLAY STAND-BY OFF",
-          "comment": "default"
+          "type": "Maintenance",
+          "comment": "Display stand-by: off (default)",
+          "hold": "5s"
         },
         {
           "dmxRange": [165, 174],
-          "type": "Effect",
-          "effectName": "DISPLAY STAND-BY ON"
+          "type": "Maintenance",
+          "comment": "Display stand-by: on",
+          "hold": "5s"
         },
         {
           "dmxRange": [175, 176],
-          "type": "Effect",
-          "effectName": "NO DMX ACTION – KEEP LAST DMX",
-          "comment": "default"
+          "type": "Maintenance",
+          "comment": "No DMX action: keep last DMX (default)",
+          "hold": "5s"
         },
         {
           "dmxRange": [177, 178],
-          "type": "Effect",
-          "effectName": "NO DMX ACTION – Black-out"
+          "type": "Maintenance",
+          "comment": "No DMX action: blackout",
+          "hold": "5s"
         },
         {
           "dmxRange": [179, 180],
-          "type": "Effect",
-          "effectName": "NO DMX ACTION – LED ON @ 100% (ZOOM @ 50%)"
+          "type": "Maintenance",
+          "comment": "No DMX action: LED on @ 100% (ZOOM @ 50%)",
+          "hold": "5s"
         },
         {
           "dmxRange": [181, 182],
-          "type": "Effect",
-          "effectName": "NO DMX ACTION – LED ON @ 60% (ZOOM @ 50%)"
+          "type": "Maintenance",
+          "comment": "No DMX action: LED on @ 60% (ZOOM @ 50%)",
+          "hold": "5s"
         },
         {
           "dmxRange": [183, 184],
-          "type": "Effect",
-          "effectName": "NO DMX ACTION – CUSTOM",
-          "comment": "Default = Dimmer 255; Shutter 015; Zoom 128"
+          "type": "Maintenance",
+          "comment": "No DMX action: custom (default: Dimmer 255; Shutter 015; Zoom 128)",
+          "hold": "5s"
         },
         {
           "dmxRange": [185, 194],
-          "type": "Effect",
-          "effectName": "RESERVED"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [195, 204],
-          "type": "Effect",
-          "effectName": "RESERVED"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [205, 214],
-          "type": "Effect",
-          "effectName": "RESERVED"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [215, 224],
-          "type": "Effect",
-          "effectName": "RESERVED"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [225, 234],
-          "type": "Effect",
-          "effectName": "RESERVED"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [235, 239],
-          "type": "Effect",
-          "effectName": "FAN STANDARD MODE"
+          "type": "Maintenance",
+          "comment": "Fan mode: standard",
+          "hold": "5s"
         },
         {
           "dmxRange": [240, 244],
-          "type": "Effect",
-          "effectName": "FAN SILENT MODE",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "comment": "default"
+          "type": "Maintenance",
+          "comment": "Fan mode: silent (default)",
+          "hold": "5s"
         },
         {
           "dmxRange": [245, 248],
-          "type": "Effect",
-          "effectName": "ZOOM STANDARD MODE"
+          "type": "Maintenance",
+          "comment": "Zoom mode: standard",
+          "hold": "5s"
         },
         {
           "dmxRange": [249, 252],
-          "type": "Effect",
-          "effectName": "ZOOM SILENT MODE",
-          "comment": "default"
+          "type": "Maintenance",
+          "comment": "Zoom mode: silent (default)",
+          "hold": "5s"
         },
         {
           "dmxRange": [253, 255],
-          "type": "Effect",
-          "effectName": "SET DEFAULTS VALUES FOR FUNCTIONS",
-          "comment": "see manual"
+          "type": "Maintenance",
+          "comment": "Set all default values",
+          "hold": "5s"
         }
       ]
     }
