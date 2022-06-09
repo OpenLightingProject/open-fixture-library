@@ -28,19 +28,6 @@
     }
   },
   "availableChannels": {
-    "Dimmer": {
-      "fineChannelAliases": ["Dimmer fine"],
-      "capability": {
-        "type": "Intensity"
-      }
-    },
-    "Zoom": {
-      "capability": {
-        "type": "Zoom",
-        "angleStart": "narrow",
-        "angleEnd": "wide"
-      }
-    },
     "Shutter": {
       "capabilities": [
         {
@@ -98,19 +85,11 @@
         }
       ]
     },
-    "Reset": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 15],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [16, 255],
-          "type": "Maintenance",
-          "comment": "Reset Zoom",
-          "hold": "3s"
-        }
-      ]
+    "Dimmer": {
+      "fineChannelAliases": ["Dimmer fine"],
+      "capability": {
+        "type": "Intensity"
+      }
     },
     "Functions": {
       "capabilities": [
@@ -545,6 +524,27 @@
           "type": "Maintenance",
           "comment": "Set all default values",
           "hold": "5s"
+        }
+      ]
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Reset": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "Maintenance",
+          "comment": "Reset Zoom",
+          "hold": "3s"
         }
       ]
     }
