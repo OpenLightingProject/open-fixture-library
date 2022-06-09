@@ -29,7 +29,7 @@
     "power": 15,
     "DMXconnector": "3-pin",
     "bulb": {
-      "type": "RGB LED"
+      "type": "3× 7W RGB+UV 4in1 LEDs"
     }
   },
   "availableChannels": {
@@ -50,10 +50,8 @@
           "dmxRange": [10, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
-          "comment": "Strobe with increasing speed 0-100%",
-          "speedStart": "slow",
-          "speedEnd": "fast",
-          "helpWanted": "Are the automatically added speed values correct?"
+          "speedStart": "0Hz",
+          "speedEnd": "20Hz"
         }
       ]
     },
