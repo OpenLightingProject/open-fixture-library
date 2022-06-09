@@ -1,13 +1,12 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
-  "name": "Teatro Led Spot 100 FR/PC",
+  "name": "Teatro Led Spot 100 FR",
   "categories": ["Dimmer"],
   "meta": {
     "authors": ["Victor Hampel", "Flo Edelmann"],
     "createDate": "2022-06-09",
     "lastModifyDate": "2022-06-09"
   },
-  "comment": "This fixture is for the PC and FR version.\n\nWeight FR: 5.2 kg;\nWeight PC: 5.5 kg;\nLens FR: Ø 112 mm Fresnel lens;\nLens PC: Ø 120 mm PC lens",
   "links": {
     "manual": [
       "https://www.manualslib.com/manual/1370155/Ignition-Teatro-Led-Spot-100-Pc.html"
@@ -15,7 +14,7 @@
   },
   "physical": {
     "dimensions": [214, 188, 315],
-    "weight": 5.5,
+    "weight": 5.2,
     "power": 150,
     "DMXconnector": "5-pin",
     "bulb": {
@@ -23,7 +22,7 @@
       "colorTemperature": 3000
     },
     "lens": {
-      "name": "Ø 120 mm PC lens",
+      "name": "Ø 112mm Fresnel lens",
       "degreesMinMax": [17, 82]
     }
   },
