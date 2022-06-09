@@ -109,30 +109,6 @@
         "color": "White"
       }
     },
-    "Internal programs": {
-      "capabilities": [
-        {
-          "dmxRange": [0, 10],
-          "type": "NoFunction"
-        },
-        {
-          "dmxRange": [11, 120],
-          "type": "Effect",
-          "effectName": "Internal program 1"
-        },
-        {
-          "dmxRange": [121, 244],
-          "type": "Effect",
-          "effectName": "Internal program 2"
-        },
-        {
-          "dmxRange": [245, 255],
-          "type": "Effect",
-          "effectName": "Music control",
-          "soundControlled": true
-        }
-      ]
-    },
     "Colors, color change": {
       "capabilities": [
         {
@@ -170,6 +146,30 @@
         "speedStart": "slow",
         "speedEnd": "fast"
       }
+    },
+    "Internal programs": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 120],
+          "type": "Effect",
+          "effectName": "Internal program 1"
+        },
+        {
+          "dmxRange": [121, 244],
+          "type": "Effect",
+          "effectName": "Internal program 2"
+        },
+        {
+          "dmxRange": [245, 255],
+          "type": "Effect",
+          "effectName": "Music control",
+          "soundControlled": true
+        }
+      ]
     },
     "Internal programs speed": {
       "capability": {
