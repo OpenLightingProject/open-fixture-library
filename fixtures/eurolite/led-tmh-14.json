@@ -34,6 +34,7 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
+      "defaultValue": 32768,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -42,6 +43,7 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
+      "defaultValue": 32768,
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -59,7 +61,8 @@
       "capabilities": [
         {
           "dmxRange": [0, 0],
-          "type": "NoFunction"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [1, 255],
@@ -125,7 +128,7 @@
         {
           "dmxRange": [245, 255],
           "type": "Effect",
-          "effectName": "Sound to Light",
+          "effectName": "Music control",
           "soundControlled": true
         }
       ]
@@ -138,23 +141,26 @@
         },
         {
           "dmxRange": [11, 127],
-          "type": "Effect",
-          "effectName": "Static colors"
+          "type": "ColorPreset",
+          "comment": "Static colors",
+          "helpWanted": "Which colors can be selected at which DMX values?"
         },
         {
           "dmxRange": [128, 160],
           "type": "Effect",
-          "effectName": "Switching colors"
+          "effectPreset": "ColorJump"
         },
         {
           "dmxRange": [161, 200],
           "type": "Effect",
-          "effectName": "Fading colors, fade in and fade out"
+          "effectPreset": "ColorFade",
+          "comment": "fade in and fade out"
         },
         {
           "dmxRange": [201, 255],
           "type": "Effect",
-          "effectName": "Fading colors"
+          "effectPreset": "ColorFade",
+          "comment": "crossfade"
         }
       ]
     },
