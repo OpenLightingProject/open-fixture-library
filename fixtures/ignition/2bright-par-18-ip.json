@@ -119,13 +119,13 @@
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "Intensity",
-          "brightness": "100%"
+          "type": "NoFunction"
         },
         {
           "dmxRange": [6, 10],
-          "type": "Intensity",
-          "brightness": "off"
+          "type": "ColorPreset",
+          "comment": "Blackout",
+          "colors": ["#000000"]
         },
         {
           "dmxRange": [11, 13],
@@ -282,19 +282,19 @@
         {
           "dmxRange": [126, 127],
           "type": "EffectSpeed",
-          "speed": "0%"
+          "speed": "stop"
         },
         {
           "dmxRange": [128, 191],
           "type": "Effect",
-          "effectName": "Color Change",
+          "effectPreset": "ColorJump",
           "speedStart": "slow",
           "speedEnd": "fast"
         },
         {
           "dmxRange": [192, 255],
           "type": "Effect",
-          "effectName": "Color Change Dissolve",
+          "effectPreset": "ColorFade",
           "speedStart": "slow",
           "speedEnd": "fast"
         }
