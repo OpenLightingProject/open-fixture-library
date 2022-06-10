@@ -116,10 +116,76 @@
           "type": "NoFunction"
         },
         {
-          "dmxRange": [11, 127],
+          "dmxRange": [11, 15],
           "type": "ColorPreset",
-          "comment": "Static colors",
-          "helpWanted": "Which colors can be selected at which DMX values?"
+          "comment": "light blue",
+          "colors": ["#61b8ff"]
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "blue",
+          "colors": ["#0000ff"]
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "purple",
+          "colors": ["#ac00ac"]
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "pink",
+          "colors": ["#ff00ff"]
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "rose",
+          "colors": ["#ff0080"]
+        },
+        {
+          "dmxRange": [48, 71],
+          "type": "ColorPreset",
+          "comment": "red",
+          "colors": ["#ff0000"]
+        },
+        {
+          "dmxRange": [72, 79],
+          "type": "ColorPreset",
+          "comment": "orange",
+          "colors": ["#ff8000"]
+        },
+        {
+          "dmxRange": [80, 87],
+          "type": "ColorPreset",
+          "comment": "warm white (mixed from rgbw)",
+          "colors": ["#ffda95"]
+        },
+        {
+          "dmxRange": [88, 95],
+          "type": "ColorPreset",
+          "comment": "yellow",
+          "colors": ["#ffff00"]
+        },
+        {
+          "dmxRange": [96, 103],
+          "type": "ColorPreset",
+          "comment": "lime",
+          "colors": ["#a6ff00"]
+        },
+        {
+          "dmxRange": [104, 119],
+          "type": "ColorPreset",
+          "comment": "green",
+          "colors": ["#00ec27"]
+        },
+        {
+          "dmxRange": [120, 127],
+          "type": "ColorPreset",
+          "comment": "white (mixed rgbw)",
+          "colors": ["#ffffff"]
         },
         {
           "dmxRange": [128, 160],
