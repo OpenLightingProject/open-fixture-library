@@ -1,0 +1,112 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PANTHER 80",
+  "shortName": "PA80",
+  "categories": ["Moving Head", "Color Changer", "Scanner", "Effect"],
+  "meta": {
+    "authors": ["ΚΩΝΣΤΑΝΤΙΝΟΣ ΒΑΛΜΑΣ"],
+    "createDate": "2022-06-10",
+    "lastModifyDate": "2022-06-10"
+  },
+  "links": {
+    "manual": [
+      "https://www.djshop.gr/Attachment/DownloadFile?downloadId=14693"
+    ],
+    "productPage": [
+      "https://www.beamzlighting.com/product/panther-80-led-moving-head-with-rotating-lenses/"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=p35W3_yEtAM&ab_channel=TroniosBV"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "bulb": {
+      "type": "led"
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angle": "0%"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angle": "0%"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speed": "fast"
+      }
+    },
+    "Prism Rotation": {
+      "capability": {
+        "type": "WheelRotation",
+        "speedStart": "slow CW",
+        "speedEnd": "fast CW"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "40Hz"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "PANTHER 80",
+      "shortName": "pa80",
+      "rdmPersonalityIndex": 1,
+      "channels": [
+        "Pan",
+        "Tilt",
+        "Pan/Tilt Speed",
+        "Prism Rotation",
+        "Dimmer",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
