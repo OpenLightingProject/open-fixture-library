@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "rampe led",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Gabelot"],
+    "createDate": "2022-06-10",
+    "lastModifyDate": "2022-06-10"
+  },
+  "links": {
+    "manual": [
+      "http://jeangabrielvalot.com"
+    ],
+    "productPage": [
+      "http://jeangabrielvalot.com"
+    ],
+    "video": [
+      "http://jeangabrielvalot.com"
+    ]
+  },
+  "rdm": {
+    "modelId": 1,
+    "softwareVersion": "2.0.04"
+  },
+  "availableChannels": {
+    "ORANGE": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "WHITE": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "NORMAL",
+      "channels": [
+        "ORANGE",
+        "WHITE"
+      ]
+    }
+  ]
+}
