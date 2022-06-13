@@ -36,11 +36,12 @@
         "type": "Intensity"
       }
     },
-    "Color Temperature": {
+    "Shutter / Color Temperature": {
       "capabilities": [
         {
           "dmxRange": [0, 5],
-          "type": "NoFunction"
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed"
         },
         {
           "dmxRange": [6, 255],
@@ -388,6 +389,20 @@
         "color": "UV"
       }
     },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 255],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3200K",
+          "colorTemperatureEnd": "7200K"
+        }
+      ]
+    },
     "Dimmer Curve": {
       "capabilities": [
         {
@@ -423,7 +438,7 @@
       "shortName": "2ch",
       "channels": [
         "Dimmer",
-        "Color Temperature"
+        "Shutter / Color Temperature"
       ]
     },
     {
