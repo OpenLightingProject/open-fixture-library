@@ -1,0 +1,130 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LED Par 18x18w",
+  "shortName": "SheHds18x18",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Jay3"],
+    "createDate": "2022-06-14",
+    "lastModifyDate": "2022-06-14"
+  },
+  "links": {
+    "manual": [
+      "https://www.shehds.com/products/aluminum-alloy-led-flat-par-18x18w-lighting-dj-par-cans-dmx-512-light-wash-stage-lighting"
+    ],
+    "productPage": [
+      "https://www.shehds.com/products/aluminum-alloy-led-flat-par-18x18w-lighting-dj-par-cans-dmx-512-light-wash-stage-lighting"
+    ],
+    "video": [
+      "https://www.shehds.com/products/aluminum-alloy-led-flat-par-18x18w-lighting-dj-par-cans-dmx-512-light-wash-stage-lighting"
+    ]
+  },
+  "physical": {
+    "dimensions": [200, 200, 80],
+    "weight": 2.6,
+    "power": 324,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 1200,
+      "lumens": 20000
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "25Hz"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Sound Sensitivity": {
+      "capability": {
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "10ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Strobe Speed",
+        "Sound Sensitivity",
+        "Program Speed"
+      ]
+    },
+    {
+      "name": "6ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV"
+      ]
+    }
+  ]
+}
