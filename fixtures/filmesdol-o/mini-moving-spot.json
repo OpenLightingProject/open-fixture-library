@@ -1,0 +1,271 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Mini Moving Spot",
+  "categories": ["Color Changer", "Moving Head", "Dimmer", "Effect"],
+  "meta": {
+    "authors": ["Filmesdoléo"],
+    "createDate": "2022-06-17",
+    "lastModifyDate": "2022-06-17"
+  },
+  "links": {
+    "productPage": [
+      "https://www.filmesdoleo.com.br"
+    ]
+  },
+  "wheels": {
+    "Gobo Wheel": {
+      "slots": [
+        {
+          "type": "Gobo",
+          "name": "Circulo"
+        },
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo"
+        },
+        null,
+        {
+          "type": "Gobo",
+          "name": "Escolha gobo"
+        },
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo",
+          "name": "Gobo Balançando"
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "type": "Gobo",
+          "name": "Gobo automatico"
+        }
+      ]
+    }
+  },
+  "availableChannels": {
+    "Pan": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "360deg"
+      }
+    },
+    "Pan Ajust": {
+      "capability": {
+        "type": "Pan",
+        "angleStart": "0deg",
+        "angleEnd": "40deg"
+      }
+    },
+    "Tilt": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "180deg"
+      }
+    },
+    "Tilt Just": {
+      "capability": {
+        "type": "Tilt",
+        "angleStart": "0deg",
+        "angleEnd": "45deg"
+      }
+    },
+    "Gobo Wheel": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Gobo Wheel 2": {
+      "name": "Gobo Wheel",
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "0Hz",
+        "speedEnd": "100Hz"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Pan/Tilt Speed": {
+      "capability": {
+        "type": "PanTiltSpeed",
+        "speedStart": "fast",
+        "speedEnd": "slow"
+      }
+    },
+    "Automatico": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Reset": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Light Strips": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Gobo Cor": {
+      "capability": {
+        "type": "Generic"
+      }
+    },
+    "Gobo Desenho": {
+      "capability": {
+        "type": "Generic"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Mini Moving Spot",
+      "channels": [
+        "Pan",
+        "Pan Ajust",
+        "Tilt",
+        "Tilt Just",
+        "Gobo Cor",
+        "Gobo Desenho",
+        "Strobe",
+        "Dimmer",
+        "Pan/Tilt Speed",
+        "Automatico",
+        "Reset",
+        "Light Strips"
+      ]
+    }
+  ]
+}
