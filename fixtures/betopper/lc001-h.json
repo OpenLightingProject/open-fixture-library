@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "LC001-H",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["古牧 昌", "frumaki"],
+    "createDate": "2022-06-18",
+    "lastModifyDate": "2022-06-18",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2022-06-18",
+      "comment": "created by Q Light Controller Plus (version 4.12.4a)"
+    }
+  },
+  "physical": {
+    "power": 120,
+    "DMXconnector": "3-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Cold White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Cold White"
+      }
+    },
+    "Warm White": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Warm White",
+        "Cold White"
+      ]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer",
+        "Warm White",
+        "Cold White",
+        "Strobe"
+      ]
+    }
+  ]
+}
