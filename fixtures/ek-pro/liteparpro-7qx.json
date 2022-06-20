@@ -1,0 +1,398 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "liteparpro 7QX",
+  "categories": ["Barrel Scanner", "Color Changer", "Dimmer", "Strobe"],
+  "meta": {
+    "authors": ["brainfreeze"],
+    "createDate": "2022-06-20",
+    "lastModifyDate": "2022-06-20"
+  },
+  "links": {
+    "manual": [
+      "https://www.soundhouse.co.jp/download/ekpro/k4beam_v101.pdf"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Green": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Blue": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "White": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Strobe": {
+      "defaultValue": "10%",
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 255],
+          "type": "Intensity",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%"
+        }
+      ]
+    },
+    "Color Presets": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction",
+          "comment": "機能なし"
+        },
+        {
+          "dmxRange": [11, 30],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "R100% G0-100% B0%"
+        },
+        {
+          "dmxRange": [31, 50],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "R0-100% G100% B0%"
+        },
+        {
+          "dmxRange": [51, 70],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "R0% G100% B0-100%"
+        },
+        {
+          "dmxRange": [71, 90],
+          "type": "ColorIntensity",
+          "color": "Green",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "R0% G0-100% B100%"
+        },
+        {
+          "dmxRange": [91, 110],
+          "type": "ColorIntensity",
+          "color": "Red",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "R0-100% G0% B100%"
+        },
+        {
+          "dmxRange": [111, 130],
+          "type": "ColorIntensity",
+          "color": "Blue",
+          "brightnessStart": "100%",
+          "brightnessEnd": "0%",
+          "comment": "R100% G0% B100-0%"
+        },
+        {
+          "dmxRange": [131, 150],
+          "type": "ColorIntensity",
+          "color": "Amber",
+          "brightnessStart": "0%",
+          "brightnessEnd": "100%",
+          "comment": "R100% G0-100% B0-100%"
+        },
+        {
+          "dmxRange": [151, 170],
+          "type": "ColorIntensity",
+          "color": "Cyan",
+          "brightnessStart": "100%",
+          "brightnessEnd": "0%",
+          "comment": "R100-0% G100-0% B100%"
+        },
+        {
+          "dmxRange": [171, 200],
+          "type": "Intensity",
+          "brightnessStart": "100%",
+          "brightnessEnd": "100%",
+          "comment": "R100% G100% B100% W100%"
+        },
+        {
+          "dmxRange": [201, 205],
+          "type": "ColorPreset",
+          "comment": "color1"
+        },
+        {
+          "dmxRange": [206, 210],
+          "type": "ColorPreset",
+          "comment": "color2"
+        },
+        {
+          "dmxRange": [211, 215],
+          "type": "ColorPreset",
+          "comment": "color3"
+        },
+        {
+          "dmxRange": [216, 220],
+          "type": "ColorPreset",
+          "comment": "color4"
+        },
+        {
+          "dmxRange": [221, 225],
+          "type": "ColorPreset",
+          "comment": "color5"
+        },
+        {
+          "dmxRange": [226, 230],
+          "type": "ColorPreset",
+          "comment": "color6"
+        },
+        {
+          "dmxRange": [231, 235],
+          "type": "ColorPreset",
+          "comment": "color7"
+        },
+        {
+          "dmxRange": [236, 240],
+          "type": "ColorPreset",
+          "comment": "color8"
+        },
+        {
+          "dmxRange": [241, 245],
+          "type": "ColorPreset",
+          "comment": "color9"
+        },
+        {
+          "dmxRange": [246, 250],
+          "type": "ColorPreset",
+          "comment": "color10"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ColorPreset",
+          "comment": "color11"
+        }
+      ]
+    },
+    "Color Temperature": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 5],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [6, 39],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "3000K",
+          "colorTemperatureEnd": "3000K"
+        },
+        {
+          "dmxRange": [40, 69],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "4000K",
+          "colorTemperatureEnd": "4000K"
+        },
+        {
+          "dmxRange": [70, 99],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "5000K",
+          "colorTemperatureEnd": "5000K"
+        },
+        {
+          "dmxRange": [100, 129],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "6000K",
+          "colorTemperatureEnd": "6000K"
+        },
+        {
+          "dmxRange": [130, 159],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "7000K",
+          "colorTemperatureEnd": "7000K"
+        },
+        {
+          "dmxRange": [160, 189],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "8000K",
+          "colorTemperatureEnd": "8000K"
+        },
+        {
+          "dmxRange": [190, 219],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "9000K",
+          "colorTemperatureEnd": "9000K"
+        },
+        {
+          "dmxRange": [220, 250],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "10000K",
+          "colorTemperatureEnd": "10000K"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Program Duration": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 60],
+          "type": "Generic",
+          "comment": "Auto1"
+        },
+        {
+          "dmxRange": [61, 110],
+          "type": "Generic",
+          "comment": "Auto2"
+        },
+        {
+          "dmxRange": [111, 160],
+          "type": "Generic",
+          "comment": "Auto3"
+        },
+        {
+          "dmxRange": [161, 210],
+          "type": "Generic",
+          "comment": "Auto4"
+        },
+        {
+          "dmxRange": [211, 255],
+          "type": "Generic",
+          "comment": "Auto5"
+        }
+      ]
+    },
+    "Program Duration 2": {
+      "name": "Program Duration",
+      "defaultValue": 0,
+      "capability": {
+        "type": "EffectDuration",
+        "durationStart": "short",
+        "durationEnd": "long"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 51],
+          "type": "EffectDuration",
+          "durationStart": "short",
+          "durationEnd": "long"
+        },
+        {
+          "dmxRange": [52, 101],
+          "type": "Speed",
+          "speedStart": "stop",
+          "speedEnd": "stop"
+        },
+        {
+          "dmxRange": [102, 152],
+          "type": "Speed",
+          "speedStart": "fast",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [153, 203],
+          "type": "Speed",
+          "speedStart": "slow reverse",
+          "speedEnd": "slow reverse"
+        },
+        {
+          "dmxRange": [204, 255],
+          "type": "Speed",
+          "speedStart": "slow",
+          "speedEnd": "slow"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4channel",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "6channel",
+      "shortName": "6ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "11channel",
+      "shortName": "11ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Strobe",
+        "Color Presets",
+        "Color Temperature",
+        "Program Duration",
+        "Program Duration 2",
+        "Dimmer 2"
+      ]
+    }
+  ]
+}
