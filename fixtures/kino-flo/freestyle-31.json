@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Freestyle 31",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Yuichi Kato"],
+    "createDate": "2022-06-23",
+    "lastModifyDate": "2022-06-23"
+  },
+  "links": {
+    "manual": [
+      "https://kinoflo.com/freestyle-31-manuals/"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "CCT": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2500K",
+        "colorTemperatureEnd": "9900K"
+      }
+    },
+    "Green/Magenta": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "Green/Magenta"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "RGB",
+      "channels": [
+        "Dimmer",
+        "CCT",
+        "Green/Magenta",
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    }
+  ]
+}
