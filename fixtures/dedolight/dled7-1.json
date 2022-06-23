@@ -1,0 +1,38 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DLED7.1",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Yuichi Kato"],
+    "createDate": "2022-06-23",
+    "lastModifyDate": "2022-06-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.dedoweigertfilm.de/dwf-en/home_banner_prod/turbo-series.php"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "2700K",
+        "colorTemperatureEnd": "6500K"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "D-T",
+      "channels": [
+        "Dimmer",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
