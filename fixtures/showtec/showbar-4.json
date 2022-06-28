@@ -1,0 +1,74 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Showbar 4",
+  "categories": ["Dimmer"],
+  "meta": {
+    "authors": ["Kasper Leusink"],
+    "createDate": "2022-06-28",
+    "lastModifyDate": "2022-06-28"
+  },
+  "links": {
+    "manual": [
+      "https://www.liquidx.nl/media/downloads/licht/Showtec%20Showbar4%20%2040329.pdf"
+    ],
+    "productPage": [
+      "https://www.highlite.com/nl/50329-showbar-4.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [1320, 80, 60],
+    "weight": 4.3,
+    "bulb": {
+      "type": "Not included"
+    }
+  },
+  "availableChannels": {
+    "Dimmer 1": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 2": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 3": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 4": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "1 Channel",
+      "shortName": "1ch",
+      "channels": [
+        "Dimmer 1"
+      ]
+    },
+    {
+      "name": "2 Channel",
+      "shortName": "2ch",
+      "channels": [
+        "Dimmer 1",
+        "Dimmer 2"
+      ]
+    },
+    {
+      "name": "4 Channel",
+      "shortName": "4ch",
+      "channels": [
+        "Dimmer 1",
+        "Dimmer 2",
+        "Dimmer 3",
+        "Dimmer 4"
+      ]
+    }
+  ]
+}
