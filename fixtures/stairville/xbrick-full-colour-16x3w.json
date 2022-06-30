@@ -1,0 +1,131 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "xBrick Full-Colour 16x3W",
+  "shortName": "xBrick 16x3W",
+  "categories": ["Color Changer", "Stand"],
+  "meta": {
+    "authors": ["MC"],
+    "createDate": "2022-06-30",
+    "lastModifyDate": "2022-06-30"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_259187_v4_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/cz/stairville_xbrick_fullcolour_16x3w.htm"
+    ],
+    "video": [
+      "https://www.thomann.de/cz/thomanntv_video_stairville_xbrick_full_colour_16x3w_1301.html?ref=prp_dyk_vid_0"
+    ]
+  },
+  "physical": {
+    "dimensions": [310, 175, 72],
+    "weight": 3,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "16 × 3in1 RGB LED, 3 W each"
+    }
+  },
+  "availableChannels": {
+    "1 to 4 Intensity red (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "1 to 4 Intensity green (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "1 to 4 Intensity blue (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "5 to 8 Intensity red (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "5 to 8 Intensity green (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "5 to 8 Intensity blue (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "9 to 12 Intensity red (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "9 to 12 Intensity green (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "9 to 12 Intensity blue (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "13 to 16 Intensity red (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "13 to 16 Intensity green (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "13 to 16 Intensity blue (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Main control (master dimmer, 0 % to 100 %)": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "13 channels",
+      "shortName": "13ch",
+      "channels": [
+        "1 to 4 Intensity red (0 % to 100 %)",
+        "1 to 4 Intensity green (0 % to 100 %)",
+        "1 to 4 Intensity blue (0 % to 100 %)",
+        "5 to 8 Intensity red (0 % to 100 %)",
+        "5 to 8 Intensity green (0 % to 100 %)",
+        "5 to 8 Intensity blue (0 % to 100 %)",
+        "9 to 12 Intensity red (0 % to 100 %)",
+        "9 to 12 Intensity green (0 % to 100 %)",
+        "9 to 12 Intensity blue (0 % to 100 %)",
+        "13 to 16 Intensity red (0 % to 100 %)",
+        "13 to 16 Intensity green (0 % to 100 %)",
+        "13 to 16 Intensity blue (0 % to 100 %)",
+        "Main control (master dimmer, 0 % to 100 %)"
+      ]
+    }
+  ]
+}
