@@ -1,0 +1,172 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "xBrick Full-Colour 16x3W",
+  "categories": ["Stand"],
+  "meta": {
+    "authors": ["MC"],
+    "createDate": "2022-06-30",
+    "lastModifyDate": "2022-06-30"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_259187_v4_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/cz/stairville_xbrick_fullcolour_16x3w.htm"
+    ],
+    "video": [
+      "https://www.thomann.de/cz/thomanntv_video_stairville_xbrick_full_colour_16x3w_1301.html"
+    ]
+  },
+  "rdm": {
+    "modelId": 0
+  },
+  "physical": {
+    "dimensions": [310, 175, 72],
+    "weight": 3,
+    "power": 60,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "16 × 3in1 RGB LED, 3 W each"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Intensity red (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Intensity green (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Intensity blue (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Main control (master dimmer, 0 % to 100 %)": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe effect (increasing speed)": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "fast",
+        "speedEnd": "fast"
+      }
+    },
+    "1_Intensity red (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "1_Intensity green (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "1_Intensity blue (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "2_Intensity red (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "2_Intensity green (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "2_Intensity blue (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "3_Intensity red (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "3_Intensity green (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "3_Intensity blue (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "4_Intensity red (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "4_Intensity green (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "4_Intensity blue (0 % to 100 %)": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5 channels",
+      "shortName": "5ch",
+      "channels": [
+        "Intensity red (0 % to 100 %)",
+        "Intensity green (0 % to 100 %)",
+        "Intensity blue (0 % to 100 %)",
+        "Main control (master dimmer, 0 % to 100 %)",
+        "Strobe effect (increasing speed)"
+      ]
+    },
+    {
+      "name": "13 channels",
+      "shortName": "13ch",
+      "channels": [
+        "1_Intensity red (0 % to 100 %)",
+        "1_Intensity green (0 % to 100 %)",
+        "1_Intensity blue (0 % to 100 %)",
+        "2_Intensity red (0 % to 100 %)",
+        "2_Intensity green (0 % to 100 %)",
+        "2_Intensity blue (0 % to 100 %)",
+        "3_Intensity red (0 % to 100 %)",
+        "3_Intensity green (0 % to 100 %)",
+        "3_Intensity blue (0 % to 100 %)",
+        "4_Intensity red (0 % to 100 %)",
+        "4_Intensity green (0 % to 100 %)",
+        "4_Intensity blue (0 % to 100 %)",
+        "Main control (master dimmer, 0 % to 100 %)"
+      ]
+    }
+  ]
+}
