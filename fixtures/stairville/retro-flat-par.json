@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Retro Flat Par",
+  "shortName": "Par 64 LED",
+  "categories": ["Dimmer", "Color Changer", "Strobe"],
+  "meta": {
+    "authors": ["WW"],
+    "createDate": "2022-06-30",
+    "lastModifyDate": "2022-06-30"
+  },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_404358_404364_508985_v5_r1_de_online.pdf"
+    ],
+    "productPage": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_404358_404364_508985_v5_r1_de_online.pdf"
+    ],
+    "video": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_404358_404364_508985_v5_r1_de_online.pdf"
+    ]
+  },
+  "rdm": {
+    "modelId": 404364
+  },
+  "physical": {
+    "dimensions": [284, 269, 266],
+    "weight": 2.9,
+    "power": 160,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightness": "off"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Amber": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Amber"
+      }
+    },
+    "UV": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "UV"
+      }
+    },
+    "Strobe Speed": {
+      "capability": {
+        "type": "StrobeSpeed",
+        "speedStart": "1Hz",
+        "speedEnd": "50Hz"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "Normal",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Amber",
+        "UV",
+        "Strobe Speed"
+      ]
+    }
+  ]
+}
