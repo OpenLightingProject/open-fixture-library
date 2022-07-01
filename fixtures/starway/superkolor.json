@@ -1,0 +1,122 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "SuperKolor",
+  "shortName": "SuperKolor",
+  "categories": ["Pixel Bar"],
+  "meta": {
+    "authors": ["LOLO BOIG"],
+    "createDate": "2022-07-01",
+    "lastModifyDate": "2022-07-01"
+  },
+  "links": {
+    "manual": [
+      "https://www.star-way.com/suprakolor-hd-3"
+    ]
+  },
+  "physical": {
+    "dimensions": [190, 228, 324],
+    "weight": 6.6,
+    "power": 128,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 1650
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 255,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    },
+    "Color Presets": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Effect Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "narrow",
+        "angleEnd": "wide"
+      }
+    },
+    "Focus": {
+      "capability": {
+        "type": "Focus",
+        "distanceStart": "near",
+        "distanceEnd": "far"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "TOUR",
+      "shortName": "TOUR",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Strobe",
+        "Color Presets",
+        "Effect Speed",
+        "Program Speed",
+        "Zoom",
+        "Focus"
+      ]
+    }
+  ]
+}
