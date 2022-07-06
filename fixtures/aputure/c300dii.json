@@ -1,0 +1,186 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "C300dII",
+  "shortName": "C300dII",
+  "categories": ["Dimmer", "Effect"],
+  "meta": {
+    "authors": ["alexis"],
+    "createDate": "2022-07-06",
+    "lastModifyDate": "2022-07-06"
+  },
+  "links": {
+    "manual": [
+      "https://www.aputure.com/wp-content/uploads/2019/10/LS-C300d-II_Product_Manual_EN.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Mode Selection": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Effect",
+          "effectName": "Manual Mode"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Fx Mode",
+          "parameterStart": "low",
+          "parameterEnd": "high"
+        }
+      ]
+    },
+    "Fx Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Effect",
+          "effectName": "Paparazzi"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Effect",
+          "effectName": "Fireworks"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Effect",
+          "effectName": "Fault Bulb"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Effect",
+          "effectName": "Lightning"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Effect",
+          "effectName": "TV"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Effect",
+          "effectName": "Pulsing"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Effect",
+          "effectName": "Strobe"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Effect",
+          "effectName": "Explosion"
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "Effect",
+          "effectName": "Undefined"
+        }
+      ]
+    },
+    "Fx Frequency Control": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Effect",
+          "effectName": "level 1",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Effect",
+          "effectName": "level 2"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Effect",
+          "effectName": "level 3"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Effect",
+          "effectName": "level 4"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Effect",
+          "effectName": "level 5"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Effect",
+          "effectName": "level 6"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Effect",
+          "effectName": "level 7"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Effect",
+          "effectName": "level 8"
+        },
+        {
+          "dmxRange": [160, 179],
+          "type": "Effect",
+          "effectName": "level 9"
+        },
+        {
+          "dmxRange": [180, 199],
+          "type": "Effect",
+          "effectName": "level 10"
+        },
+        {
+          "dmxRange": [200, 219],
+          "type": "Effect",
+          "effectName": "Random"
+        },
+        {
+          "dmxRange": [220, 255],
+          "type": "Effect",
+          "effectName": "Undefined"
+        }
+      ]
+    },
+    "Lightning Mode / Explosion Mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "Effect",
+          "effectName": "Start Point"
+        },
+        {
+          "dmxRange": [1, 127],
+          "type": "Effect",
+          "effectName": "Single trigger"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Cycle Mode 4 light / Undefined Fx"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Aputure C300dII",
+      "shortName": "Aputure C300dII",
+      "channels": [
+        "Dimmer",
+        "Mode Selection",
+        "Fx Control",
+        "Fx Frequency Control",
+        "Lightning Mode / Explosion Mode"
+      ]
+    }
+  ]
+}
