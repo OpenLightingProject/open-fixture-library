@@ -1,0 +1,129 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "c300d",
+  "shortName": "c300d",
+  "categories": ["Dimmer", "Effect", "Strobe", "Color Changer"],
+  "meta": {
+    "authors": ["alexis"],
+    "createDate": "2022-07-06",
+    "lastModifyDate": "2022-07-06"
+  },
+  "links": {
+    "manual": [
+      "https://www.aputure.com/wp-content/uploads/2022/06/LS-600d-Pro-LS-300d-II-common-DMX-Profile-Specification-V1.0.pdf",
+      "https://www.aputure.com/wp-content/uploads/2019/10/LS-C300d-II_Product_Manual_EN.pdf"
+    ]
+  },
+  "physical": {
+    "DMXconnector": "5-pin"
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": "0%",
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Lightning/effects": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Effect",
+          "effectName": "Lightning/effects"
+        }
+      ]
+    },
+    "Effect Duration": {
+      "defaultValue": "0%",
+      "highlightValue": "100%",
+      "constant": true,
+      "capabilities": [
+        {
+          "dmxRange": [0, 19],
+          "type": "Effect",
+          "effectName": "Paparazzi",
+          "speed": "100%",
+          "durationStart": "short",
+          "durationEnd": "long"
+        },
+        {
+          "dmxRange": [20, 39],
+          "type": "Effect",
+          "effectName": "Firework",
+          "speed": "100%"
+        },
+        {
+          "dmxRange": [40, 59],
+          "type": "Effect",
+          "effectName": "Faulty bulb",
+          "speed": "100%"
+        },
+        {
+          "dmxRange": [60, 79],
+          "type": "Effect",
+          "effectName": "Lightning",
+          "speed": "100%"
+        },
+        {
+          "dmxRange": [80, 99],
+          "type": "Effect",
+          "effectName": "TV",
+          "speed": "100%"
+        },
+        {
+          "dmxRange": [100, 119],
+          "type": "Effect",
+          "effectName": "Pulsing",
+          "speed": "100%"
+        },
+        {
+          "dmxRange": [120, 139],
+          "type": "Effect",
+          "effectName": "Strobe",
+          "speed": "100%"
+        },
+        {
+          "dmxRange": [140, 159],
+          "type": "Effect",
+          "effectName": "Explosion",
+          "speed": "100%"
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "Effect",
+          "effectName": "Reserved"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Intensity",
+      "shortName": "Intensity",
+      "physical": {
+        "DMXconnector": "5-pin"
+      },
+      "channels": [
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "Lightning/effects",
+      "shortName": "Lightning/effects",
+      "channels": [
+        "Lightning/effects"
+      ]
+    },
+    {
+      "name": "Effects",
+      "shortName": "Effects",
+      "channels": [
+        "Effect Duration"
+      ]
+    }
+  ]
+}
