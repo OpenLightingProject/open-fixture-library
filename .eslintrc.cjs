@@ -279,6 +279,7 @@ const disabledRules = [
   `jsdoc/require-description-complete-sentence`,
   `unicorn/consistent-function-scoping`,
   `unicorn/filename-case`,
+  `unicorn/prefer-event-target`, // see https://github.com/sindresorhus/eslint-plugin-unicorn/issues/1854
   `unicorn/no-null`,
   `unicorn/no-process-exit`,
   `unicorn/no-useless-switch-case`, // explicit "useless" switch chases are documentation
