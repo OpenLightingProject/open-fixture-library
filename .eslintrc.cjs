@@ -364,6 +364,7 @@ module.exports = {
       rules: {
         'import/no-commonjs': `off`,
         'unicorn/prefer-module': `off`,
+        'unicorn/prefer-top-level-await': `off`,
       },
     },
     {
