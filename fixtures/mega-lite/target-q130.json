@@ -1,0 +1,114 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Target Q130",
+  "shortName": "Q130",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["J. Collins"],
+    "createDate": "2022-07-09",
+    "lastModifyDate": "2022-07-09"
+  },
+  "comment": "Fuse: F20AL250V",
+  "links": {
+    "manual": [
+      "https://manuals.plus/mega-lite/color-pick-led-par-q190-manual#main_power_connection"
+    ]
+  },
+  "physical": {
+    "dimensions": [185, 140, 254],
+    "weight": 3,
+    "power": 155,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 2958
+    },
+    "lens": {
+      "degreesMinMax": [25, 25]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 0],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [1, 84],
+          "type": "StrobeSpeed",
+          "speedStart": "1%",
+          "speedEnd": "100%"
+        },
+        {
+          "dmxRange": [85, 169],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Burst",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [170, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Pulse",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "randomTiming": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "4Ch",
+      "shortName": "4ch",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Warm White"
+      ]
+    },
+    {
+      "name": "6Ch",
+      "shortName": "6ch",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "Warm White",
+        "Strobe"
+      ]
+    }
+  ]
+}
