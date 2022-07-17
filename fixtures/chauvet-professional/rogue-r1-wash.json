@@ -6,7 +6,7 @@
   "meta": {
     "authors": ["Ken Harris", "Flo Edelmann"],
     "createDate": "2022-03-07",
-    "lastModifyDate": "2022-03-17"
+    "lastModifyDate": "2022-07-16"
   },
   "links": {
     "manual": [
@@ -54,8 +54,8 @@
     "Pan/Tilt Speed": {
       "capability": {
         "type": "PanTiltSpeed",
-        "speedStart": "slow",
-        "speedEnd": "fast"
+        "speedStart": "fast",
+        "speedEnd": "slow"
       }
     },
     "Dimmer": {
