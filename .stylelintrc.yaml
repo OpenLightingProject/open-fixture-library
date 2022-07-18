@@ -20,16 +20,10 @@ rules:
       - color-to-rgb-string
       - /^[a-z]+\.[a-z\-]+$/ # all `@use`d Sass functions
 
-  # prevent copy/paste mistakes
-  keyframe-block-no-duplicate-selectors: true
-
   # decrease severity for this rule only
   no-descending-specificity:
     - true
     - severity: warning
-
-  # prefer concise selector lists in `:not(…)`
-  selector-not-notation: complex
 
   # allow Vue pseudo elements
   selector-pseudo-element-no-unknown:
