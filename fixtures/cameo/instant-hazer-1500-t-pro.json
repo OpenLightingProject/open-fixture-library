@@ -42,8 +42,10 @@
     },
     "Fan": {
       "capability": {
-        "type": "Generic",
-        "comment": "Fan Speed minimum - maximum"
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Fan Speed"
       }
     }
   },
