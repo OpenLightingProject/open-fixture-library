@@ -1,0 +1,135 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Q-Spot 40 RGB",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["HS-Event"],
+    "createDate": "2022-07-23",
+    "lastModifyDate": "2022-07-23"
+  },
+  "links": {
+    "manual": [
+      "https://www.cameolight.com/en/downloads/file/id/694585978"
+    ],
+    "other": [
+      "https://www.cameolight.com/en/downloads/file/id/940935430"
+    ]
+  },
+  "physical": {
+    "dimensions": [151, 130, 168],
+    "weight": 2.75,
+    "power": 55,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 780
+    },
+    "lens": {
+      "name": "Manual",
+      "degreesMinMax": [4.5, 25]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset"
+      }
+    },
+    "Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "fineChannelAliases": ["Dimmer 2 fine"],
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Color Temperature": {
+      "capability": {
+        "type": "ColorTemperature",
+        "colorTemperatureStart": "cold",
+        "colorTemperatureEnd": "warm"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "2 CH",
+      "channels": [
+        "Dimmer",
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "3CH 1",
+      "channels": [
+        "Dimmer",
+        "Strobe",
+        "Color Macros"
+      ]
+    },
+    {
+      "name": "3 CH2",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "4 CH",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "9 CH",
+      "channels": [
+        "Dimmer 2",
+        "Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Color Macros",
+        "Color Temperature"
+      ]
+    }
+  ]
+}
