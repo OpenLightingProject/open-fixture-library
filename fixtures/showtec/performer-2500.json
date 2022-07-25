@@ -1,0 +1,238 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Performer 2500",
+  "categories": ["Dimmer", "Color Changer"],
+  "meta": {
+    "authors": ["purple"],
+    "createDate": "2022-07-25",
+    "lastModifyDate": "2022-07-25"
+  },
+  "links": {
+    "manual": [
+      "https://all-guidesbox.com/manual/2217476/showtec-performer-2500-fresnel-tungsten-operation-user-s-manual-40.html"
+    ]
+  },
+  "physical": {
+    "dimensions": [470, 450, 380],
+    "weight": 10,
+    "power": 265,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "lumens": 6959
+    },
+    "lens": {
+      "name": "Fresnel",
+      "degreesMinMax": [10, 60]
+    }
+  },
+  "availableChannels": {
+    "Master Dimmer": {
+      "fineChannelAliases": ["Master Dimmer fine"],
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 255],
+          "type": "Intensity"
+        },
+        {
+          "dmxRange": [256, 65535],
+          "type": "Intensity",
+          "brightnessStart": "dark",
+          "brightnessEnd": "bright"
+        }
+      ]
+    },
+    "Warm White": {
+      "fineChannelAliases": ["Warm White fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Warm White"
+      }
+    },
+    "Master Dimmer 2": {
+      "name": "Master Dimmer",
+      "fineChannelAliases": ["Master Dimmer 2 fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Natural White": {
+      "fineChannelAliases": ["Natural White fine"],
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "CCT": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 35],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "warm",
+          "colorTemperatureEnd": "cold",
+          "comment": "2700 K"
+        },
+        {
+          "dmxRange": [36, 60],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "warm",
+          "colorTemperatureEnd": "cold",
+          "comment": "3000 K"
+        },
+        {
+          "dmxRange": [61, 85],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "warm",
+          "colorTemperatureEnd": "cold",
+          "comment": "3200 K"
+        },
+        {
+          "dmxRange": [86, 110],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "warm",
+          "colorTemperatureEnd": "cold",
+          "comment": "3400 K"
+        },
+        {
+          "dmxRange": [111, 135],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "warm",
+          "colorTemperatureEnd": "cold",
+          "comment": "3600 K"
+        },
+        {
+          "dmxRange": [136, 160],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "warm",
+          "colorTemperatureEnd": "cold",
+          "comment": "3800 K"
+        },
+        {
+          "dmxRange": [161, 185],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "warm",
+          "colorTemperatureEnd": "cold",
+          "comment": "4000 K"
+        },
+        {
+          "dmxRange": [186, 210],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "warm",
+          "colorTemperatureEnd": "cold",
+          "comment": "4200 K"
+        },
+        {
+          "dmxRange": [211, 235],
+          "type": "ColorTemperature",
+          "colorTemperatureStart": "warm",
+          "colorTemperatureEnd": "cold",
+          "comment": "4500 K"
+        },
+        {
+          "dmxRange": [236, 255],
+          "type": "NoFunction"
+        }
+      ]
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 99],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [100, 109],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [110, 179],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Lightning",
+          "speedStart": "0Hz",
+          "speedEnd": "25Hz"
+        },
+        {
+          "dmxRange": [180, 189],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [190, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Strobe",
+          "speedStart": "0Hz",
+          "speedEnd": "25Hz",
+          "randomTiming": true
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "8 Channels",
+      "shortName": "8ch",
+      "channels": [
+        "Master Dimmer 2",
+        "Master Dimmer 2 fine",
+        "Warm White",
+        "Warm White fine",
+        "Natural White",
+        "Natural White fine",
+        "CCT",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "6 Channels",
+      "shortName": "6ch",
+      "channels": [
+        "Master Dimmer",
+        "Master Dimmer fine",
+        "Warm White",
+        "Warm White fine",
+        "Natural White",
+        "Natural White fine"
+      ]
+    },
+    {
+      "name": "3 Channels",
+      "shortName": "3ch",
+      "channels": [
+        "Master Dimmer",
+        "Warm White",
+        "Natural White"
+      ]
+    },
+    {
+      "name": "2 Channels",
+      "shortName": "2ch",
+      "channels": [
+        "Master Dimmer",
+        "Master Dimmer fine"
+      ]
+    },
+    {
+      "name": "1 Channel",
+      "shortName": "1ch",
+      "channels": [
+        "Master Dimmer"
+      ]
+    }
+  ]
+}
