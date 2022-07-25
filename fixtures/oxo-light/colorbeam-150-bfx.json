@@ -1,0 +1,754 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "ColorBeam 150 BFX",
+  "shortName": "ColorBeam 150",
+  "categories": ["Color Changer", "Dimmer", "Effect", "Strobe"],
+  "meta": {
+    "authors": ["Aurelien W"],
+    "createDate": "2022-07-25",
+    "lastModifyDate": "2022-07-25"
+  },
+  "links": {
+    "manual": [
+      "https://docs.wixstatic.com/ugd/7e664f_c854553a934e4fc280960b079d6992c4.pdf"
+    ],
+    "productPage": [
+      "https://www.oxolight.com/product-page/colorbeam-150-bfx-1"
+    ]
+  },
+  "physical": {
+    "dimensions": [213, 268, 170],
+    "weight": 2.35,
+    "power": 210,
+    "DMXconnector": "5-pin",
+    "bulb": {
+      "type": "LED",
+      "colorTemperature": 6500
+    },
+    "lens": {
+      "degreesMinMax": [40, 40]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright",
+        "comment": "RGB Dimmer 0 - 100%"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright",
+        "comment": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright",
+        "comment": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright",
+        "comment": "Blue"
+      }
+    },
+    "Dimmer 2": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "dark",
+        "brightnessEnd": "bright",
+        "comment": "White LED Ring Macros"
+      }
+    },
+    "Color Presets": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "Intensity",
+          "brightness": "off"
+        },
+        {
+          "dmxRange": [10, 10],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [11, 14],
+          "type": "Generic",
+          "comment": "White LED 1/9/17"
+        },
+        {
+          "dmxRange": [15, 19],
+          "type": "Generic",
+          "comment": "White LED 2/10/18"
+        },
+        {
+          "dmxRange": [20, 24],
+          "type": "Generic",
+          "comment": "White LED 3/11/19"
+        },
+        {
+          "dmxRange": [25, 29],
+          "type": "Generic",
+          "comment": "White LED 4/12/20"
+        },
+        {
+          "dmxRange": [30, 34],
+          "type": "Generic",
+          "comment": "White LED 5/13/21"
+        },
+        {
+          "dmxRange": [35, 39],
+          "type": "Generic",
+          "comment": "White LED 6/14/22"
+        },
+        {
+          "dmxRange": [40, 44],
+          "type": "Generic",
+          "comment": "White LED 7/15/23"
+        },
+        {
+          "dmxRange": [45, 49],
+          "type": "Generic",
+          "comment": "White LED 8/16/24"
+        },
+        {
+          "dmxRange": [50, 54],
+          "type": "Generic",
+          "comment": "White LED 1/9/17 + 5/13/21"
+        },
+        {
+          "dmxRange": [55, 59],
+          "type": "Generic",
+          "comment": "White LED 2/10/18 + 6/14/22"
+        },
+        {
+          "dmxRange": [60, 64],
+          "type": "Generic",
+          "comment": "White LED 3/11/19 + 7/15/23"
+        },
+        {
+          "dmxRange": [65, 69],
+          "type": "Generic",
+          "comment": "White LED 4/12/20 + 8/16/24"
+        },
+        {
+          "dmxRange": [70, 74],
+          "type": "Generic",
+          "comment": "White LED 1 thru 8"
+        },
+        {
+          "dmxRange": [75, 79],
+          "type": "Generic",
+          "comment": "White LED 9 thru 16"
+        },
+        {
+          "dmxRange": [80, 84],
+          "type": "Generic",
+          "comment": "White LED 17 thru 24"
+        },
+        {
+          "dmxRange": [85, 89],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24"
+        },
+        {
+          "dmxRange": [90, 95],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 pulse"
+        },
+        {
+          "dmxRange": [96, 100],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 pulse up"
+        },
+        {
+          "dmxRange": [101, 105],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 pulse down"
+        },
+        {
+          "dmxRange": [106, 110],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 1"
+        },
+        {
+          "dmxRange": [111, 115],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 2"
+        },
+        {
+          "dmxRange": [116, 120],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 3"
+        },
+        {
+          "dmxRange": [121, 125],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 4"
+        },
+        {
+          "dmxRange": [126, 130],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 5"
+        },
+        {
+          "dmxRange": [131, 135],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 6"
+        },
+        {
+          "dmxRange": [136, 140],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 7"
+        },
+        {
+          "dmxRange": [141, 145],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 8"
+        },
+        {
+          "dmxRange": [146, 150],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 9"
+        },
+        {
+          "dmxRange": [151, 155],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 10"
+        },
+        {
+          "dmxRange": [156, 160],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 11"
+        },
+        {
+          "dmxRange": [161, 165],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 12"
+        },
+        {
+          "dmxRange": [166, 170],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 13"
+        },
+        {
+          "dmxRange": [171, 175],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 14"
+        },
+        {
+          "dmxRange": [176, 180],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 15"
+        },
+        {
+          "dmxRange": [181, 185],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 16"
+        },
+        {
+          "dmxRange": [186, 190],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 17"
+        },
+        {
+          "dmxRange": [191, 195],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 18"
+        },
+        {
+          "dmxRange": [196, 200],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 19"
+        },
+        {
+          "dmxRange": [201, 206],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 20"
+        },
+        {
+          "dmxRange": [207, 210],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 21"
+        },
+        {
+          "dmxRange": [211, 214],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 22"
+        },
+        {
+          "dmxRange": [215, 218],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 23"
+        },
+        {
+          "dmxRange": [219, 222],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 24"
+        },
+        {
+          "dmxRange": [223, 226],
+          "type": "Generic",
+          "comment": "White LED 1 thru 24 macro 25"
+        },
+        {
+          "dmxRange": [227, 230],
+          "type": "Generic",
+          "comment": "Sound Mode 1 (chaser)"
+        },
+        {
+          "dmxRange": [231, 234],
+          "type": "Generic",
+          "comment": "Sound Mode 2 (flash)"
+        },
+        {
+          "dmxRange": [235, 255],
+          "type": "Generic",
+          "comment": "Full On"
+        }
+      ]
+    },
+    "Program Speed": {
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Macros LED Ring speed"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [10, 170],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Single flash (from slow to fast)"
+        },
+        {
+          "dmxRange": [171, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Double flash (from slow to fast)"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 4],
+          "type": "EffectParameter",
+          "parameter": "off",
+          "comment": "Off"
+        },
+        {
+          "dmxRange": [5, 14],
+          "type": "ColorPreset",
+          "comment": "Red",
+          "colors": ["#ff1100"]
+        },
+        {
+          "dmxRange": [15, 24],
+          "type": "ColorPreset",
+          "comment": "Green",
+          "colors": ["#11ff00"]
+        },
+        {
+          "dmxRange": [25, 34],
+          "type": "ColorPreset",
+          "comment": "Blue",
+          "colors": ["#0040ff"]
+        },
+        {
+          "dmxRange": [35, 44],
+          "type": "ColorPreset",
+          "comment": "Yellow",
+          "colors": ["#fff700"]
+        },
+        {
+          "dmxRange": [45, 54],
+          "type": "ColorPreset",
+          "comment": "Purple",
+          "colors": ["#aa00ff"]
+        },
+        {
+          "dmxRange": [55, 64],
+          "type": "ColorPreset",
+          "comment": "Cyan",
+          "colors": ["#00eeff"]
+        },
+        {
+          "dmxRange": [65, 74],
+          "type": "ColorPreset",
+          "comment": "White",
+          "colors": ["#ffffff"]
+        },
+        {
+          "dmxRange": [75, 97],
+          "type": "Generic",
+          "comment": "Color chase"
+        },
+        {
+          "dmxRange": [98, 120],
+          "type": "Generic",
+          "comment": "Color Fade"
+        },
+        {
+          "dmxRange": [121, 143],
+          "type": "Generic",
+          "comment": "Color pulse"
+        },
+        {
+          "dmxRange": [144, 166],
+          "type": "Generic",
+          "comment": "Color pulse up"
+        },
+        {
+          "dmxRange": [167, 189],
+          "type": "Generic",
+          "comment": "Color pulse down"
+        },
+        {
+          "dmxRange": [190, 230],
+          "type": "Generic",
+          "comment": "Blank"
+        },
+        {
+          "dmxRange": [231, 238],
+          "type": "Generic",
+          "comment": "Sound Mode 1"
+        },
+        {
+          "dmxRange": [239, 246],
+          "type": "Generic",
+          "comment": "Sound Mode 2"
+        },
+        {
+          "dmxRange": [247, 255],
+          "type": "Intensity",
+          "brightness": "bright"
+        }
+      ]
+    },
+    "Program Speed 2": {
+      "name": "Program Speed",
+      "capability": {
+        "type": "EffectSpeed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "RGB Macros speed"
+      }
+    },
+    "Dimmer 3": {
+      "name": "Dimmer",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED ring Dimmer 1 thru 24"
+      }
+    },
+    "Strobe 2": {
+      "name": "Strobe",
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "Open"
+        },
+        {
+          "dmxRange": [10, 170],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Single flash (from slow to fast)"
+        },
+        {
+          "dmxRange": [171, 250],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast",
+          "comment": "Double flash (from slow to fast)"
+        },
+        {
+          "dmxRange": [251, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        }
+      ]
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 1"
+      }
+    },
+    "Intensity 2": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 2"
+      }
+    },
+    "Intensity 3": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 3"
+      }
+    },
+    "Intensity 4": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 4"
+      }
+    },
+    "Intensity 5": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 5"
+      }
+    },
+    "Intensity 6": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 6"
+      }
+    },
+    "Intensity 7": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 7"
+      }
+    },
+    "Intensity 8": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 8"
+      }
+    },
+    "Intensity 9": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 9"
+      }
+    },
+    "Intensity 10": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 10"
+      }
+    },
+    "Intensity 11": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 11"
+      }
+    },
+    "Intensity 12": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 12"
+      }
+    },
+    "Intensity 13": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 13"
+      }
+    },
+    "Intensity 14": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 14"
+      }
+    },
+    "Intensity 15": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 15"
+      }
+    },
+    "Intensity 16": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 16"
+      }
+    },
+    "Intensity 17": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 17"
+      }
+    },
+    "Intensity 18": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 18"
+      }
+    },
+    "Intensity 19": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 19"
+      }
+    },
+    "Intensity 20": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 20"
+      }
+    },
+    "Intensity 21": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 21"
+      }
+    },
+    "Intensity 22": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 22"
+      }
+    },
+    "Intensity 23": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 23"
+      }
+    },
+    "Intensity 24": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 23"
+      }
+    },
+    "Intensity 25": {
+      "name": "Intensity",
+      "capability": {
+        "type": "Intensity",
+        "comment": "White LED 24"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "7-channel",
+      "shortName": "7ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer 2",
+        "Color Presets",
+        "Program Speed"
+      ]
+    },
+    {
+      "name": "11-channel",
+      "shortName": "11ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Color Macros",
+        "Program Speed 2",
+        "Dimmer 3",
+        "Strobe 2",
+        "Color Presets",
+        "Program Speed"
+      ]
+    },
+    {
+      "name": "35-channel",
+      "shortName": "35ch",
+      "channels": [
+        "Dimmer",
+        "Red",
+        "Green",
+        "Blue",
+        "Strobe",
+        "Color Macros",
+        "Program Speed 2",
+        "Dimmer 3",
+        "Intensity",
+        "Intensity 2",
+        "Intensity 3",
+        "Intensity 4",
+        "Intensity 5",
+        "Intensity 6",
+        "Intensity 7",
+        "Intensity 8",
+        "Intensity 9",
+        "Intensity 10",
+        "Intensity 11",
+        "Intensity 12",
+        "Intensity 13",
+        "Intensity 14",
+        "Intensity 15",
+        "Intensity 16",
+        "Intensity 17",
+        "Intensity 18",
+        "Intensity 19",
+        "Intensity 20",
+        "Intensity 21",
+        "Intensity 22",
+        "Intensity 23",
+        "Intensity 24",
+        "Intensity 25",
+        "Strobe 2",
+        "Program Speed"
+      ]
+    }
+  ]
+}
