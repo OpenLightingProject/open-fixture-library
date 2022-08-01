@@ -1,0 +1,351 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FUZE PAR Z60IP",
+  "categories": ["Color Changer", "Dimmer", "Effect"],
+  "meta": {
+    "authors": ["Natsuha"],
+    "createDate": "2022-08-01",
+    "lastModifyDate": "2022-08-01"
+  },
+  "links": {
+    "manual": [
+      "https://www.soundhouse.co.jp/download/elation/fuzeparz60ip.pdf"
+    ],
+    "video": [
+      "https://www.youtube.com/watch?v=vhzNZSctjpk"
+    ]
+  },
+  "physical": {
+    "weight": 4.5,
+    "power": 78
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "HUE": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "SATURATION": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Intensity": {
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "0%",
+        "brightnessEnd": "100%"
+      }
+    },
+    "Zoom": {
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "comment": "ZOOM 5 度~50 度"
+      }
+    },
+    "Dimmer curve mode": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 20],
+          "type": "Generic",
+          "comment": "standard"
+        },
+        {
+          "dmxRange": [21, 40],
+          "type": "Generic",
+          "comment": "stage"
+        },
+        {
+          "dmxRange": [41, 60],
+          "type": "Generic",
+          "comment": "TV"
+        },
+        {
+          "dmxRange": [61, 80],
+          "type": "Generic",
+          "comment": "ARCHITECTURAL"
+        },
+        {
+          "dmxRange": [81, 100],
+          "type": "Generic",
+          "comment": "theatre"
+        },
+        {
+          "dmxRange": [101, 255],
+          "type": "Generic",
+          "comment": "Default to Unit Setting"
+        }
+      ]
+    },
+    "Shutter / Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
+          "comment": "LED OFF"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "LED ON"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "パルスエフェクト(連続)"
+        },
+        {
+          "dmxRange": [160, 223],
+          "type": "StrobeSpeed",
+          "speedStart": "slow reverse",
+          "speedEnd": "fast",
+          "comment": "random"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "ShutterStrobe",
+          "shutterEffect": "Open",
+          "comment": "LED ON"
+        }
+      ]
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Dimmer 詳細": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red 2": {
+      "name": "Red",
+      "fineChannelAliases": ["Red 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Red詳細": {
+      "fineChannelAliases": ["Red詳細 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green 2": {
+      "name": "Green",
+      "fineChannelAliases": ["Green 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Green詳細": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue 2": {
+      "name": "Blue",
+      "fineChannelAliases": ["Blue 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Blue詳細": {
+      "fineChannelAliases": ["Blue詳細 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White 2": {
+      "name": "White",
+      "fineChannelAliases": ["White 2 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "White詳細": {
+      "fineChannelAliases": ["White詳細 fine"],
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Zoom 2": {
+      "name": "Zoom",
+      "fineChannelAliases": ["Zoom 2 fine"],
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "comment": "ZOOM 5 度~50 度"
+      }
+    },
+    "Zoom詳細": {
+      "fineChannelAliases": ["Zoom詳細 fine"],
+      "capability": {
+        "type": "Zoom",
+        "angleStart": "0%",
+        "angleEnd": "100%",
+        "comment": "ZOOM 5 度~50 度"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4ch RGBW",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    },
+    {
+      "name": "4CH HSI",
+      "channels": [
+        "HUE",
+        "SATURATION",
+        "Intensity",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "5CH HSI",
+      "channels": [
+        "HUE",
+        "SATURATION",
+        "Intensity",
+        "Zoom",
+        "Dimmer curve mode"
+      ]
+    },
+    {
+      "name": "7ch sRGBWI",
+      "channels": [
+        "Shutter / Strobe",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Intensity",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "6ch RGBW",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "7CH RGBW",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Dimmer",
+        "Dimmer 詳細",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "8ch RGBW",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer 詳細",
+        "Zoom"
+      ]
+    },
+    {
+      "name": "9CH RGBW",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer 詳細",
+        "Zoom",
+        "Dimmer curve mode"
+      ]
+    },
+    {
+      "name": "10CH 16bit",
+      "channels": [
+        "Red 2",
+        "Red詳細",
+        "Green 2",
+        "Green詳細",
+        "Blue 2",
+        "Blue詳細",
+        "White 2",
+        "White詳細",
+        "Zoom 2",
+        "Zoom詳細"
+      ]
+    }
+  ]
+}
