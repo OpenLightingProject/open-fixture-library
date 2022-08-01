@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "FUZE PAR Z60IP",
+  "categories": ["Color Changer", "Dimmer", "Effect"],
+  "meta": {
+    "authors": ["Natsuna"],
+    "createDate": "2022-07-31",
+    "lastModifyDate": "2022-07-31"
+  },
+  "links": {
+    "manual": [
+      "https://www.soundhouse.co.jp/download/elation/fuzeparz60ip.pdf"
+    ]
+  },
+  "availableChannels": {
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "4CH RGBW",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "White"
+      ]
+    }
+  ]
+}
