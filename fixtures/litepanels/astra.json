@@ -1,0 +1,46 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Astra LED Panel",
+  "shortName": "Astra",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Arthur"],
+    "createDate": "2019-02-18",
+    "lastModifyDate": "2019-02-18"
+  },
+  "helpWanted": "Please provide a manual if possible. Why are there two color macro channels? Is the 5-channel mode correct?",
+  "links": {
+    "other": [
+      "https://www.litepanels.com/en/litepanels/astra-dmx-xlr-5pin-communications-module/c-1027/p-1739"
+    ]
+  },
+  "physical": {
+    "weight": 6.6,
+    "power": 270,
+    "DMXconnector": "3-pin",
+    "bulb": { "type": "36x1W RGB LEDs" },
+    "lens": { "degreesMinMax": [15, 45] }
+  },
+  "availableChannels": {
+    "Intensity": { "defaultValue": 0, "capability": { "type": "Intensity" } },
+    "Red": {
+      "defaultValue": 0,
+      "capability": { "type": "ColorIntensity", "color": "Red" }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": { "type": "ColorIntensity", "color": "Green" }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": { "type": "ColorIntensity", "color": "Blue" }
+    }
+  },
+  "modes": [
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": ["Intensity", "Red", "Green", "Blue"]
+    }
+  ]
+}
