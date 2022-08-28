@@ -1,0 +1,86 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Octagon Theater CW/WW 36x1W",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Joe B Sonik"],
+    "createDate": "2022-08-28",
+    "lastModifyDate": "2022-08-28"
+  },
+  "comment": "18 × 1 W LEDs, cold white (approx. 6400 K)\n18 × 1 W LEDs, warm white (approx. 2800 K)",
+  "links": {
+    "manual": [
+      "https://images.thomann.de/pics/atg/atgdata/document/manual/c_289076_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/fi/stairville_octagon_theater_cw_ww_36x1w.htm"
+    ],
+    "video": [
+      "https://video2.thomann.de/vidiot/02591c1c/video_i3009p10_yd59vqpa.mp4"
+    ]
+  },
+  "physical": {
+    "dimensions": [301, 248, 215],
+    "weight": 2.3,
+    "power": 42,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "36x1W CW/WW Leds",
+      "colorTemperature": 2800
+    },
+    "lens": {
+      "degreesMinMax": [36, 36]
+    }
+  },
+  "availableChannels": {
+    "Cold White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Warm White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Strobe": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [16, 255],
+          "type": "StrobeSpeed",
+          "speedStart": "slow",
+          "speedEnd": "fast"
+        }
+      ]
+    },
+    "Color Macros": {
+      "capability": {
+        "type": "ColorPreset",
+        "comment": "31 fixed mixes"
+      }
+    },
+    "Dimmer": {
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "5ch",
+      "channels": [
+        "Cold White",
+        "Warm White",
+        "Strobe",
+        "Color Macros",
+        "Dimmer"
+      ]
+    }
+  ]
+}
