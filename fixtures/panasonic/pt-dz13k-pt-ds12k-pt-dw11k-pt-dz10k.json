@@ -1,0 +1,431 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PT-DZ13K_PT-DS12K_PT-DW11K_PT-DZ10K",
+  "shortName": "PT-DS12K",
+  "categories": ["Other"],
+  "meta": {
+    "authors": ["FG"],
+    "createDate": "2022-09-16",
+    "lastModifyDate": "2022-09-16"
+  },
+  "links": {
+    "manual": [
+      "https://business.panasonic.fr/systemes-visuels/pt-dz13k"
+    ],
+    "productPage": [
+      "https://business.panasonic.fr/systemes-visuels/pt-dz13k"
+    ]
+  },
+  "physical": {
+    "dimensions": [540, 530, 200],
+    "weight": 24,
+    "power": 970,
+    "bulb": {
+      "lumens": 12000
+    }
+  },
+  "availableChannels": {
+    "Intensity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity",
+        "brightnessStart": "bright",
+        "brightnessEnd": "off"
+      }
+    },
+    "Input": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Generic",
+          "comment": "Aucune opération"
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "Generic",
+          "comment": "RGB1"
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "Generic",
+          "comment": "RGB2"
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "Generic",
+          "comment": "DVI-D"
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "Generic",
+          "comment": "HDMI"
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "Generic",
+          "comment": "Aucune opération"
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "Generic",
+          "comment": "SDI1"
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "Generic",
+          "comment": "SDI2"
+        },
+        {
+          "dmxRange": [64, 127],
+          "type": "Generic",
+          "comment": "Aucune opération"
+        },
+        {
+          "dmxRange": [128, 135],
+          "type": "Generic",
+          "comment": "PIP User 1"
+        },
+        {
+          "dmxRange": [136, 143],
+          "type": "Generic",
+          "comment": "PIP User 2"
+        },
+        {
+          "dmxRange": [144, 151],
+          "type": "Generic",
+          "comment": "PIP User 3"
+        },
+        {
+          "dmxRange": [152, 255],
+          "type": "Generic",
+          "comment": "Aucune opération"
+        }
+      ]
+    },
+    "Position Objectif": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "Aucune opération"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "Home Position"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "Mémoire Optique 1"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Generic",
+          "comment": "Mémoire Optique 2"
+        },
+        {
+          "dmxRange": [128, 159],
+          "type": "Generic",
+          "comment": "Mémoire Optique 3"
+        },
+        {
+          "dmxRange": [160, 255],
+          "type": "Generic",
+          "comment": "Aucune opération"
+        }
+      ]
+    },
+    "Déplacement objectif H": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "(-) Haute vitesse"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "(-) Basse vitesse"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "(-) Réglage précis"
+        },
+        {
+          "dmxRange": [96, 159],
+          "type": "Generic",
+          "comment": "Arrêt du réglage"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "(+) Réglage précis"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "(+) Basse vitesse"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "(+) Haute vitesse"
+        }
+      ]
+    },
+    "Déplacement objectif V": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "(-) Haute vitesse"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "(-) Basse vitesse"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "(-) Réglage précis"
+        },
+        {
+          "dmxRange": [96, 159],
+          "type": "Generic",
+          "comment": "Arrêt réglage"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "(+) Réglage précis"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "(+) Basse vitesse"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "(+) Haute vitesse"
+        }
+      ]
+    },
+    "Focus": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "(-) Haute vitesse"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "(-) Basse vitesse"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "(-) Réglage précis"
+        },
+        {
+          "dmxRange": [96, 159],
+          "type": "Generic",
+          "comment": "Arrêt réglage"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "(+) Réglage précis"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "(+) Basse vitesse"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "(+) Haute vitesse"
+        }
+      ]
+    },
+    "Zoom": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "(-) Haute vitesse"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "(-) Basse vitesse"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "(-) réglage précis"
+        },
+        {
+          "dmxRange": [96, 159],
+          "type": "Generic",
+          "comment": "Arrêt réglage"
+        },
+        {
+          "dmxRange": [160, 191],
+          "type": "Generic",
+          "comment": "(+) réglage précis"
+        },
+        {
+          "dmxRange": [192, 223],
+          "type": "Generic",
+          "comment": "(+) Basse vitesse"
+        },
+        {
+          "dmxRange": [224, 255],
+          "type": "Generic",
+          "comment": "(+) Haute vitesse"
+        }
+      ]
+    },
+    "Power": {
+      "defaultValue": 128,
+      "capabilities": [
+        {
+          "dmxRange": [0, 63],
+          "type": "Generic",
+          "comment": "Power OFF"
+        },
+        {
+          "dmxRange": [64, 191],
+          "type": "Generic",
+          "comment": "Aucune opération"
+        },
+        {
+          "dmxRange": [192, 255],
+          "type": "Generic",
+          "comment": "Power ON"
+        }
+      ]
+    },
+    "Géométrie": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 15],
+          "type": "Generic",
+          "comment": "NON"
+        },
+        {
+          "dmxRange": [16, 31],
+          "type": "Generic",
+          "comment": "Correction de traèze"
+        },
+        {
+          "dmxRange": [32, 47],
+          "type": "Generic",
+          "comment": "Courbe"
+        },
+        {
+          "dmxRange": [48, 63],
+          "type": "Generic",
+          "comment": "PC-1"
+        },
+        {
+          "dmxRange": [64, 79],
+          "type": "Generic",
+          "comment": "PC-2"
+        },
+        {
+          "dmxRange": [80, 95],
+          "type": "Generic",
+          "comment": "PC-3"
+        },
+        {
+          "dmxRange": [96, 111],
+          "type": "Generic",
+          "comment": "Correction des angles"
+        },
+        {
+          "dmxRange": [112, 255],
+          "type": "Generic",
+          "comment": "Aucune Opération"
+        }
+      ]
+    },
+    "User Masque": {
+      "defaultValue": 255,
+      "capabilities": [
+        {
+          "dmxRange": [0, 31],
+          "type": "Generic",
+          "comment": "NON"
+        },
+        {
+          "dmxRange": [32, 63],
+          "type": "Generic",
+          "comment": "PC-1"
+        },
+        {
+          "dmxRange": [64, 95],
+          "type": "Generic",
+          "comment": "PC-2"
+        },
+        {
+          "dmxRange": [96, 127],
+          "type": "Generic",
+          "comment": "PC-3"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Aucune Opération"
+        }
+      ]
+    },
+    "Lock": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 127],
+          "type": "Generic",
+          "comment": "Verrouillé"
+        },
+        {
+          "dmxRange": [128, 255],
+          "type": "Generic",
+          "comment": "Déverrouillé"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "Panasonic Artnet",
+      "shortName": "Pana Artnet",
+      "channels": [
+        "Intensity",
+        "Input",
+        "Position Objectif",
+        "Déplacement objectif H",
+        "Déplacement objectif V",
+        "Focus",
+        "Zoom",
+        "Power",
+        "Géométrie",
+        "User Masque",
+        "Lock"
+      ]
+    }
+  ]
+}
