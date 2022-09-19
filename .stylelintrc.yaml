@@ -12,6 +12,9 @@ rules:
   # always long to be consistent
   color-hex-length: long
 
+  # always numeric to be consistent
+  font-weight-notation: numeric
+
   # avoid using non-global functions
   function-no-unknown:
     - true
