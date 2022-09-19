@@ -1,0 +1,36 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "PARKOLOR 120 HD",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["LOLO"],
+    "createDate": "2022-09-19",
+    "lastModifyDate": "2022-09-19"
+  },
+  "links": {
+    "manual": [
+      "http://ftp.technique.freevox.fr/STARWAY/225465_PARKOLOR120HD/225465_PARKOLOR120HDV3_FR.pdf"
+    ]
+  },
+  "physical": {
+    "lens": {
+      "degreesMinMax": [7, 40]
+    }
+  },
+  "availableChannels": {
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "DMX 7",
+      "channels": [
+        "Dimmer"
+      ]
+    }
+  ]
+}
