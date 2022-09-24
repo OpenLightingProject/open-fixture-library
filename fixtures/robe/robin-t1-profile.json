@@ -4,8 +4,8 @@
   "categories": ["Moving Head", "Color Changer"],
   "meta": {
     "authors": ["Dyami Caliri"],
-    "createDate": "2022-07-13",
-    "lastModifyDate": "2022-07-13"
+    "createDate": "2022-09-24",
+    "lastModifyDate": "2022-09-24"
   },
   "links": {
     "manual": [
@@ -69,7 +69,7 @@
   "availableChannels": {
     "Pan": {
       "fineChannelAliases": ["Pan fine"],
-      "defaultValue": "50%",
+      "defaultValue": 32768,
       "capability": {
         "type": "Pan",
         "angleStart": "0deg",
@@ -78,7 +78,7 @@
     },
     "Tilt": {
       "fineChannelAliases": ["Tilt fine"],
-      "defaultValue": "50%",
+      "defaultValue": 32768,
       "capability": {
         "type": "Tilt",
         "angleStart": "0deg",
@@ -240,7 +240,7 @@
         {
           "dmxRange": [190, 199],
           "type": "Maintenance",
-          "comment": "Iris /framing shutters reset",
+          "comment": "Iris/framing shutters reset",
           "hold": "3s"
         },
         {
@@ -1060,6 +1060,7 @@
       }
     },
     "Cyan": {
+      "fineChannelAliases": ["Cyan fine"],
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
@@ -1067,6 +1068,7 @@
       }
     },
     "Magenta": {
+      "fineChannelAliases": ["Magenta fine"],
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
@@ -1074,6 +1076,7 @@
       }
     },
     "Yellow": {
+      "fineChannelAliases": ["Yellow fine"],
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
@@ -2169,8 +2172,63 @@
   },
   "modes": [
     {
-      "name": "M1: CMY/RGB",
-      "shortName": "M1",
+      "name": "CMY",
+      "shortName": "M1-CMY",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Power/Special Functions",
+        "LED Frequency",
+        "LED Frequency Adjustment",
+        "Color Functions",
+        "CRI Selection",
+        "Virtual Color wheel",
+        "Cyan",
+        "Cyan fine",
+        "Magenta",
+        "Magenta fine",
+        "Yellow",
+        "Yellow fine",
+        "CTC",
+        "Green Correction",
+        "Color Mix Mode",
+        "Gobo Selection Rotation Speed",
+        "Rot. Gobo carousel/Framing shutters/Zoom/Focus/Iris/Frost/Prism time",
+        "Effect wheel positioning",
+        "Effect wheel rotation",
+        "Effect wheel animations",
+        "Rotating Gobo Wheel",
+        "Rotating Gobo Control",
+        "Rotating Gobo Control fine",
+        "Prism",
+        "Prism Rotation",
+        "Frost",
+        "Iris",
+        "Iris fine",
+        "Zoom",
+        "Zoom fine",
+        "Focus",
+        "Focus fine",
+        "Framing shutters module rotation",
+        "Framing shutter 1-movement",
+        "Framing shutter 1-swivelling",
+        "Framing shutter 2-movement",
+        "Framing shutter 2-swivelling",
+        "Framing shutter 3-movement",
+        "Framing shutter 3-swivelling",
+        "Framing shutter 4-movement",
+        "Framing shutter 4-swivelling",
+        "Shutter / Strobe",
+        "Dimmer",
+        "Dimmer fine"
+      ]
+    },
+    {
+      "name": "RGB",
+      "shortName": "M1-RGB",
       "rdmPersonalityIndex": 1,
       "channels": [
         "Pan",
@@ -2225,8 +2283,47 @@
       ]
     },
     {
-      "name": "M2: Reduced CMY/RGB",
-      "shortName": "M2",
+      "name": "Reduced CMY",
+      "shortName": "M2-CMY",
+      "channels": [
+        "Pan",
+        "Pan fine",
+        "Tilt",
+        "Tilt fine",
+        "Pan/Tilt Speed",
+        "Power/Special Functions",
+        "Color Functions",
+        "CRI Selection",
+        "Cyan",
+        "Magenta",
+        "Yellow",
+        "CTC",
+        "Effect wheel positioning",
+        "Effect wheel rotation",
+        "Rotating Gobo Wheel",
+        "Rotating Gobo Control",
+        "Prism",
+        "Prism Rotation",
+        "Frost",
+        "Iris",
+        "Zoom",
+        "Focus",
+        "Framing shutters module rotation",
+        "Framing shutter 1-movement",
+        "Framing shutter 1-swivelling",
+        "Framing shutter 2-movement",
+        "Framing shutter 2-swivelling",
+        "Framing shutter 3-movement",
+        "Framing shutter 3-swivelling",
+        "Framing shutter 4-movement",
+        "Framing shutter 4-swivelling",
+        "Shutter / Strobe",
+        "Dimmer"
+      ]
+    },
+    {
+      "name": "Reduced RGB",
+      "shortName": "M2-RGB",
       "rdmPersonalityIndex": 2,
       "channels": [
         "Pan",
@@ -2265,7 +2362,7 @@
       ]
     },
     {
-      "name": "M3: R,G,B,A,Light Green",
+      "name": "RGBA + Light Green",
       "shortName": "M3",
       "rdmPersonalityIndex": 3,
       "channels": [
