@@ -19,7 +19,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
       - name: Setup Node.js v16
-        uses: actions/setup-node@v3.4.1
+        uses: actions/setup-node@v3.5.0
         with:
           node-version: 16
           cache: 'npm'
