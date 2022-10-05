@@ -212,9 +212,6 @@ const enabledRuleParameters = {
   }],
   'vue/no-unused-refs': [],
   'vue/no-v-text': [],
-  'vue/padding-line-between-tags': [[
-    { blankLine: `consistent`, prev: `*`, next: `*` },
-  ]],
   'vue/prefer-prop-type-boolean-first': [],
   'vue/prefer-separate-static-class': [],
   'vue/prefer-true-attribute-shorthand': [],
