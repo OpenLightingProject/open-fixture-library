@@ -1,0 +1,434 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Giga Bar Frost Pix 8 RGB",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["Luke Nelson"],
+    "createDate": "2022-10-12",
+    "lastModifyDate": "2022-10-12",
+    "importPlugin": {
+      "plugin": "qlcplus_4.12.1",
+      "date": "2022-10-12",
+      "comment": "created by Q Light Controller Plus (version 4.12.6)"
+    }
+  },
+  "physical": {
+    "dimensions": [1020, 80, 65],
+    "weight": 1.5,
+    "power": 25,
+    "DMXconnector": "3-pin",
+    "bulb": {
+      "type": "LED"
+    },
+    "lens": {
+      "degreesMinMax": [30, 30]
+    }
+  },
+  "availableChannels": {
+    "Red": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "Dimmer": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Strobe": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Strobe",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "helpWanted": "At which DMX values is strobe disabled?"
+      }
+    },
+    "Multi-function": {
+      "defaultValue": 0,
+      "capabilities": [
+        {
+          "dmxRange": [0, 7],
+          "type": "Effect",
+          "effectName": "LEDs of",
+          "switchChannels": {
+            "No function / Speed / Sensitivity": "No function"
+          }
+        },
+        {
+          "dmxRange": [8, 15],
+          "type": "ColorPreset",
+          "comment": "Constant unicoloured pattern in red",
+          "colors": ["#ff2600"],
+          "switchChannels": {
+            "No function / Speed / Sensitivity": "No function"
+          }
+        },
+        {
+          "dmxRange": [16, 23],
+          "type": "ColorPreset",
+          "comment": "Constant unicoloured pattern in red and green",
+          "colors": ["#ff2600", "#00f900"],
+          "switchChannels": {
+            "No function / Speed / Sensitivity": "No function"
+          }
+        },
+        {
+          "dmxRange": [24, 31],
+          "type": "ColorPreset",
+          "comment": "Constant unicoloured pattern in green",
+          "colors": ["#00f900"],
+          "switchChannels": {
+            "No function / Speed / Sensitivity": "No function"
+          }
+        },
+        {
+          "dmxRange": [32, 39],
+          "type": "ColorPreset",
+          "comment": "Constant unicoloured pattern in blue and green",
+          "colors": ["#0433ff", "#00f900"],
+          "switchChannels": {
+            "No function / Speed / Sensitivity": "No function"
+          }
+        },
+        {
+          "dmxRange": [40, 47],
+          "type": "ColorPreset",
+          "comment": "Constant unicoloured pattern in blue",
+          "colors": ["#0433ff"],
+          "switchChannels": {
+            "No function / Speed / Sensitivity": "No function"
+          }
+        },
+        {
+          "dmxRange": [48, 55],
+          "type": "ColorPreset",
+          "comment": "Constant unicoloured pattern in blue and red",
+          "colors": ["#0433ff", "#ff2600"],
+          "switchChannels": {
+            "No function / Speed / Sensitivity": "No function"
+          }
+        },
+        {
+          "dmxRange": [56, 63],
+          "type": "ColorPreset",
+          "comment": "Constant unicoloured pattern in red,  green and blue",
+          "colors": ["#ffffff"],
+          "switchChannels": {
+            "No function / Speed / Sensitivity": "No function"
+          }
+        },
+        {
+          "dmxRange": [64, 231],
+          "type": "Effect",
+          "effectName": "Built-in automatic show programmes",
+          "switchChannels": {
+            "No function / Speed / Sensitivity": "Speed"
+          }
+        },
+        {
+          "dmxRange": [232, 255],
+          "type": "Effect",
+          "effectName": "Sound-controlled show",
+          "soundControlled": true,
+          "switchChannels": {
+            "No function / Speed / Sensitivity": "Sensitivity"
+          }
+        }
+      ]
+    },
+    "Speed": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Speed",
+        "speedStart": "slow",
+        "speedEnd": "fast",
+        "comment": "Increasing speed"
+      }
+    },
+    "Sensitivity": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "Effect",
+        "effectName": "Sensitivity of the built-in microphone for sound control",
+        "soundControlled": true
+      }
+    },
+    "Red - Segment 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Red - Segment 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Red - Segment 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Red - Segment 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Red - Segment 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Red - Segment 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Red - Segment 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Red - Segment 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Green - Segment 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Green - Segment 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Green - Segment 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Green - Segment 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Green - Segment 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Green - Segment 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Green - Segment 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Green - Segment 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Blue - Segment 1": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Blue - Segment 2": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Blue - Segment 3": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Blue - Segment 4": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Blue - Segment 5": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Blue - Segment 6": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Blue - Segment 7": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "Blue - Segment 8": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue",
+        "comment": "Segment intensity (0 - 100%)"
+      }
+    },
+    "No function": {
+      "defaultValue": 0,
+      "capability": {
+        "type": "NoFunction"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "3-channel ",
+      "shortName": "3ch ",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue"
+      ]
+    },
+    {
+      "name": "5-channel ",
+      "shortName": "5ch ",
+      "channels": [
+        "Red",
+        "Green",
+        "Blue",
+        "Dimmer",
+        "Strobe"
+      ]
+    },
+    {
+      "name": "2-channel",
+      "shortName": "2ch",
+      "channels": [
+        "Multi-function",
+        "No function / Speed / Sensitivity"
+      ]
+    },
+    {
+      "name": "24-channel",
+      "shortName": "24ch",
+      "channels": [
+        "Red - Segment 1",
+        "Green - Segment 1",
+        "Blue - Segment 1",
+        "Red - Segment 2",
+        "Green - Segment 2",
+        "Blue - Segment 2",
+        "Red - Segment 3",
+        "Green - Segment 3",
+        "Blue - Segment 3",
+        "Red - Segment 4",
+        "Green - Segment 4",
+        "Blue - Segment 4",
+        "Red - Segment 5",
+        "Green - Segment 5",
+        "Blue - Segment 5",
+        "Red - Segment 6",
+        "Green - Segment 6",
+        "Blue - Segment 6",
+        "Red - Segment 7",
+        "Green - Segment 7",
+        "Blue - Segment 7",
+        "Red - Segment 8",
+        "Green - Segment 8",
+        "Blue - Segment 8"
+      ]
+    }
+  ]
+}
