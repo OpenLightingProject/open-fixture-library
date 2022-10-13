@@ -12,6 +12,15 @@
       "comment": "created by Q Light Controller Plus (version 4.12.6)"
     }
   },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/c_460683_460684_v2_en_online.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/gb/varytec_giga_bar_frost_pix_8_rgb.htm"
+    ],
+    "video": ["https://youtu.be/PixpS09Mc-I"]
+  },
   "physical": {
     "dimensions": [1020, 80, 65],
     "weight": 1.5,
@@ -375,30 +384,17 @@
     {
       "name": "3-channel ",
       "shortName": "3ch ",
-      "channels": [
-        "Red",
-        "Green",
-        "Blue"
-      ]
+      "channels": ["Red", "Green", "Blue"]
     },
     {
       "name": "5-channel ",
       "shortName": "5ch ",
-      "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "Dimmer",
-        "Strobe"
-      ]
+      "channels": ["Red", "Green", "Blue", "Dimmer", "Strobe"]
     },
     {
       "name": "2-channel",
       "shortName": "2ch",
-      "channels": [
-        "Multi-function",
-        "No function / Speed / Sensitivity"
-      ]
+      "channels": ["Multi-function", "No function / Speed / Sensitivity"]
     },
     {
       "name": "24-channel",
