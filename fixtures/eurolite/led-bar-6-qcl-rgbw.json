@@ -92,8 +92,7 @@
       "capability": {
         "type": "EffectSpeed",
         "speedStart": "slow",
-        "speedEnd": "fast",
-        "comment": "DMX Auto program speed, increasing"
+        "speedEnd": "fast"
       }
     },
     "Color Presets": {
@@ -241,8 +240,7 @@
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "0.5Hz",
-          "speedEnd": "20Hz",
-          "comment": "Strobe with increasing speed"
+          "speedEnd": "20Hz"
         }
       ]
     },
@@ -311,16 +309,14 @@
         {
           "dmxRange": [0, 9],
           "type": "ShutterStrobe",
-          "shutterEffect": "Open",
-          "comment": "No function"
+          "shutterEffect": "Open"
         },
         {
           "dmxRange": [10, 255],
           "type": "ShutterStrobe",
           "shutterEffect": "Strobe",
           "speedStart": "0.5Hz",
-          "speedEnd": "20Hz",
-          "comment": "Strobe with increasing speed"
+          "speedEnd": "20Hz"
         }
       ]
     }
