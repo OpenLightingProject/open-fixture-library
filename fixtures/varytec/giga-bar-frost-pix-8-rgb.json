@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
   "name": "Giga Bar Frost Pix 8 RGB",
-  "categories": ["Color Changer"],
+  "categories": ["Pixel Bar", "Color Changer"],
   "meta": {
     "authors": ["Luke Nelson"],
     "createDate": "2022-10-12",
@@ -33,28 +33,36 @@
       "degreesMinMax": [30, 30]
     }
   },
-  "availableChannels": {
-    "Red": {
+  "matrix": {
+    "pixelCount": [8, 1, 1],
+    "pixelGroups": {
+      "Master": "all"
+    }
+  },
+  "templateChannels": {
+    "Red $pixelKey": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Red"
       }
     },
-    "Green": {
+    "Green $pixelKey": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Green"
       }
     },
-    "Blue": {
+    "Blue $pixelKey": {
       "defaultValue": 0,
       "capability": {
         "type": "ColorIntensity",
         "color": "Blue"
       }
-    },
+    }
+  },
+  "availableChannels": {
     "Dimmer": {
       "defaultValue": 0,
       "capability": {
@@ -76,81 +84,81 @@
       "capabilities": [
         {
           "dmxRange": [0, 7],
-          "type": "Effect",
-          "effectName": "LEDs of",
+          "type": "ShutterStrobe",
+          "shutterEffect": "Closed",
           "switchChannels": {
-            "No function / Speed / Sensitivity": "No function"
+            "Speed / Sensitivity": "No function"
           }
         },
         {
           "dmxRange": [8, 15],
           "type": "ColorPreset",
-          "comment": "Constant unicoloured pattern in red",
+          "comment": "Constant uni-colored pattern in red",
           "colors": ["#ff2600"],
           "switchChannels": {
-            "No function / Speed / Sensitivity": "No function"
+            "Speed / Sensitivity": "No function"
           }
         },
         {
           "dmxRange": [16, 23],
           "type": "ColorPreset",
-          "comment": "Constant unicoloured pattern in red and green",
+          "comment": "Constant uni-colored pattern in red and green",
           "colors": ["#ff2600", "#00f900"],
           "switchChannels": {
-            "No function / Speed / Sensitivity": "No function"
+            "Speed / Sensitivity": "No function"
           }
         },
         {
           "dmxRange": [24, 31],
           "type": "ColorPreset",
-          "comment": "Constant unicoloured pattern in green",
+          "comment": "Constant uni-colored pattern in green",
           "colors": ["#00f900"],
           "switchChannels": {
-            "No function / Speed / Sensitivity": "No function"
+            "Speed / Sensitivity": "No function"
           }
         },
         {
           "dmxRange": [32, 39],
           "type": "ColorPreset",
-          "comment": "Constant unicoloured pattern in blue and green",
+          "comment": "Constant uni-colored pattern in blue and green",
           "colors": ["#0433ff", "#00f900"],
           "switchChannels": {
-            "No function / Speed / Sensitivity": "No function"
+            "Speed / Sensitivity": "No function"
           }
         },
         {
           "dmxRange": [40, 47],
           "type": "ColorPreset",
-          "comment": "Constant unicoloured pattern in blue",
+          "comment": "Constant uni-colored pattern in blue",
           "colors": ["#0433ff"],
           "switchChannels": {
-            "No function / Speed / Sensitivity": "No function"
+            "Speed / Sensitivity": "No function"
           }
         },
         {
           "dmxRange": [48, 55],
           "type": "ColorPreset",
-          "comment": "Constant unicoloured pattern in blue and red",
+          "comment": "Constant uni-colored pattern in blue and red",
           "colors": ["#0433ff", "#ff2600"],
           "switchChannels": {
-            "No function / Speed / Sensitivity": "No function"
+            "Speed / Sensitivity": "No function"
           }
         },
         {
           "dmxRange": [56, 63],
           "type": "ColorPreset",
-          "comment": "Constant unicoloured pattern in red,  green and blue",
+          "comment": "Constant uni-colored pattern in red, green and blue",
           "colors": ["#ffffff"],
           "switchChannels": {
-            "No function / Speed / Sensitivity": "No function"
+            "Speed / Sensitivity": "No function"
           }
         },
         {
           "dmxRange": [64, 231],
           "type": "Effect",
-          "effectName": "Built-in automatic show programmes",
+          "effectName": "Built-in automatic show programs",
           "switchChannels": {
-            "No function / Speed / Sensitivity": "Speed"
+            "Speed / Sensitivity": "Speed"
           }
         },
         {
@@ -159,7 +167,7 @@
           "effectName": "Sound-controlled show",
           "soundControlled": true,
           "switchChannels": {
-            "No function / Speed / Sensitivity": "Sensitivity"
+            "Speed / Sensitivity": "Sensitivity"
           }
         }
       ]
@@ -167,210 +175,17 @@
     "Speed": {
       "defaultValue": 0,
       "capability": {
-        "type": "Speed",
+        "type": "EffectSpeed",
         "speedStart": "slow",
-        "speedEnd": "fast",
-        "comment": "Increasing speed"
+        "speedEnd": "fast"
       }
     },
     "Sensitivity": {
       "defaultValue": 0,
       "capability": {
-        "type": "Effect",
-        "effectName": "Sensitivity of the built-in microphone for sound control",
-        "soundControlled": true
-      }
-    },
-    "Red - Segment 1": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Red - Segment 2": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Red - Segment 3": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Red - Segment 4": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Red - Segment 5": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Red - Segment 6": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Red - Segment 7": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Red - Segment 8": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Red",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Green - Segment 1": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Green - Segment 2": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Green - Segment 3": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Green - Segment 4": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Green - Segment 5": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Green - Segment 6": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Green - Segment 7": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Green - Segment 8": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Green",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Blue - Segment 1": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Blue - Segment 2": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Blue - Segment 3": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Blue - Segment 4": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Blue - Segment 5": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Blue - Segment 6": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Blue - Segment 7": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "Segment intensity (0 - 100%)"
-      }
-    },
-    "Blue - Segment 8": {
-      "defaultValue": 0,
-      "capability": {
-        "type": "ColorIntensity",
-        "color": "Blue",
-        "comment": "Segment intensity (0 - 100%)"
+        "type": "SoundSensitivity",
+        "soundSensitivityStart": "low",
+        "soundSensitivityEnd": "high"
       }
     },
     "No function": {
@@ -384,46 +199,45 @@
     {
       "name": "3-channel",
       "shortName": "3ch",
-      "channels": ["Red", "Green", "Blue"]
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master"
+      ]
     },
     {
       "name": "5-channel",
       "shortName": "5ch",
-      "channels": ["Red", "Green", "Blue", "Dimmer", "Strobe"]
+      "channels": [
+        "Red Master",
+        "Green Master",
+        "Blue Master",
+        "Dimmer",
+        "Strobe"
+      ]
     },
     {
       "name": "2-channel",
       "shortName": "2ch",
-      "channels": ["Multi-function", "No function / Speed / Sensitivity"]
+      "channels": [
+        "Multi-function",
+        "Speed / Sensitivity"
+      ]
     },
     {
       "name": "24-channel",
       "shortName": "24ch",
       "channels": [
-        "Red - Segment 1",
-        "Green - Segment 1",
-        "Blue - Segment 1",
-        "Red - Segment 2",
-        "Green - Segment 2",
-        "Blue - Segment 2",
-        "Red - Segment 3",
-        "Green - Segment 3",
-        "Blue - Segment 3",
-        "Red - Segment 4",
-        "Green - Segment 4",
-        "Blue - Segment 4",
-        "Red - Segment 5",
-        "Green - Segment 5",
-        "Blue - Segment 5",
-        "Red - Segment 6",
-        "Green - Segment 6",
-        "Blue - Segment 6",
-        "Red - Segment 7",
-        "Green - Segment 7",
-        "Blue - Segment 7",
-        "Red - Segment 8",
-        "Green - Segment 8",
-        "Blue - Segment 8"
+        {
+          "insert": "matrixChannels",
+          "repeatFor": "eachPixelXYZ",
+          "channelOrder": "perPixel",
+          "templateChannels": [
+            "Red $pixelKey",
+            "Green $pixelKey",
+            "Blue $pixelKey"
+          ]
+        }
       ]
     }
   ]
