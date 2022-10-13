@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "Oxo color beam 18",
+  "shortName": "Colorbeam 18",
+  "categories": ["Color Changer"],
+  "meta": {
+    "authors": ["ert"],
+    "createDate": "2022-10-13",
+    "lastModifyDate": "2022-10-13"
+  },
+  "links": {
+    "manual": [
+      "https://www.google.com"
+    ]
+  },
+  "availableChannels": {
+    "Intensity": {
+      "capability": {
+        "type": "Intensity"
+      }
+    },
+    "Red": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Red"
+      }
+    },
+    "Green": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Green"
+      }
+    },
+    "Blue": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "Blue"
+      }
+    },
+    "White": {
+      "capability": {
+        "type": "ColorIntensity",
+        "color": "White"
+      }
+    },
+    "Shutter / Strobe": {
+      "capability": {
+        "type": "ShutterStrobe",
+        "shutterEffect": "Open"
+      }
+    }
+  },
+  "modes": [
+    {
+      "name": "8ch",
+      "shortName": "8ch",
+      "channels": [
+        "Intensity",
+        "Red",
+        "Green",
+        "Blue",
+        "White",
+        "Shutter / Strobe"
+      ]
+    }
+  ]
+}
