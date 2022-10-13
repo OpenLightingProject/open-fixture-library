@@ -103,6 +103,7 @@
           "dmxRange": [16, 23],
           "type": "ColorPreset",
           "comment": "Constant uni-colored pattern in red and green",
+          "helpWanted": "Are these patterns uni-colored (yellow in this case) or multi-colored?",
           "colors": ["#ff2600", "#00f900"],
           "switchChannels": {
             "Speed / Sensitivity": "No function"
@@ -157,6 +158,7 @@
           "dmxRange": [64, 231],
           "type": "Effect",
           "effectName": "Built-in automatic show programs",
+          "helpWanted": "At which DMX values do the effects change?",
           "switchChannels": {
             "Speed / Sensitivity": "Speed"
           }
