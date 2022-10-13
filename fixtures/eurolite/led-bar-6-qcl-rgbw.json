@@ -77,13 +77,14 @@
         },
         {
           "dmxRange": [10, 119],
-          "type": "Generic",
-          "comment": "/Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/Others/rainbow.png Auto mode via DMX"
+          "type": "Effect",
+          "effectName": "Auto mode"
         },
         {
           "dmxRange": [120, 255],
-          "type": "Generic",
-          "comment": "/Applications/QLC+.app/Contents/MacOS/../Resources/Gobos/Others/rainbow.png Sound mode via DMX"
+          "type": "Effect",
+          "effectName": "Sound mode",
+          "soundControlled": true
         }
       ]
     },
@@ -253,53 +254,53 @@
         },
         {
           "dmxRange": [10, 29],
-          "type": "Generic",
-          "comment": "Color temperature 2700K"
+          "type": "ColorTemperature",
+          "colorTemperature": "2700K"
         },
         {
           "dmxRange": [30, 49],
-          "type": "Generic",
-          "comment": "Color temperature 3200K"
+          "type": "ColorTemperature",
+          "colorTemperature": "3200K"
         },
         {
           "dmxRange": [50, 69],
-          "type": "Generic",
-          "comment": "Color temperature 3400K"
+          "type": "ColorTemperature",
+          "colorTemperature": "3400K"
         },
         {
           "dmxRange": [70, 89],
-          "type": "Generic",
-          "comment": "Color temperature 4200K"
+          "type": "ColorTemperature",
+          "colorTemperature": "4200K"
         },
         {
           "dmxRange": [90, 109],
-          "type": "Generic",
-          "comment": "Color temperature 4900K"
+          "type": "ColorTemperature",
+          "colorTemperature": "4900K"
         },
         {
           "dmxRange": [110, 129],
-          "type": "Generic",
-          "comment": "Color temperature 5600K"
+          "type": "ColorTemperature",
+          "colorTemperature": "5600K"
         },
         {
           "dmxRange": [130, 149],
-          "type": "Generic",
-          "comment": "Color temperature 6000K"
+          "type": "ColorTemperature",
+          "colorTemperature": "6000K"
         },
         {
           "dmxRange": [150, 169],
-          "type": "Generic",
-          "comment": "Color temperature 6500K"
+          "type": "ColorTemperature",
+          "colorTemperature": "6500K"
         },
         {
           "dmxRange": [170, 189],
-          "type": "Generic",
-          "comment": "Color temperature 7500K"
+          "type": "ColorTemperature",
+          "colorTemperature": "7500K"
         },
         {
           "dmxRange": [190, 255],
-          "type": "Generic",
-          "comment": "Color temperature 8000K"
+          "type": "ColorTemperature",
+          "colorTemperature": "8000K"
         }
       ]
     },
