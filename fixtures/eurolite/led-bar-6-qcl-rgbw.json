@@ -12,6 +12,15 @@
       "comment": "created by Q Light Controller Plus (version 4.12.6)"
     }
   },
+  "links": {
+    "manual": [
+      "https://images.static-thomann.de/pics/atg/atgdata/document/manual/420780_eurolite_led_bar_6_12_rgbw_de_uk.pdf"
+    ],
+    "productPage": [
+      "https://www.thomann.de/gb/eurolite_led_bar_6_qcl_rgbw.htm"
+    ],
+    "video": ["https://youtu.be/tXEgjiP5YWA"]
+  },
   "physical": {
     "dimensions": [585, 65, 100],
     "weight": 2.9,
@@ -320,20 +329,12 @@
     {
       "name": "2-channel",
       "shortName": "2ch",
-      "channels": [
-        "Auto Program",
-        "Auto Program Speed"
-      ]
+      "channels": ["Auto Program", "Auto Program Speed"]
     },
     {
       "name": "4-channel",
       "shortName": "4ch",
-      "channels": [
-        "Red",
-        "Green",
-        "Blue",
-        "White"
-      ]
+      "channels": ["Red", "Green", "Blue", "White"]
     },
     {
       "name": "5-channel",
