@@ -47,7 +47,18 @@
   },
   "modes": [
     {
-      "name": "5ch",
+      "name": "3-channel",
+      "shortName": "3ch",
+      "channels": ["Red", "Green", "Blue"]
+    },
+    {
+      "name": "4-channel",
+      "shortName": "4ch",
+      "channels": ["Red", "Green", "Blue", "White"]
+    },
+    {
+      "name": "5-channel",
+      "shortName": "5ch",
       "channels": ["Dimmer", "Red", "Green", "Blue", "White"]
     }
   ]
