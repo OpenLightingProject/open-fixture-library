@@ -8,9 +8,11 @@
     "lastModifyDate": "2021-05-27"
   },
   "links": {
-    "video": [
-      "https://www.cameolight.com/en/solutions/dj-musicians/static-lighting/theater-lights/11911/ts-60-w-rgbw#detail-specifications"
-    ]
+    "productPage": [
+      "https://www.cameolight.com/en/solutions/dj-musicians/static-lighting/theater-lights/11911/ts-60-w-rgbw",
+      "https://www.cameolight.com/en/solutions/dj-musicians/static-lighting/theater-lights/13839/ts-60-w-rgbw-wh"
+    ],
+    "manual": ["https://www.cameolight.com/en/downloads/file/id/1201324186"]
   },
   "availableChannels": {
     "Dimmer": {
@@ -46,13 +48,7 @@
   "modes": [
     {
       "name": "5ch",
-      "channels": [
-        "Dimmer",
-        "Red",
-        "Green",
-        "Blue",
-        "White"
-      ]
+      "channels": ["Dimmer", "Red", "Green", "Blue", "White"]
     }
   ]
 }
