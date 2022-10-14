@@ -14,6 +14,16 @@
     ],
     "manual": ["https://www.cameolight.com/en/downloads/file/id/1201324186"]
   },
+  "physical": {
+    "dimensions": [145, 205, 240],
+    "weight": 3.6,
+    "power": 65,
+    "DMXconnector": "3-pin",
+    "lens": {
+      "name": "Plano-convex",
+      "degreesMinMax": [9, 41]
+    }
+  },
   "availableChannels": {
     "Dimmer": {
       "capability": {
