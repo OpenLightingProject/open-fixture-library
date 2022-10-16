@@ -1,0 +1,43 @@
+{
+  "$schema": "https://raw.githubusercontent.com/OpenLightingProject/open-fixture-library/master/schemas/fixture.json",
+  "name": "DDDDDD",
+  "categories": ["Moving Head"],
+  "meta": {
+    "authors": ["DDD"],
+    "createDate": "2022-10-16",
+    "lastModifyDate": "2022-10-16"
+  },
+  "links": {
+    "manual": [
+      "http://dddd.com"
+    ]
+  },
+  "availableChannels": {
+    "FFFFF": {
+      "capabilities": [
+        {
+          "dmxRange": [0, 9],
+          "type": "NoFunction"
+        },
+        {
+          "dmxRange": [10, 200],
+          "type": "Pan",
+          "angleStart": "10deg",
+          "angleEnd": "30deg"
+        },
+        {
+          "dmxRange": [201, 255],
+          "type": "NoFunction"
+        }
+      ]
+    }
+  },
+  "modes": [
+    {
+      "name": "DDDD",
+      "channels": [
+        "FFFFF"
+      ]
+    }
+  ]
+}
