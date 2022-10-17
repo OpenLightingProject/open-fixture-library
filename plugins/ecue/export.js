@@ -201,9 +201,9 @@ function getChannelType(channel) {
   switch (channel.type) {
     case `Multi-Color`:
     case `Single Color`:
-    case `Color Temperature`:
+    case `Color Temperature`: {
       return `ChannelColor`;
-
+    }
     case `Iris`:
     case `Zoom`:
     case `Shutter`:
@@ -213,18 +213,19 @@ function getChannelType(channel) {
     case `Effect`:
     case `Speed`:
     case `Maintenance`:
-    case `NoFunction`:
+    case `NoFunction`: {
       return `ChannelBeam`;
-
+    }
     case `Pan`:
     case `Tilt`:
-    case `Focus`:
+    case `Focus`: {
       return `ChannelFocus`;
-
+    }
     case `Intensity`:
     case `Fog`:
-    default:
+    default: {
       return `ChannelIntensity`;
+    }
   }
 }
 
