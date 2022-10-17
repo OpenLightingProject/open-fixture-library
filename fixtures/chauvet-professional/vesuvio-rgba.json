@@ -4,21 +4,26 @@
   "shortName": "Chauvet Jet",
   "categories": ["Smoke", "Color Changer"],
   "meta": {
-    "authors": ["Beerady"],
+    "authors": ["Beerady", "Luke Nelson"],
     "createDate": "2021-09-09",
-    "lastModifyDate": "2021-09-09"
+    "lastModifyDate": "2022-10-17"
   },
   "links": {
+    "productPage": [
+      "http://web.archive.org/web/20160421173724/http://www.chauvetprofessional.com/products/vesuvio-rgba/"
+    ],
     "manual": [
       "https://www.chauvetprofessional.com/wp-content/uploads/2015/06/Vesuvio-RGBA_UM_Rev4_WO.pdf"
-    ]
+    ],
+    "video": ["https://www.youtube.com/watch?v=HH5G92l4USw"]
   },
   "rdm": {
     "modelId": 37266,
     "softwareVersion": "2016"
   },
   "physical": {
-    "weight": 30,
+    "dimensions": [336, 488, 231],
+    "weight": 13.6,
     "power": 1590,
     "DMXconnector": "3-pin and 5-pin",
     "bulb": {
